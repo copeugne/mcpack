@@ -1,0 +1,228 @@
+Classfile GlitchCore-neoforge-1.21.1-2.1.0.2.jar!/glitchcore/neoforge/mixin/impl/MixinRenderHelper.class
+  Last modified May 18, 2026; size 3487 bytes
+  SHA-256 checksum d87c107202ee08c0655f1583359615566c6521abf9fd5343fda9b9715ffdf99b
+  Compiled from "MixinRenderHelper.java"
+public class glitchcore.neoforge.mixin.impl.MixinRenderHelper
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #33                         // glitchcore/neoforge/mixin/impl/MixinRenderHelper
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 6, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Methodref          #8.#9          // net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+   #8 = Class              #10            // net/minecraft/client/renderer/ItemBlockRenderTypes
+   #9 = NameAndType        #11:#12        // setRenderLayer:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+  #10 = Utf8               net/minecraft/client/renderer/ItemBlockRenderTypes
+  #11 = Utf8               setRenderLayer
+  #12 = Utf8               (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+  #13 = Methodref          #8.#14         // net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+  #14 = NameAndType        #11:#15        // setRenderLayer:(Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+  #15 = Utf8               (Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+  #16 = Methodref          #17.#18        // net/minecraft/client/renderer/blockentity/BlockEntityRenderers.register:(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+  #17 = Class              #19            // net/minecraft/client/renderer/blockentity/BlockEntityRenderers
+  #18 = NameAndType        #20:#21        // register:(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+  #19 = Utf8               net/minecraft/client/renderer/blockentity/BlockEntityRenderers
+  #20 = Utf8               register
+  #21 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+  #22 = Methodref          #23.#24        // net/minecraft/client/renderer/entity/EntityRenderers.register:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+  #23 = Class              #25            // net/minecraft/client/renderer/entity/EntityRenderers
+  #24 = NameAndType        #20:#26        // register:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+  #25 = Utf8               net/minecraft/client/renderer/entity/EntityRenderers
+  #26 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+  #27 = Methodref          #28.#29        // net/neoforged/neoforge/client/ClientHooks.registerLayerDefinition:(Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+  #28 = Class              #30            // net/neoforged/neoforge/client/ClientHooks
+  #29 = NameAndType        #31:#32        // registerLayerDefinition:(Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+  #30 = Utf8               net/neoforged/neoforge/client/ClientHooks
+  #31 = Utf8               registerLayerDefinition
+  #32 = Utf8               (Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+  #33 = Class              #34            // glitchcore/neoforge/mixin/impl/MixinRenderHelper
+  #34 = Utf8               glitchcore/neoforge/mixin/impl/MixinRenderHelper
+  #35 = Utf8               Code
+  #36 = Utf8               LineNumberTable
+  #37 = Utf8               LocalVariableTable
+  #38 = Utf8               this
+  #39 = Utf8               Lglitchcore/neoforge/mixin/impl/MixinRenderHelper;
+  #40 = Utf8               setRenderType
+  #41 = Utf8               block
+  #42 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #43 = Utf8               type
+  #44 = Utf8               Lnet/minecraft/client/renderer/RenderType;
+  #45 = Utf8               RuntimeVisibleAnnotations
+  #46 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #47 = Utf8               fluid
+  #48 = Utf8               Lnet/minecraft/world/level/material/Fluid;
+  #49 = Utf8               registerBlockEntityRenderer
+  #50 = Utf8               blockEntityType
+  #51 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntityType;
+  #52 = Utf8               blockEntityRendererProvider
+  #53 = Utf8               Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;
+  #54 = Utf8               LocalVariableTypeTable
+  #55 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntityType<+TT;>;
+  #56 = Utf8               Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider<TT;>;
+  #57 = Utf8               Signature
+  #58 = Utf8               <T:Lnet/minecraft/world/level/block/entity/BlockEntity;>(Lnet/minecraft/world/level/block/entity/BlockEntityType<+TT;>;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider<TT;>;)V
+  #59 = Utf8               registerEntityRenderer
+  #60 = Utf8               entityType
+  #61 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #62 = Utf8               entityRendererProvider
+  #63 = Utf8               Lnet/minecraft/client/renderer/entity/EntityRendererProvider;
+  #64 = Utf8               Lnet/minecraft/world/entity/EntityType<+TT;>;
+  #65 = Utf8               Lnet/minecraft/client/renderer/entity/EntityRendererProvider<TT;>;
+  #66 = Utf8               <T:Lnet/minecraft/world/entity/Entity;>(Lnet/minecraft/world/entity/EntityType<+TT;>;Lnet/minecraft/client/renderer/entity/EntityRendererProvider<TT;>;)V
+  #67 = Utf8               layerLocation
+  #68 = Utf8               Lnet/minecraft/client/model/geom/ModelLayerLocation;
+  #69 = Utf8               supplier
+  #70 = Utf8               Ljava/util/function/Supplier;
+  #71 = Utf8               Ljava/util/function/Supplier<Lnet/minecraft/client/model/geom/builders/LayerDefinition;>;
+  #72 = Utf8               (Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier<Lnet/minecraft/client/model/geom/builders/LayerDefinition;>;)V
+  #73 = Utf8               SourceFile
+  #74 = Utf8               MixinRenderHelper.java
+  #75 = Utf8               RuntimeInvisibleAnnotations
+  #76 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #77 = Utf8               value
+  #78 = Utf8               Lglitchcore/util/RenderHelper;
+  #79 = Utf8               remap
+  #80 = Integer            0
+{
+  public glitchcore.neoforge.mixin.impl.MixinRenderHelper();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lglitchcore/neoforge/mixin/impl/MixinRenderHelper;
+
+  public static void setRenderType(net.minecraft.world.level.block.Block, net.minecraft.client.renderer.RenderType);
+    descriptor: (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #7                  // Method net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/renderer/RenderType;)V
+         5: return
+      LineNumberTable:
+        line 34: 0
+        line 35: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 block   Lnet/minecraft/world/level/block/Block;
+            0       6     1  type   Lnet/minecraft/client/renderer/RenderType;
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public static void setRenderType(net.minecraft.world.level.material.Fluid, net.minecraft.client.renderer.RenderType);
+    descriptor: (Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #13                 // Method net/minecraft/client/renderer/ItemBlockRenderTypes.setRenderLayer:(Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/client/renderer/RenderType;)V
+         5: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 fluid   Lnet/minecraft/world/level/material/Fluid;
+            0       6     1  type   Lnet/minecraft/client/renderer/RenderType;
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public static <T extends net.minecraft.world.level.block.entity.BlockEntity> void registerBlockEntityRenderer(net.minecraft.world.level.block.entity.BlockEntityType<? extends T>, net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider<T>);
+    descriptor: (Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #16                 // Method net/minecraft/client/renderer/blockentity/BlockEntityRenderers.register:(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+         5: return
+      LineNumberTable:
+        line 46: 0
+        line 47: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 blockEntityType   Lnet/minecraft/world/level/block/entity/BlockEntityType;
+            0       6     1 blockEntityRendererProvider   Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 blockEntityType   Lnet/minecraft/world/level/block/entity/BlockEntityType<+TT;>;
+            0       6     1 blockEntityRendererProvider   Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider<TT;>;
+    Signature: #58                          // <T:Lnet/minecraft/world/level/block/entity/BlockEntity;>(Lnet/minecraft/world/level/block/entity/BlockEntityType<+TT;>;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider<TT;>;)V
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public static <T extends net.minecraft.world.entity.Entity> void registerEntityRenderer(net.minecraft.world.entity.EntityType<? extends T>, net.minecraft.client.renderer.entity.EntityRendererProvider<T>);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #22                 // Method net/minecraft/client/renderer/entity/EntityRenderers.register:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+         5: return
+      LineNumberTable:
+        line 52: 0
+        line 53: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 entityType   Lnet/minecraft/world/entity/EntityType;
+            0       6     1 entityRendererProvider   Lnet/minecraft/client/renderer/entity/EntityRendererProvider;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 entityType   Lnet/minecraft/world/entity/EntityType<+TT;>;
+            0       6     1 entityRendererProvider   Lnet/minecraft/client/renderer/entity/EntityRendererProvider<TT;>;
+    Signature: #66                          // <T:Lnet/minecraft/world/entity/Entity;>(Lnet/minecraft/world/entity/EntityType<+TT;>;Lnet/minecraft/client/renderer/entity/EntityRendererProvider<TT;>;)V
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public static void registerLayerDefinition(net.minecraft.client.model.geom.ModelLayerLocation, java.util.function.Supplier<net.minecraft.client.model.geom.builders.LayerDefinition>);
+    descriptor: (Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #27                 // Method net/neoforged/neoforge/client/ClientHooks.registerLayerDefinition:(Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+         5: return
+      LineNumberTable:
+        line 58: 0
+        line 59: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 layerLocation   Lnet/minecraft/client/model/geom/ModelLayerLocation;
+            0       6     1 supplier   Ljava/util/function/Supplier;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 supplier   Ljava/util/function/Supplier<Lnet/minecraft/client/model/geom/builders/LayerDefinition;>;
+    Signature: #72                          // (Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier<Lnet/minecraft/client/model/geom/builders/LayerDefinition;>;)V
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Overwrite
+}
+SourceFile: "MixinRenderHelper.java"
+RuntimeInvisibleAnnotations:
+  0: #76(#77=[c#78],#79=Z#80)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lglitchcore/util/RenderHelper;]
+      remap=false
+    )

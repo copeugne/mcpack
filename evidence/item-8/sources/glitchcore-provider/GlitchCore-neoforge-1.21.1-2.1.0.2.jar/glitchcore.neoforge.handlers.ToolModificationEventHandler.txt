@@ -1,0 +1,59 @@
+Compiled from "ToolModificationEventHandler.java"
+public class glitchcore.neoforge.handlers.ToolModificationEventHandler {
+  public static final com.google.common.collect.Multimap<net.minecraft.world.level.block.Block, com.mojang.datafixers.util.Pair<java.util.function.Predicate<net.minecraft.world.item.context.UseOnContext>, net.minecraft.world.level.block.state.BlockState>> tillables;
+
+  public glitchcore.neoforge.handlers.ToolModificationEventHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onToolModification(net.neoforged.neoforge.event.level.BlockEvent$BlockToolModificationEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/event/level/BlockEvent$BlockToolModificationEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+       4: astore_1
+       5: aload_0
+       6: invokevirtual #13                 // Method net/neoforged/neoforge/event/level/BlockEvent$BlockToolModificationEvent.getItemAbility:()Lnet/neoforged/neoforge/common/ItemAbility;
+       9: getstatic     #17                 // Field net/neoforged/neoforge/common/ItemAbilities.HOE_TILL:Lnet/neoforged/neoforge/common/ItemAbility;
+      12: if_acmpne     101
+      15: getstatic     #23                 // Field tillables:Lcom/google/common/collect/Multimap;
+      18: aload_1
+      19: invokevirtual #29                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      22: invokeinterface #35,  2           // InterfaceMethod com/google/common/collect/Multimap.containsKey:(Ljava/lang/Object;)Z
+      27: ifeq          101
+      30: getstatic     #23                 // Field tillables:Lcom/google/common/collect/Multimap;
+      33: aload_1
+      34: invokevirtual #29                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      37: invokeinterface #41,  2           // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      42: invokeinterface #45,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      47: astore_2
+      48: aload_2
+      49: invokeinterface #51,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      54: ifeq          101
+      57: aload_2
+      58: invokeinterface #57,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      63: checkcast     #61                 // class com/mojang/datafixers/util/Pair
+      66: astore_3
+      67: aload_3
+      68: invokevirtual #63                 // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      71: checkcast     #66                 // class java/util/function/Predicate
+      74: aload_0
+      75: invokevirtual #68                 // Method net/neoforged/neoforge/event/level/BlockEvent$BlockToolModificationEvent.getContext:()Lnet/minecraft/world/item/context/UseOnContext;
+      78: invokeinterface #72,  2           // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+      83: ifeq          98
+      86: aload_0
+      87: aload_3
+      88: invokevirtual #75                 // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      91: checkcast     #30                 // class net/minecraft/world/level/block/state/BlockState
+      94: invokevirtual #78                 // Method net/neoforged/neoforge/event/level/BlockEvent$BlockToolModificationEvent.setFinalState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+      97: return
+      98: goto          48
+     101: return
+
+  static {};
+    Code:
+       0: invokestatic  #82                 // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+       3: putstatic     #23                 // Field tillables:Lcom/google/common/collect/Multimap;
+       6: return
+}

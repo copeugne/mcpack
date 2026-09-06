@@ -1,0 +1,53 @@
+Compiled from "VillagerTradesEventHandler.java"
+public class glitchcore.neoforge.handlers.VillagerTradesEventHandler {
+  public glitchcore.neoforge.handlers.VillagerTradesEventHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onWandererTrades(net.neoforged.neoforge.event.village.WandererTradesEvent);
+    Code:
+       0: new           #7                  // class glitchcore/event/village/WandererTradesEvent
+       3: dup
+       4: invokespecial #9                  // Method glitchcore/event/village/WandererTradesEvent."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: invokestatic  #10                 // Method glitchcore/event/EventManager.fire:(Lglitchcore/event/Event;)V
+      12: aload_0
+      13: invokevirtual #16                 // Method net/neoforged/neoforge/event/village/WandererTradesEvent.getGenericTrades:()Ljava/util/List;
+      16: aload_1
+      17: invokevirtual #22                 // Method glitchcore/event/village/WandererTradesEvent.getGenericTrades:()Lcom/google/common/collect/ImmutableList;
+      20: invokeinterface #25,  2           // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      25: pop
+      26: aload_0
+      27: invokevirtual #31                 // Method net/neoforged/neoforge/event/village/WandererTradesEvent.getRareTrades:()Ljava/util/List;
+      30: aload_1
+      31: invokevirtual #34                 // Method glitchcore/event/village/WandererTradesEvent.getRareTrades:()Lcom/google/common/collect/ImmutableList;
+      34: invokeinterface #25,  2           // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      39: pop
+      40: return
+
+  public static void onVillagerTrades(net.neoforged.neoforge.event.village.VillagerTradesEvent);
+    Code:
+       0: iconst_1
+       1: istore_1
+       2: iload_1
+       3: iconst_5
+       4: if_icmpgt     41
+       7: new           #38                 // class glitchcore/event/village/VillagerTradesEvent
+      10: dup
+      11: aload_0
+      12: invokevirtual #40                 // Method net/neoforged/neoforge/event/village/VillagerTradesEvent.getType:()Lnet/minecraft/world/entity/npc/VillagerProfession;
+      15: iload_1
+      16: aload_0
+      17: invokevirtual #46                 // Method net/neoforged/neoforge/event/village/VillagerTradesEvent.getTrades:()Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      20: iload_1
+      21: invokeinterface #50,  2           // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.get:(I)Ljava/lang/Object;
+      26: checkcast     #26                 // class java/util/List
+      29: invokespecial #56                 // Method glitchcore/event/village/VillagerTradesEvent."<init>":(Lnet/minecraft/world/entity/npc/VillagerProfession;ILjava/util/List;)V
+      32: invokestatic  #10                 // Method glitchcore/event/EventManager.fire:(Lglitchcore/event/Event;)V
+      35: iinc          1, 1
+      38: goto          2
+      41: return
+}

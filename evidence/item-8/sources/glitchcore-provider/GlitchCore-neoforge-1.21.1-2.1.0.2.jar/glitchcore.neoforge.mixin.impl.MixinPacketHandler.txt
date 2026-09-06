@@ -1,0 +1,859 @@
+Classfile GlitchCore-neoforge-1.21.1-2.1.0.2.jar!/glitchcore/neoforge/mixin/impl/MixinPacketHandler.class
+  Last modified May 18, 2026; size 11085 bytes
+  SHA-256 checksum 495f18eec1c777e5c6ad767b8993d200fb4d90cf72a4e9a22c3cff5168e0bdff
+  Compiled from "MixinPacketHandler.java"
+public abstract class glitchcore.neoforge.mixin.impl.MixinPacketHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // glitchcore/neoforge/mixin/impl/MixinPacketHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 11, attributes: 5
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/util/HashMap
+    #8 = Utf8               java/util/HashMap
+    #9 = Methodref          #7.#3         // java/util/HashMap."<init>":()V
+   #10 = Fieldref           #11.#12       // glitchcore/neoforge/mixin/impl/MixinPacketHandler.ids:Ljava/util/Map;
+   #11 = Class              #13           // glitchcore/neoforge/mixin/impl/MixinPacketHandler
+   #12 = NameAndType        #14:#15       // ids:Ljava/util/Map;
+   #13 = Utf8               glitchcore/neoforge/mixin/impl/MixinPacketHandler
+   #14 = Utf8               ids
+   #15 = Utf8               Ljava/util/Map;
+   #16 = Class              #17           // net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type
+   #17 = Utf8               net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type
+   #18 = Methodref          #19.#20       // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+   #19 = Class              #21           // net/minecraft/resources/ResourceLocation
+   #20 = NameAndType        #22:#23       // toString:()Ljava/lang/String;
+   #21 = Utf8               net/minecraft/resources/ResourceLocation
+   #22 = Utf8               toString
+   #23 = Utf8               ()Ljava/lang/String;
+   #24 = Methodref          #19.#25       // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #25 = NameAndType        #26:#27       // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #26 = Utf8               parse
+   #27 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #28 = Methodref          #16.#29       // net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type."<init>":(Lnet/minecraft/resources/ResourceLocation;)V
+   #29 = NameAndType        #5:#30        // "<init>":(Lnet/minecraft/resources/ResourceLocation;)V
+   #30 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)V
+   #31 = Methodref          #11.#32       // glitchcore/neoforge/mixin/impl/MixinPacketHandler.getPacketDataType:(Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+   #32 = NameAndType        #33:#34       // getPacketDataType:(Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+   #33 = Utf8               getPacketDataType
+   #34 = Utf8               (Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+   #35 = InterfaceMethodref #36.#37       // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #36 = Class              #38           // java/util/Map
+   #37 = NameAndType        #39:#40       // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #38 = Utf8               java/util/Map
+   #39 = Utf8               put
+   #40 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #41 = Methodref          #19.#42       // net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+   #42 = NameAndType        #43:#23       // getNamespace:()Ljava/lang/String;
+   #43 = Utf8               getNamespace
+   #44 = Methodref          #45.#46       // net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+   #45 = Class              #47           // net/neoforged/fml/ModList
+   #46 = NameAndType        #48:#49       // get:()Lnet/neoforged/fml/ModList;
+   #47 = Utf8               net/neoforged/fml/ModList
+   #48 = Utf8               get
+   #49 = Utf8               ()Lnet/neoforged/fml/ModList;
+   #50 = Methodref          #45.#51       // net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+   #51 = NameAndType        #52:#53       // getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+   #52 = Utf8               getModContainerById
+   #53 = Utf8               (Ljava/lang/String;)Ljava/util/Optional;
+   #54 = InvokeDynamic      #0:#55        // #0:get:()Ljava/util/function/Supplier;
+   #55 = NameAndType        #48:#56       // get:()Ljava/util/function/Supplier;
+   #56 = Utf8               ()Ljava/util/function/Supplier;
+   #57 = Methodref          #58.#59       // java/util/Optional.orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #58 = Class              #60           // java/util/Optional
+   #59 = NameAndType        #61:#62       // orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #60 = Utf8               java/util/Optional
+   #61 = Utf8               orElseThrow
+   #62 = Utf8               (Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #63 = Class              #64           // net/neoforged/fml/ModContainer
+   #64 = Utf8               net/neoforged/fml/ModContainer
+   #65 = Class              #66           // glitchcore/neoforge/network/GCPayloadFactory
+   #66 = Utf8               glitchcore/neoforge/network/GCPayloadFactory
+   #67 = Methodref          #65.#68       // glitchcore/neoforge/network/GCPayloadFactory."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lglitchcore/network/CustomPacket;)V
+   #68 = NameAndType        #5:#69        // "<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lglitchcore/network/CustomPacket;)V
+   #69 = Utf8               (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lglitchcore/network/CustomPacket;)V
+   #70 = Methodref          #63.#71       // net/neoforged/fml/ModContainer.getEventBus:()Lnet/neoforged/bus/api/IEventBus;
+   #71 = NameAndType        #72:#73       // getEventBus:()Lnet/neoforged/bus/api/IEventBus;
+   #72 = Utf8               getEventBus
+   #73 = Utf8               ()Lnet/neoforged/bus/api/IEventBus;
+   #74 = InvokeDynamic      #1:#75        // #1:accept:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;)Ljava/util/function/Consumer;
+   #75 = NameAndType        #76:#77       // accept:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;)Ljava/util/function/Consumer;
+   #76 = Utf8               accept
+   #77 = Utf8               (Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;)Ljava/util/function/Consumer;
+   #78 = InterfaceMethodref #79.#80       // net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+   #79 = Class              #81           // net/neoforged/bus/api/IEventBus
+   #80 = NameAndType        #82:#83       // addListener:(Ljava/util/function/Consumer;)V
+   #81 = Utf8               net/neoforged/bus/api/IEventBus
+   #82 = Utf8               addListener
+   #83 = Utf8               (Ljava/util/function/Consumer;)V
+   #84 = Methodref          #85.#86       // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #85 = Class              #87           // java/util/Objects
+   #86 = NameAndType        #88:#89       // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+   #87 = Utf8               java/util/Objects
+   #88 = Utf8               requireNonNull
+   #89 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #90 = Methodref          #11.#91       // glitchcore/neoforge/mixin/impl/MixinPacketHandler.createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+   #91 = NameAndType        #92:#93       // createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+   #92 = Utf8               createPayload
+   #93 = Utf8               (Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+   #94 = Class              #95           // net/minecraft/network/protocol/common/custom/CustomPacketPayload
+   #95 = Utf8               net/minecraft/network/protocol/common/custom/CustomPacketPayload
+   #96 = Methodref          #97.#98       // net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #97 = Class              #99           // net/neoforged/neoforge/network/PacketDistributor
+   #98 = NameAndType        #100:#101     // sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #99 = Utf8               net/neoforged/neoforge/network/PacketDistributor
+  #100 = Utf8               sendToPlayer
+  #101 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #102 = Methodref          #97.#103      // net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #103 = NameAndType        #104:#105     // sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #104 = Utf8               sendToAllPlayers
+  #105 = Utf8               (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #106 = Fieldref           #107.#108     // glitchcore/neoforge/mixin/impl/MixinPacketHandler$1.$SwitchMap$net$minecraft$network$protocol$PacketFlow:[I
+  #107 = Class              #109          // glitchcore/neoforge/mixin/impl/MixinPacketHandler$1
+  #108 = NameAndType        #110:#111     // $SwitchMap$net$minecraft$network$protocol$PacketFlow:[I
+  #109 = Utf8               glitchcore/neoforge/mixin/impl/MixinPacketHandler$1
+  #110 = Utf8               $SwitchMap$net$minecraft$network$protocol$PacketFlow
+  #111 = Utf8               [I
+  #112 = Methodref          #113.#114     // net/minecraft/server/network/ServerConfigurationPacketListenerImpl.getConnection:()Lnet/minecraft/network/Connection;
+  #113 = Class              #115          // net/minecraft/server/network/ServerConfigurationPacketListenerImpl
+  #114 = NameAndType        #116:#117     // getConnection:()Lnet/minecraft/network/Connection;
+  #115 = Utf8               net/minecraft/server/network/ServerConfigurationPacketListenerImpl
+  #116 = Utf8               getConnection
+  #117 = Utf8               ()Lnet/minecraft/network/Connection;
+  #118 = Methodref          #119.#120     // net/minecraft/network/Connection.getSending:()Lnet/minecraft/network/protocol/PacketFlow;
+  #119 = Class              #121          // net/minecraft/network/Connection
+  #120 = NameAndType        #122:#123     // getSending:()Lnet/minecraft/network/protocol/PacketFlow;
+  #121 = Utf8               net/minecraft/network/Connection
+  #122 = Utf8               getSending
+  #123 = Utf8               ()Lnet/minecraft/network/protocol/PacketFlow;
+  #124 = Methodref          #125.#126     // net/minecraft/network/protocol/PacketFlow.ordinal:()I
+  #125 = Class              #127          // net/minecraft/network/protocol/PacketFlow
+  #126 = NameAndType        #128:#129     // ordinal:()I
+  #127 = Utf8               net/minecraft/network/protocol/PacketFlow
+  #128 = Utf8               ordinal
+  #129 = Utf8               ()I
+  #130 = Class              #131          // net/minecraft/network/protocol/common/ClientboundCustomPayloadPacket
+  #131 = Utf8               net/minecraft/network/protocol/common/ClientboundCustomPayloadPacket
+  #132 = Methodref          #130.#133     // net/minecraft/network/protocol/common/ClientboundCustomPayloadPacket."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #133 = NameAndType        #5:#134       // "<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #134 = Utf8               (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #135 = Methodref          #119.#136     // net/minecraft/network/Connection.send:(Lnet/minecraft/network/protocol/Packet;)V
+  #136 = NameAndType        #137:#138     // send:(Lnet/minecraft/network/protocol/Packet;)V
+  #137 = Utf8               send
+  #138 = Utf8               (Lnet/minecraft/network/protocol/Packet;)V
+  #139 = Class              #140          // net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket
+  #140 = Utf8               net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket
+  #141 = Methodref          #139.#133     // net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #142 = Methodref          #97.#143      // net/neoforged/neoforge/network/PacketDistributor.sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #143 = NameAndType        #144:#105     // sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #144 = Utf8               sendToServer
+  #145 = InterfaceMethodref #36.#146      // java/util/Map.containsKey:(Ljava/lang/Object;)Z
+  #146 = NameAndType        #147:#148     // containsKey:(Ljava/lang/Object;)Z
+  #147 = Utf8               containsKey
+  #148 = Utf8               (Ljava/lang/Object;)Z
+  #149 = Methodref          #150.#151     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #150 = Class              #152          // java/lang/String
+  #151 = NameAndType        #153:#154     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #152 = Utf8               java/lang/String
+  #153 = Utf8               valueOf
+  #154 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #155 = InvokeDynamic      #2:#156       // #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #156 = NameAndType        #157:#158     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #157 = Utf8               makeConcatWithConstants
+  #158 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #159 = Methodref          #160.#161     // com/google/common/base/Preconditions.checkState:(ZLjava/lang/Object;)V
+  #160 = Class              #162          // com/google/common/base/Preconditions
+  #161 = NameAndType        #163:#164     // checkState:(ZLjava/lang/Object;)V
+  #162 = Utf8               com/google/common/base/Preconditions
+  #163 = Utf8               checkState
+  #164 = Utf8               (ZLjava/lang/Object;)V
+  #165 = InterfaceMethodref #36.#166      // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #166 = NameAndType        #48:#89       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #167 = Methodref          #65.#168      // glitchcore/neoforge/network/GCPayloadFactory.createPayload:()Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+  #168 = NameAndType        #92:#169      // createPayload:()Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+  #169 = Utf8               ()Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+  #170 = Class              #171          // glitchcore/network/CustomPacket
+  #171 = Utf8               glitchcore/network/CustomPacket
+  #172 = InterfaceMethodref #170.#173     // glitchcore/network/CustomPacket.getClass:()Ljava/lang/Class;
+  #173 = NameAndType        #174:#175     // getClass:()Ljava/lang/Class;
+  #174 = Utf8               getClass
+  #175 = Utf8               ()Ljava/lang/Class;
+  #176 = Methodref          #177.#178     // net/jodah/typetools/TypeResolver.resolveRawArgument:(Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Class;
+  #177 = Class              #179          // net/jodah/typetools/TypeResolver
+  #178 = NameAndType        #180:#181     // resolveRawArgument:(Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Class;
+  #179 = Utf8               net/jodah/typetools/TypeResolver
+  #180 = Utf8               resolveRawArgument
+  #181 = Utf8               (Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Class;
+  #182 = Class              #183          // net/jodah/typetools/TypeResolver$Unknown
+  #183 = Utf8               net/jodah/typetools/TypeResolver$Unknown
+  #184 = Class              #185          // java/lang/IllegalStateException
+  #185 = Utf8               java/lang/IllegalStateException
+  #186 = InvokeDynamic      #3:#156       // #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #187 = Methodref          #184.#188     // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+  #188 = NameAndType        #5:#189       // "<init>":(Ljava/lang/String;)V
+  #189 = Utf8               (Ljava/lang/String;)V
+  #190 = Methodref          #191.#192     // net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #191 = Class              #193          // net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent
+  #192 = NameAndType        #194:#195     // registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #193 = Utf8               net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent
+  #194 = Utf8               registrar
+  #195 = Utf8               (Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #196 = Methodref          #197.#198     // net/neoforged/neoforge/network/registration/PayloadRegistrar.versioned:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #197 = Class              #199          // net/neoforged/neoforge/network/registration/PayloadRegistrar
+  #198 = NameAndType        #200:#195     // versioned:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #199 = Utf8               net/neoforged/neoforge/network/registration/PayloadRegistrar
+  #200 = Utf8               versioned
+  #201 = Fieldref           #107.#202     // glitchcore/neoforge/mixin/impl/MixinPacketHandler$1.$SwitchMap$glitchcore$network$CustomPacket$Phase:[I
+  #202 = NameAndType        #203:#111     // $SwitchMap$glitchcore$network$CustomPacket$Phase:[I
+  #203 = Utf8               $SwitchMap$glitchcore$network$CustomPacket$Phase
+  #204 = InterfaceMethodref #170.#205     // glitchcore/network/CustomPacket.getPhase:()Lglitchcore/network/CustomPacket$Phase;
+  #205 = NameAndType        #206:#207     // getPhase:()Lglitchcore/network/CustomPacket$Phase;
+  #206 = Utf8               getPhase
+  #207 = Utf8               ()Lglitchcore/network/CustomPacket$Phase;
+  #208 = Methodref          #209.#126     // glitchcore/network/CustomPacket$Phase.ordinal:()I
+  #209 = Class              #210          // glitchcore/network/CustomPacket$Phase
+  #210 = Utf8               glitchcore/network/CustomPacket$Phase
+  #211 = Methodref          #65.#212      // glitchcore/neoforge/network/GCPayloadFactory.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+  #212 = NameAndType        #213:#214     // type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+  #213 = Utf8               type
+  #214 = Utf8               ()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+  #215 = Methodref          #65.#216      // glitchcore/neoforge/network/GCPayloadFactory.getCodec:()Lnet/minecraft/network/codec/StreamCodec;
+  #216 = NameAndType        #217:#218     // getCodec:()Lnet/minecraft/network/codec/StreamCodec;
+  #217 = Utf8               getCodec
+  #218 = Utf8               ()Lnet/minecraft/network/codec/StreamCodec;
+  #219 = Methodref          #65.#220      // glitchcore/neoforge/network/GCPayloadFactory.getPayloadHandler:()Lglitchcore/neoforge/network/GCPayloadFactory$PayloadHandler;
+  #220 = NameAndType        #221:#222     // getPayloadHandler:()Lglitchcore/neoforge/network/GCPayloadFactory$PayloadHandler;
+  #221 = Utf8               getPayloadHandler
+  #222 = Utf8               ()Lglitchcore/neoforge/network/GCPayloadFactory$PayloadHandler;
+  #223 = Methodref          #197.#224     // net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #224 = NameAndType        #225:#226     // playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #225 = Utf8               playBidirectional
+  #226 = Utf8               (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #227 = Methodref          #197.#228     // net/neoforged/neoforge/network/registration/PayloadRegistrar.configurationBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #228 = NameAndType        #229:#226     // configurationBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #229 = Utf8               configurationBidirectional
+  #230 = Class              #231          // java/lang/UnsupportedOperationException
+  #231 = Utf8               java/lang/UnsupportedOperationException
+  #232 = InvokeDynamic      #4:#156       // #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #233 = Methodref          #230.#188     // java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+  #234 = Class              #235          // java/lang/IllegalArgumentException
+  #235 = Utf8               java/lang/IllegalArgumentException
+  #236 = String             #237          // Channel namespace does not belong to a mod
+  #237 = Utf8               Channel namespace does not belong to a mod
+  #238 = Methodref          #234.#188     // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+  #239 = Utf8               channelName
+  #240 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #241 = Utf8               RuntimeVisibleAnnotations
+  #242 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #243 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #244 = Utf8               Signature
+  #245 = Utf8               Ljava/util/Map<Ljava/lang/Class<*>;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type<*>;>;
+  #246 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #247 = Utf8               Code
+  #248 = Utf8               LineNumberTable
+  #249 = Utf8               LocalVariableTable
+  #250 = Utf8               this
+  #251 = Utf8               Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+  #252 = Utf8               register
+  #253 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lglitchcore/network/CustomPacket;)V
+  #254 = Utf8               name
+  #255 = Utf8               packet
+  #256 = Utf8               Lglitchcore/network/CustomPacket;
+  #257 = Utf8               Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+  #258 = Utf8               modid
+  #259 = Utf8               Ljava/lang/String;
+  #260 = Utf8               container
+  #261 = Utf8               Lnet/neoforged/fml/ModContainer;
+  #262 = Utf8               factory
+  #263 = Utf8               Lglitchcore/neoforge/network/GCPayloadFactory;
+  #264 = Utf8               LocalVariableTypeTable
+  #265 = Utf8               Lglitchcore/network/CustomPacket<TT;>;
+  #266 = Utf8               Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type<Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;>;
+  #267 = Utf8               Lglitchcore/neoforge/network/GCPayloadFactory<TT;>;
+  #268 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(Lnet/minecraft/resources/ResourceLocation;Lglitchcore/network/CustomPacket<TT;>;)V
+  #269 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #270 = Utf8               (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/level/ServerPlayer;)V
+  #271 = Utf8               data
+  #272 = Utf8               player
+  #273 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #274 = Utf8               TT;
+  #275 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/level/ServerPlayer;)V
+  #276 = Utf8               sendToAll
+  #277 = Utf8               (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/MinecraftServer;)V
+  #278 = Utf8               server
+  #279 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #280 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/MinecraftServer;)V
+  #281 = Utf8               sendToHandler
+  #282 = Utf8               (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;)V
+  #283 = Utf8               handler
+  #284 = Utf8               Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;
+  #285 = Utf8               payload
+  #286 = Utf8               Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+  #287 = Utf8               Lglitchcore/neoforge/network/GCPayloadFactory<+Lglitchcore/network/CustomPacket<*>;>.PacketPayload;
+  #288 = Utf8               StackMapTable
+  #289 = Class              #290          // glitchcore/neoforge/network/GCPayloadFactory$PacketPayload
+  #290 = Utf8               glitchcore/neoforge/network/GCPayloadFactory$PacketPayload
+  #291 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;)V
+  #292 = Utf8               (Lglitchcore/network/CustomPacket;)V
+  #293 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;)V
+  #294 = Utf8               init
+  #295 = Utf8               dataType
+  #296 = Utf8               Ljava/lang/Class;
+  #297 = Utf8               Lglitchcore/network/CustomPacket<*>;
+  #298 = Utf8               Ljava/lang/Class<*>;
+  #299 = Utf8               (Lglitchcore/network/CustomPacket<*>;)Lglitchcore/neoforge/network/GCPayloadFactory<*>.PacketPayload;
+  #300 = Utf8               Ljava/lang/Class<TT;>;
+  #301 = Class              #302          // java/lang/Class
+  #302 = Utf8               java/lang/Class
+  #303 = Utf8               <T::Lglitchcore/network/CustomPacket<TT;>;>(Lglitchcore/network/CustomPacket<TT;>;)Ljava/lang/Class<*>;
+  #304 = Utf8               lambda$register$1
+  #305 = Utf8               (Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #306 = Utf8               event
+  #307 = Utf8               Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;
+  #308 = Utf8               Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+  #309 = Utf8               lambda$register$0
+  #310 = Utf8               ()Ljava/lang/IllegalArgumentException;
+  #311 = Utf8               SourceFile
+  #312 = Utf8               MixinPacketHandler.java
+  #313 = Utf8               RuntimeInvisibleAnnotations
+  #314 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #315 = Utf8               value
+  #316 = Utf8               Lglitchcore/network/PacketHandler;
+  #317 = Utf8               remap
+  #318 = Integer            0
+  #319 = Utf8               NestMembers
+  #320 = Utf8               BootstrapMethods
+  #321 = MethodType         #322          //  ()Ljava/lang/Object;
+  #322 = Utf8               ()Ljava/lang/Object;
+  #323 = MethodHandle       6:#324        // REF_invokeStatic glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$0:()Ljava/lang/IllegalArgumentException;
+  #324 = Methodref          #11.#325      // glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$0:()Ljava/lang/IllegalArgumentException;
+  #325 = NameAndType        #309:#310     // lambda$register$0:()Ljava/lang/IllegalArgumentException;
+  #326 = MethodType         #310          //  ()Ljava/lang/IllegalArgumentException;
+  #327 = MethodType         #328          //  (Ljava/lang/Object;)V
+  #328 = Utf8               (Ljava/lang/Object;)V
+  #329 = MethodHandle       6:#330        // REF_invokeStatic glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$1:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #330 = Methodref          #11.#331      // glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$1:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #331 = NameAndType        #304:#305     // lambda$register$1:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #332 = MethodType         #333          //  (Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #333 = Utf8               (Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  #334 = String             #335          // Unregistered packet data type \u0001
+  #335 = Utf8               Unregistered packet data type \u0001
+  #336 = String             #337          // Failed to resolve packet data type: \u0001
+  #337 = Utf8               Failed to resolve packet data type: \u0001
+  #338 = String             #339          // Attempted to register packet with unsupported phase \u0001
+  #339 = Utf8               Attempted to register packet with unsupported phase \u0001
+  #340 = MethodHandle       6:#341        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #341 = Methodref          #342.#343     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #342 = Class              #344          // java/lang/invoke/LambdaMetafactory
+  #343 = NameAndType        #345:#346     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #344 = Utf8               java/lang/invoke/LambdaMetafactory
+  #345 = Utf8               metafactory
+  #346 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #347 = MethodHandle       6:#348        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #348 = Methodref          #349.#350     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #349 = Class              #351          // java/lang/invoke/StringConcatFactory
+  #350 = NameAndType        #157:#352     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #351 = Utf8               java/lang/invoke/StringConcatFactory
+  #352 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #353 = Utf8               InnerClasses
+  #354 = Utf8               Type
+  #355 = Utf8               PacketPayload
+  #356 = Utf8               Unknown
+  #357 = Utf8               Phase
+  #358 = Class              #359          // glitchcore/neoforge/network/GCPayloadFactory$PayloadHandler
+  #359 = Utf8               glitchcore/neoforge/network/GCPayloadFactory$PayloadHandler
+  #360 = Utf8               PayloadHandler
+  #361 = Class              #362          // java/lang/invoke/MethodHandles$Lookup
+  #362 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #363 = Class              #364          // java/lang/invoke/MethodHandles
+  #364 = Utf8               java/lang/invoke/MethodHandles
+  #365 = Utf8               Lookup
+{
+  private net.minecraft.resources.ResourceLocation channelName;
+    descriptor: Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #242()
+        org.spongepowered.asm.mixin.Shadow
+      1: #243()
+        org.spongepowered.asm.mixin.Final
+
+  private java.util.Map<java.lang.Class<?>, net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type<?>> ids;
+    descriptor: Ljava/util/Map;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #245                         // Ljava/util/Map<Ljava/lang/Class<*>;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type<*>;>;
+    RuntimeVisibleAnnotations:
+      0: #246()
+        org.spongepowered.asm.mixin.Unique
+
+  public glitchcore.neoforge.mixin.impl.MixinPacketHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/HashMap
+         8: dup
+         9: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+        12: putfield      #10                 // Field ids:Ljava/util/Map;
+        15: return
+      LineNumberTable:
+        line 27: 0
+        line 33: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+
+  public <T extends glitchcore.network.CustomPacket<T>> void register(net.minecraft.resources.ResourceLocation, glitchcore.network.CustomPacket<T>);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Lglitchcore/network/CustomPacket;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=7, args_size=3
+         0: new           #16                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type
+         3: dup
+         4: aload_1
+         5: invokevirtual #18                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+         8: invokestatic  #24                 // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        11: invokespecial #28                 // Method net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type."<init>":(Lnet/minecraft/resources/ResourceLocation;)V
+        14: astore_3
+        15: aload_0
+        16: getfield      #10                 // Field ids:Ljava/util/Map;
+        19: aload_2
+        20: invokestatic  #31                 // Method getPacketDataType:(Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+        23: aload_3
+        24: invokeinterface #35,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        29: pop
+        30: aload_1
+        31: invokevirtual #41                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+        34: astore        4
+        36: invokestatic  #44                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+        39: aload         4
+        41: invokevirtual #50                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+        44: invokedynamic #54,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+        49: invokevirtual #57                 // Method java/util/Optional.orElseThrow:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+        52: checkcast     #63                 // class net/neoforged/fml/ModContainer
+        55: astore        5
+        57: new           #65                 // class glitchcore/neoforge/network/GCPayloadFactory
+        60: dup
+        61: aload_3
+        62: aload_2
+        63: invokespecial #67                 // Method glitchcore/neoforge/network/GCPayloadFactory."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lglitchcore/network/CustomPacket;)V
+        66: astore        6
+        68: aload         5
+        70: invokevirtual #70                 // Method net/neoforged/fml/ModContainer.getEventBus:()Lnet/neoforged/bus/api/IEventBus;
+        73: aload         4
+        75: aload_2
+        76: aload         6
+        78: invokedynamic #74,  0             // InvokeDynamic #1:accept:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;)Ljava/util/function/Consumer;
+        83: invokeinterface #78,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+        88: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 15
+        line 44: 30
+        line 45: 36
+        line 46: 57
+        line 48: 68
+        line 59: 88
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      89     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      89     1  name   Lnet/minecraft/resources/ResourceLocation;
+            0      89     2 packet   Lglitchcore/network/CustomPacket;
+           15      74     3  type   Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+           36      53     4 modid   Ljava/lang/String;
+           57      32     5 container   Lnet/neoforged/fml/ModContainer;
+           68      21     6 factory   Lglitchcore/neoforge/network/GCPayloadFactory;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      89     2 packet   Lglitchcore/network/CustomPacket<TT;>;
+           15      74     3  type   Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type<Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;>;
+           68      21     6 factory   Lglitchcore/neoforge/network/GCPayloadFactory<TT;>;
+    Signature: #268                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(Lnet/minecraft/resources/ResourceLocation;Lglitchcore/network/CustomPacket<TT;>;)V
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public <T extends glitchcore.network.CustomPacket<T>> void sendToPlayer(T, net.minecraft.server.level.ServerPlayer);
+    descriptor: (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/level/ServerPlayer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_2
+         1: invokestatic  #84                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+         4: pop
+         5: aload_2
+         6: aload_0
+         7: aload_1
+         8: invokevirtual #90                 // Method createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+        11: iconst_0
+        12: anewarray     #94                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+        15: invokestatic  #96                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        18: return
+      LineNumberTable:
+        line 64: 0
+        line 65: 5
+        line 66: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      19     1  data   Lglitchcore/network/CustomPacket;
+            0      19     2 player   Lnet/minecraft/server/level/ServerPlayer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      19     1  data   TT;
+    Signature: #275                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/level/ServerPlayer;)V
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public <T extends glitchcore.network.CustomPacket<T>> void sendToAll(T, net.minecraft.server.MinecraftServer);
+    descriptor: (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/MinecraftServer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #90                 // Method createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+         5: iconst_0
+         6: anewarray     #94                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+         9: invokestatic  #102                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        12: return
+      LineNumberTable:
+        line 71: 0
+        line 72: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      13     1 packet   Lglitchcore/network/CustomPacket;
+            0      13     2 server   Lnet/minecraft/server/MinecraftServer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      13     1 packet   TT;
+    Signature: #280                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/MinecraftServer;)V
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public <T extends glitchcore.network.CustomPacket<T>> void sendToHandler(T, net.minecraft.server.network.ServerConfigurationPacketListenerImpl);
+    descriptor: (Lglitchcore/network/CustomPacket;Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #90                 // Method createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+         5: astore_3
+         6: getstatic     #106                // Field glitchcore/neoforge/mixin/impl/MixinPacketHandler$1.$SwitchMap$net$minecraft$network$protocol$PacketFlow:[I
+         9: aload_2
+        10: invokevirtual #112                // Method net/minecraft/server/network/ServerConfigurationPacketListenerImpl.getConnection:()Lnet/minecraft/network/Connection;
+        13: invokevirtual #118                // Method net/minecraft/network/Connection.getSending:()Lnet/minecraft/network/protocol/PacketFlow;
+        16: invokevirtual #124                // Method net/minecraft/network/protocol/PacketFlow.ordinal:()I
+        19: iaload
+        20: lookupswitch  { // 2
+                       1: 48
+                       2: 66
+                 default: 81
+            }
+        48: aload_2
+        49: invokevirtual #112                // Method net/minecraft/server/network/ServerConfigurationPacketListenerImpl.getConnection:()Lnet/minecraft/network/Connection;
+        52: new           #130                // class net/minecraft/network/protocol/common/ClientboundCustomPayloadPacket
+        55: dup
+        56: aload_3
+        57: invokespecial #132                // Method net/minecraft/network/protocol/common/ClientboundCustomPayloadPacket."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        60: invokevirtual #135                // Method net/minecraft/network/Connection.send:(Lnet/minecraft/network/protocol/Packet;)V
+        63: goto          81
+        66: aload_2
+        67: invokevirtual #112                // Method net/minecraft/server/network/ServerConfigurationPacketListenerImpl.getConnection:()Lnet/minecraft/network/Connection;
+        70: new           #139                // class net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket
+        73: dup
+        74: aload_3
+        75: invokespecial #141                // Method net/minecraft/network/protocol/common/ServerboundCustomPayloadPacket."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        78: invokevirtual #135                // Method net/minecraft/network/Connection.send:(Lnet/minecraft/network/protocol/Packet;)V
+        81: return
+      LineNumberTable:
+        line 77: 0
+        line 78: 6
+        line 79: 48
+        line 80: 66
+        line 82: 81
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      82     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      82     1 packet   Lglitchcore/network/CustomPacket;
+            0      82     2 handler   Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;
+            6      76     3 payload   Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      82     1 packet   TT;
+            6      76     3 payload   Lglitchcore/neoforge/network/GCPayloadFactory<+Lglitchcore/network/CustomPacket<*>;>.PacketPayload;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 48
+          locals = [ class glitchcore/neoforge/network/GCPayloadFactory$PacketPayload ]
+        frame_type = 17 /* same */
+        frame_type = 14 /* same */
+    Signature: #291                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;Lnet/minecraft/server/network/ServerConfigurationPacketListenerImpl;)V
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  public <T extends glitchcore.network.CustomPacket<T>> void sendToServer(T);
+    descriptor: (Lglitchcore/network/CustomPacket;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #90                 // Method createPayload:(Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+         5: iconst_0
+         6: anewarray     #94                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+         9: invokestatic  #142                // Method net/neoforged/neoforge/network/PacketDistributor.sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        12: return
+      LineNumberTable:
+        line 87: 0
+        line 88: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      13     1  data   Lglitchcore/network/CustomPacket;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      13     1  data   TT;
+    Signature: #293                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(TT;)V
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  private void init();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=0, locals=1, args_size=1
+         0: return
+      LineNumberTable:
+        line 91: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+    RuntimeVisibleAnnotations:
+      0: #269()
+        org.spongepowered.asm.mixin.Overwrite
+
+  private glitchcore.neoforge.network.GCPayloadFactory<?>.PacketPayload createPayload(glitchcore.network.CustomPacket<?>);
+    descriptor: (Lglitchcore/network/CustomPacket;)Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=3, args_size=2
+         0: aload_1
+         1: invokestatic  #31                 // Method getPacketDataType:(Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+         4: astore_2
+         5: aload_0
+         6: getfield      #10                 // Field ids:Ljava/util/Map;
+         9: aload_2
+        10: invokeinterface #145,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+        15: aload_2
+        16: invokestatic  #149                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        19: invokedynamic #155,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        24: invokestatic  #159                // Method com/google/common/base/Preconditions.checkState:(ZLjava/lang/Object;)V
+        27: new           #65                 // class glitchcore/neoforge/network/GCPayloadFactory
+        30: dup
+        31: aload_0
+        32: getfield      #10                 // Field ids:Ljava/util/Map;
+        35: aload_2
+        36: invokeinterface #165,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        41: checkcast     #16                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type
+        44: aload_1
+        45: invokespecial #67                 // Method glitchcore/neoforge/network/GCPayloadFactory."<init>":(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lglitchcore/network/CustomPacket;)V
+        48: invokevirtual #167                // Method glitchcore/neoforge/network/GCPayloadFactory.createPayload:()Lglitchcore/neoforge/network/GCPayloadFactory$PacketPayload;
+        51: areturn
+      LineNumberTable:
+        line 95: 0
+        line 96: 5
+        line 97: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      52     0  this   Lglitchcore/neoforge/mixin/impl/MixinPacketHandler;
+            0      52     1 packet   Lglitchcore/network/CustomPacket;
+            5      47     2 dataType   Ljava/lang/Class;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      52     1 packet   Lglitchcore/network/CustomPacket<*>;
+            5      47     2 dataType   Ljava/lang/Class<*>;
+    Signature: #299                         // (Lglitchcore/network/CustomPacket<*>;)Lglitchcore/neoforge/network/GCPayloadFactory<*>.PacketPayload;
+
+  private static <T extends glitchcore.network.CustomPacket<T>> java.lang.Class<?> getPacketDataType(glitchcore.network.CustomPacket<T>);
+    descriptor: (Lglitchcore/network/CustomPacket;)Ljava/lang/Class;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=3, locals=2, args_size=1
+         0: ldc           #170                // class glitchcore/network/CustomPacket
+         2: aload_0
+         3: invokeinterface #172,  1          // InterfaceMethod glitchcore/network/CustomPacket.getClass:()Ljava/lang/Class;
+         8: invokestatic  #176                // Method net/jodah/typetools/TypeResolver.resolveRawArgument:(Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Class;
+        11: astore_1
+        12: aload_1
+        13: ldc           #182                // class net/jodah/typetools/TypeResolver$Unknown
+        15: if_acmpne     35
+        18: new           #184                // class java/lang/IllegalStateException
+        21: dup
+        22: aload_0
+        23: invokestatic  #149                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        26: invokedynamic #186,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        31: invokespecial #187                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        34: athrow
+        35: aload_1
+        36: areturn
+      LineNumberTable:
+        line 102: 0
+        line 104: 12
+        line 106: 18
+        line 109: 35
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0 packet   Lglitchcore/network/CustomPacket;
+           12      25     1 dataType   Ljava/lang/Class;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0 packet   Lglitchcore/network/CustomPacket<TT;>;
+           12      25     1 dataType   Ljava/lang/Class<TT;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 35
+          locals = [ class java/lang/Class ]
+    Signature: #303                         // <T::Lglitchcore/network/CustomPacket<TT;>;>(Lglitchcore/network/CustomPacket<TT;>;)Ljava/lang/Class<*>;
+
+  private static void lambda$register$1(java.lang.String, glitchcore.network.CustomPacket, glitchcore.neoforge.network.GCPayloadFactory, net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    descriptor: (Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=5, args_size=4
+         0: aload_3
+         1: aload_0
+         2: invokevirtual #190                // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+         5: astore        4
+         7: aload         4
+         9: aload_0
+        10: invokevirtual #196                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.versioned:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+        13: pop
+        14: getstatic     #201                // Field glitchcore/neoforge/mixin/impl/MixinPacketHandler$1.$SwitchMap$glitchcore$network$CustomPacket$Phase:[I
+        17: aload_1
+        18: invokeinterface #204,  1          // InterfaceMethod glitchcore/network/CustomPacket.getPhase:()Lglitchcore/network/CustomPacket$Phase;
+        23: invokevirtual #208                // Method glitchcore/network/CustomPacket$Phase.ordinal:()I
+        26: iaload
+        27: lookupswitch  { // 2
+                       1: 52
+                       2: 73
+                 default: 94
+            }
+        52: aload         4
+        54: aload_2
+        55: invokevirtual #211                // Method glitchcore/neoforge/network/GCPayloadFactory.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+        58: aload_2
+        59: invokevirtual #215                // Method glitchcore/neoforge/network/GCPayloadFactory.getCodec:()Lnet/minecraft/network/codec/StreamCodec;
+        62: aload_2
+        63: invokevirtual #219                // Method glitchcore/neoforge/network/GCPayloadFactory.getPayloadHandler:()Lglitchcore/neoforge/network/GCPayloadFactory$PayloadHandler;
+        66: invokevirtual #223                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+        69: pop
+        70: goto          116
+        73: aload         4
+        75: aload_2
+        76: invokevirtual #211                // Method glitchcore/neoforge/network/GCPayloadFactory.type:()Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+        79: aload_2
+        80: invokevirtual #215                // Method glitchcore/neoforge/network/GCPayloadFactory.getCodec:()Lnet/minecraft/network/codec/StreamCodec;
+        83: aload_2
+        84: invokevirtual #219                // Method glitchcore/neoforge/network/GCPayloadFactory.getPayloadHandler:()Lglitchcore/neoforge/network/GCPayloadFactory$PayloadHandler;
+        87: invokevirtual #227                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.configurationBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+        90: pop
+        91: goto          116
+        94: new           #230                // class java/lang/UnsupportedOperationException
+        97: dup
+        98: aload_1
+        99: invokeinterface #204,  1          // InterfaceMethod glitchcore/network/CustomPacket.getPhase:()Lglitchcore/network/CustomPacket$Phase;
+       104: invokestatic  #149                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       107: invokedynamic #232,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       112: invokespecial #233                // Method java/lang/UnsupportedOperationException."<init>":(Ljava/lang/String;)V
+       115: athrow
+       116: return
+      LineNumberTable:
+        line 49: 0
+        line 50: 7
+        line 52: 14
+        line 54: 52
+        line 55: 73
+        line 56: 94
+        line 58: 116
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     117     0 modid   Ljava/lang/String;
+            0     117     1 packet   Lglitchcore/network/CustomPacket;
+            0     117     2 factory   Lglitchcore/neoforge/network/GCPayloadFactory;
+            0     117     3 event   Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;
+            7     110     4 registrar   Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 52
+          locals = [ class net/neoforged/neoforge/network/registration/PayloadRegistrar ]
+        frame_type = 20 /* same */
+        frame_type = 20 /* same */
+        frame_type = 21 /* same */
+
+  private static java.lang.IllegalArgumentException lambda$register$0();
+    descriptor: ()Ljava/lang/IllegalArgumentException;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=0, args_size=0
+         0: new           #234                // class java/lang/IllegalArgumentException
+         3: dup
+         4: ldc           #236                // String Channel namespace does not belong to a mod
+         6: invokespecial #238                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+         9: areturn
+      LineNumberTable:
+        line 45: 0
+}
+SourceFile: "MixinPacketHandler.java"
+RuntimeInvisibleAnnotations:
+  0: #314(#315=[c#316],#317=Z#318)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lglitchcore/network/PacketHandler;]
+      remap=false
+    )
+NestMembers:
+  glitchcore/neoforge/mixin/impl/MixinPacketHandler$1
+BootstrapMethods:
+  0: #340 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #321 ()Ljava/lang/Object;
+      #323 REF_invokeStatic glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$0:()Ljava/lang/IllegalArgumentException;
+      #326 ()Ljava/lang/IllegalArgumentException;
+  1: #340 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #327 (Ljava/lang/Object;)V
+      #329 REF_invokeStatic glitchcore/neoforge/mixin/impl/MixinPacketHandler.lambda$register$1:(Ljava/lang/String;Lglitchcore/network/CustomPacket;Lglitchcore/neoforge/network/GCPayloadFactory;Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+      #332 (Lnet/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent;)V
+  2: #347 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #334 Unregistered packet data type \u0001
+  3: #347 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #336 Failed to resolve packet data type: \u0001
+  4: #347 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #338 Attempted to register packet with unsupported phase \u0001
+InnerClasses:
+  public static final #354= #16 of #94;   // Type=class net/minecraft/network/protocol/common/custom/CustomPacketPayload$Type of class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+  public #355= #289 of #65;               // PacketPayload=class glitchcore/neoforge/network/GCPayloadFactory$PacketPayload of class glitchcore/neoforge/network/GCPayloadFactory
+  static #107;                            // class glitchcore/neoforge/mixin/impl/MixinPacketHandler$1
+  public static final #356= #182 of #177; // Unknown=class net/jodah/typetools/TypeResolver$Unknown of class net/jodah/typetools/TypeResolver
+  public static final #357= #209 of #170; // Phase=class glitchcore/network/CustomPacket$Phase of class glitchcore/network/CustomPacket
+  public #360= #358 of #65;               // PayloadHandler=class glitchcore/neoforge/network/GCPayloadFactory$PayloadHandler of class glitchcore/neoforge/network/GCPayloadFactory
+  public static final #365= #361 of #363; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
