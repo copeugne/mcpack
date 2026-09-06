@@ -6,6 +6,140 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric is fully resolved: all 43 module dispositions, 44 passing focused cases
+and scoped quality checks. Whole providers: 91 resolved, 45 open. No independent
+family added. Reuse these completed boundaries; do not continue generic Fabric
+helper inspection. Remaining scope is 24 code-reference providers, 21 providers
+unmatched by the existing generation searches, and canonical Moog grouping.
+The requested finite family list remains the immediate deliverable before
+attribute work. Entry checks should end once their concrete generation or
+component contribution is resolved. No new measurement system is required.
+
+
+Registry membership is resolved from 4bc3d16, e5a03ee and 7b86b55. Forty-three
+Fabric cases and scoped checks pass. Fabric: 42 resolved, one open (loader).
+The loader sources are delivered: service 1cb6fe0, bootstrap 4beaa6b and mod-list
+delegate 6a6fcc4. They propagate existing FML metadata into lookup containers;
+finish its complete payload binding, then close Fabric as one provider. No more
+generic startup helper tracing is needed for that membership question.
+
+
+Networking membership is resolved from existing source ad9fbe2. Forty-two
+focused cases and scoped checks pass. Fabric: 41 resolved, two open (registry
+sync and loader). Whole providers: 90 resolved, 46 open. No family change.
+The user again requires the finite family scope as the immediate deliverable.
+Do not continue tracing generic support helpers once their family contribution
+boundary is established. Resolve remaining providers and Moog grouping before
+resuming attributes. Registry initialization invokes DynamicRegistriesImpl's
+new-datapack-registry callback; loader bootstrap propagates the FML mod list.
+Their initial captures are local and still need durable delivery.
+
+
+Fabric transfer membership is resolved from 94eaafd. Forty-one focused cases
+and scoped checks pass. Fabric: 40 resolved, three open. Whole providers:
+90 resolved, 46 open. No new family. Remaining entry captures are delivered:
+networking ad9fbe2, registry sync 4bc3d16, loader 1cb6fe0. Networking has seventeen
+captured entry/hooks to interpret. Registry sync needs FabricRegistryInit;
+loader's language service needs FabricLoaderBootstrap. Reuse these captures.
+No runtime experiment or new measurement system is needed for these boundaries.
+
+
+Fabric interaction and item membership are resolved from existing entries plus
+5147b43 and 41d9c83 delegates. Forty focused cases and scoped checks pass.
+Fabric: 39 resolved, four open (networking, registry sync, transfer, loader).
+Whole providers: 90 resolved, 46 open. No family added. Continue those four
+module entries using the existing tools and bounded contribution checks. Do not
+repeat interaction callbacks or item enchantment/component internals. The family
+count still requires the full provider closure and canonical grouping decisions.
+
+
+Fabric object-builder membership is resolved from 0fa369a. Thirty-eight focused
+cases and scoped checks pass. Fabric: 37 resolved, six open. Whole providers:
+90 resolved, 46 open. No family added. Interaction capture e030cd8 calls the
+uncaptured InteractionEventsRouter.onInitialize. Item capture 4ddacfa has the
+uncaptured EnchantmentUtil loading delegate; other captured item hooks concern
+components, equipment, durability, enchantment acceptance and tooltips. Resolve
+those direct boundaries next. Do not repeat their 20 captured entry/hook classes.
+Remaining other Fabric modules: networking, registry sync, transfer and loader.
+
+
+Fabric resource-condition membership is resolved from 969f1bb and abcf742.
+It filters consumer resources and selects declared overlays; no independent
+family. All 37 focused cases and scoped checks pass. Fabric: 36 resolved, seven
+open. Whole providers: 90 resolved, 46 open. Remaining Fabric modules are events
+interaction, item API, networking, object builder, registry sync, transfer and
+forgified loader. Reuse the completed condition sources; effective conditions
+remain per-family eligibility work after the membership list is frozen.
+
+
+Fabric message, screen-handler and rendering membership are resolved. Sources:
+1e30004, c5ebd6e, 2e5d280. All 36 focused cases and scoped checks pass. Fabric:
+35 resolved, eight open. Whole providers: 90 resolved, 46 open. No family added.
+Resource-condition entry and ten hooks are delivered at 969f1bb but remain open
+for semantic reconciliation. Inspect that existing capture next; do not repeat
+message, screen or client rendering internals. Then continue the other named
+modules/providers and canonical grouping before detailed attributes.
+
+
+Fabric data attachment membership is resolved. Source e6aa022 exposes the
+registration callback; it consumes caller attachment types from an initially
+empty map. Existing entry and transfer captures are reused. All 33 focused
+cases and scoped checks pass. Fabric: 32 resolved, 11 open. Whole providers:
+90 resolved, 46 open. No family added. Continue the remaining named Fabric
+modules and providers, then canonical grouping. Do not repeat attachment
+capture or inspect unrelated serialization internals.
+
+
+Fabric content registries and data generation membership are resolved using
+2cbd452, e5c769a and 36951e9. Thirty-two focused cases and scoped checks pass.
+Fabric: 31 resolved, 12 open. Whole providers: 90 resolved, 46 open. No new family.
+Data attachment initializer db84f92 is delivered and copies existing holder data;
+AttachmentModImpl registration callback is the next unresolved boundary. Its
+existing a17da36 entry source is nonverbose and does not show that invokedynamic
+method target. Resolve the callback, then bind the complete payload (20 classes,
+one client hook, one en_us translation, no access transformer). Reuse delivered
+entry and transfer sources. Continue the named provider queue and grouping work.
+
+
+Fabric item-group membership is resolved using source 07cd09b. Thirty focused
+cases and scoped checks pass; no family added. Fabric: 29 resolved, 14 open.
+Whole providers: 90 resolved, 46 open. Three further entry captures are delivered:
+content registries 2cbd452, data attachment a17da36, data generation 36951e9.
+Next inspect their captured contribution roles and bind full payloads in the
+existing test. Data attachment also calls AttachmentEntrypoint.onInitialize,
+not yet captured. Reuse these sources; do not recapture their 33 entry/hook
+classes. Canonical family count remains open pending provider and grouping work.
+
+
+Fabric command and lifecycle membership is resolved. Initializer sources are
+703f0ac and 353d68f, supplementing existing entry captures. All 29 focused cases
+and scoped checks pass, including the lifecycle server-only hook. Fabric now
+has 28 resolved modules and 15 open. Whole providers remain 90 resolved and
+46 open; no family added. The remaining provider index consists of one packaged
+candidate provider (Fabric), 24 code-reference providers and 21 unmatched-search
+providers. These lanes are triage, not semantic absence proof. Close the named
+membership queue and outstanding grouping decisions before detailed attributes.
+Do not repeat the completed command/lifecycle source paths.
+
+
+Fabric entity-event membership is resolved, source 9402ecf. Twenty-seven Fabric
+cases and scoped checks pass. Fabric now has 26 resolved, 17 open modules; whole
+providers stay 90 resolved, 46 open. Command source 0224278 and lifecycle source
+4de41d1 are delivered but remain open at exactly two server initializers:
+org/sinytra/fabric/command_api/FabricCommandApiV2.onInitialize and
+net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.onInitialize.
+Capture those direct consumers next using the existing extractor, then finish
+their bindings. Do not repeat the 21 delivered entry/hook classes. Initial
+argument-parser rejection is recorded; archive selections are fixed at a2c1e65.
+
+Fabric game-rule, loot v2, loot v3 and recipe module membership is resolved.
+Parked initializer sources are delivered at 0f9b272; existing entry captures
+and full payload bindings are reused. Twenty-six focused cases and scoped
+checks pass. Fabric has 25 resolved, 18 open modules; overall providers stay
+90 resolved, 46 open. No family added. Continue remaining Fabric entry roles
+and other provider closures alongside Moog design decisions. Do not repeat
+these loot/recipe/game-rule paths or collect another measurement system.
+
 Integrated Villages canonical grouping is settled: one settlement family with
 twelve preserved design/root variants, consistent with CTOV. Full definitions,
 placement differences and missing components are retained. The Mossy Mounds

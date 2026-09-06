@@ -1,0 +1,351 @@
+Compiled from "TransferApiNeoCompat.java"
+public class org.sinytra.fabric.transfer_api.TransferApiNeoCompat {
+  private static final java.util.Map<net.fabricmc.fabric.api.transfer.v1.storage.Storage<?>, java.util.function.Supplier<?>> CAPS;
+
+  public static final java.lang.ThreadLocal<java.lang.Boolean> COMPUTING_CAPABILITY_LOCK;
+
+  public org.sinytra.fabric.transfer_api.TransferApiNeoCompat();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static void onAttachBlockEntityCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+    Code:
+       0: getstatic     #7                  // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: invokeinterface #13,  1           // InterfaceMethod net/minecraft/core/DefaultedRegistry.iterator:()Ljava/util/Iterator;
+       8: astore_1
+       9: aload_1
+      10: invokeinterface #19,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          51
+      18: aload_1
+      19: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #29                 // class net/minecraft/world/level/block/Block
+      27: astore_2
+      28: aload_0
+      29: getstatic     #31                 // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      32: invokedynamic #36,  0             // InvokeDynamic #0:getCapability:()Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+      37: iconst_1
+      38: anewarray     #29                 // class net/minecraft/world/level/block/Block
+      41: dup
+      42: iconst_0
+      43: aload_2
+      44: aastore
+      45: invokevirtual #40                 // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+      48: goto          9
+      51: getstatic     #46                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK_ENTITY_TYPE:Lnet/minecraft/core/Registry;
+      54: invokeinterface #50,  1           // InterfaceMethod net/minecraft/core/Registry.iterator:()Ljava/util/Iterator;
+      59: astore_1
+      60: aload_1
+      61: invokeinterface #19,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      66: ifeq          95
+      69: aload_1
+      70: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      75: checkcast     #53                 // class net/minecraft/world/level/block/entity/BlockEntityType
+      78: astore_2
+      79: aload_0
+      80: getstatic     #55                 // Field net/neoforged/neoforge/capabilities/Capabilities$FluidHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      83: aload_2
+      84: invokedynamic #58,  0             // InvokeDynamic #1:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+      89: invokevirtual #61                 // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlockEntity:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+      92: goto          60
+      95: return
+
+  public static void registerTransferApiFluidNeoBridge();
+    Code:
+       0: getstatic     #65                 // Field net/fabricmc/fabric/api/transfer/v1/fluid/FluidStorage.SIDED:Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup;
+       3: invokedynamic #71,  0             // InvokeDynamic #2:find:()Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;
+       8: invokeinterface #75,  2           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup.registerFallback:(Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;)V
+      13: getstatic     #81                 // Field net/fabricmc/fabric/api/transfer/v1/fluid/FluidStorage.ITEM:Lnet/fabricmc/fabric/api/lookup/v1/item/ItemApiLookup;
+      16: invokedynamic #85,  0             // InvokeDynamic #3:find:()Lnet/fabricmc/fabric/api/lookup/v1/item/ItemApiLookup$ItemApiProvider;
+      21: invokeinterface #88,  2           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/item/ItemApiLookup.registerFallback:(Lnet/fabricmc/fabric/api/lookup/v1/item/ItemApiLookup$ItemApiProvider;)V
+      26: return
+
+  public static void registerTransferApiItemNeoBridge();
+    Code:
+       0: getstatic     #93                 // Field net/fabricmc/fabric/api/transfer/v1/item/ItemStorage.SIDED:Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup;
+       3: invokedynamic #96,  0             // InvokeDynamic #4:find:()Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;
+       8: invokeinterface #75,  2           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup.registerFallback:(Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;)V
+      13: return
+
+  public static net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<net.fabricmc.fabric.api.transfer.v1.storage.Storage<net.fabricmc.fabric.api.transfer.v1.item.ItemVariant>, net.minecraft.core.Direction> wrapProviderSafely(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider<net.fabricmc.fabric.api.transfer.v1.storage.Storage<net.fabricmc.fabric.api.transfer.v1.item.ItemVariant>, net.minecraft.core.Direction>);
+    Code:
+       0: aload_0
+       1: invokedynamic #97,  0             // InvokeDynamic #5:find:(Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;)Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider;
+       6: areturn
+
+  private static net.fabricmc.fabric.api.transfer.v1.storage.Storage lambda$wrapProviderSafely$10(net.fabricmc.fabric.api.lookup.v1.block.BlockApiLookup$BlockApiProvider, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       3: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       6: checkcast     #111                // class java/lang/Boolean
+       9: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      12: ifeq          17
+      15: aconst_null
+      16: areturn
+      17: aload_0
+      18: aload_1
+      19: aload_2
+      20: aload_3
+      21: aload         4
+      23: aload         5
+      25: invokeinterface #116,  6          // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup$BlockApiProvider.find:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;)Ljava/lang/Object;
+      30: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      33: areturn
+
+  private static net.fabricmc.fabric.api.transfer.v1.storage.Storage lambda$registerTransferApiItemNeoBridge$9(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: aload_3
+       1: ifnull        77
+       4: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       7: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+      10: checkcast     #111                // class java/lang/Boolean
+      13: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      16: ifne          77
+      19: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      22: iconst_1
+      23: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      26: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      29: aload_0
+      30: getstatic     #31                 // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      33: aload_1
+      34: aload_2
+      35: aload_3
+      36: aload         4
+      38: invokevirtual #131                // Method net/minecraft/world/level/Level.getCapability:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;)Ljava/lang/Object;
+      41: checkcast     #136                // class net/neoforged/neoforge/items/IItemHandler
+      44: invokestatic  #138                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+      47: invokedynamic #144,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      52: invokevirtual #148                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      55: aconst_null
+      56: invokevirtual #152                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      59: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      62: astore        5
+      64: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      67: iconst_0
+      68: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      71: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      74: aload         5
+      76: areturn
+      77: aconst_null
+      78: areturn
+
+  private static net.fabricmc.fabric.api.transfer.v1.storage.Storage lambda$registerTransferApiFluidNeoBridge$8(net.minecraft.world.item.ItemStack, net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext);
+    Code:
+       0: aload_0
+       1: ifnull        70
+       4: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       7: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+      10: checkcast     #111                // class java/lang/Boolean
+      13: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      16: ifne          70
+      19: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      22: iconst_1
+      23: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      26: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      29: aload_0
+      30: getstatic     #156                // Field net/neoforged/neoforge/capabilities/Capabilities$FluidHandler.ITEM:Lnet/neoforged/neoforge/capabilities/ItemCapability;
+      33: invokevirtual #159                // Method net/minecraft/world/item/ItemStack.getCapability:(Lnet/neoforged/neoforge/capabilities/ItemCapability;)Ljava/lang/Object;
+      36: checkcast     #164                // class net/neoforged/neoforge/fluids/capability/IFluidHandlerItem
+      39: invokestatic  #138                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+      42: invokedynamic #166,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      47: invokevirtual #148                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      50: aconst_null
+      51: invokevirtual #152                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      54: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      57: astore_2
+      58: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      61: iconst_0
+      62: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      65: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      68: aload_2
+      69: areturn
+      70: aconst_null
+      71: areturn
+
+  private static net.fabricmc.fabric.api.transfer.v1.storage.Storage lambda$registerTransferApiFluidNeoBridge$7(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: aload_3
+       1: ifnull        77
+       4: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       7: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+      10: checkcast     #111                // class java/lang/Boolean
+      13: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      16: ifne          77
+      19: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      22: iconst_1
+      23: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      26: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      29: aload_0
+      30: getstatic     #55                 // Field net/neoforged/neoforge/capabilities/Capabilities$FluidHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      33: aload_1
+      34: aload_2
+      35: aload_3
+      36: aload         4
+      38: invokevirtual #131                // Method net/minecraft/world/level/Level.getCapability:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;)Ljava/lang/Object;
+      41: checkcast     #167                // class net/neoforged/neoforge/fluids/capability/IFluidHandler
+      44: invokestatic  #138                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+      47: invokedynamic #169,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+      52: invokevirtual #148                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      55: aconst_null
+      56: invokevirtual #152                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      59: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      62: astore        5
+      64: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      67: iconst_0
+      68: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      71: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      74: aload         5
+      76: areturn
+      77: aconst_null
+      78: areturn
+
+  private static net.neoforged.neoforge.fluids.capability.IFluidHandler lambda$onAttachBlockEntityCapabilities$6(net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       3: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       6: checkcast     #111                // class java/lang/Boolean
+       9: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      12: ifne          101
+      15: aload_0
+      16: invokevirtual #170                // Method net/minecraft/world/level/block/entity/BlockEntity.hasLevel:()Z
+      19: ifeq          101
+      22: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      25: iconst_1
+      26: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      29: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      32: getstatic     #65                 // Field net/fabricmc/fabric/api/transfer/v1/fluid/FluidStorage.SIDED:Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup;
+      35: aload_0
+      36: invokevirtual #175                // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+      39: aload_0
+      40: invokevirtual #179                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+      43: aload_0
+      44: invokevirtual #183                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      47: aload_0
+      48: aload_1
+      49: invokeinterface #187,  6          // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup.find:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;)Ljava/lang/Object;
+      54: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      57: astore_2
+      58: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      61: iconst_0
+      62: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      65: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      68: aload_2
+      69: ifnull        101
+      72: getstatic     #188                // Field CAPS:Ljava/util/Map;
+      75: aload_2
+      76: aload_2
+      77: invokedynamic #192,  0            // InvokeDynamic #9:apply:(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)Ljava/util/function/Function;
+      82: invokeinterface #195,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      87: checkcast     #201                // class java/util/function/Supplier
+      90: astore_3
+      91: aload_3
+      92: invokeinterface #203,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      97: checkcast     #167                // class net/neoforged/neoforge/fluids/capability/IFluidHandler
+     100: areturn
+     101: aconst_null
+     102: areturn
+
+  private static java.util.function.Supplier lambda$onAttachBlockEntityCapabilities$5(net.fabricmc.fabric.api.transfer.v1.storage.Storage, net.fabricmc.fabric.api.transfer.v1.storage.Storage);
+    Code:
+       0: aload_0
+       1: invokedynamic #204,  0            // InvokeDynamic #10:get:(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)Lcom/google/common/base/Supplier;
+       6: invokestatic  #207                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+       9: areturn
+
+  private static org.sinytra.fabric.transfer_api.compat.FluidStorageFluidHandler lambda$onAttachBlockEntityCapabilities$4(net.fabricmc.fabric.api.transfer.v1.storage.Storage);
+    Code:
+       0: new           #213                // class org/sinytra/fabric/transfer_api/compat/FluidStorageFluidHandler
+       3: dup
+       4: aload_0
+       5: invokespecial #215                // Method org/sinytra/fabric/transfer_api/compat/FluidStorageFluidHandler."<init>":(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)V
+       8: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$onAttachBlockEntityCapabilities$3(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+       3: invokevirtual #106                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       6: checkcast     #111                // class java/lang/Boolean
+       9: invokevirtual #113                // Method java/lang/Boolean.booleanValue:()Z
+      12: ifne          103
+      15: aload_3
+      16: ifnull        26
+      19: aload_3
+      20: invokevirtual #170                // Method net/minecraft/world/level/block/entity/BlockEntity.hasLevel:()Z
+      23: ifeq          103
+      26: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      29: iconst_1
+      30: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      33: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      36: getstatic     #93                 // Field net/fabricmc/fabric/api/transfer/v1/item/ItemStorage.SIDED:Lnet/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup;
+      39: aload_0
+      40: aload_1
+      41: aload_2
+      42: aload_3
+      43: aload         4
+      45: invokeinterface #187,  6          // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/block/BlockApiLookup.find:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;Ljava/lang/Object;)Ljava/lang/Object;
+      50: checkcast     #121                // class net/fabricmc/fabric/api/transfer/v1/storage/Storage
+      53: astore        5
+      55: getstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      58: iconst_0
+      59: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      62: invokevirtual #127                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      65: aload         5
+      67: ifnull        103
+      70: getstatic     #188                // Field CAPS:Ljava/util/Map;
+      73: aload         5
+      75: aload         5
+      77: invokedynamic #218,  0            // InvokeDynamic #11:apply:(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)Ljava/util/function/Function;
+      82: invokeinterface #195,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      87: checkcast     #201                // class java/util/function/Supplier
+      90: astore        6
+      92: aload         6
+      94: invokeinterface #203,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      99: checkcast     #136                // class net/neoforged/neoforge/items/IItemHandler
+     102: areturn
+     103: aconst_null
+     104: areturn
+
+  private static java.util.function.Supplier lambda$onAttachBlockEntityCapabilities$2(net.fabricmc.fabric.api.transfer.v1.storage.Storage, net.fabricmc.fabric.api.transfer.v1.storage.Storage);
+    Code:
+       0: aload_0
+       1: invokedynamic #219,  0            // InvokeDynamic #12:get:(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)Lcom/google/common/base/Supplier;
+       6: invokestatic  #207                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+       9: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$onAttachBlockEntityCapabilities$1(net.fabricmc.fabric.api.transfer.v1.storage.Storage);
+    Code:
+       0: aload_0
+       1: instanceof    #220                // class net/fabricmc/fabric/api/transfer/v1/storage/SlottedStorage
+       4: ifeq          23
+       7: aload_0
+       8: checkcast     #220                // class net/fabricmc/fabric/api/transfer/v1/storage/SlottedStorage
+      11: astore_1
+      12: new           #222                // class org/sinytra/fabric/transfer_api/compat/SlottedItemStorageItemHandler
+      15: dup
+      16: aload_1
+      17: invokespecial #224                // Method org/sinytra/fabric/transfer_api/compat/SlottedItemStorageItemHandler."<init>":(Lnet/fabricmc/fabric/api/transfer/v1/storage/SlottedStorage;)V
+      20: goto          31
+      23: new           #227                // class org/sinytra/fabric/transfer_api/compat/ItemStorageItemHandler
+      26: dup
+      27: aload_0
+      28: invokespecial #229                // Method org/sinytra/fabric/transfer_api/compat/ItemStorageItemHandler."<init>":(Lnet/fabricmc/fabric/api/transfer/v1/storage/Storage;)V
+      31: areturn
+
+  private static java.lang.Boolean lambda$static$0();
+    Code:
+       0: iconst_0
+       1: invokestatic  #123                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       4: areturn
+
+  static {};
+    Code:
+       0: new           #230                // class java/util/HashMap
+       3: dup
+       4: invokespecial #232                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #188                // Field CAPS:Ljava/util/Map;
+      10: invokedynamic #233,  0            // InvokeDynamic #13:get:()Ljava/util/function/Supplier;
+      15: invokestatic  #236                // Method java/lang/ThreadLocal.withInitial:(Ljava/util/function/Supplier;)Ljava/lang/ThreadLocal;
+      18: putstatic     #100                // Field COMPUTING_CAPABILITY_LOCK:Ljava/lang/ThreadLocal;
+      21: return
+}

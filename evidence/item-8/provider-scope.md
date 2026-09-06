@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 90 of 136. The exact queue below has 46 open rows.
+Supported provider dispositions: 91 of 136. The exact queue below has 45 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -659,7 +659,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
-| `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | All 43 nested modules, preserved sources and test_fabric_provider_scope.py | RESOLVED: Consumer APIs, biome modifiers, conventional tags and test-only template; all module contribution roles resolved below. No independent family. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
@@ -5767,42 +5767,42 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-command-api-v2-2.2.28+36d727be19.jar` | RESOLVED: Entry and selector hook 0224278, initializer 703f0ac. Caller-supplied command/argument registration and selector flags; no independent family. |
+| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | RESOLVED: Caller content properties, tools, brewing, fuel, composting and gift data. Sources 2cbd452 and e5c769a; no independent family. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
-| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | RESOLVED: Caller attachment-type registration and transfer of existing data. Sources a17da36, db84f92 and e6aa022; no independent family. |
+| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | RESOLVED: Empty initializer and data-output hooks for consumer pack generation. Source 36951e9; no independent family. |
+| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | RESOLVED: Existing-entity event and elytra/sleep callbacks; no independent family. See entity-event disposition below. |
+| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | RESOLVED: Existing interaction callbacks and cancelled-break state synchronization; sources e030cd8 and 5147b43. No independent family. |
+| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
-| `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-item-api-v1-11.2.0+0c57911319.jar` | RESOLVED: Existing item/component and enchantment modification support; sources 4ddacfa and 41d9c83. No independent family. |
+| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | RESOLVED: Empty initializer, creative-menu modification callbacks and client UI resources. Source 07cd09b; no independent family. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | RESOLVED: Entry and seven common/server hooks 4de41d1, initializer 353d68f. Existing lifecycle callbacks and loaded-chunk bookkeeping; no independent family. |
+| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
+| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
+| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | RESOLVED: Empty initializer and chat callbacks; source 1e30004. No independent family. |
 | `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | RESOLVED: Packet transport, negotiation and existing connection/entity callbacks; source ad9fbe2. No independent family. |
+| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | RESOLVED: Empty initializer and supplied object/type support. Source 0fa369a; no independent family. |
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | RESOLVED: Ingredient serializer registration and NeoForge ingredient-wrapper codecs; no independent family. See final loot/recipe/rule disposition below. |
+| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | RESOLVED: Caller registry registration and existing-registry callbacks; sources 4bc3d16, e5a03ee and 7b86b55. No independent family. |
 | `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | RESOLVED: Client-guarded initialization and fifteen client-only hooks; source 2e5d280. No independent family. |
+| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | RESOLVED: Consumer resource filtering and declared overlay selection. Sources 969f1bb and abcf742; no independent family. |
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
 | `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | RESOLVED: Empty initializer and menu-opening support; source c5ebd6e. No independent family. |
 | `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | RESOLVED: Existing inventory/fluid capability adapters and transactional container hooks. Source 94eaafd; no independent family. |
 | `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
-| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | RESOLVED: Loader service and existing FML metadata adaptation; sources 1cb6fe0, 4beaa6b and 6a6fcc4. No independent family. |
 
 The transitive-access-wideners module has exactly five files: manifest, lowcodefml
 metadata, access transformer, icon and nesting metadata. There are no class,
@@ -6317,3 +6317,354 @@ cmp evidence/raw/item8/inventory-cave-urn-membership-r1.json evidence/item-8/inv
 Eight focused cases and scoped checks pass. The initial lint pass flagged the
 expanded single component-chain test's statement count. A local PLR0915 waiver
 keeps the related artifact join together without introducing a test helper.
+
+
+## Fabric loot, recipe and game-rule membership resolved, 2026-09-06
+
+Four existing module rows are closed using entry captures from 568d72c and
+initializer source 0f9b272 (extractor fa3226d). No additional source capture or
+runtime experiment was needed. The two parked initializer manifests and outputs
+match their existing independent r1 reproductions exactly.
+
+Game-rule API has an empty generated entry, five common rule-map/category/
+command mixins and three client rule-editing hooks. Loot v2 has two legacy
+builder-interface hooks; its initializer forwards v3 replace/modify/all-loaded
+events to v2 consumers. Loot v3 has an empty entry and six provenance, reload,
+builder and accessor hooks operating on consumer-supplied loot. Recipe API has
+two ingredient mixins and two initializers registering five ingredient
+serializers and the NeoForge ingredient wrapper. These are support roles with
+no independent structure contribution. Consumer-specific loot effects remain
+required family-attribute inputs, not new families of this library.
+
+The existing test binds every declared common hook and sole annotated loader,
+all three initializer classes, exact archive/class/disassembly identities and
+complete payload partitions. Class counts are 27, 14, 17 and 27 respectively.
+Nonclass payloads are the exact metadata, icons, mixin files and applicable
+access transformers. Recipe's declared relative mixin names contain dots; the
+existing package/name join now resolves these to class paths. No new validator
+or generalized helper was added.
+
+Fabric now has 25 resolved and 18 open modules out of 43. Whole-provider coverage
+remains 90 resolved, 46 open; no family was added or removed in this increment.
+The queue above is updated in place. Twenty-six focused cases and scoped Ruff
+and Basedpyright pass:
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+
+## Fabric entity-event membership resolved, 2026-09-06
+
+Source 9402ecf (extractor a2c1e65) binds the empty generated loader, annotated
+EntityEventHooks and all nine declared common mixins. They forward existing
+entity damage/death/combat/conversion, player respawn/join/leave, dimension
+changes, sleeping and elytra decisions to consumer events. Their bed position/
+state and flight changes concern existing entities. No independent structure
+contribution is introduced. Consumer behavior remains attributable separately.
+
+The module's complete payload is 47 classes and five metadata/icon/mixin files,
+with no client/server-only mixin file, plugin, data resource or nested archive.
+The existing test binds both annotated classes, all nine common hooks and every
+archive/class/disassembly hash. Independent r1 reproduction matches exactly.
+Twenty-seven Fabric cases and scoped Ruff/Basedpyright pass using the existing
+commands above. Fabric now has 26 resolved and 17 open modules; overall providers
+remain 90 resolved and 46 open. No family count changes in this increment.
+
+Command source 0224278 and lifecycle source 4de41d1 are also delivered and
+independently reproduced, but their modules remain open. The exact next calls
+are org/sinytra/fabric/command_api/FabricCommandApiV2.onInitialize and
+net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.onInitialize.
+Reuse their existing selector, seven lifecycle hooks and guarded client-entry
+findings. Do not repeat collection of the 21 captured classes.
+
+Initial extraction stopped at argument parsing because the nested archive
+allowlist was incomplete; a2c1e65 fixes the exact three archive selections and
+hash bindings. No failed capture was represented as accepted source evidence.
+No runtime experiment or measurement system was added.
+
+### Fabric command and lifecycle membership resolved
+
+Sources 703f0ac and 353d68f complete the two named initializer boundaries.
+Command registration consumes caller-supplied argument maps, initially empty,
+and forwards command registration callbacks. The existing selector hook manages
+caller-defined flags. Lifecycle initialization forwards events for existing
+servers, worlds, chunks, entities and tags. CHUNK_GENERATE reports a new chunk;
+it does not create it. Unload processing enumerates existing loaded objects.
+WorldMixin maintains the loaded-chunk set. Neither module adds a family.
+
+The existing test binds both source manifests to exact nested archive/class
+bytes, accounts for all 16 command and 73 lifecycle classes and all metadata,
+and includes the lifecycle server-only WorldChunkMixin. Separate client hook
+counts are one and five; client initialization is guarded. Independent source
+reproduction is recorded in each source README. Validation:
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All 29 cases and scoped checks pass. Fabric: 28 resolved modules, 15 open.
+Whole providers: 90 resolved, 46 open. No family-list change. Continue the
+remaining named module and provider roles, then outstanding canonical grouping;
+do not repeat these completed initializer paths or resume detailed attributes.
+
+### Fabric item-group membership resolved
+
+Source 07cd09b binds the empty generated initializer and ItemGroupMixin.
+The latter forwards consumer callbacks for creative-tab display and search
+collections. The complete payload comprises fifteen classes, ordinary loader
+metadata, an access transformer, common and client mixin declarations, an icon,
+29 translations and the creative-menu button texture. The sole automatic entry
+is captured; the sole common hook and sole client hook are accounted for.
+These contributions introduce no generated family.
+
+All 30 cases in tests/item8/test_fabric_provider_scope.py pass. Scoped Ruff and
+Basedpyright pass after correcting an initial literal-list lint finding. Reuse
+the validation commands above. Fabric now has 29 resolved modules and 14 open;
+whole providers remain 90 resolved and 46 open. No family-list change.
+
+Sources 2cbd452 (content registries, sixteen classes), a17da36 (data attachment,
+six classes) and 36951e9 (data generation, eleven classes) are also delivered.
+Their manifests and every disassembly reproduce byte for byte with commands in
+the respective READMEs. Their membership rows stay open pending contribution
+roles and payload bindings. Data attachment specifically calls the uncaptured
+AttachmentEntrypoint.onInitialize. Do not repeat these delivered entry captures.
+
+### Fabric content registries and data generation membership resolved
+
+Content registry source 2cbd452 has an empty generated initializer, automatic
+fuel and hoe-tool subscribers and thirteen common hooks. These expose or adjust
+existing tool transformations, villager food/gift collections, brewing recipes,
+fire properties, waxing/oxidation maps and pathfinding types. Fuel and tilling
+operate on caller registrations and existing item/block interactions. The generic
+BaseRegistryMixin delegate is bounded by source e5c769a: only compostability and
+raid-hero gift lookups are modified. Neither branch generates a site.
+
+Data-generation source 36951e9 has an empty initializer and ten common hooks.
+They adapt data output paths, JSON key order, consumer model generation and
+namespace filtering, loot-provider access and recipe output identifiers. These
+are pack-authoring services with no independent world-generation entry. The
+remaining implementation types are the associated output/provider APIs.
+
+The existing source-binding test accounts for all 39 content-registry classes
+and 53 data-generation classes, exact automatic entries, declared hooks and
+complete metadata/resource sets. Both archives have an access transformer and
+no client-only hook file or generation data payload. All 32 focused Fabric cases,
+scoped Ruff and Basedpyright pass using the commands above. Fabric now has 31
+resolved modules and 12 open. Whole providers remain 90 resolved and 46 open.
+No family-list change and no new measurement system.
+
+Attachment initializer source db84f92 reproduces exactly and copies existing
+attachment values on respawn, dimension change and conversion. Its registration
+callback in AttachmentModImpl remains unresolved; the module stays open. Reuse
+the existing entry and initializer captures when resolving that callback.
+
+### Fabric data attachment membership resolved
+
+Source e6aa022 resolves AttachmentModImpl's invokedynamic callback to
+AttachmentRegistryImpl.registerNeoTypes. It registers entries from an initially
+empty map. Public registration takes caller-supplied IDs and attachment types,
+either deferred or directly in NeoForge ATTACHMENT_TYPES. Type translation,
+serialization access and transfer operate on existing attachment holders.
+Source db84f92 binds transfer on respawn, dimension changes and mob conversion.
+No default site or independent world-generation route is introduced.
+
+The older nonverbose source remains preserved. The new verbose source is needed
+to expose the previously unresolved callback target, not a new evidence system.
+Both manifests reproduce independently with commands in their READMEs. The
+existing test binds all three captures, all twenty classes, both automatic
+entries, four common access hooks, one client hook and the complete resource
+set including one translation. The client initializer is guarded.
+
+All 33 focused Fabric cases, scoped Ruff and Basedpyright pass. An initial test
+complexity failure was corrected by using the existing source table for multiple
+captures and the existing resource set for the translation. No helper or new
+validator was introduced. Fabric: 32 resolved modules, 11 open. Whole providers:
+90 resolved, 46 open. No family-list change. Continue remaining named modules
+and provider membership; do not reopen attachment internals without a concrete
+contradiction or resume detailed family attributes before membership is frozen.
+
+### Fabric message, screen handler and rendering membership resolved
+
+Sources 1e30004 and c5ebd6e preserve empty message/screen-handler initializers
+and both common hooks per module. Message hooks decorate chat and forward
+allow/notification callbacks for chat, game and command messages. Screen hooks
+expose menu-close policy and encode supplied extended menu-opening data. Neither
+provides a generated site. Source 2e5d280 shows rendering initialization guarded
+by Dist.isClient; all fifteen declared rendering hooks are client-only.
+
+The existing tests bind the exact archives, class/disassembly identities, full
+payloads and automatic entries: message has 32 classes and two client hooks;
+screen handler has nine classes and an access transformer; rendering has 73
+classes and fifteen client hooks. Other resources are exact loader metadata,
+icons and hook declarations. There is no generation-data payload. All 36 focused
+Fabric cases, scoped Ruff and Basedpyright pass using the commands above.
+Fabric: 35 resolved modules, eight open. Whole providers: 90 resolved, 46 open.
+No family-list change.
+
+Resource-condition source 969f1bb is delivered with independent byte-identical
+reproduction. Its initializer and ten data-loading hooks still require semantic
+reconciliation. Keep that module open; the other three dispositions do not prove
+resource-condition behavior. Reuse the delivered capture instead of recapturing.
+
+### Fabric resource-condition membership resolved
+
+Source 969f1bb binds the generated initializer and ten loading hooks. Source
+abcf742 resolves the initializer/evaluation and overlay delegates. Initialization
+registers nine predicate types. The loader hooks filter supplied JSON resources,
+retain registry/tag/feature context, and append consumer-declared overlays whose
+conditions pass. They do not contribute an authored layout or independent site.
+The module's remaining types are condition API/codecs, predicate implementations
+and overlay records. The full payload has 31 classes, an access transformer,
+loader metadata, one icon and the common mixin declaration, with no generation
+resources or additional executable entry. The existing test binds this payload,
+all automatic/common entries and both source manifests to the frozen archive.
+
+All 37 focused Fabric cases, scoped Ruff and Basedpyright pass using the commands
+above. Both delegate disassemblies independently reproduce byte for byte. No new
+measurement system was added. Effective consumer conditions remain part of each
+family's eligibility evidence; this membership disposition does not assert they
+pass. Fabric now has 36 resolved modules and seven open. Whole providers remain
+90 resolved and 46 open. No family-list change. Continue the remaining named
+module/provider checks and canonical grouping before detailed attributes.
+
+### Fabric object-builder membership resolved
+
+Source 0fa369a preserves the empty initializer and eleven common hooks. They
+expose block properties, extend supplied entity/block-entity builders and type
+collections, copy existing attribute maps, forward comparator calculations for
+existing minecarts, handle nullable saved-data fix types and suppress empty
+trade results. These hooks and the caller-facing builder APIs do not introduce
+an independent authored layout. The module contains no packaged generation data.
+
+The existing test binds all 44 classes, the sole automatic entry, eleven hooks,
+access transformer and exact metadata/icon payload. Its declared mixin filename
+is fabric-object-builder-v1.mixins.json, without the archive name's api segment;
+that exact difference is now accounted for in the existing path. All 38 focused
+Fabric cases and scoped Ruff/Basedpyright pass using the commands above.
+Fabric: 37 resolved modules, six open. Whole providers: 90 resolved, 46 open.
+No family-list change.
+
+Interaction source e030cd8 and item source 4ddacfa are delivered and independently
+reproduce byte for byte. They remain open at InteractionEventsRouter.onInitialize
+and the item RegistryLoaderMixin's EnchantmentUtil delegate respectively. Reuse
+their other entry/hook captures. These are named remaining calls, not completed
+provider dispositions or permission to audit unrelated gameplay internals.
+
+### Fabric interaction and item membership resolved
+
+Interaction source 5147b43 resolves the router called by e030cd8. Initialization
+registers block-attack and cancelled-break handlers. They forward existing block
+interactions and resend existing block states to the player. The other captured
+hooks forward player/entity/block use and attack, break and advancement events.
+The guarded client initializer and three client hooks do not add server content.
+
+Item source 41d9c83 resolves the loading delegate in 4ddacfa. It copies a supplied
+enchantment, invokes its modification callback and rebuilds the same entry, with
+source classification for vanilla, mod and data-pack inputs. Other captured
+hooks support components, equipment slots, durability, recipe remainders,
+enchantment acceptance and tooltips. The generated initializer is empty. These
+modules supply no independent authored site or packaged generation resources.
+
+The existing test binds complete payloads of 36 interaction and 43 item classes,
+all automatic entries, two and thirteen common hooks respectively, and three and
+one client hooks. Both exact resource sets contain loader metadata, icons and
+mixin declarations. The delegate sources independently reproduce byte for byte.
+All 40 focused Fabric cases, scoped Ruff and Basedpyright pass using the commands
+above. Fabric now has 39 resolved modules and four open: networking, registry
+sync, transfer and loader. Whole providers remain 90 resolved and 46 open.
+No family-list change. Continue those four checks, then the other provider and
+canonical grouping decisions; do not repeat the resolved interaction/item paths.
+
+### Fabric transfer membership resolved
+
+Source 94eaafd preserves the empty generated initializer, automatic capability
+adapter and ten common hooks. The adapter registers item/fluid handlers against
+existing block and block-entity types and installs caller storage lookup
+fallbacks. Its recursion guard and wrapper constructors operate on supplied
+capabilities. Hooks adapt existing container mutation, furnace cooking state,
+jukebox items, cached item/fluid variants and fluid sounds. No independent
+world-generation or authored-site route is introduced. The remaining APIs and
+implementation classes provide storage views, transactions, variants and wrappers.
+
+The existing test binds all 120 classes, both automatic entries, all ten hooks
+and the complete metadata/icon/mixin payload. No generation data, client mixin
+file or access transformer exists in this module. All 41 focused Fabric cases
+and scoped Ruff/Basedpyright pass using the commands above. The source capture
+independently reproduces byte for byte. Fabric: 40 resolved, three open. Whole
+providers: 90 resolved, 46 open. No family-list change.
+
+The last three entry captures are also delivered and reproduced: networking
+ad9fbe2 (seventeen classes), registry sync 4bc3d16 (six classes), loader 1cb6fe0
+(one language-loader service). Networking requires interpretation of its existing
+hooks; registry sync calls FabricRegistryInit.onInitialize; the loader service
+installs FabricLoaderBootstrap. Those named boundaries remain open. Reuse the
+captures, then close the Fabric provider only after all three are resolved.
+
+### Fabric networking membership resolved
+
+Existing source ad9fbe2 preserves the empty generated initializer, automatic
+networking events and all fifteen common hooks. These implement packet codecs,
+channel negotiation, login/configuration task handling, connection lifecycle
+callbacks and existing-entity tracking callbacks. Event hooks forward player
+readiness and configuration events and conditionally expose the development
+debug command. They do not supply an authored site, placement rule or world
+generation registration. No further packet-helper tracing is needed for this
+family-membership boundary.
+
+The existing focused test binds all 129 classes, both automatic entries, all
+fifteen common hooks, eight client hooks and the complete metadata/icon/access
+transformer payload. The whole Fabric data check already accounts for every
+nested module's generation resources. The source was independently reproduced
+in ad9fbe2; no new capture or runtime measurement was needed.
+
+All 42 Fabric cases and scoped Ruff/Basedpyright pass. Fabric: 41 resolved, two
+open (registry sync and loader). Whole providers: 90 resolved, 46 open. This
+closes a module disposition, adds no family and does not establish the final
+family count.
+
+### Fabric registry membership resolved
+
+The six entry/hook classes in 4bc3d16 expose registry accessors and forward
+existing registry setup callbacks. Initializer e5a03ee registers the datapack
+registry callback. Delegate 7b86b55 stores caller-supplied keys/codecs in an
+initially empty list and submits precisely those registrations to NeoForge.
+Its duplicate-key set starts with vanilla registry keys; it creates no authored
+site or independent feature. Registry entry callbacks likewise forward supplied
+entries. This resolves the concrete startup question without further tracing.
+
+The existing test binds the three captures, all 26 module classes, the one
+automatic entry, five common hooks, 22 translation resources and complete
+metadata/icon/access-transformer payload. There is no client mixin file or
+generation data. All 43 focused Fabric cases and scoped Ruff/Basedpyright pass.
+Fabric: 42 resolved, one open (loader). Whole providers: 90 resolved, 46 open.
+No canonical family is added.
+
+### Fabric loader and whole-provider membership resolved
+
+The declared loader service (1cb6fe0) installs the launch bootstrap (4beaa6b).
+The bootstrap handles no class transformation phases and forwards the existing
+FML mod list. The delegate (6a6fcc4) wraps those existing metadata records,
+indexes their IDs and provided aliases, rejects duplicate IDs and sets the
+loaded flag. It supplies no generation resource, structure design or placement
+registration. Remaining loader APIs concern mod metadata, entrypoint consumers,
+mappings and language/loader utilities; no independent content is introduced.
+
+The focused test binds all three sources, all 785 classes, the sole service,
+LIBRARY manifest and all sixteen non-class resources. There are no automatic
+Mod/EventBusSubscriber annotations, mixin declarations, nested JARs, templates
+or data resources in this module. All 44 Fabric cases and scoped Ruff and
+Basedpyright pass. All 43 nested modules now have supported dispositions; the
+parent payload and nested generation-data accounting are already verified by
+the existing test. Fabric contributes consumer APIs and modifiers, conventional
+tags and the explicitly test-only empty template, with no independent family.
+
+Whole providers: 91 resolved, 45 open. The remaining provider rows are the
+existing 24 code-reference and 21 unmatched-search rows. These lanes are planning
+inputs, not absence proofs. Canonical Moog grouping remains open independently.
+No family count changes in this increment. Do not reopen Fabric internals
+without a concrete contradictory generation or component finding.

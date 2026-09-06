@@ -1,0 +1,237 @@
+Compiled from "InteractionEventHooks.java"
+public final class net.fabricmc.fabric.impl.event.interaction.InteractionEventHooks {
+  public static void onEntityInteractAt(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$EntityInteractSpecific);
+    Code:
+       0: aload_0
+       1: invokevirtual #1                  // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.getTarget:()Lnet/minecraft/world/entity/Entity;
+       4: astore_1
+       5: new           #7                  // class net/minecraft/world/phys/EntityHitResult
+       8: dup
+       9: aload_1
+      10: aload_0
+      11: invokevirtual #9                  // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.getLocalPos:()Lnet/minecraft/world/phys/Vec3;
+      14: aload_1
+      15: invokevirtual #13                 // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+      18: invokevirtual #18                 // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      21: invokespecial #24                 // Method net/minecraft/world/phys/EntityHitResult."<init>":(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/Vec3;)V
+      24: astore_2
+      25: getstatic     #28                 // Field net/fabricmc/fabric/api/event/player/UseEntityCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+      28: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      31: checkcast     #29                 // class net/fabricmc/fabric/api/event/player/UseEntityCallback
+      34: aload_0
+      35: invokevirtual #40                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      38: aload_0
+      39: invokevirtual #44                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.getLevel:()Lnet/minecraft/world/level/Level;
+      42: aload_0
+      43: invokevirtual #48                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.getHand:()Lnet/minecraft/world/InteractionHand;
+      46: aload_1
+      47: aload_2
+      48: invokeinterface #52,  6           // InterfaceMethod net/fabricmc/fabric/api/event/player/UseEntityCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/EntityHitResult;)Lnet/minecraft/world/InteractionResult;
+      53: astore_3
+      54: aload_3
+      55: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      58: if_acmpeq     71
+      61: aload_0
+      62: iconst_1
+      63: invokevirtual #62                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.setCanceled:(Z)V
+      66: aload_0
+      67: aload_3
+      68: invokevirtual #66                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteractSpecific.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      71: return
+
+  public static void onEntityInteract(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$EntityInteract);
+    Code:
+       0: getstatic     #28                 // Field net/fabricmc/fabric/api/event/player/UseEntityCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+       6: checkcast     #29                 // class net/fabricmc/fabric/api/event/player/UseEntityCallback
+       9: aload_0
+      10: invokevirtual #70                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      13: aload_0
+      14: invokevirtual #73                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getLevel:()Lnet/minecraft/world/level/Level;
+      17: aload_0
+      18: invokevirtual #74                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getHand:()Lnet/minecraft/world/InteractionHand;
+      21: aload_0
+      22: invokevirtual #75                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getTarget:()Lnet/minecraft/world/entity/Entity;
+      25: aconst_null
+      26: invokeinterface #52,  6           // InterfaceMethod net/fabricmc/fabric/api/event/player/UseEntityCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/EntityHitResult;)Lnet/minecraft/world/InteractionResult;
+      31: astore_1
+      32: aload_1
+      33: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      36: if_acmpeq     49
+      39: aload_0
+      40: iconst_1
+      41: invokevirtual #76                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCanceled:(Z)V
+      44: aload_0
+      45: aload_1
+      46: invokevirtual #77                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      49: return
+
+  public static void onAttackEntity(net.neoforged.neoforge.event.entity.player.AttackEntityEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #78                 // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: astore_1
+       5: getstatic     #81                 // Field net/fabricmc/fabric/api/event/player/AttackEntityCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+       8: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      11: checkcast     #82                 // class net/fabricmc/fabric/api/event/player/AttackEntityCallback
+      14: aload_1
+      15: aload_1
+      16: invokevirtual #84                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      19: getstatic     #89                 // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      22: aload_0
+      23: invokevirtual #95                 // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getTarget:()Lnet/minecraft/world/entity/Entity;
+      26: aconst_null
+      27: invokeinterface #96,  6           // InterfaceMethod net/fabricmc/fabric/api/event/player/AttackEntityCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/EntityHitResult;)Lnet/minecraft/world/InteractionResult;
+      32: astore_2
+      33: aload_2
+      34: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      37: if_acmpeq     45
+      40: aload_0
+      41: iconst_1
+      42: invokevirtual #97                 // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.setCanceled:(Z)V
+      45: return
+
+  public static void onLeftClickBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$LeftClickBlock);
+    Code:
+       0: aload_0
+       1: invokevirtual #98                 // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getAction:()Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action;
+       4: getstatic     #104                // Field net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action.START:Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action;
+       7: if_acmpne     92
+      10: getstatic     #110                // Field net/fabricmc/fabric/api/event/player/AttackBlockCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+      13: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      16: checkcast     #111                // class net/fabricmc/fabric/api/event/player/AttackBlockCallback
+      19: aload_0
+      20: invokevirtual #113                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      23: aload_0
+      24: invokevirtual #114                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+      27: aload_0
+      28: invokevirtual #115                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      31: aload_0
+      32: invokevirtual #116                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getPos:()Lnet/minecraft/core/BlockPos;
+      35: aload_0
+      36: invokevirtual #120                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getFace:()Lnet/minecraft/core/Direction;
+      39: invokeinterface #124,  6          // InterfaceMethod net/fabricmc/fabric/api/event/player/AttackBlockCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/InteractionResult;
+      44: astore_1
+      45: aload_1
+      46: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      49: if_acmpeq     92
+      52: aload_0
+      53: aload_1
+      54: getstatic     #127                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+      57: if_acmpne     66
+      60: getstatic     #130                // Field net/neoforged/neoforge/common/util/TriState.TRUE:Lnet/neoforged/neoforge/common/util/TriState;
+      63: goto          69
+      66: getstatic     #136                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      69: invokevirtual #139                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setUseBlock:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      72: aload_0
+      73: aload_1
+      74: getstatic     #127                // Field net/minecraft/world/InteractionResult.SUCCESS:Lnet/minecraft/world/InteractionResult;
+      77: if_acmpne     86
+      80: getstatic     #130                // Field net/neoforged/neoforge/common/util/TriState.TRUE:Lnet/neoforged/neoforge/common/util/TriState;
+      83: goto          89
+      86: getstatic     #136                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      89: invokevirtual #143                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setUseItem:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      92: return
+
+  public static void onRightClickBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    Code:
+       0: getstatic     #146                // Field net/fabricmc/fabric/api/event/player/UseBlockCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+       6: checkcast     #147                // class net/fabricmc/fabric/api/event/player/UseBlockCallback
+       9: aload_0
+      10: invokevirtual #149                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      13: aload_0
+      14: invokevirtual #152                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+      17: aload_0
+      18: invokevirtual #153                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      21: aload_0
+      22: invokevirtual #154                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+      25: invokeinterface #158,  5          // InterfaceMethod net/fabricmc/fabric/api/event/player/UseBlockCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+      30: astore_1
+      31: aload_1
+      32: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      35: if_acmpeq     48
+      38: aload_0
+      39: iconst_1
+      40: invokevirtual #161                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+      43: aload_0
+      44: aload_1
+      45: invokevirtual #162                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      48: return
+
+  public static void onRightClickItem(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickItem);
+    Code:
+       0: getstatic     #163                // Field net/fabricmc/fabric/api/event/player/UseItemCallback.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+       6: checkcast     #164                // class net/fabricmc/fabric/api/event/player/UseItemCallback
+       9: aload_0
+      10: invokevirtual #166                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      13: aload_0
+      14: invokevirtual #169                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.getLevel:()Lnet/minecraft/world/level/Level;
+      17: aload_0
+      18: invokevirtual #170                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.getHand:()Lnet/minecraft/world/InteractionHand;
+      21: invokeinterface #171,  4          // InterfaceMethod net/fabricmc/fabric/api/event/player/UseItemCallback.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;
+      26: astore_1
+      27: aload_1
+      28: invokevirtual #174                // Method net/minecraft/world/InteractionResultHolder.getResult:()Lnet/minecraft/world/InteractionResult;
+      31: getstatic     #56                 // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+      34: if_acmpeq     50
+      37: aload_0
+      38: iconst_1
+      39: invokevirtual #180                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCanceled:(Z)V
+      42: aload_0
+      43: aload_1
+      44: invokevirtual #174                // Method net/minecraft/world/InteractionResultHolder.getResult:()Lnet/minecraft/world/InteractionResult;
+      47: invokevirtual #181                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      50: return
+
+  public static void onBlockBreak(net.neoforged.neoforge.event.level.BlockEvent$BreakEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #182                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #84                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       9: astore_2
+      10: aload_0
+      11: invokevirtual #187                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      14: astore_3
+      15: aload_0
+      16: invokevirtual #188                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      19: astore        4
+      21: aload_2
+      22: aload_3
+      23: invokevirtual #192                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      26: astore        5
+      28: getstatic     #198                // Field net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents.BEFORE:Lnet/fabricmc/fabric/api/event/Event;
+      31: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      34: checkcast     #203                // class net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents$Before
+      37: aload_2
+      38: aload_1
+      39: aload_3
+      40: aload         4
+      42: aload         5
+      44: invokeinterface #205,  6          // InterfaceMethod net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents$Before.beforeBlockBreak:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)Z
+      49: istore        6
+      51: iload         6
+      53: ifne          82
+      56: getstatic     #209                // Field net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents.CANCELED:Lnet/fabricmc/fabric/api/event/Event;
+      59: invokevirtual #34                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      62: checkcast     #212                // class net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents$Canceled
+      65: aload_2
+      66: aload_1
+      67: aload_3
+      68: aload         4
+      70: aload         5
+      72: invokeinterface #214,  6          // InterfaceMethod net/fabricmc/fabric/api/event/player/PlayerBlockBreakEvents$Canceled.onBlockBreakCanceled:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+      77: aload_0
+      78: iconst_1
+      79: invokevirtual #218                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.setCanceled:(Z)V
+      82: return
+
+  private net.fabricmc.fabric.impl.event.interaction.InteractionEventHooks();
+    Code:
+       0: aload_0
+       1: invokespecial #219                // Method java/lang/Object."<init>":()V
+       4: return
+}

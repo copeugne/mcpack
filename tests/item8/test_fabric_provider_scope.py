@@ -106,6 +106,155 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-registry-sync-v0-5.3.1+f9aace1619",
+            "fabric-registry-sync-v0-entry",
+            "c90f9978bdaed1e208676fdcad9b108f560aa95b5f6f539bdfc205460c5c056c",
+            5,
+            {"org/sinytra/fabric/registry_sync/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-networking-api-v1-4.3.0+30a980d919",
+            "fabric-networking-api-v1-entry",
+            "971327a550fa9613691f4ef1f17389cf24d00373a109cce7fe7e788618d7bfeb",
+            15,
+            {"org/sinytra/fabric/networking_api/generated/GeneratedEntryPoint.class",
+             "org/sinytra/fabric/networking_api/NetworkingEventHooks.class"},
+        ),
+        (
+            "fabric-transfer-api-v1-5.4.3+a25cb45619",
+            "fabric-transfer-api-v1-entry",
+            "fd7982f42faf3e553baf9e444fbf8beb643ab432c5d79da2d6436c704954b081",
+            10,
+            {"org/sinytra/fabric/transfer_api/generated/GeneratedEntryPoint.class",
+             "org/sinytra/fabric/transfer_api/TransferApiNeoCompat.class"},
+        ),
+        (
+            "fabric-events-interaction-v0-0.7.13+86e0887119",
+            "fabric-events-interaction-v0-entry",
+            "614f8f550bebcc2f4247a0be3905dbafc49647536eb93c547efac92c4f26bbd3",
+            2,
+            {"org/sinytra/fabric/events_interaction/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/event/interaction/InteractionEventHooks.class"},
+        ),
+        (
+            "fabric-item-api-v1-11.2.0+0c57911319",
+            "fabric-item-api-v1-entry",
+            "079c11a09085ddb9668c75ede629e2222a0485498ba7f8bb896c28a4cf3ece8a",
+            13,
+            {"org/sinytra/fabric/item_api/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/item/DefaultItemComponentImpl.class",
+             "net/fabricmc/fabric/impl/client/item/ClientItemEventHooks.class"},
+        ),
+        (
+            "fabric-object-builder-api-v1-15.2.1+cc242efd19",
+            "fabric-object-builder-api-v1-entry",
+            "d7a0bf493eb787b68c5ec8df4170657dbd74f1686d1a6b4fa58b22059570e393",
+            11,
+            {"org/sinytra/fabric/object_builder_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-resource-conditions-api-v1-4.3.0+5bdd099819",
+            "fabric-resource-conditions-api-v1-entry",
+            "1b89585428466581c618936da06eef4e7dc4684c64a150080ccf2ba02dda9c21",
+            10,
+            {"org/sinytra/fabric/resource_conditions_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-message-api-v1-6.0.14+6a754fce19",
+            "fabric-message-api-v1-entry",
+            "9222255dfc0fe5fdf7b15eab08a4d6c45db376e76a6299bcc4629a08ca9a7f96",
+            2,
+            {"org/sinytra/fabric/message_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-screen-handler-api-v1-1.3.90+8dbc56dd19",
+            "fabric-screen-handler-api-v1-entry",
+            "9bf373c6282c1559ecaa14733d3b04568f1d5460e4131b7fb0c84b23601f9eb0",
+            2,
+            {"org/sinytra/fabric/screen_handler_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-data-attachment-api-v1-1.4.5+26d408aa19",
+            "fabric-data-attachment-entry",
+            "bee13b060b3c64abbb8d20e4da62404f7b4d1ee1d2e12b21e7dce2bd490daf9d",
+            4,
+            {"org/sinytra/fabric/data_attachment_api/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class"},
+        ),
+        (
+            "fabric-content-registries-v0-8.0.19+5e0d320019",
+            "fabric-content-registries-entry",
+            "9f1c23a98141bc5449ee93e4f103ba67a7d15f5e333ab85a56712e27661d20d0",
+            13,
+            {"org/sinytra/fabric/content_registries/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/api/registry/TillableBlockRegistry.class",
+             "net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl.class"},
+        ),
+        (
+            "fabric-data-generation-api-v1-20.2.34+a4c3605619",
+            "fabric-data-generation-entry",
+            "005d5198b431bd5f83257d280cead53e562acb126ce11f94285bc0dcf397022d",
+            10,
+            {"org/sinytra/fabric/data_generation_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-item-group-api-v1-4.1.7+e324903319",
+            "fabric-item-group-entry",
+            "b7ad297470f753293f94ea1519ca76b23e352c0952946b6452d43a52410cd5d3",
+            1,
+            {"org/sinytra/fabric/item_group_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-command-api-v2-2.2.28+36d727be19",
+            "fabric-command-entry",
+            "2905c60a6b616efc27154aa9fb5cf2768184f535238df1cbaf8d406d1a72a3f5",
+            1,
+            {"org/sinytra/fabric/command_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-lifecycle-events-v1-2.6.0+e40d8add19",
+            "fabric-lifecycle-entry",
+            "81ff99421170db72fbeeb1e0bb07befbddf71c8dae57b6a037860883a83409b6",
+            7,
+            {"org/sinytra/fabric/lifecycle_events/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-entity-events-v1-1.8.0+5ede667619",
+            "fabric-entity-events-entry",
+            "f856b1bc1999cd9d480f5d8142b5561d05e62796bc6febf77d22588847531798",
+            9,
+            {"org/sinytra/fabric/entity_events/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/entity/event/EntityEventHooks.class"},
+        ),
+        (
+            "fabric-game-rule-api-v1-1.0.53+36d727be19",
+            "fabric-game_rule_api-entry",
+            "e4413cde1f7946aaabaedd73db4fcbe27ab5c7285cb3eb9d2017071e2ca7702d",
+            5,
+            {"org/sinytra/fabric/game_rule_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-loot-api-v2-3.0.15+a3ee712d19",
+            "fabric-loot_api_v2-entry",
+            "39948838d282ea95917661b003571449b503449615810c9e78d61eb0ca95ed67",
+            2,
+            {"org/sinytra/fabric/loot_api_v2/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-loot-api-v3-1.0.3+333dfad919",
+            "fabric-loot_api-entry",
+            "651e7b5dc634205e9dd736041958177205b0ebf3b5e0ff97991d7ed1ff6a7371",
+            6,
+            {"org/sinytra/fabric/loot_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-recipe-api-v1-5.0.15+59440bcc19",
+            "fabric-recipe_api-entry",
+            "1778fbf2dcb132483978c5333401a7b5dcd77cc4bc6879ce057d1a05a0c96ab5",
+            2,
+            {"org/sinytra/fabric/recipe_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-api-lookup-api-v1-1.6.71+c290471319",
             "fabric-api_lookup_api-entry",
             "7fdd492bfcaf9f4d3840f9c7d238f2a2db88d94979b29a84f4592ae3d5aae0c9",
@@ -185,13 +334,18 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
         with ZipFile(BytesIO(payload)) as archive:
             config = cast(
                 "dict[str, object]",
-                json.loads(archive.read(module.rsplit("-", 1)[0] + ".mixins.json")),
+                json.loads(archive.read(module.rsplit("-", 1)[0].replace(
+                    "fabric-object-builder-api-v1", "fabric-object-builder-v1") + ".mixins.json")),
             )
             prefix = cast("str", config["package"]).replace(".", "/") + "/"
-            declared = {prefix + name + ".class" for name in cast("list[str]", config["mixins"])}
+            declared = {prefix + name.replace(".", "/") + ".class"
+                        for name in cast("list[str]", config["mixins"])}
+            server = cast("list[str]", config.get("server", []))
+            assert server == (["server.WorldChunkMixin"]
+                              if module.startswith("fabric-lifecycle-events-v1-") else [])
+            declared.update(prefix + item.replace(".", "/") + ".class" for item in server)
             assert len(declared) == count
             assert not config.get("plugin")
-            assert not config.get("server")
             assert {r["class"] for r in rows} == declared | consumers
             name = module.rsplit("-", 1)[0]
             if name == "fabric-api-lookup-api-v1":
@@ -216,7 +370,103 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                         archive.read(extra["class"])).hexdigest()
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
+            initializer_sources = {
+                "fabric-registry-sync-v0": [(
+                    "fabric-registry-init",
+                    "ea158b38e8bf3ee48080a442721fc1e796bee22b6fb4e37e794315e7e5d5f1af",
+                    {"net/fabricmc/fabric/impl/registry/sync/FabricRegistryInit.class"},
+                ), (
+                    "fabric-dynamic-registries",
+                    "648c159c662bbd522074b4b61f7f1814689803cb8aa125918ac4614f83868ac1",
+                    {"net/fabricmc/fabric/impl/registry/sync/DynamicRegistriesImpl.class"},
+                )],
+                "fabric-events-interaction-v0": [(
+                    "fabric-interaction-router",
+                    "1f6918e1d747541523585d23f29310ceb4a298516a221e80e05251cfa02d41e3",
+                    {"net/fabricmc/fabric/impl/event/interaction/InteractionEventsRouter.class"},
+                )],
+                "fabric-item-api-v1": [(
+                    "fabric-item-enchantment",
+                    "d653028574d440be486250233dd9364855a141a5da678dbc6f3ff23338104e31",
+                    {"net/fabricmc/fabric/impl/item/EnchantmentUtil.class"},
+                )],
+                "fabric-resource-conditions-api-v1": [(
+                    "fabric-resource-condition-delegates",
+                    "e6103740fe144f96a30b6d57d87bc672b35fffa3b9553f52b2a4cb4188bb6697",
+                    {"net/fabricmc/fabric/impl/resource/conditions/ResourceConditionsImpl.class",
+                     "net/fabricmc/fabric/impl/resource/conditions/OverlayConditionsMetadata.class"},
+                )],
+                "fabric-data-attachment-api-v1": [(
+                    "fabric-attachment-registration",
+                    "e5d85879d444086c19fa15921336c7e711185d212564b35501e8bc8eb58dda67",
+                    {"net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class",
+                     "net/fabricmc/fabric/impl/attachment/AttachmentRegistryImpl.class"},
+                ), (
+                    "fabric-attachment-init",
+                    "9add3414f670243af4701ec42e118c410479a35c8064e2691745ad0bc2dcc7e4",
+                    {"net/fabricmc/fabric/impl/attachment/AttachmentEntrypoint.class"},
+                )],
+                "fabric-content-registries-v0": [(
+                    "fabric-content-data-map",
+                    "ba7fcec72be79425015cea676ff60b645990ed84d277c9b237358cd1fa8fa9df",
+                    {"net/fabricmc/fabric/impl/content/registry/DataMapModifications.class"},
+                )],
+                "fabric-command-api-v2": [(
+                    "fabric-command-init",
+                    "54cc77ba015cd890542609a6a8a98742763b3bde85eef35c857ad253445205a4",
+                    {"org/sinytra/fabric/command_api/FabricCommandApiV2.class"},
+                )],
+                "fabric-lifecycle-events-v1": [(
+                    "fabric-lifecycle-init",
+                    "1abb7ebad9fe2aee3ce06b5d23c59aec1beb4509d798793e9717f66f324826fe",
+                    {"net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.class"},
+                )],
+                "fabric-loot-api-v2": [(
+                    "fabric-loot-v2-init",
+                    "fdd70793358e39363a47a89dea1e357a60bbc26f051d182c66c7fd97c7be0d6e",
+                    {"net/fabricmc/fabric/impl/loot/v2/LootInitializer.class"},
+                )],
+                "fabric-recipe-api-v1": [(
+                    "fabric-recipe-init",
+                    "284be5d480faf7950a489a9134fa4db894a3ed59174e3e3c28b07dcb4c2c98ae",
+                    {"net/fabricmc/fabric/impl/recipe/ingredient/CustomIngredientInit.class",
+                     "org/sinytra/fabric/recipe_api/FabricRecipeApiV1.class"},
+                )],
+            }
+            for capture, identity, expected_classes in initializer_sources.get(name, []):
+                extra_dir = Path("evidence/item-8/sources") / capture
+                extra_raw = (extra_dir / "identities.json").read_bytes()
+                assert hashlib.sha256(extra_raw).hexdigest() == identity
+                extra_rows = cast("list[dict[str, str]]", json.loads(extra_raw))
+                assert {r["class"] for r in extra_rows} == expected_classes
+                for row in extra_rows:
+                    assert row["archive"] == source.name + "!/" + member
+                    assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                    assert row["class_sha256"] == hashlib.sha256(
+                        archive.read(row["class"])).hexdigest()
+                    assert row["disassembly_sha256"] == hashlib.sha256(
+                        (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-registry-sync-v0": (26, 0),
+                "fabric-networking-api-v1": (129, 8),
+                "fabric-transfer-api-v1": (120, 0),
+                "fabric-events-interaction-v0": (36, 3),
+                "fabric-item-api-v1": (43, 1),
+                "fabric-object-builder-api-v1": (44, 0),
+                "fabric-resource-conditions-api-v1": (31, 0),
+                "fabric-message-api-v1": (32, 2),
+                "fabric-screen-handler-api-v1": (9, 0),
+                "fabric-data-attachment-api-v1": (20, 1),
+                "fabric-content-registries-v0": (39, 0),
+                "fabric-data-generation-api-v1": (53, 0),
+                "fabric-item-group-api-v1": (15, 1),
+                "fabric-command-api-v2": (16, 1),
+                "fabric-lifecycle-events-v1": (73, 5),
+                "fabric-entity-events-v1": (47, 0),
+                "fabric-game-rule-api-v1": (27, 3),
+                "fabric-loot-api-v2": (14, 0),
+                "fabric-loot-api-v3": (17, 0),
+                "fabric-recipe-api-v1": (27, 0),
                 "fabric-api-lookup-api-v1": (29, 0),
                 "fabric-block-api-v1": (8, 0),
                 "fabric-block-view-api-v2": (12, 2),
@@ -236,12 +486,39 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert not client.get("mixins")
                     assert not client.get("server")
                     assert not client.get("plugin")
-                if name == "fabric-block-view-api-v2":
+                if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
+                            "fabric-recipe-api-v1", "fabric-command-api-v2",
+                            "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
+                            "fabric-content-registries-v0", "fabric-data-generation-api-v1",
+                            "fabric-screen-handler-api-v1", "fabric-resource-conditions-api-v1",
+                            "fabric-object-builder-api-v1", "fabric-networking-api-v1",
+                            "fabric-registry-sync-v0"}:
                     extras.add("META-INF/accesstransformer.cfg")
+                extras.update({
+                    "fabric-registry-sync-v0": {
+                        f"assets/fabric-registry-sync-v0/lang/{locale}.json" for locale in (
+                            "de_de", "en_us", "es_cl", "es_es", "et_ee", "fi_fi", "fr_fr",
+                            "it_it", "ja_jp", "ko_kr", "ms_my", "nl_nl", "pl_pl", "pt_br",
+                            "ru_ru", "sv_se", "tok", "tt_ru", "uk_ua", "vi_vn", "zh_cn", "zh_tw",
+                        )},
+                    "fabric-data-attachment-api-v1": {
+                        "assets/fabric-data-attachment-api-v1/lang/en_us.json"},
+                }.get(name, set()))
+                if name == "fabric-item-group-api-v1":
+                    extras.add("assets/fabric/textures/gui/creative_buttons.png")
+                    extras.update(f"assets/fabric/lang/{locale}.json" for locale in (
+                        "bg_bg", "de_de", "el_gr", "en_us", "eo_uy", "es_cl", "es_es",
+                        "es_mx", "et_ee", "fa_ir", "fi_fi", "fr_fr", "is_is", "it_it",
+                        "ja_jp", "ko_kr", "ms_my", "nl_nl", "pl_pl", "pt_br", "ru_ru",
+                        "sv_se", "tok", "tr_tr", "tt_ru", "uk_ua", "vi_vn", "zh_cn", "zh_tw",
+
+                    ))
                 assert files - classes == extras | {
                     "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
                     "META-INF/architectury-loom-nesting-metadata.json",
-                    f"assets/{name}/icon.png", f"{name}.mixins.json",
+                    f"assets/{name}/icon.png",
+                    name.replace("fabric-object-builder-api-v1",
+                                 "fabric-object-builder-v1") + ".mixins.json",
                 }
                 assert {n for n in classes if any(marker in archive.read(n) for marker in (
                     b"Lnet/neoforged/fml/common/Mod;",
@@ -427,6 +704,13 @@ def test_fabric_v2_tag_membership() -> None:
     ("module", "label", "digest", "class_count", "client_count"),
     [
         (
+            "fabric-rendering-v1-5.1.0+1a09bd5a19",
+            "fabric-rendering-v1-entry",
+            "adb9d93ad3ff1cf27a2299424fe89e188fd41e24d8bede1957c9bb4db9b5f4e7",
+            73,
+            15,
+        ),
+        (
             "fabric-model-loading-api-v1-2.1.0+6e8f52c719",
             "fabric-model_loading_api-entry",
             "2cb25059a4bba8b4638ba8716fc2fec8cef40bb44bfc0cc54fd69eb88094755e",
@@ -570,3 +854,62 @@ def test_fabric_client_utility_membership(
                     row["disassembly_sha256"]
                     == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 )
+
+
+def test_fabric_loader_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar"
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+    digest = hashlib.sha256(payload).hexdigest()
+    assert digest == "fe0b6b5e95917ab26fd1271e8d72fc714283a4c2542c5a732fb1261a69f18c43"
+    with ZipFile(BytesIO(payload)) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 785
+        assert files - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/architectury-loom-nesting-metadata.json",
+            "META-INF/services/net.neoforged.neoforgespi.language.IModLanguageLoader",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.core/pom.properties",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.core/pom.xml",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.pb/pom.properties",
+            "META-INF/maven/org.ow2.sat4j/org.ow2.sat4j.pb/pom.xml",
+            "net/fabricmc/loader/Messages.properties",
+            "net/fabricmc/loader/Messages_es.properties",
+            "net/fabricmc/loader/Messages_ja_JP.properties",
+            "net/fabricmc/loader/Messages_ko_KR.properties",
+            "net/fabricmc/loader/Messages_vi_VN.properties",
+            "about.html", "mappings.tsrg", "mappings/mappings.tiny", "sat4j.version",
+        }
+        assert b"FMLModType: LIBRARY" in archive.read("META-INF/MANIFEST.MF")
+        assert archive.read(
+            "META-INF/services/net.neoforged.neoforgespi.language.IModLanguageLoader"
+        ).decode().strip() == "net.fabricmc.loader.impl.bootstrap.FabricLoaderHackyInjector"
+        assert not any(marker in archive.read(n) for n in classes for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))
+        for label, identity, target in (
+            ("forgified-fabric-loader-2.5.68+0.18.4+1.21.1-entry",
+             "f36fb741b2e5a6cb1061b83f9a2e049c68ecee80b44ec3404e0e49a5e153c25d",
+             "bootstrap/FabricLoaderHackyInjector"),
+            ("fabric-loader-bootstrap",
+             "2800b7f9a5f95e344a15a56a68fdf137c30184114f23b10e969d1c48344fb764",
+             "bootstrap/FabricLoaderBootstrap"),
+            ("fabric-loader-mod-list",
+             "329ecd4c85011b336075d95309f9f9fd0820551ec9e8b854b0413a7fad8bba70",
+             "FabricLoaderImpl"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == identity
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            assert len(rows) == 1
+            row = rows[0]
+            assert row["class"] == f"net/fabricmc/loader/impl/{target}.class"
+            assert row["archive"] == source.name + "!/" + member
+            assert row["archive_sha256"] == digest
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert row["disassembly_sha256"] == hashlib.sha256(
+                (directory / row["disassembly"]).read_bytes()).hexdigest()
