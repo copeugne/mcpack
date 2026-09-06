@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+BetterEnd selected biome-template membership is settled: the 35 ruins comprise
+ten families represented by thirty templates and five excluded light fixtures.
+With six furnished buildings and the earlier light_1 exclusion, all 42 selected
+architectural candidates are assigned: sixteen families, six fixtures. Existing
+21 vegetation exclusions remain. Fifteen focused cases, scoped checks and
+inventory reproduction pass. Do not re-render or reopen these groups without
+contradictory evidence. Next resolve provisional registry terrain/vegetation
+groups and the remaining other-provider canonical boundaries. Whole-provider
+coverage and all required attributes still prevent Item 8 completion.
+
+
 Scope check for the remaining 35 BetterEnd ruins: palette counts and template
 boxes do not establish layout equivalence. Use a fixed-purpose SVG view of the
 existing decoded block coordinates to resolve those design boundaries. Existing

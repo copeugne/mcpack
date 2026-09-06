@@ -444,6 +444,39 @@ def test_betterend_building_lists_partition_exact_template_candidates() -> None:
         assert len(vegetation_paths) == 21  # explicit vegetation partition.
 
 
+def test_betterend_ruin_decisions_partition_selected_templates() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:biome_ruins"]
+    designs = cast("dict[str, dict[str, JsonValue]]", decision["designs"])
+    families = cast("list[str]", decision["families"])
+    assert len(families) == len(designs) == 10
+    assert set(families) == set(designs)
+    included = [path for row in designs.values() for path in cast("list[str]", row["templates"])]
+    excluded = [path for row in cast("list[dict[str, JsonValue]]", decision["dispositions"])
+                for path in cast("list[str]", row["templates"])]
+    assert len(included) == len(set(included)) == 30
+    assert len(excluded) == len(set(excluded)) == 5
+    assert not set(included) & set(excluded)
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        ruins = {name for name in archive.namelist()
+                 if name.startswith("data/betterend/structure/biome/")
+                 and "/ruins_" in name and name.endswith(".nbt")}
+        assert set(included) | set(excluded) == ruins
+        for path in ruins:
+            biome = path.split("/")[4]
+            configured = cast("dict[str, dict[str, list[dict[str, str]]]]", json.loads(
+                archive.read(f"data/betterend/worldgen/configured_feature/{biome}_structures.json")))
+            assert "/" + path in {row["path"] for row in configured["config"]["structures"]}
+            assert template_summary(archive.read(path))["size"]
+
+
 def test_betterend_furnished_building_decisions_bind_distinct_content() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
         "evidence/item-8/family-decisions.json").read_bytes()))

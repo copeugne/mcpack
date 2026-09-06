@@ -6149,3 +6149,41 @@ forms, gateways and roofed construction within the ruin-named files. Family
 assignments still require the material/content join and cross-biome comparison;
 this capture alone closes no family decision. Do not repeat the rendering or
 expand its fidelity without a concrete unresolved layout boundary.
+
+### BetterEnd selected ruin grouping closed
+
+All 35 ruin-named templates now have an explicit disposition in
+family-decisions.json: thirty templates in ten design families, plus five
+ambient light-fixture exclusions. The families are timber building remnants,
+stone column remnants, masonry foundations, pedestal courts, central pedestal
+altars, gateway remnants, a tiered purpur ruin, a crystal spire, an overgrown
+fountain and an enclosed masonry ruin. Every group's exact template paths and
+architectural rationale are recorded.
+
+The grouping compares preserved layouts across biomes, with the exact palette
+and stored-content evidence. Material, orientation, differing survival and
+furnishings may vary within a design. This does not assert transformed-copy
+equivalence or reconstruct an unknown original intact building. Individual
+light supports remain fixtures despite their ruin filenames.
+
+Together with the six furnished building families and the earlier light_1
+exclusion, the 42 selected architectural candidates now comprise sixteen
+design families represented by 36 templates and six excluded fixtures. All
+21 selected vegetation templates remain excluded. The disconnected house is
+still a separately preserved inactive candidate. No selected BetterEnd biome
+template remains without a membership disposition. This is not a total for
+BetterEnd's registry roots, independent pillar/ship routes or the whole pack.
+
+Fifteen focused cases, scoped checks and inventory reproduction pass. The new
+check reconciles all 35 exact archive paths to a disjoint exhaustive assignment
+and active configured-list selection, with source/view hashes bound. Next
+resolve terrain/vegetation entries in the provisional registry groups and
+continue the other named providers' canonical boundaries.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-ruins-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-ruins-r1.json
+```
