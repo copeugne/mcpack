@@ -3166,3 +3166,33 @@ Remaining Aether scope: custom feature/holiday-decoration roles, main-entry
 delegates/common hooks, optional portal consumer disposition and bundled-library
 selection/roles. Reuse this component partition; census stays 75 resolved and
 61 open until that provider scope is closed.
+
+### Aether holiday-tree candidate boundary
+
+Retain aether:holiday_tree as a named decoration/family-boundary candidate for
+canonical reconciliation. It is not an accepted additional canonical family.
+The configured tree's custom decorator places snow or provider-selected blocks
+around suitable base-log positions. The supplied weighted provider contains snow
+and aether:present. Do not dismiss that authored decoration solely because its
+configured feature type is minecraft:tree, or count each decorated block as a
+separate design.
+
+The fourth case in test_aether_cloud_source.py binds the exact configured and
+placed feature, the aether:holiday_filter placement entry and all four packaged
+Skyroot biome consumers (forest, woodland, meadow and grove). Frozen
+config/aether-server.toml has Generate Holiday Trees always=false and Generate
+Holiday Trees seasonally=true, SHA-256
+578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de.
+These are input bindings, not proof the seasonal filter passed in any recorded
+world. Inspect HolidayFilter before accepting effective eligibility. Present
+block reward behavior belongs to the later attribute pass, not provider scope.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Four focused cases and scoped quality checks pass. Keep this named ambiguity
+with the finite candidate list. Remaining provider roles and canonical grouping
+are still open; no new measurement system is required.
