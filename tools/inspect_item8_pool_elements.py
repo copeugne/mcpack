@@ -214,6 +214,13 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/wover/core/api/ModCore.class",
+    "org/betterx/wover/feature/impl/configured/FeatureConfiguratorImpl.class",
+    "org/betterx/wover/feature/impl/placed/PlacedFeatureManagerImpl.class",
+    "org/betterx/wover/structure/impl/pools/StructurePoolManagerImpl.class",
+    "org/betterx/wover/structure/impl/sets/StructureSetManagerImpl.class",
+    "org/betterx/wover/surface/impl/SurfaceRuleRegistryImpl.class",
+
     "org/betterx/wover/biome/mixin/BiomeGenerationSettingsAccessor.class",
     "org/betterx/wover/biome/mixin/ChunkGeneratorAccessor.class",
     "org/betterx/wover/biome/mixin/HolderSetNamedAccessor.class",
@@ -3525,6 +3532,14 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("org/betterx/wover/entrypoint/")
+                verbose |= name in {
+                    "org/betterx/wover/core/api/ModCore.class",
+                    "org/betterx/wover/feature/impl/configured/FeatureConfiguratorImpl.class",
+                    "org/betterx/wover/feature/impl/placed/PlacedFeatureManagerImpl.class",
+                    "org/betterx/wover/structure/impl/pools/StructurePoolManagerImpl.class",
+                    "org/betterx/wover/structure/impl/sets/StructureSetManagerImpl.class",
+                    "org/betterx/wover/surface/impl/SurfaceRuleRegistryImpl.class",
+                }
                 verbose |= source.name == "create-1.21.1-6.0.10.jar" and any(
                     marker in payload for marker in (
                         b"Lnet/neoforged/fml/common/Mod;",
