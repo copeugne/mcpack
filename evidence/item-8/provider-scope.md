@@ -3221,3 +3221,27 @@ Aether's remaining provider checks are main-entry/common-hook contributions,
 optional ruined-portal activation and component consumers, and effective
 selection/contribution roles for its three nested libraries. Provider census
 remains 75 resolved and 61 open; these are providers, not remaining families.
+
+### Aether nested-library runtime selection
+
+The preserved registry-r1 debug log explicitly records JarSelector using the
+top-level Accessories beta.53 archive instead of the embedded beta.48 candidate.
+Its final mod list contains Accessories 1.1.0-beta.53+1.21.1. Attribute active
+Accessories code to that retained provider's queue row; do not separately audit
+the unselected beta.48 implementation as another running contribution.
+
+Cumulus 2.0.7 and Nitrogen 1.1.25 appear in the final mod list, with discovery
+records identifying Aether as their parent. Their contribution roles remain to
+be resolved. The existing packaged partition binds all three embedded hashes;
+test_aether_nested_runtime_selection binds the log hash and exact selection,
+parent and final-list records. This closes selection, not library behavior.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Five focused cases and scoped quality checks pass. No new runtime run or
+measurement system. Continue main/common hooks, portal consumers, and the two
+selected embedded library roles before closing Aether's provider row.
