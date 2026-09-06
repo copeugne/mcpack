@@ -100,6 +100,15 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "fuzs/illagerinvasion/IllagerInvasion.class",
+    "fuzs/illagerinvasion/neoforge/",
+    "fuzs/illagerinvasion/init/ModRegistry.class",
+    "fuzs/illagerinvasion/world/level/levelgen/",
+    "fuzs/illagerinvasion/mixin/",
+    "fuzs/illagerinvasion/config/",
+    "fuzs/illagerinvasion/handler/",
+    "fuzs/illagerinvasion/data/loot/ModEntityInjectLootProvider.class",
+    "architectury_inject_IllagerInvasion",
     "com/tristankechlo/explorations/",
     "dev/worldgen/tectonic/Tectonic",
     "dev/worldgen/tectonic/ConfigResourceCondition",
@@ -720,6 +729,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "dev/worldgen/tectonic/TectonicNeoforge.class",
                     "dev/worldgen/tectonic/TectonicNeoforgeClient.class",
                     "com/tristankechlo/explorations/NeoforgeExplorations.class",
+                    "fuzs/illagerinvasion/neoforge/IllagerInvasionNeoForge.class",
+                    "fuzs/illagerinvasion/neoforge/client/IllagerInvasionNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
