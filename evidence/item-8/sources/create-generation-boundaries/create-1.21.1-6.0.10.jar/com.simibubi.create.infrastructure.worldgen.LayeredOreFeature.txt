@@ -1,0 +1,597 @@
+Compiled from "LayeredOreFeature.java"
+public class com.simibubi.create.infrastructure.worldgen.LayeredOreFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.simibubi.create.infrastructure.worldgen.LayeredOreConfiguration> {
+  private static final float MAX_LAYER_DISPLACEMENT = 1.75f;
+
+  private static final float LAYER_NOISE_FREQUENCY = 0.125f;
+
+  private static final float MAX_RADIAL_THRESHOLD_REDUCTION = 0.25f;
+
+  private static final float RADIAL_NOISE_FREQUENCY = 0.125f;
+
+  public com.simibubi.create.infrastructure.worldgen.LayeredOreFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.simibubi.create.infrastructure.worldgen.LayeredOreConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #23                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #27                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration
+      23: astore        5
+      25: aload         5
+      27: getfield      #31                 // Field com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration.layerPatterns:Ljava/util/List;
+      30: astore        6
+      32: aload         6
+      34: invokeinterface #35,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      39: ifeq          44
+      42: iconst_0
+      43: ireturn
+      44: aload         6
+      46: aload_2
+      47: aload         6
+      49: invokeinterface #41,  1           // InterfaceMethod java/util/List.size:()I
+      54: invokeinterface #45,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      59: invokeinterface #51,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      64: checkcast     #55                 // class com/simibubi/create/infrastructure/worldgen/LayerPattern
+      67: astore        7
+      69: iconst_0
+      70: istore        8
+      72: aload         5
+      74: getfield      #57                 // Field com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration.size:I
+      77: iconst_1
+      78: iadd
+      79: istore        9
+      81: aload         5
+      83: getfield      #57                 // Field com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration.size:I
+      86: i2f
+      87: ldc           #60                 // float 0.5f
+      89: fmul
+      90: fstore        10
+      92: fload         10
+      94: invokestatic  #61                 // Method net/minecraft/util/Mth.ceil:(F)I
+      97: iconst_1
+      98: isub
+      99: istore        11
+     101: aload_3
+     102: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+     105: istore        12
+     107: aload_3
+     108: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     111: istore        13
+     113: aload_3
+     114: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     117: istore        14
+     119: aload_3
+     120: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+     123: aload         4
+     125: getstatic     #78                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     128: aload_3
+     129: invokevirtual #67                 // Method net/minecraft/core/BlockPos.getX:()I
+     132: aload_3
+     133: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+     136: invokeinterface #84,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     141: if_icmplt     146
+     144: iconst_0
+     145: ireturn
+     146: new           #90                 // class java/util/ArrayList
+     149: dup
+     150: invokespecial #92                 // Method java/util/ArrayList."<init>":()V
+     153: astore        15
+     155: fconst_0
+     156: fstore        16
+     158: aconst_null
+     159: astore        17
+     161: fload         16
+     163: iload         9
+     165: i2f
+     166: fcmpg
+     167: ifge          231
+     170: aload         7
+     172: aload         17
+     174: aload_2
+     175: invokevirtual #95                 // Method com/simibubi/create/infrastructure/worldgen/LayerPattern.rollNext:(Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;Lnet/minecraft/util/RandomSource;)Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;
+     178: astore        18
+     180: aload_2
+     181: aload         18
+     183: getfield      #99                 // Field com/simibubi/create/infrastructure/worldgen/LayerPattern$Layer.minSize:I
+     186: i2f
+     187: aload         18
+     189: getfield      #104                // Field com/simibubi/create/infrastructure/worldgen/LayerPattern$Layer.maxSize:I
+     192: i2f
+     193: invokestatic  #107                // Method net/minecraft/util/Mth.randomBetween:(Lnet/minecraft/util/RandomSource;FF)F
+     196: fstore        19
+     198: aload         15
+     200: new           #111                // class com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$TemporaryLayerEntry
+     203: dup
+     204: aload         18
+     206: fload         19
+     208: invokespecial #113                // Method com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$TemporaryLayerEntry."<init>":(Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;F)V
+     211: invokeinterface #116,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     216: pop
+     217: fload         16
+     219: fload         19
+     221: fadd
+     222: fstore        16
+     224: aload         18
+     226: astore        17
+     228: goto          161
+     231: new           #90                 // class java/util/ArrayList
+     234: dup
+     235: aload         15
+     237: invokeinterface #41,  1           // InterfaceMethod java/util/List.size:()I
+     242: invokespecial #120                // Method java/util/ArrayList."<init>":(I)V
+     245: astore        18
+     247: fload         16
+     249: iload         9
+     251: i2f
+     252: fsub
+     253: fneg
+     254: aload_2
+     255: invokeinterface #123,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     260: fmul
+     261: fstore        19
+     263: aload         15
+     265: invokeinterface #127,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     270: astore        20
+     272: aload         20
+     274: invokeinterface #131,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     279: ifeq          377
+     282: aload         20
+     284: invokeinterface #136,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     289: checkcast     #111                // class com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$TemporaryLayerEntry
+     292: astore        21
+     294: aload         18
+     296: invokeinterface #41,  1           // InterfaceMethod java/util/List.size:()I
+     301: ifne          309
+     304: ldc           #142                // float -Infinityf
+     306: goto          319
+     309: fload         19
+     311: fconst_2
+     312: iload         9
+     314: i2f
+     315: fdiv
+     316: fmul
+     317: fconst_1
+     318: fsub
+     319: fstore        22
+     321: fload         19
+     323: aload         21
+     325: invokevirtual #143                // Method com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$TemporaryLayerEntry.size:()F
+     328: fadd
+     329: fstore        19
+     331: fload         19
+     333: fconst_0
+     334: fcmpg
+     335: ifge          341
+     338: goto          272
+     341: aload_2
+     342: ldc           #60                 // float 0.5f
+     344: fconst_1
+     345: invokestatic  #107                // Method net/minecraft/util/Mth.randomBetween:(Lnet/minecraft/util/RandomSource;FF)F
+     348: fstore        23
+     350: aload         18
+     352: new           #145                // class com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry
+     355: dup
+     356: aload         21
+     358: getfield      #147                // Field com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$TemporaryLayerEntry.layer:Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;
+     361: fload         23
+     363: fload         22
+     365: invokespecial #151                // Method com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry."<init>":(Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;FF)V
+     368: invokeinterface #116,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     373: pop
+     374: goto          272
+     377: aload_2
+     378: ldc           #154                // float -1.0f
+     380: fconst_1
+     381: invokestatic  #107                // Method net/minecraft/util/Mth.randomBetween:(Lnet/minecraft/util/RandomSource;FF)F
+     384: fstore        20
+     386: fload         20
+     388: f2d
+     389: invokestatic  #155                // Method java/lang/Math.cbrt:(D)D
+     392: d2f
+     393: fstore        20
+     395: fconst_1
+     396: fload         20
+     398: fload         20
+     400: fmul
+     401: fsub
+     402: invokestatic  #161                // Method net/minecraft/util/Mth.sqrt:(F)F
+     405: fstore        21
+     407: aload_2
+     408: invokeinterface #123,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     413: ldc           #165                // float 6.2831855f
+     415: fmul
+     416: fstore        22
+     418: fload         22
+     420: invokestatic  #166                // Method net/minecraft/util/Mth.cos:(F)F
+     423: fload         21
+     425: fmul
+     426: fstore        23
+     428: fload         22
+     430: invokestatic  #169                // Method net/minecraft/util/Mth.sin:(F)F
+     433: fload         21
+     435: fmul
+     436: fstore        24
+     438: new           #172                // class net/minecraft/world/level/levelgen/synth/SimplexNoise
+     441: dup
+     442: aload_2
+     443: invokespecial #174                // Method net/minecraft/world/level/levelgen/synth/SimplexNoise."<init>":(Lnet/minecraft/util/RandomSource;)V
+     446: astore        25
+     448: new           #172                // class net/minecraft/world/level/levelgen/synth/SimplexNoise
+     451: dup
+     452: aload_2
+     453: invokespecial #174                // Method net/minecraft/world/level/levelgen/synth/SimplexNoise."<init>":(Lnet/minecraft/util/RandomSource;)V
+     456: astore        26
+     458: new           #177                // class net/minecraft/core/BlockPos$MutableBlockPos
+     461: dup
+     462: invokespecial #179                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     465: astore        27
+     467: new           #180                // class net/minecraft/world/level/chunk/BulkSectionAccess
+     470: dup
+     471: aload         4
+     473: invokespecial #182                // Method net/minecraft/world/level/chunk/BulkSectionAccess."<init>":(Lnet/minecraft/world/level/LevelAccessor;)V
+     476: astore        28
+     478: iload         11
+     480: ineg
+     481: istore        29
+     483: iload         29
+     485: iload         11
+     487: if_icmpgt     1028
+     490: iload         29
+     492: i2f
+     493: fconst_1
+     494: fload         10
+     496: fdiv
+     497: fmul
+     498: fstore        30
+     500: fload         30
+     502: fload         30
+     504: fmul
+     505: fconst_1
+     506: fcmpl
+     507: ifle          513
+     510: goto          1022
+     513: iload         11
+     515: ineg
+     516: istore        31
+     518: iload         31
+     520: iload         11
+     522: if_icmpgt     1022
+     525: iload         31
+     527: i2f
+     528: fconst_1
+     529: fload         10
+     531: fdiv
+     532: fmul
+     533: fstore        32
+     535: fload         30
+     537: fload         30
+     539: fmul
+     540: fload         32
+     542: fload         32
+     544: fmul
+     545: fadd
+     546: fconst_1
+     547: fcmpl
+     548: ifle          554
+     551: goto          1016
+     554: iload         11
+     556: ineg
+     557: istore        33
+     559: iload         33
+     561: iload         11
+     563: if_icmpgt     1016
+     566: iload         33
+     568: i2f
+     569: fconst_1
+     570: fload         10
+     572: fdiv
+     573: fmul
+     574: fstore        34
+     576: fload         30
+     578: fload         30
+     580: fmul
+     581: fload         32
+     583: fload         32
+     585: fmul
+     586: fadd
+     587: fload         34
+     589: fload         34
+     591: fmul
+     592: fadd
+     593: fstore        35
+     595: fload         35
+     597: fconst_1
+     598: fcmpl
+     599: ifle          605
+     602: goto          1010
+     605: aload         4
+     607: iload         13
+     609: iload         33
+     611: iadd
+     612: invokeinterface #185,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isOutsideBuildHeight:(I)Z
+     617: ifeq          623
+     620: goto          1010
+     623: iload         12
+     625: iload         31
+     627: iadd
+     628: istore        36
+     630: iload         13
+     632: iload         33
+     634: iadd
+     635: istore        37
+     637: iload         14
+     639: iload         29
+     641: iadd
+     642: istore        38
+     644: fload         23
+     646: fload         32
+     648: fmul
+     649: fload         20
+     651: fload         34
+     653: fmul
+     654: fadd
+     655: fload         24
+     657: fload         30
+     659: fmul
+     660: fadd
+     661: fstore        39
+     663: fload         39
+     665: f2d
+     666: aload         25
+     668: iload         36
+     670: i2f
+     671: ldc           #191                // float 0.125f
+     673: fmul
+     674: f2d
+     675: iload         37
+     677: i2f
+     678: ldc           #191                // float 0.125f
+     680: fmul
+     681: f2d
+     682: iload         38
+     684: i2f
+     685: ldc           #191                // float 0.125f
+     687: fmul
+     688: f2d
+     689: invokevirtual #192                // Method net/minecraft/world/level/levelgen/synth/SimplexNoise.getValue:(DDD)D
+     692: ldc           #196                // float 1.75f
+     694: iload         9
+     696: i2f
+     697: fdiv
+     698: f2d
+     699: dmul
+     700: dadd
+     701: d2f
+     702: fstore        39
+     704: aload         18
+     706: new           #145                // class com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry
+     709: dup
+     710: aconst_null
+     711: fconst_0
+     712: fload         39
+     714: invokespecial #151                // Method com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry."<init>":(Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;FF)V
+     717: invokestatic  #197                // Method java/util/Collections.binarySearch:(Ljava/util/List;Ljava/lang/Object;)I
+     720: istore        40
+     722: iload         40
+     724: ifge          734
+     727: bipush        -2
+     729: iload         40
+     731: isub
+     732: istore        40
+     734: aload         18
+     736: iload         40
+     738: invokeinterface #51,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     743: checkcast     #145                // class com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry
+     746: astore        41
+     748: fload         35
+     750: aload         41
+     752: getfield      #203                // Field com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry.radialThresholdMultiplier:F
+     755: fcmpl
+     756: ifle          762
+     759: goto          1010
+     762: aload         26
+     764: iload         36
+     766: i2f
+     767: ldc           #191                // float 0.125f
+     769: fmul
+     770: f2d
+     771: iload         37
+     773: i2f
+     774: ldc           #191                // float 0.125f
+     776: fmul
+     777: f2d
+     778: iload         38
+     780: i2f
+     781: ldc           #191                // float 0.125f
+     783: fmul
+     784: f2d
+     785: invokevirtual #192                // Method net/minecraft/world/level/levelgen/synth/SimplexNoise.getValue:(DDD)D
+     788: d2f
+     789: ldc           #154                // float -1.0f
+     791: fconst_1
+     792: ldc           #207                // float 0.75f
+     794: fconst_1
+     795: invokestatic  #208                // Method net/minecraft/util/Mth.map:(FFFFF)F
+     798: fstore        42
+     800: fload         35
+     802: aload         41
+     804: getfield      #203                // Field com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry.radialThresholdMultiplier:F
+     807: fload         42
+     809: fmul
+     810: fcmpl
+     811: ifle          817
+     814: goto          1010
+     817: aload         41
+     819: getfield      #212                // Field com/simibubi/create/infrastructure/worldgen/LayeredOreFeature$ResolvedLayerEntry.layer:Lcom/simibubi/create/infrastructure/worldgen/LayerPattern$Layer;
+     822: astore        43
+     824: aload         43
+     826: aload_2
+     827: invokevirtual #213                // Method com/simibubi/create/infrastructure/worldgen/LayerPattern$Layer.rollBlock:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+     830: astore        44
+     832: aload         27
+     834: iload         36
+     836: iload         37
+     838: iload         38
+     840: invokevirtual #217                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     843: pop
+     844: aload         4
+     846: aload         27
+     848: invokeinterface #221,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.ensureCanWrite:(Lnet/minecraft/core/BlockPos;)Z
+     853: ifne          859
+     856: goto          1010
+     859: aload         28
+     861: aload         27
+     863: invokevirtual #225                // Method net/minecraft/world/level/chunk/BulkSectionAccess.getSection:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/LevelChunkSection;
+     866: astore        45
+     868: aload         45
+     870: ifnonnull     876
+     873: goto          1010
+     876: iload         36
+     878: invokestatic  #229                // Method net/minecraft/core/SectionPos.sectionRelative:(I)I
+     881: istore        46
+     883: iload         37
+     885: invokestatic  #229                // Method net/minecraft/core/SectionPos.sectionRelative:(I)I
+     888: istore        47
+     890: iload         38
+     892: invokestatic  #229                // Method net/minecraft/core/SectionPos.sectionRelative:(I)I
+     895: istore        48
+     897: aload         45
+     899: iload         46
+     901: iload         47
+     903: iload         48
+     905: invokevirtual #234                // Method net/minecraft/world/level/chunk/LevelChunkSection.getBlockState:(III)Lnet/minecraft/world/level/block/state/BlockState;
+     908: astore        49
+     910: aload         44
+     912: invokeinterface #127,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     917: astore        50
+     919: aload         50
+     921: invokeinterface #131,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     926: ifeq          1010
+     929: aload         50
+     931: invokeinterface #136,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     936: checkcast     #240                // class net/minecraft/world/level/levelgen/feature/configurations/OreConfiguration$TargetBlockState
+     939: astore        51
+     941: aload_0
+     942: aload         49
+     944: aload         28
+     946: dup
+     947: invokestatic  #242                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     950: pop
+     951: invokedynamic #248,  0            // InvokeDynamic #0:apply:(Lnet/minecraft/world/level/chunk/BulkSectionAccess;)Ljava/util/function/Function;
+     956: aload_2
+     957: aload         5
+     959: aload         51
+     961: aload         27
+     963: invokevirtual #252                // Method canPlaceOre:(Lnet/minecraft/world/level/block/state/BlockState;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lcom/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration;Lnet/minecraft/world/level/levelgen/feature/configurations/OreConfiguration$TargetBlockState;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Z
+     966: ifne          972
+     969: goto          919
+     972: aload         51
+     974: getfield      #256                // Field net/minecraft/world/level/levelgen/feature/configurations/OreConfiguration$TargetBlockState.state:Lnet/minecraft/world/level/block/state/BlockState;
+     977: invokevirtual #260                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     980: ifeq          986
+     983: goto          919
+     986: aload         45
+     988: iload         46
+     990: iload         47
+     992: iload         48
+     994: aload         51
+     996: getfield      #256                // Field net/minecraft/world/level/levelgen/feature/configurations/OreConfiguration$TargetBlockState.state:Lnet/minecraft/world/level/block/state/BlockState;
+     999: iconst_0
+    1000: invokevirtual #265                // Method net/minecraft/world/level/chunk/LevelChunkSection.setBlockState:(IIILnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+    1003: pop
+    1004: iinc          8, 1
+    1007: goto          1010
+    1010: iinc          33, 1
+    1013: goto          559
+    1016: iinc          31, 1
+    1019: goto          518
+    1022: iinc          29, 1
+    1025: goto          483
+    1028: goto          1053
+    1031: astore        29
+    1033: aload         28
+    1035: invokevirtual #271                // Method net/minecraft/world/level/chunk/BulkSectionAccess.close:()V
+    1038: goto          1050
+    1041: astore        30
+    1043: aload         29
+    1045: aload         30
+    1047: invokevirtual #274                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+    1050: aload         29
+    1052: athrow
+    1053: aload         28
+    1055: invokevirtual #271                // Method net/minecraft/world/level/chunk/BulkSectionAccess.close:()V
+    1058: iload         8
+    1060: ifle          1067
+    1063: iconst_1
+    1064: goto          1068
+    1067: iconst_0
+    1068: ireturn
+    Exception table:
+       from    to  target type
+         478  1028  1031   Class java/lang/Throwable
+        1033  1038  1041   Class java/lang/Throwable
+
+  public boolean canPlaceOre(net.minecraft.world.level.block.state.BlockState, java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, com.simibubi.create.infrastructure.worldgen.LayeredOreConfiguration, net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration$TargetBlockState, net.minecraft.core.BlockPos$MutableBlockPos);
+    Code:
+       0: aload         5
+       2: getfield      #278                // Field net/minecraft/world/level/levelgen/feature/configurations/OreConfiguration$TargetBlockState.target:Lnet/minecraft/world/level/levelgen/structure/templatesystem/RuleTest;
+       5: aload_1
+       6: aload_3
+       7: invokevirtual #282                // Method net/minecraft/world/level/levelgen/structure/templatesystem/RuleTest.test:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;)Z
+      10: ifne          15
+      13: iconst_0
+      14: ireturn
+      15: aload_0
+      16: aload_3
+      17: aload         4
+      19: getfield      #288                // Field com/simibubi/create/infrastructure/worldgen/LayeredOreConfiguration.discardChanceOnAirExposure:F
+      22: invokevirtual #291                // Method shouldSkipAirCheck:(Lnet/minecraft/util/RandomSource;F)Z
+      25: ifeq          30
+      28: iconst_1
+      29: ireturn
+      30: aload_2
+      31: aload         6
+      33: invokestatic  #295                // Method isAdjacentToAir:(Ljava/util/function/Function;Lnet/minecraft/core/BlockPos;)Z
+      36: ifne          43
+      39: iconst_1
+      40: goto          44
+      43: iconst_0
+      44: ireturn
+
+  protected boolean shouldSkipAirCheck(net.minecraft.util.RandomSource, float);
+    Code:
+       0: fload_2
+       1: fconst_0
+       2: fcmpg
+       3: ifgt          10
+       6: iconst_1
+       7: goto          36
+      10: fload_2
+      11: fconst_1
+      12: fcmpl
+      13: iflt          20
+      16: iconst_0
+      17: goto          36
+      20: aload_1
+      21: invokeinterface #123,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      26: fload_2
+      27: fcmpl
+      28: iflt          35
+      31: iconst_1
+      32: goto          36
+      35: iconst_0
+      36: ireturn
+}
