@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Nether landmark decisions now resolve all seven remaining explicit Nether
+provisionals and the existing well, circle-ruin and fragment relationship notes.
+The two comparison sheets are delivered at 8d99f50c. Nine affected source-binding
+cases and scoped Ruff/Basedpyright pass. Working groups remain 408; explicit
+provisional decisions are now 53, all Voyager. Derived inventory refresh follows.
+Required attributes and nonregistry reconciliation remain incomplete.
+
 Nether's final seven landmark comparisons reuse the existing renderer. Include
 five existing well pieces and two circular-ruin templates as reference layouts
 because those records leave cross-design relationships open. These are existing
