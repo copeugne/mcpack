@@ -66,8 +66,8 @@ counts, is the requested answer to how many families remain.
 
 | Candidate | Delivered result | Remaining scope decision |
 | --- | --- | --- |
-| BetterEnd building lists | Six live configured-feature IDs and their mixed building/vegetation lists; selector source in 9695ae5. | Assign actual designs and variants; do not call all six lists one family or count every template separately. |
-| BetterEnd crashed ship | Registered feature implementation and vanilla ship template reuse in 9695ae5. | Establish active configured/placed use before adding a family. |
+| BetterEnd building lists | Six live configured/placed IDs, 63 exact template choices, 21 vegetation exclusions and 42 architectural candidates. See BetterEnd feature candidate reconciliation below. | Group architectural choices by design; neither six lists nor 42 templates is the family count. |
+| BetterEnd crashed ship | Inline configured placement, live placed ID, 27 packaged biome consumers, including 21 exposed by the captured End biome source. See reconciliation below. | Include the named crashed-ship candidate; reconcile shared biome modifiers and full provider coverage. Placement success remains separate. |
 | BOP anomaly, monolith, bone spine | Direct writers in 846bc09; both bone-spine definitions reuse one type. | Resolve landmark/terrain boundaries and bind active placement. |
 | Deep Aether totem | One stacked design with block/height/facing variations in b0194ce. | Bind registration and placement; preserve one design rather than counting blocks as families. |
 | Explorations scarecrow | One figure design, nine material configurations and a selector in ac990fd. | Bind registration and selector/placement relationships; do not count ten configured entries as ten families. |
@@ -542,7 +542,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | --- | --- | --- |
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
-| `BetterEnd-21.0.31.jar` | `betterend-feature-scope`, `betterend-formation-pieces`, `betterend-formations-code`, `betterend-lake-helpers` | Bind six building lists and crashed-ship eligibility; separate building designs from vegetation; reconcile existing roots. |
+| `BetterEnd-21.0.31.jar` | `betterend-feature-scope`, `betterend-formation-pieces`, `betterend-formations-code`, `betterend-lake-helpers`; test_betterend_feature_candidates.py | Six building lists and crashed-ship packaged routes reconciled below. Remaining: other generation entries/resources, existing roots and shared modifiers; canonical grouping follows the census. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -1442,3 +1442,85 @@ statement-count lint exception keeps the explicit archive/config cases in the
 existing test instead of introducing a validation framework. Ruff and Basedpyright
 pass. No runtime measurement, baseline change or detailed family grouping work.
 Provider dispositions: 53 of 136 resolved, 83 open. Continue the remaining census.
+
+## BetterEnd feature candidate reconciliation
+
+The earlier crashed-ship uncertainty is narrowed by existing packaged evidence,
+without another source capture or world run. Its configured feature is embedded
+inside `data/betterend/worldgen/placed_feature/crashed_ship.json`; absence of a
+separate configured-feature registry ID does not make it inactive. The placed ID
+`betterend:crashed_ship` exists in the captured runtime registry. Its declaration
+uses rarity 500, in-square placement and biome filtering. These inputs are not an
+observed occurrence rate.
+
+The packaged route has 27 explicit biome consumers, all named in
+`tests/item8/test_betterend_feature_candidates.py`. Twenty-one occur in the
+captured End biome source. Six cave-biome references do not: empty_aurora_cave,
+empty_end_cave, empty_smaragdant_cave, jade_cave, lush_aurora_cave and
+lush_smaragdant_cave. Do not infer that those six are globally unreachable from
+this biome-source result. The additional
+`data/betterend/wover/worldgen/biome_modifications/defaults.json` declaration
+requests the ship for non-BetterEnd biomes with Wover End barrens, midland or
+highland tags. Its shared modifier semantics remain in WorldWeaver's census row;
+this does not erase the 21 directly linked biome-source candidates.
+
+The preserved CrashedShipFeature selects `minecraft:end_city/ship`, with erosion
+and placement distinct from a ship attached to an End city. Retain one named
+crashed-ship candidate. Its source precheck uses X for both squared chunk
+coordinates, requires the resulting sum to reach 3600, Y greater than 5, and an
+End-stone-tag block below. Do not repair that behavior or claim generated-world
+occurrence from packaged eligibility. Reuse the existing source manifest
+7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d.
+
+All six building-list configured IDs and corresponding placed IDs exist in the
+runtime registries. Each is directly referenced by its corresponding packaged
+biome, and all six biomes occur in the captured End biome source. Their placed
+features declare rarity 10, in-square placement and biome filtering. Existing
+BuildingListFeature source also imposes an even chunk-coordinate sum, Y greater
+than 58, air at the placement point and terrain-tag support below. It selects one
+configured template, with rotation/mirror variations. A list is not an assembled
+village or a family count.
+
+The following partition accounts for every choice. Paths share
+`/data/betterend/structure/biome/<biome>/` and end in `.nbt`. Number intervals are
+inclusive. The focused test asserts the exact sets, verifies every template
+exists and decodes it using the existing template decoder.
+
+| Biome/list prefix | Architectural candidate choices | Vegetation choices excluded from authored-family candidates |
+| --- | --- | --- |
+| blossoming_spires | ruins_1 through ruins_8 (8) | None |
+| chorus_forest | ruins_1 through ruins_8 (8) | fallen_tree_1 through fallen_tree_4; stump_1 through stump_3 (7) |
+| foggy_mushroomland | library, tree_house, ruins_1 through ruins_3 (5) | fallen_tree_1, fallen_tree_2, stump_1, stump_2 (4) |
+| lantern_woods | cabin, light_1, ruins_1, ruins_2 (4) | log_1, log_2, stump_1 through stump_3 (5) |
+| shadow_forest | small_mansion, ruins_1 through ruins_8 (9) | stump_1, stump_2, fallen_log_1, fallen_log_2 (4) |
+| umbrella_jungle | house_1, house_2, ruins_1 through ruins_6 (8) | jellyshroom_cluster (1) |
+| Total template choices | 42 | 21 |
+
+The vegetation disposition uses decoded content, not the names alone: the 21
+choices contain only the explicitly checked natural wood, fungal, foliage,
+plant and End-stone blocks, with no stored entities or block-entity data. The
+remaining 42 contain constructed materials, architecture or furnishings,
+including lamps, masonry, bookshelves, doors and containers. Preserve them as
+named architectural candidates. The umbrella cluster's stripped fungal bark is
+part of the inspected natural cluster, not sufficient by itself to invent a
+building. Conversely, lantern_woods/light_1 combines pedestal, wall, fence and
+chain with a light-bearing plant and stays in the architectural candidate set.
+
+Canonical grouping remains a specific task: compare the six ruin sets and the
+two umbrella houses for shared designs, and relate standalone light/ruin designs
+to the other named ornament candidates. Do not collapse choices by numbered
+filename or promote every template to a family. Full BetterEnd provider coverage
+also still requires its other entry points, resources and existing roots. The
+provider total therefore remains 53 resolved and 83 open.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py
+```
+
+Two focused cases pass. Initial lint/type findings were confined to test
+formatting, explicit types and split assertions; they are corrected. Ruff and
+Basedpyright pass. The tests reuse frozen archive dd883e2f91fa7ee8a0594dc3844de38bf3e550d91ff1247b2801808904fd013a,
+the existing source capture and dimension-biome evidence. No new measurement,
+source-disassembly batch, schema or baseline change.
