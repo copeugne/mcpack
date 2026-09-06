@@ -1,0 +1,372 @@
+Classfile alternate_current-mc1.21-1.9.0.jar!/alternate/current/wire/SimpleQueue.class
+  Last modified Aug 26, 2024; size 2040 bytes
+  SHA-256 checksum 310f7f58690a8de279971495c218e0151c12e805311952483d23ea0789607abc
+  Compiled from "SimpleQueue.java"
+public class alternate.current.wire.SimpleQueue extends java.util.AbstractQueue<alternate.current.wire.WireNode>
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #11                         // alternate/current/wire/SimpleQueue
+  super_class: #2                         // java/util/AbstractQueue
+  interfaces: 0, fields: 3, methods: 10, attributes: 4
+Constant pool:
+   #1 = Methodref          #2.#3          // java/util/AbstractQueue."<init>":()V
+   #2 = Class              #4             // java/util/AbstractQueue
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/util/AbstractQueue
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // java/lang/NullPointerException
+   #8 = Utf8               java/lang/NullPointerException
+   #9 = Methodref          #7.#3          // java/lang/NullPointerException."<init>":()V
+  #10 = Fieldref           #11.#12        // alternate/current/wire/SimpleQueue.tail:Lalternate/current/wire/WireNode;
+  #11 = Class              #13            // alternate/current/wire/SimpleQueue
+  #12 = NameAndType        #14:#15        // tail:Lalternate/current/wire/WireNode;
+  #13 = Utf8               alternate/current/wire/SimpleQueue
+  #14 = Utf8               tail
+  #15 = Utf8               Lalternate/current/wire/WireNode;
+  #16 = Fieldref           #11.#17        // alternate/current/wire/SimpleQueue.head:Lalternate/current/wire/WireNode;
+  #17 = NameAndType        #18:#15        // head:Lalternate/current/wire/WireNode;
+  #18 = Utf8               head
+  #19 = Fieldref           #20.#21        // alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+  #20 = Class              #22            // alternate/current/wire/WireNode
+  #21 = NameAndType        #23:#15        // next_wire:Lalternate/current/wire/WireNode;
+  #22 = Utf8               alternate/current/wire/WireNode
+  #23 = Utf8               next_wire
+  #24 = Fieldref           #11.#25        // alternate/current/wire/SimpleQueue.size:I
+  #25 = NameAndType        #26:#27        // size:I
+  #26 = Utf8               size
+  #27 = Utf8               I
+  #28 = Class              #29            // alternate/current/wire/SimpleQueue$SimpleIterator
+  #29 = Utf8               alternate/current/wire/SimpleQueue$SimpleIterator
+  #30 = Methodref          #28.#31        // alternate/current/wire/SimpleQueue$SimpleIterator."<init>":(Lalternate/current/wire/SimpleQueue;)V
+  #31 = NameAndType        #5:#32         // "<init>":(Lalternate/current/wire/SimpleQueue;)V
+  #32 = Utf8               (Lalternate/current/wire/SimpleQueue;)V
+  #33 = Methodref          #11.#34        // alternate/current/wire/SimpleQueue.peek:()Lalternate/current/wire/WireNode;
+  #34 = NameAndType        #35:#36        // peek:()Lalternate/current/wire/WireNode;
+  #35 = Utf8               peek
+  #36 = Utf8               ()Lalternate/current/wire/WireNode;
+  #37 = Methodref          #11.#38        // alternate/current/wire/SimpleQueue.poll:()Lalternate/current/wire/WireNode;
+  #38 = NameAndType        #39:#36        // poll:()Lalternate/current/wire/WireNode;
+  #39 = Utf8               poll
+  #40 = Methodref          #11.#41        // alternate/current/wire/SimpleQueue.offer:(Lalternate/current/wire/WireNode;)Z
+  #41 = NameAndType        #42:#43        // offer:(Lalternate/current/wire/WireNode;)Z
+  #42 = Utf8               offer
+  #43 = Utf8               (Lalternate/current/wire/WireNode;)Z
+  #44 = Utf8               Code
+  #45 = Utf8               LineNumberTable
+  #46 = Utf8               LocalVariableTable
+  #47 = Utf8               this
+  #48 = Utf8               Lalternate/current/wire/SimpleQueue;
+  #49 = Utf8               node
+  #50 = Utf8               StackMapTable
+  #51 = Utf8               next
+  #52 = Utf8               clear
+  #53 = Utf8               n
+  #54 = Utf8               iterator
+  #55 = Utf8               ()Ljava/util/Iterator;
+  #56 = Utf8               Signature
+  #57 = Utf8               ()Ljava/util/Iterator<Lalternate/current/wire/WireNode;>;
+  #58 = Utf8               ()I
+  #59 = Utf8               ()Ljava/lang/Object;
+  #60 = Utf8               (Ljava/lang/Object;)Z
+  #61 = Utf8               MethodParameters
+  #62 = Utf8               Ljava/util/AbstractQueue<Lalternate/current/wire/WireNode;>;
+  #63 = Utf8               SourceFile
+  #64 = Utf8               SimpleQueue.java
+  #65 = Utf8               NestMembers
+  #66 = Utf8               InnerClasses
+  #67 = Utf8               SimpleIterator
+{
+  private alternate.current.wire.WireNode head;
+    descriptor: Lalternate/current/wire/WireNode;
+    flags: (0x0002) ACC_PRIVATE
+
+  private alternate.current.wire.WireNode tail;
+    descriptor: Lalternate/current/wire/WireNode;
+    flags: (0x0002) ACC_PRIVATE
+
+  private int size;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  alternate.current.wire.SimpleQueue();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/util/AbstractQueue."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+        line 15: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lalternate/current/wire/SimpleQueue;
+
+  public boolean offer(alternate.current.wire.WireNode);
+    descriptor: (Lalternate/current/wire/WireNode;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_1
+         1: ifnonnull     12
+         4: new           #7                  // class java/lang/NullPointerException
+         7: dup
+         8: invokespecial #9                  // Method java/lang/NullPointerException."<init>":()V
+        11: athrow
+        12: aload_0
+        13: getfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        16: ifnonnull     32
+        19: aload_0
+        20: aload_0
+        21: aload_1
+        22: dup_x1
+        23: putfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        26: putfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+        29: goto          45
+        32: aload_0
+        33: getfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        36: aload_1
+        37: putfield      #19                 // Field alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+        40: aload_0
+        41: aload_1
+        42: putfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        45: aload_0
+        46: dup
+        47: getfield      #24                 // Field size:I
+        50: iconst_1
+        51: iadd
+        52: putfield      #24                 // Field size:I
+        55: iconst_1
+        56: ireturn
+      LineNumberTable:
+        line 19: 0
+        line 20: 4
+        line 23: 12
+        line 24: 19
+        line 26: 32
+        line 27: 40
+        line 30: 45
+        line 32: 55
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      57     0  this   Lalternate/current/wire/SimpleQueue;
+            0      57     1  node   Lalternate/current/wire/WireNode;
+      StackMapTable: number_of_entries = 3
+        frame_type = 12 /* same */
+        frame_type = 19 /* same */
+        frame_type = 12 /* same */
+
+  public alternate.current.wire.WireNode poll();
+    descriptor: ()Lalternate/current/wire/WireNode;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+         4: ifnonnull     9
+         7: aconst_null
+         8: areturn
+         9: aload_0
+        10: getfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+        13: astore_1
+        14: aload_1
+        15: getfield      #19                 // Field alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+        18: astore_2
+        19: aload_2
+        20: ifnonnull     36
+        23: aload_0
+        24: aload_0
+        25: aconst_null
+        26: dup_x1
+        27: putfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        30: putfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+        33: goto          46
+        36: aload_1
+        37: aconst_null
+        38: putfield      #19                 // Field alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+        41: aload_0
+        42: aload_2
+        43: putfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+        46: aload_0
+        47: dup
+        48: getfield      #24                 // Field size:I
+        51: iconst_1
+        52: isub
+        53: putfield      #24                 // Field size:I
+        56: aload_1
+        57: areturn
+      LineNumberTable:
+        line 37: 0
+        line 38: 7
+        line 41: 9
+        line 42: 14
+        line 44: 19
+        line 45: 23
+        line 47: 36
+        line 48: 41
+        line 51: 46
+        line 53: 56
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      58     0  this   Lalternate/current/wire/SimpleQueue;
+           14      44     1  node   Lalternate/current/wire/WireNode;
+           19      39     2  next   Lalternate/current/wire/WireNode;
+      StackMapTable: number_of_entries = 3
+        frame_type = 9 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 26
+          locals = [ class alternate/current/wire/WireNode, class alternate/current/wire/WireNode ]
+        frame_type = 9 /* same */
+
+  public alternate.current.wire.WireNode peek();
+    descriptor: ()Lalternate/current/wire/WireNode;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+         4: areturn
+      LineNumberTable:
+        line 58: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lalternate/current/wire/SimpleQueue;
+
+  public void clear();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+         4: astore_1
+         5: aload_1
+         6: ifnull        24
+         9: aload_1
+        10: astore_2
+        11: aload_1
+        12: getfield      #19                 // Field alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+        15: astore_1
+        16: aload_2
+        17: aconst_null
+        18: putfield      #19                 // Field alternate/current/wire/WireNode.next_wire:Lalternate/current/wire/WireNode;
+        21: goto          5
+        24: aload_0
+        25: aconst_null
+        26: putfield      #16                 // Field head:Lalternate/current/wire/WireNode;
+        29: aload_0
+        30: aconst_null
+        31: putfield      #10                 // Field tail:Lalternate/current/wire/WireNode;
+        34: aload_0
+        35: iconst_0
+        36: putfield      #24                 // Field size:I
+        39: return
+      LineNumberTable:
+        line 63: 0
+        line 64: 9
+        line 65: 11
+        line 67: 16
+        line 68: 21
+        line 70: 24
+        line 71: 29
+        line 73: 34
+        line 74: 39
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           11      10     2     n   Lalternate/current/wire/WireNode;
+            5      19     1  node   Lalternate/current/wire/WireNode;
+            0      40     0  this   Lalternate/current/wire/SimpleQueue;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 5
+          locals = [ class alternate/current/wire/WireNode ]
+        frame_type = 250 /* chop */
+          offset_delta = 18
+
+  public java.util.Iterator<alternate.current.wire.WireNode> iterator();
+    descriptor: ()Ljava/util/Iterator;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: new           #28                 // class alternate/current/wire/SimpleQueue$SimpleIterator
+         3: dup
+         4: aload_0
+         5: invokespecial #30                 // Method alternate/current/wire/SimpleQueue$SimpleIterator."<init>":(Lalternate/current/wire/SimpleQueue;)V
+         8: areturn
+      LineNumberTable:
+        line 78: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lalternate/current/wire/SimpleQueue;
+    Signature: #57                          // ()Ljava/util/Iterator<Lalternate/current/wire/WireNode;>;
+
+  public int size();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #24                 // Field size:I
+         4: ireturn
+      LineNumberTable:
+        line 83: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lalternate/current/wire/SimpleQueue;
+
+  public java.lang.Object peek();
+    descriptor: ()Ljava/lang/Object;
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #33                 // Method peek:()Lalternate/current/wire/WireNode;
+         4: areturn
+      LineNumberTable:
+        line 6: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lalternate/current/wire/SimpleQueue;
+
+  public java.lang.Object poll();
+    descriptor: ()Ljava/lang/Object;
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #37                 // Method poll:()Lalternate/current/wire/WireNode;
+         4: areturn
+      LineNumberTable:
+        line 6: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lalternate/current/wire/SimpleQueue;
+
+  public boolean offer(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: checkcast     #20                 // class alternate/current/wire/WireNode
+         5: invokevirtual #40                 // Method offer:(Lalternate/current/wire/WireNode;)Z
+         8: ireturn
+      LineNumberTable:
+        line 6: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lalternate/current/wire/SimpleQueue;
+    MethodParameters:
+      Name                           Flags
+      <no name>                      synthetic
+}
+Signature: #62                          // Ljava/util/AbstractQueue<Lalternate/current/wire/WireNode;>;
+SourceFile: "SimpleQueue.java"
+NestMembers:
+  alternate/current/wire/SimpleQueue$SimpleIterator
+InnerClasses:
+  private #67= #28 of #11;                // SimpleIterator=class alternate/current/wire/SimpleQueue$SimpleIterator of class alternate/current/wire/SimpleQueue
