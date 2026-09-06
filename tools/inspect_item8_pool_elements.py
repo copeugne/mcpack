@@ -76,6 +76,7 @@ ARCHIVES = frozenset(
         "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
         "[Neoforge]ctov-3.6.3.jar",
         "Terralith_1.21.1_v2.6.2_Neoforge.jar",
+        "tectonic-3.0.22-neoforge-21.1.jar",
         "AI-Improvements-1.21-0.5.3.jar",
         "Almanac-1.21.1-2-neoforge-1.5.2.jar",
         "libraryferret-neoforge-1.21.1-4.0.0.jar",
@@ -99,6 +100,14 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "dev/worldgen/tectonic/Tectonic",
+    "dev/worldgen/tectonic/ConfigResourceCondition",
+    "dev/worldgen/tectonic/config/ConfigHandler",
+    "dev/worldgen/tectonic/command/",
+    "dev/worldgen/tectonic/compat/",
+    "dev/worldgen/tectonic/worldgen/",
+    "dev/worldgen/tectonic/lithostitched/",
+    "dev/worldgen/tectonic/mixin/",
     "net/stardustlabs/terralith/",
     "rbasamoyai/ritchiesprojectilelib/",
     "architectury_inject_RitchiesProjectileLib_",
@@ -706,6 +715,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "com/scouter/oceansdelight/OceansDelight.class",
                     "net/stardustlabs/terralith/TerralithNeoforge.class",
                     "net/stardustlabs/terralith/TerralithNeoforgeClient.class",
+                    "dev/worldgen/tectonic/TectonicNeoforge.class",
+                    "dev/worldgen/tectonic/TectonicNeoforgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
