@@ -9348,3 +9348,34 @@ SHA-256: 36a7af5025bf1800f3cd7b32f6c6965949ae48bc736229ad751aa26ab768140a.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-aether-designs-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-aether-designs-r2.json
 ```
+
+### Towns and Towers settlement reconciliation, 2026-09-07
+
+The village group retains all 26 full root variants under the same settlement
+convention used for CTOV and Integrated Villages. Existing template content binds
+the unusual members: trader meeting point with tents, llama pens and authored
+traders; grove building with beds, workstations and village inhabitants; snowy inn
+with beds, inhabitants and decor. These are settlement architecture variants,
+not an assertion of identical layouts or peaceful population. Piglin/brute spawn
+overrides remain explicit. The ocean ship remains a separate design. Vanilla-ID
+replacements remain components of their consuming vanilla family, not aliases
+of these independent roots. Missing components and effective attributes remain.
+
+Three affected cases and scoped checks pass. Canonical-note backlog: 105, down
+from 106. Remaining named records: IDAS 59, AdoraBuild 31 and Terralith 15. Coverage
+groups remain 405. No new capture, rendering or measurement was needed.
+
+```sh
+uv run pytest tests/item8/test_towns_towers_provider_scope.py tests/item8/test_family_decisions.py -q -k 'towns or towers'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 420fe50f and independently reproduced exactly.
+Only the village grouping decision and the decision input identity changed.
+SHA-256: 79129d05f74bb755e2ce3b847df40b51c03aac486ebd2429383e5359362410dc.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-towns-designs-r2.json
+```
