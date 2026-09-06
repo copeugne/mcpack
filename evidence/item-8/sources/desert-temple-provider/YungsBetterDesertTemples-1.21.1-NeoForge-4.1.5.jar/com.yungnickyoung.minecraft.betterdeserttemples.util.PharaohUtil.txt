@@ -1,0 +1,350 @@
+Compiled from "PharaohUtil.java"
+public class com.yungnickyoung.minecraft.betterdeserttemples.util.PharaohUtil {
+  private static final java.lang.String PHARAOH_HEAD_TEXTURE = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTM1MGMwNDk5YTY4YmNkOWM3NWIyNWMxOTIzMTQzOWIxMDhkMDI3NTlmNDM1ZTMzZTRhZWU5ZWQxZGQyNDFhMiJ9fX0=";
+
+  public com.yungnickyoung.minecraft.betterdeserttemples.util.PharaohUtil();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean isPharaoh(java.lang.Object);
+    Code:
+       0: aload_0
+       1: instanceof    #7                  // class net/minecraft/world/entity/monster/Husk
+       4: ifeq          15
+       7: aload_0
+       8: checkcast     #7                  // class net/minecraft/world/entity/monster/Husk
+      11: astore_1
+      12: goto          17
+      15: iconst_0
+      16: ireturn
+      17: aload_1
+      18: invokevirtual #9                  // Method net/minecraft/world/entity/monster/Husk.getArmorSlots:()Ljava/lang/Iterable;
+      21: invokeinterface #13,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      26: astore_2
+      27: aload_2
+      28: invokeinterface #19,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      33: ifeq          113
+      36: aload_2
+      37: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      42: checkcast     #29                 // class net/minecraft/world/item/ItemStack
+      45: astore_3
+      46: aload_3
+      47: getstatic     #31                 // Field net/minecraft/world/item/Items.PLAYER_HEAD:Lnet/minecraft/world/item/Item;
+      50: invokevirtual #37                 // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      53: ifeq          110
+      56: aload_3
+      57: getstatic     #41                 // Field net/minecraft/core/component/DataComponents.PROFILE:Lnet/minecraft/core/component/DataComponentType;
+      60: invokevirtual #47                 // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+      63: checkcast     #51                 // class net/minecraft/world/item/component/ResolvableProfile
+      66: astore        4
+      68: aload         4
+      70: ifnonnull     76
+      73: goto          27
+      76: aload         4
+      78: invokevirtual #53                 // Method net/minecraft/world/item/component/ResolvableProfile.properties:()Lcom/mojang/authlib/properties/PropertyMap;
+      81: invokevirtual #57                 // Method com/mojang/authlib/properties/PropertyMap.values:()Ljava/util/Collection;
+      84: invokeinterface #63,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      89: invokedynamic #69,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      94: invokeinterface #73,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      99: invokedynamic #79,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+     104: invokeinterface #80,  2           // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+     109: ireturn
+     110: goto          27
+     113: iconst_0
+     114: ireturn
+
+  public static boolean isPharaoh(net.minecraft.nbt.CompoundTag, net.minecraft.core.RegistryAccess);
+    Code:
+       0: aload_0
+       1: ldc           #84                 // String id
+       3: invokevirtual #86                 // Method net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+       6: ldc           #92                 // String minecraft:husk
+       8: invokevirtual #94                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      11: ifne          16
+      14: iconst_0
+      15: ireturn
+      16: aload_0
+      17: ldc           #100                // String ArmorItems
+      19: bipush        10
+      21: invokevirtual #104                // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+      24: astore_2
+      25: aload_2
+      26: invokevirtual #108                // Method net/minecraft/nbt/ListTag.size:()I
+      29: iconst_4
+      30: if_icmpeq     35
+      33: iconst_0
+      34: ireturn
+      35: aload_2
+      36: iconst_3
+      37: invokevirtual #114                // Method net/minecraft/nbt/ListTag.getCompound:(I)Lnet/minecraft/nbt/CompoundTag;
+      40: astore_3
+      41: aload_1
+      42: aload_3
+      43: invokestatic  #118                // Method net/minecraft/world/item/ItemStack.parseOptional:(Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/item/ItemStack;
+      46: astore        4
+      48: aload         4
+      50: getstatic     #31                 // Field net/minecraft/world/item/Items.PLAYER_HEAD:Lnet/minecraft/world/item/Item;
+      53: invokevirtual #37                 // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      56: ifne          61
+      59: iconst_0
+      60: ireturn
+      61: aload         4
+      63: getstatic     #41                 // Field net/minecraft/core/component/DataComponents.PROFILE:Lnet/minecraft/core/component/DataComponentType;
+      66: invokevirtual #47                 // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+      69: checkcast     #51                 // class net/minecraft/world/item/component/ResolvableProfile
+      72: astore        5
+      74: aload         5
+      76: ifnull        119
+      79: aload         5
+      81: invokevirtual #53                 // Method net/minecraft/world/item/component/ResolvableProfile.properties:()Lcom/mojang/authlib/properties/PropertyMap;
+      84: invokevirtual #57                 // Method com/mojang/authlib/properties/PropertyMap.values:()Ljava/util/Collection;
+      87: invokeinterface #63,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      92: invokedynamic #122,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      97: invokeinterface #73,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     102: invokedynamic #123,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+     107: invokeinterface #80,  2           // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+     112: ifeq          119
+     115: iconst_1
+     116: goto          120
+     119: iconst_0
+     120: ireturn
+
+  public static void attachSpawnPos(net.minecraft.nbt.CompoundTag, net.minecraft.world.phys.Vec3);
+    Code:
+       0: new           #109                // class net/minecraft/nbt/ListTag
+       3: dup
+       4: invokespecial #124                // Method net/minecraft/nbt/ListTag."<init>":()V
+       7: astore_2
+       8: aload_2
+       9: aload_1
+      10: invokevirtual #125                // Method net/minecraft/world/phys/Vec3.x:()D
+      13: invokestatic  #131                // Method net/minecraft/nbt/DoubleTag.valueOf:(D)Lnet/minecraft/nbt/DoubleTag;
+      16: invokevirtual #137                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+      19: pop
+      20: aload_2
+      21: aload_1
+      22: invokevirtual #140                // Method net/minecraft/world/phys/Vec3.y:()D
+      25: invokestatic  #131                // Method net/minecraft/nbt/DoubleTag.valueOf:(D)Lnet/minecraft/nbt/DoubleTag;
+      28: invokevirtual #137                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+      31: pop
+      32: aload_2
+      33: aload_1
+      34: invokevirtual #143                // Method net/minecraft/world/phys/Vec3.z:()D
+      37: invokestatic  #131                // Method net/minecraft/nbt/DoubleTag.valueOf:(D)Lnet/minecraft/nbt/DoubleTag;
+      40: invokevirtual #137                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+      43: pop
+      44: aload_0
+      45: ldc           #146                // String bdtOriginalSpawnPos
+      47: aload_2
+      48: invokevirtual #148                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      51: pop
+      52: return
+
+  public static void onKillOrDiscardPharaoh(net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel, net.minecraft.world.damagesource.DamageSource);
+    Code:
+       0: aload_0
+       1: checkcast     #152                // class com/yungnickyoung/minecraft/betterdeserttemples/entity/IPharaohData
+       4: invokeinterface #154,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterdeserttemples/entity/IPharaohData.getOriginalSpawnPos:()Lnet/minecraft/world/phys/Vec3;
+       9: astore_3
+      10: aload_3
+      11: ifnonnull     37
+      14: getstatic     #158                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      17: ldc           #164                // String Pharaoh entity is missing original spawn position data. Attempting to clear the temple it\'s inside of instead...
+      19: invokeinterface #166,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      24: aload_0
+      25: aload_1
+      26: aload_0
+      27: invokevirtual #172                // Method net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+      30: aload_2
+      31: invokestatic  #178                // Method tryClearTempleAtPosition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+      34: goto          69
+      37: new           #184                // class net/minecraft/core/BlockPos
+      40: dup
+      41: aload_3
+      42: getfield      #186                // Field net/minecraft/world/phys/Vec3.x:D
+      45: d2i
+      46: aload_3
+      47: getfield      #189                // Field net/minecraft/world/phys/Vec3.y:D
+      50: d2i
+      51: aload_3
+      52: getfield      #191                // Field net/minecraft/world/phys/Vec3.z:D
+      55: d2i
+      56: invokespecial #193                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      59: astore        4
+      61: aload_0
+      62: aload_1
+      63: aload         4
+      65: aload_2
+      66: invokestatic  #178                // Method tryClearTempleAtPosition:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/damagesource/DamageSource;)V
+      69: return
+
+  private static void tryClearTempleAtPosition(net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.damagesource.DamageSource);
+    Code:
+       0: aload_1
+       1: invokevirtual #196                // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+       4: aload_2
+       5: getstatic     #202                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+       8: invokevirtual #208                // Method net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+      11: astore        4
+      13: aload         4
+      15: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+      18: ifeq          210
+      21: aload         4
+      23: invokevirtual #219                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      26: invokevirtual #223                // Method net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+      29: astore        5
+      31: aload_1
+      32: checkcast     #228                // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider
+      35: invokeinterface #230,  1          // InterfaceMethod com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider.getTempleStateCache:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;
+      40: aload         5
+      42: iconst_1
+      43: invokevirtual #234                // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache.setTempleCleared:(Lnet/minecraft/core/BlockPos;Z)V
+      46: aload_1
+      47: invokevirtual #240                // Method net/minecraft/server/level/ServerLevel.players:()Ljava/util/List;
+      50: invokeinterface #244,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      55: aload_1
+      56: invokedynamic #247,  0            // InvokeDynamic #4:test:(Lnet/minecraft/server/level/ServerLevel;)Ljava/util/function/Predicate;
+      61: invokeinterface #73,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      66: invokeinterface #250,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      71: astore        6
+      73: aload         6
+      75: aload_0
+      76: aload_1
+      77: invokedynamic #253,  0            // InvokeDynamic #5:accept:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;)Ljava/util/function/Consumer;
+      82: invokeinterface #257,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      87: aload_3
+      88: ifnull        180
+      91: aload_3
+      92: invokevirtual #261                // Method net/minecraft/world/damagesource/DamageSource.getEntity:()Lnet/minecraft/world/entity/Entity;
+      95: astore        8
+      97: aload         8
+      99: instanceof    #267                // class net/minecraft/server/level/ServerPlayer
+     102: ifeq          180
+     105: aload         8
+     107: checkcast     #267                // class net/minecraft/server/level/ServerPlayer
+     110: astore        7
+     112: aload         6
+     114: aload         7
+     116: invokeinterface #269,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     121: ifne          180
+     124: aload         7
+     126: getfield      #272                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+     129: new           #276                // class net/minecraft/network/protocol/game/ClientboundSoundPacket
+     132: dup
+     133: getstatic     #278                // Field net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+     136: getstatic     #284                // Field net/minecraft/sounds/SoundEvents.BEACON_DEACTIVATE:Lnet/minecraft/sounds/SoundEvent;
+     139: invokeinterface #290,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+     144: getstatic     #296                // Field net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+     147: aload_0
+     148: invokevirtual #302                // Method net/minecraft/world/entity/Entity.getX:()D
+     151: aload_0
+     152: invokevirtual #305                // Method net/minecraft/world/entity/Entity.getY:()D
+     155: aload_0
+     156: invokevirtual #308                // Method net/minecraft/world/entity/Entity.getZ:()D
+     159: fconst_1
+     160: fconst_1
+     161: aload_1
+     162: invokevirtual #311                // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+     165: invokespecial #315                // Method net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+     168: invokevirtual #318                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+     171: aload         7
+     173: getstatic     #324                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+     176: invokevirtual #330                // Method net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+     179: pop
+     180: getstatic     #158                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     183: ldc_w         #334                // String Cleared Better Desert Temple at x={}, z={}
+     186: aload         5
+     188: invokevirtual #336                // Method net/minecraft/core/BlockPos.getX:()I
+     191: invokestatic  #338                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     194: aload         5
+     196: invokevirtual #343                // Method net/minecraft/core/BlockPos.getZ:()I
+     199: invokestatic  #338                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     202: invokeinterface #345,  4          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     207: goto          221
+     210: getstatic     #158                // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     213: ldc_w         #349                // String Position provided is not inside a Better Desert Temple. Unable to clear temple.
+     216: invokeinterface #166,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+     221: return
+
+  private static void lambda$tryClearTempleAtPosition$5(net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_2
+       1: getfield      #272                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       4: new           #276                // class net/minecraft/network/protocol/game/ClientboundSoundPacket
+       7: dup
+       8: getstatic     #278                // Field net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+      11: getstatic     #284                // Field net/minecraft/sounds/SoundEvents.BEACON_DEACTIVATE:Lnet/minecraft/sounds/SoundEvent;
+      14: invokeinterface #290,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+      19: getstatic     #296                // Field net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+      22: aload_0
+      23: invokevirtual #302                // Method net/minecraft/world/entity/Entity.getX:()D
+      26: aload_0
+      27: invokevirtual #305                // Method net/minecraft/world/entity/Entity.getY:()D
+      30: aload_0
+      31: invokevirtual #308                // Method net/minecraft/world/entity/Entity.getZ:()D
+      34: fconst_1
+      35: fconst_1
+      36: aload_1
+      37: invokevirtual #311                // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+      40: invokespecial #315                // Method net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+      43: invokevirtual #318                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+      46: aload_2
+      47: getstatic     #324                // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+      50: invokevirtual #330                // Method net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+      53: pop
+      54: return
+
+  private static boolean lambda$tryClearTempleAtPosition$4(net.minecraft.server.level.ServerLevel, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #351                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+       5: invokevirtual #352                // Method net/minecraft/server/level/ServerLevel.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+       8: ifeq          35
+      11: aload_0
+      12: invokevirtual #196                // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+      15: aload_1
+      16: invokevirtual #351                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      19: getstatic     #202                // Field com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+      22: invokevirtual #208                // Method net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+      25: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+      28: ifeq          35
+      31: iconst_1
+      32: goto          36
+      35: iconst_0
+      36: ireturn
+
+  private static boolean lambda$isPharaoh$3(com.mojang.authlib.properties.Property);
+    Code:
+       0: aload_0
+       1: invokevirtual #356                // Method com/mojang/authlib/properties/Property.value:()Ljava/lang/String;
+       4: ldc_w         #362                // String eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTM1MGMwNDk5YTY4YmNkOWM3NWIyNWMxOTIzMTQzOWIxMDhkMDI3NTlmNDM1ZTMzZTRhZWU5ZWQxZGQyNDFhMiJ9fX0=
+       7: invokevirtual #94                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  private static boolean lambda$isPharaoh$2(com.mojang.authlib.properties.Property);
+    Code:
+       0: aload_0
+       1: invokevirtual #364                // Method com/mojang/authlib/properties/Property.name:()Ljava/lang/String;
+       4: ldc_w         #367                // String textures
+       7: invokevirtual #94                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  private static boolean lambda$isPharaoh$1(com.mojang.authlib.properties.Property);
+    Code:
+       0: aload_0
+       1: invokevirtual #356                // Method com/mojang/authlib/properties/Property.value:()Ljava/lang/String;
+       4: ldc_w         #362                // String eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTM1MGMwNDk5YTY4YmNkOWM3NWIyNWMxOTIzMTQzOWIxMDhkMDI3NTlmNDM1ZTMzZTRhZWU5ZWQxZGQyNDFhMiJ9fX0=
+       7: invokevirtual #94                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  private static boolean lambda$isPharaoh$0(com.mojang.authlib.properties.Property);
+    Code:
+       0: aload_0
+       1: invokevirtual #364                // Method com/mojang/authlib/properties/Property.name:()Ljava/lang/String;
+       4: ldc_w         #367                // String textures
+       7: invokevirtual #94                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      10: ireturn
+}
