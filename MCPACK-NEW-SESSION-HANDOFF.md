@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-07
 
+The last fourteen explicit Voyager provisionals are resolved, with seventeen
+affected cases and scoped quality checks passing. Working groups remain 405.
+IMPORTANT: this is not the full remaining canonical backlog. A broader inspection
+found 128 existing records explicitly leaving canonical/related-design/replacement
+reconciliation open. The earlier explicit-provisional count underreported that
+backlog. Resolve the named records below against existing evidence before claiming
+canonical completion; do not reopen provider discovery or invent new families.
+Nonregistry contribution reconciliation (33 records) and required attributes remain
+separate open tasks. Inventory refresh follows the Voyager decision increment.
+
+- adorabuild_structures (31): acacia_well, ancient_palace, bamboo_campfire, basalt_chambers, birch_beehive, blackstone_bastion, blackstone_temple, buried_sand_castle, dark_oak_mansion, end_bubble, end_gateway, end_ship, end_temple, frozen_shelter, house, library, mountain_mine, mushroom, nether_fortress, nether_fossil, nether_portal, nether_temple, ocean_bubble, ocean_temple, prison, red_sand_temple, sand_castle, sand_pyramid, tree, tree_house, watercraft
+- aether (4): bronze_dungeon, gold_dungeon, large_aercloud, silver_dungeon
+- creatingspace (4): mars/underground_outpost_1, moon/abandoned_outpost, moon/crashed_rocket, moon/crashed_ship
+- deep_aether (4): altar_camp, brass_dungeon, campfire, combiner_corridor
+- idas (62): abandoned_lighthouse, abandoned_vineyard, abandonedhouse, ancient_mines, ancient_portal, ancient_statue, animal_den, apothecary_abode, ars_nouveau/archmages_tower, bazaar, bearclaw_inn, beekeepers_house, botanist, brickhouse, castle, collectors_museum, cottage, desert_camp, desert_market, desert_pyramid, desert_ruins, dig_site, enchantingtower, farmhouse, fishermans_lodge, frozen_crypt, haunted_manor, hermits_hollow, hunters_cabin, iceandfire/dread_citadel, iceandfire/sirens_cove, labyrinth, lumber_camp, mason_house, necromancers_spire, nether_pump_camp, nexus, pillager_camp, pillager_fortress, pumpkin_cafe, redhorn_guild, ruined_church, ruined_fort, ruined_well, ruins_of_the_deep, snifferhenge, sunken_ship, sunken_ship/sunken_ship_ruins, the_log, tinkers_citadel, tinkers_workshop, train_ruins, tree_of_wisdom, treetop_tavern, tudor_pub, underground_camp, wacky_wares, washing_camp, windswept_shrine, winter_wagon, witches_treestump, wizard_tower
+- illagerinvasion (5): firecaller_hut, illager_fort, illusioner_tower, labyrinth, sorcerer_hut
+- integrated_stronghold (1): stronghold
+- terralith (16): desert_outpost, fortified_village, glacial_hut, igloo, mage_complex, mage_tower, rubble, spire, underground/frosted_dungeon, underground/giant_bee_hive, underground/mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin, valley_lodge, witch_hut
+- towns_and_towers (1): village
+
+
 Inventory matches decisions delivered at dee267e2 and reproduces exactly.
 Working groups: 405. Explicit provisional remainder: the 14 Voyager names below.
 All their comparison views are already delivered and inspected.
