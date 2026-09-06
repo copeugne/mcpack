@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 88 of 136. The exact queue below has 48 open rows.
+Supported provider dispositions: 89 of 136. The exact queue below has 47 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -683,7 +683,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `regions-unexplored-0.6.1-neoforge-21.1.jar` | `regions-unexplored-feature-code`, `regions-unexplored-feature-config-code` | Reuse feature/config captures; bind modifiers and template-pool component consumers; exclude terrain with rationale. |
+| `regions-unexplored-0.6.1-neoforge-21.1.jar` | Existing feature, component and entry captures; tree source 0f263ed, root/condition source f4ad223; focused candidate/provider tests | RESOLVED: Fallen-log candidate, Ashen trial-chamber component, terrain/vegetation, full payload and common-entry roles accounted for. Fallen-log canonical boundary remains open. See final RU disposition below. |
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -701,6 +701,74 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Final Regions Unexplored provider disposition
+
+Regions Unexplored membership is RESOLVED. Retain the named stump-and-fallen-log
+candidate and its six variants, with the documented stump-only outcome. Retain
+Ashen as an encounter component of the existing vanilla trial-chamber family.
+The provider adds no runtime structure root. The other inspected feature,
+terrain, plant, tree, root and decoration implementations introduce no further
+named authored-site candidate. Canonical treatment of the fallen-log candidate
+remains an explicit grouping decision, not an invented final family count.
+
+The common initializer registers biome/content types, the already-accounted
+feature and tree components, configuration predicates, surface rules and
+Lithostitched integration. The NeoForge constructor attaches common/client
+setup, sign block-entity compatibility, entity spawn-placement/attribute
+registration and registry aliases. After registry freeze, setup concerns block
+tool interactions and flammability. The separate client entries register client
+presentation and particles. These callbacks do not supply an unexplained
+independent site writer.
+
+All nine common mixins have contribution roles:
+
+| Hook | Role |
+| --- | --- |
+| BiomeMixin | Configured tundra snow handling. |
+| CropPlacerMixin | Crop support on the supplied soil blocks. |
+| EatBlockGoalMixin | Existing mob grass-eating behavior on RU vegetation/soil. |
+| NetherrackBlockMixin | Bonemeal conversion of existing Nether substrate. |
+| TrunkPlacerDirtMixin | Peat, silt and alpha-grass handling below trees. |
+| VillagerProfessionAccessor | Existing profession secondary-POI block set. |
+| WorldCarverMixin | Grass/dirt tests include RU soil during existing carving. |
+| removals/BiomeListMixin | Removes disabled biomes from the client buffet list. |
+| removals/HolderLookupMixin | Filters disabled biomes from registry lookup listing. |
+
+The NeoForge-specific mixin file is empty. Its absence of extra hooks and the
+full archive/META-INF/JSON5 accounting are bound by the provider checks.
+
+The initializer audit exposed a root-placer gap outside the earlier three tree
+component directories. Source f4ad223, extractor fbe9cc4, closes it with Magnolia
+root placement, both processor conditions and five type-registration classes.
+Manifest SHA-256:
+2ab92b26ac69369210999d31c70f384201f0a8f6cc9a384b0e15831c2df2ae06.
+The independent capture matches. Magnolia writes the supplied root state around
+an existing tree trunk, following eligible positions downward. The previously
+captured Willow root placer is reused. Both are tree components. ConfigCondition
+tests a configured key; MatchingBiomesCondition tests the generator's biome at
+the processor position. Neither creates a root, template or authored layout.
+The state-provider, load-predicate and surface-rule registrations point to the
+already-captured ground-cover, configuration-predicate and configuration-rule
+implementations. No new implementation family follows from these registrations.
+
+The focused provider test now accounts for all 23 packaged trunk, foliage,
+decorator and root classes using new and reused hash-bound source. This corrects
+the narrower 21-class tree-directory boundary rather than hiding the gap.
+Together with candidate tests, the full 8077-file payload, overlays, common
+entries, 53 feature implementations, modifier/surface consumers, Ashen component
+and fallen-log variants have supported membership dispositions.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_provider_scope.py tests/item8/test_regions_unexplored_candidates.py
+uv run ruff check tests/item8/test_regions_unexplored_provider_scope.py tests/item8/test_regions_unexplored_candidates.py
+uv run basedpyright tests/item8/test_regions_unexplored_provider_scope.py tests/item8/test_regions_unexplored_candidates.py
+```
+
+Five cases pass (1.07s), with scoped Ruff and Basedpyright passing. No runtime
+experiment or new measurement system was added. Census: 89 resolved providers,
+47 open. Item 8 canonical grouping, attributes and final review/delivery remain
+open. Do not restart the older RU checkpoints below.
 
 ## Final Railways provider disposition
 
@@ -4984,3 +5052,128 @@ corrected before final validation. Continue the captured vegetation roles and
 remaining common-entry/payload boundaries. Do not repeat accepted terrain,
 fallen-tree, trial-chamber, modifier or surface checks. Census remains 77
 resolved and 59 open.
+
+### Regions Unexplored remaining captured feature roles
+
+The 35 implementations in source 04c515f now have contribution dispositions.
+Their actual block writers, supplied configured-feature materials and internal
+branch/cap/root geometry establish the following roles. Reuse this inspection;
+source coverage alone was insufficient in the preceding checkpoint.
+
+| Implementations | Contribution role |
+| --- | --- |
+| GlisteringIvyFeature, HangingEarlightFeature | Hanging plant columns and roof substrate patches using ivy/wart or earlight and Nether terrain states. |
+| HangingPrismariteFeature | Hanging prismarite blobs and pillars. Mineral decoration, not a building or authored monument. |
+| HyacinthPlantsFeature, HyacinthStockFeature | Aquatic plants, blooms, seagrass and supplied tall-hyacinth states. |
+| GiantBlueBioshroomFeature, GiantGreenBioshroomFeature, GiantPinkBioshroomFeature, GiantYellowBioshroomFeature | Mushroom stems and caps using configured bioshroom stem/block/glowing-block states. Large plant geometry does not establish an adventure family. |
+| AshenTreeFeature, AspenTreeFeature, BlackwoodTreeFeature, CypressTreeFeature, DeadTreeFeature, EucalyptusTreeFeature, GiantCypressTreeFeature | Trunks, foliage, roots and branches with supplied wood/leaf states; cypress adds moss and hanging vegetation. |
+| KapokTreeFeature, LarchTreeFeature, LargeSocotraTreeFeature, LushPineTreeFeature, MegaBaobabTreeFeature, SakuraTreeFeature | Tree canopies and branches; kapok and pine include vines, and Sakura includes a bee-nest placement. A bee nest on a tree is an ecological component, not a separate authored encounter site. |
+| SmallEucalyptusTreeFeature, SmallJoshuaTreeFeature, SmallOakTreeFeature, StrippedPineTreeFeature, TreeShrubFeature, UltraBaobabTreeFeature | Supplied tree/shrub logs, leaves and branches, with ground/root handling. Size or material variants are not independent families. |
+| CobaltShrubFeature, LargeJoshuaTreeFeature, MediumJoshuaTreeFeature, SmallSocotraTreeFeature, YellowBioshroomShrubFeature, BrimWillowFeature, TallBrimWillowFeature | Direct natural-set wood/leaves, mushroom or Nether plant states, producing shrubs, branches and tree forms. |
+
+The 26 tree/shrub implementations, four giant bioshrooms and five plant/mineral
+implementations account for all 35 captured classes. They introduce no additional
+named authored-site candidate. The existing stump-and-fallen-log candidate remains
+separate, with its six configuration variants and possible stump-only outcome.
+The earlier thirteen terrain feature and Ashen trial-chamber component decisions
+also remain unchanged.
+
+PlaceOnGroundDecorator source e06c9e1 is now bound in the existing candidate test.
+Its exact manifest is
+2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544.
+The writer chooses the configured state above eligible dirt using supplied
+height and target checks. It decorates an existing tree's ground neighborhood;
+it does not supply another architectural layout. Branch-mode configuration in
+several tree writers controls whether natural branches are placed. Do not expand
+that material-selection boundary into a gameplay or tree-shape audit.
+
+The two focused candidate/source cases pass (0.96s), with scoped Ruff and
+Basedpyright passing, using the commands in the preceding checkpoint. No source
+was recaptured and no new measurement system was introduced. Regions Unexplored
+remains OPEN for its remaining common-entry, tree-placer/decorator and complete
+payload/overlay/JSON5 roles. Current census is still 88 resolved, 48 open.
+
+### Regions Unexplored full payload and overlay boundary
+
+The focused provider test now accounts for all 8077 non-directory files in the
+frozen archive and each root data category. This closes the file-accounting gap,
+while semantic entry/configuration and custom tree-component checks remain open.
+The only embedded archive is META-INF/jars/json5-java-3.0.0.jar, SHA-256
+2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533.
+Its complete payload is 28 JSON5 classes plus a manifest, with no loader metadata,
+services, scripts, Minecraft references or NeoForge entry annotations. Parent
+class references are limited to RUConfigHandler and the four Json5Ops classes.
+It supplies configuration parsing/serialization; no independent mod entry or
+packaged world-generation data exists in the nested archive. Do not audit its
+parser internals as a structure-family requirement. The parent's configuration
+behavior remains part of the pending common-entry interpretation.
+
+All thirty overlay files have explicit roles:
+
+| Overlay | Files | Contribution |
+| --- | ---: | --- |
+| painted_planks | 16 | Shaped crafting recipes. |
+| birch_aspen_trees | 6 | Vanilla tree definitions using birch/aspen components. |
+| oak_taller_trees | 4 | Vanilla oak tree configurations. |
+| taiga_pine_trees | 2 | Vanilla pine/mega-pine tree configurations. |
+| common_grass_sprouts | 1 | A random plant patch. |
+| forest_fancy_oaks | 1 | A selector among existing birch, oak and fancy-oak vegetation. |
+
+NeoForge's pack metadata declares all six directories with regions_unexplored:config
+conditions. Painted planks uses key painted_planks; the other five use their
+vanilla_changes/<overlay> keys. Preserve conditional activation separately from
+membership. These declarations do not create another structure root or authored
+site. The tree-component implementations still require their pending dispositions.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_provider_scope.py
+uv run ruff check tests/item8/test_regions_unexplored_provider_scope.py
+uv run basedpyright tests/item8/test_regions_unexplored_provider_scope.py
+```
+
+Both focused cases pass (0.16s); scoped Ruff and Basedpyright pass. This uses the
+existing pinned archives and test infrastructure. No new runtime experiment or
+measurement system was added. RU remains OPEN for common/configuration entry
+roles and the remaining registered tree placers/decorators. Census: 88 resolved,
+48 open. Earlier full-payload/overlay/JSON5 inventory gaps are now resolved and
+must not restart.
+
+### Regions Unexplored custom tree-component closure
+
+Source 0f263ed, extractor 16127c9, retains the remaining 24 tree/configuration
+classes. Manifest SHA-256:
+c0e8750b46dd656807e33cc3906aa98fd736da650cc01cdd0754cc94ec63f243.
+The independent capture matches every file. The existing two decorator captures
+complete all 21 classes in the packaged trunkplacer, foliageplacer and
+treedecorator directories. Their roles are now resolved:
+
+- Nine foliage placers produce canopy or mushroom-cap layers. Their shared
+  context and utility write supplied foliage states through FoliageSetter,
+  checking valid tree positions, persistent leaves and waterlogging.
+- Aspen, Magnolia and Redwood trunk placers write configured logs, branch
+  geometry and foliage attachment positions. RUTrunkPlacer supplies height,
+  dirt-below and axis handling. These four classes are tree components.
+- GroupBranchDecorator and RandomBranchDecorator place supplied branches and
+  leaves around an existing log set. HangingVinesDecorator places supplied
+  vine states. WillowTrunkDecorator adds configured wood roots. AttachedToLogs
+  and PlaceOnGround retain their previously accepted decoration roles.
+- The three type registries register nine foliage types, three trunk types and
+  six decorators. Registration and component types are not independent families.
+  TrunkPlacerDirtUtil distinguishes peat, silt and alpha-grass substrates.
+
+These implementations use the already-inspected supplied tree materials and
+add no independent authored-site candidate. No recursive parser, branch-mode,
+shuffle or general tree-gameplay audit is needed for this disposition.
+RUConfigHandler reads/writes client/common JSON5 configuration via their codecs;
+it creates missing defaults and attempts cleanup of named legacy configuration
+files. It is configuration I/O, not an independent generation callback. The
+common-condition caller still selects effective settings separately from family
+membership. The NeoForge-specific mixin file is explicitly empty on all three
+sides and has no plugin.
+
+Three focused provider cases pass (0.19s), with scoped Ruff and Basedpyright
+passing, using the commands above. The test binds the new and reused source
+hashes and compares every packaged tree-component class against the captured
+set. Final RU common-entry interpretation and provider closure remain open;
+archive, overlay, feature and tree-component coverage need no repetition.
+Census remains 88 resolved providers, 48 open.

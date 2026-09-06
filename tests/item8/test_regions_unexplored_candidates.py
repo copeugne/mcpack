@@ -149,6 +149,8 @@ def test_regions_unexplored_feature_candidates_and_sources() -> None:
              "31143f1076e6d08d7280dd918331ce67087d07626cfe25778608398c26827bdd"),
             ("regions-unexplored-vegetation-features",
              "6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6"),
+            ("regions-unexplored-ground-decorator",
+             "2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544"),
             ("regions-unexplored-feature-code",
              "d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b"),
         ):

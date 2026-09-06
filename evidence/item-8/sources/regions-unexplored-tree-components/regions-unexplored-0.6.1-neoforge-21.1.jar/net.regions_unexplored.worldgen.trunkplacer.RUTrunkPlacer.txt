@@ -1,0 +1,119 @@
+Compiled from "RUTrunkPlacer.java"
+public abstract class net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer extends net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer {
+  protected final net.minecraft.util.valueproviders.IntProvider height;
+
+  public net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer(net.minecraft.util.valueproviders.IntProvider);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: iconst_0
+       3: iconst_0
+       4: invokespecial #40                 // Method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer."<init>":(III)V
+       7: aload_0
+       8: aload_1
+       9: putfield      #42                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+      12: return
+
+  protected static <P extends net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer> com.mojang.datafixers.Products$P1<com.mojang.serialization.codecs.RecordCodecBuilder$Mu<P>, net.minecraft.util.valueproviders.IntProvider> heightField(com.mojang.serialization.codecs.RecordCodecBuilder$Instance<P>);
+    Code:
+       0: aload_0
+       1: getstatic     #54                 // Field net/minecraft/util/valueproviders/IntProvider.POSITIVE_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #55                 // String height
+       6: invokeinterface #61,  2           // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #80,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #86                 // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: invokevirtual #90                 // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      22: areturn
+
+  public int getTreeHeight(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+       4: aload_1
+       5: invokevirtual #98                 // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+       8: ireturn
+
+  public static void placeDirtBelow(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: invokevirtual #111                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       4: astore_3
+       5: aload_0
+       6: aload_3
+       7: invokedynamic #123,  0            // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      12: invokeinterface #129,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      17: ifeq          44
+      20: aload_1
+      21: aload_3
+      22: getstatic     #135                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+      25: invokeinterface #141,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      30: checkcast     #143                // class net/minecraft/world/level/block/Block
+      33: invokevirtual #147                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      36: invokeinterface #153,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      41: goto          96
+      44: aload_0
+      45: aload_3
+      46: invokedynamic #158,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      51: invokeinterface #129,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      56: ifeq          83
+      59: aload_1
+      60: aload_3
+      61: getstatic     #161                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+      64: invokeinterface #141,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      69: checkcast     #143                // class net/minecraft/world/level/block/Block
+      72: invokevirtual #147                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      75: invokeinterface #153,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      80: goto          96
+      83: aload_1
+      84: aload_3
+      85: getstatic     #167                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+      88: invokevirtual #147                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      91: invokeinterface #153,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      96: return
+
+  public static net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment attachment(net.minecraft.core.BlockPos);
+    Code:
+       0: new           #17                 // class net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment
+       3: dup
+       4: aload_0
+       5: iconst_0
+       6: iconst_0
+       7: invokespecial #176                // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment."<init>":(Lnet/minecraft/core/BlockPos;IZ)V
+      10: areturn
+
+  public static java.util.function.Function<net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.state.BlockState> setAxis(net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: invokedynamic #189,  0            // InvokeDynamic #3:apply:(Lnet/minecraft/core/Direction;)Ljava/util/function/Function;
+       6: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$setAxis$0(net.minecraft.core.Direction, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: getstatic     #197                // Field net/minecraft/world/level/block/RotatedPillarBlock.AXIS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+       4: aload_0
+       5: invokevirtual #201                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+       8: invokevirtual #207                // Method net/minecraft/world/level/block/state/BlockState.trySetValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      11: checkcast     #203                // class net/minecraft/world/level/block/state/BlockState
+      14: areturn
+
+  private static boolean lambda$placeDirtBelow$1(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #214                // Field net/regions_unexplored/registry/tag/RUBlockTags.REPLACEABLE_BY_SILT_DIRT:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #218                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  private static boolean lambda$placeDirtBelow$0(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #221                // Field net/regions_unexplored/registry/tag/RUBlockTags.REPLACEABLE_BY_PEAT_DIRT:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #218                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  private static net.minecraft.util.valueproviders.IntProvider lambda$heightField$0(net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+       4: areturn
+}
