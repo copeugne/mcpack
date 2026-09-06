@@ -1,0 +1,229 @@
+Compiled from "BiomeIslandFeature.java"
+public class org.betterx.betterend.world.features.BiomeIslandFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  private static final net.minecraft.core.BlockPos$MutableBlockPos CENTER;
+
+  private static final org.betterx.bclib.sdf.SDF ISLAND;
+
+  private static org.betterx.betterend.noise.OpenSimplexNoise simplexNoise;
+
+  private static net.minecraft.world.level.block.state.BlockState topBlock;
+
+  private static net.minecraft.world.level.block.state.BlockState underBlock;
+
+  public org.betterx.betterend.world.features.BiomeIslandFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       9: astore_3
+      10: aload_3
+      11: aload_2
+      12: bipush        10
+      14: invokestatic  #17                 // Method org/betterx/bclib/util/BlocksHelper.downRay:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;I)I
+      17: iconst_1
+      18: iadd
+      19: istore        4
+      21: new           #23                 // class net/minecraft/core/BlockPos
+      24: dup
+      25: aload_2
+      26: invokevirtual #25                 // Method net/minecraft/core/BlockPos.getX:()I
+      29: aload_2
+      30: invokevirtual #29                 // Method net/minecraft/core/BlockPos.getY:()I
+      33: iload         4
+      35: isub
+      36: aload_2
+      37: invokevirtual #32                 // Method net/minecraft/core/BlockPos.getZ:()I
+      40: invokespecial #35                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      43: astore        5
+      45: aload_3
+      46: aload         5
+      48: invokevirtual #38                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      51: invokeinterface #41,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      56: astore        6
+      58: aload         6
+      60: invokestatic  #47                 // Method org/betterx/bclib/util/BlocksHelper.isFluid:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      63: ifeq          87
+      66: getstatic     #51                 // Field net/minecraft/world/level/block/Blocks.GRAVEL:Lnet/minecraft/world/level/block/Block;
+      69: invokevirtual #57                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      72: putstatic     #63                 // Field topBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      75: getstatic     #69                 // Field net/minecraft/world/level/block/Blocks.STONE:Lnet/minecraft/world/level/block/Block;
+      78: invokevirtual #57                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      81: putstatic     #72                 // Field underBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      84: goto          96
+      87: aload_3
+      88: aload         5
+      90: invokestatic  #75                 // Method org/betterx/betterend/world/biome/EndBiome.findUnderMaterial:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      93: putstatic     #72                 // Field underBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      96: new           #81                 // class org/betterx/betterend/noise/OpenSimplexNoise
+      99: dup
+     100: aload_3
+     101: invokeinterface #83,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+     106: invokespecial #87                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     109: putstatic     #90                 // Field simplexNoise:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     112: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     115: aload_2
+     116: invokevirtual #98                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     119: pop
+     120: getstatic     #104                // Field ISLAND:Lorg/betterx/bclib/sdf/SDF;
+     123: aload_3
+     124: aload_2
+     125: invokevirtual #108                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     128: invokevirtual #111                // Method org/betterx/bclib/sdf/SDF.fillRecursive:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;)V
+     131: iconst_1
+     132: ireturn
+
+  private static org.betterx.bclib.sdf.SDF createSDFIsland();
+    Code:
+       0: new           #117                // class org/betterx/bclib/sdf/primitive/SDFCappedCone
+       3: dup
+       4: invokespecial #119                // Method org/betterx/bclib/sdf/primitive/SDFCappedCone."<init>":()V
+       7: fconst_0
+       8: invokevirtual #120                // Method org/betterx/bclib/sdf/primitive/SDFCappedCone.setRadius1:(F)Lorg/betterx/bclib/sdf/primitive/SDFCappedCone;
+      11: ldc           #124                // float 6.0f
+      13: invokevirtual #125                // Method org/betterx/bclib/sdf/primitive/SDFCappedCone.setRadius2:(F)Lorg/betterx/bclib/sdf/primitive/SDFCappedCone;
+      16: ldc           #128                // float 4.0f
+      18: invokevirtual #129                // Method org/betterx/bclib/sdf/primitive/SDFCappedCone.setHeight:(F)Lorg/betterx/bclib/sdf/primitive/SDFCappedCone;
+      21: invokedynamic #132,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      26: invokevirtual #136                // Method org/betterx/bclib/sdf/primitive/SDFCappedCone.setBlock:(Ljava/util/function/Function;)Lorg/betterx/bclib/sdf/primitive/SDFPrimitive;
+      29: astore_0
+      30: new           #140                // class org/betterx/bclib/sdf/operator/SDFTranslate
+      33: dup
+      34: invokespecial #142                // Method org/betterx/bclib/sdf/operator/SDFTranslate."<init>":()V
+      37: fconst_0
+      38: ldc           #143                // float -2.0f
+      40: fconst_0
+      41: invokevirtual #144                // Method org/betterx/bclib/sdf/operator/SDFTranslate.setTranslate:(FFF)Lorg/betterx/bclib/sdf/operator/SDFTranslate;
+      44: aload_0
+      45: invokevirtual #148                // Method org/betterx/bclib/sdf/operator/SDFTranslate.setSource:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFUnary;
+      48: astore_0
+      49: new           #152                // class org/betterx/bclib/sdf/operator/SDFDisplacement
+      52: dup
+      53: invokespecial #154                // Method org/betterx/bclib/sdf/operator/SDFDisplacement."<init>":()V
+      56: invokedynamic #155,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      61: invokevirtual #156                // Method org/betterx/bclib/sdf/operator/SDFDisplacement.setFunction:(Ljava/util/function/Function;)Lorg/betterx/bclib/sdf/operator/SDFDisplacement;
+      64: aload_0
+      65: invokevirtual #160                // Method org/betterx/bclib/sdf/operator/SDFDisplacement.setSource:(Lorg/betterx/bclib/sdf/SDF;)Lorg/betterx/bclib/sdf/operator/SDFUnary;
+      68: invokedynamic #161,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      73: invokevirtual #162                // Method org/betterx/bclib/sdf/operator/SDFUnary.setReplaceFunction:(Ljava/util/function/Function;)Lorg/betterx/bclib/sdf/SDF;
+      76: astore_0
+      77: aload_0
+      78: areturn
+
+  private static java.lang.Boolean lambda$createSDFIsland$2(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokestatic  #47                 // Method org/betterx/bclib/util/BlocksHelper.isFluid:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       4: ifne          14
+       7: aload_0
+       8: invokevirtual #168                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: invokestatic  #174                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      22: areturn
+
+  private static java.lang.Float lambda$createSDFIsland$1(org.joml.Vector3f);
+    Code:
+       0: aload_0
+       1: invokevirtual #180                // Method org/joml/Vector3f.x:()F
+       4: invokestatic  #186                // Method java/lang/Math.abs:(F)F
+       7: fstore_1
+       8: aload_0
+       9: invokevirtual #192                // Method org/joml/Vector3f.y:()F
+      12: invokestatic  #186                // Method java/lang/Math.abs:(F)F
+      15: fstore_2
+      16: aload_0
+      17: invokevirtual #195                // Method org/joml/Vector3f.z:()F
+      20: invokestatic  #186                // Method java/lang/Math.abs:(F)F
+      23: fstore_3
+      24: fload_2
+      25: fconst_2
+      26: fcmpg
+      27: ifge          49
+      30: fload_1
+      31: ldc           #198                // float 3.0f
+      33: fcmpg
+      34: iflt          44
+      37: fload_3
+      38: ldc           #198                // float 3.0f
+      40: fcmpg
+      41: ifge          49
+      44: fconst_0
+      45: invokestatic  #199                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      48: areturn
+      49: getstatic     #90                 // Field simplexNoise:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      52: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      55: invokevirtual #204                // Method net/minecraft/core/BlockPos$MutableBlockPos.getX:()I
+      58: i2f
+      59: aload_0
+      60: invokevirtual #180                // Method org/joml/Vector3f.x:()F
+      63: fadd
+      64: f2d
+      65: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      68: invokevirtual #205                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      71: i2f
+      72: aload_0
+      73: invokevirtual #192                // Method org/joml/Vector3f.y:()F
+      76: fadd
+      77: f2d
+      78: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      81: invokevirtual #206                // Method net/minecraft/core/BlockPos$MutableBlockPos.getZ:()I
+      84: i2f
+      85: aload_0
+      86: invokevirtual #195                // Method org/joml/Vector3f.z:()F
+      89: fadd
+      90: f2d
+      91: invokevirtual #207                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+      94: d2f
+      95: invokestatic  #199                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      98: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$createSDFIsland$0(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #29                 // Method net/minecraft/core/BlockPos.getY:()I
+       4: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       7: invokevirtual #205                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      10: if_icmple     17
+      13: getstatic     #211                // Field AIR:Lnet/minecraft/world/level/block/state/BlockState;
+      16: areturn
+      17: aload_0
+      18: invokevirtual #29                 // Method net/minecraft/core/BlockPos.getY:()I
+      21: getstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      24: invokevirtual #205                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      27: if_icmpne     34
+      30: getstatic     #63                 // Field topBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      33: areturn
+      34: getstatic     #72                 // Field underBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+
+  static {};
+    Code:
+       0: new           #99                 // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #214                // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: putstatic     #94                 // Field CENTER:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      10: new           #81                 // class org/betterx/betterend/noise/OpenSimplexNoise
+      13: dup
+      14: ldc2_w        #215                // long 412l
+      17: invokespecial #87                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+      20: putstatic     #90                 // Field simplexNoise:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      23: getstatic     #217                // Field net/minecraft/world/level/block/Blocks.GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+      26: invokevirtual #57                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      29: putstatic     #63                 // Field topBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      32: getstatic     #220                // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+      35: invokevirtual #57                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      38: putstatic     #72                 // Field underBlock:Lnet/minecraft/world/level/block/state/BlockState;
+      41: invokestatic  #223                // Method createSDFIsland:()Lorg/betterx/bclib/sdf/SDF;
+      44: putstatic     #104                // Field ISLAND:Lorg/betterx/bclib/sdf/SDF;
+      47: return
+}
