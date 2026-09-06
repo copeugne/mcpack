@@ -88,3 +88,45 @@ def test_aether_packaged_candidate_partition() -> None:
         assert nested == {"META-INF/jarjar/" + n for n in expected}
         for name, digest in expected.items():
             assert hashlib.sha256(archive.read("META-INF/jarjar/" + name)).hexdigest() == digest
+
+
+def test_aether_silver_gold_component_candidates() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "aether-1.21.1-1.5.10-neoforge.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == (
+        "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8"
+    )
+    with ZipFile(source.path) as archive:
+        # Exact captured call-site names, not a simulation of successful assembly.
+        expected = {
+            "silver_dungeon": {"floor", "door", "wall", "tall_staircase", "boss_door",
+                               "staircase", "chest_room", "rear", "boss_room", "skeleton"},
+            "gold_dungeon": {"island", "boss_room", "stub", "tunnel"},
+        }
+        for family, candidates in expected.items():
+            prefix = "data/aether/structure/" + family + "/"
+            packaged = {n.removeprefix(prefix).removesuffix(".nbt")
+                        for n in archive.namelist() if n.startswith(prefix) and n.endswith(".nbt")}
+            assert candidates <= packaged
+            assert packaged - candidates == ({"test_door"} if family == "silver_dungeon" else set())
+        assert not any(b"test_door" in archive.read(n) for n in archive.namelist()
+                       if n.endswith(".class"))
+        prefix = "com/aetherteam/aether/world/structurepiece/"
+        for family, piece in (("silver", "Silver"), ("gold", "Gold")):
+            raw = archive.read(prefix + family + "dungeon/" + piece + "DungeonPiece.class")
+            assert (family + "_dungeon/\x01").encode() in raw
+        for name, digest in (
+            ("aether-custom-entry",
+             "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954"),
+            ("aether-provider", "917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee"),
+        ):
+            folder = Path("evidence/item-8/sources") / name
+            raw = (folder / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                assert hashlib.sha256((folder / row["disassembly"]).read_bytes()).hexdigest() == (
+                    row["disassembly_sha256"]
+                )

@@ -3132,3 +3132,37 @@ uv run basedpyright tests/item8/test_aether_cloud_source.py
 
 Two focused cases and scoped quality checks pass. No new measurement or capture
 was needed for this resource partition. Census remains 75 resolved and 61 open.
+
+### Aether Silver and Gold component candidates
+
+The captured Silver entry selects rear, boss_room and skeleton. Its builder
+selects floor, door, wall, tall_staircase, boss_door, staircase and chest_room.
+SilverDungeonPiece qualifies supplied names under aether:silver_dungeon/.
+Together these account for ten of the eleven packaged Silver templates.
+The extra test_door template is not selected by these captured call-site names,
+and no class in the archive contains its literal name. Preserve it as an
+unselected component in these paths, not a separate family or a universal claim
+about dynamically supplied names.
+
+The captured Gold entry selects island, boss_room, stub and tunnel, accounting
+for all four packaged Gold templates. GoldDungeonPiece qualifies supplied names
+under aether:gold_dungeon/. Stub caves and the assembly pieces belong to this
+existing dungeon candidate. Do not count those pieces as independent families.
+
+The third case in test_aether_cloud_source.py binds the two exact source
+manifests, every class/disassembly hash in them, the literal namespace recipes
+in the frozen piece classes and these complete template-name partitions.
+It does not simulate layout reachability or prove placement success, assembled
+dimensions, boss behavior or visual discovery. These remain later attributes.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Three focused cases pass. One overlong manifest-reference line was corrected.
+Remaining Aether scope: custom feature/holiday-decoration roles, main-entry
+delegates/common hooks, optional portal consumer disposition and bundled-library
+selection/roles. Reuse this component partition; census stays 75 resolved and
+61 open until that provider scope is closed.
