@@ -101,7 +101,11 @@ def main() -> None:
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',
                    "\n".join(pieces), "</svg>"))
-            _ = (output / f"{biome}.svg").write_text(svg + "\n")
+            if soaring:
+                _ = (output / f"{biome}.svg.gz").write_bytes(
+                    gzip.compress((svg + "\n").encode(), mtime=0))
+            else:
+                _ = (output / f"{biome}.svg").write_text(svg + "\n")
 
 
 if __name__ == "__main__":
