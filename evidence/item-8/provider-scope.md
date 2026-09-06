@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 48 of 136. The exact queue below has 88 open rows.
+Supported provider dispositions: 49 of 136. The exact queue below has 87 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -645,7 +645,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
 | `structureessentials-1.21.1-5.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code` | Resolve feature/structure aliases and injected components against existing roots. |
-| `tectonic-3.0.22-neoforge-21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -1248,3 +1248,50 @@ keeps the complete payload check together without introducing a helper framework
 Provider dispositions: 48 of 136 resolved, 88 open. Candidate completeness remains
 the immediate task, followed by named canonical grouping decisions, all eleven
 attributes, the applicable final gate and the required PR review/merge workflow.
+
+## Tectonic provider candidate disposition
+
+Source fba027c preserves 31 directly relevant classes across the entry capture
+and ConfigState selection capture. Both reproduced exactly. The focused check
+accounts for all 310 files, including 57 classes, and binds both annotated mod
+entries and all thirteen declared mixins. The remaining uncaptured classes are
+configuration records and client UI consumed by those entries. No unaccounted
+loader/subscriber, service or nested executable entry remains. WorldCarverMixin
+is packaged but not declared; do not infer its activation.
+
+The built-in server datapack has 245 files. It contains density functions,
+noise, noise settings, carvers, placed/configured features, tags, six modifiers
+and pack metadata. There are no packaged structure roots, pools or templates.
+All files, including inactive overlay data, have explicit resource categories in
+the focused check. The generator code supplies scalar terrain functions, feature
+placement positions and dimension/noise height changes. Commands locate terrain
+using density predicates; the compatibility exporter writes configuration JSON.
+These mechanisms add no independent authored layout.
+
+| Contribution | Candidate disposition |
+| --- | --- |
+| tectonic:underground_river/lanterns | Named nonregistry ornament candidate. A downward column has two to eight chain blocks and one hanging lantern. A conditional add_features modifier targets Overworld biomes. Frozen mod_enabled and river_lanterns are true. Placement also depends on underground-river density, ceiling and air predicates. Retain the family-versus-ambient-decoration decision alongside Terralith's Frostfire ornament; neither is silently omitted or automatically counted as a family. |
+| Underground-river ice | Simple ice-block terrain feature. Its modifier is disabled by frozen river_ice=false. |
+| Underground-river lichen | Adds the existing vanilla glow_lichen feature with river-density placement restrictions; vegetation, not a new authored layout. |
+| Ocean-monument offset | StructurePieceMixin moves existing OCEAN_MONUMENT_BUILDING bounding boxes while enabled. Frozen monument_offset is -30. Preserve this placement modifier for existing monument attributes, not a second monument family. |
+| Remaining terrain modifiers and resources | Dimension/noise height limits, frozen-ocean climate, island density, carvers, noise and ore placement. No independent structural candidate. |
+
+The normal overlay.mod applies at the frozen data format. Both format-82
+overlays are inapplicable to Minecraft 1.21.1; the extra configured lantern
+document there uses iron_chain instead of chain and is not an additional active
+design. ConfigState maps no_carvers to the negation of carvers_enabled. With the
+frozen values, no_carvers, ore_fix and ultrasmooth conditions are false. The
+Terralith compatibility overlay concerns terrain integration and adds no authored
+layout. Selection and potential placement are not generated-world observations.
+
+```sh
+uv run pytest -q tests/item8/test_tectonic_provider_scope.py
+uv run ruff check tests/item8/test_tectonic_provider_scope.py
+uv run basedpyright tests/item8/test_tectonic_provider_scope.py
+```
+
+Two focused cases pass. Initial lint findings were two long lines and one short
+ambiguous loop variable; formatting and naming fixes resolve them. Scoped Ruff
+and Basedpyright pass. No runtime measurement, new framework or baseline change.
+Provider dispositions: 49 of 136 resolved, 87 open. Continue the remaining
+provider census before canonical grouping and detailed family attributes.
