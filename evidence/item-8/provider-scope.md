@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 79 of 136. The exact queue below has 57 open rows.
+Supported provider dispositions: 80 of 136. The exact queue below has 56 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -596,7 +596,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are landmark candidates; giant pumpkin and carved-pumpkin patches retain named decoration boundaries for canonical grouping. No structure roots, templates or pools. See final BOP disposition below. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
 | `FarmersDelight-1.21.1-1.3.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -701,6 +701,63 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Creeper Overhaul provider disposition
+
+CreeperOverhaul-neoforge-1.21.1-4.0.6.jar is RESOLVED as a mob, loot and
+cosmetic provider, with no independent authored structure family. Archive
+SHA-256: ed83bea2826667fca80a6a8067f89fe7b97eb8b3213bbcb7f0f4e6a6898c0bc9.
+The complete 317-file payload comprises 83 classes, 185 client assets,
+42 data files and seven metadata/refmap/access-widener/nested-library files.
+There are no packaged structures, pools, templates, features or optional packs.
+The existing JSON catalog retains the data; no new runtime measurement is needed.
+
+All seventeen biome modifiers change mob spawn lists: sixteen neoforge:add_spawns
+entries for the mod's creeper types and one neoforge:remove_spawns entry for
+minecraft:creeper. Their entity IDs exactly match the sixteen entity loot tables.
+The remaining data comprises two cactus block loot tables and seven biome/entity
+tags. These are natural encounter and loot inputs for subsequent family
+attributes, not sixteen new sites or proof that each spawn succeeds.
+
+Source e8d3713 (extractor aa2c76b) captures thirteen actual entry/delegate classes,
+manifest f44ec77d75bb58eed2f2475aa44575ca4f894ee557f6ee83549a6efee6844b7c.
+Source d21ca8f (extractor 382fc1c) captures the player-login delegate, manifest
+abb86e8bdaf55aa9fd570fe47f21f2e30f19c50780019b3a7d4f63ee521096ec.
+Both independently reproduce exactly. Supported roles:
+
+| Entry path | Contribution |
+| --- | --- |
+| CreepersForge and Creepers | The sole annotated loader initializes config, blocks, entities, items, creative tabs, sounds and networking. Its listeners register entity attributes/spawn predicates, flower-pot support and supplied inter-mod plugins. Shader/client-setup listeners have client event types; the additional client initializer is guarded by Dist.isClient. |
+| ModEntities, ModSpawns and CreepersForge$1 | Sixteen entity types and entity spawn predicates. Predicates consult terrain, light, water, difficulty and the creeper's enablement supplier. They do not assemble a site. |
+| ModBlocks | Tiny cactus and potted tiny cactus block registration. No natural feature registration is introduced by registering these blocks. |
+| CreeperPlugin and PluginRegistry | Caller-supplied attack/avoidance predicates with duplicate-ID rejection. No generation callback or authored layout is supplied by this API. Other providers retain responsibility for their own implementations. |
+| IronGolemMixin | Changes target acceptance for existing creeper entities. |
+| PlayerListMixin and ServerCosmetics | Player-login cosmetic-visibility synchronization. The delegate stores flags and sends them to players; no world layout is written. |
+| Events, PlatformUtilsImpl and generated PlatformMethods | Calendar-event selection, explosion interaction policy, item/tool checks, attribute lookup and the fixed NeoForge platform selector. No additional structure candidate. |
+
+The only nested JAR is resourceful-cosmetics-4j-1.0.3.jar, SHA-256
+ed67d9ccb8be7deb4771e08dd95be234bf63363b320531c4ed4d7531f8429b9e.
+Its twelve files are ten cosmetics-library classes plus a plain manifest and
+Architectury nesting identity. There is no service, mod entry, mixin declaration,
+asset or data payload. All classes belong to its cosmetics API package and
+contain no Minecraft, NeoForge or Fabric class references. The complete parent
+reference check finds only client/cosmetics/service/CosmeticsApi as a consumer.
+This supports a client cosmetics-library disposition without recursively
+auditing HTTP internals. The actual server login callback was inspected above.
+
+Three focused cases pass (0.11s), as do scoped Ruff and Basedpyright. Initial
+lint findings were a redundant compound assertion and one overlong line; both
+were corrected. The checks bind full payload accounting, all spawn-only data,
+loader/common-mixin entries, all fourteen captured class identities and the
+nested-library boundary. No runtime launch or frozen configuration change.
+Census: 80 providers resolved, 56 open. Canonical-family counting and the eleven
+attributes remain downstream of whole-stack membership.
+
+```sh
+uv run pytest -q tests/item8/test_creeper_overhaul_provider_scope.py
+uv run ruff check tests/item8/test_creeper_overhaul_provider_scope.py
+uv run basedpyright tests/item8/test_creeper_overhaul_provider_scope.py
+```
 
 ## Supplementaries packaged component checkpoint
 
