@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9bb60f9f and independently reproduces byte-for-byte. All 887
+roots remain assigned once in 415 working groups. Canonical-note backlog: 60
+(IDAS 59, AdoraBuild house). Next: all 45 house templates. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain.
+
 Ocean designs are reconciled using 391184f1: two open gold-bearing shrine variants
 with drowned overrides, and two roofed loot/sponge temple variants with guardian
 overrides. All four complete definitions remain preserved. The affected case and

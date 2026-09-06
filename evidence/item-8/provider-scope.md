@@ -9666,3 +9666,30 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-monuments-r1.json evidence/raw/item8/inventory-adora-monuments-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-monuments-r2.json
 ```
+# AdoraBuild ocean relationship closure (2026-09-07)
+
+Decision 9bb60f9f separates two open gold-bearing ocean shrine variants with
+drowned overrides from two roofed loot/sponge temple variants with guardian
+overrides. Water-omitted architecture views at 391184f1 resolve the prior opaque
+projection limitation; original views remain preserved. This does not establish
+effective underwater discoverability or runtime mob creation. Full definitions
+and all original variants are retained exactly.
+
+The affected AdoraBuild case and scoped code checks pass. The inventory reproduces
+byte-for-byte in two fresh runs. Only ocean temple/shrine records and the decision
+input hash change. All 887 roots are assigned once in 415 working groups. Backlog:
+60 canonical notes (IDAS 59, AdoraBuild house). Attributes, 33 nonregistry records
+and final validation/review/main delivery remain open.
+
+Inventory SHA-256:
+3fbdb6fd8f536f3fd58c3a0705c84615aa21002ee5641e3950253ef9ad7bd298.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-ocean-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-ocean-r2.json
+cmp evidence/raw/item8/inventory-adora-ocean-r1.json evidence/raw/item8/inventory-adora-ocean-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-ocean-r2.json
+```
