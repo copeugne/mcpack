@@ -2570,6 +2570,35 @@ provider census before canonical grouping and detailed family attributes.
 
 ## Explorations provider candidate disposition
 
+### Decorated-mushroom boundary resolved on 2026-09-06
+
+`explorations:large_mushroom` is now an explicit decorated-vegetation exclusion
+in the decisions and rebuilt inventory. The configuration creates a mushroom
+stem and brown-mushroom canopy using giant trunk and jungle foliage placers.
+Its sole decorator hangs chains and lanterns from foliage; it adds no separately
+constructed site layout. This follows the actual geometry and decorator role,
+not the vanilla codec, lack of loot or a numerical size threshold. Constructed
+tree houses and other sites using vegetation as support are not excluded by
+this decision. Keep the named generation contribution and the existing
+Collections.shuffle limitation; no baseline content was changed.
+
+The existing provider test binds the decision and evidence hashes, stem/canopy
+providers, placers and complete decorator list alongside its placement/modifier
+checks. Both cases and scoped Ruff/Basedpyright pass. Inventory reproduction:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-decorated-mushroom-disposition.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-decorated-mushroom-disposition.json
+uv run pytest -q tests/item8/test_explorations_provider_scope.py
+uv run ruff check tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. This closes the previously named mushroom boundary
+without adding a family. Other named groupings and 46 provider rows remain open;
+the 421 provisional registry groups are unchanged. Required attributes and final
+review/delivery gates remain incomplete.
+
 ### Scarecrow family decision recorded on 2026-09-06
 
 The decisions and rebuilt working inventory now record `explorations:scarecrow`
