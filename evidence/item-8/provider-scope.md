@@ -2685,6 +2685,50 @@ Provider dispositions: 53 of 136 resolved, 83 open. Continue the remaining censu
 
 ## BetterEnd feature candidate reconciliation
 
+### Crashed-ship membership decision recorded on 2026-09-06
+
+The machine-readable decisions and rebuilt inventory now include
+`betterend:crashed_ship` as one independent nonregistry family. Its dedicated
+placement and erosion produce a standalone wreck. Reusing
+`minecraft:end_city/ship` does not turn that wreck into a city component; the
+ship attached to an End city remains a component of the existing city family.
+Rotation, erosion and biome occurrences remain variants of this wreck family.
+The source and direct biome routes below already establish this boundary, so
+no additional capture, experiment or generic helper inspection is required.
+
+The existing crashed-ship test now binds the decision's source hashes and
+template/placed-feature identity. All thirteen BetterEnd cases pass, as do
+scoped Ruff and Basedpyright. Rebuild the inventory with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-crashed-ship-membership.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-crashed-ship-membership.json
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_betterend_feature_candidates.py
+```
+
+The output path must not already exist. This closes one family-membership
+decision, not the Item 8 exit gate. The 421 registry-root groups are unchanged;
+nonregistry families are additional contributions. Observed occurrence and
+required family attributes remain separate work. Current provider coverage is
+90 resolved and 46 open; this decision does not change that census.
+
+The broader `uv run pytest -q tests/item8/test_family_decisions.py` run returned
+70 passed and three failures. The failed cases are
+`test_authored_designs_bind_roots_settings_and_missing_components` for
+`explorations:` and `aether:`, and
+`test_design_groups_cover_registry_and_bind_variant_definitions` for
+`repurposed_structures`. Each still expects the old generic custom-generation
+UNKNOWN string where earlier decisions now contain a resolved empty list or a
+more specific limitation. All 421 registry groups and these test bodies are
+unchanged by this increment. These existing assertion inconsistencies must be
+reconciled against their focused source tests before the full Item 8 gate.
+The three failures reproduced with `uv run pytest -q
+tests/item8/test_family_decisions.py --lf --tb=short`; raw output is retained at
+`evidence/raw/item8/crashed-ship-family-regressions.log`. This is not a claim
+that the full family-decision gate passes.
+
 The earlier crashed-ship uncertainty is narrowed by existing packaged evidence,
 without another source capture or world run. Its configured feature is embedded
 inside `data/betterend/worldgen/placed_feature/crashed_ship.json`; absence of a

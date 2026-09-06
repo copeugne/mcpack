@@ -30568,6 +30568,25 @@
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f"
         },
         "remaining": "No additional template/helper tracing needed for this boundary. Continue remaining provider candidates; revisit only if an active placement route is demonstrated."
+      },
+      "betterend:crashed_ship": {
+        "mechanism": "Registered placed feature with inline betterend:crashed_ship configuration, directly consumed by packaged End biomes.",
+        "placed_feature": "betterend:crashed_ship",
+        "configured_feature": "Inline configuration; no separate configured-feature registry ID.",
+        "class_to_template": {
+          "CrashedShipFeature": "minecraft:end_city/ship"
+        },
+        "relationship": "One independent crashed-ship family. It reuses the vanilla End-city ship template, but its own placement and erosion generate a standalone wreck. The ship attached to minecraft:end_city remains a component of that city family. Rotation, erosion and biome occurrences do not create additional crashed-ship families.",
+        "placement_eligibility": "The placed definition applies rarity 500, in-square and biome filters. Twenty-seven packaged BetterEnd biomes reference it directly; twenty-one occur in the captured End biome source. This establishes a natural-generation route, not observed occurrence or exploration frequency.",
+        "scope": "Family membership resolved from existing source and active placement eligibility. Complete provider coverage and required family attributes remain open. Shared biome modifiers may extend eligibility but do not add a second family for this same generator.",
+        "evidence": {
+          "evidence/item-8/sources/betterend-feature-scope/identities.json": "7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+        },
+        "verification": "tests/item8/test_betterend_feature_candidates.py::test_betterend_crashed_ship_inline_configuration_and_biome_routes"
       }
     }
   }
