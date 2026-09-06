@@ -1,0 +1,1033 @@
+Classfile moonlight-neoforge-1.21.1-3.0.17.jar!/net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.class
+  Last modified Feb 1, 1980; size 11365 bytes
+  SHA-256 checksum 2def1621b049b7e6180e75305091bc5cb4b8dd8e710d559779330a8da43b5950
+  Compiled from "HoldingPlayerMixin.java"
+public abstract class net.mehvahdjukaar.moonlight.core.mixins.platform.HoldingPlayerMixin implements net.mehvahdjukaar.moonlight.core.misc.IHoldingPlayerExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 8, methods: 9, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/util/concurrent/locks/ReentrantLock
+    #8 = Utf8               java/util/concurrent/locks/ReentrantLock
+    #9 = Methodref          #7.#3         // java/util/concurrent/locks/ReentrantLock."<init>":()V
+   #10 = Fieldref           #11.#12       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+   #11 = Class              #13           // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin
+   #12 = NameAndType        #14:#15       // moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+   #13 = Utf8               net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin
+   #14 = Utf8               moonlight$concurrentLock
+   #15 = Utf8               Ljava/util/concurrent/locks/ReentrantLock;
+   #16 = Class              #17           // java/util/IdentityHashMap
+   #17 = Utf8               java/util/IdentityHashMap
+   #18 = Methodref          #16.#3        // java/util/IdentityHashMap."<init>":()V
+   #19 = Fieldref           #11.#20       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.moonlight$customDataDirty:Ljava/util/Map;
+   #20 = NameAndType        #21:#22       // moonlight$customDataDirty:Ljava/util/Map;
+   #21 = Utf8               moonlight$customDataDirty
+   #22 = Utf8               Ljava/util/Map;
+   #23 = Fieldref           #11.#24       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.moonlight$customMarkersDirty:Z
+   #24 = NameAndType        #25:#26       // moonlight$customMarkersDirty:Z
+   #25 = Utf8               moonlight$customMarkersDirty
+   #26 = Utf8               Z
+   #27 = Fieldref           #11.#28       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.moonlight$dirtyDecorationTicks:I
+   #28 = NameAndType        #29:#30       // moonlight$dirtyDecorationTicks:I
+   #29 = Utf8               moonlight$dirtyDecorationTicks
+   #30 = Utf8               I
+   #31 = Fieldref           #11.#32       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.moonlight$volatileDecorationRefreshTicks:I
+   #32 = NameAndType        #33:#30       // moonlight$volatileDecorationRefreshTicks:I
+   #33 = Utf8               moonlight$volatileDecorationRefreshTicks
+   #34 = Class              #35           // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+   #35 = Utf8               net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+   #36 = InterfaceMethodref #34.#37       // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomData:()Ljava/util/Map;
+   #37 = NameAndType        #38:#39       // ml$getCustomData:()Ljava/util/Map;
+   #38 = Utf8               ml$getCustomData
+   #39 = Utf8               ()Ljava/util/Map;
+   #40 = InterfaceMethodref #41.#42       // java/util/Map.values:()Ljava/util/Collection;
+   #41 = Class              #43           // java/util/Map
+   #42 = NameAndType        #44:#45       // values:()Ljava/util/Collection;
+   #43 = Utf8               java/util/Map
+   #44 = Utf8               values
+   #45 = Utf8               ()Ljava/util/Collection;
+   #46 = InterfaceMethodref #47.#48       // java/util/Collection.iterator:()Ljava/util/Iterator;
+   #47 = Class              #49           // java/util/Collection
+   #48 = NameAndType        #50:#51       // iterator:()Ljava/util/Iterator;
+   #49 = Utf8               java/util/Collection
+   #50 = Utf8               iterator
+   #51 = Utf8               ()Ljava/util/Iterator;
+   #52 = InterfaceMethodref #53.#54       // java/util/Iterator.hasNext:()Z
+   #53 = Class              #55           // java/util/Iterator
+   #54 = NameAndType        #56:#57       // hasNext:()Z
+   #55 = Utf8               java/util/Iterator
+   #56 = Utf8               hasNext
+   #57 = Utf8               ()Z
+   #58 = InterfaceMethodref #53.#59       // java/util/Iterator.next:()Ljava/lang/Object;
+   #59 = NameAndType        #60:#61       // next:()Ljava/lang/Object;
+   #60 = Utf8               next
+   #61 = Utf8               ()Ljava/lang/Object;
+   #62 = Class              #63           // net/mehvahdjukaar/moonlight/api/map/CustomMapData
+   #63 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData
+   #64 = InterfaceMethodref #62.#65       // net/mehvahdjukaar/moonlight/api/map/CustomMapData.getType:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+   #65 = NameAndType        #66:#67       // getType:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+   #66 = Utf8               getType
+   #67 = Utf8               ()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+   #68 = InterfaceMethodref #62.#69       // net/mehvahdjukaar/moonlight/api/map/CustomMapData.createDirtyCounter:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+   #69 = NameAndType        #70:#71       // createDirtyCounter:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+   #70 = Utf8               createDirtyCounter
+   #71 = Utf8               ()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+   #72 = InterfaceMethodref #41.#73       // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #73 = NameAndType        #74:#75       // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #74 = Utf8               put
+   #75 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #76 = Methodref          #7.#77        // java/util/concurrent/locks/ReentrantLock.isLocked:()Z
+   #77 = NameAndType        #78:#57       // isLocked:()Z
+   #78 = Utf8               isLocked
+   #79 = Methodref          #80.#81       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #80 = Class              #82           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #81 = NameAndType        #83:#84       // setReturnValue:(Ljava/lang/Object;)V
+   #82 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #83 = Utf8               setReturnValue
+   #84 = Utf8               (Ljava/lang/Object;)V
+   #85 = Fieldref           #11.#86       // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.this$0:Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #86 = NameAndType        #87:#88       // this$0:Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #87 = Utf8               this$0
+   #88 = Utf8               Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+   #89 = Class              #90           // java/util/ArrayList
+   #90 = Utf8               java/util/ArrayList
+   #91 = Methodref          #89.#3        // java/util/ArrayList."<init>":()V
+   #92 = InterfaceMethodref #41.#93       // java/util/Map.entrySet:()Ljava/util/Set;
+   #93 = NameAndType        #94:#95       // entrySet:()Ljava/util/Set;
+   #94 = Utf8               entrySet
+   #95 = Utf8               ()Ljava/util/Set;
+   #96 = InterfaceMethodref #97.#48       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #97 = Class              #98           // java/util/Set
+   #98 = Utf8               java/util/Set
+   #99 = Class              #100          // java/util/Map$Entry
+  #100 = Utf8               java/util/Map$Entry
+  #101 = InterfaceMethodref #99.#102      // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #102 = NameAndType        #103:#61      // getValue:()Ljava/lang/Object;
+  #103 = Utf8               getValue
+  #104 = Class              #105          // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+  #105 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+  #106 = InterfaceMethodref #104.#107     // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter.isDirty:()Z
+  #107 = NameAndType        #108:#57      // isDirty:()Z
+  #108 = Utf8               isDirty
+  #109 = InterfaceMethodref #110.#111     // java/util/List.add:(Ljava/lang/Object;)Z
+  #110 = Class              #112          // java/util/List
+  #111 = NameAndType        #113:#114     // add:(Ljava/lang/Object;)Z
+  #112 = Utf8               java/util/List
+  #113 = Utf8               add
+  #114 = Utf8               (Ljava/lang/Object;)Z
+  #115 = Fieldref           #11.#116      // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.player:Lnet/minecraft/world/entity/player/Player;
+  #116 = NameAndType        #117:#118     // player:Lnet/minecraft/world/entity/player/Player;
+  #117 = Utf8               player
+  #118 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #119 = Methodref          #120.#121     // net/mehvahdjukaar/moonlight/core/map/MapDataInternal.getDynamicServer:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #120 = Class              #122          // net/mehvahdjukaar/moonlight/core/map/MapDataInternal
+  #121 = NameAndType        #123:#124     // getDynamicServer:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #122 = Utf8               net/mehvahdjukaar/moonlight/core/map/MapDataInternal
+  #123 = Utf8               getDynamicServer
+  #124 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+  #125 = Class              #126          // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+  #126 = Utf8               net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+  #127 = Methodref          #125.#128     // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #128 = NameAndType        #129:#130     // createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #129 = Utf8               createDecorationFromMarker
+  #130 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #131 = InterfaceMethodref #110.#132     // java/util/List.isEmpty:()Z
+  #132 = NameAndType        #133:#57      // isEmpty:()Z
+  #133 = Utf8               isEmpty
+  #134 = Class              #135          // net/minecraft/network/protocol/game/ClientboundMapItemDataPacket
+  #135 = Utf8               net/minecraft/network/protocol/game/ClientboundMapItemDataPacket
+  #136 = Fieldref           #137.#138     // net/minecraft/world/level/saveddata/maps/MapItemSavedData.scale:B
+  #137 = Class              #139          // net/minecraft/world/level/saveddata/maps/MapItemSavedData
+  #138 = NameAndType        #140:#141     // scale:B
+  #139 = Utf8               net/minecraft/world/level/saveddata/maps/MapItemSavedData
+  #140 = Utf8               scale
+  #141 = Utf8               B
+  #142 = Fieldref           #137.#143     // net/minecraft/world/level/saveddata/maps/MapItemSavedData.locked:Z
+  #143 = NameAndType        #144:#26      // locked:Z
+  #144 = Utf8               locked
+  #145 = Methodref          #146.#147     // java/util/Optional.empty:()Ljava/util/Optional;
+  #146 = Class              #148          // java/util/Optional
+  #147 = NameAndType        #149:#150     // empty:()Ljava/util/Optional;
+  #148 = Utf8               java/util/Optional
+  #149 = Utf8               empty
+  #150 = Utf8               ()Ljava/util/Optional;
+  #151 = Methodref          #134.#152     // net/minecraft/network/protocol/game/ClientboundMapItemDataPacket."<init>":(Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V
+  #152 = NameAndType        #5:#153       // "<init>":(Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V
+  #153 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V
+  #154 = Class              #155          // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+  #155 = Utf8               net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+  #156 = InterfaceMethodref #110.#48      // java/util/List.iterator:()Ljava/util/Iterator;
+  #157 = InterfaceMethodref #99.#158      // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #158 = NameAndType        #159:#61      // getKey:()Ljava/lang/Object;
+  #159 = Utf8               getKey
+  #160 = Class              #161          // net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type
+  #161 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type
+  #162 = Methodref          #11.#163      // net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin.ml$createDirtyDataPatch:(Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+  #163 = NameAndType        #164:#165     // ml$createDirtyDataPatch:(Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+  #164 = Utf8               ml$createDirtyDataPatch
+  #165 = Utf8               (Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+  #166 = InterfaceMethodref #104.#167     // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter.clearDirty:()V
+  #167 = NameAndType        #168:#6       // clearDirty:()V
+  #168 = Utf8               clearDirty
+  #169 = Methodref          #146.#170     // java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+  #170 = NameAndType        #171:#172     // of:(Ljava/lang/Object;)Ljava/util/Optional;
+  #171 = Utf8               of
+  #172 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+  #173 = InterfaceMethodref #154.#174     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+  #174 = NameAndType        #175:#176     // moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+  #175 = Utf8               moonlight$setDirtyCustomData
+  #176 = Utf8               (Ljava/util/Optional;)V
+  #177 = InterfaceMethodref #34.#178      // net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomDecorations:()Ljava/util/Map;
+  #178 = NameAndType        #179:#39      // ml$getCustomDecorations:()Ljava/util/Map;
+  #179 = Utf8               ml$getCustomDecorations
+  #180 = Methodref          #89.#181      // java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+  #181 = NameAndType        #5:#182       // "<init>":(Ljava/util/Collection;)V
+  #182 = Utf8               (Ljava/util/Collection;)V
+  #183 = InterfaceMethodref #110.#184     // java/util/List.addAll:(Ljava/util/Collection;)Z
+  #184 = NameAndType        #185:#186     // addAll:(Ljava/util/Collection;)Z
+  #185 = Utf8               addAll
+  #186 = Utf8               (Ljava/util/Collection;)Z
+  #187 = InterfaceMethodref #154.#188     // net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+  #188 = NameAndType        #189:#176     // moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+  #189 = Utf8               moonlight$setCustomDecorations
+  #190 = InterfaceMethodref #41.#191      // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #191 = NameAndType        #192:#193     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #192 = Utf8               get
+  #193 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #194 = InterfaceMethodref #62.#195      // net/mehvahdjukaar/moonlight/api/map/CustomMapData.createUpdatePatch:(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Ljava/lang/Object;
+  #195 = NameAndType        #196:#197     // createUpdatePatch:(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Ljava/lang/Object;
+  #196 = Utf8               createUpdatePatch
+  #197 = Utf8               (Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Ljava/lang/Object;
+  #198 = Class              #199          // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+  #199 = Utf8               net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+  #200 = Methodref          #198.#201     // net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch."<init>":(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/lang/Object;)V
+  #201 = NameAndType        #5:#202       // "<init>":(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/lang/Object;)V
+  #202 = Utf8               (Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/lang/Object;)V
+  #203 = Methodref          #7.#204       // java/util/concurrent/locks/ReentrantLock.lock:()V
+  #204 = NameAndType        #205:#6       // lock:()V
+  #205 = Utf8               lock
+  #206 = InterfaceMethodref #207.#208     // java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+  #207 = Class              #209          // java/util/function/Consumer
+  #208 = NameAndType        #210:#84      // accept:(Ljava/lang/Object;)V
+  #209 = Utf8               java/util/function/Consumer
+  #210 = Utf8               accept
+  #211 = Methodref          #7.#212       // java/util/concurrent/locks/ReentrantLock.unlock:()V
+  #212 = NameAndType        #213:#6       // unlock:()V
+  #213 = Utf8               unlock
+  #214 = Class              #215          // net/mehvahdjukaar/moonlight/core/misc/IHoldingPlayerExtension
+  #215 = Utf8               net/mehvahdjukaar/moonlight/core/misc/IHoldingPlayerExtension
+  #216 = Utf8               RuntimeVisibleAnnotations
+  #217 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #218 = Utf8               Signature
+  #219 = Utf8               Ljava/util/Map<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;
+  #220 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #221 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #222 = Utf8               dirtyData
+  #223 = Utf8               Code
+  #224 = Utf8               LineNumberTable
+  #225 = Utf8               LocalVariableTable
+  #226 = Utf8               this
+  #227 = Utf8               Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+  #228 = Utf8               initializeDirty
+  #229 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #230 = Utf8               v
+  #231 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData;
+  #232 = Utf8               mapItemSavedData
+  #233 = Utf8               ci
+  #234 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #235 = Utf8               LocalVariableTypeTable
+  #236 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<**>;
+  #237 = Utf8               StackMapTable
+  #238 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #239 = Utf8               method
+  #240 = Utf8               at
+  #241 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #242 = Utf8               value
+  #243 = Utf8               TAIL
+  #244 = Utf8               checkLocked
+  #245 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #246 = Utf8               mapId
+  #247 = Utf8               Lnet/minecraft/world/level/saveddata/maps/MapId;
+  #248 = Utf8               cir
+  #249 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #250 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/network/protocol/Packet<*>;>;
+  #251 = Utf8               (Lnet/minecraft/world/level/saveddata/maps/MapId;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/network/protocol/Packet<*>;>;)V
+  #252 = Utf8               nextUpdatePacket
+  #253 = Utf8               HEAD
+  #254 = Utf8               cancellable
+  #255 = Integer            1
+  #256 = Utf8               RuntimeInvisibleTypeAnnotations
+  #257 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #258 = Utf8               addExtraPacketData
+  #259 = Utf8               (Lnet/minecraft/network/protocol/Packet;Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/network/protocol/Packet;
+  #260 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+  #261 = Utf8               e
+  #262 = Utf8               Ljava/util/Map$Entry;
+  #263 = Utf8               d
+  #264 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+  #265 = Utf8               m
+  #266 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker;
+  #267 = Utf8               dirtyPatch
+  #268 = Utf8               Ljava/util/List;
+  #269 = Utf8               decorations
+  #270 = Utf8               ep
+  #271 = Utf8               Lnet/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension;
+  #272 = Utf8               packet
+  #273 = Utf8               Lnet/minecraft/network/protocol/Packet;
+  #274 = Utf8               data
+  #275 = Utf8               ed
+  #276 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;
+  #277 = Utf8               updateData
+  #278 = Utf8               updateDeco
+  #279 = Utf8               extra
+  #280 = Utf8               Ljava/util/Map$Entry<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;
+  #281 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker<*>;
+  #282 = Utf8               Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;
+  #283 = Utf8               Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+  #284 = Utf8               Lnet/minecraft/network/protocol/Packet<*>;
+  #285 = Utf8               Ljava/util/List<Ljava/util/Map$Entry<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;>;
+  #286 = Class              #287          // net/minecraft/network/protocol/Packet
+  #287 = Utf8               net/minecraft/network/protocol/Packet
+  #288 = Class              #289          // net/minecraft/world/level/saveddata/maps/MapId
+  #289 = Utf8               net/minecraft/world/level/saveddata/maps/MapId
+  #290 = Utf8               (Lnet/minecraft/network/protocol/Packet<*>;Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/network/protocol/Packet<*>;
+  #291 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyReturnValue;
+  #292 = Utf8               RuntimeInvisibleParameterAnnotations
+  #293 = Utf8               type
+  #294 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+  #295 = Utf8               dirtyCounter
+  #296 = Utf8               patch
+  #297 = Utf8               Ljava/lang/Object;
+  #298 = Utf8               t
+  #299 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;
+  #300 = Utf8               TD;
+  #301 = Utf8               TP;
+  #302 = Utf8               Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<TP;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<*TP;>;>;
+  #303 = Utf8               <P:Ljava/lang/Object;C::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;D::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<TC;TP;>;>(Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;
+  #304 = Utf8               moonlight$setCustomDataDirty
+  #305 = Utf8               (Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/util/function/Consumer;)V
+  #306 = Utf8               dirtySetter
+  #307 = Utf8               Ljava/util/function/Consumer;
+  #308 = Utf8               Ljava/util/function/Consumer<TH;>;
+  #309 = Class              #310          // java/lang/Throwable
+  #310 = Utf8               java/lang/Throwable
+  #311 = Utf8               <H::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Ljava/util/function/Consumer<TH;>;)V
+  #312 = Utf8               moonlight$setCustomMarkersDirty
+  #313 = Utf8               lockData
+  #314 = Utf8               (IILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #315 = Utf8               x
+  #316 = Utf8               z
+  #317 = Utf8               markColorsDirty
+  #318 = Utf8               sanityCheck
+  #319 = Utf8               RETURN
+  #320 = Utf8               SourceFile
+  #321 = Utf8               HoldingPlayerMixin.java
+  #322 = Utf8               RuntimeInvisibleAnnotations
+  #323 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #324 = Utf8               Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData$HoldingPlayer;
+  #325 = Utf8               InnerClasses
+  #326 = Utf8               Type
+  #327 = Utf8               DirtyCounter
+  #328 = Utf8               Entry
+  #329 = Utf8               DirtyDataPatch
+  #330 = Class              #331          // net/minecraft/world/level/saveddata/maps/MapItemSavedData$HoldingPlayer
+  #331 = Utf8               net/minecraft/world/level/saveddata/maps/MapItemSavedData$HoldingPlayer
+  #332 = Utf8               HoldingPlayer
+{
+  private final java.util.concurrent.locks.ReentrantLock moonlight$concurrentLock;
+    descriptor: Ljava/util/concurrent/locks/ReentrantLock;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  private final java.util.Map<net.mehvahdjukaar.moonlight.api.map.CustomMapData$Type<?, ?>, net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyCounter> moonlight$customDataDirty;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #219                         // Ljava/util/Map<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean moonlight$customMarkersDirty;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  private int moonlight$dirtyDecorationTicks;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  private int moonlight$volatileDecorationRefreshTicks;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.minecraft.world.entity.player.Player player;
+    descriptor: Lnet/minecraft/world/entity/player/Player;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #220()
+        org.spongepowered.asm.mixin.Shadow
+      1: #221()
+        org.spongepowered.asm.mixin.Final
+
+  private boolean dirtyData;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #220()
+        org.spongepowered.asm.mixin.Shadow
+
+  net.minecraft.world.level.saveddata.maps.MapItemSavedData this$0;
+    descriptor: Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #220()
+        org.spongepowered.asm.mixin.Shadow
+      1: #221()
+        org.spongepowered.asm.mixin.Final
+
+  public net.mehvahdjukaar.moonlight.core.mixins.platform.HoldingPlayerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/concurrent/locks/ReentrantLock
+         8: dup
+         9: invokespecial #9                  // Method java/util/concurrent/locks/ReentrantLock."<init>":()V
+        12: putfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+        15: aload_0
+        16: new           #16                 // class java/util/IdentityHashMap
+        19: dup
+        20: invokespecial #18                 // Method java/util/IdentityHashMap."<init>":()V
+        23: putfield      #19                 // Field moonlight$customDataDirty:Ljava/util/Map;
+        26: aload_0
+        27: iconst_1
+        28: putfield      #23                 // Field moonlight$customMarkersDirty:Z
+        31: aload_0
+        32: iconst_0
+        33: putfield      #27                 // Field moonlight$dirtyDecorationTicks:I
+        36: aload_0
+        37: iconst_0
+        38: putfield      #31                 // Field moonlight$volatileDecorationRefreshTicks:I
+        41: return
+      LineNumberTable:
+        line 31: 0
+        line 42: 4
+        line 45: 15
+        line 47: 26
+        line 50: 31
+        line 52: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+
+  public void initializeDirty(net.minecraft.world.level.saveddata.maps.MapItemSavedData, net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=6, args_size=4
+         0: aload_0
+         1: iconst_1
+         2: putfield      #23                 // Field moonlight$customMarkersDirty:Z
+         5: aload_1
+         6: checkcast     #34                 // class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+         9: invokeinterface #36,  1           // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomData:()Ljava/util/Map;
+        14: invokeinterface #40,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+        19: invokeinterface #46,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        24: astore        4
+        26: aload         4
+        28: invokeinterface #52,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        33: ifeq          75
+        36: aload         4
+        38: invokeinterface #58,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        43: checkcast     #62                 // class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+        46: astore        5
+        48: aload_0
+        49: getfield      #19                 // Field moonlight$customDataDirty:Ljava/util/Map;
+        52: aload         5
+        54: invokeinterface #64,  1           // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/CustomMapData.getType:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+        59: aload         5
+        61: invokeinterface #68,  1           // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/CustomMapData.createDirtyCounter:()Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+        66: invokeinterface #72,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        71: pop
+        72: goto          26
+        75: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 5
+        line 38: 48
+        line 39: 72
+        line 40: 75
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           48      24     5     v   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData;
+            0      76     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0      76     1 mapItemSavedData   Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+            0      76     2 player   Lnet/minecraft/world/entity/player/Player;
+            0      76     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           48      24     5     v   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<**>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 26
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 48
+    RuntimeVisibleAnnotations:
+      0: #238(#239=[s#5],#240=[@#241(#242=s#243)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+
+  public void checkLocked(net.minecraft.world.level.saveddata.maps.MapId, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.network.protocol.Packet<?>>);
+    descriptor: (Lnet/minecraft/world/level/saveddata/maps/MapId;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #76                 // Method java/util/concurrent/locks/ReentrantLock.isLocked:()Z
+         7: ifeq          15
+        10: aload_2
+        11: aconst_null
+        12: invokevirtual #79                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        15: return
+      LineNumberTable:
+        line 69: 0
+        line 70: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0      16     1 mapId   Lnet/minecraft/world/level/saveddata/maps/MapId;
+            0      16     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      16     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/network/protocol/Packet<*>;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 15 /* same */
+    Signature: #251                         // (Lnet/minecraft/world/level/saveddata/maps/MapId;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/network/protocol/Packet<*>;>;)V
+    RuntimeVisibleAnnotations:
+      0: #238(#239=[s#252],#240=[@#241(#242=s#253)],#254=Z#255)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["nextUpdatePacket"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #257(): METHOD_FORMAL_PARAMETER, param_index=1, location=[TYPE_ARGUMENT(0)]
+        org.jetbrains.annotations.Nullable
+
+  public net.minecraft.network.protocol.Packet<?> addExtraPacketData(net.minecraft.network.protocol.Packet<?>, net.minecraft.world.level.saveddata.maps.MapId);
+    descriptor: (Lnet/minecraft/network/protocol/Packet;Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/network/protocol/Packet;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=7, locals=13, args_size=3
+         0: aload_0
+         1: getfield      #85                 // Field this$0:Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+         4: astore_3
+         5: aload_3
+         6: checkcast     #34                 // class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData
+         9: astore        4
+        11: iconst_0
+        12: istore        5
+        14: iconst_0
+        15: istore        6
+        17: new           #89                 // class java/util/ArrayList
+        20: dup
+        21: invokespecial #91                 // Method java/util/ArrayList."<init>":()V
+        24: astore        7
+        26: aload_0
+        27: getfield      #19                 // Field moonlight$customDataDirty:Ljava/util/Map;
+        30: invokeinterface #92,  1           // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+        35: invokeinterface #96,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        40: astore        8
+        42: aload         8
+        44: invokeinterface #52,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        49: ifeq          102
+        52: aload         8
+        54: invokeinterface #58,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        59: checkcast     #99                 // class java/util/Map$Entry
+        62: astore        9
+        64: aload         9
+        66: invokeinterface #101,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+        71: checkcast     #104                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+        74: astore        10
+        76: aload         10
+        78: invokeinterface #106,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter.isDirty:()Z
+        83: ifeq          99
+        86: aload         7
+        88: aload         9
+        90: invokeinterface #109,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        95: pop
+        96: iconst_1
+        97: istore        5
+        99: goto          42
+       102: aload_0
+       103: getfield      #23                 // Field moonlight$customMarkersDirty:Z
+       106: ifeq          133
+       109: aload_0
+       110: dup
+       111: getfield      #27                 // Field moonlight$dirtyDecorationTicks:I
+       114: dup_x1
+       115: iconst_1
+       116: iadd
+       117: putfield      #27                 // Field moonlight$dirtyDecorationTicks:I
+       120: iconst_5
+       121: irem
+       122: ifne          133
+       125: aload_0
+       126: iconst_0
+       127: putfield      #23                 // Field moonlight$customMarkersDirty:Z
+       130: iconst_1
+       131: istore        6
+       133: new           #89                 // class java/util/ArrayList
+       136: dup
+       137: invokespecial #91                 // Method java/util/ArrayList."<init>":()V
+       140: astore        8
+       142: aload_0
+       143: getfield      #115                // Field player:Lnet/minecraft/world/entity/player/Player;
+       146: aload_2
+       147: aload_3
+       148: invokestatic  #119                // Method net/mehvahdjukaar/moonlight/core/map/MapDataInternal.getDynamicServer:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/saveddata/maps/MapId;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Ljava/util/Set;
+       151: invokeinterface #96,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       156: astore        9
+       158: aload         9
+       160: invokeinterface #52,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       165: ifeq          206
+       168: aload         9
+       170: invokeinterface #58,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       175: checkcast     #125                // class net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker
+       178: astore        10
+       180: aload         10
+       182: aload_3
+       183: invokevirtual #127                // Method net/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker.createDecorationFromMarker:(Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+       186: astore        11
+       188: aload         11
+       190: ifnull        203
+       193: aload         8
+       195: aload         11
+       197: invokeinterface #109,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       202: pop
+       203: goto          158
+       206: aload         8
+       208: invokeinterface #131,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       213: ifeq          233
+       216: aload_0
+       217: dup
+       218: getfield      #31                 // Field moonlight$volatileDecorationRefreshTicks:I
+       221: dup_x1
+       222: iconst_1
+       223: iadd
+       224: putfield      #31                 // Field moonlight$volatileDecorationRefreshTicks:I
+       227: bipush        80
+       229: irem
+       230: ifne          236
+       233: iconst_1
+       234: istore        6
+       236: iload         5
+       238: ifne          246
+       241: iload         6
+       243: ifeq          451
+       246: aload_1
+       247: ifnonnull     279
+       250: new           #134                // class net/minecraft/network/protocol/game/ClientboundMapItemDataPacket
+       253: dup
+       254: aload_2
+       255: aload_0
+       256: getfield      #85                 // Field this$0:Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+       259: getfield      #136                // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.scale:B
+       262: aload_0
+       263: getfield      #85                 // Field this$0:Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+       266: getfield      #142                // Field net/minecraft/world/level/saveddata/maps/MapItemSavedData.locked:Z
+       269: invokestatic  #145                // Method java/util/Optional.empty:()Ljava/util/Optional;
+       272: invokestatic  #145                // Method java/util/Optional.empty:()Ljava/util/Optional;
+       275: invokespecial #151                // Method net/minecraft/network/protocol/game/ClientboundMapItemDataPacket."<init>":(Lnet/minecraft/world/level/saveddata/maps/MapId;BZLjava/util/Optional;Ljava/util/Optional;)V
+       278: astore_1
+       279: aload_1
+       280: checkcast     #154                // class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension
+       283: astore        9
+       285: iload         5
+       287: ifeq          403
+       290: new           #89                 // class java/util/ArrayList
+       293: dup
+       294: invokespecial #91                 // Method java/util/ArrayList."<init>":()V
+       297: astore        10
+       299: aload         7
+       301: invokeinterface #156,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       306: astore        11
+       308: aload         11
+       310: invokeinterface #52,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       315: ifeq          381
+       318: aload         11
+       320: invokeinterface #58,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       325: checkcast     #99                 // class java/util/Map$Entry
+       328: astore        12
+       330: aload         10
+       332: aload         4
+       334: aload         12
+       336: invokeinterface #157,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       341: checkcast     #160                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type
+       344: aload         12
+       346: invokeinterface #101,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       351: checkcast     #104                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+       354: invokestatic  #162                // Method ml$createDirtyDataPatch:(Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+       357: invokeinterface #109,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       362: pop
+       363: aload         12
+       365: invokeinterface #101,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       370: checkcast     #104                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+       373: invokeinterface #166,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter.clearDirty:()V
+       378: goto          308
+       381: aload         7
+       383: invokeinterface #131,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       388: ifne          403
+       391: aload         9
+       393: aload         10
+       395: invokestatic  #169                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+       398: invokeinterface #173,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setDirtyCustomData:(Ljava/util/Optional;)V
+       403: iload         6
+       405: ifeq          451
+       408: new           #89                 // class java/util/ArrayList
+       411: dup
+       412: aload         4
+       414: invokeinterface #177,  1          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomDecorations:()Ljava/util/Map;
+       419: invokeinterface #40,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       424: invokespecial #180                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+       427: astore        10
+       429: aload         10
+       431: aload         8
+       433: invokeinterface #183,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+       438: pop
+       439: aload         9
+       441: aload         10
+       443: invokestatic  #169                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+       446: invokeinterface #187,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension.moonlight$setCustomDecorations:(Ljava/util/Optional;)V
+       451: aload_1
+       452: areturn
+      LineNumberTable:
+        line 74: 0
+        line 75: 5
+        line 77: 11
+        line 78: 14
+        line 81: 17
+        line 82: 26
+        line 83: 64
+        line 84: 76
+        line 85: 86
+        line 86: 96
+        line 88: 99
+        line 89: 102
+        line 90: 125
+        line 91: 130
+        line 94: 133
+        line 99: 142
+        line 100: 180
+        line 101: 188
+        line 102: 203
+        line 105: 206
+        line 108: 236
+        line 110: 246
+        line 111: 250
+        line 112: 269
+        line 114: 279
+        line 116: 285
+        line 117: 290
+        line 118: 299
+        line 119: 330
+        line 120: 363
+        line 121: 378
+        line 122: 381
+        line 123: 391
+        line 126: 403
+        line 127: 408
+        line 128: 429
+        line 130: 439
+        line 133: 451
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           76      23    10 value   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+           64      35     9     e   Ljava/util/Map$Entry;
+          188      15    11     d   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;
+          180      23    10     m   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker;
+          330      48    12     e   Ljava/util/Map$Entry;
+          299     104    10 dirtyPatch   Ljava/util/List;
+          429      22    10 decorations   Ljava/util/List;
+          285     166     9    ep   Lnet/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension;
+            0     453     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0     453     1 packet   Lnet/minecraft/network/protocol/Packet;
+            0     453     2 mapId   Lnet/minecraft/world/level/saveddata/maps/MapId;
+            5     448     3  data   Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;
+           11     442     4    ed   Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;
+           14     439     5 updateData   Z
+           17     436     6 updateDeco   Z
+           26     427     7 dirtyData   Ljava/util/List;
+          142     311     8 extra   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           64      35     9     e   Ljava/util/Map$Entry<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;
+          180      23    10     m   Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapMarker<*>;
+          330      48    12     e   Ljava/util/Map$Entry<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;
+          299     104    10 dirtyPatch   Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;>;
+          429      22    10 decorations   Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+            0     453     1 packet   Lnet/minecraft/network/protocol/Packet<*>;
+           26     427     7 dirtyData   Ljava/util/List<Ljava/util/Map$Entry<Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>;>;
+          142     311     8 extra   Ljava/util/List<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecoration;>;
+      StackMapTable: number_of_entries = 15
+        frame_type = 255 /* full_frame */
+          offset_delta = 42
+          locals = [ class net/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin, class net/minecraft/network/protocol/Packet, class net/minecraft/world/level/saveddata/maps/MapId, class net/minecraft/world/level/saveddata/maps/MapItemSavedData, class net/mehvahdjukaar/moonlight/api/map/ExpandedMapData, int, int, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 56 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 30 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 24
+          locals = [ class java/util/List, class java/util/Iterator ]
+        frame_type = 44 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 26 /* same */
+        frame_type = 2 /* same */
+        frame_type = 9 /* same */
+        frame_type = 32 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 28
+          locals = [ class net/mehvahdjukaar/moonlight/core/misc/IMapDataPacketExtension, class java/util/List, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 72
+        frame_type = 250 /* chop */
+          offset_delta = 21
+        frame_type = 250 /* chop */
+          offset_delta = 47
+    Signature: #290                         // (Lnet/minecraft/network/protocol/Packet<*>;Lnet/minecraft/world/level/saveddata/maps/MapId;)Lnet/minecraft/network/protocol/Packet<*>;
+    RuntimeVisibleAnnotations:
+      0: #291(#239=[s#252],#240=[@#241(#242=s#243)])
+        com.llamalad7.mixinextras.injector.ModifyReturnValue(
+          method=["nextUpdatePacket"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #257(): METHOD_FORMAL_PARAMETER, param_index=0
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #257()
+          org.jetbrains.annotations.Nullable
+      parameter 1:
+
+  private static <P extends java.lang.Object, C extends net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyCounter, D extends net.mehvahdjukaar.moonlight.api.map.CustomMapData<C, P>> net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyDataPatch<?, ?> ml$createDirtyDataPatch(net.mehvahdjukaar.moonlight.api.map.ExpandedMapData, net.mehvahdjukaar.moonlight.api.map.CustomMapData$Type<?, ?>, net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyCounter);
+    descriptor: (Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=6, args_size=3
+         0: aload_0
+         1: invokeinterface #36,  1           // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/ExpandedMapData.ml$getCustomData:()Ljava/util/Map;
+         6: aload_1
+         7: invokeinterface #190,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        12: checkcast     #62                 // class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+        15: astore_3
+        16: aload_3
+        17: aload_2
+        18: invokeinterface #194,  2          // InterfaceMethod net/mehvahdjukaar/moonlight/api/map/CustomMapData.createUpdatePatch:(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Ljava/lang/Object;
+        23: astore        4
+        25: aload_1
+        26: astore        5
+        28: new           #198                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch
+        31: dup
+        32: aload         5
+        34: aload         4
+        36: invokespecial #200                // Method net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch."<init>":(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/lang/Object;)V
+        39: areturn
+      LineNumberTable:
+        line 140: 0
+        line 141: 16
+        line 142: 25
+        line 143: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      40     0    ed   Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;
+            0      40     1  type   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+            0      40     2 dirtyCounter   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+           16      24     3     d   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData;
+           25      15     4 patch   Ljava/lang/Object;
+           28      12     5     t   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      40     1  type   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;
+           16      24     3     d   TD;
+           25      15     4 patch   TP;
+           28      12     5     t   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<TP;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<*TP;>;>;
+    Signature: #303                         // <P:Ljava/lang/Object;C::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;D::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData<TC;TP;>;>(Lnet/mehvahdjukaar/moonlight/api/map/ExpandedMapData;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;)Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch<**>;
+    RuntimeVisibleAnnotations:
+      0: #217()
+        org.spongepowered.asm.mixin.Unique
+
+  public <H extends net.mehvahdjukaar.moonlight.api.map.CustomMapData$DirtyCounter> void moonlight$setCustomDataDirty(net.mehvahdjukaar.moonlight.api.map.CustomMapData$Type<?, ?>, java.util.function.Consumer<H>);
+    descriptor: (Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;Ljava/util/function/Consumer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=5, args_size=3
+         0: aload_0
+         1: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #203                // Method java/util/concurrent/locks/ReentrantLock.lock:()V
+         7: aload_0
+         8: getfield      #19                 // Field moonlight$customDataDirty:Ljava/util/Map;
+        11: aload_1
+        12: invokeinterface #190,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        17: checkcast     #104                // class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter
+        20: astore_3
+        21: aload_2
+        22: aload_3
+        23: invokeinterface #206,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+        28: aload_0
+        29: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+        32: invokevirtual #211                // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        35: goto          50
+        38: astore        4
+        40: aload_0
+        41: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+        44: invokevirtual #211                // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+        47: aload         4
+        49: athrow
+        50: return
+      Exception table:
+         from    to  target type
+             0    28    38   any
+            38    40    38   any
+      LineNumberTable:
+        line 150: 0
+        line 151: 7
+        line 152: 21
+        line 154: 28
+        line 155: 35
+        line 154: 38
+        line 155: 47
+        line 156: 50
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21       7     3     t   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;
+            0      51     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0      51     1  type   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type;
+            0      51     2 dirtySetter   Ljava/util/function/Consumer;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      51     1  type   Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;
+            0      51     2 dirtySetter   Ljava/util/function/Consumer<TH;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 102 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 11 /* same */
+    Signature: #311                         // <H::Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter;>(Lnet/mehvahdjukaar/moonlight/api/map/CustomMapData$Type<**>;Ljava/util/function/Consumer<TH;>;)V
+
+  public void moonlight$setCustomMarkersDirty();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_1
+         2: putfield      #23                 // Field moonlight$customMarkersDirty:Z
+         5: return
+      LineNumberTable:
+        line 160: 0
+        line 161: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+
+  public void lockData(int, int, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (IILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #203                // Method java/util/concurrent/locks/ReentrantLock.lock:()V
+         7: return
+      LineNumberTable:
+        line 166: 0
+        line 167: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0       8     1     x   I
+            0       8     2     z   I
+            0       8     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #238(#239=[s#317],#240=[@#241(#242=s#253)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["markColorsDirty"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  public void sanityCheck(int, int, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (IILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #10                 // Field moonlight$concurrentLock:Ljava/util/concurrent/locks/ReentrantLock;
+         4: invokevirtual #211                // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+         7: return
+      LineNumberTable:
+        line 171: 0
+        line 172: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lnet/mehvahdjukaar/moonlight/core/mixins/platform/HoldingPlayerMixin;
+            0       8     1     x   I
+            0       8     2     z   I
+            0       8     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #238(#239=[s#317],#240=[@#241(#242=s#319)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["markColorsDirty"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+}
+SourceFile: "HoldingPlayerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #323(#242=[c#324])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData$HoldingPlayer;]
+    )
+InnerClasses:
+  public static final #326= #160 of #62;  // Type=class net/mehvahdjukaar/moonlight/api/map/CustomMapData$Type of class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  public static #327= #104 of #62;        // DirtyCounter=class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyCounter of class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  public static #328= #99 of #41;         // Entry=class java/util/Map$Entry of class java/util/Map
+  public static final #329= #198 of #62;  // DirtyDataPatch=class net/mehvahdjukaar/moonlight/api/map/CustomMapData$DirtyDataPatch of class net/mehvahdjukaar/moonlight/api/map/CustomMapData
+  public #332= #330 of #137;              // HoldingPlayer=class net/minecraft/world/level/saveddata/maps/MapItemSavedData$HoldingPlayer of class net/minecraft/world/level/saveddata/maps/MapItemSavedData
