@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 101 of 136. The exact queue below has 35 open rows.
+Supported provider dispositions: 102 of 136. The exact queue below has 34 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -631,7 +631,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `architectury-13.0.8-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
-| `azurelibarmor-neo-1.21.1-3.1.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `azurelibarmor-neo-1.21.1-3.1.2.jar` | Sources a37e5b08 and 57ea6b5c; test_small_utility_provider_scope.py | RESOLVED: Item animation identity, synchronization and rendering support; no independent family. See AzureLib Armor disposition below. |
 | `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettercombat-neoforge-2.3.2+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
@@ -6993,3 +6993,37 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py
 Twenty-two cases and scoped quality checks pass. Whole providers: 101 resolved,
 35 open. No family added; remaining provider checks and canonical Moog grouping
 precede detailed family attributes.
+
+### AzureLib Armor membership resolved
+
+Sources a37e5b08 and 57ea6b5c bind the loader, common initialization, three
+services, two common hooks and direct entry delegates. The loader registers
+an item identity data component and an animation-command packet. Services
+supply platform lookups, packet delivery and client-conditional animation
+resource reload. The unconditional Shoulder Surfing compatibility initializer
+only checks mod presence and sets a flag. The packet retrieves an existing
+item animator by identity and dispatches supplied animation actions to it.
+Consumer actions are not independent families of this shared animation library.
+
+The common hooks assign item identity components and handle comparison/copying
+for container synchronization. Five other declared hooks are client rendering
+and cache hooks. This establishes the contribution role without claiming network
+safety, rendering correctness or compatibility acceptance. No independent
+world-generation family is contributed.
+
+The complete archive has 343 classes and thirteen metadata, access, service,
+mixin, icon and license files. It has no data pack, assets directory, templates
+or nested archives. The sole automatic entry, three declared services and all
+common hooks are bound to the ten captured classes. Both captures reproduce
+independently byte for byte. The focused case extends the existing utility
+checks; no new measurement system or generalized validator was introduced.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twenty-three cases and scoped quality checks pass. Whole providers: 102 resolved,
+34 open. No family added. Continue the remaining provider queue and Moog
+canonical grouping before attributes; no more animation-helper tracing is needed.
