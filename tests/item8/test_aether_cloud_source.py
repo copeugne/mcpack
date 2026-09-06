@@ -91,6 +91,27 @@ def test_aether_packaged_candidate_partition() -> None:
             assert hashlib.sha256(archive.read("META-INF/jarjar/" + name)).hexdigest() == digest
 
 
+def test_aether_nested_runtime_selection() -> None:
+    raw = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
+    )
+    lines = raw.decode().splitlines()
+    assert any("JarSelector/" in line and "passed in as source: accessories" in line
+               and line.endswith("/mods/accessories-neoforge-1.1.0-beta.53+1.21.1.jar")
+               for line in lines)
+    assert "\t\tAccessories 1.1.0-beta.53+1.21.1 (accessories)" in lines
+    assert "\t\tAccessories 1.1.0-beta.48+1.21.1 (accessories)" not in lines
+    for archive, mod in (
+        ("cumulus_menus-1.21.1-2.0.7-neoforge.jar", "Cumulus 2.0.7 (cumulus_menus)"),
+        ("nitrogen_internals-1.21.1-1.1.25-neoforge.jar", "Nitrogen 1.1.25 (nitrogen_internals)"),
+    ):
+        assert any(f'Found mod file "{archive}"' in line
+                   and "[parent: aether-1.21.1-1.5.10-neoforge.jar, locator: jarinjar," in line
+                   for line in lines)
+        assert "\t\t" + mod in lines
+
+
 def test_aether_silver_gold_component_candidates() -> None:
     source = next(s for s in retained_sources(Path.cwd())
                   if s.name == "aether-1.21.1-1.5.10-neoforge.jar")
