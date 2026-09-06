@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import gzip
 import hashlib
+import io
 import json
 import tomllib
 from collections import Counter
@@ -98,6 +99,25 @@ def test_aether_packaged_candidate_partition() -> None:
         assert nested == {"META-INF/jarjar/" + n for n in expected}
         for name, digest in expected.items():
             assert hashlib.sha256(archive.read("META-INF/jarjar/" + name)).hexdigest() == digest
+            if name.startswith(("cumulus_menus-", "nitrogen_internals-")):
+                with ZipFile(io.BytesIO(archive.read("META-INF/jarjar/" + name))) as library:
+                    files = {n for n in library.namelist() if not n.endswith("/")}
+                    assert not any(n.startswith(("data/", "packs/"))
+                                   or n.endswith(".jar") for n in files)
+                    services = {n: library.read(n).decode().strip() for n in files
+                                if n.startswith("META-INF/services/")}
+                    assert services == ({
+                        "META-INF/services/com.aetherteam.cumulus.platform.services.IPlatformHelper":
+                        "com.aetherteam.cumulus.platform.NeoForgePlatformHelper",
+                    } if name.startswith("cumulus_") else {})
+                    common_mixins: list[str] = []
+                    for file in files:
+                        if file.endswith("mixins.json"):
+                            config = cast("dict[str, JsonValue]", json.loads(library.read(file)))
+                            common_mixins.extend(cast("list[str]", config.get("mixins", [])))
+                    assert common_mixins == (
+                        ["client.LevelStorageSourceMixin"] if name.startswith("cumulus_") else []
+                    )
 
 
 def test_aether_nested_runtime_selection() -> None:
