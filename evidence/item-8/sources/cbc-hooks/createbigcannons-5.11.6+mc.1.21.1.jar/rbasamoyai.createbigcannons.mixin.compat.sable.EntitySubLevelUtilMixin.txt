@@ -1,0 +1,358 @@
+Classfile createbigcannons-5.11.6+mc.1.21.1.jar!/rbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin.class
+  Last modified Feb 1, 1980; size 4369 bytes
+  SHA-256 checksum f3b7a2a4cbd98210cd34322fc46f00f99d91022e140d29f1d9a7f9389f3ed1fc
+  Compiled from "EntitySubLevelUtilMixin.java"
+public class rbasamoyai.createbigcannons.mixin.compat.sable.EntitySubLevelUtilMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #119                        // rbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // rbasamoyai/createbigcannons/munitions/AbstractCannonProjectile
+    #8 = Utf8               rbasamoyai/createbigcannons/munitions/AbstractCannonProjectile
+    #9 = Methodref          #10.#11       // rbasamoyai/createbigcannons/config/CBCConfigs.server:()Lrbasamoyai/createbigcannons/config/CBCCfgServer;
+   #10 = Class              #12           // rbasamoyai/createbigcannons/config/CBCConfigs
+   #11 = NameAndType        #13:#14       // server:()Lrbasamoyai/createbigcannons/config/CBCCfgServer;
+   #12 = Utf8               rbasamoyai/createbigcannons/config/CBCConfigs
+   #13 = Utf8               server
+   #14 = Utf8               ()Lrbasamoyai/createbigcannons/config/CBCCfgServer;
+   #15 = Fieldref           #16.#17       // rbasamoyai/createbigcannons/config/CBCCfgServer.compat:Lrbasamoyai/createbigcannons/config/CBCCfgCompat;
+   #16 = Class              #18           // rbasamoyai/createbigcannons/config/CBCCfgServer
+   #17 = NameAndType        #19:#20       // compat:Lrbasamoyai/createbigcannons/config/CBCCfgCompat;
+   #18 = Utf8               rbasamoyai/createbigcannons/config/CBCCfgServer
+   #19 = Utf8               compat
+   #20 = Utf8               Lrbasamoyai/createbigcannons/config/CBCCfgCompat;
+   #21 = Fieldref           #22.#23       // rbasamoyai/createbigcannons/config/CBCCfgCompat.sableProjectilesInheritPhysicsObjectVelocity:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #22 = Class              #24           // rbasamoyai/createbigcannons/config/CBCCfgCompat
+   #23 = NameAndType        #25:#26       // sableProjectilesInheritPhysicsObjectVelocity:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #24 = Utf8               rbasamoyai/createbigcannons/config/CBCCfgCompat
+   #25 = Utf8               sableProjectilesInheritPhysicsObjectVelocity
+   #26 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #27 = Methodref          #28.#29       // net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+   #28 = Class              #30           // net/createmod/catnip/config/ConfigBase$ConfigBool
+   #29 = NameAndType        #31:#32       // get:()Ljava/lang/Object;
+   #30 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigBool
+   #31 = Utf8               get
+   #32 = Utf8               ()Ljava/lang/Object;
+   #33 = Class              #34           // java/lang/Boolean
+   #34 = Utf8               java/lang/Boolean
+   #35 = Methodref          #33.#36       // java/lang/Boolean.booleanValue:()Z
+   #36 = NameAndType        #37:#38       // booleanValue:()Z
+   #37 = Utf8               booleanValue
+   #38 = Utf8               ()Z
+   #39 = Fieldref           #40.#41       // dev/ryanhcode/sable/Sable.HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #40 = Class              #42           // dev/ryanhcode/sable/Sable
+   #41 = NameAndType        #43:#44       // HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #42 = Utf8               dev/ryanhcode/sable/Sable
+   #43 = Utf8               HELPER
+   #44 = Utf8               Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #45 = Methodref          #46.#47       // net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+   #46 = Class              #48           // net/minecraft/world/entity/Entity
+   #47 = NameAndType        #49:#50       // level:()Lnet/minecraft/world/level/Level;
+   #48 = Utf8               net/minecraft/world/entity/Entity
+   #49 = Utf8               level
+   #50 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #51 = Methodref          #46.#52       // net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+   #52 = NameAndType        #53:#54       // position:()Lnet/minecraft/world/phys/Vec3;
+   #53 = Utf8               position
+   #54 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+   #55 = Methodref          #56.#57       // dev/ryanhcode/sable/companion/math/JOMLConversion.toJOML:(Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+   #56 = Class              #58           // dev/ryanhcode/sable/companion/math/JOMLConversion
+   #57 = NameAndType        #59:#60       // toJOML:(Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+   #58 = Utf8               dev/ryanhcode/sable/companion/math/JOMLConversion
+   #59 = Utf8               toJOML
+   #60 = Utf8               (Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+   #61 = Methodref          #62.#63       // dev/ryanhcode/sable/ActiveSableCompanion.getVelocity:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+   #62 = Class              #64           // dev/ryanhcode/sable/ActiveSableCompanion
+   #63 = NameAndType        #65:#66       // getVelocity:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+   #64 = Utf8               dev/ryanhcode/sable/ActiveSableCompanion
+   #65 = Utf8               getVelocity
+   #66 = Utf8               (Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+   #67 = Methodref          #68.#69       // java/lang/Double.valueOf:(D)Ljava/lang/Double;
+   #68 = Class              #70           // java/lang/Double
+   #69 = NameAndType        #71:#72       // valueOf:(D)Ljava/lang/Double;
+   #70 = Utf8               java/lang/Double
+   #71 = Utf8               valueOf
+   #72 = Utf8               (D)Ljava/lang/Double;
+   #73 = InterfaceMethodref #74.#75       // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #74 = Class              #76           // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #75 = NameAndType        #77:#78       // call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #76 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #77 = Utf8               call
+   #78 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+   #79 = Class              #80           // org/joml/Vector3d
+   #80 = Utf8               org/joml/Vector3d
+   #81 = Methodref          #46.#82       // net/minecraft/world/entity/Entity.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+   #82 = NameAndType        #83:#54       // getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+   #83 = Utf8               getDeltaMovement
+   #84 = Methodref          #85.#86       // net/minecraft/world/phys/Vec3.horizontalDistance:()D
+   #85 = Class              #87           // net/minecraft/world/phys/Vec3
+   #86 = NameAndType        #88:#89       // horizontalDistance:()D
+   #87 = Utf8               net/minecraft/world/phys/Vec3
+   #88 = Utf8               horizontalDistance
+   #89 = Utf8               ()D
+   #90 = Fieldref           #85.#91       // net/minecraft/world/phys/Vec3.x:D
+   #91 = NameAndType        #92:#93       // x:D
+   #92 = Utf8               x
+   #93 = Utf8               D
+   #94 = Fieldref           #85.#95       // net/minecraft/world/phys/Vec3.z:D
+   #95 = NameAndType        #96:#93       // z:D
+   #96 = Utf8               z
+   #97 = Methodref          #98.#99       // net/minecraft/util/Mth.atan2:(DD)D
+   #98 = Class              #100          // net/minecraft/util/Mth
+   #99 = NameAndType        #101:#102     // atan2:(DD)D
+  #100 = Utf8               net/minecraft/util/Mth
+  #101 = Utf8               atan2
+  #102 = Utf8               (DD)D
+  #103 = Double             180.0d
+  #105 = Class              #106          // java/lang/Math
+  #106 = Utf8               java/lang/Math
+  #107 = Double             3.1415927410125732d
+  #109 = Methodref          #46.#110      // net/minecraft/world/entity/Entity.setYRot:(F)V
+  #110 = NameAndType        #111:#112     // setYRot:(F)V
+  #111 = Utf8               setYRot
+  #112 = Utf8               (F)V
+  #113 = Fieldref           #85.#114      // net/minecraft/world/phys/Vec3.y:D
+  #114 = NameAndType        #115:#93      // y:D
+  #115 = Utf8               y
+  #116 = Methodref          #46.#117      // net/minecraft/world/entity/Entity.setXRot:(F)V
+  #117 = NameAndType        #118:#112     // setXRot:(F)V
+  #118 = Utf8               setXRot
+  #119 = Class              #120          // rbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin
+  #120 = Utf8               rbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin
+  #121 = Utf8               Code
+  #122 = Utf8               LineNumberTable
+  #123 = Utf8               LocalVariableTable
+  #124 = Utf8               this
+  #125 = Utf8               Lrbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin;
+  #126 = Utf8               createbigcannons$kickEntity$mul
+  #127 = Utf8               (Lorg/joml/Vector3d;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/entity/Entity;)Lorg/joml/Vector3d;
+  #128 = Utf8               instance
+  #129 = Utf8               Lorg/joml/Vector3d;
+  #130 = Utf8               scalar
+  #131 = Utf8               original
+  #132 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #133 = Utf8               entity
+  #134 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #135 = Utf8               LocalVariableTypeTable
+  #136 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lorg/joml/Vector3d;>;
+  #137 = Utf8               StackMapTable
+  #138 = Utf8               Signature
+  #139 = Utf8               (Lorg/joml/Vector3d;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lorg/joml/Vector3d;>;Lnet/minecraft/world/entity/Entity;)Lorg/joml/Vector3d;
+  #140 = Utf8               RuntimeVisibleAnnotations
+  #141 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #142 = Utf8               method
+  #143 = Utf8               kickEntity
+  #144 = Utf8               at
+  #145 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #146 = Utf8               value
+  #147 = Utf8               INVOKE
+  #148 = Utf8               target
+  #149 = Utf8               Lorg/joml/Vector3d;mul(D)Lorg/joml/Vector3d;
+  #150 = Utf8               RuntimeInvisibleParameterAnnotations
+  #151 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #152 = Utf8               argsOnly
+  #153 = Integer            1
+  #154 = Utf8               createbigcannons$kickEntity
+  #155 = Utf8               (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)V
+  #156 = Utf8               deltaMovement
+  #157 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #158 = Utf8               horizontal
+  #159 = Utf8               subLevel
+  #160 = Utf8               Ldev/ryanhcode/sable/sublevel/SubLevel;
+  #161 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+  #162 = Utf8               (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;)V
+  #163 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapmethod/WrapMethod;
+  #164 = Utf8               SourceFile
+  #165 = Utf8               EntitySubLevelUtilMixin.java
+  #166 = Utf8               RuntimeInvisibleAnnotations
+  #167 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #168 = Utf8               Ldev/ryanhcode/sable/api/entity/EntitySubLevelUtil;
+  #169 = Utf8               InnerClasses
+  #170 = Class              #171          // net/createmod/catnip/config/ConfigBase
+  #171 = Utf8               net/createmod/catnip/config/ConfigBase
+  #172 = Utf8               ConfigBool
+{
+  public rbasamoyai.createbigcannons.mixin.compat.sable.EntitySubLevelUtilMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 23: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lrbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin;
+
+  private static org.joml.Vector3d createbigcannons$kickEntity$mul(org.joml.Vector3d, double, com.llamalad7.mixinextras.injector.wrapoperation.Operation<org.joml.Vector3d>, net.minecraft.world.entity.Entity);
+    descriptor: (Lorg/joml/Vector3d;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/entity/Entity;)Lorg/joml/Vector3d;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=6, locals=5, args_size=4
+         0: aload         4
+         2: instanceof    #7                  // class rbasamoyai/createbigcannons/munitions/AbstractCannonProjectile
+         5: ifeq          50
+         8: invokestatic  #9                  // Method rbasamoyai/createbigcannons/config/CBCConfigs.server:()Lrbasamoyai/createbigcannons/config/CBCCfgServer;
+        11: getfield      #15                 // Field rbasamoyai/createbigcannons/config/CBCCfgServer.compat:Lrbasamoyai/createbigcannons/config/CBCCfgCompat;
+        14: getfield      #21                 // Field rbasamoyai/createbigcannons/config/CBCCfgCompat.sableProjectilesInheritPhysicsObjectVelocity:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        17: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        20: checkcast     #33                 // class java/lang/Boolean
+        23: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        26: ifeq          50
+        29: getstatic     #39                 // Field dev/ryanhcode/sable/Sable.HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+        32: aload         4
+        34: invokevirtual #45                 // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+        37: aload         4
+        39: invokevirtual #51                 // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+        42: invokestatic  #55                 // Method dev/ryanhcode/sable/companion/math/JOMLConversion.toJOML:(Lnet/minecraft/core/Position;)Lorg/joml/Vector3d;
+        45: aload_0
+        46: invokevirtual #61                 // Method dev/ryanhcode/sable/ActiveSableCompanion.getVelocity:(Lnet/minecraft/world/level/Level;Lorg/joml/Vector3dc;Lorg/joml/Vector3d;)Lorg/joml/Vector3d;
+        49: pop
+        50: aload_3
+        51: iconst_2
+        52: anewarray     #2                  // class java/lang/Object
+        55: dup
+        56: iconst_0
+        57: aload_0
+        58: aastore
+        59: dup
+        60: iconst_1
+        61: dload_1
+        62: invokestatic  #67                 // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+        65: aastore
+        66: invokeinterface #73,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        71: checkcast     #79                 // class org/joml/Vector3d
+        74: areturn
+      LineNumberTable:
+        line 28: 0
+        line 29: 29
+        line 30: 50
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      75     0 instance   Lorg/joml/Vector3d;
+            0      75     1 scalar   D
+            0      75     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      75     4 entity   Lnet/minecraft/world/entity/Entity;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      75     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lorg/joml/Vector3d;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 50 /* same */
+    Signature: #139                         // (Lorg/joml/Vector3d;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lorg/joml/Vector3d;>;Lnet/minecraft/world/entity/Entity;)Lorg/joml/Vector3d;
+    RuntimeVisibleAnnotations:
+      0: #141(#142=[s#143],#144=[@#145(#146=s#147,#148=s#149)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["kickEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lorg/joml/Vector3d;mul(D)Lorg/joml/Vector3d;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+        0: #151(#152=Z#153)
+          com.llamalad7.mixinextras.sugar.Local(
+            argsOnly=true
+          )
+
+  private static void createbigcannons$kickEntity(dev.ryanhcode.sable.sublevel.SubLevel, net.minecraft.world.entity.Entity, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>);
+    descriptor: (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=6, args_size=3
+         0: aload_2
+         1: iconst_2
+         2: anewarray     #2                  // class java/lang/Object
+         5: dup
+         6: iconst_0
+         7: aload_0
+         8: aastore
+         9: dup
+        10: iconst_1
+        11: aload_1
+        12: aastore
+        13: invokeinterface #73,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        18: pop
+        19: aload_1
+        20: instanceof    #7                  // class rbasamoyai/createbigcannons/munitions/AbstractCannonProjectile
+        23: ifeq          83
+        26: aload_1
+        27: invokevirtual #81                 // Method net/minecraft/world/entity/Entity.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+        30: astore_3
+        31: aload_3
+        32: invokevirtual #84                 // Method net/minecraft/world/phys/Vec3.horizontalDistance:()D
+        35: dstore        4
+        37: aload_1
+        38: aload_3
+        39: getfield      #90                 // Field net/minecraft/world/phys/Vec3.x:D
+        42: aload_3
+        43: getfield      #94                 // Field net/minecraft/world/phys/Vec3.z:D
+        46: invokestatic  #97                 // Method net/minecraft/util/Mth.atan2:(DD)D
+        49: ldc2_w        #103                // double 180.0d
+        52: dmul
+        53: ldc2_w        #107                // double 3.1415927410125732d
+        56: ddiv
+        57: d2f
+        58: invokevirtual #109                // Method net/minecraft/world/entity/Entity.setYRot:(F)V
+        61: aload_1
+        62: aload_3
+        63: getfield      #113                // Field net/minecraft/world/phys/Vec3.y:D
+        66: dload         4
+        68: invokestatic  #97                 // Method net/minecraft/util/Mth.atan2:(DD)D
+        71: ldc2_w        #103                // double 180.0d
+        74: dmul
+        75: ldc2_w        #107                // double 3.1415927410125732d
+        78: ddiv
+        79: d2f
+        80: invokevirtual #116                // Method net/minecraft/world/entity/Entity.setXRot:(F)V
+        83: return
+      LineNumberTable:
+        line 35: 0
+        line 36: 19
+        line 37: 26
+        line 38: 31
+        line 39: 37
+        line 40: 61
+        line 42: 83
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           31      52     3 deltaMovement   Lnet/minecraft/world/phys/Vec3;
+           37      46     4 horizontal   D
+            0      84     0 subLevel   Ldev/ryanhcode/sable/sublevel/SubLevel;
+            0      84     1 entity   Lnet/minecraft/world/entity/Entity;
+            0      84     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      84     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 83
+    Signature: #162                         // (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/entity/Entity;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;)V
+    RuntimeVisibleAnnotations:
+      0: #163(#142=[s#143])
+        com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod(
+          method=["kickEntity"]
+        )
+}
+SourceFile: "EntitySubLevelUtilMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #167(#146=[c#168])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Ldev/ryanhcode/sable/api/entity/EntitySubLevelUtil;]
+    )
+InnerClasses:
+  public #172= #28 of #170;               // ConfigBool=class net/createmod/catnip/config/ConfigBase$ConfigBool of class net/createmod/catnip/config/ConfigBase

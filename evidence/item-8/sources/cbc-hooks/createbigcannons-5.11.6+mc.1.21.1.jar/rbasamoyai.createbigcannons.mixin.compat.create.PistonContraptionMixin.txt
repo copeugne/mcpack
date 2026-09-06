@@ -1,0 +1,899 @@
+Classfile createbigcannons-5.11.6+mc.1.21.1.jar!/rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.class
+  Last modified Feb 1, 1980; size 10925 bytes
+  SHA-256 checksum 61365b01eaee234ba6a4097cb245c872ae51c74ab9a577ad607377c92611431c
+  Compiled from "PistonContraptionMixin.java"
+public abstract class rbasamoyai.createbigcannons.mixin.compat.create.PistonContraptionMixin extends com.simibubi.create.content.contraptions.TranslatingContraption implements rbasamoyai.createbigcannons.cannon_loading.CanLoadBigCannon,rbasamoyai.createbigcannons.remix.HasFragileContraption
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin
+  super_class: #2                         // com/simibubi/create/content/contraptions/TranslatingContraption
+  interfaces: 2, fields: 6, methods: 15, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // com/simibubi/create/content/contraptions/TranslatingContraption."<init>":()V
+    #2 = Class              #4            // com/simibubi/create/content/contraptions/TranslatingContraption
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               com/simibubi/create/content/contraptions/TranslatingContraption
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/util/HashSet
+    #8 = Utf8               java/util/HashSet
+    #9 = Methodref          #7.#3         // java/util/HashSet."<init>":()V
+   #10 = Fieldref           #11.#12       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.createbigcannons$fragileBlocks:Ljava/util/Set;
+   #11 = Class              #13           // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin
+   #12 = NameAndType        #14:#15       // createbigcannons$fragileBlocks:Ljava/util/Set;
+   #13 = Utf8               rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin
+   #14 = Utf8               createbigcannons$fragileBlocks
+   #15 = Utf8               Ljava/util/Set;
+   #16 = Fieldref           #11.#17       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.createbigcannons$colliderBlocks:Ljava/util/Set;
+   #17 = NameAndType        #18:#15       // createbigcannons$colliderBlocks:Ljava/util/Set;
+   #18 = Utf8               createbigcannons$colliderBlocks
+   #19 = Class              #20           // java/util/HashMap
+   #20 = Utf8               java/util/HashMap
+   #21 = Methodref          #19.#3        // java/util/HashMap."<init>":()V
+   #22 = Fieldref           #11.#23       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.createbigcannons$encounteredBlocks:Ljava/util/Map;
+   #23 = NameAndType        #24:#25       // createbigcannons$encounteredBlocks:Ljava/util/Map;
+   #24 = Utf8               createbigcannons$encounteredBlocks
+   #25 = Utf8               Ljava/util/Map;
+   #26 = Fieldref           #11.#27       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.createbigcannons$brokenDisassembly:Z
+   #27 = NameAndType        #28:#29       // createbigcannons$brokenDisassembly:Z
+   #28 = Utf8               createbigcannons$brokenDisassembly
+   #29 = Utf8               Z
+   #30 = Fieldref           #11.#31       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.orientation:Lnet/minecraft/core/Direction;
+   #31 = NameAndType        #32:#33       // orientation:Lnet/minecraft/core/Direction;
+   #32 = Utf8               orientation
+   #33 = Utf8               Lnet/minecraft/core/Direction;
+   #34 = Fieldref           #11.#35       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.retract:Z
+   #35 = NameAndType        #36:#29       // retract:Z
+   #36 = Utf8               retract
+   #37 = Methodref          #38.#39       // net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+   #38 = Class              #40           // net/minecraft/core/Direction
+   #39 = NameAndType        #41:#42       // getOpposite:()Lnet/minecraft/core/Direction;
+   #40 = Utf8               net/minecraft/core/Direction
+   #41 = Utf8               getOpposite
+   #42 = Utf8               ()Lnet/minecraft/core/Direction;
+   #43 = Methodref          #11.#44       // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.toLocalPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+   #44 = NameAndType        #45:#46       // toLocalPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+   #45 = Utf8               toLocalPos
+   #46 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+   #47 = Methodref          #48.#49       // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+   #48 = Class              #50           // net/minecraft/core/BlockPos
+   #49 = NameAndType        #51:#52       // relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+   #50 = Utf8               net/minecraft/core/BlockPos
+   #51 = Utf8               relative
+   #52 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+   #53 = Methodref          #54.#55       // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #54 = Class              #56           // net/minecraft/world/level/Level
+   #55 = NameAndType        #57:#58       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #56 = Utf8               net/minecraft/world/level/Level
+   #57 = Utf8               getBlockState
+   #58 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #59 = Methodref          #60.#61       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #60 = Class              #62           // net/minecraft/world/level/block/state/BlockState
+   #61 = NameAndType        #63:#64       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #62 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #63 = Utf8               getBlock
+   #64 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #65 = Class              #66           // rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBlock
+   #66 = Utf8               rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBlock
+   #67 = Methodref          #54.#68       // net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #68 = NameAndType        #69:#70       // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #69 = Utf8               getBlockEntity
+   #70 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #71 = Class              #72           // rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity
+   #72 = Utf8               rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity
+   #73 = InterfaceMethodref #71.#74       // rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.cannonBehavior:()Lrbasamoyai/createbigcannons/cannons/CannonBehavior;
+   #74 = NameAndType        #75:#76       // cannonBehavior:()Lrbasamoyai/createbigcannons/cannons/CannonBehavior;
+   #75 = Utf8               cannonBehavior
+   #76 = Utf8               ()Lrbasamoyai/createbigcannons/cannons/CannonBehavior;
+   #77 = Class              #78           // rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBehavior
+   #78 = Utf8               rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBehavior
+   #79 = Methodref          #77.#80       // rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBehavior.block:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+   #80 = NameAndType        #81:#82       // block:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+   #81 = Utf8               block
+   #82 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+   #83 = Methodref          #84.#85       // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+   #84 = Class              #86           // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #85 = NameAndType        #87:#88       // state:()Lnet/minecraft/world/level/block/state/BlockState;
+   #86 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #87 = Utf8               state
+   #88 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #89 = Methodref          #60.#90       // net/minecraft/world/level/block/state/BlockState.isAir:()Z
+   #90 = NameAndType        #91:#92       // isAir:()Z
+   #91 = Utf8               isAir
+   #92 = Utf8               ()Z
+   #93 = Fieldref           #94.#95       // rbasamoyai/createbigcannons/index/CBCBlocks.WORM_HEAD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #94 = Class              #96           // rbasamoyai/createbigcannons/index/CBCBlocks
+   #95 = NameAndType        #97:#98       // WORM_HEAD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #96 = Utf8               rbasamoyai/createbigcannons/index/CBCBlocks
+   #97 = Utf8               WORM_HEAD
+   #98 = Utf8               Lcom/tterrag/registrate/util/entry/BlockEntry;
+   #99 = Methodref          #100.#101     // com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #100 = Class              #102          // com/tterrag/registrate/util/entry/BlockEntry
+  #101 = NameAndType        #103:#104     // has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #102 = Utf8               com/tterrag/registrate/util/entry/BlockEntry
+  #103 = Utf8               has
+  #104 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #105 = Fieldref           #48.#106      // net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+  #106 = NameAndType        #107:#108     // ZERO:Lnet/minecraft/core/BlockPos;
+  #107 = Utf8               ZERO
+  #108 = Utf8               Lnet/minecraft/core/BlockPos;
+  #109 = Methodref          #84.#110      // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+  #110 = NameAndType        #5:#111       // "<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+  #111 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+  #112 = InterfaceMethodref #71.#113      // rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.canPushBlock:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+  #113 = NameAndType        #114:#115     // canPushBlock:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+  #114 = Utf8               canPushBlock
+  #115 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+  #116 = Methodref          #117.#118     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #117 = Class              #119          // java/lang/Boolean
+  #118 = NameAndType        #120:#121     // valueOf:(Z)Ljava/lang/Boolean;
+  #119 = Utf8               java/lang/Boolean
+  #120 = Utf8               valueOf
+  #121 = Utf8               (Z)Ljava/lang/Boolean;
+  #122 = Methodref          #123.#124     // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #123 = Class              #125          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #124 = NameAndType        #126:#127     // setReturnValue:(Ljava/lang/Object;)V
+  #125 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #126 = Utf8               setReturnValue
+  #127 = Utf8               (Ljava/lang/Object;)V
+  #128 = Methodref          #38.#129      // net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+  #129 = NameAndType        #130:#131     // getAxis:()Lnet/minecraft/core/Direction$Axis;
+  #130 = Utf8               getAxis
+  #131 = Utf8               ()Lnet/minecraft/core/Direction$Axis;
+  #132 = InterfaceMethodref #71.#133      // rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.isValidMunitionState:(Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #133 = NameAndType        #134:#135     // isValidMunitionState:(Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #134 = Utf8               isValidMunitionState
+  #135 = Utf8               (Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #136 = Class              #137          // java/lang/Object
+  #137 = Utf8               java/lang/Object
+  #138 = InterfaceMethodref #139.#140     // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #139 = Class              #141          // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #140 = NameAndType        #142:#143     // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #141 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #142 = Utf8               call
+  #143 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #144 = Methodref          #48.#145      // net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+  #145 = NameAndType        #146:#147     // equals:(Ljava/lang/Object;)Z
+  #146 = Utf8               equals
+  #147 = Utf8               (Ljava/lang/Object;)Z
+  #148 = Methodref          #149.#150     // rbasamoyai/createbigcannons/remix/ContraptionRemix.getInnerCannonState:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #149 = Class              #151          // rbasamoyai/createbigcannons/remix/ContraptionRemix
+  #150 = NameAndType        #152:#153     // getInnerCannonState:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #151 = Utf8               rbasamoyai/createbigcannons/remix/ContraptionRemix
+  #152 = Utf8               getInnerCannonState
+  #153 = Utf8               (Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+  #154 = Fieldref           #11.#155      // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.anchor:Lnet/minecraft/core/BlockPos;
+  #155 = NameAndType        #156:#108     // anchor:Lnet/minecraft/core/BlockPos;
+  #156 = Utf8               anchor
+  #157 = Methodref          #48.#158      // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #158 = NameAndType        #51:#159      // relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #159 = Utf8               (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #160 = Methodref          #161.#162     // com/simibubi/create/content/contraptions/piston/MechanicalPistonBlock.isPiston:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #161 = Class              #163          // com/simibubi/create/content/contraptions/piston/MechanicalPistonBlock
+  #162 = NameAndType        #164:#104     // isPiston:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #163 = Utf8               com/simibubi/create/content/contraptions/piston/MechanicalPistonBlock
+  #164 = Utf8               isPiston
+  #165 = InterfaceMethodref #166.#167     // rbasamoyai/createbigcannons/remix/HasFragileContraption.defaultBlockBreaksAssembly:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lrbasamoyai/createbigcannons/remix/HasFragileContraption;)Z
+  #166 = Class              #168          // rbasamoyai/createbigcannons/remix/HasFragileContraption
+  #167 = NameAndType        #169:#170     // defaultBlockBreaksAssembly:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lrbasamoyai/createbigcannons/remix/HasFragileContraption;)Z
+  #168 = Utf8               rbasamoyai/createbigcannons/remix/HasFragileContraption
+  #169 = Utf8               defaultBlockBreaksAssembly
+  #170 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lrbasamoyai/createbigcannons/remix/HasFragileContraption;)Z
+  #171 = InterfaceMethodref #166.#172     // rbasamoyai/createbigcannons/remix/HasFragileContraption.defaultShouldCheck:()Z
+  #172 = NameAndType        #173:#92      // defaultShouldCheck:()Z
+  #173 = Utf8               defaultShouldCheck
+  #174 = Fieldref           #11.#175      // rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.entity:Lcom/simibubi/create/content/contraptions/AbstractContraptionEntity;
+  #175 = NameAndType        #176:#177     // entity:Lcom/simibubi/create/content/contraptions/AbstractContraptionEntity;
+  #176 = Utf8               entity
+  #177 = Utf8               Lcom/simibubi/create/content/contraptions/AbstractContraptionEntity;
+  #178 = Methodref          #179.#180     // com/simibubi/create/content/contraptions/AbstractContraptionEntity.level:()Lnet/minecraft/world/level/Level;
+  #179 = Class              #181          // com/simibubi/create/content/contraptions/AbstractContraptionEntity
+  #180 = NameAndType        #182:#183     // level:()Lnet/minecraft/world/level/Level;
+  #181 = Utf8               com/simibubi/create/content/contraptions/AbstractContraptionEntity
+  #182 = Utf8               level
+  #183 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #184 = Class              #185          // com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity
+  #185 = Utf8               com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity
+  #186 = Methodref          #184.#187     // com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity.disassemble:()V
+  #187 = NameAndType        #188:#6       // disassemble:()V
+  #188 = Utf8               disassemble
+  #189 = Methodref          #179.#187     // com/simibubi/create/content/contraptions/AbstractContraptionEntity.disassemble:()V
+  #190 = Class              #191          // rbasamoyai/createbigcannons/cannon_loading/CanLoadBigCannon
+  #191 = Utf8               rbasamoyai/createbigcannons/cannon_loading/CanLoadBigCannon
+  #192 = Utf8               Signature
+  #193 = Utf8               Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+  #194 = Utf8               RuntimeVisibleAnnotations
+  #195 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #196 = Utf8               Ljava/util/Map<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;>;
+  #197 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #198 = Utf8               Code
+  #199 = Utf8               LineNumberTable
+  #200 = Utf8               LocalVariableTable
+  #201 = Utf8               this
+  #202 = Utf8               Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+  #203 = Utf8               createbigcannons$getAssemblyMovementDirection
+  #204 = Utf8               (Lnet/minecraft/world/level/Level;)Lnet/minecraft/core/Direction;
+  #205 = Utf8               Lnet/minecraft/world/level/Level;
+  #206 = Utf8               StackMapTable
+  #207 = Utf8               Ljavax/annotation/Nullable;
+  #208 = Utf8               createbigcannons$getOriginalForcedDirection
+  #209 = Utf8               createbigcannons$toLocalPos
+  #210 = Utf8               globalPos
+  #211 = Utf8               createbigcannons$getFragileBlockPositions
+  #212 = Utf8               ()Ljava/util/Set;
+  #213 = Utf8               ()Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+  #214 = Utf8               createbigcannons$getCannonLoadingColliders
+  #215 = Utf8               createbigcannons$setBrokenDisassembly
+  #216 = Utf8               (Z)V
+  #217 = Utf8               flag
+  #218 = Utf8               createbigcannons$isBrokenDisassembly
+  #219 = Utf8               createbigcannons$getEncounteredBlocks
+  #220 = Utf8               ()Ljava/util/Map;
+  #221 = Utf8               ()Ljava/util/Map<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;>;
+  #222 = Utf8               createbigcannons$addToInitialFrontier$1
+  #223 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Ljava/util/Queue;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;ZLnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #224 = Utf8               loadedInfo
+  #225 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #226 = Utf8               cbe
+  #227 = Utf8               Lrbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity;
+  #228 = Utf8               pos
+  #229 = Utf8               direction
+  #230 = Utf8               frontier
+  #231 = Utf8               Ljava/util/Queue;
+  #232 = Utf8               cir
+  #233 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #234 = Utf8               retracting
+  #235 = Utf8               currentPos
+  #236 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #237 = Utf8               offsetPos
+  #238 = Utf8               offsetState
+  #239 = Utf8               LocalVariableTypeTable
+  #240 = Utf8               Ljava/util/Queue<Lnet/minecraft/core/BlockPos;>;
+  #241 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #242 = Class              #243          // java/util/Queue
+  #243 = Utf8               java/util/Queue
+  #244 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Ljava/util/Queue<Lnet/minecraft/core/BlockPos;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;ZLnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #245 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #246 = Utf8               method
+  #247 = Utf8               addToInitialFrontier
+  #248 = Utf8               at
+  #249 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #250 = Utf8               value
+  #251 = Utf8               INVOKE
+  #252 = Utf8               target
+  #253 = Utf8               Ljava/util/Queue;add(Ljava/lang/Object;)Z
+  #254 = Utf8               shift
+  #255 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+  #256 = Utf8               BEFORE
+  #257 = Utf8               remap
+  #258 = Integer            0
+  #259 = Utf8               cancellable
+  #260 = Integer            1
+  #261 = Utf8               RuntimeInvisibleParameterAnnotations
+  #262 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #263 = Utf8               ordinal
+  #264 = Utf8               createbigcannons$collectExtensions$1
+  #265 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #266 = Utf8               instance
+  #267 = Utf8               original
+  #268 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #269 = Utf8               posArg
+  #270 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/block/state/BlockState;>;
+  #271 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/block/state/BlockState;>;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #272 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #273 = Utf8               collectExtensions
+  #274 = Utf8               Lnet/minecraft/world/level/Level;getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #275 = Utf8               argsOnly
+  #276 = Utf8               createbigcannons$blockBreaksDisassembly
+  #277 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #278 = Utf8               newState
+  #279 = Utf8               pistonPos
+  #280 = Utf8               createbigcannons$shouldCheckFragility
+  #281 = Utf8               createbigcannons$fragileDisassemble
+  #282 = Utf8               pistonBE
+  #283 = Utf8               Lcom/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity;
+  #284 = Utf8               SourceFile
+  #285 = Utf8               PistonContraptionMixin.java
+  #286 = Utf8               RuntimeInvisibleAnnotations
+  #287 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #288 = Utf8               Lcom/simibubi/create/content/contraptions/piston/PistonContraption;
+  #289 = Utf8               InnerClasses
+  #290 = Class              #291          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #291 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #292 = Utf8               StructureBlockInfo
+  #293 = Class              #294          // net/minecraft/core/Direction$Axis
+  #294 = Utf8               net/minecraft/core/Direction$Axis
+  #295 = Utf8               Axis
+  #296 = Class              #297          // org/spongepowered/asm/mixin/injection/At$Shift
+  #297 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+  #298 = Class              #299          // org/spongepowered/asm/mixin/injection/At
+  #299 = Utf8               org/spongepowered/asm/mixin/injection/At
+  #300 = Utf8               Shift
+{
+  private final java.util.Set<net.minecraft.core.BlockPos> createbigcannons$fragileBlocks;
+    descriptor: Ljava/util/Set;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #193                         // Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+    RuntimeVisibleAnnotations:
+      0: #195()
+        org.spongepowered.asm.mixin.Unique
+
+  private final java.util.Set<net.minecraft.core.BlockPos> createbigcannons$colliderBlocks;
+    descriptor: Ljava/util/Set;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #193                         // Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+    RuntimeVisibleAnnotations:
+      0: #195()
+        org.spongepowered.asm.mixin.Unique
+
+  private final java.util.Map<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState> createbigcannons$encounteredBlocks;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #196                         // Ljava/util/Map<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;>;
+    RuntimeVisibleAnnotations:
+      0: #195()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean createbigcannons$brokenDisassembly;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #195()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean retract;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #197()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected net.minecraft.core.Direction orientation;
+    descriptor: Lnet/minecraft/core/Direction;
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #197()
+        org.spongepowered.asm.mixin.Shadow
+
+  public rbasamoyai.createbigcannons.mixin.compat.create.PistonContraptionMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method com/simibubi/create/content/contraptions/TranslatingContraption."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/util/HashSet
+         8: dup
+         9: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+        12: putfield      #10                 // Field createbigcannons$fragileBlocks:Ljava/util/Set;
+        15: aload_0
+        16: new           #7                  // class java/util/HashSet
+        19: dup
+        20: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+        23: putfield      #16                 // Field createbigcannons$colliderBlocks:Ljava/util/Set;
+        26: aload_0
+        27: new           #19                 // class java/util/HashMap
+        30: dup
+        31: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+        34: putfield      #22                 // Field createbigcannons$encounteredBlocks:Ljava/util/Map;
+        37: aload_0
+        38: iconst_0
+        39: putfield      #26                 // Field createbigcannons$brokenDisassembly:Z
+        42: return
+      LineNumberTable:
+        line 40: 0
+        line 42: 4
+        line 43: 15
+        line 44: 26
+        line 45: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+
+  public abstract net.minecraft.core.BlockPos toLocalPos(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #197()
+        org.spongepowered.asm.mixin.Shadow
+
+  public net.minecraft.core.Direction createbigcannons$getAssemblyMovementDirection(net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/level/Level;)Lnet/minecraft/core/Direction;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+         4: ifnull        24
+         7: aload_0
+         8: getfield      #34                 // Field retract:Z
+        11: ifeq          24
+        14: aload_0
+        15: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+        18: invokevirtual #37                 // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+        21: goto          28
+        24: aload_0
+        25: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+        28: areturn
+      LineNumberTable:
+        line 56: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0      29     1 level   Lnet/minecraft/world/level/Level;
+      StackMapTable: number_of_entries = 2
+        frame_type = 24 /* same */
+        frame_type = 67 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/core/Direction ]
+    RuntimeVisibleAnnotations:
+      0: #207()
+        javax.annotation.Nullable
+
+  public net.minecraft.core.Direction createbigcannons$getOriginalForcedDirection(net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/level/Level;)Lnet/minecraft/core/Direction;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+         4: ifnull        24
+         7: aload_0
+         8: getfield      #34                 // Field retract:Z
+        11: ifeq          24
+        14: aload_0
+        15: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+        18: invokevirtual #37                 // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+        21: goto          28
+        24: aload_0
+        25: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+        28: areturn
+      LineNumberTable:
+        line 62: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0      29     1 level   Lnet/minecraft/world/level/Level;
+      StackMapTable: number_of_entries = 2
+        frame_type = 24 /* same */
+        frame_type = 67 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/core/Direction ]
+    RuntimeVisibleAnnotations:
+      0: #207()
+        javax.annotation.Nullable
+
+  public net.minecraft.core.BlockPos createbigcannons$toLocalPos(net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #43                 // Method toLocalPos:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+         5: areturn
+      LineNumberTable:
+        line 65: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0       6     1 globalPos   Lnet/minecraft/core/BlockPos;
+
+  public java.util.Set<net.minecraft.core.BlockPos> createbigcannons$getFragileBlockPositions();
+    descriptor: ()Ljava/util/Set;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field createbigcannons$fragileBlocks:Ljava/util/Set;
+         4: areturn
+      LineNumberTable:
+        line 67: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+    Signature: #213                         // ()Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+
+  public java.util.Set<net.minecraft.core.BlockPos> createbigcannons$getCannonLoadingColliders();
+    descriptor: ()Ljava/util/Set;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #16                 // Field createbigcannons$colliderBlocks:Ljava/util/Set;
+         4: areturn
+      LineNumberTable:
+        line 69: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+    Signature: #213                         // ()Ljava/util/Set<Lnet/minecraft/core/BlockPos;>;
+
+  public void createbigcannons$setBrokenDisassembly(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #26                 // Field createbigcannons$brokenDisassembly:Z
+         5: return
+      LineNumberTable:
+        line 71: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0       6     1  flag   Z
+
+  public boolean createbigcannons$isBrokenDisassembly();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #26                 // Field createbigcannons$brokenDisassembly:Z
+         4: ireturn
+      LineNumberTable:
+        line 72: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+
+  public java.util.Map<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState> createbigcannons$getEncounteredBlocks();
+    descriptor: ()Ljava/util/Map;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #22                 // Field createbigcannons$encounteredBlocks:Ljava/util/Map;
+         4: areturn
+      LineNumberTable:
+        line 74: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+    Signature: #221                         // ()Ljava/util/Map<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;>;
+
+  private void createbigcannons$addToInitialFrontier$1(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.core.Direction, java.util.Queue<net.minecraft.core.BlockPos>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>, boolean, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Ljava/util/Queue;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;ZLnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=13, args_size=9
+         0: aload         7
+         2: aload_3
+         3: invokevirtual #37                 // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+         6: invokevirtual #47                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+         9: astore        9
+        11: aload_1
+        12: aload         9
+        14: invokevirtual #53                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        17: astore        10
+        19: aload         8
+        21: invokevirtual #59                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        24: instanceof    #65                 // class rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBlock
+        27: ifeq          130
+        30: aload_1
+        31: aload         7
+        33: invokevirtual #67                 // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        36: astore        12
+        38: aload         12
+        40: instanceof    #71                 // class rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity
+        43: ifeq          130
+        46: aload         12
+        48: checkcast     #71                 // class rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity
+        51: astore        11
+        53: iload         6
+        55: ifne          130
+        58: aload         11
+        60: invokeinterface #73,  1           // InterfaceMethod rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.cannonBehavior:()Lrbasamoyai/createbigcannons/cannons/CannonBehavior;
+        65: checkcast     #77                 // class rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBehavior
+        68: invokevirtual #79                 // Method rbasamoyai/createbigcannons/cannons/big_cannons/BigCannonBehavior.block:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+        71: astore        12
+        73: aload         12
+        75: invokevirtual #83                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+        78: invokevirtual #89                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+        81: ifne          95
+        84: getstatic     #93                 // Field rbasamoyai/createbigcannons/index/CBCBlocks.WORM_HEAD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+        87: aload         10
+        89: invokevirtual #99                 // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+        92: ifne          118
+        95: aload         11
+        97: new           #84                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+       100: dup
+       101: getstatic     #105                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+       104: aload         10
+       106: aconst_null
+       107: invokespecial #109                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+       110: invokeinterface #112,  2          // InterfaceMethod rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.canPushBlock:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;)Z
+       115: ifeq          127
+       118: aload         5
+       120: iconst_1
+       121: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       124: invokevirtual #122                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       127: goto          167
+       130: aload_3
+       131: invokevirtual #128                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+       134: aload         8
+       136: invokestatic  #132                // InterfaceMethod rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity.isValidMunitionState:(Lnet/minecraft/core/Direction$Axis;Lnet/minecraft/world/level/block/state/BlockState;)Z
+       139: ifeq          167
+       142: getstatic     #93                 // Field rbasamoyai/createbigcannons/index/CBCBlocks.WORM_HEAD:Lcom/tterrag/registrate/util/entry/BlockEntry;
+       145: aload         10
+       147: invokevirtual #99                 // Method com/tterrag/registrate/util/entry/BlockEntry.has:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       150: ifeq          167
+       153: iload         6
+       155: ifne          167
+       158: aload         5
+       160: iconst_1
+       161: invokestatic  #116                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       164: invokevirtual #122                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       167: return
+      LineNumberTable:
+        line 83: 0
+        line 84: 11
+        line 86: 19
+        line 87: 58
+        line 88: 73
+        line 89: 110
+        line 90: 118
+        line 92: 127
+        line 93: 147
+        line 94: 158
+        line 96: 167
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           73      54    12 loadedInfo   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+           53      77    11   cbe   Lrbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity;
+            0     168     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0     168     1 level   Lnet/minecraft/world/level/Level;
+            0     168     2   pos   Lnet/minecraft/core/BlockPos;
+            0     168     3 direction   Lnet/minecraft/core/Direction;
+            0     168     4 frontier   Ljava/util/Queue;
+            0     168     5   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0     168     6 retracting   Z
+            0     168     7 currentPos   Lnet/minecraft/core/BlockPos;
+            0     168     8 state   Lnet/minecraft/world/level/block/state/BlockState;
+           11     157     9 offsetPos   Lnet/minecraft/core/BlockPos;
+           19     149    10 offsetState   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     168     4 frontier   Ljava/util/Queue<Lnet/minecraft/core/BlockPos;>;
+            0     168     5   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 255 /* full_frame */
+          offset_delta = 95
+          locals = [ class rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin, class net/minecraft/world/level/Level, class net/minecraft/core/BlockPos, class net/minecraft/core/Direction, class java/util/Queue, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, int, class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/BlockState, class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/BlockState, class rbasamoyai/createbigcannons/cannons/big_cannons/IBigCannonBlockEntity, class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo ]
+          stack = []
+        frame_type = 22 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 8
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 36 /* same */
+    Signature: #244                         // (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Ljava/util/Queue<Lnet/minecraft/core/BlockPos;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;ZLnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+    RuntimeVisibleAnnotations:
+      0: #245(#246=[s#247],#248=[@#249(#250=s#251,#252=s#253,#254=e#255.#256)],#257=Z#258,#259=Z#260)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["addToInitialFrontier"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Queue;add(Ljava/lang/Object;)Z"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.BEFORE
+          )]
+          remap=false
+          cancellable=true
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+        0: #262(#263=I#260)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+      parameter 6:
+        0: #262(#263=I#260)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+      parameter 7:
+        0: #262()
+          com.llamalad7.mixinextras.sugar.Local
+
+  private net.minecraft.world.level.block.state.BlockState createbigcannons$collectExtensions$1(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.world.level.block.state.BlockState>, net.minecraft.core.Direction, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=7, args_size=6
+         0: aload_3
+         1: iconst_2
+         2: anewarray     #136                // class java/lang/Object
+         5: dup
+         6: iconst_0
+         7: aload_1
+         8: aastore
+         9: dup
+        10: iconst_1
+        11: aload_2
+        12: aastore
+        13: invokeinterface #138,  2          // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        18: checkcast     #60                 // class net/minecraft/world/level/block/state/BlockState
+        21: astore        6
+        23: aload_2
+        24: aload         5
+        26: invokevirtual #144                // Method net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+        29: ifeq          37
+        32: aload         6
+        34: goto          46
+        37: aload_1
+        38: aload         6
+        40: aload_2
+        41: aload         4
+        43: invokestatic  #148                // Method rbasamoyai/createbigcannons/remix/ContraptionRemix.getInnerCannonState:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+        46: areturn
+      LineNumberTable:
+        line 103: 0
+        line 104: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      47     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0      47     1 instance   Lnet/minecraft/world/level/Level;
+            0      47     2   pos   Lnet/minecraft/core/BlockPos;
+            0      47     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      47     4 direction   Lnet/minecraft/core/Direction;
+            0      47     5 posArg   Lnet/minecraft/core/BlockPos;
+           23      24     6 state   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      47     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/block/state/BlockState;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 37
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 72 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/world/level/block/state/BlockState ]
+    Signature: #271                         // (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/block/state/BlockState;>;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    RuntimeVisibleAnnotations:
+      0: #272(#246=[s#273],#248=[@#249(#250=s#251,#252=s#274)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["collectExtensions"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/Level;getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+        0: #262(#275=Z#260)
+          com.llamalad7.mixinextras.sugar.Local(
+            argsOnly=true
+          )
+      parameter 4:
+        0: #262(#263=I#258,#275=Z#260)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+            argsOnly=true
+          )
+
+  public boolean createbigcannons$blockBreaksDisassembly(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=5, args_size=4
+         0: aload_0
+         1: getfield      #154                // Field anchor:Lnet/minecraft/core/BlockPos;
+         4: aload_0
+         5: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+         8: iconst_m1
+         9: invokevirtual #157                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+        12: astore        4
+        14: aload_2
+        15: aload         4
+        17: invokevirtual #144                // Method net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+        20: ifeq          36
+        23: aload_1
+        24: aload_2
+        25: invokevirtual #53                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        28: invokestatic  #160                // Method com/simibubi/create/content/contraptions/piston/MechanicalPistonBlock.isPiston:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+        31: ifeq          36
+        34: iconst_0
+        35: ireturn
+        36: aload_1
+        37: aload_2
+        38: aload_3
+        39: aload_0
+        40: invokestatic  #165                // InterfaceMethod rbasamoyai/createbigcannons/remix/HasFragileContraption.defaultBlockBreaksAssembly:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lrbasamoyai/createbigcannons/remix/HasFragileContraption;)Z
+        43: ireturn
+      LineNumberTable:
+        line 109: 0
+        line 110: 14
+        line 111: 34
+        line 112: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      44     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+            0      44     1 level   Lnet/minecraft/world/level/Level;
+            0      44     2   pos   Lnet/minecraft/core/BlockPos;
+            0      44     3 newState   Lnet/minecraft/world/level/block/state/BlockState;
+           14      30     4 pistonPos   Lnet/minecraft/core/BlockPos;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 36
+          locals = [ class net/minecraft/core/BlockPos ]
+
+  public boolean createbigcannons$shouldCheckFragility();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #171                // InterfaceMethod rbasamoyai/createbigcannons/remix/HasFragileContraption.defaultShouldCheck:()Z
+         3: ireturn
+      LineNumberTable:
+        line 115: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+
+  public void createbigcannons$fragileDisassemble();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=1
+         0: aload_0
+         1: getfield      #154                // Field anchor:Lnet/minecraft/core/BlockPos;
+         4: aload_0
+         5: getfield      #30                 // Field orientation:Lnet/minecraft/core/Direction;
+         8: iconst_m1
+         9: invokevirtual #157                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+        12: astore_1
+        13: aload_0
+        14: getfield      #174                // Field entity:Lcom/simibubi/create/content/contraptions/AbstractContraptionEntity;
+        17: invokevirtual #178                // Method com/simibubi/create/content/contraptions/AbstractContraptionEntity.level:()Lnet/minecraft/world/level/Level;
+        20: aload_1
+        21: invokevirtual #67                 // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        24: astore_3
+        25: aload_3
+        26: instanceof    #184                // class com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity
+        29: ifeq          44
+        32: aload_3
+        33: checkcast     #184                // class com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity
+        36: astore_2
+        37: aload_2
+        38: invokevirtual #186                // Method com/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity.disassemble:()V
+        41: goto          51
+        44: aload_0
+        45: getfield      #174                // Field entity:Lcom/simibubi/create/content/contraptions/AbstractContraptionEntity;
+        48: invokevirtual #189                // Method com/simibubi/create/content/contraptions/AbstractContraptionEntity.disassemble:()V
+        51: return
+      LineNumberTable:
+        line 119: 0
+        line 120: 13
+        line 121: 37
+        line 123: 44
+        line 125: 51
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           37       7     2 pistonBE   Lcom/simibubi/create/content/contraptions/piston/MechanicalPistonBlockEntity;
+            0      52     0  this   Lrbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin;
+           13      39     1 pistonPos   Lnet/minecraft/core/BlockPos;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 44
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 6 /* same */
+}
+SourceFile: "PistonContraptionMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #287(#250=[c#288])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/contraptions/piston/PistonContraption;]
+    )
+InnerClasses:
+  public static final #292= #84 of #290;  // StructureBlockInfo=class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo of class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  public static abstract #295= #293 of #38; // Axis=class net/minecraft/core/Direction$Axis of class net/minecraft/core/Direction
+  public static final #300= #296 of #298; // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
