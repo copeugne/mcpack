@@ -1,0 +1,175 @@
+Compiled from "NeoForgeEnvironment.java"
+public final class fuzs.puzzleslib.neoforge.impl.core.NeoForgeEnvironment implements fuzs.puzzleslib.api.core.v1.ModLoaderEnvironment {
+  private final java.util.function.Supplier<java.util.Map<java.lang.String, fuzs.puzzleslib.api.core.v1.ModContainer>> modList;
+
+  public fuzs.puzzleslib.neoforge.impl.core.NeoForgeEnvironment();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_0
+       6: invokedynamic #38,  0             // InvokeDynamic #0:get:(Lfuzs/puzzleslib/neoforge/impl/core/NeoForgeEnvironment;)Lcom/google/common/base/Supplier;
+      11: invokestatic  #44                 // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+      14: putfield      #46                 // Field modList:Ljava/util/function/Supplier;
+      17: return
+
+  private java.util.stream.Stream<? extends fuzs.puzzleslib.api.core.v1.ModContainer> getNeoForgeModContainers();
+    Code:
+       0: invokestatic  #55                 // Method getForgeModList:()Ljava/util/List;
+       3: invokeinterface #60,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       8: invokedynamic #74,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      13: invokeinterface #80,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      18: invokedynamic #87,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      23: invokestatic  #92                 // InterfaceMethod java/util/function/Function.identity:()Ljava/util/function/Function;
+      26: invokedynamic #103,  0            // InvokeDynamic #3:apply:()Ljava/util/function/BinaryOperator;
+      31: invokestatic  #109                // Method java/util/stream/Collectors.toMap:(Ljava/util/function/Function;Ljava/util/function/Function;Ljava/util/function/BinaryOperator;)Ljava/util/stream/Collector;
+      34: invokeinterface #113,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      39: checkcast     #115                // class java/util/Map
+      42: astore_1
+      43: aload_1
+      44: invokeinterface #119,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      49: invokeinterface #125,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      54: astore_2
+      55: aload_2
+      56: invokeinterface #131,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      61: ifeq          119
+      64: aload_2
+      65: invokeinterface #134,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      70: checkcast     #64                 // class fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer
+      73: astore_3
+      74: aload_3
+      75: invokevirtual #138                // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer.getURI:()Ljava/net/URI;
+      78: invokevirtual #144                // Method java/net/URI.getScheme:()Ljava/lang/String;
+      81: ldc           #146                // String union
+      83: invokevirtual #152                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      86: ifeq          116
+      89: aload_3
+      90: invokevirtual #138                // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer.getURI:()Ljava/net/URI;
+      93: invokevirtual #155                // Method java/net/URI.getSchemeSpecificPart:()Ljava/lang/String;
+      96: invokestatic  #159                // Method getParentSchemePart:(Ljava/lang/String;)Ljava/lang/String;
+      99: astore        4
+     101: aload_3
+     102: aload_1
+     103: aload         4
+     105: invokeinterface #161,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     110: checkcast     #64                 // class fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer
+     113: invokevirtual #165                // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer.setParent:(Lfuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer;)V
+     116: goto          55
+     119: aload_1
+     120: invokeinterface #119,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     125: invokeinterface #166,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     130: areturn
+
+  private static java.util.List<? extends net.neoforged.neoforgespi.language.IModInfo> getForgeModList();
+    Code:
+       0: invokestatic  #179                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: ifnull        13
+       6: invokestatic  #179                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       9: invokevirtual #182                // Method net/neoforged/fml/ModList.getMods:()Ljava/util/List;
+      12: areturn
+      13: invokestatic  #188                // Method net/neoforged/fml/loading/FMLLoader.getLoadingModList:()Lnet/neoforged/fml/loading/LoadingModList;
+      16: ifnull        26
+      19: invokestatic  #188                // Method net/neoforged/fml/loading/FMLLoader.getLoadingModList:()Lnet/neoforged/fml/loading/LoadingModList;
+      22: invokevirtual #191                // Method net/neoforged/fml/loading/LoadingModList.getMods:()Ljava/util/List;
+      25: areturn
+      26: new           #193                // class java/lang/NullPointerException
+      29: dup
+      30: ldc           #195                // String mod list is null
+      32: invokespecial #198                // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      35: athrow
+
+  private static java.lang.String getParentSchemePart(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #200                // String /jij:file:///
+       3: ldc           #202                // String file:///
+       5: invokevirtual #206                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+       8: ldc           #208                // String _/META-INF/.+(#|%23)\\d+!/$
+      10: ldc           #210                // String !/
+      12: invokevirtual #214                // Method java/lang/String.replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      15: areturn
+
+  public fuzs.puzzleslib.api.core.v1.ModLoader getModLoader();
+    Code:
+       0: getstatic     #222                // Field fuzs/puzzleslib/api/core/v1/ModLoader.NEOFORGE:Lfuzs/puzzleslib/api/core/v1/ModLoader;
+       3: areturn
+
+  public boolean isClient();
+    Code:
+       0: getstatic     #229                // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #233                // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ireturn
+
+  public boolean isServer();
+    Code:
+       0: getstatic     #229                // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #237                // Method net/neoforged/api/distmarker/Dist.isDedicatedServer:()Z
+       6: ireturn
+
+  public java.nio.file.Path getGameDirectory();
+    Code:
+       0: getstatic     #245                // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #247                // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.nio.file.Path getModsDirectory();
+    Code:
+       0: getstatic     #251                // Field net/neoforged/fml/loading/FMLPaths.MODSDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #247                // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.nio.file.Path getConfigDirectory();
+    Code:
+       0: getstatic     #255                // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #247                // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.lang.String getCurrentMappingsNamespace();
+    Code:
+       0: ldc_w         #258                // String named
+       3: areturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: getstatic     #263                // Field net/neoforged/fml/loading/FMLEnvironment.production:Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public boolean isDataGeneration();
+    Code:
+       0: invokestatic  #269                // Method net/neoforged/neoforge/data/loading/DatagenModLoader.isRunningDataGen:()Z
+       3: ireturn
+
+  public java.util.Map<java.lang.String, fuzs.puzzleslib.api.core.v1.ModContainer> getModList();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field modList:Ljava/util/function/Supplier;
+       4: invokeinterface #275,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #115                // class java/util/Map
+      12: areturn
+
+  private static fuzs.puzzleslib.neoforge.impl.core.NeoForgeModContainer lambda$getNeoForgeModContainers$2(fuzs.puzzleslib.neoforge.impl.core.NeoForgeModContainer, fuzs.puzzleslib.neoforge.impl.core.NeoForgeModContainer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #165                // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer.setParent:(Lfuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer;)V
+       5: aload_0
+       6: areturn
+
+  private static java.lang.String lambda$getNeoForgeModContainers$1(fuzs.puzzleslib.neoforge.impl.core.NeoForgeModContainer);
+    Code:
+       0: aload_0
+       1: invokevirtual #138                // Method fuzs/puzzleslib/neoforge/impl/core/NeoForgeModContainer.getURI:()Ljava/net/URI;
+       4: invokevirtual #155                // Method java/net/URI.getSchemeSpecificPart:()Ljava/lang/String;
+       7: areturn
+
+  private java.util.Map lambda$new$0();
+    Code:
+       0: aload_0
+       1: invokedynamic #284,  0            // InvokeDynamic #4:get:(Lfuzs/puzzleslib/neoforge/impl/core/NeoForgeEnvironment;)Ljava/util/function/Supplier;
+       6: invokestatic  #290                // InterfaceMethod fuzs/puzzleslib/api/core/v1/ModContainer.toModList:(Ljava/util/function/Supplier;)Ljava/util/Map;
+       9: areturn
+}

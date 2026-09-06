@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 111 of 136. The exact queue below has 25 open rows.
+Supported provider dispositions: 112 of 136. The exact queue below has 24 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -603,7 +603,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `illagerinvasion-provider`, `illagerinvasion-extensible-enums` (e0f2c9a), existing pool codecs, test_illagerinvasion_provider_scope.py | RESOLVED: Five existing roots, thirteen mansion replacement components and encounter/loot modifications. Bundled enum library has no independent family; disconnected pillager pool/template preserved below. |
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
 | `Patchouli-1.21.1-93-NEOFORGE.jar` | `patchouli-provider`, `patchouli-books`; complete payload/source binding. | RESOLVED: documentation books, existing lectern interaction and consumer multiblock APIs. No independent family. |
-| `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | 875c52c6 provider entries; a97ac77c startup delegates. | RESOLVED: shared consumer event, registry and behavior APIs, no independent generated family. See Puzzles Lib membership closure. |
 | `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | RESOLVED: Existing five named nonregistry site candidates, terrain/vegetation and existing-structure replacement hooks; bundled Biolith adds biome/surface support. Full disposition below; canonical count and attributes remain open. |
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Sources 3230f7ff and c2de78c1; test_terrablender_provider_scope.py | RESOLVED: Consumer biome regions, noise and surface rules; no independent family. See TerraBlender disposition below. |
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
@@ -7328,3 +7328,37 @@ full archive payload, entry/hook coverage and all 49 captured class identities.
 Scoped Ruff and Basedpyright pass after a precedence-parenthesization lint fix.
 Whole-provider queue: 111 resolved, 25 open. Working family groups remain 410;
 canonical Moog decisions remain provisional. Item 8 is not complete.
+
+
+## Puzzles Lib membership closure
+
+Exact archive PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar, SHA-256
+00069866c4c6bb67ee5192d1b425d46e6a1601dc598e61bd10b67ba5fa8b029c.
+The complete payload contains 951 classes and 14 other files, including three
+service declarations. No packaged data, assets, templates or nested archives.
+
+Sources 875c52c6 and a97ac77c bind both automatic entries, all three services,
+two mixin plugins, all 15 declared common/server hooks and startup delegates.
+PuzzlesLibMod initializes shared proxy events and one optional client-bound
+entity-capability message. The proxy load-complete callback initializes consumer
+contexts and event invokers. NeoForge registration maps native events to
+consumer callbacks. Both registration methods invoke only the event registry's
+register overloads, rather than an independent generation registration.
+
+Hooks cover consumer minecart construction, enchanted loot bonuses, menu data,
+data-generation tag helpers and biome/spawn/registry accessors. Preserve the
+loot-bonus and consumer-supplied behavior effects for attribute attribution.
+Development hooks modify commands, server settings, EULA handling and pack/data
+generation support. Both plugins gate their named development hooks using the
+loader environment; NeoForgeEnvironment reads FMLEnvironment.production. Neither
+plugin supplies additional mixins. Do not infer operational acceptance or EULA
+authorization from these hooks. The runtime identity remains frozen.
+
+No independent generated family. No further generic consumer event, networking,
+configuration or development-tool tracing is needed for membership. Full archive,
+entry/hook/service and 27 source identities are bound by:
+`uv run pytest -q tests/item8/test_puzzles_lib_provider_scope.py`. The test and
+scoped Ruff/Basedpyright pass after adding an explicit type to parsed metadata.
+Both captures reproduce exactly using the commands in their source READMEs.
+Whole providers: 112 resolved, 24 open. Working groups remain 410. This is a
+membership disposition, not the complete Item 8 attribute or exit gate.
