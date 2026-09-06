@@ -1670,6 +1670,17 @@ CLASSES: tuple[str, ...] = (
     "com/rae/creatingspace/content/planets/CSDimensionUtil.class",
     "com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.class",
     "com/rae/creatingspace/legacy/saved/UnlockedDesignManager.class",
+    "net/mehvahdjukaar/supplementaries/reg/ModWorldgen.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/BasaltAshFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/GalleonStructure.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignStructure.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/MineshaftElevatorPiece.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/MineshaftElevatorPiece$1.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MineshaftCorridorMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MineshaftPiecesMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1816,6 +1827,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
+                verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= (
                     source.name in {
                         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
