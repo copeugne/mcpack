@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 81 of 136. The exact queue below has 55 open rows.
+Supported provider dispositions: 82 of 136. The exact queue below has 54 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -641,7 +641,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `cloth-config-15.0.140-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `coffee_delight-1.4.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `create-1.21.1-6.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -701,6 +701,47 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Coffee Delight provider disposition
+
+coffee_delight-1.4.1.jar is RESOLVED as a vegetation and food/item provider,
+with no independent structure family. SHA-256:
+86ff8637d157a723f4d790e2478fa50f87a2e7b7c4b4ed6a64fb3d69a0219082.
+The full 295-file payload comprises 30 classes, 167 assets, 90 data files,
+three metadata/logo files and five packaged data-generator cache files.
+There are no templates, nested JARs, service declarations, scripts, mixin
+declarations or extra loader mechanisms. The only Mod entry registers blocks,
+items, an item tab and block entities. The only automatic subscriber is
+ModDataGenerator.gatherData, a development data-generation event. No class
+references the NeoForge global event bus. The preserved entry and all three
+worldgen bootstrap classes are bound to the exact archive in the focused check.
+
+The complete generation payload is one configured coffee_bush feature, one
+placed coffee_bush feature and one add_coffee_bush biome modifier. The configured
+feature is vanilla random_patch containing simple_block with the mature
+coffee_delight:coffee_bush state, requiring air above sand. The placed feature
+references that exact configured ID and applies rarity, square spread and a
+heightmap. The neoforge:add_features modifier references that placed ID at
+vegetal_decoration. Its minecraft:has_structure/desert_pyramid biome tag selects
+biomes; it neither generates a pyramid nor modifies pyramid assembly.
+The source bootstraps construct these same vanilla plant-placement mechanisms.
+
+Remaining data is 23 recipes, 20 advancements and 44 loot tables. Membership
+closure does not assert observed crop abundance, loot activation or final
+family attributes. The accepted packaged JSON catalog retains this payload;
+source 49445ab retains the five relevant classes, with exact reproduction in
+sources/coffee-delight-provider/README.md. No runtime measurement is needed.
+
+```sh
+uv run pytest -q tests/item8/test_coffee_delight_provider_scope.py
+uv run ruff check tests/item8/test_coffee_delight_provider_scope.py
+uv run basedpyright tests/item8/test_coffee_delight_provider_scope.py
+```
+
+Two focused cases pass (0.10s). Scoped Ruff and Basedpyright pass after removing
+an unused type-only import and correcting a long line. Census: 82 resolved,
+54 open. Nine packaged-generation providers, 24 code-only rows and 21 unmatched
+rows remain. No canonical family is added by this disposition.
 
 ## Farmers Delight provider disposition
 

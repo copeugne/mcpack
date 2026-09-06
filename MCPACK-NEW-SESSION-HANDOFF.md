@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Coffee Delight membership is RESOLVED. Source 49445ab and two focused checks
+(0.10s) establish a vanilla coffee-bush patch and food/item content, with no
+independent family. Scoped Ruff/Basedpyright pass. Census: 82 resolved, 54 open.
+Remaining packaged-generation providers: Aether's Delight, End's Delight,
+Ube's Delight, Create, Forgified Fabric API, Lithostitched, Naturalist, Railways
+and Regions Unexplored. The existing 24 code-only and 21 unmatched rows also
+remain. Next: End's Delight's custom crop writer and common entries, followed
+by the other food add-ons. Do not redo Farmer's Delight or Coffee Delight.
+
 Farmer's Delight membership is RESOLVED in the provider-scope disposition.
 Source 555d912, common setup 15cb251 and server packet 6678ec9 account for
 five existing-village components, crop processor changes, vegetation and
