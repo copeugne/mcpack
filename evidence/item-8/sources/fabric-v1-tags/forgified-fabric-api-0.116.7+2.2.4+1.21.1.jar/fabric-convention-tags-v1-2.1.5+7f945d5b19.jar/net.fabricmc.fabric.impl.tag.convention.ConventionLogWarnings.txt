@@ -1,0 +1,1113 @@
+Compiled from "ConventionLogWarnings.java"
+public class net.fabricmc.fabric.impl.tag.convention.ConventionLogWarnings implements net.fabricmc.api.ModInitializer {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final net.fabricmc.fabric.impl.tag.convention.ConventionLogWarnings$LogWarningMode LOG_LEGACY_WARNING_MODE;
+
+  private static final java.util.Map<net.minecraft.tags.TagKey<?>, net.minecraft.tags.TagKey<?>> LEGACY_C_TAGS;
+
+  public net.fabricmc.fabric.impl.tag.convention.ConventionLogWarnings();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static net.fabricmc.fabric.impl.tag.convention.ConventionLogWarnings$LogWarningMode setupLogWarningModeProperty();
+    Code:
+       0: ldc           #7                  // String fabric-tag-conventions-v1.legacyTagWarning
+       2: getstatic     #9                  // Field net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.SHORT:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+       5: invokevirtual #15                 // Method net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.name:()Ljava/lang/String;
+       8: invokestatic  #19                 // Method java/lang/System.getProperty:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      11: getstatic     #25                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+      14: invokevirtual #31                 // Method java/lang/String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+      17: astore_0
+      18: aload_0
+      19: invokestatic  #37                 // Method net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.valueOf:(Ljava/lang/String;)Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      22: areturn
+      23: astore_1
+      24: getstatic     #43                 // Field LOGGER:Lorg/slf4j/Logger;
+      27: ldc           #49                 // String Unknown entry `{}` for property `fabric-tag-conventions-v1.legacyTagWarning`.
+      29: aload_0
+      30: invokeinterface #51,  3           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      35: getstatic     #57                 // Field net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.SILENCED:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      38: areturn
+    Exception table:
+       from    to  target type
+          18    22    23   Class java/lang/Exception
+
+  public void onInitialize();
+    Code:
+       0: invokestatic  #60                 // InterfaceMethod net/fabricmc/loader/api/FabricLoader.getInstance:()Lnet/fabricmc/loader/api/FabricLoader;
+       3: invokeinterface #66,  1           // InterfaceMethod net/fabricmc/loader/api/FabricLoader.isDevelopmentEnvironment:()Z
+       8: ifeq          23
+      11: getstatic     #70                 // Field LOG_LEGACY_WARNING_MODE:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      14: getstatic     #57                 // Field net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.SILENCED:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      17: if_acmpeq     23
+      20: invokestatic  #73                 // Method setupLegacyTagWarning:()V
+      23: return
+
+  private static void setupLegacyTagWarning();
+    Code:
+       0: getstatic     #76                 // Field net/fabricmc/fabric/api/event/lifecycle/v1/ServerLifecycleEvents.SERVER_STARTED:Lnet/fabricmc/fabric/api/event/Event;
+       3: invokedynamic #82,  0             // InvokeDynamic #0:onServerStarted:()Lnet/fabricmc/fabric/api/event/lifecycle/v1/ServerLifecycleEvents$ServerStarted;
+       8: invokevirtual #86                 // Method net/fabricmc/fabric/api/event/Event.register:(Ljava/lang/Object;)V
+      11: return
+
+  private static <T> java.util.AbstractMap$SimpleEntry<net.minecraft.tags.TagKey<T>, net.minecraft.tags.TagKey<T>> createMapEntry(net.minecraft.tags.TagKey<T>, net.minecraft.tags.TagKey<T>);
+    Code:
+       0: new           #92                 // class java/util/AbstractMap$SimpleEntry
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokespecial #94                 // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+       9: areturn
+
+  private static <T> java.util.AbstractMap$SimpleEntry<net.minecraft.tags.TagKey<T>, net.minecraft.tags.TagKey<T>> createMapEntry(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.lang.String, net.minecraft.tags.TagKey<T>);
+    Code:
+       0: new           #92                 // class java/util/AbstractMap$SimpleEntry
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #97                 // Method createTagKeyUnderC:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+       9: aload_2
+      10: invokespecial #94                 // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+      13: areturn
+
+  private static <T> java.util.AbstractMap$SimpleEntry<net.minecraft.tags.TagKey<T>, net.minecraft.tags.TagKey<T>> createMapEntry(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.lang.String, java.lang.String);
+    Code:
+       0: new           #92                 // class java/util/AbstractMap$SimpleEntry
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #97                 // Method createTagKeyUnderC:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+       9: aload_0
+      10: aload_2
+      11: invokestatic  #97                 // Method createTagKeyUnderC:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+      14: invokespecial #94                 // Method java/util/AbstractMap$SimpleEntry."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+      17: areturn
+
+  private static <T> net.minecraft.tags.TagKey<T> createTagKeyUnderC(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #103                // String c
+       3: aload_1
+       4: invokestatic  #105                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: invokestatic  #111                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      10: areturn
+
+  private static <T> net.minecraft.tags.TagKey<T> createTagKeyUnderFabric(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #117                // String fabric
+       3: aload_1
+       4: invokestatic  #105                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: invokestatic  #111                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      10: areturn
+
+  private static void lambda$setupLegacyTagWarning$2(net.minecraft.server.MinecraftServer);
+    Code:
+       0: new           #119                // class it/unimi/dsi/fastutil/objects/ObjectArrayList
+       3: dup
+       4: invokespecial #121                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList."<init>":()V
+       7: astore_1
+       8: aload_0
+       9: invokevirtual #122                // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+      12: astore_2
+      13: aload_2
+      14: invokeinterface #128,  1          // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registries:()Ljava/util/stream/Stream;
+      19: aload_1
+      20: invokedynamic #134,  0            // InvokeDynamic #1:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      25: invokeinterface #138,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      30: aload_1
+      31: invokeinterface #144,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      36: ifeq          40
+      39: return
+      40: new           #149                // class java/lang/StringBuilder
+      43: dup
+      44: invokespecial #151                // Method java/lang/StringBuilder."<init>":()V
+      47: astore_3
+      48: aload_3
+      49: ldc           #152                // String \n\tDev warning - Legacy Tags detected. Please migrate your old tags to our new format that follows better conventions!\n\tSee classes under net.fabricmc.fabric.api.tag.convention.v2 package for all tags.\n\n\tNOTE: Many tags have been moved around or renamed. Some new ones were added so please review the new tags.\n\tAnd make sure you follow tag conventions for new tags! The convention is `c` with nouns generally being plural and adjectives being singular.\n\tYou can disable this message by this system property to your runs: `-Dfabric-tag-conventions-v1.legacyTagWarning=SILENCED`.\n\tTo see individual legacy tags found, set the system property to `-Dfabric-tag-conventions-v1.legacyTagWarning=VERBOSE` instead. Default is `SHORT`.\n
+      51: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      54: pop
+      55: getstatic     #70                 // Field LOG_LEGACY_WARNING_MODE:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      58: invokevirtual #158                // Method net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.isVerbose:()Z
+      61: ifeq          134
+      64: aload_3
+      65: ldc           #161                // String \nLegacy tags and their replacement:
+      67: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      70: pop
+      71: aload_1
+      72: invokeinterface #163,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      77: astore        4
+      79: aload         4
+      81: invokeinterface #167,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      86: ifeq          134
+      89: aload         4
+      91: invokeinterface #172,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      96: checkcast     #112                // class net/minecraft/tags/TagKey
+      99: astore        5
+     101: aload_3
+     102: ldc           #176                // String \n
+     104: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     107: aload         5
+     109: invokevirtual #178                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     112: ldc           #181                // String   ->
+     114: invokevirtual #154                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     117: getstatic     #183                // Field LEGACY_C_TAGS:Ljava/util/Map;
+     120: aload         5
+     122: invokeinterface #187,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     127: invokevirtual #178                // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     130: pop
+     131: goto          79
+     134: getstatic     #43                 // Field LOGGER:Lorg/slf4j/Logger;
+     137: aload_3
+     138: invokevirtual #193                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     141: invokeinterface #196,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     146: getstatic     #70                 // Field LOG_LEGACY_WARNING_MODE:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+     149: getstatic     #200                // Field net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode.FAIL:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+     152: if_acmpne     165
+     155: new           #203                // class java/lang/RuntimeException
+     158: dup
+     159: ldc           #205                // String Legacy Tag validation failed
+     161: invokespecial #207                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     164: athrow
+     165: return
+
+  private static void lambda$setupLegacyTagWarning$1(java.util.List, net.minecraft.core.RegistryAccess$RegistryEntry);
+    Code:
+       0: aload_1
+       1: invokevirtual #209                // Method net/minecraft/core/RegistryAccess$RegistryEntry.key:()Lnet/minecraft/resources/ResourceKey;
+       4: invokevirtual #215                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       7: invokevirtual #221                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      10: ldc           #224                // String minecraft
+      12: invokevirtual #226                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      15: ifeq          38
+      18: aload_1
+      19: invokevirtual #230                // Method net/minecraft/core/RegistryAccess$RegistryEntry.value:()Lnet/minecraft/core/Registry;
+      22: invokeinterface #234,  1          // InterfaceMethod net/minecraft/core/Registry.getTagNames:()Ljava/util/stream/Stream;
+      27: aload_0
+      28: invokedynamic #239,  0            // InvokeDynamic #2:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      33: invokeinterface #138,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      38: return
+
+  private static void lambda$setupLegacyTagWarning$0(java.util.List, net.minecraft.tags.TagKey);
+    Code:
+       0: getstatic     #183                // Field LEGACY_C_TAGS:Ljava/util/Map;
+       3: aload_1
+       4: invokeinterface #240,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       9: ifeq          20
+      12: aload_0
+      13: aload_1
+      14: invokeinterface #243,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      19: pop
+      20: return
+
+  static {};
+    Code:
+       0: ldc           #44                 // class net/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings
+       2: invokestatic  #246                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+       5: putstatic     #43                 // Field LOGGER:Lorg/slf4j/Logger;
+       8: invokestatic  #252                // Method setupLogWarningModeProperty:()Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      11: putstatic     #70                 // Field LOG_LEGACY_WARNING_MODE:Lnet/fabricmc/fabric/impl/tag/convention/ConventionLogWarnings$LogWarningMode;
+      14: sipush        137
+      17: anewarray     #256                // class java/util/Map$Entry
+      20: dup
+      21: iconst_0
+      22: getstatic     #258                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.MOVEMENT_RESTRICTED:Lnet/minecraft/tags/TagKey;
+      25: getstatic     #264                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.RELOCATION_NOT_SUPPORTED:Lnet/minecraft/tags/TagKey;
+      28: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      31: aastore
+      32: dup
+      33: iconst_1
+      34: getstatic     #273                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.QUARTZ_ORES:Lnet/minecraft/tags/TagKey;
+      37: getstatic     #276                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.QUARTZ_ORES:Lnet/minecraft/tags/TagKey;
+      40: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      43: aastore
+      44: dup
+      45: iconst_2
+      46: getstatic     #277                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.WOODEN_BARRELS:Lnet/minecraft/tags/TagKey;
+      49: getstatic     #280                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.WOODEN_BARRELS:Lnet/minecraft/tags/TagKey;
+      52: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      55: aastore
+      56: dup
+      57: iconst_3
+      58: getstatic     #281                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+      61: getstatic     #284                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+      64: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      67: aastore
+      68: dup
+      69: iconst_4
+      70: getstatic     #285                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+      73: getstatic     #288                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+      76: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      79: aastore
+      80: dup
+      81: iconst_5
+      82: getstatic     #289                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+      85: getstatic     #292                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+      88: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+      91: aastore
+      92: dup
+      93: bipush        6
+      95: getstatic     #293                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.RED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+      98: getstatic     #296                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.RED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     101: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     104: aastore
+     105: dup
+     106: bipush        7
+     108: getstatic     #297                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.RED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     111: getstatic     #300                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.RED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     114: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     117: aastore
+     118: dup
+     119: bipush        8
+     121: getstatic     #301                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.RED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     124: getstatic     #304                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.RED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     127: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     130: aastore
+     131: dup
+     132: bipush        9
+     134: getstatic     #305                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.UNCOLORED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     137: getstatic     #308                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.UNCOLORED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     140: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     143: aastore
+     144: dup
+     145: bipush        10
+     147: getstatic     #309                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.UNCOLORED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     150: getstatic     #312                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.UNCOLORED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     153: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     156: aastore
+     157: dup
+     158: bipush        11
+     160: getstatic     #313                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBlockTags.UNCOLORED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     163: getstatic     #316                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.UNCOLORED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     166: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     169: aastore
+     170: dup
+     171: bipush        12
+     173: getstatic     #317                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.QUARTZ_ORES:Lnet/minecraft/tags/TagKey;
+     176: getstatic     #320                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.QUARTZ_ORES:Lnet/minecraft/tags/TagKey;
+     179: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     182: aastore
+     183: dup
+     184: bipush        13
+     186: getstatic     #323                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.WOODEN_BARRELS:Lnet/minecraft/tags/TagKey;
+     189: getstatic     #324                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.WOODEN_BARRELS:Lnet/minecraft/tags/TagKey;
+     192: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     195: aastore
+     196: dup
+     197: bipush        14
+     199: getstatic     #325                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     202: getstatic     #326                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     205: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     208: aastore
+     209: dup
+     210: bipush        15
+     212: getstatic     #327                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     215: getstatic     #328                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     218: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     221: aastore
+     222: dup
+     223: bipush        16
+     225: getstatic     #329                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     228: getstatic     #330                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     231: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     234: aastore
+     235: dup
+     236: bipush        17
+     238: getstatic     #331                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     241: getstatic     #332                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     244: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     247: aastore
+     248: dup
+     249: bipush        18
+     251: getstatic     #333                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     254: getstatic     #334                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     257: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     260: aastore
+     261: dup
+     262: bipush        19
+     264: getstatic     #335                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     267: getstatic     #336                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RED_SANDSTONE_SLABS:Lnet/minecraft/tags/TagKey;
+     270: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     273: aastore
+     274: dup
+     275: bipush        20
+     277: getstatic     #337                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.UNCOLORED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     280: getstatic     #338                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.UNCOLORED_SANDSTONE_BLOCKS:Lnet/minecraft/tags/TagKey;
+     283: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     286: aastore
+     287: dup
+     288: bipush        21
+     290: getstatic     #339                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.UNCOLORED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     293: getstatic     #340                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.UNCOLORED_SANDSTONE_STAIRS:Lnet/minecraft/tags/TagKey;
+     296: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     299: aastore
+     300: dup
+     301: bipush        22
+     303: getstatic     #341                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.BLACK_DYES:Lnet/minecraft/tags/TagKey;
+     306: getstatic     #344                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BLACK_DYES:Lnet/minecraft/tags/TagKey;
+     309: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     312: aastore
+     313: dup
+     314: bipush        23
+     316: getstatic     #345                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.BLUE_DYES:Lnet/minecraft/tags/TagKey;
+     319: getstatic     #348                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BLUE_DYES:Lnet/minecraft/tags/TagKey;
+     322: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     325: aastore
+     326: dup
+     327: bipush        24
+     329: getstatic     #349                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.BROWN_DYES:Lnet/minecraft/tags/TagKey;
+     332: getstatic     #352                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BROWN_DYES:Lnet/minecraft/tags/TagKey;
+     335: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     338: aastore
+     339: dup
+     340: bipush        25
+     342: getstatic     #353                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.GREEN_DYES:Lnet/minecraft/tags/TagKey;
+     345: getstatic     #356                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GREEN_DYES:Lnet/minecraft/tags/TagKey;
+     348: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     351: aastore
+     352: dup
+     353: bipush        26
+     355: getstatic     #357                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RED_DYES:Lnet/minecraft/tags/TagKey;
+     358: getstatic     #360                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RED_DYES:Lnet/minecraft/tags/TagKey;
+     361: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     364: aastore
+     365: dup
+     366: bipush        27
+     368: getstatic     #361                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.WHITE_DYES:Lnet/minecraft/tags/TagKey;
+     371: getstatic     #364                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.WHITE_DYES:Lnet/minecraft/tags/TagKey;
+     374: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     377: aastore
+     378: dup
+     379: bipush        28
+     381: getstatic     #365                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.YELLOW_DYES:Lnet/minecraft/tags/TagKey;
+     384: getstatic     #368                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.YELLOW_DYES:Lnet/minecraft/tags/TagKey;
+     387: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     390: aastore
+     391: dup
+     392: bipush        29
+     394: getstatic     #369                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.LIGHT_BLUE_DYES:Lnet/minecraft/tags/TagKey;
+     397: getstatic     #372                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.LIGHT_BLUE_DYES:Lnet/minecraft/tags/TagKey;
+     400: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     403: aastore
+     404: dup
+     405: bipush        30
+     407: getstatic     #373                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.LIGHT_GRAY_DYES:Lnet/minecraft/tags/TagKey;
+     410: getstatic     #376                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.LIGHT_GRAY_DYES:Lnet/minecraft/tags/TagKey;
+     413: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     416: aastore
+     417: dup
+     418: bipush        31
+     420: getstatic     #377                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.LIME_DYES:Lnet/minecraft/tags/TagKey;
+     423: getstatic     #380                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.LIME_DYES:Lnet/minecraft/tags/TagKey;
+     426: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     429: aastore
+     430: dup
+     431: bipush        32
+     433: getstatic     #381                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.MAGENTA_DYES:Lnet/minecraft/tags/TagKey;
+     436: getstatic     #384                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.MAGENTA_DYES:Lnet/minecraft/tags/TagKey;
+     439: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     442: aastore
+     443: dup
+     444: bipush        33
+     446: getstatic     #385                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.ORANGE_DYES:Lnet/minecraft/tags/TagKey;
+     449: getstatic     #388                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.ORANGE_DYES:Lnet/minecraft/tags/TagKey;
+     452: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     455: aastore
+     456: dup
+     457: bipush        34
+     459: getstatic     #389                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.PINK_DYES:Lnet/minecraft/tags/TagKey;
+     462: getstatic     #392                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.PINK_DYES:Lnet/minecraft/tags/TagKey;
+     465: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     468: aastore
+     469: dup
+     470: bipush        35
+     472: getstatic     #393                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.CYAN_DYES:Lnet/minecraft/tags/TagKey;
+     475: getstatic     #396                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.CYAN_DYES:Lnet/minecraft/tags/TagKey;
+     478: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     481: aastore
+     482: dup
+     483: bipush        36
+     485: getstatic     #397                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.GRAY_DYES:Lnet/minecraft/tags/TagKey;
+     488: getstatic     #400                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GRAY_DYES:Lnet/minecraft/tags/TagKey;
+     491: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     494: aastore
+     495: dup
+     496: bipush        37
+     498: getstatic     #401                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.PURPLE_DYES:Lnet/minecraft/tags/TagKey;
+     501: getstatic     #404                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.PURPLE_DYES:Lnet/minecraft/tags/TagKey;
+     504: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     507: aastore
+     508: dup
+     509: bipush        38
+     511: getstatic     #405                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RAW_IRON_ORES:Lnet/minecraft/tags/TagKey;
+     514: getstatic     #408                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.IRON_RAW_MATERIALS:Lnet/minecraft/tags/TagKey;
+     517: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     520: aastore
+     521: dup
+     522: bipush        39
+     524: getstatic     #411                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.RAW_GOLD_ORES:Lnet/minecraft/tags/TagKey;
+     527: getstatic     #414                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GOLD_RAW_MATERIALS:Lnet/minecraft/tags/TagKey;
+     530: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     533: aastore
+     534: dup
+     535: bipush        40
+     537: getstatic     #417                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.DIAMONDS:Lnet/minecraft/tags/TagKey;
+     540: getstatic     #420                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.DIAMOND_GEMS:Lnet/minecraft/tags/TagKey;
+     543: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     546: aastore
+     547: dup
+     548: bipush        41
+     550: getstatic     #423                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.LAPIS:Lnet/minecraft/tags/TagKey;
+     553: getstatic     #426                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.LAPIS_GEMS:Lnet/minecraft/tags/TagKey;
+     556: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     559: aastore
+     560: dup
+     561: bipush        42
+     563: getstatic     #429                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.EMERALDS:Lnet/minecraft/tags/TagKey;
+     566: getstatic     #432                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.EMERALD_GEMS:Lnet/minecraft/tags/TagKey;
+     569: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     572: aastore
+     573: dup
+     574: bipush        43
+     576: getstatic     #435                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.QUARTZ:Lnet/minecraft/tags/TagKey;
+     579: getstatic     #438                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.QUARTZ_GEMS:Lnet/minecraft/tags/TagKey;
+     582: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     585: aastore
+     586: dup
+     587: bipush        44
+     589: getstatic     #441                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SHEARS:Lnet/minecraft/tags/TagKey;
+     592: getstatic     #444                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SHEAR_TOOLS:Lnet/minecraft/tags/TagKey;
+     595: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     598: aastore
+     599: dup
+     600: bipush        45
+     602: getstatic     #447                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SPEARS:Lnet/minecraft/tags/TagKey;
+     605: getstatic     #450                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SPEAR_TOOLS:Lnet/minecraft/tags/TagKey;
+     608: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     611: aastore
+     612: dup
+     613: bipush        46
+     615: getstatic     #453                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.BOWS:Lnet/minecraft/tags/TagKey;
+     618: getstatic     #456                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BOW_TOOLS:Lnet/minecraft/tags/TagKey;
+     621: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     624: aastore
+     625: dup
+     626: bipush        47
+     628: getstatic     #459                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalItemTags.SHIELDS:Lnet/minecraft/tags/TagKey;
+     631: getstatic     #462                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SHIELD_TOOLS:Lnet/minecraft/tags/TagKey;
+     634: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     637: aastore
+     638: dup
+     639: bipush        48
+     641: getstatic     #465                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalEnchantmentTags.INCREASES_BLOCK_DROPS:Lnet/minecraft/tags/TagKey;
+     644: getstatic     #470                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalEnchantmentTags.INCREASE_BLOCK_DROPS:Lnet/minecraft/tags/TagKey;
+     647: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     650: aastore
+     651: dup
+     652: bipush        49
+     654: getstatic     #475                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalEnchantmentTags.INCREASES_ENTITY_DROPS:Lnet/minecraft/tags/TagKey;
+     657: getstatic     #478                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalEnchantmentTags.INCREASE_ENTITY_DROPS:Lnet/minecraft/tags/TagKey;
+     660: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     663: aastore
+     664: dup
+     665: bipush        50
+     667: getstatic     #481                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalEnchantmentTags.ENTITY_MOVEMENT_ENHANCEMENT:Lnet/minecraft/tags/TagKey;
+     670: getstatic     #484                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalEnchantmentTags.ENTITY_SPEED_ENHANCEMENTS:Lnet/minecraft/tags/TagKey;
+     673: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     676: aastore
+     677: dup
+     678: bipush        51
+     680: getstatic     #487                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENT:Lnet/minecraft/tags/TagKey;
+     683: getstatic     #490                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENTS:Lnet/minecraft/tags/TagKey;
+     686: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     689: aastore
+     690: dup
+     691: bipush        52
+     693: getstatic     #493                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.IN_NETHER:Lnet/minecraft/tags/TagKey;
+     696: getstatic     #498                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_NETHER:Lnet/minecraft/tags/TagKey;
+     699: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     702: aastore
+     703: dup
+     704: bipush        53
+     706: getstatic     #503                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.IN_THE_END:Lnet/minecraft/tags/TagKey;
+     709: getstatic     #506                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_END:Lnet/minecraft/tags/TagKey;
+     712: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     715: aastore
+     716: dup
+     717: bipush        54
+     719: getstatic     #509                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.IN_OVERWORLD:Lnet/minecraft/tags/TagKey;
+     722: getstatic     #512                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_OVERWORLD:Lnet/minecraft/tags/TagKey;
+     725: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     728: aastore
+     729: dup
+     730: bipush        55
+     732: getstatic     #515                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CAVES:Lnet/minecraft/tags/TagKey;
+     735: getstatic     #518                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_CAVE:Lnet/minecraft/tags/TagKey;
+     738: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     741: aastore
+     742: dup
+     743: bipush        56
+     745: getstatic     #521                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CLIMATE_COLD:Lnet/minecraft/tags/TagKey;
+     748: getstatic     #524                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_COLD:Lnet/minecraft/tags/TagKey;
+     751: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     754: aastore
+     755: dup
+     756: bipush        57
+     758: getstatic     #527                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CLIMATE_TEMPERATE:Lnet/minecraft/tags/TagKey;
+     761: getstatic     #530                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_TEMPERATE:Lnet/minecraft/tags/TagKey;
+     764: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     767: aastore
+     768: dup
+     769: bipush        58
+     771: getstatic     #533                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CLIMATE_HOT:Lnet/minecraft/tags/TagKey;
+     774: getstatic     #536                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_HOT:Lnet/minecraft/tags/TagKey;
+     777: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     780: aastore
+     781: dup
+     782: bipush        59
+     784: getstatic     #539                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CLIMATE_WET:Lnet/minecraft/tags/TagKey;
+     787: getstatic     #542                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_WET:Lnet/minecraft/tags/TagKey;
+     790: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     793: aastore
+     794: dup
+     795: bipush        60
+     797: getstatic     #545                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.CLIMATE_DRY:Lnet/minecraft/tags/TagKey;
+     800: getstatic     #548                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_DRY:Lnet/minecraft/tags/TagKey;
+     803: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     806: aastore
+     807: dup
+     808: bipush        61
+     810: getstatic     #551                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.VEGETATION_DENSE:Lnet/minecraft/tags/TagKey;
+     813: getstatic     #554                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_VEGETATION_DENSE:Lnet/minecraft/tags/TagKey;
+     816: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     819: aastore
+     820: dup
+     821: bipush        62
+     823: getstatic     #557                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.VEGETATION_SPARSE:Lnet/minecraft/tags/TagKey;
+     826: getstatic     #560                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_VEGETATION_SPARSE:Lnet/minecraft/tags/TagKey;
+     829: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     832: aastore
+     833: dup
+     834: bipush        63
+     836: getstatic     #563                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.TREE_CONIFEROUS:Lnet/minecraft/tags/TagKey;
+     839: getstatic     #566                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_CONIFEROUS_TREE:Lnet/minecraft/tags/TagKey;
+     842: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     845: aastore
+     846: dup
+     847: bipush        64
+     849: getstatic     #569                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.TREE_DECIDUOUS:Lnet/minecraft/tags/TagKey;
+     852: getstatic     #572                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_DECIDUOUS_TREE:Lnet/minecraft/tags/TagKey;
+     855: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     858: aastore
+     859: dup
+     860: bipush        65
+     862: getstatic     #575                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.TREE_JUNGLE:Lnet/minecraft/tags/TagKey;
+     865: getstatic     #578                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_JUNGLE_TREE:Lnet/minecraft/tags/TagKey;
+     868: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     871: aastore
+     872: dup
+     873: bipush        66
+     875: getstatic     #581                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.TREE_SAVANNA:Lnet/minecraft/tags/TagKey;
+     878: getstatic     #584                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_SAVANNA_TREE:Lnet/minecraft/tags/TagKey;
+     881: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     884: aastore
+     885: dup
+     886: bipush        67
+     888: getstatic     #587                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.MOUNTAIN_PEAK:Lnet/minecraft/tags/TagKey;
+     891: getstatic     #590                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_MOUNTAIN_PEAK:Lnet/minecraft/tags/TagKey;
+     894: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     897: aastore
+     898: dup
+     899: bipush        68
+     901: getstatic     #593                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.MOUNTAIN_SLOPE:Lnet/minecraft/tags/TagKey;
+     904: getstatic     #596                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_MOUNTAIN_SLOPE:Lnet/minecraft/tags/TagKey;
+     907: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     910: aastore
+     911: dup
+     912: bipush        69
+     914: getstatic     #599                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.END_ISLANDS:Lnet/minecraft/tags/TagKey;
+     917: getstatic     #602                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_OUTER_END_ISLAND:Lnet/minecraft/tags/TagKey;
+     920: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     923: aastore
+     924: dup
+     925: bipush        70
+     927: getstatic     #605                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.NETHER_FORESTS:Lnet/minecraft/tags/TagKey;
+     930: getstatic     #608                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_NETHER_FOREST:Lnet/minecraft/tags/TagKey;
+     933: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     936: aastore
+     937: dup
+     938: bipush        71
+     940: getstatic     #611                // Field net/fabricmc/fabric/api/tag/convention/v1/ConventionalBiomeTags.FLOWER_FORESTS:Lnet/minecraft/tags/TagKey;
+     943: getstatic     #614                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBiomeTags.IS_FLOWER_FOREST:Lnet/minecraft/tags/TagKey;
+     946: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     949: aastore
+     950: dup
+     951: bipush        72
+     953: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+     956: ldc_w         #623                // String barrel
+     959: getstatic     #625                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.BARRELS:Lnet/minecraft/tags/TagKey;
+     962: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     965: aastore
+     966: dup
+     967: bipush        73
+     969: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+     972: ldc_w         #631                // String chest
+     975: getstatic     #633                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.CHESTS:Lnet/minecraft/tags/TagKey;
+     978: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     981: aastore
+     982: dup
+     983: bipush        74
+     985: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+     988: ldc_w         #636                // String wooden_chests
+     991: getstatic     #638                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.WOODEN_CHESTS:Lnet/minecraft/tags/TagKey;
+     994: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+     997: aastore
+     998: dup
+     999: bipush        75
+    1001: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1004: ldc_w         #641                // String glass
+    1007: getstatic     #643                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.GLASS_BLOCKS:Lnet/minecraft/tags/TagKey;
+    1010: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1013: aastore
+    1014: dup
+    1015: bipush        76
+    1017: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1020: ldc_w         #646                // String glass_pane
+    1023: getstatic     #648                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.GLASS_PANES:Lnet/minecraft/tags/TagKey;
+    1026: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1029: aastore
+    1030: dup
+    1031: bipush        77
+    1033: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1036: ldc_w         #651                // String immobile
+    1039: getstatic     #264                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.RELOCATION_NOT_SUPPORTED:Lnet/minecraft/tags/TagKey;
+    1042: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1045: aastore
+    1046: dup
+    1047: bipush        78
+    1049: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1052: ldc_w         #653                // String stone
+    1055: getstatic     #655                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.STONES:Lnet/minecraft/tags/TagKey;
+    1058: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1061: aastore
+    1062: dup
+    1063: bipush        79
+    1065: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1068: ldc_w         #658                // String cobblestone
+    1071: getstatic     #660                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.COBBLESTONES:Lnet/minecraft/tags/TagKey;
+    1074: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1077: aastore
+    1078: dup
+    1079: bipush        80
+    1081: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1084: ldc_w         #663                // String workbench
+    1087: getstatic     #665                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.VILLAGER_JOB_SITES:Lnet/minecraft/tags/TagKey;
+    1090: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1093: aastore
+    1094: dup
+    1095: bipush        81
+    1097: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1100: ldc_w         #668                // String workbenches
+    1103: getstatic     #665                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.VILLAGER_JOB_SITES:Lnet/minecraft/tags/TagKey;
+    1106: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1109: aastore
+    1110: dup
+    1111: bipush        82
+    1113: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1116: ldc_w         #670                // String workstation
+    1119: getstatic     #665                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.VILLAGER_JOB_SITES:Lnet/minecraft/tags/TagKey;
+    1122: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1125: aastore
+    1126: dup
+    1127: bipush        83
+    1129: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1132: ldc_w         #672                // String workstations
+    1135: getstatic     #665                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.VILLAGER_JOB_SITES:Lnet/minecraft/tags/TagKey;
+    1138: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1141: aastore
+    1142: dup
+    1143: bipush        84
+    1145: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1148: ldc_w         #674                // String crafting_table
+    1151: getstatic     #676                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES:Lnet/minecraft/tags/TagKey;
+    1154: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1157: aastore
+    1158: dup
+    1159: bipush        85
+    1161: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1164: ldc_w         #679                // String crafting_tables
+    1167: getstatic     #676                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.PLAYER_WORKSTATIONS_CRAFTING_TABLES:Lnet/minecraft/tags/TagKey;
+    1170: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1173: aastore
+    1174: dup
+    1175: bipush        86
+    1177: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1180: ldc_w         #681                // String furnace
+    1183: getstatic     #683                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.PLAYER_WORKSTATIONS_FURNACES:Lnet/minecraft/tags/TagKey;
+    1186: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1189: aastore
+    1190: dup
+    1191: bipush        87
+    1193: getstatic     #617                // Field net/minecraft/core/registries/Registries.BLOCK:Lnet/minecraft/resources/ResourceKey;
+    1196: ldc_w         #686                // String furnaces
+    1199: getstatic     #683                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalBlockTags.PLAYER_WORKSTATIONS_FURNACES:Lnet/minecraft/tags/TagKey;
+    1202: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1205: aastore
+    1206: dup
+    1207: bipush        88
+    1209: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1212: ldc_w         #691                // String axes
+    1215: getstatic     #693                // Field net/minecraft/tags/ItemTags.AXES:Lnet/minecraft/tags/TagKey;
+    1218: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1221: aastore
+    1222: dup
+    1223: bipush        89
+    1225: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1228: ldc_w         #698                // String pickaxes
+    1231: getstatic     #700                // Field net/minecraft/tags/ItemTags.PICKAXES:Lnet/minecraft/tags/TagKey;
+    1234: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1237: aastore
+    1238: dup
+    1239: bipush        90
+    1241: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1244: ldc_w         #703                // String hoes
+    1247: getstatic     #705                // Field net/minecraft/tags/ItemTags.HOES:Lnet/minecraft/tags/TagKey;
+    1250: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1253: aastore
+    1254: dup
+    1255: bipush        91
+    1257: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1260: ldc_w         #708                // String shovels
+    1263: getstatic     #710                // Field net/minecraft/tags/ItemTags.SHOVELS:Lnet/minecraft/tags/TagKey;
+    1266: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1269: aastore
+    1270: dup
+    1271: bipush        92
+    1273: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1276: ldc_w         #713                // String swords
+    1279: getstatic     #715                // Field net/minecraft/tags/ItemTags.SWORDS:Lnet/minecraft/tags/TagKey;
+    1282: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1285: aastore
+    1286: dup
+    1287: bipush        93
+    1289: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1292: ldc_w         #718                // String wrenches
+    1295: ldc_w         #720                // String tools/wrenches
+    1298: invokestatic  #722                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Ljava/lang/String;)Ljava/util/AbstractMap$SimpleEntry;
+    1301: aastore
+    1302: dup
+    1303: bipush        94
+    1305: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1308: ldc_w         #691                // String axes
+    1311: invokestatic  #725                // Method createTagKeyUnderFabric:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+    1314: getstatic     #693                // Field net/minecraft/tags/ItemTags.AXES:Lnet/minecraft/tags/TagKey;
+    1317: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1320: aastore
+    1321: dup
+    1322: bipush        95
+    1324: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1327: ldc_w         #698                // String pickaxes
+    1330: invokestatic  #725                // Method createTagKeyUnderFabric:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+    1333: getstatic     #700                // Field net/minecraft/tags/ItemTags.PICKAXES:Lnet/minecraft/tags/TagKey;
+    1336: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1339: aastore
+    1340: dup
+    1341: bipush        96
+    1343: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1346: ldc_w         #703                // String hoes
+    1349: invokestatic  #725                // Method createTagKeyUnderFabric:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+    1352: getstatic     #705                // Field net/minecraft/tags/ItemTags.HOES:Lnet/minecraft/tags/TagKey;
+    1355: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1358: aastore
+    1359: dup
+    1360: bipush        97
+    1362: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1365: ldc_w         #708                // String shovels
+    1368: invokestatic  #725                // Method createTagKeyUnderFabric:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+    1371: getstatic     #710                // Field net/minecraft/tags/ItemTags.SHOVELS:Lnet/minecraft/tags/TagKey;
+    1374: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1377: aastore
+    1378: dup
+    1379: bipush        98
+    1381: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1384: ldc_w         #713                // String swords
+    1387: invokestatic  #725                // Method createTagKeyUnderFabric:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+    1390: getstatic     #715                // Field net/minecraft/tags/ItemTags.SWORDS:Lnet/minecraft/tags/TagKey;
+    1393: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1396: aastore
+    1397: dup
+    1398: bipush        99
+    1400: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1403: ldc_w         #623                // String barrel
+    1406: getstatic     #728                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BARRELS:Lnet/minecraft/tags/TagKey;
+    1409: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1412: aastore
+    1413: dup
+    1414: bipush        100
+    1416: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1419: ldc_w         #631                // String chest
+    1422: getstatic     #729                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.CHESTS:Lnet/minecraft/tags/TagKey;
+    1425: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1428: aastore
+    1429: dup
+    1430: bipush        101
+    1432: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1435: ldc_w         #641                // String glass
+    1438: getstatic     #730                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GLASS_BLOCKS:Lnet/minecraft/tags/TagKey;
+    1441: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1444: aastore
+    1445: dup
+    1446: bipush        102
+    1448: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1451: ldc_w         #646                // String glass_pane
+    1454: getstatic     #731                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GLASS_PANES:Lnet/minecraft/tags/TagKey;
+    1457: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1460: aastore
+    1461: dup
+    1462: bipush        103
+    1464: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1467: ldc_w         #732                // String glowstone_dusts
+    1470: getstatic     #734                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.GLOWSTONE_DUSTS:Lnet/minecraft/tags/TagKey;
+    1473: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1476: aastore
+    1477: dup
+    1478: bipush        104
+    1480: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1483: ldc_w         #737                // String redstone_dusts
+    1486: getstatic     #739                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.REDSTONE_DUSTS:Lnet/minecraft/tags/TagKey;
+    1489: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1492: aastore
+    1493: dup
+    1494: bipush        105
+    1496: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1499: ldc_w         #653                // String stone
+    1502: getstatic     #742                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.STONES:Lnet/minecraft/tags/TagKey;
+    1505: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1508: aastore
+    1509: dup
+    1510: bipush        106
+    1512: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1515: ldc_w         #743                // String string
+    1518: getstatic     #745                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.STRINGS:Lnet/minecraft/tags/TagKey;
+    1521: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1524: aastore
+    1525: dup
+    1526: bipush        107
+    1528: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1531: ldc_w         #748                // String sticks
+    1534: getstatic     #750                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.WOODEN_RODS:Lnet/minecraft/tags/TagKey;
+    1537: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1540: aastore
+    1541: dup
+    1542: bipush        108
+    1544: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1547: ldc_w         #753                // String wooden_rods
+    1550: getstatic     #750                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.WOODEN_RODS:Lnet/minecraft/tags/TagKey;
+    1553: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1556: aastore
+    1557: dup
+    1558: bipush        109
+    1560: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1563: ldc_w         #755                // String food
+    1566: getstatic     #757                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.FOODS:Lnet/minecraft/tags/TagKey;
+    1569: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1572: aastore
+    1573: dup
+    1574: bipush        110
+    1576: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1579: ldc_w         #760                // String fruit
+    1582: getstatic     #762                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.FRUIT_FOODS:Lnet/minecraft/tags/TagKey;
+    1585: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1588: aastore
+    1589: dup
+    1590: bipush        111
+    1592: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1595: ldc_w         #765                // String fruits
+    1598: getstatic     #762                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.FRUIT_FOODS:Lnet/minecraft/tags/TagKey;
+    1601: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1604: aastore
+    1605: dup
+    1606: bipush        112
+    1608: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1611: ldc_w         #767                // String vegetable
+    1614: getstatic     #769                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.VEGETABLE_FOODS:Lnet/minecraft/tags/TagKey;
+    1617: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1620: aastore
+    1621: dup
+    1622: bipush        113
+    1624: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1627: ldc_w         #772                // String vegetables
+    1630: getstatic     #769                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.VEGETABLE_FOODS:Lnet/minecraft/tags/TagKey;
+    1633: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1636: aastore
+    1637: dup
+    1638: bipush        114
+    1640: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1643: ldc_w         #774                // String berry
+    1646: getstatic     #776                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BERRY_FOODS:Lnet/minecraft/tags/TagKey;
+    1649: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1652: aastore
+    1653: dup
+    1654: bipush        115
+    1656: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1659: ldc_w         #779                // String berries
+    1662: getstatic     #776                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BERRY_FOODS:Lnet/minecraft/tags/TagKey;
+    1665: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1668: aastore
+    1669: dup
+    1670: bipush        116
+    1672: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1675: ldc_w         #781                // String bread
+    1678: getstatic     #783                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BREAD_FOODS:Lnet/minecraft/tags/TagKey;
+    1681: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1684: aastore
+    1685: dup
+    1686: bipush        117
+    1688: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1691: ldc_w         #786                // String breads
+    1694: getstatic     #783                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.BREAD_FOODS:Lnet/minecraft/tags/TagKey;
+    1697: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1700: aastore
+    1701: dup
+    1702: bipush        118
+    1704: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1707: ldc_w         #788                // String cookie
+    1710: getstatic     #790                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKIE_FOODS:Lnet/minecraft/tags/TagKey;
+    1713: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1716: aastore
+    1717: dup
+    1718: bipush        119
+    1720: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1723: ldc_w         #793                // String cookies
+    1726: getstatic     #790                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKIE_FOODS:Lnet/minecraft/tags/TagKey;
+    1729: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1732: aastore
+    1733: dup
+    1734: bipush        120
+    1736: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1739: ldc_w         #795                // String raw_meat
+    1742: getstatic     #797                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RAW_MEAT_FOODS:Lnet/minecraft/tags/TagKey;
+    1745: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1748: aastore
+    1749: dup
+    1750: bipush        121
+    1752: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1755: ldc_w         #800                // String raw_meats
+    1758: getstatic     #797                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RAW_MEAT_FOODS:Lnet/minecraft/tags/TagKey;
+    1761: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1764: aastore
+    1765: dup
+    1766: bipush        122
+    1768: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1771: ldc_w         #802                // String raw_fish
+    1774: getstatic     #804                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RAW_FISH_FOODS:Lnet/minecraft/tags/TagKey;
+    1777: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1780: aastore
+    1781: dup
+    1782: bipush        123
+    1784: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1787: ldc_w         #807                // String raw_fishes
+    1790: getstatic     #804                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.RAW_FISH_FOODS:Lnet/minecraft/tags/TagKey;
+    1793: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1796: aastore
+    1797: dup
+    1798: bipush        124
+    1800: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1803: ldc_w         #809                // String cooked_meat
+    1806: getstatic     #811                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKED_MEAT_FOODS:Lnet/minecraft/tags/TagKey;
+    1809: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1812: aastore
+    1813: dup
+    1814: bipush        125
+    1816: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1819: ldc_w         #814                // String cooked_meats
+    1822: getstatic     #811                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKED_MEAT_FOODS:Lnet/minecraft/tags/TagKey;
+    1825: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1828: aastore
+    1829: dup
+    1830: bipush        126
+    1832: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1835: ldc_w         #816                // String cooked_fish
+    1838: getstatic     #818                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKED_FISH_FOODS:Lnet/minecraft/tags/TagKey;
+    1841: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1844: aastore
+    1845: dup
+    1846: bipush        127
+    1848: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1851: ldc_w         #821                // String cooked_fishes
+    1854: getstatic     #818                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.COOKED_FISH_FOODS:Lnet/minecraft/tags/TagKey;
+    1857: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1860: aastore
+    1861: dup
+    1862: sipush        128
+    1865: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1868: ldc_w         #823                // String soup
+    1871: getstatic     #825                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SOUP_FOODS:Lnet/minecraft/tags/TagKey;
+    1874: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1877: aastore
+    1878: dup
+    1879: sipush        129
+    1882: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1885: ldc_w         #828                // String soups
+    1888: getstatic     #825                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SOUP_FOODS:Lnet/minecraft/tags/TagKey;
+    1891: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1894: aastore
+    1895: dup
+    1896: sipush        130
+    1899: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1902: ldc_w         #830                // String stew
+    1905: getstatic     #825                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SOUP_FOODS:Lnet/minecraft/tags/TagKey;
+    1908: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1911: aastore
+    1912: dup
+    1913: sipush        131
+    1916: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1919: ldc_w         #832                // String stews
+    1922: getstatic     #825                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.SOUP_FOODS:Lnet/minecraft/tags/TagKey;
+    1925: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1928: aastore
+    1929: dup
+    1930: sipush        132
+    1933: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1936: ldc_w         #834                // String candy
+    1939: getstatic     #836                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.CANDY_FOODS:Lnet/minecraft/tags/TagKey;
+    1942: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1945: aastore
+    1946: dup
+    1947: sipush        133
+    1950: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1953: ldc_w         #839                // String candies
+    1956: getstatic     #836                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.CANDY_FOODS:Lnet/minecraft/tags/TagKey;
+    1959: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1962: aastore
+    1963: dup
+    1964: sipush        134
+    1967: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1970: ldc_w         #841                // String pie
+    1973: getstatic     #843                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.PIE_FOODS:Lnet/minecraft/tags/TagKey;
+    1976: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1979: aastore
+    1980: dup
+    1981: sipush        135
+    1984: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    1987: ldc_w         #846                // String pies
+    1990: getstatic     #843                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.PIE_FOODS:Lnet/minecraft/tags/TagKey;
+    1993: invokestatic  #628                // Method createMapEntry:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    1996: aastore
+    1997: dup
+    1998: sipush        136
+    2001: getstatic     #688                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+    2004: ldc           #224                // String minecraft
+    2006: ldc_w         #848                // String music_discs
+    2009: invokestatic  #105                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+    2012: invokestatic  #111                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+    2015: getstatic     #850                // Field net/fabricmc/fabric/api/tag/convention/v2/ConventionalItemTags.MUSIC_DISCS:Lnet/minecraft/tags/TagKey;
+    2018: invokestatic  #269                // Method createMapEntry:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/tags/TagKey;)Ljava/util/AbstractMap$SimpleEntry;
+    2021: aastore
+    2022: invokestatic  #853                // InterfaceMethod java/util/Map.ofEntries:([Ljava/util/Map$Entry;)Ljava/util/Map;
+    2025: putstatic     #183                // Field LEGACY_C_TAGS:Ljava/util/Map;
+    2028: return
+}
