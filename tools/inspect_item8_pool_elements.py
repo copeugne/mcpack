@@ -1666,6 +1666,10 @@ CLASSES: tuple[str, ...] = (
     "com/rae/creatingspace/mixin/recipe/SequencedAssemblyRecipeMixin.class",
     "com/rae/creatingspace/mixin/recipe/SequencedAssemblyRecipeSerializerMixin.class",
     "com/rae/creatingspace/content/rocket/CustomTeleporter.class",
+    "com/rae/creatingspace/init/ingameobject/FluidInit.class",
+    "com/rae/creatingspace/content/planets/CSDimensionUtil.class",
+    "com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.class",
+    "com/rae/creatingspace/legacy/saved/UnlockedDesignManager.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
