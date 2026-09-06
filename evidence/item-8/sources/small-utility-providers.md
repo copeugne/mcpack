@@ -221,20 +221,20 @@ uv run -m tools.inspect_item8_pool_elements --archive 'shield_api-neoforge-2.2.0
 diff -qr evidence/item-8/sources/shield-api-provider evidence/raw/item8/shield-api-provider-r1
 ```
 
-Bundle API's two loader entries call common/client initializers. Its common
+Bundle API's mod entry and client subscriber call common/client initializers. Its common
 registry mixins register the custom bundle data-component and item predicate;
 client mixins register item model predicates and custom tooltip rendering.
 Contents records/builders, predicates, the container-component manipulator and
 CustomBundleItem operate on existing item stacks, occupancy, inventory interaction
 and dropping stored items. They do not construct an authored world layout. The
-client entry is also a client-setup subscriber. No additional entry or packaged
+client class is a client-setup subscriber. No additional entry or packaged
 generation data exists.
 
 Shield API's common initializer logs initialization; its client initializer is
 empty. Its Minecraft startup mixin registers shield model predicates. CustomShieldItem supplies repair ingredients,
 attributes and equip sounds. Player and axe mixins handle custom-shield damage,
 cooldown and strip-attempt behavior. The EMI plugin displays anvil repair recipes
-for registered shield items. Its client entry also subscribes to client setup.
+for registered shield items. Its client class subscribes to client setup.
 The archive declares MinecraftClientMixin in the common mixin list and the model
 predicate invoker in the client list; preserve that exact declaration rather than
 silently relabeling it. This is not a newly reproduced server failure or a reason

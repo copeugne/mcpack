@@ -72,8 +72,16 @@ if TYPE_CHECKING:
       "structure_layout_optimizer.mixins.json", "structure_layout_optimizer.png",
       "LICENSE_Structure Layout Optimizer.txt"},
      {"telepathicgrunt/structure_layout_optimizer/neoforge/entrypoints/Main.class"}),
+    ("bundle-api", 19,
+     "761564dccceb00a1ee3e781dd8380987076f885d8d14d011d03e172522d0f59a",
+     {"bundle-api-common-common-refmap.json", "bundleapi.mixins.json", "icon.png"},
+     {"com/github/theredbrain/neoforge/NeoForgeMod.class"}),
+    ("shield-api", 11,
+     "d713942af83a5e1f30c824e2cef9b04cde23d2024ba46d7955b57ec3d457cd2b",
+     {"icon.png", "shield_api-common-common-refmap.json", "shield_api.mixins.json"},
+     {"net/fabric_extras/neoforge/NeoForgeMod.class"}),
 ])
-def test_complete_small_utility_payload_and_entry_binding(
+def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901 - explicit archive cases.
     name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
 ) -> None:
     directory = Path(f"evidence/item-8/sources/{name}-provider")
@@ -115,6 +123,8 @@ def test_complete_small_utility_payload_and_entry_binding(
             }
         elif name == "almanac":
             expected = {"com/frikinjay/almanac/config/neoforge/AlmanacConfigNeoforge.class"}
+        elif name in {"bundle-api", "shield-api"}:
+            expected = {c for c in classes if c.endswith("/client/NeoForgeClientMod.class")}
         assert subscribers == expected
         metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
         assert metadata["modLoader"] == "javafml"
