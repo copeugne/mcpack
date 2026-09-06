@@ -2538,6 +2538,35 @@ provider census before canonical grouping and detailed family attributes.
 
 ## Explorations provider candidate disposition
 
+### Scarecrow family decision recorded on 2026-09-06
+
+The decisions and rebuilt working inventory now record `explorations:scarecrow`
+as one nonregistry family. Its nine configured/placed material variants are
+acacia, bamboo, birch, cherry, dark oak, jungle, mangrove, oak and spruce. The
+unsuffixed selector references those same variants. Facing, material choices
+and the figure's five component positions do not add families.
+
+The existing source and complete provider inspection below support this decision.
+The existing feature test now binds the decision's evidence hashes, exact variant
+lists and runtime configured/placed membership, alongside the selector and nine
+biome-modifier routes. Both provider cases and scoped Ruff/Basedpyright pass.
+The inventory rebuild reproduces exactly with the existing tool:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-scarecrow-membership.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-scarecrow-membership.json
+uv run pytest -q tests/item8/test_explorations_provider_scope.py
+uv run ruff check tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. No source recapture or world experiment was required.
+Effective biome eligibility, actual placement and required attributes remain
+separate from this membership decision. The decorated mushroom's boundary is
+still unresolved. The 421 provisional registry groups and whole-provider census
+(90 resolved, 46 open) are unchanged; this is one explicit nonregistry grouping
+closure, not the final family count.
+
 Source 0e6f5e4 binds all 33 classes and reproduced independently. The earlier
 scarecrow, Slime Cave and deepslate interpretations are reused. The mod entry
 registers the scarecrow, two existing custom structure types, their piece and

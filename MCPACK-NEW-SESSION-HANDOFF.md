@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Explorations scarecrow is now recorded as one nonregistry family with nine
+material variants. The unsuffixed selector is not a tenth family. The existing
+provider tests bind the decision, source hashes, runtime IDs and packaged routes;
+both cases and scoped checks pass. Inventory reproduction is recorded in
+evidence/item-8/provider-scope.md. No new experiment. The decorated mushroom's
+family boundary remains open, as do the other named grouping decisions and
+46 provider rows. The 421 provisional registry groups are unchanged.
+
 The three family-decision test failures found after the crashed-ship increment
 are resolved narrowly: absence from the pool trace no longer forces obsolete
 generic UNKNOWN prose for custom generators with separate component evidence.
