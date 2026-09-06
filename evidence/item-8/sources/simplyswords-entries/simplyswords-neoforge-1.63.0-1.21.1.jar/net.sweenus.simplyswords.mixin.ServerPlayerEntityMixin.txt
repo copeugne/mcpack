@@ -1,0 +1,2136 @@
+Classfile simplyswords-neoforge-1.63.0-1.21.1.jar!/net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.class
+  Last modified Jan 1, 1980; size 18506 bytes
+  SHA-256 checksum b97c79ef7f3e3ecd6e6a4fdc257a976f047c2ae80e8ecde9ba33e1f690f015f8
+  Compiled from "ServerPlayerEntityMixin.java"
+public abstract class net.sweenus.simplyswords.mixin.ServerPlayerEntityMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 9, attributes: 4
+Constant pool:
+    #1 = Utf8               net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin
+    #2 = Class              #1            // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               ServerPlayerEntityMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+    #9 = Utf8               net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings
+   #10 = Class              #9            // net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings
+   #11 = Utf8               net/sweenus/simplyswords/item/custom/MagibladeSwordItem
+   #12 = Class              #11           // net/sweenus/simplyswords/item/custom/MagibladeSwordItem
+   #13 = Utf8               EffectSettings
+   #14 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #15 = Class              #14           // java/lang/invoke/MethodHandles$Lookup
+   #16 = Utf8               java/lang/invoke/MethodHandles
+   #17 = Class              #16           // java/lang/invoke/MethodHandles
+   #18 = Utf8               Lookup
+   #19 = Utf8               <init>
+   #20 = Utf8               ()V
+   #21 = NameAndType        #19:#20       // "<init>":()V
+   #22 = Methodref          #4.#21        // java/lang/Object."<init>":()V
+   #23 = Utf8               this
+   #24 = Utf8               Lnet/sweenus/simplyswords/mixin/ServerPlayerEntityMixin;
+   #25 = Utf8               serverLevel
+   #26 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #27 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #28 = Utf8               simplyswords$damage
+   #29 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #30 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+   #31 = Utf8               source
+   #32 = Utf8               amount
+   #33 = Utf8               cir
+   #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #35 = Utf8               at
+   #36 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #37 = Utf8               HEAD
+   #38 = Utf8               method
+   #39 = Utf8               hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z
+   #40 = Utf8               cancellable
+   #41 = Integer            1
+   #42 = Utf8               net/minecraft/world/entity/player/Player
+   #43 = Class              #42           // net/minecraft/world/entity/player/Player
+   #44 = Utf8               net/minecraft/server/level/ServerPlayer
+   #45 = Class              #44           // net/minecraft/server/level/ServerPlayer
+   #46 = Utf8               net/sweenus/simplyswords/registry/EffectRegistry
+   #47 = Class              #46           // net/sweenus/simplyswords/registry/EffectRegistry
+   #48 = Utf8               RESILIENCE
+   #49 = Utf8               Ldev/architectury/registry/registries/RegistrySupplier;
+   #50 = NameAndType        #48:#49       // RESILIENCE:Ldev/architectury/registry/registries/RegistrySupplier;
+   #51 = Fieldref           #47.#50       // net/sweenus/simplyswords/registry/EffectRegistry.RESILIENCE:Ldev/architectury/registry/registries/RegistrySupplier;
+   #52 = Utf8               getReference
+   #53 = Utf8               (Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+   #54 = NameAndType        #52:#53       // getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+   #55 = Methodref          #47.#54       // net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+   #56 = Utf8               hasEffect
+   #57 = Utf8               (Lnet/minecraft/core/Holder;)Z
+   #58 = NameAndType        #56:#57       // hasEffect:(Lnet/minecraft/core/Holder;)Z
+   #59 = Methodref          #45.#58       // net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+   #60 = Utf8               net/sweenus/simplyswords/util/HelperMethods
+   #61 = Class              #60           // net/sweenus/simplyswords/util/HelperMethods
+   #62 = Utf8               decrementStatusEffect
+   #63 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;)V
+   #64 = NameAndType        #62:#63       // decrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;)V
+   #65 = Methodref          #61.#64       // net/sweenus/simplyswords/util/HelperMethods.decrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;)V
+   #66 = Utf8               java/lang/Boolean
+   #67 = Class              #66           // java/lang/Boolean
+   #68 = Utf8               valueOf
+   #69 = Utf8               (Z)Ljava/lang/Boolean;
+   #70 = NameAndType        #68:#69       // valueOf:(Z)Ljava/lang/Boolean;
+   #71 = Methodref          #67.#70       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #72 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #73 = Class              #72           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #74 = Utf8               setReturnValue
+   #75 = Utf8               (Ljava/lang/Object;)V
+   #76 = NameAndType        #74:#75       // setReturnValue:(Ljava/lang/Object;)V
+   #77 = Methodref          #73.#76       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #78 = Utf8               RIBBONCLEAVE
+   #79 = NameAndType        #78:#49       // RIBBONCLEAVE:Ldev/architectury/registry/registries/RegistrySupplier;
+   #80 = Fieldref           #47.#79       // net/sweenus/simplyswords/registry/EffectRegistry.RIBBONCLEAVE:Ldev/architectury/registry/registries/RegistrySupplier;
+   #81 = Methodref          #43.#58       // net/minecraft/world/entity/player/Player.hasEffect:(Lnet/minecraft/core/Holder;)Z
+   #82 = Utf8               level
+   #83 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #84 = NameAndType        #82:#83       // level:()Lnet/minecraft/world/level/Level;
+   #85 = Methodref          #45.#84       // net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+   #86 = Utf8               net/sweenus/simplyswords/registry/SoundRegistry
+   #87 = Class              #86           // net/sweenus/simplyswords/registry/SoundRegistry
+   #88 = Utf8               MAGIC_SWORD_PARRY_03
+   #89 = NameAndType        #88:#49       // MAGIC_SWORD_PARRY_03:Ldev/architectury/registry/registries/RegistrySupplier;
+   #90 = Fieldref           #87.#89       // net/sweenus/simplyswords/registry/SoundRegistry.MAGIC_SWORD_PARRY_03:Ldev/architectury/registry/registries/RegistrySupplier;
+   #91 = Utf8               dev/architectury/registry/registries/RegistrySupplier
+   #92 = Class              #91           // dev/architectury/registry/registries/RegistrySupplier
+   #93 = Utf8               get
+   #94 = Utf8               ()Ljava/lang/Object;
+   #95 = NameAndType        #93:#94       // get:()Ljava/lang/Object;
+   #96 = InterfaceMethodref #92.#95       // dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+   #97 = Utf8               net/minecraft/sounds/SoundEvent
+   #98 = Class              #97           // net/minecraft/sounds/SoundEvent
+   #99 = Utf8               net/minecraft/sounds/SoundSource
+  #100 = Class              #99           // net/minecraft/sounds/SoundSource
+  #101 = Utf8               PLAYERS
+  #102 = Utf8               Lnet/minecraft/sounds/SoundSource;
+  #103 = NameAndType        #101:#102     // PLAYERS:Lnet/minecraft/sounds/SoundSource;
+  #104 = Fieldref           #100.#103     // net/minecraft/sounds/SoundSource.PLAYERS:Lnet/minecraft/sounds/SoundSource;
+  #105 = Float              0.7f
+  #106 = Float              0.5f
+  #107 = Utf8               getRandom
+  #108 = Utf8               ()Lnet/minecraft/util/RandomSource;
+  #109 = NameAndType        #107:#108     // getRandom:()Lnet/minecraft/util/RandomSource;
+  #110 = Methodref          #45.#109      // net/minecraft/server/level/ServerPlayer.getRandom:()Lnet/minecraft/util/RandomSource;
+  #111 = Utf8               net/minecraft/util/RandomSource
+  #112 = Class              #111          // net/minecraft/util/RandomSource
+  #113 = Utf8               nextIntBetweenInclusive
+  #114 = Utf8               (II)I
+  #115 = NameAndType        #113:#114     // nextIntBetweenInclusive:(II)I
+  #116 = InterfaceMethodref #112.#115     // net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+  #117 = Float              0.1f
+  #118 = Utf8               net/minecraft/world/level/Level
+  #119 = Class              #118          // net/minecraft/world/level/Level
+  #120 = Utf8               playSound
+  #121 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #122 = NameAndType        #120:#121     // playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #123 = Methodref          #119.#122     // net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #124 = Utf8               ASTRAL_SHIFT
+  #125 = NameAndType        #124:#49      // ASTRAL_SHIFT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #126 = Fieldref           #47.#125      // net/sweenus/simplyswords/registry/EffectRegistry.ASTRAL_SHIFT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #127 = Utf8               getEffect
+  #128 = Utf8               (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #129 = NameAndType        #127:#128     // getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #130 = Methodref          #43.#129      // net/minecraft/world/entity/player/Player.getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #131 = Utf8               net/minecraft/world/effect/MobEffectInstance
+  #132 = Class              #131          // net/minecraft/world/effect/MobEffectInstance
+  #133 = Utf8               getDuration
+  #134 = Utf8               ()I
+  #135 = NameAndType        #133:#134     // getDuration:()I
+  #136 = Methodref          #132.#135     // net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+  #137 = Float              10.0f
+  #138 = Utf8               java/lang/Math
+  #139 = Class              #138          // java/lang/Math
+  #140 = Utf8               max
+  #141 = Utf8               (FF)F
+  #142 = NameAndType        #140:#141     // max:(FF)F
+  #143 = Methodref          #139.#142     // java/lang/Math.max:(FF)F
+  #144 = Utf8               incrementStatusEffect
+  #145 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;III)V
+  #146 = NameAndType        #144:#145     // incrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;III)V
+  #147 = Methodref          #61.#146      // net/sweenus/simplyswords/util/HelperMethods.incrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;III)V
+  #148 = Utf8               net/sweenus/simplyswords/util/AbilityMethods
+  #149 = Class              #148          // net/sweenus/simplyswords/util/AbilityMethods
+  #150 = Utf8               astralShiftSounds
+  #151 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;)V
+  #152 = NameAndType        #150:#151     // astralShiftSounds:(Lnet/minecraft/server/level/ServerPlayer;)V
+  #153 = Methodref          #149.#152     // net/sweenus/simplyswords/util/AbilityMethods.astralShiftSounds:(Lnet/minecraft/server/level/ServerPlayer;)V
+  #154 = Utf8               getMainHandItem
+  #155 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+  #156 = NameAndType        #154:#155     // getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+  #157 = Methodref          #45.#156      // net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+  #158 = Utf8               net/minecraft/world/item/ItemStack
+  #159 = Class              #158          // net/minecraft/world/item/ItemStack
+  #160 = Utf8               getItem
+  #161 = Utf8               ()Lnet/minecraft/world/item/Item;
+  #162 = NameAndType        #160:#161     // getItem:()Lnet/minecraft/world/item/Item;
+  #163 = Methodref          #159.#162     // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+  #164 = Utf8               net/sweenus/simplyswords/item/custom/CaelestisSwordItem
+  #165 = Class              #164          // net/sweenus/simplyswords/item/custom/CaelestisSwordItem
+  #166 = Utf8               astralShiftPassive
+  #167 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;)Z
+  #168 = NameAndType        #166:#167     // astralShiftPassive:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #169 = Methodref          #149.#168     // net/sweenus/simplyswords/util/AbilityMethods.astralShiftPassive:(Lnet/minecraft/server/level/ServerPlayer;)Z
+  #170 = Utf8               net/minecraft/world/damagesource/DamageSource
+  #171 = Class              #170          // net/minecraft/world/damagesource/DamageSource
+  #172 = Utf8               toString
+  #173 = Utf8               ()Ljava/lang/String;
+  #174 = NameAndType        #172:#173     // toString:()Ljava/lang/String;
+  #175 = Methodref          #171.#174     // net/minecraft/world/damagesource/DamageSource.toString:()Ljava/lang/String;
+  #176 = Utf8               sonic_boom
+  #177 = String             #176          // sonic_boom
+  #178 = Utf8               java/lang/String
+  #179 = Class              #178          // java/lang/String
+  #180 = Utf8               contains
+  #181 = Utf8               (Ljava/lang/CharSequence;)Z
+  #182 = NameAndType        #180:#181     // contains:(Ljava/lang/CharSequence;)Z
+  #183 = Methodref          #179.#182     // java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+  #184 = Utf8               getInventory
+  #185 = Utf8               ()Lnet/minecraft/world/entity/player/Inventory;
+  #186 = NameAndType        #184:#185     // getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #187 = Methodref          #45.#186      // net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #188 = Utf8               net/minecraft/world/entity/player/Inventory
+  #189 = Class              #188          // net/minecraft/world/entity/player/Inventory
+  #190 = Utf8               getContainerSize
+  #191 = NameAndType        #190:#134     // getContainerSize:()I
+  #192 = Methodref          #189.#191     // net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+  #193 = Utf8               (I)Lnet/minecraft/world/item/ItemStack;
+  #194 = NameAndType        #160:#193     // getItem:(I)Lnet/minecraft/world/item/ItemStack;
+  #195 = Methodref          #189.#194     // net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+  #196 = Utf8               net/sweenus/simplyswords/registry/ItemsRegistry
+  #197 = Class              #196          // net/sweenus/simplyswords/registry/ItemsRegistry
+  #198 = Utf8               DECAYING_RELIC
+  #199 = NameAndType        #198:#49      // DECAYING_RELIC:Ldev/architectury/registry/registries/RegistrySupplier;
+  #200 = Fieldref           #197.#199     // net/sweenus/simplyswords/registry/ItemsRegistry.DECAYING_RELIC:Ldev/architectury/registry/registries/RegistrySupplier;
+  #201 = Utf8               net/minecraft/world/item/Item
+  #202 = Class              #201          // net/minecraft/world/item/Item
+  #203 = Utf8               is
+  #204 = Utf8               (Lnet/minecraft/world/item/Item;)Z
+  #205 = NameAndType        #203:#204     // is:(Lnet/minecraft/world/item/Item;)Z
+  #206 = Methodref          #159.#205     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+  #207 = Utf8               MAGISCYTHE
+  #208 = NameAndType        #207:#49      // MAGISCYTHE:Ldev/architectury/registry/registries/RegistrySupplier;
+  #209 = Fieldref           #197.#208     // net/sweenus/simplyswords/registry/ItemsRegistry.MAGISCYTHE:Ldev/architectury/registry/registries/RegistrySupplier;
+  #210 = Utf8               net/minecraft/world/level/ItemLike
+  #211 = Class              #210          // net/minecraft/world/level/ItemLike
+  #212 = Utf8               (Lnet/minecraft/world/level/ItemLike;)V
+  #213 = NameAndType        #19:#212      // "<init>":(Lnet/minecraft/world/level/ItemLike;)V
+  #214 = Methodref          #159.#213     // net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+  #215 = Utf8               getComponents
+  #216 = Utf8               ()Lnet/minecraft/core/component/DataComponentMap;
+  #217 = NameAndType        #215:#216     // getComponents:()Lnet/minecraft/core/component/DataComponentMap;
+  #218 = Methodref          #159.#217     // net/minecraft/world/item/ItemStack.getComponents:()Lnet/minecraft/core/component/DataComponentMap;
+  #219 = Utf8               applyComponents
+  #220 = Utf8               (Lnet/minecraft/core/component/DataComponentMap;)V
+  #221 = NameAndType        #219:#220     // applyComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+  #222 = Methodref          #159.#221     // net/minecraft/world/item/ItemStack.applyComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+  #223 = Utf8               setItem
+  #224 = Utf8               (ILnet/minecraft/world/item/ItemStack;)V
+  #225 = NameAndType        #223:#224     // setItem:(ILnet/minecraft/world/item/ItemStack;)V
+  #226 = Methodref          #189.#225     // net/minecraft/world/entity/player/Inventory.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+  #227 = Utf8               ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02
+  #228 = NameAndType        #227:#49      // ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+  #229 = Fieldref           #87.#228      // net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+  #230 = Utf8               getSoundSource
+  #231 = Utf8               ()Lnet/minecraft/sounds/SoundSource;
+  #232 = NameAndType        #230:#231     // getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+  #233 = Methodref          #45.#232      // net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+  #234 = Float              0.6f
+  #235 = Utf8               item.simplyswords.magicythe.event
+  #236 = String             #235          // item.simplyswords.magicythe.event
+  #237 = Utf8               net/minecraft/network/chat/Component
+  #238 = Class              #237          // net/minecraft/network/chat/Component
+  #239 = Utf8               translatable
+  #240 = Utf8               (Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #241 = NameAndType        #239:#240     // translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #242 = InterfaceMethodref #238.#241     // net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #243 = Utf8               sendSystemMessage
+  #244 = Utf8               (Lnet/minecraft/network/chat/Component;Z)V
+  #245 = NameAndType        #243:#244     // sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #246 = Methodref          #45.#245      // net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #247 = Utf8               duration
+  #248 = Utf8               I
+  #249 = Utf8               astralShiftInstance
+  #250 = Utf8               Lnet/minecraft/world/effect/MobEffectInstance;
+  #251 = Utf8               newItemStack
+  #252 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #253 = Utf8               stackInSlot
+  #254 = Utf8               i
+  #255 = Utf8               serverPlayer
+  #256 = Utf8               Lnet/minecraft/world/damagesource/DamageSource;
+  #257 = Utf8               F
+  #258 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #259 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #260 = Utf8               player
+  #261 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #262 = Utf8               simplyswords$tick
+  #263 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #264 = Utf8               ci
+  #265 = Utf8               tick()V
+  #266 = Utf8               RIBBONCLEAVER
+  #267 = NameAndType        #266:#49      // RIBBONCLEAVER:Ldev/architectury/registry/registries/RegistrySupplier;
+  #268 = Fieldref           #197.#267     // net/sweenus/simplyswords/registry/ItemsRegistry.RIBBONCLEAVER:Ldev/architectury/registry/registries/RegistrySupplier;
+  #269 = Utf8               ENIGMA
+  #270 = NameAndType        #269:#49      // ENIGMA:Ldev/architectury/registry/registries/RegistrySupplier;
+  #271 = Fieldref           #197.#270     // net/sweenus/simplyswords/registry/ItemsRegistry.ENIGMA:Ldev/architectury/registry/registries/RegistrySupplier;
+  #272 = Utf8               tickCount
+  #273 = NameAndType        #272:#248     // tickCount:I
+  #274 = Fieldref           #45.#273      // net/minecraft/server/level/ServerPlayer.tickCount:I
+  #275 = Utf8               RIBBONWRATH
+  #276 = NameAndType        #275:#49      // RIBBONWRATH:Ldev/architectury/registry/registries/RegistrySupplier;
+  #277 = Fieldref           #47.#276      // net/sweenus/simplyswords/registry/EffectRegistry.RIBBONWRATH:Ldev/architectury/registry/registries/RegistrySupplier;
+  #278 = Utf8               (Lnet/minecraft/core/Holder;IIZZZ)V
+  #279 = NameAndType        #19:#278      // "<init>":(Lnet/minecraft/core/Holder;IIZZZ)V
+  #280 = Methodref          #132.#279     // net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;IIZZZ)V
+  #281 = Utf8               addEffect
+  #282 = Utf8               (Lnet/minecraft/world/effect/MobEffectInstance;)Z
+  #283 = NameAndType        #281:#282     // addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;)Z
+  #284 = Methodref          #45.#283      // net/minecraft/server/level/ServerPlayer.addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;)Z
+  #285 = Fieldref           #43.#273      // net/minecraft/world/entity/player/Player.tickCount:I
+  #286 = Utf8               isSprinting
+  #287 = Utf8               ()Z
+  #288 = NameAndType        #286:#287     // isSprinting:()Z
+  #289 = Methodref          #43.#288      // net/minecraft/world/entity/player/Player.isSprinting:()Z
+  #290 = Utf8               onGround
+  #291 = NameAndType        #290:#287     // onGround:()Z
+  #292 = Methodref          #43.#291      // net/minecraft/world/entity/player/Player.onGround:()Z
+  #293 = Float              0.3f
+  #294 = Methodref          #43.#109      // net/minecraft/world/entity/player/Player.getRandom:()Lnet/minecraft/util/RandomSource;
+  #295 = Methodref          #43.#84       // net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+  #296 = Utf8               blockPosition
+  #297 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #298 = NameAndType        #296:#297     // blockPosition:()Lnet/minecraft/core/BlockPos;
+  #299 = Methodref          #43.#298      // net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #300 = Utf8               OBJECT_IMPACT_THUD
+  #301 = NameAndType        #300:#49      // OBJECT_IMPACT_THUD:Ldev/architectury/registry/registries/RegistrySupplier;
+  #302 = Fieldref           #87.#301      // net/sweenus/simplyswords/registry/SoundRegistry.OBJECT_IMPACT_THUD:Ldev/architectury/registry/registries/RegistrySupplier;
+  #303 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #304 = NameAndType        #120:#303     // playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #305 = Methodref          #119.#304     // net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #306 = Utf8               MAGIBLADE
+  #307 = NameAndType        #306:#49      // MAGIBLADE:Ldev/architectury/registry/registries/RegistrySupplier;
+  #308 = Fieldref           #197.#307     // net/sweenus/simplyswords/registry/ItemsRegistry.MAGIBLADE:Ldev/architectury/registry/registries/RegistrySupplier;
+  #309 = Utf8               net/sweenus/simplyswords/config/Config
+  #310 = Class              #309          // net/sweenus/simplyswords/config/Config
+  #311 = Utf8               uniqueEffects
+  #312 = Utf8               Lnet/sweenus/simplyswords/config/UniqueEffectsConfig;
+  #313 = NameAndType        #311:#312     // uniqueEffects:Lnet/sweenus/simplyswords/config/UniqueEffectsConfig;
+  #314 = Fieldref           #310.#313     // net/sweenus/simplyswords/config/Config.uniqueEffects:Lnet/sweenus/simplyswords/config/UniqueEffectsConfig;
+  #315 = Utf8               net/sweenus/simplyswords/config/UniqueEffectsConfig
+  #316 = Class              #315          // net/sweenus/simplyswords/config/UniqueEffectsConfig
+  #317 = Utf8               magiblade
+  #318 = Utf8               Lnet/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings;
+  #319 = NameAndType        #317:#318     // magiblade:Lnet/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings;
+  #320 = Fieldref           #316.#319     // net/sweenus/simplyswords/config/UniqueEffectsConfig.magiblade:Lnet/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings;
+  #321 = Utf8               repelRadius
+  #322 = NameAndType        #321:#257     // repelRadius:F
+  #323 = Fieldref           #10.#322      // net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings.repelRadius:F
+  #324 = Utf8               repelChance
+  #325 = NameAndType        #324:#248     // repelChance:I
+  #326 = Fieldref           #10.#325      // net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings.repelChance:I
+  #327 = Utf8               java/util/Random
+  #328 = Class              #327          // java/util/Random
+  #329 = Methodref          #328.#21      // java/util/Random."<init>":()V
+  #330 = Utf8               nextInt
+  #331 = Utf8               (I)I
+  #332 = NameAndType        #330:#331     // nextInt:(I)I
+  #333 = Methodref          #328.#332     // java/util/Random.nextInt:(I)I
+  #334 = Utf8               createBox
+  #335 = Utf8               (Lnet/minecraft/world/entity/Entity;D)Lnet/minecraft/world/phys/AABB;
+  #336 = NameAndType        #334:#335     // createBox:(Lnet/minecraft/world/entity/Entity;D)Lnet/minecraft/world/phys/AABB;
+  #337 = Methodref          #61.#336      // net/sweenus/simplyswords/util/HelperMethods.createBox:(Lnet/minecraft/world/entity/Entity;D)Lnet/minecraft/world/phys/AABB;
+  #338 = Utf8               net/minecraft/world/entity/EntitySelector
+  #339 = Class              #338          // net/minecraft/world/entity/EntitySelector
+  #340 = Utf8               LIVING_ENTITY_STILL_ALIVE
+  #341 = Utf8               Ljava/util/function/Predicate;
+  #342 = NameAndType        #340:#341     // LIVING_ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+  #343 = Fieldref           #339.#342     // net/minecraft/world/entity/EntitySelector.LIVING_ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+  #344 = Utf8               getEntities
+  #345 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+  #346 = NameAndType        #344:#345     // getEntities:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+  #347 = Methodref          #119.#346     // net/minecraft/world/level/Level.getEntities:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+  #348 = Utf8               java/util/List
+  #349 = Class              #348          // java/util/List
+  #350 = Utf8               stream
+  #351 = Utf8               ()Ljava/util/stream/Stream;
+  #352 = NameAndType        #350:#351     // stream:()Ljava/util/stream/Stream;
+  #353 = InterfaceMethodref #349.#352     // java/util/List.stream:()Ljava/util/stream/Stream;
+  #354 = Utf8               (Ljava/lang/Object;)Z
+  #355 = MethodType         #354          //  (Ljava/lang/Object;)Z
+  #356 = Utf8               lambda$simplyswords$tick$0
+  #357 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+  #358 = NameAndType        #356:#357     // lambda$simplyswords$tick$0:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+  #359 = Methodref          #2.#358       // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$0:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+  #360 = MethodHandle       6:#359        // REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$0:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+  #361 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #362 = MethodType         #361          //  (Lnet/minecraft/world/entity/Entity;)Z
+  #363 = Utf8               java/lang/invoke/LambdaMetafactory
+  #364 = Class              #363          // java/lang/invoke/LambdaMetafactory
+  #365 = Utf8               metafactory
+  #366 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #367 = NameAndType        #365:#366     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #368 = Methodref          #364.#367     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #369 = MethodHandle       6:#368        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #370 = Utf8               test
+  #371 = Utf8               (Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/Predicate;
+  #372 = NameAndType        #370:#371     // test:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/Predicate;
+  #373 = InvokeDynamic      #0:#372       // #0:test:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/Predicate;
+  #374 = Utf8               java/util/stream/Stream
+  #375 = Class              #374          // java/util/stream/Stream
+  #376 = Utf8               filter
+  #377 = Utf8               (Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+  #378 = NameAndType        #376:#377     // filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+  #379 = InterfaceMethodref #375.#378     // java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+  #380 = Utf8               (Ljava/lang/Object;)D
+  #381 = MethodType         #380          //  (Ljava/lang/Object;)D
+  #382 = Utf8               lambda$simplyswords$tick$1
+  #383 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+  #384 = NameAndType        #382:#383     // lambda$simplyswords$tick$1:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+  #385 = Methodref          #2.#384       // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$1:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+  #386 = MethodHandle       6:#385        // REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$1:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+  #387 = Utf8               (Lnet/minecraft/world/entity/Entity;)D
+  #388 = MethodType         #387          //  (Lnet/minecraft/world/entity/Entity;)D
+  #389 = Utf8               applyAsDouble
+  #390 = Utf8               (Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/ToDoubleFunction;
+  #391 = NameAndType        #389:#390     // applyAsDouble:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/ToDoubleFunction;
+  #392 = InvokeDynamic      #1:#391       // #1:applyAsDouble:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/ToDoubleFunction;
+  #393 = Utf8               java/util/Comparator
+  #394 = Class              #393          // java/util/Comparator
+  #395 = Utf8               comparingDouble
+  #396 = Utf8               (Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+  #397 = NameAndType        #395:#396     // comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+  #398 = InterfaceMethodref #394.#397     // java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+  #399 = Utf8               min
+  #400 = Utf8               (Ljava/util/Comparator;)Ljava/util/Optional;
+  #401 = NameAndType        #399:#400     // min:(Ljava/util/Comparator;)Ljava/util/Optional;
+  #402 = InterfaceMethodref #375.#401     // java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+  #403 = Utf8               java/util/Optional
+  #404 = Class              #403          // java/util/Optional
+  #405 = Utf8               orElse
+  #406 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #407 = NameAndType        #405:#406     // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #408 = Methodref          #404.#407     // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #409 = Utf8               net/minecraft/world/entity/Entity
+  #410 = Class              #409          // net/minecraft/world/entity/Entity
+  #411 = Utf8               net/minecraft/world/entity/LivingEntity
+  #412 = Class              #411          // net/minecraft/world/entity/LivingEntity
+  #413 = Utf8               distanceTo
+  #414 = Utf8               (Lnet/minecraft/world/entity/Entity;)F
+  #415 = NameAndType        #413:#414     // distanceTo:(Lnet/minecraft/world/entity/Entity;)F
+  #416 = Methodref          #412.#415     // net/minecraft/world/entity/LivingEntity.distanceTo:(Lnet/minecraft/world/entity/Entity;)F
+  #417 = Utf8               getX
+  #418 = Utf8               ()D
+  #419 = NameAndType        #417:#418     // getX:()D
+  #420 = Methodref          #410.#419     // net/minecraft/world/entity/Entity.getX:()D
+  #421 = Methodref          #43.#419      // net/minecraft/world/entity/player/Player.getX:()D
+  #422 = Double             2.0d
+  #424 = Utf8               getZ
+  #425 = NameAndType        #424:#418     // getZ:()D
+  #426 = Methodref          #410.#425     // net/minecraft/world/entity/Entity.getZ:()D
+  #427 = Methodref          #43.#425      // net/minecraft/world/entity/player/Player.getZ:()D
+  #428 = Utf8               setDeltaMovement
+  #429 = Utf8               (DDD)V
+  #430 = NameAndType        #428:#429     // setDeltaMovement:(DDD)V
+  #431 = Methodref          #410.#430     // net/minecraft/world/entity/Entity.setDeltaMovement:(DDD)V
+  #432 = Float              0.8f
+  #433 = Utf8               net/minecraft/sounds/SoundEvents
+  #434 = Class              #433          // net/minecraft/sounds/SoundEvents
+  #435 = Utf8               SCULK_CLICKING
+  #436 = Utf8               Lnet/minecraft/sounds/SoundEvent;
+  #437 = NameAndType        #435:#436     // SCULK_CLICKING:Lnet/minecraft/sounds/SoundEvent;
+  #438 = Fieldref           #434.#437     // net/minecraft/sounds/SoundEvents.SCULK_CLICKING:Lnet/minecraft/sounds/SoundEvent;
+  #439 = Utf8               net/minecraft/server/level/ServerLevel
+  #440 = Class              #439          // net/minecraft/server/level/ServerLevel
+  #441 = Utf8               net/minecraft/core/particles/ParticleTypes
+  #442 = Class              #441          // net/minecraft/core/particles/ParticleTypes
+  #443 = Utf8               ENCHANT
+  #444 = Utf8               Lnet/minecraft/core/particles/SimpleParticleType;
+  #445 = NameAndType        #443:#444     // ENCHANT:Lnet/minecraft/core/particles/SimpleParticleType;
+  #446 = Fieldref           #442.#445     // net/minecraft/core/particles/ParticleTypes.ENCHANT:Lnet/minecraft/core/particles/SimpleParticleType;
+  #447 = Utf8               spawnWaistHeightParticles
+  #448 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+  #449 = NameAndType        #447:#448     // spawnWaistHeightParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+  #450 = Methodref          #61.#449      // net/sweenus/simplyswords/util/HelperMethods.spawnWaistHeightParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+  #451 = Methodref          #410.#84      // net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+  #452 = Utf8               position
+  #453 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #454 = NameAndType        #452:#453     // position:()Lnet/minecraft/world/phys/Vec3;
+  #455 = Methodref          #410.#454     // net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+  #456 = Utf8               getBbHeight
+  #457 = Utf8               ()F
+  #458 = NameAndType        #456:#457     // getBbHeight:()F
+  #459 = Methodref          #410.#458     // net/minecraft/world/entity/Entity.getBbHeight:()F
+  #460 = Utf8               net/minecraft/world/phys/Vec3
+  #461 = Class              #460          // net/minecraft/world/phys/Vec3
+  #462 = Utf8               add
+  #463 = Utf8               (DDD)Lnet/minecraft/world/phys/Vec3;
+  #464 = NameAndType        #462:#463     // add:(DDD)Lnet/minecraft/world/phys/Vec3;
+  #465 = Methodref          #461.#464     // net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+  #466 = Utf8               SCULK_CHARGE_POP
+  #467 = NameAndType        #466:#444     // SCULK_CHARGE_POP:Lnet/minecraft/core/particles/SimpleParticleType;
+  #468 = Fieldref           #442.#467     // net/minecraft/core/particles/ParticleTypes.SCULK_CHARGE_POP:Lnet/minecraft/core/particles/SimpleParticleType;
+  #469 = Double             0.5d
+  #471 = Utf8               spawnOrbitParticles
+  #472 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+  #473 = NameAndType        #471:#472     // spawnOrbitParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+  #474 = Methodref          #61.#473      // net/sweenus/simplyswords/util/HelperMethods.spawnOrbitParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+  #475 = Utf8               general
+  #476 = Utf8               Lnet/sweenus/simplyswords/config/GeneralConfig;
+  #477 = NameAndType        #475:#476     // general:Lnet/sweenus/simplyswords/config/GeneralConfig;
+  #478 = Fieldref           #310.#477     // net/sweenus/simplyswords/config/Config.general:Lnet/sweenus/simplyswords/config/GeneralConfig;
+  #479 = Utf8               net/sweenus/simplyswords/config/GeneralConfig
+  #480 = Class              #479          // net/sweenus/simplyswords/config/GeneralConfig
+  #481 = Utf8               containedRemnantTransformFrequency
+  #482 = NameAndType        #481:#248     // containedRemnantTransformFrequency:I
+  #483 = Fieldref           #480.#482     // net/sweenus/simplyswords/config/GeneralConfig.containedRemnantTransformFrequency:I
+  #484 = Utf8               CONTAINED_REMNANT
+  #485 = NameAndType        #484:#49      // CONTAINED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #486 = Fieldref           #197.#485     // net/sweenus/simplyswords/registry/ItemsRegistry.CONTAINED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #487 = Utf8               net/sweenus/simplyswords/item/ContainedRemnantItem
+  #488 = Class              #487          // net/sweenus/simplyswords/item/ContainedRemnantItem
+  #489 = Utf8               asItem
+  #490 = NameAndType        #489:#161     // asItem:()Lnet/minecraft/world/item/Item;
+  #491 = Methodref          #488.#490     // net/sweenus/simplyswords/item/ContainedRemnantItem.asItem:()Lnet/minecraft/world/item/Item;
+  #492 = Utf8               getDefaultInstance
+  #493 = NameAndType        #492:#155     // getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+  #494 = Methodref          #202.#493     // net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+  #495 = Utf8               TAMPERED_REMNANT
+  #496 = NameAndType        #495:#49      // TAMPERED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #497 = Fieldref           #197.#496     // net/sweenus/simplyswords/registry/ItemsRegistry.TAMPERED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+  #498 = Utf8               net/sweenus/simplyswords/item/custom/DormantRelicSwordItem
+  #499 = Class              #498          // net/sweenus/simplyswords/item/custom/DormantRelicSwordItem
+  #500 = Methodref          #499.#490     // net/sweenus/simplyswords/item/custom/DormantRelicSwordItem.asItem:()Lnet/minecraft/world/item/Item;
+  #501 = Utf8               RUNIC_TABLET
+  #502 = NameAndType        #501:#49      // RUNIC_TABLET:Ldev/architectury/registry/registries/RegistrySupplier;
+  #503 = Fieldref           #197.#502     // net/sweenus/simplyswords/registry/ItemsRegistry.RUNIC_TABLET:Ldev/architectury/registry/registries/RegistrySupplier;
+  #504 = Utf8               net/sweenus/simplyswords/item/RunicTabletItem
+  #505 = Class              #504          // net/sweenus/simplyswords/item/RunicTabletItem
+  #506 = Methodref          #505.#490     // net/sweenus/simplyswords/item/RunicTabletItem.asItem:()Lnet/minecraft/world/item/Item;
+  #507 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #508 = Class              #507          // net/minecraft/core/registries/BuiltInRegistries
+  #509 = Utf8               ITEM
+  #510 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+  #511 = NameAndType        #509:#510     // ITEM:Lnet/minecraft/core/DefaultedRegistry;
+  #512 = Fieldref           #508.#511     // net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+  #513 = Utf8               net/minecraft/core/DefaultedRegistry
+  #514 = Class              #513          // net/minecraft/core/DefaultedRegistry
+  #515 = Utf8               key
+  #516 = Utf8               ()Lnet/minecraft/resources/ResourceKey;
+  #517 = NameAndType        #515:#516     // key:()Lnet/minecraft/resources/ResourceKey;
+  #518 = InterfaceMethodref #514.#517     // net/minecraft/core/DefaultedRegistry.key:()Lnet/minecraft/resources/ResourceKey;
+  #519 = Utf8               simplyswords
+  #520 = String             #519          // simplyswords
+  #521 = Utf8               conditional_uniques_type_1
+  #522 = String             #521          // conditional_uniques_type_1
+  #523 = Utf8               net/minecraft/resources/ResourceLocation
+  #524 = Class              #523          // net/minecraft/resources/ResourceLocation
+  #525 = Utf8               fromNamespaceAndPath
+  #526 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #527 = NameAndType        #525:#526     // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #528 = Methodref          #524.#527     // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #529 = Utf8               net/minecraft/tags/TagKey
+  #530 = Class              #529          // net/minecraft/tags/TagKey
+  #531 = Utf8               create
+  #532 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #533 = NameAndType        #531:#532     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #534 = Methodref          #530.#533     // net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+  #535 = Utf8               conditional_uniques_type_2
+  #536 = String             #535          // conditional_uniques_type_2
+  #537 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #538 = Class              #537          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #539 = Utf8               net/sweenus/simplyswords/config/LootConfig
+  #540 = Class              #539          // net/sweenus/simplyswords/config/LootConfig
+  #541 = Utf8               INSTANCE
+  #542 = Utf8               Lnet/sweenus/simplyswords/config/LootConfig;
+  #543 = NameAndType        #541:#542     // INSTANCE:Lnet/sweenus/simplyswords/config/LootConfig;
+  #544 = Fieldref           #540.#543     // net/sweenus/simplyswords/config/LootConfig.INSTANCE:Lnet/sweenus/simplyswords/config/LootConfig;
+  #545 = Utf8               enableContainedRemnants
+  #546 = Utf8               Lme/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition;
+  #547 = NameAndType        #545:#546     // enableContainedRemnants:Lme/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition;
+  #548 = Fieldref           #540.#547     // net/sweenus/simplyswords/config/LootConfig.enableContainedRemnants:Lme/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition;
+  #549 = Utf8               me/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition
+  #550 = Class              #549          // me/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition
+  #551 = Methodref          #550.#95      // me/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition.get:()Ljava/lang/Object;
+  #552 = Utf8               booleanValue
+  #553 = NameAndType        #552:#287     // booleanValue:()Z
+  #554 = Methodref          #67.#553      // java/lang/Boolean.booleanValue:()Z
+  #555 = InterfaceMethodref #514.#352     // net/minecraft/core/DefaultedRegistry.stream:()Ljava/util/stream/Stream;
+  #556 = Utf8               lambda$simplyswords$tick$2
+  #557 = Utf8               (Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #558 = NameAndType        #556:#557     // lambda$simplyswords$tick$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #559 = Methodref          #2.#558       // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #560 = MethodHandle       6:#559        // REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #561 = MethodType         #204          //  (Lnet/minecraft/world/item/Item;)Z
+  #562 = Utf8               (Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #563 = NameAndType        #370:#562     // test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #564 = InvokeDynamic      #2:#563       // #2:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #565 = Utf8               toList
+  #566 = Utf8               ()Ljava/util/List;
+  #567 = NameAndType        #565:#566     // toList:()Ljava/util/List;
+  #568 = InterfaceMethodref #375.#567     // java/util/stream/Stream.toList:()Ljava/util/List;
+  #569 = Utf8               lambda$simplyswords$tick$3
+  #570 = NameAndType        #569:#557     // lambda$simplyswords$tick$3:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #571 = Methodref          #2.#570       // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$3:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #572 = MethodHandle       6:#571        // REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$3:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+  #573 = InvokeDynamic      #3:#563       // #3:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+  #574 = Utf8               isEmpty
+  #575 = NameAndType        #574:#287     // isEmpty:()Z
+  #576 = InterfaceMethodref #349.#575     // java/util/List.isEmpty:()Z
+  #577 = Utf8               dimension
+  #578 = NameAndType        #577:#516     // dimension:()Lnet/minecraft/resources/ResourceKey;
+  #579 = Methodref          #119.#578     // net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+  #580 = Utf8               END
+  #581 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #582 = NameAndType        #580:#581     // END:Lnet/minecraft/resources/ResourceKey;
+  #583 = Fieldref           #119.#582     // net/minecraft/world/level/Level.END:Lnet/minecraft/resources/ResourceKey;
+  #584 = Utf8               equals
+  #585 = NameAndType        #584:#354     // equals:(Ljava/lang/Object;)Z
+  #586 = Methodref          #4.#585       // java/lang/Object.equals:(Ljava/lang/Object;)Z
+  #587 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+  #588 = NameAndType        #180:#587     // contains:(Lnet/minecraft/world/item/ItemStack;)Z
+  #589 = Methodref          #189.#588     // net/minecraft/world/entity/player/Inventory.contains:(Lnet/minecraft/world/item/ItemStack;)Z
+  #590 = Utf8               ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_03
+  #591 = NameAndType        #590:#49      // ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_03:Ldev/architectury/registry/registries/RegistrySupplier;
+  #592 = Fieldref           #87.#591      // net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_03:Ldev/architectury/registry/registries/RegistrySupplier;
+  #593 = Utf8               item.simplyswords.contained_remnant.event2
+  #594 = String             #593          // item.simplyswords.contained_remnant.event2
+  #595 = Utf8               size
+  #596 = NameAndType        #595:#134     // size:()I
+  #597 = InterfaceMethodref #349.#596     // java/util/List.size:()I
+  #598 = Utf8               (I)Ljava/lang/Object;
+  #599 = NameAndType        #93:#598      // get:(I)Ljava/lang/Object;
+  #600 = InterfaceMethodref #349.#599     // java/util/List.get:(I)Ljava/lang/Object;
+  #601 = Utf8               item.simplyswords.contained_remnant.event
+  #602 = String             #601          // item.simplyswords.contained_remnant.event
+  #603 = Utf8               getBlockStateOn
+  #604 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #605 = NameAndType        #603:#604     // getBlockStateOn:()Lnet/minecraft/world/level/block/state/BlockState;
+  #606 = Methodref          #45.#605      // net/minecraft/server/level/ServerPlayer.getBlockStateOn:()Lnet/minecraft/world/level/block/state/BlockState;
+  #607 = Utf8               net/minecraft/world/level/block/Blocks
+  #608 = Class              #607          // net/minecraft/world/level/block/Blocks
+  #609 = Utf8               SCULK
+  #610 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #611 = NameAndType        #609:#610     // SCULK:Lnet/minecraft/world/level/block/Block;
+  #612 = Fieldref           #608.#611     // net/minecraft/world/level/block/Blocks.SCULK:Lnet/minecraft/world/level/block/Block;
+  #613 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #614 = Class              #613          // net/minecraft/world/level/block/state/BlockState
+  #615 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+  #616 = NameAndType        #203:#615     // is:(Lnet/minecraft/world/level/block/Block;)Z
+  #617 = Methodref          #614.#616     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+  #618 = Utf8               item.simplyswords.magicythe.event2
+  #619 = String             #618          // item.simplyswords.magicythe.event2
+  #620 = Utf8               SCULK_SENSOR
+  #621 = NameAndType        #620:#610     // SCULK_SENSOR:Lnet/minecraft/world/level/block/Block;
+  #622 = Fieldref           #608.#621     // net/minecraft/world/level/block/Blocks.SCULK_SENSOR:Lnet/minecraft/world/level/block/Block;
+  #623 = Utf8               item.simplyswords.magiblade.event2
+  #624 = String             #623          // item.simplyswords.magiblade.event2
+  #625 = Utf8               item.simplyswords.magiblade.event
+  #626 = String             #625          // item.simplyswords.magiblade.event
+  #627 = Utf8               net/minecraft/world/effect/MobEffects
+  #628 = Class              #627          // net/minecraft/world/effect/MobEffects
+  #629 = Utf8               DARKNESS
+  #630 = Utf8               Lnet/minecraft/core/Holder;
+  #631 = NameAndType        #629:#630     // DARKNESS:Lnet/minecraft/core/Holder;
+  #632 = Fieldref           #628.#631     // net/minecraft/world/effect/MobEffects.DARKNESS:Lnet/minecraft/core/Holder;
+  #633 = Utf8               MAGISPEAR
+  #634 = NameAndType        #633:#49      // MAGISPEAR:Ldev/architectury/registry/registries/RegistrySupplier;
+  #635 = Fieldref           #197.#634     // net/sweenus/simplyswords/registry/ItemsRegistry.MAGISPEAR:Ldev/architectury/registry/registries/RegistrySupplier;
+  #636 = Utf8               item.simplyswords.magispear.event
+  #637 = String             #636          // item.simplyswords.magispear.event
+  #638 = Utf8               item.simplyswords.magispear.event2
+  #639 = String             #638          // item.simplyswords.magispear.event2
+  #640 = Utf8               getShoulderEntityLeft
+  #641 = Utf8               ()Lnet/minecraft/nbt/CompoundTag;
+  #642 = NameAndType        #640:#641     // getShoulderEntityLeft:()Lnet/minecraft/nbt/CompoundTag;
+  #643 = Methodref          #43.#642      // net/minecraft/world/entity/player/Player.getShoulderEntityLeft:()Lnet/minecraft/nbt/CompoundTag;
+  #644 = Utf8               getShoulderEntityRight
+  #645 = NameAndType        #644:#641     // getShoulderEntityRight:()Lnet/minecraft/nbt/CompoundTag;
+  #646 = Methodref          #43.#645      // net/minecraft/world/entity/player/Player.getShoulderEntityRight:()Lnet/minecraft/nbt/CompoundTag;
+  #647 = Utf8               applyAxolotlBuff
+  #648 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/CompoundTag;)V
+  #649 = NameAndType        #647:#648     // applyAxolotlBuff:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/CompoundTag;)V
+  #650 = Methodref          #149.#649     // net/sweenus/simplyswords/util/AbilityMethods.applyAxolotlBuff:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/CompoundTag;)V
+  #651 = Utf8               CHOMPOLOTL
+  #652 = NameAndType        #651:#49      // CHOMPOLOTL:Ldev/architectury/registry/registries/RegistrySupplier;
+  #653 = Fieldref           #197.#652     // net/sweenus/simplyswords/registry/ItemsRegistry.CHOMPOLOTL:Ldev/architectury/registry/registries/RegistrySupplier;
+  #654 = Utf8               isHoldingItem
+  #655 = Utf8               (Lnet/minecraft/world/item/Item;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #656 = NameAndType        #654:#655     // isHoldingItem:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #657 = Methodref          #61.#656      // net/sweenus/simplyswords/util/HelperMethods.isHoldingItem:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #658 = Utf8               enablePassiveParticles
+  #659 = Utf8               Z
+  #660 = NameAndType        #658:#659     // enablePassiveParticles:Z
+  #661 = Fieldref           #480.#660     // net/sweenus/simplyswords/config/GeneralConfig.enablePassiveParticles:Z
+  #662 = NameAndType        #25:#26       // serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #663 = Methodref          #2.#662       // net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #664 = Utf8               createServerBubbleTrail
+  #665 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;)V
+  #666 = NameAndType        #664:#665     // createServerBubbleTrail:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;)V
+  #667 = Methodref          #61.#666      // net/sweenus/simplyswords/util/HelperMethods.createServerBubbleTrail:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;)V
+  #668 = Utf8               net/minecraft/nbt/CompoundTag
+  #669 = Class              #668          // net/minecraft/nbt/CompoundTag
+  #670 = Utf8               checkNearbyBlocks
+  #671 = NameAndType        #670:#151     // checkNearbyBlocks:(Lnet/minecraft/server/level/ServerPlayer;)V
+  #672 = Methodref          #488.#671     // net/sweenus/simplyswords/item/ContainedRemnantItem.checkNearbyBlocks:(Lnet/minecraft/server/level/ServerPlayer;)V
+  #673 = Utf8               volume
+  #674 = Utf8               pitch
+  #675 = Utf8               frequency
+  #676 = Utf8               le
+  #677 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+  #678 = Utf8               box
+  #679 = Utf8               Lnet/minecraft/world/phys/AABB;
+  #680 = Utf8               closestEntity
+  #681 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #682 = Utf8               radius
+  #683 = Utf8               D
+  #684 = Utf8               chance
+  #685 = Utf8               totalChance
+  #686 = Utf8               randomItem
+  #687 = Utf8               Lnet/minecraft/world/item/Item;
+  #688 = Utf8               itemsFromTag
+  #689 = Utf8               Ljava/util/List<Lnet/minecraft/world/item/Item;>;
+  #690 = Utf8               Ljava/util/List;
+  #691 = Utf8               itemsFromTagEnd
+  #692 = Utf8               playerStandingBlock
+  #693 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #694 = Utf8               containedRemnant
+  #695 = Utf8               tamperedRemnant
+  #696 = Utf8               decayingRelic
+  #697 = Utf8               runicTablet
+  #698 = Utf8               random
+  #699 = Utf8               Ljava/util/Random;
+  #700 = Utf8               desiredItemsTag
+  #701 = Utf8               Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+  #702 = Utf8               Lnet/minecraft/tags/TagKey;
+  #703 = Utf8               endItemsTag
+  #704 = Utf8               leftShoulder
+  #705 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #706 = Utf8               rightShoulder
+  #707 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #708 = Utf8               simplyswords$attack
+  #709 = Utf8               (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #710 = Utf8               target
+  #711 = Utf8               TAIL
+  #712 = Utf8               attack(Lnet/minecraft/world/entity/Entity;)V
+  #713 = Utf8               isAttackable
+  #714 = NameAndType        #713:#287     // isAttackable:()Z
+  #715 = Methodref          #410.#714     // net/minecraft/world/entity/Entity.isAttackable:()Z
+  #716 = Utf8               skipAttackInteraction
+  #717 = NameAndType        #716:#361     // skipAttackInteraction:(Lnet/minecraft/world/entity/Entity;)Z
+  #718 = Methodref          #410.#717     // net/minecraft/world/entity/Entity.skipAttackInteraction:(Lnet/minecraft/world/entity/Entity;)Z
+  #719 = Utf8               removeEffect
+  #720 = NameAndType        #719:#57      // removeEffect:(Lnet/minecraft/core/Holder;)Z
+  #721 = Methodref          #45.#720      // net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+  #722 = Double             0.3d
+  #724 = Utf8               POOF
+  #725 = NameAndType        #724:#444     // POOF:Lnet/minecraft/core/particles/SimpleParticleType;
+  #726 = Fieldref           #442.#725     // net/minecraft/core/particles/ParticleTypes.POOF:Lnet/minecraft/core/particles/SimpleParticleType;
+  #727 = Utf8               ENCHANTED_HIT
+  #728 = NameAndType        #727:#444     // ENCHANTED_HIT:Lnet/minecraft/core/particles/SimpleParticleType;
+  #729 = Fieldref           #442.#728     // net/minecraft/core/particles/ParticleTypes.ENCHANTED_HIT:Lnet/minecraft/core/particles/SimpleParticleType;
+  #730 = Methodref          #410.#298     // net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #731 = Utf8               MAGIC_SWORD_PARRY_01
+  #732 = NameAndType        #731:#49      // MAGIC_SWORD_PARRY_01:Ldev/architectury/registry/registries/RegistrySupplier;
+  #733 = Fieldref           #87.#732      // net/sweenus/simplyswords/registry/SoundRegistry.MAGIC_SWORD_PARRY_01:Ldev/architectury/registry/registries/RegistrySupplier;
+  #734 = Methodref          #440.#304     // net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+  #735 = Utf8               serverWorld
+  #736 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #737 = Utf8               item
+  #738 = Utf8               (Lnet/minecraft/tags/TagKey;)Z
+  #739 = NameAndType        #203:#738     // is:(Lnet/minecraft/tags/TagKey;)Z
+  #740 = Methodref          #159.#739     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+  #741 = Utf8               entity
+  #742 = Utf8               distanceToSqr
+  #743 = NameAndType        #742:#387     // distanceToSqr:(Lnet/minecraft/world/entity/Entity;)D
+  #744 = Methodref          #410.#743     // net/minecraft/world/entity/Entity.distanceToSqr:(Lnet/minecraft/world/entity/Entity;)D
+  #745 = Utf8               checkFriendlyFire
+  #746 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #747 = NameAndType        #745:#746     // checkFriendlyFire:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #748 = Methodref          #61.#747      // net/sweenus/simplyswords/util/HelperMethods.checkFriendlyFire:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z
+  #749 = Utf8               livingEntity
+  #750 = Utf8               Code
+  #751 = Utf8               LineNumberTable
+  #752 = Utf8               LocalVariableTable
+  #753 = Utf8               RuntimeVisibleAnnotations
+  #754 = Utf8               StackMapTable
+  #755 = Utf8               LocalVariableTypeTable
+  #756 = Utf8               Signature
+  #757 = Utf8               MethodParameters
+  #758 = Utf8               InnerClasses
+  #759 = Utf8               SourceFile
+  #760 = Utf8               RuntimeInvisibleAnnotations
+  #761 = Utf8               BootstrapMethods
+{
+  public net.sweenus.simplyswords.mixin.ServerPlayerEntityMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 47: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/sweenus/simplyswords/mixin/ServerPlayerEntityMixin;
+
+  public abstract net.minecraft.server.level.ServerLevel serverLevel();
+    descriptor: ()Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #27()
+        org.spongepowered.asm.mixin.Shadow
+
+  public void simplyswords$damage(net.minecraft.world.damagesource.DamageSource, float, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=10, locals=9, args_size=4
+         0: aload_0
+         1: checkcast     #43                 // class net/minecraft/world/entity/player/Player
+         4: astore        4
+         6: aload         4
+         8: instanceof    #45                 // class net/minecraft/server/level/ServerPlayer
+        11: ifeq          384
+        14: aload         4
+        16: checkcast     #45                 // class net/minecraft/server/level/ServerPlayer
+        19: astore        5
+        21: aload         5
+        23: getstatic     #51                 // Field net/sweenus/simplyswords/registry/EffectRegistry.RESILIENCE:Ldev/architectury/registry/registries/RegistrySupplier;
+        26: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+        29: invokevirtual #59                 // Method net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+        32: ifeq          114
+        35: aload         5
+        37: getstatic     #51                 // Field net/sweenus/simplyswords/registry/EffectRegistry.RESILIENCE:Ldev/architectury/registry/registries/RegistrySupplier;
+        40: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+        43: invokestatic  #65                 // Method net/sweenus/simplyswords/util/HelperMethods.decrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;)V
+        46: aload_3
+        47: iconst_0
+        48: invokestatic  #71                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        51: invokevirtual #77                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        54: aload         4
+        56: getstatic     #80                 // Field net/sweenus/simplyswords/registry/EffectRegistry.RIBBONCLEAVE:Ldev/architectury/registry/registries/RegistrySupplier;
+        59: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+        62: invokevirtual #81                 // Method net/minecraft/world/entity/player/Player.hasEffect:(Lnet/minecraft/core/Holder;)Z
+        65: ifeq          114
+        68: aload         5
+        70: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+        73: aconst_null
+        74: aload         5
+        76: getstatic     #90                 // Field net/sweenus/simplyswords/registry/SoundRegistry.MAGIC_SWORD_PARRY_03:Ldev/architectury/registry/registries/RegistrySupplier;
+        79: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+        84: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+        87: getstatic     #104                // Field net/minecraft/sounds/SoundSource.PLAYERS:Lnet/minecraft/sounds/SoundSource;
+        90: ldc           #105                // float 0.7f
+        92: ldc           #106                // float 0.5f
+        94: aload         5
+        96: invokevirtual #110                // Method net/minecraft/server/level/ServerPlayer.getRandom:()Lnet/minecraft/util/RandomSource;
+        99: iconst_1
+       100: iconst_5
+       101: invokeinterface #116,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+       106: i2f
+       107: ldc           #117                // float 0.1f
+       109: fmul
+       110: fadd
+       111: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       114: aload         5
+       116: getstatic     #126                // Field net/sweenus/simplyswords/registry/EffectRegistry.ASTRAL_SHIFT:Ldev/architectury/registry/registries/RegistrySupplier;
+       119: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+       122: invokevirtual #59                 // Method net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+       125: ifeq          197
+       128: aload         4
+       130: getstatic     #126                // Field net/sweenus/simplyswords/registry/EffectRegistry.ASTRAL_SHIFT:Ldev/architectury/registry/registries/RegistrySupplier;
+       133: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+       136: invokevirtual #130                // Method net/minecraft/world/entity/player/Player.getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+       139: astore        6
+       141: aload         6
+       143: ifnull        197
+       146: aload         6
+       148: invokevirtual #136                // Method net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+       151: istore        7
+       153: iload         7
+       155: bipush        10
+       157: if_icmple     197
+       160: aload         5
+       162: getstatic     #126                // Field net/sweenus/simplyswords/registry/EffectRegistry.ASTRAL_SHIFT:Ldev/architectury/registry/registries/RegistrySupplier;
+       165: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+       168: iload         7
+       170: fconst_1
+       171: fload_2
+       172: ldc           #137                // float 10.0f
+       174: fdiv
+       175: invokestatic  #143                // Method java/lang/Math.max:(FF)F
+       178: f2i
+       179: bipush        99
+       181: invokestatic  #147                // Method net/sweenus/simplyswords/util/HelperMethods.incrementStatusEffect:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/core/Holder;III)V
+       184: aload         5
+       186: invokestatic  #153                // Method net/sweenus/simplyswords/util/AbilityMethods.astralShiftSounds:(Lnet/minecraft/server/level/ServerPlayer;)V
+       189: aload_3
+       190: iconst_0
+       191: invokestatic  #71                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       194: invokevirtual #77                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       197: aload         5
+       199: invokevirtual #157                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+       202: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       205: instanceof    #165                // class net/sweenus/simplyswords/item/custom/CaelestisSwordItem
+       208: ifeq          232
+       211: aload         5
+       213: invokestatic  #169                // Method net/sweenus/simplyswords/util/AbilityMethods.astralShiftPassive:(Lnet/minecraft/server/level/ServerPlayer;)Z
+       216: ifeq          232
+       219: aload         5
+       221: invokestatic  #153                // Method net/sweenus/simplyswords/util/AbilityMethods.astralShiftSounds:(Lnet/minecraft/server/level/ServerPlayer;)V
+       224: aload_3
+       225: iconst_0
+       226: invokestatic  #71                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       229: invokevirtual #77                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       232: aload_1
+       233: invokevirtual #175                // Method net/minecraft/world/damagesource/DamageSource.toString:()Ljava/lang/String;
+       236: ldc           #177                // String sonic_boom
+       238: invokevirtual #183                // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+       241: ifeq          384
+       244: iconst_0
+       245: istore        6
+       247: iload         6
+       249: aload         5
+       251: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       254: invokevirtual #192                // Method net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+       257: if_icmpge     384
+       260: aload         5
+       262: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       265: iload         6
+       267: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       270: astore        7
+       272: aload         7
+       274: getstatic     #200                // Field net/sweenus/simplyswords/registry/ItemsRegistry.DECAYING_RELIC:Ldev/architectury/registry/registries/RegistrySupplier;
+       277: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       282: checkcast     #202                // class net/minecraft/world/item/Item
+       285: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       288: ifeq          378
+       291: new           #159                // class net/minecraft/world/item/ItemStack
+       294: dup
+       295: getstatic     #209                // Field net/sweenus/simplyswords/registry/ItemsRegistry.MAGISCYTHE:Ldev/architectury/registry/registries/RegistrySupplier;
+       298: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       303: checkcast     #211                // class net/minecraft/world/level/ItemLike
+       306: invokespecial #214                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+       309: astore        8
+       311: aload         8
+       313: aload         7
+       315: invokevirtual #218                // Method net/minecraft/world/item/ItemStack.getComponents:()Lnet/minecraft/core/component/DataComponentMap;
+       318: invokevirtual #222                // Method net/minecraft/world/item/ItemStack.applyComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+       321: aload         5
+       323: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       326: iload         6
+       328: aload         8
+       330: invokevirtual #226                // Method net/minecraft/world/entity/player/Inventory.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+       333: aload         5
+       335: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       338: aconst_null
+       339: aload         5
+       341: getstatic     #229                // Field net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+       344: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       349: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+       352: aload         5
+       354: invokevirtual #233                // Method net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+       357: ldc           #234                // float 0.6f
+       359: ldc           #234                // float 0.6f
+       361: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       364: aload         5
+       366: ldc           #236                // String item.simplyswords.magicythe.event
+       368: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       371: iconst_1
+       372: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       375: goto          384
+       378: iinc          6, 1
+       381: goto          247
+       384: return
+      StackMapTable: number_of_entries = 6
+        frame_type = 253 /* append */
+          offset_delta = 114
+          locals = [ class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 82
+        frame_type = 34 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 130
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 248 /* chop */
+          offset_delta = 5
+      LineNumberTable:
+        line 53: 0
+        line 54: 6
+        line 57: 21
+        line 58: 35
+        line 59: 46
+        line 60: 54
+        line 61: 68
+        line 62: 96
+        line 61: 111
+        line 65: 114
+        line 66: 128
+        line 67: 141
+        line 68: 146
+        line 70: 153
+        line 71: 160
+        line 72: 184
+        line 73: 189
+        line 78: 197
+        line 79: 211
+        line 80: 219
+        line 81: 224
+        line 86: 232
+        line 87: 244
+        line 88: 260
+        line 89: 272
+        line 90: 291
+        line 91: 311
+        line 92: 321
+        line 93: 333
+        line 94: 354
+        line 93: 361
+        line 95: 364
+        line 96: 375
+        line 87: 378
+        line 102: 384
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          153      44     7 duration   I
+          141      56     6 astralShiftInstance   Lnet/minecraft/world/effect/MobEffectInstance;
+          311      67     8 newItemStack   Lnet/minecraft/world/item/ItemStack;
+          272     106     7 stackInSlot   Lnet/minecraft/world/item/ItemStack;
+          247     137     6     i   I
+           21     363     5 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0     385     0  this   Lnet/sweenus/simplyswords/mixin/ServerPlayerEntityMixin;
+            0     385     1 source   Lnet/minecraft/world/damagesource/DamageSource;
+            0     385     2 amount   F
+            0     385     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            6     379     4 player   Lnet/minecraft/world/entity/player/Player;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     385     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #30                          // (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[@#36(#7=s#37)],#38=[s#39],#40=Z#41)
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          method=["hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      source
+      amount
+      cir
+
+  public void simplyswords$tick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=9, locals=19, args_size=2
+         0: aload_0
+         1: checkcast     #43                 // class net/minecraft/world/entity/player/Player
+         4: astore_2
+         5: aload_2
+         6: instanceof    #45                 // class net/minecraft/server/level/ServerPlayer
+         9: ifeq          1564
+        12: aload_2
+        13: checkcast     #45                 // class net/minecraft/server/level/ServerPlayer
+        16: astore_3
+        17: aload_3
+        18: invokevirtual #157                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        21: getstatic     #268                // Field net/sweenus/simplyswords/registry/ItemsRegistry.RIBBONCLEAVER:Ldev/architectury/registry/registries/RegistrySupplier;
+        24: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+        29: checkcast     #202                // class net/minecraft/world/item/Item
+        32: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+        35: ifne          59
+        38: aload_3
+        39: invokevirtual #157                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        42: getstatic     #271                // Field net/sweenus/simplyswords/registry/ItemsRegistry.ENIGMA:Ldev/architectury/registry/registries/RegistrySupplier;
+        45: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+        50: checkcast     #202                // class net/minecraft/world/item/Item
+        53: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+        56: ifeq          196
+        59: bipush        6
+        61: istore        4
+        63: aload_3
+        64: getfield      #274                // Field net/minecraft/server/level/ServerPlayer.tickCount:I
+        67: bipush        20
+        69: irem
+        70: ifne          118
+        73: aload_3
+        74: invokevirtual #157                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        77: getstatic     #268                // Field net/sweenus/simplyswords/registry/ItemsRegistry.RIBBONCLEAVER:Ldev/architectury/registry/registries/RegistrySupplier;
+        80: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+        85: checkcast     #202                // class net/minecraft/world/item/Item
+        88: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+        91: ifeq          118
+        94: aload_3
+        95: new           #132                // class net/minecraft/world/effect/MobEffectInstance
+        98: dup
+        99: getstatic     #277                // Field net/sweenus/simplyswords/registry/EffectRegistry.RIBBONWRATH:Ldev/architectury/registry/registries/RegistrySupplier;
+       102: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+       105: bipush        30
+       107: iconst_0
+       108: iconst_1
+       109: iconst_0
+       110: iconst_0
+       111: invokespecial #280                // Method net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;IIZZZ)V
+       114: invokevirtual #284                // Method net/minecraft/server/level/ServerPlayer.addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;)Z
+       117: pop
+       118: aload_2
+       119: getfield      #285                // Field net/minecraft/world/entity/player/Player.tickCount:I
+       122: iload         4
+       124: irem
+       125: ifne          196
+       128: aload_2
+       129: invokevirtual #289                // Method net/minecraft/world/entity/player/Player.isSprinting:()Z
+       132: ifeq          196
+       135: aload_2
+       136: invokevirtual #292                // Method net/minecraft/world/entity/player/Player.onGround:()Z
+       139: ifeq          196
+       142: ldc_w         #293                // float 0.3f
+       145: fstore        5
+       147: fconst_1
+       148: aload_2
+       149: invokevirtual #294                // Method net/minecraft/world/entity/player/Player.getRandom:()Lnet/minecraft/util/RandomSource;
+       152: iconst_1
+       153: iconst_5
+       154: invokeinterface #116,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+       159: i2f
+       160: ldc           #117                // float 0.1f
+       162: fmul
+       163: fadd
+       164: fstore        6
+       166: aload_2
+       167: invokevirtual #295                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       170: aconst_null
+       171: aload_2
+       172: invokevirtual #299                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+       175: getstatic     #302                // Field net/sweenus/simplyswords/registry/SoundRegistry.OBJECT_IMPACT_THUD:Ldev/architectury/registry/registries/RegistrySupplier;
+       178: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       183: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+       186: getstatic     #104                // Field net/minecraft/sounds/SoundSource.PLAYERS:Lnet/minecraft/sounds/SoundSource;
+       189: fload         5
+       191: fload         6
+       193: invokevirtual #305                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       196: aload_3
+       197: invokevirtual #157                // Method net/minecraft/server/level/ServerPlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+       200: getstatic     #308                // Field net/sweenus/simplyswords/registry/ItemsRegistry.MAGIBLADE:Ldev/architectury/registry/registries/RegistrySupplier;
+       203: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       208: checkcast     #202                // class net/minecraft/world/item/Item
+       211: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       214: ifeq          501
+       217: bipush        8
+       219: istore        4
+       221: getstatic     #314                // Field net/sweenus/simplyswords/config/Config.uniqueEffects:Lnet/sweenus/simplyswords/config/UniqueEffectsConfig;
+       224: getfield      #320                // Field net/sweenus/simplyswords/config/UniqueEffectsConfig.magiblade:Lnet/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings;
+       227: getfield      #323                // Field net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings.repelRadius:F
+       230: f2d
+       231: dstore        5
+       233: getstatic     #314                // Field net/sweenus/simplyswords/config/Config.uniqueEffects:Lnet/sweenus/simplyswords/config/UniqueEffectsConfig;
+       236: getfield      #320                // Field net/sweenus/simplyswords/config/UniqueEffectsConfig.magiblade:Lnet/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings;
+       239: getfield      #326                // Field net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings.repelChance:I
+       242: istore        7
+       244: new           #328                // class java/util/Random
+       247: dup
+       248: invokespecial #329                // Method java/util/Random."<init>":()V
+       251: bipush        100
+       253: invokevirtual #333                // Method java/util/Random.nextInt:(I)I
+       256: istore        8
+       258: aload_3
+       259: getfield      #274                // Field net/minecraft/server/level/ServerPlayer.tickCount:I
+       262: iload         4
+       264: irem
+       265: ifne          501
+       268: iload         8
+       270: iload         7
+       272: if_icmpge     501
+       275: aload_2
+       276: dload         5
+       278: invokestatic  #337                // Method net/sweenus/simplyswords/util/HelperMethods.createBox:(Lnet/minecraft/world/entity/Entity;D)Lnet/minecraft/world/phys/AABB;
+       281: astore        9
+       283: aload_2
+       284: invokevirtual #295                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       287: aload_2
+       288: aload         9
+       290: getstatic     #343                // Field net/minecraft/world/entity/EntitySelector.LIVING_ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+       293: invokevirtual #347                // Method net/minecraft/world/level/Level.getEntities:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+       296: invokeinterface #353,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       301: aload_2
+       302: invokedynamic #373,  0            // InvokeDynamic #0:test:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/Predicate;
+       307: invokeinterface #379,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       312: aload_2
+       313: invokedynamic #392,  0            // InvokeDynamic #1:applyAsDouble:(Lnet/minecraft/world/entity/player/Player;)Ljava/util/function/ToDoubleFunction;
+       318: invokestatic  #398                // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+       321: invokeinterface #402,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+       326: aconst_null
+       327: invokevirtual #408                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       330: checkcast     #410                // class net/minecraft/world/entity/Entity
+       333: astore        10
+       335: aload         10
+       337: ifnull        501
+       340: aload         10
+       342: instanceof    #412                // class net/minecraft/world/entity/LivingEntity
+       345: ifeq          501
+       348: aload         10
+       350: checkcast     #412                // class net/minecraft/world/entity/LivingEntity
+       353: astore        11
+       355: aload         11
+       357: aload_2
+       358: invokevirtual #416                // Method net/minecraft/world/entity/LivingEntity.distanceTo:(Lnet/minecraft/world/entity/Entity;)F
+       361: fconst_1
+       362: fcmpl
+       363: ifle          501
+       366: aload         10
+       368: aload         10
+       370: invokevirtual #420                // Method net/minecraft/world/entity/Entity.getX:()D
+       373: aload_2
+       374: invokevirtual #421                // Method net/minecraft/world/entity/player/Player.getX:()D
+       377: dsub
+       378: ldc2_w        #422                // double 2.0d
+       381: ddiv
+       382: dconst_0
+       383: aload         10
+       385: invokevirtual #426                // Method net/minecraft/world/entity/Entity.getZ:()D
+       388: aload_2
+       389: invokevirtual #427                // Method net/minecraft/world/entity/player/Player.getZ:()D
+       392: dsub
+       393: ldc2_w        #422                // double 2.0d
+       396: ddiv
+       397: invokevirtual #431                // Method net/minecraft/world/entity/Entity.setDeltaMovement:(DDD)V
+       400: ldc_w         #432                // float 0.8f
+       403: fstore        12
+       405: fconst_1
+       406: aload_2
+       407: invokevirtual #294                // Method net/minecraft/world/entity/player/Player.getRandom:()Lnet/minecraft/util/RandomSource;
+       410: iconst_1
+       411: iconst_5
+       412: invokeinterface #116,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+       417: i2f
+       418: ldc           #117                // float 0.1f
+       420: fmul
+       421: fadd
+       422: fstore        13
+       424: aload_2
+       425: invokevirtual #295                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       428: aconst_null
+       429: aload_2
+       430: invokevirtual #299                // Method net/minecraft/world/entity/player/Player.blockPosition:()Lnet/minecraft/core/BlockPos;
+       433: getstatic     #438                // Field net/minecraft/sounds/SoundEvents.SCULK_CLICKING:Lnet/minecraft/sounds/SoundEvent;
+       436: getstatic     #104                // Field net/minecraft/sounds/SoundSource.PLAYERS:Lnet/minecraft/sounds/SoundSource;
+       439: fload         12
+       441: fload         13
+       443: invokevirtual #305                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       446: aload_2
+       447: invokevirtual #295                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       450: checkcast     #440                // class net/minecraft/server/level/ServerLevel
+       453: getstatic     #446                // Field net/minecraft/core/particles/ParticleTypes.ENCHANT:Lnet/minecraft/core/particles/SimpleParticleType;
+       456: aload         10
+       458: aload_2
+       459: bipush        10
+       461: invokestatic  #450                // Method net/sweenus/simplyswords/util/HelperMethods.spawnWaistHeightParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/particles/ParticleOptions;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+       464: aload         10
+       466: invokevirtual #451                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+       469: checkcast     #440                // class net/minecraft/server/level/ServerLevel
+       472: aload         10
+       474: invokevirtual #455                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+       477: dconst_0
+       478: aload         10
+       480: invokevirtual #459                // Method net/minecraft/world/entity/Entity.getBbHeight:()F
+       483: fconst_2
+       484: fdiv
+       485: f2d
+       486: dconst_0
+       487: invokevirtual #465                // Method net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+       490: getstatic     #468                // Field net/minecraft/core/particles/ParticleTypes.SCULK_CHARGE_POP:Lnet/minecraft/core/particles/SimpleParticleType;
+       493: ldc2_w        #469                // double 0.5d
+       496: bipush        6
+       498: invokestatic  #474                // Method net/sweenus/simplyswords/util/HelperMethods.spawnOrbitParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+       501: getstatic     #478                // Field net/sweenus/simplyswords/config/Config.general:Lnet/sweenus/simplyswords/config/GeneralConfig;
+       504: getfield      #483                // Field net/sweenus/simplyswords/config/GeneralConfig.containedRemnantTransformFrequency:I
+       507: istore        4
+       509: aload_3
+       510: getfield      #274                // Field net/minecraft/server/level/ServerPlayer.tickCount:I
+       513: iload         4
+       515: irem
+       516: ifne          1162
+       519: getstatic     #486                // Field net/sweenus/simplyswords/registry/ItemsRegistry.CONTAINED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+       522: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       527: checkcast     #488                // class net/sweenus/simplyswords/item/ContainedRemnantItem
+       530: invokevirtual #491                // Method net/sweenus/simplyswords/item/ContainedRemnantItem.asItem:()Lnet/minecraft/world/item/Item;
+       533: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+       536: astore        5
+       538: getstatic     #497                // Field net/sweenus/simplyswords/registry/ItemsRegistry.TAMPERED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+       541: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       546: checkcast     #488                // class net/sweenus/simplyswords/item/ContainedRemnantItem
+       549: invokevirtual #491                // Method net/sweenus/simplyswords/item/ContainedRemnantItem.asItem:()Lnet/minecraft/world/item/Item;
+       552: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+       555: astore        6
+       557: getstatic     #200                // Field net/sweenus/simplyswords/registry/ItemsRegistry.DECAYING_RELIC:Ldev/architectury/registry/registries/RegistrySupplier;
+       560: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       565: checkcast     #499                // class net/sweenus/simplyswords/item/custom/DormantRelicSwordItem
+       568: invokevirtual #500                // Method net/sweenus/simplyswords/item/custom/DormantRelicSwordItem.asItem:()Lnet/minecraft/world/item/Item;
+       571: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+       574: astore        7
+       576: getstatic     #503                // Field net/sweenus/simplyswords/registry/ItemsRegistry.RUNIC_TABLET:Ldev/architectury/registry/registries/RegistrySupplier;
+       579: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       584: checkcast     #505                // class net/sweenus/simplyswords/item/RunicTabletItem
+       587: invokevirtual #506                // Method net/sweenus/simplyswords/item/RunicTabletItem.asItem:()Lnet/minecraft/world/item/Item;
+       590: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+       593: astore        8
+       595: new           #328                // class java/util/Random
+       598: dup
+       599: invokespecial #329                // Method java/util/Random."<init>":()V
+       602: astore        9
+       604: getstatic     #512                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       607: invokeinterface #518,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.key:()Lnet/minecraft/resources/ResourceKey;
+       612: ldc_w         #520                // String simplyswords
+       615: ldc_w         #522                // String conditional_uniques_type_1
+       618: invokestatic  #528                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       621: invokestatic  #534                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+       624: astore        10
+       626: getstatic     #512                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       629: invokeinterface #518,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.key:()Lnet/minecraft/resources/ResourceKey;
+       634: ldc_w         #520                // String simplyswords
+       637: ldc_w         #536                // String conditional_uniques_type_2
+       640: invokestatic  #528                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       643: invokestatic  #534                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+       646: astore        11
+       648: aload         9
+       650: bipush        100
+       652: invokevirtual #333                // Method java/util/Random.nextInt:(I)I
+       655: istore        12
+       657: iconst_0
+       658: istore        13
+       660: iload         13
+       662: aload_3
+       663: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       666: invokevirtual #192                // Method net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+       669: if_icmpge     1162
+       672: aload_3
+       673: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       676: iload         13
+       678: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       681: astore        14
+       683: aload         14
+       685: aload         5
+       687: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       690: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       693: ifne          709
+       696: aload         14
+       698: aload         6
+       700: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       703: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       706: ifeq          1080
+       709: iload         12
+       711: bipush        36
+       713: if_icmpge     1080
+       716: getstatic     #544                // Field net/sweenus/simplyswords/config/LootConfig.INSTANCE:Lnet/sweenus/simplyswords/config/LootConfig;
+       719: getfield      #548                // Field net/sweenus/simplyswords/config/LootConfig.enableContainedRemnants:Lme/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition;
+       722: invokevirtual #551                // Method me/fzzyhmstrs/fzzy_config/validation/misc/ValidatedCondition.get:()Ljava/lang/Object;
+       725: checkcast     #67                 // class java/lang/Boolean
+       728: invokevirtual #554                // Method java/lang/Boolean.booleanValue:()Z
+       731: ifeq          1080
+       734: getstatic     #512                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       737: invokeinterface #555,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.stream:()Ljava/util/stream/Stream;
+       742: aload         10
+       744: invokedynamic #564,  0            // InvokeDynamic #2:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+       749: invokeinterface #379,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       754: invokeinterface #568,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+       759: astore        15
+       761: getstatic     #512                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       764: invokeinterface #555,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.stream:()Ljava/util/stream/Stream;
+       769: aload         11
+       771: invokedynamic #573,  0            // InvokeDynamic #3:test:(Lnet/minecraft/tags/TagKey;)Ljava/util/function/Predicate;
+       776: invokeinterface #379,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+       781: invokeinterface #568,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+       786: astore        16
+       788: aload         15
+       790: invokeinterface #576,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       795: ifne          1080
+       798: aload         16
+       800: invokeinterface #576,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       805: ifne          1080
+       808: getstatic     #497                // Field net/sweenus/simplyswords/registry/ItemsRegistry.TAMPERED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+       811: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       816: checkcast     #202                // class net/minecraft/world/item/Item
+       819: astore        17
+       821: aload_3
+       822: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       825: invokevirtual #579                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+       828: getstatic     #583                // Field net/minecraft/world/level/Level.END:Lnet/minecraft/resources/ResourceKey;
+       831: invokevirtual #586                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+       834: ifeq          912
+       837: aload_3
+       838: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       841: iload         13
+       843: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       846: aload         5
+       848: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+       851: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       854: ifeq          912
+       857: aload_3
+       858: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       861: aload         8
+       863: invokevirtual #589                // Method net/minecraft/world/entity/player/Inventory.contains:(Lnet/minecraft/world/item/ItemStack;)Z
+       866: ifeq          912
+       869: aload_3
+       870: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+       873: aconst_null
+       874: aload_3
+       875: getstatic     #592                // Field net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_03:Ldev/architectury/registry/registries/RegistrySupplier;
+       878: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       883: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+       886: aload_3
+       887: invokevirtual #233                // Method net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+       890: ldc_w         #293                // float 0.3f
+       893: ldc           #234                // float 0.6f
+       895: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       898: aload_3
+       899: ldc_w         #594                // String item.simplyswords.contained_remnant.event2
+       902: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       905: iconst_1
+       906: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       909: goto          1055
+       912: aload_3
+       913: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       916: iload         13
+       918: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       921: getstatic     #486                // Field net/sweenus/simplyswords/registry/ItemsRegistry.CONTAINED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+       924: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       929: checkcast     #202                // class net/minecraft/world/item/Item
+       932: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       935: ifeq          965
+       938: aload         15
+       940: aload         9
+       942: aload         15
+       944: invokeinterface #597,  1          // InterfaceMethod java/util/List.size:()I
+       949: invokevirtual #333                // Method java/util/Random.nextInt:(I)I
+       952: invokeinterface #600,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       957: checkcast     #202                // class net/minecraft/world/item/Item
+       960: astore        17
+       962: goto          1015
+       965: aload_3
+       966: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       969: iload         13
+       971: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       974: getstatic     #497                // Field net/sweenus/simplyswords/registry/ItemsRegistry.TAMPERED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+       977: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       982: checkcast     #202                // class net/minecraft/world/item/Item
+       985: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       988: ifeq          1015
+       991: aload         16
+       993: aload         9
+       995: aload         16
+       997: invokeinterface #597,  1          // InterfaceMethod java/util/List.size:()I
+      1002: invokevirtual #333                // Method java/util/Random.nextInt:(I)I
+      1005: invokeinterface #600,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      1010: checkcast     #202                // class net/minecraft/world/item/Item
+      1013: astore        17
+      1015: aload_3
+      1016: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      1019: aconst_null
+      1020: aload_3
+      1021: getstatic     #229                // Field net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+      1024: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1029: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+      1032: aload_3
+      1033: invokevirtual #233                // Method net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+      1036: ldc_w         #293                // float 0.3f
+      1039: ldc           #234                // float 0.6f
+      1041: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+      1044: aload_3
+      1045: ldc_w         #602                // String item.simplyswords.contained_remnant.event
+      1048: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1051: iconst_1
+      1052: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1055: new           #159                // class net/minecraft/world/item/ItemStack
+      1058: dup
+      1059: aload         17
+      1061: invokespecial #214                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      1064: astore        18
+      1066: aload_3
+      1067: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      1070: iload         13
+      1072: aload         18
+      1074: invokevirtual #226                // Method net/minecraft/world/entity/player/Inventory.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+      1077: goto          1162
+      1080: aload_3
+      1081: invokevirtual #606                // Method net/minecraft/server/level/ServerPlayer.getBlockStateOn:()Lnet/minecraft/world/level/block/state/BlockState;
+      1084: astore        15
+      1086: aload         14
+      1088: aload         7
+      1090: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+      1093: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      1096: ifeq          1121
+      1099: aload         15
+      1101: getstatic     #612                // Field net/minecraft/world/level/block/Blocks.SCULK:Lnet/minecraft/world/level/block/Block;
+      1104: invokevirtual #617                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      1107: ifeq          1121
+      1110: aload_3
+      1111: ldc_w         #619                // String item.simplyswords.magicythe.event2
+      1114: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1117: iconst_1
+      1118: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1121: aload         14
+      1123: aload         7
+      1125: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+      1128: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      1131: ifeq          1156
+      1134: aload         15
+      1136: getstatic     #622                // Field net/minecraft/world/level/block/Blocks.SCULK_SENSOR:Lnet/minecraft/world/level/block/Block;
+      1139: invokevirtual #617                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      1142: ifeq          1156
+      1145: aload_3
+      1146: ldc_w         #624                // String item.simplyswords.magiblade.event2
+      1149: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1152: iconst_1
+      1153: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1156: iinc          13, 1
+      1159: goto          660
+      1162: aload_3
+      1163: getfield      #274                // Field net/minecraft/server/level/ServerPlayer.tickCount:I
+      1166: bipush        20
+      1168: irem
+      1169: ifne          1487
+      1172: aload_3
+      1173: invokevirtual #606                // Method net/minecraft/server/level/ServerPlayer.getBlockStateOn:()Lnet/minecraft/world/level/block/state/BlockState;
+      1176: astore        5
+      1178: getstatic     #200                // Field net/sweenus/simplyswords/registry/ItemsRegistry.DECAYING_RELIC:Ldev/architectury/registry/registries/RegistrySupplier;
+      1181: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1186: checkcast     #499                // class net/sweenus/simplyswords/item/custom/DormantRelicSwordItem
+      1189: invokevirtual #500                // Method net/sweenus/simplyswords/item/custom/DormantRelicSwordItem.asItem:()Lnet/minecraft/world/item/Item;
+      1192: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+      1195: astore        6
+      1197: new           #328                // class java/util/Random
+      1200: dup
+      1201: invokespecial #329                // Method java/util/Random."<init>":()V
+      1204: bipush        100
+      1206: invokevirtual #333                // Method java/util/Random.nextInt:(I)I
+      1209: istore        7
+      1211: iconst_0
+      1212: istore        8
+      1214: iload         8
+      1216: aload_3
+      1217: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      1220: invokevirtual #192                // Method net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+      1223: if_icmpge     1487
+      1226: aload_3
+      1227: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      1230: iload         8
+      1232: invokevirtual #195                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+      1235: astore        9
+      1237: iload         7
+      1239: bipush        15
+      1241: if_icmpge     1351
+      1244: aload         5
+      1246: getstatic     #622                // Field net/minecraft/world/level/block/Blocks.SCULK_SENSOR:Lnet/minecraft/world/level/block/Block;
+      1249: invokevirtual #617                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      1252: ifeq          1351
+      1255: aload         9
+      1257: aload         6
+      1259: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+      1262: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      1265: ifeq          1351
+      1268: new           #159                // class net/minecraft/world/item/ItemStack
+      1271: dup
+      1272: getstatic     #308                // Field net/sweenus/simplyswords/registry/ItemsRegistry.MAGIBLADE:Ldev/architectury/registry/registries/RegistrySupplier;
+      1275: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1280: checkcast     #211                // class net/minecraft/world/level/ItemLike
+      1283: invokespecial #214                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      1286: astore        10
+      1288: aload         10
+      1290: aload         9
+      1292: invokevirtual #218                // Method net/minecraft/world/item/ItemStack.getComponents:()Lnet/minecraft/core/component/DataComponentMap;
+      1295: invokevirtual #222                // Method net/minecraft/world/item/ItemStack.applyComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+      1298: aload_3
+      1299: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      1302: iload         8
+      1304: aload         10
+      1306: invokevirtual #226                // Method net/minecraft/world/entity/player/Inventory.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+      1309: aload_3
+      1310: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      1313: aconst_null
+      1314: aload_3
+      1315: getstatic     #229                // Field net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+      1318: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1323: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+      1326: aload_3
+      1327: invokevirtual #233                // Method net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+      1330: ldc           #234                // float 0.6f
+      1332: ldc           #234                // float 0.6f
+      1334: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+      1337: aload_3
+      1338: ldc_w         #626                // String item.simplyswords.magiblade.event
+      1341: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1344: iconst_1
+      1345: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1348: goto          1487
+      1351: aload         9
+      1353: aload         6
+      1355: invokevirtual #163                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+      1358: invokevirtual #206                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+      1361: ifeq          1481
+      1364: aload_2
+      1365: getstatic     #632                // Field net/minecraft/world/effect/MobEffects.DARKNESS:Lnet/minecraft/core/Holder;
+      1368: invokevirtual #81                 // Method net/minecraft/world/entity/player/Player.hasEffect:(Lnet/minecraft/core/Holder;)Z
+      1371: ifeq          1481
+      1374: iload         7
+      1376: iconst_2
+      1377: if_icmpge     1463
+      1380: new           #159                // class net/minecraft/world/item/ItemStack
+      1383: dup
+      1384: getstatic     #635                // Field net/sweenus/simplyswords/registry/ItemsRegistry.MAGISPEAR:Ldev/architectury/registry/registries/RegistrySupplier;
+      1387: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1392: checkcast     #211                // class net/minecraft/world/level/ItemLike
+      1395: invokespecial #214                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      1398: astore        10
+      1400: aload         10
+      1402: aload         9
+      1404: invokevirtual #218                // Method net/minecraft/world/item/ItemStack.getComponents:()Lnet/minecraft/core/component/DataComponentMap;
+      1407: invokevirtual #222                // Method net/minecraft/world/item/ItemStack.applyComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+      1410: aload_3
+      1411: invokevirtual #187                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+      1414: iload         8
+      1416: aload         10
+      1418: invokevirtual #226                // Method net/minecraft/world/entity/player/Inventory.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+      1421: aload_3
+      1422: invokevirtual #85                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      1425: aconst_null
+      1426: aload_3
+      1427: getstatic     #229                // Field net/sweenus/simplyswords/registry/SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_02:Ldev/architectury/registry/registries/RegistrySupplier;
+      1430: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1435: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+      1438: aload_3
+      1439: invokevirtual #233                // Method net/minecraft/server/level/ServerPlayer.getSoundSource:()Lnet/minecraft/sounds/SoundSource;
+      1442: ldc           #234                // float 0.6f
+      1444: ldc           #234                // float 0.6f
+      1446: invokevirtual #123                // Method net/minecraft/world/level/Level.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+      1449: aload_3
+      1450: ldc_w         #637                // String item.simplyswords.magispear.event
+      1453: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1456: iconst_1
+      1457: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1460: goto          1487
+      1463: iload         7
+      1465: bipush        11
+      1467: if_icmpge     1481
+      1470: aload_3
+      1471: ldc_w         #639                // String item.simplyswords.magispear.event2
+      1474: invokestatic  #242                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      1477: iconst_1
+      1478: invokevirtual #246                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+      1481: iinc          8, 1
+      1484: goto          1214
+      1487: aload_2
+      1488: invokevirtual #643                // Method net/minecraft/world/entity/player/Player.getShoulderEntityLeft:()Lnet/minecraft/nbt/CompoundTag;
+      1491: astore        5
+      1493: aload_2
+      1494: invokevirtual #646                // Method net/minecraft/world/entity/player/Player.getShoulderEntityRight:()Lnet/minecraft/nbt/CompoundTag;
+      1497: astore        6
+      1499: aload_3
+      1500: aload         5
+      1502: aload         6
+      1504: invokestatic  #650                // Method net/sweenus/simplyswords/util/AbilityMethods.applyAxolotlBuff:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/CompoundTag;)V
+      1507: getstatic     #653                // Field net/sweenus/simplyswords/registry/ItemsRegistry.CHOMPOLOTL:Ldev/architectury/registry/registries/RegistrySupplier;
+      1510: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1515: checkcast     #202                // class net/minecraft/world/item/Item
+      1518: aload_3
+      1519: invokestatic  #657                // Method net/sweenus/simplyswords/util/HelperMethods.isHoldingItem:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/entity/LivingEntity;)Z
+      1522: ifeq          1542
+      1525: getstatic     #478                // Field net/sweenus/simplyswords/config/Config.general:Lnet/sweenus/simplyswords/config/GeneralConfig;
+      1528: getfield      #661                // Field net/sweenus/simplyswords/config/GeneralConfig.enablePassiveParticles:Z
+      1531: ifeq          1542
+      1534: aload_0
+      1535: invokevirtual #663                // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+      1538: aload_3
+      1539: invokestatic  #667                // Method net/sweenus/simplyswords/util/HelperMethods.createServerBubbleTrail:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/server/level/ServerPlayer;)V
+      1542: getstatic     #486                // Field net/sweenus/simplyswords/registry/ItemsRegistry.CONTAINED_REMNANT:Ldev/architectury/registry/registries/RegistrySupplier;
+      1545: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+      1550: checkcast     #202                // class net/minecraft/world/item/Item
+      1553: aload_3
+      1554: invokestatic  #657                // Method net/sweenus/simplyswords/util/HelperMethods.isHoldingItem:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/entity/LivingEntity;)Z
+      1557: ifeq          1564
+      1560: aload_3
+      1561: invokestatic  #672                // Method net/sweenus/simplyswords/item/ContainedRemnantItem.checkNearbyBlocks:(Lnet/minecraft/server/level/ServerPlayer;)V
+      1564: return
+      StackMapTable: number_of_entries = 21
+        frame_type = 253 /* append */
+          offset_delta = 59
+          locals = [ class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer ]
+        frame_type = 252 /* append */
+          offset_delta = 58
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 77
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 304
+        frame_type = 255 /* full_frame */
+          offset_delta = 158
+          locals = [ class net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer, int, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/ItemStack, class java/util/Random, class net/minecraft/tags/TagKey, class net/minecraft/tags/TagKey, int, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 48
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 254 /* append */
+          offset_delta = 202
+          locals = [ class java/util/List, class java/util/List, class net/minecraft/world/item/Item ]
+        frame_type = 52 /* same */
+        frame_type = 49 /* same */
+        frame_type = 39 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 24
+        frame_type = 252 /* append */
+          offset_delta = 40
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 34 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer, int ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 51
+          locals = [ class net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer, int, class net/minecraft/world/level/block/state/BlockState, class net/minecraft/world/item/ItemStack, int, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 136
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 111
+        frame_type = 17 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/world/entity/player/Player, class net/minecraft/server/level/ServerPlayer, int ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 54
+          locals = [ class net/minecraft/nbt/CompoundTag, class net/minecraft/nbt/CompoundTag ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 21
+          locals = [ class net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/world/entity/player/Player ]
+          stack = []
+      LineNumberTable:
+        line 107: 0
+        line 108: 5
+        line 111: 17
+        line 112: 59
+        line 113: 63
+        line 114: 94
+        line 117: 118
+        line 118: 142
+        line 119: 147
+        line 120: 166
+        line 121: 178
+        line 120: 193
+        line 126: 196
+        line 127: 217
+        line 128: 221
+        line 129: 233
+        line 130: 244
+        line 131: 258
+        line 132: 275
+        line 133: 283
+        line 134: 307
+        line 139: 318
+        line 140: 327
+        line 142: 335
+        line 143: 340
+        line 144: 355
+        line 145: 366
+        line 146: 400
+        line 147: 405
+        line 148: 424
+        line 150: 446
+        line 151: 464
+        line 159: 501
+        line 160: 509
+        line 161: 519
+        line 162: 538
+        line 163: 557
+        line 164: 576
+        line 165: 595
+        line 166: 604
+        line 167: 626
+        line 168: 648
+        line 170: 657
+        line 171: 672
+        line 173: 683
+        line 174: 709
+        line 175: 734
+        line 176: 749
+        line 177: 754
+        line 178: 761
+        line 179: 776
+        line 180: 781
+        line 182: 788
+        line 183: 808
+        line 184: 821
+        line 185: 838
+        line 186: 858
+        line 187: 869
+        line 188: 887
+        line 187: 895
+        line 189: 898
+        line 191: 912
+        line 192: 938
+        line 193: 965
+        line 194: 991
+        line 195: 1015
+        line 196: 1033
+        line 195: 1041
+        line 197: 1044
+        line 199: 1055
+        line 200: 1066
+        line 201: 1077
+        line 205: 1080
+        line 206: 1086
+        line 207: 1110
+        line 209: 1121
+        line 210: 1145
+        line 170: 1156
+        line 214: 1162
+        line 215: 1172
+        line 216: 1178
+        line 217: 1197
+        line 218: 1211
+        line 219: 1226
+        line 222: 1237
+        line 223: 1268
+        line 224: 1288
+        line 225: 1298
+        line 226: 1309
+        line 227: 1327
+        line 226: 1334
+        line 228: 1337
+        line 229: 1348
+        line 233: 1351
+        line 234: 1374
+        line 235: 1380
+        line 236: 1400
+        line 237: 1410
+        line 238: 1421
+        line 239: 1439
+        line 238: 1446
+        line 240: 1449
+        line 241: 1460
+        line 242: 1463
+        line 243: 1470
+        line 218: 1481
+        line 250: 1487
+        line 251: 1493
+        line 252: 1499
+        line 256: 1507
+        line 257: 1534
+        line 260: 1542
+        line 261: 1560
+        line 265: 1564
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          147      49     5 volume   F
+          166      30     6 pitch   F
+           63     133     4 frequency   I
+          405      96    12 volume   F
+          424      77    13 pitch   F
+          355     146    11    le   Lnet/minecraft/world/entity/LivingEntity;
+          283     218     9   box   Lnet/minecraft/world/phys/AABB;
+          335     166    10 closestEntity   Lnet/minecraft/world/entity/Entity;
+          221     280     4 frequency   I
+          233     268     5 radius   D
+          244     257     7 chance   I
+          258     243     8 totalChance   I
+          821     259    17 randomItem   Lnet/minecraft/world/item/Item;
+         1066      14    18 newItemStack   Lnet/minecraft/world/item/ItemStack;
+          761     319    15 itemsFromTag   Ljava/util/List;
+          788     292    16 itemsFromTagEnd   Ljava/util/List;
+          683     473    14 stackInSlot   Lnet/minecraft/world/item/ItemStack;
+         1086      70    15 playerStandingBlock   Lnet/minecraft/world/level/block/state/BlockState;
+          660     502    13     i   I
+          538     624     5 containedRemnant   Lnet/minecraft/world/item/ItemStack;
+          557     605     6 tamperedRemnant   Lnet/minecraft/world/item/ItemStack;
+          576     586     7 decayingRelic   Lnet/minecraft/world/item/ItemStack;
+          595     567     8 runicTablet   Lnet/minecraft/world/item/ItemStack;
+          604     558     9 random   Ljava/util/Random;
+          626     536    10 desiredItemsTag   Lnet/minecraft/tags/TagKey;
+          648     514    11 endItemsTag   Lnet/minecraft/tags/TagKey;
+          657     505    12 chance   I
+         1288      63    10 newItemStack   Lnet/minecraft/world/item/ItemStack;
+         1400      63    10 newItemStack   Lnet/minecraft/world/item/ItemStack;
+         1237     244     9 stackInSlot   Lnet/minecraft/world/item/ItemStack;
+         1214     273     8     i   I
+         1178     309     5 playerStandingBlock   Lnet/minecraft/world/level/block/state/BlockState;
+         1197     290     6 decayingRelic   Lnet/minecraft/world/item/ItemStack;
+         1211     276     7 chance   I
+          509    1055     4 frequency   I
+         1493      71     5 leftShoulder   Lnet/minecraft/nbt/CompoundTag;
+         1499      65     6 rightShoulder   Lnet/minecraft/nbt/CompoundTag;
+           17    1547     3 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0    1565     0  this   Lnet/sweenus/simplyswords/mixin/ServerPlayerEntityMixin;
+            0    1565     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5    1560     2 player   Lnet/minecraft/world/entity/player/Player;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          761     319    15 itemsFromTag   Ljava/util/List<Lnet/minecraft/world/item/Item;>;
+          788     292    16 itemsFromTagEnd   Ljava/util/List<Lnet/minecraft/world/item/Item;>;
+          626     536    10 desiredItemsTag   Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+          648     514    11 endItemsTag   Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/item/Item;>;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[@#36(#7=s#37)],#38=[s#265])
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          method=["tick()V"]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  public void simplyswords$attack(net.minecraft.world.entity.Entity, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=8, locals=6, args_size=3
+         0: aload_0
+         1: checkcast     #43                 // class net/minecraft/world/entity/player/Player
+         4: astore_3
+         5: aload_3
+         6: instanceof    #45                 // class net/minecraft/server/level/ServerPlayer
+         9: ifeq          153
+        12: aload_3
+        13: checkcast     #45                 // class net/minecraft/server/level/ServerPlayer
+        16: astore        4
+        18: aload_1
+        19: invokevirtual #715                // Method net/minecraft/world/entity/Entity.isAttackable:()Z
+        22: ifeq          153
+        25: aload_1
+        26: instanceof    #412                // class net/minecraft/world/entity/LivingEntity
+        29: ifeq          153
+        32: aload_1
+        33: aload_3
+        34: invokevirtual #718                // Method net/minecraft/world/entity/Entity.skipAttackInteraction:(Lnet/minecraft/world/entity/Entity;)Z
+        37: ifne          153
+        40: aload_3
+        41: invokevirtual #295                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+        44: checkcast     #440                // class net/minecraft/server/level/ServerLevel
+        47: astore        5
+        49: aload         4
+        51: getstatic     #80                 // Field net/sweenus/simplyswords/registry/EffectRegistry.RIBBONCLEAVE:Ldev/architectury/registry/registries/RegistrySupplier;
+        54: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+        57: invokevirtual #59                 // Method net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+        60: ifeq          153
+        63: aload         4
+        65: getstatic     #80                 // Field net/sweenus/simplyswords/registry/EffectRegistry.RIBBONCLEAVE:Ldev/architectury/registry/registries/RegistrySupplier;
+        68: invokestatic  #55                 // Method net/sweenus/simplyswords/registry/EffectRegistry.getReference:(Ldev/architectury/registry/registries/RegistrySupplier;)Lnet/minecraft/core/Holder;
+        71: invokevirtual #721                // Method net/minecraft/server/level/ServerPlayer.removeEffect:(Lnet/minecraft/core/Holder;)Z
+        74: pop
+        75: aload         5
+        77: aload_1
+        78: invokevirtual #455                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+        81: dconst_0
+        82: ldc2_w        #722                // double 0.3d
+        85: dconst_0
+        86: invokevirtual #465                // Method net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+        89: getstatic     #726                // Field net/minecraft/core/particles/ParticleTypes.POOF:Lnet/minecraft/core/particles/SimpleParticleType;
+        92: ldc2_w        #469                // double 0.5d
+        95: bipush        6
+        97: invokestatic  #474                // Method net/sweenus/simplyswords/util/HelperMethods.spawnOrbitParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+       100: aload         5
+       102: aload_1
+       103: invokevirtual #455                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+       106: dconst_0
+       107: ldc2_w        #469                // double 0.5d
+       110: dconst_0
+       111: invokevirtual #465                // Method net/minecraft/world/phys/Vec3.add:(DDD)Lnet/minecraft/world/phys/Vec3;
+       114: getstatic     #729                // Field net/minecraft/core/particles/ParticleTypes.ENCHANTED_HIT:Lnet/minecraft/core/particles/SimpleParticleType;
+       117: ldc2_w        #469                // double 0.5d
+       120: bipush        6
+       122: invokestatic  #474                // Method net/sweenus/simplyswords/util/HelperMethods.spawnOrbitParticles:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/particles/ParticleOptions;DI)V
+       125: aload         5
+       127: aconst_null
+       128: aload_1
+       129: invokevirtual #730                // Method net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+       132: getstatic     #733                // Field net/sweenus/simplyswords/registry/SoundRegistry.MAGIC_SWORD_PARRY_01:Ldev/architectury/registry/registries/RegistrySupplier;
+       135: invokeinterface #96,  1           // InterfaceMethod dev/architectury/registry/registries/RegistrySupplier.get:()Ljava/lang/Object;
+       140: checkcast     #98                 // class net/minecraft/sounds/SoundEvent
+       143: getstatic     #104                // Field net/minecraft/sounds/SoundSource.PLAYERS:Lnet/minecraft/sounds/SoundSource;
+       146: ldc_w         #432                // float 0.8f
+       149: fconst_1
+       150: invokevirtual #734                // Method net/minecraft/server/level/ServerLevel.playSound:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V
+       153: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 153
+          locals = [ class net/minecraft/world/entity/player/Player ]
+      LineNumberTable:
+        line 270: 0
+        line 271: 5
+        line 272: 18
+        line 273: 32
+        line 274: 40
+        line 276: 49
+        line 277: 63
+        line 278: 75
+        line 280: 100
+        line 282: 125
+        line 283: 135
+        line 282: 150
+        line 289: 153
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           49     104     5 serverWorld   Lnet/minecraft/server/level/ServerLevel;
+           18     135     4 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0     154     0  this   Lnet/sweenus/simplyswords/mixin/ServerPlayerEntityMixin;
+            0     154     1 target   Lnet/minecraft/world/entity/Entity;
+            0     154     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5     149     3 player   Lnet/minecraft/world/entity/player/Player;
+    RuntimeVisibleAnnotations:
+      0: #34(#35=[@#36(#7=s#711)],#38=[s#712])
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          method=["attack(Lnet/minecraft/world/entity/Entity;)V"]
+        )
+    MethodParameters:
+      Name                           Flags
+      target
+      ci
+
+  private static boolean lambda$simplyswords$tick$3(net.minecraft.tags.TagKey, net.minecraft.world.item.Item);
+    descriptor: (Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+         4: aload_0
+         5: invokevirtual #740                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+         8: ireturn
+      LineNumberTable:
+        line 179: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 endItemsTag   Lnet/minecraft/tags/TagKey;
+            0       9     1  item   Lnet/minecraft/world/item/Item;
+    MethodParameters:
+      Name                           Flags
+      endItemsTag
+      item
+
+  private static boolean lambda$simplyswords$tick$2(net.minecraft.tags.TagKey, net.minecraft.world.item.Item);
+    descriptor: (Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #494                // Method net/minecraft/world/item/Item.getDefaultInstance:()Lnet/minecraft/world/item/ItemStack;
+         4: aload_0
+         5: invokevirtual #740                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+         8: ireturn
+      LineNumberTable:
+        line 176: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 desiredItemsTag   Lnet/minecraft/tags/TagKey;
+            0       9     1  item   Lnet/minecraft/world/item/Item;
+    MethodParameters:
+      Name                           Flags
+      desiredItemsTag
+      item
+
+  private static double lambda$simplyswords$tick$1(net.minecraft.world.entity.player.Player, net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokevirtual #744                // Method net/minecraft/world/entity/Entity.distanceToSqr:(Lnet/minecraft/world/entity/Entity;)D
+         5: dreturn
+      LineNumberTable:
+        line 139: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 player   Lnet/minecraft/world/entity/player/Player;
+            0       6     1 entity   Lnet/minecraft/world/entity/Entity;
+    MethodParameters:
+      Name                           Flags
+      player
+      entity
+
+  private static boolean lambda$simplyswords$tick$0(net.minecraft.world.entity.player.Player, net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_1
+         1: instanceof    #412                // class net/minecraft/world/entity/LivingEntity
+         4: ifeq          18
+         7: aload_1
+         8: checkcast     #412                // class net/minecraft/world/entity/LivingEntity
+        11: astore_2
+        12: aload_2
+        13: aload_0
+        14: invokestatic  #748                // Method net/sweenus/simplyswords/util/HelperMethods.checkFriendlyFire:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/LivingEntity;)Z
+        17: ireturn
+        18: iconst_0
+        19: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 18 /* same */
+      LineNumberTable:
+        line 135: 0
+        line 136: 12
+        line 137: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           12       6     2 livingEntity   Lnet/minecraft/world/entity/LivingEntity;
+            0      20     0 player   Lnet/minecraft/world/entity/player/Player;
+            0      20     1 entity   Lnet/minecraft/world/entity/Entity;
+    MethodParameters:
+      Name                           Flags
+      player
+      entity
+}
+InnerClasses:
+  public static #13= #10 of #12;          // EffectSettings=class net/sweenus/simplyswords/item/custom/MagibladeSwordItem$EffectSettings of class net/sweenus/simplyswords/item/custom/MagibladeSwordItem
+  public static final #18= #15 of #17;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "ServerPlayerEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerPlayer;]
+    )
+BootstrapMethods:
+  0: #369 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #355 (Ljava/lang/Object;)Z
+      #360 REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$0:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Z
+      #362 (Lnet/minecraft/world/entity/Entity;)Z
+  1: #369 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #381 (Ljava/lang/Object;)D
+      #386 REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$1:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)D
+      #388 (Lnet/minecraft/world/entity/Entity;)D
+  2: #369 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #355 (Ljava/lang/Object;)Z
+      #560 REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$2:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+      #561 (Lnet/minecraft/world/item/Item;)Z
+  3: #369 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #355 (Ljava/lang/Object;)Z
+      #572 REF_invokeStatic net/sweenus/simplyswords/mixin/ServerPlayerEntityMixin.lambda$simplyswords$tick$3:(Lnet/minecraft/tags/TagKey;Lnet/minecraft/world/item/Item;)Z
+      #561 (Lnet/minecraft/world/item/Item;)Z
