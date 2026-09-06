@@ -9159,3 +9159,28 @@ SHA-256: 047dc079c1a85e503cf313d9accc1cf3cd7b18e44c0a345e6557615fe3af33db.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-final-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-final-r2.json
 ```
+
+### Canonical exclusion and eligibility reconciliation, 2026-09-07
+
+Four family records now agree with the existing source and eligibility evidence.
+Aether large_aercloud is a provider-selected cold-aercloud block formation and is
+excluded from authored families. Its reuse as Silver Dungeon cloud bedding does
+not make another dungeon family. The record and source attributes remain retained.
+
+Deep Aether altar_camp, campfire and combiner_corridor each select one same-named
+Sacred Lands template, but their required biome is absent from every captured
+dimension. The captured jigsaw consumer follows the supplied pool. They remain
+registered inactive candidates, excluded from active families in this frozen
+baseline. Changed packs/dimensions or a demonstrated independent route reopen this
+disposition. No root was deleted and no broad generation claim was inferred.
+
+Ten existing source/eligibility cases and scoped quality checks pass. No new
+capture, renderer or measurement was added. The named canonical backlog decreases
+from 128 to 124. Working coverage groups remain 405; this is not the final authored
+family count. Nonregistry reconciliation and required attributes remain open.
+
+```sh
+uv run pytest tests/item8/test_aether_cloud_source.py tests/item8/test_totem_scope.py tests/item8/test_deep_aether_candidates.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
