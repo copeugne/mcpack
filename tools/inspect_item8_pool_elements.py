@@ -1898,6 +1898,9 @@ CLASSES: tuple[str, ...] = (
     "com/starfish_studios/naturalist/mixin/MobMixin.class",
     "com/starfish_studios/naturalist/mixin/MonsterMixin.class",
     "com/starfish_studios/naturalist/mixin/ZombieMixin.class",
+    "dev/worldgen/lithostitched/LithostitchedNeoforge.class",
+    "dev/worldgen/lithostitched/Lithostitched.class",
+    "dev/worldgen/lithostitched/registry/LithostitchedRegistrations.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
@@ -2077,7 +2080,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose = source.name.startswith((
                     "alternate_current-", "cupboard-", "lootintegrations-", "creatingspace-",
                     "CreeperOverhaul-", "FarmersDelight-", "coffee_delight-", "ends_delight-",
-                    "aethersdelight-", "ubesdelight-", "naturalist-",
+                    "aethersdelight-", "ubesdelight-", "naturalist-", "lithostitched-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
