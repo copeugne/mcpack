@@ -1,0 +1,75 @@
+Classfile sparsestructures-neoforge-1.21.1-3.0.jar!/io/github/maxencedc/sparsestructures/platform/services/IPlatformHelper.class
+  Last modified Apr 23, 2025; size 618 bytes
+  SHA-256 checksum 0bd527b497288957627b431e4040db68fc884ed12d8db0ae785a423b3bc754bb
+  Compiled from "IPlatformHelper.java"
+public interface io.github.maxencedc.sparsestructures.platform.services.IPlatformHelper
+  minor version: 0
+  major version: 65
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #2                          // io/github/maxencedc/sparsestructures/platform/services/IPlatformHelper
+  super_class: #11                        // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 1
+Constant pool:
+   #1 = InterfaceMethodref #2.#3          // io/github/maxencedc/sparsestructures/platform/services/IPlatformHelper.isDevelopmentEnvironment:()Z
+   #2 = Class              #4             // io/github/maxencedc/sparsestructures/platform/services/IPlatformHelper
+   #3 = NameAndType        #5:#6          // isDevelopmentEnvironment:()Z
+   #4 = Utf8               io/github/maxencedc/sparsestructures/platform/services/IPlatformHelper
+   #5 = Utf8               isDevelopmentEnvironment
+   #6 = Utf8               ()Z
+   #7 = String             #8             // development
+   #8 = Utf8               development
+   #9 = String             #10            // production
+  #10 = Utf8               production
+  #11 = Class              #12            // java/lang/Object
+  #12 = Utf8               java/lang/Object
+  #13 = Utf8               getPlatformName
+  #14 = Utf8               ()Ljava/lang/String;
+  #15 = Utf8               isModLoaded
+  #16 = Utf8               (Ljava/lang/String;)Z
+  #17 = Utf8               getEnvironmentName
+  #18 = Utf8               Code
+  #19 = Utf8               LineNumberTable
+  #20 = Utf8               LocalVariableTable
+  #21 = Utf8               this
+  #22 = Utf8               Lio/github/maxencedc/sparsestructures/platform/services/IPlatformHelper;
+  #23 = Utf8               StackMapTable
+  #24 = Class              #25            // java/lang/String
+  #25 = Utf8               java/lang/String
+  #26 = Utf8               SourceFile
+  #27 = Utf8               IPlatformHelper.java
+{
+  public abstract java.lang.String getPlatformName();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract boolean isModLoaded(java.lang.String);
+    descriptor: (Ljava/lang/String;)Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract boolean isDevelopmentEnvironment();
+    descriptor: ()Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public default java.lang.String getEnvironmentName();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokeinterface #1,  1            // InterfaceMethod isDevelopmentEnvironment:()Z
+         6: ifeq          14
+         9: ldc           #7                  // String development
+        11: goto          16
+        14: ldc           #9                  // String production
+        16: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lio/github/maxencedc/sparsestructures/platform/services/IPlatformHelper;
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ class java/lang/String ]
+}
+SourceFile: "IPlatformHelper.java"

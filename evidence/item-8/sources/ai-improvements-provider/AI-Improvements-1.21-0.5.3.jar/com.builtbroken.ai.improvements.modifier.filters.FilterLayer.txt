@@ -1,0 +1,509 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/modifier/filters/FilterLayer.class
+  Last modified Jun 14, 2024; size 3852 bytes
+  SHA-256 checksum b546679dad2bdf22753aa0046a7cc697e149354e91fdaf668bf4735443422613
+  Compiled from "FilterLayer.java"
+public class com.builtbroken.ai.improvements.modifier.filters.FilterLayer extends com.builtbroken.ai.improvements.modifier.filters.FilterNode
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+  super_class: #2                         // com/builtbroken/ai/improvements/modifier/filters/FilterNode
+  interfaces: 0, fields: 2, methods: 6, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // com/builtbroken/ai/improvements/modifier/filters/FilterNode."<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+    #2 = Class              #4            // com/builtbroken/ai/improvements/modifier/filters/FilterNode
+    #3 = NameAndType        #5:#6         // "<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+    #4 = Utf8               com/builtbroken/ai/improvements/modifier/filters/FilterNode
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+    #7 = Fieldref           #8.#9         // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+    #8 = Class              #10           // com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+    #9 = NameAndType        #11:#12       // nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+   #10 = Utf8               com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+   #11 = Utf8               nodes
+   #12 = Utf8               [Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+   #13 = Fieldref           #8.#14        // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.size:I
+   #14 = NameAndType        #15:#16       // size:I
+   #15 = Utf8               size
+   #16 = Utf8               I
+   #17 = Fieldref           #18.#19       // com/builtbroken/ai/improvements/modifier/filters/NoopNode.INSTANCE:Lcom/builtbroken/ai/improvements/modifier/filters/NoopNode;
+   #18 = Class              #20           // com/builtbroken/ai/improvements/modifier/filters/NoopNode
+   #19 = NameAndType        #21:#22       // INSTANCE:Lcom/builtbroken/ai/improvements/modifier/filters/NoopNode;
+   #20 = Utf8               com/builtbroken/ai/improvements/modifier/filters/NoopNode
+   #21 = Utf8               INSTANCE
+   #22 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/NoopNode;
+   #23 = Methodref          #24.#25       // java/util/Arrays.copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #24 = Class              #26           // java/util/Arrays
+   #25 = NameAndType        #27:#28       // copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #26 = Utf8               java/util/Arrays
+   #27 = Utf8               copyOf
+   #28 = Utf8               ([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #29 = Class              #12           // "[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;"
+   #30 = Fieldref           #8.#31        // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.action:Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #31 = NameAndType        #32:#33       // action:Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #32 = Utf8               action
+   #33 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #34 = InterfaceMethodref #35.#36       // com/builtbroken/ai/improvements/modifier/filters/IFilterNode.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #35 = Class              #37           // com/builtbroken/ai/improvements/modifier/filters/IFilterNode
+   #36 = NameAndType        #38:#39       // handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #37 = Utf8               com/builtbroken/ai/improvements/modifier/filters/IFilterNode
+   #38 = Utf8               handle
+   #39 = Utf8               (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #40 = Fieldref           #41.#42       // com/builtbroken/ai/improvements/modifier/filters/FilterResult.FILTERED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #41 = Class              #43           // com/builtbroken/ai/improvements/modifier/filters/FilterResult
+   #42 = NameAndType        #44:#45       // FILTERED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #43 = Utf8               com/builtbroken/ai/improvements/modifier/filters/FilterResult
+   #44 = Utf8               FILTERED
+   #45 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #46 = Fieldref           #41.#47       // com/builtbroken/ai/improvements/modifier/filters/FilterResult.DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #47 = NameAndType        #48:#45       // DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #48 = Utf8               DID_NOTHING
+   #49 = Methodref          #2.#36        // com/builtbroken/ai/improvements/modifier/filters/FilterNode.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #50 = Fieldref           #2.#51        // com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+   #51 = NameAndType        #52:#16       // callCount:I
+   #52 = Utf8               callCount
+   #53 = Class              #54           // java/lang/Integer
+   #54 = Utf8               java/lang/Integer
+   #55 = Integer            1073741823
+   #56 = InvokeDynamic      #0:#57        // #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+   #57 = NameAndType        #58:#59       // applyAsInt:()Ljava/util/function/ToIntFunction;
+   #58 = Utf8               applyAsInt
+   #59 = Utf8               ()Ljava/util/function/ToIntFunction;
+   #60 = InterfaceMethodref #61.#62       // java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+   #61 = Class              #63           // java/util/Comparator
+   #62 = NameAndType        #64:#65       // comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+   #63 = Utf8               java/util/Comparator
+   #64 = Utf8               comparingInt
+   #65 = Utf8               (Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+   #66 = Methodref          #24.#67       // java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+   #67 = NameAndType        #68:#69       // sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+   #68 = Utf8               sort
+   #69 = Utf8               ([Ljava/lang/Object;Ljava/util/Comparator;)V
+   #70 = Methodref          #24.#71       // java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+   #71 = NameAndType        #72:#73       // stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+   #72 = Utf8               stream
+   #73 = Utf8               ([Ljava/lang/Object;)Ljava/util/stream/Stream;
+   #74 = InvokeDynamic      #1:#57        // #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+   #75 = InterfaceMethodref #76.#77       // java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+   #76 = Class              #78           // java/util/stream/Stream
+   #77 = NameAndType        #79:#80       // mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+   #78 = Utf8               java/util/stream/Stream
+   #79 = Utf8               mapToInt
+   #80 = Utf8               (Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+   #81 = InterfaceMethodref #82.#83       // java/util/stream/IntStream.sum:()I
+   #82 = Class              #84           // java/util/stream/IntStream
+   #83 = NameAndType        #85:#86       // sum:()I
+   #84 = Utf8               java/util/stream/IntStream
+   #85 = Utf8               sum
+   #86 = Utf8               ()I
+   #87 = InvokeDynamic      #2:#88        // #2:accept:(I)Ljava/util/function/Consumer;
+   #88 = NameAndType        #89:#90       // accept:(I)Ljava/util/function/Consumer;
+   #89 = Utf8               accept
+   #90 = Utf8               (I)Ljava/util/function/Consumer;
+   #91 = InterfaceMethodref #76.#92       // java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+   #92 = NameAndType        #93:#94       // forEach:(Ljava/util/function/Consumer;)V
+   #93 = Utf8               forEach
+   #94 = Utf8               (Ljava/util/function/Consumer;)V
+   #95 = Methodref          #96.#97       // java/lang/Math.floor:(D)D
+   #96 = Class              #98           // java/lang/Math
+   #97 = NameAndType        #99:#100      // floor:(D)D
+   #98 = Utf8               java/lang/Math
+   #99 = Utf8               floor
+  #100 = Utf8               (D)D
+  #101 = Utf8               Code
+  #102 = Utf8               LineNumberTable
+  #103 = Utf8               LocalVariableTable
+  #104 = Utf8               this
+  #105 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+  #106 = Utf8               filter
+  #107 = Utf8               add
+  #108 = Utf8               modifier
+  #109 = Utf8               StackMapTable
+  #110 = Utf8               i
+  #111 = Utf8               m
+  #112 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+  #113 = Utf8               entity
+  #114 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #115 = Utf8               filterResult
+  #116 = Utf8               lambda$handle$2
+  #117 = Utf8               (ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #118 = Utf8               lambda$handle$1
+  #119 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #120 = Utf8               lambda$handle$0
+  #121 = Utf8               SourceFile
+  #122 = Utf8               FilterLayer.java
+  #123 = Utf8               BootstrapMethods
+  #124 = MethodType         #125          //  (Ljava/lang/Object;)I
+  #125 = Utf8               (Ljava/lang/Object;)I
+  #126 = MethodHandle       6:#127        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$0:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #127 = Methodref          #8.#128       // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$0:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #128 = NameAndType        #120:#119     // lambda$handle$0:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #129 = MethodType         #119          //  (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #130 = MethodHandle       6:#131        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$1:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #131 = Methodref          #8.#132       // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$1:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #132 = NameAndType        #118:#119     // lambda$handle$1:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  #133 = MethodType         #134          //  (Ljava/lang/Object;)V
+  #134 = Utf8               (Ljava/lang/Object;)V
+  #135 = MethodHandle       6:#136        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$2:(ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #136 = Methodref          #8.#137       // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$2:(ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #137 = NameAndType        #116:#117     // lambda$handle$2:(ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #138 = MethodType         #139          //  (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #139 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+  #140 = MethodHandle       6:#141        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #141 = Methodref          #142.#143     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #142 = Class              #144          // java/lang/invoke/LambdaMetafactory
+  #143 = NameAndType        #145:#146     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #144 = Utf8               java/lang/invoke/LambdaMetafactory
+  #145 = Utf8               metafactory
+  #146 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #147 = Utf8               InnerClasses
+  #148 = Class              #149          // java/lang/invoke/MethodHandles$Lookup
+  #149 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #150 = Class              #151          // java/lang/invoke/MethodHandles
+  #151 = Utf8               java/lang/invoke/MethodHandles
+  #152 = Utf8               Lookup
+{
+  private com.builtbroken.ai.improvements.modifier.filters.FilterNode[] nodes;
+    descriptor: [Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+    flags: (0x0002) ACC_PRIVATE
+
+  private int size;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  public com.builtbroken.ai.improvements.modifier.filters.FilterLayer(com.builtbroken.ai.improvements.modifier.filters.IFilterNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method com/builtbroken/ai/improvements/modifier/filters/FilterNode."<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+         5: aload_0
+         6: iconst_5
+         7: anewarray     #2                  // class com/builtbroken/ai/improvements/modifier/filters/FilterNode
+        10: putfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        13: aload_0
+        14: iconst_0
+        15: putfield      #13                 // Field size:I
+        18: return
+      LineNumberTable:
+        line 19: 0
+        line 13: 5
+        line 15: 13
+        line 20: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+            0      19     1 filter   Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+
+  public void add(com.builtbroken.ai.improvements.modifier.filters.IFilterNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=2, args_size=2
+         0: aload_1
+         1: ifnonnull     8
+         4: getstatic     #17                 // Field com/builtbroken/ai/improvements/modifier/filters/NoopNode.INSTANCE:Lcom/builtbroken/ai/improvements/modifier/filters/NoopNode;
+         7: astore_1
+         8: aload_0
+         9: getfield      #13                 // Field size:I
+        12: aload_0
+        13: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        16: arraylength
+        17: if_icmpne     41
+        20: aload_0
+        21: aload_0
+        22: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        25: aload_0
+        26: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        29: arraylength
+        30: iconst_5
+        31: iadd
+        32: invokestatic  #23                 // Method java/util/Arrays.copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+        35: checkcast     #29                 // class "[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;"
+        38: putfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        41: aload_0
+        42: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        45: aload_0
+        46: dup
+        47: getfield      #13                 // Field size:I
+        50: dup_x1
+        51: iconst_1
+        52: iadd
+        53: putfield      #13                 // Field size:I
+        56: new           #2                  // class com/builtbroken/ai/improvements/modifier/filters/FilterNode
+        59: dup
+        60: aload_1
+        61: invokespecial #1                  // Method com/builtbroken/ai/improvements/modifier/filters/FilterNode."<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+        64: aastore
+        65: return
+      LineNumberTable:
+        line 24: 0
+        line 26: 4
+        line 29: 8
+        line 31: 20
+        line 33: 41
+        line 34: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      66     0  this   Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+            0      66     1 modifier   Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+      StackMapTable: number_of_entries = 2
+        frame_type = 8 /* same */
+        frame_type = 32 /* same */
+
+  public com.builtbroken.ai.improvements.modifier.filters.FilterResult handle(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=6, args_size=2
+         0: aload_0
+         1: getfield      #30                 // Field action:Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+         4: ifnull        20
+         7: aload_0
+         8: getfield      #30                 // Field action:Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+        11: aload_1
+        12: invokeinterface #34,  2           // InterfaceMethod com/builtbroken/ai/improvements/modifier/filters/IFilterNode.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        17: goto          23
+        20: getstatic     #40                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.FILTERED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        23: astore_2
+        24: aload_2
+        25: getstatic     #46                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        28: if_acmpeq     251
+        31: aload_0
+        32: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        35: ifnull        251
+        38: iconst_0
+        39: istore_3
+        40: iload_3
+        41: aload_0
+        42: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        45: arraylength
+        46: if_icmpge     73
+        49: aload_0
+        50: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        53: iload_3
+        54: aaload
+        55: ifnonnull     67
+        58: aload_0
+        59: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        62: iload_3
+        63: getstatic     #17                 // Field com/builtbroken/ai/improvements/modifier/filters/NoopNode.INSTANCE:Lcom/builtbroken/ai/improvements/modifier/filters/NoopNode;
+        66: aastore
+        67: iinc          3, 1
+        70: goto          40
+        73: iconst_0
+        74: istore_3
+        75: iload_3
+        76: aload_0
+        77: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        80: arraylength
+        81: if_icmpge     251
+        84: aload_0
+        85: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+        88: iload_3
+        89: aaload
+        90: astore        4
+        92: aload         4
+        94: aload_1
+        95: invokevirtual #49                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterNode.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        98: astore_2
+        99: aload_2
+       100: getstatic     #40                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.FILTERED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+       103: if_acmpne     245
+       106: aload         4
+       108: dup
+       109: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+       112: iconst_1
+       113: iadd
+       114: putfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+       117: aload         4
+       119: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+       122: ldc           #55                 // int 1073741823
+       124: if_icmplt     188
+       127: aload_0
+       128: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       131: invokedynamic #56,  0             // InvokeDynamic #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+       136: invokestatic  #60                 // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+       139: invokestatic  #66                 // Method java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+       142: aload_0
+       143: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       146: invokestatic  #70                 // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+       149: invokedynamic #74,  0             // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+       154: invokeinterface #75,  2           // InterfaceMethod java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+       159: invokeinterface #81,  1           // InterfaceMethod java/util/stream/IntStream.sum:()I
+       164: istore        5
+       166: aload_0
+       167: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       170: invokestatic  #70                 // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+       173: iload         5
+       175: invokedynamic #87,  0             // InvokeDynamic #2:accept:(I)Ljava/util/function/Consumer;
+       180: invokeinterface #91,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+       185: goto          243
+       188: iload_3
+       189: ifeq          243
+       192: aload         4
+       194: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+       197: aload_0
+       198: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       201: iload_3
+       202: iconst_1
+       203: isub
+       204: aaload
+       205: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+       208: if_icmple     243
+       211: aload_0
+       212: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       215: iload_3
+       216: aaload
+       217: astore        5
+       219: aload_0
+       220: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       223: iload_3
+       224: aload_0
+       225: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       228: iload_3
+       229: iconst_1
+       230: isub
+       231: aaload
+       232: aastore
+       233: aload_0
+       234: getfield      #7                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+       237: iload_3
+       238: iconst_1
+       239: isub
+       240: aload         5
+       242: aastore
+       243: aload_2
+       244: areturn
+       245: iinc          3, 1
+       248: goto          75
+       251: aload_2
+       252: areturn
+      LineNumberTable:
+        line 39: 0
+        line 40: 24
+        line 43: 38
+        line 45: 49
+        line 46: 58
+        line 43: 67
+        line 49: 73
+        line 51: 84
+        line 53: 92
+        line 54: 99
+        line 57: 106
+        line 60: 117
+        line 62: 127
+        line 63: 142
+        line 64: 166
+        line 65: 185
+        line 66: 188
+        line 68: 211
+        line 71: 219
+        line 74: 233
+        line 76: 243
+        line 49: 245
+        line 80: 251
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           40      33     3     i   I
+          166      19     5   sum   I
+          219      24     5     m   Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+           92     153     4 modifier   Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+           75     176     3     i   I
+            0     253     0  this   Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+            0     253     1 entity   Lnet/minecraft/world/entity/Entity;
+           24     229     2 filterResult   Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+      StackMapTable: number_of_entries = 10
+        frame_type = 20 /* same */
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class com/builtbroken/ai/improvements/modifier/filters/FilterResult ]
+        frame_type = 253 /* append */
+          offset_delta = 16
+          locals = [ class com/builtbroken/ai/improvements/modifier/filters/FilterResult, int ]
+        frame_type = 26 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 252 /* append */
+          offset_delta = 1
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 112
+          locals = [ class com/builtbroken/ai/improvements/modifier/filters/FilterNode ]
+        frame_type = 54 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 1
+        frame_type = 250 /* chop */
+          offset_delta = 5
+
+  private static void lambda$handle$2(int, com.builtbroken.ai.improvements.modifier.filters.FilterNode);
+    descriptor: (ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=5, locals=2, args_size=2
+         0: aload_1
+         1: aload_1
+         2: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+         5: i2d
+         6: iload_0
+         7: i2d
+         8: ddiv
+         9: invokestatic  #95                 // Method java/lang/Math.floor:(D)D
+        12: d2i
+        13: putfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+        16: return
+      LineNumberTable:
+        line 64: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0   sum   I
+            0      17     1     m   Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+
+  private static int lambda$handle$1(com.builtbroken.ai.improvements.modifier.filters.FilterNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+         4: ireturn
+      LineNumberTable:
+        line 63: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0     m   Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+
+  private static int lambda$handle$0(com.builtbroken.ai.improvements.modifier.filters.FilterNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #50                 // Field com/builtbroken/ai/improvements/modifier/filters/FilterNode.callCount:I
+         4: ireturn
+      LineNumberTable:
+        line 62: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0     m   Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;
+}
+SourceFile: "FilterLayer.java"
+BootstrapMethods:
+  0: #140 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #124 (Ljava/lang/Object;)I
+      #126 REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$0:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+      #129 (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  1: #140 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #124 (Ljava/lang/Object;)I
+      #130 REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$1:(Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+      #129 (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)I
+  2: #140 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #133 (Ljava/lang/Object;)V
+      #135 REF_invokeStatic com/builtbroken/ai/improvements/modifier/filters/FilterLayer.lambda$handle$2:(ILcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+      #138 (Lcom/builtbroken/ai/improvements/modifier/filters/FilterNode;)V
+InnerClasses:
+  public static final #152= #148 of #150; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

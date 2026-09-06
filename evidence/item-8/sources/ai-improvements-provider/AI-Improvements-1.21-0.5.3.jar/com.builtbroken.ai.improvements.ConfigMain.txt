@@ -1,0 +1,964 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/ConfigMain.class
+  Last modified Jun 14, 2024; size 9151 bytes
+  SHA-256 checksum b552cd1bf26cd2771deb93171fc6748e7ba90a4274f146787d5750b03e0c4cc0
+  Compiled from "ConfigMain.java"
+public class com.builtbroken.ai.improvements.ConfigMain
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #33                         // com/builtbroken/ai/improvements/ConfigMain
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 19, methods: 5, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = String             #8            // Entity Settings
+    #8 = Utf8               Entity Settings
+    #9 = Methodref          #10.#11       // net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #10 = Class              #12           // net/neoforged/neoforge/common/ModConfigSpec$Builder
+   #11 = NameAndType        #13:#14       // comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #12 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$Builder
+   #13 = Utf8               comment
+   #14 = Utf8               (Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #15 = String             #16           // entity
+   #16 = Utf8               entity
+   #17 = Methodref          #10.#18       // net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #18 = NameAndType        #19:#14       // push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #19 = Utf8               push
+   #20 = String             #21           // General
+   #21 = Utf8               General
+   #22 = String             #23           // general
+   #23 = Utf8               general
+   #24 = String             #25           // Allow AI tasks to be removed from entities at runtime. If this is disable no per mob or per mob type removes will run.
+   #25 = Utf8               Allow AI tasks to be removed from entities at runtime. If this is disable no per mob or per mob type removes will run.
+   #26 = String             #27           // allow_remove_calls
+   #27 = Utf8               allow_remove_calls
+   #28 = Methodref          #10.#29       // net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #29 = NameAndType        #30:#31       // define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #30 = Utf8               define
+   #31 = Utf8               (Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #32 = Fieldref           #33.#34       // com/builtbroken/ai/improvements/ConfigMain.allowRemoveCalls:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #33 = Class              #35           // com/builtbroken/ai/improvements/ConfigMain
+   #34 = NameAndType        #36:#37       // allowRemoveCalls:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #35 = Utf8               com/builtbroken/ai/improvements/ConfigMain
+   #36 = Utf8               allowRemoveCalls
+   #37 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #38 = String             #39           // Allows repeat remove calls to bubble to the top of the list to improve performance of repeat mob spawning.
+   #39 = Utf8               Allows repeat remove calls to bubble to the top of the list to improve performance of repeat mob spawning.
+   #40 = String             #41           // enable_call_bubbling
+   #41 = Utf8               enable_call_bubbling
+   #42 = Fieldref           #33.#43       // com/builtbroken/ai/improvements/ConfigMain.enableCallBubbling:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #43 = NameAndType        #44:#37       // enableCallBubbling:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #44 = Utf8               enableCallBubbling
+   #45 = Methodref          #10.#46       // net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #46 = NameAndType        #47:#48       // pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #47 = Utf8               pop
+   #48 = Utf8               ()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+   #49 = String             #50           // Entity Mob
+   #50 = Utf8               Entity Mob
+   #51 = String             #52           // mob
+   #52 = Utf8               mob
+   #53 = String             #54           // Remove Look Goal
+   #54 = Utf8               Remove Look Goal
+   #55 = String             #56           // Remove the look at goal (player or attack target) AI task. This will cause AIs to not face targets or walking directions.
+   #56 = Utf8               Remove the look at goal (player or attack target) AI task. This will cause AIs to not face targets or walking directions.
+   #57 = String             #58           // remove_look_goal
+   #58 = Utf8               remove_look_goal
+   #59 = Methodref          #33.#60       // com/builtbroken/ai/improvements/ConfigMain.createFilteredConfigValue:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #60 = NameAndType        #61:#62       // createFilteredConfigValue:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #61 = Utf8               createFilteredConfigValue
+   #62 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #63 = Fieldref           #33.#64       // com/builtbroken/ai/improvements/ConfigMain.removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #64 = NameAndType        #65:#66       // removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #65 = Utf8               removeLookGoal
+   #66 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #67 = String             #68           // Remove Look Random
+   #68 = Utf8               Remove Look Random
+   #69 = String             #70           // Remove the look at random position AI task. This will cause AIs to feel a little lifeless as they do not animate head movement while idle.
+   #70 = Utf8               Remove the look at random position AI task. This will cause AIs to feel a little lifeless as they do not animate head movement while idle.
+   #71 = String             #72           // remove_look_random
+   #72 = Utf8               remove_look_random
+   #73 = Fieldref           #33.#74       // com/builtbroken/ai/improvements/ConfigMain.removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #74 = NameAndType        #75:#66       // removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #75 = Utf8               removeLookRandom
+   #76 = String             #77           // Replace Look Controller
+   #77 = Utf8               Replace Look Controller
+   #78 = String             #79           // Replaces the default look controller with a version featuring cached tan math improving performance. Only works on vanilla style mobs, if a mod overrides the look controller it will skip.
+   #79 = Utf8               Replaces the default look controller with a version featuring cached tan math improving performance. Only works on vanilla style mobs, if a mod overrides the look controller it will skip.
+   #80 = String             #81           // replace_look_controller
+   #81 = Utf8               replace_look_controller
+   #82 = Fieldref           #33.#83       // com/builtbroken/ai/improvements/ConfigMain.replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #83 = NameAndType        #84:#66       // replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #84 = Utf8               replaceLookController
+   #85 = String             #86           // Entity Fish
+   #86 = Utf8               Entity Fish
+   #87 = String             #88           // fish
+   #88 = Utf8               fish
+   #89 = String             #90           // Remove the fish\'s random swimming pathfinder. This will cause fish to stay in position more often.
+   #90 = Utf8               Remove the fish\'s random swimming pathfinder. This will cause fish to stay in position more often.
+   #91 = String             #92           // remove_swim
+   #92 = Utf8               remove_swim
+   #93 = Fieldref           #33.#94       // com/builtbroken/ai/improvements/ConfigMain.removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #94 = NameAndType        #95:#37       // removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #95 = Utf8               removeFishSwim
+   #96 = String             #97           // Remove the fish\'s panic pathfinder. This will cause fish to not run away.
+   #97 = Utf8               Remove the fish\'s panic pathfinder. This will cause fish to not run away.
+   #98 = String             #99           // remove_panic
+   #99 = Utf8               remove_panic
+  #100 = Fieldref           #33.#101      // com/builtbroken/ai/improvements/ConfigMain.removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #101 = NameAndType        #102:#37      // removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #102 = Utf8               removeFishPanic
+  #103 = String             #104          // Remove the fish\'s AI task to avoid players.
+  #104 = Utf8               Remove the fish\'s AI task to avoid players.
+  #105 = String             #106          // remove_avoid_player
+  #106 = Utf8               remove_avoid_player
+  #107 = Fieldref           #33.#108      // com/builtbroken/ai/improvements/ConfigMain.removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #108 = NameAndType        #109:#37      // removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #109 = Utf8               removeFishAvoidPlayer
+  #110 = String             #111          // Remove the fish\'s AI task to follow a leader fish to act as a group of fish.
+  #111 = Utf8               Remove the fish\'s AI task to follow a leader fish to act as a group of fish.
+  #112 = String             #113          // remove_follow_leader
+  #113 = Utf8               remove_follow_leader
+  #114 = Fieldref           #33.#115      // com/builtbroken/ai/improvements/ConfigMain.removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #115 = NameAndType        #116:#37      // removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #116 = Utf8               removeFishFollowLeader
+  #117 = String             #118          // Remove the fish\'s AI task to puff up when entities are nearby
+  #118 = Utf8               Remove the fish\'s AI task to puff up when entities are nearby
+  #119 = String             #120          // remove_puff
+  #120 = Utf8               remove_puff
+  #121 = Fieldref           #33.#122      // com/builtbroken/ai/improvements/ConfigMain.removeFishPuff:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #122 = NameAndType        #123:#37      // removeFishPuff:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #123 = Utf8               removeFishPuff
+  #124 = String             #125          // Squid Fish
+  #125 = Utf8               Squid Fish
+  #126 = String             #127          // squid
+  #127 = Utf8               squid
+  #128 = String             #129          // Remove the squid\'s flee pathfinder. This will cause squid to not run away.
+  #129 = Utf8               Remove the squid\'s flee pathfinder. This will cause squid to not run away.
+  #130 = String             #131          // remove_flee
+  #131 = Utf8               remove_flee
+  #132 = Fieldref           #33.#133      // com/builtbroken/ai/improvements/ConfigMain.removeSquidFlee:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #133 = NameAndType        #134:#37      // removeSquidFlee:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #134 = Utf8               removeSquidFlee
+  #135 = String             #136          // Remove the squid\'s random movement pathfinder. This will cause squid to swim around randomly.
+  #136 = Utf8               Remove the squid\'s random movement pathfinder. This will cause squid to swim around randomly.
+  #137 = String             #138          // remove_random_move
+  #138 = Utf8               remove_random_move
+  #139 = Fieldref           #33.#140      // com/builtbroken/ai/improvements/ConfigMain.removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #140 = NameAndType        #141:#37      // removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #141 = Utf8               removeRandomMove
+  #142 = String             #143          // Cow
+  #143 = Utf8               Cow
+  #144 = String             #145          // cow
+  #145 = Utf8               cow
+  #146 = String             #147          // cows
+  #147 = Utf8               cows
+  #148 = Methodref          #33.#149      // com/builtbroken/ai/improvements/ConfigMain.createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #149 = NameAndType        #150:#151     // createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #150 = Utf8               createAnimalConfigSection
+  #151 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #152 = Fieldref           #33.#153      // com/builtbroken/ai/improvements/ConfigMain.cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #153 = NameAndType        #145:#154     // cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #154 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #155 = String             #156          // Chicken
+  #156 = Utf8               Chicken
+  #157 = String             #158          // chicken
+  #158 = Utf8               chicken
+  #159 = String             #160          // chickens
+  #160 = Utf8               chickens
+  #161 = Fieldref           #33.#162      // com/builtbroken/ai/improvements/ConfigMain.chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #162 = NameAndType        #158:#154     // chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #163 = String             #164          // Pig
+  #164 = Utf8               Pig
+  #165 = String             #166          // pig
+  #166 = Utf8               pig
+  #167 = String             #168          // pigs
+  #168 = Utf8               pigs
+  #169 = Fieldref           #33.#170      // com/builtbroken/ai/improvements/ConfigMain.pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #170 = NameAndType        #166:#154     // pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #171 = String             #172          // Sheep
+  #172 = Utf8               Sheep
+  #173 = String             #174          // sheep
+  #174 = Utf8               sheep
+  #175 = Fieldref           #33.#176      // com/builtbroken/ai/improvements/ConfigMain.sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #176 = NameAndType        #174:#154     // sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #177 = String             #178          // Remove the sheep\'s eat block AI task. This causes sheep to no longer eat grass, and thus be unable to regenerate their wool.
+  #178 = Utf8               Remove the sheep\'s eat block AI task. This causes sheep to no longer eat grass, and thus be unable to regenerate their wool.
+  #179 = String             #180          // remove_eat_block
+  #180 = Utf8               remove_eat_block
+  #181 = Fieldref           #33.#182      // com/builtbroken/ai/improvements/ConfigMain.removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #182 = NameAndType        #183:#37      // removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #183 = Utf8               removeSheepEatBlock
+  #184 = Class              #185          // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+  #185 = Utf8               com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+  #186 = String             #187          // Remove the %s\'s float AI task. This causes %s to no longer swim in water.
+  #187 = Utf8               Remove the %s\'s float AI task. This causes %s to no longer swim in water.
+  #188 = Methodref          #189.#190     // java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #189 = Class              #191          // java/lang/String
+  #190 = NameAndType        #192:#193     // format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #191 = Utf8               java/lang/String
+  #192 = Utf8               format
+  #193 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #194 = String             #195          // remove_float
+  #195 = Utf8               remove_float
+  #196 = String             #197          // Remove the %s\'s panic AI task. This causes %s to no longer run around after being hit, or search water to extinguish themselves.
+  #197 = Utf8               Remove the %s\'s panic AI task. This causes %s to no longer run around after being hit, or search water to extinguish themselves.
+  #198 = String             #199          // Remove the %s\'s breed AI task. This causes %s to be unable to breed to create offspring.
+  #199 = Utf8               Remove the %s\'s breed AI task. This causes %s to be unable to breed to create offspring.
+  #200 = String             #201          // remove_breed
+  #201 = Utf8               remove_breed
+  #202 = String             #203          // Remove the %s\'s tempt AI task. This causes %s to no longer follow the player if they\'re holding an item they like.
+  #203 = Utf8               Remove the %s\'s tempt AI task. This causes %s to no longer follow the player if they\'re holding an item they like.
+  #204 = String             #205          // remove_tempt
+  #205 = Utf8               remove_tempt
+  #206 = String             #207          // Remove the %s\'s follow parent AI task. This causes baby %s to no longer follow their parents.
+  #207 = Utf8               Remove the %s\'s follow parent AI task. This causes baby %s to no longer follow their parents.
+  #208 = String             #209          // remove_follow_parent
+  #209 = Utf8               remove_follow_parent
+  #210 = String             #211          // Remove the %s\'s random stroll AI task. This causes %s to no longer walk around randomly.
+  #211 = Utf8               Remove the %s\'s random stroll AI task. This causes %s to no longer walk around randomly.
+  #212 = String             #213          // remove_stroll
+  #213 = Utf8               remove_stroll
+  #214 = Methodref          #184.#215     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+  #215 = NameAndType        #5:#216       // "<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+  #216 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+  #217 = Class              #218          // com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+  #218 = Utf8               com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+  #219 = String             #220          // Set this to true to apply this setting to all mobs on the filter list. Set this to false to NOT apply this to mobs on the filter list.
+  #220 = Utf8               Set this to true to apply this setting to all mobs on the filter list. Set this to false to NOT apply this to mobs on the filter list.
+  #221 = String             #222          // is_allowlist
+  #222 = Utf8               is_allowlist
+  #223 = String             #224          // The list of mobs that is affected by this setting according to is_allowlist
+  #224 = Utf8               The list of mobs that is affected by this setting according to is_allowlist
+  #225 = String             #226          // filter_list
+  #226 = Utf8               filter_list
+  #227 = InterfaceMethodref #228.#229     // java/util/List.of:()Ljava/util/List;
+  #228 = Class              #230          // java/util/List
+  #229 = NameAndType        #231:#232     // of:()Ljava/util/List;
+  #230 = Utf8               java/util/List
+  #231 = Utf8               of
+  #232 = Utf8               ()Ljava/util/List;
+  #233 = InvokeDynamic      #0:#234       // #0:test:()Ljava/util/function/Predicate;
+  #234 = NameAndType        #235:#236     // test:()Ljava/util/function/Predicate;
+  #235 = Utf8               test
+  #236 = Utf8               ()Ljava/util/function/Predicate;
+  #237 = Methodref          #10.#238      // net/neoforged/neoforge/common/ModConfigSpec$Builder.defineList:(Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #238 = NameAndType        #239:#240     // defineList:(Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #239 = Utf8               defineList
+  #240 = Utf8               (Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+  #241 = Methodref          #217.#242     // com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;)V
+  #242 = NameAndType        #5:#243       // "<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;)V
+  #243 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;)V
+  #244 = Methodref          #10.#3        // net/neoforged/neoforge/common/ModConfigSpec$Builder."<init>":()V
+  #245 = InvokeDynamic      #1:#246       // #1:apply:()Ljava/util/function/Function;
+  #246 = NameAndType        #247:#248     // apply:()Ljava/util/function/Function;
+  #247 = Utf8               apply
+  #248 = Utf8               ()Ljava/util/function/Function;
+  #249 = Methodref          #10.#250      // net/neoforged/neoforge/common/ModConfigSpec$Builder.configure:(Ljava/util/function/Function;)Lorg/apache/commons/lang3/tuple/Pair;
+  #250 = NameAndType        #251:#252     // configure:(Ljava/util/function/Function;)Lorg/apache/commons/lang3/tuple/Pair;
+  #251 = Utf8               configure
+  #252 = Utf8               (Ljava/util/function/Function;)Lorg/apache/commons/lang3/tuple/Pair;
+  #253 = Methodref          #254.#255     // org/apache/commons/lang3/tuple/Pair.getRight:()Ljava/lang/Object;
+  #254 = Class              #256          // org/apache/commons/lang3/tuple/Pair
+  #255 = NameAndType        #257:#258     // getRight:()Ljava/lang/Object;
+  #256 = Utf8               org/apache/commons/lang3/tuple/Pair
+  #257 = Utf8               getRight
+  #258 = Utf8               ()Ljava/lang/Object;
+  #259 = Class              #260          // net/neoforged/neoforge/common/ModConfigSpec
+  #260 = Utf8               net/neoforged/neoforge/common/ModConfigSpec
+  #261 = Fieldref           #33.#262      // com/builtbroken/ai/improvements/ConfigMain.CONFIG_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+  #262 = NameAndType        #263:#264     // CONFIG_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+  #263 = Utf8               CONFIG_SPEC
+  #264 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec;
+  #265 = Methodref          #254.#266     // org/apache/commons/lang3/tuple/Pair.getLeft:()Ljava/lang/Object;
+  #266 = NameAndType        #267:#258     // getLeft:()Ljava/lang/Object;
+  #267 = Utf8               getLeft
+  #268 = Fieldref           #33.#269      // com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+  #269 = NameAndType        #270:#271     // CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+  #270 = Utf8               CONFIG
+  #271 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain;
+  #272 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+  #273 = Utf8               Code
+  #274 = Utf8               LineNumberTable
+  #275 = Utf8               LocalVariableTable
+  #276 = Utf8               this
+  #277 = Utf8               builder
+  #278 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+  #279 = Utf8               categoryComment
+  #280 = Utf8               Ljava/lang/String;
+  #281 = Utf8               singular
+  #282 = Utf8               plural
+  #283 = Utf8               shouldPop
+  #284 = Utf8               Z
+  #285 = Utf8               animalConfig
+  #286 = Utf8               StackMapTable
+  #287 = Utf8               section
+  #288 = Utf8               path
+  #289 = Utf8               defaultValue
+  #290 = Utf8               filteredConfigValue
+  #291 = Utf8               lambda$createFilteredConfigValue$0
+  #292 = Utf8               (Ljava/lang/Object;)Z
+  #293 = Utf8               e
+  #294 = Utf8               Ljava/lang/Object;
+  #295 = Utf8               <clinit>
+  #296 = Utf8               specPair
+  #297 = Utf8               Lorg/apache/commons/lang3/tuple/Pair;
+  #298 = Utf8               LocalVariableTypeTable
+  #299 = Utf8               Lorg/apache/commons/lang3/tuple/Pair<Lcom/builtbroken/ai/improvements/ConfigMain;Lnet/neoforged/neoforge/common/ModConfigSpec;>;
+  #300 = Utf8               SourceFile
+  #301 = Utf8               ConfigMain.java
+  #302 = Utf8               NestMembers
+  #303 = Utf8               BootstrapMethods
+  #304 = MethodType         #292          //  (Ljava/lang/Object;)Z
+  #305 = MethodHandle       6:#306        // REF_invokeStatic com/builtbroken/ai/improvements/ConfigMain.lambda$createFilteredConfigValue$0:(Ljava/lang/Object;)Z
+  #306 = Methodref          #33.#307      // com/builtbroken/ai/improvements/ConfigMain.lambda$createFilteredConfigValue$0:(Ljava/lang/Object;)Z
+  #307 = NameAndType        #291:#292     // lambda$createFilteredConfigValue$0:(Ljava/lang/Object;)Z
+  #308 = MethodType         #309          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #309 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #310 = MethodHandle       8:#311        // REF_newInvokeSpecial com/builtbroken/ai/improvements/ConfigMain."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+  #311 = Methodref          #33.#312      // com/builtbroken/ai/improvements/ConfigMain."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+  #312 = NameAndType        #5:#272       // "<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+  #313 = MethodType         #314          //  (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)Lcom/builtbroken/ai/improvements/ConfigMain;
+  #314 = Utf8               (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)Lcom/builtbroken/ai/improvements/ConfigMain;
+  #315 = MethodHandle       6:#316        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #316 = Methodref          #317.#318     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #317 = Class              #319          // java/lang/invoke/LambdaMetafactory
+  #318 = NameAndType        #320:#321     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #319 = Utf8               java/lang/invoke/LambdaMetafactory
+  #320 = Utf8               metafactory
+  #321 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #322 = Utf8               InnerClasses
+  #323 = Utf8               Builder
+  #324 = Class              #325          // net/neoforged/neoforge/common/ModConfigSpec$BooleanValue
+  #325 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$BooleanValue
+  #326 = Utf8               BooleanValue
+  #327 = Utf8               FilteredConfigValue
+  #328 = Utf8               AnimalConfigSection
+  #329 = Class              #330          // net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+  #330 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+  #331 = Utf8               ConfigValue
+  #332 = Class              #333          // java/lang/invoke/MethodHandles$Lookup
+  #333 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #334 = Class              #335          // java/lang/invoke/MethodHandles
+  #335 = Utf8               java/lang/invoke/MethodHandles
+  #336 = Utf8               Lookup
+{
+  public static final net.neoforged.neoforge.common.ModConfigSpec CONFIG_SPEC;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.ConfigMain CONFIG;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue allowRemoveCalls;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue enableCallBubbling;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$FilteredConfigValue removeLookGoal;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$FilteredConfigValue removeLookRandom;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$FilteredConfigValue replaceLookController;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeFishSwim;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeFishAvoidPlayer;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeFishPanic;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeFishFollowLeader;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeFishPuff;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeSquidFlee;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeRandomMove;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection cow;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection chicken;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection pig;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection sheep;
+    descriptor: Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.neoforged.neoforge.common.ModConfigSpec$BooleanValue removeSheepEatBlock;
+    descriptor: Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  com.builtbroken.ai.improvements.ConfigMain(net.neoforged.neoforge.common.ModConfigSpec$Builder);
+    descriptor: (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+    flags: (0x0000)
+    Code:
+      stack=7, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_1
+         5: ldc           #7                  // String Entity Settings
+         7: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        10: ldc           #15                 // String entity
+        12: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        15: pop
+        16: aload_1
+        17: ldc           #20                 // String General
+        19: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        22: ldc           #22                 // String general
+        24: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        27: pop
+        28: aload_0
+        29: aload_1
+        30: ldc           #24                 // String Allow AI tasks to be removed from entities at runtime. If this is disable no per mob or per mob type removes will run.
+        32: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        35: ldc           #26                 // String allow_remove_calls
+        37: iconst_1
+        38: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        41: putfield      #32                 // Field allowRemoveCalls:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        44: aload_0
+        45: aload_1
+        46: ldc           #38                 // String Allows repeat remove calls to bubble to the top of the list to improve performance of repeat mob spawning.
+        48: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        51: ldc           #40                 // String enable_call_bubbling
+        53: iconst_1
+        54: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        57: putfield      #42                 // Field enableCallBubbling:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        60: aload_1
+        61: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        64: pop
+        65: aload_1
+        66: ldc           #49                 // String Entity Mob
+        68: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        71: ldc           #51                 // String mob
+        73: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        76: pop
+        77: aload_0
+        78: aload_0
+        79: aload_1
+        80: ldc           #53                 // String Remove Look Goal
+        82: ldc           #55                 // String Remove the look at goal (player or attack target) AI task. This will cause AIs to not face targets or walking directions.
+        84: ldc           #57                 // String remove_look_goal
+        86: iconst_0
+        87: invokevirtual #59                 // Method createFilteredConfigValue:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+        90: putfield      #63                 // Field removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+        93: aload_0
+        94: aload_0
+        95: aload_1
+        96: ldc           #67                 // String Remove Look Random
+        98: ldc           #69                 // String Remove the look at random position AI task. This will cause AIs to feel a little lifeless as they do not animate head movement while idle.
+       100: ldc           #71                 // String remove_look_random
+       102: iconst_0
+       103: invokevirtual #59                 // Method createFilteredConfigValue:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+       106: putfield      #73                 // Field removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+       109: aload_0
+       110: aload_0
+       111: aload_1
+       112: ldc           #76                 // String Replace Look Controller
+       114: ldc           #78                 // String Replaces the default look controller with a version featuring cached tan math improving performance. Only works on vanilla style mobs, if a mod overrides the look controller it will skip.
+       116: ldc           #80                 // String replace_look_controller
+       118: iconst_1
+       119: invokevirtual #59                 // Method createFilteredConfigValue:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+       122: putfield      #82                 // Field replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+       125: aload_1
+       126: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       129: pop
+       130: aload_1
+       131: ldc           #85                 // String Entity Fish
+       133: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       136: ldc           #87                 // String fish
+       138: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       141: pop
+       142: aload_0
+       143: aload_1
+       144: ldc           #89                 // String Remove the fish\'s random swimming pathfinder. This will cause fish to stay in position more often.
+       146: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       149: ldc           #91                 // String remove_swim
+       151: iconst_0
+       152: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       155: putfield      #93                 // Field removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       158: aload_0
+       159: aload_1
+       160: ldc           #96                 // String Remove the fish\'s panic pathfinder. This will cause fish to not run away.
+       162: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       165: ldc           #98                 // String remove_panic
+       167: iconst_0
+       168: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       171: putfield      #100                // Field removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       174: aload_0
+       175: aload_1
+       176: ldc           #103                // String Remove the fish\'s AI task to avoid players.
+       178: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       181: ldc           #105                // String remove_avoid_player
+       183: iconst_0
+       184: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       187: putfield      #107                // Field removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       190: aload_0
+       191: aload_1
+       192: ldc           #110                // String Remove the fish\'s AI task to follow a leader fish to act as a group of fish.
+       194: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       197: ldc           #112                // String remove_follow_leader
+       199: iconst_0
+       200: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       203: putfield      #114                // Field removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       206: aload_0
+       207: aload_1
+       208: ldc           #117                // String Remove the fish\'s AI task to puff up when entities are nearby
+       210: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       213: ldc           #119                // String remove_puff
+       215: iconst_0
+       216: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       219: putfield      #121                // Field removeFishPuff:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       222: aload_1
+       223: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       226: pop
+       227: aload_1
+       228: ldc           #124                // String Squid Fish
+       230: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       233: ldc           #126                // String squid
+       235: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       238: pop
+       239: aload_0
+       240: aload_1
+       241: ldc           #128                // String Remove the squid\'s flee pathfinder. This will cause squid to not run away.
+       243: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       246: ldc           #130                // String remove_flee
+       248: iconst_0
+       249: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       252: putfield      #132                // Field removeSquidFlee:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       255: aload_0
+       256: aload_1
+       257: ldc           #135                // String Remove the squid\'s random movement pathfinder. This will cause squid to swim around randomly.
+       259: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       262: ldc           #137                // String remove_random_move
+       264: iconst_0
+       265: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       268: putfield      #139                // Field removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       271: aload_1
+       272: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       275: pop
+       276: aload_0
+       277: aload_0
+       278: aload_1
+       279: ldc           #142                // String Cow
+       281: ldc           #144                // String cow
+       283: ldc           #146                // String cows
+       285: iconst_1
+       286: invokevirtual #148                // Method createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       289: putfield      #152                // Field cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       292: aload_0
+       293: aload_0
+       294: aload_1
+       295: ldc           #155                // String Chicken
+       297: ldc           #157                // String chicken
+       299: ldc           #159                // String chickens
+       301: iconst_1
+       302: invokevirtual #148                // Method createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       305: putfield      #161                // Field chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       308: aload_0
+       309: aload_0
+       310: aload_1
+       311: ldc           #163                // String Pig
+       313: ldc           #165                // String pig
+       315: ldc           #167                // String pigs
+       317: iconst_1
+       318: invokevirtual #148                // Method createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       321: putfield      #169                // Field pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       324: aload_0
+       325: aload_0
+       326: aload_1
+       327: ldc           #171                // String Sheep
+       329: ldc           #173                // String sheep
+       331: ldc           #173                // String sheep
+       333: iconst_0
+       334: invokevirtual #148                // Method createAnimalConfigSection:(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       337: putfield      #175                // Field sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       340: aload_0
+       341: aload_1
+       342: ldc           #177                // String Remove the sheep\'s eat block AI task. This causes sheep to no longer eat grass, and thus be unable to regenerate their wool.
+       344: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       347: ldc           #179                // String remove_eat_block
+       349: iconst_0
+       350: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       353: putfield      #181                // Field removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       356: aload_1
+       357: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       360: pop
+       361: aload_1
+       362: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       365: pop
+       366: return
+      LineNumberTable:
+        line 65: 0
+        line 66: 4
+        line 69: 16
+        line 70: 28
+        line 71: 32
+        line 72: 38
+        line 74: 44
+        line 75: 48
+        line 76: 54
+        line 78: 60
+        line 81: 65
+        line 83: 77
+        line 84: 93
+        line 85: 109
+        line 87: 125
+        line 91: 130
+        line 93: 142
+        line 94: 146
+        line 95: 152
+        line 97: 158
+        line 98: 162
+        line 99: 168
+        line 101: 174
+        line 102: 178
+        line 103: 184
+        line 105: 190
+        line 106: 194
+        line 107: 200
+        line 109: 206
+        line 110: 210
+        line 111: 216
+        line 113: 222
+        line 116: 227
+        line 118: 239
+        line 119: 243
+        line 120: 249
+        line 122: 255
+        line 123: 259
+        line 124: 265
+        line 126: 271
+        line 129: 276
+        line 130: 292
+        line 131: 308
+        line 132: 324
+        line 134: 340
+        line 135: 344
+        line 136: 350
+        line 138: 356
+        line 140: 361
+        line 141: 366
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     367     0  this   Lcom/builtbroken/ai/improvements/ConfigMain;
+            0     367     1 builder   Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+
+  private com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection createAnimalConfigSection(net.neoforged.neoforge.common.ModConfigSpec$Builder, java.lang.String, java.lang.String, java.lang.String, boolean);
+    descriptor: (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=13, locals=7, args_size=6
+         0: aload_1
+         1: aload_2
+         2: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+         5: aload_3
+         6: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+         9: pop
+        10: new           #184                // class com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+        13: dup
+        14: aload_1
+        15: ldc           #186                // String Remove the %s\'s float AI task. This causes %s to no longer swim in water.
+        17: iconst_2
+        18: anewarray     #2                  // class java/lang/Object
+        21: dup
+        22: iconst_0
+        23: aload_3
+        24: aastore
+        25: dup
+        26: iconst_1
+        27: aload         4
+        29: aastore
+        30: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+        33: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        36: ldc           #194                // String remove_float
+        38: iconst_0
+        39: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        42: aload_1
+        43: ldc           #196                // String Remove the %s\'s panic AI task. This causes %s to no longer run around after being hit, or search water to extinguish themselves.
+        45: iconst_2
+        46: anewarray     #2                  // class java/lang/Object
+        49: dup
+        50: iconst_0
+        51: aload_3
+        52: aastore
+        53: dup
+        54: iconst_1
+        55: aload         4
+        57: aastore
+        58: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+        61: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        64: ldc           #98                 // String remove_panic
+        66: iconst_0
+        67: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        70: aload_1
+        71: ldc           #198                // String Remove the %s\'s breed AI task. This causes %s to be unable to breed to create offspring.
+        73: iconst_2
+        74: anewarray     #2                  // class java/lang/Object
+        77: dup
+        78: iconst_0
+        79: aload_3
+        80: aastore
+        81: dup
+        82: iconst_1
+        83: aload         4
+        85: aastore
+        86: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+        89: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        92: ldc           #200                // String remove_breed
+        94: iconst_0
+        95: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        98: aload_1
+        99: ldc           #202                // String Remove the %s\'s tempt AI task. This causes %s to no longer follow the player if they\'re holding an item they like.
+       101: iconst_2
+       102: anewarray     #2                  // class java/lang/Object
+       105: dup
+       106: iconst_0
+       107: aload_3
+       108: aastore
+       109: dup
+       110: iconst_1
+       111: aload         4
+       113: aastore
+       114: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       117: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       120: ldc           #204                // String remove_tempt
+       122: iconst_0
+       123: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       126: aload_1
+       127: ldc           #206                // String Remove the %s\'s follow parent AI task. This causes baby %s to no longer follow their parents.
+       129: iconst_2
+       130: anewarray     #2                  // class java/lang/Object
+       133: dup
+       134: iconst_0
+       135: aload_3
+       136: aastore
+       137: dup
+       138: iconst_1
+       139: aload         4
+       141: aastore
+       142: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       145: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       148: ldc           #208                // String remove_follow_parent
+       150: iconst_0
+       151: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       154: aload_1
+       155: ldc           #210                // String Remove the %s\'s random stroll AI task. This causes %s to no longer walk around randomly.
+       157: iconst_2
+       158: anewarray     #2                  // class java/lang/Object
+       161: dup
+       162: iconst_0
+       163: aload_3
+       164: aastore
+       165: dup
+       166: iconst_1
+       167: aload         4
+       169: aastore
+       170: invokestatic  #188                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       173: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       176: ldc           #212                // String remove_stroll
+       178: iconst_0
+       179: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       182: invokespecial #214                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       185: astore        6
+       187: iload         5
+       189: ifeq          197
+       192: aload_1
+       193: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+       196: pop
+       197: aload         6
+       199: areturn
+      LineNumberTable:
+        line 145: 0
+        line 147: 10
+        line 148: 30
+        line 149: 39
+        line 151: 58
+        line 152: 67
+        line 154: 86
+        line 155: 95
+        line 157: 114
+        line 158: 123
+        line 160: 142
+        line 161: 151
+        line 163: 170
+        line 164: 179
+        line 166: 187
+        line 167: 192
+        line 169: 197
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     200     0  this   Lcom/builtbroken/ai/improvements/ConfigMain;
+            0     200     1 builder   Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+            0     200     2 categoryComment   Ljava/lang/String;
+            0     200     3 singular   Ljava/lang/String;
+            0     200     4 plural   Ljava/lang/String;
+            0     200     5 shouldPop   Z
+          187      13     6 animalConfig   Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 197
+          locals = [ class com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection ]
+
+  private com.builtbroken.ai.improvements.ConfigMain$FilteredConfigValue createFilteredConfigValue(net.neoforged.neoforge.common.ModConfigSpec$Builder, java.lang.String, java.lang.String, java.lang.String, boolean);
+    descriptor: (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=7, args_size=6
+         0: aload_1
+         1: aload_2
+         2: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+         5: aload         4
+         7: invokevirtual #17                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.push:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        10: pop
+        11: new           #217                // class com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+        14: dup
+        15: aload_1
+        16: aload_3
+        17: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        20: aload         4
+        22: iload         5
+        24: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        27: aload_1
+        28: ldc           #219                // String Set this to true to apply this setting to all mobs on the filter list. Set this to false to NOT apply this to mobs on the filter list.
+        30: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        33: ldc           #221                // String is_allowlist
+        35: iconst_0
+        36: invokevirtual #28                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        39: aload_1
+        40: ldc           #223                // String The list of mobs that is affected by this setting according to is_allowlist
+        42: invokevirtual #9                  // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        45: ldc           #225                // String filter_list
+        47: invokestatic  #227                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+        50: invokedynamic #233,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+        55: invokevirtual #237                // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.defineList:(Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+        58: invokespecial #241                // Method com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;)V
+        61: astore        6
+        63: aload_1
+        64: invokevirtual #45                 // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.pop:()Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+        67: pop
+        68: aload         6
+        70: areturn
+      LineNumberTable:
+        line 175: 0
+        line 177: 11
+        line 178: 17
+        line 179: 24
+        line 181: 30
+        line 182: 36
+        line 184: 42
+        line 185: 47
+        line 187: 63
+        line 188: 68
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      71     0  this   Lcom/builtbroken/ai/improvements/ConfigMain;
+            0      71     1 builder   Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;
+            0      71     2 section   Ljava/lang/String;
+            0      71     3 comment   Ljava/lang/String;
+            0      71     4  path   Ljava/lang/String;
+            0      71     5 defaultValue   Z
+           63       8     6 filteredConfigValue   Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+
+  private static boolean lambda$createFilteredConfigValue$0(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #189                // class java/lang/String
+         4: ireturn
+      LineNumberTable:
+        line 185: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0     e   Ljava/lang/Object;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=0
+         0: new           #10                 // class net/neoforged/neoforge/common/ModConfigSpec$Builder
+         3: dup
+         4: invokespecial #244                // Method net/neoforged/neoforge/common/ModConfigSpec$Builder."<init>":()V
+         7: invokedynamic #245,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        12: invokevirtual #249                // Method net/neoforged/neoforge/common/ModConfigSpec$Builder.configure:(Ljava/util/function/Function;)Lorg/apache/commons/lang3/tuple/Pair;
+        15: astore_0
+        16: aload_0
+        17: invokevirtual #253                // Method org/apache/commons/lang3/tuple/Pair.getRight:()Ljava/lang/Object;
+        20: checkcast     #259                // class net/neoforged/neoforge/common/ModConfigSpec
+        23: putstatic     #261                // Field CONFIG_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+        26: aload_0
+        27: invokevirtual #265                // Method org/apache/commons/lang3/tuple/Pair.getLeft:()Ljava/lang/Object;
+        30: checkcast     #33                 // class com/builtbroken/ai/improvements/ConfigMain
+        33: putstatic     #268                // Field CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+        36: return
+      LineNumberTable:
+        line 58: 0
+        line 60: 16
+        line 61: 26
+        line 62: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           16      20     0 specPair   Lorg/apache/commons/lang3/tuple/Pair;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           16      20     0 specPair   Lorg/apache/commons/lang3/tuple/Pair<Lcom/builtbroken/ai/improvements/ConfigMain;Lnet/neoforged/neoforge/common/ModConfigSpec;>;
+}
+SourceFile: "ConfigMain.java"
+NestMembers:
+  com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+  com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+BootstrapMethods:
+  0: #315 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #304 (Ljava/lang/Object;)Z
+      #305 REF_invokeStatic com/builtbroken/ai/improvements/ConfigMain.lambda$createFilteredConfigValue$0:(Ljava/lang/Object;)Z
+      #304 (Ljava/lang/Object;)Z
+  1: #315 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #308 (Ljava/lang/Object;)Ljava/lang/Object;
+      #310 REF_newInvokeSpecial com/builtbroken/ai/improvements/ConfigMain."<init>":(Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)V
+      #313 (Lnet/neoforged/neoforge/common/ModConfigSpec$Builder;)Lcom/builtbroken/ai/improvements/ConfigMain;
+InnerClasses:
+  public static #323= #10 of #259;        // Builder=class net/neoforged/neoforge/common/ModConfigSpec$Builder of class net/neoforged/neoforge/common/ModConfigSpec
+  public static #326= #324 of #259;       // BooleanValue=class net/neoforged/neoforge/common/ModConfigSpec$BooleanValue of class net/neoforged/neoforge/common/ModConfigSpec
+  public static final #327= #217 of #33;  // FilteredConfigValue=class com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue of class com/builtbroken/ai/improvements/ConfigMain
+  public static final #328= #184 of #33;  // AnimalConfigSection=class com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection of class com/builtbroken/ai/improvements/ConfigMain
+  public static #331= #329 of #259;       // ConfigValue=class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue of class net/neoforged/neoforge/common/ModConfigSpec
+  public static final #336= #332 of #334; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

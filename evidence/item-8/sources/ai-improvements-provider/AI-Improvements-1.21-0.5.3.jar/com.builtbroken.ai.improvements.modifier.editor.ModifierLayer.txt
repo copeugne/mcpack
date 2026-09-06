@@ -1,0 +1,690 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.class
+  Last modified Jun 14, 2024; size 5127 bytes
+  SHA-256 checksum 72ac5bdab13cf5bd7ade5ccc9178b01c92053652d5a15522c2f441ffaeca242d
+  Compiled from "ModifierLayer.java"
+public class com.builtbroken.ai.improvements.modifier.editor.ModifierLayer
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #10                         // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 4, methods: 9, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // com/builtbroken/ai/improvements/modifier/editor/ModifierNode
+    #8 = Utf8               com/builtbroken/ai/improvements/modifier/editor/ModifierNode
+    #9 = Fieldref           #10.#11       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+   #10 = Class              #12           // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer
+   #11 = NameAndType        #13:#14       // nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+   #12 = Utf8               com/builtbroken/ai/improvements/modifier/editor/ModifierLayer
+   #13 = Utf8               nodes
+   #14 = Utf8               [Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+   #15 = Fieldref           #10.#16       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.size:I
+   #16 = NameAndType        #17:#18       // size:I
+   #17 = Utf8               size
+   #18 = Utf8               I
+   #19 = Fieldref           #10.#20       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.resortNormalize:Z
+   #20 = NameAndType        #21:#22       // resortNormalize:Z
+   #21 = Utf8               resortNormalize
+   #22 = Utf8               Z
+   #23 = Fieldref           #10.#24       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.combatAI:Z
+   #24 = NameAndType        #25:#22       // combatAI:Z
+   #25 = Utf8               combatAI
+   #26 = Methodref          #27.#28       // java/util/Arrays.copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #27 = Class              #29           // java/util/Arrays
+   #28 = NameAndType        #30:#31       // copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #29 = Utf8               java/util/Arrays
+   #30 = Utf8               copyOf
+   #31 = Utf8               ([Ljava/lang/Object;I)[Ljava/lang/Object;
+   #32 = Class              #14           // "[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;"
+   #33 = Methodref          #7.#34        // com/builtbroken/ai/improvements/modifier/editor/ModifierNode."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #34 = NameAndType        #5:#35        // "<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #35 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #36 = Fieldref           #37.#38       // net/minecraft/world/entity/Mob.targetSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+   #37 = Class              #39           // net/minecraft/world/entity/Mob
+   #38 = NameAndType        #40:#41       // targetSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+   #39 = Utf8               net/minecraft/world/entity/Mob
+   #40 = Utf8               targetSelector
+   #41 = Utf8               Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+   #42 = Fieldref           #37.#43       // net/minecraft/world/entity/Mob.goalSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+   #43 = NameAndType        #44:#41       // goalSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+   #44 = Utf8               goalSelector
+   #45 = Class              #46           // java/util/HashSet
+   #46 = Utf8               java/util/HashSet
+   #47 = Methodref          #45.#3        // java/util/HashSet."<init>":()V
+   #48 = Fieldref           #49.#50       // net/minecraft/world/entity/ai/goal/GoalSelector.availableGoals:Ljava/util/Set;
+   #49 = Class              #51           // net/minecraft/world/entity/ai/goal/GoalSelector
+   #50 = NameAndType        #52:#53       // availableGoals:Ljava/util/Set;
+   #51 = Utf8               net/minecraft/world/entity/ai/goal/GoalSelector
+   #52 = Utf8               availableGoals
+   #53 = Utf8               Ljava/util/Set;
+   #54 = InterfaceMethodref #55.#56       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #55 = Class              #57           // java/util/Set
+   #56 = NameAndType        #58:#59       // iterator:()Ljava/util/Iterator;
+   #57 = Utf8               java/util/Set
+   #58 = Utf8               iterator
+   #59 = Utf8               ()Ljava/util/Iterator;
+   #60 = InterfaceMethodref #61.#62       // java/util/Iterator.hasNext:()Z
+   #61 = Class              #63           // java/util/Iterator
+   #62 = NameAndType        #64:#65       // hasNext:()Z
+   #63 = Utf8               java/util/Iterator
+   #64 = Utf8               hasNext
+   #65 = Utf8               ()Z
+   #66 = InterfaceMethodref #61.#67       // java/util/Iterator.next:()Ljava/lang/Object;
+   #67 = NameAndType        #68:#69       // next:()Ljava/lang/Object;
+   #68 = Utf8               next
+   #69 = Utf8               ()Ljava/lang/Object;
+   #70 = Class              #71           // net/minecraft/world/entity/ai/goal/WrappedGoal
+   #71 = Utf8               net/minecraft/world/entity/ai/goal/WrappedGoal
+   #72 = Methodref          #70.#73       // net/minecraft/world/entity/ai/goal/WrappedGoal.getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #73 = NameAndType        #74:#75       // getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #74 = Utf8               getGoal
+   #75 = Utf8               ()Lnet/minecraft/world/entity/ai/goal/Goal;
+   #76 = Methodref          #10.#77       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.process:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+   #77 = NameAndType        #78:#79       // process:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+   #78 = Utf8               process
+   #79 = Utf8               (Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+   #80 = InterfaceMethodref #55.#81       // java/util/Set.add:(Ljava/lang/Object;)Z
+   #81 = NameAndType        #82:#83       // add:(Ljava/lang/Object;)Z
+   #82 = Utf8               add
+   #83 = Utf8               (Ljava/lang/Object;)Z
+   #84 = Class              #85           // net/minecraft/world/entity/ai/goal/Goal
+   #85 = Utf8               net/minecraft/world/entity/ai/goal/Goal
+   #86 = Methodref          #49.#87       // net/minecraft/world/entity/ai/goal/GoalSelector.removeGoal:(Lnet/minecraft/world/entity/ai/goal/Goal;)V
+   #87 = NameAndType        #88:#89       // removeGoal:(Lnet/minecraft/world/entity/ai/goal/Goal;)V
+   #88 = Utf8               removeGoal
+   #89 = Utf8               (Lnet/minecraft/world/entity/ai/goal/Goal;)V
+   #90 = Methodref          #10.#91       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.resort:(Z)V
+   #91 = NameAndType        #92:#93       // resort:(Z)V
+   #92 = Utf8               resort
+   #93 = Utf8               (Z)V
+   #94 = Methodref          #7.#95        // com/builtbroken/ai/improvements/modifier/editor/ModifierNode.handle:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+   #95 = NameAndType        #96:#79       // handle:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+   #96 = Utf8               handle
+   #97 = Fieldref           #7.#98        // com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+   #98 = NameAndType        #99:#18       // callCount:I
+   #99 = Utf8               callCount
+  #100 = Methodref          #10.#101      // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.bubble:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;I)V
+  #101 = NameAndType        #102:#103     // bubble:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;I)V
+  #102 = Utf8               bubble
+  #103 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;I)V
+  #104 = InvokeDynamic      #0:#105       // #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+  #105 = NameAndType        #106:#107     // applyAsInt:()Ljava/util/function/ToIntFunction;
+  #106 = Utf8               applyAsInt
+  #107 = Utf8               ()Ljava/util/function/ToIntFunction;
+  #108 = InterfaceMethodref #109.#110     // java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+  #109 = Class              #111          // java/util/Comparator
+  #110 = NameAndType        #112:#113     // comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+  #111 = Utf8               java/util/Comparator
+  #112 = Utf8               comparingInt
+  #113 = Utf8               (Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+  #114 = Methodref          #27.#115      // java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+  #115 = NameAndType        #116:#117     // sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+  #116 = Utf8               sort
+  #117 = Utf8               ([Ljava/lang/Object;Ljava/util/Comparator;)V
+  #118 = Methodref          #27.#119      // java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+  #119 = NameAndType        #120:#121     // stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+  #120 = Utf8               stream
+  #121 = Utf8               ([Ljava/lang/Object;)Ljava/util/stream/Stream;
+  #122 = InvokeDynamic      #1:#105       // #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+  #123 = InterfaceMethodref #124.#125     // java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+  #124 = Class              #126          // java/util/stream/Stream
+  #125 = NameAndType        #127:#128     // mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+  #126 = Utf8               java/util/stream/Stream
+  #127 = Utf8               mapToInt
+  #128 = Utf8               (Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+  #129 = InterfaceMethodref #130.#131     // java/util/stream/IntStream.sum:()I
+  #130 = Class              #132          // java/util/stream/IntStream
+  #131 = NameAndType        #133:#134     // sum:()I
+  #132 = Utf8               java/util/stream/IntStream
+  #133 = Utf8               sum
+  #134 = Utf8               ()I
+  #135 = InvokeDynamic      #2:#136       // #2:accept:(I)Ljava/util/function/Consumer;
+  #136 = NameAndType        #137:#138     // accept:(I)Ljava/util/function/Consumer;
+  #137 = Utf8               accept
+  #138 = Utf8               (I)Ljava/util/function/Consumer;
+  #139 = InterfaceMethodref #124.#140     // java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+  #140 = NameAndType        #141:#142     // forEach:(Ljava/util/function/Consumer;)V
+  #141 = Utf8               forEach
+  #142 = Utf8               (Ljava/util/function/Consumer;)V
+  #143 = Class              #144          // java/lang/Integer
+  #144 = Utf8               java/lang/Integer
+  #145 = Integer            1073741823
+  #146 = Methodref          #147.#148     // java/lang/Math.floor:(D)D
+  #147 = Class              #149          // java/lang/Math
+  #148 = NameAndType        #150:#151     // floor:(D)D
+  #149 = Utf8               java/lang/Math
+  #150 = Utf8               floor
+  #151 = Utf8               (D)D
+  #152 = Utf8               Code
+  #153 = Utf8               LineNumberTable
+  #154 = Utf8               LocalVariableTable
+  #155 = Utf8               this
+  #156 = Utf8               Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+  #157 = Utf8               modifier
+  #158 = Utf8               Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;
+  #159 = Utf8               StackMapTable
+  #160 = Utf8               (Lnet/minecraft/world/entity/Mob;)V
+  #161 = Utf8               reGoal
+  #162 = Utf8               Lnet/minecraft/world/entity/ai/goal/Goal;
+  #163 = Utf8               prioritizedGoal
+  #164 = Utf8               Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+  #165 = Utf8               goal
+  #166 = Utf8               entity
+  #167 = Utf8               Lnet/minecraft/world/entity/Mob;
+  #168 = Utf8               goalsToRemove
+  #169 = Utf8               LocalVariableTypeTable
+  #170 = Utf8               Ljava/util/Set<Lnet/minecraft/world/entity/ai/goal/Goal;>;
+  #171 = Utf8               Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+  #172 = Utf8               i
+  #173 = Utf8               normalize
+  #174 = Utf8               m
+  #175 = Utf8               lambda$resort$2
+  #176 = Utf8               (ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #177 = Utf8               lambda$resort$1
+  #178 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #179 = Utf8               lambda$resort$0
+  #180 = Utf8               SourceFile
+  #181 = Utf8               ModifierLayer.java
+  #182 = Utf8               BootstrapMethods
+  #183 = MethodType         #184          //  (Ljava/lang/Object;)I
+  #184 = Utf8               (Ljava/lang/Object;)I
+  #185 = MethodHandle       6:#186        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$0:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #186 = Methodref          #10.#187      // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$0:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #187 = NameAndType        #179:#178     // lambda$resort$0:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #188 = MethodType         #178          //  (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #189 = MethodHandle       6:#190        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$1:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #190 = Methodref          #10.#191      // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$1:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #191 = NameAndType        #177:#178     // lambda$resort$1:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  #192 = MethodType         #193          //  (Ljava/lang/Object;)V
+  #193 = Utf8               (Ljava/lang/Object;)V
+  #194 = MethodHandle       6:#195        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$2:(ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #195 = Methodref          #10.#196      // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$2:(ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #196 = NameAndType        #175:#176     // lambda$resort$2:(ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #197 = MethodType         #198          //  (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #198 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+  #199 = MethodHandle       6:#200        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #200 = Methodref          #201.#202     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #201 = Class              #203          // java/lang/invoke/LambdaMetafactory
+  #202 = NameAndType        #204:#205     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #203 = Utf8               java/lang/invoke/LambdaMetafactory
+  #204 = Utf8               metafactory
+  #205 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #206 = Utf8               InnerClasses
+  #207 = Class              #208          // java/lang/invoke/MethodHandles$Lookup
+  #208 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #209 = Class              #210          // java/lang/invoke/MethodHandles
+  #210 = Utf8               java/lang/invoke/MethodHandles
+  #211 = Utf8               Lookup
+{
+  private com.builtbroken.ai.improvements.modifier.editor.ModifierNode[] nodes;
+    descriptor: [Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+    flags: (0x0002) ACC_PRIVATE
+
+  private int size;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  private boolean resortNormalize;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  public final boolean combatAI;
+    descriptor: Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public com.builtbroken.ai.improvements.modifier.editor.ModifierLayer(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_5
+         6: anewarray     #7                  // class com/builtbroken/ai/improvements/modifier/editor/ModifierNode
+         9: putfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        12: aload_0
+        13: iconst_0
+        14: putfield      #15                 // Field size:I
+        17: aload_0
+        18: iconst_0
+        19: putfield      #19                 // Field resortNormalize:Z
+        22: aload_0
+        23: iload_1
+        24: putfield      #23                 // Field combatAI:Z
+        27: return
+      LineNumberTable:
+        line 26: 0
+        line 18: 4
+        line 20: 12
+        line 21: 17
+        line 27: 22
+        line 28: 27
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      28     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0      28     1 combatAI   Z
+
+  public void add(com.builtbroken.ai.improvements.modifier.editor.IEntityAiModifier);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=2, args_size=2
+         0: aload_1
+         1: ifnull        61
+         4: aload_0
+         5: getfield      #15                 // Field size:I
+         8: aload_0
+         9: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        12: arraylength
+        13: if_icmpne     37
+        16: aload_0
+        17: aload_0
+        18: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        21: aload_0
+        22: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        25: arraylength
+        26: iconst_5
+        27: iadd
+        28: invokestatic  #26                 // Method java/util/Arrays.copyOf:([Ljava/lang/Object;I)[Ljava/lang/Object;
+        31: checkcast     #32                 // class "[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;"
+        34: putfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        37: aload_0
+        38: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        41: aload_0
+        42: dup
+        43: getfield      #15                 // Field size:I
+        46: dup_x1
+        47: iconst_1
+        48: iadd
+        49: putfield      #15                 // Field size:I
+        52: new           #7                  // class com/builtbroken/ai/improvements/modifier/editor/ModifierNode
+        55: dup
+        56: aload_1
+        57: invokespecial #33                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierNode."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        60: aastore
+        61: return
+      LineNumberTable:
+        line 32: 0
+        line 34: 4
+        line 36: 16
+        line 38: 37
+        line 40: 61
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      62     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0      62     1 modifier   Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;
+      StackMapTable: number_of_entries = 2
+        frame_type = 37 /* same */
+        frame_type = 23 /* same */
+
+  public void handle(net.minecraft.world.entity.Mob);
+    descriptor: (Lnet/minecraft/world/entity/Mob;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=7, args_size=2
+         0: aload_0
+         1: getfield      #23                 // Field combatAI:Z
+         4: ifeq          14
+         7: aload_1
+         8: getfield      #36                 // Field net/minecraft/world/entity/Mob.targetSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+        11: goto          18
+        14: aload_1
+        15: getfield      #42                 // Field net/minecraft/world/entity/Mob.goalSelector:Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+        18: astore_2
+        19: new           #45                 // class java/util/HashSet
+        22: dup
+        23: invokespecial #47                 // Method java/util/HashSet."<init>":()V
+        26: astore_3
+        27: aload_2
+        28: getfield      #48                 // Field net/minecraft/world/entity/ai/goal/GoalSelector.availableGoals:Ljava/util/Set;
+        31: invokeinterface #54,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        36: astore        4
+        38: aload         4
+        40: invokeinterface #60,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        45: ifeq          92
+        48: aload         4
+        50: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        55: checkcast     #70                 // class net/minecraft/world/entity/ai/goal/WrappedGoal
+        58: astore        5
+        60: aload_0
+        61: aload_1
+        62: aload         5
+        64: invokevirtual #72                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+        67: invokevirtual #76                 // Method process:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+        70: astore        6
+        72: aload         6
+        74: ifnonnull     89
+        77: aload_3
+        78: aload         5
+        80: invokevirtual #72                 // Method net/minecraft/world/entity/ai/goal/WrappedGoal.getGoal:()Lnet/minecraft/world/entity/ai/goal/Goal;
+        83: invokeinterface #80,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        88: pop
+        89: goto          38
+        92: aload_3
+        93: invokeinterface #54,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+        98: astore        4
+       100: aload         4
+       102: invokeinterface #60,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       107: ifeq          131
+       110: aload         4
+       112: invokeinterface #66,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       117: checkcast     #84                 // class net/minecraft/world/entity/ai/goal/Goal
+       120: astore        5
+       122: aload_2
+       123: aload         5
+       125: invokevirtual #86                 // Method net/minecraft/world/entity/ai/goal/GoalSelector.removeGoal:(Lnet/minecraft/world/entity/ai/goal/Goal;)V
+       128: goto          100
+       131: aload_0
+       132: getfield      #19                 // Field resortNormalize:Z
+       135: ifeq          148
+       138: aload_0
+       139: iconst_0
+       140: putfield      #19                 // Field resortNormalize:Z
+       143: aload_0
+       144: iconst_1
+       145: invokevirtual #90                 // Method resort:(Z)V
+       148: return
+      LineNumberTable:
+        line 44: 0
+        line 46: 19
+        line 47: 27
+        line 49: 60
+        line 52: 72
+        line 54: 77
+        line 57: 89
+        line 60: 92
+        line 62: 122
+        line 63: 128
+        line 66: 131
+        line 68: 138
+        line 69: 143
+        line 71: 148
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           72      17     6 reGoal   Lnet/minecraft/world/entity/ai/goal/Goal;
+           60      29     5 prioritizedGoal   Lnet/minecraft/world/entity/ai/goal/WrappedGoal;
+          122       6     5  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+            0     149     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0     149     1 entity   Lnet/minecraft/world/entity/Mob;
+           19     130     2 goalSelector   Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+           27     122     3 goalsToRemove   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           27     122     3 goalsToRemove   Ljava/util/Set<Lnet/minecraft/world/entity/ai/goal/Goal;>;
+      StackMapTable: number_of_entries = 8
+        frame_type = 14 /* same */
+        frame_type = 67 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/world/entity/ai/goal/GoalSelector ]
+        frame_type = 254 /* append */
+          offset_delta = 19
+          locals = [ class net/minecraft/world/entity/ai/goal/GoalSelector, class java/util/Set, class java/util/Iterator ]
+        frame_type = 50 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 30
+        frame_type = 16 /* same */
+
+  protected net.minecraft.world.entity.ai.goal.Goal process(net.minecraft.world.entity.Mob, net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=4, locals=6, args_size=3
+         0: iconst_0
+         1: istore_3
+         2: iload_3
+         3: aload_0
+         4: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+         7: arraylength
+         8: if_icmpge     84
+        11: aload_0
+        12: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        15: iload_3
+        16: aaload
+        17: astore        4
+        19: aload         4
+        21: ifnull        78
+        24: aload         4
+        26: aload_1
+        27: aload_2
+        28: invokevirtual #94                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierNode.handle:(Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/ai/goal/Goal;)Lnet/minecraft/world/entity/ai/goal/Goal;
+        31: astore        5
+        33: aload         5
+        35: aload_2
+        36: if_acmpeq     69
+        39: iload_3
+        40: ifeq          69
+        43: aload         4
+        45: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+        48: aload_0
+        49: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        52: iload_3
+        53: iconst_1
+        54: isub
+        55: aaload
+        56: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+        59: if_icmple     69
+        62: aload_0
+        63: aload         4
+        65: iload_3
+        66: invokevirtual #100                // Method bubble:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;I)V
+        69: aload         5
+        71: aload_2
+        72: if_acmpeq     78
+        75: aload         5
+        77: areturn
+        78: iinc          3, 1
+        81: goto          2
+        84: aload_2
+        85: areturn
+      LineNumberTable:
+        line 75: 0
+        line 77: 11
+        line 79: 19
+        line 81: 24
+        line 84: 33
+        line 86: 62
+        line 90: 69
+        line 92: 75
+        line 75: 78
+        line 96: 84
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           33      45     5 reGoal   Lnet/minecraft/world/entity/ai/goal/Goal;
+           19      59     4 modifier   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+            2      82     3     i   I
+            0      86     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0      86     1 entity   Lnet/minecraft/world/entity/Mob;
+            0      86     2  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 66
+          locals = [ class com/builtbroken/ai/improvements/modifier/editor/ModifierNode, class net/minecraft/world/entity/ai/goal/Goal ]
+        frame_type = 249 /* chop */
+          offset_delta = 8
+        frame_type = 250 /* chop */
+          offset_delta = 5
+
+  protected void resort(boolean);
+    descriptor: (Z)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+         4: invokedynamic #104,  0            // InvokeDynamic #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+         9: invokestatic  #108                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+        12: invokestatic  #114                // Method java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+        15: iload_1
+        16: ifeq          60
+        19: aload_0
+        20: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        23: invokestatic  #118                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+        26: invokedynamic #122,  0            // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+        31: invokeinterface #123,  2          // InterfaceMethod java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+        36: invokeinterface #129,  1          // InterfaceMethod java/util/stream/IntStream.sum:()I
+        41: istore_2
+        42: aload_0
+        43: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        46: invokestatic  #118                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+        49: iload_2
+        50: invokedynamic #135,  0            // InvokeDynamic #2:accept:(I)Ljava/util/function/Consumer;
+        55: invokeinterface #139,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+        60: return
+      LineNumberTable:
+        line 101: 0
+        line 102: 15
+        line 104: 19
+        line 105: 42
+        line 107: 60
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           42      18     2   sum   I
+            0      61     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0      61     1 normalize   Z
+      StackMapTable: number_of_entries = 1
+        frame_type = 60 /* same */
+
+  protected void bubble(com.builtbroken.ai.improvements.modifier.editor.ModifierNode, int);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;I)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=5, locals=4, args_size=3
+         0: aload_1
+         1: dup
+         2: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+         5: iconst_1
+         6: iadd
+         7: putfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+        10: aload_1
+        11: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+        14: ldc           #145                // int 1073741823
+        16: if_icmplt     27
+        19: aload_0
+        20: iconst_1
+        21: putfield      #19                 // Field resortNormalize:Z
+        24: goto          57
+        27: aload_0
+        28: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        31: iload_2
+        32: aaload
+        33: astore_3
+        34: aload_0
+        35: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        38: iload_2
+        39: aload_0
+        40: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        43: iload_2
+        44: iconst_1
+        45: isub
+        46: aaload
+        47: aastore
+        48: aload_0
+        49: getfield      #9                  // Field nodes:[Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+        52: iload_2
+        53: iconst_1
+        54: isub
+        55: aload_3
+        56: aastore
+        57: return
+      LineNumberTable:
+        line 112: 0
+        line 115: 10
+        line 117: 19
+        line 121: 27
+        line 124: 34
+        line 127: 48
+        line 129: 57
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           34      23     3     m   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+            0      58     0  this   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+            0      58     1 modifier   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+            0      58     2     i   I
+      StackMapTable: number_of_entries = 2
+        frame_type = 27 /* same */
+        frame_type = 29 /* same */
+
+  private static void lambda$resort$2(int, com.builtbroken.ai.improvements.modifier.editor.ModifierNode);
+    descriptor: (ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=5, locals=2, args_size=2
+         0: aload_1
+         1: aload_1
+         2: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+         5: i2d
+         6: iload_0
+         7: i2d
+         8: ddiv
+         9: invokestatic  #146                // Method java/lang/Math.floor:(D)D
+        12: d2i
+        13: putfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+        16: return
+      LineNumberTable:
+        line 105: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0   sum   I
+            0      17     1     m   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+
+  private static int lambda$resort$1(com.builtbroken.ai.improvements.modifier.editor.ModifierNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+         4: ireturn
+      LineNumberTable:
+        line 104: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0     m   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+
+  private static int lambda$resort$0(com.builtbroken.ai.improvements.modifier.editor.ModifierNode);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #97                 // Field com/builtbroken/ai/improvements/modifier/editor/ModifierNode.callCount:I
+         4: ireturn
+      LineNumberTable:
+        line 101: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0     m   Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;
+}
+SourceFile: "ModifierLayer.java"
+BootstrapMethods:
+  0: #199 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #183 (Ljava/lang/Object;)I
+      #185 REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$0:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+      #188 (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  1: #199 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #183 (Ljava/lang/Object;)I
+      #189 REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$1:(Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+      #188 (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)I
+  2: #199 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #192 (Ljava/lang/Object;)V
+      #194 REF_invokeStatic com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.lambda$resort$2:(ILcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+      #197 (Lcom/builtbroken/ai/improvements/modifier/editor/ModifierNode;)V
+InnerClasses:
+  public static final #211= #207 of #209; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

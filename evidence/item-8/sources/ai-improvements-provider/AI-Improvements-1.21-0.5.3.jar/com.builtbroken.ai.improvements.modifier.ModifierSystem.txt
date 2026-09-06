@@ -1,0 +1,1392 @@
+Classfile AI-Improvements-1.21-0.5.3.jar!/com/builtbroken/ai/improvements/modifier/ModifierSystem.class
+  Last modified Jun 14, 2024; size 11338 bytes
+  SHA-256 checksum 53d14fb20eb1f74aea3f7fa3c31081f73f44fabad8e88af369e942116a58d465
+  Compiled from "ModifierSystem.java"
+public class com.builtbroken.ai.improvements.modifier.ModifierSystem
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/builtbroken/ai/improvements/modifier/ModifierSystem
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 8, methods: 30, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/builtbroken/ai/improvements/modifier/ModifierSystem.editor:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+    #8 = Class              #10           // com/builtbroken/ai/improvements/modifier/ModifierSystem
+    #9 = NameAndType        #11:#12       // editor:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+   #10 = Utf8               com/builtbroken/ai/improvements/modifier/ModifierSystem
+   #11 = Utf8               editor
+   #12 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+   #13 = Methodref          #14.#15       // net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+   #14 = Class              #16           // net/neoforged/neoforge/event/entity/EntityJoinLevelEvent
+   #15 = NameAndType        #17:#18       // getEntity:()Lnet/minecraft/world/entity/Entity;
+   #16 = Utf8               net/neoforged/neoforge/event/entity/EntityJoinLevelEvent
+   #17 = Utf8               getEntity
+   #18 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #19 = Methodref          #20.#21       // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #20 = Class              #22           // com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+   #21 = NameAndType        #23:#24       // handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #22 = Utf8               com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+   #23 = Utf8               handle
+   #24 = Utf8               (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+   #25 = Fieldref           #8.#26        // com/builtbroken/ai/improvements/modifier/ModifierSystem.mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+   #26 = NameAndType        #27:#28       // mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+   #27 = Utf8               mobEntityEditor
+   #28 = Utf8               Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+   #29 = Methodref          #20.#30       // com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+   #30 = NameAndType        #31:#32       // add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+   #31 = Utf8               add
+   #32 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+   #33 = Fieldref           #34.#35       // com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+   #34 = Class              #36           // com/builtbroken/ai/improvements/modifier/ModifierLevel
+   #35 = NameAndType        #37:#38       // goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+   #36 = Utf8               com/builtbroken/ai/improvements/modifier/ModifierLevel
+   #37 = Utf8               goalEditor
+   #38 = Utf8               Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+   #39 = Class              #40           // com/builtbroken/ai/improvements/modifier/editor/FilteredRemove
+   #40 = Utf8               com/builtbroken/ai/improvements/modifier/editor/FilteredRemove
+   #41 = InvokeDynamic      #0:#42        // #0:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #42 = NameAndType        #43:#44       // isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #43 = Utf8               isGoal
+   #44 = Utf8               ()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #45 = Fieldref           #46.#47       // com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+   #46 = Class              #48           // com/builtbroken/ai/improvements/ConfigMain
+   #47 = NameAndType        #49:#50       // CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+   #48 = Utf8               com/builtbroken/ai/improvements/ConfigMain
+   #49 = Utf8               CONFIG
+   #50 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain;
+   #51 = Fieldref           #46.#52       // com/builtbroken/ai/improvements/ConfigMain.removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #52 = NameAndType        #53:#54       // removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #53 = Utf8               removeLookGoal
+   #54 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #55 = Methodref          #39.#56       // com/builtbroken/ai/improvements/modifier/editor/FilteredRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;)V
+   #56 = NameAndType        #5:#57        // "<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;)V
+   #57 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;)V
+   #58 = Methodref          #59.#60       // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #59 = Class              #61           // com/builtbroken/ai/improvements/modifier/editor/ModifierLayer
+   #60 = NameAndType        #31:#62       // add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #61 = Utf8               com/builtbroken/ai/improvements/modifier/editor/ModifierLayer
+   #62 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+   #63 = InvokeDynamic      #1:#42        // #1:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #64 = Fieldref           #46.#65       // com/builtbroken/ai/improvements/ConfigMain.removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #65 = NameAndType        #66:#54       // removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+   #66 = Utf8               removeLookRandom
+   #67 = Fieldref           #34.#68       // com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+   #68 = NameAndType        #69:#12       // filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+   #69 = Utf8               filters
+   #70 = InvokeDynamic      #2:#71        // #2:handle:()Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #71 = NameAndType        #23:#72       // handle:()Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #72 = Utf8               ()Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+   #73 = Fieldref           #8.#74        // com/builtbroken/ai/improvements/modifier/ModifierSystem.fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+   #74 = NameAndType        #75:#28       // fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+   #75 = Utf8               fishEditor
+   #76 = Class              #77           // com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+   #77 = Utf8               com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+   #78 = InvokeDynamic      #3:#42        // #3:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #79 = Fieldref           #46.#80       // com/builtbroken/ai/improvements/ConfigMain.removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #80 = NameAndType        #81:#82       // removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #81 = Utf8               removeFishSwim
+   #82 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #83 = Methodref          #76.#84       // com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+   #84 = NameAndType        #5:#85        // "<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+   #85 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+   #86 = InvokeDynamic      #4:#42        // #4:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #87 = Fieldref           #46.#88       // com/builtbroken/ai/improvements/ConfigMain.removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #88 = NameAndType        #89:#82       // removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #89 = Utf8               removeFishAvoidPlayer
+   #90 = InvokeDynamic      #5:#42        // #5:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #91 = Fieldref           #46.#92       // com/builtbroken/ai/improvements/ConfigMain.removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #92 = NameAndType        #93:#82       // removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #93 = Utf8               removeFishPanic
+   #94 = InvokeDynamic      #6:#42        // #6:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #95 = Fieldref           #46.#96       // com/builtbroken/ai/improvements/ConfigMain.removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #96 = NameAndType        #97:#82       // removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+   #97 = Utf8               removeFishFollowLeader
+   #98 = InvokeDynamic      #7:#42        // #7:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+   #99 = Fieldref           #8.#100       // com/builtbroken/ai/improvements/modifier/ModifierSystem.squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #100 = NameAndType        #101:#28      // squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #101 = Utf8               squidEditor
+  #102 = InvokeDynamic      #8:#42        // #8:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #103 = Fieldref           #46.#104      // com/builtbroken/ai/improvements/ConfigMain.removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #104 = NameAndType        #105:#82      // removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #105 = Utf8               removeRandomMove
+  #106 = InvokeDynamic      #9:#42        // #9:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #107 = Fieldref           #8.#108       // com/builtbroken/ai/improvements/modifier/ModifierSystem.cowEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #108 = NameAndType        #109:#28      // cowEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #109 = Utf8               cowEditor
+  #110 = Fieldref           #46.#111      // com/builtbroken/ai/improvements/ConfigMain.cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #111 = NameAndType        #112:#113     // cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #112 = Utf8               cow
+  #113 = Utf8               Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #114 = Methodref          #8.#115       // com/builtbroken/ai/improvements/modifier/ModifierSystem.populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+  #115 = NameAndType        #116:#117     // populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+  #116 = Utf8               populateAnimalEditor
+  #117 = Utf8               (Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+  #118 = Fieldref           #8.#119       // com/builtbroken/ai/improvements/modifier/ModifierSystem.chickenEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #119 = NameAndType        #120:#28      // chickenEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #120 = Utf8               chickenEditor
+  #121 = Fieldref           #46.#122      // com/builtbroken/ai/improvements/ConfigMain.chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #122 = NameAndType        #123:#113     // chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #123 = Utf8               chicken
+  #124 = Fieldref           #8.#125       // com/builtbroken/ai/improvements/modifier/ModifierSystem.pigEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #125 = NameAndType        #126:#28      // pigEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #126 = Utf8               pigEditor
+  #127 = Fieldref           #46.#128      // com/builtbroken/ai/improvements/ConfigMain.pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #128 = NameAndType        #129:#113     // pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #129 = Utf8               pig
+  #130 = Fieldref           #8.#131       // com/builtbroken/ai/improvements/modifier/ModifierSystem.sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #131 = NameAndType        #132:#28      // sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #132 = Utf8               sheepEditor
+  #133 = Fieldref           #46.#134      // com/builtbroken/ai/improvements/ConfigMain.sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #134 = NameAndType        #135:#113     // sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+  #135 = Utf8               sheep
+  #136 = InvokeDynamic      #10:#42       // #10:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #137 = Fieldref           #46.#138      // com/builtbroken/ai/improvements/ConfigMain.removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #138 = NameAndType        #139:#82      // removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #139 = Utf8               removeSheepEatBlock
+  #140 = Fieldref           #46.#141      // com/builtbroken/ai/improvements/ConfigMain.replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+  #141 = NameAndType        #142:#54      // replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+  #142 = Utf8               replaceLookController
+  #143 = Methodref          #144.#145     // com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue.configValue:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #144 = Class              #146          // com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+  #145 = NameAndType        #147:#148     // configValue:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #146 = Utf8               com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue
+  #147 = Utf8               configValue
+  #148 = Utf8               ()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #149 = Methodref          #150.#151     // net/neoforged/neoforge/common/ModConfigSpec$BooleanValue.get:()Ljava/lang/Object;
+  #150 = Class              #152          // net/neoforged/neoforge/common/ModConfigSpec$BooleanValue
+  #151 = NameAndType        #153:#154     // get:()Ljava/lang/Object;
+  #152 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$BooleanValue
+  #153 = Utf8               get
+  #154 = Utf8               ()Ljava/lang/Object;
+  #155 = Class              #156          // java/lang/Boolean
+  #156 = Utf8               java/lang/Boolean
+  #157 = Methodref          #155.#158     // java/lang/Boolean.booleanValue:()Z
+  #158 = NameAndType        #159:#160     // booleanValue:()Z
+  #159 = Utf8               booleanValue
+  #160 = Utf8               ()Z
+  #161 = Methodref          #162.#163     // net/minecraft/world/entity/Mob.getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+  #162 = Class              #164          // net/minecraft/world/entity/Mob
+  #163 = NameAndType        #165:#166     // getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+  #164 = Utf8               net/minecraft/world/entity/Mob
+  #165 = Utf8               getLookControl
+  #166 = Utf8               ()Lnet/minecraft/world/entity/ai/control/LookControl;
+  #167 = Methodref          #2.#168       // java/lang/Object.getClass:()Ljava/lang/Class;
+  #168 = NameAndType        #169:#170     // getClass:()Ljava/lang/Class;
+  #169 = Utf8               getClass
+  #170 = Utf8               ()Ljava/lang/Class;
+  #171 = Class              #172          // net/minecraft/world/entity/ai/control/LookControl
+  #172 = Utf8               net/minecraft/world/entity/ai/control/LookControl
+  #173 = Fieldref           #174.#175     // net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #174 = Class              #176          // net/minecraft/core/registries/BuiltInRegistries
+  #175 = NameAndType        #177:#178     // ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #176 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #177 = Utf8               ENTITY_TYPE
+  #178 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+  #179 = Methodref          #162.#180     // net/minecraft/world/entity/Mob.getType:()Lnet/minecraft/world/entity/EntityType;
+  #180 = NameAndType        #181:#182     // getType:()Lnet/minecraft/world/entity/EntityType;
+  #181 = Utf8               getType
+  #182 = Utf8               ()Lnet/minecraft/world/entity/EntityType;
+  #183 = InterfaceMethodref #184.#185     // net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #184 = Class              #186          // net/minecraft/core/DefaultedRegistry
+  #185 = NameAndType        #187:#188     // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #186 = Utf8               net/minecraft/core/DefaultedRegistry
+  #187 = Utf8               getKey
+  #188 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #189 = Methodref          #190.#191     // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #190 = Class              #192          // net/minecraft/resources/ResourceLocation
+  #191 = NameAndType        #193:#194     // toString:()Ljava/lang/String;
+  #192 = Utf8               net/minecraft/resources/ResourceLocation
+  #193 = Utf8               toString
+  #194 = Utf8               ()Ljava/lang/String;
+  #195 = Methodref          #144.#196     // com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue.isFiltered:(Ljava/lang/String;)Z
+  #196 = NameAndType        #197:#198     // isFiltered:(Ljava/lang/String;)Z
+  #197 = Utf8               isFiltered
+  #198 = Utf8               (Ljava/lang/String;)Z
+  #199 = Fieldref           #200.#201     // com/builtbroken/ai/improvements/modifier/filters/FilterResult.DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #200 = Class              #202          // com/builtbroken/ai/improvements/modifier/filters/FilterResult
+  #201 = NameAndType        #203:#204     // DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #202 = Utf8               com/builtbroken/ai/improvements/modifier/filters/FilterResult
+  #203 = Utf8               DID_NOTHING
+  #204 = Utf8               Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #205 = Class              #206          // com/builtbroken/ai/improvements/FixedLookControl
+  #206 = Utf8               com/builtbroken/ai/improvements/FixedLookControl
+  #207 = Methodref          #205.#208     // com/builtbroken/ai/improvements/FixedLookControl."<init>":(Lnet/minecraft/world/entity/Mob;)V
+  #208 = NameAndType        #5:#209       // "<init>":(Lnet/minecraft/world/entity/Mob;)V
+  #209 = Utf8               (Lnet/minecraft/world/entity/Mob;)V
+  #210 = Fieldref           #162.#211     // net/minecraft/world/entity/Mob.lookControl:Lnet/minecraft/world/entity/ai/control/LookControl;
+  #211 = NameAndType        #212:#213     // lookControl:Lnet/minecraft/world/entity/ai/control/LookControl;
+  #212 = Utf8               lookControl
+  #213 = Utf8               Lnet/minecraft/world/entity/ai/control/LookControl;
+  #214 = Methodref          #205.#215     // com/builtbroken/ai/improvements/FixedLookControl.copyDataIntoSelf:(Lnet/minecraft/world/entity/ai/control/LookControl;)V
+  #215 = NameAndType        #216:#217     // copyDataIntoSelf:(Lnet/minecraft/world/entity/ai/control/LookControl;)V
+  #216 = Utf8               copyDataIntoSelf
+  #217 = Utf8               (Lnet/minecraft/world/entity/ai/control/LookControl;)V
+  #218 = Fieldref           #200.#219     // com/builtbroken/ai/improvements/modifier/filters/FilterResult.MODIFIED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #219 = NameAndType        #220:#204     // MODIFIED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #220 = Utf8               MODIFIED
+  #221 = InvokeDynamic      #11:#42       // #11:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #222 = Methodref          #223.#224     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeFloat:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #223 = Class              #225          // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+  #224 = NameAndType        #226:#148     // removeFloat:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #225 = Utf8               com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection
+  #226 = Utf8               removeFloat
+  #227 = InvokeDynamic      #12:#42       // #12:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #228 = Methodref          #223.#229     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removePanic:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #229 = NameAndType        #230:#148     // removePanic:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #230 = Utf8               removePanic
+  #231 = InvokeDynamic      #13:#42       // #13:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #232 = Methodref          #223.#233     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeBreed:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #233 = NameAndType        #234:#148     // removeBreed:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #234 = Utf8               removeBreed
+  #235 = InvokeDynamic      #14:#42       // #14:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #236 = Methodref          #223.#237     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeTempt:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #237 = NameAndType        #238:#148     // removeTempt:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #238 = Utf8               removeTempt
+  #239 = InvokeDynamic      #15:#42       // #15:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #240 = Methodref          #223.#241     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeFollowParent:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #241 = NameAndType        #242:#148     // removeFollowParent:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #242 = Utf8               removeFollowParent
+  #243 = InvokeDynamic      #16:#42       // #16:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+  #244 = Methodref          #223.#245     // com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeStroll:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #245 = NameAndType        #246:#148     // removeStroll:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+  #246 = Utf8               removeStroll
+  #247 = Class              #248          // net/minecraft/world/entity/ai/goal/WaterAvoidingRandomStrollGoal
+  #248 = Utf8               net/minecraft/world/entity/ai/goal/WaterAvoidingRandomStrollGoal
+  #249 = Class              #250          // net/minecraft/world/entity/ai/goal/FollowParentGoal
+  #250 = Utf8               net/minecraft/world/entity/ai/goal/FollowParentGoal
+  #251 = Class              #252          // net/minecraft/world/entity/ai/goal/TemptGoal
+  #252 = Utf8               net/minecraft/world/entity/ai/goal/TemptGoal
+  #253 = Class              #254          // net/minecraft/world/entity/ai/goal/BreedGoal
+  #254 = Utf8               net/minecraft/world/entity/ai/goal/BreedGoal
+  #255 = Class              #256          // net/minecraft/world/entity/ai/goal/PanicGoal
+  #256 = Utf8               net/minecraft/world/entity/ai/goal/PanicGoal
+  #257 = Class              #258          // net/minecraft/world/entity/ai/goal/FloatGoal
+  #258 = Utf8               net/minecraft/world/entity/ai/goal/FloatGoal
+  #259 = Class              #260          // net/minecraft/world/entity/ai/goal/EatBlockGoal
+  #260 = Utf8               net/minecraft/world/entity/ai/goal/EatBlockGoal
+  #261 = Class              #262          // net/minecraft/world/entity/animal/Squid$SquidFleeGoal
+  #262 = Utf8               net/minecraft/world/entity/animal/Squid$SquidFleeGoal
+  #263 = Class              #264          // net/minecraft/world/entity/animal/Squid$SquidRandomMovementGoal
+  #264 = Utf8               net/minecraft/world/entity/animal/Squid$SquidRandomMovementGoal
+  #265 = Class              #266          // net/minecraft/world/entity/animal/Pufferfish$PufferfishPuffGoal
+  #266 = Utf8               net/minecraft/world/entity/animal/Pufferfish$PufferfishPuffGoal
+  #267 = Class              #268          // net/minecraft/world/entity/ai/goal/FollowFlockLeaderGoal
+  #268 = Utf8               net/minecraft/world/entity/ai/goal/FollowFlockLeaderGoal
+  #269 = Class              #270          // net/minecraft/world/entity/ai/goal/AvoidEntityGoal
+  #270 = Utf8               net/minecraft/world/entity/ai/goal/AvoidEntityGoal
+  #271 = Class              #272          // net/minecraft/world/entity/ai/goal/RandomSwimmingGoal
+  #272 = Utf8               net/minecraft/world/entity/ai/goal/RandomSwimmingGoal
+  #273 = Methodref          #8.#274       // com/builtbroken/ai/improvements/modifier/ModifierSystem.replaceLookHelper:(Lnet/minecraft/world/entity/Mob;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #274 = NameAndType        #275:#276     // replaceLookHelper:(Lnet/minecraft/world/entity/Mob;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #275 = Utf8               replaceLookHelper
+  #276 = Utf8               (Lnet/minecraft/world/entity/Mob;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #277 = Class              #278          // net/minecraft/world/entity/ai/goal/RandomLookAroundGoal
+  #278 = Utf8               net/minecraft/world/entity/ai/goal/RandomLookAroundGoal
+  #279 = Class              #280          // net/minecraft/world/entity/ai/goal/LookAtPlayerGoal
+  #280 = Utf8               net/minecraft/world/entity/ai/goal/LookAtPlayerGoal
+  #281 = Class              #282          // net/minecraft/world/entity/animal/Sheep
+  #282 = Utf8               net/minecraft/world/entity/animal/Sheep
+  #283 = Methodref          #155.#284     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #284 = NameAndType        #285:#286     // valueOf:(Z)Ljava/lang/Boolean;
+  #285 = Utf8               valueOf
+  #286 = Utf8               (Z)Ljava/lang/Boolean;
+  #287 = Class              #288          // net/minecraft/world/entity/animal/Pig
+  #288 = Utf8               net/minecraft/world/entity/animal/Pig
+  #289 = Class              #290          // net/minecraft/world/entity/animal/Chicken
+  #290 = Utf8               net/minecraft/world/entity/animal/Chicken
+  #291 = Class              #292          // net/minecraft/world/entity/animal/Cow
+  #292 = Utf8               net/minecraft/world/entity/animal/Cow
+  #293 = Class              #294          // net/minecraft/world/entity/animal/Squid
+  #294 = Utf8               net/minecraft/world/entity/animal/Squid
+  #295 = Class              #296          // net/minecraft/world/entity/animal/AbstractFish
+  #296 = Utf8               net/minecraft/world/entity/animal/AbstractFish
+  #297 = Methodref          #20.#298      // com/builtbroken/ai/improvements/modifier/filters/FilterLayer."<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+  #298 = NameAndType        #5:#32        // "<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+  #299 = InvokeDynamic      #17:#300      // #17:apply:()Ljava/util/function/Function;
+  #300 = NameAndType        #301:#302     // apply:()Ljava/util/function/Function;
+  #301 = Utf8               apply
+  #302 = Utf8               ()Ljava/util/function/Function;
+  #303 = Methodref          #34.#304      // com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #304 = NameAndType        #305:#306     // newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #305 = Utf8               newFilter
+  #306 = Utf8               (Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+  #307 = InvokeDynamic      #18:#300      // #18:apply:()Ljava/util/function/Function;
+  #308 = InvokeDynamic      #19:#300      // #19:apply:()Ljava/util/function/Function;
+  #309 = InvokeDynamic      #20:#300      // #20:apply:()Ljava/util/function/Function;
+  #310 = InvokeDynamic      #21:#300      // #21:apply:()Ljava/util/function/Function;
+  #311 = InvokeDynamic      #22:#300      // #22:apply:()Ljava/util/function/Function;
+  #312 = InvokeDynamic      #23:#300      // #23:apply:()Ljava/util/function/Function;
+  #313 = Utf8               Code
+  #314 = Utf8               LineNumberTable
+  #315 = Utf8               LocalVariableTable
+  #316 = Utf8               this
+  #317 = Utf8               Lcom/builtbroken/ai/improvements/modifier/ModifierSystem;
+  #318 = Utf8               onEntityJoinWorld
+  #319 = Utf8               (Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;)V
+  #320 = Utf8               event
+  #321 = Utf8               Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;
+  #322 = Utf8               RuntimeVisibleAnnotations
+  #323 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #324 = Utf8               init
+  #325 = Utf8               flc
+  #326 = Utf8               Lcom/builtbroken/ai/improvements/FixedLookControl;
+  #327 = Utf8               oldHelper
+  #328 = Utf8               living
+  #329 = Utf8               Lnet/minecraft/world/entity/Mob;
+  #330 = Utf8               StackMapTable
+  #331 = Utf8               animalEditor
+  #332 = Utf8               configs
+  #333 = Utf8               lambda$populateAnimalEditor$23
+  #334 = Utf8               (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #335 = Utf8               goal
+  #336 = Utf8               Lnet/minecraft/world/entity/ai/goal/Goal;
+  #337 = Utf8               lambda$populateAnimalEditor$22
+  #338 = Utf8               lambda$populateAnimalEditor$21
+  #339 = Utf8               lambda$populateAnimalEditor$20
+  #340 = Utf8               lambda$populateAnimalEditor$19
+  #341 = Utf8               lambda$populateAnimalEditor$18
+  #342 = Utf8               lambda$init$17
+  #343 = Utf8               lambda$init$16
+  #344 = Utf8               lambda$init$15
+  #345 = Utf8               lambda$init$14
+  #346 = Utf8               lambda$init$13
+  #347 = Utf8               lambda$init$12
+  #348 = Utf8               lambda$init$11
+  #349 = Utf8               lambda$init$10
+  #350 = Utf8               lambda$init$9
+  #351 = Utf8               entity
+  #352 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #353 = Utf8               lambda$init$8
+  #354 = Utf8               lambda$init$7
+  #355 = Utf8               lambda$static$6
+  #356 = Utf8               (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #357 = Utf8               lambda$static$5
+  #358 = Utf8               lambda$static$4
+  #359 = Utf8               lambda$static$3
+  #360 = Utf8               lambda$static$2
+  #361 = Utf8               lambda$static$1
+  #362 = Utf8               lambda$static$0
+  #363 = Utf8               <clinit>
+  #364 = Utf8               SourceFile
+  #365 = Utf8               ModifierSystem.java
+  #366 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #367 = Utf8               modid
+  #368 = Utf8               aiimprovements
+  #369 = Utf8               BootstrapMethods
+  #370 = MethodType         #334          //  (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #371 = MethodHandle       6:#372        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$7:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #372 = Methodref          #8.#373       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$7:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #373 = NameAndType        #354:#334     // lambda$init$7:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #374 = MethodHandle       6:#375        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$8:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #375 = Methodref          #8.#376       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$8:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #376 = NameAndType        #353:#334     // lambda$init$8:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #377 = MethodType         #24           //  (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #378 = MethodHandle       6:#379        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$9:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #379 = Methodref          #8.#380       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$9:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #380 = NameAndType        #350:#24      // lambda$init$9:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  #381 = MethodHandle       6:#382        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$10:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #382 = Methodref          #8.#383       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$10:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #383 = NameAndType        #349:#334     // lambda$init$10:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #384 = MethodHandle       6:#385        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$11:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #385 = Methodref          #8.#386       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$11:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #386 = NameAndType        #348:#334     // lambda$init$11:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #387 = MethodHandle       6:#388        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$12:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #388 = Methodref          #8.#389       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$12:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #389 = NameAndType        #347:#334     // lambda$init$12:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #390 = MethodHandle       6:#391        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$13:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #391 = Methodref          #8.#392       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$13:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #392 = NameAndType        #346:#334     // lambda$init$13:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #393 = MethodHandle       6:#394        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$14:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #394 = Methodref          #8.#395       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$14:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #395 = NameAndType        #345:#334     // lambda$init$14:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #396 = MethodHandle       6:#397        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$15:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #397 = Methodref          #8.#398       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$15:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #398 = NameAndType        #344:#334     // lambda$init$15:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #399 = MethodHandle       6:#400        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$16:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #400 = Methodref          #8.#401       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$16:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #401 = NameAndType        #343:#334     // lambda$init$16:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #402 = MethodHandle       6:#403        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$17:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #403 = Methodref          #8.#404       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$17:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #404 = NameAndType        #342:#334     // lambda$init$17:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #405 = MethodHandle       6:#406        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$18:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #406 = Methodref          #8.#407       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$18:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #407 = NameAndType        #341:#334     // lambda$populateAnimalEditor$18:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #408 = MethodHandle       6:#409        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$19:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #409 = Methodref          #8.#410       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$19:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #410 = NameAndType        #340:#334     // lambda$populateAnimalEditor$19:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #411 = MethodHandle       6:#412        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$20:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #412 = Methodref          #8.#413       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$20:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #413 = NameAndType        #339:#334     // lambda$populateAnimalEditor$20:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #414 = MethodHandle       6:#415        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$21:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #415 = Methodref          #8.#416       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$21:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #416 = NameAndType        #338:#334     // lambda$populateAnimalEditor$21:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #417 = MethodHandle       6:#418        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$22:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #418 = Methodref          #8.#419       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$22:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #419 = NameAndType        #337:#334     // lambda$populateAnimalEditor$22:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #420 = MethodHandle       6:#421        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$23:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #421 = Methodref          #8.#422       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$23:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #422 = NameAndType        #333:#334     // lambda$populateAnimalEditor$23:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  #423 = MethodType         #424          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #424 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #425 = MethodHandle       6:#426        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$0:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #426 = Methodref          #8.#427       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$0:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #427 = NameAndType        #362:#356     // lambda$static$0:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #428 = MethodType         #356          //  (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #429 = MethodHandle       6:#430        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$1:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #430 = Methodref          #8.#431       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$1:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #431 = NameAndType        #361:#356     // lambda$static$1:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #432 = MethodHandle       6:#433        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$2:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #433 = Methodref          #8.#434       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$2:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #434 = NameAndType        #360:#356     // lambda$static$2:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #435 = MethodHandle       6:#436        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$3:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #436 = Methodref          #8.#437       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$3:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #437 = NameAndType        #359:#356     // lambda$static$3:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #438 = MethodHandle       6:#439        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$4:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #439 = Methodref          #8.#440       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$4:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #440 = NameAndType        #358:#356     // lambda$static$4:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #441 = MethodHandle       6:#442        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$5:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #442 = Methodref          #8.#443       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$5:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #443 = NameAndType        #357:#356     // lambda$static$5:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #444 = MethodHandle       6:#445        // REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$6:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #445 = Methodref          #8.#446       // com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$6:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #446 = NameAndType        #355:#356     // lambda$static$6:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  #447 = MethodHandle       6:#448        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #448 = Methodref          #449.#450     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #449 = Class              #451          // java/lang/invoke/LambdaMetafactory
+  #450 = NameAndType        #452:#453     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #451 = Utf8               java/lang/invoke/LambdaMetafactory
+  #452 = Utf8               metafactory
+  #453 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #454 = Utf8               InnerClasses
+  #455 = Utf8               FilteredConfigValue
+  #456 = Class              #457          // net/neoforged/neoforge/common/ModConfigSpec
+  #457 = Utf8               net/neoforged/neoforge/common/ModConfigSpec
+  #458 = Utf8               BooleanValue
+  #459 = Utf8               AnimalConfigSection
+  #460 = Utf8               SquidFleeGoal
+  #461 = Utf8               SquidRandomMovementGoal
+  #462 = Class              #463          // net/minecraft/world/entity/animal/Pufferfish
+  #463 = Utf8               net/minecraft/world/entity/animal/Pufferfish
+  #464 = Utf8               PufferfishPuffGoal
+  #465 = Class              #466          // java/lang/invoke/MethodHandles$Lookup
+  #466 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #467 = Class              #468          // java/lang/invoke/MethodHandles
+  #468 = Utf8               java/lang/invoke/MethodHandles
+  #469 = Utf8               Lookup
+{
+  public static final com.builtbroken.ai.improvements.modifier.filters.FilterLayer editor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel mobEntityEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel fishEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel squidEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel cowEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel chickenEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel pigEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final com.builtbroken.ai.improvements.modifier.ModifierLevel sheepEditor;
+    descriptor: Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public com.builtbroken.ai.improvements.modifier.ModifierSystem();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/builtbroken/ai/improvements/modifier/ModifierSystem;
+
+  public static void onEntityJoinWorld(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #7                  // Field editor:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+         3: aload_0
+         4: invokevirtual #13                 // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+         7: invokevirtual #19                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.handle:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        10: pop
+        11: return
+      LineNumberTable:
+        line 58: 0
+        line 59: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 event   Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;
+    RuntimeVisibleAnnotations:
+      0: #323()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void init();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=0, args_size=0
+         0: getstatic     #7                  // Field editor:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+         3: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+         6: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+         9: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        12: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        15: new           #39                 // class com/builtbroken/ai/improvements/modifier/editor/FilteredRemove
+        18: dup
+        19: invokedynamic #41,  0             // InvokeDynamic #0:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        24: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+        27: getfield      #51                 // Field com/builtbroken/ai/improvements/ConfigMain.removeLookGoal:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+        30: invokespecial #55                 // Method com/builtbroken/ai/improvements/modifier/editor/FilteredRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;)V
+        33: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        36: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        39: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        42: new           #39                 // class com/builtbroken/ai/improvements/modifier/editor/FilteredRemove
+        45: dup
+        46: invokedynamic #63,  0             // InvokeDynamic #1:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        51: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+        54: getfield      #64                 // Field com/builtbroken/ai/improvements/ConfigMain.removeLookRandom:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+        57: invokespecial #55                 // Method com/builtbroken/ai/improvements/modifier/editor/FilteredRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;)V
+        60: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        63: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        66: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+        69: invokedynamic #70,  0             // InvokeDynamic #2:handle:()Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;
+        74: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+        77: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        80: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+        83: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        86: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+        89: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        92: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        95: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+        98: dup
+        99: invokedynamic #78,  0             // InvokeDynamic #3:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       104: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       107: getfield      #79                 // Field com/builtbroken/ai/improvements/ConfigMain.removeFishSwim:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       110: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       113: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       116: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       119: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       122: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       125: dup
+       126: invokedynamic #86,  0             // InvokeDynamic #4:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       131: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       134: getfield      #87                 // Field com/builtbroken/ai/improvements/ConfigMain.removeFishAvoidPlayer:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       137: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       140: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       143: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       146: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       149: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       152: dup
+       153: invokedynamic #90,  0             // InvokeDynamic #5:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       158: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       161: getfield      #91                 // Field com/builtbroken/ai/improvements/ConfigMain.removeFishPanic:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       164: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       167: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       170: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       173: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       176: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       179: dup
+       180: invokedynamic #94,  0             // InvokeDynamic #6:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       185: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       188: getfield      #95                 // Field com/builtbroken/ai/improvements/ConfigMain.removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       191: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       194: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       197: getstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       200: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       203: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       206: dup
+       207: invokedynamic #98,  0             // InvokeDynamic #7:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       212: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       215: getfield      #95                 // Field com/builtbroken/ai/improvements/ConfigMain.removeFishFollowLeader:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       218: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       221: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       224: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       227: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+       230: getstatic     #99                 // Field squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       233: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+       236: getstatic     #99                 // Field squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       239: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       242: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       245: dup
+       246: invokedynamic #102,  0            // InvokeDynamic #8:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       251: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       254: getfield      #103                // Field com/builtbroken/ai/improvements/ConfigMain.removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       257: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       260: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       263: getstatic     #99                 // Field squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       266: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       269: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       272: dup
+       273: invokedynamic #106,  0            // InvokeDynamic #9:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       278: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       281: getfield      #103                // Field com/builtbroken/ai/improvements/ConfigMain.removeRandomMove:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       284: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       287: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       290: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       293: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+       296: getstatic     #107                // Field cowEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       299: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+       302: getstatic     #107                // Field cowEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       305: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       308: getfield      #110                // Field com/builtbroken/ai/improvements/ConfigMain.cow:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       311: invokestatic  #114                // Method populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+       314: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       317: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+       320: getstatic     #118                // Field chickenEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       323: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+       326: getstatic     #118                // Field chickenEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       329: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       332: getfield      #121                // Field com/builtbroken/ai/improvements/ConfigMain.chicken:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       335: invokestatic  #114                // Method populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+       338: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       341: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+       344: getstatic     #124                // Field pigEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       347: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+       350: getstatic     #124                // Field pigEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       353: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       356: getfield      #127                // Field com/builtbroken/ai/improvements/ConfigMain.pig:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       359: invokestatic  #114                // Method populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+       362: getstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       365: getfield      #67                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.filters:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+       368: getstatic     #130                // Field sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       371: invokevirtual #29                 // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer.add:(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+       374: getstatic     #130                // Field sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       377: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       380: getfield      #133                // Field com/builtbroken/ai/improvements/ConfigMain.sheep:Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+       383: invokestatic  #114                // Method populateAnimalEditor:(Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+       386: getstatic     #130                // Field sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+       389: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       392: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       395: dup
+       396: invokedynamic #136,  0            // InvokeDynamic #10:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       401: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+       404: getfield      #137                // Field com/builtbroken/ai/improvements/ConfigMain.removeSheepEatBlock:Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       407: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       410: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       413: return
+      LineNumberTable:
+        line 63: 0
+        line 66: 9
+        line 67: 36
+        line 68: 63
+        line 71: 77
+        line 72: 89
+        line 73: 116
+        line 74: 143
+        line 75: 170
+        line 76: 197
+        line 79: 224
+        line 80: 236
+        line 81: 263
+        line 84: 290
+        line 85: 302
+        line 88: 314
+        line 89: 326
+        line 92: 338
+        line 93: 350
+        line 96: 362
+        line 97: 374
+        line 98: 386
+        line 99: 413
+
+  private static com.builtbroken.ai.improvements.modifier.filters.FilterResult replaceLookHelper(net.minecraft.world.entity.Mob);
+    descriptor: (Lnet/minecraft/world/entity/Mob;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=5, args_size=1
+         0: getstatic     #45                 // Field com/builtbroken/ai/improvements/ConfigMain.CONFIG:Lcom/builtbroken/ai/improvements/ConfigMain;
+         3: getfield      #140                // Field com/builtbroken/ai/improvements/ConfigMain.replaceLookController:Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+         6: astore_1
+         7: aload_1
+         8: invokevirtual #143                // Method com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue.configValue:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        11: invokevirtual #149                // Method net/neoforged/neoforge/common/ModConfigSpec$BooleanValue.get:()Ljava/lang/Object;
+        14: checkcast     #155                // class java/lang/Boolean
+        17: invokevirtual #157                // Method java/lang/Boolean.booleanValue:()Z
+        20: ifeq          114
+        23: aload_0
+        24: invokevirtual #161                // Method net/minecraft/world/entity/Mob.getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+        27: ifnull        42
+        30: aload_0
+        31: invokevirtual #161                // Method net/minecraft/world/entity/Mob.getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+        34: invokevirtual #167                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        37: ldc           #171                // class net/minecraft/world/entity/ai/control/LookControl
+        39: if_acmpne     114
+        42: aload_1
+        43: getstatic     #173                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+        46: aload_0
+        47: invokevirtual #179                // Method net/minecraft/world/entity/Mob.getType:()Lnet/minecraft/world/entity/EntityType;
+        50: invokeinterface #183,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        55: invokevirtual #189                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+        58: invokevirtual #195                // Method com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue.isFiltered:(Ljava/lang/String;)Z
+        61: ifeq          68
+        64: getstatic     #199                // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+        67: areturn
+        68: aload_0
+        69: invokevirtual #161                // Method net/minecraft/world/entity/Mob.getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+        72: astore_2
+        73: aload_0
+        74: new           #205                // class com/builtbroken/ai/improvements/FixedLookControl
+        77: dup
+        78: aload_0
+        79: invokespecial #207                // Method com/builtbroken/ai/improvements/FixedLookControl."<init>":(Lnet/minecraft/world/entity/Mob;)V
+        82: putfield      #210                // Field net/minecraft/world/entity/Mob.lookControl:Lnet/minecraft/world/entity/ai/control/LookControl;
+        85: aload_0
+        86: invokevirtual #161                // Method net/minecraft/world/entity/Mob.getLookControl:()Lnet/minecraft/world/entity/ai/control/LookControl;
+        89: astore        4
+        91: aload         4
+        93: instanceof    #205                // class com/builtbroken/ai/improvements/FixedLookControl
+        96: ifeq          114
+        99: aload         4
+       101: checkcast     #205                // class com/builtbroken/ai/improvements/FixedLookControl
+       104: astore_3
+       105: aload_3
+       106: aload_2
+       107: invokevirtual #214                // Method com/builtbroken/ai/improvements/FixedLookControl.copyDataIntoSelf:(Lnet/minecraft/world/entity/ai/control/LookControl;)V
+       110: getstatic     #218                // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.MODIFIED:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+       113: areturn
+       114: getstatic     #199                // Field com/builtbroken/ai/improvements/modifier/filters/FilterResult.DID_NOTHING:Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+       117: areturn
+      LineNumberTable:
+        line 103: 0
+        line 106: 7
+        line 110: 42
+        line 112: 64
+        line 116: 68
+        line 119: 73
+        line 122: 85
+        line 124: 105
+        line 125: 110
+        line 132: 114
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          105       9     3   flc   Lcom/builtbroken/ai/improvements/FixedLookControl;
+           73      41     2 oldHelper   Lnet/minecraft/world/entity/ai/control/LookControl;
+            0     118     0 living   Lnet/minecraft/world/entity/Mob;
+            7     111     1 replaceLookController   Lcom/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 42
+          locals = [ class com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue ]
+        frame_type = 25 /* same */
+        frame_type = 45 /* same */
+
+  private static void populateAnimalEditor(com.builtbroken.ai.improvements.modifier.ModifierLevel, com.builtbroken.ai.improvements.ConfigMain$AnimalConfigSection);
+    descriptor: (Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+         4: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+         7: dup
+         8: invokedynamic #221,  0            // InvokeDynamic #11:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        13: aload_1
+        14: invokevirtual #222                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeFloat:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        17: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+        20: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        23: aload_0
+        24: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        27: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+        30: dup
+        31: invokedynamic #227,  0            // InvokeDynamic #12:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        36: aload_1
+        37: invokevirtual #228                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removePanic:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        40: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+        43: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        46: aload_0
+        47: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        50: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+        53: dup
+        54: invokedynamic #231,  0            // InvokeDynamic #13:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        59: aload_1
+        60: invokevirtual #232                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeBreed:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        63: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+        66: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        69: aload_0
+        70: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        73: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+        76: dup
+        77: invokedynamic #235,  0            // InvokeDynamic #14:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+        82: aload_1
+        83: invokevirtual #236                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeTempt:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+        86: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+        89: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+        92: aload_0
+        93: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+        96: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+        99: dup
+       100: invokedynamic #239,  0            // InvokeDynamic #15:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       105: aload_1
+       106: invokevirtual #240                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeFollowParent:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       109: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       112: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       115: aload_0
+       116: getfield      #33                 // Field com/builtbroken/ai/improvements/modifier/ModifierLevel.goalEditor:Lcom/builtbroken/ai/improvements/modifier/editor/ModifierLayer;
+       119: new           #76                 // class com/builtbroken/ai/improvements/modifier/editor/GenericRemove
+       122: dup
+       123: invokedynamic #243,  0            // InvokeDynamic #16:isGoal:()Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;
+       128: aload_1
+       129: invokevirtual #244                // Method com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection.removeStroll:()Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;
+       132: invokespecial #83                 // Method com/builtbroken/ai/improvements/modifier/editor/GenericRemove."<init>":(Lcom/builtbroken/ai/improvements/modifier/editor/InstanceCheck;Lnet/neoforged/neoforge/common/ModConfigSpec$BooleanValue;)V
+       135: invokevirtual #58                 // Method com/builtbroken/ai/improvements/modifier/editor/ModifierLayer.add:(Lcom/builtbroken/ai/improvements/modifier/editor/IEntityAiModifier;)V
+       138: return
+      LineNumberTable:
+        line 136: 0
+        line 137: 23
+        line 138: 46
+        line 139: 69
+        line 140: 92
+        line 141: 115
+        line 142: 138
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     139     0 animalEditor   Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+            0     139     1 configs   Lcom/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection;
+
+  private static boolean lambda$populateAnimalEditor$23(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #247                // class net/minecraft/world/entity/ai/goal/WaterAvoidingRandomStrollGoal
+         4: ireturn
+      LineNumberTable:
+        line 141: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$populateAnimalEditor$22(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #249                // class net/minecraft/world/entity/ai/goal/FollowParentGoal
+         4: ireturn
+      LineNumberTable:
+        line 140: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$populateAnimalEditor$21(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #251                // class net/minecraft/world/entity/ai/goal/TemptGoal
+         4: ireturn
+      LineNumberTable:
+        line 139: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$populateAnimalEditor$20(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #253                // class net/minecraft/world/entity/ai/goal/BreedGoal
+         4: ireturn
+      LineNumberTable:
+        line 138: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$populateAnimalEditor$19(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #255                // class net/minecraft/world/entity/ai/goal/PanicGoal
+         4: ireturn
+      LineNumberTable:
+        line 137: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$populateAnimalEditor$18(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #257                // class net/minecraft/world/entity/ai/goal/FloatGoal
+         4: ireturn
+      LineNumberTable:
+        line 136: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$17(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #259                // class net/minecraft/world/entity/ai/goal/EatBlockGoal
+         4: ireturn
+      LineNumberTable:
+        line 98: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$16(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #261                // class net/minecraft/world/entity/animal/Squid$SquidFleeGoal
+         4: ireturn
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$15(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #263                // class net/minecraft/world/entity/animal/Squid$SquidRandomMovementGoal
+         4: ireturn
+      LineNumberTable:
+        line 80: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$14(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #265                // class net/minecraft/world/entity/animal/Pufferfish$PufferfishPuffGoal
+         4: ireturn
+      LineNumberTable:
+        line 76: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$13(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #267                // class net/minecraft/world/entity/ai/goal/FollowFlockLeaderGoal
+         4: ireturn
+      LineNumberTable:
+        line 75: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$12(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #255                // class net/minecraft/world/entity/ai/goal/PanicGoal
+         4: ireturn
+      LineNumberTable:
+        line 74: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$11(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #269                // class net/minecraft/world/entity/ai/goal/AvoidEntityGoal
+         4: ireturn
+      LineNumberTable:
+        line 73: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$10(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #271                // class net/minecraft/world/entity/ai/goal/RandomSwimmingGoal
+         4: ireturn
+      LineNumberTable:
+        line 72: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static com.builtbroken.ai.improvements.modifier.filters.FilterResult lambda$init$9(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #162                // class net/minecraft/world/entity/Mob
+         4: invokestatic  #273                // Method replaceLookHelper:(Lnet/minecraft/world/entity/Mob;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+         7: areturn
+      LineNumberTable:
+        line 68: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static boolean lambda$init$8(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #277                // class net/minecraft/world/entity/ai/goal/RandomLookAroundGoal
+         4: ireturn
+      LineNumberTable:
+        line 67: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static boolean lambda$init$7(net.minecraft.world.entity.ai.goal.Goal);
+    descriptor: (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #279                // class net/minecraft/world/entity/ai/goal/LookAtPlayerGoal
+         4: ireturn
+      LineNumberTable:
+        line 66: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  goal   Lnet/minecraft/world/entity/ai/goal/Goal;
+
+  private static java.lang.Boolean lambda$static$6(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #281                // class net/minecraft/world/entity/animal/Sheep
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 53: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$5(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #287                // class net/minecraft/world/entity/animal/Pig
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 52: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$4(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #289                // class net/minecraft/world/entity/animal/Chicken
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 51: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$3(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #291                // class net/minecraft/world/entity/animal/Cow
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 50: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$2(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #293                // class net/minecraft/world/entity/animal/Squid
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 49: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$1(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #295                // class net/minecraft/world/entity/animal/AbstractFish
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 48: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  private static java.lang.Boolean lambda$static$0(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: instanceof    #162                // class net/minecraft/world/entity/Mob
+         4: invokestatic  #283                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 47: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 entity   Lnet/minecraft/world/entity/Entity;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=3, locals=0, args_size=0
+         0: new           #20                 // class com/builtbroken/ai/improvements/modifier/filters/FilterLayer
+         3: dup
+         4: aconst_null
+         5: invokespecial #297                // Method com/builtbroken/ai/improvements/modifier/filters/FilterLayer."<init>":(Lcom/builtbroken/ai/improvements/modifier/filters/IFilterNode;)V
+         8: putstatic     #7                  // Field editor:Lcom/builtbroken/ai/improvements/modifier/filters/FilterLayer;
+        11: invokedynamic #299,  0            // InvokeDynamic #17:apply:()Ljava/util/function/Function;
+        16: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        19: putstatic     #25                 // Field mobEntityEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        22: invokedynamic #307,  0            // InvokeDynamic #18:apply:()Ljava/util/function/Function;
+        27: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        30: putstatic     #73                 // Field fishEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        33: invokedynamic #308,  0            // InvokeDynamic #19:apply:()Ljava/util/function/Function;
+        38: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        41: putstatic     #99                 // Field squidEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        44: invokedynamic #309,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+        49: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        52: putstatic     #107                // Field cowEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        55: invokedynamic #310,  0            // InvokeDynamic #21:apply:()Ljava/util/function/Function;
+        60: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        63: putstatic     #118                // Field chickenEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        66: invokedynamic #311,  0            // InvokeDynamic #22:apply:()Ljava/util/function/Function;
+        71: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        74: putstatic     #124                // Field pigEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        77: invokedynamic #312,  0            // InvokeDynamic #23:apply:()Ljava/util/function/Function;
+        82: invokestatic  #303                // Method com/builtbroken/ai/improvements/modifier/ModifierLevel.newFilter:(Ljava/util/function/Function;)Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        85: putstatic     #130                // Field sheepEditor:Lcom/builtbroken/ai/improvements/modifier/ModifierLevel;
+        88: return
+      LineNumberTable:
+        line 46: 0
+        line 47: 11
+        line 48: 22
+        line 49: 33
+        line 50: 44
+        line 51: 55
+        line 52: 66
+        line 53: 77
+}
+SourceFile: "ModifierSystem.java"
+RuntimeVisibleAnnotations:
+  0: #366(#367=s#368)
+    net.neoforged.fml.common.EventBusSubscriber(
+      modid="aiimprovements"
+    )
+BootstrapMethods:
+  0: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #371 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$7:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  1: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #374 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$8:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  2: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #377 (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+      #378 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$9:(Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+      #377 (Lnet/minecraft/world/entity/Entity;)Lcom/builtbroken/ai/improvements/modifier/filters/FilterResult;
+  3: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #381 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$10:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  4: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #384 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$11:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  5: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #387 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$12:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  6: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #390 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$13:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  7: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #393 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$14:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  8: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #396 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$15:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  9: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #399 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$16:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  10: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #402 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$init$17:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  11: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #405 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$18:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  12: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #408 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$19:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  13: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #411 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$20:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  14: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #414 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$21:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  15: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #417 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$22:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  16: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #420 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$populateAnimalEditor$23:(Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+      #370 (Lnet/minecraft/world/entity/ai/goal/Goal;)Z
+  17: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #425 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$0:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  18: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #429 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$1:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  19: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #432 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$2:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  20: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #435 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$3:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  21: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #438 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$4:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  22: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #441 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$5:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+  23: #447 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #423 (Ljava/lang/Object;)Ljava/lang/Object;
+      #444 REF_invokeStatic com/builtbroken/ai/improvements/modifier/ModifierSystem.lambda$static$6:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+      #428 (Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+InnerClasses:
+  public static final #455= #144 of #46;  // FilteredConfigValue=class com/builtbroken/ai/improvements/ConfigMain$FilteredConfigValue of class com/builtbroken/ai/improvements/ConfigMain
+  public static #458= #150 of #456;       // BooleanValue=class net/neoforged/neoforge/common/ModConfigSpec$BooleanValue of class net/neoforged/neoforge/common/ModConfigSpec
+  public static final #459= #223 of #46;  // AnimalConfigSection=class com/builtbroken/ai/improvements/ConfigMain$AnimalConfigSection of class com/builtbroken/ai/improvements/ConfigMain
+  public #460= #261 of #293;              // SquidFleeGoal=class net/minecraft/world/entity/animal/Squid$SquidFleeGoal of class net/minecraft/world/entity/animal/Squid
+  public #461= #263 of #293;              // SquidRandomMovementGoal=class net/minecraft/world/entity/animal/Squid$SquidRandomMovementGoal of class net/minecraft/world/entity/animal/Squid
+  public static #464= #265 of #462;       // PufferfishPuffGoal=class net/minecraft/world/entity/animal/Pufferfish$PufferfishPuffGoal of class net/minecraft/world/entity/animal/Pufferfish
+  public static final #469= #465 of #467; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
