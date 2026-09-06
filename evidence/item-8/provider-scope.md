@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 106 of 136. The exact queue below has 30 open rows.
+Supported provider dispositions: 107 of 136. The exact queue below has 29 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -649,7 +649,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
-| `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
+| `cristellib-neoforge-1.21.1-3.1.7.jar` | `cristellib-provider`, `cristellib-writers`, `cristellib-set-writers`, `cristellib-conditions`, `cristellib-builtin`; full payload/source binding. | RESOLVED: consumer pack loading and existing structure-set configuration. No independent family; Waystones replacement condition fails in the frozen runtime. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
@@ -7149,3 +7149,49 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspe
 27 utility cases and scoped quality checks pass. Whole providers: 106 resolved,
 30 open. No family added. Do not trace further config-screen helpers; continue
 remaining provider dispositions and canonical Moog grouping before attributes.
+
+
+### CristelLib membership resolved
+
+Sources 301e7486, 8cf26f9e, 70b3b9ce, 0e6adb61 and 781e1a8d bind twenty
+classes covering entries, annotated plugin discovery, the built-in consumer,
+resource loading/storage, set writers and the relevant conditional pack path.
+The built-in API configures existing vanilla structure sets and registers the
+shared CONFIG_PACK. Other consumers supply their declarations and resources.
+Automatic configuration wraps existing sets. The toggle writer removes disabled
+members; the placement writer changes salt, spacing, separation and frequency.
+Neither adds an independent authored design. Preserve these generation effects
+for effective per-family attributes; membership closure is not a no-effect claim.
+
+Pack injection requires its supplied condition and absence from disabledPacks.
+The mod_loaded codec tests the actual loaded/loading NeoForge mod list when
+no version is supplied. Existing Towns and Towers evidence binds the optional
+Waystones pack declaration to that condition and proves Waystones absent in the
+frozen runtime. Its three replacements are therefore ineligible, not new families.
+Existing Explorify and Towns and Towers resource dispositions remain their
+consumer attribution; do not duplicate families under the library provider.
+
+The full archive has 95 classes, three translations and nine other files,
+including one nested Jankson archive. Jankson has 42 parser classes and two
+metadata files, no loader entries, services, generation data or Minecraft code
+references. The common declared mixin set has only a client pack-selection hook.
+The additional packaged descriptor names a pack-root accessor; it is captured
+conservatively even though it is not declared by the NeoForge metadata.
+No independent family is contributed by this library or its bundled parser.
+
+```sh
+uv run pytest -q tests/item8/test_cristellib_provider_scope.py tests/item8/test_towns_towers_provider_scope.py
+uv run ruff check tests/item8/test_cristellib_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_cristellib_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+Two focused cases and scoped quality checks pass. Initial Basedpyright findings
+for untyped JSON variables were fixed with explicit types. Captures reproduce
+byte for byte. Raw ConditionNode has a trailing blank line: the default staged whitespace
+check failed, and the raw file was preserved with only blank-at-eof excluded
+from that generated-evidence check. Built-in pre-selector captures are retained
+as pilots; accepted source and r2 were produced after selector delivery, as
+recorded in their README. No raw evidence was rewritten to pass.
+Whole providers: 107 resolved, 29 open. No family added. Do not continue generic
+CristelLib parser, configuration or version-comparator tracing. Finish remaining
+provider roles and canonical Moog grouping before detailed attributes.
