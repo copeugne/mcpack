@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Creating Space design relationships are resolved from existing component graphs
+and template contents. Four distinct installation/wreck designs remain; reused
+bastion legs and the Moon top/basement are components. The existing affected case
+and scoped quality checks pass. Canonical-note backlog: 115. Coverage groups: 405.
+Placement, inhabitants and equipment operation are not resolved by these source
+contents. Inventory refresh follows; no new capture or measurement was added.
+
 Inventory matches 2eb64661 and reproduces exactly. Canonical-note backlog: 119.
 Coverage groups: 405, including inactive candidates. Next: remaining design
 relationships against preserved templates and source graphs. Nonregistry and

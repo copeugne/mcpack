@@ -9257,3 +9257,24 @@ SHA-256: 400b5d2608332439e6dcf1e738d335f7f23f72cae9364cda5d33573657549e42.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-replacement-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-replacement-r2.json
 ```
+
+### Creating Space design reconciliation, 2026-09-07
+
+Existing template contents and root graphs distinguish the Mars drill-and-pulley
+installation, Moon upper-building/fluid-machinery basement installation, compact
+engine-and-flight-recorder rocket wreck, and broad sliding-door ship wreck.
+Bastion legs are reused components; the Moon installation top and basement are
+connected pieces. These four records retain separate design identities. Source
+machinery does not prove operation, occupants or effective placement. No new
+capture, rendering pass or measurement was needed.
+
+The existing affected case and scoped checks pass. Canonical-note backlog: 115,
+down from 119. Coverage groups remain 405. Remaining named records by provider:
+IDAS 59, AdoraBuild 31, Terralith 15, Illager Invasion 5, Aether 3, Deep Aether 1,
+and Towns and Towers 1. Nonregistry reconciliation and required attributes remain.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k creatingspace
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
