@@ -245,3 +245,46 @@ def test_supplementaries_trinkets_class_fallback_is_absent() -> None:
                     (location + "!/" + name, archive.read(name))
                     for name in names if name.endswith(".jar")
                 )
+
+
+def test_supplementaries_mixinsquared_library_entries() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("supplementaries-"))
+    assert source.sha256 == "0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    outer_path = "META-INF/jarjar/mixinsquared-forge-0.3.3.jar"
+    inner_path = "META-INF/jars/MixinSquared-0.3.3.jar"
+    with ZipFile(source.path) as parent:
+        wrapper_raw = parent.read(outer_path)
+    with ZipFile(BytesIO(wrapper_raw)) as wrapper:
+        core_raw = wrapper.read(inner_path)
+        plugin = cast(
+            "dict[str, JsonValue]", json.loads(wrapper.read("mixinsquared.init.mixins.json"))
+        )
+        assert plugin["plugin"] == (
+            "com.bawnorton.mixinsquared.platform.forge.MixinSquaredMixinConfigPlugin"
+        )
+        assert not {"mixins", "client", "server"} & plugin.keys()
+    for label, payload, member, count, archive_sha, manifest_sha in (
+        ("wrapper", wrapper_raw, outer_path, 11,
+         "e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3",
+         "6a7cbdcfb28d23625a5a4468a982f9d5011767bc226793639d02532001fc47c2"),
+        ("core", core_raw, outer_path + "!/" + inner_path, 63,
+         "0eaa67fa937cc65ab78a981cd9e4e741d03eaf7236983d7e30818ac99da0632f",
+         "a46ec939d8f5fba8cbb02ca91e76e87d25d830ebc7be3711056659e04a14d673"),
+    ):
+        assert hashlib.sha256(payload).hexdigest() == archive_sha
+        directory = Path("evidence/item-8/sources/supplementaries-mixinsquared-" + label)
+        raw = (directory / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == manifest_sha
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(rows) == len({row["class"] for row in rows}) == 4
+        with ZipFile(BytesIO(payload)) as archive:
+            names = {n for n in archive.namelist() if not n.endswith("/")}
+            assert len(names) == count
+            assert not any(n.startswith(("data/", "assets/")) for n in names)
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == archive_sha
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                raw = (directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
