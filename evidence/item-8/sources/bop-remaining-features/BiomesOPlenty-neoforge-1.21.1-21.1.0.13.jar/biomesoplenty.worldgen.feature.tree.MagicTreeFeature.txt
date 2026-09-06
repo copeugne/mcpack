@@ -1,0 +1,1009 @@
+Compiled from "MagicTreeFeature.java"
+public class biomesoplenty.worldgen.feature.tree.MagicTreeFeature extends biomesoplenty.worldgen.feature.tree.BOPTreeFeature<biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration> {
+  public biomesoplenty.worldgen.feature.tree.MagicTreeFeature(com.mojang.serialization.Codec<biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method biomesoplenty/worldgen/feature/tree/BOPTreeFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  protected boolean doPlace(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: aload         7
+       2: checkcast     #7                  // class biomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration
+       5: astore        8
+       7: aload_2
+       8: aload         8
+      10: getfield      #9                  // Field biomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration.maxHeight:I
+      13: aload         8
+      15: getfield      #13                 // Field biomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration.minHeight:I
+      18: isub
+      19: invokeinterface #16,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      24: aload         8
+      26: getfield      #13                 // Field biomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration.minHeight:I
+      29: iadd
+      30: istore        9
+      32: iconst_1
+      33: istore        10
+      35: aload_3
+      36: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+      39: aload_1
+      40: invokeinterface #28,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+      45: iconst_1
+      46: iadd
+      47: if_icmplt     322
+      50: aload_3
+      51: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+      54: iload         9
+      56: iadd
+      57: iconst_1
+      58: iadd
+      59: aload_1
+      60: invokeinterface #33,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+      65: if_icmpgt     322
+      68: aload_3
+      69: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+      72: istore        12
+      74: iload         12
+      76: aload_3
+      77: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+      80: iconst_1
+      81: iadd
+      82: iload         9
+      84: iadd
+      85: if_icmpgt     244
+      88: iconst_1
+      89: istore        11
+      91: iload         12
+      93: aload_3
+      94: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+      97: if_icmpne     103
+     100: iconst_0
+     101: istore        11
+     103: iload         12
+     105: aload_3
+     106: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+     109: iconst_1
+     110: iadd
+     111: iload         9
+     113: iadd
+     114: iconst_2
+     115: isub
+     116: if_icmplt     122
+     119: iconst_2
+     120: istore        11
+     122: aload_3
+     123: invokevirtual #36                 // Method net/minecraft/core/BlockPos.getX:()I
+     126: iload         11
+     128: isub
+     129: istore        13
+     131: iload         13
+     133: aload_3
+     134: invokevirtual #36                 // Method net/minecraft/core/BlockPos.getX:()I
+     137: iload         11
+     139: iadd
+     140: if_icmpgt     238
+     143: iload         10
+     145: ifeq          238
+     148: aload_3
+     149: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getZ:()I
+     152: iload         11
+     154: isub
+     155: istore        14
+     157: iload         14
+     159: aload_3
+     160: invokevirtual #39                 // Method net/minecraft/core/BlockPos.getZ:()I
+     163: iload         11
+     165: iadd
+     166: if_icmpgt     232
+     169: iload         10
+     171: ifeq          232
+     174: iload         12
+     176: aload_1
+     177: invokeinterface #28,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMinBuildHeight:()I
+     182: if_icmplt     223
+     185: iload         12
+     187: aload_1
+     188: invokeinterface #33,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+     193: if_icmpge     223
+     196: aload_0
+     197: aload_1
+     198: new           #23                 // class net/minecraft/core/BlockPos
+     201: dup
+     202: iload         13
+     204: iload         12
+     206: iload         14
+     208: invokespecial #42                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     211: invokevirtual #45                 // Method canReplace:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+     214: ifne          226
+     217: iconst_0
+     218: istore        10
+     220: goto          226
+     223: iconst_0
+     224: istore        10
+     226: iinc          14, 1
+     229: goto          157
+     232: iinc          13, 1
+     235: goto          131
+     238: iinc          12, 1
+     241: goto          74
+     244: iload         10
+     246: ifne          251
+     249: iconst_0
+     250: ireturn
+     251: aload_3
+     252: invokevirtual #51                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     255: astore        12
+     257: aload_1
+     258: aload         12
+     260: invokeinterface #55,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     265: invokevirtual #59                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     268: astore        13
+     270: aload_3
+     271: invokevirtual #22                 // Method net/minecraft/core/BlockPos.getY:()I
+     274: aload_1
+     275: invokeinterface #33,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getMaxBuildHeight:()I
+     280: iload         9
+     282: isub
+     283: iconst_1
+     284: isub
+     285: if_icmpge     320
+     288: aload_1
+     289: aload         12
+     291: getstatic     #65                 // Field net/minecraft/world/level/block/Blocks.DIRT:Lnet/minecraft/world/level/block/Block;
+     294: invokevirtual #71                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     297: iconst_3
+     298: invokeinterface #77,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     303: pop
+     304: aload_0
+     305: aload         5
+     307: aload         6
+     309: aload_1
+     310: aload_3
+     311: iload         9
+     313: aload         8
+     315: invokevirtual #81                 // Method generateTrunk:(Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;ILbiomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration;)V
+     318: iconst_1
+     319: ireturn
+     320: iconst_0
+     321: ireturn
+     322: iconst_0
+     323: ireturn
+
+  protected void generateTrunk(java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, int, biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration);
+    Code:
+       0: iload         5
+       2: istore        7
+       4: iconst_0
+       5: istore        8
+       7: iload         8
+       9: iload         7
+      11: if_icmpgt     50
+      14: aload         4
+      16: iload         8
+      18: invokevirtual #85                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      21: astore        9
+      23: aload_0
+      24: aload_3
+      25: aload         9
+      27: invokevirtual #45                 // Method canReplace:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Z
+      30: ifeq          44
+      33: aload_0
+      34: aload_3
+      35: aload         9
+      37: aload_1
+      38: aload         6
+      40: invokevirtual #89                 // Method placeLog:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Ljava/util/function/BiConsumer;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      43: pop
+      44: iinc          8, 1
+      47: goto          7
+      50: aload         4
+      52: iload         7
+      54: iconst_2
+      55: iadd
+      56: invokevirtual #85                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      59: astore        8
+      61: aload         4
+      63: iload         7
+      65: iconst_3
+      66: isub
+      67: invokevirtual #85                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      70: astore        9
+      72: aload         4
+      74: iload         7
+      76: bipush        8
+      78: isub
+      79: invokevirtual #85                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      82: astore        10
+      84: aload_3
+      85: invokeinterface #93,  1           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getRandom:()Lnet/minecraft/util/RandomSource;
+      90: iconst_2
+      91: invokeinterface #16,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      96: ifeq          110
+      99: aload_0
+     100: aload_1
+     101: aload_2
+     102: aload_3
+     103: aload         8
+     105: aload         6
+     107: invokevirtual #99                 // Method generateSmallOrb:(Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lbiomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration;)V
+     110: aload_0
+     111: aload_1
+     112: aload_2
+     113: aload_3
+     114: aload         9
+     116: aload         6
+     118: invokevirtual #103                // Method generateMediumOrb:(Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lbiomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration;)V
+     121: iload         5
+     123: bipush        9
+     125: if_icmple     139
+     128: aload_0
+     129: aload_1
+     130: aload_2
+     131: aload_3
+     132: aload         10
+     134: aload         6
+     136: invokevirtual #106                // Method generateLargeOrb:(Ljava/util/function/BiConsumer;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lbiomesoplenty/worldgen/feature/configurations/MagicTreeConfiguration;)V
+     139: return
+
+  private void generateLargeOrb(java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration);
+    Code:
+       0: aload         4
+       2: astore        6
+       4: iconst_0
+       5: istore        7
+       7: iload         7
+       9: iconst_5
+      10: if_icmpge     181
+      13: aload_0
+      14: aload_3
+      15: aload         6
+      17: iconst_0
+      18: iload         7
+      20: iconst_0
+      21: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      24: aload_2
+      25: aload         5
+      27: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      30: pop
+      31: aload_0
+      32: aload_3
+      33: aload         6
+      35: iconst_m1
+      36: iload         7
+      38: iconst_0
+      39: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      42: aload_2
+      43: aload         5
+      45: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      48: pop
+      49: aload_0
+      50: aload_3
+      51: aload         6
+      53: iconst_1
+      54: iload         7
+      56: iconst_0
+      57: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      60: aload_2
+      61: aload         5
+      63: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      66: pop
+      67: aload_0
+      68: aload_3
+      69: aload         6
+      71: iconst_0
+      72: iload         7
+      74: iconst_m1
+      75: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      78: aload_2
+      79: aload         5
+      81: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      84: pop
+      85: aload_0
+      86: aload_3
+      87: aload         6
+      89: iconst_0
+      90: iload         7
+      92: iconst_1
+      93: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      96: aload_2
+      97: aload         5
+      99: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     102: pop
+     103: aload_0
+     104: aload_3
+     105: aload         6
+     107: iconst_m1
+     108: iload         7
+     110: iconst_m1
+     111: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     114: aload_2
+     115: aload         5
+     117: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     120: pop
+     121: aload_0
+     122: aload_3
+     123: aload         6
+     125: iconst_1
+     126: iload         7
+     128: iconst_m1
+     129: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     132: aload_2
+     133: aload         5
+     135: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     138: pop
+     139: aload_0
+     140: aload_3
+     141: aload         6
+     143: iconst_m1
+     144: iload         7
+     146: iconst_1
+     147: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     150: aload_2
+     151: aload         5
+     153: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     156: pop
+     157: aload_0
+     158: aload_3
+     159: aload         6
+     161: iconst_1
+     162: iload         7
+     164: iconst_1
+     165: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     168: aload_2
+     169: aload         5
+     171: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     174: pop
+     175: iinc          7, 1
+     178: goto          7
+     181: iconst_1
+     182: istore        7
+     184: iload         7
+     186: iconst_4
+     187: if_icmpge     562
+     190: aload_0
+     191: aload_3
+     192: aload         6
+     194: iconst_m1
+     195: iload         7
+     197: iconst_0
+     198: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     201: aload_2
+     202: aload         5
+     204: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     207: pop
+     208: aload_0
+     209: aload_3
+     210: aload         6
+     212: iconst_1
+     213: iload         7
+     215: iconst_0
+     216: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     219: aload_2
+     220: aload         5
+     222: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     225: pop
+     226: aload_0
+     227: aload_3
+     228: aload         6
+     230: iconst_0
+     231: iload         7
+     233: iconst_m1
+     234: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     237: aload_2
+     238: aload         5
+     240: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     243: pop
+     244: aload_0
+     245: aload_3
+     246: aload         6
+     248: iconst_0
+     249: iload         7
+     251: iconst_1
+     252: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     255: aload_2
+     256: aload         5
+     258: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     261: pop
+     262: aload_0
+     263: aload_3
+     264: aload         6
+     266: iconst_m1
+     267: iload         7
+     269: iconst_m1
+     270: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     273: aload_2
+     274: aload         5
+     276: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     279: pop
+     280: aload_0
+     281: aload_3
+     282: aload         6
+     284: iconst_1
+     285: iload         7
+     287: iconst_m1
+     288: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     291: aload_2
+     292: aload         5
+     294: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     297: pop
+     298: aload_0
+     299: aload_3
+     300: aload         6
+     302: iconst_m1
+     303: iload         7
+     305: iconst_1
+     306: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     309: aload_2
+     310: aload         5
+     312: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     315: pop
+     316: aload_0
+     317: aload_3
+     318: aload         6
+     320: iconst_1
+     321: iload         7
+     323: iconst_1
+     324: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     327: aload_2
+     328: aload         5
+     330: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     333: pop
+     334: aload_0
+     335: aload_3
+     336: aload         6
+     338: bipush        -2
+     340: iload         7
+     342: iconst_m1
+     343: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     346: aload_2
+     347: aload         5
+     349: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     352: pop
+     353: aload_0
+     354: aload_3
+     355: aload         6
+     357: bipush        -2
+     359: iload         7
+     361: iconst_0
+     362: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     365: aload_2
+     366: aload         5
+     368: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     371: pop
+     372: aload_0
+     373: aload_3
+     374: aload         6
+     376: bipush        -2
+     378: iload         7
+     380: iconst_1
+     381: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     384: aload_2
+     385: aload         5
+     387: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     390: pop
+     391: aload_0
+     392: aload_3
+     393: aload         6
+     395: iconst_2
+     396: iload         7
+     398: iconst_m1
+     399: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     402: aload_2
+     403: aload         5
+     405: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     408: pop
+     409: aload_0
+     410: aload_3
+     411: aload         6
+     413: iconst_2
+     414: iload         7
+     416: iconst_0
+     417: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     420: aload_2
+     421: aload         5
+     423: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     426: pop
+     427: aload_0
+     428: aload_3
+     429: aload         6
+     431: iconst_2
+     432: iload         7
+     434: iconst_1
+     435: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     438: aload_2
+     439: aload         5
+     441: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     444: pop
+     445: aload_0
+     446: aload_3
+     447: aload         6
+     449: iconst_m1
+     450: iload         7
+     452: bipush        -2
+     454: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     457: aload_2
+     458: aload         5
+     460: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     463: pop
+     464: aload_0
+     465: aload_3
+     466: aload         6
+     468: iconst_0
+     469: iload         7
+     471: bipush        -2
+     473: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     476: aload_2
+     477: aload         5
+     479: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     482: pop
+     483: aload_0
+     484: aload_3
+     485: aload         6
+     487: iconst_1
+     488: iload         7
+     490: bipush        -2
+     492: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     495: aload_2
+     496: aload         5
+     498: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     501: pop
+     502: aload_0
+     503: aload_3
+     504: aload         6
+     506: iconst_m1
+     507: iload         7
+     509: iconst_2
+     510: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     513: aload_2
+     514: aload         5
+     516: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     519: pop
+     520: aload_0
+     521: aload_3
+     522: aload         6
+     524: iconst_0
+     525: iload         7
+     527: iconst_2
+     528: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     531: aload_2
+     532: aload         5
+     534: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     537: pop
+     538: aload_0
+     539: aload_3
+     540: aload         6
+     542: iconst_1
+     543: iload         7
+     545: iconst_2
+     546: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     549: aload_2
+     550: aload         5
+     552: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     555: pop
+     556: iinc          7, 1
+     559: goto          184
+     562: return
+
+  private void generateMediumOrb(java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration);
+    Code:
+       0: aload         4
+       2: astore        6
+       4: iconst_0
+       5: istore        7
+       7: iload         7
+       9: iconst_5
+      10: if_icmpge     109
+      13: aload_0
+      14: aload_3
+      15: aload         6
+      17: iconst_0
+      18: iload         7
+      20: iconst_0
+      21: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      24: aload_2
+      25: aload         5
+      27: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      30: pop
+      31: aload_0
+      32: aload_3
+      33: aload         6
+      35: iconst_m1
+      36: iload         7
+      38: iconst_0
+      39: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      42: aload_2
+      43: aload         5
+      45: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      48: pop
+      49: aload_0
+      50: aload_3
+      51: aload         6
+      53: iconst_1
+      54: iload         7
+      56: iconst_0
+      57: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      60: aload_2
+      61: aload         5
+      63: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      66: pop
+      67: aload_0
+      68: aload_3
+      69: aload         6
+      71: iconst_0
+      72: iload         7
+      74: iconst_m1
+      75: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      78: aload_2
+      79: aload         5
+      81: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      84: pop
+      85: aload_0
+      86: aload_3
+      87: aload         6
+      89: iconst_0
+      90: iload         7
+      92: iconst_1
+      93: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      96: aload_2
+      97: aload         5
+      99: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     102: pop
+     103: iinc          7, 1
+     106: goto          7
+     109: iconst_1
+     110: istore        7
+     112: iload         7
+     114: iconst_4
+     115: if_icmpge     196
+     118: aload_0
+     119: aload_3
+     120: aload         6
+     122: iconst_m1
+     123: iload         7
+     125: iconst_m1
+     126: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     129: aload_2
+     130: aload         5
+     132: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     135: pop
+     136: aload_0
+     137: aload_3
+     138: aload         6
+     140: iconst_1
+     141: iload         7
+     143: iconst_m1
+     144: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     147: aload_2
+     148: aload         5
+     150: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     153: pop
+     154: aload_0
+     155: aload_3
+     156: aload         6
+     158: iconst_m1
+     159: iload         7
+     161: iconst_1
+     162: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     165: aload_2
+     166: aload         5
+     168: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     171: pop
+     172: aload_0
+     173: aload_3
+     174: aload         6
+     176: iconst_1
+     177: iload         7
+     179: iconst_1
+     180: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     183: aload_2
+     184: aload         5
+     186: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     189: pop
+     190: iinc          7, 1
+     193: goto          112
+     196: aload_0
+     197: aload_3
+     198: aload         6
+     200: bipush        -2
+     202: iconst_1
+     203: iconst_0
+     204: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     207: aload_2
+     208: aload         5
+     210: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     213: pop
+     214: aload_0
+     215: aload_3
+     216: aload         6
+     218: iconst_2
+     219: iconst_1
+     220: iconst_0
+     221: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     224: aload_2
+     225: aload         5
+     227: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     230: pop
+     231: aload_0
+     232: aload_3
+     233: aload         6
+     235: iconst_0
+     236: iconst_1
+     237: bipush        -2
+     239: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     242: aload_2
+     243: aload         5
+     245: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     248: pop
+     249: aload_0
+     250: aload_3
+     251: aload         6
+     253: iconst_0
+     254: iconst_1
+     255: iconst_2
+     256: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     259: aload_2
+     260: aload         5
+     262: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     265: pop
+     266: aload_0
+     267: aload_3
+     268: aload         6
+     270: bipush        -2
+     272: iconst_2
+     273: iconst_m1
+     274: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     277: aload_2
+     278: aload         5
+     280: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     283: pop
+     284: aload_0
+     285: aload_3
+     286: aload         6
+     288: bipush        -2
+     290: iconst_2
+     291: iconst_0
+     292: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     295: aload_2
+     296: aload         5
+     298: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     301: pop
+     302: aload_0
+     303: aload_3
+     304: aload         6
+     306: bipush        -2
+     308: iconst_2
+     309: iconst_1
+     310: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     313: aload_2
+     314: aload         5
+     316: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     319: pop
+     320: aload_0
+     321: aload_3
+     322: aload         6
+     324: iconst_2
+     325: iconst_2
+     326: iconst_m1
+     327: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     330: aload_2
+     331: aload         5
+     333: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     336: pop
+     337: aload_0
+     338: aload_3
+     339: aload         6
+     341: iconst_2
+     342: iconst_2
+     343: iconst_0
+     344: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     347: aload_2
+     348: aload         5
+     350: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     353: pop
+     354: aload_0
+     355: aload_3
+     356: aload         6
+     358: iconst_2
+     359: iconst_2
+     360: iconst_1
+     361: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     364: aload_2
+     365: aload         5
+     367: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     370: pop
+     371: aload_0
+     372: aload_3
+     373: aload         6
+     375: iconst_m1
+     376: iconst_2
+     377: bipush        -2
+     379: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     382: aload_2
+     383: aload         5
+     385: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     388: pop
+     389: aload_0
+     390: aload_3
+     391: aload         6
+     393: iconst_0
+     394: iconst_2
+     395: bipush        -2
+     397: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     400: aload_2
+     401: aload         5
+     403: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     406: pop
+     407: aload_0
+     408: aload_3
+     409: aload         6
+     411: iconst_1
+     412: iconst_2
+     413: bipush        -2
+     415: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     418: aload_2
+     419: aload         5
+     421: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     424: pop
+     425: aload_0
+     426: aload_3
+     427: aload         6
+     429: iconst_m1
+     430: iconst_2
+     431: iconst_2
+     432: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     435: aload_2
+     436: aload         5
+     438: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     441: pop
+     442: aload_0
+     443: aload_3
+     444: aload         6
+     446: iconst_0
+     447: iconst_2
+     448: iconst_2
+     449: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     452: aload_2
+     453: aload         5
+     455: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     458: pop
+     459: aload_0
+     460: aload_3
+     461: aload         6
+     463: iconst_1
+     464: iconst_2
+     465: iconst_2
+     466: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     469: aload_2
+     470: aload         5
+     472: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     475: pop
+     476: aload_0
+     477: aload_3
+     478: aload         6
+     480: bipush        -2
+     482: iconst_3
+     483: iconst_0
+     484: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     487: aload_2
+     488: aload         5
+     490: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     493: pop
+     494: aload_0
+     495: aload_3
+     496: aload         6
+     498: iconst_2
+     499: iconst_3
+     500: iconst_0
+     501: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     504: aload_2
+     505: aload         5
+     507: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     510: pop
+     511: aload_0
+     512: aload_3
+     513: aload         6
+     515: iconst_0
+     516: iconst_3
+     517: bipush        -2
+     519: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     522: aload_2
+     523: aload         5
+     525: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     528: pop
+     529: aload_0
+     530: aload_3
+     531: aload         6
+     533: iconst_0
+     534: iconst_3
+     535: iconst_2
+     536: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     539: aload_2
+     540: aload         5
+     542: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     545: pop
+     546: return
+
+  private void generateSmallOrb(java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, biomesoplenty.worldgen.feature.configurations.MagicTreeConfiguration);
+    Code:
+       0: aload         4
+       2: astore        6
+       4: aload_0
+       5: aload_3
+       6: aload         6
+       8: iconst_0
+       9: iconst_0
+      10: iconst_0
+      11: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      14: aload_2
+      15: aload         5
+      17: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      20: pop
+      21: aload_0
+      22: aload_3
+      23: aload         6
+      25: iconst_0
+      26: iconst_1
+      27: iconst_0
+      28: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      31: aload_2
+      32: aload         5
+      34: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      37: pop
+      38: aload_0
+      39: aload_3
+      40: aload         6
+      42: iconst_m1
+      43: iconst_1
+      44: iconst_0
+      45: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      48: aload_2
+      49: aload         5
+      51: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      54: pop
+      55: aload_0
+      56: aload_3
+      57: aload         6
+      59: iconst_1
+      60: iconst_1
+      61: iconst_0
+      62: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      65: aload_2
+      66: aload         5
+      68: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      71: pop
+      72: aload_0
+      73: aload_3
+      74: aload         6
+      76: iconst_0
+      77: iconst_1
+      78: iconst_m1
+      79: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      82: aload_2
+      83: aload         5
+      85: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+      88: pop
+      89: aload_0
+      90: aload_3
+      91: aload         6
+      93: iconst_0
+      94: iconst_1
+      95: iconst_1
+      96: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      99: aload_2
+     100: aload         5
+     102: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     105: pop
+     106: aload_0
+     107: aload_3
+     108: aload         6
+     110: iconst_0
+     111: iconst_2
+     112: iconst_0
+     113: invokevirtual #109                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     116: aload_2
+     117: aload         5
+     119: invokevirtual #113                // Method placeLeaves:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lbiomesoplenty/worldgen/feature/configurations/BOPTreeConfiguration;)Z
+     122: pop
+     123: return
+}

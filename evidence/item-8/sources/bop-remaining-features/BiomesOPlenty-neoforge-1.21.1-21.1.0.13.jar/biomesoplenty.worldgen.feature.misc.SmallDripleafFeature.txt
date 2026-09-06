@@ -1,0 +1,92 @@
+Compiled from "SmallDripleafFeature.java"
+public class biomesoplenty.worldgen.feature.misc.SmallDripleafFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public biomesoplenty.worldgen.feature.misc.SmallDripleafFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      20: astore        5
+      22: aload_1
+      23: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      26: checkcast     #29                 // class net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration
+      29: astore        6
+      31: iconst_0
+      32: istore        7
+      34: iconst_0
+      35: istore        8
+      37: iload         8
+      39: bipush        64
+      41: if_icmpge     179
+      44: aload         5
+      46: aload         4
+      48: bipush        8
+      50: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      55: aload         4
+      57: bipush        8
+      59: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      64: isub
+      65: aload         4
+      67: iconst_4
+      68: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      73: aload         4
+      75: iconst_4
+      76: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      81: isub
+      82: aload         4
+      84: bipush        8
+      86: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      91: aload         4
+      93: bipush        8
+      95: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     100: isub
+     101: invokevirtual #37                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     104: astore        9
+     106: aload_2
+     107: aload         9
+     109: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     114: invokevirtual #49                 // Method net/minecraft/world/level/block/state/BlockState.liquid:()Z
+     117: ifeq          173
+     120: aload_2
+     121: aload         9
+     123: invokevirtual #55                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     126: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     131: getstatic     #58                 // Field net/minecraft/tags/BlockTags.DIRT:Lnet/minecraft/tags/TagKey;
+     134: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     137: ifeq          173
+     140: aload_2
+     141: getstatic     #68                 // Field net/minecraft/world/level/block/Blocks.SMALL_DRIPLEAF:Lnet/minecraft/world/level/block/Block;
+     144: invokevirtual #74                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     147: getstatic     #80                 // Field net/minecraft/world/level/block/SmallDripleafBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     150: getstatic     #86                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     153: aload         4
+     155: invokevirtual #92                 // Method net/minecraft/core/Direction$Plane.getRandomDirection:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction;
+     158: invokevirtual #96                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     161: checkcast     #50                 // class net/minecraft/world/level/block/state/BlockState
+     164: aload         9
+     166: iconst_2
+     167: invokestatic  #100                // Method net/minecraft/world/level/block/DoublePlantBlock.placeAt:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;I)V
+     170: iinc          7, 1
+     173: iinc          8, 1
+     176: goto          37
+     179: iload         7
+     181: ifle          188
+     184: iconst_1
+     185: goto          189
+     188: iconst_0
+     189: ireturn
+}

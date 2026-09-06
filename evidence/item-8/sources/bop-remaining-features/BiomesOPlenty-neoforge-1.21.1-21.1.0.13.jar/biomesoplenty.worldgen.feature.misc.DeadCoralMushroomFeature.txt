@@ -1,0 +1,230 @@
+Compiled from "DeadCoralMushroomFeature.java"
+public class biomesoplenty.worldgen.feature.misc.DeadCoralMushroomFeature extends net.minecraft.world.level.levelgen.feature.CoralMushroomFeature {
+  public biomesoplenty.worldgen.feature.misc.DeadCoralMushroomFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/CoralMushroomFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: getstatic     #21                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      19: getstatic     #27                 // Field biomesoplenty/init/ModTags$Blocks.DEAD_CORAL_BLOCKS:Lnet/minecraft/tags/TagKey;
+      22: invokeinterface #33,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+      27: aload_2
+      28: invokedynamic #39,  0             // InvokeDynamic #0:apply:(Lnet/minecraft/util/RandomSource;)Ljava/util/function/Function;
+      33: invokevirtual #43                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+      36: invokedynamic #49,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      41: invokevirtual #52                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      44: astore        5
+      46: aload         5
+      48: invokevirtual #55                 // Method java/util/Optional.isEmpty:()Z
+      51: ifeq          58
+      54: iconst_0
+      55: goto          77
+      58: aload_0
+      59: aload_3
+      60: aload_2
+      61: aload         4
+      63: aload         5
+      65: invokevirtual #59                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      68: checkcast     #63                 // class net/minecraft/world/level/block/Block
+      71: invokevirtual #65                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      74: invokevirtual #69                 // Method placeFeature:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      77: ireturn
+
+  protected boolean placeCoralBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_3
+       1: invokevirtual #75                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+       4: astore        5
+       6: aload_1
+       7: aload_3
+       8: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: astore        6
+      15: aload         6
+      17: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      20: ifne          45
+      23: aload         6
+      25: getstatic     #91                 // Field biomesoplenty/init/ModTags$Blocks.DEAD_CORALS:Lnet/minecraft/tags/TagKey;
+      28: invokevirtual #94                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      31: ifne          45
+      34: aload         6
+      36: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      39: getstatic     #102                // Field biomesoplenty/api/block/BOPBlocks.BARNACLES:Lnet/minecraft/world/level/block/Block;
+      42: if_acmpne     305
+      45: aload_1
+      46: aload         5
+      48: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      53: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      56: ifeq          305
+      59: aload_1
+      60: aload_3
+      61: aload         4
+      63: iconst_3
+      64: invokeinterface #108,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      69: pop
+      70: aload_2
+      71: invokeinterface #112,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      76: ldc           #118                // float 0.25f
+      78: fcmpg
+      79: ifge          124
+      82: getstatic     #21                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      85: getstatic     #91                 // Field biomesoplenty/init/ModTags$Blocks.DEAD_CORALS:Lnet/minecraft/tags/TagKey;
+      88: invokeinterface #33,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+      93: aload_2
+      94: invokedynamic #119,  0            // InvokeDynamic #2:apply:(Lnet/minecraft/util/RandomSource;)Ljava/util/function/Function;
+      99: invokevirtual #43                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+     102: invokedynamic #49,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     107: invokevirtual #52                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+     110: aload_1
+     111: aload         5
+     113: invokedynamic #120,  0            // InvokeDynamic #3:accept:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     118: invokevirtual #124                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     121: goto          178
+     124: aload_2
+     125: invokeinterface #112,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     130: ldc           #128                // float 0.05f
+     132: fcmpg
+     133: ifge          178
+     136: aload_1
+     137: aload         5
+     139: getstatic     #129                // Field net/minecraft/world/level/block/Blocks.GLOW_LICHEN:Lnet/minecraft/world/level/block/Block;
+     142: invokevirtual #65                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     145: getstatic     #134                // Field net/minecraft/world/level/block/PipeBlock.DOWN:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     148: iconst_1
+     149: invokestatic  #140                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     152: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     155: checkcast     #87                 // class net/minecraft/world/level/block/state/BlockState
+     158: getstatic     #150                // Field net/minecraft/world/level/block/SeaPickleBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     161: iconst_0
+     162: invokestatic  #140                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     165: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     168: checkcast     #87                 // class net/minecraft/world/level/block/state/BlockState
+     171: iconst_2
+     172: invokeinterface #108,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     177: pop
+     178: getstatic     #155                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     181: invokevirtual #161                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+     184: astore        7
+     186: aload         7
+     188: invokeinterface #165,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     193: ifeq          303
+     196: aload         7
+     198: invokeinterface #170,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     203: checkcast     #173                // class net/minecraft/core/Direction
+     206: astore        8
+     208: aload_2
+     209: invokeinterface #112,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     214: ldc           #175                // float 0.2f
+     216: fcmpg
+     217: ifge          300
+     220: aload_3
+     221: aload         8
+     223: invokevirtual #176                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     226: astore        9
+     228: aload_1
+     229: aload         9
+     231: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     236: invokevirtual #86                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     239: ifne          259
+     242: aload_1
+     243: aload         9
+     245: invokeinterface #80,  2           // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     250: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     253: getstatic     #102                // Field biomesoplenty/api/block/BOPBlocks.BARNACLES:Lnet/minecraft/world/level/block/Block;
+     256: if_acmpne     300
+     259: getstatic     #21                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+     262: getstatic     #180                // Field biomesoplenty/init/ModTags$Blocks.DEAD_WALL_CORALS:Lnet/minecraft/tags/TagKey;
+     265: invokeinterface #33,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+     270: aload_2
+     271: invokedynamic #183,  0            // InvokeDynamic #4:apply:(Lnet/minecraft/util/RandomSource;)Ljava/util/function/Function;
+     276: invokevirtual #43                 // Method java/util/Optional.flatMap:(Ljava/util/function/Function;)Ljava/util/Optional;
+     279: invokedynamic #49,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     284: invokevirtual #52                 // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+     287: aload         8
+     289: aload_1
+     290: aload         9
+     292: invokedynamic #184,  0            // InvokeDynamic #5:accept:(Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Consumer;
+     297: invokevirtual #124                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     300: goto          186
+     303: iconst_1
+     304: ireturn
+     305: iconst_0
+     306: ireturn
+
+  private static void lambda$placeCoralBlock$4(net.minecraft.core.Direction, net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_3
+       1: invokevirtual #65                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       4: getstatic     #187                // Field net/minecraft/world/level/block/BaseCoralPlantTypeBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       7: iconst_0
+       8: invokestatic  #140                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      11: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      14: checkcast     #87                 // class net/minecraft/world/level/block/state/BlockState
+      17: astore        4
+      19: aload         4
+      21: getstatic     #190                // Field net/minecraft/world/level/block/BaseCoralWallFanBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      24: invokevirtual #196                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      27: ifeq          44
+      30: aload         4
+      32: getstatic     #190                // Field net/minecraft/world/level/block/BaseCoralWallFanBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+      35: aload_0
+      36: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      39: checkcast     #87                 // class net/minecraft/world/level/block/state/BlockState
+      42: astore        4
+      44: aload_1
+      45: aload_2
+      46: aload         4
+      48: iconst_2
+      49: invokeinterface #108,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      54: pop
+      55: return
+
+  private static java.util.Optional lambda$placeCoralBlock$3(net.minecraft.util.RandomSource, net.minecraft.core.HolderSet$Named);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #200                // Method net/minecraft/core/HolderSet$Named.getRandomElement:(Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+       5: areturn
+
+  private static void lambda$placeCoralBlock$2(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Block);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #65                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       6: getstatic     #187                // Field net/minecraft/world/level/block/BaseCoralPlantTypeBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+       9: iconst_0
+      10: invokestatic  #140                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      13: invokevirtual #146                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      16: checkcast     #87                 // class net/minecraft/world/level/block/state/BlockState
+      19: iconst_2
+      20: invokeinterface #108,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      25: pop
+      26: return
+
+  private static java.util.Optional lambda$placeCoralBlock$1(net.minecraft.util.RandomSource, net.minecraft.core.HolderSet$Named);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #200                // Method net/minecraft/core/HolderSet$Named.getRandomElement:(Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+       5: areturn
+
+  private static java.util.Optional lambda$place$0(net.minecraft.util.RandomSource, net.minecraft.core.HolderSet$Named);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #200                // Method net/minecraft/core/HolderSet$Named.getRandomElement:(Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+       5: areturn
+}

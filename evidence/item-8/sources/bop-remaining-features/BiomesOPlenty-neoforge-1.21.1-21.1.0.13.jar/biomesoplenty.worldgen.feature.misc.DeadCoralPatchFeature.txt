@@ -1,0 +1,145 @@
+Compiled from "DeadCoralPatchFeature.java"
+public class biomesoplenty.worldgen.feature.misc.DeadCoralPatchFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public biomesoplenty.worldgen.feature.misc.DeadCoralPatchFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      20: astore        5
+      22: aload_1
+      23: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      26: checkcast     #29                 // class net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration
+      29: astore        6
+      31: iconst_0
+      32: istore        7
+      34: iconst_0
+      35: istore        8
+      37: iload         8
+      39: bipush        64
+      41: if_icmpge     341
+      44: aload         5
+      46: aload         4
+      48: bipush        8
+      50: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      55: aload         4
+      57: bipush        8
+      59: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      64: isub
+      65: aload         4
+      67: iconst_4
+      68: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      73: aload         4
+      75: iconst_4
+      76: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      81: isub
+      82: aload         4
+      84: bipush        8
+      86: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      91: aload         4
+      93: bipush        8
+      95: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     100: isub
+     101: invokevirtual #37                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     104: astore        9
+     106: aload_2
+     107: aload         9
+     109: invokestatic  #43                 // Method net/minecraft/world/level/levelgen/feature/TreeFeature.isAirOrLeaves:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+     112: ifeq          335
+     115: aload_2
+     116: aload         9
+     118: invokevirtual #49                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     121: invokeinterface #52,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     126: getstatic     #58                 // Field biomesoplenty/init/ModTags$Blocks.TIDEPOOL_REPLACEABLE:Lnet/minecraft/tags/TagKey;
+     129: invokevirtual #64                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     132: ifeq          335
+     135: aload         4
+     137: bipush        10
+     139: invokeinterface #31,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     144: tableswitch   { // 0 to 9
+                     0: 200
+                     1: 211
+                     2: 222
+                     3: 233
+                     4: 244
+                     5: 255
+                     6: 266
+                     7: 277
+                     8: 288
+                     9: 299
+               default: 200
+          }
+     200: getstatic     #70                 // Field net/minecraft/world/level/block/Blocks.DEAD_TUBE_CORAL:Lnet/minecraft/world/level/block/Block;
+     203: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     206: astore        10
+     208: goto          307
+     211: getstatic     #82                 // Field net/minecraft/world/level/block/Blocks.DEAD_BRAIN_CORAL:Lnet/minecraft/world/level/block/Block;
+     214: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     217: astore        10
+     219: goto          307
+     222: getstatic     #85                 // Field net/minecraft/world/level/block/Blocks.DEAD_BUBBLE_CORAL:Lnet/minecraft/world/level/block/Block;
+     225: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     228: astore        10
+     230: goto          307
+     233: getstatic     #88                 // Field net/minecraft/world/level/block/Blocks.DEAD_FIRE_CORAL:Lnet/minecraft/world/level/block/Block;
+     236: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     239: astore        10
+     241: goto          307
+     244: getstatic     #91                 // Field net/minecraft/world/level/block/Blocks.DEAD_HORN_CORAL:Lnet/minecraft/world/level/block/Block;
+     247: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     250: astore        10
+     252: goto          307
+     255: getstatic     #94                 // Field net/minecraft/world/level/block/Blocks.DEAD_TUBE_CORAL_FAN:Lnet/minecraft/world/level/block/Block;
+     258: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     261: astore        10
+     263: goto          307
+     266: getstatic     #97                 // Field net/minecraft/world/level/block/Blocks.DEAD_BRAIN_CORAL_FAN:Lnet/minecraft/world/level/block/Block;
+     269: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     272: astore        10
+     274: goto          307
+     277: getstatic     #100                // Field net/minecraft/world/level/block/Blocks.DEAD_BUBBLE_CORAL_FAN:Lnet/minecraft/world/level/block/Block;
+     280: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     283: astore        10
+     285: goto          307
+     288: getstatic     #103                // Field net/minecraft/world/level/block/Blocks.DEAD_FIRE_CORAL_FAN:Lnet/minecraft/world/level/block/Block;
+     291: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     294: astore        10
+     296: goto          307
+     299: getstatic     #106                // Field net/minecraft/world/level/block/Blocks.DEAD_HORN_CORAL_FAN:Lnet/minecraft/world/level/block/Block;
+     302: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     305: astore        10
+     307: aload_2
+     308: aload         9
+     310: aload         10
+     312: getstatic     #109                // Field net/minecraft/world/level/block/BaseCoralPlantTypeBlock.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     315: iconst_0
+     316: invokestatic  #115                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     319: invokevirtual #121                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     322: checkcast     #65                 // class net/minecraft/world/level/block/state/BlockState
+     325: iconst_2
+     326: invokeinterface #125,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     331: pop
+     332: iinc          7, 1
+     335: iinc          8, 1
+     338: goto          37
+     341: iload         7
+     343: ifle          350
+     346: iconst_1
+     347: goto          351
+     350: iconst_0
+     351: ireturn
+}
