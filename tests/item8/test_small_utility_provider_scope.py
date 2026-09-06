@@ -297,3 +297,60 @@ def test_wunderlib_membership_payload() -> None:
             assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
             assert row["disassembly_sha256"] == hashlib.sha256(
                 (directory / row["disassembly"]).read_bytes()).hexdigest()
+
+
+def test_target_dummy_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "dummmmmmy-1.21-2.0.12-neoforge.jar")
+    assert source.sha256 == "4d35c6cdc7a17d6175f116ec8b31ce5ebc740e5d1412ce32cc721b042b2f5298"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/dummy-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a8985f1a1ebcf35bdde52c8efdf335ebd6fbd12fc09eb6f42f6ef19e9e44568e")
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    prefix = "net/mehvahdjukaar/dummmmmmy/"
+    entry = prefix + "neoforge/DummmmmmyForge.class"
+    hooks = {"ArmorStandFIxMixin", "EnchantmentMixin", "LivingEntityMixin",
+             "PlayerMixin", "SwordItemMixin", "ToolItemMixin"}
+    assert {r["class"] for r in rows} == {entry} | {
+        prefix + "mixins/" + name + ".class" for name in hooks
+    } | {prefix + name + ".class" for name in (
+        "Dummmmmmy", "Dummmmmmy$SpawnDummyBehavior", "common/ModEvents", "common/TargetDummyItem")}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 45
+        content = {n for n in files if n.startswith(("data/", "assets/"))}
+        categories = {"assets/dummmmmmy/lang": 14, "assets/dummmmmmy/textures": 10,
+                      "assets/dummmmmmy/particles": 2, "assets/dummmmmmy/models": 1,
+                      "assets/dummmmmmy/sounds.json": 1, "data/dummmmmmy/tags": 9,
+                      "data/dummmmmmy/damage_type": 2, "data/minecraft/tags": 2,
+                      "data/dummmmmmy/advancements": 1, "data/dummmmmmy/recipe": 1}
+        observed = ["/".join(n.split("/")[:3]) for n in content]
+        assert {key: observed.count(key) for key in set(observed)} == categories
+        assert all(n.endswith((".json", ".png")) for n in content)
+        assert files - classes - content == {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml", "dummmmmmy-common-refmap.json",
+            "dummmmmmy-common.mixins.json", "dummmmmmy.mixins.json", "icon.png", "pack.mcmeta"}
+        assert archive.read("META-INF/MANIFEST.MF") == b"Manifest-Version: 1.0\r\n\r\n"
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        declarations = cast("list[dict[str, str]]", metadata["mixins"])
+        assert {r["config"] for r in declarations} == {
+            "dummmmmmy-common.mixins.json", "dummmmmmy.mixins.json"}
+        for filename in ("dummmmmmy-common.mixins.json", "dummmmmmy.mixins.json"):
+            config = cast("dict[str, JsonValue]", json.loads(archive.read(filename)))
+            assert set(cast("list[str]", config["mixins"])) == (
+                hooks if filename == "dummmmmmy-common.mixins.json" else set())
+            assert not any(config.get(k) for k in ("plugin", "server", "client"))
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == {entry}
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert row["disassembly_sha256"] == hashlib.sha256(
+                (directory / row["disassembly"]).read_bytes()).hexdigest()
