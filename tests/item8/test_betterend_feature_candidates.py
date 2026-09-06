@@ -506,6 +506,16 @@ def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
 
 
 def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    for name in ("lantern_woods/light_1", "blossoming_spires/house"):
+        decision = contributions["betterend:" + name]
+        assert decision["families"] == []
+        assert decision["template"] == f"data/betterend/structure/biome/{name}.nbt"
+        for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     directory = Path("evidence/item-8/sources/betterend-entry-template-consumers")
@@ -537,6 +547,14 @@ def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
             for kind in ("fallen_tree", "tree_stump") for i in range(1, 4)
         }
         assert templates - selected == extra
+        light = prefix + "lantern_woods/light_1.nbt"
+        assert light in selected
+        fixture = template_summary(archive.read(light))
+        assert fixture["size"] == [1, 5, 3]
+        assert {state["Name"] for state in cast("list[dict[str, str]]", fixture["palette"])} == {
+            "betterend:filalux", "betterend:flavolite_pedestal", "betterend:flavolite_wall",
+            "betterend:lucernia_fence", "betterend:thallasium_chain",
+        }
         legacy = {n for n in archive.namelist() if n.startswith(prefix) and n.endswith(".json")}
         assert legacy == {prefix + biome + "/structures.json" for biome in (
             "blossoming_spires", "chorus_forest", "foggy_mushroomland", "lantern_woods",

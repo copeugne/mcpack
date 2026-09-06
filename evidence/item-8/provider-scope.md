@@ -6077,3 +6077,31 @@ uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-pillars-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-pillars-r1.json
 ```
+
+### BetterEnd fixture and disconnected-house dispositions
+
+lantern_woods/light_1 is now an explicit ambient-fixture exclusion. Its narrow
+pedestal/wall/fence, chain and filalux content forms a light, not an independent
+site. It remains a selected and attributable generation contribution.
+blossoming_spires/house is preserved as a disconnected architectural candidate,
+not an additional active family: the current configured lists omit it and the
+direct consumer does not scan adjacent files. A demonstrated additional consumer
+would reopen that eligibility decision. Existing legacy-list evidence is reused.
+
+This settles two named template questions. Of the original 42 selected
+architectural candidates, 41 remain for design grouping after the fixture
+exclusion. Those are template candidates, not 41 accepted families. Existing
+21 vegetation exclusions and the six extra old-Bulbis vegetation templates
+remain unchanged. No renderer, measurement or new source capture was added.
+
+Thirteen focused cases, scoped quality checks and inventory reproduction pass.
+The test binds the exact fixture palette/size/selection and both decisions to
+the existing source and template catalogs.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-betterend-template-exclusions-r1.json
+```
