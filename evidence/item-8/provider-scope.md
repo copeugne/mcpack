@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 83 of 136. The exact queue below has 53 open rows.
+Supported provider dispositions: 84 of 136. The exact queue below has 52 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -626,7 +626,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | Existing Aether source captures, test_aether_provider_scope.py and focused candidate/component checks | RESOLVED: Three dungeon candidates, cloud terrain, conditional holiday-tree boundary, inactive portal components, common hooks and selected-library roles accounted for below. Canonical grouping and attributes remain open. |
-| `aethersdelight-0.1.4.2-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `aethersdelight-0.1.4.2-1.21.1.jar` | `aethers-delight-provider` (13d2013), test_aethers_delight_provider_scope.py | RESOLVED: Ore, plant and food/item content, including both packaged compatibility data packs. No independent structure family. Full disposition below. |
 | `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `architectury-13.0.8-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -701,6 +701,72 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Aethers Delight provider disposition
+
+aethersdelight-0.1.4.2-1.21.1.jar is RESOLVED as an ore, vegetation and food/item
+provider, with no independent structure family. Archive SHA-256:
+11b07fce5c69682290106fc1c79fc447606791239a18965f71114f360e8a947e.
+The complete 748-file payload comprises 58 classes, 294 assets, 362 root data
+files, 23 compatibility-pack files, seven packaged generator-cache files and
+four metadata/logo files. There are no templates, nested archives, services,
+scripts or mixin declarations. Source 13d2013 retains all six annotated entries.
+The focused source check binds the complete annotated set to that capture and
+the exact archive. Only the main class references the NeoForge global bus.
+
+The main entry registers content and configuration, adds its common setup
+callback and registers itself on the global bus. Its common setup and
+ServerStartingEvent methods log configuration/items and a startup message.
+Config.onLoad reads the values used by that logging. The two client-only
+subscribers log client setup and register a stove renderer. ADCreativeTabs
+inserts existing item stacks into creative tabs. DataGenerators handles
+GatherDataEvent for development data generation. None of these callbacks adds
+an independent generation route.
+
+The full root generation payload consists of five configured/placed/modifier
+chains. Arkenium uses minecraft:ore, targets holystone and places arkenium ore.
+Peppermint uses minecraft:random_patch. Wild ginger, leek and parsnip each use
+minecraft:no_bonemeal_flower. All four plant configurations contain vanilla
+simple_block with only the corresponding plant state. The placed resources
+reference these exact configured IDs. The five neoforge:add_features modifiers
+reference the placed IDs, using underground_ores for ore and vegetal_decoration
+for plants. Plant placement uses Aether's improved_layer_placement along with
+rarity and biome filtering; it supplies positions to the plant features, not
+another authored layout. No unresolved template or root remains in this data.
+
+Both packaged compatibility data packs are accounted for without assuming they
+are enabled or compatible with the retained runtime:
+
+| Pack | Complete payload | Membership disposition |
+| --- | --- | --- |
+| aether_redux_compat | Three recipes, four loot-modifier documents and pack metadata | Food/loot compatibility, no independent family. |
+| ancient_aether_compat | Six recipes, three loot-modifier documents, one tag, three worldgen documents, one Forge biome modifier and pack metadata | Ore placement and food/item compatibility, no independent family. |
+
+The Ancient Aether pack's wynd_arkenium_ore configured feature is a vanilla ore
+definition. Both its placed definitions reference the base arkenium_ore
+configured feature, not that wynd configuration. Preserve that disconnected
+configured resource rather than inventing a consumer. The Forge-named biome
+modifier references wynd_arkenium_ore_placed in wyndcap_peaks. These legacy paths
+and references are recorded as packaged facts, not successful activation.
+Whether selected or unselected, the supplied generation payload remains ore
+content and introduces no site-family ambiguity.
+
+Root non-generation data contains recipes, advancements, tags, loot tables and
+modifiers, and one data map. These remain inputs to existing-family attribute
+work where applicable. Membership acceptance does not claim measured ore/crop
+density or a full audit of individual food/block mechanics. Packaged JSON is
+retained in the existing accepted catalog; no runtime measurement was added.
+
+```sh
+uv run pytest -q tests/item8/test_aethers_delight_provider_scope.py
+uv run ruff check tests/item8/test_aethers_delight_provider_scope.py
+uv run basedpyright tests/item8/test_aethers_delight_provider_scope.py
+```
+
+Three focused cases pass (0.12s). Scoped Ruff/Basedpyright pass after three
+line-length and two JSON typing corrections. Census: 84 resolved, 52 open. Seven packaged-generation
+providers, 24 code-only rows and 21 unmatched rows remain. No canonical family
+is added by this disposition.
 
 ## Ends Delight provider disposition
 
