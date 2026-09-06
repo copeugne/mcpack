@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+WorldWeaver remains open. 372669cb retains its seven automatic entries and six
+registry services; 46c52394 retains all seventeen directly invoked modules.
+Both independent r1 reproductions match bytes. The sole packaged generation
+file is data/wover/worldgen/noise_settings/amplified_nether.json. Next resolve
+method-reference listener targets omitted by nonverbose javap, then the direct
+generation registrations and declared hooks, reusing existing pool/biome
+captures. Do not infer the selected runtime preset from available presets.
+Provider counts remain 117 resolved, 19 open; 100 provisional Moog decisions
+remain. This is partial evidence, not a new family or a provider closure.
+
+
 BCLib membership is resolved from reused integration dispatch and 7dae8acd,
 ccfcb07c, bfdb98bf and 2f92d5b1: shared generation/block/item/lifecycle APIs,
 no independent family. All automatic entries/common hooks and nested library
