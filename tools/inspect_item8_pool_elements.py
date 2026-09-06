@@ -214,6 +214,17 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/wover/block/impl/predicate/BlockPredicatesImpl.class",
+    "org/betterx/wover/core/impl/registry/DatapackRegistryBuilderImpl.class",
+    "org/betterx/wover/feature/impl/FeatureManagerImpl.class",
+    "org/betterx/wover/feature/impl/placed/modifiers/PlacementModifiersImpl.class",
+    "org/betterx/wover/generator/impl/biomesource/BiomeSourceManagerImpl.class",
+    "org/betterx/wover/generator/impl/chunkgenerator/ChunkGeneratorManagerImpl.class",
+    "org/betterx/wover/generator/impl/preset/PresetRegistryImpl.class",
+    "org/betterx/wover/structure/impl/StructureManagerImpl.class",
+    "org/betterx/wover/surface/impl/conditions/MaterialConditionRegistryImpl.class",
+    "org/betterx/wover/surface/impl/rules/MaterialRuleRegistryImpl.class",
+
     "org/betterx/wover/entrypoint/LibWoverBiome.class",
     "org/betterx/wover/entrypoint/LibWoverBlock.class",
     "org/betterx/wover/entrypoint/LibWoverCommon.class",
