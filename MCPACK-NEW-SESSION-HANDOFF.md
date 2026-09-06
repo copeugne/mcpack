@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric data attachment membership is resolved. Source e6aa022 exposes the
+registration callback; it consumes caller attachment types from an initially
+empty map. Existing entry and transfer captures are reused. All 33 focused
+cases and scoped checks pass. Fabric: 32 resolved, 11 open. Whole providers:
+90 resolved, 46 open. No family added. Continue the remaining named Fabric
+modules and providers, then canonical grouping. Do not repeat attachment
+capture or inspect unrelated serialization internals.
+
+
 Fabric content registries and data generation membership are resolved using
 2cbd452, e5c769a and 36951e9. Thirty-two focused cases and scoped checks pass.
 Fabric: 31 resolved, 12 open. Whole providers: 90 resolved, 46 open. No new family.

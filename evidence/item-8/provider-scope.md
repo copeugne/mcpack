@@ -5771,7 +5771,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | RESOLVED: Caller content properties, tools, brewing, fuel, composting and gift data. Sources 2cbd452 and e5c769a; no independent family. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
-| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: Entry/hooks a17da36 and transfer initializer db84f92 captured. Resolve AttachmentModImpl attachment registration callback and bind full payload. |
+| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | RESOLVED: Caller attachment-type registration and transfer of existing data. Sources a17da36, db84f92 and e6aa022; no independent family. |
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | RESOLVED: Empty initializer and data-output hooks for consumer pack generation. Source 36951e9; no independent family. |
 | `fabric-entity-events-v1-1.8.0+5ede667619.jar` | RESOLVED: Existing-entity event and elytra/sleep callbacks; no independent family. See entity-event disposition below. |
 | `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -6462,3 +6462,28 @@ Attachment initializer source db84f92 reproduces exactly and copies existing
 attachment values on respawn, dimension change and conversion. Its registration
 callback in AttachmentModImpl remains unresolved; the module stays open. Reuse
 the existing entry and initializer captures when resolving that callback.
+
+### Fabric data attachment membership resolved
+
+Source e6aa022 resolves AttachmentModImpl's invokedynamic callback to
+AttachmentRegistryImpl.registerNeoTypes. It registers entries from an initially
+empty map. Public registration takes caller-supplied IDs and attachment types,
+either deferred or directly in NeoForge ATTACHMENT_TYPES. Type translation,
+serialization access and transfer operate on existing attachment holders.
+Source db84f92 binds transfer on respawn, dimension changes and mob conversion.
+No default site or independent world-generation route is introduced.
+
+The older nonverbose source remains preserved. The new verbose source is needed
+to expose the previously unresolved callback target, not a new evidence system.
+Both manifests reproduce independently with commands in their READMEs. The
+existing test binds all three captures, all twenty classes, both automatic
+entries, four common access hooks, one client hook and the complete resource
+set including one translation. The client initializer is guarded.
+
+All 33 focused Fabric cases, scoped Ruff and Basedpyright pass. An initial test
+complexity failure was corrected by using the existing source table for multiple
+captures and the existing resource set for the translation. No helper or new
+validator was introduced. Fabric: 32 resolved modules, 11 open. Whole providers:
+90 resolved, 46 open. No family-list change. Continue remaining named modules
+and provider membership; do not reopen attachment internals without a concrete
+contradiction or resume detailed family attributes before membership is frozen.

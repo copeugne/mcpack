@@ -106,6 +106,14 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-data-attachment-api-v1-1.4.5+26d408aa19",
+            "fabric-data-attachment-entry",
+            "bee13b060b3c64abbb8d20e4da62404f7b4d1ee1d2e12b21e7dce2bd490daf9d",
+            4,
+            {"org/sinytra/fabric/data_attachment_api/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class"},
+        ),
+        (
             "fabric-content-registries-v0-8.0.19+5e0d320019",
             "fabric-content-registries-entry",
             "9f1c23a98141bc5449ee93e4f103ba67a7d15f5e333ab85a56712e27661d20d0",
@@ -294,35 +302,44 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
-                "fabric-content-registries-v0": (
+                "fabric-data-attachment-api-v1": [(
+                    "fabric-attachment-registration",
+                    "e5d85879d444086c19fa15921336c7e711185d212564b35501e8bc8eb58dda67",
+                    {"net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class",
+                     "net/fabricmc/fabric/impl/attachment/AttachmentRegistryImpl.class"},
+                ), (
+                    "fabric-attachment-init",
+                    "9add3414f670243af4701ec42e118c410479a35c8064e2691745ad0bc2dcc7e4",
+                    {"net/fabricmc/fabric/impl/attachment/AttachmentEntrypoint.class"},
+                )],
+                "fabric-content-registries-v0": [(
                     "fabric-content-data-map",
                     "ba7fcec72be79425015cea676ff60b645990ed84d277c9b237358cd1fa8fa9df",
                     {"net/fabricmc/fabric/impl/content/registry/DataMapModifications.class"},
-                ),
-                "fabric-command-api-v2": (
+                )],
+                "fabric-command-api-v2": [(
                     "fabric-command-init",
                     "54cc77ba015cd890542609a6a8a98742763b3bde85eef35c857ad253445205a4",
                     {"org/sinytra/fabric/command_api/FabricCommandApiV2.class"},
-                ),
-                "fabric-lifecycle-events-v1": (
+                )],
+                "fabric-lifecycle-events-v1": [(
                     "fabric-lifecycle-init",
                     "1abb7ebad9fe2aee3ce06b5d23c59aec1beb4509d798793e9717f66f324826fe",
                     {"net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.class"},
-                ),
-                "fabric-loot-api-v2": (
+                )],
+                "fabric-loot-api-v2": [(
                     "fabric-loot-v2-init",
                     "fdd70793358e39363a47a89dea1e357a60bbc26f051d182c66c7fd97c7be0d6e",
                     {"net/fabricmc/fabric/impl/loot/v2/LootInitializer.class"},
-                ),
-                "fabric-recipe-api-v1": (
+                )],
+                "fabric-recipe-api-v1": [(
                     "fabric-recipe-init",
                     "284be5d480faf7950a489a9134fa4db894a3ed59174e3e3c28b07dcb4c2c98ae",
                     {"net/fabricmc/fabric/impl/recipe/ingredient/CustomIngredientInit.class",
                      "org/sinytra/fabric/recipe_api/FabricRecipeApiV1.class"},
-                ),
+                )],
             }
-            if name in initializer_sources:
-                capture, identity, expected_classes = initializer_sources[name]
+            for capture, identity, expected_classes in initializer_sources.get(name, []):
                 extra_dir = Path("evidence/item-8/sources") / capture
                 extra_raw = (extra_dir / "identities.json").read_bytes()
                 assert hashlib.sha256(extra_raw).hexdigest() == identity
@@ -336,6 +353,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-data-attachment-api-v1": (20, 1),
                 "fabric-content-registries-v0": (39, 0),
                 "fabric-data-generation-api-v1": (53, 0),
                 "fabric-item-group-api-v1": (15, 1),
@@ -370,6 +388,10 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                             "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
                             "fabric-content-registries-v0", "fabric-data-generation-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
+                extras.update({
+                    "fabric-data-attachment-api-v1": {
+                        "assets/fabric-data-attachment-api-v1/lang/en_us.json"},
+                }.get(name, set()))
                 if name == "fabric-item-group-api-v1":
                     extras.add("assets/fabric/textures/gui/creative_buttons.png")
                     extras.update(f"assets/fabric/lang/{locale}.json" for locale in (
