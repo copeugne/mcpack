@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -130,3 +131,47 @@ def test_aether_silver_gold_component_candidates() -> None:
                 assert hashlib.sha256((folder / row["disassembly"]).read_bytes()).hexdigest() == (
                     row["disassembly_sha256"]
                 )
+
+
+def test_aether_holiday_tree_candidate_inputs() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "aether-1.21.1-1.5.10-neoforge.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == (
+        "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8"
+    )
+    with ZipFile(source.path) as archive:
+        prefix = "data/aether/worldgen/"
+        config = cast("dict[str, JsonValue]", json.loads(archive.read(
+            prefix + "configured_feature/holiday_tree.json"
+        )))
+        assert config["type"] == "minecraft:tree"
+        settings = cast("dict[str, JsonValue]", config["config"])
+        decorators = cast("list[dict[str, JsonValue]]", settings["decorators"])
+        assert len(decorators) == 1
+        assert decorators[0]["type"] == "aether:holiday_tree_decorator"
+        provider = cast("dict[str, JsonValue]", decorators[0]["provider"])
+        assert provider["type"] == "minecraft:weighted_state_provider"
+        assert provider["entries"] == [
+            {"data": {"Name": "minecraft:snow", "Properties": {"layers": "1"}}, "weight": 10},
+            {"data": {"Name": "aether:present"}, "weight": 1},
+        ]
+        placed = cast("dict[str, JsonValue]", json.loads(archive.read(
+            prefix + "placed_feature/holiday_tree.json"
+        )))
+        assert placed["feature"] == "aether:holiday_tree"
+        assert {"type": "aether:holiday_filter"} in cast("list[JsonValue]", placed["placement"])
+        biomes = {n for n in archive.namelist()
+                  if n.startswith(prefix + "biome/") and n.endswith(".json")}
+        assert biomes == {prefix + "biome/skyroot_" + n + ".json"
+                          for n in ("forest", "woodland", "meadow", "grove")}
+        for name in biomes:
+            biome = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+            assert any("aether:holiday_tree" in layer
+                       for layer in cast("list[list[str]]", biome["features"]))
+    raw = Path("evidence/item-6/frozen/config/aether-server.toml").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de"
+    )
+    frozen = cast("dict[str, dict[str, JsonValue]]", tomllib.loads(raw.decode()))
+    assert frozen["World Generation"]["Generate Holiday Trees always"] is False
+    assert frozen["World Generation"]["Generate Holiday Trees seasonally"] is True
