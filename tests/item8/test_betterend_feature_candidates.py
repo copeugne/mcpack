@@ -563,6 +563,22 @@ def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
 
 
 def test_betterend_pillar_candidates_and_existing_end_components() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    decision = contributions["betterend:ruined_obsidian_pillar"]
+    assert decision["families"] == ["betterend:ruined_obsidian_pillar"]
+    assert set(cast("dict[str, JsonValue]", decision["variants"])) == {
+        "betterend:fallen_pillar", "betterend:obsidian_pillar_basement",
+    }
+    assert decision["placed_features"] == sorted(cast("dict[str, JsonValue]", decision["variants"]))
+    assert decision["packaged_biome_consumer"] == "betterend:dragon_graveyards"
+    for path, digest in cast("dict[str, str]", decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    dimensions = cast("dict[str, list[str]]", json.loads(Path(
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json").read_bytes()))
+    assert decision["packaged_biome_consumer"] in dimensions["minecraft:the_end"]
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
     directory = Path("evidence/item-8/sources/betterend-pillar-end-hooks")
