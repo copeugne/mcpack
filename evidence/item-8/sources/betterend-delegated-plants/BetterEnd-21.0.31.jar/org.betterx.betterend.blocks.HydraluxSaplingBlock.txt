@@ -1,0 +1,145 @@
+Compiled from "HydraluxSaplingBlock.java"
+public class org.betterx.betterend.blocks.HydraluxSaplingBlock extends org.betterx.bclib.blocks.UnderwaterPlantWithAgeBlock implements org.betterx.bclib.behaviours.interfaces.BehaviourWaterPlantSapling,org.betterx.betterend.interfaces.survives.SurvivesOnSulphuricRock {
+  public org.betterx.betterend.blocks.HydraluxSaplingBlock();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/blocks/UnderwaterPlantWithAgeBlock."<init>":()V
+       4: return
+
+  public void grow(net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: iconst_4
+       1: bipush        8
+       3: aload_2
+       4: invokestatic  #7                  // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+       7: istore        4
+       9: new           #13                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      12: dup
+      13: invokespecial #15                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      16: aload_3
+      17: invokevirtual #16                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      20: astore        5
+      22: iconst_1
+      23: istore        6
+      25: iload         6
+      27: iload         4
+      29: if_icmpge     69
+      32: aload         5
+      34: aload_3
+      35: invokevirtual #20                 // Method net/minecraft/core/BlockPos.getY:()I
+      38: iload         6
+      40: iadd
+      41: invokevirtual #26                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      44: pop
+      45: aload_1
+      46: aload         5
+      48: invokeinterface #30,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      53: getstatic     #36                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      56: invokevirtual #42                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      59: ifne          63
+      62: return
+      63: iinc          6, 1
+      66: goto          25
+      69: aload         5
+      71: aload_3
+      72: invokevirtual #20                 // Method net/minecraft/core/BlockPos.getY:()I
+      75: invokevirtual #26                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      78: pop
+      79: getstatic     #48                 // Field org/betterx/betterend/registry/EndBlocks.HYDRALUX:Lnet/minecraft/world/level/block/Block;
+      82: invokevirtual #53                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      85: astore        6
+      87: aload_1
+      88: aload_3
+      89: aload         6
+      91: getstatic     #59                 // Field org/betterx/betterend/blocks/EndBlockProperties.HYDRALUX_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      94: getstatic     #65                 // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.ROOTS:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+      97: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     100: checkcast     #43                 // class net/minecraft/world/level/block/state/BlockState
+     103: invokestatic  #75                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     106: iconst_1
+     107: istore        7
+     109: iload         7
+     111: iload         4
+     113: iconst_2
+     114: isub
+     115: if_icmpge     157
+     118: aload         5
+     120: aload_3
+     121: invokevirtual #20                 // Method net/minecraft/core/BlockPos.getY:()I
+     124: iload         7
+     126: iadd
+     127: invokevirtual #26                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     130: pop
+     131: aload_1
+     132: aload         5
+     134: aload         6
+     136: getstatic     #59                 // Field org/betterx/betterend/blocks/EndBlockProperties.HYDRALUX_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     139: getstatic     #81                 // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.VINE:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+     142: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     145: checkcast     #43                 // class net/minecraft/world/level/block/state/BlockState
+     148: invokestatic  #75                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     151: iinc          7, 1
+     154: goto          109
+     157: aload         5
+     159: aload         5
+     161: invokevirtual #84                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     164: iconst_1
+     165: iadd
+     166: invokevirtual #26                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     169: pop
+     170: aload_2
+     171: invokeinterface #85,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+     176: istore        7
+     178: aload_1
+     179: aload         5
+     181: aload         6
+     183: getstatic     #59                 // Field org/betterx/betterend/blocks/EndBlockProperties.HYDRALUX_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     186: iload         7
+     188: ifeq          197
+     191: getstatic     #91                 // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.FLOWER_BIG_BOTTOM:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+     194: goto          200
+     197: getstatic     #94                 // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.FLOWER_SMALL_BOTTOM:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+     200: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     203: checkcast     #43                 // class net/minecraft/world/level/block/state/BlockState
+     206: invokestatic  #75                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     209: aload         5
+     211: aload         5
+     213: invokevirtual #84                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+     216: iconst_1
+     217: iadd
+     218: invokevirtual #26                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     221: pop
+     222: aload_1
+     223: aload         5
+     225: aload         6
+     227: getstatic     #59                 // Field org/betterx/betterend/blocks/EndBlockProperties.HYDRALUX_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     230: iload         7
+     232: ifeq          241
+     235: getstatic     #97                 // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.FLOWER_BIG_TOP:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+     238: goto          244
+     241: getstatic     #100                // Field org/betterx/betterend/blocks/EndBlockProperties$HydraluxShape.FLOWER_SMALL_TOP:Lorg/betterx/betterend/blocks/EndBlockProperties$HydraluxShape;
+     244: invokevirtual #71                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     247: checkcast     #43                 // class net/minecraft/world/level/block/state/BlockState
+     250: invokestatic  #75                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     253: return
+
+  public boolean isTerrain(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #103                // InterfaceMethod org/betterx/betterend/interfaces/survives/SurvivesOnSulphuricRock.isTerrain:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       5: ireturn
+
+  public void appendHoverText(net.minecraft.world.item.ItemStack, net.minecraft.world.item.Item$TooltipContext, java.util.List<net.minecraft.network.chat.Component>, net.minecraft.world.item.TooltipFlag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: invokespecial #109                // Method org/betterx/bclib/blocks/UnderwaterPlantWithAgeBlock.appendHoverText:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Ljava/util/List;Lnet/minecraft/world/item/TooltipFlag;)V
+       9: aload_3
+      10: iconst_5
+      11: invokestatic  #113                // InterfaceMethod org/betterx/bclib/interfaces/SurvivesOnSpecialGround.appendHoverTextUnderwaterInDepth:(Ljava/util/List;I)V
+      14: return
+}
