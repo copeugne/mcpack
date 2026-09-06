@@ -191,3 +191,53 @@ an independent root or hard-coded authored layout, and there is no packaged data
 pack or template. Preserve its modifying role for existing jigsaw families; this
 inspection does not establish equivalent layouts, better performance, or safety
 of enabling/disabling its configuration. No configuration or algorithm is changed.
+
+## Bundle and shield boundaries, selector 49dd5dd
+
+This isolated source increment captures all 30 classes from the two following
+archives. Both independent extractions reproduce byte for byte. Standard javap
+is used for ordinary classes; verbose output preserves the entry, mixin and EMI
+plugin annotations. A display-only probe initially expected verbose braces in
+ordinary output and failed; the corrected display handles both retained formats.
+The raw captures and reproduction comparison were unaffected.
+
+### bundle-api
+
+Archive `bundle-api-neoforge-1.1.0.jar`, SHA-256 `73328888d1dede4c121974a0914f5a35cb857283223217a59de7b5b697e43771`.
+All 19 classes captured. Identity manifest SHA-256 `761564dccceb00a1ee3e781dd8380987076f885d8d14d011d03e172522d0f59a`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive 'bundle-api-neoforge-1.1.0.jar' --output evidence/raw/item8/bundle-api-provider-r1
+diff -qr evidence/item-8/sources/bundle-api-provider evidence/raw/item8/bundle-api-provider-r1
+```
+
+### shield-api
+
+Archive `shield_api-neoforge-2.2.0.jar`, SHA-256 `adbd8facfcaf318956d670ff3f0341c0d8e15e136ae9c00749a255e25a9c0194`.
+All 11 classes captured. Identity manifest SHA-256 `d713942af83a5e1f30c824e2cef9b04cde23d2024ba46d7955b57ec3d457cd2b`.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive 'shield_api-neoforge-2.2.0.jar' --output evidence/raw/item8/shield-api-provider-r1
+diff -qr evidence/item-8/sources/shield-api-provider evidence/raw/item8/shield-api-provider-r1
+```
+
+Bundle API's two loader entries call common/client initializers. Its common
+registry mixins register the custom bundle data-component and item predicate;
+client mixins register item model predicates and custom tooltip rendering.
+Contents records/builders, predicates, the container-component manipulator and
+CustomBundleItem operate on existing item stacks, occupancy, inventory interaction
+and dropping stored items. They do not construct an authored world layout. The
+client entry is also a client-setup subscriber. No additional entry or packaged
+generation data exists.
+
+Shield API's common initializer logs initialization; its client initializer is
+empty. Its Minecraft startup mixin registers shield model predicates. CustomShieldItem supplies repair ingredients,
+attributes and equip sounds. Player and axe mixins handle custom-shield damage,
+cooldown and strip-attempt behavior. The EMI plugin displays anvil repair recipes
+for registered shield items. Its client entry also subscribes to client setup.
+The archive declares MinecraftClientMixin in the common mixin list and the model
+predicate invoker in the client list; preserve that exact declaration rather than
+silently relabeling it. This is not a newly reproduced server failure or a reason
+to change the frozen stack. There are no roots, templates, features, pool injections
+or independent authored structure families in either provider. Inventory/combat
+behavior and consumer loot remain relevant separately from family membership.
