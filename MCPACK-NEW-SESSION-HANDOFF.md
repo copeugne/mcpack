@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 086bbc8: Integrated Villages provider scope is resolved,
+pushed and remote-ref verified. Five focused cases, Ruff and Basedpyright pass.
+Current queue: 59 resolved providers, 77 open. All twelve existing roots, 421
+pools and 754 templates have bounded component dispositions. Preserve 51
+unconnected pools, 74 unconnected templates, seven roots with missing references,
+and four incompatible legacy injection declarations. Shared Integrated API is
+still open. Next finish IDAS provider scope using its existing suppression
+capture and eighteen remaining classes delivered at afb3cee. The r2 capture
+reproduces exactly. Finish component and hook dispositions next. Do not repeat
+Integrated Villages or return to detailed attributes before the census closes.
+
 Latest checkpoint at e8875ca: Alternate Current, Cupboard and Loot Integrations
 provider scope is resolved, pushed and remote-ref verified. Eighteen focused
 utility cases, Ruff and Basedpyright pass. Current queue: 58 resolved providers,
