@@ -1800,6 +1800,7 @@ CLASSES: tuple[str, ...] = (
     "tech/thatgravyboat/creeperoverhaul/common/registry/ModEntities.class",
     "tech/thatgravyboat/creeperoverhaul/common/registry/ModBlocks.class",
     "tech/thatgravyboat/creeperoverhaul/common/utils/Events.class",
+    "tech/thatgravyboat/creeperoverhaul/common/utils/ServerCosmetics.class",
     "tech/thatgravyboat/creeperoverhaul/common/utils/neoforge/PlatformUtilsImpl.class",
     "tech/thatgravyboat/creeperoverhaul/mixin/IronGolemMixin.class",
     "tech/thatgravyboat/creeperoverhaul/mixin/PlayerListMixin.class",
