@@ -594,7 +594,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
 | `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
-| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are landmark candidates; giant pumpkin and carved-pumpkin patches retain named decoration boundaries for canonical grouping. No structure roots, templates or pools. See final BOP disposition below. |
+| `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | BOP entry, feature and delegated-material captures; test_bop_feature_candidates.py | RESOLVED: All registered features and packaged resources have contribution roles. Anomaly and monolith are two accepted landmark families; both pumpkin forms and bone-spine IDs are excluded decorations. Canonical membership decisions are integrated below. No structure roots, templates or pools. See final BOP disposition below. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
@@ -6023,4 +6023,28 @@ uv run ruff check tests/item8/test_bop_feature_candidates.py tools/build_item8_i
 uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-landmarks-r1.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-landmarks-r1.json
+```
+
+### BOP pumpkin boundaries closed
+
+Both big_pumpkin and pumpkin_patch are now explicit decorated-vegetation
+exclusions in family-decisions.json and the reproduced inventory. The former
+writes a giant plant with a stem and leaves; its carved/light block references
+are replacement predicates. The latter scatters plants and individual light
+fixtures without assembling an independent site. Neither contributes a family.
+The preserved writers and already-bound registered/packaged biome routes
+suffice; no recapture or helper expansion was needed.
+
+BOP canonical membership is now settled: two independent landmark families,
+anomaly and monolith. Bone-spine and both pumpkin boundaries are closed. Other
+provider roles retain the prior complete partition. Required attributes and
+generated-world reconciliation remain Item 8 work. Five focused cases and
+scoped quality checks pass. The registry groups remain unchanged.
+
+```sh
+uv run pytest -q tests/item8/test_bop_feature_candidates.py
+uv run ruff check tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_bop_feature_candidates.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-bop-pumpkins-r1.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-bop-pumpkins-r1.json
 ```

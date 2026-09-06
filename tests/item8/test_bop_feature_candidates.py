@@ -99,13 +99,15 @@ def test_bop_plain_bone_spine_has_no_packaged_selector_reference() -> None:
         "evidence/item-8/family-decisions.json").read_bytes()))
     content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
     contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
-    for name in ("anomaly", "monolith", "bone_spine"):
+    for name in ("anomaly", "monolith", "bone_spine", "big_pumpkin", "pumpkin_patch"):
         key = "biomesoplenty:" + name
         decision = contributions[key]
-        assert decision["families"] == ([] if name == "bone_spine" else [key])
+        assert decision["families"] == ([key] if name in {"anomaly", "monolith"} else [])
         if name != "bone_spine":
             assert decision["configured_feature"] == decision["placed_feature"] == key
-            assert decision["packaged_biome_consumer"] == "biomesoplenty:end_corruption"
+            assert decision["packaged_biome_consumer"] == (
+                "biomesoplenty:end_corruption" if name in {"anomaly", "monolith"}
+                else "biomesoplenty:pumpkin_patch")
         for path, digest in cast("dict[str, str]", decision["evidence"]).items():
             assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("BiomesOPlenty-"))
@@ -177,8 +179,8 @@ def test_bop_generation_entry_capture_covers_configured_type_registrations() -> 
 
 def test_bop_registered_features_have_complete_contribution_roles() -> None:
     roles = {
-        "landmark_candidates": {"anomaly", "monolith"},
-        "named_decoration_boundaries": {"big_pumpkin", "pumpkin_patch"},
+        "landmark_families": {"anomaly", "monolith"},
+        "excluded_pumpkin_decorations": {"big_pumpkin", "pumpkin_patch"},
         "terrain_and_minerals": {
             "black_sand_splatter", "bone_spine", "crag_moss", "crag_splatter",
             "dripstone_splatter", "hot_spring_vents", "inferno_splatter", "jagged_sandstone",
