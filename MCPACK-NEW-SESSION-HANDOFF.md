@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Regions Unexplored is current. The remaining 35 captured feature implementations
+now have explicit plant/mineral/tree contribution dispositions in provider-scope.md;
+none adds another named authored-site candidate. The ground-decorator source
+e06c9e1 is bound by the existing candidate test. Both cases pass (0.96s), with
+scoped Ruff/Basedpyright passing. Do not repeat these 35 implementations, the
+thirteen terrain implementations, the fallen-log candidate or Ashen component.
+Remaining RU work: common-entry roles, other registered tree placers/decorators,
+and full payload/overlay/embedded JSON5 boundary. Census remains 88 resolved,
+48 open. No runtime or capture process is live.
+
 Railways membership is RESOLVED. Source d17d854 completes all 106 declared
 common hooks together with the prior StructureMixin capture. Their roles and
 all packaged resources are accounted for in the final provider disposition.
