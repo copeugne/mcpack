@@ -59,6 +59,7 @@ ARCHIVES = frozenset(
         "mcw-roofs-2.3.2-mc1.21.1neoforge.jar",
         "mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar",
         "worldweaver-21.0.24.jar",
+        "bclib-21.0.24.jar",
         "lithostitched-1.7.10+beta4-neoforge-21.1.jar",
         "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
@@ -657,6 +658,9 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/integration/byg/BYGIntegration.class",
     "org/betterx/betterend/integration/FlamboyantRefabricatedIntegration.class",
     "org/betterx/betterend/integration/DyeDepotIntegration.class",
+    "org/betterx/bclib/api/v2/ModIntegrationAPI.class",
+    "org/betterx/bclib/integration/ModIntegration.class",
+    "org/betterx/bclib/BCLib.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
