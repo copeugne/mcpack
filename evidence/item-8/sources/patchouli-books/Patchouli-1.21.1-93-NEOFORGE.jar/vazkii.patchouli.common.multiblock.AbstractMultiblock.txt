@@ -1,0 +1,381 @@
+Compiled from "AbstractMultiblock.java"
+public abstract class vazkii.patchouli.common.multiblock.AbstractMultiblock implements vazkii.patchouli.api.IMultiblock,net.minecraft.world.level.BlockAndTintGetter {
+  public net.minecraft.resources.ResourceLocation id;
+
+  protected int offX;
+
+  protected int offY;
+
+  protected int offZ;
+
+  protected int viewOffX;
+
+  protected int viewOffY;
+
+  protected int viewOffZ;
+
+  private boolean symmetrical;
+
+  net.minecraft.world.level.Level world;
+
+  private final transient java.util.Map<net.minecraft.core.BlockPos, net.minecraft.world.level.block.entity.BlockEntity> teCache;
+
+  public vazkii.patchouli.common.multiblock.AbstractMultiblock();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+      12: putfield      #10                 // Field teCache:Ljava/util/Map;
+      15: return
+
+  public vazkii.patchouli.api.IMultiblock offset(int, int, int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #16                 // Field offX:I
+       5: iload_1
+       6: iadd
+       7: aload_0
+       8: getfield      #20                 // Field offY:I
+      11: iload_2
+      12: iadd
+      13: aload_0
+      14: getfield      #23                 // Field offZ:I
+      17: iload_3
+      18: iadd
+      19: invokevirtual #26                 // Method setOffset:(III)Lvazkii/patchouli/api/IMultiblock;
+      22: areturn
+
+  public vazkii.patchouli.api.IMultiblock setOffset(int, int, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #16                 // Field offX:I
+       5: aload_0
+       6: iload_2
+       7: putfield      #20                 // Field offY:I
+      10: aload_0
+      11: iload_3
+      12: putfield      #23                 // Field offZ:I
+      15: aload_0
+      16: iload_1
+      17: iload_2
+      18: iload_3
+      19: invokevirtual #30                 // Method setViewOffset:(III)Lvazkii/patchouli/api/IMultiblock;
+      22: areturn
+
+  void setViewOffset();
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #16                 // Field offX:I
+       5: aload_0
+       6: getfield      #20                 // Field offY:I
+       9: aload_0
+      10: getfield      #23                 // Field offZ:I
+      13: invokevirtual #30                 // Method setViewOffset:(III)Lvazkii/patchouli/api/IMultiblock;
+      16: pop
+      17: return
+
+  public vazkii.patchouli.api.IMultiblock offsetView(int, int, int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #33                 // Field viewOffX:I
+       5: iload_1
+       6: iadd
+       7: aload_0
+       8: getfield      #36                 // Field viewOffY:I
+      11: iload_2
+      12: iadd
+      13: aload_0
+      14: getfield      #39                 // Field viewOffZ:I
+      17: iload_3
+      18: iadd
+      19: invokevirtual #30                 // Method setViewOffset:(III)Lvazkii/patchouli/api/IMultiblock;
+      22: areturn
+
+  public vazkii.patchouli.api.IMultiblock setViewOffset(int, int, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #33                 // Field viewOffX:I
+       5: aload_0
+       6: iload_2
+       7: putfield      #36                 // Field viewOffY:I
+      10: aload_0
+      11: iload_3
+      12: putfield      #39                 // Field viewOffZ:I
+      15: aload_0
+      16: areturn
+
+  public vazkii.patchouli.api.IMultiblock setSymmetrical(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #42                 // Field symmetrical:Z
+       5: aload_0
+       6: areturn
+
+  public net.minecraft.resources.ResourceLocation getID();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field id:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  public vazkii.patchouli.api.IMultiblock setId(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #46                 // Field id:Lnet/minecraft/resources/ResourceLocation;
+       5: aload_0
+       6: areturn
+
+  public void place(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #50                 // Method setWorld:(Lnet/minecraft/world/level/Level;)V
+       5: aload_0
+       6: aload_1
+       7: aload_2
+       8: aload_3
+       9: iconst_0
+      10: invokevirtual #54                 // Method simulate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Z)Lcom/mojang/datafixers/util/Pair;
+      13: invokevirtual #58                 // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      16: checkcast     #64                 // class java/util/Collection
+      19: aload_1
+      20: aload_3
+      21: invokedynamic #66,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/Rotation;)Ljava/util/function/Consumer;
+      26: invokeinterface #70,  2           // InterfaceMethod java/util/Collection.forEach:(Ljava/util/function/Consumer;)V
+      31: return
+
+  public net.minecraft.world.level.block.Rotation validate(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #74                 // Method isSymmetrical:()Z
+       4: ifeq          23
+       7: aload_0
+       8: aload_1
+       9: aload_2
+      10: getstatic     #78                 // Field net/minecraft/world/level/block/Rotation.NONE:Lnet/minecraft/world/level/block/Rotation;
+      13: invokevirtual #84                 // Method validate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;)Z
+      16: ifeq          23
+      19: getstatic     #78                 // Field net/minecraft/world/level/block/Rotation.NONE:Lnet/minecraft/world/level/block/Rotation;
+      22: areturn
+      23: invokestatic  #88                 // Method net/minecraft/world/level/block/Rotation.values:()[Lnet/minecraft/world/level/block/Rotation;
+      26: astore_3
+      27: aload_3
+      28: arraylength
+      29: istore        4
+      31: iconst_0
+      32: istore        5
+      34: iload         5
+      36: iload         4
+      38: if_icmpge     67
+      41: aload_3
+      42: iload         5
+      44: aaload
+      45: astore        6
+      47: aload_0
+      48: aload_1
+      49: aload_2
+      50: aload         6
+      52: invokevirtual #84                 // Method validate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;)Z
+      55: ifeq          61
+      58: aload         6
+      60: areturn
+      61: iinc          5, 1
+      64: goto          34
+      67: aconst_null
+      68: areturn
+
+  public boolean validate(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.Rotation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #50                 // Method setWorld:(Lnet/minecraft/world/level/Level;)V
+       5: aload_0
+       6: aload_1
+       7: aload_2
+       8: aload_3
+       9: iconst_0
+      10: invokevirtual #54                 // Method simulate:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Rotation;Z)Lcom/mojang/datafixers/util/Pair;
+      13: astore        4
+      15: aload         4
+      17: invokevirtual #58                 // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      20: checkcast     #64                 // class java/util/Collection
+      23: invokeinterface #92,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      28: aload_1
+      29: aload_3
+      30: invokedynamic #96,  0             // InvokeDynamic #1:test:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/Rotation;)Ljava/util/function/Predicate;
+      35: invokeinterface #100,  2          // InterfaceMethod java/util/stream/Stream.allMatch:(Ljava/util/function/Predicate;)Z
+      40: ireturn
+
+  public boolean isSymmetrical();
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field symmetrical:Z
+       4: ireturn
+
+  public void setWorld(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #106                // Field world:Lnet/minecraft/world/level/Level;
+       5: return
+
+  public net.minecraft.world.level.block.entity.BlockEntity getBlockEntity(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #110                // Method getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       5: astore_2
+       6: aload_2
+       7: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      10: instanceof    #120                // class net/minecraft/world/level/block/EntityBlock
+      13: ifeq          40
+      16: aload_0
+      17: getfield      #10                 // Field teCache:Ljava/util/Map;
+      20: aload_1
+      21: invokevirtual #122                // Method net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      24: aload_2
+      25: aload_1
+      26: invokedynamic #128,  0            // InvokeDynamic #2:apply:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Function;
+      31: invokeinterface #132,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      36: checkcast     #138                // class net/minecraft/world/level/block/entity/BlockEntity
+      39: areturn
+      40: aconst_null
+      41: areturn
+
+  public net.minecraft.world.level.material.FluidState getFluidState(net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #140                // Field net/minecraft/world/level/material/Fluids.EMPTY:Lnet/minecraft/world/level/material/Fluid;
+       3: invokevirtual #146                // Method net/minecraft/world/level/material/Fluid.defaultFluidState:()Lnet/minecraft/world/level/material/FluidState;
+       6: areturn
+
+  public abstract net.minecraft.core.Vec3i getSize();
+
+  public float getShade(net.minecraft.core.Direction, boolean);
+    Code:
+       0: fconst_1
+       1: freturn
+
+  public net.minecraft.world.level.lighting.LevelLightEngine getLightEngine();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public int getBlockTint(net.minecraft.core.BlockPos, net.minecraft.world.level.ColorResolver);
+    Code:
+       0: aload_0
+       1: getfield      #106                // Field world:Lnet/minecraft/world/level/Level;
+       4: invokevirtual #152                // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       7: getstatic     #158                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      10: invokeinterface #164,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      15: getstatic     #170                // Field net/minecraft/world/level/biome/Biomes.PLAINS:Lnet/minecraft/resources/ResourceKey;
+      18: invokeinterface #175,  2          // InterfaceMethod net/minecraft/core/Registry.getOrThrow:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+      23: checkcast     #181                // class net/minecraft/world/level/biome/Biome
+      26: astore_3
+      27: aload_2
+      28: aload_3
+      29: aload_1
+      30: invokevirtual #183                // Method net/minecraft/core/BlockPos.getX:()I
+      33: i2d
+      34: aload_1
+      35: invokevirtual #187                // Method net/minecraft/core/BlockPos.getZ:()I
+      38: i2d
+      39: invokeinterface #190,  6          // InterfaceMethod net/minecraft/world/level/ColorResolver.getColor:(Lnet/minecraft/world/level/biome/Biome;DD)I
+      44: ireturn
+
+  public int getBrightness(net.minecraft.world.level.LightLayer, net.minecraft.core.BlockPos);
+    Code:
+       0: bipush        15
+       2: ireturn
+
+  public int getRawBrightness(net.minecraft.core.BlockPos, int);
+    Code:
+       0: bipush        15
+       2: iload_2
+       3: isub
+       4: ireturn
+
+  public int getHeight();
+    Code:
+       0: sipush        255
+       3: ireturn
+
+  public int getMinBuildHeight();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  private static net.minecraft.world.level.block.entity.BlockEntity lambda$getBlockEntity$2(net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #114                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       4: checkcast     #120                // class net/minecraft/world/level/block/EntityBlock
+       7: aload_1
+       8: aload_0
+       9: invokeinterface #196,  3          // InterfaceMethod net/minecraft/world/level/block/EntityBlock.newBlockEntity:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      14: areturn
+
+  private static boolean lambda$validate$1(net.minecraft.world.level.Level, net.minecraft.world.level.block.Rotation, vazkii.patchouli.api.IMultiblock$SimulateResult);
+    Code:
+       0: aload_2
+       1: invokeinterface #200,  1          // InterfaceMethod vazkii/patchouli/api/IMultiblock$SimulateResult.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+       6: astore_3
+       7: aload_2
+       8: invokeinterface #205,  1          // InterfaceMethod vazkii/patchouli/api/IMultiblock$SimulateResult.getStateMatcher:()Lvazkii/patchouli/api/IStateMatcher;
+      13: invokeinterface #209,  1          // InterfaceMethod vazkii/patchouli/api/IStateMatcher.getStatePredicate:()Lvazkii/patchouli/api/TriPredicate;
+      18: astore        4
+      20: aload_0
+      21: aload_3
+      22: invokevirtual #215                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      25: aload_1
+      26: invokestatic  #216                // Method vazkii/patchouli/common/util/RotationUtil.fixHorizontal:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/Rotation;
+      29: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.rotate:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;
+      32: astore        5
+      34: aload         4
+      36: aload_0
+      37: aload_3
+      38: aload         5
+      40: invokeinterface #226,  4          // InterfaceMethod vazkii/patchouli/api/TriPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+      45: ireturn
+
+  private static void lambda$place$0(net.minecraft.world.level.Level, net.minecraft.world.level.block.Rotation, vazkii.patchouli.api.IMultiblock$SimulateResult);
+    Code:
+       0: aload_2
+       1: invokeinterface #200,  1          // InterfaceMethod vazkii/patchouli/api/IMultiblock$SimulateResult.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+       6: astore_3
+       7: aload_2
+       8: invokeinterface #205,  1          // InterfaceMethod vazkii/patchouli/api/IMultiblock$SimulateResult.getStateMatcher:()Lvazkii/patchouli/api/IStateMatcher;
+      13: aload_0
+      14: invokevirtual #231                // Method net/minecraft/world/level/Level.getGameTime:()J
+      17: invokeinterface #235,  3          // InterfaceMethod vazkii/patchouli/api/IStateMatcher.getDisplayedState:(J)Lnet/minecraft/world/level/block/state/BlockState;
+      22: aload_1
+      23: invokevirtual #222                // Method net/minecraft/world/level/block/state/BlockState.rotate:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;
+      26: astore        4
+      28: aload         4
+      30: invokevirtual #239                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      33: ifne          65
+      36: aload         4
+      38: aload_0
+      39: aload_3
+      40: invokevirtual #242                // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      43: ifeq          65
+      46: aload_0
+      47: aload_3
+      48: invokevirtual #215                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      51: invokevirtual #246                // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      54: ifeq          65
+      57: aload_0
+      58: aload_3
+      59: aload         4
+      61: invokevirtual #249                // Method net/minecraft/world/level/Level.setBlockAndUpdate:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+      64: pop
+      65: return
+}
