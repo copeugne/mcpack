@@ -6,6 +6,83 @@
 
 ### Continuation update - 2026-09-06
 
+Inventory now reproduces the Nether decisions delivered at a9637207 exactly.
+Next: 53 explicit Voyager decisions. Working groups remain 408.
+
+Nether landmark decisions now resolve all seven remaining explicit Nether
+provisionals and the existing well, circle-ruin and fragment relationship notes.
+The two comparison sheets are delivered at 8d99f50c. Nine affected source-binding
+cases and scoped Ruff/Basedpyright pass. Working groups remain 408; explicit
+provisional decisions are now 53, all Voyager. Derived inventory refresh follows.
+Required attributes and nonregistry reconciliation remain incomplete.
+
+Nether's final seven landmark comparisons reuse the existing renderer. Include
+five existing well pieces and two circular-ruin templates as reference layouts
+because those records leave cross-design relationships open. These are existing
+members, not extra candidate providers. Fourteen selected templates resolve the
+remaining specific boundaries without another measurement or rendering system.
+
+
+Inventory now agrees with arena/fortress decisions delivered at 5e5cb5e2 and
+reproduces exactly. Working groups: 408. Explicit provisional queue: 60, with
+seven Nether landmarks and 53 Voyager decisions next. No live process remains.
+
+
+Nether arena/fortress boundaries are resolved: small and large arenas are two
+layouts of mns:arena; dragon arena and fortress remain separate designs. Nine
+affected cases and scoped quality checks pass. Source groups: 408. Explicit
+provisional queue: 60 (Nether 7, Voyager 53). Refresh inventory next. The remaining
+Nether records are grave_yard, nether_wart_farm, ruined_portal, soul_fire, sword,
+train and warped_dome. Reuse source graphs and arena views; no further arena or
+fortress rendering is needed.
+
+
+Arena membership comparison uses the existing renderer for 30 architectural
+pieces across small, large and dragon arenas. Shared entity-only mob templates
+stay in the existing source graph, not the layout views. This comparison is
+needed to distinguish size/layout variants from separate designs. Do not render
+the fortress's 196 alternatives: its connected assembly graph is the boundary
+input, and template count does not imply per-instance piece count.
+
+
+Inventory agrees with delivered Nether house/forge decisions e11fe710 and
+reproduces exactly. Next: three Nether arenas, fortress and seven landmarks.
+Explicit provisional queue: 64 (Nether 11, Voyager 53). Working groups: 409.
+
+
+Nether house/forge boundaries are settled using both inspected house sheets.
+Six warped templates remain alternatives of one family; medium-house relationships
+to large and warped are now explicit. Provisional queue: 64 (Nether 11, Voyager 53).
+Working groups remain 409. Refresh inventory, then finish Nether arenas/fortress
+and landmarks. Do not repeat the house comparisons or expand the renderer.
+
+
+Nether house comparison must include the existing medium-house variants because
+that record explicitly leaves its larger/warped relationships open. Reuse the
+renderer with ten selected templates: medium 2, large 1, warped 6 and forge 1.
+The warped root selects alternatives, not a six-piece assembly. This resolves
+the current house-family boundary; it does not reopen unrelated provider work.
+
+
+Inventory now agrees with Nether pair decisions delivered at 282e291c and
+reproduces exactly. Continue the 14 named Nether decisions, then Voyager 53.
+No active process or provider audit remains. Overall working groups: 409.
+
+
+Eight Nether paired decisions are settled: two skulls, two shrines, two towers
+and two pools. They retain separate site designs; lower pool templates stay
+components. Reuse sources/nether-pair-views and existing source graphs. Explicit
+provisional remainder: 67 (Nether 14, Voyager 53). Working groups remain 409.
+Derived inventory refresh is next, then the other fourteen Nether decisions.
+
+
+Nether comparison starts with its skull, shrine, tower and pool pairs. Their
+palette/content summaries omit layout, so reuse the existing template renderer
+with ten exact packaged paths, including both pool lower pieces. No new renderer,
+schema or runtime measurement is needed. This resolves concrete variant-versus-
+family boundaries within the named queue, not a broader visual audit.
+
+
 The derived inventory now matches all delivered Soaring decisions at cc8343cb.
 Two independent regenerations match. Working groups: 409. Explicit provisional
 queue: 75 (Nether 22, Voyager 53). Continue Nether membership reconciliation.

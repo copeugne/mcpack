@@ -8826,3 +8826,133 @@ independent outputs match byte for byte. SHA-256: c6342abc3852f2562aa83ddacd828a
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-settled-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-settled-r2.json
 ```
+
+## Nether paired family decisions
+
+Eight Nether decisions now have explicit layout/content rationales: giant_skull,
+sandy_skull, shrine, smoking_shrine, copper_tower, nether_tower, lava_pool and
+warped_pool. The two inspected sheets in sources/nether-pair-views are bound in
+their evidence alongside the full template catalog and existing pool traces.
+The skull forms, shrine plans, tower arrangements and pool upper/lower compositions
+are distinct. Neither material, size, shared naming nor generic generation code
+alone establishes these boundaries. Lower pool templates remain components.
+
+These decisions add no runtime measurements or attribute-completion claims.
+The remaining explicit queue is 67 (Nether 14, Voyager 53). Overall working
+groups remain 409. The derived inventory will be refreshed from these decisions.
+
+The affected Nether source-binding case passes, as do scoped Ruff and Basedpyright.
+
+```sh
+uv run pytest 'tests/item8/test_family_decisions.py::test_authored_designs_bind_roots_settings_and_missing_components[mns:]' -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 282e291c. Both independent runs match byte for byte.
+SHA-256: dbd33667b810b11f4d1b83d60f958ade966fa2bea31c5ce8720663761379971a.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-pairs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-pairs-r2.json
+```
+
+## Nether house and forge boundaries
+
+The forge, large house and warped-house decisions are settled, along with the
+medium-house record's explicit relationship to the latter two. The forge is an
+open workshop, the medium variants share a compact gabled form, the large house
+is a hall-and-tower composition, and the warped variants share an upright framed
+form. The six warped templates are equal-weight alternatives of one family.
+No new family is counted for their different furnishings or slight size variation.
+
+The inspected source sheets in sources/nether-house-views and the full packaged
+catalog are hash-bound to these four records. The existing graph binds the selected
+1.21.1 large-house version. This settles three explicitly provisional decisions;
+the medium family was already grouped but its relationship note required closure.
+Remaining explicit queue: 64 (Nether 11, Voyager 53). Working groups remain 409.
+Attribute and generated-world claims remain separate, and the inventory refresh
+follows this decision increment.
+
+Eight affected cases pass; scoped Ruff and Basedpyright pass.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory refreshed from e11fe710 and independently reproduced byte for byte.
+SHA-256: 2c45fab771257defa1c76dfcf8c52b0193ba8d72a73b22cacf241d254c82698a.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-houses-r2.json
+```
+
+## Nether arena and fortress boundaries
+
+Small and large arenas now form mns:arena with two explicit architectural layouts.
+The inspected pieces share a walled fighting-court motif with galleries and entrance
+structures. The larger multilevel layout, trial/vault fixtures and different mobs
+are variant attributes. Shared mob templates alone were not the grouping basis.
+The exact small/large definitions and selected template sets remain in the variant
+map, including lowest-land versus fixed-height placement, liquid eligibility and
+carving differences. The direct regression checks these inputs against preserved
+sources, unique root ownership and the shared mob-only template intersection.
+
+The dragon arena remains separate: its head/body/limb construction above a broad
+platform is a sculptural encounter design rather than another walled court layout.
+Its seven upper, thirteen lower and four mob templates are components. The fortress
+remains one branching furnished complex with 196 reachable alternatives, including
+rooms, passages, crossings, stairs and encounter modules. Neither reachable count
+is a per-instance observation. Boundary exemptions, terrain adaptation, spawn
+overrides and version selection remain preserved in the source records.
+
+Nine affected cases pass, with scoped Ruff and Basedpyright passing. Explicit
+provisional remainder: 60 (Nether 7, Voyager 53). Source working groups: 408.
+The derived inventory refresh follows this increment. Item 8 attributes, nonregistry
+reconciliation, final family count and final review/merge remain incomplete.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants or nether_arena'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 5e5cb5e2 and independently reproduced exactly.
+SHA-256: 3d9a33d0bf30fa6699bcdbfc85a5408dd2f6e5d1a5e4a2cad7a38347a69ee629.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-arenas-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-arenas-r2.json
+```
+
+### Nether landmark relationships, 2026-09-06
+
+The seven remaining Nether designs retain separate families based on inspected
+layouts and template contents: grave yard, wart farm, ruined portal, soul fire,
+sword, train and warped dome. Existing wells retain their three root variants
+and lower components. Circular encounter ruins retain their two variants and
+remain distinct from generic fragments, the portal frame and the grave plot.
+Source views delivered at 8d99f50c reproduce exactly. No new measurement system
+was introduced. Root assignments and generation settings are unchanged.
+
+Nine affected cases pass; scoped Ruff and Basedpyright pass. Working groups
+remain 408. The explicit provisional remainder is 53, all Voyager. Provider
+coverage remains 136/136. Attribute completion, nonregistry reconciliation and
+final review/merge remain outstanding. Derived inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants or nether_arena'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from a9637207 and independently reproduced exactly.
+SHA-256: f119b21e5b24961e14a1614af19f27c9c7dd8f4d1b352dcf5a496c10be15fbc3.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-landmarks-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-landmarks-r2.json
+```
