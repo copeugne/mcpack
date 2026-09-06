@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-06
 
+Regions Unexplored membership is RESOLVED. Final common-entry interpretation
+and root/processor source f4ad223 close the outstanding gap. All 23 packaged tree
+component classes (including roots) are bound, correcting the earlier 21-class
+boundary. Five focused candidate/provider cases pass (1.07s); scoped quality
+checks pass. Retain the fallen-log canonical grouping question and Ashen as a
+trial-chamber component. No additional named authored-site candidate was added.
+Census: 89 resolved, 47 open. Remaining packaged-generation providers: Create
+and Forgified Fabric API; 24 code-only and 21 unmatched rows also remain. Next:
+finish those provider membership checks, then canonical grouping before detailed
+attributes. No runtime or capture process is live. Older RU checkpoints are
+historical and must not restart their completed work.
+
+RU tree-component roles are now resolved. Source 0f263ed (extractor 16127c9)
+retains 24 missing tree/configuration classes; independent capture matches.
+The provider test binds these and the two reused decorators, covering all 21
+packaged tree-component classes. Three cases pass (0.19s), with scoped quality
+checks passing. The configuration loader is JSON5 I/O; NeoForge's own mixin file
+is empty. Next: finish interpretation of the already-captured common entry and
+nine common mixins, then assemble RU's final provider disposition. Do not repeat
+feature, tree-component, full-payload or overlay inspections. Census stays
+88 resolved, 48 open. No runtime or capture process is live.
+
 RU full payload, six overlay directories and embedded JSON5 archive boundaries
 are now checked in test_regions_unexplored_provider_scope.py. Both cases pass
 (0.16s), with scoped Ruff/Basedpyright passing. The thirty overlay files are

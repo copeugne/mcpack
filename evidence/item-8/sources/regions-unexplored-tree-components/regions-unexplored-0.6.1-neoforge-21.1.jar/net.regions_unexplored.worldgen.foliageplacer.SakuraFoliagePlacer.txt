@@ -1,0 +1,540 @@
+Compiled from "SakuraFoliagePlacer.java"
+public class net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer extends net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer {
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer> CODEC;
+
+  public static net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType<net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer> TYPE;
+
+  private final net.minecraft.util.valueproviders.IntProvider height;
+
+  private final float flowerDecorationChance;
+
+  protected net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType<?> type();
+    Code:
+       0: getstatic     #44                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+       3: areturn
+
+  public net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer(net.minecraft.util.valueproviders.IntProvider, net.minecraft.util.valueproviders.IntProvider, net.minecraft.util.valueproviders.IntProvider, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #53                 // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer."<init>":(Lnet/minecraft/util/valueproviders/IntProvider;Lnet/minecraft/util/valueproviders/IntProvider;)V
+       6: aload_0
+       7: aload_3
+       8: putfield      #55                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+      11: aload_0
+      12: fload         4
+      14: putfield      #57                 // Field flowerDecorationChance:F
+      17: return
+
+  protected void createFoliage(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, int, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment, int, int, int);
+    Code:
+       0: aload         6
+       2: invokevirtual #71                 // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment.pos:()Lnet/minecraft/core/BlockPos;
+       5: iload         9
+       7: invokevirtual #77                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      10: astore        10
+      12: aload_3
+      13: iconst_2
+      14: invokeinterface #83,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      19: ifne          37
+      22: aload_0
+      23: aload_1
+      24: aload_2
+      25: aload_3
+      26: aload         4
+      28: aload         10
+      30: invokevirtual #87                 // Method placeLeavesBlobLeft:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      33: pop
+      34: goto          49
+      37: aload_0
+      38: aload_1
+      39: aload_2
+      40: aload_3
+      41: aload         4
+      43: aload         10
+      45: invokevirtual #90                 // Method placeLeavesBlobRight:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      48: pop
+      49: return
+
+  public boolean placeLeavesBlobLeft(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aload         5
+       8: invokevirtual #103                // Method placeLeavesTopLeft:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      11: aload_0
+      12: aload_1
+      13: aload_2
+      14: aload_3
+      15: aload         4
+      17: aload         5
+      19: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #108                // Method placeLeavesMiddle:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      25: aload_0
+      26: aload_1
+      27: aload_2
+      28: aload_3
+      29: aload         4
+      31: aload         5
+      33: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      36: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      39: invokevirtual #103                // Method placeLeavesTopLeft:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      42: iconst_1
+      43: ireturn
+
+  public boolean placeLeavesBlobRight(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aload         5
+       8: invokevirtual #111                // Method placeLeavesTopRight:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      11: aload_0
+      12: aload_1
+      13: aload_2
+      14: aload_3
+      15: aload         4
+      17: aload         5
+      19: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #108                // Method placeLeavesMiddle:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      25: aload_0
+      26: aload_1
+      27: aload_2
+      28: aload_3
+      29: aload         4
+      31: aload         5
+      33: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      36: invokevirtual #105                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      39: invokevirtual #111                // Method placeLeavesTopRight:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)V
+      42: iconst_1
+      43: ireturn
+
+  public void placeLeavesMiddle(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      10: pop
+      11: aload_1
+      12: aload_2
+      13: aload_3
+      14: aload         4
+      16: aload         5
+      18: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      21: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      24: pop
+      25: aload_1
+      26: aload_2
+      27: aload_3
+      28: aload         4
+      30: aload         5
+      32: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      35: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      38: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      41: pop
+      42: aload_1
+      43: aload_2
+      44: aload_3
+      45: aload         4
+      47: aload         5
+      49: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      52: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      55: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      58: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      61: pop
+      62: aload_1
+      63: aload_2
+      64: aload_3
+      65: aload         4
+      67: aload         5
+      69: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      72: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      75: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      78: pop
+      79: aload_1
+      80: aload_2
+      81: aload_3
+      82: aload         4
+      84: aload         5
+      86: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      89: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      92: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      95: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      98: pop
+      99: aload_1
+     100: aload_2
+     101: aload_3
+     102: aload         4
+     104: aload         5
+     106: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     109: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     112: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     115: pop
+     116: aload_1
+     117: aload_2
+     118: aload_3
+     119: aload         4
+     121: aload         5
+     123: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     126: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     129: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     132: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     135: pop
+     136: aload_1
+     137: aload_2
+     138: aload_3
+     139: aload         4
+     141: aload         5
+     143: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     146: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     149: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     152: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     155: pop
+     156: aload_1
+     157: aload_2
+     158: aload_3
+     159: aload         4
+     161: aload         5
+     163: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     166: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     169: pop
+     170: aload_1
+     171: aload_2
+     172: aload_3
+     173: aload         4
+     175: aload         5
+     177: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     180: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     183: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     186: pop
+     187: aload_1
+     188: aload_2
+     189: aload_3
+     190: aload         4
+     192: aload         5
+     194: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     197: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     200: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     203: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     206: pop
+     207: aload_1
+     208: aload_2
+     209: aload_3
+     210: aload         4
+     212: aload         5
+     214: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     217: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     220: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     223: pop
+     224: aload_1
+     225: aload_2
+     226: aload_3
+     227: aload         4
+     229: aload         5
+     231: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     234: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     237: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     240: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     243: pop
+     244: aload_1
+     245: aload_2
+     246: aload_3
+     247: aload         4
+     249: aload         5
+     251: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     254: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     257: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     260: pop
+     261: aload_1
+     262: aload_2
+     263: aload_3
+     264: aload         4
+     266: aload         5
+     268: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     271: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     274: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     277: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     280: pop
+     281: aload_1
+     282: aload_2
+     283: aload_3
+     284: aload         4
+     286: aload         5
+     288: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     291: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     294: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     297: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     300: pop
+     301: aload_1
+     302: aload_2
+     303: aload_3
+     304: aload         4
+     306: aload         5
+     308: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     311: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     314: pop
+     315: aload_1
+     316: aload_2
+     317: aload_3
+     318: aload         4
+     320: aload         5
+     322: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     325: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+     328: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     331: pop
+     332: aload_1
+     333: aload_2
+     334: aload_3
+     335: aload         4
+     337: aload         5
+     339: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     342: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     345: pop
+     346: aload_1
+     347: aload_2
+     348: aload_3
+     349: aload         4
+     351: aload         5
+     353: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     356: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     359: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     362: pop
+     363: return
+
+  public void placeLeavesTopLeft(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      10: pop
+      11: aload_1
+      12: aload_2
+      13: aload_3
+      14: aload         4
+      16: aload         5
+      18: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      21: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      24: pop
+      25: aload_1
+      26: aload_2
+      27: aload_3
+      28: aload         4
+      30: aload         5
+      32: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      35: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      38: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      41: pop
+      42: aload_1
+      43: aload_2
+      44: aload_3
+      45: aload         4
+      47: aload         5
+      49: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      52: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      55: pop
+      56: aload_1
+      57: aload_2
+      58: aload_3
+      59: aload         4
+      61: aload         5
+      63: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      66: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      69: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      72: pop
+      73: aload_1
+      74: aload_2
+      75: aload_3
+      76: aload         4
+      78: aload         5
+      80: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      83: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      86: pop
+      87: aload_1
+      88: aload_2
+      89: aload_3
+      90: aload         4
+      92: aload         5
+      94: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      97: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+     100: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     103: pop
+     104: aload_1
+     105: aload_2
+     106: aload_3
+     107: aload         4
+     109: aload         5
+     111: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     114: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     117: pop
+     118: aload_1
+     119: aload_2
+     120: aload_3
+     121: aload         4
+     123: aload         5
+     125: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+     128: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+     131: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+     134: pop
+     135: return
+
+  public void placeLeavesTopRight(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      10: pop
+      11: aload_1
+      12: aload_2
+      13: aload_3
+      14: aload         4
+      16: aload         5
+      18: invokevirtual #117                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+      21: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      24: pop
+      25: aload_1
+      26: aload_2
+      27: aload_3
+      28: aload         4
+      30: aload         5
+      32: invokevirtual #126                // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      35: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      38: pop
+      39: aload_1
+      40: aload_2
+      41: aload_3
+      42: aload         4
+      44: aload         5
+      46: invokevirtual #120                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+      49: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      52: pop
+      53: aload_1
+      54: aload_2
+      55: aload_3
+      56: aload         4
+      58: aload         5
+      60: invokevirtual #123                // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      63: invokestatic  #114                // Method tryPlaceLeaf:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Lnet/minecraft/core/BlockPos;)Z
+      66: pop
+      67: return
+
+  public int foliageHeight(net.minecraft.util.RandomSource, int, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+       4: aload_1
+       5: invokevirtual #137                // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+       8: ireturn
+
+  protected boolean shouldSkipLocation(net.minecraft.util.RandomSource, int, int, int, int, boolean);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  protected static boolean tryPlaceLeaf(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload         4
+       3: invokestatic  #152                // Method net/minecraft/world/level/levelgen/feature/TreeFeature.validTreePos:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+       6: ifne          11
+       9: iconst_0
+      10: ireturn
+      11: aload_3
+      12: getfield      #158                // Field net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration.foliageProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      15: aload_2
+      16: aload         4
+      18: invokevirtual #164                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      21: astore        5
+      23: aload         5
+      25: getstatic     #170                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      28: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+      31: ifeq          63
+      34: aload         5
+      36: getstatic     #170                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.WATERLOGGED:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      39: aload_0
+      40: aload         4
+      42: invokedynamic #195,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      47: invokeinterface #201,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isFluidAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      52: invokestatic  #207                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      55: invokevirtual #211                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      58: checkcast     #172                // class net/minecraft/world/level/block/state/BlockState
+      61: astore        5
+      63: aload_1
+      64: aload         4
+      66: aload         5
+      68: invokeinterface #215,  3          // InterfaceMethod net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter.set:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      73: iconst_1
+      74: ireturn
+
+  private static boolean lambda$tryPlaceLeaf$0(net.minecraft.world.level.material.FluidState);
+    Code:
+       0: aload_0
+       1: getstatic     #224                // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+       4: invokevirtual #230                // Method net/minecraft/world/level/material/FluidState.isSourceOfType:(Lnet/minecraft/world/level/material/Fluid;)Z
+       7: ireturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: invokestatic  #238                // Method foliagePlacerParts:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P2;
+       4: aload_0
+       5: iconst_4
+       6: bipush        16
+       8: invokestatic  #242                // Method net/minecraft/util/valueproviders/IntProvider.codec:(II)Lcom/mojang/serialization/Codec;
+      11: ldc           #243                // String height
+      13: invokeinterface #249,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      18: invokedynamic #261,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      23: invokevirtual #267                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      26: fconst_0
+      27: fconst_1
+      28: invokestatic  #271                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      31: ldc_w         #273                // String flower_decoration_chance
+      34: invokeinterface #249,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      39: invokedynamic #280,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      44: invokevirtual #267                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      47: invokevirtual #284                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      50: invokevirtual #288                // Method com/mojang/datafixers/Products$P2.and:(Lcom/mojang/datafixers/Products$P2;)Lcom/mojang/datafixers/Products$P4;
+      53: aload_0
+      54: invokedynamic #298,  0            // InvokeDynamic #3:apply:()Lcom/mojang/datafixers/util/Function4;
+      59: invokevirtual #301                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      62: areturn
+
+  private static java.lang.Float lambda$static$2(net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer);
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field flowerDecorationChance:F
+       4: invokestatic  #308                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static net.minecraft.util.valueproviders.IntProvider lambda$static$1(net.regions_unexplored.worldgen.foliageplacer.SakuraFoliagePlacer);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field height:Lnet/minecraft/util/valueproviders/IntProvider;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #315,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+       5: invokestatic  #319                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #321                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #323                // class net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType
+      14: dup
+      15: getstatic     #321                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      18: invokespecial #326                // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      21: putstatic     #44                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+      24: return
+}

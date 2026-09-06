@@ -1,0 +1,427 @@
+Compiled from "RedwoodTrunkPlacer.java"
+public class net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer extends net.regions_unexplored.worldgen.trunkplacer.RUTrunkPlacer {
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer> TYPE;
+
+  protected final java.util.List<net.minecraft.util.valueproviders.IntProvider> branchCounts;
+
+  protected final int branchOffset;
+
+  protected final java.util.List<net.minecraft.util.valueproviders.IntProvider> baseTrunkHeights;
+
+  public net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer(net.minecraft.util.valueproviders.IntProvider, java.util.List<net.minecraft.util.valueproviders.IntProvider>, int, java.util.List<net.minecraft.util.valueproviders.IntProvider>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #63                 // Method net/regions_unexplored/worldgen/trunkplacer/RUTrunkPlacer."<init>":(Lnet/minecraft/util/valueproviders/IntProvider;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #65                 // Field branchCounts:Ljava/util/List;
+      10: aload_0
+      11: iload_3
+      12: putfield      #67                 // Field branchOffset:I
+      15: aload_0
+      16: aload         4
+      18: putfield      #69                 // Field baseTrunkHeights:Ljava/util/List;
+      21: return
+
+  protected net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType<?> type();
+    Code:
+       0: getstatic     #77                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+       3: areturn
+
+  public java.util.List<net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment> placeTrunk(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, int, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: new           #88                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #91                 // Method java/util/ArrayList."<init>":()V
+       7: astore        7
+       9: aload_0
+      10: aload_1
+      11: aload_2
+      12: aload_3
+      13: aload         5
+      15: iload         4
+      17: aload         6
+      19: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+      22: getstatic     #99                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      25: invokevirtual #103                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      28: astore        8
+      30: aload         8
+      32: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      37: ifeq          193
+      40: aload         8
+      42: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      47: checkcast     #9                  // class net/minecraft/core/Direction
+      50: astore        9
+      52: aload_0
+      53: aload_1
+      54: aload_2
+      55: aload_3
+      56: aload         5
+      58: aload         9
+      60: iconst_1
+      61: invokevirtual #119                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      64: aload_0
+      65: aload_3
+      66: iconst_0
+      67: invokevirtual #123                // Method getTrunkHeight:(Lnet/minecraft/util/RandomSource;I)I
+      70: aload         6
+      72: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+      75: aload_0
+      76: aload_1
+      77: aload_2
+      78: aload_3
+      79: aload         5
+      81: aload         9
+      83: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      86: aload         9
+      88: invokevirtual #130                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      91: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      94: aload_0
+      95: aload_3
+      96: iconst_1
+      97: invokevirtual #123                // Method getTrunkHeight:(Lnet/minecraft/util/RandomSource;I)I
+     100: aload         6
+     102: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+     105: aload_0
+     106: aload_1
+     107: aload_2
+     108: aload_3
+     109: aload         5
+     111: aload         9
+     113: iconst_2
+     114: invokevirtual #119                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     117: aload_0
+     118: aload_3
+     119: iconst_2
+     120: invokevirtual #123                // Method getTrunkHeight:(Lnet/minecraft/util/RandomSource;I)I
+     123: aload         6
+     125: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+     128: aload_0
+     129: aload_1
+     130: aload_2
+     131: aload_3
+     132: aload         5
+     134: aload         9
+     136: iconst_2
+     137: invokevirtual #119                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     140: aload         9
+     142: invokevirtual #130                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+     145: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     148: aload_0
+     149: aload_3
+     150: iconst_3
+     151: invokevirtual #123                // Method getTrunkHeight:(Lnet/minecraft/util/RandomSource;I)I
+     154: aload         6
+     156: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+     159: aload_0
+     160: aload_1
+     161: aload_2
+     162: aload_3
+     163: aload         5
+     165: aload         9
+     167: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     170: aload         9
+     172: invokevirtual #130                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+     175: iconst_2
+     176: invokevirtual #119                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+     179: aload_0
+     180: aload_3
+     181: iconst_3
+     182: invokevirtual #123                // Method getTrunkHeight:(Lnet/minecraft/util/RandomSource;I)I
+     185: aload         6
+     187: invokevirtual #95                 // Method placeLogColumn:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)V
+     190: goto          30
+     193: aload         5
+     195: invokevirtual #134                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     198: getstatic     #138                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     201: iload         4
+     203: invokevirtual #142                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     206: astore        8
+     208: aload         7
+     210: aload         8
+     212: invokevirtual #146                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     215: invokestatic  #150                // Method attachment:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment;
+     218: invokeinterface #154,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     223: pop
+     224: iconst_1
+     225: istore        9
+     227: aload_0
+     228: getfield      #65                 // Field branchCounts:Ljava/util/List;
+     231: invokeinterface #155,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     236: astore        10
+     238: aload         10
+     240: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     245: ifeq          328
+     248: aload         10
+     250: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     255: checkcast     #157                // class net/minecraft/util/valueproviders/IntProvider
+     258: astore        11
+     260: iconst_0
+     261: istore        12
+     263: iload         12
+     265: aload         11
+     267: aload_3
+     268: invokevirtual #161                // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+     271: if_icmpge     322
+     274: aload         8
+     276: getstatic     #164                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     279: aload_0
+     280: getfield      #67                 // Field branchOffset:I
+     283: invokevirtual #142                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     286: pop
+     287: aload_0
+     288: aload_1
+     289: aload_2
+     290: aload_3
+     291: iload         9
+     293: aload         8
+     295: aload         6
+     297: aload         7
+     299: invokevirtual #168                // Method placeBranch:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;ILnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Ljava/util/List;)V
+     302: iload         9
+     304: iconst_2
+     305: if_icmple     316
+     308: aload_0
+     309: aload         7
+     311: aload         8
+     313: invokevirtual #172                // Method placeBlobsAround:(Ljava/util/List;Lnet/minecraft/core/BlockPos;)V
+     316: iinc          12, 1
+     319: goto          263
+     322: iinc          9, 1
+     325: goto          238
+     328: aload         7
+     330: areturn
+
+  private int getTrunkHeight(net.minecraft.util.RandomSource, int);
+    Code:
+       0: aload_0
+       1: getfield      #69                 // Field baseTrunkHeights:Ljava/util/List;
+       4: invokeinterface #191,  1          // InterfaceMethod java/util/List.size:()I
+       9: iload_2
+      10: if_icmpgt     15
+      13: iconst_0
+      14: ireturn
+      15: aload_0
+      16: getfield      #69                 // Field baseTrunkHeights:Ljava/util/List;
+      19: iload_2
+      20: invokeinterface #195,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      25: checkcast     #157                // class net/minecraft/util/valueproviders/IntProvider
+      28: aload_1
+      29: invokevirtual #161                // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+      32: ireturn
+
+  private void placeBlobsAround(java.util.List<net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment>, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #99                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+       3: invokevirtual #103                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+       6: astore_3
+       7: aload_3
+       8: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          54
+      16: aload_3
+      17: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #9                  // class net/minecraft/core/Direction
+      25: astore        4
+      27: aload_1
+      28: aload_2
+      29: aload         4
+      31: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      34: aload         4
+      36: invokevirtual #130                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      39: invokevirtual #126                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      42: invokestatic  #150                // Method attachment:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment;
+      45: invokeinterface #154,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      50: pop
+      51: goto          7
+      54: return
+
+  private void placeBranch(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, int, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, java.util.List<net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment>);
+    Code:
+       0: getstatic     #99                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+       3: aload_3
+       4: invokevirtual #203                // Method net/minecraft/core/Direction$Plane.getRandomAxis:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/core/Direction$Axis;
+       7: astore        8
+       9: getstatic     #99                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      12: invokevirtual #103                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      15: astore        9
+      17: aload         9
+      19: invokeinterface #111,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          128
+      27: aload         9
+      29: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #9                  // class net/minecraft/core/Direction
+      37: astore        10
+      39: aload         5
+      41: invokevirtual #134                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      44: astore        11
+      46: aload         8
+      48: aload         10
+      50: invokevirtual #207                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+      53: if_acmpeq     65
+      56: aload         11
+      58: getstatic     #164                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      61: invokevirtual #210                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      64: pop
+      65: iconst_0
+      66: istore        12
+      68: iload         12
+      70: iload         4
+      72: if_icmpge     109
+      75: aload         11
+      77: aload         10
+      79: invokevirtual #210                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      82: pop
+      83: aload_0
+      84: aload_1
+      85: aload_2
+      86: aload_3
+      87: aload         11
+      89: invokevirtual #146                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      92: aload         6
+      94: aload         10
+      96: invokestatic  #214                // Method setAxis:(Lnet/minecraft/core/Direction;)Ljava/util/function/Function;
+      99: invokevirtual #218                // Method placeLog:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;Ljava/util/function/Function;)Z
+     102: pop
+     103: iinc          12, 1
+     106: goto          68
+     109: aload         7
+     111: aload         11
+     113: invokevirtual #146                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+     116: invokestatic  #150                // Method attachment:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment;
+     119: invokeinterface #154,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     124: pop
+     125: goto          17
+     128: return
+
+  private void placeLogColumn(net.minecraft.world.level.LevelSimulatedReader, java.util.function.BiConsumer<net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState>, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, int, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration);
+    Code:
+       0: iload         5
+       2: ifne          6
+       5: return
+       6: aload_1
+       7: aload_2
+       8: aload         4
+      10: invokestatic  #227                // Method net/regions_unexplored/worldgen/trunkplacer/RUTrunkPlacer.placeDirtBelow:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/core/BlockPos;)V
+      13: aload         4
+      15: invokevirtual #134                // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      18: astore        7
+      20: iconst_0
+      21: istore        8
+      23: iload         8
+      25: iload         5
+      27: if_icmpge     66
+      30: aload_0
+      31: aload_1
+      32: aload_2
+      33: aload_3
+      34: aload         7
+      36: invokevirtual #146                // Method net/minecraft/core/BlockPos$MutableBlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      39: aload         6
+      41: invokevirtual #230                // Method placeLog:(Lnet/minecraft/world/level/LevelSimulatedReader;Ljava/util/function/BiConsumer;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration;)Z
+      44: ifeq          59
+      47: aload         7
+      49: getstatic     #138                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      52: invokevirtual #210                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      55: pop
+      56: goto          60
+      59: return
+      60: iinc          8, 1
+      63: goto          23
+      66: return
+
+  protected boolean validTreePos(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokestatic  #237                // Method net/minecraft/world/level/levelgen/feature/TreeFeature.validTreePos:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+       5: ifne          23
+       8: aload_1
+       9: aload_2
+      10: invokedynamic #255,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      15: invokeinterface #261,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      20: ifeq          27
+      23: iconst_1
+      24: goto          28
+      27: iconst_0
+      28: ireturn
+
+  private static boolean lambda$validTreePos$0(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #268                // Field net/minecraft/tags/BlockTags.LOGS:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #274                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ifne          20
+      10: aload_0
+      11: getstatic     #279                // Field net/regions_unexplored/registry/tag/RUBlockTags.BRANCHES:Lnet/minecraft/tags/TagKey;
+      14: invokevirtual #274                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      17: ifeq          24
+      20: iconst_1
+      21: goto          25
+      24: iconst_0
+      25: ireturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: invokestatic  #286                // Method heightField:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+       4: aload_0
+       5: getstatic     #290                // Field net/minecraft/util/valueproviders/IntProvider.NON_NEGATIVE_CODEC:Lcom/mojang/serialization/Codec;
+       8: invokeinterface #296,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      13: ldc_w         #298                // String branch_counts
+      16: invokeinterface #302,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      21: invokedynamic #314,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      26: invokevirtual #320                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      29: getstatic     #325                // Field net/minecraft/util/ExtraCodecs.POSITIVE_INT:Lcom/mojang/serialization/Codec;
+      32: ldc_w         #327                // String branch_offset
+      35: invokeinterface #302,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      40: invokedynamic #334,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      45: invokevirtual #320                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      48: getstatic     #290                // Field net/minecraft/util/valueproviders/IntProvider.NON_NEGATIVE_CODEC:Lcom/mojang/serialization/Codec;
+      51: iconst_0
+      52: iconst_4
+      53: invokeinterface #337,  3          // InterfaceMethod com/mojang/serialization/Codec.listOf:(II)Lcom/mojang/serialization/Codec;
+      58: ldc_w         #339                // String base_trunk_heights
+      61: invokeinterface #302,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      66: invokedynamic #344,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      71: invokevirtual #320                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      74: invokevirtual #348                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P3;
+      77: invokevirtual #352                // Method com/mojang/datafixers/Products$P1.and:(Lcom/mojang/datafixers/Products$P3;)Lcom/mojang/datafixers/Products$P4;
+      80: aload_0
+      81: invokedynamic #362,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function4;
+      86: invokevirtual #365                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      89: areturn
+
+  private static java.util.List lambda$static$3(net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #69                 // Field baseTrunkHeights:Ljava/util/List;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$2(net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #67                 // Field branchOffset:I
+       4: invokestatic  #373                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.List lambda$static$1(net.regions_unexplored.worldgen.trunkplacer.RedwoodTrunkPlacer);
+    Code:
+       0: aload_0
+       1: getfield      #65                 // Field branchCounts:Ljava/util/List;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #379,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       5: invokestatic  #383                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #385                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #387                // class net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType
+      14: dup
+      15: getstatic     #385                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      18: invokespecial #390                // Method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      21: putstatic     #77                 // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+      24: return
+}

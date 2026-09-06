@@ -1,0 +1,178 @@
+Compiled from "WillowFoliagePlacer.java"
+public class net.regions_unexplored.worldgen.foliageplacer.WillowFoliagePlacer extends net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer {
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.foliageplacer.WillowFoliagePlacer> CODEC;
+
+  public static net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType<net.regions_unexplored.worldgen.foliageplacer.WillowFoliagePlacer> TYPE;
+
+  private final float hangingLeavesChance;
+
+  public net.regions_unexplored.worldgen.foliageplacer.WillowFoliagePlacer(float);
+    Code:
+       0: aload_0
+       1: getstatic     #44                 // Field net/minecraft/util/valueproviders/ConstantInt.ZERO:Lnet/minecraft/util/valueproviders/ConstantInt;
+       4: getstatic     #44                 // Field net/minecraft/util/valueproviders/ConstantInt.ZERO:Lnet/minecraft/util/valueproviders/ConstantInt;
+       7: iconst_0
+       8: invokespecial #47                 // Method net/minecraft/world/level/levelgen/feature/foliageplacers/BlobFoliagePlacer."<init>":(Lnet/minecraft/util/valueproviders/IntProvider;Lnet/minecraft/util/valueproviders/IntProvider;I)V
+      11: aload_0
+      12: fload_1
+      13: putfield      #49                 // Field hangingLeavesChance:F
+      16: return
+
+  public float hangingLeavesChance();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field hangingLeavesChance:F
+       4: freturn
+
+  protected void createFoliage(net.minecraft.world.level.LevelSimulatedReader, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageSetter, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration, int, net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer$FoliageAttachment, int, int, int);
+    Code:
+       0: aload         6
+       2: invokevirtual #67                 // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageAttachment.pos:()Lnet/minecraft/core/BlockPos;
+       5: astore        10
+       7: new           #12                 // class net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context
+      10: dup
+      11: aload_1
+      12: aload_2
+      13: aload_3
+      14: aload         4
+      16: getfield      #73                 // Field net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration.foliageProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      19: aload         10
+      21: iload         9
+      23: invokespecial #76                 // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context."<init>":(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer$FoliageSetter;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/core/BlockPos;I)V
+      26: astore        11
+      28: aload         11
+      30: iconst_1
+      31: iconst_2
+      32: iconst_0
+      33: invokestatic  #80                 // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeDiamond:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;IIZ)V
+      36: aload         11
+      38: iconst_2
+      39: iconst_1
+      40: iconst_0
+      41: invokestatic  #80                 // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeDiamond:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;IIZ)V
+      44: getstatic     #84                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      47: invokevirtual #88                 // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      50: astore        12
+      52: aload         12
+      54: invokeinterface #96,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      59: ifeq          124
+      62: aload         12
+      64: invokeinterface #100,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      69: checkcast     #22                 // class net/minecraft/core/Direction
+      72: astore        13
+      74: aload         10
+      76: invokevirtual #103                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      79: aload         13
+      81: iconst_2
+      82: invokevirtual #107                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      85: astore        14
+      87: aload         11
+      89: aload         14
+      91: aload         13
+      93: invokevirtual #111                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      96: invokevirtual #114                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      99: ldc           #115                // float 0.3f
+     101: invokestatic  #119                // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeSingle:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;Lnet/minecraft/core/BlockPos;F)V
+     104: aload         11
+     106: aload         14
+     108: aload         13
+     110: invokevirtual #122                // Method net/minecraft/core/Direction.getCounterClockWise:()Lnet/minecraft/core/Direction;
+     113: invokevirtual #114                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     116: ldc           #115                // float 0.3f
+     118: invokestatic  #119                // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeSingle:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;Lnet/minecraft/core/BlockPos;F)V
+     121: goto          52
+     124: aload         11
+     126: iconst_2
+     127: iconst_0
+     128: iconst_0
+     129: fconst_0
+     130: invokestatic  #126                // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeSquare:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;IIZF)V
+     133: bipush        -2
+     135: istore        12
+     137: iload         12
+     139: iconst_2
+     140: if_icmpgt     272
+     143: bipush        -2
+     145: istore        13
+     147: iload         13
+     149: iconst_2
+     150: if_icmpgt     266
+     153: iload         12
+     155: invokestatic  #132                // Method java/lang/Math.abs:(I)I
+     158: iconst_2
+     159: if_icmpne     166
+     162: iconst_1
+     163: goto          167
+     166: iconst_0
+     167: istore        14
+     169: iload         13
+     171: invokestatic  #132                // Method java/lang/Math.abs:(I)I
+     174: iconst_2
+     175: if_icmpne     182
+     178: iconst_1
+     179: goto          183
+     182: iconst_0
+     183: istore        15
+     185: iload         14
+     187: iload         15
+     189: if_icmpeq     260
+     192: aload_0
+     193: getfield      #49                 // Field hangingLeavesChance:F
+     196: aload_3
+     197: invokeinterface #137,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     202: fcmpg
+     203: ifge          209
+     206: goto          260
+     209: aload         10
+     211: iload         12
+     213: iconst_m1
+     214: iload         13
+     216: invokevirtual #140                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     219: astore        16
+     221: aload_3
+     222: iconst_2
+     223: invokeinterface #143,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     228: iconst_1
+     229: iadd
+     230: istore        17
+     232: iconst_0
+     233: istore        18
+     235: iload         18
+     237: iload         17
+     239: if_icmpge     260
+     242: aload         11
+     244: aload         16
+     246: iload         18
+     248: invokevirtual #147                // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     251: invokestatic  #150                // Method net/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils.placeSingle:(Lnet/regions_unexplored/worldgen/foliageplacer/RUFoliagePlacerUtils$Context;Lnet/minecraft/core/BlockPos;)V
+     254: iinc          18, 1
+     257: goto          235
+     260: iinc          13, 1
+     263: goto          147
+     266: iinc          12, 1
+     269: goto          137
+     272: return
+
+  protected net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType<?> type();
+    Code:
+       0: getstatic     #176                // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+       3: areturn
+
+  static {};
+    Code:
+       0: fconst_0
+       1: fconst_1
+       2: invokestatic  #184                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+       5: ldc           #186                // String hanging_leaves_chance
+       7: invokeinterface #190,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      12: invokedynamic #208,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      17: invokedynamic #214,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      22: invokevirtual #220                // Method com/mojang/serialization/MapCodec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      25: putstatic     #222                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      28: new           #224                // class net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType
+      31: dup
+      32: getstatic     #222                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      35: invokespecial #227                // Method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      38: putstatic     #176                // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+      41: return
+}
