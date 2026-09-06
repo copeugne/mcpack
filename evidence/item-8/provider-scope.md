@@ -2899,3 +2899,41 @@ uv run basedpyright tests/item8/test_repurposed_feature_candidates.py
 One focused case and scoped quality checks pass. Remaining Repurposed scope is
 full feature roles, pool/template component reconciliation, entry/hook roles and
 supported exclusions. Census is unchanged: 74 resolved providers, 62 open.
+
+### Repurposed existing-graph partition
+
+The existing pool-traces-content catalog covers 95 of the 107 packaged roots.
+The twelve other roots are mansion_birch/desert/jungle/mangrove/oak/savanna/
+snowy/taiga and monument_desert/icy/jungle/nether. Their custom assembly source
+already exists; absence from the generic pool graph is not an exclusion.
+
+| Resource partition | Pools outside generic root traces | Templates outside generic root traces |
+| --- | ---: | ---: |
+| Mansion paths | 416 | 597 |
+| Monument paths | 80 | 92 |
+| Dungeon NBT feature paths | 0 | 36 |
+| Well NBT feature paths | 0 | 7 |
+| Other paths requiring individual disposition | 7 | 53 |
+| Total outside generic root traces | 503 | 785 |
+
+The full packaged denominators are 1099 pools and 3162 templates. The 95 traces
+have no missing or unresolved-element entries. This statement covers those
+traces only, not custom assemblies, all feature consumers or the whole provider.
+The table groups exact resource namespaces; it does not prove every grouped
+resource is selected by its custom generator. Reconcile the retained mansion
+and monument selectors before accepting that stronger claim.
+
+The seven other pools are cities/nether/no_stair_room,
+cities/overworld/no_stair_room, villages/cherry/trees, villages/giant_taiga/trees,
+villages/giant_taiga/zombie/terminators, villages/mountains/trees and
+villages/swamp/trees, all under repurposed_structures. The other 53 templates
+partition into ancient_cities (3), bastions (5), mineshafts (16), strongholds (2)
+and villages (27). Exact paths remain in the preserved template catalog and
+are reproducibly selected by the new graph-partition test. These are component
+questions, not 60 new families and not yet supported unused exclusions.
+
+The two cases in test_repurposed_feature_candidates.py and scoped quality
+checks pass. Early read-only probes used the wrong catalog path, then compared
+resource_identity tuples against string IDs and omitted the NBT extension.
+Those outputs were rejected. The tracked check uses the actual sources path,
+identity[0] and explicit extensions. No accepted source data was changed.
