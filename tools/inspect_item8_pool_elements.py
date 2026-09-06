@@ -1665,6 +1665,7 @@ CLASSES: tuple[str, ...] = (
     "com/rae/creatingspace/mixin/recipe/ProcessingRecipeParamsMixin.class",
     "com/rae/creatingspace/mixin/recipe/SequencedAssemblyRecipeMixin.class",
     "com/rae/creatingspace/mixin/recipe/SequencedAssemblyRecipeSerializerMixin.class",
+    "com/rae/creatingspace/content/rocket/CustomTeleporter.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
