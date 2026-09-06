@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Nether comparison starts with its skull, shrine, tower and pool pairs. Their
+palette/content summaries omit layout, so reuse the existing template renderer
+with ten exact packaged paths, including both pool lower pieces. No new renderer,
+schema or runtime measurement is needed. This resolves concrete variant-versus-
+family boundaries within the named queue, not a broader visual audit.
+
+
 The derived inventory now matches all delivered Soaring decisions at cc8343cb.
 Two independent regenerations match. Working groups: 409. Explicit provisional
 queue: 75 (Nether 22, Voyager 53). Continue Nether membership reconciliation.

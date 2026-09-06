@@ -55,14 +55,19 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bo
 
 
 def main() -> None:
-    """Render fixed BetterEnd or Soaring sets from their frozen archive."""
+    """Render fixed comparison sets from their frozen archive."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
-    _ = parser.add_argument("--soaring", action="store_true")
+    selection = parser.add_mutually_exclusive_group()
+    _ = selection.add_argument("--soaring", action="store_true")
+    _ = selection.add_argument("--nether", action="store_true")
     args = parser.parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
+    nether = cast("bool", args.nether)
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
+    if nether:
+        archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar"
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -88,20 +93,27 @@ def main() -> None:
                               "desert_well", "nether_portal"],
             }
         namespace = "mss" if soaring else "betterend"
+        if nether:
+            namespace = "mns"
+            sheets = {
+                "skulls_shrines_towers": ["giant_skull", "sandy_skull", "shrine",
+                                         "smoking_shrine", "copper_tower", "nether_tower"],
+                "pools": ["lava_pool", "lava_pool_lower", "warped_pool", "warped_pool_lower"],
+            }
         for biome, names in sheets.items():
             count = len(names)
             pieces: list[str] = []
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
-                title = name if soaring else name.rsplit("/", 1)[1]
+                title = name if soaring or nether else name.rsplit("/", 1)[1]
                 pieces.append(diagram(raw, title, 20 + index % 2 * 300,
-                                      35 + index // 2 * 300, exposed=soaring))
+                                      35 + index // 2 * 300, exposed=soaring or nether))
             height = ((count + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',
                    "\n".join(pieces), "</svg>"))
-            if soaring:
+            if soaring or nether:
                 _ = (output / f"{biome}.svg.gz").write_bytes(
                     gzip.compress((svg + "\n").encode(), mtime=0))
             else:
