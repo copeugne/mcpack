@@ -1681,6 +1681,7 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/common/worldgen/MineshaftElevatorPiece$1.class",
     "net/mehvahdjukaar/supplementaries/mixins/MineshaftCorridorMixin.class",
     "net/mehvahdjukaar/supplementaries/mixins/MineshaftPiecesMixin.class",
+    "net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
