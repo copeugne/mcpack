@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Patchouli membership is resolved from c73260ac and 212a5402: documentation books,
+existing lectern interaction and consumer multiblock APIs, no independent family.
+The explicit multiblock place API can write blocks; it is not registered as an
+automatic generator. Full payload/source binding, 26 utility cases and scoped
+quality checks pass. Whole providers: 105 resolved, 31 open. Continue remaining
+provider dispositions and Moog canonical grouping before detailed attributes.
+Do not continue generic Patchouli book/client helper inspection.
+
+
 Chipped membership is resolved using 869bee77 and 9fd54ae5. It supplies building
 blocks, recipes, player workbench crafting and block behavior, with no independent
 family. Complete payload/source binding, 25 utility cases and scoped checks pass.

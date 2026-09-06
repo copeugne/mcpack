@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 104 of 136. The exact queue below has 32 open rows.
+Supported provider dispositions: 105 of 136. The exact queue below has 31 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -602,7 +602,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Sources a447496 and a2fc4ee; test_glitchcore_provider_scope.py | RESOLVED: Consumer events, configuration synchronization and platform adapters. No independent family. See GlitchCore disposition below. |
 | `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `illagerinvasion-provider`, `illagerinvasion-extensible-enums` (e0f2c9a), existing pool codecs, test_illagerinvasion_provider_scope.py | RESOLVED: Five existing roots, thirteen mansion replacement components and encounter/loot modifications. Bundled enum library has no independent family; disconnected pillager pool/template preserved below. |
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
-| `Patchouli-1.21.1-93-NEOFORGE.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `Patchouli-1.21.1-93-NEOFORGE.jar` | `patchouli-provider`, `patchouli-books`; complete payload/source binding. | RESOLVED: documentation books, existing lectern interaction and consumer multiblock APIs. No independent family. |
 | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `Quark-4.1-480.jar` | `quark-end-generators`, `quark-end-registration`, `quark-fallen-log-decor`, `quark-landmark-encounter-generators`, `quark-monster-box-behavior`, `quark-monster-box-bindings`, `quark-nether-spikes`, `quark-spire-config-annotations`, `quark-stone-clusters`, `quark-underground-base`, `quark-underground-context`, `quark-underground-fill`, `quark-underground-styles`, `quark-vegetation`, `quark-world-category` | RESOLVED: Existing five named nonregistry site candidates, terrain/vegetation and existing-structure replacement hooks; bundled Biolith adds biome/surface support. Full disposition below; canonical count and attributes remain open. |
 | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | Sources 3230f7ff and c2de78c1; test_terrablender_provider_scope.py | RESOLVED: Consumer biome regions, noise and surface rules; no independent family. See TerraBlender disposition below. |
@@ -7090,3 +7090,37 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspe
 initial overlong test line. Whole providers: 104 resolved, 32 open. No family
 added. Continue the remaining provider queue and canonical grouping, without
 further Chipped crafting or networking inspection.
+
+
+### Patchouli membership resolved
+
+Sources c73260ac and 212a5402 cover the two automatic entries, two services,
+two common recipe accessors, book initialization, lectern interaction,
+network registration and multiblock roles. Startup registers book items,
+sounds, data components and advancement triggers. BookRegistry loads consumer
+book JSON into its book map. Server startup sends book reload information;
+both registered packets are client-bound. Lectern events operate on an existing
+lectern. Client entry and service support book models, displays and overlays.
+
+MultiblockRegistry starts empty and accepts consumer definitions. The abstract
+multiblock supports validation and rendering, and has an explicit caller-driven
+place method that writes replaceable blocks. This is a library capability, not
+an automatic world-generation registration or an independent authored family.
+Do not misstate this as an inability to write blocks. No further generic book
+or client helper tracing is needed for membership.
+
+The frozen archive has 198 classes, 42 client assets, two item tags (both add
+patchouli:guide_book to vanilla book tags), and seven metadata/service files.
+Full payload accounting excludes unreported templates, generation data and
+nested archives. The focused test binds all twelve captures and declared entry
+points to the frozen archive. Independent captures reproduce byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+26 utility cases and scoped quality checks pass. Whole providers: 105 resolved,
+31 open. No family added. Finish remaining provider contributions and canonical
+Moog grouping before detailed attributes.
