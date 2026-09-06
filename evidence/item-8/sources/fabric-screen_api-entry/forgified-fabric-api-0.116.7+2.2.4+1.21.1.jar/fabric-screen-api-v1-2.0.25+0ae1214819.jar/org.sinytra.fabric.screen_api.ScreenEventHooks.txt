@@ -1,0 +1,331 @@
+Compiled from "ScreenEventHooks.java"
+public class org.sinytra.fabric.screen_api.ScreenEventHooks {
+  public org.sinytra.fabric.screen_api.ScreenEventHooks();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void beforeScreenDraw(net.neoforged.neoforge.client.event.ScreenEvent$Render$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #13                 // Method net/fabricmc/fabric/api/client/screen/v1/ScreenEvents.beforeRender:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #25                 // class net/fabricmc/fabric/api/client/screen/v1/ScreenEvents$BeforeRender
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #27                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Pre.getGuiGraphics:()Lnet/minecraft/client/gui/GuiGraphics;
+      20: aload_0
+      21: invokevirtual #31                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Pre.getMouseX:()I
+      24: aload_0
+      25: invokevirtual #35                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Pre.getMouseY:()I
+      28: aload_0
+      29: invokevirtual #38                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Pre.getPartialTick:()F
+      32: invokeinterface #42,  6           // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenEvents$BeforeRender.beforeRender:(Lnet/minecraft/client/gui/screens/Screen;Lnet/minecraft/client/gui/GuiGraphics;IIF)V
+      37: return
+
+  public static void afterScreenDraw(net.neoforged.neoforge.client.event.ScreenEvent$Render$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #45                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #48                 // Method net/fabricmc/fabric/api/client/screen/v1/ScreenEvents.afterRender:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #51                 // class net/fabricmc/fabric/api/client/screen/v1/ScreenEvents$AfterRender
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #53                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Post.getGuiGraphics:()Lnet/minecraft/client/gui/GuiGraphics;
+      20: aload_0
+      21: invokevirtual #54                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Post.getMouseX:()I
+      24: aload_0
+      25: invokevirtual #55                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Post.getMouseY:()I
+      28: aload_0
+      29: invokevirtual #56                 // Method net/neoforged/neoforge/client/event/ScreenEvent$Render$Post.getPartialTick:()F
+      32: invokeinterface #57,  6           // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenEvents$AfterRender.afterRender:(Lnet/minecraft/client/gui/screens/Screen;Lnet/minecraft/client/gui/GuiGraphics;IIF)V
+      37: return
+
+  public static void beforeKeyPressed(net.neoforged.neoforge.client.event.ScreenEvent$KeyPressed$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #59                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #62                 // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.allowKeyPress:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #67                 // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AllowKeyPress
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #69                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getKeyCode:()I
+      20: aload_0
+      21: invokevirtual #72                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getScanCode:()I
+      24: aload_0
+      25: invokevirtual #75                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getModifiers:()I
+      28: invokeinterface #78,  5           // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AllowKeyPress.allowKeyPress:(Lnet/minecraft/client/gui/screens/Screen;III)Z
+      33: ifne          44
+      36: aload_0
+      37: iconst_1
+      38: invokevirtual #81                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.setCanceled:(Z)V
+      41: goto          72
+      44: aload_1
+      45: invokestatic  #85                 // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.beforeKeyPress:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+      48: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      51: checkcast     #88                 // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$BeforeKeyPress
+      54: aload_1
+      55: aload_0
+      56: invokevirtual #69                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getKeyCode:()I
+      59: aload_0
+      60: invokevirtual #72                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getScanCode:()I
+      63: aload_0
+      64: invokevirtual #75                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Pre.getModifiers:()I
+      67: invokeinterface #90,  5           // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$BeforeKeyPress.beforeKeyPress:(Lnet/minecraft/client/gui/screens/Screen;III)V
+      72: return
+
+  public static void afterKeyPressed(net.neoforged.neoforge.client.event.ScreenEvent$KeyPressed$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #93                 // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #96                 // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.afterKeyPress:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #99                 // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AfterKeyPress
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #101                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Post.getKeyCode:()I
+      20: aload_0
+      21: invokevirtual #102                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Post.getScanCode:()I
+      24: aload_0
+      25: invokevirtual #103                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyPressed$Post.getModifiers:()I
+      28: invokeinterface #104,  5          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AfterKeyPress.afterKeyPress:(Lnet/minecraft/client/gui/screens/Screen;III)V
+      33: return
+
+  public static void beforeKeyReleased(net.neoforged.neoforge.client.event.ScreenEvent$KeyReleased$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #106                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #109                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.allowKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #112                // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AllowKeyRelease
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #114                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getKeyCode:()I
+      20: aload_0
+      21: invokevirtual #115                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getScanCode:()I
+      24: aload_0
+      25: invokevirtual #116                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getModifiers:()I
+      28: invokeinterface #117,  5          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AllowKeyRelease.allowKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;III)Z
+      33: ifne          44
+      36: aload_0
+      37: iconst_1
+      38: invokevirtual #119                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.setCanceled:(Z)V
+      41: goto          72
+      44: aload_1
+      45: invokestatic  #120                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.beforeKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+      48: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      51: checkcast     #123                // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$BeforeKeyRelease
+      54: aload_1
+      55: aload_0
+      56: invokevirtual #114                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getKeyCode:()I
+      59: aload_0
+      60: invokevirtual #115                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getScanCode:()I
+      63: aload_0
+      64: invokevirtual #116                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Pre.getModifiers:()I
+      67: invokeinterface #125,  5          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$BeforeKeyRelease.beforeKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;III)V
+      72: return
+
+  public static void afterKeyReleased(net.neoforged.neoforge.client.event.ScreenEvent$KeyReleased$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #127                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #130                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents.afterKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #133                // class net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AfterKeyRelease
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #135                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Post.getKeyCode:()I
+      20: aload_0
+      21: invokevirtual #136                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Post.getScanCode:()I
+      24: aload_0
+      25: invokevirtual #137                // Method net/neoforged/neoforge/client/event/ScreenEvent$KeyReleased$Post.getModifiers:()I
+      28: invokeinterface #138,  5          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenKeyboardEvents$AfterKeyRelease.afterKeyRelease:(Lnet/minecraft/client/gui/screens/Screen;III)V
+      33: return
+
+  public static void beforeMouseClicked(net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonPressed$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #140                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #143                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.allowMouseClick:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #148                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseClick
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #150                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #153                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #155                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getButton:()I
+      28: invokeinterface #158,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseClick.allowMouseClick:(Lnet/minecraft/client/gui/screens/Screen;DDI)Z
+      33: ifne          44
+      36: aload_0
+      37: iconst_1
+      38: invokevirtual #161                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.setCanceled:(Z)V
+      41: goto          72
+      44: aload_1
+      45: invokestatic  #162                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.beforeMouseClick:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+      48: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      51: checkcast     #165                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseClick
+      54: aload_1
+      55: aload_0
+      56: invokevirtual #150                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getMouseX:()D
+      59: aload_0
+      60: invokevirtual #153                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getMouseY:()D
+      63: aload_0
+      64: invokevirtual #155                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Pre.getButton:()I
+      67: invokeinterface #167,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseClick.beforeMouseClick:(Lnet/minecraft/client/gui/screens/Screen;DDI)V
+      72: return
+
+  public static void afterMouseClicked(net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonPressed$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #170                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #173                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.afterMouseClick:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #176                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseClick
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #178                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Post.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #179                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Post.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #180                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonPressed$Post.getButton:()I
+      28: invokeinterface #181,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseClick.afterMouseClick:(Lnet/minecraft/client/gui/screens/Screen;DDI)V
+      33: return
+
+  public static void beforeMouseReleased(net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonReleased$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #183                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #186                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.allowMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #189                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseRelease
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #191                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #192                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #193                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getButton:()I
+      28: invokeinterface #194,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseRelease.allowMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;DDI)Z
+      33: ifne          44
+      36: aload_0
+      37: iconst_1
+      38: invokevirtual #196                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.setCanceled:(Z)V
+      41: goto          72
+      44: aload_1
+      45: invokestatic  #197                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.beforeMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+      48: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      51: checkcast     #200                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseRelease
+      54: aload_1
+      55: aload_0
+      56: invokevirtual #191                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getMouseX:()D
+      59: aload_0
+      60: invokevirtual #192                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getMouseY:()D
+      63: aload_0
+      64: invokevirtual #193                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Pre.getButton:()I
+      67: invokeinterface #202,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseRelease.beforeMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;DDI)V
+      72: return
+
+  public static void afterMouseReleased(net.neoforged.neoforge.client.event.ScreenEvent$MouseButtonReleased$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #204                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #207                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.afterMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #210                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseRelease
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #212                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Post.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #213                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Post.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #214                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseButtonReleased$Post.getButton:()I
+      28: invokeinterface #215,  7          // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseRelease.afterMouseRelease:(Lnet/minecraft/client/gui/screens/Screen;DDI)V
+      33: return
+
+  public static void beforeMouseScroll(net.neoforged.neoforge.client.event.ScreenEvent$MouseScrolled$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #217                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #220                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.allowMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #223                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseScroll
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #225                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #226                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #227                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getScrollDeltaX:()D
+      28: aload_0
+      29: invokevirtual #230                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getScrollDeltaY:()D
+      32: invokeinterface #233,  10         // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AllowMouseScroll.allowMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;DDDD)Z
+      37: ifne          48
+      40: aload_0
+      41: iconst_1
+      42: invokevirtual #236                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.setCanceled:(Z)V
+      45: goto          80
+      48: aload_1
+      49: invokestatic  #237                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.beforeMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+      52: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      55: checkcast     #240                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseScroll
+      58: aload_1
+      59: aload_0
+      60: invokevirtual #225                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getMouseX:()D
+      63: aload_0
+      64: invokevirtual #226                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getMouseY:()D
+      67: aload_0
+      68: invokevirtual #227                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getScrollDeltaX:()D
+      71: aload_0
+      72: invokevirtual #230                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Pre.getScrollDeltaY:()D
+      75: invokeinterface #242,  10         // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$BeforeMouseScroll.beforeMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;DDDD)V
+      80: return
+
+  public static void afterMouseScroll(net.neoforged.neoforge.client.event.ScreenEvent$MouseScrolled$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #245                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Post.getScreen:()Lnet/minecraft/client/gui/screens/Screen;
+       4: astore_1
+       5: aload_1
+       6: invokestatic  #248                // Method net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents.afterMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;)Lnet/fabricmc/fabric/api/event/Event;
+       9: invokevirtual #19                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      12: checkcast     #251                // class net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseScroll
+      15: aload_1
+      16: aload_0
+      17: invokevirtual #253                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Post.getMouseX:()D
+      20: aload_0
+      21: invokevirtual #254                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Post.getMouseY:()D
+      24: aload_0
+      25: invokevirtual #255                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Post.getScrollDeltaX:()D
+      28: aload_0
+      29: invokevirtual #256                // Method net/neoforged/neoforge/client/event/ScreenEvent$MouseScrolled$Post.getScrollDeltaY:()D
+      32: invokeinterface #257,  10         // InterfaceMethod net/fabricmc/fabric/api/client/screen/v1/ScreenMouseEvents$AfterMouseScroll.afterMouseScroll:(Lnet/minecraft/client/gui/screens/Screen;DDDD)V
+      37: return
+}
