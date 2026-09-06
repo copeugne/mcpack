@@ -1,0 +1,81 @@
+Compiled from "RuntimeDataGenerator.java"
+class com.simibubi.create.foundation.data.RuntimeDataGenerator$StandardBuilder<T extends com.simibubi.create.content.processing.recipe.StandardProcessingRecipe<?>> extends com.simibubi.create.content.processing.recipe.StandardProcessingRecipe$Builder<T> {
+  public com.simibubi.create.foundation.data.RuntimeDataGenerator$StandardBuilder(java.lang.String, com.simibubi.create.content.processing.recipe.StandardProcessingRecipe$Factory<T>, java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: aload_3
+       4: aload         4
+       6: invokedynamic #1,  0              // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      11: invokestatic  #5                  // Method com/simibubi/create/Create.asResource:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      14: invokespecial #11                 // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder."<init>":(Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Factory;Lnet/minecraft/resources/ResourceLocation;)V
+      17: return
+
+  public T build();
+    Code:
+       0: aload_0
+       1: invokespecial #17                 // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Builder.build:()Lcom/simibubi/create/content/processing/recipe/ProcessingRecipe;
+       4: checkcast     #21                 // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe
+       7: astore_1
+       8: aload_1
+       9: invokevirtual #23                 // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe.getTypeInfo:()Lcom/simibubi/create/foundation/recipe/IRecipeTypeInfo;
+      12: astore_2
+      13: aload_2
+      14: invokeinterface #27,  1           // InterfaceMethod com/simibubi/create/foundation/recipe/IRecipeTypeInfo.getId:()Lnet/minecraft/resources/ResourceLocation;
+      19: astore_3
+      20: aload_2
+      21: invokeinterface #33,  1           // InterfaceMethod com/simibubi/create/foundation/recipe/IRecipeTypeInfo.getSerializer:()Lnet/minecraft/world/item/crafting/RecipeSerializer;
+      26: instanceof    #37                 // class com/simibubi/create/content/processing/recipe/StandardProcessingRecipe$Serializer
+      29: ifne          49
+      32: new           #39                 // class java/lang/IllegalStateException
+      35: dup
+      36: aload_3
+      37: invokestatic  #41                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      40: invokedynamic #47,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      45: invokespecial #50                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      48: athrow
+      49: aload_0
+      50: getfield      #53                 // Field recipeId:Lnet/minecraft/resources/ResourceLocation;
+      53: invokevirtual #59                 // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      56: aload_3
+      57: invokevirtual #65                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      60: aload_0
+      61: getfield      #53                 // Field recipeId:Lnet/minecraft/resources/ResourceLocation;
+      64: invokevirtual #65                 // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      67: invokedynamic #68,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      72: invokestatic  #71                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      75: astore        4
+      77: getstatic     #75                 // Field net/minecraft/world/item/crafting/Recipe.CONDITIONAL_CODEC:Lcom/mojang/serialization/Codec;
+      80: getstatic     #81                 // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+      83: new           #87                 // class net/neoforged/neoforge/common/conditions/WithConditions
+      86: dup
+      87: aload_1
+      88: invokespecial #89                 // Method net/neoforged/neoforge/common/conditions/WithConditions."<init>":(Ljava/lang/Object;)V
+      91: invokestatic  #92                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      94: invokestatic  #98                 // InterfaceMethod net/createmod/catnip/codecs/CatnipCodecUtils.encode:(Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Ljava/util/Optional;
+      97: astore        5
+      99: aload         5
+     101: aload         4
+     103: invokedynamic #104,  0            // InvokeDynamic #3:accept:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/function/Consumer;
+     108: invokevirtual #108                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     111: aload_1
+     112: areturn
+
+  public com.simibubi.create.content.processing.recipe.ProcessingRecipe build();
+    Code:
+       0: aload_0
+       1: invokevirtual #112                // Method build:()Lcom/simibubi/create/content/processing/recipe/StandardProcessingRecipe;
+       4: areturn
+
+  private static void lambda$build$0(net.minecraft.resources.ResourceLocation, com.google.gson.JsonElement);
+    Code:
+       0: getstatic     #115                // Field com/simibubi/create/foundation/data/RuntimeDataGenerator.JSON_FILES:Lit/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap;
+       3: aload_0
+       4: ldc           #121                // String recipe/
+       6: invokevirtual #123                // Method net/minecraft/resources/ResourceLocation.withPrefix:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: aload_1
+      10: invokevirtual #126                // Method it/unimi/dsi/fastutil/objects/Object2ObjectOpenHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      13: pop
+      14: return
+}
