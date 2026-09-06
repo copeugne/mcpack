@@ -5300,3 +5300,33 @@ Registrate. Ponder template-consumer roles remain outstanding.
 Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Provider census
 remains 89 resolved and 47 open. Continue the finite entry and embedded-library
 checks without reopening the resolved dynamic pack, ore or schematic roles.
+
+### Create declared common-mixin roles
+
+Source 9ad30e0 (extractor 969a3d9) retains all 43 declared common mixins with
+annotations. Independent capture matches; identities SHA-256:
+e7941906291f7bfe6f15b3989e4db734cb57c0aec9e2ac55f370bd4cd2be7193.
+The focused test requires exact equality between captured classes and the
+common declaration list, in addition to every source and disassembly hash.
+
+| Declared hooks | Membership role |
+| --- | --- |
+| ArmorTrimMixin, CustomItemUseEffectsMixin, SmithingMenuMixin | Cardboard trim textures, custom use effects, trim advancement and backtank enchantment handling. |
+| BeehiveBlockMixin, BlockItemMixin, BlockMixin | Deployer hive interaction, placement and captured block drops. Existing machine interactions. |
+| EnchantedCountIncreaseFunctionMixin | Loot count adjustment for crush damage. Existing entity loot behavior, not a generation route. |
+| EntityMixin, LavaSwimmingMixin, MobMixin, PlayerMixin, ProjectileUtilMixin | Fire-immunity metadata, seats, diving boots, contraption collision/attack/pickup and rider interaction. |
+| MapItemSavedDataMixin | Existing station marker persistence, placement on a map and removal/update when stations change. |
+| WaterWheelFluidSpreadMixin | Fluid passage around an existing waterwheel and its structural blocks. |
+| ItemStackMixin and the three datafixer mixins | Clipboard component migration, stored block-position renames, item-component migration and schema registration for existing data. |
+| BuiltInRegistriesMixin | Initializes CreateBuiltInRegistries and skips the validation callback for Create-owned registries. The initialization delegate remains part of the pending registry-entry check; do not infer registry content from skipped validation. |
+| Twenty-four accessor mixins | Expose existing block shape/state, loot predicate, concrete conversion, crop age, dispenser, falling block, fluid, test, item-frame/model/inventory, entity particle, registry, minecart fuel, effect, NBT accounting, potion, projectile, entity-tick, recipe, system-report and hit-result data or methods. These accessors do not initiate generation. |
+
+This closes interpretation of the declared common-hook bodies. No named family
+candidate was added. Do not recursively audit ordinary machine, movement, loot
+or migration helpers on the strength of these hooks alone. The precise
+CreateBuiltInRegistries initialization boundary remains to reconcile with the
+54 outstanding annotated entries. Ponder consumers and the three embedded
+libraries also remain. The common-hook batch must not be recaptured.
+
+Four focused cases pass (0.47s); scoped Ruff/Basedpyright pass. Census remains
+89 resolved providers and 47 open. No runtime or capture process is live.
