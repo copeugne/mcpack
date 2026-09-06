@@ -1682,6 +1682,9 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/mixins/MineshaftCorridorMixin.class",
     "net/mehvahdjukaar/supplementaries/mixins/MineshaftPiecesMixin.class",
     "net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor$Replacement.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
