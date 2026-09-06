@@ -1245,7 +1245,8 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
             "red_sand_temple": 2,
             "sand_castle": 1,
             "sand_pyramid": 1,
-            "tree": 3,
+            "tree": 2,
+            "birch_tree_workshop": 1,
             "tree_house": 3,
             "watercraft": 7,
         }
