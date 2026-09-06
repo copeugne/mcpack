@@ -704,6 +704,19 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Client entry disposition: source aff2fde, extracted by 5e58a1a, binds both
+SupplementariesForgeClient and PicklePlayer to class-level EventBusSubscriber
+annotations with value Dist.CLIENT. Their automatic registration is excluded
+from the dedicated server. The existing provider source check binds both
+classes and their disassemblies to the frozen archive. This resolves the
+client-entry question below, without inspecting unrelated rendering behavior.
+Remaining membership work is the server common/mixin entry roles, including
+the inherited Moonlight mixin-plugin behavior. Packaged data, nested libraries,
+integrations and the previously resolved generation paths must not be repeated.
+Validation: all six Supplementaries provider cases pass (2.16s), with scoped
+Ruff and Basedpyright clean. This source binding closes no additional provider;
+the membership census remains 78 resolved and 58 open.
+
 The complete parent payload is now partitioned by the existing provider test:
 6,364 non-directory files comprise 1,179 classes, 3,577 assets, 1,589 data files
 and nineteen other files. The latter are the exact metadata/license/icon files,
