@@ -1,0 +1,186 @@
+Compiled from "FeatureManagerImpl.java"
+public class org.betterx.wover.feature.impl.FeatureManagerImpl {
+  private static final java.util.Map<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature<?>>, net.minecraft.world.level.levelgen.feature.Feature<?>> FEATURES;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<org.betterx.wover.feature.api.features.config.PlaceFacingBlockConfig> PLACE_BLOCK;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> MARK_POSTPROCESSING;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<org.betterx.wover.feature.api.features.config.SequenceFeatureConfig> SEQUENCE;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<org.betterx.wover.feature.api.features.config.ConditionFeatureConfig> CONDITION;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<org.betterx.wover.feature.api.features.config.PillarFeatureConfig> PILLAR;
+
+  public static final net.minecraft.world.level.levelgen.feature.Feature<org.betterx.wover.feature.api.features.config.TemplateFeatureConfig> TEMPLATE;
+
+  public org.betterx.wover.feature.impl.FeatureManagerImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static <C extends net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration, F extends net.minecraft.world.level.levelgen.feature.Feature<C>> F register(net.minecraft.resources.ResourceLocation, F);
+    Code:
+       0: aload_0
+       1: invokestatic  #7                  // Method createKey:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       4: aload_1
+       5: invokestatic  #13                 // Method register:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/levelgen/feature/Feature;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+       8: areturn
+
+  public static <C extends net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration, F extends net.minecraft.world.level.levelgen.feature.Feature<C>> F register(net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature<?>>, F);
+    Code:
+       0: getstatic     #17                 // Field FEATURES:Ljava/util/Map;
+       3: aload_0
+       4: aload_1
+       5: invokeinterface #21,  3           // InterfaceMethod java/util/Map.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_1
+      12: areturn
+
+  private static <C extends net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration, F extends net.minecraft.world.level.levelgen.feature.Feature<C>> F registerWithLegacy(net.minecraft.resources.ResourceLocation, java.util.function.Function<com.mojang.serialization.Codec<C>, F>, com.mojang.serialization.Codec<C>);
+    Code:
+       0: aload_0
+       1: invokestatic  #7                  // Method createKey:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       4: astore_3
+       5: aload_3
+       6: aload_1
+       7: aload_2
+       8: invokeinterface #27,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #33                 // class net/minecraft/world/level/levelgen/feature/Feature
+      16: invokestatic  #13                 // Method register:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/levelgen/feature/Feature;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      19: astore        4
+      21: invokestatic  #35                 // Method org/betterx/wover/legacy/api/LegacyHelper.isLegacyEnabled:()Z
+      24: ifeq          51
+      27: getstatic     #41                 // Field org/betterx/wover/legacy/api/LegacyHelper.BCLIB_CORE:Lorg/betterx/wover/core/api/ModCore;
+      30: aload_3
+      31: invokevirtual #45                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      34: invokevirtual #51                 // Method org/betterx/wover/core/api/ModCore.convertNamespace:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceLocation;
+      37: aload_1
+      38: aload_2
+      39: invokeinterface #27,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      44: checkcast     #33                 // class net/minecraft/world/level/levelgen/feature/Feature
+      47: invokestatic  #57                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/levelgen/feature/Feature;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      50: pop
+      51: aload         4
+      53: areturn
+
+  public static net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature<?>> createKey(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #60                 // Field net/minecraft/core/registries/Registries.FEATURE:Lnet/minecraft/resources/ResourceKey;
+       3: aload_0
+       4: invokestatic  #66                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       7: areturn
+
+  public static void register(net.neoforged.neoforge.registries.RegisterEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #70                 // Method net/neoforged/neoforge/registries/RegisterEvent.getRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+       4: getstatic     #60                 // Field net/minecraft/core/registries/Registries.FEATURE:Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #76                 // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      10: ifeq          25
+      13: aload_0
+      14: getstatic     #60                 // Field net/minecraft/core/registries/Registries.FEATURE:Lnet/minecraft/resources/ResourceKey;
+      17: invokedynamic #80,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      22: invokevirtual #84                 // Method net/neoforged/neoforge/registries/RegisterEvent.register:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      25: return
+
+  public static void ensureStaticInitialization();
+    Code:
+       0: return
+
+  private static void lambda$register$5(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: getstatic     #17                 // Field FEATURES:Ljava/util/Map;
+       3: aload_0
+       4: invokedynamic #87,  0             // InvokeDynamic #1:accept:(Lnet/neoforged/neoforge/registries/RegisterEvent$RegisterHelper;)Ljava/util/function/BiConsumer;
+       9: invokeinterface #90,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      14: return
+
+  private static void lambda$register$4(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper, net.minecraft.resources.ResourceKey, net.minecraft.world.level.levelgen.feature.Feature);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #45                 // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       5: aload_2
+       6: invokeinterface #94,  3           // InterfaceMethod net/neoforged/neoforge/registries/RegisterEvent$RegisterHelper.register:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)V
+      11: return
+
+  private static org.betterx.wover.feature.api.features.PillarFeature lambda$static$3(com.mojang.serialization.Codec);
+    Code:
+       0: new           #99                 // class org/betterx/wover/feature/api/features/PillarFeature
+       3: dup
+       4: invokespecial #101                // Method org/betterx/wover/feature/api/features/PillarFeature."<init>":()V
+       7: areturn
+
+  private static org.betterx.wover.feature.api.features.ConditionFeature lambda$static$2(com.mojang.serialization.Codec);
+    Code:
+       0: new           #102                // class org/betterx/wover/feature/api/features/ConditionFeature
+       3: dup
+       4: invokespecial #104                // Method org/betterx/wover/feature/api/features/ConditionFeature."<init>":()V
+       7: areturn
+
+  private static org.betterx.wover.feature.api.features.SequenceFeature lambda$static$1(com.mojang.serialization.Codec);
+    Code:
+       0: new           #105                // class org/betterx/wover/feature/api/features/SequenceFeature
+       3: dup
+       4: invokespecial #107                // Method org/betterx/wover/feature/api/features/SequenceFeature."<init>":()V
+       7: areturn
+
+  private static org.betterx.wover.feature.api.features.MarkPostProcessingFeature lambda$static$0(com.mojang.serialization.Codec);
+    Code:
+       0: new           #108                // class org/betterx/wover/feature/api/features/MarkPostProcessingFeature
+       3: dup
+       4: invokespecial #110                // Method org/betterx/wover/feature/api/features/MarkPostProcessingFeature."<init>":()V
+       7: areturn
+
+  static {};
+    Code:
+       0: new           #111                // class java/util/LinkedHashMap
+       3: dup
+       4: invokespecial #113                // Method java/util/LinkedHashMap."<init>":()V
+       7: putstatic     #17                 // Field FEATURES:Ljava/util/Map;
+      10: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+      13: ldc           #119                // String place_block
+      15: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      18: invokedynamic #125,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      23: getstatic     #128                // Field org/betterx/wover/feature/api/features/config/PlaceFacingBlockConfig.CODEC:Lcom/mojang/serialization/Codec;
+      26: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      29: putstatic     #138                // Field PLACE_BLOCK:Lnet/minecraft/world/level/levelgen/feature/Feature;
+      32: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+      35: ldc           #142                // String mark_postprocessing
+      37: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      40: invokedynamic #144,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      45: aconst_null
+      46: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      49: putstatic     #145                // Field MARK_POSTPROCESSING:Lnet/minecraft/world/level/levelgen/feature/Feature;
+      52: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+      55: ldc           #148                // String sequence
+      57: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      60: invokedynamic #150,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      65: aconst_null
+      66: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      69: putstatic     #151                // Field SEQUENCE:Lnet/minecraft/world/level/levelgen/feature/Feature;
+      72: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+      75: ldc           #154                // String condition
+      77: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      80: invokedynamic #156,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      85: aconst_null
+      86: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+      89: putstatic     #157                // Field CONDITION:Lnet/minecraft/world/level/levelgen/feature/Feature;
+      92: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+      95: ldc           #160                // String pillar
+      97: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     100: invokedynamic #162,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     105: aconst_null
+     106: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+     109: putstatic     #163                // Field PILLAR:Lnet/minecraft/world/level/levelgen/feature/Feature;
+     112: getstatic     #114                // Field org/betterx/wover/entrypoint/LibWoverFeature.C:Lorg/betterx/wover/core/api/ModCore;
+     115: ldc           #166                // String template
+     117: invokevirtual #121                // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     120: invokedynamic #168,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     125: getstatic     #169                // Field org/betterx/wover/feature/api/features/config/TemplateFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+     128: invokestatic  #134                // Method registerWithLegacy:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/level/levelgen/feature/Feature;
+     131: putstatic     #172                // Field TEMPLATE:Lnet/minecraft/world/level/levelgen/feature/Feature;
+     134: return
+}

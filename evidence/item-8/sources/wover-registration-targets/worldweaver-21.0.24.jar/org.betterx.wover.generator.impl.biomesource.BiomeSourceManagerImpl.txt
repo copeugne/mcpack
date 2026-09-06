@@ -1,0 +1,668 @@
+Compiled from "BiomeSourceManagerImpl.java"
+public class org.betterx.wover.generator.impl.biomesource.BiomeSourceManagerImpl {
+  public static final net.minecraft.resources.ResourceLocation BIOME_CONFIG_FILE;
+
+  public static final net.minecraft.resources.ResourceLocation MINECRAFT_WILDCARD;
+
+  public static final java.lang.String BIOME_EXCLUSION_TAG = "exclude";
+
+  public static final java.lang.String NO_LOADER_REGISTER_TAG = "no_loader_register";
+
+  public static final java.lang.String END_CATCH_ALL = "*:is_end";
+
+  public static final java.lang.String NETHER_CATCH_ALL = "*:is_nether";
+
+  private static final java.util.Map<net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.biome.BiomeSource>> TYPES;
+
+  private static final java.util.Map<net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>, java.util.Set<net.minecraft.resources.ResourceLocation>> EXCLUSIONS;
+
+  private static final java.util.Set<net.minecraft.resources.ResourceLocation> REGISTER_EXCLUDES;
+
+  public org.betterx.wover.generator.impl.biomesource.BiomeSourceManagerImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(net.minecraft.resources.ResourceLocation, com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.biome.BiomeSource>);
+    Code:
+       0: getstatic     #7                  // Field TYPES:Ljava/util/Map;
+       3: aload_0
+       4: aload_1
+       5: invokeinterface #13,  3           // InterfaceMethod java/util/Map.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: return
+
+  public static void initialize();
+    Code:
+       0: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+       3: ldc           #25                 // String nether_biome_source
+       5: invokevirtual #27                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: getstatic     #33                 // Field org/betterx/wover/generator/impl/biomesource/nether/WoverNetherBiomeSource.CODEC:Lcom/mojang/serialization/MapCodec;
+      11: invokestatic  #39                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+      14: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+      17: ldc           #43                 // String end_biome_source
+      19: invokevirtual #27                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      22: getstatic     #45                 // Field org/betterx/wover/generator/impl/biomesource/end/WoverEndBiomeSource.CODEC:Lcom/mojang/serialization/MapCodec;
+      25: invokestatic  #39                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+      28: invokestatic  #48                 // Method org/betterx/wover/legacy/api/LegacyHelper.isLegacyEnabled:()Z
+      31: ifeq          68
+      34: getstatic     #54                 // Field org/betterx/wover/legacy/api/LegacyHelper.BCLIB_CORE:Lorg/betterx/wover/core/api/ModCore;
+      37: ldc           #25                 // String nether_biome_source
+      39: invokevirtual #27                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      42: getstatic     #33                 // Field org/betterx/wover/generator/impl/biomesource/nether/WoverNetherBiomeSource.CODEC:Lcom/mojang/serialization/MapCodec;
+      45: invokestatic  #57                 // Method org/betterx/wover/legacy/api/LegacyHelper.wrap:(Lcom/mojang/serialization/MapCodec;)Lcom/mojang/serialization/MapCodec;
+      48: invokestatic  #39                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+      51: getstatic     #54                 // Field org/betterx/wover/legacy/api/LegacyHelper.BCLIB_CORE:Lorg/betterx/wover/core/api/ModCore;
+      54: ldc           #43                 // String end_biome_source
+      56: invokevirtual #27                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      59: getstatic     #45                 // Field org/betterx/wover/generator/impl/biomesource/end/WoverEndBiomeSource.CODEC:Lcom/mojang/serialization/MapCodec;
+      62: invokestatic  #57                 // Method org/betterx/wover/legacy/api/LegacyHelper.wrap:(Lcom/mojang/serialization/MapCodec;)Lcom/mojang/serialization/MapCodec;
+      65: invokestatic  #39                 // Method register:(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/serialization/MapCodec;)V
+      68: getstatic     #61                 // Field org/betterx/wover/events/api/WorldLifecycle.RESOURCES_LOADED:Lorg/betterx/wover/events/api/Event;
+      71: invokedynamic #67,  0             // InvokeDynamic #0:bootstrap:()Lorg/betterx/wover/events/api/types/OnResourceLoad;
+      76: invokeinterface #71,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      81: pop
+      82: getstatic     #77                 // Field org/betterx/wover/biome/api/data/BiomeDataRegistry.BIOME_DATA_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+      85: invokedynamic #83,  0             // InvokeDynamic #1:didLoadFromDatapack:()Lorg/betterx/wover/core/api/registry/OnElementLoad;
+      90: invokestatic  #87                 // Method org/betterx/wover/core/api/registry/DatapackRegistryBuilder.onElementLoad:(Lnet/minecraft/resources/ResourceKey;Lorg/betterx/wover/core/api/registry/OnElementLoad;)V
+      93: return
+
+  public static void register(net.neoforged.neoforge.registries.RegisterEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #93                 // Method net/neoforged/neoforge/registries/RegisterEvent.getRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+       4: getstatic     #99                 // Field net/minecraft/core/registries/Registries.BIOME_SOURCE:Lnet/minecraft/resources/ResourceKey;
+       7: invokevirtual #104                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      10: ifeq          25
+      13: aload_0
+      14: getstatic     #99                 // Field net/minecraft/core/registries/Registries.BIOME_SOURCE:Lnet/minecraft/resources/ResourceKey;
+      17: invokedynamic #108,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      22: invokevirtual #112                // Method net/neoforged/neoforge/registries/RegisterEvent.register:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      25: return
+
+  private static void didLoadBiomeData(net.minecraft.resources.ResourceKey<org.betterx.wover.biome.api.data.BiomeData>, org.betterx.wover.biome.api.data.BiomeData);
+    Code:
+       0: aload_0
+       1: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokevirtual #121                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       7: ldc           #127                // String minecraft
+       9: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      12: ifeq          16
+      15: return
+      16: aload_0
+      17: invokestatic  #132                // Method org/betterx/wover/biome/api/data/BiomeDataRegistry.createBiomeKey:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
+      20: astore_2
+      21: getstatic     #136                // Field REGISTER_EXCLUDES:Ljava/util/Set;
+      24: aload_2
+      25: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      28: invokeinterface #140,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      33: ifne          664
+      36: aload_1
+      37: getstatic     #145                // Field net/minecraft/tags/BiomeTags.IS_NETHER:Lnet/minecraft/tags/TagKey;
+      40: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+      43: ifeq          124
+      46: aload_1
+      47: getfield      #157                // Field org/betterx/wover/biome/api/data/BiomeData.generationData:Lorg/betterx/wover/biome/api/data/BiomeGenerationDataContainer;
+      50: invokevirtual #161                // Method org/betterx/wover/biome/api/data/BiomeGenerationDataContainer.parameterPoints:()Ljava/util/List;
+      53: invokeinterface #167,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      58: astore_3
+      59: aload_3
+      60: invokeinterface #173,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      65: ifeq          121
+      68: aload_3
+      69: invokeinterface #178,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      74: checkcast     #182                // class net/minecraft/world/level/biome/Climate$ParameterPoint
+      77: astore        4
+      79: aload_2
+      80: invokestatic  #184                // Method org/betterx/wover/generator/impl/biomesource/nether/NetherBiomesHelper.canGenerateInNether:(Lnet/minecraft/resources/ResourceKey;)Z
+      83: ifne          118
+      86: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+      89: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+      92: aload_2
+      93: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      96: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      99: aload         4
+     101: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     104: invokedynamic #198,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     109: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     112: aload_2
+     113: aload         4
+     115: invokestatic  #208                // Method org/betterx/wover/generator/impl/biomesource/nether/NetherBiomesHelper.addNetherBiome:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/biome/Climate$ParameterPoint;)V
+     118: goto          59
+     121: goto          664
+     124: aload_2
+     125: invokestatic  #212                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateInEnd:(Lnet/minecraft/resources/ResourceKey;)Z
+     128: ifne          664
+     131: aload_1
+     132: getstatic     #217                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_LAND:Lnet/minecraft/tags/TagKey;
+     135: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     138: ifne          151
+     141: aload_1
+     142: getstatic     #222                // Field net/minecraft/tags/BiomeTags.IS_END:Lnet/minecraft/tags/TagKey;
+     145: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     148: ifeq          232
+     151: aload_2
+     152: invokestatic  #225                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     155: ifne          189
+     158: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     161: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     164: aload_2
+     165: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     168: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     171: invokedynamic #228,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     176: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     179: aload_2
+     180: aload_1
+     181: fconst_1
+     182: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     185: f2d
+     186: invokestatic  #235                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     189: aload_2
+     190: invokestatic  #239                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsEndMidlands:(Lnet/minecraft/resources/ResourceKey;)Z
+     193: ifne          664
+     196: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     199: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     202: aload_2
+     203: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     206: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     209: invokedynamic #242,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     214: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     217: aload_2
+     218: aload_2
+     219: aload_1
+     220: ldc           #243                // float 0.5f
+     222: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     225: f2d
+     226: invokestatic  #244                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addMidlandsBiome:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;D)V
+     229: goto          664
+     232: aload_1
+     233: getstatic     #248                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_HIGHLAND:Lnet/minecraft/tags/TagKey;
+     236: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     239: ifeq          283
+     242: aload_2
+     243: invokestatic  #225                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     246: ifne          664
+     249: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     252: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     255: aload_2
+     256: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     259: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     262: invokedynamic #228,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     267: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     270: aload_2
+     271: aload_1
+     272: fconst_1
+     273: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     276: f2d
+     277: invokestatic  #235                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     280: goto          664
+     283: aload_1
+     284: getstatic     #251                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_CENTER:Lnet/minecraft/tags/TagKey;
+     287: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     290: ifeq          334
+     293: aload_2
+     294: invokestatic  #254                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsMainIslandBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     297: ifne          664
+     300: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     303: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     306: aload_2
+     307: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     310: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     313: invokedynamic #257,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     318: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     321: aload_2
+     322: aload_1
+     323: fconst_1
+     324: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     327: f2d
+     328: invokestatic  #258                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addMainIslandBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     331: goto          664
+     334: aload_1
+     335: getstatic     #261                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_SMALL_END_ISLAND:Lnet/minecraft/tags/TagKey;
+     338: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     341: ifeq          385
+     344: aload_2
+     345: invokestatic  #264                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsSmallIslandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     348: ifne          664
+     351: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     354: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     357: aload_2
+     358: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     361: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     364: invokedynamic #267,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     369: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     372: aload_2
+     373: aload_1
+     374: fconst_1
+     375: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     378: f2d
+     379: invokestatic  #268                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addSmallIslandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     382: goto          664
+     385: aload_1
+     386: getstatic     #271                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_MIDLAND:Lnet/minecraft/tags/TagKey;
+     389: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     392: ifeq          500
+     395: aload_2
+     396: invokestatic  #239                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsEndMidlands:(Lnet/minecraft/resources/ResourceKey;)Z
+     399: ifne          664
+     402: aload_1
+     403: instanceof    #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+     406: ifeq          458
+     409: aload_1
+     410: checkcast     #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+     413: astore_3
+     414: aload_3
+     415: getfield      #276                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.parent:Lnet/minecraft/resources/ResourceKey;
+     418: ifnull        458
+     421: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     424: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     427: aload_2
+     428: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     431: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     434: invokedynamic #242,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     439: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     442: aload_3
+     443: getfield      #276                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.parent:Lnet/minecraft/resources/ResourceKey;
+     446: aload_2
+     447: aload_3
+     448: getfield      #279                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.genChance:F
+     451: f2d
+     452: invokestatic  #244                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addMidlandsBiome:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;D)V
+     455: goto          664
+     458: aload_2
+     459: invokestatic  #225                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     462: ifne          664
+     465: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     468: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     471: aload_2
+     472: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     475: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     478: invokedynamic #228,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     483: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     486: aload_2
+     487: aload_1
+     488: ldc           #243                // float 0.5f
+     490: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     493: f2d
+     494: invokestatic  #235                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     497: goto          664
+     500: aload_1
+     501: getstatic     #282                // Field org/betterx/wover/tag/api/predefined/CommonBiomeTags.IS_END_BARRENS:Lnet/minecraft/tags/TagKey;
+     504: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     507: ifeq          616
+     510: aload_2
+     511: invokestatic  #285                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsEndBarrens:(Lnet/minecraft/resources/ResourceKey;)Z
+     514: ifne          664
+     517: aload_1
+     518: instanceof    #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+     521: ifeq          573
+     524: aload_1
+     525: checkcast     #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+     528: astore_3
+     529: aload_3
+     530: getfield      #276                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.parent:Lnet/minecraft/resources/ResourceKey;
+     533: ifnull        573
+     536: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     539: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     542: aload_2
+     543: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     546: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     549: invokedynamic #288,  0            // InvokeDynamic #8:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     554: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     557: aload_3
+     558: getfield      #276                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.parent:Lnet/minecraft/resources/ResourceKey;
+     561: aload_2
+     562: aload_3
+     563: getfield      #279                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.genChance:F
+     566: f2d
+     567: invokestatic  #289                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addBarrensBiome:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;D)V
+     570: goto          664
+     573: aload_2
+     574: invokestatic  #225                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     577: ifne          664
+     580: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     583: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     586: aload_2
+     587: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     590: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     593: invokedynamic #228,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     598: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     601: aload_2
+     602: aload_1
+     603: ldc_w         #292                // float 0.33f
+     606: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     609: f2d
+     610: invokestatic  #235                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     613: goto          664
+     616: aload_1
+     617: getstatic     #222                // Field net/minecraft/tags/BiomeTags.IS_END:Lnet/minecraft/tags/TagKey;
+     620: invokevirtual #151                // Method org/betterx/wover/biome/api/data/BiomeData.isIntendedFor:(Lnet/minecraft/tags/TagKey;)Z
+     623: ifeq          664
+     626: aload_2
+     627: invokestatic  #225                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.canGenerateAsHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;)Z
+     630: ifne          664
+     633: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+     636: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     639: aload_2
+     640: invokevirtual #115                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     643: invokestatic  #194                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     646: invokedynamic #228,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     651: invokevirtual #202                // Method org/betterx/wover/core/api/Logger.verbose:(Ljava/lang/String;)V
+     654: aload_2
+     655: aload_1
+     656: fconst_1
+     657: invokestatic  #231                // Method genChance:(Lorg/betterx/wover/biome/api/data/BiomeData;F)F
+     660: f2d
+     661: invokestatic  #235                // Method org/betterx/wover/generator/impl/biomesource/end/TheEndBiomesHelper.addHighlandsBiome:(Lnet/minecraft/resources/ResourceKey;D)V
+     664: return
+
+  private static float genChance(org.betterx.wover.biome.api.data.BiomeData, float);
+    Code:
+       0: aload_0
+       1: instanceof    #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+       4: ifeq          19
+       7: aload_0
+       8: checkcast     #274                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+      11: astore_2
+      12: aload_2
+      13: getfield      #279                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.genChance:F
+      16: goto          20
+      19: fload_1
+      20: freturn
+
+  public static void onResourcesLoaded(net.minecraft.server.packs.resources.ResourceManager);
+    Code:
+       0: getstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+       3: invokeinterface #296,  1          // InterfaceMethod java/util/Map.clear:()V
+       8: getstatic     #136                // Field REGISTER_EXCLUDES:Ljava/util/Set;
+      11: invokeinterface #299,  1          // InterfaceMethod java/util/Set.clear:()V
+      16: getstatic     #136                // Field REGISTER_EXCLUDES:Ljava/util/Set;
+      19: getstatic     #300                // Field MINECRAFT_WILDCARD:Lnet/minecraft/resources/ResourceLocation;
+      22: invokeinterface #304,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: invokestatic  #307                // Method org/betterx/wover/config/api/DatapackConfigs.instance:()Lorg/betterx/wover/config/api/DatapackConfigs;
+      31: aload_0
+      32: getstatic     #313                // Field BIOME_CONFIG_FILE:Lnet/minecraft/resources/ResourceLocation;
+      35: invokedynamic #316,  0            // InvokeDynamic #9:onLoad:()Lorg/betterx/wover/config/api/DatapackConfigs$DatapackConfigReloadHandler;
+      40: invokevirtual #320                // Method org/betterx/wover/config/api/DatapackConfigs.runForResource:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceLocation;Lorg/betterx/wover/config/api/DatapackConfigs$DatapackConfigReloadHandler;)V
+      43: invokestatic  #324                // Method org/betterx/wover/state/api/WorldState.allStageRegistryAccess:()Lnet/minecraft/core/RegistryAccess;
+      46: invokestatic  #330                // Method org/betterx/wover/generator/impl/biomesource/nether/NetherBiomesHelper.syncParameterList:(Lnet/minecraft/core/RegistryAccess;)V
+      49: invokestatic  #334                // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      52: ifnull        85
+      55: getstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+      58: invokeinterface #337,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+      63: ifne          85
+      66: invokestatic  #334                // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      69: getstatic     #340                // Field net/minecraft/core/registries/Registries.LEVEL_STEM:Lnet/minecraft/resources/ResourceKey;
+      72: invokeinterface #343,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      77: invokedynamic #349,  0            // InvokeDynamic #10:accept:()Ljava/util/function/Consumer;
+      82: invokevirtual #350                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      85: return
+
+  public static java.util.Set<net.minecraft.resources.ResourceLocation> getExcludedBiomes(net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>);
+    Code:
+       0: getstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+       3: aload_0
+       4: invokestatic  #356                // InterfaceMethod java/util/Set.of:()Ljava/util/Set;
+       7: invokeinterface #360,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      12: checkcast     #141                // class java/util/Set
+      15: areturn
+
+  private static void addAllExclusions(java.util.List<net.minecraft.tags.TagKey<net.minecraft.world.level.biome.Biome>>, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #363,  0            // InvokeDynamic #11:accept:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/function/Consumer;
+       7: invokeinterface #366,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      12: return
+
+  private static void addBiomesToExclusion(com.google.gson.JsonElement, java.util.function.Consumer<net.minecraft.resources.ResourceLocation>);
+    Code:
+       0: aload_0
+       1: invokevirtual #369                // Method com/google/gson/JsonElement.isJsonPrimitive:()Z
+       4: ifeq          23
+       7: aload_1
+       8: aload_0
+       9: invokevirtual #374                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+      12: invokestatic  #377                // Method org/betterx/wover/util/ResourceLocationSet$WildcardResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      15: invokeinterface #382,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      20: goto          43
+      23: aload_0
+      24: invokevirtual #387                // Method com/google/gson/JsonElement.isJsonArray:()Z
+      27: ifeq          43
+      30: aload_0
+      31: invokevirtual #390                // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+      34: aload_1
+      35: invokedynamic #394,  0            // InvokeDynamic #12:accept:(Ljava/util/function/Consumer;)Ljava/util/function/Consumer;
+      40: invokevirtual #397                // Method com/google/gson/JsonArray.forEach:(Ljava/util/function/Consumer;)V
+      43: return
+
+  private static void processBiomeConfigs(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_1
+       1: ldc_w         #400                // String exclude
+       4: invokevirtual #402                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       7: ifeq          32
+      10: aload_1
+      11: ldc_w         #400                // String exclude
+      14: invokevirtual #408                // Method com/google/gson/JsonObject.getAsJsonObject:(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+      17: astore_2
+      18: aload_2
+      19: invokevirtual #412                // Method com/google/gson/JsonObject.asMap:()Ljava/util/Map;
+      22: invokedynamic #416,  0            // InvokeDynamic #13:accept:()Ljava/util/function/BiConsumer;
+      27: invokeinterface #419,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      32: aload_1
+      33: ldc_w         #422                // String no_loader_register
+      36: invokevirtual #402                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      39: ifeq          59
+      42: aload_1
+      43: ldc_w         #422                // String no_loader_register
+      46: invokevirtual #424                // Method com/google/gson/JsonObject.getAsJsonArray:(Ljava/lang/String;)Lcom/google/gson/JsonArray;
+      49: astore_2
+      50: aload_2
+      51: invokedynamic #427,  0            // InvokeDynamic #14:accept:()Ljava/util/function/Consumer;
+      56: invokevirtual #397                // Method com/google/gson/JsonArray.forEach:(Ljava/util/function/Consumer;)V
+      59: return
+
+  public static java.lang.String printBiomeSourceInfo(net.minecraft.world.level.biome.BiomeSource);
+    Code:
+       0: invokestatic  #356                // InterfaceMethod java/util/Set.of:()Ljava/util/Set;
+       3: astore_1
+       4: aload_0
+       5: invokevirtual #428                // Method net/minecraft/world/level/biome/BiomeSource.possibleBiomes:()Ljava/util/Set;
+       8: astore_1
+       9: goto          33
+      12: astore_2
+      13: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+      16: getfield      #190                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+      19: ldc_w         #435                // String Error getting possible biomes from BiomeSource
+      22: iconst_1
+      23: anewarray     #2                  // class java/lang/Object
+      26: dup
+      27: iconst_0
+      28: aload_2
+      29: aastore
+      30: invokevirtual #437                // Method org/betterx/wover/core/api/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+      33: aload_0
+      34: invokevirtual #441                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      37: invokevirtual #445                // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+      40: aload_0
+      41: invokevirtual #450                // Method java/lang/Object.hashCode:()I
+      44: invokestatic  #454                // Method java/lang/Integer.toHexString:(I)Ljava/lang/String;
+      47: aload_1
+      48: invokeinterface #460,  1          // InterfaceMethod java/util/Set.size:()I
+      53: aload_1
+      54: invokestatic  #463                // Method org/betterx/wover/generator/impl/biomesource/WoverBiomeSourceImpl.getNamespaces:(Ljava/util/Collection;)Ljava/lang/String;
+      57: invokedynamic #469,  0            // InvokeDynamic #15:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+      62: areturn
+    Exception table:
+       from    to  target type
+           4     9    12   Class java/lang/Throwable
+
+  private static void lambda$processBiomeConfigs$10(com.google.gson.JsonElement);
+    Code:
+       0: getstatic     #136                // Field REGISTER_EXCLUDES:Ljava/util/Set;
+       3: aload_0
+       4: invokevirtual #374                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+       7: invokestatic  #377                // Method org/betterx/wover/util/ResourceLocationSet$WildcardResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      10: invokeinterface #304,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      15: pop
+      16: return
+
+  private static void lambda$processBiomeConfigs$9(java.lang.String, com.google.gson.JsonElement);
+    Code:
+       0: aload_0
+       1: ldc_w         #472                // String *:is_end
+       4: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       7: ifeq          27
+      10: getstatic     #474                // Field org/betterx/wover/generator/impl/biomesource/end/WoverEndBiomeSource.TAGS:Ljava/util/List;
+      13: astore_2
+      14: aload_1
+      15: aload_2
+      16: invokedynamic #478,  0            // InvokeDynamic #16:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      21: invokestatic  #481                // Method addBiomesToExclusion:(Lcom/google/gson/JsonElement;Ljava/util/function/Consumer;)V
+      24: goto          98
+      27: aload_0
+      28: ldc_w         #485                // String *:is_nether
+      31: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      34: ifeq          54
+      37: getstatic     #487                // Field org/betterx/wover/generator/impl/biomesource/nether/WoverNetherBiomeSource.TAGS:Ljava/util/List;
+      40: astore_2
+      41: aload_1
+      42: aload_2
+      43: invokedynamic #488,  0            // InvokeDynamic #17:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      48: invokestatic  #481                // Method addBiomesToExclusion:(Lcom/google/gson/JsonElement;Ljava/util/function/Consumer;)V
+      51: goto          98
+      54: getstatic     #489                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      57: aload_0
+      58: invokestatic  #492                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      61: invokestatic  #493                // Method net/minecraft/tags/TagKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/tags/TagKey;
+      64: astore_2
+      65: getstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+      68: aload_2
+      69: invokedynamic #499,  0            // InvokeDynamic #18:apply:()Ljava/util/function/Function;
+      74: invokeinterface #503,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      79: checkcast     #141                // class java/util/Set
+      82: astore_3
+      83: aload_1
+      84: aload_3
+      85: dup
+      86: invokestatic  #507                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      89: pop
+      90: invokedynamic #513,  0            // InvokeDynamic #19:accept:(Ljava/util/Set;)Ljava/util/function/Consumer;
+      95: invokestatic  #481                // Method addBiomesToExclusion:(Lcom/google/gson/JsonElement;Ljava/util/function/Consumer;)V
+      98: return
+
+  private static java.util.Set lambda$processBiomeConfigs$8(net.minecraft.tags.TagKey);
+    Code:
+       0: new           #516                // class org/betterx/wover/util/ResourceLocationSet
+       3: dup
+       4: invokespecial #518                // Method org/betterx/wover/util/ResourceLocationSet."<init>":()V
+       7: areturn
+
+  private static void lambda$processBiomeConfigs$7(java.util.List, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #519                // Method addAllExclusions:(Ljava/util/List;Lnet/minecraft/resources/ResourceLocation;)V
+       5: return
+
+  private static void lambda$processBiomeConfigs$6(java.util.List, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #519                // Method addAllExclusions:(Ljava/util/List;Lnet/minecraft/resources/ResourceLocation;)V
+       5: return
+
+  private static void lambda$addBiomesToExclusion$5(java.util.function.Consumer, com.google.gson.JsonElement);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #374                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+       5: invokestatic  #377                // Method org/betterx/wover/util/ResourceLocationSet$WildcardResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokeinterface #382,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      13: return
+
+  private static void lambda$addAllExclusions$4(net.minecraft.resources.ResourceLocation, net.minecraft.tags.TagKey);
+    Code:
+       0: getstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+       3: aload_1
+       4: invokedynamic #523,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+       9: invokeinterface #503,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      14: checkcast     #141                // class java/util/Set
+      17: aload_0
+      18: invokeinterface #304,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      23: pop
+      24: return
+
+  private static java.util.Set lambda$addAllExclusions$3(net.minecraft.tags.TagKey);
+    Code:
+       0: new           #516                // class org/betterx/wover/util/ResourceLocationSet
+       3: dup
+       4: invokespecial #518                // Method org/betterx/wover/util/ResourceLocationSet."<init>":()V
+       7: areturn
+
+  private static void lambda$onResourcesLoaded$2(net.minecraft.core.Registry);
+    Code:
+       0: aload_0
+       1: invokeinterface #524,  1          // InterfaceMethod net/minecraft/core/Registry.holders:()Ljava/util/stream/Stream;
+       6: invokedynamic #530,  0            // InvokeDynamic #21:accept:()Ljava/util/function/Consumer;
+      11: invokeinterface #531,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      16: return
+
+  private static void lambda$onResourcesLoaded$1(net.minecraft.core.Holder$Reference);
+    Code:
+       0: aload_0
+       1: invokevirtual #534                // Method net/minecraft/core/Holder$Reference.isBound:()Z
+       4: ifeq          39
+       7: aload_0
+       8: invokevirtual #539                // Method net/minecraft/core/Holder$Reference.value:()Ljava/lang/Object;
+      11: checkcast     #542                // class net/minecraft/world/level/dimension/LevelStem
+      14: invokevirtual #544                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      17: invokevirtual #548                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+      20: astore_2
+      21: aload_2
+      22: instanceof    #554                // class org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource
+      25: ifeq          39
+      28: aload_2
+      29: checkcast     #554                // class org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource
+      32: astore_1
+      33: aload_1
+      34: invokeinterface #556,  1          // InterfaceMethod org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource.reloadBiomes:()V
+      39: return
+
+  private static void lambda$register$0(net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: getstatic     #7                  // Field TYPES:Ljava/util/Map;
+       3: aload_0
+       4: dup
+       5: invokestatic  #507                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       8: pop
+       9: invokedynamic #559,  0            // InvokeDynamic #22:accept:(Lnet/neoforged/neoforge/registries/RegisterEvent$RegisterHelper;)Ljava/util/function/BiConsumer;
+      14: invokeinterface #419,  2          // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      19: return
+
+  static {};
+    Code:
+       0: getstatic     #19                 // Field org/betterx/wover/entrypoint/LibWoverWorldGenerator.C:Lorg/betterx/wover/core/api/ModCore;
+       3: ldc_w         #562                // String biome_config.json
+       6: invokevirtual #27                 // Method org/betterx/wover/core/api/ModCore.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: putstatic     #313                // Field BIOME_CONFIG_FILE:Lnet/minecraft/resources/ResourceLocation;
+      12: getstatic     #564                // Field org/betterx/wover/core/api/IntegrationCore.MINECRAFT:Lorg/betterx/wover/core/api/ModCore;
+      15: invokestatic  #569                // Method org/betterx/wover/util/ResourceLocationSet$WildcardResourceLocation.forAllFrom:(Lorg/betterx/wover/core/api/ModCore;)Lnet/minecraft/resources/ResourceLocation;
+      18: putstatic     #300                // Field MINECRAFT_WILDCARD:Lnet/minecraft/resources/ResourceLocation;
+      21: new           #573                // class java/util/LinkedHashMap
+      24: dup
+      25: invokespecial #575                // Method java/util/LinkedHashMap."<init>":()V
+      28: putstatic     #7                  // Field TYPES:Ljava/util/Map;
+      31: new           #576                // class java/util/HashMap
+      34: dup
+      35: invokespecial #578                // Method java/util/HashMap."<init>":()V
+      38: putstatic     #293                // Field EXCLUSIONS:Ljava/util/Map;
+      41: new           #516                // class org/betterx/wover/util/ResourceLocationSet
+      44: dup
+      45: invokespecial #518                // Method org/betterx/wover/util/ResourceLocationSet."<init>":()V
+      48: putstatic     #136                // Field REGISTER_EXCLUDES:Ljava/util/Set;
+      51: return
+}
