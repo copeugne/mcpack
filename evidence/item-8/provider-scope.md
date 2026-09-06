@@ -8927,3 +8927,24 @@ SHA-256: 3d9a33d0bf30fa6699bcdbfc85a5408dd2f6e5d1a5e4a2cad7a38347a69ee629.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-arenas-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-arenas-r2.json
 ```
+
+### Nether landmark relationships, 2026-09-06
+
+The seven remaining Nether designs retain separate families based on inspected
+layouts and template contents: grave yard, wart farm, ruined portal, soul fire,
+sword, train and warped dome. Existing wells retain their three root variants
+and lower components. Circular encounter ruins retain their two variants and
+remain distinct from generic fragments, the portal frame and the grave plot.
+Source views delivered at 8d99f50c reproduce exactly. No new measurement system
+was introduced. Root assignments and generation settings are unchanged.
+
+Nine affected cases pass; scoped Ruff and Basedpyright pass. Working groups
+remain 408. The explicit provisional remainder is 53, all Voyager. Provider
+coverage remains 136/136. Attribute completion, nonregistry reconciliation and
+final review/merge remain outstanding. Derived inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_variants or nether_arena'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
