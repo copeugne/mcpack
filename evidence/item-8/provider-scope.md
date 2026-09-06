@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 77 of 136. The exact queue below has 59 open rows.
+Supported provider dispositions: 78 of 136. The exact queue below has 58 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -648,7 +648,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions and test_creating_space_provider_scope.py; packaged component partition below. | All five pools linked. One of six templates is disconnected from root graphs; resolve other consumers and executable entry routes before provider closure. |
+| `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -703,6 +703,63 @@ attributes. This separates unknown membership from incomplete attributes.
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 
 ## Creating Space packaged component checkpoint
+
+### Final provider disposition
+
+Creating Space provider coverage is RESOLVED. It contributes the four existing
+packaged jigsaw roots already bound to the runtime registry and family decisions.
+No additional independent authored family is identified by its complete packaged
+payload, captured entry mechanisms, crater writer, contraption handling or common
+hooks. Shared Create remains a separate open provider; this disposition does not
+close Create's generation or attribute contributions.
+
+All 1645 non-directory files are partitioned: 342 classes, 676 assets, 612 data
+resources, ten packaged build-cache files and five metadata/image files. There
+are no extra nested archives, service declarations, scripts or undeclared payload
+categories outside that partition. The five NBT assets under ponder are client
+instruction scenes. The six NBT world-generation templates are separate: five
+are connected to existing roots; moon/abandoned_outpost is disconnected from
+those generation graphs. It has no literal reference in the archive's classes
+and no loader in the reviewed generation entry paths. Disposition: unused
+packaged component in this provider's generation graph, not another family.
+This combines resource and executable-role evidence rather than treating a
+negative string search alone as proof.
+
+Common-hook delegate source 3133afb, extractor 30d6302, has manifest
+452f56f08a577286fe894d2e692aa26b73e67dda6027274c318fcb30c7c7145e;
+independent r1 is exact and all four sources are bound by the existing test.
+The common roles are:
+
+| Captured route | Supported disposition |
+| --- | --- |
+| Entity ticks, equipment and breathing | Existing-entity oxygen, temperature, equipment and travel handling; the resolved arrival delegate places no site. |
+| Neighbor notifications and RoomAtmosphere | Recompute the oxygen room's shape, sealers and leaf filters from existing blocks; update atmosphere entity data, not room construction. |
+| IgniteOnPlace | Conditional Venus placement reactions: fire and soil replacement, not an authored-site generator. |
+| DataEventHandler and UnlockedDesignManager | Load and synchronize engine exhaust/power-pack unlock lists; initial entries include bell_nozzle and open_cycle. |
+| CSDimensionUtil | Travel-map, cost, gravity, arrival-height and atmosphere lookups. removeUnreachableDimensions filters a travel list, not world generation registries. |
+| Declared entity, gravity and contraption mixins | Existing-entity properties/movement and collection of existing rocket multiblock parts. |
+| Fluid mixin and FluidInit | Fluid-contact block conversions, including dimension-dependent stone and source-lava obsidian; no assembled site. |
+| Recipe mixins | Ingredient matching, retained item data and recipe serialization. |
+| Remaining annotated entries and mixins | Configuration registration/reload, capabilities, client controls/rendering/tooltips and oxygen overlay/backtank behavior. No separate authored-content route. |
+
+Custom datapack data describes propulsion components, reachable dimensions and
+block mass. Remaining JSON covers recipes, loot, advancements, tags, damage and
+the already-accounted dimension/terrain/generation definitions. These can remain
+inputs to family attributes without becoming extra families. Preserve the
+existing Mars bastion-leg fallback and the unused Moon cave configuration;
+neither is silently repaired or promoted to an independent family.
+
+The existing root decision case plus the three focused provider cases passed:
+
+```sh
+uv run pytest -q tests/item8/test_creating_space_provider_scope.py 'tests/item8/test_family_decisions.py::test_provider_groups_bind_full_definitions_pools_and_registry[creatingspace-4]'
+```
+
+Four cases passed in 0.98s. Scoped Ruff and Basedpyright pass. No new runtime
+experiment was needed. Census: 78 resolved, 58 open. This is provider coverage,
+not completion of Item 8 or final acceptance of canonical groups and attributes.
+
+### Earlier incremental checkpoints
 
 Arrival follow-up is RESOLVED in source 526983c, extractor 215a6a4. Manifest
 04e25ddcbb7b1105bcf0d27eb83c605dda16a97ec4d683d829f94d74e97da0e1

@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
@@ -115,6 +116,13 @@ def test_creating_space_entry_source_coverage() -> None:
     assert [row["class"] for row in arrival] == [
         "com/rae/creatingspace/content/rocket/CustomTeleporter.class",
     ]
+    delegate_directory = Path("evidence/item-8/sources/creating-space-common-delegates")
+    raw = (delegate_directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "452f56f08a577286fe894d2e692aa26b73e67dda6027274c318fcb30c7c7145e"
+    )
+    delegates = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(delegates) == 4
     with ZipFile(source.path) as archive:
         annotated = {
             n for n in archive.namelist() if n.endswith(".class") and any(
@@ -133,7 +141,9 @@ def test_creating_space_entry_source_coverage() -> None:
         declared.add(str(mixin["plugin"]).replace(".", "/") + ".class")
         assert len(annotated) == 13
         assert len(declared) == 20
-        for capture_directory, rows in ((directory, identities), (arrival_directory, arrival)):
+        for capture_directory, rows in (
+            (directory, identities), (arrival_directory, arrival), (delegate_directory, delegates),
+        ):
             for row in rows:
                 assert row["archive"] == source.name
                 assert row["archive_sha256"] == source.sha256
@@ -151,3 +161,41 @@ def test_creating_space_entry_source_coverage() -> None:
     }
     assert len(referenced) == 6
     assert captured == annotated | declared | referenced
+
+
+def test_creating_space_remaining_payload_partition() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("creatingspace-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        names = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in names if n.endswith(".class")}
+        assert len(classes) == 342
+        assert all(n.startswith("com/rae/creatingspace/") for n in classes)
+        assert not any(b"abandoned_outpost" in archive.read(n) for n in classes)
+        assets = {n for n in names if n.startswith("assets/")}
+        data = {n for n in names if n.startswith("data/")}
+        caches = {n for n in names if n.startswith(".cache/")}
+        assert len(caches) == 10
+        assert names - classes - assets - data - caches == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "creatingspace.mixins.json", "logo.png", "pack.mcmeta",
+        }
+        assert Counter(n.split("/")[2] for n in assets) == {
+            "blockstates": 51, "lang": 7, "models": 284, "particles": 1, "ponder": 5,
+            "sounds": 1, "sounds.json": 1, "textures": 325, "atlases": 1,
+        }
+        assert all(n.endswith((".json", ".png", ".ogg", ".nbt", ".mcmeta")) for n in assets)
+        assert {n for n in assets if n.endswith(".nbt")} == {
+            "assets/creatingspace/ponder/catalyst_carrier/chemical.nbt",
+            "assets/creatingspace/ponder/chemical_synthesizer/chemical_synthesizer.nbt",
+            "assets/creatingspace/ponder/mechanical_electrolyzer/electrolysis.nbt",
+            "assets/creatingspace/ponder/rocket/rocket_building.nbt",
+            "assets/creatingspace/ponder/rocket_generator/setup.nbt",
+        }
+        assert Counter(n.split("/")[2] for n in data) == {
+            "tags": 108, "advancement": 104, "advancements": 2, "creatingspace": 19,
+            "creatingspace_utilities": 1, "damage_type": 1, "dimension": 6,
+            "dimension_type": 6, "loot_table": 52, "neoforge": 2, "recipe": 249,
+            "structure": 6, "worldgen": 55, "data_maps": 1,
+        }
+        assert all(n.endswith(".nbt" if n.split("/")[2] == "structure" else ".json") for n in data)

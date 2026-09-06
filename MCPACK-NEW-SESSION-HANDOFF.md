@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-06
 
+Creating Space provider coverage is now RESOLVED. See its final disposition in
+evidence/item-8/provider-scope.md and test_creating_space_provider_scope.py.
+Four existing roots, five connected pools and six templates are accounted for;
+the disconnected moon/abandoned_outpost template is preserved as an unused
+component in this provider's packaged generation graph. Crater, rocket, arrival,
+common hooks and full payload roles are resolved. Source 3133afb (extractor
+30d6302) closes four common delegates; source 526983c closes arrival. Reuse all
+accepted captures and checks rather than restarting them.
+
+Census is 78 resolved and 58 open. Next provider: Supplementaries, reconciling
+its two root definitions, configured road-sign representation, other feature
+content and component injections. Canonical grouping and eleven attributes
+remain downstream of membership closure. Four applicable Creating Space cases
+passed in 0.98s; scoped quality checks pass. No runtime process is live.
+
 Priority correction following the user's challenge about unknown remaining
 families: use the scope reassessment under the exact provider queue in
 evidence/item-8/provider-scope.md. The 59 open rows partition into 2 with indexed
