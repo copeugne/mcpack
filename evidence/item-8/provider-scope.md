@@ -5800,7 +5800,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | RESOLVED: Empty initializer and menu-opening support; source c5ebd6e. No independent family. |
 | `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | RESOLVED: Existing inventory/fluid capability adapters and transactional container hooks. Source 94eaafd; no independent family. |
 | `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
 | `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
 
@@ -6579,3 +6579,28 @@ above. Fabric now has 39 resolved modules and four open: networking, registry
 sync, transfer and loader. Whole providers remain 90 resolved and 46 open.
 No family-list change. Continue those four checks, then the other provider and
 canonical grouping decisions; do not repeat the resolved interaction/item paths.
+
+### Fabric transfer membership resolved
+
+Source 94eaafd preserves the empty generated initializer, automatic capability
+adapter and ten common hooks. The adapter registers item/fluid handlers against
+existing block and block-entity types and installs caller storage lookup
+fallbacks. Its recursion guard and wrapper constructors operate on supplied
+capabilities. Hooks adapt existing container mutation, furnace cooking state,
+jukebox items, cached item/fluid variants and fluid sounds. No independent
+world-generation or authored-site route is introduced. The remaining APIs and
+implementation classes provide storage views, transactions, variants and wrappers.
+
+The existing test binds all 120 classes, both automatic entries, all ten hooks
+and the complete metadata/icon/mixin payload. No generation data, client mixin
+file or access transformer exists in this module. All 41 focused Fabric cases
+and scoped Ruff/Basedpyright pass using the commands above. The source capture
+independently reproduces byte for byte. Fabric: 40 resolved, three open. Whole
+providers: 90 resolved, 46 open. No family-list change.
+
+The last three entry captures are also delivered and reproduced: networking
+ad9fbe2 (seventeen classes), registry sync 4bc3d16 (six classes), loader 1cb6fe0
+(one language-loader service). Networking requires interpretation of its existing
+hooks; registry sync calls FabricRegistryInit.onInitialize; the loader service
+installs FabricLoaderBootstrap. Those named boundaries remain open. Reuse the
+captures, then close the Fabric provider only after all three are resolved.

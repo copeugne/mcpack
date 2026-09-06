@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric transfer membership is resolved from 94eaafd. Forty-one focused cases
+and scoped checks pass. Fabric: 40 resolved, three open. Whole providers:
+90 resolved, 46 open. No new family. Remaining entry captures are delivered:
+networking ad9fbe2, registry sync 4bc3d16, loader 1cb6fe0. Networking has seventeen
+captured entry/hooks to interpret. Registry sync needs FabricRegistryInit;
+loader's language service needs FabricLoaderBootstrap. Reuse these captures.
+No runtime experiment or new measurement system is needed for these boundaries.
+
+
 Fabric interaction and item membership are resolved from existing entries plus
 5147b43 and 41d9c83 delegates. Forty focused cases and scoped checks pass.
 Fabric: 39 resolved, four open (networking, registry sync, transfer, loader).

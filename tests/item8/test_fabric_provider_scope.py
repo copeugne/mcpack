@@ -106,6 +106,14 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-transfer-api-v1-5.4.3+a25cb45619",
+            "fabric-transfer-api-v1-entry",
+            "fd7982f42faf3e553baf9e444fbf8beb643ab432c5d79da2d6436c704954b081",
+            10,
+            {"org/sinytra/fabric/transfer_api/generated/GeneratedEntryPoint.class",
+             "org/sinytra/fabric/transfer_api/TransferApiNeoCompat.class"},
+        ),
+        (
             "fabric-events-interaction-v0-0.7.13+86e0887119",
             "fabric-events-interaction-v0-entry",
             "614f8f550bebcc2f4247a0be3905dbafc49647536eb93c547efac92c4f26bbd3",
@@ -415,6 +423,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-transfer-api-v1": (120, 0),
                 "fabric-events-interaction-v0": (36, 3),
                 "fabric-item-api-v1": (43, 1),
                 "fabric-object-builder-api-v1": (44, 0),
