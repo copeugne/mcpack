@@ -1,0 +1,37 @@
+Compiled from "GeckoLibNeoForge.java"
+public final class software.bernie.geckolib.platform.GeckoLibNeoForge implements software.bernie.geckolib.service.GeckoLibPlatform {
+  public software.bernie.geckolib.platform.GeckoLibNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: getstatic     #7                  // Field net/neoforged/fml/loading/FMLEnvironment.production:Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public java.nio.file.Path getGameDir();
+    Code:
+       0: getstatic     #13                 // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #19                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public boolean isPhysicalClient();
+    Code:
+       0: getstatic     #23                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #27                 // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ireturn
+
+  public <T> java.util.function.Supplier<net.minecraft.core.component.DataComponentType<T>> registerDataComponent(java.lang.String, java.util.function.UnaryOperator<net.minecraft.core.component.DataComponentType$Builder<T>>);
+    Code:
+       0: getstatic     #33                 // Field software/bernie/geckolib/GeckoLib.DATA_COMPONENTS_REGISTER:Lnet/neoforged/neoforge/registries/DeferredRegister$DataComponents;
+       3: aload_1
+       4: aload_2
+       5: invokevirtual #39                 // Method net/neoforged/neoforge/registries/DeferredRegister$DataComponents.registerComponentType:(Ljava/lang/String;Ljava/util/function/UnaryOperator;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+       8: areturn
+}

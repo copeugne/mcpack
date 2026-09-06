@@ -510,3 +510,60 @@ def test_azurelib_armor_membership_payload() -> None:
                 assert row["disassembly_sha256"] == hashlib.sha256(
                     (directory / row["disassembly"]).read_bytes()).hexdigest()
         assert captured == expected
+
+
+def test_geckolib_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "geckolib-neoforge-1.21.1-4.8.4.jar")
+    assert source.sha256 == "a1b6ce25e8627aa7e748672eedb6b71af68e0993462313649c259f38e42bcac9"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    prefix = "software/bernie/geckolib/"
+    entry = prefix + "GeckoLib.class"
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 256
+        services = {"META-INF/services/software.bernie.geckolib.service.GeckoLib" + n
+                    for n in ("Client", "Events", "Networking", "Platform")}
+        assert files - classes == services | {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer-nf.cfg",
+            "META-INF/neoforge.mods.toml", "geckolib.mixins.json",
+            "geckolib.png", "LICENSE_GeckoLib 4"}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "geckolib.mixins.json"}]
+        config = cast("dict[str, JsonValue]", json.loads(archive.read("geckolib.mixins.json")))
+        assert config["package"] == "software.bernie.geckolib.mixin"
+        assert not any(config.get(k) for k in ("plugin", "server"))
+        assert set(cast("list[str]", config["mixins"])) == {
+            "common.AbstractContainerMenuMixin", "common.ItemStackMixin",
+            "common.LivingEntityMixin"}
+        assert len(cast("list[str]", config["client"])) == 4
+        expected = {entry, prefix + "GeckoLibConstants.class",
+                    prefix + "service/GeckoLibNetworking.class"}
+        expected.update(prefix + "mixin/" + n.replace(".", "/") + ".class"
+                        for n in cast("list[str]", config["mixins"]))
+        for name in services:
+            expected.add(archive.read(name).decode().strip().replace(".", "/") + ".class")
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == {entry}
+        captured: set[str] = set()
+        for label, digest in (
+            ("geckolib-provider",
+             "70b343b81e834cdbd79556a18890c018ef9dd83a8a2b8565988e5b9a7d3b8fc5"),
+            ("geckolib-init",
+             "4ef7f6553e9311199ba73bee38146ce63fd967657c98e3b33215b79411168237"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            for row in rows:
+                captured.add(row["class"])
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert row["disassembly_sha256"] == hashlib.sha256(
+                    (directory / row["disassembly"]).read_bytes()).hexdigest()
+        assert captured == expected

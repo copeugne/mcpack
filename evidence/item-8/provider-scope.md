@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 102 of 136. The exact queue below has 34 open rows.
+Supported provider dispositions: 103 of 136. The exact queue below has 33 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -661,7 +661,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | All 43 nested modules, preserved sources and test_fabric_provider_scope.py | RESOLVED: Consumer APIs, biome modifiers, conventional tags and test-only template; all module contribution roles resolved below. No independent family. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `geckolib-neoforge-1.21.1-4.8.4.jar` | Sources 1284a76a and 58568f7f; test_small_utility_provider_scope.py | RESOLVED: Animation data, item identity, rendering and synchronization support; no independent family. See GeckoLib disposition below. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | Existing pool-codecs and source 88a0f54; test_integrated_api_provider_scope.py | RESOLVED: Shared generation codecs, existing structure modifiers, tags and consumer data loaders. No independent family. See Integrated API disposition below. |
 | `integrated_stronghold-1.1.4+1.21.1-neoforge.jar` | `integrated-stronghold-provider`, existing root/graph and family-decision regression | RESOLVED: one existing root, both modification mixins, all components and disconnected/missing templates accounted for. See Integrated Stronghold provider disposition below. |
@@ -7027,3 +7027,37 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py
 Twenty-three cases and scoped quality checks pass. Whole providers: 102 resolved,
 34 open. No family added. Continue the remaining provider queue and Moog
 canonical grouping before attributes; no more animation-helper tracing is needed.
+
+### GeckoLib membership resolved
+
+Sources 1284a76a and 58568f7f cover the loader, four services, three common
+hooks, constants initialization and concrete packet registration. Startup
+registers the persistent/synchronized item animation ID data component and
+fifteen client-bound animation data, trigger, stop and stateless-animation
+packets. The constants init method itself is empty. Client initialization is
+side-conditional. No structure, feature, authored site or independent family
+is registered by these entry paths.
+
+The common hooks handle item ID removal on copies/splits and comparison during
+container/equipment synchronization. Services expose consumer rendering events,
+item/armor models, platform paths and packet delivery. Those are shared animation
+roles. Consumer-authored world content remains attributable to the consumer.
+This membership result does not assert that animation or networking correctness
+has been tested, and does not require a broader serialization/rendering audit.
+
+The complete archive has 256 classes and ten metadata, service, mixin, icon,
+access and license files. No data, assets, templates or nested archives occur.
+The sole automatic entry, four declared services, three common and four client
+hooks are accounted for. All ten captured classes are bound to the archive and
+source manifests; both captures reproduce independently byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twenty-four utility cases and Basedpyright pass. Ruff found one overlong line;
+wrapping that assertion fixes it and Ruff passes. Whole providers: 103 resolved,
+33 open. No family added. Remaining provider contributions and canonical Moog
+grouping still precede detailed attributes. Do not repeat GeckoLib helper tracing.
