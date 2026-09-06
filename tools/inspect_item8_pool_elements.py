@@ -189,6 +189,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/gametest/TestCommandMixin.class",
+    "net/fabricmc/fabric/mixin/gametest/GameTestRegistryMixin.class",
+    "net/fabricmc/fabric/mixin/gametest/GameTestHooksMixin.class",
+    "net/fabricmc/fabric/mixin/gametest/StructureTemplateManagerMixin.class",
+    "net/fabricmc/fabric/mixin/gametest/TestServerMixin.class",
+    "net/fabricmc/fabric/impl/gametest/FabricGameTestModInitializer.class",
+    "org/sinytra/fabric/gametest_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/gametest_api_v1/FabricGameTestApiV1.class",
     "net/fabricmc/fabric/mixin/biome/BiomeSourceMixin.class",
     "net/fabricmc/fabric/mixin/biome/ChunkNoiseSamplerMixin.class",
     "net/fabricmc/fabric/mixin/biome/MultiNoiseUtilMultiNoiseSamplerMixin.class",
@@ -2285,6 +2293,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar",
         "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar",
         "META-INF/jarjar/ponder-neoforge-1.0.82+mc1.21.1.jar",
         "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
@@ -2304,6 +2313,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-gametest-api-v1-2.0.5+29f188ce19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "d924ee221d887abd7728a3e48ed16e37a76b1217afad9e33bb049e84494c1506",
+        ),
         "META-INF/jars/fabric-biome-api-v1-13.0.31+1e62d33c19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "56d6766d23085e881cb55737f94498843f4fecd940f7660a18213d0995fff3a6",
