@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Integrated Villages canonical grouping is settled: one settlement family with
+twelve preserved design/root variants, consistent with CTOV. Full definitions,
+placement differences and missing components are retained. The Mossy Mounds
+empty-data spawner remains unresolved. Seventy-five affected tests and scoped
+checks pass. Source decision and generated inventory are delivered separately
+because the latter consolidates twelve large output rows. Provisional registry
+grouping becomes 410 for 887 roots. Continue Moog membership and 46 provider
+closures; detailed attributes and the final pack count remain open.
+
 Supplementaries cave-urn membership is settled: one freestanding cache family.
 Galleon use of the same patch remains a ship component. Eight focused cases,
 scoped checks and inventory reproduction pass. Effective urn eligibility and
