@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar",
         "emi_loot-0.7.9+1.21+neoforge.jar",
         "Patchouli-1.21.1-93-NEOFORGE.jar",
         "cloth-config-15.0.140-neoforge.jar",
@@ -209,6 +210,30 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "fuzs/puzzleslib/impl/PuzzlesLib.class",
+    "fuzs/puzzleslib/impl/PuzzlesLibMod.class",
+    "fuzs/puzzleslib/mixin/AbstractMinecartMixin.class",
+    "fuzs/puzzleslib/mixin/DataCommandsMixin.class",
+    "fuzs/puzzleslib/mixin/EnchantCommandMixin.class",
+    "fuzs/puzzleslib/mixin/MixinConfigPluginImpl.class",
+    "fuzs/puzzleslib/mixin/server/DedicatedServerSettingsMixin.class",
+    "fuzs/puzzleslib/mixin/server/EulaMixin.class",
+    "fuzs/puzzleslib/neoforge/impl/PuzzlesLibNeoForge.class",
+    "fuzs/puzzleslib/neoforge/impl/client/PuzzlesLibNeoForgeClient.class",
+    "fuzs/puzzleslib/neoforge/impl/client/core/NeoForgeClientProxy.class",
+    "fuzs/puzzleslib/neoforge/impl/core/NeoForgeCommonProxy.class",
+    "fuzs/puzzleslib/neoforge/impl/core/NeoForgeEnvironment.class",
+    "fuzs/puzzleslib/neoforge/mixin/AbstractPackResourcesNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/DatagenModLoaderNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/EnchantedCountIncreaseFunctionNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/EnchantmentHelperNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/LootItemRandomChanceWithEnchantedBonusConditionNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/MenuProviderWithDataNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/MixinConfigPluginNeoForgeImpl.class",
+    "fuzs/puzzleslib/neoforge/mixin/TagsProviderNeoForgeMixin.class",
+    "fuzs/puzzleslib/neoforge/mixin/accessor/BiomeSpecialEffectsBuilderNeoForgeAccessor.class",
+    "fuzs/puzzleslib/neoforge/mixin/accessor/MobSpawnSettingsBuilderNeoForgeAccessor.class",
+    "fuzs/puzzleslib/neoforge/mixin/accessor/NewRegistryEventNeoForgeAccessor.class",
     "fzzyhmstrs/emi_loot/mixins/AlternativeLootConditionAccessor.class",
     "fzzyhmstrs/emi_loot/mixins/AndLootFunctionAccessor.class",
     "fzzyhmstrs/emi_loot/mixins/ApplyBonusLootFunctionAccessor.class",
