@@ -1,4 +1,4 @@
-"""Write fixed BetterEnd ruin voxel diagrams for canonical design inspection."""
+"""Write fixed template voxel diagrams for canonical design inspection."""
 
 from __future__ import annotations
 
@@ -52,25 +52,45 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int) -> str:
 
 
 def main() -> None:
-    """Render only the six known biome ruin sets from the frozen archive."""
+    """Render fixed BetterEnd or Soaring sets from their frozen archive."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
-    output = cast("Path", parser.parse_args().output)
-    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    _ = parser.add_argument("--soaring", action="store_true")
+    args = parser.parse_args()
+    output = cast("Path", args.output)
+    soaring = cast("bool", args.soaring)
+    archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
-        message = "BetterEnd archive identity mismatch"
+        message = f"Archive identity mismatch: {archive_name}"
         raise ValueError(message)
     output.mkdir(parents=True, exist_ok=False)
     with ZipFile(source.path) as archive:
-        for biome, count in {
-            "blossoming_spires": 8, "chorus_forest": 8, "foggy_mushroomland": 3,
-            "lantern_woods": 2, "shadow_forest": 8, "umbrella_jungle": 6,
-        }.items():
+        sheets = {
+            biome: [f"biome/{biome}/ruins_{i + 1}" for i in range(count)]
+            for biome, count in {
+                "blossoming_spires": 8, "chorus_forest": 8, "foggy_mushroomland": 3,
+                "lantern_woods": 2, "shadow_forest": 8, "umbrella_jungle": 6,
+            }.items()
+        }
+        if soaring:
+            sheets = {
+                "houses": ["calcite_house", "diorite_house", "small_deepslate_house",
+                           "small_oak_house", "spruce_huts", "white_house"],
+                "towers": ["castle_ruin", "castle_tower", "large_tower", "small_tower"],
+                "landscapes": ["frozen_pond", "muddy_water_hole", "small_pond", "jungle",
+                               "leaf_hollow", "mangrove"],
+                "islands": ["mushroom", "palm_island", "red_sand", "taiga", "volcano"],
+                "monuments": ["arena", "desert_pyramid", "desert_well", "nether_portal"],
+            }
+        namespace = "mss" if soaring else "betterend"
+        for biome, names in sheets.items():
+            count = len(names)
             pieces: list[str] = []
-            for index in range(count):
-                name = f"ruins_{index + 1}"
-                raw = archive.read(f"data/betterend/structure/biome/{biome}/{name}.nbt")
-                pieces.append(diagram(raw, name, 20 + index % 2 * 300, 35 + index // 2 * 300))
+            for index, name in enumerate(names):
+                raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
+                title = name if soaring else name.rsplit("/", 1)[1]
+                pieces.append(diagram(raw, title, 20 + index % 2 * 300, 35 + index // 2 * 300))
             height = ((count + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',

@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Canonical comparison requires block layouts omitted by the existing redacted
+palette catalog. Reuse the existing BetterEnd template renderer with a fixed
+Soaring selection for the 25 provisional designs. This is the existing diagram
+evidence path, not a new measurement system. No runtime experiment or renderer
+fidelity expansion is needed to compare built forms. Preserve the old default
+output and use these views with the existing palette, content and pool evidence.
+
+
 All 136 retained-provider membership dispositions are resolved, with zero open
 provider rows. You're in Grave Danger supplies player-death graves and recovery,
 not an independent structure family. Reuse yigd-entries, yigd-delegates and
