@@ -1697,6 +1697,8 @@ CLASSES: tuple[str, ...] = (
     "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion$DistHelper.class",
     "dev/ryanhcode/sable/companion/impl/SableCompanionUtil.class",
     "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
+    "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
+    "net/mehvahdjukaar/supplementaries/integration/CompatHandler.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1849,7 +1851,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
-                verbose |= name == "net/mehvahdjukaar/supplementaries/reg/ModSetup.class"
+                verbose |= name in {
+                    "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
+                    "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
+                    "net/mehvahdjukaar/supplementaries/integration/CompatHandler.class",
+                }
                 verbose |= (
                     source.name in {
                         "integrated_villages-1.3.3+1.21.1-neoforge.jar",
