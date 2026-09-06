@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 920c24e: Better Strongholds provider scope is closed,
+pushed and remote-ref verified. Census: 64 resolved providers, 72 open. Seven
+affected cases and scoped quality checks pass. Source 41964b5 reproduces exactly.
+One existing root, 12 connected pools and 97 templates are accounted for, with
+thirteen disconnected components and one missing spiral_stairs pool. Custom
+placement selects this root; entity/block processors modify its components.
+Next inspect YUNG's Better Jungle Temples using jungle-temple-suppression.
+Do not repeat delivered provider work. Shared YUNG API, canonical grouping,
+full attributes and the final Item 8 gate remain open.
+
 Latest checkpoint at 8e2b6df: Better Ocean Monuments provider scope is closed,
 pushed and remote-ref verified. Census: 63 resolved providers, 73 open. Seven
 affected cases and scoped quality checks pass. Source a2f2832 reproduces exactly.

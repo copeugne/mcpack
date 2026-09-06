@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 63 of 136. The exact queue below has 73 open rows.
+Supported provider dispositions: 64 of 136. The exact queue below has 72 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -565,7 +565,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `ocean-monument-provider` (a2f2832), prior suppression source, test_ocean_monument_provider_scope.py | RESOLVED: One existing root, 13 connected pools, 59 templates including two disconnected seagrass components. Ten block processors and marked-trident hook accounted for below. |
-| `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-provider` (41964b5), prior suppression source, test_stronghold_provider_scope.py | RESOLVED: One existing root, 12 pools and 97 templates with thirteen disconnected components and one missing pool. Custom placement and component consumers accounted for below. |
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-provider` (04b6ab5), prior suppression capture, test_witch_hut_provider_scope.py | RESOLVED: Two existing roots, three pools, six connected templates and five component processors. Packaged services and entry roles are accounted for below. |
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
 | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -2317,3 +2317,54 @@ uv run basedpyright tests/item8/test_ocean_monument_provider_scope.py
 Seven affected cases and scoped quality checks pass. Source extraction reproduces
 exactly. Census: 63 resolved providers, 73 open. No canonical family count or final
 Item 8 completion claim follows from this provider closure.
+
+## Better Strongholds provider disposition
+
+Source 41964b5 plus stronghold-suppression preserves all 32 packaged classes in
+YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar. The focused check binds exact
+archive/class/source identities and accounts for all 181 files. Three packaged
+service declarations select the captured NeoForge module, platform and processor
+providers. The module loader delegates to an empty default; the processor service
+exposes armor-stand and item-frame codecs. Common initialization uses YUNG API
+module registration, and the configuration loader reads the four existing
+ore/rare-block/armor-stand/item-frame selection tables. These are component inputs,
+not additional independent generators. Reuse the prior suppression evidence.
+
+The sole betterstrongholds:stronghold root matches the runtime registry. All
+12 pools are connected in the preserved graph. Thirteen of 97 templates are
+disconnected: a soul-torch doorway, a hallway trap, a new hallway terminator and
+ten statue terminator alternatives. Their exact IDs are bound in
+test_stronghold_provider_scope.py. They are components, not independent families.
+The graph preserves one missing pool, betterstrongholds:spiral_stairs, and no
+unresolved pool elements. Do not silently manufacture that pool or treat missing
+references as successfully traversed content.
+
+BetterStrongholdsPlacement selects chunks for the existing root. Its packaged
+structure set binds spacing/separation, salt and radial parameters to that root;
+its implementation extends random-spread candidate selection with a radial
+section filter. This is not another family or an observed pacing measurement.
+Nine processor lists use the nine captured component processor types plus vanilla
+rule processing. Their roles cover ruin/block variation, banners, end-portal
+frames, supports, ore/rare-block markers, redstone and existing armor-stand and
+item-frame NBT. Preserve direct support extension and written item data for later
+size/content attribution. Shared YUNG API randomizers, banner creation and
+registration remain an open provider dependency.
+
+Other packaged payload is loot, tags, an advancement, translations and metadata
+or visual assets. There are no nested archives, functions, feature/carver data
+or unexplained resource categories. Provider coverage does not establish all
+attributes or successful runtime gameplay behavior.
+
+```sh
+uv run pytest -q tests/item8/test_stronghold_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_stronghold_provider_scope.py
+uv run basedpyright tests/item8/test_stronghold_provider_scope.py
+```
+
+Seven affected cases and scoped quality checks pass. The initial graph assertion
+incorrectly expected the missing spiral_stairs ID in the traversed pool set;
+the preserved graph records it separately in missing. The assertion was corrected
+without changing raw evidence. A local complexity exemption keeps the single
+archive/graph assertion together. Source capture reproduces exactly. Census:
+64 resolved providers, 72 open. Canonical grouping and Item 8's remaining
+attribute and delivery gates are open.
