@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Nether house/forge boundaries are settled using both inspected house sheets.
+Six warped templates remain alternatives of one family; medium-house relationships
+to large and warped are now explicit. Provisional queue: 64 (Nether 11, Voyager 53).
+Working groups remain 409. Refresh inventory, then finish Nether arenas/fortress
+and landmarks. Do not repeat the house comparisons or expand the renderer.
+
+
 Nether house comparison must include the existing medium-house variants because
 that record explicitly leaves its larger/warped relationships open. Reuse the
 renderer with ten selected templates: medium 2, large 1, warped 6 and forge 1.
