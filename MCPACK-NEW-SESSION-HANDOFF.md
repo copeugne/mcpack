@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Chipped membership is resolved using 869bee77 and 9fd54ae5. It supplies building
+blocks, recipes, player workbench crafting and block behavior, with no independent
+family. Complete payload/source binding, 25 utility cases and scoped checks pass.
+Whole providers: 104 resolved, 32 open. The user's priority remains establishing
+the finite canonical family count. Finish these provider dispositions and the
+explicitly provisional Moog grouping decisions before detailed attributes.
+No further Chipped helper tracing is needed. No new measurement system was added.
+
+
 GeckoLib membership is resolved using 1284a76a and 58568f7f. Its startup adds
 item animation identity and client-bound animation packets; services/common
 hooks supply rendering, synchronization and item comparison support. No
