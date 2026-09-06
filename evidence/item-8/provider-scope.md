@@ -3184,7 +3184,10 @@ config/aether-server.toml has Generate Holiday Trees always=false and Generate
 Holiday Trees seasonally=true, SHA-256
 578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de.
 These are input bindings, not proof the seasonal filter passed in any recorded
-world. Inspect HolidayFilter before accepting effective eligibility. Present
+world. HolidayFilter is now captured in sources/aether-holiday-filter at 934edeb:
+it uses the JVM calendar month, permitting December and January with these
+frozen settings, subject to the other placement conditions. This resolves the
+filter-source question without claiming an observed tree. Present
 block reward behavior belongs to the later attribute pass, not provider scope.
 
 ```sh
@@ -3196,3 +3199,25 @@ uv run basedpyright tests/item8/test_aether_cloud_source.py
 Four focused cases and scoped quality checks pass. Keep this named ambiguity
 with the finite candidate list. Remaining provider roles and canonical grouping
 are still open; no new measurement system is required.
+
+### Aether custom feature roles
+
+The four custom feature implementations captured in sources/aether-provider
+have these roles in the packaged configurations:
+
+| Implementation | Contribution and census disposition |
+| --- | --- |
+| AercloudFeature | Writes the configured cloud block into empty positions along randomized clusters. Cloud terrain, not another authored structure family. |
+| AetherLakeFeature | Carves air and supplied fluid, replaces suitable surface material and freezes water where the biome permits. Lake terrain, not another authored structure family. |
+| ShelfFeature | Selects suitable ground/air boundaries and delegates supplied-block disk placement. The quicksoil configuration forms ground shelves. |
+| CrystalIslandFeature | Attempts the configured crystal tree, then forms its supporting grass/holystone ground with surface-material handling. Tree and terrain formation; no separate architectural component is selected by this implementation. |
+
+These roles use the existing captured implementations and packaged candidate
+partition, not a new world measurement. The holiday-tree decoration remains the
+separate named boundary above. Do not reopen these feature implementations to
+measure geometry or rewards during the census.
+
+Aether's remaining provider checks are main-entry/common-hook contributions,
+optional ruined-portal activation and component consumers, and effective
+selection/contribution roles for its three nested libraries. Provider census
+remains 75 resolved and 61 open; these are providers, not remaining families.
