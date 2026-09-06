@@ -1,0 +1,132 @@
+Compiled from "BiomeModificationImpl.java"
+public final class net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$FabricBiomeModifier extends java.lang.Record implements net.neoforged.neoforge.common.world.BiomeModifier {
+  private final java.util.List<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord> modifiers;
+
+  public net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$FabricBiomeModifier(java.util.List<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field modifiers:Ljava/util/List;
+       9: return
+
+  public void modify(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: invokestatic  #13                 // Method net/neoforged/neoforge/server/ServerLifecycleHooks.getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+       3: invokevirtual #19                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+       6: astore        4
+       8: aload_1
+       9: invokeinterface #25,  1           // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      14: invokevirtual #31                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      17: checkcast     #37                 // class net/minecraft/resources/ResourceKey
+      20: astore        5
+      22: new           #39                 // class net/fabricmc/fabric/impl/biome/modification/BiomeSelectionContextImpl
+      25: dup
+      26: aload         4
+      28: aload         5
+      30: aload_1
+      31: invokespecial #41                 // Method net/fabricmc/fabric/impl/biome/modification/BiomeSelectionContextImpl."<init>":(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/Holder;)V
+      34: astore        6
+      36: new           #44                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationContextImpl
+      39: dup
+      40: aload         4
+      42: aload_3
+      43: invokespecial #46                 // Method net/fabricmc/fabric/impl/biome/modification/BiomeModificationContextImpl."<init>":(Lnet/minecraft/core/RegistryAccess;Lnet/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder;)V
+      46: astore        7
+      48: aload_0
+      49: getfield      #7                  // Field modifiers:Ljava/util/List;
+      52: invokeinterface #49,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      57: astore        8
+      59: aload         8
+      61: invokeinterface #55,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      66: ifeq          135
+      69: aload         8
+      71: invokeinterface #61,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      76: checkcast     #64                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord
+      79: astore        9
+      81: aload_0
+      82: aload_2
+      83: aload         9
+      85: getfield      #66                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.phase:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      88: invokevirtual #70                 // Method isInPhase:(Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;)Z
+      91: ifeq          132
+      94: aload         9
+      96: getfield      #74                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.selector:Ljava/util/function/Predicate;
+      99: aload         6
+     101: invokeinterface #78,  2           // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+     106: ifeq          132
+     109: getstatic     #84                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl.LOGGER:Lorg/slf4j/Logger;
+     112: ldc           #90                 // String Applying modifier {} to {}
+     114: aload         9
+     116: aload         5
+     118: invokeinterface #92,  4           // InterfaceMethod org/slf4j/Logger.trace:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     123: aload         9
+     125: aload         6
+     127: aload         7
+     129: invokevirtual #98                 // Method net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.apply:(Lnet/fabricmc/fabric/api/biome/v1/BiomeSelectionContext;Lnet/fabricmc/fabric/impl/biome/modification/BiomeModificationContextImpl;)V
+     132: goto          59
+     135: return
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier> codec();
+    Code:
+       0: aload_0
+       1: invokestatic  #102                // Method com/mojang/serialization/MapCodec.unit:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+       4: areturn
+
+  private boolean isInPhase(net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.fabricmc.fabric.api.biome.v1.ModificationPhase);
+    Code:
+       0: aload_1
+       1: getstatic     #108                // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+       4: if_acmpne     14
+       7: aload_2
+       8: getstatic     #114                // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.ADDITIONS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      11: if_acmpeq     56
+      14: aload_1
+      15: getstatic     #119                // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.REMOVE:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+      18: if_acmpne     28
+      21: aload_2
+      22: getstatic     #122                // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.REMOVALS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      25: if_acmpeq     56
+      28: aload_1
+      29: getstatic     #125                // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.MODIFY:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+      32: if_acmpne     42
+      35: aload_2
+      36: getstatic     #128                // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.REPLACEMENTS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      39: if_acmpeq     56
+      42: aload_1
+      43: getstatic     #131                // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.AFTER_EVERYTHING:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+      46: if_acmpne     60
+      49: aload_2
+      50: getstatic     #134                // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.POST_PROCESSING:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      53: if_acmpne     60
+      56: iconst_1
+      57: goto          61
+      60: iconst_0
+      61: ireturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #137,  0            // InvokeDynamic #0:toString:(Lnet/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$FabricBiomeModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #141,  0            // InvokeDynamic #0:hashCode:(Lnet/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$FabricBiomeModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #145,  0            // InvokeDynamic #0:equals:(Lnet/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$FabricBiomeModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.List<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord> modifiers();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field modifiers:Ljava/util/List;
+       4: areturn
+}

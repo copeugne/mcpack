@@ -1,0 +1,127 @@
+Compiled from "BiomeModificationImpl.java"
+public class net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final java.util.Comparator<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord> MODIFIER_ORDER_COMPARATOR;
+
+  public static final net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl INSTANCE;
+
+  private final java.util.List<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord> modifiers;
+
+  private boolean modifiersUnsorted;
+
+  private net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/ArrayList
+       8: dup
+       9: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+      12: putfield      #10                 // Field modifiers:Ljava/util/List;
+      15: aload_0
+      16: iconst_1
+      17: putfield      #16                 // Field modifiersUnsorted:Z
+      20: return
+
+  public void addModifier(net.minecraft.resources.ResourceLocation, net.fabricmc.fabric.api.biome.v1.ModificationPhase, java.util.function.Predicate<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext>, java.util.function.BiConsumer<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext, net.fabricmc.fabric.api.biome.v1.BiomeModificationContext>);
+    Code:
+       0: aload_3
+       1: invokestatic  #20                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       4: pop
+       5: aload         4
+       7: invokestatic  #20                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getfield      #10                 // Field modifiers:Ljava/util/List;
+      15: new           #26                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord
+      18: dup
+      19: aload_2
+      20: aload_1
+      21: aload_3
+      22: aload         4
+      24: invokespecial #28                 // Method net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord."<init>":(Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Predicate;Ljava/util/function/BiConsumer;)V
+      27: invokeinterface #31,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: aload_0
+      34: iconst_1
+      35: putfield      #16                 // Field modifiersUnsorted:Z
+      38: return
+
+  public void addModifier(net.minecraft.resources.ResourceLocation, net.fabricmc.fabric.api.biome.v1.ModificationPhase, java.util.function.Predicate<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext>, java.util.function.Consumer<net.fabricmc.fabric.api.biome.v1.BiomeModificationContext>);
+    Code:
+       0: aload_3
+       1: invokestatic  #20                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       4: pop
+       5: aload         4
+       7: invokestatic  #20                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: pop
+      11: aload_0
+      12: getfield      #10                 // Field modifiers:Ljava/util/List;
+      15: new           #26                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord
+      18: dup
+      19: aload_2
+      20: aload_1
+      21: aload_3
+      22: aload         4
+      24: invokespecial #37                 // Method net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord."<init>":(Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Predicate;Ljava/util/function/Consumer;)V
+      27: invokeinterface #31,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: aload_0
+      34: iconst_1
+      35: putfield      #16                 // Field modifiersUnsorted:Z
+      38: return
+
+  public java.util.List<net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord> getSortedModifiers();
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field modifiersUnsorted:Z
+       4: ifeq          24
+       7: aload_0
+       8: getfield      #10                 // Field modifiers:Ljava/util/List;
+      11: getstatic     #40                 // Field MODIFIER_ORDER_COMPARATOR:Ljava/util/Comparator;
+      14: invokeinterface #44,  2           // InterfaceMethod java/util/List.sort:(Ljava/util/Comparator;)V
+      19: aload_0
+      20: iconst_0
+      21: putfield      #16                 // Field modifiersUnsorted:Z
+      24: aload_0
+      25: getfield      #10                 // Field modifiers:Ljava/util/List;
+      28: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$2(net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord);
+    Code:
+       0: aload_0
+       1: getfield      #48                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.id:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  private static int lambda$static$1(net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.order:I
+       4: ireturn
+
+  private static int lambda$static$0(net.fabricmc.fabric.impl.biome.modification.BiomeModificationImpl$ModifierRecord);
+    Code:
+       0: aload_0
+       1: getfield      #56                 // Field net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl$ModifierRecord.phase:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+       4: invokevirtual #60                 // Method net/fabricmc/fabric/api/biome/v1/ModificationPhase.ordinal:()I
+       7: ireturn
+
+  static {};
+    Code:
+       0: ldc           #11                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl
+       2: invokestatic  #66                 // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+       5: putstatic     #72                 // Field LOGGER:Lorg/slf4j/Logger;
+       8: invokedynamic #76,  0             // InvokeDynamic #0:applyAsInt:()Ljava/util/function/ToIntFunction;
+      13: invokestatic  #80                 // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      16: invokedynamic #86,  0             // InvokeDynamic #1:applyAsInt:()Ljava/util/function/ToIntFunction;
+      21: invokeinterface #87,  2           // InterfaceMethod java/util/Comparator.thenComparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      26: invokedynamic #90,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      31: invokeinterface #94,  2           // InterfaceMethod java/util/Comparator.thenComparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+      36: putstatic     #40                 // Field MODIFIER_ORDER_COMPARATOR:Ljava/util/Comparator;
+      39: new           #11                 // class net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl
+      42: dup
+      43: invokespecial #98                 // Method "<init>":()V
+      46: putstatic     #99                 // Field INSTANCE:Lnet/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl;
+      49: return
+}
