@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+C2ME membership is resolved with no independent generated family. Reuse all
+52 C2ME source captures (259 disassemblies), ending with remaining-hook
+increments 7afc4e46 through 241de3bd and command/plugin boundary 56cbfb4f.
+The complete provider and threading evidence tests both pass, as do scoped
+quality checks. Preserve existing generation/lifecycle changes, conditional
+activation limits and the null scheduling entry. Stop all generic C2ME
+helper tracing. Whole providers: 122 resolved, 14 open. Working groups remain
+410; provisional Moog decisions remain 100. Continue the other providers,
+then canonical membership, before detailed attributes. Final Item 8 gate,
+clean review and main merge remain open.
+
+
 C2ME startup delegates are resolved in 914afefd: eight configuration/listener
 classes read settings and update view distance, with no family. 9afeb260 adds
 all 27 declared common hooks from opts-allocs, opts-dfc, opts-math and
