@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-06
 
+Latest RU checkpoint: terrain-feature roles are RESOLVED in 5d187f9. Shared
+redstone writer source 690e757 (extractor 3460144) closes that direct helper.
+Do not repeat the thirteen terrain features or their writer. Source 04c515f
+(extractor b5e5564) now captures the remaining 35 vegetation implementations;
+manifest 6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6,
+independent r1 exact. Test increment 0fd9f1a reconciles all 53 directly constructed
+RUFeatureTypes implementation classes with captured source. Both cases and
+scoped checks pass. All commits pushed and remote-verified.
+
+Current work: semantic roles for the 35 captured vegetation implementations,
+then remaining common entries, custom tree placers/decorators, full payload and
+overlays. JSON5 exploratory inspection found 29 files (28 classes and one
+manifest), no loader annotations, and parent references only from RUConfigHandler
+and Json5Ops classes. Nested SHA-256:
+2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533.
+This exploratory inspection is not yet bound by the final provider check.
+No runtime is live. Census remains 77 resolved and 59 open; source coverage is
+not provider closure or the final family denominator.
+
+
 Latest RU checkpoint: be03a80 resolves fallen-tree placement and decoration
 links. Eight placed definitions map to six configurations with nineteen packaged
 biome consumers. AttachedToLogsDecorator is captured in 1c53b0f (extractor
