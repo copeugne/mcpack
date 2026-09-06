@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "kotlinforforge-5.11.0-all.jar",
         "fzzy_config-0.7.6+1.21+neoforge.jar",
         "curios-neoforge-9.5.1+1.21.1.jar",
         "createdieselgenerators-1.21.1-1.3.15.jar",
@@ -227,6 +228,12 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "thedarkcolour/kotlinforforge/neoforge/KotlinLanguageLoader.class",
+    "thedarkcolour/kotlinforforge/neoforge/KotlinModContainer.class",
+    "thedarkcolour/kotlinforforge/neoforge/AutoKotlinEventBusSubscriber.class",
+    "thedarkcolour/kotlinforforge/KotlinLanguageProvider.class",
+    "thedarkcolour/kotlinforforge/neoforge/test/KotlinForForge.class",
+    "thedarkcolour/kotlinforforge/test/KotlinForForge.class",
     "me/fzzyhmstrs/fzzy_config/FzzyConfigNeoForge.class",
     "me/fzzyhmstrs/fzzy_config/FzzyConfigNeoForgeClient.class",
     "me/fzzyhmstrs/fzzy_config/util/platform/impl/RegistryBuilderImpl.class",
@@ -3790,6 +3797,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/thedarkcolour.kfflang-5.11.0.jar",
+        "META-INF/jarjar/thedarkcolour.kffmod-5.11.0.jar",
         "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar!/META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
@@ -3876,6 +3885,14 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/thedarkcolour.kfflang-5.11.0.jar": (
+            "kotlinforforge-5.11.0-all.jar",
+            "0ecb6b4e3c7101439f386712c073fd2d9c31b75dc3e7aeffdb130c0517b22a72",
+        ),
+        "META-INF/jarjar/thedarkcolour.kffmod-5.11.0.jar": (
+            "kotlinforforge-5.11.0-all.jar",
+            "61cf0d7962977ba28ad3cd14e609f4c5d8c3dae880c01598a17c76ad0ee0f9a4",
+        ),
         "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar": (
             "comforts-neoforge-9.0.5+1.21.1.jar",
             "5be2f580af278c5707679ceb079aee46d13ffbe6c2f5138c86598a8e90ca3969",
@@ -4299,6 +4316,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("com/jesz/createdieselgenerators/")
                 verbose |= name.startswith("top/theillusivec4/curios/")
                 verbose |= name.startswith("me/fzzyhmstrs/fzzy_config/")
+                verbose |= name.startswith("thedarkcolour/kotlinforforge/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
