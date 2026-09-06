@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Ranged Weapon API membership is resolved from ac503af9. It supplies ranged
+combat attributes, effects, item-use and projectile behavior, no independent
+family. Preserve combat effects for later attribution. Full payload/source
+binding, 28 utility cases and scoped checks pass after accounting for ten
+client assets omitted from the first payload assertion. Whole providers:
+108 resolved, 28 open. No more generic ranged-weapon helper inspection.
+Continue remaining providers and canonical Moog grouping before attributes.
+
+
 CristelLib membership is resolved from 301e7486, 8cf26f9e, 70b3b9ce, 0e6adb61
 and 781e1a8d. It loads consumer packs and configures existing structure sets;
 no independent family. Waystones replacement eligibility is false in the frozen

@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 107 of 136. The exact queue below has 29 open rows.
+Supported provider dispositions: 108 of 136. The exact queue below has 28 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -682,7 +682,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
 | `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
-| `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | `ranged-weapon-provider` (ac503af9), full payload/source binding. | RESOLVED: ranged combat attributes, effects, item use and projectile mechanics. No independent family. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | Existing feature, component and entry captures; tree source 0f263ed, root/condition source f4ad223; focused candidate/provider tests | RESOLVED: Fallen-log candidate, Ashen trial-chamber component, terrain/vegetation, full payload and common-entry roles accounted for. Fallen-log canonical boundary remains open. See final RU disposition below. |
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Sources b335f9e8; test_config_library_provider_scope.py | RESOLVED: Configuration parsing, interface initialization and server settings accessors; no independent family. See configuration library disposition below. |
@@ -7195,3 +7195,33 @@ recorded in their README. No raw evidence was rewritten to pass.
 Whole providers: 107 resolved, 29 open. No family added. Do not continue generic
 CristelLib parser, configuration or version-comparator tracing. Finish remaining
 provider roles and canonical Moog grouping before detailed attributes.
+
+
+### Ranged Weapon API membership resolved
+
+Source ac503af9 binds both entries, common initialization and all ten common
+hooks. Initialization attaches ranged damage/haste effect modifiers; hooks
+register attributes/effects, adjust draw timing and item attributes, and alter
+arrow damage/velocity. NeoForge item-use ticking applies ranged haste. Client
+entry and six client hooks support rendering and item presentation. These are
+combat/item capabilities, with no generated-site registration or authored
+structure design. Preserve combat effects for later encounter attribution.
+
+The archive contains 54 classes, seven translations, three icons/textures and
+four metadata/refmap/mixin files. It has no data resources, templates, services
+or nested archives. The focused case accounts for every nonclass file, checks
+the automatic entries/mixin declarations and binds all thirteen captures to
+the frozen archive. Independent r1 reproduction matches byte for byte.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+28 utility cases and scoped quality checks pass. The first payload assertion
+omitted the ten client assets; the failing test exposed that omission, and
+explicit accounting was corrected. No archive or raw source was changed.
+Whole providers: 108 resolved, 28 open. No family added. Do not continue generic
+weapon mechanics or damage-balance inspection; continue remaining providers
+and canonical Moog grouping before detailed attributes.
