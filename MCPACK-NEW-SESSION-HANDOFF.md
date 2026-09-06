@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild house reconciliation needs all 45 standalone layouts. The existing
+renderer selects them on eight sheets; material groupings are inspection order,
+not family decisions. Authored inhabitants and loot differ, including shulkers,
+piglin brute/hoglin and ordinary domestic furnishings. Reuse preserved content
+and exact definitions alongside views. No new measurement system. Backlog: 60.
+
 Inventory matches 9bb60f9f and independently reproduces byte-for-byte. All 887
 roots remain assigned once in 415 working groups. Canonical-note backlog: 60
 (IDAS 59, AdoraBuild house). Next: all 45 house templates. Required attributes,

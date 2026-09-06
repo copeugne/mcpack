@@ -66,7 +66,7 @@ def parse_args() -> argparse.Namespace:
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
-                 "--adora-monuments", "--adora-ocean"):
+                 "--adora-monuments", "--adora-ocean", "--adora-houses"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -90,13 +90,15 @@ def main() -> None:
                         or cast("bool", args.adora_facilities)
                         or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments)
-                        or cast("bool", args.adora_ocean)) else
+                        or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                   or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
-                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean))
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -211,9 +213,34 @@ def main() -> None:
         namespace = ("adorabuild_structures"
                      if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                         or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
-                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean))
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses))
                      else namespace)
         sheets = {
+            "acacia_bamboo": ["acacia_house_medium_1", "acacia_house_medium_2",
+                              "acacia_house_medium_3", "acacia_house_small_1",
+                              "acacia_house_small_2", "bamboo_house_small_1",
+                              "bamboo_house_small_2"],
+            "birch_cherry": ["birch_house_medium_1", "birch_house_medium_2",
+                             "birch_house_small_1", "birch_house_small_2",
+                             "cherry_house_large_1", "cherry_house_medium_1",
+                             "cherry_house_medium_2"],
+            "nether": ["crimson_house_medium_1", "crimson_house_medium_2",
+                       "warped_house_small_1", "warped_house_small_2"],
+            "end": ["end_house_medium_1", "end_house_medium_2", "end_house_medium_3",
+                    "end_house_small_1", "end_house_small_2"],
+            "oak": ["oak_house_large_1", "oak_house_medium_1", "oak_house_medium_2",
+                    "oak_house_small_1", "oak_house_small_2", "oak_house_small_3",
+                    "oak_hut_1"],
+            "sand": ["red_sand_house_medium_1", "red_sand_house_small_1",
+                     "sand_house_medium_1", "sand_house_medium_2",
+                     "sand_house_small_1", "sand_house_small_2"],
+            "spruce": ["spruce_house_large_1", "spruce_house_medium_1",
+                       "spruce_house_small_1", "spruce_house_small_2",
+                       "spruce_house_small_3"],
+            "dark_oak_jungle_mangrove": ["dark_oak_house_large_1", "dark_oak_house_small_1",
+                                         "jungle_house_small_1", "mangrove_house_small_1"],
+        } if cast("bool", args.adora_houses) else {
             "ocean_architecture": ["ocean_temple_small_1", "ocean_temple_small_2",
                                    "ocean_temple_medium_1", "ocean_temple_medium_2"],
         } if cast("bool", args.adora_ocean) else {
