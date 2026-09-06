@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "Patchouli-1.21.1-93-NEOFORGE.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -202,6 +203,20 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "vazkii/patchouli/common/book/BookRegistry.class",
+    "vazkii/patchouli/common/multiblock/MultiblockRegistry.class",
+    "vazkii/patchouli/common/multiblock/AbstractMultiblock.class",
+    "vazkii/patchouli/common/handler/ReloadContentsHandler.class",
+    "vazkii/patchouli/common/handler/LecternEventHandler.class",
+    "vazkii/patchouli/neoforge/network/NeoForgeNetworkHandler.class",
+
+    "vazkii/patchouli/neoforge/common/NeoForgeModInitializer.class",
+    "vazkii/patchouli/neoforge/client/NeoForgeClientInitializer.class",
+    "vazkii/patchouli/neoforge/xplat/NeoForgeXplatImpl.class",
+    "vazkii/patchouli/neoforge/client/NeoForgeClientXplatImpl.class",
+    "vazkii/patchouli/mixin/AccessorSmithingTransformRecipe.class",
+    "vazkii/patchouli/mixin/AccessorSmithingTrimRecipe.class",
+
     "earth/terrarium/chipped/Chipped.class",
     "earth/terrarium/chipped/neoforge/ChippedNeoForge.class",
     "earth/terrarium/chipped/client/neoforge/ChippedClientNeoForge.class",

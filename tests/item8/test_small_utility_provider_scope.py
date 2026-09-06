@@ -631,3 +631,69 @@ def test_chipped_membership_payload() -> None:
                 assert row["disassembly_sha256"] == hashlib.sha256(
                     (directory / row["disassembly"]).read_bytes()).hexdigest()
         assert captured == expected
+
+
+def test_patchouli_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "Patchouli-1.21.1-93-NEOFORGE.jar")
+    assert source.sha256 == "959af52ed6640c316c3a8469203420be4aeea11ad6603890ba83bf48f5d9f993"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    prefix = "vazkii/patchouli/"
+    entries = {prefix + "neoforge/common/NeoForgeModInitializer.class",
+               prefix + "neoforge/client/NeoForgeClientInitializer.class"}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assets = {n for n in files if n.startswith("assets/")}
+        data = {f"data/minecraft/tags/item/{n}_books.json" for n in ("bookshelf", "lectern")}
+        services = {"META-INF/services/vazkii.patchouli.xplat.I" + n + "XplatAbstractions"
+                    for n in ("", "Client")}
+        assert len(classes) == 198
+        assert len(assets) == 42
+        assert all(n.startswith("assets/patchouli/") and Path(n).suffix in
+                   {".json", ".png", ".ogg"} for n in assets)
+        assert files - classes - assets == data | services | {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml", "logo.png",
+            "pack.mcmeta", "patchouli_xplat.mixins.json"}
+        for name in data:
+            assert json.loads(archive.read(name)) == {
+                "replace": False, "values": ["patchouli:guide_book"]}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "patchouli_xplat.mixins.json"}]
+        config = cast("dict[str, JsonValue]",
+                      json.loads(archive.read("patchouli_xplat.mixins.json")))
+        assert config["package"] == "vazkii.patchouli.mixin"
+        assert not any(config.get(k) for k in ("plugin", "server"))
+        assert set(cast("list[str]", config["mixins"])) == {
+            "AccessorSmithingTransformRecipe", "AccessorSmithingTrimRecipe"}
+        assert len(cast("list[str]", config["client"])) == 8
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == entries
+        expected = entries | {prefix + n + ".class" for n in (
+            "mixin/AccessorSmithingTransformRecipe", "mixin/AccessorSmithingTrimRecipe",
+            "common/book/BookRegistry", "common/handler/LecternEventHandler",
+            "common/handler/ReloadContentsHandler", "common/multiblock/AbstractMultiblock",
+            "common/multiblock/MultiblockRegistry", "neoforge/network/NeoForgeNetworkHandler")}
+        for name in services:
+            expected.add(archive.read(name).decode().strip().replace(".", "/") + ".class")
+        captured: set[str] = set()
+        for label, digest in (
+            ("patchouli-provider",
+             "556bb66d051e4a453adb76d4a8d84b073b9bf0c90564274d1948870ec9762041"),
+            ("patchouli-books",
+             "93320b5af0e1803d4d60cfce77976ace1dec956970af16ce26eb6cf4a67b2d25"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            for row in rows:
+                captured.add(row["class"])
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert row["disassembly_sha256"] == hashlib.sha256(
+                    (directory / row["disassembly"]).read_bytes()).hexdigest()
+        assert captured == expected
