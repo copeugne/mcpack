@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 55 of 136. The exact queue below has 81 open rows.
+Supported provider dispositions: 58 of 136. The exact queue below has 78 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -576,7 +576,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
 | `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `alternate_current-mc1.21-1.9.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `architectury-13.0.8-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
@@ -599,7 +599,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `creatingspace-1.21.1-1.7.18.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Reconcile existing roots, all components and additional feature/entry routes. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
-| `cupboard-1.21-3.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope` | Reuse inactive totem disposition; reconcile Brass and remaining structure/feature entries. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -619,7 +619,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | `letmedespawn-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing mob persistence/discard behavior; no independent family. See small utility provider dispositions below. |
 | `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
 | `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | `lithostitched-alias-code`, `lithostitched-biome-injector-code`, `lithostitched-feature-modifier-code`, `lithostitched-platform-modifier-code`, `lithostitched-pool-additions-code`, `lithostitched-pool-compilation-code`, `lithostitched-processor-registration-code`, `lithostitched-random-block-code`, `lithostitched-street-processor-code`, `lithostitched-surface-lifecycle-code`, `pool-codecs` | Reuse modifier, pool, alias and processor captures; reconcile remaining entry/codec consumers and packaged modifiers. |
-| `lootintegrations-1.21.1-4.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect core loot callbacks and consumers; addon data closures do not close this implementation. |
+| `lootintegrations-1.21.1-4.7.jar` | `lootintegrations-provider` (47047d6), test_small_utility_provider_scope.py | RESOLVED: Core integration loader and loot-list modifier, 43 definitions and seven chest-table targets. No independent family; remains a required loot-attribute input. See disposition below. |
 | `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `moogs_structures-neoforge-1.21.1-alpha-3.0.0.jar` | Eight capture directories bound by test_moog_library_provider_scope.py; latest registration boundaries ee8e2c0. | RESOLVED: shared generation and modification library; no independent authored family or packaged generation resources. See Moog library provider disposition below. |
 | `moonlight-neoforge-1.21.1-3.0.17.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -2006,3 +2006,48 @@ or interpretation of rarity as observed encounter pacing was introduced.
 Provider census is now 55 resolved and 81 open. BOP contribution membership is
 accounted for; canonical pumpkin boundaries and final family integration remain
 separate from provider closure. Item 8 and its eleven-attribute gate remain open.
+
+### Redstone, configuration and loot provider dispositions
+
+The three source captures below reproduce exactly with the commands in their
+source READMEs. The existing small-utility test binds each complete class and
+non-class payload, loader/subscriber entries, declared mixins and exact source
+identities. There are no unaccounted nested archives, generation data, templates,
+service providers or extra entry mechanisms in these payloads.
+
+| Provider | Contribution disposition |
+| --- | --- |
+| Alternate Current (30 classes, 4b722aa) | Server-level wire-handler creation, redstone placement/removal/neighbor hooks, configuration save and operator commands. Wire nodes, queues, connections and update order process existing redstone signals; LevelHelper writes the supplied wire state and updates neighbors. No independent authored family. This is not redstone-equivalence, trap-behavior or performance evidence. |
+| Cupboard (18 classes, 77dd750) | Configuration loading/reloading, client configuration UI, registry/block lookup, math/vector support and five diagnostic/entity-handling mixins. Off-thread entity additions are queued and drained by a later server-thread addEntity call. Conditional entity-load recovery and rotation repair affect existing entities, not authored spawn layouts. No independent family. Optional mixin declarations and thread-name testing remain limitations; this scope result does not prove every injection ran. |
+| Loot Integrations (9 classes, 47047d6) | Reload listener reads integration definitions; the loot-table mixin invokes the manager, which guards recursive application and calls the stack modifier. Weighting, item-count limits, duplicate policy and the additional-map suppression context affect existing loot attribution. No independent authored family. Previously enumerated addons remain consumers of this core loader, not separate evidence of its implementation. |
+
+Frozen Cupboard configuration is bound by SHA-256
+937698438af081495eebab187013f66570218e1443f35db8a2ca0b4cb6d9638b:
+skipErrorOnEntityLoad, debugChunkloadAttempts and forceHeapDumpOnOOM are false;
+logOffthreadEntityAdd is true. Source recovery branches must not be described
+as enabled merely because their implementation exists.
+
+Frozen Loot Integrations configuration is bound by SHA-256
+898873bac11398a75f7faddeb31410246d43be578868ba58d390b58667b44d31:
+skipMapItems is true, skipExistingItems is false, moddedItemWeight is 3, and
+container-table/debug output are false. Map suppression applies to the additional
+integration context, not all original chest maps. The full packaged data is
+43 integration definitions, seven chest tables and the barrier ignored-item tag.
+All definitions use loot_table, integrated_loot_tables and max_result_itemcount.
+The table named empty contains a bone entry. The six other tables contain
+minecraft:empty entries with their actual individual weights preserved by the
+test. The initial test incorrectly expected identical empty entries in all seven
+tables; it failed and was corrected against archive inspection. No raw data was
+changed, and no effective reward frequency is inferred from these declarations.
+
+Validation: 18 focused utility cases, Ruff and Basedpyright pass. A long test line
+was also corrected. Reproduction and verification:
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Current census: 58 resolved providers and 78 open. These closures add no family
+candidate and do not complete the affected families' eleven required attributes.
