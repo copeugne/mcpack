@@ -1,0 +1,560 @@
+Classfile amendments-1.21-2.0.15-neoforge.jar!/net/mehvahdjukaar/amendments/mixins/FireballMixin.class
+  Last modified Jan 1, 1980; size 5464 bytes
+  SHA-256 checksum 131ced9893b459e476e3898743c127605eab297a92f730ba4d6ccf2b078bb83d
+  Compiled from "FireballMixin.java"
+public abstract class net.mehvahdjukaar.amendments.mixins.FireballMixin extends net.minecraft.world.entity.projectile.AbstractHurtingProjectile implements net.mehvahdjukaar.amendments.common.entity.IVisualTransformationProvider
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/mehvahdjukaar/amendments/mixins/FireballMixin
+  super_class: #4                         // net/minecraft/world/entity/projectile/AbstractHurtingProjectile
+  interfaces: 1, fields: 3, methods: 8, attributes: 4
+Constant pool:
+    #1 = Utf8               net/mehvahdjukaar/amendments/mixins/FireballMixin
+    #2 = Class              #1            // net/mehvahdjukaar/amendments/mixins/FireballMixin
+    #3 = Utf8               net/minecraft/world/entity/projectile/AbstractHurtingProjectile
+    #4 = Class              #3            // net/minecraft/world/entity/projectile/AbstractHurtingProjectile
+    #5 = Utf8               net/mehvahdjukaar/amendments/common/entity/IVisualTransformationProvider
+    #6 = Class              #5            // net/mehvahdjukaar/amendments/common/entity/IVisualTransformationProvider
+    #7 = Utf8               FireballMixin.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/world/entity/projectile/Fireball;
+   #11 = Utf8               net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter
+   #12 = Class              #11           // net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter
+   #13 = Utf8               net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter
+   #14 = Class              #13           // net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter
+   #15 = Utf8               Emitter
+   #16 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #17 = Class              #16           // java/lang/invoke/MethodHandles$Lookup
+   #18 = Utf8               java/lang/invoke/MethodHandles
+   #19 = Class              #18           // java/lang/invoke/MethodHandles
+   #20 = Utf8               Lookup
+   #21 = Utf8               amendments$isExtinguished
+   #22 = Utf8               Z
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #24 = Utf8               amendments$trailEmitter
+   #25 = Utf8               Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #26 = Utf8               amendments$tumblingAnimation
+   #27 = Utf8               Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #28 = Utf8               <init>
+   #29 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #30 = Utf8               (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;>;Lnet/minecraft/world/level/Level;)V
+   #31 = Utf8               entityType
+   #32 = Utf8               level
+   #33 = NameAndType        #28:#29       // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #34 = Methodref          #4.#33        // net/minecraft/world/entity/projectile/AbstractHurtingProjectile."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #35 = NameAndType        #21:#22       // amendments$isExtinguished:Z
+   #36 = Fieldref           #2.#35        // net/mehvahdjukaar/amendments/mixins/FireballMixin.amendments$isExtinguished:Z
+   #37 = Utf8               net/mehvahdjukaar/amendments/common/ProjectileStats
+   #38 = Class              #37           // net/mehvahdjukaar/amendments/common/ProjectileStats
+   #39 = Utf8               makeFireballTrialEmitter
+   #40 = Utf8               ()Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #41 = NameAndType        #39:#40       // makeFireballTrialEmitter:()Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #42 = Methodref          #38.#41       // net/mehvahdjukaar/amendments/common/ProjectileStats.makeFireballTrialEmitter:()Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #43 = NameAndType        #24:#25       // amendments$trailEmitter:Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #44 = Fieldref           #2.#43        // net/mehvahdjukaar/amendments/mixins/FireballMixin.amendments$trailEmitter:Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+   #45 = Utf8               makeTumbler
+   #46 = Utf8               ()Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #47 = NameAndType        #45:#46       // makeTumbler:()Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #48 = Methodref          #38.#47       // net/mehvahdjukaar/amendments/common/ProjectileStats.makeTumbler:()Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #49 = NameAndType        #26:#27       // amendments$tumblingAnimation:Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #50 = Fieldref           #2.#49        // net/mehvahdjukaar/amendments/mixins/FireballMixin.amendments$tumblingAnimation:Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+   #51 = Utf8               this
+   #52 = Utf8               Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+   #53 = Utf8               Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;>;
+   #54 = Utf8               Lnet/minecraft/world/entity/EntityType;
+   #55 = Utf8               Lnet/minecraft/world/level/Level;
+   #56 = Utf8               amendments$getVisualTransformation
+   #57 = Utf8               (F)Lorg/joml/Matrix4f;
+   #58 = Utf8               partialTicks
+   #59 = Utf8               org/joml/Matrix4f
+   #60 = Class              #59           // org/joml/Matrix4f
+   #61 = Utf8               ()V
+   #62 = NameAndType        #28:#61       // "<init>":()V
+   #63 = Methodref          #60.#62       // org/joml/Matrix4f."<init>":()V
+   #64 = Utf8               net/mehvahdjukaar/amendments/client/TumblingAnimation
+   #65 = Class              #64           // net/mehvahdjukaar/amendments/client/TumblingAnimation
+   #66 = Utf8               getRotation
+   #67 = Utf8               (F)Lorg/joml/Quaternionf;
+   #68 = NameAndType        #66:#67       // getRotation:(F)Lorg/joml/Quaternionf;
+   #69 = Methodref          #65.#68       // net/mehvahdjukaar/amendments/client/TumblingAnimation.getRotation:(F)Lorg/joml/Quaternionf;
+   #70 = Utf8               rotate
+   #71 = Utf8               (Lorg/joml/Quaternionfc;)Lorg/joml/Matrix4f;
+   #72 = NameAndType        #70:#71       // rotate:(Lorg/joml/Quaternionfc;)Lorg/joml/Matrix4f;
+   #73 = Methodref          #60.#72       // org/joml/Matrix4f.rotate:(Lorg/joml/Quaternionfc;)Lorg/joml/Matrix4f;
+   #74 = Utf8               F
+   #75 = Utf8               getItem
+   #76 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+   #77 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #78 = Utf8               getPickResult
+   #79 = Utf8               Lorg/jetbrains/annotations/Nullable;
+   #80 = NameAndType        #75:#76       // getItem:()Lnet/minecraft/world/item/ItemStack;
+   #81 = Methodref          #2.#80        // net/mehvahdjukaar/amendments/mixins/FireballMixin.getItem:()Lnet/minecraft/world/item/ItemStack;
+   #82 = Utf8               net/minecraft/world/item/ItemStack
+   #83 = Class              #82           // net/minecraft/world/item/ItemStack
+   #84 = Utf8               copyWithCount
+   #85 = Utf8               (I)Lnet/minecraft/world/item/ItemStack;
+   #86 = NameAndType        #84:#85       // copyWithCount:(I)Lnet/minecraft/world/item/ItemStack;
+   #87 = Methodref          #83.#86       // net/minecraft/world/item/ItemStack.copyWithCount:(I)Lnet/minecraft/world/item/ItemStack;
+   #88 = Utf8               displayFireAnimation
+   #89 = Utf8               ()Z
+   #90 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #91 = NameAndType        #32:#90       // level:()Lnet/minecraft/world/level/Level;
+   #92 = Methodref          #2.#91        // net/mehvahdjukaar/amendments/mixins/FireballMixin.level:()Lnet/minecraft/world/level/Level;
+   #93 = Utf8               net/minecraft/world/level/Level
+   #94 = Class              #93           // net/minecraft/world/level/Level
+   #95 = Utf8               isClientSide
+   #96 = NameAndType        #95:#22       // isClientSide:Z
+   #97 = Fieldref           #94.#96       // net/minecraft/world/level/Level.isClientSide:Z
+   #98 = Utf8               getType
+   #99 = Utf8               ()Lnet/minecraft/world/entity/EntityType;
+  #100 = NameAndType        #98:#99       // getType:()Lnet/minecraft/world/entity/EntityType;
+  #101 = Methodref          #2.#100       // net/mehvahdjukaar/amendments/mixins/FireballMixin.getType:()Lnet/minecraft/world/entity/EntityType;
+  #102 = Utf8               net/minecraft/world/entity/EntityType
+  #103 = Class              #102          // net/minecraft/world/entity/EntityType
+  #104 = Utf8               FIREBALL
+  #105 = NameAndType        #104:#54      // FIREBALL:Lnet/minecraft/world/entity/EntityType;
+  #106 = Fieldref           #103.#105     // net/minecraft/world/entity/EntityType.FIREBALL:Lnet/minecraft/world/entity/EntityType;
+  #107 = Utf8               SMALL_FIREBALL
+  #108 = NameAndType        #107:#54      // SMALL_FIREBALL:Lnet/minecraft/world/entity/EntityType;
+  #109 = Fieldref           #103.#108     // net/minecraft/world/entity/EntityType.SMALL_FIREBALL:Lnet/minecraft/world/entity/EntityType;
+  #110 = Utf8               net/mehvahdjukaar/amendments/configs/ClientConfigs
+  #111 = Class              #110          // net/mehvahdjukaar/amendments/configs/ClientConfigs
+  #112 = Utf8               FIREBALL_3D
+  #113 = Utf8               Ljava/util/function/Supplier;
+  #114 = NameAndType        #112:#113     // FIREBALL_3D:Ljava/util/function/Supplier;
+  #115 = Fieldref           #111.#114     // net/mehvahdjukaar/amendments/configs/ClientConfigs.FIREBALL_3D:Ljava/util/function/Supplier;
+  #116 = Utf8               java/util/function/Supplier
+  #117 = Class              #116          // java/util/function/Supplier
+  #118 = Utf8               get
+  #119 = Utf8               ()Ljava/lang/Object;
+  #120 = NameAndType        #118:#119     // get:()Ljava/lang/Object;
+  #121 = InterfaceMethodref #117.#120     // java/util/function/Supplier.get:()Ljava/lang/Object;
+  #122 = Utf8               java/lang/Boolean
+  #123 = Class              #122          // java/lang/Boolean
+  #124 = Utf8               booleanValue
+  #125 = NameAndType        #124:#89      // booleanValue:()Z
+  #126 = Methodref          #123.#125     // java/lang/Boolean.booleanValue:()Z
+  #127 = NameAndType        #88:#89       // displayFireAnimation:()Z
+  #128 = Methodref          #4.#127       // net/minecraft/world/entity/projectile/AbstractHurtingProjectile.displayFireAnimation:()Z
+  #129 = Utf8               shouldBurn
+  #130 = NameAndType        #129:#89      // shouldBurn:()Z
+  #131 = Methodref          #4.#130       // net/minecraft/world/entity/projectile/AbstractHurtingProjectile.shouldBurn:()Z
+  #132 = Utf8               tick
+  #133 = NameAndType        #132:#61      // tick:()V
+  #134 = Methodref          #4.#133       // net/minecraft/world/entity/projectile/AbstractHurtingProjectile.tick:()V
+  #135 = Utf8               GHAST_FIREBALL_TRAIL
+  #136 = NameAndType        #135:#113     // GHAST_FIREBALL_TRAIL:Ljava/util/function/Supplier;
+  #137 = Fieldref           #111.#136     // net/mehvahdjukaar/amendments/configs/ClientConfigs.GHAST_FIREBALL_TRAIL:Ljava/util/function/Supplier;
+  #138 = Utf8               (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #139 = MethodType         #138          //  (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #140 = Utf8               lambda$tick$0
+  #141 = NameAndType        #140:#138     // lambda$tick$0:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #142 = Methodref          #2.#141       // net/mehvahdjukaar/amendments/mixins/FireballMixin.lambda$tick$0:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #143 = MethodHandle       5:#142        // REF_invokeVirtual net/mehvahdjukaar/amendments/mixins/FireballMixin.lambda$tick$0:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #144 = Utf8               java/lang/invoke/LambdaMetafactory
+  #145 = Class              #144          // java/lang/invoke/LambdaMetafactory
+  #146 = Utf8               metafactory
+  #147 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #148 = NameAndType        #146:#147     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #149 = Methodref          #145.#148     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #150 = MethodHandle       6:#149        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #151 = Utf8               emitParticle
+  #152 = Utf8               (Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;)Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;
+  #153 = NameAndType        #151:#152     // emitParticle:(Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;)Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;
+  #154 = InvokeDynamic      #0:#153       // #0:emitParticle:(Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;)Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;
+  #155 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;)V
+  #156 = NameAndType        #132:#155     // tick:(Lnet/minecraft/world/entity/Entity;Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;)V
+  #157 = Methodref          #14.#156      // net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter.tick:(Lnet/minecraft/world/entity/Entity;Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;)V
+  #158 = Utf8               CHARGES_TUMBLE
+  #159 = NameAndType        #158:#113     // CHARGES_TUMBLE:Ljava/util/function/Supplier;
+  #160 = Fieldref           #111.#159     // net/mehvahdjukaar/amendments/configs/ClientConfigs.CHARGES_TUMBLE:Ljava/util/function/Supplier;
+  #161 = Utf8               random
+  #162 = Utf8               Lnet/minecraft/util/RandomSource;
+  #163 = NameAndType        #161:#162     // random:Lnet/minecraft/util/RandomSource;
+  #164 = Fieldref           #2.#163       // net/mehvahdjukaar/amendments/mixins/FireballMixin.random:Lnet/minecraft/util/RandomSource;
+  #165 = Utf8               (Lnet/minecraft/util/RandomSource;)V
+  #166 = NameAndType        #132:#165     // tick:(Lnet/minecraft/util/RandomSource;)V
+  #167 = Methodref          #65.#166      // net/mehvahdjukaar/amendments/client/TumblingAnimation.tick:(Lnet/minecraft/util/RandomSource;)V
+  #168 = Utf8               isInWater
+  #169 = NameAndType        #168:#89      // isInWater:()Z
+  #170 = Methodref          #2.#169       // net/mehvahdjukaar/amendments/mixins/FireballMixin.isInWater:()Z
+  #171 = NameAndType        #95:#89       // isClientSide:()Z
+  #172 = Methodref          #94.#171      // net/minecraft/world/level/Level.isClientSide:()Z
+  #173 = Utf8               clearFire
+  #174 = NameAndType        #173:#61      // clearFire:()V
+  #175 = Methodref          #2.#174       // net/mehvahdjukaar/amendments/mixins/FireballMixin.clearFire:()V
+  #176 = Utf8               playEntityOnFireExtinguishedSound
+  #177 = NameAndType        #176:#61      // playEntityOnFireExtinguishedSound:()V
+  #178 = Methodref          #2.#177       // net/mehvahdjukaar/amendments/mixins/FireballMixin.playEntityOnFireExtinguishedSound:()V
+  #179 = Utf8               discard
+  #180 = NameAndType        #179:#61      // discard:()V
+  #181 = Methodref          #2.#180       // net/mehvahdjukaar/amendments/mixins/FireballMixin.discard:()V
+  #182 = Utf8               p
+  #183 = Utf8               v
+  #184 = Utf8               net/mehvahdjukaar/amendments/reg/ModRegistry
+  #185 = Class              #184          // net/mehvahdjukaar/amendments/reg/ModRegistry
+  #186 = Utf8               FIREBALL_TRAIL_PARTICLE
+  #187 = NameAndType        #186:#113     // FIREBALL_TRAIL_PARTICLE:Ljava/util/function/Supplier;
+  #188 = Fieldref           #185.#187     // net/mehvahdjukaar/amendments/reg/ModRegistry.FIREBALL_TRAIL_PARTICLE:Ljava/util/function/Supplier;
+  #189 = Utf8               net/minecraft/core/particles/ParticleOptions
+  #190 = Class              #189          // net/minecraft/core/particles/ParticleOptions
+  #191 = Utf8               net/minecraft/world/phys/Vec3
+  #192 = Class              #191          // net/minecraft/world/phys/Vec3
+  #193 = Utf8               x
+  #194 = Utf8               D
+  #195 = NameAndType        #193:#194     // x:D
+  #196 = Fieldref           #192.#195     // net/minecraft/world/phys/Vec3.x:D
+  #197 = Utf8               y
+  #198 = NameAndType        #197:#194     // y:D
+  #199 = Fieldref           #192.#198     // net/minecraft/world/phys/Vec3.y:D
+  #200 = Utf8               z
+  #201 = NameAndType        #200:#194     // z:D
+  #202 = Fieldref           #192.#201     // net/minecraft/world/phys/Vec3.z:D
+  #203 = Utf8               getBbWidth
+  #204 = Utf8               ()F
+  #205 = NameAndType        #203:#204     // getBbWidth:()F
+  #206 = Methodref          #2.#205       // net/mehvahdjukaar/amendments/mixins/FireballMixin.getBbWidth:()F
+  #207 = Double             0.8d
+  #209 = Utf8               addParticle
+  #210 = Utf8               (Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+  #211 = NameAndType        #209:#210     // addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+  #212 = Methodref          #94.#211      // net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+  #213 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #214 = Utf8               RuntimeVisibleAnnotations
+  #215 = Utf8               Code
+  #216 = Utf8               LineNumberTable
+  #217 = Utf8               LocalVariableTable
+  #218 = Utf8               LocalVariableTypeTable
+  #219 = Utf8               Signature
+  #220 = Utf8               MethodParameters
+  #221 = Utf8               RuntimeInvisibleAnnotations
+  #222 = Utf8               RuntimeInvisibleTypeAnnotations
+  #223 = Utf8               StackMapTable
+  #224 = Utf8               InnerClasses
+  #225 = Utf8               SourceFile
+  #226 = Utf8               BootstrapMethods
+{
+  private boolean amendments$isExtinguished;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  private final net.mehvahdjukaar.moonlight.api.entity.ParticleTrailEmitter amendments$trailEmitter;
+    descriptor: Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  private final net.mehvahdjukaar.amendments.client.TumblingAnimation amendments$tumblingAnimation;
+    descriptor: Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  protected net.mehvahdjukaar.amendments.mixins.FireballMixin(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.projectile.AbstractHurtingProjectile>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #34                 // Method net/minecraft/world/entity/projectile/AbstractHurtingProjectile."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: aload_0
+         7: iconst_0
+         8: putfield      #36                 // Field amendments$isExtinguished:Z
+        11: aload_0
+        12: invokestatic  #42                 // Method net/mehvahdjukaar/amendments/common/ProjectileStats.makeFireballTrialEmitter:()Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+        15: putfield      #44                 // Field amendments$trailEmitter:Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+        18: aload_0
+        19: invokestatic  #48                 // Method net/mehvahdjukaar/amendments/common/ProjectileStats.makeTumbler:()Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+        22: putfield      #50                 // Field amendments$tumblingAnimation:Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+        25: return
+      LineNumberTable:
+        line 33: 0
+        line 24: 6
+        line 27: 11
+        line 28: 12
+        line 29: 18
+        line 30: 19
+        line 34: 25
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      26     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+            0      26     1 entityType   Lnet/minecraft/world/entity/EntityType;
+            0      26     2 level   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      26     1 entityType   Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;>;
+    Signature: #30                          // (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/projectile/AbstractHurtingProjectile;>;Lnet/minecraft/world/level/Level;)V
+    MethodParameters:
+      Name                           Flags
+      entityType
+      level
+
+  public org.joml.Matrix4f amendments$getVisualTransformation(float);
+    descriptor: (F)Lorg/joml/Matrix4f;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: new           #60                 // class org/joml/Matrix4f
+         3: dup
+         4: invokespecial #63                 // Method org/joml/Matrix4f."<init>":()V
+         7: aload_0
+         8: getfield      #50                 // Field amendments$tumblingAnimation:Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+        11: fload_1
+        12: invokevirtual #69                 // Method net/mehvahdjukaar/amendments/client/TumblingAnimation.getRotation:(F)Lorg/joml/Quaternionf;
+        15: invokevirtual #73                 // Method org/joml/Matrix4f.rotate:(Lorg/joml/Quaternionfc;)Lorg/joml/Matrix4f;
+        18: areturn
+      LineNumberTable:
+        line 38: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+            0      19     1 partialTicks   F
+    MethodParameters:
+      Name                           Flags
+      partialTicks
+
+  public abstract net.minecraft.world.item.ItemStack getItem();
+    descriptor: ()Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #77()
+        org.spongepowered.asm.mixin.Shadow
+
+  public net.minecraft.world.item.ItemStack getPickResult();
+    descriptor: ()Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #81                 // Method getItem:()Lnet/minecraft/world/item/ItemStack;
+         4: iconst_1
+         5: invokevirtual #87                 // Method net/minecraft/world/item/ItemStack.copyWithCount:(I)Lnet/minecraft/world/item/ItemStack;
+         8: areturn
+      LineNumberTable:
+        line 46: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+    RuntimeInvisibleAnnotations:
+      0: #79()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #79(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  public boolean displayFireAnimation();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #92                 // Method level:()Lnet/minecraft/world/level/Level;
+         4: getfield      #97                 // Field net/minecraft/world/level/Level.isClientSide:Z
+         7: ifeq          49
+        10: aload_0
+        11: invokevirtual #101                // Method getType:()Lnet/minecraft/world/entity/EntityType;
+        14: getstatic     #106                // Field net/minecraft/world/entity/EntityType.FIREBALL:Lnet/minecraft/world/entity/EntityType;
+        17: if_acmpeq     30
+        20: aload_0
+        21: invokevirtual #101                // Method getType:()Lnet/minecraft/world/entity/EntityType;
+        24: getstatic     #109                // Field net/minecraft/world/entity/EntityType.SMALL_FIREBALL:Lnet/minecraft/world/entity/EntityType;
+        27: if_acmpne     49
+        30: getstatic     #115                // Field net/mehvahdjukaar/amendments/configs/ClientConfigs.FIREBALL_3D:Ljava/util/function/Supplier;
+        33: invokeinterface #121,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        38: checkcast     #123                // class java/lang/Boolean
+        41: invokevirtual #126                // Method java/lang/Boolean.booleanValue:()Z
+        44: ifeq          49
+        47: iconst_0
+        48: ireturn
+        49: aload_0
+        50: invokespecial #128                // Method net/minecraft/world/entity/projectile/AbstractHurtingProjectile.displayFireAnimation:()Z
+        53: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 30 /* same */
+        frame_type = 18 /* same */
+      LineNumberTable:
+        line 51: 0
+        line 52: 11
+        line 53: 33
+        line 54: 47
+        line 56: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      54     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+
+  protected boolean shouldBurn();
+    descriptor: ()Z
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #36                 // Field amendments$isExtinguished:Z
+         4: ifeq          19
+         7: aload_0
+         8: invokevirtual #101                // Method getType:()Lnet/minecraft/world/entity/EntityType;
+        11: getstatic     #106                // Field net/minecraft/world/entity/EntityType.FIREBALL:Lnet/minecraft/world/entity/EntityType;
+        14: if_acmpne     19
+        17: iconst_0
+        18: ireturn
+        19: aload_0
+        20: invokespecial #131                // Method net/minecraft/world/entity/projectile/AbstractHurtingProjectile.shouldBurn:()Z
+        23: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 19 /* same */
+      LineNumberTable:
+        line 61: 0
+        line 62: 17
+        line 64: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+
+  public void tick();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #134                // Method net/minecraft/world/entity/projectile/AbstractHurtingProjectile.tick:()V
+         4: aload_0
+         5: invokevirtual #92                 // Method level:()Lnet/minecraft/world/level/Level;
+         8: getfield      #97                 // Field net/minecraft/world/level/Level.isClientSide:Z
+        11: ifeq          73
+        14: getstatic     #137                // Field net/mehvahdjukaar/amendments/configs/ClientConfigs.GHAST_FIREBALL_TRAIL:Ljava/util/function/Supplier;
+        17: invokeinterface #121,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        22: checkcast     #123                // class java/lang/Boolean
+        25: invokevirtual #126                // Method java/lang/Boolean.booleanValue:()Z
+        28: ifeq          45
+        31: aload_0
+        32: getfield      #44                 // Field amendments$trailEmitter:Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter;
+        35: aload_0
+        36: aload_0
+        37: invokedynamic #154,  0            // InvokeDynamic #0:emitParticle:(Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;)Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;
+        42: invokevirtual #157                // Method net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter.tick:(Lnet/minecraft/world/entity/Entity;Lnet/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter;)V
+        45: getstatic     #160                // Field net/mehvahdjukaar/amendments/configs/ClientConfigs.CHARGES_TUMBLE:Ljava/util/function/Supplier;
+        48: invokeinterface #121,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        53: checkcast     #123                // class java/lang/Boolean
+        56: invokevirtual #126                // Method java/lang/Boolean.booleanValue:()Z
+        59: ifeq          73
+        62: aload_0
+        63: getfield      #50                 // Field amendments$tumblingAnimation:Lnet/mehvahdjukaar/amendments/client/TumblingAnimation;
+        66: aload_0
+        67: getfield      #164                // Field random:Lnet/minecraft/util/RandomSource;
+        70: invokevirtual #167                // Method net/mehvahdjukaar/amendments/client/TumblingAnimation.tick:(Lnet/minecraft/util/RandomSource;)V
+        73: aload_0
+        74: getfield      #36                 // Field amendments$isExtinguished:Z
+        77: ifne          124
+        80: aload_0
+        81: invokevirtual #170                // Method isInWater:()Z
+        84: ifeq          124
+        87: aload_0
+        88: iconst_1
+        89: putfield      #36                 // Field amendments$isExtinguished:Z
+        92: aload_0
+        93: invokevirtual #92                 // Method level:()Lnet/minecraft/world/level/Level;
+        96: invokevirtual #172                // Method net/minecraft/world/level/Level.isClientSide:()Z
+        99: ifne          124
+       102: aload_0
+       103: invokevirtual #175                // Method clearFire:()V
+       106: aload_0
+       107: invokevirtual #178                // Method playEntityOnFireExtinguishedSound:()V
+       110: aload_0
+       111: invokevirtual #101                // Method getType:()Lnet/minecraft/world/entity/EntityType;
+       114: getstatic     #109                // Field net/minecraft/world/entity/EntityType.SMALL_FIREBALL:Lnet/minecraft/world/entity/EntityType;
+       117: if_acmpne     124
+       120: aload_0
+       121: invokevirtual #181                // Method discard:()V
+       124: return
+      StackMapTable: number_of_entries = 3
+        frame_type = 45 /* same */
+        frame_type = 27 /* same */
+        frame_type = 50 /* same */
+      LineNumberTable:
+        line 69: 0
+        line 70: 4
+        line 71: 14
+        line 72: 31
+        line 80: 45
+        line 82: 73
+        line 83: 87
+        line 84: 92
+        line 85: 102
+        line 86: 106
+        line 87: 110
+        line 88: 120
+        line 92: 124
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     125     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+
+  private void lambda$tick$0(net.minecraft.world.phys.Vec3, net.minecraft.world.phys.Vec3);
+    descriptor: (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=14, locals=3, args_size=3
+         0: aload_0
+         1: invokevirtual #170                // Method isInWater:()Z
+         4: ifeq          8
+         7: return
+         8: aload_0
+         9: invokevirtual #92                 // Method level:()Lnet/minecraft/world/level/Level;
+        12: getstatic     #188                // Field net/mehvahdjukaar/amendments/reg/ModRegistry.FIREBALL_TRAIL_PARTICLE:Ljava/util/function/Supplier;
+        15: invokeinterface #121,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        20: checkcast     #190                // class net/minecraft/core/particles/ParticleOptions
+        23: aload_1
+        24: getfield      #196                // Field net/minecraft/world/phys/Vec3.x:D
+        27: aload_1
+        28: getfield      #199                // Field net/minecraft/world/phys/Vec3.y:D
+        31: aload_1
+        32: getfield      #202                // Field net/minecraft/world/phys/Vec3.z:D
+        35: aload_0
+        36: invokevirtual #206                // Method getBbWidth:()F
+        39: f2d
+        40: ldc2_w        #207                // double 0.8d
+        43: dmul
+        44: dconst_0
+        45: dconst_0
+        46: invokevirtual #212                // Method net/minecraft/world/level/Level.addParticle:(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V
+        49: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 8 /* same */
+      LineNumberTable:
+        line 74: 0
+        line 75: 8
+        line 76: 36
+        line 75: 46
+        line 77: 49
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      50     0  this   Lnet/mehvahdjukaar/amendments/mixins/FireballMixin;
+            0      50     1     p   Lnet/minecraft/world/phys/Vec3;
+            0      50     2     v   Lnet/minecraft/world/phys/Vec3;
+    MethodParameters:
+      Name                           Flags
+      p
+      v
+}
+InnerClasses:
+  public static #15= #12 of #14;          // Emitter=class net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter$Emitter of class net/mehvahdjukaar/moonlight/api/entity/ParticleTrailEmitter
+  public static final #20= #17 of #19;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "FireballMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/projectile/Fireball;]
+    )
+BootstrapMethods:
+  0: #150 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #139 (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+      #143 REF_invokeVirtual net/mehvahdjukaar/amendments/mixins/FireballMixin.lambda$tick$0:(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+      #139 (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V

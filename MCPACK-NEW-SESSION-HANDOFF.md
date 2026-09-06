@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Amendments membership is resolved from 4ece1d82, e248456f and 97966218, with
+Moonlight's existing shared-plugin capture reused. No independent family;
+retain cauldron replacements in existing structure tags as content modifiers.
+Focused payload/source/replacement-target test and scoped quality checks pass.
+Raw javap record EOF whitespace is preserved with a disposition. Whole
+providers: 121 resolved, 15 open. Working groups remain 410 and 100 provisional
+Moog decisions remain. Continue provider membership and grouping before
+attributes; do not trace generic Amendments gameplay internals. No final Item 8
+gate, clean review or main merge has passed.
+
+
 Accessories membership is resolved from 7aab0d60 and c1e2927f: accessory
 inventory/equipment and existing-entity APIs, no independent generated family.
 All entries/common hooks/plugins and full payload are bound by the passing
