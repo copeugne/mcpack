@@ -1,0 +1,71 @@
+Compiled from "ShoulderSurfingCompat.java"
+public class mod.azure.azurelibarmor.common.render.armor.compat.ShoulderSurfingCompat {
+  private static boolean isLoaded;
+
+  public static void init();
+    Code:
+       0: getstatic     #1                  // Field mod/azure/azurelibarmor/common/platform/Services.PLATFORM:Lmod/azure/azurelibarmor/common/platform/services/IPlatformHelper;
+       3: ldc           #7                  // String shouldersurfing
+       5: invokeinterface #9,  2            // InterfaceMethod mod/azure/azurelibarmor/common/platform/services/IPlatformHelper.isModLoaded:(Ljava/lang/String;)Z
+      10: ifeq          17
+      13: iconst_1
+      14: putstatic     #15                 // Field isLoaded:Z
+      17: return
+
+  public static boolean isLoaded();
+    Code:
+       0: getstatic     #15                 // Field isLoaded:Z
+       3: ireturn
+
+  public static float getAlpha(net.minecraft.world.entity.Entity);
+    Code:
+       0: invokestatic  #21                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #27                 // Method net/minecraft/client/Minecraft.getCameraEntity:()Lnet/minecraft/world/entity/Entity;
+       6: astore_2
+       7: invokestatic  #31                 // Method com/github/exopandora/shouldersurfing/api/client/ShoulderSurfing.getInstance:()Lcom/github/exopandora/shouldersurfing/api/client/IShoulderSurfing;
+      10: invokeinterface #36,  1           // InterfaceMethod com/github/exopandora/shouldersurfing/api/client/IShoulderSurfing.getCameraEntityRenderer:()Lcom/github/exopandora/shouldersurfing/api/client/ICameraEntityRenderer;
+      15: astore_3
+      16: aload_2
+      17: ifnonnull     22
+      20: fconst_1
+      21: freturn
+      22: aload_0
+      23: aload_2
+      24: invokevirtual #42                 // Method net/minecraft/world/entity/Entity.is:(Lnet/minecraft/world/entity/Entity;)Z
+      27: ifeq          54
+      30: aload_3
+      31: invokeinterface #48,  1           // InterfaceMethod com/github/exopandora/shouldersurfing/api/client/ICameraEntityRenderer.isRenderingCameraEntity:()Z
+      36: ifeq          54
+      39: aload_3
+      40: dup
+      41: invokestatic  #54                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      44: pop
+      45: invokedynamic #60,  0             // InvokeDynamic #0:get:(Lcom/github/exopandora/shouldersurfing/api/client/ICameraEntityRenderer;)Ljava/util/function/Supplier;
+      50: astore_1
+      51: goto          60
+      54: invokedynamic #64,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      59: astore_1
+      60: aload_1
+      61: invokeinterface #67,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      66: checkcast     #72                 // class java/lang/Float
+      69: invokevirtual #74                 // Method java/lang/Float.floatValue:()F
+      72: freturn
+
+  private mod.azure.azurelibarmor.common.render.armor.compat.ShoulderSurfingCompat();
+    Code:
+       0: aload_0
+       1: invokespecial #78                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static java.lang.Float lambda$getAlpha$0();
+    Code:
+       0: fconst_1
+       1: invokestatic  #84                 // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       4: areturn
+
+  static {};
+    Code:
+       0: iconst_0
+       1: putstatic     #15                 // Field isLoaded:Z
+       4: return
+}
