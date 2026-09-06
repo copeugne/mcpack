@@ -1,0 +1,654 @@
+Compiled from "FabricLoaderImpl.java"
+public final class net.fabricmc.loader.impl.FabricLoaderImpl extends net.fabricmc.loader.FabricLoader {
+  public static final net.fabricmc.loader.impl.FabricLoaderImpl INSTANCE;
+
+  private final java.util.Map<java.lang.String, net.fabricmc.loader.impl.ModContainerImpl> modMap;
+
+  private final java.util.List<net.fabricmc.loader.impl.ModContainerImpl> mods;
+
+  private final com.google.common.collect.Multimap<java.lang.String, java.lang.String> modAliases;
+
+  private final java.util.Map<java.lang.String, java.util.function.Supplier<net.fabricmc.loader.api.LanguageAdapter>> adapterMap;
+
+  private final net.fabricmc.loader.impl.entrypoint.EntrypointStorage entrypointStorage;
+
+  private final net.fabricmc.loader.api.ObjectShare objectShare;
+
+  private volatile net.fabricmc.loader.impl.MappingResolverImpl mappingResolver;
+
+  private java.lang.String[] launchArgs;
+
+  private boolean loadedFMLMods;
+
+  private net.fabricmc.loader.impl.FabricLoaderImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #45                 // Method net/fabricmc/loader/FabricLoader."<init>":()V
+       4: aload_0
+       5: new           #47                 // class java/util/HashMap
+       8: dup
+       9: invokespecial #48                 // Method java/util/HashMap."<init>":()V
+      12: putfield      #50                 // Field modMap:Ljava/util/Map;
+      15: aload_0
+      16: new           #52                 // class java/util/ArrayList
+      19: dup
+      20: invokespecial #53                 // Method java/util/ArrayList."<init>":()V
+      23: putfield      #55                 // Field mods:Ljava/util/List;
+      26: aload_0
+      27: invokestatic  #61                 // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+      30: putfield      #63                 // Field modAliases:Lcom/google/common/collect/Multimap;
+      33: aload_0
+      34: new           #47                 // class java/util/HashMap
+      37: dup
+      38: invokespecial #48                 // Method java/util/HashMap."<init>":()V
+      41: putfield      #65                 // Field adapterMap:Ljava/util/Map;
+      44: aload_0
+      45: new           #67                 // class net/fabricmc/loader/impl/entrypoint/EntrypointStorage
+      48: dup
+      49: invokespecial #68                 // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage."<init>":()V
+      52: putfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+      55: aload_0
+      56: new           #72                 // class net/fabricmc/loader/impl/ObjectShareImpl
+      59: dup
+      60: invokespecial #73                 // Method net/fabricmc/loader/impl/ObjectShareImpl."<init>":()V
+      63: putfield      #75                 // Field objectShare:Lnet/fabricmc/loader/api/ObjectShare;
+      66: return
+
+  public java.lang.String getRawGameVersion();
+    Code:
+       0: invokestatic  #84                 // Method net/neoforged/fml/loading/FMLLoader.versionInfo:()Lnet/neoforged/fml/loading/VersionInfo;
+       3: invokevirtual #89                 // Method net/neoforged/fml/loading/VersionInfo.mcVersion:()Ljava/lang/String;
+       6: areturn
+
+  public java.lang.Object getGameInstance();
+    Code:
+       0: new           #93                 // class java/lang/UnsupportedOperationException
+       3: dup
+       4: invokespecial #94                 // Method java/lang/UnsupportedOperationException."<init>":()V
+       7: athrow
+
+  public net.fabricmc.api.EnvType getEnvironmentType();
+    Code:
+       0: getstatic     #102                // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: getstatic     #107                // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+       6: if_acmpne     15
+       9: getstatic     #112                // Field net/fabricmc/api/EnvType.CLIENT:Lnet/fabricmc/api/EnvType;
+      12: goto          18
+      15: getstatic     #115                // Field net/fabricmc/api/EnvType.SERVER:Lnet/fabricmc/api/EnvType;
+      18: areturn
+
+  public java.nio.file.Path getGameDir();
+    Code:
+       0: getstatic     #123                // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #126                // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: invokeinterface #131,  1          // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+      11: invokeinterface #134,  1          // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      16: areturn
+
+  public java.io.File getGameDirectory();
+    Code:
+       0: aload_0
+       1: invokevirtual #139                // Method getGameDir:()Ljava/nio/file/Path;
+       4: invokeinterface #142,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+       9: areturn
+
+  public java.nio.file.Path getConfigDir();
+    Code:
+       0: getstatic     #146                // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #126                // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.io.File getConfigDirectory();
+    Code:
+       0: aload_0
+       1: invokevirtual #149                // Method getConfigDir:()Ljava/nio/file/Path;
+       4: invokeinterface #142,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+       9: areturn
+
+  public <T> java.util.List<T> getEntrypoints(java.lang.String, java.lang.Class<T>);
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #154                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.getEntrypoints:(Ljava/lang/String;Ljava/lang/Class;)Ljava/util/List;
+       9: areturn
+
+  public <T> java.util.List<net.fabricmc.loader.api.entrypoint.EntrypointContainer<T>> getEntrypointContainers(java.lang.String, java.lang.Class<T>);
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #163                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.getEntrypointContainers:(Ljava/lang/String;Ljava/lang/Class;)Ljava/util/List;
+       9: areturn
+
+  public <T> void invokeEntrypoints(java.lang.String, java.lang.Class<T>, java.util.function.Consumer<? super T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #172                // Method hasEntrypoints:(Ljava/lang/String;)Z
+       5: ifne          25
+       8: getstatic     #178                // Field net/fabricmc/loader/impl/util/log/LogCategory.ENTRYPOINT:Lnet/fabricmc/loader/impl/util/log/LogCategory;
+      11: ldc           #180                // String No subscribers for entrypoint \'%s\'
+      13: iconst_1
+      14: anewarray     #182                // class java/lang/Object
+      17: dup
+      18: iconst_0
+      19: aload_1
+      20: aastore
+      21: invokestatic  #188                // Method net/fabricmc/loader/impl/util/log/Log.debug:(Lnet/fabricmc/loader/impl/util/log/LogCategory;Ljava/lang/String;[Ljava/lang/Object;)V
+      24: return
+      25: aconst_null
+      26: astore        4
+      28: getstatic     #190                // Field INSTANCE:Lnet/fabricmc/loader/impl/FabricLoaderImpl;
+      31: aload_1
+      32: aload_2
+      33: invokevirtual #191                // Method getEntrypointContainers:(Ljava/lang/String;Ljava/lang/Class;)Ljava/util/List;
+      36: astore        5
+      38: getstatic     #178                // Field net/fabricmc/loader/impl/util/log/LogCategory.ENTRYPOINT:Lnet/fabricmc/loader/impl/util/log/LogCategory;
+      41: ldc           #193                // String Iterating over entrypoint \'%s\'
+      43: iconst_1
+      44: anewarray     #182                // class java/lang/Object
+      47: dup
+      48: iconst_0
+      49: aload_1
+      50: aastore
+      51: invokestatic  #188                // Method net/fabricmc/loader/impl/util/log/Log.debug:(Lnet/fabricmc/loader/impl/util/log/LogCategory;Ljava/lang/String;[Ljava/lang/Object;)V
+      54: aload         5
+      56: invokeinterface #199,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      61: astore        6
+      63: aload         6
+      65: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      70: ifeq          126
+      73: aload         6
+      75: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      80: checkcast     #212                // class net/fabricmc/loader/api/entrypoint/EntrypointContainer
+      83: astore        7
+      85: aload_3
+      86: aload         7
+      88: invokeinterface #215,  1          // InterfaceMethod net/fabricmc/loader/api/entrypoint/EntrypointContainer.getEntrypoint:()Ljava/lang/Object;
+      93: invokeinterface #221,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      98: goto          123
+     101: astore        8
+     103: aload         8
+     105: aload         4
+     107: aload_1
+     108: aload         7
+     110: invokedynamic #245,  0            // InvokeDynamic #0:apply:(Ljava/lang/String;Lnet/fabricmc/loader/api/entrypoint/EntrypointContainer;)Ljava/util/function/Function;
+     115: invokestatic  #251                // Method net/fabricmc/loader/impl/util/ExceptionUtil.gatherExceptions:(Ljava/lang/Throwable;Ljava/lang/Throwable;Ljava/util/function/Function;)Ljava/lang/Throwable;
+     118: checkcast     #201                // class java/lang/RuntimeException
+     121: astore        4
+     123: goto          63
+     126: aload         4
+     128: ifnull        134
+     131: aload         4
+     133: athrow
+     134: return
+    Exception table:
+       from    to  target type
+          85    98   101   Class java/lang/Throwable
+
+  public net.fabricmc.loader.impl.MappingResolverImpl getMappingResolver();
+    Code:
+       0: aload_0
+       1: getfield      #268                // Field mappingResolver:Lnet/fabricmc/loader/impl/MappingResolverImpl;
+       4: ifnonnull     39
+       7: aload_0
+       8: dup
+       9: astore_1
+      10: monitorenter
+      11: aload_0
+      12: getfield      #268                // Field mappingResolver:Lnet/fabricmc/loader/impl/MappingResolverImpl;
+      15: ifnonnull     29
+      18: aload_0
+      19: new           #270                // class net/fabricmc/loader/impl/MappingResolverImpl
+      22: dup
+      23: invokespecial #271                // Method net/fabricmc/loader/impl/MappingResolverImpl."<init>":()V
+      26: putfield      #268                // Field mappingResolver:Lnet/fabricmc/loader/impl/MappingResolverImpl;
+      29: aload_1
+      30: monitorexit
+      31: goto          39
+      34: astore_2
+      35: aload_1
+      36: monitorexit
+      37: aload_2
+      38: athrow
+      39: aload_0
+      40: getfield      #268                // Field mappingResolver:Lnet/fabricmc/loader/impl/MappingResolverImpl;
+      43: areturn
+    Exception table:
+       from    to  target type
+          11    31    34   any
+          34    37    34   any
+
+  public net.fabricmc.loader.api.ObjectShare getObjectShare();
+    Code:
+       0: aload_0
+       1: getfield      #75                 // Field objectShare:Lnet/fabricmc/loader/api/ObjectShare;
+       4: areturn
+
+  public java.util.Optional<net.fabricmc.loader.api.ModContainer> getModContainer(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field modMap:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #278,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #280                // class net/fabricmc/loader/api/ModContainer
+      13: invokestatic  #286                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+      16: areturn
+
+  public java.util.Collection<net.fabricmc.loader.api.ModContainer> getAllMods();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field mods:Ljava/util/List;
+       4: invokestatic  #296                // Method java/util/Collections.unmodifiableList:(Ljava/util/List;)Ljava/util/List;
+       7: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field modMap:Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #301,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: getstatic     #305                // Field net/neoforged/fml/loading/FMLEnvironment.production:Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public java.lang.String[] getLaunchArguments(boolean);
+    Code:
+       0: aload_0
+       1: getfield      #309                // Field launchArgs:[Ljava/lang/String;
+       4: ifnonnull     54
+       7: ldc_w         #311                // class cpw/mods/modlauncher/Launcher
+      10: ldc_w         #313                // String argumentHandler
+      13: invokevirtual #317                // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+      16: astore_2
+      17: aload_2
+      18: iconst_1
+      19: invokevirtual #323                // Method java/lang/reflect/Field.setAccessible:(Z)V
+      22: aload_2
+      23: getstatic     #326                // Field cpw/mods/modlauncher/Launcher.INSTANCE:Lcpw/mods/modlauncher/Launcher;
+      26: invokevirtual #327                // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      29: checkcast     #329                // class cpw/mods/modlauncher/ArgumentHandler
+      32: astore_3
+      33: aload_0
+      34: aload_3
+      35: invokevirtual #333                // Method cpw/mods/modlauncher/ArgumentHandler.buildArgumentList:()[Ljava/lang/String;
+      38: putfield      #309                // Field launchArgs:[Ljava/lang/String;
+      41: goto          54
+      44: astore_2
+      45: new           #201                // class java/lang/RuntimeException
+      48: dup
+      49: aload_2
+      50: invokespecial #336                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      53: athrow
+      54: aload_0
+      55: getfield      #309                // Field launchArgs:[Ljava/lang/String;
+      58: areturn
+    Exception table:
+       from    to  target type
+           7    41    44   Class java/lang/Throwable
+
+  public boolean hasEntrypoints(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+       4: aload_1
+       5: invokevirtual #342                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.hasEntrypoints:(Ljava/lang/String;)Z
+       8: ireturn
+
+  public java.util.Collection<java.lang.Object> getModInstances(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+       4: invokevirtual #348                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.getModInstances:()Ljava/util/Map;
+       7: aload_1
+       8: invokeinterface #278,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #195                // class java/util/Collection
+      16: areturn
+
+  public void addFmlMods(java.util.List<? extends net.neoforged.neoforgespi.language.IModInfo>);
+    Code:
+       0: aload_0
+       1: getfield      #354                // Field loadedFMLMods:Z
+       4: ifne          158
+       7: aload_1
+       8: invokeinterface #357,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      13: astore_2
+      14: aload_2
+      15: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      20: ifeq          153
+      23: aload_2
+      24: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      29: checkcast     #359                // class net/neoforged/neoforgespi/language/IModInfo
+      32: astore_3
+      33: new           #361                // class net/fabricmc/loader/impl/ModContainerImpl
+      36: dup
+      37: aload_3
+      38: invokespecial #364                // Method net/fabricmc/loader/impl/ModContainerImpl."<init>":(Lnet/neoforged/neoforgespi/language/IModInfo;)V
+      41: astore        4
+      43: aload_0
+      44: getfield      #50                 // Field modMap:Ljava/util/Map;
+      47: aload_3
+      48: invokeinterface #367,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+      53: aload         4
+      55: invokeinterface #371,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      60: ifnull        82
+      63: new           #373                // class java/lang/IllegalStateException
+      66: dup
+      67: aload_3
+      68: invokeinterface #367,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+      73: invokedynamic #385,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      78: invokespecial #388                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      81: athrow
+      82: aload_0
+      83: getfield      #55                 // Field mods:Ljava/util/List;
+      86: aload         4
+      88: invokeinterface #391,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      93: pop
+      94: aload         4
+      96: invokevirtual #395                // Method net/fabricmc/loader/impl/ModContainerImpl.getMetadata:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+      99: invokeinterface #400,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getProvides:()Ljava/util/Collection;
+     104: invokeinterface #199,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     109: astore        5
+     111: aload         5
+     113: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     118: ifeq          150
+     121: aload         5
+     123: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     128: checkcast     #223                // class java/lang/String
+     131: astore        6
+     133: aload_0
+     134: getfield      #50                 // Field modMap:Ljava/util/Map;
+     137: aload         6
+     139: aload         4
+     141: invokeinterface #403,  3          // InterfaceMethod java/util/Map.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     146: pop
+     147: goto          111
+     150: goto          14
+     153: aload_0
+     154: iconst_1
+     155: putfield      #354                // Field loadedFMLMods:Z
+     158: return
+
+  public void aliasMods(com.google.common.collect.Multimap<java.lang.String, java.lang.String>);
+    Code:
+       0: aload_0
+       1: getfield      #63                 // Field modAliases:Lcom/google/common/collect/Multimap;
+       4: aload_1
+       5: invokeinterface #418,  2          // InterfaceMethod com/google/common/collect/Multimap.putAll:(Lcom/google/common/collect/Multimap;)Z
+      10: pop
+      11: return
+
+  public java.util.Collection<java.lang.String> getModAliases(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #63                 // Field modAliases:Lcom/google/common/collect/Multimap;
+       4: aload_1
+       5: invokeinterface #424,  2          // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      10: areturn
+
+  public void setup();
+    Code:
+       0: aload_0
+       1: invokevirtual #428                // Method setupLanguageAdapters:()V
+       4: aload_0
+       5: invokevirtual #431                // Method setupMods:()V
+       8: return
+
+  private void setupLanguageAdapters();
+    Code:
+       0: aload_0
+       1: getfield      #65                 // Field adapterMap:Ljava/util/Map;
+       4: ldc_w         #433                // String default
+       7: invokedynamic #443,  0            // InvokeDynamic #2:get:()Ljava/util/function/Supplier;
+      12: invokeinterface #371,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      17: pop
+      18: aload_0
+      19: getfield      #55                 // Field mods:Ljava/util/List;
+      22: invokeinterface #357,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      27: astore_1
+      28: aload_1
+      29: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      34: ifeq          206
+      37: aload_1
+      38: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      43: checkcast     #361                // class net/fabricmc/loader/impl/ModContainerImpl
+      46: astore_2
+      47: aload_2
+      48: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+      51: invokeinterface #449,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getLanguageAdapterDefinitions:()Ljava/util/Map;
+      56: invokeinterface #453,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      61: invokeinterface #456,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      66: astore_3
+      67: aload_3
+      68: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      73: ifeq          203
+      76: aload_3
+      77: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      82: checkcast     #9                  // class java/util/Map$Entry
+      85: astore        4
+      87: aload_0
+      88: getfield      #65                 // Field adapterMap:Ljava/util/Map;
+      91: aload         4
+      93: invokeinterface #459,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      98: invokeinterface #301,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     103: ifeq          166
+     106: new           #201                // class java/lang/RuntimeException
+     109: dup
+     110: aload         4
+     112: invokeinterface #459,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     117: checkcast     #223                // class java/lang/String
+     120: aload         4
+     122: invokeinterface #462,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     127: checkcast     #223                // class java/lang/String
+     130: aload_0
+     131: getfield      #65                 // Field adapterMap:Ljava/util/Map;
+     134: aload         4
+     136: invokeinterface #459,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     141: invokeinterface #278,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     146: checkcast     #464                // class java/util/function/Supplier
+     149: invokeinterface #468,  1          // InterfaceMethod java/util/function/Supplier.getClass:()Ljava/lang/Class;
+     154: invokevirtual #471                // Method java/lang/Class.getName:()Ljava/lang/String;
+     157: invokedynamic #476,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     162: invokespecial #477                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     165: athrow
+     166: aload         4
+     168: invokedynamic #485,  0            // InvokeDynamic #4:get:(Ljava/util/Map$Entry;)Lcom/google/common/base/Supplier;
+     173: invokestatic  #491                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+     176: astore        5
+     178: aload_0
+     179: getfield      #65                 // Field adapterMap:Ljava/util/Map;
+     182: aload         4
+     184: invokeinterface #459,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     189: checkcast     #223                // class java/lang/String
+     192: aload         5
+     194: invokeinterface #371,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     199: pop
+     200: goto          67
+     203: goto          28
+     206: return
+
+  private void setupMods();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field mods:Ljava/util/List;
+       4: invokeinterface #357,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: astore_1
+      10: aload_1
+      11: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          232
+      19: aload_1
+      20: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #361                // class net/fabricmc/loader/impl/ModContainerImpl
+      28: astore_2
+      29: aload_2
+      30: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+      33: invokeinterface #502,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getOldInitializers:()Ljava/util/Collection;
+      38: invokeinterface #199,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      43: astore_3
+      44: aload_3
+      45: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      50: ifeq          90
+      53: aload_3
+      54: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      59: checkcast     #223                // class java/lang/String
+      62: astore        4
+      64: aload_2
+      65: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+      68: invokeinterface #505,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getOldStyleLanguageAdapter:()Ljava/lang/String;
+      73: astore        5
+      75: aload_0
+      76: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+      79: aload_2
+      80: aload         5
+      82: aload         4
+      84: invokevirtual #509                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.addDeprecated:(Lnet/fabricmc/loader/impl/ModContainerImpl;Ljava/lang/String;Ljava/lang/String;)V
+      87: goto          44
+      90: aload_2
+      91: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+      94: invokeinterface #512,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getEntrypointKeys:()Ljava/util/Collection;
+      99: invokeinterface #199,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     104: astore_3
+     105: aload_3
+     106: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     111: ifeq          187
+     114: aload_3
+     115: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     120: checkcast     #223                // class java/lang/String
+     123: astore        4
+     125: aload_2
+     126: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+     129: aload         4
+     131: invokeinterface #515,  2          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getEntrypoints:(Ljava/lang/String;)Ljava/util/List;
+     136: invokeinterface #357,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     141: astore        5
+     143: aload         5
+     145: invokeinterface #207,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     150: ifeq          184
+     153: aload         5
+     155: invokeinterface #210,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     160: checkcast     #517                // class net/fabricmc/loader/impl/metadata/EntrypointMetadata
+     163: astore        6
+     165: aload_0
+     166: getfield      #70                 // Field entrypointStorage:Lnet/fabricmc/loader/impl/entrypoint/EntrypointStorage;
+     169: aload_2
+     170: aload         4
+     172: aload         6
+     174: aload_0
+     175: getfield      #65                 // Field adapterMap:Ljava/util/Map;
+     178: invokevirtual #520                // Method net/fabricmc/loader/impl/entrypoint/EntrypointStorage.add:(Lnet/fabricmc/loader/impl/ModContainerImpl;Ljava/lang/String;Lnet/fabricmc/loader/impl/metadata/EntrypointMetadata;Ljava/util/Map;)V
+     181: goto          143
+     184: goto          105
+     187: goto          229
+     190: astore_3
+     191: new           #201                // class java/lang/RuntimeException
+     194: dup
+     195: ldc_w         #522                // String Failed to setup mod %s (%s)
+     198: iconst_2
+     199: anewarray     #182                // class java/lang/Object
+     202: dup
+     203: iconst_0
+     204: aload_2
+     205: invokevirtual #446                // Method net/fabricmc/loader/impl/ModContainerImpl.getInfo:()Lnet/fabricmc/loader/impl/metadata/LoaderModMetadata;
+     208: invokeinterface #523,  1          // InterfaceMethod net/fabricmc/loader/impl/metadata/LoaderModMetadata.getName:()Ljava/lang/String;
+     213: aastore
+     214: dup
+     215: iconst_1
+     216: aload_2
+     217: invokevirtual #527                // Method net/fabricmc/loader/impl/ModContainerImpl.getOrigin:()Lnet/fabricmc/loader/api/metadata/ModOrigin;
+     220: aastore
+     221: invokestatic  #531                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     224: aload_3
+     225: invokespecial #534                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+     228: athrow
+     229: goto          10
+     232: return
+    Exception table:
+       from    to  target type
+          29   187   190   Class java/lang/Exception
+
+  public net.fabricmc.loader.api.MappingResolver getMappingResolver();
+    Code:
+       0: aload_0
+       1: invokevirtual #542                // Method getMappingResolver:()Lnet/fabricmc/loader/impl/MappingResolverImpl;
+       4: areturn
+
+  private static net.fabricmc.loader.api.LanguageAdapter lambda$setupLanguageAdapters$2(java.util.Map$Entry);
+    Code:
+       0: aload_0
+       1: invokeinterface #462,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       6: checkcast     #223                // class java/lang/String
+       9: iconst_1
+      10: invokestatic  #548                // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      13: invokevirtual #552                // Method java/lang/Thread.getContextClassLoader:()Ljava/lang/ClassLoader;
+      16: invokestatic  #556                // Method java/lang/Class.forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+      19: iconst_0
+      20: anewarray     #225                // class java/lang/Class
+      23: invokevirtual #560                // Method java/lang/Class.getDeclaredConstructor:([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+      26: iconst_0
+      27: anewarray     #182                // class java/lang/Object
+      30: invokevirtual #566                // Method java/lang/reflect/Constructor.newInstance:([Ljava/lang/Object;)Ljava/lang/Object;
+      33: checkcast     #568                // class net/fabricmc/loader/api/LanguageAdapter
+      36: areturn
+      37: astore_1
+      38: new           #201                // class java/lang/RuntimeException
+      41: dup
+      42: aload_0
+      43: invokeinterface #459,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      48: checkcast     #223                // class java/lang/String
+      51: invokedynamic #571,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      56: aload_1
+      57: invokespecial #534                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      60: athrow
+    Exception table:
+       from    to  target type
+           0    36    37   Class java/lang/Exception
+
+  private static net.fabricmc.loader.api.LanguageAdapter lambda$setupLanguageAdapters$1();
+    Code:
+       0: getstatic     #576                // Field net/fabricmc/loader/impl/util/DefaultLanguageAdapter.INSTANCE:Lnet/fabricmc/loader/impl/util/DefaultLanguageAdapter;
+       3: areturn
+
+  private static java.lang.RuntimeException lambda$invokeEntrypoints$0(java.lang.String, net.fabricmc.loader.api.entrypoint.EntrypointContainer, java.lang.Throwable);
+    Code:
+       0: new           #201                // class java/lang/RuntimeException
+       3: dup
+       4: ldc_w         #578                // String Could not execute entrypoint stage \'%s\' due to errors, provided by \'%s\' at \'%s\'!
+       7: iconst_3
+       8: anewarray     #182                // class java/lang/Object
+      11: dup
+      12: iconst_0
+      13: aload_0
+      14: aastore
+      15: dup
+      16: iconst_1
+      17: aload_1
+      18: invokeinterface #582,  1          // InterfaceMethod net/fabricmc/loader/api/entrypoint/EntrypointContainer.getProvider:()Lnet/fabricmc/loader/api/ModContainer;
+      23: invokeinterface #585,  1          // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+      28: invokeinterface #590,  1          // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getId:()Ljava/lang/String;
+      33: aastore
+      34: dup
+      35: iconst_2
+      36: aload_1
+      37: invokeinterface #593,  1          // InterfaceMethod net/fabricmc/loader/api/entrypoint/EntrypointContainer.getDefinition:()Ljava/lang/String;
+      42: aastore
+      43: invokestatic  #531                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      46: aload_2
+      47: invokespecial #534                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+      50: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #598                // Method net/fabricmc/loader/impl/FabricLoaderImpl$InitHelper.get:()Lnet/fabricmc/loader/impl/FabricLoaderImpl;
+       3: putstatic     #190                // Field INSTANCE:Lnet/fabricmc/loader/impl/FabricLoaderImpl;
+       6: return
+}
