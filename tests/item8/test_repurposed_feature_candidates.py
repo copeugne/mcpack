@@ -230,3 +230,64 @@ def test_repurposed_residual_component_links() -> None:  # noqa: PLR0915
             else:
                 assert prefix + f"worldgen/structure/village_{parts[1]}.json" in documents
                 assert any(p in {"houses", "streets", "villagers", "mobs"} for p in parts[2:])
+
+
+def test_repurposed_complete_feature_type_partition() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name.startswith("repurposed_structures-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == (
+        "aeb473f0a0a0632cea089377cdd9f66c42cf6f97557fd32c368ac40635285dd2"
+    )
+    folder = Path("evidence/item-8/sources/repurposed-feature-roles")
+    raw = (folder / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "4e90a8ed5ea83a2db56830de2cd50d5dc2c5ed1149eb0d0ad06477eed7409230"
+    )
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    with ZipFile(source.path) as archive:
+        feature_prefix = "com/telepathicgrunt/repurposedstructures/world/features/"
+        feature_classes = {n for n in archive.namelist() if n.endswith(".class")
+                           and n.startswith(feature_prefix)
+                           and "/configs/" not in n}
+        assert feature_classes - {i["class"] for i in identities} == {
+            "com/telepathicgrunt/repurposedstructures/world/features/NbtDungeon.class",
+            "com/telepathicgrunt/repurposedstructures/world/features/NbtFeature.class",
+        }
+        assert len(identities) == 31
+        for identity in identities:
+            assert identity["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(identity["class"])).hexdigest() == (
+                identity["class_sha256"]
+            )
+            assert hashlib.sha256((folder / identity["disassembly"]).read_bytes()).hexdigest() == (
+                identity["disassembly_sha256"]
+            )
+        configs = {n: cast("dict[str, JsonValue]", json.loads(archive.read(n)))
+                   for n in archive.namelist() if n.endswith(".json")
+                   and n.startswith("data/repurposed_structures/worldgen/configured_feature/")}
+        assert len(configs) == 136
+        expected = {"minecraft:" + k: v for k, v in {
+            "block_pile": 1, "coral_claw": 1, "coral_tree": 2,
+            "no_bonemeal_flower": 1, "random_patch": 3, "tree": 2,
+        }.items()} | {"repurposed_structures:" + k: v for k, v in {
+            "configurable_coral_claw": 1, "configurable_coral_mushroom": 1,
+            "configurable_coral_tree": 1, "drowned_with_armor": 1,
+            "mineshaft_minecarts": 16, "mineshaft_supports": 31, "nbt_dungeon": 16,
+            "nbt_feature": 7, "ocean_temperature_random_selector": 1,
+            "post_process_connecting_blocks": 1, "shulker_mob": 1,
+            "simple_block_with_fluid_tick": 2, "skeleton": 6, "skeleton_horseman": 2,
+            "structure_breakage": 1, "structure_chains": 1, "structure_chorus": 2,
+            "structure_crimson_plants": 3, "structure_end_rod_chains": 1, "structure_fire": 4,
+            "structure_flowers": 1, "structure_grass": 1, "structure_netherwart": 1,
+            "structure_powder_snow": 1, "structure_seagrass": 4, "structure_vine_breakage": 1,
+            "structure_vines": 9, "structure_vines_and_leaves": 1, "structure_warped_plants": 3,
+            "underwater_block_pile": 4, "wither_skeleton_with_bow": 1,
+        }.items()}
+        assert Counter(str(d["type"]) for d in configs.values()) == expected
+        selector = next(d for d in configs.values()
+                        if d["type"] == "repurposed_structures:ocean_temperature_random_selector")
+        assert selector["config"] == {
+            temperature + "_features": ["repurposed_structures:villages/" + prefix + shape
+                                         for shape in ("tree", "claw", "mushroom")]
+            for temperature, prefix in (("warm", "coral_"), ("cold", "dead_coral_"))
+        }
