@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "architectury-13.0.8-neoforge.jar",
         "PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar",
         "emi_loot-0.7.9+1.21+neoforge.jar",
         "Patchouli-1.21.1-93-NEOFORGE.jar",
@@ -210,6 +211,25 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "dev/architectury/mixin/MixinLightningBolt.class",
+    "dev/architectury/mixin/forge/MixinFallingBlockEntity.class",
+    "dev/architectury/mixin/forge/MixinInventory.class",
+    "dev/architectury/mixin/forge/MixinItemExtension.class",
+    "dev/architectury/mixin/forge/MixinLevelEvent.class",
+    "dev/architectury/mixin/forge/neoforge/BucketItemAccessor.class",
+    "dev/architectury/mixin/forge/neoforge/LiquidBlockAccessor.class",
+    "dev/architectury/mixin/forge/neoforge/MixinBucketItem.class",
+    "dev/architectury/mixin/forge/neoforge/MixinChunkSerializer.class",
+    "dev/architectury/mixin/inject/MixinBlock.class",
+    "dev/architectury/mixin/inject/MixinBucketItem.class",
+    "dev/architectury/mixin/inject/MixinEntityType.class",
+    "dev/architectury/mixin/inject/MixinFluid.class",
+    "dev/architectury/mixin/inject/MixinFoodPropertiesBuilder.class",
+    "dev/architectury/mixin/inject/MixinItem.class",
+    "dev/architectury/mixin/inject/MixinItemProperties.class",
+    "dev/architectury/mixin/inject/MixinLiquidBlock.class",
+    "dev/architectury/neoforge/ArchitecturyNeoForge.class",
+    "dev/architectury/plugin/forge/ArchitecturyMixinPlugin.class",
     "fuzs/puzzleslib/impl/core/proxy/ProxyImpl.class",
     "fuzs/puzzleslib/neoforge/impl/core/NeoForgeProxy.class",
     "fuzs/puzzleslib/neoforge/impl/event/NeoForgeEventInvokerRegistryImpl.class",
