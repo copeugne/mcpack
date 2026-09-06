@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Create remaining 32 annotated-entry roles are now resolved from source 05d472d.
+No new capture or family candidate. All top-level annotated and declared common
+mixin roles are accounted for; do not restart them. Remaining Create work:
+embedded Flywheel/Ponder/Registrate roles, Ponder content consumers and final
+complete payload reconciliation. Existing four passing focused cases bind the
+source. Census: 89 resolved, 47 open. No runtime or source capture is live.
+
 Create remaining annotated entry source 05d472d (extractor 6fdfb9e) is
 delivered and independently reproduced. Eighteen client-only entries and four
 registry/configuration/alias entries are dispositioned; CreateBuiltInRegistries
