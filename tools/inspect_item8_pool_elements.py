@@ -1496,6 +1496,66 @@ CLASSES: tuple[str, ...] = (
     "com/aetherteam/nitrogen/world/foliageplacer/AetherPineFoliagePlacer.class",
     "com/aetherteam/nitrogen/world/foliageplacer/HookedFoliagePlacer.class",
     "com/aetherteam/nitrogen/world/foliageplacer/NitrogenFoliagePlacerTypes.class",
+    "io/github/razordevs/deep_aether/DeepAether.class",
+    "io/github/razordevs/deep_aether/block/behavior/DABlockInteractionBehavior.class",
+    "io/github/razordevs/deep_aether/client/DeepAetherKeys.class",
+    "io/github/razordevs/deep_aether/client/renderer/DAOverlays.class",
+    "io/github/razordevs/deep_aether/event/DAClientGameBusEvents.class",
+    "io/github/razordevs/deep_aether/event/DAClientModBusEvents.class",
+    "io/github/razordevs/deep_aether/event/DAGeneralEvents.class",
+    "io/github/razordevs/deep_aether/init/DAEntities.class",
+    "io/github/razordevs/deep_aether/init/DAEntityRenderers.class",
+    "io/github/razordevs/deep_aether/init/DATabs.class",
+    "io/github/razordevs/deep_aether/item/dungeon/brass/StormSwordItem.class",
+    "io/github/razordevs/deep_aether/item/gear/ArmorAbilityListener.class",
+    "io/github/razordevs/deep_aether/item/gear/DaAbilityListener.class",
+    "io/github/razordevs/deep_aether/item/gear/ToolAbilityListener.class",
+    "io/github/razordevs/deep_aether/mixin/BrewingFuelMenuMixin.class",
+    "io/github/razordevs/deep_aether/mixin/BrewingFuelMixin.class",
+    "io/github/razordevs/deep_aether/mixin/GlovesMixin.class",
+    "io/github/razordevs/deep_aether/mixin/TriviaGeneratorMixin.class",
+    "io/github/razordevs/deep_aether/mixin/block/AercloudMixin.class",
+    "io/github/razordevs/deep_aether/mixin/block/BlockBehaviourMixin.class",
+    "io/github/razordevs/deep_aether/mixin/block/LavaFluidMixin.class",
+    "io/github/razordevs/deep_aether/mixin/block/PointedDripstoneBlockMixin.class",
+    "io/github/razordevs/deep_aether/mixin/block/PowderedSnowMixin.class",
+    "io/github/razordevs/deep_aether/mixin/entity/AerwhaleMixin.class",
+    "io/github/razordevs/deep_aether/mixin/entity/ItemEntityMixin.class",
+    "io/github/razordevs/deep_aether/world/feature/DAFeatures.class",
+    "io/github/razordevs/deep_aether/world/feature/features/AercloudCloudFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/CloriteColumnsFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/ConfiguredBoulder.class",
+    "io/github/razordevs/deep_aether/world/feature/features/DAHugeMushroomFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/FallenTreeFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/PoisonLakeFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/RainAercloudCloudFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/RockSpikeFeature.class",
+    "io/github/razordevs/deep_aether/world/feature/features/RootFeature.class",
+    "io/github/razordevs/deep_aether/world/structure/DAJigsawStructure.class",
+    "io/github/razordevs/deep_aether/world/structure/HeightSpawningChecks.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/BrassDungeonPiece.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/BrassDungeonStructure.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/BrassRoom$BossRoom.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/BrassRoom.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/processor/BrassDungeonRoomProcessor.class",
+    "io/github/razordevs/deep_aether/world/structure/brass/processor/BrassProcessorSettings.class",
+    "io/github/razordevs/aeroblender/Aeroblender.class",
+    "io/github/razordevs/aeroblender/DimensionTypeTags.class",
+    "io/github/razordevs/aeroblender/aether/AetherRegionType.class",
+    "io/github/razordevs/aeroblender/aether/AetherRuleCategory.class",
+    "io/github/razordevs/aeroblender/aether/AetherSurfaceRuleData.class",
+    "io/github/razordevs/aeroblender/aether/DefaultAetherRegion.class",
+    "io/github/razordevs/aeroblender/mixin/LayeredNoiseUtilMixin.class",
+    "io/github/razordevs/aeroblender/mixin/LevelUtilsMixin.class",
+    "io/github/razordevs/aeroblender/mixin/NoiseGeneratorSettingsMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RegionMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RegionTypeMixin.class",
+    "io/github/razordevs/aeroblender/mixin/RuleCategoryMixin.class",
+    "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerAccessor.class",
+    "io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerMixin.class",
+    "io/github/razordevs/deep_aether/world/biomes/DARegion.class",
+    "io/github/razordevs/deep_aether/world/biomes/DARareRegion.class",
+    "io/github/razordevs/deep_aether/world/biomes/DASurfaceData.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1520,13 +1580,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
-        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar"])
+        "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar",
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar": (
+            "deep_aether-1.21.1-1.1.5.1.jar",
+            "85739c5737ae2d3a289022aaa2834c4889838a3e6c53125a5334535c12ae7588",
+        ),
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar": (
             "aether-1.21.1-1.5.10-neoforge.jar",
             "2518abccb1a012bb63b5b3ea14b8ed93c82fb5002105c86afadadf518bf149a1",
@@ -1664,6 +1729,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     and not name.endswith("ConfigGeneralNeoForge.class")
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
+                verbose |= source.name == "deep_aether-1.21.1-1.1.5.1.jar"
                 verbose |= name == "com/aetherteam/aether/Aether.class"
                 verbose |= name.startswith("com/aetherteam/aether/event/listeners/")
                 verbose |= name.startswith(("com/aetherteam/cumulus/", "com/aetherteam/nitrogen/"))

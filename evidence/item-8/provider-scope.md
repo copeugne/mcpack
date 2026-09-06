@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 76 of 136. The exact queue below has 60 open rows.
+Supported provider dispositions: 77 of 136. The exact queue below has 59 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -601,7 +601,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope` | Reuse inactive totem disposition; reconcile Brass and remaining structure/feature entries. |
+| `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -3395,3 +3395,234 @@ uv run basedpyright tests/item8/test_aether_provider_scope.py tests/item8/test_a
 Scoped checks pass. Census is 76 resolved providers and 60 open. Continue the
 remaining provider queue before canonical reconciliation and the eleven family
 attributes. No final Item 8 gate, review or merge is claimed.
+
+### Deep Aether candidate partition
+
+test_deep_aether_candidates.py binds the frozen archive and existing parsed
+catalog. Four packaged roots exactly match the captured runtime registry:
+altar_camp, brass_dungeon, campfire and combiner_corridor. The three non-Brass
+roots use deep_aether_jigsaw and target sacred_lands. Reuse test_totem_scope.py's
+existing dimension-membership result; registry presence is not active biome
+eligibility. The totem's earlier inactive disposition remains in force.
+
+All fifteen templates partition into twelve Brass components (five numbered
+rooms, five boss counterparts, door and room_part_up) and three Sacred Lands
+components named after the three jigsaw roots. Their actual executable consumers
+still need reconciliation; template count is not family count.
+
+The sixty configured features contain seven Deep Aether implementation types:
+aercloud_cloud, rain_aercloud_cloud, aercloud_roots, fallen_tree,
+improved_mushroom_feature, poison_lake and totem. Reuse the totem capture and
+accepted Aether cloud/lake/shelf roles, then inspect the remaining custom
+implementations and registration for contributions outside packaged definitions.
+DAFeatures and the Brass/jigsaw entry consumers are the next source boundaries.
+The original strict-JSON probe failed on packaged comments; the existing parsed,
+hash-bound catalog supplies these definitions without changing the archive.
+
+Two bundled archives are hash-bound: Aeroblender 1.0.0 and TerraBlender 4.1.0.3.
+Resolve effective selection against the retained top-level TerraBlender 4.1.0.8,
+and account for Aeroblender's entry role. Do not audit both TerraBlender versions
+as running merely because both are packaged.
+
+```sh
+uv run pytest -q tests/item8/test_deep_aether_candidates.py tests/item8/test_totem_scope.py
+uv run ruff check tests/item8/test_deep_aether_candidates.py
+uv run basedpyright tests/item8/test_deep_aether_candidates.py
+```
+
+Two focused cases and scoped checks pass. Deep Aether remains OPEN. Remaining
+work is the named structure/feature consumers, annotated/common mixin entries,
+optional-pack roles and nested-library selection/contribution roles. Census
+remains 76 resolved and 60 open; no new measurement system is required.
+
+### Deep Aether library selection and entry source
+
+The preserved registry-r1 log explicitly selects retained TerraBlender 4.1.0.8
+over embedded 4.1.0.3. Its final mod list confirms that version and AeroBlender
+1.0.0; the discovery record identifies Deep Aether as AeroBlender's parent.
+test_deep_aether_nested_runtime_selection binds these records and the exact log
+hash. Attribute active TerraBlender behavior to its retained provider row and
+do not audit the unselected embedded implementation as another running provider.
+AeroBlender's contribution role remains open.
+
+The existing extractor now captures Deep Aether's fourteen annotated entries,
+eleven common mixins, feature registration/nine remaining implementations and
+eight Brass/jigsaw consumers in sources/deep-aether-provider. Manifest SHA-256:
+71c441da5bd3213d84b0ce9f1f38f098979d158b3f16146397428b99e958d5c4.
+Independent r1 matches every generated file. Verbose source preserves side
+annotations and callback bindings. Interpret these captured boundaries before
+following any helper; do not repeat the totem or candidate partition.
+
+Three focused candidate/selection/totem cases and scoped checks pass using the
+commands above. Provider coverage remains OPEN. Source capture is not acceptance
+of the contribution roles; no final family count or Item 8 completion is claimed.
+
+### Deep Aether Brass component reconciliation
+
+The captured BrassDungeonStructure selects brass_dungeon_room_0 through _4.
+createBossRoom appends _boss for the boss-room branch, uses the ordinary room
+otherwise, and adds room_part_up. generatePieces also selects door.
+BrassDungeonPiece qualifies the supplied names under brass_dungeon/. Together
+these select all twelve packaged Brass templates as dungeon components, not
+twelve independent families. This is a call-site/name reconciliation, not a
+simulation of successful assembly or a proof of dimensions or encounter quality.
+
+test_deep_aether_brass_source_binding binds the exact source manifest and every
+captured class/disassembly hash, plus the actual constant-pool concatenation
+recipes and room-name choices. The existing packaged partition supplies the
+exact twelve-template set. Four focused candidate/selection/source/totem cases
+pass; a combined-assertion lint finding was split and its affected case rerun.
+Scoped Ruff and Basedpyright pass. No new capture or measurement was needed.
+
+Remaining Deep Aether work: jigsaw consumer/eligibility reconciliation, custom
+feature and common-entry roles, optional packs and AeroBlender's contribution.
+Do not reopen the Brass room-name or inactive-totem checks during that census.
+
+### Deep Aether jigsaw component and eligibility reconciliation
+
+DAJigsawStructure applies HeightSpawningChecks and then calls vanilla
+JigsawPlacement.addPieces with the supplied start pool, height, size, alias and
+placement settings. The height check compares the chunk-origin surface height
+strictly between the supplied minimum and maximum. It does not select an
+independent template outside the supplied pool route.
+
+Each of altar_camp, campfire and combiner_corridor uses its same-named pool.
+Each pool contains exactly one rigid minecraft:single_pool_element referring
+to deep_aether:sacred_lands/<name>, with empty processors and empty fallback.
+These account for the three packaged Sacred Lands templates as components of
+the existing roots. The focused candidate test now binds these exact pool
+documents; the source-binding case already covers both captured consumers.
+
+All three roots require deep_aether:sacred_lands. The previously accepted
+dimension-membership evidence in test_totem_scope.py excludes that biome from
+every captured dimension. Disposition: registered but ineligible through these
+packaged root/biome routes in the captured baseline, not three active families.
+Preserve the candidates and reopen only if another active route is demonstrated.
+This does not prove universal unreachability under changed packs or dimensions.
+
+Four focused cases and scoped Ruff/Basedpyright pass using the commands above.
+Brass and jigsaw component reconciliation are now resolved. Remaining provider
+work is custom feature/common-entry roles, optional packs and AeroBlender,
+followed by the whole-provider check. Census remains 76 resolved and 60 open.
+
+### Deep Aether fallen-tree candidate boundary
+
+Retain the fallen Aerglow tree as a named candidate for canonical reconciliation,
+with ordinary and rotten-log configuration variants. FallenTreeFeature writes
+supplied log states along a horizontal direction and can add supplied decoration
+blocks around the logs where placement tests permit. Its supplied configurations
+are fallen_aerglow_tree (roseroot_log) and empty_fallen_aerglow_tree
+(rotten_roseroot_log); both use lightcap_mushrooms decoration. Do not count each
+log, mushroom, orientation or length as an independent family.
+
+The existing candidate test binds both configurations, their placed features
+fallen_aerglow_forest and empty_fallen_aerglow_forest, and the packaged biome
+references in aerglow_forest, blue_aerglow_forest and mystic_aerglow_forest.
+Configured bounds are inputs, not a guarantee of generated dimensions.
+This preserves a membership/grouping boundary, not a claim of observed placement,
+an accepted final family count or a later gameplay classification.
+
+Four focused cases and scoped checks pass with the commands above. The first
+read-only method lookup assumed addDecorators was private; the captured method
+is public, and its body was inspected under that actual signature. No capture
+was changed or regenerated. Remaining provider work is the other custom-feature
+roles, common entries/mixins, optional packs and AeroBlender's contribution.
+
+### Deep Aether remaining feature roles
+
+The captured DAFeatures registration and implementation bodies resolve the
+remaining custom feature roles without another runtime sample:
+
+| Implementation | Contribution role |
+| --- | --- |
+| AercloudCloudFeature | Noise-shaped supplied cloud blocks, with optional aercloud grass. Terrain formation. |
+| RainAercloudCloudFeature | Cloud formation with fluid placement and post-processing. Terrain formation. |
+| RootFeature | Places aercloud-root blocks at suitable empty positions. Vegetation decoration. |
+| PoisonLakeFeature | Carves a supplied-fluid lake, forms its barrier/surface and handles freezing/post-processing. Terrain formation. |
+| DAHugeMushroomFeature | Supplied mushroom cap/stem blocks, roots and ground alteration. Large vegetation, not a separate architectural template route. |
+| CloriteColumnsFeature | Finds suitable air/ground boundaries and places columns. Stone terrain formation. |
+| ConfiguredBoulder | Places supplied blocks in a boulder formation at suitable ground. Stone terrain formation. |
+| RockSpikeFeature | Forms a stone spike; not selected by the captured DAFeatures registration. Preserve the implementation's existence without counting it as a separate active site. |
+
+The configured-feature partition already binds all packaged custom types.
+Clorite columns and configured boulders are registered but have no configured
+feature among that partition. The totem and fallen-tree candidate dispositions
+remain separate and unchanged. No dimensions, placement success or gameplay
+attributes are inferred from these implementation roles.
+
+### AeroBlender integration source
+
+The selected library's entry, region/surface types and declared mixins are
+captured in sources/deep-aether-aeroblender. Manifest SHA-256:
+414711e4c35a498420ead8f3a7de80e7e7b8feb15909a19fb2dcebdba6ef5dc7.
+Independent r1 matches every generated file. The entry and mixins adapt region
+selection, biome-source applicability, noise-layer uniqueness and namespaced
+surface rules for Aether. They do not select architectural templates. The
+default region supplies Aether biome mappings and surface-rule support.
+Bind the library's complete payload in the final provider check; do not inspect
+its configuration-value builders unless an actual eligibility input needs them.
+
+Remaining Deep Aether scope is common entry/mixin roles, optional packs and
+the complete provider check including this nested payload. Census remains 76
+resolved and 60 open. All source is delivered; no process remains running.
+
+### Final Deep Aether provider disposition
+
+Deep Aether provider coverage is RESOLVED. Reuse the candidate, Brass, jigsaw,
+totem, fallen-tree and feature dispositions above. The four registered roots,
+fifteen templates and sixty configured features are fully partitioned. Preserve
+the inactive Sacred Lands routes and the named fallen-tree grouping boundary.
+Neither templates nor configuration variants become additional families.
+
+The final common-setup delegates are retained in sources/deep-aether-biome-setup
+at 193bbe3, manifest SHA-256:
+d0c5ae38827b28d5db0048c2f5da5603e116a8c070991d1ab198b610af2a126f.
+DARegion and DARareRegion add climate-to-biome mappings. DASurfaceData selects
+surface block states using biome, noise and depth conditions. These resolve the
+actual common-setup calls without introducing additional authored-site routes.
+
+The captured main entry registers data generation, common setup, capabilities,
+network packets, recipe categories and optional packs. GatherDataEvent is an
+offline data-generation path. Common registration and the fourteen annotated
+entry classes cover entity registration, equipment and combat effects, block
+interactions, client presentation and the generation routes already reconciled.
+Dungeon player/death hooks affect encounters and rewards in existing dungeons.
+They remain attribute inputs, not independent families.
+
+The eleven common mixins handle brewing fuel/menu acceptance, glove attributes,
+trivia text, cloud collision, block sound, fluid replacement, dripstone and snow
+interactions, item conversion and Aerwhale riding/container/entity state. These
+are existing-block/entity behavior. No unresolved authored-site entry remains
+in those captured boundaries. The separately declared client mixins concern
+rendering and presentation.
+
+The whole archive has 4,136 files and 375 classes. Its data contains 132 worldgen
+resources, fifteen structure templates, tags, recipes, advancements, loot and
+item/entity-related definitions. The 265 optional-pack files contain 86 recipe,
+49 advancement and two legacy recipes entries, plus assets and pack metadata.
+There are no additional structure definitions in those packs. Packaged datagen
+cache files are part of the pinned archive identity, not new runtime inputs.
+No outer service declarations or executable function/script files are present.
+
+The selected AeroBlender payload is exactly sixteen classes and nine other files.
+Fourteen classes already captured cover its entry, region/surface support and
+mixins; the two remaining classes define configuration values. Its four data
+files supply density, noise, Aether noise settings and a dimension-type tag.
+The other files are loader/access metadata, mixin configuration and pack metadata.
+There is no additional template or structure payload. The embedded TerraBlender
+4.1.0.3 is not selected; retained 4.1.0.8 remains its own open provider row.
+
+```sh
+uv run pytest -q tests/item8/test_deep_aether_provider_scope.py tests/item8/test_deep_aether_candidates.py tests/item8/test_totem_scope.py
+uv run ruff check tests/item8/test_deep_aether_provider_scope.py
+uv run basedpyright tests/item8/test_deep_aether_provider_scope.py
+```
+
+Five cases pass (1.86 seconds); scoped Ruff and Basedpyright pass. The final case
+binds four preserved source manifests to original class and disassembly bytes,
+the whole payload partition, annotated entries, common mixins, optional-pack
+categories and the complete selected nested payload. It extends the existing
+provider-check pattern to close this specific coverage gap. No new measurement,
+framework or runtime sample was added. Provider closure does not establish
+observed placement, the final canonical count or the eleven family attributes.
+Supported dispositions now cover 77 of 136 providers; 59 remain open.
