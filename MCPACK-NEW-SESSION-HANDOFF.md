@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches f0f0fcf6 and independently reproduces exactly. Full variants
+are unchanged across the bamboo-cache split; all 887 roots occur once in 416
+working groups. Backlog: 60 (IDAS 59, house with 44 roots). Continue existing
+house comparisons without recapture. Attributes, nonregistry and delivery remain.
+
 House content inspection separates bamboo_house_small_2 as bamboo_cache: a low
 platform with simple-dungeon trapped chest, piston and magma block, without bed
 or domestic workstation. Do not claim tested trap operation. All original

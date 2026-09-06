@@ -9693,3 +9693,31 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-ocean-r1.json evidence/raw/item8/inventory-adora-ocean-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-ocean-r2.json
 ```
+# AdoraBuild bamboo cache correction (2026-09-07)
+
+Decision f0f0fcf6 separates bamboo_house_small_2 from dwelling variants. The
+preserved acacia/bamboo view at abfaa574 shows a low roofed platform; its template
+contains a simple-dungeon trapped chest, piston and magma block, without bed or
+ordinary domestic workstation. This establishes a distinct cache design without
+claiming tested trap operation. The remaining house record contains 44 roots and
+remains open. No new capture or measurement system was added.
+
+The affected source-binding case and scoped code checks pass. Complete original
+variants are unchanged. The derived inventory changes only house/cache records
+and the decision hash. Two fresh runs match exactly; 887 roots occur once in 416
+working groups. Canonical-note backlog remains 60 (IDAS 59, house 1). Required
+attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+Inventory SHA-256:
+37d033a55b893126f31c30c60699b55b5174f00471b8d072adbc082909e0552a.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-bamboo-cache-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+cmp evidence/raw/item8/inventory-adora-bamboo-cache-r1.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+```
