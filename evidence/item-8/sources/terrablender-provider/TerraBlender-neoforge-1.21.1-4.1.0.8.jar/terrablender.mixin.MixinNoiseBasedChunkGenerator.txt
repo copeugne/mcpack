@@ -1,0 +1,184 @@
+Classfile TerraBlender-neoforge-1.21.1-4.1.0.8.jar!/terrablender/mixin/MixinNoiseBasedChunkGenerator.class
+  Last modified Jan 5, 2025; size 2425 bytes
+  SHA-256 checksum 89aed20dc008f987d435c529b716253ff386e449a388f5f984731b54ec7b0ee0
+  Compiled from "MixinNoiseBasedChunkGenerator.java"
+public class terrablender.mixin.MixinNoiseBasedChunkGenerator
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #42                         // terrablender/mixin/MixinNoiseBasedChunkGenerator
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // net/minecraft/world/level/biome/MultiNoiseBiomeSource
+   #8 = Utf8               net/minecraft/world/level/biome/MultiNoiseBiomeSource
+   #9 = Methodref          #7.#10         // net/minecraft/world/level/biome/MultiNoiseBiomeSource.parameters:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #10 = NameAndType        #11:#12        // parameters:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #11 = Utf8               parameters
+  #12 = Utf8               ()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #13 = Class              #14            // terrablender/worldgen/IExtendedParameterList
+  #14 = Utf8               terrablender/worldgen/IExtendedParameterList
+  #15 = InterfaceMethodref #13.#16        // terrablender/worldgen/IExtendedParameterList.isInitialized:()Z
+  #16 = NameAndType        #17:#18        // isInitialized:()Z
+  #17 = Utf8               isInitialized
+  #18 = Utf8               ()Z
+  #19 = Class              #20            // terrablender/worldgen/IExtendedMultiNoiseBiomeSource
+  #20 = Utf8               terrablender/worldgen/IExtendedMultiNoiseBiomeSource
+  #21 = InterfaceMethodref #19.#22        // terrablender/worldgen/IExtendedMultiNoiseBiomeSource.clone:()Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+  #22 = NameAndType        #23:#24        // clone:()Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+  #23 = Utf8               clone
+  #24 = Utf8               ()Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+  #25 = InterfaceMethodref #13.#26        // terrablender/worldgen/IExtendedParameterList.clone:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #26 = NameAndType        #23:#12        // clone:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #27 = InterfaceMethodref #13.#28        // terrablender/worldgen/IExtendedParameterList.recreateUniqueness:()V
+  #28 = NameAndType        #29:#6         // recreateUniqueness:()V
+  #29 = Utf8               recreateUniqueness
+  #30 = Class              #31            // terrablender/mixin/MultiNoiseBiomeSourceAccess
+  #31 = Utf8               terrablender/mixin/MultiNoiseBiomeSourceAccess
+  #32 = Methodref          #33.#34        // com/mojang/datafixers/util/Either.left:(Ljava/lang/Object;)Lcom/mojang/datafixers/util/Either;
+  #33 = Class              #35            // com/mojang/datafixers/util/Either
+  #34 = NameAndType        #36:#37        // left:(Ljava/lang/Object;)Lcom/mojang/datafixers/util/Either;
+  #35 = Utf8               com/mojang/datafixers/util/Either
+  #36 = Utf8               left
+  #37 = Utf8               (Ljava/lang/Object;)Lcom/mojang/datafixers/util/Either;
+  #38 = InterfaceMethodref #30.#39        // terrablender/mixin/MultiNoiseBiomeSourceAccess.setParameters:(Lcom/mojang/datafixers/util/Either;)V
+  #39 = NameAndType        #40:#41        // setParameters:(Lcom/mojang/datafixers/util/Either;)V
+  #40 = Utf8               setParameters
+  #41 = Utf8               (Lcom/mojang/datafixers/util/Either;)V
+  #42 = Class              #43            // terrablender/mixin/MixinNoiseBasedChunkGenerator
+  #43 = Utf8               terrablender/mixin/MixinNoiseBasedChunkGenerator
+  #44 = Utf8               Code
+  #45 = Utf8               LineNumberTable
+  #46 = Utf8               LocalVariableTable
+  #47 = Utf8               this
+  #48 = Utf8               Lterrablender/mixin/MixinNoiseBasedChunkGenerator;
+  #49 = Utf8               modifyBiomeSource
+  #50 = Utf8               (Lnet/minecraft/world/level/biome/BiomeResolver;)Lnet/minecraft/world/level/biome/BiomeResolver;
+  #51 = Utf8               cloned
+  #52 = Utf8               Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+  #53 = Utf8               clonedParameterList
+  #54 = Utf8               Lnet/minecraft/world/level/biome/Climate$ParameterList;
+  #55 = Utf8               multiNoiseBiomeSource
+  #56 = Utf8               biomeResolver
+  #57 = Utf8               Lnet/minecraft/world/level/biome/BiomeResolver;
+  #58 = Utf8               LocalVariableTypeTable
+  #59 = Utf8               Lnet/minecraft/world/level/biome/Climate$ParameterList<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+  #60 = Utf8               StackMapTable
+  #61 = Utf8               RuntimeVisibleAnnotations
+  #62 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyArg;
+  #63 = Utf8               method
+  #64 = Utf8               doCreateBiomes
+  #65 = Utf8               at
+  #66 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #67 = Utf8               value
+  #68 = Utf8               INVOKE
+  #69 = Utf8               target
+  #70 = Utf8               Lnet/minecraft/world/level/chunk/ChunkAccess;fillBiomesFromNoise(Lnet/minecraft/world/level/biome/BiomeResolver;Lnet/minecraft/world/level/biome/Climate$Sampler;)V
+  #71 = Utf8               SourceFile
+  #72 = Utf8               MixinNoiseBasedChunkGenerator.java
+  #73 = Utf8               RuntimeInvisibleAnnotations
+  #74 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #75 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseBasedChunkGenerator;
+  #76 = Utf8               InnerClasses
+  #77 = Class              #78            // net/minecraft/world/level/biome/Climate$ParameterList
+  #78 = Utf8               net/minecraft/world/level/biome/Climate$ParameterList
+  #79 = Class              #80            // net/minecraft/world/level/biome/Climate
+  #80 = Utf8               net/minecraft/world/level/biome/Climate
+  #81 = Utf8               ParameterList
+{
+  public terrablender.mixin.MixinNoiseBasedChunkGenerator();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lterrablender/mixin/MixinNoiseBasedChunkGenerator;
+
+  private net.minecraft.world.level.biome.BiomeResolver modifyBiomeSource(net.minecraft.world.level.biome.BiomeResolver);
+    descriptor: (Lnet/minecraft/world/level/biome/BiomeResolver;)Lnet/minecraft/world/level/biome/BiomeResolver;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=2
+         0: aload_1
+         1: instanceof    #7                  // class net/minecraft/world/level/biome/MultiNoiseBiomeSource
+         4: ifeq          77
+         7: aload_1
+         8: checkcast     #7                  // class net/minecraft/world/level/biome/MultiNoiseBiomeSource
+        11: astore_2
+        12: aload_2
+        13: invokevirtual #9                  // Method net/minecraft/world/level/biome/MultiNoiseBiomeSource.parameters:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+        16: checkcast     #13                 // class terrablender/worldgen/IExtendedParameterList
+        19: invokeinterface #15,  1           // InterfaceMethod terrablender/worldgen/IExtendedParameterList.isInitialized:()Z
+        24: ifeq          77
+        27: aload_2
+        28: checkcast     #19                 // class terrablender/worldgen/IExtendedMultiNoiseBiomeSource
+        31: invokeinterface #21,  1           // InterfaceMethod terrablender/worldgen/IExtendedMultiNoiseBiomeSource.clone:()Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+        36: astore_3
+        37: aload_3
+        38: invokevirtual #9                  // Method net/minecraft/world/level/biome/MultiNoiseBiomeSource.parameters:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+        41: checkcast     #13                 // class terrablender/worldgen/IExtendedParameterList
+        44: invokeinterface #25,  1           // InterfaceMethod terrablender/worldgen/IExtendedParameterList.clone:()Lnet/minecraft/world/level/biome/Climate$ParameterList;
+        49: astore        4
+        51: aload         4
+        53: checkcast     #13                 // class terrablender/worldgen/IExtendedParameterList
+        56: invokeinterface #27,  1           // InterfaceMethod terrablender/worldgen/IExtendedParameterList.recreateUniqueness:()V
+        61: aload_3
+        62: checkcast     #30                 // class terrablender/mixin/MultiNoiseBiomeSourceAccess
+        65: aload         4
+        67: invokestatic  #32                 // Method com/mojang/datafixers/util/Either.left:(Ljava/lang/Object;)Lcom/mojang/datafixers/util/Either;
+        70: invokeinterface #38,  2           // InterfaceMethod terrablender/mixin/MultiNoiseBiomeSourceAccess.setParameters:(Lcom/mojang/datafixers/util/Either;)V
+        75: aload_3
+        76: areturn
+        77: aload_1
+        78: areturn
+      LineNumberTable:
+        line 21: 0
+        line 22: 27
+        line 23: 37
+        line 24: 51
+        line 25: 61
+        line 26: 75
+        line 28: 77
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           37      40     3 cloned   Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+           51      26     4 clonedParameterList   Lnet/minecraft/world/level/biome/Climate$ParameterList;
+           12      65     2 multiNoiseBiomeSource   Lnet/minecraft/world/level/biome/MultiNoiseBiomeSource;
+            0      79     0  this   Lterrablender/mixin/MixinNoiseBasedChunkGenerator;
+            0      79     1 biomeResolver   Lnet/minecraft/world/level/biome/BiomeResolver;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           51      26     4 clonedParameterList   Lnet/minecraft/world/level/biome/Climate$ParameterList<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 77
+    RuntimeVisibleAnnotations:
+      0: #62(#63=[s#64],#65=@#66(#67=s#68,#69=s#70))
+        org.spongepowered.asm.mixin.injection.ModifyArg(
+          method=["doCreateBiomes"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/chunk/ChunkAccess;fillBiomesFromNoise(Lnet/minecraft/world/level/biome/BiomeResolver;Lnet/minecraft/world/level/biome/Climate$Sampler;)V"
+          )
+        )
+}
+SourceFile: "MixinNoiseBasedChunkGenerator.java"
+RuntimeInvisibleAnnotations:
+  0: #74(#67=[c#75])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/NoiseBasedChunkGenerator;]
+    )
+InnerClasses:
+  public static #81= #77 of #79;          // ParameterList=class net/minecraft/world/level/biome/Climate$ParameterList of class net/minecraft/world/level/biome/Climate
