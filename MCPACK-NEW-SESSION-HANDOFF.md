@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches decisions delivered at dee267e2 and reproduces exactly.
+Working groups: 405. Explicit provisional remainder: the 14 Voyager names below.
+All their comparison views are already delivered and inspected.
+
 Shelter/sculpture decisions resolve nine explicit provisionals. Fox and dog huts
 merge as animal-hut variants with both full definitions retained. Seven other
 designs remain distinct; large_mushroom is authored construction, not a vegetation
