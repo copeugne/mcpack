@@ -213,6 +213,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/bettercombat/logic/WeaponRegistry.class",
+    "net/bettercombat/compat/CompatFeatures.class",
     "net/bettercombat/BetterCombatMod.class",
     "net/bettercombat/mixin/BetterCombatMixinPlugin.class",
     "net/bettercombat/mixin/DataComponentTypesMixin.class",
