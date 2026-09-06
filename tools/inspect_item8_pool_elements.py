@@ -189,6 +189,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/loot/v2/LootInitializer.class",
+    "net/fabricmc/fabric/impl/recipe/ingredient/CustomIngredientInit.class",
+    "org/sinytra/fabric/recipe_api/FabricRecipeApiV1.class",
     "org/sinytra/fabric/game_rule_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/gamerule/GameRuleCommandAccessor.class",
     "net/fabricmc/fabric/mixin/gamerule/GameRuleCommandVisitorMixin.class",
