@@ -9540,3 +9540,25 @@ SHA-256: ed705d7d330b1bae950b92245a3f8500ff4bba7415ba3e73dd1d3ca55728edd7.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-trees-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-trees-r2.json
 ```
+
+### AdoraBuild landmark family boundaries, 2026-09-07
+
+Views 0df11558 and existing contents resolve five records. End bubbles retain
+broad and pedestal habitat variants with different inhabitants and rewards;
+the prismarine/glass ocean sculk installation remains separate. Small and tall
+End gateway frames retain their block-entity/material differences within one
+family. The Nether-brick portal shrine is distinct. The three bone-frame fossils
+retain their skull, chain and soul-campfire decoration as landmark variants.
+Portal/gateway usability and sculk encounter behavior remain unproven.
+
+The affected definition/registry/evidence case and scoped checks pass. Canonical
+backlog: 79, down from 84 (IDAS 59, AdoraBuild 20). Coverage groups remain 406.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+The source README preserves view limitations, including opaque glass/water and
+clipped ocean-template geometry. No new measurement system was added.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
