@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-06
 
+Latest resource-role increment 9a1a30d is pushed and remote-ref verified.
+The preceding b1e0fa7 closes the custom mansion/monument resource partition.
+Repurposed's seven residual pools and 53 templates now have component roles
+recorded at the end of provider-scope.md. Three Repurposed focused cases and
+scoped quality checks pass; the mansion/monument increment passed four cases.
+Census remains 74 resolved providers and 62 open. This is concrete progress,
+not whole-provider closure or a final family count.
+
+Next finish Repurposed feature and entry/hook reconciliation, using existing
+452e33e captures. Common/NeoForge entry review has begun: registry initialization,
+reload listeners, pool additions, lifecycle dispatch and map trades. Do not
+repeat resource partition work or disassembly captures already delivered.
+The 16 minecart templates are configuration-selected components; two crossing
+templates have count limits but no direct pool location. Same-named jigsaw pool
+references are not NBT template references. Three ancient-city corner templates
+are distinct from selected _1/_2 variants. Five bastion mob templates and 27
+village components have no direct pool locations in this archive. Code consumer
+review still precedes any whole-provider inactive/reachability claim.
+After provider closure continue the exact existing queue, then canonical
+grouping and eleven attributes. Final review and main merge remain mandatory.
+
 Latest Repurposed graph-partition increment 683a9ef is pushed and remote-ref
 verified. Census remains 74 resolved providers, 62 open. Two focused cases
 and scoped quality checks pass. Repurposed provider scope remains OPEN.
