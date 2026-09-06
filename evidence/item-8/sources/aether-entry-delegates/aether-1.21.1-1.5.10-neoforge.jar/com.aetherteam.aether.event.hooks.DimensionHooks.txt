@@ -1,0 +1,731 @@
+Compiled from "DimensionHooks.java"
+public class com.aetherteam.aether.event.hooks.DimensionHooks {
+  public static boolean playerLeavingAether;
+
+  public static boolean displayAetherTravel;
+
+  public static int teleportationTimer;
+
+  public com.aetherteam.aether.event.hooks.DimensionHooks();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void startInAether(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_PLAYER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       4: invokevirtual #13                 // Method net/minecraft/world/entity/player/Player.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+       7: checkcast     #19                 // class com/aetherteam/aether/attachment/AetherPlayerAttachment
+      10: astore_1
+      11: getstatic     #21                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      14: getfield      #27                 // Field com/aetherteam/aether/AetherConfig$Server.spawn_in_aether:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      17: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      20: checkcast     #39                 // class java/lang/Boolean
+      23: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+      26: ifeq          159
+      29: aload_1
+      30: invokevirtual #45                 // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.canSpawnInAether:()Z
+      33: ifeq          164
+      36: aload_0
+      37: instanceof    #48                 // class net/minecraft/server/level/ServerPlayer
+      40: ifeq          156
+      43: aload_0
+      44: checkcast     #48                 // class net/minecraft/server/level/ServerPlayer
+      47: astore_2
+      48: aload_2
+      49: invokevirtual #50                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      52: invokevirtual #54                 // Method net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+      55: astore_3
+      56: aload_3
+      57: ifnull        156
+      60: aload_3
+      61: getstatic     #60                 // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_LEVEL:Lnet/minecraft/resources/ResourceKey;
+      64: invokevirtual #66                 // Method net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+      67: astore        4
+      69: aload         4
+      71: ifnull        156
+      74: aload_2
+      75: invokevirtual #50                 // Method net/minecraft/server/level/ServerPlayer.level:()Lnet/minecraft/world/level/Level;
+      78: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      81: getstatic     #76                 // Field net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+      84: if_acmpne     156
+      87: new           #79                 // class net/minecraft/world/level/portal/DimensionTransition
+      90: dup
+      91: aload         4
+      93: aload         4
+      95: aload_2
+      96: invokevirtual #81                 // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      99: invokestatic  #85                 // Method checkPositionsForInitialSpawn:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+     102: invokevirtual #91                 // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+     105: getstatic     #97                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+     108: aload_2
+     109: invokevirtual #103                // Method net/minecraft/server/level/ServerPlayer.getYRot:()F
+     112: aload_2
+     113: invokevirtual #107                // Method net/minecraft/server/level/ServerPlayer.getXRot:()F
+     116: iconst_0
+     117: getstatic     #110                // Field net/minecraft/world/level/portal/DimensionTransition.DO_NOTHING:Lnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;
+     120: invokespecial #114                // Method net/minecraft/world/level/portal/DimensionTransition."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFZLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V
+     123: astore        5
+     125: aload_2
+     126: aload         5
+     128: invokevirtual #117                // Method net/minecraft/server/level/ServerPlayer.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+     131: ifnull        156
+     134: aload_2
+     135: getstatic     #60                 // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_LEVEL:Lnet/minecraft/resources/ResourceKey;
+     138: aload_2
+     139: invokevirtual #81                 // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+     142: aload_2
+     143: invokevirtual #103                // Method net/minecraft/server/level/ServerPlayer.getYRot:()F
+     146: iconst_1
+     147: iconst_0
+     148: invokevirtual #121                // Method net/minecraft/server/level/ServerPlayer.setRespawnPosition:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;FZZ)V
+     151: aload_1
+     152: iconst_0
+     153: invokevirtual #125                // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.setCanSpawnInAether:(Z)V
+     156: goto          164
+     159: aload_1
+     160: iconst_0
+     161: invokevirtual #125                // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.setCanSpawnInAether:(Z)V
+     164: return
+
+  private static net.minecraft.core.BlockPos checkPositionsForInitialSpawn(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #129                // Method isSafe:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+       5: ifne          103
+       8: iconst_0
+       9: istore_2
+      10: iload_2
+      11: sipush        750
+      14: if_icmpgt     103
+      17: getstatic     #133                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      20: invokevirtual #139                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      23: astore_3
+      24: aload_3
+      25: invokeinterface #143,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      30: ifeq          97
+      33: aload_3
+      34: invokeinterface #148,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #151                // class net/minecraft/core/Direction
+      42: astore        4
+      44: aload_1
+      45: aload         4
+      47: invokevirtual #153                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+      50: iload_2
+      51: invokevirtual #157                // Method net/minecraft/core/Vec3i.multiply:(I)Lnet/minecraft/core/Vec3i;
+      54: invokevirtual #163                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      57: astore        5
+      59: aload_0
+      60: aload         5
+      62: invokestatic  #167                // Method isSafeAround:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+      65: ifeq          71
+      68: aload         5
+      70: areturn
+      71: aload_0
+      72: getstatic     #170                // Field net/minecraft/world/level/levelgen/Heightmap$Types.MOTION_BLOCKING:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      75: aload         5
+      77: invokevirtual #176                // Method net/minecraft/world/level/Level.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      80: astore        6
+      82: aload_0
+      83: aload         6
+      85: invokestatic  #167                // Method isSafeAround:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+      88: ifeq          94
+      91: aload         6
+      93: areturn
+      94: goto          24
+      97: iinc          2, 5
+     100: goto          10
+     103: aload_1
+     104: areturn
+
+  public static boolean isSafeAround(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #180                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_0
+       6: aload_2
+       7: invokestatic  #129                // Method isSafe:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+      10: ifne          15
+      13: iconst_0
+      14: ireturn
+      15: getstatic     #133                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+      18: invokevirtual #139                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+      21: astore_3
+      22: aload_3
+      23: invokeinterface #143,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      28: ifeq          61
+      31: aload_3
+      32: invokeinterface #148,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      37: checkcast     #151                // class net/minecraft/core/Direction
+      40: astore        4
+      42: aload_0
+      43: aload_2
+      44: aload         4
+      46: iconst_2
+      47: invokevirtual #183                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      50: invokestatic  #129                // Method isSafe:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z
+      53: ifne          58
+      56: iconst_0
+      57: ireturn
+      58: goto          22
+      61: iconst_1
+      62: ireturn
+
+  private static boolean isSafe(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: invokevirtual #187                // Method net/minecraft/world/level/Level.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+       4: aload_1
+       5: invokevirtual #191                // Method net/minecraft/world/level/border/WorldBorder.isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+       8: ifeq          58
+      11: aload_0
+      12: aload_1
+      13: invokevirtual #197                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      16: getstatic     #201                // Field com/aetherteam/aether/AetherTags$Blocks.AETHER_DIRT:Lnet/minecraft/tags/TagKey;
+      19: invokevirtual #207                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      22: ifeq          58
+      25: aload_0
+      26: aload_1
+      27: invokevirtual #213                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      30: invokevirtual #197                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      33: invokevirtual #216                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      36: ifeq          58
+      39: aload_0
+      40: aload_1
+      41: iconst_2
+      42: invokevirtual #219                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      45: invokevirtual #197                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      48: invokevirtual #216                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      51: ifeq          58
+      54: iconst_1
+      55: goto          59
+      58: iconst_0
+      59: ireturn
+
+  public static boolean createPortal(net.minecraft.world.entity.player.Player, net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.core.Direction, net.minecraft.world.item.ItemStack, net.minecraft.world.InteractionHand);
+    Code:
+       0: aload_1
+       1: invokevirtual #222                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       4: ifne          238
+       7: invokestatic  #225                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      10: ldc           #230                // String immersive_portals_core
+      12: invokevirtual #232                // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      15: ifeq          36
+      18: getstatic     #236                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      21: getfield      #240                // Field com/aetherteam/aether/AetherConfig$Common.enable_immersive_portals_compatibility:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      24: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      27: checkcast     #39                 // class java/lang/Boolean
+      30: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+      33: ifne          238
+      36: aload_3
+      37: ifnull        238
+      40: aload_2
+      41: aload_3
+      42: invokevirtual #245                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      45: astore        6
+      47: aload         4
+      49: getstatic     #248                // Field com/aetherteam/aether/AetherTags$Items.AETHER_PORTAL_ACTIVATION_ITEMS:Lnet/minecraft/tags/TagKey;
+      52: invokevirtual #253                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+      55: ifeq          238
+      58: aload_1
+      59: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      62: invokestatic  #256                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+      65: if_acmpeq     78
+      68: aload_1
+      69: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      72: invokestatic  #261                // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+      75: if_acmpne     238
+      78: aload_1
+      79: aload         6
+      81: getstatic     #264                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+      84: invokestatic  #270                // Method com/aetherteam/aether/block/portal/AetherPortalShape.findEmptyAetherPortalShape:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction$Axis;)Ljava/util/Optional;
+      87: astore        7
+      89: aload         7
+      91: invokevirtual #276                // Method java/util/Optional.isPresent:()Z
+      94: ifeq          238
+      97: new           #281                // class com/aetherteam/aether/network/packet/clientbound/PortalInteractPacket
+     100: dup
+     101: aload_0
+     102: invokevirtual #283                // Method net/minecraft/world/entity/player/Player.getId:()I
+     105: aload         5
+     107: getstatic     #287                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+     110: if_acmpne     117
+     113: iconst_1
+     114: goto          118
+     117: iconst_0
+     118: invokespecial #293                // Method com/aetherteam/aether/network/packet/clientbound/PortalInteractPacket."<init>":(IZ)V
+     121: iconst_0
+     122: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     125: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     128: aload         7
+     130: invokevirtual #304                // Method java/util/Optional.get:()Ljava/lang/Object;
+     133: checkcast     #271                // class com/aetherteam/aether/block/portal/AetherPortalShape
+     136: invokevirtual #305                // Method com/aetherteam/aether/block/portal/AetherPortalShape.createPortalBlocks:()V
+     139: aload_0
+     140: invokevirtual #308                // Method net/minecraft/world/entity/player/Player.isCreative:()Z
+     143: ifne          236
+     146: aload         4
+     148: invokevirtual #311                // Method net/minecraft/world/item/ItemStack.getCount:()I
+     151: iconst_1
+     152: if_icmple     188
+     155: aload         4
+     157: iconst_1
+     158: invokevirtual #314                // Method net/minecraft/world/item/ItemStack.shrink:(I)V
+     161: aload_0
+     162: aload         4
+     164: invokevirtual #318                // Method net/minecraft/world/item/ItemStack.hasCraftingRemainingItem:()Z
+     167: ifeq          178
+     170: aload         4
+     172: invokevirtual #321                // Method net/minecraft/world/item/ItemStack.getCraftingRemainingItem:()Lnet/minecraft/world/item/ItemStack;
+     175: goto          181
+     178: getstatic     #325                // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+     181: invokevirtual #329                // Method net/minecraft/world/entity/player/Player.addItem:(Lnet/minecraft/world/item/ItemStack;)Z
+     184: pop
+     185: goto          236
+     188: aload         4
+     190: invokevirtual #333                // Method net/minecraft/world/item/ItemStack.isDamageableItem:()Z
+     193: ifeq          211
+     196: aload         4
+     198: iconst_1
+     199: aload_0
+     200: aload         5
+     202: invokestatic  #336                // Method net/minecraft/world/entity/LivingEntity.getSlotForHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/entity/EquipmentSlot;
+     205: invokevirtual #342                // Method net/minecraft/world/item/ItemStack.hurtAndBreak:(ILnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;)V
+     208: goto          236
+     211: aload_0
+     212: aload         5
+     214: aload         4
+     216: invokevirtual #318                // Method net/minecraft/world/item/ItemStack.hasCraftingRemainingItem:()Z
+     219: ifeq          230
+     222: aload         4
+     224: invokevirtual #321                // Method net/minecraft/world/item/ItemStack.getCraftingRemainingItem:()Lnet/minecraft/world/item/ItemStack;
+     227: goto          233
+     230: getstatic     #325                // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+     233: invokevirtual #346                // Method net/minecraft/world/entity/player/Player.setItemInHand:(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V
+     236: iconst_1
+     237: ireturn
+     238: iconst_0
+     239: ireturn
+
+  public static boolean detectWaterInFrame(net.minecraft.world.level.LevelAccessor, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.material.FluidState);
+    Code:
+       0: aload_0
+       1: instanceof    #55                 // class net/minecraft/world/level/Level
+       4: ifeq          146
+       7: aload_0
+       8: checkcast     #55                 // class net/minecraft/world/level/Level
+      11: astore        4
+      13: aload         4
+      15: invokevirtual #222                // Method net/minecraft/world/level/Level.isClientSide:()Z
+      18: ifne          146
+      21: invokestatic  #225                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      24: ldc           #230                // String immersive_portals_core
+      26: invokevirtual #232                // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      29: ifeq          50
+      32: getstatic     #236                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      35: getfield      #240                // Field com/aetherteam/aether/AetherConfig$Common.enable_immersive_portals_compatibility:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      38: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      41: checkcast     #39                 // class java/lang/Boolean
+      44: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+      47: ifne          146
+      50: aload_3
+      51: getstatic     #350                // Field net/minecraft/world/level/material/Fluids.WATER:Lnet/minecraft/world/level/material/FlowingFluid;
+      54: invokevirtual #356                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/world/level/material/Fluid;)Z
+      57: ifeq          146
+      60: aload_3
+      61: invokevirtual #361                // Method net/minecraft/world/level/material/FluidState.createLegacyBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+      64: invokevirtual #365                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      67: aload_2
+      68: invokevirtual #365                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      71: if_acmpne     146
+      74: aload         4
+      76: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      79: invokestatic  #256                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+      82: if_acmpeq     96
+      85: aload         4
+      87: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      90: invokestatic  #261                // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+      93: if_acmpne     146
+      96: getstatic     #21                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      99: getfield      #369                // Field com/aetherteam/aether/AetherConfig$Server.disable_aether_portal:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+     102: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     105: checkcast     #39                 // class java/lang/Boolean
+     108: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+     111: ifne          146
+     114: aload         4
+     116: aload_1
+     117: getstatic     #264                // Field net/minecraft/core/Direction$Axis.X:Lnet/minecraft/core/Direction$Axis;
+     120: invokestatic  #270                // Method com/aetherteam/aether/block/portal/AetherPortalShape.findEmptyAetherPortalShape:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction$Axis;)Ljava/util/Optional;
+     123: astore        5
+     125: aload         5
+     127: invokevirtual #276                // Method java/util/Optional.isPresent:()Z
+     130: ifeq          146
+     133: aload         5
+     135: invokevirtual #304                // Method java/util/Optional.get:()Ljava/lang/Object;
+     138: checkcast     #271                // class com/aetherteam/aether/block/portal/AetherPortalShape
+     141: invokevirtual #305                // Method com/aetherteam/aether/block/portal/AetherPortalShape.createPortalBlocks:()V
+     144: iconst_1
+     145: ireturn
+     146: iconst_0
+     147: ireturn
+
+  public static void tickTime(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: invokevirtual #372                // Method net/minecraft/world/level/Level.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+       4: invokevirtual #376                // Method net/minecraft/world/level/dimension/DimensionType.effectsLocation:()Lnet/minecraft/resources/ResourceLocation;
+       7: getstatic     #382                // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_DIMENSION_TYPE:Lnet/minecraft/resources/ResourceKey;
+      10: invokevirtual #385                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      13: invokevirtual #390                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      16: ifeq          107
+      19: aload_0
+      20: instanceof    #396                // class net/minecraft/server/level/ServerLevel
+      23: ifeq          107
+      26: aload_0
+      27: checkcast     #396                // class net/minecraft/server/level/ServerLevel
+      30: astore_1
+      31: aload_1
+      32: checkcast     #398                // class com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor
+      35: astore_2
+      36: aload_0
+      37: checkcast     #400                // class com/aetherteam/aether/mixin/mixins/common/accessor/LevelAccessor
+      40: astore_3
+      41: aload_3
+      42: invokeinterface #402,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/LevelAccessor.aether$getLevelData:()Lnet/minecraft/world/level/storage/WritableLevelData;
+      47: invokeinterface #406,  1          // InterfaceMethod net/minecraft/world/level/storage/WritableLevelData.getGameTime:()J
+      52: lconst_1
+      53: ladd
+      54: lstore        4
+      56: aload_2
+      57: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      62: lload         4
+      64: invokeinterface #416,  3          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.setGameTime:(J)V
+      69: aload_2
+      70: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      75: invokeinterface #422,  1          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.getGameRules:()Lnet/minecraft/world/level/GameRules;
+      80: getstatic     #426                // Field net/minecraft/world/level/GameRules.RULE_DAYLIGHT:Lnet/minecraft/world/level/GameRules$Key;
+      83: invokevirtual #432                // Method net/minecraft/world/level/GameRules.getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+      86: ifeq          107
+      89: aload_1
+      90: aload_1
+      91: getstatic     #436                // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_TIME:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      94: invokevirtual #439                // Method net/minecraft/server/level/ServerLevel.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      97: checkcast     #440                // class com/aetherteam/aether/attachment/AetherTimeAttachment
+     100: aload_0
+     101: invokevirtual #442                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.tickTime:(Lnet/minecraft/world/level/Level;)J
+     104: invokevirtual #446                // Method net/minecraft/server/level/ServerLevel.setDayTime:(J)V
+     107: return
+
+  public static void checkEternalDayConfig(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: invokevirtual #222                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       4: ifne          65
+       7: aload_0
+       8: getstatic     #436                // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_TIME:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      11: invokevirtual #449                // Method net/minecraft/world/level/Level.hasData:(Ljava/util/function/Supplier;)Z
+      14: ifeq          65
+      17: aload_0
+      18: getstatic     #436                // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_TIME:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      21: invokevirtual #453                // Method net/minecraft/world/level/Level.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      24: checkcast     #440                // class com/aetherteam/aether/attachment/AetherTimeAttachment
+      27: astore_1
+      28: aload_1
+      29: invokevirtual #454                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.isEternalDay:()Z
+      32: istore_2
+      33: getstatic     #21                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      36: getfield      #457                // Field com/aetherteam/aether/AetherConfig$Server.disable_eternal_day:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      39: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      42: checkcast     #39                 // class java/lang/Boolean
+      45: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+      48: ifeq          65
+      51: iload_2
+      52: ifeq          65
+      55: aload_1
+      56: iconst_0
+      57: invokevirtual #460                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.setEternalDay:(Z)V
+      60: aload_1
+      61: aload_0
+      62: invokevirtual #463                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.updateEternalDay:(Lnet/minecraft/world/level/Level;)V
+      65: return
+
+  public static void dimensionTravel(net.minecraft.world.entity.Entity, net.minecraft.resources.ResourceKey<net.minecraft.world.level.Level>);
+    Code:
+       0: aload_0
+       1: instanceof    #14                 // class net/minecraft/world/entity/player/Player
+       4: ifeq          221
+       7: aload_0
+       8: checkcast     #14                 // class net/minecraft/world/entity/player/Player
+      11: astore_2
+      12: aload_2
+      13: invokevirtual #467                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      16: invokevirtual #222                // Method net/minecraft/world/level/Level.isClientSide:()Z
+      19: ifne          221
+      22: aload_2
+      23: getstatic     #7                  // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_PLAYER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      26: invokevirtual #13                 // Method net/minecraft/world/entity/player/Player.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      29: checkcast     #19                 // class com/aetherteam/aether/attachment/AetherPlayerAttachment
+      32: astore_3
+      33: getstatic     #21                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      36: getfield      #27                 // Field com/aetherteam/aether/AetherConfig$Server.spawn_in_aether:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      39: invokevirtual #33                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      42: checkcast     #39                 // class java/lang/Boolean
+      45: invokevirtual #41                 // Method java/lang/Boolean.booleanValue:()Z
+      48: ifeq          58
+      51: aload_3
+      52: invokevirtual #45                 // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.canSpawnInAether:()Z
+      55: ifne          221
+      58: aload_0
+      59: invokevirtual #468                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+      62: aload_0
+      63: invokevirtual #471                // Method net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+      66: invokevirtual #472                // Method net/minecraft/world/level/Level.getBiome:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+      69: getstatic     #476                // Field com/aetherteam/aether/AetherTags$Biomes.DISPLAY_TRAVEL_TEXT:Lnet/minecraft/tags/TagKey;
+      72: invokeinterface #481,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      77: ifeq          221
+      80: aload_0
+      81: invokevirtual #468                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+      84: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+      87: invokestatic  #261                // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+      90: if_acmpne     141
+      93: aload_1
+      94: invokestatic  #256                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+      97: if_acmpne     141
+     100: iconst_1
+     101: putstatic     #484                // Field displayAetherTravel:Z
+     104: iconst_1
+     105: putstatic     #488                // Field playerLeavingAether:Z
+     108: new           #491                // class com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket
+     111: dup
+     112: iconst_1
+     113: invokespecial #493                // Method com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket."<init>":(Z)V
+     116: iconst_0
+     117: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     120: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     123: new           #495                // class com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket
+     126: dup
+     127: iconst_1
+     128: invokespecial #497                // Method com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket."<init>":(Z)V
+     131: iconst_0
+     132: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     135: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     138: goto          221
+     141: aload_0
+     142: invokevirtual #468                // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+     145: invokevirtual #72                 // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+     148: invokestatic  #256                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+     151: if_acmpne     202
+     154: aload_1
+     155: invokestatic  #261                // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+     158: if_acmpne     202
+     161: iconst_1
+     162: putstatic     #484                // Field displayAetherTravel:Z
+     165: iconst_0
+     166: putstatic     #488                // Field playerLeavingAether:Z
+     169: new           #491                // class com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket
+     172: dup
+     173: iconst_1
+     174: invokespecial #493                // Method com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket."<init>":(Z)V
+     177: iconst_0
+     178: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     181: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     184: new           #495                // class com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket
+     187: dup
+     188: iconst_0
+     189: invokespecial #497                // Method com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket."<init>":(Z)V
+     192: iconst_0
+     193: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     196: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     199: goto          221
+     202: iconst_0
+     203: putstatic     #484                // Field displayAetherTravel:Z
+     206: new           #491                // class com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket
+     209: dup
+     210: iconst_0
+     211: invokespecial #493                // Method com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket."<init>":(Z)V
+     214: iconst_0
+     215: anewarray     #296                // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     218: invokestatic  #298                // Method net/neoforged/neoforge/network/PacketDistributor.sendToAllPlayers:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     221: return
+
+  public static void removePlayerAerbunny(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: instanceof    #14                 // class net/minecraft/world/entity/player/Player
+       4: ifeq          31
+       7: aload_0
+       8: checkcast     #14                 // class net/minecraft/world/entity/player/Player
+      11: astore_1
+      12: aload_1
+      13: getstatic     #7                  // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_PLAYER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      16: invokevirtual #498                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+      19: checkcast     #501                // class net/neoforged/neoforge/attachment/AttachmentType
+      22: invokevirtual #503                // Method net/minecraft/world/entity/player/Player.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+      25: checkcast     #19                 // class com/aetherteam/aether/attachment/AetherPlayerAttachment
+      28: invokevirtual #506                // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.removeAerbunny:()V
+      31: return
+
+  public static void remountPlayerAerbunny(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_PLAYER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       4: invokevirtual #498                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       7: checkcast     #501                // class net/neoforged/neoforge/attachment/AttachmentType
+      10: invokevirtual #503                // Method net/minecraft/world/entity/player/Player.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+      13: checkcast     #19                 // class com/aetherteam/aether/attachment/AetherPlayerAttachment
+      16: aload_0
+      17: invokevirtual #509                // Method com/aetherteam/aether/attachment/AetherPlayerAttachment.remountAerbunny:(Lnet/minecraft/world/entity/player/Player;)V
+      20: return
+
+  public static void travelling(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: instanceof    #48                 // class net/minecraft/server/level/ServerPlayer
+       4: ifeq          65
+       7: aload_0
+       8: checkcast     #48                 // class net/minecraft/server/level/ServerPlayer
+      11: astore_1
+      12: getstatic     #513                // Field teleportationTimer:I
+      15: ifle          48
+      18: aload_1
+      19: getfield      #517                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+      22: checkcast     #521                // class com/aetherteam/aether/mixin/mixins/common/accessor/ServerGamePacketListenerImplAccessor
+      25: astore_2
+      26: aload_2
+      27: iconst_0
+      28: invokeinterface #523,  2          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerGamePacketListenerImplAccessor.aether$setAboveGroundTickCount:(I)V
+      33: aload_2
+      34: iconst_0
+      35: invokeinterface #526,  2          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerGamePacketListenerImplAccessor.aether$setAboveGroundVehicleTickCount:(I)V
+      40: getstatic     #513                // Field teleportationTimer:I
+      43: iconst_1
+      44: isub
+      45: putstatic     #513                // Field teleportationTimer:I
+      48: getstatic     #513                // Field teleportationTimer:I
+      51: iflt          61
+      54: aload_1
+      55: getfield      #529                // Field net/minecraft/server/level/ServerPlayer.verticalCollisionBelow:Z
+      58: ifeq          65
+      61: iconst_0
+      62: putstatic     #513                // Field teleportationTimer:I
+      65: return
+
+  public static void initializeLevelData(net.minecraft.world.level.LevelAccessor);
+    Code:
+       0: aload_0
+       1: instanceof    #396                // class net/minecraft/server/level/ServerLevel
+       4: ifeq          98
+       7: aload_0
+       8: checkcast     #396                // class net/minecraft/server/level/ServerLevel
+      11: astore_1
+      12: aload_1
+      13: invokevirtual #532                // Method net/minecraft/server/level/ServerLevel.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+      16: invokevirtual #376                // Method net/minecraft/world/level/dimension/DimensionType.effectsLocation:()Lnet/minecraft/resources/ResourceLocation;
+      19: getstatic     #382                // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_DIMENSION_TYPE:Lnet/minecraft/resources/ResourceKey;
+      22: invokevirtual #385                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      25: invokevirtual #390                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      28: ifeq          98
+      31: new           #533                // class com/aetherteam/aether/world/AetherLevelData
+      34: dup
+      35: aload_1
+      36: aload_1
+      37: invokevirtual #535                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+      40: invokevirtual #536                // Method net/minecraft/server/MinecraftServer.getWorldData:()Lnet/minecraft/world/level/storage/WorldData;
+      43: aload_1
+      44: invokevirtual #535                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+      47: invokevirtual #536                // Method net/minecraft/server/MinecraftServer.getWorldData:()Lnet/minecraft/world/level/storage/WorldData;
+      50: invokeinterface #540,  1          // InterfaceMethod net/minecraft/world/level/storage/WorldData.overworldData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      55: aload_1
+      56: getstatic     #436                // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_TIME:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      59: invokevirtual #439                // Method net/minecraft/server/level/ServerLevel.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      62: checkcast     #440                // class com/aetherteam/aether/attachment/AetherTimeAttachment
+      65: invokevirtual #545                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.getDayTime:()J
+      68: invokespecial #548                // Method com/aetherteam/aether/world/AetherLevelData."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/storage/WorldData;Lnet/minecraft/world/level/storage/ServerLevelData;J)V
+      71: astore_2
+      72: aload_1
+      73: checkcast     #398                // class com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor
+      76: astore_3
+      77: aload_0
+      78: checkcast     #400                // class com/aetherteam/aether/mixin/mixins/common/accessor/LevelAccessor
+      81: astore        4
+      83: aload_3
+      84: aload_2
+      85: invokeinterface #551,  2          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$setServerLevelData:(Lnet/minecraft/world/level/storage/ServerLevelData;)V
+      90: aload         4
+      92: aload_2
+      93: invokeinterface #555,  2          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/LevelAccessor.aether$setLevelData:(Lnet/minecraft/world/level/storage/WritableLevelData;)V
+      98: return
+
+  public static java.lang.Long finishSleep(net.minecraft.world.level.LevelAccessor, long);
+    Code:
+       0: aload_0
+       1: instanceof    #396                // class net/minecraft/server/level/ServerLevel
+       4: ifeq          107
+       7: aload_0
+       8: invokeinterface #559,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+      13: invokevirtual #376                // Method net/minecraft/world/level/dimension/DimensionType.effectsLocation:()Lnet/minecraft/resources/ResourceLocation;
+      16: getstatic     #382                // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_DIMENSION_TYPE:Lnet/minecraft/resources/ResourceKey;
+      19: invokevirtual #385                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      22: invokevirtual #390                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      25: ifeq          107
+      28: aload_0
+      29: checkcast     #398                // class com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor
+      32: astore_3
+      33: aload_3
+      34: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      39: iconst_0
+      40: invokeinterface #562,  2          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.setRainTime:(I)V
+      45: aload_3
+      46: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      51: iconst_0
+      52: invokeinterface #565,  2          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.setRaining:(Z)V
+      57: aload_3
+      58: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      63: iconst_0
+      64: invokeinterface #568,  2          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.setThunderTime:(I)V
+      69: aload_3
+      70: invokeinterface #412,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ServerLevelAccessor.aether$getServerLevelData:()Lnet/minecraft/world/level/storage/ServerLevelData;
+      75: iconst_0
+      76: invokeinterface #571,  2          // InterfaceMethod net/minecraft/world/level/storage/ServerLevelData.setThundering:(Z)V
+      81: lload_1
+      82: ldc2_w        #574                // long 24000l
+      85: invokestatic  #576                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.getTicksPerDayMultiplier:()I
+      88: i2l
+      89: lmul
+      90: ladd
+      91: lstore        4
+      93: lload         4
+      95: lload         4
+      97: invokestatic  #579                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.getTicksPerDay:()I
+     100: i2l
+     101: lrem
+     102: lsub
+     103: invokestatic  #582                // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+     106: areturn
+     107: aconst_null
+     108: areturn
+
+  public static boolean isEternalDay(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: invokevirtual #467                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       4: invokevirtual #372                // Method net/minecraft/world/level/Level.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+       7: invokevirtual #376                // Method net/minecraft/world/level/dimension/DimensionType.effectsLocation:()Lnet/minecraft/resources/ResourceLocation;
+      10: getstatic     #382                // Field com/aetherteam/aether/data/resources/registries/AetherDimensions.AETHER_DIMENSION_TYPE:Lnet/minecraft/resources/ResourceKey;
+      13: invokevirtual #385                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      16: invokevirtual #390                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      19: ifeq          39
+      22: aload_0
+      23: invokevirtual #467                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      26: getstatic     #436                // Field com/aetherteam/aether/attachment/AetherDataAttachments.AETHER_TIME:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      29: invokevirtual #453                // Method net/minecraft/world/level/Level.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+      32: checkcast     #440                // class com/aetherteam/aether/attachment/AetherTimeAttachment
+      35: invokevirtual #454                // Method com/aetherteam/aether/attachment/AetherTimeAttachment.isEternalDay:()Z
+      38: ireturn
+      39: iconst_0
+      40: ireturn
+}
