@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-06
 
+Latest RU checkpoint: be03a80 resolves fallen-tree placement and decoration
+links. Eight placed definitions map to six configurations with nineteen packaged
+biome consumers. AttachedToLogsDecorator is captured in 1c53b0f (extractor
+947a0fa), manifest 7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d.
+Both candidate tests and scoped checks pass. Do not repeat this boundary.
+
+Current work is the remaining terrain feature roles. Source 4d65d81 captures
+thirteen rock/spire/ground/pool implementations using extractor 7fc2e24, under
+sources/regions-unexplored-terrain-features. Manifest SHA-256:
+408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c.
+Independent r1 matches. These sources are delivered, but their complete role
+interpretation and provider-test binding remain open. Initial inspection shows
+BasaltBlob's chest and masonry references belong to CANNOT_PLACE_ON, not a
+chest-generation claim. PointedRedstoneFeature and its cluster delegate to
+PointedRedstoneUtils, whose body is not yet captured. Keep any follow-up tied to
+that concrete writer boundary. Other vegetation, common entries and remaining
+payload/overlay/JSON5 roles still follow. Census remains 77 resolved, 59 open.
+All increments are pushed and remote-verified. No runtime process is running.
+
+
 Latest RU increment: c373525 binds one stump-and-fallen-log candidate with six
 configuration variants and preserves the possible stump-only outcome. Both
 focused candidate cases and scoped Ruff/Basedpyright pass. Source 23f8c7b,
