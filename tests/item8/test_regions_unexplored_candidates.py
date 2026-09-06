@@ -75,7 +75,7 @@ def test_regions_unexplored_packaged_component_boundary() -> None:
         assert common <= captured
 
 
-def test_regions_unexplored_fallen_tree_variants_and_source() -> None:
+def test_regions_unexplored_feature_candidates_and_sources() -> None:
     raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
         "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
@@ -141,6 +141,10 @@ def test_regions_unexplored_fallen_tree_variants_and_source() -> None:
              "b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770"),
             ("regions-unexplored-log-decorator",
              "7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d"),
+            ("regions-unexplored-terrain-features",
+             "408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c"),
+            ("regions-unexplored-redstone-writer",
+             "31143f1076e6d08d7280dd918331ce67087d07626cfe25778608398c26827bdd"),
         ):
             base = Path("evidence/item-8/sources") / directory
             raw = (base / "identities.json").read_bytes()

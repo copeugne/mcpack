@@ -3748,3 +3748,44 @@ Fallen-tree implementation, variants, packaged placement links and decorator
 roles are resolved for this scope pass. Preserve the stump-only limitation.
 Remaining provider work is other features, common entry roles and remaining
 payload/overlay/JSON5 coverage. Census remains 77 resolved and 59 open.
+
+### Regions Unexplored rock, spire, ground and pool feature roles
+
+The thirteen implementations in sources/regions-unexplored-terrain-features
+(source 4d65d81) and the shared PointedRedstoneUtils writer in
+sources/regions-unexplored-redstone-writer (source 690e757) resolve this batch:
+
+| Implementation | Contribution role |
+| --- | --- |
+| BasaltBlobFeature | Basalt column/blob terrain. Chest and masonry references occur in CANNOT_PLACE_ON exclusions, not in a generated chest/building palette. |
+| FloorIcicleFeature | Upward icicle block columns with base, middle, frustum and tip states. Mineral/ice decoration. |
+| MarshFeature | Ground and water reshaping with grass, lilies and other surface vegetation. Marsh terrain. |
+| NetherRockFeature | Irregular bone/overgrown-bone formations with ground/netherrack handling. Natural geological decoration, not an articulated authored skeleton. |
+| ObsidianSpireFeature | Obsidian/cobalt-obsidian blobs and a spire formed by direct block placement. Geological formation, not a rectilinear monument design. |
+| PointedRedstoneFeature and PointedRedstoneClusterFeature | Cave mineral columns and clusters. Shared writer creates raw-redstone bases and pointed-redstone columns with direction/thickness states; cluster also handles water. |
+| RockPillarFeature | Stone pillars/blobs with surface grass and underwater coral choices. Geological/reef formation. |
+| SeaRockFeature | Configured rock geometry, water/air clearing and ice/snow handling. The packaged hyacinth rock supplies stone and mossy stone. |
+| WaterEdgeFeature | Ground-edge reshaping and duckweed vegetation at water boundaries. |
+| IceSpireFeature | Configured spire geometry through trunk/foliage providers. The packaged ice_spire supplies packed ice and ice, not a wooden structure. |
+| RURockFeature | Offset blobs of supplied stone/cobblestone/mossy variants. |
+| CarvedLimitedPoolFeature | Water-pool carving with supplied slope and slope-top states and wall/pool predicates. The packaged definition supplies dirt and grass over mud. |
+
+These paths contribute terrain, minerals and vegetation rather than another
+canonical authored-site family. This uses their actual writers and supplied
+materials, not the provider name or a keyword absence rule. Randomized natural
+formations follow the existing BetterEnd/BOP terrain distinction. Do not count
+each blob, column, material variant or feature configuration as a family.
+
+The two new manifest hashes are:
+408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c
+(terrain implementations) and
+31143f1076e6d08d7280dd918331ce67087d07626cfe25778608398c26827bdd
+(shared redstone writer). The existing candidate/source test binds all class
+and disassembly bytes to the retained archive. Both cases and scoped Ruff and
+Basedpyright pass with the commands above. No runtime experiment or new
+validation framework was added. Do not infer placement frequency, footprint or
+reproducibility of random geometry from these contribution-role decisions.
+
+This batch is resolved. Other vegetation implementations, remaining common
+entry roles and full payload/overlay/JSON5 reconciliation still prevent provider
+closure. Census remains 77 resolved and 59 open.
