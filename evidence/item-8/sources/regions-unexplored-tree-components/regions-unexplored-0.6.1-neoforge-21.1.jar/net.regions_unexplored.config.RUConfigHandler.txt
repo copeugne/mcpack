@@ -1,0 +1,373 @@
+Compiled from "RUConfigHandler.java"
+public class net.regions_unexplored.config.RUConfigHandler {
+  public static net.regions_unexplored.config.state.client.RUClientConfig CLIENT;
+
+  private static final java.nio.file.Path CLIENT_PATH;
+
+  public static net.regions_unexplored.config.state.common.RUCommonConfig COMMON;
+
+  private static final java.nio.file.Path COMMON_PATH;
+
+  private static final java.util.List<java.lang.String> LEGACY_CONFIG_NAMES;
+
+  public net.regions_unexplored.config.RUConfigHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void loadConfigs();
+    Code:
+       0: invokestatic  #35                 // Method net/regions_unexplored/module/platform/ConfigHelper.getConfigDirectory:()Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #37                 // class java/nio/file/attribute/FileAttribute
+       7: invokestatic  #43                 // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+      10: pop
+      11: goto          32
+      14: astore_0
+      15: new           #45                 // class java/lang/RuntimeException
+      18: dup
+      19: aload_0
+      20: invokestatic  #51                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      23: invokedynamic #63,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      28: invokespecial #66                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      31: athrow
+      32: invokestatic  #69                 // Method loadClient:()V
+      35: invokestatic  #72                 // Method loadCommon:()V
+      38: getstatic     #74                 // Field LEGACY_CONFIG_NAMES:Ljava/util/List;
+      41: invokeinterface #80,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      46: astore_0
+      47: aload_0
+      48: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      53: ifeq          86
+      56: aload_0
+      57: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      62: checkcast     #47                 // class java/lang/String
+      65: astore_1
+      66: invokestatic  #35                 // Method net/regions_unexplored/module/platform/ConfigHelper.getConfigDirectory:()Ljava/nio/file/Path;
+      69: aload_1
+      70: invokeinterface #96,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      75: invokestatic  #100                // Method java/nio/file/Files.deleteIfExists:(Ljava/nio/file/Path;)Z
+      78: pop
+      79: goto          83
+      82: astore_2
+      83: goto          47
+      86: return
+    Exception table:
+       from    to  target type
+           0    11    14   Class java/io/IOException
+          66    79    82   Class java/io/IOException
+
+  public static void loadClient();
+    Code:
+       0: getstatic     #112                // Field CLIENT_PATH:Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #114                // class java/nio/file/LinkOption
+       7: invokestatic  #118                // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      10: ifne          16
+      13: invokestatic  #121                // Method saveClient:()V
+      16: getstatic     #112                // Field CLIENT_PATH:Ljava/nio/file/Path;
+      19: invokestatic  #125                // Method java/nio/file/Files.newBufferedReader:(Ljava/nio/file/Path;)Ljava/io/BufferedReader;
+      22: astore_0
+      23: new           #127                // class de/marhali/json5/stream/Json5Lexer
+      26: dup
+      27: aload_0
+      28: getstatic     #133                // Field net/regions_unexplored/config/json5/Json5Ops.OPTIONS:Lde/marhali/json5/config/Json5Options;
+      31: invokespecial #136                // Method de/marhali/json5/stream/Json5Lexer."<init>":(Ljava/io/Reader;Lde/marhali/json5/config/Json5Options;)V
+      34: invokestatic  #142                // Method de/marhali/json5/stream/Json5Parser.parse:(Lde/marhali/json5/stream/Json5Lexer;)Lde/marhali/json5/Json5Element;
+      37: astore_1
+      38: getstatic     #148                // Field net/regions_unexplored/config/state/client/RUClientConfig.CODEC:Lcom/mojang/serialization/Codec;
+      41: getstatic     #152                // Field net/regions_unexplored/config/json5/Json5Ops.INSTANCE:Lnet/regions_unexplored/config/json5/Json5Ops;
+      44: aload_1
+      45: invokeinterface #157,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      50: astore_2
+      51: aload_2
+      52: invokeinterface #163,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      57: astore_3
+      58: aload_3
+      59: invokevirtual #168                // Method java/util/Optional.isPresent:()Z
+      62: ifeq          81
+      65: aload_3
+      66: invokevirtual #171                // Method java/util/Optional.get:()Ljava/lang/Object;
+      69: checkcast     #144                // class net/regions_unexplored/config/state/client/RUClientConfig
+      72: putstatic     #173                // Field CLIENT:Lnet/regions_unexplored/config/state/client/RUClientConfig;
+      75: invokestatic  #121                // Method saveClient:()V
+      78: goto          91
+      81: new           #108                // class com/google/gson/JsonParseException
+      84: dup
+      85: ldc           #179                // String Invalid codec
+      87: invokespecial #180                // Method com/google/gson/JsonParseException."<init>":(Ljava/lang/String;)V
+      90: athrow
+      91: aload_0
+      92: ifnull        122
+      95: aload_0
+      96: invokevirtual #183                // Method java/io/BufferedReader.close:()V
+      99: goto          122
+     102: astore_1
+     103: aload_0
+     104: ifnull        120
+     107: aload_0
+     108: invokevirtual #183                // Method java/io/BufferedReader.close:()V
+     111: goto          120
+     114: astore_2
+     115: aload_1
+     116: aload_2
+     117: invokevirtual #187                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     120: aload_1
+     121: athrow
+     122: goto          161
+     125: astore_0
+     126: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+     129: ldc           #195                // String Couldn\'t parse client config file, loading default config
+     131: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     136: goto          161
+     139: astore_0
+     140: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+     143: aload_0
+     144: invokevirtual #204                // Method java/lang/Exception.getLocalizedMessage:()Ljava/lang/String;
+     147: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     152: new           #45                 // class java/lang/RuntimeException
+     155: dup
+     156: aload_0
+     157: invokespecial #206                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     160: athrow
+     161: return
+    Exception table:
+       from    to  target type
+          23    91   102   Class java/lang/Throwable
+         107   111   114   Class java/lang/Throwable
+          16   122   125   Class com/google/gson/JsonParseException
+          16   122   139   Class java/lang/Exception
+
+  public static void loadCommon();
+    Code:
+       0: getstatic     #219                // Field COMMON_PATH:Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #114                // class java/nio/file/LinkOption
+       7: invokestatic  #118                // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      10: ifne          16
+      13: invokestatic  #222                // Method saveCommon:()V
+      16: getstatic     #219                // Field COMMON_PATH:Ljava/nio/file/Path;
+      19: invokestatic  #125                // Method java/nio/file/Files.newBufferedReader:(Ljava/nio/file/Path;)Ljava/io/BufferedReader;
+      22: astore_0
+      23: new           #127                // class de/marhali/json5/stream/Json5Lexer
+      26: dup
+      27: aload_0
+      28: getstatic     #133                // Field net/regions_unexplored/config/json5/Json5Ops.OPTIONS:Lde/marhali/json5/config/Json5Options;
+      31: invokespecial #136                // Method de/marhali/json5/stream/Json5Lexer."<init>":(Ljava/io/Reader;Lde/marhali/json5/config/Json5Options;)V
+      34: invokestatic  #142                // Method de/marhali/json5/stream/Json5Parser.parse:(Lde/marhali/json5/stream/Json5Lexer;)Lde/marhali/json5/Json5Element;
+      37: astore_1
+      38: getstatic     #225                // Field net/regions_unexplored/config/state/common/RUCommonConfig.CODEC:Lcom/mojang/serialization/Codec;
+      41: getstatic     #152                // Field net/regions_unexplored/config/json5/Json5Ops.INSTANCE:Lnet/regions_unexplored/config/json5/Json5Ops;
+      44: aload_1
+      45: invokeinterface #157,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      50: astore_2
+      51: aload_2
+      52: invokeinterface #163,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      57: astore_3
+      58: aload_3
+      59: invokevirtual #168                // Method java/util/Optional.isPresent:()Z
+      62: ifeq          81
+      65: aload_3
+      66: invokevirtual #171                // Method java/util/Optional.get:()Ljava/lang/Object;
+      69: checkcast     #224                // class net/regions_unexplored/config/state/common/RUCommonConfig
+      72: putstatic     #227                // Field COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      75: invokestatic  #222                // Method saveCommon:()V
+      78: goto          91
+      81: new           #108                // class com/google/gson/JsonParseException
+      84: dup
+      85: ldc           #179                // String Invalid codec
+      87: invokespecial #180                // Method com/google/gson/JsonParseException."<init>":(Ljava/lang/String;)V
+      90: athrow
+      91: aload_0
+      92: ifnull        122
+      95: aload_0
+      96: invokevirtual #183                // Method java/io/BufferedReader.close:()V
+      99: goto          122
+     102: astore_1
+     103: aload_0
+     104: ifnull        120
+     107: aload_0
+     108: invokevirtual #183                // Method java/io/BufferedReader.close:()V
+     111: goto          120
+     114: astore_2
+     115: aload_1
+     116: aload_2
+     117: invokevirtual #187                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     120: aload_1
+     121: athrow
+     122: goto          161
+     125: astore_0
+     126: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+     129: ldc           #229                // String Couldn\'t parse common config file, loading default config
+     131: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     136: goto          161
+     139: astore_0
+     140: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+     143: aload_0
+     144: invokevirtual #204                // Method java/lang/Exception.getLocalizedMessage:()Ljava/lang/String;
+     147: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     152: new           #45                 // class java/lang/RuntimeException
+     155: dup
+     156: aload_0
+     157: invokespecial #206                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     160: athrow
+     161: return
+    Exception table:
+       from    to  target type
+          23    91   102   Class java/lang/Throwable
+         107   111   114   Class java/lang/Throwable
+          16   122   125   Class com/google/gson/JsonParseException
+          16   122   139   Class java/lang/Exception
+
+  public static void saveClient();
+    Code:
+       0: getstatic     #112                // Field CLIENT_PATH:Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #233                // class java/nio/file/OpenOption
+       7: invokestatic  #237                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      10: astore_0
+      11: getstatic     #148                // Field net/regions_unexplored/config/state/client/RUClientConfig.CODEC:Lcom/mojang/serialization/Codec;
+      14: getstatic     #152                // Field net/regions_unexplored/config/json5/Json5Ops.INSTANCE:Lnet/regions_unexplored/config/json5/Json5Ops;
+      17: getstatic     #173                // Field CLIENT:Lnet/regions_unexplored/config/state/client/RUClientConfig;
+      20: invokeinterface #240,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      25: invokeinterface #163,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      30: astore_1
+      31: aload_1
+      32: invokevirtual #243                // Method java/util/Optional.isEmpty:()Z
+      35: ifeq          57
+      38: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+      41: ldc           #245                // String Couldn\'t save client config file, skipping
+      43: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+      48: aload_0
+      49: ifnull        56
+      52: aload_0
+      53: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      56: return
+      57: aload_0
+      58: aload_1
+      59: invokevirtual #171                // Method java/util/Optional.get:()Ljava/lang/Object;
+      62: checkcast     #177                // class de/marhali/json5/Json5Element
+      65: getstatic     #133                // Field net/regions_unexplored/config/json5/Json5Ops.OPTIONS:Lde/marhali/json5/config/Json5Options;
+      68: invokevirtual #252                // Method de/marhali/json5/Json5Element.toString:(Lde/marhali/json5/config/Json5Options;)Ljava/lang/String;
+      71: invokevirtual #255                // Method java/io/BufferedWriter.write:(Ljava/lang/String;)V
+      74: aload_0
+      75: ifnull        105
+      78: aload_0
+      79: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      82: goto          105
+      85: astore_1
+      86: aload_0
+      87: ifnull        103
+      90: aload_0
+      91: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      94: goto          103
+      97: astore_2
+      98: aload_1
+      99: aload_2
+     100: invokevirtual #187                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     103: aload_1
+     104: athrow
+     105: goto          118
+     108: astore_0
+     109: new           #45                 // class java/lang/RuntimeException
+     112: dup
+     113: aload_0
+     114: invokespecial #206                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     117: athrow
+     118: return
+    Exception table:
+       from    to  target type
+          11    48    85   Class java/lang/Throwable
+          57    74    85   Class java/lang/Throwable
+          90    94    97   Class java/lang/Throwable
+           0    56   108   Class java/lang/Exception
+          57   105   108   Class java/lang/Exception
+
+  public static void saveCommon();
+    Code:
+       0: getstatic     #219                // Field COMMON_PATH:Ljava/nio/file/Path;
+       3: iconst_0
+       4: anewarray     #233                // class java/nio/file/OpenOption
+       7: invokestatic  #237                // Method java/nio/file/Files.newBufferedWriter:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/BufferedWriter;
+      10: astore_0
+      11: getstatic     #225                // Field net/regions_unexplored/config/state/common/RUCommonConfig.CODEC:Lcom/mojang/serialization/Codec;
+      14: getstatic     #152                // Field net/regions_unexplored/config/json5/Json5Ops.INSTANCE:Lnet/regions_unexplored/config/json5/Json5Ops;
+      17: getstatic     #227                // Field COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      20: invokeinterface #240,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      25: invokeinterface #163,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      30: astore_1
+      31: aload_1
+      32: invokevirtual #243                // Method java/util/Optional.isEmpty:()Z
+      35: ifeq          58
+      38: getstatic     #193                // Field net/regions_unexplored/RegionsUnexplored.LOGGER:Lorg/slf4j/Logger;
+      41: ldc_w         #261                // String Couldn\'t save common config file, skipping
+      44: invokeinterface #200,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+      49: aload_0
+      50: ifnull        57
+      53: aload_0
+      54: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      57: return
+      58: aload_0
+      59: aload_1
+      60: invokevirtual #171                // Method java/util/Optional.get:()Ljava/lang/Object;
+      63: checkcast     #177                // class de/marhali/json5/Json5Element
+      66: getstatic     #133                // Field net/regions_unexplored/config/json5/Json5Ops.OPTIONS:Lde/marhali/json5/config/Json5Options;
+      69: invokevirtual #252                // Method de/marhali/json5/Json5Element.toString:(Lde/marhali/json5/config/Json5Options;)Ljava/lang/String;
+      72: invokevirtual #255                // Method java/io/BufferedWriter.write:(Ljava/lang/String;)V
+      75: aload_0
+      76: ifnull        106
+      79: aload_0
+      80: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      83: goto          106
+      86: astore_1
+      87: aload_0
+      88: ifnull        104
+      91: aload_0
+      92: invokevirtual #248                // Method java/io/BufferedWriter.close:()V
+      95: goto          104
+      98: astore_2
+      99: aload_1
+     100: aload_2
+     101: invokevirtual #187                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     104: aload_1
+     105: athrow
+     106: goto          119
+     109: astore_0
+     110: new           #45                 // class java/lang/RuntimeException
+     113: dup
+     114: aload_0
+     115: invokespecial #206                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     118: athrow
+     119: return
+    Exception table:
+       from    to  target type
+          11    49    86   Class java/lang/Throwable
+          58    75    86   Class java/lang/Throwable
+          91    95    98   Class java/lang/Throwable
+           0    57   109   Class java/lang/Exception
+          58   106   109   Class java/lang/Exception
+
+  static {};
+    Code:
+       0: getstatic     #265                // Field net/regions_unexplored/config/state/client/RUClientConfig.DEFAULT:Lnet/regions_unexplored/config/state/client/RUClientConfig;
+       3: putstatic     #173                // Field CLIENT:Lnet/regions_unexplored/config/state/client/RUClientConfig;
+       6: invokestatic  #35                 // Method net/regions_unexplored/module/platform/ConfigHelper.getConfigDirectory:()Ljava/nio/file/Path;
+       9: ldc_w         #267                // String client.json
+      12: invokeinterface #96,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      17: putstatic     #112                // Field CLIENT_PATH:Ljava/nio/file/Path;
+      20: getstatic     #269                // Field net/regions_unexplored/config/state/common/RUCommonConfig.DEFAULT:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      23: putstatic     #227                // Field COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      26: invokestatic  #35                 // Method net/regions_unexplored/module/platform/ConfigHelper.getConfigDirectory:()Ljava/nio/file/Path;
+      29: ldc_w         #271                // String common.json
+      32: invokeinterface #96,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      37: putstatic     #219                // Field COMMON_PATH:Ljava/nio/file/Path;
+      40: ldc_w         #273                // String client.toml
+      43: ldc_w         #275                // String common.toml
+      46: ldc_w         #277                // String regions_unexplored-common.toml
+      49: ldc_w         #279                // String regions_unexplored-primary-region.toml
+      52: ldc_w         #281                // String regions_unexplored-secondary-region.toml
+      55: invokestatic  #285                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      58: putstatic     #74                 // Field LEGACY_CONFIG_NAMES:Ljava/util/List;
+      61: return
+}
