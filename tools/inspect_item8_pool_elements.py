@@ -90,6 +90,8 @@ ARCHIVES = frozenset(
         "letmedespawn-1.21.x-neoforge-1.5.0.jar",
         "sparsestructures-neoforge-1.21.1-3.0.jar",
         "structure_pool_api-neoforge-1.2.1+1.21.1.jar",
+        "fastasyncworldsave-1.21-2.6.jar",
+        "structureessentials-1.21.1-5.0.jar",
         "idas-1.13.7+1.21.1-neoforge.jar",
         "BetterEnd-21.0.31.jar",
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
@@ -100,6 +102,8 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/fastasyncworldsave/",
+    "com/structureessentials/",
     "fuzs/extensibleenums/",
     "architectury_inject_ExtensibleEnums",
     "fuzs/illagerinvasion/IllagerInvasion.class",
@@ -744,6 +748,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "fuzs/illagerinvasion/neoforge/client/IllagerInvasionNeoForgeClient.class",
                     "fuzs/extensibleenums/neoforge/impl/ExtensibleEnumsNeoForge.class",
                     "fuzs/extensibleenums/neoforge/impl/client/ExtensibleEnumsNeoForgeClient.class",
+                    "com/fastasyncworldsave/FastAsyncWorldSave.class",
+                    "com/fastasyncworldsave/FastAsyncWorldSaveClient.class",
+                    "com/structureessentials/StructureEssentials.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",

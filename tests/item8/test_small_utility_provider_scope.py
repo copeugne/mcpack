@@ -85,8 +85,17 @@ if TYPE_CHECKING:
      {"icon.png", "pack.mcmeta", "ritchiesprojectilelib-forge.mixins.json",
       "ritchiesprojectilelib.accesswidener", "ritchiesprojectilelib.mixins.json"},
      {"rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class"}),
+    ("fastasyncworldsave", 6,
+     "4b60ee73ab2950958e58b4d5cede24ab5055d75693f3434ddec4e6438fd5d9a2",
+     {"fastasyncworldsave.mixins.json", "META-INF/accesstransformer.cfg", "pack.mcmeta"},
+     {"com/fastasyncworldsave/FastAsyncWorldSave.class"}),
+    ("structureessentials", 26,
+     "2cb92ed499c3a7fa07688426be09e5a59b0939adb21ce7151a102982a203a6a5",
+     {"structureessentials.mixins.json", "META-INF/accesstransformer.cfg",
+      "assets/modid/icon.png", "pack.mcmeta"},
+     {"com/structureessentials/StructureEssentials.class"}),
 ])
-def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR0912 - explicit cases.
+def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR0912, PLR0915
     name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
 ) -> None:
     directory = Path(f"evidence/item-8/sources/{name}-provider")
@@ -147,7 +156,11 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR091
             assert {r["config"] for r in declarations} == mixin_files
         for config in sorted(mixin_files):
             mixin = cast("dict[str, JsonValue]", json.loads(archive.read(config)))
-            assert "plugin" not in mixin
+            if name == "structureessentials":
+                assert mixin["plugin"] == "com.structureessentials.mixin.MixinConfig"
+                assert "com/structureessentials/mixin/MixinConfig.class" in classes
+            else:
+                assert "plugin" not in mixin
             for side in ("mixins", "client", "server"):
                 for member in cast("list[str]", mixin.get(side, [])):
                     path = f"{mixin['package']}.{member}".replace(".", "/") + ".class"
@@ -159,3 +172,13 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR091
             for path in sorted(n for n in other_files if n.startswith("data/")):
                 recipe = cast("dict[str, JsonValue]", json.loads(archive.read(path)))
                 assert recipe["type"] in {"minecraft:blasting", "minecraft:smelting"}
+        if name == "structureessentials":
+            raw_config = Path("evidence/item-6/frozen/config/structureessentials.json").read_bytes()
+            assert hashlib.sha256(raw_config).hexdigest() == (
+                "54826c1ce55156e6a3d19a22949d733668806c7ed4a77218cc1d26bb6c5fa7bd"
+            )
+            config = cast("dict[str, dict[str, JsonValue]]", json.loads(raw_config))
+            assert config["autoBiomeCompat"]["enableBiomeCompat"] is False
+            assert config["minimumStructureDistance"]["enabled"] is False
+            assert config["spacingSeparationModifier"]["spacingSeparationModifier"] == 1.0
+            assert config["disableLegacyRandomCrashes"]["disableLegacyRandomCrashes"] is True

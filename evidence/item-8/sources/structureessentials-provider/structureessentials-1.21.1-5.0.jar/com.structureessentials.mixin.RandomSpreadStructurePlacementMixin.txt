@@ -1,0 +1,222 @@
+Classfile structureessentials-1.21.1-5.0.jar!/com/structureessentials/mixin/RandomSpreadStructurePlacementMixin.class
+  Last modified Apr 21, 2026; size 2809 bytes
+  SHA-256 checksum 672fad7e328e9117aef4b55c822ae3d8e3c88acd03baea37ce291bc823024359
+  Compiled from "RandomSpreadStructurePlacementMixin.java"
+public class com.structureessentials.mixin.RandomSpreadStructurePlacementMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/structureessentials/mixin/RandomSpreadStructurePlacementMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 2, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/structureessentials/mixin/RandomSpreadStructurePlacementMixin.spacing:I
+   #8 = Class              #10            // com/structureessentials/mixin/RandomSpreadStructurePlacementMixin
+   #9 = NameAndType        #11:#12        // spacing:I
+  #10 = Utf8               com/structureessentials/mixin/RandomSpreadStructurePlacementMixin
+  #11 = Utf8               spacing
+  #12 = Utf8               I
+  #13 = Fieldref           #14.#15        // com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+  #14 = Class              #16            // com/structureessentials/config/CommonConfiguration
+  #15 = NameAndType        #17:#18        // config:Lcom/cupboard/config/CupboardConfig;
+  #16 = Utf8               com/structureessentials/config/CommonConfiguration
+  #17 = Utf8               config
+  #18 = Utf8               Lcom/cupboard/config/CupboardConfig;
+  #19 = Methodref          #20.#21        // com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+  #20 = Class              #22            // com/cupboard/config/CupboardConfig
+  #21 = NameAndType        #23:#24        // getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+  #22 = Utf8               com/cupboard/config/CupboardConfig
+  #23 = Utf8               getCommonConfig
+  #24 = Utf8               ()Lcom/cupboard/config/ICommonConfig;
+  #25 = Fieldref           #14.#26        // com/structureessentials/config/CommonConfiguration.spacingSeparationModifier:D
+  #26 = NameAndType        #27:#28        // spacingSeparationModifier:D
+  #27 = Utf8               spacingSeparationModifier
+  #28 = Utf8               D
+  #29 = Methodref          #30.#31        // java/lang/Math.round:(D)J
+  #30 = Class              #32            // java/lang/Math
+  #31 = NameAndType        #33:#34        // round:(D)J
+  #32 = Utf8               java/lang/Math
+  #33 = Utf8               round
+  #34 = Utf8               (D)J
+  #35 = Methodref          #36.#37        // net/minecraft/util/Mth.clamp:(III)I
+  #36 = Class              #38            // net/minecraft/util/Mth
+  #37 = NameAndType        #39:#40        // clamp:(III)I
+  #38 = Utf8               net/minecraft/util/Mth
+  #39 = Utf8               clamp
+  #40 = Utf8               (III)I
+  #41 = Fieldref           #8.#42         // com/structureessentials/mixin/RandomSpreadStructurePlacementMixin.separation:I
+  #42 = NameAndType        #43:#12        // separation:I
+  #43 = Utf8               separation
+  #44 = Utf8               RuntimeVisibleAnnotations
+  #45 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #46 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #47 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+  #48 = Utf8               Code
+  #49 = Utf8               LineNumberTable
+  #50 = Utf8               LocalVariableTable
+  #51 = Utf8               this
+  #52 = Utf8               Lcom/structureessentials/mixin/RandomSpreadStructurePlacementMixin;
+  #53 = Utf8               adjustSpacingSeperation
+  #54 = Utf8               (Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #55 = Utf8               p_227000_
+  #56 = Utf8               Lnet/minecraft/core/Vec3i;
+  #57 = Utf8               p_227001_
+  #58 = Utf8               Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+  #59 = Utf8               p_227002_
+  #60 = Utf8               F
+  #61 = Utf8               p_227003_
+  #62 = Utf8               p_227004_
+  #63 = Utf8               Ljava/util/Optional;
+  #64 = Utf8               p_227005_
+  #65 = Utf8               p_227006_
+  #66 = Utf8               p_227007_
+  #67 = Utf8               Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;
+  #68 = Utf8               ci
+  #69 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #70 = Utf8               StackMapTable
+  #71 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #72 = Utf8               method
+  #73 = Utf8               <init>(Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;)V
+  #74 = Utf8               at
+  #75 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #76 = Utf8               value
+  #77 = Utf8               RETURN
+  #78 = Utf8               SourceFile
+  #79 = Utf8               RandomSpreadStructurePlacementMixin.java
+  #80 = Utf8               RuntimeInvisibleAnnotations
+  #81 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #82 = Utf8               Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadStructurePlacement;
+  #83 = Utf8               InnerClasses
+  #84 = Class              #85            // net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod
+  #85 = Utf8               net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod
+  #86 = Class              #87            // net/minecraft/world/level/levelgen/structure/placement/StructurePlacement
+  #87 = Utf8               net/minecraft/world/level/levelgen/structure/placement/StructurePlacement
+  #88 = Utf8               FrequencyReductionMethod
+{
+  private int spacing;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #45()
+        org.spongepowered.asm.mixin.Shadow
+      1: #46()
+        org.spongepowered.asm.mixin.Final
+      2: #47()
+        org.spongepowered.asm.mixin.Mutable
+
+  private int separation;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #45()
+        org.spongepowered.asm.mixin.Shadow
+      1: #46()
+        org.spongepowered.asm.mixin.Final
+      2: #47()
+        org.spongepowered.asm.mixin.Mutable
+
+  public com.structureessentials.mixin.RandomSpreadStructurePlacementMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/structureessentials/mixin/RandomSpreadStructurePlacementMixin;
+
+  private void adjustSpacingSeperation(net.minecraft.core.Vec3i, net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$FrequencyReductionMethod, float, int, java.util.Optional, int, int, net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=10, args_size=10
+         0: aload_0
+         1: aload_0
+         2: getfield      #7                  // Field spacing:I
+         5: i2d
+         6: getstatic     #13                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+         9: invokevirtual #19                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        12: checkcast     #14                 // class com/structureessentials/config/CommonConfiguration
+        15: getfield      #25                 // Field com/structureessentials/config/CommonConfiguration.spacingSeparationModifier:D
+        18: dmul
+        19: invokestatic  #29                 // Method java/lang/Math.round:(D)J
+        22: l2i
+        23: iconst_1
+        24: sipush        4095
+        27: invokestatic  #35                 // Method net/minecraft/util/Mth.clamp:(III)I
+        30: putfield      #7                  // Field spacing:I
+        33: aload_0
+        34: aload_0
+        35: getfield      #41                 // Field separation:I
+        38: i2d
+        39: getstatic     #13                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+        42: invokevirtual #19                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        45: checkcast     #14                 // class com/structureessentials/config/CommonConfiguration
+        48: getfield      #25                 // Field com/structureessentials/config/CommonConfiguration.spacingSeparationModifier:D
+        51: dmul
+        52: invokestatic  #29                 // Method java/lang/Math.round:(D)J
+        55: l2i
+        56: iconst_0
+        57: sipush        4095
+        60: invokestatic  #35                 // Method net/minecraft/util/Mth.clamp:(III)I
+        63: putfield      #41                 // Field separation:I
+        66: aload_0
+        67: getfield      #7                  // Field spacing:I
+        70: aload_0
+        71: getfield      #41                 // Field separation:I
+        74: if_icmpgt     87
+        77: aload_0
+        78: aload_0
+        79: getfield      #41                 // Field separation:I
+        82: iconst_1
+        83: iadd
+        84: putfield      #7                  // Field spacing:I
+        87: return
+      LineNumberTable:
+        line 45: 0
+        line 46: 33
+        line 48: 66
+        line 50: 77
+        line 52: 87
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      88     0  this   Lcom/structureessentials/mixin/RandomSpreadStructurePlacementMixin;
+            0      88     1 p_227000_   Lnet/minecraft/core/Vec3i;
+            0      88     2 p_227001_   Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+            0      88     3 p_227002_   F
+            0      88     4 p_227003_   I
+            0      88     5 p_227004_   Ljava/util/Optional;
+            0      88     6 p_227005_   I
+            0      88     7 p_227006_   I
+            0      88     8 p_227007_   Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;
+            0      88     9    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 87
+    RuntimeVisibleAnnotations:
+      0: #71(#72=[s#73],#74=[@#75(#76=s#77)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+}
+SourceFile: "RandomSpreadStructurePlacementMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #81(#76=[c#82])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadStructurePlacement;]
+    )
+InnerClasses:
+  public static final #88= #84 of #86;    // FrequencyReductionMethod=class net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod of class net/minecraft/world/level/levelgen/structure/placement/StructurePlacement
