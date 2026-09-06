@@ -1,0 +1,319 @@
+Compiled from "CustomBundleContentsComponent.java"
+public final class com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent extends java.lang.Record implements net.minecraft.world.inventory.tooltip.TooltipComponent {
+  private final com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content content;
+
+  private final org.apache.commons.lang3.math.Fraction occupancy;
+
+  private final int size_multiplier;
+
+  public static final com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent DEFAULT;
+
+  public static final com.mojang.serialization.Codec<com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent> CODEC;
+
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent> PACKET_CODEC;
+
+  private static final org.apache.commons.lang3.math.Fraction NESTED_BUNDLE_OCCUPANCY;
+
+  public com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content, org.apache.commons.lang3.math.Fraction, int);
+    Code:
+       0: aload_0
+       1: invokespecial #53                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       9: aload_0
+      10: aload_2
+      11: putfield      #57                 // Field occupancy:Lorg/apache/commons/lang3/math/Fraction;
+      14: aload_0
+      15: iload_3
+      16: putfield      #59                 // Field size_multiplier:I
+      19: return
+
+  com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent(java.util.List<net.minecraft.world.item.ItemStack>, org.apache.commons.lang3.math.Fraction, int);
+    Code:
+       0: aload_0
+       1: new           #9                  // class com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content
+       4: dup
+       5: aload_1
+       6: invokespecial #66                 // Method com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content."<init>":(Ljava/util/List;)V
+       9: aload_2
+      10: iload_3
+      11: invokespecial #68                 // Method "<init>":(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;Lorg/apache/commons/lang3/math/Fraction;I)V
+      14: return
+
+  com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent(java.util.List<net.minecraft.world.item.ItemStack>, int);
+    Code:
+       0: aload_0
+       1: new           #9                  // class com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content
+       4: dup
+       5: aload_1
+       6: invokespecial #66                 // Method com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content."<init>":(Ljava/util/List;)V
+       9: aload_1
+      10: iload_2
+      11: invokestatic  #76                 // Method calculateOccupancy:(Ljava/util/List;I)Lorg/apache/commons/lang3/math/Fraction;
+      14: iload_2
+      15: invokespecial #68                 // Method "<init>":(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;Lorg/apache/commons/lang3/math/Fraction;I)V
+      18: return
+
+  public com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_1
+       3: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       6: iload_2
+       7: invokestatic  #76                 // Method calculateOccupancy:(Ljava/util/List;I)Lorg/apache/commons/lang3/math/Fraction;
+      10: iload_2
+      11: invokespecial #68                 // Method "<init>":(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;Lorg/apache/commons/lang3/math/Fraction;I)V
+      14: return
+
+  public com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent(int);
+    Code:
+       0: aload_0
+       1: getstatic     #82                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.DEFAULT:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: iload_1
+       5: invokespecial #84                 // Method "<init>":(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;I)V
+       8: return
+
+  public static com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Builder builder();
+    Code:
+       0: new           #11                 // class com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Builder
+       3: dup
+       4: getstatic     #88                 // Field DEFAULT:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;
+       7: invokespecial #91                 // Method com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Builder."<init>":(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;)V
+      10: areturn
+
+  private static org.apache.commons.lang3.math.Fraction calculateOccupancy(java.util.List<net.minecraft.world.item.ItemStack>, int);
+    Code:
+       0: getstatic     #97                 // Field org/apache/commons/lang3/math/Fraction.ZERO:Lorg/apache/commons/lang3/math/Fraction;
+       3: astore_2
+       4: aload_0
+       5: invokeinterface #103,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      10: astore_3
+      11: aload_3
+      12: invokeinterface #109,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      17: ifeq          57
+      20: aload_3
+      21: invokeinterface #113,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      26: checkcast     #115                // class net/minecraft/world/item/ItemStack
+      29: astore        4
+      31: aload_2
+      32: aload         4
+      34: iload_1
+      35: invokestatic  #119                // Method getOccupancy:(Lnet/minecraft/world/item/ItemStack;I)Lorg/apache/commons/lang3/math/Fraction;
+      38: aload         4
+      40: invokevirtual #123                // Method net/minecraft/world/item/ItemStack.getCount:()I
+      43: iconst_1
+      44: invokestatic  #127                // Method org/apache/commons/lang3/math/Fraction.getFraction:(II)Lorg/apache/commons/lang3/math/Fraction;
+      47: invokevirtual #131                // Method org/apache/commons/lang3/math/Fraction.multiplyBy:(Lorg/apache/commons/lang3/math/Fraction;)Lorg/apache/commons/lang3/math/Fraction;
+      50: invokevirtual #134                // Method org/apache/commons/lang3/math/Fraction.add:(Lorg/apache/commons/lang3/math/Fraction;)Lorg/apache/commons/lang3/math/Fraction;
+      53: astore_2
+      54: goto          11
+      57: aload_2
+      58: areturn
+
+  static org.apache.commons.lang3.math.Fraction getOccupancy(net.minecraft.world.item.ItemStack, int);
+    Code:
+       0: aload_0
+       1: getstatic     #144                // Field com/github/theredbrain/bundleapi/BundleAPI.CUSTOM_BUNDLE_CONTENTS_COMPONENT:Lnet/minecraft/core/component/DataComponentType;
+       4: invokevirtual #148                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       7: checkcast     #2                  // class com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent
+      10: astore_2
+      11: aload_2
+      12: ifnull        26
+      15: getstatic     #150                // Field NESTED_BUNDLE_OCCUPANCY:Lorg/apache/commons/lang3/math/Fraction;
+      18: aload_2
+      19: invokevirtual #153                // Method getOccupancy:()Lorg/apache/commons/lang3/math/Fraction;
+      22: invokevirtual #134                // Method org/apache/commons/lang3/math/Fraction.add:(Lorg/apache/commons/lang3/math/Fraction;)Lorg/apache/commons/lang3/math/Fraction;
+      25: areturn
+      26: aload_0
+      27: getstatic     #158                // Field net/minecraft/core/component/DataComponents.BEES:Lnet/minecraft/core/component/DataComponentType;
+      30: invokestatic  #162                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      33: invokevirtual #166                // Method net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+      36: checkcast     #99                 // class java/util/List
+      39: astore_3
+      40: aload_3
+      41: invokeinterface #169,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      46: ifne          55
+      49: getstatic     #172                // Field org/apache/commons/lang3/math/Fraction.ONE:Lorg/apache/commons/lang3/math/Fraction;
+      52: goto          65
+      55: iconst_1
+      56: aload_0
+      57: invokevirtual #175                // Method net/minecraft/world/item/ItemStack.getMaxStackSize:()I
+      60: iload_1
+      61: imul
+      62: invokestatic  #127                // Method org/apache/commons/lang3/math/Fraction.getFraction:(II)Lorg/apache/commons/lang3/math/Fraction;
+      65: areturn
+
+  public net.minecraft.world.item.ItemStack get(int);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: iload_1
+       8: invokeinterface #183,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      13: checkcast     #115                // class net/minecraft/world/item/ItemStack
+      16: areturn
+
+  public java.util.stream.Stream<net.minecraft.world.item.ItemStack> stream();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: invokeinterface #188,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      12: invokedynamic #208,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      17: invokeinterface #214,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      22: areturn
+
+  public java.lang.Iterable<net.minecraft.world.item.ItemStack> iterate();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: areturn
+
+  public java.lang.Iterable<net.minecraft.world.item.ItemStack> iterateCopy();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: invokedynamic #221,  0            // InvokeDynamic #0:apply:()Lcom/google/common/base/Function;
+      12: invokestatic  #227                // Method com/google/common/collect/Lists.transform:(Ljava/util/List;Lcom/google/common/base/Function;)Ljava/util/List;
+      15: areturn
+
+  public int size();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: invokeinterface #230,  1          // InterfaceMethod java/util/List.size:()I
+      12: ireturn
+
+  public int sizeMultiplier();
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field size_multiplier:I
+       4: ireturn
+
+  public org.apache.commons.lang3.math.Fraction getOccupancy();
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field occupancy:Lorg/apache/commons/lang3/math/Fraction;
+       4: areturn
+
+  public boolean isEmpty();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: getfield      #79                 // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.stacks:Ljava/util/List;
+       7: invokeinterface #169,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+      12: ireturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #248,  0            // InvokeDynamic #1:toString:(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #252,  0            // InvokeDynamic #1:hashCode:(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #258,  0            // InvokeDynamic #1:equals:(Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content content();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: areturn
+
+  public org.apache.commons.lang3.math.Fraction occupancy();
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field occupancy:Lorg/apache/commons/lang3/math/Fraction;
+       4: areturn
+
+  public int size_multiplier();
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field size_multiplier:I
+       4: ireturn
+
+  private static java.lang.Integer lambda$static$4(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent);
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field size_multiplier:I
+       4: invokestatic  #269                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content lambda$static$3(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #276                // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc_w         #277                // String content
+       7: invokeinterface #283,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      12: invokedynamic #289,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      17: invokevirtual #295                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      20: getstatic     #299                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      23: ldc_w         #300                // String size_multiplier
+      26: iconst_1
+      27: invokestatic  #269                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      30: invokeinterface #306,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      35: invokedynamic #312,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      40: invokevirtual #295                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      43: invokevirtual #316                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      46: aload_0
+      47: invokedynamic #324,  0            // InvokeDynamic #4:apply:()Ljava/util/function/BiFunction;
+      52: invokevirtual #327                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      55: areturn
+
+  private static java.lang.Integer lambda$static$1(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent);
+    Code:
+       0: aload_0
+       1: getfield      #59                 // Field size_multiplier:I
+       4: invokestatic  #269                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent$Content lambda$static$0(com.github.theredbrain.bundleapi.component.type.CustomBundleContentsComponent);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field content:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content;
+       4: areturn
+
+  static {};
+    Code:
+       0: new           #2                  // class com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent
+       3: dup
+       4: invokestatic  #162                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       7: iconst_1
+       8: invokespecial #331                // Method "<init>":(Ljava/util/List;I)V
+      11: putstatic     #88                 // Field DEFAULT:Lcom/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent;
+      14: invokedynamic #336,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      19: invokestatic  #340                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+      22: putstatic     #341                // Field CODEC:Lcom/mojang/serialization/Codec;
+      25: getstatic     #343                // Field com/github/theredbrain/bundleapi/component/type/CustomBundleContentsComponent$Content.PACKET_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      28: invokedynamic #347,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      33: getstatic     #352                // Field net/minecraft/network/codec/ByteBufCodecs.VAR_INT:Lnet/minecraft/network/codec/StreamCodec;
+      36: invokedynamic #356,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      41: invokedynamic #324,  0            // InvokeDynamic #4:apply:()Ljava/util/function/BiFunction;
+      46: invokestatic  #362                // InterfaceMethod net/minecraft/network/codec/StreamCodec.composite:(Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Lnet/minecraft/network/codec/StreamCodec;Ljava/util/function/Function;Ljava/util/function/BiFunction;)Lnet/minecraft/network/codec/StreamCodec;
+      49: putstatic     #363                // Field PACKET_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      52: iconst_1
+      53: bipush        16
+      55: invokestatic  #127                // Method org/apache/commons/lang3/math/Fraction.getFraction:(II)Lorg/apache/commons/lang3/math/Fraction;
+      58: putstatic     #150                // Field NESTED_BUNDLE_OCCUPANCY:Lorg/apache/commons/lang3/math/Fraction;
+      61: return
+}
