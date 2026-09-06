@@ -1,0 +1,790 @@
+Classfile YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar!/com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.class
+  Last modified Nov 20, 2024; size 10884 bytes
+  SHA-256 checksum 3a24adb54a9087e9a61feeac26d903265116f9fd70d3362f8eb7ceb26cb3026a
+  Compiled from "PillarProcessor.java"
+public class com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor
+  super_class: #2                         // net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor
+  interfaces: 0, fields: 6, methods: 10, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+    #2 = Class              #4            // net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+    #8 = Class              #10           // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor
+    #9 = NameAndType        #11:#12       // targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+   #10 = Utf8               com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor
+   #11 = Utf8               targetBlock
+   #12 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+   #13 = Fieldref           #8.#14        // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.targetBlockOutput:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+   #14 = NameAndType        #15:#16       // targetBlockOutput:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+   #15 = Utf8               targetBlockOutput
+   #16 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+   #17 = Fieldref           #8.#18        // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.pillarStates:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+   #18 = NameAndType        #19:#16       // pillarStates:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+   #19 = Utf8               pillarStates
+   #20 = Fieldref           #8.#21        // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.direction:Lnet/minecraft/core/Direction;
+   #21 = NameAndType        #22:#23       // direction:Lnet/minecraft/core/Direction;
+   #22 = Utf8               direction
+   #23 = Utf8               Lnet/minecraft/core/Direction;
+   #24 = Fieldref           #8.#25        // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.length:I
+   #25 = NameAndType        #26:#27       // length:I
+   #26 = Utf8               length
+   #27 = Utf8               I
+   #28 = Methodref          #29.#30       // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+   #29 = Class              #31           // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #30 = NameAndType        #32:#33       // state:()Lnet/minecraft/world/level/block/state/BlockState;
+   #31 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+   #32 = Utf8               state
+   #33 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #34 = Methodref          #35.#36       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #35 = Class              #37           // net/minecraft/world/level/block/state/BlockState
+   #36 = NameAndType        #38:#39       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #37 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #38 = Utf8               getBlock
+   #39 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #40 = Methodref          #35.#41       // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+   #41 = NameAndType        #42:#43       // is:(Lnet/minecraft/world/level/block/Block;)Z
+   #42 = Utf8               is
+   #43 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #44 = Class              #45           // net/minecraft/server/level/WorldGenRegion
+   #45 = Utf8               net/minecraft/server/level/WorldGenRegion
+   #46 = Methodref          #44.#47       // net/minecraft/server/level/WorldGenRegion.getCenter:()Lnet/minecraft/world/level/ChunkPos;
+   #47 = NameAndType        #48:#49       // getCenter:()Lnet/minecraft/world/level/ChunkPos;
+   #48 = Utf8               getCenter
+   #49 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+   #50 = Class              #51           // net/minecraft/world/level/ChunkPos
+   #51 = Utf8               net/minecraft/world/level/ChunkPos
+   #52 = Methodref          #29.#53       // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+   #53 = NameAndType        #54:#55       // pos:()Lnet/minecraft/core/BlockPos;
+   #54 = Utf8               pos
+   #55 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #56 = Methodref          #50.#57       // net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+   #57 = NameAndType        #5:#58        // "<init>":(Lnet/minecraft/core/BlockPos;)V
+   #58 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+   #59 = Methodref          #50.#60       // net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+   #60 = NameAndType        #61:#62       // equals:(Ljava/lang/Object;)Z
+   #61 = Utf8               equals
+   #62 = Utf8               (Ljava/lang/Object;)Z
+   #63 = Methodref          #64.#65       // net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+   #64 = Class              #66           // net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+   #65 = NameAndType        #67:#68       // getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+   #66 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+   #67 = Utf8               getRandom
+   #68 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+   #69 = Methodref          #70.#71       // com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+   #70 = Class              #72           // com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+   #71 = NameAndType        #73:#74       // get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+   #72 = Utf8               com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer
+   #73 = Utf8               get
+   #74 = Utf8               (Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+   #75 = Methodref          #29.#76       // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+   #76 = NameAndType        #77:#78       // nbt:()Lnet/minecraft/nbt/CompoundTag;
+   #77 = Utf8               nbt
+   #78 = Utf8               ()Lnet/minecraft/nbt/CompoundTag;
+   #79 = Methodref          #29.#80       // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+   #80 = NameAndType        #5:#81        // "<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+   #81 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+   #82 = Methodref          #83.#84       // net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #83 = Class              #85           // net/minecraft/core/BlockPos
+   #84 = NameAndType        #86:#87       // mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #85 = Utf8               net/minecraft/core/BlockPos
+   #86 = Utf8               mutable
+   #87 = Utf8               ()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #88 = Fieldref           #89.#90       // net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+   #89 = Class              #91           // net/minecraft/core/Direction
+   #90 = NameAndType        #92:#23       // DOWN:Lnet/minecraft/core/Direction;
+   #91 = Utf8               net/minecraft/core/Direction
+   #92 = Utf8               DOWN
+   #93 = Methodref          #94.#95       // net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #94 = Class              #96           // net/minecraft/core/BlockPos$MutableBlockPos
+   #95 = NameAndType        #97:#98       // move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #96 = Utf8               net/minecraft/core/BlockPos$MutableBlockPos
+   #97 = Utf8               move
+   #98 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #99 = InterfaceMethodref #100.#101     // net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #100 = Class              #102          // net/minecraft/world/level/LevelReader
+  #101 = NameAndType        #103:#104     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #102 = Utf8               net/minecraft/world/level/LevelReader
+  #103 = Utf8               getBlockState
+  #104 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #105 = Methodref          #94.#106      // net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+  #106 = NameAndType        #107:#108     // getY:()I
+  #107 = Utf8               getY
+  #108 = Utf8               ()I
+  #109 = InterfaceMethodref #100.#110     // net/minecraft/world/level/LevelReader.getMinBuildHeight:()I
+  #110 = NameAndType        #111:#108     // getMinBuildHeight:()I
+  #111 = Utf8               getMinBuildHeight
+  #112 = InterfaceMethodref #100.#113     // net/minecraft/world/level/LevelReader.getMaxBuildHeight:()I
+  #113 = NameAndType        #114:#108     // getMaxBuildHeight:()I
+  #114 = Utf8               getMaxBuildHeight
+  #115 = Methodref          #35.#116      // net/minecraft/world/level/block/state/BlockState.isAir:()Z
+  #116 = NameAndType        #117:#118     // isAir:()Z
+  #117 = Utf8               isAir
+  #118 = Utf8               ()Z
+  #119 = InterfaceMethodref #100.#120     // net/minecraft/world/level/LevelReader.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+  #120 = NameAndType        #121:#122     // getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+  #121 = Utf8               getFluidState
+  #122 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+  #123 = Methodref          #124.#125     // net/minecraft/world/level/material/FluidState.isEmpty:()Z
+  #124 = Class              #126          // net/minecraft/world/level/material/FluidState
+  #125 = NameAndType        #127:#118     // isEmpty:()Z
+  #126 = Utf8               net/minecraft/world/level/material/FluidState
+  #127 = Utf8               isEmpty
+  #128 = Class              #129          // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder
+  #129 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder
+  #130 = Methodref          #128.#3       // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder."<init>":()V
+  #131 = Methodref          #128.#132     // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.pieceMinY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+  #132 = NameAndType        #133:#134     // pieceMinY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+  #133 = Utf8               pieceMinY
+  #134 = Utf8               (I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+  #135 = Methodref          #128.#136     // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.pieceMaxY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+  #136 = NameAndType        #137:#134     // pieceMaxY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+  #137 = Utf8               pieceMaxY
+  #138 = Methodref          #128.#139     // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.build:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+  #139 = NameAndType        #140:#141     // build:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+  #140 = Utf8               build
+  #141 = Utf8               ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+  #142 = InterfaceMethodref #100.#143     // net/minecraft/world/level/LevelReader.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #143 = NameAndType        #144:#145     // getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #144 = Utf8               getChunk
+  #145 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #146 = Methodref          #70.#147      // com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;)Lnet/minecraft/world/level/block/state/BlockState;
+  #147 = NameAndType        #73:#148      // get:(Lnet/minecraft/util/RandomSource;Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;)Lnet/minecraft/world/level/block/state/BlockState;
+  #148 = Utf8               (Lnet/minecraft/util/RandomSource;Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;)Lnet/minecraft/world/level/block/state/BlockState;
+  #149 = Methodref          #150.#151     // net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #150 = Class              #152          // net/minecraft/world/level/chunk/ChunkAccess
+  #151 = NameAndType        #153:#154     // setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #152 = Utf8               net/minecraft/world/level/chunk/ChunkAccess
+  #153 = Utf8               setBlockState
+  #154 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+  #155 = Fieldref           #156.#157     // com/yungnickyoung/minecraft/betterjungletemples/module/StructureProcessorTypeModule.PILLAR_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+  #156 = Class              #158          // com/yungnickyoung/minecraft/betterjungletemples/module/StructureProcessorTypeModule
+  #157 = NameAndType        #159:#160     // PILLAR_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+  #158 = Utf8               com/yungnickyoung/minecraft/betterjungletemples/module/StructureProcessorTypeModule
+  #159 = Utf8               PILLAR_PROCESSOR
+  #160 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+  #161 = Fieldref           #35.#162      // net/minecraft/world/level/block/state/BlockState.CODEC:Lcom/mojang/serialization/Codec;
+  #162 = NameAndType        #163:#164     // CODEC:Lcom/mojang/serialization/Codec;
+  #163 = Utf8               CODEC
+  #164 = Utf8               Lcom/mojang/serialization/Codec;
+  #165 = String             #166          // target_block
+  #166 = Utf8               target_block
+  #167 = InterfaceMethodref #168.#169     // com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #168 = Class              #170          // com/mojang/serialization/Codec
+  #169 = NameAndType        #171:#172     // fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #170 = Utf8               com/mojang/serialization/Codec
+  #171 = Utf8               fieldOf
+  #172 = Utf8               (Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #173 = InvokeDynamic      #0:#174       // #0:apply:()Ljava/util/function/Function;
+  #174 = NameAndType        #175:#176     // apply:()Ljava/util/function/Function;
+  #175 = Utf8               apply
+  #176 = Utf8               ()Ljava/util/function/Function;
+  #177 = Methodref          #178.#179     // com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #178 = Class              #180          // com/mojang/serialization/MapCodec
+  #179 = NameAndType        #181:#182     // forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #180 = Utf8               com/mojang/serialization/MapCodec
+  #181 = Utf8               forGetter
+  #182 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #183 = Fieldref           #70.#162      // com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.CODEC:Lcom/mojang/serialization/Codec;
+  #184 = String             #185          // target_block_output
+  #185 = Utf8               target_block_output
+  #186 = InvokeDynamic      #1:#174       // #1:apply:()Ljava/util/function/Function;
+  #187 = String             #188          // pillar_states
+  #188 = Utf8               pillar_states
+  #189 = InvokeDynamic      #2:#174       // #2:apply:()Ljava/util/function/Function;
+  #190 = Fieldref           #89.#191      // net/minecraft/core/Direction.CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+  #191 = NameAndType        #163:#192     // CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+  #192 = Utf8               Lnet/minecraft/util/StringRepresentable$EnumCodec;
+  #193 = String             #22           // direction
+  #194 = Methodref          #195.#196     // net/minecraft/util/StringRepresentable$EnumCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #195 = Class              #197          // net/minecraft/util/StringRepresentable$EnumCodec
+  #196 = NameAndType        #198:#199     // optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #197 = Utf8               net/minecraft/util/StringRepresentable$EnumCodec
+  #198 = Utf8               optionalFieldOf
+  #199 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #200 = InvokeDynamic      #3:#174       // #3:apply:()Ljava/util/function/Function;
+  #201 = Fieldref           #168.#202     // com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #202 = NameAndType        #203:#204     // INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #203 = Utf8               INT
+  #204 = Utf8               Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #205 = String             #206          // pillar_length
+  #206 = Utf8               pillar_length
+  #207 = Methodref          #208.#209     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #208 = Class              #210          // java/lang/Integer
+  #209 = NameAndType        #211:#212     // valueOf:(I)Ljava/lang/Integer;
+  #210 = Utf8               java/lang/Integer
+  #211 = Utf8               valueOf
+  #212 = Utf8               (I)Ljava/lang/Integer;
+  #213 = InterfaceMethodref #214.#196     // com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #214 = Class              #215          // com/mojang/serialization/codecs/PrimitiveCodec
+  #215 = Utf8               com/mojang/serialization/codecs/PrimitiveCodec
+  #216 = InvokeDynamic      #4:#174       // #4:apply:()Ljava/util/function/Function;
+  #217 = Methodref          #218.#219     // com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+  #218 = Class              #220          // com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #219 = NameAndType        #221:#222     // group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+  #220 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #221 = Utf8               group
+  #222 = Utf8               (Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+  #223 = InvokeDynamic      #5:#224       // #5:apply:()Lcom/mojang/datafixers/util/Function5;
+  #224 = NameAndType        #175:#225     // apply:()Lcom/mojang/datafixers/util/Function5;
+  #225 = Utf8               ()Lcom/mojang/datafixers/util/Function5;
+  #226 = Methodref          #218.#227     // com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+  #227 = NameAndType        #228:#229     // stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+  #228 = Utf8               stable
+  #229 = Utf8               (Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+  #230 = Methodref          #231.#232     // com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+  #231 = Class              #233          // com/mojang/datafixers/Products$P5
+  #232 = NameAndType        #175:#234     // apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+  #233 = Utf8               com/mojang/datafixers/Products$P5
+  #234 = Utf8               (Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+  #235 = InvokeDynamic      #6:#174       // #6:apply:()Ljava/util/function/Function;
+  #236 = Methodref          #237.#238     // com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #237 = Class              #239          // com/mojang/serialization/codecs/RecordCodecBuilder
+  #238 = NameAndType        #240:#241     // mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #239 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder
+  #240 = Utf8               mapCodec
+  #241 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+  #242 = Fieldref           #8.#243       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.CODEC:Lcom/mojang/serialization/MapCodec;
+  #243 = NameAndType        #163:#244     // CODEC:Lcom/mojang/serialization/MapCodec;
+  #244 = Utf8               Lcom/mojang/serialization/MapCodec;
+  #245 = Utf8               Signature
+  #246 = Utf8               Lcom/mojang/serialization/MapCodec<Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;>;
+  #247 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+  #248 = Utf8               Code
+  #249 = Utf8               LineNumberTable
+  #250 = Utf8               LocalVariableTable
+  #251 = Utf8               this
+  #252 = Utf8               Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+  #253 = Utf8               processBlock
+  #254 = Utf8               (Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #255 = Utf8               worldGenRegion
+  #256 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+  #257 = Utf8               ctx
+  #258 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+  #259 = Utf8               random
+  #260 = Utf8               Lnet/minecraft/util/RandomSource;
+  #261 = Utf8               Lnet/minecraft/core/BlockPos$MutableBlockPos;
+  #262 = Utf8               currBlockState
+  #263 = Utf8               levelReader
+  #264 = Utf8               Lnet/minecraft/world/level/LevelReader;
+  #265 = Utf8               jigsawPiecePos
+  #266 = Utf8               Lnet/minecraft/core/BlockPos;
+  #267 = Utf8               jigsawPieceBottomCenterPos
+  #268 = Utf8               blockInfoLocal
+  #269 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #270 = Utf8               blockInfoGlobal
+  #271 = Utf8               structurePlacementData
+  #272 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+  #273 = Utf8               StackMapTable
+  #274 = Class              #275          // net/minecraft/util/RandomSource
+  #275 = Utf8               net/minecraft/util/RandomSource
+  #276 = Utf8               getType
+  #277 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+  #278 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType<*>;
+  #279 = Utf8               lambda$static$5
+  #280 = Utf8               (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #281 = Utf8               instance
+  #282 = Utf8               Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+  #283 = Utf8               lambda$static$4
+  #284 = Utf8               (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  #285 = Utf8               config
+  #286 = Utf8               lambda$static$3
+  #287 = Utf8               (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  #288 = Utf8               processor
+  #289 = Utf8               lambda$static$2
+  #290 = Utf8               (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #291 = Utf8               lambda$static$1
+  #292 = Utf8               lambda$static$0
+  #293 = Utf8               (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  #294 = Utf8               <clinit>
+  #295 = Utf8               SourceFile
+  #296 = Utf8               PillarProcessor.java
+  #297 = Utf8               RuntimeVisibleAnnotations
+  #298 = Utf8               Ljavax/annotation/ParametersAreNonnullByDefault;
+  #299 = Utf8               Lnet/minecraft/MethodsReturnNonnullByDefault;
+  #300 = Utf8               BootstrapMethods
+  #301 = MethodType         #302          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #302 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #303 = MethodHandle       6:#304        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$0:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  #304 = Methodref          #8.#305       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$0:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  #305 = NameAndType        #292:#293     // lambda$static$0:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  #306 = MethodType         #293          //  (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  #307 = MethodHandle       6:#308        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$1:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #308 = Methodref          #8.#309       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$1:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #309 = NameAndType        #291:#290     // lambda$static$1:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #310 = MethodType         #290          //  (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #311 = MethodHandle       6:#312        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$2:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #312 = Methodref          #8.#313       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$2:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #313 = NameAndType        #289:#290     // lambda$static$2:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  #314 = MethodHandle       6:#315        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$3:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  #315 = Methodref          #8.#316       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$3:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  #316 = NameAndType        #286:#287     // lambda$static$3:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  #317 = MethodType         #287          //  (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  #318 = MethodHandle       6:#319        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$4:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  #319 = Methodref          #8.#320       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$4:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  #320 = NameAndType        #283:#284     // lambda$static$4:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  #321 = MethodType         #284          //  (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  #322 = MethodType         #323          //  (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #323 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #324 = MethodHandle       8:#325        // REF_newInvokeSpecial com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+  #325 = Methodref          #8.#326       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+  #326 = NameAndType        #5:#247       // "<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+  #327 = MethodType         #328          //  (Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;Ljava/lang/Integer;)Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+  #328 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;Ljava/lang/Integer;)Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+  #329 = MethodHandle       6:#330        // REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$5:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #330 = Methodref          #8.#331       // com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$5:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #331 = NameAndType        #279:#280     // lambda$static$5:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #332 = MethodType         #280          //  (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #333 = MethodHandle       6:#334        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #334 = Methodref          #335.#336     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #335 = Class              #337          // java/lang/invoke/LambdaMetafactory
+  #336 = NameAndType        #338:#339     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #337 = Utf8               java/lang/invoke/LambdaMetafactory
+  #338 = Utf8               metafactory
+  #339 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #340 = Utf8               InnerClasses
+  #341 = Class              #342          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #342 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #343 = Utf8               StructureBlockInfo
+  #344 = Utf8               MutableBlockPos
+  #345 = Class              #346          // com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext
+  #346 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext
+  #347 = Utf8               Builder
+  #348 = Class              #349          // net/minecraft/util/StringRepresentable
+  #349 = Utf8               net/minecraft/util/StringRepresentable
+  #350 = Utf8               EnumCodec
+  #351 = Utf8               Instance
+  #352 = Class              #353          // com/mojang/datafixers/Products
+  #353 = Utf8               com/mojang/datafixers/Products
+  #354 = Utf8               P5
+  #355 = Class              #356          // java/lang/invoke/MethodHandles$Lookup
+  #356 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #357 = Class              #358          // java/lang/invoke/MethodHandles
+  #358 = Utf8               java/lang/invoke/MethodHandles
+  #359 = Utf8               Lookup
+{
+  public static final com.mojang.serialization.MapCodec<com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor> CODEC;
+    descriptor: Lcom/mojang/serialization/MapCodec;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Signature: #246                         // Lcom/mojang/serialization/MapCodec<Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;>;
+
+  public final net.minecraft.world.level.block.state.BlockState targetBlock;
+    descriptor: Lnet/minecraft/world/level/block/state/BlockState;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer targetBlockOutput;
+    descriptor: Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer pillarStates;
+    descriptor: Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final net.minecraft.core.Direction direction;
+    descriptor: Lnet/minecraft/core/Direction;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  public final int length;
+    descriptor: I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+
+  private com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor(net.minecraft.world.level.block.state.BlockState, com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer, com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer, net.minecraft.core.Direction, int);
+    descriptor: (Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=6, args_size=6
+         0: aload_0
+         1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+         9: aload_0
+        10: aload_2
+        11: putfield      #13                 // Field targetBlockOutput:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+        14: aload_0
+        15: aload_3
+        16: putfield      #17                 // Field pillarStates:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+        19: aload_0
+        20: aload         4
+        22: putfield      #20                 // Field direction:Lnet/minecraft/core/Direction;
+        25: aload_0
+        26: iload         5
+        28: putfield      #24                 // Field length:I
+        31: return
+      LineNumberTable:
+        line 42: 0
+        line 43: 4
+        line 44: 9
+        line 45: 14
+        line 46: 19
+        line 47: 25
+        line 48: 31
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      32     0  this   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+            0      32     1 targetBlock   Lnet/minecraft/world/level/block/state/BlockState;
+            0      32     2 targetBlockOutput   Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+            0      32     3 pillarStates   Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+            0      32     4 direction   Lnet/minecraft/core/Direction;
+            0      32     5 length   I
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    descriptor: (Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=11, args_size=7
+         0: aload         5
+         2: invokevirtual #28                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+         5: aload_0
+         6: getfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+         9: invokevirtual #34                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+        12: invokevirtual #40                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        15: ifeq          249
+        18: aload_1
+        19: instanceof    #44                 // class net/minecraft/server/level/WorldGenRegion
+        22: ifeq          57
+        25: aload_1
+        26: checkcast     #44                 // class net/minecraft/server/level/WorldGenRegion
+        29: astore        7
+        31: aload         7
+        33: invokevirtual #46                 // Method net/minecraft/server/level/WorldGenRegion.getCenter:()Lnet/minecraft/world/level/ChunkPos;
+        36: new           #50                 // class net/minecraft/world/level/ChunkPos
+        39: dup
+        40: aload         5
+        42: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+        45: invokespecial #56                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+        48: invokevirtual #59                 // Method net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+        51: ifne          57
+        54: aload         5
+        56: areturn
+        57: aload         6
+        59: aload         5
+        61: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+        64: invokevirtual #63                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+        67: astore        7
+        69: new           #29                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+        72: dup
+        73: aload         5
+        75: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+        78: aload_0
+        79: getfield      #13                 // Field targetBlockOutput:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+        82: aload         7
+        84: invokevirtual #69                 // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/state/BlockState;
+        87: aload         5
+        89: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+        92: invokespecial #79                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+        95: astore        5
+        97: aload         5
+        99: invokevirtual #52                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+       102: invokevirtual #82                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       105: getstatic     #88                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+       108: invokevirtual #93                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       111: astore        8
+       113: aload_1
+       114: aload         8
+       116: invokeinterface #99,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       121: astore        9
+       123: aload         8
+       125: invokevirtual #105                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       128: aload_1
+       129: invokeinterface #109,  1          // InterfaceMethod net/minecraft/world/level/LevelReader.getMinBuildHeight:()I
+       134: if_icmple     249
+       137: aload         8
+       139: invokevirtual #105                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       142: aload_1
+       143: invokeinterface #112,  1          // InterfaceMethod net/minecraft/world/level/LevelReader.getMaxBuildHeight:()I
+       148: if_icmpge     249
+       151: aload         9
+       153: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       156: ifne          173
+       159: aload_1
+       160: aload         8
+       162: invokeinterface #119,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+       167: invokevirtual #123                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+       170: ifne          249
+       173: new           #128                // class com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder
+       176: dup
+       177: invokespecial #130                // Method com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder."<init>":()V
+       180: aload         8
+       182: invokevirtual #105                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       185: invokevirtual #131                // Method com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.pieceMinY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+       188: aload         8
+       190: invokevirtual #105                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       193: invokevirtual #135                // Method com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.pieceMaxY:(I)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder;
+       196: invokevirtual #138                // Method com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder.build:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+       199: astore        10
+       201: aload_1
+       202: aload         8
+       204: invokeinterface #142,  2          // InterfaceMethod net/minecraft/world/level/LevelReader.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+       209: aload         8
+       211: aload_0
+       212: getfield      #17                 // Field pillarStates:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+       215: aload         7
+       217: aload         10
+       219: invokevirtual #146                // Method com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.get:(Lnet/minecraft/util/RandomSource;Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;)Lnet/minecraft/world/level/block/state/BlockState;
+       222: iconst_0
+       223: invokevirtual #149                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+       226: pop
+       227: aload         8
+       229: getstatic     #88                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+       232: invokevirtual #93                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       235: pop
+       236: aload_1
+       237: aload         8
+       239: invokeinterface #99,  2           // InterfaceMethod net/minecraft/world/level/LevelReader.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       244: astore        9
+       246: goto          123
+       249: aload         5
+       251: areturn
+      LineNumberTable:
+        line 57: 0
+        line 58: 18
+        line 59: 54
+        line 61: 57
+        line 62: 69
+        line 63: 97
+        line 64: 113
+        line 66: 123
+        line 67: 139
+        line 68: 153
+        line 69: 173
+        line 70: 182
+        line 71: 190
+        line 72: 196
+        line 73: 201
+        line 76: 227
+        line 77: 236
+        line 78: 246
+        line 80: 249
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           31      26     7 worldGenRegion   Lnet/minecraft/server/level/WorldGenRegion;
+          201      45    10   ctx   Lcom/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext;
+           69     180     7 random   Lnet/minecraft/util/RandomSource;
+          113     136     8 mutable   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+          123     126     9 currBlockState   Lnet/minecraft/world/level/block/state/BlockState;
+            0     252     0  this   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+            0     252     1 levelReader   Lnet/minecraft/world/level/LevelReader;
+            0     252     2 jigsawPiecePos   Lnet/minecraft/core/BlockPos;
+            0     252     3 jigsawPieceBottomCenterPos   Lnet/minecraft/core/BlockPos;
+            0     252     4 blockInfoLocal   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+            0     252     5 blockInfoGlobal   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+            0     252     6 structurePlacementData   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      StackMapTable: number_of_entries = 4
+        frame_type = 57 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 65
+          locals = [ class net/minecraft/util/RandomSource, class net/minecraft/core/BlockPos$MutableBlockPos, class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 49 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 75
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    descriptor: ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=1, locals=1, args_size=1
+         0: getstatic     #155                // Field com/yungnickyoung/minecraft/betterjungletemples/module/StructureProcessorTypeModule.PILLAR_PROCESSOR:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType;
+         3: areturn
+      LineNumberTable:
+        line 84: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+    Signature: #278                         // ()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType<*>;
+
+  private static com.mojang.datafixers.kinds.App lambda$static$5(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    descriptor: (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=8, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #161                // Field net/minecraft/world/level/block/state/BlockState.CODEC:Lcom/mojang/serialization/Codec;
+         4: ldc           #165                // String target_block
+         6: invokeinterface #167,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        11: invokedynamic #173,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        16: invokevirtual #177                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        19: getstatic     #183                // Field com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.CODEC:Lcom/mojang/serialization/Codec;
+        22: ldc           #184                // String target_block_output
+        24: invokeinterface #167,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        29: invokedynamic #186,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        34: invokevirtual #177                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        37: getstatic     #183                // Field com/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer.CODEC:Lcom/mojang/serialization/Codec;
+        40: ldc           #187                // String pillar_states
+        42: invokeinterface #167,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+        47: invokedynamic #189,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+        52: invokevirtual #177                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        55: getstatic     #190                // Field net/minecraft/core/Direction.CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+        58: ldc           #193                // String direction
+        60: getstatic     #88                 // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+        63: invokevirtual #194                // Method net/minecraft/util/StringRepresentable$EnumCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        66: invokedynamic #200,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        71: invokevirtual #177                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        74: getstatic     #201                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+        77: ldc           #205                // String pillar_length
+        79: iconst_m1
+        80: invokestatic  #207                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        83: invokeinterface #213,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        88: invokedynamic #216,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+        93: invokevirtual #177                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        96: invokevirtual #217                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P5;
+        99: aload_0
+       100: aload_0
+       101: invokedynamic #223,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function5;
+       106: invokevirtual #226                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+       109: invokevirtual #230                // Method com/mojang/datafixers/Products$P5.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+       112: areturn
+      LineNumberTable:
+        line 27: 0
+        line 29: 6
+        line 30: 24
+        line 31: 42
+        line 32: 63
+        line 33: 80
+        line 28: 96
+        line 34: 106
+        line 27: 112
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     113     0 instance   Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+
+  private static java.lang.Integer lambda$static$4(com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #24                 // Field length:I
+         4: invokestatic  #207                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 33: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 config   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+
+  private static net.minecraft.core.Direction lambda$static$3(com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #20                 // Field direction:Lnet/minecraft/core/Direction;
+         4: areturn
+      LineNumberTable:
+        line 32: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 processor   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+
+  private static com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer lambda$static$2(com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #17                 // Field pillarStates:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+         4: areturn
+      LineNumberTable:
+        line 31: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 config   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+
+  private static com.yungnickyoung.minecraft.yungsapi.api.world.randomize.BlockStateRandomizer lambda$static$1(com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field targetBlockOutput:Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+         4: areturn
+      LineNumberTable:
+        line 30: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 config   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$static$0(com.yungnickyoung.minecraft.betterjungletemples.world.processor.PillarProcessor);
+    descriptor: (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field targetBlock:Lnet/minecraft/world/level/block/state/BlockState;
+         4: areturn
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 config   Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: invokedynamic #235,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+         5: invokestatic  #236                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+         8: putstatic     #242                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+        11: return
+      LineNumberTable:
+        line 27: 0
+}
+SourceFile: "PillarProcessor.java"
+RuntimeVisibleAnnotations:
+  0: #298()
+    javax.annotation.ParametersAreNonnullByDefault
+  1: #299()
+    net.minecraft.MethodsReturnNonnullByDefault
+BootstrapMethods:
+  0: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #303 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$0:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+      #306 (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/world/level/block/state/BlockState;
+  1: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #307 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$1:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      #310 (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  2: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #311 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$2:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+      #310 (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;
+  3: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #314 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$3:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+      #317 (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Lnet/minecraft/core/Direction;
+  4: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #318 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$4:(Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+      #321 (Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;)Ljava/lang/Integer;
+  5: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #322 (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #324 REF_newInvokeSpecial com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor."<init>":(Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;I)V
+      #327 (Lnet/minecraft/world/level/block/state/BlockState;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lcom/yungnickyoung/minecraft/yungsapi/api/world/randomize/BlockStateRandomizer;Lnet/minecraft/core/Direction;Ljava/lang/Integer;)Lcom/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor;
+  6: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #301 (Ljava/lang/Object;)Ljava/lang/Object;
+      #329 REF_invokeStatic com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.lambda$static$5:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+      #332 (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+InnerClasses:
+  public static final #343= #29 of #341;  // StructureBlockInfo=class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo of class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  public static #344= #94 of #83;         // MutableBlockPos=class net/minecraft/core/BlockPos$MutableBlockPos of class net/minecraft/core/BlockPos
+  public static #347= #128 of #345;       // Builder=class com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext$Builder of class com/yungnickyoung/minecraft/yungsapi/world/structure/context/StructureContext
+  public static #350= #195 of #348;       // EnumCodec=class net/minecraft/util/StringRepresentable$EnumCodec of class net/minecraft/util/StringRepresentable
+  public static final #351= #218 of #237; // Instance=class com/mojang/serialization/codecs/RecordCodecBuilder$Instance of class com/mojang/serialization/codecs/RecordCodecBuilder
+  public static final #354= #231 of #352; // P5=class com/mojang/datafixers/Products$P5 of class com/mojang/datafixers/Products
+  public static final #359= #355 of #357; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
