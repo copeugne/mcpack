@@ -1,0 +1,564 @@
+Classfile BetterEnd-21.0.31.jar!/org/betterx/betterend/mixin/common/EndDragonFightMixin.class
+  Last modified Aug 3, 2026; size 5137 bytes
+  SHA-256 checksum 8c0c69f82b4a60eb188be68b06c0186d1cebb1b9ed877101552bbfc1aab8120f
+  Compiled from "EndDragonFightMixin.java"
+public class org.betterx.betterend.mixin.common.EndDragonFightMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #17                         // org/betterx/betterend/mixin/common/EndDragonFightMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 5, methods: 5, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // org/betterx/betterend/world/generator/GeneratorOptions.replacePortal:()Z
+    #8 = Class              #10           // org/betterx/betterend/world/generator/GeneratorOptions
+    #9 = NameAndType        #11:#12       // replacePortal:()Z
+   #10 = Utf8               org/betterx/betterend/world/generator/GeneratorOptions
+   #11 = Utf8               replacePortal
+   #12 = Utf8               ()Z
+   #13 = Methodref          #8.#14        // org/betterx/betterend/world/generator/GeneratorOptions.hasDragonFights:()Z
+   #14 = NameAndType        #15:#12       // hasDragonFights:()Z
+   #15 = Utf8               hasDragonFights
+   #16 = Fieldref           #17.#18       // org/betterx/betterend/mixin/common/EndDragonFightMixin.dragonKilled:Z
+   #17 = Class              #19           // org/betterx/betterend/mixin/common/EndDragonFightMixin
+   #18 = NameAndType        #20:#21       // dragonKilled:Z
+   #19 = Utf8               org/betterx/betterend/mixin/common/EndDragonFightMixin
+   #20 = Utf8               dragonKilled
+   #21 = Utf8               Z
+   #22 = Fieldref           #17.#23       // org/betterx/betterend/mixin/common/EndDragonFightMixin.respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+   #23 = NameAndType        #24:#25       // respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+   #24 = Utf8               respawnStage
+   #25 = Utf8               Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+   #26 = Fieldref           #17.#27       // org/betterx/betterend/mixin/common/EndDragonFightMixin.portalLocation:Lnet/minecraft/core/BlockPos;
+   #27 = NameAndType        #28:#29       // portalLocation:Lnet/minecraft/core/BlockPos;
+   #28 = Utf8               portalLocation
+   #29 = Utf8               Lnet/minecraft/core/BlockPos;
+   #30 = Fieldref           #17.#31       // org/betterx/betterend/mixin/common/EndDragonFightMixin.LOGGER:Lorg/slf4j/Logger;
+   #31 = NameAndType        #32:#33       // LOGGER:Lorg/slf4j/Logger;
+   #32 = Utf8               LOGGER
+   #33 = Utf8               Lorg/slf4j/Logger;
+   #34 = String             #35           // Tried to respawn, but need to find the portal first.
+   #35 = Utf8               Tried to respawn, but need to find the portal first.
+   #36 = InterfaceMethodref #37.#38       // org/slf4j/Logger.debug:(Ljava/lang/String;)V
+   #37 = Class              #39           // org/slf4j/Logger
+   #38 = NameAndType        #40:#41       // debug:(Ljava/lang/String;)V
+   #39 = Utf8               org/slf4j/Logger
+   #40 = Utf8               debug
+   #41 = Utf8               (Ljava/lang/String;)V
+   #42 = Methodref          #17.#43       // org/betterx/betterend/mixin/common/EndDragonFightMixin.findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+   #43 = NameAndType        #44:#45       // findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+   #44 = Utf8               findExitPortal
+   #45 = Utf8               ()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+   #46 = String             #47           // Couldn\'t find a portal, so we made one.
+   #47 = Utf8               Couldn\'t find a portal, so we made one.
+   #48 = Methodref          #17.#49       // org/betterx/betterend/mixin/common/EndDragonFightMixin.spawnExitPortal:(Z)V
+   #49 = NameAndType        #50:#51       // spawnExitPortal:(Z)V
+   #50 = Utf8               spawnExitPortal
+   #51 = Utf8               (Z)V
+   #52 = String             #53           // Found the exit portal & temporarily using it.
+   #53 = Utf8               Found the exit portal & temporarily using it.
+   #54 = Methodref          #55.#56       // com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+   #55 = Class              #57           // com/google/common/collect/Lists
+   #56 = NameAndType        #58:#59       // newArrayList:()Ljava/util/ArrayList;
+   #57 = Utf8               com/google/common/collect/Lists
+   #58 = Utf8               newArrayList
+   #59 = Utf8               ()Ljava/util/ArrayList;
+   #60 = Fieldref           #61.#62       // org/betterx/bclib/util/BlocksHelper.HORIZONTAL:[Lnet/minecraft/core/Direction;
+   #61 = Class              #63           // org/betterx/bclib/util/BlocksHelper
+   #62 = NameAndType        #64:#65       // HORIZONTAL:[Lnet/minecraft/core/Direction;
+   #63 = Utf8               org/betterx/bclib/util/BlocksHelper
+   #64 = Utf8               HORIZONTAL
+   #65 = Utf8               [Lnet/minecraft/core/Direction;
+   #66 = Fieldref           #67.#68       // net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+   #67 = Class              #69           // net/minecraft/core/BlockPos
+   #68 = NameAndType        #70:#29       // ZERO:Lnet/minecraft/core/BlockPos;
+   #69 = Utf8               net/minecraft/core/BlockPos
+   #70 = Utf8               ZERO
+   #71 = Methodref          #67.#72       // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+   #72 = NameAndType        #73:#74       // relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+   #73 = Utf8               relative
+   #74 = Utf8               (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+   #75 = Fieldref           #17.#76       // org/betterx/betterend/mixin/common/EndDragonFightMixin.level:Lnet/minecraft/server/level/ServerLevel;
+   #76 = NameAndType        #77:#78       // level:Lnet/minecraft/server/level/ServerLevel;
+   #77 = Utf8               level
+   #78 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #79 = Class              #80           // net/minecraft/world/entity/boss/enderdragon/EndCrystal
+   #80 = Utf8               net/minecraft/world/entity/boss/enderdragon/EndCrystal
+   #81 = Class              #82           // net/minecraft/world/phys/AABB
+   #82 = Utf8               net/minecraft/world/phys/AABB
+   #83 = Methodref          #67.#84       // net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+   #84 = NameAndType        #85:#86       // below:(I)Lnet/minecraft/core/BlockPos;
+   #85 = Utf8               below
+   #86 = Utf8               (I)Lnet/minecraft/core/BlockPos;
+   #87 = Methodref          #67.#88       // net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+   #88 = NameAndType        #89:#90       // south:()Lnet/minecraft/core/BlockPos;
+   #89 = Utf8               south
+   #90 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #91 = Methodref          #67.#92       // net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+   #92 = NameAndType        #93:#90       // west:()Lnet/minecraft/core/BlockPos;
+   #93 = Utf8               west
+   #94 = Methodref          #67.#95       // net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+   #95 = NameAndType        #96:#97       // getCenter:()Lnet/minecraft/world/phys/Vec3;
+   #96 = Utf8               getCenter
+   #97 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+   #98 = Methodref          #67.#99       // net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+   #99 = NameAndType        #100:#86      // above:(I)Lnet/minecraft/core/BlockPos;
+  #100 = Utf8               above
+  #101 = Methodref          #67.#102      // net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+  #102 = NameAndType        #103:#90      // north:()Lnet/minecraft/core/BlockPos;
+  #103 = Utf8               north
+  #104 = Methodref          #67.#105      // net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+  #105 = NameAndType        #106:#90      // east:()Lnet/minecraft/core/BlockPos;
+  #106 = Utf8               east
+  #107 = Methodref          #81.#108      // net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #108 = NameAndType        #5:#109       // "<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #109 = Utf8               (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+  #110 = Methodref          #111.#112     // net/minecraft/server/level/ServerLevel.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #111 = Class              #113          // net/minecraft/server/level/ServerLevel
+  #112 = NameAndType        #114:#115     // getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #113 = Utf8               net/minecraft/server/level/ServerLevel
+  #114 = Utf8               getEntitiesOfClass
+  #115 = Utf8               (Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+  #116 = InterfaceMethodref #117.#118     // java/util/List.size:()I
+  #117 = Class              #119          // java/util/List
+  #118 = NameAndType        #120:#121     // size:()I
+  #119 = Utf8               java/util/List
+  #120 = Utf8               size
+  #121 = Utf8               ()I
+  #122 = InterfaceMethodref #117.#123     // java/util/List.get:(I)Ljava/lang/Object;
+  #123 = NameAndType        #124:#125     // get:(I)Ljava/lang/Object;
+  #124 = Utf8               get
+  #125 = Utf8               (I)Ljava/lang/Object;
+  #126 = Methodref          #79.#127      // net/minecraft/world/entity/boss/enderdragon/EndCrystal.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #127 = NameAndType        #128:#90      // blockPosition:()Lnet/minecraft/core/BlockPos;
+  #128 = Utf8               blockPosition
+  #129 = Methodref          #67.#130      // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+  #130 = NameAndType        #85:#90       // below:()Lnet/minecraft/core/BlockPos;
+  #131 = Methodref          #111.#132     // net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #132 = NameAndType        #133:#134     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #133 = Utf8               getBlockState
+  #134 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #135 = Fieldref           #136.#137     // net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+  #136 = Class              #138          // net/minecraft/world/level/block/Blocks
+  #137 = NameAndType        #139:#140     // BEDROCK:Lnet/minecraft/world/level/block/Block;
+  #138 = Utf8               net/minecraft/world/level/block/Blocks
+  #139 = Utf8               BEDROCK
+  #140 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #141 = Methodref          #142.#143     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+  #142 = Class              #144          // net/minecraft/world/level/block/state/BlockState
+  #143 = NameAndType        #145:#146     // is:(Lnet/minecraft/world/level/block/Block;)Z
+  #144 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #145 = Utf8               is
+  #146 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+  #147 = InterfaceMethodref #117.#148     // java/util/List.remove:(I)Ljava/lang/Object;
+  #148 = NameAndType        #149:#125     // remove:(I)Ljava/lang/Object;
+  #149 = Utf8               remove
+  #150 = InterfaceMethodref #117.#151     // java/util/List.isEmpty:()Z
+  #151 = NameAndType        #152:#12      // isEmpty:()Z
+  #152 = Utf8               isEmpty
+  #153 = Methodref          #154.#155     // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #154 = Class              #156          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #155 = NameAndType        #157:#6       // cancel:()V
+  #156 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #157 = Utf8               cancel
+  #158 = InterfaceMethodref #117.#159     // java/util/List.addAll:(Ljava/util/Collection;)Z
+  #159 = NameAndType        #160:#161     // addAll:(Ljava/util/Collection;)Z
+  #160 = Utf8               addAll
+  #161 = Utf8               (Ljava/util/Collection;)Z
+  #162 = String             #163          // Found all crystals, respawning dragon.
+  #163 = Utf8               Found all crystals, respawning dragon.
+  #164 = Methodref          #17.#165      // org/betterx/betterend/mixin/common/EndDragonFightMixin.respawnDragon:(Ljava/util/List;)V
+  #165 = NameAndType        #166:#167     // respawnDragon:(Ljava/util/List;)V
+  #166 = Utf8               respawnDragon
+  #167 = Utf8               (Ljava/util/List;)V
+  #168 = Utf8               RuntimeVisibleAnnotations
+  #169 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #170 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #171 = Utf8               Code
+  #172 = Utf8               LineNumberTable
+  #173 = Utf8               LocalVariableTable
+  #174 = Utf8               this
+  #175 = Utf8               Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+  #176 = Utf8               bl
+  #177 = Utf8               list
+  #178 = Utf8               Ljava/util/List;
+  #179 = Utf8               LocalVariableTypeTable
+  #180 = Utf8               Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+  #181 = Utf8               Signature
+  #182 = Utf8               (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;)V
+  #183 = Utf8               be_tryRespawnDragon
+  #184 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #185 = Utf8               blockPatternMatch
+  #186 = Utf8               Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+  #187 = Utf8               crystal
+  #188 = Utf8               Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+  #189 = Utf8               n
+  #190 = Utf8               I
+  #191 = Utf8               central
+  #192 = Utf8               crystalList
+  #193 = Utf8               count
+  #194 = Utf8               dir
+  #195 = Utf8               Lnet/minecraft/core/Direction;
+  #196 = Utf8               blockPos
+  #197 = Utf8               crystals
+  #198 = Utf8               info
+  #199 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #200 = Utf8               StackMapTable
+  #201 = Class              #202          // net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch
+  #202 = Utf8               net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch
+  #203 = Class              #65           // "[Lnet/minecraft/core/Direction;"
+  #204 = Class              #205          // net/minecraft/core/Direction
+  #205 = Utf8               net/minecraft/core/Direction
+  #206 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #207 = Utf8               method
+  #208 = Utf8               tryRespawn
+  #209 = Utf8               at
+  #210 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #211 = Utf8               value
+  #212 = Utf8               HEAD
+  #213 = Utf8               cancellable
+  #214 = Integer            1
+  #215 = Utf8               SourceFile
+  #216 = Utf8               EndDragonFightMixin.java
+  #217 = Utf8               RuntimeInvisibleAnnotations
+  #218 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #219 = Utf8               Lnet/minecraft/world/level/dimension/end/EndDragonFight;
+  #220 = Utf8               InnerClasses
+  #221 = Class              #222          // net/minecraft/world/level/block/state/pattern/BlockPattern
+  #222 = Utf8               net/minecraft/world/level/block/state/pattern/BlockPattern
+  #223 = Utf8               BlockPatternMatch
+{
+  private net.minecraft.world.level.dimension.end.DragonRespawnAnimation respawnStage;
+    descriptor: Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private boolean dragonKilled;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.core.BlockPos portalLocation;
+    descriptor: Lnet/minecraft/core/BlockPos;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private static org.slf4j.Logger LOGGER;
+    descriptor: Lorg/slf4j/Logger;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+      1: #170()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.ServerLevel level;
+    descriptor: Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #170()
+        org.spongepowered.asm.mixin.Final
+      1: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  public org.betterx.betterend.mixin.common.EndDragonFightMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+
+  private net.minecraft.world.level.block.state.pattern.BlockPattern$BlockPatternMatch findExitPortal();
+    descriptor: ()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void spawnExitPortal(boolean);
+    descriptor: (Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 49: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+            0       1     1    bl   Z
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void respawnDragon(java.util.List<net.minecraft.world.entity.boss.enderdragon.EndCrystal>);
+    descriptor: (Ljava/util/List;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 53: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+            0       1     1  list   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       1     1  list   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+    Signature: #182                         // (Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;)V
+    RuntimeVisibleAnnotations:
+      0: #169()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void be_tryRespawnDragon(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=7, locals=13, args_size=2
+         0: invokestatic  #7                  // Method org/betterx/betterend/world/generator/GeneratorOptions.replacePortal:()Z
+         3: ifeq          304
+         6: invokestatic  #13                 // Method org/betterx/betterend/world/generator/GeneratorOptions.hasDragonFights:()Z
+         9: ifeq          304
+        12: aload_0
+        13: getfield      #16                 // Field dragonKilled:Z
+        16: ifeq          304
+        19: aload_0
+        20: getfield      #22                 // Field respawnStage:Lnet/minecraft/world/level/dimension/end/DragonRespawnAnimation;
+        23: ifnonnull     304
+        26: aload_0
+        27: getfield      #26                 // Field portalLocation:Lnet/minecraft/core/BlockPos;
+        30: astore_2
+        31: aload_2
+        32: ifnonnull     82
+        35: getstatic     #30                 // Field LOGGER:Lorg/slf4j/Logger;
+        38: ldc           #34                 // String Tried to respawn, but need to find the portal first.
+        40: invokeinterface #36,  2           // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+        45: aload_0
+        46: invokevirtual #42                 // Method findExitPortal:()Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+        49: astore_3
+        50: aload_3
+        51: ifnonnull     72
+        54: getstatic     #30                 // Field LOGGER:Lorg/slf4j/Logger;
+        57: ldc           #46                 // String Couldn\'t find a portal, so we made one.
+        59: invokeinterface #36,  2           // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+        64: aload_0
+        65: iconst_1
+        66: invokevirtual #48                 // Method spawnExitPortal:(Z)V
+        69: goto          82
+        72: getstatic     #30                 // Field LOGGER:Lorg/slf4j/Logger;
+        75: ldc           #52                 // String Found the exit portal & temporarily using it.
+        77: invokeinterface #36,  2           // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+        82: invokestatic  #54                 // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+        85: astore_3
+        86: getstatic     #60                 // Field org/betterx/bclib/util/BlocksHelper.HORIZONTAL:[Lnet/minecraft/core/Direction;
+        89: astore        4
+        91: aload         4
+        93: arraylength
+        94: istore        5
+        96: iconst_0
+        97: istore        6
+        99: iload         6
+       101: iload         5
+       103: if_icmpge     285
+       106: aload         4
+       108: iload         6
+       110: aaload
+       111: astore        7
+       113: getstatic     #66                 // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+       116: aload         7
+       118: iconst_4
+       119: invokevirtual #71                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+       122: astore        8
+       124: aload_0
+       125: getfield      #75                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       128: ldc           #79                 // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+       130: new           #81                 // class net/minecraft/world/phys/AABB
+       133: dup
+       134: aload         8
+       136: sipush        255
+       139: invokevirtual #83                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+       142: invokevirtual #87                 // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+       145: invokevirtual #91                 // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+       148: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+       151: aload         8
+       153: sipush        255
+       156: invokevirtual #98                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+       159: invokevirtual #101                // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+       162: invokevirtual #104                // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+       165: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+       168: invokespecial #107                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+       171: invokevirtual #110                // Method net/minecraft/server/level/ServerLevel.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;)Ljava/util/List;
+       174: astore        9
+       176: aload         9
+       178: invokeinterface #116,  1          // InterfaceMethod java/util/List.size:()I
+       183: istore        10
+       185: iconst_0
+       186: istore        11
+       188: iload         11
+       190: iload         10
+       192: if_icmpge     255
+       195: aload         9
+       197: iload         11
+       199: invokeinterface #122,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       204: checkcast     #79                 // class net/minecraft/world/entity/boss/enderdragon/EndCrystal
+       207: astore        12
+       209: aload_0
+       210: getfield      #75                 // Field level:Lnet/minecraft/server/level/ServerLevel;
+       213: aload         12
+       215: invokevirtual #126                // Method net/minecraft/world/entity/boss/enderdragon/EndCrystal.blockPosition:()Lnet/minecraft/core/BlockPos;
+       218: invokevirtual #129                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       221: invokevirtual #131                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       224: getstatic     #135                // Field net/minecraft/world/level/block/Blocks.BEDROCK:Lnet/minecraft/world/level/block/Block;
+       227: invokevirtual #141                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       230: ifne          249
+       233: aload         9
+       235: iload         11
+       237: invokeinterface #147,  2          // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+       242: pop
+       243: iinc          10, -1
+       246: iinc          11, -1
+       249: iinc          11, 1
+       252: goto          188
+       255: aload         9
+       257: invokeinterface #150,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+       262: ifeq          270
+       265: aload_1
+       266: invokevirtual #153                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+       269: return
+       270: aload_3
+       271: aload         9
+       273: invokeinterface #158,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+       278: pop
+       279: iinc          6, 1
+       282: goto          99
+       285: getstatic     #30                 // Field LOGGER:Lorg/slf4j/Logger;
+       288: ldc           #162                // String Found all crystals, respawning dragon.
+       290: invokeinterface #36,  2           // InterfaceMethod org/slf4j/Logger.debug:(Ljava/lang/String;)V
+       295: aload_0
+       296: aload_3
+       297: invokevirtual #164                // Method respawnDragon:(Ljava/util/List;)V
+       300: aload_1
+       301: invokevirtual #153                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+       304: return
+      LineNumberTable:
+        line 57: 0
+        line 58: 26
+        line 59: 31
+        line 60: 35
+        line 61: 45
+        line 62: 50
+        line 63: 54
+        line 64: 64
+        line 66: 72
+        line 70: 82
+        line 71: 86
+        line 72: 113
+        line 73: 124
+        line 76: 139
+        line 77: 156
+        line 73: 171
+        line 81: 176
+        line 82: 185
+        line 83: 195
+        line 84: 209
+        line 85: 233
+        line 86: 243
+        line 87: 246
+        line 82: 249
+        line 91: 255
+        line 92: 265
+        line 93: 269
+        line 96: 270
+        line 71: 279
+        line 99: 285
+        line 100: 295
+        line 101: 300
+        line 103: 304
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           50      32     3 blockPatternMatch   Lnet/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch;
+          209      40    12 crystal   Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;
+          188      67    11     n   I
+          124     155     8 central   Lnet/minecraft/core/BlockPos;
+          176     103     9 crystalList   Ljava/util/List;
+          185      94    10 count   I
+          113     166     7   dir   Lnet/minecraft/core/Direction;
+           31     273     2 blockPos   Lnet/minecraft/core/BlockPos;
+           86     218     3 crystals   Ljava/util/List;
+            0     305     0  this   Lorg/betterx/betterend/mixin/common/EndDragonFightMixin;
+            0     305     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          176     103     9 crystalList   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+           86     218     3 crystals   Ljava/util/List<Lnet/minecraft/world/entity/boss/enderdragon/EndCrystal;>;
+      StackMapTable: number_of_entries = 9
+        frame_type = 253 /* append */
+          offset_delta = 72
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch ]
+        frame_type = 250 /* chop */
+          offset_delta = 9
+        frame_type = 255 /* full_frame */
+          offset_delta = 16
+          locals = [ class org/betterx/betterend/mixin/common/EndDragonFightMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/core/BlockPos, class java/util/List, class "[Lnet/minecraft/core/Direction;", int, int ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 88
+          locals = [ class org/betterx/betterend/mixin/common/EndDragonFightMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/core/BlockPos, class java/util/List, class "[Lnet/minecraft/core/Direction;", int, int, class net/minecraft/core/Direction, class net/minecraft/core/BlockPos, class java/util/List, int, int ]
+          stack = []
+        frame_type = 60 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 14 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 14
+          locals = [ class org/betterx/betterend/mixin/common/EndDragonFightMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class net/minecraft/core/BlockPos, class java/util/List ]
+          stack = []
+        frame_type = 249 /* chop */
+          offset_delta = 18
+    RuntimeVisibleAnnotations:
+      0: #206(#207=[s#208],#209=[@#210(#211=s#212)],#213=Z#214)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tryRespawn"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "EndDragonFightMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #218(#211=[c#219])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/dimension/end/EndDragonFight;]
+    )
+InnerClasses:
+  public static #223= #201 of #221;       // BlockPatternMatch=class net/minecraft/world/level/block/state/pattern/BlockPattern$BlockPatternMatch of class net/minecraft/world/level/block/state/pattern/BlockPattern
