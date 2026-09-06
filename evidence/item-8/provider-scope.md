@@ -1344,3 +1344,15 @@ explanation and test now bind houses explicitly. One long line was formatted;
 Ruff and Basedpyright pass. Provider dispositions: 50 of 136 resolved, 86 open.
 Continue the provider census; canonical grouping, complete attributes and final
 delivery gates remain incomplete.
+
+## Illager Invasion nested dependency checkpoint
+
+The complete archive inspection found a declared nested executable,
+META-INF/jars/extensibleenums-neoforge-21.1.1.jar, SHA-256
+35720e0569288b37fe59dfd3781691019d24ce1fab48623980b9d7a9b5af2e1c.
+Its candidate role must be supported before closing the parent provider.
+The existing source-capture tool supports only bundled Tiny Config and rejects
+this parent/path. The smallest necessary extension is a second exact pinned
+parent/path/hash case in that existing path. This resolves a concrete uncovered
+entry boundary, not a new measurement framework or audit of enum internals.
+Provider count remains 50 resolved, 86 open until the parent disposition passes.

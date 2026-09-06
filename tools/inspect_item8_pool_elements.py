@@ -100,6 +100,8 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "fuzs/extensibleenums/",
+    "architectury_inject_ExtensibleEnums",
     "fuzs/illagerinvasion/IllagerInvasion.class",
     "fuzs/illagerinvasion/neoforge/",
     "fuzs/illagerinvasion/init/ModRegistry.class",
@@ -626,14 +628,25 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
-        "META-INF/jars/tiny-config-3.1.0-neoforge.jar"])
+        "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
+        "META-INF/jars/extensibleenums-neoforge-21.1.1.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
-    if nested and selected_archive != "village_taverns-neoforge-1.1.5+1.21.1.jar":
-        parser.error("the selected nested archive requires the frozen Village Taverns parent")
+    nested_sources = {
+        "META-INF/jars/tiny-config-3.1.0-neoforge.jar": (
+            "village_taverns-neoforge-1.1.5+1.21.1.jar",
+            "1587ed9848881e7b677da5b8c85e0f35719315eb5f6571592d31840cf1421f63",
+        ),
+        "META-INF/jars/extensibleenums-neoforge-21.1.1.jar": (
+            "IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar",
+            "35720e0569288b37fe59dfd3781691019d24ce1fab48623980b9d7a9b5af2e1c",
+        ),
+    }
+    if nested and selected_archive != nested_sources[nested][0]:
+        parser.error("the selected nested archive requires its exact frozen parent")
     output.mkdir(parents=True, exist_ok=False)
     javap = ROOT / "downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap"
     identities: list[dict[str, str]] = []
@@ -654,10 +667,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
             if nested:
                 nested_payload = parent.read(nested)
                 archive_sha = hashlib.sha256(nested_payload).hexdigest()
-                if archive_sha != (
-                    "1587ed9848881e7b677da5b8c85e0f35719315eb5f6571592d31840cf1421f63"
-                ):
-                    message = "bundled Tiny Config identity mismatch"
+                if archive_sha != nested_sources[nested][1]:
+                    message = f"bundled archive identity mismatch: {nested}"
                     raise ValueError(message)
                 temporary = stack.enter_context(NamedTemporaryFile(suffix=".jar"))
                 _ = temporary.write(nested_payload)
@@ -731,6 +742,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "com/tristankechlo/explorations/NeoforgeExplorations.class",
                     "fuzs/illagerinvasion/neoforge/IllagerInvasionNeoForge.class",
                     "fuzs/illagerinvasion/neoforge/client/IllagerInvasionNeoForgeClient.class",
+                    "fuzs/extensibleenums/neoforge/impl/ExtensibleEnumsNeoForge.class",
+                    "fuzs/extensibleenums/neoforge/impl/client/ExtensibleEnumsNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
