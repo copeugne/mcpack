@@ -113,6 +113,7 @@ ARCHIVES = frozenset(
         "ubesdelight-neoforge-1.21.1-0.4.13.jar",
         "naturalist-1.0.2-neoforge-1.21.1.jar",
         "railways-0.2.1+neoforge-mc1.21.1.jar",
+        "create-1.21.1-6.0.10.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -2119,6 +2120,10 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/worldgen/processorcondition/ConfigCondition.class",
     "net/regions_unexplored/worldgen/processorcondition/MatchingBiomesCondition.class",
     "net/regions_unexplored/worldgen/rootplacer/MagnoliaRootPlacer.class",
+    "com/simibubi/create/infrastructure/worldgen/AllFeatures.class",
+    "com/simibubi/create/infrastructure/worldgen/LayeredOreFeature.class",
+    "com/simibubi/create/infrastructure/worldgen/ConfigPlacementFilter.class",
+    "com/simibubi/create/infrastructure/gametest/CreateGameTests.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
