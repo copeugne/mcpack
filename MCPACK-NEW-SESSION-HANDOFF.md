@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9d75c96b and reproduces exactly. Canonical-note backlog: 90
+(IDAS 59, AdoraBuild 31). Coverage groups: 405. Next: remaining IDAS/AdoraBuild
+design relationships using existing evidence and only necessary layout views.
+Required attributes and 33 nonregistry contributions remain open.
+
 The ten remaining Terralith building relationships are resolved against delivered
 views and existing template/graph evidence. The affected definition/registry case
 and scoped checks pass. Canonical-note backlog: 90 (IDAS 59, AdoraBuild 31).
