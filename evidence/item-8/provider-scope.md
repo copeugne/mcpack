@@ -8818,3 +8818,11 @@ uv run pytest tests/item8/test_family_decisions.py -q
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory refreshed from cc8343cb after all Soaring membership decisions. Both
+independent outputs match byte for byte. SHA-256: c6342abc3852f2562aa83ddacd828a274ee4e9ef5cabbe5231f904ec82f4d54d.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-settled-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-settled-r2.json
+```
