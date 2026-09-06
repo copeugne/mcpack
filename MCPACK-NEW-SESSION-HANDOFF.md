@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Arena membership comparison uses the existing renderer for 30 architectural
+pieces across small, large and dragon arenas. Shared entity-only mob templates
+stay in the existing source graph, not the layout views. This comparison is
+needed to distinguish size/layout variants from separate designs. Do not render
+the fortress's 196 alternatives: its connected assembly graph is the boundary
+input, and template count does not imply per-instance piece count.
+
+
 Inventory agrees with delivered Nether house/forge decisions e11fe710 and
 reproduces exactly. Next: three Nether arenas, fortress and seven landmarks.
 Explicit provisional queue: 64 (Nether 11, Voyager 53). Working groups: 409.
