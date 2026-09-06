@@ -1,0 +1,126 @@
+Compiled from "WitherSkeletonWithBow.java"
+public class com.telepathicgrunt.repurposedstructures.world.features.WitherSkeletonWithBow extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public com.telepathicgrunt.repurposedstructures.world.features.WitherSkeletonWithBow();
+    Code:
+       0: aload_0
+       1: getstatic     #24                 // Field net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #27                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       4: invokevirtual #44                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       7: astore_2
+       8: getstatic     #50                 // Field net/minecraft/world/entity/EntityType.WITHER_SKELETON:Lnet/minecraft/world/entity/EntityType;
+      11: aload_1
+      12: invokevirtual #54                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      15: invokeinterface #60,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      20: invokevirtual #64                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      23: checkcast     #66                 // class net/minecraft/world/entity/monster/WitherSkeleton
+      26: astore_3
+      27: aload_3
+      28: invokevirtual #69                 // Method net/minecraft/world/entity/monster/WitherSkeleton.setPersistenceRequired:()V
+      31: aload_3
+      32: aload_2
+      33: invokevirtual #73                 // Method net/minecraft/core/BlockPos.getX:()I
+      36: i2d
+      37: ldc2_w        #74                 // double 0.5d
+      40: dadd
+      41: aload_2
+      42: invokevirtual #78                 // Method net/minecraft/core/BlockPos.getY:()I
+      45: i2d
+      46: aload_2
+      47: invokevirtual #81                 // Method net/minecraft/core/BlockPos.getZ:()I
+      50: i2d
+      51: ldc2_w        #74                 // double 0.5d
+      54: dadd
+      55: fconst_0
+      56: fconst_0
+      57: invokevirtual #85                 // Method net/minecraft/world/entity/monster/WitherSkeleton.moveTo:(DDDFF)V
+      60: aload_3
+      61: getstatic     #91                 // Field net/minecraft/world/entity/ai/attributes/Attributes.FOLLOW_RANGE:Lnet/minecraft/core/Holder;
+      64: invokevirtual #95                 // Method net/minecraft/world/entity/monster/WitherSkeleton.getAttribute:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeInstance;
+      67: new           #10                 // class net/minecraft/world/entity/ai/attributes/AttributeModifier
+      70: dup
+      71: ldc           #97                 // String repurposed_structures
+      73: ldc           #99                 // String random_spawn_bonus
+      75: invokestatic  #105                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      78: aload_1
+      79: invokevirtual #109                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      82: invokeinterface #115,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextGaussian:()D
+      87: ldc2_w        #116                // double 0.3d
+      90: dmul
+      91: ldc2_w        #74                 // double 0.5d
+      94: dadd
+      95: getstatic     #121                // Field net/minecraft/world/entity/ai/attributes/AttributeModifier$Operation.ADD_MULTIPLIED_BASE:Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;
+      98: invokespecial #124                // Method net/minecraft/world/entity/ai/attributes/AttributeModifier."<init>":(Lnet/minecraft/resources/ResourceLocation;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)V
+     101: invokevirtual #130                // Method net/minecraft/world/entity/ai/attributes/AttributeInstance.addPermanentModifier:(Lnet/minecraft/world/entity/ai/attributes/AttributeModifier;)V
+     104: new           #132                // class net/minecraft/world/item/ItemStack
+     107: dup
+     108: getstatic     #138                // Field net/minecraft/world/item/Items.BOW:Lnet/minecraft/world/item/Item;
+     111: invokespecial #141                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+     114: astore        4
+     116: aload_1
+     117: invokevirtual #54                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     120: invokeinterface #145,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     125: getstatic     #151                // Field net/minecraft/core/registries/Registries.ENCHANTMENT:Lnet/minecraft/resources/ResourceKey;
+     128: invokeinterface #157,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     133: astore        5
+     135: aload         4
+     137: aload         5
+     139: getstatic     #162                // Field net/minecraft/world/item/enchantment/Enchantments.FLAME:Lnet/minecraft/resources/ResourceKey;
+     142: invokeinterface #168,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     147: iconst_1
+     148: invokevirtual #172                // Method net/minecraft/world/item/ItemStack.enchant:(Lnet/minecraft/core/Holder;I)V
+     151: aload         4
+     153: aload         5
+     155: getstatic     #175                // Field net/minecraft/world/item/enchantment/Enchantments.PUNCH:Lnet/minecraft/resources/ResourceKey;
+     158: invokeinterface #168,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     163: iconst_2
+     164: invokevirtual #172                // Method net/minecraft/world/item/ItemStack.enchant:(Lnet/minecraft/core/Holder;I)V
+     167: aload         4
+     169: aload         5
+     171: getstatic     #178                // Field net/minecraft/world/item/enchantment/Enchantments.POWER:Lnet/minecraft/resources/ResourceKey;
+     174: invokeinterface #168,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     179: iconst_2
+     180: invokevirtual #172                // Method net/minecraft/world/item/ItemStack.enchant:(Lnet/minecraft/core/Holder;I)V
+     183: aload         4
+     185: aload         5
+     187: getstatic     #181                // Field net/minecraft/world/item/enchantment/Enchantments.VANISHING_CURSE:Lnet/minecraft/resources/ResourceKey;
+     190: invokeinterface #168,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     195: iconst_1
+     196: invokevirtual #172                // Method net/minecraft/world/item/ItemStack.enchant:(Lnet/minecraft/core/Holder;I)V
+     199: aload         4
+     201: aload         5
+     203: getstatic     #184                // Field net/minecraft/world/item/enchantment/Enchantments.BINDING_CURSE:Lnet/minecraft/resources/ResourceKey;
+     206: invokeinterface #168,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     211: iconst_1
+     212: invokevirtual #172                // Method net/minecraft/world/item/ItemStack.enchant:(Lnet/minecraft/core/Holder;I)V
+     215: aload_3
+     216: getstatic     #190                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+     219: aload         4
+     221: invokevirtual #194                // Method net/minecraft/world/entity/monster/WitherSkeleton.setItemInHand:(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V
+     224: aload_3
+     225: getstatic     #200                // Field net/minecraft/world/entity/EquipmentSlot.MAINHAND:Lnet/minecraft/world/entity/EquipmentSlot;
+     228: ldc           #201                // float 0.5f
+     230: invokevirtual #205                // Method net/minecraft/world/entity/monster/WitherSkeleton.setDropChance:(Lnet/minecraft/world/entity/EquipmentSlot;F)V
+     233: aload_3
+     234: aload_1
+     235: invokevirtual #109                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     238: invokeinterface #209,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     243: ldc           #210                // float 0.05f
+     245: fcmpg
+     246: ifge          253
+     249: iconst_1
+     250: goto          254
+     253: iconst_0
+     254: invokevirtual #214                // Method net/minecraft/world/entity/monster/WitherSkeleton.setLeftHanded:(Z)V
+     257: aload_1
+     258: invokevirtual #54                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     261: aload_3
+     262: invokeinterface #218,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     267: iconst_1
+     268: ireturn
+}

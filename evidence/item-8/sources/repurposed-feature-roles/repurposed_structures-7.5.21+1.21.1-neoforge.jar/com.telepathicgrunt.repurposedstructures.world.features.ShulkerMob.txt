@@ -1,0 +1,89 @@
+Compiled from "ShulkerMob.java"
+public class com.telepathicgrunt.repurposedstructures.world.features.ShulkerMob extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public com.telepathicgrunt.repurposedstructures.world.features.ShulkerMob();
+    Code:
+       0: aload_0
+       1: getstatic     #14                 // Field net/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #17                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       4: invokevirtual #34                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       7: astore_2
+       8: getstatic     #40                 // Field net/minecraft/world/entity/EntityType.SHULKER:Lnet/minecraft/world/entity/EntityType;
+      11: aload_1
+      12: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      15: invokeinterface #50,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      20: invokevirtual #54                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+      23: checkcast     #56                 // class net/minecraft/world/entity/monster/Shulker
+      26: astore_3
+      27: aload_3
+      28: invokevirtual #59                 // Method net/minecraft/world/entity/monster/Shulker.setPersistenceRequired:()V
+      31: aload_3
+      32: aload_2
+      33: invokevirtual #63                 // Method net/minecraft/core/BlockPos.getX:()I
+      36: i2d
+      37: ldc2_w        #64                 // double 0.5d
+      40: dadd
+      41: aload_2
+      42: invokevirtual #68                 // Method net/minecraft/core/BlockPos.getY:()I
+      45: i2d
+      46: aload_2
+      47: invokevirtual #71                 // Method net/minecraft/core/BlockPos.getZ:()I
+      50: i2d
+      51: ldc2_w        #64                 // double 0.5d
+      54: dadd
+      55: invokevirtual #75                 // Method net/minecraft/world/entity/monster/Shulker.absMoveTo:(DDD)V
+      58: getstatic     #81                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      61: astore        4
+      63: invokestatic  #85                 // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+      66: astore        5
+      68: aload         5
+      70: arraylength
+      71: istore        6
+      73: iconst_0
+      74: istore        7
+      76: iload         7
+      78: iload         6
+      80: if_icmpge     148
+      83: aload         5
+      85: iload         7
+      87: aaload
+      88: astore        8
+      90: aload_1
+      91: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      94: aload_2
+      95: invokeinterface #91,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     100: astore        9
+     102: aload_1
+     103: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     106: aload_2
+     107: aload         8
+     109: invokevirtual #95                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     112: invokeinterface #91,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     117: astore        10
+     119: aload         9
+     121: invokevirtual #101                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     124: ifeq          142
+     127: aload         10
+     129: invokevirtual #104                // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     132: ifeq          142
+     135: aload         8
+     137: astore        4
+     139: goto          148
+     142: iinc          7, 1
+     145: goto          76
+     148: aload_3
+     149: checkcast     #106                // class com/telepathicgrunt/repurposedstructures/mixins/entities/ShulkerEntityInvoker
+     152: aload         4
+     154: invokeinterface #110,  2          // InterfaceMethod com/telepathicgrunt/repurposedstructures/mixins/entities/ShulkerEntityInvoker.repurposedstructures_callSetAttachFace:(Lnet/minecraft/core/Direction;)V
+     159: aload_1
+     160: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     163: aload_3
+     164: invokeinterface #114,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     169: iconst_1
+     170: ireturn
+}
