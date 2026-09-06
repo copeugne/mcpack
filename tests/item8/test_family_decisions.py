@@ -143,7 +143,6 @@ def test_better_village_contributes_templates_without_an_extra_family() -> None:
 @pytest.mark.parametrize(
     "namespace",
     [
-        "integrated_villages:",
         "dungeons_arise:",
         "explorations:",
         "explorify:",
@@ -2503,3 +2502,54 @@ def test_all_runtime_structure_ids_have_exactly_one_working_group() -> None:
     ]
     assert len(members) == len(set(members)) == len(registry) == 887
     assert set(members) == set(registry)
+
+
+def test_integrated_village_designs_partition_one_settlement_family() -> None:
+    decisions = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_text()))
+    groups = [g for g in decisions["groups"]
+              if str(g["family_id"]).startswith("integrated_villages:")]
+    assert len(groups) == 1
+    group = groups[0]
+    assert group["family_id"] == "integrated_villages:village"
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+    ))
+    members = {n for n in registry if n.startswith("integrated_villages:")}
+    designs = cast("dict[str, dict[str, JsonValue]]", group["design_variants"])
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert len(members) == 12
+    assert group["structure_ids"] == sorted(members) == sorted(designs) == sorted(variants)
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    catalog = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz"
+    ).read_bytes())))
+    traces = cast("dict[str, dict[str, dict[str, JsonValue]]]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/pool-traces-content.json.gz"
+    ).read_bytes())))
+    spawner_templates: set[str] = set()
+    for member, design in designs.items():
+        definition = next(r["document"] for r in catalog["resources"]
+                          if r["path"] == "data/integrated_villages/worldgen/structure/"
+                          + member.split(":")[1] + ".json")
+        assert definition == variants[member]["definition"]
+        definition = cast("dict[str, JsonValue]", definition)
+        assert definition["spawn_overrides"] == {}
+        assert design["structure_ids"] == [member]
+        assert design["start_pool"] == definition["start_pool"]
+        settings = cast("dict[str, JsonValue]", design["generation_settings"])
+        assert settings == {k: definition[k] for k in settings}
+        trace = traces["structures"][member]
+        assert trace["start_pool"] == design["start_pool"]
+        assert trace["missing"] == design["missing_components"]
+        assert trace["missing"] == variants[member]["missing_components"]
+        contents = {n: traces["template_contents"][n]
+                    for n in cast("list[str]", trace["templates"])}
+        assert any(e["id"] == "minecraft:villager" for c in contents.values()
+                   for e in cast("list[dict[str, JsonValue]]", c["authored_entities"]))
+        spawner_templates.update(n for n, c in contents.items() if c["spawner_blocks"])
+    assert spawner_templates == {
+        "integrated_villages:mossy_mounds/house/mossy_mounds_armorer_bottom"
+    }
