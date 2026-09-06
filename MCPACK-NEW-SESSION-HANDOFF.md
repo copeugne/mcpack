@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Towns and Towers settlement relationships are resolved with all 26 root variants
+preserved. Three affected cases and scoped checks pass. Canonical-note backlog:
+105 (IDAS 59, AdoraBuild 31, Terralith 15). Coverage groups remain 405. Inventory
+refresh follows. Required attributes and 33 nonregistry contributions remain open.
+
 Inventory matches f9705ace and reproduces exactly. Canonical-note backlog: 106
 (IDAS 59, AdoraBuild 31, Terralith 15, Towns and Towers 1). Coverage groups: 405.
 Next: the remaining village relationship, then the named design comparisons.
