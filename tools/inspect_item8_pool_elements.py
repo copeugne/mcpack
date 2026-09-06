@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/content/registry/DataMapModifications.class",
+    "net/fabricmc/fabric/impl/attachment/AttachmentEntrypoint.class",
     "net/fabricmc/fabric/mixin/itemgroup/ItemGroupMixin.class",
     "org/sinytra/fabric/item_group_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/datagen/DataGeneratorMixin.class",

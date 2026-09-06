@@ -5768,11 +5768,11 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | RESOLVED: Entry and selector hook 0224278, initializer 703f0ac. Caller-supplied command/argument registration and selector flags; no independent family. |
-| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | RESOLVED: Caller content properties, tools, brewing, fuel, composting and gift data. Sources 2cbd452 and e5c769a; no independent family. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
-| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: Entry/hooks a17da36 and transfer initializer db84f92 captured. Resolve AttachmentModImpl attachment registration callback and bind full payload. |
+| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | RESOLVED: Empty initializer and data-output hooks for consumer pack generation. Source 36951e9; no independent family. |
 | `fabric-entity-events-v1-1.8.0+5ede667619.jar` | RESOLVED: Existing-entity event and elytra/sleep callbacks; no independent family. See entity-event disposition below. |
 | `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
@@ -6433,3 +6433,32 @@ Their manifests and every disassembly reproduce byte for byte with commands in
 the respective READMEs. Their membership rows stay open pending contribution
 roles and payload bindings. Data attachment specifically calls the uncaptured
 AttachmentEntrypoint.onInitialize. Do not repeat these delivered entry captures.
+
+### Fabric content registries and data generation membership resolved
+
+Content registry source 2cbd452 has an empty generated initializer, automatic
+fuel and hoe-tool subscribers and thirteen common hooks. These expose or adjust
+existing tool transformations, villager food/gift collections, brewing recipes,
+fire properties, waxing/oxidation maps and pathfinding types. Fuel and tilling
+operate on caller registrations and existing item/block interactions. The generic
+BaseRegistryMixin delegate is bounded by source e5c769a: only compostability and
+raid-hero gift lookups are modified. Neither branch generates a site.
+
+Data-generation source 36951e9 has an empty initializer and ten common hooks.
+They adapt data output paths, JSON key order, consumer model generation and
+namespace filtering, loot-provider access and recipe output identifiers. These
+are pack-authoring services with no independent world-generation entry. The
+remaining implementation types are the associated output/provider APIs.
+
+The existing source-binding test accounts for all 39 content-registry classes
+and 53 data-generation classes, exact automatic entries, declared hooks and
+complete metadata/resource sets. Both archives have an access transformer and
+no client-only hook file or generation data payload. All 32 focused Fabric cases,
+scoped Ruff and Basedpyright pass using the commands above. Fabric now has 31
+resolved modules and 12 open. Whole providers remain 90 resolved and 46 open.
+No family-list change and no new measurement system.
+
+Attachment initializer source db84f92 reproduces exactly and copies existing
+attachment values on respawn, dimension change and conversion. Its registration
+callback in AttachmentModImpl remains unresolved; the module stays open. Reuse
+the existing entry and initializer captures when resolving that callback.

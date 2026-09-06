@@ -106,6 +106,22 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-content-registries-v0-8.0.19+5e0d320019",
+            "fabric-content-registries-entry",
+            "9f1c23a98141bc5449ee93e4f103ba67a7d15f5e333ab85a56712e27661d20d0",
+            13,
+            {"org/sinytra/fabric/content_registries/generated/GeneratedEntryPoint.class",
+             "net/fabricmc/fabric/api/registry/TillableBlockRegistry.class",
+             "net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl.class"},
+        ),
+        (
+            "fabric-data-generation-api-v1-20.2.34+a4c3605619",
+            "fabric-data-generation-entry",
+            "005d5198b431bd5f83257d280cead53e562acb126ce11f94285bc0dcf397022d",
+            10,
+            {"org/sinytra/fabric/data_generation_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-item-group-api-v1-4.1.7+e324903319",
             "fabric-item-group-entry",
             "b7ad297470f753293f94ea1519ca76b23e352c0952946b6452d43a52410cd5d3",
@@ -278,6 +294,11 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
+                "fabric-content-registries-v0": (
+                    "fabric-content-data-map",
+                    "ba7fcec72be79425015cea676ff60b645990ed84d277c9b237358cd1fa8fa9df",
+                    {"net/fabricmc/fabric/impl/content/registry/DataMapModifications.class"},
+                ),
                 "fabric-command-api-v2": (
                     "fabric-command-init",
                     "54cc77ba015cd890542609a6a8a98742763b3bde85eef35c857ad253445205a4",
@@ -315,6 +336,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-content-registries-v0": (39, 0),
+                "fabric-data-generation-api-v1": (53, 0),
                 "fabric-item-group-api-v1": (15, 1),
                 "fabric-command-api-v2": (16, 1),
                 "fabric-lifecycle-events-v1": (73, 5),
@@ -344,7 +367,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert not client.get("plugin")
                 if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
                             "fabric-recipe-api-v1", "fabric-command-api-v2",
-                            "fabric-lifecycle-events-v1", "fabric-item-group-api-v1"}:
+                            "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
+                            "fabric-content-registries-v0", "fabric-data-generation-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 if name == "fabric-item-group-api-v1":
                     extras.add("assets/fabric/textures/gui/creative_buttons.png")
