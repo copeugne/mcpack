@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Create embedded Flywheel and Registrate membership is resolved. Flywheel
+source 4a7f244 (extractor f61db3a) is independently reproduced and client-only;
+Registrate is a consumer-driven library with no automatic entry or data payload.
+Five focused cases and scoped checks pass. Remaining Create work: Ponder
+entries/services/common accessors and template consumers, then final complete
+parent payload reconciliation. Reuse all closed roles. Census remains
+89 resolved, 47 open. No runtime or capture process is live.
+
 Create remaining 32 annotated-entry roles are now resolved from source 05d472d.
 No new capture or family candidate. All top-level annotated and declared common
 mixin roles are accounted for; do not restart them. Remaining Create work:

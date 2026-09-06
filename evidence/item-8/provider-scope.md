@@ -5398,3 +5398,33 @@ All top-level annotated-entry and declared common-mixin roles are now accounted
 for. Create remains OPEN for embedded Flywheel/Ponder/Registrate roles, Ponder
 content consumers and final complete payload reconciliation. The 32-entry batch
 must not be restarted. Census remains 89 resolved and 47 open.
+
+### Create embedded Flywheel and Registrate resolved
+
+Flywheel source 4a7f244 (extractor f61db3a) independently reproduces exactly.
+The focused test binds its nested archive and disassembly identity. Its only
+annotated entry, FlywheelNeoForge, explicitly declares Mod dist=CLIENT. All
+three declared mixin configurations contain client lists only, with no common,
+server or plugin entries. Its 636 files partition into 555 classes, 71 assets,
+three metadata files and seven root mixin/refmap/image/pack files. No data,
+service loader or deeper nested archive is present. This rendering library
+contributes no dedicated-server structure family. No render-backend audit is
+required to reach that membership disposition.
+
+Registrate's immutable nested archive contains 88 com/tterrag/registrate classes
+and a manifest declaring FMLModType: GAMELIBRARY. There are no annotated Mod or
+EventBusSubscriber entries, services, mixins, packaged data or deeper archives.
+Its consumer-driven registration role is already shown by Create.onCtor calling
+CreateRegistrate.registerEventListeners. It has no independent family payload or
+automatic generation entry. Do not inspect all generic builder internals absent
+a concrete unresolved consumer contribution.
+
+Both full nested-file partitions and exact hashes are checked by
+ test_create_flywheel_and_registrate_membership in the existing provider test.
+Five focused cases pass (0.61s); scoped Ruff and Basedpyright pass using the
+existing commands above. The Flywheel source has no UUID-literal matches.
+
+Two of Create's three embedded libraries are now resolved. Remaining Create
+membership work is Ponder's entries/services, common accessors and content
+consumers, followed by final complete parent payload reconciliation. Reuse all
+closed top-level and nested roles. Census remains 89 resolved, 47 open.

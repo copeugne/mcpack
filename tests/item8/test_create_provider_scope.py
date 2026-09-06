@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 from collections import Counter
+from io import BytesIO
 from pathlib import Path
 from typing import cast
 from zipfile import ZipFile
@@ -222,3 +223,94 @@ def test_create_remaining_declared_entry_inventory() -> None:
         assert len(client_subscribers) == 17
         client = (directory / source.name / "com.simibubi.create.CreateClient.txt").read_text()
         assert 'value="create"\n      dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]' in client
+
+
+def test_create_flywheel_and_registrate_membership() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "create-1.21.1-6.0.10.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as parent:
+        for member, digest, count in (
+            (
+                "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
+                "31dda15c205eb596d3b3449ef03f6af7363a6cd35b3da4bfe916b304f9e5337e",
+                636,
+            ),
+            (
+                "META-INF/jarjar/Registrate-MC1.21-1.3.0+67.jar",
+                "510f4041c41739f1d8ea8850ab8364d3e3a5fada8529beed5d9f479e2523db52",
+                89,
+            ),
+        ):
+            raw = parent.read(member)
+            assert hashlib.sha256(raw).hexdigest() == digest
+            with ZipFile(BytesIO(raw)) as archive:
+                names = [n for n in archive.namelist() if not n.endswith("/")]
+                assert len(names) == len(set(names)) == count
+                annotated = {
+                    n
+                    for n in names
+                    if n.endswith(".class")
+                    and any(
+                        t in archive.read(n)
+                        for t in (
+                            b"Lnet/neoforged/fml/common/Mod;",
+                            b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                        )
+                    )
+                }
+                if "Registrate-" in member:
+                    assert not annotated
+                    assert set(names) == {"META-INF/MANIFEST.MF"} | {
+                        n
+                        for n in names
+                        if n.startswith("com/tterrag/registrate/") and n.endswith(".class")
+                    }
+                    assert archive.read("META-INF/MANIFEST.MF").decode().splitlines() == [
+                        "Manifest-Version: 1.0",
+                        "FMLModType: GAMELIBRARY",
+                        "",
+                    ]
+                    continue
+                assert Counter(
+                    "classes" if n.endswith(".class") else n.split("/")[0] for n in names
+                ) == {
+                    "classes": 555,
+                    "assets": 71,
+                    "META-INF": 3,
+                    "backend-flywheel.refmap.json": 1,
+                    "flywheel.refmap.json": 1,
+                    "flywheel.backend.mixins.json": 1,
+                    "flywheel.impl.mixins.json": 1,
+                    "flywheel.impl.neoforge.mixins.json": 1,
+                    "logo.png": 1,
+                    "pack.mcmeta": 1,
+                }
+                assert {n for n in names if n.startswith("META-INF/")} == {
+                    "META-INF/MANIFEST.MF",
+                    "META-INF/LICENSE.md",
+                    "META-INF/neoforge.mods.toml",
+                }
+                assert annotated == {"dev/engine_room/flywheel/impl/FlywheelNeoForge.class"}
+                for filename in (
+                    "flywheel.backend.mixins.json",
+                    "flywheel.impl.mixins.json",
+                    "flywheel.impl.neoforge.mixins.json",
+                ):
+                    config = cast("dict[str, object]", json.loads(archive.read(filename)))
+                    assert config["client"]
+                    assert not any(config.get(k) for k in ("mixins", "server", "plugin"))
+                directory = Path("evidence/item-8/sources/create-flywheel-entry")
+                identities = (directory / "identities.json").read_bytes()
+                assert (
+                    hashlib.sha256(identities).hexdigest()
+                    == "08dd1db3d78aa87730567c551d4a33a2bdcf0081eb35560fa522a544b49f37be"
+                )
+                rows = cast("list[dict[str, str]]", json.loads(identities))
+                assert len(rows) == 1
+                row = rows[0]
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == digest
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                disassembly = (directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(disassembly).hexdigest() == row["disassembly_sha256"]
+                assert "dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]" in disassembly.decode()
