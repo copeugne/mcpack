@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-06
 
+Latest Repurposed graph-partition increment 683a9ef is pushed and remote-ref
+verified. Census remains 74 resolved providers, 62 open. Two focused cases
+and scoped quality checks pass. Repurposed provider scope remains OPEN.
+
+The preserved generic graph covers 95 of 107 roots, with no missing or unresolved
+element entries in those 95 traces. The other roots are eight mansion and four
+monument variants with custom assembly source already captured. Outside the
+generic graph: 503 pools (416 mansion, 80 monument, seven other) and 785 templates
+(597 mansion, 92 monument, 36 dungeon, seven well, 53 other). Full denominators:
+1099 pools and 3162 templates. These namespace partitions are not proof that
+every custom resource is selected. No family count follows from them.
+
+Next bind retained mansion/monument selector code to these custom pools and
+resolve the seven other pools plus 53 other templates. Exact residual pool
+names and template category counts are at the end of provider-scope.md;
+test_repurposed_feature_candidates.py reproduces the partitions. Do not repeat
+captures or mislabel untraced resources as unused. Keep the 23 dungeon/well
+configured candidates from 5d51d25 in the finite candidate reconciliation.
+Remaining feature roles and entry/hook dispositions still precede provider
+closure. Final canonical count, attributes and review/main merge remain open.
+This turn delivered a verified evidence partition; no blocker exists.
+
 Latest Repurposed candidate increment 5d51d25 is pushed and remote-ref
 verified. Census remains 74 resolved providers, 62 open. Repurposed Structures
 is OPEN. Source 452e33e preserves 45 entry, NBT feature/configuration, modifier,
