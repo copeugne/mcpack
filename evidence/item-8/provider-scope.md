@@ -9379,3 +9379,24 @@ SHA-256: 79129d05f74bb755e2ce3b847df40b51c03aac486ebd2429383e5359362410dc.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-designs-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-towns-designs-r2.json
 ```
+
+### Terralith encounter/cache design reconciliation, 2026-09-07
+
+Four records now bind existing template contents and component graphs. Spire is
+one connected assembly with loot and spawners in its base halves, not terrain
+alone. Frosted dungeon is a distinct deepslate chamber with a stray spawner.
+The underground hive templates are alternatives with dedicated loot barrels;
+the decorative hive lacks those cache contents and is not selected by this root.
+Both witch-hut roots share one template while preserving eligibility and spawn
+input differences. Neither names nor generation-step labels prove exposure.
+
+The affected existing case and scoped quality checks pass. Canonical-note backlog:
+101, down from 105 (IDAS 59, AdoraBuild 31, Terralith 11). Coverage groups remain
+405. No new capture or measurement was added. Remaining building and rubble
+comparisons, required attributes and nonregistry reconciliation remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```

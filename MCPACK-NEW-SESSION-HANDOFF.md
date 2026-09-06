@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Four Terralith design relationships are resolved: spire, frosted dungeon, hive
+cache and witch hut. Existing template/graph evidence and the affected case pass;
+scoped checks pass. Canonical-note backlog: 101 (IDAS 59, AdoraBuild 31, Terralith
+11). Coverage groups: 405. Inventory refresh follows. Remaining Terralith names:
+desert_outpost, glacial_hut, igloo, mage_complex, mage_tower, rubble, underground/
+mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin
+and valley_lodge. Attributes and 33 nonregistry contributions remain open.
+
 Inventory matches 420fe50f and reproduces exactly. Canonical-note backlog: 105
 (IDAS 59, AdoraBuild 31, Terralith 15). Coverage groups: 405. Next: Terralith
 design comparisons. Required attributes and 33 nonregistry contributions remain.
