@@ -1,0 +1,324 @@
+Compiled from "BiomeModificationRegistryImpl.java"
+public class org.betterx.wover.biome.impl.modification.BiomeModificationRegistryImpl {
+  public static final org.betterx.wover.events.impl.EventImpl<org.betterx.wover.events.api.types.OnBootstrapRegistry<org.betterx.wover.biome.api.modification.BiomeModification>> BOOTSTRAP_BIOME_MODIFICATION_REGISTRY;
+
+  private static boolean didInit;
+
+  public org.betterx.wover.biome.impl.modification.BiomeModificationRegistryImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void initialize();
+    Code:
+       0: getstatic     #9                  // Field didInit:Z
+       3: ifeq          7
+       6: return
+       7: iconst_1
+       8: putstatic     #9                  // Field didInit:Z
+      11: getstatic     #15                 // Field org/betterx/wover/biome/api/modification/BiomeModificationRegistry.BIOME_MODIFICATION_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+      14: getstatic     #21                 // Field org/betterx/wover/biome/api/modification/BiomeModification.CODEC:Lcom/mojang/serialization/Codec;
+      17: getstatic     #27                 // Field org/betterx/wover/biome/api/modification/BiomeModification.NETWORK_CODEC:Lcom/mojang/serialization/Codec;
+      20: invokedynamic #30,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      25: invokestatic  #34                 // Method org/betterx/wover/core/api/registry/DatapackRegistryBuilder.register:(Lnet/minecraft/resources/ResourceKey;Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Codec;Ljava/util/function/Consumer;)V
+      28: getstatic     #40                 // Field org/betterx/wover/events/api/WorldLifecycle.MINECRAFT_SERVER_READY:Lorg/betterx/wover/events/api/Event;
+      31: invokedynamic #46,  0             // InvokeDynamic #1:notify:()Lorg/betterx/wover/events/api/types/OnMinecraftServerReady;
+      36: ldc           #50                 // int 100000000
+      38: invokeinterface #51,  3           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;I)Z
+      43: pop
+      44: return
+
+  private static void onBootstrap(net.minecraft.data.worldgen.BootstrapContext<org.betterx.wover.biome.api.modification.BiomeModification>);
+    Code:
+       0: getstatic     #57                 // Field BOOTSTRAP_BIOME_MODIFICATION_REGISTRY:Lorg/betterx/wover/events/impl/EventImpl;
+       3: aload_0
+       4: invokedynamic #61,  0             // InvokeDynamic #2:accept:(Lnet/minecraft/data/worldgen/BootstrapContext;)Ljava/util/function/Consumer;
+       9: invokevirtual #64                 // Method org/betterx/wover/events/impl/EventImpl.emit:(Ljava/util/function/Consumer;)V
+      12: return
+
+  private static void whenReady(net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess, net.minecraft.server.packs.repository.PackRepository, net.minecraft.server.WorldStem);
+    Code:
+       0: invokestatic  #70                 // Method com/google/common/base/Stopwatch.createStarted:()Lcom/google/common/base/Stopwatch;
+       3: astore_3
+       4: invokestatic  #76                 // Method org/betterx/wover/state/api/WorldState.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+       7: astore        4
+       9: aload         4
+      11: getstatic     #15                 // Field org/betterx/wover/biome/api/modification/BiomeModificationRegistry.BIOME_MODIFICATION_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+      14: invokeinterface #82,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      19: aconst_null
+      20: invokevirtual #88                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #94                 // class net/minecraft/core/Registry
+      26: astore        5
+      28: aload         5
+      30: ifnonnull     45
+      33: getstatic     #96                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+      36: getfield      #102                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+      39: ldc           #108                // String Biome Modification Registry is missing. Cannot apply Biome Modifications.
+      41: invokevirtual #110                // Method org/betterx/wover/core/api/Logger.error:(Ljava/lang/String;)V
+      44: return
+      45: aload         4
+      47: getstatic     #116                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      50: invokeinterface #121,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      55: astore        6
+      57: aload         6
+      59: invokeinterface #125,  1          // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+      64: invokeinterface #129,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+      69: invokedynamic #135,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      74: invokeinterface #139,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      79: aload         6
+      81: invokedynamic #145,  0            // InvokeDynamic #4:applyAsInt:(Lnet/minecraft/core/Registry;)Ljava/util/function/ToIntFunction;
+      86: invokestatic  #149                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      89: invokeinterface #155,  2          // InterfaceMethod java/util/stream/Stream.sorted:(Ljava/util/Comparator;)Ljava/util/stream/Stream;
+      94: invokeinterface #159,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      99: astore        7
+     101: new           #163                // class org/betterx/wover/biome/impl/modification/BiomeTagModificationWorker
+     104: dup
+     105: invokespecial #165                // Method org/betterx/wover/biome/impl/modification/BiomeTagModificationWorker."<init>":()V
+     108: astore        8
+     110: aload         5
+     112: invokeinterface #166,  1          // InterfaceMethod net/minecraft/core/Registry.stream:()Ljava/util/stream/Stream;
+     117: invokeinterface #159,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     122: astore        9
+     124: iconst_0
+     125: istore        10
+     127: iconst_0
+     128: istore        11
+     130: iconst_0
+     131: istore        12
+     133: iconst_0
+     134: istore        13
+     136: aload         7
+     138: invokeinterface #167,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     143: astore        14
+     145: aload         14
+     147: invokeinterface #173,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     152: ifeq          434
+     155: aload         14
+     157: invokeinterface #179,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     162: checkcast     #183                // class net/minecraft/resources/ResourceKey
+     165: astore        15
+     167: aload         4
+     169: aload         15
+     171: invokestatic  #185                // Method org/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context.of:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context;
+     174: astore        16
+     176: aload         16
+     178: ifnonnull     207
+     181: getstatic     #96                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     184: getfield      #102                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     187: ldc           #191                // String Failed to get biome context for {}
+     189: iconst_1
+     190: anewarray     #4                  // class java/lang/Object
+     193: dup
+     194: iconst_0
+     195: aload         15
+     197: invokevirtual #193                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     200: aastore
+     201: invokevirtual #197                // Method org/betterx/wover/core/api/Logger.warn:(Ljava/lang/String;[Ljava/lang/Object;)V
+     204: goto          145
+     207: iinc          11, 1
+     210: aconst_null
+     211: astore        17
+     213: aconst_null
+     214: astore        18
+     216: iconst_0
+     217: istore        19
+     219: aload         9
+     221: invokeinterface #167,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     226: astore        20
+     228: aload         20
+     230: invokeinterface #173,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     235: ifeq          391
+     238: aload         20
+     240: invokeinterface #179,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     245: checkcast     #22                 // class org/betterx/wover/biome/api/modification/BiomeModification
+     248: astore        21
+     250: aload         21
+     252: invokeinterface #201,  1          // InterfaceMethod org/betterx/wover/biome/api/modification/BiomeModification.predicate:()Lorg/betterx/wover/biome/api/modification/predicates/BiomePredicate;
+     257: aload         16
+     259: invokeinterface #205,  2          // InterfaceMethod org/betterx/wover/biome/api/modification/predicates/BiomePredicate.test:(Lorg/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context;)Z
+     264: ifeq          388
+     267: aload         17
+     269: ifnonnull     288
+     272: new           #211                // class org/betterx/wover/biome/impl/modification/GenerationSettingsWorker
+     275: dup
+     276: aload         4
+     278: aload         16
+     280: getfield      #213                // Field org/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context.biome:Lnet/minecraft/world/level/biome/Biome;
+     283: invokespecial #217                // Method org/betterx/wover/biome/impl/modification/GenerationSettingsWorker."<init>":(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/biome/Biome;)V
+     286: astore        17
+     288: aload         18
+     290: ifnonnull     307
+     293: new           #220                // class org/betterx/wover/biome/impl/modification/MobSettingsWorker
+     296: dup
+     297: aload         16
+     299: getfield      #213                // Field org/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context.biome:Lnet/minecraft/world/level/biome/Biome;
+     302: invokespecial #222                // Method org/betterx/wover/biome/impl/modification/MobSettingsWorker."<init>":(Lnet/minecraft/world/level/biome/Biome;)V
+     305: astore        18
+     307: aload         21
+     309: invokeinterface #225,  1          // InterfaceMethod org/betterx/wover/biome/api/modification/BiomeModification.biomeTags:()Ljava/util/List;
+     314: ifnull        374
+     317: aload         21
+     319: invokeinterface #225,  1          // InterfaceMethod org/betterx/wover/biome/api/modification/BiomeModification.biomeTags:()Ljava/util/List;
+     324: invokeinterface #167,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     329: astore        22
+     331: aload         22
+     333: invokeinterface #173,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     338: ifeq          374
+     341: aload         22
+     343: invokeinterface #179,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     348: checkcast     #228                // class net/minecraft/tags/TagKey
+     351: astore        23
+     353: aload         8
+     355: aload         23
+     357: aload         16
+     359: invokevirtual #230                // Method org/betterx/wover/biome/impl/modification/BiomeTagModificationWorker.addBiomeToTag:(Lnet/minecraft/tags/TagKey;Lorg/betterx/wover/biome/api/modification/predicates/BiomePredicate$Context;)Z
+     362: ifeq          371
+     365: iinc          13, 1
+     368: iconst_1
+     369: istore        19
+     371: goto          331
+     374: aload         21
+     376: aload         17
+     378: aload         18
+     380: invokeinterface #234,  3          // InterfaceMethod org/betterx/wover/biome/api/modification/BiomeModification.apply:(Lorg/betterx/wover/biome/impl/modification/GenerationSettingsWorker;Lorg/betterx/wover/biome/impl/modification/MobSettingsWorker;)V
+     385: iinc          12, 1
+     388: goto          228
+     391: aload         17
+     393: ifnull        407
+     396: aload         17
+     398: invokevirtual #237                // Method org/betterx/wover/biome/impl/modification/GenerationSettingsWorker.finished:()Z
+     401: ifeq          407
+     404: iconst_1
+     405: istore        19
+     407: aload         18
+     409: ifnull        423
+     412: aload         18
+     414: invokevirtual #240                // Method org/betterx/wover/biome/impl/modification/MobSettingsWorker.finished:()Z
+     417: ifeq          423
+     420: iconst_1
+     421: istore        19
+     423: iload         19
+     425: ifeq          431
+     428: iinc          10, 1
+     431: goto          145
+     434: aload         8
+     436: invokevirtual #241                // Method org/betterx/wover/biome/impl/modification/BiomeTagModificationWorker.finished:()Z
+     439: pop
+     440: iload         13
+     442: ifle          469
+     445: aload         4
+     447: getstatic     #242                // Field net/minecraft/core/registries/Registries.LEVEL_STEM:Lnet/minecraft/resources/ResourceKey;
+     450: invokeinterface #121,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     455: astore        14
+     457: aload         14
+     459: invokedynamic #245,  0            // InvokeDynamic #5:accept:()Ljava/util/function/Consumer;
+     464: invokeinterface #246,  2          // InterfaceMethod net/minecraft/core/Registry.forEach:(Ljava/util/function/Consumer;)V
+     469: iload         11
+     471: ifle          552
+     474: aload         4
+     476: getstatic     #242                // Field net/minecraft/core/registries/Registries.LEVEL_STEM:Lnet/minecraft/resources/ResourceKey;
+     479: invokeinterface #121,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     484: astore        14
+     486: aload         14
+     488: invokedynamic #249,  0            // InvokeDynamic #6:accept:()Ljava/util/function/Consumer;
+     493: invokeinterface #246,  2          // InterfaceMethod net/minecraft/core/Registry.forEach:(Ljava/util/function/Consumer;)V
+     498: getstatic     #96                 // Field org/betterx/wover/entrypoint/LibWoverBiome.C:Lorg/betterx/wover/core/api/ModCore;
+     501: getfield      #102                // Field org/betterx/wover/core/api/ModCore.log:Lorg/betterx/wover/core/api/Logger;
+     504: ldc           #250                // String Applied {} biome modifications and added {} tags to {} of {} biomes in {}
+     506: iconst_5
+     507: anewarray     #4                  // class java/lang/Object
+     510: dup
+     511: iconst_0
+     512: iload         12
+     514: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     517: aastore
+     518: dup
+     519: iconst_1
+     520: iload         13
+     522: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     525: aastore
+     526: dup
+     527: iconst_2
+     528: iload         10
+     530: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     533: aastore
+     534: dup
+     535: iconst_3
+     536: iload         11
+     538: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     541: aastore
+     542: dup
+     543: iconst_4
+     544: aload_3
+     545: invokevirtual #258                // Method com/google/common/base/Stopwatch.stop:()Lcom/google/common/base/Stopwatch;
+     548: aastore
+     549: invokevirtual #261                // Method org/betterx/wover/core/api/Logger.info:(Ljava/lang/String;[Ljava/lang/Object;)V
+     552: return
+
+  public static net.minecraft.resources.ResourceKey<org.betterx.wover.biome.api.modification.BiomeModification> createKey(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #15                 // Field org/betterx/wover/biome/api/modification/BiomeModificationRegistry.BIOME_MODIFICATION_REGISTRY:Lnet/minecraft/resources/ResourceKey;
+       3: aload_0
+       4: invokestatic  #264                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+       7: areturn
+
+  private static void lambda$whenReady$3(net.minecraft.world.level.dimension.LevelStem);
+    Code:
+       0: aload_0
+       1: invokevirtual #268                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       4: astore_2
+       5: aload_2
+       6: instanceof    #274                // class org/betterx/wover/common/generator/api/chunkgenerator/RebuildableFeaturesPerStep
+       9: ifeq          23
+      12: aload_2
+      13: checkcast     #274                // class org/betterx/wover/common/generator/api/chunkgenerator/RebuildableFeaturesPerStep
+      16: astore_1
+      17: aload_1
+      18: invokeinterface #276,  1          // InterfaceMethod org/betterx/wover/common/generator/api/chunkgenerator/RebuildableFeaturesPerStep.wover_rebuildFeaturesPerStep:()V
+      23: return
+
+  private static void lambda$whenReady$2(net.minecraft.world.level.dimension.LevelStem);
+    Code:
+       0: aload_0
+       1: invokevirtual #268                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       4: invokevirtual #279                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+       7: astore_2
+       8: aload_2
+       9: instanceof    #285                // class org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource
+      12: ifeq          26
+      15: aload_2
+      16: checkcast     #285                // class org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource
+      19: astore_1
+      20: aload_1
+      21: invokeinterface #287,  1          // InterfaceMethod org/betterx/wover/common/generator/api/biomesource/ReloadableBiomeSource.reloadBiomes:()V
+      26: return
+
+  private static int lambda$whenReady$1(net.minecraft.core.Registry, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_1
+       3: invokeinterface #290,  2          // InterfaceMethod net/minecraft/core/Registry.getOrThrow:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+       8: checkcast     #294                // class net/minecraft/world/level/biome/Biome
+      11: invokeinterface #296,  2          // InterfaceMethod net/minecraft/core/Registry.getId:(Ljava/lang/Object;)I
+      16: ireturn
+
+  private static void lambda$onBootstrap$0(net.minecraft.data.worldgen.BootstrapContext, org.betterx.wover.events.api.types.OnBootstrapRegistry);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #300,  2          // InterfaceMethod org/betterx/wover/events/api/types/OnBootstrapRegistry.bootstrap:(Lnet/minecraft/data/worldgen/BootstrapContext;)V
+       7: return
+
+  static {};
+    Code:
+       0: new           #65                 // class org/betterx/wover/events/impl/EventImpl
+       3: dup
+       4: ldc_w         #306                // String BOOTSTRAP_BIOME_MODIFICATION_REGISTRY
+       7: invokespecial #307                // Method org/betterx/wover/events/impl/EventImpl."<init>":(Ljava/lang/String;)V
+      10: putstatic     #57                 // Field BOOTSTRAP_BIOME_MODIFICATION_REGISTRY:Lorg/betterx/wover/events/impl/EventImpl;
+      13: iconst_0
+      14: putstatic     #9                  // Field didInit:Z
+      17: return
+}
