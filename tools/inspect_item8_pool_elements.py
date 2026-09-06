@@ -38,6 +38,7 @@ ARCHIVES = frozenset(
         "cristellib-neoforge-1.21.1-3.1.7.jar",
         "ranged_weapon_api-neoforge-2.3.3+1.21.1.jar",
         "quickrightclick-1.21.1-1.9.jar",
+        "collective-1.21.1-8.25.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -207,6 +208,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/collective/neoforge/mixin/plugin/NeoForgeMixinConfigPlugin.class",
     "com/natamus/quickrightclick_common_neoforge/features/BedBlockFeature.class",
     "com/natamus/quickrightclick_common_neoforge/features/ShulkerBoxFeature.class",
     "com/natamus/quickrightclick_common_neoforge/util/Util.class",
