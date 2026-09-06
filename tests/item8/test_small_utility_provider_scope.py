@@ -740,3 +740,51 @@ def test_cloth_config_membership_payload() -> None:
         assert row["class_sha256"] == hashlib.sha256(archive.read(entry)).hexdigest()
         assert row["disassembly_sha256"] == hashlib.sha256(
             (directory / row["disassembly"]).read_bytes()).hexdigest()
+
+
+def test_ranged_weapon_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "ranged_weapon_api-neoforge-2.3.3+1.21.1.jar")
+    assert source.sha256 == "49f439f6b771aeecebeeacc1e920761ba75a8da6ce71026e18412af06ec66405"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    prefix = "net/fabric_extras/ranged_weapon/"
+    entries = {prefix + "neoforge/NeoForgeMod.class",
+               prefix + "neoforge/client/NeoForgeClientMod.class"}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 54
+        assert files - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "ranged_weapon_api-common-common-refmap.json", "ranged_weapon_api.mixins.json",
+            "assets/ranged_weapon/icon.png",
+            *(f"assets/ranged_weapon/lang/{n}.json" for n in (
+                "en_us", "es_ar", "es_es", "it_it", "ko_kr", "ru_ru", "zh_cn")),
+            *(f"assets/ranged_weapon/textures/mob_effect/{n}.png" for n in ("damage", "haste"))}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "ranged_weapon_api.mixins.json"}]
+        config = cast("dict[str, JsonValue]",
+                      json.loads(archive.read("ranged_weapon_api.mixins.json")))
+        assert config["package"] == "net.fabric_extras.ranged_weapon.mixin"
+        assert not any(config.get(k) for k in ("plugin", "server"))
+        assert len(cast("list[str]", config["mixins"])) == 10
+        assert len(cast("list[str]", config["client"])) == 6
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == entries
+        expected = entries | {prefix + "RangedWeaponMod.class"}
+        expected.update(prefix + "mixin/" + n.replace(".", "/") + ".class"
+                        for n in cast("list[str]", config["mixins"]))
+        directory = Path("evidence/item-8/sources/ranged-weapon-provider")
+        raw = (directory / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "cfab4d2f0e3c4e1b4d4139deea58158c0ed58aaba43ab05f6dd0f299cd86a84f")
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert {row["class"] for row in rows} == expected
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert row["disassembly_sha256"] == hashlib.sha256(
+                (directory / row["disassembly"]).read_bytes()).hexdigest()
