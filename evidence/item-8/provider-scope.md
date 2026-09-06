@@ -704,6 +704,32 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Retained integration entries are captured in 11b6396 (extractor 5355d74),
+manifest 1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3.
+All eight class/disassembly identities and the existing runtime log are bound by
+the focused provider test; independent r1 matches every generated file.
+
+| Entry | Membership role |
+| --- | --- |
+| CreateCompat and CreateCompatImpl | init is empty; setup registers bamboo-spike and hourglass movement behaviors for existing contraptions. No independent structure registration. Preserve the dispatcher's platform condition rather than inferring activation from the mod name. |
+| CCCompat and CCCompatImpl | Registers speaker/cannon capabilities and a capability event callback for their existing block entities. No independent authored-site generator. |
+| CuriosCompat | Registers the Curio slot-reference codec; other helpers inspect equipped keys and quivers. Inventory compatibility. |
+| FarmersDelightCompat | init is empty. Its other helpers handle existing crop/block and food interactions. No initialization-time family contribution. |
+| QuarkCompat and QuarkCompatImpl | Registers Tater-in-a-Jar block/item/block-entity compatibility and subscribes to the Quark load bus. Other helpers address existing pistons, blocks, inventories and items. The tag-based quill method reads the structure tag then calls a holder-set overload that returns null; do not claim a generated quill or discoverability behavior from its name. |
+
+The preserved runtime log lists create, computercraft, farmersdelight, quark and
+curios. It does not list soul_fire_d, shulkerboxtooltip, decorative_blocks,
+endergetic, caverns_and_chasms, infernalexp, architects_palette or trinkets.
+Soul-fired dispatch is also hard-coded false in the captured CompatHandler
+initializer. Trinkets is not yet excluded by its missing mod ID: its dispatcher
+also tests dev.emi.trinkets.api.TrinketsApi class presence. Resolve that concrete
+fallback or the delegate's membership role before closing compatibility coverage.
+
+Three focused cases pass (0.89s); scoped Ruff and Basedpyright pass. Remaining
+provider work is the Trinkets boundary, MixinSquared, remaining common/mixin
+roles and complete parent payload accounting. Do not repeat these integration
+captures or infer Item 8 attribute completion. Census remains 78 resolved, 58 open.
+
 Common setup dispatch is now retained in 6bfcf37 (extractor 9e9c74b), manifest
 cbab9d898accfb9bedc9ab98c56e9b85f08747a062353dd8350d5699dbfad049.
 Its bootstrap targets bind the registered setup, asyncSetup and tag-dependent

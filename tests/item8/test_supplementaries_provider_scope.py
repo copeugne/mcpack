@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
 
 from mcpack_evidence.item8_inventory import resource_identity
+from mcpack_evidence.item8_resource_selection import runtime_mod_ids
 from mcpack_evidence.item8_sources import retained_sources
 
 if TYPE_CHECKING:
@@ -138,6 +139,8 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
          "cbab9d898accfb9bedc9ab98c56e9b85f08747a062353dd8350d5699dbfad049"),
         ("supplementaries-setup-delegates", 2,
          "3a14ffe0a11a67a2cb31b7825dce2fe1bdef83b644754f89816a63558144b58a"),
+        ("supplementaries-integrations", 8,
+         "1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3"),
     ):
         capture_directory = Path("evidence/item-8/sources") / name
         raw = (capture_directory / "identities.json").read_bytes()
@@ -178,6 +181,16 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     assert config["redstone"]["turn_table"]["enabled"] is True
     assert config["functional"]["rope"]["enabled"] is True
     assert config["building"]["sconce"]["enabled"] is True
+    log = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(log).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
+    )
+    mods = set(runtime_mod_ids(log.decode()))
+    assert {"create", "computercraft", "farmersdelight", "quark", "curios"} <= mods
+    assert not mods & {
+        "soul_fire_d", "shulkerboxtooltip", "decorative_blocks", "endergetic",
+        "caverns_and_chasms", "infernalexp", "architects_palette", "trinkets",
+    }
 
 
 def test_supplementaries_bundled_companion_service() -> None:
