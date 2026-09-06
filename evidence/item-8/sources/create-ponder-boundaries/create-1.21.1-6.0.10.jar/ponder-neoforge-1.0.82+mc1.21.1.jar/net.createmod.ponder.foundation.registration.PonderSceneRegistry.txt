@@ -1,0 +1,291 @@
+Compiled from "PonderSceneRegistry.java"
+public class net.createmod.ponder.foundation.registration.PonderSceneRegistry implements net.createmod.ponder.api.registration.SceneRegistryAccess {
+  private final net.createmod.ponder.foundation.registration.PonderLocalization localization;
+
+  private final com.google.common.collect.Multimap<net.minecraft.resources.ResourceLocation, net.createmod.ponder.api.registration.StoryBoardEntry> scenes;
+
+  private boolean allowRegistration;
+
+  public net.createmod.ponder.foundation.registration.PonderSceneRegistry(net.createmod.ponder.foundation.registration.PonderLocalization);
+    Code:
+       0: aload_0
+       1: invokespecial #34                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #36                 // Field allowRegistration:Z
+       9: aload_0
+      10: aload_1
+      11: putfield      #38                 // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+      14: aload_0
+      15: invokestatic  #44                 // Method com/google/common/collect/LinkedHashMultimap.create:()Lcom/google/common/collect/LinkedHashMultimap;
+      18: putfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+      21: return
+
+  public void clearRegistry();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+       4: invokeinterface #54,  1           // InterfaceMethod com/google/common/collect/Multimap.clear:()V
+       9: aload_0
+      10: iconst_1
+      11: putfield      #36                 // Field allowRegistration:Z
+      14: return
+
+  public void addStoryBoard(net.createmod.ponder.api.registration.StoryBoardEntry);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field allowRegistration:Z
+       4: ifne          17
+       7: new           #58                 // class java/lang/IllegalStateException
+      10: dup
+      11: ldc           #60                 // String Registration Phase has already ended!
+      13: invokespecial #63                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      16: athrow
+      17: aload_0
+      18: getfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+      21: aload_1
+      22: invokeinterface #69,  1           // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getComponent:()Lnet/minecraft/resources/ResourceLocation;
+      27: aload_1
+      28: invokeinterface #73,  3           // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      33: pop
+      34: return
+
+  public java.util.Collection<java.util.Map$Entry<net.minecraft.resources.ResourceLocation, net.createmod.ponder.api.registration.StoryBoardEntry>> getRegisteredEntries();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+       4: invokeinterface #81,  1           // InterfaceMethod com/google/common/collect/Multimap.entries:()Ljava/util/Collection;
+       9: areturn
+
+  public boolean doScenesExistForId(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+       4: aload_1
+       5: invokeinterface #87,  2           // InterfaceMethod com/google/common/collect/Multimap.containsKey:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  public java.util.List<net.createmod.ponder.foundation.PonderScene> compile(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: invokestatic  #98                 // Method net/createmod/ponder/foundation/PonderIndex.editingModeActive:()Z
+       3: ifeq          9
+       6: invokestatic  #101                // Method net/createmod/ponder/foundation/PonderIndex.reload:()V
+       9: aload_0
+      10: getfield      #46                 // Field scenes:Lcom/google/common/collect/Multimap;
+      13: aload_1
+      14: invokeinterface #105,  2          // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      19: astore_2
+      20: aload_2
+      21: invokeinterface #110,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+      26: ifeq          33
+      29: invokestatic  #116                // Method java/util/Collections.emptyList:()Ljava/util/List;
+      32: areturn
+      33: aload_0
+      34: aload_2
+      35: invokevirtual #119                // Method compile:(Ljava/util/Collection;)Ljava/util/List;
+      38: areturn
+
+  public java.util.List<net.createmod.ponder.foundation.PonderScene> compile(java.util.Collection<net.createmod.ponder.api.registration.StoryBoardEntry>);
+    Code:
+       0: invokestatic  #98                 // Method net/createmod/ponder/foundation/PonderIndex.editingModeActive:()Z
+       3: ifeq          16
+       6: aload_0
+       7: getfield      #38                 // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+      10: invokevirtual #127                // Method net/createmod/ponder/foundation/registration/PonderLocalization.clearShared:()V
+      13: invokestatic  #130                // Method net/createmod/ponder/foundation/PonderIndex.gatherSharedText:()V
+      16: new           #132                // class java/util/ArrayList
+      19: dup
+      20: invokespecial #133                // Method java/util/ArrayList."<init>":()V
+      23: astore_2
+      24: aload_1
+      25: invokeinterface #137,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      30: astore_3
+      31: aload_3
+      32: invokeinterface #144,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      37: ifeq          143
+      40: aload_3
+      41: invokeinterface #148,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #65                 // class net/createmod/ponder/api/registration/StoryBoardEntry
+      49: astore        4
+      51: aload         4
+      53: invokeinterface #151,  1          // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getSchematicLocation:()Lnet/minecraft/resources/ResourceLocation;
+      58: invokestatic  #155                // Method loadSchematic:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      61: astore        5
+      63: new           #157                // class net/createmod/ponder/api/level/PonderLevel
+      66: dup
+      67: getstatic     #163                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      70: invokestatic  #169                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      73: getfield      #173                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+      76: invokespecial #176                // Method net/createmod/ponder/api/level/PonderLevel."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/Level;)V
+      79: astore        6
+      81: aload         5
+      83: aload         6
+      85: getstatic     #163                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      88: getstatic     #163                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      91: new           #178                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+      94: dup
+      95: invokespecial #179                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+      98: aload         6
+     100: getfield      #183                // Field net/createmod/ponder/api/level/PonderLevel.random:Lnet/minecraft/util/RandomSource;
+     103: iconst_2
+     104: invokevirtual #189                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.placeInWorld:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/util/RandomSource;I)Z
+     107: pop
+     108: aload         6
+     110: invokevirtual #192                // Method net/createmod/ponder/api/level/PonderLevel.createBackup:()V
+     113: aload_0
+     114: getfield      #38                 // Field localization:Lnet/createmod/ponder/foundation/registration/PonderLocalization;
+     117: aload         4
+     119: aload         6
+     121: invokestatic  #196                // Method compileScene:(Lnet/createmod/ponder/foundation/registration/PonderLocalization;Lnet/createmod/ponder/api/registration/StoryBoardEntry;Lnet/createmod/ponder/api/level/PonderLevel;)Lnet/createmod/ponder/foundation/PonderScene;
+     124: astore        7
+     126: aload         7
+     128: invokevirtual #201                // Method net/createmod/ponder/foundation/PonderScene.begin:()V
+     131: aload_2
+     132: aload         7
+     134: invokeinterface #204,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     139: pop
+     140: goto          31
+     143: aload_2
+     144: areturn
+
+  public static net.createmod.ponder.foundation.PonderScene compileScene(net.createmod.ponder.foundation.registration.PonderLocalization, net.createmod.ponder.api.registration.StoryBoardEntry, net.createmod.ponder.api.level.PonderLevel);
+    Code:
+       0: new           #198                // class net/createmod/ponder/foundation/PonderScene
+       3: dup
+       4: aload_2
+       5: aload_0
+       6: aload_1
+       7: invokeinterface #217,  1          // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getNamespace:()Ljava/lang/String;
+      12: aload_1
+      13: invokeinterface #69,  1           // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getComponent:()Lnet/minecraft/resources/ResourceLocation;
+      18: aload_1
+      19: invokeinterface #220,  1          // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getTags:()Ljava/util/List;
+      24: aload_1
+      25: invokeinterface #223,  1          // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getOrderingEntries:()Ljava/util/List;
+      30: invokespecial #226                // Method net/createmod/ponder/foundation/PonderScene."<init>":(Lnet/createmod/ponder/api/level/PonderLevel;Lnet/createmod/ponder/foundation/registration/PonderLocalization;Ljava/lang/String;Lnet/minecraft/resources/ResourceLocation;Ljava/util/Collection;Ljava/util/Collection;)V
+      33: astore_3
+      34: aload_3
+      35: invokevirtual #230                // Method net/createmod/ponder/foundation/PonderScene.builder:()Lnet/createmod/ponder/api/scene/SceneBuilder;
+      38: astore        4
+      40: aload_1
+      41: invokeinterface #234,  1          // InterfaceMethod net/createmod/ponder/api/registration/StoryBoardEntry.getBoard:()Lnet/createmod/ponder/api/scene/PonderStoryBoard;
+      46: aload         4
+      48: aload_3
+      49: invokevirtual #238                // Method net/createmod/ponder/foundation/PonderScene.getSceneBuildingUtil:()Lnet/createmod/ponder/api/scene/SceneBuildingUtil;
+      52: invokeinterface #244,  3          // InterfaceMethod net/createmod/ponder/api/scene/PonderStoryBoard.program:(Lnet/createmod/ponder/api/scene/SceneBuilder;Lnet/createmod/ponder/api/scene/SceneBuildingUtil;)V
+      57: aload_3
+      58: areturn
+
+  public static net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate loadSchematic(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: invokestatic  #169                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #250                // Method net/minecraft/client/Minecraft.getResourceManager:()Lnet/minecraft/server/packs/resources/ResourceManager;
+       6: aload_0
+       7: invokestatic  #253                // Method loadSchematic:(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      10: areturn
+
+  public static net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate loadSchematic(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_1
+       1: invokevirtual #261                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #264                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       9: invokedynamic #276,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      14: astore_3
+      15: aload_2
+      16: aload_3
+      17: invokestatic  #280                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      20: astore        4
+      22: aload_0
+      23: aload         4
+      25: invokeinterface #286,  2          // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.getResource:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+      30: astore        5
+      32: aload         5
+      34: invokevirtual #289                // Method java/util/Optional.isEmpty:()Z
+      37: ifeq          66
+      40: getstatic     #295                // Field net/createmod/ponder/Ponder.LOGGER:Lorg/apache/logging/log4j/Logger;
+      43: aload         4
+      45: invokestatic  #301                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      48: invokedynamic #304,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      53: invokeinterface #309,  2          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      58: new           #185                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+      61: dup
+      62: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate."<init>":()V
+      65: areturn
+      66: aload         5
+      68: invokevirtual #312                // Method java/util/Optional.get:()Ljava/lang/Object;
+      71: checkcast     #314                // class net/minecraft/server/packs/resources/Resource
+      74: astore        6
+      76: aload         6
+      78: invokevirtual #318                // Method net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+      81: astore        7
+      83: aload         7
+      85: invokestatic  #321                // Method loadSchematic:(Ljava/io/InputStream;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      88: astore        8
+      90: aload         7
+      92: ifnull        100
+      95: aload         7
+      97: invokevirtual #326                // Method java/io/InputStream.close:()V
+     100: aload         8
+     102: areturn
+     103: astore        8
+     105: aload         7
+     107: ifnull        127
+     110: aload         7
+     112: invokevirtual #326                // Method java/io/InputStream.close:()V
+     115: goto          127
+     118: astore        9
+     120: aload         8
+     122: aload         9
+     124: invokevirtual #330                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     127: aload         8
+     129: athrow
+     130: astore        7
+     132: getstatic     #295                // Field net/createmod/ponder/Ponder.LOGGER:Lorg/apache/logging/log4j/Logger;
+     135: aload         4
+     137: invokestatic  #301                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     140: invokedynamic #333,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     145: aload         7
+     147: invokeinterface #336,  3          // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     152: new           #185                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     155: dup
+     156: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate."<init>":()V
+     159: areturn
+    Exception table:
+       from    to  target type
+          83    90   103   Class java/lang/Throwable
+         110   115   118   Class java/lang/Throwable
+          76   100   130   Class java/io/IOException
+         103   130   130   Class java/io/IOException
+
+  public static net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate loadSchematic(java.io.InputStream) throws java.io.IOException;
+    Code:
+       0: new           #185                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+       3: dup
+       4: invokespecial #310                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate."<init>":()V
+       7: astore_1
+       8: new           #353                // class java/io/DataInputStream
+      11: dup
+      12: new           #355                // class java/io/BufferedInputStream
+      15: dup
+      16: new           #357                // class java/util/zip/GZIPInputStream
+      19: dup
+      20: aload_0
+      21: invokespecial #360                // Method java/util/zip/GZIPInputStream."<init>":(Ljava/io/InputStream;)V
+      24: invokespecial #361                // Method java/io/BufferedInputStream."<init>":(Ljava/io/InputStream;)V
+      27: invokespecial #362                // Method java/io/DataInputStream."<init>":(Ljava/io/InputStream;)V
+      30: astore_2
+      31: aload_2
+      32: ldc2_w        #363                // long 536870912l
+      35: invokestatic  #369                // Method net/minecraft/nbt/NbtAccounter.create:(J)Lnet/minecraft/nbt/NbtAccounter;
+      38: invokestatic  #375                // Method net/minecraft/nbt/NbtIo.read:(Ljava/io/DataInput;Lnet/minecraft/nbt/NbtAccounter;)Lnet/minecraft/nbt/CompoundTag;
+      41: astore_3
+      42: aload_1
+      43: getstatic     #381                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      46: invokeinterface #387,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.asLookup:()Lnet/minecraft/core/HolderLookup$RegistryLookup;
+      51: aload_3
+      52: invokevirtual #391                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.load:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/nbt/CompoundTag;)V
+      55: aload_1
+      56: areturn
+}

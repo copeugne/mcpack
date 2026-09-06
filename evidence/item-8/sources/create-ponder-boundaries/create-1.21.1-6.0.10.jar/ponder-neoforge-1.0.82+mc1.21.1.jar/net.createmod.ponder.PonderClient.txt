@@ -1,0 +1,127 @@
+Compiled from "PonderClient.java"
+public class net.createmod.ponder.PonderClient {
+  public static final net.createmod.catnip.event.ClientResourceReloadListener RESOURCE_RELOAD_LISTENER;
+
+  public static final net.createmod.catnip.ghostblock.GhostBlocks GHOST_BLOCKS;
+
+  public net.createmod.ponder.PonderClient();
+    Code:
+       0: aload_0
+       1: invokespecial #23                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: invokestatic  #30                 // Method net/createmod/catnip/render/SuperByteBufferCache.getInstance:()Lnet/createmod/catnip/render/SuperByteBufferCache;
+       3: getstatic     #36                 // Field net/createmod/catnip/render/CachedBuffers.GENERIC_BLOCK:Lnet/createmod/catnip/render/SuperByteBufferCache$Compartment;
+       6: invokevirtual #40                 // Method net/createmod/catnip/render/SuperByteBufferCache.registerCompartment:(Lnet/createmod/catnip/render/SuperByteBufferCache$Compartment;)V
+       9: invokestatic  #30                 // Method net/createmod/catnip/render/SuperByteBufferCache.getInstance:()Lnet/createmod/catnip/render/SuperByteBufferCache;
+      12: getstatic     #45                 // Field net/createmod/ponder/foundation/element/WorldSectionElementImpl.PONDER_WORLD_SECTION:Lnet/createmod/catnip/render/SuperByteBufferCache$Compartment;
+      15: invokevirtual #40                 // Method net/createmod/catnip/render/SuperByteBufferCache.registerCompartment:(Lnet/createmod/catnip/render/SuperByteBufferCache$Compartment;)V
+      18: invokestatic  #49                 // Method net/createmod/catnip/gui/UIRenderHelper.init:()V
+      21: ldc           #51                 // String openPonder
+      23: invokedynamic #70,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      28: invokestatic  #76                 // Method net/createmod/catnip/net/packets/ClientboundSimpleActionPacket.addAction:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      31: ldc           #78                 // String reloadPonder
+      33: invokedynamic #83,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      38: invokestatic  #76                 // Method net/createmod/catnip/net/packets/ClientboundSimpleActionPacket.addAction:(Ljava/lang/String;Ljava/util/function/Supplier;)V
+      41: new           #85                 // class net/createmod/ponder/foundation/content/BasePonderPlugin
+      44: dup
+      45: invokespecial #86                 // Method net/createmod/ponder/foundation/content/BasePonderPlugin."<init>":()V
+      48: invokestatic  #92                 // Method net/createmod/ponder/foundation/PonderIndex.addPlugin:(Lnet/createmod/ponder/api/registration/PonderPlugin;)V
+      51: getstatic     #98                 // Field net/createmod/catnip/platform/CatnipServices.PLATFORM:Lnet/createmod/catnip/platform/services/PlatformHelper;
+      54: invokeinterface #104,  1          // InterfaceMethod net/createmod/catnip/platform/services/PlatformHelper.isDevelopmentEnvironment:()Z
+      59: ifeq          72
+      62: new           #106                // class net/createmod/ponder/foundation/content/DebugPonderPlugin
+      65: dup
+      66: invokespecial #107                // Method net/createmod/ponder/foundation/content/DebugPonderPlugin."<init>":()V
+      69: invokestatic  #92                 // Method net/createmod/ponder/foundation/PonderIndex.addPlugin:(Lnet/createmod/ponder/api/registration/PonderPlugin;)V
+      72: return
+
+  public static void modLoadCompleted();
+    Code:
+       0: invokestatic  #111                // Method net/createmod/ponder/foundation/PonderIndex.registerAll:()V
+       3: return
+
+  public static void onTick();
+    Code:
+       0: invokestatic  #117                // Method net/createmod/catnip/animation/AnimationTickHolder.tick:()V
+       3: invokestatic  #120                // Method isGameActive:()Z
+       6: ifne          10
+       9: return
+      10: invokestatic  #123                // Method net/createmod/catnip/placement/PlacementClient.tick:()V
+      13: invokestatic  #128                // Method net/createmod/catnip/ghostblock/GhostBlocks.getInstance:()Lnet/createmod/catnip/ghostblock/GhostBlocks;
+      16: invokevirtual #131                // Method net/createmod/catnip/ghostblock/GhostBlocks.tickGhosts:()V
+      19: invokestatic  #136                // Method net/createmod/catnip/outliner/Outliner.getInstance:()Lnet/createmod/catnip/outliner/Outliner;
+      22: invokevirtual #139                // Method net/createmod/catnip/outliner/Outliner.tickOutlines:()V
+      25: return
+
+  public static void onRenderWorld(com.mojang.blaze3d.vertex.PoseStack);
+    Code:
+       0: invokestatic  #146                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: getfield      #150                // Field net/minecraft/client/Minecraft.gameRenderer:Lnet/minecraft/client/renderer/GameRenderer;
+       6: invokevirtual #156                // Method net/minecraft/client/renderer/GameRenderer.getMainCamera:()Lnet/minecraft/client/Camera;
+       9: invokevirtual #162                // Method net/minecraft/client/Camera.getPosition:()Lnet/minecraft/world/phys/Vec3;
+      12: astore_1
+      13: invokestatic  #166                // Method net/createmod/catnip/animation/AnimationTickHolder.getPartialTicks:()F
+      16: fstore_2
+      17: aload_0
+      18: invokevirtual #171                // Method com/mojang/blaze3d/vertex/PoseStack.pushPose:()V
+      21: invokestatic  #176                // Method net/createmod/catnip/render/DefaultSuperRenderTypeBuffer.getInstance:()Lnet/createmod/catnip/render/DefaultSuperRenderTypeBuffer;
+      24: astore_3
+      25: getstatic     #178                // Field GHOST_BLOCKS:Lnet/createmod/catnip/ghostblock/GhostBlocks;
+      28: aload_0
+      29: aload_3
+      30: aload_1
+      31: invokevirtual #182                // Method net/createmod/catnip/ghostblock/GhostBlocks.renderAll:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/world/phys/Vec3;)V
+      34: invokestatic  #136                // Method net/createmod/catnip/outliner/Outliner.getInstance:()Lnet/createmod/catnip/outliner/Outliner;
+      37: aload_0
+      38: aload_3
+      39: aload_1
+      40: fload_2
+      41: invokevirtual #186                // Method net/createmod/catnip/outliner/Outliner.renderOutlines:(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/createmod/catnip/render/SuperRenderTypeBuffer;Lnet/minecraft/world/phys/Vec3;F)V
+      44: aload_3
+      45: invokeinterface #191,  1          // InterfaceMethod net/createmod/catnip/render/SuperRenderTypeBuffer.draw:()V
+      50: aload_0
+      51: invokevirtual #194                // Method com/mojang/blaze3d/vertex/PoseStack.popPose:()V
+      54: return
+
+  public static void invalidateRenderers();
+    Code:
+       0: invokestatic  #30                 // Method net/createmod/catnip/render/SuperByteBufferCache.getInstance:()Lnet/createmod/catnip/render/SuperByteBufferCache;
+       3: invokevirtual #206                // Method net/createmod/catnip/render/SuperByteBufferCache.invalidate:()V
+       6: return
+
+  public static boolean isGameActive();
+    Code:
+       0: invokestatic  #146                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: getfield      #210                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+       6: ifnull        22
+       9: invokestatic  #146                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      12: getfield      #214                // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+      15: ifnull        22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ireturn
+
+  private static java.util.function.Consumer lambda$init$1();
+    Code:
+       0: invokedynamic #226,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+       5: areturn
+
+  private static java.util.function.Consumer lambda$init$0();
+    Code:
+       0: invokedynamic #230,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+       5: areturn
+
+  static {};
+    Code:
+       0: new           #233                // class net/createmod/catnip/event/ClientResourceReloadListener
+       3: dup
+       4: invokespecial #234                // Method net/createmod/catnip/event/ClientResourceReloadListener."<init>":()V
+       7: putstatic     #236                // Field RESOURCE_RELOAD_LISTENER:Lnet/createmod/catnip/event/ClientResourceReloadListener;
+      10: invokestatic  #128                // Method net/createmod/catnip/ghostblock/GhostBlocks.getInstance:()Lnet/createmod/catnip/ghostblock/GhostBlocks;
+      13: putstatic     #178                // Field GHOST_BLOCKS:Lnet/createmod/catnip/ghostblock/GhostBlocks;
+      16: return
+}

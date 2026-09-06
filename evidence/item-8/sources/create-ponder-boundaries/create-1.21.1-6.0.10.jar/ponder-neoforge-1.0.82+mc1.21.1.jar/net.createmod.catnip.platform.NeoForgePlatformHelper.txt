@@ -1,0 +1,109 @@
+Compiled from "NeoForgePlatformHelper.java"
+public class net.createmod.catnip.platform.NeoForgePlatformHelper implements net.createmod.catnip.platform.services.PlatformHelper {
+  public net.createmod.catnip.platform.NeoForgePlatformHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public net.createmod.catnip.platform.Loader getLoader();
+    Code:
+       0: getstatic     #26                 // Field net/createmod/catnip/platform/Loader.NEOFORGE:Lnet/createmod/catnip/platform/Loader;
+       3: areturn
+
+  public net.createmod.catnip.platform.Env getEnv();
+    Code:
+       0: invokestatic  #34                 // Method net/neoforged/fml/loading/FMLLoader.getDist:()Lnet/neoforged/api/distmarker/Dist;
+       3: getstatic     #40                 // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+       6: if_acmpne     15
+       9: getstatic     #45                 // Field net/createmod/catnip/platform/Env.CLIENT:Lnet/createmod/catnip/platform/Env;
+      12: goto          18
+      15: getstatic     #48                 // Field net/createmod/catnip/platform/Env.SERVER:Lnet/createmod/catnip/platform/Env;
+      18: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #56                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #59                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #66                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public java.util.List<java.lang.String> getLoadedMods();
+    Code:
+       0: new           #71                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #72                 // Method java/util/ArrayList."<init>":()V
+       7: astore_1
+       8: invokestatic  #56                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      11: invokevirtual #75                 // Method net/neoforged/fml/ModList.getMods:()Ljava/util/List;
+      14: invokeinterface #81,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      19: astore_2
+      20: aload_2
+      21: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          55
+      29: aload_2
+      30: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #92                 // class net/neoforged/neoforgespi/language/IModInfo
+      38: astore_3
+      39: aload_1
+      40: aload_3
+      41: invokeinterface #96,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+      46: invokeinterface #100,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      51: pop
+      52: goto          20
+      55: aload_1
+      56: areturn
+
+  public java.lang.String getModDisplayName(java.lang.String);
+    Code:
+       0: invokestatic  #56                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #111                // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+       7: invokedynamic #130,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      12: invokevirtual #136                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      15: aload_1
+      16: invokestatic  #141                // Method net/createmod/catnip/config/ui/ConfigScreen.toHumanReadable:(Ljava/lang/String;)Ljava/lang/String;
+      19: invokevirtual #144                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      22: checkcast     #146                // class java/lang/String
+      25: areturn
+
+  public void executeOnClientOnly(java.util.function.Supplier<java.lang.Runnable>);
+    Code:
+       0: getstatic     #155                // Field net/createmod/catnip/platform/CatnipServices.PLATFORM:Lnet/createmod/catnip/platform/services/PlatformHelper;
+       3: invokeinterface #157,  1          // InterfaceMethod net/createmod/catnip/platform/services/PlatformHelper.getEnv:()Lnet/createmod/catnip/platform/Env;
+       8: invokevirtual #160                // Method net/createmod/catnip/platform/Env.isClient:()Z
+      11: ifeq          28
+      14: aload_1
+      15: invokeinterface #164,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      20: checkcast     #166                // class java/lang/Runnable
+      23: invokeinterface #169,  1          // InterfaceMethod java/lang/Runnable.run:()V
+      28: return
+
+  public void executeOnServerOnly(java.util.function.Supplier<java.lang.Runnable>);
+    Code:
+       0: getstatic     #155                // Field net/createmod/catnip/platform/CatnipServices.PLATFORM:Lnet/createmod/catnip/platform/services/PlatformHelper;
+       3: invokeinterface #157,  1          // InterfaceMethod net/createmod/catnip/platform/services/PlatformHelper.getEnv:()Lnet/createmod/catnip/platform/Env;
+       8: invokevirtual #176                // Method net/createmod/catnip/platform/Env.isServer:()Z
+      11: ifeq          28
+      14: aload_1
+      15: invokeinterface #164,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      20: checkcast     #166                // class java/lang/Runnable
+      23: invokeinterface #169,  1          // InterfaceMethod java/lang/Runnable.run:()V
+      28: return
+
+  private static java.lang.String lambda$getModDisplayName$0(net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: invokevirtual #182                // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+       4: invokeinterface #185,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDisplayName:()Ljava/lang/String;
+       9: areturn
+}

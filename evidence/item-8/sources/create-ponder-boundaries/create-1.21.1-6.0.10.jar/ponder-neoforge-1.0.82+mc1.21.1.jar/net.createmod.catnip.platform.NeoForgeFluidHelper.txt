@@ -1,0 +1,119 @@
+Compiled from "NeoForgeFluidHelper.java"
+public class net.createmod.catnip.platform.NeoForgeFluidHelper implements net.createmod.catnip.platform.services.ModFluidHelper<net.neoforged.neoforge.fluids.FluidStack> {
+  public net.createmod.catnip.platform.NeoForgeFluidHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public int getColor(net.neoforged.neoforge.fluids.FluidStack, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #27                 // Method net/neoforged/neoforge/fluids/FluidStack.getFluid:()Lnet/minecraft/world/level/material/Fluid;
+       4: astore        4
+       6: aload         4
+       8: invokestatic  #33                 // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions.of:(Lnet/minecraft/world/level/material/Fluid;)Lnet/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions;
+      11: astore        5
+      13: aload_2
+      14: ifnull        21
+      17: aload_3
+      18: ifnonnull     30
+      21: aload         5
+      23: aload_1
+      24: invokeinterface #39,  2           // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions.getTintColor:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+      29: ireturn
+      30: aload         5
+      32: aload         4
+      34: invokevirtual #43                 // Method net/minecraft/world/level/material/Fluid.defaultFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      37: aload_2
+      38: aload_3
+      39: invokeinterface #46,  4           // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions.getTintColor:(Lnet/minecraft/world/level/material/FluidState;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;)I
+      44: ireturn
+
+  public int getLuminosity(net.neoforged.neoforge.fluids.FluidStack);
+    Code:
+       0: aload_1
+       1: invokevirtual #27                 // Method net/neoforged/neoforge/fluids/FluidStack.getFluid:()Lnet/minecraft/world/level/material/Fluid;
+       4: invokevirtual #61                 // Method net/minecraft/world/level/material/Fluid.getFluidType:()Lnet/neoforged/neoforge/fluids/FluidType;
+       7: invokevirtual #67                 // Method net/neoforged/neoforge/fluids/FluidType.getLightLevel:()I
+      10: ireturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getStillTexture(net.neoforged.neoforge.fluids.FluidStack);
+    Code:
+       0: aload_1
+       1: invokevirtual #27                 // Method net/neoforged/neoforge/fluids/FluidStack.getFluid:()Lnet/minecraft/world/level/material/Fluid;
+       4: invokestatic  #33                 // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions.of:(Lnet/minecraft/world/level/material/Fluid;)Lnet/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions;
+       7: aload_1
+       8: invokeinterface #72,  2           // InterfaceMethod net/neoforged/neoforge/client/extensions/common/IClientFluidTypeExtensions.getStillTexture:(Lnet/neoforged/neoforge/fluids/FluidStack;)Lnet/minecraft/resources/ResourceLocation;
+      13: astore_2
+      14: aload_2
+      15: ifnonnull     22
+      18: aconst_null
+      19: goto          40
+      22: invokestatic  #80                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+      25: getstatic     #86                 // Field net/minecraft/world/inventory/InventoryMenu.BLOCK_ATLAS:Lnet/minecraft/resources/ResourceLocation;
+      28: invokevirtual #90                 // Method net/minecraft/client/Minecraft.getTextureAtlas:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/function/Function;
+      31: aload_2
+      32: invokeinterface #96,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      37: checkcast     #98                 // class net/minecraft/client/renderer/texture/TextureAtlasSprite
+      40: areturn
+
+  public boolean isLighterThanAir(net.neoforged.neoforge.fluids.FluidStack);
+    Code:
+       0: aload_1
+       1: invokevirtual #27                 // Method net/neoforged/neoforge/fluids/FluidStack.getFluid:()Lnet/minecraft/world/level/material/Fluid;
+       4: invokevirtual #61                 // Method net/minecraft/world/level/material/Fluid.getFluidType:()Lnet/neoforged/neoforge/fluids/FluidType;
+       7: invokevirtual #104                // Method net/neoforged/neoforge/fluids/FluidType.isLighterThanAir:()Z
+      10: ireturn
+
+  public net.neoforged.neoforge.fluids.FluidStack toStack(net.minecraft.world.level.material.FluidState);
+    Code:
+       0: new           #23                 // class net/neoforged/neoforge/fluids/FluidStack
+       3: dup
+       4: aload_1
+       5: invokevirtual #111                // Method net/minecraft/world/level/material/FluidState.getType:()Lnet/minecraft/world/level/material/Fluid;
+       8: sipush        1000
+      11: invokespecial #114                // Method net/neoforged/neoforge/fluids/FluidStack."<init>":(Lnet/minecraft/world/level/material/Fluid;I)V
+      14: areturn
+
+  public java.lang.Object toStack(net.minecraft.world.level.material.FluidState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #119                // Method toStack:(Lnet/minecraft/world/level/material/FluidState;)Lnet/neoforged/neoforge/fluids/FluidStack;
+       5: areturn
+
+  public boolean isLighterThanAir(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #23                 // class net/neoforged/neoforge/fluids/FluidStack
+       5: invokevirtual #122                // Method isLighterThanAir:(Lnet/neoforged/neoforge/fluids/FluidStack;)Z
+       8: ireturn
+
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getStillTexture(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #23                 // class net/neoforged/neoforge/fluids/FluidStack
+       5: invokevirtual #125                // Method getStillTexture:(Lnet/neoforged/neoforge/fluids/FluidStack;)Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
+       8: areturn
+
+  public int getLuminosity(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #23                 // class net/neoforged/neoforge/fluids/FluidStack
+       5: invokevirtual #128                // Method getLuminosity:(Lnet/neoforged/neoforge/fluids/FluidStack;)I
+       8: ireturn
+
+  public int getColor(java.lang.Object, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #23                 // class net/neoforged/neoforge/fluids/FluidStack
+       5: aload_2
+       6: aload_3
+       7: invokevirtual #131                // Method getColor:(Lnet/neoforged/neoforge/fluids/FluidStack;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;)I
+      10: ireturn
+}
