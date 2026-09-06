@@ -1,0 +1,471 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.class
+  Last modified Apr 21, 2026; size 6789 bytes
+  SHA-256 checksum 7ad9188e380b304fc655572458b777403c9f53382934383795600ffb2fed36d7
+  Compiled from "BlockPosFormatAndRenamesFixMixin.java"
+public abstract class com.simibubi.create.foundation.mixin.datafixer.BlockPosFormatAndRenamesFixMixin extends com.mojang.datafixers.DataFix
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #44                         // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin
+  super_class: #2                         // com/mojang/datafixers/DataFix
+  interfaces: 0, fields: 0, methods: 6, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // com/mojang/datafixers/DataFix."<init>":(Lcom/mojang/datafixers/schemas/Schema;Z)V
+    #2 = Class              #4            // com/mojang/datafixers/DataFix
+    #3 = NameAndType        #5:#6         // "<init>":(Lcom/mojang/datafixers/schemas/Schema;Z)V
+    #4 = Utf8               com/mojang/datafixers/DataFix
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lcom/mojang/datafixers/schemas/Schema;Z)V
+    #7 = Fieldref           #8.#9         // com/simibubi/create/foundation/utility/DataFixerHelper.BLOCK_POS_FIXERS_VIEW:Ljava/util/Set;
+    #8 = Class              #10           // com/simibubi/create/foundation/utility/DataFixerHelper
+    #9 = NameAndType        #11:#12       // BLOCK_POS_FIXERS_VIEW:Ljava/util/Set;
+   #10 = Utf8               com/simibubi/create/foundation/utility/DataFixerHelper
+   #11 = Utf8               BLOCK_POS_FIXERS_VIEW
+   #12 = Utf8               Ljava/util/Set;
+   #13 = InterfaceMethodref #14.#15       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #14 = Class              #16           // java/util/Set
+   #15 = NameAndType        #17:#18       // iterator:()Ljava/util/Iterator;
+   #16 = Utf8               java/util/Set
+   #17 = Utf8               iterator
+   #18 = Utf8               ()Ljava/util/Iterator;
+   #19 = InterfaceMethodref #20.#21       // java/util/Iterator.hasNext:()Z
+   #20 = Class              #22           // java/util/Iterator
+   #21 = NameAndType        #23:#24       // hasNext:()Z
+   #22 = Utf8               java/util/Iterator
+   #23 = Utf8               hasNext
+   #24 = Utf8               ()Z
+   #25 = InterfaceMethodref #20.#26       // java/util/Iterator.next:()Ljava/lang/Object;
+   #26 = NameAndType        #27:#28       // next:()Ljava/lang/Object;
+   #27 = Utf8               next
+   #28 = Utf8               ()Ljava/lang/Object;
+   #29 = Class              #30           // com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer
+   #30 = Utf8               com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer
+   #31 = Methodref          #29.#32       // com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.reference:()Lcom/mojang/datafixers/DSL$TypeReference;
+   #32 = NameAndType        #33:#34       // reference:()Lcom/mojang/datafixers/DSL$TypeReference;
+   #33 = Utf8               reference
+   #34 = Utf8               ()Lcom/mojang/datafixers/DSL$TypeReference;
+   #35 = Methodref          #29.#36       // com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.id:()Ljava/lang/String;
+   #36 = NameAndType        #37:#38       // id:()Ljava/lang/String;
+   #37 = Utf8               id
+   #38 = Utf8               ()Ljava/lang/String;
+   #39 = Methodref          #29.#40       // com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.customFixer:()Ljava/util/function/Function;
+   #40 = NameAndType        #41:#42       // customFixer:()Ljava/util/function/Function;
+   #41 = Utf8               customFixer
+   #42 = Utf8               ()Ljava/util/function/Function;
+   #43 = Methodref          #44.#45       // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.getInputSchema:()Lcom/mojang/datafixers/schemas/Schema;
+   #44 = Class              #46           // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin
+   #45 = NameAndType        #47:#48       // getInputSchema:()Lcom/mojang/datafixers/schemas/Schema;
+   #46 = Utf8               com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin
+   #47 = Utf8               getInputSchema
+   #48 = Utf8               ()Lcom/mojang/datafixers/schemas/Schema;
+   #49 = Methodref          #50.#51       // com/mojang/datafixers/schemas/Schema.getChoiceType:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;)Lcom/mojang/datafixers/types/Type;
+   #50 = Class              #52           // com/mojang/datafixers/schemas/Schema
+   #51 = NameAndType        #53:#54       // getChoiceType:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;)Lcom/mojang/datafixers/types/Type;
+   #52 = Utf8               com/mojang/datafixers/schemas/Schema
+   #53 = Utf8               getChoiceType
+   #54 = Utf8               (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;)Lcom/mojang/datafixers/types/Type;
+   #55 = InterfaceMethodref #56.#57       // com/mojang/datafixers/DSL.namedChoice:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;)Lcom/mojang/datafixers/OpticFinder;
+   #56 = Class              #58           // com/mojang/datafixers/DSL
+   #57 = NameAndType        #59:#60       // namedChoice:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;)Lcom/mojang/datafixers/OpticFinder;
+   #58 = Utf8               com/mojang/datafixers/DSL
+   #59 = Utf8               namedChoice
+   #60 = Utf8               (Ljava/lang/String;Lcom/mojang/datafixers/types/Type;)Lcom/mojang/datafixers/OpticFinder;
+   #61 = InterfaceMethodref #62.#63       // com/mojang/datafixers/DSL$TypeReference.typeName:()Ljava/lang/String;
+   #62 = Class              #64           // com/mojang/datafixers/DSL$TypeReference
+   #63 = NameAndType        #65:#38       // typeName:()Ljava/lang/String;
+   #64 = Utf8               com/mojang/datafixers/DSL$TypeReference
+   #65 = Utf8               typeName
+   #66 = InvokeDynamic      #0:#67        // #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   #67 = NameAndType        #68:#69       // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   #68 = Utf8               makeConcatWithConstants
+   #69 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   #70 = Methodref          #50.#71       // com/mojang/datafixers/schemas/Schema.getType:(Lcom/mojang/datafixers/DSL$TypeReference;)Lcom/mojang/datafixers/types/Type;
+   #71 = NameAndType        #72:#73       // getType:(Lcom/mojang/datafixers/DSL$TypeReference;)Lcom/mojang/datafixers/types/Type;
+   #72 = Utf8               getType
+   #73 = Utf8               (Lcom/mojang/datafixers/DSL$TypeReference;)Lcom/mojang/datafixers/types/Type;
+   #74 = InvokeDynamic      #1:#75        // #1:apply:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #75 = NameAndType        #76:#77       // apply:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #76 = Utf8               apply
+   #77 = Utf8               (Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #78 = Methodref          #44.#79       // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.fixTypeEverywhereTyped:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;Ljava/util/function/Function;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #79 = NameAndType        #80:#81       // fixTypeEverywhereTyped:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;Ljava/util/function/Function;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #80 = Utf8               fixTypeEverywhereTyped
+   #81 = Utf8               (Ljava/lang/String;Lcom/mojang/datafixers/types/Type;Ljava/util/function/Function;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #82 = Methodref          #29.#83       // com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.renames:()Ljava/util/Map;
+   #83 = NameAndType        #84:#85       // renames:()Ljava/util/Map;
+   #84 = Utf8               renames
+   #85 = Utf8               ()Ljava/util/Map;
+   #86 = Methodref          #44.#87       // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.createEntityFixer:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #87 = NameAndType        #88:#89       // createEntityFixer:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #88 = Utf8               createEntityFixer
+   #89 = Utf8               (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map;)Lcom/mojang/datafixers/TypeRewriteRule;
+   #90 = InterfaceMethodref #91.#92       // java/util/List.add:(Ljava/lang/Object;)Z
+   #91 = Class              #93           // java/util/List
+   #92 = NameAndType        #94:#95       // add:(Ljava/lang/Object;)Z
+   #93 = Utf8               java/util/List
+   #94 = Utf8               add
+   #95 = Utf8               (Ljava/lang/Object;)Z
+   #96 = InvokeDynamic      #2:#97        // #2:apply:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #97 = NameAndType        #76:#98       // apply:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #98 = Utf8               (Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+   #99 = Methodref          #100.#101     // com/mojang/datafixers/Typed.updateTyped:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+  #100 = Class              #102          // com/mojang/datafixers/Typed
+  #101 = NameAndType        #103:#104     // updateTyped:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+  #102 = Utf8               com/mojang/datafixers/Typed
+  #103 = Utf8               updateTyped
+  #104 = Utf8               (Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+  #105 = InterfaceMethodref #56.#106      // com/mojang/datafixers/DSL.remainderFinder:()Lcom/mojang/datafixers/OpticFinder;
+  #106 = NameAndType        #107:#108     // remainderFinder:()Lcom/mojang/datafixers/OpticFinder;
+  #107 = Utf8               remainderFinder
+  #108 = Utf8               ()Lcom/mojang/datafixers/OpticFinder;
+  #109 = InvokeDynamic      #3:#97        // #3:apply:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+  #110 = Methodref          #100.#111     // com/mojang/datafixers/Typed.update:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+  #111 = NameAndType        #112:#104     // update:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+  #112 = Utf8               update
+  #113 = InterfaceMethodref #114.#115     // java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+  #114 = Class              #116          // java/util/function/Function
+  #115 = NameAndType        #76:#117      // apply:(Ljava/lang/Object;)Ljava/lang/Object;
+  #116 = Utf8               java/util/function/Function
+  #117 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #118 = Class              #119          // com/mojang/serialization/Dynamic
+  #119 = Utf8               com/mojang/serialization/Dynamic
+  #120 = Utf8               Code
+  #121 = Utf8               LineNumberTable
+  #122 = Utf8               LocalVariableTable
+  #123 = Utf8               this
+  #124 = Utf8               Lcom/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin;
+  #125 = Utf8               outputSchema
+  #126 = Utf8               Lcom/mojang/datafixers/schemas/Schema;
+  #127 = Utf8               changesType
+  #128 = Utf8               Z
+  #129 = Utf8               Signature
+  #130 = Utf8               (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;)Lcom/mojang/datafixers/TypeRewriteRule;
+  #131 = Utf8               RuntimeVisibleAnnotations
+  #132 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #133 = Utf8               create$addFixers
+  #134 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Ljava/util/List;)V
+  #135 = Utf8               opticfinder
+  #136 = Utf8               Lcom/mojang/datafixers/OpticFinder;
+  #137 = Utf8               rule
+  #138 = Utf8               Lcom/mojang/datafixers/TypeRewriteRule;
+  #139 = Utf8               ref
+  #140 = Utf8               Lcom/mojang/datafixers/DSL$TypeReference;
+  #141 = Utf8               Ljava/lang/String;
+  #142 = Utf8               fixer
+  #143 = Utf8               Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;
+  #144 = Utf8               cir
+  #145 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #146 = Utf8               output
+  #147 = Utf8               Ljava/util/List;
+  #148 = Utf8               LocalVariableTypeTable
+  #149 = Utf8               Lcom/mojang/datafixers/OpticFinder<*>;
+  #150 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/mojang/datafixers/TypeRewriteRule;>;
+  #151 = Utf8               Ljava/util/List<Lcom/mojang/datafixers/TypeRewriteRule;>;
+  #152 = Utf8               StackMapTable
+  #153 = Class              #154          // java/lang/String
+  #154 = Utf8               java/lang/String
+  #155 = Class              #156          // com/mojang/datafixers/TypeRewriteRule
+  #156 = Utf8               com/mojang/datafixers/TypeRewriteRule
+  #157 = Class              #158          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #158 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #159 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/mojang/datafixers/TypeRewriteRule;>;Ljava/util/List<Lcom/mojang/datafixers/TypeRewriteRule;>;)V
+  #160 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #161 = Utf8               method
+  #162 = Utf8               makeRule
+  #163 = Utf8               at
+  #164 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #165 = Utf8               value
+  #166 = Utf8               INVOKE
+  #167 = Utf8               target
+  #168 = Utf8               Ljava/util/List;add(Ljava/lang/Object;)Z
+  #169 = Utf8               ordinal
+  #170 = Integer            0
+  #171 = Utf8               RuntimeInvisibleParameterAnnotations
+  #172 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #173 = Utf8               lambda$create$addFixers$2
+  #174 = Utf8               (Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #175 = Utf8               typed
+  #176 = Utf8               Lcom/mojang/datafixers/Typed;
+  #177 = Utf8               lambda$create$addFixers$1
+  #178 = Utf8               (Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #179 = Utf8               data
+  #180 = Utf8               lambda$create$addFixers$0
+  #181 = Utf8               (Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #182 = Utf8               dynamic
+  #183 = Utf8               Lcom/mojang/serialization/Dynamic;
+  #184 = Utf8               SourceFile
+  #185 = Utf8               BlockPosFormatAndRenamesFixMixin.java
+  #186 = Utf8               RuntimeInvisibleAnnotations
+  #187 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #188 = Utf8               Lnet/minecraft/util/datafix/fixes/BlockPosFormatAndRenamesFix;
+  #189 = Utf8               BootstrapMethods
+  #190 = String             #191          // BlockPos format for \u0001 (\u0001)
+  #191 = Utf8               BlockPos format for \u0001 (\u0001)
+  #192 = MethodType         #117          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #193 = MethodHandle       6:#194        // REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$2:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #194 = Methodref          #44.#195      // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$2:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #195 = NameAndType        #173:#174     // lambda$create$addFixers$2:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #196 = MethodType         #197          //  (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #197 = Utf8               (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #198 = MethodHandle       6:#199        // REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$1:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #199 = Methodref          #44.#200      // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$1:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #200 = NameAndType        #177:#178     // lambda$create$addFixers$1:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  #201 = MethodHandle       6:#202        // REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$0:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #202 = Methodref          #44.#203      // com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$0:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #203 = NameAndType        #180:#181     // lambda$create$addFixers$0:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #204 = MethodType         #205          //  (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #205 = Utf8               (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+  #206 = MethodHandle       6:#207        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #207 = Methodref          #208.#209     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #208 = Class              #210          // java/lang/invoke/StringConcatFactory
+  #209 = NameAndType        #68:#211      // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #210 = Utf8               java/lang/invoke/StringConcatFactory
+  #211 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #212 = MethodHandle       6:#213        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #213 = Methodref          #214.#215     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #214 = Class              #216          // java/lang/invoke/LambdaMetafactory
+  #215 = NameAndType        #217:#218     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #216 = Utf8               java/lang/invoke/LambdaMetafactory
+  #217 = Utf8               metafactory
+  #218 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #219 = Utf8               InnerClasses
+  #220 = Utf8               BlockPosFixer
+  #221 = Utf8               TypeReference
+  #222 = Class              #223          // java/lang/invoke/MethodHandles$Lookup
+  #223 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #224 = Class              #225          // java/lang/invoke/MethodHandles
+  #225 = Utf8               java/lang/invoke/MethodHandles
+  #226 = Utf8               Lookup
+{
+  private com.simibubi.create.foundation.mixin.datafixer.BlockPosFormatAndRenamesFixMixin(com.mojang.datafixers.schemas.Schema, boolean);
+    descriptor: (Lcom/mojang/datafixers/schemas/Schema;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: iload_2
+         3: invokespecial #1                  // Method com/mojang/datafixers/DataFix."<init>":(Lcom/mojang/datafixers/schemas/Schema;Z)V
+         6: return
+      LineNumberTable:
+        line 25: 0
+        line 26: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lcom/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin;
+            0       7     1 outputSchema   Lcom/mojang/datafixers/schemas/Schema;
+            0       7     2 changesType   Z
+
+  protected abstract com.mojang.datafixers.TypeRewriteRule createEntityFixer(com.mojang.datafixers.DSL$TypeReference, java.lang.String, java.util.Map<java.lang.String, java.lang.String>);
+    descriptor: (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map;)Lcom/mojang/datafixers/TypeRewriteRule;
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    Signature: #130                         // (Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;)Lcom/mojang/datafixers/TypeRewriteRule;
+    RuntimeVisibleAnnotations:
+      0: #132()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void create$addFixers(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<com.mojang.datafixers.TypeRewriteRule>, java.util.List<com.mojang.datafixers.TypeRewriteRule>);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Ljava/util/List;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=9, args_size=3
+         0: getstatic     #7                  // Field com/simibubi/create/foundation/utility/DataFixerHelper.BLOCK_POS_FIXERS_VIEW:Ljava/util/Set;
+         3: invokeinterface #13,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+         8: astore_3
+         9: aload_3
+        10: invokeinterface #19,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        15: ifeq          137
+        18: aload_3
+        19: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        24: checkcast     #29                 // class com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer
+        27: astore        4
+        29: aload         4
+        31: invokevirtual #31                 // Method com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.reference:()Lcom/mojang/datafixers/DSL$TypeReference;
+        34: astore        5
+        36: aload         4
+        38: invokevirtual #35                 // Method com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.id:()Ljava/lang/String;
+        41: astore        6
+        43: aload         4
+        45: invokevirtual #39                 // Method com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.customFixer:()Ljava/util/function/Function;
+        48: ifnull        110
+        51: aload         6
+        53: aload_0
+        54: invokevirtual #43                 // Method getInputSchema:()Lcom/mojang/datafixers/schemas/Schema;
+        57: aload         5
+        59: aload         6
+        61: invokevirtual #49                 // Method com/mojang/datafixers/schemas/Schema.getChoiceType:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;)Lcom/mojang/datafixers/types/Type;
+        64: invokestatic  #55                 // InterfaceMethod com/mojang/datafixers/DSL.namedChoice:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;)Lcom/mojang/datafixers/OpticFinder;
+        67: astore        8
+        69: aload_0
+        70: aload         6
+        72: aload         5
+        74: invokeinterface #61,  1           // InterfaceMethod com/mojang/datafixers/DSL$TypeReference.typeName:()Ljava/lang/String;
+        79: invokedynamic #66,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+        84: aload_0
+        85: invokevirtual #43                 // Method getInputSchema:()Lcom/mojang/datafixers/schemas/Schema;
+        88: aload         5
+        90: invokevirtual #70                 // Method com/mojang/datafixers/schemas/Schema.getType:(Lcom/mojang/datafixers/DSL$TypeReference;)Lcom/mojang/datafixers/types/Type;
+        93: aload         8
+        95: aload         4
+        97: invokedynamic #74,  0             // InvokeDynamic #1:apply:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+       102: invokevirtual #78                 // Method fixTypeEverywhereTyped:(Ljava/lang/String;Lcom/mojang/datafixers/types/Type;Ljava/util/function/Function;)Lcom/mojang/datafixers/TypeRewriteRule;
+       105: astore        7
+       107: goto          125
+       110: aload_0
+       111: aload         5
+       113: aload         6
+       115: aload         4
+       117: invokevirtual #82                 // Method com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.renames:()Ljava/util/Map;
+       120: invokevirtual #86                 // Method createEntityFixer:(Lcom/mojang/datafixers/DSL$TypeReference;Ljava/lang/String;Ljava/util/Map;)Lcom/mojang/datafixers/TypeRewriteRule;
+       123: astore        7
+       125: aload_2
+       126: aload         7
+       128: invokeinterface #90,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       133: pop
+       134: goto          9
+       137: return
+      LineNumberTable:
+        line 33: 0
+        line 34: 29
+        line 35: 36
+        line 39: 43
+        line 40: 51
+        line 41: 69
+        line 42: 85
+        line 41: 102
+        line 49: 107
+        line 50: 110
+        line 53: 125
+        line 54: 134
+        line 55: 137
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           69      38     8 opticfinder   Lcom/mojang/datafixers/OpticFinder;
+          107       3     7  rule   Lcom/mojang/datafixers/TypeRewriteRule;
+           36      98     5   ref   Lcom/mojang/datafixers/DSL$TypeReference;
+           43      91     6    id   Ljava/lang/String;
+          125       9     7  rule   Lcom/mojang/datafixers/TypeRewriteRule;
+           29     105     4 fixer   Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;
+            0     138     0  this   Lcom/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin;
+            0     138     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0     138     2 output   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           69      38     8 opticfinder   Lcom/mojang/datafixers/OpticFinder<*>;
+            0     138     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/mojang/datafixers/TypeRewriteRule;>;
+            0     138     2 output   Ljava/util/List<Lcom/mojang/datafixers/TypeRewriteRule;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 100
+          locals = [ class com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer, class com/mojang/datafixers/DSL$TypeReference, class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class com/mojang/datafixers/TypeRewriteRule ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 11
+          locals = [ class com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, class java/util/List ]
+          stack = []
+    Signature: #159                         // (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lcom/mojang/datafixers/TypeRewriteRule;>;Ljava/util/List<Lcom/mojang/datafixers/TypeRewriteRule;>;)V
+    RuntimeVisibleAnnotations:
+      0: #160(#161=[s#162],#163=[@#164(#165=s#166,#167=s#168,#169=I#170)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["makeRule"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/List;add(Ljava/lang/Object;)Z"
+            ordinal=0
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #172()
+          com.llamalad7.mixinextras.sugar.Local
+
+  private static com.mojang.datafixers.Typed lambda$create$addFixers$2(com.mojang.datafixers.OpticFinder, com.simibubi.create.foundation.utility.DataFixerHelper$BlockPosFixer, com.mojang.datafixers.Typed);
+    descriptor: (Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_2
+         1: aload_0
+         2: aload_1
+         3: invokedynamic #96,  0             // InvokeDynamic #2:apply:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+         8: invokevirtual #99                 // Method com/mojang/datafixers/Typed.updateTyped:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+        11: areturn
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 opticfinder   Lcom/mojang/datafixers/OpticFinder;
+            0      12     1 fixer   Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;
+            0      12     2 typed   Lcom/mojang/datafixers/Typed;
+
+  private static com.mojang.datafixers.Typed lambda$create$addFixers$1(com.simibubi.create.foundation.utility.DataFixerHelper$BlockPosFixer, com.mojang.datafixers.Typed);
+    descriptor: (Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_1
+         1: invokestatic  #105                // InterfaceMethod com/mojang/datafixers/DSL.remainderFinder:()Lcom/mojang/datafixers/OpticFinder;
+         4: aload_0
+         5: invokedynamic #109,  0            // InvokeDynamic #3:apply:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;)Ljava/util/function/Function;
+        10: invokevirtual #110                // Method com/mojang/datafixers/Typed.update:(Lcom/mojang/datafixers/OpticFinder;Ljava/util/function/Function;)Lcom/mojang/datafixers/Typed;
+        13: areturn
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 fixer   Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;
+            0      14     1  data   Lcom/mojang/datafixers/Typed;
+
+  private static com.mojang.serialization.Dynamic lambda$create$addFixers$0(com.simibubi.create.foundation.utility.DataFixerHelper$BlockPosFixer, com.mojang.serialization.Dynamic);
+    descriptor: (Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: invokevirtual #39                 // Method com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer.customFixer:()Ljava/util/function/Function;
+         4: aload_1
+         5: invokeinterface #113,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #118                // class com/mojang/serialization/Dynamic
+        13: areturn
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0 fixer   Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;
+            0      14     1 dynamic   Lcom/mojang/serialization/Dynamic;
+}
+SourceFile: "BlockPosFormatAndRenamesFixMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #187(#165=[c#188])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/util/datafix/fixes/BlockPosFormatAndRenamesFix;]
+    )
+BootstrapMethods:
+  0: #206 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #190 BlockPos format for \u0001 (\u0001)
+  1: #212 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #192 (Ljava/lang/Object;)Ljava/lang/Object;
+      #193 REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$2:(Lcom/mojang/datafixers/OpticFinder;Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+      #196 (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  2: #212 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #192 (Ljava/lang/Object;)Ljava/lang/Object;
+      #198 REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$1:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+      #196 (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed;
+  3: #212 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #192 (Ljava/lang/Object;)Ljava/lang/Object;
+      #201 REF_invokeStatic com/simibubi/create/foundation/mixin/datafixer/BlockPosFormatAndRenamesFixMixin.lambda$create$addFixers$0:(Lcom/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+      #204 (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic;
+InnerClasses:
+  public static final #220= #29 of #8;    // BlockPosFixer=class com/simibubi/create/foundation/utility/DataFixerHelper$BlockPosFixer of class com/simibubi/create/foundation/utility/DataFixerHelper
+  public static #221= #62 of #56;         // TypeReference=class com/mojang/datafixers/DSL$TypeReference of class com/mojang/datafixers/DSL
+  public static final #226= #222 of #224; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
