@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Ocean designs are reconciled using 391184f1: two open gold-bearing shrine variants
+with drowned overrides, and two roofed loot/sponge temple variants with guardian
+overrides. All four complete definitions remain preserved. The affected case and
+scoped checks pass. Backlog: 60 (IDAS 59, AdoraBuild house). Coverage groups: 415.
+Inventory refresh follows. Next: all 45 house templates. Required attributes,
+33 nonregistry contributions and final review/delivery remain open.
+
 Ocean-temple views at ee31d68f are obscured by water cubes. The existing renderer
 needs one opt-in omission of minecraft:water for the four fixed ocean templates
 to expose architecture. Keep the original views and NBT; this is an inspection
