@@ -1642,3 +1642,27 @@ schema. BetterEnd still requires remaining code-generation entries, configuratio
 binding and shared modifier/consumer reconciliation; complete template accounting
 alone does not close that provider. Overall coverage remains 53 resolved and
 83 open providers. Keep the 128-template boundary closed while doing that work.
+
+### BetterEnd frozen generator branch selection
+
+Source 9d70795, selected by 13f1e49, resolves the GeneratorConfig key-to-field
+binding left open above. The source independently reproduced byte for byte.
+Its table, command and frozen configuration identity are in
+sources/betterend-generator-config/README.md. The sixth focused case binds the
+constructor capture, exact frozen file hash and relevant values.
+
+Under the frozen values, generate_obsidian_platform=true and
+entity.spawn.has_spawn=false make BetterEnd's platform helper return without
+cancelling or relocating vanilla platform creation. Both has_portal/replace_portal
+and has_pillars/replace_pillars are true, enabling this provider's replacement
+conditions. has_dragon_fights is true. use_new_generator=true and
+end_city_fail_chance=1 make the city hook's nextInt(1) test return zero, so this
+hook does not reject the existing city stub. This is a code derivation under the
+frozen settings, not an observed world result or a claim about the final outcome
+of competing mixins. Preserve those interactions in the remaining provider scope.
+
+Six focused cases, Ruff and Basedpyright pass. GeneratorConfig is no longer an
+open binding question for these branches. The 128-template accounting remains
+closed. Continue remaining generation entries, shared modifiers and consumers;
+do not reopen this configuration trace or add a new runtime measurement.
+Whole-provider counts remain 53 resolved and 83 open.
