@@ -9529,3 +9529,14 @@ uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
 uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
 ```
+
+Inventory regenerated from 54e4d725 and independently reproduced exactly.
+Only the three original design records, the new birch workshop record and the
+decision input identity changed. Root-specific fields separate with the birch
+root; all 887 roots remain covered exactly once and full variants are preserved.
+SHA-256: ed705d7d330b1bae950b92245a3f8500ff4bba7415ba3e73dd1d3ca55728edd7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-trees-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-trees-r2.json
+```
