@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 62 of 136. The exact queue below has 74 open rows.
+Supported provider dispositions: 63 of 136. The exact queue below has 73 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -564,7 +564,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
-| `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `monument-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `ocean-monument-provider` (a2f2832), prior suppression source, test_ocean_monument_provider_scope.py | RESOLVED: One existing root, 13 connected pools, 59 templates including two disconnected seagrass components. Ten block processors and marked-trident hook accounted for below. |
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | `witch-hut-provider` (04b6ab5), prior suppression capture, test_witch_hut_provider_scope.py | RESOLVED: Two existing roots, three pools, six connected templates and five component processors. Packaged services and entry roles are accounted for below. |
 | `YungsBridges-1.21.1-NeoForge-5.1.1.jar` | `yungs-bridge-generation`, `yungs-bridge-processors`, `yungs-bridges-module-default`, `yungs-bridges-module-loader` | RESOLVED: see YUNG Bridges provider disposition below. |
@@ -2271,3 +2271,49 @@ Seven cases pass. Scoped Ruff and Basedpyright pass after correcting an overlong
 assertion and explicitly typing the JSON processor IDs as strings. No raw input
 or frozen configuration changed. Current census: 62 resolved providers and 74
 open. Canonical grouping, eleven attributes and the final Item 8 gate remain open.
+
+## Better Ocean Monuments provider disposition
+
+Source a2f2832 plus the prior monument-suppression capture accounts for all 28
+classes in YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar. The focused test
+binds archive/class/source hashes and accounts for all 122 files. The NeoForge
+entry and common/module paths register the component processors through YUNG API
+and load configuration. Two packaged service declarations select the captured
+NeoForge module/platform providers; the modules default is empty. Reuse prior
+vanilla monument suppression and direct locate evidence.
+
+The sole packaged root, betteroceanmonuments:ocean_monument, matches the runtime
+registry. All 13 pools are connected in its preserved graph. Of 59 templates,
+only kelp/seagrass and kelp/seagrass_tall are disconnected. These are vegetation
+components, not independent families. The root trace has no missing references
+or unresolved pool elements. Connected components are accounted for without
+claiming every piece was observed generating.
+
+The sole processor list names all ten captured block processors. Their source
+roles are sea-level air/water treatment, waterlogging/postprocessing, support
+legs, slab ornaments, copper oxidation, sponge, gravel and seagrass variation,
+and preserving existing blocks at void markers. These effects operate on the
+existing monument. In particular the support writer can extend below template
+bounds, an input to later vertical-size attribution rather than another family.
+Shared YUNG API registration remains an open provider dependency.
+
+PersistentTridentMixin cancels despawning only for a server-side thrown trident
+with the packaged owner marker and a valid piece in the monument tag. The tag
+contains this existing root; ProjectileAccessor supplies its owner-field access.
+Preserve the exact source predicate, not a claim that all tridents persist.
+The marker originates in packaged code and is not captured player data. This
+hook changes an existing component's behavior and adds no generation route.
+
+Other payload is loot, tags, translations, logos and loader metadata. There are
+no nested archives, functions, feature/carver definitions or unexplained resource
+categories. Full attributes and runtime behavior remain separate acceptance work.
+
+```sh
+uv run pytest -q tests/item8/test_ocean_monument_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_ocean_monument_provider_scope.py
+uv run basedpyright tests/item8/test_ocean_monument_provider_scope.py
+```
+
+Seven affected cases and scoped quality checks pass. Source extraction reproduces
+exactly. Census: 63 resolved providers, 73 open. No canonical family count or final
+Item 8 completion claim follows from this provider closure.
