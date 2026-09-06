@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-06
 
+Inventory now agrees with Nether pair decisions delivered at 282e291c and
+reproduces exactly. Continue the 14 named Nether decisions, then Voyager 53.
+No active process or provider audit remains. Overall working groups: 409.
+
+
 Eight Nether paired decisions are settled: two skulls, two shrines, two towers
 and two pools. They retain separate site designs; lower pool templates stay
 components. Reuse sources/nether-pair-views and existing source graphs. Explicit
