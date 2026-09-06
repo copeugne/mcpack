@@ -1393,6 +1393,16 @@ CLASSES: tuple[str, ...] = (
     "com/telepathicgrunt/repurposedstructures/world/features/StructureWarpedPlants.class",
     "com/telepathicgrunt/repurposedstructures/world/features/UnderwaterBlockPileFeature.class",
     "com/telepathicgrunt/repurposedstructures/world/features/WitherSkeletonWithBow.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/CityNetherStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/GenericJigsawStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/GenericNetherJigsawStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/MineshaftEndStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/MineshaftStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/ShipwreckNetherStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/StrongholdEndStructure.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.class",
+    "com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager$Assembler.class",
+    "com/telepathicgrunt/repurposedstructures/misc/structurepiececounter/StructurePieceCountsManager.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
