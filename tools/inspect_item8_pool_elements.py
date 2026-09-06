@@ -212,6 +212,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/darkhax/bookshelf/common/impl/BookshelfMod.class",
+    "net/darkhax/bookshelf/common/api/registry/ContentProvider.class",
     "net/darkhax/bookshelf/common/impl/BookshelfContent.class",
     "net/darkhax/bookshelf/common/mixin/access/block/AccessorBannerBlockEntity.class",
     "net/darkhax/bookshelf/common/mixin/access/block/AccessorBaseContainerBlockEntity.class",
