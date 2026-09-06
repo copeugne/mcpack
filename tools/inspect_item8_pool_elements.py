@@ -189,6 +189,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/attachment/AttachmentRegistryImpl.class",
     "net/fabricmc/fabric/impl/content/registry/DataMapModifications.class",
     "net/fabricmc/fabric/impl/attachment/AttachmentEntrypoint.class",
     "net/fabricmc/fabric/mixin/itemgroup/ItemGroupMixin.class",
@@ -2800,6 +2801,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("com/aetherteam/aether/event/listeners/")
                 verbose |= name.startswith(("com/aetherteam/cumulus/", "com/aetherteam/nitrogen/"))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "net/fabricmc/fabric/impl/attachment/AttachmentModImpl.class",
                     "biomesoplenty/core/BiomesOPlenty.class",
                     "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
                     "biomesoplenty/neoforge/datagen/DataGenerationHandler.class",
