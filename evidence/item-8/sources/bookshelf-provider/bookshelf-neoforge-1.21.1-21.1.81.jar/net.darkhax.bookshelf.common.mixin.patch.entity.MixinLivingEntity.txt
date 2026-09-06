@@ -1,0 +1,179 @@
+Classfile bookshelf-neoforge-1.21.1-21.1.81.jar!/net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.class
+  Last modified Feb 10, 2026; size 2176 bytes
+  SHA-256 checksum 2223c2d372a3e463529e77bcc6a895a6224d0c86ca24205e6a8b4ba31e81c8f9
+  Compiled from "MixinLivingEntity.java"
+public abstract class net.darkhax.bookshelf.common.mixin.patch.entity.MixinLivingEntity extends net.minecraft.world.entity.Entity
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity
+  super_class: #40                        // net/minecraft/world/entity/Entity
+  interfaces: 0, fields: 2, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.level:()Lnet/minecraft/world/level/Level;
+   #2 = Class              #4             // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity
+   #3 = NameAndType        #5:#6          // level:()Lnet/minecraft/world/level/Level;
+   #4 = Utf8               net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity
+   #5 = Utf8               level
+   #6 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #7 = Fieldref           #8.#9          // net/minecraft/world/level/Level.isClientSide:Z
+   #8 = Class              #10            // net/minecraft/world/level/Level
+   #9 = NameAndType        #11:#12        // isClientSide:Z
+  #10 = Utf8               net/minecraft/world/level/Level
+  #11 = Utf8               isClientSide
+  #12 = Utf8               Z
+  #13 = Methodref          #2.#14         // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.isInvulnerableTo:(Lnet/minecraft/world/damagesource/DamageSource;)Z
+  #14 = NameAndType        #15:#16        // isInvulnerableTo:(Lnet/minecraft/world/damagesource/DamageSource;)Z
+  #15 = Utf8               isInvulnerableTo
+  #16 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;)Z
+  #17 = Fieldref           #18.#19        // net/darkhax/bookshelf/common/api/data/BookshelfTags.FAKE_PLAYER_DAMAGE:Lnet/minecraft/tags/TagKey;
+  #18 = Class              #20            // net/darkhax/bookshelf/common/api/data/BookshelfTags
+  #19 = NameAndType        #21:#22        // FAKE_PLAYER_DAMAGE:Lnet/minecraft/tags/TagKey;
+  #20 = Utf8               net/darkhax/bookshelf/common/api/data/BookshelfTags
+  #21 = Utf8               FAKE_PLAYER_DAMAGE
+  #22 = Utf8               Lnet/minecraft/tags/TagKey;
+  #23 = Methodref          #24.#25        // net/minecraft/world/damagesource/DamageSource.is:(Lnet/minecraft/tags/TagKey;)Z
+  #24 = Class              #26            // net/minecraft/world/damagesource/DamageSource
+  #25 = NameAndType        #27:#28        // is:(Lnet/minecraft/tags/TagKey;)Z
+  #26 = Utf8               net/minecraft/world/damagesource/DamageSource
+  #27 = Utf8               is
+  #28 = Utf8               (Lnet/minecraft/tags/TagKey;)Z
+  #29 = Fieldref           #2.#30         // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.tickCount:I
+  #30 = NameAndType        #31:#32        // tickCount:I
+  #31 = Utf8               tickCount
+  #32 = Utf8               I
+  #33 = Fieldref           #2.#34         // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.lastHurtByPlayerTime:I
+  #34 = NameAndType        #35:#32        // lastHurtByPlayerTime:I
+  #35 = Utf8               lastHurtByPlayerTime
+  #36 = Fieldref           #2.#37         // net/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity.lastHurtByMobTimestamp:I
+  #37 = NameAndType        #38:#32        // lastHurtByMobTimestamp:I
+  #38 = Utf8               lastHurtByMobTimestamp
+  #39 = Methodref          #40.#41        // net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #40 = Class              #42            // net/minecraft/world/entity/Entity
+  #41 = NameAndType        #43:#44        // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #42 = Utf8               net/minecraft/world/entity/Entity
+  #43 = Utf8               <init>
+  #44 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #45 = Utf8               RuntimeVisibleAnnotations
+  #46 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #47 = Utf8               updateFakePlayerDamageTimes
+  #48 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #49 = Utf8               Code
+  #50 = Utf8               LineNumberTable
+  #51 = Utf8               LocalVariableTable
+  #52 = Utf8               this
+  #53 = Utf8               Lnet/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity;
+  #54 = Utf8               source
+  #55 = Utf8               Lnet/minecraft/world/damagesource/DamageSource;
+  #56 = Utf8               amount
+  #57 = Utf8               F
+  #58 = Utf8               callback
+  #59 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #60 = Utf8               LocalVariableTypeTable
+  #61 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #62 = Utf8               StackMapTable
+  #63 = Utf8               Signature
+  #64 = Utf8               (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #65 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #66 = Utf8               method
+  #67 = Utf8               hurt
+  #68 = Utf8               at
+  #69 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #70 = Utf8               value
+  #71 = Utf8               HEAD
+  #72 = Utf8               ()V
+  #73 = Utf8               SourceFile
+  #74 = Utf8               MixinLivingEntity.java
+  #75 = Utf8               RuntimeInvisibleAnnotations
+  #76 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #77 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+{
+  protected int lastHurtByPlayerTime;
+    descriptor: I
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int lastHurtByMobTimestamp;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #46()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void updateFakePlayerDamageTimes(net.minecraft.world.damagesource.DamageSource, float, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0
+         1: invokevirtual #1                  // Method level:()Lnet/minecraft/world/level/Level;
+         4: getfield      #7                  // Field net/minecraft/world/level/Level.isClientSide:Z
+         7: ifne          44
+        10: aload_0
+        11: aload_1
+        12: invokevirtual #13                 // Method isInvulnerableTo:(Lnet/minecraft/world/damagesource/DamageSource;)Z
+        15: ifne          44
+        18: aload_1
+        19: getstatic     #17                 // Field net/darkhax/bookshelf/common/api/data/BookshelfTags.FAKE_PLAYER_DAMAGE:Lnet/minecraft/tags/TagKey;
+        22: invokevirtual #23                 // Method net/minecraft/world/damagesource/DamageSource.is:(Lnet/minecraft/tags/TagKey;)Z
+        25: ifeq          44
+        28: aload_0
+        29: aload_0
+        30: getfield      #29                 // Field tickCount:I
+        33: putfield      #33                 // Field lastHurtByPlayerTime:I
+        36: aload_0
+        37: aload_0
+        38: getfield      #29                 // Field tickCount:I
+        41: putfield      #36                 // Field lastHurtByMobTimestamp:I
+        44: return
+      LineNumberTable:
+        line 29: 0
+        line 30: 28
+        line 31: 36
+        line 33: 44
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      45     0  this   Lnet/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity;
+            0      45     1 source   Lnet/minecraft/world/damagesource/DamageSource;
+            0      45     2 amount   F
+            0      45     3 callback   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      45     3 callback   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 44 /* same */
+    Signature: #64                          // (Lnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #65(#66=[s#67],#68=[@#69(#70=s#71)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["hurt"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private net.darkhax.bookshelf.common.mixin.patch.entity.MixinLivingEntity();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: aconst_null
+         2: aconst_null
+         3: invokespecial #39                 // Method net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lnet/darkhax/bookshelf/common/mixin/patch/entity/MixinLivingEntity;
+}
+SourceFile: "MixinLivingEntity.java"
+RuntimeInvisibleAnnotations:
+  0: #76(#70=[c#77])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/LivingEntity;]
+    )

@@ -1,0 +1,106 @@
+Compiled from "NeoForgePlatformHelper.java"
+public class net.darkhax.bookshelf.neoforge.impl.util.NeoForgePlatformHelper implements net.darkhax.bookshelf.common.api.util.IPlatformHelper {
+  private static final java.util.function.Supplier<java.util.Set<net.darkhax.bookshelf.common.api.ModEntry>> LOADED_MODS;
+
+  public net.darkhax.bookshelf.neoforge.impl.util.NeoForgePlatformHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.nio.file.Path getGamePath();
+    Code:
+       0: getstatic     #7                  // Field net/neoforged/fml/loading/FMLPaths.GAMEDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #13                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.nio.file.Path getConfigPath();
+    Code:
+       0: getstatic     #17                 // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #13                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public java.nio.file.Path getModsPath();
+    Code:
+       0: getstatic     #20                 // Field net/neoforged/fml/loading/FMLPaths.MODSDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       3: invokevirtual #13                 // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+       6: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #23                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #28                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #32                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public net.darkhax.bookshelf.common.api.PhysicalSide getPhysicalSide();
+    Code:
+       0: getstatic     #38                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #44                 // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ifeq          15
+       9: getstatic     #49                 // Field net/darkhax/bookshelf/common/api/PhysicalSide.CLIENT:Lnet/darkhax/bookshelf/common/api/PhysicalSide;
+      12: goto          18
+      15: getstatic     #55                 // Field net/darkhax/bookshelf/common/api/PhysicalSide.SERVER:Lnet/darkhax/bookshelf/common/api/PhysicalSide;
+      18: areturn
+
+  public java.util.Set<net.darkhax.bookshelf.common.api.ModEntry> getLoadedMods();
+    Code:
+       0: getstatic     #58                 // Field LOADED_MODS:Ljava/util/function/Supplier;
+       3: invokeinterface #64,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #69                 // class java/util/Set
+      11: areturn
+
+  public boolean isTestingEnvironment();
+    Code:
+       0: invokestatic  #71                 // Method net/neoforged/neoforge/gametest/GameTestHooks.isGametestEnabled:()Z
+       3: ireturn
+
+  public java.lang.String getName();
+    Code:
+       0: ldc           #76                 // String NeoForge
+       2: areturn
+
+  private static java.util.Set lambda$static$1();
+    Code:
+       0: invokestatic  #23                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: invokevirtual #78                 // Method net/neoforged/fml/ModList.getMods:()Ljava/util/List;
+       6: invokeinterface #82,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      11: invokedynamic #88,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokeinterface #92,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      21: invokestatic  #98                 // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+      24: invokeinterface #104,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      29: checkcast     #69                 // class java/util/Set
+      32: areturn
+
+  private static net.darkhax.bookshelf.common.api.ModEntry lambda$static$0(net.neoforged.neoforgespi.language.IModInfo);
+    Code:
+       0: new           #108                // class net/darkhax/bookshelf/common/api/ModEntry
+       3: dup
+       4: aload_0
+       5: invokeinterface #110,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getModId:()Ljava/lang/String;
+      10: aload_0
+      11: invokeinterface #116,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDisplayName:()Ljava/lang/String;
+      16: aload_0
+      17: invokeinterface #119,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDescription:()Ljava/lang/String;
+      22: aload_0
+      23: invokeinterface #122,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getVersion:()Lorg/apache/maven/artifact/versioning/ArtifactVersion;
+      28: invokeinterface #126,  1          // InterfaceMethod org/apache/maven/artifact/versioning/ArtifactVersion.toString:()Ljava/lang/String;
+      33: invokespecial #131                // Method net/darkhax/bookshelf/common/api/ModEntry."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+      36: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #134,  0            // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+       5: invokestatic  #137                // Method net/darkhax/bookshelf/common/api/function/CachedSupplier.cache:(Ljava/util/function/Supplier;)Lnet/darkhax/bookshelf/common/api/function/CachedSupplier;
+       8: putstatic     #58                 // Field LOADED_MODS:Ljava/util/function/Supplier;
+      11: return
+}
