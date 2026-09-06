@@ -1,0 +1,632 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-base-mc1.21.1-0.3.0+alpha.0.93-all.jar!/com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.class
+  Last modified Jan 1, 1980; size 6601 bytes
+  SHA-256 checksum 96ea65ba189e9b31dac0def947baf1cdf3cdabe334669df0b771dc2e08fff048
+  Compiled from "MixinServerChunkManager.java"
+public abstract class com.ishland.c2me.base.mixin.instrumentation.MixinServerChunkManager implements com.ishland.c2me.base.common.scheduler.ISyncLoadManager
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 5, methods: 6, attributes: 3
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager
+    #2 = Class              #1            // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/base/common/scheduler/ISyncLoadManager
+    #6 = Class              #5            // com/ishland/c2me/base/common/scheduler/ISyncLoadManager
+    #7 = Utf8               MixinServerChunkManager.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/server/level/ServerChunkCache;
+   #11 = Utf8               com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable
+   #12 = Class              #11           // com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable
+   #13 = Utf8               com/ishland/c2me/base/common/threadstate/ThreadState
+   #14 = Class              #13           // com/ishland/c2me/base/common/threadstate/ThreadState
+   #15 = Utf8               WorkClosable
+   #16 = Utf8               net/minecraft/server/level/ServerChunkCache$MainThreadExecutor
+   #17 = Class              #16           // net/minecraft/server/level/ServerChunkCache$MainThreadExecutor
+   #18 = Utf8               net/minecraft/server/level/ServerChunkCache
+   #19 = Class              #18           // net/minecraft/server/level/ServerChunkCache
+   #20 = Utf8               MainThreadExecutor
+   #21 = Utf8               mainThread
+   #22 = Utf8               Ljava/lang/Thread;
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #24 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #25 = Utf8               chunkMap
+   #26 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #27 = Utf8               level
+   #28 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #29 = Utf8               currentSyncLoadChunk
+   #30 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+   #31 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #32 = Utf8               syncLoadNanos
+   #33 = Utf8               J
+   #34 = Utf8               <init>
+   #35 = Utf8               ()V
+   #36 = NameAndType        #34:#35       // "<init>":()V
+   #37 = Methodref          #4.#36        // java/lang/Object."<init>":()V
+   #38 = NameAndType        #29:#30       // currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+   #39 = Fieldref           #2.#38        // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+   #40 = NameAndType        #32:#33       // syncLoadNanos:J
+   #41 = Fieldref           #2.#40        // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.syncLoadNanos:J
+   #42 = Utf8               this
+   #43 = Utf8               Lcom/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager;
+   #44 = Utf8               chunkAbsent
+   #45 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;I)Z
+   #46 = Utf8               Lorg/jetbrains/annotations/Nullable;
+   #47 = Utf8               getVisibleChunkIfPresent
+   #48 = Utf8               (J)Lnet/minecraft/server/level/ChunkHolder;
+   #49 = Utf8               instrumentAwaitChunk
+   #50 = Utf8               (Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;Ljava/util/function/BooleanSupplier;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+   #51 = Utf8               (Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;Ljava/util/function/BooleanSupplier;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+   #52 = Utf8               instance
+   #53 = Utf8               stopCondition
+   #54 = Utf8               original
+   #55 = Utf8               x
+   #56 = Utf8               z
+   #57 = Utf8               leastStatus
+   #58 = Utf8               create
+   #59 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+   #60 = Utf8               method
+   #61 = Utf8               getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;
+   #62 = Utf8               getChunkBlocking(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;
+   #63 = Utf8               at
+   #64 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #65 = Utf8               INVOKE
+   #66 = Utf8               target
+   #67 = Utf8               Lnet/minecraft/server/world/ServerChunkManager$MainThreadExecutor;runTasks(Ljava/util/function/BooleanSupplier;)V
+   #68 = Utf8               require
+   #69 = Integer            0
+   #70 = Utf8               Lorg/spongepowered/asm/mixin/Dynamic;
+   #71 = Utf8               java/lang/Throwable
+   #72 = Class              #71           // java/lang/Throwable
+   #73 = Utf8               java/lang/Thread
+   #74 = Class              #73           // java/lang/Thread
+   #75 = Utf8               currentThread
+   #76 = Utf8               ()Ljava/lang/Thread;
+   #77 = NameAndType        #75:#76       // currentThread:()Ljava/lang/Thread;
+   #78 = Methodref          #74.#77       // java/lang/Thread.currentThread:()Ljava/lang/Thread;
+   #79 = NameAndType        #21:#22       // mainThread:Ljava/lang/Thread;
+   #80 = Fieldref           #2.#79        // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.mainThread:Ljava/lang/Thread;
+   #81 = Utf8               java/util/function/BooleanSupplier
+   #82 = Class              #81           // java/util/function/BooleanSupplier
+   #83 = Utf8               getAsBoolean
+   #84 = Utf8               ()Z
+   #85 = NameAndType        #83:#84       // getAsBoolean:()Z
+   #86 = InterfaceMethodref #82.#85       // java/util/function/BooleanSupplier.getAsBoolean:()Z
+   #87 = Utf8               net/minecraft/world/level/ChunkPos
+   #88 = Class              #87           // net/minecraft/world/level/ChunkPos
+   #89 = Utf8               (II)V
+   #90 = NameAndType        #34:#89       // "<init>":(II)V
+   #91 = Methodref          #88.#90       // net/minecraft/world/level/ChunkPos."<init>":(II)V
+   #92 = Utf8               java/lang/System
+   #93 = Class              #92           // java/lang/System
+   #94 = Utf8               nanoTime
+   #95 = Utf8               ()J
+   #96 = NameAndType        #94:#95       // nanoTime:()J
+   #97 = Methodref          #93.#96       // java/lang/System.nanoTime:()J
+   #98 = NameAndType        #25:#26       // chunkMap:Lnet/minecraft/server/level/ChunkMap;
+   #99 = Fieldref           #2.#98        // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+  #100 = Utf8               com/ishland/c2me/base/common/scheduler/IVanillaChunkManager
+  #101 = Class              #100          // com/ishland/c2me/base/common/scheduler/IVanillaChunkManager
+  #102 = Utf8               c2me$getSchedulingManager
+  #103 = Utf8               ()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+  #104 = NameAndType        #102:#103     // c2me$getSchedulingManager:()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+  #105 = InterfaceMethodref #101.#104     // com/ishland/c2me/base/common/scheduler/IVanillaChunkManager.c2me$getSchedulingManager:()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+  #106 = Utf8               com/ishland/c2me/base/common/scheduler/SchedulingManager
+  #107 = Class              #106          // com/ishland/c2me/base/common/scheduler/SchedulingManager
+  #108 = Utf8               setCurrentSyncLoad
+  #109 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)V
+  #110 = NameAndType        #108:#109     // setCurrentSyncLoad:(Lnet/minecraft/world/level/ChunkPos;)V
+  #111 = Methodref          #107.#110     // com/ishland/c2me/base/common/scheduler/SchedulingManager.setCurrentSyncLoad:(Lnet/minecraft/world/level/ChunkPos;)V
+  #112 = Utf8               com/ishland/c2me/base/common/threadstate/ThreadInstrumentation
+  #113 = Class              #112          // com/ishland/c2me/base/common/threadstate/ThreadInstrumentation
+  #114 = Utf8               getCurrent
+  #115 = Utf8               ()Lcom/ishland/c2me/base/common/threadstate/ThreadState;
+  #116 = NameAndType        #114:#115     // getCurrent:()Lcom/ishland/c2me/base/common/threadstate/ThreadState;
+  #117 = Methodref          #113.#116     // com/ishland/c2me/base/common/threadstate/ThreadInstrumentation.getCurrent:()Lcom/ishland/c2me/base/common/threadstate/ThreadState;
+  #118 = Utf8               com/ishland/c2me/base/common/threadstate/SyncLoadWork
+  #119 = Class              #118          // com/ishland/c2me/base/common/threadstate/SyncLoadWork
+  #120 = NameAndType        #27:#28       // level:Lnet/minecraft/server/level/ServerLevel;
+  #121 = Fieldref           #2.#120       // com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager.level:Lnet/minecraft/server/level/ServerLevel;
+  #122 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+  #123 = NameAndType        #34:#122      // "<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+  #124 = Methodref          #119.#123     // com/ishland/c2me/base/common/threadstate/SyncLoadWork."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+  #125 = Utf8               begin
+  #126 = Utf8               (Lcom/ishland/c2me/base/common/threadstate/RunningWork;)Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+  #127 = NameAndType        #125:#126     // begin:(Lcom/ishland/c2me/base/common/threadstate/RunningWork;)Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+  #128 = Methodref          #14.#127      // com/ishland/c2me/base/common/threadstate/ThreadState.begin:(Lcom/ishland/c2me/base/common/threadstate/RunningWork;)Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+  #129 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #130 = Class              #129          // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #131 = Utf8               call
+  #132 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #133 = NameAndType        #131:#132     // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #134 = InterfaceMethodref #130.#133     // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #135 = Utf8               close
+  #136 = NameAndType        #135:#35      // close:()V
+  #137 = Methodref          #12.#136      // com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable.close:()V
+  #138 = Utf8               net/minecraft/world/level/chunk/status/ChunkStatus
+  #139 = Class              #138          // net/minecraft/world/level/chunk/status/ChunkStatus
+  #140 = Utf8               addSuppressed
+  #141 = Utf8               (Ljava/lang/Throwable;)V
+  #142 = NameAndType        #140:#141     // addSuppressed:(Ljava/lang/Throwable;)V
+  #143 = Methodref          #72.#142      // java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+  #144 = Utf8               ignored
+  #145 = Utf8               Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+  #146 = Utf8               Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;
+  #147 = Utf8               Ljava/util/function/BooleanSupplier;
+  #148 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+  #149 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #150 = Utf8               I
+  #151 = Utf8               Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #152 = Utf8               Z
+  #153 = Utf8               instrumentGetChunk
+  #154 = Utf8               (IILnet/minecraft/world/level/chunk/status/ChunkStatus;ZLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #155 = Utf8               (IILnet/minecraft/world/level/chunk/status/ChunkStatus;ZLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/chunk/ChunkAccess;>;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #156 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapmethod/WrapMethod;
+  #157 = Utf8               java/lang/Integer
+  #158 = Class              #157          // java/lang/Integer
+  #159 = Utf8               valueOf
+  #160 = Utf8               (I)Ljava/lang/Integer;
+  #161 = NameAndType        #159:#160     // valueOf:(I)Ljava/lang/Integer;
+  #162 = Methodref          #158.#161     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #163 = Utf8               java/lang/Boolean
+  #164 = Class              #163          // java/lang/Boolean
+  #165 = Utf8               (Z)Ljava/lang/Boolean;
+  #166 = NameAndType        #159:#165     // valueOf:(Z)Ljava/lang/Boolean;
+  #167 = Methodref          #164.#166     // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #168 = Utf8               net/minecraft/world/level/chunk/ChunkAccess
+  #169 = Class              #168          // net/minecraft/world/level/chunk/ChunkAccess
+  #170 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/chunk/ChunkAccess;>;
+  #171 = Utf8               getCurrentSyncLoad
+  #172 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #173 = Utf8               RuntimeVisibleAnnotations
+  #174 = Utf8               Code
+  #175 = Utf8               LineNumberTable
+  #176 = Utf8               LocalVariableTable
+  #177 = Utf8               RuntimeInvisibleTypeAnnotations
+  #178 = Utf8               RuntimeInvisibleParameterAnnotations
+  #179 = Utf8               RuntimeInvisibleAnnotations
+  #180 = Utf8               StackMapTable
+  #181 = Utf8               LocalVariableTypeTable
+  #182 = Utf8               Signature
+  #183 = Utf8               MethodParameters
+  #184 = Utf8               InnerClasses
+  #185 = Utf8               SourceFile
+{
+  private java.lang.Thread mainThread;
+    descriptor: Ljava/lang/Thread;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+      1: #24()
+        org.spongepowered.asm.mixin.Final
+
+  public net.minecraft.server.level.ChunkMap chunkMap;
+    descriptor: Lnet/minecraft/server/level/ChunkMap;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+      1: #24()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.ServerLevel level;
+    descriptor: Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+      1: #24()
+        org.spongepowered.asm.mixin.Final
+
+  private volatile net.minecraft.world.level.ChunkPos currentSyncLoadChunk;
+    descriptor: Lnet/minecraft/world/level/ChunkPos;
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    RuntimeVisibleAnnotations:
+      0: #31()
+        org.spongepowered.asm.mixin.Unique
+
+  private volatile long syncLoadNanos;
+    descriptor: J
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    RuntimeVisibleAnnotations:
+      0: #31()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.base.mixin.instrumentation.MixinServerChunkManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #37                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+         9: aload_0
+        10: lconst_0
+        11: putfield      #41                 // Field syncLoadNanos:J
+        14: return
+      LineNumberTable:
+        line 28: 0
+        line 43: 4
+        line 45: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lcom/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager;
+
+  protected abstract boolean chunkAbsent(net.minecraft.server.level.ChunkHolder, int);
+    descriptor: (Lnet/minecraft/server/level/ChunkHolder;I)Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+    RuntimeInvisibleTypeAnnotations:
+      0: #46(): METHOD_FORMAL_PARAMETER, param_index=0
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #46()
+          org.jetbrains.annotations.Nullable
+      parameter 1:
+
+  protected abstract net.minecraft.server.level.ChunkHolder getVisibleChunkIfPresent(long);
+    descriptor: (J)Lnet/minecraft/server/level/ChunkHolder;
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+    RuntimeInvisibleAnnotations:
+      0: #46()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #46(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  private void instrumentAwaitChunk(net.minecraft.server.level.ServerChunkCache$MainThreadExecutor, java.util.function.BooleanSupplier, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>, int, int, net.minecraft.world.level.chunk.status.ChunkStatus, boolean);
+    descriptor: (Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;Ljava/util/function/BooleanSupplier;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=12, args_size=8
+         0: invokestatic  #78                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+         3: aload_0
+         4: getfield      #80                 // Field mainThread:Ljava/lang/Thread;
+         7: if_acmpne     19
+        10: aload_2
+        11: invokeinterface #86,  1           // InterfaceMethod java/util/function/BooleanSupplier.getAsBoolean:()Z
+        16: ifeq          20
+        19: return
+        20: aload_0
+        21: new           #88                 // class net/minecraft/world/level/ChunkPos
+        24: dup
+        25: iload         4
+        27: iload         5
+        29: invokespecial #91                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        32: putfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+        35: aload_0
+        36: invokestatic  #97                 // Method java/lang/System.nanoTime:()J
+        39: putfield      #41                 // Field syncLoadNanos:J
+        42: aload_0
+        43: getfield      #99                 // Field chunkMap:Lnet/minecraft/server/level/ChunkMap;
+        46: checkcast     #101                // class com/ishland/c2me/base/common/scheduler/IVanillaChunkManager
+        49: invokeinterface #105,  1          // InterfaceMethod com/ishland/c2me/base/common/scheduler/IVanillaChunkManager.c2me$getSchedulingManager:()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+        54: aload_0
+        55: getfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+        58: invokevirtual #111                // Method com/ishland/c2me/base/common/scheduler/SchedulingManager.setCurrentSyncLoad:(Lnet/minecraft/world/level/ChunkPos;)V
+        61: invokestatic  #117                // Method com/ishland/c2me/base/common/threadstate/ThreadInstrumentation.getCurrent:()Lcom/ishland/c2me/base/common/threadstate/ThreadState;
+        64: new           #119                // class com/ishland/c2me/base/common/threadstate/SyncLoadWork
+        67: dup
+        68: aload_0
+        69: getfield      #121                // Field level:Lnet/minecraft/server/level/ServerLevel;
+        72: new           #88                 // class net/minecraft/world/level/ChunkPos
+        75: dup
+        76: iload         4
+        78: iload         5
+        80: invokespecial #91                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        83: aload         6
+        85: iload         7
+        87: invokespecial #124                // Method com/ishland/c2me/base/common/threadstate/SyncLoadWork."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+        90: invokevirtual #128                // Method com/ishland/c2me/base/common/threadstate/ThreadState.begin:(Lcom/ishland/c2me/base/common/threadstate/RunningWork;)Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+        93: astore        8
+        95: aload_3
+        96: iconst_2
+        97: anewarray     #4                  // class java/lang/Object
+       100: dup
+       101: iconst_0
+       102: aload_1
+       103: aastore
+       104: dup
+       105: iconst_1
+       106: aload_2
+       107: aastore
+       108: invokeinterface #134,  2          // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+       113: pop
+       114: aload         8
+       116: ifnull        154
+       119: aload         8
+       121: invokevirtual #137                // Method com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable.close:()V
+       124: goto          154
+       127: astore        9
+       129: aload         8
+       131: ifnull        151
+       134: aload         8
+       136: invokevirtual #137                // Method com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable.close:()V
+       139: goto          151
+       142: astore        10
+       144: aload         9
+       146: aload         10
+       148: invokevirtual #143                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       151: aload         9
+       153: athrow
+       154: aload_0
+       155: getfield      #99                 // Field chunkMap:Lnet/minecraft/server/level/ChunkMap;
+       158: checkcast     #101                // class com/ishland/c2me/base/common/scheduler/IVanillaChunkManager
+       161: invokeinterface #105,  1          // InterfaceMethod com/ishland/c2me/base/common/scheduler/IVanillaChunkManager.c2me$getSchedulingManager:()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+       166: aconst_null
+       167: invokevirtual #111                // Method com/ishland/c2me/base/common/scheduler/SchedulingManager.setCurrentSyncLoad:(Lnet/minecraft/world/level/ChunkPos;)V
+       170: aload_0
+       171: aconst_null
+       172: putfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+       175: goto          204
+       178: astore        11
+       180: aload_0
+       181: getfield      #99                 // Field chunkMap:Lnet/minecraft/server/level/ChunkMap;
+       184: checkcast     #101                // class com/ishland/c2me/base/common/scheduler/IVanillaChunkManager
+       187: invokeinterface #105,  1          // InterfaceMethod com/ishland/c2me/base/common/scheduler/IVanillaChunkManager.c2me$getSchedulingManager:()Lcom/ishland/c2me/base/common/scheduler/SchedulingManager;
+       192: aconst_null
+       193: invokevirtual #111                // Method com/ishland/c2me/base/common/scheduler/SchedulingManager.setCurrentSyncLoad:(Lnet/minecraft/world/level/ChunkPos;)V
+       196: aload_0
+       197: aconst_null
+       198: putfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+       201: aload         11
+       203: athrow
+       204: return
+      Exception table:
+         from    to  target type
+            95   114   127   Class java/lang/Throwable
+           134   139   142   Class java/lang/Throwable
+            61   154   178   any
+           178   180   178   any
+      StackMapTable: number_of_entries = 8
+        frame_type = 19 /* same */
+        frame_type = 0 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 106
+          locals = [ class com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager, class net/minecraft/server/level/ServerChunkCache$MainThreadExecutor, class java/util/function/BooleanSupplier, class com/llamalad7/mixinextras/injector/wrapoperation/Operation, int, int, class net/minecraft/world/level/chunk/status/ChunkStatus, int, class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 14
+          locals = [ class com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager, class net/minecraft/server/level/ServerChunkCache$MainThreadExecutor, class java/util/function/BooleanSupplier, class com/llamalad7/mixinextras/injector/wrapoperation/Operation, int, int, class net/minecraft/world/level/chunk/status/ChunkStatus, int, class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable, class java/lang/Throwable ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 8 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+        frame_type = 87 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 25 /* same */
+      LineNumberTable:
+        line 55: 0
+        line 57: 20
+        line 58: 35
+        line 59: 42
+        line 60: 61
+        line 61: 95
+        line 62: 114
+        line 60: 127
+        line 63: 154
+        line 64: 170
+        line 65: 175
+        line 63: 178
+        line 64: 196
+        line 65: 201
+        line 66: 204
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           95      59     8 ignored   Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+            0     205     0  this   Lcom/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager;
+            0     205     1 instance   Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;
+            0     205     2 stopCondition   Ljava/util/function/BooleanSupplier;
+            0     205     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0     205     4     x   I
+            0     205     5     z   I
+            0     205     6 leastStatus   Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+            0     205     7 create   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     205     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+    Signature: #51                          // (Lnet/minecraft/server/level/ServerChunkCache$MainThreadExecutor;Ljava/util/function/BooleanSupplier;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;IILnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+    RuntimeVisibleAnnotations:
+      0: #59(#60=[s#61,s#62],#63=[@#64(#9=s#65,#66=s#67)],#68=I#69)
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;","getChunkBlocking(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ServerChunkManager$MainThreadExecutor;runTasks(Ljava/util/function/BooleanSupplier;)V"
+          )]
+          require=0
+        )
+    RuntimeInvisibleAnnotations:
+      0: #70()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      instance
+      stopCondition
+      original
+      x
+      z
+      leastStatus
+      create
+
+  private net.minecraft.world.level.chunk.ChunkAccess instrumentGetChunk(int, int, net.minecraft.world.level.chunk.status.ChunkStatus, boolean, com.llamalad7.mixinextras.injector.wrapoperation.Operation<net.minecraft.world.level.chunk.ChunkAccess>);
+    descriptor: (IILnet/minecraft/world/level/chunk/status/ChunkStatus;ZLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=9, args_size=6
+         0: invokestatic  #78                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+         3: aload_0
+         4: getfield      #80                 // Field mainThread:Ljava/lang/Thread;
+         7: if_acmpeq     123
+        10: invokestatic  #117                // Method com/ishland/c2me/base/common/threadstate/ThreadInstrumentation.getCurrent:()Lcom/ishland/c2me/base/common/threadstate/ThreadState;
+        13: new           #119                // class com/ishland/c2me/base/common/threadstate/SyncLoadWork
+        16: dup
+        17: aload_0
+        18: getfield      #121                // Field level:Lnet/minecraft/server/level/ServerLevel;
+        21: new           #88                 // class net/minecraft/world/level/ChunkPos
+        24: dup
+        25: iload_1
+        26: iload_2
+        27: invokespecial #91                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        30: aload_3
+        31: iload         4
+        33: invokespecial #124                // Method com/ishland/c2me/base/common/threadstate/SyncLoadWork."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/status/ChunkStatus;Z)V
+        36: invokevirtual #128                // Method com/ishland/c2me/base/common/threadstate/ThreadState.begin:(Lcom/ishland/c2me/base/common/threadstate/RunningWork;)Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+        39: astore        6
+        41: aload         5
+        43: iconst_4
+        44: anewarray     #4                  // class java/lang/Object
+        47: dup
+        48: iconst_0
+        49: iload_1
+        50: invokestatic  #162                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        53: aastore
+        54: dup
+        55: iconst_1
+        56: iload_2
+        57: invokestatic  #162                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        60: aastore
+        61: dup
+        62: iconst_2
+        63: aload_3
+        64: aastore
+        65: dup
+        66: iconst_3
+        67: iload         4
+        69: invokestatic  #167                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        72: aastore
+        73: invokeinterface #134,  2          // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        78: checkcast     #169                // class net/minecraft/world/level/chunk/ChunkAccess
+        81: astore        7
+        83: aload         6
+        85: ifnull        93
+        88: aload         6
+        90: invokevirtual #137                // Method com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable.close:()V
+        93: aload         7
+        95: areturn
+        96: astore        7
+        98: aload         6
+       100: ifnull        120
+       103: aload         6
+       105: invokevirtual #137                // Method com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable.close:()V
+       108: goto          120
+       111: astore        8
+       113: aload         7
+       115: aload         8
+       117: invokevirtual #143                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       120: aload         7
+       122: athrow
+       123: aload         5
+       125: iconst_4
+       126: anewarray     #4                  // class java/lang/Object
+       129: dup
+       130: iconst_0
+       131: iload_1
+       132: invokestatic  #162                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       135: aastore
+       136: dup
+       137: iconst_1
+       138: iload_2
+       139: invokestatic  #162                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       142: aastore
+       143: dup
+       144: iconst_2
+       145: aload_3
+       146: aastore
+       147: dup
+       148: iconst_3
+       149: iload         4
+       151: invokestatic  #167                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       154: aastore
+       155: invokeinterface #134,  2          // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+       160: checkcast     #169                // class net/minecraft/world/level/chunk/ChunkAccess
+       163: areturn
+      Exception table:
+         from    to  target type
+            41    83    96   Class java/lang/Throwable
+           103   108   111   Class java/lang/Throwable
+      StackMapTable: number_of_entries = 5
+        frame_type = 253 /* append */
+          offset_delta = 93
+          locals = [ class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable, class net/minecraft/world/level/chunk/ChunkAccess ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager, int, int, class net/minecraft/world/level/chunk/status/ChunkStatus, int, class com/llamalad7/mixinextras/injector/wrapoperation/Operation, class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 14
+          locals = [ class com/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager, int, int, class net/minecraft/world/level/chunk/status/ChunkStatus, int, class com/llamalad7/mixinextras/injector/wrapoperation/Operation, class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable, class java/lang/Throwable ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 8 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+      LineNumberTable:
+        line 70: 0
+        line 71: 10
+        line 72: 41
+        line 73: 83
+        line 72: 93
+        line 71: 96
+        line 75: 123
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           41      82     6 ignored   Lcom/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable;
+            0     164     0  this   Lcom/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager;
+            0     164     1     x   I
+            0     164     2     z   I
+            0     164     3 leastStatus   Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+            0     164     4 create   Z
+            0     164     5 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     164     5 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/chunk/ChunkAccess;>;
+    Signature: #155                         // (IILnet/minecraft/world/level/chunk/status/ChunkStatus;ZLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Lnet/minecraft/world/level/chunk/ChunkAccess;>;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+    RuntimeVisibleAnnotations:
+      0: #156(#60=[s#61])
+        com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod(
+          method=["getChunk(IILnet/minecraft/world/chunk/ChunkStatus;Z)Lnet/minecraft/world/chunk/Chunk;"]
+        )
+    MethodParameters:
+      Name                           Flags
+      x
+      z
+      leastStatus
+      create
+      original
+
+  public net.minecraft.world.level.ChunkPos getCurrentSyncLoad();
+    descriptor: ()Lnet/minecraft/world/level/ChunkPos;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #39                 // Field currentSyncLoadChunk:Lnet/minecraft/world/level/ChunkPos;
+         4: areturn
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/base/mixin/instrumentation/MixinServerChunkManager;
+}
+InnerClasses:
+  public static final #15= #12 of #14;    // WorkClosable=class com/ishland/c2me/base/common/threadstate/ThreadState$WorkClosable of class com/ishland/c2me/base/common/threadstate/ThreadState
+  public final #20= #17 of #19;           // MainThreadExecutor=class net/minecraft/server/level/ServerChunkCache$MainThreadExecutor of class net/minecraft/server/level/ServerChunkCache
+SourceFile: "MixinServerChunkManager.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerChunkCache;]
+    )
