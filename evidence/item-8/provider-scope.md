@@ -5598,8 +5598,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Six membership roles are resolved below;
-37 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Seven membership roles are resolved below;
+36 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5617,7 +5617,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
-| `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
 | `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5684,3 +5684,20 @@ entry and all three source identities. No independent family is added.
 Seven focused Fabric cases and scoped checks pass using the existing commands.
 Module queue: six resolved, 37 open. Whole-provider census: 90 resolved, 46 open.
 Next: v2 conventional tags, then the remaining named module roles.
+
+### Fabric v2 conventional tags resolved
+
+Source e1c7c24 (extractor 27f6181) independently reproduces the entry,
+TagRegistration, TranslationConventionLogWarnings and the sole TagKeyMixin.
+Registration creates tag keys, including keys for existing structures, rather
+than structure definitions. The entry installs translation-warning checks that
+read item tags and language entries. The mixin declares the FabricTagKey
+interface on TagKey; it contains no methods or fields. These roles add no
+independent family. The module's complete partition is 16 classes, 491 tag JSON
+files, fourteen language files and five metadata/icon/mixin-declaration files.
+
+The focused test binds that partition and all four source identities. Eight
+Fabric cases and scoped Ruff/Basedpyright pass. The initial type check rejected
+an untyped JSON variable; its explicit type annotation fixed that check before
+acceptance. Fabric module queue: seven resolved, 36 open. Whole provider census
+stays 90 resolved, 46 open. Next: remaining named module entries and hooks.
