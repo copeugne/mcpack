@@ -211,6 +211,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "dev/architectury/event/EventHandler.class",
+    "dev/architectury/event/forge/EventHandlerImpl.class",
+    "dev/architectury/event/forge/EventHandlerImplCommon.class",
+    "dev/architectury/event/forge/EventHandlerImplCommon$ModBasedEventHandler.class",
+    "dev/architectury/event/forge/EventHandlerImplServer.class",
+    "dev/architectury/event/forge/EventHandlerImplServer$ModBasedEventHandler.class",
+    "dev/architectury/registry/level/biome/forge/BiomeModificationsImpl.class",
+    "dev/architectury/registry/level/biome/forge/BiomeModificationsImpl$BiomeModifierImpl.class",
     "dev/architectury/mixin/MixinLightningBolt.class",
     "dev/architectury/mixin/forge/MixinFallingBlockEntity.class",
     "dev/architectury/mixin/forge/MixinInventory.class",
