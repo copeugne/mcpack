@@ -1,0 +1,543 @@
+Classfile aether-1.21.1-1.5.10-neoforge.jar!/com/aetherteam/aether/mixin/mixins/common/EntityMixin.class
+  Last modified Sep 28, 2025; size 5324 bytes
+  SHA-256 checksum 6d8a21a9803944fa12cc63a4c4fc87e01a8d0c99dc2050cbc112ffa6ebd0bb28
+  Compiled from "EntityMixin.java"
+public class com.aetherteam.aether.mixin.mixins.common.EntityMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #70                         // com/aetherteam/aether/mixin/mixins/common/EntityMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // net/minecraft/world/entity/Entity
+    #8 = Utf8               net/minecraft/world/entity/Entity
+    #9 = Methodref          #7.#10        // net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+   #10 = NameAndType        #11:#12       // level:()Lnet/minecraft/world/level/Level;
+   #11 = Utf8               level
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Class              #14           // net/minecraft/server/level/ServerLevel
+   #14 = Utf8               net/minecraft/server/level/ServerLevel
+   #15 = Fieldref           #16.#17       // com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+   #16 = Class              #18           // com/aetherteam/aether/AetherConfig
+   #17 = NameAndType        #19:#20       // SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+   #18 = Utf8               com/aetherteam/aether/AetherConfig
+   #19 = Utf8               SERVER
+   #20 = Utf8               Lcom/aetherteam/aether/AetherConfig$Server;
+   #21 = Fieldref           #22.#23       // com/aetherteam/aether/AetherConfig$Server.disable_falling_to_overworld:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+   #22 = Class              #24           // com/aetherteam/aether/AetherConfig$Server
+   #23 = NameAndType        #25:#26       // disable_falling_to_overworld:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+   #24 = Utf8               com/aetherteam/aether/AetherConfig$Server
+   #25 = Utf8               disable_falling_to_overworld
+   #26 = Utf8               Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+   #27 = Methodref          #28.#29       // net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+   #28 = Class              #30           // net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+   #29 = NameAndType        #31:#32       // get:()Ljava/lang/Object;
+   #30 = Utf8               net/neoforged/neoforge/common/ModConfigSpec$ConfigValue
+   #31 = Utf8               get
+   #32 = Utf8               ()Ljava/lang/Object;
+   #33 = Class              #34           // java/lang/Boolean
+   #34 = Utf8               java/lang/Boolean
+   #35 = Methodref          #33.#36       // java/lang/Boolean.booleanValue:()Z
+   #36 = NameAndType        #37:#38       // booleanValue:()Z
+   #37 = Utf8               booleanValue
+   #38 = Utf8               ()Z
+   #39 = Methodref          #13.#40       // net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+   #40 = NameAndType        #41:#42       // dimension:()Lnet/minecraft/resources/ResourceKey;
+   #41 = Utf8               dimension
+   #42 = Utf8               ()Lnet/minecraft/resources/ResourceKey;
+   #43 = Methodref          #44.#45       // com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+   #44 = Class              #46           // com/aetherteam/aether/world/LevelUtil
+   #45 = NameAndType        #47:#42       // destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+   #46 = Utf8               com/aetherteam/aether/world/LevelUtil
+   #47 = Utf8               destinationDimension
+   #48 = Methodref          #7.#49        // net/minecraft/world/entity/Entity.getY:()D
+   #49 = NameAndType        #50:#51       // getY:()D
+   #50 = Utf8               getY
+   #51 = Utf8               ()D
+   #52 = Methodref          #13.#53       // net/minecraft/server/level/ServerLevel.getMinBuildHeight:()I
+   #53 = NameAndType        #54:#55       // getMinBuildHeight:()I
+   #54 = Utf8               getMinBuildHeight
+   #55 = Utf8               ()I
+   #56 = Methodref          #7.#57        // net/minecraft/world/entity/Entity.isPassenger:()Z
+   #57 = NameAndType        #58:#38       // isPassenger:()Z
+   #58 = Utf8               isPassenger
+   #59 = Class              #60           // net/minecraft/world/entity/player/Player
+   #60 = Utf8               net/minecraft/world/entity/player/Player
+   #61 = Methodref          #7.#62        // net/minecraft/world/entity/Entity.isVehicle:()Z
+   #62 = NameAndType        #63:#38       // isVehicle:()Z
+   #63 = Utf8               isVehicle
+   #64 = Class              #65           // net/minecraft/world/entity/Saddleable
+   #65 = Utf8               net/minecraft/world/entity/Saddleable
+   #66 = InterfaceMethodref #64.#67       // net/minecraft/world/entity/Saddleable.isSaddled:()Z
+   #67 = NameAndType        #68:#38       // isSaddled:()Z
+   #68 = Utf8               isSaddled
+   #69 = Methodref          #70.#71       // com/aetherteam/aether/mixin/mixins/common/EntityMixin.entityFell:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+   #70 = Class              #72           // com/aetherteam/aether/mixin/mixins/common/EntityMixin
+   #71 = NameAndType        #73:#74       // entityFell:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+   #72 = Utf8               com/aetherteam/aether/mixin/mixins/common/EntityMixin
+   #73 = Utf8               entityFell
+   #74 = Utf8               (Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+   #75 = Class              #76           // net/minecraft/world/entity/projectile/Projectile
+   #76 = Utf8               net/minecraft/world/entity/projectile/Projectile
+   #77 = Methodref          #75.#78       // net/minecraft/world/entity/projectile/Projectile.getOwner:()Lnet/minecraft/world/entity/Entity;
+   #78 = NameAndType        #79:#80       // getOwner:()Lnet/minecraft/world/entity/Entity;
+   #79 = Utf8               getOwner
+   #80 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #81 = Class              #82           // net/minecraft/world/entity/item/ItemEntity
+   #82 = Utf8               net/minecraft/world/entity/item/ItemEntity
+   #83 = Fieldref           #84.#85       // com/aetherteam/aether/attachment/AetherDataAttachments.DROPPED_ITEM:Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #84 = Class              #86           // com/aetherteam/aether/attachment/AetherDataAttachments
+   #85 = NameAndType        #87:#88       // DROPPED_ITEM:Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #86 = Utf8               com/aetherteam/aether/attachment/AetherDataAttachments
+   #87 = Utf8               DROPPED_ITEM
+   #88 = Utf8               Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #89 = Methodref          #81.#90       // net/minecraft/world/entity/item/ItemEntity.hasData:(Ljava/util/function/Supplier;)Z
+   #90 = NameAndType        #91:#92       // hasData:(Ljava/util/function/Supplier;)Z
+   #91 = Utf8               hasData
+   #92 = Utf8               (Ljava/util/function/Supplier;)Z
+   #93 = Methodref          #81.#78       // net/minecraft/world/entity/item/ItemEntity.getOwner:()Lnet/minecraft/world/entity/Entity;
+   #94 = Methodref          #81.#95       // net/minecraft/world/entity/item/ItemEntity.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #95 = NameAndType        #96:#97       // getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #96 = Utf8               getData
+   #97 = Utf8               (Ljava/util/function/Supplier;)Ljava/lang/Object;
+   #98 = Class              #99           // com/aetherteam/aether/attachment/DroppedItemAttachment
+   #99 = Utf8               com/aetherteam/aether/attachment/DroppedItemAttachment
+  #100 = Methodref          #98.#101      // com/aetherteam/aether/attachment/DroppedItemAttachment.getOwner:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #101 = NameAndType        #79:#102      // getOwner:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #102 = Utf8               (Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #103 = Methodref          #104.#105     // net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+  #104 = Class              #106          // net/minecraft/world/level/Level
+  #105 = NameAndType        #107:#108     // getServer:()Lnet/minecraft/server/MinecraftServer;
+  #106 = Utf8               net/minecraft/world/level/Level
+  #107 = Utf8               getServer
+  #108 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+  #109 = Methodref          #44.#110      // com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+  #110 = NameAndType        #111:#42      // returnDimension:()Lnet/minecraft/resources/ResourceKey;
+  #111 = Utf8               returnDimension
+  #112 = Methodref          #113.#114     // net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+  #113 = Class              #115          // net/minecraft/server/MinecraftServer
+  #114 = NameAndType        #116:#117     // getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+  #115 = Utf8               net/minecraft/server/MinecraftServer
+  #116 = Utf8               getLevel
+  #117 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+  #118 = Methodref          #104.#119     // net/minecraft/world/level/Level.getProfiler:()Lnet/minecraft/util/profiling/ProfilerFiller;
+  #119 = NameAndType        #120:#121     // getProfiler:()Lnet/minecraft/util/profiling/ProfilerFiller;
+  #120 = Utf8               getProfiler
+  #121 = Utf8               ()Lnet/minecraft/util/profiling/ProfilerFiller;
+  #122 = String             #123          // aether_fall
+  #123 = Utf8               aether_fall
+  #124 = InterfaceMethodref #125.#126     // net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+  #125 = Class              #127          // net/minecraft/util/profiling/ProfilerFiller
+  #126 = NameAndType        #128:#129     // push:(Ljava/lang/String;)V
+  #127 = Utf8               net/minecraft/util/profiling/ProfilerFiller
+  #128 = Utf8               push
+  #129 = Utf8               (Ljava/lang/String;)V
+  #130 = Methodref          #7.#131       // net/minecraft/world/entity/Entity.setPortalCooldown:()V
+  #131 = NameAndType        #132:#6       // setPortalCooldown:()V
+  #132 = Utf8               setPortalCooldown
+  #133 = Methodref          #7.#134       // net/minecraft/world/entity/Entity.getVehicle:()Lnet/minecraft/world/entity/Entity;
+  #134 = NameAndType        #135:#80      // getVehicle:()Lnet/minecraft/world/entity/Entity;
+  #135 = Utf8               getVehicle
+  #136 = Methodref          #7.#137       // net/minecraft/world/entity/Entity.getBbHeight:()F
+  #137 = NameAndType        #138:#139     // getBbHeight:()F
+  #138 = Utf8               getBbHeight
+  #139 = Utf8               ()F
+  #140 = Class              #141          // net/minecraft/world/level/portal/DimensionTransition
+  #141 = Utf8               net/minecraft/world/level/portal/DimensionTransition
+  #142 = Class              #143          // net/minecraft/world/phys/Vec3
+  #143 = Utf8               net/minecraft/world/phys/Vec3
+  #144 = Methodref          #7.#145       // net/minecraft/world/entity/Entity.getX:()D
+  #145 = NameAndType        #146:#51      // getX:()D
+  #146 = Utf8               getX
+  #147 = Methodref          #13.#148      // net/minecraft/server/level/ServerLevel.getMaxBuildHeight:()I
+  #148 = NameAndType        #149:#55      // getMaxBuildHeight:()I
+  #149 = Utf8               getMaxBuildHeight
+  #150 = Methodref          #7.#151       // net/minecraft/world/entity/Entity.getZ:()D
+  #151 = NameAndType        #152:#51      // getZ:()D
+  #152 = Utf8               getZ
+  #153 = Methodref          #142.#154     // net/minecraft/world/phys/Vec3."<init>":(DDD)V
+  #154 = NameAndType        #5:#155       // "<init>":(DDD)V
+  #155 = Utf8               (DDD)V
+  #156 = Methodref          #7.#157       // net/minecraft/world/entity/Entity.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+  #157 = NameAndType        #158:#159     // getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+  #158 = Utf8               getDeltaMovement
+  #159 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #160 = Methodref          #7.#161       // net/minecraft/world/entity/Entity.getYRot:()F
+  #161 = NameAndType        #162:#139     // getYRot:()F
+  #162 = Utf8               getYRot
+  #163 = Methodref          #7.#164       // net/minecraft/world/entity/Entity.getXRot:()F
+  #164 = NameAndType        #165:#139     // getXRot:()F
+  #165 = Utf8               getXRot
+  #166 = Fieldref           #140.#167     // net/minecraft/world/level/portal/DimensionTransition.DO_NOTHING:Lnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;
+  #167 = NameAndType        #168:#169     // DO_NOTHING:Lnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;
+  #168 = Utf8               DO_NOTHING
+  #169 = Utf8               Lnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;
+  #170 = Methodref          #140.#171     // net/minecraft/world/level/portal/DimensionTransition."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFZLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V
+  #171 = NameAndType        #5:#172       // "<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFZLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V
+  #172 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFZLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V
+  #173 = Methodref          #7.#174       // net/minecraft/world/entity/Entity.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #174 = NameAndType        #175:#176     // changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #175 = Utf8               changeDimension
+  #176 = Utf8               (Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+  #177 = InterfaceMethodref #125.#178     // net/minecraft/util/profiling/ProfilerFiller.pop:()V
+  #178 = NameAndType        #179:#6       // pop:()V
+  #179 = Utf8               pop
+  #180 = Class              #181          // net/minecraft/server/level/ServerPlayer
+  #181 = Utf8               net/minecraft/server/level/ServerPlayer
+  #182 = Fieldref           #183.#184     // com/aetherteam/aether/event/hooks/DimensionHooks.teleportationTimer:I
+  #183 = Class              #185          // com/aetherteam/aether/event/hooks/DimensionHooks
+  #184 = NameAndType        #186:#187     // teleportationTimer:I
+  #185 = Utf8               com/aetherteam/aether/event/hooks/DimensionHooks
+  #186 = Utf8               teleportationTimer
+  #187 = Utf8               I
+  #188 = Utf8               Code
+  #189 = Utf8               LineNumberTable
+  #190 = Utf8               LocalVariableTable
+  #191 = Utf8               this
+  #192 = Utf8               Lcom/aetherteam/aether/mixin/mixins/common/EntityMixin;
+  #193 = Utf8               travel
+  #194 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #195 = Utf8               projectile
+  #196 = Utf8               Lnet/minecraft/world/entity/projectile/Projectile;
+  #197 = Utf8               itemEntity
+  #198 = Utf8               Lnet/minecraft/world/entity/item/ItemEntity;
+  #199 = Utf8               serverLevel
+  #200 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #201 = Utf8               ci
+  #202 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #203 = Utf8               entity
+  #204 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #205 = Utf8               Lnet/minecraft/world/level/Level;
+  #206 = Utf8               StackMapTable
+  #207 = Utf8               RuntimeVisibleAnnotations
+  #208 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #209 = Utf8               at
+  #210 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #211 = Utf8               value
+  #212 = Utf8               TAIL
+  #213 = Utf8               method
+  #214 = Utf8               tick()V
+  #215 = Utf8               vehicleOffset
+  #216 = Utf8               D
+  #217 = Utf8               transition
+  #218 = Utf8               Lnet/minecraft/world/level/portal/DimensionTransition;
+  #219 = Utf8               target
+  #220 = Utf8               destination
+  #221 = Utf8               minecraftserver
+  #222 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #223 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #224 = Utf8               Ljavax/annotation/Nullable;
+  #225 = Utf8               SourceFile
+  #226 = Utf8               EntityMixin.java
+  #227 = Utf8               RuntimeInvisibleAnnotations
+  #228 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #229 = Utf8               InnerClasses
+  #230 = Utf8               Server
+  #231 = Class              #232          // net/neoforged/neoforge/common/ModConfigSpec
+  #232 = Utf8               net/neoforged/neoforge/common/ModConfigSpec
+  #233 = Utf8               ConfigValue
+  #234 = Class              #235          // net/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition
+  #235 = Utf8               net/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition
+  #236 = Utf8               PostDimensionTransition
+{
+  public com.aetherteam.aether.mixin.mixins.common.EntityMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/aetherteam/aether/mixin/mixins/common/EntityMixin;
+
+  private void travel(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=7, args_size=2
+         0: aload_0
+         1: checkcast     #7                  // class net/minecraft/world/entity/Entity
+         4: astore_2
+         5: aload_2
+         6: invokevirtual #9                  // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+         9: astore_3
+        10: aload_3
+        11: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        14: ifeq          208
+        17: aload_3
+        18: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        21: astore        4
+        23: getstatic     #15                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+        26: getfield      #21                 // Field com/aetherteam/aether/AetherConfig$Server.disable_falling_to_overworld:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+        29: invokevirtual #27                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+        32: checkcast     #33                 // class java/lang/Boolean
+        35: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        38: ifne          208
+        41: aload         4
+        43: invokevirtual #39                 // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+        46: invokestatic  #43                 // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+        49: if_acmpne     208
+        52: aload_2
+        53: invokevirtual #48                 // Method net/minecraft/world/entity/Entity.getY:()D
+        56: aload         4
+        58: invokevirtual #52                 // Method net/minecraft/server/level/ServerLevel.getMinBuildHeight:()I
+        61: i2d
+        62: dcmpg
+        63: ifgt          208
+        66: aload_2
+        67: invokevirtual #56                 // Method net/minecraft/world/entity/Entity.isPassenger:()Z
+        70: ifne          208
+        73: aload_2
+        74: instanceof    #59                 // class net/minecraft/world/entity/player/Player
+        77: ifne          106
+        80: aload_2
+        81: invokevirtual #61                 // Method net/minecraft/world/entity/Entity.isVehicle:()Z
+        84: ifne          106
+        87: aload_2
+        88: instanceof    #64                 // class net/minecraft/world/entity/Saddleable
+        91: ifeq          114
+        94: aload_2
+        95: checkcast     #64                 // class net/minecraft/world/entity/Saddleable
+        98: invokeinterface #66,  1           // InterfaceMethod net/minecraft/world/entity/Saddleable.isSaddled:()Z
+       103: ifeq          114
+       106: aload_2
+       107: invokestatic  #69                 // Method entityFell:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+       110: pop
+       111: goto          208
+       114: aload_2
+       115: instanceof    #75                 // class net/minecraft/world/entity/projectile/Projectile
+       118: ifeq          147
+       121: aload_2
+       122: checkcast     #75                 // class net/minecraft/world/entity/projectile/Projectile
+       125: astore        5
+       127: aload         5
+       129: invokevirtual #77                 // Method net/minecraft/world/entity/projectile/Projectile.getOwner:()Lnet/minecraft/world/entity/Entity;
+       132: instanceof    #59                 // class net/minecraft/world/entity/player/Player
+       135: ifeq          147
+       138: aload         5
+       140: invokestatic  #69                 // Method entityFell:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+       143: pop
+       144: goto          208
+       147: aload_2
+       148: instanceof    #81                 // class net/minecraft/world/entity/item/ItemEntity
+       151: ifeq          208
+       154: aload_2
+       155: checkcast     #81                 // class net/minecraft/world/entity/item/ItemEntity
+       158: astore        6
+       160: aload         6
+       162: getstatic     #83                 // Field com/aetherteam/aether/attachment/AetherDataAttachments.DROPPED_ITEM:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       165: invokevirtual #89                 // Method net/minecraft/world/entity/item/ItemEntity.hasData:(Ljava/util/function/Supplier;)Z
+       168: ifeq          208
+       171: aload         6
+       173: invokevirtual #93                 // Method net/minecraft/world/entity/item/ItemEntity.getOwner:()Lnet/minecraft/world/entity/Entity;
+       176: instanceof    #59                 // class net/minecraft/world/entity/player/Player
+       179: ifne          203
+       182: aload         6
+       184: getstatic     #83                 // Field com/aetherteam/aether/attachment/AetherDataAttachments.DROPPED_ITEM:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       187: invokevirtual #94                 // Method net/minecraft/world/entity/item/ItemEntity.getData:(Ljava/util/function/Supplier;)Ljava/lang/Object;
+       190: checkcast     #98                 // class com/aetherteam/aether/attachment/DroppedItemAttachment
+       193: aload_3
+       194: invokevirtual #100                // Method com/aetherteam/aether/attachment/DroppedItemAttachment.getOwner:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+       197: instanceof    #59                 // class net/minecraft/world/entity/player/Player
+       200: ifeq          208
+       203: aload_2
+       204: invokestatic  #69                 // Method entityFell:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+       207: pop
+       208: return
+      LineNumberTable:
+        line 38: 0
+        line 39: 5
+        line 40: 10
+        line 41: 23
+        line 42: 41
+        line 43: 52
+        line 44: 73
+        line 45: 106
+        line 46: 114
+        line 47: 138
+        line 48: 147
+        line 49: 160
+        line 50: 171
+        line 51: 203
+        line 59: 208
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          127      20     5 projectile   Lnet/minecraft/world/entity/projectile/Projectile;
+          160      48     6 itemEntity   Lnet/minecraft/world/entity/item/ItemEntity;
+           23     185     4 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+            0     209     0  this   Lcom/aetherteam/aether/mixin/mixins/common/EntityMixin;
+            0     209     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            5     204     2 entity   Lnet/minecraft/world/entity/Entity;
+           10     199     3 level   Lnet/minecraft/world/level/Level;
+      StackMapTable: number_of_entries = 5
+        frame_type = 254 /* append */
+          offset_delta = 106
+          locals = [ class net/minecraft/world/entity/Entity, class net/minecraft/world/level/Level, class net/minecraft/server/level/ServerLevel ]
+        frame_type = 7 /* same */
+        frame_type = 32 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 55
+          locals = [ top, class net/minecraft/world/entity/item/ItemEntity ]
+        frame_type = 248 /* chop */
+          offset_delta = 4
+    RuntimeVisibleAnnotations:
+      0: #208(#209=[@#210(#211=s#212)],#213=[s#214])
+        org.spongepowered.asm.mixin.injection.Inject(
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+          method=["tick()V"]
+        )
+
+  private static net.minecraft.world.entity.Entity entityFell(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/Entity;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=11, locals=8, args_size=1
+         0: aload_0
+         1: invokevirtual #9                  // Method net/minecraft/world/entity/Entity.level:()Lnet/minecraft/world/level/Level;
+         4: astore_1
+         5: aload_1
+         6: invokevirtual #103                // Method net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+         9: astore_2
+        10: aload_2
+        11: ifnull        164
+        14: aload_2
+        15: invokestatic  #109                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+        18: invokevirtual #112                // Method net/minecraft/server/MinecraftServer.getLevel:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/server/level/ServerLevel;
+        21: astore_3
+        22: aload_3
+        23: ifnull        164
+        26: invokestatic  #109                // Method com/aetherteam/aether/world/LevelUtil.returnDimension:()Lnet/minecraft/resources/ResourceKey;
+        29: invokestatic  #43                 // Method com/aetherteam/aether/world/LevelUtil.destinationDimension:()Lnet/minecraft/resources/ResourceKey;
+        32: if_acmpeq     164
+        35: aload_1
+        36: invokevirtual #118                // Method net/minecraft/world/level/Level.getProfiler:()Lnet/minecraft/util/profiling/ProfilerFiller;
+        39: ldc           #122                // String aether_fall
+        41: invokeinterface #124,  2          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.push:(Ljava/lang/String;)V
+        46: aload_0
+        47: invokevirtual #130                // Method net/minecraft/world/entity/Entity.setPortalCooldown:()V
+        50: dconst_0
+        51: dstore        4
+        53: aload_0
+        54: invokevirtual #133                // Method net/minecraft/world/entity/Entity.getVehicle:()Lnet/minecraft/world/entity/Entity;
+        57: ifnull        70
+        60: aload_0
+        61: invokevirtual #133                // Method net/minecraft/world/entity/Entity.getVehicle:()Lnet/minecraft/world/entity/Entity;
+        64: invokevirtual #136                // Method net/minecraft/world/entity/Entity.getBbHeight:()F
+        67: f2d
+        68: dstore        4
+        70: new           #140                // class net/minecraft/world/level/portal/DimensionTransition
+        73: dup
+        74: aload_3
+        75: new           #142                // class net/minecraft/world/phys/Vec3
+        78: dup
+        79: aload_0
+        80: invokevirtual #144                // Method net/minecraft/world/entity/Entity.getX:()D
+        83: aload_3
+        84: invokevirtual #147                // Method net/minecraft/server/level/ServerLevel.getMaxBuildHeight:()I
+        87: i2f
+        88: aload_0
+        89: invokevirtual #136                // Method net/minecraft/world/entity/Entity.getBbHeight:()F
+        92: fsub
+        93: f2d
+        94: dload         4
+        96: dsub
+        97: aload_0
+        98: invokevirtual #150                // Method net/minecraft/world/entity/Entity.getZ:()D
+       101: invokespecial #153                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+       104: aload_0
+       105: invokevirtual #156                // Method net/minecraft/world/entity/Entity.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+       108: aload_0
+       109: invokevirtual #160                // Method net/minecraft/world/entity/Entity.getYRot:()F
+       112: aload_0
+       113: invokevirtual #163                // Method net/minecraft/world/entity/Entity.getXRot:()F
+       116: iconst_0
+       117: getstatic     #166                // Field net/minecraft/world/level/portal/DimensionTransition.DO_NOTHING:Lnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;
+       120: invokespecial #170                // Method net/minecraft/world/level/portal/DimensionTransition."<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;FFZLnet/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition;)V
+       123: astore        6
+       125: aload_0
+       126: aload         6
+       128: invokevirtual #173                // Method net/minecraft/world/entity/Entity.changeDimension:(Lnet/minecraft/world/level/portal/DimensionTransition;)Lnet/minecraft/world/entity/Entity;
+       131: astore        7
+       133: aload_1
+       134: invokevirtual #118                // Method net/minecraft/world/level/Level.getProfiler:()Lnet/minecraft/util/profiling/ProfilerFiller;
+       137: invokeinterface #177,  1          // InterfaceMethod net/minecraft/util/profiling/ProfilerFiller.pop:()V
+       142: aload         7
+       144: ifnull        161
+       147: aload         7
+       149: instanceof    #180                // class net/minecraft/server/level/ServerPlayer
+       152: ifeq          161
+       155: sipush        500
+       158: putstatic     #182                // Field com/aetherteam/aether/event/hooks/DimensionHooks.teleportationTimer:I
+       161: aload         7
+       163: areturn
+       164: aconst_null
+       165: areturn
+      LineNumberTable:
+        line 69: 0
+        line 70: 5
+        line 71: 10
+        line 72: 14
+        line 73: 22
+        line 74: 35
+        line 75: 46
+        line 76: 50
+        line 77: 53
+        line 78: 60
+        line 80: 70
+        line 81: 125
+        line 82: 133
+        line 83: 142
+        line 84: 147
+        line 85: 155
+        line 88: 161
+        line 91: 164
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           53     111     4 vehicleOffset   D
+          125      39     6 transition   Lnet/minecraft/world/level/portal/DimensionTransition;
+          133      31     7 target   Lnet/minecraft/world/entity/Entity;
+           22     142     3 destination   Lnet/minecraft/server/level/ServerLevel;
+            0     166     0 entity   Lnet/minecraft/world/entity/Entity;
+            5     161     1 serverLevel   Lnet/minecraft/world/level/Level;
+           10     156     2 minecraftserver   Lnet/minecraft/server/MinecraftServer;
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 70
+          locals = [ class net/minecraft/world/entity/Entity, class net/minecraft/world/level/Level, class net/minecraft/server/MinecraftServer, class net/minecraft/server/level/ServerLevel, double ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 90
+          locals = [ class net/minecraft/world/level/portal/DimensionTransition, class net/minecraft/world/entity/Entity ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class net/minecraft/world/entity/Entity, class net/minecraft/world/level/Level, class net/minecraft/server/MinecraftServer ]
+          stack = []
+    RuntimeVisibleAnnotations:
+      0: #223()
+        org.spongepowered.asm.mixin.Unique
+      1: #224()
+        javax.annotation.Nullable
+}
+SourceFile: "EntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #228(#211=[c#204])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/Entity;]
+    )
+InnerClasses:
+  public static #230= #22 of #16;         // Server=class com/aetherteam/aether/AetherConfig$Server of class com/aetherteam/aether/AetherConfig
+  public static #233= #28 of #231;        // ConfigValue=class net/neoforged/neoforge/common/ModConfigSpec$ConfigValue of class net/neoforged/neoforge/common/ModConfigSpec
+  public static #236= #234 of #140;       // PostDimensionTransition=class net/minecraft/world/level/portal/DimensionTransition$PostDimensionTransition of class net/minecraft/world/level/portal/DimensionTransition
