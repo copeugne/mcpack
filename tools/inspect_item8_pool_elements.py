@@ -2128,6 +2128,11 @@ CLASSES: tuple[str, ...] = (
     "com/simibubi/create/Create.class",
     "com/simibubi/create/AllStructureProcessorTypes.class",
     "com/simibubi/create/foundation/mixin/CreateMixinPlugin.class",
+    "com/simibubi/create/foundation/events/CommonEvents.class",
+    "com/simibubi/create/foundation/events/CommonEvents$ModBusEvents.class",
+    "com/simibubi/create/content/schematics/SchematicProcessor.class",
+    "com/simibubi/create/content/schematics/SchematicPrinter.class",
+    "com/simibubi/create/content/schematics/ServerSchematicLoader.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
