@@ -6,6 +6,32 @@
 
 ### Continuation update - 2026-09-06
 
+Current continuation: provider census first, with 53 of 136 supported provider
+dispositions and 83 open rows in evidence/item-8/provider-scope.md. The later
+commits below supersede the older 47-provider checkpoint. Save/structure utility
+closure d01ceec is pushed and verified; fourteen focused cases passed. No new
+authored family from Fast Async World Save or Structure Essentials.
+
+BetterEnd candidate reconciliation f77f3f2 is pushed and verified. Reused source
+and packaged/runtime evidence establish an inline configured crashed-ship route,
+27 packaged biome consumers and 21 consumers exposed by the captured End biome
+source. Six cave-biome references are recorded separately. The six building
+lists have exactly 63 template choices: 21 inspected vegetation exclusions and
+42 architectural candidate choices. These are not family counts. Two focused
+cases and scoped Ruff/Basedpyright pass; no new capture or world run.
+
+Continue BetterEnd provider coverage before attributes. An exploratory full
+archive inspection found seven additional biome templates outside those six
+lists: blossoming_spires/house and old_bulbis_gardens/fallen_tree_1 through 3 and
+tree_stump_1 through 3. The seven packaged structures.json lists, village,
+pillar and portal components, other generation entries and shared modifiers
+still need supported dispositions. Do not infer inactivity from no literal
+class-string match. The 63-choice result only closes those six configured lists,
+not the whole provider. Reuse the existing formation, lake and feature captures.
+No canonical-family denominator is accepted yet. Finish all provider rows,
+publish named grouping decisions, then complete the eleven attributes and the
+required final review/delivery gate. Do not add an unrelated measurement system.
+
 Ritchie's Projectile Library provider coverage now passes. Its complete 34-class
 capture 50bc747 using 0cbba5c reproduced exactly. The reused provider test has
 12 passing cases. Preserve the packaging finding: both mixin JSON files lack
