@@ -699,6 +699,7 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/wover/biome/impl/modification/predicates/HasTag.class",
     "org/betterx/wover/biome/impl/modification/predicates/IsNamespace.class",
     "org/betterx/wover/biome/impl/modification/predicates/LocationPathContains.class",
+    "org/betterx/wover/biome/api/modification/BiomeModification.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
