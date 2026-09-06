@@ -704,6 +704,31 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+MixinSquared's bundled-library role is resolved. Source 88d7f4f (extractor
+27c648b) retains four wrapper and four core entry classes, independently
+reproduced. Wrapper manifest SHA-256:
+6a7cbdcfb28d23625a5a4468a982f9d5011767bc226793639d02532001fc47c2.
+Core manifest SHA-256:
+a46ec939d8f5fba8cbb02ca91e76e87d25d830ebc7be3711056659e04a14d673.
+The existing extractor now traverses the observed two-level nested path while
+preserving pinned parent/leaf identities and output format. Its smoke output
+remains in evidence/raw/item8/mixinsquared-nested-smoke.
+
+The wrapper's configuration declares a plugin but no mixin/client/server lists.
+Its plugin initializes MixinSquared, loads service-provided cancellers and
+annotation adjusters, and reorders transformation extensions. Core bootstrap
+registers the dynamic target selector and cancellation/annotation-adjustment
+extensions. The captured registrars operate on mixin methods, annotations and
+extension registries. This is transformation support for consumers' mixins,
+not an independent authored-site generator. The wrapper has eleven files and
+the core has sixty-three; neither contains assets or data. Their original class,
+archive and disassembly identities are bound by the existing provider test.
+
+Five focused cases pass (2.13s). A line-length issue was corrected before the
+scoped quality checks. Do not recapture either bundled library or reopen the
+Trinkets fallback. Remaining Supplementaries scope is other common/mixin hooks
+and full parent payload accounting. Census remains 78 resolved and 58 open.
+
 The Trinkets fallback is now resolved. The existing provider test checks the
 exact dev/emi/trinkets/api/TrinketsApi.class path, including prefixed copies,
 in every hash-verified retained and platform archive and recursively embedded
