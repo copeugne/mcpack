@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 54e4d725 and reproduces exactly. All 887 roots remain covered
+once; the birch workshop split preserves full variants. Coverage groups: 406.
+Canonical-note backlog: 84 (IDAS 59, AdoraBuild 25). Next: remaining AdoraBuild
+design relationships. Required attributes and nonregistry work remain open.
+
 AdoraBuild furnished tree relationships are resolved using views a052167e. Birch
 workshop is separated from cherry/oak tree camps; tree-house variants and mushroom
 residence retain their distinct forms. The affected definition/root/evidence case
