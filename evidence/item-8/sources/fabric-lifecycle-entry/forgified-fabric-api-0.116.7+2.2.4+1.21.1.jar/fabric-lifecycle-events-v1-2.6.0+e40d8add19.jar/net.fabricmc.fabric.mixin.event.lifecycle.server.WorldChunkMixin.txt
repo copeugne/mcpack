@@ -1,0 +1,397 @@
+Classfile forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar!/net/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin.class
+  Last modified Feb 21, 2026; size 4461 bytes
+  SHA-256 checksum bfbd808d08cfd04c5daebfade16aa91a0b22b9b62e09bea00cf0997fda6e3849
+  Compiled from "WorldChunkMixin.java"
+abstract class net.fabricmc.fabric.mixin.event.lifecycle.server.WorldChunkMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0420) ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // net/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 6, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin.getLevel:()Lnet/minecraft/world/level/Level;
+    #8 = Class              #10           // net/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin
+    #9 = NameAndType        #11:#12       // getLevel:()Lnet/minecraft/world/level/Level;
+   #10 = Utf8               net/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin
+   #11 = Utf8               getLevel
+   #12 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #13 = Class              #14           // net/minecraft/server/level/ServerLevel
+   #14 = Utf8               net/minecraft/server/level/ServerLevel
+   #15 = Fieldref           #16.#17       // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_LOAD:Lnet/fabricmc/fabric/api/event/Event;
+   #16 = Class              #18           // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents
+   #17 = NameAndType        #19:#20       // BLOCK_ENTITY_LOAD:Lnet/fabricmc/fabric/api/event/Event;
+   #18 = Utf8               net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents
+   #19 = Utf8               BLOCK_ENTITY_LOAD
+   #20 = Utf8               Lnet/fabricmc/fabric/api/event/Event;
+   #21 = Methodref          #22.#23       // net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+   #22 = Class              #24           // net/fabricmc/fabric/api/event/Event
+   #23 = NameAndType        #25:#26       // invoker:()Ljava/lang/Object;
+   #24 = Utf8               net/fabricmc/fabric/api/event/Event
+   #25 = Utf8               invoker
+   #26 = Utf8               ()Ljava/lang/Object;
+   #27 = Class              #28           // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load
+   #28 = Utf8               net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load
+   #29 = InterfaceMethodref #27.#30       // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load.onLoad:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+   #30 = NameAndType        #31:#32       // onLoad:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+   #31 = Utf8               onLoad
+   #32 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+   #33 = Fieldref           #16.#34       // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_UNLOAD:Lnet/fabricmc/fabric/api/event/Event;
+   #34 = NameAndType        #35:#20       // BLOCK_ENTITY_UNLOAD:Lnet/fabricmc/fabric/api/event/Event;
+   #35 = Utf8               BLOCK_ENTITY_UNLOAD
+   #36 = Class              #37           // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload
+   #37 = Utf8               net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload
+   #38 = InterfaceMethodref #36.#39       // net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload.onUnload:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+   #39 = NameAndType        #40:#32       // onUnload:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+   #40 = Utf8               onUnload
+   #41 = InterfaceMethodref #42.#43       // java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #42 = Class              #44           // java/util/Map
+   #43 = NameAndType        #45:#46       // remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #44 = Utf8               java/util/Map
+   #45 = Utf8               remove
+   #46 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #47 = Class              #48           // net/minecraft/world/level/block/entity/BlockEntity
+   #48 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+   #49 = Utf8               Code
+   #50 = Utf8               LineNumberTable
+   #51 = Utf8               LocalVariableTable
+   #52 = Utf8               this
+   #53 = Utf8               Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+   #54 = Utf8               RuntimeVisibleAnnotations
+   #55 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #56 = Utf8               onLoadBlockEntity
+   #57 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+   #58 = Utf8               blockEntity
+   #59 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #60 = Utf8               ci
+   #61 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #62 = Utf8               removedBlockEntity
+   #63 = Utf8               StackMapTable
+   #64 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #65 = Utf8               method
+   #66 = Utf8               setBlockEntity
+   #67 = Utf8               at
+   #68 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #69 = Utf8               value
+   #70 = Utf8               INVOKE
+   #71 = Utf8               target
+   #72 = Utf8               Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #73 = Utf8               shift
+   #74 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+   #75 = Utf8               BY
+   #76 = Utf8               by
+   #77 = Integer            3
+   #78 = Utf8               RuntimeInvisibleParameterAnnotations
+   #79 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+   #80 = Utf8               ordinal
+   #81 = Integer            1
+   #82 = Utf8               onRemoveBlockEntity
+   #83 = Utf8               info
+   #84 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;setRemoved()V
+   #85 = Utf8               AFTER
+   #86 = Utf8               (Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;
+   #87 = Utf8               map
+   #88 = Utf8               Ljava/util/Map;
+   #89 = Utf8               key
+   #90 = Utf8               Ljava/lang/Object;
+   #91 = Utf8               removed
+   #92 = Utf8               LocalVariableTypeTable
+   #93 = Utf8               Ljava/util/Map<TK;TV;>;
+   #94 = Utf8               TK;
+   #95 = Utf8               TV;
+   #96 = Utf8               RuntimeInvisibleTypeAnnotations
+   #97 = Utf8               Lorg/jetbrains/annotations/Nullable;
+   #98 = Utf8               Signature
+   #99 = Utf8               <K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;TK;)Ljava/lang/Object;
+  #100 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #101 = Utf8               getBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/LevelChunk$EntityCreationType;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #102 = Utf8               Ljava/util/Map;remove(Ljava/lang/Object;)Ljava/lang/Object;
+  #103 = Utf8               slice
+  #104 = Utf8               Lorg/spongepowered/asm/mixin/injection/Slice;
+  #105 = Utf8               to
+  #106 = Utf8               FIELD
+  #107 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;pendingBlockEntities:Ljava/util/Map;
+  #108 = Utf8               opcode
+  #109 = Integer            180
+  #110 = Utf8               (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+  #111 = Utf8               pos
+  #112 = Utf8               Lnet/minecraft/core/BlockPos;
+  #113 = Utf8               removeBlockEntity
+  #114 = Utf8               locals
+  #115 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/LocalCapture;
+  #116 = Utf8               CAPTURE_FAILEXCEPTION
+  #117 = Utf8               SourceFile
+  #118 = Utf8               WorldChunkMixin.java
+  #119 = Utf8               RuntimeInvisibleAnnotations
+  #120 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #121 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+  #122 = Utf8               InnerClasses
+  #123 = Utf8               Load
+  #124 = Utf8               Unload
+  #125 = Class              #126          // org/spongepowered/asm/mixin/injection/At$Shift
+  #126 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+  #127 = Class              #128          // org/spongepowered/asm/mixin/injection/At
+  #128 = Utf8               org/spongepowered/asm/mixin/injection/At
+  #129 = Utf8               Shift
+{
+  net.fabricmc.fabric.mixin.event.lifecycle.server.WorldChunkMixin();
+    descriptor: ()V
+    flags: (0x0000)
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+
+  public abstract net.minecraft.world.level.Level getLevel();
+    descriptor: ()Lnet/minecraft/world/level/Level;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #55()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void onLoadBlockEntity(net.minecraft.world.level.block.entity.BlockEntity, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.minecraft.world.level.block.entity.BlockEntity);
+    descriptor: (Lnet/minecraft/world/level/block/entity/BlockEntity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_1
+         1: ifnull        41
+         4: aload_1
+         5: aload_3
+         6: if_acmpeq     41
+         9: aload_0
+        10: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        13: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        16: ifeq          41
+        19: getstatic     #15                 // Field net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_LOAD:Lnet/fabricmc/fabric/api/event/Event;
+        22: invokevirtual #21                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+        25: checkcast     #27                 // class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load
+        28: aload_1
+        29: aload_0
+        30: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        33: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        36: invokeinterface #29,  3           // InterfaceMethod net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load.onLoad:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+        41: return
+      LineNumberTable:
+        line 52: 0
+        line 53: 9
+        line 54: 19
+        line 57: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+            0      42     1 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            0      42     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0      42     3 removedBlockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+      StackMapTable: number_of_entries = 1
+        frame_type = 41 /* same */
+    RuntimeVisibleAnnotations:
+      0: #64(#65=[s#66],#67=[@#68(#69=s#70,#71=s#72,#73=e#74.#75,#76=I#77)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["setBlockEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.BY
+            by=3
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #79(#80=I#81)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+
+  private void onRemoveBlockEntity(net.minecraft.world.level.block.entity.BlockEntity, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.minecraft.world.level.block.entity.BlockEntity);
+    descriptor: (Lnet/minecraft/world/level/block/entity/BlockEntity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+         4: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+         7: ifeq          32
+        10: getstatic     #33                 // Field net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_UNLOAD:Lnet/fabricmc/fabric/api/event/Event;
+        13: invokevirtual #21                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+        16: checkcast     #36                 // class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload
+        19: aload_3
+        20: aload_0
+        21: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        24: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        27: invokeinterface #38,  3           // InterfaceMethod net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload.onUnload:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+        32: return
+      LineNumberTable:
+        line 61: 0
+        line 62: 10
+        line 64: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      33     0  this   Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+            0      33     1 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            0      33     2  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0      33     3 removedBlockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+      StackMapTable: number_of_entries = 1
+        frame_type = 32 /* same */
+    RuntimeVisibleAnnotations:
+      0: #64(#65=[s#66],#67=[@#68(#69=s#70,#71=s#84,#73=e#74.#85)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["setBlockEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/block/entity/BlockEntity;setRemoved()V"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #79(#80=I#81)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=1
+          )
+
+  private <K extends java.lang.Object, V extends java.lang.Object> java.lang.Object onRemoveBlockEntity(java.util.Map<K, V>, K);
+    descriptor: (Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=3
+         0: aload_1
+         1: aload_2
+         2: invokeinterface #41,  2           // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+         7: astore_3
+         8: aload_3
+         9: ifnull        47
+        12: aload_0
+        13: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        16: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        19: ifeq          47
+        22: getstatic     #33                 // Field net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_UNLOAD:Lnet/fabricmc/fabric/api/event/Event;
+        25: invokevirtual #21                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+        28: checkcast     #36                 // class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload
+        31: aload_3
+        32: checkcast     #47                 // class net/minecraft/world/level/block/entity/BlockEntity
+        35: aload_0
+        36: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        39: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        42: invokeinterface #38,  3           // InterfaceMethod net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload.onUnload:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+        47: aload_3
+        48: areturn
+      LineNumberTable:
+        line 82: 0
+        line 84: 8
+        line 85: 22
+        line 88: 47
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      49     0  this   Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+            0      49     1   map   Ljava/util/Map;
+            0      49     2   key   Ljava/lang/Object;
+            8      41     3 removed   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      49     1   map   Ljava/util/Map<TK;TV;>;
+            0      49     2   key   TK;
+            8      41     3 removed   TV;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 47
+          locals = [ class java/lang/Object ]
+      RuntimeInvisibleTypeAnnotations:
+        0: #97(): LOCAL_VARIABLE, {start_pc=8, length=41, index=3}
+          org.jetbrains.annotations.Nullable
+    Signature: #99                          // <K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;TK;)Ljava/lang/Object;
+    RuntimeVisibleAnnotations:
+      0: #100(#65=[s#101],#67=@#68(#69=s#70,#71=s#102),#103=@#104(#105=@#68(#69=s#106,#71=s#107,#108=I#109)))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["getBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/chunk/LevelChunk$EntityCreationType;)Lnet/minecraft/world/level/block/entity/BlockEntity;"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Map;remove(Ljava/lang/Object;)Ljava/lang/Object;"
+          )
+          slice=@org.spongepowered.asm.mixin.injection.Slice(
+            to=@org.spongepowered.asm.mixin.injection.At(
+              value="FIELD"
+              target="Lnet/minecraft/world/level/chunk/LevelChunk;pendingBlockEntities:Ljava/util/Map;"
+              opcode=180
+            )
+          )
+        )
+
+  private void onRemoveBlockEntity(net.minecraft.core.BlockPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.minecraft.world.level.block.entity.BlockEntity);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_3
+         1: ifnull        36
+         4: aload_0
+         5: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+         8: instanceof    #13                 // class net/minecraft/server/level/ServerLevel
+        11: ifeq          36
+        14: getstatic     #33                 // Field net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents.BLOCK_ENTITY_UNLOAD:Lnet/fabricmc/fabric/api/event/Event;
+        17: invokevirtual #21                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+        20: checkcast     #36                 // class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload
+        23: aload_3
+        24: aload_0
+        25: invokevirtual #7                  // Method getLevel:()Lnet/minecraft/world/level/Level;
+        28: checkcast     #13                 // class net/minecraft/server/level/ServerLevel
+        31: invokeinterface #38,  3           // InterfaceMethod net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload.onUnload:(Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/server/level/ServerLevel;)V
+        36: return
+      LineNumberTable:
+        line 93: 0
+        line 94: 14
+        line 96: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lnet/fabricmc/fabric/mixin/event/lifecycle/server/WorldChunkMixin;
+            0      37     1   pos   Lnet/minecraft/core/BlockPos;
+            0      37     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0      37     3 removed   Lnet/minecraft/world/level/block/entity/BlockEntity;
+      StackMapTable: number_of_entries = 1
+        frame_type = 36 /* same */
+    RuntimeVisibleAnnotations:
+      0: #64(#65=[s#113],#67=[@#68(#69=s#70,#71=s#84)],#114=e#115.#116)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["removeBlockEntity"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/block/entity/BlockEntity;setRemoved()V"
+          )]
+          locals=Lorg/spongepowered/asm/mixin/injection/callback/LocalCapture;.CAPTURE_FAILEXCEPTION
+        )
+    RuntimeInvisibleTypeAnnotations:
+      0: #97(): METHOD_FORMAL_PARAMETER, param_index=2
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #97()
+          org.jetbrains.annotations.Nullable
+}
+SourceFile: "WorldChunkMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #120(#69=[c#121])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/LevelChunk;]
+    )
+InnerClasses:
+  public static #123= #27 of #16;         // Load=class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Load of class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents
+  public static #124= #36 of #16;         // Unload=class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents$Unload of class net/fabricmc/fabric/api/event/lifecycle/v1/ServerBlockEntityEvents
+  public static final #129= #125 of #127; // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
