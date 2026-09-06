@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric v1 conventional tags resolved: source 73efd5b, extractor ff7e104,
+independently reproduced. Tag keys and server-start migration warnings only;
+no data/mixin/service payload. Seven focused Fabric cases and scoped checks pass.
+Module queue: six resolved, 37 open. Next: v2 conventional tag roles. Whole
+provider census stays 90 resolved, 46 open. No new family candidate or live process.
+
 Fabric API Base is resolved: source da5dce0 (extractor 77dc50e), independently
 reproduced, has an empty sole loader entry and no data/mixin/service payload.
 Six focused Fabric cases and scoped checks pass. Module queue: five resolved,
