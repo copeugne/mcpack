@@ -9192,3 +9192,27 @@ SHA-256: 0f3970e1c9d3310e3c4b0de48c3a6c5b5032bc8dadfae2a32b03aab0fd44a7e7.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
 ```
+
+### IDAS optional dependencies and adaptive pools, 2026-09-07
+
+Captures b9d76078 and 82b5f4ec bind OptionalDependencyStructure's rejection branch,
+its inherited JigsawStructure caller and the PlatformHooks to NeoForge ModList
+lookup. The existing parser and hash-verified registry-run debug log show neither
+ars_nouveau nor iceandfire loaded. Archmages tower, dread citadel and sirens cove
+remain registered inactive candidates, excluded from active canonical families.
+Their roots and missing-component evidence remain preserved.
+
+ModAdaptiveStructure changes pools only when every named change mod is loaded.
+The three IDAS adaptive roots therefore retain default pools; their alternate
+compatibility pieces are not new families. Their broader design reconciliation
+remains open, so this does not reduce that portion of the backlog.
+
+Four affected cases and scoped Ruff/Basedpyright pass. The source captures reproduce
+exactly. Canonical-note backlog: 121, down from 124. Coverage groups remain 405.
+No world experiment or new measurement system was added. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_idas_provider_scope.py tests/item8/test_family_decisions.py -q -k 'idas or optional_dependencies'
+uv run ruff check tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
+```
