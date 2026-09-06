@@ -8763,3 +8763,26 @@ byte for byte. Inventory SHA-256: a05f8a0d5645a7a36b074b8ba29474d4a2dffe87efcd8c
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-houses-towers-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-houses-towers-r2.json
 ```
+
+## Soaring pond variants
+
+The frozen_pond and small_pond roots now form mss:pond. The manually inspected
+landscape sheet shows the same focal pond-island motif with different climate,
+scale, edging and decoration. Both packaged templates have empty entity and block
+entity lists. The cultivated patch in small_pond and fence/rock decoration in
+frozen_pond remain variants. The chambered muddy_water_hole encounter is separate.
+The exact definitions remain in the variant map: snowy versus general Overworld
+biome tags, different height intervals, assembly sizes 2 and 1, and separate pools.
+These are preserved differences, not normalized away or treated as identical inputs.
+
+The focused merge regression verifies both definitions against packaged data,
+unique root membership, empty authored entity/block-entity lists and evidence
+hashes. Nineteen affected family tests pass, with scoped Ruff and Basedpyright
+passing. Explicit provisional remainder is 88. The source decision list now has
+409 working groups; the derived inventory awaits the next regeneration.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'soaring_pond or authored_designs or soaring_rivers'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
