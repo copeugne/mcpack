@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 65 of 136. The exact queue below has 71 open rows.
+Supported provider dispositions: 66 of 136. The exact queue below has 70 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -560,7 +560,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | `desert-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | `betterdungeons-code` | Reconcile existing roots, all components and additional feature/entry routes. |
-| `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | `better-end-island-activation`, `better-end-island-configuration`, `better-end-island-exit-portal`, `better-end-island-generator-dependencies`, `better-end-island-platform-gateway`, `better-end-island-processors`, `better-end-island-spike-podium` | Reuse platform/gateway, activation and generator captures; account for remaining entries and resources. |
+| `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | Existing platform/gateway, configuration and generator captures; `end-island-provider` (6e1f551); test_end_island_provider_scope.py | RESOLVED: All 41 templates belong to the existing arrival platform, gateway and dragon arena groups. Remaining entry hooks modify these contributions; see disposition below. |
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-provider` (e4bb5e3), prior suppression source, test_jungle_temple_provider_scope.py | RESOLVED: One existing root, 17 connected pools and 127 templates including two disconnected table props. Custom placement and eight component processors accounted for below. |
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
@@ -2410,3 +2410,49 @@ a local exemption preserves the existing single-archive assertion pattern.
 Scoped Ruff and Basedpyright then pass. The source's independent reproduction
 is recorded in its README. Census: 65 resolved providers, 71 open. Canonical
 grouping, required attributes and final Item 8 delivery remain open.
+
+## Better End Island provider disposition
+
+The complete frozen archive has 101 files and 45 classes. Existing source captures
+cover generation, activation, configuration and component processors; source
+6e1f551 adds only the nine remaining command, registration and mixin entries.
+The focused payload check binds those source identities, both packaged services,
+every declared mixin and the exact ten remaining internal helper/interface types.
+Those internal types have no loader, event-subscriber, mixin or YUNG module entry
+annotation. They support the captured fight lifecycle. This is a bounded entry
+reconciliation, not a claim that every packaged class needs separate disassembly.
+
+Reuse the existing exhaustive template assignment and its focused test: all 41
+packaged templates are assigned once to arrival_platform (one), gateway (one)
+and dragon_arena (39). Spike indices, initial/broken/guarded states and tower
+sections are arena components. No packaged or live betterendisland structure
+registry root exists; these are nonregistry generation contributions. The known
+platform/gateway replacements and spike/podium generation retain their prior
+configuration, source and failure limitations. No new independent candidate was
+found in the remaining entry hooks.
+
+The permission-level-two end_island reset command delegates to the same dragon
+fight. The two world-data mixins attach and serialize its state; the server tick
+hook triggers its initial summon. The Endergetic compatibility hook conditionally
+replaces the fight object. The accessor exposes existing fight fields and dragon
+creation. Gateway block-entity hooks select landing positions using block queries
+and the packaged cannot-place-player-on tag. These are existing encounter and
+transport behavior, not additional authored designs. Processor registration
+exposes the three already captured block, obsidian and dragon-egg processors.
+The module-loader default is empty. Shared YUNG API remains separately open.
+
+All other payload is translations, two tags, visual assets and loader metadata.
+There are no nested archives, functions or additional generation resource types.
+Do not infer runtime placement success, gameplay validation or complete attributes
+from this provider disposition.
+
+```sh
+uv run pytest -q tests/item8/test_end_island_provider_scope.py tests/item8/test_feature_modifier_references.py -k end_island
+uv run ruff check tests/item8/test_end_island_provider_scope.py
+uv run basedpyright tests/item8/test_end_island_provider_scope.py
+```
+
+Seven focused cases pass. Ruff initially found three long lines and an unused
+complexity exemption; these were corrected. Scoped Ruff and Basedpyright pass.
+The nine-class source capture reproduces exactly. Census: 66 resolved providers,
+70 open. The whole-stack canonical denominator and Item 8 closure remain open.

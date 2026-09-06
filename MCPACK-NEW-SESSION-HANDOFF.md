@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at 9680555: Better End Island provider scope is closed,
+pushed and remote-ref verified. Census: 66 resolved providers, 70 open. Seven
+focused cases and scoped Ruff/Basedpyright pass. Nine remaining entry hooks in
+6e1f551 reproduce exactly; prior generator and template evidence is reused.
+All 41 templates stay assigned to arrival platform, gateway and dragon arena.
+Remaining hooks affect their lifecycle, fight state and landing-position search.
+Continue the named provider queue, prioritizing reused generation-entry evidence.
+Do not repeat this closure or deepen unrelated helpers. The final family count,
+remaining canonical decisions, eleven attributes and review/main merge are open.
+
 Latest checkpoint at 97b5249: Better Jungle Temples provider scope is closed,
 pushed and remote-ref verified. Census: 65 resolved providers, 71 open. Seven
 focused cases, Ruff and Basedpyright pass. Source e4bb5e3 is reused; one existing
