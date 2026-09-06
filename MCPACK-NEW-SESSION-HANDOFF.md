@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at b270bb3: Better Caves provider scope is closed,
+pushed and remote-ref verified. Census: 70 resolved providers, 66 open. One
+focused case and scoped quality checks pass. Source d9e30ff reproduces exactly.
+Its two configured carvers, two biome modifiers, seven mixins and generation
+path contribute terrain/liquid-region support, with no independent family.
+Frozen liquid-region input and packaged disabled debug mode are bound by the
+focused check. Next inspect Cave Biomes (581 files, 187 classes, 38 worldgen
+resources observed in initial archive listing), then shared YUNG API. These
+initial counts are leads, not closed scope. Do not repeat Better Caves or other
+delivered providers. Canonical count, attributes and review/main merge stay open.
+
 Latest checkpoint at f5b7069: Better Desert Temples provider scope is closed,
 pushed and remote-ref verified. Census: 69 resolved providers, 67 open. Seven
 focused cases and scoped quality checks pass. Source 02ae27e reproduces exactly.
