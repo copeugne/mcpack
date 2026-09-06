@@ -189,6 +189,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/blockrenderlayer/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/key_binding_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/sound_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/convention_tags/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/tag/TagKeyMixin.class",
     "net/fabricmc/fabric/impl/tag/convention/v2/TagRegistration.class",
@@ -2321,6 +2324,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-blockrenderlayer-v1-1.1.52+c290471319.jar",
+        "META-INF/jars/fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar",
+        "META-INF/jars/fabric-sound-api-v1-1.0.23+10b84f8419.jar",
         "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar",
         "META-INF/jars/fabric-convention-tags-v1-2.1.5+7f945d5b19.jar",
         "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar",
@@ -2345,6 +2351,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-blockrenderlayer-v1-1.1.52+c290471319.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "b287141d9de03f7dee046c9f55deaa5aa93dad29ca9785b3d6aed76d2165392e",
+        ),
+        "META-INF/jars/fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "dc85183232f5c82ce7fb3923c0c456cb4055b6c738464f55ad57bbc52f5a087d",
+        ),
+        "META-INF/jars/fabric-sound-api-v1-1.0.23+10b84f8419.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "fa0c13fba26837650f16cda860ddd9bad9c80709b60da4525fc89d9f1ac58f04",
+        ),
         "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "d2fc680934db74478bce016639372880507e1a2680bbb84a10d1b0c37339367e",
