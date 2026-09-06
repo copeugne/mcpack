@@ -1,0 +1,821 @@
+Classfile cc-tweaked-1.21.1-forge-1.119.0.jar!/dan200/computercraft/shared/ForgeCommonHooks.class
+  Last modified Feb 1, 1980; size 10871 bytes
+  SHA-256 checksum c9fc72a6941810449e86392b9f25107da717fa4d86748ae80b9874e4431dedef
+  Compiled from "ForgeCommonHooks.java"
+public class dan200.computercraft.shared.ForgeCommonHooks
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #247                        // dan200/computercraft/shared/ForgeCommonHooks
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 18, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/tick/ServerTickEvent$Pre.getServer:()Lnet/minecraft/server/MinecraftServer;
+    #8 = Class              #10           // net/neoforged/neoforge/event/tick/ServerTickEvent$Pre
+    #9 = NameAndType        #11:#12       // getServer:()Lnet/minecraft/server/MinecraftServer;
+   #10 = Utf8               net/neoforged/neoforge/event/tick/ServerTickEvent$Pre
+   #11 = Utf8               getServer
+   #12 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+   #13 = Methodref          #14.#15       // dan200/computercraft/shared/CommonHooks.onServerTickStart:(Lnet/minecraft/server/MinecraftServer;)V
+   #14 = Class              #16           // dan200/computercraft/shared/CommonHooks
+   #15 = NameAndType        #17:#18       // onServerTickStart:(Lnet/minecraft/server/MinecraftServer;)V
+   #16 = Utf8               dan200/computercraft/shared/CommonHooks
+   #17 = Utf8               onServerTickStart
+   #18 = Utf8               (Lnet/minecraft/server/MinecraftServer;)V
+   #19 = Methodref          #14.#20       // dan200/computercraft/shared/CommonHooks.onServerTickEnd:()V
+   #20 = NameAndType        #21:#6        // onServerTickEnd:()V
+   #21 = Utf8               onServerTickEnd
+   #22 = Methodref          #23.#9        // net/neoforged/neoforge/event/server/ServerStartingEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+   #23 = Class              #24           // net/neoforged/neoforge/event/server/ServerStartingEvent
+   #24 = Utf8               net/neoforged/neoforge/event/server/ServerStartingEvent
+   #25 = Methodref          #14.#26       // dan200/computercraft/shared/CommonHooks.onServerStarting:(Lnet/minecraft/server/MinecraftServer;)V
+   #26 = NameAndType        #27:#18       // onServerStarting:(Lnet/minecraft/server/MinecraftServer;)V
+   #27 = Utf8               onServerStarting
+   #28 = Methodref          #29.#9        // net/neoforged/neoforge/event/server/ServerStartedEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+   #29 = Class              #30           // net/neoforged/neoforge/event/server/ServerStartedEvent
+   #30 = Utf8               net/neoforged/neoforge/event/server/ServerStartedEvent
+   #31 = Methodref          #14.#32       // dan200/computercraft/shared/CommonHooks.onServerStarted:(Lnet/minecraft/server/MinecraftServer;)V
+   #32 = NameAndType        #33:#18       // onServerStarted:(Lnet/minecraft/server/MinecraftServer;)V
+   #33 = Utf8               onServerStarted
+   #34 = Methodref          #14.#35       // dan200/computercraft/shared/CommonHooks.onServerStopped:()V
+   #35 = NameAndType        #36:#6        // onServerStopped:()V
+   #36 = Utf8               onServerStopped
+   #37 = Methodref          #38.#39       // net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+   #38 = Class              #40           // net/neoforged/neoforge/event/RegisterCommandsEvent
+   #39 = NameAndType        #41:#42       // getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+   #40 = Utf8               net/neoforged/neoforge/event/RegisterCommandsEvent
+   #41 = Utf8               getDispatcher
+   #42 = Utf8               ()Lcom/mojang/brigadier/CommandDispatcher;
+   #43 = Methodref          #44.#45       // dan200/computercraft/shared/command/CommandComputerCraft.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+   #44 = Class              #46           // dan200/computercraft/shared/command/CommandComputerCraft
+   #45 = NameAndType        #47:#48       // register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+   #46 = Utf8               dan200/computercraft/shared/command/CommandComputerCraft
+   #47 = Utf8               register
+   #48 = Utf8               (Lcom/mojang/brigadier/CommandDispatcher;)V
+   #49 = Methodref          #50.#51       // net/neoforged/neoforge/event/level/ChunkEvent$Unload.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+   #50 = Class              #52           // net/neoforged/neoforge/event/level/ChunkEvent$Unload
+   #51 = NameAndType        #53:#54       // getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+   #52 = Utf8               net/neoforged/neoforge/event/level/ChunkEvent$Unload
+   #53 = Utf8               getLevel
+   #54 = Utf8               ()Lnet/minecraft/world/level/LevelAccessor;
+   #55 = Class              #56           // net/minecraft/server/level/ServerLevel
+   #56 = Utf8               net/minecraft/server/level/ServerLevel
+   #57 = Methodref          #50.#58       // net/neoforged/neoforge/event/level/ChunkEvent$Unload.getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+   #58 = NameAndType        #59:#60       // getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+   #59 = Utf8               getChunk
+   #60 = Utf8               ()Lnet/minecraft/world/level/chunk/ChunkAccess;
+   #61 = Class              #62           // net/minecraft/world/level/chunk/LevelChunk
+   #62 = Utf8               net/minecraft/world/level/chunk/LevelChunk
+   #63 = Methodref          #14.#64       // dan200/computercraft/shared/CommonHooks.onServerChunkUnload:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+   #64 = NameAndType        #65:#66       // onServerChunkUnload:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+   #65 = Utf8               onServerChunkUnload
+   #66 = Utf8               (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+   #67 = Methodref          #68.#69       // net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent.getChunk:()Lnet/minecraft/world/level/chunk/LevelChunk;
+   #68 = Class              #70           // net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent
+   #69 = NameAndType        #59:#71       // getChunk:()Lnet/minecraft/world/level/chunk/LevelChunk;
+   #70 = Utf8               net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent
+   #71 = Utf8               ()Lnet/minecraft/world/level/chunk/LevelChunk;
+   #72 = Methodref          #68.#73       // net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+   #73 = NameAndType        #74:#75       // getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+   #74 = Utf8               getPlayer
+   #75 = Utf8               ()Lnet/minecraft/server/level/ServerPlayer;
+   #76 = Methodref          #14.#77       // dan200/computercraft/shared/CommonHooks.onChunkWatch:(Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/server/level/ServerPlayer;)V
+   #77 = NameAndType        #78:#79       // onChunkWatch:(Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/server/level/ServerPlayer;)V
+   #78 = Utf8               onChunkWatch
+   #79 = Utf8               (Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/server/level/ServerPlayer;)V
+   #80 = Methodref          #81.#82       // net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #81 = Class              #83           // net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent
+   #82 = NameAndType        #53:#84       // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #83 = Utf8               net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent
+   #84 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #85 = Methodref          #81.#86       // net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getChunkPos:()J
+   #86 = NameAndType        #87:#88       // getChunkPos:()J
+   #87 = Utf8               getChunkPos
+   #88 = Utf8               ()J
+   #89 = Methodref          #81.#90       // net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getOldTicketLevel:()I
+   #90 = NameAndType        #91:#92       // getOldTicketLevel:()I
+   #91 = Utf8               getOldTicketLevel
+   #92 = Utf8               ()I
+   #93 = Methodref          #81.#94       // net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getNewTicketLevel:()I
+   #94 = NameAndType        #95:#92       // getNewTicketLevel:()I
+   #95 = Utf8               getNewTicketLevel
+   #96 = Methodref          #14.#97       // dan200/computercraft/shared/CommonHooks.onChunkTicketLevelChanged:(Lnet/minecraft/server/level/ServerLevel;JII)V
+   #97 = NameAndType        #98:#99       // onChunkTicketLevelChanged:(Lnet/minecraft/server/level/ServerLevel;JII)V
+   #98 = Utf8               onChunkTicketLevelChanged
+   #99 = Utf8               (Lnet/minecraft/server/level/ServerLevel;JII)V
+  #100 = Methodref          #101.#102     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+  #101 = Class              #103          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+  #102 = NameAndType        #104:#105     // getEntity:()Lnet/minecraft/world/entity/player/Player;
+  #103 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock
+  #104 = Utf8               getEntity
+  #105 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+  #106 = Methodref          #101.#107     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+  #107 = NameAndType        #53:#108      // getLevel:()Lnet/minecraft/world/level/Level;
+  #108 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #109 = Methodref          #101.#110     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+  #110 = NameAndType        #111:#112     // getHand:()Lnet/minecraft/world/InteractionHand;
+  #111 = Utf8               getHand
+  #112 = Utf8               ()Lnet/minecraft/world/InteractionHand;
+  #113 = Methodref          #101.#114     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+  #114 = NameAndType        #115:#116     // getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+  #115 = Utf8               getHitVec
+  #116 = Utf8               ()Lnet/minecraft/world/phys/BlockHitResult;
+  #117 = Methodref          #14.#118      // dan200/computercraft/shared/CommonHooks.onUseBlock:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+  #118 = NameAndType        #119:#120     // onUseBlock:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+  #119 = Utf8               onUseBlock
+  #120 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+  #121 = Fieldref           #122.#123     // net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+  #122 = Class              #124          // net/minecraft/world/InteractionResult
+  #123 = NameAndType        #125:#126     // PASS:Lnet/minecraft/world/InteractionResult;
+  #124 = Utf8               net/minecraft/world/InteractionResult
+  #125 = Utf8               PASS
+  #126 = Utf8               Lnet/minecraft/world/InteractionResult;
+  #127 = Methodref          #101.#128     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+  #128 = NameAndType        #129:#130     // setCanceled:(Z)V
+  #129 = Utf8               setCanceled
+  #130 = Utf8               (Z)V
+  #131 = Methodref          #101.#132     // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #132 = NameAndType        #133:#134     // setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+  #133 = Utf8               setCancellationResult
+  #134 = Utf8               (Lnet/minecraft/world/InteractionResult;)V
+  #135 = InvokeDynamic      #0:#136       // #0:accept:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)Ljava/util/function/BiConsumer;
+  #136 = NameAndType        #137:#138     // accept:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)Ljava/util/function/BiConsumer;
+  #137 = Utf8               accept
+  #138 = Utf8               (Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)Ljava/util/function/BiConsumer;
+  #139 = Methodref          #14.#140      // dan200/computercraft/shared/CommonHooks.onDatapackReload:(Ljava/util/function/BiConsumer;)V
+  #140 = NameAndType        #141:#142     // onDatapackReload:(Ljava/util/function/BiConsumer;)V
+  #141 = Utf8               onDatapackReload
+  #142 = Utf8               (Ljava/util/function/BiConsumer;)V
+  #143 = Fieldref           #144.#145     // net/minecraft/core/registries/Registries.LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+  #144 = Class              #146          // net/minecraft/core/registries/Registries
+  #145 = NameAndType        #147:#148     // LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+  #146 = Utf8               net/minecraft/core/registries/Registries
+  #147 = Utf8               LOOT_TABLE
+  #148 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #149 = Methodref          #150.#151     // net/neoforged/neoforge/event/LootTableLoadEvent.getName:()Lnet/minecraft/resources/ResourceLocation;
+  #150 = Class              #152          // net/neoforged/neoforge/event/LootTableLoadEvent
+  #151 = NameAndType        #153:#154     // getName:()Lnet/minecraft/resources/ResourceLocation;
+  #152 = Utf8               net/neoforged/neoforge/event/LootTableLoadEvent
+  #153 = Utf8               getName
+  #154 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #155 = Methodref          #156.#157     // net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #156 = Class              #158          // net/minecraft/resources/ResourceKey
+  #157 = NameAndType        #159:#160     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #158 = Utf8               net/minecraft/resources/ResourceKey
+  #159 = Utf8               create
+  #160 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #161 = Methodref          #14.#162      // dan200/computercraft/shared/CommonHooks.getExtraLootPool:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+  #162 = NameAndType        #163:#164     // getExtraLootPool:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+  #163 = Utf8               getExtraLootPool
+  #164 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+  #165 = Methodref          #150.#166     // net/neoforged/neoforge/event/LootTableLoadEvent.getTable:()Lnet/minecraft/world/level/storage/loot/LootTable;
+  #166 = NameAndType        #167:#168     // getTable:()Lnet/minecraft/world/level/storage/loot/LootTable;
+  #167 = Utf8               getTable
+  #168 = Utf8               ()Lnet/minecraft/world/level/storage/loot/LootTable;
+  #169 = Methodref          #170.#171     // net/minecraft/world/level/storage/loot/LootPool$Builder.build:()Lnet/minecraft/world/level/storage/loot/LootPool;
+  #170 = Class              #172          // net/minecraft/world/level/storage/loot/LootPool$Builder
+  #171 = NameAndType        #173:#174     // build:()Lnet/minecraft/world/level/storage/loot/LootPool;
+  #172 = Utf8               net/minecraft/world/level/storage/loot/LootPool$Builder
+  #173 = Utf8               build
+  #174 = Utf8               ()Lnet/minecraft/world/level/storage/loot/LootPool;
+  #175 = Methodref          #176.#177     // net/minecraft/world/level/storage/loot/LootTable.addPool:(Lnet/minecraft/world/level/storage/loot/LootPool;)V
+  #176 = Class              #178          // net/minecraft/world/level/storage/loot/LootTable
+  #177 = NameAndType        #179:#180     // addPool:(Lnet/minecraft/world/level/storage/loot/LootPool;)V
+  #178 = Utf8               net/minecraft/world/level/storage/loot/LootTable
+  #179 = Utf8               addPool
+  #180 = Utf8               (Lnet/minecraft/world/level/storage/loot/LootPool;)V
+  #181 = Methodref          #182.#183     // net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+  #182 = Class              #184          // net/neoforged/neoforge/event/entity/EntityJoinLevelEvent
+  #183 = NameAndType        #104:#185     // getEntity:()Lnet/minecraft/world/entity/Entity;
+  #184 = Utf8               net/neoforged/neoforge/event/entity/EntityJoinLevelEvent
+  #185 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+  #186 = Methodref          #14.#187      // dan200/computercraft/shared/CommonHooks.onEntitySpawn:(Lnet/minecraft/world/entity/Entity;)Z
+  #187 = NameAndType        #188:#189     // onEntitySpawn:(Lnet/minecraft/world/entity/Entity;)Z
+  #188 = Utf8               onEntitySpawn
+  #189 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #190 = Methodref          #182.#128     // net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.setCanceled:(Z)V
+  #191 = Methodref          #192.#193     // net/neoforged/neoforge/event/entity/living/LivingDropsEvent.getDrops:()Ljava/util/Collection;
+  #192 = Class              #194          // net/neoforged/neoforge/event/entity/living/LivingDropsEvent
+  #193 = NameAndType        #195:#196     // getDrops:()Ljava/util/Collection;
+  #194 = Utf8               net/neoforged/neoforge/event/entity/living/LivingDropsEvent
+  #195 = Utf8               getDrops
+  #196 = Utf8               ()Ljava/util/Collection;
+  #197 = InvokeDynamic      #1:#198       // #1:test:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)Ljava/util/function/Predicate;
+  #198 = NameAndType        #199:#200     // test:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)Ljava/util/function/Predicate;
+  #199 = Utf8               test
+  #200 = Utf8               (Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)Ljava/util/function/Predicate;
+  #201 = InterfaceMethodref #202.#203     // java/util/Collection.removeIf:(Ljava/util/function/Predicate;)Z
+  #202 = Class              #204          // java/util/Collection
+  #203 = NameAndType        #205:#206     // removeIf:(Ljava/util/function/Predicate;)Z
+  #204 = Utf8               java/util/Collection
+  #205 = Utf8               removeIf
+  #206 = Utf8               (Ljava/util/function/Predicate;)Z
+  #207 = Methodref          #208.#209     // net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+  #208 = Class              #210          // net/neoforged/neoforge/event/entity/player/ItemTooltipEvent
+  #209 = NameAndType        #211:#212     // getItemStack:()Lnet/minecraft/world/item/ItemStack;
+  #210 = Utf8               net/neoforged/neoforge/event/entity/player/ItemTooltipEvent
+  #211 = Utf8               getItemStack
+  #212 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+  #213 = Methodref          #208.#214     // net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getContext:()Lnet/minecraft/world/item/Item$TooltipContext;
+  #214 = NameAndType        #215:#216     // getContext:()Lnet/minecraft/world/item/Item$TooltipContext;
+  #215 = Utf8               getContext
+  #216 = Utf8               ()Lnet/minecraft/world/item/Item$TooltipContext;
+  #217 = Methodref          #208.#218     // net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getFlags:()Lnet/minecraft/world/item/TooltipFlag;
+  #218 = NameAndType        #219:#220     // getFlags:()Lnet/minecraft/world/item/TooltipFlag;
+  #219 = Utf8               getFlags
+  #220 = Utf8               ()Lnet/minecraft/world/item/TooltipFlag;
+  #221 = Methodref          #208.#222     // net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getToolTip:()Ljava/util/List;
+  #222 = NameAndType        #223:#224     // getToolTip:()Ljava/util/List;
+  #223 = Utf8               getToolTip
+  #224 = Utf8               ()Ljava/util/List;
+  #225 = Methodref          #14.#226      // dan200/computercraft/shared/CommonHooks.onItemTooltip:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Lnet/minecraft/world/item/TooltipFlag;Ljava/util/List;)V
+  #226 = NameAndType        #227:#228     // onItemTooltip:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Lnet/minecraft/world/item/TooltipFlag;Ljava/util/List;)V
+  #227 = Utf8               onItemTooltip
+  #228 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Lnet/minecraft/world/item/TooltipFlag;Ljava/util/List;)V
+  #229 = Methodref          #192.#230     // net/neoforged/neoforge/event/entity/living/LivingDropsEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+  #230 = NameAndType        #104:#231     // getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+  #231 = Utf8               ()Lnet/minecraft/world/entity/LivingEntity;
+  #232 = Methodref          #233.#234     // net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+  #233 = Class              #235          // net/minecraft/world/entity/item/ItemEntity
+  #234 = NameAndType        #236:#212     // getItem:()Lnet/minecraft/world/item/ItemStack;
+  #235 = Utf8               net/minecraft/world/entity/item/ItemEntity
+  #236 = Utf8               getItem
+  #237 = Methodref          #14.#238      // dan200/computercraft/shared/CommonHooks.onLivingDrop:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Z
+  #238 = NameAndType        #239:#240     // onLivingDrop:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Z
+  #239 = Utf8               onLivingDrop
+  #240 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Z
+  #241 = Methodref          #242.#243     // net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #242 = Class              #244          // net/neoforged/neoforge/event/AddReloadListenerEvent
+  #243 = NameAndType        #245:#246     // addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #244 = Utf8               net/neoforged/neoforge/event/AddReloadListenerEvent
+  #245 = Utf8               addListener
+  #246 = Utf8               (Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #247 = Class              #248          // dan200/computercraft/shared/ForgeCommonHooks
+  #248 = Utf8               dan200/computercraft/shared/ForgeCommonHooks
+  #249 = Utf8               Code
+  #250 = Utf8               LineNumberTable
+  #251 = Utf8               LocalVariableTable
+  #252 = Utf8               this
+  #253 = Utf8               Ldan200/computercraft/shared/ForgeCommonHooks;
+  #254 = Utf8               onServerTick
+  #255 = Utf8               (Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Pre;)V
+  #256 = Utf8               event
+  #257 = Utf8               Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Pre;
+  #258 = Utf8               RuntimeVisibleAnnotations
+  #259 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #260 = Utf8               (Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Post;)V
+  #261 = Utf8               Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Post;
+  #262 = Utf8               (Lnet/neoforged/neoforge/event/server/ServerStartingEvent;)V
+  #263 = Utf8               Lnet/neoforged/neoforge/event/server/ServerStartingEvent;
+  #264 = Utf8               (Lnet/neoforged/neoforge/event/server/ServerStartedEvent;)V
+  #265 = Utf8               Lnet/neoforged/neoforge/event/server/ServerStartedEvent;
+  #266 = Utf8               (Lnet/neoforged/neoforge/event/server/ServerStoppedEvent;)V
+  #267 = Utf8               Lnet/neoforged/neoforge/event/server/ServerStoppedEvent;
+  #268 = Utf8               onRegisterCommand
+  #269 = Utf8               (Lnet/neoforged/neoforge/event/RegisterCommandsEvent;)V
+  #270 = Utf8               Lnet/neoforged/neoforge/event/RegisterCommandsEvent;
+  #271 = Utf8               onChunkUnload
+  #272 = Utf8               (Lnet/neoforged/neoforge/event/level/ChunkEvent$Unload;)V
+  #273 = Utf8               chunk
+  #274 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+  #275 = Utf8               Lnet/neoforged/neoforge/event/level/ChunkEvent$Unload;
+  #276 = Utf8               StackMapTable
+  #277 = Utf8               (Lnet/neoforged/neoforge/event/level/ChunkWatchEvent$Sent;)V
+  #278 = Utf8               Lnet/neoforged/neoforge/event/level/ChunkWatchEvent$Sent;
+  #279 = Utf8               (Lnet/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent;)V
+  #280 = Utf8               Lnet/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent;
+  #281 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+  #282 = Utf8               Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+  #283 = Utf8               result
+  #284 = Utf8               onAddReloadListeners
+  #285 = Utf8               (Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)V
+  #286 = Utf8               Lnet/neoforged/neoforge/event/AddReloadListenerEvent;
+  #287 = Utf8               lootLoad
+  #288 = Utf8               (Lnet/neoforged/neoforge/event/LootTableLoadEvent;)V
+  #289 = Utf8               Lnet/neoforged/neoforge/event/LootTableLoadEvent;
+  #290 = Utf8               pool
+  #291 = Utf8               Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+  #292 = Utf8               (Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;)V
+  #293 = Utf8               Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;
+  #294 = Utf8               priority
+  #295 = Utf8               Lnet/neoforged/bus/api/EventPriority;
+  #296 = Utf8               HIGHEST
+  #297 = Utf8               onLivingDrops
+  #298 = Utf8               (Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V
+  #299 = Utf8               Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;
+  #300 = Utf8               LOW
+  #301 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/ItemTooltipEvent;)V
+  #302 = Utf8               Lnet/neoforged/neoforge/event/entity/player/ItemTooltipEvent;
+  #303 = Utf8               lambda$onLivingDrops$0
+  #304 = Utf8               (Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #305 = Utf8               itemEntity
+  #306 = Utf8               Lnet/minecraft/world/entity/item/ItemEntity;
+  #307 = Utf8               lambda$onAddReloadListeners$0
+  #308 = Utf8               (Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #309 = Utf8               id
+  #310 = Utf8               Ljava/lang/String;
+  #311 = Utf8               listener
+  #312 = Utf8               Lnet/minecraft/server/packs/resources/PreparableReloadListener;
+  #313 = Utf8               SourceFile
+  #314 = Utf8               ForgeCommonHooks.java
+  #315 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #316 = Utf8               modid
+  #317 = Utf8               computercraft
+  #318 = Utf8               BootstrapMethods
+  #319 = MethodType         #320          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #320 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #321 = MethodHandle       6:#322        // REF_invokeStatic dan200/computercraft/shared/ForgeCommonHooks.lambda$onAddReloadListeners$0:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #322 = Methodref          #247.#323     // dan200/computercraft/shared/ForgeCommonHooks.lambda$onAddReloadListeners$0:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #323 = NameAndType        #307:#308     // lambda$onAddReloadListeners$0:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #324 = MethodType         #325          //  (Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #325 = Utf8               (Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #326 = MethodType         #327          //  (Ljava/lang/Object;)Z
+  #327 = Utf8               (Ljava/lang/Object;)Z
+  #328 = MethodHandle       6:#329        // REF_invokeStatic dan200/computercraft/shared/ForgeCommonHooks.lambda$onLivingDrops$0:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #329 = Methodref          #247.#330     // dan200/computercraft/shared/ForgeCommonHooks.lambda$onLivingDrops$0:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #330 = NameAndType        #303:#304     // lambda$onLivingDrops$0:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #331 = MethodType         #332          //  (Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #332 = Utf8               (Lnet/minecraft/world/entity/item/ItemEntity;)Z
+  #333 = MethodHandle       6:#334        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #334 = Methodref          #335.#336     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #335 = Class              #337          // java/lang/invoke/LambdaMetafactory
+  #336 = NameAndType        #338:#339     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #337 = Utf8               java/lang/invoke/LambdaMetafactory
+  #338 = Utf8               metafactory
+  #339 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #340 = Utf8               InnerClasses
+  #341 = Class              #342          // net/neoforged/neoforge/event/tick/ServerTickEvent
+  #342 = Utf8               net/neoforged/neoforge/event/tick/ServerTickEvent
+  #343 = Utf8               Pre
+  #344 = Class              #345          // net/neoforged/neoforge/event/level/ChunkEvent
+  #345 = Utf8               net/neoforged/neoforge/event/level/ChunkEvent
+  #346 = Utf8               Unload
+  #347 = Class              #348          // net/neoforged/neoforge/event/level/ChunkWatchEvent
+  #348 = Utf8               net/neoforged/neoforge/event/level/ChunkWatchEvent
+  #349 = Utf8               Sent
+  #350 = Class              #351          // net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #351 = Utf8               net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  #352 = Utf8               RightClickBlock
+  #353 = Class              #354          // net/minecraft/world/level/storage/loot/LootPool
+  #354 = Utf8               net/minecraft/world/level/storage/loot/LootPool
+  #355 = Utf8               Builder
+  #356 = Class              #357          // net/minecraft/world/item/Item$TooltipContext
+  #357 = Utf8               net/minecraft/world/item/Item$TooltipContext
+  #358 = Class              #359          // net/minecraft/world/item/Item
+  #359 = Utf8               net/minecraft/world/item/Item
+  #360 = Utf8               TooltipContext
+  #361 = Class              #362          // net/neoforged/neoforge/event/tick/ServerTickEvent$Post
+  #362 = Utf8               net/neoforged/neoforge/event/tick/ServerTickEvent$Post
+  #363 = Utf8               Post
+  #364 = Class              #365          // java/lang/invoke/MethodHandles$Lookup
+  #365 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #366 = Class              #367          // java/lang/invoke/MethodHandles
+  #367 = Utf8               java/lang/invoke/MethodHandles
+  #368 = Utf8               Lookup
+{
+  public dan200.computercraft.shared.ForgeCommonHooks();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 36: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldan200/computercraft/shared/ForgeCommonHooks;
+
+  public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent$Pre);
+    descriptor: (Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Pre;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/tick/ServerTickEvent$Pre.getServer:()Lnet/minecraft/server/MinecraftServer;
+         4: invokestatic  #13                 // Method dan200/computercraft/shared/CommonHooks.onServerTickStart:(Lnet/minecraft/server/MinecraftServer;)V
+         7: return
+      LineNumberTable:
+        line 39: 0
+        line 40: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 event   Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Pre;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent$Post);
+    descriptor: (Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Post;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=0, locals=1, args_size=1
+         0: invokestatic  #19                 // Method dan200/computercraft/shared/CommonHooks.onServerTickEnd:()V
+         3: return
+      LineNumberTable:
+        line 44: 0
+        line 45: 3
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0 event   Lnet/neoforged/neoforge/event/tick/ServerTickEvent$Post;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onServerStarting(net.neoforged.neoforge.event.server.ServerStartingEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/server/ServerStartingEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #22                 // Method net/neoforged/neoforge/event/server/ServerStartingEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+         4: invokestatic  #25                 // Method dan200/computercraft/shared/CommonHooks.onServerStarting:(Lnet/minecraft/server/MinecraftServer;)V
+         7: return
+      LineNumberTable:
+        line 49: 0
+        line 50: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 event   Lnet/neoforged/neoforge/event/server/ServerStartingEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onServerStarted(net.neoforged.neoforge.event.server.ServerStartedEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/server/ServerStartedEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #28                 // Method net/neoforged/neoforge/event/server/ServerStartedEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+         4: invokestatic  #31                 // Method dan200/computercraft/shared/CommonHooks.onServerStarted:(Lnet/minecraft/server/MinecraftServer;)V
+         7: return
+      LineNumberTable:
+        line 54: 0
+        line 55: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 event   Lnet/neoforged/neoforge/event/server/ServerStartedEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onServerStopped(net.neoforged.neoforge.event.server.ServerStoppedEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/server/ServerStoppedEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=0, locals=1, args_size=1
+         0: invokestatic  #34                 // Method dan200/computercraft/shared/CommonHooks.onServerStopped:()V
+         3: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 3
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0 event   Lnet/neoforged/neoforge/event/server/ServerStoppedEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onRegisterCommand(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/RegisterCommandsEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #37                 // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+         4: invokestatic  #43                 // Method dan200/computercraft/shared/command/CommandComputerCraft.register:(Lcom/mojang/brigadier/CommandDispatcher;)V
+         7: return
+      LineNumberTable:
+        line 64: 0
+        line 65: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 event   Lnet/neoforged/neoforge/event/RegisterCommandsEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onChunkUnload(net.neoforged.neoforge.event.level.ChunkEvent$Unload);
+    descriptor: (Lnet/neoforged/neoforge/event/level/ChunkEvent$Unload;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=3, args_size=1
+         0: aload_0
+         1: invokevirtual #49                 // Method net/neoforged/neoforge/event/level/ChunkEvent$Unload.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+         4: instanceof    #55                 // class net/minecraft/server/level/ServerLevel
+         7: ifeq          31
+        10: aload_0
+        11: invokevirtual #57                 // Method net/neoforged/neoforge/event/level/ChunkEvent$Unload.getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+        14: astore_2
+        15: aload_2
+        16: instanceof    #61                 // class net/minecraft/world/level/chunk/LevelChunk
+        19: ifeq          31
+        22: aload_2
+        23: checkcast     #61                 // class net/minecraft/world/level/chunk/LevelChunk
+        26: astore_1
+        27: aload_1
+        28: invokestatic  #63                 // Method dan200/computercraft/shared/CommonHooks.onServerChunkUnload:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+        31: return
+      LineNumberTable:
+        line 69: 0
+        line 70: 27
+        line 72: 31
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           27       4     1 chunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+            0      32     0 event   Lnet/neoforged/neoforge/event/level/ChunkEvent$Unload;
+      StackMapTable: number_of_entries = 1
+        frame_type = 31 /* same */
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onChunkWatch(net.neoforged.neoforge.event.level.ChunkWatchEvent$Sent);
+    descriptor: (Lnet/neoforged/neoforge/event/level/ChunkWatchEvent$Sent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #67                 // Method net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent.getChunk:()Lnet/minecraft/world/level/chunk/LevelChunk;
+         4: aload_0
+         5: invokevirtual #72                 // Method net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+         8: invokestatic  #76                 // Method dan200/computercraft/shared/CommonHooks.onChunkWatch:(Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/server/level/ServerPlayer;)V
+        11: return
+      LineNumberTable:
+        line 76: 0
+        line 77: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 event   Lnet/neoforged/neoforge/event/level/ChunkWatchEvent$Sent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onChunkTicketLevelChanged(net.neoforged.neoforge.event.level.ChunkTicketLevelUpdatedEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #80                 // Method net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+         4: aload_0
+         5: invokevirtual #85                 // Method net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getChunkPos:()J
+         8: aload_0
+         9: invokevirtual #89                 // Method net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getOldTicketLevel:()I
+        12: aload_0
+        13: invokevirtual #93                 // Method net/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent.getNewTicketLevel:()I
+        16: invokestatic  #96                 // Method dan200/computercraft/shared/CommonHooks.onChunkTicketLevelChanged:(Lnet/minecraft/server/level/ServerLevel;JII)V
+        19: return
+      LineNumberTable:
+        line 81: 0
+        line 82: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0 event   Lnet/neoforged/neoforge/event/level/ChunkTicketLevelUpdatedEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onUseBlock(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0
+         1: invokevirtual #100                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+         4: aload_0
+         5: invokevirtual #106                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+         8: aload_0
+         9: invokevirtual #109                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+        12: aload_0
+        13: invokevirtual #113                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+        16: invokestatic  #117                // Method dan200/computercraft/shared/CommonHooks.onUseBlock:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+        19: astore_1
+        20: aload_1
+        21: getstatic     #121                // Field net/minecraft/world/InteractionResult.PASS:Lnet/minecraft/world/InteractionResult;
+        24: if_acmpne     28
+        27: return
+        28: aload_0
+        29: iconst_1
+        30: invokevirtual #127                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+        33: aload_0
+        34: aload_1
+        35: invokevirtual #131                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+        38: return
+      LineNumberTable:
+        line 86: 0
+        line 87: 20
+        line 89: 28
+        line 90: 33
+        line 91: 38
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      39     0 event   Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock;
+           20      19     1 result   Lnet/minecraft/world/InteractionResult;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 28
+          locals = [ class net/minecraft/world/InteractionResult ]
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onAddReloadListeners(net.neoforged.neoforge.event.AddReloadListenerEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokedynamic #135,  0            // InvokeDynamic #0:accept:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)Ljava/util/function/BiConsumer;
+         6: invokestatic  #139                // Method dan200/computercraft/shared/CommonHooks.onDatapackReload:(Ljava/util/function/BiConsumer;)V
+         9: return
+      LineNumberTable:
+        line 95: 0
+        line 96: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0 event   Lnet/neoforged/neoforge/event/AddReloadListenerEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void lootLoad(net.neoforged.neoforge.event.LootTableLoadEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/LootTableLoadEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: getstatic     #143                // Field net/minecraft/core/registries/Registries.LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+         3: aload_0
+         4: invokevirtual #149                // Method net/neoforged/neoforge/event/LootTableLoadEvent.getName:()Lnet/minecraft/resources/ResourceLocation;
+         7: invokestatic  #155                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        10: invokestatic  #161                // Method dan200/computercraft/shared/CommonHooks.getExtraLootPool:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+        13: astore_1
+        14: aload_1
+        15: ifnull        29
+        18: aload_0
+        19: invokevirtual #165                // Method net/neoforged/neoforge/event/LootTableLoadEvent.getTable:()Lnet/minecraft/world/level/storage/loot/LootTable;
+        22: aload_1
+        23: invokevirtual #169                // Method net/minecraft/world/level/storage/loot/LootPool$Builder.build:()Lnet/minecraft/world/level/storage/loot/LootPool;
+        26: invokevirtual #175                // Method net/minecraft/world/level/storage/loot/LootTable.addPool:(Lnet/minecraft/world/level/storage/loot/LootPool;)V
+        29: return
+      LineNumberTable:
+        line 100: 0
+        line 101: 14
+        line 102: 29
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      30     0 event   Lnet/neoforged/neoforge/event/LootTableLoadEvent;
+           14      16     1  pool   Lnet/minecraft/world/level/storage/loot/LootPool$Builder;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ class net/minecraft/world/level/storage/loot/LootPool$Builder ]
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public static void onEntitySpawn(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #181                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+         4: invokestatic  #186                // Method dan200/computercraft/shared/CommonHooks.onEntitySpawn:(Lnet/minecraft/world/entity/Entity;)Z
+         7: ifeq          15
+        10: aload_0
+        11: iconst_1
+        12: invokevirtual #190                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.setCanceled:(Z)V
+        15: return
+      LineNumberTable:
+        line 106: 0
+        line 107: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 event   Lnet/neoforged/neoforge/event/entity/EntityJoinLevelEvent;
+      StackMapTable: number_of_entries = 1
+        frame_type = 15 /* same */
+    RuntimeVisibleAnnotations:
+      0: #259(#294=e#295.#296)
+        net.neoforged.bus.api.SubscribeEvent(
+          priority=Lnet/neoforged/bus/api/EventPriority;.HIGHEST
+        )
+
+  public static void onLivingDrops(net.neoforged.neoforge.event.entity.living.LivingDropsEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #191                // Method net/neoforged/neoforge/event/entity/living/LivingDropsEvent.getDrops:()Ljava/util/Collection;
+         4: aload_0
+         5: invokedynamic #197,  0            // InvokeDynamic #1:test:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;)Ljava/util/function/Predicate;
+        10: invokeinterface #201,  2          // InterfaceMethod java/util/Collection.removeIf:(Ljava/util/function/Predicate;)Z
+        15: pop
+        16: return
+      LineNumberTable:
+        line 111: 0
+        line 112: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0 event   Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;
+    RuntimeVisibleAnnotations:
+      0: #259(#294=e#295.#300)
+        net.neoforged.bus.api.SubscribeEvent(
+          priority=Lnet/neoforged/bus/api/EventPriority;.LOW
+        )
+
+  public static void onItemTooltip(net.neoforged.neoforge.event.entity.player.ItemTooltipEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/ItemTooltipEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #207                // Method net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+         4: aload_0
+         5: invokevirtual #213                // Method net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getContext:()Lnet/minecraft/world/item/Item$TooltipContext;
+         8: aload_0
+         9: invokevirtual #217                // Method net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getFlags:()Lnet/minecraft/world/item/TooltipFlag;
+        12: aload_0
+        13: invokevirtual #221                // Method net/neoforged/neoforge/event/entity/player/ItemTooltipEvent.getToolTip:()Ljava/util/List;
+        16: invokestatic  #225                // Method dan200/computercraft/shared/CommonHooks.onItemTooltip:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/Item$TooltipContext;Lnet/minecraft/world/item/TooltipFlag;Ljava/util/List;)V
+        19: return
+      LineNumberTable:
+        line 116: 0
+        line 117: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      20     0 event   Lnet/neoforged/neoforge/event/entity/player/ItemTooltipEvent;
+    RuntimeVisibleAnnotations:
+      0: #259()
+        net.neoforged.bus.api.SubscribeEvent
+
+  private static boolean lambda$onLivingDrops$0(net.neoforged.neoforge.event.entity.living.LivingDropsEvent, net.minecraft.world.entity.item.ItemEntity);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: invokevirtual #229                // Method net/neoforged/neoforge/event/entity/living/LivingDropsEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+         4: aload_1
+         5: invokevirtual #232                // Method net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+         8: invokestatic  #237                // Method dan200/computercraft/shared/CommonHooks.onLivingDrop:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Z
+        11: ireturn
+      LineNumberTable:
+        line 111: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 event   Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;
+            0      12     1 itemEntity   Lnet/minecraft/world/entity/item/ItemEntity;
+
+  private static void lambda$onAddReloadListeners$0(net.neoforged.neoforge.event.AddReloadListenerEvent, java.lang.String, net.minecraft.server.packs.resources.PreparableReloadListener);
+    descriptor: (Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: aload_2
+         2: invokevirtual #241                // Method net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+         5: return
+      LineNumberTable:
+        line 95: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 event   Lnet/neoforged/neoforge/event/AddReloadListenerEvent;
+            0       6     1    id   Ljava/lang/String;
+            0       6     2 listener   Lnet/minecraft/server/packs/resources/PreparableReloadListener;
+}
+SourceFile: "ForgeCommonHooks.java"
+RuntimeVisibleAnnotations:
+  0: #315(#316=s#317)
+    net.neoforged.fml.common.EventBusSubscriber(
+      modid="computercraft"
+    )
+BootstrapMethods:
+  0: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #319 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #321 REF_invokeStatic dan200/computercraft/shared/ForgeCommonHooks.lambda$onAddReloadListeners$0:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+      #324 (Ljava/lang/String;Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  1: #333 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #326 (Ljava/lang/Object;)Z
+      #328 REF_invokeStatic dan200/computercraft/shared/ForgeCommonHooks.lambda$onLivingDrops$0:(Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;Lnet/minecraft/world/entity/item/ItemEntity;)Z
+      #331 (Lnet/minecraft/world/entity/item/ItemEntity;)Z
+InnerClasses:
+  public static #343= #8 of #341;         // Pre=class net/neoforged/neoforge/event/tick/ServerTickEvent$Pre of class net/neoforged/neoforge/event/tick/ServerTickEvent
+  public static #346= #50 of #344;        // Unload=class net/neoforged/neoforge/event/level/ChunkEvent$Unload of class net/neoforged/neoforge/event/level/ChunkEvent
+  public static #349= #68 of #347;        // Sent=class net/neoforged/neoforge/event/level/ChunkWatchEvent$Sent of class net/neoforged/neoforge/event/level/ChunkWatchEvent
+  public static #352= #101 of #350;       // RightClickBlock=class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock of class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent
+  public static #355= #170 of #353;       // Builder=class net/minecraft/world/level/storage/loot/LootPool$Builder of class net/minecraft/world/level/storage/loot/LootPool
+  public static #360= #356 of #358;       // TooltipContext=class net/minecraft/world/item/Item$TooltipContext of class net/minecraft/world/item/Item
+  public static #363= #361 of #341;       // Post=class net/neoforged/neoforge/event/tick/ServerTickEvent$Post of class net/neoforged/neoforge/event/tick/ServerTickEvent
+  public static final #368= #364 of #366; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
