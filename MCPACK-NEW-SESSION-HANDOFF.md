@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-06
 
+C2ME continued in 5a44fce9 (26 entries/plugins across the other 18 modules),
+7658d2f6 (ten pool/generation hooks) and cb594f9b (existing pool codec wrapper).
+All captures reproduce exactly; extractor quality checks pass. These establish
+settings, supplied-chunk serialization, existing random/terrain/biome behavior
+and executor redirection, with no new family from the inspected boundaries.
+The pool wrapper is resolved: it locks and delegates the existing codec.
+Do not inspect its ManagedLocker helper or generic serializer internals
+without a relevant caller. Continue remaining hook roles, startup Config and
+view-distance listener delegates, and bundled-library entries. Use the existing
+132-reference provider index as a reconciliation aid, not a mandate to
+disassemble every helper. The remaining index points to accessors, density
+functions/noise, surface/ore computation and chunk lifecycle/persistence.
+Whole providers remain 121 resolved, 15 open; working groups 410 and provisional
+Moog decisions 100. Provider membership and canonical grouping remain the next
+deliverable before attributes. No final Item 8 gate, review or main merge.
+
+
 C2ME is partially inspected, not a resolved provider. Reuse 957658fa (outer
 startup and base module selection), ff824a0b (all worldgen-threading hooks) and
 cb33666e (their transformation/state delegates). The module changes existing
