@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-06
 
+Latest Aether source cb00a94 is pushed and remote-ref verified. Extractor 8976b7a
+captures 23 entry/plugin, custom feature, holiday-decoration and Silver/Gold
+assembly classes in sources/aether-provider. Manifest SHA-256:
+917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee.
+Independent r1 matches every generated file. Do not repeat these captures.
+
+Candidate partition 4bc4292 is also delivered: four base/runtime roots, six
+optional ruined-portal roots absent from the captured registry, 34 templates
+(six Bronze, eleven Silver, four Gold, thirteen portal), 25 configured features
+across eleven types, and three exact nested JAR identities. Two focused cloud/
+partition cases and scoped quality checks pass. See provider-scope.md's final
+Aether section for the finite resource queue and nested identities.
+
+Next interpret the captured Silver/Gold consumers and four custom features plus
+holiday decoration, then reconcile main-entry delegates, common mixins and the
+three bundled libraries. Source capture alone is not provider closure. Initial
+source reading has not produced accepted additional dispositions yet. Preserve
+the existing Bronze/cloud results and do not resume detailed attributes before
+the provider census and canonical grouping close. Census remains 75 resolved,
+61 open. No blocker exists; this turn delivered concrete evidence increments.
+
 Latest closure 716fadb is pushed and remote-ref verified. Repurposed Structures
 provider coverage is RESOLVED. Census is now 75 resolved providers and 61 open.
 Nine focused cases and scoped Ruff/Basedpyright pass. The full disposition is
