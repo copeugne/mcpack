@@ -36,6 +36,7 @@ ARCHIVES = frozenset(
         "Patchouli-1.21.1-93-NEOFORGE.jar",
         "cloth-config-15.0.140-neoforge.jar",
         "cristellib-neoforge-1.21.1-3.1.7.jar",
+        "ranged_weapon_api-neoforge-2.3.3+1.21.1.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -205,6 +206,20 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabric_extras/ranged_weapon/neoforge/NeoForgeMod.class",
+    "net/fabric_extras/ranged_weapon/neoforge/client/NeoForgeClientMod.class",
+    "net/fabric_extras/ranged_weapon/RangedWeaponMod.class",
+    "net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/attribute/EntityAttributesMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/attribute/StatusEffectsMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/BowItemMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/ComponentMapBuilderAccessor.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/CrossbowItemMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/ItemSettingMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/ProjectileUtilMixin.class",
+    "net/fabric_extras/ranged_weapon/mixin/item/RangedWeaponItemMixin.class",
+
     "de/cristelknight/cristellib/api/BuiltInAPI.class",
     "de/cristelknight/cristellib/data/condition/ConditionNode.class",
     "de/cristelknight/cristellib/data/condition/ConditionRegistry.class",
