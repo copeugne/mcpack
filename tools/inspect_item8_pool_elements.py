@@ -191,6 +191,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/conczin/mca/resources/BuildingTypes.class",
+    "net/conczin/mca/resources/data/BuildingType.class",
+    "net/conczin/mca/server/world/data/Building.class",
     "net/conczin/mca/mixin/MixinAbstractFurnaceBlockEntity.class",
     "net/conczin/mca/mixin/MixinActivity.class",
     "net/conczin/mca/mixin/MixinEntityType.class",
