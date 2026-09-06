@@ -8724,3 +8724,34 @@ This reconciliation is done when the named canonical list accounts for all runti
 roots and these contributions, with no unresolved membership decision or duplicate
 family. Attribute completion is a separate remaining Item 8 requirement. Do not
 resume generic provider audits or add another measurement system for this queue.
+
+## Soaring house and tower membership decisions
+
+Ten decisions in family-decisions.json now have explicit built-form rationales.
+The six houses are calcite_house, diorite_house, small_deepslate_house,
+small_oak_house, spruce_huts and white_house. The four tower/ruin designs are
+castle_ruin, castle_tower, large_tower and small_tower. None is merged solely by
+shared material, theme or generic jigsaw codec. Paired huts and modular lower,
+side and top pieces remain components of their parent design.
+
+The manually inspected houses and towers sheets under sources/soaring-design-views-r3
+are hash-bound in each decision. Existing packaged summaries preserve furnishings
+and authored entities. Existing complete pool traces identify attached pieces;
+the views show selected main templates rather than pretending to render complete
+assemblies. No generated-world size, successful placement or gameplay claim is
+introduced. See the decision rationales for the specific built-form distinctions.
+
+The historical 100-name checkpoint above remains dated context. Current explicitly
+provisional remainder: 90 (Soaring 15, Nether 22, Voyager 53). The working family
+count remains 410 until all canonical and nonregistry reconciliation is complete.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+All 73 existing family-decision tests pass, with scoped Ruff and Basedpyright
+passing. Diagram evidence d07a3b79 was delivered after an HTTP 408 on the first
+push; retrying the same commit with an 8 MiB HTTP post buffer succeeded and the
+delivered ref was verified before committing these dependent decisions.
