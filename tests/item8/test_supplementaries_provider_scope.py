@@ -117,6 +117,13 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     )
     callback = cast("list[dict[str, str]]", json.loads(raw))
     assert len(callback) == 1
+    placement_directory = Path("evidence/item-8/sources/supplementaries-placement-processor")
+    raw = (placement_directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "aaae4d5157a42bdff7bc12d048945a324e3c0c45d8e0bf06edf46a06a7264195"
+    )
+    placement = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(placement) == len({row["class"] for row in placement}) == 3
     with ZipFile(source.path) as archive:
         mixins = cast(
             "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
@@ -125,7 +132,11 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
         assert {"MineshaftCorridorMixin", "MineshaftPiecesMixin"} <= set(
             cast("list[str]", mixins["mixins"])
         )
-        for capture_directory, rows in ((directory, identities), (callback_directory, callback)):
+        for capture_directory, rows in (
+            (directory, identities),
+            (callback_directory, callback),
+            (placement_directory, placement),
+        ):
             for row in rows:
                 assert row["archive"] == source.name
                 assert row["archive_sha256"] == source.sha256
