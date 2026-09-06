@@ -1,0 +1,101 @@
+Compiled from "YungsApiNeoForge.java"
+public class com.yungnickyoung.minecraft.yungsapi.YungsApiNeoForge {
+  public static net.neoforged.bus.api.IEventBus loadingContextEventBus;
+
+  public com.yungnickyoung.minecraft.yungsapi.YungsApiNeoForge(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_1
+       5: putstatic     #7                  // Field loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+       8: invokestatic  #13                 // Method com/yungnickyoung/minecraft/yungsapi/YungsApiCommon.init:()V
+      11: return
+
+  public static <T> java.util.function.Consumer<net.neoforged.neoforge.registries.RegisterEvent> buildSimpleRegistrar(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.util.List<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #18,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       7: invokestatic  #22                 // Method buildAutoRegistrar:(Lnet/minecraft/resources/ResourceKey;Ljava/util/List;Ljava/util/function/Function;)Ljava/util/function/Consumer;
+      10: areturn
+
+  public static <T> java.util.function.Consumer<net.neoforged.neoforge.registries.RegisterEvent> buildAutoRegistrar(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.util.List<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField>, java.util.function.Function<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField, T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokedynamic #26,  0             // InvokeDynamic #1:accept:()Lorg/apache/logging/log4j/util/TriConsumer;
+       8: invokestatic  #30                 // Method buildAutoRegistrar:(Lnet/minecraft/resources/ResourceKey;Ljava/util/List;Ljava/util/function/Function;Lorg/apache/logging/log4j/util/TriConsumer;)Ljava/util/function/Consumer;
+      11: areturn
+
+  public static <T> java.util.function.Consumer<net.neoforged.neoforge.registries.RegisterEvent> buildAutoRegistrar(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>>, java.util.List<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField>, java.util.function.Function<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField, T>, org.apache.logging.log4j.util.TriConsumer<com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField, T, net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper<T>>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload_2
+       4: invokedynamic #33,  0             // InvokeDynamic #2:accept:(Lnet/minecraft/resources/ResourceKey;Ljava/util/List;Lorg/apache/logging/log4j/util/TriConsumer;Ljava/util/function/Function;)Ljava/util/function/Consumer;
+       9: areturn
+
+  private static void lambda$buildAutoRegistrar$5(net.minecraft.resources.ResourceKey, java.util.List, org.apache.logging.log4j.util.TriConsumer, java.util.function.Function, net.neoforged.neoforge.registries.RegisterEvent);
+    Code:
+       0: aload         4
+       2: aload_0
+       3: aload_1
+       4: aload_2
+       5: aload_3
+       6: invokedynamic #36,  0             // InvokeDynamic #3:accept:(Ljava/util/List;Lorg/apache/logging/log4j/util/TriConsumer;Ljava/util/function/Function;)Ljava/util/function/Consumer;
+      11: invokevirtual #39                 // Method net/neoforged/neoforge/registries/RegisterEvent.register:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      14: return
+
+  private static void lambda$buildAutoRegistrar$4(java.util.List, org.apache.logging.log4j.util.TriConsumer, java.util.function.Function, net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: aload_0
+       1: invokeinterface #45,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       6: invokedynamic #51,  0             // InvokeDynamic #4:test:()Ljava/util/function/Predicate;
+      11: invokeinterface #55,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      16: aload_1
+      17: aload_2
+      18: aload_3
+      19: invokedynamic #61,  0             // InvokeDynamic #5:accept:(Lorg/apache/logging/log4j/util/TriConsumer;Ljava/util/function/Function;Lnet/neoforged/neoforge/registries/RegisterEvent$RegisterHelper;)Ljava/util/function/Consumer;
+      24: invokeinterface #64,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      29: return
+
+  private static void lambda$buildAutoRegistrar$3(org.apache.logging.log4j.util.TriConsumer, java.util.function.Function, net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper, com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField);
+    Code:
+       0: aload_0
+       1: aload_3
+       2: aload_1
+       3: aload_3
+       4: invokeinterface #68,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+       9: aload_2
+      10: invokeinterface #73,  4           // InterfaceMethod org/apache/logging/log4j/util/TriConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+      15: aload_3
+      16: invokevirtual #78                 // Method com/yungnickyoung/minecraft/yungsapi/autoregister/AutoRegisterField.markProcessed:()V
+      19: return
+
+  private static boolean lambda$buildAutoRegistrar$2(com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField);
+    Code:
+       0: aload_0
+       1: invokevirtual #83                 // Method com/yungnickyoung/minecraft/yungsapi/autoregister/AutoRegisterField.processed:()Z
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  private static void lambda$buildAutoRegistrar$1(com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField, java.lang.Object, net.neoforged.neoforge.registries.RegisterEvent$RegisterHelper);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: invokevirtual #87                 // Method com/yungnickyoung/minecraft/yungsapi/autoregister/AutoRegisterField.name:()Lnet/minecraft/resources/ResourceLocation;
+       5: aload_1
+       6: invokeinterface #91,  3           // InterfaceMethod net/neoforged/neoforge/registries/RegisterEvent$RegisterHelper.register:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)V
+      11: return
+
+  private static java.lang.Object lambda$buildSimpleRegistrar$0(com.yungnickyoung.minecraft.yungsapi.autoregister.AutoRegisterField);
+    Code:
+       0: aload_0
+       1: invokevirtual #96                 // Method com/yungnickyoung/minecraft/yungsapi/autoregister/AutoRegisterField.object:()Ljava/lang/Object;
+       4: areturn
+}

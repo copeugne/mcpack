@@ -1,0 +1,528 @@
+Classfile YungsApi-1.21.1-NeoForge-5.1.6.jar!/com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.class
+  Last modified Jun 27, 2025; size 7487 bytes
+  SHA-256 checksum 060618e49f83876d2e3a449df8360831b540e52f3a59da5548bf0b69894ce681
+  Compiled from "NoiseChunkMixin.java"
+public abstract class com.yungnickyoung.minecraft.yungsapi.mixin.NoiseChunkMixin implements com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMaskSupplier
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #11                         // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 4, methods: 8, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // java/lang/ThreadLocal
+    #8 = Utf8               java/lang/ThreadLocal
+    #9 = Methodref          #7.#3         // java/lang/ThreadLocal."<init>":()V
+   #10 = Fieldref           #11.#12       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.aquiferOverrideMask:Ljava/lang/ThreadLocal;
+   #11 = Class              #13           // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin
+   #12 = NameAndType        #14:#15       // aquiferOverrideMask:Ljava/lang/ThreadLocal;
+   #13 = Utf8               com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin
+   #14 = Utf8               aquiferOverrideMask
+   #15 = Utf8               Ljava/lang/ThreadLocal;
+   #16 = Fieldref           #11.#17       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.beardifier:Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+   #17 = NameAndType        #18:#19       // beardifier:Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+   #18 = Utf8               beardifier
+   #19 = Utf8               Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+   #20 = Class              #21           // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData
+   #21 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData
+   #22 = InterfaceMethodref #20.#23       // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData.getNoiseChunk:()Lnet/minecraft/world/level/levelgen/NoiseChunk;
+   #23 = NameAndType        #24:#25       // getNoiseChunk:()Lnet/minecraft/world/level/levelgen/NoiseChunk;
+   #24 = Utf8               getNoiseChunk
+   #25 = Utf8               ()Lnet/minecraft/world/level/levelgen/NoiseChunk;
+   #26 = Class              #27           // net/minecraft/world/level/levelgen/NoiseChunk
+   #27 = Utf8               net/minecraft/world/level/levelgen/NoiseChunk
+   #28 = InterfaceMethodref #20.#29       // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData.setNoiseChunk:(Lnet/minecraft/world/level/levelgen/NoiseChunk;)V
+   #29 = NameAndType        #30:#31       // setNoiseChunk:(Lnet/minecraft/world/level/levelgen/NoiseChunk;)V
+   #30 = Utf8               setNoiseChunk
+   #31 = Utf8               (Lnet/minecraft/world/level/levelgen/NoiseChunk;)V
+   #32 = Methodref          #33.#34       // net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+   #33 = Class              #35           // net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+   #34 = NameAndType        #36:#37       // defaultBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+   #35 = Utf8               net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+   #36 = Utf8               defaultBlock
+   #37 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #38 = Fieldref           #11.#39       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.defaultBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+   #39 = NameAndType        #40:#41       // defaultBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+   #40 = Utf8               defaultBlockState
+   #41 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+   #42 = Methodref          #43.#44       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+   #43 = Class              #45           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #44 = NameAndType        #46:#47       // getReturnValue:()Ljava/lang/Object;
+   #45 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #46 = Utf8               getReturnValue
+   #47 = Utf8               ()Ljava/lang/Object;
+   #48 = Class              #49           // net/minecraft/world/level/block/state/BlockState
+   #49 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #50 = Fieldref           #51.#52       // net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+   #51 = Class              #53           // net/minecraft/world/level/block/Blocks
+   #52 = NameAndType        #54:#55       // WATER:Lnet/minecraft/world/level/block/Block;
+   #53 = Utf8               net/minecraft/world/level/block/Blocks
+   #54 = Utf8               WATER
+   #55 = Utf8               Lnet/minecraft/world/level/block/Block;
+   #56 = Methodref          #48.#57       // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+   #57 = NameAndType        #58:#59       // is:(Lnet/minecraft/world/level/block/Block;)Z
+   #58 = Utf8               is
+   #59 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #60 = Fieldref           #51.#61       // net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+   #61 = NameAndType        #62:#55       // LAVA:Lnet/minecraft/world/level/block/Block;
+   #62 = Utf8               LAVA
+   #63 = InvokeDynamic      #0:#64        // #0:get:(Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;)Ljava/util/function/Supplier;
+   #64 = NameAndType        #65:#66       // get:(Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;)Ljava/util/function/Supplier;
+   #65 = Utf8               get
+   #66 = Utf8               (Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;)Ljava/util/function/Supplier;
+   #67 = Methodref          #11.#68       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.getOrCreateAquiferOverrideMask:(Ljava/util/function/Supplier;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+   #68 = NameAndType        #69:#70       // getOrCreateAquiferOverrideMask:(Ljava/util/function/Supplier;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+   #69 = Utf8               getOrCreateAquiferOverrideMask
+   #70 = Utf8               (Ljava/util/function/Supplier;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+   #71 = Methodref          #72.#73       // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask.getAquiferOverride:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverride;
+   #72 = Class              #74           // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask
+   #73 = NameAndType        #75:#76       // getAquiferOverride:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverride;
+   #74 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask
+   #75 = Utf8               getAquiferOverride
+   #76 = Utf8               ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverride;
+   #77 = Class              #78           // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride
+   #78 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride
+   #79 = Methodref          #77.#80       // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride.setSolidBlockState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+   #80 = NameAndType        #81:#82       // setSolidBlockState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+   #81 = Utf8               setSolidBlockState
+   #82 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)V
+   #83 = Methodref          #11.#84       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.blockX:()I
+   #84 = NameAndType        #85:#86       // blockX:()I
+   #85 = Utf8               blockX
+   #86 = Utf8               ()I
+   #87 = Methodref          #11.#88       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.blockY:()I
+   #88 = NameAndType        #89:#86       // blockY:()I
+   #89 = Utf8               blockY
+   #90 = Methodref          #11.#91       // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.blockZ:()I
+   #91 = NameAndType        #92:#86       // blockZ:()I
+   #92 = Utf8               blockZ
+   #93 = Methodref          #72.#94       // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask.getBlockStateForPos:(IIILnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+   #94 = NameAndType        #95:#96       // getBlockStateForPos:(IIILnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+   #95 = Utf8               getBlockStateForPos
+   #96 = Utf8               (IIILnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+   #97 = Methodref          #43.#98       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #98 = NameAndType        #99:#100      // setReturnValue:(Ljava/lang/Object;)V
+   #99 = Utf8               setReturnValue
+  #100 = Utf8               (Ljava/lang/Object;)V
+  #101 = Methodref          #7.#102       // java/lang/ThreadLocal.get:()Ljava/lang/Object;
+  #102 = NameAndType        #65:#47       // get:()Ljava/lang/Object;
+  #103 = InterfaceMethodref #104.#102     // java/util/function/Supplier.get:()Ljava/lang/Object;
+  #104 = Class              #105          // java/util/function/Supplier
+  #105 = Utf8               java/util/function/Supplier
+  #106 = Methodref          #7.#107       // java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+  #107 = NameAndType        #108:#100     // set:(Ljava/lang/Object;)V
+  #108 = Utf8               set
+  #109 = Fieldref           #11.#110      // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.noiseSettings:Lnet/minecraft/world/level/levelgen/NoiseSettings;
+  #110 = NameAndType        #111:#112     // noiseSettings:Lnet/minecraft/world/level/levelgen/NoiseSettings;
+  #111 = Utf8               noiseSettings
+  #112 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseSettings;
+  #113 = Methodref          #114.#115     // net/minecraft/world/level/levelgen/NoiseSettings.height:()I
+  #114 = Class              #116          // net/minecraft/world/level/levelgen/NoiseSettings
+  #115 = NameAndType        #117:#86      // height:()I
+  #116 = Utf8               net/minecraft/world/level/levelgen/NoiseSettings
+  #117 = Utf8               height
+  #118 = Methodref          #114.#119     // net/minecraft/world/level/levelgen/NoiseSettings.minY:()I
+  #119 = NameAndType        #120:#86      // minY:()I
+  #120 = Utf8               minY
+  #121 = Methodref          #72.#122      // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask."<init>":(II)V
+  #122 = NameAndType        #5:#123       // "<init>":(II)V
+  #123 = Utf8               (II)V
+  #124 = Class              #125          // com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMaskSupplier
+  #125 = Utf8               com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMaskSupplier
+  #126 = Utf8               RuntimeVisibleAnnotations
+  #127 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #128 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #129 = Utf8               Signature
+  #130 = Utf8               Ljava/lang/ThreadLocal<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;
+  #131 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #132 = Utf8               Code
+  #133 = Utf8               LineNumberTable
+  #134 = Utf8               LocalVariableTable
+  #135 = Utf8               this
+  #136 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+  #137 = Utf8               yungsapi_attachNoiseChunkToBeardifier
+  #138 = Utf8               (ILnet/minecraft/world/level/levelgen/RandomState;IILnet/minecraft/world/level/levelgen/NoiseSettings;Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;Lnet/minecraft/world/level/levelgen/blending/Blender;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #139 = Utf8               enhancedBeardifierData
+  #140 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData;
+  #141 = Utf8               $$0
+  #142 = Utf8               I
+  #143 = Utf8               $$1
+  #144 = Utf8               Lnet/minecraft/world/level/levelgen/RandomState;
+  #145 = Utf8               $$2
+  #146 = Utf8               $$3
+  #147 = Utf8               $$4
+  #148 = Utf8               $$5
+  #149 = Utf8               $$6
+  #150 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
+  #151 = Utf8               $$7
+  #152 = Utf8               Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+  #153 = Utf8               $$8
+  #154 = Utf8               Lnet/minecraft/world/level/levelgen/blending/Blender;
+  #155 = Utf8               ci
+  #156 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #157 = Utf8               StackMapTable
+  #158 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #159 = Utf8               method
+  #160 = Utf8               at
+  #161 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #162 = Utf8               value
+  #163 = Utf8               RETURN
+  #164 = Utf8               yungsapi_dontFillMarkedPositions
+  #165 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #166 = Utf8               solidifyAquiferOverride
+  #167 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride;
+  #168 = Utf8               mask
+  #169 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #170 = Utf8               blockState
+  #171 = Utf8               cir
+  #172 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #173 = Utf8               retVal
+  #174 = Utf8               LocalVariableTypeTable
+  #175 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;
+  #176 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;)V
+  #177 = Utf8               getInterpolatedState
+  #178 = Utf8               cancellable
+  #179 = Integer            1
+  #180 = Utf8               aquiferOverrideMaskSupplier
+  #181 = Utf8               Ljava/util/function/Supplier;
+  #182 = Utf8               Ljava/util/function/Supplier<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;
+  #183 = Utf8               (Ljava/util/function/Supplier<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #184 = Utf8               lambda$yungsapi_dontFillMarkedPositions$0
+  #185 = Utf8               ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #186 = Utf8               SourceFile
+  #187 = Utf8               NoiseChunkMixin.java
+  #188 = Utf8               RuntimeInvisibleAnnotations
+  #189 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #190 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseChunk;
+  #191 = Utf8               BootstrapMethods
+  #192 = MethodType         #47           //  ()Ljava/lang/Object;
+  #193 = MethodHandle       5:#194        // REF_invokeVirtual com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.lambda$yungsapi_dontFillMarkedPositions$0:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #194 = Methodref          #11.#195      // com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.lambda$yungsapi_dontFillMarkedPositions$0:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #195 = NameAndType        #184:#185     // lambda$yungsapi_dontFillMarkedPositions$0:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #196 = MethodType         #185          //  ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+  #197 = MethodHandle       6:#198        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #198 = Methodref          #199.#200     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #199 = Class              #201          // java/lang/invoke/LambdaMetafactory
+  #200 = NameAndType        #202:#203     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #201 = Utf8               java/lang/invoke/LambdaMetafactory
+  #202 = Utf8               metafactory
+  #203 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #204 = Utf8               InnerClasses
+  #205 = Class              #206          // net/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker
+  #206 = Utf8               net/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker
+  #207 = Class              #208          // net/minecraft/world/level/levelgen/DensityFunctions
+  #208 = Utf8               net/minecraft/world/level/levelgen/DensityFunctions
+  #209 = Utf8               BeardifierOrMarker
+  #210 = Class              #211          // net/minecraft/world/level/levelgen/Aquifer$FluidPicker
+  #211 = Utf8               net/minecraft/world/level/levelgen/Aquifer$FluidPicker
+  #212 = Class              #213          // net/minecraft/world/level/levelgen/Aquifer
+  #213 = Utf8               net/minecraft/world/level/levelgen/Aquifer
+  #214 = Utf8               FluidPicker
+  #215 = Class              #216          // java/lang/invoke/MethodHandles$Lookup
+  #216 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #217 = Class              #218          // java/lang/invoke/MethodHandles
+  #218 = Utf8               java/lang/invoke/MethodHandles
+  #219 = Utf8               Lookup
+{
+  private net.minecraft.world.level.levelgen.DensityFunctions$BeardifierOrMarker beardifier;
+    descriptor: Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #127()
+        org.spongepowered.asm.mixin.Shadow
+      1: #128()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.world.level.levelgen.NoiseSettings noiseSettings;
+    descriptor: Lnet/minecraft/world/level/levelgen/NoiseSettings;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #127()
+        org.spongepowered.asm.mixin.Shadow
+      1: #128()
+        org.spongepowered.asm.mixin.Final
+
+  private java.lang.ThreadLocal<com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMask> aquiferOverrideMask;
+    descriptor: Ljava/lang/ThreadLocal;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #130                         // Ljava/lang/ThreadLocal<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;
+    RuntimeVisibleAnnotations:
+      0: #131()
+        org.spongepowered.asm.mixin.Unique
+
+  private net.minecraft.world.level.block.state.BlockState defaultBlockState;
+    descriptor: Lnet/minecraft/world/level/block/state/BlockState;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #131()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.yungnickyoung.minecraft.yungsapi.mixin.NoiseChunkMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #7                  // class java/lang/ThreadLocal
+         8: dup
+         9: invokespecial #9                  // Method java/lang/ThreadLocal."<init>":()V
+        12: putfield      #10                 // Field aquiferOverrideMask:Ljava/lang/ThreadLocal;
+        15: return
+      LineNumberTable:
+        line 28: 0
+        line 46: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+
+  public abstract int blockX();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #127()
+        org.spongepowered.asm.mixin.Shadow
+
+  public abstract int blockY();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #127()
+        org.spongepowered.asm.mixin.Shadow
+
+  public abstract int blockZ();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #127()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void yungsapi_attachNoiseChunkToBeardifier(int, net.minecraft.world.level.levelgen.RandomState, int, int, net.minecraft.world.level.levelgen.NoiseSettings, net.minecraft.world.level.levelgen.DensityFunctions$BeardifierOrMarker, net.minecraft.world.level.levelgen.NoiseGeneratorSettings, net.minecraft.world.level.levelgen.Aquifer$FluidPicker, net.minecraft.world.level.levelgen.blending.Blender, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (ILnet/minecraft/world/level/levelgen/RandomState;IILnet/minecraft/world/level/levelgen/NoiseSettings;Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;Lnet/minecraft/world/level/levelgen/blending/Blender;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=13, args_size=11
+         0: aload_0
+         1: getfield      #16                 // Field beardifier:Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+         4: astore        12
+         6: aload         12
+         8: instanceof    #20                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData
+        11: ifeq          42
+        14: aload         12
+        16: checkcast     #20                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData
+        19: astore        11
+        21: aload         11
+        23: invokeinterface #22,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData.getNoiseChunk:()Lnet/minecraft/world/level/levelgen/NoiseChunk;
+        28: ifnonnull     42
+        31: aload         11
+        33: aload_0
+        34: checkcast     #26                 // class net/minecraft/world/level/levelgen/NoiseChunk
+        37: invokeinterface #28,  2           // InterfaceMethod com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData.setNoiseChunk:(Lnet/minecraft/world/level/levelgen/NoiseChunk;)V
+        42: aload_0
+        43: aload         7
+        45: invokevirtual #32                 // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.defaultBlock:()Lnet/minecraft/world/level/block/state/BlockState;
+        48: putfield      #38                 // Field defaultBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+        51: return
+      LineNumberTable:
+        line 54: 0
+        line 55: 31
+        line 57: 42
+        line 58: 51
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      21    11 enhancedBeardifierData   Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/beardifier/EnhancedBeardifierData;
+            0      52     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+            0      52     1   $$0   I
+            0      52     2   $$1   Lnet/minecraft/world/level/levelgen/RandomState;
+            0      52     3   $$2   I
+            0      52     4   $$3   I
+            0      52     5   $$4   Lnet/minecraft/world/level/levelgen/NoiseSettings;
+            0      52     6   $$5   Lnet/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker;
+            0      52     7   $$6   Lnet/minecraft/world/level/levelgen/NoiseGeneratorSettings;
+            0      52     8   $$7   Lnet/minecraft/world/level/levelgen/Aquifer$FluidPicker;
+            0      52     9   $$8   Lnet/minecraft/world/level/levelgen/blending/Blender;
+            0      52    10    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 42 /* same */
+    RuntimeVisibleAnnotations:
+      0: #158(#159=[s#5],#160=[@#161(#162=s#163)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  private void yungsapi_dontFillMarkedPositions(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.level.block.state.BlockState>);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=6, args_size=2
+         0: aload_1
+         1: invokevirtual #42                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+         4: checkcast     #48                 // class net/minecraft/world/level/block/state/BlockState
+         7: astore_2
+         8: aload_2
+         9: ifnull        98
+        12: aload_2
+        13: getstatic     #50                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+        16: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        19: ifne          32
+        22: aload_2
+        23: getstatic     #60                 // Field net/minecraft/world/level/block/Blocks.LAVA:Lnet/minecraft/world/level/block/Block;
+        26: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        29: ifeq          98
+        32: aload_0
+        33: aload_0
+        34: invokedynamic #63,  0             // InvokeDynamic #0:get:(Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;)Ljava/util/function/Supplier;
+        39: invokevirtual #67                 // Method getOrCreateAquiferOverrideMask:(Ljava/util/function/Supplier;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+        42: astore_3
+        43: aload_3
+        44: invokevirtual #71                 // Method com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask.getAquiferOverride:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverride;
+        47: astore        5
+        49: aload         5
+        51: instanceof    #77                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride
+        54: ifeq          73
+        57: aload         5
+        59: checkcast     #77                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride
+        62: astore        4
+        64: aload         4
+        66: aload_0
+        67: getfield      #38                 // Field defaultBlockState:Lnet/minecraft/world/level/block/state/BlockState;
+        70: invokevirtual #79                 // Method com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride.setSolidBlockState:(Lnet/minecraft/world/level/block/state/BlockState;)V
+        73: aload_3
+        74: aload_0
+        75: invokevirtual #83                 // Method blockX:()I
+        78: aload_0
+        79: invokevirtual #87                 // Method blockY:()I
+        82: aload_0
+        83: invokevirtual #90                 // Method blockZ:()I
+        86: aload_2
+        87: invokevirtual #93                 // Method com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask.getBlockStateForPos:(IIILnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/state/BlockState;
+        90: astore        4
+        92: aload_1
+        93: aload         4
+        95: invokevirtual #97                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        98: return
+      LineNumberTable:
+        line 66: 0
+        line 67: 8
+        line 68: 32
+        line 71: 43
+        line 72: 64
+        line 75: 73
+        line 76: 92
+        line 78: 98
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           64       9     4 solidifyAquiferOverride   Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/SolidifyAquiferOverride;
+           43      55     3  mask   Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+           92       6     4 blockState   Lnet/minecraft/world/level/block/state/BlockState;
+            0      99     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+            0      99     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            8      91     2 retVal   Lnet/minecraft/world/level/block/state/BlockState;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      99     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 252 /* append */
+          offset_delta = 40
+          locals = [ class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask ]
+        frame_type = 250 /* chop */
+          offset_delta = 24
+    Signature: #176                         // (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/block/state/BlockState;>;)V
+    RuntimeVisibleAnnotations:
+      0: #158(#159=[s#177],#160=[@#161(#162=s#163)],#178=Z#179)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["getInterpolatedState"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+          cancellable=true
+        )
+
+  public com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMask getOrCreateAquiferOverrideMask(java.util.function.Supplier<com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMask>);
+    descriptor: (Ljava/util/function/Supplier;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #10                 // Field aquiferOverrideMask:Ljava/lang/ThreadLocal;
+         4: invokevirtual #101                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+         7: ifnonnull     26
+        10: aload_0
+        11: getfield      #10                 // Field aquiferOverrideMask:Ljava/lang/ThreadLocal;
+        14: aload_1
+        15: invokeinterface #103,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        20: checkcast     #72                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask
+        23: invokevirtual #106                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+        26: aload_0
+        27: getfield      #10                 // Field aquiferOverrideMask:Ljava/lang/ThreadLocal;
+        30: invokevirtual #101                // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+        33: checkcast     #72                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask
+        36: areturn
+      LineNumberTable:
+        line 83: 0
+        line 84: 10
+        line 86: 26
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+            0      37     1 aquiferOverrideMaskSupplier   Ljava/util/function/Supplier;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      37     1 aquiferOverrideMaskSupplier   Ljava/util/function/Supplier<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 26 /* same */
+    Signature: #183                         // (Ljava/util/function/Supplier<Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;>;)Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+    RuntimeVisibleAnnotations:
+      0: #131()
+        org.spongepowered.asm.mixin.Unique
+
+  private com.yungnickyoung.minecraft.yungsapi.world.structure.terrainadaptation.aquiferoverride.AquiferOverrideMask lambda$yungsapi_dontFillMarkedPositions$0();
+    descriptor: ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: new           #72                 // class com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask
+         3: dup
+         4: aload_0
+         5: getfield      #109                // Field noiseSettings:Lnet/minecraft/world/level/levelgen/NoiseSettings;
+         8: invokevirtual #113                // Method net/minecraft/world/level/levelgen/NoiseSettings.height:()I
+        11: aload_0
+        12: getfield      #109                // Field noiseSettings:Lnet/minecraft/world/level/levelgen/NoiseSettings;
+        15: invokevirtual #118                // Method net/minecraft/world/level/levelgen/NoiseSettings.minY:()I
+        18: invokespecial #121                // Method com/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask."<init>":(II)V
+        21: areturn
+      LineNumberTable:
+        line 68: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin;
+}
+SourceFile: "NoiseChunkMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #189(#162=[c#190])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/NoiseChunk;]
+    )
+BootstrapMethods:
+  0: #197 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #192 ()Ljava/lang/Object;
+      #193 REF_invokeVirtual com/yungnickyoung/minecraft/yungsapi/mixin/NoiseChunkMixin.lambda$yungsapi_dontFillMarkedPositions$0:()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+      #196 ()Lcom/yungnickyoung/minecraft/yungsapi/world/structure/terrainadaptation/aquiferoverride/AquiferOverrideMask;
+InnerClasses:
+  public static #209= #205 of #207;       // BeardifierOrMarker=class net/minecraft/world/level/levelgen/DensityFunctions$BeardifierOrMarker of class net/minecraft/world/level/levelgen/DensityFunctions
+  public static #214= #210 of #212;       // FluidPicker=class net/minecraft/world/level/levelgen/Aquifer$FluidPicker of class net/minecraft/world/level/levelgen/Aquifer
+  public static final #219= #215 of #217; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

@@ -1,0 +1,248 @@
+Classfile YungsApi-1.21.1-NeoForge-5.1.6.jar!/com/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin.class
+  Last modified Jun 27, 2025; size 3455 bytes
+  SHA-256 checksum e191e21dbf3954936151d4826e051e71bf17751d596b7b3364337adae6be264d
+  Compiled from "NoVinesInStructuresMixin.java"
+public class com.yungnickyoung.minecraft.yungsapi.mixin.NoVinesInStructuresMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #76                         // com/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+    #8 = Class              #10           // net/minecraft/world/level/levelgen/feature/FeaturePlaceContext
+    #9 = NameAndType        #11:#12       // level:()Lnet/minecraft/world/level/WorldGenLevel;
+   #10 = Utf8               net/minecraft/world/level/levelgen/feature/FeaturePlaceContext
+   #11 = Utf8               level
+   #12 = Utf8               ()Lnet/minecraft/world/level/WorldGenLevel;
+   #13 = Class              #14           // net/minecraft/server/level/WorldGenRegion
+   #14 = Utf8               net/minecraft/server/level/WorldGenRegion
+   #15 = Class              #16           // net/minecraft/core/BlockPos$MutableBlockPos
+   #16 = Utf8               net/minecraft/core/BlockPos$MutableBlockPos
+   #17 = Methodref          #15.#3        // net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+   #18 = Fieldref           #19.#20       // net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+   #19 = Class              #21           // net/minecraft/core/Direction$Plane
+   #20 = NameAndType        #22:#23       // HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+   #21 = Utf8               net/minecraft/core/Direction$Plane
+   #22 = Utf8               HORIZONTAL
+   #23 = Utf8               Lnet/minecraft/core/Direction$Plane;
+   #24 = Methodref          #19.#25       // net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+   #25 = NameAndType        #26:#27       // iterator:()Ljava/util/Iterator;
+   #26 = Utf8               iterator
+   #27 = Utf8               ()Ljava/util/Iterator;
+   #28 = InterfaceMethodref #29.#30       // java/util/Iterator.hasNext:()Z
+   #29 = Class              #31           // java/util/Iterator
+   #30 = NameAndType        #32:#33       // hasNext:()Z
+   #31 = Utf8               java/util/Iterator
+   #32 = Utf8               hasNext
+   #33 = Utf8               ()Z
+   #34 = InterfaceMethodref #29.#35       // java/util/Iterator.next:()Ljava/lang/Object;
+   #35 = NameAndType        #36:#37       // next:()Ljava/lang/Object;
+   #36 = Utf8               next
+   #37 = Utf8               ()Ljava/lang/Object;
+   #38 = Class              #39           // net/minecraft/core/Direction
+   #39 = Utf8               net/minecraft/core/Direction
+   #40 = Methodref          #8.#41        // net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+   #41 = NameAndType        #42:#43       // origin:()Lnet/minecraft/core/BlockPos;
+   #42 = Utf8               origin
+   #43 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #44 = Methodref          #15.#45       // net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #45 = NameAndType        #46:#47       // set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #46 = Utf8               set
+   #47 = Utf8               (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #48 = Methodref          #15.#49       // net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #49 = NameAndType        #50:#51       // move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #50 = Utf8               move
+   #51 = Utf8               (Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #52 = Fieldref           #53.#54       // com/yungnickyoung/minecraft/yungsapi/module/TagModule.NO_VINES:Lnet/minecraft/tags/TagKey;
+   #53 = Class              #55           // com/yungnickyoung/minecraft/yungsapi/module/TagModule
+   #54 = NameAndType        #56:#57       // NO_VINES:Lnet/minecraft/tags/TagKey;
+   #55 = Utf8               com/yungnickyoung/minecraft/yungsapi/module/TagModule
+   #56 = Utf8               NO_VINES
+   #57 = Utf8               Lnet/minecraft/tags/TagKey;
+   #58 = Methodref          #59.#60       // com/yungnickyoung/minecraft/yungsapi/util/MixinUtils.isPositionInTaggedStructure:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Z
+   #59 = Class              #61           // com/yungnickyoung/minecraft/yungsapi/util/MixinUtils
+   #60 = NameAndType        #62:#63       // isPositionInTaggedStructure:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Z
+   #61 = Utf8               com/yungnickyoung/minecraft/yungsapi/util/MixinUtils
+   #62 = Utf8               isPositionInTaggedStructure
+   #63 = Utf8               (Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Z
+   #64 = Methodref          #65.#66       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #65 = Class              #67           // java/lang/Boolean
+   #66 = NameAndType        #68:#69       // valueOf:(Z)Ljava/lang/Boolean;
+   #67 = Utf8               java/lang/Boolean
+   #68 = Utf8               valueOf
+   #69 = Utf8               (Z)Ljava/lang/Boolean;
+   #70 = Methodref          #71.#72       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #71 = Class              #73           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #72 = NameAndType        #74:#75       // setReturnValue:(Ljava/lang/Object;)V
+   #73 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #74 = Utf8               setReturnValue
+   #75 = Utf8               (Ljava/lang/Object;)V
+   #76 = Class              #77           // com/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin
+   #77 = Utf8               com/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin
+   #78 = Utf8               Code
+   #79 = Utf8               LineNumberTable
+   #80 = Utf8               LocalVariableTable
+   #81 = Utf8               this
+   #82 = Utf8               Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin;
+   #83 = Utf8               yungsapi_noVinesInStructures
+   #84 = Utf8               (Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #85 = Utf8               worldGenRegion
+   #86 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+   #87 = Utf8               direction
+   #88 = Utf8               Lnet/minecraft/core/Direction;
+   #89 = Utf8               context
+   #90 = Utf8               Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;
+   #91 = Utf8               cir
+   #92 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+   #93 = Utf8               mutable
+   #94 = Utf8               Lnet/minecraft/core/BlockPos$MutableBlockPos;
+   #95 = Utf8               LocalVariableTypeTable
+   #96 = Utf8               Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext<Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;>;
+   #97 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+   #98 = Utf8               StackMapTable
+   #99 = Utf8               Signature
+  #100 = Utf8               (Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext<Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #101 = Utf8               RuntimeVisibleAnnotations
+  #102 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #103 = Utf8               method
+  #104 = Utf8               place
+  #105 = Utf8               at
+  #106 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #107 = Utf8               value
+  #108 = Utf8               HEAD
+  #109 = Utf8               cancellable
+  #110 = Integer            1
+  #111 = Utf8               SourceFile
+  #112 = Utf8               NoVinesInStructuresMixin.java
+  #113 = Utf8               RuntimeInvisibleAnnotations
+  #114 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #115 = Utf8               Lnet/minecraft/world/level/levelgen/feature/VinesFeature;
+  #116 = Utf8               InnerClasses
+  #117 = Class              #118          // net/minecraft/core/BlockPos
+  #118 = Utf8               net/minecraft/core/BlockPos
+  #119 = Utf8               MutableBlockPos
+  #120 = Utf8               Plane
+{
+  public com.yungnickyoung.minecraft.yungsapi.mixin.NoVinesInStructuresMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin;
+
+  private void yungsapi_noVinesInStructures(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=7, args_size=3
+         0: aload_1
+         1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+         4: astore        4
+         6: aload         4
+         8: instanceof    #13                 // class net/minecraft/server/level/WorldGenRegion
+        11: ifeq          23
+        14: aload         4
+        16: checkcast     #13                 // class net/minecraft/server/level/WorldGenRegion
+        19: astore_3
+        20: goto          24
+        23: return
+        24: new           #15                 // class net/minecraft/core/BlockPos$MutableBlockPos
+        27: dup
+        28: invokespecial #17                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+        31: astore        4
+        33: getstatic     #18                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+        36: invokevirtual #24                 // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+        39: astore        5
+        41: aload         5
+        43: invokeinterface #28,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        48: ifeq          101
+        51: aload         5
+        53: invokeinterface #34,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        58: checkcast     #38                 // class net/minecraft/core/Direction
+        61: astore        6
+        63: aload         4
+        65: aload_1
+        66: invokevirtual #40                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+        69: invokevirtual #44                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+        72: aload         6
+        74: invokevirtual #48                 // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+        77: pop
+        78: aload_3
+        79: aload         4
+        81: getstatic     #52                 // Field com/yungnickyoung/minecraft/yungsapi/module/TagModule.NO_VINES:Lnet/minecraft/tags/TagKey;
+        84: invokestatic  #58                 // Method com/yungnickyoung/minecraft/yungsapi/util/MixinUtils.isPositionInTaggedStructure:(Lnet/minecraft/server/level/WorldGenRegion;Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Z
+        87: ifeq          98
+        90: aload_2
+        91: iconst_0
+        92: invokestatic  #64                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        95: invokevirtual #70                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        98: goto          41
+       101: return
+      LineNumberTable:
+        line 20: 0
+        line 22: 24
+        line 23: 33
+        line 24: 63
+        line 25: 78
+        line 26: 90
+        line 28: 98
+        line 29: 101
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           20       3     3 worldGenRegion   Lnet/minecraft/server/level/WorldGenRegion;
+           63      35     6 direction   Lnet/minecraft/core/Direction;
+            0     102     0  this   Lcom/yungnickyoung/minecraft/yungsapi/mixin/NoVinesInStructuresMixin;
+            0     102     1 context   Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;
+            0     102     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+           24      78     3 worldGenRegion   Lnet/minecraft/server/level/WorldGenRegion;
+           33      69     4 mutable   Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     102     1 context   Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext<Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;>;
+            0     102     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 23 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class net/minecraft/server/level/WorldGenRegion ]
+        frame_type = 253 /* append */
+          offset_delta = 16
+          locals = [ class net/minecraft/core/BlockPos$MutableBlockPos, class java/util/Iterator ]
+        frame_type = 56 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    Signature: #100                         // (Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext<Lnet/minecraft/world/level/levelgen/feature/configurations/NoneFeatureConfiguration;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #102(#103=[s#104],#105=[@#106(#107=s#108)],#109=Z#110)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["place"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "NoVinesInStructuresMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #114(#107=[c#115])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/feature/VinesFeature;]
+    )
+InnerClasses:
+  public static #119= #15 of #117;        // MutableBlockPos=class net/minecraft/core/BlockPos$MutableBlockPos of class net/minecraft/core/BlockPos
+  public static final #120= #19 of #38;   // Plane=class net/minecraft/core/Direction$Plane of class net/minecraft/core/Direction
