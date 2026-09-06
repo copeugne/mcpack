@@ -1,0 +1,727 @@
+Classfile cc-tweaked-1.21.1-forge-1.119.0.jar!/dan200/computercraft/shared/util/TickScheduler.class
+  Last modified Feb 1, 1980; size 6915 bytes
+  SHA-256 checksum 0ceca8f711107f2a4c95b8014408067dff8126f1686726ff6316f5e6d9dd880e
+  Compiled from "TickScheduler.java"
+public final class dan200.computercraft.shared.util.TickScheduler
+  minor version: 0
+  major version: 65
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #45                         // dan200/computercraft/shared/util/TickScheduler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 9, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Fieldref           #8.#9         // dan200/computercraft/shared/util/TickScheduler$Token.owner:Lnet/minecraft/world/level/block/entity/BlockEntity;
+    #8 = Class              #10           // dan200/computercraft/shared/util/TickScheduler$Token
+    #9 = NameAndType        #11:#12       // owner:Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #10 = Utf8               dan200/computercraft/shared/util/TickScheduler$Token
+   #11 = Utf8               owner
+   #12 = Utf8               Lnet/minecraft/world/level/block/entity/BlockEntity;
+   #13 = Methodref          #14.#15       // net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+   #14 = Class              #16           // net/minecraft/world/level/block/entity/BlockEntity
+   #15 = NameAndType        #17:#18       // getLevel:()Lnet/minecraft/world/level/Level;
+   #16 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+   #17 = Utf8               getLevel
+   #18 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #19 = Fieldref           #20.#21       // net/minecraft/world/level/Level.isClientSide:Z
+   #20 = Class              #22           // net/minecraft/world/level/Level
+   #21 = NameAndType        #23:#24       // isClientSide:Z
+   #22 = Utf8               net/minecraft/world/level/Level
+   #23 = Utf8               isClientSide
+   #24 = Utf8               Z
+   #25 = Fieldref           #8.#26        // dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+   #26 = NameAndType        #27:#28       // STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+   #27 = Utf8               STATE
+   #28 = Utf8               Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+   #29 = Fieldref           #30.#31       // dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+   #30 = Class              #32           // dan200/computercraft/shared/util/TickScheduler$State
+   #31 = NameAndType        #33:#34       // IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+   #32 = Utf8               dan200/computercraft/shared/util/TickScheduler$State
+   #33 = Utf8               IDLE
+   #34 = Utf8               Ldan200/computercraft/shared/util/TickScheduler$State;
+   #35 = Fieldref           #30.#36       // dan200/computercraft/shared/util/TickScheduler$State.SCHEDULED:Ldan200/computercraft/shared/util/TickScheduler$State;
+   #36 = NameAndType        #37:#34       // SCHEDULED:Ldan200/computercraft/shared/util/TickScheduler$State;
+   #37 = Utf8               SCHEDULED
+   #38 = Methodref          #39.#40       // java/util/concurrent/atomic/AtomicReferenceFieldUpdater.compareAndSet:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+   #39 = Class              #41           // java/util/concurrent/atomic/AtomicReferenceFieldUpdater
+   #40 = NameAndType        #42:#43       // compareAndSet:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+   #41 = Utf8               java/util/concurrent/atomic/AtomicReferenceFieldUpdater
+   #42 = Utf8               compareAndSet
+   #43 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+   #44 = Fieldref           #45.#46       // dan200/computercraft/shared/util/TickScheduler.toTick:Ljava/util/Queue;
+   #45 = Class              #47           // dan200/computercraft/shared/util/TickScheduler
+   #46 = NameAndType        #48:#49       // toTick:Ljava/util/Queue;
+   #47 = Utf8               dan200/computercraft/shared/util/TickScheduler
+   #48 = Utf8               toTick
+   #49 = Utf8               Ljava/util/Queue;
+   #50 = InterfaceMethodref #51.#52       // java/util/Queue.add:(Ljava/lang/Object;)Z
+   #51 = Class              #53           // java/util/Queue
+   #52 = NameAndType        #54:#55       // add:(Ljava/lang/Object;)Z
+   #53 = Utf8               java/util/Queue
+   #54 = Utf8               add
+   #55 = Utf8               (Ljava/lang/Object;)Z
+   #56 = Methodref          #45.#57       // dan200/computercraft/shared/util/TickScheduler.isLoaded:(I)Z
+   #57 = NameAndType        #58:#59       // isLoaded:(I)Z
+   #58 = Utf8               isLoaded
+   #59 = Utf8               (I)Z
+   #60 = Fieldref           #45.#61       // dan200/computercraft/shared/util/TickScheduler.delayed:Ljava/util/Map;
+   #61 = NameAndType        #62:#63       // delayed:Ljava/util/Map;
+   #62 = Utf8               delayed
+   #63 = Utf8               Ljava/util/Map;
+   #64 = Class              #65           // dan200/computercraft/shared/util/TickScheduler$ChunkReference
+   #65 = Utf8               dan200/computercraft/shared/util/TickScheduler$ChunkReference
+   #66 = Methodref          #67.#68       // net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+   #67 = Class              #69           // net/minecraft/server/level/ServerLevel
+   #68 = NameAndType        #70:#71       // dimension:()Lnet/minecraft/resources/ResourceKey;
+   #69 = Utf8               net/minecraft/server/level/ServerLevel
+   #70 = Utf8               dimension
+   #71 = Utf8               ()Lnet/minecraft/resources/ResourceKey;
+   #72 = Methodref          #64.#73       // dan200/computercraft/shared/util/TickScheduler$ChunkReference."<init>":(Lnet/minecraft/resources/ResourceKey;J)V
+   #73 = NameAndType        #5:#74        // "<init>":(Lnet/minecraft/resources/ResourceKey;J)V
+   #74 = Utf8               (Lnet/minecraft/resources/ResourceKey;J)V
+   #75 = InterfaceMethodref #76.#77       // java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #76 = Class              #78           // java/util/Map
+   #77 = NameAndType        #79:#80       // remove:(Ljava/lang/Object;)Ljava/lang/Object;
+   #78 = Utf8               java/util/Map
+   #79 = Utf8               remove
+   #80 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #81 = Class              #82           // java/util/List
+   #82 = Utf8               java/util/List
+   #83 = InterfaceMethodref #81.#84       // java/util/List.iterator:()Ljava/util/Iterator;
+   #84 = NameAndType        #85:#86       // iterator:()Ljava/util/Iterator;
+   #85 = Utf8               iterator
+   #86 = Utf8               ()Ljava/util/Iterator;
+   #87 = InterfaceMethodref #88.#89       // java/util/Iterator.hasNext:()Z
+   #88 = Class              #90           // java/util/Iterator
+   #89 = NameAndType        #91:#92       // hasNext:()Z
+   #90 = Utf8               java/util/Iterator
+   #91 = Utf8               hasNext
+   #92 = Utf8               ()Z
+   #93 = InterfaceMethodref #88.#94       // java/util/Iterator.next:()Ljava/lang/Object;
+   #94 = NameAndType        #95:#96       // next:()Ljava/lang/Object;
+   #95 = Utf8               next
+   #96 = Utf8               ()Ljava/lang/Object;
+   #97 = Methodref          #14.#98       // net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+   #98 = NameAndType        #99:#92       // isRemoved:()Z
+   #99 = Utf8               isRemoved
+  #100 = Methodref          #39.#101      // java/util/concurrent/atomic/AtomicReferenceFieldUpdater.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+  #101 = NameAndType        #102:#103     // set:(Ljava/lang/Object;Ljava/lang/Object;)V
+  #102 = Utf8               set
+  #103 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #104 = Methodref          #105.#15      // net/minecraft/world/level/chunk/LevelChunk.getLevel:()Lnet/minecraft/world/level/Level;
+  #105 = Class              #106          // net/minecraft/world/level/chunk/LevelChunk
+  #106 = Utf8               net/minecraft/world/level/chunk/LevelChunk
+  #107 = Methodref          #20.#68       // net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+  #108 = Methodref          #105.#109     // net/minecraft/world/level/chunk/LevelChunk.getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #109 = NameAndType        #110:#111     // getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #110 = Utf8               getPos
+  #111 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #112 = Methodref          #113.#114     // net/minecraft/world/level/ChunkPos.toLong:()J
+  #113 = Class              #115          // net/minecraft/world/level/ChunkPos
+  #114 = NameAndType        #116:#117     // toLong:()J
+  #115 = Utf8               net/minecraft/world/level/ChunkPos
+  #116 = Utf8               toLong
+  #117 = Utf8               ()J
+  #118 = InterfaceMethodref #51.#119      // java/util/Queue.poll:()Ljava/lang/Object;
+  #119 = NameAndType        #120:#96      // poll:()Ljava/lang/Object;
+  #120 = Utf8               poll
+  #121 = Methodref          #45.#122      // dan200/computercraft/shared/util/TickScheduler.tickToken:(Ldan200/computercraft/shared/util/TickScheduler$Token;)Ldan200/computercraft/shared/util/TickScheduler$State;
+  #122 = NameAndType        #123:#124     // tickToken:(Ldan200/computercraft/shared/util/TickScheduler$Token;)Ldan200/computercraft/shared/util/TickScheduler$State;
+  #123 = Utf8               tickToken
+  #124 = Utf8               (Ldan200/computercraft/shared/util/TickScheduler$Token;)Ldan200/computercraft/shared/util/TickScheduler$State;
+  #125 = String             #126          // Block entity level cannot become null
+  #126 = Utf8               Block entity level cannot become null
+  #127 = Methodref          #128.#129     // java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+  #128 = Class              #130          // java/util/Objects
+  #129 = NameAndType        #131:#132     // requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+  #130 = Utf8               java/util/Objects
+  #131 = Utf8               requireNonNull
+  #132 = Utf8               (Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+  #133 = Methodref          #14.#134      // net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+  #134 = NameAndType        #135:#136     // getBlockPos:()Lnet/minecraft/core/BlockPos;
+  #135 = Utf8               getBlockPos
+  #136 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #137 = Methodref          #20.#138      // net/minecraft/world/level/Level.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+  #138 = NameAndType        #58:#139      // isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+  #139 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+  #140 = Methodref          #113.#141     // net/minecraft/world/level/ChunkPos.asLong:(Lnet/minecraft/core/BlockPos;)J
+  #141 = NameAndType        #142:#143     // asLong:(Lnet/minecraft/core/BlockPos;)J
+  #142 = Utf8               asLong
+  #143 = Utf8               (Lnet/minecraft/core/BlockPos;)J
+  #144 = InvokeDynamic      #0:#145       // #0:apply:()Ljava/util/function/Function;
+  #145 = NameAndType        #146:#147     // apply:()Ljava/util/function/Function;
+  #146 = Utf8               apply
+  #147 = Utf8               ()Ljava/util/function/Function;
+  #148 = InterfaceMethodref #76.#149      // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #149 = NameAndType        #150:#151     // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #150 = Utf8               computeIfAbsent
+  #151 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #152 = InterfaceMethodref #81.#52       // java/util/List.add:(Ljava/lang/Object;)Z
+  #153 = Fieldref           #30.#154      // dan200/computercraft/shared/util/TickScheduler$State.UNLOADED:Ldan200/computercraft/shared/util/TickScheduler$State;
+  #154 = NameAndType        #155:#34      // UNLOADED:Ldan200/computercraft/shared/util/TickScheduler$State;
+  #155 = Utf8               UNLOADED
+  #156 = Methodref          #20.#157      // net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #157 = NameAndType        #158:#159     // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #158 = Utf8               getBlockEntity
+  #159 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #160 = Class              #161          // java/lang/IllegalStateException
+  #161 = Utf8               java/lang/IllegalStateException
+  #162 = Methodref          #163.#164     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #163 = Class              #165          // java/lang/String
+  #164 = NameAndType        #166:#167     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #165 = Utf8               java/lang/String
+  #166 = Utf8               valueOf
+  #167 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #168 = InvokeDynamic      #1:#169       // #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #169 = NameAndType        #170:#171     // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #170 = Utf8               makeConcatWithConstants
+  #171 = Utf8               (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #172 = Methodref          #160.#173     // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+  #173 = NameAndType        #5:#174       // "<init>":(Ljava/lang/String;)V
+  #174 = Utf8               (Ljava/lang/String;)V
+  #175 = Methodref          #14.#176      // net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #176 = NameAndType        #177:#178     // getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #177 = Utf8               getBlockState
+  #178 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #179 = Methodref          #180.#181     // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+  #180 = Class              #182          // net/minecraft/world/level/block/state/BlockState
+  #181 = NameAndType        #183:#184     // getBlock:()Lnet/minecraft/world/level/block/Block;
+  #182 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #183 = Utf8               getBlock
+  #184 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+  #185 = Methodref          #20.#186      // net/minecraft/world/level/Level.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V
+  #186 = NameAndType        #187:#188     // scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V
+  #187 = Utf8               scheduleTick
+  #188 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V
+  #189 = Fieldref           #190.#191     // net/minecraft/world/level/chunk/status/ChunkStatus.FULL:Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #190 = Class              #192          // net/minecraft/world/level/chunk/status/ChunkStatus
+  #191 = NameAndType        #193:#194     // FULL:Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #192 = Utf8               net/minecraft/world/level/chunk/status/ChunkStatus
+  #193 = Utf8               FULL
+  #194 = Utf8               Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #195 = Methodref          #196.#197     // net/minecraft/server/level/ChunkLevel.byStatus:(Lnet/minecraft/world/level/chunk/status/ChunkStatus;)I
+  #196 = Class              #198          // net/minecraft/server/level/ChunkLevel
+  #197 = NameAndType        #199:#200     // byStatus:(Lnet/minecraft/world/level/chunk/status/ChunkStatus;)I
+  #198 = Utf8               net/minecraft/server/level/ChunkLevel
+  #199 = Utf8               byStatus
+  #200 = Utf8               (Lnet/minecraft/world/level/chunk/status/ChunkStatus;)I
+  #201 = Class              #202          // java/util/ArrayList
+  #202 = Utf8               java/util/ArrayList
+  #203 = Methodref          #201.#3       // java/util/ArrayList."<init>":()V
+  #204 = Class              #205          // java/util/concurrent/ConcurrentLinkedDeque
+  #205 = Utf8               java/util/concurrent/ConcurrentLinkedDeque
+  #206 = Methodref          #204.#3       // java/util/concurrent/ConcurrentLinkedDeque."<init>":()V
+  #207 = Class              #208          // java/util/HashMap
+  #208 = Utf8               java/util/HashMap
+  #209 = Methodref          #207.#3       // java/util/HashMap."<init>":()V
+  #210 = Utf8               Signature
+  #211 = Utf8               Ljava/util/Queue<Ldan200/computercraft/shared/util/TickScheduler$Token;>;
+  #212 = Utf8               Ljava/util/Map<Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;Ljava/util/List<Ldan200/computercraft/shared/util/TickScheduler$Token;>;>;
+  #213 = Utf8               Code
+  #214 = Utf8               LineNumberTable
+  #215 = Utf8               LocalVariableTable
+  #216 = Utf8               this
+  #217 = Utf8               Ldan200/computercraft/shared/util/TickScheduler;
+  #218 = Utf8               schedule
+  #219 = Utf8               (Ldan200/computercraft/shared/util/TickScheduler$Token;)V
+  #220 = Utf8               token
+  #221 = Utf8               Ldan200/computercraft/shared/util/TickScheduler$Token;
+  #222 = Utf8               world
+  #223 = Utf8               Lnet/minecraft/world/level/Level;
+  #224 = Utf8               StackMapTable
+  #225 = Utf8               onChunkTicketChanged
+  #226 = Utf8               (Lnet/minecraft/server/level/ServerLevel;JII)V
+  #227 = Utf8               delayedTokens
+  #228 = Utf8               Ljava/util/List;
+  #229 = Utf8               level
+  #230 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #231 = Utf8               chunkPos
+  #232 = Utf8               J
+  #233 = Utf8               oldLevel
+  #234 = Utf8               I
+  #235 = Utf8               newLevel
+  #236 = Utf8               oldLoaded
+  #237 = Utf8               newLoaded
+  #238 = Utf8               LocalVariableTypeTable
+  #239 = Utf8               Ljava/util/List<Ldan200/computercraft/shared/util/TickScheduler$Token;>;
+  #240 = Utf8               onChunkUnload
+  #241 = Utf8               (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #242 = Utf8               chunk
+  #243 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+  #244 = Utf8               tick
+  #245 = Utf8               currentBlockEntity
+  #246 = Utf8               blockEntity
+  #247 = Utf8               pos
+  #248 = Utf8               Lnet/minecraft/core/BlockPos;
+  #249 = Class              #250          // net/minecraft/core/BlockPos
+  #250 = Utf8               net/minecraft/core/BlockPos
+  #251 = Utf8               lambda$tickToken$0
+  #252 = Utf8               (Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  #253 = Utf8               x
+  #254 = Utf8               Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;
+  #255 = Utf8               <clinit>
+  #256 = Utf8               SourceFile
+  #257 = Utf8               TickScheduler.java
+  #258 = Utf8               NestMembers
+  #259 = Utf8               BootstrapMethods
+  #260 = MethodType         #80           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #261 = MethodHandle       6:#262        // REF_invokeStatic dan200/computercraft/shared/util/TickScheduler.lambda$tickToken$0:(Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  #262 = Methodref          #45.#263      // dan200/computercraft/shared/util/TickScheduler.lambda$tickToken$0:(Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  #263 = NameAndType        #251:#252     // lambda$tickToken$0:(Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  #264 = MethodType         #252          //  (Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  #265 = String             #266          // Expected \u0001 at \u0001, got \u0001
+  #266 = Utf8               Expected \u0001 at \u0001, got \u0001
+  #267 = MethodHandle       6:#268        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #268 = Methodref          #269.#270     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #269 = Class              #271          // java/lang/invoke/LambdaMetafactory
+  #270 = NameAndType        #272:#273     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #271 = Utf8               java/lang/invoke/LambdaMetafactory
+  #272 = Utf8               metafactory
+  #273 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #274 = MethodHandle       6:#275        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #275 = Methodref          #276.#277     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #276 = Class              #278          // java/lang/invoke/StringConcatFactory
+  #277 = NameAndType        #170:#279     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #278 = Utf8               java/lang/invoke/StringConcatFactory
+  #279 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #280 = Utf8               InnerClasses
+  #281 = Utf8               Token
+  #282 = Utf8               State
+  #283 = Utf8               ChunkReference
+  #284 = Class              #285          // java/lang/invoke/MethodHandles$Lookup
+  #285 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #286 = Class              #287          // java/lang/invoke/MethodHandles
+  #287 = Utf8               java/lang/invoke/MethodHandles
+  #288 = Utf8               Lookup
+{
+  private static final java.util.Queue<dan200.computercraft.shared.util.TickScheduler$Token> toTick;
+    descriptor: Ljava/util/Queue;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #211                         // Ljava/util/Queue<Ldan200/computercraft/shared/util/TickScheduler$Token;>;
+
+  private static final java.util.Map<dan200.computercraft.shared.util.TickScheduler$ChunkReference, java.util.List<dan200.computercraft.shared.util.TickScheduler$Token>> delayed;
+    descriptor: Ljava/util/Map;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #212                         // Ljava/util/Map<Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;Ljava/util/List<Ldan200/computercraft/shared/util/TickScheduler$Token;>;>;
+
+  private dan200.computercraft.shared.util.TickScheduler();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 34: 0
+        line 35: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldan200/computercraft/shared/util/TickScheduler;
+
+  public static void schedule(dan200.computercraft.shared.util.TickScheduler$Token);
+    descriptor: (Ldan200/computercraft/shared/util/TickScheduler$Token;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field dan200/computercraft/shared/util/TickScheduler$Token.owner:Lnet/minecraft/world/level/block/entity/BlockEntity;
+         4: invokevirtual #13                 // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+         7: astore_1
+         8: aload_1
+         9: ifnull        45
+        12: aload_1
+        13: getfield      #19                 // Field net/minecraft/world/level/Level.isClientSide:Z
+        16: ifne          45
+        19: getstatic     #25                 // Field dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+        22: aload_0
+        23: getstatic     #29                 // Field dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+        26: getstatic     #35                 // Field dan200/computercraft/shared/util/TickScheduler$State.SCHEDULED:Ldan200/computercraft/shared/util/TickScheduler$State;
+        29: invokevirtual #38                 // Method java/util/concurrent/atomic/AtomicReferenceFieldUpdater.compareAndSet:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+        32: ifeq          45
+        35: getstatic     #44                 // Field toTick:Ljava/util/Queue;
+        38: aload_0
+        39: invokeinterface #50,  2           // InterfaceMethod java/util/Queue.add:(Ljava/lang/Object;)Z
+        44: pop
+        45: return
+      LineNumberTable:
+        line 63: 0
+        line 64: 8
+        line 65: 35
+        line 67: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      46     0 token   Ldan200/computercraft/shared/util/TickScheduler$Token;
+            8      38     1 world   Lnet/minecraft/world/level/Level;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 45
+          locals = [ class net/minecraft/world/level/Level ]
+
+  public static void onChunkTicketChanged(net.minecraft.server.level.ServerLevel, long, int, int);
+    descriptor: (Lnet/minecraft/server/level/ServerLevel;JII)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=6, locals=10, args_size=4
+         0: iload_3
+         1: invokestatic  #56                 // Method isLoaded:(I)Z
+         4: istore        5
+         6: iload         4
+         8: invokestatic  #56                 // Method isLoaded:(I)Z
+        11: istore        6
+        13: iload         5
+        15: ifne          135
+        18: iload         6
+        20: ifeq          135
+        23: getstatic     #60                 // Field delayed:Ljava/util/Map;
+        26: new           #64                 // class dan200/computercraft/shared/util/TickScheduler$ChunkReference
+        29: dup
+        30: aload_0
+        31: invokevirtual #66                 // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+        34: lload_1
+        35: invokespecial #72                 // Method dan200/computercraft/shared/util/TickScheduler$ChunkReference."<init>":(Lnet/minecraft/resources/ResourceKey;J)V
+        38: invokeinterface #75,  2           // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+        43: checkcast     #81                 // class java/util/List
+        46: astore        7
+        48: aload         7
+        50: ifnonnull     54
+        53: return
+        54: aload         7
+        56: invokeinterface #83,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        61: astore        8
+        63: aload         8
+        65: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        70: ifeq          135
+        73: aload         8
+        75: invokeinterface #93,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        80: checkcast     #8                  // class dan200/computercraft/shared/util/TickScheduler$Token
+        83: astore        9
+        85: aload         9
+        87: getfield      #7                  // Field dan200/computercraft/shared/util/TickScheduler$Token.owner:Lnet/minecraft/world/level/block/entity/BlockEntity;
+        90: invokevirtual #97                 // Method net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+        93: ifeq          110
+        96: getstatic     #25                 // Field dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+        99: aload         9
+       101: getstatic     #29                 // Field dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+       104: invokevirtual #100                // Method java/util/concurrent/atomic/AtomicReferenceFieldUpdater.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+       107: goto          132
+       110: getstatic     #25                 // Field dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+       113: aload         9
+       115: getstatic     #35                 // Field dan200/computercraft/shared/util/TickScheduler$State.SCHEDULED:Ldan200/computercraft/shared/util/TickScheduler$State;
+       118: invokevirtual #100                // Method java/util/concurrent/atomic/AtomicReferenceFieldUpdater.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+       121: getstatic     #44                 // Field toTick:Ljava/util/Queue;
+       124: aload         9
+       126: invokeinterface #50,  2           // InterfaceMethod java/util/Queue.add:(Ljava/lang/Object;)Z
+       131: pop
+       132: goto          63
+       135: return
+      LineNumberTable:
+        line 70: 0
+        line 71: 13
+        line 73: 23
+        line 74: 48
+        line 76: 54
+        line 77: 85
+        line 78: 96
+        line 80: 110
+        line 81: 121
+        line 83: 132
+        line 85: 135
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           85      47     9 token   Ldan200/computercraft/shared/util/TickScheduler$Token;
+           48      87     7 delayedTokens   Ljava/util/List;
+            0     136     0 level   Lnet/minecraft/server/level/ServerLevel;
+            0     136     1 chunkPos   J
+            0     136     3 oldLevel   I
+            0     136     4 newLevel   I
+            6     130     5 oldLoaded   Z
+           13     123     6 newLoaded   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           48      87     7 delayedTokens   Ljava/util/List<Ldan200/computercraft/shared/util/TickScheduler$Token;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 254 /* append */
+          offset_delta = 54
+          locals = [ int, int, class java/util/List ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 46
+          locals = [ class dan200/computercraft/shared/util/TickScheduler$Token ]
+        frame_type = 250 /* chop */
+          offset_delta = 21
+        frame_type = 249 /* chop */
+          offset_delta = 2
+
+  public static void onChunkUnload(net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=6, locals=4, args_size=1
+         0: getstatic     #60                 // Field delayed:Ljava/util/Map;
+         3: new           #64                 // class dan200/computercraft/shared/util/TickScheduler$ChunkReference
+         6: dup
+         7: aload_0
+         8: invokevirtual #104                // Method net/minecraft/world/level/chunk/LevelChunk.getLevel:()Lnet/minecraft/world/level/Level;
+        11: invokevirtual #107                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+        14: aload_0
+        15: invokevirtual #108                // Method net/minecraft/world/level/chunk/LevelChunk.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        18: invokevirtual #112                // Method net/minecraft/world/level/ChunkPos.toLong:()J
+        21: invokespecial #72                 // Method dan200/computercraft/shared/util/TickScheduler$ChunkReference."<init>":(Lnet/minecraft/resources/ResourceKey;J)V
+        24: invokeinterface #75,  2           // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+        29: checkcast     #81                 // class java/util/List
+        32: astore_1
+        33: aload_1
+        34: ifnonnull     38
+        37: return
+        38: aload_1
+        39: invokeinterface #83,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        44: astore_2
+        45: aload_2
+        46: invokeinterface #87,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        51: ifeq          77
+        54: aload_2
+        55: invokeinterface #93,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        60: checkcast     #8                  // class dan200/computercraft/shared/util/TickScheduler$Token
+        63: astore_3
+        64: getstatic     #25                 // Field dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+        67: aload_3
+        68: getstatic     #29                 // Field dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+        71: invokevirtual #100                // Method java/util/concurrent/atomic/AtomicReferenceFieldUpdater.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+        74: goto          45
+        77: return
+      LineNumberTable:
+        line 90: 0
+        line 91: 33
+        line 93: 38
+        line 94: 77
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           64      10     3 token   Ldan200/computercraft/shared/util/TickScheduler$Token;
+            0      78     0 chunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+           33      45     1 delayedTokens   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           33      45     1 delayedTokens   Ljava/util/List<Ldan200/computercraft/shared/util/TickScheduler$Token;>;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 38
+          locals = [ class java/util/List ]
+        frame_type = 252 /* append */
+          offset_delta = 6
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 31
+
+  public static void tick();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=1, args_size=0
+         0: getstatic     #44                 // Field toTick:Ljava/util/Queue;
+         3: invokeinterface #118,  1          // InterfaceMethod java/util/Queue.poll:()Ljava/lang/Object;
+         8: checkcast     #8                  // class dan200/computercraft/shared/util/TickScheduler$Token
+        11: dup
+        12: astore_0
+        13: ifnull        30
+        16: getstatic     #25                 // Field dan200/computercraft/shared/util/TickScheduler$Token.STATE:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+        19: aload_0
+        20: aload_0
+        21: invokestatic  #121                // Method tickToken:(Ldan200/computercraft/shared/util/TickScheduler$Token;)Ldan200/computercraft/shared/util/TickScheduler$State;
+        24: invokevirtual #100                // Method java/util/concurrent/atomic/AtomicReferenceFieldUpdater.set:(Ljava/lang/Object;Ljava/lang/Object;)V
+        27: goto          0
+        30: return
+      LineNumberTable:
+        line 98: 0
+        line 99: 30
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           13      18     0 token   Ldan200/computercraft/shared/util/TickScheduler$Token;
+      StackMapTable: number_of_entries = 2
+        frame_type = 0 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ class dan200/computercraft/shared/util/TickScheduler$Token ]
+
+  private static dan200.computercraft.shared.util.TickScheduler$State tickToken(dan200.computercraft.shared.util.TickScheduler$Token);
+    descriptor: (Ldan200/computercraft/shared/util/TickScheduler$Token;)Ldan200/computercraft/shared/util/TickScheduler$State;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=6, locals=5, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field dan200/computercraft/shared/util/TickScheduler$Token.owner:Lnet/minecraft/world/level/block/entity/BlockEntity;
+         4: astore_1
+         5: aload_1
+         6: invokevirtual #97                 // Method net/minecraft/world/level/block/entity/BlockEntity.isRemoved:()Z
+         9: ifeq          16
+        12: getstatic     #29                 // Field dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+        15: areturn
+        16: aload_1
+        17: invokevirtual #13                 // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+        20: ldc           #125                // String Block entity level cannot become null
+        22: invokestatic  #127                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+        25: checkcast     #20                 // class net/minecraft/world/level/Level
+        28: astore_2
+        29: aload_1
+        30: invokevirtual #133                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockPos:()Lnet/minecraft/core/BlockPos;
+        33: astore_3
+        34: aload_2
+        35: aload_3
+        36: invokevirtual #137                // Method net/minecraft/world/level/Level.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+        39: ifne          84
+        42: getstatic     #60                 // Field delayed:Ljava/util/Map;
+        45: new           #64                 // class dan200/computercraft/shared/util/TickScheduler$ChunkReference
+        48: dup
+        49: aload_2
+        50: invokevirtual #107                // Method net/minecraft/world/level/Level.dimension:()Lnet/minecraft/resources/ResourceKey;
+        53: aload_3
+        54: invokestatic  #140                // Method net/minecraft/world/level/ChunkPos.asLong:(Lnet/minecraft/core/BlockPos;)J
+        57: invokespecial #72                 // Method dan200/computercraft/shared/util/TickScheduler$ChunkReference."<init>":(Lnet/minecraft/resources/ResourceKey;J)V
+        60: invokedynamic #144,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+        65: invokeinterface #148,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+        70: checkcast     #81                 // class java/util/List
+        73: aload_0
+        74: invokeinterface #152,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        79: pop
+        80: getstatic     #153                // Field dan200/computercraft/shared/util/TickScheduler$State.UNLOADED:Ldan200/computercraft/shared/util/TickScheduler$State;
+        83: areturn
+        84: aload_2
+        85: aload_3
+        86: invokevirtual #156                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        89: astore        4
+        91: aload         4
+        93: aload_1
+        94: if_acmpeq     123
+        97: new           #160                // class java/lang/IllegalStateException
+       100: dup
+       101: aload_1
+       102: invokestatic  #162                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       105: aload_3
+       106: invokestatic  #162                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       109: aload         4
+       111: invokestatic  #162                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       114: invokedynamic #168,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       119: invokespecial #172                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+       122: athrow
+       123: aload_2
+       124: aload_3
+       125: aload_1
+       126: invokevirtual #175                // Method net/minecraft/world/level/block/entity/BlockEntity.getBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       129: invokevirtual #179                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       132: iconst_0
+       133: invokevirtual #185                // Method net/minecraft/world/level/Level.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/Block;I)V
+       136: getstatic     #29                 // Field dan200/computercraft/shared/util/TickScheduler$State.IDLE:Ldan200/computercraft/shared/util/TickScheduler$State;
+       139: areturn
+      LineNumberTable:
+        line 102: 0
+        line 105: 5
+        line 107: 16
+        line 108: 29
+        line 110: 34
+        line 112: 42
+        line 113: 80
+        line 116: 84
+        line 117: 91
+        line 118: 97
+        line 122: 123
+        line 123: 136
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           91      49     4 currentBlockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+            0     140     0 token   Ldan200/computercraft/shared/util/TickScheduler$Token;
+            5     135     1 blockEntity   Lnet/minecraft/world/level/block/entity/BlockEntity;
+           29     111     2 level   Lnet/minecraft/world/level/Level;
+           34     106     3   pos   Lnet/minecraft/core/BlockPos;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class net/minecraft/world/level/block/entity/BlockEntity ]
+        frame_type = 253 /* append */
+          offset_delta = 67
+          locals = [ class net/minecraft/world/level/Level, class net/minecraft/core/BlockPos ]
+        frame_type = 252 /* append */
+          offset_delta = 38
+          locals = [ class net/minecraft/world/level/block/entity/BlockEntity ]
+
+  private static boolean isLoaded(int);
+    descriptor: (I)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0
+         1: getstatic     #189                // Field net/minecraft/world/level/chunk/status/ChunkStatus.FULL:Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+         4: invokestatic  #195                // Method net/minecraft/server/level/ChunkLevel.byStatus:(Lnet/minecraft/world/level/chunk/status/ChunkStatus;)I
+         7: if_icmpgt     14
+        10: iconst_1
+        11: goto          15
+        14: iconst_0
+        15: ireturn
+      LineNumberTable:
+        line 180: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0 level   I
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+
+  private static java.util.List lambda$tickToken$0(dan200.computercraft.shared.util.TickScheduler$ChunkReference);
+    descriptor: (Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #201                // class java/util/ArrayList
+         3: dup
+         4: invokespecial #203                // Method java/util/ArrayList."<init>":()V
+         7: areturn
+      LineNumberTable:
+        line 112: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0     x   Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #204                // class java/util/concurrent/ConcurrentLinkedDeque
+         3: dup
+         4: invokespecial #206                // Method java/util/concurrent/ConcurrentLinkedDeque."<init>":()V
+         7: putstatic     #44                 // Field toTick:Ljava/util/Queue;
+        10: new           #207                // class java/util/HashMap
+        13: dup
+        14: invokespecial #209                // Method java/util/HashMap."<init>":()V
+        17: putstatic     #60                 // Field delayed:Ljava/util/Map;
+        20: return
+      LineNumberTable:
+        line 40: 0
+        line 55: 10
+}
+SourceFile: "TickScheduler.java"
+NestMembers:
+  dan200/computercraft/shared/util/TickScheduler$ChunkReference
+  dan200/computercraft/shared/util/TickScheduler$State
+  dan200/computercraft/shared/util/TickScheduler$Token
+BootstrapMethods:
+  0: #267 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #260 (Ljava/lang/Object;)Ljava/lang/Object;
+      #261 REF_invokeStatic dan200/computercraft/shared/util/TickScheduler.lambda$tickToken$0:(Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+      #264 (Ldan200/computercraft/shared/util/TickScheduler$ChunkReference;)Ljava/util/List;
+  1: #274 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #265 Expected \u0001 at \u0001, got \u0001
+InnerClasses:
+  public static #281= #8 of #45;          // Token=class dan200/computercraft/shared/util/TickScheduler$Token of class dan200/computercraft/shared/util/TickScheduler
+  private static final #282= #30 of #45;  // State=class dan200/computercraft/shared/util/TickScheduler$State of class dan200/computercraft/shared/util/TickScheduler
+  private static final #283= #64 of #45;  // ChunkReference=class dan200/computercraft/shared/util/TickScheduler$ChunkReference of class dan200/computercraft/shared/util/TickScheduler
+  public static final #288= #284 of #286; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
