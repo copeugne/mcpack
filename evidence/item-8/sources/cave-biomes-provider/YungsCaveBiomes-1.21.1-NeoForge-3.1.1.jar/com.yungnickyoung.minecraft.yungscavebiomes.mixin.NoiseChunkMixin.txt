@@ -1,0 +1,287 @@
+Classfile YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar!/com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin.class
+  Last modified Aug 21, 2025; size 2553 bytes
+  SHA-256 checksum 6f8d13c83971e5bae0a1b5a572df6cef25dbee09260dd8c330436ea5356ef8be
+  Compiled from "NoiseChunkMixin.java"
+public abstract class com.yungnickyoung.minecraft.yungscavebiomes.mixin.NoiseChunkMixin implements com.yungnickyoung.minecraft.yungscavebiomes.world.NoiseSamplerBiomeHolder
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 4, methods: 9, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin.ycbBiomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+   #8 = Class              #10            // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin
+   #9 = NameAndType        #11:#12        // ycbBiomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+  #10 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin
+  #11 = Utf8               ycbBiomeSource
+  #12 = Utf8               Lnet/minecraft/world/level/biome/BiomeSource;
+  #13 = Fieldref           #8.#14         // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin.ycbBiomeRegistry:Lnet/minecraft/core/Registry;
+  #14 = NameAndType        #15:#16        // ycbBiomeRegistry:Lnet/minecraft/core/Registry;
+  #15 = Utf8               ycbBiomeRegistry
+  #16 = Utf8               Lnet/minecraft/core/Registry;
+  #17 = Fieldref           #8.#18         // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin.ycbClimateSampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+  #18 = NameAndType        #19:#20        // ycbClimateSampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+  #19 = Utf8               ycbClimateSampler
+  #20 = Utf8               Lnet/minecraft/world/level/biome/Climate$Sampler;
+  #21 = Fieldref           #8.#22         // com/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin.ycbWorldSeed:J
+  #22 = NameAndType        #23:#24        // ycbWorldSeed:J
+  #23 = Utf8               ycbWorldSeed
+  #24 = Utf8               J
+  #25 = Class              #26            // com/yungnickyoung/minecraft/yungscavebiomes/world/NoiseSamplerBiomeHolder
+  #26 = Utf8               com/yungnickyoung/minecraft/yungscavebiomes/world/NoiseSamplerBiomeHolder
+  #27 = Utf8               RuntimeVisibleAnnotations
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #29 = Utf8               Signature
+  #30 = Utf8               Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;
+  #31 = Utf8               Code
+  #32 = Utf8               LineNumberTable
+  #33 = Utf8               LocalVariableTable
+  #34 = Utf8               this
+  #35 = Utf8               Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+  #36 = Utf8               getBiomeSource
+  #37 = Utf8               ()Lnet/minecraft/world/level/biome/BiomeSource;
+  #38 = Utf8               getBiomeRegistry
+  #39 = Utf8               ()Lnet/minecraft/core/Registry;
+  #40 = Utf8               ()Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;
+  #41 = Utf8               setBiomeSource
+  #42 = Utf8               (Lnet/minecraft/world/level/biome/BiomeSource;)V
+  #43 = Utf8               source
+  #44 = Utf8               setBiomeRegistry
+  #45 = Utf8               (Lnet/minecraft/core/Registry;)V
+  #46 = Utf8               registry
+  #47 = Utf8               LocalVariableTypeTable
+  #48 = Utf8               (Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;)V
+  #49 = Utf8               getClimateSampler
+  #50 = Utf8               ()Lnet/minecraft/world/level/biome/Climate$Sampler;
+  #51 = Utf8               setClimateSampler
+  #52 = Utf8               (Lnet/minecraft/world/level/biome/Climate$Sampler;)V
+  #53 = Utf8               sampler
+  #54 = Utf8               getWorldSeed
+  #55 = Utf8               ()J
+  #56 = Utf8               setWorldSeed
+  #57 = Utf8               (J)V
+  #58 = Utf8               worldSeed
+  #59 = Utf8               SourceFile
+  #60 = Utf8               NoiseChunkMixin.java
+  #61 = Utf8               RuntimeInvisibleAnnotations
+  #62 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #63 = Utf8               value
+  #64 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseChunk;
+  #65 = Utf8               InnerClasses
+  #66 = Class              #67            // net/minecraft/world/level/biome/Climate$Sampler
+  #67 = Utf8               net/minecraft/world/level/biome/Climate$Sampler
+  #68 = Class              #69            // net/minecraft/world/level/biome/Climate
+  #69 = Utf8               net/minecraft/world/level/biome/Climate
+  #70 = Utf8               Sampler
+{
+  private net.minecraft.world.level.biome.BiomeSource ycbBiomeSource;
+    descriptor: Lnet/minecraft/world/level/biome/BiomeSource;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  private net.minecraft.core.Registry<net.minecraft.world.level.biome.Biome> ycbBiomeRegistry;
+    descriptor: Lnet/minecraft/core/Registry;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #30                          // Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  private net.minecraft.world.level.biome.Climate$Sampler ycbClimateSampler;
+    descriptor: Lnet/minecraft/world/level/biome/Climate$Sampler;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  private long ycbWorldSeed;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.mixin.NoiseChunkMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+
+  public net.minecraft.world.level.biome.BiomeSource getBiomeSource();
+    descriptor: ()Lnet/minecraft/world/level/biome/BiomeSource;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field ycbBiomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+         4: areturn
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.minecraft.core.Registry<net.minecraft.world.level.biome.Biome> getBiomeRegistry();
+    descriptor: ()Lnet/minecraft/core/Registry;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field ycbBiomeRegistry:Lnet/minecraft/core/Registry;
+         4: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+    Signature: #40                          // ()Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setBiomeSource(net.minecraft.world.level.biome.BiomeSource);
+    descriptor: (Lnet/minecraft/world/level/biome/BiomeSource;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #7                  // Field ycbBiomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+         5: return
+      LineNumberTable:
+        line 40: 0
+        line 41: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+            0       6     1 source   Lnet/minecraft/world/level/biome/BiomeSource;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setBiomeRegistry(net.minecraft.core.Registry<net.minecraft.world.level.biome.Biome>);
+    descriptor: (Lnet/minecraft/core/Registry;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #13                 // Field ycbBiomeRegistry:Lnet/minecraft/core/Registry;
+         5: return
+      LineNumberTable:
+        line 46: 0
+        line 47: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+            0       6     1 registry   Lnet/minecraft/core/Registry;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 registry   Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;
+    Signature: #48                          // (Lnet/minecraft/core/Registry<Lnet/minecraft/world/level/biome/Biome;>;)V
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.minecraft.world.level.biome.Climate$Sampler getClimateSampler();
+    descriptor: ()Lnet/minecraft/world/level/biome/Climate$Sampler;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #17                 // Field ycbClimateSampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+         4: areturn
+      LineNumberTable:
+        line 52: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setClimateSampler(net.minecraft.world.level.biome.Climate$Sampler);
+    descriptor: (Lnet/minecraft/world/level/biome/Climate$Sampler;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #17                 // Field ycbClimateSampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+         5: return
+      LineNumberTable:
+        line 58: 0
+        line 59: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+            0       6     1 sampler   Lnet/minecraft/world/level/biome/Climate$Sampler;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public long getWorldSeed();
+    descriptor: ()J
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #21                 // Field ycbWorldSeed:J
+         4: lreturn
+      LineNumberTable:
+        line 64: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+
+  public void setWorldSeed(long);
+    descriptor: (J)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: lload_1
+         2: putfield      #21                 // Field ycbWorldSeed:J
+         5: return
+      LineNumberTable:
+        line 70: 0
+        line 71: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/yungnickyoung/minecraft/yungscavebiomes/mixin/NoiseChunkMixin;
+            0       6     1 worldSeed   J
+    RuntimeVisibleAnnotations:
+      0: #28()
+        org.spongepowered.asm.mixin.Unique
+}
+SourceFile: "NoiseChunkMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #62(#63=[c#64])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/NoiseChunk;]
+    )
+InnerClasses:
+  public static final #70= #66 of #68;    // Sampler=class net/minecraft/world/level/biome/Climate$Sampler of class net/minecraft/world/level/biome/Climate

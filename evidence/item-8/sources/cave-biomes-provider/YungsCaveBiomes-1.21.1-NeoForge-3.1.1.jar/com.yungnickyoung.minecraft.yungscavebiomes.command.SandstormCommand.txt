@@ -1,0 +1,134 @@
+Compiled from "SandstormCommand.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.command.SandstormCommand {
+  public com.yungnickyoung.minecraft.yungscavebiomes.command.SandstormCommand();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection);
+    Code:
+       0: aload_0
+       1: ldc           #7                  // String sandstorm
+       3: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+       6: invokedynamic #15,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      11: invokevirtual #19                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.requires:(Ljava/util/function/Predicate;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      14: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      17: ldc           #25                 // String start
+      19: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      22: invokedynamic #27,  0             // InvokeDynamic #1:run:()Lcom/mojang/brigadier/Command;
+      27: invokevirtual #31                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      30: invokevirtual #35                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      33: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      36: ldc           #39                 // String stop
+      38: invokestatic  #9                  // Method net/minecraft/commands/Commands.literal:(Ljava/lang/String;)Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;
+      41: invokedynamic #41,  0             // InvokeDynamic #2:run:()Lcom/mojang/brigadier/Command;
+      46: invokevirtual #31                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.executes:(Lcom/mojang/brigadier/Command;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      49: invokevirtual #35                 // Method com/mojang/brigadier/builder/LiteralArgumentBuilder.then:(Lcom/mojang/brigadier/builder/ArgumentBuilder;)Lcom/mojang/brigadier/builder/ArgumentBuilder;
+      52: checkcast     #20                 // class com/mojang/brigadier/builder/LiteralArgumentBuilder
+      55: invokevirtual #42                 // Method com/mojang/brigadier/CommandDispatcher.register:(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;
+      58: pop
+      59: return
+
+  public static int execute(net.minecraft.commands.CommandSourceStack, java.lang.String);
+    Code:
+       0: aload_1
+       1: ldc           #25                 // String start
+       3: invokevirtual #48                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       6: ifeq          39
+       9: aload_0
+      10: invokevirtual #54                 // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      13: checkcast     #60                 // class com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/ISandstormServerDataProvider
+      16: invokeinterface #62,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/ISandstormServerDataProvider.getSandstormServerData:()Lcom/yungnickyoung/minecraft/yungscavebiomes/sandstorm/SandstormServerData;
+      21: astore_2
+      22: aload_2
+      23: invokevirtual #66                 // Method com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/SandstormServerData.start:()V
+      26: aload_0
+      27: aload_0
+      28: invokedynamic #70,  0             // InvokeDynamic #3:get:(Lnet/minecraft/commands/CommandSourceStack;)Ljava/util/function/Supplier;
+      33: iconst_0
+      34: invokevirtual #74                 // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+      37: iconst_1
+      38: ireturn
+      39: aload_1
+      40: ldc           #39                 // String stop
+      42: invokevirtual #48                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      45: ifeq          78
+      48: aload_0
+      49: invokevirtual #54                 // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      52: checkcast     #60                 // class com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/ISandstormServerDataProvider
+      55: invokeinterface #62,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/ISandstormServerDataProvider.getSandstormServerData:()Lcom/yungnickyoung/minecraft/yungscavebiomes/sandstorm/SandstormServerData;
+      60: astore_2
+      61: aload_2
+      62: invokevirtual #78                 // Method com/yungnickyoung/minecraft/yungscavebiomes/sandstorm/SandstormServerData.stop:()V
+      65: aload_0
+      66: aload_0
+      67: invokedynamic #80,  0             // InvokeDynamic #4:get:(Lnet/minecraft/commands/CommandSourceStack;)Ljava/util/function/Supplier;
+      72: iconst_0
+      73: invokevirtual #74                 // Method net/minecraft/commands/CommandSourceStack.sendSuccess:(Ljava/util/function/Supplier;Z)V
+      76: iconst_1
+      77: ireturn
+      78: aload_0
+      79: ldc           #81                 // String Unrecognized action.
+      81: invokestatic  #83                 // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      84: invokevirtual #88                 // Method net/minecraft/commands/CommandSourceStack.sendFailure:(Lnet/minecraft/network/chat/Component;)V
+      87: iconst_m1
+      88: ireturn
+
+  private static net.minecraft.network.chat.Component lambda$execute$4(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: ldc           #92                 // String command.sandstorm.stop
+       2: iconst_1
+       3: anewarray     #2                  // class java/lang/Object
+       6: dup
+       7: iconst_0
+       8: aload_0
+       9: invokevirtual #54                 // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      12: invokevirtual #94                 // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+      15: invokevirtual #100                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      18: invokevirtual #106                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      21: aastore
+      22: invokestatic  #112                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      25: areturn
+
+  private static net.minecraft.network.chat.Component lambda$execute$3(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: ldc           #116                // String command.sandstorm.start
+       2: iconst_1
+       3: anewarray     #2                  // class java/lang/Object
+       6: dup
+       7: iconst_0
+       8: aload_0
+       9: invokevirtual #54                 // Method net/minecraft/commands/CommandSourceStack.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      12: invokevirtual #94                 // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+      15: invokevirtual #100                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      18: invokevirtual #106                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      21: aastore
+      22: invokestatic  #112                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      25: areturn
+
+  private static int lambda$register$2(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #118                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #55                 // class net/minecraft/commands/CommandSourceStack
+       7: ldc           #39                 // String stop
+       9: invokestatic  #124                // Method execute:(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)I
+      12: ireturn
+
+  private static int lambda$register$1(com.mojang.brigadier.context.CommandContext) throws com.mojang.brigadier.exceptions.CommandSyntaxException;
+    Code:
+       0: aload_0
+       1: invokevirtual #118                // Method com/mojang/brigadier/context/CommandContext.getSource:()Ljava/lang/Object;
+       4: checkcast     #55                 // class net/minecraft/commands/CommandSourceStack
+       7: ldc           #25                 // String start
+       9: invokestatic  #124                // Method execute:(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)I
+      12: ireturn
+
+  private static boolean lambda$register$0(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokevirtual #130                // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+}

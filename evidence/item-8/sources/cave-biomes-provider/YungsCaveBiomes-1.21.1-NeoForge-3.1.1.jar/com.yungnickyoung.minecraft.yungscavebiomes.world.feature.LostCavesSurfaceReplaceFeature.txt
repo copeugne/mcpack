@@ -1,0 +1,127 @@
+Compiled from "LostCavesSurfaceReplaceFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.LostCavesSurfaceReplaceFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  private static final double NOISE_FREQUENCY_XZ = 0.15d;
+
+  private static final double NOISE_FREQUENCY_Y = 0.15d;
+
+  private static final long NOISE_SEED_FLIP_MASK = -7005860059682304583l;
+
+  private static final int RADIUS_MIN = 10;
+
+  private static final int RADIUS_MAX = 16;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.LostCavesSurfaceReplaceFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: invokeinterface #17,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+      19: ldc2_w        #25                 // long -7005860059682304583l
+      22: lxor
+      23: lstore        4
+      25: new           #27                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      28: dup
+      29: invokespecial #29                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      32: astore        6
+      34: getstatic     #32                 // Field net/minecraft/world/level/block/Blocks.STONE:Lnet/minecraft/world/level/block/Block;
+      37: getstatic     #38                 // Field net/minecraft/world/level/block/Blocks.DEEPSLATE:Lnet/minecraft/world/level/block/Block;
+      40: getstatic     #41                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.LAYERED_ANCIENT_SANDSTONE:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+      43: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+      46: checkcast     #53                 // class net/minecraft/world/level/block/Block
+      49: invokestatic  #55                 // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      52: astore        7
+      54: new           #61                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable
+      57: dup
+      58: aload_3
+      59: lload         4
+      61: ldc2_w        #63                 // double 0.15d
+      64: ldc2_w        #63                 // double 0.15d
+      67: bipush        10
+      69: bipush        16
+      71: invokespecial #65                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable."<init>":(Lnet/minecraft/core/BlockPos;JDDII)V
+      74: invokevirtual #68                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable.iterator:()Ljava/util/Iterator;
+      77: astore        8
+      79: aload         8
+      81: invokeinterface #72,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      86: ifeq          254
+      89: aload         8
+      91: invokeinterface #78,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      96: checkcast     #81                 // class net/minecraft/core/BlockPos
+      99: astore        9
+     101: aload         7
+     103: aload_2
+     104: aload         9
+     106: invokeinterface #83,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     111: invokevirtual #87                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     114: invokeinterface #93,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     119: ifeq          251
+     122: iconst_0
+     123: istore        10
+     125: iconst_1
+     126: istore        11
+     128: iload         11
+     130: bipush        6
+     132: if_icmpgt     224
+     135: aload         6
+     137: aload         9
+     139: invokevirtual #99                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     142: getstatic     #103                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     145: iload         11
+     147: invokevirtual #109                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     150: pop
+     151: iload         11
+     153: iconst_3
+     154: if_icmpgt     172
+     157: getstatic     #113                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ANCIENT_SAND:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     160: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     163: checkcast     #53                 // class net/minecraft/world/level/block/Block
+     166: invokevirtual #116                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     169: goto          184
+     172: getstatic     #120                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ANCIENT_SANDSTONE:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     175: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     178: checkcast     #53                 // class net/minecraft/world/level/block/Block
+     181: invokevirtual #116                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     184: astore        12
+     186: aload_2
+     187: aload         6
+     189: invokeinterface #83,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     194: invokevirtual #123                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     197: ifeq          218
+     200: aload_2
+     201: aload         9
+     203: aload         12
+     205: iconst_3
+     206: invokeinterface #126,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     211: pop
+     212: iconst_1
+     213: istore        10
+     215: goto          224
+     218: iinc          11, 1
+     221: goto          128
+     224: iload         10
+     226: ifne          251
+     229: aload_2
+     230: aload         9
+     232: getstatic     #41                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.LAYERED_ANCIENT_SANDSTONE:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     235: invokevirtual #47                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     238: checkcast     #53                 // class net/minecraft/world/level/block/Block
+     241: invokevirtual #116                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     244: iconst_3
+     245: invokeinterface #126,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     250: pop
+     251: goto          79
+     254: iconst_1
+     255: ireturn
+}

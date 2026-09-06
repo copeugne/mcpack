@@ -1,0 +1,164 @@
+Compiled from "ThreeLayerNoisySphereReplaceFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.ThreeLayerNoisySphereReplaceFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.ThreeLayerNoisySphereReplaceConfig> {
+  private static final double NOISE_FREQUENCY_XZ = 0.15d;
+
+  private static final double NOISE_FREQUENCY_Y = 0.15d;
+
+  private static final long NOISE_SEED_FLIP_MASK = -7005860059682304583l;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.ThreeLayerNoisySphereReplaceFeature(com.mojang.serialization.Codec<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.ThreeLayerNoisySphereReplaceConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.yungnickyoung.minecraft.yungscavebiomes.world.feature.ThreeLayerNoisySphereReplaceConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      14: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+      17: getfield      #23                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.radiusMin:I
+      20: istore        4
+      22: aload_1
+      23: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      26: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+      29: getfield      #27                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.radiusMax:I
+      32: istore        5
+      34: aload_1
+      35: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      38: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+      41: getfield      #30                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.matches:Ljava/util/List;
+      44: astore        6
+      46: aload_1
+      47: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      50: invokeinterface #34,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getSeed:()J
+      55: ldc2_w        #42                 // long -7005860059682304583l
+      58: lxor
+      59: lstore        7
+      61: aload_1
+      62: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      65: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+      68: getfield      #44                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.floor:Ljava/util/Optional;
+      71: aconst_null
+      72: invokevirtual #48                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      75: checkcast     #54                 // class net/minecraft/world/level/block/state/BlockState
+      78: astore        9
+      80: aload_1
+      81: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      84: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+      87: getfield      #56                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.ceiling:Ljava/util/Optional;
+      90: aconst_null
+      91: invokevirtual #48                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      94: checkcast     #54                 // class net/minecraft/world/level/block/state/BlockState
+      97: astore        10
+      99: aload_1
+     100: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     103: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+     106: getfield      #59                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.floorWidth:I
+     109: istore        11
+     111: aload_1
+     112: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     115: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+     118: getfield      #62                 // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.ceilingWidth:I
+     121: istore        12
+     123: new           #65                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable
+     126: dup
+     127: aload_3
+     128: lload         7
+     130: ldc2_w        #67                 // double 0.15d
+     133: ldc2_w        #67                 // double 0.15d
+     136: iload         4
+     138: iload         5
+     140: invokespecial #69                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable."<init>":(Lnet/minecraft/core/BlockPos;JDDII)V
+     143: invokevirtual #72                 // Method com/yungnickyoung/minecraft/yungscavebiomes/world/feature/util/NoisySphereUtils$NoisySphereIterable.iterator:()Ljava/util/Iterator;
+     146: astore        13
+     148: aload         13
+     150: invokeinterface #76,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     155: ifeq          343
+     158: aload         13
+     160: invokeinterface #82,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     165: checkcast     #86                 // class net/minecraft/core/BlockPos
+     168: astore        14
+     170: aload         6
+     172: aload_2
+     173: aload         14
+     175: invokeinterface #88,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     180: invokevirtual #92                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     183: invokeinterface #96,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     188: ifeq          340
+     191: iconst_0
+     192: istore        15
+     194: aload         9
+     196: ifnull        252
+     199: iconst_1
+     200: istore        16
+     202: iload         16
+     204: iload         11
+     206: if_icmpgt     252
+     209: aload_2
+     210: aload         14
+     212: iload         16
+     214: invokevirtual #102                // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     217: invokeinterface #88,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     222: invokevirtual #106                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     225: ifeq          246
+     228: aload_2
+     229: aload         14
+     231: aload         9
+     233: iconst_3
+     234: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     239: pop
+     240: iconst_1
+     241: istore        15
+     243: goto          252
+     246: iinc          16, 1
+     249: goto          202
+     252: iload         15
+     254: ifne          315
+     257: aload         10
+     259: ifnull        315
+     262: iconst_1
+     263: istore        16
+     265: iload         16
+     267: iload         12
+     269: if_icmpgt     315
+     272: aload_2
+     273: aload         14
+     275: iload         16
+     277: invokevirtual #113                // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     280: invokeinterface #88,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     285: invokevirtual #106                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     288: ifeq          309
+     291: aload_2
+     292: aload         14
+     294: aload         10
+     296: iconst_3
+     297: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     302: pop
+     303: iconst_1
+     304: istore        15
+     306: goto          315
+     309: iinc          16, 1
+     312: goto          265
+     315: iload         15
+     317: ifne          340
+     320: aload_2
+     321: aload         14
+     323: aload_1
+     324: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     327: checkcast     #21                 // class com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig
+     330: getfield      #116                // Field com/yungnickyoung/minecraft/yungscavebiomes/world/feature/ThreeLayerNoisySphereReplaceConfig.regular:Lnet/minecraft/world/level/block/state/BlockState;
+     333: iconst_3
+     334: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     339: pop
+     340: goto          148
+     343: iconst_1
+     344: ireturn
+}

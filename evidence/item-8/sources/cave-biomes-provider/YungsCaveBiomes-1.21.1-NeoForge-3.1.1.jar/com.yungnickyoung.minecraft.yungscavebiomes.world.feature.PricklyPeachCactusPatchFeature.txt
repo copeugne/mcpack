@@ -1,0 +1,160 @@
+Compiled from "PricklyPeachCactusPatchFeature.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.world.feature.PricklyPeachCactusPatchFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public static final int MAX_PLACEMENT_ATTEMPTS = 13;
+
+  public static final float PLACEMENT_SKIP_CHANCE = 0.25f;
+
+  public static final int MAX_TOTAL_PLACEMENTS = 4;
+
+  public static final int PLACEMENT_RADIUS_XZ = 7;
+
+  public static final int PLACEMENT_RADIUS_Y = 5;
+
+  public static final float FRUIT_CHANCE = 0.4f;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.world.feature.PricklyPeachCactusPatchFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: iconst_4
+      17: istore        5
+      19: iconst_0
+      20: istore        6
+      22: iload         6
+      24: bipush        13
+      26: if_icmpge     283
+      29: iload         5
+      31: ifgt          36
+      34: iconst_1
+      35: ireturn
+      36: aload         4
+      38: invokeinterface #23,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      43: ldc           #29                 // float 0.25f
+      45: fcmpg
+      46: ifge          52
+      49: goto          277
+      52: ldc           #30                 // float 7.0f
+      54: ldc           #31                 // float 5.0f
+      56: aload         4
+      58: aload_3
+      59: invokedynamic #32,  0             // InvokeDynamic #0:apply:(Lnet/minecraft/core/BlockPos;)Lcom/yungnickyoung/minecraft/yungscavebiomes/util/DistributionUtils$CoordinateFunction;
+      64: invokestatic  #36                 // Method com/yungnickyoung/minecraft/yungscavebiomes/util/DistributionUtils.ellipsoidCenterBiasedSpread:(FFLnet/minecraft/util/RandomSource;Lcom/yungnickyoung/minecraft/yungscavebiomes/util/DistributionUtils$CoordinateFunction;)Ljava/lang/Object;
+      67: checkcast     #42                 // class net/minecraft/core/BlockPos
+      70: astore        7
+      72: aload_2
+      73: aload         7
+      75: invokevirtual #44                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      78: invokeinterface #47,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      83: getstatic     #53                 // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.ANCIENT_SAND:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+      86: invokevirtual #59                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+      89: checkcast     #65                 // class net/minecraft/world/level/block/Block
+      92: invokevirtual #67                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      95: ifne          101
+      98: goto          277
+     101: iconst_0
+     102: istore        8
+     104: iconst_0
+     105: istore        9
+     107: getstatic     #73                 // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     110: invokevirtual #79                 // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+     113: astore        10
+     115: aload         10
+     117: invokeinterface #83,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     122: ifeq          207
+     125: aload         10
+     127: invokeinterface #89,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     132: checkcast     #92                 // class net/minecraft/core/Direction
+     135: astore        11
+     137: aload_2
+     138: aload         7
+     140: aload         11
+     142: invokevirtual #94                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     145: invokeinterface #47,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     150: astore        12
+     152: aload         12
+     154: invokevirtual #98                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     157: astore        13
+     159: aload         13
+     161: getstatic     #102                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.PRICKLY_PEACH_CACTUS:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     164: invokevirtual #59                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     167: if_acmpeq     178
+     170: aload         13
+     172: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.CACTUS:Lnet/minecraft/world/level/block/Block;
+     175: if_acmpne     184
+     178: iconst_1
+     179: istore        8
+     181: goto          207
+     184: aload         12
+     186: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     189: ifne          195
+     192: iinc          9, 1
+     195: iload         9
+     197: iconst_2
+     198: if_icmple     204
+     201: goto          207
+     204: goto          115
+     207: iload         8
+     209: ifne          277
+     212: iload         9
+     214: iconst_3
+     215: if_icmpge     277
+     218: getstatic     #102                // Field com/yungnickyoung/minecraft/yungscavebiomes/module/BlockModule.PRICKLY_PEACH_CACTUS:Lcom/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock;
+     221: invokevirtual #59                 // Method com/yungnickyoung/minecraft/yungsapi/api/autoregister/AutoRegisterBlock.get:()Ljava/lang/Object;
+     224: checkcast     #65                 // class net/minecraft/world/level/block/Block
+     227: invokevirtual #114                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     230: getstatic     #118                // Field com/yungnickyoung/minecraft/yungscavebiomes/block/PricklyPeachCactusBlock.FRUIT:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     233: aload         4
+     235: invokeinterface #23,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     240: ldc           #124                // float 0.4f
+     242: fcmpg
+     243: ifge          250
+     246: iconst_1
+     247: goto          251
+     250: iconst_0
+     251: invokestatic  #125                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     254: invokevirtual #131                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     257: checkcast     #68                 // class net/minecraft/world/level/block/state/BlockState
+     260: astore        10
+     262: aload_2
+     263: aload         7
+     265: aload         10
+     267: iconst_3
+     268: invokeinterface #135,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     273: pop
+     274: iinc          5, -1
+     277: iinc          6, 1
+     280: goto          22
+     283: iload         5
+     285: iconst_4
+     286: if_icmpge     293
+     289: iconst_1
+     290: goto          294
+     293: iconst_0
+     294: ireturn
+
+  private static net.minecraft.core.BlockPos lambda$place$0(net.minecraft.core.BlockPos, float, float, float);
+    Code:
+       0: aload_0
+       1: fload_1
+       2: invokestatic  #139                // Method java/lang/Math.round:(F)I
+       5: fload_2
+       6: invokestatic  #139                // Method java/lang/Math.round:(F)I
+       9: fload_3
+      10: invokestatic  #139                // Method java/lang/Math.round:(F)I
+      13: invokevirtual #145                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      16: areturn
+}

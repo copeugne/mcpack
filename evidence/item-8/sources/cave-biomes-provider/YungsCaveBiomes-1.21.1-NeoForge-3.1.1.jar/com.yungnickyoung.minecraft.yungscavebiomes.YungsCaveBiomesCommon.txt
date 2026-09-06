@@ -1,0 +1,70 @@
+Compiled from "YungsCaveBiomesCommon.java"
+public class com.yungnickyoung.minecraft.yungscavebiomes.YungsCaveBiomesCommon {
+  public static final java.lang.String MOD_ID = "yungscavebiomes";
+
+  public static final org.apache.logging.log4j.Logger LOGGER;
+
+  public static final com.yungnickyoung.minecraft.yungscavebiomes.module.ConfigModule CONFIG;
+
+  public static final java.lang.String MC_VERSION_STRING = "1_21_1";
+
+  public static boolean MARBLE_CAVES_ENABLED;
+
+  public static boolean DEBUG_LOG;
+
+  public static boolean DEBUG_RENDERING;
+
+  public com.yungnickyoung.minecraft.yungscavebiomes.YungsCaveBiomesCommon();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #7                  // Field DEBUG_LOG:Z
+       3: ifeq          21
+       6: getstatic     #13                 // Field com/yungnickyoung/minecraft/yungscavebiomes/services/Services.PLATFORM:Lcom/yungnickyoung/minecraft/yungscavebiomes/services/IPlatformHelper;
+       9: invokeinterface #19,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/services/IPlatformHelper.isDevelopmentEnvironment:()Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: putstatic     #7                  // Field DEBUG_LOG:Z
+      25: getstatic     #25                 // Field DEBUG_RENDERING:Z
+      28: ifeq          46
+      31: getstatic     #13                 // Field com/yungnickyoung/minecraft/yungscavebiomes/services/Services.PLATFORM:Lcom/yungnickyoung/minecraft/yungscavebiomes/services/IPlatformHelper;
+      34: invokeinterface #19,  1           // InterfaceMethod com/yungnickyoung/minecraft/yungscavebiomes/services/IPlatformHelper.isDevelopmentEnvironment:()Z
+      39: ifeq          46
+      42: iconst_1
+      43: goto          47
+      46: iconst_0
+      47: putstatic     #25                 // Field DEBUG_RENDERING:Z
+      50: ldc           #28                 // String com.yungnickyoung.minecraft.yungscavebiomes
+      52: invokestatic  #30                 // Method com/yungnickyoung/minecraft/yungsapi/api/YungAutoRegister.scanPackageForAnnotations:(Ljava/lang/String;)V
+      55: return
+
+  public static net.minecraft.resources.ResourceLocation id(java.lang.String);
+    Code:
+       0: ldc           #36                 // String yungscavebiomes
+       2: aload_0
+       3: invokestatic  #38                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  static {};
+    Code:
+       0: ldc           #36                 // String yungscavebiomes
+       2: invokestatic  #44                 // Method org/apache/logging/log4j/LogManager.getLogger:(Ljava/lang/String;)Lorg/apache/logging/log4j/Logger;
+       5: putstatic     #50                 // Field LOGGER:Lorg/apache/logging/log4j/Logger;
+       8: new           #54                 // class com/yungnickyoung/minecraft/yungscavebiomes/module/ConfigModule
+      11: dup
+      12: invokespecial #56                 // Method com/yungnickyoung/minecraft/yungscavebiomes/module/ConfigModule."<init>":()V
+      15: putstatic     #57                 // Field CONFIG:Lcom/yungnickyoung/minecraft/yungscavebiomes/module/ConfigModule;
+      18: iconst_0
+      19: putstatic     #61                 // Field MARBLE_CAVES_ENABLED:Z
+      22: iconst_0
+      23: putstatic     #7                  // Field DEBUG_LOG:Z
+      26: iconst_0
+      27: putstatic     #25                 // Field DEBUG_RENDERING:Z
+      30: return
+}
