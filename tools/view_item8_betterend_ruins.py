@@ -81,7 +81,8 @@ def main() -> None:
                 "landscapes": ["frozen_pond", "muddy_water_hole", "small_pond", "jungle",
                                "leaf_hollow", "mangrove"],
                 "islands": ["mushroom", "palm_island", "red_sand", "taiga", "volcano"],
-                "monuments": ["arena", "desert_pyramid", "desert_well", "nether_portal"],
+                "monuments": ["desert_pyramid", "desert_pyramid_side", "desert_pyramid_top",
+                              "desert_well", "nether_portal"],
             }
         namespace = "mss" if soaring else "betterend"
         for biome, names in sheets.items():
