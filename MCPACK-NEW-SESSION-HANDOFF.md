@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Voyager buildings comparison selects 23 architecture templates for the 17 pending
+house, outbuilding and tower decisions. Shared vanilla villager templates remain
+component references in the existing graph. The existing renderer and archive
+identity check are reused; the selected-path pilot and scoped quality checks pass.
+No additional rendering or measurement system is introduced.
+
 Inventory refresh matches decisions delivered at 784d6923 and reproduces exactly.
 Working groups: 407. Next: remaining 49 explicit Voyager decisions.
 

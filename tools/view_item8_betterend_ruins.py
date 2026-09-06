@@ -60,7 +60,7 @@ def parse_args() -> argparse.Namespace:
     _ = parser.add_argument("--output", type=Path, required=True)
     selection = parser.add_mutually_exclusive_group()
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
-                 "--nether-landmarks", "--voyager-small"):
+                 "--nether-landmarks", "--voyager-small", "--voyager-buildings"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -70,7 +70,7 @@ def main() -> None:
     args = parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
-    voyager = cast("bool", args.voyager_small)
+    voyager = cast("bool", args.voyager_small) or cast("bool", args.voyager_buildings)
     nether_houses = cast("bool", args.nether_houses)
     nether_arenas = cast("bool", args.nether_arenas)
     nether_landmarks = cast("bool", args.nether_landmarks)
@@ -145,6 +145,17 @@ def main() -> None:
                                   ("haystack", "small_haystack", "mixed_pile",
                                    "pumpkin_pile", "small_pumpkin_pile")],
                 "paths": ["nature/long_oak_pathway", "nature/short_oak_pathway"],
+            } if cast("bool", args.voyager_small) else {
+                "houses": [f"houses/{n}" for n in
+                           ("azelea_house", "deepslate_house", "desert_house", "flower_hole",
+                            "house", "small_swamp_house", "tall_house", "warped_house")],
+                "outbuildings": ["houses/barn", "shed", "out_house/out_house",
+                                 "out_house/out_house_lower"],
+                "towers": ["cartographer_tower/base", "cartographer_tower/top",
+                           "jungle_tower/base", "jungle_tower/bottom", "jungle_tower/top",
+                           "ocean_tower", "small_pillager_tower"],
+                "nether_towers": ["houses/large_warped_tower", "houses/large_warped_tower_top",
+                                  "houses/red_tower", "houses/red_tower_top"],
             }
         for biome, names in sheets.items():
             count = len(names)
