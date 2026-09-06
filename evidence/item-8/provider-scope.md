@@ -517,6 +517,57 @@ sample or graph implementation. Explicit provider dispositions now cover 26 of
 
 ## Exact provider queue, initialized at 05ce184
 
+### Scope reassessment on 2026-09-06
+
+The user correctly challenged the repeated statement that provider coverage is
+open without a usable account of what remains. At e06c9e1, 59 rows below remain
+open, including 44 with the generic instruction to inspect entry mechanisms.
+Those generic instructions are insufficient as a progress explanation.
+
+Joining the open archive names below to the existing provider-scope.json.gz
+review_lane fields gives this planning partition. It is not provider acceptance
+or a family count, and no new source scan or measurement system was introduced.
+
+| Existing indexed lane | Open providers | Immediate question |
+| --- | ---: | --- |
+| Packaged structure definitions | 2 | Do all roots, additional routes and components have candidate links? |
+| Other packaged generation candidates | 12 | Which inputs are sites, components, natural generation or inactive resources? |
+| Code references only | 24 | Which actual entry routes generate or inject content, versus consuming existing content? |
+| No generation candidates in indexed searches | 21 | Do the complete payload and actual entry mechanisms support a non-provider disposition? |
+| Total | 59 | Close membership checks before detailed family attributes. |
+
+The two structure-definition providers are Creating Space and Supplementaries.
+Creating Space has mars/underground_outpost_1, moon/abandoned_outpost,
+moon/crashed_rocket and moon/crashed_ship. Supplementaries has galleon and
+road_sign. These are packaged definition names, not six newly discovered or
+accepted families. In particular, Supplementaries also has a configured feature
+named road_sign: reconcile the two representations before counting designs.
+
+The twelve other packaged-generation rows are Creeper Overhaul, Farmer's Delight,
+Aether's Delight, Coffee Delight, Create, End's Delight, Forgified Fabric API,
+Lithostitched, Naturalist, Railways, Regions Unexplored and Ube's Delight.
+The exact archive identities and resource paths are already in the indexed
+artifact and the queue below. A template may be a component or player schematic;
+a biome modifier may only change mob spawning. Their presence does not establish
+an independent family. Conversely, a code-only or unmatched search row cannot
+be excluded from membership using its search lane alone.
+
+Continuation priority: reconcile the two structure-definition providers and
+the remaining packaged-content candidates, closing shared loader dependencies
+when they control those candidates. Then close the code-only and unmatched
+entry checks. Reuse delivered provider dispositions and captures throughout.
+Keep the current RU source checkpoint; do not restart its 53 implementation
+captures. Follow further helpers only for a specific unresolved site or component
+boundary, as required by the existing stopping rule below.
+
+The deliverable for this stage is a named candidate list with every retained
+provider accounted for and every remaining merge/split alternative explicitly
+listed. The final family count follows resolution of those alternatives. The
+887 runtime roots and 421 provisional groups do not supply that answer by
+themselves. Progress updates must distinguish provider closures, candidate
+additions and grouping decisions instead of reporting source captures as if
+they reduced the family backlog.
+
 This is the working queue, not an acceptance result. Initially, the 26 dispositions
 above and 110 queued archive names partitioned the 136-line retained manifest.
 WDA, Better Village, YUNG Bridges and YUNG Extras are resolved below:

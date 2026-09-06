@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-06
 
+Priority correction following the user's challenge about unknown remaining
+families: use the scope reassessment under the exact provider queue in
+evidence/item-8/provider-scope.md. The 59 open rows partition into 2 with indexed
+structure definitions, 12 with other packaged generation candidates, 24 with
+code-reference matches only and 21 with no indexed matches. This is planning
+information, not semantic acceptance. Resolve membership across this queue
+before further detailed natural-feature analysis or family attributes.
+Start with Creating Space and Supplementaries, following their actual shared
+loader dependencies. Publish named grouping alternatives after membership
+closure; do not substitute 887 roots or 421 provisional groups for families.
+
+RU ground-decorator source is delivered in e06c9e1, extractor 62c2e12,
+manifest 2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544.
+Its direct writer selects the configured block state above eligible dirt, with
+target and height checks. No additional helper capture is needed for that
+writer. The existing candidate test still needs this manifest binding and the
+vegetation-role disposition remains unfinished. Preserve that checkpoint while
+prioritizing whole-queue membership. No provider closure is claimed by this
+reassessment: 77 resolved and 59 open. No new runtime measurement was run.
+
 Latest RU checkpoint: terrain-feature roles are RESOLVED in 5d187f9. Shared
 redstone writer source 690e757 (extractor 3460144) closes that direct helper.
 Do not repeat the thirteen terrain features or their writer. Source 04c515f
