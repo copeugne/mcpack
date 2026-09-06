@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 44 of 136. The exact queue below has 92 open rows.
+Supported provider dispositions: 46 of 136. The exact queue below has 90 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -585,7 +585,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bettercombat-neoforge-2.3.2+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `bundle-api-neoforge-1.1.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -638,7 +638,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `servercore-neoforge-1.5.17+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `shield_api-neoforge-2.2.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `shield_api-neoforge-2.2.0.jar` | `shield-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom shield interaction, item attributes, rendering and EMI integration; no independent family. See bundle and shield dispositions below. |
 | `simplyswords-neoforge-1.63.0-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `sparsestructures-neoforge-1.21.1-3.0.jar` | `sparsestructures-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing structure-set placement modification; no independent family. See small utility provider dispositions below. |
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
@@ -1127,3 +1127,33 @@ One focused case passes. Initial lint/type findings were three long lines and
 two untyped JSON values; formatting and JsonValue casts resolve them. Ruff and
 Basedpyright pass. No new measurement, production behavior, baseline configuration
 or family grouping changed. Provider dispositions: 44 of 136, with 92 open.
+
+## Bundle and shield provider dispositions
+
+Bundle API and Shield API contribute no independent structure family. Source
+capture a14b5e0, using 49dd5dd, preserves all 30 classes and reproduces exactly.
+Their full payloads contain only these classes, loader metadata, refmaps, mixin
+declarations and icons. No generation resource, template, script, nested archive
+or unexplained entry point remains. The existing parameterized provider test
+binds the complete archives and preserves all declared mixin targets.
+
+Bundle API supplies stored item components, a content predicate, container-content
+manipulation, bundle item interaction and client rendering. Shield API supplies
+custom shield repair/attributes/equip sounds, player shield damage/cooldown and axe
+interaction hooks, client model predicates and EMI repair-recipe display. These
+are player item/combat mechanisms, not authored world layouts. The Shield API
+MinecraftClientMixin is listed in its common mixin declaration; preserve this
+fact without inventing a newly observed runtime failure or changing the baseline.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Eleven cases pass. The first two added cases incorrectly included each client
+subscriber in the @Mod entry set. The test and source explanation now distinguish
+the one @Mod class from the client EventBusSubscriber in each archive. A local
+complexity exception keeps these explicit cases in the existing test without
+adding an abstraction. Scoped Ruff and Basedpyright pass. Provider dispositions:
+46 of 136 resolved, 90 open. No family grouping or detailed attribute work resumed.
