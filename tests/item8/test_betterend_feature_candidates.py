@@ -215,3 +215,57 @@ def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
             else:
                 assert template["size"] == [21, 32, 21]
                 assert template["block_entities"]
+
+
+def test_betterend_pillar_candidates_and_existing_end_components() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/betterend-pillar-end-hooks")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "f39ee57a16f67349f29e98bfdd3fe2acf567b39b9d56f737f9d8d3655f860e04"
+    )
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    placed = read_registry(registry / "worldgen_placed_feature.txt")
+    with ZipFile(source.path) as archive:
+        identities = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(identities) == 8
+        declarations = cast("dict[str, list[str]]", json.loads(
+            archive.read("betterend.mixins.common.json")))
+        for row in identities:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+            if "/mixin/common/" in row["class"]:
+                assert Path(row["class"]).stem in declarations["mixins"]
+        for name, chance in (("fallen_pillar", 20), ("obsidian_pillar_basement", 8)):
+            identifier = "betterend:" + name
+            assert identifier in placed
+            definition = cast("dict[str, JsonValue]", json.loads(archive.read(
+                f"data/betterend/worldgen/placed_feature/{name}.json")))
+            assert definition == {
+                "feature": {"type": identifier, "config": {}},
+                "placement": [{"type": "minecraft:rarity_filter", "chance": chance},
+                              {"type": "minecraft:in_square"}, {"type": "minecraft:biome"}],
+            }
+            consumers: set[str] = set()
+            for path in archive.namelist():
+                if path.startswith("data/betterend/worldgen/biome/") and path.endswith(".json"):
+                    biome = cast("dict[str, list[list[str]]]", json.loads(archive.read(path)))
+                    if any(identifier in group for group in biome["features"]):
+                        consumers.add(Path(path).stem)
+            assert consumers == {"dragon_graveyards"}
+        pillars = {n for n in archive.namelist()
+                   if n.startswith("data/betterend/structure/pillars/") and not n.endswith("/")}
+        assert pillars == {
+            f"data/betterend/structure/pillars/pillar_{part}_{i}{suffix}.nbt"
+            for i in range(1, 5) for part, suffix in (("base", ""), ("top", ""), ("top", "_cage"))
+        }
+        for name in pillars | {
+            "data/betterend/structure/portal/end_portal_active.nbt",
+            "data/betterend/structure/portal/end_portal_inactive.nbt",
+        }:
+            assert template_summary(archive.read(name))["size"]
