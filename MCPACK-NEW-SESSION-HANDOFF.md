@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Voyager small-design comparison selects twelve existing templates to test the
+haystack/pumpkin-pile overlap and bench/path variants. Reuses the existing cube
+renderer, with no new measurement class. Adding the selector exceeded the existing
+main-function statement/complexity limits; CLI parsing is separated narrowly and
+output serialization is shared. Scoped checks pass; Nether landmark outputs remain
+byte-identical. Membership decisions follow visual inspection, not selector names.
+
 Inventory now reproduces the Nether decisions delivered at a9637207 exactly.
 Next: 53 explicit Voyager decisions. Working groups remain 408.
 
