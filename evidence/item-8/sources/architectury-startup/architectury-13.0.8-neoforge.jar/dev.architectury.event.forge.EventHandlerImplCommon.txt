@@ -1,0 +1,910 @@
+Compiled from "EventHandlerImplCommon.java"
+public class dev.architectury.event.forge.EventHandlerImplCommon {
+  public dev.architectury.event.forge.EventHandlerImplCommon();
+    Code:
+       0: aload_0
+       1: invokespecial #278                // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void event(net.neoforged.neoforge.event.tick.ServerTickEvent$Pre);
+    Code:
+       0: getstatic     #290                // Field dev/architectury/event/events/common/TickEvent.SERVER_PRE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #13                 // class dev/architectury/event/events/common/TickEvent$Server
+      11: invokestatic  #302                // Method net/neoforged/neoforge/server/ServerLifecycleHooks.getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+      14: invokeinterface #306,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$Server.tick:(Ljava/lang/Object;)V
+      19: return
+
+  public static void event(net.neoforged.neoforge.event.tick.ServerTickEvent$Post);
+    Code:
+       0: getstatic     #311                // Field dev/architectury/event/events/common/TickEvent.SERVER_POST:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #13                 // class dev/architectury/event/events/common/TickEvent$Server
+      11: invokestatic  #302                // Method net/neoforged/neoforge/server/ServerLifecycleHooks.getCurrentServer:()Lnet/minecraft/server/MinecraftServer;
+      14: invokeinterface #306,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$Server.tick:(Ljava/lang/Object;)V
+      19: return
+
+  public static void event(net.neoforged.neoforge.event.tick.LevelTickEvent$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #317                // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Pre.getLevel:()Lnet/minecraft/world/level/Level;
+       4: invokevirtual #323                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       7: ifne          33
+      10: getstatic     #326                // Field dev/architectury/event/events/common/TickEvent.SERVER_LEVEL_PRE:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #23                 // class dev/architectury/event/events/common/TickEvent$ServerLevelTick
+      21: aload_0
+      22: invokevirtual #317                // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Pre.getLevel:()Lnet/minecraft/world/level/Level;
+      25: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      28: invokeinterface #329,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$ServerLevelTick.tick:(Ljava/lang/Object;)V
+      33: return
+
+  public static void event(net.neoforged.neoforge.event.tick.LevelTickEvent$Post);
+    Code:
+       0: aload_0
+       1: invokevirtual #332                // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Post.getLevel:()Lnet/minecraft/world/level/Level;
+       4: invokevirtual #323                // Method net/minecraft/world/level/Level.isClientSide:()Z
+       7: ifne          33
+      10: getstatic     #335                // Field dev/architectury/event/events/common/TickEvent.SERVER_LEVEL_POST:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #23                 // class dev/architectury/event/events/common/TickEvent$ServerLevelTick
+      21: aload_0
+      22: invokevirtual #332                // Method net/neoforged/neoforge/event/tick/LevelTickEvent$Post.getLevel:()Lnet/minecraft/world/level/Level;
+      25: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      28: invokeinterface #329,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$ServerLevelTick.tick:(Ljava/lang/Object;)V
+      33: return
+
+  public static void event(net.neoforged.neoforge.event.server.ServerStartingEvent);
+    Code:
+       0: getstatic     #340                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_STARTING:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #29                 // class dev/architectury/event/events/common/LifecycleEvent$ServerState
+      11: aload_0
+      12: invokevirtual #345                // Method net/neoforged/neoforge/event/server/ServerStartingEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      15: invokeinterface #348,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerState.stateChanged:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.server.ServerStartedEvent);
+    Code:
+       0: getstatic     #353                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_STARTED:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #29                 // class dev/architectury/event/events/common/LifecycleEvent$ServerState
+      11: aload_0
+      12: invokevirtual #356                // Method net/neoforged/neoforge/event/server/ServerStartedEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      15: invokeinterface #348,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerState.stateChanged:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.server.ServerStoppingEvent);
+    Code:
+       0: getstatic     #361                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_STOPPING:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #29                 // class dev/architectury/event/events/common/LifecycleEvent$ServerState
+      11: aload_0
+      12: invokevirtual #364                // Method net/neoforged/neoforge/event/server/ServerStoppingEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      15: invokeinterface #348,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerState.stateChanged:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.server.ServerStoppedEvent);
+    Code:
+       0: getstatic     #369                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_STOPPED:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #29                 // class dev/architectury/event/events/common/LifecycleEvent$ServerState
+      11: aload_0
+      12: invokevirtual #372                // Method net/neoforged/neoforge/event/server/ServerStoppedEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      15: invokeinterface #348,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerState.stateChanged:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: getstatic     #379                // Field dev/architectury/event/events/common/CommandRegistrationEvent.EVENT:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #376                // class dev/architectury/event/events/common/CommandRegistrationEvent
+      11: aload_0
+      12: invokevirtual #385                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+      15: aload_0
+      16: invokevirtual #389                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+      19: aload_0
+      20: invokevirtual #393                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getCommandSelection:()Lnet/minecraft/commands/Commands$CommandSelection;
+      23: invokeinterface #397,  4          // InterfaceMethod dev/architectury/event/events/common/CommandRegistrationEvent.register:(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;Lnet/minecraft/commands/Commands$CommandSelection;)V
+      28: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerLoggedInEvent);
+    Code:
+       0: getstatic     #402                // Field dev/architectury/event/events/common/PlayerEvent.PLAYER_JOIN:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #39                 // class dev/architectury/event/events/common/PlayerEvent$PlayerJoin
+      11: aload_0
+      12: invokevirtual #406                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerLoggedInEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      18: invokeinterface #412,  2          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PlayerJoin.join:(Lnet/minecraft/server/level/ServerPlayer;)V
+      23: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerLoggedOutEvent);
+    Code:
+       0: getstatic     #417                // Field dev/architectury/event/events/common/PlayerEvent.PLAYER_QUIT:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #49                 // class dev/architectury/event/events/common/PlayerEvent$PlayerQuit
+      11: aload_0
+      12: invokevirtual #418                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerLoggedOutEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      18: invokeinterface #421,  2          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PlayerQuit.quit:(Lnet/minecraft/server/level/ServerPlayer;)V
+      23: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerRespawnEvent);
+    Code:
+       0: getstatic     #426                // Field dev/architectury/event/events/common/PlayerEvent.PLAYER_RESPAWN:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #55                 // class dev/architectury/event/events/common/PlayerEvent$PlayerRespawn
+      11: aload_0
+      12: invokevirtual #427                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerRespawnEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      18: aload_0
+      19: invokevirtual #430                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerRespawnEvent.isEndConquered:()Z
+      22: aload_0
+      23: invokevirtual #427                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerRespawnEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      26: invokevirtual #436                // Method net/minecraft/world/entity/player/Player.getRemovalReason:()Lnet/minecraft/world/entity/Entity$RemovalReason;
+      29: invokeinterface #440,  4          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PlayerRespawn.respawn:(Lnet/minecraft/server/level/ServerPlayer;ZLnet/minecraft/world/entity/Entity$RemovalReason;)V
+      34: return
+
+  public static void event(net.neoforged.neoforge.event.CommandEvent);
+    Code:
+       0: new           #444                // class dev/architectury/event/events/common/CommandPerformEvent
+       3: dup
+       4: aload_0
+       5: invokevirtual #450                // Method net/neoforged/neoforge/event/CommandEvent.getParseResults:()Lcom/mojang/brigadier/ParseResults;
+       8: aload_0
+       9: invokevirtual #454                // Method net/neoforged/neoforge/event/CommandEvent.getException:()Ljava/lang/Throwable;
+      12: invokespecial #457                // Method dev/architectury/event/events/common/CommandPerformEvent."<init>":(Lcom/mojang/brigadier/ParseResults;Ljava/lang/Throwable;)V
+      15: astore_1
+      16: getstatic     #458                // Field dev/architectury/event/events/common/CommandPerformEvent.EVENT:Ldev/architectury/event/Event;
+      19: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      24: checkcast     #460                // class dev/architectury/event/EventActor
+      27: aload_1
+      28: invokeinterface #464,  2          // InterfaceMethod dev/architectury/event/EventActor.act:(Ljava/lang/Object;)Ldev/architectury/event/EventResult;
+      33: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      36: ifeq          44
+      39: aload_0
+      40: iconst_1
+      41: invokevirtual #473                // Method net/neoforged/neoforge/event/CommandEvent.setCanceled:(Z)V
+      44: aload_0
+      45: aload_1
+      46: invokevirtual #476                // Method dev/architectury/event/events/common/CommandPerformEvent.getResults:()Lcom/mojang/brigadier/ParseResults;
+      49: invokevirtual #480                // Method net/neoforged/neoforge/event/CommandEvent.setParseResults:(Lcom/mojang/brigadier/ParseResults;)V
+      52: aload_0
+      53: aload_1
+      54: invokevirtual #483                // Method dev/architectury/event/events/common/CommandPerformEvent.getThrowable:()Ljava/lang/Throwable;
+      57: invokevirtual #487                // Method net/neoforged/neoforge/event/CommandEvent.setException:(Ljava/lang/Throwable;)V
+      60: return
+
+  public static void event(net.neoforged.neoforge.event.tick.PlayerTickEvent$Pre);
+    Code:
+       0: getstatic     #494                // Field dev/architectury/event/events/common/TickEvent.PLAYER_PRE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #66                 // class dev/architectury/event/events/common/TickEvent$Player
+      11: aload_0
+      12: invokevirtual #495                // Method net/neoforged/neoforge/event/tick/PlayerTickEvent$Pre.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: invokeinterface #496,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$Player.tick:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.tick.PlayerTickEvent$Post);
+    Code:
+       0: getstatic     #501                // Field dev/architectury/event/events/common/TickEvent.PLAYER_POST:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #66                 // class dev/architectury/event/events/common/TickEvent$Player
+      11: aload_0
+      12: invokevirtual #502                // Method net/neoforged/neoforge/event/tick/PlayerTickEvent$Post.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: invokeinterface #496,  2          // InterfaceMethod dev/architectury/event/events/common/TickEvent$Player.tick:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.ServerChatEvent);
+    Code:
+       0: getstatic     #507                // Field dev/architectury/event/events/common/ChatEvent.DECORATE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #75                 // class dev/architectury/event/events/common/ChatEvent$Decorate
+      11: aload_0
+      12: invokevirtual #513                // Method net/neoforged/neoforge/event/ServerChatEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+      15: new           #11                 // class dev/architectury/event/forge/EventHandlerImplCommon$1ChatComponentImpl
+      18: dup
+      19: aload_0
+      20: invokespecial #515                // Method dev/architectury/event/forge/EventHandlerImplCommon$1ChatComponentImpl."<init>":(Lnet/neoforged/neoforge/event/ServerChatEvent;)V
+      23: invokeinterface #519,  3          // InterfaceMethod dev/architectury/event/events/common/ChatEvent$Decorate.decorate:(Lnet/minecraft/server/level/ServerPlayer;Ldev/architectury/event/events/common/ChatEvent$ChatComponent;)V
+      28: return
+
+  public static void eventAfter(net.neoforged.neoforge.event.ServerChatEvent);
+    Code:
+       0: getstatic     #525                // Field dev/architectury/event/events/common/ChatEvent.RECEIVED:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #84                 // class dev/architectury/event/events/common/ChatEvent$Received
+      11: aload_0
+      12: invokevirtual #513                // Method net/neoforged/neoforge/event/ServerChatEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+      15: aload_0
+      16: invokevirtual #529                // Method net/neoforged/neoforge/event/ServerChatEvent.getMessage:()Lnet/minecraft/network/chat/Component;
+      19: invokeinterface #533,  3          // InterfaceMethod dev/architectury/event/events/common/ChatEvent$Received.received:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/chat/Component;)Ldev/architectury/event/EventResult;
+      24: astore_1
+      25: aload_1
+      26: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      29: ifeq          37
+      32: aload_0
+      33: iconst_1
+      34: invokevirtual #534                // Method net/neoforged/neoforge/event/ServerChatEvent.setCanceled:(Z)V
+      37: return
+
+  public static void eventWorldEvent(net.neoforged.neoforge.event.level.LevelEvent$Load);
+    Code:
+       0: aload_0
+       1: invokevirtual #541                // Method net/neoforged/neoforge/event/level/LevelEvent$Load.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+       7: ifeq          35
+      10: aload_0
+      11: invokevirtual #541                // Method net/neoforged/neoforge/event/level/LevelEvent$Load.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      14: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      17: astore_1
+      18: getstatic     #544                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_LEVEL_LOAD:Ldev/architectury/event/Event;
+      21: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      26: checkcast     #92                 // class dev/architectury/event/events/common/LifecycleEvent$ServerLevelState
+      29: aload_1
+      30: invokeinterface #547,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerLevelState.act:(Lnet/minecraft/world/level/Level;)V
+      35: return
+
+  public static void eventWorldEvent(net.neoforged.neoforge.event.level.LevelEvent$Unload);
+    Code:
+       0: aload_0
+       1: invokevirtual #552                // Method net/neoforged/neoforge/event/level/LevelEvent$Unload.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+       7: ifeq          35
+      10: aload_0
+      11: invokevirtual #552                // Method net/neoforged/neoforge/event/level/LevelEvent$Unload.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      14: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      17: astore_1
+      18: getstatic     #555                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_LEVEL_UNLOAD:Ldev/architectury/event/Event;
+      21: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      26: checkcast     #92                 // class dev/architectury/event/events/common/LifecycleEvent$ServerLevelState
+      29: aload_1
+      30: invokeinterface #547,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerLevelState.act:(Lnet/minecraft/world/level/Level;)V
+      35: return
+
+  public static void eventWorldEvent(net.neoforged.neoforge.event.level.LevelEvent$Save);
+    Code:
+       0: aload_0
+       1: invokevirtual #558                // Method net/neoforged/neoforge/event/level/LevelEvent$Save.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+       7: ifeq          35
+      10: aload_0
+      11: invokevirtual #558                // Method net/neoforged/neoforge/event/level/LevelEvent$Save.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      14: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      17: astore_1
+      18: getstatic     #561                // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_LEVEL_SAVE:Ldev/architectury/event/Event;
+      21: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      26: checkcast     #92                 // class dev/architectury/event/events/common/LifecycleEvent$ServerLevelState
+      29: aload_1
+      30: invokeinterface #547,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerLevelState.act:(Lnet/minecraft/world/level/Level;)V
+      35: return
+
+  public static void event(net.neoforged.neoforge.event.entity.living.LivingDeathEvent);
+    Code:
+       0: getstatic     #566                // Field dev/architectury/event/events/common/EntityEvent.LIVING_DEATH:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #101                // class dev/architectury/event/events/common/EntityEvent$LivingDeath
+      11: aload_0
+      12: invokevirtual #571                // Method net/neoforged/neoforge/event/entity/living/LivingDeathEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+      15: aload_0
+      16: invokevirtual #575                // Method net/neoforged/neoforge/event/entity/living/LivingDeathEvent.getSource:()Lnet/minecraft/world/damagesource/DamageSource;
+      19: invokeinterface #579,  3          // InterfaceMethod dev/architectury/event/events/common/EntityEvent$LivingDeath.die:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;)Ldev/architectury/event/EventResult;
+      24: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      27: ifeq          35
+      30: aload_0
+      31: iconst_1
+      32: invokevirtual #580                // Method net/neoforged/neoforge/event/entity/living/LivingDeathEvent.setCanceled:(Z)V
+      35: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.AdvancementEvent$AdvancementEarnEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #583                // Method net/neoforged/neoforge/event/entity/player/AdvancementEvent$AdvancementEarnEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: instanceof    #408                // class net/minecraft/server/level/ServerPlayer
+       7: ifeq          37
+      10: getstatic     #586                // Field dev/architectury/event/events/common/PlayerEvent.PLAYER_ADVANCEMENT:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #111                // class dev/architectury/event/events/common/PlayerEvent$PlayerAdvancement
+      21: aload_0
+      22: invokevirtual #583                // Method net/neoforged/neoforge/event/entity/player/AdvancementEvent$AdvancementEarnEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      25: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      28: aload_0
+      29: invokevirtual #590                // Method net/neoforged/neoforge/event/entity/player/AdvancementEvent$AdvancementEarnEvent.getAdvancement:()Lnet/minecraft/advancements/AdvancementHolder;
+      32: invokeinterface #594,  3          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PlayerAdvancement.award:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/advancements/AdvancementHolder;)V
+      37: return
+
+  public static void eventPlayerEvent(net.neoforged.neoforge.event.entity.player.PlayerEvent$Clone);
+    Code:
+       0: aload_0
+       1: invokevirtual #600                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getOriginal:()Lnet/minecraft/world/entity/player/Player;
+       4: instanceof    #408                // class net/minecraft/server/level/ServerPlayer
+       7: ifeq          62
+      10: aload_0
+      11: invokevirtual #601                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      14: instanceof    #408                // class net/minecraft/server/level/ServerPlayer
+      17: ifeq          62
+      20: getstatic     #604                // Field dev/architectury/event/events/common/PlayerEvent.PLAYER_CLONE:Ldev/architectury/event/Event;
+      23: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      28: checkcast     #117                // class dev/architectury/event/events/common/PlayerEvent$PlayerClone
+      31: aload_0
+      32: invokevirtual #600                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getOriginal:()Lnet/minecraft/world/entity/player/Player;
+      35: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      38: aload_0
+      39: invokevirtual #601                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      42: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      45: aload_0
+      46: invokevirtual #607                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$Clone.isWasDeath:()Z
+      49: ifne          56
+      52: iconst_1
+      53: goto          57
+      56: iconst_0
+      57: invokeinterface #611,  4          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PlayerClone.clone:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/level/ServerPlayer;Z)V
+      62: return
+
+  public static void eventExplosionEvent(net.neoforged.neoforge.event.level.ExplosionEvent$Start);
+    Code:
+       0: getstatic     #617                // Field dev/architectury/event/events/common/ExplosionEvent.PRE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #120                // class dev/architectury/event/events/common/ExplosionEvent$Pre
+      11: aload_0
+      12: invokevirtual #618                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Start.getLevel:()Lnet/minecraft/world/level/Level;
+      15: aload_0
+      16: invokevirtual #622                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Start.getExplosion:()Lnet/minecraft/world/level/Explosion;
+      19: invokeinterface #626,  3          // InterfaceMethod dev/architectury/event/events/common/ExplosionEvent$Pre.explode:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/Explosion;)Ldev/architectury/event/EventResult;
+      24: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      27: ifeq          35
+      30: aload_0
+      31: iconst_1
+      32: invokevirtual #627                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Start.setCanceled:(Z)V
+      35: return
+
+  public static void eventExplosionEvent(net.neoforged.neoforge.event.level.ExplosionEvent$Detonate);
+    Code:
+       0: getstatic     #632                // Field dev/architectury/event/events/common/ExplosionEvent.DETONATE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #129                // class dev/architectury/event/events/common/ExplosionEvent$Detonate
+      11: aload_0
+      12: invokevirtual #633                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Detonate.getLevel:()Lnet/minecraft/world/level/Level;
+      15: aload_0
+      16: invokevirtual #634                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Detonate.getExplosion:()Lnet/minecraft/world/level/Explosion;
+      19: aload_0
+      20: invokevirtual #638                // Method net/neoforged/neoforge/event/level/ExplosionEvent$Detonate.getAffectedEntities:()Ljava/util/List;
+      23: invokeinterface #641,  4          // InterfaceMethod dev/architectury/event/events/common/ExplosionEvent$Detonate.explode:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/Explosion;Ljava/util/List;)V
+      28: return
+
+  public static void event(net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent);
+    Code:
+       0: getstatic     #646                // Field dev/architectury/event/events/common/EntityEvent.LIVING_HURT:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #134                // class dev/architectury/event/events/common/EntityEvent$LivingHurt
+      11: aload_0
+      12: invokevirtual #649                // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+      15: aload_0
+      16: invokevirtual #650                // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getSource:()Lnet/minecraft/world/damagesource/DamageSource;
+      19: aload_0
+      20: invokevirtual #654                // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.getAmount:()F
+      23: invokeinterface #658,  4          // InterfaceMethod dev/architectury/event/events/common/EntityEvent$LivingHurt.hurt:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/damagesource/DamageSource;F)Ldev/architectury/event/EventResult;
+      28: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      31: ifeq          39
+      34: aload_0
+      35: iconst_1
+      36: invokevirtual #659                // Method net/neoforged/neoforge/event/entity/living/LivingIncomingDamageEvent.setCanceled:(Z)V
+      39: return
+
+  public static void event(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent);
+    Code:
+       0: getstatic     #664                // Field dev/architectury/event/events/common/EntityEvent.ADD:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #137                // class dev/architectury/event/events/common/EntityEvent$Add
+      11: aload_0
+      12: invokevirtual #669                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+      15: aload_0
+      16: invokevirtual #670                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.getLevel:()Lnet/minecraft/world/level/Level;
+      19: invokeinterface #674,  3          // InterfaceMethod dev/architectury/event/events/common/EntityEvent$Add.add:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/Level;)Ldev/architectury/event/EventResult;
+      24: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      27: ifeq          35
+      30: aload_0
+      31: iconst_1
+      32: invokevirtual #675                // Method net/neoforged/neoforge/event/entity/EntityJoinLevelEvent.setCanceled:(Z)V
+      35: return
+
+  public static void event(net.neoforged.neoforge.event.level.BlockEvent$FarmlandTrampleEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #678                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #319                // class net/minecraft/world/level/Level
+       7: ifeq          60
+      10: getstatic     #681                // Field dev/architectury/event/events/common/InteractionEvent.FARMLAND_TRAMPLE:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #145                // class dev/architectury/event/events/common/InteractionEvent$FarmlandTrample
+      21: aload_0
+      22: invokevirtual #678                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      25: checkcast     #319                // class net/minecraft/world/level/Level
+      28: aload_0
+      29: invokevirtual #685                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      32: aload_0
+      33: invokevirtual #689                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      36: aload_0
+      37: invokevirtual #692                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getFallDistance:()F
+      40: aload_0
+      41: invokevirtual #693                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+      44: invokeinterface #697,  6          // InterfaceMethod dev/architectury/event/events/common/InteractionEvent$FarmlandTrample.trample:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;FLnet/minecraft/world/entity/Entity;)Ldev/architectury/event/EventResult;
+      49: invokevirtual #701                // Method dev/architectury/event/EventResult.value:()Ljava/lang/Boolean;
+      52: ifnull        60
+      55: aload_0
+      56: iconst_1
+      57: invokevirtual #702                // Method net/neoforged/neoforge/event/level/BlockEvent$FarmlandTrampleEvent.setCanceled:(Z)V
+      60: return
+
+  public static void eventLivingSpawnEvent(net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent);
+    Code:
+       0: getstatic     #708                // Field dev/architectury/event/events/common/EntityEvent.LIVING_CHECK_SPAWN:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #150                // class dev/architectury/event/events/common/EntityEvent$LivingCheckSpawn
+      11: aload_0
+      12: invokevirtual #713                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getEntity:()Lnet/minecraft/world/entity/Mob;
+      15: aload_0
+      16: invokevirtual #716                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getLevel:()Lnet/minecraft/world/level/ServerLevelAccessor;
+      19: aload_0
+      20: invokevirtual #720                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getX:()D
+      23: aload_0
+      24: invokevirtual #723                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getY:()D
+      27: aload_0
+      28: invokevirtual #726                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getZ:()D
+      31: aload_0
+      32: invokevirtual #730                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.getSpawnType:()Lnet/minecraft/world/entity/MobSpawnType;
+      35: aconst_null
+      36: invokeinterface #734,  11         // InterfaceMethod dev/architectury/event/events/common/EntityEvent$LivingCheckSpawn.canSpawn:(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/level/BaseSpawner;)Ldev/architectury/event/EventResult;
+      41: astore_1
+      42: aload_1
+      43: invokevirtual #737                // Method dev/architectury/event/EventResult.interruptsFurtherEvaluation:()Z
+      46: ifeq          67
+      49: aload_1
+      50: invokevirtual #740                // Method dev/architectury/event/EventResult.isEmpty:()Z
+      53: ifne          67
+      56: aload_0
+      57: aload_1
+      58: invokevirtual #701                // Method dev/architectury/event/EventResult.value:()Ljava/lang/Boolean;
+      61: invokevirtual #745                // Method java/lang/Boolean.booleanValue:()Z
+      64: invokevirtual #748                // Method net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent.setSpawnCancelled:(Z)V
+      67: return
+
+  public static void event(net.neoforged.neoforge.event.entity.living.AnimalTameEvent);
+    Code:
+       0: getstatic     #754                // Field dev/architectury/event/events/common/EntityEvent.ANIMAL_TAME:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #153                // class dev/architectury/event/events/common/EntityEvent$AnimalTame
+      11: aload_0
+      12: invokevirtual #760                // Method net/neoforged/neoforge/event/entity/living/AnimalTameEvent.getAnimal:()Lnet/minecraft/world/entity/animal/Animal;
+      15: aload_0
+      16: invokevirtual #763                // Method net/neoforged/neoforge/event/entity/living/AnimalTameEvent.getTamer:()Lnet/minecraft/world/entity/player/Player;
+      19: invokeinterface #767,  3          // InterfaceMethod dev/architectury/event/events/common/EntityEvent$AnimalTame.tame:(Lnet/minecraft/world/entity/animal/Animal;Lnet/minecraft/world/entity/player/Player;)Ldev/architectury/event/EventResult;
+      24: astore_1
+      25: aload_0
+      26: aload_1
+      27: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      30: invokevirtual #768                // Method net/neoforged/neoforge/event/entity/living/AnimalTameEvent.setCanceled:(Z)V
+      33: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$ItemCraftedEvent);
+    Code:
+       0: getstatic     #773                // Field dev/architectury/event/events/common/PlayerEvent.CRAFT_ITEM:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #156                // class dev/architectury/event/events/common/PlayerEvent$CraftItem
+      11: aload_0
+      12: invokevirtual #774                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$ItemCraftedEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #778                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$ItemCraftedEvent.getCrafting:()Lnet/minecraft/world/item/ItemStack;
+      19: aload_0
+      20: invokevirtual #782                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$ItemCraftedEvent.getInventory:()Lnet/minecraft/world/Container;
+      23: invokeinterface #786,  4          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$CraftItem.craft:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/Container;)V
+      28: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$ItemSmeltedEvent);
+    Code:
+       0: getstatic     #791                // Field dev/architectury/event/events/common/PlayerEvent.SMELT_ITEM:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #162                // class dev/architectury/event/events/common/PlayerEvent$SmeltItem
+      11: aload_0
+      12: invokevirtual #792                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$ItemSmeltedEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #795                // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$ItemSmeltedEvent.getSmelting:()Lnet/minecraft/world/item/ItemStack;
+      19: invokeinterface #799,  3          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$SmeltItem.smelt:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/item/ItemStack;)V
+      24: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent$Pre);
+    Code:
+       0: getstatic     #804                // Field dev/architectury/event/events/common/PlayerEvent.PICKUP_ITEM_PRE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #168                // class dev/architectury/event/events/common/PlayerEvent$PickupItemPredicate
+      11: aload_0
+      12: invokevirtual #806                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Pre.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #810                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Pre.getItemEntity:()Lnet/minecraft/world/entity/item/ItemEntity;
+      19: aload_0
+      20: invokevirtual #810                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Pre.getItemEntity:()Lnet/minecraft/world/entity/item/ItemEntity;
+      23: invokevirtual #815                // Method net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+      26: invokeinterface #819,  4          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PickupItemPredicate.canPickup:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/item/ItemEntity;Lnet/minecraft/world/item/ItemStack;)Ldev/architectury/event/EventResult;
+      31: astore_1
+      32: aload_1
+      33: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      36: ifeq          49
+      39: aload_0
+      40: getstatic     #825                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      43: invokevirtual #829                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Pre.setCanPickup:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      46: goto          63
+      49: aload_1
+      50: invokevirtual #832                // Method dev/architectury/event/EventResult.isTrue:()Z
+      53: ifeq          63
+      56: aload_0
+      57: getstatic     #835                // Field net/neoforged/neoforge/common/util/TriState.TRUE:Lnet/neoforged/neoforge/common/util/TriState;
+      60: invokevirtual #829                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Pre.setCanPickup:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      63: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent$Post);
+    Code:
+       0: getstatic     #840                // Field dev/architectury/event/events/common/PlayerEvent.PICKUP_ITEM_POST:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #175                // class dev/architectury/event/events/common/PlayerEvent$PickupItem
+      11: aload_0
+      12: invokevirtual #841                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Post.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #842                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Post.getItemEntity:()Lnet/minecraft/world/entity/item/ItemEntity;
+      19: aload_0
+      20: invokevirtual #845                // Method net/neoforged/neoforge/event/entity/player/ItemEntityPickupEvent$Post.getCurrentStack:()Lnet/minecraft/world/item/ItemStack;
+      23: invokeinterface #849,  4          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$PickupItem.pickup:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/item/ItemEntity;Lnet/minecraft/world/item/ItemStack;)V
+      28: return
+
+  public static void event(net.neoforged.neoforge.event.entity.item.ItemTossEvent);
+    Code:
+       0: getstatic     #854                // Field dev/architectury/event/events/common/PlayerEvent.DROP_ITEM:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #180                // class dev/architectury/event/events/common/PlayerEvent$DropItem
+      11: aload_0
+      12: invokevirtual #857                // Method net/neoforged/neoforge/event/entity/item/ItemTossEvent.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #859                // Method net/neoforged/neoforge/event/entity/item/ItemTossEvent.getEntity:()Lnet/minecraft/world/entity/item/ItemEntity;
+      19: invokeinterface #863,  3          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$DropItem.drop:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/item/ItemEntity;)Ldev/architectury/event/EventResult;
+      24: pop
+      25: return
+
+  public static void eventPlayerContainerEvent(net.neoforged.neoforge.event.entity.player.PlayerContainerEvent$Open);
+    Code:
+       0: getstatic     #869                // Field dev/architectury/event/events/common/PlayerEvent.OPEN_MENU:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #183                // class dev/architectury/event/events/common/PlayerEvent$OpenMenu
+      11: aload_0
+      12: invokevirtual #870                // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Open.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #874                // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Open.getContainer:()Lnet/minecraft/world/inventory/AbstractContainerMenu;
+      19: invokeinterface #878,  3          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$OpenMenu.open:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+      24: return
+
+  public static void eventPlayerContainerEvent(net.neoforged.neoforge.event.entity.player.PlayerContainerEvent$Close);
+    Code:
+       0: getstatic     #883                // Field dev/architectury/event/events/common/PlayerEvent.CLOSE_MENU:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #191                // class dev/architectury/event/events/common/PlayerEvent$CloseMenu
+      11: aload_0
+      12: invokevirtual #884                // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Close.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #885                // Method net/neoforged/neoforge/event/entity/player/PlayerContainerEvent$Close.getContainer:()Lnet/minecraft/world/inventory/AbstractContainerMenu;
+      19: invokeinterface #888,  3          // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$CloseMenu.close:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+      24: return
+
+  public static void eventPlayerInteractEvent(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickItem);
+    Code:
+       0: getstatic     #894                // Field dev/architectury/event/events/common/InteractionEvent.RIGHT_CLICK_ITEM:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #197                // class dev/architectury/event/events/common/InteractionEvent$RightClickItem
+      11: aload_0
+      12: invokevirtual #895                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #899                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.getHand:()Lnet/minecraft/world/InteractionHand;
+      19: invokeinterface #903,  3          // InterfaceMethod dev/architectury/event/events/common/InteractionEvent$RightClickItem.click:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Ldev/architectury/event/CompoundEventResult;
+      24: astore_1
+      25: aload_1
+      26: invokevirtual #908                // Method dev/architectury/event/CompoundEventResult.isPresent:()Z
+      29: ifeq          48
+      32: aload_0
+      33: iconst_1
+      34: invokevirtual #909                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCanceled:(Z)V
+      37: aload_0
+      38: aload_1
+      39: invokevirtual #912                // Method dev/architectury/event/CompoundEventResult.result:()Ldev/architectury/event/EventResult;
+      42: invokevirtual #916                // Method dev/architectury/event/EventResult.asMinecraft:()Lnet/minecraft/world/InteractionResult;
+      45: invokevirtual #920                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickItem.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      48: return
+
+  public static void eventPlayerInteractEvent(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    Code:
+       0: getstatic     #927                // Field dev/architectury/event/events/common/InteractionEvent.RIGHT_CLICK_BLOCK:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #204                // class dev/architectury/event/events/common/InteractionEvent$RightClickBlock
+      11: aload_0
+      12: invokevirtual #928                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #929                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      19: aload_0
+      20: invokevirtual #930                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getPos:()Lnet/minecraft/core/BlockPos;
+      23: aload_0
+      24: invokevirtual #934                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getFace:()Lnet/minecraft/core/Direction;
+      27: invokeinterface #937,  5          // InterfaceMethod dev/architectury/event/events/common/InteractionEvent$RightClickBlock.click:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Ldev/architectury/event/EventResult;
+      32: astore_1
+      33: aload_1
+      34: invokevirtual #938                // Method dev/architectury/event/EventResult.isPresent:()Z
+      37: ifeq          67
+      40: aload_0
+      41: iconst_1
+      42: invokevirtual #939                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+      45: aload_0
+      46: aload_1
+      47: invokevirtual #916                // Method dev/architectury/event/EventResult.asMinecraft:()Lnet/minecraft/world/InteractionResult;
+      50: invokevirtual #940                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      53: aload_0
+      54: getstatic     #825                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      57: invokevirtual #943                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setUseBlock:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      60: aload_0
+      61: getstatic     #825                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      64: invokevirtual #946                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setUseItem:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      67: return
+
+  public static void eventPlayerInteractEvent(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$EntityInteract);
+    Code:
+       0: getstatic     #951                // Field dev/architectury/event/events/common/InteractionEvent.INTERACT_ENTITY:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #209                // class dev/architectury/event/events/common/InteractionEvent$InteractEntity
+      11: aload_0
+      12: invokevirtual #952                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #955                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getTarget:()Lnet/minecraft/world/entity/Entity;
+      19: aload_0
+      20: invokevirtual #956                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.getHand:()Lnet/minecraft/world/InteractionHand;
+      23: invokeinterface #960,  4          // InterfaceMethod dev/architectury/event/events/common/InteractionEvent$InteractEntity.interact:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/InteractionHand;)Ldev/architectury/event/EventResult;
+      28: astore_1
+      29: aload_1
+      30: invokevirtual #938                // Method dev/architectury/event/EventResult.isPresent:()Z
+      33: ifeq          49
+      36: aload_0
+      37: iconst_1
+      38: invokevirtual #961                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCanceled:(Z)V
+      41: aload_0
+      42: aload_1
+      43: invokevirtual #916                // Method dev/architectury/event/EventResult.asMinecraft:()Lnet/minecraft/world/InteractionResult;
+      46: invokevirtual #962                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      49: return
+
+  public static void eventPlayerInteractEvent(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$LeftClickBlock);
+    Code:
+       0: aload_0
+       1: invokevirtual #968                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getAction:()Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action;
+       4: getstatic     #972                // Field net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action.START:Lnet/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock$Action;
+       7: if_acmpeq     11
+      10: return
+      11: getstatic     #975                // Field dev/architectury/event/events/common/InteractionEvent.LEFT_CLICK_BLOCK:Ldev/architectury/event/Event;
+      14: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      19: checkcast     #221                // class dev/architectury/event/events/common/InteractionEvent$LeftClickBlock
+      22: aload_0
+      23: invokevirtual #976                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      26: aload_0
+      27: invokevirtual #977                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      30: aload_0
+      31: invokevirtual #978                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getPos:()Lnet/minecraft/core/BlockPos;
+      34: aload_0
+      35: invokevirtual #979                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.getFace:()Lnet/minecraft/core/Direction;
+      38: invokeinterface #980,  5          // InterfaceMethod dev/architectury/event/events/common/InteractionEvent$LeftClickBlock.click:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Ldev/architectury/event/EventResult;
+      43: astore_1
+      44: aload_1
+      45: invokevirtual #938                // Method dev/architectury/event/EventResult.isPresent:()Z
+      48: ifeq          102
+      51: aload_0
+      52: iconst_1
+      53: invokevirtual #981                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setCanceled:(Z)V
+      56: aload_0
+      57: aload_1
+      58: invokevirtual #701                // Method dev/architectury/event/EventResult.value:()Ljava/lang/Boolean;
+      61: invokevirtual #745                // Method java/lang/Boolean.booleanValue:()Z
+      64: ifeq          73
+      67: getstatic     #835                // Field net/neoforged/neoforge/common/util/TriState.TRUE:Lnet/neoforged/neoforge/common/util/TriState;
+      70: goto          76
+      73: getstatic     #825                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      76: invokevirtual #982                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setUseBlock:(Lnet/neoforged/neoforge/common/util/TriState;)V
+      79: aload_0
+      80: aload_1
+      81: invokevirtual #701                // Method dev/architectury/event/EventResult.value:()Ljava/lang/Boolean;
+      84: invokevirtual #745                // Method java/lang/Boolean.booleanValue:()Z
+      87: ifeq          96
+      90: getstatic     #835                // Field net/neoforged/neoforge/common/util/TriState.TRUE:Lnet/neoforged/neoforge/common/util/TriState;
+      93: goto          99
+      96: getstatic     #825                // Field net/neoforged/neoforge/common/util/TriState.FALSE:Lnet/neoforged/neoforge/common/util/TriState;
+      99: invokevirtual #983                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$LeftClickBlock.setUseItem:(Lnet/neoforged/neoforge/common/util/TriState;)V
+     102: return
+
+  public static void event(net.neoforged.neoforge.event.level.BlockEvent$BreakEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #986                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+       4: instanceof    #408                // class net/minecraft/server/level/ServerPlayer
+       7: ifeq          72
+      10: aload_0
+      11: invokevirtual #987                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      14: instanceof    #319                // class net/minecraft/world/level/Level
+      17: ifeq          72
+      20: getstatic     #990                // Field dev/architectury/event/events/common/BlockEvent.BREAK:Ldev/architectury/event/Event;
+      23: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      28: checkcast     #226                // class dev/architectury/event/events/common/BlockEvent$Break
+      31: aload_0
+      32: invokevirtual #987                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      35: checkcast     #319                // class net/minecraft/world/level/Level
+      38: aload_0
+      39: invokevirtual #991                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      42: aload_0
+      43: invokevirtual #992                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      46: aload_0
+      47: invokevirtual #986                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      50: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      53: aconst_null
+      54: invokeinterface #996,  6          // InterfaceMethod dev/architectury/event/events/common/BlockEvent$Break.breakBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerPlayer;Ldev/architectury/utils/value/IntValue;)Ldev/architectury/event/EventResult;
+      59: astore_1
+      60: aload_1
+      61: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      64: ifeq          72
+      67: aload_0
+      68: iconst_1
+      69: invokevirtual #997                // Method net/neoforged/neoforge/event/level/BlockEvent$BreakEvent.setCanceled:(Z)V
+      72: return
+
+  public static void event(net.neoforged.neoforge.event.level.BlockEvent$EntityPlaceEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #1000               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #319                // class net/minecraft/world/level/Level
+       7: ifeq          58
+      10: getstatic     #1003               // Field dev/architectury/event/events/common/BlockEvent.PLACE:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #234                // class dev/architectury/event/events/common/BlockEvent$Place
+      21: aload_0
+      22: invokevirtual #1000               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      25: checkcast     #319                // class net/minecraft/world/level/Level
+      28: aload_0
+      29: invokevirtual #1004               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.getPos:()Lnet/minecraft/core/BlockPos;
+      32: aload_0
+      33: invokevirtual #1005               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+      36: aload_0
+      37: invokevirtual #1006               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.getEntity:()Lnet/minecraft/world/entity/Entity;
+      40: invokeinterface #1010,  5         // InterfaceMethod dev/architectury/event/events/common/BlockEvent$Place.placeBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/entity/Entity;)Ldev/architectury/event/EventResult;
+      45: astore_1
+      46: aload_1
+      47: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      50: ifeq          58
+      53: aload_0
+      54: iconst_1
+      55: invokevirtual #1011               // Method net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent.setCanceled:(Z)V
+      58: return
+
+  public static void event(net.neoforged.neoforge.event.server.ServerAboutToStartEvent);
+    Code:
+       0: getstatic     #1016               // Field dev/architectury/event/events/common/LifecycleEvent.SERVER_BEFORE_START:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #29                 // class dev/architectury/event/events/common/LifecycleEvent$ServerState
+      11: aload_0
+      12: invokevirtual #1019               // Method net/neoforged/neoforge/event/server/ServerAboutToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      15: invokeinterface #348,  2          // InterfaceMethod dev/architectury/event/events/common/LifecycleEvent$ServerState.stateChanged:(Ljava/lang/Object;)V
+      20: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.PlayerEvent$PlayerChangedDimensionEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #1022               // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerChangedDimensionEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: instanceof    #408                // class net/minecraft/server/level/ServerPlayer
+       7: ifeq          41
+      10: getstatic     #1025               // Field dev/architectury/event/events/common/PlayerEvent.CHANGE_DIMENSION:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #240                // class dev/architectury/event/events/common/PlayerEvent$ChangeDimension
+      21: aload_0
+      22: invokevirtual #1022               // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerChangedDimensionEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      25: checkcast     #408                // class net/minecraft/server/level/ServerPlayer
+      28: aload_0
+      29: invokevirtual #1029               // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerChangedDimensionEvent.getFrom:()Lnet/minecraft/resources/ResourceKey;
+      32: aload_0
+      33: invokevirtual #1032               // Method net/neoforged/neoforge/event/entity/player/PlayerEvent$PlayerChangedDimensionEvent.getTo:()Lnet/minecraft/resources/ResourceKey;
+      36: invokeinterface #1036,  4         // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$ChangeDimension.change:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;)V
+      41: return
+
+  public static void eventChunkDataEvent(net.neoforged.neoforge.event.level.ChunkDataEvent$Save);
+    Code:
+       0: aload_0
+       1: invokevirtual #1040               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Save.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+       4: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+       7: ifeq          41
+      10: getstatic     #1043               // Field dev/architectury/event/events/common/ChunkEvent.SAVE_DATA:Ldev/architectury/event/Event;
+      13: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      18: checkcast     #247                // class dev/architectury/event/events/common/ChunkEvent$SaveData
+      21: aload_0
+      22: invokevirtual #1047               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Save.getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+      25: aload_0
+      26: invokevirtual #1040               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Save.getLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      29: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      32: aload_0
+      33: invokevirtual #1051               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Save.getData:()Lnet/minecraft/nbt/CompoundTag;
+      36: invokeinterface #1055,  4         // InterfaceMethod dev/architectury/event/events/common/ChunkEvent$SaveData.save:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/nbt/CompoundTag;)V
+      41: return
+
+  public static void eventChunkDataEvent(net.neoforged.neoforge.event.level.ChunkDataEvent$Load);
+    Code:
+       0: aload_0
+       1: invokevirtual #1058               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Load.getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+       4: invokevirtual #1061               // Method net/minecraft/world/level/chunk/ChunkAccess.getLevel:()Lnet/minecraft/world/level/Level;
+       7: astore_1
+       8: aload_1
+       9: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+      12: ifne          32
+      15: aload_0
+      16: instanceof    #9                  // class dev/architectury/event/forge/EventHandlerImplCommon$LevelEventAttachment
+      19: ifeq          32
+      22: aload_0
+      23: checkcast     #9                  // class dev/architectury/event/forge/EventHandlerImplCommon$LevelEventAttachment
+      26: invokeinterface #1064,  1         // InterfaceMethod dev/architectury/event/forge/EventHandlerImplCommon$LevelEventAttachment.architectury$getAttachedLevel:()Lnet/minecraft/world/level/LevelAccessor;
+      31: astore_1
+      32: getstatic     #1069               // Field dev/architectury/event/events/common/ChunkEvent.LOAD_DATA:Ldev/architectury/event/Event;
+      35: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+      40: checkcast     #255                // class dev/architectury/event/events/common/ChunkEvent$LoadData
+      43: aload_0
+      44: invokevirtual #1058               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Load.getChunk:()Lnet/minecraft/world/level/chunk/ChunkAccess;
+      47: aload_1
+      48: instanceof    #328                // class net/minecraft/server/level/ServerLevel
+      51: ifeq          61
+      54: aload_1
+      55: checkcast     #328                // class net/minecraft/server/level/ServerLevel
+      58: goto          62
+      61: aconst_null
+      62: aload_0
+      63: invokevirtual #1070               // Method net/neoforged/neoforge/event/level/ChunkDataEvent$Load.getData:()Lnet/minecraft/nbt/CompoundTag;
+      66: invokeinterface #1073,  4         // InterfaceMethod dev/architectury/event/events/common/ChunkEvent$LoadData.load:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/nbt/CompoundTag;)V
+      71: return
+
+  public static void event(net.neoforged.neoforge.event.LootTableLoadEvent);
+    Code:
+       0: getstatic     #1080               // Field dev/architectury/event/events/common/LootEvent.MODIFY_LOOT_TABLE:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #258                // class dev/architectury/event/events/common/LootEvent$ModifyLootTable
+      11: getstatic     #1086               // Field net/minecraft/core/registries/Registries.LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+      14: aload_0
+      15: invokevirtual #1092               // Method net/neoforged/neoforge/event/LootTableLoadEvent.getName:()Lnet/minecraft/resources/ResourceLocation;
+      18: invokestatic  #1098               // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      21: new           #1100               // class dev/architectury/event/forge/LootTableModificationContextImpl
+      24: dup
+      25: aload_0
+      26: invokevirtual #1104               // Method net/neoforged/neoforge/event/LootTableLoadEvent.getTable:()Lnet/minecraft/world/level/storage/loot/LootTable;
+      29: invokespecial #1107               // Method dev/architectury/event/forge/LootTableModificationContextImpl."<init>":(Lnet/minecraft/world/level/storage/loot/LootTable;)V
+      32: iconst_1
+      33: invokeinterface #1111,  4         // InterfaceMethod dev/architectury/event/events/common/LootEvent$ModifyLootTable.modifyLootTable:(Lnet/minecraft/resources/ResourceKey;Ldev/architectury/event/events/common/LootEvent$LootTableModificationContext;Z)V
+      38: return
+
+  public static void event(net.neoforged.neoforge.event.entity.player.AttackEntityEvent);
+    Code:
+       0: getstatic     #1116               // Field dev/architectury/event/events/common/PlayerEvent.ATTACK_ENTITY:Ldev/architectury/event/Event;
+       3: invokeinterface #296,  1          // InterfaceMethod dev/architectury/event/Event.invoker:()Ljava/lang/Object;
+       8: checkcast     #266                // class dev/architectury/event/events/common/PlayerEvent$AttackEntity
+      11: aload_0
+      12: invokevirtual #1119               // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      15: aload_0
+      16: invokevirtual #1119               // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      19: invokevirtual #1121               // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+      22: aload_0
+      23: invokevirtual #1122               // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getTarget:()Lnet/minecraft/world/entity/Entity;
+      26: aload_0
+      27: invokevirtual #1119               // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+      30: invokevirtual #1125               // Method net/minecraft/world/entity/player/Player.getUsedItemHand:()Lnet/minecraft/world/InteractionHand;
+      33: aconst_null
+      34: invokeinterface #1129,  6         // InterfaceMethod dev/architectury/event/events/common/PlayerEvent$AttackEntity.attack:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/EntityHitResult;)Ldev/architectury/event/EventResult;
+      39: astore_1
+      40: aload_1
+      41: invokevirtual #469                // Method dev/architectury/event/EventResult.isFalse:()Z
+      44: ifeq          52
+      47: aload_0
+      48: iconst_1
+      49: invokevirtual #1130               // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.setCanceled:(Z)V
+      52: return
+}

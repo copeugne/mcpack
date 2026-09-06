@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 112 of 136. The exact queue below has 24 open rows.
+Supported provider dispositions: 113 of 136. The exact queue below has 23 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -629,7 +629,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `aethersdelight-0.1.4.2-1.21.1.jar` | `aethers-delight-provider` (13d2013), test_aethers_delight_provider_scope.py | RESOLVED: Ore, plant and food/item content, including both packaged compatibility data packs. No independent structure family. Full disposition below. |
 | `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `architectury-13.0.8-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `architectury-13.0.8-neoforge.jar` | d943fcbb entry/hooks; 8ed7b7ec event/biome delegates; 4a879ad8 spawn synchronization. | RESOLVED: consumer event, extension and biome APIs, no independent generated family. See Architectury membership closure. |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
 | `azurelibarmor-neo-1.21.1-3.1.2.jar` | Sources a37e5b08 and 57ea6b5c; test_small_utility_provider_scope.py | RESOLVED: Item animation identity, synchronization and rendering support; no independent family. See AzureLib Armor disposition below. |
 | `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7362,3 +7362,35 @@ scoped Ruff/Basedpyright pass after adding an explicit type to parsed metadata.
 Both captures reproduce exactly using the commands in their source READMEs.
 Whole providers: 112 resolved, 24 open. Working groups remain 410. This is a
 membership disposition, not the complete Item 8 attribute or exit gate.
+
+
+## Architectury membership closure
+
+Exact archive architectury-13.0.8-neoforge.jar, SHA-256
+5ec578f814e8cca87aeffa6e424032e78d9ea5ea6b603dd834c2dc13c31141ee.
+Complete payload: 382 classes and eight metadata/configuration/icon files.
+No packaged data, assets, templates, services or nested archives.
+
+Sources d943fcbb, 8ed7b7ec and 4a879ad8 retain the sole automatic entry,
+all 17 common hooks, the plugin and startup delegates. The plugin returns
+the already declared NeoForge chunk-serializer hook, not an additional family.
+Hooks attach consumer extension APIs to items, entities and fluids, forward
+lightning/falling-block/bucket events, support armor/creative tabs and attach
+level context to chunk events. Preserve consumer behavior effects for attribution.
+
+Common startup registers native event forwarding and consumer setup callbacks.
+Server event registration returns without additional handlers. Biome startup
+registers the none_biome_mod_codec serializer. Its modifier applies predicate
+and consumer pairs from additions, removals, replacements and postprocessing
+lists; all four lists start empty. This supports consumer-supplied biome changes
+and does not supply an independent generated family. Entity-spawn initialization
+registers a client-bound payload type; packet creation takes an existing entity
+and server tracker. It synchronizes that entity rather than adding a generator.
+
+No independent generated family. Do not continue generic event, biome wrapper,
+packet codec or networking internals for membership. Full payload, entry/hook
+coverage and all 28 source identities are bound by:
+`uv run pytest -q tests/item8/test_architectury_provider_scope.py`. The focused
+test, scoped Ruff and Basedpyright pass. All three captures reproduce exactly
+using commands recorded in their source READMEs. Whole providers: 113 resolved,
+23 open. Working family groups remain 410; Item 8 is not complete.
