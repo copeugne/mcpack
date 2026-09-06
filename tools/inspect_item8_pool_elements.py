@@ -2135,6 +2135,7 @@ CLASSES: tuple[str, ...] = (
     "com/simibubi/create/content/schematics/ServerSchematicLoader.class",
     "com/simibubi/create/foundation/data/RuntimeDataGenerator.class",
     "com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.class",
+    "dev/engine_room/flywheel/impl/FlywheelNeoForge.class",
     "com/simibubi/create/AllKeys.class",
     "com/simibubi/create/CreateClient.class",
     "com/simibubi/create/api/registry/CreateBuiltInRegistries.class",
@@ -2253,6 +2254,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar",
         "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar",
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
@@ -2269,6 +2271,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/flywheel-neoforge-1.21.1-1.0.6.jar": (
+            "create-1.21.1-6.0.10.jar",
+            "31dda15c205eb596d3b3449ef03f6af7363a6cd35b3da4bfe916b304f9e5337e",
+        ),
         "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar": (
             "ubesdelight-neoforge-1.21.1-0.4.13.jar",
             "5dc6cc72e507c3fb5b5bac59e79da2aee74a9d1345dbc48e0ccecd608ac9286a",
