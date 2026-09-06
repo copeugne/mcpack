@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches decisions delivered at f7a27e9a and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: the 23 Voyager names below.
+All their comparison views are already delivered and inspected.
+
 Cathedral and eight facility decisions now resolve nine explicit provisionals.
 Working groups remain 406. Explicit remainder: 23. All their layout views are
 already inspected and delivered at 6178f004; no recapture is needed. Sixteen affected
