@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 116 of 136. The exact queue below has 20 open rows.
+Supported provider dispositions: 117 of 136. The exact queue below has 19 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -632,7 +632,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `architectury-13.0.8-neoforge.jar` | d943fcbb entry/hooks; 8ed7b7ec event/biome delegates; 4a879ad8 spawn synchronization. | RESOLVED: consumer event, extension and biome APIs, no independent generated family. See Architectury membership closure. |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
 | `azurelibarmor-neo-1.21.1-3.1.2.jar` | Sources a37e5b08 and 57ea6b5c; test_small_utility_provider_scope.py | RESOLVED: Item animation identity, synchronization and rendering support; no independent family. See AzureLib Armor disposition below. |
-| `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `bclib-21.0.24.jar` | Reused integration dispatch, generation entry, provider entry, post-init, common hooks and nested MixinExtras captures | RESOLVED: Shared consumer generation, block/item and lifecycle APIs. No independent family. Preserve seed/write-boundary effects described below. |
 | `bettercombat-neoforge-2.3.2+1.21.1.jar` | aea34a1e entries; c6a937e0 resources; 60b953d3 team compatibility; reused Tiny Config. | RESOLVED: player combat and weapon attributes, no independent generated family. See Better Combat membership closure. |
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
@@ -7497,3 +7497,61 @@ Scoped Ruff/Basedpyright pass after wrapping one long assertion. Four captures
 reproduce exactly using their README commands. Whole providers: 116 resolved,
 20 open. Working groups remain 410; 100 explicitly provisional Moog records
 still require canonical decisions. Item 8 is not complete.
+
+## BCLib whole-provider membership closure
+
+The frozen bclib-21.0.24.jar SHA-256 is
+`a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093`.
+It contains 627 classes, 103 client assets, five data files and eleven other
+metadata/license/nested files. The data consists of disabled recipe configuration
+and four bonemeal block tags. Assets contain rendering patterns, models,
+textures, blockstates, languages, material definitions and icons. There are no
+packaged structure roots, pools or templates contributed by this archive.
+
+Reuse bclib-integration-dispatch for the main entry and conditional integration
+API. Captures 7dae8acd, ccfcb07c and bfdb98bf retain the direct generation entry,
+all nine automatic entries, all 35 common hooks and PostInitAPI. The thirteen
+client-only hooks and empty UI client list declare no plugin or common hooks.
+The 50 retained outer classes bind the entry/hook boundary and the selected
+shared API delegates. The main entry registers consumer block/item, recipe,
+configuration, lifecycle and piece support; datagen registration is separate
+from the frozen runtime content evidence.
+
+TemplatePiece accepts a caller-supplied template or persisted piece NBT, places
+that template and optionally erodes/covers its bounds. It is a piece, not an
+additional family. BetterEnd's already inventoried content remains attributed
+to its actual roots/templates and consumer configuration. PostInitAPI operates
+on existing registered blocks and items and consumer callbacks. Other hooks
+extend existing anvil, recipe, loot-list, lighting, piston, portal, boat,
+elytra, shears and sign behavior, diagnostics and accessors. Do not expand the
+family inventory into audits of those generic gameplay implementations.
+
+Generation effects are retained explicitly: ChunkGeneratorMixin rotates the
+feature seed and resets its counter at biome decoration entry.
+WorldGenRegionMixin replaces ensureCanWrite with an absolute chunk-distance
+check of less than two on both horizontal axes. Neither introduces a family;
+neither is evidence of unchanged generation or general compatibility.
+Lifecycle callbacks handle configuration/data exchange and migration.
+SpawnRuleBuilder registers consumer-supplied entity spawn placements.
+
+Nested MixinExtras is bound by 2f92d5b1. Its archive SHA-256 is
+`9c617719248f8b89847348fc7ea5e705739c147ae5e172551264d225bc9f2507`.
+The GAMELIBRARY contains 503 classes and four manifest/configuration/license/
+annotation-processor files, no packaged content or Minecraft class references.
+Its initialization config declares only a plugin. The plugin initializes
+MixinExtrasBootstrap and returns no additional mixins. This is shared injection
+infrastructure. The failed request for nonexistent nested mod metadata is
+preserved in its capture README; the actual manifest is authoritative.
+
+Reproduce the captures with their README commands. Focused verification:
+`uv run pytest -q tests/item8/test_bclib_provider_scope.py` (two cases).
+The tests bind archive identity, complete payload categories, automatic entries,
+all common hooks and their preserved source bytes, client declarations and the
+nested payload/plugin. Scoped Ruff and Basedpyright pass after correcting test
+assertion style and explicit JSON typing. Independent capture reproductions
+match bytes. No additional measurement system was introduced.
+
+Disposition: no independent generated family. Whole providers: 117 resolved,
+19 open. The 410 working groups and 100 explicitly provisional Moog decisions
+are unchanged. Canonical grouping, required attributes and final Item 8
+review/delivery remain open.

@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+BCLib membership is resolved from reused integration dispatch and 7dae8acd,
+ccfcb07c, bfdb98bf and 2f92d5b1: shared generation/block/item/lifecycle APIs,
+no independent family. All automatic entries/common hooks and nested library
+are bound by two passing focused cases. Preserve feature-seed rotation and
+write-boundary effects; do not reopen generic recipe/network/injection internals.
+Whole providers: 117 resolved, 19 open. Working groups remain 410 and 100
+explicitly provisional Moog records require canonical decisions. Continue with
+WorldWeaver, reusing existing pool and biome-modifier captures. Finish provider
+membership and canonical grouping before detailed attributes. No final Item 8
+gate, review or merge has passed.
+
+
 Polymorph membership is resolved from 0b9f0152, 562005f3, 48f73c41 and e4e27ae2:
 existing-container recipe selection and recipe data, no independent generated
 family. Full payload/entry/hook/service/source binding and scoped checks pass.
