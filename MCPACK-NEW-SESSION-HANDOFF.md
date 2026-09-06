@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+IDAS optional-dependency dispositions need the actual OptionalDependencyStructure
+consumer, which is absent from prior captures. ModAdaptiveStructure also governs
+three existing alternate-pool notes. Select these two exact retained classes with
+the existing extractor. This source gap cannot be resolved from field names alone;
+no new framework, provider survey or measurement is justified. Backlog stays 124
+until the consumer and frozen dependency identities establish dispositions.
+
 Inventory matches b325116a and reproduces exactly. Canonical-note backlog: 124.
 Coverage groups: 405, including excluded/inactive roots. Nonregistry reconciliation
 and required attributes remain open. Next: unresolved dependency and replacement
