@@ -943,6 +943,29 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/LegProcessor.class",
     "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/PottedMushroomProcessor.class",
     "com/yungnickyoung/minecraft/betterwitchhuts/world/processor/WitchCircleProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/BetterFortressesCommon.class",
+    "com/yungnickyoung/minecraft/betterfortresses/BetterFortressesNeoForge.class",
+    "com/yungnickyoung/minecraft/betterfortresses/config/BNFConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterfortresses/mixin/FixMobSpawningMixin.class",
+    "com/yungnickyoung/minecraft/betterfortresses/mixin/LocateVanillaFortressCommandMixin.class",
+    "com/yungnickyoung/minecraft/betterfortresses/module/ConfigModule$General.class",
+    "com/yungnickyoung/minecraft/betterfortresses/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterfortresses/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/IProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/NeoForgeProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterfortresses/services/Services.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/ItemFrameChances.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/ItemFrameProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/BridgeArchProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/LiquidBlockProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/NetherWartProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/PillarProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/RedSandstoneStairsProcessor.class",
+    "com/yungnickyoung/minecraft/betterfortresses/world/processor/StairPillarProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1078,7 +1101,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     and not name.endswith("ConfigModuleNeoforge.class")
                 )
                 verbose |= (
-                    source.name == "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar"
+                    source.name in {
+                        "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+                        "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+                    }
                     and not name.endswith("ConfigGeneralNeoForge.class")
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
