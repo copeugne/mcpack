@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/event/interaction/InteractionEventsRouter.class",
+    "net/fabricmc/fabric/impl/item/EnchantmentUtil.class",
     "net/fabricmc/fabric/mixin/object/builder/AbstractBlockAccessor.class",
     "net/fabricmc/fabric/mixin/object/builder/AbstractBlockSettingsAccessor.class",
     "net/fabricmc/fabric/mixin/object/builder/BlockEntityTypeBuilderMixin.class",
