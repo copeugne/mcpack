@@ -1,0 +1,270 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer.class
+  Last modified Jan 1, 1980; size 2502 bytes
+  SHA-256 checksum 077372c74294032bc4d758964707e3a62790eea12cd39888801986250811f889
+  Compiled from "MixinMinecraftServer.java"
+public abstract class com.ishland.c2me.opts.scheduling.mixin.idle_tasks.autosave.enhanced_autosave.MixinMinecraftServer extends net.minecraft.util.thread.ReentrantBlockableEventLoop<net.minecraft.server.TickTask>
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer
+  super_class: #5                         // net/minecraft/util/thread/ReentrantBlockableEventLoop
+  interfaces: 0, fields: 2, methods: 5, attributes: 3
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer
+    #2 = Class              #1            // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer
+    #3 = Utf8               Lnet/minecraft/util/thread/ReentrantBlockableEventLoop<Lnet/minecraft/server/TickTask;>;
+    #4 = Utf8               net/minecraft/util/thread/ReentrantBlockableEventLoop
+    #5 = Class              #4            // net/minecraft/util/thread/ReentrantBlockableEventLoop
+    #6 = Utf8               MixinMinecraftServer.java
+    #7 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #8 = Utf8               value
+    #9 = Utf8               Lnet/minecraft/server/MinecraftServer;
+   #10 = Utf8               nextTickTimeNanos
+   #11 = Utf8               J
+   #12 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #13 = Utf8               tickRateManager
+   #14 = Utf8               Lnet/minecraft/server/ServerTickRateManager;
+   #15 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #16 = Utf8               haveTime
+   #17 = Utf8               ()Z
+   #18 = Utf8               getAllLevels
+   #19 = Utf8               ()Ljava/lang/Iterable;
+   #20 = Utf8               ()Ljava/lang/Iterable<Lnet/minecraft/server/level/ServerLevel;>;
+   #21 = Utf8               <init>
+   #22 = Utf8               (Ljava/lang/String;)V
+   #23 = Utf8               string
+   #24 = NameAndType        #21:#22       // "<init>":(Ljava/lang/String;)V
+   #25 = Methodref          #5.#24        // net/minecraft/util/thread/ReentrantBlockableEventLoop."<init>":(Ljava/lang/String;)V
+   #26 = Utf8               this
+   #27 = Utf8               Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer;
+   #28 = Utf8               Ljava/lang/String;
+   #29 = Utf8               c2me$shouldKeepSavingChunks
+   #30 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #31 = Utf8               runningTask
+   #32 = NameAndType        #31:#17       // runningTask:()Z
+   #33 = Methodref          #2.#32        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer.runningTask:()Z
+   #34 = Utf8               net/minecraft/Util
+   #35 = Class              #34           // net/minecraft/Util
+   #36 = Utf8               getNanos
+   #37 = Utf8               ()J
+   #38 = NameAndType        #36:#37       // getNanos:()J
+   #39 = Methodref          #35.#38       // net/minecraft/Util.getNanos:()J
+   #40 = NameAndType        #10:#11       // nextTickTimeNanos:J
+   #41 = Fieldref           #2.#40        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer.nextTickTimeNanos:J
+   #42 = Long               1000000l
+   #44 = Utf8               postRunTask
+   #45 = Utf8               (Z)Z
+   #46 = Utf8               original
+   #47 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyReturnValue;
+   #48 = Utf8               method
+   #49 = Utf8               runOneTask
+   #50 = Utf8               at
+   #51 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #52 = Utf8               RETURN
+   #53 = NameAndType        #29:#17       // c2me$shouldKeepSavingChunks:()Z
+   #54 = Methodref          #2.#53        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer.c2me$shouldKeepSavingChunks:()Z
+   #55 = NameAndType        #18:#19       // getAllLevels:()Ljava/lang/Iterable;
+   #56 = Methodref          #2.#55        // com/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer.getAllLevels:()Ljava/lang/Iterable;
+   #57 = Utf8               java/lang/Iterable
+   #58 = Class              #57           // java/lang/Iterable
+   #59 = Utf8               iterator
+   #60 = Utf8               ()Ljava/util/Iterator;
+   #61 = NameAndType        #59:#60       // iterator:()Ljava/util/Iterator;
+   #62 = InterfaceMethodref #58.#61       // java/lang/Iterable.iterator:()Ljava/util/Iterator;
+   #63 = Utf8               java/util/Iterator
+   #64 = Class              #63           // java/util/Iterator
+   #65 = Utf8               hasNext
+   #66 = NameAndType        #65:#17       // hasNext:()Z
+   #67 = InterfaceMethodref #64.#66       // java/util/Iterator.hasNext:()Z
+   #68 = Utf8               next
+   #69 = Utf8               ()Ljava/lang/Object;
+   #70 = NameAndType        #68:#69       // next:()Ljava/lang/Object;
+   #71 = InterfaceMethodref #64.#70       // java/util/Iterator.next:()Ljava/lang/Object;
+   #72 = Utf8               net/minecraft/server/level/ServerLevel
+   #73 = Class              #72           // net/minecraft/server/level/ServerLevel
+   #74 = Utf8               getChunkSource
+   #75 = Utf8               ()Lnet/minecraft/server/level/ServerChunkCache;
+   #76 = NameAndType        #74:#75       // getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+   #77 = Methodref          #73.#76       // net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+   #78 = Utf8               net/minecraft/server/level/ServerChunkCache
+   #79 = Class              #78           // net/minecraft/server/level/ServerChunkCache
+   #80 = Utf8               chunkMap
+   #81 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #82 = NameAndType        #80:#81       // chunkMap:Lnet/minecraft/server/level/ChunkMap;
+   #83 = Fieldref           #79.#82       // net/minecraft/server/level/ServerChunkCache.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+   #84 = Utf8               com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage
+   #85 = Class              #84           // com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage
+   #86 = Utf8               c2me$runOneChunkAutoSave
+   #87 = NameAndType        #86:#17       // c2me$runOneChunkAutoSave:()Z
+   #88 = InterfaceMethodref #85.#87       // com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage.c2me$runOneChunkAutoSave:()Z
+   #89 = Utf8               serverWorld
+   #90 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+   #91 = Utf8               Z
+   #92 = Utf8               RuntimeVisibleAnnotations
+   #93 = Utf8               Signature
+   #94 = Utf8               Code
+   #95 = Utf8               LineNumberTable
+   #96 = Utf8               LocalVariableTable
+   #97 = Utf8               MethodParameters
+   #98 = Utf8               StackMapTable
+   #99 = Utf8               SourceFile
+  #100 = Utf8               RuntimeInvisibleAnnotations
+{
+  private long nextTickTimeNanos;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.server.ServerTickRateManager tickRateManager;
+    descriptor: Lnet/minecraft/server/ServerTickRateManager;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+      1: #15()
+        org.spongepowered.asm.mixin.Final
+
+  protected abstract boolean haveTime();
+    descriptor: ()Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  public abstract java.lang.Iterable<net.minecraft.server.level.ServerLevel> getAllLevels();
+    descriptor: ()Ljava/lang/Iterable;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #20                          // ()Ljava/lang/Iterable<Lnet/minecraft/server/level/ServerLevel;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.opts.scheduling.mixin.idle_tasks.autosave.enhanced_autosave.MixinMinecraftServer(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #25                 // Method net/minecraft/util/thread/ReentrantBlockableEventLoop."<init>":(Ljava/lang/String;)V
+         5: return
+      LineNumberTable:
+        line 29: 0
+        line 30: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer;
+            0       6     1 string   Ljava/lang/String;
+    MethodParameters:
+      Name                           Flags
+      string
+
+  private boolean c2me$shouldKeepSavingChunks();
+    descriptor: ()Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #33                 // Method runningTask:()Z
+         4: ifne          22
+         7: invokestatic  #39                 // Method net/minecraft/Util.getNanos:()J
+        10: aload_0
+        11: getfield      #41                 // Field nextTickTimeNanos:J
+        14: ldc2_w        #42                 // long 1000000l
+        17: lsub
+        18: lcmp
+        19: ifge          26
+        22: iconst_1
+        23: goto          27
+        26: iconst_0
+        27: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 22 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      28     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer;
+    RuntimeVisibleAnnotations:
+      0: #30()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean postRunTask(boolean);
+    descriptor: (Z)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=4, args_size=2
+         0: iload_1
+         1: ifeq          6
+         4: iconst_1
+         5: ireturn
+         6: aload_0
+         7: invokevirtual #54                 // Method c2me$shouldKeepSavingChunks:()Z
+        10: ifeq          65
+        13: aload_0
+        14: invokevirtual #56                 // Method getAllLevels:()Ljava/lang/Iterable;
+        17: invokeinterface #62,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        22: astore_2
+        23: aload_2
+        24: invokeinterface #67,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        29: ifeq          65
+        32: aload_2
+        33: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        38: checkcast     #73                 // class net/minecraft/server/level/ServerLevel
+        41: astore_3
+        42: aload_3
+        43: invokevirtual #77                 // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+        46: getfield      #83                 // Field net/minecraft/server/level/ServerChunkCache.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+        49: checkcast     #85                 // class com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage
+        52: invokeinterface #88,  1           // InterfaceMethod com/ishland/c2me/opts/scheduling/common/idle_tasks/IThreadedAnvilChunkStorage.c2me$runOneChunkAutoSave:()Z
+        57: ifeq          62
+        60: iconst_0
+        61: ireturn
+        62: goto          23
+        65: iconst_0
+        66: ireturn
+      StackMapTable: number_of_entries = 4
+        frame_type = 6 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class java/util/Iterator ]
+        frame_type = 38 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+      LineNumberTable:
+        line 43: 0
+        line 44: 6
+        line 45: 13
+        line 46: 42
+        line 47: 60
+        line 49: 62
+        line 51: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           42      20     3 serverWorld   Lnet/minecraft/server/level/ServerLevel;
+            0      67     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/idle_tasks/autosave/enhanced_autosave/MixinMinecraftServer;
+            0      67     1 original   Z
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#49],#50=[@#51(#8=s#52)])
+        com.llamalad7.mixinextras.injector.ModifyReturnValue(
+          method=["runOneTask"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      original
+}
+Signature: #3                           // Lnet/minecraft/util/thread/ReentrantBlockableEventLoop<Lnet/minecraft/server/TickTask;>;
+SourceFile: "MixinMinecraftServer.java"
+RuntimeInvisibleAnnotations:
+  0: #7(#8=[c#9])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/MinecraftServer;]
+    )

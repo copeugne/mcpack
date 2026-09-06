@@ -1,0 +1,141 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer.class
+  Last modified Jan 1, 1980; size 1494 bytes
+  SHA-256 checksum 7af64733edafc865eefc8e6cf8bfb12dc72a7c6c2714b40f06eaccd472043a64
+  Compiled from "MixinMinecraftServer.java"
+public class com.ishland.c2me.opts.scheduling.mixin.shutdown.MixinMinecraftServer
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 2, attributes: 3
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer
+   #2 = Class              #1             // com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinMinecraftServer.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/MinecraftServer;
+   #9 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+  #10 = Class              #9             // org/spongepowered/asm/mixin/injection/At$Shift
+  #11 = Utf8               org/spongepowered/asm/mixin/injection/At
+  #12 = Class              #11            // org/spongepowered/asm/mixin/injection/At
+  #13 = Utf8               Shift
+  #14 = Utf8               nextTickTimeNanos
+  #15 = Utf8               J
+  #16 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #17 = Utf8               delayedTasksMaxNextTickTimeNanos
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = NameAndType        #18:#19        // "<init>":()V
+  #21 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #22 = Utf8               this
+  #23 = Utf8               Lcom/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer;
+  #24 = Utf8               shutdownBeforeRunTasks
+  #25 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #26 = Utf8               ci
+  #27 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #28 = Utf8               method
+  #29 = Utf8               shutdown
+  #30 = Utf8               at
+  #31 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #32 = Utf8               INVOKE
+  #33 = Utf8               target
+  #34 = Utf8               Lnet/minecraft/server/MinecraftServer;runTasksTillTickEnd()V
+  #35 = Utf8               shift
+  #36 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+  #37 = Utf8               BEFORE
+  #38 = Utf8               net/minecraft/Util
+  #39 = Class              #38            // net/minecraft/Util
+  #40 = Utf8               getNanos
+  #41 = Utf8               ()J
+  #42 = NameAndType        #40:#41        // getNanos:()J
+  #43 = Methodref          #39.#42        // net/minecraft/Util.getNanos:()J
+  #44 = Long               50000000l
+  #46 = NameAndType        #14:#15        // nextTickTimeNanos:J
+  #47 = Fieldref           #2.#46         // com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer.nextTickTimeNanos:J
+  #48 = NameAndType        #17:#15        // delayedTasksMaxNextTickTimeNanos:J
+  #49 = Fieldref           #2.#48         // com/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer.delayedTasksMaxNextTickTimeNanos:J
+  #50 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #51 = Utf8               RuntimeVisibleAnnotations
+  #52 = Utf8               Code
+  #53 = Utf8               LineNumberTable
+  #54 = Utf8               LocalVariableTable
+  #55 = Utf8               MethodParameters
+  #56 = Utf8               InnerClasses
+  #57 = Utf8               SourceFile
+  #58 = Utf8               RuntimeInvisibleAnnotations
+{
+  private long nextTickTimeNanos;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+
+  private long delayedTasksMaxNextTickTimeNanos;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.opts.scheduling.mixin.shutdown.MixinMinecraftServer();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 12: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer;
+
+  private void shutdownBeforeRunTasks(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=2, args_size=2
+         0: aload_0
+         1: aload_0
+         2: invokestatic  #43                 // Method net/minecraft/Util.getNanos:()J
+         5: ldc2_w        #44                 // long 50000000l
+         8: ladd
+         9: dup2_x1
+        10: putfield      #47                 // Field nextTickTimeNanos:J
+        13: putfield      #49                 // Field delayedTasksMaxNextTickTimeNanos:J
+        16: return
+      LineNumberTable:
+        line 21: 0
+        line 22: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/shutdown/MixinMinecraftServer;
+            0      17     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #27(#28=[s#29],#30=[@#31(#7=s#32,#33=s#34,#35=e#36.#37)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["shutdown"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/MinecraftServer;runTasksTillTickEnd()V"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.BEFORE
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+}
+InnerClasses:
+  public static final #13= #10 of #12;    // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
+SourceFile: "MixinMinecraftServer.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/MinecraftServer;]
+    )
