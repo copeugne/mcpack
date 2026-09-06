@@ -9721,3 +9721,31 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-bamboo-cache-r1.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
 ```
+# AdoraBuild End and Nether house relationships (2026-09-07)
+
+Decision 03cd8b3d resolves nine roots from the former house group using existing
+abfaa574 views, contents and complete custom-generator definitions. Raised End
+rooms (2) are distinct from low End houses (3). Crimson tower (1), crimson hall
+(1) and warped-house variants (2) preserve their different layouts and authored
+inhabitants. All original variants and root identities remain intact. No new
+capture or measurement system is needed. The 35 Overworld house roots remain open.
+
+The focused AdoraBuild source-binding case and scoped code checks pass. Two fresh
+inventory runs are byte-identical; changes are limited to house and the five
+separated designs plus the decision input hash. Coverage: 887 roots once, 421
+working groups. Canonical-note backlog: 60 (IDAS 59, Overworld house 1). Required
+attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+Inventory SHA-256:
+76f24562c146a09f38f08a3109ee7d61aba15675c51cdd467e684725be650e76.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-dimensional-houses-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+cmp evidence/raw/item8/inventory-adora-dimensional-houses-r1.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+```
