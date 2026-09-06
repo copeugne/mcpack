@@ -704,6 +704,35 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+The complete parent payload is now partitioned by the existing provider test:
+6,364 non-directory files comprise 1,179 classes, 3,577 assets, 1,589 data files
+and nineteen other files. The latter are the exact metadata/license/icon files,
+two already inspected embedded libraries and nine darker-rope texture-pack
+files. No optional data pack is hidden in that resource-pack directory.
+The test records every data category and fails on an unexplained category or
+changed count, under the frozen whole-archive hash. The twenty-nine worldgen
+files and eighteen templates reuse the already reconciled roots, sets, pools,
+processor, configured features and placed features. Five biome modifiers were
+already bound separately. This does not create another family denominator.
+
+The less conventional data folders also have explicit roles: six placeable-book
+definitions describe item placement; Trinkets entities/slots describe player
+equipment slots; Moonlight files describe 109 soft fluids, 34 map markers and
+21 trade-folder files. The parsed catalog contains twenty trade JSON files;
+the remaining file is cartographer/example.json.disabled. Two other nonstandard
+data files are flute_songs/midi_converter.py (interactive note conversion) and
+flute_songs/revenge.json1 (song notes). The test binds the exact three-file
+exception set. The converter was inspected, not executed or installed as a
+server workflow. A strict-JSON exploratory read rejected a commented trade;
+the already accepted commented-JSON catalog was reused, without changing parsers.
+
+This closes packaged file accounting, not all executable roles. The annotation
+candidate set is bound to SupplementariesForge, SupplementariesForgeClient and
+PicklePlayer; the latter two still need their explicit client-side disposition.
+Remaining common/mixin hooks must also be reconciled. Six focused cases passed
+(2.20s); after adding the nonstandard-file assertion, its affected case passed
+(0.25s). Scoped Ruff and Basedpyright pass. Census remains 78 resolved, 58 open.
+
 MixinSquared's bundled-library role is resolved. Source 88d7f4f (extractor
 27c648b) retains four wrapper and four core entry classes, independently
 reproduced. Wrapper manifest SHA-256:
