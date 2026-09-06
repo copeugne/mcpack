@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+The final pending Voyager landmark comparison selects exactly 32 architecture
+templates for the 31 non-cathedral decisions. Five fixed sheets reuse the existing
+renderer; the selected-path pilot and scoped checks pass. No broader provider
+survey or measurement system is added. Cathedral membership can use its existing
+connected component graph; loot-reference disposition remains an attribute task.
+
 Inventory matches house decisions delivered at cf877811 and reproduces exactly.
 Working groups: 406. Explicit provisional remainder: the 32 Voyager names below.
 

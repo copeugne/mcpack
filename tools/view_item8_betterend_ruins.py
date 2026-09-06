@@ -60,7 +60,8 @@ def parse_args() -> argparse.Namespace:
     _ = parser.add_argument("--output", type=Path, required=True)
     selection = parser.add_mutually_exclusive_group()
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
-                 "--nether-landmarks", "--voyager-small", "--voyager-buildings"):
+                 "--nether-landmarks", "--voyager-small", "--voyager-buildings",
+                 "--voyager-landmarks"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -70,7 +71,8 @@ def main() -> None:
     args = parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
-    voyager = cast("bool", args.voyager_small) or cast("bool", args.voyager_buildings)
+    voyager = (cast("bool", args.voyager_small) or cast("bool", args.voyager_buildings)
+               or cast("bool", args.voyager_landmarks))
     nether_houses = cast("bool", args.nether_houses)
     nether_arenas = cast("bool", args.nether_arenas)
     nether_landmarks = cast("bool", args.nether_landmarks)
@@ -156,6 +158,23 @@ def main() -> None:
                            "ocean_tower", "small_pillager_tower"],
                 "nether_towers": ["houses/large_warped_tower", "houses/large_warped_tower_top",
                                   "houses/red_tower", "houses/red_tower_top"],
+            } if cast("bool", args.voyager_buildings) else {
+                "facilities": ["beach_bar", "other_decoration/crimson_enchanting_table",
+                               "other_decoration/desert_pump", "horse_pen",
+                               "other_decoration/lamp_chest", "other_decoration/lecturn_garden",
+                               "other_decoration/wheat_grain_bin",
+                               "other_decoration/wooden_wheat_farm"],
+                "ruins": [f"ruins/{n}" for n in
+                          ("castle_ruins", "log_ruin", "ruined_beacon", "small_ruin",
+                           "statue_ruins", "stone_pillars", "tree_monument")],
+                "sculptures": [f"other_decoration/{n}" for n in
+                               ("duck", "mushroom_statue", "nether_devil", "snowy_medium_fossil",
+                                "villager_statue")],
+                "shelters": ["other_decoration/bee_dome", "other_decoration/fox_hut",
+                             "other_decoration/snowy_dog_hut", "nature/large_mushroom"],
+                "landmarks": ["crystal/base", "crystal/lower", "gallows", "railway",
+                              "small_ship", "stone_fountain", "sunzi_gate",
+                              "other_decoration/small_windmill"],
             }
         for biome, names in sheets.items():
             count = len(names)
