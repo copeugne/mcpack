@@ -4,16 +4,62 @@ import gzip
 import hashlib
 import json
 from collections import Counter
+from io import BytesIO
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
 
 from mcpack_evidence.item8_registry import read_registry
+from mcpack_evidence.item8_resource_selection import runtime_mod_ids
 from mcpack_evidence.item8_sources import retained_sources
 from mcpack_evidence.item8_templates import template_summary
 
 if TYPE_CHECKING:
     from pydantic import JsonValue
+
+
+def test_betterend_retained_plugin_and_compatibility_inputs() -> None:
+    log = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(log).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
+    )
+    loaded = runtime_mod_ids(log.decode())
+    assert {"betterend", "bclib"} <= loaded.keys()
+    assert {"byg", "flamboyant", "dye_depot"}.isdisjoint(loaded)
+    sources = retained_sources(Path.cwd())[2:]
+    assert len(sources) == 136
+    service = "META-INF/services/org.betterx.betterend.api.BetterEndPlugin"
+    # ServiceLoader providers must be declared. Include nested and modular declarations.
+    for source in sources:
+        raw = source.path.read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == source.sha256
+        pending = [(source.name, raw)]
+        while pending:
+            label, payload = pending.pop()
+            with ZipFile(BytesIO(payload)) as archive:
+                names = archive.namelist()
+                assert service not in names, label
+                for name in names:
+                    if name.endswith(".jar"):
+                        pending.append((label + "!/" + name, archive.read(name)))
+                    elif name.endswith("module-info.class"):
+                        assert b"org/betterx/betterend/api/BetterEndPlugin" not in (
+                            archive.read(name)
+                        ), label + "!/" + name
+    source = next(s for s in sources if s.name == "bclib-21.0.24.jar")
+    directory = Path("evidence/item-8/sources/bclib-integration-dispatch")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "d085183016dd793119d9f8bbab449fbbc791851dce4ea8244e18da2e9aa4af2c"
+    )
+    with ZipFile(source.path) as archive:
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
 
 
 def test_betterend_packaged_roots_and_remaining_consumers() -> None:
