@@ -7,6 +7,7 @@ import hashlib
 import json
 import subprocess
 from contextlib import ExitStack
+from io import BytesIO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import cast
@@ -1707,6 +1708,14 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/integration/platform/CCCompatImpl.class",
     "net/mehvahdjukaar/supplementaries/integration/platform/CreateCompatImpl.class",
     "net/mehvahdjukaar/supplementaries/integration/platform/QuarkCompatImpl.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinCancellerLoader.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinSquaredMixinConfigPlugin.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinAnnotationAdjusterLoader.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinSquaredMod.class",
+    "com/bawnorton/mixinsquared/MixinSquaredBootstrap.class",
+    "com/bawnorton/mixinsquared/ext/ExtensionRegistrar.class",
+    "com/bawnorton/mixinsquared/canceller/MixinCancellerRegistrar.class",
+    "com/bawnorton/mixinsquared/adjuster/MixinAnnotationAdjusterRegistrar.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1733,13 +1742,23 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
         "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar",
         "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar",
-        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar"])
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar",
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar!/META-INF/jars/MixinSquared-0.3.3.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3",
+        ),
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar!/META-INF/jars/MixinSquared-0.3.3.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "0eaa67fa937cc65ab78a981cd9e4e741d03eaf7236983d7e30818ac99da0632f",
+        ),
         "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar": (
             "supplementaries-neoforge-1.21.1-3.6.8.jar",
             "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed",
@@ -1789,7 +1808,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
             classpath = source.path
             archive_name, archive_sha = source.name, source.sha256
             if nested:
-                nested_payload = parent.read(nested)
+                members = nested.split("!/")
+                nested_payload = parent.read(members[0])
+                for member in members[1:]:
+                    with ZipFile(BytesIO(nested_payload)) as container:
+                        nested_payload = container.read(member)
                 archive_sha = hashlib.sha256(nested_payload).hexdigest()
                 if archive_sha != nested_sources[nested][1]:
                     message = f"bundled archive identity mismatch: {nested}"
@@ -1860,6 +1883,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/integration/")
+                verbose |= name.startswith("com/bawnorton/mixinsquared/")
                 verbose |= name in {
                     "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
                     "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",

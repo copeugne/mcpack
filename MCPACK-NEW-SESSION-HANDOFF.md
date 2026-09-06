@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+MixinSquared inspection identified a concrete extractor limitation: its Forge
+wrapper contains META-INF/jars/MixinSquared-0.3.3.jar, one level deeper than the
+existing nested-archive reader supports. Close this actual executable-library
+boundary by extending the existing pinned reader to traverse the exact nested
+member chain. Keep parent and leaf SHA-256 checks and existing output format;
+do not add a new extraction system. The wrapper SHA-256 is
+e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3;
+the inner SHA-256 is
+0eaa67fa937cc65ab78a981cd9e4e741d03eaf7236983d7e30818ac99da0632f.
+Trinkets fallback is resolved in 4d50c66. Reuse the latest Supplementaries
+checkpoint in evidence/item-8/provider-scope.md; census remains 78/136 resolved.
+
 Supplementaries placement/processor membership paths are resolved in source
 a74ae7b, extracted by e1e2005. Reuse sources/supplementaries-placement-processor
 under evidence/item-8. Three class identities are bound by the existing provider
