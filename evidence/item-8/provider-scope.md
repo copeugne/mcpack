@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 110 of 136. The exact queue below has 26 open rows.
+Supported provider dispositions: 111 of 136. The exact queue below has 25 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -654,7 +654,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Source 51ba791c; test_small_utility_provider_scope.py | RESOLVED: Item/dispenser-placed target dummy and existing-entity interaction hooks. No independent family. See target dummy disposition below. |
-| `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `emi_loot-0.7.9+1.21+neoforge.jar` | ebf5a286 entry paths; a2f485ef parser and accessors. | RESOLVED: existing-loot inspection and client display synchronization, no independent generated family. See EMI Loot membership closure. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Source 824f34de; test_small_utility_provider_scope.py | RESOLVED: Reads and sends existing ore/geode generation information; no independent family. See EMI Ores disposition below. |
 | `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
@@ -7295,3 +7295,36 @@ wrapped after the initial Ruff finding. All captures reproduce byte for byte.
 Whole providers: 110 resolved, 26 open. No family added. Do not continue generic
 Collective service, event or networking internals; continue remaining provider
 roles and canonical Moog grouping before detailed attributes.
+
+
+## EMI Loot membership closure
+
+Exact archive emi_loot-0.7.9+1.21+neoforge.jar, SHA-256
+a89805cdcb2e11734624d7239112643ee6b8f95e6b71b3a720530df6a5c18980.
+The complete payload has 209 classes, 90 client assets, 15 direct-drop entity
+descriptions, one display-exclusion list and seven metadata/configuration files.
+There are no nested archives, services or packaged generation definitions.
+
+Sources ebf5a286 and a2f485ef retain four automatic entries, all 40 common
+hooks and the relevant parser/resource delegates. Entry registration supplies
+three loot-condition codecs, two loot-function codecs and six client-bound
+payloads. The two injection hooks initiate parsing/postprocessing after resource
+reload. The other 38 hooks expose existing fields or component apply methods.
+They do not inject generation. The static registry accessor throws before Mixin
+transformation; it is not a runtime generator.
+
+ServerResourceData reads direct-drop descriptions into a private map. Its
+NeoForge delegate posts the table-load event, so consumers may transform these
+parsed tables. LootTableParser reads existing registries, builds five sender
+maps and synchronizes display data to compatible players. Client entries clear
+and reload display state. The provider contributes no independent generated
+family. Do not count its chest/drop descriptions as structures or continue
+generic loot-parser/network internals for membership. This disposition does not
+claim a complete loot-behavior or information-disclosure audit.
+
+Reproduction commands and manifest identities are in the two source READMEs.
+`uv run pytest -q tests/item8/test_emi_loot_provider_scope.py` passes, binding the
+full archive payload, entry/hook coverage and all 49 captured class identities.
+Scoped Ruff and Basedpyright pass after a precedence-parenthesization lint fix.
+Whole-provider queue: 111 resolved, 25 open. Working family groups remain 410;
+canonical Moog decisions remain provisional. Item 8 is not complete.
