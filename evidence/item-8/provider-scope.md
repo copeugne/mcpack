@@ -8919,3 +8919,11 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_va
 uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 5e5cb5e2 and independently reproduced exactly.
+SHA-256: 3d9a33d0bf30fa6699bcdbfc85a5408dd2f6e5d1a5e4a2cad7a38347a69ee629.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-arenas-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-arenas-r2.json
+```
