@@ -97,6 +97,24 @@ def test_regions_unexplored_feature_candidates_and_sources() -> None:
         ("pine", "pine"), ("pine_on_dirt", "pine"), ("pine_on_snow", "snow_pine"),
         ("silver_birch", "silver_birch"),
     )}
+    decisions = cast("dict[str, dict[str, dict[str, dict[str, object]]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_text()
+    ))
+    contribution = decisions["non_registry_content"]["contributions"][
+        "regions_unexplored:fallen_tree"
+    ]
+    assert contribution["families"] == []
+    assert sorted(cast("list[str]", contribution["configured_features"])) == sorted(
+        "regions_unexplored:tree/fallen/" + n for n in variants
+    )
+    assert sorted(cast("list[str]", contribution["placed_features"])) == sorted(
+        "regions_unexplored:tree/fallen/" + n for n in placed
+    )
+    dispositions = cast("list[dict[str, str]]", contribution["dispositions"])
+    assert len(dispositions) == 1
+    assert dispositions[0]["decision"] == "DECORATED_VEGETATION_NOT_ADDITIONAL_FAMILY"
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     consumers = {
         p.rsplit("/", 1)[1].removesuffix(".json"): [n for group in
             cast("list[list[str]]", d["features"]) for n in group if ":tree/fallen/" in n]

@@ -86,6 +86,24 @@ def test_deep_aether_packaged_candidate_partition() -> None:
         placed = rows[prefix + "placed_feature/" + name + "_forest.json"]
         assert placed["feature"] == "deep_aether:" + name + "_tree"
     placed_ids = {"deep_aether:fallen_aerglow_forest", "deep_aether:empty_fallen_aerglow_forest"}
+    decisions = cast("dict[str, dict[str, dict[str, dict[str, object]]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_text()
+    ))
+    contribution = decisions["non_registry_content"]["contributions"][
+        "deep_aether:fallen_tree"
+    ]
+    assert contribution["families"] == []
+    assert sorted(cast("list[str]", contribution["configured_features"])) == sorted(
+        ["deep_aether:fallen_aerglow_tree", "deep_aether:empty_fallen_aerglow_tree"]
+    )
+    assert sorted(cast("list[str]", contribution["placed_features"])) == sorted(
+        placed_ids
+    )
+    dispositions = cast("list[dict[str, str]]", contribution["dispositions"])
+    assert len(dispositions) == 1
+    assert dispositions[0]["decision"] == "DECORATED_VEGETATION_NOT_ADDITIONAL_FAMILY"
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     assert {p for p, d in rows.items() if p.startswith(prefix + "biome/")
             and any(n in json.dumps(d) for n in placed_ids)} == {
         prefix + "biome/" + n + ".json"

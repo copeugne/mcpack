@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Three tree-related membership boundaries are settled: Aether holiday tree, Deep
+Aether fallen trees (two configured variants), and Regions Unexplored fallen
+trees (six configured, eight placed variants) add no structure family. Preserve
+their decorated-vegetation dispositions, seasonal/present relevance and RU
+stump-only outcome. Existing source and packaged-input checks are reused; no
+new capture or measurement system. Provider census remains 90 resolved, 46 open.
+Next resolve Quark, Supplementaries cave urns and Moog/village grouping while
+closing the finite remaining provider queue. Detailed attributes remain open.
+
+
 BetterEnd membership subtotal is now explicit and checked: 27 groups, comprising
 21 authored structure families and six natural-formation registry groups. All
 14 registry IDs remain assigned once in nine groups; eighteen nonregistry

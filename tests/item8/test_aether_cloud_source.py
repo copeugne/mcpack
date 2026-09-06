@@ -238,3 +238,21 @@ def test_aether_holiday_tree_candidate_inputs() -> None:
     frozen = cast("dict[str, dict[str, JsonValue]]", tomllib.loads(raw.decode()))
     assert frozen["World Generation"]["Generate Holiday Trees always"] is False
     assert frozen["World Generation"]["Generate Holiday Trees seasonally"] is True
+    decisions = cast("dict[str, dict[str, dict[str, dict[str, object]]]]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_text()
+    ))
+    contribution = decisions["non_registry_content"]["contributions"][
+        "aether:holiday_tree"
+    ]
+    assert contribution["families"] == []
+    assert sorted(cast("list[str]", contribution["configured_features"])) == sorted(
+        ["aether:holiday_tree"]
+    )
+    assert sorted(cast("list[str]", contribution["placed_features"])) == sorted(
+        ["aether:holiday_tree"]
+    )
+    dispositions = cast("list[dict[str, str]]", contribution["dispositions"])
+    assert len(dispositions) == 1
+    assert dispositions[0]["decision"] == "DECORATED_VEGETATION_NOT_ADDITIONAL_FAMILY"
+    for path, digest in cast("dict[str, str]", contribution["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
