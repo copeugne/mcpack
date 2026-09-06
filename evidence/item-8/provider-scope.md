@@ -9184,3 +9184,11 @@ uv run pytest tests/item8/test_aether_cloud_source.py tests/item8/test_totem_sco
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from b325116a and independently reproduced exactly.
+SHA-256: 0f3970e1c9d3310e3c4b0de48c3a6c5b5032bc8dadfae2a32b03aab0fd44a7e7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-cloud-sacred-lands-r2.json
+```

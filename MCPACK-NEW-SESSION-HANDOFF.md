@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches b325116a and reproduces exactly. Canonical-note backlog: 124.
+Coverage groups: 405, including excluded/inactive roots. Nonregistry reconciliation
+and required attributes remain open. Next: unresolved dependency and replacement
+notes using the existing provider evidence, before more layout comparisons.
+
 Four canonical dispositions now agree with previously verified provider evidence:
 Aether large_aercloud is terrain; Deep Aether altar_camp, campfire and
 combiner_corridor are registered but biome-ineligible in the captured baseline.
