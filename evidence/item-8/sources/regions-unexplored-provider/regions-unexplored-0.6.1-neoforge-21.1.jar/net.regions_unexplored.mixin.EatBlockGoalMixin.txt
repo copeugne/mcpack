@@ -1,0 +1,417 @@
+Classfile regions-unexplored-0.6.1-neoforge-21.1.jar!/net/regions_unexplored/mixin/EatBlockGoalMixin.class
+  Last modified Feb 1, 1980; size 4156 bytes
+  SHA-256 checksum f5036c74f2a8b7f0aa0821bb4b225c2edf7930d02f50bd874c6f625ae785d81f
+  Compiled from "EatBlockGoalMixin.java"
+public class net.regions_unexplored.mixin.EatBlockGoalMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // net/regions_unexplored/mixin/EatBlockGoalMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 3, attributes: 3
+Constant pool:
+    #1 = Utf8               net/regions_unexplored/mixin/EatBlockGoalMixin
+    #2 = Class              #1            // net/regions_unexplored/mixin/EatBlockGoalMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               EatBlockGoalMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/world/entity/ai/goal/EatBlockGoal;
+    #9 = Utf8               net/minecraft/world/level/GameRules$Key
+   #10 = Class              #9            // net/minecraft/world/level/GameRules$Key
+   #11 = Utf8               net/minecraft/world/level/GameRules
+   #12 = Class              #11           // net/minecraft/world/level/GameRules
+   #13 = Utf8               Key
+   #14 = Utf8               mob
+   #15 = Utf8               Lnet/minecraft/world/entity/Mob;
+   #16 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #17 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #18 = Utf8               level
+   #19 = Utf8               Lnet/minecraft/world/level/Level;
+   #20 = Utf8               <init>
+   #21 = Utf8               ()V
+   #22 = NameAndType        #20:#21       // "<init>":()V
+   #23 = Methodref          #4.#22        // java/lang/Object."<init>":()V
+   #24 = Utf8               this
+   #25 = Utf8               Lnet/regions_unexplored/mixin/EatBlockGoalMixin;
+   #26 = Utf8               regions_unexplored$canUse
+   #27 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #28 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+   #29 = Utf8               cir
+   #30 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #31 = Utf8               method
+   #32 = Utf8               canUse()Z
+   #33 = Utf8               at
+   #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #35 = Utf8               FIELD
+   #36 = Utf8               target
+   #37 = Utf8               Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;
+   #38 = Utf8               cancellable
+   #39 = Integer            1
+   #40 = Utf8               locals
+   #41 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/LocalCapture;
+   #42 = Utf8               NO_CAPTURE
+   #43 = NameAndType        #14:#15       // mob:Lnet/minecraft/world/entity/Mob;
+   #44 = Fieldref           #2.#43        // net/regions_unexplored/mixin/EatBlockGoalMixin.mob:Lnet/minecraft/world/entity/Mob;
+   #45 = Utf8               net/minecraft/world/entity/Mob
+   #46 = Class              #45           // net/minecraft/world/entity/Mob
+   #47 = Utf8               blockPosition
+   #48 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #49 = NameAndType        #47:#48       // blockPosition:()Lnet/minecraft/core/BlockPos;
+   #50 = Methodref          #46.#49       // net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+   #51 = NameAndType        #18:#19       // level:Lnet/minecraft/world/level/Level;
+   #52 = Fieldref           #2.#51        // net/regions_unexplored/mixin/EatBlockGoalMixin.level:Lnet/minecraft/world/level/Level;
+   #53 = Utf8               net/minecraft/core/BlockPos
+   #54 = Class              #53           // net/minecraft/core/BlockPos
+   #55 = Utf8               below
+   #56 = NameAndType        #55:#48       // below:()Lnet/minecraft/core/BlockPos;
+   #57 = Methodref          #54.#56       // net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+   #58 = Utf8               net/minecraft/world/level/Level
+   #59 = Class              #58           // net/minecraft/world/level/Level
+   #60 = Utf8               getBlockState
+   #61 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #62 = NameAndType        #60:#61       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #63 = Methodref          #59.#62       // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #64 = Utf8               net/regions_unexplored/registry/RUBlocks
+   #65 = Class              #64           // net/regions_unexplored/registry/RUBlocks
+   #66 = Utf8               SILT_GRASS_BLOCK
+   #67 = Utf8               Ljava/util/function/Supplier;
+   #68 = NameAndType        #66:#67       // SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+   #69 = Fieldref           #65.#68       // net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+   #70 = Utf8               java/util/function/Supplier
+   #71 = Class              #70           // java/util/function/Supplier
+   #72 = Utf8               get
+   #73 = Utf8               ()Ljava/lang/Object;
+   #74 = NameAndType        #72:#73       // get:()Ljava/lang/Object;
+   #75 = InterfaceMethodref #71.#74       // java/util/function/Supplier.get:()Ljava/lang/Object;
+   #76 = Utf8               net/minecraft/world/level/block/Block
+   #77 = Class              #76           // net/minecraft/world/level/block/Block
+   #78 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #79 = Class              #78           // net/minecraft/world/level/block/state/BlockState
+   #80 = Utf8               is
+   #81 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #82 = NameAndType        #80:#81       // is:(Lnet/minecraft/world/level/block/Block;)Z
+   #83 = Methodref          #79.#82       // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+   #84 = Utf8               PEAT_GRASS_BLOCK
+   #85 = NameAndType        #84:#67       // PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+   #86 = Fieldref           #65.#85       // net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+   #87 = Utf8               java/lang/Boolean
+   #88 = Class              #87           // java/lang/Boolean
+   #89 = Utf8               valueOf
+   #90 = Utf8               (Z)Ljava/lang/Boolean;
+   #91 = NameAndType        #89:#90       // valueOf:(Z)Ljava/lang/Boolean;
+   #92 = Methodref          #88.#91       // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+   #93 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #94 = Class              #93           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #95 = Utf8               setReturnValue
+   #96 = Utf8               (Ljava/lang/Object;)V
+   #97 = NameAndType        #95:#96       // setReturnValue:(Ljava/lang/Object;)V
+   #98 = Methodref          #94.#97       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+   #99 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #100 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #101 = Utf8               pos
+  #102 = Utf8               Lnet/minecraft/core/BlockPos;
+  #103 = Utf8               regions_unexplored$tick
+  #104 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #105 = Utf8               ci
+  #106 = Utf8               tick()V
+  #107 = Utf8               getGameRules
+  #108 = Utf8               ()Lnet/minecraft/world/level/GameRules;
+  #109 = NameAndType        #107:#108     // getGameRules:()Lnet/minecraft/world/level/GameRules;
+  #110 = Methodref          #59.#109      // net/minecraft/world/level/Level.getGameRules:()Lnet/minecraft/world/level/GameRules;
+  #111 = Utf8               RULE_MOBGRIEFING
+  #112 = Utf8               Lnet/minecraft/world/level/GameRules$Key;
+  #113 = NameAndType        #111:#112     // RULE_MOBGRIEFING:Lnet/minecraft/world/level/GameRules$Key;
+  #114 = Fieldref           #12.#113      // net/minecraft/world/level/GameRules.RULE_MOBGRIEFING:Lnet/minecraft/world/level/GameRules$Key;
+  #115 = Utf8               getBoolean
+  #116 = Utf8               (Lnet/minecraft/world/level/GameRules$Key;)Z
+  #117 = NameAndType        #115:#116     // getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+  #118 = Methodref          #12.#117      // net/minecraft/world/level/GameRules.getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+  #119 = Utf8               defaultBlockState
+  #120 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #121 = NameAndType        #119:#120     // defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #122 = Methodref          #77.#121      // net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+  #123 = Utf8               getId
+  #124 = Utf8               (Lnet/minecraft/world/level/block/state/BlockState;)I
+  #125 = NameAndType        #123:#124     // getId:(Lnet/minecraft/world/level/block/state/BlockState;)I
+  #126 = Methodref          #77.#125      // net/minecraft/world/level/block/Block.getId:(Lnet/minecraft/world/level/block/state/BlockState;)I
+  #127 = Utf8               levelEvent
+  #128 = Utf8               (ILnet/minecraft/core/BlockPos;I)V
+  #129 = NameAndType        #127:#128     // levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+  #130 = Methodref          #59.#129      // net/minecraft/world/level/Level.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+  #131 = Utf8               PEAT_DIRT
+  #132 = NameAndType        #131:#67      // PEAT_DIRT:Ljava/util/function/Supplier;
+  #133 = Fieldref           #65.#132      // net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+  #134 = Utf8               setBlock
+  #135 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #136 = NameAndType        #134:#135     // setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #137 = Methodref          #59.#136      // net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+  #138 = Utf8               ate
+  #139 = NameAndType        #138:#21      // ate:()V
+  #140 = Methodref          #46.#139      // net/minecraft/world/entity/Mob.ate:()V
+  #141 = Utf8               SILT_DIRT
+  #142 = NameAndType        #141:#67      // SILT_DIRT:Ljava/util/function/Supplier;
+  #143 = Fieldref           #65.#142      // net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+  #144 = Utf8               replacement
+  #145 = Utf8               Lnet/minecraft/world/level/block/Block;
+  #146 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #147 = Utf8               downPos
+  #148 = Utf8               down
+  #149 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #150 = Utf8               RuntimeVisibleAnnotations
+  #151 = Utf8               Code
+  #152 = Utf8               LineNumberTable
+  #153 = Utf8               LocalVariableTable
+  #154 = Utf8               StackMapTable
+  #155 = Utf8               LocalVariableTypeTable
+  #156 = Utf8               Signature
+  #157 = Utf8               MethodParameters
+  #158 = Utf8               InnerClasses
+  #159 = Utf8               SourceFile
+  #160 = Utf8               RuntimeInvisibleAnnotations
+{
+  public net.minecraft.world.entity.Mob mob;
+    descriptor: Lnet/minecraft/world/entity/Mob;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+      1: #17()
+        org.spongepowered.asm.mixin.Final
+
+  public net.minecraft.world.level.Level level;
+    descriptor: Lnet/minecraft/world/level/Level;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #16()
+        org.spongepowered.asm.mixin.Shadow
+      1: #17()
+        org.spongepowered.asm.mixin.Final
+
+  public net.regions_unexplored.mixin.EatBlockGoalMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #23                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/regions_unexplored/mixin/EatBlockGoalMixin;
+
+  private void regions_unexplored$canUse(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #44                 // Field mob:Lnet/minecraft/world/entity/Mob;
+         4: invokevirtual #50                 // Method net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+         7: astore_2
+         8: aload_0
+         9: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        12: aload_2
+        13: invokevirtual #57                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        16: invokevirtual #63                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        19: getstatic     #69                 // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+        22: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        27: checkcast     #77                 // class net/minecraft/world/level/block/Block
+        30: invokevirtual #83                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        33: ifne          64
+        36: aload_0
+        37: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        40: aload_2
+        41: invokevirtual #57                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        44: invokevirtual #63                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        47: getstatic     #86                 // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+        50: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        55: checkcast     #77                 // class net/minecraft/world/level/block/Block
+        58: invokevirtual #83                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        61: ifeq          72
+        64: aload_1
+        65: iconst_1
+        66: invokestatic  #92                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        69: invokevirtual #98                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        72: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 64
+          locals = [ class net/minecraft/core/BlockPos ]
+        frame_type = 7 /* same */
+      LineNumberTable:
+        line 35: 0
+        line 37: 8
+        line 38: 64
+        line 40: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Lnet/regions_unexplored/mixin/EatBlockGoalMixin;
+            0      73     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            8      65     2   pos   Lnet/minecraft/core/BlockPos;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      73     1   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #28                          // (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#32],#33=[@#34(#7=s#35,#36=s#37)],#38=Z#39,#40=e#41.#42)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["canUse()Z"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"
+          )]
+          cancellable=true
+          locals=Lorg/spongepowered/asm/mixin/injection/callback/LocalCapture;.NO_CAPTURE
+        )
+    MethodParameters:
+      Name                           Flags
+      cir
+
+  private void regions_unexplored$tick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=5, args_size=2
+         0: aload_0
+         1: getfield      #44                 // Field mob:Lnet/minecraft/world/entity/Mob;
+         4: invokevirtual #50                 // Method net/minecraft/world/entity/Mob.blockPosition:()Lnet/minecraft/core/BlockPos;
+         7: invokevirtual #57                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+        10: astore_2
+        11: aload_0
+        12: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        15: aload_2
+        16: invokevirtual #63                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        19: astore_3
+        20: aload_3
+        21: getstatic     #86                 // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+        24: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        29: checkcast     #77                 // class net/minecraft/world/level/block/Block
+        32: invokevirtual #83                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        35: ifeq          117
+        38: aload_0
+        39: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        42: invokevirtual #110                // Method net/minecraft/world/level/Level.getGameRules:()Lnet/minecraft/world/level/GameRules;
+        45: getstatic     #114                // Field net/minecraft/world/level/GameRules.RULE_MOBGRIEFING:Lnet/minecraft/world/level/GameRules$Key;
+        48: invokevirtual #118                // Method net/minecraft/world/level/GameRules.getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+        51: ifeq          110
+        54: aload_0
+        55: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        58: sipush        2001
+        61: aload_2
+        62: getstatic     #86                 // Field net/regions_unexplored/registry/RUBlocks.PEAT_GRASS_BLOCK:Ljava/util/function/Supplier;
+        65: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        70: checkcast     #77                 // class net/minecraft/world/level/block/Block
+        73: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+        76: invokestatic  #126                // Method net/minecraft/world/level/block/Block.getId:(Lnet/minecraft/world/level/block/state/BlockState;)I
+        79: invokevirtual #130                // Method net/minecraft/world/level/Level.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+        82: getstatic     #133                // Field net/regions_unexplored/registry/RUBlocks.PEAT_DIRT:Ljava/util/function/Supplier;
+        85: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        90: checkcast     #77                 // class net/minecraft/world/level/block/Block
+        93: astore        4
+        95: aload_0
+        96: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+        99: aload_2
+       100: aload         4
+       102: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       105: iconst_2
+       106: invokevirtual #137                // Method net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       109: pop
+       110: aload_0
+       111: getfield      #44                 // Field mob:Lnet/minecraft/world/entity/Mob;
+       114: invokevirtual #140                // Method net/minecraft/world/entity/Mob.ate:()V
+       117: aload_3
+       118: getstatic     #69                 // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+       121: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       126: checkcast     #77                 // class net/minecraft/world/level/block/Block
+       129: invokevirtual #83                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+       132: ifeq          214
+       135: aload_0
+       136: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+       139: invokevirtual #110                // Method net/minecraft/world/level/Level.getGameRules:()Lnet/minecraft/world/level/GameRules;
+       142: getstatic     #114                // Field net/minecraft/world/level/GameRules.RULE_MOBGRIEFING:Lnet/minecraft/world/level/GameRules$Key;
+       145: invokevirtual #118                // Method net/minecraft/world/level/GameRules.getBoolean:(Lnet/minecraft/world/level/GameRules$Key;)Z
+       148: ifeq          207
+       151: aload_0
+       152: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+       155: sipush        2001
+       158: aload_2
+       159: getstatic     #69                 // Field net/regions_unexplored/registry/RUBlocks.SILT_GRASS_BLOCK:Ljava/util/function/Supplier;
+       162: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       167: checkcast     #77                 // class net/minecraft/world/level/block/Block
+       170: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       173: invokestatic  #126                // Method net/minecraft/world/level/block/Block.getId:(Lnet/minecraft/world/level/block/state/BlockState;)I
+       176: invokevirtual #130                // Method net/minecraft/world/level/Level.levelEvent:(ILnet/minecraft/core/BlockPos;I)V
+       179: getstatic     #143                // Field net/regions_unexplored/registry/RUBlocks.SILT_DIRT:Ljava/util/function/Supplier;
+       182: invokeinterface #75,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       187: checkcast     #77                 // class net/minecraft/world/level/block/Block
+       190: astore        4
+       192: aload_0
+       193: getfield      #52                 // Field level:Lnet/minecraft/world/level/Level;
+       196: aload_2
+       197: aload         4
+       199: invokevirtual #122                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       202: iconst_2
+       203: invokevirtual #137                // Method net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+       206: pop
+       207: aload_0
+       208: getfield      #44                 // Field mob:Lnet/minecraft/world/entity/Mob;
+       211: invokevirtual #140                // Method net/minecraft/world/entity/Mob.ate:()V
+       214: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 110
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/block/state/BlockState ]
+        frame_type = 6 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 89
+        frame_type = 6 /* same */
+      LineNumberTable:
+        line 47: 0
+        line 48: 11
+        line 51: 20
+        line 52: 38
+        line 53: 54
+        line 55: 82
+        line 57: 95
+        line 60: 110
+        line 63: 117
+        line 64: 135
+        line 65: 151
+        line 67: 179
+        line 69: 192
+        line 71: 207
+        line 73: 214
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           95      15     4 replacement   Lnet/minecraft/world/level/block/Block;
+          192      15     4 replacement   Lnet/minecraft/world/level/block/Block;
+            0     215     0  this   Lnet/regions_unexplored/mixin/EatBlockGoalMixin;
+            0     215     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           11     204     2 downPos   Lnet/minecraft/core/BlockPos;
+           20     195     3  down   Lnet/minecraft/world/level/block/state/BlockState;
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#106],#33=[@#34(#7=s#35,#36=s#37)],#40=e#41.#42)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/world/level/block/Blocks;GRASS_BLOCK:Lnet/minecraft/world/level/block/Block;"
+          )]
+          locals=Lorg/spongepowered/asm/mixin/injection/callback/LocalCapture;.NO_CAPTURE
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+}
+InnerClasses:
+  public static final #13= #10 of #12;    // Key=class net/minecraft/world/level/GameRules$Key of class net/minecraft/world/level/GameRules
+SourceFile: "EatBlockGoalMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/ai/goal/EatBlockGoal;]
+    )

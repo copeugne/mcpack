@@ -1,0 +1,282 @@
+Compiled from "RULithostitched.java"
+public class net.regions_unexplored.lithostitched.RULithostitched {
+  public net.regions_unexplored.lithostitched.RULithostitched();
+    Code:
+       0: aload_0
+       1: invokespecial #57                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #66                 // Field dev/worldgen/lithostitched/api/event/AddWorldgenModifiersEvent.EVENT:Ldev/worldgen/lithostitched/impl/event/LithostitchedEvent;
+       3: invokedynamic #83,  0             // InvokeDynamic #0:addModifiers:()Ldev/worldgen/lithostitched/api/event/AddWorldgenModifiersEvent;
+       8: invokevirtual #89                 // Method dev/worldgen/lithostitched/impl/event/LithostitchedEvent.register:(Ljava/lang/Object;)V
+      11: getstatic     #90                 // Field dev/worldgen/lithostitched/api/event/AddRegionsEvent.EVENT:Ldev/worldgen/lithostitched/impl/event/LithostitchedEvent;
+      14: invokedynamic #100,  0            // InvokeDynamic #1:addRegions:()Ldev/worldgen/lithostitched/api/event/AddRegionsEvent;
+      19: invokevirtual #89                 // Method dev/worldgen/lithostitched/impl/event/LithostitchedEvent.register:(Ljava/lang/Object;)V
+      22: getstatic     #103                // Field dev/worldgen/lithostitched/api/event/AddBiomeInjectorsEvent.EVENT:Ldev/worldgen/lithostitched/impl/event/LithostitchedEvent;
+      25: invokedynamic #111,  0            // InvokeDynamic #2:addInjectors:()Ldev/worldgen/lithostitched/api/event/AddBiomeInjectorsEvent;
+      30: invokevirtual #89                 // Method dev/worldgen/lithostitched/impl/event/LithostitchedEvent.register:(Ljava/lang/Object;)V
+      33: return
+
+  private static void addRegion(dev.worldgen.lithostitched.api.event.AddRegionsEvent$RegionConsumer, net.minecraft.core.Registry<net.minecraft.world.level.biome.Biome>, java.lang.String, net.regions_unexplored.config.state.common.BiomeTarget);
+    Code:
+       0: aload_3
+       1: invokevirtual #124                // Method net/regions_unexplored/config/state/common/BiomeTarget.getWeight:()Ljava/util/Optional;
+       4: iconst_0
+       5: invokestatic  #130                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       8: invokevirtual #136                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      11: checkcast     #126                // class java/lang/Integer
+      14: invokevirtual #140                // Method java/lang/Integer.intValue:()I
+      17: istore        4
+      19: iload         4
+      21: ifle          34
+      24: aload_3
+      25: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+      28: invokevirtual #148                // Method java/util/Optional.isEmpty:()Z
+      31: ifeq          35
+      34: return
+      35: aload_0
+      36: aload_2
+      37: invokestatic  #154                // InterfaceMethod net/regions_unexplored/registry/data/RURegions.key:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceKey;
+      40: aload_3
+      41: getfield      #158                // Field net/regions_unexplored/config/state/common/BiomeTarget.dimension:Lnet/minecraft/resources/ResourceKey;
+      44: aload_1
+      45: aload_3
+      46: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+      49: invokevirtual #162                // Method java/util/Optional.get:()Ljava/lang/Object;
+      52: checkcast     #164                // class java/util/List
+      55: invokestatic  #168                // Method net/regions_unexplored/config/state/common/BiomeTarget.getTargets:(Lnet/minecraft/core/Registry;Ljava/util/List;)Lnet/minecraft/core/HolderSet;
+      58: iload         4
+      60: invokeinterface #172,  5          // InterfaceMethod dev/worldgen/lithostitched/api/event/AddRegionsEvent$RegionConsumer.accept:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/HolderSet;I)V
+      65: return
+
+  private static void lambda$init$2(net.minecraft.core.RegistryAccess, java.util.function.BiConsumer);
+    Code:
+       0: aload_0
+       1: getstatic     #185                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       4: invokeinterface #191,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+       9: astore_2
+      10: getstatic     #197                // Field net/regions_unexplored/config/RUConfigHandler.COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      13: getfield      #201                // Field net/regions_unexplored/config/state/common/RUCommonConfig.biomePlacements:Lnet/regions_unexplored/config/state/common/RUCommonConfig$BiomePlacements;
+      16: getfield      #205                // Field net/regions_unexplored/config/state/common/RUCommonConfig$BiomePlacements.placements:Ljava/util/Map;
+      19: invokeinterface #209,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      24: invokeinterface #215,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      29: astore_3
+      30: aload_3
+      31: invokeinterface #222,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      36: ifeq          282
+      39: aload_3
+      40: invokeinterface #225,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #17                 // class java/util/Map$Entry
+      48: astore        4
+      50: aload         4
+      52: invokeinterface #228,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      57: checkcast     #230                // class net/minecraft/resources/ResourceKey
+      60: astore        5
+      62: aload         4
+      64: invokeinterface #233,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      69: checkcast     #120                // class net/regions_unexplored/config/state/common/BiomeTarget
+      72: astore        6
+      74: aload         6
+      76: invokevirtual #236                // Method net/regions_unexplored/config/state/common/BiomeTarget.canGenerate:()Z
+      79: ifne          85
+      82: goto          30
+      85: aload         6
+      87: invokevirtual #124                // Method net/regions_unexplored/config/state/common/BiomeTarget.getWeight:()Ljava/util/Optional;
+      90: iconst_0
+      91: invokestatic  #130                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      94: invokevirtual #136                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      97: checkcast     #126                // class java/lang/Integer
+     100: invokevirtual #140                // Method java/lang/Integer.intValue:()I
+     103: ifle          171
+     106: aload         6
+     108: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+     111: invokevirtual #239                // Method java/util/Optional.isPresent:()Z
+     114: ifeq          171
+     117: aload         6
+     119: getfield      #158                // Field net/regions_unexplored/config/state/common/BiomeTarget.dimension:Lnet/minecraft/resources/ResourceKey;
+     122: invokestatic  #243                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector.builder:(Lnet/minecraft/resources/ResourceKey;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector$InjectorBuilder;
+     125: aload_2
+     126: aload         6
+     128: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+     131: invokevirtual #162                // Method java/util/Optional.get:()Ljava/lang/Object;
+     134: checkcast     #164                // class java/util/List
+     137: invokestatic  #168                // Method net/regions_unexplored/config/state/common/BiomeTarget.getTargets:(Lnet/minecraft/core/Registry;Ljava/util/List;)Lnet/minecraft/core/HolderSet;
+     140: aload_2
+     141: aload         5
+     143: invokeinterface #247,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     148: aload         6
+     150: invokevirtual #251                // Method net/regions_unexplored/config/state/common/BiomeTarget.getParameters:()Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;
+     153: aload         5
+     155: invokestatic  #254                // InterfaceMethod net/regions_unexplored/registry/data/RURegions.key:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/resources/ResourceKey;
+     158: invokeinterface #260,  2          // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder.region:(Lnet/minecraft/resources/ResourceKey;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;
+     163: invokevirtual #264                // Method dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector$InjectorBuilder.replacePartially:(Lnet/minecraft/core/HolderSet;Lnet/minecraft/core/Holder;Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector;
+     166: astore        7
+     168: goto          261
+     171: aload         6
+     173: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+     176: invokevirtual #239                // Method java/util/Optional.isPresent:()Z
+     179: ifeq          245
+     182: aload         6
+     184: invokevirtual #251                // Method net/regions_unexplored/config/state/common/BiomeTarget.getParameters:()Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;
+     187: astore        8
+     189: aload         6
+     191: getfield      #267                // Field net/regions_unexplored/config/state/common/BiomeTarget.group:Ljava/util/Optional;
+     194: aload         8
+     196: invokedynamic #278,  0            // InvokeDynamic #3:accept:(Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;)Ljava/util/function/Consumer;
+     201: invokevirtual #282                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     204: aload         6
+     206: getfield      #158                // Field net/regions_unexplored/config/state/common/BiomeTarget.dimension:Lnet/minecraft/resources/ResourceKey;
+     209: invokestatic  #243                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector.builder:(Lnet/minecraft/resources/ResourceKey;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector$InjectorBuilder;
+     212: aload_2
+     213: aload         6
+     215: getfield      #144                // Field net/regions_unexplored/config/state/common/BiomeTarget.canReplace:Ljava/util/Optional;
+     218: invokevirtual #162                // Method java/util/Optional.get:()Ljava/lang/Object;
+     221: checkcast     #164                // class java/util/List
+     224: invokestatic  #168                // Method net/regions_unexplored/config/state/common/BiomeTarget.getTargets:(Lnet/minecraft/core/Registry;Ljava/util/List;)Lnet/minecraft/core/HolderSet;
+     227: aload_2
+     228: aload         5
+     230: invokeinterface #247,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     235: aload         8
+     237: invokevirtual #264                // Method dev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector$InjectorBuilder.replacePartially:(Lnet/minecraft/core/HolderSet;Lnet/minecraft/core/Holder;Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector;
+     240: astore        7
+     242: goto          261
+     245: aload_0
+     246: aload_2
+     247: aload         5
+     249: invokeinterface #247,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+     254: aload         6
+     256: invokestatic  #286                // Method net/regions_unexplored/config/state/common/BiomeTarget.createSpecialInjector:(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Lnet/regions_unexplored/config/state/common/BiomeTarget;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/BiomeInjector;
+     259: astore        7
+     261: aload         7
+     263: ifnull        279
+     266: aload_1
+     267: aload         5
+     269: invokevirtual #290                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     272: aload         7
+     274: invokeinterface #295,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     279: goto          30
+     282: return
+
+  private static void lambda$init$3(dev.worldgen.lithostitched.api.worldgen.biomeinjector.ParameterBuilder, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #154                // InterfaceMethod net/regions_unexplored/registry/data/RURegions.key:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceKey;
+       5: invokeinterface #260,  2          // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder.region:(Lnet/minecraft/resources/ResourceKey;)Ldev/worldgen/lithostitched/api/worldgen/biomeinjector/ParameterBuilder;
+      10: pop
+      11: return
+
+  private static void lambda$init$1(net.minecraft.core.RegistryAccess, dev.worldgen.lithostitched.api.event.AddRegionsEvent$RegionConsumer);
+    Code:
+       0: aload_0
+       1: getstatic     #185                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       4: invokeinterface #191,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+       9: astore_2
+      10: getstatic     #197                // Field net/regions_unexplored/config/RUConfigHandler.COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      13: getfield      #313                // Field net/regions_unexplored/config/state/common/RUCommonConfig.biomeGroups:Lnet/regions_unexplored/config/state/common/RUCommonConfig$BiomeGroups;
+      16: getfield      #316                // Field net/regions_unexplored/config/state/common/RUCommonConfig$BiomeGroups.groups:Ljava/util/Map;
+      19: invokeinterface #209,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      24: invokeinterface #215,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      29: astore_3
+      30: aload_3
+      31: invokeinterface #222,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      36: ifeq          78
+      39: aload_3
+      40: invokeinterface #225,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #17                 // class java/util/Map$Entry
+      48: astore        4
+      50: aload_1
+      51: aload_2
+      52: aload         4
+      54: invokeinterface #228,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      59: checkcast     #318                // class java/lang/String
+      62: aload         4
+      64: invokeinterface #233,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      69: checkcast     #120                // class net/regions_unexplored/config/state/common/BiomeTarget
+      72: invokestatic  #320                // Method addRegion:(Ldev/worldgen/lithostitched/api/event/AddRegionsEvent$RegionConsumer;Lnet/minecraft/core/Registry;Ljava/lang/String;Lnet/regions_unexplored/config/state/common/BiomeTarget;)V
+      75: goto          30
+      78: getstatic     #197                // Field net/regions_unexplored/config/RUConfigHandler.COMMON:Lnet/regions_unexplored/config/state/common/RUCommonConfig;
+      81: getfield      #201                // Field net/regions_unexplored/config/state/common/RUCommonConfig.biomePlacements:Lnet/regions_unexplored/config/state/common/RUCommonConfig$BiomePlacements;
+      84: getfield      #205                // Field net/regions_unexplored/config/state/common/RUCommonConfig$BiomePlacements.placements:Ljava/util/Map;
+      87: invokeinterface #209,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      92: invokeinterface #215,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      97: astore_3
+      98: aload_3
+      99: invokeinterface #222,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     104: ifeq          152
+     107: aload_3
+     108: invokeinterface #225,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     113: checkcast     #17                 // class java/util/Map$Entry
+     116: astore        4
+     118: aload_1
+     119: aload_2
+     120: aload         4
+     122: invokeinterface #228,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+     127: checkcast     #230                // class net/minecraft/resources/ResourceKey
+     130: invokevirtual #290                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     133: invokevirtual #326                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+     136: aload         4
+     138: invokeinterface #233,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     143: checkcast     #120                // class net/regions_unexplored/config/state/common/BiomeTarget
+     146: invokestatic  #320                // Method addRegion:(Ldev/worldgen/lithostitched/api/event/AddRegionsEvent$RegionConsumer;Lnet/minecraft/core/Registry;Ljava/lang/String;Lnet/regions_unexplored/config/state/common/BiomeTarget;)V
+     149: goto          98
+     152: return
+
+  private static void lambda$init$0(net.minecraft.core.RegistryAccess, java.util.function.BiConsumer);
+    Code:
+       0: aload_1
+       1: ldc_w         #329                // String surface_rule/nether
+       4: invokestatic  #335                // Method net/regions_unexplored/RegionsUnexplored.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       7: invokestatic  #338                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.builder:()Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder;
+      10: getstatic     #343                // Field net/minecraft/world/level/Level.NETHER:Lnet/minecraft/resources/ResourceKey;
+      13: getstatic     #349                // Field dev/worldgen/lithostitched/api/util/InjectionType.PREPEND:Ldev/worldgen/lithostitched/api/util/InjectionType;
+      16: invokestatic  #355                // Method net/regions_unexplored/world/surface/RUSurfaceRuleBuilder.nether:()Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+      19: invokevirtual #359                // Method dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder.addSurfaceRule:(Lnet/minecraft/resources/ResourceKey;Ldev/worldgen/lithostitched/api/util/InjectionType;Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;)Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier;
+      22: invokeinterface #295,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      27: aload_0
+      28: getstatic     #185                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      31: invokeinterface #191,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      36: astore_2
+      37: aload_0
+      38: getstatic     #362                // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+      41: invokeinterface #191,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      46: astore_3
+      47: aload_1
+      48: ldc_w         #364                // String inferno/no_water_springs
+      51: invokestatic  #335                // Method net/regions_unexplored/RegionsUnexplored.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      54: invokestatic  #338                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.builder:()Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder;
+      57: aload_2
+      58: getstatic     #369                // Field net/regions_unexplored/registry/data/RUBiomes.INFERNO:Lnet/minecraft/resources/ResourceKey;
+      61: invokeinterface #247,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+      66: aload_3
+      67: getstatic     #374                // Field net/minecraft/data/worldgen/placement/MiscOverworldPlacements.SPRING_WATER:Lnet/minecraft/resources/ResourceKey;
+      70: invokeinterface #247,  2          // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+      75: getstatic     #378                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.FLUID_SPRINGS:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      78: invokevirtual #382                // Method dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder.removeFeatures:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;)Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier;
+      81: invokeinterface #295,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      86: aload_0
+      87: getstatic     #385                // Field net/minecraft/core/registries/Registries.DENSITY_FUNCTION:Lnet/minecraft/resources/ResourceKey;
+      90: invokeinterface #191,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      95: astore        4
+      97: aload_1
+      98: ldc_w         #387                // String inferno/no_aquifers
+     101: invokestatic  #335                // Method net/regions_unexplored/RegionsUnexplored.id:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     104: invokestatic  #338                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier.builder:()Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder;
+     107: getstatic     #390                // Field net/minecraft/world/level/Level.OVERWORLD:Lnet/minecraft/resources/ResourceKey;
+     110: getstatic     #396                // Field dev/worldgen/lithostitched/api/worldgen/util/NoiseRouterTarget.FLUID_LEVEL_FLOODEDNESS:Ldev/worldgen/lithostitched/api/worldgen/util/NoiseRouterTarget;
+     113: aload         4
+     115: getstatic     #401                // Field net/regions_unexplored/registry/data/RUDensityFunctions.INFERNO_WEIGHT:Lnet/minecraft/resources/ResourceKey;
+     118: invokeinterface #405,  2          // InterfaceMethod net/minecraft/core/Registry.getOrThrow:(Lnet/minecraft/resources/ResourceKey;)Ljava/lang/Object;
+     123: checkcast     #407                // class net/minecraft/world/level/levelgen/DensityFunction
+     126: ldc2_w        #408                // double 0.001d
+     129: ldc2_w        #410                // double 64.0d
+     132: dconst_0
+     133: invokestatic  #417                // Method net/minecraft/world/level/levelgen/DensityFunctions.constant:(D)Lnet/minecraft/world/level/levelgen/DensityFunction;
+     136: invokestatic  #423                // InterfaceMethod dev/worldgen/lithostitched/api/worldgen/densityfunction/LithostitchedDensityFunctions.wrappedMarker:()Lnet/minecraft/world/level/levelgen/DensityFunction;
+     139: invokestatic  #427                // Method net/minecraft/world/level/levelgen/DensityFunctions.rangeChoice:(Lnet/minecraft/world/level/levelgen/DensityFunction;DDLnet/minecraft/world/level/levelgen/DensityFunction;Lnet/minecraft/world/level/levelgen/DensityFunction;)Lnet/minecraft/world/level/levelgen/DensityFunction;
+     142: invokevirtual #431                // Method dev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier$ModifierBuilder.wrapNoiseRouter:(Lnet/minecraft/resources/ResourceKey;Ldev/worldgen/lithostitched/api/worldgen/util/NoiseRouterTarget;Lnet/minecraft/world/level/levelgen/DensityFunction;)Ldev/worldgen/lithostitched/api/worldgen/modifier/WorldgenModifier;
+     145: invokeinterface #295,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     150: return
+}
