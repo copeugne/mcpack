@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Four canonical dispositions now agree with previously verified provider evidence:
+Aether large_aercloud is terrain; Deep Aether altar_camp, campfire and
+combiner_corridor are registered but biome-ineligible in the captured baseline.
+All four remain coverage rows. Ten existing source/eligibility cases and scoped
+quality checks pass. The 128-name backlog is now 124: remove these four names
+from the dated list below. Working coverage groups remain 405, not a final active
+family count. No new capture or measurement was needed. Inventory refresh follows.
+
 Inventory matches cb74b266 and reproduces exactly. Working groups: 405. Voyager
 explicit provisionals: zero. The real broader backlog is the 128 named records
 below, plus nonregistry reconciliation and required attributes. Next work must
