@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-06
 
+Latest feature-role increment fbc383b is pushed and remote-ref verified.
+Source 762b6f9 captures the remaining 31 feature implementations with exact r1
+reproduction; the two earlier NBT features are reused. All 136 configured
+features across 37 types now have recorded roles at the end of provider-scope.md.
+Four focused cases and scoped quality checks pass. No additional independent
+candidate was found beyond the already recorded dungeon/well candidates.
+Census remains 74 resolved and 62 open. Do not repeat the feature pass.
+
+Next close Repurposed's non-feature generation/injection and lifecycle roles.
+Existing common/NeoForge entries register codecs, lifecycle/reload dispatch,
+map trades and pool additions. The seven uncaptured top-level generation
+implementations are CityNetherStructure, GenericJigsawStructure,
+GenericNetherJigsawStructure, MineshaftEndStructure, MineshaftStructure,
+ShipwreckNetherStructure and StrongholdEndStructure. Their concrete common
+assembly consumer is PieceLimitedJigsawManager (including Assembler); the
+piece-count reload path is StructurePieceCountsManager. Inspect those boundaries
+only where they can change the already enumerated candidate/component links.
+Do not treat every uncaptured utility, config, processor or data-holder class as
+a new mandatory work item. Reuse mansion/monument and residual resource roles.
+No blocker exists; final canonical count, attributes and review/main merge remain.
+
 Latest resource-role increment 9a1a30d is pushed and remote-ref verified.
 The preceding b1e0fa7 closes the custom mansion/monument resource partition.
 Repurposed's seven residual pools and 53 templates now have component roles
