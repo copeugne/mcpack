@@ -117,3 +117,34 @@ def test_create_entry_and_template_consumer_sources() -> None:
                 hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 == row["disassembly_sha256"]
             )
+
+
+def test_create_common_schematic_and_dynamic_data_sources() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "create-1.21.1-6.0.10.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        for label, digest, count in (
+            (
+                "create-common-schematics",
+                "740e8c093ef2e861d14015498e1c1c53cbab297810e68997f8dd6bec65441b8c",
+                5,
+            ),
+            (
+                "create-dynamic-data",
+                "48b9e6ce6979db0df0ea0003fffcfa95545336480a694270ff952993b1c3c70c",
+                1,
+            ),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            assert len(rows) == count
+            for row in rows:
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                assert (
+                    hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                    == row["disassembly_sha256"]
+                )
