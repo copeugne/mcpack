@@ -1,0 +1,318 @@
+Compiled from "NbtFeature.java"
+public class com.telepathicgrunt.repurposedstructures.world.features.NbtFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.telepathicgrunt.repurposedstructures.world.features.configs.NbtFeatureConfig> {
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor ignoreStructureVoid;
+
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings placementSettings;
+
+  public com.telepathicgrunt.repurposedstructures.world.features.NbtFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #28                 // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #31                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: aload_0
+       8: new           #33                 // class net/minecraft/world/level/levelgen/structure/templatesystem/BlockIgnoreProcessor
+      11: dup
+      12: getstatic     #39                 // Field net/minecraft/world/level/block/Blocks.STRUCTURE_VOID:Lnet/minecraft/world/level/block/Block;
+      15: invokestatic  #45                 // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      18: invokespecial #48                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/BlockIgnoreProcessor."<init>":(Ljava/util/List;)V
+      21: putfield      #50                 // Field ignoreStructureVoid:Lnet/minecraft/world/level/levelgen/structure/templatesystem/BlockIgnoreProcessor;
+      24: aload_0
+      25: new           #52                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings
+      28: dup
+      29: invokespecial #54                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings."<init>":()V
+      32: getstatic     #60                 // Field net/minecraft/world/level/block/Mirror.NONE:Lnet/minecraft/world/level/block/Mirror;
+      35: invokevirtual #64                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setMirror:(Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      38: aload_0
+      39: getfield      #50                 // Field ignoreStructureVoid:Lnet/minecraft/world/level/levelgen/structure/templatesystem/BlockIgnoreProcessor;
+      42: invokevirtual #68                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.addProcessor:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      45: iconst_0
+      46: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setIgnoreEntities:(Z)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      49: putfield      #74                 // Field placementSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+      52: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.telepathicgrunt.repurposedstructures.world.features.configs.NbtFeatureConfig>);
+    Code:
+       0: new           #8                  // class net/minecraft/core/BlockPos$MutableBlockPos
+       3: dup
+       4: invokespecial #81                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+       7: aload_1
+       8: invokevirtual #87                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      11: invokevirtual #91                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      14: astore_2
+      15: aload_2
+      16: getstatic     #97                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      19: invokevirtual #101                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      22: pop
+      23: aload_1
+      24: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      27: aload_2
+      28: invokeinterface #111,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      33: ifeq          55
+      36: aload_2
+      37: invokevirtual #115                // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      40: iconst_2
+      41: if_icmple     55
+      44: aload_2
+      45: getstatic     #118                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      48: invokevirtual #101                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      51: pop
+      52: goto          23
+      55: aload_1
+      56: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      59: aload_2
+      60: invokeinterface #122,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      65: invokevirtual #128                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+      68: ifne          115
+      71: aload_1
+      72: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      75: aload_2
+      76: invokevirtual #131                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+      79: invokeinterface #111,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      84: ifne          115
+      87: aload_1
+      88: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      91: aload_2
+      92: iconst_2
+      93: invokevirtual #134                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      96: invokeinterface #111,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     101: ifne          115
+     104: aload_2
+     105: getstatic     #118                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     108: invokevirtual #101                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     111: pop
+     112: goto          117
+     115: iconst_0
+     116: ireturn
+     117: aload_1
+     118: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     121: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     124: getfield      #142                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.nbtResourcelocationsAndWeights:Ljava/util/List;
+     127: invokeinterface #147,  1          // InterfaceMethod java/util/List.size:()I
+     132: ifne          137
+     135: iconst_0
+     136: ireturn
+     137: new           #8                  // class net/minecraft/core/BlockPos$MutableBlockPos
+     140: dup
+     141: invokespecial #81                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     144: astore_3
+     145: aload_1
+     146: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     149: invokeinterface #151,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+     154: invokevirtual #157                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+     157: invokevirtual #163                // Method net/minecraft/server/MinecraftServer.getStructureManager:()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+     160: astore        4
+     162: aload_1
+     163: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     166: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     169: getfield      #142                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.nbtResourcelocationsAndWeights:Ljava/util/List;
+     172: aload_1
+     173: invokevirtual #167                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     176: invokestatic  #173                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.getRandomEntry:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+     179: checkcast     #175                // class net/minecraft/resources/ResourceLocation
+     182: astore        5
+     184: aload         4
+     186: aload         5
+     188: invokevirtual #181                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+     191: astore        6
+     193: aload         6
+     195: invokevirtual #186                // Method java/util/Optional.isEmpty:()Z
+     198: ifeq          231
+     201: getstatic     #192                // Field com/telepathicgrunt/repurposedstructures/RepurposedStructures.LOGGER:Lorg/apache/logging/log4j/Logger;
+     204: aload_1
+     205: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     208: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     211: getfield      #142                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.nbtResourcelocationsAndWeights:Ljava/util/List;
+     214: invokeinterface #196,  1          // InterfaceMethod java/util/List.toString:()Ljava/lang/String;
+     219: invokedynamic #208,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     224: invokeinterface #214,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+     229: iconst_0
+     230: ireturn
+     231: aload         6
+     233: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     236: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     239: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     242: invokevirtual #228                // Method net/minecraft/core/Vec3i.getX:()I
+     245: iconst_2
+     246: idiv
+     247: istore        7
+     249: iload         7
+     251: ineg
+     252: istore        8
+     254: iload         8
+     256: iload         7
+     258: if_icmpgt     401
+     261: iload         7
+     263: ineg
+     264: istore        9
+     266: iload         9
+     268: iload         7
+     270: if_icmpgt     395
+     273: iload         8
+     275: iload         8
+     277: imul
+     278: iload         9
+     280: iload         9
+     282: imul
+     283: iadd
+     284: iload         7
+     286: iload         7
+     288: imul
+     289: iconst_1
+     290: iadd
+     291: if_icmpge     389
+     294: aload_3
+     295: aload_1
+     296: invokevirtual #87                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+     299: invokevirtual #91                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     302: iload         8
+     304: iconst_0
+     305: iload         9
+     307: invokevirtual #231                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(III)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     310: pop
+     311: aload_1
+     312: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     315: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     318: getfield      #235                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.allowInWater:Z
+     321: ifne          342
+     324: aload_1
+     325: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     328: aload_3
+     329: invokeinterface #239,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+     334: invokevirtual #242                // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+     337: ifne          342
+     340: iconst_0
+     341: ireturn
+     342: aload_1
+     343: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     346: aload_3
+     347: getstatic     #97                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     350: invokevirtual #101                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     353: invokeinterface #122,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     358: invokevirtual #245                // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     361: ifne          387
+     364: aload_1
+     365: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     368: aload_3
+     369: getstatic     #118                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+     372: iconst_3
+     373: invokevirtual #248                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     376: invokeinterface #122,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     381: invokevirtual #245                // Method net/minecraft/world/level/block/state/BlockState.canOcclude:()Z
+     384: ifne          389
+     387: iconst_0
+     388: ireturn
+     389: iinc          9, 1
+     392: goto          266
+     395: iinc          8, 1
+     398: goto          254
+     401: new           #10                 // class net/minecraft/core/BlockPos
+     404: dup
+     405: aload         6
+     407: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     410: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     413: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     416: invokevirtual #228                // Method net/minecraft/core/Vec3i.getX:()I
+     419: iconst_2
+     420: idiv
+     421: iconst_0
+     422: aload         6
+     424: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     427: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     430: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     433: invokevirtual #251                // Method net/minecraft/core/Vec3i.getZ:()I
+     436: iconst_2
+     437: idiv
+     438: invokespecial #254                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     441: astore        8
+     443: aload_0
+     444: getfield      #74                 // Field placementSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     447: aload_1
+     448: invokevirtual #167                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     451: invokestatic  #260                // Method net/minecraft/world/level/block/Rotation.getRandom:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/level/block/Rotation;
+     454: invokevirtual #264                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotation:(Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     457: aload         8
+     459: invokevirtual #268                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setRotationPivot:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     462: iconst_0
+     463: invokevirtual #72                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.setIgnoreEntities:(Z)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     466: pop
+     467: aload_1
+     468: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     471: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     474: getfield      #272                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.processor:Lnet/minecraft/resources/ResourceLocation;
+     477: ifnull        521
+     480: aload_1
+     481: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     484: invokeinterface #276,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     489: getstatic     #282                // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+     492: invokeinterface #288,  2          // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+     497: aload_1
+     498: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     501: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     504: getfield      #272                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.processor:Lnet/minecraft/resources/ResourceLocation;
+     507: invokeinterface #293,  2          // InterfaceMethod net/minecraft/core/Registry.getOptional:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/Optional;
+     512: aload_0
+     513: invokedynamic #312,  0            // InvokeDynamic #1:accept:(Lcom/telepathicgrunt/repurposedstructures/world/features/NbtFeature;)Ljava/util/function/Consumer;
+     518: invokevirtual #316                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     521: aload_3
+     522: aload_1
+     523: invokevirtual #87                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+     526: invokevirtual #91                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     529: pop
+     530: new           #10                 // class net/minecraft/core/BlockPos
+     533: dup
+     534: aload         6
+     536: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     539: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     542: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     545: invokevirtual #228                // Method net/minecraft/core/Vec3i.getX:()I
+     548: ineg
+     549: iconst_2
+     550: idiv
+     551: aload_1
+     552: invokevirtual #138                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     555: checkcast     #24                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig
+     558: getfield      #320                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/NbtFeatureConfig.heightOffset:I
+     561: aload         6
+     563: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     566: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     569: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.getSize:()Lnet/minecraft/core/Vec3i;
+     572: invokevirtual #251                // Method net/minecraft/core/Vec3i.getZ:()I
+     575: ineg
+     576: iconst_2
+     577: idiv
+     578: invokespecial #254                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     581: astore        9
+     583: aload         6
+     585: invokevirtual #217                // Method java/util/Optional.get:()Ljava/lang/Object;
+     588: checkcast     #219                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+     591: aload_1
+     592: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+     595: aload_3
+     596: aload         9
+     598: invokevirtual #324                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     601: aload_3
+     602: aload         9
+     604: invokevirtual #324                // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+     607: aload_0
+     608: getfield      #74                 // Field placementSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+     611: aload_1
+     612: invokevirtual #167                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     615: iconst_2
+     616: invokevirtual #328                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate.placeInWorld:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;Lnet/minecraft/util/RandomSource;I)Z
+     619: pop
+     620: iconst_1
+     621: ireturn
+
+  private void lambda$place$0(net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList);
+    Code:
+       0: aload_1
+       1: invokevirtual #350                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorList.list:()Ljava/util/List;
+       4: aload_0
+       5: getfield      #74                 // Field placementSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;
+       8: dup
+       9: invokestatic  #356                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: invokedynamic #362,  0            // InvokeDynamic #2:accept:(Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;)Ljava/util/function/Consumer;
+      18: invokeinterface #365,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      23: return
+}
