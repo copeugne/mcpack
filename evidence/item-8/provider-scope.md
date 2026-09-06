@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 75 of 136. The exact queue below has 61 open rows.
+Supported provider dispositions: 76 of 136. The exact queue below has 60 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -574,7 +574,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `[Neoforge]ctov-3.6.3.jar` | `ctov-provider` (82ac234), test_ctov_provider_scope.py, selection/bundle checks, existing CTOV regressions/graphs | RESOLVED: 78 existing roots, village/outpost components, compatibility injections and processors. Disconnected and missing components accounted for below. |
 | `accessories-neoforge-1.1.0-beta.53+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `adorabuild-structures-2.11.0-neoforge-1.21.3.jar` | `adorabuild-provider`, existing runtime/root and pool graph evidence | RESOLVED: 106 existing roots; all 110 pools and 121 templates connected; one preserved missing pool reference. See AdoraBuild provider disposition below. |
-| `aether-1.21.1-1.5.10-neoforge.jar` | `aether-bronze`, `aether-custom-entry`, `aether-piece-binding`, `aether-placement`, `aether-trap-bindings`, `aether-trapped-block` | Reconcile Bronze, Silver, Gold and terrain generation entry coverage; do not reopen Bronze helper internals. |
+| `aether-1.21.1-1.5.10-neoforge.jar` | Existing Aether source captures, test_aether_provider_scope.py and focused candidate/component checks | RESOLVED: Three dungeon candidates, cloud terrain, conditional holiday-tree boundary, inactive portal components, common hooks and selected-library roles accounted for below. Canonical grouping and attributes remain open. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
 | `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -3099,3 +3099,299 @@ uv run basedpyright tests/item8/test_repurposed_provider_scope.py tests/item8/te
 Census: 75 resolved providers and 61 open. Next reconcile Aether, reusing its
 existing Bronze, piece, placement and trap evidence. Do not repeat Repurposed's
 source capture, component partition or feature inventory during that work.
+
+## Aether candidate partition in progress
+
+Provider scope remains OPEN. The frozen archive is
+`aether-1.21.1-1.5.10-neoforge.jar`, SHA-256
+a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8.
+The existing cloud-provider test now binds the full packaged candidate partition:
+
+| Resource group | Count | Current disposition |
+| --- | ---: | --- |
+| Base structure roots | 4 | Bronze, Silver, Gold and large aercloud exactly match the captured Aether runtime registry. Reuse the existing cloud terrain disposition. |
+| Optional ruined-portal roots | 6 | Packaged under packs/ruined_portal, absent from the captured runtime registry. Preserve optional provenance; do not count them as active families. |
+| Bronze templates | 6 | Previously captured and linked to Bronze assembly. Do not reopen Bronze helper internals for provider coverage. |
+| Silver templates | 11 | Reconcile existing Silver entry with its builder and components, including test_door. |
+| Gold templates | 4 | Reconcile existing Gold entry with island, boss room, tunnel and stub components. |
+| Ruined-portal templates | 13 | Preserve their optional-pack relationship and check loader/entry consumers before final inactive disposition. |
+| Configured features | 25 | Eleven types. Four custom implementations are aercloud, lake, crystal island and shelf; the others are vanilla ore/tree/plant/spring/selector types with supplied configurations. Custom behavior and special tree decorations still need roles. |
+| Bundled JARs | 3 | Cumulus Menus 2.0.7, Accessories beta.48 and Nitrogen Internals 1.1.25, exact hashes bound by the test. Reconcile effective loader selection and shared roles; embedded filenames alone do not prove which version runs. |
+
+All 34 NBT templates are under these four component namespaces. This is a
+resource partition, not a canonical-family count or completed provider review.
+Reuse the existing Aether source directories and tested cloud/Bronze bindings.
+Remaining work is the named component consumers, custom feature/tree roles,
+loader/event/mixin entry coverage and bundled-library disposition.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Two focused cases and scoped quality checks pass. No new measurement or capture
+was needed for this resource partition. Census remains 75 resolved and 61 open.
+
+### Aether Silver and Gold component candidates
+
+The captured Silver entry selects rear, boss_room and skeleton. Its builder
+selects floor, door, wall, tall_staircase, boss_door, staircase and chest_room.
+SilverDungeonPiece qualifies supplied names under aether:silver_dungeon/.
+Together these account for ten of the eleven packaged Silver templates.
+The extra test_door template is not selected by these captured call-site names,
+and no class in the archive contains its literal name. Preserve it as an
+unselected component in these paths, not a separate family or a universal claim
+about dynamically supplied names.
+
+The captured Gold entry selects island, boss_room, stub and tunnel, accounting
+for all four packaged Gold templates. GoldDungeonPiece qualifies supplied names
+under aether:gold_dungeon/. Stub caves and the assembly pieces belong to this
+existing dungeon candidate. Do not count those pieces as independent families.
+
+The third case in test_aether_cloud_source.py binds the two exact source
+manifests, every class/disassembly hash in them, the literal namespace recipes
+in the frozen piece classes and these complete template-name partitions.
+It does not simulate layout reachability or prove placement success, assembled
+dimensions, boss behavior or visual discovery. These remain later attributes.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Three focused cases pass. One overlong manifest-reference line was corrected.
+Remaining Aether scope: custom feature/holiday-decoration roles, main-entry
+delegates/common hooks, optional portal consumer disposition and bundled-library
+selection/roles. Reuse this component partition; census stays 75 resolved and
+61 open until that provider scope is closed.
+
+### Aether holiday-tree candidate boundary
+
+Retain aether:holiday_tree as a named decoration/family-boundary candidate for
+canonical reconciliation. It is not an accepted additional canonical family.
+The configured tree's custom decorator places snow or provider-selected blocks
+around suitable base-log positions. The supplied weighted provider contains snow
+and aether:present. Do not dismiss that authored decoration solely because its
+configured feature type is minecraft:tree, or count each decorated block as a
+separate design.
+
+The fourth case in test_aether_cloud_source.py binds the exact configured and
+placed feature, the aether:holiday_filter placement entry and all four packaged
+Skyroot biome consumers (forest, woodland, meadow and grove). Frozen
+config/aether-server.toml has Generate Holiday Trees always=false and Generate
+Holiday Trees seasonally=true, SHA-256
+578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de.
+These are input bindings, not proof the seasonal filter passed in any recorded
+world. HolidayFilter is now captured in sources/aether-holiday-filter at 934edeb:
+it uses the JVM calendar month, permitting December and January with these
+frozen settings, subject to the other placement conditions. This resolves the
+filter-source question without claiming an observed tree. Present
+block reward behavior belongs to the later attribute pass, not provider scope.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Four focused cases and scoped quality checks pass. Keep this named ambiguity
+with the finite candidate list. Remaining provider roles and canonical grouping
+are still open; no new measurement system is required.
+
+### Aether custom feature roles
+
+The four custom feature implementations captured in sources/aether-provider
+have these roles in the packaged configurations:
+
+| Implementation | Contribution and census disposition |
+| --- | --- |
+| AercloudFeature | Writes the configured cloud block into empty positions along randomized clusters. Cloud terrain, not another authored structure family. |
+| AetherLakeFeature | Carves air and supplied fluid, replaces suitable surface material and freezes water where the biome permits. Lake terrain, not another authored structure family. |
+| ShelfFeature | Selects suitable ground/air boundaries and delegates supplied-block disk placement. The quicksoil configuration forms ground shelves. |
+| CrystalIslandFeature | Attempts the configured crystal tree, then forms its supporting grass/holystone ground with surface-material handling. Tree and terrain formation; no separate architectural component is selected by this implementation. |
+
+These roles use the existing captured implementations and packaged candidate
+partition, not a new world measurement. The holiday-tree decoration remains the
+separate named boundary above. Do not reopen these feature implementations to
+measure geometry or rewards during the census.
+
+Aether's remaining provider checks are main-entry/common-hook contributions,
+optional ruined-portal activation and component consumers, and effective
+selection/contribution roles for its three nested libraries. Provider census
+remains 75 resolved and 61 open; these are providers, not remaining families.
+
+### Aether nested-library runtime selection
+
+The preserved registry-r1 debug log explicitly records JarSelector using the
+top-level Accessories beta.53 archive instead of the embedded beta.48 candidate.
+Its final mod list contains Accessories 1.1.0-beta.53+1.21.1. Attribute active
+Accessories code to that retained provider's queue row; do not separately audit
+the unselected beta.48 implementation as another running contribution.
+
+Cumulus 2.0.7 and Nitrogen 1.1.25 appear in the final mod list, with discovery
+records identifying Aether as their parent. Their contribution roles remain to
+be resolved. The existing packaged partition binds all three embedded hashes;
+test_aether_nested_runtime_selection binds the log hash and exact selection,
+parent and final-list records. This closes selection, not library behavior.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Five focused cases and scoped quality checks pass. No new runtime run or
+measurement system. Continue main/common hooks, portal consumers, and the two
+selected embedded library roles before closing Aether's provider row.
+
+### Aether optional ruined-portal disposition
+
+The captured main entry registers builtin/aether_ruined_portal as a server-data
+pack. Its PackSource receives add_ruined_portal_automatically; Aether$2 returns
+that supplied boolean from shouldAddAutomatically. Frozen aether-common.toml
+sets Add Ruined Portals automatically=false. The pack is not required by its
+PackSelectionConfig. All six optional root definitions use aether:ruined_portal
+and are absent from the captured runtime registry. Disposition: optional,
+inactive structure candidates in this frozen registry, not active families.
+
+GlowstoneRuinedPortalStructure selects under the aether namespace from ten
+ruined_portal/portal_1 through portal_10 names and three giant_portal_1 through
+giant_portal_3 names. Its generation stub passes the selected resource to
+GlowstoneRuinedPortalPiece. These account for all thirteen packaged portal
+templates as components of the optional roots. Do not count the pieces as
+thirteen additional families or claim that another configuration cannot enable
+the optional pack.
+
+test_aether_cloud_source.py now binds the common-hook source manifest, exact
+portal template partition, all optional root types and frozen common-config
+hash. The initial read-only ZIP probe mistakenly included a directory entry
+and failed JSON decoding; rerunning with the .json filter resolved that probe
+error. No source evidence or frozen configuration was changed.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Six focused cases and scoped checks pass. This resolves the optional portal
+resource/activation boundary. Aether common-hook roles and selected bundled
+library roles remain open; census remains 75 resolved and 61 open.
+
+### Aether selected-library entry boundaries
+
+Source aether-cumulus-entry (62defac) records the Cumulus mod entry's CLIENT
+restriction, its client subscribers and its globally declared storage mixin.
+The mixin wraps the directory-lock check while loading level summaries: it
+returns false when world preview is active and MixinHooks.canUnlockLevel permits
+it, otherwise calling the original check. It does not place a structure in this
+captured method. The exact platform service is IPlatformHelper implemented by
+NeoForgePlatformHelper. Its behavior remains to be inspected before closure.
+
+Source aether-nitrogen-entry (9c29cff) records Nitrogen's entry and tooltip
+subscriber. In addition to user information and packet handling, the constructor
+registers loot types, biome-modifier serializers, foliage placers and trunk
+placers. Do not exclude its world-generation support based on its user hooks.
+Reconcile these serializers and their actual packaged consumers.
+
+The existing packaged partition test now checks both embedded payloads for data,
+packs and further embedded archives, enumerates their common mixins and binds
+the Cumulus platform-service declaration. Neither contains packaged data, packs
+or further JARs. Nitrogen has no common mixins or services; Cumulus has the one
+storage mixin and one platform service above. The first test attempt incorrectly
+asserted no services and failed on Cumulus. The corrected expectation preserves
+that discovered entry; it does not silently ignore it. Scoped type errors in
+the new mixin-list accumulation were also corrected. Six focused cases and
+scoped checks pass using the commands immediately above. Contribution roles
+remain open, not inferred from this payload partition alone.
+
+### Aether reload and selected-library role resolution
+
+Source aether-reload-consumers (7340422) closes the two reload handlers:
+RecipeReloadListener clears the freezing block's cached recipe tables and
+results; BannerReloadListener clears the cached Swet banner item. Neither
+selects or places another site.
+
+Source aether-cumulus-platform (300dd88) closes the platform service's role:
+it discovers CumulusEntrypoint-annotated MenuInitializer implementations for
+the client menu path and forwards supplied packets through PacketDistributor.
+Together with the captured client entry and storage-summary lock predicate,
+this accounts for Cumulus as menu/preview/platform support, not an independent
+structure provider. No runtime structure-placement success is implied.
+
+Source aether-nitrogen-world (c5d2128) resolves the registered world support:
+nitrogen_internals:add_mob_charge modifies the supplied biome's mob-spawn charge
+and energy budget for a supplied entity type. It does not select structure
+resources. hooked_trunk_placer builds trunks and branches from a supplied tree
+configuration and returns foliage attachments. aether_pine_foliage_placer and
+hooked_foliage_placer place leaf rows around supplied foliage attachments.
+These are mob-spawn settings and tree geometry, not independent architectural
+families. Nitrogen supplies no packaged data to invoke them independently;
+other mods' supplied configurations remain attributable to their own provider
+rows. Loot support remains relevant to the later attribute pass.
+
+All three source captures have exact reproducible commands and independently
+matching r1 output in their READMEs. This closes the reload-handler and selected
+library role questions using the existing source path, without a new validator
+or runtime sample. Aether's remaining common-hook reconciliation and final
+whole-provider check are still required. Census remains 75 resolved and 61 open.
+
+
+### Aether provider scope resolved
+
+The frozen archive's entry, declared common mixins and complete packaged payload
+are reconciled with the existing candidate/component evidence. Provider coverage
+is RESOLVED. This is not Item 8 completion or a final canonical-family count.
+
+The common hooks modify existing entities, equipment, combat, riding, time,
+dimension travel and player attachments. AbstractArrow handles arrow effects and
+synchronization; ArmorStand and Mob handle equipment; DimensionType handles time;
+Entity and LivingEntity handle travel/damage; Player handles riding/equipment and
+appearance; ServerPlayer removes its attached Aerbunny on disconnect. EventHooks
+modifies accessories on an existing mob's spawn. ModelBuilder handles model
+textures, and accessor mixins expose existing fields/methods. These are not
+independent structure starts. DimensionHooks initializes level data and manages
+time or portal interaction/travel; its callbacks do not select another authored
+world-generation design. The two reload cache handlers and library roles have
+separate resolved dispositions immediately above. Do not audit unrelated combat
+or attachment internals to repeat this provider census.
+
+The complete data partition adds no unassigned structure resources beyond the
+previously recorded roots, templates and feature boundary. Remaining data is
+recipes, advancements, tags, loot, damage types, songs, item fuel/composting maps,
+Moa types, trims and the Aether dimension/terrain definitions. The three developer
+functions only teleport, set spectator/night vision or replace dirt/stone with
+air. Their exact contents are bound by the provider test; they do not place sites.
+
+Optional classic, tips, CTM, colorblind and tooltip packs provide presentation
+resources; Accessories packs provide equipment slots/tags and temporary freezing
+provides recipes. The ruined-portal pack is accounted for above. The six
+Immersive Portals definitions convert conventional portals or respond to water
+bucket use between the Overworld and Aether. setupImmersivePortalsPack requires
+immersive_portals_core, absent from the hash-bound runtime mod list. These are
+inactive compatibility definitions, not additional active authored families.
+
+The inventory therefore retains Bronze, Silver and Gold dungeon candidates,
+large-aercloud terrain, and the explicitly named conditional holiday-tree
+boundary. Portal templates remain components of inactive optional roots. Preserve
+all earlier component/eligibility limitations; provider closure does not prove
+observed placement, dimensions, rewards or visual discoverability.
+
+The focused provider check reuses the established provider-test pattern. It
+binds the original archive, all fifteen existing source manifests and their
+class/disassembly identities, the complete payload partition, annotated entry,
+common mixins and exact function contents. Together with the candidate, nested
+selection and Bronze checks it is the bounded proof for this provider. Initial
+string-format lint findings were corrected without changing expected commands.
+
+```sh
+uv run pytest -q tests/item8/test_aether_bronze_components.py tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_provider_scope.py tests/item8/test_aether_cloud_source.py
+```
+
+Scoped checks pass. Census is 76 resolved providers and 60 open. Continue the
+remaining provider queue before canonical reconciliation and the eleven family
+attributes. No final Item 8 gate, review or merge is claimed.

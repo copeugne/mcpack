@@ -1,0 +1,98 @@
+Compiled from "ShelfFeature.java"
+public class com.aetherteam.aether.world.feature.ShelfFeature extends net.minecraft.world.level.levelgen.feature.Feature<com.aetherteam.aether.world.configuration.ShelfConfiguration> {
+  public com.aetherteam.aether.world.feature.ShelfFeature(com.mojang.serialization.Codec<com.aetherteam.aether.world.configuration.ShelfConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.aetherteam.aether.world.configuration.ShelfConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #21                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #25                 // class com/aetherteam/aether/world/configuration/ShelfConfiguration
+      23: astore        5
+      25: aload         4
+      27: invokevirtual #27                 // Method net/minecraft/core/BlockPos.getX:()I
+      30: istore        6
+      32: iload         6
+      34: aload         4
+      36: invokevirtual #27                 // Method net/minecraft/core/BlockPos.getX:()I
+      39: bipush        16
+      41: iadd
+      42: if_icmpge     199
+      45: aload         4
+      47: invokevirtual #33                 // Method net/minecraft/core/BlockPos.getZ:()I
+      50: istore        7
+      52: iload         7
+      54: aload         4
+      56: invokevirtual #33                 // Method net/minecraft/core/BlockPos.getZ:()I
+      59: bipush        16
+      61: iadd
+      62: if_icmpge     193
+      65: aload         5
+      67: invokevirtual #36                 // Method com/aetherteam/aether/world/configuration/ShelfConfiguration.yRange:()Lnet/minecraft/util/valueproviders/UniformInt;
+      70: invokevirtual #40                 // Method net/minecraft/util/valueproviders/UniformInt.getMinValue:()I
+      73: istore        8
+      75: iload         8
+      77: aload         5
+      79: invokevirtual #36                 // Method com/aetherteam/aether/world/configuration/ShelfConfiguration.yRange:()Lnet/minecraft/util/valueproviders/UniformInt;
+      82: invokevirtual #45                 // Method net/minecraft/util/valueproviders/UniformInt.getMaxValue:()I
+      85: if_icmpge     187
+      88: new           #28                 // class net/minecraft/core/BlockPos
+      91: dup
+      92: iload         6
+      94: iload         8
+      96: iload         7
+      98: invokespecial #48                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+     101: astore        9
+     103: aload_2
+     104: aload         9
+     106: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     111: invokevirtual #57                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     114: ifeq          181
+     117: aload_2
+     118: aload         9
+     120: invokevirtual #63                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     123: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     128: aload         5
+     130: invokevirtual #66                 // Method com/aetherteam/aether/world/configuration/ShelfConfiguration.validBlocks:()Lnet/minecraft/core/HolderSet;
+     133: invokevirtual #70                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/core/HolderSet;)Z
+     136: ifeq          181
+     139: aload_2
+     140: aload         9
+     142: iconst_2
+     143: invokevirtual #74                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+     146: invokeinterface #51,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     151: invokevirtual #57                 // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     154: ifeq          181
+     157: aload_2
+     158: aload         5
+     160: invokevirtual #77                 // Method com/aetherteam/aether/world/configuration/ShelfConfiguration.block:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     163: aload         9
+     165: aload         5
+     167: invokevirtual #81                 // Method com/aetherteam/aether/world/configuration/ShelfConfiguration.radius:()Lnet/minecraft/util/valueproviders/FloatProvider;
+     170: aload_3
+     171: invokevirtual #85                 // Method net/minecraft/util/valueproviders/FloatProvider.sample:(Lnet/minecraft/util/RandomSource;)F
+     174: aload_3
+     175: invokestatic  #91                 // Method com/aetherteam/aether/world/BlockPlacementUtil.placeDisk:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/core/BlockPos;FLnet/minecraft/util/RandomSource;)V
+     178: goto          187
+     181: iinc          8, 1
+     184: goto          75
+     187: iinc          7, 1
+     190: goto          52
+     193: iinc          6, 1
+     196: goto          32
+     199: iconst_1
+     200: ireturn
+}

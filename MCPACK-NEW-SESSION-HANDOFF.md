@@ -6,6 +6,111 @@
 
 ### Continuation update - 2026-09-06
 
+Aether provider coverage is now RESOLVED in the final provider-scope.md section.
+The census has advanced to 76 resolved and 60 open. Nine focused Aether cases
+pass, along with scoped Ruff/Basedpyright. The provider check binds fifteen
+existing source manifests, full archive partition, entry/common mixins and the
+three exact developer functions. No further Aether census helper audit is needed.
+Preserve the holiday-tree canonical boundary and inactive optional portals;
+family grouping and attributes remain separate. Continue the remaining provider
+queue, starting with Deep Aether and reusing its existing captures. Final Item 8
+gate, Codex review loop and verified main merge remain mandatory.
+
+Latest aac294c and dc5cda4 are pushed and verified. Six focused Aether cases
+and scoped checks pass. Optional portal activation/components are resolved:
+frozen common config disables automatic activation, six roots are absent from
+the runtime registry, and the captured generator selects exactly the thirteen
+packaged portal templates. Do not repeat that boundary.
+
+Extractor eb16438 and source increments 8c792b0 (aether-entry-delegates),
+62defac (aether-cumulus-entry), 9c29cff (aether-nitrogen-entry) are delivered.
+Each exact command and manifest hash is in its README; independent r1 matches.
+Cumulus's mod entry is CLIENT restricted, but its common storage mixin and
+IPlatformHelper service must be accounted for. The storage wrapper only changes
+the lock predicate while loading summaries; inspect NeoForgePlatformHelper's
+role before final closure. The first no-services test failed correctly and now
+binds that exact service. Nitrogen's constructor registers biome modifiers and
+tree placers as well as loot support, beyond its user-info hooks. Resolve those
+serializers and consumers; do not infer no contribution from no packaged data.
+
+DimensionHooks is captured; world-load initializes Aether level data, time hooks
+manage time, and portal interaction paths delegate portal-frame activation.
+Finish bounded role interpretation. ReloadListeners registers RecipeReloadListener
+and BannerReloadListener; those inner handlers are not yet captured. Keep any
+necessary follow-up tied to those concrete entry boundaries. A read-only catalog
+search found a Deep Aether loot modifier mentioning nitrogen; it is exploratory,
+not a complete consumer proof. Census stays 75 resolved and 61 open. No blocker.
+
+Latest delivered increments: 75ad62e records the four custom feature roles and
+resolves HolidayFilter; 5bf0795 binds actual nested-library selection to the
+preserved runtime log. Five focused Aether cases and scoped checks pass.
+Accessories beta.53 is selected from the retained top-level archive; do not
+audit embedded beta.48 as running code. Cumulus 2.0.7 and Nitrogen 1.1.25 load
+from Aether and still need contribution roles. Census remains 75 resolved and
+61 open. The user's immediate priority is closing this finite provider queue
+and canonical family denominator before returning to detailed attributes.
+
+Source 4487f8f, extractor 54c0801, captures 49 common-entry/listener/mixin and
+portal classes in sources/aether-common-hooks. Manifest SHA-256:
+9c3b21c8bf2eab73550acc646a9c74081c15daac08c941367f298adf0bb8c50f.
+Independent r1 matches all generated files. Both refs are pushed and verified.
+The earlier Aether main capture was non-verbose and lacked callback bootstrap
+bindings. The new capture fixes this concrete evidence gap using the existing
+extractor, with the old source preserved. Do not recapture these classes.
+
+Next interpret those roles and resolve the two selected nested libraries.
+DimensionListener delegates world-load/time/portal behavior to DimensionHooks;
+inspect that concrete boundary, not every gameplay helper. Main callbacks also
+identify AetherCommands and ReloadListeners; dataSetup is a GatherDataEvent
+callback. Portal pack source reads add_ruined_portal_automatically, whose frozen
+common config is false; six optional roots remain absent from the runtime
+registry. Its captured pack-source and portal-template consumers still need
+final reconciliation. Source capture alone does not close these roles or Aether.
+No runtime process is live and no external blocker exists.
+
+Latest Aether increments 93dbd29 and f3a2b1b are pushed and remote-ref verified.
+Silver's ten selected component names and Gold's four account for their template
+sets except Silver test_door, which has no literal reference in archive classes.
+Do not repeat this component reconciliation. Four focused Aether cloud/candidate
+cases and scoped quality checks pass.
+
+Retain aether:holiday_tree as a named decoration/family-boundary candidate, not
+an accepted additional canonical family. Its decorator selects snow/present
+blocks; all four packaged Skyroot biomes reference its placed feature. Frozen
+config has always=false and seasonally=true, hash
+578abca7702fcecdb39845a7043f6ec1c504f153f6d3b4af45daedb29df931de.
+HolidayFilter still needs inspection before effective eligibility is accepted.
+Present reward mechanics remain later attributes. The new candidate is recorded
+at the end of provider-scope.md and must survive canonical reconciliation.
+
+Next resolve the four captured custom feature roles, main-entry/common hooks,
+optional portal consumers and the three nested-library selection/roles. Initial
+CrystalIslandFeature reading shows a crystal-tree placement followed by ground
+formation, and ShelfFeature delegates supplied-block disk placement. Do not turn
+those initial reads into accepted provider exclusions without finishing the
+bounded role reconciliation. Census remains 75 resolved and 61 open. No blocker.
+
+Latest Aether source cb00a94 is pushed and remote-ref verified. Extractor 8976b7a
+captures 23 entry/plugin, custom feature, holiday-decoration and Silver/Gold
+assembly classes in sources/aether-provider. Manifest SHA-256:
+917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee.
+Independent r1 matches every generated file. Do not repeat these captures.
+
+Candidate partition 4bc4292 is also delivered: four base/runtime roots, six
+optional ruined-portal roots absent from the captured registry, 34 templates
+(six Bronze, eleven Silver, four Gold, thirteen portal), 25 configured features
+across eleven types, and three exact nested JAR identities. Two focused cloud/
+partition cases and scoped quality checks pass. See provider-scope.md's final
+Aether section for the finite resource queue and nested identities.
+
+Next interpret the captured Silver/Gold consumers and four custom features plus
+holiday decoration, then reconcile main-entry delegates, common mixins and the
+three bundled libraries. Source capture alone is not provider closure. Initial
+source reading has not produced accepted additional dispositions yet. Preserve
+the existing Bronze/cloud results and do not resume detailed attributes before
+the provider census and canonical grouping close. Census remains 75 resolved,
+61 open. No blocker exists; this turn delivered concrete evidence increments.
+
 Latest closure 716fadb is pushed and remote-ref verified. Repurposed Structures
 provider coverage is RESOLVED. Census is now 75 resolved providers and 61 open.
 Nine focused cases and scoped Ruff/Basedpyright pass. The full disposition is
