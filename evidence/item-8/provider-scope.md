@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 68 of 136. The exact queue below has 68 open rows.
+Supported provider dispositions: 69 of 136. The exact queue below has 67 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -558,7 +558,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `Terralith_1.21.1_v2.6.2_Neoforge.jar` | `terralith-provider` (b87f3bb), test_terralith_provider_scope.py | RESOLVED: 28 existing roots, terrain/vegetation and one named Frostfire ornament candidate. Overlay, disconnected and missing component dispositions below; canonical ornament grouping remains open. |
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | `desert-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | Existing suppression source; `desert-temple-provider` (02ae27e); test_desert_temple_provider_scope.py | RESOLVED: One existing root, 28 connected pools, 198 templates and one disconnected crushing corridor. Placement, Pharaoh/state hooks and component registrations accounted for below. |
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | Existing `betterdungeons-code`; `dungeons-provider` (f9696df); test_dungeons_provider_scope.py | RESOLVED: Five existing roots, 33 pools, 227 templates, one disconnected bridge and one missing zombie stair. Remaining registration/context/modifier paths are accounted for below. |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | Existing platform/gateway, configuration and generator captures; `end-island-provider` (6e1f551); test_end_island_provider_scope.py | RESOLVED: All 41 templates belong to the existing arrival platform, gateway and dragon arena groups. Remaining entry hooks modify these contributions; see disposition below. |
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-provider` (e4bb5e3), prior suppression source, test_jungle_temple_provider_scope.py | RESOLVED: One existing root, 17 connected pools and 127 templates including two disconnected table props. Custom placement and eight component processors accounted for below. |
@@ -2552,3 +2552,57 @@ concatenation. Narrow annotations/style corrections resolve them; Ruff and
 Basedpyright pass. Source capture reproduces exactly. Census: 68 resolved
 providers, 68 open. Whole-stack canonical grouping, effective attributes and
 Item 8's final review/delivery gate remain open.
+
+## Better Desert Temples provider disposition
+
+The frozen archive contains 323 files and 62 classes. Source 02ae27e adds 27
+entry, mixin, module, service, placement and state classes to the three already
+captured suppression/configuration classes. Remaining classes are configuration,
+Pharaoh-data interface, two chance-data holders and 26 component processors.
+The focused check binds archive/class/source identities, all declared mixins,
+three service selections and the absence of additional loader/subscriber/mixin
+or YUNG-module annotations on those remaining types. Module and processor-service
+codec references account for all 26 processor classes.
+
+The only packaged root equals the runtime betterdeserttemples:desert_temple.
+All 28 pools are connected. Of 198 templates, hall_room/crushing_corridor is the
+only disconnected component. The preserved graph has no missing references or
+unresolved elements. The sole processor list uses the 26 local codecs plus
+minecraft:rule. Armor stands, item frames, Pharaoh content, block/ornament changes
+and support construction are component consumers, not independent families.
+Their full effective attribute behavior is not claimed by this census closure.
+
+Common initialization scans the module package through YUNG API, and the NeoForge
+entry loads the existing configuration. The module service delegates to an empty
+default. Custom placement selects this temple through random-spread and biome
+search logic. Accessors expose biome source, box coordinates and processor
+operations. Existing vanilla suppression remains bound to the frozen settings.
+Shared YUNG API is separately open.
+
+The mining-fatigue and temple tags both name this existing root. Server-level
+initialization attaches a dimension-local temple-state cache. Player ticking
+checks survival, configuration, a loaded valid tagged temple and its uncleared
+state before applying mining fatigue. The Pharaoh utility recognizes a Husk by
+the packaged head-texture marker. Death/discard hooks attempt to mark the existing
+temple cleared using its original position, with current-position lookup if that
+position is absent. Other Pharaoh hooks store/restore that position; cache/region
+code persists cleared-state flags. Sound/effect handling affects the existing
+encounter. These paths do not add another structure design. Keep the exact
+source predicates and runtime-behavior limitations rather than inferring that
+every generated temple contains or successfully processes the Pharaoh.
+
+All other payload is loot, tags, advancements, translations, visual assets and
+loader metadata. There are no nested archives, functions or additional generation
+resource categories. This closes provider candidate scope, not Item 8 attributes.
+
+```sh
+uv run pytest -q tests/item8/test_desert_temple_provider_scope.py tests/item8/test_yung_suppression.py
+uv run ruff check tests/item8/test_desert_temple_provider_scope.py
+uv run basedpyright tests/item8/test_desert_temple_provider_scope.py
+```
+
+Seven affected cases pass. The first test-generation attempt had a quoting error
+and produced no test file; the corrected attempt passed the cases. One overlong
+line was then corrected, and scoped Ruff/Basedpyright pass. Source reproduction
+matches exactly. Census: 69 resolved providers, 67 open. Whole-stack family
+count, canonical decisions, attributes and final review/main merge remain open.
