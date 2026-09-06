@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-06
 
+Latest Repurposed candidate increment 5d51d25 is pushed and remote-ref
+verified. Census remains 74 resolved providers, 62 open. Repurposed Structures
+is OPEN. Source 452e33e preserves 45 entry, NBT feature/configuration, modifier,
+pool-addition and common mixin classes with exact r1 reproduction. Earlier
+34 mansion/monument/processor/pool classes remain reusable evidence.
+
+Important candidate omission found and recorded at the end of provider-scope.md:
+sixteen dungeon NBT feature configurations and seven well configurations were
+absent from the current nonregistry contribution list. The focused test binds
+all 23 to matching placed features, biome modifiers and existing templates.
+One case and scoped quality checks pass. These are configurations/candidates,
+not 23 canonical families; ocean temperature variants share template choices.
+Do not lose this candidate list or postpone it behind attributes.
+
+Next reconcile remaining Repurposed feature roles and the complete pool/template
+partition, plus entry/hook roles and supported exclusions. Initial archive
+counts: 5842 files, 248 classes, 107 structure definitions, 37 structure sets,
+1099 pools, 327 processor lists, 136 configured features, 157 placed features
+and 3162 templates. These are resource counts, not family counts or scope closure.
+Do not recapture delivered NBT, mansion or monument sources. Final canonical
+count, eleven attributes and review/main merge remain open. This turn delivered
+source and a verified candidate increment; no blocker is present.
+
 Latest closure at 6e9da02 is pushed and remote-ref verified. Census:
 74 resolved providers, 62 open. Zeta provider scope is closed. Its one packaged
 biome modifier, registration/module/configuration/generator dispatch and
