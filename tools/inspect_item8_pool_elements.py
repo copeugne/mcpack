@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "azurelibarmor-neo-1.21.1-3.1.2.jar",
         "player-animation-lib-forge-2.0.4+1.21.1.jar",
         "emi_ores-1.2+1.21.1+neoforge.jar",
         "dummmmmmy-1.21-2.0.12-neoforge.jar",
@@ -199,6 +200,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "mod/azure/azurelibarmor/AzureLib.class",
+    "mod/azure/azurelibarmor/AzureLibMod.class",
+    "mod/azure/azurelibarmor/neoforge/NeoForgeAzureLibMod.class",
+    "mod/azure/azurelibarmor/neoforge/platform/NeoForgeAzureLibInitializer.class",
+    "mod/azure/azurelibarmor/neoforge/platform/NeoForgeAzureLibNetwork.class",
+    "mod/azure/azurelibarmor/neoforge/platform/NeoForgePlatformHelper.class",
+    "mod/azure/azurelibarmor/common/internal/mixins/AbstractContainerMenuMixin_AzItemIDFix.class",
+    "mod/azure/azurelibarmor/common/internal/mixins/ItemStackMixin_AzItemStackIdentityRegistry.class",
     "dev/kosmx/playerAnim/forge/ForgeClientEvent.class",
     "dev/kosmx/playerAnim/impl/mixin/MixinConfig.class",
     "cc/abbie/emi_ores/EmiOres.class",
