@@ -5778,7 +5778,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
 | `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | RESOLVED: Empty initializer, creative-menu modification callbacks and client UI resources. Source 07cd09b; no independent family. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | RESOLVED: Entry and seven common/server hooks 4de41d1, initializer 353d68f. Existing lifecycle callbacks and loaded-chunk bookkeeping; no independent family. |
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
@@ -6411,3 +6411,25 @@ All 29 cases and scoped checks pass. Fabric: 28 resolved modules, 15 open.
 Whole providers: 90 resolved, 46 open. No family-list change. Continue the
 remaining named module and provider roles, then outstanding canonical grouping;
 do not repeat these completed initializer paths or resume detailed attributes.
+
+### Fabric item-group membership resolved
+
+Source 07cd09b binds the empty generated initializer and ItemGroupMixin.
+The latter forwards consumer callbacks for creative-tab display and search
+collections. The complete payload comprises fifteen classes, ordinary loader
+metadata, an access transformer, common and client mixin declarations, an icon,
+29 translations and the creative-menu button texture. The sole automatic entry
+is captured; the sole common hook and sole client hook are accounted for.
+These contributions introduce no generated family.
+
+All 30 cases in tests/item8/test_fabric_provider_scope.py pass. Scoped Ruff and
+Basedpyright pass after correcting an initial literal-list lint finding. Reuse
+the validation commands above. Fabric now has 29 resolved modules and 14 open;
+whole providers remain 90 resolved and 46 open. No family-list change.
+
+Sources 2cbd452 (content registries, sixteen classes), a17da36 (data attachment,
+six classes) and 36951e9 (data generation, eleven classes) are also delivered.
+Their manifests and every disassembly reproduce byte for byte with commands in
+the respective READMEs. Their membership rows stay open pending contribution
+roles and payload bindings. Data attachment specifically calls the uncaptured
+AttachmentEntrypoint.onInitialize. Do not repeat these delivered entry captures.

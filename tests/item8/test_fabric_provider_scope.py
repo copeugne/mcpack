@@ -106,6 +106,13 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-item-group-api-v1-4.1.7+e324903319",
+            "fabric-item-group-entry",
+            "b7ad297470f753293f94ea1519ca76b23e352c0952946b6452d43a52410cd5d3",
+            1,
+            {"org/sinytra/fabric/item_group_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-command-api-v2-2.2.28+36d727be19",
             "fabric-command-entry",
             "2905c60a6b616efc27154aa9fb5cf2768184f535238df1cbaf8d406d1a72a3f5",
@@ -308,6 +315,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-item-group-api-v1": (15, 1),
                 "fabric-command-api-v2": (16, 1),
                 "fabric-lifecycle-events-v1": (73, 5),
                 "fabric-entity-events-v1": (47, 0),
@@ -336,8 +344,17 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert not client.get("plugin")
                 if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
                             "fabric-recipe-api-v1", "fabric-command-api-v2",
-                            "fabric-lifecycle-events-v1"}:
+                            "fabric-lifecycle-events-v1", "fabric-item-group-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
+                if name == "fabric-item-group-api-v1":
+                    extras.add("assets/fabric/textures/gui/creative_buttons.png")
+                    extras.update(f"assets/fabric/lang/{locale}.json" for locale in (
+                        "bg_bg", "de_de", "el_gr", "en_us", "eo_uy", "es_cl", "es_es",
+                        "es_mx", "et_ee", "fa_ir", "fi_fi", "fr_fr", "is_is", "it_it",
+                        "ja_jp", "ko_kr", "ms_my", "nl_nl", "pl_pl", "pt_br", "ru_ru",
+                        "sv_se", "tok", "tr_tr", "tt_ru", "uk_ua", "vi_vn", "zh_cn", "zh_tw",
+
+                    ))
                 assert files - classes == extras | {
                     "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
                     "META-INF/architectury-loom-nesting-metadata.json",

@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric item-group membership is resolved using source 07cd09b. Thirty focused
+cases and scoped checks pass; no family added. Fabric: 29 resolved, 14 open.
+Whole providers: 90 resolved, 46 open. Three further entry captures are delivered:
+content registries 2cbd452, data attachment a17da36, data generation 36951e9.
+Next inspect their captured contribution roles and bind full payloads in the
+existing test. Data attachment also calls AttachmentEntrypoint.onInitialize,
+not yet captured. Reuse these sources; do not recapture their 33 entry/hook
+classes. Canonical family count remains open pending provider and grouping work.
+
+
 Fabric command and lifecycle membership is resolved. Initializer sources are
 703f0ac and 353d68f, supplementing existing entry captures. All 29 focused cases
 and scoped checks pass, including the lifecycle server-only hook. Fabric now
