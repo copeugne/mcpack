@@ -5177,3 +5177,37 @@ hashes and compares every packaged tree-component class against the captured
 set. Final RU common-entry interpretation and provider closure remain open;
 archive, overlay, feature and tree-component coverage need no repetition.
 Census remains 88 resolved providers, 48 open.
+
+### Create packaged generation boundary
+
+Source 1fa2306, extractor cb34d9e, preserves AllFeatures, LayeredOreFeature,
+ConfigPlacementFilter and CreateGameTests. Independent capture reproduces
+byte-for-byte; identities SHA-256 is
+7fb69a735eb1ffd0ada39ca9d1950120cf5fa87b142dc3e9814fab7ab9b5a5fe.
+
+The hash-bound packaged data contains exactly three configured/placed/modifier
+chains: zinc_ore, striated_ores_overworld and striated_ores_nether. Zinc uses
+vanilla ore; the other two use the registered layered_ore feature. The captured
+writer selects supplied layer states and replaces matching terrain, respecting
+write eligibility and air exposure. It does not create another site candidate.
+ConfigPlacementFilter reads the common world-generation disable flag. Effective
+activation is separate from this contribution-role disposition.
+
+All 245 top-level NBT resources partition into 67 data/create/structure/gametest
+paths and 178 assets/create/ponder paths. CreateGameTests registers the six test
+classes with RegisterGameTestsEvent and delegates test construction to
+CreateTestFunction. Exact template-consumer reconciliation remains required;
+this resource-path partition alone does not prove reachability or exclusion.
+No packaged structure definitions or template pools occur in the full data
+category partition. Embedded archive contents remain outside this partial check.
+
+```sh
+uv run pytest -q tests/item8/test_create_provider_scope.py
+uv run ruff check tests/item8/test_create_provider_scope.py
+uv run basedpyright tests/item8/test_create_provider_scope.py
+```
+
+One focused case passes (0.13s); scoped checks pass. Initial formatting and
+untyped JSON findings were corrected. Create remains OPEN for common entry,
+embedded-library roles and remaining template consumers. Census remains
+89 resolved and 47 open. Reuse these ore-source and packaged-data checks.
