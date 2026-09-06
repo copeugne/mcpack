@@ -8881,3 +8881,11 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_va
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory refreshed from e11fe710 and independently reproduced byte for byte.
+SHA-256: 2c45fab771257defa1c76dfcf8c52b0193ba8d72a73b22cacf241d254c82698a.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-houses-r2.json
+```
