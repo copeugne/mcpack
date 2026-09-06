@@ -80,8 +80,13 @@ if TYPE_CHECKING:
      "d713942af83a5e1f30c824e2cef9b04cde23d2024ba46d7955b57ec3d457cd2b",
      {"icon.png", "shield_api-common-common-refmap.json", "shield_api.mixins.json"},
      {"net/fabric_extras/neoforge/NeoForgeMod.class"}),
+    ("projectile-library", 34,
+     "7ee4ba1c377fb21900a6a47e8ac3a041ab29128fd250f97bbdb611d4b77656a1",
+     {"icon.png", "pack.mcmeta", "ritchiesprojectilelib-forge.mixins.json",
+      "ritchiesprojectilelib.accesswidener", "ritchiesprojectilelib.mixins.json"},
+     {"rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class"}),
 ])
-def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901 - explicit archive cases.
+def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901, PLR0912 - explicit cases.
     name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
 ) -> None:
     directory = Path(f"evidence/item-8/sources/{name}-provider")
@@ -101,7 +106,7 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901 - expli
         }
         # Full explicit accounting excludes nested archives, data packs, templates,
         # extra entry metadata and generation resources. Code roles are inspected
-        # in sources/small-utility-providers.md, not inferred from search absence.
+        # in source README files, not inferred from search absence.
         for row in identities:
             assert row["archive"] == source.name
             assert row["archive_sha256"] == source.sha256
@@ -125,15 +130,23 @@ def test_complete_small_utility_payload_and_entry_binding(  # noqa: C901 - expli
             expected = {"com/frikinjay/almanac/config/neoforge/AlmanacConfigNeoforge.class"}
         elif name in {"bundle-api", "shield-api"}:
             expected = {c for c in classes if c.endswith("/client/NeoForgeClientMod.class")}
+        elif name == "projectile-library":
+            expected = {
+                "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
+                "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
+            }
         assert subscribers == expected
         metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
         assert metadata["modLoader"] == "javafml"
         declarations = cast("list[dict[str, str]]", metadata.get("mixins", []))
-        assert {r["config"] for r in declarations} == {
-            n for n in other_files if n.endswith(".mixins.json")
-        }
-        for row in declarations:
-            mixin = cast("dict[str, JsonValue]", json.loads(archive.read(row["config"])))
+        mixin_files = {n for n in other_files if n.endswith(".mixins.json")}
+        if name == "projectile-library":
+            assert not declarations
+            assert archive.read("META-INF/MANIFEST.MF") == b"Manifest-Version: 1.0\r\n\r\n"
+        else:
+            assert {r["config"] for r in declarations} == mixin_files
+        for config in sorted(mixin_files):
+            mixin = cast("dict[str, JsonValue]", json.loads(archive.read(config)))
             assert "plugin" not in mixin
             for side in ("mixins", "client", "server"):
                 for member in cast("list[str]", mixin.get(side, [])):
