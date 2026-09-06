@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Priority correction: finish actual family membership decisions before further
+library detail or attributes. BOP anomaly and monolith are now two explicit
+nonregistry families; both bone-spine IDs are excluded natural decoration.
+Five focused cases, scoped checks and inventory reproduction pass. Next settle
+BOP giant-pumpkin and pumpkin-patch boundaries from existing captured writers,
+then the remaining named architecture/landmark groups. Provider census stays
+90 resolved and 46 open; do not substitute it for a final family count.
+The uncommitted Fabric loot/recipe initializer captures are preserved locally;
+they have not closed the four pending module rows.
+
 Fabric lookup is resolved. Source 6a7858d (extractor 65b700e) shows its startup
 callback validates caller-supplied entity types by constructing an instance and
 checking API compatibility, without adding it to the world or registering a
