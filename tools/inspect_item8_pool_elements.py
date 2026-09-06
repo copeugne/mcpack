@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "emi_loot-0.7.9+1.21+neoforge.jar",
         "Patchouli-1.21.1-93-NEOFORGE.jar",
         "cloth-config-15.0.140-neoforge.jar",
         "cristellib-neoforge-1.21.1-3.1.7.jar",
@@ -208,6 +209,16 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "fzzyhmstrs/emi_loot/EMILoot.class",
+    "fzzyhmstrs/emi_loot/neoforge/EMILootNeoForge.class",
+    "fzzyhmstrs/emi_loot/neoforge/EMILootAgnosNeoForge.class",
+    "fzzyhmstrs/emi_loot/neoforge/events/EMILootGameEvents.class",
+    "fzzyhmstrs/emi_loot/neoforge/events/EMILootClientGameEvents.class",
+    "fzzyhmstrs/emi_loot/neoforge/events/EMILootClientModEvents.class",
+    "fzzyhmstrs/emi_loot/mixins/DataPackContentsMixin.class",
+    "fzzyhmstrs/emi_loot/mixins/ReloadableRegistriesMixin.class",
+    "fzzyhmstrs/emi_loot/server/ServerResourceData.class",
+    "fzzyhmstrs/emi_loot/server/LootBuilder.class",
     "com/natamus/collective_common_neoforge/config/GenerateJSONFiles.class",
     "com/natamus/collective_common_neoforge/config/LoadJSONFiles.class",
     "com/natamus/collective_common_neoforge/data/GlobalVariables.class",
