@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 99 of 136. The exact queue below has 37 open rows.
+Supported provider dispositions: 100 of 136. The exact queue below has 36 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -655,7 +655,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Source 51ba791c; test_small_utility_provider_scope.py | RESOLVED: Item/dispenser-placed target dummy and existing-entity interaction hooks. No independent family. See target dummy disposition below. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `emi_ores-1.2+1.21.1+neoforge.jar` | Source 824f34de; test_small_utility_provider_scope.py | RESOLVED: Reads and sends existing ore/geode generation information; no independent family. See EMI Ores disposition below. |
 | `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
@@ -6931,3 +6931,38 @@ Twenty focused cases and scoped quality checks pass. Whole providers: 99
 resolved, 37 open (20 code-reference, 17 unmatched-search). No family added.
 Continue the remaining provider contribution checks and Moog grouping before
 attributes. These are membership checks, not a new gameplay measurement system.
+
+### EMI Ores membership resolved
+
+Source 824f34de covers both entries, common initialization, platform helper,
+datapack synchronization and all thirteen common mixins. The common initializer
+is empty. NeoForge registers two client-bound payloads and a datapack-sync
+listener. The listener enumerates existing placed features and biome generation
+settings, selects ore/geode configurations and sends their information to clients.
+Its new PlacedFeature objects contain filtered placement modifiers for the
+outgoing information map. They are not registered or placed into a world.
+
+All common mixins are abstract accessor methods exposing existing generation
+parameters: block/state tests, probabilities, counts, height providers, rarity,
+state lists and tags. There are no injected generation methods. The platform
+helper only returns the configuration path. The client entry initializes its
+information display and clears received feature data on logout. There is no
+independent structure-family contribution. This display's filtered information
+is not a substitute for effective-generation or pacing evidence.
+
+The complete payload binds 33 classes, 72 language/interface/texture assets
+and five metadata/mixin files. No data pack, template, service or nested archive
+occurs. Two automatic entries and the single mixin declaration are accounted
+for. The eighteen captured sources reproduce byte for byte. The existing utility
+test binds the complete payload, entries, accessors and disassembly identities.
+No further client rendering or serialization audit is needed for membership.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twenty-one cases and scoped quality checks pass. Whole providers: 100 resolved,
+36 open (19 code-reference, 17 unmatched-search). No family added. Continue the
+remaining provider checks and canonical Moog grouping before detailed attributes.
