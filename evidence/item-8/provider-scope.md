@@ -704,6 +704,31 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Common setup dispatch is now retained in 6bfcf37 (extractor 9e9c74b), manifest
+cbab9d898accfb9bedc9ab98c56e9b85f08747a062353dd8350d5699dbfad049.
+Its bootstrap targets bind the registered setup, asyncSetup and tag-dependent
+callbacks. The latter two reach the already inspected disabled-block processor
+and road-sign destination cache. Reuse those component roles. Setup registers
+flammability, frame filling, item behavior and compatibility callbacks; it is
+not itself an independent site generator.
+
+Source dbcbefc (extractor 77b2261), manifest
+3a14ffe0a11a67a2cb31b7825dce2fe1bdef83b644754f89816a63558144b58a,
+retains RegUtils and CompatHandler. RegUtils.registerAdditionalPlacements passes
+pancakes, sticks, blaze rods, gunpowder and lunch baskets to item-placement APIs.
+This resolves that named route as item-to-block placement, not world generation.
+CompatHandler.setup has four conditional calls: CreateCompat, CCCompat,
+SoulFiredCompat and ShulkerBoxTooltipCompat. Its optional registry initialization
+also dispatches named integrations. Their retained/absent status and contribution
+roles still need reconciliation; the dispatcher capture alone does not close
+them. Keep this specific remaining boundary instead of reopening all setup code.
+
+Both captures reproduce independently and their class/disassembly identities
+are bound in the existing provider test. Three focused cases pass (0.90s), with
+scoped Ruff and Basedpyright passing. MixinSquared, remaining common and mixin
+roles, and complete parent payload accounting remain open. Census stays 78
+resolved and 58 open. No final canonical-family denominator is claimed.
+
 Bundled Sable Companion service role is resolved in source 53c2374 (extractor
 bbae69f). Its four-class manifest is
 0e58be3a4ae7cc39891a83c05fd25707e7dafc44831648596ee5ea64dafef660,

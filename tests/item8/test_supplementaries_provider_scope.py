@@ -132,6 +132,19 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     )
     entries = cast("list[dict[str, str]]", json.loads(raw))
     assert len(entries) == len({row["class"] for row in entries}) == 7
+    setup_captures: list[tuple[Path, list[dict[str, str]]]] = []
+    for name, count, expected_sha in (
+        ("supplementaries-setup", 1,
+         "cbab9d898accfb9bedc9ab98c56e9b85f08747a062353dd8350d5699dbfad049"),
+        ("supplementaries-setup-delegates", 2,
+         "3a14ffe0a11a67a2cb31b7825dce2fe1bdef83b644754f89816a63558144b58a"),
+    ):
+        capture_directory = Path("evidence/item-8/sources") / name
+        raw = (capture_directory / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == expected_sha
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(rows) == len({row["class"] for row in rows}) == count
+        setup_captures.append((capture_directory, rows))
     with ZipFile(source.path) as archive:
         mixins = cast(
             "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
@@ -148,6 +161,7 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
             (callback_directory, callback),
             (placement_directory, placement),
             (entry_directory, entries),
+            *setup_captures,
         ):
             for row in rows:
                 assert row["archive"] == source.name
