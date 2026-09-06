@@ -801,6 +801,15 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.class",
     "org/betterx/betterend/world/carvers/EndTunnelCarver.class",
     "org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration.class",
+    "biomesoplenty/core/BiomesOPlenty.class",
+    "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
+    "biomesoplenty/neoforge/datagen/DataGenerationHandler.class",
+    "biomesoplenty/init/ModBiomes.class",
+    "biomesoplenty/worldgen/feature/BOPBaseFeatures.class",
+    "biomesoplenty/worldgen/carver/BOPWorldCarvers.class",
+    "biomesoplenty/worldgen/carver/OriginCaveWorldCarver.class",
+    "biomesoplenty/neoforge/mixin/MixinBloodFluid.class",
+    "biomesoplenty/neoforge/mixin/MixinLiquidNullFluid.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -927,6 +936,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "biomesoplenty/core/BiomesOPlenty.class",
+                    "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
+                    "biomesoplenty/neoforge/datagen/DataGenerationHandler.class",
                     "org/betterx/betterend/BetterEnd.class",
                     "org/betterx/betterend/client/BetterEndClient.class",
                     "com/scouter/oceansdelight/OceansDelight.class",
