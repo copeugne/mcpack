@@ -288,3 +288,54 @@ def test_fabric_small_library_membership(
                     row["disassembly_sha256"]
                     == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 )
+
+
+def test_fabric_v2_tag_membership() -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/fabric-convention-tags-v2-2.11.1+87e5848019.jar"
+    directory = Path("evidence/item-8/sources/fabric-v2-tags")
+    raw = (directory / "identities.json").read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "4ed85ef4b7306e87cb6c093f14dee2a4d02809ab75b3d7f985829fff663e6588"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 4
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        with ZipFile(BytesIO(payload)) as archive:
+            files = {n for n in archive.namelist() if not n.endswith("/")}
+            classes = {n for n in files if n.endswith(".class")}
+            data = {n for n in files if n.startswith("data/")}
+            lang = {n for n in files if n.startswith("assets/fabric-convention-tags-v2/lang/")}
+            assert len(classes) == 16
+            assert len(data) == 491
+            assert len(lang) == 14
+            assert all(n.split("/")[2] == "tags" for n in data)
+            assert files - classes - data - lang == {
+                "META-INF/MANIFEST.MF",
+                "META-INF/neoforge.mods.toml",
+                "META-INF/architectury-loom-nesting-metadata.json",
+                "fabric-convention-tags-api-v2.mixins.json",
+                "assets/fabric-convention-tags-v2/icon.png",
+            }
+            config = cast(
+                "dict[str, object]",
+                json.loads(archive.read("fabric-convention-tags-api-v2.mixins.json")),
+            )
+            assert config["mixins"] == ["TagKeyMixin"]
+            assert not config.get("plugin")
+            assert not config.get("server")
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert (
+                    row["disassembly_sha256"]
+                    == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                )

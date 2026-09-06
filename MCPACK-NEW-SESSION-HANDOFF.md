@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric v2 conventional tags resolved: source e1c7c24, extractor 27f6181,
+independently reproduced. Conventional tag keys, tag interface and translation
+warnings add no family. Full partition and source binding pass in eight focused
+Fabric cases; scoped checks pass. Module queue: seven resolved, 36 open. Next:
+remaining named module entries/hooks. Whole census stays 90 resolved, 46 open.
+No live runtime or capture process.
+
 Fabric v1 conventional tags resolved: source 73efd5b, extractor ff7e104,
 independently reproduced. Tag keys and server-start migration warnings only;
 no data/mixin/service payload. Seven focused Fabric cases and scoped checks pass.
