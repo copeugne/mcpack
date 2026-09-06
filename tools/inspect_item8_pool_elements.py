@@ -221,6 +221,10 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/ishland/c2me/C2MEMod.class",
     "com/ishland/c2me/PreLaunchHandler.class",
+    "com/ishland/c2me/server/utils/common/C2MECommands.class",
+    "com/bawnorton/mixinsquared/platform/neoforge/MixinSquaredMixinConfigPlugin.class",
+    "com/bawnorton/mixinsquared/platform/neoforge/MixinCancellerLoader.class",
+    "com/bawnorton/mixinsquared/platform/neoforge/MixinAnnotationAdjusterLoader.class",
     "com/ishland/c2me/base/mixin/access/IAquiferSamplerFluidLevel.class",
     "com/ishland/c2me/base/mixin/access/IAtomicSimpleRandomDeriver.class",
     "com/ishland/c2me/base/mixin/access/IBelowZeroRetrogen.class",
@@ -3554,6 +3558,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar",
+        "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar!/META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
         "META-INF/jars/c2me-client-uncapvd-mc1.21.1-0.3.0+alpha.0.93.jar",
         "META-INF/jars/c2me-fixes-chunkio-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar",
         "META-INF/jars/c2me-fixes-general-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar",
@@ -3637,6 +3643,17 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "786eadfced7e24c2386aced089cf30908778038de02642cc559fffe32e73b127",
+        ),
+        (
+            "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar!/META-INF/jars/MixinSquared-0.2.0-beta.6.jar"
+        ): (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "f4c369efa82f65210a54b78e7cab51cb24944e3650ba070c8d074f868d7f19ac",
+        ),
+
         "META-INF/jars/c2me-client-uncapvd-mc1.21.1-0.3.0+alpha.0.93.jar": (
             "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
             "9fd9e416c95b7e79cd91f9f0f6873b10f2c2d5a435d797aca166ad465834965c",
