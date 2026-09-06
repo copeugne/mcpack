@@ -3434,3 +3434,25 @@ Two focused cases and scoped checks pass. Deep Aether remains OPEN. Remaining
 work is the named structure/feature consumers, annotated/common mixin entries,
 optional-pack roles and nested-library selection/contribution roles. Census
 remains 76 resolved and 60 open; no new measurement system is required.
+
+### Deep Aether library selection and entry source
+
+The preserved registry-r1 log explicitly selects retained TerraBlender 4.1.0.8
+over embedded 4.1.0.3. Its final mod list confirms that version and AeroBlender
+1.0.0; the discovery record identifies Deep Aether as AeroBlender's parent.
+test_deep_aether_nested_runtime_selection binds these records and the exact log
+hash. Attribute active TerraBlender behavior to its retained provider row and
+do not audit the unselected embedded implementation as another running provider.
+AeroBlender's contribution role remains open.
+
+The existing extractor now captures Deep Aether's fourteen annotated entries,
+eleven common mixins, feature registration/nine remaining implementations and
+eight Brass/jigsaw consumers in sources/deep-aether-provider. Manifest SHA-256:
+71c441da5bd3213d84b0ce9f1f38f098979d158b3f16146397428b99e958d5c4.
+Independent r1 matches every generated file. Verbose source preserves side
+annotations and callback bindings. Interpret these captured boundaries before
+following any helper; do not repeat the totem or candidate partition.
+
+Three focused candidate/selection/totem cases and scoped checks pass using the
+commands above. Provider coverage remains OPEN. Source capture is not acceptance
+of the contribution roles; no final family count or Item 8 completion is claimed.

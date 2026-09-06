@@ -15,6 +15,23 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_deep_aether_nested_runtime_selection() -> None:
+    raw = Path("evidence/raw/item8/registry-r1/debug.log").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
+    )
+    lines = raw.decode().splitlines()
+    assert any("JarSelector/" in line and "passed in as source: terrablender" in line
+               and line.endswith("/mods/TerraBlender-neoforge-1.21.1-4.1.0.8.jar")
+               for line in lines)
+    assert "\t\tTerraBlender 4.1.0.8 (terrablender)" in lines
+    assert "\t\tTerraBlender 4.1.0.3 (terrablender)" not in lines
+    assert any('Found mod file "aeroblender-1.21.1-1.0.0-neoforge.jar"' in line
+               and "[parent: deep_aether-1.21.1-1.1.5.1.jar, locator: jarinjar," in line
+               for line in lines)
+    assert "\t\tAeroBlender 1.0.0 (aeroblender)" in lines
+
+
 def test_deep_aether_packaged_candidate_partition() -> None:
     source = next(s for s in retained_sources(Path.cwd())
                   if s.name == "deep_aether-1.21.1-1.1.5.1.jar")
