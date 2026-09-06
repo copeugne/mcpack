@@ -1,0 +1,56 @@
+Compiled from "ZetaModForge.java"
+public class org.violetmoon.zetaimplforge.mod.ZetaModForge extends org.violetmoon.zeta.mod.ZetaMod {
+  public static final org.violetmoon.zetaimplforge.mod.ZetaModCommonProxy PROXY;
+
+  public org.violetmoon.zetaimplforge.mod.ZetaModForge(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: new           #1                  // class org/violetmoon/zetaimplforge/ForgeZeta
+       4: dup
+       5: ldc           #5                  // String zeta
+       7: getstatic     #7                  // Field org/violetmoon/zeta/mod/ZetaMod.LOGGER:Lorg/apache/logging/log4j/Logger;
+      10: invokespecial #11                 // Method org/violetmoon/zetaimplforge/ForgeZeta."<init>":(Ljava/lang/String;Lorg/apache/logging/log4j/Logger;)V
+      13: invokespecial #15                 // Method org/violetmoon/zeta/mod/ZetaMod."<init>":(Lorg/violetmoon/zeta/Zeta;)V
+      16: getstatic     #18                 // Field PROXY:Lorg/violetmoon/zetaimplforge/mod/ZetaModCommonProxy;
+      19: getstatic     #24                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      22: invokevirtual #28                 // Method org/violetmoon/zetaimplforge/mod/ZetaModCommonProxy.registerEvents:(Lorg/violetmoon/zeta/Zeta;)V
+      25: getstatic     #24                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      28: getfield      #33                 // Field org/violetmoon/zeta/Zeta.isProduction:Z
+      31: ifne          85
+      34: getstatic     #24                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      37: getfield      #39                 // Field org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      40: ldc           #43                 // class org/violetmoon/zetaimplforge/EventTest
+      42: invokevirtual #45                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      45: pop
+      46: getstatic     #24                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      49: getfield      #51                 // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      52: ldc           #43                 // class org/violetmoon/zetaimplforge/EventTest
+      54: invokevirtual #45                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      57: pop
+      58: getstatic     #54                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+      61: getstatic     #60                 // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+      64: if_acmpne     85
+      67: getstatic     #65                 // Field net/neoforged/fml/loading/FMLEnvironment.production:Z
+      70: ifne          85
+      73: getstatic     #24                 // Field ZETA:Lorg/violetmoon/zeta/Zeta;
+      76: getfield      #51                 // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      79: ldc           #68                 // class org/violetmoon/zeta/client/config/widget/ZButtonHandler
+      81: invokevirtual #45                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      84: pop
+      85: return
+
+  static {};
+    Code:
+       0: getstatic     #54                 // Field net/neoforged/fml/loading/FMLEnvironment.dist:Lnet/neoforged/api/distmarker/Dist;
+       3: getstatic     #60                 // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+       6: if_acmpne     19
+       9: new           #70                 // class org/violetmoon/zetaimplforge/mod/ZetaModClientProxy
+      12: dup
+      13: invokespecial #72                 // Method org/violetmoon/zetaimplforge/mod/ZetaModClientProxy."<init>":()V
+      16: goto          26
+      19: new           #29                 // class org/violetmoon/zetaimplforge/mod/ZetaModCommonProxy
+      22: dup
+      23: invokespecial #75                 // Method org/violetmoon/zetaimplforge/mod/ZetaModCommonProxy."<init>":()V
+      26: putstatic     #18                 // Field PROXY:Lorg/violetmoon/zetaimplforge/mod/ZetaModCommonProxy;
+      29: return
+}

@@ -1,0 +1,1374 @@
+Classfile Zeta-1.1-40.jar!/org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin.class
+  Last modified Apr 24, 2026; size 10682 bytes
+  SHA-256 checksum fd8d67c3738b9ac0e21e7d327f75102d4c2e2c8e97d1adce48df173198b9fc9b
+  Compiled from "InterfaceDelegateMixinPlugin.java"
+public class org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin implements org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #174                        // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 10, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+    #8 = Class              #10           // com/google/common/collect/HashMultimap
+    #9 = NameAndType        #11:#12       // create:()Lcom/google/common/collect/HashMultimap;
+   #10 = Utf8               com/google/common/collect/HashMultimap
+   #11 = Utf8               create
+   #12 = Utf8               ()Lcom/google/common/collect/HashMultimap;
+   #13 = InterfaceMethodref #14.#15       // org/spongepowered/asm/mixin/extensibility/IMixinInfo.getClassNode:(I)Lorg/objectweb/asm/tree/ClassNode;
+   #14 = Class              #16           // org/spongepowered/asm/mixin/extensibility/IMixinInfo
+   #15 = NameAndType        #17:#18       // getClassNode:(I)Lorg/objectweb/asm/tree/ClassNode;
+   #16 = Utf8               org/spongepowered/asm/mixin/extensibility/IMixinInfo
+   #17 = Utf8               getClassNode
+   #18 = Utf8               (I)Lorg/objectweb/asm/tree/ClassNode;
+   #19 = String             #20           // .
+   #20 = Utf8               .
+   #21 = String             #22           // /
+   #22 = Utf8               /
+   #23 = Methodref          #24.#25       // java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #24 = Class              #26           // java/lang/String
+   #25 = NameAndType        #27:#28       // replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #26 = Utf8               java/lang/String
+   #27 = Utf8               replace
+   #28 = Utf8               (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+   #29 = Class              #30           // org/violetmoon/zeta/mixin/plugin/DelegateInterfaceMixin
+   #30 = Utf8               org/violetmoon/zeta/mixin/plugin/DelegateInterfaceMixin
+   #31 = Methodref          #32.#33       // org/spongepowered/asm/util/Annotations.getVisible:(Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/Class;)Lorg/objectweb/asm/tree/AnnotationNode;
+   #32 = Class              #34           // org/spongepowered/asm/util/Annotations
+   #33 = NameAndType        #35:#36       // getVisible:(Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/Class;)Lorg/objectweb/asm/tree/AnnotationNode;
+   #34 = Utf8               org/spongepowered/asm/util/Annotations
+   #35 = Utf8               getVisible
+   #36 = Utf8               (Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/Class;)Lorg/objectweb/asm/tree/AnnotationNode;
+   #37 = Fieldref           #38.#39       // org/objectweb/asm/tree/ClassNode.access:I
+   #38 = Class              #40           // org/objectweb/asm/tree/ClassNode
+   #39 = NameAndType        #41:#42       // access:I
+   #40 = Utf8               org/objectweb/asm/tree/ClassNode
+   #41 = Utf8               access
+   #42 = Utf8               I
+   #43 = Class              #44           // org/objectweb/asm/Opcodes
+   #44 = Utf8               org/objectweb/asm/Opcodes
+   #45 = String             #46           // delegate
+   #46 = Utf8               delegate
+   #47 = Methodref          #32.#48       // org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+   #48 = NameAndType        #49:#50       // getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+   #49 = Utf8               getValue
+   #50 = Utf8               (Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+   #51 = Class              #52           // org/objectweb/asm/Type
+   #52 = Utf8               org/objectweb/asm/Type
+   #53 = Methodref          #51.#54       // org/objectweb/asm/Type.getInternalName:()Ljava/lang/String;
+   #54 = NameAndType        #55:#56       // getInternalName:()Ljava/lang/String;
+   #55 = Utf8               getInternalName
+   #56 = Utf8               ()Ljava/lang/String;
+   #57 = String             #58           // methods
+   #58 = Utf8               methods
+   #59 = Class              #60           // java/util/List
+   #60 = Utf8               java/util/List
+   #61 = InterfaceMethodref #59.#62       // java/util/List.iterator:()Ljava/util/Iterator;
+   #62 = NameAndType        #63:#64       // iterator:()Ljava/util/Iterator;
+   #63 = Utf8               iterator
+   #64 = Utf8               ()Ljava/util/Iterator;
+   #65 = InterfaceMethodref #66.#67       // java/util/Iterator.hasNext:()Z
+   #66 = Class              #68           // java/util/Iterator
+   #67 = NameAndType        #69:#70       // hasNext:()Z
+   #68 = Utf8               java/util/Iterator
+   #69 = Utf8               hasNext
+   #70 = Utf8               ()Z
+   #71 = InterfaceMethodref #66.#72       // java/util/Iterator.next:()Ljava/lang/Object;
+   #72 = NameAndType        #73:#74       // next:()Ljava/lang/Object;
+   #73 = Utf8               next
+   #74 = Utf8               ()Ljava/lang/Object;
+   #75 = Class              #76           // org/objectweb/asm/tree/AnnotationNode
+   #76 = Utf8               org/objectweb/asm/tree/AnnotationNode
+   #77 = String             #78           // target
+   #78 = Utf8               target
+   #79 = Methodref          #32.#80       // org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;Z)Ljava/util/List;
+   #80 = NameAndType        #49:#81       // getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;Z)Ljava/util/List;
+   #81 = Utf8               (Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;Z)Ljava/util/List;
+   #82 = String             #83           // desc
+   #83 = Utf8               desc
+   #84 = Class              #85           // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference
+   #85 = Utf8               org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference
+   #86 = Methodref          #87.#88       // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.tokenize:(Ljava/lang/String;)Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+   #87 = Class              #89           // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor
+   #88 = NameAndType        #90:#91       // tokenize:(Ljava/lang/String;)Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+   #89 = Utf8               org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor
+   #90 = Utf8               tokenize
+   #91 = Utf8               (Ljava/lang/String;)Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+   #92 = Methodref          #84.#93       // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)V
+   #93 = NameAndType        #5:#94        // "<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)V
+   #94 = Utf8               (Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)V
+   #95 = InterfaceMethodref #96.#97       // com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   #96 = Class              #98           // com/google/common/collect/Multimap
+   #97 = NameAndType        #99:#100      // put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+   #98 = Utf8               com/google/common/collect/Multimap
+   #99 = Utf8               put
+  #100 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Z
+  #101 = Fieldref           #38.#102      // org/objectweb/asm/tree/ClassNode.methods:Ljava/util/List;
+  #102 = NameAndType        #58:#103      // methods:Ljava/util/List;
+  #103 = Utf8               Ljava/util/List;
+  #104 = Class              #105          // org/objectweb/asm/tree/MethodNode
+  #105 = Utf8               org/objectweb/asm/tree/MethodNode
+  #106 = Fieldref           #104.#107     // org/objectweb/asm/tree/MethodNode.name:Ljava/lang/String;
+  #107 = NameAndType        #108:#109     // name:Ljava/lang/String;
+  #108 = Utf8               name
+  #109 = Utf8               Ljava/lang/String;
+  #110 = Fieldref           #104.#111     // org/objectweb/asm/tree/MethodNode.desc:Ljava/lang/String;
+  #111 = NameAndType        #83:#109      // desc:Ljava/lang/String;
+  #112 = InvokeDynamic      #0:#113       // #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #113 = NameAndType        #114:#115     // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #114 = Utf8               makeConcatWithConstants
+  #115 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #116 = InterfaceMethodref #96.#117      // com/google/common/collect/Multimap.containsKey:(Ljava/lang/Object;)Z
+  #117 = NameAndType        #118:#119     // containsKey:(Ljava/lang/Object;)Z
+  #118 = Utf8               containsKey
+  #119 = Utf8               (Ljava/lang/Object;)Z
+  #120 = Fieldref           #87.#121      // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.ret:Ljava/lang/String;
+  #121 = NameAndType        #122:#109     // ret:Ljava/lang/String;
+  #122 = Utf8               ret
+  #123 = Methodref          #24.#124      // java/lang/String.hashCode:()I
+  #124 = NameAndType        #125:#126     // hashCode:()I
+  #125 = Utf8               hashCode
+  #126 = Utf8               ()I
+  #127 = String             #128          // V
+  #128 = Utf8               V
+  #129 = Methodref          #24.#130      // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #130 = NameAndType        #131:#119     // equals:(Ljava/lang/Object;)Z
+  #131 = Utf8               equals
+  #132 = String             #42           // I
+  #133 = String             #134          // S
+  #134 = Utf8               S
+  #135 = String             #136          // C
+  #136 = Utf8               C
+  #137 = String             #138          // B
+  #138 = Utf8               B
+  #139 = String             #140          // Z
+  #140 = Utf8               Z
+  #141 = String             #142          // J
+  #142 = Utf8               J
+  #143 = String             #144          // F
+  #144 = Utf8               F
+  #145 = String             #146          // D
+  #146 = Utf8               D
+  #147 = Class              #148          // java/util/HashMap
+  #148 = Utf8               java/util/HashMap
+  #149 = Methodref          #147.#3       // java/util/HashMap."<init>":()V
+  #150 = InterfaceMethodref #96.#151      // com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+  #151 = NameAndType        #152:#153     // get:(Ljava/lang/Object;)Ljava/util/Collection;
+  #152 = Utf8               get
+  #153 = Utf8               (Ljava/lang/Object;)Ljava/util/Collection;
+  #154 = Fieldref           #104.#155     // org/objectweb/asm/tree/MethodNode.instructions:Lorg/objectweb/asm/tree/InsnList;
+  #155 = NameAndType        #156:#157     // instructions:Lorg/objectweb/asm/tree/InsnList;
+  #156 = Utf8               instructions
+  #157 = Utf8               Lorg/objectweb/asm/tree/InsnList;
+  #158 = Methodref          #159.#160     // org/objectweb/asm/tree/InsnList.size:()I
+  #159 = Class              #161          // org/objectweb/asm/tree/InsnList
+  #160 = NameAndType        #162:#126     // size:()I
+  #161 = Utf8               org/objectweb/asm/tree/InsnList
+  #162 = Utf8               size
+  #163 = Methodref          #159.#164     // org/objectweb/asm/tree/InsnList.get:(I)Lorg/objectweb/asm/tree/AbstractInsnNode;
+  #164 = NameAndType        #152:#165     // get:(I)Lorg/objectweb/asm/tree/AbstractInsnNode;
+  #165 = Utf8               (I)Lorg/objectweb/asm/tree/AbstractInsnNode;
+  #166 = Class              #167          // org/objectweb/asm/tree/InsnNode
+  #167 = Utf8               org/objectweb/asm/tree/InsnNode
+  #168 = Methodref          #169.#170     // org/objectweb/asm/tree/AbstractInsnNode.getOpcode:()I
+  #169 = Class              #171          // org/objectweb/asm/tree/AbstractInsnNode
+  #170 = NameAndType        #172:#126     // getOpcode:()I
+  #171 = Utf8               org/objectweb/asm/tree/AbstractInsnNode
+  #172 = Utf8               getOpcode
+  #173 = Methodref          #174.#175     // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin.buildTransforms:(Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection;Ljava/util/Map;)V
+  #174 = Class              #176          // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin
+  #175 = NameAndType        #177:#178     // buildTransforms:(Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection;Ljava/util/Map;)V
+  #176 = Utf8               org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin
+  #177 = Utf8               buildTransforms
+  #178 = Utf8               (Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection;Ljava/util/Map;)V
+  #179 = InterfaceMethodref #180.#181     // java/util/Map.keySet:()Ljava/util/Set;
+  #180 = Class              #182          // java/util/Map
+  #181 = NameAndType        #183:#184     // keySet:()Ljava/util/Set;
+  #182 = Utf8               java/util/Map
+  #183 = Utf8               keySet
+  #184 = Utf8               ()Ljava/util/Set;
+  #185 = InterfaceMethodref #186.#62      // java/util/Set.iterator:()Ljava/util/Iterator;
+  #186 = Class              #187          // java/util/Set
+  #187 = Utf8               java/util/Set
+  #188 = InterfaceMethodref #180.#189     // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #189 = NameAndType        #152:#190     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #190 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #191 = Methodref          #159.#192     // org/objectweb/asm/tree/InsnList.insertBefore:(Lorg/objectweb/asm/tree/AbstractInsnNode;Lorg/objectweb/asm/tree/InsnList;)V
+  #192 = NameAndType        #193:#194     // insertBefore:(Lorg/objectweb/asm/tree/AbstractInsnNode;Lorg/objectweb/asm/tree/InsnList;)V
+  #193 = Utf8               insertBefore
+  #194 = Utf8               (Lorg/objectweb/asm/tree/AbstractInsnNode;Lorg/objectweb/asm/tree/InsnList;)V
+  #195 = InvokeDynamic      #1:#196       // #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #196 = NameAndType        #114:#197     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #197 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #198 = Fieldref           #104.#39      // org/objectweb/asm/tree/MethodNode.access:I
+  #199 = InterfaceMethodref #200.#62      // java/util/Collection.iterator:()Ljava/util/Iterator;
+  #200 = Class              #201          // java/util/Collection
+  #201 = Utf8               java/util/Collection
+  #202 = Fieldref           #84.#203      // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference.descriptor:Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+  #203 = NameAndType        #204:#205     // descriptor:Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+  #204 = Utf8               descriptor
+  #205 = Utf8               Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+  #206 = Methodref          #174.#207     // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin.foldTransformerParams:(Ljava/lang/String;ZLorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)Lorg/objectweb/asm/tree/InsnList;
+  #207 = NameAndType        #208:#209     // foldTransformerParams:(Ljava/lang/String;ZLorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)Lorg/objectweb/asm/tree/InsnList;
+  #208 = Utf8               foldTransformerParams
+  #209 = Utf8               (Ljava/lang/String;ZLorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)Lorg/objectweb/asm/tree/InsnList;
+  #210 = Class              #211          // org/objectweb/asm/tree/MethodInsnNode
+  #211 = Utf8               org/objectweb/asm/tree/MethodInsnNode
+  #212 = Fieldref           #84.#107      // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference.name:Ljava/lang/String;
+  #213 = Methodref          #87.#214      // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.toString:()Ljava/lang/String;
+  #214 = NameAndType        #215:#56      // toString:()Ljava/lang/String;
+  #215 = Utf8               toString
+  #216 = Methodref          #210.#217     // org/objectweb/asm/tree/MethodInsnNode."<init>":(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+  #217 = NameAndType        #5:#218       // "<init>":(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+  #218 = Utf8               (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+  #219 = Methodref          #159.#220     // org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+  #220 = NameAndType        #221:#222     // add:(Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+  #221 = Utf8               add
+  #222 = Utf8               (Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+  #223 = InterfaceMethodref #180.#117     // java/util/Map.containsKey:(Ljava/lang/Object;)Z
+  #224 = Methodref          #159.#225     // org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/InsnList;)V
+  #225 = NameAndType        #221:#226     // add:(Lorg/objectweb/asm/tree/InsnList;)V
+  #226 = Utf8               (Lorg/objectweb/asm/tree/InsnList;)V
+  #227 = InterfaceMethodref #180.#228     // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #228 = NameAndType        #99:#229      // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #229 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #230 = Fieldref           #87.#231      // org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+  #231 = NameAndType        #232:#233     // params:[Ljava/lang/String;
+  #232 = Utf8               params
+  #233 = Utf8               [Ljava/lang/String;
+  #234 = Methodref          #159.#3       // org/objectweb/asm/tree/InsnList."<init>":()V
+  #235 = Class              #236          // org/objectweb/asm/tree/VarInsnNode
+  #236 = Utf8               org/objectweb/asm/tree/VarInsnNode
+  #237 = Methodref          #235.#238     // org/objectweb/asm/tree/VarInsnNode."<init>":(II)V
+  #238 = NameAndType        #5:#239       // "<init>":(II)V
+  #239 = Utf8               (II)V
+  #240 = Methodref          #24.#241      // java/lang/String.charAt:(I)C
+  #241 = NameAndType        #242:#243     // charAt:(I)C
+  #242 = Utf8               charAt
+  #243 = Utf8               (I)C
+  #244 = Class              #245          // org/spongepowered/asm/mixin/extensibility/IMixinConfigPlugin
+  #245 = Utf8               org/spongepowered/asm/mixin/extensibility/IMixinConfigPlugin
+  #246 = Utf8               Code
+  #247 = Utf8               LineNumberTable
+  #248 = Utf8               LocalVariableTable
+  #249 = Utf8               this
+  #250 = Utf8               Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+  #251 = Utf8               onLoad
+  #252 = Utf8               (Ljava/lang/String;)V
+  #253 = Utf8               mixinPackage
+  #254 = Utf8               getRefMapperConfig
+  #255 = Utf8               shouldApplyMixin
+  #256 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Z
+  #257 = Utf8               targetClassName
+  #258 = Utf8               mixinClassName
+  #259 = Utf8               acceptTargets
+  #260 = Utf8               (Ljava/util/Set;Ljava/util/Set;)V
+  #261 = Utf8               myTargets
+  #262 = Utf8               Ljava/util/Set;
+  #263 = Utf8               otherTargets
+  #264 = Utf8               LocalVariableTypeTable
+  #265 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+  #266 = Utf8               Signature
+  #267 = Utf8               (Ljava/util/Set<Ljava/lang/String;>;Ljava/util/Set<Ljava/lang/String;>;)V
+  #268 = Utf8               getMixins
+  #269 = Utf8               ()Ljava/util/List;
+  #270 = Utf8               ()Ljava/util/List<Ljava/lang/String;>;
+  #271 = Utf8               preApply
+  #272 = Utf8               (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+  #273 = Utf8               targetClass
+  #274 = Utf8               Lorg/objectweb/asm/tree/ClassNode;
+  #275 = Utf8               mixinInfo
+  #276 = Utf8               Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+  #277 = Utf8               postApply
+  #278 = Utf8               targetName
+  #279 = Utf8               targetMethods
+  #280 = Utf8               delegateMethod
+  #281 = Utf8               Lorg/objectweb/asm/tree/AnnotationNode;
+  #282 = Utf8               insnNode
+  #283 = Utf8               Lorg/objectweb/asm/tree/InsnNode;
+  #284 = Utf8               node
+  #285 = Utf8               Lorg/objectweb/asm/tree/AbstractInsnNode;
+  #286 = Utf8               i
+  #287 = Utf8               transformationTarget
+  #288 = Utf8               targetDescriptor
+  #289 = Utf8               opcode
+  #290 = Utf8               transformations
+  #291 = Utf8               Ljava/util/Map;
+  #292 = Utf8               nodes
+  #293 = Utf8               Ljava/util/Collection;
+  #294 = Utf8               methodName
+  #295 = Utf8               method
+  #296 = Utf8               Lorg/objectweb/asm/tree/MethodNode;
+  #297 = Utf8               callInvoker
+  #298 = Utf8               delegatedMethods
+  #299 = Utf8               targets
+  #300 = Utf8               Lcom/google/common/collect/Multimap;
+  #301 = Utf8               mixinClass
+  #302 = Utf8               thisOwner
+  #303 = Utf8               delegateInterface
+  #304 = Utf8               Ljava/util/List<Ljava/lang/String;>;
+  #305 = Utf8               Ljava/util/Map<Lorg/objectweb/asm/tree/InsnNode;Lorg/objectweb/asm/tree/InsnList;>;
+  #306 = Utf8               Ljava/util/Collection<Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;
+  #307 = Utf8               Ljava/util/List<Lorg/objectweb/asm/tree/AnnotationNode;>;
+  #308 = Utf8               Lcom/google/common/collect/Multimap<Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;
+  #309 = Utf8               StackMapTable
+  #310 = Utf8               transformerDescriptor
+  #311 = Utf8               transformation
+  #312 = Utf8               transformer
+  #313 = Utf8               Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;
+  #314 = Utf8               owner
+  #315 = Utf8               returnNode
+  #316 = Utf8               transformers
+  #317 = Utf8               ownerType
+  #318 = Utf8               isStatic
+  #319 = Utf8               (Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection<Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;Ljava/util/Map<Lorg/objectweb/asm/tree/InsnNode;Lorg/objectweb/asm/tree/InsnList;>;)V
+  #320 = Utf8               targetIndex
+  #321 = Utf8               transformerParam
+  #322 = Utf8               localVarsToLoad
+  #323 = Utf8               firstWasThis
+  #324 = Utf8               lvtIndex
+  #325 = Utf8               SourceFile
+  #326 = Utf8               InterfaceDelegateMixinPlugin.java
+  #327 = Utf8               NestMembers
+  #328 = Utf8               BootstrapMethods
+  #329 = String             #330          // \u0001\u0001
+  #330 = Utf8               \u0001\u0001
+  #331 = String             #332          // L\u0001;
+  #332 = Utf8               L\u0001;
+  #333 = MethodHandle       6:#334        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #334 = Methodref          #335.#336     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #335 = Class              #337          // java/lang/invoke/StringConcatFactory
+  #336 = NameAndType        #114:#338     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #337 = Utf8               java/lang/invoke/StringConcatFactory
+  #338 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #339 = Utf8               InnerClasses
+  #340 = Utf8               MethodReference
+  #341 = Utf8               Descriptor
+  #342 = Class              #343          // java/lang/invoke/MethodHandles$Lookup
+  #343 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #344 = Class              #345          // java/lang/invoke/MethodHandles
+  #345 = Utf8               java/lang/invoke/MethodHandles
+  #346 = Utf8               Lookup
+{
+  public org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 32: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+
+  public void onLoad(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 36: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0       1     1 mixinPackage   Ljava/lang/String;
+
+  public java.lang.String getRefMapperConfig();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 40: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+
+  public boolean shouldApplyMixin(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=3, args_size=3
+         0: iconst_1
+         1: ireturn
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0       2     1 targetClassName   Ljava/lang/String;
+            0       2     2 mixinClassName   Ljava/lang/String;
+
+  public void acceptTargets(java.util.Set<java.lang.String>, java.util.Set<java.lang.String>);
+    descriptor: (Ljava/util/Set;Ljava/util/Set;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=3, args_size=3
+         0: return
+      LineNumberTable:
+        line 51: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0       1     1 myTargets   Ljava/util/Set;
+            0       1     2 otherTargets   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       1     1 myTargets   Ljava/util/Set<Ljava/lang/String;>;
+            0       1     2 otherTargets   Ljava/util/Set<Ljava/lang/String;>;
+    Signature: #267                         // (Ljava/util/Set<Ljava/lang/String;>;Ljava/util/Set<Ljava/lang/String;>;)V
+
+  public java.util.List<java.lang.String> getMixins();
+    descriptor: ()Ljava/util/List;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 55: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+    Signature: #270                         // ()Ljava/util/List<Ljava/lang/String;>;
+
+  public void preApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    descriptor: (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=5, args_size=5
+         0: return
+      LineNumberTable:
+        line 61: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0       1     1 targetClassName   Ljava/lang/String;
+            0       1     2 targetClass   Lorg/objectweb/asm/tree/ClassNode;
+            0       1     3 mixinClassName   Ljava/lang/String;
+            0       1     4 mixinInfo   Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+
+  public void postApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    descriptor: (Ljava/lang/String;Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/String;Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=8, locals=21, args_size=5
+         0: invokestatic  #7                  // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+         3: astore        5
+         5: aload         4
+         7: iconst_0
+         8: invokeinterface #13,  2           // InterfaceMethod org/spongepowered/asm/mixin/extensibility/IMixinInfo.getClassNode:(I)Lorg/objectweb/asm/tree/ClassNode;
+        13: astore        6
+        15: aload_1
+        16: ldc           #19                 // String .
+        18: ldc           #21                 // String /
+        20: invokevirtual #23                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+        23: astore        7
+        25: aload         6
+        27: ldc           #29                 // class org/violetmoon/zeta/mixin/plugin/DelegateInterfaceMixin
+        29: invokestatic  #31                 // Method org/spongepowered/asm/util/Annotations.getVisible:(Lorg/objectweb/asm/tree/ClassNode;Ljava/lang/Class;)Lorg/objectweb/asm/tree/AnnotationNode;
+        32: astore        8
+        34: aload         8
+        36: ifnull        816
+        39: aload         6
+        41: getfield      #37                 // Field org/objectweb/asm/tree/ClassNode.access:I
+        44: sipush        512
+        47: iand
+        48: ifeq          816
+        51: aload         8
+        53: ldc           #45                 // String delegate
+        55: invokestatic  #47                 // Method org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+        58: checkcast     #51                 // class org/objectweb/asm/Type
+        61: invokevirtual #53                 // Method org/objectweb/asm/Type.getInternalName:()Ljava/lang/String;
+        64: astore        9
+        66: aload         8
+        68: ldc           #57                 // String methods
+        70: invokestatic  #47                 // Method org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+        73: checkcast     #59                 // class java/util/List
+        76: astore        10
+        78: aload         10
+        80: invokeinterface #61,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        85: astore        11
+        87: aload         11
+        89: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        94: ifeq          204
+        97: aload         11
+        99: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       104: checkcast     #75                 // class org/objectweb/asm/tree/AnnotationNode
+       107: astore        12
+       109: aload         12
+       111: ldc           #77                 // String target
+       113: iconst_0
+       114: invokestatic  #79                 // Method org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;Z)Ljava/util/List;
+       117: astore        13
+       119: aload         12
+       121: ldc           #45                 // String delegate
+       123: invokestatic  #47                 // Method org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+       126: checkcast     #24                 // class java/lang/String
+       129: astore        14
+       131: aload         12
+       133: ldc           #82                 // String desc
+       135: invokestatic  #47                 // Method org/spongepowered/asm/util/Annotations.getValue:(Lorg/objectweb/asm/tree/AnnotationNode;Ljava/lang/String;)Ljava/lang/Object;
+       138: checkcast     #24                 // class java/lang/String
+       141: astore        15
+       143: aload         13
+       145: invokeinterface #61,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       150: astore        16
+       152: aload         16
+       154: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       159: ifeq          201
+       162: aload         16
+       164: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       169: checkcast     #24                 // class java/lang/String
+       172: astore        17
+       174: aload         5
+       176: aload         17
+       178: new           #84                 // class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference
+       181: dup
+       182: aload         14
+       184: aload         15
+       186: invokestatic  #86                 // Method org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.tokenize:(Ljava/lang/String;)Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+       189: invokespecial #92                 // Method org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)V
+       192: invokeinterface #95,  3           // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       197: pop
+       198: goto          152
+       201: goto          87
+       204: aload_2
+       205: getfield      #101                // Field org/objectweb/asm/tree/ClassNode.methods:Ljava/util/List;
+       208: invokeinterface #61,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       213: astore        11
+       215: aload         11
+       217: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       222: ifeq          816
+       225: aload         11
+       227: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       232: checkcast     #104                // class org/objectweb/asm/tree/MethodNode
+       235: astore        12
+       237: aload         12
+       239: getfield      #106                // Field org/objectweb/asm/tree/MethodNode.name:Ljava/lang/String;
+       242: aload         12
+       244: getfield      #110                // Field org/objectweb/asm/tree/MethodNode.desc:Ljava/lang/String;
+       247: invokedynamic #112,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       252: astore        13
+       254: aload         5
+       256: aload         13
+       258: invokeinterface #116,  2          // InterfaceMethod com/google/common/collect/Multimap.containsKey:(Ljava/lang/Object;)Z
+       263: ifne          273
+       266: aload         12
+       268: getfield      #106                // Field org/objectweb/asm/tree/MethodNode.name:Ljava/lang/String;
+       271: astore        13
+       273: aload         5
+       275: aload         13
+       277: invokeinterface #116,  2          // InterfaceMethod com/google/common/collect/Multimap.containsKey:(Ljava/lang/Object;)Z
+       282: ifeq          813
+       285: aload         12
+       287: getfield      #110                // Field org/objectweb/asm/tree/MethodNode.desc:Ljava/lang/String;
+       290: invokestatic  #86                 // Method org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.tokenize:(Ljava/lang/String;)Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+       293: astore        14
+       295: aload         14
+       297: getfield      #120                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.ret:Ljava/lang/String;
+       300: astore        16
+       302: iconst_m1
+       303: istore        17
+       305: aload         16
+       307: invokevirtual #123                // Method java/lang/String.hashCode:()I
+       310: tableswitch   { // 66 to 90
+                      66: 488
+                      67: 472
+                      68: 554
+                      69: 568
+                      70: 537
+                      71: 568
+                      72: 568
+                      73: 440
+                      74: 520
+                      75: 568
+                      76: 568
+                      77: 568
+                      78: 568
+                      79: 568
+                      80: 568
+                      81: 568
+                      82: 568
+                      83: 456
+                      84: 568
+                      85: 568
+                      86: 424
+                      87: 568
+                      88: 568
+                      89: 568
+                      90: 504
+                 default: 568
+            }
+       424: aload         16
+       426: ldc           #127                // String V
+       428: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       431: ifeq          568
+       434: iconst_0
+       435: istore        17
+       437: goto          568
+       440: aload         16
+       442: ldc           #132                // String I
+       444: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       447: ifeq          568
+       450: iconst_1
+       451: istore        17
+       453: goto          568
+       456: aload         16
+       458: ldc           #133                // String S
+       460: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       463: ifeq          568
+       466: iconst_2
+       467: istore        17
+       469: goto          568
+       472: aload         16
+       474: ldc           #135                // String C
+       476: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       479: ifeq          568
+       482: iconst_3
+       483: istore        17
+       485: goto          568
+       488: aload         16
+       490: ldc           #137                // String B
+       492: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       495: ifeq          568
+       498: iconst_4
+       499: istore        17
+       501: goto          568
+       504: aload         16
+       506: ldc           #139                // String Z
+       508: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       511: ifeq          568
+       514: iconst_5
+       515: istore        17
+       517: goto          568
+       520: aload         16
+       522: ldc           #141                // String J
+       524: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       527: ifeq          568
+       530: bipush        6
+       532: istore        17
+       534: goto          568
+       537: aload         16
+       539: ldc           #143                // String F
+       541: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       544: ifeq          568
+       547: bipush        7
+       549: istore        17
+       551: goto          568
+       554: aload         16
+       556: ldc           #145                // String D
+       558: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       561: ifeq          568
+       564: bipush        8
+       566: istore        17
+       568: iload         17
+       570: tableswitch   { // 0 to 8
+                       0: 620
+                       1: 626
+                       2: 626
+                       3: 626
+                       4: 626
+                       5: 626
+                       6: 632
+                       7: 638
+                       8: 644
+                 default: 650
+            }
+       620: sipush        177
+       623: goto          653
+       626: sipush        172
+       629: goto          653
+       632: sipush        173
+       635: goto          653
+       638: sipush        174
+       641: goto          653
+       644: sipush        175
+       647: goto          653
+       650: sipush        176
+       653: istore        15
+       655: new           #147                // class java/util/HashMap
+       658: dup
+       659: invokespecial #149                // Method java/util/HashMap."<init>":()V
+       662: astore        16
+       664: aload         5
+       666: aload         13
+       668: invokeinterface #150,  2          // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+       673: astore        17
+       675: iconst_0
+       676: istore        18
+       678: iload         18
+       680: aload         12
+       682: getfield      #154                // Field org/objectweb/asm/tree/MethodNode.instructions:Lorg/objectweb/asm/tree/InsnList;
+       685: invokevirtual #158                // Method org/objectweb/asm/tree/InsnList.size:()I
+       688: if_icmpge     752
+       691: aload         12
+       693: getfield      #154                // Field org/objectweb/asm/tree/MethodNode.instructions:Lorg/objectweb/asm/tree/InsnList;
+       696: iload         18
+       698: invokevirtual #163                // Method org/objectweb/asm/tree/InsnList.get:(I)Lorg/objectweb/asm/tree/AbstractInsnNode;
+       701: astore        19
+       703: aload         19
+       705: instanceof    #166                // class org/objectweb/asm/tree/InsnNode
+       708: ifeq          746
+       711: aload         19
+       713: checkcast     #166                // class org/objectweb/asm/tree/InsnNode
+       716: astore        20
+       718: aload         19
+       720: invokevirtual #168                // Method org/objectweb/asm/tree/AbstractInsnNode.getOpcode:()I
+       723: iload         15
+       725: if_icmpne     746
+       728: aload_0
+       729: aload         9
+       731: aload         7
+       733: aload         12
+       735: aload         14
+       737: aload         20
+       739: aload         17
+       741: aload         16
+       743: invokevirtual #173                // Method buildTransforms:(Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection;Ljava/util/Map;)V
+       746: iinc          18, 1
+       749: goto          678
+       752: aload         16
+       754: invokeinterface #179,  1          // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+       759: invokeinterface #185,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       764: astore        18
+       766: aload         18
+       768: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       773: ifeq          813
+       776: aload         18
+       778: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       783: checkcast     #166                // class org/objectweb/asm/tree/InsnNode
+       786: astore        19
+       788: aload         12
+       790: getfield      #154                // Field org/objectweb/asm/tree/MethodNode.instructions:Lorg/objectweb/asm/tree/InsnList;
+       793: aload         19
+       795: aload         16
+       797: aload         19
+       799: invokeinterface #188,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       804: checkcast     #159                // class org/objectweb/asm/tree/InsnList
+       807: invokevirtual #191                // Method org/objectweb/asm/tree/InsnList.insertBefore:(Lorg/objectweb/asm/tree/AbstractInsnNode;Lorg/objectweb/asm/tree/InsnList;)V
+       810: goto          766
+       813: goto          215
+       816: return
+      LineNumberTable:
+        line 65: 0
+        line 67: 5
+        line 69: 15
+        line 72: 25
+        line 73: 34
+        line 74: 51
+        line 76: 66
+        line 77: 78
+        line 78: 109
+        line 79: 119
+        line 80: 131
+        line 82: 143
+        line 83: 174
+        line 84: 201
+        line 86: 204
+        line 87: 237
+        line 88: 254
+        line 89: 266
+        line 91: 273
+        line 92: 285
+        line 93: 295
+        line 94: 620
+        line 95: 626
+        line 96: 632
+        line 97: 638
+        line 98: 644
+        line 99: 650
+        line 102: 655
+        line 104: 664
+        line 105: 675
+        line 106: 691
+        line 107: 703
+        line 108: 728
+        line 105: 746
+        line 112: 752
+        line 113: 788
+        line 116: 813
+        line 118: 816
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          174      24    17 targetName   Ljava/lang/String;
+          119      82    13 targetMethods   Ljava/util/List;
+          131      70    14 delegateMethod   Ljava/lang/String;
+          143      58    15  desc   Ljava/lang/String;
+          109      92    12 delegate   Lorg/objectweb/asm/tree/AnnotationNode;
+          718      28    20 insnNode   Lorg/objectweb/asm/tree/InsnNode;
+          703      43    19  node   Lorg/objectweb/asm/tree/AbstractInsnNode;
+          678      74    18     i   I
+          788      22    19 transformationTarget   Lorg/objectweb/asm/tree/InsnNode;
+          295     518    14 targetDescriptor   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+          655     158    15 opcode   I
+          664     149    16 transformations   Ljava/util/Map;
+          675     138    17 nodes   Ljava/util/Collection;
+          254     559    13 methodName   Ljava/lang/String;
+          237     576    12 method   Lorg/objectweb/asm/tree/MethodNode;
+           66     750     9 callInvoker   Ljava/lang/String;
+           78     738    10 delegatedMethods   Ljava/util/List;
+            0     817     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0     817     1 targetClassName   Ljava/lang/String;
+            0     817     2 targetClass   Lorg/objectweb/asm/tree/ClassNode;
+            0     817     3 mixinClassName   Ljava/lang/String;
+            0     817     4 mixinInfo   Lorg/spongepowered/asm/mixin/extensibility/IMixinInfo;
+            5     812     5 targets   Lcom/google/common/collect/Multimap;
+           15     802     6 mixinClass   Lorg/objectweb/asm/tree/ClassNode;
+           25     792     7 thisOwner   Ljava/lang/String;
+           34     783     8 delegateInterface   Lorg/objectweb/asm/tree/AnnotationNode;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          119      82    13 targetMethods   Ljava/util/List<Ljava/lang/String;>;
+          664     149    16 transformations   Ljava/util/Map<Lorg/objectweb/asm/tree/InsnNode;Lorg/objectweb/asm/tree/InsnList;>;
+          675     138    17 nodes   Ljava/util/Collection<Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;
+           78     738    10 delegatedMethods   Ljava/util/List<Lorg/objectweb/asm/tree/AnnotationNode;>;
+            5     812     5 targets   Lcom/google/common/collect/Multimap<Ljava/lang/String;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;
+      StackMapTable: number_of_entries = 29
+        frame_type = 255 /* full_frame */
+          offset_delta = 87
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 64
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator, class org/objectweb/asm/tree/AnnotationNode, class java/util/List, class java/lang/String, class java/lang/String, class java/util/Iterator ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 48
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 10
+          locals = [ class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 57
+          locals = [ class org/objectweb/asm/tree/MethodNode, class java/lang/String ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 150
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator, class org/objectweb/asm/tree/MethodNode, class java/lang/String, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor, top, class java/lang/String, int ]
+          stack = []
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 13 /* same */
+        frame_type = 51 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator, class org/objectweb/asm/tree/MethodNode, class java/lang/String, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor ]
+          stack = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 24
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator, class org/objectweb/asm/tree/MethodNode, class java/lang/String, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor, int, class java/util/Map, class java/util/Collection, int ]
+          stack = []
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 67
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 46
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/spongepowered/asm/mixin/extensibility/IMixinInfo, class com/google/common/collect/Multimap, class org/objectweb/asm/tree/ClassNode, class java/lang/String, class org/objectweb/asm/tree/AnnotationNode, class java/lang/String, class java/util/List, class java/util/Iterator ]
+          stack = []
+        frame_type = 248 /* chop */
+          offset_delta = 2
+
+  private void buildTransforms(java.lang.String, java.lang.String, org.objectweb.asm.tree.MethodNode, org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin$Descriptor, org.objectweb.asm.tree.InsnNode, java.util.Collection<org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin$MethodReference>, java.util.Map<org.objectweb.asm.tree.InsnNode, org.objectweb.asm.tree.InsnList>);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection;Ljava/util/Map;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=7, locals=14, args_size=8
+         0: aload_2
+         1: invokedynamic #195,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+         6: astore        8
+         8: aload_3
+         9: getfield      #198                // Field org/objectweb/asm/tree/MethodNode.access:I
+        12: bipush        8
+        14: iand
+        15: ifeq          22
+        18: iconst_1
+        19: goto          23
+        22: iconst_0
+        23: istore        9
+        25: aload         6
+        27: invokeinterface #199,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+        32: astore        10
+        34: aload         10
+        36: invokeinterface #65,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        41: ifeq          158
+        44: aload         10
+        46: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        51: checkcast     #84                 // class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference
+        54: astore        11
+        56: aload         11
+        58: getfield      #202                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference.descriptor:Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+        61: astore        12
+        63: aload_0
+        64: aload         8
+        66: iload         9
+        68: aload         4
+        70: aload         12
+        72: invokevirtual #206                // Method foldTransformerParams:(Ljava/lang/String;ZLorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)Lorg/objectweb/asm/tree/InsnList;
+        75: astore        13
+        77: aload         13
+        79: ifnull        155
+        82: aload         13
+        84: new           #210                // class org/objectweb/asm/tree/MethodInsnNode
+        87: dup
+        88: sipush        184
+        91: aload_1
+        92: aload         11
+        94: getfield      #212                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference.name:Ljava/lang/String;
+        97: aload         11
+        99: getfield      #202                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference.descriptor:Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+       102: invokevirtual #213                // Method org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.toString:()Ljava/lang/String;
+       105: invokespecial #216                // Method org/objectweb/asm/tree/MethodInsnNode."<init>":(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+       108: invokevirtual #219                // Method org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+       111: aload         7
+       113: aload         5
+       115: invokeinterface #223,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+       120: ifeq          143
+       123: aload         7
+       125: aload         5
+       127: invokeinterface #188,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       132: checkcast     #159                // class org/objectweb/asm/tree/InsnList
+       135: aload         13
+       137: invokevirtual #224                // Method org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/InsnList;)V
+       140: goto          155
+       143: aload         7
+       145: aload         5
+       147: aload         13
+       149: invokeinterface #227,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       154: pop
+       155: goto          34
+       158: return
+      LineNumberTable:
+        line 121: 0
+        line 123: 8
+        line 125: 25
+        line 126: 56
+        line 128: 63
+        line 129: 77
+        line 130: 82
+        line 132: 111
+        line 133: 123
+        line 135: 143
+        line 137: 155
+        line 138: 158
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           63      92    12 transformerDescriptor   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+           77      78    13 transformation   Lorg/objectweb/asm/tree/InsnList;
+           56      99    11 transformer   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;
+            0     159     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0     159     1 callInvoker   Ljava/lang/String;
+            0     159     2 owner   Ljava/lang/String;
+            0     159     3 target   Lorg/objectweb/asm/tree/MethodNode;
+            0     159     4 targetDescriptor   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+            0     159     5 returnNode   Lorg/objectweb/asm/tree/InsnNode;
+            0     159     6 transformers   Ljava/util/Collection;
+            0     159     7 transformations   Ljava/util/Map;
+            8     151     8 ownerType   Ljava/lang/String;
+           25     134     9 isStatic   Z
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     159     6 transformers   Ljava/util/Collection<Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;
+            0     159     7 transformations   Ljava/util/Map<Lorg/objectweb/asm/tree/InsnNode;Lorg/objectweb/asm/tree/InsnList;>;
+      StackMapTable: number_of_entries = 6
+        frame_type = 252 /* append */
+          offset_delta = 22
+          locals = [ class java/lang/String ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 10
+          locals = [ int, class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 108
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor, class org/objectweb/asm/tree/InsnList ]
+        frame_type = 248 /* chop */
+          offset_delta = 11
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    Signature: #319                         // (Ljava/lang/String;Ljava/lang/String;Lorg/objectweb/asm/tree/MethodNode;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/objectweb/asm/tree/InsnNode;Ljava/util/Collection<Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference;>;Ljava/util/Map<Lorg/objectweb/asm/tree/InsnNode;Lorg/objectweb/asm/tree/InsnList;>;)V
+
+  private org.objectweb.asm.tree.InsnList foldTransformerParams(java.lang.String, boolean, org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin$Descriptor, org.violetmoon.zeta.mixin.plugin.InterfaceDelegateMixinPlugin$Descriptor);
+    descriptor: (Ljava/lang/String;ZLorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;)Lorg/objectweb/asm/tree/InsnList;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=14, args_size=5
+         0: aload_3
+         1: getfield      #120                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.ret:Ljava/lang/String;
+         4: aload         4
+         6: getfield      #120                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.ret:Ljava/lang/String;
+         9: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        12: ifne          17
+        15: aconst_null
+        16: areturn
+        17: aload         4
+        19: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+        22: arraylength
+        23: ifeq          43
+        26: aload         4
+        28: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+        31: iconst_0
+        32: aaload
+        33: aload_3
+        34: getfield      #120                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.ret:Ljava/lang/String;
+        37: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        40: ifne          45
+        43: aconst_null
+        44: areturn
+        45: aload         4
+        47: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+        50: arraylength
+        51: iconst_1
+        52: if_icmpne     63
+        55: new           #159                // class org/objectweb/asm/tree/InsnList
+        58: dup
+        59: invokespecial #234                // Method org/objectweb/asm/tree/InsnList."<init>":()V
+        62: areturn
+        63: new           #159                // class org/objectweb/asm/tree/InsnList
+        66: dup
+        67: invokespecial #234                // Method org/objectweb/asm/tree/InsnList."<init>":()V
+        70: astore        5
+        72: iconst_0
+        73: istore        6
+        75: iload_2
+        76: ifeq          83
+        79: iconst_0
+        80: goto          84
+        83: iconst_1
+        84: istore        7
+        86: iconst_0
+        87: istore        8
+        89: iload         8
+        91: aload         4
+        93: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+        96: arraylength
+        97: iconst_1
+        98: isub
+        99: if_icmpge     575
+       102: aload         4
+       104: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+       107: iload         8
+       109: iconst_1
+       110: iadd
+       111: aaload
+       112: astore        9
+       114: iload         8
+       116: ifne          153
+       119: iload_2
+       120: ifne          153
+       123: aload         9
+       125: aload_1
+       126: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       129: ifeq          153
+       132: iconst_1
+       133: istore        6
+       135: aload         5
+       137: new           #235                // class org/objectweb/asm/tree/VarInsnNode
+       140: dup
+       141: bipush        25
+       143: iconst_0
+       144: invokespecial #237                // Method org/objectweb/asm/tree/VarInsnNode."<init>":(II)V
+       147: invokevirtual #219                // Method org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+       150: goto          569
+       153: iload         6
+       155: ifeq          165
+       158: iload         8
+       160: iconst_1
+       161: isub
+       162: goto          167
+       165: iload         8
+       167: istore        10
+       169: iload         10
+       171: aload_3
+       172: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+       175: arraylength
+       176: if_icmplt     181
+       179: aconst_null
+       180: areturn
+       181: aload         9
+       183: iconst_0
+       184: invokevirtual #240                // Method java/lang/String.charAt:(I)C
+       187: aload_3
+       188: getfield      #230                // Field org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor.params:[Ljava/lang/String;
+       191: iload         10
+       193: aaload
+       194: iconst_0
+       195: invokevirtual #240                // Method java/lang/String.charAt:(I)C
+       198: if_icmpne     567
+       201: aload         9
+       203: astore        12
+       205: iconst_m1
+       206: istore        13
+       208: aload         12
+       210: invokevirtual #123                // Method java/lang/String.hashCode:()I
+       213: tableswitch   { // 66 to 90
+                      66: 376
+                      67: 360
+                      68: 441
+                      69: 455
+                      70: 424
+                      71: 455
+                      72: 455
+                      73: 328
+                      74: 408
+                      75: 455
+                      76: 455
+                      77: 455
+                      78: 455
+                      79: 455
+                      80: 455
+                      81: 455
+                      82: 455
+                      83: 344
+                      84: 455
+                      85: 455
+                      86: 455
+                      87: 455
+                      88: 455
+                      89: 455
+                      90: 392
+                 default: 455
+            }
+       328: aload         12
+       330: ldc           #132                // String I
+       332: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       335: ifeq          455
+       338: iconst_0
+       339: istore        13
+       341: goto          455
+       344: aload         12
+       346: ldc           #133                // String S
+       348: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       351: ifeq          455
+       354: iconst_1
+       355: istore        13
+       357: goto          455
+       360: aload         12
+       362: ldc           #135                // String C
+       364: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       367: ifeq          455
+       370: iconst_2
+       371: istore        13
+       373: goto          455
+       376: aload         12
+       378: ldc           #137                // String B
+       380: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       383: ifeq          455
+       386: iconst_3
+       387: istore        13
+       389: goto          455
+       392: aload         12
+       394: ldc           #139                // String Z
+       396: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       399: ifeq          455
+       402: iconst_4
+       403: istore        13
+       405: goto          455
+       408: aload         12
+       410: ldc           #141                // String J
+       412: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       415: ifeq          455
+       418: iconst_5
+       419: istore        13
+       421: goto          455
+       424: aload         12
+       426: ldc           #143                // String F
+       428: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       431: ifeq          455
+       434: bipush        6
+       436: istore        13
+       438: goto          455
+       441: aload         12
+       443: ldc           #145                // String D
+       445: invokevirtual #129                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       448: ifeq          455
+       451: bipush        7
+       453: istore        13
+       455: iload         13
+       457: tableswitch   { // 0 to 7
+                       0: 504
+                       1: 504
+                       2: 504
+                       3: 504
+                       4: 504
+                       5: 509
+                       6: 514
+                       7: 519
+                 default: 524
+            }
+       504: bipush        21
+       506: goto          526
+       509: bipush        22
+       511: goto          526
+       514: bipush        23
+       516: goto          526
+       519: bipush        24
+       521: goto          526
+       524: bipush        25
+       526: istore        11
+       528: aload         5
+       530: new           #235                // class org/objectweb/asm/tree/VarInsnNode
+       533: dup
+       534: iload         11
+       536: iload         7
+       538: iinc          7, 1
+       541: invokespecial #237                // Method org/objectweb/asm/tree/VarInsnNode."<init>":(II)V
+       544: invokevirtual #219                // Method org/objectweb/asm/tree/InsnList.add:(Lorg/objectweb/asm/tree/AbstractInsnNode;)V
+       547: iload         11
+       549: bipush        22
+       551: if_icmpeq     561
+       554: iload         11
+       556: bipush        24
+       558: if_icmpne     564
+       561: iinc          7, 1
+       564: goto          569
+       567: aconst_null
+       568: areturn
+       569: iinc          8, 1
+       572: goto          89
+       575: aload         5
+       577: areturn
+      LineNumberTable:
+        line 148: 0
+        line 149: 15
+        line 151: 17
+        line 152: 43
+        line 154: 45
+        line 155: 55
+        line 157: 63
+        line 159: 72
+        line 161: 75
+        line 163: 86
+        line 164: 102
+        line 166: 114
+        line 167: 132
+        line 168: 135
+        line 170: 153
+        line 171: 169
+        line 172: 179
+        line 174: 181
+        line 175: 201
+        line 176: 504
+        line 177: 509
+        line 178: 514
+        line 179: 519
+        line 180: 524
+        line 183: 528
+        line 185: 547
+        line 186: 561
+        line 187: 564
+        line 188: 567
+        line 163: 569
+        line 193: 575
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          528      36    11 opcode   I
+          169     400    10 targetIndex   I
+          114     455     9 transformerParam   Ljava/lang/String;
+           89     486     8     i   I
+            0     578     0  this   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin;
+            0     578     1 ownerType   Ljava/lang/String;
+            0     578     2 isStatic   Z
+            0     578     3 target   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+            0     578     4 transformer   Lorg/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor;
+           72     506     5 localVarsToLoad   Lorg/objectweb/asm/tree/InsnList;
+           75     503     6 firstWasThis   Z
+           86     492     7 lvtIndex   I
+      StackMapTable: number_of_entries = 31
+        frame_type = 17 /* same */
+        frame_type = 25 /* same */
+        frame_type = 1 /* same */
+        frame_type = 17 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 19
+          locals = [ class org/objectweb/asm/tree/InsnList, int ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 4
+          locals = [ int, int ]
+        frame_type = 252 /* append */
+          offset_delta = 63
+          locals = [ class java/lang/String ]
+        frame_type = 11 /* same */
+        frame_type = 65 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ int ]
+        frame_type = 254 /* append */
+          offset_delta = 146
+          locals = [ top, class java/lang/String, int ]
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 15 /* same */
+        frame_type = 16 /* same */
+        frame_type = 13 /* same */
+        frame_type = 48 /* same */
+        frame_type = 4 /* same */
+        frame_type = 4 /* same */
+        frame_type = 4 /* same */
+        frame_type = 4 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin, class java/lang/String, int, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor, class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor, class org/objectweb/asm/tree/InsnList, int, int, int, class java/lang/String, int ]
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 34
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 2 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 1
+        frame_type = 250 /* chop */
+          offset_delta = 5
+}
+SourceFile: "InterfaceDelegateMixinPlugin.java"
+NestMembers:
+  org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor
+  org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference
+BootstrapMethods:
+  0: #333 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #329 \u0001\u0001
+  1: #333 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #331 L\u0001;
+InnerClasses:
+  private static final #340= #84 of #174; // MethodReference=class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$MethodReference of class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin
+  private static final #341= #87 of #174; // Descriptor=class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin$Descriptor of class org/violetmoon/zeta/mixin/plugin/InterfaceDelegateMixinPlugin
+  public static final #346= #342 of #344; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

@@ -1,0 +1,500 @@
+Compiled from "ZetaModCommonProxy.java"
+public class org.violetmoon.zetaimplforge.mod.ZetaModCommonProxy {
+  public org.violetmoon.zetaimplforge.mod.ZetaModCommonProxy();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void registerEvents(org.violetmoon.zeta.Zeta);
+    Code:
+       0: invokestatic  #7                  // Method net/neoforged/fml/ModLoadingContext.get:()Lnet/neoforged/fml/ModLoadingContext;
+       3: invokevirtual #13                 // Method net/neoforged/fml/ModLoadingContext.getActiveContainer:()Lnet/neoforged/fml/ModContainer;
+       6: invokevirtual #17                 // Method net/neoforged/fml/ModContainer.getEventBus:()Lnet/neoforged/bus/api/IEventBus;
+       9: astore_2
+      10: aload_1
+      11: getfield      #23                 // Field org/violetmoon/zeta/Zeta.loadBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      14: ldc           #29                 // class org/violetmoon/zeta/util/handler/RecipeCrawlHandler
+      16: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      19: ldc           #37                 // class org/violetmoon/zeta/util/handler/ToolInteractionHandler
+      21: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      24: ldc           #39                 // class org/violetmoon/zeta/world/EntitySpawnHandler
+      26: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      29: ldc           #41                 // class org/violetmoon/zeta/world/WorldGenHandler
+      31: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      34: pop
+      35: aload_1
+      36: getfield      #43                 // Field org/violetmoon/zeta/Zeta.playBus:Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      39: ldc           #29                 // class org/violetmoon/zeta/util/handler/RecipeCrawlHandler
+      41: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      44: ldc           #37                 // class org/violetmoon/zeta/util/handler/ToolInteractionHandler
+      46: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      49: ldc           #46                 // class org/violetmoon/zeta/config/SyncedFlagHandler
+      51: invokevirtual #31                 // Method org/violetmoon/zeta/event/bus/ZetaEventBus.subscribe:(Ljava/lang/Object;)Lorg/violetmoon/zeta/event/bus/ZetaEventBus;
+      54: pop
+      55: aload_2
+      56: invokestatic  #48                 // Method org/violetmoon/zetaimplforge/world/ZetaBiomeModifier.registerBiomeModifier:(Lnet/neoforged/bus/api/IEventBus;)V
+      59: return
+
+  public void addKnownZetaLoadEvents(org.violetmoon.zetaimplforge.event.ForgeEventsRemapper<org.violetmoon.zeta.event.bus.IZetaLoadEvent, net.neoforged.bus.api.Event>);
+    Code:
+       0: aload_1
+       1: ldc           #54                 // class org/violetmoon/zeta/event/load/ZCommonSetup
+       3: ldc           #56                 // class net/neoforged/fml/event/lifecycle/FMLCommonSetupEvent
+       5: invokedynamic #58,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      10: invokedynamic #62,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      15: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+      18: aload_1
+      19: ldc           #69                 // class org/violetmoon/zeta/event/load/ZEntityAttributeCreation
+      21: ldc           #71                 // class net/neoforged/neoforge/event/entity/EntityAttributeCreationEvent
+      23: invokedynamic #73,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      28: invokedynamic #74,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      33: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+      36: aload_1
+      37: ldc           #75                 // class org/violetmoon/zeta/event/load/ZModulesReady
+      39: ldc           #77                 // class org/violetmoon/zetaimplforge/event/load/ForgeZModulesReady
+      41: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      44: aload_1
+      45: ldc           #82                 // class org/violetmoon/zeta/event/load/ZRegister
+      47: ldc           #84                 // class org/violetmoon/zetaimplforge/event/load/ForgeZRegister
+      49: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      52: aload_1
+      53: ldc           #86                 // class org/violetmoon/zeta/event/load/ZRegister$Post
+      55: ldc           #88                 // class org/violetmoon/zetaimplforge/event/load/ForgeZRegister$Post
+      57: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      60: aload_1
+      61: ldc           #90                 // class org/violetmoon/zeta/event/load/ZConfigChanged
+      63: ldc           #92                 // class org/violetmoon/zetaimplforge/event/load/ForgeZConfigChange
+      65: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      68: aload_1
+      69: ldc           #94                 // class org/violetmoon/zeta/event/load/ZLoadComplete
+      71: ldc           #96                 // class org/violetmoon/zetaimplforge/event/load/ForgeZLoadComplete
+      73: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      76: aload_1
+      77: ldc           #98                 // class org/violetmoon/zeta/event/load/ZGatherAdditionalFlags
+      79: ldc           #100                // class org/violetmoon/zetaimplforge/event/load/ForgeZGatherAdditionalFlags
+      81: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      84: aload_1
+      85: ldc           #102                // class org/violetmoon/zeta/event/load/ZGatherHints
+      87: ldc           #104                // class org/violetmoon/zetaimplforge/event/load/ForgeZGatherHints
+      89: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      92: return
+
+  public void addKnownZetaPlayEvents(org.violetmoon.zetaimplforge.event.ForgeEventsRemapper<org.violetmoon.zeta.event.bus.IZetaPlayEvent, net.neoforged.bus.api.Event>);
+    Code:
+       0: aload_1
+       1: ldc           #106                // class org/violetmoon/zeta/event/play/ZAnvilRepair
+       3: ldc           #108                // class org/violetmoon/zetaimplforge/event/play/ForgeZAnvilRepair
+       5: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+       8: aload_1
+       9: ldc           #110                // class org/violetmoon/zeta/event/play/ZAnvilUpdate
+      11: ldc           #112                // class org/violetmoon/zetaimplforge/event/play/ForgeZAnvilUpdate
+      13: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      16: aload_1
+      17: ldc           #114                // class org/violetmoon/zeta/event/play/ZAnvilUpdate$Highest
+      19: ldc           #116                // class org/violetmoon/zetaimplforge/event/play/ForgeZAnvilUpdate$Highest
+      21: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      24: aload_1
+      25: ldc           #118                // class org/violetmoon/zeta/event/play/ZAnvilUpdate$Lowest
+      27: ldc           #120                // class org/violetmoon/zetaimplforge/event/play/ForgeZAnvilUpdate$Lowest
+      29: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      32: aload_1
+      33: ldc           #122                // class org/violetmoon/zeta/event/load/ZTagsUpdated
+      35: ldc           #124                // class org/violetmoon/zetaimplforge/event/load/ForgeZTagsUpdated
+      37: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+      40: aload_1
+      41: ldc           #126                // class org/violetmoon/zeta/event/play/entity/living/ZBabyEntitySpawn$Lowest
+      43: ldc           #128                // class net/neoforged/neoforge/event/entity/living/BabyEntitySpawnEvent
+      45: invokedynamic #130,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      50: invokedynamic #131,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      55: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+      58: aload_1
+      59: ldc           #132                // class org/violetmoon/zeta/event/play/entity/living/ZBabyEntitySpawn
+      61: ldc           #128                // class net/neoforged/neoforge/event/entity/living/BabyEntitySpawnEvent
+      63: invokedynamic #134,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+      68: invokedynamic #135,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      73: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+      76: aload_1
+      77: ldc           #136                // class org/violetmoon/zeta/event/play/ZBlock$Break
+      79: ldc           #138                // class net/neoforged/neoforge/event/level/BlockEvent$BreakEvent
+      81: invokedynamic #140,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+      86: invokedynamic #141,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+      91: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+      94: aload_1
+      95: ldc           #142                // class org/violetmoon/zeta/event/play/ZBlock$EntityPlace
+      97: ldc           #144                // class net/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent
+      99: invokedynamic #146,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+     104: invokedynamic #147,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+     109: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     112: aload_1
+     113: ldc           #148                // class org/violetmoon/zeta/event/play/ZBlock$BlockToolModification
+     115: ldc           #150                // class org/violetmoon/zetaimplforge/event/play/ForgeZBlock$BlockToolModification
+     117: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     120: aload_1
+     121: ldc           #152                // class org/violetmoon/zeta/event/play/ZBonemeal
+     123: ldc           #154                // class org/violetmoon/zetaimplforge/event/play/ForgeZBonemeal
+     125: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     128: aload_1
+     129: ldc           #156                // class org/violetmoon/zeta/event/play/entity/ZEntityConstruct
+     131: ldc           #158                // class org/violetmoon/zetaimplforge/event/play/entity/ForgeZEntityConstruct
+     133: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     136: aload_1
+     137: ldc           #160                // class org/violetmoon/zeta/event/play/entity/ZEntityInteract
+     139: ldc           #162                // class net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$EntityInteract
+     141: invokedynamic #164,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+     146: invokedynamic #165,  0            // InvokeDynamic #13:apply:()Ljava/util/function/Function;
+     151: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     154: aload_1
+     155: ldc           #166                // class org/violetmoon/zeta/event/play/entity/ZItemEntityPickup
+     157: ldc           #168                // class org/violetmoon/zetaimplforge/event/play/entity/ForgeZEntityItemPickup
+     159: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     162: aload_1
+     163: ldc           #170                // class org/violetmoon/zeta/event/play/entity/ZEntityJoinLevel
+     165: ldc           #172                // class org/violetmoon/zetaimplforge/event/play/entity/ForgeZEntityJoinLevel
+     167: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     170: aload_1
+     171: ldc           #174                // class org/violetmoon/zeta/event/play/entity/ZEntityMobGriefing
+     173: ldc           #176                // class org/violetmoon/zetaimplforge/event/play/entity/ForgeZEntityMobGriefing
+     175: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     178: aload_1
+     179: ldc           #178                // class org/violetmoon/zeta/event/play/entity/ZEntityTeleport
+     181: ldc           #180                // class org/violetmoon/zetaimplforge/event/play/entity/ForgeZEntityTeleport
+     183: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     186: aload_1
+     187: ldc           #182                // class org/violetmoon/zeta/event/play/ZItemTooltip
+     189: ldc           #184                // class net/neoforged/neoforge/event/entity/player/ItemTooltipEvent
+     191: invokedynamic #186,  0            // InvokeDynamic #14:apply:()Ljava/util/function/Function;
+     196: invokedynamic #187,  0            // InvokeDynamic #15:apply:()Ljava/util/function/Function;
+     201: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     204: aload_1
+     205: ldc           #188                // class org/violetmoon/zeta/event/play/entity/living/ZEquipmentChange
+     207: ldc           #190                // class net/neoforged/neoforge/event/entity/living/LivingEquipmentChangeEvent
+     209: invokedynamic #192,  0            // InvokeDynamic #16:apply:()Ljava/util/function/Function;
+     214: invokedynamic #193,  0            // InvokeDynamic #17:apply:()Ljava/util/function/Function;
+     219: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     222: aload_1
+     223: ldc           #194                // class org/violetmoon/zeta/event/play/entity/living/ZLivingChangeTarget
+     225: ldc           #196                // class net/neoforged/neoforge/event/entity/living/LivingChangeTargetEvent
+     227: invokedynamic #198,  0            // InvokeDynamic #18:apply:()Ljava/util/function/Function;
+     232: invokedynamic #199,  0            // InvokeDynamic #19:apply:()Ljava/util/function/Function;
+     237: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     240: aload_1
+     241: ldc           #200                // class org/violetmoon/zeta/event/play/entity/living/ZLivingConversion
+     243: ldc           #202                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingConversion
+     245: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     248: aload_1
+     249: ldc           #204                // class org/violetmoon/zeta/event/play/entity/living/ZLivingConversion$Pre
+     251: ldc           #206                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingConversion$Pre
+     253: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     256: aload_1
+     257: ldc           #208                // class org/violetmoon/zeta/event/play/entity/living/ZLivingConversion$Post
+     259: ldc           #210                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingConversion$Post
+     261: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     264: aload_1
+     265: ldc           #212                // class org/violetmoon/zeta/event/play/entity/living/ZLivingDeath
+     267: ldc           #214                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingDeath
+     269: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     272: aload_1
+     273: ldc           #216                // class org/violetmoon/zeta/event/play/entity/living/ZLivingDeath$Lowest
+     275: ldc           #218                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingDeath$Lowest
+     277: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     280: aload_1
+     281: ldc           #220                // class org/violetmoon/zeta/event/play/entity/living/ZLivingDrops
+     283: ldc           #222                // class net/neoforged/neoforge/event/entity/living/LivingDropsEvent
+     285: invokedynamic #224,  0            // InvokeDynamic #20:apply:()Ljava/util/function/Function;
+     290: invokedynamic #225,  0            // InvokeDynamic #21:apply:()Ljava/util/function/Function;
+     295: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     298: aload_1
+     299: ldc           #226                // class org/violetmoon/zeta/event/play/entity/living/ZLivingDrops$Lowest
+     301: ldc           #222                // class net/neoforged/neoforge/event/entity/living/LivingDropsEvent
+     303: invokedynamic #228,  0            // InvokeDynamic #22:apply:()Ljava/util/function/Function;
+     308: invokedynamic #229,  0            // InvokeDynamic #23:apply:()Ljava/util/function/Function;
+     313: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     316: aload_1
+     317: ldc           #230                // class org/violetmoon/zeta/event/play/entity/living/ZLivingFall
+     319: ldc           #232                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingFall
+     321: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     324: aload_1
+     325: ldc           #234                // class org/violetmoon/zeta/event/play/entity/living/ZLivingTick
+     327: ldc           #236                // class net/neoforged/neoforge/event/tick/EntityTickEvent$Post
+     329: invokedynamic #238,  0            // InvokeDynamic #24:apply:()Ljava/util/function/Function;
+     334: invokedynamic #239,  0            // InvokeDynamic #25:apply:()Ljava/util/function/Function;
+     339: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     342: aload_1
+     343: ldc           #240                // class org/violetmoon/zeta/event/play/entity/living/ZMobSpawnEvent
+     345: ldc           #242                // class net/neoforged/neoforge/event/entity/living/MobSpawnEvent
+     347: invokedynamic #244,  0            // InvokeDynamic #26:apply:()Ljava/util/function/Function;
+     352: invokedynamic #245,  0            // InvokeDynamic #27:apply:()Ljava/util/function/Function;
+     357: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     360: aload_1
+     361: ldc           #246                // class org/violetmoon/zeta/event/play/entity/living/ZMobSpawnEvent$CheckSpawn
+     363: ldc           #248                // class net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent
+     365: invokedynamic #250,  0            // InvokeDynamic #28:apply:()Ljava/util/function/Function;
+     370: invokedynamic #251,  0            // InvokeDynamic #29:apply:()Ljava/util/function/Function;
+     375: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     378: aload_1
+     379: ldc           #252                // class org/violetmoon/zeta/event/play/entity/living/ZMobSpawnEvent$CheckSpawn$Lowest
+     381: ldc           #248                // class net/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent
+     383: invokedynamic #254,  0            // InvokeDynamic #30:apply:()Ljava/util/function/Function;
+     388: invokedynamic #255,  0            // InvokeDynamic #31:apply:()Ljava/util/function/Function;
+     393: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     396: aload_1
+     397: ldc_w         #256                // class org/violetmoon/zeta/event/play/ZPlayNoteBlock
+     400: ldc_w         #258                // class org/violetmoon/zetaimplforge/event/play/ForgeZPlayNoteBlock
+     403: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     406: aload_1
+     407: ldc_w         #260                // class org/violetmoon/zeta/event/play/entity/player/ZPlayer$BreakSpeed
+     410: ldc_w         #262                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayer$BreakSpeed
+     413: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     416: aload_1
+     417: ldc_w         #264                // class org/violetmoon/zeta/event/play/entity/player/ZPlayer$Clone
+     420: ldc_w         #266                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayer$Clone
+     423: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     426: aload_1
+     427: ldc_w         #268                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerDestroyItem
+     430: ldc_w         #270                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerDestroyItem
+     433: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     436: aload_1
+     437: ldc_w         #272                // class org/violetmoon/zeta/event/play/entity/player/ZPlayer$LoggedIn
+     440: ldc_w         #274                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayer$LoggedIn
+     443: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     446: aload_1
+     447: ldc_w         #276                // class org/violetmoon/zeta/event/play/entity/player/ZPlayer$LoggedOut
+     450: ldc_w         #278                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayer$LoggedOut
+     453: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     456: aload_1
+     457: ldc_w         #280                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerTick$Start
+     460: ldc_w         #282                // class net/neoforged/neoforge/event/tick/PlayerTickEvent$Pre
+     463: invokedynamic #284,  0            // InvokeDynamic #32:apply:()Ljava/util/function/Function;
+     468: invokedynamic #285,  0            // InvokeDynamic #33:apply:()Ljava/util/function/Function;
+     473: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     476: aload_1
+     477: ldc_w         #286                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerTick$End
+     480: ldc_w         #288                // class net/neoforged/neoforge/event/tick/PlayerTickEvent$Post
+     483: invokedynamic #290,  0            // InvokeDynamic #34:apply:()Ljava/util/function/Function;
+     488: invokedynamic #291,  0            // InvokeDynamic #35:apply:()Ljava/util/function/Function;
+     493: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     496: aload_1
+     497: ldc_w         #292                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerInteract
+     500: ldc_w         #294                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerInteract
+     503: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     506: aload_1
+     507: ldc_w         #296                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerInteract$EntityInteractSpecific
+     510: ldc_w         #298                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerInteract$EntityInteractSpecific
+     513: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     516: aload_1
+     517: ldc_w         #300                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerInteract$EntityInteract
+     520: ldc_w         #302                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerInteract$EntityInteract
+     523: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     526: aload_1
+     527: ldc_w         #304                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerInteract$RightClickBlock
+     530: ldc_w         #306                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerInteract$RightClickBlock
+     533: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     536: aload_1
+     537: ldc_w         #308                // class org/violetmoon/zeta/event/play/entity/player/ZPlayerInteract$RightClickItem
+     540: ldc_w         #310                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerInteract$RightClickItem
+     543: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     546: aload_1
+     547: ldc_w         #312                // class org/violetmoon/zeta/event/play/entity/player/ZRightClickBlock
+     550: ldc_w         #314                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZRightClickBlock
+     553: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     556: aload_1
+     557: ldc_w         #316                // class org/violetmoon/zeta/event/play/entity/player/ZRightClickBlock$Low
+     560: ldc_w         #318                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZRightClickBlock$Low
+     563: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     566: aload_1
+     567: ldc_w         #320                // class org/violetmoon/zeta/event/play/entity/player/ZRightClickItem
+     570: ldc_w         #322                // class org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZRightClickItem
+     573: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     576: aload_1
+     577: ldc_w         #324                // class org/violetmoon/zeta/event/play/loading/ZLootTableLoad
+     580: ldc_w         #326                // class org/violetmoon/zetaimplforge/event/play/loading/ForgeZLootTableLoad
+     583: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     586: aload_1
+     587: ldc_w         #328                // class org/violetmoon/zeta/event/play/loading/ZVillagerTrades
+     590: ldc_w         #330                // class org/violetmoon/zetaimplforge/event/play/loading/ForgeZVillagerTrades
+     593: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     596: aload_1
+     597: ldc_w         #332                // class org/violetmoon/zeta/event/play/loading/ZWandererTrades
+     600: ldc_w         #334                // class org/violetmoon/zetaimplforge/event/play/loading/ForgeZWandererTrades
+     603: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     606: aload_1
+     607: ldc_w         #336                // class org/violetmoon/zeta/event/play/ZFurnaceFuelBurnTime
+     610: ldc_w         #338                // class org/violetmoon/zetaimplforge/event/play/ForgeZFurnaceFuelBurnTime
+     613: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     616: aload_1
+     617: ldc_w         #340                // class org/violetmoon/zeta/event/play/ZServerTick$Start
+     620: ldc_w         #342                // class net/neoforged/neoforge/event/tick/ServerTickEvent$Pre
+     623: invokedynamic #344,  0            // InvokeDynamic #36:apply:()Ljava/util/function/Function;
+     628: invokedynamic #345,  0            // InvokeDynamic #37:apply:()Ljava/util/function/Function;
+     633: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     636: aload_1
+     637: ldc_w         #346                // class org/violetmoon/zeta/event/play/ZServerTick$End
+     640: ldc_w         #348                // class net/neoforged/neoforge/event/tick/ServerTickEvent$Post
+     643: invokedynamic #350,  0            // InvokeDynamic #38:apply:()Ljava/util/function/Function;
+     648: invokedynamic #351,  0            // InvokeDynamic #39:apply:()Ljava/util/function/Function;
+     653: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     656: aload_1
+     657: ldc_w         #352                // class org/violetmoon/zeta/event/load/ZAddReloadListener
+     660: ldc_w         #354                // class org/violetmoon/zetaimplforge/event/play/ForgeZAddReloadListener
+     663: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     666: aload_1
+     667: ldc_w         #356                // class org/violetmoon/zeta/event/play/entity/living/ZAnimalTame
+     670: ldc_w         #358                // class org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZAnimalTame
+     673: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     676: aload_1
+     677: ldc_w         #360                // class org/violetmoon/zeta/event/play/ZLevelTick$End
+     680: ldc_w         #362                // class net/neoforged/neoforge/event/tick/LevelTickEvent$Post
+     683: invokedynamic #364,  0            // InvokeDynamic #40:apply:()Ljava/util/function/Function;
+     688: invokedynamic #365,  0            // InvokeDynamic #41:apply:()Ljava/util/function/Function;
+     693: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     696: aload_1
+     697: ldc_w         #366                // class org/violetmoon/zeta/event/play/ZLevelTick$Start
+     700: ldc_w         #368                // class net/neoforged/neoforge/event/tick/LevelTickEvent$Pre
+     703: invokedynamic #370,  0            // InvokeDynamic #42:apply:()Ljava/util/function/Function;
+     708: invokedynamic #371,  0            // InvokeDynamic #43:apply:()Ljava/util/function/Function;
+     713: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     716: aload_1
+     717: ldc_w         #372                // class org/violetmoon/zeta/event/play/ZSkipAttributeTooltip
+     720: ldc_w         #374                // class org/violetmoon/zetaimplforge/event/play/ForgeZSkipAttributeTooltip
+     723: invokevirtual #79                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;)V
+     726: aload_1
+     727: ldc_w         #376                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Digest
+     730: ldc_w         #378                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Digest
+     733: invokedynamic #380,  0            // InvokeDynamic #44:apply:()Ljava/util/function/Function;
+     738: invokedynamic #381,  0            // InvokeDynamic #45:apply:()Ljava/util/function/Function;
+     743: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     746: aload_1
+     747: ldc_w         #382                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Reset
+     750: ldc_w         #384                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Reset
+     753: invokedynamic #386,  0            // InvokeDynamic #46:apply:()Ljava/util/function/Function;
+     758: invokedynamic #387,  0            // InvokeDynamic #47:apply:()Ljava/util/function/Function;
+     763: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     766: aload_1
+     767: ldc_w         #388                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Starting
+     770: ldc_w         #390                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Starting
+     773: invokedynamic #392,  0            // InvokeDynamic #48:apply:()Ljava/util/function/Function;
+     778: invokedynamic #393,  0            // InvokeDynamic #49:apply:()Ljava/util/function/Function;
+     783: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     786: aload_1
+     787: ldc_w         #394                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Visit$Cooking
+     790: ldc_w         #396                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Visit$Cooking
+     793: invokedynamic #398,  0            // InvokeDynamic #50:apply:()Ljava/util/function/Function;
+     798: invokedynamic #399,  0            // InvokeDynamic #51:apply:()Ljava/util/function/Function;
+     803: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     806: aload_1
+     807: ldc_w         #400                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Visit$Custom
+     810: ldc_w         #402                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Visit$Custom
+     813: invokedynamic #404,  0            // InvokeDynamic #52:apply:()Ljava/util/function/Function;
+     818: invokedynamic #405,  0            // InvokeDynamic #53:apply:()Ljava/util/function/Function;
+     823: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     826: aload_1
+     827: ldc_w         #406                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Visit$Misc
+     830: ldc_w         #408                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Visit$Misc
+     833: invokedynamic #410,  0            // InvokeDynamic #54:apply:()Ljava/util/function/Function;
+     838: invokedynamic #411,  0            // InvokeDynamic #55:apply:()Ljava/util/function/Function;
+     843: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     846: aload_1
+     847: ldc_w         #412                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Visit$Shaped
+     850: ldc_w         #414                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Visit$Shaped
+     853: invokedynamic #416,  0            // InvokeDynamic #56:apply:()Ljava/util/function/Function;
+     858: invokedynamic #417,  0            // InvokeDynamic #57:apply:()Ljava/util/function/Function;
+     863: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     866: aload_1
+     867: ldc_w         #418                // class org/violetmoon/zeta/event/play/ZRecipeCrawl$Visit$Shapeless
+     870: ldc_w         #420                // class org/violetmoon/zetaimplforge/event/play/ForgeZRecipeCrawl$Visit$Shapeless
+     873: invokedynamic #422,  0            // InvokeDynamic #58:apply:()Ljava/util/function/Function;
+     878: invokedynamic #423,  0            // InvokeDynamic #59:apply:()Ljava/util/function/Function;
+     883: invokevirtual #63                 // Method org/violetmoon/zetaimplforge/event/ForgeEventsRemapper.registerWrapper:(Ljava/lang/Class;Ljava/lang/Class;Ljava/util/function/Function;Ljava/util/function/Function;)V
+     886: return
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$14(org.violetmoon.zetaimplforge.event.play.ForgeZLevelTick$Start);
+    Code:
+       0: aload_0
+       1: getfield      #424                // Field org/violetmoon/zetaimplforge/event/play/ForgeZLevelTick$Start.e:Lnet/neoforged/neoforge/event/tick/LevelTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$13(org.violetmoon.zetaimplforge.event.play.ForgeZLevelTick$End);
+    Code:
+       0: aload_0
+       1: getfield      #430                // Field org/violetmoon/zetaimplforge/event/play/ForgeZLevelTick$End.e:Lnet/neoforged/neoforge/event/tick/LevelTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$12(org.violetmoon.zetaimplforge.event.play.ForgeZServerTick$Post);
+    Code:
+       0: aload_0
+       1: getfield      #433                // Field org/violetmoon/zetaimplforge/event/play/ForgeZServerTick$Post.e:Lnet/neoforged/neoforge/event/tick/ServerTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$11(org.violetmoon.zetaimplforge.event.play.ForgeZServerTick$Pre);
+    Code:
+       0: aload_0
+       1: getfield      #438                // Field org/violetmoon/zetaimplforge/event/play/ForgeZServerTick$Pre.e:Lnet/neoforged/neoforge/event/tick/ServerTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$10(org.violetmoon.zetaimplforge.event.play.entity.player.ForgeZPlayerTick$Post);
+    Code:
+       0: aload_0
+       1: getfield      #441                // Field org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerTick$Post.e:Lnet/neoforged/neoforge/event/tick/PlayerTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$9(org.violetmoon.zetaimplforge.event.play.entity.player.ForgeZPlayerTick$Pre);
+    Code:
+       0: aload_0
+       1: getfield      #446                // Field org/violetmoon/zetaimplforge/event/play/entity/player/ForgeZPlayerTick$Pre.e:Lnet/neoforged/neoforge/event/tick/PlayerTickEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$8(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZMobSpawnEvent$FinalizeSpawn$Lowest);
+    Code:
+       0: aload_0
+       1: getfield      #449                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZMobSpawnEvent$FinalizeSpawn$Lowest.e:Lnet/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$7(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZMobSpawnEvent$FinalizeSpawn);
+    Code:
+       0: aload_0
+       1: getfield      #454                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZMobSpawnEvent$FinalizeSpawn.e:Lnet/neoforged/neoforge/event/entity/living/FinalizeSpawnEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$6(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZMobSpawnEvent);
+    Code:
+       0: aload_0
+       1: getfield      #457                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZMobSpawnEvent.e:Lnet/neoforged/neoforge/event/entity/living/MobSpawnEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$5(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZLivingDrops$Lowest);
+    Code:
+       0: aload_0
+       1: getfield      #462                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingDrops$Lowest.e:Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$4(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZLivingDrops);
+    Code:
+       0: aload_0
+       1: getfield      #467                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZLivingDrops.e:Lnet/neoforged/neoforge/event/entity/living/LivingDropsEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$3(org.violetmoon.zetaimplforge.event.play.ForgeZBlock$EntityPlace);
+    Code:
+       0: aload_0
+       1: getfield      #470                // Field org/violetmoon/zetaimplforge/event/play/ForgeZBlock$EntityPlace.e:Lnet/neoforged/neoforge/event/level/BlockEvent$EntityPlaceEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$2(org.violetmoon.zetaimplforge.event.play.ForgeZBlock$Break);
+    Code:
+       0: aload_0
+       1: getfield      #475                // Field org/violetmoon/zetaimplforge/event/play/ForgeZBlock$Break.e:Lnet/neoforged/neoforge/event/level/BlockEvent$BreakEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$1(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZBabyEntitySpawn);
+    Code:
+       0: aload_0
+       1: getfield      #480                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZBabyEntitySpawn.wrapped:Lnet/neoforged/neoforge/event/entity/living/BabyEntitySpawnEvent;
+       4: areturn
+
+  private static net.neoforged.bus.api.Event lambda$addKnownZetaPlayEvents$0(org.violetmoon.zetaimplforge.event.play.entity.living.ForgeZBabyEntitySpawn$Lowest);
+    Code:
+       0: aload_0
+       1: getfield      #486                // Field org/violetmoon/zetaimplforge/event/play/entity/living/ForgeZBabyEntitySpawn$Lowest.wrapped:Lnet/neoforged/neoforge/event/entity/living/BabyEntitySpawnEvent;
+       4: areturn
+}
