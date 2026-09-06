@@ -1,0 +1,451 @@
+Compiled from "GalleonStructure.java"
+public class net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure extends net.minecraft.world.level.levelgen.structure.Structure implements net.mehvahdjukaar.moonlight.api.worldgen.ISpawnBoxStructure {
+  public static final com.mojang.serialization.MapCodec<net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure> CODEC;
+
+  private static final net.minecraft.network.chat.Component OMINOUS_FLAG_PATTERN_NAME;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool> startPool;
+
+  private final java.util.Optional<net.minecraft.resources.ResourceLocation> startJigsawName;
+
+  private final int yOffset;
+
+  private final java.util.Optional<net.minecraft.world.level.biome.Climate$ParameterPoint> biomePoint;
+
+  private final boolean requireSeaLevel;
+
+  private final net.minecraft.world.level.levelgen.structure.pools.DimensionPadding dimensionPadding;
+
+  private final net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings liquidSettings;
+
+  private final net.mehvahdjukaar.moonlight.api.worldgen.SpawnBoxSettings spawnBoxSettings;
+
+  public net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, java.util.Optional<net.minecraft.resources.ResourceLocation>, int, java.util.Optional<net.minecraft.world.level.biome.Climate$ParameterPoint>, boolean, net.minecraft.world.level.levelgen.structure.pools.DimensionPadding, net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings, net.mehvahdjukaar.moonlight.api.worldgen.SpawnBoxSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/Structure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;)V
+       5: aload_0
+       6: aload_2
+       7: putfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+      10: aload_0
+      11: aload_3
+      12: putfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+      15: aload_0
+      16: iload         4
+      18: putfield      #17                 // Field yOffset:I
+      21: aload_0
+      22: aload         5
+      24: putfield      #21                 // Field biomePoint:Ljava/util/Optional;
+      27: aload_0
+      28: iload         6
+      30: putfield      #24                 // Field requireSeaLevel:Z
+      33: aload_0
+      34: aload         7
+      36: putfield      #28                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+      39: aload_0
+      40: aload         8
+      42: putfield      #32                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      45: aload_0
+      46: aload         9
+      48: putfield      #36                 // Field spawnBoxSettings:Lnet/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings;
+      51: return
+
+  private static boolean containsPoint(net.minecraft.world.level.biome.Climate$ParameterPoint, net.minecraft.world.level.biome.Climate$TargetPoint);
+    Code:
+       0: aload_0
+       1: invokevirtual #40                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.continentalness:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+       4: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+       7: aload_1
+       8: invokevirtual #52                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.continentalness:()J
+      11: lcmp
+      12: ifgt          184
+      15: aload_0
+      16: invokevirtual #40                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.continentalness:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      19: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+      22: aload_1
+      23: invokevirtual #52                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.continentalness:()J
+      26: lcmp
+      27: iflt          184
+      30: aload_0
+      31: invokevirtual #59                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.erosion:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      34: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+      37: aload_1
+      38: invokevirtual #62                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.erosion:()J
+      41: lcmp
+      42: ifgt          184
+      45: aload_0
+      46: invokevirtual #59                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.erosion:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      49: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+      52: aload_1
+      53: invokevirtual #62                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.erosion:()J
+      56: lcmp
+      57: iflt          184
+      60: aload_0
+      61: invokevirtual #64                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.temperature:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      64: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+      67: aload_1
+      68: invokevirtual #67                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.temperature:()J
+      71: lcmp
+      72: ifgt          184
+      75: aload_0
+      76: invokevirtual #64                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.temperature:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      79: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+      82: aload_1
+      83: invokevirtual #67                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.temperature:()J
+      86: lcmp
+      87: iflt          184
+      90: aload_0
+      91: invokevirtual #69                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.humidity:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+      94: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+      97: aload_1
+      98: invokevirtual #72                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.humidity:()J
+     101: lcmp
+     102: ifgt          184
+     105: aload_0
+     106: invokevirtual #69                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.humidity:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+     109: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+     112: aload_1
+     113: invokevirtual #72                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.humidity:()J
+     116: lcmp
+     117: iflt          184
+     120: aload_0
+     121: invokevirtual #74                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.weirdness:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+     124: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+     127: aload_1
+     128: invokevirtual #77                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.weirdness:()J
+     131: lcmp
+     132: ifgt          184
+     135: aload_0
+     136: invokevirtual #74                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.weirdness:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+     139: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+     142: aload_1
+     143: invokevirtual #77                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.weirdness:()J
+     146: lcmp
+     147: iflt          184
+     150: aload_0
+     151: invokevirtual #79                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.depth:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+     154: invokevirtual #46                 // Method net/minecraft/world/level/biome/Climate$Parameter.min:()J
+     157: aload_1
+     158: invokevirtual #82                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.depth:()J
+     161: lcmp
+     162: ifgt          184
+     165: aload_0
+     166: invokevirtual #79                 // Method net/minecraft/world/level/biome/Climate$ParameterPoint.depth:()Lnet/minecraft/world/level/biome/Climate$Parameter;
+     169: invokevirtual #56                 // Method net/minecraft/world/level/biome/Climate$Parameter.max:()J
+     172: aload_1
+     173: invokevirtual #82                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.depth:()J
+     176: lcmp
+     177: iflt          184
+     180: iconst_1
+     181: goto          185
+     184: iconst_0
+     185: ireturn
+
+  public static net.minecraft.world.item.ItemStack getGalleonFlag(net.minecraft.core.HolderGetter<net.minecraft.world.level.block.entity.BannerPattern>);
+    Code:
+       0: new           #84                 // class net/minecraft/world/item/ItemStack
+       3: dup
+       4: getstatic     #86                 // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.FLAGS:Ljava/util/Map;
+       7: getstatic     #92                 // Field net/minecraft/world/item/DyeColor.WHITE:Lnet/minecraft/world/item/DyeColor;
+      10: invokeinterface #98,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: checkcast     #104                // class java/util/function/Supplier
+      18: invokeinterface #106,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      23: checkcast     #109                // class net/minecraft/world/level/ItemLike
+      26: invokespecial #111                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;)V
+      29: astore_1
+      30: new           #114                // class net/minecraft/world/level/block/entity/BannerPatternLayers$Builder
+      33: dup
+      34: invokespecial #116                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder."<init>":()V
+      37: aload_0
+      38: getstatic     #119                // Field net/minecraft/world/level/block/entity/BannerPatterns.RHOMBUS_MIDDLE:Lnet/minecraft/resources/ResourceKey;
+      41: getstatic     #125                // Field net/minecraft/world/item/DyeColor.GREEN:Lnet/minecraft/world/item/DyeColor;
+      44: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      47: aload_0
+      48: getstatic     #132                // Field net/minecraft/world/level/block/entity/BannerPatterns.STRIPE_LEFT:Lnet/minecraft/resources/ResourceKey;
+      51: getstatic     #135                // Field net/minecraft/world/item/DyeColor.GRAY:Lnet/minecraft/world/item/DyeColor;
+      54: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      57: aload_0
+      58: getstatic     #138                // Field net/minecraft/world/level/block/entity/BannerPatterns.TRIANGLES_TOP:Lnet/minecraft/resources/ResourceKey;
+      61: getstatic     #135                // Field net/minecraft/world/item/DyeColor.GRAY:Lnet/minecraft/world/item/DyeColor;
+      64: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      67: aload_0
+      68: getstatic     #141                // Field net/minecraft/world/level/block/entity/BannerPatterns.TRIANGLES_BOTTOM:Lnet/minecraft/resources/ResourceKey;
+      71: getstatic     #135                // Field net/minecraft/world/item/DyeColor.GRAY:Lnet/minecraft/world/item/DyeColor;
+      74: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      77: aload_0
+      78: getstatic     #144                // Field net/minecraft/world/level/block/entity/BannerPatterns.STRAIGHT_CROSS:Lnet/minecraft/resources/ResourceKey;
+      81: getstatic     #147                // Field net/minecraft/world/item/DyeColor.BLACK:Lnet/minecraft/world/item/DyeColor;
+      84: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      87: aload_0
+      88: getstatic     #150                // Field net/minecraft/world/level/block/entity/BannerPatterns.HALF_VERTICAL_MIRROR:Lnet/minecraft/resources/ResourceKey;
+      91: getstatic     #135                // Field net/minecraft/world/item/DyeColor.GRAY:Lnet/minecraft/world/item/DyeColor;
+      94: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+      97: aload_0
+      98: getstatic     #153                // Field net/minecraft/world/level/block/entity/BannerPatterns.BORDER:Lnet/minecraft/resources/ResourceKey;
+     101: getstatic     #147                // Field net/minecraft/world/item/DyeColor.BLACK:Lnet/minecraft/world/item/DyeColor;
+     104: invokevirtual #128                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.addIfRegistered:(Lnet/minecraft/core/HolderGetter;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/DyeColor;)Lnet/minecraft/world/level/block/entity/BannerPatternLayers$Builder;
+     107: invokevirtual #156                // Method net/minecraft/world/level/block/entity/BannerPatternLayers$Builder.build:()Lnet/minecraft/world/level/block/entity/BannerPatternLayers;
+     110: astore_2
+     111: aload_1
+     112: getstatic     #160                // Field net/minecraft/core/component/DataComponents.BANNER_PATTERNS:Lnet/minecraft/core/component/DataComponentType;
+     115: aload_2
+     116: invokevirtual #166                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     119: pop
+     120: aload_1
+     121: getstatic     #170                // Field net/minecraft/core/component/DataComponents.HIDE_ADDITIONAL_TOOLTIP:Lnet/minecraft/core/component/DataComponentType;
+     124: getstatic     #173                // Field net/minecraft/util/Unit.INSTANCE:Lnet/minecraft/util/Unit;
+     127: invokevirtual #166                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     130: pop
+     131: aload_1
+     132: getstatic     #179                // Field net/minecraft/core/component/DataComponents.ITEM_NAME:Lnet/minecraft/core/component/DataComponentType;
+     135: getstatic     #182                // Field OMINOUS_FLAG_PATTERN_NAME:Lnet/minecraft/network/chat/Component;
+     138: invokevirtual #166                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     141: pop
+     142: aload_1
+     143: areturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #186                // Field net/mehvahdjukaar/supplementaries/reg/ModWorldgen.GALLEON_STRUCTURE:Ljava/util/function/Supplier;
+       3: invokeinterface #106,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       8: checkcast     #192                // class net/minecraft/world/level/levelgen/structure/StructureType
+      11: areturn
+
+  public net.mehvahdjukaar.moonlight.api.worldgen.SpawnBoxSettings ml$getSpawnBoxSettings();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field spawnBoxSettings:Lnet/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings;
+       4: areturn
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #194                // Method getSuitablePosition:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional;
+       5: astore_2
+       6: aload_2
+       7: invokevirtual #198                // Method java/util/Optional.isEmpty:()Z
+      10: ifeq          17
+      13: invokestatic  #204                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      16: areturn
+      17: aload_2
+      18: invokevirtual #208                // Method java/util/Optional.get:()Ljava/lang/Object;
+      21: checkcast     #209                // class net/minecraft/core/BlockPos
+      24: astore_3
+      25: aload_1
+      26: aload_0
+      27: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+      30: aload_0
+      31: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+      34: bipush        10
+      36: aload_3
+      37: iconst_0
+      38: invokestatic  #204                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      41: bipush        64
+      43: getstatic     #211                // Field net/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup.EMPTY:Lnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;
+      46: aload_0
+      47: getfield      #28                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+      50: aload_0
+      51: getfield      #32                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+      54: invokestatic  #217                // Method net/minecraft/world/level/levelgen/structure/pools/JigsawPlacement.addPieces:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;Lnet/minecraft/core/Holder;Ljava/util/Optional;ILnet/minecraft/core/BlockPos;ZLjava/util/Optional;ILnet/minecraft/world/level/levelgen/structure/pools/alias/PoolAliasLookup;Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;)Ljava/util/Optional;
+      57: areturn
+
+  private java.util.Optional<net.minecraft.core.BlockPos> getSuitablePosition(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #223                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #229                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #233                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #237                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      20: astore        5
+      22: aload_2
+      23: invokevirtual #241                // Method net/minecraft/world/level/ChunkPos.getMiddleBlockX:()I
+      26: istore        6
+      28: aload_2
+      29: invokevirtual #247                // Method net/minecraft/world/level/ChunkPos.getMiddleBlockZ:()I
+      32: istore        7
+      34: aload_3
+      35: iload         6
+      37: iload         7
+      39: getstatic     #250                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      42: aload         4
+      44: aload         5
+      46: invokevirtual #256                // Method net/minecraft/world/level/chunk/ChunkGenerator.getFirstOccupiedHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      49: iconst_1
+      50: iadd
+      51: istore        8
+      53: aload_1
+      54: invokevirtual #229                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      57: invokevirtual #262                // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+      60: istore        9
+      62: aload_0
+      63: getfield      #24                 // Field requireSeaLevel:Z
+      66: ifeq          80
+      69: iload         8
+      71: iload         9
+      73: if_icmpeq     80
+      76: invokestatic  #204                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      79: areturn
+      80: aload_1
+      81: invokevirtual #237                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      84: invokevirtual #265                // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+      87: iload         6
+      89: invokestatic  #271                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      92: iload         8
+      94: invokestatic  #271                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+      97: iload         7
+      99: invokestatic  #271                // Method net/minecraft/core/QuartPos.fromBlock:(I)I
+     102: invokevirtual #277                // Method net/minecraft/world/level/biome/Climate$Sampler.sample:(III)Lnet/minecraft/world/level/biome/Climate$TargetPoint;
+     105: astore        10
+     107: aload_0
+     108: getfield      #21                 // Field biomePoint:Ljava/util/Optional;
+     111: invokevirtual #283                // Method java/util/Optional.isPresent:()Z
+     114: ifeq          139
+     117: aload_0
+     118: getfield      #21                 // Field biomePoint:Ljava/util/Optional;
+     121: invokevirtual #208                // Method java/util/Optional.get:()Ljava/lang/Object;
+     124: checkcast     #41                 // class net/minecraft/world/level/biome/Climate$ParameterPoint
+     127: aload         10
+     129: invokestatic  #286                // Method containsPoint:(Lnet/minecraft/world/level/biome/Climate$ParameterPoint;Lnet/minecraft/world/level/biome/Climate$TargetPoint;)Z
+     132: ifne          139
+     135: invokestatic  #204                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     138: areturn
+     139: new           #209                // class net/minecraft/core/BlockPos
+     142: dup
+     143: iload         6
+     145: iload         8
+     147: aload_0
+     148: getfield      #17                 // Field yOffset:I
+     151: iadd
+     152: iload         7
+     154: invokespecial #290                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     157: invokestatic  #293                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     160: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$8(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #297                // Method settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: getstatic     #301                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool.CODEC:Lcom/mojang/serialization/Codec;
+       8: ldc_w         #307                // String start_pool
+      11: invokeinterface #309,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #315,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      21: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: getstatic     #325                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      27: ldc_w         #328                // String start_jigsaw_name
+      30: invokeinterface #330,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      35: invokedynamic #333,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      40: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      43: getstatic     #334                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      46: ldc_w         #338                // String y_offset
+      49: iconst_0
+      50: invokestatic  #340                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      53: invokeinterface #346,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      58: invokedynamic #351,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      63: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      66: getstatic     #352                // Field net/minecraft/world/level/biome/Climate$ParameterPoint.CODEC:Lcom/mojang/serialization/Codec;
+      69: ldc_w         #353                // String biome_point
+      72: invokeinterface #330,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      77: invokedynamic #355,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      82: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      85: getstatic     #356                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      88: ldc_w         #359                // String require_sea_level
+      91: iconst_1
+      92: invokestatic  #361                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      95: invokeinterface #346,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     100: invokedynamic #366,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     105: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     108: getstatic     #367                // Field net/minecraft/world/level/levelgen/structure/pools/DimensionPadding.CODEC:Lcom/mojang/serialization/Codec;
+     111: ldc_w         #370                // String dimension_padding
+     114: getstatic     #372                // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_DIMENSION_PADDING:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+     117: invokeinterface #377,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     122: invokedynamic #378,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     127: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     130: getstatic     #379                // Field net/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings.CODEC:Lcom/mojang/serialization/Codec;
+     133: ldc_w         #382                // String liquid_settings
+     136: getstatic     #384                // Field net/minecraft/world/level/levelgen/structure/structures/JigsawStructure.DEFAULT_LIQUID_SETTINGS:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+     139: invokeinterface #377,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     144: invokedynamic #387,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     149: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     152: getstatic     #388                // Field net/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings.CODEC:Lcom/mojang/serialization/Codec;
+     155: ldc_w         #391                // String spawn_boxes
+     158: getstatic     #393                // Field net/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings.EMPTY:Lnet/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings;
+     161: invokeinterface #377,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     166: invokedynamic #395,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     171: invokevirtual #319                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     174: invokevirtual #396                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P9;
+     177: aload_0
+     178: invokedynamic #402,  0            // InvokeDynamic #8:apply:()Lcom/mojang/datafixers/util/Function9;
+     183: invokevirtual #405                // Method com/mojang/datafixers/Products$P9.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function9;)Lcom/mojang/datafixers/kinds/App;
+     186: areturn
+
+  private static net.mehvahdjukaar.moonlight.api.worldgen.SpawnBoxSettings lambda$static$7(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field spawnBoxSettings:Lnet/mehvahdjukaar/moonlight/api/worldgen/SpawnBoxSettings;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings lambda$static$6(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field liquidSettings:Lnet/minecraft/world/level/levelgen/structure/templatesystem/LiquidSettings;
+       4: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.pools.DimensionPadding lambda$static$5(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #28                 // Field dimensionPadding:Lnet/minecraft/world/level/levelgen/structure/pools/DimensionPadding;
+       4: areturn
+
+  private static java.lang.Boolean lambda$static$4(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field requireSeaLevel:Z
+       4: invokestatic  #361                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.util.Optional lambda$static$3(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field biomePoint:Ljava/util/Optional;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$2(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field yOffset:I
+       4: invokestatic  #340                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.Optional lambda$static$1(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field startJigsawName:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.core.Holder lambda$static$0(net.mehvahdjukaar.supplementaries.common.worldgen.GalleonStructure);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field startPool:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #410,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+       5: invokestatic  #411                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #417                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: ldc_w         #420                // String block.supplementaries.ominous_flag
+      14: invokestatic  #422                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      17: getstatic     #428                // Field net/minecraft/ChatFormatting.GOLD:Lnet/minecraft/ChatFormatting;
+      20: invokevirtual #434                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      23: putstatic     #182                // Field OMINOUS_FLAG_PATTERN_NAME:Lnet/minecraft/network/chat/Component;
+      26: return
+}
