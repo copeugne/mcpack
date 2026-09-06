@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Creeper Overhaul provider membership is RESOLVED. Source e8d3713 and login
+delegate d21ca8f establish mob-spawn/loot/cosmetic roles without an independent
+family. All 317 parent files, seventeen spawn modifiers and the nested
+cosmetics-library boundary are accounted for by three focused cases (0.11s);
+scoped Ruff/Basedpyright pass. Census: 80 resolved, 56 open. Next packaged
+provider is Farmer's Delight, before its dependent food add-ons. Eleven
+packaged-generation providers remain, plus the existing code-only and
+unmatched-entry queues. Do not restart Supplementaries or Creeper Overhaul.
+
 Supplementaries provider membership is now RESOLVED. The final disposition in
 evidence/item-8/provider-scope.md supersedes all older open Supplementaries
 checkpoints. Reuse server-hook/shared-plugin source 46127c7 and map delegate
