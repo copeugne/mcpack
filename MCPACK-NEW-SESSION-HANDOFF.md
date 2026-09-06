@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+owo-lib membership is resolved with no independent family. Sources 37dfc1f7,
+bcfb3b59 and c34ff986 preserve 50 classes. Loot/tag/ore-hook collections start
+empty and accept consumer registrations. All 17 nested Fabric base classes are
+byte-identical to the already audited version; reuse fabric-base-entry. Captures
+reproduce exactly; two focused cases and scoped quality checks pass. Providers:
+133 resolved, 3 open. Working groups remain 410, with 100 explicit provisional
+Moog decisions. Stop generic owo helper tracing. Next: ServerCore, Simply Swords
+and You're in Grave Danger, then canonical reconciliation before attributes.
+Item 8 final acceptance, review and main delivery remain incomplete.
+
+
 Moonlight membership is resolved with no independent family. Sources 10f33521,
 7ef8cd70, 582434ee, 96d6605e, 944483ae and 06fe6e74 preserve 55 classes; reuse
 supplementaries-shared-plugin for SimpleMixinPlugin. Spawn-box pieces contain
