@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "bettercombat-neoforge-2.3.2+1.21.1.jar",
         "bookshelf-neoforge-1.21.1-21.1.81.jar",
         "architectury-13.0.8-neoforge.jar",
         "PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar",
@@ -212,6 +213,23 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/bettercombat/BetterCombatMod.class",
+    "net/bettercombat/mixin/BetterCombatMixinPlugin.class",
+    "net/bettercombat/mixin/DataComponentTypesMixin.class",
+    "net/bettercombat/mixin/EnchantmentMixin.class",
+    "net/bettercombat/mixin/ItemStackMixin.class",
+    "net/bettercombat/mixin/RangedWeaponItemMixin.class",
+    "net/bettercombat/mixin/ServerPlayNetworkHandlerMixin.class",
+    "net/bettercombat/mixin/player/LivingEntityAccessor.class",
+    "net/bettercombat/mixin/player/LivingEntityMixin.class",
+    "net/bettercombat/mixin/player/PlayerEntityAccessor.class",
+    "net/bettercombat/mixin/player/PlayerEntityMixin.class",
+    "net/bettercombat/mixin/player/PlayerEntityRangeMixin.class",
+    "net/bettercombat/neoforge/NeoForgeEvents.class",
+    "net/bettercombat/neoforge/NeoForgeMod.class",
+    "net/bettercombat/neoforge/client/NeoForgeClientEvents.class",
+    "net/bettercombat/neoforge/client/NeoForgeClientMod.class",
+    "net/bettercombat/neoforge/network/NetworkEvents.class",
     "net/darkhax/bookshelf/common/impl/BookshelfMod.class",
     "net/darkhax/bookshelf/common/api/registry/ContentProvider.class",
     "net/darkhax/bookshelf/common/impl/BookshelfContent.class",
