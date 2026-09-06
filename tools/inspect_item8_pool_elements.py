@@ -966,6 +966,31 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betterfortresses/world/processor/PillarProcessor.class",
     "com/yungnickyoung/minecraft/betterfortresses/world/processor/RedSandstoneStairsProcessor.class",
     "com/yungnickyoung/minecraft/betterfortresses/world/processor/StairPillarProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/BetterOceanMonumentsCommon.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/BetterOceanMonumentsNeoForge.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/config/BOMConfigForge.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/mixin/LocateVanillaMonumentCommandMixin.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/mixin/PersistentTridentMixin.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/mixin/accessor/ProjectileAccessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/module/ConfigModule$General.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/module/TagModule.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/services/Services.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/AirProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/LegProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/RandomDarkPrismarineSlabDecorationProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/RandomOxidizationProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/RandomPrismarineSlabDecorationProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/RandomSpongeProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/SandGravelProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/SeagrassProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/StructureVoidProcessor.class",
+    "com/yungnickyoung/minecraft/betteroceanmonuments/world/processor/WaterlogProcessor.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1106,6 +1131,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                         "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
                     }
                     and not name.endswith("ConfigGeneralNeoForge.class")
+                    and not name.endswith("ConfigModuleNeoForge.class")
+                )
+                verbose |= (
+                    source.name == "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar"
+                    and not name.endswith("ConfigGeneralForge.class")
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
