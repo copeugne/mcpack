@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 80 of 136. The exact queue below has 56 open rows.
+Supported provider dispositions: 81 of 136. The exact queue below has 55 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -598,7 +598,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | `creeper-overhaul-provider` (e8d3713), `creeper-overhaul-login` (d21ca8f), test_creeper_overhaul_provider_scope.py | RESOLVED: Biome mob spawning, entity behavior/loot and cosmetic synchronization; no independent structure family. Full payload and bundled-library boundary below. |
 | `DungeonsArise-1.21.1-2.1.68-release.jar` | `wda-provider-scope` | RESOLVED: see WDA structure-provider disposition below. |
-| `FarmersDelight-1.21.1-1.3.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `FarmersDelight-1.21.1-1.3.2.jar` | `farmers-delight-provider` (555d912), common setup 15cb251, server packet 6678ec9; test_farmers_delight_provider_scope.py | RESOLVED: Five vanilla village components, farm-processor crop changes, vegetation and food/item interactions. No independent structure family. Full disposition below. |
 | `GlitchCore-neoforge-1.21.1-2.1.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar` | `illagerinvasion-provider`, `illagerinvasion-extensible-enums` (e0f2c9a), existing pool codecs, test_illagerinvasion_provider_scope.py | RESOLVED: Five existing roots, thirteen mansion replacement components and encounter/loot modifications. Bundled enum library has no independent family; disconnected pillager pool/template preserved below. |
 | `LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar` | `leavesbegone-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Leaf ticking and chunk tick persistence; no authored structure contribution. See small utility provider dispositions below. |
@@ -701,6 +701,97 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Farmers Delight provider disposition
+
+FarmersDelight-1.21.1-1.3.2.jar is RESOLVED as an existing-village component,
+vegetation and food/item provider. It adds no independent structure family.
+Archive SHA-256:
+8ff438d62e1fce61542945faae45975d823e04bd6e73a07a121ea05ce2f03de7.
+
+The complete payload has 2220 files: 292 classes, 995 assets, 927 data files
+and six metadata/logo files. There are no nested archives, service declarations
+or additional scripts outside the three packaged CraftTweaker examples. The
+full payload test binds the exact partition and all non-JSON data paths to the
+frozen archive. Accepted packaged JSON and template catalogs above retain the
+data; source 555d912, common setup 15cb251 and server packet 6678ec9 retain the
+inspected executable contribution routes. All 19 annotated entry candidates,
+all twelve common mixins and all seven common/world classes are captured and
+bound by the focused check.
+
+### Generation membership
+
+VillageStructures registers a ServerAboutToStartEvent hook. Under
+GENERATE_VILLAGE_COMPOST_HEAPS it appends a SinglePoolElement with rigid
+projection and the empty processor list to each existing village house pool:
+
+| Existing pool | Packaged component | Weight |
+| --- | --- | ---: |
+| minecraft:village/desert/houses | farmersdelight:village/houses/desert_compost_pile | 3 |
+| minecraft:village/plains/houses | farmersdelight:village/houses/plains_compost_pile | 5 |
+| minecraft:village/savanna/houses | farmersdelight:village/houses/savanna_compost_pile | 4 |
+| minecraft:village/snowy/houses | farmersdelight:village/houses/snowy_compost_pile | 3 |
+| minecraft:village/taiga/houses | farmersdelight:village/houses/taiga_compost_pile | 4 |
+
+This accounts for every packaged template. Missing target pools are skipped by
+the implementation. These are components of existing villages, not five new
+families. Separately, GENERATE_VILLAGE_FARM_FD_CROPS appends crop replacement
+rules to the five existing minecraft:farm_<biome> processor lists. Both branches
+modify existing generation. This membership disposition does not assert frozen
+activation, effective processor precedence or observed placement. The separate
+Repurposed Structures compatibility add-on's thirteen templates and CTOV's
+compatibility components keep their existing consumer links and are not recounted.
+
+Ten configured features comprise eight wild_crop definitions, one wild_rice
+definition and one vanilla random_patch for sandy shrubs. WildCropFeature places
+the supplied floor, primary and secondary plant features in random patches.
+The complete supplied block-state set contains only wild crops, mushroom
+colonies, mushrooms, sandy shrubs, flowers/grasses and coarse dirt. WildRiceFeature
+places a double rice plant in eligible water. Neither writes an authored site.
+The nine placed resources each reference the corresponding configured feature;
+all nine are consumed by the nine add_features_by_filter biome modifiers at
+vegetal_decoration. BiomeTagFilter and the modifier apply biome/temperature
+eligibility, not another layout. The standalone sandy-shrub configured resource
+has no corresponding placed resource in this provider; sandy shrub also appears
+inline in crop patches. It is vegetation in either representation.
+
+### Other executable and data roles
+
+| Entry group | Inspected contribution |
+| --- | --- |
+| FarmersDelight, CommonSetup, RegistryAliases | Registry/configuration setup, rotten-tomato dispenser behavior, villager food/item sets and basket-to-bamboo_basket block/item aliases. The village callback above is the structural contribution. |
+| Three client event subscribers and two client mixins | Client setup, key handling, tooltips, sign editing and block-break display. Client-only registration is explicit. |
+| Four block-entity capability subscribers | Inventory capability registration for basket, cabinet, cooking pot and cutting board. |
+| CommonEvents, CommonModBusEvents, VillagerEvents | Soup consumption effects, stack/food component changes and villager/wandering-trader trades. |
+| ToolCarvingEvent, DogFoodEvent, HorseFeedEvent, KnifeEvents, SkilletEvents, BackstabbingEvent | Existing block/item/entity interactions, animal feeding, cake slicing, attack sound and damage/knockback changes. No independent generation route. |
+| ModNetworking and server payload delegate | Client particle payload and server-held skillet flip timestamp. The inspected server handler only updates an item component. |
+| Three datafix mixins | Existing item/block-entity inventory and component migration. |
+| Three rich-soil mixins and VillagersTargetRichSoilMixin | Preserve rich soil under tree growth/trampling and recognize farmland for existing villager behavior. |
+| CampfireBaleMixin, CuttingBoardDispenserMixin, NourishmentAlwaysEatMixin, PlacePumpkinPieMixin, RopeFenceConnectionMixin | Smoke-source checks, adjacent cutting-board dispensing, eating permission, player pie placement and fence connectivity. |
+| EnumParameters and enum extensions | Cooking recipe-book categories and skillet render pose. |
+| DataGenerators | GatherDataEvent registrations for generated recipes, tags, models, loot, registry data and structure updating. This is a development data-generation entry, not another dedicated-server generation route. |
+
+The three .zs examples add/remove cooking or cutting recipes and replace recipe
+components. The seven Create projectile definitions describe food projectile
+items and their projectile properties. Remaining data categories are recipes,
+advancements, tags, loot tables/modifiers, item data maps, a damage type, an
+enchantment and weapon attributes. These can affect existing-family attributes,
+but do not introduce an independent family. Membership closure is not a full
+gameplay audit of these item mechanics or a claim that optional CraftTweaker
+scripts execute in the retained runtime.
+
+```sh
+uv run pytest -q tests/item8/test_farmers_delight_provider_scope.py
+uv run ruff check tests/item8/test_farmers_delight_provider_scope.py
+uv run basedpyright tests/item8/test_farmers_delight_provider_scope.py
+```
+
+Three cases pass (0.15s); scoped Ruff and Basedpyright pass. The initial test
+incorrectly expected unqualified farm processor strings; preserved source uses
+minecraft:farm_<biome>, and the assertion was corrected. Initial line-length and
+set-typing findings were corrected. No raw source was changed and no additional
+runtime measurement was run. Census: 81 resolved, 55 open. Ten packaged-generation
+providers remain, followed by the existing 24 code-only and 21 unmatched rows.
 
 ## Creeper Overhaul provider disposition
 

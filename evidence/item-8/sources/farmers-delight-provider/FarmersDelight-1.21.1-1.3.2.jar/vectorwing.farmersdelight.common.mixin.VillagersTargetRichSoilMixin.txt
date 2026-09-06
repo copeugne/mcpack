@@ -1,0 +1,201 @@
+Classfile FarmersDelight-1.21.1-1.3.2.jar!/vectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin.class
+  Last modified Apr 29, 2026; size 2724 bytes
+  SHA-256 checksum e800c8eec621fafd5ad26a09df7267631c67f44b038dbf2c213d8dc8fb5b7fb7
+  Compiled from "VillagersTargetRichSoilMixin.java"
+public class vectorwing.farmersdelight.common.mixin.VillagersTargetRichSoilMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #39                         // vectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Methodref          #8.#9          // net/minecraft/world/entity/npc/Villager.getVillagerData:()Lnet/minecraft/world/entity/npc/VillagerData;
+   #8 = Class              #10            // net/minecraft/world/entity/npc/Villager
+   #9 = NameAndType        #11:#12        // getVillagerData:()Lnet/minecraft/world/entity/npc/VillagerData;
+  #10 = Utf8               net/minecraft/world/entity/npc/Villager
+  #11 = Utf8               getVillagerData
+  #12 = Utf8               ()Lnet/minecraft/world/entity/npc/VillagerData;
+  #13 = Methodref          #14.#15        // net/minecraft/world/entity/npc/VillagerData.getProfession:()Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #14 = Class              #16            // net/minecraft/world/entity/npc/VillagerData
+  #15 = NameAndType        #17:#18        // getProfession:()Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #16 = Utf8               net/minecraft/world/entity/npc/VillagerData
+  #17 = Utf8               getProfession
+  #18 = Utf8               ()Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #19 = Fieldref           #20.#21        // net/minecraft/world/entity/npc/VillagerProfession.FARMER:Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #20 = Class              #22            // net/minecraft/world/entity/npc/VillagerProfession
+  #21 = NameAndType        #23:#24        // FARMER:Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #22 = Utf8               net/minecraft/world/entity/npc/VillagerProfession
+  #23 = Utf8               FARMER
+  #24 = Utf8               Lnet/minecraft/world/entity/npc/VillagerProfession;
+  #25 = InterfaceMethodref #26.#27        // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #26 = Class              #28            // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #27 = NameAndType        #29:#30        // call:([Ljava/lang/Object;)Ljava/lang/Object;
+  #28 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+  #29 = Utf8               call
+  #30 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+  #31 = Class              #32            // java/lang/Boolean
+  #32 = Utf8               java/lang/Boolean
+  #33 = Methodref          #31.#34        // java/lang/Boolean.booleanValue:()Z
+  #34 = NameAndType        #35:#36        // booleanValue:()Z
+  #35 = Utf8               booleanValue
+  #36 = Utf8               ()Z
+  #37 = Class              #38            // net/minecraft/world/level/block/FarmBlock
+  #38 = Utf8               net/minecraft/world/level/block/FarmBlock
+  #39 = Class              #40            // vectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin
+  #40 = Utf8               vectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin
+  #41 = Utf8               Code
+  #42 = Utf8               LineNumberTable
+  #43 = Utf8               LocalVariableTable
+  #44 = Utf8               this
+  #45 = Utf8               Lvectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin;
+  #46 = Utf8               detectModdedFarmland
+  #47 = Utf8               (Lcom/google/common/collect/ImmutableSet;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/entity/npc/Villager;)Z
+  #48 = Utf8               instance
+  #49 = Utf8               Lcom/google/common/collect/ImmutableSet;
+  #50 = Utf8               o
+  #51 = Utf8               Ljava/lang/Object;
+  #52 = Utf8               original
+  #53 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #54 = Utf8               villager
+  #55 = Utf8               Lnet/minecraft/world/entity/npc/Villager;
+  #56 = Utf8               LocalVariableTypeTable
+  #57 = Utf8               Lcom/google/common/collect/ImmutableSet<Lnet/minecraft/world/level/block/Block;>;
+  #58 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+  #59 = Utf8               StackMapTable
+  #60 = Utf8               Signature
+  #61 = Utf8               (Lcom/google/common/collect/ImmutableSet<Lnet/minecraft/world/level/block/Block;>;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;Lnet/minecraft/world/entity/npc/Villager;)Z
+  #62 = Utf8               RuntimeVisibleAnnotations
+  #63 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #64 = Utf8               method
+  #65 = Utf8               doTick(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/npc/Villager;)V
+  #66 = Utf8               at
+  #67 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #68 = Utf8               value
+  #69 = Utf8               INVOKE
+  #70 = Utf8               target
+  #71 = Utf8               Lcom/google/common/collect/ImmutableSet;contains(Ljava/lang/Object;)Z
+  #72 = Utf8               RuntimeInvisibleParameterAnnotations
+  #73 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #74 = Utf8               argsOnly
+  #75 = Integer            1
+  #76 = Utf8               SourceFile
+  #77 = Utf8               VillagersTargetRichSoilMixin.java
+  #78 = Utf8               RuntimeInvisibleAnnotations
+  #79 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #80 = Utf8               Lnet/minecraft/world/entity/ai/sensing/SecondaryPoiSensor;
+{
+  public vectorwing.farmersdelight.common.mixin.VillagersTargetRichSoilMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 19: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lvectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin;
+
+  public boolean detectModdedFarmland(com.google.common.collect.ImmutableSet<net.minecraft.world.level.block.Block>, java.lang.Object, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Boolean>, net.minecraft.world.entity.npc.Villager);
+    descriptor: (Lcom/google/common/collect/ImmutableSet;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/entity/npc/Villager;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=5, args_size=5
+         0: aload         4
+         2: invokevirtual #7                  // Method net/minecraft/world/entity/npc/Villager.getVillagerData:()Lnet/minecraft/world/entity/npc/VillagerData;
+         5: invokevirtual #13                 // Method net/minecraft/world/entity/npc/VillagerData.getProfession:()Lnet/minecraft/world/entity/npc/VillagerProfession;
+         8: getstatic     #19                 // Field net/minecraft/world/entity/npc/VillagerProfession.FARMER:Lnet/minecraft/world/entity/npc/VillagerProfession;
+        11: if_acmpne     54
+        14: aload_3
+        15: iconst_2
+        16: anewarray     #2                  // class java/lang/Object
+        19: dup
+        20: iconst_0
+        21: aload_1
+        22: aastore
+        23: dup
+        24: iconst_1
+        25: aload_2
+        26: aastore
+        27: invokeinterface #25,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        32: checkcast     #31                 // class java/lang/Boolean
+        35: invokevirtual #33                 // Method java/lang/Boolean.booleanValue:()Z
+        38: ifne          48
+        41: aload_2
+        42: instanceof    #37                 // class net/minecraft/world/level/block/FarmBlock
+        45: ifeq          52
+        48: iconst_1
+        49: goto          53
+        52: iconst_0
+        53: ireturn
+        54: aload_3
+        55: iconst_2
+        56: anewarray     #2                  // class java/lang/Object
+        59: dup
+        60: iconst_0
+        61: aload_1
+        62: aastore
+        63: dup
+        64: iconst_1
+        65: aload_2
+        66: aastore
+        67: invokeinterface #25,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        72: checkcast     #31                 // class java/lang/Boolean
+        75: invokevirtual #33                 // Method java/lang/Boolean.booleanValue:()Z
+        78: ireturn
+      LineNumberTable:
+        line 24: 0
+        line 25: 14
+        line 27: 54
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      79     0  this   Lvectorwing/farmersdelight/common/mixin/VillagersTargetRichSoilMixin;
+            0      79     1 instance   Lcom/google/common/collect/ImmutableSet;
+            0      79     2     o   Ljava/lang/Object;
+            0      79     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      79     4 villager   Lnet/minecraft/world/entity/npc/Villager;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      79     1 instance   Lcom/google/common/collect/ImmutableSet<Lnet/minecraft/world/level/block/Block;>;
+            0      79     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 48 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 0 /* same */
+    Signature: #61                          // (Lcom/google/common/collect/ImmutableSet<Lnet/minecraft/world/level/block/Block;>;Ljava/lang/Object;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;Lnet/minecraft/world/entity/npc/Villager;)Z
+    RuntimeVisibleAnnotations:
+      0: #63(#64=[s#65],#66=[@#67(#68=s#69,#70=s#71)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["doTick(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/npc/Villager;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/google/common/collect/ImmutableSet;contains(Ljava/lang/Object;)Z"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+        0: #73(#74=Z#75)
+          com.llamalad7.mixinextras.sugar.Local(
+            argsOnly=true
+          )
+}
+SourceFile: "VillagersTargetRichSoilMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #79(#68=[c#80])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/ai/sensing/SecondaryPoiSensor;]
+    )
