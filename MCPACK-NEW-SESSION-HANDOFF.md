@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+CTOV provider coverage now passes: complete payload, 78 existing roots, 181 pools
+and 2,093 current-path templates accounted for. Outside its root graphs, 1,005
+templates have condition-failing compatibility references and 128 are disconnected
+components. Nineteen disconnected pools and 27 roots with missing resources are
+preserved, not repaired. Seven focused cases pass. Reuse the existing source,
+selection, bundle and scope checks. Counts: 34 resolved providers, 102 open.
+Candidate completeness remains the immediate deliverable before attributes;
+887 registry roots and 421 provisional groups still do not establish final families.
+
+
 CTOV bundled compatibility resources now have a passing focused check in
 test_ctov_bundled_resources.py. Mushroom ZIP contains five processor documents
 and metadata identical to loose copies; Savage and Ravage has eleven old-path
