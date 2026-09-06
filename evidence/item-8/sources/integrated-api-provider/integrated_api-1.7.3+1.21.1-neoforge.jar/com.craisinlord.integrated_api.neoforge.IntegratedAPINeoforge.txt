@@ -1,0 +1,145 @@
+Compiled from "IntegratedAPINeoforge.java"
+public class com.craisinlord.integrated_api.neoforge.IntegratedAPINeoforge {
+  public static net.neoforged.bus.api.IEventBus modEventBusTempHolder;
+
+  public com.craisinlord.integrated_api.neoforge.IntegratedAPINeoforge(net.neoforged.bus.api.IEventBus, net.neoforged.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: invokespecial #27                 // Method java/lang/Object."<init>":()V
+       4: aload_1
+       5: getstatic     #33                 // Field net/neoforged/bus/api/EventPriority.NORMAL:Lnet/neoforged/bus/api/EventPriority;
+       8: invokedynamic #54,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      13: invokeinterface #60,  3           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Lnet/neoforged/bus/api/EventPriority;Ljava/util/function/Consumer;)V
+      18: aload_1
+      19: putstatic     #62                 // Field modEventBusTempHolder:Lnet/neoforged/bus/api/IEventBus;
+      22: invokestatic  #67                 // Method com/craisinlord/integrated_api/IntegratedAPI.init:()V
+      25: aconst_null
+      26: putstatic     #62                 // Field modEventBusTempHolder:Lnet/neoforged/bus/api/IEventBus;
+      29: getstatic     #73                 // Field com/craisinlord/integrated_api/modinit/neoforge/IABiomeModifiers.BIOME_MODIFIER_SERIALIZERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      32: aload_1
+      33: invokevirtual #79                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      36: aload_1
+      37: invokedynamic #86,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      42: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      47: getstatic     #94                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      50: astore_3
+      51: aload_3
+      52: invokedynamic #101,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      57: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      62: aload_3
+      63: invokedynamic #108,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      68: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      73: aload_3
+      74: invokedynamic #115,  0            // InvokeDynamic #4:accept:()Ljava/util/function/Consumer;
+      79: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      84: aload_3
+      85: invokedynamic #122,  0            // InvokeDynamic #5:accept:()Ljava/util/function/Consumer;
+      90: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      95: aload_3
+      96: invokedynamic #129,  0            // InvokeDynamic #6:accept:()Ljava/util/function/Consumer;
+     101: invokeinterface #89,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     106: return
+
+  private static void onSetup(net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: getstatic     #140                // Field com/craisinlord/integrated_api/events/lifecycle/SetupEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: new           #136                // class com/craisinlord/integrated_api/events/lifecycle/SetupEvent
+       6: dup
+       7: aload_0
+       8: dup
+       9: invokestatic  #146                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: invokedynamic #158,  0            // InvokeDynamic #7:accept:(Lnet/neoforged/fml/event/lifecycle/FMLCommonSetupEvent;)Ljava/util/function/Consumer;
+      18: invokespecial #160                // Method com/craisinlord/integrated_api/events/lifecycle/SetupEvent."<init>":(Ljava/util/function/Consumer;)V
+      21: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+      24: return
+
+  private static void onServerStarting(net.neoforged.neoforge.event.server.ServerAboutToStartEvent);
+    Code:
+       0: getstatic     #169                // Field com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: new           #168                // class com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent
+       6: dup
+       7: aload_0
+       8: invokevirtual #175                // Method net/neoforged/neoforge/event/server/ServerAboutToStartEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+      11: invokespecial #178                // Method com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStartEvent."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+      14: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+      17: return
+
+  private static void onServerStopping(net.neoforged.neoforge.event.server.ServerStoppingEvent);
+    Code:
+       0: getstatic     #182                // Field com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStopEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: getstatic     #186                // Field com/craisinlord/integrated_api/events/lifecycle/ServerGoingToStopEvent.INSTANCE:Lcom/craisinlord/integrated_api/events/lifecycle/ServerGoingToStopEvent;
+       6: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+       9: return
+
+  private static void onAddVillagerTrades(net.neoforged.neoforge.event.village.VillagerTradesEvent);
+    Code:
+       0: getstatic     #190                // Field com/craisinlord/integrated_api/events/RegisterVillagerTradesEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: new           #189                // class com/craisinlord/integrated_api/events/RegisterVillagerTradesEvent
+       6: dup
+       7: aload_0
+       8: invokevirtual #196                // Method net/neoforged/neoforge/event/village/VillagerTradesEvent.getType:()Lnet/minecraft/world/entity/npc/VillagerProfession;
+      11: aload_0
+      12: invokedynamic #208,  0            // InvokeDynamic #8:accept:(Lnet/neoforged/neoforge/event/village/VillagerTradesEvent;)Ljava/util/function/BiConsumer;
+      17: invokespecial #211                // Method com/craisinlord/integrated_api/events/RegisterVillagerTradesEvent."<init>":(Lnet/minecraft/world/entity/npc/VillagerProfession;Ljava/util/function/BiConsumer;)V
+      20: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+      23: return
+
+  private static void onWanderingTrades(net.neoforged.neoforge.event.village.WandererTradesEvent);
+    Code:
+       0: getstatic     #215                // Field com/craisinlord/integrated_api/events/RegisterWanderingTradesEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: new           #214                // class com/craisinlord/integrated_api/events/RegisterWanderingTradesEvent
+       6: dup
+       7: aload_0
+       8: invokevirtual #221                // Method net/neoforged/neoforge/event/village/WandererTradesEvent.getGenericTrades:()Ljava/util/List;
+      11: dup
+      12: invokestatic  #146                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: pop
+      16: invokedynamic #233,  0            // InvokeDynamic #9:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      21: aload_0
+      22: invokevirtual #236                // Method net/neoforged/neoforge/event/village/WandererTradesEvent.getRareTrades:()Ljava/util/List;
+      25: dup
+      26: invokestatic  #146                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      29: pop
+      30: invokedynamic #233,  0            // InvokeDynamic #9:accept:(Ljava/util/List;)Ljava/util/function/Consumer;
+      35: invokespecial #239                // Method com/craisinlord/integrated_api/events/RegisterWanderingTradesEvent."<init>":(Ljava/util/function/Consumer;Ljava/util/function/Consumer;)V
+      38: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+      41: return
+
+  private static void onAddReloadListeners(net.neoforged.neoforge.event.AddReloadListenerEvent);
+    Code:
+       0: getstatic     #243                // Field com/craisinlord/integrated_api/events/lifecycle/RegisterReloadListenerEvent.EVENT:Lcom/craisinlord/integrated_api/events/base/EventHandler;
+       3: new           #242                // class com/craisinlord/integrated_api/events/lifecycle/RegisterReloadListenerEvent
+       6: dup
+       7: aload_0
+       8: invokedynamic #253,  0            // InvokeDynamic #10:accept:(Lnet/neoforged/neoforge/event/AddReloadListenerEvent;)Ljava/util/function/BiConsumer;
+      13: invokespecial #256                // Method com/craisinlord/integrated_api/events/lifecycle/RegisterReloadListenerEvent."<init>":(Ljava/util/function/BiConsumer;)V
+      16: invokevirtual #165                // Method com/craisinlord/integrated_api/events/base/EventHandler.invoke:(Ljava/lang/Object;)V
+      19: return
+
+  private static void lambda$onAddReloadListeners$1(net.neoforged.neoforge.event.AddReloadListenerEvent, net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.PreparableReloadListener);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #264                // Method net/neoforged/neoforge/event/AddReloadListenerEvent.addListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+       5: return
+
+  private static void lambda$onAddVillagerTrades$0(net.neoforged.neoforge.event.village.VillagerTradesEvent, java.lang.Integer, net.minecraft.world.entity.npc.VillagerTrades$ItemListing);
+    Code:
+       0: aload_0
+       1: invokevirtual #272                // Method net/neoforged/neoforge/event/village/VillagerTradesEvent.getTrades:()Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       4: aload_1
+       5: invokevirtual #278                // Method java/lang/Integer.intValue:()I
+       8: invokeinterface #284,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.get:(I)Ljava/lang/Object;
+      13: checkcast     #223                // class java/util/List
+      16: aload_2
+      17: invokeinterface #227,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      22: pop
+      23: return
+
+  static {};
+    Code:
+       0: aconst_null
+       1: putstatic     #62                 // Field modEventBusTempHolder:Lnet/neoforged/bus/api/IEventBus;
+       4: return
+}
