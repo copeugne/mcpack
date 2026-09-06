@@ -2392,6 +2392,9 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar",
+        "META-INF/jars/fabric-entity-events-v1-1.8.0+5ede667619.jar",
+        "META-INF/jars/fabric-command-api-v2-2.2.28+36d727be19.jar",
         "META-INF/jars/fabric-game-rule-api-v1-1.0.53+36d727be19.jar",
         "META-INF/jars/fabric-loot-api-v2-3.0.15+a3ee712d19.jar",
         "META-INF/jars/fabric-loot-api-v3-1.0.3+333dfad919.jar",
@@ -2434,6 +2437,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "5795d02717bdb52c95b4a2de146f2759d4f5d1d10ea32c47e30bcffdb6d6bc5d",
+        ),
+        "META-INF/jars/fabric-entity-events-v1-1.8.0+5ede667619.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "4e7b2b64f1579897728f9ccce417ae2db29c9638e1d353e19470c3c206061e5a",
+        ),
+        "META-INF/jars/fabric-command-api-v2-2.2.28+36d727be19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "3f46281327f958891148bf1370a8dda86508eabbcdf2ceb0e6696271df186af3",
+        ),
         "META-INF/jars/fabric-game-rule-api-v1-1.0.53+36d727be19.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "9148277161738e724c66ce5b68a951469c4947fd33e0b8630279dc53c81452ae",
