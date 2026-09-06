@@ -1,0 +1,516 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk.class
+  Last modified Jan 1, 1980; size 3675 bytes
+  SHA-256 checksum 3fbaaaf3ef53db55c01e007681d4f2b7d48efa04c2156a7ee9a16f9bb380dc3f
+  Compiled from "MixinProtoChunk.java"
+public class com.ishland.c2me.rewrites.chunksystem.mixin.async_serialization.MixinProtoChunk implements com.ishland.c2me.rewrites.chunksystem.common.async_chunkio.ProtoChunkExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 3, methods: 6, attributes: 2
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk
+    #2 = Class              #1            // com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/rewrites/chunksystem/common/async_chunkio/ProtoChunkExtension
+    #6 = Class              #5            // com/ishland/c2me/rewrites/chunksystem/common/async_chunkio/ProtoChunkExtension
+    #7 = Utf8               MixinProtoChunk.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/world/level/chunk/ProtoChunk;
+   #11 = Utf8               blendingComputeFuture
+   #12 = Utf8               Ljava/util/concurrent/CompletableFuture;
+   #13 = Utf8               Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+   #14 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #15 = Utf8               initialMainThreadComputeFuture
+   #16 = Utf8               needBlending
+   #17 = Utf8               Z
+   #18 = Utf8               <init>
+   #19 = Utf8               ()V
+   #20 = NameAndType        #18:#19       // "<init>":()V
+   #21 = Methodref          #4.#20        // java/lang/Object."<init>":()V
+   #22 = Utf8               java/util/concurrent/CompletableFuture
+   #23 = Class              #22           // java/util/concurrent/CompletableFuture
+   #24 = Utf8               completedFuture
+   #25 = Utf8               (Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+   #26 = NameAndType        #24:#25       // completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+   #27 = Methodref          #23.#26       // java/util/concurrent/CompletableFuture.completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+   #28 = NameAndType        #11:#12       // blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+   #29 = Fieldref           #2.#28        // com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk.blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+   #30 = NameAndType        #15:#12       // initialMainThreadComputeFuture:Ljava/util/concurrent/CompletableFuture;
+   #31 = Fieldref           #2.#30        // com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk.initialMainThreadComputeFuture:Ljava/util/concurrent/CompletableFuture;
+   #32 = NameAndType        #16:#17       // needBlending:Z
+   #33 = Fieldref           #2.#32        // com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk.needBlending:Z
+   #34 = Utf8               this
+   #35 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+   #36 = Utf8               setBlendingInfo
+   #37 = Utf8               (Lnet/minecraft/world/level/ChunkPos;Ljava/util/List;)V
+   #38 = Utf8               (Lnet/minecraft/world/level/ChunkPos;Ljava/util/List<Ljava/util/BitSet;>;)V
+   #39 = Utf8               pos
+   #40 = Utf8               bitSets
+   #41 = Utf8               com/ishland/c2me/base/mixin/access/IBlender
+   #42 = Class              #41           // com/ishland/c2me/base/mixin/access/IBlender
+   #43 = Utf8               getBLENDING_CHUNK_DISTANCE_THRESHOLD
+   #44 = Utf8               ()I
+   #45 = NameAndType        #43:#44       // getBLENDING_CHUNK_DISTANCE_THRESHOLD:()I
+   #46 = InterfaceMethodref #42.#45       // com/ishland/c2me/base/mixin/access/IBlender.getBLENDING_CHUNK_DISTANCE_THRESHOLD:()I
+   #47 = Utf8               net/minecraft/world/level/ChunkPos
+   #48 = Class              #47           // net/minecraft/world/level/ChunkPos
+   #49 = Utf8               x
+   #50 = Utf8               I
+   #51 = NameAndType        #49:#50       // x:I
+   #52 = Fieldref           #48.#51       // net/minecraft/world/level/ChunkPos.x:I
+   #53 = Utf8               z
+   #54 = NameAndType        #53:#50       // z:I
+   #55 = Fieldref           #48.#54       // net/minecraft/world/level/ChunkPos.z:I
+   #56 = Utf8               (II)V
+   #57 = NameAndType        #18:#56       // "<init>":(II)V
+   #58 = Methodref          #48.#57       // net/minecraft/world/level/ChunkPos."<init>":(II)V
+   #59 = Utf8               getRegionX
+   #60 = NameAndType        #59:#44       // getRegionX:()I
+   #61 = Methodref          #48.#60       // net/minecraft/world/level/ChunkPos.getRegionX:()I
+   #62 = Utf8               java/util/List
+   #63 = Class              #62           // java/util/List
+   #64 = Utf8               getRegionZ
+   #65 = NameAndType        #64:#44       // getRegionZ:()I
+   #66 = Methodref          #48.#65       // net/minecraft/world/level/ChunkPos.getRegionZ:()I
+   #67 = Utf8               get
+   #68 = Utf8               (I)Ljava/lang/Object;
+   #69 = NameAndType        #67:#68       // get:(I)Ljava/lang/Object;
+   #70 = InterfaceMethodref #63.#69       // java/util/List.get:(I)Ljava/lang/Object;
+   #71 = Utf8               java/util/BitSet
+   #72 = Class              #71           // java/util/BitSet
+   #73 = Utf8               isEmpty
+   #74 = Utf8               ()Z
+   #75 = NameAndType        #73:#74       // isEmpty:()Z
+   #76 = Methodref          #72.#75       // java/util/BitSet.isEmpty:()Z
+   #77 = Utf8               minFromRegion
+   #78 = Utf8               (II)Lnet/minecraft/world/level/ChunkPos;
+   #79 = NameAndType        #77:#78       // minFromRegion:(II)Lnet/minecraft/world/level/ChunkPos;
+   #80 = Methodref          #48.#79       // net/minecraft/world/level/ChunkPos.minFromRegion:(II)Lnet/minecraft/world/level/ChunkPos;
+   #81 = Utf8               java/lang/Math
+   #82 = Class              #81           // java/lang/Math
+   #83 = Utf8               max
+   #84 = Utf8               (II)I
+   #85 = NameAndType        #83:#84       // max:(II)I
+   #86 = Methodref          #82.#85       // java/lang/Math.max:(II)I
+   #87 = Utf8               min
+   #88 = NameAndType        #87:#84       // min:(II)I
+   #89 = Methodref          #82.#88       // java/lang/Math.min:(II)I
+   #90 = Utf8               (I)Z
+   #91 = NameAndType        #67:#90       // get:(I)Z
+   #92 = Methodref          #72.#91       // java/util/BitSet.get:(I)Z
+   #93 = Utf8               q
+   #94 = Utf8               p
+   #95 = Utf8               o
+   #96 = Utf8               chunkPos4
+   #97 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+   #98 = Utf8               k
+   #99 = Utf8               l
+  #100 = Utf8               m
+  #101 = Utf8               n
+  #102 = Utf8               bitSet
+  #103 = Utf8               Ljava/util/BitSet;
+  #104 = Utf8               j
+  #105 = Utf8               i
+  #106 = Utf8               Ljava/util/List<Ljava/util/BitSet;>;
+  #107 = Utf8               Ljava/util/List;
+  #108 = Utf8               radius
+  #109 = Utf8               width
+  #110 = Utf8               chunkPos2
+  #111 = Utf8               chunkPos3
+  #112 = Utf8               index
+  #113 = Utf8               setBlendingComputeFuture
+  #114 = Utf8               (Ljava/util/concurrent/CompletableFuture;)V
+  #115 = Utf8               (Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;)V
+  #116 = Utf8               future
+  #117 = Utf8               getNeedBlending
+  #118 = Utf8               isDone
+  #119 = NameAndType        #118:#74      // isDone:()Z
+  #120 = Methodref          #23.#119      // java/util/concurrent/CompletableFuture.isDone:()Z
+  #121 = Utf8               join
+  #122 = Utf8               ()Ljava/lang/Object;
+  #123 = NameAndType        #121:#122     // join:()Ljava/lang/Object;
+  #124 = Methodref          #23.#123      // java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+  #125 = Utf8               setInitialMainThreadComputeFuture
+  #126 = Utf8               getInitialMainThreadComputeFuture
+  #127 = Utf8               ()Ljava/util/concurrent/CompletableFuture;
+  #128 = Utf8               ()Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+  #129 = Utf8               Signature
+  #130 = Utf8               RuntimeVisibleAnnotations
+  #131 = Utf8               Code
+  #132 = Utf8               LineNumberTable
+  #133 = Utf8               LocalVariableTable
+  #134 = Utf8               StackMapTable
+  #135 = Utf8               LocalVariableTypeTable
+  #136 = Utf8               MethodParameters
+  #137 = Utf8               SourceFile
+  #138 = Utf8               RuntimeInvisibleAnnotations
+{
+  private java.util.concurrent.CompletableFuture<java.lang.Void> blendingComputeFuture;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #13                          // Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Unique
+
+  private java.util.concurrent.CompletableFuture<java.lang.Void> initialMainThreadComputeFuture;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #13                          // Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Unique
+
+  private boolean needBlending;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.rewrites.chunksystem.mixin.async_serialization.MixinProtoChunk();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: invokestatic  #27                 // Method java/util/concurrent/CompletableFuture.completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+         9: putfield      #29                 // Field blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+        12: aload_0
+        13: aconst_null
+        14: invokestatic  #27                 // Method java/util/concurrent/CompletableFuture.completedFuture:(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+        17: putfield      #31                 // Field initialMainThreadComputeFuture:Ljava/util/concurrent/CompletableFuture;
+        20: aload_0
+        21: iconst_0
+        22: putfield      #33                 // Field needBlending:Z
+        25: return
+      LineNumberTable:
+        line 15: 0
+        line 17: 4
+        line 18: 6
+        line 20: 12
+        line 21: 14
+        line 23: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      26     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+
+  public void setBlendingInfo(net.minecraft.world.level.ChunkPos, java.util.List<java.util.BitSet>);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;Ljava/util/List;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=19, args_size=3
+         0: invokestatic  #46                 // InterfaceMethod com/ishland/c2me/base/mixin/access/IBlender.getBLENDING_CHUNK_DISTANCE_THRESHOLD:()I
+         3: istore_3
+         4: iload_3
+         5: iconst_2
+         6: imul
+         7: iconst_1
+         8: iadd
+         9: istore        4
+        11: new           #48                 // class net/minecraft/world/level/ChunkPos
+        14: dup
+        15: aload_1
+        16: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+        19: iload_3
+        20: isub
+        21: aload_1
+        22: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+        25: iload_3
+        26: isub
+        27: invokespecial #58                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        30: astore        5
+        32: new           #48                 // class net/minecraft/world/level/ChunkPos
+        35: dup
+        36: aload_1
+        37: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+        40: iload_3
+        41: iadd
+        42: aload_1
+        43: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+        46: iload_3
+        47: iadd
+        48: invokespecial #58                 // Method net/minecraft/world/level/ChunkPos."<init>":(II)V
+        51: astore        6
+        53: iconst_0
+        54: istore        7
+        56: aload         5
+        58: invokevirtual #61                 // Method net/minecraft/world/level/ChunkPos.getRegionX:()I
+        61: istore        8
+        63: iload         8
+        65: aload         6
+        67: invokevirtual #61                 // Method net/minecraft/world/level/ChunkPos.getRegionX:()I
+        70: if_icmpgt     265
+        73: aload         5
+        75: invokevirtual #66                 // Method net/minecraft/world/level/ChunkPos.getRegionZ:()I
+        78: istore        9
+        80: iload         9
+        82: aload         6
+        84: invokevirtual #66                 // Method net/minecraft/world/level/ChunkPos.getRegionZ:()I
+        87: if_icmpgt     259
+        90: aload_2
+        91: iload         7
+        93: iinc          7, 1
+        96: invokeinterface #70,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+       101: checkcast     #72                 // class java/util/BitSet
+       104: astore        10
+       106: aload         10
+       108: invokevirtual #76                 // Method java/util/BitSet.isEmpty:()Z
+       111: ifne          253
+       114: iload         8
+       116: iload         9
+       118: invokestatic  #80                 // Method net/minecraft/world/level/ChunkPos.minFromRegion:(II)Lnet/minecraft/world/level/ChunkPos;
+       121: astore        11
+       123: aload         5
+       125: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+       128: aload         11
+       130: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+       133: isub
+       134: iconst_0
+       135: invokestatic  #86                 // Method java/lang/Math.max:(II)I
+       138: istore        12
+       140: aload         5
+       142: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+       145: aload         11
+       147: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+       150: isub
+       151: iconst_0
+       152: invokestatic  #86                 // Method java/lang/Math.max:(II)I
+       155: istore        13
+       157: aload         6
+       159: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+       162: aload         11
+       164: getfield      #52                 // Field net/minecraft/world/level/ChunkPos.x:I
+       167: isub
+       168: bipush        31
+       170: invokestatic  #89                 // Method java/lang/Math.min:(II)I
+       173: istore        14
+       175: aload         6
+       177: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+       180: aload         11
+       182: getfield      #55                 // Field net/minecraft/world/level/ChunkPos.z:I
+       185: isub
+       186: bipush        31
+       188: invokestatic  #89                 // Method java/lang/Math.min:(II)I
+       191: istore        15
+       193: iload         12
+       195: istore        16
+       197: iload         16
+       199: iload         14
+       201: if_icmpgt     253
+       204: iload         13
+       206: istore        17
+       208: iload         17
+       210: iload         15
+       212: if_icmpgt     247
+       215: iload         17
+       217: bipush        32
+       219: imul
+       220: iload         16
+       222: iadd
+       223: istore        18
+       225: aload         10
+       227: iload         18
+       229: invokevirtual #92                 // Method java/util/BitSet.get:(I)Z
+       232: ifeq          241
+       235: aload_0
+       236: iconst_1
+       237: putfield      #33                 // Field needBlending:Z
+       240: return
+       241: iinc          17, 1
+       244: goto          208
+       247: iinc          16, 1
+       250: goto          197
+       253: iinc          9, 1
+       256: goto          80
+       259: iinc          8, 1
+       262: goto          63
+       265: aload_0
+       266: iconst_0
+       267: putfield      #33                 // Field needBlending:Z
+       270: return
+      StackMapTable: number_of_entries = 9
+        frame_type = 255 /* full_frame */
+          offset_delta = 63
+          locals = [ class com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk, class net/minecraft/world/level/ChunkPos, class java/util/List, int, int, class net/minecraft/world/level/ChunkPos, class net/minecraft/world/level/ChunkPos, int, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 116
+          locals = [ class com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk, class net/minecraft/world/level/ChunkPos, class java/util/List, int, int, class net/minecraft/world/level/ChunkPos, class net/minecraft/world/level/ChunkPos, int, int, int, class java/util/BitSet, class net/minecraft/world/level/ChunkPos, int, int, int, int, int ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 10
+          locals = [ int ]
+        frame_type = 32 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class com/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk, class net/minecraft/world/level/ChunkPos, class java/util/List, int, int, class net/minecraft/world/level/ChunkPos, class net/minecraft/world/level/ChunkPos, int, int, int ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+      LineNumberTable:
+        line 28: 0
+        line 29: 4
+        line 30: 11
+        line 31: 32
+        line 33: 53
+        line 34: 56
+        line 35: 73
+        line 36: 90
+        line 37: 106
+        line 38: 114
+        line 39: 123
+        line 40: 140
+        line 41: 157
+        line 42: 175
+        line 44: 193
+        line 45: 204
+        line 46: 215
+        line 47: 225
+        line 48: 235
+        line 49: 240
+        line 45: 241
+        line 44: 247
+        line 35: 253
+        line 34: 259
+        line 57: 265
+        line 58: 270
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          225      16    18     q   I
+          208      39    17     p   I
+          197      56    16     o   I
+          123     130    11 chunkPos4   Lnet/minecraft/world/level/ChunkPos;
+          140     113    12     k   I
+          157      96    13     l   I
+          175      78    14     m   I
+          193      60    15     n   I
+          106     147    10 bitSet   Ljava/util/BitSet;
+           80     179     9     j   I
+           63     202     8     i   I
+            0     271     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+            0     271     1   pos   Lnet/minecraft/world/level/ChunkPos;
+            0     271     2 bitSets   Ljava/util/List;
+            4     267     3 radius   I
+           11     260     4 width   I
+           32     239     5 chunkPos2   Lnet/minecraft/world/level/ChunkPos;
+           53     218     6 chunkPos3   Lnet/minecraft/world/level/ChunkPos;
+           56     215     7 index   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     271     2 bitSets   Ljava/util/List<Ljava/util/BitSet;>;
+    Signature: #38                          // (Lnet/minecraft/world/level/ChunkPos;Ljava/util/List<Ljava/util/BitSet;>;)V
+    MethodParameters:
+      Name                           Flags
+      pos
+      bitSets
+
+  public void setBlendingComputeFuture(java.util.concurrent.CompletableFuture<java.lang.Void>);
+    descriptor: (Ljava/util/concurrent/CompletableFuture;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #29                 // Field blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+         5: return
+      LineNumberTable:
+        line 62: 0
+        line 63: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+            0       6     1 future   Ljava/util/concurrent/CompletableFuture;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 future   Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+    Signature: #115                         // (Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;)V
+    MethodParameters:
+      Name                           Flags
+      future
+
+  public boolean getNeedBlending();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #29                 // Field blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+         4: invokevirtual #120                // Method java/util/concurrent/CompletableFuture.isDone:()Z
+         7: ifne          18
+        10: aload_0
+        11: getfield      #29                 // Field blendingComputeFuture:Ljava/util/concurrent/CompletableFuture;
+        14: invokevirtual #124                // Method java/util/concurrent/CompletableFuture.join:()Ljava/lang/Object;
+        17: pop
+        18: aload_0
+        19: getfield      #33                 // Field needBlending:Z
+        22: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 18 /* same */
+      LineNumberTable:
+        line 67: 0
+        line 68: 10
+        line 70: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+
+  public void setInitialMainThreadComputeFuture(java.util.concurrent.CompletableFuture<java.lang.Void>);
+    descriptor: (Ljava/util/concurrent/CompletableFuture;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #31                 // Field initialMainThreadComputeFuture:Ljava/util/concurrent/CompletableFuture;
+         5: return
+      LineNumberTable:
+        line 75: 0
+        line 76: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+            0       6     1 future   Ljava/util/concurrent/CompletableFuture;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 future   Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+    Signature: #115                         // (Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;)V
+    MethodParameters:
+      Name                           Flags
+      future
+
+  public java.util.concurrent.CompletableFuture<java.lang.Void> getInitialMainThreadComputeFuture();
+    descriptor: ()Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #31                 // Field initialMainThreadComputeFuture:Ljava/util/concurrent/CompletableFuture;
+         4: areturn
+      LineNumberTable:
+        line 80: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/async_serialization/MixinProtoChunk;
+    Signature: #128                         // ()Ljava/util/concurrent/CompletableFuture<Ljava/lang/Void;>;
+}
+SourceFile: "MixinProtoChunk.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/ProtoChunk;]
+    )

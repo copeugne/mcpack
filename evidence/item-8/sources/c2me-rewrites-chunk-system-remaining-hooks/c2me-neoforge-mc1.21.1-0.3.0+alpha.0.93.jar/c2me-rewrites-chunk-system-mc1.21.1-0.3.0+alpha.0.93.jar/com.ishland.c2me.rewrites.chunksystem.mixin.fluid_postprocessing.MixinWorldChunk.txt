@@ -1,0 +1,118 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk.class
+  Last modified Jan 1, 1980; size 1554 bytes
+  SHA-256 checksum a029350b9481975038af87947c3e22bd9ac8a88e5bb4103f7b1d604aa7288883
+  Compiled from "MixinWorldChunk.java"
+public class com.ishland.c2me.rewrites.chunksystem.mixin.fluid_postprocessing.MixinWorldChunk
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinWorldChunk.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk;
+  #15 = Utf8               redirectFluidScheduledTick
+  #16 = Utf8               (Lnet/minecraft/world/level/material/FluidState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+  #17 = Utf8               instance
+  #18 = Utf8               world
+  #19 = Utf8               pos
+  #20 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #21 = Utf8               method
+  #22 = Utf8               runPostProcessing
+  #23 = Utf8               at
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #25 = Utf8               INVOKE
+  #26 = Utf8               target
+  #27 = Utf8               Lnet/minecraft/fluid/FluidState;onScheduledTick(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)V
+  #28 = Utf8               net/minecraft/world/level/material/FluidState
+  #29 = Class              #28            // net/minecraft/world/level/material/FluidState
+  #30 = Utf8               getType
+  #31 = Utf8               ()Lnet/minecraft/world/level/material/Fluid;
+  #32 = NameAndType        #30:#31        // getType:()Lnet/minecraft/world/level/material/Fluid;
+  #33 = Methodref          #29.#32        // net/minecraft/world/level/material/FluidState.getType:()Lnet/minecraft/world/level/material/Fluid;
+  #34 = Utf8               net/minecraft/world/level/Level
+  #35 = Class              #34            // net/minecraft/world/level/Level
+  #36 = Utf8               scheduleTick
+  #37 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+  #38 = NameAndType        #36:#37        // scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+  #39 = Methodref          #35.#38        // net/minecraft/world/level/Level.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+  #40 = Utf8               Lnet/minecraft/world/level/material/FluidState;
+  #41 = Utf8               Lnet/minecraft/world/level/Level;
+  #42 = Utf8               Lnet/minecraft/core/BlockPos;
+  #43 = Utf8               Code
+  #44 = Utf8               LineNumberTable
+  #45 = Utf8               LocalVariableTable
+  #46 = Utf8               RuntimeVisibleAnnotations
+  #47 = Utf8               MethodParameters
+  #48 = Utf8               SourceFile
+  #49 = Utf8               RuntimeInvisibleAnnotations
+{
+  public com.ishland.c2me.rewrites.chunksystem.mixin.fluid_postprocessing.MixinWorldChunk();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 12: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk;
+
+  private void redirectFluidScheduledTick(net.minecraft.world.level.material.FluidState, net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/world/level/material/FluidState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_2
+         1: aload_3
+         2: aload_1
+         3: invokevirtual #33                 // Method net/minecraft/world/level/material/FluidState.getType:()Lnet/minecraft/world/level/material/Fluid;
+         6: iconst_1
+         7: invokevirtual #39                 // Method net/minecraft/world/level/Level.scheduleTick:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;I)V
+        10: return
+      LineNumberTable:
+        line 16: 0
+        line 17: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/fluid_postprocessing/MixinWorldChunk;
+            0      11     1 instance   Lnet/minecraft/world/level/material/FluidState;
+            0      11     2 world   Lnet/minecraft/world/level/Level;
+            0      11     3   pos   Lnet/minecraft/core/BlockPos;
+    RuntimeVisibleAnnotations:
+      0: #20(#21=[s#22],#23=@#24(#7=s#25,#26=s#27))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["runPostProcessing"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/fluid/FluidState;onScheduledTick(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;)V"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      world
+      pos
+}
+SourceFile: "MixinWorldChunk.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/LevelChunk;]
+    )

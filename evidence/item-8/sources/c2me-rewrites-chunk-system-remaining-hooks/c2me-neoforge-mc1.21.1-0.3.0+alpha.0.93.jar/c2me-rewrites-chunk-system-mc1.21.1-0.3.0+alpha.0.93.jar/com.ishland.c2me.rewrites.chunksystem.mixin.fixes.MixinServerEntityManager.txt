@@ -1,0 +1,209 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager.class
+  Last modified Jan 1, 1980; size 1883 bytes
+  SHA-256 checksum d12e9b2798e5229e34ec2648068c731f5bebb4cf913fc9dccd1623270410b8b6
+  Compiled from "MixinServerEntityManager.java"
+public abstract class com.ishland.c2me.rewrites.chunksystem.mixin.fixes.MixinServerEntityManager
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 4, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinServerEntityManager.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/entity/PersistentEntitySectionManager;
+   #9 = Utf8               chunksToUnload
+  #10 = Utf8               Lit/unimi/dsi/fastutil/longs/LongSet;
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = NameAndType        #14:#15        // "<init>":()V
+  #17 = Methodref          #4.#16         // java/lang/Object."<init>":()V
+  #18 = Utf8               this
+  #19 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager;
+  #20 = Utf8               processChunkUnload
+  #21 = Utf8               (J)Z
+  #22 = Utf8               replacePendingUnloads
+  #23 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #24 = Utf8               ci
+  #25 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #26 = Utf8               method
+  #27 = Utf8               at
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #29 = Utf8               RETURN
+  #30 = Utf8               it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+  #31 = Class              #30            // it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+  #32 = NameAndType        #9:#10         // chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+  #33 = Fieldref           #2.#32         // com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager.chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+  #34 = Utf8               (Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+  #35 = NameAndType        #14:#34        // "<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+  #36 = Methodref          #31.#35        // it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet."<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+  #37 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #38 = Utf8               processUnloads
+  #39 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #40 = Utf8               it/unimi/dsi/fastutil/longs/LongSet
+  #41 = Class              #40            // it/unimi/dsi/fastutil/longs/LongSet
+  #42 = Utf8               isEmpty
+  #43 = Utf8               ()Z
+  #44 = NameAndType        #42:#43        // isEmpty:()Z
+  #45 = Methodref          #31.#44        // it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet.isEmpty:()Z
+  #46 = Utf8               removeFirstLong
+  #47 = Utf8               ()J
+  #48 = NameAndType        #46:#47        // removeFirstLong:()J
+  #49 = Methodref          #31.#48        // it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet.removeFirstLong:()J
+  #50 = NameAndType        #20:#21        // processChunkUnload:(J)Z
+  #51 = Methodref          #2.#50         // com/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager.processChunkUnload:(J)Z
+  #52 = Utf8               pos
+  #53 = Utf8               J
+  #54 = Utf8               pendingUnloads
+  #55 = Utf8               linkedOpenHashSet
+  #56 = Utf8               Lit/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet;
+  #57 = Utf8               RuntimeVisibleAnnotations
+  #58 = Utf8               Code
+  #59 = Utf8               LineNumberTable
+  #60 = Utf8               LocalVariableTable
+  #61 = Utf8               MethodParameters
+  #62 = Utf8               StackMapTable
+  #63 = Utf8               SourceFile
+  #64 = Utf8               RuntimeInvisibleAnnotations
+{
+  private it.unimi.dsi.fastutil.longs.LongSet chunksToUnload;
+    descriptor: Lit/unimi/dsi/fastutil/longs/LongSet;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Mutable
+      1: #12()
+        org.spongepowered.asm.mixin.Shadow
+      2: #13()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.rewrites.chunksystem.mixin.fixes.MixinServerEntityManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager;
+
+  protected abstract boolean processChunkUnload(long);
+    descriptor: (J)Z
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void replacePendingUnloads(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: new           #31                 // class it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+         4: dup
+         5: aload_0
+         6: getfield      #33                 // Field chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+         9: invokespecial #36                 // Method it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet."<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+        12: putfield      #33                 // Field chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+        15: return
+      LineNumberTable:
+        line 25: 0
+        line 26: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager;
+            0      16     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #25(#26=[s#14],#27=[@#28(#7=s#29)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private void processUnloads();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=5, args_size=1
+         0: aload_0
+         1: getfield      #33                 // Field chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+         4: astore_1
+         5: aload_1
+         6: instanceof    #31                 // class it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+         9: ifne          26
+        12: aload_0
+        13: new           #31                 // class it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+        16: dup
+        17: aload_1
+        18: invokespecial #36                 // Method it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet."<init>":(Lit/unimi/dsi/fastutil/longs/LongCollection;)V
+        21: dup_x1
+        22: putfield      #33                 // Field chunksToUnload:Lit/unimi/dsi/fastutil/longs/LongSet;
+        25: astore_1
+        26: aload_1
+        27: checkcast     #31                 // class it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet
+        30: astore_2
+        31: aload_2
+        32: invokevirtual #45                 // Method it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet.isEmpty:()Z
+        35: ifne          52
+        38: aload_2
+        39: invokevirtual #49                 // Method it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet.removeFirstLong:()J
+        42: lstore_3
+        43: aload_0
+        44: lload_3
+        45: invokevirtual #51                 // Method processChunkUnload:(J)Z
+        48: pop
+        49: goto          31
+        52: return
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 26
+          locals = [ class it/unimi/dsi/fastutil/longs/LongSet ]
+        frame_type = 252 /* append */
+          offset_delta = 4
+          locals = [ class it/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet ]
+        frame_type = 20 /* same */
+      LineNumberTable:
+        line 34: 0
+        line 35: 5
+        line 37: 12
+        line 43: 26
+        line 44: 31
+        line 45: 38
+        line 46: 43
+        line 47: 49
+        line 48: 52
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           43       6     3   pos   J
+            0      53     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/fixes/MixinServerEntityManager;
+            5      48     1 pendingUnloads   Lit/unimi/dsi/fastutil/longs/LongSet;
+           31      22     2 linkedOpenHashSet   Lit/unimi/dsi/fastutil/longs/LongLinkedOpenHashSet;
+    RuntimeVisibleAnnotations:
+      0: #39()
+        org.spongepowered.asm.mixin.Overwrite
+}
+SourceFile: "MixinServerEntityManager.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/entity/PersistentEntitySectionManager;]
+    )

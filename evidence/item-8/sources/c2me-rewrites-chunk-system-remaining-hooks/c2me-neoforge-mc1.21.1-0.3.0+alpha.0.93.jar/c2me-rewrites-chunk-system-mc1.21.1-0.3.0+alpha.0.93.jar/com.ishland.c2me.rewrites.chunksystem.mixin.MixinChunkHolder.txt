@@ -1,0 +1,222 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.class
+  Last modified Jan 1, 1980; size 2043 bytes
+  SHA-256 checksum 2e4e10614424699394b67ac957c9ae4658776fb10903ca4ffd3f90fd8fb3262b
+  Compiled from "MixinChunkHolder.java"
+public class com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkHolder
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 5, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinChunkHolder.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/level/ChunkHolder;
+   #9 = Utf8               fullChunkFuture
+  #10 = Utf8               Ljava/util/concurrent/CompletableFuture;
+  #11 = Utf8               Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #13 = Utf8               tickingChunkFuture
+  #14 = Utf8               entityTickingChunkFuture
+  #15 = Utf8               pendingFullStateConfirmation
+  #16 = Utf8               Ljava/util/concurrent/CompletableFuture<*>;
+  #17 = Utf8               saveSync
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = NameAndType        #18:#19        // "<init>":()V
+  #21 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #22 = Utf8               this
+  #23 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder;
+  #24 = Utf8               noopSetLevel
+  #25 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;I)Z
+  #26 = Utf8               instance
+  #27 = Utf8               level
+  #28 = Utf8               Lcom/llamalad7/mixinextras/injector/v2/WrapWithCondition;
+  #29 = Utf8               method
+  #30 = Utf8               at
+  #31 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #32 = Utf8               INVOKE
+  #33 = Utf8               target
+  #34 = Utf8               Lnet/minecraft/server/world/ChunkHolder;setLevel(I)V
+  #35 = Utf8               com/ishland/c2me/rewrites/chunksystem/common/NewChunkHolderVanillaInterface
+  #36 = Class              #35            // com/ishland/c2me/rewrites/chunksystem/common/NewChunkHolderVanillaInterface
+  #37 = Utf8               I
+  #38 = Utf8               failFastIncompatibility
+  #39 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #40 = Utf8               ci
+  #41 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #42 = Utf8               RETURN
+  #43 = NameAndType        #9:#10         // fullChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #44 = Fieldref           #2.#43         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.fullChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #45 = NameAndType        #13:#10        // tickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #46 = Fieldref           #2.#45         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.tickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #47 = NameAndType        #14:#10        // entityTickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #48 = Fieldref           #2.#47         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.entityTickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+  #49 = NameAndType        #15:#10        // pendingFullStateConfirmation:Ljava/util/concurrent/CompletableFuture;
+  #50 = Fieldref           #2.#49         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.pendingFullStateConfirmation:Ljava/util/concurrent/CompletableFuture;
+  #51 = NameAndType        #17:#10        // saveSync:Ljava/util/concurrent/CompletableFuture;
+  #52 = Fieldref           #2.#51         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder.saveSync:Ljava/util/concurrent/CompletableFuture;
+  #53 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #54 = Utf8               Signature
+  #55 = Utf8               RuntimeVisibleAnnotations
+  #56 = Utf8               Code
+  #57 = Utf8               LineNumberTable
+  #58 = Utf8               LocalVariableTable
+  #59 = Utf8               StackMapTable
+  #60 = Utf8               MethodParameters
+  #61 = Utf8               SourceFile
+  #62 = Utf8               RuntimeInvisibleAnnotations
+{
+  private volatile java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.LevelChunk>> fullChunkFuture;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    Signature: #11                          // Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private volatile java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.LevelChunk>> tickingChunkFuture;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    Signature: #11                          // Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private volatile java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.LevelChunk>> entityTickingChunkFuture;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+    Signature: #11                          // Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private java.util.concurrent.CompletableFuture<?> pendingFullStateConfirmation;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #16                          // Ljava/util/concurrent/CompletableFuture<*>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  private java.util.concurrent.CompletableFuture<?> saveSync;
+    descriptor: Ljava/util/concurrent/CompletableFuture;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #16                          // Ljava/util/concurrent/CompletableFuture<*>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkHolder();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder;
+
+  private boolean noopSetLevel(net.minecraft.server.level.ChunkHolder, int);
+    descriptor: (Lnet/minecraft/server/level/ChunkHolder;I)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_0
+         1: instanceof    #36                 // class com/ishland/c2me/rewrites/chunksystem/common/NewChunkHolderVanillaInterface
+         4: ifne          11
+         7: iconst_1
+         8: goto          12
+        11: iconst_0
+        12: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 32: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder;
+            0      13     1 instance   Lnet/minecraft/server/level/ChunkHolder;
+            0      13     2 level   I
+    RuntimeVisibleAnnotations:
+      0: #28(#29=[s#18],#30=[@#31(#7=s#32,#33=s#34)])
+        com.llamalad7.mixinextras.injector.v2.WrapWithCondition(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ChunkHolder;setLevel(I)V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      level
+
+  private void failFastIncompatibility(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: instanceof    #36                 // class com/ishland/c2me/rewrites/chunksystem/common/NewChunkHolderVanillaInterface
+         4: ifeq          32
+         7: aload_0
+         8: aconst_null
+         9: putfield      #44                 // Field fullChunkFuture:Ljava/util/concurrent/CompletableFuture;
+        12: aload_0
+        13: aconst_null
+        14: putfield      #46                 // Field tickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+        17: aload_0
+        18: aconst_null
+        19: putfield      #48                 // Field entityTickingChunkFuture:Ljava/util/concurrent/CompletableFuture;
+        22: aload_0
+        23: aconst_null
+        24: putfield      #50                 // Field pendingFullStateConfirmation:Ljava/util/concurrent/CompletableFuture;
+        27: aload_0
+        28: aconst_null
+        29: putfield      #52                 // Field saveSync:Ljava/util/concurrent/CompletableFuture;
+        32: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 32 /* same */
+      LineNumberTable:
+        line 38: 0
+        line 39: 7
+        line 40: 12
+        line 41: 17
+        line 42: 22
+        line 43: 27
+        line 45: 32
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      33     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkHolder;
+            0      33     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #41(#29=[s#18],#30=[@#31(#7=s#42)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+}
+SourceFile: "MixinChunkHolder.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkHolder;]
+    )
