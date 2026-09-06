@@ -19,8 +19,8 @@ gzip -dc evidence/item-8/sources/soaring-design-views-r3/houses.svg.gz > evidenc
 convert evidence/raw/item8/soaring-houses.svg evidence/raw/item8/soaring-houses.png
 ```
 
-Houses and towers were manually inspected. The other three sheets are preserved
-comparison inputs, not yet accepted membership decisions. Drawn cells are cubes,
+All five sheets were manually inspected. The views support membership decisions
+only when joined to the preserved full pool traces and packaged content. Drawn cells are cubes,
 not actual partial block models. Cells occluded by occupied neighbors in all three
 visible directions are omitted. Green hints at plant-related names; it is not a
 classification. Diagrams rescale templates independently. They do not show hidden

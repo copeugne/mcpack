@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Frozen and small pond now form mss:pond with their distinct placement settings
+preserved per variant. Nineteen affected tests and scoped quality checks pass.
+Explicit provisional remainder: 88. Source groups: 409. Derived inventory refresh
+is pending the remaining Soaring decisions. All five existing Soaring sheets are
+now inspected; reuse them, do not generate another view system. Arena's versioned
+pool elements select arena_2/3/4 for 1.21.1, not the packaged 1_21_9 alternatives.
+
+
 Ten Soaring grouping decisions are settled from manually inspected house/tower
 views, existing packaged contents and complete pool traces. Six house designs
 and four tower/ruin designs remain separate families, with attached pieces kept
