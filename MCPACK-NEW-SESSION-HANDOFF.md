@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+GeckoLib membership is resolved using 1284a76a and 58568f7f. Its startup adds
+item animation identity and client-bound animation packets; services/common
+hooks supply rendering, synchronization and item comparison support. No
+independent family. Complete payload/source binding, 24 utility cases and
+scoped quality checks pass. Whole providers: 103 resolved, 33 open. Continue
+remaining provider contributions and canonical Moog grouping before detailed
+attributes. Do not continue generic GeckoLib helper or networking inspection.
+
+
 AzureLib Armor membership is resolved from a37e5b08 and 57ea6b5c. It supplies
 item animation identity, synchronization and rendering support; no independent
 family. Complete payload/source binding, 23 utility cases and scoped quality
