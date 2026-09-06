@@ -76,6 +76,9 @@ ARCHIVES = frozenset(
         "adorabuild-structures-2.11.0-neoforge-1.21.3.jar",
         "[Neoforge]ctov-3.6.3.jar",
         "AI-Improvements-1.21-0.5.3.jar",
+        "Almanac-1.21.1-2-neoforge-1.5.2.jar",
+        "libraryferret-neoforge-1.21.1-4.0.0.jar",
+        "structure_layout_optimizer-neoforge-1.0.12.jar",
         "attributefix-neoforge-1.21.1-21.1.3.jar",
         "LeavesBeGone-v21.1.1-1.21.1-NeoForge.jar",
         "letmedespawn-1.21.x-neoforge-1.5.0.jar",
@@ -91,6 +94,10 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/frikinjay/almanac/",
+    "architectury_inject_almanac_",
+    "com/jtorleonstudios/libraryferret/",
+    "telepathicgrunt/structure_layout_optimizer/",
     "com/builtbroken/ai/improvements/",
     "net/darkhax/attributefix/",
     "fuzs/leavesbegone/",
@@ -677,6 +684,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith((
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
+                    "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
