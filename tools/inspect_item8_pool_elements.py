@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "CreateDragonsPlus-1.11.2b.jar",
         "polymorph-neoforge-1.1.0+1.21.1.jar",
         "bettercombat-neoforge-2.3.2+1.21.1.jar",
         "bookshelf-neoforge-1.21.1-21.1.81.jar",
@@ -214,6 +215,56 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "plus/dragons/createdragonsplus/client/CDPClient.class",
+    "plus/dragons/createdragonsplus/common/CDPCommon.class",
+    "plus/dragons/createdragonsplus/common/recipe/RecipeConverter.class",
+    "plus/dragons/createdragonsplus/common/registry/CDPFluids$Reactions.class",
+    "plus/dragons/createdragonsplus/common/registry/CDPLoots$TableInjections.class",
+    "plus/dragons/createdragonsplus/data/CDPData.class",
+    "plus/dragons/createdragonsplus/data/internal/CDPRuntimeRecipeProvider.class",
+    "plus/dragons/createdragonsplus/integration/aether/AetherExtension.class",
+    "plus/dragons/createdragonsplus/integration/arts_and_crafts/ArtsAndCraftsExtension.class",
+    "plus/dragons/createdragonsplus/integration/create_dnd/CreateDndExtension.class",
+    "plus/dragons/createdragonsplus/integration/create_garnished/CreateGarnishedExtension.class",
+    "plus/dragons/createdragonsplus/integration/dye_depot/DyeDepotExtension.class",
+    "plus/dragons/createdragonsplus/integration/dyenamics/DyenamicsExtension.class",
+    "plus/dragons/createdragonsplus/integration/simulated/SimulatedExtension.class",
+    "plus/dragons/createdragonsplus/mixin/CDPMixinConfigPlugin.class",
+    "plus/dragons/createdragonsplus/mixin/aether/FanProcessingMixinForAether.class",
+    "plus/dragons/createdragonsplus/mixin/aether/TransportedItemStackHandlerBehaviourMixinForAether.class",
+    "plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin$AirCurrentSegmentMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/BlockEntityBehaviourMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/ContraptionMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/FluidFillingBehaviourMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/MechanicalMixerBlockEntityMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/OpenEndFluidHandlerMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/OpenEndedPipeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/create/PotionMixingRecipesMixin.class",
+    "plus/dragons/createdragonsplus/mixin/dndesires/DragonBreathingCategoryMixin.class",
+    "plus/dragons/createdragonsplus/mixin/dndesires/FanProcessingTypeMixinForDnD.class",
+    "plus/dragons/createdragonsplus/mixin/dndesires/FreezingCategoryMixin.class",
+    "plus/dragons/createdragonsplus/mixin/dndesires/SandingCategoryMixin.class",
+    "plus/dragons/createdragonsplus/mixin/garnished/DyeBlowingFanCategoryMixin.class",
+    "plus/dragons/createdragonsplus/mixin/garnished/DyeBlowingFanProcessingMixin.class",
+    "plus/dragons/createdragonsplus/mixin/garnished/FanProcessingTypeMixinForGarnished.class",
+    "plus/dragons/createdragonsplus/mixin/garnished/FreezingFanCategoryMixin.class",
+    "plus/dragons/createdragonsplus/mixin/minecraft/BottleItemMixin.class",
+    "plus/dragons/createdragonsplus/mixin/minecraft/ConcretePowderBlockMixin.class",
+    "plus/dragons/createdragonsplus/mixin/minecraft/IngredientValueMixin.class",
+    "plus/dragons/createdragonsplus/mixin/minecraft/RecipeManagerAccessor.class",
+    "plus/dragons/createdragonsplus/mixin/minecraft/ReloadableServerResourcesMixin.class",
+    "plus/dragons/createdragonsplus/mixin/neoforge/ExistingFileHelperAccessor.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$BlastingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$ColoringTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$EndingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$FreezingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$HauntingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$SandingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$SmokingTypeMixin.class",
+    "plus/dragons/createdragonsplus/mixin/simulated/ProcessingTypeMixins$SplashingTypeMixin.class",
+
     "org/betterx/wover/core/api/ModCore.class",
     "org/betterx/wover/feature/impl/configured/FeatureConfiguratorImpl.class",
     "org/betterx/wover/feature/impl/placed/PlacedFeatureManagerImpl.class",
@@ -3531,6 +3582,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
+                verbose |= name.startswith("plus/dragons/createdragonsplus/")
                 verbose |= name.startswith("org/betterx/wover/entrypoint/")
                 verbose |= name in {
                     "org/betterx/wover/core/api/ModCore.class",
