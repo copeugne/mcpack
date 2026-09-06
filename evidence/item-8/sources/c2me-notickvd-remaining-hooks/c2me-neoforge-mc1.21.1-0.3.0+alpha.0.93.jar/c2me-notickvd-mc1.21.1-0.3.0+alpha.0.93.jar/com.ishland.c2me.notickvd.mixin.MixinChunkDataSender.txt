@@ -1,0 +1,174 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-notickvd-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/notickvd/mixin/MixinChunkDataSender.class
+  Last modified Jan 1, 1980; size 1486 bytes
+  SHA-256 checksum debc4651f420d967421bd6ebec3d1912871b48757f36fa85e3f63732a39f2aab
+  Compiled from "MixinChunkDataSender.java"
+public class com.ishland.c2me.notickvd.mixin.MixinChunkDataSender
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/notickvd/mixin/MixinChunkDataSender
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/notickvd/mixin/MixinChunkDataSender
+   #2 = Class              #1             // com/ishland/c2me/notickvd/mixin/MixinChunkDataSender
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinChunkDataSender.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/network/PlayerChunkSender;
+   #9 = Utf8               desiredChunksPerTick
+  #10 = Utf8               F
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #12 = Utf8               <init>
+  #13 = Utf8               ()V
+  #14 = NameAndType        #12:#13        // "<init>":()V
+  #15 = Methodref          #4.#14         // java/lang/Object."<init>":()V
+  #16 = Utf8               this
+  #17 = Utf8               Lcom/ishland/c2me/notickvd/mixin/MixinChunkDataSender;
+  #18 = Utf8               modifyInit
+  #19 = Utf8               (Z)Z
+  #20 = Utf8               local
+  #21 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #22 = Utf8               method
+  #23 = Utf8               at
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #25 = Utf8               HEAD
+  #26 = Utf8               argsOnly
+  #27 = Integer            1
+  #28 = Utf8               com/ishland/c2me/notickvd/common/Config
+  #29 = Class              #28            // com/ishland/c2me/notickvd/common/Config
+  #30 = Utf8               chunkSendingSpeedMultiplierPercentage
+  #31 = Utf8               J
+  #32 = NameAndType        #30:#31        // chunkSendingSpeedMultiplierPercentage:J
+  #33 = Fieldref           #29.#32        // com/ishland/c2me/notickvd/common/Config.chunkSendingSpeedMultiplierPercentage:J
+  #34 = Utf8               Z
+  #35 = Utf8               modifyBatchSize
+  #36 = Utf8               (FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #37 = Utf8               desiredBatchSize
+  #38 = Utf8               ci
+  #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #40 = Utf8               onAcknowledgeChunks
+  #41 = Utf8               RETURN
+  #42 = NameAndType        #9:#10         // desiredChunksPerTick:F
+  #43 = Fieldref           #2.#42         // com/ishland/c2me/notickvd/mixin/MixinChunkDataSender.desiredChunksPerTick:F
+  #44 = Float              100.0f
+  #45 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #46 = Utf8               RuntimeVisibleAnnotations
+  #47 = Utf8               Code
+  #48 = Utf8               LineNumberTable
+  #49 = Utf8               LocalVariableTable
+  #50 = Utf8               StackMapTable
+  #51 = Utf8               MethodParameters
+  #52 = Utf8               SourceFile
+  #53 = Utf8               RuntimeInvisibleAnnotations
+{
+  private float desiredChunksPerTick;
+    descriptor: F
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.notickvd.mixin.MixinChunkDataSender();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkDataSender;
+
+  private static boolean modifyInit(boolean);
+    descriptor: (Z)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: iload_0
+         1: ifne          12
+         4: getstatic     #33                 // Field com/ishland/c2me/notickvd/common/Config.chunkSendingSpeedMultiplierPercentage:J
+         7: lconst_0
+         8: lcmp
+         9: ifne          16
+        12: iconst_1
+        13: goto          17
+        16: iconst_0
+        17: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 12 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 20: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      18     0 local   Z
+    RuntimeVisibleAnnotations:
+      0: #21(#22=[s#12],#23=@#24(#7=s#25),#26=Z#27)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["<init>"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )
+          argsOnly=true
+        )
+    MethodParameters:
+      Name                           Flags
+      local
+
+  private void modifyBatchSize(float, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=3, args_size=3
+         0: getstatic     #33                 // Field com/ishland/c2me/notickvd/common/Config.chunkSendingSpeedMultiplierPercentage:J
+         3: lconst_0
+         4: lcmp
+         5: ifle          24
+         8: aload_0
+         9: dup
+        10: getfield      #43                 // Field desiredChunksPerTick:F
+        13: getstatic     #33                 // Field com/ishland/c2me/notickvd/common/Config.chunkSendingSpeedMultiplierPercentage:J
+        16: l2f
+        17: ldc           #44                 // float 100.0f
+        19: fdiv
+        20: fmul
+        21: putfield      #43                 // Field desiredChunksPerTick:F
+        24: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 24 /* same */
+      LineNumberTable:
+        line 25: 0
+        line 26: 8
+        line 28: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkDataSender;
+            0      25     1 desiredBatchSize   F
+            0      25     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #39(#22=[s#40],#23=[@#24(#7=s#41)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["onAcknowledgeChunks"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      desiredBatchSize
+      ci
+}
+SourceFile: "MixinChunkDataSender.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/network/PlayerChunkSender;]
+    )

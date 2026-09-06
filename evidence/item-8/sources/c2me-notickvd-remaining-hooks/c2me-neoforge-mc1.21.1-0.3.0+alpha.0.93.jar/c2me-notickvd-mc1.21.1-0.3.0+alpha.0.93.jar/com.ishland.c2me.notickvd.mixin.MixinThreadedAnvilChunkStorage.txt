@@ -1,0 +1,488 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-notickvd-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.class
+  Last modified Jan 1, 1980; size 5930 bytes
+  SHA-256 checksum a4d55607ebc428201a9c2a1d3b97e62868fb60539b10f168a5c5adb3a88afdea
+  Compiled from "MixinThreadedAnvilChunkStorage.java"
+public abstract class com.ishland.c2me.notickvd.mixin.MixinThreadedAnvilChunkStorage
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 11, attributes: 4
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage
+    #2 = Class              #1            // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               MixinThreadedAnvilChunkStorage.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+    #9 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #10 = Class              #9            // java/lang/invoke/MethodHandles$Lookup
+   #11 = Utf8               java/lang/invoke/MethodHandles
+   #12 = Class              #11           // java/lang/invoke/MethodHandles
+   #13 = Utf8               Lookup
+   #14 = Utf8               mainThreadExecutor
+   #15 = Utf8               Lnet/minecraft/util/thread/BlockableEventLoop;
+   #16 = Utf8               Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+   #17 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #18 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #19 = Utf8               playerMap
+   #20 = Utf8               Lnet/minecraft/server/level/PlayerMap;
+   #21 = Utf8               <init>
+   #22 = Utf8               ()V
+   #23 = NameAndType        #21:#22       // "<init>":()V
+   #24 = Methodref          #4.#23        // java/lang/Object."<init>":()V
+   #25 = Utf8               this
+   #26 = Utf8               Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+   #27 = Utf8               getPlayers
+   #28 = Utf8               (Lnet/minecraft/world/level/ChunkPos;Z)Ljava/util/List;
+   #29 = Utf8               (Lnet/minecraft/world/level/ChunkPos;Z)Ljava/util/List<Lnet/minecraft/server/level/ServerPlayer;>;
+   #30 = Utf8               onChunkReadyToSend
+   #31 = Utf8               (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+   #32 = Utf8               modifyMaxVD
+   #33 = Utf8               (I)I
+   #34 = Utf8               max
+   #35 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyArg;
+   #36 = Utf8               method
+   #37 = Utf8               setViewDistance
+   #38 = Utf8               at
+   #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #40 = Utf8               INVOKE
+   #41 = Utf8               target
+   #42 = Utf8               Lnet/minecraft/util/math/MathHelper;clamp(III)I
+   #43 = Utf8               index
+   #44 = Integer            2
+   #45 = Integer            65536
+   #46 = Utf8               I
+   #47 = Utf8               redirectSendWatchPacketsGetWorldChunk
+   #48 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;)Lnet/minecraft/world/level/chunk/LevelChunk;
+   #49 = Utf8               chunkHolder
+   #50 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #51 = Utf8               getPostProcessedChunk
+   #52 = Utf8               Lnet/minecraft/server/world/ChunkHolder;getPostProcessedChunk()Lnet/minecraft/world/chunk/WorldChunk;
+   #53 = Utf8               net/minecraft/server/level/ChunkHolder
+   #54 = Class              #53           // net/minecraft/server/level/ChunkHolder
+   #55 = Utf8               getFullChunkFuture
+   #56 = Utf8               ()Ljava/util/concurrent/CompletableFuture;
+   #57 = NameAndType        #55:#56       // getFullChunkFuture:()Ljava/util/concurrent/CompletableFuture;
+   #58 = Methodref          #54.#57       // net/minecraft/server/level/ChunkHolder.getFullChunkFuture:()Ljava/util/concurrent/CompletableFuture;
+   #59 = Utf8               UNLOADED_LEVEL_CHUNK
+   #60 = Utf8               Lnet/minecraft/server/level/ChunkResult;
+   #61 = NameAndType        #59:#60       // UNLOADED_LEVEL_CHUNK:Lnet/minecraft/server/level/ChunkResult;
+   #62 = Fieldref           #54.#61       // net/minecraft/server/level/ChunkHolder.UNLOADED_LEVEL_CHUNK:Lnet/minecraft/server/level/ChunkResult;
+   #63 = Utf8               java/util/concurrent/CompletableFuture
+   #64 = Class              #63           // java/util/concurrent/CompletableFuture
+   #65 = Utf8               getNow
+   #66 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #67 = NameAndType        #65:#66       // getNow:(Ljava/lang/Object;)Ljava/lang/Object;
+   #68 = Methodref          #64.#67       // java/util/concurrent/CompletableFuture.getNow:(Ljava/lang/Object;)Ljava/lang/Object;
+   #69 = Utf8               net/minecraft/server/level/ChunkResult
+   #70 = Class              #69           // net/minecraft/server/level/ChunkResult
+   #71 = Utf8               orElse
+   #72 = NameAndType        #71:#66       // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #73 = InterfaceMethodref #70.#72       // net/minecraft/server/level/ChunkResult.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #74 = Utf8               net/minecraft/world/level/chunk/LevelChunk
+   #75 = Class              #74           // net/minecraft/world/level/chunk/LevelChunk
+   #76 = Utf8               Lnet/minecraft/server/level/ChunkHolder;
+   #77 = Utf8               onMakeChunkAccessible
+   #78 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #79 = Utf8               (Lnet/minecraft/server/level/ChunkHolder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;>;)V
+   #80 = Utf8               cir
+   #81 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #82 = Utf8               makeChunkAccessible
+   #83 = Utf8               RETURN
+   #84 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #85 = Class              #84           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #86 = Utf8               getReturnValue
+   #87 = Utf8               ()Ljava/lang/Object;
+   #88 = NameAndType        #86:#87       // getReturnValue:()Ljava/lang/Object;
+   #89 = Methodref          #85.#88       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+   #90 = Utf8               (Ljava/lang/Object;)V
+   #91 = MethodType         #90           //  (Ljava/lang/Object;)V
+   #92 = Utf8               lambda$onMakeChunkAccessible$2
+   #93 = Utf8               (Lnet/minecraft/server/level/ChunkResult;)V
+   #94 = NameAndType        #92:#93       // lambda$onMakeChunkAccessible$2:(Lnet/minecraft/server/level/ChunkResult;)V
+   #95 = Methodref          #2.#94        // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$2:(Lnet/minecraft/server/level/ChunkResult;)V
+   #96 = MethodHandle       5:#95         // REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$2:(Lnet/minecraft/server/level/ChunkResult;)V
+   #97 = MethodType         #93           //  (Lnet/minecraft/server/level/ChunkResult;)V
+   #98 = Utf8               java/lang/invoke/LambdaMetafactory
+   #99 = Class              #98           // java/lang/invoke/LambdaMetafactory
+  #100 = Utf8               metafactory
+  #101 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #102 = NameAndType        #100:#101     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #103 = Methodref          #99.#102      // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #104 = MethodHandle       6:#103        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #105 = Utf8               accept
+  #106 = Utf8               (Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+  #107 = NameAndType        #105:#106     // accept:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+  #108 = InvokeDynamic      #0:#107       // #0:accept:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+  #109 = Utf8               thenAccept
+  #110 = Utf8               (Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture;
+  #111 = NameAndType        #109:#110     // thenAccept:(Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture;
+  #112 = Methodref          #64.#111      // java/util/concurrent/CompletableFuture.thenAccept:(Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture;
+  #113 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;>;
+  #114 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #115 = Utf8               controlDuplicateChunkSending
+  #116 = Utf8               (Lnet/minecraft/server/level/ChunkMap;Lnet/minecraft/world/level/chunk/LevelChunk;)Z
+  #117 = Utf8               instance
+  #118 = Utf8               worldChunk
+  #119 = Utf8               Lcom/llamalad7/mixinextras/injector/WrapWithCondition;
+  #120 = Utf8               method_53684
+  #121 = Utf8               Lnet/minecraft/server/world/ServerChunkLoadingManager;sendToPlayers(Lnet/minecraft/world/chunk/WorldChunk;)V
+  #122 = Utf8               com/ishland/c2me/notickvd/common/Config
+  #123 = Class              #122          // com/ishland/c2me/notickvd/common/Config
+  #124 = Utf8               ensureChunkCorrectness
+  #125 = Utf8               Z
+  #126 = NameAndType        #124:#125     // ensureChunkCorrectness:Z
+  #127 = Fieldref           #123.#126     // com/ishland/c2me/notickvd/common/Config.ensureChunkCorrectness:Z
+  #128 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+  #129 = Utf8               controlDuplicateChunkSending1
+  #130 = Utf8               method_53687
+  #131 = Utf8               either
+  #132 = Utf8               lambda$onMakeChunkAccessible$1
+  #133 = NameAndType        #132:#31      // lambda$onMakeChunkAccessible$1:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #134 = Methodref          #2.#133       // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$1:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #135 = MethodHandle       5:#134        // REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$1:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #136 = MethodType         #31           //  (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #137 = InvokeDynamic      #1:#107       // #1:accept:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+  #138 = Utf8               ifSuccess
+  #139 = Utf8               (Ljava/util/function/Consumer;)Lnet/minecraft/server/level/ChunkResult;
+  #140 = NameAndType        #138:#139     // ifSuccess:(Ljava/util/function/Consumer;)Lnet/minecraft/server/level/ChunkResult;
+  #141 = InterfaceMethodref #70.#140      // net/minecraft/server/level/ChunkResult.ifSuccess:(Ljava/util/function/Consumer;)Lnet/minecraft/server/level/ChunkResult;
+  #142 = Utf8               compatibilityMode
+  #143 = NameAndType        #142:#125     // compatibilityMode:Z
+  #144 = Fieldref           #123.#143     // com/ishland/c2me/notickvd/common/Config.compatibilityMode:Z
+  #145 = NameAndType        #14:#15       // mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+  #146 = Fieldref           #2.#145       // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+  #147 = MethodType         #22           //  ()V
+  #148 = Utf8               lambda$onMakeChunkAccessible$0
+  #149 = NameAndType        #148:#31      // lambda$onMakeChunkAccessible$0:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #150 = Methodref          #2.#149       // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$0:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #151 = MethodHandle       5:#150        // REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$0:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #152 = Utf8               run
+  #153 = Utf8               (Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;Lnet/minecraft/world/level/chunk/LevelChunk;)Ljava/lang/Runnable;
+  #154 = NameAndType        #152:#153     // run:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;Lnet/minecraft/world/level/chunk/LevelChunk;)Ljava/lang/Runnable;
+  #155 = InvokeDynamic      #2:#154       // #2:run:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;Lnet/minecraft/world/level/chunk/LevelChunk;)Ljava/lang/Runnable;
+  #156 = Utf8               net/minecraft/util/thread/BlockableEventLoop
+  #157 = Class              #156          // net/minecraft/util/thread/BlockableEventLoop
+  #158 = Utf8               tell
+  #159 = Utf8               (Ljava/lang/Runnable;)V
+  #160 = NameAndType        #158:#159     // tell:(Ljava/lang/Runnable;)V
+  #161 = Methodref          #157.#160     // net/minecraft/util/thread/BlockableEventLoop.tell:(Ljava/lang/Runnable;)V
+  #162 = NameAndType        #30:#31       // onChunkReadyToSend:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #163 = Methodref          #2.#162       // com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.onChunkReadyToSend:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  #164 = Utf8               Signature
+  #165 = Utf8               RuntimeVisibleAnnotations
+  #166 = Utf8               Code
+  #167 = Utf8               LineNumberTable
+  #168 = Utf8               LocalVariableTable
+  #169 = Utf8               MethodParameters
+  #170 = Utf8               LocalVariableTypeTable
+  #171 = Utf8               StackMapTable
+  #172 = Utf8               InnerClasses
+  #173 = Utf8               SourceFile
+  #174 = Utf8               RuntimeInvisibleAnnotations
+  #175 = Utf8               BootstrapMethods
+{
+  private net.minecraft.util.thread.BlockableEventLoop<java.lang.Runnable> mainThreadExecutor;
+    descriptor: Lnet/minecraft/util/thread/BlockableEventLoop;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #16                          // Lnet/minecraft/util/thread/BlockableEventLoop<Ljava/lang/Runnable;>;
+    RuntimeVisibleAnnotations:
+      0: #17()
+        org.spongepowered.asm.mixin.Shadow
+      1: #18()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.PlayerMap playerMap;
+    descriptor: Lnet/minecraft/server/level/PlayerMap;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #17()
+        org.spongepowered.asm.mixin.Shadow
+      1: #18()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.notickvd.mixin.MixinThreadedAnvilChunkStorage();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 31: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+
+  public abstract java.util.List<net.minecraft.server.level.ServerPlayer> getPlayers(net.minecraft.world.level.ChunkPos, boolean);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;Z)Ljava/util/List;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    Signature: #29                          // (Lnet/minecraft/world/level/ChunkPos;Z)Ljava/util/List<Lnet/minecraft/server/level/ServerPlayer;>;
+    RuntimeVisibleAnnotations:
+      0: #17()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected abstract void onChunkReadyToSend(net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #17()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int modifyMaxVD(int);
+    descriptor: (I)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: ldc           #45                 // int 65536
+         2: ireturn
+      LineNumberTable:
+        line 43: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       3     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0       3     1   max   I
+    RuntimeVisibleAnnotations:
+      0: #35(#36=[s#37],#38=@#39(#7=s#40,#41=s#42),#43=I#44)
+        org.spongepowered.asm.mixin.injection.ModifyArg(
+          method=["setViewDistance"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/util/math/MathHelper;clamp(III)I"
+          )
+          index=2
+        )
+    MethodParameters:
+      Name                           Flags
+      max
+
+  private net.minecraft.world.level.chunk.LevelChunk redirectSendWatchPacketsGetWorldChunk(net.minecraft.server.level.ChunkHolder);
+    descriptor: (Lnet/minecraft/server/level/ChunkHolder;)Lnet/minecraft/world/level/chunk/LevelChunk;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #58                 // Method net/minecraft/server/level/ChunkHolder.getFullChunkFuture:()Ljava/util/concurrent/CompletableFuture;
+         4: getstatic     #62                 // Field net/minecraft/server/level/ChunkHolder.UNLOADED_LEVEL_CHUNK:Lnet/minecraft/server/level/ChunkResult;
+         7: invokevirtual #68                 // Method java/util/concurrent/CompletableFuture.getNow:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #70                 // class net/minecraft/server/level/ChunkResult
+        13: aconst_null
+        14: invokeinterface #73,  2           // InterfaceMethod net/minecraft/server/level/ChunkResult.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        19: checkcast     #75                 // class net/minecraft/world/level/chunk/LevelChunk
+        22: areturn
+      LineNumberTable:
+        line 48: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0      23     1 chunkHolder   Lnet/minecraft/server/level/ChunkHolder;
+    RuntimeVisibleAnnotations:
+      0: #50(#36=[s#51],#38=@#39(#7=s#40,#41=s#52))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["getPostProcessedChunk"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ChunkHolder;getPostProcessedChunk()Lnet/minecraft/world/chunk/WorldChunk;"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      chunkHolder
+
+  private void onMakeChunkAccessible(net.minecraft.server.level.ChunkHolder, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.util.concurrent.CompletableFuture<net.minecraft.server.level.ChunkResult<net.minecraft.world.level.chunk.LevelChunk>>>);
+    descriptor: (Lnet/minecraft/server/level/ChunkHolder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_2
+         1: invokevirtual #89                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+         4: checkcast     #64                 // class java/util/concurrent/CompletableFuture
+         7: aload_0
+         8: invokedynamic #108,  0            // InvokeDynamic #0:accept:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+        13: invokevirtual #112                // Method java/util/concurrent/CompletableFuture.thenAccept:(Ljava/util/function/Consumer;)Ljava/util/concurrent/CompletableFuture;
+        16: pop
+        17: return
+      LineNumberTable:
+        line 54: 0
+        line 61: 17
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      18     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0      18     1 chunkHolder   Lnet/minecraft/server/level/ChunkHolder;
+            0      18     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      18     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;>;
+    Signature: #79                          // (Lnet/minecraft/server/level/ChunkHolder;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/util/concurrent/CompletableFuture<Lnet/minecraft/server/level/ChunkResult<Lnet/minecraft/world/level/chunk/LevelChunk;>;>;>;)V
+    RuntimeVisibleAnnotations:
+      0: #81(#36=[s#82],#38=[@#39(#7=s#83)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["makeChunkAccessible"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      chunkHolder
+      cir
+
+  private boolean controlDuplicateChunkSending(net.minecraft.server.level.ChunkMap, net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/server/level/ChunkMap;Lnet/minecraft/world/level/chunk/LevelChunk;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: getstatic     #127                // Field com/ishland/c2me/notickvd/common/Config.ensureChunkCorrectness:Z
+         3: ireturn
+      LineNumberTable:
+        line 76: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0       4     1 instance   Lnet/minecraft/server/level/ChunkMap;
+            0       4     2 worldChunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+    RuntimeVisibleAnnotations:
+      0: #119(#36=[s#120],#38=[@#39(#7=s#40,#41=s#121)])
+        com.llamalad7.mixinextras.injector.WrapWithCondition(
+          method=["method_53684"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ServerChunkLoadingManager;sendToPlayers(Lnet/minecraft/world/chunk/WorldChunk;)V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      worldChunk
+
+  private boolean controlDuplicateChunkSending1(net.minecraft.server.level.ChunkMap, net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/server/level/ChunkMap;Lnet/minecraft/world/level/chunk/LevelChunk;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: getstatic     #127                // Field com/ishland/c2me/notickvd/common/Config.ensureChunkCorrectness:Z
+         3: ireturn
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0       4     1 instance   Lnet/minecraft/server/level/ChunkMap;
+            0       4     2 worldChunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+    RuntimeVisibleAnnotations:
+      0: #119(#36=[s#130],#38=[@#39(#7=s#40,#41=s#121)])
+        com.llamalad7.mixinextras.injector.WrapWithCondition(
+          method=["method_53687"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ServerChunkLoadingManager;sendToPlayers(Lnet/minecraft/world/chunk/WorldChunk;)V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      instance
+      worldChunk
+
+  private void lambda$onMakeChunkAccessible$2(net.minecraft.server.level.ChunkResult);
+    descriptor: (Lnet/minecraft/server/level/ChunkResult;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokedynamic #137,  0            // InvokeDynamic #1:accept:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;)Ljava/util/function/Consumer;
+         7: invokeinterface #141,  2          // InterfaceMethod net/minecraft/server/level/ChunkResult.ifSuccess:(Ljava/util/function/Consumer;)Lnet/minecraft/server/level/ChunkResult;
+        12: pop
+        13: return
+      LineNumberTable:
+        line 54: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0      14     1 either   Lnet/minecraft/server/level/ChunkResult;
+    MethodParameters:
+      Name                           Flags
+      either
+
+  private void lambda$onMakeChunkAccessible$1(net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: getstatic     #144                // Field com/ishland/c2me/notickvd/common/Config.compatibilityMode:Z
+         3: ifeq          23
+         6: aload_0
+         7: getfield      #146                // Field mainThreadExecutor:Lnet/minecraft/util/thread/BlockableEventLoop;
+        10: aload_0
+        11: aload_1
+        12: invokedynamic #155,  0            // InvokeDynamic #2:run:(Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;Lnet/minecraft/world/level/chunk/LevelChunk;)Ljava/lang/Runnable;
+        17: invokevirtual #161                // Method net/minecraft/util/thread/BlockableEventLoop.tell:(Ljava/lang/Runnable;)V
+        20: goto          28
+        23: aload_0
+        24: aload_1
+        25: invokevirtual #163                // Method onChunkReadyToSend:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+        28: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 23 /* same */
+        frame_type = 4 /* same */
+      LineNumberTable:
+        line 55: 0
+        line 56: 6
+        line 58: 23
+        line 60: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0      29     1 worldChunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+    MethodParameters:
+      Name                           Flags
+      worldChunk
+
+  private void lambda$onMakeChunkAccessible$0(net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #163                // Method onChunkReadyToSend:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+         5: return
+      LineNumberTable:
+        line 56: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage;
+            0       6     1 worldChunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+    MethodParameters:
+      Name                           Flags
+      worldChunk
+}
+InnerClasses:
+  public static final #13= #10 of #12;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "MixinThreadedAnvilChunkStorage.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkMap;]
+    )
+BootstrapMethods:
+  0: #104 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #91 (Ljava/lang/Object;)V
+      #96 REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$2:(Lnet/minecraft/server/level/ChunkResult;)V
+      #97 (Lnet/minecraft/server/level/ChunkResult;)V
+  1: #104 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #91 (Ljava/lang/Object;)V
+      #135 REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$1:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+      #136 (Lnet/minecraft/world/level/chunk/LevelChunk;)V
+  2: #104 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #147 ()V
+      #151 REF_invokeVirtual com/ishland/c2me/notickvd/mixin/MixinThreadedAnvilChunkStorage.lambda$onMakeChunkAccessible$0:(Lnet/minecraft/world/level/chunk/LevelChunk;)V
+      #147 ()V

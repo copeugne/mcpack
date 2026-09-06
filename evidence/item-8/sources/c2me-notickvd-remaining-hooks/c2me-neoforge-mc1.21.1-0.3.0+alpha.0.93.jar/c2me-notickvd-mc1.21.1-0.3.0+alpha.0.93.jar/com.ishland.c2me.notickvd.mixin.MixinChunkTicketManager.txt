@@ -1,0 +1,539 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-notickvd-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager.class
+  Last modified Jan 1, 1980; size 5135 bytes
+  SHA-256 checksum e055cbb98377a00f62ba6abaabcd4852f204b5ea317d6594206ac047a5e44ecd
+  Compiled from "MixinChunkTicketManager.java"
+public class com.ishland.c2me.notickvd.mixin.MixinChunkTicketManager implements com.ishland.c2me.notickvd.common.ChunkTicketManagerExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 5, methods: 11, attributes: 3
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager
+    #2 = Class              #1            // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/notickvd/common/ChunkTicketManagerExtension
+    #6 = Class              #5            // com/ishland/c2me/notickvd/common/ChunkTicketManagerExtension
+    #7 = Utf8               MixinChunkTicketManager.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/server/level/DistanceManager;
+   #11 = Utf8               net/minecraft/server/level/DistanceManager$PlayerTicketTracker
+   #12 = Class              #11           // net/minecraft/server/level/DistanceManager$PlayerTicketTracker
+   #13 = Utf8               net/minecraft/server/level/DistanceManager
+   #14 = Class              #13           // net/minecraft/server/level/DistanceManager
+   #15 = Utf8               PlayerTicketTracker
+   #16 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+   #17 = Class              #16           // org/spongepowered/asm/mixin/injection/At$Shift
+   #18 = Utf8               org/spongepowered/asm/mixin/injection/At
+   #19 = Class              #18           // org/spongepowered/asm/mixin/injection/At
+   #20 = Utf8               Shift
+   #21 = Utf8               ticketTickCounter
+   #22 = Utf8               J
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #24 = Utf8               tickingTicketsTracker
+   #25 = Utf8               Lnet/minecraft/server/level/TickingTracker;
+   #26 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+   #27 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #28 = Utf8               playerTicketManager
+   #29 = Utf8               Lnet/minecraft/server/level/DistanceManager$PlayerTicketTracker;
+   #30 = Utf8               noTickSystem
+   #31 = Utf8               Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+   #32 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #33 = Utf8               lastNoTickSystemTick
+   #34 = Utf8               <init>
+   #35 = Utf8               ()V
+   #36 = NameAndType        #34:#35       // "<init>":()V
+   #37 = Methodref          #4.#36        // java/lang/Object."<init>":()V
+   #38 = Long               -1l
+   #40 = NameAndType        #33:#22       // lastNoTickSystemTick:J
+   #41 = Fieldref           #2.#40        // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager.lastNoTickSystemTick:J
+   #42 = Utf8               this
+   #43 = Utf8               Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+   #44 = Utf8               onInit
+   #45 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #46 = Utf8               ci
+   #47 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #48 = Utf8               method
+   #49 = Utf8               at
+   #50 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #51 = Utf8               RETURN
+   #52 = Utf8               com/ishland/c2me/notickvd/common/NoTickSystem
+   #53 = Class              #52           // com/ishland/c2me/notickvd/common/NoTickSystem
+   #54 = Utf8               com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorageTicketManager
+   #55 = Class              #54           // com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorageTicketManager
+   #56 = Utf8               c2me$getSuperClass
+   #57 = Utf8               ()Lnet/minecraft/server/level/ChunkMap;
+   #58 = NameAndType        #56:#57       // c2me$getSuperClass:()Lnet/minecraft/server/level/ChunkMap;
+   #59 = InterfaceMethodref #55.#58       // com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorageTicketManager.c2me$getSuperClass:()Lnet/minecraft/server/level/ChunkMap;
+   #60 = Utf8               (Lnet/minecraft/server/level/ChunkMap;)V
+   #61 = NameAndType        #34:#60       // "<init>":(Lnet/minecraft/server/level/ChunkMap;)V
+   #62 = Methodref          #53.#61       // com/ishland/c2me/notickvd/common/NoTickSystem."<init>":(Lnet/minecraft/server/level/ChunkMap;)V
+   #63 = NameAndType        #30:#31       // noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+   #64 = Fieldref           #2.#63        // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager.noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+   #65 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #66 = Utf8               onHandleChunkEnter
+   #67 = Utf8               (Lnet/minecraft/core/SectionPos;Lnet/minecraft/server/level/ServerPlayer;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #68 = Utf8               pos
+   #69 = Utf8               player
+   #70 = Utf8               handleChunkEnter
+   #71 = Utf8               INVOKE
+   #72 = Utf8               target
+   #73 = Utf8               Lnet/minecraft/server/world/ChunkTicketManager$DistanceFromNearestPlayerTracker;updateLevel(JIZ)V
+   #74 = Utf8               ordinal
+   #75 = Integer            0
+   #76 = Utf8               shift
+   #77 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+   #78 = Utf8               AFTER
+   #79 = Utf8               net/minecraft/core/SectionPos
+   #80 = Class              #79           // net/minecraft/core/SectionPos
+   #81 = Utf8               chunk
+   #82 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+   #83 = NameAndType        #81:#82       // chunk:()Lnet/minecraft/world/level/ChunkPos;
+   #84 = Methodref          #80.#83       // net/minecraft/core/SectionPos.chunk:()Lnet/minecraft/world/level/ChunkPos;
+   #85 = Utf8               addPlayerSource
+   #86 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)V
+   #87 = NameAndType        #85:#86       // addPlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+   #88 = Methodref          #53.#87       // com/ishland/c2me/notickvd/common/NoTickSystem.addPlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+   #89 = Utf8               Lnet/minecraft/core/SectionPos;
+   #90 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+   #91 = Utf8               onHandleChunkLeave
+   #92 = Utf8               handleChunkLeave
+   #93 = Utf8               removePlayerSource
+   #94 = NameAndType        #93:#86       // removePlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+   #95 = Methodref          #53.#94       // com/ishland/c2me/notickvd/common/NoTickSystem.removePlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+   #96 = Utf8               onPurge
+   #97 = Utf8               purge
+   #98 = NameAndType        #21:#22       // ticketTickCounter:J
+   #99 = Fieldref           #2.#98        // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager.ticketTickCounter:J
+  #100 = Utf8               runPurge
+  #101 = Utf8               (J)V
+  #102 = NameAndType        #100:#101     // runPurge:(J)V
+  #103 = Methodref          #53.#102      // com/ishland/c2me/notickvd/common/NoTickSystem.runPurge:(J)V
+  #104 = Utf8               beforeTick
+  #105 = Utf8               (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #106 = Utf8               (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #107 = Utf8               chunkStorage
+  #108 = Utf8               cir
+  #109 = Utf8               update
+  #110 = Utf8               HEAD
+  #111 = Utf8               beforeTicketTicks
+  #112 = NameAndType        #111:#35      // beforeTicketTicks:()V
+  #113 = Methodref          #53.#112      // com/ishland/c2me/notickvd/common/NoTickSystem.beforeTicketTicks:()V
+  #114 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+  #115 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #116 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #117 = Utf8               onTick
+  #118 = Utf8               afterTicketTicks
+  #119 = NameAndType        #118:#35      // afterTicketTicks:()V
+  #120 = Methodref          #53.#119      // com/ishland/c2me/notickvd/common/NoTickSystem.afterTicketTicks:()V
+  #121 = Utf8               tick
+  #122 = NameAndType        #121:#35      // tick:()V
+  #123 = Methodref          #53.#122      // com/ishland/c2me/notickvd/common/NoTickSystem.tick:()V
+  #124 = Utf8               mapSimulationDistance
+  #125 = Utf8               (ILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #126 = Utf8               simulationDistance
+  #127 = Utf8               setSimulationDistance
+  #128 = NameAndType        #28:#29       // playerTicketManager:Lnet/minecraft/server/level/DistanceManager$PlayerTicketTracker;
+  #129 = Fieldref           #2.#128       // com/ishland/c2me/notickvd/mixin/MixinChunkTicketManager.playerTicketManager:Lnet/minecraft/server/level/DistanceManager$PlayerTicketTracker;
+  #130 = Utf8               updateViewDistance
+  #131 = Utf8               (I)V
+  #132 = NameAndType        #130:#131     // updateViewDistance:(I)V
+  #133 = Methodref          #12.#132      // net/minecraft/server/level/DistanceManager$PlayerTicketTracker.updateViewDistance:(I)V
+  #134 = Utf8               I
+  #135 = Utf8               updatePlayerTickets
+  #136 = Utf8               viewDistance
+  #137 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #138 = Utf8               setNoTickViewDistance
+  #139 = NameAndType        #138:#131     // setNoTickViewDistance:(I)V
+  #140 = Methodref          #53.#139      // com/ishland/c2me/notickvd/common/NoTickSystem.setNoTickViewDistance:(I)V
+  #141 = Utf8               c2me$getPendingLoadsCount
+  #142 = Utf8               ()J
+  #143 = Utf8               getPendingLoadsCount
+  #144 = NameAndType        #143:#142     // getPendingLoadsCount:()J
+  #145 = Methodref          #53.#144      // com/ishland/c2me/notickvd/common/NoTickSystem.getPendingLoadsCount:()J
+  #146 = Utf8               c2me$closeNoTickVD
+  #147 = Utf8               close
+  #148 = NameAndType        #147:#35      // close:()V
+  #149 = Methodref          #53.#148      // com/ishland/c2me/notickvd/common/NoTickSystem.close:()V
+  #150 = Utf8               RuntimeVisibleAnnotations
+  #151 = Utf8               Code
+  #152 = Utf8               LineNumberTable
+  #153 = Utf8               LocalVariableTable
+  #154 = Utf8               MethodParameters
+  #155 = Utf8               LocalVariableTypeTable
+  #156 = Utf8               Signature
+  #157 = Utf8               InnerClasses
+  #158 = Utf8               SourceFile
+  #159 = Utf8               RuntimeInvisibleAnnotations
+{
+  private long ticketTickCounter;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+
+  private net.minecraft.server.level.TickingTracker tickingTicketsTracker;
+    descriptor: Lnet/minecraft/server/level/TickingTracker;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #26()
+        org.spongepowered.asm.mixin.Mutable
+      1: #23()
+        org.spongepowered.asm.mixin.Shadow
+      2: #27()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.server.level.DistanceManager$PlayerTicketTracker playerTicketManager;
+    descriptor: Lnet/minecraft/server/level/DistanceManager$PlayerTicketTracker;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+      1: #27()
+        org.spongepowered.asm.mixin.Final
+
+  private com.ishland.c2me.notickvd.common.NoTickSystem noTickSystem;
+    descriptor: Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #32()
+        org.spongepowered.asm.mixin.Unique
+
+  private long lastNoTickSystemTick;
+    descriptor: J
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #32()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.ishland.c2me.notickvd.mixin.MixinChunkTicketManager();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #37                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: ldc2_w        #38                 // long -1l
+         8: putfield      #41                 // Field lastNoTickSystemTick:J
+        11: return
+      LineNumberTable:
+        line 23: 0
+        line 33: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+
+  private void onInit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: new           #53                 // class com/ishland/c2me/notickvd/common/NoTickSystem
+         4: dup
+         5: aload_0
+         6: checkcast     #55                 // class com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorageTicketManager
+         9: invokeinterface #59,  1           // InterfaceMethod com/ishland/c2me/base/mixin/access/IThreadedAnvilChunkStorageTicketManager.c2me$getSuperClass:()Lnet/minecraft/server/level/ChunkMap;
+        14: invokespecial #62                 // Method com/ishland/c2me/notickvd/common/NoTickSystem."<init>":(Lnet/minecraft/server/level/ChunkMap;)V
+        17: putfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+        20: return
+      LineNumberTable:
+        line 38: 0
+        line 39: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      21     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#34],#49=[@#50(#9=s#51)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private void onHandleChunkEnter(net.minecraft.core.SectionPos, net.minecraft.server.level.ServerPlayer, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/SectionPos;Lnet/minecraft/server/level/ServerPlayer;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: aload_1
+         5: invokevirtual #84                 // Method net/minecraft/core/SectionPos.chunk:()Lnet/minecraft/world/level/ChunkPos;
+         8: invokevirtual #88                 // Method com/ishland/c2me/notickvd/common/NoTickSystem.addPlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+        11: return
+      LineNumberTable:
+        line 43: 0
+        line 44: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      12     1   pos   Lnet/minecraft/core/SectionPos;
+            0      12     2 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      12     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#70],#49=[@#50(#9=s#71,#72=s#73,#74=I#75,#76=e#77.#78)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["handleChunkEnter"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ChunkTicketManager$DistanceFromNearestPlayerTracker;updateLevel(JIZ)V"
+            ordinal=0
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      pos
+      player
+      ci
+
+  private void onHandleChunkLeave(net.minecraft.core.SectionPos, net.minecraft.server.level.ServerPlayer, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/core/SectionPos;Lnet/minecraft/server/level/ServerPlayer;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: aload_1
+         5: invokevirtual #84                 // Method net/minecraft/core/SectionPos.chunk:()Lnet/minecraft/world/level/ChunkPos;
+         8: invokevirtual #95                 // Method com/ishland/c2me/notickvd/common/NoTickSystem.removePlayerSource:(Lnet/minecraft/world/level/ChunkPos;)V
+        11: return
+      LineNumberTable:
+        line 48: 0
+        line 49: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      12     1   pos   Lnet/minecraft/core/SectionPos;
+            0      12     2 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      12     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#92],#49=[@#50(#9=s#71,#72=s#73,#74=I#75,#76=e#77.#78)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["handleChunkLeave"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/world/ChunkTicketManager$DistanceFromNearestPlayerTracker;updateLevel(JIZ)V"
+            ordinal=0
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      pos
+      player
+      ci
+
+  private void onPurge(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: aload_0
+         5: getfield      #99                 // Field ticketTickCounter:J
+         8: invokevirtual #103                // Method com/ishland/c2me/notickvd/common/NoTickSystem.runPurge:(J)V
+        11: return
+      LineNumberTable:
+        line 53: 0
+        line 54: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      12     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#97],#49=[@#50(#9=s#51)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["purge"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private void beforeTick(net.minecraft.server.level.ChunkMap, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: invokevirtual #113                // Method com/ishland/c2me/notickvd/common/NoTickSystem.beforeTicketTicks:()V
+         7: return
+      LineNumberTable:
+        line 58: 0
+        line 59: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0       8     1 chunkStorage   Lnet/minecraft/server/level/ChunkMap;
+            0       8     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       8     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #106                         // (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#109],#49=[@#50(#9=s#110)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["update"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      chunkStorage
+      cir
+
+  private void onTick(net.minecraft.server.level.ChunkMap, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: invokevirtual #120                // Method com/ishland/c2me/notickvd/common/NoTickSystem.afterTicketTicks:()V
+         7: aload_0
+         8: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+        11: invokevirtual #123                // Method com/ishland/c2me/notickvd/common/NoTickSystem.tick:()V
+        14: return
+      LineNumberTable:
+        line 63: 0
+        line 64: 7
+        line 65: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      15     1 chunkStorage   Lnet/minecraft/server/level/ChunkMap;
+            0      15     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      15     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+    Signature: #106                         // (Lnet/minecraft/server/level/ChunkMap;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#109],#49=[@#50(#9=s#51)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["update"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      chunkStorage
+      cir
+
+  public void mapSimulationDistance(int, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (ILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #129                // Field playerTicketManager:Lnet/minecraft/server/level/DistanceManager$PlayerTicketTracker;
+         4: iload_1
+         5: invokevirtual #133                // Method net/minecraft/server/level/DistanceManager$PlayerTicketTracker.updateViewDistance:(I)V
+         8: return
+      LineNumberTable:
+        line 69: 0
+        line 70: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0       9     1 simulationDistance   I
+            0       9     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #47(#48=[s#127],#49=[@#50(#9=s#110)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["setSimulationDistance"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      simulationDistance
+      ci
+
+  public void updatePlayerTickets(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: iload_1
+         5: iconst_1
+         6: iadd
+         7: invokevirtual #140                // Method com/ishland/c2me/notickvd/common/NoTickSystem.setNoTickViewDistance:(I)V
+        10: return
+      LineNumberTable:
+        line 78: 0
+        line 79: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+            0      11     1 viewDistance   I
+    RuntimeVisibleAnnotations:
+      0: #137()
+        org.spongepowered.asm.mixin.Overwrite
+    MethodParameters:
+      Name                           Flags
+      viewDistance
+
+  public long c2me$getPendingLoadsCount();
+    descriptor: ()J
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: invokevirtual #145                // Method com/ishland/c2me/notickvd/common/NoTickSystem.getPendingLoadsCount:()J
+         7: lreturn
+      LineNumberTable:
+        line 84: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+    RuntimeVisibleAnnotations:
+      0: #32()
+        org.spongepowered.asm.mixin.Unique
+
+  public void c2me$closeNoTickVD();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #64                 // Field noTickSystem:Lcom/ishland/c2me/notickvd/common/NoTickSystem;
+         4: invokevirtual #149                // Method com/ishland/c2me/notickvd/common/NoTickSystem.close:()V
+         7: return
+      LineNumberTable:
+        line 89: 0
+        line 90: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/notickvd/mixin/MixinChunkTicketManager;
+}
+InnerClasses:
+  public #15= #12 of #14;                 // PlayerTicketTracker=class net/minecraft/server/level/DistanceManager$PlayerTicketTracker of class net/minecraft/server/level/DistanceManager
+  public static final #20= #17 of #19;    // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
+SourceFile: "MixinChunkTicketManager.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/DistanceManager;]
+    )
