@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-06
 
+Deep Aether is current, still OPEN. Candidate partition 63d6dfd and runtime
+library selection fa379f0 are delivered: four roots, fifteen templates, sixty
+configured features; active TerraBlender is retained 4.1.0.8, not embedded .3.
+AeroBlender 1.0.0 loads from Deep Aether. Source 53427f4, extractor 9b16faf,
+captures 43 annotated/common-mixin/feature/Brass-jigsaw boundary classes in
+sources/deep-aether-provider. Manifest SHA-256:
+71c441da5bd3213d84b0ce9f1f38f098979d158b3f16146397428b99e958d5c4.
+Independent r1 matches all generated files. Do not repeat this capture.
+
+Brass room-name reconciliation is delivered: five ordinary rooms and five boss
+counterparts plus door and room_part_up account for all twelve Brass templates.
+The focused source check binds the manifest/class hashes and real concatenation
+recipes. Four candidate/selection/source/totem cases and scoped checks pass.
+Reuse the inactive totem disposition. Remaining work is jigsaw/eligibility,
+feature and common-entry roles, optional packs and AeroBlender's role, then the
+whole-provider check. Census remains 76 resolved and 60 open. No blocker or
+live runtime process. Canonical grouping and attributes still follow the census.
+
 Aether provider coverage is now RESOLVED in the final provider-scope.md section.
 The census has advanced to 76 resolved and 60 open. Nine focused Aether cases
 pass, along with scoped Ruff/Basedpyright. The provider check binds fifteen
