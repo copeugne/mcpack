@@ -1,0 +1,391 @@
+Compiled from "AdditionsTemperatureModifier.java"
+public final class com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier extends java.lang.Record implements net.neoforged.neoforge.common.world.BiomeModifier {
+  private final net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes;
+
+  private final net.minecraft.core.Holder<net.minecraft.world.level.levelgen.placement.PlacedFeature> feature;
+
+  private final net.minecraft.world.level.levelgen.GenerationStep$Decoration step;
+
+  private final com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier$TEMPERATURE_RANGE temperatureRange;
+
+  public static com.mojang.serialization.MapCodec<com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier> CODEC;
+
+  public com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier(net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome>, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.placement.PlacedFeature>, net.minecraft.world.level.levelgen.GenerationStep$Decoration, com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier$TEMPERATURE_RANGE);
+    Code:
+       0: aload_0
+       1: invokespecial #70                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #72                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       9: aload_0
+      10: aload_2
+      11: putfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+      14: aload_0
+      15: aload_3
+      16: putfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+      19: aload_0
+      20: aload         4
+      22: putfield      #78                 // Field temperatureRange:Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier$TEMPERATURE_RANGE;
+      25: return
+
+  public void modify(net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, net.neoforged.neoforge.common.world.BiomeModifier$Phase, net.neoforged.neoforge.common.world.ModifiableBiomeInfo$BiomeInfo$Builder);
+    Code:
+       0: aload_2
+       1: getstatic     #90                 // Field net/neoforged/neoforge/common/world/BiomeModifier$Phase.ADD:Lnet/neoforged/neoforge/common/world/BiomeModifier$Phase;
+       4: if_acmpne     531
+       7: aload_0
+       8: getfield      #72                 // Field biomes:Lnet/minecraft/core/HolderSet;
+      11: aload_1
+      12: invokeinterface #96,  2           // InterfaceMethod net/minecraft/core/HolderSet.contains:(Lnet/minecraft/core/Holder;)Z
+      17: ifeq          531
+      20: aload_1
+      21: invokeinterface #102,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      26: invokevirtual #108                // Method java/util/Optional.get:()Ljava/lang/Object;
+      29: checkcast     #110                // class net/minecraft/resources/ResourceKey
+      32: invokevirtual #114                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      35: invokevirtual #120                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      38: astore        4
+      40: aload_1
+      41: invokeinterface #102,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      46: invokevirtual #108                // Method java/util/Optional.get:()Ljava/lang/Object;
+      49: checkcast     #110                // class net/minecraft/resources/ResourceKey
+      52: invokevirtual #114                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      55: invokevirtual #123                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      58: astore        5
+      60: aload_1
+      61: invokeinterface #126,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      66: checkcast     #128                // class net/minecraft/world/level/biome/Biome
+      69: invokevirtual #132                // Method net/minecraft/world/level/biome/Biome.getBaseTemperature:()F
+      72: fstore        6
+      74: aload_0
+      75: getfield      #78                 // Field temperatureRange:Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier$TEMPERATURE_RANGE;
+      78: invokevirtual #136                // Method com/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier$TEMPERATURE_RANGE.ordinal:()I
+      81: tableswitch   { // 0 to 4
+                     0: 116
+                     1: 204
+                     2: 273
+                     3: 386
+                     4: 459
+               default: 531
+          }
+     116: aload         5
+     118: iconst_3
+     119: anewarray     #138                // class java/lang/String
+     122: dup
+     123: iconst_0
+     124: ldc           #140                // String hot
+     126: aastore
+     127: dup
+     128: iconst_1
+     129: ldc           #142                // String tropic
+     131: aastore
+     132: dup
+     133: iconst_2
+     134: ldc           #144                // String warm
+     136: aastore
+     137: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     140: ifeq          160
+     143: aload         5
+     145: iconst_1
+     146: anewarray     #138                // class java/lang/String
+     149: dup
+     150: iconst_0
+     151: ldc           #152                // String lukewarm
+     153: aastore
+     154: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     157: ifeq          185
+     160: aload         4
+     162: iconst_1
+     163: anewarray     #138                // class java/lang/String
+     166: dup
+     167: iconst_0
+     168: ldc           #154                // String minecraft
+     170: aastore
+     171: invokestatic  #157                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameExactMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     174: ifne          531
+     177: fload         6
+     179: ldc           #158                // float 1.5f
+     181: fcmpl
+     182: iflt          531
+     185: aload_3
+     186: invokevirtual #162                // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+     189: aload_0
+     190: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     193: aload_0
+     194: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+     197: invokevirtual #168                // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+     200: pop
+     201: goto          531
+     204: aload         5
+     206: iconst_1
+     207: anewarray     #138                // class java/lang/String
+     210: dup
+     211: iconst_0
+     212: ldc           #152                // String lukewarm
+     214: aastore
+     215: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     218: ifne          254
+     221: aload         4
+     223: iconst_1
+     224: anewarray     #138                // class java/lang/String
+     227: dup
+     228: iconst_0
+     229: ldc           #154                // String minecraft
+     231: aastore
+     232: invokestatic  #157                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameExactMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     235: ifne          531
+     238: fload         6
+     240: ldc           #169                // float 0.9f
+     242: fcmpl
+     243: iflt          531
+     246: fload         6
+     248: ldc           #158                // float 1.5f
+     250: fcmpg
+     251: ifge          531
+     254: aload_3
+     255: invokevirtual #162                // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+     258: aload_0
+     259: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     262: aload_0
+     263: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+     266: invokevirtual #168                // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+     269: pop
+     270: goto          531
+     273: aload         5
+     275: bipush        9
+     277: anewarray     #138                // class java/lang/String
+     280: dup
+     281: iconst_0
+     282: ldc           #140                // String hot
+     284: aastore
+     285: dup
+     286: iconst_1
+     287: ldc           #142                // String tropic
+     289: aastore
+     290: dup
+     291: iconst_2
+     292: ldc           #144                // String warm
+     294: aastore
+     295: dup
+     296: iconst_3
+     297: ldc           #171                // String cold
+     299: aastore
+     300: dup
+     301: iconst_4
+     302: ldc           #173                // String chilly
+     304: aastore
+     305: dup
+     306: iconst_5
+     307: ldc           #175                // String frozen
+     309: aastore
+     310: dup
+     311: bipush        6
+     313: ldc           #177                // String snow
+     315: aastore
+     316: dup
+     317: bipush        7
+     319: ldc           #179                // String ice
+     321: aastore
+     322: dup
+     323: bipush        8
+     325: ldc           #181                // String frost
+     327: aastore
+     328: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     331: ifeq          367
+     334: aload         4
+     336: iconst_1
+     337: anewarray     #138                // class java/lang/String
+     340: dup
+     341: iconst_0
+     342: ldc           #154                // String minecraft
+     344: aastore
+     345: invokestatic  #157                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameExactMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     348: ifne          531
+     351: fload         6
+     353: ldc           #182                // float 0.5f
+     355: fcmpl
+     356: iflt          531
+     359: fload         6
+     361: ldc           #169                // float 0.9f
+     363: fcmpg
+     364: ifge          531
+     367: aload_3
+     368: invokevirtual #162                // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+     371: aload_0
+     372: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     375: aload_0
+     376: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+     379: invokevirtual #168                // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+     382: pop
+     383: goto          531
+     386: aload         5
+     388: iconst_2
+     389: anewarray     #138                // class java/lang/String
+     392: dup
+     393: iconst_0
+     394: ldc           #171                // String cold
+     396: aastore
+     397: dup
+     398: iconst_1
+     399: ldc           #173                // String chilly
+     401: aastore
+     402: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     405: ifne          440
+     408: aload         4
+     410: iconst_1
+     411: anewarray     #138                // class java/lang/String
+     414: dup
+     415: iconst_0
+     416: ldc           #154                // String minecraft
+     418: aastore
+     419: invokestatic  #157                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameExactMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     422: ifne          531
+     425: fload         6
+     427: fconst_0
+     428: fcmpl
+     429: iflt          531
+     432: fload         6
+     434: ldc           #182                // float 0.5f
+     436: fcmpg
+     437: ifge          531
+     440: aload_3
+     441: invokevirtual #162                // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+     444: aload_0
+     445: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     448: aload_0
+     449: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+     452: invokevirtual #168                // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+     455: pop
+     456: goto          531
+     459: aload         5
+     461: iconst_4
+     462: anewarray     #138                // class java/lang/String
+     465: dup
+     466: iconst_0
+     467: ldc           #175                // String frozen
+     469: aastore
+     470: dup
+     471: iconst_1
+     472: ldc           #177                // String snow
+     474: aastore
+     475: dup
+     476: iconst_2
+     477: ldc           #179                // String ice
+     479: aastore
+     480: dup
+     481: iconst_3
+     482: ldc           #181                // String frost
+     484: aastore
+     485: invokestatic  #150                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     488: ifne          515
+     491: aload         4
+     493: iconst_1
+     494: anewarray     #138                // class java/lang/String
+     497: dup
+     498: iconst_0
+     499: ldc           #154                // String minecraft
+     501: aastore
+     502: invokestatic  #157                // Method com/telepathicgrunt/repurposedstructures/utils/GeneralUtils.nameExactMatch:(Ljava/lang/String;[Ljava/lang/String;)Z
+     505: ifne          531
+     508: fload         6
+     510: fconst_0
+     511: fcmpg
+     512: ifge          531
+     515: aload_3
+     516: invokevirtual #162                // Method net/neoforged/neoforge/common/world/ModifiableBiomeInfo$BiomeInfo$Builder.getGenerationSettings:()Lnet/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder;
+     519: aload_0
+     520: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+     523: aload_0
+     524: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+     527: invokevirtual #168                // Method net/neoforged/neoforge/common/world/BiomeGenerationSettingsBuilder.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/BiomeGenerationSettings$PlainBuilder;
+     530: pop
+     531: return
+
+  public com.mojang.serialization.MapCodec<? extends net.neoforged.neoforge.common.world.BiomeModifier> codec();
+    Code:
+       0: getstatic     #198                // Field com/telepathicgrunt/repurposedstructures/modinit/neoforge/RSBiomeModifiers.ADDITIONS_TEMPERATURE_MODIFIER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #201                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #203                // class com/mojang/serialization/MapCodec
+       9: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #220,  0            // InvokeDynamic #0:toString:(Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #224,  0            // InvokeDynamic #0:hashCode:(Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #230,  0            // InvokeDynamic #0:equals:(Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public net.minecraft.core.HolderSet<net.minecraft.world.level.biome.Biome> biomes();
+    Code:
+       0: aload_0
+       1: getfield      #72                 // Field biomes:Lnet/minecraft/core/HolderSet;
+       4: areturn
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.levelgen.placement.PlacedFeature> feature();
+    Code:
+       0: aload_0
+       1: getfield      #74                 // Field feature:Lnet/minecraft/core/Holder;
+       4: areturn
+
+  public net.minecraft.world.level.levelgen.GenerationStep$Decoration step();
+    Code:
+       0: aload_0
+       1: getfield      #76                 // Field step:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       4: areturn
+
+  public com.telepathicgrunt.repurposedstructures.world.neoforge.biomemodifiers.AdditionsTemperatureModifier$TEMPERATURE_RANGE temperatureRange();
+    Code:
+       0: aload_0
+       1: getfield      #78                 // Field temperatureRange:Lcom/telepathicgrunt/repurposedstructures/world/neoforge/biomemodifiers/AdditionsTemperatureModifier$TEMPERATURE_RANGE;
+       4: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #243                // Field net/minecraft/world/level/biome/Biome.LIST_CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #244                // String biomes
+       6: invokeinterface #250,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #268,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      16: invokevirtual #272                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #276                // Field net/minecraft/world/level/levelgen/placement/PlacedFeature.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc_w         #277                // String feature
+      25: invokeinterface #250,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      30: invokedynamic #283,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      35: invokevirtual #272                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      38: getstatic     #284                // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.CODEC:Lcom/mojang/serialization/Codec;
+      41: ldc_w         #285                // String step
+      44: invokeinterface #250,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      49: invokedynamic #291,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      54: invokevirtual #272                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      57: invokedynamic #301,  0            // InvokeDynamic #4:get:()Ljava/util/function/Supplier;
+      62: invokestatic  #305                // InterfaceMethod net/minecraft/util/StringRepresentable.fromEnum:(Ljava/util/function/Supplier;)Lnet/minecraft/util/StringRepresentable$EnumCodec;
+      65: ldc_w         #307                // String biome_temperature_allowed
+      68: invokevirtual #308                // Method net/minecraft/util/StringRepresentable$EnumCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      71: invokevirtual #311                // Method com/mojang/serialization/MapCodec.stable:()Lcom/mojang/serialization/MapCodec;
+      74: invokedynamic #317,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      79: invokevirtual #272                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      82: invokevirtual #321                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      85: aload_0
+      86: invokedynamic #331,  0            // InvokeDynamic #6:apply:()Lcom/mojang/datafixers/util/Function4;
+      91: invokevirtual #334                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      94: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #341,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+       5: invokestatic  #345                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #347                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
