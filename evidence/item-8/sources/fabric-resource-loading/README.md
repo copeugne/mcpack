@@ -1,0 +1,9 @@
+# Fabric resource loading boundaries
+
+Extractor: 8cf0d2332d9d24917276fef6d5b85735f60d5765.
+Fifteen complete classes independently reproduce byte for byte: thirteen
+declared common mixins, generated entry and ResourceManagerHelperImpl.
+
+```sh
+'uv' 'run' '-m' 'tools.inspect_item8_pool_elements' '--archive' 'forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar' '--nested-archive' 'META-INF/jars/fabric-resource-loader-v0-1.3.1+4ea8954419.jar' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/DatapackCommandMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/KeyedResourceReloadListenerMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/LifecycledResourceManagerImplMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/MinecraftServerMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/ResourceMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/ResourcePackManagerMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/ResourcePackProfileMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/SelectKnownPacksC2SPacketMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/ServerConfigurationNetworkHandlerMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/ServerPropertiesHandlerMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/SimpleResourceReloadMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/SynchronizeRegistriesTaskMixin.class' '--class-name' 'net/fabricmc/fabric/mixin/resource/loader/TestServerMixin.class' '--class-name' 'net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl.class' '--class-name' 'org/sinytra/fabric/resource_loader/generated/GeneratedEntryPoint.class' --output evidence/raw/item8/fabric-resource-loading-r1
+```

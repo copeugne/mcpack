@@ -6,6 +6,83 @@
 
 ### Continuation update - 2026-09-06
 
+Three Fabric client utility modules resolved: block render layers, key bindings,
+and sound. Source 1c35ebe (extractor 5624e8a) independently reproduces the entries;
+client initialization guards/client-only mixins and full partitions are bound.
+Eleven focused Fabric cases and scoped checks pass. Module queue: ten resolved,
+33 open. Continue named open modules, reusing all closed roles. Whole census:
+90 resolved, 46 open. No new family candidate or live process.
+
+Fabric v2 conventional tags resolved: source e1c7c24, extractor 27f6181,
+independently reproduced. Conventional tag keys, tag interface and translation
+warnings add no family. Full partition and source binding pass in eight focused
+Fabric cases; scoped checks pass. Module queue: seven resolved, 36 open. Next:
+remaining named module entries/hooks. Whole census stays 90 resolved, 46 open.
+No live runtime or capture process.
+
+Fabric v1 conventional tags resolved: source 73efd5b, extractor ff7e104,
+independently reproduced. Tag keys and server-start migration warnings only;
+no data/mixin/service payload. Seven focused Fabric cases and scoped checks pass.
+Module queue: six resolved, 37 open. Next: v2 conventional tag roles. Whole
+provider census stays 90 resolved, 46 open. No new family candidate or live process.
+
+Fabric API Base is resolved: source da5dce0 (extractor 77dc50e), independently
+reproduced, has an empty sole loader entry and no data/mixin/service payload.
+Six focused Fabric cases and scoped checks pass. Module queue: five resolved,
+38 open. Next: conventional tag registration and remaining named modules.
+Whole-provider census remains 90 resolved, 46 open. No family candidate added.
+No live runtime or capture process.
+
+Fabric now has an exact 43-module queue in provider-scope.md: four resolved,
+39 open. The fourth resolved module is transitive access wideners: five files,
+lowcodefml metadata/access declarations and no executable or data payload.
+The existing Fabric test binds the complete file partition and queue coverage.
+Five focused cases and scoped checks pass. Next: inspect the named open module
+entry/hook roles. Whole-provider census remains 90 resolved, 46 open; module
+counts are not family counts. No live runtime or capture process.
+
+Fabric resource-loading membership is resolved. Discovery/fixed-pack source
+8cfe15c (extractors 6cf2878, e29938a) independently reproduces. Fixed pack has
+metadata only, no namespaces or ordinary resource content; other packs are
+consumer-supplied. Five focused Fabric cases bind all three consumer batches,
+and scoped checks pass. Next: other bundled Fabric module entry/mixin roles.
+Do not restart biome, GameTest, resource or pack-supplier checks. No new family
+candidate. Census remains 90 resolved, 46 open. No live runtime/capture process.
+
+Fabric resource sources are delivered: cce2d3d (extractor 8cf0d23), thirteen
+common hooks, entry and ResourceManagerHelperImpl; 6326f21 (extractor 149e849),
+ModResourcePackUtil and ModNioResourcePack. Both independently reproduce.
+Four focused Fabric cases and scoped checks pass, binding the first batch.
+Next: inspect ModResourcePackCreator.loadPacks, the concrete default/test pack
+discovery delegate, then bind the two-consumer source and record final module
+roles. Other Fabric modules still remain. No new family candidate; census is
+90 resolved, 46 open. No live runtime or capture process.
+
+Fabric GameTest roles are resolved from source 6bffda6 (extractor ad51ae4):
+five mixins and three entry/namespace consumers, independently reproduced.
+The module registers tests and loads SNBT resources; no natural placement
+request or new family candidate. Three focused Fabric cases and scoped checks
+pass. Remaining Fabric: other bundled entry/mixin roles, particularly resource
+loading. Reuse closed packaged-data, modifier, biome and GameTest work. Census:
+90 resolved, 46 open. No live runtime or capture process.
+
+Fabric biome selection roles are resolved from source d052da5 (extractor
+2426342): six declared mixins and Nether/End registration data, independently
+reproduced. Seed propagation and consumer-supplied biome selection add no site
+candidate. Two focused Fabric cases and scoped checks pass. Remaining Fabric:
+other bundled entry/mixin roles, particularly resource loading and GameTest
+consumers. Do not repeat packaged-data, modifier or biome-selection checks.
+Census remains 90 resolved, 46 open. No live runtime or capture process.
+
+Forgified Fabric API packaged-data boundary is resolved by source 6eb28e4
+(extractor bbdf6f3), independently reproduced. Its biome modifier dispatches
+consumer callbacks from an initially empty list. All 43 nested archives contain
+only 491 tags, one modifier JSON and one empty GameTest SNBT as packaged data;
+no deeper JAR or binary NBT. One focused case and scoped checks pass. Remaining
+Fabric work: bundled entry/mixin contribution roles, including biome selection
+and resource/test consumers. Reuse the five captured classes. Census remains
+90 resolved, 46 open. No live runtime or capture process.
+
 Create membership is RESOLVED. Ponder source 0177383 (extractor 28badcf)
 and the final complete parent partition close the last gaps. Ponder templates
 are client guide scenes, GameTest templates are fixtures, and generation is

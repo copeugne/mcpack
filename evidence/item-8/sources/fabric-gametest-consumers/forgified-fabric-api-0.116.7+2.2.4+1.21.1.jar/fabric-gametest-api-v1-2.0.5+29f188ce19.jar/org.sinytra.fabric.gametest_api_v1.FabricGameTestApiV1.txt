@@ -1,0 +1,82 @@
+Compiled from "FabricGameTestApiV1.java"
+public class org.sinytra.fabric.gametest_api_v1.FabricGameTestApiV1 {
+  public static final java.lang.String PREFIX_MOD_FILE_PROPERTY = "forgified-fabric-api:game-test-prefix";
+
+  private static final java.util.function.Supplier<java.util.Map<java.lang.String, java.lang.String>> PREFIX_GAME_TEST_MODULES;
+
+  public org.sinytra.fabric.gametest_api_v1.FabricGameTestApiV1();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean shouldProcess(java.lang.reflect.Method);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method java/lang/reflect/Method.getDeclaringClass:()Ljava/lang/Class;
+       4: invokevirtual #13                 // Method java/lang/Class.getModule:()Ljava/lang/Module;
+       7: invokevirtual #19                 // Method java/lang/Module.getName:()Ljava/lang/String;
+      10: astore_1
+      11: getstatic     #25                 // Field PREFIX_GAME_TEST_MODULES:Ljava/util/function/Supplier;
+      14: invokeinterface #31,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      19: checkcast     #37                 // class java/util/Map
+      22: aload_1
+      23: invokeinterface #39,  2           // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      28: ireturn
+
+  public static java.lang.String getGameTestNamespace(java.lang.reflect.Method);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method java/lang/reflect/Method.getDeclaringClass:()Ljava/lang/Class;
+       4: invokevirtual #13                 // Method java/lang/Class.getModule:()Ljava/lang/Module;
+       7: invokevirtual #19                 // Method java/lang/Module.getName:()Ljava/lang/String;
+      10: astore_1
+      11: getstatic     #25                 // Field PREFIX_GAME_TEST_MODULES:Ljava/util/function/Supplier;
+      14: invokeinterface #31,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      19: checkcast     #37                 // class java/util/Map
+      22: aload_1
+      23: invokeinterface #43,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      28: checkcast     #46                 // class java/lang/String
+      31: areturn
+
+  private static java.util.Map lambda$static$1();
+    Code:
+       0: invokestatic  #48                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: invokevirtual #53                 // Method net/neoforged/fml/ModList.getModFiles:()Ljava/util/List;
+       6: invokeinterface #57,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      11: invokedynamic #63,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokeinterface #67,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      21: invokedynamic #73,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      26: invokeinterface #77,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      31: invokedynamic #81,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      36: invokedynamic #82,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      41: invokestatic  #83                 // Method java/util/stream/Collectors.toMap:(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
+      44: invokeinterface #89,  2           // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      49: checkcast     #37                 // class java/util/Map
+      52: areturn
+
+  private static com.mojang.datafixers.util.Pair lambda$static$0(net.neoforged.neoforgespi.language.IModFileInfo);
+    Code:
+       0: aload_0
+       1: invokeinterface #93,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFileProperties:()Ljava/util/Map;
+       6: ldc           #99                 // String forgified-fabric-api:game-test-prefix
+       8: invokeinterface #43,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #46                 // class java/lang/String
+      16: astore_1
+      17: aload_1
+      18: ifnull        32
+      21: aload_0
+      22: invokeinterface #101,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.moduleName:()Ljava/lang/String;
+      27: aload_1
+      28: invokestatic  #104                // Method com/mojang/datafixers/util/Pair.of:(Ljava/lang/Object;Ljava/lang/Object;)Lcom/mojang/datafixers/util/Pair;
+      31: areturn
+      32: aconst_null
+      33: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #110,  0            // InvokeDynamic #4:get:()Lcom/google/common/base/Supplier;
+       5: invokestatic  #113                // Method com/google/common/base/Suppliers.memoize:(Lcom/google/common/base/Supplier;)Lcom/google/common/base/Supplier;
+       8: putstatic     #25                 // Field PREFIX_GAME_TEST_MODULES:Ljava/util/function/Supplier;
+      11: return
+}

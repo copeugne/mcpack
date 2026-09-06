@@ -5475,3 +5475,247 @@ Current census: 90 resolved, 46 open providers. Forgified Fabric API is the last
 open packaged-generation lane provider; 24 code-only and 21 unmatched rows also
 remain. Resolve those membership rows, then named canonical merge/split decisions
 before resuming the eleven attributes. These provider counts are not family counts.
+
+### Forgified Fabric API packaged-data boundary
+
+Source 6eb28e4, produced by extractor bbdf6f3 and independently reproduced,
+resolves the sole packaged biome modifier. FabricBiomeApiV1 registers a unit
+codec whose modifier receives BiomeModificationImpl's sorted list. That list
+starts empty and addModifier receives predicates and consumer callbacks from
+callers. FabricBiomeModifier selects the phase and biome, then applies those
+records. BiomeModifications exposes caller-supplied feature, carver and spawn
+registration. This is shared dispatch, not an independent authored site.
+
+The parent contains 43 nested archives and five other metadata/icon files.
+All nested archives have been checked for data and further archives. No deeper
+JAR or binary NBT template exists. Packaged data is exactly 491 conventional
+tags, the biome modifier JSON and one empty GameTest SNBT fixture. The focused
+check binds that partition and all five captured class/disassembly identities.
+
+```sh
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+```
+
+One case and scoped checks pass. This closes the packaged-data question, not
+whole provider membership. Remaining: bundled entry/mixin contribution roles,
+including biome selection and resource/test consumers. Do not repeat the
+modifier capture or expand generic callback internals without an unresolved
+site contribution. No new family candidate; census stays 90 resolved, 46 open.
+
+### Fabric biome selection hooks
+
+Source d052da5 (extractor 2426342) independently reproduces all six declared
+biome mixins and the NetherBiomeData/TheEndBiomeData consumers. The existing
+provider test binds the complete declared mixin set and exact source identities.
+
+| Hook | Membership role |
+| --- | --- |
+| BiomeSourceMixin | Passes possible biome sets through the extension hook. |
+| ChunkNoiseSamplerMixin, NoiseConfigMixin | Propagate the world seed to climate samplers. |
+| MultiNoiseUtilMultiNoiseSamplerMixin | Retains that seed and constructs the End biome noise sampler. |
+| NetherBiomePresetMixin | Appends caller-registered biome/noise-point pairs to the Nether preset. NetherBiomeData's map starts empty. |
+| TheEndBiomeSourceMixin | Retains the biome registry lookup, selects a returned biome through overrides and includes registered custom biomes in the possible set. |
+
+TheEndBiomeData's built-in choices reference vanilla End, highlands, small
+islands, midlands and barrens biomes. Its public methods accept replacement
+biome keys and weights from consumers. These are biome-selection contributions,
+not additional authored sites. Do not recursively audit the weighted-selection
+algorithm or generic codec behavior for family membership.
+
+Two focused Fabric cases and scoped Ruff/Basedpyright pass using the commands
+above. No new family candidate. Whole provider membership remains open for the
+other bundled entry/mixin roles, particularly resource loading and GameTest
+consumers. Census remains 90 resolved, 46 open; these completed biome roles must
+not be recaptured or reinterpreted on continuation.
+
+### Fabric GameTest consumer roles
+
+Source 6bffda6 (extractor ad51ae4) independently reproduces all five GameTest
+mixins plus generated entry, initializer and namespace consumer. The generated
+entry invokes FabricGameTestModInitializer, which registers classes from the
+fabric-gametest entrypoint with Minecraft's GameTestRegistry. Namespace and test
+registry hooks supply test names and invoke FabricGameTest implementations.
+StructureTemplateManagerMixin adds an SNBT resource source to the template
+manager; this is a loading path, not a natural structure placement request.
+TestCommandMixin reads the test-output directory property. TestServerMixin
+changes the test server's dedicated-server flag.
+
+These roles account for the packaged empty test fixture without creating an
+independent family. They do not imply that all template-manager calls are
+restricted to tests. No custom authored site is supplied by this module's
+packaged data. The existing focused source check now covers both biome and
+GameTest declared mixins without duplicating the binding implementation.
+Three focused Fabric cases and scoped Ruff/Basedpyright pass with the commands
+above. Remaining whole-provider work is the other bundled entry/mixin roles,
+particularly resource loading. Reuse all closed biome and GameTest roles.
+Census remains 90 resolved, 46 open; no family candidate was added.
+
+### Fabric resource-loading checkpoint
+
+Source cce2d3d (extractor 8cf0d23) independently reproduces the thirteen declared
+common resource-loading mixins, generated entry and ResourceManagerHelperImpl.
+The existing focused check binds their complete declared set and source hashes.
+Four Fabric cases and scoped Ruff/Basedpyright pass with the commands above.
+
+The hooks cover pack visibility/activation, resource type and source tracking,
+reload-listener ordering, default/test pack selection and known-pack registry
+synchronization. No independent site candidate has emerged. ResourceManagerHelperImpl
+registers caller-provided mod pack paths and reload listeners. Two concrete
+consumers were retained separately in 6326f21 (extractor 149e849), with independent
+byte-for-byte reproduction: ModResourcePackUtil and ModNioResourcePack.
+
+ModNioResourcePack opens mod paths and overlays. ModResourcePackUtil's fallback
+resources are pack.mcmeta and pack.png. The default/test selection methods call
+ModResourcePackCreator.loadPacks. That specific pack-discovery delegate remains
+to inspect before closing this module; do not restart its thirteen hooks or
+expand registry packet behavior into a networking audit. The two-consumer source
+still needs its focused identity binding alongside the final discovery result.
+Census remains 90 resolved, 46 open providers. Other Fabric module entry/mixin
+roles remain after this resource-loading question.
+
+### Fabric resource-loading membership resolved
+
+Source 8cfe15c retains ModResourcePackCreator (extractor 6cf2878) and the
+PlaceholderResourcePack/Factory supplier (extractor e29938a). Both captures
+independently reproduce. The focused check also binds the previously delivered
+ModResourcePackUtil and ModNioResourcePack source in 6326f21.
+
+ModResourcePackCreator.loadPacks constructs the fixed fabric pack, adds
+programmer-art and high-contrast paths only for CLIENT_RESOURCES, and returns
+to ResourceManagerHelperImpl's caller-registered built-in pack list. The fixed
+pack has no namespaces, returns no ordinary resource and enumerates no resources;
+its factory wraps that same pack. It supplies pack metadata rather than structure
+content. Together with mod-path/overlay loading and the complete packaged-data
+partition, this resolves resource loading as infrastructure for consumer content,
+with no independent family. No further generic supplier or packet audit is needed.
+
+Five focused Fabric cases and scoped Ruff/Basedpyright pass using the existing
+commands. Reuse the resolved biome, GameTest and resource-loading roles. Other
+bundled module entry/mixin roles remain before whole-provider closure. Census
+remains 90 resolved, 46 open providers; no family candidate was added.
+
+### Exact Fabric module queue
+
+The frozen parent contains 43 modules. Ten membership roles are resolved below;
+33 remain open. These are internal modules of one retained provider, not added
+providers or families. All packaged data is already partitioned by the existing
+Fabric check. Open rows require contribution-role inspection, not an audit of
+every implementation method. Reuse existing captures and stop at the content
+boundary. This queue replaces the unspecified phrase "other Fabric modules".
+
+| Fabric module | Membership disposition |
+| --- | --- |
+| `fabric-api-base-0.4.42+d1308ded19.jar` | RESOLVED: empty loader entry and consumer-driven event/utility library; see below. |
+| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
+| `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
+| `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
+| `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
+| `fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
+| `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
+| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-particles-v1-4.0.2+824f924c19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
+| `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
+| `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
+| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
+
+The transitive-access-wideners module has exactly five files: manifest, lowcodefml
+metadata, access transformer, icon and nesting metadata. There are no class,
+service, mixin or data files. It changes member accessibility and supplies no
+independent site. The focused packaged-data test binds this complete partition.
+
+### Fabric API Base membership resolved
+
+Source da5dce0 (extractor 77dc50e) independently reproduces its only annotated
+entry. The constructor calls Object's constructor and returns, with no registration
+or static initializer. The complete module contains 17 classes and four metadata/
+icon files. No mixin, service, packaged data or nested archive is present. Other
+classes implement consumer-driven events, ordering and utility types; no automatic
+content contribution remains to follow. No independent family is added.
+
+The existing provider test binds the full partition, sole annotated entry and
+source identities. Six focused Fabric cases and scoped Ruff/Basedpyright pass
+using the commands above. Fabric module queue: five resolved, 38 open. Whole
+provider count stays 90 resolved, 46 open. Next: remaining named module entries,
+starting with conventional tag registration; do not repeat API Base internals.
+
+### Fabric v1 conventional tags resolved
+
+Source 73efd5b (extractor ff7e104) independently reproduces the entry,
+TagRegistration and ConventionLogWarnings. The entry installs a server-start
+warning callback, which reads registry tags and logs migration warnings.
+TagRegistration creates tag keys rather than registered structures or resources.
+The module contains twelve classes and four metadata/icon files, with no mixins,
+services or data. The focused check binds this full partition, sole annotated
+entry and all three source identities. No independent family is added.
+
+Seven focused Fabric cases and scoped checks pass using the existing commands.
+Module queue: six resolved, 37 open. Whole-provider census: 90 resolved, 46 open.
+Next: v2 conventional tags, then the remaining named module roles.
+
+### Fabric v2 conventional tags resolved
+
+Source e1c7c24 (extractor 27f6181) independently reproduces the entry,
+TagRegistration, TranslationConventionLogWarnings and the sole TagKeyMixin.
+Registration creates tag keys, including keys for existing structures, rather
+than structure definitions. The entry installs translation-warning checks that
+read item tags and language entries. The mixin declares the FabricTagKey
+interface on TagKey; it contains no methods or fields. These roles add no
+independent family. The module's complete partition is 16 classes, 491 tag JSON
+files, fourteen language files and five metadata/icon/mixin-declaration files.
+
+The focused test binds that partition and all four source identities. Eight
+Fabric cases and scoped Ruff/Basedpyright pass. The initial type check rejected
+an untyped JSON variable; its explicit type annotation fixed that check before
+acceptance. Fabric module queue: seven resolved, 36 open. Whole provider census
+stays 90 resolved, 46 open. Next: remaining named module entries and hooks.
+
+### Fabric block-render-layer, key-binding and sound modules resolved
+
+Source 1c35ebe (extractor 5624e8a) independently reproduces the sole annotated
+entry in each module. Block-render-layer and key-binding initialization is
+explicitly guarded by FMLEnvironment.dist.isClient(). The sound entry invokes
+only Object's constructor and returns. Every declared mixin is client-only,
+with no common/server list or plugin. Their complete payloads are nine, seven
+and four classes respectively, with metadata, icon and mixin declarations;
+sound additionally contains assets/fabric-sound-api-v1/sounds/empty.ogg.
+No data, service loader or nested archive is present. These modules supply
+client rendering/input/sound support, not an independent server family.
+
+The existing test binds all complete partitions, annotated-entry sets, mixin
+sides and source identities. Eleven focused Fabric cases and scoped checks pass.
+A missing type annotation on an empty set and its resulting line length were
+corrected before acceptance. Module queue: ten resolved, 33 open. Whole-provider
+census remains 90 resolved, 46 open; no family candidate was added.

@@ -1,0 +1,454 @@
+Compiled from "ResourceManagerHelperImpl.java"
+public class net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl implements net.fabricmc.fabric.api.resource.ResourceManagerHelper {
+  private static final java.util.Map<net.minecraft.server.packs.PackType, net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl> registryMap;
+
+  private static final java.util.Set<net.minecraft.util.Tuple<net.minecraft.network.chat.Component, net.fabricmc.fabric.impl.resource.loader.ModNioResourcePack>> builtinResourcePacks;
+
+  private static final org.slf4j.Logger LOGGER;
+
+  private final java.util.Set<net.minecraft.resources.ResourceLocation> addedListenerIds;
+
+  private final java.util.Set<net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl$ListenerFactory> listenerFactories;
+
+  private final java.util.Set<net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener> addedListeners;
+
+  private final net.minecraft.server.packs.PackType type;
+
+  private net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl(net.minecraft.server.packs.PackType);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashSet
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+      12: putfield      #10                 // Field addedListenerIds:Ljava/util/Set;
+      15: aload_0
+      16: new           #16                 // class java/util/LinkedHashSet
+      19: dup
+      20: invokespecial #18                 // Method java/util/LinkedHashSet."<init>":()V
+      23: putfield      #19                 // Field listenerFactories:Ljava/util/Set;
+      26: aload_0
+      27: new           #16                 // class java/util/LinkedHashSet
+      30: dup
+      31: invokespecial #18                 // Method java/util/LinkedHashSet."<init>":()V
+      34: putfield      #22                 // Field addedListeners:Ljava/util/Set;
+      37: aload_0
+      38: aload_1
+      39: putfield      #25                 // Field type:Lnet/minecraft/server/packs/PackType;
+      42: return
+
+  public static net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl get(net.minecraft.server.packs.PackType);
+    Code:
+       0: getstatic     #29                 // Field registryMap:Ljava/util/Map;
+       3: aload_0
+       4: invokedynamic #33,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       9: invokeinterface #37,  3           // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      14: checkcast     #11                 // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl
+      17: areturn
+
+  public static boolean registerBuiltinResourcePack(net.minecraft.resources.ResourceLocation, java.lang.String, net.fabricmc.loader.api.ModContainer, net.minecraft.network.chat.Component, net.fabricmc.fabric.api.resource.ResourcePackActivationType);
+    Code:
+       0: aload_2
+       1: invokeinterface #43,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getRootPaths:()Ljava/util/List;
+       6: astore        5
+       8: aload         5
+      10: invokeinterface #49,  1           // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+      15: checkcast     #55                 // class java/nio/file/Path
+      18: invokeinterface #57,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+      23: invokevirtual #61                 // Method java/nio/file/FileSystem.getSeparator:()Ljava/lang/String;
+      26: astore        6
+      28: aload_1
+      29: ldc           #67                 // String /
+      31: aload         6
+      33: invokevirtual #69                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      36: astore_1
+      37: aload_0
+      38: invokevirtual #75                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      41: aload_2
+      42: aload_1
+      43: getstatic     #80                 // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      46: aload         4
+      48: iconst_0
+      49: invokestatic  #85                 // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.create:(Ljava/lang/String;Lnet/fabricmc/loader/api/ModContainer;Ljava/lang/String;Lnet/minecraft/server/packs/PackType;Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;Z)Lnet/fabricmc/fabric/impl/resource/loader/ModNioResourcePack;
+      52: astore        7
+      54: aload_0
+      55: invokevirtual #75                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      58: aload_2
+      59: aload_1
+      60: getstatic     #91                 // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      63: aload         4
+      65: iconst_0
+      66: invokestatic  #85                 // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.create:(Ljava/lang/String;Lnet/fabricmc/loader/api/ModContainer;Ljava/lang/String;Lnet/minecraft/server/packs/PackType;Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;Z)Lnet/fabricmc/fabric/impl/resource/loader/ModNioResourcePack;
+      69: astore        8
+      71: aload         7
+      73: ifnonnull     83
+      76: aload         8
+      78: ifnonnull     83
+      81: iconst_0
+      82: ireturn
+      83: aload         7
+      85: ifnull        107
+      88: getstatic     #94                 // Field builtinResourcePacks:Ljava/util/Set;
+      91: new           #97                 // class net/minecraft/util/Tuple
+      94: dup
+      95: aload_3
+      96: aload         7
+      98: invokespecial #99                 // Method net/minecraft/util/Tuple."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+     101: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     106: pop
+     107: aload         8
+     109: ifnull        131
+     112: getstatic     #94                 // Field builtinResourcePacks:Ljava/util/Set;
+     115: new           #97                 // class net/minecraft/util/Tuple
+     118: dup
+     119: aload_3
+     120: aload         8
+     122: invokespecial #99                 // Method net/minecraft/util/Tuple."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+     125: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     130: pop
+     131: iconst_1
+     132: ireturn
+
+  public static boolean registerBuiltinResourcePack(net.minecraft.resources.ResourceLocation, java.lang.String, net.fabricmc.loader.api.ModContainer, net.fabricmc.fabric.api.resource.ResourcePackActivationType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_0
+       4: invokevirtual #108                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       7: aload_0
+       8: invokevirtual #111                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      11: invokedynamic #114,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      16: invokestatic  #118                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      19: aload_3
+      20: invokestatic  #124                // Method registerBuiltinResourcePack:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/String;Lnet/fabricmc/loader/api/ModContainer;Lnet/minecraft/network/chat/Component;Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;)Z
+      23: ireturn
+
+  public static void registerBuiltinResourcePacks(net.minecraft.server.packs.PackType, java.util.function.Consumer<net.minecraft.server.packs.repository.Pack>);
+    Code:
+       0: getstatic     #94                 // Field builtinResourcePacks:Ljava/util/Set;
+       3: invokeinterface #128,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       8: astore_2
+       9: aload_2
+      10: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          162
+      18: aload_2
+      19: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #97                 // class net/minecraft/util/Tuple
+      27: astore_3
+      28: aload_3
+      29: invokevirtual #141                // Method net/minecraft/util/Tuple.getB:()Ljava/lang/Object;
+      32: checkcast     #86                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+      35: astore        4
+      37: aload         4
+      39: aload_0
+      40: invokevirtual #144                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+      43: invokeinterface #148,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+      48: ifne          159
+      51: new           #151                // class net/minecraft/server/packs/PackLocationInfo
+      54: dup
+      55: aload_3
+      56: invokevirtual #141                // Method net/minecraft/util/Tuple.getB:()Ljava/lang/Object;
+      59: checkcast     #86                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+      62: invokevirtual #153                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.packId:()Ljava/lang/String;
+      65: aload_3
+      66: invokevirtual #156                // Method net/minecraft/util/Tuple.getA:()Ljava/lang/Object;
+      69: checkcast     #119                // class net/minecraft/network/chat/Component
+      72: new           #159                // class net/fabricmc/fabric/impl/resource/loader/BuiltinModResourcePackSource
+      75: dup
+      76: aload         4
+      78: invokevirtual #161                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.getFabricModMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+      81: invokeinterface #165,  1          // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getName:()Ljava/lang/String;
+      86: invokespecial #170                // Method net/fabricmc/fabric/impl/resource/loader/BuiltinModResourcePackSource."<init>":(Ljava/lang/String;)V
+      89: aload_3
+      90: invokevirtual #141                // Method net/minecraft/util/Tuple.getB:()Ljava/lang/Object;
+      93: checkcast     #86                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+      96: invokevirtual #173                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.knownPackInfo:()Ljava/util/Optional;
+      99: invokespecial #177                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+     102: astore        5
+     104: new           #180                // class net/minecraft/server/packs/PackSelectionConfig
+     107: dup
+     108: aload         4
+     110: invokevirtual #182                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.getActivationType:()Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;
+     113: getstatic     #186                // Field net/fabricmc/fabric/api/resource/ResourcePackActivationType.ALWAYS_ENABLED:Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;
+     116: if_acmpne     123
+     119: iconst_1
+     120: goto          124
+     123: iconst_0
+     124: getstatic     #192                // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+     127: iconst_0
+     128: invokespecial #198                // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+     131: astore        6
+     133: aload         5
+     135: new           #201                // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$1
+     138: dup
+     139: aload_3
+     140: invokespecial #203                // Method net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$1."<init>":(Lnet/minecraft/util/Tuple;)V
+     143: aload_0
+     144: aload         6
+     146: invokestatic  #206                // Method net/minecraft/server/packs/repository/Pack.readMetaAndCreate:(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/PackType;Lnet/minecraft/server/packs/PackSelectionConfig;)Lnet/minecraft/server/packs/repository/Pack;
+     149: astore        7
+     151: aload_1
+     152: aload         7
+     154: invokeinterface #212,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+     159: goto          9
+     162: return
+
+  public static java.util.List<net.minecraft.server.packs.resources.PreparableReloadListener> sort(net.minecraft.server.packs.PackType, java.util.List<net.minecraft.server.packs.resources.PreparableReloadListener>);
+    Code:
+       0: aload_0
+       1: getstatic     #91                 // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       4: if_acmpeq     16
+       7: aload_0
+       8: getstatic     #80                 // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      11: if_acmpeq     16
+      14: aload_1
+      15: areturn
+      16: aload_0
+      17: invokestatic  #218                // Method get:(Lnet/minecraft/server/packs/PackType;)Lnet/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl;
+      20: astore_2
+      21: aload_2
+      22: ifnull        44
+      25: new           #222                // class java/util/ArrayList
+      28: dup
+      29: aload_1
+      30: invokespecial #224                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      33: astore_3
+      34: aload_2
+      35: aload_3
+      36: invokevirtual #227                // Method sort:(Ljava/util/List;)V
+      39: aload_3
+      40: invokestatic  #231                // Method java/util/Collections.unmodifiableList:(Ljava/util/List;)Ljava/util/List;
+      43: areturn
+      44: aload_1
+      45: areturn
+
+  protected void sort(java.util.List<net.minecraft.server.packs.resources.PreparableReloadListener>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #22                 // Field addedListeners:Ljava/util/Set;
+       5: invokeinterface #237,  2          // InterfaceMethod java/util/List.removeAll:(Ljava/util/Collection;)Z
+      10: pop
+      11: aload_0
+      12: aload_1
+      13: invokevirtual #241                // Method getWrapperLookup:(Ljava/util/List;)Lnet/minecraft/core/HolderLookup$Provider;
+      16: astore_2
+      17: invokestatic  #245                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      20: astore_3
+      21: aload_0
+      22: getfield      #19                 // Field listenerFactories:Ljava/util/Set;
+      25: invokeinterface #128,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      30: astore        4
+      32: aload         4
+      34: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      39: ifeq          72
+      42: aload         4
+      44: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      49: checkcast     #251                // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory
+      52: astore        5
+      54: aload_3
+      55: aload         5
+      57: aload_2
+      58: invokeinterface #253,  2          // InterfaceMethod net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory.get:(Lnet/minecraft/core/HolderLookup$Provider;)Lnet/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener;
+      63: invokeinterface #256,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      68: pop
+      69: goto          32
+      72: aload_0
+      73: getfield      #22                 // Field addedListeners:Ljava/util/Set;
+      76: invokeinterface #257,  1          // InterfaceMethod java/util/Set.clear:()V
+      81: aload_0
+      82: getfield      #22                 // Field addedListeners:Ljava/util/Set;
+      85: aload_3
+      86: invokeinterface #260,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+      91: pop
+      92: new           #7                  // class java/util/HashSet
+      95: dup
+      96: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+      99: astore        4
+     101: aload_1
+     102: invokeinterface #263,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     107: astore        5
+     109: aload         5
+     111: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     116: ifeq          160
+     119: aload         5
+     121: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     126: checkcast     #264                // class net/minecraft/server/packs/resources/PreparableReloadListener
+     129: astore        6
+     131: aload         6
+     133: instanceof    #266                // class net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener
+     136: ifeq          157
+     139: aload         4
+     141: aload         6
+     143: checkcast     #266                // class net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener
+     146: invokeinterface #268,  1          // InterfaceMethod net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener.getFabricId:()Lnet/minecraft/resources/ResourceLocation;
+     151: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     156: pop
+     157: goto          109
+     160: iconst_m1
+     161: istore        5
+     163: aload_1
+     164: invokeinterface #272,  1          // InterfaceMethod java/util/List.size:()I
+     169: iload         5
+     171: if_icmpeq     266
+     174: aload_1
+     175: invokeinterface #272,  1          // InterfaceMethod java/util/List.size:()I
+     180: istore        5
+     182: aload_3
+     183: invokeinterface #263,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     188: astore        6
+     190: aload         6
+     192: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     197: ifeq          263
+     200: aload         6
+     202: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     207: checkcast     #266                // class net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener
+     210: astore        7
+     212: aload         4
+     214: aload         7
+     216: invokeinterface #276,  1          // InterfaceMethod net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener.getFabricDependencies:()Ljava/util/Collection;
+     221: invokeinterface #280,  2          // InterfaceMethod java/util/Set.containsAll:(Ljava/util/Collection;)Z
+     226: ifeq          260
+     229: aload         4
+     231: aload         7
+     233: invokeinterface #268,  1          // InterfaceMethod net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener.getFabricId:()Lnet/minecraft/resources/ResourceLocation;
+     238: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     243: pop
+     244: aload_1
+     245: aload         7
+     247: invokeinterface #256,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     252: pop
+     253: aload         6
+     255: invokeinterface #283,  1          // InterfaceMethod java/util/Iterator.remove:()V
+     260: goto          190
+     263: goto          163
+     266: aload_3
+     267: invokeinterface #263,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     272: astore        6
+     274: aload         6
+     276: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     281: ifeq          322
+     284: aload         6
+     286: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     291: checkcast     #266                // class net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener
+     294: astore        7
+     296: getstatic     #286                // Field LOGGER:Lorg/slf4j/Logger;
+     299: aload         7
+     301: invokeinterface #268,  1          // InterfaceMethod net/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener.getFabricId:()Lnet/minecraft/resources/ResourceLocation;
+     306: invokestatic  #290                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     309: invokedynamic #294,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     314: invokeinterface #297,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+     319: goto          274
+     322: return
+
+  private net.minecraft.core.HolderLookup$Provider getWrapperLookup(java.util.List<net.minecraft.server.packs.resources.PreparableReloadListener>);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field type:Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #80                 // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     12
+      10: aconst_null
+      11: areturn
+      12: aload_1
+      13: invokeinterface #263,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      18: astore_2
+      19: aload_2
+      20: invokeinterface #132,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          60
+      28: aload_2
+      29: invokeinterface #138,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #264                // class net/minecraft/server/packs/resources/PreparableReloadListener
+      37: astore_3
+      38: aload_3
+      39: instanceof    #302                // class net/minecraft/world/item/crafting/RecipeManager
+      42: ifeq          57
+      45: aload_3
+      46: checkcast     #302                // class net/minecraft/world/item/crafting/RecipeManager
+      49: astore        4
+      51: aload         4
+      53: getfield      #304                // Field net/minecraft/world/item/crafting/RecipeManager.registries:Lnet/minecraft/core/HolderLookup$Provider;
+      56: areturn
+      57: goto          19
+      60: new           #308                // class java/lang/IllegalStateException
+      63: dup
+      64: ldc_w         #310                // String No RecipeManager found in listeners!
+      67: invokespecial #312                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      70: athrow
+
+  public void registerReloadListener(net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener);
+    Code:
+       0: aload_0
+       1: new           #313                // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$SimpleResourceReloaderFactory
+       4: dup
+       5: aload_1
+       6: invokespecial #315                // Method net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$SimpleResourceReloaderFactory."<init>":(Lnet/fabricmc/fabric/api/resource/IdentifiableResourceReloadListener;)V
+       9: invokevirtual #318                // Method registerReloadListener:(Lnet/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory;)V
+      12: return
+
+  public void registerReloadListener(net.minecraft.resources.ResourceLocation, java.util.function.Function<net.minecraft.core.HolderLookup$Provider, net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener>);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field type:Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #80                 // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     21
+      10: new           #322                // class java/lang/IllegalArgumentException
+      13: dup
+      14: ldc_w         #324                // String Cannot register a registry listener for the client resource type!
+      17: invokespecial #326                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      20: athrow
+      21: aload_0
+      22: new           #327                // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$RegistryResourceReloaderFactory
+      25: dup
+      26: aload_1
+      27: aload_2
+      28: invokespecial #329                // Method net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$RegistryResourceReloaderFactory."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Function;)V
+      31: invokevirtual #318                // Method registerReloadListener:(Lnet/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory;)V
+      34: return
+
+  private void registerReloadListener(net.fabricmc.fabric.impl.resource.loader.ResourceManagerHelperImpl$ListenerFactory);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field addedListenerIds:Ljava/util/Set;
+       4: aload_1
+       5: invokeinterface #332,  1          // InterfaceMethod net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory.id:()Lnet/minecraft/resources/ResourceLocation;
+      10: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      15: ifne          41
+      18: getstatic     #286                // Field LOGGER:Lorg/slf4j/Logger;
+      21: aload_1
+      22: invokeinterface #332,  1          // InterfaceMethod net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory.id:()Lnet/minecraft/resources/ResourceLocation;
+      27: invokestatic  #290                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      30: invokedynamic #335,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      35: invokeinterface #297,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      40: return
+      41: aload_0
+      42: getfield      #19                 // Field listenerFactories:Ljava/util/Set;
+      45: aload_1
+      46: invokeinterface #102,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      51: ifne          76
+      54: new           #336                // class java/lang/RuntimeException
+      57: dup
+      58: aload_1
+      59: invokeinterface #332,  1          // InterfaceMethod net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl$ListenerFactory.id:()Lnet/minecraft/resources/ResourceLocation;
+      64: invokestatic  #290                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      67: invokedynamic #338,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      72: invokespecial #339                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      75: athrow
+      76: return
+
+  static {};
+    Code:
+       0: new           #340                // class java/util/HashMap
+       3: dup
+       4: invokespecial #342                // Method java/util/HashMap."<init>":()V
+       7: putstatic     #29                 // Field registryMap:Ljava/util/Map;
+      10: new           #7                  // class java/util/HashSet
+      13: dup
+      14: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+      17: putstatic     #94                 // Field builtinResourcePacks:Ljava/util/Set;
+      20: ldc           #11                 // class net/fabricmc/fabric/impl/resource/loader/ResourceManagerHelperImpl
+      22: invokestatic  #343                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+      25: putstatic     #286                // Field LOGGER:Lorg/slf4j/Logger;
+      28: return
+}
