@@ -124,18 +124,29 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     )
     placement = cast("list[dict[str, str]]", json.loads(raw))
     assert len(placement) == len({row["class"] for row in placement}) == 3
+    entry_directory = Path("evidence/item-8/sources/supplementaries-common-entries")
+    raw = (entry_directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "7d0fe813b6039a677168e347e9c9d73c4af2aae8d9b2728cab6e9b9783ac2e74"
+    )
+    entries = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(entries) == len({row["class"] for row in entries}) == 7
     with ZipFile(source.path) as archive:
         mixins = cast(
             "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
         )
         assert mixins["package"] == "net.mehvahdjukaar.supplementaries.mixins"
-        assert {"MineshaftCorridorMixin", "MineshaftPiecesMixin"} <= set(
+        assert {
+            "MineshaftCorridorMixin", "MineshaftPiecesMixin",
+            "StrongholdCrossingSconceMixin", "StrongholdRoomSconceMixin",
+        } <= set(
             cast("list[str]", mixins["mixins"])
         )
         for capture_directory, rows in (
             (directory, identities),
             (callback_directory, callback),
             (placement_directory, placement),
+            (entry_directory, entries),
         ):
             for row in rows:
                 assert row["archive"] == source.name
@@ -151,3 +162,4 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     assert config["redstone"]["pulley_block"] == {"enabled": True, "mineshaft_elevator": 0.035}
     assert config["redstone"]["turn_table"]["enabled"] is True
     assert config["functional"]["rope"]["enabled"] is True
+    assert config["building"]["sconce"]["enabled"] is True

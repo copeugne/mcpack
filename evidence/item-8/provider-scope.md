@@ -704,6 +704,38 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Stronghold component roles are resolved by source 1d28c70 (extractor b0508d1).
+The seven-class common-entry manifest is
+7d0fe813b6039a677168e347e9c9d73c4af2aae8d9b2728cab6e9b9783ac2e74;
+independent r1 matches, and the existing focused test binds original classes
+and disassemblies. StrongholdCrossingSconceMixin injects at postProcess TAIL
+on vanilla StrongholdPieces.FiveCrossing, placing one wall sconce inside that
+piece. StrongholdRoomSconceMixin targets RoomCrossing and places four sconces
+when its room type is zero. Both check SCONCE_ENABLED. The frozen building.sconce
+enabled flag is true and bound by the test. These are components of existing
+vanilla stronghold pieces, not independent families. Their presence does not
+prove those vanilla pieces generate under the retained stronghold replacements.
+
+Placement/processor source a74ae7b (extractor e1e2005) resolves those roles:
+the galleon placement queries exclusion zones against existing structure sets;
+the processor substitutes disabled blocks inside supplied template block info.
+Neither introduces another family. Its three-class manifest
+aaae4d5157a42bdff7bc12d048945a324e3c0c45d8e0bf06edf46a06a7264195 is
+independently reproduced and bound by the same focused test.
+
+The common-entry capture also retains SupplementariesForge, Supplementaries,
+ServerEventsForge, ServerEvents and MixinPlugin. The loader calls commonInit and
+server-event registration; commonInit reaches the already inspected ModWorldgen
+and ModServerDynamicResources. MixinPlugin adds no methods beyond construction
+and inherits Moonlight SimpleMixinPlugin. Preserve that shared dependency for
+the remaining entry coverage rather than treating the plugin name as proof.
+ModSetup and other common delegates, remaining declared mixins, bundled code and
+full payload reconciliation still prevent whole-provider closure. Do not repeat
+the resolved generation implementations or stronghold/mineshaft component roles.
+Both focused cases pass (0.79s); scoped Ruff and Basedpyright pass. Census remains
+78 resolved, 58 open. This checkpoint supersedes the older open processor and
+placement instructions below, not the remaining provider gate.
+
 Custom-generation role follow-up: BarnaclesMultifaceGrowthFeature uses the
 configured multiface block's placement and spread operations; BasaltAshFeature
 scans a matching surface and writes the configured top and optional lower block.
