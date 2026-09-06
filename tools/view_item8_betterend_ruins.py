@@ -62,11 +62,13 @@ def main() -> None:
     _ = selection.add_argument("--soaring", action="store_true")
     _ = selection.add_argument("--nether", action="store_true")
     _ = selection.add_argument("--nether-houses", action="store_true")
+    _ = selection.add_argument("--nether-arenas", action="store_true")
     args = parser.parse_args()
     output = cast("Path", args.output)
     soaring = cast("bool", args.soaring)
     nether_houses = cast("bool", args.nether_houses)
-    nether = cast("bool", args.nether) or nether_houses
+    nether_arenas = cast("bool", args.nether_arenas)
+    nether = cast("bool", args.nether) or nether_houses or nether_arenas
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     if nether:
         archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar"
@@ -107,6 +109,14 @@ def main() -> None:
                 "house_comparison": ["houses/medium_house_1", "houses/medium_house_2",
                                      "houses/large_house_1", "crimson_forge"],
                 "warped_houses": [f"houses/warped_house_{i}" for i in range(1, 7)],
+            }
+        if nether_arenas:
+            sheets = {
+                "small_arena": [f"small_arena/{n}" for n in ("middle", "front", "back", "left")],
+                "large_arena": [f"large_arena/{n}" for n in ("r1", "r2", "r3", "l1", "l2", "l3")],
+                "dragon_upper": [f"dragon_arena/{n}" for n in
+                                 ("head", "c1", "c2", "l1", "l2", "r1", "r2")],
+                "dragon_lower": [f"dragon_arena/lower_{i}" for i in range(1, 14)],
             }
         for biome, names in sheets.items():
             count = len(names)
