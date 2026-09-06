@@ -1,0 +1,117 @@
+# Railways remaining declared common hooks
+
+Extractor: c529a0d327f7ea09ebd3230c641f202a6196351a.
+All 105 classes reproduce byte-for-byte in the independent capture.
+This isolated generated increment retains full bytecode and injection targets for
+the declared common hooks not in the prior provider capture. Its size comes from
+unabridged javap output; no recursive gameplay helper capture is included.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive railways-0.2.1+neoforge-mc1.21.1.jar \
+  --class-name com/railwayteam/railways/mixin/AccessorAbstractContraptionEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorBlockEntityType.class \
+  --class-name com/railwayteam/railways/mixin/AccessorCarriage.class \
+  --class-name com/railwayteam/railways/mixin/AccessorCarriageBogey.class \
+  --class-name com/railwayteam/railways/mixin/AccessorCarriageContraptionEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorContraption.class \
+  --class-name com/railwayteam/railways/mixin/AccessorCreativeModeTabs.class \
+  --class-name 'com/railwayteam/railways/mixin/AccessorIngredient$TagValue.class' \
+  --class-name com/railwayteam/railways/mixin/AccessorIngredient.class \
+  --class-name com/railwayteam/railways/mixin/AccessorNavigation.class \
+  --class-name com/railwayteam/railways/mixin/AccessorOrientedContraptionEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorPortableStorageInterfaceBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorScheduleRuntime.class \
+  --class-name com/railwayteam/railways/mixin/AccessorToolboxBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/AccessorToolboxInventory.class \
+  --class-name com/railwayteam/railways/mixin/AccessorTrackMaterialFactory.class \
+  --class-name com/railwayteam/railways/mixin/AccessorTrackTargetingBehavior.class \
+  --class-name 'com/railwayteam/railways/mixin/AccessorTrain$AccessorPenalties.class' \
+  --class-name com/railwayteam/railways/mixin/AccessorTrain.class \
+  --class-name com/railwayteam/railways/mixin/ChunkSerializerMixin.class \
+  --class-name com/railwayteam/railways/mixin/MixinAbstractBogeyBlock.class \
+  --class-name com/railwayteam/railways/mixin/MixinAbstractContainerMenu.class \
+  --class-name com/railwayteam/railways/mixin/MixinAbstractMinecart.class \
+  --class-name com/railwayteam/railways/mixin/MixinAbstractMinecart_Type.class \
+  --class-name com/railwayteam/railways/mixin/MixinAllBlocks.class \
+  --class-name com/railwayteam/railways/mixin/MixinBezierConnection.class \
+  --class-name com/railwayteam/railways/mixin/MixinBlockBehaviour.class \
+  --class-name com/railwayteam/railways/mixin/MixinCarriage.class \
+  --class-name com/railwayteam/railways/mixin/MixinCarriageBogey.class \
+  --class-name com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinConductorBlockInteractionBehavior.class \
+  --class-name com/railwayteam/railways/mixin/MixinConfigHelper.class \
+  --class-name com/railwayteam/railways/mixin/MixinContraption.class \
+  --class-name com/railwayteam/railways/mixin/MixinDataFixTypes.class \
+  --class-name com/railwayteam/railways/mixin/MixinDeployerHandler.class \
+  --class-name com/railwayteam/railways/mixin/MixinDoorBlock.class \
+  --class-name com/railwayteam/railways/mixin/MixinDoorMovingInteraction.class \
+  --class-name com/railwayteam/railways/mixin/MixinEdgeData.class \
+  --class-name com/railwayteam/railways/mixin/MixinExplosionDamageCalculator.class \
+  --class-name com/railwayteam/railways/mixin/MixinFlywheelBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinGlobalStation.class \
+  --class-name com/railwayteam/railways/mixin/MixinIOWorker.class \
+  --class-name com/railwayteam/railways/mixin/MixinItemCombinerMenu.class \
+  --class-name com/railwayteam/railways/mixin/MixinLargeFireball.class \
+  --class-name com/railwayteam/railways/mixin/MixinMountedStorageManager.class \
+  --class-name com/railwayteam/railways/mixin/MixinNavigation.class \
+  --class-name com/railwayteam/railways/mixin/MixinNixieTubeBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinNixieTubeDisplaySource.class \
+  --class-name com/railwayteam/railways/mixin/MixinNixieTubeDisplayTarget.class \
+  --class-name com/railwayteam/railways/mixin/MixinPlayer.class \
+  --class-name com/railwayteam/railways/mixin/MixinRailwaySavedData.class \
+  --class-name com/railwayteam/railways/mixin/MixinRollerBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinRollerMovementBehaviour.class \
+  --class-name com/railwayteam/railways/mixin/MixinScheduleItem.class \
+  --class-name com/railwayteam/railways/mixin/MixinScheduleRuntime.class \
+  --class-name com/railwayteam/railways/mixin/MixinSchematicItem.class \
+  --class-name com/railwayteam/railways/mixin/MixinSeatMovementBehaviour.class \
+  --class-name com/railwayteam/railways/mixin/MixinSignalBoundary.class \
+  --class-name com/railwayteam/railways/mixin/MixinSignalPropagator.class \
+  --class-name com/railwayteam/railways/mixin/MixinSlidingDoorBlock.class \
+  --class-name com/railwayteam/railways/mixin/MixinSlidingDoorBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinSlidingDoorMovementBehaviour.class \
+  --class-name com/railwayteam/railways/mixin/MixinStandardBogeyBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinStationBlock.class \
+  --class-name com/railwayteam/railways/mixin/MixinStationBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinStationEditPacket.class \
+  --class-name com/railwayteam/railways/mixin/MixinToolboxHandler.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackBlock.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackBlockEntity.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackBlockItem.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackEdge.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackEdgePoint.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackMaterial.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackObserver.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackPlacement.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackTargetingBehaviour.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrackTargetingBlockItem.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrain.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrainRelocator.class \
+  --class-name com/railwayteam/railways/mixin/MixinTrainStatus.class \
+  --class-name com/railwayteam/railways/mixin/MixinTravellingPoint.class \
+  --class-name com/railwayteam/railways/mixin/MixinWalkNodeEvaluator.class \
+  --class-name com/railwayteam/railways/mixin/MixinWrenchItem.class \
+  --class-name com/railwayteam/railways/mixin/NbtUtilsMixin.class \
+  --class-name com/railwayteam/railways/mixin/PlayerEntityMixin.class \
+  --class-name com/railwayteam/railways/mixin/client/AccessorAbstractVisual.class \
+  --class-name com/railwayteam/railways/mixin/compat/voicechat/EntityAudioChannelImplMixin.class \
+  --class-name com/railwayteam/railways/mixin/compat/voicechat/ServerMixin.class \
+  --class-name com/railwayteam/railways/mixin/compat/voicechat/ServerWorldUtilsMixin.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/CameraChunkTrackingMixin.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/MixinEntity.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/PlayerListMixin.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/ServerPlayerAccessor.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/ServerPlayerMixin.class \
+  --class-name com/railwayteam/railways/mixin/conductor_possession/TrackedEntityMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/AllKeysMixin.class \
+  --class-name 'com/railwayteam/railways/neoforge/mixin/ChunkMapAccessor$TrackedEntityAccessor.class' \
+  --class-name com/railwayteam/railways/neoforge/mixin/ChunkMapAccessor.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/ContainerLevelAccessMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/FluidNetworkMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/RollingModeMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/ServerGamePacketListenerImplMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/TrainMixin.class \
+  --class-name com/railwayteam/railways/neoforge/mixin/self/BoilerBlockMixin.class \
+  --output evidence/raw/item8/railways-common-hooks-r1
+```

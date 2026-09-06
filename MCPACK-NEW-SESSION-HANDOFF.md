@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-06
 
+Railways membership is RESOLVED. Source d17d854 completes all 106 declared
+common hooks together with the prior StructureMixin capture. Their roles and
+all packaged resources are accounted for in the final provider disposition.
+Three focused cases pass (0.29s); scoped Ruff/Basedpyright pass. No independent
+family added. Census: 88 resolved, 48 open. Remaining packaged-generation
+providers: Create, Forgified Fabric API and Regions Unexplored. Reuse RU's
+existing checkpoint. The 24 code-only and 21 unmatched rows remain. Next:
+finish the remaining membership checks, then canonical grouping before detailed
+attributes. No runtime or capture process is live. Older Railways checkpoints
+below preserve the now-resolved steps and must not restart them.
+
+Railways is current and remains OPEN. Delivered source eaa7a6b and 0e7edb0
+covers fifteen classes, including all eight annotated entries, both mixin plugins,
+common setup/events, StructureMixin and player handcar assembly. The focused
+provider checkpoint accounts for the full payload, three optional crafting
+recipes and the sole legacy handcar template. Two tests pass (0.22s); scoped
+Ruff/Basedpyright pass. No independent family arises from the handcar component.
+Next: reconcile the other 105 declared common mixin roles, finish actual
+entry/delegate and resource-pack/META-INF boundaries, then close the provider.
+Do not audit general train gameplay or repeat the fifteen captures. Census stays
+87 resolved, 49 open. No runtime or capture process is live.
+
 Lithostitched membership is RESOLVED. The full archive, all declared common/server
 hooks, 26 template lists, twenty overlays and remaining resource roles are bound
 by test_lithostitched_provider_scope.py. Three cases pass (0.31s); scoped Ruff and

@@ -1,0 +1,2001 @@
+Classfile railways-0.2.1+neoforge-mc1.21.1.jar!/com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.class
+  Last modified Jun 1, 2026; size 20752 bytes
+  SHA-256 checksum 732daf4a710943900fb8f924d4eb2e04dc59f449fbf68c1d52f1083b479ed10f
+  Compiled from "MixinCarriageContraptionEntity.java"
+public abstract class com.railwayteam.railways.mixin.MixinCarriageContraptionEntity extends com.simibubi.create.content.contraptions.OrientedContraptionEntity implements com.railwayteam.railways.mixin_interfaces.IDistanceTravelled,com.railwayteam.railways.mixin_interfaces.IUpdateCount
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity
+  super_class: #2                         // com/simibubi/create/content/contraptions/OrientedContraptionEntity
+  interfaces: 2, fields: 5, methods: 17, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // com/simibubi/create/content/contraptions/OrientedContraptionEntity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #2 = Class              #4            // com/simibubi/create/content/contraptions/OrientedContraptionEntity
+    #3 = NameAndType        #5:#6         // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #4 = Utf8               com/simibubi/create/content/contraptions/OrientedContraptionEntity
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    #7 = Fieldref           #8.#9         // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.railways$fakePlayer:Z
+    #8 = Class              #10           // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity
+    #9 = NameAndType        #11:#12       // railways$fakePlayer:Z
+   #10 = Utf8               com/railwayteam/railways/mixin/MixinCarriageContraptionEntity
+   #11 = Utf8               railways$fakePlayer
+   #12 = Utf8               Z
+   #13 = Fieldref           #8.#14        // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.railways$updateCount:I
+   #14 = NameAndType        #15:#16       // railways$updateCount:I
+   #15 = Utf8               railways$updateCount
+   #16 = Utf8               I
+   #17 = Fieldref           #8.#18        // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.railways$switchMessage:Z
+   #18 = NameAndType        #19:#12       // railways$switchMessage:Z
+   #19 = Utf8               railways$switchMessage
+   #20 = InterfaceMethodref #21.#22       // com/railwayteam/railways/mixin_interfaces/IUpdateCount.railways$getUpdateCount:()I
+   #21 = Class              #23           // com/railwayteam/railways/mixin_interfaces/IUpdateCount
+   #22 = NameAndType        #24:#25       // railways$getUpdateCount:()I
+   #23 = Utf8               com/railwayteam/railways/mixin_interfaces/IUpdateCount
+   #24 = Utf8               railways$getUpdateCount
+   #25 = Utf8               ()I
+   #26 = Methodref          #27.#28       // net/minecraft/world/entity/player/Player.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+   #27 = Class              #29           // net/minecraft/world/entity/player/Player
+   #28 = NameAndType        #30:#31       // getGameProfile:()Lcom/mojang/authlib/GameProfile;
+   #29 = Utf8               net/minecraft/world/entity/player/Player
+   #30 = Utf8               getGameProfile
+   #31 = Utf8               ()Lcom/mojang/authlib/GameProfile;
+   #32 = Fieldref           #33.#34       // com/railwayteam/railways/content/conductor/ConductorEntity.FAKE_PLAYER_PROFILE:Lcom/mojang/authlib/GameProfile;
+   #33 = Class              #35           // com/railwayteam/railways/content/conductor/ConductorEntity
+   #34 = NameAndType        #36:#37       // FAKE_PLAYER_PROFILE:Lcom/mojang/authlib/GameProfile;
+   #35 = Utf8               com/railwayteam/railways/content/conductor/ConductorEntity
+   #36 = Utf8               FAKE_PLAYER_PROFILE
+   #37 = Utf8               Lcom/mojang/authlib/GameProfile;
+   #38 = Class              #39           // java/lang/Object
+   #39 = Utf8               java/lang/Object
+   #40 = Methodref          #41.#42       // java/lang/Double.valueOf:(D)Ljava/lang/Double;
+   #41 = Class              #43           // java/lang/Double
+   #42 = NameAndType        #44:#45       // valueOf:(D)Ljava/lang/Double;
+   #43 = Utf8               java/lang/Double
+   #44 = Utf8               valueOf
+   #45 = Utf8               (D)Ljava/lang/Double;
+   #46 = InterfaceMethodref #47.#48       // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #47 = Class              #49           // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #48 = NameAndType        #50:#51       // call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #49 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #50 = Utf8               call
+   #51 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+   #52 = Class              #53           // java/lang/Boolean
+   #53 = Utf8               java/lang/Boolean
+   #54 = Methodref          #52.#55       // java/lang/Boolean.booleanValue:()Z
+   #55 = NameAndType        #56:#57       // booleanValue:()Z
+   #56 = Utf8               booleanValue
+   #57 = Utf8               ()Z
+   #58 = Class              #59           // com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer
+   #59 = Utf8               com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer
+   #60 = InterfaceMethodref #58.#61       // com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer.getConductor:()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #61 = NameAndType        #62:#63       // getConductor:()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #62 = Utf8               getConductor
+   #63 = Utf8               ()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+   #64 = Methodref          #33.#65       // com/railwayteam/railways/content/conductor/ConductorEntity.getForwardSignalStrength:()I
+   #65 = NameAndType        #66:#25       // getForwardSignalStrength:()I
+   #66 = Utf8               getForwardSignalStrength
+   #67 = Double             15.0d
+   #69 = Methodref          #41.#70       // java/lang/Double.doubleValue:()D
+   #70 = NameAndType        #71:#72       // doubleValue:()D
+   #71 = Utf8               doubleValue
+   #72 = Utf8               ()D
+   #73 = Fieldref           #8.#74        // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+   #74 = NameAndType        #75:#76       // carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+   #75 = Utf8               carriage
+   #76 = Utf8               Lcom/simibubi/create/content/trains/entity/Carriage;
+   #77 = Fieldref           #78.#79       // com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+   #78 = Class              #80           // com/simibubi/create/content/trains/entity/Carriage
+   #79 = NameAndType        #81:#82       // train:Lcom/simibubi/create/content/trains/entity/Train;
+   #80 = Utf8               com/simibubi/create/content/trains/entity/Carriage
+   #81 = Utf8               train
+   #82 = Utf8               Lcom/simibubi/create/content/trains/entity/Train;
+   #83 = Fieldref           #84.#85       // com/simibubi/create/content/trains/entity/Train.navigation:Lcom/simibubi/create/content/trains/entity/Navigation;
+   #84 = Class              #86           // com/simibubi/create/content/trains/entity/Train
+   #85 = NameAndType        #87:#88       // navigation:Lcom/simibubi/create/content/trains/entity/Navigation;
+   #86 = Utf8               com/simibubi/create/content/trains/entity/Train
+   #87 = Utf8               navigation
+   #88 = Utf8               Lcom/simibubi/create/content/trains/entity/Navigation;
+   #89 = Fieldref           #8.#90        // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.contraption:Lcom/simibubi/create/content/contraptions/Contraption;
+   #90 = NameAndType        #91:#92       // contraption:Lcom/simibubi/create/content/contraptions/Contraption;
+   #91 = Utf8               contraption
+   #92 = Utf8               Lcom/simibubi/create/content/contraptions/Contraption;
+   #93 = Methodref          #94.#95       // com/simibubi/create/content/contraptions/Contraption.getBlocks:()Ljava/util/Map;
+   #94 = Class              #96           // com/simibubi/create/content/contraptions/Contraption
+   #95 = NameAndType        #97:#98       // getBlocks:()Ljava/util/Map;
+   #96 = Utf8               com/simibubi/create/content/contraptions/Contraption
+   #97 = Utf8               getBlocks
+   #98 = Utf8               ()Ljava/util/Map;
+   #99 = InterfaceMethodref #100.#101     // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #100 = Class              #102          // java/util/Map
+  #101 = NameAndType        #103:#104     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #102 = Utf8               java/util/Map
+  #103 = Utf8               get
+  #104 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #105 = Class              #106          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+  #106 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+  #107 = Methodref          #8.#108       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.getInitialOrientation:()Lnet/minecraft/core/Direction;
+  #108 = NameAndType        #109:#110     // getInitialOrientation:()Lnet/minecraft/core/Direction;
+  #109 = Utf8               getInitialOrientation
+  #110 = Utf8               ()Lnet/minecraft/core/Direction;
+  #111 = Methodref          #112.#113     // net/minecraft/core/Direction.getCounterClockWise:()Lnet/minecraft/core/Direction;
+  #112 = Class              #114          // net/minecraft/core/Direction
+  #113 = NameAndType        #115:#110     // getCounterClockWise:()Lnet/minecraft/core/Direction;
+  #114 = Utf8               net/minecraft/core/Direction
+  #115 = Utf8               getCounterClockWise
+  #116 = Methodref          #105.#117     // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+  #117 = NameAndType        #118:#119     // state:()Lnet/minecraft/world/level/block/state/BlockState;
+  #118 = Utf8               state
+  #119 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #120 = Fieldref           #121.#122     // com/simibubi/create/content/contraptions/actors/trainControls/ControlsBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #121 = Class              #123          // com/simibubi/create/content/contraptions/actors/trainControls/ControlsBlock
+  #122 = NameAndType        #124:#125     // FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #123 = Utf8               com/simibubi/create/content/contraptions/actors/trainControls/ControlsBlock
+  #124 = Utf8               FACING
+  #125 = Utf8               Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+  #126 = Methodref          #127.#128     // net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #127 = Class              #129          // net/minecraft/world/level/block/state/BlockState
+  #128 = NameAndType        #130:#131     // hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #129 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #130 = Utf8               hasProperty
+  #131 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Z
+  #132 = Methodref          #127.#133     // net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #133 = NameAndType        #134:#135     // getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #134 = Utf8               getValue
+  #135 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+  #136 = Methodref          #112.#137     // net/minecraft/core/Direction.equals:(Ljava/lang/Object;)Z
+  #137 = NameAndType        #138:#139     // equals:(Ljava/lang/Object;)Z
+  #138 = Utf8               equals
+  #139 = Utf8               (Ljava/lang/Object;)Z
+  #140 = Methodref          #141.#142     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #141 = Class              #143          // java/lang/Integer
+  #142 = NameAndType        #44:#144      // valueOf:(I)Ljava/lang/Integer;
+  #143 = Utf8               java/lang/Integer
+  #144 = Utf8               (I)Ljava/lang/Integer;
+  #145 = InterfaceMethodref #146.#147     // java/util/Collection.contains:(Ljava/lang/Object;)Z
+  #146 = Class              #148          // java/util/Collection
+  #147 = NameAndType        #149:#139     // contains:(Ljava/lang/Object;)Z
+  #148 = Utf8               java/util/Collection
+  #149 = Utf8               contains
+  #150 = Fieldref           #84.#151      // com/simibubi/create/content/trains/entity/Train.speed:D
+  #151 = NameAndType        #152:#153     // speed:D
+  #152 = Utf8               speed
+  #153 = Utf8               D
+  #154 = Fieldref           #155.#156     // com/railwayteam/railways/util/MixinVariables.temporarilySkipSwitches:Z
+  #155 = Class              #157          // com/railwayteam/railways/util/MixinVariables
+  #156 = NameAndType        #158:#12      // temporarilySkipSwitches:Z
+  #157 = Utf8               com/railwayteam/railways/util/MixinVariables
+  #158 = Utf8               temporarilySkipSwitches
+  #159 = Fieldref           #84.#160      // com/simibubi/create/content/trains/entity/Train.doubleEnded:Z
+  #160 = NameAndType        #161:#12      // doubleEnded:Z
+  #161 = Utf8               doubleEnded
+  #162 = Class              #163          // com/railwayteam/railways/mixin_interfaces/IGenerallySearchableNavigation
+  #163 = Utf8               com/railwayteam/railways/mixin_interfaces/IGenerallySearchableNavigation
+  #164 = InterfaceMethodref #162.#165     // com/railwayteam/railways/mixin_interfaces/IGenerallySearchableNavigation.railways$findNearestApproachableSwitch:(Z)Lnet/createmod/catnip/data/Pair;
+  #165 = NameAndType        #166:#167     // railways$findNearestApproachableSwitch:(Z)Lnet/createmod/catnip/data/Pair;
+  #166 = Utf8               railways$findNearestApproachableSwitch
+  #167 = Utf8               (Z)Lnet/createmod/catnip/data/Pair;
+  #168 = Methodref          #169.#170     // net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+  #169 = Class              #171          // net/createmod/catnip/data/Pair
+  #170 = NameAndType        #172:#173     // getFirst:()Ljava/lang/Object;
+  #171 = Utf8               net/createmod/catnip/data/Pair
+  #172 = Utf8               getFirst
+  #173 = Utf8               ()Ljava/lang/Object;
+  #174 = Class              #175          // com/railwayteam/railways/content/switches/TrackSwitch
+  #175 = Utf8               com/railwayteam/railways/content/switches/TrackSwitch
+  #176 = Methodref          #169.#177     // net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+  #177 = NameAndType        #178:#173     // getSecond:()Ljava/lang/Object;
+  #178 = Utf8               getSecond
+  #179 = Methodref          #180.#181     // java/util/Optional.empty:()Ljava/util/Optional;
+  #180 = Class              #182          // java/util/Optional
+  #181 = NameAndType        #183:#184     // empty:()Ljava/util/Optional;
+  #182 = Utf8               java/util/Optional
+  #183 = Utf8               empty
+  #184 = Utf8               ()Ljava/util/Optional;
+  #185 = Methodref          #186.#187     // com/railwayteam/railways/config/CRConfigs.server:()Lcom/railwayteam/railways/config/CServer;
+  #186 = Class              #188          // com/railwayteam/railways/config/CRConfigs
+  #187 = NameAndType        #189:#190     // server:()Lcom/railwayteam/railways/config/CServer;
+  #188 = Utf8               com/railwayteam/railways/config/CRConfigs
+  #189 = Utf8               server
+  #190 = Utf8               ()Lcom/railwayteam/railways/config/CServer;
+  #191 = Fieldref           #192.#193     // com/railwayteam/railways/config/CServer.flipDistantSwitches:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #192 = Class              #194          // com/railwayteam/railways/config/CServer
+  #193 = NameAndType        #195:#196     // flipDistantSwitches:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #194 = Utf8               com/railwayteam/railways/config/CServer
+  #195 = Utf8               flipDistantSwitches
+  #196 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #197 = Methodref          #198.#199     // net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+  #198 = Class              #200          // net/createmod/catnip/config/ConfigBase$ConfigBool
+  #199 = NameAndType        #103:#173     // get:()Ljava/lang/Object;
+  #200 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigBool
+  #201 = Methodref          #174.#202     // com/railwayteam/railways/content/switches/TrackSwitch.isAutomatic:()Z
+  #202 = NameAndType        #203:#57      // isAutomatic:()Z
+  #203 = Utf8               isAutomatic
+  #204 = Methodref          #174.#205     // com/railwayteam/railways/content/switches/TrackSwitch.isLocked:()Z
+  #205 = NameAndType        #206:#57      // isLocked:()Z
+  #206 = Utf8               isLocked
+  #207 = Methodref          #208.#209     // com/simibubi/create/content/trains/entity/Navigation.isActive:()Z
+  #208 = Class              #210          // com/simibubi/create/content/trains/entity/Navigation
+  #209 = NameAndType        #211:#57      // isActive:()Z
+  #210 = Utf8               com/simibubi/create/content/trains/entity/Navigation
+  #211 = Utf8               isActive
+  #212 = Fieldref           #84.#213      // com/simibubi/create/content/trains/entity/Train.manualSteer:Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;
+  #213 = NameAndType        #214:#215     // manualSteer:Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;
+  #214 = Utf8               manualSteer
+  #215 = Utf8               Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;
+  #216 = Methodref          #217.#218     // com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState.fromSteerDirection:(Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;Z)Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #217 = Class              #219          // com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState
+  #218 = NameAndType        #220:#221     // fromSteerDirection:(Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;Z)Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #219 = Utf8               com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState
+  #220 = Utf8               fromSteerDirection
+  #221 = Utf8               (Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;Z)Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #222 = Methodref          #174.#223     // com/railwayteam/railways/content/switches/TrackSwitch.trySetSwitchState:(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+  #223 = NameAndType        #224:#225     // trySetSwitchState:(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+  #224 = Utf8               trySetSwitchState
+  #225 = Utf8               (Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+  #226 = Methodref          #227.#228     // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #227 = Class              #229          // java/util/Objects
+  #228 = NameAndType        #230:#104     // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #229 = Utf8               java/util/Objects
+  #230 = Utf8               requireNonNull
+  #231 = InvokeDynamic      #0:#232       // #0:accept:(Lcom/railwayteam/railways/content/switches/TrackSwitch;)Ljava/util/function/Consumer;
+  #232 = NameAndType        #233:#234     // accept:(Lcom/railwayteam/railways/content/switches/TrackSwitch;)Ljava/util/function/Consumer;
+  #233 = Utf8               accept
+  #234 = Utf8               (Lcom/railwayteam/railways/content/switches/TrackSwitch;)Ljava/util/function/Consumer;
+  #235 = Methodref          #180.#236     // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #236 = NameAndType        #237:#238     // ifPresent:(Ljava/util/function/Consumer;)V
+  #237 = Utf8               ifPresent
+  #238 = Utf8               (Ljava/util/function/Consumer;)V
+  #239 = Methodref          #174.#240     // com/railwayteam/railways/content/switches/TrackSwitch.getSwitchState:()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #240 = NameAndType        #241:#242     // getSwitchState:()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #241 = Utf8               getSwitchState
+  #242 = Utf8               ()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #243 = Methodref          #180.#244     // java/util/Optional.isPresent:()Z
+  #244 = NameAndType        #245:#57      // isPresent:()Z
+  #245 = Utf8               isPresent
+  #246 = Methodref          #180.#199     // java/util/Optional.get:()Ljava/lang/Object;
+  #247 = Methodref          #8.#248       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.displayApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitch;Z)V
+  #248 = NameAndType        #249:#250     // displayApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitch;Z)V
+  #249 = Utf8               displayApproachSwitchMessage
+  #250 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitch;Z)V
+  #251 = Methodref          #8.#252       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.cleanUpApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;)V
+  #252 = NameAndType        #253:#254     // cleanUpApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;)V
+  #253 = Utf8               cleanUpApproachSwitchMessage
+  #254 = Utf8               (Lnet/minecraft/world/entity/player/Player;)V
+  #255 = Class              #256          // com/railwayteam/railways/mixin_interfaces/IHandcarTrain
+  #256 = Utf8               com/railwayteam/railways/mixin_interfaces/IHandcarTrain
+  #257 = InterfaceMethodref #255.#258     // com/railwayteam/railways/mixin_interfaces/IHandcarTrain.railways$isHandcar:()Z
+  #258 = NameAndType        #259:#57      // railways$isHandcar:()Z
+  #259 = Utf8               railways$isHandcar
+  #260 = Fieldref           #261.#262     // net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+  #261 = Class              #263          // net/minecraft/world/InteractionHand
+  #262 = NameAndType        #264:#265     // MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+  #263 = Utf8               net/minecraft/world/InteractionHand
+  #264 = Utf8               MAIN_HAND
+  #265 = Utf8               Lnet/minecraft/world/InteractionHand;
+  #266 = Methodref          #27.#267      // net/minecraft/world/entity/player/Player.getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+  #267 = NameAndType        #268:#269     // getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+  #268 = Utf8               getItemInHand
+  #269 = Utf8               (Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+  #270 = Fieldref           #271.#272     // com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #271 = Class              #273          // com/simibubi/create/AllItems
+  #272 = NameAndType        #274:#275     // EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #273 = Utf8               com/simibubi/create/AllItems
+  #274 = Utf8               EXTENDO_GRIP
+  #275 = Utf8               Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #276 = Methodref          #277.#199     // com/tterrag/registrate/util/entry/ItemEntry.get:()Ljava/lang/Object;
+  #277 = Class              #278          // com/tterrag/registrate/util/entry/ItemEntry
+  #278 = Utf8               com/tterrag/registrate/util/entry/ItemEntry
+  #279 = Class              #280          // net/minecraft/world/item/Item
+  #280 = Utf8               net/minecraft/world/item/Item
+  #281 = Methodref          #282.#283     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+  #282 = Class              #284          // net/minecraft/world/item/ItemStack
+  #283 = NameAndType        #285:#286     // is:(Lnet/minecraft/world/item/Item;)Z
+  #284 = Utf8               net/minecraft/world/item/ItemStack
+  #285 = Utf8               is
+  #286 = Utf8               (Lnet/minecraft/world/item/Item;)Z
+  #287 = Fieldref           #192.#288     // com/railwayteam/railways/config/CServer.handcarHungerMultiplier:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+  #288 = NameAndType        #289:#290     // handcarHungerMultiplier:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+  #289 = Utf8               handcarHungerMultiplier
+  #290 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+  #291 = Methodref          #292.#293     // net/createmod/catnip/config/ConfigBase$ConfigFloat.getF:()F
+  #292 = Class              #294          // net/createmod/catnip/config/ConfigBase$ConfigFloat
+  #293 = NameAndType        #295:#296     // getF:()F
+  #294 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigFloat
+  #295 = Utf8               getF
+  #296 = Utf8               ()F
+  #297 = Methodref          #27.#298      // net/minecraft/world/entity/player/Player.causeFoodExhaustion:(F)V
+  #298 = NameAndType        #299:#300     // causeFoodExhaustion:(F)V
+  #299 = Utf8               causeFoodExhaustion
+  #300 = Utf8               (F)V
+  #301 = Methodref          #8.#302       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.sendSwitchInfo:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #302 = NameAndType        #303:#304     // sendSwitchInfo:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #303 = Utf8               sendSwitchInfo
+  #304 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #305 = Class              #306          // net/minecraft/server/level/ServerPlayer
+  #306 = Utf8               net/minecraft/server/level/ServerPlayer
+  #307 = Fieldref           #308.#309     // com/railwayteam/railways/registry/CRPackets.PACKETS:Lcom/railwayteam/railways/multiloader/PacketSet;
+  #308 = Class              #310          // com/railwayteam/railways/registry/CRPackets
+  #309 = NameAndType        #311:#312     // PACKETS:Lcom/railwayteam/railways/multiloader/PacketSet;
+  #310 = Utf8               com/railwayteam/railways/registry/CRPackets
+  #311 = Utf8               PACKETS
+  #312 = Utf8               Lcom/railwayteam/railways/multiloader/PacketSet;
+  #313 = Methodref          #314.#315     // com/railwayteam/railways/util/packet/SwitchDataUpdatePacket.clear:()Lcom/railwayteam/railways/util/packet/SwitchDataUpdatePacket;
+  #314 = Class              #316          // com/railwayteam/railways/util/packet/SwitchDataUpdatePacket
+  #315 = NameAndType        #317:#318     // clear:()Lcom/railwayteam/railways/util/packet/SwitchDataUpdatePacket;
+  #316 = Utf8               com/railwayteam/railways/util/packet/SwitchDataUpdatePacket
+  #317 = Utf8               clear
+  #318 = Utf8               ()Lcom/railwayteam/railways/util/packet/SwitchDataUpdatePacket;
+  #319 = Methodref          #320.#321     // com/railwayteam/railways/multiloader/PacketSet.sendTo:(Lnet/minecraft/server/level/ServerPlayer;Lcom/railwayteam/railways/multiloader/S2CPacket;)V
+  #320 = Class              #322          // com/railwayteam/railways/multiloader/PacketSet
+  #321 = NameAndType        #323:#324     // sendTo:(Lnet/minecraft/server/level/ServerPlayer;Lcom/railwayteam/railways/multiloader/S2CPacket;)V
+  #322 = Utf8               com/railwayteam/railways/multiloader/PacketSet
+  #323 = Utf8               sendTo
+  #324 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lcom/railwayteam/railways/multiloader/S2CPacket;)V
+  #325 = Methodref          #314.#326     // com/railwayteam/railways/util/packet/SwitchDataUpdatePacket."<init>":(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #326 = NameAndType        #5:#327       // "<init>":(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #327 = Utf8               (Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+  #328 = Methodref          #186.#329     // com/railwayteam/railways/config/CRConfigs.client:()Lcom/railwayteam/railways/config/CClient;
+  #329 = NameAndType        #330:#331     // client:()Lcom/railwayteam/railways/config/CClient;
+  #330 = Utf8               client
+  #331 = Utf8               ()Lcom/railwayteam/railways/config/CClient;
+  #332 = Fieldref           #333.#334     // com/railwayteam/railways/config/CClient.skipClientDerailing:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #333 = Class              #335          // com/railwayteam/railways/config/CClient
+  #334 = NameAndType        #336:#196     // skipClientDerailing:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #335 = Utf8               com/railwayteam/railways/config/CClient
+  #336 = Utf8               skipClientDerailing
+  #337 = Methodref          #338.#339     // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #338 = Class              #340          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #339 = NameAndType        #341:#342     // cancel:()V
+  #340 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #341 = Utf8               cancel
+  #342 = Utf8               ()V
+  #343 = Class              #344          // com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker
+  #344 = Utf8               com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker
+  #345 = Methodref          #8.#346       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.level:()Lnet/minecraft/world/level/Level;
+  #346 = NameAndType        #347:#348     // level:()Lnet/minecraft/world/level/Level;
+  #347 = Utf8               level
+  #348 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #349 = Fieldref           #350.#351     // net/minecraft/world/level/Level.isClientSide:Z
+  #350 = Class              #352          // net/minecraft/world/level/Level
+  #351 = NameAndType        #353:#12      // isClientSide:Z
+  #352 = Utf8               net/minecraft/world/level/Level
+  #353 = Utf8               isClientSide
+  #354 = InterfaceMethodref #343.#355     // com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$getLeadingDistance:()Ljava/lang/Integer;
+  #355 = NameAndType        #356:#357     // railways$getLeadingDistance:()Ljava/lang/Integer;
+  #356 = Utf8               railways$getLeadingDistance
+  #357 = Utf8               ()Ljava/lang/Integer;
+  #358 = InterfaceMethodref #343.#359     // com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$getTrailingDistance:()Ljava/lang/Integer;
+  #359 = NameAndType        #360:#357     // railways$getTrailingDistance:()Ljava/lang/Integer;
+  #360 = Utf8               railways$getTrailingDistance
+  #361 = Class              #362          // com/simibubi/create/content/trains/entity/CarriageContraption
+  #362 = Utf8               com/simibubi/create/content/trains/entity/CarriageContraption
+  #363 = Class              #364          // net/minecraft/core/BlockPos
+  #364 = Utf8               net/minecraft/core/BlockPos
+  #365 = Integer            -2147483648
+  #366 = Methodref          #363.#367     // net/minecraft/core/BlockPos."<init>":(III)V
+  #367 = NameAndType        #5:#368       // "<init>":(III)V
+  #368 = Utf8               (III)V
+  #369 = Integer            2147483647
+  #370 = InterfaceMethodref #100.#371     // java/util/Map.entrySet:()Ljava/util/Set;
+  #371 = NameAndType        #372:#373     // entrySet:()Ljava/util/Set;
+  #372 = Utf8               entrySet
+  #373 = Utf8               ()Ljava/util/Set;
+  #374 = InterfaceMethodref #375.#376     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #375 = Class              #377          // java/util/Set
+  #376 = NameAndType        #378:#379     // iterator:()Ljava/util/Iterator;
+  #377 = Utf8               java/util/Set
+  #378 = Utf8               iterator
+  #379 = Utf8               ()Ljava/util/Iterator;
+  #380 = InterfaceMethodref #381.#382     // java/util/Iterator.hasNext:()Z
+  #381 = Class              #383          // java/util/Iterator
+  #382 = NameAndType        #384:#57      // hasNext:()Z
+  #383 = Utf8               java/util/Iterator
+  #384 = Utf8               hasNext
+  #385 = InterfaceMethodref #381.#386     // java/util/Iterator.next:()Ljava/lang/Object;
+  #386 = NameAndType        #387:#173     // next:()Ljava/lang/Object;
+  #387 = Utf8               next
+  #388 = Class              #389          // java/util/Map$Entry
+  #389 = Utf8               java/util/Map$Entry
+  #390 = InterfaceMethodref #388.#391     // java/util/Map$Entry.getKey:()Ljava/lang/Object;
+  #391 = NameAndType        #392:#173     // getKey:()Ljava/lang/Object;
+  #392 = Utf8               getKey
+  #393 = Methodref          #394.#395     // com/railwayteam/railways/util/BlockPosUtils.min:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #394 = Class              #396          // com/railwayteam/railways/util/BlockPosUtils
+  #395 = NameAndType        #397:#398     // min:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #396 = Utf8               com/railwayteam/railways/util/BlockPosUtils
+  #397 = Utf8               min
+  #398 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #399 = Methodref          #394.#400     // com/railwayteam/railways/util/BlockPosUtils.max:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #400 = NameAndType        #401:#398     // max:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #401 = Utf8               max
+  #402 = InterfaceMethodref #388.#403     // java/util/Map$Entry.getValue:()Ljava/lang/Object;
+  #403 = NameAndType        #134:#173     // getValue:()Ljava/lang/Object;
+  #404 = Methodref          #127.#405     // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+  #405 = NameAndType        #406:#407     // getBlock:()Lnet/minecraft/world/level/block/Block;
+  #406 = Utf8               getBlock
+  #407 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+  #408 = Class              #409          // com/simibubi/create/content/trains/bogey/AbstractBogeyBlock
+  #409 = Utf8               com/simibubi/create/content/trains/bogey/AbstractBogeyBlock
+  #410 = Methodref          #363.#411     // net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+  #411 = NameAndType        #412:#413     // subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+  #412 = Utf8               subtract
+  #413 = Utf8               (Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+  #414 = Methodref          #394.#415     // com/railwayteam/railways/util/BlockPosUtils.normalize:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #415 = NameAndType        #416:#417     // normalize:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #416 = Utf8               normalize
+  #417 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+  #418 = Methodref          #361.#419     // com/simibubi/create/content/trains/entity/CarriageContraption.getAssemblyDirection:()Lnet/minecraft/core/Direction;
+  #419 = NameAndType        #420:#110     // getAssemblyDirection:()Lnet/minecraft/core/Direction;
+  #420 = Utf8               getAssemblyDirection
+  #421 = Methodref          #112.#422     // net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+  #422 = NameAndType        #423:#424     // getNormal:()Lnet/minecraft/core/Vec3i;
+  #423 = Utf8               getNormal
+  #424 = Utf8               ()Lnet/minecraft/core/Vec3i;
+  #425 = Methodref          #363.#137     // net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+  #426 = Methodref          #112.#427     // net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+  #427 = NameAndType        #428:#429     // getAxis:()Lnet/minecraft/core/Direction$Axis;
+  #428 = Utf8               getAxis
+  #429 = Utf8               ()Lnet/minecraft/core/Direction$Axis;
+  #430 = Methodref          #112.#431     // net/minecraft/core/Direction.getAxisDirection:()Lnet/minecraft/core/Direction$AxisDirection;
+  #431 = NameAndType        #432:#433     // getAxisDirection:()Lnet/minecraft/core/Direction$AxisDirection;
+  #432 = Utf8               getAxisDirection
+  #433 = Utf8               ()Lnet/minecraft/core/Direction$AxisDirection;
+  #434 = Fieldref           #435.#436     // net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+  #435 = Class              #437          // net/minecraft/core/Direction$AxisDirection
+  #436 = NameAndType        #438:#439     // POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+  #437 = Utf8               net/minecraft/core/Direction$AxisDirection
+  #438 = Utf8               POSITIVE
+  #439 = Utf8               Lnet/minecraft/core/Direction$AxisDirection;
+  #440 = Methodref          #363.#441     // net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+  #441 = NameAndType        #103:#442     // get:(Lnet/minecraft/core/Direction$Axis;)I
+  #442 = Utf8               (Lnet/minecraft/core/Direction$Axis;)I
+  #443 = Methodref          #444.#445     // java/lang/Math.abs:(I)I
+  #444 = Class              #446          // java/lang/Math
+  #445 = NameAndType        #447:#448     // abs:(I)I
+  #446 = Utf8               java/lang/Math
+  #447 = Utf8               abs
+  #448 = Utf8               (I)I
+  #449 = InterfaceMethodref #343.#450     // com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$setLeadingDistance:(I)V
+  #450 = NameAndType        #451:#452     // railways$setLeadingDistance:(I)V
+  #451 = Utf8               railways$setLeadingDistance
+  #452 = Utf8               (I)V
+  #453 = InterfaceMethodref #343.#454     // com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$setTrailingDistance:(I)V
+  #454 = NameAndType        #455:#452     // railways$setTrailingDistance:(I)V
+  #455 = Utf8               railways$setTrailingDistance
+  #456 = InterfaceMethodref #457.#458     // com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+  #457 = Class              #459          // com/llamalad7/mixinextras/sugar/ref/LocalIntRef
+  #458 = NameAndType        #103:#25      // get:()I
+  #459 = Utf8               com/llamalad7/mixinextras/sugar/ref/LocalIntRef
+  #460 = Class              #461          // com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain
+  #461 = Utf8               com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain
+  #462 = InterfaceMethodref #460.#463     // com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$isControlBlocked:()Z
+  #463 = NameAndType        #464:#57      // railways$isControlBlocked:()Z
+  #464 = Utf8               railways$isControlBlocked
+  #465 = InterfaceMethodref #460.#466     // com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$getBlockedSign:()I
+  #466 = NameAndType        #467:#25      // railways$getBlockedSign:()I
+  #467 = Utf8               railways$getBlockedSign
+  #468 = Class              #469          // com/railwayteam/railways/mixin_interfaces/IBufferBlockCheckableNavigation
+  #469 = Utf8               com/railwayteam/railways/mixin_interfaces/IBufferBlockCheckableNavigation
+  #470 = InterfaceMethodref #468.#471     // com/railwayteam/railways/mixin_interfaces/IBufferBlockCheckableNavigation.railways$updateControlsBlock:(Z)V
+  #471 = NameAndType        #472:#473     // railways$updateControlsBlock:(Z)V
+  #472 = Utf8               railways$updateControlsBlock
+  #473 = Utf8               (Z)V
+  #474 = Methodref          #475.#476     // net/minecraft/util/Mth.sign:(D)I
+  #475 = Class              #477          // net/minecraft/util/Mth
+  #476 = NameAndType        #478:#479     // sign:(D)I
+  #477 = Utf8               net/minecraft/util/Mth
+  #478 = Utf8               sign
+  #479 = Utf8               (D)I
+  #480 = InterfaceMethodref #457.#481     // com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set:(I)V
+  #481 = NameAndType        #482:#452     // set:(I)V
+  #482 = Utf8               set
+  #483 = Fieldref           #8.#484       // com/railwayteam/railways/mixin/MixinCarriageContraptionEntity.railways$distanceTravelled:D
+  #484 = NameAndType        #485:#153     // railways$distanceTravelled:D
+  #485 = Utf8               railways$distanceTravelled
+  #486 = Class              #487          // com/railwayteam/railways/mixin_interfaces/IDistanceTravelled
+  #487 = Utf8               com/railwayteam/railways/mixin_interfaces/IDistanceTravelled
+  #488 = Utf8               RuntimeVisibleAnnotations
+  #489 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #490 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #491 = Utf8               Code
+  #492 = Utf8               LineNumberTable
+  #493 = Utf8               LocalVariableTable
+  #494 = Utf8               this
+  #495 = Utf8               Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+  #496 = Utf8               type
+  #497 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #498 = Utf8               world
+  #499 = Utf8               Lnet/minecraft/world/level/Level;
+  #500 = Utf8               LocalVariableTypeTable
+  #501 = Utf8               Lnet/minecraft/world/entity/EntityType<*>;
+  #502 = Utf8               Signature
+  #503 = Utf8               (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+  #504 = Utf8               railways$fromParent
+  #505 = Utf8               (Lcom/railwayteam/railways/mixin_interfaces/IUpdateCount;)V
+  #506 = Utf8               parent
+  #507 = Utf8               Lcom/railwayteam/railways/mixin_interfaces/IUpdateCount;
+  #508 = Utf8               railways$markUpdate
+  #509 = Utf8               recordFakePlayer
+  #510 = Utf8               (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #511 = Utf8               controlsLocalPos
+  #512 = Utf8               Lnet/minecraft/core/BlockPos;
+  #513 = Utf8               heldControls
+  #514 = Utf8               Ljava/util/Collection;
+  #515 = Utf8               player
+  #516 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #517 = Utf8               cir
+  #518 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #519 = Utf8               Ljava/util/Collection<Ljava/lang/Integer;>;
+  #520 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #521 = Utf8               StackMapTable
+  #522 = Utf8               (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #523 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #524 = Utf8               method
+  #525 = Utf8               control
+  #526 = Utf8               at
+  #527 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #528 = Utf8               value
+  #529 = Utf8               HEAD
+  #530 = Utf8               railways$closerThan
+  #531 = Utf8               (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Position;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Z
+  #532 = Utf8               instance
+  #533 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #534 = Utf8               pos
+  #535 = Utf8               Lnet/minecraft/core/Position;
+  #536 = Utf8               distance
+  #537 = Utf8               original
+  #538 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #539 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+  #540 = Utf8               (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Position;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;)Z
+  #541 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #542 = Utf8               INVOKE
+  #543 = Utf8               target
+  #544 = Utf8               Lnet/minecraft/world/phys/Vec3;closerThan(Lnet/minecraft/core/Position;D)Z
+  #545 = Utf8               remap
+  #546 = Integer            1
+  #547 = Utf8               conductorSpeedControl
+  #548 = Utf8               (Lcom/simibubi/create/content/trains/entity/Train;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;)D
+  #549 = Utf8               conductorHolder
+  #550 = Utf8               Lcom/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer;
+  #551 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Double;>;
+  #552 = Utf8               (Lcom/simibubi/create/content/trains/entity/Train;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Double;>;Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;)D
+  #553 = Utf8               FIELD
+  #554 = Utf8               Lcom/simibubi/create/content/trains/entity/Train;throttle:D
+  #555 = Utf8               opcode
+  #556 = Integer            180
+  #557 = Utf8               showSwitchOverlay
+  #558 = Utf8               wrong
+  #559 = Utf8               nav
+  #560 = Utf8               info
+  #561 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+  #562 = Utf8               initialOrientation
+  #563 = Utf8               Lnet/minecraft/core/Direction;
+  #564 = Utf8               inverted
+  #565 = Utf8               targetSpeed
+  #566 = Utf8               spaceDown
+  #567 = Utf8               directedSpeed
+  #568 = Utf8               forward
+  #569 = Utf8               lookAheadData
+  #570 = Utf8               Lnet/createmod/catnip/data/Pair;
+  #571 = Utf8               lookAhead
+  #572 = Utf8               Lcom/railwayteam/railways/content/switches/TrackSwitch;
+  #573 = Utf8               headOn
+  #574 = Utf8               targetState
+  #575 = Utf8               Ljava/util/Optional;
+  #576 = Utf8               Lnet/createmod/catnip/data/Pair<Lcom/railwayteam/railways/content/switches/TrackSwitch;Lnet/createmod/catnip/data/Pair<Ljava/lang/Boolean;Ljava/util/Optional<Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;>;>;>;
+  #577 = Utf8               Ljava/util/Optional<Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;>;
+  #578 = Class              #579          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #579 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #580 = Utf8               Lcom/simibubi/create/content/trains/entity/Train;maxSpeed()F
+  #581 = Utf8               railways$handcarHungerDepletion
+  #582 = Utf8               TAIL
+  #583 = Utf8               sw
+  #584 = Utf8               isWrong
+  #585 = Utf8               sp
+  #586 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #587 = Utf8               Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+  #588 = Utf8               automatic
+  #589 = Utf8               cancelDerailing
+  #590 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #591 = Utf8               ci
+  #592 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #593 = Utf8               updateTrackGraph
+  #594 = Utf8               Lcom/simibubi/create/content/trains/entity/Train;graph:Lcom/simibubi/create/content/trains/graph/TrackGraph;
+  #595 = Integer            3
+  #596 = Utf8               ordinal
+  #597 = Integer            0
+  #598 = Utf8               cancellable
+  #599 = Utf8               setupBufferDistanceData
+  #600 = Utf8               Ljava/util/Map$Entry;
+  #601 = Utf8               distanceTracker
+  #602 = Utf8               Lcom/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker;
+  #603 = Utf8               leadingBogeyPos
+  #604 = Utf8               trailingBogeyPos
+  #605 = Utf8               cc
+  #606 = Utf8               Lcom/simibubi/create/content/trains/entity/CarriageContraption;
+  #607 = Utf8               maxPos
+  #608 = Utf8               minPos
+  #609 = Utf8               axis
+  #610 = Utf8               Lnet/minecraft/core/Direction$Axis;
+  #611 = Utf8               leadingBounds
+  #612 = Utf8               trailingBounds
+  #613 = Utf8               leadingDistance
+  #614 = Utf8               trailingDistance
+  #615 = Utf8               Ljava/util/Map$Entry<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+  #616 = Class              #617          // net/minecraft/core/Direction$Axis
+  #617 = Utf8               net/minecraft/core/Direction$Axis
+  #618 = Utf8               tickContraption
+  #619 = Utf8               Lcom/simibubi/create/content/trains/entity/CarriageContraptionEntity;tickActors()V
+  #620 = Utf8               noBufferOverrun
+  #621 = Utf8               (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+  #622 = Utf8               blockedSign
+  #623 = Utf8               targetSpeedRef
+  #624 = Utf8               Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;
+  #625 = Utf8               bufferBlockedTrain
+  #626 = Utf8               Lcom/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain;
+  #627 = Utf8               (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+  #628 = Utf8               Lcom/simibubi/create/content/trains/entity/Train;getCurrentStation()Lcom/simibubi/create/content/trains/station/GlobalStation;
+  #629 = Utf8               RuntimeInvisibleParameterAnnotations
+  #630 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #631 = Utf8               name
+  #632 = Utf8               railways$storeDistanceTravelled
+  #633 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;D)V
+  #634 = Utf8               distanceTo
+  #635 = Utf8               Lnet/createmod/catnip/data/Couple;getFirst()Ljava/lang/Object;
+  #636 = Utf8               railways$getDistanceTravelled
+  #637 = Utf8               SourceFile
+  #638 = Utf8               MixinCarriageContraptionEntity.java
+  #639 = Utf8               RuntimeInvisibleAnnotations
+  #640 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #641 = Utf8               Lcom/simibubi/create/content/trains/entity/CarriageContraptionEntity;
+  #642 = Utf8               BootstrapMethods
+  #643 = MethodType         #644          //  (Ljava/lang/Object;)V
+  #644 = Utf8               (Ljava/lang/Object;)V
+  #645 = MethodHandle       5:#222        // REF_invokeVirtual com/railwayteam/railways/content/switches/TrackSwitch.trySetSwitchState:(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+  #646 = MethodType         #647          //  (Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)V
+  #647 = Utf8               (Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)V
+  #648 = MethodHandle       6:#649        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #649 = Methodref          #650.#651     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #650 = Class              #652          // java/lang/invoke/LambdaMetafactory
+  #651 = NameAndType        #653:#654     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #652 = Utf8               java/lang/invoke/LambdaMetafactory
+  #653 = Utf8               metafactory
+  #654 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #655 = Utf8               InnerClasses
+  #656 = Class              #657          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #657 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  #658 = Utf8               StructureBlockInfo
+  #659 = Class              #660          // net/createmod/catnip/config/ConfigBase
+  #660 = Utf8               net/createmod/catnip/config/ConfigBase
+  #661 = Utf8               ConfigBool
+  #662 = Class              #663          // com/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection
+  #663 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection
+  #664 = Class              #665          // com/simibubi/create/content/trains/entity/TravellingPoint
+  #665 = Utf8               com/simibubi/create/content/trains/entity/TravellingPoint
+  #666 = Utf8               SteerDirection
+  #667 = Class              #668          // com/railwayteam/railways/content/switches/TrackSwitchBlock
+  #668 = Utf8               com/railwayteam/railways/content/switches/TrackSwitchBlock
+  #669 = Utf8               SwitchState
+  #670 = Utf8               ConfigFloat
+  #671 = Utf8               Entry
+  #672 = Utf8               Axis
+  #673 = Utf8               AxisDirection
+  #674 = Class              #675          // java/lang/invoke/MethodHandles$Lookup
+  #675 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #676 = Class              #677          // java/lang/invoke/MethodHandles
+  #677 = Utf8               java/lang/invoke/MethodHandles
+  #678 = Utf8               Lookup
+{
+  private com.simibubi.create.content.trains.entity.Carriage carriage;
+    descriptor: Lcom/simibubi/create/content/trains/entity/Carriage;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #489()
+        org.spongepowered.asm.mixin.Shadow
+
+  private boolean railways$fakePlayer;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private double railways$distanceTravelled;
+    descriptor: D
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private int railways$updateCount;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  boolean railways$switchMessage;
+    descriptor: Z
+    flags: (0x0000)
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private com.railwayteam.railways.mixin.MixinCarriageContraptionEntity(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #1                  // Method com/simibubi/create/content/contraptions/OrientedContraptionEntity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: aload_0
+         7: iconst_0
+         8: putfield      #7                  // Field railways$fakePlayer:Z
+        11: aload_0
+        12: iconst_0
+        13: putfield      #13                 // Field railways$updateCount:I
+        16: aload_0
+        17: iconst_0
+        18: putfield      #17                 // Field railways$switchMessage:Z
+        21: return
+      LineNumberTable:
+        line 72: 0
+        line 75: 6
+        line 79: 11
+        line 176: 16
+        line 73: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      22     1  type   Lnet/minecraft/world/entity/EntityType;
+            0      22     2 world   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      22     1  type   Lnet/minecraft/world/entity/EntityType<*>;
+    Signature: #503                         // (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+
+  public int railways$getUpdateCount();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field railways$updateCount:I
+         4: ireturn
+      LineNumberTable:
+        line 83: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+
+  public void railways$fromParent(com.railwayteam.railways.mixin_interfaces.IUpdateCount);
+    descriptor: (Lcom/railwayteam/railways/mixin_interfaces/IUpdateCount;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokeinterface #20,  1           // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IUpdateCount.railways$getUpdateCount:()I
+         7: putfield      #13                 // Field railways$updateCount:I
+        10: return
+      LineNumberTable:
+        line 88: 0
+        line 89: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      11     1 parent   Lcom/railwayteam/railways/mixin_interfaces/IUpdateCount;
+
+  public void railways$markUpdate();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: dup
+         2: getfield      #13                 // Field railways$updateCount:I
+         5: iconst_1
+         6: iadd
+         7: putfield      #13                 // Field railways$updateCount:I
+        10: return
+      LineNumberTable:
+        line 93: 0
+        line 94: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+
+  private void recordFakePlayer(net.minecraft.core.BlockPos, java.util.Collection<java.lang.Integer>, net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=5
+         0: aload_3
+         1: invokevirtual #26                 // Method net/minecraft/world/entity/player/Player.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+         4: getstatic     #32                 // Field com/railwayteam/railways/content/conductor/ConductorEntity.FAKE_PLAYER_PROFILE:Lcom/mojang/authlib/GameProfile;
+         7: if_acmpne     15
+        10: aload_0
+        11: iconst_1
+        12: putfield      #7                  // Field railways$fakePlayer:Z
+        15: return
+      LineNumberTable:
+        line 98: 0
+        line 99: 10
+        line 100: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      16     1 controlsLocalPos   Lnet/minecraft/core/BlockPos;
+            0      16     2 heldControls   Ljava/util/Collection;
+            0      16     3 player   Lnet/minecraft/world/entity/player/Player;
+            0      16     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      16     2 heldControls   Ljava/util/Collection<Ljava/lang/Integer;>;
+            0      16     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 15 /* same */
+    Signature: #522                         // (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#525],#526=[@#527(#528=s#529)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private boolean railways$closerThan(net.minecraft.world.phys.Vec3, net.minecraft.core.Position, double, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Position;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=6, args_size=5
+         0: aload_0
+         1: getfield      #7                  // Field railways$fakePlayer:Z
+         4: ifeq          14
+         7: aload_0
+         8: iconst_0
+         9: putfield      #7                  // Field railways$fakePlayer:Z
+        12: iconst_1
+        13: ireturn
+        14: aload         5
+        16: iconst_3
+        17: anewarray     #38                 // class java/lang/Object
+        20: dup
+        21: iconst_0
+        22: aload_1
+        23: aastore
+        24: dup
+        25: iconst_1
+        26: aload_2
+        27: aastore
+        28: dup
+        29: iconst_2
+        30: dload_3
+        31: invokestatic  #40                 // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+        34: aastore
+        35: invokeinterface #46,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        40: checkcast     #52                 // class java/lang/Boolean
+        43: invokevirtual #54                 // Method java/lang/Boolean.booleanValue:()Z
+        46: ireturn
+      LineNumberTable:
+        line 104: 0
+        line 105: 7
+        line 106: 12
+        line 108: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      47     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      47     1 instance   Lnet/minecraft/world/phys/Vec3;
+            0      47     2   pos   Lnet/minecraft/core/Position;
+            0      47     3 distance   D
+            0      47     5 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      47     5 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 14 /* same */
+    Signature: #540                         // (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Position;DLcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Boolean;>;)Z
+    RuntimeVisibleAnnotations:
+      0: #541(#524=[s#525],#526=[@#527(#528=s#542,#543=s#544,#545=Z#546)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/phys/Vec3;closerThan(Lnet/minecraft/core/Position;D)Z"
+            remap=true
+          )]
+        )
+
+  private double conductorSpeedControl(com.simibubi.create.content.trains.entity.Train, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Double>, net.minecraft.core.BlockPos, java.util.Collection<java.lang.Integer>, net.minecraft.world.entity.player.Player);
+    descriptor: (Lcom/simibubi/create/content/trains/entity/Train;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;)D
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=7, args_size=6
+         0: aload         5
+         2: instanceof    #58                 // class com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer
+         5: ifeq          41
+         8: aload         5
+        10: checkcast     #58                 // class com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer
+        13: astore        6
+        15: aload         6
+        17: invokeinterface #60,  1           // InterfaceMethod com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer.getConductor:()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+        22: ifnull        41
+        25: aload         6
+        27: invokeinterface #60,  1           // InterfaceMethod com/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer.getConductor:()Lcom/railwayteam/railways/content/conductor/ConductorEntity;
+        32: invokevirtual #64                 // Method com/railwayteam/railways/content/conductor/ConductorEntity.getForwardSignalStrength:()I
+        35: i2d
+        36: ldc2_w        #67                 // double 15.0d
+        39: ddiv
+        40: dreturn
+        41: aload_2
+        42: iconst_1
+        43: anewarray     #38                 // class java/lang/Object
+        46: dup
+        47: iconst_0
+        48: aload_1
+        49: aastore
+        50: invokeinterface #46,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        55: checkcast     #41                 // class java/lang/Double
+        58: invokevirtual #69                 // Method java/lang/Double.doubleValue:()D
+        61: dreturn
+      LineNumberTable:
+        line 113: 0
+        line 114: 25
+        line 116: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           15      26     6 conductorHolder   Lcom/railwayteam/railways/content/conductor/IConductorHoldingFakePlayer;
+            0      62     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      62     1 instance   Lcom/simibubi/create/content/trains/entity/Train;
+            0      62     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      62     3 controlsLocalPos   Lnet/minecraft/core/BlockPos;
+            0      62     4 heldControls   Ljava/util/Collection;
+            0      62     5 player   Lnet/minecraft/world/entity/player/Player;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      62     2 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Double;>;
+            0      62     4 heldControls   Ljava/util/Collection<Ljava/lang/Integer;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 41 /* same */
+    Signature: #552                         // (Lcom/simibubi/create/content/trains/entity/Train;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Double;>;Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;)D
+    RuntimeVisibleAnnotations:
+      0: #541(#524=[s#525],#526=[@#527(#528=s#553,#543=s#554,#555=I#556)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lcom/simibubi/create/content/trains/entity/Train;throttle:D"
+            opcode=180
+          )]
+        )
+
+  private void showSwitchOverlay(net.minecraft.core.BlockPos, java.util.Collection<java.lang.Integer>, net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=19, args_size=5
+         0: aload_0
+         1: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+         4: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+         7: getfield      #83                 // Field com/simibubi/create/content/trains/entity/Train.navigation:Lcom/simibubi/create/content/trains/entity/Navigation;
+        10: astore        5
+        12: aload_0
+        13: getfield      #89                 // Field contraption:Lcom/simibubi/create/content/contraptions/Contraption;
+        16: invokevirtual #93                 // Method com/simibubi/create/content/contraptions/Contraption.getBlocks:()Ljava/util/Map;
+        19: aload_1
+        20: invokeinterface #99,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        25: checkcast     #105                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+        28: astore        6
+        30: aload_0
+        31: invokevirtual #107                // Method getInitialOrientation:()Lnet/minecraft/core/Direction;
+        34: invokevirtual #111                // Method net/minecraft/core/Direction.getCounterClockWise:()Lnet/minecraft/core/Direction;
+        37: astore        7
+        39: iconst_0
+        40: istore        8
+        42: aload         6
+        44: ifnull        90
+        47: aload         6
+        49: invokevirtual #116                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+        52: getstatic     #120                // Field com/simibubi/create/content/contraptions/actors/trainControls/ControlsBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+        55: invokevirtual #126                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+        58: ifeq          90
+        61: aload         6
+        63: invokevirtual #116                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+        66: getstatic     #120                // Field com/simibubi/create/content/contraptions/actors/trainControls/ControlsBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+        69: invokevirtual #132                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        72: checkcast     #112                // class net/minecraft/core/Direction
+        75: aload         7
+        77: invokevirtual #136                // Method net/minecraft/core/Direction.equals:(Ljava/lang/Object;)Z
+        80: ifne          87
+        83: iconst_1
+        84: goto          88
+        87: iconst_0
+        88: istore        8
+        90: iconst_0
+        91: istore        9
+        93: aload_2
+        94: iconst_0
+        95: invokestatic  #140                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        98: invokeinterface #145,  2          // InterfaceMethod java/util/Collection.contains:(Ljava/lang/Object;)Z
+       103: ifeq          109
+       106: iinc          9, 1
+       109: aload_2
+       110: iconst_1
+       111: invokestatic  #140                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       114: invokeinterface #145,  2          // InterfaceMethod java/util/Collection.contains:(Ljava/lang/Object;)Z
+       119: ifeq          125
+       122: iinc          9, -1
+       125: iload         8
+       127: ifeq          136
+       130: iload         9
+       132: iconst_m1
+       133: imul
+       134: istore        9
+       136: aload_2
+       137: iconst_4
+       138: invokestatic  #140                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       141: invokeinterface #145,  2          // InterfaceMethod java/util/Collection.contains:(Ljava/lang/Object;)Z
+       146: istore        10
+       148: iload         9
+       150: ifeq          159
+       153: iload         9
+       155: i2d
+       156: goto          169
+       159: aload_0
+       160: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+       163: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+       166: getfield      #150                // Field com/simibubi/create/content/trains/entity/Train.speed:D
+       169: dstore        11
+       171: iconst_1
+       172: putstatic     #154                // Field com/railwayteam/railways/util/MixinVariables.temporarilySkipSwitches:Z
+       175: aload_0
+       176: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+       179: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+       182: getfield      #159                // Field com/simibubi/create/content/trains/entity/Train.doubleEnded:Z
+       185: ifeq          210
+       188: dload         11
+       190: dconst_0
+       191: dcmpl
+       192: ifeq          205
+       195: dload         11
+       197: dconst_0
+       198: dcmpl
+       199: ifle          214
+       202: goto          210
+       205: iload         8
+       207: ifne          214
+       210: iconst_1
+       211: goto          215
+       214: iconst_0
+       215: istore        13
+       217: aload         5
+       219: checkcast     #162                // class com/railwayteam/railways/mixin_interfaces/IGenerallySearchableNavigation
+       222: iload         13
+       224: invokeinterface #164,  2          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IGenerallySearchableNavigation.railways$findNearestApproachableSwitch:(Z)Lnet/createmod/catnip/data/Pair;
+       229: astore        14
+       231: iconst_0
+       232: putstatic     #154                // Field com/railwayteam/railways/util/MixinVariables.temporarilySkipSwitches:Z
+       235: aload         14
+       237: ifnonnull     244
+       240: aconst_null
+       241: goto          252
+       244: aload         14
+       246: invokevirtual #168                // Method net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+       249: checkcast     #174                // class com/railwayteam/railways/content/switches/TrackSwitch
+       252: astore        15
+       254: aload         14
+       256: ifnull        283
+       259: aload         14
+       261: invokevirtual #176                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+       264: checkcast     #169                // class net/createmod/catnip/data/Pair
+       267: invokevirtual #168                // Method net/createmod/catnip/data/Pair.getFirst:()Ljava/lang/Object;
+       270: checkcast     #52                 // class java/lang/Boolean
+       273: invokevirtual #54                 // Method java/lang/Boolean.booleanValue:()Z
+       276: ifeq          283
+       279: iconst_1
+       280: goto          284
+       283: iconst_0
+       284: istore        16
+       286: aload         14
+       288: ifnonnull     297
+       291: invokestatic  #179                // Method java/util/Optional.empty:()Ljava/util/Optional;
+       294: goto          311
+       297: aload         14
+       299: invokevirtual #176                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+       302: checkcast     #169                // class net/createmod/catnip/data/Pair
+       305: invokevirtual #176                // Method net/createmod/catnip/data/Pair.getSecond:()Ljava/lang/Object;
+       308: checkcast     #180                // class java/util/Optional
+       311: astore        17
+       313: aload         15
+       315: ifnull        495
+       318: invokestatic  #185                // Method com/railwayteam/railways/config/CRConfigs.server:()Lcom/railwayteam/railways/config/CServer;
+       321: getfield      #191                // Field com/railwayteam/railways/config/CServer.flipDistantSwitches:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+       324: invokevirtual #197                // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+       327: checkcast     #52                 // class java/lang/Boolean
+       330: invokevirtual #54                 // Method java/lang/Boolean.booleanValue:()Z
+       333: ifeq          419
+       336: iload         10
+       338: ifeq          419
+       341: aload         15
+       343: invokevirtual #201                // Method com/railwayteam/railways/content/switches/TrackSwitch.isAutomatic:()Z
+       346: ifeq          419
+       349: aload         15
+       351: invokevirtual #204                // Method com/railwayteam/railways/content/switches/TrackSwitch.isLocked:()Z
+       354: ifne          419
+       357: aload_0
+       358: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+       361: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+       364: getfield      #83                 // Field com/simibubi/create/content/trains/entity/Train.navigation:Lcom/simibubi/create/content/trains/entity/Navigation;
+       367: invokevirtual #207                // Method com/simibubi/create/content/trains/entity/Navigation.isActive:()Z
+       370: ifne          419
+       373: iload         16
+       375: ifeq          402
+       378: aload         15
+       380: aload_0
+       381: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+       384: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+       387: getfield      #212                // Field com/simibubi/create/content/trains/entity/Train.manualSteer:Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;
+       390: iload         13
+       392: invokestatic  #216                // Method com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState.fromSteerDirection:(Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;Z)Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+       395: invokevirtual #222                // Method com/railwayteam/railways/content/switches/TrackSwitch.trySetSwitchState:(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+       398: pop
+       399: goto          419
+       402: aload         17
+       404: aload         15
+       406: dup
+       407: invokestatic  #226                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       410: pop
+       411: invokedynamic #231,  0            // InvokeDynamic #0:accept:(Lcom/railwayteam/railways/content/switches/TrackSwitch;)Ljava/util/function/Consumer;
+       416: invokevirtual #235                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+       419: iload         16
+       421: ifeq          455
+       424: aload_0
+       425: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+       428: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+       431: getfield      #212                // Field com/simibubi/create/content/trains/entity/Train.manualSteer:Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;
+       434: iload         13
+       436: invokestatic  #216                // Method com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState.fromSteerDirection:(Lcom/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection;Z)Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+       439: aload         15
+       441: invokevirtual #239                // Method com/railwayteam/railways/content/switches/TrackSwitch.getSwitchState:()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+       444: if_acmpeq     451
+       447: iconst_1
+       448: goto          481
+       451: iconst_0
+       452: goto          481
+       455: aload         17
+       457: invokevirtual #243                // Method java/util/Optional.isPresent:()Z
+       460: ifeq          480
+       463: aload         15
+       465: invokevirtual #239                // Method com/railwayteam/railways/content/switches/TrackSwitch.getSwitchState:()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+       468: aload         17
+       470: invokevirtual #246                // Method java/util/Optional.get:()Ljava/lang/Object;
+       473: if_acmpeq     480
+       476: iconst_1
+       477: goto          481
+       480: iconst_0
+       481: istore        18
+       483: aload_0
+       484: aload_3
+       485: aload         15
+       487: iload         18
+       489: invokevirtual #247                // Method displayApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitch;Z)V
+       492: goto          500
+       495: aload_0
+       496: aload_3
+       497: invokevirtual #251                // Method cleanUpApproachSwitchMessage:(Lnet/minecraft/world/entity/player/Player;)V
+       500: return
+      LineNumberTable:
+        line 122: 0
+        line 124: 12
+        line 125: 20
+        line 126: 30
+        line 127: 39
+        line 128: 42
+        line 129: 61
+        line 130: 77
+        line 132: 90
+        line 133: 93
+        line 134: 106
+        line 135: 109
+        line 136: 122
+        line 138: 125
+        line 139: 130
+        line 142: 136
+        line 144: 148
+        line 145: 171
+        line 146: 175
+        line 147: 217
+        line 148: 231
+        line 149: 235
+        line 150: 254
+        line 151: 286
+        line 153: 313
+        line 155: 318
+        line 156: 351
+        line 157: 373
+        line 158: 378
+        line 159: 402
+        line 161: 419
+        line 162: 424
+        line 163: 455
+        line 164: 483
+        line 165: 492
+        line 166: 495
+        line 167: 500
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          483       9    18 wrong   Z
+            0     501     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0     501     1 controlsLocalPos   Lnet/minecraft/core/BlockPos;
+            0     501     2 heldControls   Ljava/util/Collection;
+            0     501     3 player   Lnet/minecraft/world/entity/player/Player;
+            0     501     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+           12     489     5   nav   Lcom/simibubi/create/content/trains/entity/Navigation;
+           30     471     6  info   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;
+           39     462     7 initialOrientation   Lnet/minecraft/core/Direction;
+           42     459     8 inverted   Z
+           93     408     9 targetSpeed   I
+          148     353    10 spaceDown   Z
+          171     330    11 directedSpeed   D
+          217     284    13 forward   Z
+          231     270    14 lookAheadData   Lnet/createmod/catnip/data/Pair;
+          254     247    15 lookAhead   Lcom/railwayteam/railways/content/switches/TrackSwitch;
+          286     215    16 headOn   Z
+          313     188    17 targetState   Ljava/util/Optional;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     501     2 heldControls   Ljava/util/Collection<Ljava/lang/Integer;>;
+            0     501     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+          231     270    14 lookAheadData   Lnet/createmod/catnip/data/Pair<Lcom/railwayteam/railways/content/switches/TrackSwitch;Lnet/createmod/catnip/data/Pair<Ljava/lang/Boolean;Ljava/util/Optional<Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;>;>;>;
+          313     188    17 targetState   Ljava/util/Optional<Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;>;
+      StackMapTable: number_of_entries = 26
+        frame_type = 255 /* full_frame */
+          offset_delta = 87
+          locals = [ class com/railwayteam/railways/mixin/MixinCarriageContraptionEntity, class net/minecraft/core/BlockPos, class java/util/Collection, class net/minecraft/world/entity/player/Player, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, class com/simibubi/create/content/trains/entity/Navigation, class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo, class net/minecraft/core/Direction, int ]
+          stack = []
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 1 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ int ]
+        frame_type = 15 /* same */
+        frame_type = 10 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 22
+          locals = [ int ]
+        frame_type = 73 /* same_locals_1_stack_item */
+          stack = [ double ]
+        frame_type = 252 /* append */
+          offset_delta = 35
+          locals = [ double ]
+        frame_type = 4 /* same */
+        frame_type = 3 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 253 /* append */
+          offset_delta = 28
+          locals = [ int, class net/createmod/catnip/data/Pair ]
+        frame_type = 71 /* same_locals_1_stack_item */
+          stack = [ class com/railwayteam/railways/content/switches/TrackSwitch ]
+        frame_type = 252 /* append */
+          offset_delta = 30
+          locals = [ class com/railwayteam/railways/content/switches/TrackSwitch ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ int ]
+        frame_type = 77 /* same_locals_1_stack_item */
+          stack = [ class java/util/Optional ]
+        frame_type = 252 /* append */
+          offset_delta = 90
+          locals = [ class java/util/Optional ]
+        frame_type = 16 /* same */
+        frame_type = 31 /* same */
+        frame_type = 3 /* same */
+        frame_type = 24 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 13 /* same */
+        frame_type = 4 /* same */
+    Signature: #522                         // (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#525],#526=[@#527(#528=s#542,#543=s#580)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/trains/entity/Train;maxSpeed()F"
+          )]
+        )
+
+  private void railways$handcarHungerDepletion(net.minecraft.core.BlockPos, java.util.Collection<java.lang.Integer>, net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=5, args_size=5
+         0: aload_0
+         1: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+         4: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+         7: checkcast     #255                // class com/railwayteam/railways/mixin_interfaces/IHandcarTrain
+        10: invokeinterface #257,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IHandcarTrain.railways$isHandcar:()Z
+        15: ifeq          65
+        18: aload_3
+        19: getstatic     #260                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+        22: invokevirtual #266                // Method net/minecraft/world/entity/player/Player.getItemInHand:(Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/item/ItemStack;
+        25: getstatic     #270                // Field com/simibubi/create/AllItems.EXTENDO_GRIP:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        28: invokevirtual #276                // Method com/tterrag/registrate/util/entry/ItemEntry.get:()Ljava/lang/Object;
+        31: checkcast     #279                // class net/minecraft/world/item/Item
+        34: invokevirtual #281                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+        37: ifne          65
+        40: aload_3
+        41: aload_0
+        42: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+        45: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+        48: getfield      #150                // Field com/simibubi/create/content/trains/entity/Train.speed:D
+        51: d2f
+        52: invokestatic  #185                // Method com/railwayteam/railways/config/CRConfigs.server:()Lcom/railwayteam/railways/config/CServer;
+        55: getfield      #287                // Field com/railwayteam/railways/config/CServer.handcarHungerMultiplier:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+        58: invokevirtual #291                // Method net/createmod/catnip/config/ConfigBase$ConfigFloat.getF:()F
+        61: fmul
+        62: invokevirtual #297                // Method net/minecraft/world/entity/player/Player.causeFoodExhaustion:(F)V
+        65: return
+      LineNumberTable:
+        line 171: 0
+        line 172: 22
+        line 173: 40
+        line 174: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      66     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      66     1 controlsLocalPos   Lnet/minecraft/core/BlockPos;
+            0      66     2 heldControls   Ljava/util/Collection;
+            0      66     3 player   Lnet/minecraft/world/entity/player/Player;
+            0      66     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      66     2 heldControls   Ljava/util/Collection<Ljava/lang/Integer;>;
+            0      66     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 65
+    Signature: #522                         // (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#525],#526=[@#527(#528=s#582)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+
+  private void displayApproachSwitchMessage(net.minecraft.world.entity.player.Player, com.railwayteam.railways.content.switches.TrackSwitch, boolean);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitch;Z)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=4, args_size=4
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokevirtual #239                // Method com/railwayteam/railways/content/switches/TrackSwitch.getSwitchState:()Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+         6: aload_2
+         7: invokevirtual #201                // Method com/railwayteam/railways/content/switches/TrackSwitch.isAutomatic:()Z
+        10: iload_3
+        11: aload_2
+        12: invokevirtual #204                // Method com/railwayteam/railways/content/switches/TrackSwitch.isLocked:()Z
+        15: invokevirtual #301                // Method sendSwitchInfo:(Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+        18: aload_0
+        19: iconst_1
+        20: putfield      #17                 // Field railways$switchMessage:Z
+        23: return
+      LineNumberTable:
+        line 181: 0
+        line 182: 18
+        line 183: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      24     1 player   Lnet/minecraft/world/entity/player/Player;
+            0      24     2    sw   Lcom/railwayteam/railways/content/switches/TrackSwitch;
+            0      24     3 isWrong   Z
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private void cleanUpApproachSwitchMessage(net.minecraft.world.entity.player.Player);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #17                 // Field railways$switchMessage:Z
+         4: ifne          8
+         7: return
+         8: aload_1
+         9: instanceof    #305                // class net/minecraft/server/level/ServerPlayer
+        12: ifeq          30
+        15: aload_1
+        16: checkcast     #305                // class net/minecraft/server/level/ServerPlayer
+        19: astore_2
+        20: getstatic     #307                // Field com/railwayteam/railways/registry/CRPackets.PACKETS:Lcom/railwayteam/railways/multiloader/PacketSet;
+        23: aload_2
+        24: invokestatic  #313                // Method com/railwayteam/railways/util/packet/SwitchDataUpdatePacket.clear:()Lcom/railwayteam/railways/util/packet/SwitchDataUpdatePacket;
+        27: invokevirtual #319                // Method com/railwayteam/railways/multiloader/PacketSet.sendTo:(Lnet/minecraft/server/level/ServerPlayer;Lcom/railwayteam/railways/multiloader/S2CPacket;)V
+        30: aload_0
+        31: iconst_0
+        32: putfield      #17                 // Field railways$switchMessage:Z
+        35: return
+      LineNumberTable:
+        line 187: 0
+        line 188: 7
+        line 189: 8
+        line 190: 20
+        line 191: 30
+        line 192: 35
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           20      10     2    sp   Lnet/minecraft/server/level/ServerPlayer;
+            0      36     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      36     1 player   Lnet/minecraft/world/entity/player/Player;
+      StackMapTable: number_of_entries = 2
+        frame_type = 8 /* same */
+        frame_type = 21 /* same */
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private void sendSwitchInfo(net.minecraft.world.entity.player.Player, com.railwayteam.railways.content.switches.TrackSwitchBlock$SwitchState, boolean, boolean, boolean);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=8, locals=7, args_size=6
+         0: aload_1
+         1: instanceof    #305                // class net/minecraft/server/level/ServerPlayer
+         4: ifeq          34
+         7: aload_1
+         8: checkcast     #305                // class net/minecraft/server/level/ServerPlayer
+        11: astore        6
+        13: getstatic     #307                // Field com/railwayteam/railways/registry/CRPackets.PACKETS:Lcom/railwayteam/railways/multiloader/PacketSet;
+        16: aload         6
+        18: new           #314                // class com/railwayteam/railways/util/packet/SwitchDataUpdatePacket
+        21: dup
+        22: aload_2
+        23: iload_3
+        24: iload         4
+        26: iload         5
+        28: invokespecial #325                // Method com/railwayteam/railways/util/packet/SwitchDataUpdatePacket."<init>":(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;ZZZ)V
+        31: invokevirtual #319                // Method com/railwayteam/railways/multiloader/PacketSet.sendTo:(Lnet/minecraft/server/level/ServerPlayer;Lcom/railwayteam/railways/multiloader/S2CPacket;)V
+        34: return
+      LineNumberTable:
+        line 196: 0
+        line 197: 13
+        line 198: 34
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           13      21     6    sp   Lnet/minecraft/server/level/ServerPlayer;
+            0      35     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      35     1 player   Lnet/minecraft/world/entity/player/Player;
+            0      35     2 state   Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;
+            0      35     3 automatic   Z
+            0      35     4 isWrong   Z
+            0      35     5 isLocked   Z
+      StackMapTable: number_of_entries = 1
+        frame_type = 34 /* same */
+    RuntimeVisibleAnnotations:
+      0: #490()
+        org.spongepowered.asm.mixin.Unique
+
+  private void cancelDerailing(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: invokestatic  #328                // Method com/railwayteam/railways/config/CRConfigs.client:()Lcom/railwayteam/railways/config/CClient;
+         3: getfield      #332                // Field com/railwayteam/railways/config/CClient.skipClientDerailing:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+         6: invokevirtual #197                // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+         9: checkcast     #52                 // class java/lang/Boolean
+        12: invokevirtual #54                 // Method java/lang/Boolean.booleanValue:()Z
+        15: ifeq          22
+        18: aload_1
+        19: invokevirtual #337                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        22: return
+      LineNumberTable:
+        line 202: 0
+        line 203: 18
+        line 204: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0      23     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 22 /* same */
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#593],#526=[@#527(#528=s#553,#543=s#594,#555=I#595,#596=I#597)],#598=Z#546)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["updateTrackGraph"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lcom/simibubi/create/content/trains/entity/Train;graph:Lcom/simibubi/create/content/trains/graph/TrackGraph;"
+            opcode=3
+            ordinal=0
+          )]
+          cancellable=true
+        )
+
+  private void setupBufferDistanceData(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=14, args_size=2
+         0: aload_0
+         1: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+         4: checkcast     #343                // class com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker
+         7: astore_2
+         8: aload_0
+         9: invokevirtual #345                // Method level:()Lnet/minecraft/world/level/Level;
+        12: getfield      #349                // Field net/minecraft/world/level/Level.isClientSide:Z
+        15: ifeq          19
+        18: return
+        19: aload_2
+        20: invokeinterface #354,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$getLeadingDistance:()Ljava/lang/Integer;
+        25: ifnull        38
+        28: aload_2
+        29: invokeinterface #358,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$getTrailingDistance:()Ljava/lang/Integer;
+        34: ifnull        38
+        37: return
+        38: aconst_null
+        39: astore_3
+        40: aconst_null
+        41: astore        4
+        43: aload_0
+        44: getfield      #89                 // Field contraption:Lcom/simibubi/create/content/contraptions/Contraption;
+        47: checkcast     #361                // class com/simibubi/create/content/trains/entity/CarriageContraption
+        50: astore        5
+        52: new           #363                // class net/minecraft/core/BlockPos
+        55: dup
+        56: ldc_w         #365                // int -2147483648
+        59: ldc_w         #365                // int -2147483648
+        62: ldc_w         #365                // int -2147483648
+        65: invokespecial #366                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        68: astore        6
+        70: new           #363                // class net/minecraft/core/BlockPos
+        73: dup
+        74: ldc_w         #369                // int 2147483647
+        77: ldc_w         #369                // int 2147483647
+        80: ldc_w         #369                // int 2147483647
+        83: invokespecial #366                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        86: astore        7
+        88: aload_0
+        89: getfield      #89                 // Field contraption:Lcom/simibubi/create/content/contraptions/Contraption;
+        92: invokevirtual #93                 // Method com/simibubi/create/content/contraptions/Contraption.getBlocks:()Ljava/util/Map;
+        95: invokeinterface #370,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+       100: invokeinterface #374,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       105: astore        8
+       107: aload         8
+       109: invokeinterface #380,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       114: ifeq          271
+       117: aload         8
+       119: invokeinterface #385,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       124: checkcast     #388                // class java/util/Map$Entry
+       127: astore        9
+       129: aload         7
+       131: aload         9
+       133: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       138: checkcast     #363                // class net/minecraft/core/BlockPos
+       141: invokestatic  #393                // Method com/railwayteam/railways/util/BlockPosUtils.min:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+       144: astore        7
+       146: aload         6
+       148: aload         9
+       150: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       155: checkcast     #363                // class net/minecraft/core/BlockPos
+       158: invokestatic  #399                // Method com/railwayteam/railways/util/BlockPosUtils.max:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+       161: astore        6
+       163: aload         9
+       165: invokeinterface #402,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       170: checkcast     #105                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+       173: invokevirtual #116                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       176: invokevirtual #404                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       179: instanceof    #408                // class com/simibubi/create/content/trains/bogey/AbstractBogeyBlock
+       182: ifeq          268
+       185: aload_3
+       186: ifnonnull     203
+       189: aload         9
+       191: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       196: checkcast     #363                // class net/minecraft/core/BlockPos
+       199: astore_3
+       200: goto          268
+       203: aload         4
+       205: ifnonnull     268
+       208: aload         9
+       210: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       215: checkcast     #363                // class net/minecraft/core/BlockPos
+       218: aload_3
+       219: invokevirtual #410                // Method net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+       222: invokestatic  #414                // Method com/railwayteam/railways/util/BlockPosUtils.normalize:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+       225: aload         5
+       227: invokevirtual #418                // Method com/simibubi/create/content/trains/entity/CarriageContraption.getAssemblyDirection:()Lnet/minecraft/core/Direction;
+       230: invokevirtual #421                // Method net/minecraft/core/Direction.getNormal:()Lnet/minecraft/core/Vec3i;
+       233: invokevirtual #425                // Method net/minecraft/core/BlockPos.equals:(Ljava/lang/Object;)Z
+       236: ifeq          254
+       239: aload         9
+       241: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       246: checkcast     #363                // class net/minecraft/core/BlockPos
+       249: astore        4
+       251: goto          268
+       254: aload_3
+       255: astore        4
+       257: aload         9
+       259: invokeinterface #390,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       264: checkcast     #363                // class net/minecraft/core/BlockPos
+       267: astore_3
+       268: goto          107
+       271: aload         5
+       273: invokevirtual #418                // Method com/simibubi/create/content/trains/entity/CarriageContraption.getAssemblyDirection:()Lnet/minecraft/core/Direction;
+       276: invokevirtual #426                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+       279: astore        8
+       281: aload         5
+       283: invokevirtual #418                // Method com/simibubi/create/content/trains/entity/CarriageContraption.getAssemblyDirection:()Lnet/minecraft/core/Direction;
+       286: invokevirtual #430                // Method net/minecraft/core/Direction.getAxisDirection:()Lnet/minecraft/core/Direction$AxisDirection;
+       289: getstatic     #434                // Field net/minecraft/core/Direction$AxisDirection.POSITIVE:Lnet/minecraft/core/Direction$AxisDirection;
+       292: if_acmpne     299
+       295: iconst_1
+       296: goto          300
+       299: iconst_0
+       300: istore        9
+       302: iload         9
+       304: ifeq          317
+       307: aload         7
+       309: aload         8
+       311: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       314: goto          324
+       317: aload         6
+       319: aload         8
+       321: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       324: istore        10
+       326: iload         9
+       328: ifeq          341
+       331: aload         6
+       333: aload         8
+       335: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       338: goto          348
+       341: aload         7
+       343: aload         8
+       345: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       348: istore        11
+       350: aload_3
+       351: ifnonnull     358
+       354: iconst_0
+       355: goto          370
+       358: iload         10
+       360: aload_3
+       361: aload         8
+       363: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       366: isub
+       367: invokestatic  #443                // Method java/lang/Math.abs:(I)I
+       370: istore        12
+       372: aload         4
+       374: ifnonnull     380
+       377: aload_3
+       378: astore        4
+       380: aload         4
+       382: ifnonnull     389
+       385: iconst_0
+       386: goto          402
+       389: iload         11
+       391: aload         4
+       393: aload         8
+       395: invokevirtual #440                // Method net/minecraft/core/BlockPos.get:(Lnet/minecraft/core/Direction$Axis;)I
+       398: isub
+       399: invokestatic  #443                // Method java/lang/Math.abs:(I)I
+       402: istore        13
+       404: aload_2
+       405: iload         12
+       407: invokeinterface #449,  2          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$setLeadingDistance:(I)V
+       412: aload_2
+       413: iload         13
+       415: invokeinterface #453,  2          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker.railways$setTrailingDistance:(I)V
+       420: return
+      LineNumberTable:
+        line 208: 0
+        line 209: 8
+        line 211: 19
+        line 213: 38
+        line 214: 40
+        line 216: 43
+        line 218: 52
+        line 219: 70
+        line 221: 88
+        line 222: 129
+        line 223: 146
+        line 224: 163
+        line 225: 185
+        line 226: 189
+        line 227: 203
+        line 228: 208
+        line 229: 239
+        line 231: 254
+        line 232: 257
+        line 236: 268
+        line 238: 271
+        line 239: 281
+        line 241: 302
+        line 242: 326
+        line 244: 350
+        line 245: 372
+        line 246: 377
+        line 247: 380
+        line 248: 404
+        line 249: 412
+        line 250: 420
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          129     139     9  info   Ljava/util/Map$Entry;
+            0     421     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0     421     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            8     413     2 distanceTracker   Lcom/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker;
+           40     381     3 leadingBogeyPos   Lnet/minecraft/core/BlockPos;
+           43     378     4 trailingBogeyPos   Lnet/minecraft/core/BlockPos;
+           52     369     5    cc   Lcom/simibubi/create/content/trains/entity/CarriageContraption;
+           70     351     6 maxPos   Lnet/minecraft/core/BlockPos;
+           88     333     7 minPos   Lnet/minecraft/core/BlockPos;
+          281     140     8  axis   Lnet/minecraft/core/Direction$Axis;
+          302     119     9 forward   Z
+          326      95    10 leadingBounds   I
+          350      71    11 trailingBounds   I
+          372      49    12 leadingDistance   I
+          404      17    13 trailingDistance   I
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          129     139     9  info   Ljava/util/Map$Entry<Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo;>;
+      StackMapTable: number_of_entries = 18
+        frame_type = 252 /* append */
+          offset_delta = 19
+          locals = [ class com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker ]
+        frame_type = 18 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 68
+          locals = [ class com/railwayteam/railways/mixin/MixinCarriageContraptionEntity, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo, class com/railwayteam/railways/mixin_interfaces/ICarriageBufferDistanceTracker, class net/minecraft/core/BlockPos, class net/minecraft/core/BlockPos, class com/simibubi/create/content/trains/entity/CarriageContraption, class net/minecraft/core/BlockPos, class net/minecraft/core/BlockPos, class java/util/Iterator ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 95
+          locals = [ class java/util/Map$Entry ]
+        frame_type = 50 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 13
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 27
+          locals = [ class net/minecraft/core/Direction$Axis ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ int ]
+        frame_type = 70 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ int ]
+        frame_type = 70 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ int ]
+        frame_type = 75 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ int ]
+        frame_type = 8 /* same */
+        frame_type = 76 /* same_locals_1_stack_item */
+          stack = [ int ]
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#618],#526=[@#527(#528=s#542,#543=s#619)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tickContraption"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/trains/entity/CarriageContraptionEntity;tickActors()V"
+          )]
+        )
+
+  private void noBufferOverrun(net.minecraft.core.BlockPos, java.util.Collection<java.lang.Integer>, net.minecraft.world.entity.player.Player, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>, com.llamalad7.mixinextras.sugar.ref.LocalIntRef);
+    descriptor: (Lnet/minecraft/core/BlockPos;Ljava/util/Collection;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=11, args_size=6
+         0: aload         5
+         2: invokeinterface #456,  1          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.get:()I
+         7: i2d
+         8: dstore        6
+        10: dload         6
+        12: dconst_0
+        13: dcmpl
+        14: ifne          18
+        17: return
+        18: aload_0
+        19: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+        22: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+        25: checkcast     #460                // class com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain
+        28: astore        8
+        30: aload         8
+        32: invokeinterface #462,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$isControlBlocked:()Z
+        37: ifne          76
+        40: aload         8
+        42: invokeinterface #465,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$getBlockedSign:()I
+        47: ifne          76
+        50: dload         6
+        52: dconst_0
+        53: dcmpg
+        54: ifge          76
+        57: aload_0
+        58: getfield      #73                 // Field carriage:Lcom/simibubi/create/content/trains/entity/Carriage;
+        61: getfield      #77                 // Field com/simibubi/create/content/trains/entity/Carriage.train:Lcom/simibubi/create/content/trains/entity/Train;
+        64: getfield      #83                 // Field com/simibubi/create/content/trains/entity/Train.navigation:Lcom/simibubi/create/content/trains/entity/Navigation;
+        67: checkcast     #468                // class com/railwayteam/railways/mixin_interfaces/IBufferBlockCheckableNavigation
+        70: iconst_1
+        71: invokeinterface #470,  2          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IBufferBlockCheckableNavigation.railways$updateControlsBlock:(Z)V
+        76: aload         8
+        78: invokeinterface #462,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$isControlBlocked:()Z
+        83: ifeq          130
+        86: aload         8
+        88: invokeinterface #465,  1          // InterfaceMethod com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain.railways$getBlockedSign:()I
+        93: i2d
+        94: dstore        9
+        96: dload         9
+        98: dconst_0
+        99: dcmpl
+       100: ifne          110
+       103: dload         6
+       105: dconst_0
+       106: dcmpl
+       107: ifgt          122
+       110: dload         9
+       112: dload         6
+       114: invokestatic  #474                // Method net/minecraft/util/Mth.sign:(D)I
+       117: i2d
+       118: dcmpl
+       119: ifne          130
+       122: aload         5
+       124: iconst_0
+       125: invokeinterface #480,  2          // InterfaceMethod com/llamalad7/mixinextras/sugar/ref/LocalIntRef.set:(I)V
+       130: return
+      LineNumberTable:
+        line 255: 0
+        line 256: 10
+        line 258: 18
+        line 261: 30
+        line 262: 57
+        line 265: 76
+        line 266: 86
+        line 267: 96
+        line 268: 122
+        line 271: 130
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           96      34     9 blockedSign   D
+            0     131     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0     131     1 controlsLocalPos   Lnet/minecraft/core/BlockPos;
+            0     131     2 heldControls   Ljava/util/Collection;
+            0     131     3 player   Lnet/minecraft/world/entity/player/Player;
+            0     131     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0     131     5 targetSpeedRef   Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;
+           10     121     6 targetSpeed   D
+           30     101     8 bufferBlockedTrain   Lcom/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     131     2 heldControls   Ljava/util/Collection<Ljava/lang/Integer;>;
+            0     131     4   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ double ]
+        frame_type = 252 /* append */
+          offset_delta = 57
+          locals = [ class com/railwayteam/railways/mixin_interfaces/IBufferBlockedTrain ]
+        frame_type = 252 /* append */
+          offset_delta = 33
+          locals = [ double ]
+        frame_type = 11 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 7
+    Signature: #627                         // (Lnet/minecraft/core/BlockPos;Ljava/util/Collection<Ljava/lang/Integer;>;Lnet/minecraft/world/entity/player/Player;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;Lcom/llamalad7/mixinextras/sugar/ref/LocalIntRef;)V
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#525],#526=[@#527(#528=s#542,#543=s#628)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["control"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/trains/entity/Train;getCurrentStation()Lcom/simibubi/create/content/trains/station/GlobalStation;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+        0: #630(#631=[s#565])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["targetSpeed"]
+          )
+
+  private void railways$storeDistanceTravelled(org.spongepowered.asm.mixin.injection.callback.CallbackInfo, double);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;D)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=3
+         0: aload_0
+         1: dload_2
+         2: putfield      #483                // Field railways$distanceTravelled:D
+         5: return
+      LineNumberTable:
+        line 275: 0
+        line 276: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+            0       6     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0       6     2 distanceTo   D
+    RuntimeVisibleAnnotations:
+      0: #523(#524=[s#618],#526=[@#527(#528=s#542,#543=s#635)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tickContraption"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/createmod/catnip/data/Couple;getFirst()Ljava/lang/Object;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+        0: #630(#631=[s#634],#596=I#597)
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["distanceTo"]
+            ordinal=0
+          )
+
+  public double railways$getDistanceTravelled();
+    descriptor: ()D
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #483                // Field railways$distanceTravelled:D
+         4: dreturn
+      LineNumberTable:
+        line 280: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/railwayteam/railways/mixin/MixinCarriageContraptionEntity;
+}
+SourceFile: "MixinCarriageContraptionEntity.java"
+RuntimeInvisibleAnnotations:
+  0: #640(#528=[c#641],#545=Z#597)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/trains/entity/CarriageContraptionEntity;]
+      remap=false
+    )
+BootstrapMethods:
+  0: #648 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #643 (Ljava/lang/Object;)V
+      #645 REF_invokeVirtual com/railwayteam/railways/content/switches/TrackSwitch.trySetSwitchState:(Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)Z
+      #646 (Lcom/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState;)V
+InnerClasses:
+  public static final #658= #105 of #656; // StructureBlockInfo=class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo of class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate
+  public #661= #198 of #659;              // ConfigBool=class net/createmod/catnip/config/ConfigBase$ConfigBool of class net/createmod/catnip/config/ConfigBase
+  public static final #666= #662 of #664; // SteerDirection=class com/simibubi/create/content/trains/entity/TravellingPoint$SteerDirection of class com/simibubi/create/content/trains/entity/TravellingPoint
+  public static final #669= #217 of #667; // SwitchState=class com/railwayteam/railways/content/switches/TrackSwitchBlock$SwitchState of class com/railwayteam/railways/content/switches/TrackSwitchBlock
+  public #670= #292 of #659;              // ConfigFloat=class net/createmod/catnip/config/ConfigBase$ConfigFloat of class net/createmod/catnip/config/ConfigBase
+  public static #671= #388 of #100;       // Entry=class java/util/Map$Entry of class java/util/Map
+  public static abstract #672= #616 of #112; // Axis=class net/minecraft/core/Direction$Axis of class net/minecraft/core/Direction
+  public static final #673= #435 of #112; // AxisDirection=class net/minecraft/core/Direction$AxisDirection of class net/minecraft/core/Direction
+  public static final #678= #674 of #676; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
