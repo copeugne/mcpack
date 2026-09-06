@@ -1,0 +1,290 @@
+Compiled from "NeoForgeClientInitializer.java"
+public class vazkii.patchouli.neoforge.client.NeoForgeClientInitializer {
+  private static final java.util.concurrent.locks.Lock BOOK_LOAD_LOCK;
+
+  private static final java.util.concurrent.locks.Condition BOOK_LOAD_CONDITION;
+
+  private static boolean booksLoaded;
+
+  public vazkii.patchouli.neoforge.client.NeoForgeClientInitializer();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void signalBooksLoaded();
+    Code:
+       0: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+       3: invokeinterface #13,  1           // InterfaceMethod java/util/concurrent/locks/Lock.lock:()V
+       8: iconst_1
+       9: putstatic     #18                 // Field booksLoaded:Z
+      12: getstatic     #22                 // Field BOOK_LOAD_CONDITION:Ljava/util/concurrent/locks/Condition;
+      15: invokeinterface #26,  1           // InterfaceMethod java/util/concurrent/locks/Condition.signalAll:()V
+      20: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+      23: invokeinterface #31,  1           // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      28: return
+
+  private static java.util.List<net.minecraft.resources.ResourceLocation> getBookModels();
+    Code:
+       0: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+       3: invokeinterface #13,  1           // InterfaceMethod java/util/concurrent/locks/Lock.lock:()V
+       8: getstatic     #18                 // Field booksLoaded:Z
+      11: ifne          25
+      14: getstatic     #22                 // Field BOOK_LOAD_CONDITION:Ljava/util/concurrent/locks/Condition;
+      17: invokeinterface #34,  1           // InterfaceMethod java/util/concurrent/locks/Condition.awaitUninterruptibly:()V
+      22: goto          8
+      25: getstatic     #37                 // Field vazkii/patchouli/common/book/BookRegistry.INSTANCE:Lvazkii/patchouli/common/book/BookRegistry;
+      28: getfield      #43                 // Field vazkii/patchouli/common/book/BookRegistry.books:Ljava/util/Map;
+      31: invokeinterface #47,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      36: invokeinterface #53,  1           // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      41: invokedynamic #59,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      46: invokeinterface #63,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      51: invokeinterface #69,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      56: astore_0
+      57: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+      60: invokeinterface #31,  1           // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      65: aload_0
+      66: areturn
+      67: astore_1
+      68: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+      71: invokeinterface #31,  1           // InterfaceMethod java/util/concurrent/locks/Lock.unlock:()V
+      76: aload_1
+      77: athrow
+    Exception table:
+       from    to  target type
+           8    57    67   any
+
+  public static void modelRegistry(net.neoforged.neoforge.client.event.ModelEvent$RegisterAdditional);
+    Code:
+       0: invokestatic  #73                 // Method getBookModels:()Ljava/util/List;
+       3: invokeinterface #76,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       8: invokedynamic #79,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      13: invokeinterface #63,  2           // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      18: aload_0
+      19: dup
+      20: invokestatic  #80                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: pop
+      24: invokedynamic #86,  0             // InvokeDynamic #2:accept:(Lnet/neoforged/neoforge/client/event/ModelEvent$RegisterAdditional;)Ljava/util/function/Consumer;
+      29: invokeinterface #90,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      34: invokedynamic #94,  0             // InvokeDynamic #3:call:()Lnet/minecraft/client/renderer/item/ItemPropertyFunction;
+      39: astore_1
+      40: getstatic     #98                 // Field vazkii/patchouli/common/item/PatchouliItems.BOOK:Lnet/minecraft/world/item/Item;
+      43: ldc           #106                // String patchouli
+      45: ldc           #108                // String completion
+      47: invokestatic  #110                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      50: aload_1
+      51: invokestatic  #116                // Method net/minecraft/client/renderer/item/ItemProperties.register:(Lnet/minecraft/world/item/Item;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/renderer/item/ItemPropertyFunction;)V
+      54: return
+
+  public static void registerReloadListeners(net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #122                // Field vazkii/patchouli/client/book/BookContentResourceListenerLoader.INSTANCE:Lvazkii/patchouli/client/book/BookContentResourceListenerLoader;
+       4: invokevirtual #127                // Method net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent.registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+       7: aload_0
+       8: invokedynamic #133,  0            // InvokeDynamic #4:onResourceManagerReload:()Lnet/minecraft/server/packs/resources/ResourceManagerReloadListener;
+      13: invokevirtual #127                // Method net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent.registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+      16: return
+
+  public static void registerOverlays(net.neoforged.neoforge.client.event.RegisterGuiLayersEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #137                // Field net/neoforged/neoforge/client/gui/VanillaGuiLayers.CROSSHAIR:Lnet/minecraft/resources/ResourceLocation;
+       4: ldc           #106                // String patchouli
+       6: ldc           #143                // String book_overlay
+       8: invokestatic  #110                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      11: invokedynamic #145,  0            // InvokeDynamic #5:render:()Lnet/minecraft/client/gui/LayeredDraw$Layer;
+      16: invokevirtual #149                // Method net/neoforged/neoforge/client/event/RegisterGuiLayersEvent.registerAbove:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/gui/LayeredDraw$Layer;)V
+      19: aload_0
+      20: getstatic     #155                // Field net/neoforged/neoforge/client/gui/VanillaGuiLayers.BOSS_OVERLAY:Lnet/minecraft/resources/ResourceLocation;
+      23: ldc           #106                // String patchouli
+      25: ldc           #158                // String multiblock_progress
+      27: invokestatic  #110                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      30: invokedynamic #160,  0            // InvokeDynamic #6:render:()Lnet/minecraft/client/gui/LayeredDraw$Layer;
+      35: invokevirtual #161                // Method net/neoforged/neoforge/client/event/RegisterGuiLayersEvent.registerBelow:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/gui/LayeredDraw$Layer;)V
+      38: return
+
+  public static void onInitializeClient(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: getstatic     #164                // Field vazkii/patchouli/client/book/ClientBookRegistry.INSTANCE:Lvazkii/patchouli/client/book/ClientBookRegistry;
+       3: invokevirtual #169                // Method vazkii/patchouli/client/book/ClientBookRegistry.init:()V
+       6: invokestatic  #172                // Method vazkii/patchouli/client/base/PersistentData.setup:()V
+       9: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      12: invokedynamic #183,  0            // InvokeDynamic #7:accept:()Ljava/util/function/Consumer;
+      17: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      22: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      25: invokedynamic #191,  0            // InvokeDynamic #8:accept:()Ljava/util/function/Consumer;
+      30: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      35: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      38: invokedynamic #192,  0            // InvokeDynamic #9:accept:()Ljava/util/function/Consumer;
+      43: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      48: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      51: invokedynamic #193,  0            // InvokeDynamic #10:accept:()Ljava/util/function/Consumer;
+      56: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      61: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      64: invokedynamic #194,  0            // InvokeDynamic #11:accept:()Ljava/util/function/Consumer;
+      69: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      74: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      77: invokedynamic #195,  0            // InvokeDynamic #12:accept:()Ljava/util/function/Consumer;
+      82: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      87: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      90: invokedynamic #196,  0            // InvokeDynamic #13:accept:()Ljava/util/function/Consumer;
+      95: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     100: getstatic     #177                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+     103: invokedynamic #197,  0            // InvokeDynamic #14:accept:()Ljava/util/function/Consumer;
+     108: invokeinterface #186,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     113: return
+
+  public static void replaceBookModel(net.neoforged.neoforge.client.event.ModelEvent$ModifyBakingResult);
+    Code:
+       0: getstatic     #198                // Field vazkii/patchouli/common/item/PatchouliItems.BOOK_ID:Lnet/minecraft/resources/ResourceLocation;
+       3: invokestatic  #201                // Method net/minecraft/client/resources/model/ModelResourceLocation.inventory:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/client/resources/model/ModelResourceLocation;
+       6: astore_1
+       7: aload_0
+       8: invokevirtual #207                // Method net/neoforged/neoforge/client/event/ModelEvent$ModifyBakingResult.getModels:()Ljava/util/Map;
+      11: aload_1
+      12: invokedynamic #213,  0            // InvokeDynamic #15:apply:()Ljava/util/function/BiFunction;
+      17: invokeinterface #216,  3          // InterfaceMethod java/util/Map.computeIfPresent:(Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
+      22: pop
+      23: return
+
+  private static net.minecraft.client.resources.model.BakedModel lambda$replaceBookModel$12(net.minecraft.client.resources.model.ModelResourceLocation, net.minecraft.client.resources.model.BakedModel);
+    Code:
+       0: new           #220                // class vazkii/patchouli/client/base/BookModel
+       3: dup
+       4: aload_1
+       5: invokedynamic #222,  0            // InvokeDynamic #16:apply:()Ljava/util/function/Function;
+      10: invokespecial #223                // Method vazkii/patchouli/client/base/BookModel."<init>":(Lnet/minecraft/client/resources/model/BakedModel;Ljava/util/function/Function;)V
+      13: areturn
+
+  private static net.minecraft.client.resources.model.BakedModel lambda$replaceBookModel$11(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: invokestatic  #226                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokevirtual #232                // Method net/minecraft/client/Minecraft.getModelManager:()Lnet/minecraft/client/resources/model/ModelManager;
+       6: aload_0
+       7: invokestatic  #236                // Method net/minecraft/client/resources/model/ModelResourceLocation.standalone:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/client/resources/model/ModelResourceLocation;
+      10: invokevirtual #239                // Method net/minecraft/client/resources/model/ModelManager.getModel:(Lnet/minecraft/client/resources/model/ModelResourceLocation;)Lnet/minecraft/client/resources/model/BakedModel;
+      13: areturn
+
+  private static void lambda$onInitializeClient$10(net.neoforged.neoforge.client.event.RenderTooltipEvent$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #245                // Method net/neoforged/neoforge/client/event/RenderTooltipEvent$Pre.getGraphics:()Lnet/minecraft/client/gui/GuiGraphics;
+       4: aload_0
+       5: invokevirtual #251                // Method net/neoforged/neoforge/client/event/RenderTooltipEvent$Pre.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+       8: aload_0
+       9: invokevirtual #255                // Method net/neoforged/neoforge/client/event/RenderTooltipEvent$Pre.getX:()I
+      12: aload_0
+      13: invokevirtual #259                // Method net/neoforged/neoforge/client/event/RenderTooltipEvent$Pre.getY:()I
+      16: invokestatic  #262                // Method vazkii/patchouli/client/handler/TooltipHandler.onTooltip:(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/item/ItemStack;II)V
+      19: return
+
+  private static void lambda$onInitializeClient$9(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent$LoggingOut);
+    Code:
+       0: invokestatic  #268                // Method vazkii/patchouli/client/base/ClientAdvancements.playerLogout:()V
+       3: return
+
+  private static void lambda$onInitializeClient$8(net.neoforged.neoforge.client.event.RenderFrameEvent$Post);
+    Code:
+       0: invokestatic  #273                // Method vazkii/patchouli/client/base/ClientTicker.renderTickEnd:()V
+       3: return
+
+  private static void lambda$onInitializeClient$7(net.neoforged.neoforge.client.event.RenderFrameEvent$Pre);
+    Code:
+       0: aload_0
+       1: invokevirtual #278                // Method net/neoforged/neoforge/client/event/RenderFrameEvent$Pre.getPartialTick:()Lnet/minecraft/client/DeltaTracker;
+       4: iconst_0
+       5: invokeinterface #284,  2          // InterfaceMethod net/minecraft/client/DeltaTracker.getGameTimeDeltaPartialTick:(Z)F
+      10: invokestatic  #290                // Method vazkii/patchouli/client/base/ClientTicker.renderTickStart:(F)V
+      13: return
+
+  private static void lambda$onInitializeClient$6(net.neoforged.neoforge.client.event.ClientTickEvent$Post);
+    Code:
+       0: invokestatic  #226                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokestatic  #294                // Method vazkii/patchouli/client/handler/MultiblockVisualizationHandler.onClientTick:(Lnet/minecraft/client/Minecraft;)V
+       6: return
+
+  private static void lambda$onInitializeClient$5(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    Code:
+       0: aload_0
+       1: invokevirtual #300                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: aload_0
+       5: invokevirtual #306                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+       8: aload_0
+       9: invokevirtual #310                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      12: aload_0
+      13: invokevirtual #314                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+      16: invokestatic  #318                // Method vazkii/patchouli/client/handler/MultiblockVisualizationHandler.onPlayerInteract:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+      19: astore_1
+      20: aload_1
+      21: invokevirtual #322                // Method net/minecraft/world/InteractionResult.consumesAction:()Z
+      24: ifeq          37
+      27: aload_0
+      28: iconst_1
+      29: invokevirtual #328                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCanceled:(Z)V
+      32: aload_0
+      33: aload_1
+      34: invokevirtual #332                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.setCancellationResult:(Lnet/minecraft/world/InteractionResult;)V
+      37: return
+
+  private static void lambda$onInitializeClient$4(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent$RightClickBlock);
+    Code:
+       0: aload_0
+       1: invokevirtual #300                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getEntity:()Lnet/minecraft/world/entity/player/Player;
+       4: aload_0
+       5: invokevirtual #306                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getLevel:()Lnet/minecraft/world/level/Level;
+       8: aload_0
+       9: invokevirtual #310                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHand:()Lnet/minecraft/world/InteractionHand;
+      12: aload_0
+      13: invokevirtual #314                // Method net/neoforged/neoforge/event/entity/player/PlayerInteractEvent$RightClickBlock.getHitVec:()Lnet/minecraft/world/phys/BlockHitResult;
+      16: invokestatic  #336                // Method vazkii/patchouli/client/handler/BookRightClickHandler.onRightClick:(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;
+      19: pop
+      20: return
+
+  private static void lambda$onInitializeClient$3(net.neoforged.neoforge.client.event.ClientTickEvent$Post);
+    Code:
+       0: invokestatic  #226                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: invokestatic  #341                // Method vazkii/patchouli/client/base/ClientTicker.endClientTick:(Lnet/minecraft/client/Minecraft;)V
+       6: return
+
+  private static void lambda$registerReloadListeners$2(net.minecraft.server.packs.resources.ResourceManager);
+    Code:
+       0: invokestatic  #226                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+       3: getfield      #344                // Field net/minecraft/client/Minecraft.level:Lnet/minecraft/client/multiplayer/ClientLevel;
+       6: ifnull        29
+       9: getstatic     #348                // Field vazkii/patchouli/api/PatchouliAPI.LOGGER:Lorg/apache/logging/log4j/Logger;
+      12: ldc_w         #352                // String Reloading resource pack-based books
+      15: invokeinterface #354,  2          // InterfaceMethod org/apache/logging/log4j/Logger.info:(Ljava/lang/String;)V
+      20: getstatic     #164                // Field vazkii/patchouli/client/book/ClientBookRegistry.INSTANCE:Lvazkii/patchouli/client/book/ClientBookRegistry;
+      23: invokevirtual #360                // Method vazkii/patchouli/client/book/ClientBookRegistry.reload:()V
+      26: goto          40
+      29: getstatic     #348                // Field vazkii/patchouli/api/PatchouliAPI.LOGGER:Lorg/apache/logging/log4j/Logger;
+      32: ldc_w         #363                // String Not reloading resource pack-based books as client world is missing
+      35: invokeinterface #365,  2          // InterfaceMethod org/apache/logging/log4j/Logger.debug:(Ljava/lang/String;)V
+      40: return
+
+  private static float lambda$modelRegistry$1(net.minecraft.world.item.ItemStack, net.minecraft.client.multiplayer.ClientLevel, net.minecraft.world.entity.LivingEntity, int);
+    Code:
+       0: aload_0
+       1: invokestatic  #368                // Method vazkii/patchouli/common/item/ItemModBook.getCompletion:(Lnet/minecraft/world/item/ItemStack;)F
+       4: freturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$getBookModels$0(vazkii.patchouli.common.book.Book);
+    Code:
+       0: aload_0
+       1: getfield      #374                // Field vazkii/patchouli/common/book/Book.model:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  static {};
+    Code:
+       0: new           #379                // class java/util/concurrent/locks/ReentrantLock
+       3: dup
+       4: invokespecial #381                // Method java/util/concurrent/locks/ReentrantLock."<init>":()V
+       7: putstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+      10: getstatic     #7                  // Field BOOK_LOAD_LOCK:Ljava/util/concurrent/locks/Lock;
+      13: invokeinterface #382,  1          // InterfaceMethod java/util/concurrent/locks/Lock.newCondition:()Ljava/util/concurrent/locks/Condition;
+      18: putstatic     #22                 // Field BOOK_LOAD_CONDITION:Ljava/util/concurrent/locks/Condition;
+      21: iconst_0
+      22: putstatic     #18                 // Field booksLoaded:Z
+      25: return
+}
