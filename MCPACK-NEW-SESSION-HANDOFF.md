@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Aether provider coverage is now RESOLVED in the final provider-scope.md section.
+The census has advanced to 76 resolved and 60 open. Nine focused Aether cases
+pass, along with scoped Ruff/Basedpyright. The provider check binds fifteen
+existing source manifests, full archive partition, entry/common mixins and the
+three exact developer functions. No further Aether census helper audit is needed.
+Preserve the holiday-tree canonical boundary and inactive optional portals;
+family grouping and attributes remain separate. Continue the remaining provider
+queue, starting with Deep Aether and reusing its existing captures. Final Item 8
+gate, Codex review loop and verified main merge remain mandatory.
+
 Latest aac294c and dc5cda4 are pushed and verified. Six focused Aether cases
 and scoped checks pass. Optional portal activation/components are resolved:
 frozen common config disables automatic activation, six roots are absent from
