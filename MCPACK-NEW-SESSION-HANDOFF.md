@@ -6,6 +6,36 @@
 
 ### Continuation update - 2026-09-06
 
+Latest source checkpoint at 174dba6 is pushed and remote-ref verified.
+Census remains 72 resolved providers and 64 open; Quark is not closed.
+quark-provider-entries preserves 26 previously uncaptured entry/module/feature/
+mixin classes, with exact r1 reproduction and passing scoped extractor checks.
+Reuse the earlier 34 Quark classes and recorded nonregistry generators.
+
+Remaining Quark scope checks: bundled Biolith, SpawnerReplacerModule's direct
+callback, and final full packaged-resource/entry-role reconciliation. The captured
+SpawnerBlockEntityMixin calls that experimental module. Frozen quark-common.toml
+has experimental."Spawner Replacer" = false (line 1648); bind its implementation
+to this setting rather than inferring activation from the hook declaration.
+Glimmering Weald, Gold Bars and Variant Chests are true in the frozen file.
+No new independent family has been accepted in this source increment.
+
+Quark archive SHA-256 is
+989c465df2e4cb9f602840c2eec143358bf11462cc19dc0b0c7c9f17449e75a5.
+Initial full listing has 9367 files and 967 classes, fifteen root worldgen JSONs,
+optional datapacks (including three vanilla ore configured-feature overrides)
+and a programmer-art resource pack. The nested archive path is
+META-INF/jarjar/biolith-neoforge-3.0.10.jar, SHA-256
+7f5c86757c61f56c7dccf602b44a2c17ba08d32d7e88cb531cbcd0c7b4789eab.
+It has 106 files and 95 classes, twelve common and three NeoForge mixin entries,
+a NeoForge mixin plugin, one platform service and no packaged data definitions.
+These observations are leads for a bounded shared-biome-provider reconciliation,
+not a closure. GlimmeringWealdModule calls Biolith BiomePlacement.addOverworld.
+Zeta and its interface-delegate mixin plugin remain a separate provider row.
+Do not recapture existing Quark generators or audit unrelated gameplay internals.
+Final canonical count, attributes and review/main merge remain open. This turn
+made progress through delivered source evidence; no blocker is present.
+
 Latest checkpoint at 82238e0: shared YUNG API provider scope is closed,
 pushed and remote-ref verified. Census: 72 resolved providers, 64 open. One
 focused case and scoped quality checks pass. Source a796af9 preserves 43
