@@ -224,6 +224,7 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/teamresourceful/resourcefullib/neoforge/ResourcefulLibNeoForge.class",
     "com/teamresourceful/resourcefullib/ResourcefulLib.class",
+    "com/teamresourceful/resourcefullib/common/utils/files/GlobalStorage.class",
     "com/teamresourceful/resourcefullib/neoforge/NeoForgeServerApiProxy.class",
     "com/teamresourceful/resourcefullib/common/network/neoforge/NeoForgeNetworking.class",
     "com/teamresourceful/resourcefullib/mixins/neoforge/ResourcefulFlowingFluidMixin.class",
