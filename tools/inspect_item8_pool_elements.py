@@ -221,6 +221,11 @@ GENERATION_PREFIXES = (
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "dan200/computercraft/ComputerCraft.class",
+    "dan200/computercraft/shared/CommonHooks.class",
+    "dan200/computercraft/shared/ModRegistry.class",
+    "dan200/computercraft/impl/AbstractComputerCraftAPI.class",
+    "dan200/computercraft/shared/integration/CreateIntegration.class",
+    "dan200/computercraft/shared/integration/MoreRedIntegration.class",
     "dan200/computercraft/shared/ForgeCommonHooks.class",
     "dan200/computercraft/mixin/V3818_3Mixin.class",
     "dan200/computercraft/mixin/DataFixersMixin.class",
