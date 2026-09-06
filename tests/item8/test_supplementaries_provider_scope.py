@@ -228,3 +228,20 @@ def test_supplementaries_bundled_companion_service() -> None:
             assert hashlib.sha256(nested.read(row["class"])).hexdigest() == row["class_sha256"]
             raw = (directory / row["disassembly"]).read_bytes()
             assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+
+
+def test_supplementaries_trinkets_class_fallback_is_absent() -> None:
+    target = "dev/emi/trinkets/api/TrinketsApi.class"
+    for source in retained_sources(Path.cwd()):
+        payload = source.path.read_bytes()
+        assert hashlib.sha256(payload).hexdigest() == source.sha256
+        pending = [(source.name, payload)]
+        while pending:
+            location, payload = pending.pop()
+            with ZipFile(BytesIO(payload)) as archive:
+                names = archive.namelist()
+                assert not any(n == target or n.endswith("/" + target) for n in names), location
+                pending.extend(
+                    (location + "!/" + name, archive.read(name))
+                    for name in names if name.endswith(".jar")
+                )
