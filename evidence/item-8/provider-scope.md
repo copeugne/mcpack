@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 87 of 136. The exact queue below has 49 open rows.
+Supported provider dispositions: 88 of 136. The exact queue below has 48 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -681,7 +681,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `railways-0.2.1+neoforge-mc1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `railways-0.2.1+neoforge-mc1.21.1.jar` | Provider entry eaa7a6b, player assembly 0e7edb0, common hooks d17d854; test_railways_provider_scope.py | RESOLVED: Construction, player vehicles, existing-block/entity behavior, data migration and visual/network support. No independent structure family. See final Railways disposition below. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | `regions-unexplored-feature-code`, `regions-unexplored-feature-config-code` | Reuse feature/config captures; bind modifiers and template-pool component consumers; exclude terrain with rationale. |
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
@@ -701,6 +701,62 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Final Railways provider disposition
+
+Railways membership is RESOLVED with no independent structure family. The
+packaged vehicle, optional recipe pack and three visual resource packs are
+accounted for in the checkpoint below. Source d17d854 completes the remaining
+105 common hooks; together with StructureMixin, all 106 declared common entries
+are bound to the actual JAR and retained disassembly. The 68 separately declared
+client entries are distinguished from that set. Both mixin plugin bodies are
+retained in eaa7a6b. Source and exact reproduction commands are under sources/.
+
+The inspected targets, injected methods and bodies establish these roles:
+
+- Accessors expose existing contraption, carriage, block-entity, inventory,
+  navigation, track, train, camera and rendering state. Static accessor stubs
+  do not create sites. Fields added to edge data, bogeys and flywheels likewise
+  extend existing object state.
+- Train, carriage, navigation, schedule, signal, station, track-edge, observer
+  and travelling-point hooks change existing vehicle routing, coupling, fuel,
+  controls, serialization and display. Station assembly and relocation act on
+  existing train graphs. Minecart hooks construct the custom minecart type;
+  they do not place authored world locations.
+- Track placement and block-use hooks alter player construction, crossing
+  selection, casing, collision shapes, bogey styles and item drops. Roller
+  paving is invoked from an operating contraption's movement context. Wrench
+  hooks disassemble an existing train/station and drop its schedule. Deployer
+  activation permits handcar item use. These are construction interactions,
+  not independent world-generation entry points.
+- Door, sliding-door and pathfinder hooks alter existing door interaction;
+  explosion/fireball hooks alter damage to tracks. Containers, toolboxes,
+  mounted storage, fluid networks, seats and conductor interaction hooks
+  alter existing inventories, blocks and entities.
+- ChunkSerializer, IOWorker, player-save and StructureTemplate-save hooks add
+  data-version metadata. DataFixTypes, NbtUtils, schematic, track-material and
+  saved-railway hooks migrate or clean existing data. None introduces a new
+  authored layout or structure root.
+- Conductor possession changes camera, movement, player tracking and packet
+  broadcast behavior. Voice-chat compatibility changes the speaking/listening
+  position and identity. Key registration, configuration UI, nixie displays,
+  boiler client initialization and renderer access are support roles. The
+  custom-payload hook dispatches the existing Railways packet set.
+
+The loader and ModSetup dispatch register construction content and supporting
+capabilities, with the actual common event wrappers retained and inspected.
+The two mixin plugins select declared compatibility hooks; their ASM operations
+extend rolling modes and container access. No additional mixin list or packaged
+code-loading mechanism supplies an unexplained structure route. Full archive
+accounting includes META-INF, the access widener and optional packs. Further
+train gameplay or security acceptance belongs to its applicable later gate;
+it is unnecessary to determine whether these contributions create a family.
+
+The existing three focused cases now also require every declared common hook
+and both plugin classes to be covered by hash-bound source. They pass (0.29s),
+with scoped Ruff and Basedpyright passing. No new runtime experiment, schema or
+measurement system was added. Census: 88 resolved providers, 48 open. Canonical
+family grouping and Item 8's eleven attributes remain unfinished.
 
 ## Railways membership checkpoint
 

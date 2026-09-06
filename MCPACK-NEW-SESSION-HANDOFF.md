@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Railways membership is RESOLVED. Source d17d854 completes all 106 declared
+common hooks together with the prior StructureMixin capture. Their roles and
+all packaged resources are accounted for in the final provider disposition.
+Three focused cases pass (0.29s); scoped Ruff/Basedpyright pass. No independent
+family added. Census: 88 resolved, 48 open. Remaining packaged-generation
+providers: Create, Forgified Fabric API and Regions Unexplored. Reuse RU's
+existing checkpoint. The 24 code-only and 21 unmatched rows remain. Next:
+finish the remaining membership checks, then canonical grouping before detailed
+attributes. No runtime or capture process is live. Older Railways checkpoints
+below preserve the now-resolved steps and must not restart them.
+
 Railways is current and remains OPEN. Delivered source eaa7a6b and 0e7edb0
 covers fifteen classes, including all eight annotated entries, both mixin plugins,
 common setup/events, StructureMixin and player handcar assembly. The focused

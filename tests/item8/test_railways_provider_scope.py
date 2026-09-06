@@ -3,6 +3,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import json
+import tomllib
 from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
@@ -26,6 +27,11 @@ def test_railways_entry_and_player_assembly_sources() -> None:
                 "railways-provider",
                 "7eac52c33ecf6f99967a211eca99697b3730139d77b699c1753e0dcbd0cb07a6",
                 13,
+            ),
+            (
+                "railways-common-hooks",
+                "673777056d1a7d0f26970349a7ea0265bc2992bee416d42999e342e29b3c2d93",
+                105,
             ),
             (
                 "railways-assembly",
@@ -61,6 +67,30 @@ def test_railways_entry_and_player_assembly_sources() -> None:
         }
         assert len(annotated) == 8
         assert annotated <= captured
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        entries = cast("list[dict[str, str]]", metadata["mixins"])
+        assert metadata["modLoader"] == "javafml"
+        assert {e["config"] for e in entries} == {
+            "railways.mixins.json",
+            "railways-common.mixins.json",
+        }
+        common: set[str] = set()
+        client: set[str] = set()
+        for entry in entries:
+            config = cast("dict[str, JsonValue]", json.loads(archive.read(entry["config"])))
+            prefix = cast("str", config["package"]).replace(".", "/") + "/"
+            common.update(
+                prefix + n.replace(".", "/") + ".class" for n in cast("list[str]", config["mixins"])
+            )
+            client.update(
+                prefix + n.replace(".", "/") + ".class" for n in cast("list[str]", config["client"])
+            )
+            assert cast("str", config["plugin"]).replace(".", "/") + ".class" in captured
+            assert not config.get("server")
+        assert len(common) == 106
+        assert len(client) == 68
+        assert common <= captured
+        assert not common & client
 
 
 def test_railways_payload_and_vehicle_template() -> None:
