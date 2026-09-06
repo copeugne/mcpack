@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches cb74b266 and reproduces exactly. Working groups: 405. Voyager
+explicit provisionals: zero. The real broader backlog is the 128 named records
+below, plus nonregistry reconciliation and required attributes. Next work must
+resolve those records rather than reporting the former Voyager-only count.
+
 The last fourteen explicit Voyager provisionals are resolved, with seventeen
 affected cases and scoped quality checks passing. Working groups remain 405.
 IMPORTANT: this is not the full remaining canonical backlog. A broader inspection
