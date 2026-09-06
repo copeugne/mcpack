@@ -1,0 +1,86 @@
+Compiled from "NeoForgePlatformHelper.java"
+public class com.terraformersmc.biolith.impl.platform.NeoForgePlatformHelper implements com.terraformersmc.biolith.impl.platform.services.PlatformHelper {
+  private static final com.terraformersmc.biolith.impl.compat.TerraBlenderCompat COMPAT_TERRABLENDER;
+
+  public com.terraformersmc.biolith.impl.platform.NeoForgePlatformHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #31                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String getPlatformName();
+    Code:
+       0: ldc           #37                 // String NeoForge
+       2: areturn
+
+  public boolean isModLoaded(java.lang.String);
+    Code:
+       0: invokestatic  #46                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #49                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  public boolean isDevelopmentEnvironment();
+    Code:
+       0: invokestatic  #57                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  public java.nio.file.Path getConfigDir();
+    Code:
+       0: invokestatic  #64                 // Method net/neoforged/fml/loading/FMLConfig.defaultConfigPath:()Ljava/lang/String;
+       3: iconst_0
+       4: anewarray     #66                 // class java/lang/String
+       7: invokestatic  #72                 // InterfaceMethod java/nio/file/Path.of:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+      10: areturn
+
+  public int describeModernerBeta(com.mojang.brigadier.context.CommandContext<net.minecraft.commands.CommandSourceStack>, int, int, int, net.minecraft.server.level.ServerLevel, net.minecraft.world.level.biome.BiomeSource, net.minecraft.world.level.biome.Climate$ParameterList<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.world.level.biome.Climate$Sampler);
+    Code:
+       0: aload_1
+       1: iload_2
+       2: iload_3
+       3: iload         4
+       5: aload         5
+       7: aload         6
+       9: aload         7
+      11: aload         8
+      13: invokestatic  #88                 // Method com/terraformersmc/biolith/impl/compat/ModernerBetaCompatNeoForge.describe:(Lcom/mojang/brigadier/context/CommandContext;IIILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/biome/Climate$ParameterList;Lnet/minecraft/world/level/biome/Climate$Sampler;)I
+      16: ireturn
+
+  public com.terraformersmc.biolith.impl.compat.TerraBlenderCompat getTerraBlenderCompat();
+    Code:
+       0: getstatic     #100                // Field COMPAT_TERRABLENDER:Lcom/terraformersmc/biolith/impl/compat/TerraBlenderCompat;
+       3: areturn
+
+  public void registerCommandRegistrationCallback(org.apache.commons.lang3.function.TriFunction<com.mojang.brigadier.CommandDispatcher<net.minecraft.commands.CommandSourceStack>, net.minecraft.commands.CommandBuildContext, net.minecraft.commands.Commands$CommandSelection, com.mojang.brigadier.tree.LiteralCommandNode<net.minecraft.commands.CommandSourceStack>>);
+    Code:
+       0: getstatic     #110                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       3: aload_1
+       4: invokedynamic #130,  0            // InvokeDynamic #0:accept:(Lorg/apache/commons/lang3/function/TriFunction;)Ljava/util/function/Consumer;
+       9: invokeinterface #136,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      14: return
+
+  private static void lambda$registerCommandRegistrationCallback$0(org.apache.commons.lang3.function.TriFunction, net.neoforged.neoforge.event.RegisterCommandsEvent);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #145                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+       5: aload_1
+       6: invokevirtual #149                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+       9: aload_1
+      10: invokevirtual #153                // Method net/neoforged/neoforge/event/RegisterCommandsEvent.getCommandSelection:()Lnet/minecraft/commands/Commands$CommandSelection;
+      13: invokeinterface #159,  4          // InterfaceMethod org/apache/commons/lang3/function/TriFunction.apply:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      18: pop
+      19: return
+
+  static {};
+    Code:
+       0: new           #163                // class com/terraformersmc/biolith/impl/compat/TerraBlenderCompatNeoForge
+       3: dup
+       4: invokespecial #164                // Method com/terraformersmc/biolith/impl/compat/TerraBlenderCompatNeoForge."<init>":()V
+       7: putstatic     #100                // Field COMPAT_TERRABLENDER:Lcom/terraformersmc/biolith/impl/compat/TerraBlenderCompat;
+      10: return
+}

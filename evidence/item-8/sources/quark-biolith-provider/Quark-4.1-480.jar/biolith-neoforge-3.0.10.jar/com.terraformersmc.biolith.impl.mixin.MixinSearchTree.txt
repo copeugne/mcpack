@@ -1,0 +1,695 @@
+Classfile Quark-4.1-480.jar!/META-INF/jarjar/biolith-neoforge-3.0.10.jar!/com/terraformersmc/biolith/impl/mixin/MixinSearchTree.class
+  Last modified Jan 1, 1980; size 6570 bytes
+  SHA-256 checksum 12e30f2b6446c6b205e12982a01a5cc0c969ef7c320f39418fb416b0904dccf2
+  Compiled from "MixinSearchTree.java"
+public class com.terraformersmc.biolith.impl.mixin.MixinSearchTree<T extends java.lang.Object> extends java.lang.Object implements com.terraformersmc.biolith.impl.biome.InterfaceSearchTree<T>
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/terraformersmc/biolith/impl/mixin/MixinSearchTree
+  super_class: #5                         // java/lang/Object
+  interfaces: 1, fields: 3, methods: 3, attributes: 4
+Constant pool:
+    #1 = Utf8               com/terraformersmc/biolith/impl/mixin/MixinSearchTree
+    #2 = Class              #1            // com/terraformersmc/biolith/impl/mixin/MixinSearchTree
+    #3 = Utf8               <T:Ljava/lang/Object;>Ljava/lang/Object;Lcom/terraformersmc/biolith/impl/biome/InterfaceSearchTree<TT;>;
+    #4 = Utf8               java/lang/Object
+    #5 = Class              #4            // java/lang/Object
+    #6 = Utf8               com/terraformersmc/biolith/impl/biome/InterfaceSearchTree
+    #7 = Class              #6            // com/terraformersmc/biolith/impl/biome/InterfaceSearchTree
+    #8 = Utf8               MixinSearchTree.java
+    #9 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #10 = Utf8               value
+   #11 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree;
+   #12 = Utf8               net/minecraft/world/level/biome/Climate$TargetPoint
+   #13 = Class              #12           // net/minecraft/world/level/biome/Climate$TargetPoint
+   #14 = Utf8               net/minecraft/world/level/biome/Climate
+   #15 = Class              #14           // net/minecraft/world/level/biome/Climate
+   #16 = Utf8               TargetPoint
+   #17 = Utf8               net/minecraft/world/level/biome/Climate$RTree
+   #18 = Class              #17           // net/minecraft/world/level/biome/Climate$RTree
+   #19 = Utf8               RTree
+   #20 = Utf8               net/minecraft/world/level/biome/Climate$RTree$Node
+   #21 = Class              #20           // net/minecraft/world/level/biome/Climate$RTree$Node
+   #22 = Utf8               Node
+   #23 = Utf8               net/minecraft/world/level/biome/Climate$RTree$Leaf
+   #24 = Class              #23           // net/minecraft/world/level/biome/Climate$RTree$Leaf
+   #25 = Utf8               Leaf
+   #26 = Utf8               net/minecraft/world/level/biome/Climate$DistanceMetric
+   #27 = Class              #26           // net/minecraft/world/level/biome/Climate$DistanceMetric
+   #28 = Utf8               DistanceMetric
+   #29 = Utf8               net/minecraft/world/level/biome/Climate$RTree$SubTree
+   #30 = Class              #29           // net/minecraft/world/level/biome/Climate$RTree$SubTree
+   #31 = Utf8               SubTree
+   #32 = Utf8               root
+   #33 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #34 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$Node<TT;>;
+   #35 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #36 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #37 = Utf8               previousUltimateNode
+   #38 = Utf8               Ljava/lang/ThreadLocal;
+   #39 = Utf8               Ljava/lang/ThreadLocal<Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;>;
+   #40 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #41 = Utf8               previousPenultimateNode
+   #42 = Utf8               <init>
+   #43 = Utf8               ()V
+   #44 = NameAndType        #42:#43       // "<init>":()V
+   #45 = Methodref          #5.#44        // java/lang/Object."<init>":()V
+   #46 = Utf8               java/lang/ThreadLocal
+   #47 = Class              #46           // java/lang/ThreadLocal
+   #48 = Methodref          #47.#44       // java/lang/ThreadLocal."<init>":()V
+   #49 = NameAndType        #37:#38       // previousUltimateNode:Ljava/lang/ThreadLocal;
+   #50 = Fieldref           #2.#49        // com/terraformersmc/biolith/impl/mixin/MixinSearchTree.previousUltimateNode:Ljava/lang/ThreadLocal;
+   #51 = NameAndType        #41:#38       // previousPenultimateNode:Ljava/lang/ThreadLocal;
+   #52 = Fieldref           #2.#51        // com/terraformersmc/biolith/impl/mixin/MixinSearchTree.previousPenultimateNode:Ljava/lang/ThreadLocal;
+   #53 = Utf8               this
+   #54 = Utf8               Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree<TT;>;
+   #55 = Utf8               Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree;
+   #56 = Utf8               biolith$searchTreeGet
+   #57 = Utf8               (Lnet/minecraft/world/level/biome/Climate$TargetPoint;Lnet/minecraft/world/level/biome/Climate$DistanceMetric;)Lcom/terraformersmc/biolith/api/biome/BiolithFittestNodes;
+   #58 = Utf8               (Lnet/minecraft/world/level/biome/Climate$TargetPoint;Lnet/minecraft/world/level/biome/Climate$DistanceMetric<TT;>;)Lcom/terraformersmc/biolith/api/biome/BiolithFittestNodes<TT;>;
+   #59 = Utf8               point
+   #60 = Utf8               distanceFunction
+   #61 = Utf8               toParameterArray
+   #62 = Utf8               ()[J
+   #63 = NameAndType        #61:#62       // toParameterArray:()[J
+   #64 = Methodref          #13.#63       // net/minecraft/world/level/biome/Climate$TargetPoint.toParameterArray:()[J
+   #65 = NameAndType        #32:#33       // root:Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #66 = Fieldref           #2.#65        // com/terraformersmc/biolith/impl/mixin/MixinSearchTree.root:Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #67 = Long               9223372036854775807l
+   #69 = Utf8               com/terraformersmc/biolith/impl/biome/SimpleArrayIterator
+   #70 = Class              #69           // com/terraformersmc/biolith/impl/biome/SimpleArrayIterator
+   #71 = Utf8               get
+   #72 = Utf8               ()Ljava/lang/Object;
+   #73 = NameAndType        #71:#72       // get:()Ljava/lang/Object;
+   #74 = Methodref          #47.#73       // java/lang/ThreadLocal.get:()Ljava/lang/Object;
+   #75 = Utf8               distance
+   #76 = Utf8               (Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+   #77 = NameAndType        #75:#76       // distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+   #78 = InterfaceMethodref #27.#77       // net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+   #79 = Utf8               [J
+   #80 = Class              #79           // "[J"
+   #81 = Utf8               [Lcom/terraformersmc/biolith/impl/biome/SimpleArrayIterator;
+   #82 = Class              #81           // "[Lcom/terraformersmc/biolith/impl/biome/SimpleArrayIterator;"
+   #83 = Utf8               children
+   #84 = Utf8               [Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #85 = NameAndType        #83:#84       // children:[Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #86 = Fieldref           #30.#85       // net/minecraft/world/level/biome/Climate$RTree$SubTree.children:[Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+   #87 = Utf8               ([Ljava/lang/Object;)V
+   #88 = NameAndType        #42:#87       // "<init>":([Ljava/lang/Object;)V
+   #89 = Methodref          #70.#88       // com/terraformersmc/biolith/impl/biome/SimpleArrayIterator."<init>":([Ljava/lang/Object;)V
+   #90 = Utf8               com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+   #91 = Class              #90           // com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+   #92 = Utf8               (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+   #93 = NameAndType        #42:#92       // "<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+   #94 = Methodref          #91.#93       // com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+   #95 = Utf8               com/terraformersmc/biolith/impl/Biolith
+   #96 = Class              #95           // com/terraformersmc/biolith/impl/Biolith
+   #97 = Utf8               LOGGER
+   #98 = Utf8               Lorg/slf4j/Logger;
+   #99 = NameAndType        #97:#98       // LOGGER:Lorg/slf4j/Logger;
+  #100 = Fieldref           #96.#99       // com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+  #101 = Utf8               No biomes are available in MultiNoiseBiomeSource!
+  #102 = String             #101          // No biomes are available in MultiNoiseBiomeSource!
+  #103 = Utf8               org/slf4j/Logger
+  #104 = Class              #103          // org/slf4j/Logger
+  #105 = Utf8               error
+  #106 = Utf8               (Ljava/lang/String;)V
+  #107 = NameAndType        #105:#106     // error:(Ljava/lang/String;)V
+  #108 = InterfaceMethodref #104.#107     // org/slf4j/Logger.error:(Ljava/lang/String;)V
+  #109 = Utf8               java/util/Iterator
+  #110 = Class              #109          // java/util/Iterator
+  #111 = Utf8               hasNext
+  #112 = Utf8               ()Z
+  #113 = NameAndType        #111:#112     // hasNext:()Z
+  #114 = InterfaceMethodref #110.#113     // java/util/Iterator.hasNext:()Z
+  #115 = Utf8               next
+  #116 = NameAndType        #115:#72      // next:()Ljava/lang/Object;
+  #117 = InterfaceMethodref #110.#116     // java/util/Iterator.next:()Ljava/lang/Object;
+  #118 = Utf8               biolith$keyOf
+  #119 = Utf8               (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+  #120 = NameAndType        #118:#119     // biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+  #121 = Methodref          #2.#120       // com/terraformersmc/biolith/impl/mixin/MixinSearchTree.biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+  #122 = Utf8               net/minecraft/resources/ResourceKey
+  #123 = Class              #122          // net/minecraft/resources/ResourceKey
+  #124 = Utf8               location
+  #125 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #126 = NameAndType        #124:#125     // location:()Lnet/minecraft/resources/ResourceLocation;
+  #127 = Methodref          #123.#126     // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+  #128 = Utf8               net/minecraft/resources/ResourceLocation
+  #129 = Class              #128          // net/minecraft/resources/ResourceLocation
+  #130 = Utf8               equals
+  #131 = Utf8               (Ljava/lang/Object;)Z
+  #132 = NameAndType        #130:#131     // equals:(Ljava/lang/Object;)Z
+  #133 = Methodref          #129.#132     // net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+  #134 = Utf8               set
+  #135 = Utf8               (Ljava/lang/Object;)V
+  #136 = NameAndType        #134:#135     // set:(Ljava/lang/Object;)V
+  #137 = Methodref          #47.#136      // java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+  #138 = Utf8               (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;JLnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+  #139 = NameAndType        #42:#138      // "<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;JLnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+  #140 = Methodref          #91.#139      // com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;JLnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+  #141 = Utf8               temp
+  #142 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+  #143 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+  #144 = Utf8               tempDistance
+  #145 = Utf8               J
+  #146 = Utf8               branchNode
+  #147 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$SubTree<TT;>;
+  #148 = Utf8               Lnet/minecraft/world/level/biome/Climate$RTree$SubTree;
+  #149 = Utf8               leafNode
+  #150 = Utf8               Lnet/minecraft/world/level/biome/Climate$TargetPoint;
+  #151 = Utf8               Lnet/minecraft/world/level/biome/Climate$DistanceMetric<TT;>;
+  #152 = Utf8               Lnet/minecraft/world/level/biome/Climate$DistanceMetric;
+  #153 = Utf8               otherParameters
+  #154 = Utf8               node
+  #155 = Utf8               nodeDistance
+  #156 = Utf8               stack
+  #157 = Utf8               [Ljava/util/Iterator<Lnet/minecraft/world/level/biome/Climate$RTree$Node<TT;>;>;
+  #158 = Utf8               [Ljava/util/Iterator;
+  #159 = Utf8               stackDepth
+  #160 = Utf8               I
+  #161 = Utf8               ultimate
+  #162 = Utf8               penultimate
+  #163 = Utf8               ultimateDistance
+  #164 = Utf8               penultimateDistance
+  #165 = Utf8               (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;)Lnet/minecraft/resources/ResourceKey<*>;
+  #166 = Utf8               Lorg/jetbrains/annotations/NotNull;
+  #167 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #168 = Utf8               net/minecraft/core/registries/Registries
+  #169 = Class              #168          // net/minecraft/core/registries/Registries
+  #170 = Utf8               BIOME
+  #171 = Utf8               Lnet/minecraft/resources/ResourceKey;
+  #172 = NameAndType        #170:#171     // BIOME:Lnet/minecraft/resources/ResourceKey;
+  #173 = Fieldref           #169.#172     // net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+  #174 = Utf8               biolith
+  #175 = String             #174          // biolith
+  #176 = Utf8               null
+  #177 = String             #176          // null
+  #178 = Utf8               fromNamespaceAndPath
+  #179 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #180 = NameAndType        #178:#179     // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #181 = Methodref          #129.#180     // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #182 = Utf8               create
+  #183 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #184 = NameAndType        #182:#183     // create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #185 = Methodref          #123.#184     // net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+  #186 = Utf8               Ljava/lang/Object;
+  #187 = NameAndType        #10:#186      // value:Ljava/lang/Object;
+  #188 = Fieldref           #24.#187      // net/minecraft/world/level/biome/Climate$RTree$Leaf.value:Ljava/lang/Object;
+  #189 = Utf8               net/minecraft/core/Holder
+  #190 = Class              #189          // net/minecraft/core/Holder
+  #191 = Utf8               unwrapKey
+  #192 = Utf8               ()Ljava/util/Optional;
+  #193 = NameAndType        #191:#192     // unwrapKey:()Ljava/util/Optional;
+  #194 = InterfaceMethodref #190.#193     // net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+  #195 = Utf8               java/util/Optional
+  #196 = Class              #195          // java/util/Optional
+  #197 = Utf8               orElseThrow
+  #198 = NameAndType        #197:#72      // orElseThrow:()Ljava/lang/Object;
+  #199 = Methodref          #196.#198     // java/util/Optional.orElseThrow:()Ljava/lang/Object;
+  #200 = Utf8               Signature
+  #201 = Utf8               RuntimeVisibleAnnotations
+  #202 = Utf8               Code
+  #203 = Utf8               LineNumberTable
+  #204 = Utf8               LocalVariableTable
+  #205 = Utf8               LocalVariableTypeTable
+  #206 = Utf8               StackMapTable
+  #207 = Utf8               MethodParameters
+  #208 = Utf8               RuntimeInvisibleAnnotations
+  #209 = Utf8               RuntimeInvisibleTypeAnnotations
+  #210 = Utf8               RuntimeInvisibleParameterAnnotations
+  #211 = Utf8               InnerClasses
+  #212 = Utf8               SourceFile
+{
+  private net.minecraft.world.level.biome.Climate$RTree$Node<T> root;
+    descriptor: Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #34                          // Lnet/minecraft/world/level/biome/Climate$RTree$Node<TT;>;
+    RuntimeVisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Shadow
+      1: #36()
+        org.spongepowered.asm.mixin.Final
+
+  private final java.lang.ThreadLocal<net.minecraft.world.level.biome.Climate$RTree$Leaf<T>> previousUltimateNode;
+    descriptor: Ljava/lang/ThreadLocal;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #39                          // Ljava/lang/ThreadLocal<Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;>;
+    RuntimeVisibleAnnotations:
+      0: #40()
+        org.spongepowered.asm.mixin.Unique
+
+  private final java.lang.ThreadLocal<net.minecraft.world.level.biome.Climate$RTree$Leaf<T>> previousPenultimateNode;
+    descriptor: Ljava/lang/ThreadLocal;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #39                          // Ljava/lang/ThreadLocal<Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;>;
+    RuntimeVisibleAnnotations:
+      0: #40()
+        org.spongepowered.asm.mixin.Unique
+
+  public com.terraformersmc.biolith.impl.mixin.MixinSearchTree();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #45                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #47                 // class java/lang/ThreadLocal
+         8: dup
+         9: invokespecial #48                 // Method java/lang/ThreadLocal."<init>":()V
+        12: putfield      #50                 // Field previousUltimateNode:Ljava/lang/ThreadLocal;
+        15: aload_0
+        16: new           #47                 // class java/lang/ThreadLocal
+        19: dup
+        20: invokespecial #48                 // Method java/lang/ThreadLocal."<init>":()V
+        23: putfield      #52                 // Field previousPenultimateNode:Ljava/lang/ThreadLocal;
+        26: return
+      LineNumberTable:
+        line 22: 0
+        line 27: 4
+        line 29: 15
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      27     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree<TT;>;
+
+  public com.terraformersmc.biolith.api.biome.BiolithFittestNodes<T> biolith$searchTreeGet(net.minecraft.world.level.biome.Climate$TargetPoint, net.minecraft.world.level.biome.Climate$DistanceMetric<T>);
+    descriptor: (Lnet/minecraft/world/level/biome/Climate$TargetPoint;Lnet/minecraft/world/level/biome/Climate$DistanceMetric;)Lcom/terraformersmc/biolith/api/biome/BiolithFittestNodes;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=8, locals=18, args_size=3
+         0: aload_1
+         1: invokevirtual #64                 // Method net/minecraft/world/level/biome/Climate$TargetPoint.toParameterArray:()[J
+         4: astore_3
+         5: aload_0
+         6: getfield      #66                 // Field root:Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+         9: astore        4
+        11: ldc2_w        #67                 // long 9223372036854775807l
+        14: lstore        5
+        16: bipush        64
+        18: anewarray     #70                 // class com/terraformersmc/biolith/impl/biome/SimpleArrayIterator
+        21: astore        7
+        23: iconst_0
+        24: istore        8
+        26: aload_0
+        27: getfield      #50                 // Field previousUltimateNode:Ljava/lang/ThreadLocal;
+        30: invokevirtual #74                 // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+        33: checkcast     #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+        36: astore        9
+        38: aload_0
+        39: getfield      #52                 // Field previousPenultimateNode:Ljava/lang/ThreadLocal;
+        42: invokevirtual #74                 // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+        45: checkcast     #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+        48: astore        10
+        50: aload         9
+        52: ifnull        67
+        55: aload_2
+        56: aload         9
+        58: aload_3
+        59: invokeinterface #78,  3           // InterfaceMethod net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+        64: goto          70
+        67: ldc2_w        #67                 // long 9223372036854775807l
+        70: lstore        11
+        72: aload         10
+        74: ifnull        89
+        77: aload_2
+        78: aload         10
+        80: aload_3
+        81: invokeinterface #78,  3           // InterfaceMethod net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+        86: goto          92
+        89: ldc2_w        #67                 // long 9223372036854775807l
+        92: lstore        13
+        94: lload         11
+        96: lload         13
+        98: lcmp
+        99: ifle          126
+       102: aload         9
+       104: astore        15
+       106: aload         10
+       108: astore        9
+       110: aload         15
+       112: astore        10
+       114: lload         11
+       116: lstore        16
+       118: lload         13
+       120: lstore        11
+       122: lload         16
+       124: lstore        13
+       126: aload         4
+       128: instanceof    #30                 // class net/minecraft/world/level/biome/Climate$RTree$SubTree
+       131: ifeq          161
+       134: aload         4
+       136: checkcast     #30                 // class net/minecraft/world/level/biome/Climate$RTree$SubTree
+       139: astore        15
+       141: aload         7
+       143: iload         8
+       145: new           #70                 // class com/terraformersmc/biolith/impl/biome/SimpleArrayIterator
+       148: dup
+       149: aload         15
+       151: getfield      #86                 // Field net/minecraft/world/level/biome/Climate$RTree$SubTree.children:[Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+       154: invokespecial #89                 // Method com/terraformersmc/biolith/impl/biome/SimpleArrayIterator."<init>":([Ljava/lang/Object;)V
+       157: aastore
+       158: goto          217
+       161: aload         4
+       163: instanceof    #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+       166: ifeq          195
+       169: aload         4
+       171: checkcast     #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+       174: astore        16
+       176: new           #91                 // class com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+       179: dup
+       180: aload         16
+       182: aload_2
+       183: aload         16
+       185: aload_3
+       186: invokeinterface #78,  3           // InterfaceMethod net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+       191: invokespecial #94                 // Method com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+       194: areturn
+       195: getstatic     #100                // Field com/terraformersmc/biolith/impl/Biolith.LOGGER:Lorg/slf4j/Logger;
+       198: ldc           #102                // String No biomes are available in MultiNoiseBiomeSource!
+       200: invokeinterface #108,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+       205: new           #91                 // class com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+       208: dup
+       209: aload         9
+       211: lload         11
+       213: invokespecial #94                 // Method com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+       216: areturn
+       217: aload         7
+       219: iload         8
+       221: aaload
+       222: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       227: ifeq          458
+       230: aload         7
+       232: iload         8
+       234: aaload
+       235: invokeinterface #117,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       240: checkcast     #21                 // class net/minecraft/world/level/biome/Climate$RTree$Node
+       243: astore        4
+       245: aload_2
+       246: aload         4
+       248: aload_3
+       249: invokeinterface #78,  3           // InterfaceMethod net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+       254: lstore        5
+       256: aload         4
+       258: instanceof    #30                 // class net/minecraft/world/level/biome/Climate$RTree$SubTree
+       261: ifeq          328
+       264: aload         4
+       266: checkcast     #30                 // class net/minecraft/world/level/biome/Climate$RTree$SubTree
+       269: astore        15
+       271: lload         13
+       273: lload         5
+       275: lcmp
+       276: ifle          328
+       279: aload         7
+       281: iinc          8, 1
+       284: iload         8
+       286: new           #70                 // class com/terraformersmc/biolith/impl/biome/SimpleArrayIterator
+       289: dup
+       290: aload         15
+       292: getfield      #86                 // Field net/minecraft/world/level/biome/Climate$RTree$SubTree.children:[Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+       295: invokespecial #89                 // Method com/terraformersmc/biolith/impl/biome/SimpleArrayIterator."<init>":([Ljava/lang/Object;)V
+       298: aastore
+       299: aload         7
+       301: iload         8
+       303: aaload
+       304: invokeinterface #117,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       309: checkcast     #21                 // class net/minecraft/world/level/biome/Climate$RTree$Node
+       312: astore        4
+       314: aload_2
+       315: aload         4
+       317: aload_3
+       318: invokeinterface #78,  3           // InterfaceMethod net/minecraft/world/level/biome/Climate$DistanceMetric.distance:(Lnet/minecraft/world/level/biome/Climate$RTree$Node;[J)J
+       323: lstore        5
+       325: goto          256
+       328: aload         4
+       330: instanceof    #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+       333: ifeq          434
+       336: aload         4
+       338: checkcast     #24                 // class net/minecraft/world/level/biome/Climate$RTree$Leaf
+       341: astore        15
+       343: lload         13
+       345: lload         5
+       347: lcmp
+       348: ifle          434
+       351: lload         11
+       353: lload         5
+       355: lcmp
+       356: ifle          402
+       359: aload_0
+       360: aload         15
+       362: invokevirtual #121                // Method biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+       365: invokevirtual #127                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       368: aload_0
+       369: aload         9
+       371: invokevirtual #121                // Method biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+       374: invokevirtual #127                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       377: invokevirtual #133                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+       380: ifne          391
+       383: lload         11
+       385: lstore        13
+       387: aload         9
+       389: astore        10
+       391: lload         5
+       393: lstore        11
+       395: aload         15
+       397: astore        9
+       399: goto          434
+       402: aload_0
+       403: aload         15
+       405: invokevirtual #121                // Method biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+       408: invokevirtual #127                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       411: aload_0
+       412: aload         9
+       414: invokevirtual #121                // Method biolith$keyOf:(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+       417: invokevirtual #127                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       420: invokevirtual #133                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+       423: ifne          434
+       426: lload         5
+       428: lstore        13
+       430: aload         15
+       432: astore        10
+       434: iload         8
+       436: ifle          217
+       439: aload         7
+       441: iload         8
+       443: aaload
+       444: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       449: ifne          217
+       452: iinc          8, -1
+       455: goto          434
+       458: aload_0
+       459: getfield      #50                 // Field previousUltimateNode:Ljava/lang/ThreadLocal;
+       462: aload         9
+       464: invokevirtual #137                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+       467: aload_0
+       468: getfield      #52                 // Field previousPenultimateNode:Ljava/lang/ThreadLocal;
+       471: aload         10
+       473: invokevirtual #137                // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+       476: aload         10
+       478: ifnonnull     493
+       481: new           #91                 // class com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+       484: dup
+       485: aload         9
+       487: lload         11
+       489: invokespecial #94                 // Method com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+       492: areturn
+       493: new           #91                 // class com/terraformersmc/biolith/api/biome/BiolithFittestNodes
+       496: dup
+       497: aload         9
+       499: lload         11
+       501: aload         10
+       503: lload         13
+       505: invokespecial #140                // Method com/terraformersmc/biolith/api/biome/BiolithFittestNodes."<init>":(Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;JLnet/minecraft/world/level/biome/Climate$RTree$Leaf;J)V
+       508: areturn
+      StackMapTable: number_of_entries = 15
+        frame_type = 255 /* full_frame */
+          offset_delta = 67
+          locals = [ class com/terraformersmc/biolith/impl/mixin/MixinSearchTree, class net/minecraft/world/level/biome/Climate$TargetPoint, class net/minecraft/world/level/biome/Climate$DistanceMetric, class "[J", class net/minecraft/world/level/biome/Climate$RTree$Node, long, class "[Lcom/terraformersmc/biolith/impl/biome/SimpleArrayIterator;", int, class net/minecraft/world/level/biome/Climate$RTree$Leaf, class net/minecraft/world/level/biome/Climate$RTree$Leaf ]
+          stack = []
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ long ]
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ long ]
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ long ]
+        frame_type = 252 /* append */
+          offset_delta = 33
+          locals = [ long ]
+        frame_type = 34 /* same */
+        frame_type = 33 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ class net/minecraft/world/level/biome/Climate$RTree$Node ]
+        frame_type = 38 /* same */
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 71
+        frame_type = 255 /* full_frame */
+          offset_delta = 62
+          locals = [ class com/terraformersmc/biolith/impl/mixin/MixinSearchTree, class net/minecraft/world/level/biome/Climate$TargetPoint, class net/minecraft/world/level/biome/Climate$DistanceMetric, class "[J", class net/minecraft/world/level/biome/Climate$RTree$Node, long, class "[Lcom/terraformersmc/biolith/impl/biome/SimpleArrayIterator;", int, class net/minecraft/world/level/biome/Climate$RTree$Leaf, class net/minecraft/world/level/biome/Climate$RTree$Leaf, long, long, class net/minecraft/world/level/biome/Climate$RTree$Leaf ]
+          stack = []
+        frame_type = 10 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 31
+          locals = [ class com/terraformersmc/biolith/impl/mixin/MixinSearchTree, class net/minecraft/world/level/biome/Climate$TargetPoint, class net/minecraft/world/level/biome/Climate$DistanceMetric, class "[J", class net/minecraft/world/level/biome/Climate$RTree$Node, long, class "[Lcom/terraformersmc/biolith/impl/biome/SimpleArrayIterator;", int, class net/minecraft/world/level/biome/Climate$RTree$Leaf, class net/minecraft/world/level/biome/Climate$RTree$Leaf, long, long, class net/minecraft/world/level/biome/Climate$RTree$Node ]
+          stack = []
+        frame_type = 23 /* same */
+        frame_type = 34 /* same */
+      LineNumberTable:
+        line 39: 0
+        line 40: 5
+        line 41: 11
+        line 44: 16
+        line 45: 23
+        line 47: 26
+        line 48: 38
+        line 50: 50
+        line 51: 72
+        line 54: 94
+        line 55: 102
+        line 56: 106
+        line 57: 110
+        line 59: 114
+        line 60: 118
+        line 61: 122
+        line 67: 126
+        line 68: 141
+        line 69: 161
+        line 73: 176
+        line 76: 195
+        line 77: 205
+        line 82: 217
+        line 84: 230
+        line 85: 245
+        line 88: 256
+        line 89: 279
+        line 90: 299
+        line 91: 314
+        line 95: 328
+        line 96: 351
+        line 97: 359
+        line 98: 383
+        line 99: 387
+        line 101: 391
+        line 102: 395
+        line 103: 402
+        line 104: 426
+        line 105: 430
+        line 110: 434
+        line 111: 452
+        line 116: 458
+        line 117: 467
+        line 120: 476
+        line 121: 481
+        line 123: 493
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          106      20    15  temp   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+          118       8    16 tempDistance   J
+          141      20    15 branchNode   Lnet/minecraft/world/level/biome/Climate$RTree$SubTree;
+          176      19    16 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+          271      57    15 branchNode   Lnet/minecraft/world/level/biome/Climate$RTree$SubTree;
+          343      91    15 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+            0     509     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree;
+            0     509     1 point   Lnet/minecraft/world/level/biome/Climate$TargetPoint;
+            0     509     2 distanceFunction   Lnet/minecraft/world/level/biome/Climate$DistanceMetric;
+            5     504     3 otherParameters   [J
+           11     498     4  node   Lnet/minecraft/world/level/biome/Climate$RTree$Node;
+           16     493     5 nodeDistance   J
+           23     486     7 stack   [Ljava/util/Iterator;
+           26     483     8 stackDepth   I
+           38     471     9 ultimate   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+           50     459    10 penultimate   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+           72     437    11 ultimateDistance   J
+           94     415    13 penultimateDistance   J
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          106      20    15  temp   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+          141      20    15 branchNode   Lnet/minecraft/world/level/biome/Climate$RTree$SubTree<TT;>;
+          176      19    16 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+          271      57    15 branchNode   Lnet/minecraft/world/level/biome/Climate$RTree$SubTree<TT;>;
+          343      91    15 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+            0     509     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree<TT;>;
+            0     509     2 distanceFunction   Lnet/minecraft/world/level/biome/Climate$DistanceMetric<TT;>;
+           11     498     4  node   Lnet/minecraft/world/level/biome/Climate$RTree$Node<TT;>;
+           23     486     7 stack   [Ljava/util/Iterator<Lnet/minecraft/world/level/biome/Climate$RTree$Node<TT;>;>;
+           38     471     9 ultimate   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+           50     459    10 penultimate   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+    Signature: #58                          // (Lnet/minecraft/world/level/biome/Climate$TargetPoint;Lnet/minecraft/world/level/biome/Climate$DistanceMetric<TT;>;)Lcom/terraformersmc/biolith/api/biome/BiolithFittestNodes<TT;>;
+    MethodParameters:
+      Name                           Flags
+      point
+      distanceFunction
+
+  private net.minecraft.resources.ResourceKey<?> biolith$keyOf(net.minecraft.world.level.biome.Climate$RTree$Leaf<T>);
+    descriptor: (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;)Lnet/minecraft/resources/ResourceKey;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_1
+         1: ifnonnull     18
+         4: getstatic     #173                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+         7: ldc           #175                // String biolith
+         9: ldc           #177                // String null
+        11: invokestatic  #181                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        14: invokestatic  #185                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+        17: areturn
+        18: aload_1
+        19: getfield      #188                // Field net/minecraft/world/level/biome/Climate$RTree$Leaf.value:Ljava/lang/Object;
+        22: checkcast     #190                // class net/minecraft/core/Holder
+        25: invokeinterface #194,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+        30: invokevirtual #199                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+        33: checkcast     #123                // class net/minecraft/resources/ResourceKey
+        36: areturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 18 /* same */
+      LineNumberTable:
+        line 129: 0
+        line 130: 4
+        line 132: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree;
+            0      37     1 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0  this   Lcom/terraformersmc/biolith/impl/mixin/MixinSearchTree<TT;>;
+            0      37     1 leafNode   Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;
+    Signature: #165                         // (Lnet/minecraft/world/level/biome/Climate$RTree$Leaf<TT;>;)Lnet/minecraft/resources/ResourceKey<*>;
+    RuntimeVisibleAnnotations:
+      0: #40()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #166()
+        org.jetbrains.annotations.NotNull
+    RuntimeInvisibleTypeAnnotations:
+      0: #166(): METHOD_RETURN
+        org.jetbrains.annotations.NotNull
+      1: #167(): METHOD_FORMAL_PARAMETER, param_index=0
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #167()
+          org.jetbrains.annotations.Nullable
+    MethodParameters:
+      Name                           Flags
+      leafNode
+}
+InnerClasses:
+  public static final #16= #13 of #15;    // TargetPoint=class net/minecraft/world/level/biome/Climate$TargetPoint of class net/minecraft/world/level/biome/Climate
+  public static final #19= #18 of #15;    // RTree=class net/minecraft/world/level/biome/Climate$RTree of class net/minecraft/world/level/biome/Climate
+  public static abstract #22= #21 of #18; // Node=class net/minecraft/world/level/biome/Climate$RTree$Node of class net/minecraft/world/level/biome/Climate$RTree
+  public static #25= #24 of #18;          // Leaf=class net/minecraft/world/level/biome/Climate$RTree$Leaf of class net/minecraft/world/level/biome/Climate$RTree
+  public static #28= #27 of #15;          // DistanceMetric=class net/minecraft/world/level/biome/Climate$DistanceMetric of class net/minecraft/world/level/biome/Climate
+  public static final #31= #30 of #18;    // SubTree=class net/minecraft/world/level/biome/Climate$RTree$SubTree of class net/minecraft/world/level/biome/Climate$RTree
+Signature: #3                           // <T:Ljava/lang/Object;>Ljava/lang/Object;Lcom/terraformersmc/biolith/impl/biome/InterfaceSearchTree<TT;>;
+SourceFile: "MixinSearchTree.java"
+RuntimeInvisibleAnnotations:
+  0: #9(#10=[c#11])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/biome/Climate$RTree;]
+    )
