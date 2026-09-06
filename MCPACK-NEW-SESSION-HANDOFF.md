@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9f172cf6 and reproduces exactly. Canonical-note backlog: 115.
+Coverage groups: 405. Next: Illager Invasion design relationships against existing
+pools and templates. Nonregistry reconciliation and required attributes remain.
+
 Creating Space design relationships are resolved from existing component graphs
 and template contents. Four distinct installation/wreck designs remain; reused
 bastion legs and the Moon top/basement are components. The existing affected case

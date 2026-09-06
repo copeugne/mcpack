@@ -9278,3 +9278,12 @@ uv run pytest tests/item8/test_family_decisions.py -q -k creatingspace
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 9f172cf6 and independently reproduced exactly.
+Only the four Creating Space grouping decisions and the decision input identity
+changed. SHA-256: 37a685b6856bbb9fd5161b5db855639eec30d01493222d3de968d6b45fd6361c.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-creatingspace-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-creatingspace-designs-r2.json
+```
