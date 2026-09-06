@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Four Aether/Deep Aether dungeon design records now bind existing custom assembly
+and template evidence. Six affected cases and scoped checks pass. Canonical-note
+backlog: 106. Coverage groups: 405. Inventory refresh follows. Successful assembly
+and effective gameplay remain unproven; nonregistry and attribute work remain.
+
 Inventory matches edd0bf75 and reproduces exactly. Canonical-note backlog: 110.
 Coverage groups: 405. Next: four Aether/Deep Aether dungeon design records against
 existing custom-generator evidence. Required attributes and nonregistry work remain.
