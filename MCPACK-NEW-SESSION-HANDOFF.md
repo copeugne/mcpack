@@ -6,6 +6,9 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches house decisions delivered at cf877811 and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: the 32 Voyager names below.
+
 Eight Voyager house decisions now retain distinct inspected layouts with component
 and content ownership preserved. Source views already delivered at b580a10f were
 reused. Working groups remain 406. Explicit provisional remainder: 32, listed below.
