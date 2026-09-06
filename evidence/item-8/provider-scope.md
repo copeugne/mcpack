@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 134 of 136. The exact queue below has 2 open rows.
+Supported provider dispositions: 135 of 136. The exact queue below has 1 open row.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -690,7 +690,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
 | `servercore-neoforge-1.5.17+1.21.1.jar` | Five ServerCore source increments | RESOLVED: existing-server ticking, spawning and lookup changes; no independent family. See ServerCore closure below. |
 | `shield_api-neoforge-2.2.0.jar` | `shield-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom shield interaction, item attributes, rendering and EMI integration; no independent family. See bundle and shield dispositions below. |
-| `simplyswords-neoforge-1.63.0-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `simplyswords-neoforge-1.63.0-1.21.1.jar` | Three Simply Swords source increments | RESOLVED: weapons, item powers and loot modification; no independent family. See Simply Swords closure below. |
 | `sparsestructures-neoforge-1.21.1-3.0.jar` | `sparsestructures-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing structure-set placement modification; no independent family. See small utility provider dispositions below. |
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
@@ -8471,3 +8471,40 @@ One focused case passes. One long test line was wrapped after Ruff reported it;
 scoped Ruff/Basedpyright pass. Whole providers: 134 resolved, 2 open. Working
 groups remain 410 and explicit provisional Moog decisions remain 100. Canonical
 reconciliation, required attributes and final Item 8 acceptance remain incomplete.
+
+## Simply Swords provider closure
+
+Archive SHA-256: 4619dcf1501fc82c1a52acd4c88a466436f5c1d7d2bccc0932912a12b0bc5198.
+The 286 classes have two automatic entries, four common mixins, two client mixins,
+no mixin plugin, nested archive, service entry or NBT template. The packaged
+categories are bound in test_simplyswords_provider_scope.py: item attributes,
+recipes, tags, advancements, book data and one legacy plural loot_tables resource.
+The legacy plural directory is not assumed to be an active 1.21.1 loot table.
+
+Sources 295a0c93 (simplyswords-entries), 94876e7d (simplyswords-startup) and
+26569325 (simplyswords-content-delegates) retain eleven classes. Each README
+records the exact reproduction command and identity manifest. Independent r1
+captures match. Forge initialization delegates to SimplySwords.init, which
+registers items, sounds, effects, recipe types, entities, components and particles.
+GemPowerRegistry defines item powers. TransformationRegistry maps blocks to item
+transformations. ContainedRemnantItem.useOn consumes the held item and drops the
+transformed item; checkNearbyBlocks reads nearby blocks and emits feedback.
+Neither is a generated building or landmark. Common hooks act on existing
+entities and players, effects, item abilities and cooldowns. Client initialization
+and rendering do not supply dedicated-server structure families.
+
+ModLootTableModifiers registers configuration-dependent chest loot callbacks.
+They inspect chest paths, village eligibility, Spectrum exclusions, standard,
+rare, runic and unique weights, and disabled unique weapon loot. This is an
+attribute input for consuming families, not a new family. Winning frozen options
+and observed loot remain separate attribution work; no universal injection or
+observed reward claim is made here.
+
+No independent Simply Swords family is added. Stop general combat, weapon and
+helper tracing. Membership is resolved; family loot attribution remains required.
+
+```sh
+uv run pytest tests/item8/test_simplyswords_provider_scope.py -q
+uv run ruff check tests/item8/test_simplyswords_provider_scope.py
+uv run basedpyright tests/item8/test_simplyswords_provider_scope.py
+```
