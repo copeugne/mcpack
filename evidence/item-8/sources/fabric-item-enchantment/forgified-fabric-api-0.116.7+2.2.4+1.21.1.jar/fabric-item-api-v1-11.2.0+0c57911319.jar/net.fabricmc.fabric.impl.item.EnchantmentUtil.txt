@@ -1,0 +1,99 @@
+Compiled from "EnchantmentUtil.java"
+public class net.fabricmc.fabric.impl.item.EnchantmentUtil {
+  public static net.minecraft.world.item.enchantment.Enchantment modify(net.minecraft.resources.ResourceKey<net.minecraft.world.item.enchantment.Enchantment>, net.minecraft.world.item.enchantment.Enchantment, net.fabricmc.fabric.api.item.v1.EnchantmentSource);
+    Code:
+       0: aload_1
+       1: invokevirtual #1                  // Method net/minecraft/world/item/enchantment/Enchantment.definition:()Lnet/minecraft/world/item/enchantment/Enchantment$EnchantmentDefinition;
+       4: invokestatic  #7                  // Method net/minecraft/world/item/enchantment/Enchantment.enchantment:(Lnet/minecraft/world/item/enchantment/Enchantment$EnchantmentDefinition;)Lnet/minecraft/world/item/enchantment/Enchantment$Builder;
+       7: astore_3
+       8: aload_3
+       9: checkcast     #11                 // class net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor
+      12: astore        4
+      14: aload_3
+      15: aload_1
+      16: invokevirtual #13                 // Method net/minecraft/world/item/enchantment/Enchantment.exclusiveSet:()Lnet/minecraft/core/HolderSet;
+      19: invokevirtual #17                 // Method net/minecraft/world/item/enchantment/Enchantment$Builder.exclusiveWith:(Lnet/minecraft/core/HolderSet;)Lnet/minecraft/world/item/enchantment/Enchantment$Builder;
+      22: pop
+      23: aload         4
+      25: invokeinterface #23,  1           // InterfaceMethod net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.getEffectMap:()Lnet/minecraft/core/component/DataComponentMap$Builder;
+      30: aload_1
+      31: invokevirtual #27                 // Method net/minecraft/world/item/enchantment/Enchantment.effects:()Lnet/minecraft/core/component/DataComponentMap;
+      34: invokevirtual #31                 // Method net/minecraft/core/component/DataComponentMap$Builder.addAll:(Lnet/minecraft/core/component/DataComponentMap;)Lnet/minecraft/core/component/DataComponentMap$Builder;
+      37: pop
+      38: aload_1
+      39: invokevirtual #27                 // Method net/minecraft/world/item/enchantment/Enchantment.effects:()Lnet/minecraft/core/component/DataComponentMap;
+      42: invokeinterface #37,  1           // InterfaceMethod net/minecraft/core/component/DataComponentMap.stream:()Ljava/util/stream/Stream;
+      47: aload         4
+      49: invokedynamic #43,  0             // InvokeDynamic #0:accept:(Lnet/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor;)Ljava/util/function/Consumer;
+      54: invokeinterface #47,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      59: getstatic     #53                 // Field net/fabricmc/fabric/api/item/v1/EnchantmentEvents.MODIFY:Lnet/fabricmc/fabric/api/event/Event;
+      62: invokevirtual #59                 // Method net/fabricmc/fabric/api/event/Event.invoker:()Ljava/lang/Object;
+      65: checkcast     #65                 // class net/fabricmc/fabric/api/item/v1/EnchantmentEvents$Modify
+      68: aload_0
+      69: aload_3
+      70: aload_2
+      71: invokeinterface #67,  4           // InterfaceMethod net/fabricmc/fabric/api/item/v1/EnchantmentEvents$Modify.modify:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/item/enchantment/Enchantment$Builder;Lnet/fabricmc/fabric/api/item/v1/EnchantmentSource;)V
+      76: new           #2                  // class net/minecraft/world/item/enchantment/Enchantment
+      79: dup
+      80: aload_1
+      81: invokevirtual #71                 // Method net/minecraft/world/item/enchantment/Enchantment.description:()Lnet/minecraft/network/chat/Component;
+      84: aload         4
+      86: invokeinterface #75,  1           // InterfaceMethod net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.getDefinition:()Lnet/minecraft/world/item/enchantment/Enchantment$EnchantmentDefinition;
+      91: aload         4
+      93: invokeinterface #78,  1           // InterfaceMethod net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.getExclusiveSet:()Lnet/minecraft/core/HolderSet;
+      98: aload         4
+     100: invokeinterface #23,  1           // InterfaceMethod net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.getEffectMap:()Lnet/minecraft/core/component/DataComponentMap$Builder;
+     105: invokevirtual #81                 // Method net/minecraft/core/component/DataComponentMap$Builder.build:()Lnet/minecraft/core/component/DataComponentMap;
+     108: invokespecial #84                 // Method net/minecraft/world/item/enchantment/Enchantment."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/world/item/enchantment/Enchantment$EnchantmentDefinition;Lnet/minecraft/core/HolderSet;Lnet/minecraft/core/component/DataComponentMap;)V
+     111: areturn
+
+  public static net.fabricmc.fabric.api.item.v1.EnchantmentSource determineSource(net.minecraft.server.packs.resources.Resource);
+    Code:
+       0: aload_0
+       1: ifnull        43
+       4: aload_0
+       5: checkcast     #88                 // class net/fabricmc/fabric/impl/resource/loader/FabricResource
+       8: invokeinterface #90,  1           // InterfaceMethod net/fabricmc/fabric/impl/resource/loader/FabricResource.getFabricPackSource:()Lnet/minecraft/server/packs/repository/PackSource;
+      13: astore_1
+      14: aload_1
+      15: getstatic     #94                 // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      18: if_acmpne     25
+      21: getstatic     #100                // Field net/fabricmc/fabric/api/item/v1/EnchantmentSource.VANILLA:Lnet/fabricmc/fabric/api/item/v1/EnchantmentSource;
+      24: areturn
+      25: aload_1
+      26: getstatic     #106                // Field net/fabricmc/fabric/impl/resource/loader/ModResourcePackCreator.RESOURCE_PACK_SOURCE:Lnet/minecraft/server/packs/repository/PackSource;
+      29: if_acmpeq     39
+      32: aload_1
+      33: instanceof    #111                // class net/fabricmc/fabric/impl/resource/loader/BuiltinModResourcePackSource
+      36: ifeq          43
+      39: getstatic     #113                // Field net/fabricmc/fabric/api/item/v1/EnchantmentSource.MOD:Lnet/fabricmc/fabric/api/item/v1/EnchantmentSource;
+      42: areturn
+      43: getstatic     #116                // Field net/fabricmc/fabric/api/item/v1/EnchantmentSource.DATA_PACK:Lnet/fabricmc/fabric/api/item/v1/EnchantmentSource;
+      46: areturn
+
+  private net.fabricmc.fabric.impl.item.EnchantmentUtil();
+    Code:
+       0: aload_0
+       1: invokespecial #119                // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static void lambda$modify$0(net.fabricmc.fabric.mixin.item.EnchantmentBuilderAccessor, net.minecraft.core.component.TypedDataComponent);
+    Code:
+       0: aload_1
+       1: invokevirtual #124                // Method net/minecraft/core/component/TypedDataComponent.value:()Ljava/lang/Object;
+       4: astore_3
+       5: aload_3
+       6: instanceof    #129                // class java/util/List
+       9: ifeq          34
+      12: aload_3
+      13: checkcast     #129                // class java/util/List
+      16: astore_2
+      17: aload_0
+      18: aload_1
+      19: invokevirtual #131                // Method net/minecraft/core/component/TypedDataComponent.type:()Lnet/minecraft/core/component/DataComponentType;
+      22: invokeinterface #135,  2          // InterfaceMethod net/fabricmc/fabric/mixin/item/EnchantmentBuilderAccessor.invokeGetEffectsList:(Lnet/minecraft/core/component/DataComponentType;)Ljava/util/List;
+      27: aload_2
+      28: invokeinterface #139,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      33: pop
+      34: return
+}
