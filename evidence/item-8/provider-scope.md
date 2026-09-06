@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 67 of 136. The exact queue below has 69 open rows.
+Supported provider dispositions: 68 of 136. The exact queue below has 68 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -559,7 +559,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | `desert-temple-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
-| `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | `betterdungeons-code` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | Existing `betterdungeons-code`; `dungeons-provider` (f9696df); test_dungeons_provider_scope.py | RESOLVED: Five existing roots, 33 pools, 227 templates, one disconnected bridge and one missing zombie stair. Remaining registration/context/modifier paths are accounted for below. |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | Existing platform/gateway, configuration and generator captures; `end-island-provider` (6e1f551); test_end_island_provider_scope.py | RESOLVED: All 41 templates belong to the existing arrival platform, gateway and dragon arena groups. Remaining entry hooks modify these contributions; see disposition below. |
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-provider` (e4bb5e3), prior suppression source, test_jungle_temple_provider_scope.py | RESOLVED: One existing root, 17 connected pools and 127 templates including two disconnected table props. Custom placement and eight component processors accounted for below. |
 | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | Existing `mineshafts-code`; `mineshafts-provider` (26d2a97); test_mineshaft_provider_scope.py | RESOLVED: Thirteen roots in the existing mineshaft group, one structure set and eleven registered piece types. Remaining entries and the diagnostic suppression limitation are accounted for below. |
@@ -2498,3 +2498,57 @@ Three affected cases pass. One overlong line was corrected after the first Ruff
 run; scoped Ruff and Basedpyright pass. The source capture reproduces exactly.
 Census: 67 resolved providers, 69 open. No additional candidate family was found;
 whole-stack grouping, remaining attributes and the final delivery gate stay open.
+
+## Better Dungeons provider disposition
+
+The frozen archive contains 389 files and 64 classes. Source f9696df adds sixteen
+entry, module, service and context classes to the seven specialized generator
+classes already in betterdungeons-code. The remaining classes are configuration
+holders/definitions and component processors with two switch helpers. The focused
+check binds the archive and source identities, excludes additional loader,
+subscriber, mixin or YUNG-module annotations on those remaining classes, and
+links all 29 processor classes to their captured module's codec references.
+Detailed processor effects remain attribute work, not additional family entries.
+
+Five packaged roots equal the runtime roots: small, small Nether, skeleton,
+zombie and spider dungeon. The spider dungeon uses its already captured code
+assembly. The other four have preserved pool traces. All 33 packaged pools are
+connected to these roots. Of 227 templates, only skeleton_dungeon/bridges/
+bridge_stone_1 is disconnected. The zombie graph preserves the missing template
+zombie_dungeon/big_stairs_crumbled_0. No unresolved pool elements occur. These are
+component dispositions, not successful placement claims or additional families.
+
+Twelve processor lists reference all 29 local codec IDs plus minecraft:rule.
+The codec references cover component block/decoration, chest, spawner, banner,
+stair and support consumers. Four piece registrations are spider components;
+the two custom structure registrations select the existing spider and small-Nether
+roots. DungeonType's six mob-theme labels are not independent structure families.
+DungeonContextMixin initializes thread-local banner/chest counters for template
+placement. The locate hook rejects an exact small-Nether query when its enabled
+field is false, and the accessor exposes bounding-box coordinates.
+
+Common initialization scans the module package through YUNG API. The module
+service delegates to an empty default; the NeoForge entry loads configuration.
+The configuration event/world-load handlers assign the eleven existing settings.
+They add no independent generator. Shared YUNG API remains separately open.
+
+Both packaged Forge and NeoForge biome-modifier declarations remove the vanilla
+monster_room and monster_room_deep features for the small-dungeon biome tag.
+Keep their loader-specific identities distinct. They replace generation rather
+than introduce another design. The YUNG API tags target existing small-Nether
+content for basalt-column/delta interaction. Remaining data is loot, tags,
+advancements, translations and loader/visual metadata. Full file accounting finds
+no nested archives, functions or additional generation resource categories.
+
+```sh
+uv run pytest -q tests/item8/test_dungeons_provider_scope.py tests/item8/test_family_decisions.py -k 'dungeons_provider or spider_dungeon'
+uv run ruff check tests/item8/test_dungeons_provider_scope.py
+uv run basedpyright tests/item8/test_dungeons_provider_scope.py
+```
+
+Two focused cases pass. Initial scoped checks found line lengths, the existing
+single-archive function's branch count, two untyped values and implicit string
+concatenation. Narrow annotations/style corrections resolve them; Ruff and
+Basedpyright pass. Source capture reproduces exactly. Census: 68 resolved
+providers, 68 open. Whole-stack canonical grouping, effective attributes and
+Item 8's final review/delivery gate remain open.
