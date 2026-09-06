@@ -704,6 +704,15 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Railways membership checkpoint
 
+Resource-pack follow-up: the three optional packs are legacy_palettes (493
+files), green_signals (six) and legacy_semaphore (three). The complete partition
+is 495 textures, one model, three pack icons and three metadata files. META-INF
+contains only the manifest and NeoForge mod metadata; architectury.common.json
+names the packaged access widener. The focused resource-pack case passes; all
+three current Railways cases pass (1.50s), with scoped Ruff/Basedpyright passing.
+The common-hook reconciliation remains open. Census unchanged: 87 resolved,
+49 open. This uses the existing test path and adds no measurement system.
+
 Railways remains OPEN. Archive railways-0.2.1+neoforge-mc1.21.1.jar has SHA-256
 b7636c8b1b0352ed1a130dfe67f8bb574e2fc08803ed1cda4d3ea00505193914.
 Source eaa7a6b (extractor 60016db) retains thirteen classes: all eight annotated

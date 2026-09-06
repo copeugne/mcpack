@@ -125,3 +125,33 @@ def test_railways_payload_and_vehicle_template() -> None:
                 "id": "railways:bogey",
             }
         ]
+
+
+def test_railways_optional_resource_packs_are_visual() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("railways-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        names = [n for n in archive.namelist() if not n.endswith("/")]
+        assert {n for n in names if n.startswith("META-INF/")} == {
+            "META-INF/MANIFEST.MF",
+            "META-INF/neoforge.mods.toml",
+        }
+        packs = [n for n in names if n.startswith("resourcepacks/")]
+        assert Counter(n.split("/")[1] for n in packs) == {
+            "legacy_palettes": 493,
+            "green_signals": 6,
+            "legacy_semaphore": 3,
+        }
+        assert Counter(
+            "/".join(n.split("/")[2:5]) if "/assets/" in n else n.split("/")[-1] for n in packs
+        ) == {
+            "assets/railways/textures": 493,
+            "pack.png": 3,
+            "pack.mcmeta": 3,
+            "assets/create/textures": 2,
+            "assets/railways/models": 1,
+        }
+        assert all(n.endswith((".png", ".json", ".mcmeta")) for n in packs)
+        assert json.loads(archive.read("architectury.common.json")) == {
+            "accessWidener": "railways.accesswidener",
+        }
