@@ -1,0 +1,212 @@
+Classfile bclib-21.0.24.jar!/org/betterx/bclib/mixin/common/WorldGenRegionMixin.class
+  Last modified Jul 27, 2026; size 2224 bytes
+  SHA-256 checksum 4a244e0b90cf25d349bd964d5c8c5a107fcfd74e0c26a06549d78468cedbadbf
+  Compiled from "WorldGenRegionMixin.java"
+public class org.betterx.bclib.mixin.common.WorldGenRegionMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #19                         // org/betterx/bclib/mixin/common/WorldGenRegionMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Methodref          #8.#9          // net/minecraft/core/BlockPos.getX:()I
+   #8 = Class              #10            // net/minecraft/core/BlockPos
+   #9 = NameAndType        #11:#12        // getX:()I
+  #10 = Utf8               net/minecraft/core/BlockPos
+  #11 = Utf8               getX
+  #12 = Utf8               ()I
+  #13 = Methodref          #8.#14         // net/minecraft/core/BlockPos.getZ:()I
+  #14 = NameAndType        #15:#12        // getZ:()I
+  #15 = Utf8               getZ
+  #16 = Class              #17            // net/minecraft/server/level/WorldGenRegion
+  #17 = Utf8               net/minecraft/server/level/WorldGenRegion
+  #18 = Fieldref           #19.#20        // org/betterx/bclib/mixin/common/WorldGenRegionMixin.center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #19 = Class              #21            // org/betterx/bclib/mixin/common/WorldGenRegionMixin
+  #20 = NameAndType        #22:#23        // center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #21 = Utf8               org/betterx/bclib/mixin/common/WorldGenRegionMixin
+  #22 = Utf8               center
+  #23 = Utf8               Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #24 = Methodref          #25.#26        // net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #25 = Class              #27            // net/minecraft/world/level/chunk/ChunkAccess
+  #26 = NameAndType        #28:#29        // getPos:()Lnet/minecraft/world/level/ChunkPos;
+  #27 = Utf8               net/minecraft/world/level/chunk/ChunkAccess
+  #28 = Utf8               getPos
+  #29 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #30 = Fieldref           #31.#32        // net/minecraft/world/level/ChunkPos.x:I
+  #31 = Class              #33            // net/minecraft/world/level/ChunkPos
+  #32 = NameAndType        #34:#35        // x:I
+  #33 = Utf8               net/minecraft/world/level/ChunkPos
+  #34 = Utf8               x
+  #35 = Utf8               I
+  #36 = Methodref          #37.#38        // java/lang/Math.abs:(I)I
+  #37 = Class              #39            // java/lang/Math
+  #38 = NameAndType        #40:#41        // abs:(I)I
+  #39 = Utf8               java/lang/Math
+  #40 = Utf8               abs
+  #41 = Utf8               (I)I
+  #42 = Fieldref           #31.#43        // net/minecraft/world/level/ChunkPos.z:I
+  #43 = NameAndType        #44:#35        // z:I
+  #44 = Utf8               z
+  #45 = Methodref          #46.#47        // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #46 = Class              #48            // java/lang/Boolean
+  #47 = NameAndType        #49:#50        // valueOf:(Z)Ljava/lang/Boolean;
+  #48 = Utf8               java/lang/Boolean
+  #49 = Utf8               valueOf
+  #50 = Utf8               (Z)Ljava/lang/Boolean;
+  #51 = Methodref          #52.#53        // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #52 = Class              #54            // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #53 = NameAndType        #55:#56        // setReturnValue:(Ljava/lang/Object;)V
+  #54 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #55 = Utf8               setReturnValue
+  #56 = Utf8               (Ljava/lang/Object;)V
+  #57 = Utf8               RuntimeVisibleAnnotations
+  #58 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #59 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #60 = Utf8               Code
+  #61 = Utf8               LineNumberTable
+  #62 = Utf8               LocalVariableTable
+  #63 = Utf8               this
+  #64 = Utf8               Lorg/betterx/bclib/mixin/common/WorldGenRegionMixin;
+  #65 = Utf8               be_alterBlockCheck
+  #66 = Utf8               (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #67 = Utf8               blockPos
+  #68 = Utf8               Lnet/minecraft/core/BlockPos;
+  #69 = Utf8               info
+  #70 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #71 = Utf8               region
+  #72 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+  #73 = Utf8               LocalVariableTypeTable
+  #74 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+  #75 = Utf8               StackMapTable
+  #76 = Utf8               Signature
+  #77 = Utf8               (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+  #78 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #79 = Utf8               method
+  #80 = Utf8               ensureCanWrite
+  #81 = Utf8               at
+  #82 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #83 = Utf8               value
+  #84 = Utf8               HEAD
+  #85 = Utf8               cancellable
+  #86 = Integer            1
+  #87 = Utf8               SourceFile
+  #88 = Utf8               WorldGenRegionMixin.java
+  #89 = Utf8               RuntimeInvisibleAnnotations
+  #90 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+{
+  private net.minecraft.world.level.chunk.ChunkAccess center;
+    descriptor: Lnet/minecraft/world/level/chunk/ChunkAccess;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #58()
+        org.spongepowered.asm.mixin.Final
+      1: #59()
+        org.spongepowered.asm.mixin.Shadow
+
+  public org.betterx.bclib.mixin.common.WorldGenRegionMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 15: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/betterx/bclib/mixin/common/WorldGenRegionMixin;
+
+  private void be_alterBlockCheck(net.minecraft.core.BlockPos, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Boolean>);
+    descriptor: (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=6, args_size=3
+         0: aload_1
+         1: invokevirtual #7                  // Method net/minecraft/core/BlockPos.getX:()I
+         4: iconst_4
+         5: ishr
+         6: istore_3
+         7: aload_1
+         8: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getZ:()I
+        11: iconst_4
+        12: ishr
+        13: istore        4
+        15: aload_0
+        16: checkcast     #16                 // class net/minecraft/server/level/WorldGenRegion
+        19: astore        5
+        21: aload_2
+        22: iload_3
+        23: aload_0
+        24: getfield      #18                 // Field center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+        27: invokevirtual #24                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        30: getfield      #30                 // Field net/minecraft/world/level/ChunkPos.x:I
+        33: isub
+        34: invokestatic  #36                 // Method java/lang/Math.abs:(I)I
+        37: iconst_2
+        38: if_icmpge     65
+        41: iload         4
+        43: aload_0
+        44: getfield      #18                 // Field center:Lnet/minecraft/world/level/chunk/ChunkAccess;
+        47: invokevirtual #24                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+        50: getfield      #42                 // Field net/minecraft/world/level/ChunkPos.z:I
+        53: isub
+        54: invokestatic  #36                 // Method java/lang/Math.abs:(I)I
+        57: iconst_2
+        58: if_icmpge     65
+        61: iconst_1
+        62: goto          66
+        65: iconst_0
+        66: invokestatic  #45                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+        69: invokevirtual #51                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        72: return
+      LineNumberTable:
+        line 22: 0
+        line 23: 7
+        line 24: 15
+        line 25: 21
+        line 26: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Lorg/betterx/bclib/mixin/common/WorldGenRegionMixin;
+            0      73     1 blockPos   Lnet/minecraft/core/BlockPos;
+            0      73     2  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            7      66     3     x   I
+           15      58     4     z   I
+           21      52     5 region   Lnet/minecraft/server/level/WorldGenRegion;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      73     2  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 65
+          locals = [ class org/betterx/bclib/mixin/common/WorldGenRegionMixin, class net/minecraft/core/BlockPos, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, int, int, class net/minecraft/server/level/WorldGenRegion ]
+          stack = [ class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class org/betterx/bclib/mixin/common/WorldGenRegionMixin, class net/minecraft/core/BlockPos, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, int, int, class net/minecraft/server/level/WorldGenRegion ]
+          stack = [ class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, int ]
+    Signature: #77                          // (Lnet/minecraft/core/BlockPos;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Boolean;>;)V
+    RuntimeVisibleAnnotations:
+      0: #78(#79=[s#80],#81=[@#82(#83=s#84)],#85=Z#86)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["ensureCanWrite"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+}
+SourceFile: "WorldGenRegionMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #90(#83=[c#72])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/WorldGenRegion;]
+    )

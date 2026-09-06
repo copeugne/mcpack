@@ -1,0 +1,154 @@
+Classfile bclib-21.0.24.jar!/org/betterx/bclib/mixin/common/ChunkGeneratorMixin.class
+  Last modified Jul 27, 2026; size 1743 bytes
+  SHA-256 checksum 67d40a8f7f027c54121d2cb467cc7464ca821442ef11d67f4183410aef18e6d1
+  Compiled from "ChunkGeneratorMixin.java"
+public class org.betterx.bclib.mixin.common.ChunkGeneratorMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // org/betterx/bclib/mixin/common/ChunkGeneratorMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Fieldref           #8.#9          // org/betterx/bclib/mixin/common/ChunkGeneratorMixin.bclib_featureIteratorSeed:I
+   #8 = Class              #10            // org/betterx/bclib/mixin/common/ChunkGeneratorMixin
+   #9 = NameAndType        #11:#12        // bclib_featureIteratorSeed:I
+  #10 = Utf8               org/betterx/bclib/mixin/common/ChunkGeneratorMixin
+  #11 = Utf8               bclib_featureIteratorSeed
+  #12 = Utf8               I
+  #13 = Methodref          #14.#15        // java/lang/Long.rotateRight:(JI)J
+  #14 = Class              #16            // java/lang/Long
+  #15 = NameAndType        #17:#18        // rotateRight:(JI)J
+  #16 = Utf8               java/lang/Long
+  #17 = Utf8               rotateRight
+  #18 = Utf8               (JI)J
+  #19 = Utf8               RuntimeVisibleAnnotations
+  #20 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #21 = Utf8               Code
+  #22 = Utf8               LineNumberTable
+  #23 = Utf8               LocalVariableTable
+  #24 = Utf8               this
+  #25 = Utf8               Lorg/betterx/bclib/mixin/common/ChunkGeneratorMixin;
+  #26 = Utf8               bclib_updateFeatureSeed
+  #27 = Utf8               (J)J
+  #28 = Utf8               seed
+  #29 = Utf8               J
+  #30 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyArg;
+  #31 = Utf8               method
+  #32 = Utf8               applyBiomeDecoration
+  #33 = Utf8               at
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #35 = Utf8               value
+  #36 = Utf8               INVOKE
+  #37 = Utf8               target
+  #38 = Utf8               Lnet/minecraft/world/level/levelgen/WorldgenRandom;setFeatureSeed(JII)V
+  #39 = Utf8               bclib_obBiomeGenerate
+  #40 = Utf8               (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #41 = Utf8               worldGenLevel
+  #42 = Utf8               Lnet/minecraft/world/level/WorldGenLevel;
+  #43 = Utf8               chunkAccess
+  #44 = Utf8               Lnet/minecraft/world/level/chunk/ChunkAccess;
+  #45 = Utf8               structureFeatureManager
+  #46 = Utf8               Lnet/minecraft/world/level/StructureManager;
+  #47 = Utf8               ci
+  #48 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #49 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #50 = Utf8               HEAD
+  #51 = Utf8               SourceFile
+  #52 = Utf8               ChunkGeneratorMixin.java
+  #53 = Utf8               RuntimeInvisibleAnnotations
+  #54 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #55 = Utf8               Lnet/minecraft/world/level/chunk/ChunkGenerator;
+{
+  private int bclib_featureIteratorSeed;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #20()
+        org.spongepowered.asm.mixin.Unique
+
+  public org.betterx.bclib.mixin.common.ChunkGeneratorMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lorg/betterx/bclib/mixin/common/ChunkGeneratorMixin;
+
+  private long bclib_updateFeatureSeed(long);
+    descriptor: (J)J
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=3, args_size=2
+         0: lload_1
+         1: aload_0
+         2: dup
+         3: getfield      #7                  // Field bclib_featureIteratorSeed:I
+         6: dup_x1
+         7: iconst_1
+         8: iadd
+         9: putfield      #7                  // Field bclib_featureIteratorSeed:I
+        12: invokestatic  #13                 // Method java/lang/Long.rotateRight:(JI)J
+        15: lreturn
+      LineNumberTable:
+        line 29: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lorg/betterx/bclib/mixin/common/ChunkGeneratorMixin;
+            0      16     1  seed   J
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#32],#33=@#34(#35=s#36,#37=s#38))
+        org.spongepowered.asm.mixin.injection.ModifyArg(
+          method=["applyBiomeDecoration"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/levelgen/WorldgenRandom;setFeatureSeed(JII)V"
+          )
+        )
+
+  private void bclib_obBiomeGenerate(net.minecraft.world.level.WorldGenLevel, net.minecraft.world.level.chunk.ChunkAccess, net.minecraft.world.level.StructureManager, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/StructureManager;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=5, args_size=5
+         0: aload_0
+         1: iconst_0
+         2: putfield      #7                  // Field bclib_featureIteratorSeed:I
+         5: return
+      LineNumberTable:
+        line 39: 0
+        line 40: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lorg/betterx/bclib/mixin/common/ChunkGeneratorMixin;
+            0       6     1 worldGenLevel   Lnet/minecraft/world/level/WorldGenLevel;
+            0       6     2 chunkAccess   Lnet/minecraft/world/level/chunk/ChunkAccess;
+            0       6     3 structureFeatureManager   Lnet/minecraft/world/level/StructureManager;
+            0       6     4    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #49(#31=[s#32],#33=[@#34(#35=s#50)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["applyBiomeDecoration"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+}
+SourceFile: "ChunkGeneratorMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #54(#35=[c#55])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/ChunkGenerator;]
+    )
