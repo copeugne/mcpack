@@ -1,0 +1,222 @@
+Compiled from "CrystalIslandFeature.java"
+public class com.aetherteam.aether.world.feature.CrystalIslandFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public com.aetherteam.aether.world.feature.CrystalIslandFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_2
+      11: getstatic     #17                 // Field com/aetherteam/aether/data/resources/registries/AetherConfiguredFeatures.CRYSTAL_TREE_CONFIGURATION:Lnet/minecraft/resources/ResourceKey;
+      14: invokeinterface #23,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.holderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder;
+      19: iconst_0
+      20: anewarray     #29                 // class net/minecraft/world/level/levelgen/placement/PlacementModifier
+      23: invokestatic  #31                 // Method net/minecraft/data/worldgen/placement/PlacementUtils.inlinePlaced:(Lnet/minecraft/core/Holder;[Lnet/minecraft/world/level/levelgen/placement/PlacementModifier;)Lnet/minecraft/core/Holder;
+      26: invokeinterface #37,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      31: checkcast     #43                 // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+      34: astore        4
+      36: aload         4
+      38: aload_2
+      39: aload_1
+      40: invokevirtual #45                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      43: aload_1
+      44: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      47: aload_1
+      48: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      51: invokevirtual #53                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      54: invokevirtual #58                 // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.place:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Z
+      57: ifeq          148
+      60: iconst_0
+      61: istore        5
+      63: iload         5
+      65: iconst_3
+      66: if_icmpge     146
+      69: iload         5
+      71: ifne          82
+      74: getstatic     #62                 // Field com/aetherteam/aether/data/resources/AetherFeatureStates.AETHER_GRASS_BLOCK:Lnet/minecraft/world/level/block/state/BlockState;
+      77: astore        6
+      79: goto          87
+      82: getstatic     #68                 // Field com/aetherteam/aether/data/resources/AetherFeatureStates.HOLYSTONE:Lnet/minecraft/world/level/block/state/BlockState;
+      85: astore        6
+      87: iload         5
+      89: istore        7
+      91: aload_0
+      92: aload_2
+      93: aload_3
+      94: iload         7
+      96: invokevirtual #71                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      99: aload         6
+     101: invokevirtual #75                 // Method setIslandBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     104: invokestatic  #81                 // Method net/minecraft/core/Direction.values:()[Lnet/minecraft/core/Direction;
+     107: invokestatic  #87                 // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+     110: invokeinterface #93,  1           // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     115: iconst_2
+     116: bipush        6
+     118: invokeinterface #99,  3           // InterfaceMethod java/util/List.subList:(II)Ljava/util/List;
+     123: aload_0
+     124: aload_2
+     125: aload_3
+     126: iload         7
+     128: aload         6
+     130: invokedynamic #105,  0            // InvokeDynamic #0:accept:(Lcom/aetherteam/aether/world/feature/CrystalIslandFeature;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;ILnet/minecraft/world/level/block/state/BlockState;)Ljava/util/function/Consumer;
+     135: invokeinterface #109,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+     140: iinc          5, 1
+     143: goto          63
+     146: iconst_1
+     147: ireturn
+     148: iconst_0
+     149: ireturn
+
+  private void setIslandBlock(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_1
+       1: instanceof    #113                // class net/minecraft/server/level/WorldGenRegion
+       4: ifeq          25
+       7: aload_1
+       8: checkcast     #113                // class net/minecraft/server/level/WorldGenRegion
+      11: astore        4
+      13: aload_2
+      14: aload         4
+      16: invokevirtual #115                // Method net/minecraft/server/level/WorldGenRegion.getCenter:()Lnet/minecraft/world/level/ChunkPos;
+      19: invokestatic  #119                // Method com/aetherteam/aether/world/BlockLogicUtil.isOutOfBounds:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/ChunkPos;)Z
+      22: ifne          248
+      25: aload_3
+      26: astore        5
+      28: aload_1
+      29: invokeinterface #125,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunkSource:()Lnet/minecraft/world/level/chunk/ChunkSource;
+      34: astore        7
+      36: aload         7
+      38: instanceof    #129                // class net/minecraft/server/level/ServerChunkCache
+      41: ifeq          240
+      44: aload         7
+      46: checkcast     #129                // class net/minecraft/server/level/ServerChunkCache
+      49: astore        6
+      51: aload         6
+      53: invokevirtual #131                // Method net/minecraft/server/level/ServerChunkCache.getGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      56: astore        8
+      58: aload         8
+      60: instanceof    #134                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+      63: ifeq          240
+      66: aload         8
+      68: checkcast     #134                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+      71: astore        7
+      73: aload         7
+      75: invokevirtual #136                // Method net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator.generatorSettings:()Lnet/minecraft/core/Holder;
+      78: invokeinterface #37,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      83: checkcast     #140                // class net/minecraft/world/level/levelgen/NoiseGeneratorSettings
+      86: astore        8
+      88: aload         8
+      90: invokevirtual #142                // Method net/minecraft/world/level/levelgen/NoiseGeneratorSettings.surfaceRule:()Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+      93: astore        9
+      95: aload_1
+      96: aload_2
+      97: invokeinterface #146,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getChunk:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/chunk/ChunkAccess;
+     102: astore        10
+     104: aload         10
+     106: checkcast     #150                // class com/aetherteam/aether/mixin/mixins/common/accessor/ChunkAccessAccessor
+     109: invokeinterface #152,  1          // InterfaceMethod com/aetherteam/aether/mixin/mixins/common/accessor/ChunkAccessAccessor.aether$getNoiseChunk:()Lnet/minecraft/world/level/levelgen/NoiseChunk;
+     114: astore        11
+     116: aload         11
+     118: ifnull        240
+     121: new           #156                // class net/minecraft/world/level/levelgen/carver/CarvingContext
+     124: dup
+     125: aload         7
+     127: aload_1
+     128: invokeinterface #158,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     133: aload         10
+     135: invokevirtual #162                // Method net/minecraft/world/level/chunk/ChunkAccess.getHeightAccessorForGeneration:()Lnet/minecraft/world/level/LevelHeightAccessor;
+     138: aload         11
+     140: aload         6
+     142: invokevirtual #168                // Method net/minecraft/server/level/ServerChunkCache.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     145: aload         9
+     147: invokespecial #172                // Method net/minecraft/world/level/levelgen/carver/CarvingContext."<init>":(Lnet/minecraft/world/level/levelgen/NoiseBasedChunkGenerator;Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/NoiseChunk;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;)V
+     150: astore        12
+     152: aload         12
+     154: aload_1
+     155: invokeinterface #175,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBiomeManager:()Lnet/minecraft/world/level/biome/BiomeManager;
+     160: dup
+     161: invokestatic  #179                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     164: pop
+     165: invokedynamic #185,  0            // InvokeDynamic #1:apply:(Lnet/minecraft/world/level/biome/BiomeManager;)Ljava/util/function/Function;
+     170: aload         10
+     172: aload_2
+     173: iconst_0
+     174: invokevirtual #189                // Method net/minecraft/world/level/levelgen/carver/CarvingContext.topMaterial:(Ljava/util/function/Function;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Z)Ljava/util/Optional;
+     177: astore        13
+     179: aload         13
+     181: invokevirtual #193                // Method java/util/Optional.isPresent:()Z
+     184: ifeq          240
+     187: aload_3
+     188: getstatic     #199                // Field com/aetherteam/aether/AetherTags$Blocks.AETHER_DIRT:Lnet/minecraft/tags/TagKey;
+     191: invokevirtual #205                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     194: ifeq          240
+     197: aload_3
+     198: getstatic     #211                // Field com/aetherteam/aether/block/AetherBlocks.AETHER_DIRT:Lnet/neoforged/neoforge/registries/DeferredBlock;
+     201: invokevirtual #216                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+     204: checkcast     #221                // class net/minecraft/world/level/block/Block
+     207: invokevirtual #223                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     210: ifne          240
+     213: aload         13
+     215: invokevirtual #226                // Method java/util/Optional.get:()Ljava/lang/Object;
+     218: checkcast     #206                // class net/minecraft/world/level/block/state/BlockState
+     221: getstatic     #199                // Field com/aetherteam/aether/AetherTags$Blocks.AETHER_DIRT:Lnet/minecraft/tags/TagKey;
+     224: invokevirtual #205                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     227: ifeq          240
+     230: aload         13
+     232: invokevirtual #226                // Method java/util/Optional.get:()Ljava/lang/Object;
+     235: checkcast     #206                // class net/minecraft/world/level/block/state/BlockState
+     238: astore        5
+     240: aload_0
+     241: aload_1
+     242: aload_2
+     243: aload         5
+     245: invokevirtual #227                // Method setBlock:(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     248: return
+
+  private void lambda$place$0(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, int, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.Direction);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload         5
+       5: invokevirtual #231                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+       8: iload_3
+       9: invokevirtual #71                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      12: aload         4
+      14: invokevirtual #75                 // Method setIslandBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      17: iload_3
+      18: iconst_2
+      19: if_icmpeq     65
+      22: aload_0
+      23: aload_1
+      24: aload_2
+      25: aload         5
+      27: iconst_2
+      28: invokevirtual #235                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      31: iload_3
+      32: invokevirtual #71                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      35: aload         4
+      37: invokevirtual #75                 // Method setIslandBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      40: aload_0
+      41: aload_1
+      42: aload_2
+      43: aload         5
+      45: invokevirtual #231                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      48: aload         5
+      50: invokevirtual #238                // Method net/minecraft/core/Direction.getClockWise:()Lnet/minecraft/core/Direction;
+      53: invokevirtual #231                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      56: iload_3
+      57: invokevirtual #71                 // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+      60: aload         4
+      62: invokevirtual #75                 // Method setIslandBlock:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      65: return
+}

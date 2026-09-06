@@ -1,0 +1,271 @@
+Compiled from "HolidayTreeDecorator.java"
+public class com.aetherteam.aether.world.treedecorator.HolidayTreeDecorator extends net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator {
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.world.treedecorator.HolidayTreeDecorator> CODEC;
+
+  private final net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider provider;
+
+  public com.aetherteam.aether.world.treedecorator.HolidayTreeDecorator(net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field provider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       9: return
+
+  protected net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType<?> type();
+    Code:
+       0: getstatic     #13                 // Field com/aetherteam/aether/world/treedecorator/AetherTreeDecoratorTypes.HOLIDAY_TREE_DECORATOR:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #19                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #25                 // class net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType
+       9: areturn
+
+  public void place(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context);
+    Code:
+       0: aload_1
+       1: invokevirtual #27                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.logs:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       4: astore_2
+       5: aload_2
+       6: invokeinterface #33,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      11: ifne          56
+      14: aload_2
+      15: invokeinterface #39,  1           // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+      20: checkcast     #42                 // class net/minecraft/core/BlockPos
+      23: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getY:()I
+      26: istore_3
+      27: aload_2
+      28: invokeinterface #48,  1           // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      33: iload_3
+      34: invokedynamic #52,  0             // InvokeDynamic #0:test:(I)Ljava/util/function/Predicate;
+      39: invokeinterface #56,  2           // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      44: aload_0
+      45: aload_1
+      46: invokedynamic #62,  0             // InvokeDynamic #1:accept:(Lcom/aetherteam/aether/world/treedecorator/HolidayTreeDecorator;Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;)Ljava/util/function/Consumer;
+      51: invokeinterface #66,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      56: return
+
+  private void placeCircle(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #70                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.level:()Lnet/minecraft/world/level/LevelSimulatedReader;
+       4: astore_3
+       5: aload_1
+       6: invokevirtual #74                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.random:()Lnet/minecraft/util/RandomSource;
+       9: astore        4
+      11: aload_0
+      12: aload_1
+      13: aload_3
+      14: aload         4
+      16: aload_2
+      17: fconst_0
+      18: invokevirtual #78                 // Method placeBlockAt:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;F)V
+      21: bipush        10
+      23: istore        5
+      25: iconst_1
+      26: istore        6
+      28: iload         6
+      30: iload         5
+      32: if_icmpge     184
+      35: iconst_0
+      36: istore        7
+      38: iload         7
+      40: iload         5
+      42: if_icmpge     178
+      45: iload         7
+      47: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      50: iload         6
+      52: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      55: iadd
+      56: iload         5
+      58: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      61: if_icmple     67
+      64: goto          172
+      67: iload         7
+      69: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      72: iload         6
+      74: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      77: iadd
+      78: i2d
+      79: invokestatic  #88                 // Method java/lang/Math.sqrt:(D)D
+      82: d2f
+      83: iload         5
+      85: invokestatic  #82                 // Method net/minecraft/util/Mth.square:(I)I
+      88: i2f
+      89: fdiv
+      90: fstore        8
+      92: aload_0
+      93: aload_1
+      94: aload_3
+      95: aload         4
+      97: aload_2
+      98: iload         7
+     100: iconst_0
+     101: iload         6
+     103: invokevirtual #94                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     106: fload         8
+     108: invokevirtual #78                 // Method placeBlockAt:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;F)V
+     111: aload_0
+     112: aload_1
+     113: aload_3
+     114: aload         4
+     116: aload_2
+     117: iload         7
+     119: ineg
+     120: iconst_0
+     121: iload         6
+     123: ineg
+     124: invokevirtual #94                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     127: fload         8
+     129: invokevirtual #78                 // Method placeBlockAt:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;F)V
+     132: aload_0
+     133: aload_1
+     134: aload_3
+     135: aload         4
+     137: aload_2
+     138: iload         6
+     140: ineg
+     141: iconst_0
+     142: iload         7
+     144: invokevirtual #94                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     147: fload         8
+     149: invokevirtual #78                 // Method placeBlockAt:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;F)V
+     152: aload_0
+     153: aload_1
+     154: aload_3
+     155: aload         4
+     157: aload_2
+     158: iload         6
+     160: iconst_0
+     161: iload         7
+     163: ineg
+     164: invokevirtual #94                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     167: fload         8
+     169: invokevirtual #78                 // Method placeBlockAt:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;F)V
+     172: iinc          7, 1
+     175: goto          38
+     178: iinc          6, 1
+     181: goto          28
+     184: return
+
+  private void placeBlockAt(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context, net.minecraft.world.level.LevelSimulatedReader, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, float);
+    Code:
+       0: bipush        9
+       2: istore        6
+       4: iload         6
+       6: bipush        -4
+       8: if_icmplt     164
+      11: aload         4
+      13: iload         6
+      15: invokevirtual #98                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      18: astore        7
+      20: aload_1
+      21: aload         7
+      23: invokevirtual #102                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      26: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+      29: ifeq          158
+      32: aload_2
+      33: aload         7
+      35: invokedynamic #109,  0            // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      40: invokeinterface #112,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      45: ifne          73
+      48: aload_2
+      49: aload         7
+      51: invokedynamic #118,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+      56: invokeinterface #112,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+      61: ifne          73
+      64: aload_2
+      65: aload         7
+      67: invokestatic  #119                // Method net/minecraft/world/level/levelgen/feature/Feature.isGrassOrDirt:(Lnet/minecraft/world/level/LevelSimulatedReader;Lnet/minecraft/core/BlockPos;)Z
+      70: ifeq          158
+      73: aload_1
+      74: aload         7
+      76: iconst_4
+      77: invokevirtual #98                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      80: invokevirtual #105                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+      83: ifeq          158
+      86: fload         5
+      88: aload_3
+      89: invokeinterface #125,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      94: fconst_2
+      95: fdiv
+      96: fconst_1
+      97: fload         5
+      99: fsub
+     100: fmul
+     101: fcmpg
+     102: ifgt          158
+     105: aload_2
+     106: aload         7
+     108: invokedynamic #118,  0            // InvokeDynamic #3:test:()Ljava/util/function/Predicate;
+     113: invokeinterface #112,  3          // InterfaceMethod net/minecraft/world/level/LevelSimulatedReader.isStateAtPosition:(Lnet/minecraft/core/BlockPos;Ljava/util/function/Predicate;)Z
+     118: ifeq          139
+     121: aload_1
+     122: aload         7
+     124: invokevirtual #102                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     127: getstatic     #131                // Field net/minecraft/world/level/block/Blocks.SNOW:Lnet/minecraft/world/level/block/Block;
+     130: invokevirtual #137                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     133: invokevirtual #143                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     136: goto          158
+     139: aload_1
+     140: aload         7
+     142: invokevirtual #102                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     145: aload_0
+     146: getfield      #7                  // Field provider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     149: aload_3
+     150: aload         7
+     152: invokevirtual #147                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     155: invokevirtual #143                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     158: iinc          6, -1
+     161: goto          4
+     164: return
+
+  private static boolean isAetherGrass(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #153                // Field com/aetherteam/aether/AetherTags$Blocks.AETHER_DIRT:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #159                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  private static boolean isLeaves(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #165                // Field net/minecraft/tags/BlockTags.LEAVES:Lnet/minecraft/tags/TagKey;
+       4: invokevirtual #159                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       7: ireturn
+
+  private void lambda$place$2(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #170                // Method placeCircle:(Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;Lnet/minecraft/core/BlockPos;)V
+       6: return
+
+  private static boolean lambda$place$1(int, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokevirtual #44                 // Method net/minecraft/core/BlockPos.getY:()I
+       4: iload_0
+       5: if_icmpne     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  private static net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider lambda$static$0(com.aetherteam.aether.world.treedecorator.HolidayTreeDecorator);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field provider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       4: areturn
+
+  static {};
+    Code:
+       0: getstatic     #174                // Field net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.CODEC:Lcom/mojang/serialization/Codec;
+       3: ldc           #178                // String provider
+       5: invokeinterface #179,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      10: invokedynamic #185,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      15: invokedynamic #189,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      20: invokevirtual #190                // Method com/mojang/serialization/MapCodec.xmap:(Ljava/util/function/Function;Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+      23: putstatic     #196                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      26: return
+}

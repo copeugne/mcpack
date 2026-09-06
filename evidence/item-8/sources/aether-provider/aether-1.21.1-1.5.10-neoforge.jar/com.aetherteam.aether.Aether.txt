@@ -1,0 +1,1881 @@
+Compiled from "Aether.java"
+public class com.aetherteam.aether.Aether {
+  public static final java.lang.String MODID = "aether";
+
+  public static final org.slf4j.Logger LOGGER;
+
+  public static final java.nio.file.Path DIRECTORY;
+
+  public static final com.aetherteam.aether.client.TriviaGenerator TRIVIA_READER;
+
+  public com.aetherteam.aether.Aether(net.neoforged.fml.ModContainer, net.neoforged.bus.api.IEventBus, net.neoforged.api.distmarker.Dist);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_2
+       5: invokedynamic #7,  0              // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      10: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      15: aload_2
+      16: aload_0
+      17: invokedynamic #17,  0             // InvokeDynamic #1:accept:(Lcom/aetherteam/aether/Aether;)Ljava/util/function/Consumer;
+      22: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      27: aload_2
+      28: aload_0
+      29: invokedynamic #20,  0             // InvokeDynamic #2:accept:(Lcom/aetherteam/aether/Aether;)Ljava/util/function/Consumer;
+      34: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      39: aload_2
+      40: aload_0
+      41: invokedynamic #21,  0             // InvokeDynamic #3:accept:(Lcom/aetherteam/aether/Aether;)Ljava/util/function/Consumer;
+      46: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      51: aload_2
+      52: aload_0
+      53: invokedynamic #22,  0             // InvokeDynamic #4:accept:(Lcom/aetherteam/aether/Aether;)Ljava/util/function/Consumer;
+      58: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      63: aload_2
+      64: aload_0
+      65: invokedynamic #23,  0             // InvokeDynamic #5:accept:(Lcom/aetherteam/aether/Aether;)Ljava/util/function/Consumer;
+      70: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      75: aload_2
+      76: ldc           #24                 // class net/neoforged/neoforge/registries/NewRegistryEvent
+      78: invokedynamic #26,  0             // InvokeDynamic #6:accept:()Ljava/util/function/Consumer;
+      83: invokeinterface #27,  3           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      88: aload_2
+      89: ldc           #30                 // class net/neoforged/neoforge/registries/DataPackRegistryEvent$NewRegistry
+      91: invokedynamic #32,  0             // InvokeDynamic #7:accept:()Ljava/util/function/Consumer;
+      96: invokeinterface #27,  3           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+     101: bipush        30
+     103: anewarray     #33                 // class net/neoforged/neoforge/registries/DeferredRegister
+     106: dup
+     107: iconst_0
+     108: getstatic     #35                 // Field com/aetherteam/aether/block/AetherBlocks.BLOCKS:Lnet/neoforged/neoforge/registries/DeferredRegister$Blocks;
+     111: aastore
+     112: dup
+     113: iconst_1
+     114: getstatic     #41                 // Field com/aetherteam/aether/item/AetherItems.ITEMS:Lnet/neoforged/neoforge/registries/DeferredRegister$Items;
+     117: aastore
+     118: dup
+     119: iconst_2
+     120: getstatic     #47                 // Field com/aetherteam/aether/entity/AetherEntityTypes.ENTITY_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     123: aastore
+     124: dup
+     125: iconst_3
+     126: getstatic     #53                 // Field com/aetherteam/aether/entity/ai/attribute/AetherAttributes.ATTRIBUTES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     129: aastore
+     130: dup
+     131: iconst_4
+     132: getstatic     #58                 // Field com/aetherteam/aether/blockentity/AetherBlockEntityTypes.BLOCK_ENTITY_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     135: aastore
+     136: dup
+     137: iconst_5
+     138: getstatic     #63                 // Field com/aetherteam/aether/inventory/menu/AetherMenuTypes.MENU_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     141: aastore
+     142: dup
+     143: bipush        6
+     145: getstatic     #68                 // Field com/aetherteam/aether/effect/AetherEffects.EFFECTS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     148: aastore
+     149: dup
+     150: bipush        7
+     152: getstatic     #73                 // Field com/aetherteam/aether/item/combat/AetherArmorMaterials.ARMOR_MATERIALS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     155: aastore
+     156: dup
+     157: bipush        8
+     159: getstatic     #78                 // Field com/aetherteam/aether/client/particle/AetherParticleTypes.PARTICLES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     162: aastore
+     163: dup
+     164: bipush        9
+     166: getstatic     #83                 // Field com/aetherteam/aether/world/feature/AetherFeatures.FEATURES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     169: aastore
+     170: dup
+     171: bipush        10
+     173: getstatic     #88                 // Field com/aetherteam/aether/world/foliageplacer/AetherFoliagePlacerTypes.FOLIAGE_PLACERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     176: aastore
+     177: dup
+     178: bipush        11
+     180: getstatic     #93                 // Field com/aetherteam/aether/world/placementmodifier/AetherPlacementModifiers.PLACEMENT_MODIFIERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     183: aastore
+     184: dup
+     185: bipush        12
+     187: getstatic     #98                 // Field com/aetherteam/aether/world/trunkplacer/AetherTrunkPlacerTypes.TRUNK_PLACERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     190: aastore
+     191: dup
+     192: bipush        13
+     194: getstatic     #103                // Field com/aetherteam/aether/world/treedecorator/AetherTreeDecoratorTypes.TREE_DECORATORS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     197: aastore
+     198: dup
+     199: bipush        14
+     201: getstatic     #108                // Field com/aetherteam/aether/world/AetherPoi.POI:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     204: aastore
+     205: dup
+     206: bipush        15
+     208: getstatic     #113                // Field com/aetherteam/aether/world/structure/AetherStructureTypes.STRUCTURE_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     211: aastore
+     212: dup
+     213: bipush        16
+     215: getstatic     #118                // Field com/aetherteam/aether/world/structurepiece/AetherStructurePieceTypes.STRUCTURE_PIECE_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     218: aastore
+     219: dup
+     220: bipush        17
+     222: getstatic     #123                // Field com/aetherteam/aether/world/processor/AetherStructureProcessors.STRUCTURE_PROCESSOR_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     225: aastore
+     226: dup
+     227: bipush        18
+     229: getstatic     #128                // Field com/aetherteam/aether/recipe/AetherRecipeTypes.RECIPE_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     232: aastore
+     233: dup
+     234: bipush        19
+     236: getstatic     #133                // Field com/aetherteam/aether/recipe/AetherRecipeSerializers.RECIPE_SERIALIZERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     239: aastore
+     240: dup
+     241: bipush        20
+     243: getstatic     #138                // Field com/aetherteam/aether/loot/functions/AetherLootFunctions.LOOT_FUNCTION_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     246: aastore
+     247: dup
+     248: bipush        21
+     250: getstatic     #143                // Field com/aetherteam/aether/loot/conditions/AetherLootConditions.LOOT_CONDITION_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     253: aastore
+     254: dup
+     255: bipush        22
+     257: getstatic     #148                // Field com/aetherteam/aether/loot/modifiers/AetherLootModifiers.GLOBAL_LOOT_MODIFIERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     260: aastore
+     261: dup
+     262: bipush        23
+     264: getstatic     #153                // Field com/aetherteam/aether/client/AetherSoundEvents.SOUNDS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     267: aastore
+     268: dup
+     269: bipush        24
+     271: getstatic     #158                // Field com/aetherteam/aether/AetherGameEvents.GAME_EVENTS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     274: aastore
+     275: dup
+     276: bipush        25
+     278: getstatic     #163                // Field com/aetherteam/aether/item/AetherCreativeTabs.CREATIVE_MODE_TABS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     281: aastore
+     282: dup
+     283: bipush        26
+     285: getstatic     #168                // Field com/aetherteam/aether/api/AetherAdvancementSoundOverrides.ADVANCEMENT_SOUND_OVERRIDES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     288: aastore
+     289: dup
+     290: bipush        27
+     292: getstatic     #173                // Field com/aetherteam/aether/attachment/AetherDataAttachments.ATTACHMENTS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     295: aastore
+     296: dup
+     297: bipush        28
+     299: getstatic     #178                // Field com/aetherteam/aether/advancement/AetherAdvancementTriggers.TRIGGERS:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     302: aastore
+     303: dup
+     304: bipush        29
+     306: getstatic     #183                // Field com/aetherteam/aether/item/components/AetherDataComponents.DATA_COMPONENT_TYPES:Lnet/neoforged/neoforge/registries/DeferredRegister;
+     309: aastore
+     310: astore        4
+     312: aload         4
+     314: astore        5
+     316: aload         5
+     318: arraylength
+     319: istore        6
+     321: iconst_0
+     322: istore        7
+     324: iload         7
+     326: iload         6
+     328: if_icmpge     350
+     331: aload         5
+     333: iload         7
+     335: aaload
+     336: astore        8
+     338: aload         8
+     340: aload_2
+     341: invokevirtual #188                // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+     344: iinc          7, 1
+     347: goto          324
+     350: aload_0
+     351: aload_2
+     352: invokevirtual #192                // Method eventSetup:(Lnet/neoforged/bus/api/IEventBus;)V
+     355: invokestatic  #197                // Method com/aetherteam/aether/block/AetherBlocks.registerWoodTypes:()V
+     358: getstatic     #200                // Field DIRECTORY:Ljava/nio/file/Path;
+     361: invokeinterface #204,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+     366: invokevirtual #210                // Method java/io/File.mkdirs:()Z
+     369: pop
+     370: aload_1
+     371: getstatic     #216                // Field net/neoforged/fml/config/ModConfig$Type.STARTUP:Lnet/neoforged/fml/config/ModConfig$Type;
+     374: getstatic     #222                // Field com/aetherteam/aether/AetherConfig.STARTUP_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+     377: invokevirtual #228                // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;)V
+     380: aload_1
+     381: getstatic     #234                // Field net/neoforged/fml/config/ModConfig$Type.SERVER:Lnet/neoforged/fml/config/ModConfig$Type;
+     384: getstatic     #237                // Field com/aetherteam/aether/AetherConfig.SERVER_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+     387: invokevirtual #228                // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;)V
+     390: aload_1
+     391: getstatic     #240                // Field net/neoforged/fml/config/ModConfig$Type.COMMON:Lnet/neoforged/fml/config/ModConfig$Type;
+     394: getstatic     #243                // Field com/aetherteam/aether/AetherConfig.COMMON_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+     397: invokevirtual #228                // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;)V
+     400: aload_1
+     401: getstatic     #246                // Field net/neoforged/fml/config/ModConfig$Type.CLIENT:Lnet/neoforged/fml/config/ModConfig$Type;
+     404: getstatic     #249                // Field com/aetherteam/aether/AetherConfig.CLIENT_SPEC:Lnet/neoforged/neoforge/common/ModConfigSpec;
+     407: invokevirtual #228                // Method net/neoforged/fml/ModContainer.registerConfig:(Lnet/neoforged/fml/config/ModConfig$Type;Lnet/neoforged/fml/config/IConfigSpec;)V
+     410: aload_3
+     411: getstatic     #252                // Field net/neoforged/api/distmarker/Dist.CLIENT:Lnet/neoforged/api/distmarker/Dist;
+     414: if_acmpne     433
+     417: aload_1
+     418: ldc_w         #257                // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+     421: invokedynamic #259,  0            // InvokeDynamic #8:createScreen:()Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+     426: invokevirtual #263                // Method net/neoforged/fml/ModContainer.registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+     429: aload_2
+     430: invokestatic  #267                // Method com/aetherteam/aether/client/AetherClient.clientInit:(Lnet/neoforged/bus/api/IEventBus;)V
+     433: return
+
+  public void commonSetup(net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: iconst_1
+       1: anewarray     #272                // class java/lang/Class
+       4: dup
+       5: iconst_0
+       6: ldc_w         #274                // class com/aetherteam/aether/command/SunAltarWhitelist
+       9: aastore
+      10: invokestatic  #276                // Method com/google/common/reflect/Reflection.initialize:([Ljava/lang/Class;)V
+      13: iconst_1
+      14: anewarray     #272                // class java/lang/Class
+      17: dup
+      18: iconst_0
+      19: ldc_w         #282                // class com/aetherteam/aether/inventory/AetherRecipeBookTypes
+      22: aastore
+      23: invokestatic  #276                // Method com/google/common/reflect/Reflection.initialize:([Ljava/lang/Class;)V
+      26: iconst_1
+      27: anewarray     #272                // class java/lang/Class
+      30: dup
+      31: iconst_0
+      32: ldc_w         #284                // class com/aetherteam/aether/data/resources/AetherMobCategory
+      35: aastore
+      36: invokestatic  #276                // Method com/google/common/reflect/Reflection.initialize:([Ljava/lang/Class;)V
+      39: iconst_1
+      40: anewarray     #272                // class java/lang/Class
+      43: dup
+      44: iconst_0
+      45: ldc           #179                // class com/aetherteam/aether/advancement/AetherAdvancementTriggers
+      47: aastore
+      48: invokestatic  #276                // Method com/google/common/reflect/Reflection.initialize:([Ljava/lang/Class;)V
+      51: aload_1
+      52: aload_0
+      53: invokedynamic #286,  0            // InvokeDynamic #9:run:(Lcom/aetherteam/aether/Aether;)Ljava/lang/Runnable;
+      58: invokevirtual #290                // Method net/neoforged/fml/event/lifecycle/FMLCommonSetupEvent.enqueueWork:(Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+      61: pop
+      62: getstatic     #296                // Field io/wispforest/accessories/api/slot/UniqueSlotHandling.EVENT:Lnet/fabricmc/fabric/api/event/Event;
+      65: getstatic     #302                // Field com/aetherteam/aether/inventory/AetherAccessorySlots.INSTANCE:Lcom/aetherteam/aether/inventory/AetherAccessorySlots;
+      68: invokevirtual #308                // Method net/fabricmc/fabric/api/event/Event.register:(Ljava/lang/Object;)V
+      71: return
+
+  public void registerPackets(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_1
+       1: ldc_w         #313                // String 1.0.0
+       4: invokevirtual #315                // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       7: invokevirtual #321                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      10: astore_2
+      11: aload_2
+      12: getstatic     #327                // Field com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      15: getstatic     #333                // Field com/aetherteam/aether/network/packet/clientbound/AetherTravelPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      18: invokedynamic #337,  0            // InvokeDynamic #10:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      23: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      26: pop
+      27: aload_2
+      28: getstatic     #345                // Field com/aetherteam/aether/network/packet/clientbound/BossInfoPacket$Display.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      31: getstatic     #348                // Field com/aetherteam/aether/network/packet/clientbound/BossInfoPacket$Display.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      34: invokedynamic #349,  0            // InvokeDynamic #11:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      39: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      42: pop
+      43: aload_2
+      44: getstatic     #350                // Field com/aetherteam/aether/network/packet/clientbound/BossInfoPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      47: getstatic     #353                // Field com/aetherteam/aether/network/packet/clientbound/BossInfoPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      50: invokedynamic #354,  0            // InvokeDynamic #12:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      55: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      58: pop
+      59: aload_2
+      60: getstatic     #355                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      63: getstatic     #358                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      66: invokedynamic #359,  0            // InvokeDynamic #13:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      71: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      74: pop
+      75: aload_2
+      76: getstatic     #360                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      79: getstatic     #363                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      82: invokedynamic #364,  0            // InvokeDynamic #14:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      87: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      90: pop
+      91: aload_2
+      92: getstatic     #365                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Sync.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      95: getstatic     #368                // Field com/aetherteam/aether/network/packet/clientbound/ClientDeveloperGlowPacket$Sync.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      98: invokedynamic #369,  0            // InvokeDynamic #15:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     103: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     106: pop
+     107: aload_2
+     108: getstatic     #370                // Field com/aetherteam/aether/network/packet/clientbound/ClientGrabItemPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     111: getstatic     #373                // Field com/aetherteam/aether/network/packet/clientbound/ClientGrabItemPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     114: invokedynamic #374,  0            // InvokeDynamic #16:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     119: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     122: pop
+     123: aload_2
+     124: getstatic     #375                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     127: getstatic     #378                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     130: invokedynamic #379,  0            // InvokeDynamic #17:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     135: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     138: pop
+     139: aload_2
+     140: getstatic     #380                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     143: getstatic     #383                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     146: invokedynamic #384,  0            // InvokeDynamic #18:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     151: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     154: pop
+     155: aload_2
+     156: getstatic     #385                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Sync.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     159: getstatic     #388                // Field com/aetherteam/aether/network/packet/clientbound/ClientHaloPacket$Sync.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     162: invokedynamic #389,  0            // InvokeDynamic #19:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     167: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     170: pop
+     171: aload_2
+     172: getstatic     #390                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     175: getstatic     #393                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     178: invokedynamic #394,  0            // InvokeDynamic #20:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     183: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     186: pop
+     187: aload_2
+     188: getstatic     #395                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     191: getstatic     #398                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     194: invokedynamic #399,  0            // InvokeDynamic #21:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     199: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     202: pop
+     203: aload_2
+     204: getstatic     #400                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Sync.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     207: getstatic     #403                // Field com/aetherteam/aether/network/packet/clientbound/ClientMoaSkinPacket$Sync.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     210: invokedynamic #404,  0            // InvokeDynamic #22:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     215: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     218: pop
+     219: aload_2
+     220: getstatic     #405                // Field com/aetherteam/aether/network/packet/clientbound/CloudMinionPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     223: getstatic     #408                // Field com/aetherteam/aether/network/packet/clientbound/CloudMinionPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     226: invokedynamic #409,  0            // InvokeDynamic #23:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     231: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     234: pop
+     235: aload_2
+     236: getstatic     #410                // Field com/aetherteam/aether/network/packet/clientbound/HealthResetPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     239: getstatic     #413                // Field com/aetherteam/aether/network/packet/clientbound/HealthResetPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     242: invokedynamic #414,  0            // InvokeDynamic #24:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     247: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     250: pop
+     251: aload_2
+     252: getstatic     #415                // Field com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     255: getstatic     #418                // Field com/aetherteam/aether/network/packet/clientbound/LeavingAetherPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     258: invokedynamic #419,  0            // InvokeDynamic #25:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     263: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     266: pop
+     267: aload_2
+     268: getstatic     #420                // Field com/aetherteam/aether/network/packet/clientbound/MoaInteractPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     271: getstatic     #423                // Field com/aetherteam/aether/network/packet/clientbound/MoaInteractPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     274: invokedynamic #424,  0            // InvokeDynamic #26:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     279: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     282: pop
+     283: aload_2
+     284: getstatic     #425                // Field com/aetherteam/aether/network/packet/clientbound/OpenSunAltarPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     287: getstatic     #428                // Field com/aetherteam/aether/network/packet/clientbound/OpenSunAltarPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     290: invokedynamic #429,  0            // InvokeDynamic #27:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     295: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     298: pop
+     299: aload_2
+     300: getstatic     #430                // Field com/aetherteam/aether/network/packet/clientbound/PortalInteractPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     303: getstatic     #433                // Field com/aetherteam/aether/network/packet/clientbound/PortalInteractPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     306: invokedynamic #434,  0            // InvokeDynamic #28:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     311: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     314: pop
+     315: aload_2
+     316: getstatic     #435                // Field com/aetherteam/aether/network/packet/clientbound/PortalTravelSoundPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     319: getstatic     #438                // Field com/aetherteam/aether/network/packet/clientbound/PortalTravelSoundPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     322: invokedynamic #439,  0            // InvokeDynamic #29:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     327: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     330: pop
+     331: aload_2
+     332: getstatic     #440                // Field com/aetherteam/aether/network/packet/clientbound/QueenDialoguePacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     335: getstatic     #443                // Field com/aetherteam/aether/network/packet/clientbound/QueenDialoguePacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     338: invokedynamic #444,  0            // InvokeDynamic #30:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     343: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     346: pop
+     347: aload_2
+     348: getstatic     #445                // Field com/aetherteam/aether/network/packet/clientbound/RegisterMoaSkinsPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     351: getstatic     #448                // Field com/aetherteam/aether/network/packet/clientbound/RegisterMoaSkinsPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     354: invokedynamic #449,  0            // InvokeDynamic #31:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     359: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     362: pop
+     363: aload_2
+     364: getstatic     #450                // Field com/aetherteam/aether/network/packet/clientbound/RemountAerbunnyPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     367: getstatic     #453                // Field com/aetherteam/aether/network/packet/clientbound/RemountAerbunnyPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     370: invokedynamic #454,  0            // InvokeDynamic #32:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     375: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     378: pop
+     379: aload_2
+     380: getstatic     #455                // Field com/aetherteam/aether/network/packet/clientbound/SetInvisibilityPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     383: getstatic     #458                // Field com/aetherteam/aether/network/packet/clientbound/SetInvisibilityPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     386: invokedynamic #459,  0            // InvokeDynamic #33:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     391: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     394: pop
+     395: aload_2
+     396: getstatic     #460                // Field com/aetherteam/aether/network/packet/clientbound/ToolDebuffPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     399: getstatic     #463                // Field com/aetherteam/aether/network/packet/clientbound/ToolDebuffPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     402: invokedynamic #464,  0            // InvokeDynamic #34:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     407: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     410: pop
+     411: aload_2
+     412: getstatic     #465                // Field com/aetherteam/aether/network/packet/clientbound/ZephyrSnowballHitPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     415: getstatic     #468                // Field com/aetherteam/aether/network/packet/clientbound/ZephyrSnowballHitPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     418: invokedynamic #469,  0            // InvokeDynamic #35:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     423: invokevirtual #341                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     426: pop
+     427: aload_2
+     428: getstatic     #470                // Field com/aetherteam/aether/network/packet/serverbound/AerbunnyPuffPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     431: getstatic     #473                // Field com/aetherteam/aether/network/packet/serverbound/AerbunnyPuffPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     434: invokedynamic #474,  0            // InvokeDynamic #36:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     439: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     442: pop
+     443: aload_2
+     444: getstatic     #478                // Field com/aetherteam/aether/network/packet/serverbound/ClearItemPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     447: getstatic     #481                // Field com/aetherteam/aether/network/packet/serverbound/ClearItemPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     450: invokedynamic #482,  0            // InvokeDynamic #37:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     455: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     458: pop
+     459: aload_2
+     460: getstatic     #483                // Field com/aetherteam/aether/network/packet/serverbound/HammerProjectileLaunchPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     463: getstatic     #486                // Field com/aetherteam/aether/network/packet/serverbound/HammerProjectileLaunchPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     466: invokedynamic #487,  0            // InvokeDynamic #38:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     471: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     474: pop
+     475: aload_2
+     476: getstatic     #488                // Field com/aetherteam/aether/network/packet/serverbound/LoreExistsPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     479: getstatic     #491                // Field com/aetherteam/aether/network/packet/serverbound/LoreExistsPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     482: invokedynamic #492,  0            // InvokeDynamic #39:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     487: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     490: pop
+     491: aload_2
+     492: getstatic     #493                // Field com/aetherteam/aether/network/packet/serverbound/NpcPlayerInteractPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     495: getstatic     #496                // Field com/aetherteam/aether/network/packet/serverbound/NpcPlayerInteractPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     498: invokedynamic #497,  0            // InvokeDynamic #40:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     503: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     506: pop
+     507: aload_2
+     508: getstatic     #498                // Field com/aetherteam/aether/network/packet/serverbound/OpenAccessoriesPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     511: getstatic     #501                // Field com/aetherteam/aether/network/packet/serverbound/OpenAccessoriesPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     514: invokedynamic #502,  0            // InvokeDynamic #41:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     519: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     522: pop
+     523: aload_2
+     524: getstatic     #503                // Field com/aetherteam/aether/network/packet/serverbound/OpenInventoryPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     527: getstatic     #506                // Field com/aetherteam/aether/network/packet/serverbound/OpenInventoryPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     530: invokedynamic #507,  0            // InvokeDynamic #42:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     535: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     538: pop
+     539: aload_2
+     540: getstatic     #508                // Field com/aetherteam/aether/network/packet/serverbound/ServerDeveloperGlowPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     543: getstatic     #511                // Field com/aetherteam/aether/network/packet/serverbound/ServerDeveloperGlowPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     546: invokedynamic #512,  0            // InvokeDynamic #43:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     551: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     554: pop
+     555: aload_2
+     556: getstatic     #513                // Field com/aetherteam/aether/network/packet/serverbound/ServerDeveloperGlowPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     559: getstatic     #516                // Field com/aetherteam/aether/network/packet/serverbound/ServerDeveloperGlowPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     562: invokedynamic #517,  0            // InvokeDynamic #44:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     567: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     570: pop
+     571: aload_2
+     572: getstatic     #518                // Field com/aetherteam/aether/network/packet/serverbound/ServerHaloPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     575: getstatic     #521                // Field com/aetherteam/aether/network/packet/serverbound/ServerHaloPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     578: invokedynamic #522,  0            // InvokeDynamic #45:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     583: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     586: pop
+     587: aload_2
+     588: getstatic     #523                // Field com/aetherteam/aether/network/packet/serverbound/ServerHaloPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     591: getstatic     #526                // Field com/aetherteam/aether/network/packet/serverbound/ServerHaloPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     594: invokedynamic #527,  0            // InvokeDynamic #46:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     599: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     602: pop
+     603: aload_2
+     604: getstatic     #528                // Field com/aetherteam/aether/network/packet/serverbound/ServerMoaSkinPacket$Apply.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     607: getstatic     #531                // Field com/aetherteam/aether/network/packet/serverbound/ServerMoaSkinPacket$Apply.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     610: invokedynamic #532,  0            // InvokeDynamic #47:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     615: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     618: pop
+     619: aload_2
+     620: getstatic     #533                // Field com/aetherteam/aether/network/packet/serverbound/ServerMoaSkinPacket$Remove.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     623: getstatic     #536                // Field com/aetherteam/aether/network/packet/serverbound/ServerMoaSkinPacket$Remove.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     626: invokedynamic #537,  0            // InvokeDynamic #48:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     631: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     634: pop
+     635: aload_2
+     636: getstatic     #538                // Field com/aetherteam/aether/network/packet/serverbound/StepHeightPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     639: getstatic     #541                // Field com/aetherteam/aether/network/packet/serverbound/StepHeightPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     642: invokedynamic #542,  0            // InvokeDynamic #49:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     647: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     650: pop
+     651: aload_2
+     652: getstatic     #543                // Field com/aetherteam/aether/network/packet/serverbound/SunAltarUpdatePacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     655: getstatic     #546                // Field com/aetherteam/aether/network/packet/serverbound/SunAltarUpdatePacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     658: invokedynamic #547,  0            // InvokeDynamic #50:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     663: invokevirtual #475                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     666: pop
+     667: aload_2
+     668: getstatic     #548                // Field com/aetherteam/aether/network/packet/AetherPlayerSyncPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     671: getstatic     #551                // Field com/aetherteam/aether/network/packet/AetherPlayerSyncPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     674: invokedynamic #552,  0            // InvokeDynamic #51:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     679: invokevirtual #553                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     682: pop
+     683: aload_2
+     684: getstatic     #556                // Field com/aetherteam/aether/network/packet/AetherTimeSyncPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     687: getstatic     #559                // Field com/aetherteam/aether/network/packet/AetherTimeSyncPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     690: invokedynamic #560,  0            // InvokeDynamic #52:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     695: invokevirtual #553                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     698: pop
+     699: aload_2
+     700: getstatic     #561                // Field com/aetherteam/aether/network/packet/PhoenixArrowSyncPacket.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     703: getstatic     #564                // Field com/aetherteam/aether/network/packet/PhoenixArrowSyncPacket.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     706: invokedynamic #565,  0            // InvokeDynamic #53:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     711: invokevirtual #553                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     714: pop
+     715: return
+
+  public void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+    Code:
+       0: aload_1
+       1: getstatic     #566                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+       4: aload_0
+       5: invokedynamic #572,  0            // InvokeDynamic #54:getCapability:(Lcom/aetherteam/aether/Aether;)Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;
+      10: iconst_1
+      11: anewarray     #576                // class net/minecraft/world/level/block/Block
+      14: dup
+      15: iconst_0
+      16: getstatic     #578                // Field com/aetherteam/aether/block/AetherBlocks.TREASURE_CHEST:Lnet/neoforged/neoforge/registries/DeferredBlock;
+      19: invokevirtual #582                // Method net/neoforged/neoforge/registries/DeferredBlock.get:()Ljava/lang/Object;
+      22: checkcast     #576                // class net/minecraft/world/level/block/Block
+      25: aastore
+      26: invokevirtual #588                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlock:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/neoforged/neoforge/capabilities/IBlockCapabilityProvider;[Lnet/minecraft/world/level/block/Block;)V
+      29: aload_1
+      30: getstatic     #566                // Field net/neoforged/neoforge/capabilities/Capabilities$ItemHandler.BLOCK:Lnet/neoforged/neoforge/capabilities/BlockCapability;
+      33: getstatic     #594                // Field com/aetherteam/aether/blockentity/AetherBlockEntityTypes.INCUBATOR:Lnet/neoforged/neoforge/registries/DeferredHolder;
+      36: invokevirtual #598                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+      39: checkcast     #601                // class net/minecraft/world/level/block/entity/BlockEntityType
+      42: invokedynamic #603,  0            // InvokeDynamic #55:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+      47: invokevirtual #606                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerBlockEntity:(Lnet/neoforged/neoforge/capabilities/BlockCapability;Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;)V
+      50: getstatic     #610                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+      53: invokeinterface #616,  1          // InterfaceMethod net/minecraft/core/DefaultedRegistry.iterator:()Ljava/util/Iterator;
+      58: astore_2
+      59: aload_2
+      60: invokeinterface #622,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      65: ifeq          111
+      68: aload_2
+      69: invokeinterface #627,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      74: checkcast     #630                // class net/minecraft/world/item/Item
+      77: astore_3
+      78: aload_3
+      79: invokevirtual #632                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: ldc_w         #636                // class com/aetherteam/aether/item/miscellaneous/bucket/SkyrootBucketItem
+      85: if_acmpne     108
+      88: aload_1
+      89: getstatic     #638                // Field net/neoforged/neoforge/capabilities/Capabilities$FluidHandler.ITEM:Lnet/neoforged/neoforge/capabilities/ItemCapability;
+      92: invokedynamic #643,  0            // InvokeDynamic #56:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+      97: iconst_1
+      98: anewarray     #644                // class net/minecraft/world/level/ItemLike
+     101: dup
+     102: iconst_0
+     103: aload_3
+     104: aastore
+     105: invokevirtual #646                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerItem:(Lnet/neoforged/neoforge/capabilities/ItemCapability;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;[Lnet/minecraft/world/level/ItemLike;)V
+     108: goto          59
+     111: getstatic     #650                // Field net/neoforged/neoforge/common/NeoForgeMod.MILK:Lnet/neoforged/neoforge/registries/DeferredHolder;
+     114: invokevirtual #655                // Method net/neoforged/neoforge/registries/DeferredHolder.isBound:()Z
+     117: ifeq          142
+     120: aload_1
+     121: getstatic     #638                // Field net/neoforged/neoforge/capabilities/Capabilities$FluidHandler.ITEM:Lnet/neoforged/neoforge/capabilities/ItemCapability;
+     124: invokedynamic #658,  0            // InvokeDynamic #57:getCapability:()Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;
+     129: iconst_1
+     130: anewarray     #644                // class net/minecraft/world/level/ItemLike
+     133: dup
+     134: iconst_0
+     135: getstatic     #659                // Field com/aetherteam/aether/item/AetherItems.SKYROOT_MILK_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     138: aastore
+     139: invokevirtual #646                // Method net/neoforged/neoforge/capabilities/RegisterCapabilitiesEvent.registerItem:(Lnet/neoforged/neoforge/capabilities/ItemCapability;Lnet/neoforged/neoforge/capabilities/ICapabilityProvider;[Lnet/minecraft/world/level/ItemLike;)V
+     142: return
+
+  public void registerDataMaps(net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent);
+    Code:
+       0: aload_1
+       1: getstatic     #663                // Field com/aetherteam/aether/data/resources/registries/AetherDataMaps.ALTAR_FUEL:Lnet/neoforged/neoforge/registries/datamaps/DataMapType;
+       4: invokevirtual #669                // Method net/neoforged/neoforge/registries/datamaps/RegisterDataMapTypesEvent.register:(Lnet/neoforged/neoforge/registries/datamaps/DataMapType;)V
+       7: aload_1
+       8: getstatic     #674                // Field com/aetherteam/aether/data/resources/registries/AetherDataMaps.FREEZER_FUEL:Lnet/neoforged/neoforge/registries/datamaps/DataMapType;
+      11: invokevirtual #669                // Method net/neoforged/neoforge/registries/datamaps/RegisterDataMapTypesEvent.register:(Lnet/neoforged/neoforge/registries/datamaps/DataMapType;)V
+      14: aload_1
+      15: getstatic     #677                // Field com/aetherteam/aether/data/resources/registries/AetherDataMaps.INCUBATOR_FUEL:Lnet/neoforged/neoforge/registries/datamaps/DataMapType;
+      18: invokevirtual #669                // Method net/neoforged/neoforge/registries/datamaps/RegisterDataMapTypesEvent.register:(Lnet/neoforged/neoforge/registries/datamaps/DataMapType;)V
+      21: return
+
+  public void packSetup(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #680                // Method setupReleasePack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+       5: aload_0
+       6: aload_1
+       7: invokevirtual #684                // Method setupBetaPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      10: aload_0
+      11: aload_1
+      12: invokevirtual #687                // Method setupCTMFixPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      15: aload_0
+      16: aload_1
+      17: invokevirtual #690                // Method setupTipsPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      20: aload_0
+      21: aload_1
+      22: invokevirtual #693                // Method setupColorblindPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      25: aload_0
+      26: aload_1
+      27: invokevirtual #696                // Method setupTooltipsPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      30: aload_0
+      31: aload_1
+      32: invokevirtual #699                // Method setupImmersivePortalsPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      35: aload_0
+      36: aload_1
+      37: invokevirtual #702                // Method setupAccessoriesPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      40: aload_0
+      41: aload_1
+      42: invokevirtual #705                // Method setupAccessoriesOverridePack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      45: aload_0
+      46: aload_1
+      47: invokevirtual #708                // Method setupTemporaryFreezingPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      50: aload_0
+      51: aload_1
+      52: invokevirtual #711                // Method setupRuinedPortalPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;)V
+      55: return
+
+  private void setupReleasePack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     55
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #745                // String packs/classic_125
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: aload_0
+      41: aload_1
+      42: aload_2
+      43: ldc_w         #753                // String builtin/aether_125_art
+      46: ldc_w         #755                // String pack.aether.125.title
+      49: ldc_w         #757                // String pack.aether.125.description
+      52: invokevirtual #759                // Method createCombinedPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+      55: return
+
+  private void setupBetaPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     55
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #763                // String packs/classic_b173
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: aload_0
+      41: aload_1
+      42: aload_2
+      43: ldc_w         #765                // String builtin/aether_b173_art
+      46: ldc_w         #767                // String pack.aether.b173.title
+      49: ldc_w         #769                // String pack.aether.b173.description
+      52: invokevirtual #759                // Method createCombinedPack:(Lnet/neoforged/neoforge/event/AddPackFindersEvent;Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+      55: return
+
+  private void createCombinedPack(net.neoforged.neoforge.event.AddPackFindersEvent, java.nio.file.Path, java.lang.String, java.lang.String, java.lang.String);
+    Code:
+       0: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       3: dup
+       4: aload_3
+       5: aload         4
+       7: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      10: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      13: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      16: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      19: astore        6
+      21: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      24: ldc_w         #731                // String aether
+      27: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      30: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      35: iconst_1
+      36: anewarray     #743                // class java/lang/String
+      39: dup
+      40: iconst_0
+      41: ldc_w         #794                // String packs/classic_base
+      44: aastore
+      45: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      50: astore        7
+      52: new           #796                // class net/minecraft/server/packs/PathPackResources
+      55: dup
+      56: aload         6
+      58: aload         7
+      60: invokespecial #798                // Method net/minecraft/server/packs/PathPackResources."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Ljava/nio/file/Path;)V
+      63: astore        8
+      65: new           #796                // class net/minecraft/server/packs/PathPackResources
+      68: dup
+      69: aload         6
+      71: aload_2
+      72: invokespecial #798                // Method net/minecraft/server/packs/PathPackResources."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Ljava/nio/file/Path;)V
+      75: astore        9
+      77: aload         9
+      79: aload         8
+      81: invokestatic  #801                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      84: astore        10
+      86: new           #807                // class com/aetherteam/aether/client/CombinedPackResources$CombinedResourcesSupplier
+      89: dup
+      90: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      93: dup
+      94: aload         5
+      96: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      99: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+     102: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     105: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+     110: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+     113: aload         10
+     115: aload_2
+     116: invokespecial #826                // Method com/aetherteam/aether/client/CombinedPackResources$CombinedResourcesSupplier."<init>":(Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;Ljava/util/List;Ljava/nio/file/Path;)V
+     119: astore        11
+     121: aload         6
+     123: aload         11
+     125: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+     128: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+     131: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+     136: invokestatic  #829                // Method net/minecraft/server/packs/repository/Pack.readPackMetadata:(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;I)Lnet/minecraft/server/packs/repository/Pack$Metadata;
+     139: astore        12
+     141: aload         12
+     143: ifnull        161
+     146: aload_1
+     147: aload         6
+     149: aload         11
+     151: aload         12
+     153: invokedynamic #835,  0            // InvokeDynamic #58:loadPacks:(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     158: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     161: return
+
+  private void setupCTMFixPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     88
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #843                // String ctm
+      16: invokevirtual #845                // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      19: ifeq          88
+      22: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      25: ldc_w         #731                // String aether
+      28: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      31: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      36: iconst_1
+      37: anewarray     #743                // class java/lang/String
+      40: dup
+      41: iconst_0
+      42: ldc_w         #849                // String packs/ctm_fix
+      45: aastore
+      46: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      51: astore_2
+      52: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      55: dup
+      56: ldc_w         #851                // String pack.aether.ctm.description
+      59: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      62: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      65: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      68: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      73: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      76: astore_3
+      77: aload_1
+      78: aload_2
+      79: aload_3
+      80: invokedynamic #853,  0            // InvokeDynamic #59:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      85: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      88: return
+
+  private void setupTipsPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     106
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #856                // String tipsmod
+      16: invokevirtual #845                // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      19: ifeq          106
+      22: getstatic     #858                // Field com/aetherteam/aether/AetherConfig.STARTUP:Lcom/aetherteam/aether/AetherConfig$Startup;
+      25: getfield      #861                // Field com/aetherteam/aether/AetherConfig$Startup.enable_trivia:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      28: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      31: checkcast     #870                // class java/lang/Boolean
+      34: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      37: ifeq          106
+      40: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      43: ldc_w         #731                // String aether
+      46: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      49: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      54: iconst_1
+      55: anewarray     #743                // class java/lang/String
+      58: dup
+      59: iconst_0
+      60: ldc_w         #875                // String packs/tips
+      63: aastore
+      64: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      69: astore_2
+      70: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      73: dup
+      74: ldc_w         #877                // String pack.aether.tips.description
+      77: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      80: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      83: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      86: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      91: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      94: astore_3
+      95: aload_1
+      96: aload_2
+      97: aload_3
+      98: invokedynamic #879,  0            // InvokeDynamic #60:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     103: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     106: return
+
+  private void setupColorblindPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     76
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #880                // String packs/colorblind
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      43: dup
+      44: ldc_w         #882                // String pack.aether.colorblind.description
+      47: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      50: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      53: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      56: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      61: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      64: astore_3
+      65: aload_1
+      66: aload_2
+      67: aload_3
+      68: invokedynamic #884,  0            // InvokeDynamic #61:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      73: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      76: return
+
+  private void setupTooltipsPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     76
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #885                // String packs/tooltips
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      43: dup
+      44: ldc_w         #887                // String pack.aether.tooltips.description
+      47: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      50: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      53: getstatic     #720                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      56: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      61: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      64: astore_3
+      65: aload_1
+      66: aload_2
+      67: aload_3
+      68: invokedynamic #889,  0            // InvokeDynamic #62:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      73: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      76: return
+
+  private void setupImmersivePortalsPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     106
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #893                // String immersive_portals_core
+      16: invokevirtual #845                // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      19: ifeq          106
+      22: getstatic     #895                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      25: getfield      #898                // Field com/aetherteam/aether/AetherConfig$Common.enable_immersive_portals_compatibility:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      28: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      31: checkcast     #870                // class java/lang/Boolean
+      34: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      37: ifeq          106
+      40: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      43: ldc_w         #731                // String aether
+      46: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      49: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      54: iconst_1
+      55: anewarray     #743                // class java/lang/String
+      58: dup
+      59: iconst_0
+      60: ldc_w         #903                // String packs/imm_ptl_compat
+      63: aastore
+      64: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      69: astore_2
+      70: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      73: dup
+      74: ldc_w         #905                // String pack.aether.imm_ptl_compat.description
+      77: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      80: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      83: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      86: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      91: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      94: astore_3
+      95: aload_1
+      96: aload_2
+      97: aload_3
+      98: invokedynamic #907,  0            // InvokeDynamic #63:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+     103: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+     106: return
+
+  private void setupAccessoriesPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     94
+      10: getstatic     #895                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      13: getfield      #908                // Field com/aetherteam/aether/AetherConfig$Common.use_default_accessories_menu:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      16: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      19: checkcast     #870                // class java/lang/Boolean
+      22: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      25: ifne          94
+      28: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      31: ldc_w         #731                // String aether
+      34: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      37: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      42: iconst_1
+      43: anewarray     #743                // class java/lang/String
+      46: dup
+      47: iconst_0
+      48: ldc_w         #911                // String packs/accessories
+      51: aastore
+      52: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      57: astore_2
+      58: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      61: dup
+      62: ldc_w         #913                // String pack.aether.aether_accessories.description
+      65: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      68: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      71: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      74: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      79: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      82: astore_3
+      83: aload_1
+      84: aload_2
+      85: aload_3
+      86: invokedynamic #915,  0            // InvokeDynamic #64:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      91: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      94: return
+
+  private void setupAccessoriesOverridePack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     94
+      10: getstatic     #895                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      13: getfield      #908                // Field com/aetherteam/aether/AetherConfig$Common.use_default_accessories_menu:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      16: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      19: checkcast     #870                // class java/lang/Boolean
+      22: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      25: ifeq          94
+      28: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      31: ldc_w         #731                // String aether
+      34: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      37: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      42: iconst_1
+      43: anewarray     #743                // class java/lang/String
+      46: dup
+      47: iconst_0
+      48: ldc_w         #916                // String packs/accessories_override
+      51: aastore
+      52: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      57: astore_2
+      58: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      61: dup
+      62: ldc_w         #918                // String pack.aether.default_accessories.description
+      65: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      68: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      71: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      74: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      79: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      82: astore_3
+      83: aload_1
+      84: aload_2
+      85: aload_3
+      86: invokedynamic #920,  0            // InvokeDynamic #65:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      91: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      94: return
+
+  private void setupTemporaryFreezingPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     76
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #921                // String packs/temporary_freezing
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      43: dup
+      44: ldc_w         #923                // String pack.aether.freezing.description
+      47: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      50: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      53: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      56: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      61: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      64: astore_3
+      65: aload_1
+      66: aload_2
+      67: aload_3
+      68: invokedynamic #925,  0            // InvokeDynamic #66:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      73: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      76: return
+
+  private void setupRuinedPortalPack(net.neoforged.neoforge.event.AddPackFindersEvent);
+    Code:
+       0: aload_1
+       1: invokevirtual #714                // Method net/neoforged/neoforge/event/AddPackFindersEvent.getPackType:()Lnet/minecraft/server/packs/PackType;
+       4: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+       7: if_acmpne     76
+      10: invokestatic  #726                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      13: ldc_w         #731                // String aether
+      16: invokevirtual #733                // Method net/neoforged/fml/ModList.getModFileById:(Ljava/lang/String;)Lnet/neoforged/neoforgespi/language/IModFileInfo;
+      19: invokeinterface #737,  1          // InterfaceMethod net/neoforged/neoforgespi/language/IModFileInfo.getFile:()Lnet/neoforged/neoforgespi/locating/IModFile;
+      24: iconst_1
+      25: anewarray     #743                // class java/lang/String
+      28: dup
+      29: iconst_0
+      30: ldc_w         #926                // String packs/ruined_portal
+      33: aastore
+      34: invokeinterface #747,  2          // InterfaceMethod net/neoforged/neoforgespi/locating/IModFile.findResource:([Ljava/lang/String;)Ljava/nio/file/Path;
+      39: astore_2
+      40: new           #809                // class net/minecraft/server/packs/metadata/pack/PackMetadataSection
+      43: dup
+      44: ldc_w         #928                // String pack.aether.ruined_portal.description
+      47: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      50: invokestatic  #811                // Method net/minecraft/SharedConstants.getCurrentVersion:()Lnet/minecraft/WorldVersion;
+      53: getstatic     #890                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      56: invokeinterface #817,  2          // InterfaceMethod net/minecraft/WorldVersion.getPackVersion:(Lnet/minecraft/server/packs/PackType;)I
+      61: invokespecial #823                // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection."<init>":(Lnet/minecraft/network/chat/Component;I)V
+      64: astore_3
+      65: aload_1
+      66: aload_2
+      67: aload_3
+      68: invokedynamic #930,  0            // InvokeDynamic #67:loadPacks:(Ljava/nio/file/Path;Lnet/minecraft/server/packs/metadata/pack/PackMetadataSection;)Lnet/minecraft/server/packs/repository/RepositorySource;
+      73: invokevirtual #839                // Method net/neoforged/neoforge/event/AddPackFindersEvent.addRepositorySource:(Lnet/minecraft/server/packs/repository/RepositorySource;)V
+      76: return
+
+  public void eventSetup(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: getstatic     #931                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       3: astore_2
+       4: aload_2
+       5: invokestatic  #937                // Method com/aetherteam/aether/event/listeners/abilities/AccessoryAbilityListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+       8: aload_2
+       9: invokestatic  #942                // Method com/aetherteam/aether/event/listeners/abilities/ArmorAbilityListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      12: aload_2
+      13: invokestatic  #945                // Method com/aetherteam/aether/event/listeners/abilities/ToolAbilityListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      16: aload_2
+      17: invokestatic  #948                // Method com/aetherteam/aether/event/listeners/abilities/WeaponAbilityListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      20: aload_2
+      21: invokestatic  #951                // Method com/aetherteam/aether/event/listeners/capability/AetherPlayerListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      24: aload_2
+      25: invokestatic  #954                // Method com/aetherteam/aether/event/listeners/capability/AetherTimeListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      28: aload_2
+      29: invokestatic  #957                // Method com/aetherteam/aether/event/listeners/DimensionListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      32: aload_2
+      33: invokestatic  #960                // Method com/aetherteam/aether/event/listeners/EntityListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      36: aload_2
+      37: invokestatic  #963                // Method com/aetherteam/aether/event/listeners/ItemListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      40: aload_2
+      41: invokestatic  #966                // Method com/aetherteam/aether/event/listeners/PerkListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      44: aload_2
+      45: invokestatic  #969                // Method com/aetherteam/aether/event/listeners/RecipeListener.listen:(Lnet/neoforged/bus/api/IEventBus;)V
+      48: aload_2
+      49: invokedynamic #972,  0            // InvokeDynamic #68:accept:()Ljava/util/function/Consumer;
+      54: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      59: aload_2
+      60: invokedynamic #973,  0            // InvokeDynamic #69:accept:()Ljava/util/function/Consumer;
+      65: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      70: aload_2
+      71: invokedynamic #974,  0            // InvokeDynamic #70:accept:()Ljava/util/function/Consumer;
+      76: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      81: aload_2
+      82: invokedynamic #975,  0            // InvokeDynamic #71:accept:()Ljava/util/function/Consumer;
+      87: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      92: aload_2
+      93: invokedynamic #976,  0            // InvokeDynamic #72:accept:()Ljava/util/function/Consumer;
+      98: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     103: aload_2
+     104: invokedynamic #977,  0            // InvokeDynamic #73:accept:()Ljava/util/function/Consumer;
+     109: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     114: aload_1
+     115: invokedynamic #978,  0            // InvokeDynamic #74:accept:()Ljava/util/function/Consumer;
+     120: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     125: aload_1
+     126: invokedynamic #979,  0            // InvokeDynamic #75:accept:()Ljava/util/function/Consumer;
+     131: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     136: aload_1
+     137: invokedynamic #980,  0            // InvokeDynamic #76:accept:()Ljava/util/function/Consumer;
+     142: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+     147: return
+
+  static net.minecraft.server.packs.repository.PackSource create(java.util.function.UnaryOperator<net.minecraft.network.chat.Component>, boolean);
+    Code:
+       0: new           #981                // class com/aetherteam/aether/Aether$2
+       3: dup
+       4: aload_0
+       5: iload_1
+       6: invokespecial #983                // Method com/aetherteam/aether/Aether$2."<init>":(Ljava/util/function/UnaryOperator;Z)V
+       9: areturn
+
+  private static java.util.function.UnaryOperator<net.minecraft.network.chat.Component> decorateWithSource(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       4: astore_1
+       5: aload_1
+       6: invokedynamic #986,  0            // InvokeDynamic #77:apply:(Lnet/minecraft/network/chat/Component;)Ljava/util/function/UnaryOperator;
+      11: areturn
+
+  private void registerDispenserBehaviors();
+    Code:
+       0: getstatic     #990                // Field com/aetherteam/aether/item/AetherItems.GOLDEN_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+       3: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+       6: checkcast     #644                // class net/minecraft/world/level/ItemLike
+       9: new           #996                // class net/minecraft/core/dispenser/ProjectileDispenseBehavior
+      12: dup
+      13: getstatic     #990                // Field com/aetherteam/aether/item/AetherItems.GOLDEN_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+      16: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      19: checkcast     #630                // class net/minecraft/world/item/Item
+      22: invokespecial #998                // Method net/minecraft/core/dispenser/ProjectileDispenseBehavior."<init>":(Lnet/minecraft/world/item/Item;)V
+      25: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+      28: getstatic     #1007               // Field com/aetherteam/aether/item/AetherItems.POISON_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+      31: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      34: checkcast     #644                // class net/minecraft/world/level/ItemLike
+      37: new           #996                // class net/minecraft/core/dispenser/ProjectileDispenseBehavior
+      40: dup
+      41: getstatic     #1007               // Field com/aetherteam/aether/item/AetherItems.POISON_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+      44: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      47: checkcast     #630                // class net/minecraft/world/item/Item
+      50: invokespecial #998                // Method net/minecraft/core/dispenser/ProjectileDispenseBehavior."<init>":(Lnet/minecraft/world/item/Item;)V
+      53: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+      56: getstatic     #1010               // Field com/aetherteam/aether/item/AetherItems.ENCHANTED_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+      59: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      62: checkcast     #644                // class net/minecraft/world/level/ItemLike
+      65: new           #996                // class net/minecraft/core/dispenser/ProjectileDispenseBehavior
+      68: dup
+      69: getstatic     #1010               // Field com/aetherteam/aether/item/AetherItems.ENCHANTED_DART:Lnet/neoforged/neoforge/registries/DeferredItem;
+      72: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      75: checkcast     #630                // class net/minecraft/world/item/Item
+      78: invokespecial #998                // Method net/minecraft/core/dispenser/ProjectileDispenseBehavior."<init>":(Lnet/minecraft/world/item/Item;)V
+      81: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+      84: getstatic     #1013               // Field com/aetherteam/aether/item/AetherItems.LIGHTNING_KNIFE:Lnet/neoforged/neoforge/registries/DeferredItem;
+      87: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      90: checkcast     #644                // class net/minecraft/world/level/ItemLike
+      93: new           #996                // class net/minecraft/core/dispenser/ProjectileDispenseBehavior
+      96: dup
+      97: getstatic     #1013               // Field com/aetherteam/aether/item/AetherItems.LIGHTNING_KNIFE:Lnet/neoforged/neoforge/registries/DeferredItem;
+     100: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     103: checkcast     #630                // class net/minecraft/world/item/Item
+     106: invokespecial #998                // Method net/minecraft/core/dispenser/ProjectileDispenseBehavior."<init>":(Lnet/minecraft/world/item/Item;)V
+     109: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     112: getstatic     #1016               // Field com/aetherteam/aether/item/AetherItems.HAMMER_OF_KINGBDOGZ:Lnet/neoforged/neoforge/registries/DeferredItem;
+     115: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     118: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     121: getstatic     #1019               // Field com/aetherteam/aether/block/dispenser/AetherDispenseBehaviors.DISPENSE_KINGBDOGZ_HAMMER_BEHAVIOR:Lnet/minecraft/core/dispenser/DispenseItemBehavior;
+     124: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     127: getstatic     #1025               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_WATER_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     130: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     133: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     136: getstatic     #1028               // Field com/aetherteam/aether/block/dispenser/AetherDispenseBehaviors.SKYROOT_BUCKET_DISPENSE_BEHAVIOR:Lnet/minecraft/core/dispenser/DispenseItemBehavior;
+     139: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     142: getstatic     #1031               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     145: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     148: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     151: getstatic     #1034               // Field com/aetherteam/aether/block/dispenser/AetherDispenseBehaviors.SKYROOT_BUCKET_PICKUP_BEHAVIOR:Lnet/minecraft/core/dispenser/DispenseItemBehavior;
+     154: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     157: getstatic     #1037               // Field com/aetherteam/aether/item/AetherItems.AMBROSIUM_SHARD:Lnet/neoforged/neoforge/registries/DeferredItem;
+     160: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     163: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     166: new           #1040               // class com/aetherteam/aether/block/dispenser/DispenseUsableItemBehavior
+     169: dup
+     170: getstatic     #1042               // Field com/aetherteam/aether/recipe/AetherRecipeTypes.AMBROSIUM_ENCHANTING:Lnet/neoforged/neoforge/registries/DeferredHolder;
+     173: invokevirtual #598                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+     176: checkcast     #1045               // class net/minecraft/world/item/crafting/RecipeType
+     179: invokespecial #1047               // Method com/aetherteam/aether/block/dispenser/DispenseUsableItemBehavior."<init>":(Lnet/minecraft/world/item/crafting/RecipeType;)V
+     182: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     185: getstatic     #1050               // Field com/aetherteam/aether/item/AetherItems.SWET_BALL:Lnet/neoforged/neoforge/registries/DeferredItem;
+     188: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     191: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     194: new           #1040               // class com/aetherteam/aether/block/dispenser/DispenseUsableItemBehavior
+     197: dup
+     198: getstatic     #1053               // Field com/aetherteam/aether/recipe/AetherRecipeTypes.SWET_BALL_CONVERSION:Lnet/neoforged/neoforge/registries/DeferredHolder;
+     201: invokevirtual #598                // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+     204: checkcast     #1045               // class net/minecraft/world/item/crafting/RecipeType
+     207: invokespecial #1047               // Method com/aetherteam/aether/block/dispenser/DispenseUsableItemBehavior."<init>":(Lnet/minecraft/world/item/crafting/RecipeType;)V
+     210: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     213: getstatic     #1056               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_BOAT:Lnet/neoforged/neoforge/registries/DeferredItem;
+     216: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     219: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     222: new           #1059               // class com/aetherteam/aether/block/dispenser/SkyrootBoatDispenseBehavior
+     225: dup
+     226: invokespecial #1061               // Method com/aetherteam/aether/block/dispenser/SkyrootBoatDispenseBehavior."<init>":()V
+     229: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     232: getstatic     #1062               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_CHEST_BOAT:Lnet/neoforged/neoforge/registries/DeferredItem;
+     235: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     238: checkcast     #644                // class net/minecraft/world/level/ItemLike
+     241: new           #1059               // class com/aetherteam/aether/block/dispenser/SkyrootBoatDispenseBehavior
+     244: dup
+     245: iconst_1
+     246: invokespecial #1065               // Method com/aetherteam/aether/block/dispenser/SkyrootBoatDispenseBehavior."<init>":(Z)V
+     249: invokestatic  #1001               // Method net/minecraft/world/level/block/DispenserBlock.registerBehavior:(Lnet/minecraft/world/level/ItemLike;Lnet/minecraft/core/dispenser/DispenseItemBehavior;)V
+     252: return
+
+  private void registerCauldronInteractions();
+    Code:
+       0: getstatic     #1068               // Field net/minecraft/core/cauldron/CauldronInteraction.EMPTY:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+       3: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+       6: getstatic     #1025               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_WATER_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+       9: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      12: checkcast     #630                // class net/minecraft/world/item/Item
+      15: getstatic     #1080               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_WATER:Lnet/minecraft/core/cauldron/CauldronInteraction;
+      18: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      23: pop
+      24: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+      27: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+      30: getstatic     #1025               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_WATER_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+      33: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      36: checkcast     #630                // class net/minecraft/world/item/Item
+      39: getstatic     #1080               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_WATER:Lnet/minecraft/core/cauldron/CauldronInteraction;
+      42: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      47: pop
+      48: getstatic     #1095               // Field net/minecraft/core/cauldron/CauldronInteraction.LAVA:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+      51: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+      54: getstatic     #1025               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_WATER_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+      57: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      60: checkcast     #630                // class net/minecraft/world/item/Item
+      63: getstatic     #1080               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_WATER:Lnet/minecraft/core/cauldron/CauldronInteraction;
+      66: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      71: pop
+      72: getstatic     #1098               // Field net/minecraft/core/cauldron/CauldronInteraction.POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+      75: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+      78: getstatic     #1025               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_WATER_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+      81: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+      84: checkcast     #630                // class net/minecraft/world/item/Item
+      87: getstatic     #1080               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_WATER:Lnet/minecraft/core/cauldron/CauldronInteraction;
+      90: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      95: pop
+      96: getstatic     #1068               // Field net/minecraft/core/cauldron/CauldronInteraction.EMPTY:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+      99: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     102: getstatic     #1101               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_POWDER_SNOW_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     105: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     108: checkcast     #630                // class net/minecraft/world/item/Item
+     111: getstatic     #1104               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     114: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     119: pop
+     120: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     123: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     126: getstatic     #1101               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_POWDER_SNOW_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     129: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     132: checkcast     #630                // class net/minecraft/world/item/Item
+     135: getstatic     #1104               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     138: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     143: pop
+     144: getstatic     #1095               // Field net/minecraft/core/cauldron/CauldronInteraction.LAVA:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     147: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     150: getstatic     #1101               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_POWDER_SNOW_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     153: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     156: checkcast     #630                // class net/minecraft/world/item/Item
+     159: getstatic     #1104               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     162: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     167: pop
+     168: getstatic     #1098               // Field net/minecraft/core/cauldron/CauldronInteraction.POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     171: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     174: getstatic     #1101               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_POWDER_SNOW_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     177: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     180: checkcast     #630                // class net/minecraft/world/item/Item
+     183: getstatic     #1104               // Field com/aetherteam/aether/block/AetherCauldronInteractions.FILL_POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     186: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     191: pop
+     192: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     195: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     198: getstatic     #1031               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     201: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     204: checkcast     #630                // class net/minecraft/world/item/Item
+     207: getstatic     #1107               // Field com/aetherteam/aether/block/AetherCauldronInteractions.EMPTY_WATER:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     210: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     215: pop
+     216: getstatic     #1098               // Field net/minecraft/core/cauldron/CauldronInteraction.POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     219: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     222: getstatic     #1031               // Field com/aetherteam/aether/item/AetherItems.SKYROOT_BUCKET:Lnet/neoforged/neoforge/registries/DeferredItem;
+     225: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     228: checkcast     #630                // class net/minecraft/world/item/Item
+     231: getstatic     #1110               // Field com/aetherteam/aether/block/AetherCauldronInteractions.EMPTY_POWDER_SNOW:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     234: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     239: pop
+     240: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     243: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     246: getstatic     #1113               // Field com/aetherteam/aether/item/AetherItems.LEATHER_GLOVES:Lnet/neoforged/neoforge/registries/DeferredItem;
+     249: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     252: checkcast     #630                // class net/minecraft/world/item/Item
+     255: getstatic     #1116               // Field net/minecraft/core/cauldron/CauldronInteraction.DYED_ITEM:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     258: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     263: pop
+     264: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     267: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     270: getstatic     #1119               // Field com/aetherteam/aether/item/AetherItems.RED_CAPE:Lnet/neoforged/neoforge/registries/DeferredItem;
+     273: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     276: checkcast     #630                // class net/minecraft/world/item/Item
+     279: getstatic     #1122               // Field com/aetherteam/aether/block/AetherCauldronInteractions.CAPE:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     282: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     287: pop
+     288: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     291: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     294: getstatic     #1125               // Field com/aetherteam/aether/item/AetherItems.BLUE_CAPE:Lnet/neoforged/neoforge/registries/DeferredItem;
+     297: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     300: checkcast     #630                // class net/minecraft/world/item/Item
+     303: getstatic     #1122               // Field com/aetherteam/aether/block/AetherCauldronInteractions.CAPE:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     306: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     311: pop
+     312: getstatic     #1092               // Field net/minecraft/core/cauldron/CauldronInteraction.WATER:Lnet/minecraft/core/cauldron/CauldronInteraction$InteractionMap;
+     315: invokevirtual #1074               // Method net/minecraft/core/cauldron/CauldronInteraction$InteractionMap.map:()Ljava/util/Map;
+     318: getstatic     #1128               // Field com/aetherteam/aether/item/AetherItems.YELLOW_CAPE:Lnet/neoforged/neoforge/registries/DeferredItem;
+     321: invokevirtual #993                // Method net/neoforged/neoforge/registries/DeferredItem.get:()Ljava/lang/Object;
+     324: checkcast     #630                // class net/minecraft/world/item/Item
+     327: getstatic     #1122               // Field com/aetherteam/aether/block/AetherCauldronInteractions.CAPE:Lnet/minecraft/core/cauldron/CauldronInteraction;
+     330: invokeinterface #1086,  3         // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     335: pop
+     336: return
+
+  private static net.minecraft.network.chat.Component lambda$decorateWithSource$17(net.minecraft.network.chat.Component, net.minecraft.network.chat.Component);
+    Code:
+       0: ldc_w         #1131               // String pack.nameAndSource
+       3: iconst_2
+       4: anewarray     #2                  // class java/lang/Object
+       7: dup
+       8: iconst_0
+       9: aload_1
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: aload_0
+      14: aastore
+      15: invokestatic  #1133               // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #1136               // Field net/minecraft/ChatFormatting.GRAY:Lnet/minecraft/ChatFormatting;
+      21: invokevirtual #1142               // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+      24: areturn
+
+  private static void lambda$setupRuinedPortalPack$16(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1148               // String builtin/aether_ruined_portal
+      12: ldc_w         #1150               // String pack.aether.ruined_portal.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: ldc_w         #1152               // String pack.source.builtin
+      21: invokestatic  #1154               // Method decorateWithSource:(Ljava/lang/String;)Ljava/util/function/UnaryOperator;
+      24: getstatic     #895                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      27: getfield      #1158               // Field com/aetherteam/aether/AetherConfig$Common.add_ruined_portal_automatically:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      30: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      33: checkcast     #870                // class java/lang/Boolean
+      36: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      39: invokestatic  #1161               // Method create:(Ljava/util/function/UnaryOperator;Z)Lnet/minecraft/server/packs/repository/PackSource;
+      42: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      45: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      48: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      51: dup
+      52: aload_0
+      53: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      56: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      59: dup
+      60: aload_1
+      61: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      64: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      67: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      70: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      73: iconst_0
+      74: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      77: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      80: dup
+      81: iconst_0
+      82: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      85: iconst_0
+      86: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      89: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      92: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      97: return
+
+  private static void lambda$setupTemporaryFreezingPack$15(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1211               // String builtin/aether_temporary_freezing
+      12: ldc_w         #1213               // String pack.aether.freezing.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: ldc_w         #1152               // String pack.source.builtin
+      21: invokestatic  #1154               // Method decorateWithSource:(Ljava/lang/String;)Ljava/util/function/UnaryOperator;
+      24: getstatic     #895                // Field com/aetherteam/aether/AetherConfig.COMMON:Lcom/aetherteam/aether/AetherConfig$Common;
+      27: getfield      #1215               // Field com/aetherteam/aether/AetherConfig$Common.add_temporary_freezing_automatically:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      30: invokevirtual #867                // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      33: checkcast     #870                // class java/lang/Boolean
+      36: invokevirtual #872                // Method java/lang/Boolean.booleanValue:()Z
+      39: invokestatic  #1161               // Method create:(Ljava/util/function/UnaryOperator;Z)Lnet/minecraft/server/packs/repository/PackSource;
+      42: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      45: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      48: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      51: dup
+      52: aload_0
+      53: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      56: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      59: dup
+      60: aload_1
+      61: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      64: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      67: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      70: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      73: iconst_0
+      74: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      77: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      80: dup
+      81: iconst_0
+      82: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      85: iconst_0
+      86: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      89: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      92: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      97: return
+
+  private static void lambda$setupAccessoriesOverridePack$14(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1218               // String builtin/aether_accessories_override
+      12: ldc_w         #1220               // String pack.aether.default_accessories.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_1
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_1
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupAccessoriesPack$13(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1222               // String builtin/aether_accessories
+      12: ldc_w         #1224               // String pack.aether.aether_accessories.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_1
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_1
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupImmersivePortalsPack$12(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1226               // String builtin/aether_imm_ptl_compat
+      12: ldc_w         #1228               // String pack.aether.imm_ptl_compat.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_1
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_1
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupTooltipsPack$11(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1230               // String builtin/aether_tooltips
+      12: ldc_w         #1232               // String pack.aether.tooltips.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_0
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_0
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupColorblindPack$10(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1234               // String builtin/aether_colorblind
+      12: ldc_w         #1236               // String pack.aether.colorblind.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_0
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_0
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupTipsPack$9(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1238               // String builtin/aether_tips
+      12: ldc_w         #1240               // String pack.aether.tips.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_0
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_0
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$setupCTMFixPack$8(java.nio.file.Path, net.minecraft.server.packs.metadata.pack.PackMetadataSection, java.util.function.Consumer);
+    Code:
+       0: aload_2
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: new           #771                // class net/minecraft/server/packs/PackLocationInfo
+       8: dup
+       9: ldc_w         #1242               // String builtin/aether_ctm_fix
+      12: ldc_w         #1244               // String pack.aether.ctm.title
+      15: invokestatic  #773                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      18: getstatic     #779                // Field net/minecraft/server/packs/repository/PackSource.BUILT_IN:Lnet/minecraft/server/packs/repository/PackSource;
+      21: invokestatic  #785                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #791                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+      27: new           #1165               // class net/minecraft/server/packs/PathPackResources$PathResourcesSupplier
+      30: dup
+      31: aload_0
+      32: invokespecial #1167               // Method net/minecraft/server/packs/PathPackResources$PathResourcesSupplier."<init>":(Ljava/nio/file/Path;)V
+      35: new           #1170               // class net/minecraft/server/packs/repository/Pack$Metadata
+      38: dup
+      39: aload_1
+      40: invokevirtual #1172               // Method net/minecraft/server/packs/metadata/pack/PackMetadataSection.description:()Lnet/minecraft/network/chat/Component;
+      43: getstatic     #1176               // Field net/minecraft/server/packs/repository/PackCompatibility.COMPATIBLE:Lnet/minecraft/server/packs/repository/PackCompatibility;
+      46: invokestatic  #1182               // Method net/minecraft/world/flag/FeatureFlagSet.of:()Lnet/minecraft/world/flag/FeatureFlagSet;
+      49: invokestatic  #1187               // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      52: iconst_1
+      53: invokespecial #1190               // Method net/minecraft/server/packs/repository/Pack$Metadata."<init>":(Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackCompatibility;Lnet/minecraft/world/flag/FeatureFlagSet;Ljava/util/List;Z)V
+      56: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      59: dup
+      60: iconst_1
+      61: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      64: iconst_0
+      65: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      68: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      71: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      76: return
+
+  private static void lambda$createCombinedPack$7(net.minecraft.server.packs.PackLocationInfo, net.minecraft.server.packs.repository.Pack$ResourcesSupplier, net.minecraft.server.packs.repository.Pack$Metadata, java.util.function.Consumer);
+    Code:
+       0: aload_3
+       1: new           #830                // class net/minecraft/server/packs/repository/Pack
+       4: dup
+       5: aload_0
+       6: aload_1
+       7: aload_2
+       8: new           #1193               // class net/minecraft/server/packs/PackSelectionConfig
+      11: dup
+      12: iconst_0
+      13: getstatic     #1195               // Field net/minecraft/server/packs/repository/Pack$Position.TOP:Lnet/minecraft/server/packs/repository/Pack$Position;
+      16: iconst_0
+      17: invokespecial #1201               // Method net/minecraft/server/packs/PackSelectionConfig."<init>":(ZLnet/minecraft/server/packs/repository/Pack$Position;Z)V
+      20: invokespecial #1204               // Method net/minecraft/server/packs/repository/Pack."<init>":(Lnet/minecraft/server/packs/PackLocationInfo;Lnet/minecraft/server/packs/repository/Pack$ResourcesSupplier;Lnet/minecraft/server/packs/repository/Pack$Metadata;Lnet/minecraft/server/packs/PackSelectionConfig;)V
+      23: invokeinterface #1207,  2         // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+      28: return
+
+  private static net.neoforged.neoforge.fluids.capability.IFluidHandlerItem lambda$registerCapabilities$6(net.minecraft.world.item.ItemStack, java.lang.Void);
+    Code:
+       0: new           #1246               // class com/aetherteam/aether/item/miscellaneous/bucket/SkyrootBucketWrapper
+       3: dup
+       4: aload_0
+       5: invokespecial #1248               // Method com/aetherteam/aether/item/miscellaneous/bucket/SkyrootBucketWrapper."<init>":(Lnet/minecraft/world/item/ItemStack;)V
+       8: areturn
+
+  private static net.neoforged.neoforge.fluids.capability.IFluidHandlerItem lambda$registerCapabilities$5(net.minecraft.world.item.ItemStack, java.lang.Void);
+    Code:
+       0: new           #1246               // class com/aetherteam/aether/item/miscellaneous/bucket/SkyrootBucketWrapper
+       3: dup
+       4: aload_0
+       5: invokespecial #1248               // Method com/aetherteam/aether/item/miscellaneous/bucket/SkyrootBucketWrapper."<init>":(Lnet/minecraft/world/item/ItemStack;)V
+       8: areturn
+
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$4(com.aetherteam.aether.blockentity.IncubatorBlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: aload_1
+       1: ifnonnull     15
+       4: new           #1251               // class net/neoforged/neoforge/items/wrapper/InvWrapper
+       7: dup
+       8: aload_0
+       9: invokespecial #1253               // Method net/neoforged/neoforge/items/wrapper/InvWrapper."<init>":(Lnet/minecraft/world/Container;)V
+      12: goto          24
+      15: new           #1256               // class net/neoforged/neoforge/items/wrapper/SidedInvWrapper
+      18: dup
+      19: aload_0
+      20: aload_1
+      21: invokespecial #1258               // Method net/neoforged/neoforge/items/wrapper/SidedInvWrapper."<init>":(Lnet/minecraft/world/WorldlyContainer;Lnet/minecraft/core/Direction;)V
+      24: areturn
+
+  private net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$3(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity, net.minecraft.core.Direction);
+    Code:
+       0: aload         4
+       2: checkcast     #1261               // class com/aetherteam/aether/blockentity/TreasureChestBlockEntity
+       5: astore        6
+       7: aload_3
+       8: invokevirtual #1263               // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      11: instanceof    #1269               // class net/minecraft/world/level/block/ChestBlock
+      14: ifne          30
+      17: new           #1271               // class com/aetherteam/aether/Aether$1
+      20: dup
+      21: aload_0
+      22: aload         6
+      24: aload         6
+      26: invokespecial #1273               // Method com/aetherteam/aether/Aether$1."<init>":(Lcom/aetherteam/aether/Aether;Lnet/minecraft/world/Container;Lcom/aetherteam/aether/blockentity/TreasureChestBlockEntity;)V
+      29: areturn
+      30: aload_3
+      31: invokevirtual #1263               // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      34: checkcast     #1269               // class net/minecraft/world/level/block/ChestBlock
+      37: aload_3
+      38: aload_1
+      39: aload_2
+      40: iconst_1
+      41: invokestatic  #1276               // Method net/minecraft/world/level/block/ChestBlock.getContainer:(Lnet/minecraft/world/level/block/ChestBlock;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Z)Lnet/minecraft/world/Container;
+      44: astore        7
+      46: new           #1251               // class net/neoforged/neoforge/items/wrapper/InvWrapper
+      49: dup
+      50: aload         7
+      52: ifnonnull     60
+      55: aload         6
+      57: goto          62
+      60: aload         7
+      62: invokespecial #1253               // Method net/neoforged/neoforge/items/wrapper/InvWrapper."<init>":(Lnet/minecraft/world/Container;)V
+      65: areturn
+
+  private void lambda$commonSetup$2();
+    Code:
+       0: invokestatic  #1280               // Method com/aetherteam/aether/block/AetherBlocks.registerPots:()V
+       3: invokestatic  #1283               // Method com/aetherteam/aether/block/AetherBlocks.registerFlammability:()V
+       6: invokestatic  #1286               // Method com/aetherteam/aether/block/AetherBlocks.registerFluidInteractions:()V
+       9: invokestatic  #1289               // Method com/aetherteam/aether/item/AetherItems.registerAccessories:()V
+      12: invokestatic  #1292               // Method com/aetherteam/aether/item/AetherItems.setupBucketReplacements:()V
+      15: aload_0
+      16: invokevirtual #1295               // Method registerDispenserBehaviors:()V
+      19: aload_0
+      20: invokevirtual #1298               // Method registerCauldronInteractions:()V
+      23: return
+
+  private static void lambda$new$1(net.neoforged.neoforge.registries.DataPackRegistryEvent$NewRegistry);
+    Code:
+       0: aload_0
+       1: getstatic     #1301               // Field com/aetherteam/aether/data/resources/registries/AetherMoaTypes.MOA_TYPE_REGISTRY_KEY:Lnet/minecraft/resources/ResourceKey;
+       4: getstatic     #1307               // Field com/aetherteam/aether/api/registers/MoaType.CODEC:Lcom/mojang/serialization/Codec;
+       7: getstatic     #1307               // Field com/aetherteam/aether/api/registers/MoaType.CODEC:Lcom/mojang/serialization/Codec;
+      10: invokevirtual #1313               // Method net/neoforged/neoforge/registries/DataPackRegistryEvent$NewRegistry.dataPackRegistry:(Lnet/minecraft/resources/ResourceKey;Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Codec;)V
+      13: return
+
+  private static void lambda$new$0(net.neoforged.neoforge.registries.NewRegistryEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #1317               // Field com/aetherteam/aether/api/AetherAdvancementSoundOverrides.ADVANCEMENT_SOUND_OVERRIDE_REGISTRY:Lnet/minecraft/core/Registry;
+       4: invokevirtual #1321               // Method net/neoforged/neoforge/registries/NewRegistryEvent.register:(Lnet/minecraft/core/Registry;)V
+       7: return
+
+  static {};
+    Code:
+       0: invokestatic  #1324               // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #1330               // Field LOGGER:Lorg/slf4j/Logger;
+       6: getstatic     #1334               // Field net/neoforged/fml/loading/FMLPaths.CONFIGDIR:Lnet/neoforged/fml/loading/FMLPaths;
+       9: invokevirtual #1340               // Method net/neoforged/fml/loading/FMLPaths.get:()Ljava/nio/file/Path;
+      12: ldc_w         #731                // String aether
+      15: invokeinterface #1343,  2         // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      20: putstatic     #200                // Field DIRECTORY:Ljava/nio/file/Path;
+      23: new           #1347               // class com/aetherteam/aether/client/TriviaGenerator
+      26: dup
+      27: invokespecial #1349               // Method com/aetherteam/aether/client/TriviaGenerator."<init>":()V
+      30: putstatic     #1350               // Field TRIVIA_READER:Lcom/aetherteam/aether/client/TriviaGenerator;
+      33: return
+}
