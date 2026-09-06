@@ -1,0 +1,221 @@
+Compiled from "AncientWoodModule.java"
+public class org.violetmoon.quark.content.world.module.AncientWoodModule extends org.violetmoon.zeta.module.ZetaModule {
+  public static boolean ancientFruitGivesExp;
+
+  public static int ancientFruitExpValue;
+
+  public static int ancientCityLootWeight;
+
+  public static int ancientCityLootQuality;
+
+  public static int sniffingLootWeight;
+
+  public static int sniffingLootQuality;
+
+  public static org.violetmoon.quark.base.handler.WoodSetHandler$WoodSet woodSet;
+
+  public static net.minecraft.world.level.block.Block ancient_leaves;
+
+  public static net.minecraft.world.level.block.Block ancient_sapling;
+
+  public static net.minecraft.world.item.Item ancient_fruit;
+
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?>> configuredFeatureKey;
+
+  public static org.violetmoon.zeta.advancement.ManualTrigger ancientFruitTrigger;
+
+  public org.violetmoon.quark.content.world.module.AncientWoodModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/violetmoon/zeta/module/ZetaModule."<init>":()V
+       4: return
+
+  public void setup(org.violetmoon.zeta.event.load.ZCommonSetup);
+    Code:
+       0: aload_1
+       1: invokedynamic #7,  0              // InvokeDynamic #0:run:()Ljava/lang/Runnable;
+       6: invokeinterface #11,  2           // InterfaceMethod org/violetmoon/zeta/event/load/ZCommonSetup.enqueueWork:(Ljava/lang/Runnable;)V
+      11: aload_0
+      12: invokevirtual #17                 // Method isEnabled:()Z
+      15: ifeq          51
+      18: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+      21: invokevirtual #27                 // Method net/minecraft/world/level/block/Block.asItem:()Lnet/minecraft/world/item/Item;
+      24: ldc           #33                 // float 0.3f
+      26: invokestatic  #34                 // Method org/violetmoon/quark/base/util/CompostManager.addChance:(Lnet/minecraft/world/item/Item;F)V
+      29: getstatic     #40                 // Field ancient_leaves:Lnet/minecraft/world/level/block/Block;
+      32: invokevirtual #27                 // Method net/minecraft/world/level/block/Block.asItem:()Lnet/minecraft/world/item/Item;
+      35: ldc           #33                 // float 0.3f
+      37: invokestatic  #34                 // Method org/violetmoon/quark/base/util/CompostManager.addChance:(Lnet/minecraft/world/item/Item;F)V
+      40: getstatic     #43                 // Field ancient_fruit:Lnet/minecraft/world/item/Item;
+      43: invokevirtual #47                 // Method net/minecraft/world/item/Item.asItem:()Lnet/minecraft/world/item/Item;
+      46: ldc           #50                 // float 0.65f
+      48: invokestatic  #34                 // Method org/violetmoon/quark/base/util/CompostManager.addChance:(Lnet/minecraft/world/item/Item;F)V
+      51: return
+
+  public void register(org.violetmoon.zeta.event.load.ZRegister);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: ldc           #51                 // String ancient
+       4: getstatic     #53                 // Field net/minecraft/world/level/material/MapColor.TERRACOTTA_WHITE:Lnet/minecraft/world/level/material/MapColor;
+       7: getstatic     #53                 // Field net/minecraft/world/level/material/MapColor.TERRACOTTA_WHITE:Lnet/minecraft/world/level/material/MapColor;
+      10: iconst_1
+      11: invokestatic  #59                 // Method org/violetmoon/quark/base/handler/WoodSetHandler.addWoodSet:(Lorg/violetmoon/zeta/event/load/ZRegister;Lorg/violetmoon/zeta/module/ZetaModule;Ljava/lang/String;Lnet/minecraft/world/level/material/MapColor;Lnet/minecraft/world/level/material/MapColor;Z)Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      14: putstatic     #65                 // Field woodSet:Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      17: new           #69                 // class org/violetmoon/zeta/block/ZetaLeavesBlock
+      20: dup
+      21: getstatic     #65                 // Field woodSet:Lorg/violetmoon/quark/base/handler/WoodSetHandler$WoodSet;
+      24: getfield      #71                 // Field org/violetmoon/quark/base/handler/WoodSetHandler$WoodSet.name:Ljava/lang/String;
+      27: aload_0
+      28: getstatic     #77                 // Field net/minecraft/world/level/material/MapColor.PLANT:Lnet/minecraft/world/level/material/MapColor;
+      31: invokespecial #80                 // Method org/violetmoon/zeta/block/ZetaLeavesBlock."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/module/ZetaModule;Lnet/minecraft/world/level/material/MapColor;)V
+      34: putstatic     #40                 // Field ancient_leaves:Lnet/minecraft/world/level/block/Block;
+      37: new           #83                 // class org/violetmoon/zeta/block/ZetaSaplingBlock
+      40: dup
+      41: ldc           #51                 // String ancient
+      43: aload_0
+      44: new           #85                 // class net/minecraft/world/level/block/grower/TreeGrower
+      47: dup
+      48: ldc           #87                 // String ancient_tree
+      50: invokestatic  #89                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      53: getstatic     #95                 // Field configuredFeatureKey:Lnet/minecraft/resources/ResourceKey;
+      56: invokestatic  #99                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      59: invokestatic  #89                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      62: invokespecial #103                // Method net/minecraft/world/level/block/grower/TreeGrower."<init>":(Ljava/lang/String;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+      65: invokespecial #106                // Method org/violetmoon/zeta/block/ZetaSaplingBlock."<init>":(Ljava/lang/String;Lorg/violetmoon/zeta/module/ZetaModule;Lnet/minecraft/world/level/block/grower/TreeGrower;)V
+      68: putstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+      71: aload_1
+      72: invokeinterface #109,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getVariantRegistry:()Lorg/violetmoon/zeta/registry/VariantRegistry;
+      77: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+      80: ldc           #115                // String ancient_sapling
+      82: invokestatic  #116                // Method com/google/common/base/Functions.identity:()Lcom/google/common/base/Function;
+      85: invokevirtual #122                // Method org/violetmoon/zeta/registry/VariantRegistry.addFlowerPot:(Lnet/minecraft/world/level/block/Block;Ljava/lang/String;Ljava/util/function/Function;)Lnet/minecraft/world/level/block/FlowerPotBlock;
+      88: astore_2
+      89: aload_2
+      90: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+      93: invokestatic  #128                // Method org/violetmoon/quark/content/building/module/MorePottedPlantsModule.addJustForDatagen:(Lnet/minecraft/world/level/block/FlowerPotBlock;Lnet/minecraft/world/level/block/Block;)V
+      96: new           #134                // class org/violetmoon/quark/content/world/item/AncientFruitItem
+      99: dup
+     100: aload_0
+     101: invokespecial #136                // Method org/violetmoon/quark/content/world/item/AncientFruitItem."<init>":(Lorg/violetmoon/zeta/module/ZetaModule;)V
+     104: putstatic     #43                 // Field ancient_fruit:Lnet/minecraft/world/item/Item;
+     107: aload_1
+     108: invokeinterface #139,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getAdvancementModifierRegistry:()Lorg/violetmoon/zeta/advancement/AdvancementModifierRegistry;
+     113: new           #143                // class org/violetmoon/zeta/advancement/modifier/BalancedDietModifier
+     116: dup
+     117: aload_0
+     118: getstatic     #43                 // Field ancient_fruit:Lnet/minecraft/world/item/Item;
+     121: invokestatic  #145                // Method com/google/common/collect/ImmutableSet.of:(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableSet;
+     124: invokespecial #150                // Method org/violetmoon/zeta/advancement/modifier/BalancedDietModifier."<init>":(Lorg/violetmoon/zeta/module/ZetaModule;Ljava/util/Set;)V
+     127: invokevirtual #153                // Method org/violetmoon/zeta/advancement/AdvancementModifierRegistry.addModifier:(Lorg/violetmoon/zeta/api/IAdvancementModifier;)V
+     130: aload_1
+     131: invokeinterface #139,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getAdvancementModifierRegistry:()Lorg/violetmoon/zeta/advancement/AdvancementModifierRegistry;
+     136: ldc           #159                // String ancient_fruit_overlevel
+     138: invokevirtual #161                // Method org/violetmoon/zeta/advancement/AdvancementModifierRegistry.registerManualTrigger:(Ljava/lang/String;)Lorg/violetmoon/zeta/advancement/ManualTrigger;
+     141: putstatic     #165                // Field ancientFruitTrigger:Lorg/violetmoon/zeta/advancement/ManualTrigger;
+     144: aload_1
+     145: invokeinterface #169,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getRegistry:()Lorg/violetmoon/zeta/registry/ZetaRegistry;
+     150: getstatic     #173                // Field org/violetmoon/quark/content/world/feature/MultiFoliageStraightTrunkPlacer.TYPE:Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType;
+     153: ldc           #179                // String multi_foliage_straight_trunk_placer
+     155: getstatic     #181                // Field net/minecraft/core/registries/Registries.TRUNK_PLACER_TYPE:Lnet/minecraft/resources/ResourceKey;
+     158: invokevirtual #186                // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+     161: aload_1
+     162: invokeinterface #169,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getRegistry:()Lorg/violetmoon/zeta/registry/ZetaRegistry;
+     167: getstatic     #192                // Field org/violetmoon/quark/content/world/feature/AncientTreeTopperDecorator.TYPE:Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType;
+     170: ldc           #197                // String ancient_tree_topper_decorator
+     172: getstatic     #199                // Field net/minecraft/core/registries/Registries.TREE_DECORATOR_TYPE:Lnet/minecraft/resources/ResourceKey;
+     175: invokevirtual #186                // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+     178: aload_1
+     179: invokeinterface #169,  1          // InterfaceMethod org/violetmoon/zeta/event/load/ZRegister.getRegistry:()Lorg/violetmoon/zeta/registry/ZetaRegistry;
+     184: getstatic     #202                // Field org/violetmoon/quark/content/world/feature/OffsetFancyFoliagePlacer.TYPE:Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType;
+     187: ldc           #207                // String offset_fancy_foliage_placer
+     189: getstatic     #209                // Field net/minecraft/core/registries/Registries.FOLIAGE_PLACER_TYPE:Lnet/minecraft/resources/ResourceKey;
+     192: invokevirtual #186                // Method org/violetmoon/zeta/registry/ZetaRegistry.register:(Ljava/lang/Object;Ljava/lang/String;Lnet/minecraft/resources/ResourceKey;)V
+     195: return
+
+  public void onLootTableLoad(org.violetmoon.zeta.event.play.loading.ZLootTableLoad);
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_1
+       3: invokeinterface #212,  1          // InterfaceMethod org/violetmoon/zeta/event/play/loading/ZLootTableLoad.getName:()Lnet/minecraft/resources/ResourceLocation;
+       8: getstatic     #218                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.ANCIENT_CITY:Lnet/minecraft/resources/ResourceKey;
+      11: invokevirtual #223                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      14: invokevirtual #228                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      17: ifeq          24
+      20: getstatic     #234                // Field ancientCityLootWeight:I
+      23: istore_2
+      24: aload_1
+      25: invokeinterface #212,  1          // InterfaceMethod org/violetmoon/zeta/event/play/loading/ZLootTableLoad.getName:()Lnet/minecraft/resources/ResourceLocation;
+      30: getstatic     #238                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SNIFFER_DIGGING:Lnet/minecraft/resources/ResourceKey;
+      33: invokevirtual #223                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      36: invokevirtual #228                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      39: ifeq          102
+      42: aload_1
+      43: invokeinterface #241,  1          // InterfaceMethod org/violetmoon/zeta/event/play/loading/ZLootTableLoad.getTable:()Lnet/minecraft/world/level/storage/loot/LootTable;
+      48: ldc           #245                // String main
+      50: invokevirtual #247                // Method net/minecraft/world/level/storage/loot/LootTable.getPool:(Ljava/lang/String;)Lnet/minecraft/world/level/storage/loot/LootPool;
+      53: astore_3
+      54: aload_3
+      55: ifnull        102
+      58: new           #253                // class java/util/ArrayList
+      61: dup
+      62: aload_3
+      63: checkcast     #255                // class org/violetmoon/zeta/mixin/mixins/AccessorLootPool
+      66: invokeinterface #257,  1          // InterfaceMethod org/violetmoon/zeta/mixin/mixins/AccessorLootPool.zeta$getLootPoolEntries:()Ljava/util/List;
+      71: invokespecial #261                // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      74: astore        4
+      76: aload         4
+      78: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+      81: invokestatic  #264                // Method net/minecraft/world/level/storage/loot/entries/LootItem.lootTableItem:(Lnet/minecraft/world/level/ItemLike;)Lnet/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder;
+      84: invokevirtual #270                // Method net/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder.build:()Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer;
+      87: invokevirtual #276                // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      90: pop
+      91: aload_3
+      92: checkcast     #255                // class org/violetmoon/zeta/mixin/mixins/AccessorLootPool
+      95: aload         4
+      97: invokeinterface #279,  2          // InterfaceMethod org/violetmoon/zeta/mixin/mixins/AccessorLootPool.zeta$setLootPoolEntries:(Ljava/util/List;)V
+     102: iload_2
+     103: ifle          133
+     106: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+     109: invokestatic  #264                // Method net/minecraft/world/level/storage/loot/entries/LootItem.lootTableItem:(Lnet/minecraft/world/level/ItemLike;)Lnet/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder;
+     112: iload_2
+     113: invokevirtual #283                // Method net/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder.setWeight:(I)Lnet/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder;
+     116: getstatic     #287                // Field ancientCityLootQuality:I
+     119: invokevirtual #290                // Method net/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder.setQuality:(I)Lnet/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder;
+     122: invokevirtual #270                // Method net/minecraft/world/level/storage/loot/entries/LootPoolSingletonContainer$Builder.build:()Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer;
+     125: astore_3
+     126: aload_1
+     127: aload_3
+     128: invokeinterface #293,  2          // InterfaceMethod org/violetmoon/zeta/event/play/loading/ZLootTableLoad.add:(Lnet/minecraft/world/level/storage/loot/entries/LootPoolEntryContainer;)V
+     133: return
+
+  private static void lambda$setup$0();
+    Code:
+       0: getstatic     #296                // Field org/violetmoon/quark/base/Quark.ZETA:Lorg/violetmoon/zeta/Zeta;
+       3: getfield      #302                // Field org/violetmoon/zeta/Zeta.fuel:Lorg/violetmoon/zeta/util/handler/FuelHandler;
+       6: getstatic     #23                 // Field ancient_sapling:Lnet/minecraft/world/level/block/Block;
+       9: bipush        100
+      11: invokevirtual #308                // Method org/violetmoon/zeta/util/handler/FuelHandler.addFuel:(Lnet/minecraft/world/level/block/Block;I)V
+      14: return
+
+  static {};
+    Code:
+       0: iconst_1
+       1: putstatic     #314                // Field ancientFruitGivesExp:Z
+       4: bipush        10
+       6: putstatic     #318                // Field ancientFruitExpValue:I
+       9: iconst_0
+      10: putstatic     #234                // Field ancientCityLootWeight:I
+      13: iconst_1
+      14: putstatic     #287                // Field ancientCityLootQuality:I
+      17: iconst_1
+      18: putstatic     #321                // Field sniffingLootWeight:I
+      21: iconst_0
+      22: putstatic     #324                // Field sniffingLootQuality:I
+      25: getstatic     #327                // Field net/minecraft/core/registries/Registries.CONFIGURED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+      28: ldc           #87                 // String ancient_tree
+      30: invokestatic  #330                // Method org/violetmoon/quark/base/Quark.asResourceKey:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/minecraft/resources/ResourceKey;
+      33: putstatic     #95                 // Field configuredFeatureKey:Lnet/minecraft/resources/ResourceKey;
+      36: return
+}
