@@ -695,12 +695,47 @@ attributes. This separates unknown membership from incomplete attributes.
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
 | `structureessentials-1.21.1-5.0.jar` | `structureessentials-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Existing structure lookup, placement, biome compatibility and diagnostic modifications; no independent family. Frozen activation settings bound below. |
-| `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code` | Resolve feature/structure aliases and injected components against existing roots. |
+| `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code`, existing root decisions and test_supplementaries_provider_scope.py | All 12 pools and 18 templates linked; road-sign feature chain accounted for below. Resolve custom generation, mineshaft elevator injection and remaining entry/payload roles. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Supplementaries packaged component checkpoint
+
+The exact retained archive SHA-256 is
+0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d.
+Existing family-decision checks account for galleon and road_sign roots. The new
+focused component check reconciles all twelve packaged pools and eighteen
+templates with the accepted pool graph. All are connected to these roots;
+neither graph records missing references or unresolved pool elements.
+
+The road-sign graph connects start_pool, the road_sign template and feature_pool.
+The feature pool invokes the placed road_sign feature, which selects the
+configured road_sign feature of custom type supplementaries:road_sign. These
+are linked representations within the existing root candidate, not three extra
+families. This proves the packaged relationship, not its actual placement success
+or completeness of the custom feature implementation. Preserve the same design
+boundary when reconciling any other consumers.
+
+The galleon graph includes hull, room, sail, urn and entity-feature components.
+Do not promote its boats or inhabitants to independent structure families.
+Common-worldgen code also contains MineshaftElevatorPiece; its registration and
+injection consumer require inspection. That is a concrete additional component
+question, not an accepted family. Custom structure/feature implementations,
+other generation hooks and full provider payload still require disposition.
+Provider census remains 78 resolved and 58 open.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py
+```
+
+One focused case passed in 0.73s, with both scoped quality checks passing. The
+existing packaged catalog handles the commented road-sign pool JSON. No new
+parser, graph, runtime measurement or canonical-inventory rewrite was needed.
 
 ## Creating Space packaged component checkpoint
 
