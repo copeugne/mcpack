@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-06
 
+WorldWeaver membership is resolved from its six provider captures through
+1717ee10, with existing pool/biome captures reused. All entries/services and
+45 common hooks are bound; 91 distinct classes cover the inspected boundaries.
+No independent family. Preserve terrain/preset/pack-loading effects; stop
+tracing generic WorldWeaver APIs. Whole providers: 118 resolved, 18 open.
+Working groups remain 410 and 100 explicitly provisional Moog decisions remain.
+Continue remaining provider membership and grouping before attributes. Final
+Item 8 gate, clean review and main merge remain open.
+
+
+WorldWeaver listener targets are now retained in 3b2c7fd9 (extractor 2dec51db
+adds verbose entrypoint disassembly). f632c8bd retains ten direct registration
+targets; reuse the eleventh in pool-codecs. Both r1 reproductions match bytes.
+Feature/structure registrations expose reusable types, not automatically new
+families. Continue bootstrap consumer and common-hook reconciliation against
+frozen registry/data/configuration evidence. Preserve the earlier nonverbose
+captures with their recorded extractor versions. Counts remain 117 resolved,
+19 open and 100 provisional Moog decisions. No provider closure this increment.
+
+
+WorldWeaver remains open. 372669cb retains its seven automatic entries and six
+registry services; 46c52394 retains all seventeen directly invoked modules.
+Both independent r1 reproductions match bytes. The sole packaged generation
+file is data/wover/worldgen/noise_settings/amplified_nether.json. Next resolve
+method-reference listener targets omitted by nonverbose javap, then the direct
+generation registrations and declared hooks, reusing existing pool/biome
+captures. Do not infer the selected runtime preset from available presets.
+Provider counts remain 117 resolved, 19 open; 100 provisional Moog decisions
+remain. This is partial evidence, not a new family or a provider closure.
+
+
 BCLib membership is resolved from reused integration dispatch and 7dae8acd,
 ccfcb07c, bfdb98bf and 2f92d5b1: shared generation/block/item/lifecycle APIs,
 no independent family. All automatic entries/common hooks and nested library
