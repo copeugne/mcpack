@@ -3467,6 +3467,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
+                verbose |= name.startswith("org/betterx/wover/entrypoint/")
                 verbose |= source.name == "create-1.21.1-6.0.10.jar" and any(
                     marker in payload for marker in (
                         b"Lnet/neoforged/fml/common/Mod;",
