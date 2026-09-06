@@ -1403,6 +1403,7 @@ CLASSES: tuple[str, ...] = (
     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.class",
     "com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager$Assembler.class",
     "com/telepathicgrunt/repurposedstructures/misc/structurepiececounter/StructurePieceCountsManager.class",
+    "com/telepathicgrunt/repurposedstructures/datagen/StructureNbtUpdaterDatagen.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
