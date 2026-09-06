@@ -8724,3 +8724,105 @@ This reconciliation is done when the named canonical list accounts for all runti
 roots and these contributions, with no unresolved membership decision or duplicate
 family. Attribute completion is a separate remaining Item 8 requirement. Do not
 resume generic provider audits or add another measurement system for this queue.
+
+## Soaring house and tower membership decisions
+
+Ten decisions in family-decisions.json now have explicit built-form rationales.
+The six houses are calcite_house, diorite_house, small_deepslate_house,
+small_oak_house, spruce_huts and white_house. The four tower/ruin designs are
+castle_ruin, castle_tower, large_tower and small_tower. None is merged solely by
+shared material, theme or generic jigsaw codec. Paired huts and modular lower,
+side and top pieces remain components of their parent design.
+
+The manually inspected houses and towers sheets under sources/soaring-design-views-r3
+are hash-bound in each decision. Existing packaged summaries preserve furnishings
+and authored entities. Existing complete pool traces identify attached pieces;
+the views show selected main templates rather than pretending to render complete
+assemblies. No generated-world size, successful placement or gameplay claim is
+introduced. See the decision rationales for the specific built-form distinctions.
+
+The historical 100-name checkpoint above remains dated context. Current explicitly
+provisional remainder: 90 (Soaring 15, Nether 22, Voyager 53). The working family
+count remains 410 until all canonical and nonregistry reconciliation is complete.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+All 73 existing family-decision tests pass, with scoped Ruff and Basedpyright
+passing. Diagram evidence d07a3b79 was delivered after an HTTP 408 on the first
+push; retrying the same commit with an 8 MiB HTTP post buffer succeeded and the
+delivered ref was verified before committing these dependent decisions.
+
+Working inventory regenerated from 42246219. Independent r1/r2 outputs match
+byte for byte. Inventory SHA-256: a05f8a0d5645a7a36b074b8ba29474d4a2dffe87efcd8cef0ff21e488c56e7a9.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-houses-towers-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-houses-towers-r2.json
+```
+
+## Soaring pond variants
+
+The frozen_pond and small_pond roots now form mss:pond. The manually inspected
+landscape sheet shows the same focal pond-island motif with different climate,
+scale, edging and decoration. Both packaged templates have empty entity and block
+entity lists. The cultivated patch in small_pond and fence/rock decoration in
+frozen_pond remain variants. The chambered muddy_water_hole encounter is separate.
+The exact definitions remain in the variant map: snowy versus general Overworld
+biome tags, different height intervals, assembly sizes 2 and 1, and separate pools.
+These are preserved differences, not normalized away or treated as identical inputs.
+
+The focused merge regression verifies both definitions against packaged data,
+unique root membership, empty authored entity/block-entity lists and evidence
+hashes. Nineteen affected family tests pass, with scoped Ruff and Basedpyright
+passing. Explicit provisional remainder is 88. The source decision list now has
+409 working groups; the derived inventory awaits the next regeneration.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'soaring_pond or authored_designs or soaring_rivers'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
+
+## Remaining Soaring design decisions
+
+The remaining thirteen Soaring rationales now bind the selected pool graph,
+packaged contents and inspected views where applicable. The pyramid, well and
+portal retain distinct built forms. Jungle, leaf hollow, mangrove, muddy water
+hole, mushroom, palm island, red sand, taiga and volcano retain their documented
+site arrangements; furnishings and encounter contents prevent treating their
+landscape names as vegetation exclusions. The individual rationales state the
+specific comparisons, components and limitations. This is an interpretive site
+design grouping, not a claim that a different biome or template guarantees a family.
+
+Arena is one connected 21-template encounter assembly. Its ordinary/trial spawners,
+vaults and authored bogged are components of that site. The versioned pool elements
+for pieces 2, 3 and 4 select the original paths on 1.21.1. The 1_21_9 alternatives
+in the same resources do not change membership or add live templates on this stack.
+No new arena view or measurement was required to establish its assembly boundary.
+
+Soaring now has 26 working canonical groups covering all 35 runtime roots, including
+the existing tree and river variant groups and the new pond group. No Soaring
+rationale remains explicitly provisional. The remaining explicit queue is 75:
+Nether 22 and Voyager 53. Overall source groups remain 409. Nonregistry reconciliation,
+all required attributes and final Item 8 acceptance remain incomplete.
+
+All 74 existing and directly affected family-decision cases pass. Scoped Ruff
+and Basedpyright pass for the inventory builder.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory refreshed from cc8343cb after all Soaring membership decisions. Both
+independent outputs match byte for byte. SHA-256: c6342abc3852f2562aa83ddacd828a274ee4e9ef5cabbe5231f904ec82f4d54d.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-soaring-settled-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-soaring-settled-r2.json
+```

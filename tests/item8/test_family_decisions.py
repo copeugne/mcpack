@@ -186,7 +186,8 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
     excluded_prefixes = {
         "explorify:": ("explorify:supply_cache/", "explorify:watchtower/", "explorify:guide_post_"),
         "mes:": ("mes:mega_ship",),
-        "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river"),
+        "mss:": ("mss:tree_", "mss:birch_river", "mss:cherry_river",
+                 "mss:frozen_pond", "mss:small_pond"),
     }.get(namespace, ())
     expected = {key for key in expected if not key.startswith(excluded_prefixes)}
     if namespace in {"mns:", "mvs:", "betterend:"}:
@@ -2553,3 +2554,39 @@ def test_integrated_village_designs_partition_one_settlement_family() -> None:
     assert spawner_templates == {
         "integrated_villages:mossy_mounds/house/mossy_mounds_armorer_bottom"
     }
+
+
+def test_soaring_pond_variants_preserve_distinct_placement_inputs() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    group = next(g for g in groups if g["family_id"] == "mss:pond")
+    ids = ["mss:frozen_pond", "mss:small_pond"]
+    assert group["structure_ids"] == ids
+    assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
+            if m in ids] == ids
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == set(ids)
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
+    templates = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/templates-redacted.json.gz").read_bytes())))
+    for rid in ids:
+        name = rid.split(":")[1]
+        definition = next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", catalog["resources"])
+            if r["path"] == f"data/mss/worldgen/structure/{name}.json")
+        assert variants[rid] == {"definition": definition, "template": rid}
+        template = cast("dict[str, JsonValue]", next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", templates["resources"])
+            if r["path"] == f"data/mss/structure/{name}.nbt"))
+        assert template["entities"] == []
+        assert template["block_entities"] == []
+    frozen = cast("dict[str, JsonValue]", variants[ids[0]]["definition"])
+    temperate = cast("dict[str, JsonValue]", variants[ids[1]]["definition"])
+    assert frozen["biomes"] != temperate["biomes"]
+    assert frozen["start_height"] != temperate["start_height"]
+    assert frozen["size"] == 2
+    assert temperate["size"] == 1
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest

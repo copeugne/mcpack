@@ -6,6 +6,55 @@
 
 ### Continuation update - 2026-09-06
 
+The derived inventory now matches all delivered Soaring decisions at cc8343cb.
+Two independent regenerations match. Working groups: 409. Explicit provisional
+queue: 75 (Nether 22, Voyager 53). Continue Nether membership reconciliation.
+
+
+Soaring membership decisions are settled: 26 groups cover its 35 runtime roots.
+The remaining explicit provisional queue is 75, consisting of Nether 22 and
+Voyager 53. Overall source group count is 409 after the pond merge. Reuse the
+existing pool/content evidence and five inspected Soaring sheets. Do not redo
+Soaring or provider audits. Next: Nether's named 22 grouping decisions, then
+Voyager 53, nonregistry reconciliation and the exact final named family list.
+The inventory needs regeneration from these current source decisions.
+
+
+Frozen and small pond now form mss:pond with their distinct placement settings
+preserved per variant. Nineteen affected tests and scoped quality checks pass.
+Explicit provisional remainder: 88. Source groups: 409. Derived inventory refresh
+is pending the remaining Soaring decisions. All five existing Soaring sheets are
+now inspected; reuse them, do not generate another view system. Arena's versioned
+pool elements select arena_2/3/4 for 1.21.1, not the packaged 1_21_9 alternatives.
+
+
+Ten Soaring grouping decisions are settled from manually inspected house/tower
+views, existing packaged contents and complete pool traces. Six house designs
+and four tower/ruin designs remain separate families, with attached pieces kept
+as components. Explicit provisional queue: 90, comprising Soaring 15, Nether 22
+and Voyager 53. Working group count remains 410. Reuse the five compressed Soaring
+view sheets; remaining landscape, island and monument inspections follow. The
+arena is a 21-template assembly and is not represented in these sheets. Required
+attributes, nonregistry reconciliation and final delivery gates remain open.
+
+
+Soaring view pilots exposed two concrete issues: arena is a 21-template assembly,
+not arena.nbt, and unculled buried island cells produced a 70 MB house SVG whose
+conversion exceeded three minutes. Stop that conversion and omit cells hidden
+behind occupied neighbors in the three visible directions for Soaring only.
+Keep the old BetterEnd default unchanged. Retain pilots as rejected, and use
+actual pyramid piece paths. This narrow rendering fix is needed for the existing
+layout comparison, not authorization for broader visual machinery.
+
+
+Canonical comparison requires block layouts omitted by the existing redacted
+palette catalog. Reuse the existing BetterEnd template renderer with a fixed
+Soaring selection for the 25 provisional designs. This is the existing diagram
+evidence path, not a new measurement system. No runtime experiment or renderer
+fidelity expansion is needed to compare built forms. Preserve the old default
+output and use these views with the existing palette, content and pool evidence.
+
+
 All 136 retained-provider membership dispositions are resolved, with zero open
 provider rows. You're in Grave Danger supplies player-death graves and recovery,
 not an independent structure family. Reuse yigd-entries, yigd-delegates and
