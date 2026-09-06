@@ -444,6 +444,39 @@ def test_betterend_building_lists_partition_exact_template_candidates() -> None:
         assert len(vegetation_paths) == 21  # explicit vegetation partition.
 
 
+def test_betterend_registry_groups_distinguish_authored_and_natural_content() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    groups = {str(group["family_id"]): group
+              for group in cast("list[dict[str, JsonValue]]", decisions["groups"])
+              if str(group["family_id"]).startswith("betterend:")}
+    authored = {"betterend:end_bridge", "betterend:end_village", "betterend:eternal_portal"}
+    natural = {"betterend:" + name for name in (
+        "end_lake", "mountain", "giant_ice_star", "giant_mossy_glowshroom",
+        "small_island", "sulphuric_cave",
+    )}
+    assert set(groups) == authored | natural
+    members: list[str] = []
+    for family, group in groups.items():
+        assert group["content_role"] == (
+            "AUTHORED_STRUCTURE" if family in authored else "NATURAL_FORMATION")
+        members.extend(cast("list[str]", group["structure_ids"]))
+        for path, digest in cast("dict[str, str]", group["evidence"]).items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"))
+    assert len(members) == len(set(members)) == 14
+    assert set(members) == {name for name in registry if name.startswith("betterend:")}
+
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    nonregistry = [family for key, row in contributions.items() if key.startswith("betterend:")
+                   for family in cast("list[str]", row["families"])]
+    assert len(nonregistry) == len(set(nonregistry)) == 18
+    assert not set(nonregistry) & set(groups)
+    assert len(nonregistry) + len(groups) == 27
+
+
 def test_betterend_ruin_decisions_partition_selected_templates() -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(Path(
         "evidence/item-8/family-decisions.json").read_bytes()))
