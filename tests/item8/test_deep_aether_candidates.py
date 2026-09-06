@@ -59,6 +59,14 @@ def test_deep_aether_packaged_candidate_partition() -> None:
         assert roots[name]["biomes"] == "deep_aether:sacred_lands"
         assert roots[name]["start_pool"] == "deep_aether:" + name
         assert roots[name]["type"] == "deep_aether:deep_aether_jigsaw"
+        assert rows[prefix + "template_pool/" + name + ".json"] == {
+            "elements": [{"element": {
+                "element_type": "minecraft:single_pool_element",
+                "location": "deep_aether:sacred_lands/" + name,
+                "processors": "minecraft:empty", "projection": "rigid",
+            }, "weight": 1}],
+            "fallback": "minecraft:empty",
+        }
     assert roots["brass_dungeon"]["type"] == "deep_aether:brass_dungeon"
     assert Counter(str(d["type"]) for p, d in rows.items()
                    if p.startswith(prefix + "configured_feature/")) == {
