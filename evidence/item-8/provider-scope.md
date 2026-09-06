@@ -648,7 +648,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `creatingspace-1.21.1-1.7.18.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Reconcile existing roots, all components and additional feature/entry routes. |
+| `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions and test_creating_space_provider_scope.py; packaged component partition below. | All five pools linked. One of six templates is disconnected from root graphs; resolve other consumers and executable entry routes before provider closure. |
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -701,6 +701,41 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Creating Space packaged component checkpoint
+
+The exact archive is a02eb4c17201f2add8343ebe7b4476890ae9b59a7f5af7e0309f6e00b9c65866,
+with 1645 non-directory files. Existing family-decision checks already bind the
+four root definitions. The focused component check now accounts for all five
+packaged pools and all six world-generation templates against the accepted
+pool-traces-content.json.gz input. All five pools are reached. Five templates
+are reached; creatingspace:moon/abandoned_outpost is disconnected from those
+graphs. The connected outpost uses separate top and basement templates.
+Do not count the disconnected template as another family or assert it is unused
+by executable code until its other consumers are resolved.
+
+The Mars outpost pool has minecraft:bastion/bridge/legs as its fallback. The
+existing graph consequently includes vanilla leg_0 and leg_1 components. This
+is a preserved packaged relationship, not evidence that those legs appeared in
+a generated Mars site or that the provider adds a bastion family. These four
+graphs have no recorded missing references or unresolved pool elements.
+
+The five configured-feature definitions use four minecraft:ore entries and one
+minecraft:geode entry, named for nickel, aluminum, cobalt and nickel sulfate.
+No custom feature type occurs in these definitions. Executable entry and mixin
+roles, custom data consumers and any additional generation routes remain open.
+The archive declares a mixin plugin; complete that boundary before provider
+closure. Census remains 77 resolved and 59 open.
+
+```sh
+uv run pytest -q tests/item8/test_creating_space_provider_scope.py
+uv run ruff check tests/item8/test_creating_space_provider_scope.py
+uv run basedpyright tests/item8/test_creating_space_provider_scope.py
+```
+
+One focused case passed in 0.23s, and both scoped quality checks passed. Reuse
+the existing root-decision checks and component graph; no new graph or runtime
+measurement was added.
 
 ## WDA structure-provider disposition
 
