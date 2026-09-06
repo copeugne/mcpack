@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+BOP canonical membership is settled: two landmark families (anomaly, monolith);
+bone-spine and both pumpkin forms are excluded decoration. Pumpkin decisions
+reuse captured writers and placement routes; five focused cases, scoped checks
+and inventory reproduction pass. Continue remaining named groups, starting
+with BetterEnd architectural choices and landmark boundaries. No BOP membership
+recapture is needed. Detailed attributes and the whole inventory remain open.
+
+
 Priority correction: finish actual family membership decisions before further
 library detail or attributes. BOP anomaly and monolith are now two explicit
 nonregistry families; both bone-spine IDs are excluded natural decoration.
