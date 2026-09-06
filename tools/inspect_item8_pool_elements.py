@@ -1574,6 +1574,7 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/world/surface/RUSurfaceRuleBuilder.class",
     "net/regions_unexplored/config/state/common/BiomeTarget.class",
     "net/regions_unexplored/worldgen/feature/RUFallenTreeFeature.class",
+    "net/regions_unexplored/worldgen/treedecorator/AttachedToLogsDecorator.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
