@@ -1,0 +1,128 @@
+Compiled from "BCLibClient.java"
+public class org.betterx.bclib.client.BCLibClient {
+  private static org.betterx.bclib.client.models.CustomModelBakery modelBakery;
+
+  public org.betterx.bclib.client.BCLibClient();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static org.betterx.bclib.client.models.CustomModelBakery lazyModelbakery();
+    Code:
+       0: getstatic     #7                  // Field modelBakery:Lorg/betterx/bclib/client/models/CustomModelBakery;
+       3: ifnonnull     16
+       6: new           #13                 // class org/betterx/bclib/client/models/CustomModelBakery
+       9: dup
+      10: invokespecial #15                 // Method org/betterx/bclib/client/models/CustomModelBakery."<init>":()V
+      13: putstatic     #7                  // Field modelBakery:Lorg/betterx/bclib/client/models/CustomModelBakery;
+      16: getstatic     #7                  // Field modelBakery:Lorg/betterx/bclib/client/models/CustomModelBakery;
+      19: areturn
+
+  public static void onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: new           #13                 // class org/betterx/bclib/client/models/CustomModelBakery
+       3: dup
+       4: invokespecial #15                 // Method org/betterx/bclib/client/models/CustomModelBakery."<init>":()V
+       7: putstatic     #7                  // Field modelBakery:Lorg/betterx/bclib/client/models/CustomModelBakery;
+      10: invokestatic  #16                 // Method org/betterx/bclib/api/v2/ModIntegrationAPI.registerAll:()V
+      13: invokestatic  #21                 // Method org/betterx/bclib/api/v2/dataexchange/DataExchangeAPI.prepareClientside:()V
+      16: iconst_1
+      17: invokestatic  #26                 // Method org/betterx/bclib/api/v2/PostInitAPI.postInit:(Z)V
+      20: invokestatic  #32                 // Method org/betterx/bclib/integration/modmenu/ModMenuEntryPoint.register:()V
+      23: getstatic     #37                 // Field org/betterx/bclib/client/textures/AtlasSetManager.VANILLA_BLOCKS:Lnet/minecraft/resources/ResourceLocation;
+      26: new           #43                 // class org/betterx/bclib/client/textures/SpriteLister
+      29: dup
+      30: ldc           #45                 // String entity/chest
+      32: invokespecial #47                 // Method org/betterx/bclib/client/textures/SpriteLister."<init>":(Ljava/lang/String;)V
+      35: invokestatic  #50                 // Method org/betterx/bclib/client/textures/AtlasSetManager.addSource:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/renderer/texture/atlas/SpriteSource;)V
+      38: getstatic     #37                 // Field org/betterx/bclib/client/textures/AtlasSetManager.VANILLA_BLOCKS:Lnet/minecraft/resources/ResourceLocation;
+      41: new           #43                 // class org/betterx/bclib/client/textures/SpriteLister
+      44: dup
+      45: ldc           #54                 // String blocks
+      47: invokespecial #47                 // Method org/betterx/bclib/client/textures/SpriteLister."<init>":(Ljava/lang/String;)V
+      50: invokestatic  #50                 // Method org/betterx/bclib/client/textures/AtlasSetManager.addSource:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/renderer/texture/atlas/SpriteSource;)V
+      53: return
+
+  public static void onRegisterBlockColors(net.neoforged.neoforge.client.event.RegisterColorHandlersEvent$Block);
+    Code:
+       0: getstatic     #56                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: invokeinterface #62,  1           // InterfaceMethod net/minecraft/core/DefaultedRegistry.iterator:()Ljava/util/Iterator;
+       8: astore_1
+       9: aload_1
+      10: invokeinterface #68,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          61
+      18: aload_1
+      19: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #78                 // class net/minecraft/world/level/block/Block
+      27: astore_2
+      28: aload_2
+      29: instanceof    #80                 // class org/betterx/bclib/interfaces/CustomColorProvider
+      32: ifeq          58
+      35: aload_2
+      36: checkcast     #80                 // class org/betterx/bclib/interfaces/CustomColorProvider
+      39: astore_3
+      40: aload_0
+      41: aload_3
+      42: invokedynamic #82,  0             // InvokeDynamic #0:getColor:(Lorg/betterx/bclib/interfaces/CustomColorProvider;)Lnet/minecraft/client/color/block/BlockColor;
+      47: iconst_1
+      48: anewarray     #78                 // class net/minecraft/world/level/block/Block
+      51: dup
+      52: iconst_0
+      53: aload_2
+      54: aastore
+      55: invokevirtual #86                 // Method net/neoforged/neoforge/client/event/RegisterColorHandlersEvent$Block.register:(Lnet/minecraft/client/color/block/BlockColor;[Lnet/minecraft/world/level/block/Block;)V
+      58: goto          9
+      61: return
+
+  public static void onRegisterItemColors(net.neoforged.neoforge.client.event.RegisterColorHandlersEvent$Item);
+    Code:
+       0: getstatic     #56                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: invokeinterface #62,  1           // InterfaceMethod net/minecraft/core/DefaultedRegistry.iterator:()Ljava/util/Iterator;
+       8: astore_1
+       9: aload_1
+      10: invokeinterface #68,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          61
+      18: aload_1
+      19: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #78                 // class net/minecraft/world/level/block/Block
+      27: astore_2
+      28: aload_2
+      29: instanceof    #80                 // class org/betterx/bclib/interfaces/CustomColorProvider
+      32: ifeq          58
+      35: aload_2
+      36: checkcast     #80                 // class org/betterx/bclib/interfaces/CustomColorProvider
+      39: astore_3
+      40: aload_0
+      41: aload_3
+      42: invokedynamic #91,  0             // InvokeDynamic #1:getColor:(Lorg/betterx/bclib/interfaces/CustomColorProvider;)Lnet/minecraft/client/color/item/ItemColor;
+      47: iconst_1
+      48: anewarray     #94                 // class net/minecraft/world/level/ItemLike
+      51: dup
+      52: iconst_0
+      53: aload_2
+      54: aastore
+      55: invokevirtual #96                 // Method net/neoforged/neoforge/client/event/RegisterColorHandlersEvent$Item.register:(Lnet/minecraft/client/color/item/ItemColor;[Lnet/minecraft/world/level/ItemLike;)V
+      58: goto          9
+      61: return
+
+  private static int lambda$onRegisterItemColors$1(org.betterx.bclib.interfaces.CustomColorProvider, net.minecraft.world.item.ItemStack, int);
+    Code:
+       0: aload_0
+       1: invokeinterface #101,  1          // InterfaceMethod org/betterx/bclib/interfaces/CustomColorProvider.getItemProvider:()Lorg/betterx/bclib/interfaces/ItemColorProvider;
+       6: aload_1
+       7: iload_2
+       8: invokeinterface #105,  3          // InterfaceMethod org/betterx/bclib/interfaces/ItemColorProvider.getColor:(Lnet/minecraft/world/item/ItemStack;I)I
+      13: ireturn
+
+  private static int lambda$onRegisterBlockColors$0(org.betterx.bclib.interfaces.CustomColorProvider, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.BlockAndTintGetter, net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_0
+       1: invokeinterface #110,  1          // InterfaceMethod org/betterx/bclib/interfaces/CustomColorProvider.getProvider:()Lorg/betterx/bclib/interfaces/BlockColorProvider;
+       6: aload_1
+       7: aload_2
+       8: aload_3
+       9: iload         4
+      11: invokeinterface #114,  5          // InterfaceMethod org/betterx/bclib/interfaces/BlockColorProvider.getColor:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockAndTintGetter;Lnet/minecraft/core/BlockPos;I)I
+      16: ireturn
+}

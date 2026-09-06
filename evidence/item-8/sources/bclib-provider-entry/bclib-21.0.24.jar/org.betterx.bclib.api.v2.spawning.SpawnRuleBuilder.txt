@@ -1,0 +1,745 @@
+Compiled from "SpawnRuleBuilder.java"
+public class org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder<M extends net.minecraft.world.entity.Mob> {
+  private static final java.util.Map<java.lang.String, org.betterx.bclib.api.v2.spawning.SpawnRuleEntry> RULES_CACHE;
+
+  private static final org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder INSTANCE;
+
+  private static final java.util.List<org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder$SpawnPlacementEntry<?>> PENDING;
+
+  private final java.util.List<org.betterx.bclib.api.v2.spawning.SpawnRuleEntry> rules;
+
+  private org.betterx.bclib.api.v2.spawning.SpawnRuleEntry entryInstance;
+
+  private net.minecraft.world.entity.EntityType<M> entityType;
+
+  private org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       8: putfield      #13                 // Field rules:Ljava/util/List;
+      11: return
+
+  public static org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder start(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.Mob>);
+    Code:
+       0: getstatic     #19                 // Field INSTANCE:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+       3: aload_0
+       4: putfield      #23                 // Field entityType:Lnet/minecraft/world/entity/EntityType;
+       7: getstatic     #19                 // Field INSTANCE:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      10: getfield      #13                 // Field rules:Ljava/util/List;
+      13: invokeinterface #27,  1           // InterfaceMethod java/util/List.clear:()V
+      18: getstatic     #19                 // Field INSTANCE:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      21: areturn
+
+  public static org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder start(org.betterx.bclib.entity.BCLEntityWrapper<? extends net.minecraft.world.entity.Mob>);
+    Code:
+       0: aload_0
+       1: invokevirtual #32                 // Method org/betterx/bclib/entity/BCLEntityWrapper.type:()Lnet/minecraft/world/entity/EntityType;
+       4: invokestatic  #38                 // Method start:(Lnet/minecraft/world/entity/EntityType;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+       7: astore_1
+       8: aload_0
+       9: invokevirtual #42                 // Method org/betterx/bclib/entity/BCLEntityWrapper.canSpawn:()Z
+      12: ifne          20
+      15: aload_1
+      16: invokevirtual #46                 // Method preventSpawn:()Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      19: pop
+      20: aload_1
+      21: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder preventSpawn();
+    Code:
+       0: aload_0
+       1: ldc           #50                 // String prevent
+       3: invokedynamic #52,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+       8: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      11: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      14: aload_0
+      15: getfield      #13                 // Field rules:Ljava/util/List;
+      18: aload_0
+      19: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      22: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: aload_0
+      29: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder notPeaceful();
+    Code:
+       0: aload_0
+       1: ldc           #68                 // String not_peaceful
+       3: invokedynamic #70,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+       8: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      11: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      14: aload_0
+      15: getfield      #13                 // Field rules:Ljava/util/List;
+      18: aload_0
+      19: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      22: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: aload_0
+      29: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder aboveGround(int);
+    Code:
+       0: aload_0
+       1: ldc           #71                 // String above_ground
+       3: iload_1
+       4: invokedynamic #73,  0             // InvokeDynamic #2:get:(I)Ljava/util/function/Supplier;
+       9: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      12: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      15: aload_0
+      16: getfield      #13                 // Field rules:Ljava/util/List;
+      19: aload_0
+      20: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      23: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      28: pop
+      29: aload_0
+      30: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder belowMaxHeight();
+    Code:
+       0: aload_0
+       1: ldc           #76                 // String below_max_height
+       3: invokedynamic #78,  0             // InvokeDynamic #3:get:()Ljava/util/function/Supplier;
+       8: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      11: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      14: aload_0
+      15: getfield      #13                 // Field rules:Ljava/util/List;
+      18: aload_0
+      19: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      22: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: aload_0
+      29: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder onlyOnValidBlocks();
+    Code:
+       0: aload_0
+       1: ldc           #79                 // String only_on_valid_blocks
+       3: invokedynamic #81,  0             // InvokeDynamic #4:get:()Ljava/util/function/Supplier;
+       8: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      11: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      14: aload_0
+      15: getfield      #13                 // Field rules:Ljava/util/List;
+      18: aload_0
+      19: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      22: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      27: pop
+      28: aload_0
+      29: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder onlyOnBlocks(net.minecraft.world.level.block.Block...);
+    Code:
+       0: aload_1
+       1: astore_2
+       2: aload_2
+       3: invokedynamic #82,  0             // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       8: invokestatic  #86                 // InterfaceMethod java/util/Comparator.comparing:(Ljava/util/function/Function;)Ljava/util/Comparator;
+      11: invokestatic  #92                 // Method java/util/Arrays.sort:([Ljava/lang/Object;Ljava/util/Comparator;)V
+      14: new           #98                 // class java/lang/StringBuilder
+      17: dup
+      18: ldc           #100                // String only_on_blocks
+      20: invokespecial #102                // Method java/lang/StringBuilder."<init>":(Ljava/lang/String;)V
+      23: astore_3
+      24: aload_2
+      25: astore        4
+      27: aload         4
+      29: arraylength
+      30: istore        5
+      32: iconst_0
+      33: istore        6
+      35: iload         6
+      37: iload         5
+      39: if_icmpge     72
+      42: aload         4
+      44: iload         6
+      46: aaload
+      47: astore        7
+      49: aload_3
+      50: bipush        95
+      52: invokevirtual #105                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      55: pop
+      56: aload_3
+      57: aload         7
+      59: invokevirtual #109                // Method net/minecraft/world/level/block/Block.getDescriptionId:()Ljava/lang/String;
+      62: invokevirtual #115                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      65: pop
+      66: iinc          6, 1
+      69: goto          35
+      72: aload_0
+      73: aload_3
+      74: invokevirtual #118                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      77: aload_2
+      78: invokedynamic #121,  0            // InvokeDynamic #6:get:([Lnet/minecraft/world/level/block/Block;)Ljava/util/function/Supplier;
+      83: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      86: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      89: aload_0
+      90: getfield      #13                 // Field rules:Ljava/util/List;
+      93: aload_0
+      94: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      97: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     102: pop
+     103: aload_0
+     104: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder withChance(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokedynamic #124,  0            // InvokeDynamic #7:makeConcatWithConstants:(I)Ljava/lang/String;
+       7: iload_1
+       8: invokedynamic #128,  0            // InvokeDynamic #8:get:(I)Ljava/util/function/Supplier;
+      13: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      16: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      19: aload_0
+      20: getfield      #13                 // Field rules:Ljava/util/List;
+      23: aload_0
+      24: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      27: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: aload_0
+      34: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder belowBrightness(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokedynamic #129,  0            // InvokeDynamic #9:makeConcatWithConstants:(I)Ljava/lang/String;
+       7: iload_1
+       8: invokedynamic #130,  0            // InvokeDynamic #10:get:(I)Ljava/util/function/Supplier;
+      13: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      16: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      19: aload_0
+      20: getfield      #13                 // Field rules:Ljava/util/List;
+      23: aload_0
+      24: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      27: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: aload_0
+      34: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder aboveBrightness(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokedynamic #131,  0            // InvokeDynamic #11:makeConcatWithConstants:(I)Ljava/lang/String;
+       7: iload_1
+       8: invokedynamic #132,  0            // InvokeDynamic #12:get:(I)Ljava/util/function/Supplier;
+      13: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      16: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      19: aload_0
+      20: getfield      #13                 // Field rules:Ljava/util/List;
+      23: aload_0
+      24: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      27: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      32: pop
+      33: aload_0
+      34: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder hostile(int);
+    Code:
+       0: aload_0
+       1: invokevirtual #133                // Method notPeaceful:()Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+       4: iload_1
+       5: invokevirtual #136                // Method belowBrightness:(I)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+       8: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder vanillaHostile();
+    Code:
+       0: aload_0
+       1: bipush        7
+       3: invokevirtual #140                // Method hostile:(I)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+       6: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder maxNearby(net.minecraft.world.entity.EntityType<?>, int, int);
+    Code:
+       0: aload_1
+       1: invokevirtual #143                // Method net/minecraft/world/entity/EntityType.getBaseClass:()Ljava/lang/Class;
+       4: astore        4
+       6: aload_0
+       7: aload_1
+       8: invokevirtual #149                // Method net/minecraft/world/entity/EntityType.getDescriptionId:()Ljava/lang/String;
+      11: iload_2
+      12: iload_3
+      13: invokedynamic #150,  0            // InvokeDynamic #13:makeConcatWithConstants:(Ljava/lang/String;II)Ljava/lang/String;
+      18: iload_3
+      19: aload         4
+      21: iload_2
+      22: invokedynamic #153,  0            // InvokeDynamic #14:get:(ILjava/lang/Class;I)Ljava/util/function/Supplier;
+      27: invokestatic  #56                 // Method getFromCache:(Ljava/lang/String;Ljava/util/function/Supplier;)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      30: putfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      33: aload_0
+      34: getfield      #13                 // Field rules:Ljava/util/List;
+      37: aload_0
+      38: getfield      #60                 // Field entryInstance:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleEntry;
+      41: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      46: pop
+      47: aload_0
+      48: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder maxNearby(int, int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #23                 // Field entityType:Lnet/minecraft/world/entity/EntityType;
+       5: iload_1
+       6: iload_2
+       7: invokevirtual #156                // Method maxNearby:(Lnet/minecraft/world/entity/EntityType;II)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      10: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder maxNearby(int);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #23                 // Field entityType:Lnet/minecraft/world/entity/EntityType;
+       5: iload_1
+       6: sipush        256
+       9: invokevirtual #156                // Method maxNearby:(Lnet/minecraft/world/entity/EntityType;II)Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      12: areturn
+
+  public org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder customRule(org.betterx.bclib.interfaces.SpawnRule);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field rules:Ljava/util/List;
+       4: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       7: dup
+       8: bipush        7
+      10: aload_1
+      11: ldc           #162                // String Custom Rule
+      13: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      16: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      21: pop
+      22: aload_0
+      23: areturn
+
+  public void build(net.minecraft.world.entity.SpawnPlacementType, net.minecraft.world.level.levelgen.Heightmap$Types);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field rules:Ljava/util/List;
+       4: invokestatic  #167                // Method com/google/common/collect/Lists.newArrayList:(Ljava/lang/Iterable;)Ljava/util/ArrayList;
+       7: astore_3
+       8: aload_3
+       9: invokestatic  #170                // Method java/util/Collections.sort:(Ljava/util/List;)V
+      12: aload_3
+      13: invokedynamic #175,  0            // InvokeDynamic #15:test:(Ljava/util/List;)Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      18: astore        4
+      20: getstatic     #179                // Field PENDING:Ljava/util/List;
+      23: new           #182                // class org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry
+      26: dup
+      27: aload_0
+      28: getfield      #23                 // Field entityType:Lnet/minecraft/world/entity/EntityType;
+      31: aload_1
+      32: aload_2
+      33: aload         4
+      35: invokespecial #184                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V
+      38: invokeinterface #64,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      43: pop
+      44: return
+
+  public void buildNoRestrictions(net.minecraft.world.level.levelgen.Heightmap$Types);
+    Code:
+       0: aload_0
+       1: getstatic     #187                // Field net/minecraft/world/entity/SpawnPlacementTypes.NO_RESTRICTIONS:Lnet/minecraft/world/entity/SpawnPlacementType;
+       4: aload_1
+       5: invokevirtual #193                // Method build:(Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;)V
+       8: return
+
+  public void buildOnGround(net.minecraft.world.level.levelgen.Heightmap$Types);
+    Code:
+       0: aload_0
+       1: getstatic     #197                // Field net/minecraft/world/entity/SpawnPlacementTypes.ON_GROUND:Lnet/minecraft/world/entity/SpawnPlacementType;
+       4: aload_1
+       5: invokevirtual #193                // Method build:(Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;)V
+       8: return
+
+  public void buildInWater(net.minecraft.world.level.levelgen.Heightmap$Types);
+    Code:
+       0: aload_0
+       1: getstatic     #200                // Field net/minecraft/world/entity/SpawnPlacementTypes.IN_WATER:Lnet/minecraft/world/entity/SpawnPlacementType;
+       4: aload_1
+       5: invokevirtual #193                // Method build:(Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;)V
+       8: return
+
+  public void buildInLava(net.minecraft.world.level.levelgen.Heightmap$Types);
+    Code:
+       0: aload_0
+       1: getstatic     #203                // Field net/minecraft/world/entity/SpawnPlacementTypes.IN_LAVA:Lnet/minecraft/world/entity/SpawnPlacementType;
+       4: aload_1
+       5: invokevirtual #193                // Method build:(Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;)V
+       8: return
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry getFromCache(java.lang.String, java.util.function.Supplier<org.betterx.bclib.api.v2.spawning.SpawnRuleEntry>);
+    Code:
+       0: aload_1
+       1: invokeinterface #206,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       6: checkcast     #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       9: areturn
+
+  public static void onRegisterSpawnPlacements(net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent);
+    Code:
+       0: getstatic     #179                // Field PENDING:Ljava/util/List;
+       3: invokeinterface #211,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       8: astore_1
+       9: aload_1
+      10: invokeinterface #215,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          36
+      18: aload_1
+      19: invokeinterface #220,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #182                // class org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry
+      27: astore_2
+      28: aload_0
+      29: aload_2
+      30: invokestatic  #223                // Method registerEntry:(Lnet/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent;Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry;)V
+      33: goto          9
+      36: getstatic     #179                // Field PENDING:Ljava/util/List;
+      39: invokeinterface #27,  1           // InterfaceMethod java/util/List.clear:()V
+      44: return
+
+  private static <T extends net.minecraft.world.entity.Mob> void registerEntry(net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent, org.betterx.bclib.api.v2.spawning.SpawnRuleBuilder$SpawnPlacementEntry<T>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #227                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry.entityType:()Lnet/minecraft/world/entity/EntityType;
+       5: aload_1
+       6: invokevirtual #229                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry.spawnType:()Lnet/minecraft/world/entity/SpawnPlacementType;
+       9: aload_1
+      10: invokevirtual #233                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry.heightmapType:()Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      13: aload_1
+      14: invokevirtual #237                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder$SpawnPlacementEntry.predicate:()Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;
+      17: getstatic     #241                // Field net/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent$Operation.REPLACE:Lnet/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent$Operation;
+      20: invokevirtual #247                // Method net/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent.register:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;Lnet/neoforged/neoforge/event/entity/RegisterSpawnPlacementsEvent$Operation;)V
+      23: return
+
+  private static boolean lambda$build$22(java.util.List, net.minecraft.world.entity.EntityType, net.minecraft.world.level.ServerLevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: invokeinterface #211,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       6: astore        6
+       8: aload         6
+      10: invokeinterface #215,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          50
+      18: aload         6
+      20: invokeinterface #220,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+      28: astore        7
+      30: aload         7
+      32: aload_1
+      33: aload_2
+      34: aload_3
+      35: aload         4
+      37: aload         5
+      39: invokevirtual #253                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry.canSpawn:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z
+      42: ifne          47
+      45: iconst_0
+      46: ireturn
+      47: goto          8
+      50: iconst_1
+      51: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$maxNearby$21(int, java.lang.Class, int);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_3
+       5: iload_0
+       6: aload_1
+       7: iload_2
+       8: invokedynamic #256,  0            // InvokeDynamic #16:canSpawn:(ILjava/lang/Class;I)Lorg/betterx/bclib/interfaces/SpawnRule;
+      13: iload_2
+      14: iload_0
+      15: invokedynamic #259,  0            // InvokeDynamic #17:makeConcatWithConstants:(II)Ljava/lang/String;
+      20: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      23: areturn
+
+  private static boolean lambda$maxNearby$20(int, java.lang.Class, int, net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: new           #262                // class net/minecraft/world/phys/AABB
+       3: dup
+       4: aload         6
+       6: invokespecial #264                // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/core/BlockPos;)V
+       9: iload_0
+      10: i2d
+      11: aload         4
+      13: invokeinterface #267,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getHeight:()I
+      18: i2d
+      19: iload_0
+      20: i2d
+      21: invokevirtual #273                // Method net/minecraft/world/phys/AABB.inflate:(DDD)Lnet/minecraft/world/phys/AABB;
+      24: astore        8
+      26: aload         4
+      28: aload_1
+      29: aload         8
+      31: invokedynamic #277,  0            // InvokeDynamic #18:test:()Ljava/util/function/Predicate;
+      36: invokeinterface #280,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getEntitiesOfClass:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+      41: astore        9
+      43: aload         9
+      45: invokeinterface #284,  1          // InterfaceMethod java/util/List.size:()I
+      50: iload_2
+      51: if_icmpge     58
+      54: iconst_1
+      55: goto          59
+      58: iconst_0
+      59: ireturn
+      60: astore        8
+      62: iconst_1
+      63: ireturn
+    Exception table:
+       from    to  target type
+           0    59    60   Class java/lang/Exception
+
+  private static boolean lambda$maxNearby$19(net.minecraft.world.entity.Entity);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$aboveBrightness$18(int);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_2
+       5: iload_0
+       6: invokedynamic #289,  0            // InvokeDynamic #19:canSpawn:(I)Lorg/betterx/bclib/interfaces/SpawnRule;
+      11: ldc_w         #292                // String Above Brightness
+      14: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      17: areturn
+
+  private static boolean lambda$aboveBrightness$17(int, net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokeinterface #294,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getMaxLocalRawBrightness:(Lnet/minecraft/core/BlockPos;)I
+       8: iload_0
+       9: if_icmplt     16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$belowBrightness$16(int);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_2
+       5: iload_0
+       6: invokedynamic #298,  0            // InvokeDynamic #20:canSpawn:(I)Lorg/betterx/bclib/interfaces/SpawnRule;
+      11: ldc_w         #299                // String Below Brightness
+      14: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      17: areturn
+
+  private static boolean lambda$belowBrightness$15(int, net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokeinterface #294,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getMaxLocalRawBrightness:(Lnet/minecraft/core/BlockPos;)I
+       8: iload_0
+       9: if_icmpgt     16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$withChance$14(int);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_1
+       5: iload_0
+       6: invokedynamic #301,  0            // InvokeDynamic #21:canSpawn:(I)Lorg/betterx/bclib/interfaces/SpawnRule;
+      11: ldc_w         #302                // String With Chance
+      14: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      17: areturn
+
+  private static boolean lambda$withChance$13(int, net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload         5
+       2: iload_0
+       3: invokeinterface #304,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       8: ifne          15
+      11: iconst_1
+      12: goto          16
+      15: iconst_0
+      16: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$onlyOnBlocks$12(net.minecraft.world.level.block.Block[]);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_0
+       5: aload_0
+       6: invokedynamic #310,  0            // InvokeDynamic #22:canSpawn:([Lnet/minecraft/world/level/block/Block;)Lorg/betterx/bclib/interfaces/SpawnRule;
+      11: ldc_w         #313                // String Only On Blocks
+      14: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      17: areturn
+
+  private static boolean lambda$onlyOnBlocks$11(net.minecraft.world.level.block.Block[], net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_2
+       1: aload         4
+       3: invokevirtual #315                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       6: invokeinterface #321,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      11: invokevirtual #325                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      14: astore        6
+      16: aload_0
+      17: astore        7
+      19: aload         7
+      21: arraylength
+      22: istore        8
+      24: iconst_0
+      25: istore        9
+      27: iload         9
+      29: iload         8
+      31: if_icmpge     56
+      34: aload         7
+      36: iload         9
+      38: aaload
+      39: astore        10
+      41: aload         10
+      43: aload         6
+      45: if_acmpne     50
+      48: iconst_1
+      49: ireturn
+      50: iinc          9, 1
+      53: goto          27
+      56: iconst_0
+      57: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$onlyOnValidBlocks$10();
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_0
+       5: invokedynamic #331,  0            // InvokeDynamic #23:canSpawn:()Lorg/betterx/bclib/interfaces/SpawnRule;
+      10: ldc_w         #334                // String Only On Valid Blocks
+      13: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      16: areturn
+
+  private static boolean lambda$onlyOnValidBlocks$9(net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_3
+       1: invokevirtual #315                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+       4: astore        5
+       6: aload_1
+       7: aload         5
+       9: invokeinterface #321,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      14: aload_1
+      15: aload         5
+      17: aload_0
+      18: invokevirtual #336                // Method net/minecraft/world/level/block/state/BlockState.isValidSpawn:(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/EntityType;)Z
+      21: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$belowMaxHeight$8();
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_0
+       5: invokedynamic #340,  0            // InvokeDynamic #24:canSpawn:()Lorg/betterx/bclib/interfaces/SpawnRule;
+      10: ldc_w         #341                // String Below Max Height
+      13: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      16: areturn
+
+  private static boolean lambda$belowMaxHeight$7(net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_3
+       1: invokevirtual #343                // Method net/minecraft/core/BlockPos.getY:()I
+       4: aload_1
+       5: invokeinterface #346,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.dimensionType:()Lnet/minecraft/world/level/dimension/DimensionType;
+      10: invokevirtual #350                // Method net/minecraft/world/level/dimension/DimensionType.logicalHeight:()I
+      13: if_icmpge     20
+      16: iconst_1
+      17: goto          21
+      20: iconst_0
+      21: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$aboveGround$6(int);
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_0
+       5: iload_0
+       6: invokedynamic #355,  0            // InvokeDynamic #25:canSpawn:(I)Lorg/betterx/bclib/interfaces/SpawnRule;
+      11: ldc_w         #356                // String Above Ground
+      14: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      17: areturn
+
+  private static boolean lambda$aboveGround$5(int, net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload         4
+       2: invokevirtual #343                // Method net/minecraft/core/BlockPos.getY:()I
+       5: aload_2
+       6: invokeinterface #358,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getMinBuildHeight:()I
+      11: iconst_2
+      12: iadd
+      13: if_icmpge     18
+      16: iconst_0
+      17: ireturn
+      18: aload_2
+      19: aload         4
+      21: aload         4
+      23: invokevirtual #343                // Method net/minecraft/core/BlockPos.getY:()I
+      26: iload_0
+      27: isub
+      28: invokedynamic #361,  0            // InvokeDynamic #26:test:()Ljava/util/function/Predicate;
+      33: invokestatic  #362                // Method org/betterx/bclib/util/BlocksHelper.findSurfaceBelow:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;ILjava/util/function/Predicate;)Ljava/util/Optional;
+      36: invokevirtual #368                // Method java/util/Optional.isEmpty:()Z
+      39: ireturn
+
+  private static boolean lambda$aboveGround$4(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokestatic  #373                // Method org/betterx/bclib/util/BlocksHelper.isFree:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+       4: ifne          11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$notPeaceful$3();
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_0
+       5: invokedynamic #377,  0            // InvokeDynamic #27:canSpawn:()Lorg/betterx/bclib/interfaces/SpawnRule;
+      10: ldc_w         #378                // String Not Peaceful
+      13: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      16: areturn
+
+  private static boolean lambda$notPeaceful$2(net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_1
+       1: invokeinterface #380,  1          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getDifficulty:()Lnet/minecraft/world/Difficulty;
+       6: getstatic     #384                // Field net/minecraft/world/Difficulty.PEACEFUL:Lnet/minecraft/world/Difficulty;
+       9: if_acmpeq     16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: ireturn
+
+  private static org.betterx.bclib.api.v2.spawning.SpawnRuleEntry lambda$preventSpawn$1();
+    Code:
+       0: new           #160                // class org/betterx/bclib/api/v2/spawning/SpawnRuleEntry
+       3: dup
+       4: iconst_m1
+       5: invokedynamic #390,  0            // InvokeDynamic #28:canSpawn:()Lorg/betterx/bclib/interfaces/SpawnRule;
+      10: ldc_w         #391                // String Prevent Spawn
+      13: invokespecial #164                // Method org/betterx/bclib/api/v2/spawning/SpawnRuleEntry."<init>":(ILorg/betterx/bclib/interfaces/SpawnRule;Ljava/lang/String;)V
+      16: areturn
+
+  private static boolean lambda$preventSpawn$0(net.minecraft.world.entity.EntityType, net.minecraft.world.level.LevelAccessor, net.minecraft.world.entity.MobSpawnType, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  static {};
+    Code:
+       0: invokestatic  #393                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       3: putstatic     #399                // Field RULES_CACHE:Ljava/util/Map;
+       6: new           #14                 // class org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder
+       9: dup
+      10: invokespecial #403                // Method "<init>":()V
+      13: putstatic     #19                 // Field INSTANCE:Lorg/betterx/bclib/api/v2/spawning/SpawnRuleBuilder;
+      16: new           #404                // class java/util/ArrayList
+      19: dup
+      20: invokespecial #406                // Method java/util/ArrayList."<init>":()V
+      23: putstatic     #179                // Field PENDING:Ljava/util/List;
+      26: return
+}

@@ -1,0 +1,80 @@
+Compiled from "BaseBlockEntityRenders.java"
+public class org.betterx.bclib.registry.BaseBlockEntityRenders {
+  public org.betterx.bclib.registry.BaseBlockEntityRenders();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void registerRenderers(net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers);
+    Code:
+       0: aload_0
+       1: getstatic     #7                  // Field org/betterx/bclib/registry/BaseBlockEntities.CHEST:Lorg/betterx/bclib/blockentities/DynamicBlockEntityType;
+       4: invokedynamic #13,  0             // InvokeDynamic #0:create:()Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;
+       9: invokevirtual #17                 // Method net/neoforged/neoforge/client/event/EntityRenderersEvent$RegisterRenderers.registerBlockEntityRenderer:(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/client/renderer/blockentity/BlockEntityRendererProvider;)V
+      12: aload_0
+      13: getstatic     #23                 // Field org/betterx/bclib/registry/BaseBlockEntities.CHAIR:Lnet/minecraft/world/entity/EntityType;
+      16: invokedynamic #27,  0             // InvokeDynamic #1:create:()Lnet/minecraft/client/renderer/entity/EntityRendererProvider;
+      21: invokevirtual #30                 // Method net/neoforged/neoforge/client/event/EntityRenderersEvent$RegisterRenderers.registerEntityRenderer:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/client/renderer/entity/EntityRendererProvider;)V
+      24: return
+
+  public static void registerLayerDefinitions(net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterLayerDefinitions);
+    Code:
+       0: invokestatic  #34                 // Method net/minecraft/client/model/BoatModel.createBodyModel:()Lnet/minecraft/client/model/geom/builders/LayerDefinition;
+       3: astore_1
+       4: invokestatic  #40                 // Method net/minecraft/client/model/ChestBoatModel.createBodyModel:()Lnet/minecraft/client/model/geom/builders/LayerDefinition;
+       7: astore_2
+       8: invokestatic  #43                 // Method net/minecraft/client/model/RaftModel.createBodyModel:()Lnet/minecraft/client/model/geom/builders/LayerDefinition;
+      11: astore_3
+      12: invokestatic  #46                 // Method net/minecraft/client/model/ChestRaftModel.createBodyModel:()Lnet/minecraft/client/model/geom/builders/LayerDefinition;
+      15: astore        4
+      17: invokestatic  #49                 // Method org/betterx/bclib/items/boat/BoatTypeOverride.values:()Ljava/util/stream/Stream;
+      20: aload_0
+      21: aload_3
+      22: aload_1
+      23: aload         4
+      25: aload_2
+      26: invokedynamic #55,  0             // InvokeDynamic #2:accept:(Lnet/neoforged/neoforge/client/event/EntityRenderersEvent$RegisterLayerDefinitions;Lnet/minecraft/client/model/geom/builders/LayerDefinition;Lnet/minecraft/client/model/geom/builders/LayerDefinition;Lnet/minecraft/client/model/geom/builders/LayerDefinition;Lnet/minecraft/client/model/geom/builders/LayerDefinition;)Ljava/util/function/Consumer;
+      31: invokeinterface #59,  2           // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+      36: return
+
+  private static void lambda$registerLayerDefinitions$2(net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterLayerDefinitions, net.minecraft.client.model.geom.builders.LayerDefinition, net.minecraft.client.model.geom.builders.LayerDefinition, net.minecraft.client.model.geom.builders.LayerDefinition, net.minecraft.client.model.geom.builders.LayerDefinition, org.betterx.bclib.items.boat.BoatTypeOverride);
+    Code:
+       0: aload_0
+       1: aload         5
+       3: getfield      #65                 // Field org/betterx/bclib/items/boat/BoatTypeOverride.boatModelName:Lnet/minecraft/client/model/geom/ModelLayerLocation;
+       6: aload         5
+       8: aload_1
+       9: aload_2
+      10: invokedynamic #69,  0             // InvokeDynamic #3:get:(Lorg/betterx/bclib/items/boat/BoatTypeOverride;Lnet/minecraft/client/model/geom/builders/LayerDefinition;Lnet/minecraft/client/model/geom/builders/LayerDefinition;)Ljava/util/function/Supplier;
+      15: invokevirtual #73                 // Method net/neoforged/neoforge/client/event/EntityRenderersEvent$RegisterLayerDefinitions.registerLayerDefinition:(Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+      18: aload_0
+      19: aload         5
+      21: getfield      #79                 // Field org/betterx/bclib/items/boat/BoatTypeOverride.chestBoatModelName:Lnet/minecraft/client/model/geom/ModelLayerLocation;
+      24: aload         5
+      26: aload_3
+      27: aload         4
+      29: invokedynamic #82,  0             // InvokeDynamic #4:get:(Lorg/betterx/bclib/items/boat/BoatTypeOverride;Lnet/minecraft/client/model/geom/builders/LayerDefinition;Lnet/minecraft/client/model/geom/builders/LayerDefinition;)Ljava/util/function/Supplier;
+      34: invokevirtual #73                 // Method net/neoforged/neoforge/client/event/EntityRenderersEvent$RegisterLayerDefinitions.registerLayerDefinition:(Lnet/minecraft/client/model/geom/ModelLayerLocation;Ljava/util/function/Supplier;)V
+      37: return
+
+  private static net.minecraft.client.model.geom.builders.LayerDefinition lambda$registerLayerDefinitions$1(org.betterx.bclib.items.boat.BoatTypeOverride, net.minecraft.client.model.geom.builders.LayerDefinition, net.minecraft.client.model.geom.builders.LayerDefinition);
+    Code:
+       0: aload_0
+       1: getfield      #83                 // Field org/betterx/bclib/items/boat/BoatTypeOverride.isRaft:Z
+       4: ifeq          11
+       7: aload_1
+       8: goto          12
+      11: aload_2
+      12: areturn
+
+  private static net.minecraft.client.model.geom.builders.LayerDefinition lambda$registerLayerDefinitions$0(org.betterx.bclib.items.boat.BoatTypeOverride, net.minecraft.client.model.geom.builders.LayerDefinition, net.minecraft.client.model.geom.builders.LayerDefinition);
+    Code:
+       0: aload_0
+       1: getfield      #83                 // Field org/betterx/bclib/items/boat/BoatTypeOverride.isRaft:Z
+       4: ifeq          11
+       7: aload_1
+       8: goto          12
+      11: aload_2
+      12: areturn
+}
