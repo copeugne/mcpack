@@ -3527,3 +3527,41 @@ read-only method lookup assumed addDecorators was private; the captured method
 is public, and its body was inspected under that actual signature. No capture
 was changed or regenerated. Remaining provider work is the other custom-feature
 roles, common entries/mixins, optional packs and AeroBlender's contribution.
+
+### Deep Aether remaining feature roles
+
+The captured DAFeatures registration and implementation bodies resolve the
+remaining custom feature roles without another runtime sample:
+
+| Implementation | Contribution role |
+| --- | --- |
+| AercloudCloudFeature | Noise-shaped supplied cloud blocks, with optional aercloud grass. Terrain formation. |
+| RainAercloudCloudFeature | Cloud formation with fluid placement and post-processing. Terrain formation. |
+| RootFeature | Places aercloud-root blocks at suitable empty positions. Vegetation decoration. |
+| PoisonLakeFeature | Carves a supplied-fluid lake, forms its barrier/surface and handles freezing/post-processing. Terrain formation. |
+| DAHugeMushroomFeature | Supplied mushroom cap/stem blocks, roots and ground alteration. Large vegetation, not a separate architectural template route. |
+| CloriteColumnsFeature | Finds suitable air/ground boundaries and places columns. Stone terrain formation. |
+| ConfiguredBoulder | Places supplied blocks in a boulder formation at suitable ground. Stone terrain formation. |
+| RockSpikeFeature | Forms a stone spike; not selected by the captured DAFeatures registration. Preserve the implementation's existence without counting it as a separate active site. |
+
+The configured-feature partition already binds all packaged custom types.
+Clorite columns and configured boulders are registered but have no configured
+feature among that partition. The totem and fallen-tree candidate dispositions
+remain separate and unchanged. No dimensions, placement success or gameplay
+attributes are inferred from these implementation roles.
+
+### AeroBlender integration source
+
+The selected library's entry, region/surface types and declared mixins are
+captured in sources/deep-aether-aeroblender. Manifest SHA-256:
+414711e4c35a498420ead8f3a7de80e7e7b8feb15909a19fb2dcebdba6ef5dc7.
+Independent r1 matches every generated file. The entry and mixins adapt region
+selection, biome-source applicability, noise-layer uniqueness and namespaced
+surface rules for Aether. They do not select architectural templates. The
+default region supplies Aether biome mappings and surface-rule support.
+Bind the library's complete payload in the final provider check; do not inspect
+its configuration-value builders unless an actual eligibility input needs them.
+
+Remaining Deep Aether scope is common entry/mixin roles, optional packs and
+the complete provider check including this nested payload. Census remains 76
+resolved and 60 open. All source is delivered; no process remains running.
