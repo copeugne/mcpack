@@ -1022,6 +1022,35 @@ CLASSES: tuple[str, ...] = (
     "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RareBlockProcessor.class",
     "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RedstoneProcessor.class",
     "com/yungnickyoung/minecraft/betterstrongholds/world/processor/RuinProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/BetterJungleTemplesCommon.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/BetterJungleTemplesNeoForge.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/config/BJTConfigNeoForge.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/mixin/LocateVanillaJungleTempleCommandMixin.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/mixin/accessor/ChunkGeneratorStructureStateAccessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/CompatModule.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/ConfigModule$Compat.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/ConfigModule$General.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/ConfigModule.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/StructurePlacementTypeModule.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/StructureProcessorTypeModule.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/module/TagModule.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/IModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/IPlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/IProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/NeoForgeModulesLoader.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/NeoForgePlatformHelper.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/NeoForgeProcessorProvider.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/services/Services.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/placement/BetterJungleTemplePlacement.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/BlastFurnaceProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/BlockReplaceProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/CaveVineDecorationProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/EmptyDispenserProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/FireballDispenserProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/ItemFrameProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/PillarProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/processor/TorchProcessor.class",
+    "com/yungnickyoung/minecraft/betterjungletemples/world/util/ArrowData.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1170,6 +1199,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     and not name.endswith("ConfigModuleNeoForge.class")
                 )
                 verbose |= source.name == "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar"
+                verbose |= (
+                    source.name == "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar"
+                    and not name.endswith("ConfigGeneralNeoForge.class")
+                    and not name.endswith("ConfigModuleNeoForge.class")
+                )
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "biomesoplenty/core/BiomesOPlenty.class",
                     "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
