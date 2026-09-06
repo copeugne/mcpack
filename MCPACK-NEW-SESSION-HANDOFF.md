@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-06
 
+Current checkpoint at 711a696: BetterEnd provider candidate coverage is resolved.
+The commit is pushed and its remote ref verified. Thirteen focused cases, Ruff
+and Basedpyright pass. Current queue: 54 resolved providers and 82 open, recorded
+in evidence/item-8/provider-scope.md. Earlier BetterEnd continuation questions
+below are superseded by the delivered root, entry, mixin, modifier, feature and
+configured-carver dispositions. Do not repeat those investigations.
+
+The user again identified the missing final family count as the problem to fix.
+Serial deep provider inspection has delayed that outcome. Continue the census
+across the remaining named rows using existing evidence first. Follow additional
+code only for a concrete possible unlisted contribution or family-boundary gap,
+not because a class has not been captured. Stop each provider check when its
+candidate contribution has a supported disposition. Add no measurement system.
+Canonical reconciliation must explicitly resolve named design alternatives and
+deduplicate roots, variants, components and nonregistry routes before reporting
+a final denominator. Then finish the eleven attributes and final review/merge.
+The 887 registry roots and 421 provisional groups are still not final families.
+
 Latest continuation correction at 4307aa7: the paragraphs below are earlier
 checkpoints. BetterEnd's complete 128-template partition is now bound by
 69fb95a, including the seven extra biome templates, legacy lists, village,
