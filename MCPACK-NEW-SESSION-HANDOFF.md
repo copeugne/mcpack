@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+EMI Ores membership is resolved from 824f34de. It reads existing ore/geode
+features and sends filtered information to clients; it does not register or
+place the temporary feature objects. Complete payload/source binding, 21
+utility cases and scoped quality checks pass. Whole providers: 100 resolved,
+36 open (19 code-reference, 17 unmatched-search). No family added. Target dummy
+is already closed in 1239fe48. Continue the remaining explicit provider queue
+and Moog canonical grouping. Neither completed provider needs further helper
+inspection. Detailed attributes remain paused until finite membership is settled.
+
+
 Target dummy membership is resolved from source 51ba791c, with twenty utility
 cases and scoped quality checks passing. It creates a dummy through item use
 or dispensing; no independent structure family. Preserve scarecrow/decoy and

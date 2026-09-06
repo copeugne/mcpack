@@ -1,0 +1,180 @@
+Compiled from "FeaturesSender.java"
+public class cc.abbie.emi_ores.networking.FeaturesSender {
+  public cc.abbie.emi_ores.networking.FeaturesSender();
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onSyncDataPackContents(net.minecraft.server.level.ServerPlayer, java.util.function.BiPredicate<net.minecraft.server.level.ServerPlayer, net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type<?>>, java.util.function.BiConsumer<net.minecraft.server.level.ServerPlayer, net.minecraft.network.protocol.common.custom.CustomPacketPayload>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getstatic     #43                 // Field cc/abbie/emi_ores/networking/payload/S2CSendBiomeInfoPayload.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+       5: invokeinterface #49,  3           // InterfaceMethod java/util/function/BiPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      10: ifeq          26
+      13: aload_1
+      14: aload_0
+      15: getstatic     #52                 // Field cc/abbie/emi_ores/networking/payload/S2CSendFeaturesPayload.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      18: invokeinterface #49,  3           // InterfaceMethod java/util/function/BiPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      23: ifne          27
+      26: return
+      27: new           #54                 // class java/util/HashMap
+      30: dup
+      31: invokespecial #55                 // Method java/util/HashMap."<init>":()V
+      34: astore_3
+      35: invokestatic  #61                 // Method com/google/common/collect/HashMultimap.create:()Lcom/google/common/collect/HashMultimap;
+      38: astore        4
+      40: aload_0
+      41: getfield      #67                 // Field net/minecraft/server/level/ServerPlayer.server:Lnet/minecraft/server/MinecraftServer;
+      44: invokevirtual #73                 // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+      47: astore        5
+      49: aload         5
+      51: getstatic     #79                 // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+      54: invokeinterface #83,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      59: astore        6
+      61: aload         6
+      63: invokeinterface #89,  1           // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+      68: aload_3
+      69: invokedynamic #109,  0            // InvokeDynamic #0:accept:(Ljava/util/Map;)Ljava/util/function/Consumer;
+      74: invokeinterface #115,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+      79: aload         5
+      81: getstatic     #118                // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+      84: invokeinterface #83,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      89: invokeinterface #89,  1           // InterfaceMethod net/minecraft/core/Registry.entrySet:()Ljava/util/Set;
+      94: aload         4
+      96: invokedynamic #126,  0            // InvokeDynamic #1:accept:(Lcom/google/common/collect/SetMultimap;)Ljava/util/function/Consumer;
+     101: invokeinterface #115,  2          // InterfaceMethod java/util/Set.forEach:(Ljava/util/function/Consumer;)V
+     106: aload         4
+     108: aload_3
+     109: invokedynamic #139,  0            // InvokeDynamic #2:apply:(Ljava/util/Map;)Lcom/google/common/base/Predicate;
+     114: invokestatic  #145                // Method com/google/common/collect/Multimaps.filterKeys:(Lcom/google/common/collect/SetMultimap;Lcom/google/common/base/Predicate;)Lcom/google/common/collect/SetMultimap;
+     117: astore        7
+     119: aload_2
+     120: aload_0
+     121: new           #39                 // class cc/abbie/emi_ores/networking/payload/S2CSendBiomeInfoPayload
+     124: dup
+     125: aload         7
+     127: invokespecial #148                // Method cc/abbie/emi_ores/networking/payload/S2CSendBiomeInfoPayload."<init>":(Lcom/google/common/collect/SetMultimap;)V
+     130: invokeinterface #153,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     135: aload_2
+     136: aload_0
+     137: new           #51                 // class cc/abbie/emi_ores/networking/payload/S2CSendFeaturesPayload
+     140: dup
+     141: aload_3
+     142: invokespecial #156                // Method cc/abbie/emi_ores/networking/payload/S2CSendFeaturesPayload."<init>":(Ljava/util/Map;)V
+     145: invokeinterface #153,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+     150: return
+
+  private static boolean isSupported(net.minecraft.world.level.levelgen.placement.PlacementModifier);
+    Code:
+       0: aload_0
+       1: instanceof    #178                // class net/minecraft/world/level/levelgen/placement/HeightRangePlacement
+       4: ifne          28
+       7: aload_0
+       8: instanceof    #180                // class net/minecraft/world/level/levelgen/placement/BiomeFilter
+      11: ifne          28
+      14: aload_0
+      15: instanceof    #182                // class net/minecraft/world/level/levelgen/placement/CountPlacement
+      18: ifne          28
+      21: aload_0
+      22: instanceof    #184                // class net/minecraft/world/level/levelgen/placement/RarityFilter
+      25: ifeq          32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: ireturn
+
+  private static boolean lambda$onSyncDataPackContents$5(java.util.Map, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #192                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       5: invokeinterface #195,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  private static void lambda$onSyncDataPackContents$4(com.google.common.collect.SetMultimap, java.util.Map$Entry);
+    Code:
+       0: aload_1
+       1: invokeinterface #200,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       6: checkcast     #202                // class net/minecraft/world/level/biome/Biome
+       9: invokevirtual #206                // Method net/minecraft/world/level/biome/Biome.getGenerationSettings:()Lnet/minecraft/world/level/biome/BiomeGenerationSettings;
+      12: invokevirtual #212                // Method net/minecraft/world/level/biome/BiomeGenerationSettings.features:()Ljava/util/List;
+      15: aload_0
+      16: aload_1
+      17: invokedynamic #222,  0            // InvokeDynamic #3:accept:(Lcom/google/common/collect/SetMultimap;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+      22: invokeinterface #225,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      27: return
+
+  private static void lambda$onSyncDataPackContents$3(com.google.common.collect.SetMultimap, java.util.Map$Entry, net.minecraft.core.HolderSet);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: aload_1
+       3: invokedynamic #235,  0            // InvokeDynamic #4:accept:(Lcom/google/common/collect/SetMultimap;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+       8: invokeinterface #238,  2          // InterfaceMethod net/minecraft/core/HolderSet.forEach:(Ljava/util/function/Consumer;)V
+      13: return
+
+  private static void lambda$onSyncDataPackContents$2(com.google.common.collect.SetMultimap, java.util.Map$Entry, net.minecraft.core.Holder);
+    Code:
+       0: aload_2
+       1: invokeinterface #246,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+       6: aload_0
+       7: aload_1
+       8: invokedynamic #254,  0            // InvokeDynamic #5:accept:(Lcom/google/common/collect/SetMultimap;Ljava/util/Map$Entry;)Ljava/util/function/Consumer;
+      13: invokevirtual #259                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      16: return
+
+  private static void lambda$onSyncDataPackContents$1(com.google.common.collect.SetMultimap, java.util.Map$Entry, net.minecraft.resources.ResourceKey);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_1
+       3: invokeinterface #264,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       8: checkcast     #188                // class net/minecraft/resources/ResourceKey
+      11: invokeinterface #269,  3          // InterfaceMethod com/google/common/collect/SetMultimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+      16: pop
+      17: return
+
+  private static void lambda$onSyncDataPackContents$0(java.util.Map, java.util.Map$Entry);
+    Code:
+       0: aload_1
+       1: invokeinterface #200,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+       6: checkcast     #272                // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+       9: astore_2
+      10: aload_2
+      11: invokevirtual #276                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.feature:()Lnet/minecraft/core/Holder;
+      14: invokeinterface #279,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      19: checkcast     #281                // class net/minecraft/world/level/levelgen/feature/ConfiguredFeature
+      22: astore_3
+      23: aload_3
+      24: invokevirtual #285                // Method net/minecraft/world/level/levelgen/feature/ConfiguredFeature.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      27: astore        4
+      29: aload         4
+      31: instanceof    #287                // class net/minecraft/world/level/levelgen/feature/configurations/OreConfiguration
+      34: ifne          45
+      37: aload         4
+      39: instanceof    #289                // class net/minecraft/world/level/levelgen/feature/configurations/GeodeConfiguration
+      42: ifeq          103
+      45: aload_2
+      46: invokevirtual #294                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.placement:()Ljava/util/List;
+      49: invokeinterface #298,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      54: invokedynamic #305,  0            // InvokeDynamic #6:test:()Ljava/util/function/Predicate;
+      59: invokeinterface #311,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      64: invokeinterface #314,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      69: astore        5
+      71: aload_0
+      72: aload_1
+      73: invokeinterface #264,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      78: checkcast     #188                // class net/minecraft/resources/ResourceKey
+      81: invokevirtual #192                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      84: new           #272                // class net/minecraft/world/level/levelgen/placement/PlacedFeature
+      87: dup
+      88: aload_2
+      89: invokevirtual #276                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature.feature:()Lnet/minecraft/core/Holder;
+      92: aload         5
+      94: invokespecial #317                // Method net/minecraft/world/level/levelgen/placement/PlacedFeature."<init>":(Lnet/minecraft/core/Holder;Ljava/util/List;)V
+      97: invokeinterface #320,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     102: pop
+     103: return
+}

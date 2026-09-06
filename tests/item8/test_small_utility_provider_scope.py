@@ -354,3 +354,55 @@ def test_target_dummy_membership_payload() -> None:
             assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
             assert row["disassembly_sha256"] == hashlib.sha256(
                 (directory / row["disassembly"]).read_bytes()).hexdigest()
+
+
+def test_emi_ores_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "emi_ores-1.2+1.21.1+neoforge.jar")
+    assert source.sha256 == "2e8ba2f6f1b023c4f9e7f49c650e3ebae966f8fa30d87d414db78a1063891306"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/emi-ores-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "30f6cd1c8f2dfcb1a705504c399490876639fe7c6df5c1f9cfc54f338fc22442")
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    prefix = "cc/abbie/emi_ores/"
+    entries = {prefix + "neoforge/EmiOresNeoForge.class",
+               prefix + "neoforge/client/EmiOresNeoForgeClient.class"}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assets = {n for n in files if n.startswith("assets/")}
+        assert len(classes) == 33
+        assert len(assets) == 72
+        assert all(n.endswith((".json", ".png")) for n in assets)
+        assert files - classes - assets == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "emi_ores-xplat-refmap.json", "emi_ores.mixins.json", "icon.png"}
+        assert archive.read("META-INF/MANIFEST.MF") == b"Manifest-Version: 1.0\r\n\r\n"
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "emi_ores.mixins.json"}]
+        config = cast("dict[str, JsonValue]", json.loads(archive.read("emi_ores.mixins.json")))
+        assert config["package"] == "cc.abbie.emi_ores.mixin"
+        assert not any(config.get(k) for k in ("plugin", "server", "client"))
+        hooks = {prefix + "mixin/" + n.replace(".", "/") + ".class"
+                 for n in cast("list[str]", config["mixins"])}
+        assert len(hooks) == 13
+        assert hooks == {n for n in classes if n.startswith(prefix + "mixin/")}
+        assert {r["class"] for r in rows} == entries | hooks | {
+            prefix + "EmiOres.class", prefix + "neoforge/PlatformImpl.class",
+            prefix + "networking/FeaturesSender.class"}
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == entries
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            disassembly = (directory / row["disassembly"]).read_bytes()
+            assert row["disassembly_sha256"] == hashlib.sha256(disassembly).hexdigest()
+            if row["class"] in hooks:
+                body = disassembly.decode().split("\n{", 1)[1]
+                assert "Code:" not in body
+                assert "org.spongepowered.asm.mixin.gen.Accessor" in body
