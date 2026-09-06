@@ -1,0 +1,446 @@
+Classfile YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar!/com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.class
+  Last modified Mar 6, 2025; size 5217 bytes
+  SHA-256 checksum e96da179846e0e21f279f1d142c2ce3a1966a215e7daf831fcf4262ba688f4f6
+  Compiled from "ServerPlayerTickMixin.java"
+public abstract class com.yungnickyoung.minecraft.betterdeserttemples.mixin.ServerPlayerTickMixin extends net.minecraft.world.entity.player.Player
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin
+  super_class: #2                         // net/minecraft/world/entity/player/Player
+  interfaces: 0, fields: 2, methods: 3, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    #2 = Class              #4            // net/minecraft/world/entity/player/Player
+    #3 = NameAndType        #5:#6         // "<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    #4 = Utf8               net/minecraft/world/entity/player/Player
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    #7 = Fieldref           #8.#9         // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+    #8 = Class              #10           // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin
+    #9 = NameAndType        #11:#12       // gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+   #10 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin
+   #11 = Utf8               gameMode
+   #12 = Utf8               Lnet/minecraft/server/level/ServerPlayerGameMode;
+   #13 = Methodref          #14.#15       // net/minecraft/server/level/ServerPlayerGameMode.isSurvival:()Z
+   #14 = Class              #16           // net/minecraft/server/level/ServerPlayerGameMode
+   #15 = NameAndType        #17:#18       // isSurvival:()Z
+   #16 = Utf8               net/minecraft/server/level/ServerPlayerGameMode
+   #17 = Utf8               isSurvival
+   #18 = Utf8               ()Z
+   #19 = Fieldref           #8.#20        // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.tickCount:I
+   #20 = NameAndType        #21:#22       // tickCount:I
+   #21 = Utf8               tickCount
+   #22 = Utf8               I
+   #23 = Fieldref           #24.#25       // com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+   #24 = Class              #26           // com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon
+   #25 = NameAndType        #27:#28       // CONFIG:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+   #26 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon
+   #27 = Utf8               CONFIG
+   #28 = Utf8               Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+   #29 = Fieldref           #30.#31       // com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+   #30 = Class              #32           // com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule
+   #31 = NameAndType        #33:#34       // general:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+   #32 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule
+   #33 = Utf8               general
+   #34 = Utf8               Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+   #35 = Fieldref           #36.#37       // com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General.applyMiningFatigue:Z
+   #36 = Class              #38           // com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General
+   #37 = NameAndType        #39:#40       // applyMiningFatigue:Z
+   #38 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General
+   #39 = Utf8               applyMiningFatigue
+   #40 = Utf8               Z
+   #41 = Methodref          #8.#42        // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.blockPosition:()Lnet/minecraft/core/BlockPos;
+   #42 = NameAndType        #43:#44       // blockPosition:()Lnet/minecraft/core/BlockPos;
+   #43 = Utf8               blockPosition
+   #44 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #45 = Methodref          #8.#46        // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #46 = NameAndType        #47:#48       // serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+   #47 = Utf8               serverLevel
+   #48 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+   #49 = Methodref          #50.#51       // net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+   #50 = Class              #52           // net/minecraft/server/level/ServerLevel
+   #51 = NameAndType        #53:#54       // structureManager:()Lnet/minecraft/world/level/StructureManager;
+   #52 = Utf8               net/minecraft/server/level/ServerLevel
+   #53 = Utf8               structureManager
+   #54 = Utf8               ()Lnet/minecraft/world/level/StructureManager;
+   #55 = Fieldref           #56.#57       // com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+   #56 = Class              #58           // com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule
+   #57 = NameAndType        #59:#60       // APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+   #58 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule
+   #59 = Utf8               APPLIES_MINING_FATIGUE
+   #60 = Utf8               Lnet/minecraft/tags/TagKey;
+   #61 = Methodref          #62.#63       // net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #62 = Class              #64           // net/minecraft/world/level/StructureManager
+   #63 = NameAndType        #65:#66       // getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #64 = Utf8               net/minecraft/world/level/StructureManager
+   #65 = Utf8               getStructureWithPieceAt
+   #66 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #67 = Methodref          #50.#68       // net/minecraft/server/level/ServerLevel.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+   #68 = NameAndType        #69:#70       // isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+   #69 = Utf8               isLoaded
+   #70 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+   #71 = Methodref          #72.#73       // net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+   #72 = Class              #74           // net/minecraft/world/level/levelgen/structure/StructureStart
+   #73 = NameAndType        #75:#18       // isValid:()Z
+   #74 = Utf8               net/minecraft/world/level/levelgen/structure/StructureStart
+   #75 = Utf8               isValid
+   #76 = Class              #77           // com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider
+   #77 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider
+   #78 = InterfaceMethodref #76.#79       // com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider.getTempleStateCache:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;
+   #79 = NameAndType        #80:#81       // getTempleStateCache:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;
+   #80 = Utf8               getTempleStateCache
+   #81 = Utf8               ()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;
+   #82 = Methodref          #72.#83       // net/minecraft/world/level/levelgen/structure/StructureStart.getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+   #83 = NameAndType        #84:#85       // getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+   #84 = Utf8               getChunkPos
+   #85 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+   #86 = Methodref          #87.#88       // net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+   #87 = Class              #89           // net/minecraft/world/level/ChunkPos
+   #88 = NameAndType        #90:#44       // getWorldPosition:()Lnet/minecraft/core/BlockPos;
+   #89 = Utf8               net/minecraft/world/level/ChunkPos
+   #90 = Utf8               getWorldPosition
+   #91 = Methodref          #92.#93       // com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache.isTempleCleared:(Lnet/minecraft/core/BlockPos;)Z
+   #92 = Class              #94           // com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache
+   #93 = NameAndType        #95:#70       // isTempleCleared:(Lnet/minecraft/core/BlockPos;)Z
+   #94 = Utf8               com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache
+   #95 = Utf8               isTempleCleared
+   #96 = Fieldref           #97.#98       // net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+   #97 = Class              #99           // net/minecraft/world/effect/MobEffects
+   #98 = NameAndType        #100:#101     // DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+   #99 = Utf8               net/minecraft/world/effect/MobEffects
+  #100 = Utf8               DIG_SLOWDOWN
+  #101 = Utf8               Lnet/minecraft/core/Holder;
+  #102 = Methodref          #8.#103       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.hasEffect:(Lnet/minecraft/core/Holder;)Z
+  #103 = NameAndType        #104:#105     // hasEffect:(Lnet/minecraft/core/Holder;)Z
+  #104 = Utf8               hasEffect
+  #105 = Utf8               (Lnet/minecraft/core/Holder;)Z
+  #106 = Methodref          #8.#107       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #107 = NameAndType        #108:#109     // getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #108 = Utf8               getEffect
+  #109 = Utf8               (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+  #110 = Methodref          #111.#112     // net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+  #111 = Class              #113          // net/minecraft/world/effect/MobEffectInstance
+  #112 = NameAndType        #114:#115     // getAmplifier:()I
+  #113 = Utf8               net/minecraft/world/effect/MobEffectInstance
+  #114 = Utf8               getAmplifier
+  #115 = Utf8               ()I
+  #116 = Methodref          #111.#117     // net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+  #117 = NameAndType        #118:#115     // getDuration:()I
+  #118 = Utf8               getDuration
+  #119 = Fieldref           #8.#120       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #120 = NameAndType        #121:#122     // connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #121 = Utf8               connection
+  #122 = Utf8               Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #123 = Class              #124          // net/minecraft/network/protocol/game/ClientboundSoundPacket
+  #124 = Utf8               net/minecraft/network/protocol/game/ClientboundSoundPacket
+  #125 = Fieldref           #126.#127     // net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+  #126 = Class              #128          // net/minecraft/core/registries/BuiltInRegistries
+  #127 = NameAndType        #129:#130     // SOUND_EVENT:Lnet/minecraft/core/Registry;
+  #128 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #129 = Utf8               SOUND_EVENT
+  #130 = Utf8               Lnet/minecraft/core/Registry;
+  #131 = Fieldref           #132.#133     // net/minecraft/sounds/SoundEvents.ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+  #132 = Class              #134          // net/minecraft/sounds/SoundEvents
+  #133 = NameAndType        #135:#136     // ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+  #134 = Utf8               net/minecraft/sounds/SoundEvents
+  #135 = Utf8               ELDER_GUARDIAN_CURSE
+  #136 = Utf8               Lnet/minecraft/sounds/SoundEvent;
+  #137 = InterfaceMethodref #138.#139     // net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #138 = Class              #140          // net/minecraft/core/Registry
+  #139 = NameAndType        #141:#142     // wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #140 = Utf8               net/minecraft/core/Registry
+  #141 = Utf8               wrapAsHolder
+  #142 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+  #143 = Fieldref           #144.#145     // net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+  #144 = Class              #146          // net/minecraft/sounds/SoundSource
+  #145 = NameAndType        #147:#148     // HOSTILE:Lnet/minecraft/sounds/SoundSource;
+  #146 = Utf8               net/minecraft/sounds/SoundSource
+  #147 = Utf8               HOSTILE
+  #148 = Utf8               Lnet/minecraft/sounds/SoundSource;
+  #149 = Methodref          #8.#150       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.getX:()D
+  #150 = NameAndType        #151:#152     // getX:()D
+  #151 = Utf8               getX
+  #152 = Utf8               ()D
+  #153 = Methodref          #8.#154       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.getY:()D
+  #154 = NameAndType        #155:#152     // getY:()D
+  #155 = Utf8               getY
+  #156 = Methodref          #8.#157       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.getZ:()D
+  #157 = NameAndType        #158:#152     // getZ:()D
+  #158 = Utf8               getZ
+  #159 = Methodref          #50.#160      // net/minecraft/server/level/ServerLevel.getSeed:()J
+  #160 = NameAndType        #161:#162     // getSeed:()J
+  #161 = Utf8               getSeed
+  #162 = Utf8               ()J
+  #163 = Methodref          #123.#164     // net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #164 = NameAndType        #5:#165       // "<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #165 = Utf8               (Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+  #166 = Methodref          #167.#168     // net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+  #167 = Class              #169          // net/minecraft/server/network/ServerGamePacketListenerImpl
+  #168 = NameAndType        #170:#171     // send:(Lnet/minecraft/network/protocol/Packet;)V
+  #169 = Utf8               net/minecraft/server/network/ServerGamePacketListenerImpl
+  #170 = Utf8               send
+  #171 = Utf8               (Lnet/minecraft/network/protocol/Packet;)V
+  #172 = Methodref          #111.#173     // net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;II)V
+  #173 = NameAndType        #5:#174       // "<init>":(Lnet/minecraft/core/Holder;II)V
+  #174 = Utf8               (Lnet/minecraft/core/Holder;II)V
+  #175 = Methodref          #8.#176       // com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin.addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #176 = NameAndType        #177:#178     // addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #177 = Utf8               addEffect
+  #178 = Utf8               (Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+  #179 = Utf8               RuntimeVisibleAnnotations
+  #180 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #181 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #182 = Utf8               Code
+  #183 = Utf8               LineNumberTable
+  #184 = Utf8               LocalVariableTable
+  #185 = Utf8               this
+  #186 = Utf8               Lcom/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin;
+  #187 = Utf8               $$0
+  #188 = Utf8               Lnet/minecraft/world/level/Level;
+  #189 = Utf8               $$1
+  #190 = Utf8               Lnet/minecraft/core/BlockPos;
+  #191 = Utf8               $$2
+  #192 = Utf8               F
+  #193 = Utf8               $$3
+  #194 = Utf8               Lcom/mojang/authlib/GameProfile;
+  #195 = Utf8               betterdeserttemples_playerTick
+  #196 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #197 = Utf8               playerPos
+  #198 = Utf8               structureStart
+  #199 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+  #200 = Utf8               isInTemple
+  #201 = Utf8               info
+  #202 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #203 = Utf8               StackMapTable
+  #204 = Class              #205          // net/minecraft/core/BlockPos
+  #205 = Utf8               net/minecraft/core/BlockPos
+  #206 = Class              #207          // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #207 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #208 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #209 = Utf8               method
+  #210 = Utf8               tick
+  #211 = Utf8               at
+  #212 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #213 = Utf8               value
+  #214 = Utf8               HEAD
+  #215 = Utf8               SourceFile
+  #216 = Utf8               ServerPlayerTickMixin.java
+  #217 = Utf8               RuntimeInvisibleAnnotations
+  #218 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #219 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #220 = Utf8               InnerClasses
+  #221 = Utf8               General
+{
+  public net.minecraft.server.network.ServerGamePacketListenerImpl connection;
+    descriptor: Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #180()
+        org.spongepowered.asm.mixin.Shadow
+
+  public net.minecraft.server.level.ServerPlayerGameMode gameMode;
+    descriptor: Lnet/minecraft/server/level/ServerPlayerGameMode;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #180()
+        org.spongepowered.asm.mixin.Shadow
+      1: #181()
+        org.spongepowered.asm.mixin.Final
+
+  public com.yungnickyoung.minecraft.betterdeserttemples.mixin.ServerPlayerTickMixin(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, float, com.mojang.authlib.GameProfile);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=5, args_size=5
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: fload_3
+         4: aload         4
+         6: invokespecial #1                  // Method net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+         9: return
+      LineNumberTable:
+        line 38: 0
+        line 39: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lcom/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin;
+            0      10     1   $$0   Lnet/minecraft/world/level/Level;
+            0      10     2   $$1   Lnet/minecraft/core/BlockPos;
+            0      10     3   $$2   F
+            0      10     4   $$3   Lcom/mojang/authlib/GameProfile;
+
+  public abstract net.minecraft.server.level.ServerLevel serverLevel();
+    descriptor: ()Lnet/minecraft/server/level/ServerLevel;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #180()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void betterdeserttemples_playerTick(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=15, locals=6, args_size=2
+         0: aload_0
+         1: getfield      #7                  // Field gameMode:Lnet/minecraft/server/level/ServerPlayerGameMode;
+         4: invokevirtual #13                 // Method net/minecraft/server/level/ServerPlayerGameMode.isSurvival:()Z
+         7: ifeq          232
+        10: aload_0
+        11: getfield      #19                 // Field tickCount:I
+        14: bipush        100
+        16: irem
+        17: ifne          232
+        20: getstatic     #23                 // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.CONFIG:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule;
+        23: getfield      #29                 // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule.general:Lcom/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General;
+        26: getfield      #35                 // Field com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General.applyMiningFatigue:Z
+        29: ifne          33
+        32: return
+        33: aload_0
+        34: invokevirtual #41                 // Method blockPosition:()Lnet/minecraft/core/BlockPos;
+        37: astore_2
+        38: aload_0
+        39: invokevirtual #45                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        42: invokevirtual #49                 // Method net/minecraft/server/level/ServerLevel.structureManager:()Lnet/minecraft/world/level/StructureManager;
+        45: aload_2
+        46: getstatic     #55                 // Field com/yungnickyoung/minecraft/betterdeserttemples/module/TagModule.APPLIES_MINING_FATIGUE:Lnet/minecraft/tags/TagKey;
+        49: invokevirtual #61                 // Method net/minecraft/world/level/StructureManager.getStructureWithPieceAt:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/tags/TagKey;)Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+        52: astore_3
+        53: aload_0
+        54: invokevirtual #45                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        57: aload_2
+        58: invokevirtual #67                 // Method net/minecraft/server/level/ServerLevel.isLoaded:(Lnet/minecraft/core/BlockPos;)Z
+        61: ifeq          75
+        64: aload_3
+        65: invokevirtual #71                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.isValid:()Z
+        68: ifeq          75
+        71: iconst_1
+        72: goto          76
+        75: iconst_0
+        76: istore        4
+        78: iload         4
+        80: ifne          84
+        83: return
+        84: aload_0
+        85: invokevirtual #45                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        88: checkcast     #76                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider
+        91: invokeinterface #78,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterdeserttemples/world/state/ITempleStateCacheProvider.getTempleStateCache:()Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;
+        96: aload_3
+        97: invokevirtual #82                 // Method net/minecraft/world/level/levelgen/structure/StructureStart.getChunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       100: invokevirtual #86                 // Method net/minecraft/world/level/ChunkPos.getWorldPosition:()Lnet/minecraft/core/BlockPos;
+       103: invokevirtual #91                 // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache.isTempleCleared:(Lnet/minecraft/core/BlockPos;)Z
+       106: istore        5
+       108: iload         5
+       110: ifeq          114
+       113: return
+       114: aload_0
+       115: getstatic     #96                 // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       118: invokevirtual #102                // Method hasEffect:(Lnet/minecraft/core/Holder;)Z
+       121: ifeq          153
+       124: aload_0
+       125: getstatic     #96                 // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       128: invokevirtual #106                // Method getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+       131: invokevirtual #110                // Method net/minecraft/world/effect/MobEffectInstance.getAmplifier:()I
+       134: iconst_2
+       135: if_icmplt     153
+       138: aload_0
+       139: getstatic     #96                 // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       142: invokevirtual #106                // Method getEffect:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/effect/MobEffectInstance;
+       145: invokevirtual #116                // Method net/minecraft/world/effect/MobEffectInstance.getDuration:()I
+       148: bipush        120
+       150: if_icmpge     232
+       153: aload_0
+       154: getstatic     #96                 // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       157: invokevirtual #102                // Method hasEffect:(Lnet/minecraft/core/Holder;)Z
+       160: ifne          212
+       163: aload_0
+       164: getfield      #119                // Field connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       167: new           #123                // class net/minecraft/network/protocol/game/ClientboundSoundPacket
+       170: dup
+       171: getstatic     #125                // Field net/minecraft/core/registries/BuiltInRegistries.SOUND_EVENT:Lnet/minecraft/core/Registry;
+       174: getstatic     #131                // Field net/minecraft/sounds/SoundEvents.ELDER_GUARDIAN_CURSE:Lnet/minecraft/sounds/SoundEvent;
+       177: invokeinterface #137,  2          // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+       182: getstatic     #143                // Field net/minecraft/sounds/SoundSource.HOSTILE:Lnet/minecraft/sounds/SoundSource;
+       185: aload_0
+       186: invokevirtual #149                // Method getX:()D
+       189: aload_0
+       190: invokevirtual #153                // Method getY:()D
+       193: aload_0
+       194: invokevirtual #156                // Method getZ:()D
+       197: fconst_1
+       198: fconst_1
+       199: aload_0
+       200: invokevirtual #45                 // Method serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+       203: invokevirtual #159                // Method net/minecraft/server/level/ServerLevel.getSeed:()J
+       206: invokespecial #163                // Method net/minecraft/network/protocol/game/ClientboundSoundPacket."<init>":(Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;DDDFFJ)V
+       209: invokevirtual #166                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/Packet;)V
+       212: aload_0
+       213: new           #111                // class net/minecraft/world/effect/MobEffectInstance
+       216: dup
+       217: getstatic     #96                 // Field net/minecraft/world/effect/MobEffects.DIG_SLOWDOWN:Lnet/minecraft/core/Holder;
+       220: sipush        600
+       223: iconst_2
+       224: invokespecial #172                // Method net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;II)V
+       227: aload_0
+       228: invokevirtual #175                // Method addEffect:(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z
+       231: pop
+       232: return
+      LineNumberTable:
+        line 47: 0
+        line 49: 20
+        line 51: 33
+        line 52: 38
+        line 55: 53
+        line 56: 78
+        line 59: 84
+        line 60: 108
+        line 63: 114
+        line 64: 153
+        line 65: 163
+        line 67: 212
+        line 70: 232
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           38     194     2 playerPos   Lnet/minecraft/core/BlockPos;
+           53     179     3 structureStart   Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+           78     154     4 isInTemple   Z
+          108     124     5 isTempleCleared   Z
+            0     233     0  this   Lcom/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin;
+            0     233     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 8
+        frame_type = 33 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 41
+          locals = [ class net/minecraft/core/BlockPos, class net/minecraft/world/level/levelgen/structure/StructureStart ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ int ]
+        frame_type = 38 /* same */
+        frame_type = 58 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class com/yungnickyoung/minecraft/betterdeserttemples/mixin/ServerPlayerTickMixin, class org/spongepowered/asm/mixin/injection/callback/CallbackInfo ]
+          stack = []
+    RuntimeVisibleAnnotations:
+      0: #208(#209=[s#210],#211=[@#212(#213=s#214)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+}
+SourceFile: "ServerPlayerTickMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #218(#213=[c#219])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerPlayer;]
+    )
+InnerClasses:
+  public static #221= #36 of #30;         // General=class com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule$General of class com/yungnickyoung/minecraft/betterdeserttemples/module/ConfigModule
