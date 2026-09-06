@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Explorations' decorated-mushroom boundary is resolved: its procedural stem/canopy
+and hanging-light decorator are recorded as decorated vegetation, with no added
+family. The generation contribution and shuffle limitation remain explicit.
+Two focused cases, scoped checks and inventory reproduction pass. See the
+provider-scope evidence for rationale and commands. Other named grouping questions
+and 46 provider rows remain open; the 421 registry groups are unchanged.
+
 Two named boundary questions are resolved: Tectonic's underground-river lantern
 and Terralith's Frostfire hanging soul lantern are ambient fixtures, not additional
 structure families. Both remain explicit nonregistry contributions with empty

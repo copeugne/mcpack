@@ -151,8 +151,24 @@ def test_explorations_features_and_frozen_statue_consumers() -> None:
         }
         assert base + f"tags/worldgen/biome/has_feature/scarecrow/{name}.json" in data
     mushroom = data[configured + "large_mushroom.json"]
+    mushroom_decision = contributions["explorations:large_mushroom"]
+    assert mushroom_decision["families"] == []
+    assert mushroom_decision["configured_resource"] == configured + "large_mushroom.json"
+    for path, digest in cast("dict[str, str]", mushroom_decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     assert mushroom["type"] == "minecraft:tree"
     config = cast("dict[str, JsonValue]", mushroom["config"])
+    for provider, block in (("trunk_provider", "minecraft:mushroom_stem"),
+                            ("foliage_provider", "minecraft:brown_mushroom_block")):
+        setting = cast("dict[str, JsonValue]", config[provider])
+        assert setting["type"] == "minecraft:simple_state_provider"
+        assert cast("dict[str, JsonValue]", setting["state"])["Name"] == block
+    assert cast("dict[str, JsonValue]", config["trunk_placer"])["type"] == (
+        "minecraft:giant_trunk_placer"
+    )
+    assert cast("dict[str, JsonValue]", config["foliage_placer"])["type"] == (
+        "minecraft:jungle_foliage_placer"
+    )
     assert config["decorators"] == [{
         "type": "explorations:lantern", "probability": 0.9,
         "lantern_count": {"type": "minecraft:uniform",
