@@ -1,0 +1,207 @@
+Compiled from "BetterDesertTemplePlacement.java"
+public class com.yungnickyoung.minecraft.betterdeserttemples.world.placement.BetterDesertTemplePlacement extends net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement {
+  public static final com.mojang.serialization.MapCodec<com.yungnickyoung.minecraft.betterdeserttemples.world.placement.BetterDesertTemplePlacement> CODEC;
+
+  public com.yungnickyoung.minecraft.betterdeserttemples.world.placement.BetterDesertTemplePlacement(net.minecraft.core.Vec3i, net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$FrequencyReductionMethod, java.lang.Float, java.lang.Integer, java.util.Optional<net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$ExclusionZone>, java.lang.Integer, java.lang.Integer, net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokevirtual #1                  // Method java/lang/Float.floatValue:()F
+       7: aload         4
+       9: invokevirtual #7                  // Method java/lang/Integer.intValue:()I
+      12: aload         5
+      14: aload         6
+      16: invokevirtual #7                  // Method java/lang/Integer.intValue:()I
+      19: aload         7
+      21: invokevirtual #7                  // Method java/lang/Integer.intValue:()I
+      24: aload         8
+      26: invokespecial #13                 // Method net/minecraft/world/level/levelgen/structure/placement/RandomSpreadStructurePlacement."<init>":(Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;)V
+      29: return
+
+  protected boolean isPlacementChunk(net.minecraft.world.level.chunk.ChunkGeneratorStructureState, int, int);
+    Code:
+       0: aload_1
+       1: checkcast     #19                 // class com/yungnickyoung/minecraft/betterdeserttemples/mixin/accessor/ChunkGeneratorStructureStateAccessor
+       4: invokeinterface #21,  1           // InterfaceMethod com/yungnickyoung/minecraft/betterdeserttemples/mixin/accessor/ChunkGeneratorStructureStateAccessor.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+       9: astore        4
+      11: aload_1
+      12: invokevirtual #25                 // Method net/minecraft/world/level/chunk/ChunkGeneratorStructureState.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      15: astore        5
+      17: aload_1
+      18: invokevirtual #31                 // Method net/minecraft/world/level/chunk/ChunkGeneratorStructureState.getLevelSeed:()J
+      21: lstore        6
+      23: aload_0
+      24: lload         6
+      26: iload_2
+      27: iload_3
+      28: invokevirtual #35                 // Method getPotentialStructureChunk:(JII)Lnet/minecraft/world/level/ChunkPos;
+      31: astore        8
+      33: aload         8
+      35: getfield      #41                 // Field net/minecraft/world/level/ChunkPos.x:I
+      38: iload_2
+      39: if_icmpne     127
+      42: aload         8
+      44: getfield      #47                 // Field net/minecraft/world/level/ChunkPos.z:I
+      47: iload_3
+      48: if_icmpne     127
+      51: aload         8
+      53: bipush        120
+      55: invokevirtual #50                 // Method net/minecraft/world/level/ChunkPos.getMiddleBlockPosition:(I)Lnet/minecraft/core/BlockPos;
+      58: astore        9
+      60: aload         4
+      62: aload         9
+      64: invokevirtual #54                 // Method net/minecraft/core/BlockPos.getX:()I
+      67: aload         9
+      69: invokevirtual #59                 // Method net/minecraft/core/BlockPos.getY:()I
+      72: aload         9
+      74: invokevirtual #62                 // Method net/minecraft/core/BlockPos.getZ:()I
+      77: bipush        48
+      79: iconst_2
+      80: invokedynamic #65,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      85: aload         5
+      87: invokevirtual #69                 // Method net/minecraft/world/level/levelgen/RandomState.oreRandom:()Lnet/minecraft/world/level/levelgen/PositionalRandomFactory;
+      90: aload         9
+      92: invokeinterface #75,  2           // InterfaceMethod net/minecraft/world/level/levelgen/PositionalRandomFactory.at:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      97: iconst_1
+      98: aload         5
+     100: invokevirtual #81                 // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+     103: invokevirtual #85                 // Method net/minecraft/world/level/biome/BiomeSource.findBiomeHorizontal:(IIIIILjava/util/function/Predicate;Lnet/minecraft/util/RandomSource;ZLnet/minecraft/world/level/biome/Climate$Sampler;)Lcom/mojang/datafixers/util/Pair;
+     106: ifnull        113
+     109: iconst_1
+     110: goto          114
+     113: iconst_0
+     114: istore        10
+     116: iload         10
+     118: ifne          125
+     121: iconst_1
+     122: goto          126
+     125: iconst_0
+     126: ireturn
+     127: iconst_0
+     128: ireturn
+
+  public net.minecraft.world.level.levelgen.structure.placement.StructurePlacementType<?> type();
+    Code:
+       0: getstatic     #91                 // Field com/yungnickyoung/minecraft/betterdeserttemples/module/StructurePlacementTypeModule.BETTER_DESERT_TEMPLE_PLACEMENT:Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacementType;
+       3: areturn
+
+  private static boolean lambda$isPlacementChunk$6(net.minecraft.core.Holder);
+    Code:
+       0: aload_0
+       1: getstatic     #97                 // Field net/minecraft/tags/BiomeTags.IS_RIVER:Lnet/minecraft/tags/TagKey;
+       4: invokeinterface #103,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       9: ifne          24
+      12: aload_0
+      13: getstatic     #109                // Field net/minecraft/tags/BiomeTags.IS_OCEAN:Lnet/minecraft/tags/TagKey;
+      16: invokeinterface #103,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      21: ifeq          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: ireturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$5(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: bipush        16
+       3: invokestatic  #112                // Method net/minecraft/core/Vec3i.offsetCodec:(I)Lcom/mojang/serialization/Codec;
+       6: ldc           #118                // String locate_offset
+       8: getstatic     #120                // Field net/minecraft/core/Vec3i.ZERO:Lnet/minecraft/core/Vec3i;
+      11: invokeinterface #124,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #130,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      21: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: getstatic     #140                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod.CODEC:Lcom/mojang/serialization/Codec;
+      27: ldc           #146                // String frequency_reduction_method
+      29: getstatic     #148                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod.DEFAULT:Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+      32: invokeinterface #124,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      37: invokedynamic #152,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      42: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      45: fconst_0
+      46: fconst_1
+      47: invokestatic  #153                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      50: ldc           #157                // String frequency
+      52: fconst_1
+      53: invokestatic  #159                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      56: invokeinterface #124,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      61: invokedynamic #163,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      66: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      69: getstatic     #164                // Field net/minecraft/util/ExtraCodecs.NON_NEGATIVE_INT:Lcom/mojang/serialization/Codec;
+      72: ldc           #169                // String salt
+      74: invokeinterface #171,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      79: invokedynamic #175,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      84: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      87: getstatic     #176                // Field net/minecraft/world/level/levelgen/structure/placement/StructurePlacement$ExclusionZone.CODEC:Lcom/mojang/serialization/Codec;
+      90: ldc           #179                // String exclusion_zone
+      92: invokeinterface #181,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      97: invokedynamic #183,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     102: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     105: getstatic     #164                // Field net/minecraft/util/ExtraCodecs.NON_NEGATIVE_INT:Lcom/mojang/serialization/Codec;
+     108: ldc           #184                // String spacing
+     110: invokeinterface #171,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     115: invokedynamic #186,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     120: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     123: getstatic     #164                // Field net/minecraft/util/ExtraCodecs.NON_NEGATIVE_INT:Lcom/mojang/serialization/Codec;
+     126: ldc           #187                // String separation
+     128: invokeinterface #171,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     133: invokedynamic #189,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     138: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     141: getstatic     #190                // Field net/minecraft/world/level/levelgen/structure/placement/RandomSpreadType.CODEC:Lcom/mojang/serialization/Codec;
+     144: ldc           #193                // String spread_type
+     146: getstatic     #195                // Field net/minecraft/world/level/levelgen/structure/placement/RandomSpreadType.LINEAR:Lnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;
+     149: invokeinterface #124,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     154: invokedynamic #199,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     159: invokevirtual #134                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     162: invokevirtual #200                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P8;
+     165: aload_0
+     166: aload_0
+     167: invokedynamic #206,  0            // InvokeDynamic #9:apply:()Lcom/mojang/datafixers/util/Function8;
+     172: invokevirtual #209                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     175: invokevirtual #213                // Method com/mojang/datafixers/Products$P8.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     178: areturn
+
+  private static java.util.Optional lambda$static$4(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #36                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/placement/BetterDesertTemplePlacement
+       4: invokevirtual #218                // Method exclusionZone:()Ljava/util/Optional;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$3(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #36                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/placement/BetterDesertTemplePlacement
+       4: invokevirtual #222                // Method salt:()I
+       7: invokestatic  #224                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      10: areturn
+
+  private static java.lang.Float lambda$static$2(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #36                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/placement/BetterDesertTemplePlacement
+       4: invokevirtual #227                // Method frequency:()F
+       7: invokestatic  #159                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      10: areturn
+
+  private static net.minecraft.world.level.levelgen.structure.placement.StructurePlacement$FrequencyReductionMethod lambda$static$1(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #36                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/placement/BetterDesertTemplePlacement
+       4: invokevirtual #229                // Method frequencyReductionMethod:()Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;
+       7: areturn
+
+  private static net.minecraft.core.Vec3i lambda$static$0(java.lang.Object);
+    Code:
+       0: aload_0
+       1: checkcast     #36                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/placement/BetterDesertTemplePlacement
+       4: invokevirtual #233                // Method locateOffset:()Lnet/minecraft/core/Vec3i;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #237,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       5: invokestatic  #238                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #244                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

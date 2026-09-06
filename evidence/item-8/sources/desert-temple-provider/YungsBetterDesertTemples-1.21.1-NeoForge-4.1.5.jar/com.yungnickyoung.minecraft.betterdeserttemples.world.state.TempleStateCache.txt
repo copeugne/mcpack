@@ -1,0 +1,120 @@
+Compiled from "TempleStateCache.java"
+public class com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateCache {
+  public java.util.concurrent.ConcurrentHashMap<java.lang.String, com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateRegion> templeStateRegionMap;
+
+  private final java.nio.file.Path savePath;
+
+  public com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateCache(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/concurrent/ConcurrentHashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+      12: putfield      #10                 // Field templeStateRegionMap:Ljava/util/concurrent/ConcurrentHashMap;
+      15: aload_0
+      16: aload_1
+      17: ldc           #16                 // String betterdeserttemples
+      19: invokeinterface #18,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      24: putfield      #24                 // Field savePath:Ljava/nio/file/Path;
+      27: aload_0
+      28: invokevirtual #28                 // Method createDirectoryIfDoesNotExist:()V
+      31: return
+
+  public boolean isTempleCleared(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #31                 // Method getRegionKey:(Lnet/minecraft/core/BlockPos;)Ljava/lang/String;
+       5: astore_2
+       6: aload_0
+       7: getfield      #10                 // Field templeStateRegionMap:Ljava/util/concurrent/ConcurrentHashMap;
+      10: aload_2
+      11: aload_0
+      12: invokedynamic #35,  0             // InvokeDynamic #0:apply:(Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;)Ljava/util/function/Function;
+      17: invokevirtual #39                 // Method java/util/concurrent/ConcurrentHashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      20: checkcast     #43                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion
+      23: astore_3
+      24: aload_3
+      25: aload_1
+      26: invokevirtual #45                 // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion.isTempleCleared:(Lnet/minecraft/core/BlockPos;)Z
+      29: ireturn
+
+  public void setTempleCleared(net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #31                 // Method getRegionKey:(Lnet/minecraft/core/BlockPos;)Ljava/lang/String;
+       5: astore_3
+       6: aload_0
+       7: getfield      #10                 // Field templeStateRegionMap:Ljava/util/concurrent/ConcurrentHashMap;
+      10: aload_3
+      11: aload_0
+      12: invokedynamic #49,  0             // InvokeDynamic #1:apply:(Lcom/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateCache;)Ljava/util/function/Function;
+      17: invokevirtual #39                 // Method java/util/concurrent/ConcurrentHashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      20: checkcast     #43                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion
+      23: astore        4
+      25: aload         4
+      27: aload_1
+      28: iload_2
+      29: invokevirtual #50                 // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion.setTempleCleared:(Lnet/minecraft/core/BlockPos;Z)V
+      32: return
+
+  private java.lang.String getRegionKey(net.minecraft.core.BlockPos);
+    Code:
+       0: new           #54                 // class net/minecraft/world/level/ChunkPos
+       3: dup
+       4: aload_1
+       5: invokespecial #56                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+       8: astore_2
+       9: aload_2
+      10: invokevirtual #59                 // Method net/minecraft/world/level/ChunkPos.getRegionX:()I
+      13: aload_2
+      14: invokevirtual #63                 // Method net/minecraft/world/level/ChunkPos.getRegionZ:()I
+      17: invokedynamic #66,  0             // InvokeDynamic #2:makeConcatWithConstants:(II)Ljava/lang/String;
+      22: areturn
+
+  private void createDirectoryIfDoesNotExist();
+    Code:
+       0: aload_0
+       1: getfield      #24                 // Field savePath:Ljava/nio/file/Path;
+       4: iconst_0
+       5: anewarray     #70                 // class java/nio/file/attribute/FileAttribute
+       8: invokestatic  #72                 // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+      11: pop
+      12: goto          39
+      15: astore_1
+      16: getstatic     #80                 // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      19: ldc           #86                 // String Unable to create temples save path {}
+      21: aload_0
+      22: getfield      #24                 // Field savePath:Ljava/nio/file/Path;
+      25: invokeinterface #88,  3           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      30: getstatic     #80                 // Field com/yungnickyoung/minecraft/betterdeserttemples/BetterDesertTemplesCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      33: aload_1
+      34: invokeinterface #94,  2           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/Object;)V
+      39: return
+    Exception table:
+       from    to  target type
+           0    12    15   Class java/io/IOException
+
+  private com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateRegion lambda$setTempleCleared$1(java.lang.String);
+    Code:
+       0: new           #43                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion
+       3: dup
+       4: aload_0
+       5: getfield      #24                 // Field savePath:Ljava/nio/file/Path;
+       8: aload_1
+       9: invokespecial #97                 // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion."<init>":(Ljava/nio/file/Path;Ljava/lang/String;)V
+      12: areturn
+
+  private com.yungnickyoung.minecraft.betterdeserttemples.world.state.TempleStateRegion lambda$isTempleCleared$0(java.lang.String);
+    Code:
+       0: new           #43                 // class com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion
+       3: dup
+       4: aload_0
+       5: getfield      #24                 // Field savePath:Ljava/nio/file/Path;
+       8: aload_1
+       9: invokespecial #97                 // Method com/yungnickyoung/minecraft/betterdeserttemples/world/state/TempleStateRegion."<init>":(Ljava/nio/file/Path;Ljava/lang/String;)V
+      12: areturn
+}
