@@ -1,0 +1,126 @@
+Classfile YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar!/com/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin.class
+  Last modified Oct 14, 2024; size 1359 bytes
+  SHA-256 checksum 63f1f471598849c8c7ef032fc90b224fac8eea1f39e44fc5756653fd4674e2ba
+  Compiled from "SuppressLogMixin.java"
+public class com.yungnickyoung.minecraft.bettermineshafts.mixin.SuppressLogMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #26                         // com/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = String             #8             // Detected setBlock in a far chunk
+   #8 = Utf8               Detected setBlock in a far chunk
+   #9 = Methodref          #10.#11        // java/lang/String.startsWith:(Ljava/lang/String;)Z
+  #10 = Class              #12            // java/lang/String
+  #11 = NameAndType        #13:#14        // startsWith:(Ljava/lang/String;)Z
+  #12 = Utf8               java/lang/String
+  #13 = Utf8               startsWith
+  #14 = Utf8               (Ljava/lang/String;)Z
+  #15 = String             #16            // bettermineshafts:mineshaft
+  #16 = Utf8               bettermineshafts:mineshaft
+  #17 = Methodref          #10.#18        // java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+  #18 = NameAndType        #19:#20        // contains:(Ljava/lang/CharSequence;)Z
+  #19 = Utf8               contains
+  #20 = Utf8               (Ljava/lang/CharSequence;)Z
+  #21 = Methodref          #22.#23        // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #22 = Class              #24            // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #23 = NameAndType        #25:#6         // cancel:()V
+  #24 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #25 = Utf8               cancel
+  #26 = Class              #27            // com/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin
+  #27 = Utf8               com/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin
+  #28 = Utf8               Code
+  #29 = Utf8               LineNumberTable
+  #30 = Utf8               LocalVariableTable
+  #31 = Utf8               this
+  #32 = Utf8               Lcom/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin;
+  #33 = Utf8               logAndPauseIfInIde
+  #34 = Utf8               (Ljava/lang/String;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #35 = Utf8               string
+  #36 = Utf8               Ljava/lang/String;
+  #37 = Utf8               ci
+  #38 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #39 = Utf8               StackMapTable
+  #40 = Utf8               RuntimeVisibleAnnotations
+  #41 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #42 = Utf8               method
+  #43 = Utf8               logAndPauseIfInIde(Ljava/lang/String;)V
+  #44 = Utf8               at
+  #45 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #46 = Utf8               value
+  #47 = Utf8               HEAD
+  #48 = Utf8               cancellable
+  #49 = Integer            1
+  #50 = Utf8               require
+  #51 = Integer            0
+  #52 = Utf8               SourceFile
+  #53 = Utf8               SuppressLogMixin.java
+  #54 = Utf8               RuntimeInvisibleAnnotations
+  #55 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #56 = Utf8               Lnet/minecraft/Util;
+{
+  public com.yungnickyoung.minecraft.bettermineshafts.mixin.SuppressLogMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 10: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/yungnickyoung/minecraft/bettermineshafts/mixin/SuppressLogMixin;
+
+  private static void logAndPauseIfInIde(java.lang.String, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Ljava/lang/String;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: ldc           #7                  // String Detected setBlock in a far chunk
+         3: invokevirtual #9                  // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+         6: ifeq          22
+         9: aload_0
+        10: ldc           #15                 // String bettermineshafts:mineshaft
+        12: invokevirtual #17                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+        15: ifeq          22
+        18: aload_1
+        19: invokevirtual #21                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        22: return
+      LineNumberTable:
+        line 13: 0
+        line 14: 18
+        line 16: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0 string   Ljava/lang/String;
+            0      23     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+      StackMapTable: number_of_entries = 1
+        frame_type = 22 /* same */
+    RuntimeVisibleAnnotations:
+      0: #41(#42=[s#43],#44=[@#45(#46=s#47)],#48=Z#49,#50=I#51)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["logAndPauseIfInIde(Ljava/lang/String;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+          require=0
+        )
+}
+SourceFile: "SuppressLogMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #55(#46=[c#56])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/Util;]
+    )
