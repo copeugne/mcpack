@@ -3477,3 +3477,30 @@ Scoped Ruff and Basedpyright pass. No new capture or measurement was needed.
 Remaining Deep Aether work: jigsaw consumer/eligibility reconciliation, custom
 feature and common-entry roles, optional packs and AeroBlender's contribution.
 Do not reopen the Brass room-name or inactive-totem checks during that census.
+
+### Deep Aether jigsaw component and eligibility reconciliation
+
+DAJigsawStructure applies HeightSpawningChecks and then calls vanilla
+JigsawPlacement.addPieces with the supplied start pool, height, size, alias and
+placement settings. The height check compares the chunk-origin surface height
+strictly between the supplied minimum and maximum. It does not select an
+independent template outside the supplied pool route.
+
+Each of altar_camp, campfire and combiner_corridor uses its same-named pool.
+Each pool contains exactly one rigid minecraft:single_pool_element referring
+to deep_aether:sacred_lands/<name>, with empty processors and empty fallback.
+These account for the three packaged Sacred Lands templates as components of
+the existing roots. The focused candidate test now binds these exact pool
+documents; the source-binding case already covers both captured consumers.
+
+All three roots require deep_aether:sacred_lands. The previously accepted
+dimension-membership evidence in test_totem_scope.py excludes that biome from
+every captured dimension. Disposition: registered but ineligible through these
+packaged root/biome routes in the captured baseline, not three active families.
+Preserve the candidates and reopen only if another active route is demonstrated.
+This does not prove universal unreachability under changed packs or dimensions.
+
+Four focused cases and scoped Ruff/Basedpyright pass using the commands above.
+Brass and jigsaw component reconciliation are now resolved. Remaining provider
+work is custom feature/common-entry roles, optional packs and AeroBlender,
+followed by the whole-provider check. Census remains 76 resolved and 60 open.
