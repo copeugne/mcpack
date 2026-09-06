@@ -200,6 +200,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "mod/azure/azurelibarmor/common/network/packet/AzItemStackDispatchCommandPacket.class",
+    "mod/azure/azurelibarmor/common/render/armor/compat/ShoulderSurfingCompat.class",
     "mod/azure/azurelibarmor/AzureLib.class",
     "mod/azure/azurelibarmor/AzureLibMod.class",
     "mod/azure/azurelibarmor/neoforge/NeoForgeAzureLibMod.class",
