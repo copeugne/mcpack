@@ -9370,3 +9370,12 @@ uv run pytest tests/item8/test_towns_towers_provider_scope.py tests/item8/test_f
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 420fe50f and independently reproduced exactly.
+Only the village grouping decision and the decision input identity changed.
+SHA-256: 79129d05f74bb755e2ce3b847df40b51c03aac486ebd2429383e5359362410dc.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-towns-designs-r2.json
+```
