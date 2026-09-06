@@ -1,0 +1,73 @@
+Compiled from "CavePumpkinFeature.java"
+public class org.betterx.betterend.world.features.CavePumpkinFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  public org.betterx.betterend.world.features.CavePumpkinFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload         4
+      18: aload_3
+      19: invokevirtual #21                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      22: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      27: getstatic     #32                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+      30: invokevirtual #38                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      33: ifeq          61
+      36: aload         4
+      38: aload_3
+      39: invokeinterface #44,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      44: ifeq          61
+      47: aload         4
+      49: aload_3
+      50: invokevirtual #48                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      53: invokeinterface #44,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      58: ifne          63
+      61: iconst_0
+      62: ireturn
+      63: aload_2
+      64: iconst_4
+      65: invokeinterface #51,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      70: istore        5
+      72: aload         4
+      74: aload_3
+      75: getstatic     #57                 // Field org/betterx/betterend/registry/EndBlocks.CAVE_PUMPKIN_SEED:Lnet/minecraft/world/level/block/Block;
+      78: invokevirtual #63                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      81: getstatic     #69                 // Field org/betterx/betterend/blocks/EndBlockProperties.AGE:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+      84: iload         5
+      86: invokestatic  #75                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      89: invokevirtual #81                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      92: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+      95: invokestatic  #85                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      98: iload         5
+     100: iconst_1
+     101: if_icmple     142
+     104: aload         4
+     106: aload_3
+     107: invokevirtual #48                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     110: getstatic     #91                 // Field org/betterx/betterend/registry/EndBlocks.CAVE_PUMPKIN:Lnet/minecraft/world/level/block/Block;
+     113: invokevirtual #63                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     116: getstatic     #94                 // Field org/betterx/betterend/blocks/EndBlockProperties.SMALL:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+     119: iload         5
+     121: iconst_3
+     122: if_icmpge     129
+     125: iconst_1
+     126: goto          130
+     129: iconst_0
+     130: invokestatic  #98                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     133: invokevirtual #81                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     136: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     139: invokestatic  #85                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     142: iconst_1
+     143: ireturn
+}

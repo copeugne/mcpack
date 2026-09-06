@@ -1,0 +1,99 @@
+Compiled from "UnderwaterPlantScatter.java"
+public abstract class org.betterx.betterend.world.features.UnderwaterPlantScatter<FC extends org.betterx.betterend.world.features.ScatterFeatureConfig> extends org.betterx.betterend.world.features.ScatterFeature<FC> {
+  public org.betterx.betterend.world.features.UnderwaterPlantScatter(com.mojang.serialization.Codec<FC>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method org/betterx/betterend/world/features/ScatterFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  protected net.minecraft.core.BlockPos getCenterGround(FC, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: invokestatic  #7                  // Method org/betterx/betterend/util/GlobalState.stateForThread:()Lorg/betterx/betterend/util/GlobalState;
+       3: getfield      #13                 // Field org/betterx/betterend/util/GlobalState.POS:Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       6: astore        4
+       8: aload         4
+      10: aload_3
+      11: invokevirtual #17                 // Method net/minecraft/core/BlockPos.getX:()I
+      14: invokevirtual #23                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setX:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      17: pop
+      18: aload         4
+      20: aload_3
+      21: invokevirtual #29                 // Method net/minecraft/core/BlockPos.getZ:()I
+      24: invokevirtual #32                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setZ:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      27: pop
+      28: aload         4
+      30: iconst_0
+      31: invokevirtual #35                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      34: pop
+      35: aload_0
+      36: aload_2
+      37: aload         4
+      39: invokevirtual #38                 // Method getGround:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Lnet/minecraft/core/BlockPos;
+      42: invokevirtual #44                 // Method net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      45: areturn
+
+  public boolean canGenerate(FC, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_2
+       1: aload         5
+       3: invokeinterface #48,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: getstatic     #54                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #60                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ireturn
+
+  protected boolean canSpawn(FC, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: aload_3
+       2: invokeinterface #48,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       7: getstatic     #54                 // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      10: invokevirtual #60                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      13: ireturn
+
+  protected boolean getGroundPlant(FC, net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos$MutableBlockPos);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: aload_3
+       3: invokevirtual #38                 // Method getGround:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos$MutableBlockPos;)Lnet/minecraft/core/BlockPos;
+       6: invokevirtual #66                 // Method net/minecraft/core/BlockPos.getY:()I
+       9: sipush        128
+      12: if_icmpge     19
+      15: iconst_1
+      16: goto          20
+      19: iconst_0
+      20: ireturn
+
+  protected int getYOffset();
+    Code:
+       0: bipush        -5
+       2: ireturn
+
+  protected int getChance();
+    Code:
+       0: iconst_5
+       1: ireturn
+
+  private net.minecraft.core.BlockPos getGround(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos$MutableBlockPos);
+    Code:
+       0: aload_2
+       1: invokevirtual #69                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+       4: sipush        128
+       7: if_icmpge     37
+      10: aload_1
+      11: aload_2
+      12: invokeinterface #70,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+      17: invokevirtual #74                 // Method net/minecraft/world/level/material/FluidState.isEmpty:()Z
+      20: ifeq          37
+      23: aload_2
+      24: aload_2
+      25: invokevirtual #69                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      28: iconst_1
+      29: iadd
+      30: invokevirtual #35                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      33: pop
+      34: goto          0
+      37: aload_2
+      38: areturn
+}

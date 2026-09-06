@@ -1,0 +1,101 @@
+Compiled from "UnderwaterPlantFeature.java"
+public class org.betterx.betterend.world.features.UnderwaterPlantFeature extends org.betterx.betterend.world.features.UnderwaterPlantScatter<org.betterx.betterend.world.features.SinglePlantFeatureConfig> {
+  private net.minecraft.world.level.block.state.BlockState plant;
+
+  public org.betterx.betterend.world.features.UnderwaterPlantFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/SinglePlantFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/UnderwaterPlantScatter."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.SinglePlantFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_3
+       3: aload         5
+       5: invokevirtual #13                 // Method org/betterx/betterend/world/features/SinglePlantFeatureConfig.getPlantState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: putfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      11: aload_0
+      12: aload_1
+      13: aload_2
+      14: aload         5
+      16: invokespecial #23                 // Method org/betterx/betterend/world/features/UnderwaterPlantScatter.canSpawn:(Lorg/betterx/betterend/world/features/ScatterFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;)Z
+      19: ifeq          39
+      22: aload_0
+      23: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      26: aload_2
+      27: aload         5
+      29: invokevirtual #27                 // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      32: ifeq          39
+      35: iconst_1
+      36: goto          40
+      39: iconst_0
+      40: ireturn
+
+  public void generate(org.betterx.betterend.world.features.SinglePlantFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: invokevirtual #33                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       7: instanceof    #37                 // class org/betterx/bclib/blocks/BaseDoublePlantBlock
+      10: ifeq          77
+      13: aload_3
+      14: iconst_4
+      15: invokeinterface #39,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      20: istore        5
+      22: aload_0
+      23: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      26: getstatic     #45                 // Field org/betterx/bclib/blocks/BaseDoublePlantBlock.ROTATION:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+      29: iload         5
+      31: invokestatic  #49                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      34: invokevirtual #55                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      37: checkcast     #28                 // class net/minecraft/world/level/block/state/BlockState
+      40: astore        6
+      42: aload_2
+      43: aload         4
+      45: aload         6
+      47: invokestatic  #59                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      50: aload_2
+      51: aload         4
+      53: invokevirtual #65                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      56: aload         6
+      58: getstatic     #71                 // Field org/betterx/bclib/blocks/BaseDoublePlantBlock.TOP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      61: iconst_1
+      62: invokestatic  #75                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      65: invokevirtual #55                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      68: checkcast     #28                 // class net/minecraft/world/level/block/state/BlockState
+      71: invokestatic  #59                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      74: goto          87
+      77: aload_2
+      78: aload         4
+      80: aload_0
+      81: getfield      #17                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      84: invokestatic  #59                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      87: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/SinglePlantFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: aload         5
+      11: fload         6
+      13: invokevirtual #80                 // Method canGenerate:(Lorg/betterx/betterend/world/features/SinglePlantFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;F)Z
+      16: ireturn
+
+  public void generate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/SinglePlantFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: invokevirtual #84                 // Method generate:(Lorg/betterx/betterend/world/features/SinglePlantFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      12: return
+}

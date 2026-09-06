@@ -1,0 +1,100 @@
+Compiled from "LargeAmaranitaFeature.java"
+public class org.betterx.betterend.world.features.bushes.LargeAmaranitaFeature extends org.betterx.bclib.api.v2.levelgen.features.features.DefaultFeature {
+  public org.betterx.betterend.world.features.bushes.LargeAmaranitaFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method org/betterx/bclib/api/v2/levelgen/features/features/DefaultFeature."<init>":()V
+       4: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: astore        4
+      16: aload         4
+      18: aload_3
+      19: invokevirtual #21                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      22: invokeinterface #26,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      27: getstatic     #32                 // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+      30: invokevirtual #38                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      33: ifne          38
+      36: iconst_0
+      37: ireturn
+      38: new           #44                 // class net/minecraft/core/BlockPos$MutableBlockPos
+      41: dup
+      42: invokespecial #46                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+      45: aload_3
+      46: invokevirtual #47                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      49: astore        5
+      51: iconst_2
+      52: iconst_3
+      53: aload_2
+      54: invokestatic  #51                 // Method org/betterx/bclib/util/MHelper.randRange:(IILnet/minecraft/util/RandomSource;)I
+      57: istore        6
+      59: iconst_1
+      60: istore        7
+      62: iload         7
+      64: iload         6
+      66: if_icmpge     102
+      69: aload         5
+      71: aload         5
+      73: invokevirtual #57                 // Method net/minecraft/core/BlockPos$MutableBlockPos.getY:()I
+      76: iconst_1
+      77: iadd
+      78: invokevirtual #61                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      81: pop
+      82: aload         4
+      84: aload         5
+      86: invokeinterface #65,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+      91: ifne          96
+      94: iconst_0
+      95: ireturn
+      96: iinc          7, 1
+      99: goto          62
+     102: aload         5
+     104: aload_3
+     105: invokevirtual #47                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     108: pop
+     109: getstatic     #69                 // Field org/betterx/betterend/registry/EndBlocks.LARGE_AMARANITA_MUSHROOM:Lnet/minecraft/world/level/block/Block;
+     112: invokevirtual #75                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     115: astore        7
+     117: aload         4
+     119: aload         5
+     121: aload         7
+     123: getstatic     #81                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     126: getstatic     #87                 // Field org/betterx/wover/block/api/BlockProperties$TripleShape.BOTTOM:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+     129: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     132: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     135: invokestatic  #97                 // Method org/betterx/bclib/util/BlocksHelper.setWithUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     138: iload         6
+     140: iconst_2
+     141: if_icmple     171
+     144: aload         4
+     146: aload         5
+     148: getstatic     #103                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     151: invokevirtual #109                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     154: aload         7
+     156: getstatic     #81                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     159: getstatic     #113                // Field org/betterx/wover/block/api/BlockProperties$TripleShape.MIDDLE:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+     162: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     165: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     168: invokestatic  #97                 // Method org/betterx/bclib/util/BlocksHelper.setWithUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     171: aload         4
+     173: aload         5
+     175: getstatic     #103                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     178: invokevirtual #109                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     181: aload         7
+     183: getstatic     #81                 // Field org/betterx/wover/block/api/BlockProperties.TRIPLE_SHAPE:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     186: getstatic     #116                // Field org/betterx/wover/block/api/BlockProperties$TripleShape.TOP:Lorg/betterx/wover/block/api/BlockProperties$TripleShape;
+     189: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     192: checkcast     #39                 // class net/minecraft/world/level/block/state/BlockState
+     195: invokestatic  #97                 // Method org/betterx/bclib/util/BlocksHelper.setWithUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     198: iconst_1
+     199: ireturn
+}
