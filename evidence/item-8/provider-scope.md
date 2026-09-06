@@ -8948,3 +8948,11 @@ uv run pytest tests/item8/test_family_decisions.py -q -k 'mns or moog_modular_va
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from a9637207 and independently reproduced exactly.
+SHA-256: f119b21e5b24961e14a1614af19f27c9c7dd8f4d1b352dcf5a496c10be15fbc3.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nether-landmarks-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-nether-landmarks-r2.json
+```
