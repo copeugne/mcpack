@@ -1,0 +1,530 @@
+Classfile ranged_weapon_api-neoforge-2.3.3+1.21.1.jar!/net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.class
+  Last modified Jan 1, 1980; size 5172 bytes
+  SHA-256 checksum 4965328644126a5148b5e9fa81ffb4a15e6c22fd0d3781ae0651c5be0f5c28e0
+  Compiled from "LivingEntityMixin.java"
+public abstract class net.fabric_extras.ranged_weapon.mixin.attribute.LivingEntityMixin extends net.minecraft.world.entity.Entity implements net.fabric_extras.ranged_weapon.internal.RangedHasteEntity
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin
+  super_class: #4                         // net/minecraft/world/entity/Entity
+  interfaces: 1, fields: 3, methods: 7, attributes: 3
+Constant pool:
+    #1 = Utf8               net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin
+    #2 = Class              #1            // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin
+    #3 = Utf8               net/minecraft/world/entity/Entity
+    #4 = Class              #3            // net/minecraft/world/entity/Entity
+    #5 = Utf8               net/fabric_extras/ranged_weapon/internal/RangedHasteEntity
+    #6 = Class              #5            // net/fabric_extras/ranged_weapon/internal/RangedHasteEntity
+    #7 = Utf8               LivingEntityMixin.java
+    #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #9 = Utf8               value
+   #10 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+   #11 = Utf8               net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry
+   #12 = Class              #11           // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry
+   #13 = Utf8               net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon
+   #14 = Class              #13           // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon
+   #15 = Utf8               Entry
+   #16 = Utf8               net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder
+   #17 = Class              #16           // net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder
+   #18 = Utf8               net/minecraft/world/entity/ai/attributes/AttributeSupplier
+   #19 = Class              #18           // net/minecraft/world/entity/ai/attributes/AttributeSupplier
+   #20 = Utf8               Builder
+   #21 = Utf8               useItemRemaining
+   #22 = Utf8               I
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #24 = Utf8               useItem
+   #25 = Utf8               Lnet/minecraft/world/item/ItemStack;
+   #26 = Utf8               partialHasteTick
+   #27 = Utf8               F
+   #28 = Utf8               <init>
+   #29 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #30 = Utf8               (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+   #31 = Utf8               type
+   #32 = Utf8               world
+   #33 = NameAndType        #28:#29       // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #34 = Methodref          #4.#33        // net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+   #35 = NameAndType        #26:#27       // partialHasteTick:F
+   #36 = Fieldref           #2.#35        // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.partialHasteTick:F
+   #37 = Utf8               this
+   #38 = Utf8               Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+   #39 = Utf8               Lnet/minecraft/world/entity/EntityType<*>;
+   #40 = Utf8               Lnet/minecraft/world/entity/EntityType;
+   #41 = Utf8               Lnet/minecraft/world/level/Level;
+   #42 = Utf8               addAttributes
+   #43 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #44 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;>;)V
+   #45 = Utf8               info
+   #46 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #47 = Utf8               method
+   #48 = Utf8               createLivingAttributes()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+   #49 = Utf8               require
+   #50 = Integer            1
+   #51 = Utf8               allow
+   #52 = Utf8               at
+   #53 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #54 = Utf8               RETURN
+   #55 = Utf8               all
+   #56 = Utf8               Ljava/util/ArrayList;
+   #57 = NameAndType        #55:#56       // all:Ljava/util/ArrayList;
+   #58 = Fieldref           #14.#57       // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.all:Ljava/util/ArrayList;
+   #59 = Utf8               java/util/ArrayList
+   #60 = Class              #59           // java/util/ArrayList
+   #61 = Utf8               iterator
+   #62 = Utf8               ()Ljava/util/Iterator;
+   #63 = NameAndType        #61:#62       // iterator:()Ljava/util/Iterator;
+   #64 = Methodref          #60.#63       // java/util/ArrayList.iterator:()Ljava/util/Iterator;
+   #65 = Utf8               java/util/Iterator
+   #66 = Class              #65           // java/util/Iterator
+   #67 = Utf8               hasNext
+   #68 = Utf8               ()Z
+   #69 = NameAndType        #67:#68       // hasNext:()Z
+   #70 = InterfaceMethodref #66.#69       // java/util/Iterator.hasNext:()Z
+   #71 = Utf8               next
+   #72 = Utf8               ()Ljava/lang/Object;
+   #73 = NameAndType        #71:#72       // next:()Ljava/lang/Object;
+   #74 = InterfaceMethodref #66.#73       // java/util/Iterator.next:()Ljava/lang/Object;
+   #75 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #76 = Class              #75           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #77 = Utf8               getReturnValue
+   #78 = NameAndType        #77:#72       // getReturnValue:()Ljava/lang/Object;
+   #79 = Methodref          #76.#78       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+   #80 = Utf8               entry
+   #81 = Utf8               Lnet/minecraft/core/Holder;
+   #82 = NameAndType        #80:#81       // entry:Lnet/minecraft/core/Holder;
+   #83 = Fieldref           #12.#82       // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+   #84 = Utf8               add
+   #85 = Utf8               (Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+   #86 = NameAndType        #84:#85       // add:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+   #87 = Methodref          #17.#86       // net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+   #88 = Utf8               Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+   #89 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;>;
+   #90 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+   #91 = Utf8               getItemUseTimeLeft
+   #92 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;)V
+   #93 = Utf8               getUseItemRemainingTicks()I
+   #94 = Utf8               HEAD
+   #95 = Utf8               cancellable
+   #96 = Utf8               net/fabric_extras/ranged_weapon/Platform
+   #97 = Class              #96           // net/fabric_extras/ranged_weapon/Platform
+   #98 = Utf8               NeoForge
+   #99 = Utf8               Z
+  #100 = NameAndType        #98:#99       // NeoForge:Z
+  #101 = Fieldref           #97.#100      // net/fabric_extras/ranged_weapon/Platform.NeoForge:Z
+  #102 = NameAndType        #24:#25       // useItem:Lnet/minecraft/world/item/ItemStack;
+  #103 = Fieldref           #2.#102       // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.useItem:Lnet/minecraft/world/item/ItemStack;
+  #104 = Utf8               net/minecraft/world/item/ItemStack
+  #105 = Class              #104          // net/minecraft/world/item/ItemStack
+  #106 = Utf8               getUseAnimation
+  #107 = Utf8               ()Lnet/minecraft/world/item/UseAnim;
+  #108 = NameAndType        #106:#107     // getUseAnimation:()Lnet/minecraft/world/item/UseAnim;
+  #109 = Methodref          #105.#108     // net/minecraft/world/item/ItemStack.getUseAnimation:()Lnet/minecraft/world/item/UseAnim;
+  #110 = Utf8               net/minecraft/world/item/UseAnim
+  #111 = Class              #110          // net/minecraft/world/item/UseAnim
+  #112 = Utf8               BOW
+  #113 = Utf8               Lnet/minecraft/world/item/UseAnim;
+  #114 = NameAndType        #112:#113     // BOW:Lnet/minecraft/world/item/UseAnim;
+  #115 = Fieldref           #111.#114     // net/minecraft/world/item/UseAnim.BOW:Lnet/minecraft/world/item/UseAnim;
+  #116 = Utf8               CROSSBOW
+  #117 = NameAndType        #116:#113     // CROSSBOW:Lnet/minecraft/world/item/UseAnim;
+  #118 = Fieldref           #111.#117     // net/minecraft/world/item/UseAnim.CROSSBOW:Lnet/minecraft/world/item/UseAnim;
+  #119 = NameAndType        #21:#22       // useItemRemaining:I
+  #120 = Fieldref           #2.#119       // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.useItemRemaining:I
+  #121 = Utf8               java/lang/Integer
+  #122 = Class              #121          // java/lang/Integer
+  #123 = Utf8               valueOf
+  #124 = Utf8               (I)Ljava/lang/Integer;
+  #125 = NameAndType        #123:#124     // valueOf:(I)Ljava/lang/Integer;
+  #126 = Methodref          #122.#125     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #127 = Utf8               setReturnValue
+  #128 = Utf8               (Ljava/lang/Object;)V
+  #129 = NameAndType        #127:#128     // setReturnValue:(Ljava/lang/Object;)V
+  #130 = Methodref          #76.#129      // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #131 = Utf8               net/minecraft/world/entity/LivingEntity
+  #132 = Class              #131          // net/minecraft/world/entity/LivingEntity
+  #133 = Utf8               isUsingItem
+  #134 = NameAndType        #133:#68      // isUsingItem:()Z
+  #135 = Methodref          #132.#134     // net/minecraft/world/entity/LivingEntity.isUsingItem:()Z
+  #136 = Utf8               getUseDuration
+  #137 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;)I
+  #138 = NameAndType        #136:#137     // getUseDuration:(Lnet/minecraft/world/entity/LivingEntity;)I
+  #139 = Methodref          #105.#138     // net/minecraft/world/item/ItemStack.getUseDuration:(Lnet/minecraft/world/entity/LivingEntity;)I
+  #140 = Utf8               HASTE
+  #141 = NameAndType        #140:#88      // HASTE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+  #142 = Fieldref           #14.#141      // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+  #143 = Utf8               getAttributeValue
+  #144 = Utf8               (Lnet/minecraft/core/Holder;)D
+  #145 = NameAndType        #143:#144     // getAttributeValue:(Lnet/minecraft/core/Holder;)D
+  #146 = Methodref          #132.#145     // net/minecraft/world/entity/LivingEntity.getAttributeValue:(Lnet/minecraft/core/Holder;)D
+  #147 = Utf8               asMultiplier
+  #148 = Utf8               (D)D
+  #149 = NameAndType        #147:#148     // asMultiplier:(D)D
+  #150 = Methodref          #12.#149      // net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.asMultiplier:(D)D
+  #151 = Utf8               cancel
+  #152 = Utf8               ()V
+  #153 = NameAndType        #151:#152     // cancel:()V
+  #154 = Methodref          #76.#153      // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.cancel:()V
+  #155 = Utf8               useAction
+  #156 = Utf8               progress
+  #157 = Utf8               haste
+  #158 = Utf8               D
+  #159 = Utf8               newProgress
+  #160 = Utf8               entity
+  #161 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;
+  #162 = Utf8               clearActiveItem_RWA
+  #163 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #164 = Utf8               ci
+  #165 = Utf8               stopUsingItem()V
+  #166 = Utf8               TAIL
+  #167 = Utf8               resetPartialHasteTicks
+  #168 = NameAndType        #167:#152     // resetPartialHasteTicks:()V
+  #169 = Methodref          #2.#168       // net/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin.resetPartialHasteTicks:()V
+  #170 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #171 = Utf8               addPartialHasteTick
+  #172 = Utf8               (F)V
+  #173 = Utf8               tick
+  #174 = Utf8               getPartialHasteTick
+  #175 = Utf8               ()F
+  #176 = Utf8               RuntimeVisibleAnnotations
+  #177 = Utf8               Code
+  #178 = Utf8               LineNumberTable
+  #179 = Utf8               LocalVariableTable
+  #180 = Utf8               LocalVariableTypeTable
+  #181 = Utf8               Signature
+  #182 = Utf8               MethodParameters
+  #183 = Utf8               StackMapTable
+  #184 = Utf8               InnerClasses
+  #185 = Utf8               SourceFile
+  #186 = Utf8               RuntimeInvisibleAnnotations
+{
+  protected int useItemRemaining;
+    descriptor: I
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+
+  protected net.minecraft.world.item.ItemStack useItem;
+    descriptor: Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+
+  private float partialHasteTick;
+    descriptor: F
+    flags: (0x0002) ACC_PRIVATE
+
+  net.fabric_extras.ranged_weapon.mixin.attribute.LivingEntityMixin(net.minecraft.world.entity.EntityType<?>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #34                 // Method net/minecraft/world/entity/Entity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: aload_0
+         7: fconst_0
+         8: putfield      #36                 // Field partialHasteTick:F
+        11: return
+      LineNumberTable:
+        line 23: 0
+        line 68: 6
+        line 24: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+            0      12     1  type   Lnet/minecraft/world/entity/EntityType;
+            0      12     2 world   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      12     1  type   Lnet/minecraft/world/entity/EntityType<*>;
+    Signature: #30                          // (Lnet/minecraft/world/entity/EntityType<*>;Lnet/minecraft/world/level/Level;)V
+    MethodParameters:
+      Name                           Flags
+      type
+      world
+
+  private static void addAttributes(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.entity.ai.attributes.AttributeSupplier$Builder>);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: getstatic     #58                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.all:Ljava/util/ArrayList;
+         3: invokevirtual #64                 // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+         6: astore_1
+         7: aload_1
+         8: invokeinterface #70,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        13: ifeq          44
+        16: aload_1
+        17: invokeinterface #74,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        22: checkcast     #12                 // class net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry
+        25: astore_2
+        26: aload_0
+        27: invokevirtual #79                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+        30: checkcast     #17                 // class net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder
+        33: aload_2
+        34: getfield      #83                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+        37: invokevirtual #87                 // Method net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder.add:(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;
+        40: pop
+        41: goto          7
+        44: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ class java/util/Iterator ]
+        frame_type = 36 /* same */
+      LineNumberTable:
+        line 31: 0
+        line 32: 26
+        line 33: 41
+        line 34: 44
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           26      15     2 entry   Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+            0      45     0  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      45     0  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;>;
+    Signature: #44                          // (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;>;)V
+    RuntimeVisibleAnnotations:
+      0: #46(#47=[s#48],#49=I#50,#51=I#50,#52=[@#53(#9=s#54)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["createLivingAttributes()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;"]
+          require=1
+          allow=1
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      info
+
+  private void getItemUseTimeLeft(org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<java.lang.Integer>);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=9, args_size=2
+         0: getstatic     #101                // Field net/fabric_extras/ranged_weapon/Platform.NeoForge:Z
+         3: ifeq          48
+         6: aload_0
+         7: getfield      #103                // Field useItem:Lnet/minecraft/world/item/ItemStack;
+        10: invokevirtual #109                // Method net/minecraft/world/item/ItemStack.getUseAnimation:()Lnet/minecraft/world/item/UseAnim;
+        13: astore_2
+        14: aload_2
+        15: getstatic     #115                // Field net/minecraft/world/item/UseAnim.BOW:Lnet/minecraft/world/item/UseAnim;
+        18: if_acmpeq     28
+        21: aload_2
+        22: getstatic     #118                // Field net/minecraft/world/item/UseAnim.CROSSBOW:Lnet/minecraft/world/item/UseAnim;
+        25: if_acmpne     45
+        28: aload_1
+        29: aload_0
+        30: getfield      #120                // Field useItemRemaining:I
+        33: aload_0
+        34: getfield      #36                 // Field partialHasteTick:F
+        37: f2i
+        38: isub
+        39: invokestatic  #126                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        42: invokevirtual #130                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+        45: goto          153
+        48: aload_0
+        49: getfield      #120                // Field useItemRemaining:I
+        52: istore_2
+        53: aload_0
+        54: checkcast     #132                // class net/minecraft/world/entity/LivingEntity
+        57: astore_3
+        58: aload_3
+        59: invokevirtual #135                // Method net/minecraft/world/entity/LivingEntity.isUsingItem:()Z
+        62: ifeq          153
+        65: aload_0
+        66: getfield      #103                // Field useItem:Lnet/minecraft/world/item/ItemStack;
+        69: invokevirtual #109                // Method net/minecraft/world/item/ItemStack.getUseAnimation:()Lnet/minecraft/world/item/UseAnim;
+        72: astore        4
+        74: aload         4
+        76: getstatic     #115                // Field net/minecraft/world/item/UseAnim.BOW:Lnet/minecraft/world/item/UseAnim;
+        79: if_acmpeq     90
+        82: aload         4
+        84: getstatic     #118                // Field net/minecraft/world/item/UseAnim.CROSSBOW:Lnet/minecraft/world/item/UseAnim;
+        87: if_acmpne     153
+        90: aload_0
+        91: getfield      #103                // Field useItem:Lnet/minecraft/world/item/ItemStack;
+        94: aload_3
+        95: invokevirtual #139                // Method net/minecraft/world/item/ItemStack.getUseDuration:(Lnet/minecraft/world/entity/LivingEntity;)I
+        98: iload_2
+        99: isub
+       100: istore        5
+       102: aload_3
+       103: getstatic     #142                // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+       106: getfield      #83                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+       109: invokevirtual #146                // Method net/minecraft/world/entity/LivingEntity.getAttributeValue:(Lnet/minecraft/core/Holder;)D
+       112: dstore        6
+       114: iload         5
+       116: i2d
+       117: getstatic     #142                // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+       120: dload         6
+       122: d2f
+       123: f2d
+       124: invokevirtual #150                // Method net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.asMultiplier:(D)D
+       127: dmul
+       128: d2i
+       129: istore        8
+       131: aload_1
+       132: aload_0
+       133: getfield      #103                // Field useItem:Lnet/minecraft/world/item/ItemStack;
+       136: aload_3
+       137: invokevirtual #139                // Method net/minecraft/world/item/ItemStack.getUseDuration:(Lnet/minecraft/world/entity/LivingEntity;)I
+       140: iload         8
+       142: isub
+       143: invokestatic  #126                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       146: invokevirtual #130                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       149: aload_1
+       150: invokevirtual #154                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.cancel:()V
+       153: return
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 28
+          locals = [ class net/minecraft/world/item/UseAnim ]
+        frame_type = 16 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 254 /* append */
+          offset_delta = 41
+          locals = [ int, class net/minecraft/world/entity/LivingEntity, class net/minecraft/world/item/UseAnim ]
+        frame_type = 248 /* chop */
+          offset_delta = 62
+      LineNumberTable:
+        line 41: 0
+        line 42: 6
+        line 43: 14
+        line 45: 28
+        line 47: 45
+        line 48: 48
+        line 49: 53
+        line 50: 58
+        line 51: 65
+        line 52: 74
+        line 53: 90
+        line 54: 102
+        line 55: 114
+        line 56: 131
+        line 57: 149
+        line 61: 153
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           14      31     2 useAction   Lnet/minecraft/world/item/UseAnim;
+          102      51     5 progress   I
+          114      39     6 haste   D
+          131      22     8 newProgress   I
+           74      79     4 useAction   Lnet/minecraft/world/item/UseAnim;
+           53     100     2 value   I
+           58      95     3 entity   Lnet/minecraft/world/entity/LivingEntity;
+            0     154     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+            0     154     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     154     1  info   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;
+    Signature: #92                          // (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Ljava/lang/Integer;>;)V
+    RuntimeVisibleAnnotations:
+      0: #46(#47=[s#93],#52=[@#53(#9=s#94)],#95=Z#50)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["getUseItemRemainingTicks()I"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      info
+
+  private void clearActiveItem_RWA(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: invokevirtual #169                // Method resetPartialHasteTicks:()V
+         4: return
+      LineNumberTable:
+        line 65: 0
+        line 66: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+            0       5     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #46(#47=[s#165],#52=[@#53(#9=s#166)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["stopUsingItem()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  public void addPartialHasteTick(float);
+    descriptor: (F)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: dup
+         2: getfield      #36                 // Field partialHasteTick:F
+         5: fload_1
+         6: fadd
+         7: putfield      #36                 // Field partialHasteTick:F
+        10: return
+      LineNumberTable:
+        line 70: 0
+        line 71: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+            0      11     1  tick   F
+    MethodParameters:
+      Name                           Flags
+      tick
+
+  public void resetPartialHasteTicks();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: fconst_0
+         2: putfield      #36                 // Field partialHasteTick:F
+         5: return
+      LineNumberTable:
+        line 73: 0
+        line 74: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+
+  public float getPartialHasteTick();
+    descriptor: ()F
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #36                 // Field partialHasteTick:F
+         4: freturn
+      LineNumberTable:
+        line 76: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabric_extras/ranged_weapon/mixin/attribute/LivingEntityMixin;
+}
+InnerClasses:
+  public static #15= #12 of #14;          // Entry=class net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry of class net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon
+  public static #20= #17 of #19;          // Builder=class net/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder of class net/minecraft/world/entity/ai/attributes/AttributeSupplier
+SourceFile: "LivingEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/LivingEntity;]
+    )

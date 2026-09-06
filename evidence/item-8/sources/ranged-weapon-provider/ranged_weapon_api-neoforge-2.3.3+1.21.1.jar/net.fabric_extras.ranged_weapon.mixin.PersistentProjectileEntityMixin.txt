@@ -1,0 +1,268 @@
+Classfile ranged_weapon_api-neoforge-2.3.3+1.21.1.jar!/net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.class
+  Last modified Jan 1, 1980; size 2027 bytes
+  SHA-256 checksum 1d961fe963ecd49f1f87e6f8741244e6f0c687cd0eef7d7e2b8f54f196f07518
+  Compiled from "PersistentProjectileEntityMixin.java"
+public abstract class net.fabric_extras.ranged_weapon.mixin.PersistentProjectileEntityMixin implements net.fabric_extras.ranged_weapon.internal.ArrowExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 3, methods: 6, attributes: 2
+Constant pool:
+   #1 = Utf8               net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin
+   #2 = Class              #1             // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               net/fabric_extras/ranged_weapon/internal/ArrowExtension
+   #6 = Class              #5             // net/fabric_extras/ranged_weapon/internal/ArrowExtension
+   #7 = Utf8               PersistentProjectileEntityMixin.java
+   #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #9 = Utf8               value
+  #10 = Utf8               Lnet/minecraft/world/entity/projectile/AbstractArrow;
+  #11 = Utf8               CRIT_RANDOM
+  #12 = Utf8               Ljava/util/Random;
+  #13 = Utf8               baseDamage
+  #14 = Utf8               D
+  #15 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #16 = Utf8               rwa_modified
+  #17 = Utf8               Z
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = NameAndType        #18:#19        // "<init>":()V
+  #21 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #22 = NameAndType        #16:#17        // rwa_modified:Z
+  #23 = Fieldref           #2.#22         // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.rwa_modified:Z
+  #24 = Utf8               this
+  #25 = Utf8               Lnet/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin;
+  #26 = Utf8               isCritArrow
+  #27 = Utf8               ()Z
+  #28 = Utf8               modifyCritDamage
+  #29 = Utf8               (I)I
+  #30 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #31 = Utf8               method
+  #32 = Utf8               onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V
+  #33 = Utf8               at
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #35 = Utf8               STORE
+  #36 = Utf8               ordinal
+  #37 = Integer            0
+  #38 = NameAndType        #26:#27        // isCritArrow:()Z
+  #39 = Methodref          #2.#38         // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.isCritArrow:()Z
+  #40 = Utf8               net/minecraft/world/entity/projectile/AbstractArrow
+  #41 = Class              #40            // net/minecraft/world/entity/projectile/AbstractArrow
+  #42 = Utf8               getDeltaMovement
+  #43 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #44 = NameAndType        #42:#43        // getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+  #45 = Methodref          #41.#44        // net/minecraft/world/entity/projectile/AbstractArrow.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+  #46 = Utf8               net/minecraft/world/phys/Vec3
+  #47 = Class              #46            // net/minecraft/world/phys/Vec3
+  #48 = Utf8               length
+  #49 = Utf8               ()D
+  #50 = NameAndType        #48:#49        // length:()D
+  #51 = Methodref          #47.#50        // net/minecraft/world/phys/Vec3.length:()D
+  #52 = Float              0.1f
+  #53 = NameAndType        #11:#12        // CRIT_RANDOM:Ljava/util/Random;
+  #54 = Fieldref           #2.#53         // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.CRIT_RANDOM:Ljava/util/Random;
+  #55 = Utf8               java/util/Random
+  #56 = Class              #55            // java/util/Random
+  #57 = Utf8               nextFloat
+  #58 = Utf8               ()F
+  #59 = NameAndType        #57:#58        // nextFloat:()F
+  #60 = Methodref          #56.#59        // java/util/Random.nextFloat:()F
+  #61 = Float              0.5f
+  #62 = NameAndType        #13:#14        // baseDamage:D
+  #63 = Fieldref           #2.#62         // net/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin.baseDamage:D
+  #64 = Double             2.147483647E9d
+  #66 = Utf8               net/minecraft/util/Mth
+  #67 = Class              #66            // net/minecraft/util/Mth
+  #68 = Utf8               clamp
+  #69 = Utf8               (DDD)D
+  #70 = NameAndType        #68:#69        // clamp:(DDD)D
+  #71 = Methodref          #67.#70        // net/minecraft/util/Mth.clamp:(DDD)D
+  #72 = Utf8               java/lang/Math
+  #73 = Class              #72            // java/lang/Math
+  #74 = Utf8               round
+  #75 = Utf8               (D)J
+  #76 = NameAndType        #74:#75        // round:(D)J
+  #77 = Methodref          #73.#76        // java/lang/Math.round:(D)J
+  #78 = Utf8               I
+  #79 = Utf8               projectile
+  #80 = Utf8               velocity
+  #81 = Utf8               critMultiplier
+  #82 = Utf8               F
+  #83 = Utf8               rwa_markModified
+  #84 = Utf8               (Z)V
+  #85 = Utf8               modified
+  #86 = Utf8               rwa_isModified
+  #87 = Utf8               <clinit>
+  #88 = Methodref          #56.#20        // java/util/Random."<init>":()V
+  #89 = Utf8               RuntimeVisibleAnnotations
+  #90 = Utf8               Code
+  #91 = Utf8               LineNumberTable
+  #92 = Utf8               LocalVariableTable
+  #93 = Utf8               StackMapTable
+  #94 = Utf8               MethodParameters
+  #95 = Utf8               SourceFile
+  #96 = Utf8               RuntimeInvisibleAnnotations
+{
+  private static final java.util.Random CRIT_RANDOM;
+    descriptor: Ljava/util/Random;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private double baseDamage;
+    descriptor: D
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #15()
+        org.spongepowered.asm.mixin.Shadow
+
+  private boolean rwa_modified;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  public net.fabric_extras.ranged_weapon.mixin.PersistentProjectileEntityMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #23                 // Field rwa_modified:Z
+         9: return
+      LineNumberTable:
+        line 14: 0
+        line 34: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  this   Lnet/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin;
+
+  public abstract boolean isCritArrow();
+    descriptor: ()Z
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #15()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int modifyCritDamage(int);
+    descriptor: (I)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=6, args_size=2
+         0: aload_0
+         1: invokevirtual #39                 // Method isCritArrow:()Z
+         4: ifne          9
+         7: iload_1
+         8: ireturn
+         9: aload_0
+        10: checkcast     #41                 // class net/minecraft/world/entity/projectile/AbstractArrow
+        13: astore_2
+        14: aload_2
+        15: invokevirtual #45                 // Method net/minecraft/world/entity/projectile/AbstractArrow.getDeltaMovement:()Lnet/minecraft/world/phys/Vec3;
+        18: invokevirtual #51                 // Method net/minecraft/world/phys/Vec3.length:()D
+        21: dstore_3
+        22: fconst_1
+        23: ldc           #52                 // float 0.1f
+        25: getstatic     #54                 // Field CRIT_RANDOM:Ljava/util/Random;
+        28: invokevirtual #60                 // Method java/util/Random.nextFloat:()F
+        31: ldc           #61                 // float 0.5f
+        33: fmul
+        34: fadd
+        35: fadd
+        36: fstore        5
+        38: dload_3
+        39: aload_0
+        40: getfield      #63                 // Field baseDamage:D
+        43: dmul
+        44: fload         5
+        46: f2d
+        47: dmul
+        48: dconst_0
+        49: ldc2_w        #64                 // double 2.147483647E9d
+        52: invokestatic  #71                 // Method net/minecraft/util/Mth.clamp:(DDD)D
+        55: invokestatic  #77                 // Method java/lang/Math.round:(D)J
+        58: l2i
+        59: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 9 /* same */
+      LineNumberTable:
+        line 26: 0
+        line 27: 9
+        line 28: 14
+        line 29: 22
+        line 31: 38
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      60     0  this   Lnet/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin;
+            0      60     1 value   I
+           14      46     2 projectile   Lnet/minecraft/world/entity/projectile/AbstractArrow;
+           22      38     3 velocity   D
+           38      22     5 critMultiplier   F
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#32],#33=@#34(#9=s#35),#36=I#37)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["onHitEntity(Lnet/minecraft/world/phys/EntityHitResult;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="STORE"
+          )
+          ordinal=0
+        )
+    MethodParameters:
+      Name                           Flags
+      value
+
+  public void rwa_markModified(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #23                 // Field rwa_modified:Z
+         5: return
+      LineNumberTable:
+        line 36: 0
+        line 37: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin;
+            0       6     1 modified   Z
+    MethodParameters:
+      Name                           Flags
+      modified
+
+  public boolean rwa_isModified();
+    descriptor: ()Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #23                 // Field rwa_modified:Z
+         4: ireturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabric_extras/ranged_weapon/mixin/PersistentProjectileEntityMixin;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: new           #56                 // class java/util/Random
+         3: dup
+         4: invokespecial #88                 // Method java/util/Random."<init>":()V
+         7: putstatic     #54                 // Field CRIT_RANDOM:Ljava/util/Random;
+        10: return
+      LineNumberTable:
+        line 15: 0
+}
+SourceFile: "PersistentProjectileEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/projectile/AbstractArrow;]
+    )
