@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 124 of 136. The exact queue below has 12 open rows.
+Supported provider dispositions: 125 of 136. The exact queue below has 11 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -686,7 +686,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | Existing feature, component and entry captures; tree source 0f263ed, root/condition source f4ad223; focused candidate/provider tests | RESOLVED: Fallen-log candidate, Ashen trial-chamber component, terrain/vegetation, full payload and common-entry roles accounted for. Fallen-log canonical boundary remains open. See final RU disposition below. |
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Sources b335f9e8; test_config_library_provider_scope.py | RESOLVED: Configuration parsing, interface initialization and server settings accessors; no independent family. See configuration library disposition below. |
-| `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `resourcefullib-neoforge-1.21-3.0.12.jar` | resourcefullib-provider, startup and storage; focused provider test | RESOLVED: consumer fluid, registry and networking APIs plus application storage, no independent family. See Resourceful Lib membership closure below. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
 | `servercore-neoforge-1.5.17+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `shield_api-neoforge-2.2.0.jar` | `shield-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom shield interaction, item attributes, rendering and EMI integration; no independent family. See bundle and shield dispositions below. |
@@ -7971,3 +7971,42 @@ Source membership does not prove gameplay compatibility or observed generation.
 Whole providers: 124 resolved, 12 open. Working groups remain 410 and explicit
 provisional Moog decisions remain 100. Canonical reconciliation, all required
 attributes, the final gate, review and main delivery remain incomplete.
+
+## Resourceful Lib membership closure
+
+Resourceful Lib membership is RESOLVED with no independent generated family.
+Archive resourcefullib-neoforge-1.21-3.0.12.jar has SHA-256
+5e36f2c69de008dc5795f730c84ab767688f15c810944b585485349a0c911261.
+Its 222 classes contain one automatic mod entry and one common fluid mixin.
+It packages no data resources, NBT templates or services. Nested Bytecodecs
+(54 classes) and YABN (26 classes) contain only classes and manifests, with no
+Minecraft references. Parent archive identity pins their exact bytes.
+
+Source increments 418a89d6, 47a79be9 and 687f2e87 retain six classes and
+independently reproduce exactly. The entry calls common initialization,
+selects a server API proxy or client-guarded client initialization, and
+registers a network-setup listener. The server proxy reads existing registry
+access. Networking dispatches consumer-supplied handlers from an initially
+empty listener list. Common initialization creates application cache/data
+storage and a readme file. The sole mixin obtains the fluid type from existing
+ResourcefulFlowingFluid data, caches it, and explicitly rejects missing data.
+These utility and consumer API roles do not define or generate a family.
+Stop general networking, storage and fluid behavior tracing at these roles.
+No new runtime measurement or evidence framework was required.
+
+```sh
+uv run pytest -q tests/item8/test_resourcefullib_provider_scope.py
+uv run ruff check tests/item8/test_resourcefullib_provider_scope.py
+uv run basedpyright tests/item8/test_resourcefullib_provider_scope.py
+```
+
+The focused case and quality checks pass. The test binds frozen archive and
+nested payloads, the automatic entry and complete common mixin set, and exact
+captured source/class hashes. Escaped paths and unexplained capture files fail.
+One assertion was wrapped to meet the line-length style limit, without changing
+its behavior. Membership inspection is not networking, storage or gameplay
+correctness evidence.
+
+Whole providers: 125 resolved, 11 open. Working groups remain 410, with 100
+explicit provisional Moog grouping decisions. The complete canonical list,
+required attributes, final acceptance, review and main delivery remain open.
