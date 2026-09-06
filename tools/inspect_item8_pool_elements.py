@@ -1815,6 +1815,7 @@ CLASSES: tuple[str, ...] = (
     "vectorwing/farmersdelight/client/event/KeybindEvents.class",
     "vectorwing/farmersdelight/client/event/TooltipEvents.class",
     "vectorwing/farmersdelight/common/EnumParameters.class",
+    "vectorwing/farmersdelight/common/CommonSetup.class",
     "vectorwing/farmersdelight/common/block/CuttingBoardBlock$ToolCarvingEvent.class",
     "vectorwing/farmersdelight/common/block/entity/BasketBlockEntity.class",
     "vectorwing/farmersdelight/common/block/entity/CabinetBlockEntity.class",
