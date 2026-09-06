@@ -232,6 +232,9 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/b1n_ry/yigd/util/YigdResourceHandler$GraveServerModelLoader.class",
+    "com/b1n_ry/yigd/util/YigdResourceHandler$GraveyardDataLoader.class",
+    "com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader.class",
     "com/b1n_ry/yigd/events/ServerEventHandler.class",
     "com/b1n_ry/yigd/events/YigdServerEventHandler.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler.class",
