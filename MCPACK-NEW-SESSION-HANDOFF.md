@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Aether's Delight membership is RESOLVED. Source 13d2013 covers all six annotated
+entries; three focused cases (0.12s) cover the full payload, five ore/plant chains
+and both packaged compatibility data packs. Scoped Ruff/Basedpyright pass.
+Census: 84 resolved, 52 open. No independent family added. Preserve the Ancient
+Aether pack's disconnected wynd ore configuration and legacy Forge paths as
+documented; do not infer activation or rerun runtime for this membership role.
+Next: Ube's Delight, including its MidnightLib bundle and declared common hooks.
+Seven packaged-generation providers, 24 code-only and 21 unmatched rows remain.
+
 End's Delight membership is RESOLVED. Source 311c1fe binds its sole custom
 generator to chorus succulent plants and covers all three annotated entries.
 Two focused cases pass (0.13s); scoped Ruff/Basedpyright pass. Census: 83 resolved,
