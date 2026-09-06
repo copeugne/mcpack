@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Simply Swords membership is resolved with no independent family. Sources
+295a0c93, 94876e7d and 26569325 bind eleven entry, hook and content classes.
+Loot callbacks remain family attribute inputs. Provider status is 135 resolved
+and one open: You're in Grave Danger. The 100 explicit provisional Moog decisions
+still follow provider closure. No final family count is claimed. Stop general
+Simply Swords combat/helper tracing and resolve the last provider next.
+
+
 ServerCore membership is resolved with no independent family. Sources 5fbd3211,
 57d2f8b8, a181a2df, 6ea01b7a and b1076151 preserve 70 classes. Hooks modify
 existing ticking/spawning/lookup behavior; lifecycle updates dynamic distances
