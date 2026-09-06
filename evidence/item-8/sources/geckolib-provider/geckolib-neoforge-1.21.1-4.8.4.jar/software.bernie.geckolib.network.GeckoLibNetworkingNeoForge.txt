@@ -1,0 +1,111 @@
+Compiled from "GeckoLibNetworkingNeoForge.java"
+public class software.bernie.geckolib.network.GeckoLibNetworkingNeoForge implements software.bernie.geckolib.service.GeckoLibNetworking {
+  private static net.neoforged.neoforge.network.registration.PayloadRegistrar registrar;
+
+  public software.bernie.geckolib.network.GeckoLibNetworkingNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokedynamic #7,  0              // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       6: invokeinterface #11,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      11: return
+
+  public <B extends net.minecraft.network.FriendlyByteBuf, P extends software.bernie.geckolib.network.packet.MultiloaderPacket> void registerPacketInternal(net.minecraft.network.protocol.common.custom.CustomPacketPayload$Type<P>, net.minecraft.network.codec.StreamCodec<B, P>, boolean);
+    Code:
+       0: iload_3
+       1: ifeq          21
+       4: getstatic     #17                 // Field registrar:Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       7: aload_1
+       8: aload_2
+       9: invokedynamic #23,  0             // InvokeDynamic #1:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      14: invokevirtual #27                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      17: pop
+      18: goto          35
+      21: getstatic     #17                 // Field registrar:Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      24: aload_1
+      25: aload_2
+      26: invokedynamic #33,  0             // InvokeDynamic #2:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      31: invokevirtual #34                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      34: pop
+      35: return
+
+  public void sendToAllPlayersTrackingEntity(software.bernie.geckolib.network.packet.MultiloaderPacket, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_2
+       1: aload_1
+       2: iconst_0
+       3: anewarray     #37                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+       6: invokestatic  #39                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayersTrackingEntityAndSelf:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+       9: return
+
+  public void sendToAllPlayersTrackingBlock(software.bernie.geckolib.network.packet.MultiloaderPacket, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_2
+       1: new           #45                 // class net/minecraft/world/level/ChunkPos
+       4: dup
+       5: aload_3
+       6: invokespecial #47                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+       9: aload_1
+      10: iconst_0
+      11: anewarray     #37                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+      14: invokestatic  #50                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayersTrackingChunk:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      17: return
+
+  public void sendToPlayer(software.bernie.geckolib.network.packet.MultiloaderPacket, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_2
+       1: aload_1
+       2: iconst_0
+       3: anewarray     #37                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+       6: invokestatic  #54                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+       9: return
+
+  private static void lambda$registerPacketInternal$2(software.bernie.geckolib.network.packet.MultiloaderPacket, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #58,  1           // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       7: aload_1
+       8: dup
+       9: invokestatic  #64                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: invokedynamic #70,  0             // InvokeDynamic #3:accept:(Lnet/neoforged/neoforge/network/handling/IPayloadContext;)Ljava/util/function/Consumer;
+      18: invokeinterface #73,  3           // InterfaceMethod software/bernie/geckolib/network/packet/MultiloaderPacket.receiveMessage:(Lnet/minecraft/world/entity/player/Player;Ljava/util/function/Consumer;)V
+      23: return
+
+  private static void lambda$registerPacketInternal$1(software.bernie.geckolib.network.packet.MultiloaderPacket, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #58,  1           // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       7: aload_1
+       8: dup
+       9: invokestatic  #64                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: invokedynamic #70,  0             // InvokeDynamic #3:accept:(Lnet/neoforged/neoforge/network/handling/IPayloadContext;)Ljava/util/function/Consumer;
+      18: invokeinterface #73,  3           // InterfaceMethod software/bernie/geckolib/network/packet/MultiloaderPacket.receiveMessage:(Lnet/minecraft/world/entity/player/Player;Ljava/util/function/Consumer;)V
+      23: return
+
+  private static void lambda$init$0(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_0
+       1: ldc           #81                 // String geckolib
+       3: invokevirtual #83                 // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       6: invokevirtual #88                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.optional:()Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       9: putstatic     #17                 // Field registrar:Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      12: invokestatic  #92                 // InterfaceMethod software/bernie/geckolib/service/GeckoLibNetworking.init:()V
+      15: aconst_null
+      16: putstatic     #17                 // Field registrar:Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      19: return
+
+  static {};
+    Code:
+       0: aconst_null
+       1: putstatic     #17                 // Field registrar:Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       4: return
+}
