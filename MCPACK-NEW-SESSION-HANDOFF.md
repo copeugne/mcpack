@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at e474790: Better Nether Fortresses provider scope is closed,
+pushed and remote-ref verified. Census: 62 resolved providers, 74 open. Seven
+affected cases and scoped Ruff/Basedpyright pass. Source 5933abb reproduces
+exactly. Its single root, 15 pools, 169 templates and seven custom processor
+types have component dispositions. Preserve twenty disconnected templates and
+the missing halls/hall_4 reference; halls/hall_4_ is a different packaged ID.
+Existing-fortress spawning and item-frame modifications remain attribute inputs.
+Next inspect YUNG's Better Ocean Monuments using the prior monument-suppression
+capture. Do not repeat delivered provider closures or start detailed attributes
+before the provider census and canonical family boundaries are resolved.
+
 Latest checkpoints: IDAS provider scope closed at 26cfbef; Better Witch Huts
 closed at 4e96ee2. Both are pushed and remote-ref verified. Current census is
 61 resolved providers and 75 open. IDAS's 84 roots, 214 pools and 259 templates
