@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+Fzzy Config membership is resolved with no independent family. Source increments
+574fadb2, 0f4f3dc3 and dafcbafd preserve eight entry, event and consumer registry
+classes. Packaged content has no generated structure payload. Registry lists
+start empty and hold caller-supplied registrations; config callbacks do not add
+sites. Independent captures match; the focused test and scoped quality checks
+pass. Whole providers: 130 resolved, 6 open. Working groups remain 410 and
+explicit provisional Moog decisions remain 100. Stop generic Fzzy Config tracing.
+Next provider: Kotlin for Forge. Then Moonlight, owo-lib, ServerCore, Simply Swords
+and You're in Grave Danger. Canonical reconciliation precedes detailed attributes.
+Item 8 final acceptance, clean review and main merge remain incomplete.
+
+
 Curios membership is resolved with no independent family. Reuse source increments
 68eeeb92 and 38e02fc7 (24 classes). Slot reloaders and shared events manage
 existing entities' equipment; no generated structure payload is present. Captures

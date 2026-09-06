@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 129 of 136. The exact queue below has 7 open rows.
+Supported provider dispositions: 130 of 136. The exact queue below has 6 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -660,7 +660,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | All 43 nested modules, preserved sources and test_fabric_provider_scope.py | RESOLVED: Consumer APIs, biome modifiers, conventional tags and test-only template; all module contribution roles resolved below. No independent family. |
-| `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `fzzy_config-0.7.6+1.21+neoforge.jar` | `fzzy-provider`, `fzzy-delegates`, `fzzy-registrations` | RESOLVED: configuration and consumer registration API; no independent family. See Fzzy Config closure below. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Sources 1284a76a and 58568f7f; test_small_utility_provider_scope.py | RESOLVED: Animation data, item identity, rendering and synchronization support; no independent family. See GeckoLib disposition below. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
 | `integrated_api-1.7.3+1.21.1-neoforge.jar` | Existing pool-codecs and source 88a0f54; test_integrated_api_provider_scope.py | RESOLVED: Shared generation codecs, existing structure modifiers, tags and consumer data loaders. No independent family. See Integrated API disposition below. |
@@ -8218,3 +8218,43 @@ decision does not establish equipment balance, compatibility or persistence.
 Whole providers: 129 resolved, 7 open. Working groups remain 410 and explicit
 provisional Moog decisions remain 100. Final canonical membership, attributes,
 acceptance, clean review and main delivery remain incomplete.
+
+## Fzzy Config provider closure
+
+The exact retained archive has SHA-256
+4e5cc1438087b0bc0276969e88b9ad0bdf2bcc60d6caf5fe79e18947d7a29050.
+Its 755 classes include two automatic loader entries. There are no packaged
+`data/` resources, NBT templates, service declarations or common mixin configs.
+The two nested parser libraries are pinned by the parent and the focused test:
+Jankson 1.2.3 has 42 classes; Tomlkt 0.3.7 has 139. Neither has Minecraft class
+references or service declarations. Their remaining files are metadata.
+
+Source increments 574fadb2, 0f4f3dc3 and dafcbafd preserve eight classes.
+The entry registers configuration synchronization and lifecycle callbacks,
+configuration payloads, commands and a registry callback. NetworkEvents forwards
+configuration updates and join/reload synchronization, starts synchronized config
+handling and stops its threading utility. PlatformUtils commands list, inspect,
+accept or reject quarantined configuration updates. They do not place sites.
+
+RegistryBuilderImpl starts with an empty registry list and adds registries built
+from caller-supplied keys. Its companion registers that list. RegistrarImpl wraps
+caller-supplied registries and item suppliers in DeferredRegister; its initially
+empty unbound set is attached to an event bus by the companion. These are consumer
+registration APIs, not independent structure registrations. The client entry
+registers client networking. No independent family is added. Stop generic
+configuration, parser, permission and networking tracing here; this decision does
+not claim those subsystems are otherwise tested.
+
+Each capture reproduced byte for byte into its independent r1 directory using
+the command in its README. Reproduce the source and archive binding check with:
+
+```sh
+uv run pytest -q tests/item8/test_fzzy_provider_scope.py
+uv run ruff check tests/item8/test_fzzy_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_fzzy_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+The focused test passes (one case), as do scoped Ruff and Basedpyright.
+Whole-provider dispositions are now 130 resolved and 6 open. The 410 working
+groups and 100 explicit provisional Moog decisions are unchanged. These are not
+a final family count. Final canonical reconciliation and attributes remain open.
