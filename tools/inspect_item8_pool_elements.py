@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "wunderlib-21.0.10.jar",
         "neoforge-21.1.249-universal.jar",
         "YungsApi-1.21.1-NeoForge-5.1.6.jar",
         "YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar",
@@ -189,6 +190,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "de/ambertation/wunderlib/WunderLib.class",
+    "de/ambertation/wunderlib/WunderLibClient.class",
+    "de/ambertation/wunderlib/math/Bounds.class",
     "net/fabricmc/fabric/impl/registry/sync/DynamicRegistriesImpl.class",
     "net/fabricmc/loader/impl/FabricLoaderImpl.class",
     "net/fabricmc/fabric/impl/registry/sync/FabricRegistryInit.class",
