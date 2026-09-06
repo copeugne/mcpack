@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 125 of 136. The exact queue below has 11 open rows.
+Supported provider dispositions: 126 of 136. The exact queue below has 10 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -645,7 +645,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `collective-1.21.1-8.25.jar` | `collective-provider`, `collective-services`, `collective-init`, existing `collective-mixin-plugin`; full payload/source binding. | RESOLVED: shared data, consumer entity/callback/network APIs and platform services. No independent family. |
 | `comforts-neoforge-9.0.5+1.21.1.jar` | comforts-provider and comforts-spectrelib; focused provider test | RESOLVED: player sleeping equipment, sleep events and config support, no independent family. See Comforts membership closure below. |
 | `create-1.21.1-6.0.10.jar` | Create captures and test_create_provider_scope.py; final disposition below. | RESOLVED: Ore generation, player construction, machine behavior, GameTest fixtures and client Ponder scenes. All three embedded libraries accounted for. No independent natural structure family. |
-| `create-enchantment-industry-2.4.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `create-enchantment-industry-2.4.0.jar` | cei-entries, hooks, registrations and world-interaction; focused provider test | RESOLVED: player machines, experience processing, existing-block lightning transformation and client tutorials, no independent family. See Enchantment Industry membership closure below. |
 | `createbigcannons-5.11.6+mc.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `createdieselgenerators-1.21.1-1.3.15.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `creatingspace-1.21.1-1.7.18.jar` | Existing root decisions, creating-space-provider, creating-space-arrival, creating-space-common-delegates and test_creating_space_provider_scope.py | RESOLVED: Four existing roots, five connected pools, six templates partitioned, terrain and common-hook roles accounted for. Disconnected outpost retained below. Canonical grouping and attributes remain separate. |
@@ -8010,3 +8010,59 @@ correctness evidence.
 Whole providers: 125 resolved, 11 open. Working groups remain 410, with 100
 explicit provisional Moog grouping decisions. The complete canonical list,
 required attributes, final acceptance, review and main delivery remain open.
+
+## Enchantment Industry membership closure
+
+Create Enchantment Industry membership is RESOLVED with no independent
+structure family. Archive create-enchantment-industry-2.4.0.jar has SHA-256
+3830e27941fe08334217ded82713907a176bd2feb209292da25154e4c082585e.
+Its 338 classes, complete data categories, 23 client Ponder templates and 15
+block loot tables are bound by test_cei_provider_scope.py. No packaged
+structure definitions occur. Recipes and data maps configure experience,
+enchanting, forging and printing. Sable physics data remains packaged optional
+content, not permission to enable Sable.
+
+Sources 7f3f848b, 75fd1607, c4e39444 and f02b44f4 retain 47 classes and
+independently reproduce exactly. They cover all 11 automatic entries, all 20
+common/conditional mixins, direct common registration targets, lightning block
+transformation and the client Ponder registration boundary. CEIClient and
+CEIAClient declare client-only mod entry sides; three item-renderer subscribers
+also declare Dist.CLIENT. The data-generator entry guards its registration
+with DatagenModLoader.isRunningDataGen. Optional common integration entry
+constructors guard their delegates with ModList.isLoaded. Apotheosis,
+Apothic Enchanting and Sable are absent from the retained candidate metadata;
+no optional activation is claimed.
+
+Common registration adds machines, fluids, items, block entities, creative tabs,
+recipes, enchantment tags, data maps, advancement triggers, stats, mounted
+storage, arm interactions and item attributes. Hooks operate existing Create
+machines, deployer attacks and experience drops, item repair, clipboard data
+and fluid handling. Lightning finds existing experience blocks and converts
+them to super-experience blocks. It does not place an independent authored
+structure. Ponder assets are reached from a client-registered Ponder plugin.
+Player industrial processing and tutorial scenes are not separate families.
+
+Reuse Create Dragons Plus membership evidence for CDPMixinConfigPlugin and
+its nested Conditional Mixin library. Enchantment Industry's nested library
+is byte-identical, SHA-256
+0ae7b346d87879e81f276e6a590a6af1e723193e6eb3e94c1f71f7ab5b54d59f.
+Do not recapture that library or expand into machine, recipe, experience,
+networking or optional-mod compatibility audits for this membership decision.
+
+```sh
+uv run pytest -q tests/item8/test_cei_provider_scope.py tests/item8/test_create_dragons_plus_provider_scope.py
+uv run ruff check tests/item8/test_cei_provider_scope.py
+uv run basedpyright tests/item8/test_cei_provider_scope.py
+```
+
+All three focused cases pass, including the reused plugin/library evidence
+binding. Scoped quality checks pass after wrapping three long test lines.
+The provider test binds payload categories, the automatic entry and mixin set,
+nested identity and every captured class/source hash. It rejects escaped paths
+and unexplained capture files. Source membership is not evidence of runtime
+activation, observed generation or gameplay equivalence. No runtime measurement
+or new evidence framework was needed.
+
+Whole providers: 126 resolved, 10 open. Working groups remain 410 and explicit
+provisional Moog grouping decisions remain 100. Canonical membership, required
+attributes, final acceptance, clean review and main delivery remain incomplete.

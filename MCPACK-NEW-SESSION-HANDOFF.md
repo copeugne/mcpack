@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Create Enchantment Industry membership is resolved with no independent family.
+Reuse source increments 7f3f848b, 75fd1607, c4e39444 and f02b44f4 (47 classes)
+and the existing Create Dragons Plus plugin/library evidence. All captures
+reproduce exactly; three focused cases and scoped quality checks pass. Whole
+providers: 126 resolved, 10 open. Working groups remain 410 and explicit
+provisional Moog decisions remain 100. Stop generic machine/recipe/experience
+or optional-integration tracing. Continue remaining provider membership and
+canonical grouping before detailed attributes. Final Item 8 gate, review and
+main merge remain open.
+
+
 Resourceful Lib membership is resolved with no independent family. Source
 increments 418a89d6, 47a79be9 and 687f2e87 bind all entry/hook and direct startup
 roles. Six classes reproduce exactly; the focused test and quality checks
