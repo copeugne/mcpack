@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+EMI Loot membership is resolved from ebf5a286 and a2f485ef: existing-loot
+inspection and client display synchronization, no independent generated family.
+Full payload/entry/hook/source binding and scoped checks pass. Whole providers:
+111 resolved, 25 open. Working groups remain 410 and the 100 explicitly
+provisional Moog records still need canonical decisions. User requires a finite
+family count, not repeated vague coverage updates. Complete the remaining
+provider dispositions and grouping decisions before detailed attributes. Do not
+trace more generic EMI Loot parser/network internals.
+
+
 Collective membership is resolved from 71c6534b, f59d9219, 9f1bd61d and reused
 plugin 55d1c0ea. Shared data, consumer entity/callback/network APIs and platform
 services, no independent family. Preserve entity/spawner/callback effects and
