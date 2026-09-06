@@ -1,0 +1,110 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin.class
+  Last modified Jan 1, 1980; size 2092 bytes
+  SHA-256 checksum f1c131a98cefc76ef80f3d056c00344a5cdc19552e5780812900bbc43eb4e86e
+  Compiled from "NaturalSpawnerMixin.java"
+public class me.wesley1808.servercore.mixin.optimizations.biome_lookups.NaturalSpawnerMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               NaturalSpawnerMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/NaturalSpawner;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lme/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin;
+  #15 = Utf8               servercore$fastBiomeLookup
+  #16 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #17 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+  #18 = Utf8               level
+  #19 = Utf8               pos
+  #20 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #21 = Utf8               method
+  #22 = Utf8               mobsAt(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder;)Lnet/minecraft/util/random/WeightedRandomList;
+  #23 = Utf8               getRandomSpawnMobAt(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Ljava/util/Optional;
+  #24 = Utf8               require
+  #25 = Integer            0
+  #26 = Utf8               at
+  #27 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #28 = Utf8               INVOKE
+  #29 = Utf8               target
+  #30 = Utf8               Lnet/minecraft/server/level/ServerLevel;getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #31 = Utf8               me/wesley1808/servercore/common/utils/ChunkManager
+  #32 = Class              #31            // me/wesley1808/servercore/common/utils/ChunkManager
+  #33 = Utf8               getRoughBiome
+  #34 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #35 = NameAndType        #33:#34        // getRoughBiome:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #36 = Methodref          #32.#35        // me/wesley1808/servercore/common/utils/ChunkManager.getRoughBiome:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+  #37 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #38 = Utf8               Lnet/minecraft/core/BlockPos;
+  #39 = Utf8               Code
+  #40 = Utf8               LineNumberTable
+  #41 = Utf8               LocalVariableTable
+  #42 = Utf8               Signature
+  #43 = Utf8               RuntimeVisibleAnnotations
+  #44 = Utf8               MethodParameters
+  #45 = Utf8               SourceFile
+  #46 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.optimizations.biome_lookups.NaturalSpawnerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 14: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/optimizations/biome_lookups/NaturalSpawnerMixin;
+
+  private static net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome> servercore$fastBiomeLookup(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokestatic  #36                 // Method me/wesley1808/servercore/common/utils/ChunkManager.getRoughBiome:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;
+         5: areturn
+      LineNumberTable:
+        line 25: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 level   Lnet/minecraft/server/level/ServerLevel;
+            0       6     1   pos   Lnet/minecraft/core/BlockPos;
+    Signature: #17                          // (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;
+    RuntimeVisibleAnnotations:
+      0: #20(#21=[s#22,s#23],#24=I#25,#26=@#27(#7=s#28,#29=s#30))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["mobsAt(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder;)Lnet/minecraft/util/random/WeightedRandomList;","getRandomSpawnMobAt(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Ljava/util/Optional;"]
+          require=0
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ServerLevel;getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      level
+      pos
+}
+SourceFile: "NaturalSpawnerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/NaturalSpawner;]
+    )

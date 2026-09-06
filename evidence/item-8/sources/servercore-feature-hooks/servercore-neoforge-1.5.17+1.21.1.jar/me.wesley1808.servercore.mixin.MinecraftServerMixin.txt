@@ -1,0 +1,183 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/MinecraftServerMixin.class
+  Last modified Jan 1, 1980; size 1786 bytes
+  SHA-256 checksum 27826a6891fb6f9252de865773e65b8cf945214f239f9d397a01aa4b173f306d
+  Compiled from "MinecraftServerMixin.java"
+public class me.wesley1808.servercore.mixin.MinecraftServerMixin implements me.wesley1808.servercore.common.interfaces.IMinecraftServer
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/MinecraftServerMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 2, methods: 4, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/MinecraftServerMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/MinecraftServerMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               me/wesley1808/servercore/common/interfaces/IMinecraftServer
+   #6 = Class              #5             // me/wesley1808/servercore/common/interfaces/IMinecraftServer
+   #7 = Utf8               MinecraftServerMixin.java
+   #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #9 = Utf8               value
+  #10 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #11 = Utf8               servercore$dynamicManager
+  #12 = Utf8               Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #14 = Utf8               servercore$statistics
+  #15 = Utf8               Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+  #16 = Utf8               <init>
+  #17 = Utf8               ()V
+  #18 = NameAndType        #16:#17        // "<init>":()V
+  #19 = Methodref          #4.#18         // java/lang/Object."<init>":()V
+  #20 = Utf8               this
+  #21 = Utf8               Lme/wesley1808/servercore/mixin/MinecraftServerMixin;
+  #22 = Utf8               servercore$onStarted
+  #23 = Utf8               (Lnet/minecraft/server/MinecraftServer;)V
+  #24 = Utf8               server
+  #25 = Utf8               me/wesley1808/servercore/common/utils/Environment
+  #26 = Class              #25            // me/wesley1808/servercore/common/utils/Environment
+  #27 = Utf8               MOD_SPARK
+  #28 = Utf8               Z
+  #29 = NameAndType        #27:#28        // MOD_SPARK:Z
+  #30 = Fieldref           #26.#29        // me/wesley1808/servercore/common/utils/Environment.MOD_SPARK:Z
+  #31 = Utf8               me/wesley1808/servercore/common/dynamic/SparkDynamicManager
+  #32 = Class              #31            // me/wesley1808/servercore/common/dynamic/SparkDynamicManager
+  #33 = NameAndType        #16:#23        // "<init>":(Lnet/minecraft/server/MinecraftServer;)V
+  #34 = Methodref          #32.#33        // me/wesley1808/servercore/common/dynamic/SparkDynamicManager."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+  #35 = Utf8               me/wesley1808/servercore/common/dynamic/DynamicManager
+  #36 = Class              #35            // me/wesley1808/servercore/common/dynamic/DynamicManager
+  #37 = Methodref          #36.#33        // me/wesley1808/servercore/common/dynamic/DynamicManager."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+  #38 = Utf8               net/minecraft/server/MinecraftServer
+  #39 = Class              #38            // net/minecraft/server/MinecraftServer
+  #40 = NameAndType        #11:#12        // servercore$dynamicManager:Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+  #41 = Fieldref           #2.#40         // me/wesley1808/servercore/mixin/MinecraftServerMixin.servercore$dynamicManager:Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+  #42 = Utf8               me/wesley1808/servercore/common/utils/statistics/Statistics
+  #43 = Class              #42            // me/wesley1808/servercore/common/utils/statistics/Statistics
+  #44 = Methodref          #43.#33        // me/wesley1808/servercore/common/utils/statistics/Statistics."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+  #45 = NameAndType        #14:#15        // servercore$statistics:Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+  #46 = Fieldref           #2.#45         // me/wesley1808/servercore/mixin/MinecraftServerMixin.servercore$statistics:Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+  #47 = Utf8               servercore$getStatistics
+  #48 = Utf8               ()Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+  #49 = Utf8               servercore$getDynamicManager
+  #50 = Utf8               ()Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+  #51 = Utf8               RuntimeVisibleAnnotations
+  #52 = Utf8               Code
+  #53 = Utf8               LineNumberTable
+  #54 = Utf8               LocalVariableTable
+  #55 = Utf8               StackMapTable
+  #56 = Utf8               MethodParameters
+  #57 = Utf8               SourceFile
+  #58 = Utf8               RuntimeInvisibleAnnotations
+{
+  private me.wesley1808.servercore.common.dynamic.DynamicManager servercore$dynamicManager;
+    descriptor: Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Unique
+
+  private me.wesley1808.servercore.common.utils.statistics.Statistics servercore$statistics;
+    descriptor: Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Unique
+
+  public me.wesley1808.servercore.mixin.MinecraftServerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/MinecraftServerMixin;
+
+  public void servercore$onStarted(net.minecraft.server.MinecraftServer);
+    descriptor: (Lnet/minecraft/server/MinecraftServer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: getstatic     #30                 // Field me/wesley1808/servercore/common/utils/Environment.MOD_SPARK:Z
+         4: ifeq          18
+         7: new           #32                 // class me/wesley1808/servercore/common/dynamic/SparkDynamicManager
+        10: dup
+        11: aload_1
+        12: invokespecial #34                 // Method me/wesley1808/servercore/common/dynamic/SparkDynamicManager."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+        15: goto          26
+        18: new           #36                 // class me/wesley1808/servercore/common/dynamic/DynamicManager
+        21: dup
+        22: aload_1
+        23: invokespecial #37                 // Method me/wesley1808/servercore/common/dynamic/DynamicManager."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+        26: putfield      #41                 // Field servercore$dynamicManager:Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+        29: aload_0
+        30: new           #43                 // class me/wesley1808/servercore/common/utils/statistics/Statistics
+        33: dup
+        34: aload_1
+        35: invokespecial #44                 // Method me/wesley1808/servercore/common/utils/statistics/Statistics."<init>":(Lnet/minecraft/server/MinecraftServer;)V
+        38: putfield      #46                 // Field servercore$statistics:Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+        41: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 82 /* same_locals_1_stack_item */
+          stack = [ class me/wesley1808/servercore/mixin/MinecraftServerMixin ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 7
+          locals = [ class me/wesley1808/servercore/mixin/MinecraftServerMixin, class net/minecraft/server/MinecraftServer ]
+          stack = [ class me/wesley1808/servercore/mixin/MinecraftServerMixin, class me/wesley1808/servercore/common/dynamic/DynamicManager ]
+      LineNumberTable:
+        line 21: 0
+        line 22: 29
+        line 23: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lme/wesley1808/servercore/mixin/MinecraftServerMixin;
+            0      42     1 server   Lnet/minecraft/server/MinecraftServer;
+    MethodParameters:
+      Name                           Flags
+      server
+
+  public me.wesley1808.servercore.common.utils.statistics.Statistics servercore$getStatistics();
+    descriptor: ()Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #46                 // Field servercore$statistics:Lme/wesley1808/servercore/common/utils/statistics/Statistics;
+         4: areturn
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/MinecraftServerMixin;
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Unique
+
+  public me.wesley1808.servercore.common.dynamic.DynamicManager servercore$getDynamicManager();
+    descriptor: ()Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #41                 // Field servercore$dynamicManager:Lme/wesley1808/servercore/common/dynamic/DynamicManager;
+         4: areturn
+      LineNumberTable:
+        line 34: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/MinecraftServerMixin;
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Unique
+}
+SourceFile: "MinecraftServerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/MinecraftServer;]
+    )

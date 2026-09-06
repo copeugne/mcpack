@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+ServerCore membership is resolved with no independent family. Sources 5fbd3211,
+57d2f8b8, a181a2df, 6ea01b7a and b1076151 preserve 70 classes. Hooks modify
+existing ticking/spawning/lookup behavior; lifecycle updates dynamic distances
+and mob caps. Captures reproduce exactly; the focused binding and scoped quality
+checks pass. Providers: 134 resolved, 2 open. Next: Simply Swords and You're in
+Grave Danger, then canonical reconciliation. Working groups remain 410 with 100
+explicit provisional Moog decisions. Stop general ServerCore performance/helper
+tracing. Its spawning changes remain relevant to later attributes under frozen
+config. Final Item 8 acceptance, clean review and main delivery remain incomplete.
+
+
 owo-lib membership is resolved with no independent family. Sources 37dfc1f7,
 bcfb3b59 and c34ff986 preserve 50 classes. Loot/tag/ore-hook collections start
 empty and accept consumer registrations. All 17 nested Fabric base classes are
