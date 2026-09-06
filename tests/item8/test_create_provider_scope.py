@@ -90,3 +90,30 @@ def test_create_generation_payload_and_captured_boundaries() -> None:
                 if feature.endswith("nether")
                 else "#minecraft:is_overworld",
             }
+
+
+def test_create_entry_and_template_consumer_sources() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "create-1.21.1-6.0.10.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/create-entry-template-consumers")
+    raw = (directory / "identities.json").read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "151d5db9de69c37bd56cb596da59fe227f4f750b77a873cae8c0459b7d4738d5"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert {row["class"] for row in rows} == {
+        "com/simibubi/create/Create.class",
+        "com/simibubi/create/AllStructureProcessorTypes.class",
+        "com/simibubi/create/foundation/mixin/CreateMixinPlugin.class",
+        "com/simibubi/create/infrastructure/gametest/CreateTestFunction.class",
+    }
+    with ZipFile(source.path) as archive:
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert (
+                hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                == row["disassembly_sha256"]
+            )

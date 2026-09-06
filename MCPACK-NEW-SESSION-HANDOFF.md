@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Create main entry, GameTest template construction, schematic processor
+registration and mixin plugin are captured in 9dcbd3c (extractor cd1fefb),
+independently reproduced and bound by two passing focused cases. GameTest loader
+role is resolved; per-fixture references are not claimed. Remaining Create work:
+common-event/mixin roles, schematic/Ponder consumers and embedded libraries.
+Reuse the delivered ore and GameTest loader checks. Census: 89 resolved, 47 open.
+No runtime or source capture is live.
+
 Create ore-source and packaged-data checks are delivered. Source 1fa2306
 (extractor cb34d9e) reproduces independently. Three ore chains introduce no
 additional site candidate; 67 GameTest and 178 Ponder NBT paths are partitioned.
