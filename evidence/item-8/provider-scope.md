@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 120 of 136. The exact queue below has 16 open rows.
+Supported provider dispositions: 121 of 136. The exact queue below has 15 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -628,7 +628,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `aether-1.21.1-1.5.10-neoforge.jar` | Existing Aether source captures, test_aether_provider_scope.py and focused candidate/component checks | RESOLVED: Three dungeon candidates, cloud terrain, conditional holiday-tree boundary, inactive portal components, common hooks and selected-library roles accounted for below. Canonical grouping and attributes remain open. |
 | `aethersdelight-0.1.4.2-1.21.1.jar` | `aethers-delight-provider` (13d2013), test_aethers_delight_provider_scope.py | RESOLVED: Ore, plant and food/item content, including both packaged compatibility data packs. No independent structure family. Full disposition below. |
 | `alternate_current-mc1.21-1.9.0.jar` | `alternate-current-provider` (4b722aa), test_small_utility_provider_scope.py | RESOLVED: Existing redstone-wire updates, configuration and profiling; no independent family. See redstone, configuration and loot provider dispositions below. |
-| `amendments-1.21-2.0.15-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `amendments-1.21-2.0.15-neoforge.jar` | amendments-provider, startup, block-replacement and reused shared Moonlight plugin | RESOLVED: Existing block/gameplay support and cauldron replacements in existing structures, no independent family. |
 | `architectury-13.0.8-neoforge.jar` | d943fcbb entry/hooks; 8ed7b7ec event/biome delegates; 4a879ad8 spawn synchronization. | RESOLVED: consumer event, extension and biome APIs, no independent generated family. See Architectury membership closure. |
 | `attributefix-neoforge-1.21.1-21.1.3.jar` | `attributefix-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing attribute range configuration; no structure contribution. See small utility provider dispositions below. |
 | `azurelibarmor-neo-1.21.1-3.1.2.jar` | Sources a37e5b08 and 57ea6b5c; test_small_utility_provider_scope.py | RESOLVED: Item animation identity, synchronization and rendering support; no independent family. See AzureLib Armor disposition below. |
@@ -7703,3 +7703,51 @@ Disposition: no independent generated family. Whole providers: 120 resolved,
 16 open. The 410 working groups and 100 explicitly provisional Moog grouping
 decisions remain unchanged. Item 8 canonical grouping, attributes and final
 review/main delivery are incomplete.
+
+## Amendments whole-provider membership closure
+
+Frozen amendments-1.21-2.0.15-neoforge.jar SHA-256:
+`e44e67d5c2eb5a73ee8ca3d1e9099ed20ccbf8167022bc407df8434b1bf362b5`.
+Full payload binding covers 252 classes, 52 data files, 397 client assets and
+eight metadata/configuration files. No nested archive or independent packaged
+structure, pool or template is present. Data includes recipes, loot, tags,
+damage/enchanting/soft-fluid definitions and three Blueprint repaletters.
+
+4ece1d82 retains the automatic entry, all 39 common hooks and the shared plugin;
+e248456f retains startup/events/Blueprint registration; 97966218 retains the
+registry, structure cauldron block, replacement codec and Supplementaries
+compatibility. The combined boundary contains 48 distinct classes. Eleven
+client-only hooks are separately declared. Reuse the accepted
+supplementaries-shared-plugin capture for Moonlight SimpleMixinPlugin; its
+identity manifest SHA-256 is
+`05fbc861b5d5a7e0290ac0bdcd10d29ae1afd2410c7833b97f5fd560a9640e75`.
+Moonlight's separate whole-provider row remains open.
+
+The Blueprint files replace cauldrons or water cauldrons in existing structure
+tags, including villages, with configured amendment cauldron states.
+BlockStateRepaletter checks the supplied original block and configured random
+chance and returns a replacement state on a match. StructureCauldronHack is
+its registered block/block-entity support. These are structure-content
+modifiers, not independent families. Presence of conditional integration data
+does not prove its activation or actual fluid contents in observed worlds;
+retain those distinctions for the later attributes.
+
+Other registration/setup paths add block/item/entity support, extra placement
+variants, dispenser/POI/recipe conditions and faucet integration. Hooks and
+ModEvents extend existing block and player interactions, cauldrons, signs,
+skulls, brewing, bells, projectiles and explosions. Preserve those gameplay
+and content effects. No general networking, block-entity, rendering or
+compatibility audit is required for membership, and no runtime setting changed.
+
+`uv run pytest -q tests/item8/test_amendments_provider_scope.py` passes one case
+binding archive categories, entries/hooks/plugins, packaged replacement targets
+and preserved source bytes. Scoped Ruff and Basedpyright pass; all three source
+r1 reproductions match bytes. The raw javap record-class output ends with an
+extra blank line, which git diff --check flags. It is preserved byte for byte
+as raw evidence rather than cosmetically rewritten; documentation and test
+diffs pass whitespace checks. No new measurement system was added.
+
+Disposition: no independent generated family. Whole providers: 121 resolved,
+15 open. Working groups remain 410 and 100 explicitly provisional Moog grouping
+decisions remain. Final canonical grouping, attributes and Item 8 review/main
+delivery remain incomplete.
