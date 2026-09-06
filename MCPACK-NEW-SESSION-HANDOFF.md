@@ -6,6 +6,45 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9d75c96b and reproduces exactly. Canonical-note backlog: 90
+(IDAS 59, AdoraBuild 31). Coverage groups: 405. Next: remaining IDAS/AdoraBuild
+design relationships using existing evidence and only necessary layout views.
+Required attributes and 33 nonregistry contributions remain open.
+
+The ten remaining Terralith building relationships are resolved against delivered
+views and existing template/graph evidence. The affected definition/registry case
+and scoped checks pass. Canonical-note backlog: 90 (IDAS 59, AdoraBuild 31).
+Coverage groups remain 405. Inventory refresh follows. Required attributes and
+33 nonregistry contributions remain open; this is not full Item 8 completion.
+
+Terralith building views from selector 308b0df2 reproduce exactly. All four sheets
+were inspected; bottom clipping limits are recorded in their README. The ten
+remaining Terralith design decisions can now use these views with existing graph
+and template contents. Canonical-note backlog remains 100 until decisions land.
+
+Inventory matches 79ed59c4 and reproduces exactly. Canonical-note backlog: 100
+(IDAS 59, AdoraBuild 31, Terralith 10). Coverage groups: 405. Remaining Terralith
+building relationships need bounded layout comparison using the existing renderer;
+content summaries alone do not settle those boundaries. No new measurement system
+is justified. Required attributes and nonregistry work remain open.
+
+Terralith rubble is reconciled as one archaeological ruin family with six roots
+and their size alternatives. Existing template loot bindings support the design
+and terrain distinction. The affected case and scoped checks pass. Canonical-note
+backlog: 100 (IDAS 59, AdoraBuild 31, Terralith 10). Inventory refresh follows.
+
+Inventory matches d2213481 and reproduces exactly. Canonical-note backlog: 101
+(IDAS 59, AdoraBuild 31, Terralith 11). Coverage groups: 405. Next: remaining
+Terralith building/rubble comparisons. Attributes and nonregistry work remain.
+
+Four Terralith design relationships are resolved: spire, frosted dungeon, hive
+cache and witch hut. Existing template/graph evidence and the affected case pass;
+scoped checks pass. Canonical-note backlog: 101 (IDAS 59, AdoraBuild 31, Terralith
+11). Coverage groups: 405. Inventory refresh follows. Remaining Terralith names:
+desert_outpost, glacial_hut, igloo, mage_complex, mage_tower, rubble, underground/
+mining_outpost, underground/old_refinery, underground/sunken_tower, underground_cabin
+and valley_lodge. Attributes and 33 nonregistry contributions remain open.
+
 Inventory matches 420fe50f and reproduces exactly. Canonical-note backlog: 105
 (IDAS 59, AdoraBuild 31, Terralith 15). Coverage groups: 405. Next: Terralith
 design comparisons. Required attributes and 33 nonregistry contributions remain.

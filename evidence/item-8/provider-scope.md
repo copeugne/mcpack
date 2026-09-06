@@ -9379,3 +9379,95 @@ SHA-256: 79129d05f74bb755e2ce3b847df40b51c03aac486ebd2429383e5359362410dc.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-towns-designs-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-towns-designs-r2.json
 ```
+
+### Terralith encounter/cache design reconciliation, 2026-09-07
+
+Four records now bind existing template contents and component graphs. Spire is
+one connected assembly with loot and spawners in its base halves, not terrain
+alone. Frosted dungeon is a distinct deepslate chamber with a stray spawner.
+The underground hive templates are alternatives with dedicated loot barrels;
+the decorative hive lacks those cache contents and is not selected by this root.
+Both witch-hut roots share one template while preserving eligibility and spawn
+input differences. Neither names nor generation-step labels prove exposure.
+
+The affected existing case and scoped quality checks pass. Canonical-note backlog:
+101, down from 105 (IDAS 59, AdoraBuild 31, Terralith 11). Coverage groups remain
+405. No new capture or measurement was added. Remaining building and rubble
+comparisons, required attributes and nonregistry reconciliation remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from d2213481 and independently reproduced exactly.
+Only the four Terralith grouping decisions and the decision input identity changed.
+SHA-256: 555f07790ee25963ece0b361fe1ca49cf29fec08b1d2bb99284d4597c8b5f4da.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-encounters-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-encounters-r2.json
+```
+
+### Terralith rubble design reconciliation, 2026-09-07
+
+All six biome sets retain corresponding small, medium and large authored ruin
+alternatives. Existing templates bind brushable blocks to common trail-ruins loot;
+large alternatives also bind decorated pots to rare trail-ruins loot. Medium pots
+lack that rare-loot binding. Matching size envelopes and corresponding masonry,
+timber, sign and vegetation substitutions support one family with material and
+size variants. These are authored archaeological caches, not terrain-only rubble.
+Effective exposure and reward behavior remain unproven. No new capture or
+measurement was needed.
+
+The affected case and scoped checks pass. Canonical-note backlog: 100, down from
+101 (IDAS 59, AdoraBuild 31, Terralith 10). Coverage groups remain 405. Required
+attributes and nonregistry contribution reconciliation remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 79ed59c4 and independently reproduced exactly.
+Only the rubble grouping decision and the decision input identity changed.
+SHA-256: d86bac33950fd68da7afc7939df4543ecb868fa22b50273228408d4279a96cf5.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-rubble-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-rubble-r2.json
+```
+
+### Terralith building design reconciliation, 2026-09-07
+
+The ten remaining records bind the delivered comparison sheets at 7adf45b5 and
+existing templates/graphs. Surface buildings preserve the open desert compound,
+extended valley lodge, compact igloo and glacial residence alternatives.
+Underground designs distinguish broken-roof cabins, framed mining shelters,
+elongated refinery and narrow sunken tower. Shared cabin roots and size alternatives
+remain within their respective families. The five mage tower variants share their
+tower form; the complex adds connected roads, barracks and houses and remains a
+separate assembly. Shared mob pieces are components. Full root settings remain.
+
+The existing affected definition/registry/evidence case and scoped checks pass.
+Canonical-note backlog: 90, down from 100, comprising IDAS 59 and AdoraBuild 31.
+Coverage groups remain 405. View limitations remain recorded in the source README;
+these decisions do not prove generated geometry, exposure or effective gameplay.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k terralith
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 9d75c96b and independently reproduced exactly.
+Only the ten Terralith grouping decisions and the decision input identity changed.
+SHA-256: 04bc241dbb692e7473df65b408f83da459dff061bf895493134e78ef14d73613.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-buildings-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-buildings-r2.json
+```
