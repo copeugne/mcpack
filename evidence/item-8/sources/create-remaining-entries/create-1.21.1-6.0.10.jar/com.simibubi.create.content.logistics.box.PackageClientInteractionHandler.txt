@@ -1,0 +1,167 @@
+Classfile create-1.21.1-6.0.10.jar!/com/simibubi/create/content/logistics/box/PackageClientInteractionHandler.class
+  Last modified Apr 21, 2026; size 1819 bytes
+  SHA-256 checksum e0fe57eb31dcbcf5ce515e5e0d37f4d216d9f00a6d7b0723fd9c25864f59e82a
+  Compiled from "PackageClientInteractionHandler.java"
+public class com.simibubi.create.content.logistics.box.PackageClientInteractionHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #47                         // com/simibubi/create/content/logistics/box/PackageClientInteractionHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Methodref          #8.#9          // net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+   #8 = Class              #10            // net/neoforged/neoforge/event/entity/player/AttackEntityEvent
+   #9 = NameAndType        #11:#12        // getEntity:()Lnet/minecraft/world/entity/player/Player;
+  #10 = Utf8               net/neoforged/neoforge/event/entity/player/AttackEntityEvent
+  #11 = Utf8               getEntity
+  #12 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+  #13 = Methodref          #14.#15        // net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+  #14 = Class              #16            // net/minecraft/world/entity/player/Player
+  #15 = NameAndType        #17:#18        // level:()Lnet/minecraft/world/level/Level;
+  #16 = Utf8               net/minecraft/world/entity/player/Player
+  #17 = Utf8               level
+  #18 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #19 = Methodref          #20.#21        // net/minecraft/world/level/Level.isClientSide:()Z
+  #20 = Class              #22            // net/minecraft/world/level/Level
+  #21 = NameAndType        #23:#24        // isClientSide:()Z
+  #22 = Utf8               net/minecraft/world/level/Level
+  #23 = Utf8               isClientSide
+  #24 = Utf8               ()Z
+  #25 = Methodref          #26.#27        // net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+  #26 = Class              #28            // net/minecraft/client/Minecraft
+  #27 = NameAndType        #29:#30        // getInstance:()Lnet/minecraft/client/Minecraft;
+  #28 = Utf8               net/minecraft/client/Minecraft
+  #29 = Utf8               getInstance
+  #30 = Utf8               ()Lnet/minecraft/client/Minecraft;
+  #31 = Fieldref           #26.#32        // net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+  #32 = NameAndType        #33:#34        // player:Lnet/minecraft/client/player/LocalPlayer;
+  #33 = Utf8               player
+  #34 = Utf8               Lnet/minecraft/client/player/LocalPlayer;
+  #35 = Methodref          #8.#36         // net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getTarget:()Lnet/minecraft/world/entity/Entity;
+  #36 = NameAndType        #37:#38        // getTarget:()Lnet/minecraft/world/entity/Entity;
+  #37 = Utf8               getTarget
+  #38 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+  #39 = Class              #40            // com/simibubi/create/content/logistics/box/PackageEntity
+  #40 = Utf8               com/simibubi/create/content/logistics/box/PackageEntity
+  #41 = Class              #42            // com/simibubi/create/foundation/mixin/accessor/MinecraftAccessor
+  #42 = Utf8               com/simibubi/create/foundation/mixin/accessor/MinecraftAccessor
+  #43 = InterfaceMethodref #41.#44        // com/simibubi/create/foundation/mixin/accessor/MinecraftAccessor.create$setMissTime:(I)V
+  #44 = NameAndType        #45:#46        // create$setMissTime:(I)V
+  #45 = Utf8               create$setMissTime
+  #46 = Utf8               (I)V
+  #47 = Class              #48            // com/simibubi/create/content/logistics/box/PackageClientInteractionHandler
+  #48 = Utf8               com/simibubi/create/content/logistics/box/PackageClientInteractionHandler
+  #49 = Utf8               Code
+  #50 = Utf8               LineNumberTable
+  #51 = Utf8               LocalVariableTable
+  #52 = Utf8               this
+  #53 = Utf8               Lcom/simibubi/create/content/logistics/box/PackageClientInteractionHandler;
+  #54 = Utf8               onPlayerPunchPackage
+  #55 = Utf8               (Lnet/neoforged/neoforge/event/entity/player/AttackEntityEvent;)V
+  #56 = Utf8               event
+  #57 = Utf8               Lnet/neoforged/neoforge/event/entity/player/AttackEntityEvent;
+  #58 = Utf8               attacker
+  #59 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #60 = Utf8               mc
+  #61 = Utf8               Lnet/minecraft/client/Minecraft;
+  #62 = Utf8               StackMapTable
+  #63 = Utf8               RuntimeVisibleAnnotations
+  #64 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #65 = Utf8               Lnet/neoforged/api/distmarker/OnlyIn;
+  #66 = Utf8               value
+  #67 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+  #68 = Utf8               CLIENT
+  #69 = Utf8               SourceFile
+  #70 = Utf8               PackageClientInteractionHandler.java
+  #71 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+{
+  public com.simibubi.create.content.logistics.box.PackageClientInteractionHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 14: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/simibubi/create/content/logistics/box/PackageClientInteractionHandler;
+
+  public static void onPlayerPunchPackage(net.neoforged.neoforge.event.entity.player.AttackEntityEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/player/AttackEntityEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getEntity:()Lnet/minecraft/world/entity/player/Player;
+         4: astore_1
+         5: aload_1
+         6: invokevirtual #13                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+         9: invokevirtual #19                 // Method net/minecraft/world/level/Level.isClientSide:()Z
+        12: ifne          16
+        15: return
+        16: invokestatic  #25                 // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+        19: astore_2
+        20: aload_1
+        21: aload_2
+        22: getfield      #31                 // Field net/minecraft/client/Minecraft.player:Lnet/minecraft/client/player/LocalPlayer;
+        25: if_acmpeq     29
+        28: return
+        29: aload_0
+        30: invokevirtual #35                 // Method net/neoforged/neoforge/event/entity/player/AttackEntityEvent.getTarget:()Lnet/minecraft/world/entity/Entity;
+        33: instanceof    #39                 // class com/simibubi/create/content/logistics/box/PackageEntity
+        36: ifne          40
+        39: return
+        40: aload_2
+        41: checkcast     #41                 // class com/simibubi/create/foundation/mixin/accessor/MinecraftAccessor
+        44: bipush        10
+        46: invokeinterface #43,  2           // InterfaceMethod com/simibubi/create/foundation/mixin/accessor/MinecraftAccessor.create$setMissTime:(I)V
+        51: return
+      LineNumberTable:
+        line 23: 0
+        line 24: 5
+        line 25: 9
+        line 26: 15
+        line 27: 16
+        line 28: 20
+        line 29: 28
+        line 30: 29
+        line 31: 39
+        line 32: 40
+        line 33: 51
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      52     0 event   Lnet/neoforged/neoforge/event/entity/player/AttackEntityEvent;
+            5      47     1 attacker   Lnet/minecraft/world/entity/player/Player;
+           20      32     2    mc   Lnet/minecraft/client/Minecraft;
+      StackMapTable: number_of_entries = 3
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class net/minecraft/world/entity/player/Player ]
+        frame_type = 252 /* append */
+          offset_delta = 12
+          locals = [ class net/minecraft/client/Minecraft ]
+        frame_type = 10 /* same */
+    RuntimeVisibleAnnotations:
+      0: #64()
+        net.neoforged.bus.api.SubscribeEvent
+      1: #65(#66=e#67.#68)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+        )
+}
+SourceFile: "PackageClientInteractionHandler.java"
+RuntimeVisibleAnnotations:
+  0: #71(#66=[e#67.#68])
+    net.neoforged.fml.common.EventBusSubscriber(
+      value=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]
+    )
