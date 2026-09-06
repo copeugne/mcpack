@@ -225,6 +225,8 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "dev/ryanhcode/sable/companion/SableCompanion.class",
+    "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion.class",
     "com/jesz/createdieselgenerators/mixins/BasinRecipeMixin.class",
     "com/jesz/createdieselgenerators/mixins/ContraptionMixin.class",
     "com/jesz/createdieselgenerators/mixins/CopycatBlockMixin.class",
@@ -3739,6 +3741,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
         "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar!/META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
@@ -3825,6 +3828,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar": (
+            "createdieselgenerators-1.21.1-1.3.15.jar",
+            "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed",
+        ),
         "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar": (
             "comforts-neoforge-9.0.5+1.21.1.jar",
             "5be2f580af278c5707679ceb079aee46d13ffbe6c2f5138c86598a8e90ca3969",
@@ -4246,6 +4253,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("plus/dragons/createenchantmentindustry/")
                 verbose |= name.startswith("rbasamoyai/createbigcannons/")
                 verbose |= name.startswith("com/jesz/createdieselgenerators/")
+                verbose |= name.startswith("dev/ryanhcode/sable/companion/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
