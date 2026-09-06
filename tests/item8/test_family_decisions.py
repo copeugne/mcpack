@@ -2633,12 +2633,23 @@ def test_nether_arena_variants_preserve_placement_and_component_ownership() -> N
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
 
 
-def test_voyager_harvest_heap_preserves_root_variants() -> None:
+@pytest.mark.parametrize(("family", "expected"), [
+    ("mvs:harvest_heap", {
+        "mvs:haystack": ["haystack", "small_haystack"],
+        "mvs:pile": ["mixed_pile", "pumpkin_pile", "small_pumpkin_pile"],
+    }),
+    ("mvs:animal_hut", {
+        "mvs:fox_hut": ["fox_hut"], "mvs:snowy_dog_hut": ["snowy_dog_hut"],
+    }),
+])
+def test_voyager_small_variants_preserve_roots(
+    family: str, expected: dict[str, list[str]],
+) -> None:
     decisions = cast("dict[str, JsonValue]", json.loads(
         Path("evidence/item-8/family-decisions.json").read_bytes()))
     groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
-    group = next(g for g in groups if g["family_id"] == "mvs:harvest_heap")
-    ids = ["mvs:haystack", "mvs:pile"]
+    group = next(g for g in groups if g["family_id"] == family)
+    ids = list(expected)
     assert group["structure_ids"] == ids
     assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
             if m in ids] == ids
@@ -2646,10 +2657,6 @@ def test_voyager_harvest_heap_preserves_root_variants() -> None:
     assert set(variants) == set(ids)
     catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
         "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
-    expected = {
-        "mvs:haystack": ["haystack", "small_haystack"],
-        "mvs:pile": ["mixed_pile", "pumpkin_pile", "small_pumpkin_pile"],
-    }
     for rid in ids:
         name = rid.split(":")[1]
         definition = next(r["document"] for r in cast(

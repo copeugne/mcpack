@@ -10395,7 +10395,7 @@
       "structure_ids": [
         "mvs:bee_dome"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for bee dome. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One small glazed dome enclosure with a door, flowers, two beehives and campfires. Its enclosed apiary arrangement differs from the low animal huts and from a purely decorative dome. The hive block entities remain content of the same template; no entity count is inferred from the absence of top-level template entities. It has no packaged loot references or spawners. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/bee_dome/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -10417,7 +10417,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -10953,7 +10956,7 @@
       "structure_ids": [
         "mvs:duck"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for duck. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One low duck sculpture on a scattered-block setting. Its bird silhouette differs from upright humanoid statues, the horned devil and the arched fossil. Player-head block entities and candles are authored details, not spawned ducks. The template has no authored entities, spawners or packaged loot references. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/duck/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -10975,7 +10978,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -11100,34 +11106,64 @@
       }
     },
     {
-      "family_id": "mvs:fox_hut",
-      "name": "Moog's Voyager Structures Fox Hut",
+      "family_id": "mvs:animal_hut",
+      "name": "Voyager animal huts",
       "structure_ids": [
-        "mvs:fox_hut"
+        "mvs:fox_hut",
+        "mvs:snowy_dog_hut"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for fox hut. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/fox_hut/start_pool",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
+      "rationale": "Fox and snowy dog huts form one small animal-shelter family with biome, ground, roof and accessory variants. Both inspected templates use a low pitched wooden roof over a tiny open-front shelter; snow, lantern, trapdoor and support differences do not make independent families. Each root selects one template. Neither template contains authored entities, block entities, spawners or packaged loot references, so the animal labels do not establish spawned foxes or dogs. Preserve taiga versus snowy biome constraints and the different terrain-check radii in the full root definitions. This shelter motif differs from the glazed bee dome and larger house/pen enclosures. Effective generation and natural spawning remain unresolved.",
+      "variants": {
+        "mvs:fox_hut": {
+          "definition": {
+            "allowed_terrain_height_range": 3,
+            "biomes": "#c:is_taiga",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/fox_hut/start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 1,
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": [
+            "mvs:other_decoration/fox_hut"
+          ]
         },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
+        "mvs:snowy_dog_hut": {
+          "definition": {
+            "allowed_terrain_height_range": 3,
+            "biomes": "#c:is_snowy",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/snowy_dog_hut",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 2,
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": [
+            "mvs:other_decoration/snowy_dog_hut"
+          ]
+        }
       },
-      "custom_generation_settings": {
-        "allowed_terrain_height_range": 3,
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin",
-        "terrain_height_radius_check": 1
-      },
-      "missing_components": [],
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -11394,7 +11430,7 @@
       "structure_ids": [
         "mvs:large_mushroom"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for large mushroom. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One broad mushroom-shaped authored landmark with a large rounded cap, substantial stalk and constructed base details. Its palette combines mushroom materials with iron blocks, glazed terracotta, wool, slabs and walls; it is not a vegetation-only mushroom feature. This spreading cap-and-stalk composition differs from the narrow pedestal-mounted mushroom statue. The template has no authored entities, block entities or packaged loot references. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:nature/large_mushroom/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -11414,7 +11450,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -11717,7 +11756,7 @@
       "structure_ids": [
         "mvs:mushroom_statue"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for mushroom statue. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One narrow pedestal-mounted mushroom figure with a square cap and upright supports. Its compact plinth-and-figure composition differs from the broad rounded large-mushroom landmark and from the tall villager and horned-devil silhouettes. The crafted stone, quartz and wood form has no authored entities, block entities or packaged loot references. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/mushroom_statue/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -11737,7 +11776,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -11746,7 +11788,7 @@
       "structure_ids": [
         "mvs:nether_devil"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for nether devil. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One tall horned devil sculpture assembled from Nether masonry, with fire and soul-sand details. Its paired horns and upright body form differ from the villager figure and mushroom statue; the material palette alone is not the family boundary. The template has no authored entities, block entities or packaged loot references. The depicted creature is not an authored mob. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/nether_devil/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure",
@@ -11769,7 +11811,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -12100,43 +12145,12 @@
       }
     },
     {
-      "family_id": "mvs:snowy_dog_hut",
-      "name": "Moog's Voyager Structures Snowy Dog Hut",
-      "structure_ids": [
-        "mvs:snowy_dog_hut"
-      ],
-      "rationale": "Distinct authored root and reachable component templates are retained for snowy dog hut. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/snowy_dog_hut",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
-        },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "allowed_terrain_height_range": 3,
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin",
-        "terrain_height_radius_check": 2
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
-      }
-    },
-    {
       "family_id": "mvs:snowy_fossil",
       "name": "Moog's Voyager Structures Snowy Fossil",
       "structure_ids": [
         "mvs:snowy_fossil"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for snowy fossil. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One arched rib-like fossil composition built from diorite blocks, stairs, slabs and walls with snow and ground details. Its repeated skeletal arches differ from humanoid sculptures and upright ruin pillars. This is a deliberately composed landmark, not a separately counted natural ore or vegetation patch. It has no authored entities, block entities or packaged loot references. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/snowy_fossil",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -12156,7 +12170,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
@@ -12356,7 +12373,7 @@
       "structure_ids": [
         "mvs:villager_statue"
       ],
-      "rationale": "Distinct authored root and reachable component templates are retained for villager statue. Related designs require final canonical reconciliation. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "One tall weathered villager-like stone figure with head and body details and trailing vines. Its upright humanoid silhouette differs from the horned devil, square-capped mushroom figure and low duck sculpture. The template has no authored entities, block entities or packaged loot references; no actual villager is inferred from its name. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/villager_statue/start_pool",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -12376,7 +12393,10 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
       }
     },
     {
