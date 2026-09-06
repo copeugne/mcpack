@@ -3306,3 +3306,34 @@ that discovered entry; it does not silently ignore it. Scoped type errors in
 the new mixin-list accumulation were also corrected. Six focused cases and
 scoped checks pass using the commands immediately above. Contribution roles
 remain open, not inferred from this payload partition alone.
+
+### Aether reload and selected-library role resolution
+
+Source aether-reload-consumers (7340422) closes the two reload handlers:
+RecipeReloadListener clears the freezing block's cached recipe tables and
+results; BannerReloadListener clears the cached Swet banner item. Neither
+selects or places another site.
+
+Source aether-cumulus-platform (300dd88) closes the platform service's role:
+it discovers CumulusEntrypoint-annotated MenuInitializer implementations for
+the client menu path and forwards supplied packets through PacketDistributor.
+Together with the captured client entry and storage-summary lock predicate,
+this accounts for Cumulus as menu/preview/platform support, not an independent
+structure provider. No runtime structure-placement success is implied.
+
+Source aether-nitrogen-world (c5d2128) resolves the registered world support:
+nitrogen_internals:add_mob_charge modifies the supplied biome's mob-spawn charge
+and energy budget for a supplied entity type. It does not select structure
+resources. hooked_trunk_placer builds trunks and branches from a supplied tree
+configuration and returns foliage attachments. aether_pine_foliage_placer and
+hooked_foliage_placer place leaf rows around supplied foliage attachments.
+These are mob-spawn settings and tree geometry, not independent architectural
+families. Nitrogen supplies no packaged data to invoke them independently;
+other mods' supplied configurations remain attributable to their own provider
+rows. Loot support remains relevant to the later attribute pass.
+
+All three source captures have exact reproducible commands and independently
+matching r1 output in their READMEs. This closes the reload-handler and selected
+library role questions using the existing source path, without a new validator
+or runtime sample. Aether's remaining common-hook reconciliation and final
+whole-provider check are still required. Census remains 75 resolved and 61 open.
