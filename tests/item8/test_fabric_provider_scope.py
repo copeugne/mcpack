@@ -34,9 +34,11 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
         names = {n for n in parent.namelist() if not n.endswith("/")}
         jars = {n for n in names if n.endswith(".jar")}
         assert len(jars) == 43
-        queue = Path("evidence/item-8/provider-scope.md").read_text().split(
-            "### Exact Fabric module queue\n", 1
-        )[1]
+        queue = (
+            Path("evidence/item-8/provider-scope.md")
+            .read_text()
+            .split("### Exact Fabric module queue\n", 1)[1]
+        )
         queue_names = [
             line.split("`", 2)[1] for line in queue.splitlines() if line.startswith("| `")
         ]
@@ -219,3 +221,52 @@ def test_fabric_pack_discovery_consumer_sources() -> None:
                         row["disassembly_sha256"]
                         == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                     )
+
+
+def test_fabric_base_module_membership() -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = "META-INF/jars/fabric-api-base-0.4.42+d1308ded19.jar"
+    directory = Path("evidence/item-8/sources/fabric-base-entry")
+    raw = (directory / "identities.json").read_bytes()
+    assert (
+        hashlib.sha256(raw).hexdigest()
+        == "d587a46473ff9c81c44c1567e4bc236bf01cd2f5e7afeaec02dc34275290384e"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 1
+    row = rows[0]
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        with ZipFile(BytesIO(payload)) as archive:
+            files = {n for n in archive.namelist() if not n.endswith("/")}
+            classes = {n for n in files if n.endswith(".class")}
+            assert len(classes) == 17
+            assert files - classes == {
+                "META-INF/MANIFEST.MF",
+                "META-INF/neoforge.mods.toml",
+                "assets/fabric-api-base/icon.png",
+                "META-INF/architectury-loom-nesting-metadata.json",
+            }
+            assert {
+                n
+                for n in classes
+                if any(
+                    marker in archive.read(n)
+                    for marker in (
+                        b"Lnet/neoforged/fml/common/Mod;",
+                        b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                    )
+                )
+            } == {row["class"]}
+            assert row["archive"] == source.name + "!/" + member
+            assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert (
+                row["disassembly_sha256"]
+                == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+            )

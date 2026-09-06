@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric API Base is resolved: source da5dce0 (extractor 77dc50e), independently
+reproduced, has an empty sole loader entry and no data/mixin/service payload.
+Six focused Fabric cases and scoped checks pass. Module queue: five resolved,
+38 open. Next: conventional tag registration and remaining named modules.
+Whole-provider census remains 90 resolved, 46 open. No family candidate added.
+No live runtime or capture process.
+
 Fabric now has an exact 43-module queue in provider-scope.md: four resolved,
 39 open. The fourth resolved module is transitive access wideners: five files,
 lowcodefml metadata/access declarations and no executable or data payload.
