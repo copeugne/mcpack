@@ -406,3 +406,46 @@ def test_emi_ores_membership_payload() -> None:
                 body = disassembly.decode().split("\n{", 1)[1]
                 assert "Code:" not in body
                 assert "org.spongepowered.asm.mixin.gen.Accessor" in body
+
+
+def test_player_animation_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "player-animation-lib-forge-2.0.4+1.21.1.jar")
+    assert source.sha256 == "dbe5de45f5cd60c0e5e47af14e6d564534a98456e973cf670cb881f6938eee92"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/player-animation-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "85e2ae91df3e9e2b56155adf63d19dc330ea1c829a4e3b53e04ebeaefbf17fa5")
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    entry = "dev/kosmx/playerAnim/forge/ForgeClientEvent.class"
+    plugin = "dev/kosmx/playerAnim/impl/mixin/MixinConfig.class"
+    assert {r["class"] for r in rows} == {entry, plugin}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 127
+        assert files - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml", "player-animation-lib-minecraft_common-refmap.json",
+            "playerAnimator-common.mixins.json"}
+        assert archive.read("META-INF/MANIFEST.MF") == b"Manifest-Version: 1.0\r\n\r\n"
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "playerAnimator-common.mixins.json"}]
+        config = cast("dict[str, JsonValue]", json.loads(
+            archive.read("playerAnimator-common.mixins.json")))
+        assert config["plugin"] == plugin.removesuffix(".class").replace("/", ".")
+        assert not any(config.get(k) for k in ("mixins", "server"))
+        assert len(cast("list[str]", config["client"])) == 17
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == {entry}
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            disassembly = (directory / row["disassembly"]).read_bytes()
+            assert row["disassembly_sha256"] == hashlib.sha256(disassembly).hexdigest()
+            if row["class"] == entry:
+                assert b"dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]" in disassembly
