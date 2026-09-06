@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric now has an exact 43-module queue in provider-scope.md: four resolved,
+39 open. The fourth resolved module is transitive access wideners: five files,
+lowcodefml metadata/access declarations and no executable or data payload.
+The existing Fabric test binds the complete file partition and queue coverage.
+Five focused cases and scoped checks pass. Next: inspect the named open module
+entry/hook roles. Whole-provider census remains 90 resolved, 46 open; module
+counts are not family counts. No live runtime or capture process.
+
 Fabric resource-loading membership is resolved. Discovery/fixed-pack source
 8cfe15c (extractors 6cf2878, e29938a) independently reproduces. Fixed pack has
 metadata only, no namespaces or ordinary resource content; other packs are

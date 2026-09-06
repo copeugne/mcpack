@@ -34,6 +34,14 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
         names = {n for n in parent.namelist() if not n.endswith("/")}
         jars = {n for n in names if n.endswith(".jar")}
         assert len(jars) == 43
+        queue = Path("evidence/item-8/provider-scope.md").read_text().split(
+            "### Exact Fabric module queue\n", 1
+        )[1]
+        queue_names = [
+            line.split("`", 2)[1] for line in queue.splitlines() if line.startswith("| `")
+        ]
+        assert len(queue_names) == len(set(queue_names)) == 43
+        assert set(queue_names) == {member.rsplit("/", 1)[1] for member in jars}
         assert names - jars == {
             "META-INF/MANIFEST.MF",
             "META-INF/neoforge.mods.toml",
@@ -46,6 +54,17 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
             payload = parent.read(member)
             with ZipFile(BytesIO(payload)) as archive:
                 files = {n for n in archive.namelist() if not n.endswith("/")}
+                if "fabric-transitive-access-wideners-v1-" in member:
+                    assert files == {
+                        "META-INF/MANIFEST.MF",
+                        "META-INF/neoforge.mods.toml",
+                        "META-INF/accesstransformer.cfg",
+                        "META-INF/architectury-loom-nesting-metadata.json",
+                        "assets/fabric-transitive-access-wideners-v1/icon.png",
+                    }
+                    assert b'modLoader = "lowcodefml"' in archive.read(
+                        "META-INF/neoforge.mods.toml"
+                    )
                 assert not any(n.endswith((".jar", ".nbt")) for n in files)
                 data = {n for n in files if n.startswith("data/")}
                 if data:
