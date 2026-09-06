@@ -1,0 +1,140 @@
+Compiled from "RangedWeaponMod.java"
+public class net.fabric_extras.ranged_weapon.RangedWeaponMod {
+  public static final java.lang.String NAMESPACE = "ranged_weapon";
+
+  public static final java.lang.String ID = "ranged_weapon_api";
+
+  private static boolean potionRegistered;
+
+  public net.fabric_extras.ranged_weapon.RangedWeaponMod();
+    Code:
+       0: aload_0
+       1: invokespecial #37                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: ldc2_w        #41                 // double 0.1d
+       3: dstore_0
+       4: getstatic     #46                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon.DAMAGE:Lnet/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry;
+       7: getfield      #50                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry.effect:Lnet/minecraft/world/effect/MobEffect;
+      10: getstatic     #53                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.DAMAGE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+      13: getfield      #57                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+      16: ldc           #28                 // String ranged_weapon
+      18: ldc           #59                 // String effect.damage
+      20: invokestatic  #65                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      23: dload_0
+      24: getstatic     #69                 // Field net/minecraft/world/entity/ai/attributes/AttributeModifier$Operation.ADD_MULTIPLIED_BASE:Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;
+      27: invokevirtual #75                 // Method net/minecraft/world/effect/MobEffect.addAttributeModifier:(Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceLocation;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)Lnet/minecraft/world/effect/MobEffect;
+      30: pop
+      31: getstatic     #78                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry;
+      34: getfield      #50                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry.effect:Lnet/minecraft/world/effect/MobEffect;
+      37: getstatic     #80                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry;
+      40: getfield      #57                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+      43: ldc           #28                 // String ranged_weapon
+      45: ldc           #82                 // String effect.haste
+      47: invokestatic  #65                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      50: dload_0
+      51: getstatic     #69                 // Field net/minecraft/world/entity/ai/attributes/AttributeModifier$Operation.ADD_MULTIPLIED_BASE:Lnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;
+      54: invokevirtual #75                 // Method net/minecraft/world/effect/MobEffect.addAttributeModifier:(Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceLocation;DLnet/minecraft/world/entity/ai/attributes/AttributeModifier$Operation;)Lnet/minecraft/world/effect/MobEffect;
+      57: pop
+      58: return
+
+  public static void registerAttributes();
+    Code:
+       0: getstatic     #89                 // Field net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon.all:Ljava/util/ArrayList;
+       3: invokevirtual #95                 // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+       6: astore_0
+       7: aload_0
+       8: invokeinterface #101,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          33
+      16: aload_0
+      17: invokeinterface #105,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #12                 // class net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry
+      25: astore_1
+      26: aload_1
+      27: invokevirtual #108                // Method net/fabric_extras/ranged_weapon/api/EntityAttributes_RangedWeapon$Entry.register:()V
+      30: goto          7
+      33: return
+
+  public static void registerStatusEffects();
+    Code:
+       0: getstatic     #110                // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon.all:Ljava/util/ArrayList;
+       3: invokevirtual #95                 // Method java/util/ArrayList.iterator:()Ljava/util/Iterator;
+       6: astore_0
+       7: aload_0
+       8: invokeinterface #101,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          33
+      16: aload_0
+      17: invokeinterface #105,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #7                  // class net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry
+      25: astore_1
+      26: aload_1
+      27: invokevirtual #111                // Method net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry.register:()V
+      30: goto          7
+      33: return
+
+  public static void registerPotions();
+    Code:
+       0: getstatic     #114                // Field potionRegistered:Z
+       3: ifeq          7
+       6: return
+       7: iconst_1
+       8: putstatic     #114                // Field potionRegistered:Z
+      11: getstatic     #46                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon.DAMAGE:Lnet/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry;
+      14: getstatic     #78                 // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon.HASTE:Lnet/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry;
+      17: invokestatic  #120                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      20: astore_0
+      21: aload_0
+      22: invokeinterface #121,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      27: astore_1
+      28: aload_1
+      29: invokeinterface #101,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      34: ifeq          94
+      37: aload_1
+      38: invokeinterface #105,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      43: checkcast     #7                  // class net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry
+      46: astore_2
+      47: new           #123                // class net/minecraft/world/item/alchemy/Potion
+      50: dup
+      51: iconst_1
+      52: anewarray     #125                // class net/minecraft/world/effect/MobEffectInstance
+      55: dup
+      56: iconst_0
+      57: new           #125                // class net/minecraft/world/effect/MobEffectInstance
+      60: dup
+      61: aload_2
+      62: getfield      #126                // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry.entry:Lnet/minecraft/core/Holder;
+      65: sipush        3600
+      68: invokespecial #129                // Method net/minecraft/world/effect/MobEffectInstance."<init>":(Lnet/minecraft/core/Holder;I)V
+      71: aastore
+      72: invokespecial #132                // Method net/minecraft/world/item/alchemy/Potion."<init>":([Lnet/minecraft/world/effect/MobEffectInstance;)V
+      75: astore_3
+      76: getstatic     #138                // Field net/minecraft/core/registries/BuiltInRegistries.POTION:Lnet/minecraft/core/Registry;
+      79: aload_2
+      80: getfield      #142                // Field net/fabric_extras/ranged_weapon/api/StatusEffects_RangedWeapon$Entry.id:Lnet/minecraft/resources/ResourceLocation;
+      83: invokestatic  #146                // Method potionId:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceLocation;
+      86: aload_3
+      87: invokestatic  #151                // InterfaceMethod net/minecraft/core/Registry.register:(Lnet/minecraft/core/Registry;Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Object;)Ljava/lang/Object;
+      90: pop
+      91: goto          28
+      94: return
+
+  public static net.minecraft.resources.ResourceLocation potionId(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       4: aload_0
+       5: invokevirtual #160                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+       8: aload_0
+       9: invokevirtual #163                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      12: invokedynamic #175,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      17: invokestatic  #65                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      20: areturn
+
+  static {};
+    Code:
+       0: iconst_0
+       1: putstatic     #114                // Field potionRegistered:Z
+       4: return
+}
