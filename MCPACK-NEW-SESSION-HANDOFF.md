@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric game-rule, loot v2, loot v3 and recipe module membership is resolved.
+Parked initializer sources are delivered at 0f9b272; existing entry captures
+and full payload bindings are reused. Twenty-six focused cases and scoped
+checks pass. Fabric has 25 resolved, 18 open modules; overall providers stay
+90 resolved, 46 open. No family added. Continue remaining Fabric entry roles
+and other provider closures alongside Moog design decisions. Do not repeat
+these loot/recipe/game-rule paths or collect another measurement system.
+
 Integrated Villages canonical grouping is settled: one settlement family with
 twelve preserved design/root variants, consistent with CTOV. Full definitions,
 placement differences and missing components are retained. The Mossy Mounds
