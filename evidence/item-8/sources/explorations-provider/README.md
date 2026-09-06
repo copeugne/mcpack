@@ -30,7 +30,7 @@ WorldGenHelper reads the configured village/statue lists, resolves each target
 pool and constructs legacy single elements with the empty processor list and
 RIGID projection. It updates both expanded and raw weighted lists. A missing
 compatible pool causes that addition to return without mutation. Frozen statue
-entries target plains, savanna, snowy and taiga village decorations, with four
+entries target plains, savanna, snowy and taiga village houses pools, with four
 statues in each. These are components of consuming villages, not four new roots.
 
 LanternDecorator chooses positions below leaf blocks and writes chains and

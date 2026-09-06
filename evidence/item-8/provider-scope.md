@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 49 of 136. The exact queue below has 87 open rows.
+Supported provider dispositions: 50 of 136. The exact queue below has 86 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -606,7 +606,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ends_delight-2.6+neoforge.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
-| `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-deepslate`, `explorations-scarecrow-scope`, `explorations-slime-cave` | Bind scarecrow selector and nine variants as one design; reconcile roots, slime cave and remaining resources. |
+| `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -1295,3 +1295,52 @@ ambiguous loop variable; formatting and naming fixes resolve them. Scoped Ruff
 and Basedpyright pass. No runtime measurement, new framework or baseline change.
 Provider dispositions: 49 of 136 resolved, 87 open. Continue the remaining
 provider census before canonical grouping and detailed family attributes.
+
+## Explorations provider candidate disposition
+
+Source 0e6f5e4 binds all 33 classes and reproduced independently. The earlier
+scarecrow, Slime Cave and deepslate interpretations are reused. The mod entry
+registers the scarecrow, two existing custom structure types, their piece and
+processor support, and tree decorators. ServerAboutToStartEvent loads the frozen
+statue configuration and mutates target village pools. Two service implementations
+provide platform access and registry forwarding; two accessor mixins support
+pool mutation and tree-decorator registration. No unexplained executable entry
+or resource category remains in the 201-file archive.
+
+All ten packaged structure roots match the captured runtime registry. Nine have
+pool graphs; the tenth is the already inspected single-template Slime Cave.
+All fifteen packaged pools are connected. Of 55 templates, 49 occur in the nine
+root graphs. The remaining six have explicit dispositions: slime_cave belongs to
+its custom generator, statue_1 through statue_4 are injected village components,
+and underground_temple/intersections/corner is disconnected. The temple graph
+instead references missing underground_temple/intrusions/corner and
+underground_temple/rooms/small_hall_down. Do not silently replace either reference
+or enable the unused component. No graph has an unresolved pool-element codec.
+
+| Contribution | Candidate disposition |
+| --- | --- |
+| Ten existing registry roots | Retain existing candidates, including the custom Slime Cave and underground temple. Custom generator classes are not additional families. |
+| Scarecrow | One five-position figure with nine material variants. Each variant has a configured feature, placed feature and biome modifier using its matching biome tag. The unsuffixed selector references the same nine configured variants, so it is not a tenth design. |
+| explorations:large_mushroom | Named decorated-mushroom candidate. A vanilla tree codec builds mushroom-stem and brown-mushroom geometry with the custom lantern decorator. The placed feature and biome modifier are present. Resolve authored-landmark versus decorated-vegetation grouping explicitly; do not exclude it just because its outer codec is vanilla. |
+| Four statue templates | Components injected into minecraft:village/{plains,savanna,snowy,taiga}/houses. Each template has weight 2 in plains/savanna, 3 in snowy and 4 in taiga under the frozen config. These are not independent roots or sixteen families. |
+| Cave-vine decorator and block processors | Shared vegetation and existing-piece transformations. No packaged configured feature uses the cave-vine decorator. External consumers remain part of whole-stack reconciliation. |
+| One disconnected temple-corner template | Unused by the inspected provider routes; retained without correcting the different missing corner reference. |
+
+The lantern decorator uses Collections.shuffle without the generation random
+source when selecting leaves. Preserve this limitation; candidate coverage is
+not a claim of deterministic ornament positions. Existing Slime Cave marker
+write/insertion limitations also remain. No baseline content was repaired and
+no new runtime measurement was run.
+
+```sh
+uv run pytest -q tests/item8/test_explorations_provider_scope.py
+uv run ruff check tests/item8/test_explorations_provider_scope.py
+uv run basedpyright tests/item8/test_explorations_provider_scope.py
+```
+
+Two focused cases pass. The first check disproved an assumed decor pool suffix:
+VillageType's actual concatenation recipe is village/{type}/houses. The source
+explanation and test now bind houses explicitly. One long line was formatted;
+Ruff and Basedpyright pass. Provider dispositions: 50 of 136 resolved, 86 open.
+Continue the provider census; canonical grouping, complete attributes and final
+delivery gates remain incomplete.
