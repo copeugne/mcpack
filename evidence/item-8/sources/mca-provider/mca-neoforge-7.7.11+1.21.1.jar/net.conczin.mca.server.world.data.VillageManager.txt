@@ -1,0 +1,1143 @@
+Compiled from "VillageManager.java"
+public class net.conczin.mca.server.world.data.VillageManager extends net.minecraft.world.level.saveddata.SavedData implements java.lang.Iterable<net.conczin.mca.server.world.data.Village> {
+  public final java.util.Set<net.minecraft.core.BlockPos> cache;
+
+  private final java.util.Map<java.lang.Integer, net.conczin.mca.server.world.data.Village> villages;
+
+  private final java.util.List<net.minecraft.core.BlockPos> buildingQueue;
+
+  private final net.minecraft.server.level.ServerLevel world;
+
+  private final net.conczin.mca.server.ReaperSpawner reapers;
+
+  private int lastBuildingId;
+
+  private int lastVillageId;
+
+  private int buildingCooldown;
+
+  net.conczin.mca.server.world.data.VillageManager(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/saveddata/SavedData."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method java/util/concurrent/ConcurrentHashMap.newKeySet:()Ljava/util/concurrent/ConcurrentHashMap$KeySetView;
+       8: putfield      #13                 // Field cache:Ljava/util/Set;
+      11: aload_0
+      12: new           #19                 // class java/util/HashMap
+      15: dup
+      16: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      19: putfield      #22                 // Field villages:Ljava/util/Map;
+      22: aload_0
+      23: new           #26                 // class java/util/LinkedList
+      26: dup
+      27: invokespecial #28                 // Method java/util/LinkedList."<init>":()V
+      30: putfield      #29                 // Field buildingQueue:Ljava/util/List;
+      33: aload_0
+      34: bipush        21
+      36: putfield      #33                 // Field buildingCooldown:I
+      39: aload_0
+      40: aload_1
+      41: putfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      44: aload_0
+      45: new           #41                 // class net/conczin/mca/server/ReaperSpawner
+      48: dup
+      49: aload_0
+      50: invokespecial #43                 // Method net/conczin/mca/server/ReaperSpawner."<init>":(Lnet/conczin/mca/server/world/data/VillageManager;)V
+      53: putfield      #46                 // Field reapers:Lnet/conczin/mca/server/ReaperSpawner;
+      56: return
+
+  net.conczin.mca.server.world.data.VillageManager(net.minecraft.server.level.ServerLevel, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/saveddata/SavedData."<init>":()V
+       4: aload_0
+       5: invokestatic  #7                  // Method java/util/concurrent/ConcurrentHashMap.newKeySet:()Ljava/util/concurrent/ConcurrentHashMap$KeySetView;
+       8: putfield      #13                 // Field cache:Ljava/util/Set;
+      11: aload_0
+      12: new           #19                 // class java/util/HashMap
+      15: dup
+      16: invokespecial #21                 // Method java/util/HashMap."<init>":()V
+      19: putfield      #22                 // Field villages:Ljava/util/Map;
+      22: aload_0
+      23: new           #26                 // class java/util/LinkedList
+      26: dup
+      27: invokespecial #28                 // Method java/util/LinkedList."<init>":()V
+      30: putfield      #29                 // Field buildingQueue:Ljava/util/List;
+      33: aload_0
+      34: bipush        21
+      36: putfield      #33                 // Field buildingCooldown:I
+      39: aload_0
+      40: aload_1
+      41: putfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      44: aload_0
+      45: aload_2
+      46: ldc           #50                 // String lastBuildingId
+      48: invokevirtual #52                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      51: putfield      #58                 // Field lastBuildingId:I
+      54: aload_0
+      55: aload_2
+      56: ldc           #60                 // String lastVillageId
+      58: invokevirtual #52                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      61: putfield      #62                 // Field lastVillageId:I
+      64: aload_0
+      65: aload_2
+      66: ldc           #64                 // String reapers
+      68: bipush        10
+      70: invokevirtual #67                 // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;I)Z
+      73: ifeq          93
+      76: new           #41                 // class net/conczin/mca/server/ReaperSpawner
+      79: dup
+      80: aload_0
+      81: aload_2
+      82: ldc           #64                 // String reapers
+      84: invokevirtual #71                 // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+      87: invokespecial #75                 // Method net/conczin/mca/server/ReaperSpawner."<init>":(Lnet/conczin/mca/server/world/data/VillageManager;Lnet/minecraft/nbt/CompoundTag;)V
+      90: goto          101
+      93: new           #41                 // class net/conczin/mca/server/ReaperSpawner
+      96: dup
+      97: aload_0
+      98: invokespecial #43                 // Method net/conczin/mca/server/ReaperSpawner."<init>":(Lnet/conczin/mca/server/world/data/VillageManager;)V
+     101: putfield      #46                 // Field reapers:Lnet/conczin/mca/server/ReaperSpawner;
+     104: aload_2
+     105: ldc           #78                 // String villages
+     107: bipush        10
+     109: invokevirtual #79                 // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+     112: astore_3
+     113: iconst_0
+     114: istore        4
+     116: iload         4
+     118: aload_3
+     119: invokevirtual #83                 // Method net/minecraft/nbt/ListTag.size:()I
+     122: if_icmpge     202
+     125: new           #89                 // class net/conczin/mca/server/world/data/Village
+     128: dup
+     129: aload_3
+     130: iload         4
+     132: invokevirtual #91                 // Method net/minecraft/nbt/ListTag.getCompound:(I)Lnet/minecraft/nbt/CompoundTag;
+     135: aload_1
+     136: invokespecial #94                 // Method net/conczin/mca/server/world/data/Village."<init>":(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/server/level/ServerLevel;)V
+     139: astore        5
+     141: aload         5
+     143: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+     146: invokeinterface #101,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+     151: ifeq          176
+     154: getstatic     #107                // Field net/conczin/mca/MCA.LOGGER:Lorg/apache/logging/log4j/Logger;
+     157: ldc           #113                // String Empty village detected ({}), removing...
+     159: aload         5
+     161: invokevirtual #115                // Method net/conczin/mca/server/world/data/Village.getName:()Ljava/lang/String;
+     164: invokeinterface #119,  3          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+     169: aload_0
+     170: invokevirtual #125                // Method setDirty:()V
+     173: goto          196
+     176: aload_0
+     177: getfield      #22                 // Field villages:Ljava/util/Map;
+     180: aload         5
+     182: invokevirtual #128                // Method net/conczin/mca/server/world/data/Village.getId:()I
+     185: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     188: aload         5
+     190: invokeinterface #137,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     195: pop
+     196: iinc          4, 1
+     199: goto          116
+     202: return
+
+  public static net.conczin.mca.server.world.data.VillageManager get(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokedynamic #141,  0            // InvokeDynamic #0:apply:(Lnet/minecraft/server/level/ServerLevel;)Ljava/util/function/BiFunction;
+       7: invokedynamic #145,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      12: ldc           #148                // String mca_villages
+      14: invokestatic  #150                // InterfaceMethod net/conczin/mca/util/WorldUtils.loadData:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/function/BiFunction;Ljava/util/function/Function;Ljava/lang/String;)Lnet/minecraft/world/level/saveddata/SavedData;
+      17: checkcast     #14                 // class net/conczin/mca/server/world/data/VillageManager
+      20: areturn
+
+  public net.conczin.mca.server.ReaperSpawner getReaperSpawner();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field reapers:Lnet/conczin/mca/server/ReaperSpawner;
+       4: areturn
+
+  public java.util.Optional<net.conczin.mca.server.world.data.Village> getOrEmpty(int);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field villages:Ljava/util/Map;
+       4: iload_1
+       5: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       8: invokeinterface #156,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #89                 // class net/conczin/mca/server/world/data/Village
+      16: invokestatic  #160                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+      19: areturn
+
+  public boolean removeVillage(int);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field villages:Ljava/util/Map;
+       4: iload_1
+       5: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       8: invokeinterface #166,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      13: ifnull        27
+      16: aload_0
+      17: getfield      #13                 // Field cache:Ljava/util/Set;
+      20: invokeinterface #169,  1          // InterfaceMethod java/util/Set.clear:()V
+      25: iconst_1
+      26: ireturn
+      27: iconst_0
+      28: ireturn
+
+  public java.util.Iterator<net.conczin.mca.server.world.data.Village> iterator();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field villages:Ljava/util/Map;
+       4: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #178,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      14: areturn
+
+  public java.util.stream.Stream<net.conczin.mca.server.world.data.Village> findVillages(java.util.function.Predicate<net.conczin.mca.server.world.data.Village>);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field villages:Ljava/util/Map;
+       4: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: aload_1
+      15: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      20: areturn
+
+  public java.util.Optional<net.conczin.mca.server.world.data.Village> findNearestVillage(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_1
+       1: invokevirtual #194                // Method net/minecraft/world/entity/Entity.blockPosition:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_0
+       6: aload_1
+       7: invokedynamic #200,  0            // InvokeDynamic #2:test:(Lnet/minecraft/world/entity/Entity;)Ljava/util/function/Predicate;
+      12: invokevirtual #204                // Method findVillages:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      15: aload_2
+      16: invokedynamic #207,  0            // InvokeDynamic #3:compare:(Lnet/minecraft/core/BlockPos;)Ljava/util/Comparator;
+      21: invokeinterface #211,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+      26: areturn
+
+  public java.util.Optional<net.conczin.mca.server.world.data.Village> findNearestVillage(net.minecraft.core.BlockPos, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokedynamic #215,  0            // InvokeDynamic #4:test:(Lnet/minecraft/core/BlockPos;I)Ljava/util/function/Predicate;
+       8: invokevirtual #204                // Method findVillages:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      11: aload_1
+      12: invokedynamic #218,  0            // InvokeDynamic #5:compare:(Lnet/minecraft/core/BlockPos;)Ljava/util/Comparator;
+      17: invokeinterface #211,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+      22: areturn
+
+  public boolean isWithinHorizontalBoundaries(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field villages:Ljava/util/Map;
+       4: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: aload_1
+      15: invokedynamic #219,  0            // InvokeDynamic #6:test:(Lnet/minecraft/core/BlockPos;)Ljava/util/function/Predicate;
+      20: invokeinterface #222,  2          // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+      25: ireturn
+
+  public net.minecraft.nbt.CompoundTag save(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: aload_1
+       1: ldc           #50                 // String lastBuildingId
+       3: aload_0
+       4: getfield      #58                 // Field lastBuildingId:I
+       7: invokevirtual #226                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      10: aload_1
+      11: ldc           #60                 // String lastVillageId
+      13: aload_0
+      14: getfield      #62                 // Field lastVillageId:I
+      17: invokevirtual #226                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      20: aload_1
+      21: ldc           #78                 // String villages
+      23: aload_0
+      24: getfield      #22                 // Field villages:Ljava/util/Map;
+      27: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      32: invokedynamic #230,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+      37: invokestatic  #231                // InterfaceMethod net/conczin/mca/util/NbtHelper.fromList:(Ljava/lang/Iterable;Ljava/util/function/Function;)Lnet/minecraft/nbt/ListTag;
+      40: invokevirtual #237                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      43: pop
+      44: aload_1
+      45: ldc           #64                 // String reapers
+      47: aload_0
+      48: getfield      #46                 // Field reapers:Lnet/conczin/mca/server/ReaperSpawner;
+      51: invokevirtual #240                // Method net/conczin/mca/server/ReaperSpawner.writeNbt:()Lnet/minecraft/nbt/CompoundTag;
+      54: invokevirtual #237                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      57: pop
+      58: aload_1
+      59: areturn
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+       4: invokevirtual #244                // Method net/minecraft/server/level/ServerLevel.getDayTime:()J
+       7: ldc2_w        #250                // long 100l
+      10: lrem
+      11: lconst_0
+      12: lcmp
+      13: ifne          34
+      16: aload_0
+      17: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      20: invokevirtual #252                // Method net/minecraft/server/level/ServerLevel.players:()Ljava/util/List;
+      23: aload_0
+      24: invokedynamic #256,  0            // InvokeDynamic #8:accept:(Lnet/conczin/mca/server/world/data/VillageManager;)Ljava/util/function/Consumer;
+      29: invokeinterface #260,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      34: aload_0
+      35: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      38: invokevirtual #244                // Method net/minecraft/server/level/ServerLevel.getDayTime:()J
+      41: invokestatic  #266                // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+      44: getfield      #272                // Field net/conczin/mca/Config.bountyHunterInterval:I
+      47: bipush        10
+      49: idiv
+      50: i2l
+      51: lrem
+      52: lconst_0
+      53: lcmp
+      54: ifne          88
+      57: aload_0
+      58: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      61: invokevirtual #275                // Method net/minecraft/server/level/ServerLevel.getDifficulty:()Lnet/minecraft/world/Difficulty;
+      64: getstatic     #279                // Field net/minecraft/world/Difficulty.PEACEFUL:Lnet/minecraft/world/Difficulty;
+      67: if_acmpeq     88
+      70: aload_0
+      71: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      74: invokevirtual #252                // Method net/minecraft/server/level/ServerLevel.players:()Ljava/util/List;
+      77: aload_0
+      78: invokedynamic #285,  0            // InvokeDynamic #9:accept:(Lnet/conczin/mca/server/world/data/VillageManager;)Ljava/util/function/Consumer;
+      83: invokeinterface #260,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      88: aload_0
+      89: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      92: invokevirtual #286                // Method net/minecraft/server/level/ServerLevel.getGameTime:()J
+      95: lstore_1
+      96: aload_0
+      97: invokevirtual #289                // Method iterator:()Ljava/util/Iterator;
+     100: astore_3
+     101: aload_3
+     102: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     107: ifeq          134
+     110: aload_3
+     111: invokeinterface #295,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     116: checkcast     #89                 // class net/conczin/mca/server/world/data/Village
+     119: astore        4
+     121: aload         4
+     123: aload_0
+     124: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     127: lload_1
+     128: invokevirtual #299                // Method net/conczin/mca/server/world/data/Village.tick:(Lnet/minecraft/server/level/ServerLevel;J)V
+     131: goto          101
+     134: lload_1
+     135: aload_0
+     136: getfield      #33                 // Field buildingCooldown:I
+     139: i2l
+     140: lrem
+     141: lconst_0
+     142: lcmp
+     143: ifne          175
+     146: aload_0
+     147: getfield      #29                 // Field buildingQueue:Ljava/util/List;
+     150: invokeinterface #303,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     155: ifne          175
+     158: aload_0
+     159: aload_0
+     160: getfield      #29                 // Field buildingQueue:Ljava/util/List;
+     163: invokeinterface #304,  1          // InterfaceMethod java/util/List.removeFirst:()Ljava/lang/Object;
+     168: checkcast     #307                // class net/minecraft/core/BlockPos
+     171: invokevirtual #309                // Method processBuilding:(Lnet/minecraft/core/BlockPos;)Lnet/conczin/mca/server/world/data/Building$validationResult;
+     174: pop
+     175: aload_0
+     176: getfield      #46                 // Field reapers:Lnet/conczin/mca/server/ReaperSpawner;
+     179: aload_0
+     180: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     183: invokevirtual #313                // Method net/conczin/mca/server/ReaperSpawner.tick:(Lnet/minecraft/server/level/ServerLevel;)V
+     186: invokestatic  #316                // Method net/conczin/mca/server/SpawnQueue.getInstance:()Lnet/conczin/mca/server/SpawnQueue;
+     189: invokevirtual #321                // Method net/conczin/mca/server/SpawnQueue.tick:()V
+     192: return
+
+  private void startBountyHunterWave(net.minecraft.server.level.ServerPlayer, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: bipush        100
+       2: istore_3
+       3: bipush        15
+       5: aload_2
+       6: aload_1
+       7: invokevirtual #323                // Method net/conczin/mca/server/world/data/Village.getReputation:(Lnet/minecraft/world/entity/player/Player;)I
+      10: ineg
+      11: iload_3
+      12: idiv
+      13: iconst_2
+      14: iadd
+      15: invokestatic  #327                // Method java/lang/Math.min:(II)I
+      18: istore        4
+      20: aload_2
+      21: invokevirtual #332                // Method net/conczin/mca/server/world/data/Village.getPopulation:()I
+      24: ifne          40
+      27: aload_2
+      28: invokevirtual #335                // Method net/conczin/mca/server/world/data/Village.cleanReputation:()V
+      31: iload         4
+      33: iconst_2
+      34: imul
+      35: istore        4
+      37: goto          51
+      40: aload_2
+      41: aload_1
+      42: iload         4
+      44: iload_3
+      45: imul
+      46: iconst_2
+      47: idiv
+      48: invokevirtual #338                // Method net/conczin/mca/server/world/data/Village.pushHearts:(Lnet/minecraft/world/entity/player/Player;I)V
+      51: getstatic     #342                // Field net/conczin/mca/registry/CriterionMCA.GENERIC_EVENT:Lnet/conczin/mca/advancement/criterion/GenericEventCriterion;
+      54: aload_1
+      55: ldc_w         #348                // String bounty_hunter
+      58: invokevirtual #350                // Method net/conczin/mca/advancement/criterion/GenericEventCriterion.trigger:(Lnet/minecraft/server/level/ServerPlayer;Ljava/lang/String;)V
+      61: iconst_0
+      62: istore        5
+      64: iload         5
+      66: iload         4
+      68: if_icmpge     111
+      71: aload_0
+      72: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      75: getfield      #356                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+      78: invokeinterface #360,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextBoolean:()Z
+      83: ifeq          97
+      86: aload_0
+      87: getstatic     #365                // Field net/minecraft/world/entity/EntityType.PILLAGER:Lnet/minecraft/world/entity/EntityType;
+      90: aload_1
+      91: invokevirtual #371                // Method spawnBountyHunter:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/server/level/ServerPlayer;)V
+      94: goto          105
+      97: aload_0
+      98: getstatic     #375                // Field net/minecraft/world/entity/EntityType.VINDICATOR:Lnet/minecraft/world/entity/EntityType;
+     101: aload_1
+     102: invokevirtual #371                // Method spawnBountyHunter:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/server/level/ServerPlayer;)V
+     105: iinc          5, 1
+     108: goto          64
+     111: aload_1
+     112: aload_2
+     113: invokevirtual #332                // Method net/conczin/mca/server/world/data/Village.getPopulation:()I
+     116: ifne          125
+     119: ldc_w         #378                // String events.bountyHuntersFinal
+     122: goto          128
+     125: ldc_w         #380                // String events.bountyHunters
+     128: iconst_1
+     129: anewarray     #382                // class java/lang/Object
+     132: dup
+     133: iconst_0
+     134: aload_2
+     135: invokevirtual #115                // Method net/conczin/mca/server/world/data/Village.getName:()Ljava/lang/String;
+     138: aastore
+     139: invokestatic  #384                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     142: getstatic     #390                // Field net/minecraft/ChatFormatting.RED:Lnet/minecraft/ChatFormatting;
+     145: invokevirtual #396                // Method net/minecraft/network/chat/MutableComponent.withStyle:(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;
+     148: iconst_0
+     149: invokevirtual #402                // Method net/minecraft/server/level/ServerPlayer.displayClientMessage:(Lnet/minecraft/network/chat/Component;Z)V
+     152: aload_2
+     153: invokevirtual #408                // Method net/conczin/mca/server/world/data/Village.getCivilRegistry:()Ljava/util/Optional;
+     156: aload_1
+     157: invokedynamic #412,  0            // InvokeDynamic #10:accept:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Consumer;
+     162: invokevirtual #415                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     165: return
+
+  private <T extends net.minecraft.world.entity.monster.AbstractIllager> void spawnBountyHunter(net.minecraft.world.entity.EntityType<T>, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+       5: invokevirtual #418                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+       8: checkcast     #422                // class net/minecraft/world/entity/monster/AbstractIllager
+      11: astore_3
+      12: aload_3
+      13: ifnull        162
+      16: iconst_0
+      17: istore        4
+      19: iload         4
+      21: bipush        32
+      23: if_icmpge     162
+      26: aload_0
+      27: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      30: getfield      #356                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+      33: invokeinterface #424,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      38: ldc_w         #428                // float 6.2831855f
+      41: fmul
+      42: fstore        5
+      44: aload_2
+      45: invokevirtual #429                // Method net/minecraft/server/level/ServerPlayer.getX:()D
+      48: fload         5
+      50: invokestatic  #433                // Method net/minecraft/util/Mth.cos:(F)F
+      53: ldc_w         #439                // float 32.0f
+      56: fmul
+      57: f2d
+      58: dadd
+      59: d2i
+      60: istore        6
+      62: aload_2
+      63: invokevirtual #440                // Method net/minecraft/server/level/ServerPlayer.getZ:()D
+      66: fload         5
+      68: invokestatic  #443                // Method net/minecraft/util/Mth.sin:(F)F
+      71: ldc_w         #439                // float 32.0f
+      74: fmul
+      75: f2d
+      76: dadd
+      77: d2i
+      78: istore        7
+      80: aload_0
+      81: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+      84: getstatic     #446                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      87: iload         6
+      89: iload         7
+      91: invokevirtual #452                // Method net/minecraft/server/level/ServerLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+      94: istore        8
+      96: new           #307                // class net/minecraft/core/BlockPos
+      99: dup
+     100: iload         6
+     102: iload         8
+     104: iload         7
+     106: invokespecial #456                // Method net/minecraft/core/BlockPos."<init>":(III)V
+     109: astore        9
+     111: aload_1
+     112: aload_0
+     113: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     116: aload         9
+     118: invokestatic  #459                // Method net/minecraft/world/entity/SpawnPlacements.isSpawnPositionOk:(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+     121: ifeq          156
+     124: aload_3
+     125: iload         6
+     127: i2d
+     128: iload         8
+     130: i2d
+     131: iload         7
+     133: i2d
+     134: invokevirtual #465                // Method net/minecraft/world/entity/monster/AbstractIllager.setPos:(DDD)V
+     137: aload_3
+     138: aload_2
+     139: invokevirtual #469                // Method net/minecraft/world/entity/monster/AbstractIllager.setTarget:(Lnet/minecraft/world/entity/LivingEntity;)V
+     142: aload_0
+     143: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     146: aload_3
+     147: getstatic     #473                // Field net/minecraft/world/entity/MobSpawnType.EVENT:Lnet/minecraft/world/entity/MobSpawnType;
+     150: invokestatic  #479                // InterfaceMethod net/conczin/mca/util/WorldUtils.spawnEntity:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Mob;Lnet/minecraft/world/entity/MobSpawnType;)V
+     153: goto          162
+     156: iinc          4, 1
+     159: goto          19
+     162: return
+
+  public void reportBuilding(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field cache:Ljava/util/Set;
+       4: aload_1
+       5: invokeinterface #483,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      10: pop
+      11: aload_0
+      12: getfield      #29                 // Field buildingQueue:Ljava/util/List;
+      15: aload_1
+      16: invokeinterface #487,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      21: pop
+      22: return
+
+  public net.conczin.mca.server.world.data.Building$validationResult processBuilding(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: iconst_1
+       4: invokevirtual #488                // Method processBuilding:(Lnet/minecraft/core/BlockPos;ZZ)Lnet/conczin/mca/server/world/data/Building$validationResult;
+       7: areturn
+
+  private net.conczin.mca.resources.data.BuildingType getGroupedBuildingType(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+       4: aload_1
+       5: invokevirtual #491                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: invokevirtual #495                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      11: astore_2
+      12: getstatic     #501                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      15: aload_2
+      16: invokeinterface #507,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      21: astore_3
+      22: invokestatic  #513                // Method net/conczin/mca/resources/BuildingTypes.getInstance:()Lnet/conczin/mca/resources/BuildingTypes;
+      25: invokevirtual #518                // Method net/conczin/mca/resources/BuildingTypes.iterator:()Ljava/util/Iterator;
+      28: astore        4
+      30: aload         4
+      32: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      37: ifeq          75
+      40: aload         4
+      42: invokeinterface #295,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      47: checkcast     #519                // class net/conczin/mca/resources/data/BuildingType
+      50: astore        5
+      52: aload         5
+      54: invokevirtual #521                // Method net/conczin/mca/resources/data/BuildingType.grouped:()Z
+      57: ifeq          72
+      60: aload         5
+      62: aload_3
+      63: invokevirtual #524                // Method net/conczin/mca/resources/data/BuildingType.matchesBlock:(Lnet/minecraft/resources/ResourceLocation;)Z
+      66: ifeq          72
+      69: aload         5
+      71: areturn
+      72: goto          30
+      75: aconst_null
+      76: areturn
+
+  private java.util.Set<net.minecraft.core.BlockPos> getBlockedSet(net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+       4: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: invokedynamic #528,  0            // InvokeDynamic #11:test:()Ljava/util/function/Predicate;
+      19: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      24: invokedynamic #531,  0            // InvokeDynamic #12:apply:()Ljava/util/function/Function;
+      29: invokeinterface #532,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      34: invokestatic  #536                // Method java/util/stream/Collectors.toSet:()Ljava/util/stream/Collector;
+      37: invokeinterface #542,  2          // InterfaceMethod java/util/stream/Stream.collect:(Ljava/util/stream/Collector;)Ljava/lang/Object;
+      42: checkcast     #170                // class java/util/Set
+      45: areturn
+
+  public net.conczin.mca.server.world.data.Building$validationResult processBuilding(net.minecraft.core.BlockPos, boolean, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: bipush        64
+       4: invokevirtual #546                // Method findNearestVillage:(Lnet/minecraft/core/BlockPos;I)Ljava/util/Optional;
+       7: astore        4
+       9: aload_0
+      10: aload_1
+      11: invokevirtual #550                // Method getGroupedBuildingType:(Lnet/minecraft/core/BlockPos;)Lnet/conczin/mca/resources/data/BuildingType;
+      14: astore        5
+      16: new           #554                // class java/util/HashSet
+      19: dup
+      20: invokespecial #556                // Method java/util/HashSet."<init>":()V
+      23: astore        6
+      25: iconst_0
+      26: istore        7
+      28: new           #26                 // class java/util/LinkedList
+      31: dup
+      32: invokespecial #28                 // Method java/util/LinkedList."<init>":()V
+      35: astore        8
+      37: aload         4
+      39: invokevirtual #557                // Method java/util/Optional.isPresent:()Z
+      42: ifeq          377
+      45: aload         4
+      47: invokevirtual #560                // Method java/util/Optional.get:()Ljava/lang/Object;
+      50: checkcast     #89                 // class net/conczin/mca/server/world/data/Village
+      53: astore        9
+      55: aload_0
+      56: aload         9
+      58: invokevirtual #562                // Method getBlockedSet:(Lnet/conczin/mca/server/world/data/Village;)Ljava/util/Set;
+      61: astore        6
+      63: aload         5
+      65: ifnull        174
+      68: aload         5
+      70: invokevirtual #566                // Method net/conczin/mca/resources/data/BuildingType.name:()Ljava/lang/String;
+      73: astore        10
+      75: aload         5
+      77: invokevirtual #569                // Method net/conczin/mca/resources/data/BuildingType.mergeRange:()I
+      80: aload         5
+      82: invokevirtual #569                // Method net/conczin/mca/resources/data/BuildingType.mergeRange:()I
+      85: imul
+      86: i2d
+      87: dstore        11
+      89: aload         9
+      91: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+      94: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      99: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     104: aload         10
+     106: invokedynamic #572,  0            // InvokeDynamic #13:test:(Ljava/lang/String;)Ljava/util/function/Predicate;
+     111: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     116: aload_1
+     117: invokedynamic #575,  0            // InvokeDynamic #14:compare:(Lnet/minecraft/core/BlockPos;)Ljava/util/Comparator;
+     122: invokeinterface #211,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+     127: aload_1
+     128: dload         11
+     130: invokedynamic #576,  0            // InvokeDynamic #15:test:(Lnet/minecraft/core/BlockPos;D)Ljava/util/function/Predicate;
+     135: invokevirtual #579                // Method java/util/Optional.filter:(Ljava/util/function/Predicate;)Ljava/util/Optional;
+     138: astore        13
+     140: aload         13
+     142: invokevirtual #557                // Method java/util/Optional.isPresent:()Z
+     145: ifeq          171
+     148: iconst_1
+     149: istore        7
+     151: aload         13
+     153: invokevirtual #560                // Method java/util/Optional.get:()Ljava/lang/Object;
+     156: checkcast     #582                // class net/conczin/mca/server/world/data/Building
+     159: aload_0
+     160: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     163: aload_1
+     164: invokevirtual #584                // Method net/conczin/mca/server/world/data/Building.addPOI:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+     167: aload_0
+     168: invokevirtual #125                // Method setDirty:()V
+     171: goto          289
+     174: aload         9
+     176: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+     179: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     184: invokeinterface #178,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     189: astore        10
+     191: aload         10
+     193: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     198: ifeq          289
+     201: aload         10
+     203: invokeinterface #295,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     208: checkcast     #582                // class net/conczin/mca/server/world/data/Building
+     211: astore        11
+     213: aload         11
+     215: aload_1
+     216: invokevirtual #588                // Method net/conczin/mca/server/world/data/Building.containsPos:(Lnet/minecraft/core/Vec3i;)Z
+     219: ifeq          286
+     222: iload_2
+     223: ifne          229
+     226: iconst_1
+     227: istore        7
+     229: iload_2
+     230: ifne          253
+     233: aload_0
+     234: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     237: invokevirtual #286                // Method net/minecraft/server/level/ServerLevel.getGameTime:()J
+     240: aload         11
+     242: invokevirtual #592                // Method net/conczin/mca/server/world/data/Building.getLastScan:()J
+     245: lsub
+     246: ldc2_w        #595                // long 4800l
+     249: lcmp
+     250: ifle          286
+     253: aload         11
+     255: aload_0
+     256: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     259: aload         6
+     261: invokevirtual #597                // Method net/conczin/mca/server/world/data/Building.validateBuilding:(Lnet/minecraft/world/level/Level;Ljava/util/Set;)Lnet/conczin/mca/server/world/data/Building$validationResult;
+     264: getstatic     #601                // Field net/conczin/mca/server/world/data/Building$validationResult.SUCCESS:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     267: if_acmpeq     286
+     270: aload         8
+     272: aload         11
+     274: invokevirtual #607                // Method net/conczin/mca/server/world/data/Building.getId:()I
+     277: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     280: invokeinterface #487,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     285: pop
+     286: goto          191
+     289: aload         8
+     291: invokeinterface #608,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     296: astore        10
+     298: aload         10
+     300: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     305: ifeq          337
+     308: aload         10
+     310: invokeinterface #295,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     315: checkcast     #132                // class java/lang/Integer
+     318: invokevirtual #609                // Method java/lang/Integer.intValue:()I
+     321: istore        11
+     323: aload         9
+     325: iload         11
+     327: invokevirtual #612                // Method net/conczin/mca/server/world/data/Village.removeBuilding:(I)V
+     330: aload_0
+     331: invokevirtual #125                // Method setDirty:()V
+     334: goto          298
+     337: aload         9
+     339: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+     342: invokeinterface #101,  1          // InterfaceMethod java/util/Map.isEmpty:()Z
+     347: ifeq          377
+     350: aload_0
+     351: getfield      #22                 // Field villages:Ljava/util/Map;
+     354: aload         9
+     356: invokevirtual #128                // Method net/conczin/mca/server/world/data/Village.getId:()I
+     359: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     362: invokeinterface #166,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+     367: pop
+     368: invokestatic  #616                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     371: astore        4
+     373: aload_0
+     374: invokevirtual #125                // Method setDirty:()V
+     377: iload         7
+     379: ifne          642
+     382: aload         6
+     384: aload_1
+     385: invokeinterface #619,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     390: ifne          642
+     393: aload         4
+     395: new           #89                 // class net/conczin/mca/server/world/data/Village
+     398: dup
+     399: aload_0
+     400: dup
+     401: getfield      #62                 // Field lastVillageId:I
+     404: dup_x1
+     405: iconst_1
+     406: iadd
+     407: putfield      #62                 // Field lastVillageId:I
+     410: aload_0
+     411: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     414: invokespecial #621                // Method net/conczin/mca/server/world/data/Village."<init>":(ILnet/minecraft/server/level/ServerLevel;)V
+     417: invokevirtual #624                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+     420: checkcast     #89                 // class net/conczin/mca/server/world/data/Village
+     423: astore        9
+     425: new           #582                // class net/conczin/mca/server/world/data/Building
+     428: dup
+     429: aload_1
+     430: iload_3
+     431: invokespecial #627                // Method net/conczin/mca/server/world/data/Building."<init>":(Lnet/minecraft/core/BlockPos;Z)V
+     434: astore        10
+     436: aload         5
+     438: ifnull        464
+     441: aload         10
+     443: aload         5
+     445: invokevirtual #566                // Method net/conczin/mca/resources/data/BuildingType.name:()Ljava/lang/String;
+     448: invokevirtual #630                // Method net/conczin/mca/server/world/data/Building.setType:(Ljava/lang/String;)V
+     451: aload         10
+     453: aload_0
+     454: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     457: aload_1
+     458: invokevirtual #584                // Method net/conczin/mca/server/world/data/Building.addPOI:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+     461: goto          522
+     464: aload         10
+     466: aload_0
+     467: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+     470: aload         6
+     472: invokevirtual #597                // Method net/conczin/mca/server/world/data/Building.validateBuilding:(Lnet/minecraft/world/level/Level;Ljava/util/Set;)Lnet/conczin/mca/server/world/data/Building$validationResult;
+     475: astore        11
+     477: aload         11
+     479: getstatic     #601                // Field net/conczin/mca/server/world/data/Building$validationResult.SUCCESS:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     482: if_acmpne     519
+     485: aload         9
+     487: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+     490: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     495: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     500: aload         10
+     502: invokedynamic #634,  0            // InvokeDynamic #16:test:(Lnet/conczin/mca/server/world/data/Building;)Ljava/util/function/Predicate;
+     507: invokeinterface #222,  2          // InterfaceMethod java/util/stream/Stream.anyMatch:(Ljava/util/function/Predicate;)Z
+     512: ifeq          522
+     515: getstatic     #637                // Field net/conczin/mca/server/world/data/Building$validationResult.IDENTICAL:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     518: areturn
+     519: aload         11
+     521: areturn
+     522: aload_0
+     523: getfield      #22                 // Field villages:Ljava/util/Map;
+     526: aload         9
+     528: invokevirtual #128                // Method net/conczin/mca/server/world/data/Village.getId:()I
+     531: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     534: aload         9
+     536: invokeinterface #137,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     541: pop
+     542: aload         10
+     544: aload_0
+     545: dup
+     546: getfield      #58                 // Field lastBuildingId:I
+     549: dup_x1
+     550: iconst_1
+     551: iadd
+     552: putfield      #58                 // Field lastBuildingId:I
+     555: invokevirtual #640                // Method net/conczin/mca/server/world/data/Building.setId:(I)V
+     558: aload         9
+     560: invokevirtual #97                 // Method net/conczin/mca/server/world/data/Village.getBuildings:()Ljava/util/Map;
+     563: aload         10
+     565: invokevirtual #607                // Method net/conczin/mca/server/world/data/Building.getId:()I
+     568: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     571: aload         10
+     573: invokeinterface #137,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     578: pop
+     579: aload         9
+     581: invokevirtual #643                // Method net/conczin/mca/server/world/data/Village.calculateDimensions:()V
+     584: aload_0
+     585: getfield      #22                 // Field villages:Ljava/util/Map;
+     588: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+     593: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+     598: aload         9
+     600: invokedynamic #646,  0            // InvokeDynamic #17:test:(Lnet/conczin/mca/server/world/data/Village;)Ljava/util/function/Predicate;
+     605: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     610: aload         9
+     612: invokedynamic #649,  0            // InvokeDynamic #18:test:(Lnet/conczin/mca/server/world/data/Village;)Ljava/util/function/Predicate;
+     617: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+     622: invokeinterface #650,  1          // InterfaceMethod java/util/stream/Stream.findAny:()Ljava/util/Optional;
+     627: aload_0
+     628: aload         9
+     630: invokedynamic #653,  0            // InvokeDynamic #19:accept:(Lnet/conczin/mca/server/world/data/VillageManager;Lnet/conczin/mca/server/world/data/Village;)Ljava/util/function/Consumer;
+     635: invokevirtual #415                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+     638: aload_0
+     639: invokevirtual #125                // Method setDirty:()V
+     642: getstatic     #601                // Field net/conczin/mca/server/world/data/Building$validationResult.SUCCESS:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     645: areturn
+
+  public void setBuildingCooldown(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #33                 // Field buildingCooldown:I
+       5: return
+
+  public void merge(net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #656                // Method net/conczin/mca/server/world/data/Village.merge:(Lnet/conczin/mca/server/world/data/Village;)V
+       5: return
+
+  private void lambda$processBuilding$20(net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_2
+       1: invokevirtual #332                // Method net/conczin/mca/server/world/data/Village.getPopulation:()I
+       4: aload_1
+       5: invokevirtual #332                // Method net/conczin/mca/server/world/data/Village.getPopulation:()I
+       8: if_icmple     37
+      11: aload_0
+      12: aload_2
+      13: aload_1
+      14: invokevirtual #660                // Method merge:(Lnet/conczin/mca/server/world/data/Village;Lnet/conczin/mca/server/world/data/Village;)V
+      17: aload_0
+      18: getfield      #22                 // Field villages:Ljava/util/Map;
+      21: aload_1
+      22: invokevirtual #128                // Method net/conczin/mca/server/world/data/Village.getId:()I
+      25: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      28: invokeinterface #166,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      33: pop
+      34: goto          60
+      37: aload_0
+      38: aload_1
+      39: aload_2
+      40: invokevirtual #660                // Method merge:(Lnet/conczin/mca/server/world/data/Village;Lnet/conczin/mca/server/world/data/Village;)V
+      43: aload_0
+      44: getfield      #22                 // Field villages:Ljava/util/Map;
+      47: aload_2
+      48: invokevirtual #128                // Method net/conczin/mca/server/world/data/Village.getId:()I
+      51: invokestatic  #131                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      54: invokeinterface #166,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      59: pop
+      60: return
+
+  private static boolean lambda$processBuilding$19(net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: invokevirtual #663                // Method net/conczin/mca/server/world/data/Village.getBox:()Lnet/conczin/mca/util/BlockBoxExtended;
+       4: bipush        64
+       6: invokevirtual #667                // Method net/conczin/mca/util/BlockBoxExtended.inflatedBy:(I)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       9: aload_0
+      10: invokevirtual #663                // Method net/conczin/mca/server/world/data/Village.getBox:()Lnet/conczin/mca/util/BlockBoxExtended;
+      13: invokevirtual #673                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.intersects:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Z
+      16: ireturn
+
+  private static boolean lambda$processBuilding$18(net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: if_acmpeq     9
+       5: iconst_1
+       6: goto          10
+       9: iconst_0
+      10: ireturn
+
+  private static boolean lambda$processBuilding$17(net.conczin.mca.server.world.data.Building, net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #679                // Method net/conczin/mca/server/world/data/Building.isIdentical:(Lnet/conczin/mca/server/world/data/Building;)Z
+       5: ireturn
+
+  private static boolean lambda$processBuilding$16(net.minecraft.core.BlockPos, double, net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_3
+       1: invokevirtual #683                // Method net/conczin/mca/server/world/data/Building.getCenter:()Lnet/minecraft/core/BlockPos;
+       4: aload_0
+       5: invokevirtual #686                // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+       8: dload_1
+       9: dcmpg
+      10: ifge          17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: ireturn
+
+  private static int lambda$processBuilding$15(net.minecraft.core.BlockPos, net.conczin.mca.server.world.data.Building, net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_1
+       1: invokevirtual #683                // Method net/conczin/mca/server/world/data/Building.getCenter:()Lnet/minecraft/core/BlockPos;
+       4: aload_0
+       5: invokevirtual #686                // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+       8: aload_2
+       9: invokevirtual #683                // Method net/conczin/mca/server/world/data/Building.getCenter:()Lnet/minecraft/core/BlockPos;
+      12: aload_0
+      13: invokevirtual #686                // Method net/minecraft/core/BlockPos.distSqr:(Lnet/minecraft/core/Vec3i;)D
+      16: dsub
+      17: d2i
+      18: ireturn
+
+  private static boolean lambda$processBuilding$14(java.lang.String, net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_1
+       1: invokevirtual #690                // Method net/conczin/mca/server/world/data/Building.getType:()Ljava/lang/String;
+       4: aload_0
+       5: invokevirtual #693                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       8: ireturn
+
+  private static boolean lambda$getBlockedSet$13(net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_0
+       1: invokevirtual #698                // Method net/conczin/mca/server/world/data/Building.getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: invokevirtual #521                // Method net/conczin/mca/resources/data/BuildingType.grouped:()Z
+       7: ifne          14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: ireturn
+
+  private static void lambda$startBountyHunterWave$12(net.minecraft.server.level.ServerPlayer, net.conczin.mca.server.world.data.CivilRegistryManager);
+    Code:
+       0: aload_1
+       1: ldc_w         #702                // String civil_registry.bounty_hunters
+       4: iconst_1
+       5: anewarray     #382                // class java/lang/Object
+       8: dup
+       9: iconst_0
+      10: aload_0
+      11: invokevirtual #704                // Method net/minecraft/server/level/ServerPlayer.getName:()Lnet/minecraft/network/chat/Component;
+      14: aastore
+      15: invokestatic  #384                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+      18: invokevirtual #707                // Method net/conczin/mca/server/world/data/CivilRegistryManager.addText:(Lnet/minecraft/network/chat/Component;)V
+      21: return
+
+  private void lambda$tick$11(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field world:Lnet/minecraft/server/level/ServerLevel;
+       4: getfield      #356                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+       7: bipush        10
+       9: invokeinterface #713,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      14: ifne          94
+      17: aload_0
+      18: aload_1
+      19: invokevirtual #717                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+      22: invokevirtual #718                // Method isWithinHorizontalBoundaries:(Lnet/minecraft/core/BlockPos;)Z
+      25: ifne          94
+      28: aload_1
+      29: invokevirtual #722                // Method net/minecraft/server/level/ServerPlayer.isCreative:()Z
+      32: ifne          94
+      35: aload_0
+      36: getfield      #22                 // Field villages:Ljava/util/Map;
+      39: invokeinterface #174,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      44: invokeinterface #184,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      49: invokedynamic #725,  0            // InvokeDynamic #20:test:()Ljava/util/function/Predicate;
+      54: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      59: aload_1
+      60: invokedynamic #726,  0            // InvokeDynamic #21:test:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Predicate;
+      65: invokeinterface #188,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      70: aload_1
+      71: invokedynamic #729,  0            // InvokeDynamic #22:applyAsInt:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/ToIntFunction;
+      76: invokestatic  #733                // InterfaceMethod java/util/Comparator.comparingInt:(Ljava/util/function/ToIntFunction;)Ljava/util/Comparator;
+      79: invokeinterface #211,  2          // InterfaceMethod java/util/stream/Stream.min:(Ljava/util/Comparator;)Ljava/util/Optional;
+      84: aload_0
+      85: aload_1
+      86: invokedynamic #739,  0            // InvokeDynamic #23:accept:(Lnet/conczin/mca/server/world/data/VillageManager;Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Consumer;
+      91: invokevirtual #415                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      94: return
+
+  private void lambda$tick$10(net.minecraft.server.level.ServerPlayer, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #742                // Method startBountyHunterWave:(Lnet/minecraft/server/level/ServerPlayer;Lnet/conczin/mca/server/world/data/Village;)V
+       6: return
+
+  private static int lambda$tick$9(net.minecraft.server.level.ServerPlayer, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #323                // Method net/conczin/mca/server/world/data/Village.getReputation:(Lnet/minecraft/world/entity/player/Player;)I
+       5: ireturn
+
+  private static boolean lambda$tick$8(net.minecraft.server.level.ServerPlayer, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #323                // Method net/conczin/mca/server/world/data/Village.getReputation:(Lnet/minecraft/world/entity/player/Player;)I
+       5: invokestatic  #266                // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+       8: getfield      #746                // Field net/conczin/mca/Config.bountyHunterHearts:I
+      11: if_icmpge     18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  private static boolean lambda$tick$7(net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_0
+       1: invokevirtual #332                // Method net/conczin/mca/server/world/data/Village.getPopulation:()I
+       4: iconst_3
+       5: if_icmplt     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  private void lambda$tick$6(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_1
+       1: invokestatic  #749                // Method net/conczin/mca/server/world/data/PlayerSaveData.get:(Lnet/minecraft/server/level/ServerPlayer;)Lnet/conczin/mca/server/world/data/PlayerSaveData;
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #754                // Method net/conczin/mca/server/world/data/PlayerSaveData.updateLastSeenVillage:(Lnet/conczin/mca/server/world/data/VillageManager;Lnet/minecraft/server/level/ServerPlayer;)V
+       9: return
+
+  private static boolean lambda$isWithinHorizontalBoundaries$5(net.minecraft.core.BlockPos, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: invokevirtual #663                // Method net/conczin/mca/server/world/data/Village.getBox:()Lnet/conczin/mca/util/BlockBoxExtended;
+       4: iconst_0
+       5: sipush        1000
+       8: iconst_0
+       9: invokevirtual #758                // Method net/conczin/mca/util/BlockBoxExtended.expand:(III)Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+      12: aload_0
+      13: invokevirtual #762                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.isInside:(Lnet/minecraft/core/Vec3i;)Z
+      16: ireturn
+
+  private static int lambda$findNearestVillage$4(net.minecraft.core.BlockPos, net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: invokevirtual #765                // Method net/conczin/mca/server/world/data/Village.getCenter:()Lnet/minecraft/core/Vec3i;
+       4: aload_0
+       5: invokevirtual #768                // Method net/minecraft/core/Vec3i.distSqr:(Lnet/minecraft/core/Vec3i;)D
+       8: aload_2
+       9: invokevirtual #765                // Method net/conczin/mca/server/world/data/Village.getCenter:()Lnet/minecraft/core/Vec3i;
+      12: aload_0
+      13: invokevirtual #768                // Method net/minecraft/core/Vec3i.distSqr:(Lnet/minecraft/core/Vec3i;)D
+      16: dsub
+      17: d2i
+      18: ireturn
+
+  private static boolean lambda$findNearestVillage$3(net.minecraft.core.BlockPos, int, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_2
+       1: aload_0
+       2: iload_1
+       3: invokevirtual #771                // Method net/conczin/mca/server/world/data/Village.isWithinBorder:(Lnet/minecraft/core/BlockPos;I)Z
+       6: ireturn
+
+  private static int lambda$findNearestVillage$2(net.minecraft.core.BlockPos, net.conczin.mca.server.world.data.Village, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: invokevirtual #765                // Method net/conczin/mca/server/world/data/Village.getCenter:()Lnet/minecraft/core/Vec3i;
+       4: aload_0
+       5: invokevirtual #768                // Method net/minecraft/core/Vec3i.distSqr:(Lnet/minecraft/core/Vec3i;)D
+       8: aload_2
+       9: invokevirtual #765                // Method net/conczin/mca/server/world/data/Village.getCenter:()Lnet/minecraft/core/Vec3i;
+      12: aload_0
+      13: invokevirtual #768                // Method net/minecraft/core/Vec3i.distSqr:(Lnet/minecraft/core/Vec3i;)D
+      16: dsub
+      17: d2i
+      18: ireturn
+
+  private static boolean lambda$findNearestVillage$1(net.minecraft.world.entity.Entity, net.conczin.mca.server.world.data.Village);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #775                // Method net/conczin/mca/server/world/data/Village.isWithinBorder:(Lnet/minecraft/world/entity/Entity;)Z
+       5: ireturn
+
+  private static net.conczin.mca.server.world.data.VillageManager lambda$get$0(net.minecraft.server.level.ServerLevel, net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: new           #14                 // class net/conczin/mca/server/world/data/VillageManager
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokespecial #778                // Method "<init>":(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/nbt/CompoundTag;)V
+       9: areturn
+}
