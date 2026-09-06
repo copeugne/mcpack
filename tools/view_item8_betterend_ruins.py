@@ -61,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     selection = parser.add_mutually_exclusive_group()
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
-                 "--voyager-landmarks"):
+                 "--voyager-landmarks", "--terralith-buildings"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -80,7 +80,9 @@ def main() -> None:
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar" if nether else archive_name
     archive_name = "MoogsVoyagerStructures-1.21-5.0.11.jar" if voyager else archive_name
-    compressed = soaring or nether or voyager
+    archive_name = ("Terralith_1.21.1_v2.6.2_Neoforge.jar"
+                    if cast("bool", args.terralith_buildings) else archive_name)
+    compressed = soaring or nether or voyager or cast("bool", args.terralith_buildings)
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -176,6 +178,22 @@ def main() -> None:
                               "small_ship", "stone_fountain", "sunzi_gate",
                               "other_decoration/small_windmill"],
             }
+        namespace = "terralith" if cast("bool", args.terralith_buildings) else namespace
+        sheets = {
+            "surface": ["regular/desert_outpost", "regular/valley_lodge",
+                        "regular/igloo", "regular/glacial/interior1",
+                        "regular/glacial/interior2", "regular/glacial/interior216"],
+            "underground": [f"underground/{n}" for n in
+                            ("small_ruined_oak_cabin", "large_ruined_oak_cabin",
+                             "smallminingoutpost", "largeminingoutpost",
+                             "old_refinery", "sunken_tower")],
+            "mage_towers": [f"mage/{n}" for n in
+                            ("tower", "spring_tower", "summer_tower",
+                             "autumn_tower", "winter_tower")],
+            "mage_complex": [f"mage/{n}" for n in
+                             ("complex", "barracks", "house", "house2", "house3",
+                              "road_straight", "road_crosswalk")],
+        } if cast("bool", args.terralith_buildings) else sheets
         for biome, names in sheets.items():
             count = len(names)
             pieces: list[str] = []
