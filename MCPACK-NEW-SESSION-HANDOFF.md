@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+GlitchCore membership is resolved from a447496 and a2fc4ee: consumer event
+forwarding, platform adapters and configuration synchronization only. Full
+payload/source binding and scoped checks pass. Whole providers: 95 resolved,
+41 open (21 code-reference, 20 unmatched-search). No family added. Continue
+remaining provider boundaries and Moog grouping before attributes. The final
+family denominator is not yet established. Reuse completed provider evidence.
+
+
 Integrated API membership is resolved from 88a0f54 plus existing pool-codecs.
 It registers shared types/codecs and modifies consuming structures; packaged
 data is only 51 tags. Full payload/source binding and scoped checks pass.
