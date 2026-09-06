@@ -1,0 +1,444 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin.class
+  Last modified Jan 1, 1980; size 5342 bytes
+  SHA-256 checksum 299532923647c9a5397ff032d726ac0e6d200a148f793cde1078add0beed4bba
+  Compiled from "ServerChunkCacheMixin.java"
+public class me.wesley1808.servercore.mixin.optimizations.ticking.chunk.cache.ServerChunkCacheMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 8, attributes: 4
+Constant pool:
+    #1 = Utf8               me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin
+    #2 = Class              #1            // me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               ServerChunkCacheMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/server/level/ServerChunkCache;
+    #9 = Utf8               priority
+   #10 = Integer            900
+   #11 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+   #12 = Class              #11           // org/spongepowered/asm/mixin/injection/At$Shift
+   #13 = Utf8               org/spongepowered/asm/mixin/injection/At
+   #14 = Class              #13           // org/spongepowered/asm/mixin/injection/At
+   #15 = Utf8               Shift
+   #16 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #17 = Class              #16           // java/lang/invoke/MethodHandles$Lookup
+   #18 = Utf8               java/lang/invoke/MethodHandles
+   #19 = Class              #18           // java/lang/invoke/MethodHandles
+   #20 = Utf8               Lookup
+   #21 = Utf8               servercore$cachedChunks
+   #22 = Utf8               Lme/wesley1808/servercore/common/collections/CachedChunkList;
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #24 = Utf8               chunkMap
+   #25 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #26 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #27 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #28 = Utf8               <init>
+   #29 = Utf8               ()V
+   #30 = NameAndType        #28:#29       // "<init>":()V
+   #31 = Methodref          #4.#30        // java/lang/Object."<init>":()V
+   #32 = Utf8               me/wesley1808/servercore/common/collections/CachedChunkList
+   #33 = Class              #32           // me/wesley1808/servercore/common/collections/CachedChunkList
+   #34 = Methodref          #33.#30       // me/wesley1808/servercore/common/collections/CachedChunkList."<init>":()V
+   #35 = NameAndType        #21:#22       // servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+   #36 = Fieldref           #2.#35        // me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin.servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+   #37 = Utf8               this
+   #38 = Utf8               Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+   #39 = Utf8               servercore$onSave
+   #40 = Utf8               (ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #41 = Utf8               bl
+   #42 = Utf8               ci
+   #43 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #44 = Utf8               method
+   #45 = Utf8               save(Z)V
+   #46 = Utf8               at
+   #47 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #48 = Utf8               RETURN
+   #49 = Utf8               shouldTrim
+   #50 = NameAndType        #49:#29       // shouldTrim:()V
+   #51 = Methodref          #33.#50       // me/wesley1808/servercore/common/collections/CachedChunkList.shouldTrim:()V
+   #52 = Utf8               Z
+   #53 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #54 = Utf8               servercore$noList
+   #55 = Utf8               (I)Ljava/util/ArrayList;
+   #56 = Utf8               (I)Ljava/util/ArrayList<*>;
+   #57 = Utf8               initialArraySize
+   #58 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #59 = Utf8               tickChunks()V
+   #60 = Utf8               require
+   #61 = Integer            0
+   #62 = Utf8               INVOKE
+   #63 = Utf8               target
+   #64 = Utf8               Lcom/google/common/collect/Lists;newArrayListWithCapacity(I)Ljava/util/ArrayList;
+   #65 = Utf8               remap
+   #66 = Utf8               I
+   #67 = Utf8               servercore$replaceList
+   #68 = Utf8               (Ljava/util/List;)Ljava/util/List;
+   #69 = Utf8               (Ljava/util/List<*>;)Ljava/util/List<*>;
+   #70 = Utf8               list
+   #71 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+   #72 = Utf8               index
+   #73 = Integer            6
+   #74 = Utf8               Ljava/lang/Iterable;iterator()Ljava/util/Iterator;
+   #75 = Utf8               shift
+   #76 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+   #77 = Utf8               BEFORE
+   #78 = Utf8               ordinal
+   #79 = Utf8               Ljava/util/List<*>;
+   #80 = Utf8               Ljava/util/List;
+   #81 = Utf8               servercore$updateCachedChunks
+   #82 = Utf8               (Ljava/lang/Iterable;)Ljava/lang/Iterable;
+   #83 = Utf8               (Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;)Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;
+   #84 = Utf8               original
+   #85 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+   #86 = Utf8               Lnet/minecraft/server/level/ChunkMap;getChunks()Ljava/lang/Iterable;
+   #87 = NameAndType        #24:#25       // chunkMap:Lnet/minecraft/server/level/ChunkMap;
+   #88 = Fieldref           #2.#87        // me/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin.chunkMap:Lnet/minecraft/server/level/ChunkMap;
+   #89 = Utf8               update
+   #90 = Utf8               (Lnet/minecraft/server/level/ChunkMap;Ljava/lang/Iterable;)V
+   #91 = NameAndType        #89:#90       // update:(Lnet/minecraft/server/level/ChunkMap;Ljava/lang/Iterable;)V
+   #92 = Methodref          #33.#91       // me/wesley1808/servercore/common/collections/CachedChunkList.update:(Lnet/minecraft/server/level/ChunkMap;Ljava/lang/Iterable;)V
+   #93 = Utf8               ()Ljava/util/Iterator;
+   #94 = MethodType         #93           //  ()Ljava/util/Iterator;
+   #95 = Utf8               java/util/Collections
+   #96 = Class              #95           // java/util/Collections
+   #97 = Utf8               emptyIterator
+   #98 = NameAndType        #97:#93       // emptyIterator:()Ljava/util/Iterator;
+   #99 = Methodref          #96.#98       // java/util/Collections.emptyIterator:()Ljava/util/Iterator;
+  #100 = MethodHandle       6:#99         // REF_invokeStatic java/util/Collections.emptyIterator:()Ljava/util/Iterator;
+  #101 = Utf8               java/lang/invoke/LambdaMetafactory
+  #102 = Class              #101          // java/lang/invoke/LambdaMetafactory
+  #103 = Utf8               metafactory
+  #104 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #105 = NameAndType        #103:#104     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #106 = Methodref          #102.#105     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #107 = MethodHandle       6:#106        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #108 = Utf8               iterator
+  #109 = Utf8               ()Ljava/lang/Iterable;
+  #110 = NameAndType        #108:#109     // iterator:()Ljava/lang/Iterable;
+  #111 = InvokeDynamic      #0:#110       // #0:iterator:()Ljava/lang/Iterable;
+  #112 = Utf8               Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;
+  #113 = Utf8               Ljava/lang/Iterable;
+  #114 = Utf8               servercore$cancelShuffle
+  #115 = Utf8               (Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+  #116 = Utf8               (Ljava/util/List<*>;Lnet/minecraft/util/RandomSource;)V
+  #117 = Utf8               randomSource
+  #118 = Utf8               Lnet/minecraft/Util;shuffle(Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+  #119 = Utf8               Lnet/minecraft/util/RandomSource;
+  #120 = Utf8               servercore$skipUnloadedChunks
+  #121 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/LevelChunk;)Z
+  #122 = Utf8               level
+  #123 = Utf8               pos
+  #124 = Utf8               chunk
+  #125 = Utf8               Lnet/minecraft/server/level/ServerLevel;isNaturalSpawningAllowed(Lnet/minecraft/world/level/ChunkPos;)Z
+  #126 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #127 = Utf8               net/minecraft/world/level/chunk/LevelChunk
+  #128 = Class              #127          // net/minecraft/world/level/chunk/LevelChunk
+  #129 = Utf8               loaded
+  #130 = NameAndType        #129:#52      // loaded:Z
+  #131 = Fieldref           #128.#130     // net/minecraft/world/level/chunk/LevelChunk.loaded:Z
+  #132 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #133 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #134 = Utf8               Lnet/minecraft/world/level/chunk/LevelChunk;
+  #135 = Utf8               servercore$skipCheck
+  #136 = Utf8               (Lnet/minecraft/server/level/ChunkMap;Lnet/minecraft/world/level/ChunkPos;)Z
+  #137 = Utf8               Lnet/minecraft/server/level/ChunkMap;anyPlayerCloseEnoughForSpawning(Lnet/minecraft/world/level/ChunkPos;)Z
+  #138 = Utf8               RuntimeVisibleAnnotations
+  #139 = Utf8               Code
+  #140 = Utf8               LineNumberTable
+  #141 = Utf8               LocalVariableTable
+  #142 = Utf8               MethodParameters
+  #143 = Utf8               Signature
+  #144 = Utf8               LocalVariableTypeTable
+  #145 = Utf8               RuntimeInvisibleParameterAnnotations
+  #146 = Utf8               InnerClasses
+  #147 = Utf8               SourceFile
+  #148 = Utf8               RuntimeInvisibleAnnotations
+  #149 = Utf8               BootstrapMethods
+{
+  private final me.wesley1808.servercore.common.collections.CachedChunkList servercore$cachedChunks;
+    descriptor: Lme/wesley1808/servercore/common/collections/CachedChunkList;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.minecraft.server.level.ChunkMap chunkMap;
+    descriptor: Lnet/minecraft/server/level/ChunkMap;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #26()
+        org.spongepowered.asm.mixin.Shadow
+      1: #27()
+        org.spongepowered.asm.mixin.Final
+
+  public me.wesley1808.servercore.mixin.optimizations.ticking.chunk.cache.ServerChunkCacheMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #31                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #33                 // class me/wesley1808/servercore/common/collections/CachedChunkList
+         8: dup
+         9: invokespecial #34                 // Method me/wesley1808/servercore/common/collections/CachedChunkList."<init>":()V
+        12: putfield      #36                 // Field servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+        15: return
+      LineNumberTable:
+        line 28: 0
+        line 29: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+
+  private void servercore$onSave(boolean, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #36                 // Field servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+         4: invokevirtual #51                 // Method me/wesley1808/servercore/common/collections/CachedChunkList.shouldTrim:()V
+         7: return
+      LineNumberTable:
+        line 37: 0
+        line 38: 7
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       8     1    bl   Z
+            0       8     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #43(#44=[s#45],#46=[@#47(#7=s#48)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["save(Z)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      bl
+      ci
+
+  private java.util.ArrayList<?> servercore$noList(int);
+    descriptor: (I)Ljava/util/ArrayList;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 51: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       2     1 initialArraySize   I
+    Signature: #56                          // (I)Ljava/util/ArrayList<*>;
+    RuntimeVisibleAnnotations:
+      0: #58(#44=[s#59],#60=I#61,#46=@#47(#7=s#62,#63=s#64,#65=Z#61))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tickChunks()V"]
+          require=0
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/google/common/collect/Lists;newArrayListWithCapacity(I)Ljava/util/ArrayList;"
+            remap=false
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      initialArraySize
+
+  private java.util.List<?> servercore$replaceList(java.util.List<?>);
+    descriptor: (Ljava/util/List;)Ljava/util/List;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #36                 // Field servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+         4: areturn
+      LineNumberTable:
+        line 66: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       5     1  list   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     1  list   Ljava/util/List<*>;
+    Signature: #69                          // (Ljava/util/List<*>;)Ljava/util/List<*>;
+    RuntimeVisibleAnnotations:
+      0: #71(#44=[s#59],#72=I#73,#46=@#47(#7=s#62,#63=s#74,#75=e#76.#77,#78=I#61))
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["tickChunks()V"]
+          index=6
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/lang/Iterable;iterator()Ljava/util/Iterator;"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.BEFORE
+            ordinal=0
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      list
+
+  private java.lang.Iterable<net.minecraft.server.level.ChunkHolder> servercore$updateCachedChunks(java.lang.Iterable<net.minecraft.server.level.ChunkHolder>);
+    descriptor: (Ljava/lang/Iterable;)Ljava/lang/Iterable;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #36                 // Field servercore$cachedChunks:Lme/wesley1808/servercore/common/collections/CachedChunkList;
+         4: aload_0
+         5: getfield      #88                 // Field chunkMap:Lnet/minecraft/server/level/ChunkMap;
+         8: aload_1
+         9: invokevirtual #92                 // Method me/wesley1808/servercore/common/collections/CachedChunkList.update:(Lnet/minecraft/server/level/ChunkMap;Ljava/lang/Iterable;)V
+        12: invokedynamic #111,  0            // InvokeDynamic #0:iterator:()Ljava/lang/Iterable;
+        17: areturn
+      LineNumberTable:
+        line 79: 0
+        line 80: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      18     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0      18     1 original   Ljava/lang/Iterable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      18     1 original   Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;
+    Signature: #83                          // (Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;)Ljava/lang/Iterable<Lnet/minecraft/server/level/ChunkHolder;>;
+    RuntimeVisibleAnnotations:
+      0: #85(#44=[s#59],#46=[@#47(#7=s#62,#63=s#86,#78=I#61)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["tickChunks()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ChunkMap;getChunks()Ljava/lang/Iterable;"
+            ordinal=0
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      original
+
+  private void servercore$cancelShuffle(java.util.List<?>, net.minecraft.util.RandomSource);
+    descriptor: (Ljava/util/List;Lnet/minecraft/util/RandomSource;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=0, locals=3, args_size=3
+         0: return
+      LineNumberTable:
+        line 94: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       1     1  list   Ljava/util/List;
+            0       1     2 randomSource   Lnet/minecraft/util/RandomSource;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       1     1  list   Ljava/util/List<*>;
+    Signature: #116                         // (Ljava/util/List<*>;Lnet/minecraft/util/RandomSource;)V
+    RuntimeVisibleAnnotations:
+      0: #58(#44=[s#59],#60=I#61,#46=@#47(#7=s#62,#63=s#118))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tickChunks()V"]
+          require=0
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/Util;shuffle(Ljava/util/List;Lnet/minecraft/util/RandomSource;)V"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      list
+      randomSource
+
+  private boolean servercore$skipUnloadedChunks(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.chunk.LevelChunk);
+    descriptor: (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/LevelChunk;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=4, args_size=4
+         0: aload_3
+         1: getfield      #131                // Field net/minecraft/world/level/chunk/LevelChunk.loaded:Z
+         4: ireturn
+      LineNumberTable:
+        line 104: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       5     1 level   Lnet/minecraft/server/level/ServerLevel;
+            0       5     2   pos   Lnet/minecraft/world/level/ChunkPos;
+            0       5     3 chunk   Lnet/minecraft/world/level/chunk/LevelChunk;
+    RuntimeVisibleAnnotations:
+      0: #58(#44=[s#59],#46=@#47(#7=s#62,#63=s#125))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tickChunks()V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ServerLevel;isNaturalSpawningAllowed(Lnet/minecraft/world/level/ChunkPos;)Z"
+          )
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #126(#78=I#61)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+    MethodParameters:
+      Name                           Flags
+      level
+      pos
+      chunk
+
+  private boolean servercore$skipCheck(net.minecraft.server.level.ChunkMap, net.minecraft.world.level.ChunkPos);
+    descriptor: (Lnet/minecraft/server/level/ChunkMap;Lnet/minecraft/world/level/ChunkPos;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: iconst_1
+         1: ireturn
+      LineNumberTable:
+        line 115: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lme/wesley1808/servercore/mixin/optimizations/ticking/chunk/cache/ServerChunkCacheMixin;
+            0       2     1 chunkMap   Lnet/minecraft/server/level/ChunkMap;
+            0       2     2   pos   Lnet/minecraft/world/level/ChunkPos;
+    RuntimeVisibleAnnotations:
+      0: #58(#44=[s#59],#46=@#47(#7=s#62,#63=s#137))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tickChunks()V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ChunkMap;anyPlayerCloseEnoughForSpawning(Lnet/minecraft/world/level/ChunkPos;)Z"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      chunkMap
+      pos
+}
+InnerClasses:
+  public static final #15= #12 of #14;    // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
+  public static final #20= #17 of #19;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "ServerChunkCacheMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8],#9=I#10)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerChunkCache;]
+      priority=900
+    )
+BootstrapMethods:
+  0: #107 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #94 ()Ljava/util/Iterator;
+      #100 REF_invokeStatic java/util/Collections.emptyIterator:()Ljava/util/Iterator;
+      #94 ()Ljava/util/Iterator;
