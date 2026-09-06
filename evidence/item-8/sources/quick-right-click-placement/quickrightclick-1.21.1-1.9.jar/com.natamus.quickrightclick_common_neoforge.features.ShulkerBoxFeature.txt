@@ -1,0 +1,136 @@
+Compiled from "ShulkerBoxFeature.java"
+public class com.natamus.quickrightclick_common_neoforge.features.ShulkerBoxFeature {
+  public com.natamus.quickrightclick_common_neoforge.features.ShulkerBoxFeature();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean init(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.core.BlockPos, net.minecraft.world.item.ItemStack, net.minecraft.world.InteractionHand, net.minecraft.world.level.block.Block);
+    Code:
+       0: getstatic     #7                  // Field com/natamus/quickrightclick_common_neoforge/config/ConfigHandler.enableQuickShulkerBoxes:Z
+       3: ifne          8
+       6: iconst_0
+       7: ireturn
+       8: aload         5
+      10: checkcast     #13                 // class net/minecraft/world/level/block/ShulkerBoxBlock
+      13: astore        6
+      15: aload_1
+      16: invokevirtual #15                 // Method net/minecraft/world/entity/player/Player.getDirection:()Lnet/minecraft/core/Direction;
+      19: astore        7
+      21: aload_2
+      22: iconst_2
+      23: invokevirtual #21                 // Method net/minecraft/core/BlockPos.above:(I)Lnet/minecraft/core/BlockPos;
+      26: aload         7
+      28: iconst_0
+      29: invokevirtual #27                 // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+      32: invokevirtual #31                 // Method net/minecraft/core/BlockPos.immutable:()Lnet/minecraft/core/BlockPos;
+      35: astore        8
+      37: aload_0
+      38: aload         8
+      40: invokevirtual #35                 // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      43: invokevirtual #41                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      46: getstatic     #47                 // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+      49: invokevirtual #53                 // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+      52: ifne          77
+      55: aload_0
+      56: getfield      #57                 // Field net/minecraft/world/level/Level.isClientSide:Z
+      59: ifeq          75
+      62: aload_1
+      63: ldc           #60                 // String collective.quickrightclick.message.unableopenshulker
+      65: getstatic     #62                 // Field net/minecraft/ChatFormatting.DARK_GRAY:Lnet/minecraft/ChatFormatting;
+      68: iconst_0
+      69: anewarray     #2                  // class java/lang/Object
+      72: invokestatic  #68                 // Method com/natamus/collective_common_neoforge/functions/MessageFunctions.sendTranslatableMessage:(Lnet/minecraft/world/entity/player/Player;Ljava/lang/String;Lnet/minecraft/ChatFormatting;[Ljava/lang/Object;)V
+      75: iconst_0
+      76: ireturn
+      77: aload         5
+      79: invokevirtual #74                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      82: getstatic     #80                 // Field net/minecraft/world/level/block/ShulkerBoxBlock.FACING:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+      85: aload         7
+      87: invokevirtual #84                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      90: checkcast     #42                 // class net/minecraft/world/level/block/state/BlockState
+      93: astore        9
+      95: new           #88                 // class net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity
+      98: dup
+      99: aload         6
+     101: invokevirtual #90                 // Method net/minecraft/world/level/block/ShulkerBoxBlock.getColor:()Lnet/minecraft/world/item/DyeColor;
+     104: aload         8
+     106: aload         9
+     108: invokespecial #94                 // Method net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity."<init>":(Lnet/minecraft/world/item/DyeColor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     111: astore        10
+     113: aload         10
+     115: aload_0
+     116: invokevirtual #97                 // Method net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.setLevel:(Lnet/minecraft/world/level/Level;)V
+     119: aload_0
+     120: aload         8
+     122: aload         9
+     124: iconst_3
+     125: invokevirtual #101                // Method net/minecraft/world/level/Level.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     128: pop
+     129: aload_0
+     130: aload         10
+     132: invokevirtual #105                // Method net/minecraft/world/level/Level.setBlockEntity:(Lnet/minecraft/world/level/block/entity/BlockEntity;)V
+     135: aload_3
+     136: getstatic     #109                // Field net/minecraft/core/component/DataComponents.CONTAINER:Lnet/minecraft/core/component/DataComponentType;
+     139: getstatic     #115                // Field net/minecraft/world/item/component/ItemContainerContents.EMPTY:Lnet/minecraft/world/item/component/ItemContainerContents;
+     142: invokevirtual #121                // Method net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     145: checkcast     #116                // class net/minecraft/world/item/component/ItemContainerContents
+     148: astore        11
+     150: iconst_0
+     151: istore        12
+     153: aload         11
+     155: invokevirtual #127                // Method net/minecraft/world/item/component/ItemContainerContents.stream:()Ljava/util/stream/Stream;
+     158: invokeinterface #131,  1          // InterfaceMethod java/util/stream/Stream.iterator:()Ljava/util/Iterator;
+     163: astore        13
+     165: aload         13
+     167: invokeinterface #137,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     172: ifeq          202
+     175: aload         13
+     177: invokeinterface #143,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     182: checkcast     #122                // class net/minecraft/world/item/ItemStack
+     185: astore        14
+     187: aload         10
+     189: iload         12
+     191: aload         14
+     193: invokevirtual #147                // Method net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+     196: iinc          12, 1
+     199: goto          165
+     202: invokestatic  #151                // InterfaceMethod net/minecraft/core/component/DataComponentMap.builder:()Lnet/minecraft/core/component/DataComponentMap$Builder;
+     205: astore        14
+     207: aload         14
+     209: getstatic     #157                // Field net/minecraft/core/component/DataComponents.CUSTOM_NAME:Lnet/minecraft/core/component/DataComponentType;
+     212: ldc           #162                // String ⠀
+     214: invokestatic  #164                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     217: aload_3
+     218: invokevirtual #170                // Method net/minecraft/world/item/ItemStack.getHoverName:()Lnet/minecraft/network/chat/Component;
+     221: invokevirtual #174                // Method net/minecraft/network/chat/MutableComponent.append:(Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;
+     224: invokevirtual #180                // Method net/minecraft/core/component/DataComponentMap$Builder.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Lnet/minecraft/core/component/DataComponentMap$Builder;
+     227: pop
+     228: aload         10
+     230: aload         14
+     232: invokevirtual #186                // Method net/minecraft/core/component/DataComponentMap$Builder.build:()Lnet/minecraft/core/component/DataComponentMap;
+     235: invokevirtual #190                // Method net/minecraft/world/level/block/entity/ShulkerBoxBlockEntity.setComponents:(Lnet/minecraft/core/component/DataComponentMap;)V
+     238: aload_3
+     239: iconst_1
+     240: invokevirtual #194                // Method net/minecraft/world/item/ItemStack.shrink:(I)V
+     243: aload_1
+     244: invokevirtual #198                // Method net/minecraft/world/entity/player/Player.getName:()Lnet/minecraft/network/chat/Component;
+     247: invokeinterface #201,  1          // InterfaceMethod net/minecraft/network/chat/Component.getString:()Ljava/lang/String;
+     252: astore        15
+     254: getstatic     #205                // Field com/natamus/quickrightclick_common_neoforge/data/Variables.shulkerUsed:Ljava/util/concurrent/CopyOnWriteArrayList;
+     257: aload         15
+     259: invokevirtual #211                // Method java/util/concurrent/CopyOnWriteArrayList.add:(Ljava/lang/Object;)Z
+     262: pop
+     263: getstatic     #216                // Field com/natamus/quickrightclick_common_neoforge/data/Variables.shulkerUsedHand:Ljava/util/HashMap;
+     266: aload         15
+     268: aload         4
+     270: invokevirtual #220                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     273: pop
+     274: aload_1
+     275: aload         10
+     277: invokevirtual #226                // Method net/minecraft/world/entity/player/Player.openMenu:(Lnet/minecraft/world/MenuProvider;)Ljava/util/OptionalInt;
+     280: pop
+     281: iconst_1
+     282: ireturn
+}
