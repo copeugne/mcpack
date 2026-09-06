@@ -1571,6 +1571,9 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/mixin/WorldCarverMixin.class",
     "net/regions_unexplored/mixin/removals/BiomeListMixin.class",
     "net/regions_unexplored/mixin/removals/HolderLookupMixin.class",
+    "net/regions_unexplored/world/surface/RUSurfaceRuleBuilder.class",
+    "net/regions_unexplored/config/state/common/BiomeTarget.class",
+    "net/regions_unexplored/worldgen/feature/RUFallenTreeFeature.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
