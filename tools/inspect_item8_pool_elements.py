@@ -189,6 +189,19 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/api_lookup_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.class",
+    "org/sinytra/fabric/block_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/block/IBlockStateExtensionMixin.class",
+    "net/fabricmc/fabric/mixin/block/IBlockExtensionMixin.class",
+    "net/fabricmc/fabric/mixin/block/LivingEntityMixin.class",
+    "org/sinytra/fabric/block_view_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/blockview/BlockEntityMixin.class",
+    "net/fabricmc/fabric/mixin/blockview/BlockViewMixin.class",
+    "net/fabricmc/fabric/mixin/blockview/WorldViewMixin.class",
+    "org/sinytra/fabric/rendering_data_attachment_v1/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/rendering/data/BlockEntityMixin.class",
+    "net/fabricmc/fabric/mixin/rendering/data/WorldViewMixin.class",
     "org/sinytra/fabric/model_loading_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/particles/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/renderer_indigo/generated/GeneratedEntryPoint.class",
@@ -2334,6 +2347,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar",
+        "META-INF/jars/fabric-block-api-v1-1.1.0+b0c22bb819.jar",
+        "META-INF/jars/fabric-block-view-api-v2-1.0.11+e9036fd419.jar",
+        "META-INF/jars/fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar",
         "META-INF/jars/fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar",
         "META-INF/jars/fabric-particles-v1-4.0.2+824f924c19.jar",
         "META-INF/jars/fabric-renderer-indigo-1.7.1+9125b6dc19.jar",
@@ -2368,6 +2385,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "ba2c510f49ca28c7d1d5f246af39d252d3b9ce445329716513f4aa97fe0c13fb",
+        ),
+        "META-INF/jars/fabric-block-api-v1-1.1.0+b0c22bb819.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "cd025aeb10c91b8315ff8a3244c5653b368264ba902476e48c970c69b49c0e63",
+        ),
+        "META-INF/jars/fabric-block-view-api-v2-1.0.11+e9036fd419.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "7891528e69a10c61d3a3b280d366f23cfaf3b171468f68fde9ed55c1dd8a1ab2",
+        ),
+        "META-INF/jars/fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "b67adfd066c4c6a800501e588aa040b06dc09b11ff029b86e835b40ed078525e",
+        ),
         "META-INF/jars/fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "dda8e4cc12db98afac9ec2d32ec516e80e855b68315ea6d356ec1f5fb9204bd6",
