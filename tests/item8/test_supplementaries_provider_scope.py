@@ -144,6 +144,10 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
          "1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3"),
         ("supplementaries-client-entries", 2,
          "b0e1d475ee276f5923a241dcc90190b1c369119fd784f0963ffe67c65cd623c9"),
+        ("supplementaries-server-hooks", 69,
+         "eff83e4817ac4c20f7cf47c3b8beb8647257a27a28db5492825037df90a503d0"),
+        ("supplementaries-map-lookup", 1,
+         "3e28fdfcaf21c79d87ef0ad595aa145dea869903dd1692776fc9643bebdac3f2"),
     ):
         capture_directory = Path("evidence/item-8/sources") / name
         raw = (capture_directory / "identities.json").read_bytes()
@@ -152,16 +156,17 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
         assert len(rows) == len({row["class"] for row in rows}) == count
         setup_captures.append((capture_directory, rows))
     with ZipFile(source.path) as archive:
-        mixins = cast(
-            "dict[str, JsonValue]", json.loads(archive.read("supplementaries-common.mixins.json"))
-        )
-        assert mixins["package"] == "net.mehvahdjukaar.supplementaries.mixins"
-        assert {
-            "MineshaftCorridorMixin", "MineshaftPiecesMixin",
-            "StrongholdCrossingSconceMixin", "StrongholdRoomSconceMixin",
-        } <= set(
-            cast("list[str]", mixins["mixins"])
-        )
+        declared: set[str] = set()
+        for name in ("supplementaries-common.mixins.json", "supplementaries.mixins.json"):
+            mixins = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+            assert mixins["plugin"] == "net.mehvahdjukaar.supplementaries.mixins.MixinPlugin"
+            assert not mixins.get("server")
+            package = cast("str", mixins["package"]).replace(".", "/")
+            declared.update(
+                package + "/" + name.replace(".", "/") + ".class"
+                for name in cast("list[str]", mixins["mixins"])
+            )
+        captured: set[str] = set()
         for capture_directory, rows in (
             (directory, identities),
             (callback_directory, callback),
@@ -170,11 +175,18 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
             *setup_captures,
         ):
             for row in rows:
+                if "/mixins/" in row["class"] and not row["class"].endswith("/MixinPlugin.class"):
+                    captured.add(row["class"])
                 assert row["archive"] == source.name
                 assert row["archive_sha256"] == source.sha256
                 assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
                 raw = (capture_directory / row["disassembly"]).read_bytes()
                 assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+        assert len(declared) == 73
+        assert captured == declared
+
+
+def test_supplementaries_frozen_inputs() -> None:
     raw = Path("evidence/item-6/frozen/config/supplementaries-common.toml").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
         "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c"
@@ -194,6 +206,26 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
         "soul_fire_d", "shulkerboxtooltip", "decorative_blocks", "endergetic",
         "caverns_and_chasms", "infernalexp", "architects_palette", "trinkets",
     }
+
+
+def test_supplementaries_shared_mixin_plugin() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("moonlight-"))
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/supplementaries-shared-plugin")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "05fbc861b5d5a7e0290ac0bdcd10d29ae1afd2410c7833b97f5fd560a9640e75"
+    )
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 1
+    row = rows[0]
+    assert row["archive"] == source.name
+    assert row["archive_sha256"] == source.sha256
+    with ZipFile(source.path) as archive:
+        assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+    assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+        row["disassembly_sha256"]
+    )
 
 
 def test_supplementaries_bundled_companion_service() -> None:

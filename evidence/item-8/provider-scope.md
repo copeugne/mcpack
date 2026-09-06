@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 78 of 136. The exact queue below has 58 open rows.
+Supported provider dispositions: 79 of 136. The exact queue below has 57 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -695,7 +695,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
 | `structureessentials-1.21.1-5.0.jar` | `structureessentials-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Existing structure lookup, placement, biome compatibility and diagnostic modifications; no independent family. Frozen activation settings bound below. |
-| `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code`, existing root decisions and test_supplementaries_provider_scope.py | All 12 pools and 18 templates linked; road-sign feature chain accounted for below. Resolve custom generation, mineshaft elevator injection and remaining entry/payload roles. |
+| `supplementaries-neoforge-1.21.1-3.6.8.jar` | Existing generation, data, common-entry and integration captures; final server hooks 46127c7 and map delegate 3660300; test_supplementaries_provider_scope.py | RESOLVED: Galleon and road-sign roots, cave-urn cache candidate, all pools/templates, component injections, full payload and executable contribution roles accounted for below. Cave-urn canonical boundary and effective family attributes remain separate. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -703,6 +703,89 @@ attributes. This separates unknown membership from incomplete attributes.
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 
 ## Supplementaries packaged component checkpoint
+
+### Final provider membership disposition
+
+Supplementaries provider coverage is RESOLVED. Reuse the two existing root
+candidates, supplementaries:galleon and supplementaries:road_sign, and retain
+the freestanding cave-urn cache as a named canonical-boundary candidate.
+The road-sign configured feature is part of the root's generation chain, not
+another family. Galleon urns are components of the ship; the same urn patch's
+freestanding cave placement requires the separate cache-versus-decoration
+decision. All twelve pools and eighteen templates already have these links.
+Mineshaft elevator/rope and stronghold sconces modify existing families.
+Barnacles, basalt ash and wild flax retain their natural-generation roles.
+
+Source 46127c7 (extractor 2e97fb8) closes the remaining declared hook boundary:
+69 server/common mixins plus the inherited Moonlight SimpleMixinPlugin. The
+four previously captured mineshaft/stronghold hooks are reused. The existing
+provider check now requires exact equality between all 73 declared common
+mixins and the captured classes, rather than checking four names as a subset.
+The retained disassemblies supply method bodies, injection targets and optional
+annotations. Manifest hashes:
+
+- supplementaries-server-hooks: eff83e4817ac4c20f7cf47c3b8beb8647257a27a28db5492825037df90a503d0.
+- supplementaries-shared-plugin: 05fbc861b5d5a7e0290ac0bdcd10d29ae1afd2410c7833b97f5fd560a9640e75.
+- supplementaries-map-lookup (3660300, extractor c989eb6): 3e28fdfcaf21c79d87ef0ad595aa145dea869903dd1692776fc9643bebdac3f2.
+
+The remaining hooks have these contribution roles. Names below are relative
+to the declared mixin package; the second configuration uses neoforge/.
+
+| Hooks | Membership disposition from entry behavior |
+| --- | --- |
+| AbstractArrowMixin, AbstractSkeletonMixin, BowMixin, PlayerMixin, PlayerProjectileMixin, ProjectileWeaponItemMixin, ServerPlayerMixin, SkeletonMixin, StrayMixin | Quiver storage, ammunition selection/consumption, equipment at entity spawn, drops and synchronization. These affect existing entities and items, not site layouts. |
+| AbstractHorseMixin, SkellyHorseMixin, ZombieHorseMixin | Feeding, taming, conversion and persistence of existing horses. Conversion preserves entity equipment/ownership; it is not structure generation. |
+| CatSitOnBlockGoalMixin, GoalUtilsMixin, WanderingTraderMixin | Cat destination selection, boat path evaluation and trader door-opening goals. |
+| RedMerchantSpawnerMixin | On a failed wandering-trader spawn, conditionally spawns a RedMerchantEntity near a player or existing meeting POI, with a despawn delay and wander restriction. It does not create that POI or a merchant site. Difficulty/season inputs are not measured occurrence rates. |
+| CreeperMixin, compat/CompatCreeperArclightMixin, CelebrateVillagersSurvivedRaidMixin | Festive entity state, explosion wrapping, particles and raid-celebration events. Both optional Creeper alternatives have the same non-site role. |
+| EvokerMixin, SlimeMixin, LivingEntityMixin, neoforge/LivingEntityMixin | Existing-entity state, slime effects, rope movement, lunch-basket consumption and fluid travel. |
+| EntityAccessor, LivingEntityAccessor, PlayerAccessor, IDispenserAccessor, IHangingEntityAccessor, neoforge/FireBlockAccessor, neoforge/ItemStackAccessor | Access to passenger, item, loot, shoulder, dispenser, facing and fire operations. These accessor declarations add no generation route. |
+| BlockSourceMixin, EntityMixin, FallingBlockEntityMixin | Dispenser source positioning, step sounds and falling-block fluid sampling. |
+| ExplorationMapFunctionMixin, neoforge/TreasureMapForEmeraldsMixin | Consume structure destinations for loot/trade map items or Quark quills. The captured AdventurerMapsHandler uses existing holders or ADVENTURE_MAP_DESTINATIONS, requests a location, and creates/decorates an item. No independent layout is defined. The previously recorded null-returning Quark implementation prevents a claim of successful quill creation. |
+| MapItemMixin, CartographyTableMixin, CartographyTableInputSlotMixin, InkSackMixin | Existing map height, color, lighting and antique-ink data; cartography inventory handling and sign interaction. |
+| BannerPatternItemMixin, BrushItemMixin, ItemsMixin, LoomInputSlotMixin, LoomMenuMixin | Tooltip creation, player brushing, shulker-shell item substitution and flag crafting. |
+| GrindstoneInputSlotMixin, GrindstoneMenuMixin, GrindstoneTestSlotMixin, ShulkerBoxBlockEntityMixin, ShulkerSlotMixin | Crafting result/experience and container insertion behavior. |
+| CampfireBlockMixin, ComparatorBlockMixin, FireBlockMixin, IronBarsBlockMixin, LanternBlockPlacementMixin, ObserverBlockMixin | Existing block smoke, redstone updates, fluid ignition, connection states, rope support and moving-block observer behavior. Ignition and neighbor changes are not authored sites. |
+| ExplosionMixin, ServerLevelMixin, neoforge/ChunkHolderMixin | Explosion visual callback, dispenser event redirection, lightning targeting and antique-ink capability synchronization. The deferred chunk callback sends existing block-entity state to players. |
+| ServerGamePacketListenerMixin | Constructor-only class; no injected method body. |
+| neoforge/self/SelfFlammableFluidBlockMixin, SelfLumiseneFluidMixin, SelfGunpowderMixin | Client block extensions, fluid-type access and ignition of existing gunpowder blocks. |
+| neoforge/self/SelfFrameMixin, SelfPlanterMixin, SelfNetheriteDoorMixin, SelfSafeMixin | Held-block enchanting power, plant support and player destruction permission checks. |
+| neoforge/self/SelfSlingshotMixin, SelfSoapItemMixin, SelfWrenchMixin | Item enchantment/action support and player-driven hanging-entity rotation. |
+
+SimpleMixinPlugin reads OptionalMixin annotations and tests named class
+availability. It returns no additional mixin list and performs no pre/post
+application work. The captured optional conditions concern Arclight Creeper
+compatibility and Domestication Innovation horse compatibility. Both the
+included and excluded hook roles above add no independent family, so no new
+class-presence experiment is needed to establish membership. This resolves the
+plugin used by Supplementaries, not the separate full Moonlight provider row.
+
+Previously captured common entries complete the non-mixin boundary: loader
+initialization reaches the accounted worldgen registry, dynamic server data and
+setup delegates. Other registries and reload inputs provide items, entities,
+recipes, trades, maps, fluids, songs, hourglass data, captured mobs and player
+interactions. Server events perform interactions, goals, item pickup, entity
+damage, player ticks and note-block behavior. Lifecycle entries initialize
+faucet/fake-level support, register placeable books, synchronize data and clear
+caches. These do not add an unexplained authored-site candidate. Client-only
+entry annotations, integrations, both bundled libraries and the complete
+parent payload retain their earlier verified dispositions below.
+
+This closes provider membership only. Canonical grouping, effective biome and
+dimension eligibility, actual placement, map success and the eleven family
+attributes must retain their existing uncertainty. No runtime or baseline
+change was made. Census: 79 resolved providers, 57 open. Earlier open statements
+below are superseded by this final disposition.
+
+Validation: nine focused cases pass (2.97s); scoped Ruff and Basedpyright pass.
+The initial statement-count lint finding was fixed by separating the existing
+frozen-input assertions into their own test, without changing their coverage.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py 'tests/item8/test_family_decisions.py::test_provider_groups_bind_full_definitions_pools_and_registry[supplementaries-2]'
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py
+```
 
 Client entry disposition: source aff2fde, extracted by 5e58a1a, binds both
 SupplementariesForgeClient and PicklePlayer to class-level EventBusSubscriber

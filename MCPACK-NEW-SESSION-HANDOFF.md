@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-06
 
+Supplementaries provider membership is now RESOLVED. The final disposition in
+evidence/item-8/provider-scope.md supersedes all older open Supplementaries
+checkpoints. Reuse server-hook/shared-plugin source 46127c7 and map delegate
+3660300. All 73 declared common mixins are accounted for, including the four
+previously captured structure hooks. The remaining entries add no independent
+site. Galleon, road sign and the named cave-urn cache boundary remain the inputs
+to later canonical reconciliation; no final family count is asserted.
+Nine focused checks and scoped Ruff/Basedpyright pass. Census: 79 resolved,
+57 open. Next: the twelve remaining packaged-generation providers, beginning
+with Creeper Overhaul. Keep the completed RU feature checkpoints. Do not redo
+Supplementaries, inspect unrelated gameplay helpers, or resume attributes
+before whole-stack membership and named canonical decisions are resolved.
+
 MixinSquared inspection identified a concrete extractor limitation: its Forge
 wrapper contains META-INF/jars/MixinSquared-0.3.3.jar, one level deeper than the
 existing nested-archive reader supports. Close this actual executable-library
