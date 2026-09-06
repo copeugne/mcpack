@@ -1,0 +1,131 @@
+Compiled from "PolymorphNeoForgeMod.java"
+public class com.illusivesoulworks.polymorph.PolymorphNeoForgeMod {
+  public com.illusivesoulworks.polymorph.PolymorphNeoForgeMod(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: invokestatic  #7                  // Method com/illusivesoulworks/polymorph/PolymorphCommonMod.init:()V
+       7: aload_1
+       8: invokestatic  #12                 // Method com/illusivesoulworks/polymorph/common/PolymorphNeoForgeCapabilities.setup:(Lnet/neoforged/bus/api/IEventBus;)V
+      11: aload_1
+      12: aload_0
+      13: invokedynamic #18,  0             // InvokeDynamic #0:accept:(Lcom/illusivesoulworks/polymorph/PolymorphNeoForgeMod;)Ljava/util/function/Consumer;
+      18: invokeinterface #22,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      23: aload_1
+      24: aload_0
+      25: invokedynamic #28,  0             // InvokeDynamic #1:accept:(Lcom/illusivesoulworks/polymorph/PolymorphNeoForgeMod;)Ljava/util/function/Consumer;
+      30: invokeinterface #22,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      35: aload_1
+      36: aload_0
+      37: invokedynamic #29,  0             // InvokeDynamic #2:accept:(Lcom/illusivesoulworks/polymorph/PolymorphNeoForgeMod;)Ljava/util/function/Consumer;
+      42: invokeinterface #22,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      47: return
+
+  private void setup(net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: invokestatic  #30                 // Method com/illusivesoulworks/polymorph/PolymorphCommonMod.setup:()V
+       3: getstatic     #32                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       6: new           #38                 // class com/illusivesoulworks/polymorph/common/CommonEventsListener
+       9: dup
+      10: invokespecial #40                 // Method com/illusivesoulworks/polymorph/common/CommonEventsListener."<init>":()V
+      13: invokeinterface #41,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.register:(Ljava/lang/Object;)V
+      18: return
+
+  private void clientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: invokestatic  #45                 // Method com/illusivesoulworks/polymorph/PolymorphCommonMod.clientSetup:()V
+       3: getstatic     #32                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       6: new           #48                 // class com/illusivesoulworks/polymorph/client/ClientEventsListener
+       9: dup
+      10: invokespecial #50                 // Method com/illusivesoulworks/polymorph/client/ClientEventsListener."<init>":()V
+      13: invokeinterface #41,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.register:(Ljava/lang/Object;)V
+      18: return
+
+  private void registerPayload(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_1
+       1: ldc           #53                 // String polymorph
+       3: invokevirtual #55                 // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       6: astore_2
+       7: aload_2
+       8: getstatic     #61                 // Field com/illusivesoulworks/polymorph/common/network/server/SPacketRecipesList.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      11: getstatic     #67                 // Field com/illusivesoulworks/polymorph/common/network/server/SPacketRecipesList.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      14: invokestatic  #71                 // Method com/illusivesoulworks/polymorph/common/network/ClientPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;
+      17: dup
+      18: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: invokedynamic #83,  0             // InvokeDynamic #3:handle:(Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      27: invokevirtual #87                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      30: pop
+      31: aload_2
+      32: getstatic     #93                 // Field com/illusivesoulworks/polymorph/common/network/server/SPacketHighlightRecipe.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      35: getstatic     #96                 // Field com/illusivesoulworks/polymorph/common/network/server/SPacketHighlightRecipe.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      38: invokestatic  #71                 // Method com/illusivesoulworks/polymorph/common/network/ClientPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;
+      41: dup
+      42: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      45: pop
+      46: invokedynamic #97,  0             // InvokeDynamic #4:handle:(Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      51: invokevirtual #87                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      54: pop
+      55: aload_2
+      56: getstatic     #98                 // Field com/illusivesoulworks/polymorph/common/network/server/SPacketPlayerRecipeSync.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      59: getstatic     #101                // Field com/illusivesoulworks/polymorph/common/network/server/SPacketPlayerRecipeSync.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      62: invokestatic  #71                 // Method com/illusivesoulworks/polymorph/common/network/ClientPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;
+      65: dup
+      66: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      69: pop
+      70: invokedynamic #102,  0            // InvokeDynamic #5:handle:(Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      75: invokevirtual #87                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      78: pop
+      79: aload_2
+      80: getstatic     #103                // Field com/illusivesoulworks/polymorph/common/network/server/SPacketUpdatePreview.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      83: getstatic     #106                // Field com/illusivesoulworks/polymorph/common/network/server/SPacketUpdatePreview.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      86: invokestatic  #71                 // Method com/illusivesoulworks/polymorph/common/network/ClientPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;
+      89: dup
+      90: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      93: pop
+      94: invokedynamic #107,  0            // InvokeDynamic #6:handle:(Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      99: invokevirtual #87                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     102: pop
+     103: aload_2
+     104: getstatic     #108                // Field com/illusivesoulworks/polymorph/common/network/server/SPacketRecipeHandshake.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     107: getstatic     #111                // Field com/illusivesoulworks/polymorph/common/network/server/SPacketRecipeHandshake.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     110: invokestatic  #71                 // Method com/illusivesoulworks/polymorph/common/network/ClientPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;
+     113: dup
+     114: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     117: pop
+     118: invokedynamic #112,  0            // InvokeDynamic #7:handle:(Lcom/illusivesoulworks/polymorph/common/network/ClientPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     123: invokevirtual #87                 // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     126: pop
+     127: aload_2
+     128: getstatic     #113                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketPersistentRecipeSelection.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     131: getstatic     #116                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketPersistentRecipeSelection.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     134: invokestatic  #117                // Method com/illusivesoulworks/polymorph/common/network/ServerPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;
+     137: dup
+     138: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     141: pop
+     142: invokedynamic #122,  0            // InvokeDynamic #8:handle:(Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     147: invokevirtual #125                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     150: pop
+     151: aload_2
+     152: getstatic     #128                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketPlayerRecipeSelection.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     155: getstatic     #131                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketPlayerRecipeSelection.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     158: invokestatic  #117                // Method com/illusivesoulworks/polymorph/common/network/ServerPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;
+     161: dup
+     162: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     165: pop
+     166: invokedynamic #132,  0            // InvokeDynamic #9:handle:(Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     171: invokevirtual #125                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     174: pop
+     175: aload_2
+     176: getstatic     #133                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketBlockEntityListener.TYPE:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     179: getstatic     #136                // Field com/illusivesoulworks/polymorph/common/network/client/CPacketBlockEntityListener.STREAM_CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     182: invokestatic  #117                // Method com/illusivesoulworks/polymorph/common/network/ServerPayloadHandler.getInstance:()Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;
+     185: dup
+     186: invokestatic  #77                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+     189: pop
+     190: invokedynamic #137,  0            // InvokeDynamic #10:handle:(Lcom/illusivesoulworks/polymorph/common/network/ServerPayloadHandler;)Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     195: invokevirtual #125                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     198: pop
+     199: return
+}

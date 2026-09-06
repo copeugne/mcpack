@@ -1,0 +1,98 @@
+Compiled from "FastBenchModule.java"
+public class com.illusivesoulworks.polymorph.common.integration.fastbench.FastBenchModule extends com.illusivesoulworks.polymorph.common.integration.AbstractCompatibilityModule {
+  public com.illusivesoulworks.polymorph.common.integration.fastbench.FastBenchModule();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method com/illusivesoulworks/polymorph/common/integration/AbstractCompatibilityModule."<init>":()V
+       4: return
+
+  public boolean selectRecipe(net.minecraft.world.inventory.AbstractContainerMenu, net.minecraft.world.item.crafting.RecipeHolder<?>);
+    Code:
+       0: aload_2
+       1: invokevirtual #7                  // Method net/minecraft/world/item/crafting/RecipeHolder.value:()Lnet/minecraft/world/item/crafting/Recipe;
+       4: astore        4
+       6: aload         4
+       8: instanceof    #13                 // class net/minecraft/world/item/crafting/CraftingRecipe
+      11: ifeq          205
+      14: aload         4
+      16: checkcast     #13                 // class net/minecraft/world/item/crafting/CraftingRecipe
+      19: astore_3
+      20: aconst_null
+      21: astore        4
+      23: aconst_null
+      24: astore        5
+      26: aconst_null
+      27: astore        6
+      29: aload_1
+      30: instanceof    #15                 // class net/minecraft/world/inventory/CraftingMenu
+      33: ifeq          72
+      36: aload_1
+      37: checkcast     #17                 // class com/illusivesoulworks/polymorph/mixin/core/AccessorCraftingMenu
+      40: astore        7
+      42: aload         7
+      44: invokeinterface #19,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorCraftingMenu.getCraftSlots:()Lnet/minecraft/world/inventory/CraftingContainer;
+      49: astore        4
+      51: aload         7
+      53: invokeinterface #23,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorCraftingMenu.getResultSlots:()Lnet/minecraft/world/inventory/ResultContainer;
+      58: astore        5
+      60: aload         7
+      62: invokeinterface #27,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorCraftingMenu.getPlayer:()Lnet/minecraft/world/entity/player/Player;
+      67: astore        6
+      69: goto          112
+      72: aload_1
+      73: instanceof    #31                 // class net/minecraft/world/inventory/InventoryMenu
+      76: ifeq          112
+      79: aload_1
+      80: checkcast     #33                 // class com/illusivesoulworks/polymorph/mixin/core/AccessorInventoryMenu
+      83: astore        7
+      85: aload         7
+      87: invokeinterface #35,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorInventoryMenu.getCraftSlots:()Lnet/minecraft/world/inventory/CraftingContainer;
+      92: astore        4
+      94: aload         7
+      96: invokeinterface #36,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorInventoryMenu.getResultSlots:()Lnet/minecraft/world/inventory/ResultContainer;
+     101: astore        5
+     103: aload         7
+     105: invokeinterface #37,  1           // InterfaceMethod com/illusivesoulworks/polymorph/mixin/core/AccessorInventoryMenu.getOwner:()Lnet/minecraft/world/entity/player/Player;
+     110: astore        6
+     112: aload         4
+     114: ifnull        205
+     117: aload         5
+     119: ifnull        205
+     122: aload         6
+     124: ifnull        205
+     127: aload_3
+     128: aload         4
+     130: invokeinterface #40,  1           // InterfaceMethod net/minecraft/world/inventory/CraftingContainer.asCraftInput:()Lnet/minecraft/world/item/crafting/CraftingInput;
+     135: aload         6
+     137: invokevirtual #46                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+     140: invokevirtual #52                 // Method net/minecraft/world/level/Level.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+     143: invokeinterface #58,  3           // InterfaceMethod net/minecraft/world/item/crafting/CraftingRecipe.assemble:(Lnet/minecraft/world/item/crafting/RecipeInput;Lnet/minecraft/core/HolderLookup$Provider;)Lnet/minecraft/world/item/ItemStack;
+     148: astore        7
+     150: aload         7
+     152: ifnull        205
+     155: aload         7
+     157: aload         5
+     159: iconst_0
+     160: invokevirtual #62                 // Method net/minecraft/world/inventory/ResultContainer.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+     163: invokestatic  #68                 // Method net/minecraft/world/item/ItemStack.matches:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;)Z
+     166: ifne          205
+     169: aload         6
+     171: checkcast     #74                 // class net/minecraft/server/level/ServerPlayer
+     174: new           #76                 // class dev/shadowsoffire/fastbench/net/RecipePayload
+     177: dup
+     178: aload_2
+     179: aload         7
+     181: invokespecial #78                 // Method dev/shadowsoffire/fastbench/net/RecipePayload."<init>":(Lnet/minecraft/world/item/crafting/RecipeHolder;Lnet/minecraft/world/item/ItemStack;)V
+     184: iconst_0
+     185: anewarray     #81                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+     188: invokestatic  #83                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+     191: aload         5
+     193: iconst_0
+     194: aload         7
+     196: invokevirtual #89                 // Method net/minecraft/world/inventory/ResultContainer.setItem:(ILnet/minecraft/world/item/ItemStack;)V
+     199: aload         5
+     201: aload_2
+     202: invokevirtual #93                 // Method net/minecraft/world/inventory/ResultContainer.setRecipeUsed:(Lnet/minecraft/world/item/crafting/RecipeHolder;)V
+     205: iconst_0
+     206: ireturn
+}
