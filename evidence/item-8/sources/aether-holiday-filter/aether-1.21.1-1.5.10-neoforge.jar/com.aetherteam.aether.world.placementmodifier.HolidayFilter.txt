@@ -1,0 +1,60 @@
+Compiled from "HolidayFilter.java"
+public class com.aetherteam.aether.world.placementmodifier.HolidayFilter extends net.minecraft.world.level.levelgen.placement.PlacementFilter {
+  public static final com.mojang.serialization.MapCodec<com.aetherteam.aether.world.placementmodifier.HolidayFilter> CODEC;
+
+  public com.aetherteam.aether.world.placementmodifier.HolidayFilter();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/placement/PlacementFilter."<init>":()V
+       4: return
+
+  protected boolean shouldPlace(net.minecraft.world.level.levelgen.placement.PlacementContext, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: invokestatic  #7                  // Method java/util/Calendar.getInstance:()Ljava/util/Calendar;
+       3: astore        4
+       5: aload         4
+       7: iconst_2
+       8: invokevirtual #13                 // Method java/util/Calendar.get:(I)I
+      11: bipush        11
+      13: if_icmpeq     25
+      16: aload         4
+      18: iconst_2
+      19: invokevirtual #13                 // Method java/util/Calendar.get:(I)I
+      22: ifne          29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: istore        5
+      32: getstatic     #17                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      35: getfield      #23                 // Field com/aetherteam/aether/AetherConfig$Server.generate_holiday_tree_always:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      38: invokevirtual #29                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      41: checkcast     #34                 // class java/lang/Boolean
+      44: invokevirtual #36                 // Method java/lang/Boolean.booleanValue:()Z
+      47: ifne          73
+      50: getstatic     #17                 // Field com/aetherteam/aether/AetherConfig.SERVER:Lcom/aetherteam/aether/AetherConfig$Server;
+      53: getfield      #40                 // Field com/aetherteam/aether/AetherConfig$Server.generate_holiday_tree_seasonally:Lnet/neoforged/neoforge/common/ModConfigSpec$ConfigValue;
+      56: invokevirtual #29                 // Method net/neoforged/neoforge/common/ModConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      59: checkcast     #34                 // class java/lang/Boolean
+      62: invokevirtual #36                 // Method java/lang/Boolean.booleanValue:()Z
+      65: ifeq          77
+      68: iload         5
+      70: ifeq          77
+      73: iconst_1
+      74: goto          78
+      77: iconst_0
+      78: ireturn
+
+  public net.minecraft.world.level.levelgen.placement.PlacementModifierType<?> type();
+    Code:
+       0: getstatic     #43                 // Field com/aetherteam/aether/world/placementmodifier/AetherPlacementModifiers.HOLIDAY_FILTER:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       3: invokevirtual #49                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       6: checkcast     #52                 // class net/minecraft/world/level/levelgen/placement/PlacementModifierType
+       9: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #54,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+       5: invokestatic  #57                 // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #63                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
