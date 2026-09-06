@@ -1880,6 +1880,9 @@ CLASSES: tuple[str, ...] = (
     "com/chefmooon/ubesdelight/integration/wthit/UbesDelightWailaPlugin.class",
     "com/chefmooon/ubesdelight/integration/emi/neoforge/EMIPluginImpl.class",
     "com/chefmooon/ubesdelight/integration/rei/neoforge/ServerREIPluginImpl.class",
+    "eu/midnightdust/core/MidnightLib.class",
+    "eu/midnightdust/core/MidnightLib$MidnightLibBusEvents.class",
+    "eu/midnightdust/core/MidnightLib$MidnightLibEvents.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
@@ -1912,6 +1915,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar",
         "META-INF/jars/tiny-config-3.1.0-neoforge.jar",
         "META-INF/jars/extensibleenums-neoforge-21.1.1.jar",
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
@@ -1927,6 +1931,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/midnightlib-1.9.2+1.21.1-neoforge.jar": (
+            "ubesdelight-neoforge-1.21.1-0.4.13.jar",
+            "5dc6cc72e507c3fb5b5bac59e79da2aee74a9d1345dbc48e0ccecd608ac9286a",
+        ),
         "META-INF/jarjar/mixinsquared-forge-0.3.3.jar": (
             "supplementaries-neoforge-1.21.1-3.6.8.jar",
             "e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3",
