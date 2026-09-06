@@ -1,0 +1,113 @@
+Compiled from "BiomeModifications.java"
+public final class net.fabricmc.fabric.api.biome.v1.BiomeModifications {
+  private net.fabricmc.fabric.api.biome.v1.BiomeModifications();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addFeature(java.util.function.Predicate<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext>, net.minecraft.world.level.levelgen.GenerationStep$Decoration, net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature>);
+    Code:
+       0: aload_2
+       1: invokevirtual #7                  // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokestatic  #13                 // Method create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+       7: getstatic     #19                 // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.ADDITIONS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      10: aload_0
+      11: aload_1
+      12: aload_2
+      13: invokedynamic #25,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Consumer;
+      18: invokevirtual #29                 // Method net/fabricmc/fabric/api/biome/v1/BiomeModification.add:(Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;Ljava/util/function/Predicate;Ljava/util/function/Consumer;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+      21: pop
+      22: return
+
+  public static void addCarver(java.util.function.Predicate<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext>, net.minecraft.world.level.levelgen.GenerationStep$Carving, net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver<?>>);
+    Code:
+       0: aload_2
+       1: invokevirtual #7                  // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokestatic  #13                 // Method create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+       7: getstatic     #19                 // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.ADDITIONS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      10: aload_0
+      11: aload_1
+      12: aload_2
+      13: invokedynamic #35,  0             // InvokeDynamic #1:accept:(Lnet/minecraft/world/level/levelgen/GenerationStep$Carving;Lnet/minecraft/resources/ResourceKey;)Ljava/util/function/Consumer;
+      18: invokevirtual #29                 // Method net/fabricmc/fabric/api/biome/v1/BiomeModification.add:(Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;Ljava/util/function/Predicate;Ljava/util/function/Consumer;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+      21: pop
+      22: return
+
+  public static void addSpawn(java.util.function.Predicate<net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext>, net.minecraft.world.entity.MobCategory, net.minecraft.world.entity.EntityType<?>, int, int, int);
+    Code:
+       0: aload_2
+       1: invokevirtual #38                 // Method net/minecraft/world/entity/EntityType.getCategory:()Lnet/minecraft/world/entity/MobCategory;
+       4: getstatic     #44                 // Field net/minecraft/world/entity/MobCategory.MISC:Lnet/minecraft/world/entity/MobCategory;
+       7: if_acmpeq     14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: ldc           #50                 // String Cannot add spawns for entities with spawnGroup=MISC since they\'d be replaced by pigs.
+      17: invokestatic  #52                 // Method com/google/common/base/Preconditions.checkArgument:(ZLjava/lang/Object;)V
+      20: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+      23: aload_2
+      24: invokeinterface #64,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      29: astore        6
+      31: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+      34: aload_2
+      35: invokeinterface #70,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getResourceKey:(Ljava/lang/Object;)Ljava/util/Optional;
+      40: invokevirtual #74                 // Method java/util/Optional.isPresent:()Z
+      43: ldc           #80                 // String Unregistered entity type: %s
+      45: aload_2
+      46: invokestatic  #82                 // Method com/google/common/base/Preconditions.checkState:(ZLjava/lang/String;Ljava/lang/Object;)V
+      49: aload         6
+      51: invokestatic  #13                 // Method create:(Lnet/minecraft/resources/ResourceLocation;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+      54: getstatic     #19                 // Field net/fabricmc/fabric/api/biome/v1/ModificationPhase.ADDITIONS:Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;
+      57: aload_0
+      58: aload_1
+      59: aload_2
+      60: iload_3
+      61: iload         4
+      63: iload         5
+      65: invokedynamic #86,  0             // InvokeDynamic #2:accept:(Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/entity/EntityType;III)Ljava/util/function/Consumer;
+      70: invokevirtual #29                 // Method net/fabricmc/fabric/api/biome/v1/BiomeModification.add:(Lnet/fabricmc/fabric/api/biome/v1/ModificationPhase;Ljava/util/function/Predicate;Ljava/util/function/Consumer;)Lnet/fabricmc/fabric/api/biome/v1/BiomeModification;
+      73: pop
+      74: return
+
+  public static net.fabricmc.fabric.api.biome.v1.BiomeModification create(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #30                 // class net/fabricmc/fabric/api/biome/v1/BiomeModification
+       3: dup
+       4: aload_0
+       5: invokespecial #89                 // Method net/fabricmc/fabric/api/biome/v1/BiomeModification."<init>":(Lnet/minecraft/resources/ResourceLocation;)V
+       8: areturn
+
+  private static void lambda$addSpawn$2(net.minecraft.world.entity.MobCategory, net.minecraft.world.entity.EntityType, int, int, int, net.fabricmc.fabric.api.biome.v1.BiomeModificationContext);
+    Code:
+       0: aload         5
+       2: invokeinterface #92,  1           // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext.getSpawnSettings:()Lnet/fabricmc/fabric/api/biome/v1/BiomeModificationContext$SpawnSettingsContext;
+       7: aload_0
+       8: new           #98                 // class net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData
+      11: dup
+      12: aload_1
+      13: iload_2
+      14: iload_3
+      15: iload         4
+      17: invokespecial #100                // Method net/minecraft/world/level/biome/MobSpawnSettings$SpawnerData."<init>":(Lnet/minecraft/world/entity/EntityType;III)V
+      20: invokeinterface #103,  3          // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext$SpawnSettingsContext.addSpawn:(Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/world/level/biome/MobSpawnSettings$SpawnerData;)V
+      25: return
+
+  private static void lambda$addCarver$1(net.minecraft.world.level.levelgen.GenerationStep$Carving, net.minecraft.resources.ResourceKey, net.fabricmc.fabric.api.biome.v1.BiomeModificationContext);
+    Code:
+       0: aload_2
+       1: invokeinterface #109,  1          // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext.getGenerationSettings:()Lnet/fabricmc/fabric/api/biome/v1/BiomeModificationContext$GenerationSettingsContext;
+       6: aload_0
+       7: aload_1
+       8: invokeinterface #113,  3          // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext$GenerationSettingsContext.addCarver:(Lnet/minecraft/world/level/levelgen/GenerationStep$Carving;Lnet/minecraft/resources/ResourceKey;)V
+      13: return
+
+  private static void lambda$addFeature$0(net.minecraft.world.level.levelgen.GenerationStep$Decoration, net.minecraft.resources.ResourceKey, net.fabricmc.fabric.api.biome.v1.BiomeModificationContext);
+    Code:
+       0: aload_2
+       1: invokeinterface #109,  1          // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext.getGenerationSettings:()Lnet/fabricmc/fabric/api/biome/v1/BiomeModificationContext$GenerationSettingsContext;
+       6: aload_0
+       7: aload_1
+       8: invokeinterface #119,  3          // InterfaceMethod net/fabricmc/fabric/api/biome/v1/BiomeModificationContext$GenerationSettingsContext.addFeature:(Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;Lnet/minecraft/resources/ResourceKey;)V
+      13: return
+}

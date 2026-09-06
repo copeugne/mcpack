@@ -5475,3 +5475,123 @@ Current census: 90 resolved, 46 open providers. Forgified Fabric API is the last
 open packaged-generation lane provider; 24 code-only and 21 unmatched rows also
 remain. Resolve those membership rows, then named canonical merge/split decisions
 before resuming the eleven attributes. These provider counts are not family counts.
+
+### Forgified Fabric API packaged-data boundary
+
+Source 6eb28e4, produced by extractor bbdf6f3 and independently reproduced,
+resolves the sole packaged biome modifier. FabricBiomeApiV1 registers a unit
+codec whose modifier receives BiomeModificationImpl's sorted list. That list
+starts empty and addModifier receives predicates and consumer callbacks from
+callers. FabricBiomeModifier selects the phase and biome, then applies those
+records. BiomeModifications exposes caller-supplied feature, carver and spawn
+registration. This is shared dispatch, not an independent authored site.
+
+The parent contains 43 nested archives and five other metadata/icon files.
+All nested archives have been checked for data and further archives. No deeper
+JAR or binary NBT template exists. Packaged data is exactly 491 conventional
+tags, the biome modifier JSON and one empty GameTest SNBT fixture. The focused
+check binds that partition and all five captured class/disassembly identities.
+
+```sh
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+```
+
+One case and scoped checks pass. This closes the packaged-data question, not
+whole provider membership. Remaining: bundled entry/mixin contribution roles,
+including biome selection and resource/test consumers. Do not repeat the
+modifier capture or expand generic callback internals without an unresolved
+site contribution. No new family candidate; census stays 90 resolved, 46 open.
+
+### Fabric biome selection hooks
+
+Source d052da5 (extractor 2426342) independently reproduces all six declared
+biome mixins and the NetherBiomeData/TheEndBiomeData consumers. The existing
+provider test binds the complete declared mixin set and exact source identities.
+
+| Hook | Membership role |
+| --- | --- |
+| BiomeSourceMixin | Passes possible biome sets through the extension hook. |
+| ChunkNoiseSamplerMixin, NoiseConfigMixin | Propagate the world seed to climate samplers. |
+| MultiNoiseUtilMultiNoiseSamplerMixin | Retains that seed and constructs the End biome noise sampler. |
+| NetherBiomePresetMixin | Appends caller-registered biome/noise-point pairs to the Nether preset. NetherBiomeData's map starts empty. |
+| TheEndBiomeSourceMixin | Retains the biome registry lookup, selects a returned biome through overrides and includes registered custom biomes in the possible set. |
+
+TheEndBiomeData's built-in choices reference vanilla End, highlands, small
+islands, midlands and barrens biomes. Its public methods accept replacement
+biome keys and weights from consumers. These are biome-selection contributions,
+not additional authored sites. Do not recursively audit the weighted-selection
+algorithm or generic codec behavior for family membership.
+
+Two focused Fabric cases and scoped Ruff/Basedpyright pass using the commands
+above. No new family candidate. Whole provider membership remains open for the
+other bundled entry/mixin roles, particularly resource loading and GameTest
+consumers. Census remains 90 resolved, 46 open; these completed biome roles must
+not be recaptured or reinterpreted on continuation.
+
+### Fabric GameTest consumer roles
+
+Source 6bffda6 (extractor ad51ae4) independently reproduces all five GameTest
+mixins plus generated entry, initializer and namespace consumer. The generated
+entry invokes FabricGameTestModInitializer, which registers classes from the
+fabric-gametest entrypoint with Minecraft's GameTestRegistry. Namespace and test
+registry hooks supply test names and invoke FabricGameTest implementations.
+StructureTemplateManagerMixin adds an SNBT resource source to the template
+manager; this is a loading path, not a natural structure placement request.
+TestCommandMixin reads the test-output directory property. TestServerMixin
+changes the test server's dedicated-server flag.
+
+These roles account for the packaged empty test fixture without creating an
+independent family. They do not imply that all template-manager calls are
+restricted to tests. No custom authored site is supplied by this module's
+packaged data. The existing focused source check now covers both biome and
+GameTest declared mixins without duplicating the binding implementation.
+Three focused Fabric cases and scoped Ruff/Basedpyright pass with the commands
+above. Remaining whole-provider work is the other bundled entry/mixin roles,
+particularly resource loading. Reuse all closed biome and GameTest roles.
+Census remains 90 resolved, 46 open; no family candidate was added.
+
+### Fabric resource-loading checkpoint
+
+Source cce2d3d (extractor 8cf0d23) independently reproduces the thirteen declared
+common resource-loading mixins, generated entry and ResourceManagerHelperImpl.
+The existing focused check binds their complete declared set and source hashes.
+Four Fabric cases and scoped Ruff/Basedpyright pass with the commands above.
+
+The hooks cover pack visibility/activation, resource type and source tracking,
+reload-listener ordering, default/test pack selection and known-pack registry
+synchronization. No independent site candidate has emerged. ResourceManagerHelperImpl
+registers caller-provided mod pack paths and reload listeners. Two concrete
+consumers were retained separately in 6326f21 (extractor 149e849), with independent
+byte-for-byte reproduction: ModResourcePackUtil and ModNioResourcePack.
+
+ModNioResourcePack opens mod paths and overlays. ModResourcePackUtil's fallback
+resources are pack.mcmeta and pack.png. The default/test selection methods call
+ModResourcePackCreator.loadPacks. That specific pack-discovery delegate remains
+to inspect before closing this module; do not restart its thirteen hooks or
+expand registry packet behavior into a networking audit. The two-consumer source
+still needs its focused identity binding alongside the final discovery result.
+Census remains 90 resolved, 46 open providers. Other Fabric module entry/mixin
+roles remain after this resource-loading question.
+
+### Fabric resource-loading membership resolved
+
+Source 8cfe15c retains ModResourcePackCreator (extractor 6cf2878) and the
+PlaceholderResourcePack/Factory supplier (extractor e29938a). Both captures
+independently reproduce. The focused check also binds the previously delivered
+ModResourcePackUtil and ModNioResourcePack source in 6326f21.
+
+ModResourcePackCreator.loadPacks constructs the fixed fabric pack, adds
+programmer-art and high-contrast paths only for CLIENT_RESOURCES, and returns
+to ResourceManagerHelperImpl's caller-registered built-in pack list. The fixed
+pack has no namespaces, returns no ordinary resource and enumerates no resources;
+its factory wraps that same pack. It supplies pack metadata rather than structure
+content. Together with mod-path/overlay loading and the complete packaged-data
+partition, this resolves resource loading as infrastructure for consumer content,
+with no independent family. No further generic supplier or packet audit is needed.
+
+Five focused Fabric cases and scoped Ruff/Basedpyright pass using the existing
+commands. Reuse the resolved biome, GameTest and resource-loading roles. Other
+bundled module entry/mixin roles remain before whole-provider closure. Census
+remains 90 resolved, 46 open providers; no family candidate was added.
