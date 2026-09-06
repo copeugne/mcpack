@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Puzzles Lib membership is resolved from 875c52c6 and a97ac77c: shared consumer
+event/registry/behavior APIs, no independent generated family. Full payload,
+entry/hook/service/source binding and scoped checks pass. Whole providers:
+112 resolved, 24 open. Working groups remain 410 and the 100 explicitly
+provisional Moog records still require canonical decisions. Finish provider
+membership and grouping before detailed attributes. Preserve loot effects; do
+not trace more generic Puzzles Lib event/network/development internals.
+
+
 EMI Loot membership is resolved from ebf5a286 and a2f485ef: existing-loot
 inspection and client display synchronization, no independent generated family.
 Full payload/entry/hook/source binding and scoped checks pass. Whole providers:
