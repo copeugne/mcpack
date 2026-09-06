@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Almanac, Library Ferret and Structure Layout Optimizer provider coverage now
+passes. Their complete 38-class capture is delivered in 8c60e03 using 4f65e40;
+all three independently reproduced. The reused small-utility test has nine passing
+cases, with scoped checks passing. These add no independent authored family;
+Ferret's abstract consumer generation and the optimizer's assembly changes retain
+explicit roles. Do not audit their geometry or unrelated gameplay further.
+Counts: 43 resolved providers, 93 open. Continue the exact provider queue before
+attributes or a final family denominator claim. Source commands and role details
+are in sources/small-utility-providers.md under evidence/item-8.
+
+
 Six small utility providers now have supported dispositions: AI Improvements,
 AttributeFix, Leaves Be Gone, Let Me Despawn, Sparse Structures and Structure
 Pool API. Selector 39ef785 and complete 69-class capture 69119c6 are delivered;

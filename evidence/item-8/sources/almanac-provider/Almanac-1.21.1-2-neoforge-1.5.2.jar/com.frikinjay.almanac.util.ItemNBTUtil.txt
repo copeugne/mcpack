@@ -1,0 +1,703 @@
+Classfile Almanac-1.21.1-2-neoforge-1.5.2.jar!/com/frikinjay/almanac/util/ItemNBTUtil.class
+  Last modified Jan 1, 1980; size 4577 bytes
+  SHA-256 checksum f98bc2d3fe4218ed3890306e0f6fa7c60da69c1028aa3dfc165caeaa558dd989
+  Compiled from "ItemNBTUtil.java"
+public class com.frikinjay.almanac.util.ItemNBTUtil
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/frikinjay/almanac/util/ItemNBTUtil
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 7, attributes: 1
+Constant pool:
+    #1 = Utf8               com/frikinjay/almanac/util/ItemNBTUtil
+    #2 = Class              #1            // com/frikinjay/almanac/util/ItemNBTUtil
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               ItemNBTUtil.java
+    #6 = Utf8               blacklistPattern
+    #7 = Utf8               Ljava/util/List;
+    #8 = Utf8               Ljava/util/List<Ljava/util/regex/Pattern;>;
+    #9 = Utf8               blacklistCache
+   #10 = Utf8               Ljava/util/Set;
+   #11 = Utf8               Ljava/util/Set<Lnet/minecraft/world/item/Item;>;
+   #12 = Utf8               whitelistCache
+   #13 = Utf8               <init>
+   #14 = Utf8               ()V
+   #15 = NameAndType        #13:#14       // "<init>":()V
+   #16 = Methodref          #4.#15        // java/lang/Object."<init>":()V
+   #17 = Utf8               this
+   #18 = Utf8               Lcom/frikinjay/almanac/util/ItemNBTUtil;
+   #19 = Utf8               checkAndFix
+   #20 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+   #21 = Utf8               stack
+   #22 = Utf8               net/minecraft/world/item/ItemStack
+   #23 = Class              #22           // net/minecraft/world/item/ItemStack
+   #24 = Utf8               isEmpty
+   #25 = Utf8               ()Z
+   #26 = NameAndType        #24:#25       // isEmpty:()Z
+   #27 = Methodref          #23.#26       // net/minecraft/world/item/ItemStack.isEmpty:()Z
+   #28 = Utf8               getItem
+   #29 = Utf8               ()Lnet/minecraft/world/item/Item;
+   #30 = NameAndType        #28:#29       // getItem:()Lnet/minecraft/world/item/Item;
+   #31 = Methodref          #23.#30       // net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+   #32 = NameAndType        #9:#10        // blacklistCache:Ljava/util/Set;
+   #33 = Fieldref           #2.#32        // com/frikinjay/almanac/util/ItemNBTUtil.blacklistCache:Ljava/util/Set;
+   #34 = Utf8               java/util/Set
+   #35 = Class              #34           // java/util/Set
+   #36 = Utf8               contains
+   #37 = Utf8               (Ljava/lang/Object;)Z
+   #38 = NameAndType        #36:#37       // contains:(Ljava/lang/Object;)Z
+   #39 = InterfaceMethodref #35.#38       // java/util/Set.contains:(Ljava/lang/Object;)Z
+   #40 = Utf8               net/minecraft/world/item/Item
+   #41 = Class              #40           // net/minecraft/world/item/Item
+   #42 = NameAndType        #12:#10       // whitelistCache:Ljava/util/Set;
+   #43 = Fieldref           #2.#42        // com/frikinjay/almanac/util/ItemNBTUtil.whitelistCache:Ljava/util/Set;
+   #44 = Utf8               tryRemoveEmptyCustomData
+   #45 = NameAndType        #44:#20       // tryRemoveEmptyCustomData:(Lnet/minecraft/world/item/ItemStack;)Z
+   #46 = Methodref          #2.#45        // com/frikinjay/almanac/util/ItemNBTUtil.tryRemoveEmptyCustomData:(Lnet/minecraft/world/item/ItemStack;)Z
+   #47 = Utf8               getOrInitializePatterns
+   #48 = Utf8               ()Ljava/util/List;
+   #49 = NameAndType        #47:#48       // getOrInitializePatterns:()Ljava/util/List;
+   #50 = Methodref          #2.#49        // com/frikinjay/almanac/util/ItemNBTUtil.getOrInitializePatterns:()Ljava/util/List;
+   #51 = Utf8               java/util/List
+   #52 = Class              #51           // java/util/List
+   #53 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+   #54 = Class              #53           // net/minecraft/core/registries/BuiltInRegistries
+   #55 = Utf8               ITEM
+   #56 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+   #57 = NameAndType        #55:#56       // ITEM:Lnet/minecraft/core/DefaultedRegistry;
+   #58 = Fieldref           #54.#57       // net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+   #59 = Utf8               net/minecraft/core/DefaultedRegistry
+   #60 = Class              #59           // net/minecraft/core/DefaultedRegistry
+   #61 = Utf8               getKey
+   #62 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+   #63 = NameAndType        #61:#62       // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+   #64 = InterfaceMethodref #60.#63       // net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+   #65 = Utf8               add
+   #66 = NameAndType        #65:#37       // add:(Ljava/lang/Object;)Z
+   #67 = InterfaceMethodref #35.#66       // java/util/Set.add:(Ljava/lang/Object;)Z
+   #68 = Utf8               net/minecraft/resources/ResourceLocation
+   #69 = Class              #68           // net/minecraft/resources/ResourceLocation
+   #70 = Utf8               java/lang/Throwable
+   #71 = Class              #70           // java/lang/Throwable
+   #72 = Utf8               toString
+   #73 = Utf8               ()Ljava/lang/String;
+   #74 = NameAndType        #72:#73       // toString:()Ljava/lang/String;
+   #75 = Methodref          #69.#74       // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+   #76 = Utf8               iterator
+   #77 = Utf8               ()Ljava/util/Iterator;
+   #78 = NameAndType        #76:#77       // iterator:()Ljava/util/Iterator;
+   #79 = InterfaceMethodref #52.#78       // java/util/List.iterator:()Ljava/util/Iterator;
+   #80 = Utf8               java/lang/String
+   #81 = Class              #80           // java/lang/String
+   #82 = Utf8               java/util/Iterator
+   #83 = Class              #82           // java/util/Iterator
+   #84 = Utf8               hasNext
+   #85 = NameAndType        #84:#25       // hasNext:()Z
+   #86 = InterfaceMethodref #83.#85       // java/util/Iterator.hasNext:()Z
+   #87 = Utf8               next
+   #88 = Utf8               ()Ljava/lang/Object;
+   #89 = NameAndType        #87:#88       // next:()Ljava/lang/Object;
+   #90 = InterfaceMethodref #83.#89       // java/util/Iterator.next:()Ljava/lang/Object;
+   #91 = Utf8               java/util/regex/Pattern
+   #92 = Class              #91           // java/util/regex/Pattern
+   #93 = Utf8               matcher
+   #94 = Utf8               (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+   #95 = NameAndType        #93:#94       // matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+   #96 = Methodref          #92.#95       // java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+   #97 = Utf8               java/util/regex/Matcher
+   #98 = Class              #97           // java/util/regex/Matcher
+   #99 = Utf8               matches
+  #100 = NameAndType        #99:#25       // matches:()Z
+  #101 = Methodref          #98.#100      // java/util/regex/Matcher.matches:()Z
+  #102 = Utf8               p
+  #103 = Utf8               Ljava/util/regex/Pattern;
+  #104 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #105 = Utf8               item
+  #106 = Utf8               Lnet/minecraft/world/item/Item;
+  #107 = Utf8               patterns
+  #108 = Utf8               itemId
+  #109 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #110 = Utf8               id
+  #111 = Utf8               Ljava/lang/String;
+  #112 = Utf8               ()Ljava/util/List<Ljava/util/regex/Pattern;>;
+  #113 = Utf8               java/lang/Exception
+  #114 = Class              #113          // java/lang/Exception
+  #115 = NameAndType        #6:#7         // blacklistPattern:Ljava/util/List;
+  #116 = Fieldref           #2.#115       // com/frikinjay/almanac/util/ItemNBTUtil.blacklistPattern:Ljava/util/List;
+  #117 = Utf8               java/lang/Class
+  #118 = Class              #117          // java/lang/Class
+  #119 = Utf8               com/frikinjay/almanac/platform/ConfigHelper
+  #120 = Class              #119          // com/frikinjay/almanac/platform/ConfigHelper
+  #121 = Utf8               blacklistItems
+  #122 = NameAndType        #121:#48      // blacklistItems:()Ljava/util/List;
+  #123 = Methodref          #120.#122     // com/frikinjay/almanac/platform/ConfigHelper.blacklistItems:()Ljava/util/List;
+  #124 = Utf8               java/util/ArrayList
+  #125 = Class              #124          // java/util/ArrayList
+  #126 = Methodref          #125.#15      // java/util/ArrayList."<init>":()V
+  #127 = InterfaceMethodref #52.#26       // java/util/List.isEmpty:()Z
+  #128 = Utf8               *
+  #129 = String             #128          // *
+  #130 = Utf8               .*
+  #131 = String             #130          // .*
+  #132 = Utf8               replace
+  #133 = Utf8               (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #134 = NameAndType        #132:#133     // replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #135 = Methodref          #81.#134      // java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+  #136 = Utf8               compile
+  #137 = Utf8               (Ljava/lang/String;)Ljava/util/regex/Pattern;
+  #138 = NameAndType        #136:#137     // compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+  #139 = Methodref          #92.#138      // java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+  #140 = InterfaceMethodref #52.#66       // java/util/List.add:(Ljava/lang/Object;)Z
+  #141 = Utf8               regex
+  #142 = Utf8               s
+  #143 = Utf8               configList
+  #144 = Utf8               Ljava/util/List<+Ljava/lang/String;>;
+  #145 = Utf8               e
+  #146 = Utf8               Ljava/lang/Exception;
+  #147 = Utf8               net/minecraft/core/component/DataComponents
+  #148 = Class              #147          // net/minecraft/core/component/DataComponents
+  #149 = Utf8               CUSTOM_DATA
+  #150 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+  #151 = NameAndType        #149:#150     // CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #152 = Fieldref           #148.#151     // net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #153 = Utf8               get
+  #154 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #155 = NameAndType        #153:#154     // get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #156 = Methodref          #23.#155      // net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #157 = Utf8               net/minecraft/world/item/component/CustomData
+  #158 = Class              #157          // net/minecraft/world/item/component/CustomData
+  #159 = Utf8               copyTag
+  #160 = Utf8               ()Lnet/minecraft/nbt/CompoundTag;
+  #161 = NameAndType        #159:#160     // copyTag:()Lnet/minecraft/nbt/CompoundTag;
+  #162 = Methodref          #158.#161     // net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+  #163 = Utf8               net/minecraft/nbt/CompoundTag
+  #164 = Class              #163          // net/minecraft/nbt/CompoundTag
+  #165 = Methodref          #164.#26      // net/minecraft/nbt/CompoundTag.isEmpty:()Z
+  #166 = Utf8               remove
+  #167 = NameAndType        #166:#154     // remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #168 = Methodref          #23.#167      // net/minecraft/world/item/ItemStack.remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #169 = Utf8               component
+  #170 = Utf8               Lnet/minecraft/world/item/component/CustomData;
+  #171 = Utf8               resetCache
+  #172 = Utf8               clear
+  #173 = NameAndType        #172:#14      // clear:()V
+  #174 = InterfaceMethodref #35.#173      // java/util/Set.clear:()V
+  #175 = Utf8               fixBug
+  #176 = Utf8               (Lnet/minecraft/world/item/ItemStack;)V
+  #177 = Utf8               Ljava/lang/Deprecated;
+  #178 = NameAndType        #19:#20       // checkAndFix:(Lnet/minecraft/world/item/ItemStack;)Z
+  #179 = Methodref          #2.#178       // com/frikinjay/almanac/util/ItemNBTUtil.checkAndFix:(Lnet/minecraft/world/item/ItemStack;)Z
+  #180 = Utf8               <clinit>
+  #181 = Utf8               java/util/HashSet
+  #182 = Class              #181          // java/util/HashSet
+  #183 = Methodref          #182.#15      // java/util/HashSet."<init>":()V
+  #184 = Utf8               Signature
+  #185 = Utf8               Code
+  #186 = Utf8               LineNumberTable
+  #187 = Utf8               LocalVariableTable
+  #188 = Utf8               StackMapTable
+  #189 = Utf8               LocalVariableTypeTable
+  #190 = Utf8               MethodParameters
+  #191 = Utf8               Deprecated
+  #192 = Utf8               RuntimeVisibleAnnotations
+  #193 = Utf8               SourceFile
+{
+  private static volatile java.util.List<java.util.regex.Pattern> blacklistPattern;
+    descriptor: Ljava/util/List;
+    flags: (0x004a) ACC_PRIVATE, ACC_STATIC, ACC_VOLATILE
+    Signature: #8                           // Ljava/util/List<Ljava/util/regex/Pattern;>;
+
+  private static final java.util.Set<net.minecraft.world.item.Item> blacklistCache;
+    descriptor: Ljava/util/Set;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #11                          // Ljava/util/Set<Lnet/minecraft/world/item/Item;>;
+
+  private static final java.util.Set<net.minecraft.world.item.Item> whitelistCache;
+    descriptor: Ljava/util/Set;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #11                          // Ljava/util/Set<Lnet/minecraft/world/item/Item;>;
+
+  public com.frikinjay.almanac.util.ItemNBTUtil();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/frikinjay/almanac/util/ItemNBTUtil;
+
+  public static boolean checkAndFix(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=10, args_size=1
+         0: aload_0
+         1: ifnull        11
+         4: aload_0
+         5: invokevirtual #27                 // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+         8: ifeq          13
+        11: iconst_0
+        12: ireturn
+        13: aload_0
+        14: invokevirtual #31                 // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+        17: astore_1
+        18: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+        21: aload_1
+        22: invokeinterface #39,  2           // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+        27: ifeq          32
+        30: iconst_0
+        31: ireturn
+        32: getstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+        35: aload_1
+        36: invokeinterface #39,  2           // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+        41: ifeq          49
+        44: aload_0
+        45: invokestatic  #46                 // Method tryRemoveEmptyCustomData:(Lnet/minecraft/world/item/ItemStack;)Z
+        48: ireturn
+        49: invokestatic  #50                 // Method getOrInitializePatterns:()Ljava/util/List;
+        52: astore_2
+        53: aload_2
+        54: ifnonnull     59
+        57: iconst_0
+        58: ireturn
+        59: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+        62: aload_1
+        63: invokeinterface #64,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        68: astore_3
+        69: aload_3
+        70: ifnonnull     106
+        73: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+        76: dup
+        77: astore        4
+        79: monitorenter
+        80: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+        83: aload_1
+        84: invokeinterface #67,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+        89: pop
+        90: aload         4
+        92: monitorexit
+        93: goto          104
+        96: astore        5
+        98: aload         4
+       100: monitorexit
+       101: aload         5
+       103: athrow
+       104: iconst_0
+       105: ireturn
+       106: aload_3
+       107: invokevirtual #75                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       110: astore        4
+       112: aload_2
+       113: invokeinterface #79,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       118: astore        5
+       120: aload         5
+       122: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       127: ifeq          191
+       130: aload         5
+       132: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       137: checkcast     #92                 // class java/util/regex/Pattern
+       140: astore        6
+       142: aload         6
+       144: aload         4
+       146: invokevirtual #96                 // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+       149: invokevirtual #101                // Method java/util/regex/Matcher.matches:()Z
+       152: ifeq          188
+       155: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+       158: dup
+       159: astore        7
+       161: monitorenter
+       162: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+       165: aload_1
+       166: invokeinterface #67,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       171: pop
+       172: aload         7
+       174: monitorexit
+       175: goto          186
+       178: astore        8
+       180: aload         7
+       182: monitorexit
+       183: aload         8
+       185: athrow
+       186: iconst_0
+       187: ireturn
+       188: goto          120
+       191: getstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+       194: dup
+       195: astore        5
+       197: monitorenter
+       198: getstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+       201: aload_1
+       202: invokeinterface #67,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       207: pop
+       208: aload         5
+       210: monitorexit
+       211: goto          222
+       214: astore        9
+       216: aload         5
+       218: monitorexit
+       219: aload         9
+       221: athrow
+       222: aload_0
+       223: invokestatic  #46                 // Method tryRemoveEmptyCustomData:(Lnet/minecraft/world/item/ItemStack;)Z
+       226: ireturn
+      Exception table:
+         from    to  target type
+            80    93    96   any
+            96   101    96   any
+           162   175   178   any
+           178   183   178   any
+           198   211   214   any
+           214   219   214   any
+      StackMapTable: number_of_entries = 15
+        frame_type = 11 /* same */
+        frame_type = 1 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 18
+          locals = [ class net/minecraft/world/item/Item ]
+        frame_type = 16 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ class java/util/List ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 36
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/Item, class java/util/List, class net/minecraft/resources/ResourceLocation, class java/util/Set ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 7 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 1
+        frame_type = 253 /* append */
+          offset_delta = 13
+          locals = [ class java/lang/String, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 57
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/Item, class java/util/List, class net/minecraft/resources/ResourceLocation, class java/lang/String, class java/util/Iterator, class java/util/regex/Pattern, class java/util/Set ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 7 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 1
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 22
+          locals = [ class net/minecraft/world/item/ItemStack, class net/minecraft/world/item/Item, class java/util/List, class net/minecraft/resources/ResourceLocation, class java/lang/String, class java/util/Set ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 7 /* same */
+      LineNumberTable:
+        line 24: 0
+        line 26: 13
+        line 28: 18
+        line 29: 30
+        line 32: 32
+        line 33: 44
+        line 36: 49
+        line 37: 53
+        line 38: 57
+        line 41: 59
+        line 42: 69
+        line 43: 73
+        line 44: 80
+        line 45: 90
+        line 46: 104
+        line 49: 106
+        line 50: 112
+        line 51: 142
+        line 52: 155
+        line 53: 162
+        line 54: 172
+        line 55: 186
+        line 57: 188
+        line 59: 191
+        line 60: 198
+        line 61: 208
+        line 62: 222
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          142      46     6     p   Ljava/util/regex/Pattern;
+            0     227     0 stack   Lnet/minecraft/world/item/ItemStack;
+           18     209     1  item   Lnet/minecraft/world/item/Item;
+           53     174     2 patterns   Ljava/util/List;
+           69     158     3 itemId   Lnet/minecraft/resources/ResourceLocation;
+          112     115     4    id   Ljava/lang/String;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           53     174     2 patterns   Ljava/util/List<Ljava/util/regex/Pattern;>;
+    MethodParameters:
+      Name                           Flags
+      stack
+
+  private static java.util.List<java.util.regex.Pattern> getOrInitializePatterns();
+    descriptor: ()Ljava/util/List;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=3, locals=7, args_size=0
+         0: getstatic     #116                // Field blacklistPattern:Ljava/util/List;
+         3: ifnull        10
+         6: getstatic     #116                // Field blacklistPattern:Ljava/util/List;
+         9: areturn
+        10: ldc           #2                  // class com/frikinjay/almanac/util/ItemNBTUtil
+        12: dup
+        13: astore_0
+        14: monitorenter
+        15: getstatic     #116                // Field blacklistPattern:Ljava/util/List;
+        18: ifnull        27
+        21: getstatic     #116                // Field blacklistPattern:Ljava/util/List;
+        24: aload_0
+        25: monitorexit
+        26: areturn
+        27: invokestatic  #123                // Method com/frikinjay/almanac/platform/ConfigHelper.blacklistItems:()Ljava/util/List;
+        30: astore_1
+        31: new           #125                // class java/util/ArrayList
+        34: dup
+        35: invokespecial #126                // Method java/util/ArrayList."<init>":()V
+        38: astore_2
+        39: aload_1
+        40: ifnull        105
+        43: aload_1
+        44: invokeinterface #127,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+        49: ifne          105
+        52: aload_1
+        53: invokeinterface #79,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        58: astore_3
+        59: aload_3
+        60: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        65: ifeq          105
+        68: aload_3
+        69: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        74: checkcast     #81                 // class java/lang/String
+        77: astore        4
+        79: aload         4
+        81: ldc           #129                // String *
+        83: ldc           #131                // String .*
+        85: invokevirtual #135                // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+        88: astore        5
+        90: aload_2
+        91: aload         5
+        93: invokestatic  #139                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+        96: invokeinterface #140,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       101: pop
+       102: goto          59
+       105: aload_2
+       106: putstatic     #116                // Field blacklistPattern:Ljava/util/List;
+       109: aload_2
+       110: aload_0
+       111: monitorexit
+       112: areturn
+       113: astore_1
+       114: aconst_null
+       115: aload_0
+       116: monitorexit
+       117: areturn
+       118: astore        6
+       120: aload_0
+       121: monitorexit
+       122: aload         6
+       124: athrow
+      Exception table:
+         from    to  target type
+            27   110   113   Class java/lang/Exception
+            15    26   118   any
+            27   112   118   any
+           113   117   118   any
+           118   122   118   any
+      StackMapTable: number_of_entries = 6
+        frame_type = 10 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 16
+          locals = [ class java/lang/Class ]
+        frame_type = 254 /* append */
+          offset_delta = 31
+          locals = [ class java/util/List, class java/util/ArrayList, class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 45
+        frame_type = 255 /* full_frame */
+          offset_delta = 7
+          locals = [ class java/lang/Class ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 68 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+      LineNumberTable:
+        line 66: 0
+        line 67: 6
+        line 70: 10
+        line 71: 15
+        line 72: 21
+        line 76: 27
+        line 77: 31
+        line 79: 39
+        line 80: 52
+        line 81: 79
+        line 82: 90
+        line 83: 102
+        line 86: 105
+        line 87: 109
+        line 88: 113
+        line 89: 114
+        line 91: 118
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           90      12     5 regex   Ljava/lang/String;
+           79      23     4     s   Ljava/lang/String;
+           31      82     1 configList   Ljava/util/List;
+           39      74     2 patterns   Ljava/util/List;
+          114       4     1     e   Ljava/lang/Exception;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           31      82     1 configList   Ljava/util/List<+Ljava/lang/String;>;
+           39      74     2 patterns   Ljava/util/List<Ljava/util/regex/Pattern;>;
+    Signature: #112                         // ()Ljava/util/List<Ljava/util/regex/Pattern;>;
+
+  private static boolean tryRemoveEmptyCustomData(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getstatic     #152                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+         4: invokevirtual #156                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+         7: checkcast     #158                // class net/minecraft/world/item/component/CustomData
+        10: astore_1
+        11: aload_1
+        12: ifnull        35
+        15: aload_1
+        16: invokevirtual #162                // Method net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+        19: invokevirtual #165                // Method net/minecraft/nbt/CompoundTag.isEmpty:()Z
+        22: ifeq          35
+        25: aload_0
+        26: getstatic     #152                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+        29: invokevirtual #168                // Method net/minecraft/world/item/ItemStack.remove:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+        32: pop
+        33: iconst_1
+        34: ireturn
+        35: iconst_0
+        36: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 35
+          locals = [ class net/minecraft/world/item/component/CustomData ]
+      LineNumberTable:
+        line 95: 0
+        line 96: 11
+        line 97: 25
+        line 98: 33
+        line 100: 35
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0 stack   Lnet/minecraft/world/item/ItemStack;
+           11      26     1 component   Lnet/minecraft/world/item/component/CustomData;
+    MethodParameters:
+      Name                           Flags
+      stack
+
+  public static synchronized void resetCache();
+    descriptor: ()V
+    flags: (0x0029) ACC_PUBLIC, ACC_STATIC, ACC_SYNCHRONIZED
+    Code:
+      stack=2, locals=3, args_size=0
+         0: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+         3: dup
+         4: astore_0
+         5: monitorenter
+         6: getstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+         9: invokeinterface #174,  1          // InterfaceMethod java/util/Set.clear:()V
+        14: aload_0
+        15: monitorexit
+        16: goto          24
+        19: astore_1
+        20: aload_0
+        21: monitorexit
+        22: aload_1
+        23: athrow
+        24: getstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+        27: dup
+        28: astore_0
+        29: monitorenter
+        30: getstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+        33: invokeinterface #174,  1          // InterfaceMethod java/util/Set.clear:()V
+        38: aload_0
+        39: monitorexit
+        40: goto          48
+        43: astore_2
+        44: aload_0
+        45: monitorexit
+        46: aload_2
+        47: athrow
+        48: aconst_null
+        49: putstatic     #116                // Field blacklistPattern:Ljava/util/List;
+        52: return
+      Exception table:
+         from    to  target type
+             6    16    19   any
+            19    22    19   any
+            30    40    43   any
+            43    46    43   any
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class java/util/Set ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 4 /* same */
+        frame_type = 82 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 4 /* same */
+      LineNumberTable:
+        line 104: 0
+        line 105: 6
+        line 106: 14
+        line 107: 24
+        line 108: 30
+        line 109: 38
+        line 110: 48
+        line 111: 52
+
+  public static void fixBug(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #179                // Method checkAndFix:(Lnet/minecraft/world/item/ItemStack;)Z
+         4: pop
+         5: return
+      LineNumberTable:
+        line 115: 0
+        line 116: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0 stack   Lnet/minecraft/world/item/ItemStack;
+    Deprecated: true
+    RuntimeVisibleAnnotations:
+      0: #177()
+        java.lang.Deprecated
+    MethodParameters:
+      Name                           Flags
+      stack
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: aconst_null
+         1: putstatic     #116                // Field blacklistPattern:Ljava/util/List;
+         4: new           #182                // class java/util/HashSet
+         7: dup
+         8: invokespecial #183                // Method java/util/HashSet."<init>":()V
+        11: putstatic     #33                 // Field blacklistCache:Ljava/util/Set;
+        14: new           #182                // class java/util/HashSet
+        17: dup
+        18: invokespecial #183                // Method java/util/HashSet."<init>":()V
+        21: putstatic     #43                 // Field whitelistCache:Ljava/util/Set;
+        24: return
+      LineNumberTable:
+        line 19: 0
+        line 20: 4
+        line 21: 14
+}
+SourceFile: "ItemNBTUtil.java"
