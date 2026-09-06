@@ -1,0 +1,291 @@
+Classfile integrated_api-1.7.3+1.21.1-neoforge.jar!/com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit.class
+  Last modified Jan 1, 1980; size 2249 bytes
+  SHA-256 checksum 45d8196f0e358d79e8f5f33e7ac4ff86fe7c2d0a5addd8f2930cb5ccb6fff300
+  Compiled from "UpdateStructureBlockUnlimit.java"
+public class com.craisinlord.integrated_api.mixins.blocks.UpdateStructureBlockUnlimit
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit
+   #2 = Class              #1             // com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               UpdateStructureBlockUnlimit.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/network/protocol/game/ServerboundSetStructureBlockPacket;
+   #9 = Utf8               priority
+  #10 = Integer            999
+  #11 = Utf8               offset
+  #12 = Utf8               Lnet/minecraft/core/BlockPos;
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #14 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #15 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+  #16 = Utf8               size
+  #17 = Utf8               Lnet/minecraft/core/Vec3i;
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = NameAndType        #18:#19        // "<init>":()V
+  #21 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #22 = Utf8               this
+  #23 = Utf8               Lcom/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit;
+  #24 = Utf8               readInts
+  #25 = Utf8               (Lnet/minecraft/network/FriendlyByteBuf;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #26 = Utf8               buf
+  #27 = Utf8               ci
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #29 = Utf8               method
+  #30 = Utf8               <init>(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #31 = Utf8               at
+  #32 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #33 = Utf8               RETURN
+  #34 = Utf8               require
+  #35 = Integer            0
+  #36 = Utf8               net/minecraft/core/BlockPos
+  #37 = Class              #36            // net/minecraft/core/BlockPos
+  #38 = Utf8               net/minecraft/network/FriendlyByteBuf
+  #39 = Class              #38            // net/minecraft/network/FriendlyByteBuf
+  #40 = Utf8               readInt
+  #41 = Utf8               ()I
+  #42 = NameAndType        #40:#41        // readInt:()I
+  #43 = Methodref          #39.#42        // net/minecraft/network/FriendlyByteBuf.readInt:()I
+  #44 = Utf8               net/minecraft/util/Mth
+  #45 = Class              #44            // net/minecraft/util/Mth
+  #46 = Utf8               clamp
+  #47 = Utf8               (III)I
+  #48 = NameAndType        #46:#47        // clamp:(III)I
+  #49 = Methodref          #45.#48        // net/minecraft/util/Mth.clamp:(III)I
+  #50 = Utf8               (III)V
+  #51 = NameAndType        #18:#50        // "<init>":(III)V
+  #52 = Methodref          #37.#51        // net/minecraft/core/BlockPos."<init>":(III)V
+  #53 = NameAndType        #11:#12        // offset:Lnet/minecraft/core/BlockPos;
+  #54 = Fieldref           #2.#53         // com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit.offset:Lnet/minecraft/core/BlockPos;
+  #55 = NameAndType        #16:#17        // size:Lnet/minecraft/core/Vec3i;
+  #56 = Fieldref           #2.#55         // com/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit.size:Lnet/minecraft/core/Vec3i;
+  #57 = Utf8               Lnet/minecraft/network/FriendlyByteBuf;
+  #58 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #59 = Utf8               newStructureSize
+  #60 = Utf8               I
+  #61 = Utf8               writeInts
+  #62 = Utf8               write(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #63 = Utf8               getX
+  #64 = NameAndType        #63:#41        // getX:()I
+  #65 = Methodref          #37.#64        // net/minecraft/core/BlockPos.getX:()I
+  #66 = Utf8               writeInt
+  #67 = Utf8               (I)Lnet/minecraft/network/FriendlyByteBuf;
+  #68 = NameAndType        #66:#67        // writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+  #69 = Methodref          #39.#68        // net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+  #70 = Utf8               getY
+  #71 = NameAndType        #70:#41        // getY:()I
+  #72 = Methodref          #37.#71        // net/minecraft/core/BlockPos.getY:()I
+  #73 = Utf8               getZ
+  #74 = NameAndType        #73:#41        // getZ:()I
+  #75 = Methodref          #37.#74        // net/minecraft/core/BlockPos.getZ:()I
+  #76 = Utf8               net/minecraft/core/Vec3i
+  #77 = Class              #76            // net/minecraft/core/Vec3i
+  #78 = Methodref          #77.#64        // net/minecraft/core/Vec3i.getX:()I
+  #79 = Methodref          #77.#71        // net/minecraft/core/Vec3i.getY:()I
+  #80 = Methodref          #77.#74        // net/minecraft/core/Vec3i.getZ:()I
+  #81 = Utf8               RuntimeVisibleAnnotations
+  #82 = Utf8               Code
+  #83 = Utf8               LineNumberTable
+  #84 = Utf8               LocalVariableTable
+  #85 = Utf8               MethodParameters
+  #86 = Utf8               SourceFile
+  #87 = Utf8               RuntimeInvisibleAnnotations
+{
+  private net.minecraft.core.BlockPos offset;
+    descriptor: Lnet/minecraft/core/BlockPos;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Shadow
+      1: #14()
+        org.spongepowered.asm.mixin.Final
+      2: #15()
+        org.spongepowered.asm.mixin.Mutable
+
+  private net.minecraft.core.Vec3i size;
+    descriptor: Lnet/minecraft/core/Vec3i;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Shadow
+      1: #14()
+        org.spongepowered.asm.mixin.Final
+      2: #15()
+        org.spongepowered.asm.mixin.Mutable
+
+  public com.craisinlord.integrated_api.mixins.blocks.UpdateStructureBlockUnlimit();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 18: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit;
+
+  public void readInts(net.minecraft.network.FriendlyByteBuf, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/FriendlyByteBuf;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=8, locals=4, args_size=3
+         0: sipush        512
+         3: istore_3
+         4: aload_0
+         5: new           #37                 // class net/minecraft/core/BlockPos
+         8: dup
+         9: aload_1
+        10: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        13: sipush        -512
+        16: sipush        512
+        19: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        22: aload_1
+        23: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        26: sipush        -512
+        29: sipush        512
+        32: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        35: aload_1
+        36: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        39: sipush        -512
+        42: sipush        512
+        45: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        48: invokespecial #52                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+        51: putfield      #54                 // Field offset:Lnet/minecraft/core/BlockPos;
+        54: aload_0
+        55: new           #37                 // class net/minecraft/core/BlockPos
+        58: dup
+        59: aload_1
+        60: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        63: iconst_0
+        64: sipush        512
+        67: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        70: aload_1
+        71: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        74: iconst_0
+        75: sipush        512
+        78: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        81: aload_1
+        82: invokevirtual #43                 // Method net/minecraft/network/FriendlyByteBuf.readInt:()I
+        85: iconst_0
+        86: sipush        512
+        89: invokestatic  #49                 // Method net/minecraft/util/Mth.clamp:(III)I
+        92: invokespecial #52                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+        95: putfield      #56                 // Field size:Lnet/minecraft/core/Vec3i;
+        98: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 4
+        line 34: 10
+        line 35: 23
+        line 36: 36
+        line 39: 54
+        line 40: 60
+        line 41: 71
+        line 42: 82
+        line 44: 98
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      99     0  this   Lcom/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit;
+            0      99     1   buf   Lnet/minecraft/network/FriendlyByteBuf;
+            0      99     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            4      95     3 newStructureSize   I
+    RuntimeVisibleAnnotations:
+      0: #28(#29=[s#30],#31=[@#32(#7=s#33)],#34=I#35)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/network/FriendlyByteBuf;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+          require=0
+        )
+    MethodParameters:
+      Name                           Flags
+      buf
+      ci
+
+  public void writeInts(net.minecraft.network.FriendlyByteBuf, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/network/FriendlyByteBuf;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_1
+         1: aload_0
+         2: getfield      #54                 // Field offset:Lnet/minecraft/core/BlockPos;
+         5: invokevirtual #65                 // Method net/minecraft/core/BlockPos.getX:()I
+         8: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        11: pop
+        12: aload_1
+        13: aload_0
+        14: getfield      #54                 // Field offset:Lnet/minecraft/core/BlockPos;
+        17: invokevirtual #72                 // Method net/minecraft/core/BlockPos.getY:()I
+        20: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        23: pop
+        24: aload_1
+        25: aload_0
+        26: getfield      #54                 // Field offset:Lnet/minecraft/core/BlockPos;
+        29: invokevirtual #75                 // Method net/minecraft/core/BlockPos.getZ:()I
+        32: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        35: pop
+        36: aload_1
+        37: aload_0
+        38: getfield      #56                 // Field size:Lnet/minecraft/core/Vec3i;
+        41: invokevirtual #78                 // Method net/minecraft/core/Vec3i.getX:()I
+        44: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        47: pop
+        48: aload_1
+        49: aload_0
+        50: getfield      #56                 // Field size:Lnet/minecraft/core/Vec3i;
+        53: invokevirtual #79                 // Method net/minecraft/core/Vec3i.getY:()I
+        56: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        59: pop
+        60: aload_1
+        61: aload_0
+        62: getfield      #56                 // Field size:Lnet/minecraft/core/Vec3i;
+        65: invokevirtual #80                 // Method net/minecraft/core/Vec3i.getZ:()I
+        68: invokevirtual #69                 // Method net/minecraft/network/FriendlyByteBuf.writeInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        71: pop
+        72: return
+      LineNumberTable:
+        line 48: 0
+        line 49: 12
+        line 50: 24
+        line 51: 36
+        line 52: 48
+        line 53: 60
+        line 54: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Lcom/craisinlord/integrated_api/mixins/blocks/UpdateStructureBlockUnlimit;
+            0      73     1   buf   Lnet/minecraft/network/FriendlyByteBuf;
+            0      73     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #28(#29=[s#62],#31=[@#32(#7=s#33)],#34=I#35)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["write(Lnet/minecraft/network/FriendlyByteBuf;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+          require=0
+        )
+    MethodParameters:
+      Name                           Flags
+      buf
+      ci
+}
+SourceFile: "UpdateStructureBlockUnlimit.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8],#9=I#10)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/network/protocol/game/ServerboundSetStructureBlockPacket;]
+      priority=999
+    )
