@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 103 of 136. The exact queue below has 33 open rows.
+Supported provider dispositions: 104 of 136. The exact queue below has 32 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -639,7 +639,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `chipped-neoforge-1.21.1-4.0.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
 | `cloth-config-15.0.140-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `coffee_delight-1.4.1.jar` | `coffee-delight-provider` (49445ab), test_coffee_delight_provider_scope.py | RESOLVED: Vanilla coffee-bush patch and food/item content, with no independent structure family. Full disposition below. |
 | `collective-1.21.1-8.25.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7061,3 +7061,32 @@ Twenty-four utility cases and Basedpyright pass. Ruff found one overlong line;
 wrapping that assertion fixes it and Ruff passes. Whole providers: 103 resolved,
 33 open. No family added. Remaining provider contributions and canonical Moog
 grouping still precede detailed attributes. Do not repeat GeckoLib helper tracing.
+
+
+### Chipped membership resolved
+
+Sources 869bee77 and 9fd54ae5 bind the two automatic entries, initialization,
+two common hooks and registered crafting packet handler. Startup registers
+blocks/items, creative tabs, menus and recipes, plus barrel block-entity
+compatibility. The client entry registers screens. Common hooks choose Chipped
+block drops and nether-wart support blocks. The packet dispatches crafting in
+an existing player WorkbenchMenu. No independent structure family.
+
+The frozen archive contains 62 classes. All other files are the five declared
+metadata/icon/refmap/mixin files, building-block assets and JSON tags,
+advancements, recipes and loot tables. The focused case accounts for every
+payload category and automatic entry, checks mixin declarations, and binds all
+eight source captures to the archive. There are no nested archives or services.
+Independent capture reproductions match byte for byte. This resolves membership;
+block loot and crafting behavior are not a claim of absent gameplay effects.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+25 utility cases pass. Scoped Ruff and Basedpyright pass after wrapping one
+initial overlong test line. Whole providers: 104 resolved, 32 open. No family
+added. Continue the remaining provider queue and canonical grouping, without
+further Chipped crafting or networking inspection.

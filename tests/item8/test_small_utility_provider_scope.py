@@ -567,3 +567,67 @@ def test_geckolib_membership_payload() -> None:
                 assert row["disassembly_sha256"] == hashlib.sha256(
                     (directory / row["disassembly"]).read_bytes()).hexdigest()
         assert captured == expected
+
+
+def test_chipped_membership_payload() -> None:
+    source = next(s for s in retained_sources(Path.cwd())
+                  if s.name == "chipped-neoforge-1.21.1-4.0.2.jar")
+    assert source.sha256 == "18ac6fd6b30db4922ccc6ee8bea5b113f69587505b7529834f37ace506427291"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    prefix = "earth/terrarium/chipped/"
+    entries = {prefix + "neoforge/ChippedNeoForge.class",
+               prefix + "client/neoforge/ChippedClientNeoForge.class"}
+    with ZipFile(source.path) as archive:
+        files = {n for n in archive.namelist() if not n.endswith("/")}
+        classes = {n for n in files if n.endswith(".class")}
+        payload = {n for n in files if n.startswith(("data/", "assets/"))}
+        assert len(classes) == 62
+        assert files - classes - payload == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "chipped-common-1.21.1-common-refmap.json", "chipped-common.mixins.json", "icon.png"}
+        categories = {
+            "assets/chipped/models": 16832, "assets/chipped/textures": 12341,
+            "assets/chipped/blockstates": 6981, "assets/chipped/resourcefullib": 14,
+            "assets/chipped/lang": 1, "data/chipped/tags": 554, "data/minecraft/tags": 44,
+            "data/chipped/advancement": 13, "data/chipped/recipe": 13,
+            "data/chipped/loot_table": 7, "data/minecraft/advancement": 7,
+            "data/minecraft/recipe": 7, "data/chipped/recipes": 1}
+        assert {"/".join(n.split("/")[:3]) for n in payload} == set(categories)
+        for category, count in categories.items():
+            assert sum(n.startswith(category + "/") for n in payload) == count
+        assert {Path(n).suffix for n in payload} == {".json", ".png", ".mcmeta"}
+        metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
+        assert metadata["modLoader"] == "javafml"
+        assert metadata["mixins"] == [{"config": "chipped-common.mixins.json"}]
+        config = cast("dict[str, JsonValue]",
+                      json.loads(archive.read("chipped-common.mixins.json")))
+        assert config["package"] == "earth.terrarium.chipped.mixins"
+        assert not any(config.get(k) for k in ("plugin", "server", "client"))
+        assert set(cast("list[str]", config["mixins"])) == {
+            "BlockBehaviourMixin", "NetherWartBlockMixin"}
+        assert {n for n in classes if any(marker in archive.read(n) for marker in (
+            b"Lnet/neoforged/fml/common/Mod;", b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+        ))} == entries
+        expected = entries | {prefix + n + ".class" for n in (
+            "Chipped", "mixins/BlockBehaviourMixin", "mixins/NetherWartBlockMixin",
+            "common/network/NetworkHandler", "common/network/ServerboundCraftPacket",
+            "common/network/ServerboundCraftPacket$Type")}
+        captured: set[str] = set()
+        for label, digest in (
+            ("chipped-provider",
+             "64a01288e53c71d7055d8d87ecb37488a556b7681c6317199ff23fc889876e42"),
+            ("chipped-crafting",
+             "d534c942c6ea84ba30074d4772816b49b2e94498cf9824ed64225e0415446b53"),
+        ):
+            directory = Path("evidence/item-8/sources") / label
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            rows = cast("list[dict[str, str]]", json.loads(raw))
+            for row in rows:
+                captured.add(row["class"])
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert row["disassembly_sha256"] == hashlib.sha256(
+                    (directory / row["disassembly"]).read_bytes()).hexdigest()
+        assert captured == expected
