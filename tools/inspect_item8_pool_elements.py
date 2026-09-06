@@ -1624,6 +1624,7 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/world/level/feature/tree/YellowBioshroomShrubFeature.class",
     "net/regions_unexplored/world/level/feature/tree/nether/BrimWillowFeature.class",
     "net/regions_unexplored/world/level/feature/tree/nether/TallBrimWillowFeature.class",
+    "net/regions_unexplored/worldgen/treedecorator/PlaceOnGroundDecorator.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
