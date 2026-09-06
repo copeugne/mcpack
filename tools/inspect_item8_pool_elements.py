@@ -189,6 +189,13 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/model_loading_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/particles/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/renderer_indigo/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/screen_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/impl/client/particle/ClientParticleEventHooks.class",
+    "net/fabricmc/fabric/impl/client/indigo/IndigoMixinConfigPlugin.class",
+    "org/sinytra/fabric/screen_api/ScreenEventHooks.class",
     "org/sinytra/fabric/client_tags_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/renderer_api/generated/GeneratedEntryPoint.class",
     "org/sinytra/fabric/rendering_fluids/generated/GeneratedEntryPoint.class",
@@ -2327,6 +2334,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar",
+        "META-INF/jars/fabric-particles-v1-4.0.2+824f924c19.jar",
+        "META-INF/jars/fabric-renderer-indigo-1.7.1+9125b6dc19.jar",
+        "META-INF/jars/fabric-screen-api-v1-2.0.25+0ae1214819.jar",
         "META-INF/jars/fabric-client-tags-api-v1-1.1.15+e053909619.jar",
         "META-INF/jars/fabric-renderer-api-v1-3.4.1+9125b6dc19.jar",
         "META-INF/jars/fabric-rendering-fluids-v1-3.1.6+a51883b219.jar",
@@ -2357,6 +2368,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "dda8e4cc12db98afac9ec2d32ec516e80e855b68315ea6d356ec1f5fb9204bd6",
+        ),
+        "META-INF/jars/fabric-particles-v1-4.0.2+824f924c19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "7e5b1312ef6510d68085f0202186ea905d7286b37c1964ffb2238336c1b92571",
+        ),
+        "META-INF/jars/fabric-renderer-indigo-1.7.1+9125b6dc19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "e43b43f2d0b80da5a81b95700447e9627f38e5e9927d1b2894ddf7064d0d2fd2",
+        ),
+        "META-INF/jars/fabric-screen-api-v1-2.0.25+0ae1214819.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "74e70d033d794a3a5297458b931a67f05ee9f3f8e542302e03db7d5ff96a50a2",
+        ),
         "META-INF/jars/fabric-client-tags-api-v1-1.1.15+e053909619.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "c1ea8b4555271e9d5d4d4a6519ee48959d8b40030d93ac9606311fec360af5fc",
