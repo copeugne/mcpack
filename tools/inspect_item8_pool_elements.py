@@ -193,6 +193,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "terrablender/util/LevelUtils.class",
     "terrablender/core/TerraBlender.class",
     "terrablender/core/TerraBlenderNeoForge.class",
     "terrablender/handler/InitializationHandler.class",
