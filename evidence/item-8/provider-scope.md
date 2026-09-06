@@ -6253,3 +6253,37 @@ Eleven focused cases and scoped quality checks pass. The initial test assertions
 had redundant sorting and incomplete typing; these were corrected without
 changing the membership decisions or source captures. Inventory status remains
 INCOMPLETE. No additional evidence class or measurement system was introduced.
+
+
+## Quark canonical membership, 2026-09-06
+
+Quark contributes four canonical families: spiral_spire, fairy_ring,
+monster_box and nether_obsidian_spike. The spire is one recognizable landmark;
+the ring and associated buried ore are one marker/reward design; the monster box
+is one authored proximity encounter; ordinary and large Nether spikes are one
+shape family with the large spawner/chest encounter variant preserved explicitly.
+No Quark runtime structure root duplicates these nonregistry contributions.
+
+The prior fallen_log family inclusion is corrected to decorated vegetation,
+consistent with the other fallen-tree decisions. Its generated form is a short
+trunk with optional moss, vines and ferns. Hollow block substitution does not
+compose a separate site. The previous geometry, conditions and uncertainty are
+preserved under excluded_design. This corrects membership without erasing the
+original source-derived details. Terrain styles, stone generation and other
+vegetation remain excluded contributions. Their source evidence is reused.
+
+This resolves the five previously named Quark candidate boundaries as four
+families and one excluded vegetation candidate. Provider coverage stays 90 of
+136. Detailed effective attributes and observations remain open. The earlier
+provider-wide open scope strings do not override this membership decision.
+No source capture, runtime experiment or measurement system was added.
+
+```sh
+uv run pytest -q tests/item8/test_quark_provider_scope.py
+uv run ruff check tests/item8/test_quark_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_quark_provider_scope.py tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-membership-r1.json
+cmp evidence/raw/item8/inventory-quark-membership-r1.json evidence/item-8/inventory.json
+```
+
+Two focused cases, scoped quality checks and inventory reproduction pass.

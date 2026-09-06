@@ -161,3 +161,40 @@ def test_quark_sources_and_payload() -> None:  # noqa: PLR0915
     ).read_bytes()).hexdigest() == (
         "94bfff490eea33f9bb105fae298606c4708ddb8af2f3df8630cc0f0ac7e85327"
     )
+
+
+def test_quark_canonical_membership() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_text()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    selected = {k: v for k, v in contributions.items() if k.startswith("quark:")}
+    included = {"quark:" + n for n in (
+        "spiral_spire", "fairy_ring", "monster_box", "nether_obsidian_spike",
+    )}
+    excluded = {"quark:" + n for n in (
+        "fallen_log", "underground_styles", "vegetation", "stone_generation",
+    )}
+    assert set(selected) == included | excluded
+    families: list[str] = []
+    for key, row in selected.items():
+        members = cast("list[dict[str, JsonValue]]", row["families"])
+        if key in included:
+            assert row["membership_decision"] == "INCLUDE_ONE_FAMILY"
+            assert len(members) == 1
+            assert members[0]["family"] == key
+            families.append(str(members[0]["family"]))
+        else:
+            assert members == []
+            assert all(str(d["decision"]).endswith("NOT_ADDITIONAL_FAMILY")
+                       for d in cast("list[dict[str, JsonValue]]", row["dispositions"]))
+    assert len(families) == len(set(families)) == 4
+    log = selected["quark:fallen_log"]
+    assert cast("dict[str, JsonValue]", log["excluded_design"])["candidate_id"] == (
+        "quark:fallen_log"
+    )
+    # These contributions do not duplicate a runtime structure-root group.
+    assert not any(str(root).startswith("quark:")
+                   for group in cast("list[dict[str, JsonValue]]", decisions["groups"])
+                   for root in cast("list[str]", group["structure_ids"]))
