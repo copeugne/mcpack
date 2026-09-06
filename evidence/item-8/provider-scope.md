@@ -1524,3 +1524,38 @@ formatting, explicit types and split assertions; they are corrected. Ruff and
 Basedpyright pass. The tests reuse frozen archive dd883e2f91fa7ee8a0594dc3844de38bf3e550d91ff1247b2801808904fd013a,
 the existing source capture and dimension-biome evidence. No new measurement,
 source-disassembly batch, schema or baseline change.
+
+### BetterEnd extra biome templates and consumer boundary
+
+Source 9ee6454, selected by dd6ed45, establishes that the building-list codec
+accepts an explicit nonempty list of path/offset/merger entries. getRandom selects
+one list member, and StructureInfo passes its stored path directly to the
+BetterEnd class-resource loader. There is no adjacent-file or directory scan.
+The existing six lists therefore do not acquire the extra templates implicitly.
+Commands and the exact six-class identity manifest are in
+sources/betterend-entry-template-consumers/README.md.
+
+The new third case in test_betterend_feature_candidates.py binds that source and
+accounts for every biome-directory template outside the 63 configured choices:
+
+- `blossoming_spires/house.nbt`: a furnished 21 by 32 by 21 template. It is an
+  architectural candidate disconnected from the six configured lists. Keep it
+  named while reconciling other consumers; do not count it as active solely
+  because it is packaged.
+- `old_bulbis_gardens/fallen_tree_1.nbt` through `fallen_tree_3.nbt` and
+  `old_bulbis_gardens/tree_stump_1.nbt` through `tree_stump_3.nbt`: six vegetation
+  templates. Decoded palettes contain only BYG stem/wood, BetterEnd moss/vine/
+  polypore and air, with no stored entities or block-entity data. They add no
+  authored architectural candidate regardless of the separate compatibility
+  activation question.
+
+The seven adjacent structures.json lists use `nbt`, `offsetY` and `terrainMerge`,
+which are not the current BuildingListFeatureConfig/StructureInfo codec fields.
+Their existence does not extend the accepted configured choices. Preserve these
+resources and the distinction; do not rewrite them into current configuration.
+The common entry also exposes the BetterEndPlugin service loader and conditional
+BYG callback registration, which must be reconciled with the remaining provider
+entries. Full provider coverage remains open, with 53 resolved and 83 open rows.
+
+The same three validation commands in the preceding section now pass three
+focused cases, Ruff and Basedpyright. No new measurement or evidence format.

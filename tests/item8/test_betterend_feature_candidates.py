@@ -158,3 +158,60 @@ def test_betterend_crashed_ship_inline_configuration_and_biome_routes() -> None:
         "empty_aurora_cave", "empty_end_cave", "empty_smaragdant_cave", "jade_cave",
         "lush_aurora_cave", "lush_smaragdant_cave",
     }
+
+
+def test_betterend_extra_biome_templates_and_direct_list_consumer() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/betterend-entry-template-consumers")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "22dee10074c502f7026b266335c5d2966a47374504ae836d2f1da17e79a895d8"
+    )
+    with ZipFile(source.path) as archive:
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        selected: set[str] = set()
+        for name in archive.namelist():
+            if name.startswith("data/betterend/worldgen/configured_feature/") and name.endswith(
+                "_structures.json"
+            ):
+                config = cast("dict[str, dict[str, list[dict[str, str]]]]",
+                              json.loads(archive.read(name)))
+                selected.update(row["path"].removeprefix("/")
+                                for row in config["config"]["structures"])
+        prefix = "data/betterend/structure/biome/"
+        templates = {n for n in archive.namelist() if n.startswith(prefix) and n.endswith(".nbt")}
+        extra = {prefix + "blossoming_spires/house.nbt"} | {
+            f"{prefix}old_bulbis_gardens/{kind}_{i}.nbt"
+            for kind in ("fallen_tree", "tree_stump") for i in range(1, 4)
+        }
+        assert templates - selected == extra
+        legacy = {n for n in archive.namelist() if n.startswith(prefix) and n.endswith(".json")}
+        assert legacy == {prefix + biome + "/structures.json" for biome in (
+            "blossoming_spires", "chorus_forest", "foggy_mushroomland", "lantern_woods",
+            "shadow_forest", "umbrella_jungle", "old_bulbis_gardens",
+        )}
+        for path in legacy:
+            rows = cast("dict[str, list[dict[str, JsonValue]]]", json.loads(archive.read(path)))
+            assert set(rows) == {"structures"}
+            assert all(set(row) == {"nbt", "offsetY", "terrainMerge"}
+                       for row in rows["structures"])
+        for path in extra:
+            template = template_summary(archive.read(path))
+            if "/old_bulbis_gardens/" in path:
+                assert template["entities"] == []
+                assert template["block_entities"] == []
+                palette = cast("list[dict[str, str]]", template["palette"])
+                assert {state["Name"] for state in palette} <= {
+                    "betterend:ivis_moss", "betterend:ivis_vine", "betterend:purple_polypore",
+                    "byg:bulbis_stem", "byg:bulbis_wood", "minecraft:air",
+                }
+            else:
+                assert template["size"] == [21, 32, 21]
+                assert template["block_entities"]
