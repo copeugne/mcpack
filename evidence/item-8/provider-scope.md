@@ -5751,8 +5751,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Thirteen membership roles are resolved below;
-30 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Seventeen membership roles are resolved below;
+26 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5784,20 +5784,20 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-particles-v1-4.0.2+824f924c19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
-| `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5901,3 +5901,36 @@ All fourteen focused Fabric cases and scoped checks pass. Fabric queue: thirteen
 resolved, thirty open modules. Whole-provider census stays 90 resolved and 46
 open because Fabric is still one unfinished provider. Source reproduction
 commands and exact hashes are in the three source READMEs.
+
+### Four Fabric client rendering and input modules resolved
+
+Source b3a9dd3 (extractor e2ae798) retains seven entry/hook classes, reproduced
+independently. Model loading, particles and screen API have empty generated
+loader constructors. Indigo initialization is guarded by isClient. The particle
+subscriber handles RegisterParticleProvidersEvent and initializes the client
+particle factory with the Minecraft particle engine. Screen subscribers forward
+client screen render, keyboard and mouse events to Fabric callbacks, including
+input cancellation. These client event routes add no independent world site.
+
+Indigo declares a mixin plugin, so it was inspected explicitly. It reads mod
+properties for renderer presence and compatibility, returns the Indigo
+applicability choice and supplies no additional mixin list. Its load, target,
+pre-apply and post-apply callbacks add no content. No renderer helper audit is
+needed beyond these roles.
+
+Complete module partitions contain 39 model-loading, 20 particle, 58 Indigo and
+36 screen classes. Nonclass files are metadata/icons, the exact client mixin
+configs and particle/Indigo access transformers. No data, service or nested
+archive payload is present. Client mixin counts are respectively 5, 3, 5 and 3;
+none declares common or server mixins. The existing test binds every captured
+entry/subscriber/plugin and the complete annotated-entry set.
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All eighteen focused cases and scoped checks pass. Fabric now has seventeen
+resolved and twenty-six open modules. No family was added. Whole-provider
+coverage remains 90 resolved, 46 open, including the unfinished Fabric parent.

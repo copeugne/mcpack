@@ -345,6 +345,34 @@ def test_fabric_v2_tag_membership() -> None:
     ("module", "label", "digest", "class_count", "client_count"),
     [
         (
+            "fabric-model-loading-api-v1-2.1.0+6e8f52c719",
+            "fabric-model_loading_api-entry",
+            "2cb25059a4bba8b4638ba8716fc2fec8cef40bb44bfc0cc54fd69eb88094755e",
+            39,
+            5,
+        ),
+        (
+            "fabric-particles-v1-4.0.2+824f924c19",
+            "fabric-particles-entry",
+            "a0b59940d7e1991761a4f4ceb66df00b00b2b16907e6215dedbb52be62f11ab8",
+            20,
+            3,
+        ),
+        (
+            "fabric-renderer-indigo-1.7.1+9125b6dc19",
+            "fabric-renderer_indigo-entry",
+            "6dfed069d59ffc725aec5a0e6e5cfb8df092bf0a7f17277fe217cf410fddbfe8",
+            58,
+            5,
+        ),
+        (
+            "fabric-screen-api-v1-2.0.25+0ae1214819",
+            "fabric-screen_api-entry",
+            "26c940bebeaf35260b92164b7b8c736bf981a4b8bf4de0daffc709f3aa83813d",
+            36,
+            3,
+        ),
+        (
             "fabric-client-tags-api-v1-1.1.15+e053909619",
             "fabric-client_tags_api-entry",
             "c21d8171de5516eadbedab75ab654617416551609d47d38c667bccc6d483bbd2",
@@ -402,8 +430,6 @@ def test_fabric_client_utility_membership(
     raw = (directory / "identities.json").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == digest
     rows = cast("list[dict[str, str]]", json.loads(raw))
-    assert len(rows) == 1
-    row = rows[0]
     name = module.rsplit("-", 1)[0]
     with ZipFile(source.path) as parent:
         payload = parent.read(member)
@@ -414,7 +440,13 @@ def test_fabric_client_utility_membership(
             extras: set[str] = (
                 {f"assets/{name}/sounds/empty.ogg"} if name == "fabric-sound-api-v1" else set()
             )
+            if name in {"fabric-particles-v1", "fabric-renderer-indigo"}:
+                extras.add("META-INF/accesstransformer.cfg")
             mixins: set[str] = {f"{name}.mixins.json"} if client_count else set()
+            if name == "fabric-particles-v1":
+                mixins = {f"{name}.client.mixins.json"}
+            plugin = ("net.fabricmc.fabric.impl.client.indigo.IndigoMixinConfigPlugin"
+                      if name == "fabric-renderer-indigo" else None)
             if name == "fabric-renderer-api-v1":
                 mixins.add(f"{name}.debughud.mixins.json")
             assert files - classes == extras | mixins | {
@@ -429,9 +461,9 @@ def test_fabric_client_utility_membership(
                 clients += len(cast("list[str]", config["client"]))
                 assert not config.get("mixins")
                 assert not config.get("server")
-                assert not config.get("plugin")
+                assert config.get("plugin") == plugin
             assert clients == client_count
-            assert {
+            annotated = {
                 n
                 for n in classes
                 if any(
@@ -441,11 +473,18 @@ def test_fabric_client_utility_membership(
                         b"Lnet/neoforged/fml/common/EventBusSubscriber;",
                     )
                 )
-            } == {row["class"]}
-            assert row["archive"] == source.name + "!/" + member
-            assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
-            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
-            assert (
-                row["disassembly_sha256"]
-                == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
-            )
+            }
+            captured = {row["class"] for row in rows}
+            assert len(rows) == len(captured)
+            assert captured == annotated | ({plugin.replace(".", "/") + ".class"}
+                                             if plugin else set())
+            assert len(annotated) == (2 if name in {"fabric-particles-v1",
+                                                    "fabric-screen-api-v1"} else 1)
+            for row in rows:
+                assert row["archive"] == source.name + "!/" + member
+                assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+                assert (
+                    row["disassembly_sha256"]
+                    == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+                )
