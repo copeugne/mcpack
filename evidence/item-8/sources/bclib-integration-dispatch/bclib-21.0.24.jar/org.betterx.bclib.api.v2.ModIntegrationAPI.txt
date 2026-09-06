@@ -1,0 +1,68 @@
+Compiled from "ModIntegrationAPI.java"
+public class org.betterx.bclib.api.v2.ModIntegrationAPI {
+  private static final java.util.List<org.betterx.bclib.integration.ModIntegration> INTEGRATIONS;
+
+  private static final boolean HAS_CANVAS;
+
+  public org.betterx.bclib.api.v2.ModIntegrationAPI();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static org.betterx.bclib.integration.ModIntegration register(org.betterx.bclib.integration.ModIntegration);
+    Code:
+       0: getstatic     #7                  // Field INTEGRATIONS:Ljava/util/List;
+       3: aload_0
+       4: invokeinterface #13,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+       9: pop
+      10: aload_0
+      11: areturn
+
+  public static java.util.List<org.betterx.bclib.integration.ModIntegration> getIntegrations();
+    Code:
+       0: getstatic     #7                  // Field INTEGRATIONS:Ljava/util/List;
+       3: areturn
+
+  public static void registerAll();
+    Code:
+       0: getstatic     #7                  // Field INTEGRATIONS:Ljava/util/List;
+       3: invokedynamic #19,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       8: invokeinterface #23,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      13: invokestatic  #27                 // Method org/betterx/wover/core/api/ModCore.isDatagen:()Z
+      16: ifeq          32
+      19: getstatic     #7                  // Field INTEGRATIONS:Ljava/util/List;
+      22: invokedynamic #33,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      27: invokeinterface #23,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      32: return
+
+  public static boolean hasCanvas();
+    Code:
+       0: getstatic     #34                 // Field HAS_CANVAS:Z
+       3: ireturn
+
+  private static void lambda$registerAll$1(org.betterx.bclib.integration.ModIntegration);
+    Code:
+       0: aload_0
+       1: invokevirtual #38                 // Method org/betterx/bclib/integration/ModIntegration.initDatagen:()V
+       4: return
+
+  private static void lambda$registerAll$0(org.betterx.bclib.integration.ModIntegration);
+    Code:
+       0: aload_0
+       1: invokevirtual #43                 // Method org/betterx/bclib/integration/ModIntegration.modIsInstalled:()Z
+       4: ifeq          11
+       7: aload_0
+       8: invokevirtual #46                 // Method org/betterx/bclib/integration/ModIntegration.init:()V
+      11: return
+
+  static {};
+    Code:
+       0: invokestatic  #49                 // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+       3: putstatic     #7                  // Field INTEGRATIONS:Ljava/util/List;
+       6: invokestatic  #55                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       9: ldc           #61                 // String canvas
+      11: invokevirtual #63                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+      14: putstatic     #34                 // Field HAS_CANVAS:Z
+      17: return
+}

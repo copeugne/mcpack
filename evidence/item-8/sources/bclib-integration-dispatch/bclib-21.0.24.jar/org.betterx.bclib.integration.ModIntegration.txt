@@ -1,0 +1,362 @@
+Compiled from "ModIntegration.java"
+public abstract class org.betterx.bclib.integration.ModIntegration {
+  private final org.betterx.wover.core.api.ModCore C;
+
+  public void init();
+    Code:
+       0: return
+
+  public void initDatagen();
+    Code:
+       0: return
+
+  public org.betterx.bclib.integration.ModIntegration(org.betterx.wover.core.api.ModCore);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       9: return
+
+  public net.minecraft.resources.ResourceLocation getID(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       4: aload_1
+       5: invokevirtual #13                 // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: areturn
+
+  public net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> getFeatureKey(java.lang.String);
+    Code:
+       0: getstatic     #19                 // Field net/minecraft/core/registries/Registries.PLACED_FEATURE:Lnet/minecraft/resources/ResourceKey;
+       3: aload_0
+       4: aload_1
+       5: invokevirtual #25                 // Method getID:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokestatic  #28                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      11: areturn
+
+  public net.minecraft.world.level.block.Block getBlock(java.lang.String);
+    Code:
+       0: getstatic     #34                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_0
+       4: aload_1
+       5: invokevirtual #25                 // Method getID:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokeinterface #40,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      13: checkcast     #46                 // class net/minecraft/world/level/block/Block
+      16: areturn
+
+  public net.minecraft.world.item.Item getItem(java.lang.String);
+    Code:
+       0: getstatic     #48                 // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_0
+       4: aload_1
+       5: invokevirtual #25                 // Method getID:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokeinterface #40,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      13: checkcast     #51                 // class net/minecraft/world/item/Item
+      16: areturn
+
+  public net.minecraft.world.level.block.state.BlockState getDefaultState(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #53                 // Method getBlock:(Ljava/lang/String;)Lnet/minecraft/world/level/block/Block;
+       5: invokevirtual #57                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       8: areturn
+
+  public net.minecraft.resources.ResourceKey<net.minecraft.world.level.biome.Biome> getKey(java.lang.String);
+    Code:
+       0: getstatic     #61                 // Field net/minecraft/core/registries/Registries.BIOME:Lnet/minecraft/resources/ResourceKey;
+       3: aload_0
+       4: aload_1
+       5: invokevirtual #25                 // Method getID:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokestatic  #28                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      11: areturn
+
+  public boolean modIsInstalled();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       4: invokevirtual #64                 // Method org/betterx/wover/core/api/ModCore.isLoaded:()Z
+       7: ireturn
+
+  public net.minecraft.world.level.levelgen.feature.ConfiguredFeature<?, ?> getConfiguredFeature(java.lang.String);
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome> getBiome(java.lang.String);
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public java.lang.Class<?> getClass(java.lang.String);
+    Code:
+       0: aconst_null
+       1: astore_2
+       2: aload_1
+       3: invokestatic  #68                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+       6: astore_2
+       7: goto          31
+      10: astore_3
+      11: getstatic     #76                 // Field org/betterx/bclib/BCLib.LOGGER:Lorg/betterx/wover/core/api/Logger;
+      14: aload_3
+      15: invokevirtual #82                 // Method java/lang/ClassNotFoundException.getMessage:()Ljava/lang/String;
+      18: invokevirtual #86                 // Method org/betterx/wover/core/api/Logger.error:(Ljava/lang/String;)V
+      21: invokestatic  #92                 // Method org/betterx/bclib/BCLib.isDevEnvironment:()Z
+      24: ifeq          31
+      27: aload_3
+      28: invokevirtual #95                 // Method java/lang/ClassNotFoundException.printStackTrace:()V
+      31: aload_2
+      32: areturn
+    Exception table:
+       from    to  target type
+           2     7    10   Class java/lang/ClassNotFoundException
+
+  public <T> T getStaticFieldValue(java.lang.Class<?>, java.lang.String);
+    Code:
+       0: aload_1
+       1: ifnull        28
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #98                 // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+       9: astore_3
+      10: aload_3
+      11: ifnull        20
+      14: aload_3
+      15: aconst_null
+      16: invokevirtual #102                // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      19: areturn
+      20: goto          28
+      23: astore_3
+      24: aload_3
+      25: invokevirtual #115                // Method java/lang/Exception.printStackTrace:()V
+      28: aconst_null
+      29: areturn
+    Exception table:
+       from    to  target type
+           4    19    23   Class java/lang/NoSuchFieldException
+           4    19    23   Class java/lang/SecurityException
+           4    19    23   Class java/lang/IllegalArgumentException
+           4    19    23   Class java/lang/IllegalAccessException
+
+  public java.lang.Object getFieldValue(java.lang.Class<?>, java.lang.String, java.lang.Object);
+    Code:
+       0: aload_1
+       1: ifnull        33
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #98                 // Method java/lang/Class.getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;
+       9: astore        4
+      11: aload         4
+      13: ifnull        23
+      16: aload         4
+      18: aload_3
+      19: invokevirtual #102                // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      22: areturn
+      23: goto          33
+      26: astore        4
+      28: aload         4
+      30: invokevirtual #115                // Method java/lang/Exception.printStackTrace:()V
+      33: aconst_null
+      34: areturn
+    Exception table:
+       from    to  target type
+           4    22    26   Class java/lang/NoSuchFieldException
+           4    22    26   Class java/lang/SecurityException
+           4    22    26   Class java/lang/IllegalArgumentException
+           4    22    26   Class java/lang/IllegalAccessException
+
+  public java.lang.reflect.Method getMethod(java.lang.Class<?>, java.lang.String, java.lang.Class<?>...);
+    Code:
+       0: aload_1
+       1: ifnull        35
+       4: aload_1
+       5: aload_2
+       6: aload_3
+       7: invokevirtual #118                // Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      10: areturn
+      11: astore        4
+      13: getstatic     #76                 // Field org/betterx/bclib/BCLib.LOGGER:Lorg/betterx/wover/core/api/Logger;
+      16: aload         4
+      18: invokevirtual #124                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+      21: invokevirtual #86                 // Method org/betterx/wover/core/api/Logger.error:(Ljava/lang/String;)V
+      24: invokestatic  #92                 // Method org/betterx/bclib/BCLib.isDevEnvironment:()Z
+      27: ifeq          35
+      30: aload         4
+      32: invokevirtual #115                // Method java/lang/Exception.printStackTrace:()V
+      35: aconst_null
+      36: areturn
+    Exception table:
+       from    to  target type
+           4    10    11   Class java/lang/NoSuchMethodException
+           4    10    11   Class java/lang/SecurityException
+
+  public java.lang.Object executeMethod(java.lang.Object, java.lang.reflect.Method, java.lang.Object...);
+    Code:
+       0: aload_2
+       1: ifnull        35
+       4: aload_2
+       5: aload_1
+       6: aload_3
+       7: invokevirtual #125                // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+      10: areturn
+      11: astore        4
+      13: getstatic     #76                 // Field org/betterx/bclib/BCLib.LOGGER:Lorg/betterx/wover/core/api/Logger;
+      16: aload         4
+      18: invokevirtual #124                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+      21: invokevirtual #86                 // Method org/betterx/wover/core/api/Logger.error:(Ljava/lang/String;)V
+      24: invokestatic  #92                 // Method org/betterx/bclib/BCLib.isDevEnvironment:()Z
+      27: ifeq          35
+      30: aload         4
+      32: invokevirtual #115                // Method java/lang/Exception.printStackTrace:()V
+      35: aconst_null
+      36: areturn
+    Exception table:
+       from    to  target type
+           4    10    11   Class java/lang/IllegalAccessException
+           4    10    11   Class java/lang/IllegalArgumentException
+           4    10    11   Class java/lang/reflect/InvocationTargetException
+
+  public java.lang.Object getAndExecuteStatic(java.lang.Class<?>, java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_1
+       1: ifnull        58
+       4: aload_3
+       5: arraylength
+       6: anewarray     #69                 // class java/lang/Class
+       9: astore        4
+      11: iconst_0
+      12: istore        5
+      14: iload         5
+      16: aload_3
+      17: arraylength
+      18: if_icmpge     39
+      21: aload         4
+      23: iload         5
+      25: aload_3
+      26: iload         5
+      28: aaload
+      29: invokevirtual #133                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      32: aastore
+      33: iinc          5, 1
+      36: goto          14
+      39: aload_0
+      40: aload_1
+      41: aload_2
+      42: aload         4
+      44: invokevirtual #137                // Method getMethod:(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      47: astore        5
+      49: aload_0
+      50: aconst_null
+      51: aload         5
+      53: aload_3
+      54: invokevirtual #140                // Method executeMethod:(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;
+      57: areturn
+      58: aconst_null
+      59: areturn
+
+  public <T> T getAndExecuteRuntime(java.lang.Class<?>, java.lang.Object, java.lang.String, java.lang.Object...);
+    Code:
+       0: aload_2
+       1: ifnull        62
+       4: aload         4
+       6: arraylength
+       7: anewarray     #69                 // class java/lang/Class
+      10: astore        5
+      12: iconst_0
+      13: istore        6
+      15: iload         6
+      17: aload         4
+      19: arraylength
+      20: if_icmpge     42
+      23: aload         5
+      25: iload         6
+      27: aload         4
+      29: iload         6
+      31: aaload
+      32: invokevirtual #133                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      35: aastore
+      36: iinc          6, 1
+      39: goto          15
+      42: aload_0
+      43: aload_1
+      44: aload_3
+      45: aload         5
+      47: invokevirtual #137                // Method getMethod:(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      50: astore        6
+      52: aload_0
+      53: aload_2
+      54: aload         6
+      56: aload         4
+      58: invokevirtual #140                // Method executeMethod:(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;
+      61: areturn
+      62: aconst_null
+      63: areturn
+
+  public java.lang.Object newInstance(java.lang.Class<?>, java.lang.Object...);
+    Code:
+       0: aload_1
+       1: ifnull        76
+       4: aload_1
+       5: invokevirtual #144                // Method java/lang/Class.getConstructors:()[Ljava/lang/reflect/Constructor;
+       8: astore_3
+       9: aload_3
+      10: arraylength
+      11: istore        4
+      13: iconst_0
+      14: istore        5
+      16: iload         5
+      18: iload         4
+      20: if_icmpge     76
+      23: aload_3
+      24: iload         5
+      26: aaload
+      27: astore        6
+      29: aload         6
+      31: invokevirtual #148                // Method java/lang/reflect/Constructor.getParameterCount:()I
+      34: aload_2
+      35: arraylength
+      36: if_icmpne     70
+      39: aload         6
+      41: aload_2
+      42: invokevirtual #154                // Method java/lang/reflect/Constructor.newInstance:([Ljava/lang/Object;)Ljava/lang/Object;
+      45: areturn
+      46: astore        7
+      48: getstatic     #76                 // Field org/betterx/bclib/BCLib.LOGGER:Lorg/betterx/wover/core/api/Logger;
+      51: aload         7
+      53: invokevirtual #124                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+      56: invokevirtual #86                 // Method org/betterx/wover/core/api/Logger.error:(Ljava/lang/String;)V
+      59: invokestatic  #92                 // Method org/betterx/bclib/BCLib.isDevEnvironment:()Z
+      62: ifeq          70
+      65: aload         7
+      67: invokevirtual #115                // Method java/lang/Exception.printStackTrace:()V
+      70: iinc          5, 1
+      73: goto          16
+      76: aconst_null
+      77: areturn
+    Exception table:
+       from    to  target type
+          39    45    46   Class java/lang/InstantiationException
+          39    45    46   Class java/lang/IllegalAccessException
+          39    45    46   Class java/lang/IllegalArgumentException
+          39    45    46   Class java/lang/reflect/InvocationTargetException
+
+  public net.minecraft.tags.TagKey<net.minecraft.world.item.Item> getItemTag(java.lang.String);
+    Code:
+       0: getstatic     #160                // Field org/betterx/wover/tag/api/TagManager.ITEMS:Lorg/betterx/wover/tag/api/TagRegistry;
+       3: aload_0
+       4: getfield      #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       7: aload_1
+       8: invokeinterface #166,  3          // InterfaceMethod org/betterx/wover/tag/api/TagRegistry.makeTag:(Lorg/betterx/wover/core/api/ModCore;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+      13: areturn
+
+  public net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> getBlockTag(java.lang.String);
+    Code:
+       0: getstatic     #172                // Field org/betterx/wover/tag/api/TagManager.BLOCKS:Lorg/betterx/wover/tag/api/TagRegistry;
+       3: aload_0
+       4: getfield      #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       7: aload_1
+       8: invokeinterface #166,  3          // InterfaceMethod org/betterx/wover/tag/api/TagRegistry.makeTag:(Lorg/betterx/wover/core/api/ModCore;Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+      13: areturn
+}
