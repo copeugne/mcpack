@@ -107,6 +107,7 @@ ARCHIVES = frozenset(
         "moonlight-neoforge-1.21.1-3.0.17.jar",
         "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
         "FarmersDelight-1.21.1-1.3.2.jar",
+        "coffee_delight-1.4.1.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -1843,6 +1844,11 @@ CLASSES: tuple[str, ...] = (
     "vectorwing/farmersdelight/common/mixin/datafix/V3818_3Mixin.class",
     "vectorwing/farmersdelight/common/network/ModNetworking.class",
     "vectorwing/farmersdelight/common/network/ModNetworking$ServerPayloadHandler.class",
+    "lcyzsdh/coffee_delight/CoffeeDelight.class",
+    "lcyzsdh/coffee_delight/data/ModDataGenerator.class",
+    "lcyzsdh/coffee_delight/worldgen/ModBiomeModifier.class",
+    "lcyzsdh/coffee_delight/worldgen/ModFeatures.class",
+    "lcyzsdh/coffee_delight/worldgen/ModPlacement.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeFeatures.class",
     "vectorwing/farmersdelight/common/registry/ModBiomeModifiers.class",
     "vectorwing/farmersdelight/common/registry/ModPlacementModifiers.class",
@@ -2016,7 +2022,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith((
                     "alternate_current-", "cupboard-", "lootintegrations-", "creatingspace-",
-                    "CreeperOverhaul-", "FarmersDelight-",
+                    "CreeperOverhaul-", "FarmersDelight-", "coffee_delight-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
