@@ -1,0 +1,180 @@
+Compiled from "AttachedToLogsDecorator.java"
+public class net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator extends net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator {
+  public static final com.mojang.serialization.MapCodec<net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator> CODEC;
+
+  public static final net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType<net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator> TYPE;
+
+  private final float probability;
+
+  private final net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider blockProvider;
+
+  private final java.util.List<net.minecraft.core.Direction> directions;
+
+  private final boolean checkAllDirections;
+
+  public net.regions_unexplored.worldgen.treedecorator.AttachedToLogsDecorator(float, net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider, java.util.List<net.minecraft.core.Direction>, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #49                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator."<init>":()V
+       4: aload_0
+       5: fload_1
+       6: putfield      #51                 // Field probability:F
+       9: aload_0
+      10: aload_2
+      11: putfield      #53                 // Field blockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+      14: aload_0
+      15: aload_3
+      16: putfield      #55                 // Field directions:Ljava/util/List;
+      19: aload_0
+      20: iload         4
+      22: putfield      #57                 // Field checkAllDirections:Z
+      25: return
+
+  private float probability();
+    Code:
+       0: aload_0
+       1: getfield      #51                 // Field probability:F
+       4: freturn
+
+  private net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider blockProvider();
+    Code:
+       0: aload_0
+       1: getfield      #53                 // Field blockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+       4: areturn
+
+  private java.util.List<net.minecraft.core.Direction> directions();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field directions:Ljava/util/List;
+       4: areturn
+
+  private boolean checkAllDirections();
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field checkAllDirections:Z
+       4: ireturn
+
+  public void place(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context);
+    Code:
+       0: aload_1
+       1: invokevirtual #71                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #75                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.logs:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       9: aload_2
+      10: invokestatic  #81                 // Method net/minecraft/Util.shuffledCopy:(Lit/unimi/dsi/fastutil/objects/ObjectArrayList;Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+      13: invokeinterface #87,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      18: astore_3
+      19: aload_3
+      20: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          166
+      28: aload_3
+      29: invokeinterface #98,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #100                // class net/minecraft/core/BlockPos
+      37: astore        4
+      39: aload_0
+      40: getfield      #57                 // Field checkAllDirections:Z
+      43: ifeq          53
+      46: aload_0
+      47: getfield      #55                 // Field directions:Ljava/util/List;
+      50: goto          67
+      53: aload_0
+      54: getfield      #55                 // Field directions:Ljava/util/List;
+      57: aload_2
+      58: invokestatic  #104                // Method net/minecraft/Util.getRandom:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)Ljava/lang/Object;
+      61: checkcast     #106                // class net/minecraft/core/Direction
+      64: invokestatic  #110                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      67: astore        5
+      69: aload         5
+      71: invokeinterface #87,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      76: astore        6
+      78: aload         6
+      80: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      85: ifeq          163
+      88: aload         6
+      90: invokeinterface #98,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      95: checkcast     #106                // class net/minecraft/core/Direction
+      98: astore        7
+     100: aload         4
+     102: aload         7
+     104: invokevirtual #114                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     107: astore        8
+     109: aload_2
+     110: invokeinterface #117,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     115: aload_0
+     116: getfield      #51                 // Field probability:F
+     119: fcmpg
+     120: ifgt          160
+     123: aload_1
+     124: aload         8
+     126: invokevirtual #121                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+     129: ifeq          160
+     132: aload_1
+     133: aload         8
+     135: invokevirtual #125                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     138: invokevirtual #121                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+     141: ifne          160
+     144: aload_1
+     145: aload         8
+     147: aload_0
+     148: getfield      #53                 // Field blockProvider:Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     151: aload_2
+     152: aload         8
+     154: invokevirtual #131                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     157: invokevirtual #135                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+     160: goto          78
+     163: goto          19
+     166: return
+
+  protected net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType<?> type();
+    Code:
+       0: getstatic     #147                // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType;
+       3: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: fconst_0
+       2: fconst_1
+       3: invokestatic  #156                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+       6: ldc           #157                // String probability
+       8: invokeinterface #161,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      13: invokedynamic #179,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      18: invokevirtual #185                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      21: getstatic     #188                // Field net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.CODEC:Lcom/mojang/serialization/Codec;
+      24: ldc           #190                // String block_provider
+      26: invokeinterface #161,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      31: invokedynamic #196,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      36: invokevirtual #185                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      39: getstatic     #199                // Field net/minecraft/core/Direction.CODEC:Lnet/minecraft/util/StringRepresentable$EnumCodec;
+      42: invokevirtual #203                // Method net/minecraft/util/StringRepresentable$EnumCodec.listOf:()Lcom/mojang/serialization/Codec;
+      45: invokestatic  #209                // Method net/minecraft/util/ExtraCodecs.nonEmptyList:(Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/Codec;
+      48: ldc           #210                // String directions
+      50: invokeinterface #161,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      55: invokedynamic #216,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      60: invokevirtual #185                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      63: getstatic     #220                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      66: ldc           #222                // String check_all_directions
+      68: iconst_0
+      69: invokestatic  #228                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      72: invokeinterface #234,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      77: invokedynamic #240,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      82: invokevirtual #185                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      85: invokevirtual #244                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      88: aload_0
+      89: invokedynamic #254,  0            // InvokeDynamic #4:apply:()Lcom/mojang/datafixers/util/Function4;
+      94: invokevirtual #257                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+      97: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #264,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       5: invokestatic  #268                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #270                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: new           #272                // class net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType
+      14: dup
+      15: getstatic     #270                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      18: invokespecial #275                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType."<init>":(Lcom/mojang/serialization/MapCodec;)V
+      21: putstatic     #147                // Field TYPE:Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType;
+      24: return
+}
