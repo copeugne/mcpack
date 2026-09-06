@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches edd0bf75 and reproduces exactly. Canonical-note backlog: 110.
+Coverage groups: 405. Next: four Aether/Deep Aether dungeon design records against
+existing custom-generator evidence. Required attributes and nonregistry work remain.
+
 Five Illager Invasion design relationships are resolved from existing source
 components. Three affected cases and scoped checks pass. Canonical-note backlog:
 110. Coverage groups: 405. Inventory refresh follows. No new capture was needed.

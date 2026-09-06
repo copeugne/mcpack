@@ -9308,3 +9308,12 @@ uv run pytest tests/item8/test_illagerinvasion_provider_scope.py tests/item8/tes
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from edd0bf75 and independently reproduced exactly.
+Only the five Illager Invasion grouping decisions and the decision input identity
+changed. SHA-256: 8a68f25b473a8e8e2b6cee131886202efdb2e1035b56bb64cd09a46c215c7257.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-illager-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-illager-designs-r2.json
+```
