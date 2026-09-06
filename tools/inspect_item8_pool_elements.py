@@ -631,6 +631,14 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/world/features/BiomeIslandFeature.class",
     "org/betterx/betterend/world/structures/features/EternalPortalStructure.class",
     "org/betterx/betterend/config/GeneratorConfig.class",
+    "org/betterx/betterend/registry/EndBiomes.class",
+    "org/betterx/betterend/registry/EndPortals.class",
+    "org/betterx/betterend/commands/CommandRegistry.class",
+    "org/betterx/betterend/commands/CommandRegistry$1.class",
+    "org/betterx/betterend/integration/Integrations.class",
+    "org/betterx/betterend/integration/EndBiomeIntegration.class",
+    "org/betterx/betterend/util/LootTableUtil.class",
+    "org/betterx/betterend/api/BetterEndPlugin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
