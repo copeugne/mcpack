@@ -106,6 +106,34 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-api-lookup-api-v1-1.6.71+c290471319",
+            "fabric-api_lookup_api-entry",
+            "7fdd492bfcaf9f4d3840f9c7d238f2a2db88d94979b29a84f4592ae3d5aae0c9",
+            1,
+            {"org/sinytra/fabric/api_lookup_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-block-api-v1-1.1.0+b0c22bb819",
+            "fabric-block_api-entry",
+            "3378c30e4764b45310fd52494bfb1d88ad4f8e7ff250e7a58232388d4c7f705d",
+            3,
+            {"org/sinytra/fabric/block_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-block-view-api-v2-1.0.11+e9036fd419",
+            "fabric-block_view_api-entry",
+            "24fb28fc00e6da4260ca6a0aec22aa5520f73b3a20b0c441eb8956c236ca3ca4",
+            3,
+            {"org/sinytra/fabric/block_view_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-rendering-data-attachment-v1-0.3.49+73761d2e19",
+            "fabric-rendering_data_attachment_v1-entry",
+            "1563f045f7690ab90e53d9e9ae5e126d657b09fece385ba2414a03f08c6eadd4",
+            2,
+            {"org/sinytra/fabric/rendering_data_attachment_v1/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-resource-loader-v0-1.3.1+4ea8954419",
             "fabric-resource-loading",
             "4030af446b6db49bce752d0d87cc98fb1e937c611c7a483b8fd8fe9dc199d57f",
@@ -165,6 +193,38 @@ def test_fabric_sources_cover_declared_mixins(
             assert not config.get("plugin")
             assert not config.get("server")
             assert {r["class"] for r in rows} == declared | consumers
+            name = module.rsplit("-", 1)[0]
+            block_modules = {
+                "fabric-api-lookup-api-v1": (29, 0),
+                "fabric-block-api-v1": (8, 0),
+                "fabric-block-view-api-v2": (12, 2),
+                "fabric-rendering-data-attachment-v1": (8, 1),
+            }
+            if name in block_modules:
+                class_count, client_count = block_modules[name]
+                files = {n for n in archive.namelist() if not n.endswith("/")}
+                classes = {n for n in files if n.endswith(".class")}
+                assert len(classes) == class_count
+                extras: set[str] = set()
+                if client_count:
+                    extras.add(f"{name}.client.mixins.json")
+                    client = cast("dict[str, object]", json.loads(archive.read(
+                        f"{name}.client.mixins.json")))
+                    assert len(cast("list[str]", client["client"])) == client_count
+                    assert not client.get("mixins")
+                    assert not client.get("server")
+                    assert not client.get("plugin")
+                if name == "fabric-block-view-api-v2":
+                    extras.add("META-INF/accesstransformer.cfg")
+                assert files - classes == extras | {
+                    "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+                    "META-INF/architectury-loom-nesting-metadata.json",
+                    f"assets/{name}/icon.png", f"{name}.mixins.json",
+                }
+                assert {n for n in classes if any(marker in archive.read(n) for marker in (
+                    b"Lnet/neoforged/fml/common/Mod;",
+                    b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                ))} == consumers
             for row in rows:
                 assert row["archive"] == source.name + "!/" + member
                 assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
