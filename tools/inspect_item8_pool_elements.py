@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "createbigcannons-5.11.6+mc.1.21.1.jar",
         "create-enchantment-industry-2.4.0.jar",
         "resourcefullib-neoforge-1.21-3.0.12.jar",
         "comforts-neoforge-9.0.5+1.21.1.jar",
@@ -223,6 +224,43 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "rbasamoyai/createbigcannons/mixin/ContextAwareReloadListenerAccessor.class",
+    "rbasamoyai/createbigcannons/mixin/EntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/ExplosionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/PlayerMixin.class",
+    "rbasamoyai/createbigcannons/mixin/ServerEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/ServerLevelMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/AbstractContraptionEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/AllSoundEventsMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/BeltMovementHandlerMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/ChassisBlockEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/ContraptionColliderMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/ContraptionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/FilterItemMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/GantryContraptionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/MechanicalBearingBlockEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/MechanicalPistonBlockMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/PistonContraptionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/PulleyBlockEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/PulleyBlockMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/PulleyContraptionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/RopeBlockBaseMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/TranslatingContraptionMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/rotation_propagation/KineticBlockAccessor.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/rotation_propagation/KineticBlockEntityMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/rotation_propagation/KineticNetworkMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/create/rotation_propagation/RotationPropagatorMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/framedblocks/FramedAdjustableDoubleBlockEntityAccessor.class",
+    "rbasamoyai/createbigcannons/mixin/compat/sable/EntitySubLevelUtilMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/sable/FuzedProjectileBlockMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/sable/SableCommonEventsMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/sable/SubLevelHeatMapManagerMixin.class",
+    "rbasamoyai/createbigcannons/mixin/compat/simulated/SimAssemblyHelperMixin.class",
+    "rbasamoyai/createbigcannons/mixin/CBCMixinPlugin.class",
+    "rbasamoyai/createbigcannons/CBCClientNeoForge.class",
+    "rbasamoyai/createbigcannons/CBCDataNeoForge.class",
+    "rbasamoyai/createbigcannons/CreateBigCannonsNeoForge.class",
+    "rbasamoyai/createbigcannons/network/CBCNetworkNeoForge.class",
     "plus/dragons/createenchantmentindustry/common/registry/CEIAdvancements.class",
     "plus/dragons/createenchantmentindustry/common/registry/CEIAdvancements$BuiltinTriggersQuickDeploy.class",
     "plus/dragons/createenchantmentindustry/common/registry/CEIArmInterationPoints.class",
@@ -4165,6 +4203,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
                 verbose |= name.startswith("plus/dragons/createenchantmentindustry/")
+                verbose |= name.startswith("rbasamoyai/createbigcannons/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
