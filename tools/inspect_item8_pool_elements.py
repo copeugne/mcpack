@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/resource/loader/PlaceholderResourcePack.class",
+    "net/fabricmc/fabric/impl/resource/loader/PlaceholderResourcePack$Factory.class",
     "net/fabricmc/fabric/impl/resource/loader/ModResourcePackCreator.class",
     "net/fabricmc/fabric/impl/resource/loader/ModResourcePackUtil.class",
     "net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack.class",
