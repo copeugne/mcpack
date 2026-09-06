@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "accessories-neoforge-1.1.0-beta.53+1.21.1.jar",
         "CreateDragonsPlus-1.11.2b.jar",
         "polymorph-neoforge-1.1.0+1.21.1.jar",
         "bettercombat-neoforge-2.3.2+1.21.1.jar",
@@ -215,6 +216,43 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "io/wispforest/accessories/mixin/AccessoriesMixinPlugin.class",
+    "io/wispforest/accessories/mixin/ApplyBonusCountMixin.class",
+    "io/wispforest/accessories/mixin/ArmorSlotMixin.class",
+    "io/wispforest/accessories/mixin/ConfigurableRegistryLookupAccessor.class",
+    "io/wispforest/accessories/mixin/CraftingMenuAccessor.class",
+    "io/wispforest/accessories/mixin/CriteriaTriggersAccessor.class",
+    "io/wispforest/accessories/mixin/DelegatingOpsAccessor.class",
+    "io/wispforest/accessories/mixin/EnchantedCountIncreaseFunctionMixin.class",
+    "io/wispforest/accessories/mixin/EnchantmentAttributeEffectMixin.class",
+    "io/wispforest/accessories/mixin/EnchantmentHelperMixin.class",
+    "io/wispforest/accessories/mixin/EndermanMixin.class",
+    "io/wispforest/accessories/mixin/EntityTrackerAccessor.class",
+    "io/wispforest/accessories/mixin/EquipmentSlotMixin.class",
+    "io/wispforest/accessories/mixin/EquipmentSlotTypeMixin.class",
+    "io/wispforest/accessories/mixin/HolderLookupAdapterAccessor.class",
+    "io/wispforest/accessories/mixin/InventoryMixin.class",
+    "io/wispforest/accessories/mixin/ItemStackAccessor.class",
+    "io/wispforest/accessories/mixin/LivingEntityAccessor.class",
+    "io/wispforest/accessories/mixin/LivingEntityMixin.class",
+    "io/wispforest/accessories/mixin/PatchedDataComponentMapMixin.class",
+    "io/wispforest/accessories/mixin/PigEntityMixin.class",
+    "io/wispforest/accessories/mixin/PiglinAiMixin.class",
+    "io/wispforest/accessories/mixin/PlayerMixin.class",
+    "io/wispforest/accessories/mixin/PowderSnowBlockMixin.class",
+    "io/wispforest/accessories/mixin/RegistryOpsAccessor.class",
+    "io/wispforest/accessories/mixin/ServerChunkLoadingManagerAccessor.class",
+    "io/wispforest/accessories/mixin/SlotAccessor.class",
+    "io/wispforest/accessories/mixin/StateHolderAccessor.class",
+    "io/wispforest/accessories/mixin/StriderMixin.class",
+    "io/wispforest/accessories/mixin/owo/ConfigWrapperAccessor.class",
+    "io/wispforest/accessories/mixin/temp_fixes/NbtCompoundMixin.class",
+    "io/wispforest/accessories/mixin/temp_fixes/NbtUtilsMixin.class",
+    "io/wispforest/accessories/neoforge/AccessoriesForge.class",
+    "io/wispforest/accessories/neoforge/client/AccessoriesClientForge.class",
+    "io/wispforest/accessories/neoforge/mixin/AccessoriesNeoforgeMixinConfig.class",
+    "io/wispforest/accessories/neoforge/mixin/curios/CurioInventoryMixin.class",
+
     "me/fallenbreath/conditionalmixin/ConditionalMixinMod.class",
     "me/fallenbreath/conditionalmixin/neoforge/ConditionalMixinNeoForge.class",
     "me/fallenbreath/conditionalmixin/api/mixin/RestrictiveMixinConfigPlugin.class",
@@ -3594,6 +3632,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("io/wispforest/accessories/")
                 verbose |= name.startswith("org/betterx/wover/entrypoint/")
                 verbose |= name in {
                     "org/betterx/wover/core/api/ModCore.class",
