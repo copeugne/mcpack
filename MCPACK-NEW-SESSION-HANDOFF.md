@@ -6,6 +6,53 @@
 
 ### Continuation update - 2026-09-06
 
+Explorations' decorated-mushroom boundary is resolved: its procedural stem/canopy
+and hanging-light decorator are recorded as decorated vegetation, with no added
+family. The generation contribution and shuffle limitation remain explicit.
+Two focused cases, scoped checks and inventory reproduction pass. See the
+provider-scope evidence for rationale and commands. Other named grouping questions
+and 46 provider rows remain open; the 421 registry groups are unchanged.
+
+Two named boundary questions are resolved: Tectonic's underground-river lantern
+and Terralith's Frostfire hanging soul lantern are ambient fixtures, not additional
+structure families. Both remain explicit nonregistry contributions with empty
+family lists. Existing geometry/placement/configuration checks and decision
+bindings pass in four cases; scoped checks and inventory reproduction pass.
+See evidence/item-8/provider-scope.md for rationale and commands. No new experiment
+or baseline change. Decorated mushroom and other named boundaries remain open;
+provider census remains 90 resolved, 46 open.
+
+Explorations scarecrow is now recorded as one nonregistry family with nine
+material variants. The unsuffixed selector is not a tenth family. The existing
+provider tests bind the decision, source hashes, runtime IDs and packaged routes;
+both cases and scoped checks pass. Inventory reproduction is recorded in
+evidence/item-8/provider-scope.md. No new experiment. The decorated mushroom's
+family boundary remains open, as do the other named grouping decisions and
+46 provider rows. The 421 provisional registry groups are unchanged.
+
+The three family-decision test failures found after the crashed-ship increment
+are resolved narrowly: absence from the pool trace no longer forces obsolete
+generic UNKNOWN prose for custom generators with separate component evidence.
+All 87 affected family and source/component cases pass; scoped checks pass.
+No inventory finding or remaining uncertainty was changed. Continue the named
+family/provider membership work, with 90 providers resolved and 46 open.
+
+BetterEnd crashed-ship family membership is now recorded in family-decisions.json
+and the rebuilt working inventory. Its independent placement and erosion make it
+one standalone wreck family despite reuse of the vanilla End-city ship template.
+Existing runtime, biome and source evidence is reused. Thirteen focused BetterEnd
+cases and scoped Ruff/Basedpyright pass. Reproduction and limits are recorded in
+evidence/item-8/provider-scope.md. This resolves one named family decision, not
+the final total. The 421 registry-root groups are unchanged. Provider coverage
+still has 46 open rows, including Fabric with 33 open modules. Prioritize the
+complete named membership list and explicit merge/split decisions; do not resume
+detailed attributes or expand generic library tracing. No runtime process is live.
+The broader family-decision run has 70 passes and three existing stale
+custom-generation UNKNOWN assertions (Explorations, Aether, Repurposed Structures).
+Their registry groups are unchanged by the ship increment. Reconcile those
+assertions narrowly against existing focused source tests before final validation;
+see the failure details and rerun command in provider-scope.md.
+
 Three Fabric client utility modules resolved: block render layers, key bindings,
 and sound. Source 1c35ebe (extractor 5624e8a) independently reproduces the entries;
 client initialization guards/client-only mixins and full partitions are bound.

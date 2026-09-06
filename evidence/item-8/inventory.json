@@ -159051,7 +159051,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "a0f7b754aaf95a93261dcc3dac84ef1a0962f11e70a767e3713e8a3cffb748c2",
+    "evidence/item-8/family-decisions.json": "d4da5842f82a6a4c81336cc4158df9f32a9a224ad6cf366b3c460cd815360ed9",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -159060,6 +159060,25 @@
   },
   "non_registry_content": {
     "contributions": {
+      "betterend:crashed_ship": {
+        "class_to_template": {
+          "CrashedShipFeature": "minecraft:end_city/ship"
+        },
+        "configured_feature": "Inline configuration; no separate configured-feature registry ID.",
+        "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/sources/betterend-feature-scope/identities.json": "7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "mechanism": "Registered placed feature with inline betterend:crashed_ship configuration, directly consumed by packaged End biomes.",
+        "placed_feature": "betterend:crashed_ship",
+        "placement_eligibility": "The placed definition applies rarity 500, in-square and biome filters. Twenty-seven packaged BetterEnd biomes reference it directly; twenty-one occur in the captured End biome source. This establishes a natural-generation route, not observed occurrence or exploration frequency.",
+        "relationship": "One independent crashed-ship family. It reuses the vanilla End-city ship template, but its own placement and erosion generate a standalone wreck. The ship attached to minecraft:end_city remains a component of that city family. Rotation, erosion and biome occurrences do not create additional crashed-ship families.",
+        "scope": "Family membership resolved from existing source and active placement eligibility. Complete provider coverage and required family attributes remain open. Shared biome modifiers may extend eligibility but do not add a second family for this same generator.",
+        "verification": "tests/item8/test_betterend_feature_candidates.py::test_betterend_crashed_ship_inline_configuration_and_biome_routes"
+      },
       "betterendisland:platform_gateway": {
         "class_to_template": {
           "BetterEndGatewayFeature": "betterendisland:gateway",
@@ -160391,6 +160410,60 @@
         "scope": "Packaged natural-generation eligibility in captured dimensions. Does not prohibit manual placement or establish absence under a changed biome source or an independently demonstrated code injection. Such evidence would reopen this disposition.",
         "verification": "tests/item8/test_totem_scope.py"
       },
+      "explorations:large_mushroom": {
+        "configured_resource": "data/explorations/worldgen/configured_feature/large_mushroom.json",
+        "dispositions": [
+          {
+            "contribution": "explorations:large_mushroom",
+            "decision": "DECORATED_VEGETATION_NOT_ADDITIONAL_FAMILY",
+            "rationale": "The complete configured form is a procedural mushroom with hanging light fixtures. The decorator adds no building, room, platform or other distinct site layout. Preserve its authored lighting as an environmental contribution without treating each decorated plant as an additional structure family. The exclusion follows the actual geometry and decorator role, not the vanilla tree codec or a size threshold."
+          }
+        ],
+        "evidence": {
+          "evidence/item-8/sources/explorations-provider/identities.json": "7889daf6336c190cec169bc57eac369ebf863eb4c72e2b7895341aa12b4e9b8f",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "families": [],
+        "mechanism": "A tree configuration builds a mushroom-stem trunk and brown-mushroom canopy with giant trunk and jungle foliage placers. Its only decorator hangs chains and lanterns from foliage. A biome modifier adds the placed feature through the dark-forest tag.",
+        "scope": "Family-boundary exclusion only. Content remains enabled and named. This does not exclude an independently constructed tree house or other site using vegetation as support. Collections.shuffle in the decorator does not use the generation random source; exact ornament positions are not claimed deterministic or observed.",
+        "verification": "tests/item8/test_explorations_provider_scope.py::test_explorations_features_and_frozen_statue_consumers"
+      },
+      "explorations:scarecrow": {
+        "configured_features": [
+          "explorations:scarecrow_acacia",
+          "explorations:scarecrow_bamboo",
+          "explorations:scarecrow_birch",
+          "explorations:scarecrow_cherry",
+          "explorations:scarecrow_dark_oak",
+          "explorations:scarecrow_jungle",
+          "explorations:scarecrow_mangrove",
+          "explorations:scarecrow_oak",
+          "explorations:scarecrow_spruce"
+        ],
+        "evidence": {
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
+          "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/sources/explorations-provider/identities.json": "7889daf6336c190cec169bc57eac369ebf863eb4c72e2b7895341aa12b4e9b8f",
+          "evidence/item-8/sources/explorations-scarecrow-scope/identities.json": "10fef0e01f61350f80a293996510e87642d07ada473ecbc81882236a2b7d3b43",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "mechanism": "ScarecrowFeature directly writes one five-position figure. Nine configured material variants are placed by corresponding NeoForge add_features biome modifiers.",
+        "placed_features": [
+          "explorations:scarecrow_acacia",
+          "explorations:scarecrow_bamboo",
+          "explorations:scarecrow_birch",
+          "explorations:scarecrow_cherry",
+          "explorations:scarecrow_dark_oak",
+          "explorations:scarecrow_jungle",
+          "explorations:scarecrow_mangrove",
+          "explorations:scarecrow_oak",
+          "explorations:scarecrow_spruce"
+        ],
+        "relationship": "One scarecrow family with nine material variants and horizontal facing variations. The unsuffixed simple_random_selector references those same nine configured variants and is not a tenth family. The head, body, legs and two arms are components of the figure, not independent structures.",
+        "scope": "Family membership resolved from the captured writer, registrations and packaged placement routes. Successful world placement, effective biome eligibility and the remaining required attributes are separate work. Ignored block-write results do not prove that a complete figure was placed.",
+        "selector": "explorations:scarecrow",
+        "verification": "tests/item8/test_explorations_provider_scope.py::test_explorations_features_and_frozen_statue_consumers"
+      },
       "quark:fairy_ring": {
         "evidence": {
           "evidence/item-8/sources/quark-landmark-encounter-generators/identities.json": "9e85bdd251270a20b8922c12a2b3567a9ffa18920426b94b1fec4bd1e9965971"
@@ -160734,6 +160807,42 @@
         "mechanism": "BlossomTreesModule and CherryGroveWaterPetalsModule register direct generators at TOP_LAYER_MODIFICATION, weights two and one respectively.",
         "remaining": "Complete broader provider reconciliation. Effective configuration and observed occurrence are not established by this contribution disposition. Do not investigate unrelated tree materials or crafting to repeat this boundary.",
         "scope": "Working vegetation disposition only; not complete Quark coverage, a final global family count or an Item 9 classification."
+      },
+      "tectonic:underground_river/lanterns": {
+        "configured_resource": "resourcepacks/tectonic/data/tectonic/worldgen/configured_feature/underground_river/lanterns.json",
+        "dispositions": [
+          {
+            "contribution": "tectonic:underground_river/lanterns",
+            "decision": "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY",
+            "rationale": "This contribution repeats an individual hanging light fixture on existing cave terrain. It has no independently assembled site layout beyond the chain and light. Authored blocks alone do not make each biome decoration a structure family. Retain this contribution for environmental attribution without counting fixtures or their repetitions as families."
+          }
+        ],
+        "evidence": {
+          "evidence/item-6/frozen/config/tectonic.json": "fe51e529faafe17609b060f25d2cd87c0db5571c98e306a09f9335d4b54546fa",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "families": [],
+        "mechanism": "A downward block column places two to eight chain blocks and one hanging lantern. The enabled river_lanterns configuration controls its conditional biome modifier.",
+        "scope": "Membership exclusion only, not inactive content, a baseline change or an observed occurrence claim. Placement conditions and cave context remain attributable. This does not exclude an independently authored building or landmark merely because it contains these blocks.",
+        "verification": "tests/item8/test_tectonic_provider_scope.py::test_tectonic_named_lantern_candidate_and_frozen_selection"
+      },
+      "terralith:cave/frostfire/frostfire_ceiling": {
+        "configured_resource": "data/terralith/worldgen/configured_feature/cave/frostfire/frostfire_ceiling.json",
+        "dispositions": [
+          {
+            "contribution": "terralith:cave/frostfire/frostfire_ceiling",
+            "decision": "AMBIENT_DECORATION_NOT_ADDITIONAL_FAMILY",
+            "rationale": "This contribution repeats an individual hanging light fixture on existing cave terrain. It has no independently assembled site layout beyond the chain and light. Authored blocks alone do not make each biome decoration a structure family. Retain this contribution for environmental attribution without counting fixtures or their repetitions as families."
+          }
+        ],
+        "evidence": {
+          "evidence/item-6/frozen/config/terralith.json": "eadc7fad5ce55fbcec25df521820d36c222d5b12f17006ed9fea34ebeb6fd01d",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+        },
+        "families": [],
+        "mechanism": "The ceiling vegetation selector has a 0.07 branch placing a downward chain and hanging soul lantern. Its placed feature is referenced by Frostfire Caves.",
+        "scope": "Membership exclusion only, not inactive content, a baseline change or an observed occurrence claim. Placement conditions and cave context remain attributable. This does not exclude an independently authored building or landmark merely because it contains these blocks.",
+        "verification": "tests/item8/test_terralith_provider_scope.py::test_terralith_feature_routes_and_named_decoration_candidate"
       },
       "village_taverns:village_components": {
         "boundary": "CTOV also has a field named village_taverns_templates containing ctov-namespace tavern components. That field name alone does not attribute those assets to the Village Taverns archive.",

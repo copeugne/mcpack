@@ -114,6 +114,20 @@ def test_explorations_features_and_frozen_statue_consumers() -> None:
     base = "data/explorations/"
     variants = {"acacia", "bamboo", "birch", "cherry", "dark_oak", "jungle",
                 "mangrove", "oak", "spruce"}
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    scarecrow = contributions["explorations:scarecrow"]
+    variant_ids = sorted("explorations:scarecrow_" + name for name in variants)
+    assert scarecrow["configured_features"] == scarecrow["placed_features"] == variant_ids
+    assert scarecrow["selector"] == "explorations:scarecrow"
+    for path, digest in cast("dict[str, str]", scarecrow["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    assert set(variant_ids) | {"explorations:scarecrow"} <= set(read_registry(
+        registry / "worldgen_configured_feature.txt"))
+    assert set(variant_ids) <= set(read_registry(registry / "worldgen_placed_feature.txt"))
     configured = base + "worldgen/configured_feature/"
     assert {n.removeprefix(configured).removesuffix(".json") for n in data
             if n.startswith(configured)} == {
@@ -137,8 +151,24 @@ def test_explorations_features_and_frozen_statue_consumers() -> None:
         }
         assert base + f"tags/worldgen/biome/has_feature/scarecrow/{name}.json" in data
     mushroom = data[configured + "large_mushroom.json"]
+    mushroom_decision = contributions["explorations:large_mushroom"]
+    assert mushroom_decision["families"] == []
+    assert mushroom_decision["configured_resource"] == configured + "large_mushroom.json"
+    for path, digest in cast("dict[str, str]", mushroom_decision["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     assert mushroom["type"] == "minecraft:tree"
     config = cast("dict[str, JsonValue]", mushroom["config"])
+    for provider, block in (("trunk_provider", "minecraft:mushroom_stem"),
+                            ("foliage_provider", "minecraft:brown_mushroom_block")):
+        setting = cast("dict[str, JsonValue]", config[provider])
+        assert setting["type"] == "minecraft:simple_state_provider"
+        assert cast("dict[str, JsonValue]", setting["state"])["Name"] == block
+    assert cast("dict[str, JsonValue]", config["trunk_placer"])["type"] == (
+        "minecraft:giant_trunk_placer"
+    )
+    assert cast("dict[str, JsonValue]", config["foliage_placer"])["type"] == (
+        "minecraft:jungle_foliage_placer"
+    )
     assert config["decorators"] == [{
         "type": "explorations:lantern", "probability": 0.9,
         "lantern_count": {"type": "minecraft:uniform",

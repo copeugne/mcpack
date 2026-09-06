@@ -2491,6 +2491,38 @@ attributes, the applicable final gate and the required PR review/merge workflow.
 
 ## Tectonic provider candidate disposition
 
+### Hanging-fixture boundary resolved on 2026-09-06
+
+The decisions and working inventory now explicitly exclude
+`tectonic:underground_river/lanterns` and the hanging-light branch of
+`terralith:cave/frostfire/frostfire_ceiling` from additional structure families.
+Each repeats an individual chain-and-light fixture on existing cave terrain.
+Neither contribution assembles a separate site beyond that fixture. Their
+authored materials justify preserving them as named environmental contributions,
+but do not make every repeated ceiling decoration a family. This decision is
+based on the complete configured geometry, not the provider name, vanilla codec,
+lack of loot, or a numerical size cutoff. It does not exclude distinct buildings
+or landmarks containing the same blocks.
+
+The existing provider tests now bind both exclusion records and their evidence
+identities while retaining the geometry, placement-route and frozen-configuration
+checks. All four cases and scoped Ruff/Basedpyright pass. The existing builder
+reproduces the inventory exactly:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-hanging-fixture-dispositions.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-hanging-fixture-dispositions.json
+uv run pytest -q tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py
+uv run ruff check tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_tectonic_provider_scope.py tests/item8/test_terralith_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. This closes two named family-boundary questions,
+adding no families and changing no baseline content. It does not assert inactive
+placement or observed frequency. The decorated-mushroom and other named boundary
+questions remain open. The 421 provisional registry groups and provider census
+(90 resolved, 46 open) are unchanged.
+
 Source fba027c preserves 31 directly relevant classes across the entry capture
 and ConfigState selection capture. Both reproduced exactly. The focused check
 accounts for all 310 files, including 57 classes, and binds both annotated mod
@@ -2537,6 +2569,64 @@ Provider dispositions: 49 of 136 resolved, 87 open. Continue the remaining
 provider census before canonical grouping and detailed family attributes.
 
 ## Explorations provider candidate disposition
+
+### Decorated-mushroom boundary resolved on 2026-09-06
+
+`explorations:large_mushroom` is now an explicit decorated-vegetation exclusion
+in the decisions and rebuilt inventory. The configuration creates a mushroom
+stem and brown-mushroom canopy using giant trunk and jungle foliage placers.
+Its sole decorator hangs chains and lanterns from foliage; it adds no separately
+constructed site layout. This follows the actual geometry and decorator role,
+not the vanilla codec, lack of loot or a numerical size threshold. Constructed
+tree houses and other sites using vegetation as support are not excluded by
+this decision. Keep the named generation contribution and the existing
+Collections.shuffle limitation; no baseline content was changed.
+
+The existing provider test binds the decision and evidence hashes, stem/canopy
+providers, placers and complete decorator list alongside its placement/modifier
+checks. Both cases and scoped Ruff/Basedpyright pass. Inventory reproduction:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-decorated-mushroom-disposition.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-decorated-mushroom-disposition.json
+uv run pytest -q tests/item8/test_explorations_provider_scope.py
+uv run ruff check tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. This closes the previously named mushroom boundary
+without adding a family. Other named groupings and 46 provider rows remain open;
+the 421 provisional registry groups are unchanged. Required attributes and final
+review/delivery gates remain incomplete.
+
+### Scarecrow family decision recorded on 2026-09-06
+
+The decisions and rebuilt working inventory now record `explorations:scarecrow`
+as one nonregistry family. Its nine configured/placed material variants are
+acacia, bamboo, birch, cherry, dark oak, jungle, mangrove, oak and spruce. The
+unsuffixed selector references those same variants. Facing, material choices
+and the figure's five component positions do not add families.
+
+The existing source and complete provider inspection below support this decision.
+The existing feature test now binds the decision's evidence hashes, exact variant
+lists and runtime configured/placed membership, alongside the selector and nine
+biome-modifier routes. Both provider cases and scoped Ruff/Basedpyright pass.
+The inventory rebuild reproduces exactly with the existing tool:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-scarecrow-membership.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-scarecrow-membership.json
+uv run pytest -q tests/item8/test_explorations_provider_scope.py
+uv run ruff check tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_explorations_provider_scope.py tools/build_item8_inventory.py
+```
+
+Use an absent output path. No source recapture or world experiment was required.
+Effective biome eligibility, actual placement and required attributes remain
+separate from this membership decision. The decorated mushroom's boundary is
+still unresolved. The 421 provisional registry groups and whole-provider census
+(90 resolved, 46 open) are unchanged; this is one explicit nonregistry grouping
+closure, not the final family count.
 
 Source 0e6f5e4 binds all 33 classes and reproduced independently. The earlier
 scarecrow, Slime Cave and deepslate interpretations are reused. The mod entry
@@ -2684,6 +2774,69 @@ pass. No runtime measurement, baseline change or detailed family grouping work.
 Provider dispositions: 53 of 136 resolved, 83 open. Continue the remaining census.
 
 ## BetterEnd feature candidate reconciliation
+
+### Crashed-ship membership decision recorded on 2026-09-06
+
+The machine-readable decisions and rebuilt inventory now include
+`betterend:crashed_ship` as one independent nonregistry family. Its dedicated
+placement and erosion produce a standalone wreck. Reusing
+`minecraft:end_city/ship` does not turn that wreck into a city component; the
+ship attached to an End city remains a component of the existing city family.
+Rotation, erosion and biome occurrences remain variants of this wreck family.
+The source and direct biome routes below already establish this boundary, so
+no additional capture, experiment or generic helper inspection is required.
+
+The existing crashed-ship test now binds the decision's source hashes and
+template/placed-feature identity. All thirteen BetterEnd cases pass, as do
+scoped Ruff and Basedpyright. Rebuild the inventory with:
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-crashed-ship-membership.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-crashed-ship-membership.json
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_betterend_feature_candidates.py
+```
+
+The output path must not already exist. This closes one family-membership
+decision, not the Item 8 exit gate. The 421 registry-root groups are unchanged;
+nonregistry families are additional contributions. Observed occurrence and
+required family attributes remain separate work. Current provider coverage is
+90 resolved and 46 open; this decision does not change that census.
+
+The broader `uv run pytest -q tests/item8/test_family_decisions.py` run returned
+70 passed and three failures. The failed cases are
+`test_authored_designs_bind_roots_settings_and_missing_components` for
+`explorations:` and `aether:`, and
+`test_design_groups_cover_registry_and_bind_variant_definitions` for
+`repurposed_structures`. Each still expects the old generic custom-generation
+UNKNOWN string where earlier decisions now contain a resolved empty list or a
+more specific limitation. All 421 registry groups and these test bodies are
+unchanged by this increment. These existing assertion inconsistencies must be
+reconciled against their focused source tests before the full Item 8 gate.
+The three failures reproduced with `uv run pytest -q
+tests/item8/test_family_decisions.py --lf --tb=short`; raw output is retained at
+`evidence/raw/item8/crashed-ship-family-regressions.log`. This is not a claim
+that the full family-decision gate passes.
+
+The follow-up correction removes only the two blanket assertions that an
+untraced custom generator must retain the original generic UNKNOWN prose.
+Pool tracing cannot establish that claim. The registry membership, definition,
+pool-backed missing-component comparisons and evidence-hash assertions remain.
+No family decision, missing-resource finding or uncertainty was changed. Existing
+Explorations, Bronze dungeon, cloud, mansion and monument source/component tests
+cover the independent evidence; they are included in the affected validation:
+
+```sh
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_explorations_provider_scope.py tests/item8/test_aether_bronze_components.py tests/item8/test_aether_cloud_source.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py --tb=short
+uv run ruff check tests/item8/test_family_decisions.py
+uv run basedpyright tests/item8/test_family_decisions.py
+```
+
+All 87 affected cases pass, with zero scoped Ruff or Basedpyright findings.
+The preceding three failures are preserved as the rejected pre-fix result.
+This resolves the assertion defect only; provider coverage and Item 8 completion
+remain open.
 
 The earlier crashed-ship uncertainty is narrowed by existing packaged evidence,
 without another source capture or world run. Its configured feature is embedded
