@@ -1,0 +1,1297 @@
+Compiled from "TerrainGenerator.java"
+public class org.betterx.betterend.world.generator.TerrainGenerator {
+  private static final java.util.Map<java.awt.Point, org.betterx.betterend.world.generator.TerrainBoolCache> TERRAIN_BOOL_CACHE_MAP;
+
+  private static final java.util.concurrent.locks.ReentrantLock LOCKER;
+
+  private static final java.awt.Point POS;
+
+  private static final double SCALE_XZ = 8.0d;
+
+  private static final double SCALE_Y = 4.0d;
+
+  private static final float[] COEF;
+
+  private static final java.awt.Point[] OFFS;
+
+  private static org.betterx.betterend.world.generator.IslandLayer largeIslands;
+
+  private static org.betterx.betterend.world.generator.IslandLayer mediumIslands;
+
+  private static org.betterx.betterend.world.generator.IslandLayer smallIslands;
+
+  private static org.betterx.betterend.noise.OpenSimplexNoise noise1;
+
+  private static org.betterx.betterend.noise.OpenSimplexNoise noise2;
+
+  private static net.minecraft.world.level.biome.BiomeSource biomeSource;
+
+  public static org.betterx.wover.generator.api.biomesource.end.WoverEndConfig config;
+
+  private static net.minecraft.world.level.biome.Climate$Sampler sampler;
+
+  public org.betterx.betterend.world.generator.TerrainGenerator();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void initNoise(long, net.minecraft.world.level.biome.BiomeSource, net.minecraft.world.level.biome.Climate$Sampler);
+    Code:
+       0: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+       3: invokevirtual #13                 // Method java/util/concurrent/locks/ReentrantLock.lock:()V
+       6: invokestatic  #18                 // Method resetNoiseState:()V
+       9: aload_2
+      10: invokestatic  #21                 // Method resolveEndConfig:(Lnet/minecraft/world/level/biome/BiomeSource;)Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      13: putstatic     #25                 // Field config:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      16: getstatic     #25                 // Field config:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      19: ifnonnull     29
+      22: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+      25: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+      28: return
+      29: new           #32                 // class net/minecraft/world/level/levelgen/LegacyRandomSource
+      32: dup
+      33: lload_0
+      34: invokespecial #34                 // Method net/minecraft/world/level/levelgen/LegacyRandomSource."<init>":(J)V
+      37: astore        4
+      39: new           #37                 // class org/betterx/betterend/world/generator/IslandLayer
+      42: dup
+      43: aload         4
+      45: invokeinterface #39,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      50: getstatic     #45                 // Field org/betterx/betterend/world/generator/GeneratorOptions.bigOptions:Lorg/betterx/betterend/world/generator/LayerOptions;
+      53: invokespecial #51                 // Method org/betterx/betterend/world/generator/IslandLayer."<init>":(ILorg/betterx/betterend/world/generator/LayerOptions;)V
+      56: putstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      59: new           #37                 // class org/betterx/betterend/world/generator/IslandLayer
+      62: dup
+      63: aload         4
+      65: invokeinterface #39,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      70: getstatic     #58                 // Field org/betterx/betterend/world/generator/GeneratorOptions.mediumOptions:Lorg/betterx/betterend/world/generator/LayerOptions;
+      73: invokespecial #51                 // Method org/betterx/betterend/world/generator/IslandLayer."<init>":(ILorg/betterx/betterend/world/generator/LayerOptions;)V
+      76: putstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      79: new           #37                 // class org/betterx/betterend/world/generator/IslandLayer
+      82: dup
+      83: aload         4
+      85: invokeinterface #39,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      90: getstatic     #64                 // Field org/betterx/betterend/world/generator/GeneratorOptions.smallOptions:Lorg/betterx/betterend/world/generator/LayerOptions;
+      93: invokespecial #51                 // Method org/betterx/betterend/world/generator/IslandLayer."<init>":(ILorg/betterx/betterend/world/generator/LayerOptions;)V
+      96: putstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      99: new           #70                 // class org/betterx/betterend/noise/OpenSimplexNoise
+     102: dup
+     103: aload         4
+     105: invokeinterface #39,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+     110: i2l
+     111: invokespecial #72                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     114: putstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     117: new           #70                 // class org/betterx/betterend/noise/OpenSimplexNoise
+     120: dup
+     121: aload         4
+     123: invokeinterface #39,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+     128: i2l
+     129: invokespecial #72                 // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     132: putstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     135: aload_2
+     136: putstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+     139: aload_3
+     140: putstatic     #84                 // Field sampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+     143: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     146: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     149: goto          163
+     152: astore        5
+     154: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     157: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     160: aload         5
+     162: athrow
+     163: return
+    Exception table:
+       from    to  target type
+           6    22   152   any
+          29   143   152   any
+         152   154   152   any
+
+  private static void resetNoiseState();
+    Code:
+       0: getstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+       3: invokeinterface #92,  1           // InterfaceMethod java/util/Map.clear:()V
+       8: aconst_null
+       9: putstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      12: aconst_null
+      13: putstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      16: aconst_null
+      17: putstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      20: aconst_null
+      21: putstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      24: aconst_null
+      25: putstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      28: aconst_null
+      29: putstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+      32: aconst_null
+      33: putstatic     #84                 // Field sampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+      36: aconst_null
+      37: putstatic     #25                 // Field config:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      40: return
+
+  private static boolean isNoiseReady();
+    Code:
+       0: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+       3: ifnull        52
+       6: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+       9: ifnull        52
+      12: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      15: ifnull        52
+      18: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      21: ifnull        52
+      24: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      27: ifnull        52
+      30: getstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+      33: ifnull        52
+      36: getstatic     #84                 // Field sampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+      39: ifnull        52
+      42: getstatic     #25                 // Field config:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      45: ifnull        52
+      48: iconst_1
+      49: goto          53
+      52: iconst_0
+      53: ireturn
+
+  private static org.betterx.wover.generator.api.biomesource.end.WoverEndConfig resolveEndConfig(net.minecraft.world.level.biome.BiomeSource);
+    Code:
+       0: aload_0
+       1: astore_1
+       2: iconst_0
+       3: istore_2
+       4: iload_2
+       5: bipush        8
+       7: if_icmpge     77
+      10: aload_1
+      11: ifnull        77
+      14: aload_1
+      15: instanceof    #97                 // class org/betterx/wover/common/generator/api/biomesource/BiomeSourceWithConfig
+      18: ifeq          52
+      21: aload_1
+      22: checkcast     #97                 // class org/betterx/wover/common/generator/api/biomesource/BiomeSourceWithConfig
+      25: astore_3
+      26: aload_3
+      27: invokeinterface #99,  1           // InterfaceMethod org/betterx/wover/common/generator/api/biomesource/BiomeSourceWithConfig.getBiomeSourceConfig:()Lorg/betterx/wover/common/generator/api/biomesource/BiomeSourceConfig;
+      32: astore        5
+      34: aload         5
+      36: instanceof    #103                // class org/betterx/wover/generator/api/biomesource/end/WoverEndConfig
+      39: ifeq          52
+      42: aload         5
+      44: checkcast     #103                // class org/betterx/wover/generator/api/biomesource/end/WoverEndConfig
+      47: astore        4
+      49: aload         4
+      51: areturn
+      52: aload_1
+      53: invokestatic  #105                // Method org/betterx/betterend/world/generator/TerrainGenerator$BlueprintCompat.unwrapOriginalSource:(Lnet/minecraft/world/level/biome/BiomeSource;)Lnet/minecraft/world/level/biome/BiomeSource;
+      56: astore_3
+      57: aload_3
+      58: ifnull        77
+      61: aload_3
+      62: aload_1
+      63: if_acmpeq     77
+      66: aload_3
+      67: astore_1
+      68: goto          71
+      71: iinc          2, 1
+      74: goto          4
+      77: aconst_null
+      78: areturn
+
+  public static void fillTerrainDensity(double[], int, int, int, int, int);
+    Code:
+       0: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+       3: invokevirtual #13                 // Method java/util/concurrent/locks/ReentrantLock.lock:()V
+       6: invokestatic  #111                // Method isNoiseReady:()Z
+       9: ifne          42
+      12: iconst_0
+      13: istore        6
+      15: iload         6
+      17: aload_0
+      18: arraylength
+      19: if_icmpge     35
+      22: aload_0
+      23: iload         6
+      25: ldc2_w        #115                // double -1.0d
+      28: dastore
+      29: iinc          6, 1
+      32: goto          15
+      35: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+      38: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+      41: return
+      42: ldc           #117                // float 27.0f
+      44: fstore        6
+      46: iload         5
+      48: i2f
+      49: ldc           #118                // float 28.0f
+      51: fsub
+      52: fstore        7
+      54: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      57: invokevirtual #119                // Method org/betterx/betterend/world/generator/IslandLayer.clearCache:()V
+      60: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      63: invokevirtual #119                // Method org/betterx/betterend/world/generator/IslandLayer.clearCache:()V
+      66: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      69: invokevirtual #119                // Method org/betterx/betterend/world/generator/IslandLayer.clearCache:()V
+      72: iload_1
+      73: iload_3
+      74: idiv
+      75: istore        8
+      77: iload_2
+      78: iload_3
+      79: idiv
+      80: istore        9
+      82: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+      85: iload         8
+      87: i2d
+      88: ldc2_w        #122                // double 0.1d
+      91: dmul
+      92: iload         9
+      94: i2d
+      95: ldc2_w        #122                // double 0.1d
+      98: dmul
+      99: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     102: ldc2_w        #128                // double 20.0d
+     105: dmul
+     106: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     109: iload         8
+     111: i2d
+     112: ldc2_w        #130                // double 0.2d
+     115: dmul
+     116: iload         9
+     118: i2d
+     119: ldc2_w        #130                // double 0.2d
+     122: dmul
+     123: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     126: ldc2_w        #132                // double 10.0d
+     129: dmul
+     130: dadd
+     131: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     134: iload         8
+     136: i2d
+     137: ldc2_w        #134                // double 0.4d
+     140: dmul
+     141: iload         9
+     143: i2d
+     144: ldc2_w        #134                // double 0.4d
+     147: dmul
+     148: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     151: ldc2_w        #136                // double 5.0d
+     154: dmul
+     155: dadd
+     156: dstore        10
+     158: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     161: iload         8
+     163: i2d
+     164: ldc2_w        #122                // double 0.1d
+     167: dmul
+     168: iload         9
+     170: i2d
+     171: ldc2_w        #122                // double 0.1d
+     174: dmul
+     175: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     178: ldc2_w        #128                // double 20.0d
+     181: dmul
+     182: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     185: iload         8
+     187: i2d
+     188: ldc2_w        #130                // double 0.2d
+     191: dmul
+     192: iload         9
+     194: i2d
+     195: ldc2_w        #130                // double 0.2d
+     198: dmul
+     199: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     202: ldc2_w        #132                // double 10.0d
+     205: dmul
+     206: dadd
+     207: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     210: iload         8
+     212: i2d
+     213: ldc2_w        #134                // double 0.4d
+     216: dmul
+     217: iload         9
+     219: i2d
+     220: ldc2_w        #134                // double 0.4d
+     223: dmul
+     224: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     227: ldc2_w        #136                // double 5.0d
+     230: dmul
+     231: dadd
+     232: dstore        12
+     234: iload         8
+     236: i2d
+     237: iload_3
+     238: i2d
+     239: dmul
+     240: dload         10
+     242: dadd
+     243: dstore        14
+     245: iload         9
+     247: i2d
+     248: iload_3
+     249: i2d
+     250: dmul
+     251: dload         12
+     253: dadd
+     254: dstore        16
+     256: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     259: dload         14
+     261: dload         16
+     263: iload         5
+     265: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     268: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     271: dload         14
+     273: dload         16
+     275: iload         5
+     277: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     280: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     283: dload         14
+     285: dload         16
+     287: iload         5
+     289: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     292: iload         8
+     294: iconst_1
+     295: ishl
+     296: iload         9
+     298: iconst_1
+     299: ishl
+     300: invokestatic  #142                // Method getAverageDepth:(II)F
+     303: ldc           #146                // float 0.5f
+     305: fmul
+     306: fstore        18
+     308: iconst_0
+     309: istore        19
+     311: iload         19
+     313: aload_0
+     314: arraylength
+     315: if_icmpge     591
+     318: iload         19
+     320: i2d
+     321: iload         4
+     323: i2d
+     324: dmul
+     325: dstore        20
+     327: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     330: dload         14
+     332: dload         20
+     334: dload         16
+     336: fload         18
+     338: invokevirtual #147                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDDF)F
+     341: fstore        22
+     343: fload         22
+     345: fconst_1
+     346: fcmpl
+     347: ifle          355
+     350: fload         22
+     352: goto          374
+     355: fload         22
+     357: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     360: dload         14
+     362: dload         20
+     364: dload         16
+     366: fload         18
+     368: invokevirtual #147                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDDF)F
+     371: invokestatic  #151                // Method org/betterx/bclib/util/MHelper.max:(FF)F
+     374: fstore        22
+     376: fload         22
+     378: fconst_1
+     379: fcmpl
+     380: ifle          388
+     383: fload         22
+     385: goto          407
+     388: fload         22
+     390: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     393: dload         14
+     395: dload         20
+     397: dload         16
+     399: fload         18
+     401: invokevirtual #147                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDDF)F
+     404: invokestatic  #151                // Method org/betterx/bclib/util/MHelper.max:(FF)F
+     407: fstore        22
+     409: fload         22
+     411: ldc           #157                // float -0.5f
+     413: fcmpl
+     414: ifle          531
+     417: fload         22
+     419: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     422: dload         14
+     424: ldc2_w        #158                // double 0.01d
+     427: dmul
+     428: dload         20
+     430: ldc2_w        #158                // double 0.01d
+     433: dmul
+     434: dload         16
+     436: ldc2_w        #158                // double 0.01d
+     439: dmul
+     440: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     443: ldc2_w        #163                // double 0.02d
+     446: dmul
+     447: ldc2_w        #163                // double 0.02d
+     450: dadd
+     451: d2f
+     452: fadd
+     453: fstore        22
+     455: fload         22
+     457: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     460: dload         14
+     462: ldc2_w        #165                // double 0.05d
+     465: dmul
+     466: dload         20
+     468: ldc2_w        #165                // double 0.05d
+     471: dmul
+     472: dload         16
+     474: ldc2_w        #165                // double 0.05d
+     477: dmul
+     478: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     481: ldc2_w        #158                // double 0.01d
+     484: dmul
+     485: ldc2_w        #158                // double 0.01d
+     488: dadd
+     489: d2f
+     490: fadd
+     491: fstore        22
+     493: fload         22
+     495: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     498: dload         14
+     500: ldc2_w        #122                // double 0.1d
+     503: dmul
+     504: dload         20
+     506: ldc2_w        #122                // double 0.1d
+     509: dmul
+     510: dload         16
+     512: ldc2_w        #122                // double 0.1d
+     515: dmul
+     516: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     519: ldc2_w        #167                // double 0.005d
+     522: dmul
+     523: ldc2_w        #167                // double 0.005d
+     526: dadd
+     527: d2f
+     528: fadd
+     529: fstore        22
+     531: dload         20
+     533: iload         5
+     535: i2d
+     536: dcmpl
+     537: iflt          547
+     540: ldc           #169                // float -1.0f
+     542: fstore        22
+     544: goto          578
+     547: dload         20
+     549: fload         7
+     551: f2d
+     552: dcmpl
+     553: ifle          578
+     556: dload         20
+     558: fload         7
+     560: f2d
+     561: dsub
+     562: ldc2_w        #170                // double 27.0d
+     565: ddiv
+     566: fload         22
+     568: f2d
+     569: ldc2_w        #115                // double -1.0d
+     572: invokestatic  #172                // Method net/minecraft/util/Mth.lerp:(DDD)D
+     575: d2f
+     576: fstore        22
+     578: aload_0
+     579: iload         19
+     581: fload         22
+     583: f2d
+     584: dastore
+     585: iinc          19, 1
+     588: goto          311
+     591: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     594: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     597: goto          611
+     600: astore        23
+     602: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     605: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     608: aload         23
+     610: athrow
+     611: return
+    Exception table:
+       from    to  target type
+           6    35   600   any
+          42   591   600   any
+         600   602   600   any
+
+  public static int getSurfaceHeight(int, int, int, int, int, int);
+    Code:
+       0: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+       3: ifnull        18
+       6: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+       9: ifnull        18
+      12: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+      15: ifnonnull     21
+      18: iload         5
+      20: ireturn
+      21: iload_0
+      22: iload_2
+      23: invokestatic  #177                // Method java/lang/Math.floorDiv:(II)I
+      26: iload_2
+      27: imul
+      28: istore        6
+      30: iload_1
+      31: iload_2
+      32: invokestatic  #177                // Method java/lang/Math.floorDiv:(II)I
+      35: iload_2
+      36: imul
+      37: istore        7
+      39: iconst_1
+      40: iload         4
+      42: iload_3
+      43: idiv
+      44: iconst_1
+      45: iadd
+      46: invokestatic  #183                // Method java/lang/Math.max:(II)I
+      49: newarray       double
+      51: astore        8
+      53: aload         8
+      55: iload         6
+      57: iload         7
+      59: iload_2
+      60: iload_3
+      61: iload         4
+      63: invokestatic  #185                // Method fillTerrainDensity:([DIIIII)V
+      66: aload         8
+      68: arraylength
+      69: iconst_1
+      70: isub
+      71: istore        9
+      73: iload         9
+      75: iflt          102
+      78: aload         8
+      80: iload         9
+      82: daload
+      83: dconst_0
+      84: dcmpl
+      85: ifle          96
+      88: iload         5
+      90: iload         9
+      92: iload_3
+      93: imul
+      94: iadd
+      95: ireturn
+      96: iinc          9, -1
+      99: goto          73
+     102: iload         5
+     104: ireturn
+
+  private static float getAverageDepth(int, int);
+    Code:
+       0: getstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+       3: ifnonnull     8
+       6: fconst_0
+       7: freturn
+       8: getstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+      11: iload_0
+      12: iload_1
+      13: invokestatic  #189                // Method getBiomeData:(Lnet/minecraft/world/level/biome/BiomeSource;II)Lorg/betterx/wover/generator/api/biomesource/WoverBiomeData;
+      16: astore_2
+      17: aload_2
+      18: ifnull        33
+      21: aload_2
+      22: getfield      #193                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.terrainHeight:F
+      25: ldc           #199                // float 0.1f
+      27: fcmpg
+      28: ifge          33
+      31: fconst_0
+      32: freturn
+      33: fconst_0
+      34: fstore_3
+      35: iconst_0
+      36: istore        4
+      38: iload         4
+      40: getstatic     #200                // Field OFFS:[Ljava/awt/Point;
+      43: arraylength
+      44: if_icmpge     112
+      47: iload_0
+      48: getstatic     #200                // Field OFFS:[Ljava/awt/Point;
+      51: iload         4
+      53: aaload
+      54: getfield      #204                // Field java/awt/Point.x:I
+      57: iadd
+      58: istore        5
+      60: iload_1
+      61: getstatic     #200                // Field OFFS:[Ljava/awt/Point;
+      64: iload         4
+      66: aaload
+      67: getfield      #210                // Field java/awt/Point.y:I
+      70: iadd
+      71: istore        6
+      73: getstatic     #80                 // Field biomeSource:Lnet/minecraft/world/level/biome/BiomeSource;
+      76: iload         5
+      78: iload         6
+      80: invokestatic  #189                // Method getBiomeData:(Lnet/minecraft/world/level/biome/BiomeSource;II)Lorg/betterx/wover/generator/api/biomesource/WoverBiomeData;
+      83: astore_2
+      84: fload_3
+      85: aload_2
+      86: ifnonnull     93
+      89: fconst_0
+      90: goto          104
+      93: aload_2
+      94: getfield      #193                // Field org/betterx/wover/generator/api/biomesource/WoverBiomeData.terrainHeight:F
+      97: getstatic     #213                // Field COEF:[F
+     100: iload         4
+     102: faload
+     103: fmul
+     104: fadd
+     105: fstore_3
+     106: iinc          4, 1
+     109: goto          38
+     112: fload_3
+     113: freturn
+
+  private static org.betterx.wover.generator.api.biomesource.WoverBiomeData getBiomeData(net.minecraft.world.level.biome.BiomeSource, int, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_0
+       3: iload_2
+       4: getstatic     #84                 // Field sampler:Lnet/minecraft/world/level/biome/Climate$Sampler;
+       7: invokevirtual #217                // Method net/minecraft/world/level/biome/BiomeSource.getNoiseBiome:(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;
+      10: invokestatic  #223                // Method org/betterx/wover/biome/api/BiomeManager.biomeDataForHolder:(Lnet/minecraft/core/Holder;)Lorg/betterx/wover/biome/api/data/BiomeData;
+      13: astore        4
+      15: aload         4
+      17: instanceof    #194                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+      20: ifeq          31
+      23: aload         4
+      25: checkcast     #194                // class org/betterx/wover/generator/api/biomesource/WoverBiomeData
+      28: astore_3
+      29: aload_3
+      30: areturn
+      31: aconst_null
+      32: areturn
+
+  public static java.lang.Boolean isLand(int, int, int);
+    Code:
+       0: iload_0
+       1: invokestatic  #229                // Method org/betterx/betterend/world/generator/TerrainBoolCache.scaleCoordinate:(I)I
+       4: istore_3
+       5: iload_1
+       6: invokestatic  #229                // Method org/betterx/betterend/world/generator/TerrainBoolCache.scaleCoordinate:(I)I
+       9: istore        4
+      11: iload_2
+      12: i2d
+      13: ldc2_w        #235                // double 4.0d
+      16: ddiv
+      17: invokestatic  #237                // Method java/lang/Math.ceil:(D)D
+      20: d2i
+      21: istore        5
+      23: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+      26: invokevirtual #13                 // Method java/util/concurrent/locks/ReentrantLock.lock:()V
+      29: invokestatic  #111                // Method isNoiseReady:()Z
+      32: ifne          50
+      35: iconst_0
+      36: invokestatic  #241                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      39: astore        6
+      41: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+      44: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+      47: aload         6
+      49: areturn
+      50: getstatic     #247                // Field POS:Ljava/awt/Point;
+      53: iload_3
+      54: iload         4
+      56: invokevirtual #251                // Method java/awt/Point.setLocation:(II)V
+      59: getstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+      62: getstatic     #247                // Field POS:Ljava/awt/Point;
+      65: invokeinterface #255,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      70: checkcast     #230                // class org/betterx/betterend/world/generator/TerrainBoolCache
+      73: astore        6
+      75: aload         6
+      77: ifnonnull     140
+      80: getstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+      83: invokeinterface #259,  1          // InterfaceMethod java/util/Map.size:()I
+      88: bipush        64
+      90: if_icmple     101
+      93: getstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+      96: invokeinterface #92,  1           // InterfaceMethod java/util/Map.clear:()V
+     101: new           #230                // class org/betterx/betterend/world/generator/TerrainBoolCache
+     104: dup
+     105: invokespecial #262                // Method org/betterx/betterend/world/generator/TerrainBoolCache."<init>":()V
+     108: astore        6
+     110: getstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+     113: new           #205                // class java/awt/Point
+     116: dup
+     117: getstatic     #247                // Field POS:Ljava/awt/Point;
+     120: getfield      #204                // Field java/awt/Point.x:I
+     123: getstatic     #247                // Field POS:Ljava/awt/Point;
+     126: getfield      #210                // Field java/awt/Point.y:I
+     129: invokespecial #263                // Method java/awt/Point."<init>":(II)V
+     132: aload         6
+     134: invokeinterface #265,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     139: pop
+     140: aload         6
+     142: iload_0
+     143: iload_1
+     144: invokevirtual #269                // Method org/betterx/betterend/world/generator/TerrainBoolCache.getData:(II)B
+     147: istore        7
+     149: iload         7
+     151: ifle          179
+     154: iload         7
+     156: iconst_1
+     157: if_icmple     164
+     160: iconst_1
+     161: goto          165
+     164: iconst_0
+     165: invokestatic  #241                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     168: astore        8
+     170: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     173: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     176: aload         8
+     178: areturn
+     179: iload_0
+     180: iconst_1
+     181: ishr
+     182: i2d
+     183: ldc2_w        #273                // double 0.5d
+     186: dadd
+     187: dstore        8
+     189: iload_1
+     190: iconst_1
+     191: ishr
+     192: i2d
+     193: ldc2_w        #273                // double 0.5d
+     196: dadd
+     197: dstore        10
+     199: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     202: dload         8
+     204: ldc2_w        #122                // double 0.1d
+     207: dmul
+     208: dload         10
+     210: ldc2_w        #122                // double 0.1d
+     213: dmul
+     214: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     217: ldc2_w        #128                // double 20.0d
+     220: dmul
+     221: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     224: dload         8
+     226: ldc2_w        #130                // double 0.2d
+     229: dmul
+     230: dload         10
+     232: ldc2_w        #130                // double 0.2d
+     235: dmul
+     236: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     239: ldc2_w        #132                // double 10.0d
+     242: dmul
+     243: dadd
+     244: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     247: dload         8
+     249: ldc2_w        #134                // double 0.4d
+     252: dmul
+     253: dload         10
+     255: ldc2_w        #134                // double 0.4d
+     258: dmul
+     259: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     262: ldc2_w        #136                // double 5.0d
+     265: dmul
+     266: dadd
+     267: dstore        12
+     269: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     272: dload         8
+     274: ldc2_w        #122                // double 0.1d
+     277: dmul
+     278: dload         10
+     280: ldc2_w        #122                // double 0.1d
+     283: dmul
+     284: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     287: ldc2_w        #128                // double 20.0d
+     290: dmul
+     291: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     294: dload         8
+     296: ldc2_w        #130                // double 0.2d
+     299: dmul
+     300: dload         10
+     302: ldc2_w        #130                // double 0.2d
+     305: dmul
+     306: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     309: ldc2_w        #132                // double 10.0d
+     312: dmul
+     313: dadd
+     314: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     317: dload         8
+     319: ldc2_w        #134                // double 0.4d
+     322: dmul
+     323: dload         10
+     325: ldc2_w        #134                // double 0.4d
+     328: dmul
+     329: invokevirtual #124                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     332: ldc2_w        #136                // double 5.0d
+     335: dmul
+     336: dadd
+     337: dstore        14
+     339: dload         8
+     341: ldc2_w        #275                // double 8.0d
+     344: dmul
+     345: dload         12
+     347: dadd
+     348: dstore        8
+     350: dload         10
+     352: ldc2_w        #275                // double 8.0d
+     355: dmul
+     356: dload         14
+     358: dadd
+     359: dstore        10
+     361: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     364: dload         8
+     366: dload         10
+     368: iload_2
+     369: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     372: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     375: dload         8
+     377: dload         10
+     379: iload_2
+     380: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     383: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     386: dload         8
+     388: dload         10
+     390: iload_2
+     391: invokevirtual #138                // Method org/betterx/betterend/world/generator/IslandLayer.updatePositions:(DDI)V
+     394: iconst_0
+     395: istore        16
+     397: iconst_0
+     398: istore        17
+     400: iload         17
+     402: iload         5
+     404: if_icmpge     636
+     407: iload         17
+     409: i2d
+     410: ldc2_w        #235                // double 4.0d
+     413: dmul
+     414: dstore        18
+     416: getstatic     #54                 // Field largeIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     419: dload         8
+     421: dload         18
+     423: dload         10
+     425: invokevirtual #277                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDD)F
+     428: fstore        20
+     430: fload         20
+     432: fconst_1
+     433: fcmpl
+     434: ifle          442
+     437: fload         20
+     439: goto          459
+     442: fload         20
+     444: getstatic     #61                 // Field mediumIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     447: dload         8
+     449: dload         18
+     451: dload         10
+     453: invokevirtual #277                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDD)F
+     456: invokestatic  #151                // Method org/betterx/bclib/util/MHelper.max:(FF)F
+     459: fstore        20
+     461: fload         20
+     463: fconst_1
+     464: fcmpl
+     465: ifle          473
+     468: fload         20
+     470: goto          490
+     473: fload         20
+     475: getstatic     #67                 // Field smallIslands:Lorg/betterx/betterend/world/generator/IslandLayer;
+     478: dload         8
+     480: dload         18
+     482: dload         10
+     484: invokevirtual #277                // Method org/betterx/betterend/world/generator/IslandLayer.getDensity:(DDD)F
+     487: invokestatic  #151                // Method org/betterx/bclib/util/MHelper.max:(FF)F
+     490: fstore        20
+     492: fload         20
+     494: ldc           #157                // float -0.5f
+     496: fcmpl
+     497: ifle          614
+     500: fload         20
+     502: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     505: dload         8
+     507: ldc2_w        #158                // double 0.01d
+     510: dmul
+     511: dload         18
+     513: ldc2_w        #158                // double 0.01d
+     516: dmul
+     517: dload         10
+     519: ldc2_w        #158                // double 0.01d
+     522: dmul
+     523: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     526: ldc2_w        #163                // double 0.02d
+     529: dmul
+     530: ldc2_w        #163                // double 0.02d
+     533: dadd
+     534: d2f
+     535: fadd
+     536: fstore        20
+     538: fload         20
+     540: getstatic     #77                 // Field noise2:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     543: dload         8
+     545: ldc2_w        #165                // double 0.05d
+     548: dmul
+     549: dload         18
+     551: ldc2_w        #165                // double 0.05d
+     554: dmul
+     555: dload         10
+     557: ldc2_w        #165                // double 0.05d
+     560: dmul
+     561: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     564: ldc2_w        #158                // double 0.01d
+     567: dmul
+     568: ldc2_w        #158                // double 0.01d
+     571: dadd
+     572: d2f
+     573: fadd
+     574: fstore        20
+     576: fload         20
+     578: getstatic     #73                 // Field noise1:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     581: dload         8
+     583: ldc2_w        #122                // double 0.1d
+     586: dmul
+     587: dload         18
+     589: ldc2_w        #122                // double 0.1d
+     592: dmul
+     593: dload         10
+     595: ldc2_w        #122                // double 0.1d
+     598: dmul
+     599: invokevirtual #160                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     602: ldc2_w        #167                // double 0.005d
+     605: dmul
+     606: ldc2_w        #167                // double 0.005d
+     609: dadd
+     610: d2f
+     611: fadd
+     612: fstore        20
+     614: fload         20
+     616: f2d
+     617: ldc2_w        #280                // double -0.01d
+     620: dcmpl
+     621: ifle          630
+     624: iconst_1
+     625: istore        16
+     627: goto          636
+     630: iinc          17, 1
+     633: goto          400
+     636: aload         6
+     638: iload_0
+     639: iload_1
+     640: iload         16
+     642: ifeq          649
+     645: iconst_2
+     646: goto          650
+     649: iconst_1
+     650: i2b
+     651: invokevirtual #282                // Method org/betterx/betterend/world/generator/TerrainBoolCache.setData:(IIB)V
+     654: iload         16
+     656: invokestatic  #241                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     659: astore        17
+     661: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     664: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     667: aload         17
+     669: areturn
+     670: astore        21
+     672: getstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+     675: invokevirtual #29                 // Method java/util/concurrent/locks/ReentrantLock.unlock:()V
+     678: aload         21
+     680: athrow
+    Exception table:
+       from    to  target type
+          29    41   670   any
+          50   170   670   any
+         179   661   670   any
+         670   672   670   any
+
+  public static void onServerLevelInit(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.dimension.LevelStem, long);
+    Code:
+       0: aload_0
+       1: invokevirtual #286                // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+       4: getstatic     #292                // Field net/minecraft/world/level/Level.END:Lnet/minecraft/resources/ResourceKey;
+       7: if_acmpne     132
+      10: aload_1
+      11: invokevirtual #298                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      14: astore        4
+      16: aload         4
+      18: instanceof    #304                // class net/minecraft/world/level/levelgen/NoiseBasedChunkGenerator
+      21: ifeq          113
+      24: aload         4
+      26: checkcast     #306                // class org/betterx/betterend/mixin/common/NoiseBasedChunkGeneratorAccessor
+      29: invokeinterface #308,  1          // InterfaceMethod org/betterx/betterend/mixin/common/NoiseBasedChunkGeneratorAccessor.be_getSettings:()Lnet/minecraft/core/Holder;
+      34: astore        5
+      36: aload         4
+      38: invokevirtual #312                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+      41: invokestatic  #21                 // Method resolveEndConfig:(Lnet/minecraft/world/level/biome/BiomeSource;)Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig;
+      44: astore        6
+      46: aload         6
+      48: ifnull        91
+      51: ldc_w         #318                // class org/betterx/betterend/interfaces/BETargetChecker
+      54: aload         5
+      56: invokeinterface #320,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      61: invokevirtual #326                // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+      64: checkcast     #318                // class org/betterx/betterend/interfaces/BETargetChecker
+      67: aload         6
+      69: getfield      #331                // Field org/betterx/wover/generator/api/biomesource/end/WoverEndConfig.generatorVersion:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig$EndBiomeGeneratorType;
+      72: getstatic     #335                // Field org/betterx/wover/generator/api/biomesource/end/WoverEndConfig$EndBiomeGeneratorType.PAULEVS:Lorg/betterx/wover/generator/api/biomesource/end/WoverEndConfig$EndBiomeGeneratorType;
+      75: if_acmpne     82
+      78: iconst_1
+      79: goto          83
+      82: iconst_0
+      83: invokeinterface #340,  2          // InterfaceMethod org/betterx/betterend/interfaces/BETargetChecker.be_setTarget:(Z)V
+      88: goto          113
+      91: ldc_w         #318                // class org/betterx/betterend/interfaces/BETargetChecker
+      94: aload         5
+      96: invokeinterface #320,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     101: invokevirtual #326                // Method java/lang/Class.cast:(Ljava/lang/Object;)Ljava/lang/Object;
+     104: checkcast     #318                // class org/betterx/betterend/interfaces/BETargetChecker
+     107: iconst_0
+     108: invokeinterface #340,  2          // InterfaceMethod org/betterx/betterend/interfaces/BETargetChecker.be_setTarget:(Z)V
+     113: lload_2
+     114: aload         4
+     116: invokevirtual #312                // Method net/minecraft/world/level/chunk/ChunkGenerator.getBiomeSource:()Lnet/minecraft/world/level/biome/BiomeSource;
+     119: aload_0
+     120: invokevirtual #344                // Method net/minecraft/server/level/ServerLevel.getChunkSource:()Lnet/minecraft/server/level/ServerChunkCache;
+     123: invokevirtual #348                // Method net/minecraft/server/level/ServerChunkCache.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+     126: invokevirtual #354                // Method net/minecraft/world/level/levelgen/RandomState.sampler:()Lnet/minecraft/world/level/biome/Climate$Sampler;
+     129: invokestatic  #359                // Method initNoise:(JLnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/biome/Climate$Sampler;)V
+     132: return
+
+  public static void makeObsidianPlatform(net.minecraft.world.level.ServerLevelAccessor, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    Code:
+       0: invokestatic  #363                // Method org/betterx/betterend/world/generator/GeneratorOptions.generateObsidianPlatform:()Z
+       3: ifne          13
+       6: aload_1
+       7: invokevirtual #366                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+      10: goto          114
+      13: invokestatic  #371                // Method org/betterx/betterend/world/generator/GeneratorOptions.changeSpawn:()Z
+      16: ifeq          114
+      19: invokestatic  #374                // Method org/betterx/betterend/world/generator/GeneratorOptions.getSpawn:()Lnet/minecraft/core/BlockPos;
+      22: astore_2
+      23: aload_2
+      24: invokevirtual #378                // Method net/minecraft/core/BlockPos.getX:()I
+      27: istore_3
+      28: aload_2
+      29: invokevirtual #383                // Method net/minecraft/core/BlockPos.getY:()I
+      32: iconst_2
+      33: isub
+      34: istore        4
+      36: aload_2
+      37: invokevirtual #386                // Method net/minecraft/core/BlockPos.getZ:()I
+      40: istore        5
+      42: iload_3
+      43: iconst_2
+      44: isub
+      45: iload         4
+      47: iconst_1
+      48: iadd
+      49: iload         5
+      51: iconst_2
+      52: isub
+      53: iload_3
+      54: iconst_2
+      55: iadd
+      56: iload         4
+      58: iconst_3
+      59: iadd
+      60: iload         5
+      62: iconst_2
+      63: iadd
+      64: invokestatic  #389                // Method net/minecraft/core/BlockPos.betweenClosed:(IIIIII)Ljava/lang/Iterable;
+      67: aload_0
+      68: invokedynamic #393,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/world/level/ServerLevelAccessor;)Ljava/util/function/Consumer;
+      73: invokeinterface #397,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+      78: iload_3
+      79: iconst_2
+      80: isub
+      81: iload         4
+      83: iload         5
+      85: iconst_2
+      86: isub
+      87: iload_3
+      88: iconst_2
+      89: iadd
+      90: iload         4
+      92: iload         5
+      94: iconst_2
+      95: iadd
+      96: invokestatic  #389                // Method net/minecraft/core/BlockPos.betweenClosed:(IIIIII)Ljava/lang/Iterable;
+      99: aload_0
+     100: invokedynamic #403,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/world/level/ServerLevelAccessor;)Ljava/util/function/Consumer;
+     105: invokeinterface #397,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+     110: aload_1
+     111: invokevirtual #366                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+     114: return
+
+  public static void fillSlice(boolean, int, java.util.List<net.minecraft.world.level.levelgen.NoiseChunk$NoiseInterpolator>, org.betterx.betterend.mixin.common.NoiseChunkAccessor, net.minecraft.world.level.levelgen.NoiseSettings);
+    Code:
+       0: aload         4
+       2: invokevirtual #404                // Method net/minecraft/world/level/levelgen/NoiseSettings.getCellHeight:()I
+       5: istore        5
+       7: aload         4
+       9: invokevirtual #409                // Method net/minecraft/world/level/levelgen/NoiseSettings.getCellWidth:()I
+      12: istore        6
+      14: aload_3
+      15: invokeinterface #412,  1          // InterfaceMethod org/betterx/betterend/mixin/common/NoiseChunkAccessor.bnv_getCellCountXZ:()I
+      20: iconst_1
+      21: iadd
+      22: istore        7
+      24: aload_3
+      25: invokeinterface #417,  1          // InterfaceMethod org/betterx/betterend/mixin/common/NoiseChunkAccessor.bnv_getFirstCellZ:()I
+      30: istore        8
+      32: iload_1
+      33: iload         6
+      35: imul
+      36: istore_1
+      37: iconst_0
+      38: istore        9
+      40: iload         9
+      42: iload         7
+      44: if_icmpge     154
+      47: iload         8
+      49: iload         9
+      51: iadd
+      52: iload         6
+      54: imul
+      55: istore        10
+      57: aload_2
+      58: invokeinterface #420,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      63: astore        11
+      65: aload         11
+      67: invokeinterface #426,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      72: ifeq          148
+      75: aload         11
+      77: invokeinterface #431,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      82: checkcast     #434                // class net/minecraft/world/level/levelgen/NoiseChunk$NoiseInterpolator
+      85: astore        12
+      87: aload         12
+      89: instanceof    #436                // class org/betterx/betterend/mixin/common/NoiseInterpolatorAccessor
+      92: ifeq          145
+      95: aload         12
+      97: checkcast     #436                // class org/betterx/betterend/mixin/common/NoiseInterpolatorAccessor
+     100: astore        13
+     102: iload_0
+     103: ifeq          116
+     106: aload         13
+     108: invokeinterface #438,  1          // InterfaceMethod org/betterx/betterend/mixin/common/NoiseInterpolatorAccessor.be_getSlice0:()[[D
+     113: goto          123
+     116: aload         13
+     118: invokeinterface #442,  1          // InterfaceMethod org/betterx/betterend/mixin/common/NoiseInterpolatorAccessor.be_getSlice1:()[[D
+     123: iload         9
+     125: aaload
+     126: astore        14
+     128: aload         14
+     130: iload_1
+     131: iload         10
+     133: iload         6
+     135: iload         5
+     137: aload         4
+     139: invokevirtual #445                // Method net/minecraft/world/level/levelgen/NoiseSettings.height:()I
+     142: invokestatic  #185                // Method fillTerrainDensity:([DIIIII)V
+     145: goto          65
+     148: iinc          9, 1
+     151: goto          40
+     154: return
+
+  private static void lambda$makeObsidianPlatform$1(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #448                // Field net/minecraft/world/level/block/Blocks.OBSIDIAN:Lnet/minecraft/world/level/block/Block;
+       5: invokevirtual #454                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       8: iconst_3
+       9: invokeinterface #462,  4          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      14: pop
+      15: return
+
+  private static void lambda$makeObsidianPlatform$0(net.minecraft.world.level.ServerLevelAccessor, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #468                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+       5: invokevirtual #454                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+       8: iconst_3
+       9: invokeinterface #462,  4          // InterfaceMethod net/minecraft/world/level/ServerLevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      14: pop
+      15: return
+
+  static {};
+    Code:
+       0: invokestatic  #471                // Method com/google/common/collect/Maps.newHashMap:()Ljava/util/HashMap;
+       3: putstatic     #88                 // Field TERRAIN_BOOL_CACHE_MAP:Ljava/util/Map;
+       6: new           #14                 // class java/util/concurrent/locks/ReentrantLock
+       9: dup
+      10: invokespecial #477                // Method java/util/concurrent/locks/ReentrantLock."<init>":()V
+      13: putstatic     #7                  // Field LOCKER:Ljava/util/concurrent/locks/ReentrantLock;
+      16: new           #205                // class java/awt/Point
+      19: dup
+      20: invokespecial #478                // Method java/awt/Point."<init>":()V
+      23: putstatic     #247                // Field POS:Ljava/awt/Point;
+      26: fconst_0
+      27: fstore_0
+      28: invokestatic  #479                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      31: astore_1
+      32: invokestatic  #479                // Method com/google/common/collect/Lists.newArrayList:()Ljava/util/ArrayList;
+      35: astore_2
+      36: bipush        -3
+      38: istore_3
+      39: iload_3
+      40: iconst_3
+      41: if_icmpgt     121
+      44: bipush        -3
+      46: istore        4
+      48: iload         4
+      50: iconst_3
+      51: if_icmpgt     115
+      54: iload_3
+      55: i2f
+      56: iload         4
+      58: i2f
+      59: invokestatic  #485                // Method org/betterx/bclib/util/MHelper.length:(FF)F
+      62: ldc_w         #488                // float 3.0f
+      65: fdiv
+      66: fstore        5
+      68: fload         5
+      70: fconst_1
+      71: fcmpg
+      72: ifgt          109
+      75: fload_0
+      76: fload         5
+      78: fadd
+      79: fstore_0
+      80: aload_1
+      81: fload         5
+      83: invokestatic  #489                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+      86: invokeinterface #494,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      91: pop
+      92: aload_2
+      93: new           #205                // class java/awt/Point
+      96: dup
+      97: iload_3
+      98: iload         4
+     100: invokespecial #263                // Method java/awt/Point."<init>":(II)V
+     103: invokeinterface #494,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     108: pop
+     109: iinc          4, 1
+     112: goto          48
+     115: iinc          3, 1
+     118: goto          39
+     121: aload_2
+     122: iconst_0
+     123: anewarray     #205                // class java/awt/Point
+     126: invokeinterface #498,  2          // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+     131: checkcast     #502                // class "[Ljava/awt/Point;"
+     134: putstatic     #200                // Field OFFS:[Ljava/awt/Point;
+     137: aload_1
+     138: invokeinterface #503,  1          // InterfaceMethod java/util/List.size:()I
+     143: newarray       float
+     145: putstatic     #213                // Field COEF:[F
+     148: iconst_0
+     149: istore_3
+     150: iload_3
+     151: getstatic     #213                // Field COEF:[F
+     154: arraylength
+     155: if_icmpge     184
+     158: getstatic     #213                // Field COEF:[F
+     161: iload_3
+     162: aload_1
+     163: iload_3
+     164: invokeinterface #504,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     169: checkcast     #490                // class java/lang/Float
+     172: invokevirtual #507                // Method java/lang/Float.floatValue:()F
+     175: fload_0
+     176: fdiv
+     177: fastore
+     178: iinc          3, 1
+     181: goto          150
+     184: return
+}

@@ -6,6 +6,73 @@
 
 ### Continuation update - 2026-09-06
 
+Current checkpoint at 711a696: BetterEnd provider candidate coverage is resolved.
+The commit is pushed and its remote ref verified. Thirteen focused cases, Ruff
+and Basedpyright pass. Current queue: 54 resolved providers and 82 open, recorded
+in evidence/item-8/provider-scope.md. Earlier BetterEnd continuation questions
+below are superseded by the delivered root, entry, mixin, modifier, feature and
+configured-carver dispositions. Do not repeat those investigations.
+
+The user again identified the missing final family count as the problem to fix.
+Serial deep provider inspection has delayed that outcome. Continue the census
+across the remaining named rows using existing evidence first. Follow additional
+code only for a concrete possible unlisted contribution or family-boundary gap,
+not because a class has not been captured. Stop each provider check when its
+candidate contribution has a supported disposition. Add no measurement system.
+Canonical reconciliation must explicitly resolve named design alternatives and
+deduplicate roots, variants, components and nonregistry routes before reporting
+a final denominator. Then finish the eleven attributes and final review/merge.
+The 887 registry roots and 421 provisional groups are still not final families.
+
+Latest continuation correction at 4307aa7: the paragraphs below are earlier
+checkpoints. BetterEnd's complete 128-template partition is now bound by
+69fb95a, including the seven extra biome templates, legacy lists, village,
+pillars and portals. Frozen generator branch selection is bound by ad9dd54.
+Do not repeat those checks. The eight common entry captures in 4307aa7 are
+pushed and remote-ref verified; their nine generated files reproduce exactly.
+See evidence/item-8/sources/betterend-common-entries/README.md for the bounded
+interpretations and preserved limitations.
+
+The user's immediate requested outcome is an exhaustive named candidate list
+and a defensible family remainder. Provider counts alone do not satisfy it.
+Coverage remains 53 resolved and 83 open. Do not resume detailed attributes
+or turn every uncaptured class into another mandatory investigation. Resolve
+actual generation and component consumers using the existing evidence first.
+For BetterEnd, remaining named entry questions include cave feature dispatch,
+the concrete BYG/Flamboyant/DyeDepot integration routes, BetterEndPlugin service
+providers, remaining declared common mixin generation hooks, and shared Wover
+modifiers. These must be reconciled with the existing roots and feature
+registrations. An uncaptured class is not itself a missing family. No additional
+measurement framework, world run, or baseline repair is authorized by these
+questions. Finish the provider census and explicit grouping decisions before
+claiming a final family denominator.
+
+Current continuation: provider census first, with 53 of 136 supported provider
+dispositions and 83 open rows in evidence/item-8/provider-scope.md. The later
+commits below supersede the older 47-provider checkpoint. Save/structure utility
+closure d01ceec is pushed and verified; fourteen focused cases passed. No new
+authored family from Fast Async World Save or Structure Essentials.
+
+BetterEnd candidate reconciliation f77f3f2 is pushed and verified. Reused source
+and packaged/runtime evidence establish an inline configured crashed-ship route,
+27 packaged biome consumers and 21 consumers exposed by the captured End biome
+source. Six cave-biome references are recorded separately. The six building
+lists have exactly 63 template choices: 21 inspected vegetation exclusions and
+42 architectural candidate choices. These are not family counts. Two focused
+cases and scoped Ruff/Basedpyright pass; no new capture or world run.
+
+Continue BetterEnd provider coverage before attributes. An exploratory full
+archive inspection found seven additional biome templates outside those six
+lists: blossoming_spires/house and old_bulbis_gardens/fallen_tree_1 through 3 and
+tree_stump_1 through 3. The seven packaged structures.json lists, village,
+pillar and portal components, other generation entries and shared modifiers
+still need supported dispositions. Do not infer inactivity from no literal
+class-string match. The 63-choice result only closes those six configured lists,
+not the whole provider. Reuse the existing formation, lake and feature captures.
+No canonical-family denominator is accepted yet. Finish all provider rows,
+publish named grouping decisions, then complete the eleven attributes and the
+required final review/delivery gate. Do not add an unrelated measurement system.
+
 Ritchie's Projectile Library provider coverage now passes. Its complete 34-class
 capture 50bc747 using 0cbba5c reproduced exactly. The reused provider test has
 12 passing cases. Preserve the packaging finding: both mixin JSON files lack

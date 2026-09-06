@@ -1,0 +1,125 @@
+Compiled from "CaveSurfaceCoater.java"
+final class org.betterx.betterend.world.carvers.CaveSurfaceCoater$ColumnResolver {
+  private final java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>> biomeGetter;
+
+  private final int minBX;
+
+  private final int minBZ;
+
+  private final int gateY;
+
+  private final org.betterx.betterend.world.biome.cave.EndCaveBiome[] columnBiome;
+
+  private final boolean[] columnResolved;
+
+  private final java.util.IdentityHashMap<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, org.betterx.betterend.world.biome.cave.EndCaveBiome> holderCache;
+
+  private org.betterx.betterend.world.carvers.CaveSurfaceCoater$ColumnResolver(java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, int, int, int, org.betterx.betterend.world.biome.cave.EndCaveBiome[], boolean[], java.util.IdentityHashMap<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>, org.betterx.betterend.world.biome.cave.EndCaveBiome>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field biomeGetter:Ljava/util/function/Function;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field minBX:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #17                 // Field minBZ:I
+      19: aload_0
+      20: iload         4
+      22: putfield      #20                 // Field gateY:I
+      25: aload_0
+      26: aload         5
+      28: putfield      #23                 // Field columnBiome:[Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+      31: aload_0
+      32: aload         6
+      34: putfield      #27                 // Field columnResolved:[Z
+      37: aload_0
+      38: aload         7
+      40: putfield      #31                 // Field holderCache:Ljava/util/IdentityHashMap;
+      43: return
+
+  private org.betterx.betterend.world.biome.cave.EndCaveBiome at(int, int);
+    Code:
+       0: iload_1
+       1: iconst_4
+       2: ishl
+       3: iload_2
+       4: ior
+       5: istore_3
+       6: aload_0
+       7: getfield      #27                 // Field columnResolved:[Z
+      10: iload_3
+      11: baload
+      12: ifne          146
+      15: aload_0
+      16: getfield      #7                  // Field biomeGetter:Ljava/util/function/Function;
+      19: new           #35                 // class net/minecraft/core/BlockPos
+      22: dup
+      23: aload_0
+      24: getfield      #13                 // Field minBX:I
+      27: iload_1
+      28: iadd
+      29: aload_0
+      30: getfield      #20                 // Field gateY:I
+      33: aload_0
+      34: getfield      #17                 // Field minBZ:I
+      37: iload_2
+      38: iadd
+      39: invokespecial #37                 // Method net/minecraft/core/BlockPos."<init>":(III)V
+      42: invokeinterface #40,  2           // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      47: checkcast     #46                 // class net/minecraft/core/Holder
+      50: astore        4
+      52: aconst_null
+      53: astore        5
+      55: aload         4
+      57: ifnull        131
+      60: aload_0
+      61: getfield      #31                 // Field holderCache:Ljava/util/IdentityHashMap;
+      64: aload         4
+      66: invokevirtual #48                 // Method java/util/IdentityHashMap.containsKey:(Ljava/lang/Object;)Z
+      69: ifeq          89
+      72: aload_0
+      73: getfield      #31                 // Field holderCache:Ljava/util/IdentityHashMap;
+      76: aload         4
+      78: invokevirtual #54                 // Method java/util/IdentityHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      81: checkcast     #57                 // class org/betterx/betterend/world/biome/cave/EndCaveBiome
+      84: astore        5
+      86: goto          131
+      89: aload         4
+      91: invokestatic  #59                 // Method org/betterx/wover/biome/api/BiomeManager.biomeDataForHolder:(Lnet/minecraft/core/Holder;)Lorg/betterx/wover/biome/api/data/BiomeData;
+      94: astore        6
+      96: aload         6
+      98: instanceof    #57                 // class org/betterx/betterend/world/biome/cave/EndCaveBiome
+     101: ifeq          116
+     104: aload         6
+     106: checkcast     #57                 // class org/betterx/betterend/world/biome/cave/EndCaveBiome
+     109: astore        7
+     111: aload         7
+     113: goto          117
+     116: aconst_null
+     117: astore        5
+     119: aload_0
+     120: getfield      #31                 // Field holderCache:Ljava/util/IdentityHashMap;
+     123: aload         4
+     125: aload         5
+     127: invokevirtual #65                 // Method java/util/IdentityHashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     130: pop
+     131: aload_0
+     132: getfield      #23                 // Field columnBiome:[Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     135: iload_3
+     136: aload         5
+     138: aastore
+     139: aload_0
+     140: getfield      #27                 // Field columnResolved:[Z
+     143: iload_3
+     144: iconst_1
+     145: bastore
+     146: aload_0
+     147: getfield      #23                 // Field columnBiome:[Lorg/betterx/betterend/world/biome/cave/EndCaveBiome;
+     150: iload_3
+     151: aaload
+     152: areturn
+}

@@ -1,0 +1,128 @@
+Compiled from "DoublePlantFeature.java"
+public class org.betterx.betterend.world.features.DoublePlantFeature extends org.betterx.betterend.world.features.ScatterFeature<org.betterx.betterend.world.features.DoublePlantFeatureConfig> {
+  private net.minecraft.world.level.block.state.BlockState plant;
+
+  public org.betterx.betterend.world.features.DoublePlantFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field org/betterx/betterend/world/features/DoublePlantFeatureConfig.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method org/betterx/betterend/world/features/ScatterFeature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.DoublePlantFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload         4
+       2: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getX:()I
+       5: aload         5
+       7: invokevirtual #13                 // Method net/minecraft/core/BlockPos.getX:()I
+      10: isub
+      11: i2f
+      12: aload         4
+      14: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getZ:()I
+      17: aload         5
+      19: invokevirtual #19                 // Method net/minecraft/core/BlockPos.getZ:()I
+      22: isub
+      23: i2f
+      24: invokestatic  #22                 // Method org/betterx/bclib/util/MHelper.length:(FF)F
+      27: fload         6
+      29: fdiv
+      30: ldc           #28                 // float 0.6f
+      32: fmul
+      33: aload_3
+      34: invokeinterface #29,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      39: ldc           #35                 // float 0.4f
+      41: fmul
+      42: fadd
+      43: fstore        7
+      45: aload_0
+      46: fload         7
+      48: ldc           #36                 // float 0.5f
+      50: fcmpg
+      51: ifge          64
+      54: aload_1
+      55: aload_3
+      56: aload         5
+      58: invokevirtual #37                 // Method org/betterx/betterend/world/features/DoublePlantFeatureConfig.getLargePlantState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      61: goto          71
+      64: aload_1
+      65: aload_3
+      66: aload         5
+      68: invokevirtual #41                 // Method org/betterx/betterend/world/features/DoublePlantFeatureConfig.getSmallPlantState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      71: putfield      #44                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      74: aload_0
+      75: getfield      #44                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      78: aload_2
+      79: aload         5
+      81: invokevirtual #50                 // Method net/minecraft/world/level/block/state/BlockState.canSurvive:(Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z
+      84: ireturn
+
+  public void generate(org.betterx.betterend.world.features.DoublePlantFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+       4: invokevirtual #56                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       7: astore        6
+       9: aload         6
+      11: instanceof    #60                 // class org/betterx/bclib/blocks/BaseDoublePlantBlock
+      14: ifeq          88
+      17: aload         6
+      19: checkcast     #60                 // class org/betterx/bclib/blocks/BaseDoublePlantBlock
+      22: astore        5
+      24: aload_3
+      25: iconst_4
+      26: invokeinterface #62,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      31: istore        6
+      33: aload_0
+      34: getfield      #44                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      37: getstatic     #66                 // Field org/betterx/bclib/blocks/BaseDoublePlantBlock.ROTATION:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+      40: iload         6
+      42: invokestatic  #70                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      45: invokevirtual #76                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      48: checkcast     #51                 // class net/minecraft/world/level/block/state/BlockState
+      51: astore        7
+      53: aload_2
+      54: aload         4
+      56: aload         7
+      58: invokestatic  #80                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      61: aload_2
+      62: aload         4
+      64: invokevirtual #86                 // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+      67: aload         7
+      69: getstatic     #90                 // Field org/betterx/bclib/blocks/BaseDoublePlantBlock.TOP:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      72: iconst_1
+      73: invokestatic  #94                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      76: invokevirtual #76                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      79: checkcast     #51                 // class net/minecraft/world/level/block/state/BlockState
+      82: invokestatic  #80                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      85: goto          98
+      88: aload_2
+      89: aload         4
+      91: aload_0
+      92: getfield      #44                 // Field plant:Lnet/minecraft/world/level/block/state/BlockState;
+      95: invokestatic  #80                 // Method org/betterx/bclib/util/BlocksHelper.setWithoutUpdate:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      98: return
+
+  public void generate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/DoublePlantFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: invokevirtual #99                 // Method generate:(Lorg/betterx/betterend/world/features/DoublePlantFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)V
+      12: return
+
+  public boolean canGenerate(org.betterx.betterend.world.features.ScatterFeatureConfig, net.minecraft.world.level.WorldGenLevel, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, float);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #2                  // class org/betterx/betterend/world/features/DoublePlantFeatureConfig
+       5: aload_2
+       6: aload_3
+       7: aload         4
+       9: aload         5
+      11: fload         6
+      13: invokevirtual #103                // Method canGenerate:(Lorg/betterx/betterend/world/features/DoublePlantFeatureConfig;Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;F)Z
+      16: ireturn
+}

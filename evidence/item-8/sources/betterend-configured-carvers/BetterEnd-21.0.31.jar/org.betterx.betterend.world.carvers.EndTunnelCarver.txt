@@ -1,0 +1,459 @@
+Compiled from "EndTunnelCarver.java"
+public class org.betterx.betterend.world.carvers.EndTunnelCarver extends net.minecraft.world.level.levelgen.carver.WorldCarver<org.betterx.betterend.world.carvers.EndTunnelCarverConfiguration> {
+  private static final net.minecraft.resources.ResourceLocation NOISE_SEED_KEY;
+
+  private static volatile org.betterx.betterend.world.carvers.EndTunnelCarver$Noises3 cached;
+
+  public org.betterx.betterend.world.carvers.EndTunnelCarver(com.mojang.serialization.Codec<org.betterx.betterend.world.carvers.EndTunnelCarverConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method net/minecraft/world/level/levelgen/carver/WorldCarver."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean isStartChunk(org.betterx.betterend.world.carvers.EndTunnelCarverConfiguration, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_2
+       1: invokeinterface #7,  1            // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       6: aload_1
+       7: getfield      #13                 // Field org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration.probability:F
+      10: fcmpg
+      11: ifgt          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public int getRange();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public boolean carve(net.minecraft.world.level.levelgen.carver.CarvingContext, org.betterx.betterend.world.carvers.EndTunnelCarverConfiguration, net.minecraft.world.level.chunk.ChunkAccess, java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.Aquifer, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.chunk.CarvingMask);
+    Code:
+       0: aload_3
+       1: invokevirtual #19                 // Method net/minecraft/world/level/chunk/ChunkAccess.getPos:()Lnet/minecraft/world/level/ChunkPos;
+       4: astore        9
+       6: aload         7
+       8: aload         9
+      10: invokevirtual #25                 // Method net/minecraft/world/level/ChunkPos.equals:(Ljava/lang/Object;)Z
+      13: ifne          18
+      16: iconst_0
+      17: ireturn
+      18: aload         9
+      20: invokevirtual #31                 // Method net/minecraft/world/level/ChunkPos.getMinBlockX:()I
+      23: istore        10
+      25: aload         9
+      27: invokevirtual #35                 // Method net/minecraft/world/level/ChunkPos.getMinBlockZ:()I
+      30: istore        11
+      32: aload         4
+      34: iload         10
+      36: iload         11
+      38: invokestatic  #38                 // Method caveFactor:(Ljava/util/function/Function;II)F
+      41: fstore        12
+      43: aload         4
+      45: iload         10
+      47: bipush        16
+      49: iadd
+      50: iload         11
+      52: invokestatic  #38                 // Method caveFactor:(Ljava/util/function/Function;II)F
+      55: fstore        13
+      57: aload         4
+      59: iload         10
+      61: iload         11
+      63: bipush        16
+      65: iadd
+      66: invokestatic  #38                 // Method caveFactor:(Ljava/util/function/Function;II)F
+      69: fstore        14
+      71: aload         4
+      73: iload         10
+      75: bipush        16
+      77: iadd
+      78: iload         11
+      80: bipush        16
+      82: iadd
+      83: invokestatic  #38                 // Method caveFactor:(Ljava/util/function/Function;II)F
+      86: fstore        15
+      88: fload         12
+      90: fconst_0
+      91: fcmpl
+      92: ifne          118
+      95: fload         13
+      97: fconst_0
+      98: fcmpl
+      99: ifne          118
+     102: fload         14
+     104: fconst_0
+     105: fcmpl
+     106: ifne          118
+     109: fload         15
+     111: fconst_0
+     112: fcmpl
+     113: ifne          118
+     116: iconst_0
+     117: ireturn
+     118: aload_1
+     119: invokestatic  #44                 // Method getNoises:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;)Lorg/betterx/betterend/world/carvers/EndTunnelCarver$Noises3;
+     122: astore        16
+     124: aload_1
+     125: invokevirtual #48                 // Method net/minecraft/world/level/levelgen/carver/CarvingContext.getMinGenY:()I
+     128: istore        17
+     130: iload         17
+     132: aload_1
+     133: invokevirtual #53                 // Method net/minecraft/world/level/levelgen/carver/CarvingContext.getGenDepth:()I
+     136: iadd
+     137: iconst_1
+     138: isub
+     139: istore        18
+     141: invokestatic  #56                 // Method org/betterx/betterend/world/carvers/EndCaveCarver.caveBandCeiling:()I
+     144: istore        19
+     146: aload_2
+     147: getfield      #61                 // Field org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration.threshold:F
+     150: fstore        20
+     152: iconst_0
+     153: istore        21
+     155: new           #64                 // class it/unimi/dsi/fastutil/longs/LongArrayList
+     158: dup
+     159: invokespecial #66                 // Method it/unimi/dsi/fastutil/longs/LongArrayList."<init>":()V
+     162: astore        22
+     164: new           #69                 // class net/minecraft/core/BlockPos$MutableBlockPos
+     167: dup
+     168: invokespecial #71                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     171: astore        23
+     173: new           #69                 // class net/minecraft/core/BlockPos$MutableBlockPos
+     176: dup
+     177: invokespecial #71                 // Method net/minecraft/core/BlockPos$MutableBlockPos."<init>":()V
+     180: astore        24
+     182: iconst_0
+     183: istore        25
+     185: iload         25
+     187: bipush        16
+     189: if_icmpge     596
+     192: iconst_0
+     193: istore        26
+     195: iload         26
+     197: bipush        16
+     199: if_icmpge     590
+     202: aload_3
+     203: getstatic     #72                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     206: iload         25
+     208: iload         26
+     210: invokevirtual #78                 // Method net/minecraft/world/level/chunk/ChunkAccess.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     213: istore        27
+     215: iload         25
+     217: i2f
+     218: ldc           #82                 // float 16.0f
+     220: fdiv
+     221: fstore        28
+     223: iload         26
+     225: i2f
+     226: ldc           #82                 // float 16.0f
+     228: fdiv
+     229: fstore        29
+     231: iload         25
+     233: iload         10
+     235: iadd
+     236: istore        30
+     238: iload         26
+     240: iload         11
+     242: iadd
+     243: istore        31
+     245: aload         23
+     247: iload         30
+     249: invokevirtual #83                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setX:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     252: pop
+     253: aload         23
+     255: iload         31
+     257: invokevirtual #87                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setZ:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     260: pop
+     261: fload         28
+     263: fload         12
+     265: fload         13
+     267: invokestatic  #90                 // Method net/minecraft/util/Mth.lerp:(FFF)F
+     270: fstore        32
+     272: fload         28
+     274: fload         14
+     276: fload         15
+     278: invokestatic  #90                 // Method net/minecraft/util/Mth.lerp:(FFF)F
+     281: fstore        33
+     283: fconst_1
+     284: fload         29
+     286: fload         32
+     288: fload         33
+     290: invokestatic  #90                 // Method net/minecraft/util/Mth.lerp:(FFF)F
+     293: fsub
+     294: fstore        34
+     296: fload         34
+     298: ldc           #96                 // float 0.5f
+     300: fcmpg
+     301: ifge          584
+     304: iload         17
+     306: iconst_1
+     307: iadd
+     308: istore        35
+     310: iload         35
+     312: iload         27
+     314: if_icmpge     584
+     317: iload         35
+     319: iload         18
+     321: if_icmpgt     584
+     324: iload         35
+     326: iload         19
+     328: if_icmpgt     584
+     331: aload         23
+     333: iload         35
+     335: invokevirtual #97                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setY:(I)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     338: pop
+     339: fconst_1
+     340: iload         27
+     342: iload         35
+     344: isub
+     345: i2f
+     346: ldc           #100                // float 0.1f
+     348: fmul
+     349: fconst_0
+     350: fconst_1
+     351: invokestatic  #101                // Method net/minecraft/util/Mth.clamp:(FFF)F
+     354: fsub
+     355: fstore        36
+     357: fload         36
+     359: ldc           #96                 // float 0.5f
+     361: fcmpl
+     362: ifle          368
+     365: goto          584
+     368: aload         16
+     370: getfield      #104                // Field org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.h:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     373: iload         30
+     375: i2d
+     376: ldc2_w        #110                // double 0.02d
+     379: dmul
+     380: iload         35
+     382: i2d
+     383: ldc2_w        #112                // double 0.01d
+     386: dmul
+     387: iload         31
+     389: i2d
+     390: ldc2_w        #110                // double 0.02d
+     393: dmul
+     394: invokevirtual #114                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     397: d2f
+     398: invokestatic  #120                // Method net/minecraft/util/Mth.abs:(F)F
+     401: fstore        37
+     403: iload         35
+     405: i2f
+     406: aload         16
+     408: getfield      #124                // Field org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.v:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     411: iload         30
+     413: i2d
+     414: ldc2_w        #112                // double 0.01d
+     417: dmul
+     418: iload         31
+     420: i2d
+     421: ldc2_w        #112                // double 0.01d
+     424: dmul
+     425: invokevirtual #127                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DD)D
+     428: d2f
+     429: ldc           #130                // float 20.0f
+     431: fmul
+     432: fadd
+     433: ldc           #100                // float 0.1f
+     435: fmul
+     436: invokestatic  #131                // Method net/minecraft/util/Mth.sin:(F)F
+     439: ldc           #134                // float 0.9f
+     441: fmul
+     442: fstore        38
+     444: aload         16
+     446: getfield      #135                // Field org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.d:Lorg/betterx/betterend/noise/OpenSimplexNoise;
+     449: iload         30
+     451: i2d
+     452: ldc2_w        #138                // double 0.1d
+     455: dmul
+     456: iload         35
+     458: i2d
+     459: ldc2_w        #138                // double 0.1d
+     462: dmul
+     463: iload         31
+     465: i2d
+     466: ldc2_w        #138                // double 0.1d
+     469: dmul
+     470: invokevirtual #114                // Method org/betterx/betterend/noise/OpenSimplexNoise.eval:(DDD)D
+     473: d2f
+     474: ldc           #140                // float 0.12f
+     476: fmul
+     477: fstore        39
+     479: fload         37
+     481: fload         38
+     483: fload         38
+     485: fmul
+     486: fadd
+     487: fload         39
+     489: fadd
+     490: fload         34
+     492: fadd
+     493: fload         36
+     495: fadd
+     496: fstore        37
+     498: fload         37
+     500: fload         20
+     502: fcmpg
+     503: ifge          578
+     506: aload_3
+     507: aload         23
+     509: invokevirtual #141                // Method net/minecraft/world/level/chunk/ChunkAccess.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     512: getstatic     #145                // Field org/betterx/wover/tag/api/predefined/CommonBlockTags.END_STONES:Lnet/minecraft/tags/TagKey;
+     515: invokevirtual #151                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     518: ifeq          578
+     521: aload_3
+     522: aload         9
+     524: aload         23
+     526: aload         24
+     528: iload         17
+     530: iload         18
+     532: invokestatic  #157                // Method org/betterx/betterend/world/carvers/EndCaveCarver.isWaterNear:(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos$MutableBlockPos;II)Z
+     535: ifne          578
+     538: aload_3
+     539: aload         23
+     541: getstatic     #161                // Field CAVE_AIR:Lnet/minecraft/world/level/block/state/BlockState;
+     544: iconst_0
+     545: invokevirtual #165                // Method net/minecraft/world/level/chunk/ChunkAccess.setBlockState:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)Lnet/minecraft/world/level/block/state/BlockState;
+     548: pop
+     549: aload         8
+     551: iload         25
+     553: iload         35
+     555: iload         26
+     557: invokevirtual #169                // Method net/minecraft/world/level/chunk/CarvingMask.set:(III)V
+     560: aload         22
+     562: iload         30
+     564: iload         35
+     566: iload         31
+     568: invokestatic  #175                // Method net/minecraft/core/BlockPos.asLong:(III)J
+     571: invokevirtual #181                // Method it/unimi/dsi/fastutil/longs/LongArrayList.add:(J)Z
+     574: pop
+     575: iconst_1
+     576: istore        21
+     578: iinc          35, 1
+     581: goto          310
+     584: iinc          26, 1
+     587: goto          195
+     590: iinc          25, 1
+     593: goto          185
+     596: aload_1
+     597: aload_3
+     598: aload         4
+     600: aload         5
+     602: aload         22
+     604: invokestatic  #185                // Method org/betterx/betterend/world/carvers/CaveSurfaceCoater.coat:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lit/unimi/dsi/fastutil/longs/LongList;)V
+     607: iload         21
+     609: ireturn
+
+  private static float caveFactor(java.util.function.Function<net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, int, int);
+    Code:
+       0: aload_0
+       1: new           #176                // class net/minecraft/core/BlockPos
+       4: dup
+       5: iload_1
+       6: iconst_0
+       7: iload_2
+       8: invokespecial #191                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      11: invokeinterface #193,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      16: checkcast     #199                // class net/minecraft/core/Holder
+      19: astore_3
+      20: aload_3
+      21: ifnull        40
+      24: aload_3
+      25: getstatic     #201                // Field org/betterx/betterend/registry/EndTags.IS_END_CAVE:Lnet/minecraft/tags/TagKey;
+      28: invokeinterface #206,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+      33: ifeq          40
+      36: fconst_1
+      37: goto          41
+      40: fconst_0
+      41: freturn
+
+  private static org.betterx.betterend.world.carvers.EndTunnelCarver$Noises3 getNoises(net.minecraft.world.level.levelgen.carver.CarvingContext);
+    Code:
+       0: aload_0
+       1: invokevirtual #207                // Method net/minecraft/world/level/levelgen/carver/CarvingContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+       4: getstatic     #211                // Field NOISE_SEED_KEY:Lnet/minecraft/resources/ResourceLocation;
+       7: invokevirtual #215                // Method net/minecraft/world/level/levelgen/RandomState.getOrCreateRandomFactory:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/PositionalRandomFactory;
+      10: iconst_0
+      11: iconst_0
+      12: iconst_0
+      13: invokeinterface #221,  4          // InterfaceMethod net/minecraft/world/level/levelgen/PositionalRandomFactory.at:(III)Lnet/minecraft/util/RandomSource;
+      18: invokeinterface #227,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextLong:()J
+      23: lstore_1
+      24: getstatic     #231                // Field cached:Lorg/betterx/betterend/world/carvers/EndTunnelCarver$Noises3;
+      27: astore_3
+      28: aload_3
+      29: ifnull        43
+      32: aload_3
+      33: getfield      #235                // Field org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.seed:J
+      36: lload_1
+      37: lcmp
+      38: ifne          43
+      41: aload_3
+      42: areturn
+      43: new           #239                // class net/minecraft/world/level/levelgen/LegacyRandomSource
+      46: dup
+      47: lload_1
+      48: invokespecial #241                // Method net/minecraft/world/level/levelgen/LegacyRandomSource."<init>":(J)V
+      51: astore        4
+      53: new           #105                // class org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3
+      56: dup
+      57: lload_1
+      58: new           #115                // class org/betterx/betterend/noise/OpenSimplexNoise
+      61: dup
+      62: aload         4
+      64: invokeinterface #244,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      69: i2l
+      70: invokespecial #247                // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+      73: new           #115                // class org/betterx/betterend/noise/OpenSimplexNoise
+      76: dup
+      77: aload         4
+      79: invokeinterface #244,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      84: i2l
+      85: invokespecial #247                // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+      88: new           #115                // class org/betterx/betterend/noise/OpenSimplexNoise
+      91: dup
+      92: aload         4
+      94: invokeinterface #244,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:()I
+      99: i2l
+     100: invokespecial #247                // Method org/betterx/betterend/noise/OpenSimplexNoise."<init>":(J)V
+     103: invokespecial #248                // Method org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3."<init>":(JLorg/betterx/betterend/noise/OpenSimplexNoise;Lorg/betterx/betterend/noise/OpenSimplexNoise;Lorg/betterx/betterend/noise/OpenSimplexNoise;)V
+     106: astore        5
+     108: aload         5
+     110: putstatic     #231                // Field cached:Lorg/betterx/betterend/world/carvers/EndTunnelCarver$Noises3;
+     113: aload         5
+     115: areturn
+
+  public boolean isStartChunk(net.minecraft.world.level.levelgen.carver.CarverConfiguration, net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #14                 // class org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration
+       5: aload_2
+       6: invokevirtual #251                // Method isStartChunk:(Lorg/betterx/betterend/world/carvers/EndTunnelCarverConfiguration;Lnet/minecraft/util/RandomSource;)Z
+       9: ireturn
+
+  public boolean carve(net.minecraft.world.level.levelgen.carver.CarvingContext, net.minecraft.world.level.levelgen.carver.CarverConfiguration, net.minecraft.world.level.chunk.ChunkAccess, java.util.function.Function, net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.Aquifer, net.minecraft.world.level.ChunkPos, net.minecraft.world.level.chunk.CarvingMask);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: checkcast     #14                 // class org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration
+       6: aload_3
+       7: aload         4
+       9: aload         5
+      11: aload         6
+      13: aload         7
+      15: aload         8
+      17: invokevirtual #255                // Method carve:(Lnet/minecraft/world/level/levelgen/carver/CarvingContext;Lorg/betterx/betterend/world/carvers/EndTunnelCarverConfiguration;Lnet/minecraft/world/level/chunk/ChunkAccess;Ljava/util/function/Function;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/Aquifer;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/level/chunk/CarvingMask;)Z
+      20: ireturn
+
+  static {};
+    Code:
+       0: getstatic     #259                // Field org/betterx/betterend/BetterEnd.C:Lorg/betterx/wover/core/api/ModCore;
+       3: ldc_w         #265                // String tunnel_cave_noise
+       6: invokevirtual #267                // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: putstatic     #211                // Field NOISE_SEED_KEY:Lnet/minecraft/resources/ResourceLocation;
+      12: return
+}

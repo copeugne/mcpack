@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 53 of 136. The exact queue below has 83 open rows.
+Supported provider dispositions: 54 of 136. The exact queue below has 82 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -66,8 +66,8 @@ counts, is the requested answer to how many families remain.
 
 | Candidate | Delivered result | Remaining scope decision |
 | --- | --- | --- |
-| BetterEnd building lists | Six live configured-feature IDs and their mixed building/vegetation lists; selector source in 9695ae5. | Assign actual designs and variants; do not call all six lists one family or count every template separately. |
-| BetterEnd crashed ship | Registered feature implementation and vanilla ship template reuse in 9695ae5. | Establish active configured/placed use before adding a family. |
+| BetterEnd building lists | Six live configured/placed IDs, 63 exact template choices, 21 vegetation exclusions and 42 architectural candidates. See BetterEnd feature candidate reconciliation below. | Group architectural choices by design; neither six lists nor 42 templates is the family count. |
+| BetterEnd crashed ship | Inline configured placement, live placed ID, 27 packaged biome consumers, including 21 exposed by the captured End biome source. See reconciliation below. | Include the named crashed-ship candidate; reconcile shared biome modifiers and full provider coverage. Placement success remains separate. |
 | BOP anomaly, monolith, bone spine | Direct writers in 846bc09; both bone-spine definitions reuse one type. | Resolve landmark/terrain boundaries and bind active placement. |
 | Deep Aether totem | One stacked design with block/height/facing variations in b0194ce. | Bind registration and placement; preserve one design rather than counting blocks as families. |
 | Explorations scarecrow | One figure design, nine material configurations and a selector in ac990fd. | Bind registration and selector/placement relationships; do not count ten configured entries as ten families. |
@@ -542,7 +542,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | --- | --- | --- |
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
 | `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
-| `BetterEnd-21.0.31.jar` | `betterend-feature-scope`, `betterend-formation-pieces`, `betterend-formations-code`, `betterend-lake-helpers` | Bind six building lists and crashed-ship eligibility; separate building designs from vegetation; reconcile existing roots. |
+| `BetterEnd-21.0.31.jar` | BetterEnd source captures and shared BCLib/Wover consumers; test_betterend_feature_candidates.py | RESOLVED: Fourteen existing roots, the complete 128-template partition, feature candidates, common hooks and modifier consumers accounted for below. Named architectural and landmark grouping decisions remain open for canonical reconciliation. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `CreeperOverhaul-neoforge-1.21.1-4.0.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -1442,3 +1442,477 @@ statement-count lint exception keeps the explicit archive/config cases in the
 existing test instead of introducing a validation framework. Ruff and Basedpyright
 pass. No runtime measurement, baseline change or detailed family grouping work.
 Provider dispositions: 53 of 136 resolved, 83 open. Continue the remaining census.
+
+## BetterEnd feature candidate reconciliation
+
+The earlier crashed-ship uncertainty is narrowed by existing packaged evidence,
+without another source capture or world run. Its configured feature is embedded
+inside `data/betterend/worldgen/placed_feature/crashed_ship.json`; absence of a
+separate configured-feature registry ID does not make it inactive. The placed ID
+`betterend:crashed_ship` exists in the captured runtime registry. Its declaration
+uses rarity 500, in-square placement and biome filtering. These inputs are not an
+observed occurrence rate.
+
+The packaged route has 27 explicit biome consumers, all named in
+`tests/item8/test_betterend_feature_candidates.py`. Twenty-one occur in the
+captured End biome source. Six cave-biome references do not: empty_aurora_cave,
+empty_end_cave, empty_smaragdant_cave, jade_cave, lush_aurora_cave and
+lush_smaragdant_cave. Do not infer that those six are globally unreachable from
+this biome-source result. The additional
+`data/betterend/wover/worldgen/biome_modifications/defaults.json` declaration
+requests the ship for non-BetterEnd biomes with Wover End barrens, midland or
+highland tags. Its shared modifier semantics remain in WorldWeaver's census row;
+this does not erase the 21 directly linked biome-source candidates.
+
+The preserved CrashedShipFeature selects `minecraft:end_city/ship`, with erosion
+and placement distinct from a ship attached to an End city. Retain one named
+crashed-ship candidate. Its source precheck uses X for both squared chunk
+coordinates, requires the resulting sum to reach 3600, Y greater than 5, and an
+End-stone-tag block below. Do not repair that behavior or claim generated-world
+occurrence from packaged eligibility. Reuse the existing source manifest
+7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d.
+
+All six building-list configured IDs and corresponding placed IDs exist in the
+runtime registries. Each is directly referenced by its corresponding packaged
+biome, and all six biomes occur in the captured End biome source. Their placed
+features declare rarity 10, in-square placement and biome filtering. Existing
+BuildingListFeature source also imposes an even chunk-coordinate sum, Y greater
+than 58, air at the placement point and terrain-tag support below. It selects one
+configured template, with rotation/mirror variations. A list is not an assembled
+village or a family count.
+
+The following partition accounts for every choice. Paths share
+`/data/betterend/structure/biome/<biome>/` and end in `.nbt`. Number intervals are
+inclusive. The focused test asserts the exact sets, verifies every template
+exists and decodes it using the existing template decoder.
+
+| Biome/list prefix | Architectural candidate choices | Vegetation choices excluded from authored-family candidates |
+| --- | --- | --- |
+| blossoming_spires | ruins_1 through ruins_8 (8) | None |
+| chorus_forest | ruins_1 through ruins_8 (8) | fallen_tree_1 through fallen_tree_4; stump_1 through stump_3 (7) |
+| foggy_mushroomland | library, tree_house, ruins_1 through ruins_3 (5) | fallen_tree_1, fallen_tree_2, stump_1, stump_2 (4) |
+| lantern_woods | cabin, light_1, ruins_1, ruins_2 (4) | log_1, log_2, stump_1 through stump_3 (5) |
+| shadow_forest | small_mansion, ruins_1 through ruins_8 (9) | stump_1, stump_2, fallen_log_1, fallen_log_2 (4) |
+| umbrella_jungle | house_1, house_2, ruins_1 through ruins_6 (8) | jellyshroom_cluster (1) |
+| Total template choices | 42 | 21 |
+
+The vegetation disposition uses decoded content, not the names alone: the 21
+choices contain only the explicitly checked natural wood, fungal, foliage,
+plant and End-stone blocks, with no stored entities or block-entity data. The
+remaining 42 contain constructed materials, architecture or furnishings,
+including lamps, masonry, bookshelves, doors and containers. Preserve them as
+named architectural candidates. The umbrella cluster's stripped fungal bark is
+part of the inspected natural cluster, not sufficient by itself to invent a
+building. Conversely, lantern_woods/light_1 combines pedestal, wall, fence and
+chain with a light-bearing plant and stays in the architectural candidate set.
+
+Canonical grouping remains a specific task: compare the six ruin sets and the
+two umbrella houses for shared designs, and relate standalone light/ruin designs
+to the other named ornament candidates. Do not collapse choices by numbered
+filename or promote every template to a family. Full BetterEnd provider coverage
+also still requires its other entry points, resources and existing roots. The
+provider total therefore remains 53 resolved and 83 open.
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py
+```
+
+Two focused cases pass. Initial lint/type findings were confined to test
+formatting, explicit types and split assertions; they are corrected. Ruff and
+Basedpyright pass. The tests reuse frozen archive dd883e2f91fa7ee8a0594dc3844de38bf3e550d91ff1247b2801808904fd013a,
+the existing source capture and dimension-biome evidence. No new measurement,
+source-disassembly batch, schema or baseline change.
+
+### BetterEnd extra biome templates and consumer boundary
+
+Source 9ee6454, selected by dd6ed45, establishes that the building-list codec
+accepts an explicit nonempty list of path/offset/merger entries. getRandom selects
+one list member, and StructureInfo passes its stored path directly to the
+BetterEnd class-resource loader. There is no adjacent-file or directory scan.
+The existing six lists therefore do not acquire the extra templates implicitly.
+Commands and the exact six-class identity manifest are in
+sources/betterend-entry-template-consumers/README.md.
+
+The new third case in test_betterend_feature_candidates.py binds that source and
+accounts for every biome-directory template outside the 63 configured choices:
+
+- `blossoming_spires/house.nbt`: a furnished 21 by 32 by 21 template. It is an
+  architectural candidate disconnected from the six configured lists. Keep it
+  named while reconciling other consumers; do not count it as active solely
+  because it is packaged.
+- `old_bulbis_gardens/fallen_tree_1.nbt` through `fallen_tree_3.nbt` and
+  `old_bulbis_gardens/tree_stump_1.nbt` through `tree_stump_3.nbt`: six vegetation
+  templates. Decoded palettes contain only BYG stem/wood, BetterEnd moss/vine/
+  polypore and air, with no stored entities or block-entity data. They add no
+  authored architectural candidate regardless of the separate compatibility
+  activation question.
+
+The seven adjacent structures.json lists use `nbt`, `offsetY` and `terrainMerge`,
+which are not the current BuildingListFeatureConfig/StructureInfo codec fields.
+Their existence does not extend the accepted configured choices. Preserve these
+resources and the distinction; do not rewrite them into current configuration.
+The common entry also exposes the BetterEndPlugin service loader and conditional
+BYG callback registration, which must be reconciled with the remaining provider
+entries. Full provider coverage remains open, with 53 resolved and 83 open rows.
+
+The same three validation commands in the preceding section now pass three
+focused cases, Ruff and Basedpyright. No new measurement or evidence format.
+
+### BetterEnd pillar features and vanilla End components
+
+Source ced7655, selected by d6f6c51, preserves the two pillar-feature bodies and
+six declared End-content mixins. The capture reproduces exactly. Commands and
+interpretation are in sources/betterend-pillar-end-hooks/README.md. The fourth
+case in test_betterend_feature_candidates.py binds all eight classes, their
+mixin declarations, packaged feature routes and the component template sets.
+
+`betterend:fallen_pillar` and `betterend:obsidian_pillar_basement` are named
+nonregistry candidates. Both have live placed-feature IDs, inline configured
+features and direct references from the packaged dragon_graveyards biome.
+Their rarity filters declare 20 and 8 respectively, followed by in-square and
+biome filters. They generate weathered obsidian forms in code through BCLib SDF
+operations. They do not consume the central-pillar templates. Keep their
+landmark-versus-terrain decision explicit; a terrain package name is not an
+exclusion rationale. No footprint experiment is needed to establish these paths.
+
+SpikeFeatureMixin selects every packaged pillar component: pillar_base_1 through
+4, pillar_top_1 through 4, and the four corresponding _cage tops. The index is
+radius minus one for radius 2 through 5. These twelve files are variants and
+components of the existing central End pillars, not additional independent
+families. EndSpikeMixin reads their persisted height state. EndPodiumFeatureMixin
+selects end_portal_active or end_portal_inactive according to portal state;
+those two templates are alternatives for the existing exit portal. Both template
+sets exist and decode successfully. This resolves fourteen component references.
+
+The related EndDragonFight hook changes existing portal/crystal respawn handling.
+EndCityFeatureMixin modifies the existing city's generation eligibility rather
+than introducing another city layout. EndPlatformFeatureMixin delegates platform
+creation to TerrainGenerator, which remains to be reconciled. Configuration
+binding and interaction with YUNG's End Island remain explicit downstream
+interpretation work within this census. Do not assume that a captured declared
+mixin wins over another provider or that a template request proves placement.
+
+Four focused cases, Ruff and Basedpyright pass using the commands above. The
+provider remains open: these are candidate and component resolutions, not whole
+BetterEnd closure. Overall provider coverage remains 53 resolved and 83 open.
+
+### BetterEnd complete packaged-template partition
+
+Source b5655b9, selected by d14f2ea, resolves the platform helper and Eternal
+Portal template consumer. GeneratorOptions copies typed GeneratorConfig values;
+the remaining key-to-field binding is explicitly GeneratorConfig, not an
+unbounded helper audit. TerrainGenerator.makeObsidianPlatform either suppresses
+vanilla creation, leaves it alone or relocates its obsidian platform according
+to those option values. It supplies no additional independent template design.
+BiomeIslandFeature fills terrain materials through SDF operations and supplies
+no authored building template or encounter. Preserve its actual placement
+consumers separately rather than interpreting its registry name as a dimension.
+
+EternalPortalStructure loads portal/eternal_portal for the existing live
+betterend:eternal_portal root. Together with the two exit-portal alternatives
+already resolved, this accounts for all three packaged portal templates.
+
+The fifth case in test_betterend_feature_candidates.py accounts for all 128 NBT
+templates in the frozen BetterEnd archive, with no unmatched path category:
+
+| Template group | Count | Disposition |
+| --- | ---: | --- |
+| Six configured building lists | 63 | 42 architectural candidate choices and 21 vegetation choices, as enumerated above. |
+| Other biome templates | 7 | Six vegetation templates and the explicitly disconnected blossoming_spires/house candidate. |
+| Village | 43 | 41 connected components and two disconnected components of the existing End village design. |
+| Central pillars | 12 | Base/top/cage components of existing central End pillars. |
+| Portals | 3 | Eternal Portal component and active/inactive exit-portal alternatives. |
+| Total | 128 | Template accounting, not family count or proof of successful generation. |
+
+The existing village graph retains two missing references:
+`betterend:village/street_decoration/work_01` and
+`betterend:village/terminators/stree_terminator_01`. The two packaged disconnected
+templates are instead `betterend:village/decoration/work_01` and
+`betterend:village/terminators/street_terminator_01`. These are different IDs;
+do not substitute them, rewrite evidence or repair the frozen baseline.
+The graph has no unresolved pool-element codecs. Five native pools connect to
+the root; the sixth native pool, village/decorations, is empty with fallback to
+village/terminators and is not reached by this root graph.
+
+Five focused cases, Ruff and Basedpyright pass with the existing commands. The
+source capture independently reproduced byte for byte. No new measurement or
+schema. BetterEnd still requires remaining code-generation entries, configuration
+binding and shared modifier/consumer reconciliation; complete template accounting
+alone does not close that provider. Overall coverage remains 53 resolved and
+83 open providers. Keep the 128-template boundary closed while doing that work.
+
+### BetterEnd frozen generator branch selection
+
+Source 9d70795, selected by 13f1e49, resolves the GeneratorConfig key-to-field
+binding left open above. The source independently reproduced byte for byte.
+Its table, command and frozen configuration identity are in
+sources/betterend-generator-config/README.md. The sixth focused case binds the
+constructor capture, exact frozen file hash and relevant values.
+
+Under the frozen values, generate_obsidian_platform=true and
+entity.spawn.has_spawn=false make BetterEnd's platform helper return without
+cancelling or relocating vanilla platform creation. Both has_portal/replace_portal
+and has_pillars/replace_pillars are true, enabling this provider's replacement
+conditions. has_dragon_fights is true. use_new_generator=true and
+end_city_fail_chance=1 make the city hook's nextInt(1) test return zero, so this
+hook does not reject the existing city stub. This is a code derivation under the
+frozen settings, not an observed world result or a claim about the final outcome
+of competing mixins. Preserve those interactions in the remaining provider scope.
+
+Six focused cases, Ruff and Basedpyright pass. GeneratorConfig is no longer an
+open binding question for these branches. The 128-template accounting remains
+closed. Continue remaining generation entries, shared modifiers and consumers;
+do not reopen this configuration trace or add a new runtime measurement.
+Whole-provider counts remain 53 resolved and 83 open.
+
+### BetterEnd remaining custom roots and cave consumers
+
+Source 5428e8f preserves eighteen remaining root, cave-consumer and integration
+classes, reproduced exactly with selector 95997cf. Manifest SHA-256:
+eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd.
+The README in sources/betterend-remaining-root-consumers records the exact command
+and interpretation boundaries. Common entry capture 4307aa7 separately preserves
+biome, portal, command, integration-interface and loot entry bodies.
+
+The complete packaged BetterEnd root list now matches the live registry exactly:
+end_bridge, end_lake, end_lake_normal, end_lake_rare, end_village, eternal_portal,
+giant_ice_star, giant_mossy_glowshroom, megalake, megalake_small, mountain,
+painted_mountain, small_island and sulphuric_cave. This is fourteen roots, not
+fourteen accepted families. Existing lake/mountain, village and portal evidence
+is reused, with the remaining five custom roots bound to the new capture.
+
+| Root | Candidate disposition |
+| --- | --- |
+| end_bridge | EndBridgeStructure selects anchors and creates EndBridgePiece, which writes an end-stone-brick deck and walls. One bridge-design candidate; anchors, materials and span variations are not separate families. |
+| sulphuric_cave | Cave terrain with water, sulphuric rock, vents, brimstone, crystals and tube worms. Reconcile with the existing formation inventory; do not count pieces as families. |
+| giant_ice_star | Snow/emerald-ice SDF formation; retain its named terrain candidate disposition. |
+| giant_mossy_glowshroom | Fungal SDF formation; retain its named vegetation candidate disposition. |
+| small_island | Terrain with flower/vine or waterfall/stalactite treatment. Named terrain candidate, with variation within the generator. |
+
+VillagePools creates the already accounted pool keys. Its village_chorus key
+resolves to a placed vanilla chorus_plant feature, not a second village route.
+EndCaveFeatures consumes the separate cave-biome picker, updates cave biome
+information and dispatches floor/ceiling features; CaveChunkPopulatorFeature
+also dispatches cave floor/ceiling features. This closes the missing consumer
+link without claiming every surface-biome feature executes inside caves.
+
+BYGIntegration explicitly delegates to BYG block, feature and biome registries.
+Flamboyant's init is empty and its explicit registration concerns colored blocks;
+DyeDepot supplies colored crafting recipes. BCLib conditional dispatch and
+retained BetterEndPlugin services remain shared activation inputs. Do not
+expand into unrelated recipe auditing or inactive compatibility geometry.
+
+Validation: seven cases pass in test_betterend_feature_candidates.py, including
+the exact fourteen-root package/runtime set and eighteen source identities.
+Scoped Ruff and Basedpyright pass. The initial added case included the ZIP
+directory entry as a file and failed; corrected to exclude actual directories.
+Initial missing JSON type casts were corrected before acceptance.
+
+Remaining provider coverage: other feature registration consumers, remaining
+declared common generation mixins, shared integration and Wover modifier
+activation. Keep packaged template and root enumeration closed unless new
+evidence contradicts them. Provider counts remain 53 resolved and 83 open;
+family grouping and detailed attributes are not complete.
+
+### BetterEnd retained compatibility and plugin boundary
+
+The frozen runtime mod list contains betterend and bclib, but not byg,
+flamboyant or dye_depot. BCLib source aa14b93 establishes that registerAll calls
+an integration's normal init only when modIsInstalled succeeds; that check
+delegates to the integration's ModCore.isLoaded. BetterEnd's previously captured
+entry initializes the corresponding ModCore objects with these exact mod IDs.
+Therefore the three compatibility initializers do not add a generation route
+through this normal dispatch in the retained runtime. Preserve the separate
+datagen branch without claiming that datagen ran. No absent compatibility tree
+needs a geometry audit for this census.
+
+All 136 hash-verified retained archives and their recursively nested JARs were
+checked for the exact BetterEndPlugin service declaration. None provides it.
+Their module-info.class entries also contain no reference to that service
+interface. This is an explicit ServiceLoader declaration boundary, not keyword
+absence used to infer that a whole mod has no structures. It closes this named
+plugin entry question for the retained candidate inputs; it does not waive
+remaining generation/modifier consumers or cover unretained external plugins.
+
+The logic is preserved in test_betterend_retained_plugin_and_compatibility_inputs.
+It binds the debug log SHA-256
+e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b
+and the BCLib source manifest SHA-256
+d085183016dd793119d9f8bbab449fbbc791851dce4ea8244e18da2e9aa4af2c.
+All eight BetterEnd cases and scoped Ruff/Basedpyright pass:
+
+```sh
+uv run pytest -q tests/item8/test_betterend_feature_candidates.py
+uv run ruff check tests/item8/test_betterend_feature_candidates.py
+uv run basedpyright tests/item8/test_betterend_feature_candidates.py
+```
+
+An exploratory follow-up tried an incorrect BCLib filename after its service
+scan and failed with FileNotFoundError. The retained manifest supplied the
+correct bclib-21.0.24.jar identity; accepted source and tests use that identity.
+Remaining BetterEnd census work is its other feature registration consumers,
+declared common generation mixins and shared Wover modifiers. The compatibility
+initializers and retained service declarations are now resolved. Provider counts
+remain 53 resolved and 83 open. BCLib's whole-provider row remains open.
+
+### BetterEnd declared common mixin coverage
+
+Source 5726bc8 preserves the remaining 26 common mixins, using selector e1bffd9.
+The capture reproduces exactly. Manifest SHA-256:
+5dd3d155fcd660a11f2950742cffce16b67fba212735daa59ef83c8948d7d9a1.
+Together with the six previously preserved End hooks, it covers all 32 names in
+betterend.mixins.common.json exactly once. Source roles and the exact reproduction
+command are in sources/betterend-common-mixins/README.md.
+
+The remaining hooks modify existing terrain generation, chorus vegetation,
+entity/player behavior, recipe support, advancement callbacks and initialization.
+No separate authored family is supplied by these hook bodies. Terrain hooks use
+the previously captured TerrainGenerator; their accessors and target flags are
+not new generation candidates. The empty portal.EntityMixin body adds nothing.
+
+Preserve two explicit placement effects. StructureMixin resolves the existing
+structure registry key through the configured toggle and returns INVALID_START
+when disabled. WorldGenRegionMixin replaces ensureCanWrite with a check requiring
+each chunk-axis distance from the center to be less than two. That changes the
+write boundary of existing generation, not the candidate list. No baseline fix,
+new geometry experiment or performance audit follows from these observations.
+Declared-hook coverage is not a claim that every injection ran or that competing
+providers cannot affect final behavior.
+
+Nine focused BetterEnd cases pass, including exact declared/captured mixin
+equality and archive/class/disassembly identity binding. Scoped Ruff and
+Basedpyright pass; one overlong assertion line was corrected during validation.
+Use the commands recorded in the preceding section. BetterEnd's remaining census
+areas are other feature consumers and shared Wover modifiers. Root, template,
+compatibility and declared common-mixin checks stay closed. Overall provider
+counts remain 53 resolved and 83 open; Item 8 is not complete.
+
+### BetterEnd Wover biome modifier consumers
+
+Source f9c8400 preserves the Wover modifier codec, application workers and the
+six predicate implementations used by BetterEnd. Both capture directories
+reproduce exactly; their READMEs record the commands. Manifest SHA-256 values:
+a369761c4511706e0486eae7465fb74d379e4dc97f91dd74113c206b71d55868
+(wover-biome-modifier-consumers) and
+dfea087f9938a66807e94d9d2f9a46d110e82dae07092fde2777780979299cbf
+(wover-biome-modifier-codec).
+
+BetterEnd packages exactly two biome_modifications resources. defaults.json
+adds the existing crashed_ship placed feature at decoration index 4 and the
+flavolite_layer, thallasium_ore and ender_ore features at index 6. Its predicate
+excludes the betterend namespace and requires one of the Wover End barrens,
+midland or highland biome tags. This extends existing candidates, not the
+authored-family list.
+
+eternal_portals.json adds betterend:has_structure/eternal_portal to biomes whose
+namespace is neither minecraft nor betterend and whose path contains neither
+mountain nor lake. The predicate has no dimension or End-biome requirement.
+Preserve that distinction for the existing portal family's biome/dimension
+attributes; do not silently describe this eligibility extension as End-only.
+It does not prove that portals actually generate in every matching dimension.
+
+The codec maps predicate, features, biome_tags and spawns into BiomeModification.
+Its registry worker subscribes at server readiness, tests each modifier against
+biome contexts, adds matching tags and applies feature/mob changes. FeatureMap
+resolves placed-feature holders; GenerationSettingsWorker appends features at
+their decoration index. The tag worker updates existing tag contents and logs
+a warning if its required accessor is unavailable. These consumers do not create
+an unlisted structure design.
+
+The retained debug log at line 19125 records the Wover aggregate application
+message. It proves the application phase ran, not the exact per-modifier or
+per-biome outcome. Use the preserved live tags and generated-world observations
+for downstream effective constraints; no new runtime experiment is warranted
+to close this candidate-contribution question alone.
+
+Ten focused BetterEnd cases, Ruff and Basedpyright pass using the commands above.
+The new case binds the complete two-file set, exact payload hashes, named
+feature/tag contributions and Wover archive/class/disassembly identities.
+BetterEnd's remaining census area is other feature consumers. Root, template,
+common-mixin, compatibility and these modifier contribution checks stay closed.
+Overall provider counts remain 53 resolved and 83 open. Whole Wover provider
+coverage and Item 8 completion are not claimed by this consumer-specific result.
+
+### BetterEnd remaining feature-type reconciliation
+
+Source 936f990 captures the remaining 84 feature-package classes; together with
+the existing captures, all 94 classes in world/features are preserved exactly
+once. Source 7431ddd binds the seven delegated plant growth implementations,
+their base and EndBlocks registration. Both new captures reproduce exactly.
+Their manifests are respectively
+8ff7d86a2ca142e9a4fc4eac7bfee020c9e5301be3cb894ad7b42015578d0254 and
+2252cf72f8e265ab1b314a98677c758eb0735264a09707e1d5595a8b1e908d16.
+These are source-class counts, not family counts.
+
+All 63 custom types referenced by the packaged configured features and inline
+placed-feature definitions have one explicit role in
+test_betterend_remaining_feature_types_have_explicit_roles. Every type is also
+present in the preserved EndFeatures registration body. The exhaustive partition
+is four previously recorded authored/landmark candidate routes, 22 terrain or
+cave consumers, and 37 vegetation/ecological-nest routes. Four additional vanilla
+types are ore, random_patch, vegetation_patch and multiface_growth.
+
+| Feature group | Disposition |
+| --- | --- |
+| building_list_feature, crashed_ship | Existing architectural choices and crashed-ship candidate. Reuse the earlier template and placement accounting. |
+| fallen_pillar, obsidian_pillar_basement | Existing named landmark-versus-terrain candidates. Final canonical grouping remains open. |
+| Arches, spires, crystals, obsidian boulder, ore layers, ponds/lakes, sulphur formations and vents | Terrain/mineral placement. Configurations and placement implementations supply the materials and shape, not another authored building/encounter family. |
+| Round/tunnel caves, cave populator and stalactite features | Cave terrain and the previously bound cave-biome decoration consumers. |
+| Trees, fungi, shrubs, vines, aquatic and scatter plants | Vegetation placement and growth. Configuration/base/inner classes are component consumers, not families. |
+| glow_pillar_feature | Registered GlowingPillarSeedBlock grows roots, leaves and luminophor. Vegetation, distinct from the obsidian-pillar candidates. |
+| menger_sponge_feature | Places wet sponge blocks in its underwater placement path. Ecological resource, not a constructed sponge-shaped dungeon. |
+| silk_moth_nest | Places the nest block beneath appropriate foliage. Ecological nest, not an authored encounter structure. |
+| dragon_bone_ore | Inline vanilla ore placement replacing end stone with dragon-bone blocks. A mineral deposit, not a separately assembled skeleton structure. |
+
+The new delegated-plant source binds BlueVine, EndLily, EndLotus, GlowingPillar,
+Hydralux, Lanceleaf and NeonCactus fields to their concrete growth consumers.
+No assumption about vegetation rests solely on a seed/sapling filename.
+NBTFeature configuration and BuildingListFeature/CrashedShip inner classes remain
+components of their already enumerated routes; they do not add template choices.
+
+Twelve focused BetterEnd cases pass, including complete feature-package identity
+coverage, the exhaustive configured-type partition and registration bindings.
+Ruff and Basedpyright pass after correcting a path-expression formatting conflict.
+The source reproduction commands are in the two new source READMEs; use the
+existing focused test commands above.
+
+The final packaged-resource join remains before whole-provider closure. The five
+files under data/betterend/datapacks contain only the Nourish food-tag extension
+and its pack metadata, not additional generation data. Preserve this inspection
+with the final payload accounting. Do not recapture or reclassify the 94 feature
+classes. Overall provider counts remain 53 resolved and 83 open until that final
+join is accepted; canonical family grouping and attributes remain separate.
+
+### BetterEnd provider census closure
+
+The final payload join now passes. The frozen archive's 9,639 non-directory
+entries are accounted for by exact data categories, client assets, 668 classes,
+ten packaged datagen-cache files and nine metadata/license files. The complete
+253-entry worldgen partition includes the two configured carvers, independently
+captured in 50dd10e. They carve terrain and coat cave surfaces with cave-biome
+materials; neither introduces an authored family. The only embedded datapack
+contains four Nourish food tags and pack metadata. The sole NeoForge Mod
+annotation belongs to the already inspected BetterEnd common entry class.
+
+Together with the preceding dispositions, this closes provider candidate
+coverage: fourteen runtime roots, all 128 templates, 94 feature-package classes,
+all 63 configured custom feature types, all 32 declared common mixins, the two
+Wover modifiers, cave dispatch, retained plugin and conditional compatibility
+inputs have supported roles. This does not assert that every declared hook ran
+or that every eligible placement succeeded. Missing/disconnected templates,
+the loot callback identity mismatch and the portal modifier's lack of an End
+dimension predicate retain their recorded dispositions. No frozen data was fixed.
+
+Canonical decisions still include grouping the architectural template choices,
+the disconnected blossoming-spires house, and the fallen-pillar and obsidian
+basement landmark boundaries. Existing village, bridge, portal and crashed-ship
+routes must be reconciled with the provisional inventory, not counted again.
+These are named grouping questions, not unidentified provider contributions.
+
+Validation: thirteen focused cases, scoped Ruff and Basedpyright pass using the
+commands above. The final payload/carver case binds the exact archive contents
+and preserved source identities. Its initial overlong line was corrected before
+acceptance. Current census: 54 supported provider dispositions and 82 open rows.
+Item 8, final canonical grouping and eleven-attribute completion remain open.

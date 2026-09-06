@@ -1,0 +1,175 @@
+Compiled from "EternalPortalStructure.java"
+public class org.betterx.betterend.world.structures.features.EternalPortalStructure extends org.betterx.bclib.api.v2.levelgen.structures.TemplateStructure {
+  private static final net.minecraft.resources.ResourceLocation STRUCTURE_ID;
+
+  private static final net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate STRUCTURE;
+
+  public org.betterx.betterend.world.structures.features.EternalPortalStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #1                  // String portal/eternal_portal
+       4: bipush        -2
+       6: getstatic     #3                  // Field org/betterx/bclib/api/v2/levelgen/structures/StructurePlacementType.FLOOR:Lorg/betterx/bclib/api/v2/levelgen/structures/StructurePlacementType;
+       9: fconst_1
+      10: invokestatic  #9                  // Method cfg:(Ljava/lang/String;ILorg/betterx/bclib/api/v2/levelgen/structures/StructurePlacementType;F)Lorg/betterx/bclib/api/v2/levelgen/structures/TemplateStructure$Config;
+      13: invokestatic  #15                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      16: invokespecial #21                 // Method org/betterx/bclib/api/v2/levelgen/structures/TemplateStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Ljava/util/List;)V
+      19: return
+
+  public java.util.Optional<net.minecraft.world.level.levelgen.structure.Structure$GenerationStub> findGenerationPoint(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokestatic  #27                 // Method org/betterx/wover/structure/api/StructureUtils.isValidBiome:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Z
+       4: ifne          11
+       7: invokestatic  #33                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      10: areturn
+      11: aload_1
+      12: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      15: astore_2
+      16: aload_1
+      17: invokevirtual #45                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      20: astore_3
+      21: aload_1
+      22: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      25: astore        4
+      27: aload_2
+      28: getfield      #53                 // Field net/minecraft/world/level/ChunkPos.x:I
+      31: i2l
+      32: aload_2
+      33: getfield      #53                 // Field net/minecraft/world/level/ChunkPos.x:I
+      36: i2l
+      37: lmul
+      38: lstore        5
+      40: aload_2
+      41: getfield      #59                 // Field net/minecraft/world/level/ChunkPos.z:I
+      44: i2l
+      45: aload_2
+      46: getfield      #59                 // Field net/minecraft/world/level/ChunkPos.z:I
+      49: i2l
+      50: lmul
+      51: lstore        7
+      53: lload         5
+      55: lload         7
+      57: ladd
+      58: ldc2_w        #62                 // long 1024l
+      61: lcmp
+      62: ifge          69
+      65: invokestatic  #33                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+      68: areturn
+      69: aload_3
+      70: aload_2
+      71: bipush        8
+      73: invokevirtual #64                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      76: aload_2
+      77: bipush        8
+      79: invokevirtual #68                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      82: getstatic     #71                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      85: aload         4
+      87: aload_1
+      88: invokevirtual #77                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      91: invokevirtual #81                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      94: iconst_5
+      95: if_icmpge     102
+      98: invokestatic  #33                 // Method java/util/Optional.empty:()Ljava/util/Optional;
+     101: areturn
+     102: aload_0
+     103: aload_1
+     104: invokespecial #87                 // Method org/betterx/bclib/api/v2/levelgen/structures/TemplateStructure.findGenerationPoint:(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Ljava/util/Optional;
+     107: areturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<org.betterx.betterend.world.structures.features.EternalPortalStructure> type();
+    Code:
+       0: getstatic     #91                 // Field org/betterx/betterend/registry/EndStructures.ETERNAL_PORTAL:Lorg/betterx/wover/structure/api/StructureKey$Simple;
+       3: invokeinterface #97,  1           // InterfaceMethod org/betterx/wover/structure/api/StructureKey$Simple.type:()Lnet/minecraft/world/level/levelgen/structure/StructureType;
+       8: areturn
+
+  protected int erosion(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_1
+       1: iconst_5
+       2: invokeinterface #103,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+       7: ireturn
+
+  protected boolean cover(net.minecraft.util.RandomSource);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  protected void generatePieces(net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder, net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_2
+       1: invokevirtual #108                // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_3
+       5: aload_2
+       6: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+       9: astore        4
+      11: aload_2
+      12: invokevirtual #45                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      15: astore        5
+      17: aload_2
+      18: invokevirtual #49                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.heightAccessor:()Lnet/minecraft/world/level/LevelHeightAccessor;
+      21: astore        6
+      23: aload         4
+      25: bipush        8
+      27: invokevirtual #64                 // Method net/minecraft/world/level/ChunkPos.getBlockX:(I)I
+      30: istore        7
+      32: aload         4
+      34: bipush        8
+      36: invokevirtual #68                 // Method net/minecraft/world/level/ChunkPos.getBlockZ:(I)I
+      39: istore        8
+      41: aload         5
+      43: iload         7
+      45: iload         8
+      47: getstatic     #71                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      50: aload         6
+      52: aload_2
+      53: invokevirtual #77                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.randomState:()Lnet/minecraft/world/level/levelgen/RandomState;
+      56: invokevirtual #81                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getBaseHeight:(IILnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/level/LevelHeightAccessor;Lnet/minecraft/world/level/levelgen/RandomState;)I
+      59: istore        9
+      61: aload_1
+      62: new           #112                // class org/betterx/betterend/world/structures/piece/NBTPiece
+      65: dup
+      66: getstatic     #114                // Field STRUCTURE_ID:Lnet/minecraft/resources/ResourceLocation;
+      69: getstatic     #118                // Field STRUCTURE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      72: new           #122                // class net/minecraft/core/BlockPos
+      75: dup
+      76: iload         7
+      78: iload         9
+      80: iconst_4
+      81: isub
+      82: iload         8
+      84: invokespecial #124                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      87: aload_3
+      88: iconst_5
+      89: invokeinterface #103,  2          // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      94: iconst_1
+      95: aload_3
+      96: invokespecial #127                // Method org/betterx/betterend/world/structures/piece/NBTPiece."<init>":(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;Lnet/minecraft/core/BlockPos;IZLnet/minecraft/util/RandomSource;)V
+      99: invokevirtual #130                // Method net/minecraft/world/level/levelgen/structure/pieces/StructurePiecesBuilder.addPiece:(Lnet/minecraft/world/level/levelgen/structure/StructurePiece;)V
+     102: return
+
+  public static org.betterx.bclib.api.v2.levelgen.structures.TemplateStructure$Config cfg(java.lang.String, int, org.betterx.bclib.api.v2.levelgen.structures.StructurePlacementType, float);
+    Code:
+       0: new           #136                // class org/betterx/bclib/api/v2/levelgen/structures/TemplateStructure$Config
+       3: dup
+       4: getstatic     #138                // Field org/betterx/betterend/BetterEnd.C:Lorg/betterx/wover/core/api/ModCore;
+       7: aload_0
+       8: invokevirtual #144                // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      11: iload_1
+      12: aload_2
+      13: fload_3
+      14: invokespecial #150                // Method org/betterx/bclib/api/v2/levelgen/structures/TemplateStructure$Config."<init>":(Lnet/minecraft/resources/ResourceLocation;ILorg/betterx/bclib/api/v2/levelgen/structures/StructurePlacementType;F)V
+      17: areturn
+
+  static {};
+    Code:
+       0: getstatic     #138                // Field org/betterx/betterend/BetterEnd.C:Lorg/betterx/wover/core/api/ModCore;
+       3: ldc           #1                  // String portal/eternal_portal
+       5: invokevirtual #144                // Method org/betterx/wover/core/api/ModCore.mk:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: putstatic     #114                // Field STRUCTURE_ID:Lnet/minecraft/resources/ResourceLocation;
+      11: getstatic     #114                // Field STRUCTURE_ID:Lnet/minecraft/resources/ResourceLocation;
+      14: invokestatic  #153                // Method org/betterx/betterend/util/EndStructureHelper.readStructure:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      17: putstatic     #118                // Field STRUCTURE:Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate;
+      20: return
+}
