@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Lithostitched membership is RESOLVED. The full archive, all declared common/server
+hooks, 26 template lists, twenty overlays and remaining resource roles are bound
+by test_lithostitched_provider_scope.py. Three cases pass (0.31s); scoped Ruff and
+Basedpyright pass. No independent family added. Census: 87 resolved, 49 open.
+Next: close the remaining membership queue, prioritizing the four remaining
+packaged-generation providers (Create, Forgified Fabric API, Railways and Regions
+Unexplored) and shared consumers. Reuse the RU checkpoint and all existing source.
+The 24 code-only and 21 unmatched rows remain. Do not resume detailed family
+attributes before the finite candidate list and canonical grouping decisions.
+No runtime is live. The previous Lithostitched checkpoint below is historical.
+
 Lithostitched membership is in progress. Reuse the 38 previously captured
 classes; do not repeat their pool, alias, modifier or processor analysis.
 New entry source 4fbbe70 (extractor 9dbb13d) retains the sole annotated entry,
