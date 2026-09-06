@@ -612,6 +612,12 @@ CLASSES: tuple[str, ...] = (
     "com/finndog/moogs_structures/datagen/StructureNbtUpdaterDatagen.class",
     "architectury_inject_IntegratedStronghold_common_dac55d1c3d7c43d0b24fcf81e4608720_3415319371a0be83cfe6c4f3244ac2ed779cd7573f518ebf3d404884c005522cintegrated_stronghold1141211commondevjar/PlatformMethods.class",
     "dev/worldgen/tectonic/config/state/ConfigState.class",
+    "org/betterx/betterend/BetterEnd.class",
+    "org/betterx/betterend/client/BetterEndClient.class",
+    "org/betterx/betterend/world/features/BuildingListFeatureConfig.class",
+    "org/betterx/betterend/world/features/BuildingListFeature$StructureInfo.class",
+    "org/betterx/betterend/world/features/NBTFeature.class",
+    "org/betterx/betterend/util/EndStructureHelper.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -738,6 +744,8 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
+                    "org/betterx/betterend/BetterEnd.class",
+                    "org/betterx/betterend/client/BetterEndClient.class",
                     "com/scouter/oceansdelight/OceansDelight.class",
                     "net/stardustlabs/terralith/TerralithNeoforge.class",
                     "net/stardustlabs/terralith/TerralithNeoforgeClient.class",
