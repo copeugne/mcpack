@@ -630,6 +630,7 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/world/generator/GeneratorOptions.class",
     "org/betterx/betterend/world/features/BiomeIslandFeature.class",
     "org/betterx/betterend/world/structures/features/EternalPortalStructure.class",
+    "org/betterx/betterend/config/GeneratorConfig.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
