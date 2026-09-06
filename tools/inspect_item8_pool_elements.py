@@ -214,6 +214,23 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/bclib/api/v2/dataexchange/handler/DataExchange.class",
+    "org/betterx/bclib/api/v2/dataexchange/handler/DataExchangeClientEvents.class",
+    "org/betterx/bclib/api/v2/spawning/SpawnRuleBuilder.class",
+    "org/betterx/bclib/client/BCLibClient.class",
+    "org/betterx/bclib/particles/ParticleFactoryRegistry.class",
+    "org/betterx/bclib/registry/BaseBlockEntityRenders.class",
+    "org/betterx/bclib/registry/FuelRegistry.class",
+    "org/betterx/bclib/server/BCLibServer.class",
+    "org/betterx/bclib/mixin/common/BiomeGenerationSettingsAccessor.class",
+    "org/betterx/bclib/mixin/common/BiomeMixin.class",
+    "org/betterx/bclib/mixin/common/BoneMealItemMixin.class",
+    "org/betterx/bclib/mixin/common/ChunkGeneratorMixin.class",
+    "org/betterx/bclib/mixin/common/MobSpawnSettingsAccessor.class",
+    "org/betterx/bclib/mixin/common/RegistryDataLoaderMixin.class",
+    "org/betterx/bclib/mixin/common/ServerLevelMixin.class",
+    "org/betterx/bclib/mixin/common/WorldGenRegionMixin.class",
+
     "org/betterx/bclib/api/v2/levelgen/LevelGenEvents.class",
     "org/betterx/bclib/api/v2/levelgen/structures/TemplatePiece.class",
     "org/betterx/bclib/BCLibPatch.class",
