@@ -1,0 +1,692 @@
+Classfile CreateDragonsPlus-1.11.2b.jar!/plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.class
+  Last modified Feb 1, 1980; size 8816 bytes
+  SHA-256 checksum b73852c048faeab0f761e5e53e6b7d52a9710e4e0a9fb3c58b4d0bd62e8bf81f
+  Compiled from "AirCurrentMixinForSimulatedBehaviour.java"
+public class plus.dragons.createdragonsplus.mixin.simulated.AirCurrentMixinForSimulatedBehaviour
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #32                         // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 4, attributes: 5
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // plus/dragons/createdragonsplus/config/CDPConfig.features:()Lplus/dragons/createdragonsplus/config/CDPFeaturesConfig;
+    #8 = Class              #10           // plus/dragons/createdragonsplus/config/CDPConfig
+    #9 = NameAndType        #11:#12       // features:()Lplus/dragons/createdragonsplus/config/CDPFeaturesConfig;
+   #10 = Utf8               plus/dragons/createdragonsplus/config/CDPConfig
+   #11 = Utf8               features
+   #12 = Utf8               ()Lplus/dragons/createdragonsplus/config/CDPFeaturesConfig;
+   #13 = Fieldref           #14.#15       // plus/dragons/createdragonsplus/config/CDPFeaturesConfig.airCurrentBlockInteraction:Lplus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature;
+   #14 = Class              #16           // plus/dragons/createdragonsplus/config/CDPFeaturesConfig
+   #15 = NameAndType        #17:#18       // airCurrentBlockInteraction:Lplus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature;
+   #16 = Utf8               plus/dragons/createdragonsplus/config/CDPFeaturesConfig
+   #17 = Utf8               airCurrentBlockInteraction
+   #18 = Utf8               Lplus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature;
+   #19 = Methodref          #20.#21       // plus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature.get:()Ljava/lang/Boolean;
+   #20 = Class              #22           // plus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature
+   #21 = NameAndType        #23:#24       // get:()Ljava/lang/Boolean;
+   #22 = Utf8               plus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature
+   #23 = Utf8               get
+   #24 = Utf8               ()Ljava/lang/Boolean;
+   #25 = Methodref          #26.#27       // java/lang/Boolean.booleanValue:()Z
+   #26 = Class              #28           // java/lang/Boolean
+   #27 = NameAndType        #29:#30       // booleanValue:()Z
+   #28 = Utf8               java/lang/Boolean
+   #29 = Utf8               booleanValue
+   #30 = Utf8               ()Z
+   #31 = Fieldref           #32.#33       // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #32 = Class              #34           // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour
+   #33 = NameAndType        #35:#36       // source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #34 = Utf8               plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour
+   #35 = Utf8               source
+   #36 = Utf8               Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #37 = Class              #38           // com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+   #38 = Utf8               com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+   #39 = Methodref          #37.#40       // com/simibubi/create/foundation/blockEntity/SmartBlockEntity.isVirtual:()Z
+   #40 = NameAndType        #41:#30       // isVirtual:()Z
+   #41 = Utf8               isVirtual
+   #42 = Methodref          #37.#43       // com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+   #43 = NameAndType        #44:#45       // getLevel:()Lnet/minecraft/world/level/Level;
+   #44 = Utf8               getLevel
+   #45 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #46 = Fieldref           #47.#48       // net/minecraft/world/level/Level.isClientSide:Z
+   #47 = Class              #49           // net/minecraft/world/level/Level
+   #48 = NameAndType        #50:#51       // isClientSide:Z
+   #49 = Utf8               net/minecraft/world/level/Level
+   #50 = Utf8               isClientSide
+   #51 = Utf8               Z
+   #52 = Fieldref           #53.#54       // dev/ryanhcode/sable/Sable.HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #53 = Class              #55           // dev/ryanhcode/sable/Sable
+   #54 = NameAndType        #56:#57       // HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #55 = Utf8               dev/ryanhcode/sable/Sable
+   #56 = Utf8               HELPER
+   #57 = Utf8               Ldev/ryanhcode/sable/ActiveSableCompanion;
+   #58 = Class              #59           // net/minecraft/world/level/block/entity/BlockEntity
+   #59 = Utf8               net/minecraft/world/level/block/entity/BlockEntity
+   #60 = Methodref          #61.#62       // dev/ryanhcode/sable/ActiveSableCompanion.getContaining:(Lnet/minecraft/world/level/block/entity/BlockEntity;)Ldev/ryanhcode/sable/sublevel/SubLevel;
+   #61 = Class              #63           // dev/ryanhcode/sable/ActiveSableCompanion
+   #62 = NameAndType        #64:#65       // getContaining:(Lnet/minecraft/world/level/block/entity/BlockEntity;)Ldev/ryanhcode/sable/sublevel/SubLevel;
+   #63 = Utf8               dev/ryanhcode/sable/ActiveSableCompanion
+   #64 = Utf8               getContaining
+   #65 = Utf8               (Lnet/minecraft/world/level/block/entity/BlockEntity;)Ldev/ryanhcode/sable/sublevel/SubLevel;
+   #66 = Methodref          #67.#68       // dev/ryanhcode/sable/sublevel/SubLevel.logicalPose:()Ldev/ryanhcode/sable/companion/math/Pose3d;
+   #67 = Class              #69           // dev/ryanhcode/sable/sublevel/SubLevel
+   #68 = NameAndType        #70:#71       // logicalPose:()Ldev/ryanhcode/sable/companion/math/Pose3d;
+   #69 = Utf8               dev/ryanhcode/sable/sublevel/SubLevel
+   #70 = Utf8               logicalPose
+   #71 = Utf8               ()Ldev/ryanhcode/sable/companion/math/Pose3d;
+   #72 = Fieldref           #32.#73       // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.segments:Ljava/util/List;
+   #73 = NameAndType        #74:#75       // segments:Ljava/util/List;
+   #74 = Utf8               segments
+   #75 = Utf8               Ljava/util/List;
+   #76 = InvokeDynamic      #0:#77        // #0:accept:(Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;)Ljava/util/function/Consumer;
+   #77 = NameAndType        #78:#79       // accept:(Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;)Ljava/util/function/Consumer;
+   #78 = Utf8               accept
+   #79 = Utf8               (Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;)Ljava/util/function/Consumer;
+   #80 = InterfaceMethodref #81.#82       // java/util/List.forEach:(Ljava/util/function/Consumer;)V
+   #81 = Class              #83           // java/util/List
+   #82 = NameAndType        #84:#85       // forEach:(Ljava/util/function/Consumer;)V
+   #83 = Utf8               java/util/List
+   #84 = Utf8               forEach
+   #85 = Utf8               (Ljava/util/function/Consumer;)V
+   #86 = InterfaceMethodref #87.#88       // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+   #87 = Class              #89           // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+   #88 = NameAndType        #90:#91       // getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+   #89 = Utf8               plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+   #90 = Utf8               getType
+   #91 = Utf8               ()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+   #92 = Class              #93           // plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension
+   #93 = Utf8               plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension
+   #94 = InterfaceMethodref #92.#95       // plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.active:()Z
+   #95 = NameAndType        #96:#30       // active:()Z
+   #96 = Utf8               active
+   #97 = InterfaceMethodref #87.#98       // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getStartOffset:()I
+   #98 = NameAndType        #99:#100      // getStartOffset:()I
+   #99 = Utf8               getStartOffset
+  #100 = Utf8               ()I
+  #101 = InterfaceMethodref #87.#102      // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getEndOffset:()I
+  #102 = NameAndType        #103:#100     // getEndOffset:()I
+  #103 = Utf8               getEndOffset
+  #104 = InterfaceMethodref #105.#106     // com/simibubi/create/content/kinetics/fan/IAirCurrentSource.getAirCurrentPos:()Lnet/minecraft/core/BlockPos;
+  #105 = Class              #107          // com/simibubi/create/content/kinetics/fan/IAirCurrentSource
+  #106 = NameAndType        #108:#109     // getAirCurrentPos:()Lnet/minecraft/core/BlockPos;
+  #107 = Utf8               com/simibubi/create/content/kinetics/fan/IAirCurrentSource
+  #108 = Utf8               getAirCurrentPos
+  #109 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #110 = Fieldref           #32.#111      // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.direction:Lnet/minecraft/core/Direction;
+  #111 = NameAndType        #112:#113     // direction:Lnet/minecraft/core/Direction;
+  #112 = Utf8               direction
+  #113 = Utf8               Lnet/minecraft/core/Direction;
+  #114 = Methodref          #115.#116     // net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #115 = Class              #117          // net/minecraft/core/BlockPos
+  #116 = NameAndType        #118:#119     // relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #117 = Utf8               net/minecraft/core/BlockPos
+  #118 = Utf8               relative
+  #119 = Utf8               (Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+  #120 = Methodref          #115.#121     // net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+  #121 = NameAndType        #122:#123     // getCenter:()Lnet/minecraft/world/phys/Vec3;
+  #122 = Utf8               getCenter
+  #123 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #124 = InterfaceMethodref #125.#126     // dev/ryanhcode/sable/companion/math/Pose3dc.transformPosition:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #125 = Class              #127          // dev/ryanhcode/sable/companion/math/Pose3dc
+  #126 = NameAndType        #128:#129     // transformPosition:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #127 = Utf8               dev/ryanhcode/sable/companion/math/Pose3dc
+  #128 = Utf8               transformPosition
+  #129 = Utf8               (Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #130 = Fieldref           #131.#132     // net/minecraft/world/phys/Vec3.x:D
+  #131 = Class              #133          // net/minecraft/world/phys/Vec3
+  #132 = NameAndType        #134:#135     // x:D
+  #133 = Utf8               net/minecraft/world/phys/Vec3
+  #134 = Utf8               x
+  #135 = Utf8               D
+  #136 = Fieldref           #131.#137     // net/minecraft/world/phys/Vec3.y:D
+  #137 = NameAndType        #138:#135     // y:D
+  #138 = Utf8               y
+  #139 = Fieldref           #131.#140     // net/minecraft/world/phys/Vec3.z:D
+  #140 = NameAndType        #141:#135     // z:D
+  #141 = Utf8               z
+  #142 = Methodref          #115.#143     // net/minecraft/core/BlockPos.containing:(DDD)Lnet/minecraft/core/BlockPos;
+  #143 = NameAndType        #144:#145     // containing:(DDD)Lnet/minecraft/core/BlockPos;
+  #144 = Utf8               containing
+  #145 = Utf8               (DDD)Lnet/minecraft/core/BlockPos;
+  #146 = Methodref          #58.#43       // net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+  #147 = Methodref          #47.#148      // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #148 = NameAndType        #149:#150     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #149 = Utf8               getBlockState
+  #150 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #151 = InterfaceMethodref #92.#152      // plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.canAffectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #152 = NameAndType        #153:#154     // canAffectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #153 = Utf8               canAffectBlock
+  #154 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+  #155 = InterfaceMethodref #92.#156      // plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.affectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #156 = NameAndType        #157:#158     // affectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #157 = Utf8               affectBlock
+  #158 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+  #159 = Class              #160          // dev/ryanhcode/sable/companion/math/BoundingBox3d
+  #160 = Utf8               dev/ryanhcode/sable/companion/math/BoundingBox3d
+  #161 = Methodref          #159.#162     // dev/ryanhcode/sable/companion/math/BoundingBox3d."<init>":(Lnet/minecraft/core/BlockPos;)V
+  #162 = NameAndType        #5:#163       // "<init>":(Lnet/minecraft/core/BlockPos;)V
+  #163 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #164 = Methodref          #61.#165      // dev/ryanhcode/sable/ActiveSableCompanion.getAllIntersecting:(Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/math/BoundingBox3dc;)Ljava/lang/Iterable;
+  #165 = NameAndType        #166:#167     // getAllIntersecting:(Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/math/BoundingBox3dc;)Ljava/lang/Iterable;
+  #166 = Utf8               getAllIntersecting
+  #167 = Utf8               (Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/math/BoundingBox3dc;)Ljava/lang/Iterable;
+  #168 = InvokeDynamic      #1:#169       // #1:accept:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;)Ljava/util/function/Consumer;
+  #169 = NameAndType        #78:#170      // accept:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;)Ljava/util/function/Consumer;
+  #170 = Utf8               (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;)Ljava/util/function/Consumer;
+  #171 = InterfaceMethodref #172.#82      // java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+  #172 = Class              #173          // java/lang/Iterable
+  #173 = Utf8               java/lang/Iterable
+  #174 = Methodref          #67.#175      // dev/ryanhcode/sable/sublevel/SubLevel.getPlot:()Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+  #175 = NameAndType        #176:#177     // getPlot:()Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+  #176 = Utf8               getPlot
+  #177 = Utf8               ()Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+  #178 = Methodref          #179.#180     // dev/ryanhcode/sable/sublevel/plot/LevelPlot.getEmbeddedLevelAccessor:()Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+  #179 = Class              #181          // dev/ryanhcode/sable/sublevel/plot/LevelPlot
+  #180 = NameAndType        #182:#183     // getEmbeddedLevelAccessor:()Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+  #181 = Utf8               dev/ryanhcode/sable/sublevel/plot/LevelPlot
+  #182 = Utf8               getEmbeddedLevelAccessor
+  #183 = Utf8               ()Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+  #184 = InterfaceMethodref #125.#185     // dev/ryanhcode/sable/companion/math/Pose3dc.transformPositionInverse:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #185 = NameAndType        #186:#129     // transformPositionInverse:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+  #186 = Utf8               transformPositionInverse
+  #187 = Methodref          #188.#189     // dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #188 = Class              #190          // dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor
+  #189 = NameAndType        #44:#191      // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #190 = Utf8               dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor
+  #191 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #192 = Methodref          #193.#148     // net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #193 = Class              #194          // net/minecraft/server/level/ServerLevel
+  #194 = Utf8               net/minecraft/server/level/ServerLevel
+  #195 = Utf8               RuntimeVisibleAnnotations
+  #196 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #197 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #198 = Utf8               Signature
+  #199 = Utf8               Ljava/util/List<Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;>;
+  #200 = Utf8               Code
+  #201 = Utf8               LineNumberTable
+  #202 = Utf8               LocalVariableTable
+  #203 = Utf8               this
+  #204 = Utf8               Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;
+  #205 = Utf8               tick$tickAirCurrentBlockHit
+  #206 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #207 = Utf8               be
+  #208 = Utf8               Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+  #209 = Utf8               ci
+  #210 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #211 = Utf8               helper
+  #212 = Utf8               subLevel
+  #213 = Utf8               Ldev/ryanhcode/sable/sublevel/SubLevel;
+  #214 = Utf8               pose
+  #215 = Utf8               Ldev/ryanhcode/sable/companion/math/Pose3dc;
+  #216 = Utf8               StackMapTable
+  #217 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #218 = Utf8               method
+  #219 = Utf8               tick
+  #220 = Utf8               at
+  #221 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #222 = Utf8               value
+  #223 = Utf8               HEAD
+  #224 = Utf8               lambda$tick$tickAirCurrentBlockHit$1
+  #225 = Utf8               (Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #226 = Utf8               extendType
+  #227 = Utf8               Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;
+  #228 = Utf8               currentPos
+  #229 = Utf8               Lnet/minecraft/core/BlockPos;
+  #230 = Utf8               position
+  #231 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #232 = Utf8               mainWorldPos
+  #233 = Utf8               level
+  #234 = Utf8               Lnet/minecraft/world/level/Level;
+  #235 = Utf8               blockState
+  #236 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #237 = Utf8               subLevelsToCheck
+  #238 = Utf8               Ljava/lang/Iterable;
+  #239 = Utf8               finalPosition
+  #240 = Utf8               i
+  #241 = Utf8               I
+  #242 = Utf8               seg
+  #243 = Utf8               Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+  #244 = Utf8               type
+  #245 = Utf8               Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #246 = Utf8               LocalVariableTypeTable
+  #247 = Utf8               Ljava/lang/Iterable<Ldev/ryanhcode/sable/sublevel/SubLevel;>;
+  #248 = Class              #249          // com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+  #249 = Utf8               com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+  #250 = Class              #251          // net/minecraft/world/level/block/state/BlockState
+  #251 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #252 = Utf8               lambda$tick$tickAirCurrentBlockHit$0
+  #253 = Utf8               (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #254 = Utf8               plot
+  #255 = Utf8               Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+  #256 = Utf8               embLevel
+  #257 = Utf8               Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+  #258 = Utf8               sbPose
+  #259 = Utf8               inSBPosition
+  #260 = Utf8               sbPos
+  #261 = Utf8               bs
+  #262 = Utf8               sb
+  #263 = Utf8               SourceFile
+  #264 = Utf8               AirCurrentMixinForSimulatedBehaviour.java
+  #265 = Utf8               Lme/fallenbreath/conditionalmixin/api/annotation/Restriction;
+  #266 = Utf8               require
+  #267 = Utf8               Lme/fallenbreath/conditionalmixin/api/annotation/Condition;
+  #268 = Utf8               sable
+  #269 = Utf8               RuntimeInvisibleAnnotations
+  #270 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #271 = Utf8               Lcom/simibubi/create/content/kinetics/fan/AirCurrent;
+  #272 = Utf8               BootstrapMethods
+  #273 = MethodType         #274          //  (Ljava/lang/Object;)V
+  #274 = Utf8               (Ljava/lang/Object;)V
+  #275 = MethodHandle       5:#276        // REF_invokeVirtual plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$1:(Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #276 = Methodref          #32.#277      // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$1:(Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #277 = NameAndType        #224:#225     // lambda$tick$tickAirCurrentBlockHit$1:(Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #278 = MethodType         #279          //  (Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #279 = Utf8               (Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  #280 = MethodHandle       6:#281        // REF_invokeStatic plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$0:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #281 = Methodref          #32.#282      // plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$0:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #282 = NameAndType        #252:#253     // lambda$tick$tickAirCurrentBlockHit$0:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #283 = MethodType         #284          //  (Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #284 = Utf8               (Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+  #285 = MethodHandle       6:#286        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #286 = Methodref          #287.#288     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #287 = Class              #289          // java/lang/invoke/LambdaMetafactory
+  #288 = NameAndType        #290:#291     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #289 = Utf8               java/lang/invoke/LambdaMetafactory
+  #290 = Utf8               metafactory
+  #291 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #292 = Utf8               InnerClasses
+  #293 = Class              #294          // plus/dragons/createdragonsplus/config/FeaturesConfig
+  #294 = Utf8               plus/dragons/createdragonsplus/config/FeaturesConfig
+  #295 = Utf8               ConfigFeature
+  #296 = Class              #297          // java/lang/invoke/MethodHandles$Lookup
+  #297 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #298 = Class              #299          // java/lang/invoke/MethodHandles
+  #299 = Utf8               java/lang/invoke/MethodHandles
+  #300 = Utf8               Lookup
+{
+  public com.simibubi.create.content.kinetics.fan.IAirCurrentSource source;
+    descriptor: Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #196()
+        org.spongepowered.asm.mixin.Shadow
+      1: #197()
+        org.spongepowered.asm.mixin.Final
+
+  public java.util.List<plus.dragons.createdragonsplus.common.kinetics.fan.AirCurrentSegmentAccess> segments;
+    descriptor: Ljava/util/List;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #199                         // Ljava/util/List<Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;>;
+    RuntimeVisibleAnnotations:
+      0: #196()
+        org.spongepowered.asm.mixin.Shadow
+
+  public net.minecraft.core.Direction direction;
+    descriptor: Lnet/minecraft/core/Direction;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #196()
+        org.spongepowered.asm.mixin.Shadow
+
+  public plus.dragons.createdragonsplus.mixin.simulated.AirCurrentMixinForSimulatedBehaviour();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 48: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;
+
+  private void tick$tickAirCurrentBlockHit(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=6, args_size=2
+         0: invokestatic  #7                  // Method plus/dragons/createdragonsplus/config/CDPConfig.features:()Lplus/dragons/createdragonsplus/config/CDPFeaturesConfig;
+         3: getfield      #13                 // Field plus/dragons/createdragonsplus/config/CDPFeaturesConfig.airCurrentBlockInteraction:Lplus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature;
+         6: invokevirtual #19                 // Method plus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature.get:()Ljava/lang/Boolean;
+         9: invokevirtual #25                 // Method java/lang/Boolean.booleanValue:()Z
+        12: ifne          16
+        15: return
+        16: aload_0
+        17: getfield      #31                 // Field source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+        20: astore_3
+        21: aload_3
+        22: instanceof    #37                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        25: ifeq          36
+        28: aload_3
+        29: checkcast     #37                 // class com/simibubi/create/foundation/blockEntity/SmartBlockEntity
+        32: astore_2
+        33: goto          37
+        36: return
+        37: aload_2
+        38: invokevirtual #39                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.isVirtual:()Z
+        41: ifne          54
+        44: aload_2
+        45: invokevirtual #42                 // Method com/simibubi/create/foundation/blockEntity/SmartBlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+        48: getfield      #46                 // Field net/minecraft/world/level/Level.isClientSide:Z
+        51: ifeq          55
+        54: return
+        55: getstatic     #52                 // Field dev/ryanhcode/sable/Sable.HELPER:Ldev/ryanhcode/sable/ActiveSableCompanion;
+        58: astore_3
+        59: aload_3
+        60: aload_0
+        61: getfield      #31                 // Field source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+        64: checkcast     #58                 // class net/minecraft/world/level/block/entity/BlockEntity
+        67: invokevirtual #60                 // Method dev/ryanhcode/sable/ActiveSableCompanion.getContaining:(Lnet/minecraft/world/level/block/entity/BlockEntity;)Ldev/ryanhcode/sable/sublevel/SubLevel;
+        70: astore        4
+        72: aload         4
+        74: ifnonnull     78
+        77: return
+        78: aload         4
+        80: invokevirtual #66                 // Method dev/ryanhcode/sable/sublevel/SubLevel.logicalPose:()Ldev/ryanhcode/sable/companion/math/Pose3d;
+        83: astore        5
+        85: aload_0
+        86: getfield      #72                 // Field segments:Ljava/util/List;
+        89: aload_0
+        90: aload         5
+        92: aload_3
+        93: aload         4
+        95: invokedynamic #76,  0             // InvokeDynamic #0:accept:(Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;)Ljava/util/function/Consumer;
+       100: invokeinterface #80,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+       105: return
+      LineNumberTable:
+        line 59: 0
+        line 60: 16
+        line 61: 37
+        line 62: 55
+        line 63: 59
+        line 64: 72
+        line 65: 77
+        line 66: 78
+        line 67: 85
+        line 97: 105
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           33       3     2    be   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+            0     106     0  this   Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;
+            0     106     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           37      69     2    be   Lcom/simibubi/create/foundation/blockEntity/SmartBlockEntity;
+           59      47     3 helper   Ldev/ryanhcode/sable/ActiveSableCompanion;
+           72      34     4 subLevel   Ldev/ryanhcode/sable/sublevel/SubLevel;
+           85      21     5  pose   Ldev/ryanhcode/sable/companion/math/Pose3dc;
+      StackMapTable: number_of_entries = 6
+        frame_type = 16 /* same */
+        frame_type = 19 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/foundation/blockEntity/SmartBlockEntity ]
+        frame_type = 16 /* same */
+        frame_type = 0 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 22
+          locals = [ class dev/ryanhcode/sable/ActiveSableCompanion, class dev/ryanhcode/sable/sublevel/SubLevel ]
+    RuntimeVisibleAnnotations:
+      0: #217(#218=[s#219],#220=[@#221(#222=s#223)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+
+  private void lambda$tick$tickAirCurrentBlockHit$1(dev.ryanhcode.sable.companion.math.Pose3dc, dev.ryanhcode.sable.ActiveSableCompanion, dev.ryanhcode.sable.sublevel.SubLevel, plus.dragons.createdragonsplus.common.kinetics.fan.AirCurrentSegmentAccess);
+    descriptor: (Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+    flags: (0x1002) ACC_PRIVATE, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=15, args_size=5
+         0: aload         4
+         2: invokeinterface #86,  1           // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+         7: astore        5
+         9: aload         5
+        11: ifnull        39
+        14: aload         5
+        16: instanceof    #92                 // class plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension
+        19: ifeq          39
+        22: aload         5
+        24: checkcast     #92                 // class plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension
+        27: astore        6
+        29: aload         6
+        31: invokeinterface #94,  1           // InterfaceMethod plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.active:()Z
+        36: ifne          40
+        39: return
+        40: aload         4
+        42: invokeinterface #97,  1           // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getStartOffset:()I
+        47: istore        7
+        49: iload         7
+        51: aload         4
+        53: invokeinterface #101,  1          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getEndOffset:()I
+        58: if_icmpge     212
+        61: aload_0
+        62: getfield      #31                 // Field source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+        65: invokeinterface #104,  1          // InterfaceMethod com/simibubi/create/content/kinetics/fan/IAirCurrentSource.getAirCurrentPos:()Lnet/minecraft/core/BlockPos;
+        70: aload_0
+        71: getfield      #110                // Field direction:Lnet/minecraft/core/Direction;
+        74: iload         7
+        76: invokevirtual #114                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;
+        79: astore        8
+        81: aload         8
+        83: invokevirtual #120                // Method net/minecraft/core/BlockPos.getCenter:()Lnet/minecraft/world/phys/Vec3;
+        86: astore        9
+        88: aload_1
+        89: aload         9
+        91: invokeinterface #124,  2          // InterfaceMethod dev/ryanhcode/sable/companion/math/Pose3dc.transformPosition:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+        96: astore        9
+        98: aload         9
+       100: getfield      #130                // Field net/minecraft/world/phys/Vec3.x:D
+       103: aload         9
+       105: getfield      #136                // Field net/minecraft/world/phys/Vec3.y:D
+       108: aload         9
+       110: getfield      #139                // Field net/minecraft/world/phys/Vec3.z:D
+       113: invokestatic  #142                // Method net/minecraft/core/BlockPos.containing:(DDD)Lnet/minecraft/core/BlockPos;
+       116: astore        10
+       118: aload_0
+       119: getfield      #31                 // Field source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+       122: checkcast     #58                 // class net/minecraft/world/level/block/entity/BlockEntity
+       125: invokevirtual #146                // Method net/minecraft/world/level/block/entity/BlockEntity.getLevel:()Lnet/minecraft/world/level/Level;
+       128: astore        11
+       130: aload         11
+       132: aload         10
+       134: invokevirtual #147                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       137: astore        12
+       139: aload         6
+       141: aload         11
+       143: aload         10
+       145: aload         12
+       147: invokeinterface #151,  4          // InterfaceMethod plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.canAffectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+       152: ifeq          168
+       155: aload         6
+       157: aload         11
+       159: aload         10
+       161: aload         12
+       163: invokeinterface #155,  4          // InterfaceMethod plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.affectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+       168: aload_2
+       169: aload         11
+       171: new           #159                // class dev/ryanhcode/sable/companion/math/BoundingBox3d
+       174: dup
+       175: aload         10
+       177: invokespecial #161                // Method dev/ryanhcode/sable/companion/math/BoundingBox3d."<init>":(Lnet/minecraft/core/BlockPos;)V
+       180: invokevirtual #164                // Method dev/ryanhcode/sable/ActiveSableCompanion.getAllIntersecting:(Lnet/minecraft/world/level/Level;Ldev/ryanhcode/sable/companion/math/BoundingBox3dc;)Ljava/lang/Iterable;
+       183: astore        13
+       185: aload         9
+       187: astore        14
+       189: aload         13
+       191: aload_3
+       192: aload         14
+       194: aload         6
+       196: invokedynamic #168,  0            // InvokeDynamic #1:accept:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;)Ljava/util/function/Consumer;
+       201: invokeinterface #171,  2          // InterfaceMethod java/lang/Iterable.forEach:(Ljava/util/function/Consumer;)V
+       206: iinc          7, 1
+       209: goto          49
+       212: return
+      LineNumberTable:
+        line 68: 0
+        line 69: 9
+        line 70: 40
+        line 71: 61
+        line 72: 81
+        line 73: 88
+        line 74: 98
+        line 75: 118
+        line 76: 130
+        line 77: 139
+        line 78: 155
+        line 80: 168
+        line 81: 185
+        line 82: 189
+        line 70: 206
+        line 96: 212
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           29      10     6 extendType   Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;
+           81     125     8 currentPos   Lnet/minecraft/core/BlockPos;
+           88     118     9 position   Lnet/minecraft/world/phys/Vec3;
+          118      88    10 mainWorldPos   Lnet/minecraft/core/BlockPos;
+          130      76    11 level   Lnet/minecraft/world/level/Level;
+          139      67    12 blockState   Lnet/minecraft/world/level/block/state/BlockState;
+          185      21    13 subLevelsToCheck   Ljava/lang/Iterable;
+          189      17    14 finalPosition   Lnet/minecraft/world/phys/Vec3;
+           49     163     7     i   I
+            0     213     0  this   Lplus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour;
+            0     213     1  pose   Ldev/ryanhcode/sable/companion/math/Pose3dc;
+            0     213     2 helper   Ldev/ryanhcode/sable/ActiveSableCompanion;
+            0     213     3 subLevel   Ldev/ryanhcode/sable/sublevel/SubLevel;
+            0     213     4   seg   Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+            9     204     5  type   Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+           40     173     6 extendType   Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+          185      21    13 subLevelsToCheck   Ljava/lang/Iterable<Ldev/ryanhcode/sable/sublevel/SubLevel;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ class com/simibubi/create/content/kinetics/fan/processing/FanProcessingType ]
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension ]
+        frame_type = 252 /* append */
+          offset_delta = 8
+          locals = [ int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 118
+          locals = [ class plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour, class dev/ryanhcode/sable/companion/math/Pose3dc, class dev/ryanhcode/sable/ActiveSableCompanion, class dev/ryanhcode/sable/sublevel/SubLevel, class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess, class com/simibubi/create/content/kinetics/fan/processing/FanProcessingType, class plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension, int, class net/minecraft/core/BlockPos, class net/minecraft/world/phys/Vec3, class net/minecraft/core/BlockPos, class net/minecraft/world/level/Level, class net/minecraft/world/level/block/state/BlockState ]
+          stack = []
+        frame_type = 255 /* full_frame */
+          offset_delta = 43
+          locals = [ class plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour, class dev/ryanhcode/sable/companion/math/Pose3dc, class dev/ryanhcode/sable/ActiveSableCompanion, class dev/ryanhcode/sable/sublevel/SubLevel, class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess, class com/simibubi/create/content/kinetics/fan/processing/FanProcessingType, class plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension ]
+          stack = []
+
+  private static void lambda$tick$tickAirCurrentBlockHit$0(dev.ryanhcode.sable.sublevel.SubLevel, net.minecraft.world.phys.Vec3, plus.dragons.createdragonsplus.integration.simulated.api.kinetics.fan.FanProcessingTypeSimulatedExtension, dev.ryanhcode.sable.sublevel.SubLevel);
+    descriptor: (Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=10, args_size=4
+         0: aload_3
+         1: aload_0
+         2: if_acmpeq     99
+         5: aload_3
+         6: invokevirtual #174                // Method dev/ryanhcode/sable/sublevel/SubLevel.getPlot:()Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+         9: astore        4
+        11: aload         4
+        13: invokevirtual #178                // Method dev/ryanhcode/sable/sublevel/plot/LevelPlot.getEmbeddedLevelAccessor:()Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+        16: astore        5
+        18: aload_3
+        19: invokevirtual #66                 // Method dev/ryanhcode/sable/sublevel/SubLevel.logicalPose:()Ldev/ryanhcode/sable/companion/math/Pose3d;
+        22: astore        6
+        24: aload         6
+        26: aload_1
+        27: invokeinterface #184,  2          // InterfaceMethod dev/ryanhcode/sable/companion/math/Pose3dc.transformPositionInverse:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+        32: astore        7
+        34: aload         7
+        36: getfield      #130                // Field net/minecraft/world/phys/Vec3.x:D
+        39: aload         7
+        41: getfield      #136                // Field net/minecraft/world/phys/Vec3.y:D
+        44: aload         7
+        46: getfield      #139                // Field net/minecraft/world/phys/Vec3.z:D
+        49: invokestatic  #142                // Method net/minecraft/core/BlockPos.containing:(DDD)Lnet/minecraft/core/BlockPos;
+        52: astore        8
+        54: aload         5
+        56: invokevirtual #187                // Method dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+        59: aload         8
+        61: invokevirtual #192                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        64: astore        9
+        66: aload_2
+        67: aload         5
+        69: invokevirtual #187                // Method dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+        72: aload         8
+        74: aload         9
+        76: invokeinterface #151,  4          // InterfaceMethod plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.canAffectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z
+        81: ifeq          99
+        84: aload_2
+        85: aload         5
+        87: invokevirtual #187                // Method dev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+        90: aload         8
+        92: aload         9
+        94: invokeinterface #155,  4          // InterfaceMethod plus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension.affectBlock:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+        99: return
+      LineNumberTable:
+        line 83: 0
+        line 84: 5
+        line 85: 11
+        line 86: 18
+        line 87: 24
+        line 88: 34
+        line 89: 54
+        line 90: 66
+        line 91: 84
+        line 94: 99
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           11      88     4  plot   Ldev/ryanhcode/sable/sublevel/plot/LevelPlot;
+           18      81     5 embLevel   Ldev/ryanhcode/sable/sublevel/plot/EmbeddedPlotLevelAccessor;
+           24      75     6 sbPose   Ldev/ryanhcode/sable/companion/math/Pose3dc;
+           34      65     7 inSBPosition   Lnet/minecraft/world/phys/Vec3;
+           54      45     8 sbPos   Lnet/minecraft/core/BlockPos;
+           66      33     9    bs   Lnet/minecraft/world/level/block/state/BlockState;
+            0     100     0 subLevel   Ldev/ryanhcode/sable/sublevel/SubLevel;
+            0     100     1 finalPosition   Lnet/minecraft/world/phys/Vec3;
+            0     100     2 extendType   Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;
+            0     100     3    sb   Ldev/ryanhcode/sable/sublevel/SubLevel;
+      StackMapTable: number_of_entries = 1
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 99
+}
+SourceFile: "AirCurrentMixinForSimulatedBehaviour.java"
+RuntimeVisibleAnnotations:
+  0: #265(#266=[@#267(#222=s#268)])
+    me.fallenbreath.conditionalmixin.api.annotation.Restriction(
+      require=[@me.fallenbreath.conditionalmixin.api.annotation.Condition(
+        value="sable"
+      )]
+    )
+RuntimeInvisibleAnnotations:
+  0: #270(#222=[c#271])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/kinetics/fan/AirCurrent;]
+    )
+BootstrapMethods:
+  0: #285 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #273 (Ljava/lang/Object;)V
+      #275 REF_invokeVirtual plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$1:(Ldev/ryanhcode/sable/companion/math/Pose3dc;Ldev/ryanhcode/sable/ActiveSableCompanion;Ldev/ryanhcode/sable/sublevel/SubLevel;Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+      #278 (Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;)V
+  1: #285 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #273 (Ljava/lang/Object;)V
+      #280 REF_invokeStatic plus/dragons/createdragonsplus/mixin/simulated/AirCurrentMixinForSimulatedBehaviour.lambda$tick$tickAirCurrentBlockHit$0:(Ldev/ryanhcode/sable/sublevel/SubLevel;Lnet/minecraft/world/phys/Vec3;Lplus/dragons/createdragonsplus/integration/simulated/api/kinetics/fan/FanProcessingTypeSimulatedExtension;Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+      #283 (Ldev/ryanhcode/sable/sublevel/SubLevel;)V
+InnerClasses:
+  public #295= #20 of #293;               // ConfigFeature=class plus/dragons/createdragonsplus/config/FeaturesConfig$ConfigFeature of class plus/dragons/createdragonsplus/config/FeaturesConfig
+  public static final #300= #296 of #298; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

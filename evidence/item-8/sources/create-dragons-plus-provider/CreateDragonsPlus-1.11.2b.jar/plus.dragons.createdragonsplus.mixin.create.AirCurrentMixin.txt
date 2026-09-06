@@ -1,0 +1,698 @@
+Classfile CreateDragonsPlus-1.11.2b.jar!/plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.class
+  Last modified Feb 1, 1980; size 8332 bytes
+  SHA-256 checksum fa8921cadb1b3fbeab7808c80e366c202789a31566c22033220588772b2b2e8a
+  Compiled from "AirCurrentMixin.java"
+public class plus.dragons.createdragonsplus.mixin.create.AirCurrentMixin implements plus.dragons.createdragonsplus.common.kinetics.fan.AirCurrentAccess
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #14                         // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 4, methods: 5, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+    #8 = Class              #10           // net/minecraft/world/level/Level
+    #9 = NameAndType        #11:#12       // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #10 = Utf8               net/minecraft/world/level/Level
+   #11 = Utf8               getBlockState
+   #12 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+   #13 = Fieldref           #14.#15       // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #14 = Class              #16           // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin
+   #15 = NameAndType        #17:#18       // source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #16 = Utf8               plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin
+   #17 = Utf8               source
+   #18 = Utf8               Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+   #19 = InterfaceMethodref #20.#21       // com/simibubi/create/content/kinetics/fan/IAirCurrentSource.getAirFlowDirection:()Lnet/minecraft/core/Direction;
+   #20 = Class              #22           // com/simibubi/create/content/kinetics/fan/IAirCurrentSource
+   #21 = NameAndType        #23:#24       // getAirFlowDirection:()Lnet/minecraft/core/Direction;
+   #22 = Utf8               com/simibubi/create/content/kinetics/fan/IAirCurrentSource
+   #23 = Utf8               getAirFlowDirection
+   #24 = Utf8               ()Lnet/minecraft/core/Direction;
+   #25 = Fieldref           #26.#27       // net/minecraft/world/level/block/Blocks.DRAGON_HEAD:Lnet/minecraft/world/level/block/Block;
+   #26 = Class              #28           // net/minecraft/world/level/block/Blocks
+   #27 = NameAndType        #29:#30       // DRAGON_HEAD:Lnet/minecraft/world/level/block/Block;
+   #28 = Utf8               net/minecraft/world/level/block/Blocks
+   #29 = Utf8               DRAGON_HEAD
+   #30 = Utf8               Lnet/minecraft/world/level/block/Block;
+   #31 = Methodref          #32.#33       // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+   #32 = Class              #34           // net/minecraft/world/level/block/state/BlockState
+   #33 = NameAndType        #35:#36       // is:(Lnet/minecraft/world/level/block/Block;)Z
+   #34 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #35 = Utf8               is
+   #36 = Utf8               (Lnet/minecraft/world/level/block/Block;)Z
+   #37 = Fieldref           #38.#39       // net/minecraft/world/level/block/SkullBlock.ROTATION:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+   #38 = Class              #40           // net/minecraft/world/level/block/SkullBlock
+   #39 = NameAndType        #41:#42       // ROTATION:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+   #40 = Utf8               net/minecraft/world/level/block/SkullBlock
+   #41 = Utf8               ROTATION
+   #42 = Utf8               Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+   #43 = Methodref          #32.#44       // net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #44 = NameAndType        #45:#46       // getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #45 = Utf8               getValue
+   #46 = Utf8               (Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+   #47 = Class              #48           // java/lang/Integer
+   #48 = Utf8               java/lang/Integer
+   #49 = Methodref          #47.#50       // java/lang/Integer.intValue:()I
+   #50 = NameAndType        #51:#52       // intValue:()I
+   #51 = Utf8               intValue
+   #52 = Utf8               ()I
+   #53 = Methodref          #54.#55       // net/minecraft/world/level/block/state/properties/RotationSegment.convertToDirection:(I)Ljava/util/Optional;
+   #54 = Class              #56           // net/minecraft/world/level/block/state/properties/RotationSegment
+   #55 = NameAndType        #57:#58       // convertToDirection:(I)Ljava/util/Optional;
+   #56 = Utf8               net/minecraft/world/level/block/state/properties/RotationSegment
+   #57 = Utf8               convertToDirection
+   #58 = Utf8               (I)Ljava/util/Optional;
+   #59 = Methodref          #60.#61       // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #60 = Class              #62           // java/util/Optional
+   #61 = NameAndType        #63:#64       // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #62 = Utf8               java/util/Optional
+   #63 = Utf8               orElse
+   #64 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #65 = Class              #66           // net/minecraft/core/Direction
+   #66 = Utf8               net/minecraft/core/Direction
+   #67 = Fieldref           #68.#69       // plus/dragons/createdragonsplus/common/registry/CDPFanProcessingTypes.ENDING:Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #68 = Class              #70           // plus/dragons/createdragonsplus/common/registry/CDPFanProcessingTypes
+   #69 = NameAndType        #71:#72       // ENDING:Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #70 = Utf8               plus/dragons/createdragonsplus/common/registry/CDPFanProcessingTypes
+   #71 = Utf8               ENDING
+   #72 = Utf8               Lnet/neoforged/neoforge/registries/DeferredHolder;
+   #73 = Methodref          #74.#75       // net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+   #74 = Class              #76           // net/neoforged/neoforge/registries/DeferredHolder
+   #75 = NameAndType        #77:#78       // get:()Ljava/lang/Object;
+   #76 = Utf8               net/neoforged/neoforge/registries/DeferredHolder
+   #77 = Utf8               get
+   #78 = Utf8               ()Ljava/lang/Object;
+   #79 = Class              #80           // com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+   #80 = Utf8               com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+   #81 = Fieldref           #26.#82       // net/minecraft/world/level/block/Blocks.DRAGON_WALL_HEAD:Lnet/minecraft/world/level/block/Block;
+   #82 = NameAndType        #83:#30       // DRAGON_WALL_HEAD:Lnet/minecraft/world/level/block/Block;
+   #83 = Utf8               DRAGON_WALL_HEAD
+   #84 = Fieldref           #85.#86       // net/minecraft/world/level/block/WallSkullBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+   #85 = Class              #87           // net/minecraft/world/level/block/WallSkullBlock
+   #86 = NameAndType        #88:#89       // FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+   #87 = Utf8               net/minecraft/world/level/block/WallSkullBlock
+   #88 = Utf8               FACING
+   #89 = Utf8               Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+   #90 = InterfaceMethodref #91.#92       // com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #91 = Class              #93           // com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #92 = NameAndType        #94:#95       // call:([Ljava/lang/Object;)Ljava/lang/Object;
+   #93 = Utf8               com/llamalad7/mixinextras/injector/wrapoperation/Operation
+   #94 = Utf8               call
+   #95 = Utf8               ([Ljava/lang/Object;)Ljava/lang/Object;
+   #96 = Class              #97           // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+   #97 = Utf8               plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+   #98 = InterfaceMethodref #96.#99       // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+   #99 = NameAndType        #100:#101     // getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #100 = Utf8               getType
+  #101 = Utf8               ()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #102 = Class              #103          // plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+  #103 = Utf8               plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+  #104 = InterfaceMethodref #102.#105     // plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType.getParticleDataAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/lang/Object;
+  #105 = NameAndType        #106:#107     // getParticleDataAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/lang/Object;
+  #106 = Utf8               getParticleDataAt
+  #107 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/lang/Object;
+  #108 = InterfaceMethodref #96.#109      // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.setParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;Ljava/lang/Object;)V
+  #109 = NameAndType        #110:#111     // setParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;Ljava/lang/Object;)V
+  #110 = Utf8               setParticleData
+  #111 = Utf8               (Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;Ljava/lang/Object;)V
+  #112 = Methodref          #14.#113      // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.getSegmentAccessAt:(F)Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+  #113 = NameAndType        #114:#115     // getSegmentAccessAt:(F)Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+  #114 = Utf8               getSegmentAccessAt
+  #115 = Utf8               (F)Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+  #116 = InterfaceMethodref #96.#117      // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;)Ljava/lang/Object;
+  #117 = NameAndType        #118:#119     // getParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;)Ljava/lang/Object;
+  #118 = Utf8               getParticleData
+  #119 = Utf8               (Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;)Ljava/lang/Object;
+  #120 = InterfaceMethodref #102.#121     // plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType.spawnProcessingParticles:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Ljava/lang/Object;)V
+  #121 = NameAndType        #122:#123     // spawnProcessingParticles:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Ljava/lang/Object;)V
+  #122 = Utf8               spawnProcessingParticles
+  #123 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Ljava/lang/Object;)V
+  #124 = Fieldref           #14.#125      // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.maxDistance:F
+  #125 = NameAndType        #126:#127     // maxDistance:F
+  #126 = Utf8               maxDistance
+  #127 = Utf8               F
+  #128 = Fieldref           #14.#129      // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.pushing:Z
+  #129 = NameAndType        #130:#131     // pushing:Z
+  #130 = Utf8               pushing
+  #131 = Utf8               Z
+  #132 = Fieldref           #14.#133      // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin.segments:Ljava/util/List;
+  #133 = NameAndType        #134:#135     // segments:Ljava/util/List;
+  #134 = Utf8               segments
+  #135 = Utf8               Ljava/util/List;
+  #136 = InterfaceMethodref #137.#138     // java/util/List.iterator:()Ljava/util/Iterator;
+  #137 = Class              #139          // java/util/List
+  #138 = NameAndType        #140:#141     // iterator:()Ljava/util/Iterator;
+  #139 = Utf8               java/util/List
+  #140 = Utf8               iterator
+  #141 = Utf8               ()Ljava/util/Iterator;
+  #142 = InterfaceMethodref #143.#144     // java/util/Iterator.hasNext:()Z
+  #143 = Class              #145          // java/util/Iterator
+  #144 = NameAndType        #146:#147     // hasNext:()Z
+  #145 = Utf8               java/util/Iterator
+  #146 = Utf8               hasNext
+  #147 = Utf8               ()Z
+  #148 = InterfaceMethodref #143.#149     // java/util/Iterator.next:()Ljava/lang/Object;
+  #149 = NameAndType        #150:#78      // next:()Ljava/lang/Object;
+  #150 = Utf8               next
+  #151 = InterfaceMethodref #96.#152      // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getEndOffset:()I
+  #152 = NameAndType        #153:#52      // getEndOffset:()I
+  #153 = Utf8               getEndOffset
+  #154 = Class              #155          // plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentAccess
+  #155 = Utf8               plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentAccess
+  #156 = Utf8               RuntimeVisibleAnnotations
+  #157 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #158 = Utf8               Signature
+  #159 = Utf8               Ljava/util/List<Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;>;
+  #160 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #161 = Utf8               Code
+  #162 = Utf8               LineNumberTable
+  #163 = Utf8               LocalVariableTable
+  #164 = Utf8               this
+  #165 = Utf8               Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+  #166 = Utf8               rebuild$checkDragonHead
+  #167 = Utf8               (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #168 = Utf8               facing
+  #169 = Utf8               Lnet/minecraft/core/Direction;
+  #170 = Utf8               original
+  #171 = Utf8               Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #172 = Utf8               world
+  #173 = Utf8               Lnet/minecraft/world/level/Level;
+  #174 = Utf8               currentPos
+  #175 = Utf8               Lnet/minecraft/core/BlockPos;
+  #176 = Utf8               state
+  #177 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #178 = Utf8               direction
+  #179 = Utf8               StackMapTable
+  #180 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #181 = Utf8               method
+  #182 = Utf8               rebuild
+  #183 = Utf8               at
+  #184 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #185 = Utf8               value
+  #186 = Utf8               INVOKE
+  #187 = Utf8               target
+  #188 = Utf8               Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;getAt(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #189 = Utf8               RuntimeInvisibleAnnotations
+  #190 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #191 = Utf8               RuntimeInvisibleTypeAnnotations
+  #192 = Utf8               RuntimeInvisibleParameterAnnotations
+  #193 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #194 = Utf8               name
+  #195 = Utf8               rebuild$setParticleData
+  #196 = Utf8               (Ljava/lang/Object;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+  #197 = Utf8               type
+  #198 = Utf8               Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;
+  #199 = Utf8               segment
+  #200 = Utf8               Ljava/lang/Object;
+  #201 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+  #202 = Utf8               access
+  #203 = Utf8               Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+  #204 = Utf8               LocalVariableTypeTable
+  #205 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+  #206 = Utf8               (Ljava/lang/Object;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+  #207 = Utf8               Lcom/llamalad7/mixinextras/injector/wrapoperation/WrapOperation;
+  #208 = Utf8               FIELD
+  #209 = Utf8               opcode
+  #210 = Integer            181
+  #211 = Utf8               Lcom/simibubi/create/content/kinetics/fan/AirCurrent$AirCurrentSegment;type:Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+  #212 = Utf8               Lorg/spongepowered/asm/mixin/injection/Coerce;
+  #213 = Utf8               tickAffectedEntities$spawnProcessingParticlesWithParticleData
+  #214 = Utf8               (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;D)V
+  #215 = Utf8               particleData
+  #216 = Utf8               dynamicType
+  #217 = Utf8               level
+  #218 = Utf8               pos
+  #219 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #220 = Utf8               distance
+  #221 = Utf8               D
+  #222 = Utf8               (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;D)V
+  #223 = Utf8               tickAffectedEntities
+  #224 = Utf8               Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;spawnProcessingParticles(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)V
+  #225 = Utf8               entityDistance
+  #226 = Utf8               offset
+  #227 = Utf8               SourceFile
+  #228 = Utf8               AirCurrentMixin.java
+  #229 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #230 = Utf8               Lcom/simibubi/create/content/kinetics/fan/AirCurrent;
+  #231 = Utf8               NestMembers
+  #232 = Class              #233          // plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin$AirCurrentSegmentMixin
+  #233 = Utf8               plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin$AirCurrentSegmentMixin
+  #234 = Utf8               InnerClasses
+  #235 = Utf8               AirCurrentSegmentMixin
+{
+  public float maxDistance;
+    descriptor: F
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #157()
+        org.spongepowered.asm.mixin.Shadow
+
+  public java.util.List<plus.dragons.createdragonsplus.common.kinetics.fan.AirCurrentSegmentAccess> segments;
+    descriptor: Ljava/util/List;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #159                         // Ljava/util/List<Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;>;
+    RuntimeVisibleAnnotations:
+      0: #157()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.simibubi.create.content.kinetics.fan.IAirCurrentSource source;
+    descriptor: Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #157()
+        org.spongepowered.asm.mixin.Shadow
+      1: #160()
+        org.spongepowered.asm.mixin.Final
+
+  public boolean pushing;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #157()
+        org.spongepowered.asm.mixin.Shadow
+
+  public plus.dragons.createdragonsplus.mixin.create.AirCurrentMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 51: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+
+  private com.simibubi.create.content.kinetics.fan.processing.FanProcessingType rebuild$checkDragonHead(com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    descriptor: (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=7, args_size=4
+         0: aload_2
+         1: aload_3
+         2: invokevirtual #7                  // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+         5: astore        4
+         7: aload_0
+         8: getfield      #13                 // Field source:Lcom/simibubi/create/content/kinetics/fan/IAirCurrentSource;
+        11: invokeinterface #19,  1           // InterfaceMethod com/simibubi/create/content/kinetics/fan/IAirCurrentSource.getAirFlowDirection:()Lnet/minecraft/core/Direction;
+        16: astore        5
+        18: aload         4
+        20: getstatic     #25                 // Field net/minecraft/world/level/block/Blocks.DRAGON_HEAD:Lnet/minecraft/world/level/block/Block;
+        23: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        26: ifeq          76
+        29: aload         4
+        31: getstatic     #37                 // Field net/minecraft/world/level/block/SkullBlock.ROTATION:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+        34: invokevirtual #43                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        37: checkcast     #47                 // class java/lang/Integer
+        40: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+        43: invokestatic  #53                 // Method net/minecraft/world/level/block/state/properties/RotationSegment.convertToDirection:(I)Ljava/util/Optional;
+        46: aload         5
+        48: invokevirtual #59                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        51: checkcast     #65                 // class net/minecraft/core/Direction
+        54: astore        6
+        56: aload         5
+        58: aload         6
+        60: if_acmpne     73
+        63: getstatic     #67                 // Field plus/dragons/createdragonsplus/common/registry/CDPFanProcessingTypes.ENDING:Lnet/neoforged/neoforge/registries/DeferredHolder;
+        66: invokevirtual #73                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+        69: checkcast     #79                 // class com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+        72: areturn
+        73: goto          110
+        76: aload         4
+        78: getstatic     #81                 // Field net/minecraft/world/level/block/Blocks.DRAGON_WALL_HEAD:Lnet/minecraft/world/level/block/Block;
+        81: invokevirtual #31                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+        84: ifeq          110
+        87: aload         4
+        89: getstatic     #84                 // Field net/minecraft/world/level/block/WallSkullBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+        92: invokevirtual #43                 // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+        95: aload         5
+        97: if_acmpne     110
+       100: getstatic     #67                 // Field plus/dragons/createdragonsplus/common/registry/CDPFanProcessingTypes.ENDING:Lnet/neoforged/neoforge/registries/DeferredHolder;
+       103: invokevirtual #73                 // Method net/neoforged/neoforge/registries/DeferredHolder.get:()Ljava/lang/Object;
+       106: checkcast     #79                 // class com/simibubi/create/content/kinetics/fan/processing/FanProcessingType
+       109: areturn
+       110: aload_1
+       111: areturn
+      LineNumberTable:
+        line 64: 0
+        line 65: 7
+        line 66: 18
+        line 67: 29
+        line 68: 56
+        line 69: 63
+        line 70: 73
+        line 71: 100
+        line 73: 110
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           56      17     6 facing   Lnet/minecraft/core/Direction;
+            0     112     0  this   Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+            0     112     1 original   Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+            0     112     2 world   Lnet/minecraft/world/level/Level;
+            0     112     3 currentPos   Lnet/minecraft/core/BlockPos;
+            7     105     4 state   Lnet/minecraft/world/level/block/state/BlockState;
+           18      94     5 direction   Lnet/minecraft/core/Direction;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 73
+          locals = [ class net/minecraft/world/level/block/state/BlockState, class net/minecraft/core/Direction ]
+        frame_type = 2 /* same */
+        frame_type = 33 /* same */
+    RuntimeVisibleAnnotations:
+      0: #180(#181=[s#182],#183=[@#184(#185=s#186,#187=s#188)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["rebuild"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;getAt(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;"
+          )]
+        )
+    RuntimeInvisibleAnnotations:
+      0: #190()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #190(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+      1: #190(): METHOD_FORMAL_PARAMETER, param_index=0
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #190()
+          org.jetbrains.annotations.Nullable
+      parameter 1:
+        0: #193(#194=[s#172])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["world"]
+          )
+      parameter 2:
+        0: #193(#194=[s#174])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["currentPos"]
+          )
+
+  private void rebuild$setParticleData(java.lang.Object, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>, net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    descriptor: (Ljava/lang/Object;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=9, args_size=6
+         0: aload_3
+         1: iconst_2
+         2: anewarray     #2                  // class java/lang/Object
+         5: dup
+         6: iconst_0
+         7: aload_1
+         8: aastore
+         9: dup
+        10: iconst_1
+        11: aload_2
+        12: aastore
+        13: invokeinterface #90,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        18: pop
+        19: aload_1
+        20: checkcast     #96                 // class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+        23: astore        6
+        25: aload         6
+        27: invokeinterface #98,  1           // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getType:()Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+        32: astore        8
+        34: aload         8
+        36: instanceof    #102                // class plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+        39: ifeq          69
+        42: aload         8
+        44: checkcast     #102                // class plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+        47: astore        7
+        49: aload         6
+        51: aload         7
+        53: aload         7
+        55: aload         4
+        57: aload         5
+        59: invokeinterface #104,  3          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType.getParticleDataAt:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/lang/Object;
+        64: invokeinterface #108,  3          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.setParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;Ljava/lang/Object;)V
+        69: return
+      LineNumberTable:
+        line 79: 0
+        line 80: 19
+        line 81: 25
+        line 82: 49
+        line 83: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           49      20     7  type   Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;
+            0      70     0  this   Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+            0      70     1 segment   Ljava/lang/Object;
+            0      70     2 value   Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+            0      70     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      70     4 world   Lnet/minecraft/world/level/Level;
+            0      70     5 currentPos   Lnet/minecraft/core/BlockPos;
+           25      45     6 access   Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      70     3 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 69
+          locals = [ class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess ]
+    Signature: #206                         // (Ljava/lang/Object;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)V
+    RuntimeVisibleAnnotations:
+      0: #207(#181=[s#182],#183=[@#184(#185=s#208,#209=I#210,#187=s#211)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["rebuild"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            opcode=181
+            target="Lcom/simibubi/create/content/kinetics/fan/AirCurrent$AirCurrentSegment;type:Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #212()
+          org.spongepowered.asm.mixin.injection.Coerce
+      parameter 1:
+      parameter 2:
+      parameter 3:
+        0: #193(#194=[s#172])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["world"]
+          )
+      parameter 4:
+        0: #193(#194=[s#174])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["currentPos"]
+          )
+
+  private void tickAffectedEntities$spawnProcessingParticlesWithParticleData(com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, net.minecraft.world.level.Level, net.minecraft.world.phys.Vec3, com.llamalad7.mixinextras.injector.wrapoperation.Operation<java.lang.Void>, double);
+    descriptor: (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;D)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=10, args_size=6
+         0: aload_1
+         1: instanceof    #102                // class plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+         4: ifeq          56
+         7: aload_1
+         8: checkcast     #102                // class plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType
+        11: astore        7
+        13: aload_0
+        14: dload         5
+        16: d2f
+        17: invokevirtual #112                // Method getSegmentAccessAt:(F)Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+        20: astore        8
+        22: aload         8
+        24: ifnonnull     31
+        27: aconst_null
+        28: goto          40
+        31: aload         8
+        33: aload         7
+        35: invokeinterface #116,  2          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getParticleData:(Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;)Ljava/lang/Object;
+        40: astore        9
+        42: aload         7
+        44: aload_2
+        45: aload_3
+        46: aload         9
+        48: invokeinterface #120,  4          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType.spawnProcessingParticles:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Ljava/lang/Object;)V
+        53: goto          80
+        56: aload         4
+        58: iconst_3
+        59: anewarray     #2                  // class java/lang/Object
+        62: dup
+        63: iconst_0
+        64: aload_1
+        65: aastore
+        66: dup
+        67: iconst_1
+        68: aload_2
+        69: aastore
+        70: dup
+        71: iconst_2
+        72: aload_3
+        73: aastore
+        74: invokeinterface #90,  2           // InterfaceMethod com/llamalad7/mixinextras/injector/wrapoperation/Operation.call:([Ljava/lang/Object;)Ljava/lang/Object;
+        79: pop
+        80: return
+      LineNumberTable:
+        line 88: 0
+        line 89: 13
+        line 90: 22
+        line 91: 42
+        line 92: 53
+        line 93: 56
+        line 95: 80
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           22      31     8 segment   Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+           42      11     9 particleData   Ljava/lang/Object;
+           13      43     7 dynamicType   Lplus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType;
+            0      81     0  this   Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+            0      81     1  type   Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;
+            0      81     2 level   Lnet/minecraft/world/level/Level;
+            0      81     3   pos   Lnet/minecraft/world/phys/Vec3;
+            0      81     4 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation;
+            0      81     5 distance   D
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      81     4 original   Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 253 /* append */
+          offset_delta = 31
+          locals = [ class plus/dragons/createdragonsplus/common/kinetics/fan/DynamicParticleFanProcessingType, class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess ]
+        frame_type = 72 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Object ]
+        frame_type = 249 /* chop */
+          offset_delta = 15
+        frame_type = 23 /* same */
+    Signature: #222                         // (Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;Lcom/llamalad7/mixinextras/injector/wrapoperation/Operation<Ljava/lang/Void;>;D)V
+    RuntimeVisibleAnnotations:
+      0: #207(#181=[s#223],#183=[@#184(#185=s#186,#187=s#224)])
+        com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation(
+          method=["tickAffectedEntities"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;spawnProcessingParticles(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)V"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+        0: #193(#194=[s#225])
+          com.llamalad7.mixinextras.sugar.Local(
+            name=["entityDistance"]
+          )
+
+  public plus.dragons.createdragonsplus.common.kinetics.fan.AirCurrentSegmentAccess getSegmentAccessAt(float);
+    descriptor: (F)Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: fload_1
+         1: fconst_0
+         2: fcmpl
+         3: iflt          117
+         6: fload_1
+         7: aload_0
+         8: getfield      #124                // Field maxDistance:F
+        11: fcmpg
+        12: ifgt          117
+        15: aload_0
+        16: getfield      #128                // Field pushing:Z
+        19: ifeq          71
+        22: aload_0
+        23: getfield      #132                // Field segments:Ljava/util/List;
+        26: invokeinterface #136,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        31: astore_2
+        32: aload_2
+        33: invokeinterface #142,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        38: ifeq          68
+        41: aload_2
+        42: invokeinterface #148,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        47: checkcast     #96                 // class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+        50: astore_3
+        51: fload_1
+        52: aload_3
+        53: invokeinterface #151,  1          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getEndOffset:()I
+        58: i2f
+        59: fcmpg
+        60: ifgt          65
+        63: aload_3
+        64: areturn
+        65: goto          32
+        68: goto          117
+        71: aload_0
+        72: getfield      #132                // Field segments:Ljava/util/List;
+        75: invokeinterface #136,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        80: astore_2
+        81: aload_2
+        82: invokeinterface #142,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        87: ifeq          117
+        90: aload_2
+        91: invokeinterface #148,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        96: checkcast     #96                 // class plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess
+        99: astore_3
+       100: fload_1
+       101: aload_3
+       102: invokeinterface #151,  1          // InterfaceMethod plus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess.getEndOffset:()I
+       107: i2f
+       108: fcmpl
+       109: iflt          114
+       112: aload_3
+       113: areturn
+       114: goto          81
+       117: aconst_null
+       118: areturn
+      LineNumberTable:
+        line 99: 0
+        line 100: 15
+        line 101: 22
+        line 102: 51
+        line 103: 63
+        line 105: 65
+        line 107: 71
+        line 108: 100
+        line 109: 112
+        line 111: 114
+        line 114: 117
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           51      14     3 segment   Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+          100      14     3 segment   Lplus/dragons/createdragonsplus/common/kinetics/fan/AirCurrentSegmentAccess;
+            0     119     0  this   Lplus/dragons/createdragonsplus/mixin/create/AirCurrentMixin;
+            0     119     1 offset   F
+      StackMapTable: number_of_entries = 7
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class java/util/Iterator ]
+        frame_type = 32 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 2 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ class java/util/Iterator ]
+        frame_type = 32 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    RuntimeInvisibleAnnotations:
+      0: #190()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #190(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+}
+SourceFile: "AirCurrentMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #229(#185=[c#230])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/simibubi/create/content/kinetics/fan/AirCurrent;]
+    )
+NestMembers:
+  plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin$AirCurrentSegmentMixin
+InnerClasses:
+  public static abstract #235= #232 of #14; // AirCurrentSegmentMixin=class plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin$AirCurrentSegmentMixin of class plus/dragons/createdragonsplus/mixin/create/AirCurrentMixin
