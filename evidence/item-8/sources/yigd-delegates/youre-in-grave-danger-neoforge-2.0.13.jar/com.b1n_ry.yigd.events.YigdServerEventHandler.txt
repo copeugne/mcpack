@@ -1,0 +1,2347 @@
+Classfile youre-in-grave-danger-neoforge-2.0.13.jar!/com/b1n_ry/yigd/events/YigdServerEventHandler.class
+  Last modified Jun 22, 2025; size 20640 bytes
+  SHA-256 checksum 6b1b3932f75fd28cb5dce812979dbd3455e058c2957d7f7c38f0d555b28f1915
+  Compiled from "YigdServerEventHandler.java"
+public class com.b1n_ry.yigd.events.YigdServerEventHandler
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #156                        // com/b1n_ry/yigd/events/YigdServerEventHandler
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 13, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getStack:()Lnet/minecraft/world/item/ItemStack;
+    #8 = Class              #10           // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent
+    #9 = NameAndType        #11:#12       // getStack:()Lnet/minecraft/world/item/ItemStack;
+   #10 = Utf8               com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent
+   #11 = Utf8               getStack
+   #12 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+   #13 = Methodref          #8.#14        // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getSlot:()I
+   #14 = NameAndType        #15:#16       // getSlot:()I
+   #15 = Utf8               getSlot
+   #16 = Utf8               ()I
+   #17 = Methodref          #8.#18        // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getDeathContext:()Lcom/b1n_ry/yigd/data/DeathContext;
+   #18 = NameAndType        #19:#20       // getDeathContext:()Lcom/b1n_ry/yigd/data/DeathContext;
+   #19 = Utf8               getDeathContext
+   #20 = Utf8               ()Lcom/b1n_ry/yigd/data/DeathContext;
+   #21 = Methodref          #8.#22        // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.isModify:()Z
+   #22 = NameAndType        #23:#24       // isModify:()Z
+   #23 = Utf8               isModify
+   #24 = Utf8               ()Z
+   #25 = Methodref          #26.#27       // com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+   #26 = Class              #28           // com/b1n_ry/yigd/config/YigdConfig
+   #27 = NameAndType        #29:#30       // getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+   #28 = Utf8               com/b1n_ry/yigd/config/YigdConfig
+   #29 = Utf8               getConfig
+   #30 = Utf8               ()Lcom/b1n_ry/yigd/config/YigdConfig;
+   #31 = Fieldref           #32.#33       // net/minecraft/core/registries/BuiltInRegistries.MOB_EFFECT:Lnet/minecraft/core/Registry;
+   #32 = Class              #34           // net/minecraft/core/registries/BuiltInRegistries
+   #33 = NameAndType        #35:#36       // MOB_EFFECT:Lnet/minecraft/core/Registry;
+   #34 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+   #35 = Utf8               MOB_EFFECT
+   #36 = Utf8               Lnet/minecraft/core/Registry;
+   #37 = String             #38           // amethyst_imbuement
+   #38 = Utf8               amethyst_imbuement
+   #39 = String             #40           // soulbinding
+   #40 = Utf8               soulbinding
+   #41 = Methodref          #42.#43       // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #42 = Class              #44           // net/minecraft/resources/ResourceLocation
+   #43 = NameAndType        #45:#46       // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #44 = Utf8               net/minecraft/resources/ResourceLocation
+   #45 = Utf8               fromNamespaceAndPath
+   #46 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #47 = InterfaceMethodref #48.#49       // net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+   #48 = Class              #50           // net/minecraft/core/Registry
+   #49 = NameAndType        #51:#52       // get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+   #50 = Utf8               net/minecraft/core/Registry
+   #51 = Utf8               get
+   #52 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+   #53 = Class              #54           // net/minecraft/world/effect/MobEffect
+   #54 = Utf8               net/minecraft/world/effect/MobEffect
+   #55 = InterfaceMethodref #48.#56       // net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+   #56 = NameAndType        #57:#58       // wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+   #57 = Utf8               wrapAsHolder
+   #58 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+   #59 = Methodref          #60.#61       // com/b1n_ry/yigd/data/DeathContext.player:()Lnet/minecraft/server/level/ServerPlayer;
+   #60 = Class              #62           // com/b1n_ry/yigd/data/DeathContext
+   #61 = NameAndType        #63:#64       // player:()Lnet/minecraft/server/level/ServerPlayer;
+   #62 = Utf8               com/b1n_ry/yigd/data/DeathContext
+   #63 = Utf8               player
+   #64 = Utf8               ()Lnet/minecraft/server/level/ServerPlayer;
+   #65 = Methodref          #66.#67       // net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+   #66 = Class              #68           // net/minecraft/server/level/ServerPlayer
+   #67 = NameAndType        #69:#70       // hasEffect:(Lnet/minecraft/core/Holder;)Z
+   #68 = Utf8               net/minecraft/server/level/ServerPlayer
+   #69 = Utf8               hasEffect
+   #70 = Utf8               (Lnet/minecraft/core/Holder;)Z
+   #71 = Fieldref           #72.#73       // com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+   #72 = Class              #74           // com/b1n_ry/yigd/util/DropRule
+   #73 = NameAndType        #75:#76       // KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+   #74 = Utf8               com/b1n_ry/yigd/util/DropRule
+   #75 = Utf8               KEEP
+   #76 = Utf8               Lcom/b1n_ry/yigd/util/DropRule;
+   #77 = Methodref          #8.#78        // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+   #78 = NameAndType        #79:#80       // setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+   #79 = Utf8               setDropRule
+   #80 = Utf8               (Lcom/b1n_ry/yigd/util/DropRule;)V
+   #81 = Methodref          #8.#82        // com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+   #82 = NameAndType        #83:#84       // setCanceled:(Z)V
+   #83 = Utf8               setCanceled
+   #84 = Utf8               (Z)V
+   #85 = Fieldref           #26.#86       // com/b1n_ry/yigd/config/YigdConfig.inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+   #86 = NameAndType        #87:#88       // inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+   #87 = Utf8               inventoryConfig
+   #88 = Utf8               Lcom/b1n_ry/yigd/config/InventoryConfig;
+   #89 = Fieldref           #90.#91       // com/b1n_ry/yigd/config/InventoryConfig.soulboundSlots:Ljava/util/List;
+   #90 = Class              #92           // com/b1n_ry/yigd/config/InventoryConfig
+   #91 = NameAndType        #93:#94       // soulboundSlots:Ljava/util/List;
+   #92 = Utf8               com/b1n_ry/yigd/config/InventoryConfig
+   #93 = Utf8               soulboundSlots
+   #94 = Utf8               Ljava/util/List;
+   #95 = Methodref          #96.#97       // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+   #96 = Class              #98           // java/lang/Integer
+   #97 = NameAndType        #99:#100      // valueOf:(I)Ljava/lang/Integer;
+   #98 = Utf8               java/lang/Integer
+   #99 = Utf8               valueOf
+  #100 = Utf8               (I)Ljava/lang/Integer;
+  #101 = InterfaceMethodref #102.#103     // java/util/List.contains:(Ljava/lang/Object;)Z
+  #102 = Class              #104          // java/util/List
+  #103 = NameAndType        #105:#106     // contains:(Ljava/lang/Object;)Z
+  #104 = Utf8               java/util/List
+  #105 = Utf8               contains
+  #106 = Utf8               (Ljava/lang/Object;)Z
+  #107 = Fieldref           #90.#108      // com/b1n_ry/yigd/config/InventoryConfig.vanishingSlots:Ljava/util/List;
+  #108 = NameAndType        #109:#94      // vanishingSlots:Ljava/util/List;
+  #109 = Utf8               vanishingSlots
+  #110 = Fieldref           #72.#111      // com/b1n_ry/yigd/util/DropRule.DESTROY:Lcom/b1n_ry/yigd/util/DropRule;
+  #111 = NameAndType        #112:#76      // DESTROY:Lcom/b1n_ry/yigd/util/DropRule;
+  #112 = Utf8               DESTROY
+  #113 = Fieldref           #90.#114      // com/b1n_ry/yigd/config/InventoryConfig.dropOnGroundSlots:Ljava/util/List;
+  #114 = NameAndType        #115:#94      // dropOnGroundSlots:Ljava/util/List;
+  #115 = Utf8               dropOnGroundSlots
+  #116 = Fieldref           #72.#117      // com/b1n_ry/yigd/util/DropRule.DROP:Lcom/b1n_ry/yigd/util/DropRule;
+  #117 = NameAndType        #118:#76      // DROP:Lcom/b1n_ry/yigd/util/DropRule;
+  #118 = Utf8               DROP
+  #119 = Fieldref           #120.#121     // com/b1n_ry/yigd/util/YigdTags.NATURAL_SOULBOUND:Lnet/minecraft/tags/TagKey;
+  #120 = Class              #122          // com/b1n_ry/yigd/util/YigdTags
+  #121 = NameAndType        #123:#124     // NATURAL_SOULBOUND:Lnet/minecraft/tags/TagKey;
+  #122 = Utf8               com/b1n_ry/yigd/util/YigdTags
+  #123 = Utf8               NATURAL_SOULBOUND
+  #124 = Utf8               Lnet/minecraft/tags/TagKey;
+  #125 = Methodref          #126.#127     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+  #126 = Class              #128          // net/minecraft/world/item/ItemStack
+  #127 = NameAndType        #129:#130     // is:(Lnet/minecraft/tags/TagKey;)Z
+  #128 = Utf8               net/minecraft/world/item/ItemStack
+  #129 = Utf8               is
+  #130 = Utf8               (Lnet/minecraft/tags/TagKey;)Z
+  #131 = Fieldref           #120.#132     // com/b1n_ry/yigd/util/YigdTags.NATURAL_VANISHING:Lnet/minecraft/tags/TagKey;
+  #132 = NameAndType        #133:#124     // NATURAL_VANISHING:Lnet/minecraft/tags/TagKey;
+  #133 = Utf8               NATURAL_VANISHING
+  #134 = Fieldref           #120.#135     // com/b1n_ry/yigd/util/YigdTags.GRAVE_INCOMPATIBLE:Lnet/minecraft/tags/TagKey;
+  #135 = NameAndType        #136:#124     // GRAVE_INCOMPATIBLE:Lnet/minecraft/tags/TagKey;
+  #136 = Utf8               GRAVE_INCOMPATIBLE
+  #137 = Methodref          #126.#138     // net/minecraft/world/item/ItemStack.isEmpty:()Z
+  #138 = NameAndType        #139:#24      // isEmpty:()Z
+  #139 = Utf8               isEmpty
+  #140 = Fieldref           #141.#142     // net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #141 = Class              #143          // net/minecraft/core/component/DataComponents
+  #142 = NameAndType        #144:#145     // CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+  #143 = Utf8               net/minecraft/core/component/DataComponents
+  #144 = Utf8               CUSTOM_DATA
+  #145 = Utf8               Lnet/minecraft/core/component/DataComponentType;
+  #146 = Methodref          #126.#147     // net/minecraft/world/item/ItemStack.has:(Lnet/minecraft/core/component/DataComponentType;)Z
+  #147 = NameAndType        #148:#149     // has:(Lnet/minecraft/core/component/DataComponentType;)Z
+  #148 = Utf8               has
+  #149 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Z
+  #150 = Methodref          #126.#151     // net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #151 = NameAndType        #51:#152      // get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #152 = Utf8               (Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+  #153 = Class              #154          // net/minecraft/world/item/component/CustomData
+  #154 = Utf8               net/minecraft/world/item/component/CustomData
+  #155 = Fieldref           #156.#157     // com/b1n_ry/yigd/events/YigdServerEventHandler.$assertionsDisabled:Z
+  #156 = Class              #158          // com/b1n_ry/yigd/events/YigdServerEventHandler
+  #157 = NameAndType        #159:#160     // $assertionsDisabled:Z
+  #158 = Utf8               com/b1n_ry/yigd/events/YigdServerEventHandler
+  #159 = Utf8               $assertionsDisabled
+  #160 = Utf8               Z
+  #161 = Class              #162          // java/lang/AssertionError
+  #162 = Utf8               java/lang/AssertionError
+  #163 = Methodref          #161.#3       // java/lang/AssertionError."<init>":()V
+  #164 = Methodref          #153.#165     // net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+  #165 = NameAndType        #166:#167     // copyTag:()Lnet/minecraft/nbt/CompoundTag;
+  #166 = Utf8               copyTag
+  #167 = Utf8               ()Lnet/minecraft/nbt/CompoundTag;
+  #168 = String             #169          // Botania_keepIvy
+  #169 = Utf8               Botania_keepIvy
+  #170 = Methodref          #171.#172     // net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+  #171 = Class              #173          // net/minecraft/nbt/CompoundTag
+  #172 = NameAndType        #105:#174     // contains:(Ljava/lang/String;)Z
+  #173 = Utf8               net/minecraft/nbt/CompoundTag
+  #174 = Utf8               (Ljava/lang/String;)Z
+  #175 = Methodref          #171.#176     // net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+  #176 = NameAndType        #177:#174     // getBoolean:(Ljava/lang/String;)Z
+  #177 = Utf8               getBoolean
+  #178 = InvokeDynamic      #0:#179       // #0:accept:()Ljava/util/function/Consumer;
+  #179 = NameAndType        #180:#181     // accept:()Ljava/util/function/Consumer;
+  #180 = Utf8               accept
+  #181 = Utf8               ()Ljava/util/function/Consumer;
+  #182 = Methodref          #153.#183     // net/minecraft/world/item/component/CustomData.update:(Ljava/util/function/Consumer;)Lnet/minecraft/world/item/component/CustomData;
+  #183 = NameAndType        #184:#185     // update:(Ljava/util/function/Consumer;)Lnet/minecraft/world/item/component/CustomData;
+  #184 = Utf8               update
+  #185 = Utf8               (Ljava/util/function/Consumer;)Lnet/minecraft/world/item/component/CustomData;
+  #186 = Methodref          #126.#187     // net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #187 = NameAndType        #188:#189     // set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #188 = Utf8               set
+  #189 = Utf8               (Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #190 = Fieldref           #191.#192     // com/b1n_ry/yigd/util/GraveOverrideAreas.INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+  #191 = Class              #193          // com/b1n_ry/yigd/util/GraveOverrideAreas
+  #192 = NameAndType        #194:#195     // INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+  #193 = Utf8               com/b1n_ry/yigd/util/GraveOverrideAreas
+  #194 = Utf8               INSTANCE
+  #195 = Utf8               Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+  #196 = Methodref          #60.#197      // com/b1n_ry/yigd/data/DeathContext.deathPos:()Lnet/minecraft/world/phys/Vec3;
+  #197 = NameAndType        #198:#199     // deathPos:()Lnet/minecraft/world/phys/Vec3;
+  #198 = Utf8               deathPos
+  #199 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+  #200 = Methodref          #201.#202     // net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #201 = Class              #203          // net/minecraft/core/BlockPos
+  #202 = NameAndType        #204:#205     // containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #203 = Utf8               net/minecraft/core/BlockPos
+  #204 = Utf8               containing
+  #205 = Utf8               (Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #206 = Methodref          #60.#207      // com/b1n_ry/yigd/data/DeathContext.world:()Lnet/minecraft/server/level/ServerLevel;
+  #207 = NameAndType        #208:#209     // world:()Lnet/minecraft/server/level/ServerLevel;
+  #208 = Utf8               world
+  #209 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #210 = Methodref          #191.#211     // com/b1n_ry/yigd/util/GraveOverrideAreas.getDropRuleFromArea:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Lcom/b1n_ry/yigd/util/DropRule;
+  #211 = NameAndType        #212:#213     // getDropRuleFromArea:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Lcom/b1n_ry/yigd/util/DropRule;
+  #212 = Utf8               getDropRuleFromArea
+  #213 = Utf8               (Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Lcom/b1n_ry/yigd/util/DropRule;
+  #214 = Fieldref           #191.#215     // com/b1n_ry/yigd/util/GraveOverrideAreas.defaultDropRule:Lcom/b1n_ry/yigd/util/DropRule;
+  #215 = NameAndType        #216:#76      // defaultDropRule:Lcom/b1n_ry/yigd/util/DropRule;
+  #216 = Utf8               defaultDropRule
+  #217 = Fieldref           #120.#218     // com/b1n_ry/yigd/util/YigdTags.VANISHING:Lnet/minecraft/tags/TagKey;
+  #218 = NameAndType        #219:#124     // VANISHING:Lnet/minecraft/tags/TagKey;
+  #219 = Utf8               VANISHING
+  #220 = Methodref          #221.#222     // net/minecraft/world/item/enchantment/EnchantmentHelper.hasTag:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z
+  #221 = Class              #223          // net/minecraft/world/item/enchantment/EnchantmentHelper
+  #222 = NameAndType        #224:#225     // hasTag:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z
+  #223 = Utf8               net/minecraft/world/item/enchantment/EnchantmentHelper
+  #224 = Utf8               hasTag
+  #225 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z
+  #226 = Fieldref           #120.#227     // com/b1n_ry/yigd/util/YigdTags.SOULBOUND:Lnet/minecraft/tags/TagKey;
+  #227 = NameAndType        #228:#124     // SOULBOUND:Lnet/minecraft/tags/TagKey;
+  #228 = Utf8               SOULBOUND
+  #229 = Fieldref           #90.#230      // com/b1n_ry/yigd/config/InventoryConfig.loseSoulboundLevelOnDeath:Z
+  #230 = NameAndType        #231:#160     // loseSoulboundLevelOnDeath:Z
+  #231 = Utf8               loseSoulboundLevelOnDeath
+  #232 = Methodref          #221.#233     // net/minecraft/world/item/enchantment/EnchantmentHelper.getEnchantmentsForCrafting:(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #233 = NameAndType        #234:#235     // getEnchantmentsForCrafting:(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #234 = Utf8               getEnchantmentsForCrafting
+  #235 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #236 = Methodref          #237.#238     // net/minecraft/world/item/enchantment/ItemEnchantments.keySet:()Ljava/util/Set;
+  #237 = Class              #239          // net/minecraft/world/item/enchantment/ItemEnchantments
+  #238 = NameAndType        #240:#241     // keySet:()Ljava/util/Set;
+  #239 = Utf8               net/minecraft/world/item/enchantment/ItemEnchantments
+  #240 = Utf8               keySet
+  #241 = Utf8               ()Ljava/util/Set;
+  #242 = InterfaceMethodref #243.#244     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #243 = Class              #245          // java/util/Set
+  #244 = NameAndType        #246:#247     // iterator:()Ljava/util/Iterator;
+  #245 = Utf8               java/util/Set
+  #246 = Utf8               iterator
+  #247 = Utf8               ()Ljava/util/Iterator;
+  #248 = InterfaceMethodref #249.#250     // java/util/Iterator.hasNext:()Z
+  #249 = Class              #251          // java/util/Iterator
+  #250 = NameAndType        #252:#24      // hasNext:()Z
+  #251 = Utf8               java/util/Iterator
+  #252 = Utf8               hasNext
+  #253 = InterfaceMethodref #249.#254     // java/util/Iterator.next:()Ljava/lang/Object;
+  #254 = NameAndType        #255:#256     // next:()Ljava/lang/Object;
+  #255 = Utf8               next
+  #256 = Utf8               ()Ljava/lang/Object;
+  #257 = Class              #258          // net/minecraft/core/Holder
+  #258 = Utf8               net/minecraft/core/Holder
+  #259 = InterfaceMethodref #257.#127     // net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+  #260 = Methodref          #221.#261     // net/minecraft/world/item/enchantment/EnchantmentHelper.getTagEnchantmentLevel:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I
+  #261 = NameAndType        #262:#263     // getTagEnchantmentLevel:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I
+  #262 = Utf8               getTagEnchantmentLevel
+  #263 = Utf8               (Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I
+  #264 = InvokeDynamic      #1:#265       // #1:accept:(Lnet/minecraft/core/Holder;I)Ljava/util/function/Consumer;
+  #265 = NameAndType        #180:#266     // accept:(Lnet/minecraft/core/Holder;I)Ljava/util/function/Consumer;
+  #266 = Utf8               (Lnet/minecraft/core/Holder;I)Ljava/util/function/Consumer;
+  #267 = Methodref          #221.#268     // net/minecraft/world/item/enchantment/EnchantmentHelper.updateEnchantments:(Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #268 = NameAndType        #269:#270     // updateEnchantments:(Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #269 = Utf8               updateEnchantments
+  #270 = Utf8               (Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+  #271 = InvokeDynamic      #2:#272       // #2:accept:(Lnet/minecraft/core/Holder;)Ljava/util/function/Consumer;
+  #272 = NameAndType        #180:#273     // accept:(Lnet/minecraft/core/Holder;)Ljava/util/function/Consumer;
+  #273 = Utf8               (Lnet/minecraft/core/Holder;)Ljava/util/function/Consumer;
+  #274 = Methodref          #275.#276     // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+  #275 = Class              #277          // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent
+  #276 = NameAndType        #278:#64      // getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+  #277 = Utf8               com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent
+  #278 = Utf8               getPlayer
+  #279 = Methodref          #275.#280     // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #280 = NameAndType        #281:#209     // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #281 = Utf8               getLevel
+  #282 = Methodref          #275.#283     // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getGrave:()Lcom/b1n_ry/yigd/components/GraveComponent;
+  #283 = NameAndType        #284:#285     // getGrave:()Lcom/b1n_ry/yigd/components/GraveComponent;
+  #284 = Utf8               getGrave
+  #285 = Utf8               ()Lcom/b1n_ry/yigd/components/GraveComponent;
+  #286 = Methodref          #275.#287     // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getTool:()Lnet/minecraft/world/item/ItemStack;
+  #287 = NameAndType        #288:#12      // getTool:()Lnet/minecraft/world/item/ItemStack;
+  #288 = Utf8               getTool
+  #289 = Methodref          #66.#290      // net/minecraft/server/level/ServerPlayer.isDeadOrDying:()Z
+  #290 = NameAndType        #291:#24      // isDeadOrDying:()Z
+  #291 = Utf8               isDeadOrDying
+  #292 = Methodref          #275.#293     // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+  #293 = NameAndType        #294:#84      // setCanClaim:(Z)V
+  #294 = Utf8               setCanClaim
+  #295 = Methodref          #275.#82      // com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanceled:(Z)V
+  #296 = Fieldref           #26.#297      // com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+  #297 = NameAndType        #298:#299     // extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+  #298 = Utf8               extraFeatures
+  #299 = Utf8               Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+  #300 = Fieldref           #301.#302     // com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveCompass:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+  #301 = Class              #303          // com/b1n_ry/yigd/config/ExtraFeaturesConfig
+  #302 = NameAndType        #304:#305     // graveCompass:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+  #303 = Utf8               com/b1n_ry/yigd/config/ExtraFeaturesConfig
+  #304 = Utf8               graveCompass
+  #305 = Utf8               Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+  #306 = Fieldref           #307.#308     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig.consumeOnUse:Z
+  #307 = Class              #309          // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig
+  #308 = NameAndType        #310:#160     // consumeOnUse:Z
+  #309 = Utf8               com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig
+  #310 = Utf8               consumeOnUse
+  #311 = Fieldref           #307.#312     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig.pointToClosest:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+  #312 = NameAndType        #313:#314     // pointToClosest:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+  #313 = Utf8               pointToClosest
+  #314 = Utf8               Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+  #315 = Fieldref           #316.#317     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget.DISABLED:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+  #316 = Class              #318          // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget
+  #317 = NameAndType        #319:#314     // DISABLED:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+  #318 = Utf8               com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget
+  #319 = Utf8               DISABLED
+  #320 = Methodref          #66.#321      // net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #321 = NameAndType        #322:#323     // getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #322 = Utf8               getInventory
+  #323 = Utf8               ()Lnet/minecraft/world/entity/player/Inventory;
+  #324 = Methodref          #325.#326     // net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+  #325 = Class              #327          // net/minecraft/world/entity/player/Inventory
+  #326 = NameAndType        #328:#16      // getContainerSize:()I
+  #327 = Utf8               net/minecraft/world/entity/player/Inventory
+  #328 = Utf8               getContainerSize
+  #329 = Methodref          #325.#330     // net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+  #330 = NameAndType        #331:#332     // getItem:(I)Lnet/minecraft/world/item/ItemStack;
+  #331 = Utf8               getItem
+  #332 = Utf8               (I)Lnet/minecraft/world/item/ItemStack;
+  #333 = Fieldref           #334.#335     // net/minecraft/world/item/Items.COMPASS:Lnet/minecraft/world/item/Item;
+  #334 = Class              #336          // net/minecraft/world/item/Items
+  #335 = NameAndType        #337:#338     // COMPASS:Lnet/minecraft/world/item/Item;
+  #336 = Utf8               net/minecraft/world/item/Items
+  #337 = Utf8               COMPASS
+  #338 = Utf8               Lnet/minecraft/world/item/Item;
+  #339 = Methodref          #126.#340     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+  #340 = NameAndType        #129:#341     // is:(Lnet/minecraft/world/item/Item;)Z
+  #341 = Utf8               (Lnet/minecraft/world/item/Item;)Z
+  #342 = String             #343          // linked_grave
+  #343 = Utf8               linked_grave
+  #344 = Methodref          #171.#345     // net/minecraft/nbt/CompoundTag.getUUID:(Ljava/lang/String;)Ljava/util/UUID;
+  #345 = NameAndType        #346:#347     // getUUID:(Ljava/lang/String;)Ljava/util/UUID;
+  #346 = Utf8               getUUID
+  #347 = Utf8               (Ljava/lang/String;)Ljava/util/UUID;
+  #348 = Methodref          #349.#350     // com/b1n_ry/yigd/components/GraveComponent.getGraveId:()Ljava/util/UUID;
+  #349 = Class              #351          // com/b1n_ry/yigd/components/GraveComponent
+  #350 = NameAndType        #352:#353     // getGraveId:()Ljava/util/UUID;
+  #351 = Utf8               com/b1n_ry/yigd/components/GraveComponent
+  #352 = Utf8               getGraveId
+  #353 = Utf8               ()Ljava/util/UUID;
+  #354 = Methodref          #355.#356     // java/util/UUID.equals:(Ljava/lang/Object;)Z
+  #355 = Class              #357          // java/util/UUID
+  #356 = NameAndType        #358:#106     // equals:(Ljava/lang/Object;)Z
+  #357 = Utf8               java/util/UUID
+  #358 = Utf8               equals
+  #359 = Methodref          #126.#360     // net/minecraft/world/item/ItemStack.setCount:(I)V
+  #360 = NameAndType        #361:#362     // setCount:(I)V
+  #361 = Utf8               setCount
+  #362 = Utf8               (I)V
+  #363 = Methodref          #364.#365     // net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+  #364 = Class              #366          // net/minecraft/server/level/ServerLevel
+  #365 = NameAndType        #367:#368     // dimension:()Lnet/minecraft/resources/ResourceKey;
+  #366 = Utf8               net/minecraft/server/level/ServerLevel
+  #367 = Utf8               dimension
+  #368 = Utf8               ()Lnet/minecraft/resources/ResourceKey;
+  #369 = Methodref          #66.#370      // net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+  #370 = NameAndType        #371:#372     // blockPosition:()Lnet/minecraft/core/BlockPos;
+  #371 = Utf8               blockPosition
+  #372 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #373 = Methodref          #66.#374      // net/minecraft/server/level/ServerPlayer.getUUID:()Ljava/util/UUID;
+  #374 = NameAndType        #346:#353     // getUUID:()Ljava/util/UUID;
+  #375 = Methodref          #376.#377     // com/b1n_ry/yigd/util/GraveCompassHelper.updateClosestNbt:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;Ljava/util/UUID;Lnet/minecraft/world/item/ItemStack;)V
+  #376 = Class              #378          // com/b1n_ry/yigd/util/GraveCompassHelper
+  #377 = NameAndType        #379:#380     // updateClosestNbt:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;Ljava/util/UUID;Lnet/minecraft/world/item/ItemStack;)V
+  #378 = Utf8               com/b1n_ry/yigd/util/GraveCompassHelper
+  #379 = Utf8               updateClosestNbt
+  #380 = Utf8               (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;Ljava/util/UUID;Lnet/minecraft/world/item/ItemStack;)V
+  #381 = Fieldref           #301.#382     // com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveKeys:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+  #382 = NameAndType        #383:#384     // graveKeys:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+  #383 = Utf8               graveKeys
+  #384 = Utf8               Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+  #385 = Fieldref           #386.#387     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.enabled:Z
+  #386 = Class              #388          // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig
+  #387 = NameAndType        #389:#160     // enabled:Z
+  #388 = Utf8               com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig
+  #389 = Utf8               enabled
+  #390 = Fieldref           #391.#392     // com/b1n_ry/yigd/Yigd.GRAVE_KEY_ITEM:Lnet/neoforged/neoforge/registries/DeferredItem;
+  #391 = Class              #393          // com/b1n_ry/yigd/Yigd
+  #392 = NameAndType        #394:#395     // GRAVE_KEY_ITEM:Lnet/neoforged/neoforge/registries/DeferredItem;
+  #393 = Utf8               com/b1n_ry/yigd/Yigd
+  #394 = Utf8               GRAVE_KEY_ITEM
+  #395 = Utf8               Lnet/neoforged/neoforge/registries/DeferredItem;
+  #396 = Methodref          #126.#397     // net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/core/Holder;)Z
+  #397 = NameAndType        #129:#70      // is:(Lnet/minecraft/core/Holder;)Z
+  #398 = Fieldref           #153.#399     // net/minecraft/world/item/component/CustomData.EMPTY:Lnet/minecraft/world/item/component/CustomData;
+  #399 = NameAndType        #400:#401     // EMPTY:Lnet/minecraft/world/item/component/CustomData;
+  #400 = Utf8               EMPTY
+  #401 = Utf8               Lnet/minecraft/world/item/component/CustomData;
+  #402 = Methodref          #126.#403     // net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #403 = NameAndType        #404:#189     // getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+  #404 = Utf8               getOrDefault
+  #405 = String             #406          // user
+  #406 = Utf8               user
+  #407 = Methodref          #171.#408     // net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #408 = NameAndType        #409:#410     // getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #409 = Utf8               getCompound
+  #410 = Utf8               (Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+  #411 = String             #412          // grave
+  #412 = Utf8               grave
+  #413 = Methodref          #171.#414     // net/minecraft/nbt/CompoundTag.get:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+  #414 = NameAndType        #51:#415      // get:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+  #415 = Utf8               (Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+  #416 = Fieldref           #386.#417     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.targeting:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting;
+  #417 = NameAndType        #418:#419     // targeting:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting;
+  #418 = Utf8               targeting
+  #419 = Utf8               Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting;
+  #420 = Fieldref           #421.#422     // com/b1n_ry/yigd/events/YigdServerEventHandler$1.$SwitchMap$com$b1n_ry$yigd$config$ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting:[I
+  #421 = Class              #423          // com/b1n_ry/yigd/events/YigdServerEventHandler$1
+  #422 = NameAndType        #424:#425     // $SwitchMap$com$b1n_ry$yigd$config$ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting:[I
+  #423 = Utf8               com/b1n_ry/yigd/events/YigdServerEventHandler$1
+  #424 = Utf8               $SwitchMap$com$b1n_ry$yigd$config$ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting
+  #425 = Utf8               [I
+  #426 = Methodref          #427.#428     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting.ordinal:()I
+  #427 = Class              #429          // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting
+  #428 = NameAndType        #430:#16      // ordinal:()I
+  #429 = Utf8               com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting
+  #430 = Utf8               ordinal
+  #431 = Methodref          #126.#432     // net/minecraft/world/item/ItemStack.shrink:(I)V
+  #432 = NameAndType        #433:#362     // shrink:(I)V
+  #433 = Utf8               shrink
+  #434 = Fieldref           #435.#436     // net/minecraft/world/item/component/ResolvableProfile.CODEC:Lcom/mojang/serialization/Codec;
+  #435 = Class              #437          // net/minecraft/world/item/component/ResolvableProfile
+  #436 = NameAndType        #438:#439     // CODEC:Lcom/mojang/serialization/Codec;
+  #437 = Utf8               net/minecraft/world/item/component/ResolvableProfile
+  #438 = Utf8               CODEC
+  #439 = Utf8               Lcom/mojang/serialization/Codec;
+  #440 = Fieldref           #441.#442     // net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+  #441 = Class              #443          // net/minecraft/nbt/NbtOps
+  #442 = NameAndType        #194:#444     // INSTANCE:Lnet/minecraft/nbt/NbtOps;
+  #443 = Utf8               net/minecraft/nbt/NbtOps
+  #444 = Utf8               Lnet/minecraft/nbt/NbtOps;
+  #445 = InterfaceMethodref #446.#447     // com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #446 = Class              #448          // com/mojang/serialization/Codec
+  #447 = NameAndType        #449:#450     // parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #448 = Utf8               com/mojang/serialization/Codec
+  #449 = Utf8               parse
+  #450 = Utf8               (Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+  #451 = InterfaceMethodref #452.#453     // com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+  #452 = Class              #454          // com/mojang/serialization/DataResult
+  #453 = NameAndType        #455:#456     // result:()Ljava/util/Optional;
+  #454 = Utf8               com/mojang/serialization/DataResult
+  #455 = Utf8               result
+  #456 = Utf8               ()Ljava/util/Optional;
+  #457 = Methodref          #458.#459     // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #458 = Class              #460          // java/util/Optional
+  #459 = NameAndType        #461:#462     // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+  #460 = Utf8               java/util/Optional
+  #461 = Utf8               orElse
+  #462 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #463 = Methodref          #349.#464     // com/b1n_ry/yigd/components/GraveComponent.getOwner:()Lnet/minecraft/world/item/component/ResolvableProfile;
+  #464 = NameAndType        #465:#466     // getOwner:()Lnet/minecraft/world/item/component/ResolvableProfile;
+  #465 = Utf8               getOwner
+  #466 = Utf8               ()Lnet/minecraft/world/item/component/ResolvableProfile;
+  #467 = Methodref          #468.#469     // java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #468 = Class              #470          // java/util/Objects
+  #469 = NameAndType        #358:#471     // equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #470 = Utf8               java/util/Objects
+  #471 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Z
+  #472 = Methodref          #473.#474     // net/minecraft/nbt/NbtUtils.loadUUID:(Lnet/minecraft/nbt/Tag;)Ljava/util/UUID;
+  #473 = Class              #475          // net/minecraft/nbt/NbtUtils
+  #474 = NameAndType        #476:#477     // loadUUID:(Lnet/minecraft/nbt/Tag;)Ljava/util/UUID;
+  #475 = Utf8               net/minecraft/nbt/NbtUtils
+  #476 = Utf8               loadUUID
+  #477 = Utf8               (Lnet/minecraft/nbt/Tag;)Ljava/util/UUID;
+  #478 = Fieldref           #386.#479     // com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.required:Z
+  #479 = NameAndType        #480:#160     // required:Z
+  #480 = Utf8               required
+  #481 = String             #482          // text.yigd.message.missing_key
+  #482 = Utf8               text.yigd.message.missing_key
+  #483 = InterfaceMethodref #484.#485     // net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #484 = Class              #486          // net/minecraft/network/chat/Component
+  #485 = NameAndType        #487:#488     // translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #486 = Utf8               net/minecraft/network/chat/Component
+  #487 = Utf8               translatable
+  #488 = Utf8               (Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+  #489 = Methodref          #66.#490      // net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #490 = NameAndType        #491:#492     // sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+  #491 = Utf8               sendSystemMessage
+  #492 = Utf8               (Lnet/minecraft/network/chat/Component;Z)V
+  #493 = Fieldref           #26.#494      // com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+  #494 = NameAndType        #495:#496     // graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+  #495 = Utf8               graveConfig
+  #496 = Utf8               Lcom/b1n_ry/yigd/config/GraveConfig;
+  #497 = Fieldref           #498.#499     // com/b1n_ry/yigd/config/GraveConfig.requireShovelToLoot:Z
+  #498 = Class              #500          // com/b1n_ry/yigd/config/GraveConfig
+  #499 = NameAndType        #501:#160     // requireShovelToLoot:Z
+  #500 = Utf8               com/b1n_ry/yigd/config/GraveConfig
+  #501 = Utf8               requireShovelToLoot
+  #502 = Fieldref           #503.#504     // net/minecraft/tags/ItemTags.SHOVELS:Lnet/minecraft/tags/TagKey;
+  #503 = Class              #505          // net/minecraft/tags/ItemTags
+  #504 = NameAndType        #506:#124     // SHOVELS:Lnet/minecraft/tags/TagKey;
+  #505 = Utf8               net/minecraft/tags/ItemTags
+  #506 = Utf8               SHOVELS
+  #507 = String             #508          // text.yigd.message.no_shovel
+  #508 = Utf8               text.yigd.message.no_shovel
+  #509 = Methodref          #435.#510     // net/minecraft/world/item/component/ResolvableProfile.id:()Ljava/util/Optional;
+  #510 = NameAndType        #511:#456     // id:()Ljava/util/Optional;
+  #511 = Utf8               id
+  #512 = Methodref          #349.#513     // com/b1n_ry/yigd/components/GraveComponent.isLocked:()Z
+  #513 = NameAndType        #514:#24      // isLocked:()Z
+  #514 = Utf8               isLocked
+  #515 = Fieldref           #498.#516     // com/b1n_ry/yigd/config/GraveConfig.graveRobbing:Lcom/b1n_ry/yigd/config/GraveConfig$GraveRobbing;
+  #516 = NameAndType        #517:#518     // graveRobbing:Lcom/b1n_ry/yigd/config/GraveConfig$GraveRobbing;
+  #517 = Utf8               graveRobbing
+  #518 = Utf8               Lcom/b1n_ry/yigd/config/GraveConfig$GraveRobbing;
+  #519 = Fieldref           #520.#387     // com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.enabled:Z
+  #520 = Class              #521          // com/b1n_ry/yigd/config/GraveConfig$GraveRobbing
+  #521 = Utf8               com/b1n_ry/yigd/config/GraveConfig$GraveRobbing
+  #522 = Fieldref           #520.#523     // com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.killerSkipWaitTime:Z
+  #523 = NameAndType        #524:#160     // killerSkipWaitTime:Z
+  #524 = Utf8               killerSkipWaitTime
+  #525 = Methodref          #349.#526     // com/b1n_ry/yigd/components/GraveComponent.getKillerId:()Ljava/util/UUID;
+  #526 = NameAndType        #527:#353     // getKillerId:()Ljava/util/UUID;
+  #527 = Utf8               getKillerId
+  #528 = Fieldref           #520.#529     // com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.timeUnit:Ljava/util/concurrent/TimeUnit;
+  #529 = NameAndType        #530:#531     // timeUnit:Ljava/util/concurrent/TimeUnit;
+  #530 = Utf8               timeUnit
+  #531 = Utf8               Ljava/util/concurrent/TimeUnit;
+  #532 = Fieldref           #520.#533     // com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.afterTime:I
+  #533 = NameAndType        #534:#535     // afterTime:I
+  #534 = Utf8               afterTime
+  #535 = Utf8               I
+  #536 = Methodref          #537.#538     // java/util/concurrent/TimeUnit.toSeconds:(J)J
+  #537 = Class              #539          // java/util/concurrent/TimeUnit
+  #538 = NameAndType        #540:#541     // toSeconds:(J)J
+  #539 = Utf8               java/util/concurrent/TimeUnit
+  #540 = Utf8               toSeconds
+  #541 = Utf8               (J)J
+  #542 = Long               20l
+  #544 = Methodref          #349.#545     // com/b1n_ry/yigd/components/GraveComponent.hasExistedTicks:(J)Z
+  #545 = NameAndType        #546:#547     // hasExistedTicks:(J)Z
+  #546 = Utf8               hasExistedTicks
+  #547 = Utf8               (J)Z
+  #548 = String             #549          // text.yigd.message.rob.too_early
+  #549 = Utf8               text.yigd.message.rob.too_early
+  #550 = Methodref          #349.#551     // com/b1n_ry/yigd/components/GraveComponent.getTimeUntilRobbable:()Ljava/lang/String;
+  #551 = NameAndType        #552:#553     // getTimeUntilRobbable:()Ljava/lang/String;
+  #552 = Utf8               getTimeUntilRobbable
+  #553 = Utf8               ()Ljava/lang/String;
+  #554 = InterfaceMethodref #484.#555     // net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #555 = NameAndType        #487:#556     // translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #556 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+  #557 = Methodref          #558.#18      // com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.getDeathContext:()Lcom/b1n_ry/yigd/data/DeathContext;
+  #558 = Class              #559          // com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent
+  #559 = Utf8               com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent
+  #560 = Methodref          #558.#283     // com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.getGrave:()Lcom/b1n_ry/yigd/components/GraveComponent;
+  #561 = Fieldref           #498.#387     // com/b1n_ry/yigd/config/GraveConfig.enabled:Z
+  #562 = Methodref          #558.#563     // com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+  #563 = NameAndType        #564:#84      // setAllowGeneration:(Z)V
+  #564 = Utf8               setAllowGeneration
+  #565 = Fieldref           #566.#567     // com/b1n_ry/yigd/data/DeathInfoManager.INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+  #566 = Class              #568          // com/b1n_ry/yigd/data/DeathInfoManager
+  #567 = NameAndType        #194:#569     // INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+  #568 = Utf8               com/b1n_ry/yigd/data/DeathInfoManager
+  #569 = Utf8               Lcom/b1n_ry/yigd/data/DeathInfoManager;
+  #570 = Methodref          #566.#571     // com/b1n_ry/yigd/data/DeathInfoManager.getGraveListMode:()Lcom/b1n_ry/yigd/data/ListMode;
+  #571 = NameAndType        #572:#573     // getGraveListMode:()Lcom/b1n_ry/yigd/data/ListMode;
+  #572 = Utf8               getGraveListMode
+  #573 = Utf8               ()Lcom/b1n_ry/yigd/data/ListMode;
+  #574 = Fieldref           #575.#576     // com/b1n_ry/yigd/data/ListMode.WHITELIST:Lcom/b1n_ry/yigd/data/ListMode;
+  #575 = Class              #577          // com/b1n_ry/yigd/data/ListMode
+  #576 = NameAndType        #578:#579     // WHITELIST:Lcom/b1n_ry/yigd/data/ListMode;
+  #577 = Utf8               com/b1n_ry/yigd/data/ListMode
+  #578 = Utf8               WHITELIST
+  #579 = Utf8               Lcom/b1n_ry/yigd/data/ListMode;
+  #580 = Methodref          #66.#581      // net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+  #581 = NameAndType        #582:#583     // getGameProfile:()Lcom/mojang/authlib/GameProfile;
+  #582 = Utf8               getGameProfile
+  #583 = Utf8               ()Lcom/mojang/authlib/GameProfile;
+  #584 = Methodref          #435.#585     // net/minecraft/world/item/component/ResolvableProfile."<init>":(Lcom/mojang/authlib/GameProfile;)V
+  #585 = NameAndType        #5:#586       // "<init>":(Lcom/mojang/authlib/GameProfile;)V
+  #586 = Utf8               (Lcom/mojang/authlib/GameProfile;)V
+  #587 = Methodref          #566.#588     // com/b1n_ry/yigd/data/DeathInfoManager.isInList:(Lnet/minecraft/world/item/component/ResolvableProfile;)Z
+  #588 = NameAndType        #589:#590     // isInList:(Lnet/minecraft/world/item/component/ResolvableProfile;)Z
+  #589 = Utf8               isInList
+  #590 = Utf8               (Lnet/minecraft/world/item/component/ResolvableProfile;)Z
+  #591 = Fieldref           #575.#592     // com/b1n_ry/yigd/data/ListMode.BLACKLIST:Lcom/b1n_ry/yigd/data/ListMode;
+  #592 = NameAndType        #593:#579     // BLACKLIST:Lcom/b1n_ry/yigd/data/ListMode;
+  #593 = Utf8               BLACKLIST
+  #594 = Fieldref           #391.#595     // com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+  #595 = NameAndType        #596:#597     // LOGGER:Lorg/slf4j/Logger;
+  #596 = Utf8               LOGGER
+  #597 = Utf8               Lorg/slf4j/Logger;
+  #598 = String             #599          // {} found on whitelist/blacklist, disallowing grave generation
+  #599 = Utf8               {} found on whitelist/blacklist, disallowing grave generation
+  #600 = Methodref          #601.#602     // com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+  #601 = Class              #603          // com/mojang/authlib/GameProfile
+  #602 = NameAndType        #604:#553     // getName:()Ljava/lang/String;
+  #603 = Utf8               com/mojang/authlib/GameProfile
+  #604 = Utf8               getName
+  #605 = InterfaceMethodref #606.#607     // org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #606 = Class              #608          // org/slf4j/Logger
+  #607 = NameAndType        #609:#610     // info:(Ljava/lang/String;Ljava/lang/Object;)V
+  #608 = Utf8               org/slf4j/Logger
+  #609 = Utf8               info
+  #610 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)V
+  #611 = Fieldref           #498.#612     // com/b1n_ry/yigd/config/GraveConfig.generateEmptyGraves:Z
+  #612 = NameAndType        #613:#160     // generateEmptyGraves:Z
+  #613 = Utf8               generateEmptyGraves
+  #614 = Methodref          #349.#615     // com/b1n_ry/yigd/components/GraveComponent.isGraveEmpty:()Z
+  #615 = NameAndType        #616:#24      // isGraveEmpty:()Z
+  #616 = Utf8               isGraveEmpty
+  #617 = Fieldref           #498.#618     // com/b1n_ry/yigd/config/GraveConfig.dimensionBlacklist:Ljava/util/List;
+  #618 = NameAndType        #619:#94      // dimensionBlacklist:Ljava/util/List;
+  #619 = Utf8               dimensionBlacklist
+  #620 = Methodref          #349.#621     // com/b1n_ry/yigd/components/GraveComponent.getWorldRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+  #621 = NameAndType        #622:#368     // getWorldRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+  #622 = Utf8               getWorldRegistryKey
+  #623 = Methodref          #624.#625     // net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+  #624 = Class              #626          // net/minecraft/resources/ResourceKey
+  #625 = NameAndType        #627:#628     // location:()Lnet/minecraft/resources/ResourceLocation;
+  #626 = Utf8               net/minecraft/resources/ResourceKey
+  #627 = Utf8               location
+  #628 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #629 = Methodref          #42.#630      // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #630 = NameAndType        #631:#553     // toString:()Ljava/lang/String;
+  #631 = Utf8               toString
+  #632 = Fieldref           #498.#633     // com/b1n_ry/yigd/config/GraveConfig.generateGraveInVoid:Z
+  #633 = NameAndType        #634:#160     // generateGraveInVoid:Z
+  #634 = Utf8               generateGraveInVoid
+  #635 = Methodref          #349.#636     // com/b1n_ry/yigd/components/GraveComponent.getPos:()Lnet/minecraft/core/BlockPos;
+  #636 = NameAndType        #637:#372     // getPos:()Lnet/minecraft/core/BlockPos;
+  #637 = Utf8               getPos
+  #638 = Methodref          #201.#639     // net/minecraft/core/BlockPos.getY:()I
+  #639 = NameAndType        #640:#16      // getY:()I
+  #640 = Utf8               getY
+  #641 = Methodref          #364.#642     // net/minecraft/server/level/ServerLevel.getMinBuildHeight:()I
+  #642 = NameAndType        #643:#16      // getMinBuildHeight:()I
+  #643 = Utf8               getMinBuildHeight
+  #644 = Fieldref           #498.#645     // com/b1n_ry/yigd/config/GraveConfig.requireItem:Z
+  #645 = NameAndType        #646:#160     // requireItem:Z
+  #646 = Utf8               requireItem
+  #647 = Fieldref           #32.#648      // net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+  #648 = NameAndType        #649:#650     // ITEM:Lnet/minecraft/core/DefaultedRegistry;
+  #649 = Utf8               ITEM
+  #650 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+  #651 = Fieldref           #498.#652     // com/b1n_ry/yigd/config/GraveConfig.requiredItem:Ljava/lang/String;
+  #652 = NameAndType        #653:#654     // requiredItem:Ljava/lang/String;
+  #653 = Utf8               requiredItem
+  #654 = Utf8               Ljava/lang/String;
+  #655 = Methodref          #42.#656      // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #656 = NameAndType        #449:#657     // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #657 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #658 = InterfaceMethodref #659.#49      // net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+  #659 = Class              #660          // net/minecraft/core/DefaultedRegistry
+  #660 = Utf8               net/minecraft/core/DefaultedRegistry
+  #661 = Class              #662          // net/minecraft/world/item/Item
+  #662 = Utf8               net/minecraft/world/item/Item
+  #663 = Methodref          #349.#664     // com/b1n_ry/yigd/components/GraveComponent.getInventoryComponent:()Lcom/b1n_ry/yigd/components/InventoryComponent;
+  #664 = NameAndType        #665:#666     // getInventoryComponent:()Lcom/b1n_ry/yigd/components/InventoryComponent;
+  #665 = Utf8               getInventoryComponent
+  #666 = Utf8               ()Lcom/b1n_ry/yigd/components/InventoryComponent;
+  #667 = InvokeDynamic      #3:#668       // #3:test:(Lnet/minecraft/world/item/Item;)Ljava/util/function/Predicate;
+  #668 = NameAndType        #669:#670     // test:(Lnet/minecraft/world/item/Item;)Ljava/util/function/Predicate;
+  #669 = Utf8               test
+  #670 = Utf8               (Lnet/minecraft/world/item/Item;)Ljava/util/function/Predicate;
+  #671 = Fieldref           #498.#672     // com/b1n_ry/yigd/config/GraveConfig.requiredItemCount:I
+  #672 = NameAndType        #673:#535     // requiredItemCount:I
+  #673 = Utf8               requiredItemCount
+  #674 = Methodref          #675.#676     // com/b1n_ry/yigd/components/InventoryComponent.removeItem:(Ljava/util/function/Predicate;I)Z
+  #675 = Class              #677          // com/b1n_ry/yigd/components/InventoryComponent
+  #676 = NameAndType        #678:#679     // removeItem:(Ljava/util/function/Predicate;I)Z
+  #677 = Utf8               com/b1n_ry/yigd/components/InventoryComponent
+  #678 = Utf8               removeItem
+  #679 = Utf8               (Ljava/util/function/Predicate;I)Z
+  #680 = Fieldref           #498.#681     // com/b1n_ry/yigd/config/GraveConfig.ignoredDeathTypes:Ljava/util/List;
+  #681 = NameAndType        #682:#94      // ignoredDeathTypes:Ljava/util/List;
+  #682 = Utf8               ignoredDeathTypes
+  #683 = Methodref          #60.#684      // com/b1n_ry/yigd/data/DeathContext.deathSource:()Lnet/minecraft/world/damagesource/DamageSource;
+  #684 = NameAndType        #685:#686     // deathSource:()Lnet/minecraft/world/damagesource/DamageSource;
+  #685 = Utf8               deathSource
+  #686 = Utf8               ()Lnet/minecraft/world/damagesource/DamageSource;
+  #687 = Methodref          #688.#689     // net/minecraft/world/damagesource/DamageSource.getMsgId:()Ljava/lang/String;
+  #688 = Class              #690          // net/minecraft/world/damagesource/DamageSource
+  #689 = NameAndType        #691:#553     // getMsgId:()Ljava/lang/String;
+  #690 = Utf8               net/minecraft/world/damagesource/DamageSource
+  #691 = Utf8               getMsgId
+  #692 = Fieldref           #498.#693     // com/b1n_ry/yigd/config/GraveConfig.blockUnderGrave:Lcom/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave;
+  #693 = NameAndType        #694:#695     // blockUnderGrave:Lcom/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave;
+  #694 = Utf8               blockUnderGrave
+  #695 = Utf8               Lcom/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave;
+  #696 = Fieldref           #697.#387     // com/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave.enabled:Z
+  #697 = Class              #698          // com/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave
+  #698 = Utf8               com/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave
+  #699 = Methodref          #700.#701     // com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent.getBlockUnder:()Lnet/minecraft/world/level/block/state/BlockState;
+  #700 = Class              #702          // com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent
+  #701 = NameAndType        #703:#704     // getBlockUnder:()Lnet/minecraft/world/level/block/state/BlockState;
+  #702 = Utf8               com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent
+  #703 = Utf8               getBlockUnder
+  #704 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+  #705 = Fieldref           #120.#706     // com/b1n_ry/yigd/util/YigdTags.REPLACE_SOFT_WHITELIST:Lnet/minecraft/tags/TagKey;
+  #706 = NameAndType        #707:#124     // REPLACE_SOFT_WHITELIST:Lnet/minecraft/tags/TagKey;
+  #707 = Utf8               REPLACE_SOFT_WHITELIST
+  #708 = Methodref          #709.#127     // net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+  #709 = Class              #710          // net/minecraft/world/level/block/state/BlockState
+  #710 = Utf8               net/minecraft/world/level/block/state/BlockState
+  #711 = Methodref          #700.#712     // com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent.setAllowPlacement:(Z)V
+  #712 = NameAndType        #713:#84      // setAllowPlacement:(Z)V
+  #713 = Utf8               setAllowPlacement
+  #714 = Methodref          #715.#280     // com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #715 = Class              #716          // com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent
+  #716 = Utf8               com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent
+  #717 = Methodref          #715.#636     // com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getPos:()Lnet/minecraft/core/BlockPos;
+  #718 = Methodref          #715.#719     // com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getNthTry:()I
+  #719 = NameAndType        #720:#16      // getNthTry:()I
+  #720 = Utf8               getNthTry
+  #721 = Methodref          #364.#722     // net/minecraft/server/level/ServerLevel.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+  #722 = NameAndType        #723:#724     // isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+  #723 = Utf8               isOutsideBuildHeight
+  #724 = Utf8               (Lnet/minecraft/core/BlockPos;)Z
+  #725 = Methodref          #364.#726     // net/minecraft/server/level/ServerLevel.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+  #726 = NameAndType        #727:#728     // getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+  #727 = Utf8               getWorldBorder
+  #728 = Utf8               ()Lnet/minecraft/world/level/border/WorldBorder;
+  #729 = Methodref          #730.#731     // net/minecraft/world/level/border/WorldBorder.isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+  #730 = Class              #732          // net/minecraft/world/level/border/WorldBorder
+  #731 = NameAndType        #733:#724     // isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+  #732 = Utf8               net/minecraft/world/level/border/WorldBorder
+  #733 = Utf8               isWithinBounds
+  #734 = Methodref          #715.#735     // com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+  #735 = NameAndType        #736:#84      // setCanGenerate:(Z)V
+  #736 = Utf8               setCanGenerate
+  #737 = Methodref          #364.#738     // net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #738 = NameAndType        #739:#740     // getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #739 = Utf8               getBlockState
+  #740 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+  #741 = Methodref          #364.#742     // net/minecraft/server/level/ServerLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #742 = NameAndType        #743:#744     // getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #743 = Utf8               getBlockEntity
+  #744 = Utf8               (Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+  #745 = Fieldref           #498.#746     // com/b1n_ry/yigd/config/GraveConfig.useSoftBlockWhitelist:Z
+  #746 = NameAndType        #747:#160     // useSoftBlockWhitelist:Z
+  #747 = Utf8               useSoftBlockWhitelist
+  #748 = Fieldref           #498.#749     // com/b1n_ry/yigd/config/GraveConfig.useStrictBlockBlacklist:Z
+  #749 = NameAndType        #750:#160     // useStrictBlockBlacklist:Z
+  #750 = Utf8               useStrictBlockBlacklist
+  #751 = Fieldref           #120.#752     // com/b1n_ry/yigd/util/YigdTags.KEEP_STRICT_BLACKLIST:Lnet/minecraft/tags/TagKey;
+  #752 = NameAndType        #753:#124     // KEEP_STRICT_BLACKLIST:Lnet/minecraft/tags/TagKey;
+  #753 = Utf8               KEEP_STRICT_BLACKLIST
+  #754 = Methodref          #755.#9       // com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.getStack:()Lnet/minecraft/world/item/ItemStack;
+  #755 = Class              #756          // com/b1n_ry/yigd/events/YigdEvents$DropItemEvent
+  #756 = Utf8               com/b1n_ry/yigd/events/YigdEvents$DropItemEvent
+  #757 = Methodref          #755.#758     // com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.setShouldDrop:(Z)V
+  #758 = NameAndType        #759:#84      // setShouldDrop:(Z)V
+  #759 = Utf8               setShouldDrop
+  #760 = Methodref          #755.#82      // com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.setCanceled:(Z)V
+  #761 = InvokeDynamic      #4:#762       // #4:test:(Lnet/minecraft/core/Holder;)Ljava/util/function/Predicate;
+  #762 = NameAndType        #669:#763     // test:(Lnet/minecraft/core/Holder;)Ljava/util/function/Predicate;
+  #763 = Utf8               (Lnet/minecraft/core/Holder;)Ljava/util/function/Predicate;
+  #764 = Methodref          #765.#766     // net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.removeIf:(Ljava/util/function/Predicate;)V
+  #765 = Class              #767          // net/minecraft/world/item/enchantment/ItemEnchantments$Mutable
+  #766 = NameAndType        #768:#769     // removeIf:(Ljava/util/function/Predicate;)V
+  #767 = Utf8               net/minecraft/world/item/enchantment/ItemEnchantments$Mutable
+  #768 = Utf8               removeIf
+  #769 = Utf8               (Ljava/util/function/Predicate;)V
+  #770 = InterfaceMethodref #257.#356     // net/minecraft/core/Holder.equals:(Ljava/lang/Object;)Z
+  #771 = Methodref          #765.#772     // net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.set:(Lnet/minecraft/core/Holder;I)V
+  #772 = NameAndType        #188:#773     // set:(Lnet/minecraft/core/Holder;I)V
+  #773 = Utf8               (Lnet/minecraft/core/Holder;I)V
+  #774 = Methodref          #171.#775     // net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+  #775 = NameAndType        #776:#777     // remove:(Ljava/lang/String;)V
+  #776 = Utf8               remove
+  #777 = Utf8               (Ljava/lang/String;)V
+  #778 = Methodref          #779.#780     // java/lang/Class.desiredAssertionStatus:()Z
+  #779 = Class              #781          // java/lang/Class
+  #780 = NameAndType        #782:#24      // desiredAssertionStatus:()Z
+  #781 = Utf8               java/lang/Class
+  #782 = Utf8               desiredAssertionStatus
+  #783 = Utf8               Code
+  #784 = Utf8               LineNumberTable
+  #785 = Utf8               LocalVariableTable
+  #786 = Utf8               this
+  #787 = Utf8               Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+  #788 = Utf8               dropRuleEvent
+  #789 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$DropRuleEvent;)V
+  #790 = Utf8               statusEffectEntry
+  #791 = Utf8               Lnet/minecraft/core/Holder;
+  #792 = Utf8               replaced
+  #793 = Utf8               nbt
+  #794 = Utf8               itemNbt
+  #795 = Utf8               Lnet/minecraft/nbt/CompoundTag;
+  #796 = Utf8               dropRule
+  #797 = Utf8               level
+  #798 = Utf8               enchantmentRegistryEntry
+  #799 = Utf8               event
+  #800 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$DropRuleEvent;
+  #801 = Utf8               item
+  #802 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #803 = Utf8               slot
+  #804 = Utf8               context
+  #805 = Utf8               Lcom/b1n_ry/yigd/data/DeathContext;
+  #806 = Utf8               modify
+  #807 = Utf8               config
+  #808 = Utf8               Lcom/b1n_ry/yigd/config/YigdConfig;
+  #809 = Utf8               statusEffect
+  #810 = Utf8               Lnet/minecraft/world/effect/MobEffect;
+  #811 = Utf8               LocalVariableTypeTable
+  #812 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/effect/MobEffect;>;
+  #813 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/item/enchantment/Enchantment;>;
+  #814 = Utf8               StackMapTable
+  #815 = Utf8               RuntimeVisibleAnnotations
+  #816 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #817 = Utf8               graveClaimEvent
+  #818 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent;)V
+  #819 = Utf8               graveId
+  #820 = Utf8               Ljava/util/UUID;
+  #821 = Utf8               stackNbtComponent
+  #822 = Utf8               stackNbt
+  #823 = Utf8               stack
+  #824 = Utf8               i
+  #825 = Utf8               inventory
+  #826 = Utf8               Lnet/minecraft/world/entity/player/Inventory;
+  #827 = Utf8               nbtComponent
+  #828 = Utf8               userNbt
+  #829 = Utf8               uuidNbt
+  #830 = Utf8               Lnet/minecraft/nbt/Tag;
+  #831 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent;
+  #832 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #833 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #834 = Utf8               Lcom/b1n_ry/yigd/components/GraveComponent;
+  #835 = Utf8               tool
+  #836 = Utf8               robConfig
+  #837 = Utf8               tps
+  #838 = Class              #839          // net/minecraft/nbt/Tag
+  #839 = Utf8               net/minecraft/nbt/Tag
+  #840 = Utf8               allowGraveGenerationEvent
+  #841 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent;)V
+  #842 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent;
+  #843 = Utf8               allowBlockUnderGraveGenerationEvent
+  #844 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent;)V
+  #845 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent;
+  #846 = Utf8               graveGenerationEvent
+  #847 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent;)V
+  #848 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent;
+  #849 = Utf8               pos
+  #850 = Utf8               Lnet/minecraft/core/BlockPos;
+  #851 = Utf8               nthTry
+  #852 = Utf8               state
+  #853 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #854 = Utf8               dropItemEvent
+  #855 = Utf8               (Lcom/b1n_ry/yigd/events/YigdEvents$DropItemEvent;)V
+  #856 = Utf8               Lcom/b1n_ry/yigd/events/YigdEvents$DropItemEvent;
+  #857 = Utf8               lambda$allowGraveGenerationEvent$4
+  #858 = Utf8               (Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+  #859 = Utf8               lambda$dropRuleEvent$3
+  #860 = Utf8               (Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #861 = Utf8               builder
+  #862 = Utf8               Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;
+  #863 = Utf8               lambda$dropRuleEvent$2
+  #864 = Utf8               (Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+  #865 = Utf8               enchant
+  #866 = Utf8               lambda$dropRuleEvent$1
+  #867 = Utf8               (Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #868 = Utf8               lambda$dropRuleEvent$0
+  #869 = Utf8               (Lnet/minecraft/nbt/CompoundTag;)V
+  #870 = Utf8               nbtCompound
+  #871 = Utf8               <clinit>
+  #872 = Utf8               SourceFile
+  #873 = Utf8               YigdServerEventHandler.java
+  #874 = Utf8               NestMembers
+  #875 = Utf8               BootstrapMethods
+  #876 = MethodType         #877          //  (Ljava/lang/Object;)V
+  #877 = Utf8               (Ljava/lang/Object;)V
+  #878 = MethodHandle       6:#879        // REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #879 = Methodref          #156.#880     // com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #880 = NameAndType        #868:#869     // lambda$dropRuleEvent$0:(Lnet/minecraft/nbt/CompoundTag;)V
+  #881 = MethodType         #869          //  (Lnet/minecraft/nbt/CompoundTag;)V
+  #882 = MethodHandle       6:#883        // REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$1:(Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #883 = Methodref          #156.#884     // com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$1:(Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #884 = NameAndType        #866:#867     // lambda$dropRuleEvent$1:(Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #885 = MethodType         #886          //  (Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #886 = Utf8               (Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #887 = MethodHandle       6:#888        // REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$3:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #888 = Methodref          #156.#889     // com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$3:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #889 = NameAndType        #859:#860     // lambda$dropRuleEvent$3:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  #890 = MethodType         #106          //  (Ljava/lang/Object;)Z
+  #891 = MethodHandle       6:#892        // REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$allowGraveGenerationEvent$4:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+  #892 = Methodref          #156.#893     // com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$allowGraveGenerationEvent$4:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+  #893 = NameAndType        #857:#858     // lambda$allowGraveGenerationEvent$4:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+  #894 = MethodType         #895          //  (Lnet/minecraft/world/item/ItemStack;)Z
+  #895 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+  #896 = MethodHandle       6:#897        // REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$2:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+  #897 = Methodref          #156.#898     // com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$2:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+  #898 = NameAndType        #863:#864     // lambda$dropRuleEvent$2:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+  #899 = MethodType         #70           //  (Lnet/minecraft/core/Holder;)Z
+  #900 = MethodHandle       6:#901        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #901 = Methodref          #902.#903     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #902 = Class              #904          // java/lang/invoke/LambdaMetafactory
+  #903 = NameAndType        #905:#906     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #904 = Utf8               java/lang/invoke/LambdaMetafactory
+  #905 = Utf8               metafactory
+  #906 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #907 = Utf8               InnerClasses
+  #908 = Class              #909          // com/b1n_ry/yigd/events/YigdEvents
+  #909 = Utf8               com/b1n_ry/yigd/events/YigdEvents
+  #910 = Utf8               DropRuleEvent
+  #911 = Utf8               GraveClaimEvent
+  #912 = Utf8               GraveCompassConfig
+  #913 = Utf8               CompassGraveTarget
+  #914 = Utf8               GraveKeyConfig
+  #915 = Utf8               KeyTargeting
+  #916 = Utf8               GraveRobbing
+  #917 = Utf8               AllowGraveGenerationEvent
+  #918 = Utf8               BlockUnderGrave
+  #919 = Utf8               AllowBlockUnderGraveGenerationEvent
+  #920 = Utf8               GraveGenerationEvent
+  #921 = Utf8               DropItemEvent
+  #922 = Utf8               Mutable
+  #923 = Class              #924          // java/lang/invoke/MethodHandles$Lookup
+  #924 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #925 = Class              #926          // java/lang/invoke/MethodHandles
+  #926 = Utf8               java/lang/invoke/MethodHandles
+  #927 = Utf8               Lookup
+{
+  static final boolean $assertionsDisabled;
+    descriptor: Z
+    flags: (0x1018) ACC_STATIC, ACC_FINAL, ACC_SYNTHETIC
+
+  public com.b1n_ry.yigd.events.YigdServerEventHandler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 44: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+
+  public void dropRuleEvent(com.b1n_ry.yigd.events.YigdEvents$DropRuleEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$DropRuleEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=12, args_size=2
+         0: aload_1
+         1: invokevirtual #7                  // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getStack:()Lnet/minecraft/world/item/ItemStack;
+         4: astore_2
+         5: aload_1
+         6: invokevirtual #13                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getSlot:()I
+         9: istore_3
+        10: aload_1
+        11: invokevirtual #17                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.getDeathContext:()Lcom/b1n_ry/yigd/data/DeathContext;
+        14: astore        4
+        16: aload_1
+        17: invokevirtual #21                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.isModify:()Z
+        20: istore        5
+        22: invokestatic  #25                 // Method com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+        25: astore        6
+        27: getstatic     #31                 // Field net/minecraft/core/registries/BuiltInRegistries.MOB_EFFECT:Lnet/minecraft/core/Registry;
+        30: ldc           #37                 // String amethyst_imbuement
+        32: ldc           #39                 // String soulbinding
+        34: invokestatic  #41                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        37: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+        42: checkcast     #53                 // class net/minecraft/world/effect/MobEffect
+        45: astore        7
+        47: aload         7
+        49: ifnull        95
+        52: getstatic     #31                 // Field net/minecraft/core/registries/BuiltInRegistries.MOB_EFFECT:Lnet/minecraft/core/Registry;
+        55: aload         7
+        57: invokeinterface #55,  2           // InterfaceMethod net/minecraft/core/Registry.wrapAsHolder:(Ljava/lang/Object;)Lnet/minecraft/core/Holder;
+        62: astore        8
+        64: aload         4
+        66: ifnull        95
+        69: aload         4
+        71: invokevirtual #59                 // Method com/b1n_ry/yigd/data/DeathContext.player:()Lnet/minecraft/server/level/ServerPlayer;
+        74: aload         8
+        76: invokevirtual #65                 // Method net/minecraft/server/level/ServerPlayer.hasEffect:(Lnet/minecraft/core/Holder;)Z
+        79: ifeq          95
+        82: aload_1
+        83: getstatic     #71                 // Field com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+        86: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+        89: aload_1
+        90: iconst_1
+        91: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+        94: return
+        95: aload         6
+        97: getfield      #85                 // Field com/b1n_ry/yigd/config/YigdConfig.inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+       100: getfield      #89                 // Field com/b1n_ry/yigd/config/InventoryConfig.soulboundSlots:Ljava/util/List;
+       103: iload_3
+       104: invokestatic  #95                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       107: invokeinterface #101,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+       112: ifeq          128
+       115: aload_1
+       116: getstatic     #71                 // Field com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+       119: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       122: aload_1
+       123: iconst_1
+       124: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       127: return
+       128: aload         6
+       130: getfield      #85                 // Field com/b1n_ry/yigd/config/YigdConfig.inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+       133: getfield      #107                // Field com/b1n_ry/yigd/config/InventoryConfig.vanishingSlots:Ljava/util/List;
+       136: iload_3
+       137: invokestatic  #95                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       140: invokeinterface #101,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+       145: ifeq          161
+       148: aload_1
+       149: getstatic     #110                // Field com/b1n_ry/yigd/util/DropRule.DESTROY:Lcom/b1n_ry/yigd/util/DropRule;
+       152: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       155: aload_1
+       156: iconst_1
+       157: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       160: return
+       161: aload         6
+       163: getfield      #85                 // Field com/b1n_ry/yigd/config/YigdConfig.inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+       166: getfield      #113                // Field com/b1n_ry/yigd/config/InventoryConfig.dropOnGroundSlots:Ljava/util/List;
+       169: iload_3
+       170: invokestatic  #95                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       173: invokeinterface #101,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+       178: ifeq          194
+       181: aload_1
+       182: getstatic     #116                // Field com/b1n_ry/yigd/util/DropRule.DROP:Lcom/b1n_ry/yigd/util/DropRule;
+       185: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       188: aload_1
+       189: iconst_1
+       190: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       193: return
+       194: aload_2
+       195: getstatic     #119                // Field com/b1n_ry/yigd/util/YigdTags.NATURAL_SOULBOUND:Lnet/minecraft/tags/TagKey;
+       198: invokevirtual #125                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+       201: ifeq          217
+       204: aload_1
+       205: getstatic     #71                 // Field com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+       208: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       211: aload_1
+       212: iconst_1
+       213: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       216: return
+       217: aload_2
+       218: getstatic     #131                // Field com/b1n_ry/yigd/util/YigdTags.NATURAL_VANISHING:Lnet/minecraft/tags/TagKey;
+       221: invokevirtual #125                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+       224: ifeq          240
+       227: aload_1
+       228: getstatic     #110                // Field com/b1n_ry/yigd/util/DropRule.DESTROY:Lcom/b1n_ry/yigd/util/DropRule;
+       231: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       234: aload_1
+       235: iconst_1
+       236: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       239: return
+       240: aload_2
+       241: getstatic     #134                // Field com/b1n_ry/yigd/util/YigdTags.GRAVE_INCOMPATIBLE:Lnet/minecraft/tags/TagKey;
+       244: invokevirtual #125                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+       247: ifeq          263
+       250: aload_1
+       251: getstatic     #116                // Field com/b1n_ry/yigd/util/DropRule.DROP:Lcom/b1n_ry/yigd/util/DropRule;
+       254: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       257: aload_1
+       258: iconst_1
+       259: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       262: return
+       263: aload_2
+       264: invokevirtual #137                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+       267: ifne          378
+       270: aload_2
+       271: getstatic     #140                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+       274: invokevirtual #146                // Method net/minecraft/world/item/ItemStack.has:(Lnet/minecraft/core/component/DataComponentType;)Z
+       277: ifeq          378
+       280: aload_2
+       281: getstatic     #140                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+       284: invokevirtual #150                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       287: checkcast     #153                // class net/minecraft/world/item/component/CustomData
+       290: astore        8
+       292: getstatic     #155                // Field $assertionsDisabled:Z
+       295: ifne          311
+       298: aload         8
+       300: ifnonnull     311
+       303: new           #161                // class java/lang/AssertionError
+       306: dup
+       307: invokespecial #163                // Method java/lang/AssertionError."<init>":()V
+       310: athrow
+       311: aload         8
+       313: invokevirtual #164                // Method net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+       316: astore        9
+       318: aload         9
+       320: ldc           #168                // String Botania_keepIvy
+       322: invokevirtual #170                // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+       325: ifeq          378
+       328: aload         9
+       330: ldc           #168                // String Botania_keepIvy
+       332: invokevirtual #175                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+       335: ifeq          378
+       338: iload         5
+       340: ifeq          365
+       343: aload         8
+       345: invokedynamic #178,  0            // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       350: invokevirtual #182                // Method net/minecraft/world/item/component/CustomData.update:(Ljava/util/function/Consumer;)Lnet/minecraft/world/item/component/CustomData;
+       353: astore        10
+       355: aload_2
+       356: getstatic     #140                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+       359: aload         10
+       361: invokevirtual #186                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       364: pop
+       365: aload_1
+       366: getstatic     #71                 // Field com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+       369: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       372: aload_1
+       373: iconst_1
+       374: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       377: return
+       378: aload         4
+       380: ifnull        407
+       383: getstatic     #190                // Field com/b1n_ry/yigd/util/GraveOverrideAreas.INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+       386: aload         4
+       388: invokevirtual #196                // Method com/b1n_ry/yigd/data/DeathContext.deathPos:()Lnet/minecraft/world/phys/Vec3;
+       391: invokestatic  #200                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+       394: aload         4
+       396: invokevirtual #206                // Method com/b1n_ry/yigd/data/DeathContext.world:()Lnet/minecraft/server/level/ServerLevel;
+       399: invokevirtual #210                // Method com/b1n_ry/yigd/util/GraveOverrideAreas.getDropRuleFromArea:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/server/level/ServerLevel;)Lcom/b1n_ry/yigd/util/DropRule;
+       402: astore        8
+       404: goto          415
+       407: getstatic     #190                // Field com/b1n_ry/yigd/util/GraveOverrideAreas.INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+       410: getfield      #214                // Field com/b1n_ry/yigd/util/GraveOverrideAreas.defaultDropRule:Lcom/b1n_ry/yigd/util/DropRule;
+       413: astore        8
+       415: aload_2
+       416: getstatic     #217                // Field com/b1n_ry/yigd/util/YigdTags.VANISHING:Lnet/minecraft/tags/TagKey;
+       419: invokestatic  #220                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.hasTag:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z
+       422: ifeq          438
+       425: aload_1
+       426: getstatic     #110                // Field com/b1n_ry/yigd/util/DropRule.DESTROY:Lcom/b1n_ry/yigd/util/DropRule;
+       429: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       432: aload_1
+       433: iconst_1
+       434: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       437: return
+       438: aload_2
+       439: getstatic     #226                // Field com/b1n_ry/yigd/util/YigdTags.SOULBOUND:Lnet/minecraft/tags/TagKey;
+       442: invokestatic  #220                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.hasTag:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z
+       445: ifeq          570
+       448: aload         6
+       450: getfield      #85                 // Field com/b1n_ry/yigd/config/YigdConfig.inventoryConfig:Lcom/b1n_ry/yigd/config/InventoryConfig;
+       453: getfield      #229                // Field com/b1n_ry/yigd/config/InventoryConfig.loseSoulboundLevelOnDeath:Z
+       456: ifeq          557
+       459: aload_2
+       460: invokestatic  #232                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.getEnchantmentsForCrafting:(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+       463: invokevirtual #236                // Method net/minecraft/world/item/enchantment/ItemEnchantments.keySet:()Ljava/util/Set;
+       466: invokeinterface #242,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+       471: astore        9
+       473: aload         9
+       475: invokeinterface #248,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       480: ifeq          557
+       483: aload         9
+       485: invokeinterface #253,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       490: checkcast     #257                // class net/minecraft/core/Holder
+       493: astore        10
+       495: aload         10
+       497: getstatic     #226                // Field com/b1n_ry/yigd/util/YigdTags.SOULBOUND:Lnet/minecraft/tags/TagKey;
+       500: invokeinterface #259,  2          // InterfaceMethod net/minecraft/core/Holder.is:(Lnet/minecraft/tags/TagKey;)Z
+       505: ifne          511
+       508: goto          473
+       511: aload         10
+       513: aload_2
+       514: invokestatic  #260                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.getTagEnchantmentLevel:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/ItemStack;)I
+       517: istore        11
+       519: iload         11
+       521: iconst_1
+       522: if_icmple     542
+       525: aload_2
+       526: aload         10
+       528: iload         11
+       530: invokedynamic #264,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/core/Holder;I)Ljava/util/function/Consumer;
+       535: invokestatic  #267                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.updateEnchantments:(Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+       538: pop
+       539: goto          554
+       542: aload_2
+       543: aload         10
+       545: invokedynamic #271,  0            // InvokeDynamic #2:accept:(Lnet/minecraft/core/Holder;)Ljava/util/function/Consumer;
+       550: invokestatic  #267                // Method net/minecraft/world/item/enchantment/EnchantmentHelper.updateEnchantments:(Lnet/minecraft/world/item/ItemStack;Ljava/util/function/Consumer;)Lnet/minecraft/world/item/enchantment/ItemEnchantments;
+       553: pop
+       554: goto          473
+       557: aload_1
+       558: getstatic     #71                 // Field com/b1n_ry/yigd/util/DropRule.KEEP:Lcom/b1n_ry/yigd/util/DropRule;
+       561: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       564: aload_1
+       565: iconst_1
+       566: invokevirtual #81                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setCanceled:(Z)V
+       569: return
+       570: aload_1
+       571: aload         8
+       573: invokevirtual #77                 // Method com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent.setDropRule:(Lcom/b1n_ry/yigd/util/DropRule;)V
+       576: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 5
+        line 49: 10
+        line 50: 16
+        line 53: 22
+        line 55: 27
+        line 57: 47
+        line 58: 52
+        line 59: 64
+        line 60: 82
+        line 61: 89
+        line 62: 94
+        line 66: 95
+        line 67: 115
+        line 68: 122
+        line 69: 127
+        line 71: 128
+        line 72: 148
+        line 73: 155
+        line 74: 160
+        line 76: 161
+        line 77: 181
+        line 78: 188
+        line 79: 193
+        line 82: 194
+        line 83: 204
+        line 84: 211
+        line 85: 216
+        line 87: 217
+        line 88: 227
+        line 89: 234
+        line 90: 239
+        line 92: 240
+        line 93: 250
+        line 94: 257
+        line 95: 262
+        line 98: 263
+        line 99: 280
+        line 100: 292
+        line 101: 311
+        line 102: 318
+        line 103: 338
+        line 104: 343
+        line 105: 355
+        line 108: 365
+        line 109: 372
+        line 110: 377
+        line 115: 378
+        line 116: 383
+        line 118: 407
+        line 122: 415
+        line 123: 425
+        line 124: 432
+        line 125: 437
+        line 128: 438
+        line 129: 448
+        line 130: 459
+        line 131: 495
+        line 132: 508
+        line 134: 511
+        line 135: 519
+        line 136: 542
+        line 137: 554
+        line 139: 557
+        line 140: 564
+        line 141: 569
+        line 143: 570
+        line 144: 576
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           64      31     8 statusEffectEntry   Lnet/minecraft/core/Holder;
+          355      10    10 replaced   Lnet/minecraft/world/item/component/CustomData;
+          292      86     8   nbt   Lnet/minecraft/world/item/component/CustomData;
+          318      60     9 itemNbt   Lnet/minecraft/nbt/CompoundTag;
+          404       3     8 dropRule   Lcom/b1n_ry/yigd/util/DropRule;
+          519      35    11 level   I
+          495      59    10 enchantmentRegistryEntry   Lnet/minecraft/core/Holder;
+            0     577     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0     577     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$DropRuleEvent;
+            5     572     2  item   Lnet/minecraft/world/item/ItemStack;
+           10     567     3  slot   I
+           16     561     4 context   Lcom/b1n_ry/yigd/data/DeathContext;
+           22     555     5 modify   Z
+           27     550     6 config   Lcom/b1n_ry/yigd/config/YigdConfig;
+           47     530     7 statusEffect   Lnet/minecraft/world/effect/MobEffect;
+          415     162     8 dropRule   Lcom/b1n_ry/yigd/util/DropRule;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           64      31     8 statusEffectEntry   Lnet/minecraft/core/Holder<Lnet/minecraft/world/effect/MobEffect;>;
+          495      59    10 enchantmentRegistryEntry   Lnet/minecraft/core/Holder<Lnet/minecraft/world/item/enchantment/Enchantment;>;
+      StackMapTable: number_of_entries = 19
+        frame_type = 255 /* full_frame */
+          offset_delta = 95
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent, class net/minecraft/world/item/ItemStack, int, class com/b1n_ry/yigd/data/DeathContext, int, class com/b1n_ry/yigd/config/YigdConfig, class net/minecraft/world/effect/MobEffect ]
+          stack = []
+        frame_type = 32 /* same */
+        frame_type = 32 /* same */
+        frame_type = 32 /* same */
+        frame_type = 22 /* same */
+        frame_type = 22 /* same */
+        frame_type = 22 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 47
+          locals = [ class net/minecraft/world/item/component/CustomData ]
+        frame_type = 252 /* append */
+          offset_delta = 53
+          locals = [ class net/minecraft/nbt/CompoundTag ]
+        frame_type = 249 /* chop */
+          offset_delta = 12
+        frame_type = 28 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ class com/b1n_ry/yigd/util/DropRule ]
+        frame_type = 22 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 34
+          locals = [ class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 37
+          locals = [ class net/minecraft/core/Holder ]
+        frame_type = 252 /* append */
+          offset_delta = 30
+          locals = [ int ]
+        frame_type = 249 /* chop */
+          offset_delta = 11
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 12 /* same */
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public void graveClaimEvent(com.b1n_ry.yigd.events.YigdEvents$GraveClaimEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=13, args_size=2
+         0: aload_1
+         1: invokevirtual #274                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getPlayer:()Lnet/minecraft/server/level/ServerPlayer;
+         4: astore_2
+         5: aload_1
+         6: invokevirtual #279                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+         9: astore_3
+        10: aload_1
+        11: invokevirtual #282                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getGrave:()Lcom/b1n_ry/yigd/components/GraveComponent;
+        14: astore        4
+        16: aload_1
+        17: invokevirtual #286                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.getTool:()Lnet/minecraft/world/item/ItemStack;
+        20: astore        5
+        22: aload_2
+        23: invokevirtual #289                // Method net/minecraft/server/level/ServerPlayer.isDeadOrDying:()Z
+        26: ifeq          40
+        29: aload_1
+        30: iconst_0
+        31: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+        34: aload_1
+        35: iconst_1
+        36: invokevirtual #295                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanceled:(Z)V
+        39: return
+        40: invokestatic  #25                 // Method com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+        43: astore        6
+        45: aload         6
+        47: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+        50: getfield      #300                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveCompass:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+        53: getfield      #306                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig.consumeOnUse:Z
+        56: ifne          76
+        59: aload         6
+        61: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+        64: getfield      #300                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveCompass:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+        67: getfield      #311                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig.pointToClosest:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+        70: getstatic     #315                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget.DISABLED:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget;
+        73: if_acmpeq     246
+        76: aload_2
+        77: invokevirtual #320                // Method net/minecraft/server/level/ServerPlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+        80: astore        7
+        82: iconst_0
+        83: istore        8
+        85: iload         8
+        87: aload         7
+        89: invokevirtual #324                // Method net/minecraft/world/entity/player/Inventory.getContainerSize:()I
+        92: if_icmpge     246
+        95: aload         7
+        97: iload         8
+        99: invokevirtual #329                // Method net/minecraft/world/entity/player/Inventory.getItem:(I)Lnet/minecraft/world/item/ItemStack;
+       102: astore        9
+       104: aload         9
+       106: getstatic     #333                // Field net/minecraft/world/item/Items.COMPASS:Lnet/minecraft/world/item/Item;
+       109: invokevirtual #339                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       112: ifne          118
+       115: goto          240
+       118: aload         6
+       120: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+       123: getfield      #300                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveCompass:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig;
+       126: getfield      #306                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig.consumeOnUse:Z
+       129: ifeq          223
+       132: aload         9
+       134: getstatic     #140                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+       137: invokevirtual #150                // Method net/minecraft/world/item/ItemStack.get:(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;
+       140: checkcast     #153                // class net/minecraft/world/item/component/CustomData
+       143: astore        10
+       145: aload         10
+       147: ifnull        158
+       150: aload         10
+       152: invokevirtual #164                // Method net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+       155: goto          159
+       158: aconst_null
+       159: astore        11
+       161: aload         9
+       163: getstatic     #333                // Field net/minecraft/world/item/Items.COMPASS:Lnet/minecraft/world/item/Item;
+       166: invokevirtual #339                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+       169: ifeq          220
+       172: aload         11
+       174: ifnull        220
+       177: aload         11
+       179: ldc_w         #342                // String linked_grave
+       182: invokevirtual #170                // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+       185: ifeq          220
+       188: aload         11
+       190: ldc_w         #342                // String linked_grave
+       193: invokevirtual #344                // Method net/minecraft/nbt/CompoundTag.getUUID:(Ljava/lang/String;)Ljava/util/UUID;
+       196: astore        12
+       198: aload         12
+       200: aload         4
+       202: invokevirtual #348                // Method com/b1n_ry/yigd/components/GraveComponent.getGraveId:()Ljava/util/UUID;
+       205: invokevirtual #354                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+       208: ifeq          220
+       211: aload         9
+       213: iconst_0
+       214: invokevirtual #359                // Method net/minecraft/world/item/ItemStack.setCount:(I)V
+       217: goto          246
+       220: goto          240
+       223: aload_3
+       224: invokevirtual #363                // Method net/minecraft/server/level/ServerLevel.dimension:()Lnet/minecraft/resources/ResourceKey;
+       227: aload_2
+       228: invokevirtual #369                // Method net/minecraft/server/level/ServerPlayer.blockPosition:()Lnet/minecraft/core/BlockPos;
+       231: aload_2
+       232: invokevirtual #373                // Method net/minecraft/server/level/ServerPlayer.getUUID:()Ljava/util/UUID;
+       235: aload         9
+       237: invokestatic  #375                // Method com/b1n_ry/yigd/util/GraveCompassHelper.updateClosestNbt:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/core/BlockPos;Ljava/util/UUID;Lnet/minecraft/world/item/ItemStack;)V
+       240: iinc          8, 1
+       243: goto          85
+       246: aload         6
+       248: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+       251: getfield      #381                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveKeys:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+       254: getfield      #385                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.enabled:Z
+       257: ifeq          500
+       260: aload         5
+       262: getstatic     #390                // Field com/b1n_ry/yigd/Yigd.GRAVE_KEY_ITEM:Lnet/neoforged/neoforge/registries/DeferredItem;
+       265: invokevirtual #396                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/core/Holder;)Z
+       268: ifeq          469
+       271: aload         5
+       273: getstatic     #140                // Field net/minecraft/core/component/DataComponents.CUSTOM_DATA:Lnet/minecraft/core/component/DataComponentType;
+       276: getstatic     #398                // Field net/minecraft/world/item/component/CustomData.EMPTY:Lnet/minecraft/world/item/component/CustomData;
+       279: invokevirtual #402                // Method net/minecraft/world/item/ItemStack.getOrDefault:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+       282: checkcast     #153                // class net/minecraft/world/item/component/CustomData
+       285: astore        7
+       287: aload         7
+       289: invokevirtual #164                // Method net/minecraft/world/item/component/CustomData.copyTag:()Lnet/minecraft/nbt/CompoundTag;
+       292: astore        8
+       294: aload         8
+       296: ldc_w         #405                // String user
+       299: invokevirtual #407                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+       302: astore        9
+       304: aload         8
+       306: ldc_w         #411                // String grave
+       309: invokevirtual #413                // Method net/minecraft/nbt/CompoundTag.get:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+       312: astore        10
+       314: aload         6
+       316: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+       319: getfield      #381                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveKeys:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+       322: getfield      #416                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.targeting:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting;
+       325: astore        11
+       327: getstatic     #420                // Field com/b1n_ry/yigd/events/YigdServerEventHandler$1.$SwitchMap$com$b1n_ry$yigd$config$ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting:[I
+       330: aload         11
+       332: invokevirtual #426                // Method com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting.ordinal:()I
+       335: iaload
+       336: tableswitch   { // 1 to 3
+                       1: 364
+                       2: 381
+                       3: 431
+                 default: 469
+            }
+       364: aload         5
+       366: iconst_1
+       367: invokevirtual #431                // Method net/minecraft/world/item/ItemStack.shrink:(I)V
+       370: aload_1
+       371: iconst_1
+       372: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       375: aload_1
+       376: iconst_1
+       377: invokevirtual #295                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanceled:(Z)V
+       380: return
+       381: getstatic     #434                // Field net/minecraft/world/item/component/ResolvableProfile.CODEC:Lcom/mojang/serialization/Codec;
+       384: getstatic     #440                // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+       387: aload         9
+       389: invokeinterface #445,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+       394: invokeinterface #451,  1          // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+       399: aconst_null
+       400: invokevirtual #457                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       403: aload         4
+       405: invokevirtual #463                // Method com/b1n_ry/yigd/components/GraveComponent.getOwner:()Lnet/minecraft/world/item/component/ResolvableProfile;
+       408: invokestatic  #467                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       411: ifeq          469
+       414: aload         5
+       416: iconst_1
+       417: invokevirtual #431                // Method net/minecraft/world/item/ItemStack.shrink:(I)V
+       420: aload_1
+       421: iconst_1
+       422: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       425: aload_1
+       426: iconst_1
+       427: invokevirtual #295                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanceled:(Z)V
+       430: return
+       431: aload         10
+       433: ifnull        469
+       436: aload         10
+       438: invokestatic  #472                // Method net/minecraft/nbt/NbtUtils.loadUUID:(Lnet/minecraft/nbt/Tag;)Ljava/util/UUID;
+       441: aload         4
+       443: invokevirtual #348                // Method com/b1n_ry/yigd/components/GraveComponent.getGraveId:()Ljava/util/UUID;
+       446: invokestatic  #467                // Method java/util/Objects.equals:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       449: ifeq          469
+       452: aload         5
+       454: iconst_1
+       455: invokevirtual #431                // Method net/minecraft/world/item/ItemStack.shrink:(I)V
+       458: aload_1
+       459: iconst_1
+       460: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       463: aload_1
+       464: iconst_1
+       465: invokevirtual #295                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanceled:(Z)V
+       468: return
+       469: aload         6
+       471: getfield      #296                // Field com/b1n_ry/yigd/config/YigdConfig.extraFeatures:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig;
+       474: getfield      #381                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig.graveKeys:Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig;
+       477: getfield      #478                // Field com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig.required:Z
+       480: ifeq          500
+       483: aload_2
+       484: ldc_w         #481                // String text.yigd.message.missing_key
+       487: invokestatic  #483                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       490: iconst_1
+       491: invokevirtual #489                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       494: aload_1
+       495: iconst_0
+       496: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       499: return
+       500: aload         6
+       502: getfield      #493                // Field com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+       505: getfield      #497                // Field com/b1n_ry/yigd/config/GraveConfig.requireShovelToLoot:Z
+       508: ifeq          539
+       511: aload         5
+       513: getstatic     #502                // Field net/minecraft/tags/ItemTags.SHOVELS:Lnet/minecraft/tags/TagKey;
+       516: invokevirtual #125                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/tags/TagKey;)Z
+       519: ifne          539
+       522: aload_2
+       523: ldc_w         #507                // String text.yigd.message.no_shovel
+       526: invokestatic  #483                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       529: iconst_1
+       530: invokevirtual #489                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       533: aload_1
+       534: iconst_0
+       535: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       538: return
+       539: aload_2
+       540: invokevirtual #373                // Method net/minecraft/server/level/ServerPlayer.getUUID:()Ljava/util/UUID;
+       543: aload         4
+       545: invokevirtual #463                // Method com/b1n_ry/yigd/components/GraveComponent.getOwner:()Lnet/minecraft/world/item/component/ResolvableProfile;
+       548: invokevirtual #509                // Method net/minecraft/world/item/component/ResolvableProfile.id:()Ljava/util/Optional;
+       551: aconst_null
+       552: invokevirtual #457                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+       555: invokevirtual #354                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+       558: ifeq          567
+       561: aload_1
+       562: iconst_1
+       563: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       566: return
+       567: aload         4
+       569: invokevirtual #512                // Method com/b1n_ry/yigd/components/GraveComponent.isLocked:()Z
+       572: ifne          581
+       575: aload_1
+       576: iconst_1
+       577: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       580: return
+       581: aload         6
+       583: getfield      #493                // Field com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+       586: getfield      #515                // Field com/b1n_ry/yigd/config/GraveConfig.graveRobbing:Lcom/b1n_ry/yigd/config/GraveConfig$GraveRobbing;
+       589: astore        7
+       591: aload         7
+       593: getfield      #519                // Field com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.enabled:Z
+       596: ifne          605
+       599: aload_1
+       600: iconst_0
+       601: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       604: return
+       605: aload         7
+       607: getfield      #522                // Field com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.killerSkipWaitTime:Z
+       610: ifeq          634
+       613: aload_2
+       614: invokevirtual #373                // Method net/minecraft/server/level/ServerPlayer.getUUID:()Ljava/util/UUID;
+       617: aload         4
+       619: invokevirtual #525                // Method com/b1n_ry/yigd/components/GraveComponent.getKillerId:()Ljava/util/UUID;
+       622: invokevirtual #354                // Method java/util/UUID.equals:(Ljava/lang/Object;)Z
+       625: ifeq          634
+       628: aload_1
+       629: iconst_1
+       630: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       633: return
+       634: bipush        20
+       636: istore        8
+       638: aload         4
+       640: aload         7
+       642: getfield      #528                // Field com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.timeUnit:Ljava/util/concurrent/TimeUnit;
+       645: aload         7
+       647: getfield      #532                // Field com/b1n_ry/yigd/config/GraveConfig$GraveRobbing.afterTime:I
+       650: i2l
+       651: invokevirtual #536                // Method java/util/concurrent/TimeUnit.toSeconds:(J)J
+       654: ldc2_w        #542                // long 20l
+       657: lmul
+       658: invokevirtual #544                // Method com/b1n_ry/yigd/components/GraveComponent.hasExistedTicks:(J)Z
+       661: ifne          693
+       664: aload_2
+       665: ldc_w         #548                // String text.yigd.message.rob.too_early
+       668: iconst_1
+       669: anewarray     #2                  // class java/lang/Object
+       672: dup
+       673: iconst_0
+       674: aload         4
+       676: invokevirtual #550                // Method com/b1n_ry/yigd/components/GraveComponent.getTimeUntilRobbable:()Ljava/lang/String;
+       679: aastore
+       680: invokestatic  #554                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+       683: iconst_1
+       684: invokevirtual #489                // Method net/minecraft/server/level/ServerPlayer.sendSystemMessage:(Lnet/minecraft/network/chat/Component;Z)V
+       687: aload_1
+       688: iconst_0
+       689: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       692: return
+       693: aload_1
+       694: iconst_1
+       695: invokevirtual #292                // Method com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent.setCanClaim:(Z)V
+       698: return
+      LineNumberTable:
+        line 148: 0
+        line 149: 5
+        line 150: 10
+        line 151: 16
+        line 153: 22
+        line 154: 29
+        line 155: 34
+        line 156: 39
+        line 159: 40
+        line 161: 45
+        line 162: 76
+        line 163: 82
+        line 164: 95
+        line 165: 104
+        line 167: 118
+        line 168: 132
+        line 169: 145
+        line 170: 161
+        line 171: 188
+        line 172: 198
+        line 173: 211
+        line 174: 217
+        line 177: 220
+        line 178: 223
+        line 163: 240
+        line 183: 246
+        line 184: 260
+        line 185: 271
+        line 186: 287
+        line 187: 294
+        line 188: 304
+        line 189: 314
+        line 190: 327
+        line 192: 364
+        line 193: 370
+        line 194: 375
+        line 195: 380
+        line 198: 381
+        line 199: 414
+        line 200: 420
+        line 201: 425
+        line 202: 430
+        line 206: 431
+        line 207: 452
+        line 208: 458
+        line 209: 463
+        line 210: 468
+        line 215: 469
+        line 216: 483
+        line 217: 494
+        line 218: 499
+        line 222: 500
+        line 223: 522
+        line 224: 533
+        line 225: 538
+        line 228: 539
+        line 229: 561
+        line 230: 566
+        line 232: 567
+        line 233: 575
+        line 234: 580
+        line 237: 581
+        line 238: 591
+        line 239: 599
+        line 240: 604
+        line 243: 605
+        line 244: 628
+        line 245: 633
+        line 248: 634
+        line 249: 638
+        line 250: 664
+        line 251: 687
+        line 252: 692
+        line 255: 693
+        line 256: 698
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          198      22    12 graveId   Ljava/util/UUID;
+          145      75    10 stackNbtComponent   Lnet/minecraft/world/item/component/CustomData;
+          161      59    11 stackNbt   Lnet/minecraft/nbt/CompoundTag;
+          104     136     9 stack   Lnet/minecraft/world/item/ItemStack;
+           85     161     8     i   I
+           82     164     7 inventory   Lnet/minecraft/world/entity/player/Inventory;
+          287     182     7 nbtComponent   Lnet/minecraft/world/item/component/CustomData;
+          294     175     8   nbt   Lnet/minecraft/nbt/CompoundTag;
+          304     165     9 userNbt   Lnet/minecraft/nbt/CompoundTag;
+          314     155    10 uuidNbt   Lnet/minecraft/nbt/Tag;
+          327     142    11 targeting   Lcom/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting;
+            0     699     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0     699     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent;
+            5     694     2 player   Lnet/minecraft/server/level/ServerPlayer;
+           10     689     3 level   Lnet/minecraft/server/level/ServerLevel;
+           16     683     4 grave   Lcom/b1n_ry/yigd/components/GraveComponent;
+           22     677     5  tool   Lnet/minecraft/world/item/ItemStack;
+           45     654     6 config   Lcom/b1n_ry/yigd/config/YigdConfig;
+          591     108     7 robConfig   Lcom/b1n_ry/yigd/config/GraveConfig$GraveRobbing;
+          638      61     8   tps   I
+      StackMapTable: number_of_entries = 21
+        frame_type = 255 /* full_frame */
+          offset_delta = 40
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent, class net/minecraft/server/level/ServerPlayer, class net/minecraft/server/level/ServerLevel, class com/b1n_ry/yigd/components/GraveComponent, class net/minecraft/world/item/ItemStack ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 35
+          locals = [ class com/b1n_ry/yigd/config/YigdConfig ]
+        frame_type = 253 /* append */
+          offset_delta = 8
+          locals = [ class net/minecraft/world/entity/player/Inventory, int ]
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class net/minecraft/world/item/ItemStack ]
+        frame_type = 252 /* append */
+          offset_delta = 39
+          locals = [ class net/minecraft/world/item/component/CustomData ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class net/minecraft/nbt/CompoundTag ]
+        frame_type = 250 /* chop */
+          offset_delta = 60
+        frame_type = 2 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 16
+        frame_type = 249 /* chop */
+          offset_delta = 5
+        frame_type = 255 /* full_frame */
+          offset_delta = 117
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent, class net/minecraft/server/level/ServerPlayer, class net/minecraft/server/level/ServerLevel, class com/b1n_ry/yigd/components/GraveComponent, class net/minecraft/world/item/ItemStack, class com/b1n_ry/yigd/config/YigdConfig, class net/minecraft/world/item/component/CustomData, class net/minecraft/nbt/CompoundTag, class net/minecraft/nbt/CompoundTag, class net/minecraft/nbt/Tag, class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting ]
+          stack = []
+        frame_type = 16 /* same */
+        frame_type = 49 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 37
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent, class net/minecraft/server/level/ServerPlayer, class net/minecraft/server/level/ServerLevel, class com/b1n_ry/yigd/components/GraveComponent, class net/minecraft/world/item/ItemStack, class com/b1n_ry/yigd/config/YigdConfig ]
+          stack = []
+        frame_type = 30 /* same */
+        frame_type = 38 /* same */
+        frame_type = 27 /* same */
+        frame_type = 13 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 23
+          locals = [ class com/b1n_ry/yigd/config/GraveConfig$GraveRobbing ]
+        frame_type = 28 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 58
+          locals = [ int ]
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public void allowGraveGenerationEvent(com.b1n_ry.yigd.events.YigdEvents$AllowGraveGenerationEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=6, args_size=2
+         0: aload_1
+         1: invokevirtual #557                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.getDeathContext:()Lcom/b1n_ry/yigd/data/DeathContext;
+         4: astore_2
+         5: aload_1
+         6: invokevirtual #560                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.getGrave:()Lcom/b1n_ry/yigd/components/GraveComponent;
+         9: astore_3
+        10: invokestatic  #25                 // Method com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+        13: getfield      #493                // Field com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+        16: astore        4
+        18: aload         4
+        20: getfield      #561                // Field com/b1n_ry/yigd/config/GraveConfig.enabled:Z
+        23: ifne          32
+        26: aload_1
+        27: iconst_0
+        28: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+        31: return
+        32: getstatic     #565                // Field com/b1n_ry/yigd/data/DeathInfoManager.INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+        35: invokevirtual #570                // Method com/b1n_ry/yigd/data/DeathInfoManager.getGraveListMode:()Lcom/b1n_ry/yigd/data/ListMode;
+        38: getstatic     #574                // Field com/b1n_ry/yigd/data/ListMode.WHITELIST:Lcom/b1n_ry/yigd/data/ListMode;
+        41: if_acmpne     67
+        44: getstatic     #565                // Field com/b1n_ry/yigd/data/DeathInfoManager.INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+        47: new           #435                // class net/minecraft/world/item/component/ResolvableProfile
+        50: dup
+        51: aload_2
+        52: invokevirtual #59                 // Method com/b1n_ry/yigd/data/DeathContext.player:()Lnet/minecraft/server/level/ServerPlayer;
+        55: invokevirtual #580                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+        58: invokespecial #584                // Method net/minecraft/world/item/component/ResolvableProfile."<init>":(Lcom/mojang/authlib/GameProfile;)V
+        61: invokevirtual #587                // Method com/b1n_ry/yigd/data/DeathInfoManager.isInList:(Lnet/minecraft/world/item/component/ResolvableProfile;)Z
+        64: ifeq          102
+        67: getstatic     #565                // Field com/b1n_ry/yigd/data/DeathInfoManager.INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+        70: invokevirtual #570                // Method com/b1n_ry/yigd/data/DeathInfoManager.getGraveListMode:()Lcom/b1n_ry/yigd/data/ListMode;
+        73: getstatic     #591                // Field com/b1n_ry/yigd/data/ListMode.BLACKLIST:Lcom/b1n_ry/yigd/data/ListMode;
+        76: if_acmpne     129
+        79: getstatic     #565                // Field com/b1n_ry/yigd/data/DeathInfoManager.INSTANCE:Lcom/b1n_ry/yigd/data/DeathInfoManager;
+        82: new           #435                // class net/minecraft/world/item/component/ResolvableProfile
+        85: dup
+        86: aload_2
+        87: invokevirtual #59                 // Method com/b1n_ry/yigd/data/DeathContext.player:()Lnet/minecraft/server/level/ServerPlayer;
+        90: invokevirtual #580                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+        93: invokespecial #584                // Method net/minecraft/world/item/component/ResolvableProfile."<init>":(Lcom/mojang/authlib/GameProfile;)V
+        96: invokevirtual #587                // Method com/b1n_ry/yigd/data/DeathInfoManager.isInList:(Lnet/minecraft/world/item/component/ResolvableProfile;)Z
+        99: ifeq          129
+       102: getstatic     #594                // Field com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+       105: ldc_w         #598                // String {} found on whitelist/blacklist, disallowing grave generation
+       108: aload_2
+       109: invokevirtual #59                 // Method com/b1n_ry/yigd/data/DeathContext.player:()Lnet/minecraft/server/level/ServerPlayer;
+       112: invokevirtual #580                // Method net/minecraft/server/level/ServerPlayer.getGameProfile:()Lcom/mojang/authlib/GameProfile;
+       115: invokevirtual #600                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+       118: invokeinterface #605,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+       123: aload_1
+       124: iconst_0
+       125: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       128: return
+       129: aload         4
+       131: getfield      #611                // Field com/b1n_ry/yigd/config/GraveConfig.generateEmptyGraves:Z
+       134: ifne          150
+       137: aload_3
+       138: invokevirtual #614                // Method com/b1n_ry/yigd/components/GraveComponent.isGraveEmpty:()Z
+       141: ifeq          150
+       144: aload_1
+       145: iconst_0
+       146: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       149: return
+       150: aload         4
+       152: getfield      #617                // Field com/b1n_ry/yigd/config/GraveConfig.dimensionBlacklist:Ljava/util/List;
+       155: aload_3
+       156: invokevirtual #620                // Method com/b1n_ry/yigd/components/GraveComponent.getWorldRegistryKey:()Lnet/minecraft/resources/ResourceKey;
+       159: invokevirtual #623                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       162: invokevirtual #629                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       165: invokeinterface #101,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+       170: ifeq          179
+       173: aload_1
+       174: iconst_0
+       175: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       178: return
+       179: aload         4
+       181: getfield      #632                // Field com/b1n_ry/yigd/config/GraveConfig.generateGraveInVoid:Z
+       184: ifne          210
+       187: aload_3
+       188: invokevirtual #635                // Method com/b1n_ry/yigd/components/GraveComponent.getPos:()Lnet/minecraft/core/BlockPos;
+       191: invokevirtual #638                // Method net/minecraft/core/BlockPos.getY:()I
+       194: aload_2
+       195: invokevirtual #206                // Method com/b1n_ry/yigd/data/DeathContext.world:()Lnet/minecraft/server/level/ServerLevel;
+       198: invokevirtual #641                // Method net/minecraft/server/level/ServerLevel.getMinBuildHeight:()I
+       201: if_icmpge     210
+       204: aload_1
+       205: iconst_0
+       206: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       209: return
+       210: aload         4
+       212: getfield      #644                // Field com/b1n_ry/yigd/config/GraveConfig.requireItem:Z
+       215: ifeq          267
+       218: getstatic     #647                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       221: aload         4
+       223: getfield      #651                // Field com/b1n_ry/yigd/config/GraveConfig.requiredItem:Ljava/lang/String;
+       226: invokestatic  #655                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       229: invokeinterface #658,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+       234: checkcast     #661                // class net/minecraft/world/item/Item
+       237: astore        5
+       239: aload_3
+       240: invokevirtual #663                // Method com/b1n_ry/yigd/components/GraveComponent.getInventoryComponent:()Lcom/b1n_ry/yigd/components/InventoryComponent;
+       243: aload         5
+       245: invokedynamic #667,  0            // InvokeDynamic #3:test:(Lnet/minecraft/world/item/Item;)Ljava/util/function/Predicate;
+       250: aload         4
+       252: getfield      #671                // Field com/b1n_ry/yigd/config/GraveConfig.requiredItemCount:I
+       255: invokevirtual #674                // Method com/b1n_ry/yigd/components/InventoryComponent.removeItem:(Ljava/util/function/Predicate;I)Z
+       258: ifne          267
+       261: aload_1
+       262: iconst_0
+       263: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       266: return
+       267: aload_1
+       268: aload         4
+       270: getfield      #680                // Field com/b1n_ry/yigd/config/GraveConfig.ignoredDeathTypes:Ljava/util/List;
+       273: aload_2
+       274: invokevirtual #683                // Method com/b1n_ry/yigd/data/DeathContext.deathSource:()Lnet/minecraft/world/damagesource/DamageSource;
+       277: invokevirtual #687                // Method net/minecraft/world/damagesource/DamageSource.getMsgId:()Ljava/lang/String;
+       280: invokeinterface #101,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+       285: ifne          292
+       288: iconst_1
+       289: goto          293
+       292: iconst_0
+       293: invokevirtual #562                // Method com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent.setAllowGeneration:(Z)V
+       296: return
+      LineNumberTable:
+        line 260: 0
+        line 261: 5
+        line 263: 10
+        line 264: 18
+        line 265: 26
+        line 266: 31
+        line 269: 32
+        line 270: 52
+        line 271: 70
+        line 272: 87
+        line 273: 102
+        line 274: 123
+        line 275: 128
+        line 278: 129
+        line 279: 144
+        line 280: 149
+        line 283: 150
+        line 284: 173
+        line 285: 178
+        line 288: 179
+        line 289: 204
+        line 290: 209
+        line 293: 210
+        line 294: 218
+        line 295: 239
+        line 296: 261
+        line 297: 266
+        line 301: 267
+        line 302: 296
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          239      28     5  item   Lnet/minecraft/world/item/Item;
+            0     297     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0     297     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent;
+            5     292     2 context   Lcom/b1n_ry/yigd/data/DeathContext;
+           10     287     3 grave   Lcom/b1n_ry/yigd/components/GraveComponent;
+           18     279     4 graveConfig   Lcom/b1n_ry/yigd/config/GraveConfig;
+      StackMapTable: number_of_entries = 10
+        frame_type = 254 /* append */
+          offset_delta = 32
+          locals = [ class com/b1n_ry/yigd/data/DeathContext, class com/b1n_ry/yigd/components/GraveComponent, class com/b1n_ry/yigd/config/GraveConfig ]
+        frame_type = 34 /* same */
+        frame_type = 34 /* same */
+        frame_type = 26 /* same */
+        frame_type = 20 /* same */
+        frame_type = 28 /* same */
+        frame_type = 30 /* same */
+        frame_type = 56 /* same */
+        frame_type = 88 /* same_locals_1_stack_item */
+          stack = [ class com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent, class com/b1n_ry/yigd/data/DeathContext, class com/b1n_ry/yigd/components/GraveComponent, class com/b1n_ry/yigd/config/GraveConfig ]
+          stack = [ class com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent, int ]
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public void allowBlockUnderGraveGenerationEvent(com.b1n_ry.yigd.events.YigdEvents$AllowBlockUnderGraveGenerationEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_1
+         1: invokestatic  #25                 // Method com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+         4: getfield      #493                // Field com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+         7: getfield      #692                // Field com/b1n_ry/yigd/config/GraveConfig.blockUnderGrave:Lcom/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave;
+        10: getfield      #696                // Field com/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave.enabled:Z
+        13: ifeq          33
+        16: aload_1
+        17: invokevirtual #699                // Method com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent.getBlockUnder:()Lnet/minecraft/world/level/block/state/BlockState;
+        20: getstatic     #705                // Field com/b1n_ry/yigd/util/YigdTags.REPLACE_SOFT_WHITELIST:Lnet/minecraft/tags/TagKey;
+        23: invokevirtual #708                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+        26: ifeq          33
+        29: iconst_1
+        30: goto          34
+        33: iconst_0
+        34: invokevirtual #711                // Method com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent.setAllowPlacement:(Z)V
+        37: return
+      LineNumberTable:
+        line 306: 0
+        line 307: 1
+        line 306: 34
+        line 308: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0      38     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent;
+      StackMapTable: number_of_entries = 2
+        frame_type = 97 /* same_locals_1_stack_item */
+          stack = [ class com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/b1n_ry/yigd/events/YigdServerEventHandler, class com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent ]
+          stack = [ class com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent, int ]
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public void graveGenerationEvent(com.b1n_ry.yigd.events.YigdEvents$GraveGenerationEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=7, args_size=2
+         0: aload_1
+         1: invokevirtual #714                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+         4: astore_2
+         5: aload_1
+         6: invokevirtual #717                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getPos:()Lnet/minecraft/core/BlockPos;
+         9: astore_3
+        10: aload_1
+        11: invokevirtual #718                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.getNthTry:()I
+        14: istore        4
+        16: aload_2
+        17: aload_3
+        18: invokevirtual #721                // Method net/minecraft/server/level/ServerLevel.isOutsideBuildHeight:(Lnet/minecraft/core/BlockPos;)Z
+        21: ifne          35
+        24: aload_2
+        25: invokevirtual #725                // Method net/minecraft/server/level/ServerLevel.getWorldBorder:()Lnet/minecraft/world/level/border/WorldBorder;
+        28: aload_3
+        29: invokevirtual #729                // Method net/minecraft/world/level/border/WorldBorder.isWithinBounds:(Lnet/minecraft/core/BlockPos;)Z
+        32: ifne          41
+        35: aload_1
+        36: iconst_0
+        37: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+        40: return
+        41: aload_2
+        42: aload_3
+        43: invokevirtual #737                // Method net/minecraft/server/level/ServerLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+        46: astore        5
+        48: invokestatic  #25                 // Method com/b1n_ry/yigd/config/YigdConfig.getConfig:()Lcom/b1n_ry/yigd/config/YigdConfig;
+        51: getfield      #493                // Field com/b1n_ry/yigd/config/YigdConfig.graveConfig:Lcom/b1n_ry/yigd/config/GraveConfig;
+        54: astore        6
+        56: aload_2
+        57: aload_3
+        58: invokevirtual #741                // Method net/minecraft/server/level/ServerLevel.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+        61: ifnull        70
+        64: aload_1
+        65: iconst_0
+        66: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+        69: return
+        70: iload         4
+        72: lookupswitch  { // 2
+                       0: 100
+                       1: 131
+                 default: 162
+            }
+       100: aload         6
+       102: getfield      #745                // Field com/b1n_ry/yigd/config/GraveConfig.useSoftBlockWhitelist:Z
+       105: ifne          114
+       108: aload_1
+       109: iconst_0
+       110: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+       113: return
+       114: aload         5
+       116: getstatic     #705                // Field com/b1n_ry/yigd/util/YigdTags.REPLACE_SOFT_WHITELIST:Lnet/minecraft/tags/TagKey;
+       119: invokevirtual #708                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       122: ifne          162
+       125: aload_1
+       126: iconst_0
+       127: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+       130: return
+       131: aload         6
+       133: getfield      #748                // Field com/b1n_ry/yigd/config/GraveConfig.useStrictBlockBlacklist:Z
+       136: ifne          145
+       139: aload_1
+       140: iconst_0
+       141: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+       144: return
+       145: aload         5
+       147: getstatic     #751                // Field com/b1n_ry/yigd/util/YigdTags.KEEP_STRICT_BLACKLIST:Lnet/minecraft/tags/TagKey;
+       150: invokevirtual #708                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+       153: ifeq          162
+       156: aload_1
+       157: iconst_0
+       158: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+       161: return
+       162: aload_1
+       163: iconst_1
+       164: invokevirtual #734                // Method com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent.setCanGenerate:(Z)V
+       167: return
+      LineNumberTable:
+        line 312: 0
+        line 313: 5
+        line 314: 10
+        line 316: 16
+        line 317: 35
+        line 318: 40
+        line 321: 41
+        line 322: 48
+        line 323: 56
+        line 324: 64
+        line 325: 69
+        line 327: 70
+        line 329: 100
+        line 330: 108
+        line 331: 113
+        line 333: 114
+        line 334: 125
+        line 335: 130
+        line 339: 131
+        line 340: 139
+        line 341: 144
+        line 343: 145
+        line 344: 156
+        line 345: 161
+        line 349: 162
+        line 350: 167
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     168     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0     168     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent;
+            5     163     2 level   Lnet/minecraft/server/level/ServerLevel;
+           10     158     3   pos   Lnet/minecraft/core/BlockPos;
+           16     152     4 nthTry   I
+           48     120     5 state   Lnet/minecraft/world/level/block/state/BlockState;
+           56     112     6 config   Lcom/b1n_ry/yigd/config/GraveConfig;
+      StackMapTable: number_of_entries = 8
+        frame_type = 254 /* append */
+          offset_delta = 35
+          locals = [ class net/minecraft/server/level/ServerLevel, class net/minecraft/core/BlockPos, int ]
+        frame_type = 5 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 28
+          locals = [ class net/minecraft/world/level/block/state/BlockState, class com/b1n_ry/yigd/config/GraveConfig ]
+        frame_type = 29 /* same */
+        frame_type = 13 /* same */
+        frame_type = 16 /* same */
+        frame_type = 13 /* same */
+        frame_type = 16 /* same */
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  public void dropItemEvent(com.b1n_ry.yigd.events.YigdEvents$DropItemEvent);
+    descriptor: (Lcom/b1n_ry/yigd/events/YigdEvents$DropItemEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #754                // Method com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.getStack:()Lnet/minecraft/world/item/ItemStack;
+         4: invokevirtual #137                // Method net/minecraft/world/item/ItemStack.isEmpty:()Z
+         7: ifeq          23
+        10: aload_1
+        11: iconst_0
+        12: invokevirtual #757                // Method com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.setShouldDrop:(Z)V
+        15: aload_1
+        16: iconst_1
+        17: invokevirtual #760                // Method com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.setCanceled:(Z)V
+        20: goto          28
+        23: aload_1
+        24: iconst_1
+        25: invokevirtual #757                // Method com/b1n_ry/yigd/events/YigdEvents$DropItemEvent.setShouldDrop:(Z)V
+        28: return
+      LineNumberTable:
+        line 354: 0
+        line 355: 10
+        line 356: 15
+        line 358: 23
+        line 360: 28
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      29     0  this   Lcom/b1n_ry/yigd/events/YigdServerEventHandler;
+            0      29     1 event   Lcom/b1n_ry/yigd/events/YigdEvents$DropItemEvent;
+      StackMapTable: number_of_entries = 2
+        frame_type = 23 /* same */
+        frame_type = 4 /* same */
+    RuntimeVisibleAnnotations:
+      0: #816()
+        net.neoforged.bus.api.SubscribeEvent
+
+  private static boolean lambda$allowGraveGenerationEvent$4(net.minecraft.world.item.Item, net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokevirtual #339                // Method net/minecraft/world/item/ItemStack.is:(Lnet/minecraft/world/item/Item;)Z
+         5: ireturn
+      LineNumberTable:
+        line 295: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  item   Lnet/minecraft/world/item/Item;
+            0       6     1 stack   Lnet/minecraft/world/item/ItemStack;
+
+  private static void lambda$dropRuleEvent$3(net.minecraft.core.Holder, net.minecraft.world.item.enchantment.ItemEnchantments$Mutable);
+    descriptor: (Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokedynamic #761,  0            // InvokeDynamic #4:test:(Lnet/minecraft/core/Holder;)Ljava/util/function/Predicate;
+         7: invokevirtual #764                // Method net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.removeIf:(Ljava/util/function/Predicate;)V
+        10: return
+      LineNumberTable:
+        line 136: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0 enchantmentRegistryEntry   Lnet/minecraft/core/Holder;
+            0      11     1 builder   Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;
+
+  private static boolean lambda$dropRuleEvent$2(net.minecraft.core.Holder, net.minecraft.core.Holder);
+    descriptor: (Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: invokeinterface #770,  2          // InterfaceMethod net/minecraft/core/Holder.equals:(Ljava/lang/Object;)Z
+         7: ireturn
+      LineNumberTable:
+        line 136: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 enchantmentRegistryEntry   Lnet/minecraft/core/Holder;
+            0       8     1 enchant   Lnet/minecraft/core/Holder;
+
+  private static void lambda$dropRuleEvent$1(net.minecraft.core.Holder, int, net.minecraft.world.item.enchantment.ItemEnchantments$Mutable);
+    descriptor: (Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_2
+         1: aload_0
+         2: iload_1
+         3: iconst_1
+         4: isub
+         5: invokevirtual #771                // Method net/minecraft/world/item/enchantment/ItemEnchantments$Mutable.set:(Lnet/minecraft/core/Holder;I)V
+         8: return
+      LineNumberTable:
+        line 135: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 enchantmentRegistryEntry   Lnet/minecraft/core/Holder;
+            0       9     1 level   I
+            0       9     2 builder   Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;
+
+  private static void lambda$dropRuleEvent$0(net.minecraft.nbt.CompoundTag);
+    descriptor: (Lnet/minecraft/nbt/CompoundTag;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: ldc           #168                // String Botania_keepIvy
+         3: invokevirtual #774                // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+         6: return
+      LineNumberTable:
+        line 104: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0 nbtCompound   Lnet/minecraft/nbt/CompoundTag;
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #156                // class com/b1n_ry/yigd/events/YigdServerEventHandler
+         2: invokevirtual #778                // Method java/lang/Class.desiredAssertionStatus:()Z
+         5: ifne          12
+         8: iconst_1
+         9: goto          13
+        12: iconst_0
+        13: putstatic     #155                // Field $assertionsDisabled:Z
+        16: return
+      LineNumberTable:
+        line 44: 0
+      StackMapTable: number_of_entries = 2
+        frame_type = 12 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+}
+SourceFile: "YigdServerEventHandler.java"
+NestMembers:
+  com/b1n_ry/yigd/events/YigdServerEventHandler$1
+BootstrapMethods:
+  0: #900 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #876 (Ljava/lang/Object;)V
+      #878 REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$0:(Lnet/minecraft/nbt/CompoundTag;)V
+      #881 (Lnet/minecraft/nbt/CompoundTag;)V
+  1: #900 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #876 (Ljava/lang/Object;)V
+      #882 REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$1:(Lnet/minecraft/core/Holder;ILnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+      #885 (Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  2: #900 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #876 (Ljava/lang/Object;)V
+      #887 REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$3:(Lnet/minecraft/core/Holder;Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+      #885 (Lnet/minecraft/world/item/enchantment/ItemEnchantments$Mutable;)V
+  3: #900 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #890 (Ljava/lang/Object;)Z
+      #891 REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$allowGraveGenerationEvent$4:(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;)Z
+      #894 (Lnet/minecraft/world/item/ItemStack;)Z
+  4: #900 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #890 (Ljava/lang/Object;)Z
+      #896 REF_invokeStatic com/b1n_ry/yigd/events/YigdServerEventHandler.lambda$dropRuleEvent$2:(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Z
+      #899 (Lnet/minecraft/core/Holder;)Z
+InnerClasses:
+  public static #910= #8 of #908;         // DropRuleEvent=class com/b1n_ry/yigd/events/YigdEvents$DropRuleEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #911= #275 of #908;       // GraveClaimEvent=class com/b1n_ry/yigd/events/YigdEvents$GraveClaimEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #912= #307 of #301;       // GraveCompassConfig=class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig of class com/b1n_ry/yigd/config/ExtraFeaturesConfig
+  public static final #913= #316 of #307; // CompassGraveTarget=class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig$CompassGraveTarget of class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveCompassConfig
+  public static #914= #386 of #301;       // GraveKeyConfig=class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig of class com/b1n_ry/yigd/config/ExtraFeaturesConfig
+  public static final #915= #427 of #386; // KeyTargeting=class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig$KeyTargeting of class com/b1n_ry/yigd/config/ExtraFeaturesConfig$GraveKeyConfig
+  static #421;                            // class com/b1n_ry/yigd/events/YigdServerEventHandler$1
+  public static #916= #520 of #498;       // GraveRobbing=class com/b1n_ry/yigd/config/GraveConfig$GraveRobbing of class com/b1n_ry/yigd/config/GraveConfig
+  public static #917= #558 of #908;       // AllowGraveGenerationEvent=class com/b1n_ry/yigd/events/YigdEvents$AllowGraveGenerationEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #918= #697 of #498;       // BlockUnderGrave=class com/b1n_ry/yigd/config/GraveConfig$BlockUnderGrave of class com/b1n_ry/yigd/config/GraveConfig
+  public static #919= #700 of #908;       // AllowBlockUnderGraveGenerationEvent=class com/b1n_ry/yigd/events/YigdEvents$AllowBlockUnderGraveGenerationEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #920= #715 of #908;       // GraveGenerationEvent=class com/b1n_ry/yigd/events/YigdEvents$GraveGenerationEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #921= #755 of #908;       // DropItemEvent=class com/b1n_ry/yigd/events/YigdEvents$DropItemEvent of class com/b1n_ry/yigd/events/YigdEvents
+  public static #922= #765 of #237;       // Mutable=class net/minecraft/world/item/enchantment/ItemEnchantments$Mutable of class net/minecraft/world/item/enchantment/ItemEnchantments
+  public static final #927= #923 of #925; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

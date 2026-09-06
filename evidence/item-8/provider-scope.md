@@ -1,7 +1,8 @@
 # Retained-provider scope pass
 
-Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 135 of 136. The exact queue below has 1 open row.
+Status: every retained provider has a supported membership disposition.
+Canonical family reconciliation remains incomplete.
+Supported provider dispositions: 136 of 136. The exact queue below has 0 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -700,7 +701,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | `ubes-delight-provider` (b6ef5a0), MidnightLib ca67c60, config delegates e40ea32; test_ubes_delight_provider_scope.py | RESOLVED: Four crop chains, food/item interactions and bundled configuration support. No independent structure family. Full disposition below. |
 | `worldweaver-21.0.24.jar` | Six wover provider captures, existing pool-codecs and biome modifier captures | RESOLVED: Shared consumer generation/registry/terrain APIs and presets, no independent family. Preserve terrain and pack-loading effects below. |
 | `wunderlib-21.0.10.jar` | Source 185b55c; test_small_utility_provider_scope.py | RESOLVED: Networking entries and supplied-coordinate geometry; no independent family. See WunderLib disposition below. |
-| `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `youre-in-grave-danger-neoforge-2.0.13.jar` | Three grave provider source increments | RESOLVED: player death, grave storage and recovery; no independent family. See grave provider closure below. |
 
 ## Final Regions Unexplored provider disposition
 
@@ -8508,3 +8509,218 @@ uv run pytest tests/item8/test_simplyswords_provider_scope.py -q
 uv run ruff check tests/item8/test_simplyswords_provider_scope.py
 uv run basedpyright tests/item8/test_simplyswords_provider_scope.py
 ```
+
+## Grave provider closure
+
+You're in Grave Danger archive SHA-256:
+dd2142a3c6a9d5b990ab36220be482f7aa9f528755f93b8fef8996f509ddcda2.
+Its 142 classes contain two automatic entries, four common and one server mixin,
+two client mixins, and no mixin plugin, nested archive, service entry or NBT.
+Packaged data categories and exact source bindings are reproduced by
+test_yigd_provider_scope.py. Data consists of tags, two enchantments, a legacy
+recipe directory, a grave block loot table and three custom grave resources.
+
+Thirteen classes in yigd-entries (2c0a3dac), yigd-delegates (dcd64d22) and
+yigd-resources retain startup, common/server hooks, registered event handlers and
+custom resource consumers. Each capture README records the extractor revision,
+command and manifest hash; independent r1 captures match exactly.
+
+Startup registers grave blocks/items, block entities, attachments, components,
+networking, commands and event handlers. ServerEventHandler handles player death,
+inventory drops, respawn, player positions and saved death data. YigdServerEventHandler
+handles grave creation eligibility, placement positions, recovery and drop rules.
+These are player-death recovery mechanics, not independently generated authored sites.
+EndPlatformFeatureMixin changes the existing End platform block predicate to include
+graves. LevelChunkMixin notifies a removed grave block entity. Compass and spawn
+protection hooks concern grave recovery. RegistryDataLoaderMixin conditionally
+cancels the provider's enchantment loads, not structure registry entries.
+
+The custom loaders read grave_shape.json into the grave block shape, graveyard.json
+into grave coordinates, and grave_areas.json into drop-rule overrides. Packaged
+graveyard coordinates and override areas are empty. The grave shape is block-model
+geometry, not a building template. The grave block loot table returns the grave
+item and conditionally copies components for Silk Touch. It is not chest loot.
+No independent family is added. Stop general recovery, networking and command
+tracing. These dispositions close the final retained-provider membership row.
+
+```sh
+uv run pytest tests/item8/test_yigd_provider_scope.py -q
+uv run ruff check tests/item8/test_yigd_provider_scope.py
+uv run basedpyright tests/item8/test_yigd_provider_scope.py
+```
+
+All 136 retained providers now have supported dispositions. The remaining membership
+work is canonical reconciliation: 100 explicit provisional Moog grouping decisions,
+plus reconciliation of the recorded nonregistry contributions with the existing
+working groups. Neither 887 roots nor 410 working groups is a final family count.
+The required attributes and final Item 8 acceptance also remain incomplete.
+
+The focused grave provider test passes. Ruff reported one long assertion, which
+was wrapped; scoped Ruff and Basedpyright pass after that formatting correction.
+
+## Finite canonical reconciliation queue after provider closure
+
+Checkpoint: provider closure 7a7e1b5f. The exact source is family-decisions.json,
+SHA-256 f27120a993441bfcd3ab8716022f8dc8a0cf547e161dd766471edf1498156ccb.
+The following 100 group records explicitly say either "provisional" or
+"not a final canonical-family decision" in their rationale. This is a grouping
+review queue, not 100 missing families. It does not automatically certify the
+other 310 groups: final reconciliation must account for every one of the 887
+runtime roots exactly once, distinguish variants and components, and incorporate
+the recorded nonregistry family decisions without duplicate membership.
+
+### Moog's Soaring Structures: 25 decisions
+
+- `mss:arena`
+- `mss:calcite_house`
+- `mss:castle_ruin`
+- `mss:castle_tower`
+- `mss:desert_pyramid`
+- `mss:desert_well`
+- `mss:diorite_house`
+- `mss:frozen_pond`
+- `mss:jungle`
+- `mss:large_tower`
+- `mss:leaf_hollow`
+- `mss:mangrove`
+- `mss:muddy_water_hole`
+- `mss:mushroom`
+- `mss:nether_portal`
+- `mss:palm_island`
+- `mss:red_sand`
+- `mss:small_deepslate_house`
+- `mss:small_oak_house`
+- `mss:small_pond`
+- `mss:small_tower`
+- `mss:spruce_huts`
+- `mss:taiga`
+- `mss:volcano`
+- `mss:white_house`
+
+### Moog's Nether Structures: 22 decisions
+
+- `mns:copper_tower`
+- `mns:crimson_forge`
+- `mns:dragon_arena`
+- `mns:giant_skull`
+- `mns:grave_yard`
+- `mns:large_arena`
+- `mns:large_house_1`
+- `mns:lava_pool`
+- `mns:mega_fortress`
+- `mns:nether_tower`
+- `mns:nether_wart_farm`
+- `mns:ruined_portal`
+- `mns:sandy_skull`
+- `mns:shrine`
+- `mns:small_arena`
+- `mns:smoking_shrine`
+- `mns:soul_fire`
+- `mns:sword`
+- `mns:train`
+- `mns:warped_dome`
+- `mns:warped_house`
+- `mns:warped_pool`
+
+### Moog's Voyager Structures: 53 decisions
+
+- `mvs:azelea_house`
+- `mvs:barn`
+- `mvs:beach_bar`
+- `mvs:bee_dome`
+- `mvs:bench`
+- `mvs:cartographer_tower`
+- `mvs:castle_ruins`
+- `mvs:cathedral`
+- `mvs:crimson_enchanting_table`
+- `mvs:crystal`
+- `mvs:deepslate_house`
+- `mvs:desert_house`
+- `mvs:desert_pump`
+- `mvs:duck`
+- `mvs:flower_hole`
+- `mvs:fox_hut`
+- `mvs:gallows`
+- `mvs:haystack`
+- `mvs:horse_pen`
+- `mvs:house`
+- `mvs:jungle_tower`
+- `mvs:lamp_chest`
+- `mvs:large_mushroom`
+- `mvs:large_warped_tower`
+- `mvs:lecturn_garden`
+- `mvs:log_ruin`
+- `mvs:mushroom_statue`
+- `mvs:nether_devil`
+- `mvs:ocean_tower`
+- `mvs:out_house`
+- `mvs:paths`
+- `mvs:pile`
+- `mvs:railway`
+- `mvs:red_tower`
+- `mvs:ruined_beacon`
+- `mvs:shed`
+- `mvs:small_pillager_tower`
+- `mvs:small_ruin`
+- `mvs:small_ship`
+- `mvs:small_swamp_house`
+- `mvs:snowy_dog_hut`
+- `mvs:snowy_fossil`
+- `mvs:statue_ruins`
+- `mvs:stone_fountain`
+- `mvs:stone_pillars`
+- `mvs:sunzi_gate`
+- `mvs:tall_house`
+- `mvs:tree_monument`
+- `mvs:villager_statue`
+- `mvs:warped_house`
+- `mvs:wheat_grain_bin`
+- `mvs:windmill`
+- `mvs:wooden_wheat_farm`
+
+### Nonregistry reconciliation input
+
+There are 33 existing contribution records in non_registry_content.contributions.
+These include accepted families, components and explicit exclusions. They are not
+33 open providers or 33 additional families. Reuse their recorded dispositions;
+resolve their representation in the canonical list and any membership conflicts.
+The exact contribution keys are:
+
+- `yungsbridges:bridges`
+- `yungsextras:feature_entrypoints`
+- `betterendisland:platform_gateway`
+- `quark:spiral_spire`
+- `quark:fairy_ring`
+- `quark:fallen_log`
+- `quark:monster_box`
+- `quark:nether_obsidian_spike`
+- `quark:underground_styles`
+- `quark:vegetation`
+- `quark:stone_generation`
+- `village_taverns:village_components`
+- `chefsdelight:village_components`
+- `deep_aether:totem`
+- `betterend:crashed_ship`
+- `explorations:scarecrow`
+- `tectonic:underground_river/lanterns`
+- `terralith:cave/frostfire/frostfire_ceiling`
+- `explorations:large_mushroom`
+- `biomesoplenty:anomaly`
+- `biomesoplenty:monolith`
+- `biomesoplenty:bone_spine`
+- `biomesoplenty:big_pumpkin`
+- `biomesoplenty:pumpkin_patch`
+- `betterend:ruined_obsidian_pillar`
+- `betterend:lantern_woods/light_1`
+- `betterend:blossoming_spires/house`
+- `betterend:biome_buildings`
+- `betterend:biome_ruins`
+- `aether:holiday_tree`
+- `deep_aether:fallen_tree`
+- `regions_unexplored:fallen_tree`
+- `supplementaries:cave_urn_cache`
+
+This reconciliation is done when the named canonical list accounts for all runtime
+roots and these contributions, with no unresolved membership decision or duplicate
+family. Attribute completion is a separate remaining Item 8 requirement. Do not
+resume generic provider audits or add another measurement system for this queue.
