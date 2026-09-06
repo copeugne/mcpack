@@ -9022,3 +9022,24 @@ SHA-256: 22b251c84c08e77652ab4066842cbf1102e57c936a060712b299805126be52d2.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-towers-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-towers-r2.json
 ```
+
+### Voyager house relationships, 2026-09-07
+
+Eight house designs retain separate families after comparison of the existing
+house/outbuilding sheets and preserved template contents. The decisions describe
+roof, enclosure, frontage and support arrangements rather than relying on material
+or size names. Shared villager templates remain component options. No architecture
+template in this comparison has packaged spawners; the standard house's authored
+item entities are not hostile inhabitants. Warped-house Overworld constraints and
+the swamp-house omission of cannot_spawn_in_liquid remain preserved.
+
+Sixteen affected cases and scoped Ruff/Basedpyright pass. No new source capture or
+test machinery was needed. Working groups remain 406. Explicit provisional queue:
+32, all Voyager, with its exact names in the active handoff. Nonregistry reconciliation,
+required attributes and final review remain incomplete. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
