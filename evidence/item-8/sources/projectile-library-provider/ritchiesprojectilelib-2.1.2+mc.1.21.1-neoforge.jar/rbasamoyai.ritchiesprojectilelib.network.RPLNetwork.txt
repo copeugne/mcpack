@@ -1,0 +1,156 @@
+Compiled from "RPLNetwork.java"
+public class rbasamoyai.ritchiesprojectilelib.network.RPLNetwork {
+  private static final it.unimi.dsi.fastutil.ints.Int2ObjectMap<java.util.function.Function<net.minecraft.network.FriendlyByteBuf, ? extends rbasamoyai.ritchiesprojectilelib.network.RootPacket>> ID_TO_CONSTRUCTOR;
+
+  private static final it.unimi.dsi.fastutil.objects.Object2IntMap<java.lang.Class<? extends rbasamoyai.ritchiesprojectilelib.network.RootPacket>> TYPE_TO_ID;
+
+  public static final java.lang.String VERSION = "3.0.0";
+
+  public rbasamoyai.ritchiesprojectilelib.network.RPLNetwork();
+    Code:
+       0: aload_0
+       1: invokespecial #24                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: iconst_0
+       1: istore_0
+       2: iload_0
+       3: iinc          0, 1
+       6: ldc           #29                 // class rbasamoyai/ritchiesprojectilelib/network/ClientboundCheckChannelVersionPacket
+       8: invokedynamic #48,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      13: invokestatic  #52                 // Method addMsg:(ILjava/lang/Class;Ljava/util/function/Function;)V
+      16: iload_0
+      17: iinc          0, 1
+      20: ldc           #54                 // class rbasamoyai/ritchiesprojectilelib/network/ClientboundPreciseMotionSyncPacket
+      22: invokedynamic #59,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      27: invokestatic  #52                 // Method addMsg:(ILjava/lang/Class;Ljava/util/function/Function;)V
+      30: iload_0
+      31: iinc          0, 1
+      34: ldc           #61                 // class rbasamoyai/ritchiesprojectilelib/network/ClientboundShakeScreenPacket
+      36: invokedynamic #66,  0             // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      41: invokestatic  #52                 // Method addMsg:(ILjava/lang/Class;Ljava/util/function/Function;)V
+      44: iload_0
+      45: iinc          0, 1
+      48: ldc           #68                 // class rbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket
+      50: invokedynamic #75,  0             // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      55: invokestatic  #52                 // Method addMsg:(ILjava/lang/Class;Ljava/util/function/Function;)V
+      58: invokestatic  #78                 // Method sidedInit:()V
+      61: return
+
+  public static void sidedInit();
+    Code:
+       0: invokestatic  #85                 // Method rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.sidedInit:()V
+       3: return
+
+  private static <T extends rbasamoyai.ritchiesprojectilelib.network.RootPacket> void addMsg(int, java.lang.Class<T>, java.util.function.Function<net.minecraft.network.FriendlyByteBuf, T>);
+    Code:
+       0: getstatic     #90                 // Field TYPE_TO_ID:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+       3: aload_1
+       4: iload_0
+       5: invokeinterface #96,  3           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.put:(Ljava/lang/Object;I)I
+      10: pop
+      11: getstatic     #98                 // Field ID_TO_CONSTRUCTOR:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      14: iload_0
+      15: aload_2
+      16: invokeinterface #103,  3          // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.put:(ILjava/lang/Object;)Ljava/lang/Object;
+      21: pop
+      22: return
+
+  public static rbasamoyai.ritchiesprojectilelib.network.RootPacket constructPacket(net.minecraft.network.FriendlyByteBuf, int);
+    Code:
+       0: getstatic     #98                 // Field ID_TO_CONSTRUCTOR:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+       3: iload_1
+       4: invokeinterface #114,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.containsKey:(I)Z
+       9: ifne          26
+      12: new           #116                // class java/lang/IllegalStateException
+      15: dup
+      16: iload_1
+      17: invokedynamic #128,  0            // InvokeDynamic #4:makeConcatWithConstants:(I)Ljava/lang/String;
+      22: invokespecial #131                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      25: athrow
+      26: getstatic     #98                 // Field ID_TO_CONSTRUCTOR:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      29: iload_1
+      30: invokeinterface #135,  2          // InterfaceMethod it/unimi/dsi/fastutil/ints/Int2ObjectMap.get:(I)Ljava/lang/Object;
+      35: checkcast     #137                // class java/util/function/Function
+      38: aload_0
+      39: invokeinterface #139,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      44: checkcast     #141                // class rbasamoyai/ritchiesprojectilelib/network/RootPacket
+      47: areturn
+
+  public static void writeToBuf(rbasamoyai.ritchiesprojectilelib.network.RootPacket, net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: getstatic     #90                 // Field TYPE_TO_ID:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+       3: aload_0
+       4: invokeinterface #149,  1          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/network/RootPacket.getClass:()Ljava/lang/Class;
+       9: iconst_m1
+      10: invokeinterface #152,  3          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.getOrDefault:(Ljava/lang/Object;I)I
+      15: istore_2
+      16: iload_2
+      17: iconst_m1
+      18: if_icmpne     35
+      21: new           #116                // class java/lang/IllegalStateException
+      24: dup
+      25: iload_2
+      26: invokedynamic #155,  0            // InvokeDynamic #5:makeConcatWithConstants:(I)Ljava/lang/String;
+      31: invokespecial #131                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      34: athrow
+      35: aload_1
+      36: iload_2
+      37: invokevirtual #161                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      40: pop
+      41: aload_0
+      42: aload_1
+      43: invokeinterface #164,  2          // InterfaceMethod rbasamoyai/ritchiesprojectilelib/network/RootPacket.rootEncode:(Lnet/minecraft/network/FriendlyByteBuf;)V
+      48: return
+
+  public static void onPlayerJoin(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: new           #29                 // class rbasamoyai/ritchiesprojectilelib/network/ClientboundCheckChannelVersionPacket
+       3: dup
+       4: ldc           #20                 // String 3.0.0
+       6: invokespecial #169                // Method rbasamoyai/ritchiesprojectilelib/network/ClientboundCheckChannelVersionPacket."<init>":(Ljava/lang/String;)V
+       9: aload_0
+      10: invokestatic  #173                // Method sendToClientPlayer:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;Lnet/minecraft/server/level/ServerPlayer;)V
+      13: return
+
+  public static void sendToServer(rbasamoyai.ritchiesprojectilelib.network.RootPacket);
+    Code:
+       0: aload_0
+       1: invokestatic  #178                // Method rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.sendToServer:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;)V
+       4: return
+
+  public static void sendToClientPlayer(rbasamoyai.ritchiesprojectilelib.network.RootPacket, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #179                // Method rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.sendToClientPlayer:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;Lnet/minecraft/server/level/ServerPlayer;)V
+       5: return
+
+  public static void sendToClientTracking(rbasamoyai.ritchiesprojectilelib.network.RootPacket, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #184                // Method rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.sendToClientTracking:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;Lnet/minecraft/world/entity/Entity;)V
+       5: return
+
+  public static void sendToClientAll(rbasamoyai.ritchiesprojectilelib.network.RootPacket, net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #190                // Method rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.sendToClientAll:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;Lnet/minecraft/server/MinecraftServer;)V
+       5: return
+
+  static {};
+    Code:
+       0: new           #194                // class it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap
+       3: dup
+       4: invokespecial #195                // Method it/unimi/dsi/fastutil/ints/Int2ObjectOpenHashMap."<init>":()V
+       7: putstatic     #98                 // Field ID_TO_CONSTRUCTOR:Lit/unimi/dsi/fastutil/ints/Int2ObjectMap;
+      10: new           #197                // class it/unimi/dsi/fastutil/objects/Object2IntOpenHashMap
+      13: dup
+      14: invokespecial #198                // Method it/unimi/dsi/fastutil/objects/Object2IntOpenHashMap."<init>":()V
+      17: putstatic     #90                 // Field TYPE_TO_ID:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      20: return
+}

@@ -1,0 +1,235 @@
+Compiled from "ClientboundSyncBurstSubProjectilesPacket.java"
+public final class rbasamoyai.ritchiesprojectilelib.network.ClientboundSyncBurstSubProjectilesPacket extends java.lang.Record implements rbasamoyai.ritchiesprojectilelib.network.RootPacket {
+  private final int entityId;
+
+  private final int age;
+
+  private final java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile> subProjectiles;
+
+  public rbasamoyai.ritchiesprojectilelib.network.ClientboundSyncBurstSubProjectilesPacket(int, int, java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile>);
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #31                 // Field entityId:I
+       9: aload_0
+      10: iload_2
+      11: putfield      #33                 // Field age:I
+      14: aload_0
+      15: aload_3
+      16: putfield      #35                 // Field subProjectiles:Ljava/util/List;
+      19: return
+
+  public static rbasamoyai.ritchiesprojectilelib.network.ClientboundSyncBurstSubProjectilesPacket decode(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_0
+       1: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+       4: istore_1
+       5: aload_0
+       6: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+       9: istore_2
+      10: aload_0
+      11: invokevirtual #46                 // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+      14: istore_3
+      15: new           #48                 // class java/util/LinkedList
+      18: dup
+      19: invokespecial #49                 // Method java/util/LinkedList."<init>":()V
+      22: astore        4
+      24: iconst_0
+      25: istore        5
+      27: iload         5
+      29: iload_3
+      30: if_icmpge     116
+      33: iconst_3
+      34: newarray       double
+      36: dup
+      37: iconst_0
+      38: aload_0
+      39: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      42: f2d
+      43: dastore
+      44: dup
+      45: iconst_1
+      46: aload_0
+      47: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      50: f2d
+      51: dastore
+      52: dup
+      53: iconst_2
+      54: aload_0
+      55: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      58: f2d
+      59: dastore
+      60: astore        6
+      62: iconst_3
+      63: newarray       double
+      65: dup
+      66: iconst_0
+      67: aload_0
+      68: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      71: f2d
+      72: dastore
+      73: dup
+      74: iconst_1
+      75: aload_0
+      76: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      79: f2d
+      80: dastore
+      81: dup
+      82: iconst_2
+      83: aload_0
+      84: invokevirtual #53                 // Method net/minecraft/network/FriendlyByteBuf.readFloat:()F
+      87: f2d
+      88: dastore
+      89: astore        7
+      91: aload         4
+      93: new           #9                  // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile
+      96: dup
+      97: aload         6
+      99: aload         7
+     101: invokespecial #56                 // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile."<init>":([D[D)V
+     104: invokeinterface #62,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     109: pop
+     110: iinc          5, 1
+     113: goto          27
+     116: new           #2                  // class rbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket
+     119: dup
+     120: iload_1
+     121: iload_2
+     122: aload         4
+     124: invokespecial #64                 // Method "<init>":(IILjava/util/List;)V
+     127: areturn
+
+  public void rootEncode(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #31                 // Field entityId:I
+       5: invokevirtual #77                 // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+       8: aload_0
+       9: getfield      #33                 // Field age:I
+      12: invokevirtual #77                 // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      15: aload_0
+      16: getfield      #35                 // Field subProjectiles:Ljava/util/List;
+      19: invokeinterface #80,  1           // InterfaceMethod java/util/List.size:()I
+      24: invokevirtual #77                 // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+      27: pop
+      28: aload_0
+      29: getfield      #35                 // Field subProjectiles:Ljava/util/List;
+      32: invokeinterface #84,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      37: astore_2
+      38: aload_2
+      39: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      44: ifeq          132
+      47: aload_2
+      48: invokeinterface #94,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      53: checkcast     #9                  // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile
+      56: astore_3
+      57: aload_3
+      58: invokevirtual #98                 // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:()[D
+      61: astore        4
+      63: aload_3
+      64: invokevirtual #101                // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:()[D
+      67: astore        5
+      69: aload_1
+      70: aload         4
+      72: iconst_0
+      73: daload
+      74: d2f
+      75: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      78: pop
+      79: aload_1
+      80: aload         4
+      82: iconst_1
+      83: daload
+      84: d2f
+      85: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      88: pop
+      89: aload_1
+      90: aload         4
+      92: iconst_2
+      93: daload
+      94: d2f
+      95: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+      98: pop
+      99: aload_1
+     100: aload         5
+     102: iconst_0
+     103: daload
+     104: d2f
+     105: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+     108: pop
+     109: aload_1
+     110: aload         5
+     112: iconst_1
+     113: daload
+     114: d2f
+     115: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+     118: pop
+     119: aload_1
+     120: aload         5
+     122: iconst_2
+     123: daload
+     124: d2f
+     125: invokevirtual #105                // Method net/minecraft/network/FriendlyByteBuf.writeFloat:(F)Lnet/minecraft/network/FriendlyByteBuf;
+     128: pop
+     129: goto          38
+     132: return
+
+  public void handle();
+    Code:
+       0: aload_0
+       1: invokedynamic #126,  0            // InvokeDynamic #0:get:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;)Ljava/util/function/Supplier;
+       6: invokestatic  #132                // Method rbasamoyai/ritchiesprojectilelib/EnvExecute.executeOnClient:(Ljava/util/function/Supplier;)V
+       9: return
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #149,  0            // InvokeDynamic #1:toString:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #153,  0            // InvokeDynamic #1:hashCode:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #158,  0            // InvokeDynamic #1:equals:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public int entityId();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field entityId:I
+       4: ireturn
+
+  public int age();
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field age:I
+       4: ireturn
+
+  public java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile> subProjectiles();
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field subProjectiles:Ljava/util/List;
+       4: areturn
+
+  private java.lang.Runnable lambda$handle$1();
+    Code:
+       0: aload_0
+       1: invokedynamic #170,  0            // InvokeDynamic #2:run:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;)Ljava/lang/Runnable;
+       6: areturn
+
+  private void lambda$handle$0();
+    Code:
+       0: aload_0
+       1: invokestatic  #176                // Method rbasamoyai/ritchiesprojectilelib/network/RPLClientHandlers.addBurstSubProjectileData:(Lrbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket;)V
+       4: return
+}

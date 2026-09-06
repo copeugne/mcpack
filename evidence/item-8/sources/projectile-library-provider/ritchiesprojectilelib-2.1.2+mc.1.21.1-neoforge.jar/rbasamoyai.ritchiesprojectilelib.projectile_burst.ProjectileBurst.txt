@@ -1,0 +1,508 @@
+Compiled from "ProjectileBurst.java"
+public abstract class rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst extends net.minecraft.world.entity.projectile.Projectile {
+  protected int age;
+
+  protected final java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile> subProjectiles;
+
+  protected rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst(net.minecraft.world.entity.EntityType<? extends rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst>, net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #43                 // Method net/minecraft/world/entity/projectile/Projectile."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+       6: aload_0
+       7: iconst_0
+       8: putfield      #45                 // Field age:I
+      11: aload_0
+      12: new           #47                 // class java/util/LinkedList
+      15: dup
+      16: invokespecial #50                 // Method java/util/LinkedList."<init>":()V
+      19: putfield      #52                 // Field subProjectiles:Ljava/util/List;
+      22: return
+
+  protected void addAdditionalSaveData(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: new           #62                 // class net/minecraft/nbt/ListTag
+       3: dup
+       4: invokespecial #63                 // Method net/minecraft/nbt/ListTag."<init>":()V
+       7: astore_2
+       8: aload_0
+       9: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+      12: invokeinterface #69,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      17: astore_3
+      18: aload_3
+      19: invokeinterface #75,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          51
+      27: aload_3
+      28: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #7                  // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile
+      36: astore        4
+      38: aload_2
+      39: aload         4
+      41: invokevirtual #83                 // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.toTag:()Lnet/minecraft/nbt/CompoundTag;
+      44: invokevirtual #87                 // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+      47: pop
+      48: goto          18
+      51: aload_1
+      52: ldc           #89                 // String SubProjectiles
+      54: aload_2
+      55: invokevirtual #95                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      58: pop
+      59: aload_1
+      60: ldc           #97                 // String Age
+      62: aload_0
+      63: getfield      #45                 // Field age:I
+      66: invokevirtual #101                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      69: return
+
+  protected void readAdditionalSaveData(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+       4: invokeinterface #110,  1          // InterfaceMethod java/util/List.clear:()V
+       9: aload_1
+      10: ldc           #89                 // String SubProjectiles
+      12: bipush        10
+      14: invokevirtual #114                // Method net/minecraft/nbt/CompoundTag.getList:(Ljava/lang/String;I)Lnet/minecraft/nbt/ListTag;
+      17: astore_2
+      18: aload_2
+      19: invokevirtual #118                // Method net/minecraft/nbt/ListTag.size:()I
+      22: istore_3
+      23: iconst_0
+      24: istore        4
+      26: iload         4
+      28: iload_3
+      29: if_icmpge     57
+      32: aload_0
+      33: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+      36: aload_2
+      37: iload         4
+      39: invokevirtual #122                // Method net/minecraft/nbt/ListTag.getCompound:(I)Lnet/minecraft/nbt/CompoundTag;
+      42: invokestatic  #126                // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.fromTag:(Lnet/minecraft/nbt/CompoundTag;)Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile;
+      45: invokeinterface #127,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      50: pop
+      51: iinc          4, 1
+      54: goto          26
+      57: aload_0
+      58: aload_1
+      59: ldc           #97                 // String Age
+      61: invokevirtual #131                // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      64: putfield      #45                 // Field age:I
+      67: return
+
+  protected void syncAllDataToServer();
+    Code:
+       0: new           #136                // class rbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket
+       3: dup
+       4: aload_0
+       5: invokevirtual #139                // Method getId:()I
+       8: aload_0
+       9: getfield      #45                 // Field age:I
+      12: new           #47                 // class java/util/LinkedList
+      15: dup
+      16: aload_0
+      17: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+      20: invokespecial #142                // Method java/util/LinkedList."<init>":(Ljava/util/Collection;)V
+      23: invokespecial #145                // Method rbasamoyai/ritchiesprojectilelib/network/ClientboundSyncBurstSubProjectilesPacket."<init>":(IILjava/util/List;)V
+      26: aload_0
+      27: invokestatic  #151                // Method rbasamoyai/ritchiesprojectilelib/network/RPLNetwork.sendToClientTracking:(Lrbasamoyai/ritchiesprojectilelib/network/RootPacket;Lnet/minecraft/world/entity/Entity;)V
+      30: return
+
+  public void updateClientData(int, java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile>);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #45                 // Field age:I
+       5: aload_0
+       6: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+       9: invokeinterface #110,  1          // InterfaceMethod java/util/List.clear:()V
+      14: aload_0
+      15: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+      18: aload_2
+      19: invokeinterface #158,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      24: pop
+      25: return
+
+  public void tick();
+    Code:
+       0: aload_0
+       1: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+       4: getfield      #168                // Field net/minecraft/world/level/Level.isClientSide:Z
+       7: ifne          25
+      10: aload_0
+      11: getfield      #171                // Field tickCount:I
+      14: bipush        10
+      16: irem
+      17: iconst_1
+      18: if_icmpne     25
+      21: aload_0
+      22: invokevirtual #173                // Method syncAllDataToServer:()V
+      25: aload_0
+      26: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+      29: invokeinterface #69,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      34: astore_1
+      35: aload_1
+      36: invokeinterface #75,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      41: ifeq          145
+      44: aload_1
+      45: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      50: checkcast     #7                  // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile
+      53: astore_2
+      54: aload_0
+      55: aload_2
+      56: invokevirtual #177                // Method clipAndDamage:(Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile;)Lnet/minecraft/world/phys/HitResult;
+      59: astore_3
+      60: aload_3
+      61: invokevirtual #181                // Method net/minecraft/world/phys/HitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+      64: getstatic     #185                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+      67: if_acmpeq     85
+      70: aload_0
+      71: aload_3
+      72: aload_2
+      73: invokevirtual #189                // Method onSubProjectileHit:(Lnet/minecraft/world/phys/HitResult;Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile;)V
+      76: aload_1
+      77: invokeinterface #192,  1          // InterfaceMethod java/util/Iterator.remove:()V
+      82: goto          35
+      85: aload_2
+      86: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      89: iconst_0
+      90: dup2
+      91: daload
+      92: aload_2
+      93: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+      96: iconst_0
+      97: daload
+      98: dadd
+      99: dastore
+     100: aload_2
+     101: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+     104: iconst_1
+     105: dup2
+     106: daload
+     107: aload_2
+     108: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+     111: iconst_1
+     112: daload
+     113: dadd
+     114: dastore
+     115: aload_2
+     116: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+     119: iconst_2
+     120: dup2
+     121: daload
+     122: aload_2
+     123: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+     126: iconst_2
+     127: daload
+     128: dadd
+     129: dastore
+     130: aload_0
+     131: aload_2
+     132: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+     135: aload_2
+     136: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+     139: invokevirtual #203                // Method applyForces:([D[D)V
+     142: goto          35
+     145: aload_0
+     146: invokespecial #205                // Method net/minecraft/world/entity/projectile/Projectile.tick:()V
+     149: aload_0
+     150: dup
+     151: getfield      #45                 // Field age:I
+     154: iconst_1
+     155: iadd
+     156: dup_x1
+     157: putfield      #45                 // Field age:I
+     160: aload_0
+     161: invokevirtual #208                // Method getLifetime:()I
+     164: if_icmplt     171
+     167: aload_0
+     168: invokevirtual #211                // Method discard:()V
+     171: return
+
+  protected abstract int getLifetime();
+
+  protected abstract void applyForces(double[], double[]);
+
+  protected net.minecraft.world.phys.HitResult clipAndDamage(rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile);
+    Code:
+       0: new           #219                // class net/minecraft/world/phys/Vec3
+       3: dup
+       4: aload_1
+       5: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+       8: iconst_0
+       9: daload
+      10: aload_1
+      11: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+      14: iconst_1
+      15: daload
+      16: aload_1
+      17: getfield      #199                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.velocity:[D
+      20: iconst_2
+      21: daload
+      22: invokespecial #222                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      25: astore_2
+      26: new           #219                // class net/minecraft/world/phys/Vec3
+      29: dup
+      30: aload_1
+      31: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      34: iconst_0
+      35: daload
+      36: aload_0
+      37: invokevirtual #226                // Method getX:()D
+      40: dadd
+      41: aload_1
+      42: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      45: iconst_1
+      46: daload
+      47: aload_0
+      48: invokevirtual #229                // Method getY:()D
+      51: dadd
+      52: aload_1
+      53: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      56: iconst_2
+      57: daload
+      58: aload_0
+      59: invokevirtual #232                // Method getZ:()D
+      62: dadd
+      63: invokespecial #222                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      66: astore_3
+      67: aload_3
+      68: aload_2
+      69: invokevirtual #235                // Method net/minecraft/world/phys/Vec3.add:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+      72: astore        4
+      74: aload_0
+      75: invokevirtual #238                // Method getSubProjectileHeight:()D
+      78: ldc2_w        #239                // double 2.0d
+      81: ddiv
+      82: dstore        5
+      84: aload_0
+      85: invokevirtual #243                // Method getSubProjectileWidth:()D
+      88: ldc2_w        #239                // double 2.0d
+      91: ddiv
+      92: dstore        7
+      94: aload_0
+      95: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+      98: new           #245                // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurstClipContext
+     101: dup
+     102: aload_3
+     103: aload         4
+     105: getstatic     #249                // Field net/minecraft/world/level/ClipContext$Block.COLLIDER:Lnet/minecraft/world/level/ClipContext$Block;
+     108: getstatic     #253                // Field net/minecraft/world/level/ClipContext$Fluid.NONE:Lnet/minecraft/world/level/ClipContext$Fluid;
+     111: aload_0
+     112: aload_3
+     113: getfield      #257                // Field net/minecraft/world/phys/Vec3.y:D
+     116: dload         5
+     118: dsub
+     119: invokespecial #260                // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurstClipContext."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/ClipContext$Block;Lnet/minecraft/world/level/ClipContext$Fluid;Lnet/minecraft/world/entity/Entity;D)V
+     122: invokevirtual #264                // Method net/minecraft/world/level/Level.clip:(Lnet/minecraft/world/level/ClipContext;)Lnet/minecraft/world/phys/BlockHitResult;
+     125: astore        9
+     127: aload         9
+     129: invokevirtual #181                // Method net/minecraft/world/phys/HitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+     132: getstatic     #185                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+     135: if_acmpeq     145
+     138: aload         9
+     140: invokevirtual #268                // Method net/minecraft/world/phys/HitResult.getLocation:()Lnet/minecraft/world/phys/Vec3;
+     143: astore        4
+     145: new           #272                // class net/minecraft/world/phys/AABB
+     148: dup
+     149: aload_3
+     150: getfield      #275                // Field net/minecraft/world/phys/Vec3.x:D
+     153: dload         7
+     155: dsub
+     156: aload_3
+     157: getfield      #257                // Field net/minecraft/world/phys/Vec3.y:D
+     160: dload         5
+     162: dsub
+     163: aload_3
+     164: getfield      #278                // Field net/minecraft/world/phys/Vec3.z:D
+     167: dload         7
+     169: dsub
+     170: aload_3
+     171: getfield      #275                // Field net/minecraft/world/phys/Vec3.x:D
+     174: dload         7
+     176: dadd
+     177: aload_3
+     178: getfield      #257                // Field net/minecraft/world/phys/Vec3.y:D
+     181: dload         5
+     183: dadd
+     184: aload_3
+     185: getfield      #278                // Field net/minecraft/world/phys/Vec3.z:D
+     188: dload         7
+     190: dadd
+     191: invokespecial #281                // Method net/minecraft/world/phys/AABB."<init>":(DDDDDD)V
+     194: astore        10
+     196: aload_0
+     197: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+     200: aload_0
+     201: aload_3
+     202: aload         4
+     204: aload         10
+     206: aload_2
+     207: invokevirtual #285                // Method net/minecraft/world/phys/AABB.expandTowards:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/AABB;
+     210: dconst_1
+     211: invokevirtual #289                // Method net/minecraft/world/phys/AABB.inflate:(D)Lnet/minecraft/world/phys/AABB;
+     214: aload_0
+     215: invokedynamic #307,  0            // InvokeDynamic #0:test:(Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst;)Ljava/util/function/Predicate;
+     220: dload         7
+     222: d2f
+     223: invokestatic  #313                // Method net/minecraft/world/entity/projectile/ProjectileUtil.getEntityHitResult:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;F)Lnet/minecraft/world/phys/EntityHitResult;
+     226: astore        11
+     228: aload         11
+     230: ifnull        237
+     233: aload         11
+     235: astore        9
+     237: aload         9
+     239: areturn
+
+  public void addSubProjectile(double, double, double, double, double, double);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+       4: new           #7                  // class rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile
+       7: dup
+       8: iconst_3
+       9: newarray       double
+      11: dup
+      12: iconst_0
+      13: dload_1
+      14: dastore
+      15: dup
+      16: iconst_1
+      17: dload_3
+      18: dastore
+      19: dup
+      20: iconst_2
+      21: dload         5
+      23: dastore
+      24: iconst_3
+      25: newarray       double
+      27: dup
+      28: iconst_0
+      29: dload         7
+      31: dastore
+      32: dup
+      33: iconst_1
+      34: dload         9
+      36: dastore
+      37: dup
+      38: iconst_2
+      39: dload         11
+      41: dastore
+      42: invokespecial #334                // Method rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile."<init>":([D[D)V
+      45: invokeinterface #127,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      50: pop
+      51: return
+
+  public int getSubProjectileCount();
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+       4: invokeinterface #336,  1          // InterfaceMethod java/util/List.size:()I
+       9: ireturn
+
+  public java.util.List<rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile> getSubProjectiles();
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field subProjectiles:Ljava/util/List;
+       4: areturn
+
+  public abstract double getSubProjectileWidth();
+
+  public abstract double getSubProjectileHeight();
+
+  public boolean isPickable();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  protected boolean canHitEntity(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #342                // Method net/minecraft/world/entity/projectile/Projectile.canHitEntity:(Lnet/minecraft/world/entity/Entity;)Z
+       5: ifeq          19
+       8: aload_1
+       9: getfield      #347                // Field net/minecraft/world/entity/Entity.noPhysics:Z
+      12: ifne          19
+      15: iconst_1
+      16: goto          20
+      19: iconst_0
+      20: ireturn
+
+  protected void onSubProjectileHit(net.minecraft.world.phys.HitResult, rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile);
+    Code:
+       0: aload_1
+       1: invokevirtual #181                // Method net/minecraft/world/phys/HitResult.getType:()Lnet/minecraft/world/phys/HitResult$Type;
+       4: astore_3
+       5: aload_3
+       6: getstatic     #351                // Field net/minecraft/world/phys/HitResult$Type.ENTITY:Lnet/minecraft/world/phys/HitResult$Type;
+       9: if_acmpne     24
+      12: aload_0
+      13: aload_1
+      14: checkcast     #315                // class net/minecraft/world/phys/EntityHitResult
+      17: aload_2
+      18: invokevirtual #355                // Method onSubProjectileHitEntity:(Lnet/minecraft/world/phys/EntityHitResult;Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile;)V
+      21: goto          40
+      24: aload_3
+      25: getstatic     #358                // Field net/minecraft/world/phys/HitResult$Type.BLOCK:Lnet/minecraft/world/phys/HitResult$Type;
+      28: if_acmpne     40
+      31: aload_0
+      32: aload_1
+      33: checkcast     #270                // class net/minecraft/world/phys/BlockHitResult
+      36: aload_2
+      37: invokevirtual #362                // Method onSubProjectileHitBlock:(Lnet/minecraft/world/phys/BlockHitResult;Lrbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile;)V
+      40: aload_3
+      41: getstatic     #185                // Field net/minecraft/world/phys/HitResult$Type.MISS:Lnet/minecraft/world/phys/HitResult$Type;
+      44: if_acmpeq     98
+      47: aload_0
+      48: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+      51: aload_0
+      52: getstatic     #368                // Field net/minecraft/world/level/gameevent/GameEvent.PROJECTILE_LAND:Lnet/minecraft/core/Holder$Reference;
+      55: new           #219                // class net/minecraft/world/phys/Vec3
+      58: dup
+      59: aload_2
+      60: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      63: iconst_0
+      64: daload
+      65: aload_0
+      66: invokevirtual #226                // Method getX:()D
+      69: dadd
+      70: aload_2
+      71: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      74: iconst_1
+      75: daload
+      76: aload_0
+      77: invokevirtual #229                // Method getY:()D
+      80: dadd
+      81: aload_2
+      82: getfield      #196                // Field rbasamoyai/ritchiesprojectilelib/projectile_burst/ProjectileBurst$SubProjectile.displacement:[D
+      85: iconst_2
+      86: daload
+      87: aload_0
+      88: invokevirtual #232                // Method getZ:()D
+      91: dadd
+      92: invokespecial #222                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+      95: invokevirtual #372                // Method net/minecraft/world/level/Level.gameEvent:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/Holder;Lnet/minecraft/world/phys/Vec3;)V
+      98: return
+
+  protected void onSubProjectileHitEntity(net.minecraft.world.phys.EntityHitResult, rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile);
+    Code:
+       0: return
+
+  protected void onSubProjectileHitBlock(net.minecraft.world.phys.BlockHitResult, rbasamoyai.ritchiesprojectilelib.projectile_burst.ProjectileBurst$SubProjectile);
+    Code:
+       0: aload_0
+       1: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+       4: aload_1
+       5: invokevirtual #378                // Method net/minecraft/world/phys/BlockHitResult.getBlockPos:()Lnet/minecraft/core/BlockPos;
+       8: invokevirtual #382                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      11: astore_3
+      12: aload_3
+      13: aload_0
+      14: invokevirtual #162                // Method level:()Lnet/minecraft/world/level/Level;
+      17: aload_3
+      18: aload_1
+      19: aload_0
+      20: invokevirtual #388                // Method net/minecraft/world/level/block/state/BlockState.onProjectileHit:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/BlockHitResult;Lnet/minecraft/world/entity/projectile/Projectile;)V
+      23: return
+}
