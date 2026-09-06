@@ -139,6 +139,18 @@ def test_regions_unexplored_registered_tree_component_sources() -> None:
     with ZipFile(source.path) as archive:
         for label, digest in (
             (
+                "regions-unexplored-root-conditions",
+                "2ab92b26ac69369210999d31c70f384201f0a8f6cc9a384b0e15831c2df2ae06",
+            ),
+            (
+                "regions-unexplored-feature-code",
+                "d27de44a59aedb2dd41e12dcc0f35db1328207314c8cbe59dae6120de5b9953b",
+            ),
+            (
+                "regions-unexplored-feature-config-code",
+                "1b447725ac61174b8cf0f35ed5457291460c54938c49b9d8296809781a87ba8d",
+            ),
+            (
                 "regions-unexplored-tree-components",
                 "c0e8750b46dd656807e33cc3906aa98fd736da650cc01cdd0754cc94ec63f243",
             ),
@@ -168,9 +180,12 @@ def test_regions_unexplored_registered_tree_component_sources() -> None:
             for n in archive.namelist()
             if n.endswith(".class")
             and n.startswith("net/regions_unexplored/worldgen/")
-            and any(part in n for part in ("/trunkplacer/", "/foliageplacer/", "/treedecorator/"))
+            and any(
+                part in n
+                for part in ("/trunkplacer/", "/foliageplacer/", "/treedecorator/", "/rootplacer/")
+            )
         }
-        assert len(tree_classes) == 21
+        assert len(tree_classes) == 23
         assert tree_classes <= captured
         neoforge = cast(
             "dict[str, object]", json.loads(archive.read("regions_unexplored.neoforge.mixins.json"))

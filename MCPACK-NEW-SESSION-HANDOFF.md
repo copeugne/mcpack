@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-06
 
+Regions Unexplored membership is RESOLVED. Final common-entry interpretation
+and root/processor source f4ad223 close the outstanding gap. All 23 packaged tree
+component classes (including roots) are bound, correcting the earlier 21-class
+boundary. Five focused candidate/provider cases pass (1.07s); scoped quality
+checks pass. Retain the fallen-log canonical grouping question and Ashen as a
+trial-chamber component. No additional named authored-site candidate was added.
+Census: 89 resolved, 47 open. Remaining packaged-generation providers: Create
+and Forgified Fabric API; 24 code-only and 21 unmatched rows also remain. Next:
+finish those provider membership checks, then canonical grouping before detailed
+attributes. No runtime or capture process is live. Older RU checkpoints are
+historical and must not restart their completed work.
+
 RU tree-component roles are now resolved. Source 0f263ed (extractor 16127c9)
 retains 24 missing tree/configuration classes; independent capture matches.
 The provider test binds these and the two reused decorators, covering all 21
