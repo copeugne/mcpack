@@ -211,6 +211,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "dev/architectury/networking/SpawnEntityPacket.class",
     "dev/architectury/event/EventHandler.class",
     "dev/architectury/event/forge/EventHandlerImpl.class",
     "dev/architectury/event/forge/EventHandlerImplCommon.class",
