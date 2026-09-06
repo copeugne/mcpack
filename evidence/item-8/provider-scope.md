@@ -517,6 +517,57 @@ sample or graph implementation. Explicit provider dispositions now cover 26 of
 
 ## Exact provider queue, initialized at 05ce184
 
+### Scope reassessment on 2026-09-06
+
+The user correctly challenged the repeated statement that provider coverage is
+open without a usable account of what remains. At e06c9e1, 59 rows below remain
+open, including 44 with the generic instruction to inspect entry mechanisms.
+Those generic instructions are insufficient as a progress explanation.
+
+Joining the open archive names below to the existing provider-scope.json.gz
+review_lane fields gives this planning partition. It is not provider acceptance
+or a family count, and no new source scan or measurement system was introduced.
+
+| Existing indexed lane | Open providers | Immediate question |
+| --- | ---: | --- |
+| Packaged structure definitions | 2 | Do all roots, additional routes and components have candidate links? |
+| Other packaged generation candidates | 12 | Which inputs are sites, components, natural generation or inactive resources? |
+| Code references only | 24 | Which actual entry routes generate or inject content, versus consuming existing content? |
+| No generation candidates in indexed searches | 21 | Do the complete payload and actual entry mechanisms support a non-provider disposition? |
+| Total | 59 | Close membership checks before detailed family attributes. |
+
+The two structure-definition providers are Creating Space and Supplementaries.
+Creating Space has mars/underground_outpost_1, moon/abandoned_outpost,
+moon/crashed_rocket and moon/crashed_ship. Supplementaries has galleon and
+road_sign. These are packaged definition names, not six newly discovered or
+accepted families. In particular, Supplementaries also has a configured feature
+named road_sign: reconcile the two representations before counting designs.
+
+The twelve other packaged-generation rows are Creeper Overhaul, Farmer's Delight,
+Aether's Delight, Coffee Delight, Create, End's Delight, Forgified Fabric API,
+Lithostitched, Naturalist, Railways, Regions Unexplored and Ube's Delight.
+The exact archive identities and resource paths are already in the indexed
+artifact and the queue below. A template may be a component or player schematic;
+a biome modifier may only change mob spawning. Their presence does not establish
+an independent family. Conversely, a code-only or unmatched search row cannot
+be excluded from membership using its search lane alone.
+
+Continuation priority: reconcile the two structure-definition providers and
+the remaining packaged-content candidates, closing shared loader dependencies
+when they control those candidates. Then close the code-only and unmatched
+entry checks. Reuse delivered provider dispositions and captures throughout.
+Keep the current RU source checkpoint; do not restart its 53 implementation
+captures. Follow further helpers only for a specific unresolved site or component
+boundary, as required by the existing stopping rule below.
+
+The deliverable for this stage is a named candidate list with every retained
+provider accounted for and every remaining merge/split alternative explicitly
+listed. The final family count follows resolution of those alternatives. The
+887 runtime roots and 421 provisional groups do not supply that answer by
+themselves. Progress updates must distinguish provider closures, candidate
+additions and grouping decisions instead of reporting source captures as if
+they reduced the family backlog.
+
 This is the working queue, not an acceptance result. Initially, the 26 dispositions
 above and 110 queued archive names partitioned the 136-line retained manifest.
 WDA, Better Village, YUNG Bridges and YUNG Extras are resolved below:
@@ -3626,3 +3677,189 @@ provider-check pattern to close this specific coverage gap. No new measurement,
 framework or runtime sample was added. Provider closure does not establish
 observed placement, the final canonical count or the eleven family attributes.
 Supported dispositions now cover 77 of 136 providers; 59 remain open.
+
+### Regions Unexplored packaged component boundary
+
+Provider coverage remains OPEN. Existing feature and surface contribution
+checks are reused. Source increment f479e0a retains fifteen loader/common-entry
+and mixin classes in sources/regions-unexplored-provider, extracted with a5efbc8.
+Manifest SHA-256:
+cb7185024530c1b77bbf71dbf9ccefb2ba1acf505688896a1803f0a4240a4894.
+Independent r1 matches every generated file. The new focused check binds these
+classes, including all three annotated entry classes and nine common mixins,
+to the retained archive and captured disassembly bytes.
+
+The pinned archive has 8,077 files and exactly one NBT template:
+regions_unexplored:trial_chambers/ashen. Its sole actual template-pool definition
+selects that template and the melee trial-spawner pool tag includes that pool.
+The existing pool-link check already proves the selected graph reaches this
+component from minecraft:trial_chambers; normal and ominous spawn potentials
+name regions_unexplored:ashen. Preserve this as an existing-family encounter
+component, not an independent family. No packaged structure or structure-set
+definition and no regions_unexplored runtime structure root are present.
+
+The provider's own worldgen directory contains 386 configured features,
+287 placed features, 78 biomes, ten processor lists, five noise definitions,
+one density function and one template pool. Tags and overlays are separate
+resource roles and must not be added to these definition counts.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_candidates.py tests/item8/test_pool_links.py tests/item8/test_feature_modifier_references.py tests/item8/test_surface_rule_contribution.py
+uv run ruff check tests/item8/test_regions_unexplored_candidates.py
+uv run basedpyright tests/item8/test_regions_unexplored_candidates.py
+```
+
+41 cases pass (12.40 seconds). Scoped Ruff and Basedpyright pass after splitting
+one overlong line. No new measurement or repeated runtime capture. Remaining
+provider work: interpret the captured entry/mixin roles, account for custom
+features beyond the existing modifier subset, and reconcile the remaining
+payload including overlays and the embedded JSON5 library. The provider stays
+in the existing queue: 77 resolved and 59 open. Do not repeat the Ashen component
+or the previously accepted 34 feature-modifier and surface-rule analyses.
+
+### Regions Unexplored fallen-tree candidate
+
+Source 23f8c7b adds the fallen-tree implementation and the two direct biome/
+surface delegates under sources/regions-unexplored-generation-delegates.
+Manifest SHA-256:
+b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770.
+The existing extractor 389b2ed produced an exact independent r1 repeat.
+
+Retain one named stump-and-fallen-log candidate with six configuration variants:
+larch, maple, oak, pine, silver_birch and snow_pine. Their supplied log states,
+length bounds and decorators vary; these are not six independently established
+families. RUFallenTreeFeature places the stump first, chooses a horizontal
+direction, tests the log run and places/decorates that run only if it fits.
+Its place method returns true regardless of the log-fit result. Preserve the
+possible stump-only outcome; do not claim observed placement or whole-form
+success from the return value or supplied length bounds.
+
+The focused candidate test binds the exact six configurations, their supplied
+logs and bounds, empty stump decorators, attached-to-log decorator type, and
+the new source manifest/class/disassembly identities. Decorator implementation
+and placement-consumer reconciliation remain open. This is a named canonical
+boundary, not a completed family count or a new runtime measurement.
+
+```sh
+uv run pytest -q tests/item8/test_regions_unexplored_candidates.py
+uv run ruff check tests/item8/test_regions_unexplored_candidates.py
+uv run basedpyright tests/item8/test_regions_unexplored_candidates.py
+```
+
+Both cases and scoped quality checks pass. Provider coverage remains OPEN:
+77 resolved, 59 open. Continue the other feature/entry and payload roles rather
+than repeating this candidate's implementation capture.
+
+### Regions Unexplored region and terrain integration
+
+The captured RULithostitched entry registers three integration callbacks:
+worldgen modifiers, regions and biome injectors. Its modifier callback adds
+Nether surface rules, removes water springs in Inferno, and wraps Overworld
+fluid-level floodedness using inferno_weight. These alter terrain generation;
+they do not create a structure start, pool or template.
+
+RUSurfaceRuleBuilder.nether composes vanilla surface conditions and supplied
+block states, including nylium, netherrack, gravel, lava and bedrock. Its remaining
+helpers return block/air rules or noise conditions. BiomeTarget supplies biome
+replacement parameters and target holders. Its special injector branches add
+climate points for Prismachasm and Redstone Caves, force Inferno using depth and
+density conditions, and force Chalk Cliffs using climate conditions. Other
+special cases return null. No architectural content is selected by these
+methods. These direct delegates are now reconciled; do not expand their census
+into a terrain-quality experiment or general climate-mapping audit.
+
+The source identities are bound by the passing candidate checks above. This
+resolves contribution roles only. Frozen effective settings and observed
+placement remain distinct evidence. The provider is still OPEN pending the
+remaining feature, entry and payload dispositions.
+
+### Regions Unexplored fallen-tree placement and decoration links
+
+The eight packaged placed-feature definitions map to the six configurations:
+larch, maple and silver_birch map directly; oak_dense and oak_sparse share oak;
+pine and pine_on_dirt share pine; pine_on_snow uses snow_pine. Nineteen packaged
+biomes reference these placements. The exact mapping is now bound by the existing
+candidate test. This proves packaged consumer links, not observed placements or
+effective biome frequency in every captured dimension.
+
+AttachedToLogsDecorator is retained in source 1c53b0f, extracted with 947a0fa.
+Its manifest SHA-256 is
+7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d.
+Independent r1 matches. The decorator shuffles the supplied log positions,
+checks all configured directions or a random one, applies its probability test,
+and places the supplied block state only in air with non-air below. The six
+configurations supply moss carpet, mushrooms or snow. These decorate the
+existing candidate rather than introducing another structural layout.
+The previously inspected Lithostitched random-block provider supplies the
+configured mushroom states and does not require another capture.
+
+Both candidate cases and scoped Ruff/Basedpyright pass using the commands above.
+The test also binds the decorator's original class and preserved disassembly.
+Fallen-tree implementation, variants, packaged placement links and decorator
+roles are resolved for this scope pass. Preserve the stump-only limitation.
+Remaining provider work is other features, common entry roles and remaining
+payload/overlay/JSON5 coverage. Census remains 77 resolved and 59 open.
+
+### Regions Unexplored rock, spire, ground and pool feature roles
+
+The thirteen implementations in sources/regions-unexplored-terrain-features
+(source 4d65d81) and the shared PointedRedstoneUtils writer in
+sources/regions-unexplored-redstone-writer (source 690e757) resolve this batch:
+
+| Implementation | Contribution role |
+| --- | --- |
+| BasaltBlobFeature | Basalt column/blob terrain. Chest and masonry references occur in CANNOT_PLACE_ON exclusions, not in a generated chest/building palette. |
+| FloorIcicleFeature | Upward icicle block columns with base, middle, frustum and tip states. Mineral/ice decoration. |
+| MarshFeature | Ground and water reshaping with grass, lilies and other surface vegetation. Marsh terrain. |
+| NetherRockFeature | Irregular bone/overgrown-bone formations with ground/netherrack handling. Natural geological decoration, not an articulated authored skeleton. |
+| ObsidianSpireFeature | Obsidian/cobalt-obsidian blobs and a spire formed by direct block placement. Geological formation, not a rectilinear monument design. |
+| PointedRedstoneFeature and PointedRedstoneClusterFeature | Cave mineral columns and clusters. Shared writer creates raw-redstone bases and pointed-redstone columns with direction/thickness states; cluster also handles water. |
+| RockPillarFeature | Stone pillars/blobs with surface grass and underwater coral choices. Geological/reef formation. |
+| SeaRockFeature | Configured rock geometry, water/air clearing and ice/snow handling. The packaged hyacinth rock supplies stone and mossy stone. |
+| WaterEdgeFeature | Ground-edge reshaping and duckweed vegetation at water boundaries. |
+| IceSpireFeature | Configured spire geometry through trunk/foliage providers. The packaged ice_spire supplies packed ice and ice, not a wooden structure. |
+| RURockFeature | Offset blobs of supplied stone/cobblestone/mossy variants. |
+| CarvedLimitedPoolFeature | Water-pool carving with supplied slope and slope-top states and wall/pool predicates. The packaged definition supplies dirt and grass over mud. |
+
+These paths contribute terrain, minerals and vegetation rather than another
+canonical authored-site family. This uses their actual writers and supplied
+materials, not the provider name or a keyword absence rule. Randomized natural
+formations follow the existing BetterEnd/BOP terrain distinction. Do not count
+each blob, column, material variant or feature configuration as a family.
+
+The two new manifest hashes are:
+408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c
+(terrain implementations) and
+31143f1076e6d08d7280dd918331ce67087d07626cfe25778608398c26827bdd
+(shared redstone writer). The existing candidate/source test binds all class
+and disassembly bytes to the retained archive. Both cases and scoped Ruff and
+Basedpyright pass with the commands above. No runtime experiment or new
+validation framework was added. Do not infer placement frequency, footprint or
+reproducibility of random geometry from these contribution-role decisions.
+
+This batch is resolved. Other vegetation implementations, remaining common
+entry roles and full payload/overlay/JSON5 reconciliation still prevent provider
+closure. Census remains 77 resolved and 59 open.
+
+### Regions Unexplored registered implementation source coverage
+
+Source 04c515f captures the remaining 35 feature implementations selected by
+RUFeatureTypes, using extractor b5e5564. The full generation command is in
+sources/regions-unexplored-vegetation-features/README.md. Manifest SHA-256:
+6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6.
+Independent r1 matches every generated file. The isolated large source increment
+preserves complete implementations rather than selected favorable excerpts.
+
+The existing test now binds this manifest and the original feature-registration
+manifest, then reconciles all 53 directly constructed custom-feature classes
+against preserved class/disassembly identities. This is source coverage only:
+18 implementation captures preceded this increment; the remaining 35 still need
+semantic contribution dispositions. It does not close the whole provider,
+resolve custom tree placers/decorators, or establish a canonical-family count.
+
+Both focused candidate/source cases pass (0.93 seconds); scoped Ruff and
+Basedpyright pass. An overlong line and implicit string concatenation were
+corrected before final validation. Continue the captured vegetation roles and
+remaining common-entry/payload boundaries. Do not repeat accepted terrain,
+fallen-tree, trial-chamber, modifier or surface checks. Census remains 77
+resolved and 59 open.

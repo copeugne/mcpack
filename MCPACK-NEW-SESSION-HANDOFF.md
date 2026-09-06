@@ -6,6 +6,106 @@
 
 ### Continuation update - 2026-09-06
 
+Priority correction following the user's challenge about unknown remaining
+families: use the scope reassessment under the exact provider queue in
+evidence/item-8/provider-scope.md. The 59 open rows partition into 2 with indexed
+structure definitions, 12 with other packaged generation candidates, 24 with
+code-reference matches only and 21 with no indexed matches. This is planning
+information, not semantic acceptance. Resolve membership across this queue
+before further detailed natural-feature analysis or family attributes.
+Start with Creating Space and Supplementaries, following their actual shared
+loader dependencies. Publish named grouping alternatives after membership
+closure; do not substitute 887 roots or 421 provisional groups for families.
+
+RU ground-decorator source is delivered in e06c9e1, extractor 62c2e12,
+manifest 2b459bc6975a0ddffe6826ea332312ef7f78e0d31354d165d455f3d127f03544.
+Its direct writer selects the configured block state above eligible dirt, with
+target and height checks. No additional helper capture is needed for that
+writer. The existing candidate test still needs this manifest binding and the
+vegetation-role disposition remains unfinished. Preserve that checkpoint while
+prioritizing whole-queue membership. No provider closure is claimed by this
+reassessment: 77 resolved and 59 open. No new runtime measurement was run.
+
+Latest RU checkpoint: terrain-feature roles are RESOLVED in 5d187f9. Shared
+redstone writer source 690e757 (extractor 3460144) closes that direct helper.
+Do not repeat the thirteen terrain features or their writer. Source 04c515f
+(extractor b5e5564) now captures the remaining 35 vegetation implementations;
+manifest 6e77e0aab7c6f999e08de37eca0fdf8417b07377823cd848bae016e50cdc1bb6,
+independent r1 exact. Test increment 0fd9f1a reconciles all 53 directly constructed
+RUFeatureTypes implementation classes with captured source. Both cases and
+scoped checks pass. All commits pushed and remote-verified.
+
+Current work: semantic roles for the 35 captured vegetation implementations,
+then remaining common entries, custom tree placers/decorators, full payload and
+overlays. JSON5 exploratory inspection found 29 files (28 classes and one
+manifest), no loader annotations, and parent references only from RUConfigHandler
+and Json5Ops classes. Nested SHA-256:
+2e0f73784e6bc4c755e52d485f628d110d397f079d58b118658b903be9aa0533.
+This exploratory inspection is not yet bound by the final provider check.
+No runtime is live. Census remains 77 resolved and 59 open; source coverage is
+not provider closure or the final family denominator.
+
+
+Latest RU checkpoint: be03a80 resolves fallen-tree placement and decoration
+links. Eight placed definitions map to six configurations with nineteen packaged
+biome consumers. AttachedToLogsDecorator is captured in 1c53b0f (extractor
+947a0fa), manifest 7656c29c7f0b77b5827cbb01b082d2509f800a7cac87e342ec47bc6785bdc77d.
+Both candidate tests and scoped checks pass. Do not repeat this boundary.
+
+Current work is the remaining terrain feature roles. Source 4d65d81 captures
+thirteen rock/spire/ground/pool implementations using extractor 7fc2e24, under
+sources/regions-unexplored-terrain-features. Manifest SHA-256:
+408438fe5484a1798d6487f12725cd3becac5c315a0d99dc585163177a2d474c.
+Independent r1 matches. These sources are delivered, but their complete role
+interpretation and provider-test binding remain open. Initial inspection shows
+BasaltBlob's chest and masonry references belong to CANNOT_PLACE_ON, not a
+chest-generation claim. PointedRedstoneFeature and its cluster delegate to
+PointedRedstoneUtils, whose body is not yet captured. Keep any follow-up tied to
+that concrete writer boundary. Other vegetation, common entries and remaining
+payload/overlay/JSON5 roles still follow. Census remains 77 resolved, 59 open.
+All increments are pushed and remote-verified. No runtime process is running.
+
+
+Latest RU increment: c373525 binds one stump-and-fallen-log candidate with six
+configuration variants and preserves the possible stump-only outcome. Both
+focused candidate cases and scoped Ruff/Basedpyright pass. Source 23f8c7b,
+extractor 389b2ed, adds RUFallenTreeFeature, RUSurfaceRuleBuilder and BiomeTarget;
+manifest b779daaf84f5a04384246079c6ada082941188e6319cb4c8835bfe6dad089770.
+Independent r1 matches. All source and tests are pushed and verified.
+
+Region/surface delegate roles are now reconciled in provider-scope.md:
+Nether surface composition, Inferno spring/aquifer modification, and biome
+replacement/climate-point/forced-placement support. No extra site route in
+these delegates. Do not recapture or re-audit them. Fallen-tree decorator and
+placement-consumer links remain open, along with other custom features,
+remaining common entry roles and payload/overlay/JSON5 reconciliation.
+Provider census remains 77 resolved and 59 open. No runtime process is live.
+
+
+Current provider: Regions Unexplored, still OPEN. Delivered a5efbc8 adds fifteen
+entry/common-mixin selectors; f479e0a retains the source with an exact independent
+repeat; ac87000 binds the archive component boundary and existing graph checks.
+All are pushed and remote-verified. Source manifest SHA-256:
+cb7185024530c1b77bbf71dbf9ccefb2ba1acf505688896a1803f0a4240a4894.
+41 focused candidate/pool-link/feature-modifier/surface cases passed in 12.40s;
+scoped Ruff and Basedpyright pass after one line wrap. No runtime is running.
+
+The sole NBT template and actual pool are trial_chambers/ashen, already reached
+by the accepted minecraft:trial_chambers graph. No own structure-registry roots
+or packaged structure definitions. Do not repeat that component reconciliation.
+Remaining RU work: common-entry/mixin role disposition, custom features beyond
+the already accepted modifier subset, remaining payload/overlays and JSON5.
+The captured RULithostitched registers surface modifiers, regions and biome
+injectors; its nether rule delegates to RUSurfaceRuleBuilder.nether and biome
+injection uses BiomeTarget. These concrete generation delegates are not yet
+resolved by this provider census. Common setup calls afterRegistriesFreeze
+(block-tool/fire compatibility and RUBlocks/RUEntityTypes post-registration).
+Avoid interpreting names or method signatures alone as provider closure.
+
+Census remains 77 resolved and 59 open. Deep Aether is closed, as recorded below.
+Canonical-family count, attributes and final delivery gates remain incomplete.
+
+
 Latest checkpoint: Deep Aether provider coverage is RESOLVED in 6da0c86,
 pushed and remote-verified. The three final biome/surface delegates were
 preserved in 193bbe3. Five focused candidate/provider/totem cases pass;

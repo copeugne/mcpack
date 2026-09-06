@@ -1,0 +1,232 @@
+Compiled from "FloorIcicleFeature.java"
+public class net.regions_unexplored.world.level.feature.FloorIcicleFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> {
+  public net.regions_unexplored.world.level.feature.FloorIcicleFeature(com.mojang.serialization.Codec<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #17                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration>);
+    Code:
+       0: aload_1
+       1: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      14: invokeinterface #41,  1           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getRandom:()Lnet/minecraft/util/RandomSource;
+      19: astore        4
+      21: aload_2
+      22: invokevirtual #45                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      25: astore        5
+      27: aload_2
+      28: invokevirtual #45                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      31: astore        6
+      33: aload         4
+      35: iconst_4
+      36: invokeinterface #51,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      41: iconst_2
+      42: iadd
+      43: istore        7
+      45: iconst_0
+      46: istore        8
+      48: iload         8
+      50: iload         7
+      52: if_icmpge     77
+      55: aload_3
+      56: aload         5
+      58: invokeinterface #55,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      63: invokevirtual #61                 // Method net/minecraft/world/level/block/state/BlockState.canBeReplaced:()Z
+      66: ifne          71
+      69: iconst_0
+      70: ireturn
+      71: iinc          8, 1
+      74: goto          48
+      77: iconst_0
+      78: istore        8
+      80: iload         8
+      82: iload         7
+      84: if_icmpge     577
+      87: iload         8
+      89: ifne          143
+      92: aload_3
+      93: aload         6
+      95: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+      98: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     103: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     106: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     109: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     112: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     115: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     118: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     121: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     124: getstatic     #105                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     127: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     130: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     133: iconst_2
+     134: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     139: pop
+     140: goto          562
+     143: iload         8
+     145: iconst_1
+     146: if_icmpne     251
+     149: aload_3
+     150: aload         6
+     152: invokevirtual #112                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+     155: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     158: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     163: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     166: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     169: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     172: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     175: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     178: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     181: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     184: getstatic     #115                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.FRUSTUM:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     187: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     190: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     193: iconst_2
+     194: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     199: pop
+     200: aload_3
+     201: aload         6
+     203: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     206: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     211: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     214: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     217: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     220: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     223: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     226: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     229: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     232: getstatic     #105                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     235: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     238: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     241: iconst_2
+     242: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     247: pop
+     248: goto          562
+     251: iload         8
+     253: iconst_2
+     254: if_icmpne     411
+     257: aload_3
+     258: aload         6
+     260: iconst_2
+     261: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     264: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     267: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     272: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     275: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     278: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     281: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     284: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     287: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     290: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     293: getstatic     #121                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.BASE:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     296: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     299: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     302: iconst_2
+     303: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     308: pop
+     309: aload_3
+     310: aload         6
+     312: invokevirtual #112                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+     315: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     318: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     323: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     326: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     329: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     332: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     335: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     338: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     341: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     344: getstatic     #115                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.FRUSTUM:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     347: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     350: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     353: iconst_2
+     354: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     359: pop
+     360: aload_3
+     361: aload         6
+     363: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     366: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     371: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     374: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     377: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     380: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     383: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     386: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     389: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     392: getstatic     #105                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     395: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     398: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     401: iconst_2
+     402: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     407: pop
+     408: goto          562
+     411: aload_3
+     412: aload         6
+     414: iconst_2
+     415: invokevirtual #118                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     418: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     421: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     426: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     429: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     432: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     435: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     438: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     441: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     444: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     447: getstatic     #124                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.MIDDLE:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     450: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     453: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     456: iconst_2
+     457: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     462: pop
+     463: aload_3
+     464: aload         6
+     466: invokevirtual #112                // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+     469: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     472: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     477: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     480: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     483: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     486: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     489: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     492: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     495: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     498: getstatic     #115                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.FRUSTUM:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     501: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     504: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     507: iconst_2
+     508: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     513: pop
+     514: aload_3
+     515: aload         6
+     517: getstatic     #67                 // Field net/regions_unexplored/registry/RUBlocks.ICICLE:Ljava/util/function/Supplier;
+     520: invokeinterface #73,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     525: checkcast     #75                 // class net/minecraft/world/level/block/Block
+     528: invokevirtual #79                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     531: getstatic     #85                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.TIP_DIRECTION:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     534: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     537: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     540: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     543: getstatic     #99                 // Field net/regions_unexplored/world/level/block/other/IcicleBlock.THICKNESS:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     546: getstatic     #105                // Field net/minecraft/world/level/block/state/properties/DripstoneThickness.TIP:Lnet/minecraft/world/level/block/state/properties/DripstoneThickness;
+     549: invokevirtual #95                 // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     552: checkcast     #57                 // class net/minecraft/world/level/block/state/BlockState
+     555: iconst_2
+     556: invokeinterface #109,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     561: pop
+     562: aload         6
+     564: getstatic     #91                 // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+     567: invokevirtual #128                // Method net/minecraft/core/BlockPos$MutableBlockPos.move:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     570: pop
+     571: iinc          8, 1
+     574: goto          80
+     577: iconst_1
+     578: ireturn
+}
