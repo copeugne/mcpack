@@ -5767,7 +5767,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
-| `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: Entry and selector hook captured at 0224278. Inspect FabricCommandApiV2 server initializer; client initializer is guarded. |
+| `fabric-command-api-v2-2.2.28+36d727be19.jar` | RESOLVED: Entry and selector hook 0224278, initializer 703f0ac. Caller-supplied command/argument registration and selector flags; no independent family. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
 | `fabric-convention-tags-v2-2.11.1+87e5848019.jar` | RESOLVED: conventional tags, tag interface and translation warnings; no independent family. |
@@ -5780,7 +5780,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: Entry and seven common/server hooks captured at 4de41d1. Inspect LifecycleEventsImpl server initializer; client initialization is guarded. |
+| `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | RESOLVED: Entry and seven common/server hooks 4de41d1, initializer 353d68f. Existing lifecycle callbacks and loaded-chunk bookkeeping; no independent family. |
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -6384,3 +6384,30 @@ Initial extraction stopped at argument parsing because the nested archive
 allowlist was incomplete; a2c1e65 fixes the exact three archive selections and
 hash bindings. No failed capture was represented as accepted source evidence.
 No runtime experiment or measurement system was added.
+
+### Fabric command and lifecycle membership resolved
+
+Sources 703f0ac and 353d68f complete the two named initializer boundaries.
+Command registration consumes caller-supplied argument maps, initially empty,
+and forwards command registration callbacks. The existing selector hook manages
+caller-defined flags. Lifecycle initialization forwards events for existing
+servers, worlds, chunks, entities and tags. CHUNK_GENERATE reports a new chunk;
+it does not create it. Unload processing enumerates existing loaded objects.
+WorldMixin maintains the loaded-chunk set. Neither module adds a family.
+
+The existing test binds both source manifests to exact nested archive/class
+bytes, accounts for all 16 command and 73 lifecycle classes and all metadata,
+and includes the lifecycle server-only WorldChunkMixin. Separate client hook
+counts are one and five; client initialization is guarded. Independent source
+reproduction is recorded in each source README. Validation:
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All 29 cases and scoped checks pass. Fabric: 28 resolved modules, 15 open.
+Whole providers: 90 resolved, 46 open. No family-list change. Continue the
+remaining named module and provider roles, then outstanding canonical grouping;
+do not repeat these completed initializer paths or resume detailed attributes.

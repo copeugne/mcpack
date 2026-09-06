@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/sinytra/fabric/command_api/FabricCommandApiV2.class",
+    "net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.class",
     "org/sinytra/fabric/command_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/command/EntitySelectorReaderMixin.class",
     "org/sinytra/fabric/entity_events/generated/GeneratedEntryPoint.class",
