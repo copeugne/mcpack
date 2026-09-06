@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+BetterEnd light_1 is excluded as an ambient fixture. The disconnected Blossoming
+Spires house remains a named inactive candidate outside the active building
+lists, with explicit reopening if another consumer is demonstrated. Both
+dispositions are integrated and reproduced; thirteen focused cases and scoped
+checks pass. Forty-one of the original 42 selected architectural templates
+remain for design grouping. These are not family counts. Continue comparing
+actual layouts; do not group the six biome lists or count files as families.
+
+
 BetterEnd fallen pillar and pillar basement are one ruined-obsidian-pillar
 family with two form/damage variants. Existing source and registered placement
 routes are bound to the decision, including captured Dragon Graveyards End
