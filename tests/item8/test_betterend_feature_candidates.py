@@ -18,6 +18,52 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_betterend_biome_modifiers_bind_existing_candidate_consumers() -> None:
+    sources = retained_sources(Path.cwd())
+    betterend = next(s for s in sources if s.name == "BetterEnd-21.0.31.jar")
+    wover = next(s for s in sources if s.name == "worldweaver-21.0.24.jar")
+    for source in (betterend, wover):
+        assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    modifiers = {
+        "defaults": "01a91be1e3ff0ca9f3991494df804b2bd44ac7eabf07738fb016c582a1808681",
+        "eternal_portals": "b8a7f3de02012a9d9661e33b95ee7d9c699d00b29c471a05c2f70cdf153506f6",
+    }
+    with ZipFile(betterend.path) as archive:
+        prefix = "data/betterend/wover/worldgen/biome_modifications/"
+        assert {n.filename for n in archive.infolist()
+                if n.filename.startswith(prefix) and not n.is_dir()} == {
+            prefix + name + ".json" for name in modifiers
+        }
+        for name, digest in modifiers.items():
+            assert hashlib.sha256(archive.read(prefix + name + ".json")).hexdigest() == digest
+        default = cast("dict[str, JsonValue]", json.loads(archive.read(prefix + "defaults.json")))
+        assert default["features"] == [[], [], [], [], ["betterend:crashed_ship"], [], [
+            "betterend:flavolite_layer", "betterend:thallasium_ore", "betterend:ender_ore",
+        ]]
+        portal = cast("dict[str, JsonValue]", json.loads(archive.read(
+            prefix + "eternal_portals.json")))
+        assert portal["biome_tags"] == ["betterend:has_structure/eternal_portal"]
+    directories = {
+        "wover-biome-modifier-consumers":
+            "a369761c4511706e0486eae7465fb74d379e4dc97f91dd74113c206b71d55868",
+        "wover-biome-modifier-codec":
+            "dfea087f9938a66807e94d9d2f9a46d110e82dae07092fde2777780979299cbf",
+    }
+    with ZipFile(wover.path) as archive:
+        for name, digest in directories.items():
+            directory = Path("evidence/item-8/sources") / name
+            raw = (directory / "identities.json").read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == digest
+            for row in cast("list[dict[str, str]]", json.loads(raw)):
+                assert row["archive"] == wover.name
+                assert row["archive_sha256"] == wover.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == (
+                    row["class_sha256"]
+                )
+                raw = (directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+
+
 def test_betterend_all_declared_common_mixin_consumers_are_preserved() -> None:
     source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256

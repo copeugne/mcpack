@@ -1788,3 +1788,49 @@ Use the commands recorded in the preceding section. BetterEnd's remaining census
 areas are other feature consumers and shared Wover modifiers. Root, template,
 compatibility and declared common-mixin checks stay closed. Overall provider
 counts remain 53 resolved and 83 open; Item 8 is not complete.
+
+### BetterEnd Wover biome modifier consumers
+
+Source f9c8400 preserves the Wover modifier codec, application workers and the
+six predicate implementations used by BetterEnd. Both capture directories
+reproduce exactly; their READMEs record the commands. Manifest SHA-256 values:
+a369761c4511706e0486eae7465fb74d379e4dc97f91dd74113c206b71d55868
+(wover-biome-modifier-consumers) and
+dfea087f9938a66807e94d9d2f9a46d110e82dae07092fde2777780979299cbf
+(wover-biome-modifier-codec).
+
+BetterEnd packages exactly two biome_modifications resources. defaults.json
+adds the existing crashed_ship placed feature at decoration index 4 and the
+flavolite_layer, thallasium_ore and ender_ore features at index 6. Its predicate
+excludes the betterend namespace and requires one of the Wover End barrens,
+midland or highland biome tags. This extends existing candidates, not the
+authored-family list.
+
+eternal_portals.json adds betterend:has_structure/eternal_portal to biomes whose
+namespace is neither minecraft nor betterend and whose path contains neither
+mountain nor lake. The predicate has no dimension or End-biome requirement.
+Preserve that distinction for the existing portal family's biome/dimension
+attributes; do not silently describe this eligibility extension as End-only.
+It does not prove that portals actually generate in every matching dimension.
+
+The codec maps predicate, features, biome_tags and spawns into BiomeModification.
+Its registry worker subscribes at server readiness, tests each modifier against
+biome contexts, adds matching tags and applies feature/mob changes. FeatureMap
+resolves placed-feature holders; GenerationSettingsWorker appends features at
+their decoration index. The tag worker updates existing tag contents and logs
+a warning if its required accessor is unavailable. These consumers do not create
+an unlisted structure design.
+
+The retained debug log at line 19125 records the Wover aggregate application
+message. It proves the application phase ran, not the exact per-modifier or
+per-biome outcome. Use the preserved live tags and generated-world observations
+for downstream effective constraints; no new runtime experiment is warranted
+to close this candidate-contribution question alone.
+
+Ten focused BetterEnd cases, Ruff and Basedpyright pass using the commands above.
+The new case binds the complete two-file set, exact payload hashes, named
+feature/tag contributions and Wover archive/class/disassembly identities.
+BetterEnd's remaining census area is other feature consumers. Root, template,
+common-mixin, compatibility and these modifier contribution checks stay closed.
+Overall provider counts remain 53 resolved and 83 open. Whole Wover provider
+coverage and Item 8 completion are not claimed by this consumer-specific result.
