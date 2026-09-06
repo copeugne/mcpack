@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Four more Fabric modules are resolved: model loading, particles, Indigo and
+screen API. Source b3a9dd3 (extractor e2ae798) reproduces entries, two client event
+subscribers and Indigo's renderer-selection plugin. Full payload and client
+mixin partitions pass in eighteen focused cases; scoped checks pass. Fabric:
+seventeen resolved, twenty-six open modules. No family added. Whole-provider
+census remains 90 resolved, 46 open. Continue remaining named contribution roles
+and family groupings. Do not revisit the closed client helper implementations.
+
 Three Fabric client API modules are resolved: client tags, renderer API and
 fluid rendering. Their entries are empty or client-guarded; complete payloads
 and client-only mixin partitions are verified. Source 339a264, extractor 6ff2013.
