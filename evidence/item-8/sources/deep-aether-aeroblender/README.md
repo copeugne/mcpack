@@ -1,0 +1,9 @@
+# AeroBlender entry and integration source
+
+Extractor ae25c21bd4826311579ef03fec22e290d323579b. Manifest SHA-256: 414711e4c35a498420ead8f3a7de80e7e7b8feb15909a19fb2dcebdba6ef5dc7. Independent r1 matches every generated file.
+
+The selected bundled library supplies biome/surface integration used by Deep Aether. This capture covers its entry, region/rule implementation and eight declared mixins using the existing nested-source path. Configuration value builders are omitted from this contribution-boundary capture; inspect them only if a specific eligibility input remains unresolved. Source capture alone is not provider closure.
+
+```sh
+uv run -m tools.inspect_item8_pool_elements --archive deep_aether-1.21.1-1.1.5.1.jar --nested-archive META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar --class-name io/github/razordevs/aeroblender/Aeroblender.class --class-name io/github/razordevs/aeroblender/DimensionTypeTags.class --class-name io/github/razordevs/aeroblender/aether/AetherRegionType.class --class-name io/github/razordevs/aeroblender/aether/AetherRuleCategory.class --class-name io/github/razordevs/aeroblender/aether/AetherSurfaceRuleData.class --class-name io/github/razordevs/aeroblender/aether/DefaultAetherRegion.class --class-name io/github/razordevs/aeroblender/mixin/LayeredNoiseUtilMixin.class --class-name io/github/razordevs/aeroblender/mixin/LevelUtilsMixin.class --class-name io/github/razordevs/aeroblender/mixin/NoiseGeneratorSettingsMixin.class --class-name io/github/razordevs/aeroblender/mixin/RegionMixin.class --class-name io/github/razordevs/aeroblender/mixin/RegionTypeMixin.class --class-name io/github/razordevs/aeroblender/mixin/RuleCategoryMixin.class --class-name io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerAccessor.class --class-name io/github/razordevs/aeroblender/mixin/SurfaceRuleManagerMixin.class --output evidence/raw/item8/deep-aether-aeroblender-r1
+```
