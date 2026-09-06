@@ -5598,8 +5598,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Seven membership roles are resolved below;
-36 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Ten membership roles are resolved below;
+33 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5612,7 +5612,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
 | `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5626,7 +5626,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
 | `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5646,7 +5646,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
 | `fabric-screen-api-v1-2.0.25+0ae1214819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
 | `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
@@ -5701,3 +5701,21 @@ Fabric cases and scoped Ruff/Basedpyright pass. The initial type check rejected
 an untyped JSON variable; its explicit type annotation fixed that check before
 acceptance. Fabric module queue: seven resolved, 36 open. Whole provider census
 stays 90 resolved, 46 open. Next: remaining named module entries and hooks.
+
+### Fabric block-render-layer, key-binding and sound modules resolved
+
+Source 1c35ebe (extractor 5624e8a) independently reproduces the sole annotated
+entry in each module. Block-render-layer and key-binding initialization is
+explicitly guarded by FMLEnvironment.dist.isClient(). The sound entry invokes
+only Object's constructor and returns. Every declared mixin is client-only,
+with no common/server list or plugin. Their complete payloads are nine, seven
+and four classes respectively, with metadata, icon and mixin declarations;
+sound additionally contains assets/fabric-sound-api-v1/sounds/empty.ogg.
+No data, service loader or nested archive is present. These modules supply
+client rendering/input/sound support, not an independent server family.
+
+The existing test binds all complete partitions, annotated-entry sets, mixin
+sides and source identities. Eleven focused Fabric cases and scoped checks pass.
+A missing type annotation on an empty set and its resulting line length were
+corrected before acceptance. Module queue: ten resolved, 33 open. Whole-provider
+census remains 90 resolved, 46 open; no family candidate was added.

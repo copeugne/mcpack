@@ -339,3 +339,87 @@ def test_fabric_v2_tag_membership() -> None:
                     row["disassembly_sha256"]
                     == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                 )
+
+
+@pytest.mark.parametrize(
+    ("module", "label", "digest", "class_count", "client_count"),
+    [
+        (
+            "fabric-blockrenderlayer-v1-1.1.52+c290471319",
+            "fabric-blockrenderlayer-entry",
+            "aaa25c57988927d612eb93dcbdd02fac7495d20eb470b27ba724ea0a69830e14",
+            9,
+            2,
+        ),
+        (
+            "fabric-key-binding-api-v1-1.0.47+62cc7ce119",
+            "fabric-key_binding_api-entry",
+            "853035c0f876eeeea756b49418af6623846bfaebbfb5654a4b6272650feac16c",
+            7,
+            1,
+        ),
+        (
+            "fabric-sound-api-v1-1.0.23+10b84f8419",
+            "fabric-sound_api-entry",
+            "56cc3df95af643d82137bc4e03d36566d6ed6d50e36d627a8fa9f26a4e5e2d13",
+            4,
+            1,
+        ),
+    ],
+)
+def test_fabric_client_utility_membership(
+    module: str, label: str, digest: str, class_count: int, client_count: int
+) -> None:
+    source = next(
+        s
+        for s in retained_sources(Path.cwd())
+        if s.name == "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar"
+    )
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    member = f"META-INF/jars/{module}.jar"
+    directory = Path("evidence/item-8/sources") / label
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == digest
+    rows = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(rows) == 1
+    row = rows[0]
+    name = module.rsplit("-", 1)[0]
+    with ZipFile(source.path) as parent:
+        payload = parent.read(member)
+        with ZipFile(BytesIO(payload)) as archive:
+            files = {n for n in archive.namelist() if not n.endswith("/")}
+            classes = {n for n in files if n.endswith(".class")}
+            assert len(classes) == class_count
+            extras: set[str] = (
+                {f"assets/{name}/sounds/empty.ogg"} if name == "fabric-sound-api-v1" else set()
+            )
+            assert files - classes == extras | {
+                "META-INF/MANIFEST.MF",
+                "META-INF/neoforge.mods.toml",
+                "META-INF/architectury-loom-nesting-metadata.json",
+                f"{name}.mixins.json",
+                f"assets/{name}/icon.png",
+            }
+            config = cast("dict[str, object]", json.loads(archive.read(f"{name}.mixins.json")))
+            assert len(cast("list[str]", config["client"])) == client_count
+            assert not config.get("mixins")
+            assert not config.get("server")
+            assert not config.get("plugin")
+            assert {
+                n
+                for n in classes
+                if any(
+                    marker in archive.read(n)
+                    for marker in (
+                        b"Lnet/neoforged/fml/common/Mod;",
+                        b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                    )
+                )
+            } == {row["class"]}
+            assert row["archive"] == source.name + "!/" + member
+            assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+            assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
+            assert (
+                row["disassembly_sha256"]
+                == hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
+            )
