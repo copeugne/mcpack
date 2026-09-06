@@ -1,0 +1,309 @@
+Classfile comforts-neoforge-9.0.5+1.21.1.jar!/com/illusivesoulworks/comforts/platform/NeoForgeSleepEvents.class
+  Last modified Jan 24, 2026; size 4545 bytes
+  SHA-256 checksum 634960a2323ef6269ab207c78483575f6a2d126387eabfc563f120adcdd86d4d
+  Compiled from "NeoForgeSleepEvents.java"
+public class com.illusivesoulworks.comforts.platform.NeoForgeSleepEvents implements com.illusivesoulworks.comforts.platform.services.ISleepEvents
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #102                        // com/illusivesoulworks/comforts/platform/NeoForgeSleepEvents
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 7, attributes: 2
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/EventHooks.canPlayerStartSleeping:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;
+    #8 = Class              #10           // net/neoforged/neoforge/event/EventHooks
+    #9 = NameAndType        #11:#12       // canPlayerStartSleeping:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;
+   #10 = Utf8               net/neoforged/neoforge/event/EventHooks
+   #11 = Utf8               canPlayerStartSleeping
+   #12 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;
+   #13 = Methodref          #14.#15       // net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+   #14 = Class              #16           // net/minecraft/world/entity/player/Player
+   #15 = NameAndType        #17:#18       // level:()Lnet/minecraft/world/level/Level;
+   #16 = Utf8               net/minecraft/world/entity/player/Player
+   #17 = Utf8               level
+   #18 = Utf8               ()Lnet/minecraft/world/level/Level;
+   #19 = Methodref          #20.#21       // net/minecraft/world/level/Level.isDay:()Z
+   #20 = Class              #22           // net/minecraft/world/level/Level
+   #21 = NameAndType        #23:#24       // isDay:()Z
+   #22 = Utf8               net/minecraft/world/level/Level
+   #23 = Utf8               isDay
+   #24 = Utf8               ()Z
+   #25 = Fieldref           #26.#27       // com/illusivesoulworks/comforts/ComfortsNeoForgeMod.SLEEP_DATA:Ljava/util/function/Supplier;
+   #26 = Class              #28           // com/illusivesoulworks/comforts/ComfortsNeoForgeMod
+   #27 = NameAndType        #29:#30       // SLEEP_DATA:Ljava/util/function/Supplier;
+   #28 = Utf8               com/illusivesoulworks/comforts/ComfortsNeoForgeMod
+   #29 = Utf8               SLEEP_DATA
+   #30 = Utf8               Ljava/util/function/Supplier;
+   #31 = InterfaceMethodref #32.#33       // java/util/function/Supplier.get:()Ljava/lang/Object;
+   #32 = Class              #34           // java/util/function/Supplier
+   #33 = NameAndType        #35:#36       // get:()Ljava/lang/Object;
+   #34 = Utf8               java/util/function/Supplier
+   #35 = Utf8               get
+   #36 = Utf8               ()Ljava/lang/Object;
+   #37 = Class              #38           // net/neoforged/neoforge/attachment/AttachmentType
+   #38 = Utf8               net/neoforged/neoforge/attachment/AttachmentType
+   #39 = Methodref          #14.#40       // net/minecraft/world/entity/player/Player.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+   #40 = NameAndType        #41:#42       // getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+   #41 = Utf8               getData
+   #42 = Utf8               (Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+   #43 = Class              #44           // com/illusivesoulworks/comforts/common/capability/ISleepData
+   #44 = Utf8               com/illusivesoulworks/comforts/common/capability/ISleepData
+   #45 = Methodref          #46.#47       // java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+   #46 = Class              #48           // java/util/Optional
+   #47 = NameAndType        #49:#50       // of:(Ljava/lang/Object;)Ljava/util/Optional;
+   #48 = Utf8               java/util/Optional
+   #49 = Utf8               of
+   #50 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+   #51 = Class              #52           // com/illusivesoulworks/comforts/common/network/SPacketAutoSleep
+   #52 = Utf8               com/illusivesoulworks/comforts/common/network/SPacketAutoSleep
+   #53 = Methodref          #54.#55       // net/minecraft/server/level/ServerPlayer.getId:()I
+   #54 = Class              #56           // net/minecraft/server/level/ServerPlayer
+   #55 = NameAndType        #57:#58       // getId:()I
+   #56 = Utf8               net/minecraft/server/level/ServerPlayer
+   #57 = Utf8               getId
+   #58 = Utf8               ()I
+   #59 = Methodref          #51.#60       // com/illusivesoulworks/comforts/common/network/SPacketAutoSleep."<init>":(ILnet/minecraft/core/BlockPos;)V
+   #60 = NameAndType        #5:#61        // "<init>":(ILnet/minecraft/core/BlockPos;)V
+   #61 = Utf8               (ILnet/minecraft/core/BlockPos;)V
+   #62 = Class              #63           // net/minecraft/network/protocol/common/custom/CustomPacketPayload
+   #63 = Utf8               net/minecraft/network/protocol/common/custom/CustomPacketPayload
+   #64 = Methodref          #65.#66       // net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #65 = Class              #67           // net/neoforged/neoforge/network/PacketDistributor
+   #66 = NameAndType        #68:#69       // sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #67 = Utf8               net/neoforged/neoforge/network/PacketDistributor
+   #68 = Utf8               sendToPlayer
+   #69 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+   #70 = Class              #71           // com/illusivesoulworks/comforts/common/network/SPacketPlaceBag
+   #71 = Utf8               com/illusivesoulworks/comforts/common/network/SPacketPlaceBag
+   #72 = Methodref          #73.#74       // net/minecraft/world/item/context/UseOnContext.getHand:()Lnet/minecraft/world/InteractionHand;
+   #73 = Class              #75           // net/minecraft/world/item/context/UseOnContext
+   #74 = NameAndType        #76:#77       // getHand:()Lnet/minecraft/world/InteractionHand;
+   #75 = Utf8               net/minecraft/world/item/context/UseOnContext
+   #76 = Utf8               getHand
+   #77 = Utf8               ()Lnet/minecraft/world/InteractionHand;
+   #78 = Methodref          #73.#79       // net/minecraft/world/item/context/UseOnContext.getClickedFace:()Lnet/minecraft/core/Direction;
+   #79 = NameAndType        #80:#81       // getClickedFace:()Lnet/minecraft/core/Direction;
+   #80 = Utf8               getClickedFace
+   #81 = Utf8               ()Lnet/minecraft/core/Direction;
+   #82 = Methodref          #73.#83       // net/minecraft/world/item/context/UseOnContext.getClickedPos:()Lnet/minecraft/core/BlockPos;
+   #83 = NameAndType        #84:#85       // getClickedPos:()Lnet/minecraft/core/BlockPos;
+   #84 = Utf8               getClickedPos
+   #85 = Utf8               ()Lnet/minecraft/core/BlockPos;
+   #86 = Methodref          #73.#87       // net/minecraft/world/item/context/UseOnContext.getClickLocation:()Lnet/minecraft/world/phys/Vec3;
+   #87 = NameAndType        #88:#89       // getClickLocation:()Lnet/minecraft/world/phys/Vec3;
+   #88 = Utf8               getClickLocation
+   #89 = Utf8               ()Lnet/minecraft/world/phys/Vec3;
+   #90 = Methodref          #91.#92       // net/minecraft/world/phys/Vec3.toVector3f:()Lorg/joml/Vector3f;
+   #91 = Class              #93           // net/minecraft/world/phys/Vec3
+   #92 = NameAndType        #94:#95       // toVector3f:()Lorg/joml/Vector3f;
+   #93 = Utf8               net/minecraft/world/phys/Vec3
+   #94 = Utf8               toVector3f
+   #95 = Utf8               ()Lorg/joml/Vector3f;
+   #96 = Methodref          #73.#97       // net/minecraft/world/item/context/UseOnContext.isInside:()Z
+   #97 = NameAndType        #98:#24       // isInside:()Z
+   #98 = Utf8               isInside
+   #99 = Methodref          #70.#100      // com/illusivesoulworks/comforts/common/network/SPacketPlaceBag."<init>":(ILnet/minecraft/world/InteractionHand;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Lorg/joml/Vector3f;Z)V
+  #100 = NameAndType        #5:#101       // "<init>":(ILnet/minecraft/world/InteractionHand;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Lorg/joml/Vector3f;Z)V
+  #101 = Utf8               (ILnet/minecraft/world/InteractionHand;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Lorg/joml/Vector3f;Z)V
+  #102 = Class              #103          // com/illusivesoulworks/comforts/platform/NeoForgeSleepEvents
+  #103 = Utf8               com/illusivesoulworks/comforts/platform/NeoForgeSleepEvents
+  #104 = Class              #105          // com/illusivesoulworks/comforts/platform/services/ISleepEvents
+  #105 = Utf8               com/illusivesoulworks/comforts/platform/services/ISleepEvents
+  #106 = Utf8               Code
+  #107 = Utf8               LineNumberTable
+  #108 = Utf8               LocalVariableTable
+  #109 = Utf8               this
+  #110 = Utf8               Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+  #111 = Utf8               getSleepResult
+  #112 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;
+  #113 = Utf8               player
+  #114 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #115 = Utf8               pos
+  #116 = Utf8               Lnet/minecraft/core/BlockPos;
+  #117 = Utf8               vanillaResult
+  #118 = Utf8               Lcom/mojang/datafixers/util/Either;
+  #119 = Utf8               LocalVariableTypeTable
+  #120 = Utf8               Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;
+  #121 = Utf8               Signature
+  #122 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;)Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;
+  #123 = Utf8               isAwakeTime
+  #124 = Utf8               (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;)Z
+  #125 = Utf8               Lnet/minecraft/world/entity/player/Player;
+  #126 = Utf8               getSleepData
+  #127 = Utf8               (Lnet/minecraft/world/entity/player/Player;)Ljava/util/Optional;
+  #128 = Utf8               (Lnet/minecraft/world/entity/player/Player;)Ljava/util/Optional<+Lcom/illusivesoulworks/comforts/common/capability/ISleepData;>;
+  #129 = Utf8               sendAutoSleepPacket
+  #130 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)V
+  #131 = Utf8               sendPlaceBagPacket
+  #132 = Utf8               (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/item/context/UseOnContext;)V
+  #133 = Utf8               context
+  #134 = Utf8               Lnet/minecraft/world/item/context/UseOnContext;
+  #135 = Utf8               SourceFile
+  #136 = Utf8               NeoForgeSleepEvents.java
+  #137 = Utf8               InnerClasses
+  #138 = Class              #139          // net/minecraft/world/entity/player/Player$BedSleepingProblem
+  #139 = Utf8               net/minecraft/world/entity/player/Player$BedSleepingProblem
+  #140 = Utf8               BedSleepingProblem
+{
+  public com.illusivesoulworks.comforts.platform.NeoForgeSleepEvents();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+
+  public net.minecraft.world.entity.player.Player$BedSleepingProblem getSleepResult(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aconst_null
+         1: areturn
+      LineNumberTable:
+        line 39: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0       2     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0       2     2   pos   Lnet/minecraft/core/BlockPos;
+
+  public com.mojang.datafixers.util.Either<net.minecraft.world.entity.player.Player$BedSleepingProblem, net.minecraft.util.Unit> getSleepResult(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos, com.mojang.datafixers.util.Either<net.minecraft.world.entity.player.Player$BedSleepingProblem, net.minecraft.util.Unit>);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_1
+         1: aload_2
+         2: aload_3
+         3: invokestatic  #7                  // Method net/neoforged/neoforge/event/EventHooks.canPlayerStartSleeping:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;
+         6: areturn
+      LineNumberTable:
+        line 45: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0       7     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0       7     2   pos   Lnet/minecraft/core/BlockPos;
+            0       7     3 vanillaResult   Lcom/mojang/datafixers/util/Either;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       7     3 vanillaResult   Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;
+    Signature: #122                         // (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;)Lcom/mojang/datafixers/util/Either<Lnet/minecraft/world/entity/player/Player$BedSleepingProblem;Lnet/minecraft/util/Unit;>;
+
+  public boolean isAwakeTime(net.minecraft.world.entity.player.Player, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/core/BlockPos;)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_1
+         1: invokevirtual #13                 // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+         4: invokevirtual #19                 // Method net/minecraft/world/level/Level.isDay:()Z
+         7: ireturn
+      LineNumberTable:
+        line 50: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0       8     1 player   Lnet/minecraft/world/entity/player/Player;
+            0       8     2   pos   Lnet/minecraft/core/BlockPos;
+
+  public java.util.Optional<? extends com.illusivesoulworks.comforts.common.capability.ISleepData> getSleepData(net.minecraft.world.entity.player.Player);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;)Ljava/util/Optional;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: getstatic     #25                 // Field com/illusivesoulworks/comforts/ComfortsNeoForgeMod.SLEEP_DATA:Ljava/util/function/Supplier;
+         4: invokeinterface #31,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+         9: checkcast     #37                 // class net/neoforged/neoforge/attachment/AttachmentType
+        12: invokevirtual #39                 // Method net/minecraft/world/entity/player/Player.getData:(Lnet/neoforged/neoforge/attachment/AttachmentType;)Ljava/lang/Object;
+        15: checkcast     #43                 // class com/illusivesoulworks/comforts/common/capability/ISleepData
+        18: invokestatic  #45                 // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+        21: areturn
+      LineNumberTable:
+        line 55: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0      22     1 player   Lnet/minecraft/world/entity/player/Player;
+    Signature: #128                         // (Lnet/minecraft/world/entity/player/Player;)Ljava/util/Optional<+Lcom/illusivesoulworks/comforts/common/capability/ISleepData;>;
+
+  public void sendAutoSleepPacket(net.minecraft.server.level.ServerPlayer, net.minecraft.core.BlockPos);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/core/BlockPos;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=3, args_size=3
+         0: aload_1
+         1: new           #51                 // class com/illusivesoulworks/comforts/common/network/SPacketAutoSleep
+         4: dup
+         5: aload_1
+         6: invokevirtual #53                 // Method net/minecraft/server/level/ServerPlayer.getId:()I
+         9: aload_2
+        10: invokespecial #59                 // Method com/illusivesoulworks/comforts/common/network/SPacketAutoSleep."<init>":(ILnet/minecraft/core/BlockPos;)V
+        13: iconst_0
+        14: anewarray     #62                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+        17: invokestatic  #64                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        20: return
+      LineNumberTable:
+        line 60: 0
+        line 61: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0      21     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      21     2   pos   Lnet/minecraft/core/BlockPos;
+
+  public void sendPlaceBagPacket(net.minecraft.server.level.ServerPlayer, net.minecraft.world.item.context.UseOnContext);
+    descriptor: (Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/item/context/UseOnContext;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=9, locals=3, args_size=3
+         0: aload_1
+         1: new           #70                 // class com/illusivesoulworks/comforts/common/network/SPacketPlaceBag
+         4: dup
+         5: aload_1
+         6: invokevirtual #53                 // Method net/minecraft/server/level/ServerPlayer.getId:()I
+         9: aload_2
+        10: invokevirtual #72                 // Method net/minecraft/world/item/context/UseOnContext.getHand:()Lnet/minecraft/world/InteractionHand;
+        13: aload_2
+        14: invokevirtual #78                 // Method net/minecraft/world/item/context/UseOnContext.getClickedFace:()Lnet/minecraft/core/Direction;
+        17: aload_2
+        18: invokevirtual #82                 // Method net/minecraft/world/item/context/UseOnContext.getClickedPos:()Lnet/minecraft/core/BlockPos;
+        21: aload_2
+        22: invokevirtual #86                 // Method net/minecraft/world/item/context/UseOnContext.getClickLocation:()Lnet/minecraft/world/phys/Vec3;
+        25: invokevirtual #90                 // Method net/minecraft/world/phys/Vec3.toVector3f:()Lorg/joml/Vector3f;
+        28: aload_2
+        29: invokevirtual #96                 // Method net/minecraft/world/item/context/UseOnContext.isInside:()Z
+        32: invokespecial #99                 // Method com/illusivesoulworks/comforts/common/network/SPacketPlaceBag."<init>":(ILnet/minecraft/world/InteractionHand;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Lorg/joml/Vector3f;Z)V
+        35: iconst_0
+        36: anewarray     #62                 // class net/minecraft/network/protocol/common/custom/CustomPacketPayload
+        39: invokestatic  #64                 // Method net/neoforged/neoforge/network/PacketDistributor.sendToPlayer:(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;[Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        42: return
+      LineNumberTable:
+        line 65: 0
+        line 66: 6
+        line 67: 18
+        line 65: 39
+        line 68: 42
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0  this   Lcom/illusivesoulworks/comforts/platform/NeoForgeSleepEvents;
+            0      43     1 player   Lnet/minecraft/server/level/ServerPlayer;
+            0      43     2 context   Lnet/minecraft/world/item/context/UseOnContext;
+}
+SourceFile: "NeoForgeSleepEvents.java"
+InnerClasses:
+  public static final #140= #138 of #14;  // BedSleepingProblem=class net/minecraft/world/entity/player/Player$BedSleepingProblem of class net/minecraft/world/entity/player/Player

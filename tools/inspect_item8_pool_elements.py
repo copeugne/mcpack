@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "comforts-neoforge-9.0.5+1.21.1.jar",
         "cc-tweaked-1.21.1-forge-1.119.0.jar",
         "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
         "amendments-1.21-2.0.15-neoforge.jar",
@@ -220,6 +221,20 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/illusivesoulworks/comforts/ComfortsNeoForgeMod.class",
+    "com/illusivesoulworks/comforts/ComfortsCommonMod.class",
+    "com/illusivesoulworks/comforts/common/ComfortsCommonEventsListener.class",
+    "com/illusivesoulworks/comforts/common/ComfortsRegistry.class",
+    "com/illusivesoulworks/comforts/common/ComfortsEvents.class",
+    "com/illusivesoulworks/comforts/mixin/AccessorPlayer.class",
+    "com/illusivesoulworks/comforts/mixin/MixinServerSleepStatus.class",
+    "com/illusivesoulworks/comforts/mixin/MixinSleepStatus.class",
+    "com/illusivesoulworks/comforts/platform/NeoForgePlatformHelper.class",
+    "com/illusivesoulworks/comforts/platform/NeoForgeRegistryProvider.class",
+    "com/illusivesoulworks/comforts/platform/NeoForgeRegistryUtil.class",
+    "com/illusivesoulworks/comforts/platform/NeoForgeSleepEvents.class",
+    "com/illusivesoulworks/spectrelib/SpectreNeoForgeMod.class",
+    "com/illusivesoulworks/spectrelib/platform/NeoForgeConfigHelper.class",
     "dan200/computercraft/ComputerCraft.class",
     "dan200/computercraft/client/ForgeClientHooks.class",
     "dan200/computercraft/client/ForgeClientRegistry.class",
@@ -3590,6 +3605,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar",
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar!/META-INF/jars/MixinSquared-0.2.0-beta.6.jar",
         "META-INF/jars/c2me-client-uncapvd-mc1.21.1-0.3.0+alpha.0.93.jar",
@@ -3675,6 +3691,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/spectrelib-neoforge-0.17.2+1.21.jar": (
+            "comforts-neoforge-9.0.5+1.21.1.jar",
+            "5be2f580af278c5707679ceb079aee46d13ffbe6c2f5138c86598a8e90ca3969",
+        ),
         "META-INF/jars/mixinsquared-neoforge-0.2.0-beta.6.jar": (
             "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
             "786eadfced7e24c2386aced089cf30908778038de02642cc559fffe32e73b127",
@@ -4089,6 +4109,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
                 verbose |= name.startswith("com/ishland/c2me/")
                 verbose |= name.startswith("io/wispforest/accessories/")
