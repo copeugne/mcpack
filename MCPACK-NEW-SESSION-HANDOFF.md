@@ -6,6 +6,47 @@
 
 ### Continuation update - 2026-09-06
 
+CTOV provider coverage now passes: complete payload, 78 existing roots, 181 pools
+and 2,093 current-path templates accounted for. Outside its root graphs, 1,005
+templates have condition-failing compatibility references and 128 are disconnected
+components. Nineteen disconnected pools and 27 roots with missing resources are
+preserved, not repaired. Seven focused cases pass. Reuse the existing source,
+selection, bundle and scope checks. Counts: 34 resolved providers, 102 open.
+Candidate completeness remains the immediate deliverable before attributes;
+887 registry roots and 421 provisional groups still do not establish final families.
+
+
+CTOV bundled compatibility resources now have a passing focused check in
+test_ctov_bundled_resources.py. Mushroom ZIP contains five processor documents
+and metadata identical to loose copies; Savage and Ravage has eleven old-path
+outpost components. Two .jso files only reference existing roots and are outside
+the JSON catalog. Do not enable, migrate or count these as families. Remaining
+CTOV coverage: ordinary full payload and disconnected/missing components with
+modifier relationships. Code, frozen selection and bundle checks must be reused.
+Counts unchanged: 33 resolved, 103 open. No baseline or family-decision changes.
+
+CTOV frozen callback/modifier selection now has a focused passing regression.
+It binds 74 callback-selected roots (63 villages and eleven outposts) to the
+registry; mesa outpost and three underground-size roots remain outside that
+callback list, not deleted from the inventory. Of 1,019 catalog modifier JSON
+records, 63 pass mod conditions (21 each Chef's Delight, Farmer's Delight,
+Village Taverns); 956 fail. Reuse test_ctov_provider_selection.py and source
+82ac234. Remaining provider coverage: full payload and compatibility ZIP/directories,
+disconnected/missing components and modifier relationships. Counts unchanged:
+33 resolved, 103 open. No new parser, runtime or baseline change.
+
+CTOV twelve-class entry/component capture delivered in 82ac234 using 61663b4;
+independent extraction reproduced at evidence/raw/item8/ctov-provider-r1.
+Startup adds configured existing roots to vanilla sets through Lithostitched;
+the compatibility processor transforms existing blocks. Outpost selection uses
+the callback's own list, not enabledpillageroutpost. Preserve the unused helper
+return-descriptor mismatch without claiming a reproduced runtime failure.
+Remaining coverage: bundled compatibility directories/ZIP, modifier-driven
+components outside root graphs, explicit disconnected/missing dispositions,
+and frozen configuration binding. Both packaged mixin lists are empty. Reuse
+this source and existing CTOV regressions. Counts unchanged: 33 resolved,
+103 open. No new parser, measurement framework or baseline change.
+
 AdoraBuild provider coverage now passes. Seven-class source delivered in 6aac21f
 using 6fcc20c and reproduced independently. All 106 existing roots, 110 pools
 and 121 templates accounted for; no disconnected components. Preserve missing
