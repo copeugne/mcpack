@@ -1,0 +1,679 @@
+Classfile owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar!/io/wispforest/owo/client/OwoClient.class
+  Last modified Jan 1, 1980; size 8180 bytes
+  SHA-256 checksum b61955fdea2c24207e12f19bc14adc7f44b0bbe4b57c923ecc1d6f0a76f12eb5
+  Compiled from "OwoClient.java"
+public class io.wispforest.owo.client.OwoClient
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // io/wispforest/owo/client/OwoClient
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 5, methods: 8, attributes: 6
+Constant pool:
+    #1 = Utf8               io/wispforest/owo/client/OwoClient
+    #2 = Class              #1            // io/wispforest/owo/client/OwoClient
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               OwoClient.java
+    #6 = Utf8               Lnet/neoforged/api/distmarker/OnlyIn;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+    #9 = Utf8               CLIENT
+   #10 = Utf8               Lnet/neoforged/fml/common/Mod;
+   #11 = Utf8               owo
+   #12 = Utf8               dist
+   #13 = Utf8               Lorg/jetbrains/annotations/ApiStatus$Internal;
+   #14 = Utf8               io/wispforest/owo/client/OwoClient$1
+   #15 = Class              #14           // io/wispforest/owo/client/OwoClient$1
+   #16 = Utf8               net/minecraft/Util$OS
+   #17 = Class              #16           // net/minecraft/Util$OS
+   #18 = Utf8               net/minecraft/Util
+   #19 = Class              #18           // net/minecraft/Util
+   #20 = Utf8               OS
+   #21 = Utf8               io/wispforest/owo/client/screens/ScreenInternals$Client
+   #22 = Class              #21           // io/wispforest/owo/client/screens/ScreenInternals$Client
+   #23 = Utf8               io/wispforest/owo/client/screens/ScreenInternals
+   #24 = Class              #23           // io/wispforest/owo/client/screens/ScreenInternals
+   #25 = Utf8               Client
+   #26 = Utf8               io/wispforest/owo/command/debug/OwoDebugCommands$Client
+   #27 = Class              #26           // io/wispforest/owo/command/debug/OwoDebugCommands$Client
+   #28 = Utf8               io/wispforest/owo/command/debug/OwoDebugCommands
+   #29 = Class              #28           // io/wispforest/owo/command/debug/OwoDebugCommands
+   #30 = Utf8               io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader
+   #31 = Class              #30           // io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader
+   #32 = Utf8               io/wispforest/owo/ui/util/NinePatchTexture
+   #33 = Class              #32           // io/wispforest/owo/ui/util/NinePatchTexture
+   #34 = Utf8               MetadataLoader
+   #35 = Utf8               org/jetbrains/annotations/ApiStatus$Internal
+   #36 = Class              #35           // org/jetbrains/annotations/ApiStatus$Internal
+   #37 = Utf8               org/jetbrains/annotations/ApiStatus
+   #38 = Class              #37           // org/jetbrains/annotations/ApiStatus
+   #39 = Utf8               Internal
+   #40 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #41 = Class              #40           // java/lang/invoke/MethodHandles$Lookup
+   #42 = Utf8               java/lang/invoke/MethodHandles
+   #43 = Class              #42           // java/lang/invoke/MethodHandles
+   #44 = Utf8               Lookup
+   #45 = Utf8               LINUX_RENDERDOC_WARNING
+   #46 = Utf8               Ljava/lang/String;
+   #47 = Utf8               \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nPlease populate the LD_PRELOAD environment variable instead\n========================================
+   #48 = String             #47           // \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nPlease populate the LD_PRELOAD environment variable instead\n========================================
+   #49 = Utf8               MAC_RENDERDOC_WARNING
+   #50 = Utf8               \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nRenderDoc is not supported on macOS\n========================================
+   #51 = String             #50           // \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nRenderDoc is not supported on macOS\n========================================
+   #52 = Utf8               GENERIC_RENDERDOC_WARNING
+   #53 = Utf8               \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\n========================================
+   #54 = String             #53           // \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\n========================================
+   #55 = Utf8               HSV_PROGRAM
+   #56 = Utf8               Lio/wispforest/owo/shader/GlProgram;
+   #57 = Utf8               BLUR_PROGRAM
+   #58 = Utf8               Lio/wispforest/owo/shader/BlurProgram;
+   #59 = Utf8               <init>
+   #60 = Utf8               (Lnet/neoforged/bus/api/IEventBus;)V
+   #61 = Utf8               modBus
+   #62 = Utf8               ()V
+   #63 = NameAndType        #59:#62       // "<init>":()V
+   #64 = Methodref          #4.#63        // java/lang/Object."<init>":()V
+   #65 = Utf8               io/wispforest/owo/itemgroup/json/OwoItemGroupLoader
+   #66 = Class              #65           // io/wispforest/owo/itemgroup/json/OwoItemGroupLoader
+   #67 = Utf8               INSTANCE
+   #68 = Utf8               Lio/wispforest/owo/itemgroup/json/OwoItemGroupLoader;
+   #69 = NameAndType        #67:#68       // INSTANCE:Lio/wispforest/owo/itemgroup/json/OwoItemGroupLoader;
+   #70 = Fieldref           #66.#69       // io/wispforest/owo/itemgroup/json/OwoItemGroupLoader.INSTANCE:Lio/wispforest/owo/itemgroup/json/OwoItemGroupLoader;
+   #71 = Utf8               io/wispforest/owo/moddata/ModDataLoader
+   #72 = Class              #71           // io/wispforest/owo/moddata/ModDataLoader
+   #73 = Utf8               load
+   #74 = Utf8               (Lio/wispforest/owo/moddata/ModDataConsumer;)V
+   #75 = NameAndType        #73:#74       // load:(Lio/wispforest/owo/moddata/ModDataConsumer;)V
+   #76 = Methodref          #72.#75       // io/wispforest/owo/moddata/ModDataLoader.load:(Lio/wispforest/owo/moddata/ModDataConsumer;)V
+   #77 = Utf8               initItemGroupCallback
+   #78 = NameAndType        #77:#62       // initItemGroupCallback:()V
+   #79 = Methodref          #66.#78       // io/wispforest/owo/itemgroup/json/OwoItemGroupLoader.initItemGroupCallback:()V
+   #80 = Utf8               (Ljava/lang/Object;)V
+   #81 = MethodType         #80           //  (Ljava/lang/Object;)V
+   #82 = Utf8               lambda$new$0
+   #83 = Utf8               (Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+   #84 = NameAndType        #82:#83       // lambda$new$0:(Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+   #85 = Methodref          #2.#84        // io/wispforest/owo/client/OwoClient.lambda$new$0:(Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+   #86 = MethodHandle       6:#85         // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$0:(Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+   #87 = MethodType         #83           //  (Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+   #88 = Utf8               java/lang/invoke/LambdaMetafactory
+   #89 = Class              #88           // java/lang/invoke/LambdaMetafactory
+   #90 = Utf8               metafactory
+   #91 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #92 = NameAndType        #90:#91       // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #93 = Methodref          #89.#92       // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #94 = MethodHandle       6:#93         // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+   #95 = Utf8               accept
+   #96 = Utf8               ()Ljava/util/function/Consumer;
+   #97 = NameAndType        #95:#96       // accept:()Ljava/util/function/Consumer;
+   #98 = InvokeDynamic      #0:#97        // #0:accept:()Ljava/util/function/Consumer;
+   #99 = Utf8               net/neoforged/bus/api/IEventBus
+  #100 = Class              #99           // net/neoforged/bus/api/IEventBus
+  #101 = Utf8               addListener
+  #102 = Utf8               (Ljava/util/function/Consumer;)V
+  #103 = NameAndType        #101:#102     // addListener:(Ljava/util/function/Consumer;)V
+  #104 = InterfaceMethodref #100.#103     // net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+  #105 = Utf8               io/wispforest/owo/Owo
+  #106 = Class              #105          // io/wispforest/owo/Owo
+  #107 = Utf8               DEBUG
+  #108 = Utf8               Z
+  #109 = NameAndType        #107:#108     // DEBUG:Z
+  #110 = Fieldref           #106.#109     // io/wispforest/owo/Owo.DEBUG:Z
+  #111 = Utf8               owo.renderdocPath
+  #112 = String             #111          // owo.renderdocPath
+  #113 = Utf8               java/lang/System
+  #114 = Class              #113          // java/lang/System
+  #115 = Utf8               getProperty
+  #116 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #117 = NameAndType        #115:#116     // getProperty:(Ljava/lang/String;)Ljava/lang/String;
+  #118 = Methodref          #114.#117     // java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+  #119 = Utf8               getPlatform
+  #120 = Utf8               ()Lnet/minecraft/Util$OS;
+  #121 = NameAndType        #119:#120     // getPlatform:()Lnet/minecraft/Util$OS;
+  #122 = Methodref          #19.#121      // net/minecraft/Util.getPlatform:()Lnet/minecraft/Util$OS;
+  #123 = Utf8               WINDOWS
+  #124 = Utf8               Lnet/minecraft/Util$OS;
+  #125 = NameAndType        #123:#124     // WINDOWS:Lnet/minecraft/Util$OS;
+  #126 = Fieldref           #17.#125      // net/minecraft/Util$OS.WINDOWS:Lnet/minecraft/Util$OS;
+  #127 = Utf8               (Ljava/lang/String;)V
+  #128 = NameAndType        #73:#127      // load:(Ljava/lang/String;)V
+  #129 = Methodref          #114.#128     // java/lang/System.load:(Ljava/lang/String;)V
+  #130 = Utf8               java/lang/String
+  #131 = Class              #130          // java/lang/String
+  #132 = Utf8               LOGGER
+  #133 = Utf8               Lorg/apache/logging/log4j/Logger;
+  #134 = NameAndType        #132:#133     // LOGGER:Lorg/apache/logging/log4j/Logger;
+  #135 = Fieldref           #106.#134     // io/wispforest/owo/Owo.LOGGER:Lorg/apache/logging/log4j/Logger;
+  #136 = Utf8               $SwitchMap$net$minecraft$util$Util$OperatingSystem
+  #137 = Utf8               [I
+  #138 = NameAndType        #136:#137     // $SwitchMap$net$minecraft$util$Util$OperatingSystem:[I
+  #139 = Fieldref           #15.#138      // io/wispforest/owo/client/OwoClient$1.$SwitchMap$net$minecraft$util$Util$OperatingSystem:[I
+  #140 = Utf8               ordinal
+  #141 = Utf8               ()I
+  #142 = NameAndType        #140:#141     // ordinal:()I
+  #143 = Methodref          #17.#142      // net/minecraft/Util$OS.ordinal:()I
+  #144 = Utf8               org/apache/logging/log4j/Logger
+  #145 = Class              #144          // org/apache/logging/log4j/Logger
+  #146 = Utf8               warn
+  #147 = NameAndType        #146:#127     // warn:(Ljava/lang/String;)V
+  #148 = InterfaceMethodref #145.#147     // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+  #149 = Utf8               init
+  #150 = NameAndType        #149:#62      // init:()V
+  #151 = Methodref          #22.#150      // io/wispforest/owo/client/screens/ScreenInternals$Client.init:()V
+  #152 = Utf8               net/neoforged/neoforge/common/NeoForge
+  #153 = Class              #152          // net/neoforged/neoforge/common/NeoForge
+  #154 = Utf8               EVENT_BUS
+  #155 = Utf8               Lnet/neoforged/bus/api/IEventBus;
+  #156 = NameAndType        #154:#155     // EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+  #157 = Fieldref           #153.#156     // net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+  #158 = Utf8               lambda$new$1
+  #159 = Utf8               (Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  #160 = NameAndType        #158:#159     // lambda$new$1:(Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  #161 = Methodref          #2.#160       // io/wispforest/owo/client/OwoClient.lambda$new$1:(Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  #162 = MethodHandle       6:#161        // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$1:(Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  #163 = MethodType         #159          //  (Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  #164 = InvokeDynamic      #1:#97        // #1:accept:()Ljava/util/function/Consumer;
+  #165 = Utf8               register
+  #166 = NameAndType        #165:#62      // register:()V
+  #167 = Methodref          #27.#166      // io/wispforest/owo/command/debug/OwoDebugCommands$Client.register:()V
+  #168 = Utf8               net/neoforged/fml/event/lifecycle/FMLClientSetupEvent
+  #169 = Class              #168          // net/neoforged/fml/event/lifecycle/FMLClientSetupEvent
+  #170 = Utf8               lambda$new$5
+  #171 = Utf8               (Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  #172 = NameAndType        #170:#171     // lambda$new$5:(Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  #173 = Methodref          #2.#172       // io/wispforest/owo/client/OwoClient.lambda$new$5:(Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  #174 = MethodHandle       6:#173        // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$5:(Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  #175 = MethodType         #171          //  (Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  #176 = InvokeDynamic      #2:#97        // #2:accept:()Ljava/util/function/Consumer;
+  #177 = Utf8               (Ljava/lang/Class;Ljava/util/function/Consumer;)V
+  #178 = NameAndType        #101:#177     // addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+  #179 = InterfaceMethodref #100.#178     // net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+  #180 = Utf8               renderdocPath
+  #181 = Utf8               this
+  #182 = Utf8               Lio/wispforest/owo/client/OwoClient;
+  #183 = Utf8               event
+  #184 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #185 = MethodType         #184          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #186 = Utf8               lambda$new$4
+  #187 = Utf8               (Ljava/lang/String;Ljava/util/function/Function;)V
+  #188 = NameAndType        #186:#187     // lambda$new$4:(Ljava/lang/String;Ljava/util/function/Function;)V
+  #189 = Methodref          #2.#188       // io/wispforest/owo/client/OwoClient.lambda$new$4:(Ljava/lang/String;Ljava/util/function/Function;)V
+  #190 = MethodHandle       6:#189        // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$4:(Ljava/lang/String;Ljava/util/function/Function;)V
+  #191 = MethodType         #187          //  (Ljava/lang/String;Ljava/util/function/Function;)V
+  #192 = Utf8               ()Ljava/util/function/BiConsumer;
+  #193 = NameAndType        #95:#192      // accept:()Ljava/util/function/BiConsumer;
+  #194 = InvokeDynamic      #3:#193       // #3:accept:()Ljava/util/function/BiConsumer;
+  #195 = Utf8               io/wispforest/owo/config/ui/ConfigScreenProviders
+  #196 = Class              #195          // io/wispforest/owo/config/ui/ConfigScreenProviders
+  #197 = Utf8               forEach
+  #198 = Utf8               (Ljava/util/function/BiConsumer;)V
+  #199 = NameAndType        #197:#198     // forEach:(Ljava/util/function/BiConsumer;)V
+  #200 = Methodref          #196.#199     // io/wispforest/owo/config/ui/ConfigScreenProviders.forEach:(Ljava/util/function/BiConsumer;)V
+  #201 = Utf8               Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;
+  #202 = Utf8               modId
+  #203 = Utf8               screenFactory
+  #204 = Utf8               net/neoforged/fml/ModList
+  #205 = Class              #204          // net/neoforged/fml/ModList
+  #206 = Utf8               get
+  #207 = Utf8               ()Lnet/neoforged/fml/ModList;
+  #208 = NameAndType        #206:#207     // get:()Lnet/neoforged/fml/ModList;
+  #209 = Methodref          #205.#208     // net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+  #210 = Utf8               getModContainerById
+  #211 = Utf8               (Ljava/lang/String;)Ljava/util/Optional;
+  #212 = NameAndType        #210:#211     // getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+  #213 = Methodref          #205.#212     // net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+  #214 = Utf8               lambda$new$3
+  #215 = Utf8               (Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+  #216 = NameAndType        #214:#215     // lambda$new$3:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+  #217 = Methodref          #2.#216       // io/wispforest/owo/client/OwoClient.lambda$new$3:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+  #218 = MethodHandle       6:#217        // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$3:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+  #219 = Utf8               (Lnet/neoforged/fml/ModContainer;)V
+  #220 = MethodType         #219          //  (Lnet/neoforged/fml/ModContainer;)V
+  #221 = Utf8               (Ljava/util/function/Function;)Ljava/util/function/Consumer;
+  #222 = NameAndType        #95:#221      // accept:(Ljava/util/function/Function;)Ljava/util/function/Consumer;
+  #223 = InvokeDynamic      #4:#222       // #4:accept:(Ljava/util/function/Function;)Ljava/util/function/Consumer;
+  #224 = Utf8               java/util/Optional
+  #225 = Class              #224          // java/util/Optional
+  #226 = Utf8               ifPresent
+  #227 = NameAndType        #226:#102     // ifPresent:(Ljava/util/function/Consumer;)V
+  #228 = Methodref          #225.#227     // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #229 = Utf8               Ljava/util/function/Function;
+  #230 = Utf8               mod
+  #231 = Utf8               net/neoforged/neoforge/client/gui/IConfigScreenFactory
+  #232 = Class              #231          // net/neoforged/neoforge/client/gui/IConfigScreenFactory
+  #233 = Utf8               (Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #234 = MethodType         #233          //  (Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #235 = Utf8               lambda$new$2
+  #236 = Utf8               (Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #237 = NameAndType        #235:#236     // lambda$new$2:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #238 = Methodref          #2.#237       // io/wispforest/owo/client/OwoClient.lambda$new$2:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #239 = MethodHandle       6:#238        // REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$2:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+  #240 = Utf8               createScreen
+  #241 = Utf8               (Ljava/util/function/Function;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+  #242 = NameAndType        #240:#241     // createScreen:(Ljava/util/function/Function;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+  #243 = InvokeDynamic      #5:#242       // #5:createScreen:(Ljava/util/function/Function;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+  #244 = Utf8               net/neoforged/fml/ModContainer
+  #245 = Class              #244          // net/neoforged/fml/ModContainer
+  #246 = Utf8               registerExtensionPoint
+  #247 = Utf8               (Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+  #248 = NameAndType        #246:#247     // registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+  #249 = Methodref          #245.#248     // net/neoforged/fml/ModContainer.registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+  #250 = Utf8               Lnet/neoforged/fml/ModContainer;
+  #251 = Utf8               modContainer
+  #252 = Utf8               modsScreen
+  #253 = Utf8               java/util/function/Function
+  #254 = Class              #253          // java/util/function/Function
+  #255 = Utf8               apply
+  #256 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #257 = NameAndType        #255:#256     // apply:(Ljava/lang/Object;)Ljava/lang/Object;
+  #258 = InterfaceMethodref #254.#257     // java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+  #259 = Utf8               net/minecraft/client/gui/screens/Screen
+  #260 = Class              #259          // net/minecraft/client/gui/screens/Screen
+  #261 = Utf8               Lnet/minecraft/client/gui/screens/Screen;
+  #262 = Utf8               net/neoforged/neoforge/client/event/RegisterClientCommandsEvent
+  #263 = Class              #262          // net/neoforged/neoforge/client/event/RegisterClientCommandsEvent
+  #264 = Utf8               getDispatcher
+  #265 = Utf8               ()Lcom/mojang/brigadier/CommandDispatcher;
+  #266 = NameAndType        #264:#265     // getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+  #267 = Methodref          #263.#266     // net/neoforged/neoforge/client/event/RegisterClientCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+  #268 = Utf8               getBuildContext
+  #269 = Utf8               ()Lnet/minecraft/commands/CommandBuildContext;
+  #270 = NameAndType        #268:#269     // getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+  #271 = Methodref          #263.#270     // net/neoforged/neoforge/client/event/RegisterClientCommandsEvent.getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+  #272 = Utf8               io/wispforest/owo/config/OwoConfigCommand
+  #273 = Class              #272          // io/wispforest/owo/config/OwoConfigCommand
+  #274 = Utf8               (Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;)V
+  #275 = NameAndType        #165:#274     // register:(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;)V
+  #276 = Methodref          #273.#275     // io/wispforest/owo/config/OwoConfigCommand.register:(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;)V
+  #277 = Utf8               Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;
+  #278 = Utf8               io/wispforest/owo/ui/parsing/UIModelLoader
+  #279 = Class              #278          // io/wispforest/owo/ui/parsing/UIModelLoader
+  #280 = Methodref          #279.#63      // io/wispforest/owo/ui/parsing/UIModelLoader."<init>":()V
+  #281 = Utf8               net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent
+  #282 = Class              #281          // net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent
+  #283 = Utf8               registerReloadListener
+  #284 = Utf8               (Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #285 = NameAndType        #283:#284     // registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #286 = Methodref          #282.#285     // net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent.registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+  #287 = Methodref          #31.#63       // io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader."<init>":()V
+  #288 = Utf8               Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;
+  #289 = Utf8               <clinit>
+  #290 = Utf8               io/wispforest/owo/shader/GlProgram
+  #291 = Class              #290          // io/wispforest/owo/shader/GlProgram
+  #292 = String             #11           // owo
+  #293 = Utf8               spectrum
+  #294 = String             #293          // spectrum
+  #295 = Utf8               net/minecraft/resources/ResourceLocation
+  #296 = Class              #295          // net/minecraft/resources/ResourceLocation
+  #297 = Utf8               fromNamespaceAndPath
+  #298 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #299 = NameAndType        #297:#298     // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #300 = Methodref          #296.#299     // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+  #301 = Utf8               com/mojang/blaze3d/vertex/DefaultVertexFormat
+  #302 = Class              #301          // com/mojang/blaze3d/vertex/DefaultVertexFormat
+  #303 = Utf8               POSITION_COLOR
+  #304 = Utf8               Lcom/mojang/blaze3d/vertex/VertexFormat;
+  #305 = NameAndType        #303:#304     // POSITION_COLOR:Lcom/mojang/blaze3d/vertex/VertexFormat;
+  #306 = Fieldref           #302.#305     // com/mojang/blaze3d/vertex/DefaultVertexFormat.POSITION_COLOR:Lcom/mojang/blaze3d/vertex/VertexFormat;
+  #307 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+  #308 = NameAndType        #59:#307      // "<init>":(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+  #309 = Methodref          #291.#308     // io/wispforest/owo/shader/GlProgram."<init>":(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+  #310 = NameAndType        #55:#56       // HSV_PROGRAM:Lio/wispforest/owo/shader/GlProgram;
+  #311 = Fieldref           #2.#310       // io/wispforest/owo/client/OwoClient.HSV_PROGRAM:Lio/wispforest/owo/shader/GlProgram;
+  #312 = Utf8               io/wispforest/owo/shader/BlurProgram
+  #313 = Class              #312          // io/wispforest/owo/shader/BlurProgram
+  #314 = Methodref          #313.#63      // io/wispforest/owo/shader/BlurProgram."<init>":()V
+  #315 = NameAndType        #57:#58       // BLUR_PROGRAM:Lio/wispforest/owo/shader/BlurProgram;
+  #316 = Fieldref           #2.#315       // io/wispforest/owo/client/OwoClient.BLUR_PROGRAM:Lio/wispforest/owo/shader/BlurProgram;
+  #317 = Utf8               ConstantValue
+  #318 = Utf8               Code
+  #319 = Utf8               StackMapTable
+  #320 = Utf8               LineNumberTable
+  #321 = Utf8               LocalVariableTable
+  #322 = Utf8               MethodParameters
+  #323 = Utf8               InnerClasses
+  #324 = Utf8               SourceFile
+  #325 = Utf8               RuntimeVisibleAnnotations
+  #326 = Utf8               RuntimeInvisibleAnnotations
+  #327 = Utf8               BootstrapMethods
+  #328 = Utf8               NestMembers
+{
+  private static final java.lang.String LINUX_RENDERDOC_WARNING = "\n========================================\nIgnored 'owo.renderdocPath' property as this Minecraft instance is not running on Windows.\nPlease populate the LD_PRELOAD environment variable instead\n========================================";
+    descriptor: Ljava/lang/String;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nPlease populate the LD_PRELOAD environment variable instead\n========================================
+
+  private static final java.lang.String MAC_RENDERDOC_WARNING = "\n========================================\nIgnored 'owo.renderdocPath' property as this Minecraft instance is not running on Windows.\nRenderDoc is not supported on macOS\n========================================";
+    descriptor: Ljava/lang/String;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nRenderDoc is not supported on macOS\n========================================
+
+  private static final java.lang.String GENERIC_RENDERDOC_WARNING = "\n========================================\nIgnored 'owo.renderdocPath' property as this Minecraft instance is not running on Windows.\n========================================";
+    descriptor: Ljava/lang/String;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    ConstantValue: String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\n========================================
+
+  public static final io.wispforest.owo.shader.GlProgram HSV_PROGRAM;
+    descriptor: Lio/wispforest/owo/shader/GlProgram;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final io.wispforest.owo.shader.BlurProgram BLUR_PROGRAM;
+    descriptor: Lio/wispforest/owo/shader/BlurProgram;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public io.wispforest.owo.client.OwoClient(net.neoforged.bus.api.IEventBus);
+    descriptor: (Lnet/neoforged/bus/api/IEventBus;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: invokespecial #64                 // Method java/lang/Object."<init>":()V
+         4: getstatic     #70                 // Field io/wispforest/owo/itemgroup/json/OwoItemGroupLoader.INSTANCE:Lio/wispforest/owo/itemgroup/json/OwoItemGroupLoader;
+         7: invokestatic  #76                 // Method io/wispforest/owo/moddata/ModDataLoader.load:(Lio/wispforest/owo/moddata/ModDataConsumer;)V
+        10: invokestatic  #79                 // Method io/wispforest/owo/itemgroup/json/OwoItemGroupLoader.initItemGroupCallback:()V
+        13: aload_1
+        14: invokedynamic #98,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+        19: invokeinterface #104,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+        24: getstatic     #110                // Field io/wispforest/owo/Owo.DEBUG:Z
+        27: ifeq          113
+        30: ldc           #112                // String owo.renderdocPath
+        32: invokestatic  #118                // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+        35: astore_2
+        36: aload_2
+        37: ifnull        113
+        40: invokestatic  #122                // Method net/minecraft/Util.getPlatform:()Lnet/minecraft/Util$OS;
+        43: getstatic     #126                // Field net/minecraft/Util$OS.WINDOWS:Lnet/minecraft/Util$OS;
+        46: if_acmpne     56
+        49: aload_2
+        50: invokestatic  #129                // Method java/lang/System.load:(Ljava/lang/String;)V
+        53: goto          113
+        56: getstatic     #135                // Field io/wispforest/owo/Owo.LOGGER:Lorg/apache/logging/log4j/Logger;
+        59: getstatic     #139                // Field io/wispforest/owo/client/OwoClient$1.$SwitchMap$net$minecraft$util$Util$OperatingSystem:[I
+        62: invokestatic  #122                // Method net/minecraft/Util.getPlatform:()Lnet/minecraft/Util$OS;
+        65: invokevirtual #143                // Method net/minecraft/Util$OS.ordinal:()I
+        68: iaload
+        69: lookupswitch  { // 2
+                       1: 96
+                       2: 101
+                 default: 106
+            }
+        96: ldc           #48                 // String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nPlease populate the LD_PRELOAD environment variable instead\n========================================
+        98: goto          108
+       101: ldc           #51                 // String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\nRenderDoc is not supported on macOS\n========================================
+       103: goto          108
+       106: ldc           #54                 // String \n========================================\nIgnored \'owo.renderdocPath\' property as this Minecraft instance is not running on Windows.\n========================================
+       108: invokeinterface #148,  2          // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+       113: invokestatic  #151                // Method io/wispforest/owo/client/screens/ScreenInternals$Client.init:()V
+       116: getstatic     #157                // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       119: invokedynamic #164,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       124: invokeinterface #104,  2          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+       129: getstatic     #110                // Field io/wispforest/owo/Owo.DEBUG:Z
+       132: ifeq          138
+       135: invokestatic  #167                // Method io/wispforest/owo/command/debug/OwoDebugCommands$Client.register:()V
+       138: aload_1
+       139: ldc           #169                // class net/neoforged/fml/event/lifecycle/FMLClientSetupEvent
+       141: invokedynamic #176,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+       146: invokeinterface #179,  3          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+       151: return
+      StackMapTable: number_of_entries = 7
+        frame_type = 255 /* full_frame */
+          offset_delta = 56
+          locals = [ class io/wispforest/owo/client/OwoClient, class net/neoforged/bus/api/IEventBus, class java/lang/String ]
+          stack = []
+        frame_type = 103 /* same_locals_1_stack_item */
+          stack = [ class org/apache/logging/log4j/Logger ]
+        frame_type = 68 /* same_locals_1_stack_item */
+          stack = [ class org/apache/logging/log4j/Logger ]
+        frame_type = 68 /* same_locals_1_stack_item */
+          stack = [ class org/apache/logging/log4j/Logger ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 1
+          locals = [ class io/wispforest/owo/client/OwoClient, class net/neoforged/bus/api/IEventBus, class java/lang/String ]
+          stack = [ class org/apache/logging/log4j/Logger, class java/lang/String ]
+        frame_type = 250 /* chop */
+          offset_delta = 4
+        frame_type = 24 /* same */
+      LineNumberTable:
+        line 59: 0
+        line 60: 4
+        line 61: 10
+        line 63: 13
+        line 68: 24
+        line 69: 30
+        line 70: 36
+        line 71: 40
+        line 72: 49
+        line 74: 56
+        line 75: 96
+        line 76: 101
+        line 77: 106
+        line 74: 108
+        line 83: 113
+        line 85: 116
+        line 89: 129
+        line 90: 135
+        line 93: 138
+        line 99: 151
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           36      77     2 renderdocPath   Ljava/lang/String;
+            0     152     0  this   Lio/wispforest/owo/client/OwoClient;
+            0     152     1 modBus   Lnet/neoforged/bus/api/IEventBus;
+    MethodParameters:
+      Name                           Flags
+      modBus
+
+  private static void lambda$new$5(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    descriptor: (Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokedynamic #194,  0            // InvokeDynamic #3:accept:()Ljava/util/function/BiConsumer;
+         5: invokestatic  #200                // Method io/wispforest/owo/config/ui/ConfigScreenProviders.forEach:(Ljava/util/function/BiConsumer;)V
+         8: return
+      LineNumberTable:
+        line 94: 0
+        line 98: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0 event   Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;
+    MethodParameters:
+      Name                           Flags
+      event
+
+  private static void lambda$new$4(java.lang.String, java.util.function.Function);
+    descriptor: (Ljava/lang/String;Ljava/util/function/Function;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: invokestatic  #209                // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+         3: aload_0
+         4: invokevirtual #213                // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+         7: aload_1
+         8: invokedynamic #223,  0            // InvokeDynamic #4:accept:(Ljava/util/function/Function;)Ljava/util/function/Consumer;
+        13: invokevirtual #228                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+        16: return
+      LineNumberTable:
+        line 95: 0
+        line 96: 13
+        line 97: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0 modId   Ljava/lang/String;
+            0      17     1 screenFactory   Ljava/util/function/Function;
+    MethodParameters:
+      Name                           Flags
+      modId
+      screenFactory
+
+  private static void lambda$new$3(java.util.function.Function, net.neoforged.fml.ModContainer);
+    descriptor: (Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_1
+         1: ldc           #232                // class net/neoforged/neoforge/client/gui/IConfigScreenFactory
+         3: aload_0
+         4: invokedynamic #243,  0            // InvokeDynamic #5:createScreen:(Ljava/util/function/Function;)Lnet/neoforged/neoforge/client/gui/IConfigScreenFactory;
+         9: invokevirtual #249                // Method net/neoforged/fml/ModContainer.registerExtensionPoint:(Ljava/lang/Class;Lnet/neoforged/fml/IExtensionPoint;)V
+        12: return
+      LineNumberTable:
+        line 96: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 screenFactory   Ljava/util/function/Function;
+            0      13     1   mod   Lnet/neoforged/fml/ModContainer;
+    MethodParameters:
+      Name                           Flags
+      screenFactory
+      mod
+
+  private static net.minecraft.client.gui.screens.Screen lambda$new$2(java.util.function.Function, net.neoforged.fml.ModContainer, net.minecraft.client.gui.screens.Screen);
+    descriptor: (Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: aload_2
+         2: invokeinterface #258,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+         7: checkcast     #260                // class net/minecraft/client/gui/screens/Screen
+        10: areturn
+      LineNumberTable:
+        line 96: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0 screenFactory   Ljava/util/function/Function;
+            0      11     1 modContainer   Lnet/neoforged/fml/ModContainer;
+            0      11     2 modsScreen   Lnet/minecraft/client/gui/screens/Screen;
+    MethodParameters:
+      Name                           Flags
+      screenFactory
+      modContainer
+      modsScreen
+
+  private static void lambda$new$1(net.neoforged.neoforge.client.event.RegisterClientCommandsEvent);
+    descriptor: (Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #267                // Method net/neoforged/neoforge/client/event/RegisterClientCommandsEvent.getDispatcher:()Lcom/mojang/brigadier/CommandDispatcher;
+         4: aload_0
+         5: invokevirtual #271                // Method net/neoforged/neoforge/client/event/RegisterClientCommandsEvent.getBuildContext:()Lnet/minecraft/commands/CommandBuildContext;
+         8: invokestatic  #276                // Method io/wispforest/owo/config/OwoConfigCommand.register:(Lcom/mojang/brigadier/CommandDispatcher;Lnet/minecraft/commands/CommandBuildContext;)V
+        11: return
+      LineNumberTable:
+        line 86: 0
+        line 87: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0 event   Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;
+    MethodParameters:
+      Name                           Flags
+      event
+
+  private static void lambda$new$0(net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent);
+    descriptor: (Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: new           #279                // class io/wispforest/owo/ui/parsing/UIModelLoader
+         4: dup
+         5: invokespecial #280                // Method io/wispforest/owo/ui/parsing/UIModelLoader."<init>":()V
+         8: invokevirtual #286                // Method net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent.registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+        11: aload_0
+        12: new           #31                 // class io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader
+        15: dup
+        16: invokespecial #287                // Method io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader."<init>":()V
+        19: invokevirtual #286                // Method net/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent.registerReloadListener:(Lnet/minecraft/server/packs/resources/PreparableReloadListener;)V
+        22: return
+      LineNumberTable:
+        line 64: 0
+        line 65: 11
+        line 66: 22
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      23     0 event   Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;
+    MethodParameters:
+      Name                           Flags
+      event
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: new           #291                // class io/wispforest/owo/shader/GlProgram
+         3: dup
+         4: ldc_w         #292                // String owo
+         7: ldc_w         #294                // String spectrum
+        10: invokestatic  #300                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        13: getstatic     #306                // Field com/mojang/blaze3d/vertex/DefaultVertexFormat.POSITION_COLOR:Lcom/mojang/blaze3d/vertex/VertexFormat;
+        16: invokespecial #309                // Method io/wispforest/owo/shader/GlProgram."<init>":(Lnet/minecraft/resources/ResourceLocation;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+        19: putstatic     #311                // Field HSV_PROGRAM:Lio/wispforest/owo/shader/GlProgram;
+        22: new           #313                // class io/wispforest/owo/shader/BlurProgram
+        25: dup
+        26: invokespecial #314                // Method io/wispforest/owo/shader/BlurProgram."<init>":()V
+        29: putstatic     #316                // Field BLUR_PROGRAM:Lio/wispforest/owo/shader/BlurProgram;
+        32: return
+      LineNumberTable:
+        line 56: 0
+        line 57: 22
+}
+InnerClasses:
+  public static #20= #17 of #19;          // OS=class net/minecraft/Util$OS of class net/minecraft/Util
+  static #15;                             // class io/wispforest/owo/client/OwoClient$1
+  public static #25= #22 of #24;          // Client=class io/wispforest/owo/client/screens/ScreenInternals$Client of class io/wispforest/owo/client/screens/ScreenInternals
+  public static #25= #27 of #29;          // Client=class io/wispforest/owo/command/debug/OwoDebugCommands$Client of class io/wispforest/owo/command/debug/OwoDebugCommands
+  public static #34= #31 of #33;          // MetadataLoader=class io/wispforest/owo/ui/util/NinePatchTexture$MetadataLoader of class io/wispforest/owo/ui/util/NinePatchTexture
+  public static #39= #36 of #38;          // Internal=class org/jetbrains/annotations/ApiStatus$Internal of class org/jetbrains/annotations/ApiStatus
+  public static final #44= #41 of #43;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "OwoClient.java"
+RuntimeVisibleAnnotations:
+  0: #6(#7=e#8.#9)
+    net.neoforged.api.distmarker.OnlyIn(
+      value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+    )
+  1: #10(#7=s#11,#12=[e#8.#9])
+    net.neoforged.fml.common.Mod(
+      value="owo"
+      dist=[Lnet/neoforged/api/distmarker/Dist;.CLIENT]
+    )
+RuntimeInvisibleAnnotations:
+  0: #13()
+    org.jetbrains.annotations.ApiStatus$Internal
+BootstrapMethods:
+  0: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #81 (Ljava/lang/Object;)V
+      #86 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$0:(Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+      #87 (Lnet/neoforged/neoforge/client/event/RegisterClientReloadListenersEvent;)V
+  1: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #81 (Ljava/lang/Object;)V
+      #162 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$1:(Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+      #163 (Lnet/neoforged/neoforge/client/event/RegisterClientCommandsEvent;)V
+  2: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #81 (Ljava/lang/Object;)V
+      #174 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$5:(Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+      #175 (Lnet/neoforged/fml/event/lifecycle/FMLClientSetupEvent;)V
+  3: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #185 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #190 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$4:(Ljava/lang/String;Ljava/util/function/Function;)V
+      #191 (Ljava/lang/String;Ljava/util/function/Function;)V
+  4: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #81 (Ljava/lang/Object;)V
+      #218 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$3:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;)V
+      #220 (Lnet/neoforged/fml/ModContainer;)V
+  5: #94 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #234 (Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+      #239 REF_invokeStatic io/wispforest/owo/client/OwoClient.lambda$new$2:(Ljava/util/function/Function;Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+      #234 (Lnet/neoforged/fml/ModContainer;Lnet/minecraft/client/gui/screens/Screen;)Lnet/minecraft/client/gui/screens/Screen;
+NestMembers:
+  io/wispforest/owo/client/OwoClient$1
