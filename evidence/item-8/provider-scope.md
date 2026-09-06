@@ -5775,20 +5775,20 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-data-generation-api-v1-20.2.34+a4c3605619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-entity-events-v1-1.8.0+5ede667619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-events-interaction-v0-0.7.13+86e0887119.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-game-rule-api-v1-1.0.53+36d727be19.jar` | RESOLVED: Game-rule maps, command categories and client rule editing; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-gametest-api-v1-2.0.5+29f188ce19.jar` | RESOLVED: test registration and SNBT loading; see above. |
 | `fabric-item-api-v1-11.2.0+0c57911319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-item-group-api-v1-4.1.7+e324903319.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-key-binding-api-v1-1.0.47+62cc7ce119.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-lifecycle-events-v1-2.6.0+e40d8add19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-loot-api-v2-3.0.15+a3ee712d19.jar` | RESOLVED: Legacy loot interfaces and v3-to-v2 consumer callback forwarding; no independent family. See final loot/recipe/rule disposition below. |
+| `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | RESOLVED: Ingredient serializer registration and NeoForge ingredient-wrapper codecs; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
@@ -6317,3 +6317,40 @@ cmp evidence/raw/item8/inventory-cave-urn-membership-r1.json evidence/item-8/inv
 Eight focused cases and scoped checks pass. The initial lint pass flagged the
 expanded single component-chain test's statement count. A local PLR0915 waiver
 keeps the related artifact join together without introducing a test helper.
+
+
+## Fabric loot, recipe and game-rule membership resolved, 2026-09-06
+
+Four existing module rows are closed using entry captures from 568d72c and
+initializer source 0f9b272 (extractor fa3226d). No additional source capture or
+runtime experiment was needed. The two parked initializer manifests and outputs
+match their existing independent r1 reproductions exactly.
+
+Game-rule API has an empty generated entry, five common rule-map/category/
+command mixins and three client rule-editing hooks. Loot v2 has two legacy
+builder-interface hooks; its initializer forwards v3 replace/modify/all-loaded
+events to v2 consumers. Loot v3 has an empty entry and six provenance, reload,
+builder and accessor hooks operating on consumer-supplied loot. Recipe API has
+two ingredient mixins and two initializers registering five ingredient
+serializers and the NeoForge ingredient wrapper. These are support roles with
+no independent structure contribution. Consumer-specific loot effects remain
+required family-attribute inputs, not new families of this library.
+
+The existing test binds every declared common hook and sole annotated loader,
+all three initializer classes, exact archive/class/disassembly identities and
+complete payload partitions. Class counts are 27, 14, 17 and 27 respectively.
+Nonclass payloads are the exact metadata, icons, mixin files and applicable
+access transformers. Recipe's declared relative mixin names contain dots; the
+existing package/name join now resolves these to class paths. No new validator
+or generalized helper was added.
+
+Fabric now has 25 resolved and 18 open modules out of 43. Whole-provider coverage
+remains 90 resolved, 46 open; no family was added or removed in this increment.
+The queue above is updated in place. Twenty-six focused cases and scoped Ruff
+and Basedpyright pass:
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```

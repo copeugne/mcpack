@@ -106,6 +106,34 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-game-rule-api-v1-1.0.53+36d727be19",
+            "fabric-game_rule_api-entry",
+            "e4413cde1f7946aaabaedd73db4fcbe27ab5c7285cb3eb9d2017071e2ca7702d",
+            5,
+            {"org/sinytra/fabric/game_rule_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-loot-api-v2-3.0.15+a3ee712d19",
+            "fabric-loot_api_v2-entry",
+            "39948838d282ea95917661b003571449b503449615810c9e78d61eb0ca95ed67",
+            2,
+            {"org/sinytra/fabric/loot_api_v2/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-loot-api-v3-1.0.3+333dfad919",
+            "fabric-loot_api-entry",
+            "651e7b5dc634205e9dd736041958177205b0ebf3b5e0ff97991d7ed1ff6a7371",
+            6,
+            {"org/sinytra/fabric/loot_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-recipe-api-v1-5.0.15+59440bcc19",
+            "fabric-recipe_api-entry",
+            "1778fbf2dcb132483978c5333401a7b5dcd77cc4bc6879ce057d1a05a0c96ab5",
+            2,
+            {"org/sinytra/fabric/recipe_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-api-lookup-api-v1-1.6.71+c290471319",
             "fabric-api_lookup_api-entry",
             "7fdd492bfcaf9f4d3840f9c7d238f2a2db88d94979b29a84f4592ae3d5aae0c9",
@@ -188,7 +216,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                 json.loads(archive.read(module.rsplit("-", 1)[0] + ".mixins.json")),
             )
             prefix = cast("str", config["package"]).replace(".", "/") + "/"
-            declared = {prefix + name + ".class" for name in cast("list[str]", config["mixins"])}
+            declared = {prefix + name.replace(".", "/") + ".class"
+                        for name in cast("list[str]", config["mixins"])}
             assert len(declared) == count
             assert not config.get("plugin")
             assert not config.get("server")
@@ -216,7 +245,38 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                         archive.read(extra["class"])).hexdigest()
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
+            initializer_sources = {
+                "fabric-loot-api-v2": (
+                    "fabric-loot-v2-init",
+                    "fdd70793358e39363a47a89dea1e357a60bbc26f051d182c66c7fd97c7be0d6e",
+                    {"net/fabricmc/fabric/impl/loot/v2/LootInitializer.class"},
+                ),
+                "fabric-recipe-api-v1": (
+                    "fabric-recipe-init",
+                    "284be5d480faf7950a489a9134fa4db894a3ed59174e3e3c28b07dcb4c2c98ae",
+                    {"net/fabricmc/fabric/impl/recipe/ingredient/CustomIngredientInit.class",
+                     "org/sinytra/fabric/recipe_api/FabricRecipeApiV1.class"},
+                ),
+            }
+            if name in initializer_sources:
+                capture, identity, expected_classes = initializer_sources[name]
+                extra_dir = Path("evidence/item-8/sources") / capture
+                extra_raw = (extra_dir / "identities.json").read_bytes()
+                assert hashlib.sha256(extra_raw).hexdigest() == identity
+                extra_rows = cast("list[dict[str, str]]", json.loads(extra_raw))
+                assert {r["class"] for r in extra_rows} == expected_classes
+                for row in extra_rows:
+                    assert row["archive"] == source.name + "!/" + member
+                    assert row["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                    assert row["class_sha256"] == hashlib.sha256(
+                        archive.read(row["class"])).hexdigest()
+                    assert row["disassembly_sha256"] == hashlib.sha256(
+                        (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-game-rule-api-v1": (27, 3),
+                "fabric-loot-api-v2": (14, 0),
+                "fabric-loot-api-v3": (17, 0),
+                "fabric-recipe-api-v1": (27, 0),
                 "fabric-api-lookup-api-v1": (29, 0),
                 "fabric-block-api-v1": (8, 0),
                 "fabric-block-view-api-v2": (12, 2),
@@ -236,7 +296,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert not client.get("mixins")
                     assert not client.get("server")
                     assert not client.get("plugin")
-                if name == "fabric-block-view-api-v2":
+                if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
+                            "fabric-recipe-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 assert files - classes == extras | {
                     "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
