@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 74 of 136. The exact queue below has 62 open rows.
+Supported provider dispositions: 75 of 136. The exact queue below has 61 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -633,7 +633,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `railways-0.2.1+neoforge-mc1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ranged_weapon_api-neoforge-2.3.3+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `regions-unexplored-0.6.1-neoforge-21.1.jar` | `regions-unexplored-feature-code`, `regions-unexplored-feature-config-code` | Reuse feature/config captures; bind modifiers and template-pool component consumers; exclude terrain with rationale. |
-| `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | `pool-codecs`, `repurposed-mansion`, `repurposed-mansion-bindings`, `repurposed-mansion-layout`, `repurposed-mansion-processors`, `repurposed-monument`, `repurposed-monument-processors`, `repurposed-monument-rooms` | Reuse mansion/monument and codec captures; reconcile all feature/injection entries and unmatched components. |
+| `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | Existing mansion/monument/pool evidence, `repurposed-provider`, `repurposed-feature-roles`, `repurposed-assembly`, `repurposed-datagen-entry`; focused provider and component checks. | RESOLVED: 107 existing roots, 23 dungeon/well configuration candidates, all feature and component roles, common hooks and data-generation entry accounted for below. Canonical grouping and effective eligibility remain separate. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
@@ -3042,3 +3042,60 @@ Four focused cases pass. A read-only configuration probe initially included a
 ZIP directory entry; filtering for JSON files corrected the probe. One overlong
 test line was corrected. No raw evidence changed. Census remains 74 resolved
 providers and 62 open; canonical counting remains downstream of provider closure.
+
+## Repurposed Structures provider disposition
+
+The complete frozen archive and its contribution boundaries are accounted for.
+The provider contributes the 107 packaged roots that exactly match its captured
+runtime structure registry, plus the already recorded sixteen dungeon and seven
+well feature configurations. Canonical designs and variants must still be
+reconciled; neither 107 nor 23 is a canonical-family count. Reuse all component
+and feature dispositions above when doing that reconciliation.
+
+Source 015f351 captures the seven remaining structure generators, common jigsaw
+manager/assembler and piece-count manager. Its manifest SHA-256 is
+10a3a2a15d647c5c52c171034c84be9c2fc68e1fe42dd571e8a6c725a6de6746.
+Source 6fed290 captures the additional annotated data-generation entry, manifest
+0d2237b825ac55da59a8908beb120e562b67a58ccc3a5de1c151e1bbd980d9bf.
+Both independently reproduce exactly. The focused provider check binds all twelve
+existing source manifests to the exact archive and disassembly hashes.
+
+| Boundary | Supported contribution disposition |
+| --- | --- |
+| GenericJigsawStructure and subclasses | Consume configured start pools, size, height, biome/terrain checks, liquid settings and placement bounds. City, Nether, mineshaft, shipwreck and End stronghold implementations specialize placement of their supplied root candidates. They do not declare an additional independent root outside the packaged/runtime set. |
+| MineshaftEndStructure | Uses the supplied start pool and common piece-limited assembly with its End placement/bounds handling. Keep it within the existing End mineshaft candidate. |
+| PieceLimitedJigsawManager and Assembler | Start from the supplied pool, use its raw weighted elements, follow the jigsaw NBT pool field through the pool registry, and consider fallback pools. Required-piece selection, maximum counts, bounds, collision and attachment checks constrain these candidates. They do not treat a pool identifier as a same-named template identifier. Empty/missing pools and exhausted required-piece attempts have explicit log paths; this scope disposition does not claim every attempt succeeds. |
+| StructurePieceCountsManager | Loads conditions, required counts and maxima for a target structure. A null alwaysSpawnThisMany produces no required-piece entry. The crossing maximum-only records therefore do not independently add those extra templates to the candidate set. |
+| PoolAdditionMergerManager | Loads supplied rs_pool_additions data, parses the target pool and entries, then adds entries to existing pool lists. Reuse the already reconciled Farmer's Delight add-on component targets; the loader is not another family. Parsing failures remain explicit. |
+| Common and NeoForge entries | Initialize registries and forward setup, start/stop, reload and trade events. Reload inputs are mob-spawner rules, structure-map trades, piece counts and pool additions. Loot-import and map-trade consumers affect existing families' attributes or discovery rather than define sites. |
+| Declared feature mixins | Adjust existing bamboo, jungle bush, basalt/delta, falls, geodes, lakes, vines and snow placement using tagged structure context. These are generation modifications, not new authored designs. |
+| Other declared common mixins | Access existing entity, map, loot, structure, pool and world state; adjust block-attached-entity logging, locate behavior and pool weight codec limits. No independent authored site. Their presence does not prove every injection executed. |
+| Data-generation entry | StructureNbtUpdaterDatagen handles GatherDataEvent and registers a data provider when includeServer is true. This is build-time data generation, not a runtime family entry. The sole client-only mixin concerns the structure-block screen. |
+| Remaining packaged implementation | Configuration, registry/event adapters, predicates, block processors, map/loot/spawner consumers, placement support, codecs, geometry/noise and data holders support the above entries. No extra service, nested archive, script or function payload exists. Do not expand this boundary review into unrelated helper correctness. |
+
+Complete archive accounting covers 5842 files and 248 classes. Data categories
+include all 3162 templates, 1099 pools, 327 processor lists, 136 configured
+features, 157 placed features, 107 roots and 37 structure sets. The non-worldgen
+data consists of the preserved tags, loot, spawner rules, piece counts, biome
+modifiers, advancement and map-trade inputs. There is no unexplained additional
+packaged content category. Both annotated entries and all 30 declared common
+mixins are bound to captured source. This complements the semantic review;
+absence of a keyword alone is not the exclusion criterion.
+
+The resource-role and assembly checks support retaining the residual templates
+as components of their existing candidate groups, with their disconnected or
+non-selected status as qualified above. No additional standalone family follows
+from them. Preserve effective eligibility, custom-layout reachability, generated
+occurrences, downstream attributes and named variant/grouping decisions as
+separate unfinished Item 8 work. In particular this closure neither proves all
+107 roots generate nor counts biome variants as separate families.
+
+```sh
+uv run pytest -q tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run ruff check tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+uv run basedpyright tests/item8/test_repurposed_provider_scope.py tests/item8/test_repurposed_feature_candidates.py tests/item8/test_mansion_components.py tests/item8/test_monument_components.py
+```
+
+Census: 75 resolved providers and 61 open. Next reconcile Aether, reusing its
+existing Bronze, piece, placement and trap evidence. Do not repeat Repurposed's
+source capture, component partition or feature inventory during that work.
