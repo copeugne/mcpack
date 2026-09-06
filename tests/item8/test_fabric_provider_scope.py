@@ -106,6 +106,14 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-networking-api-v1-4.3.0+30a980d919",
+            "fabric-networking-api-v1-entry",
+            "971327a550fa9613691f4ef1f17389cf24d00373a109cce7fe7e788618d7bfeb",
+            15,
+            {"org/sinytra/fabric/networking_api/generated/GeneratedEntryPoint.class",
+             "org/sinytra/fabric/networking_api/NetworkingEventHooks.class"},
+        ),
+        (
             "fabric-transfer-api-v1-5.4.3+a25cb45619",
             "fabric-transfer-api-v1-entry",
             "fd7982f42faf3e553baf9e444fbf8beb643ab432c5d79da2d6436c704954b081",
@@ -423,6 +431,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-networking-api-v1": (129, 8),
                 "fabric-transfer-api-v1": (120, 0),
                 "fabric-events-interaction-v0": (36, 3),
                 "fabric-item-api-v1": (43, 1),
@@ -465,7 +474,7 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                             "fabric-lifecycle-events-v1", "fabric-item-group-api-v1",
                             "fabric-content-registries-v0", "fabric-data-generation-api-v1",
                             "fabric-screen-handler-api-v1", "fabric-resource-conditions-api-v1",
-                            "fabric-object-builder-api-v1"}:
+                            "fabric-object-builder-api-v1", "fabric-networking-api-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 extras.update({
                     "fabric-data-attachment-api-v1": {

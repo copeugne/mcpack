@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Networking membership is resolved from existing source ad9fbe2. Forty-two
+focused cases and scoped checks pass. Fabric: 41 resolved, two open (registry
+sync and loader). Whole providers: 90 resolved, 46 open. No family change.
+The user again requires the finite family scope as the immediate deliverable.
+Do not continue tracing generic support helpers once their family contribution
+boundary is established. Resolve remaining providers and Moog grouping before
+resuming attributes. Registry initialization invokes DynamicRegistriesImpl's
+new-datapack-registry callback; loader bootstrap propagates the FML mod list.
+Their initial captures are local and still need durable delivery.
+
+
 Fabric transfer membership is resolved from 94eaafd. Forty-one focused cases
 and scoped checks pass. Fabric: 40 resolved, three open. Whole providers:
 90 resolved, 46 open. No new family. Remaining entry captures are delivered:

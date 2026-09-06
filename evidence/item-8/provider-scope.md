@@ -5785,7 +5785,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-loot-api-v3-1.0.3+333dfad919.jar` | RESOLVED: Loot provenance, consumer reload callbacks and builder/accessor support; no independent family. See final loot/recipe/rule disposition below. |
 | `fabric-message-api-v1-6.0.14+6a754fce19.jar` | RESOLVED: Empty initializer and chat callbacks; source 1e30004. No independent family. |
 | `fabric-model-loading-api-v1-2.1.0+6e8f52c719.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
-| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-networking-api-v1-4.3.0+30a980d919.jar` | RESOLVED: Packet transport, negotiation and existing connection/entity callbacks; source ad9fbe2. No independent family. |
 | `fabric-object-builder-api-v1-15.2.1+cc242efd19.jar` | RESOLVED: Empty initializer and supplied object/type support. Source 0fa369a; no independent family. |
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | RESOLVED: client rendering/input roles, including declared entry hooks; no independent family. See below. |
 | `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | RESOLVED: Ingredient serializer registration and NeoForge ingredient-wrapper codecs; no independent family. See final loot/recipe/rule disposition below. |
@@ -6604,3 +6604,25 @@ ad9fbe2 (seventeen classes), registry sync 4bc3d16 (six classes), loader 1cb6fe0
 hooks; registry sync calls FabricRegistryInit.onInitialize; the loader service
 installs FabricLoaderBootstrap. Those named boundaries remain open. Reuse the
 captures, then close the Fabric provider only after all three are resolved.
+
+### Fabric networking membership resolved
+
+Existing source ad9fbe2 preserves the empty generated initializer, automatic
+networking events and all fifteen common hooks. These implement packet codecs,
+channel negotiation, login/configuration task handling, connection lifecycle
+callbacks and existing-entity tracking callbacks. Event hooks forward player
+readiness and configuration events and conditionally expose the development
+debug command. They do not supply an authored site, placement rule or world
+generation registration. No further packet-helper tracing is needed for this
+family-membership boundary.
+
+The existing focused test binds all 129 classes, both automatic entries, all
+fifteen common hooks, eight client hooks and the complete metadata/icon/access
+transformer payload. The whole Fabric data check already accounts for every
+nested module's generation resources. The source was independently reproduced
+in ad9fbe2; no new capture or runtime measurement was needed.
+
+All 42 Fabric cases and scoped Ruff/Basedpyright pass. Fabric: 41 resolved, two
+open (registry sync and loader). Whole providers: 90 resolved, 46 open. This
+closes a module disposition, adds no family and does not establish the final
+family count.
