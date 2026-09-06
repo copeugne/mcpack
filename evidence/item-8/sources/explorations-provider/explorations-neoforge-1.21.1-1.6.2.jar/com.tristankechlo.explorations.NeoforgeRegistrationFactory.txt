@@ -1,0 +1,54 @@
+Compiled from "NeoforgeRegistrationFactory.java"
+public final class com.tristankechlo.explorations.NeoforgeRegistrationFactory implements com.tristankechlo.explorations.registration.RegistrationProvider$Factory {
+  public com.tristankechlo.explorations.NeoforgeRegistrationFactory();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public <T> com.tristankechlo.explorations.registration.RegistrationProvider<T> create(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, java.lang.String);
+    Code:
+       0: invokestatic  #7                  // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_2
+       4: invokevirtual #13                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+       7: astore_3
+       8: aload_3
+       9: invokevirtual #17                 // Method java/util/Optional.isEmpty:()Z
+      12: ifeq          29
+      15: new           #23                 // class java/lang/NullPointerException
+      18: dup
+      19: aload_2
+      20: invokedynamic #25,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      25: invokespecial #29                 // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+      28: athrow
+      29: aload_3
+      30: invokevirtual #32                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      33: checkcast     #35                 // class net/neoforged/fml/ModContainer
+      36: astore        4
+      38: aload         4
+      40: instanceof    #37                 // class net/neoforged/fml/javafmlmod/FMLModContainer
+      43: ifeq          81
+      46: aload         4
+      48: checkcast     #37                 // class net/neoforged/fml/javafmlmod/FMLModContainer
+      51: astore        5
+      53: aload_1
+      54: aload_2
+      55: invokestatic  #39                 // Method net/neoforged/neoforge/registries/DeferredRegister.create:(Lnet/minecraft/resources/ResourceKey;Ljava/lang/String;)Lnet/neoforged/neoforge/registries/DeferredRegister;
+      58: astore        6
+      60: aload         6
+      62: aload         5
+      64: invokevirtual #45                 // Method net/neoforged/fml/javafmlmod/FMLModContainer.getEventBus:()Lnet/neoforged/bus/api/IEventBus;
+      67: invokevirtual #49                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Lnet/neoforged/bus/api/IEventBus;)V
+      70: new           #53                 // class com/tristankechlo/explorations/NeoforgeRegistrationFactory$Provider
+      73: dup
+      74: aload_2
+      75: aload         6
+      77: invokespecial #55                 // Method com/tristankechlo/explorations/NeoforgeRegistrationFactory$Provider."<init>":(Ljava/lang/String;Lnet/neoforged/neoforge/registries/DeferredRegister;)V
+      80: areturn
+      81: new           #58                 // class java/lang/ClassCastException
+      84: dup
+      85: aload_2
+      86: invokedynamic #60,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      91: invokespecial #61                 // Method java/lang/ClassCastException."<init>":(Ljava/lang/String;)V
+      94: athrow
+}

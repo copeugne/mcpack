@@ -1,0 +1,131 @@
+Compiled from "WorldGenHelper.java"
+public final class com.tristankechlo.explorations.worldgen.WorldGenHelper {
+  private static final net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList> EMPTY_PROCESSOR_LIST_KEY;
+
+  public com.tristankechlo.explorations.worldgen.WorldGenHelper();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void addStatuesToVillages(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+       4: getstatic     #13                 // Field net/minecraft/core/registries/Registries.TEMPLATE_POOL:Lnet/minecraft/resources/ResourceKey;
+       7: invokeinterface #19,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      12: invokevirtual #25                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      15: checkcast     #31                 // class net/minecraft/core/Registry
+      18: astore_1
+      19: aload_0
+      20: invokevirtual #7                  // Method net/minecraft/server/MinecraftServer.registryAccess:()Lnet/minecraft/core/RegistryAccess$Frozen;
+      23: getstatic     #33                 // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+      26: invokeinterface #19,  2           // InterfaceMethod net/minecraft/core/RegistryAccess$Frozen.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+      31: invokevirtual #25                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      34: checkcast     #31                 // class net/minecraft/core/Registry
+      37: astore_2
+      38: invokestatic  #36                 // Method com/tristankechlo/explorations/config/ExplorationsConfig.get:()Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+      41: invokevirtual #42                 // Method com/tristankechlo/explorations/config/ExplorationsConfig.statues:()Ljava/util/Map;
+      44: aload_1
+      45: aload_2
+      46: invokedynamic #46,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/core/Registry;)Ljava/util/function/BiConsumer;
+      51: invokeinterface #50,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      56: getstatic     #56                 // Field com/tristankechlo/explorations/Explorations.LOGGER:Lorg/slf4j/Logger;
+      59: ldc           #62                 // String Added statues to vanilla villages
+      61: invokeinterface #64,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+      66: return
+
+  private static void addBuildingToPool(net.minecraft.core.Registry<net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool>, net.minecraft.core.Registry<net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList>, com.tristankechlo.explorations.config.types.VillageType, java.lang.String, int);
+    Code:
+       0: aload_1
+       1: getstatic     #70                 // Field EMPTY_PROCESSOR_LIST_KEY:Lnet/minecraft/resources/ResourceKey;
+       4: invokeinterface #75,  2           // InterfaceMethod net/minecraft/core/Registry.getHolderOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder$Reference;
+       9: astore        5
+      11: aload_0
+      12: aload_2
+      13: invokevirtual #79                 // Method com/tristankechlo/explorations/config/types/VillageType.getLocation:()Lnet/minecraft/resources/ResourceLocation;
+      16: invokeinterface #85,  2           // InterfaceMethod net/minecraft/core/Registry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      21: checkcast     #88                 // class net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool
+      24: astore        6
+      26: aload         6
+      28: instanceof    #90                 // class com/tristankechlo/explorations/mixin/StructureTemplatePoolAccessor
+      31: ifeq          44
+      34: aload         6
+      36: checkcast     #90                 // class com/tristankechlo/explorations/mixin/StructureTemplatePoolAccessor
+      39: astore        7
+      41: goto          45
+      44: return
+      45: aload_3
+      46: aload         5
+      48: invokestatic  #92                 // Method net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement.legacy:(Ljava/lang/String;Lnet/minecraft/core/Holder;)Ljava/util/function/Function;
+      51: getstatic     #98                 // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection.RIGID:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+      54: invokeinterface #104,  2          // InterfaceMethod java/util/function/Function.apply:(Ljava/lang/Object;)Ljava/lang/Object;
+      59: checkcast     #93                 // class net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement
+      62: astore        8
+      64: iconst_0
+      65: istore        9
+      67: iload         9
+      69: iload         4
+      71: if_icmpge     93
+      74: aload         7
+      76: invokeinterface #110,  1          // InterfaceMethod com/tristankechlo/explorations/mixin/StructureTemplatePoolAccessor.getTemplates:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+      81: aload         8
+      83: invokevirtual #114                // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.add:(Ljava/lang/Object;)Z
+      86: pop
+      87: iinc          9, 1
+      90: goto          67
+      93: new           #120                // class java/util/ArrayList
+      96: dup
+      97: invokespecial #122                // Method java/util/ArrayList."<init>":()V
+     100: astore        9
+     102: aload         9
+     104: aload         7
+     106: invokeinterface #123,  1          // InterfaceMethod com/tristankechlo/explorations/mixin/StructureTemplatePoolAccessor.getRawTemplates:()Ljava/util/List;
+     111: invokeinterface #127,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+     116: pop
+     117: aload         9
+     119: new           #133                // class com/mojang/datafixers/util/Pair
+     122: dup
+     123: aload         8
+     125: iload         4
+     127: invokestatic  #135                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     130: invokespecial #141                // Method com/mojang/datafixers/util/Pair."<init>":(Ljava/lang/Object;Ljava/lang/Object;)V
+     133: invokeinterface #144,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     138: pop
+     139: aload         7
+     141: aload         9
+     143: invokeinterface #145,  2          // InterfaceMethod com/tristankechlo/explorations/mixin/StructureTemplatePoolAccessor.setRawTemplates:(Ljava/util/List;)V
+     148: return
+
+  private static void lambda$addStatuesToVillages$1(net.minecraft.core.Registry, net.minecraft.core.Registry, com.tristankechlo.explorations.config.types.VillageType, java.util.List);
+    Code:
+       0: aload_3
+       1: aload_0
+       2: aload_1
+       3: aload_2
+       4: invokedynamic #149,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/core/Registry;Lnet/minecraft/core/Registry;Lcom/tristankechlo/explorations/config/types/VillageType;)Ljava/util/function/Consumer;
+       9: invokeinterface #152,  2          // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      14: return
+
+  private static void lambda$addStatuesToVillages$0(net.minecraft.core.Registry, net.minecraft.core.Registry, com.tristankechlo.explorations.config.types.VillageType, com.tristankechlo.explorations.config.types.WeightedResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokevirtual #155                // Method com/tristankechlo/explorations/config/types/WeightedResourceLocation.nbtLoc:()Ljava/lang/String;
+       7: aload_3
+       8: invokevirtual #161                // Method com/tristankechlo/explorations/config/types/WeightedResourceLocation.weight:()Ljava/lang/Integer;
+      11: invokevirtual #165                // Method java/lang/Integer.intValue:()I
+      14: invokestatic  #169                // Method addBuildingToPool:(Lnet/minecraft/core/Registry;Lnet/minecraft/core/Registry;Lcom/tristankechlo/explorations/config/types/VillageType;Ljava/lang/String;I)V
+      17: return
+
+  static {};
+    Code:
+       0: getstatic     #33                 // Field net/minecraft/core/registries/Registries.PROCESSOR_LIST:Lnet/minecraft/resources/ResourceKey;
+       3: ldc           #173                // String empty
+       5: invokestatic  #175                // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: invokestatic  #181                // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+      11: putstatic     #70                 // Field EMPTY_PROCESSOR_LIST_KEY:Lnet/minecraft/resources/ResourceKey;
+      14: return
+}

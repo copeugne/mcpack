@@ -1,0 +1,128 @@
+Compiled from "WoolReplacingProcessor.java"
+public class com.tristankechlo.explorations.worldgen.structures.processors.WoolReplacingProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  private static final java.util.List<java.lang.String> ALL_COLORS;
+
+  private static final java.util.regex.Pattern PATTERN;
+
+  public static final com.mojang.serialization.MapCodec<com.tristankechlo.explorations.worldgen.structures.processors.WoolReplacingProcessor> CODEC;
+
+  private java.lang.String color;
+
+  public com.tristankechlo.explorations.worldgen.structures.processors.WoolReplacingProcessor();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #7                  // Field color:Ljava/lang/String;
+       9: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         6
+       2: aload         5
+       4: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+       7: invokevirtual #19                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      10: astore        7
+      12: aload_0
+      13: aload         7
+      15: invokevirtual #25                 // Method ensureColor:(Lnet/minecraft/util/RandomSource;)V
+      18: aload_0
+      19: aload         5
+      21: invokevirtual #29                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      24: invokevirtual #33                 // Method isWoolBlock:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      27: ifne          33
+      30: aload         5
+      32: areturn
+      33: aload_0
+      34: aload_0
+      35: getfield      #7                  // Field color:Ljava/lang/String;
+      38: invokevirtual #37                 // Method getNewWool:(Ljava/lang/String;)Lnet/minecraft/world/level/block/state/BlockState;
+      41: astore        8
+      43: aload         8
+      45: ifnonnull     51
+      48: aload         5
+      50: areturn
+      51: new           #14                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      54: dup
+      55: aload         5
+      57: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      60: aload         8
+      62: aload         5
+      64: invokevirtual #41                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+      67: invokespecial #45                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+      70: areturn
+
+  private net.minecraft.world.level.block.state.BlockState getNewWool(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokedynamic #48,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: invokestatic  #52                 // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       9: astore_2
+      10: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      13: aload_2
+      14: invokeinterface #64,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.containsKey:(Lnet/minecraft/resources/ResourceLocation;)Z
+      19: ifeq          38
+      22: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+      25: aload_2
+      26: invokeinterface #70,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.get:(Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/Object;
+      31: checkcast     #74                 // class net/minecraft/world/level/block/Block
+      34: invokevirtual #76                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      37: areturn
+      38: aconst_null
+      39: areturn
+
+  private void ensureColor(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field color:Ljava/lang/String;
+       4: ifnonnull     36
+       7: aload_0
+       8: getstatic     #79                 // Field ALL_COLORS:Ljava/util/List;
+      11: aload_1
+      12: getstatic     #79                 // Field ALL_COLORS:Ljava/util/List;
+      15: invokeinterface #83,  1           // InterfaceMethod java/util/List.size:()I
+      20: invokeinterface #89,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      25: invokeinterface #95,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      30: checkcast     #98                 // class java/lang/String
+      33: putfield      #7                  // Field color:Ljava/lang/String;
+      36: return
+
+  private boolean isWoolBlock(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: getstatic     #58                 // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokevirtual #100                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       7: invokeinterface #106,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      12: invokevirtual #110                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      15: astore_2
+      16: getstatic     #114                // Field PATTERN:Ljava/util/regex/Pattern;
+      19: aload_2
+      20: invokevirtual #118                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+      23: invokevirtual #124                // Method java/util/regex/Matcher.find:()Z
+      26: ireturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #130                // Field com/tristankechlo/explorations/init/ModRegistry.WOOL_REPLACING_PROCESSOR:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       3: invokeinterface #136,  1          // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       8: checkcast     #141                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #143                // Method net/minecraft/world/item/DyeColor.values:()[Lnet/minecraft/world/item/DyeColor;
+       3: invokestatic  #149                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+       6: invokedynamic #155,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      11: invokeinterface #159,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      16: invokeinterface #165,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      21: putstatic     #79                 // Field ALL_COLORS:Ljava/util/List;
+      24: ldc           #169                // String minecraft:[a-z_]+_wool
+      26: iconst_2
+      27: invokestatic  #171                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;I)Ljava/util/regex/Pattern;
+      30: putstatic     #114                // Field PATTERN:Ljava/util/regex/Pattern;
+      33: invokedynamic #175,  0            // InvokeDynamic #2:get:()Ljava/util/function/Supplier;
+      38: invokestatic  #178                // Method com/mojang/serialization/MapCodec.unit:(Ljava/util/function/Supplier;)Lcom/mojang/serialization/MapCodec;
+      41: putstatic     #184                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      44: return
+}

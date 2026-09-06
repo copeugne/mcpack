@@ -1,0 +1,78 @@
+Compiled from "NeoforgeRegistrationFactory.java"
+class com.tristankechlo.explorations.NeoforgeRegistrationFactory$Provider<T> implements com.tristankechlo.explorations.registration.RegistrationProvider<T> {
+  private final java.lang.String modId;
+
+  private final net.neoforged.neoforge.registries.DeferredRegister<T> registry;
+
+  private final java.util.Set<com.tristankechlo.explorations.registration.RegistryObject<T>> entries;
+
+  private final java.util.Set<com.tristankechlo.explorations.registration.RegistryObject<T>> entriesView;
+
+  private com.tristankechlo.explorations.NeoforgeRegistrationFactory$Provider(java.lang.String, net.neoforged.neoforge.registries.DeferredRegister<T>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashSet
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashSet."<init>":()V
+      12: putfield      #10                 // Field entries:Ljava/util/Set;
+      15: aload_0
+      16: aload_0
+      17: getfield      #10                 // Field entries:Ljava/util/Set;
+      20: invokestatic  #16                 // Method java/util/Collections.unmodifiableSet:(Ljava/util/Set;)Ljava/util/Set;
+      23: putfield      #22                 // Field entriesView:Ljava/util/Set;
+      26: aload_0
+      27: aload_1
+      28: putfield      #25                 // Field modId:Ljava/lang/String;
+      31: aload_0
+      32: aload_2
+      33: putfield      #29                 // Field registry:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      36: return
+
+  public java.lang.String getModId();
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field modId:Ljava/lang/String;
+       4: areturn
+
+  public <I extends T> com.tristankechlo.explorations.registration.RegistryObject<I> register(java.lang.String, java.util.function.Supplier<? extends I>);
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field modId:Ljava/lang/String;
+       4: aload_1
+       5: invokestatic  #33                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       8: astore_3
+       9: aload_0
+      10: getfield      #29                 // Field registry:Lnet/neoforged/neoforge/registries/DeferredRegister;
+      13: aload_1
+      14: aload_2
+      15: invokevirtual #39                 // Method net/neoforged/neoforge/registries/DeferredRegister.register:(Ljava/lang/String;Ljava/util/function/Supplier;)Lnet/neoforged/neoforge/registries/DeferredHolder;
+      18: astore        4
+      20: new           #45                 // class com/tristankechlo/explorations/NeoforgeRegistrationFactory$Provider$1
+      23: dup
+      24: aload_0
+      25: aload_3
+      26: aload         4
+      28: invokespecial #47                 // Method com/tristankechlo/explorations/NeoforgeRegistrationFactory$Provider$1."<init>":(Lcom/tristankechlo/explorations/NeoforgeRegistrationFactory$Provider;Lnet/minecraft/resources/ResourceLocation;Lnet/neoforged/neoforge/registries/DeferredHolder;)V
+      31: astore        5
+      33: aload_0
+      34: getfield      #10                 // Field entries:Ljava/util/Set;
+      37: aload         5
+      39: invokeinterface #50,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      44: pop
+      45: aload         5
+      47: areturn
+
+  public java.util.Set<com.tristankechlo.explorations.registration.RegistryObject<T>> getEntries();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field entriesView:Ljava/util/Set;
+       4: areturn
+
+  public java.util.Collection getEntries();
+    Code:
+       0: aload_0
+       1: invokevirtual #56                 // Method getEntries:()Ljava/util/Set;
+       4: areturn
+}

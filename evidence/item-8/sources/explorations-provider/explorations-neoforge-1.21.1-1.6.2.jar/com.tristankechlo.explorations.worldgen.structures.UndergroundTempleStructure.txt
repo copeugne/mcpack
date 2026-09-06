@@ -1,0 +1,87 @@
+Compiled from "UndergroundTempleStructure.java"
+public final class com.tristankechlo.explorations.worldgen.structures.UndergroundTempleStructure extends com.tristankechlo.explorations.worldgen.structures.JigsawStructure {
+  public static final com.mojang.serialization.MapCodec<com.tristankechlo.explorations.worldgen.structures.UndergroundTempleStructure> CODEC;
+
+  public com.tristankechlo.explorations.worldgen.structures.UndergroundTempleStructure(net.minecraft.world.level.levelgen.structure.Structure$StructureSettings, com.tristankechlo.explorations.worldgen.structures.JigsawStructure$JigsawStructureSettings);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #1                  // Method com/tristankechlo/explorations/worldgen/structures/JigsawStructure."<init>":(Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;Lcom/tristankechlo/explorations/worldgen/structures/JigsawStructure$JigsawStructureSettings;)V
+       6: return
+
+  protected net.minecraft.core.BlockPos generateStartPos(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.random:()Lnet/minecraft/world/level/levelgen/WorldgenRandom;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+       9: invokevirtual #17                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getSeaLevel:()I
+      12: istore_3
+      13: iload_3
+      14: bipush        30
+      16: if_icmpgt     21
+      19: aconst_null
+      20: areturn
+      21: iinc          3, -15
+      24: aload_1
+      25: invokevirtual #13                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkGenerator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      28: invokevirtual #23                 // Method net/minecraft/world/level/chunk/ChunkGenerator.getMinY:()I
+      31: bipush        15
+      33: iadd
+      34: istore        4
+      36: iload_3
+      37: iload         4
+      39: isub
+      40: invokestatic  #26                 // Method java/lang/Math.abs:(I)I
+      43: istore        5
+      45: iload         5
+      47: bipush        10
+      49: if_icmpge     54
+      52: aconst_null
+      53: areturn
+      54: iload         4
+      56: aload_2
+      57: iload         5
+      59: invokevirtual #32                 // Method net/minecraft/world/level/levelgen/WorldgenRandom.nextInt:(I)I
+      62: iadd
+      63: istore        6
+      65: aload_1
+      66: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/structure/Structure$GenerationContext.chunkPos:()Lnet/minecraft/world/level/ChunkPos;
+      69: iload         6
+      71: invokevirtual #41                 // Method net/minecraft/world/level/ChunkPos.getMiddleBlockPosition:(I)Lnet/minecraft/core/BlockPos;
+      74: areturn
+
+  protected boolean isFeatureChunk(net.minecraft.world.level.levelgen.structure.Structure$GenerationContext);
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public net.minecraft.world.level.levelgen.structure.StructureType<?> type();
+    Code:
+       0: getstatic     #47                 // Field com/tristankechlo/explorations/init/ModRegistry.UNDERGROUND_TEMPLE:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       3: invokeinterface #53,  1           // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       8: checkcast     #59                 // class net/minecraft/world/level/levelgen/structure/StructureType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokestatic  #61                 // Method net/minecraft/world/level/levelgen/structure/Structure.settingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       5: aload_0
+       6: invokestatic  #67                 // Method jigsawSettingsCodec:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       9: invokevirtual #72                 // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      12: aload_0
+      13: invokedynamic #78,  0             // InvokeDynamic #0:apply:()Ljava/util/function/BiFunction;
+      18: invokevirtual #82                 // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/BiFunction;)Lcom/mojang/datafixers/kinds/App;
+      21: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #87,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+       5: invokestatic  #90                 // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #96                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

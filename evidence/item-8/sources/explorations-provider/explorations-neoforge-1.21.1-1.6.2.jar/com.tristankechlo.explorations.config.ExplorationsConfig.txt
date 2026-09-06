@@ -1,0 +1,197 @@
+Compiled from "ExplorationsConfig.java"
+public final class com.tristankechlo.explorations.config.ExplorationsConfig extends java.lang.Record {
+  private final java.util.Map<com.tristankechlo.explorations.config.types.VillageType, java.util.List<com.tristankechlo.explorations.config.types.WeightedResourceLocation>> statues;
+
+  public static final com.mojang.serialization.Codec<com.tristankechlo.explorations.config.ExplorationsConfig> CODEC;
+
+  public static final com.tristankechlo.explorations.config.ExplorationsConfig DEFAULT;
+
+  private static com.tristankechlo.explorations.config.ExplorationsConfig INSTANCE;
+
+  public com.tristankechlo.explorations.config.ExplorationsConfig(java.util.Map<com.tristankechlo.explorations.config.types.VillageType, java.util.List<com.tristankechlo.explorations.config.types.WeightedResourceLocation>>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Record."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field statues:Ljava/util/Map;
+       9: return
+
+  public static com.tristankechlo.explorations.config.ExplorationsConfig get();
+    Code:
+       0: getstatic     #13                 // Field INSTANCE:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+       3: areturn
+
+  public static void setToDefault();
+    Code:
+       0: getstatic     #17                 // Field DEFAULT:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+       3: putstatic     #13                 // Field INSTANCE:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+       6: return
+
+  public static com.google.gson.JsonElement toJson();
+    Code:
+       0: getstatic     #20                 // Field CODEC:Lcom/mojang/serialization/Codec;
+       3: getstatic     #24                 // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+       6: getstatic     #13                 // Field INSTANCE:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+       9: invokeinterface #29,  3           // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      14: astore_0
+      15: aload_0
+      16: invokeinterface #35,  1           // InterfaceMethod com/mojang/serialization/DataResult.error:()Ljava/util/Optional;
+      21: invokedynamic #41,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      26: invokevirtual #45                 // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      29: aload_0
+      30: invokeinterface #51,  1           // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      35: invokevirtual #54                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      38: checkcast     #58                 // class com/google/gson/JsonElement
+      41: areturn
+
+  public static void fromJson(com.google.gson.JsonElement);
+    Code:
+       0: getstatic     #20                 // Field CODEC:Lcom/mojang/serialization/Codec;
+       3: getstatic     #24                 // Field com/mojang/serialization/JsonOps.INSTANCE:Lcom/mojang/serialization/JsonOps;
+       6: aload_0
+       7: invokeinterface #60,  3           // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      12: astore_1
+      13: aload_1
+      14: invokeinterface #35,  1           // InterfaceMethod com/mojang/serialization/DataResult.error:()Ljava/util/Optional;
+      19: invokedynamic #63,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      24: invokevirtual #45                 // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      27: aload_1
+      28: invokeinterface #51,  1           // InterfaceMethod com/mojang/serialization/DataResult.result:()Ljava/util/Optional;
+      33: invokevirtual #54                 // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      36: checkcast     #8                  // class com/tristankechlo/explorations/config/ExplorationsConfig
+      39: putstatic     #13                 // Field INSTANCE:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+      42: return
+
+  private static java.util.Map<com.tristankechlo.explorations.config.types.VillageType, java.util.List<com.tristankechlo.explorations.config.types.WeightedResourceLocation>> makeStatues();
+    Code:
+       0: new           #64                 // class java/util/HashMap
+       3: dup
+       4: invokespecial #66                 // Method java/util/HashMap."<init>":()V
+       7: astore_0
+       8: getstatic     #67                 // Field com/tristankechlo/explorations/config/types/VillageType.NO_DESERT:[Lcom/tristankechlo/explorations/config/types/VillageType;
+      11: astore_1
+      12: aload_1
+      13: arraylength
+      14: istore_2
+      15: iconst_0
+      16: istore_3
+      17: iload_3
+      18: iload_2
+      19: if_icmpge     96
+      22: aload_1
+      23: iload_3
+      24: aaload
+      25: astore        4
+      27: new           #73                 // class java/util/ArrayList
+      30: dup
+      31: invokespecial #75                 // Method java/util/ArrayList."<init>":()V
+      34: astore        5
+      36: iconst_1
+      37: istore        6
+      39: iload         6
+      41: iconst_4
+      42: if_icmpgt     79
+      45: aload         5
+      47: new           #76                 // class com/tristankechlo/explorations/config/types/WeightedResourceLocation
+      50: dup
+      51: iload         6
+      53: invokestatic  #78                 // Method statue:(I)Lnet/minecraft/resources/ResourceLocation;
+      56: aload         4
+      58: invokevirtual #82                 // Method com/tristankechlo/explorations/config/types/VillageType.getDefaultWeight:()I
+      61: invokestatic  #86                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      64: invokespecial #92                 // Method com/tristankechlo/explorations/config/types/WeightedResourceLocation."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Integer;)V
+      67: invokeinterface #95,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      72: pop
+      73: iinc          6, 1
+      76: goto          39
+      79: aload_0
+      80: aload         4
+      82: aload         5
+      84: invokeinterface #101,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      89: pop
+      90: iinc          3, 1
+      93: goto          17
+      96: aload_0
+      97: areturn
+
+  private static net.minecraft.resources.ResourceLocation statue(int);
+    Code:
+       0: ldc           #109                // String explorations
+       2: iload_0
+       3: invokedynamic #111,  0            // InvokeDynamic #2:makeConcatWithConstants:(I)Ljava/lang/String;
+       8: invokestatic  #115                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      11: areturn
+
+  public final java.lang.String toString();
+    Code:
+       0: aload_0
+       1: invokedynamic #175,  0            // InvokeDynamic #5:toString:(Lcom/tristankechlo/explorations/config/ExplorationsConfig;)Ljava/lang/String;
+       6: areturn
+
+  public final int hashCode();
+    Code:
+       0: aload_0
+       1: invokedynamic #179,  0            // InvokeDynamic #5:hashCode:(Lcom/tristankechlo/explorations/config/ExplorationsConfig;)I
+       6: ireturn
+
+  public final boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokedynamic #183,  0            // InvokeDynamic #5:equals:(Lcom/tristankechlo/explorations/config/ExplorationsConfig;Ljava/lang/Object;)Z
+       7: ireturn
+
+  public java.util.Map<com.tristankechlo.explorations.config.types.VillageType, java.util.List<com.tristankechlo.explorations.config.types.WeightedResourceLocation>> statues();
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field statues:Ljava/util/Map;
+       4: areturn
+
+  private static void lambda$fromJson$2(com.mojang.serialization.DataResult$Error);
+    Code:
+       0: getstatic     #121                // Field com/tristankechlo/explorations/Explorations.LOGGER:Lorg/slf4j/Logger;
+       3: aload_0
+       4: invokevirtual #125                // Method com/mojang/serialization/DataResult$Error.message:()Ljava/lang/String;
+       7: invokeinterface #131,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+      12: return
+
+  private static void lambda$toJson$1(com.mojang.serialization.DataResult$Error);
+    Code:
+       0: getstatic     #121                // Field com/tristankechlo/explorations/Explorations.LOGGER:Lorg/slf4j/Logger;
+       3: aload_0
+       4: invokevirtual #125                // Method com/mojang/serialization/DataResult$Error.message:()Ljava/lang/String;
+       7: invokeinterface #131,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+      12: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$0(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #136                // Field com/tristankechlo/explorations/config/types/VillageType.CODEC:Lcom/mojang/serialization/Codec;
+       4: getstatic     #137                // Field com/tristankechlo/explorations/config/types/WeightedResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+       7: invokeinterface #138,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+      12: invokestatic  #142                // InterfaceMethod com/mojang/serialization/Codec.unboundedMap:(Lcom/mojang/serialization/Codec;Lcom/mojang/serialization/Codec;)Lcom/mojang/serialization/codecs/UnboundedMapCodec;
+      15: ldc           #146                // String statues
+      17: invokevirtual #147                // Method com/mojang/serialization/codecs/UnboundedMapCodec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      20: invokedynamic #153,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      25: invokevirtual #157                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      28: invokevirtual #163                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P1;
+      31: aload_0
+      32: invokedynamic #169,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      37: invokevirtual #170                // Method com/mojang/datafixers/Products$P1.apply:(Lcom/mojang/datafixers/kinds/Applicative;Ljava/util/function/Function;)Lcom/mojang/datafixers/kinds/App;
+      40: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #187,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       5: invokestatic  #188                // Method com/mojang/serialization/codecs/RecordCodecBuilder.create:(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;
+       8: putstatic     #20                 // Field CODEC:Lcom/mojang/serialization/Codec;
+      11: new           #8                  // class com/tristankechlo/explorations/config/ExplorationsConfig
+      14: dup
+      15: invokestatic  #194                // Method makeStatues:()Ljava/util/Map;
+      18: invokespecial #198                // Method "<init>":(Ljava/util/Map;)V
+      21: putstatic     #17                 // Field DEFAULT:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+      24: getstatic     #17                 // Field DEFAULT:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+      27: putstatic     #13                 // Field INSTANCE:Lcom/tristankechlo/explorations/config/ExplorationsConfig;
+      30: return
+}

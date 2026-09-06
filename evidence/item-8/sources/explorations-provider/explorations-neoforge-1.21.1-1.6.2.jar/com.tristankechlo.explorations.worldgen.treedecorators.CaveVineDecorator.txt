@@ -1,0 +1,229 @@
+Compiled from "CaveVineDecorator.java"
+public class com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator extends net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator {
+  public static final com.mojang.serialization.MapCodec<com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator> CODEC;
+
+  private final float startProbability;
+
+  private final float berrySpawnChance;
+
+  private final int maxVineLength;
+
+  private final boolean onlyOuterLeaves;
+
+  public com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator(float, float, int, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator."<init>":()V
+       4: aload_0
+       5: fload_1
+       6: putfield      #7                  // Field startProbability:F
+       9: aload_0
+      10: fload_2
+      11: putfield      #13                 // Field berrySpawnChance:F
+      14: aload_0
+      15: iload_3
+      16: putfield      #16                 // Field maxVineLength:I
+      19: aload_0
+      20: iload         4
+      22: putfield      #20                 // Field onlyOuterLeaves:Z
+      25: return
+
+  protected net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType<?> type();
+    Code:
+       0: getstatic     #24                 // Field com/tristankechlo/explorations/init/ModRegistry.CAVE_VINES:Lcom/tristankechlo/explorations/registration/RegistryObject;
+       3: invokeinterface #30,  1           // InterfaceMethod com/tristankechlo/explorations/registration/RegistryObject.get:()Ljava/lang/Object;
+       8: checkcast     #36                 // class net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecoratorType
+      11: areturn
+
+  public void place(net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context);
+    Code:
+       0: aload_1
+       1: invokevirtual #38                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #44                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.leaves:()Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
+       9: aload_0
+      10: aload_2
+      11: aload_1
+      12: invokedynamic #48,  0             // InvokeDynamic #0:accept:(Lcom/tristankechlo/explorations/worldgen/treedecorators/CaveVineDecorator;Lnet/minecraft/util/RandomSource;Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;)Ljava/util/function/Consumer;
+      17: invokevirtual #52                 // Method it/unimi/dsi/fastutil/objects/ObjectArrayList.forEach:(Ljava/util/function/Consumer;)V
+      20: return
+
+  private static boolean isOuterBlock(net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context);
+    Code:
+       0: aload_0
+       1: invokevirtual #58                 // Method net/minecraft/core/BlockPos.north:()Lnet/minecraft/core/BlockPos;
+       4: aload_0
+       5: invokevirtual #64                 // Method net/minecraft/core/BlockPos.east:()Lnet/minecraft/core/BlockPos;
+       8: aload_0
+       9: invokevirtual #67                 // Method net/minecraft/core/BlockPos.south:()Lnet/minecraft/core/BlockPos;
+      12: aload_0
+      13: invokevirtual #70                 // Method net/minecraft/core/BlockPos.west:()Lnet/minecraft/core/BlockPos;
+      16: invokestatic  #73                 // Method com/google/common/collect/ImmutableList.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
+      19: astore_2
+      20: aload_2
+      21: invokevirtual #79                 // Method com/google/common/collect/ImmutableList.iterator:()Lcom/google/common/collect/UnmodifiableIterator;
+      24: astore_3
+      25: aload_3
+      26: invokeinterface #83,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      31: ifeq          59
+      34: aload_3
+      35: invokeinterface #89,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      40: checkcast     #59                 // class net/minecraft/core/BlockPos
+      43: astore        4
+      45: aload_1
+      46: aload         4
+      48: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+      51: ifeq          56
+      54: iconst_1
+      55: ireturn
+      56: goto          25
+      59: iconst_0
+      60: ireturn
+
+  private static void addCaveVines(net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context, float, int);
+    Code:
+       0: aload_1
+       1: invokevirtual #38                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.random:()Lnet/minecraft/util/RandomSource;
+       4: astore        4
+       6: iload_3
+       7: istore        5
+       9: aload_0
+      10: astore        6
+      12: aload_1
+      13: aload         6
+      15: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+      18: ifeq          83
+      21: iload         5
+      23: ifle          83
+      26: getstatic     #96                 // Field net/minecraft/world/level/block/Blocks.CAVE_VINES:Lnet/minecraft/world/level/block/Block;
+      29: invokevirtual #101                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      32: astore        7
+      34: aload         4
+      36: invokeinterface #107,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      41: fload_2
+      42: fcmpg
+      43: ifge          62
+      46: aload         7
+      48: getstatic     #113                // Field net/minecraft/world/level/block/state/properties/BlockStateProperties.BERRIES:Lnet/minecraft/world/level/block/state/properties/BooleanProperty;
+      51: getstatic     #119                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+      54: invokevirtual #125                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+      57: checkcast     #126                // class net/minecraft/world/level/block/state/BlockState
+      60: astore        7
+      62: aload_1
+      63: aload         6
+      65: aload         7
+      67: invokevirtual #131                // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      70: aload         6
+      72: invokevirtual #135                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      75: astore        6
+      77: iinc          5, -1
+      80: goto          12
+      83: return
+
+  private void lambda$place$5(net.minecraft.util.RandomSource, net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator$Context, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: invokeinterface #107,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+       6: aload_0
+       7: getfield      #7                  // Field startProbability:F
+      10: fcmpg
+      11: ifge          59
+      14: aload_0
+      15: getfield      #20                 // Field onlyOuterLeaves:Z
+      18: ifeq          30
+      21: aload_3
+      22: aload_2
+      23: invokestatic  #138                // Method isOuterBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;)Z
+      26: ifne          30
+      29: return
+      30: aload_3
+      31: invokevirtual #135                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+      34: astore        4
+      36: aload_2
+      37: aload         4
+      39: invokevirtual #92                 // Method net/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context.isAir:(Lnet/minecraft/core/BlockPos;)Z
+      42: ifeq          59
+      45: aload         4
+      47: aload_2
+      48: aload_0
+      49: getfield      #13                 // Field berrySpawnChance:F
+      52: aload_0
+      53: getfield      #16                 // Field maxVineLength:I
+      56: invokestatic  #142                // Method addCaveVines:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/levelgen/feature/treedecorators/TreeDecorator$Context;FI)V
+      59: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$4(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: fconst_0
+       2: fconst_1
+       3: invokestatic  #146                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+       6: ldc           #152                // String start_chance
+       8: invokeinterface #154,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      13: invokedynamic #158,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      18: invokevirtual #162                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      21: fconst_0
+      22: fconst_1
+      23: invokestatic  #146                // InterfaceMethod com/mojang/serialization/Codec.floatRange:(FF)Lcom/mojang/serialization/Codec;
+      26: ldc           #168                // String berry_chance
+      28: invokeinterface #154,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      33: invokedynamic #170,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      38: invokevirtual #162                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      41: iconst_0
+      42: bipush        10
+      44: invokestatic  #171                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      47: ldc           #175                // String max_vine_length
+      49: iconst_4
+      50: invokestatic  #177                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      53: invokeinterface #183,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      58: invokedynamic #187,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      63: invokevirtual #162                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      66: getstatic     #188                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+      69: ldc           #192                // String only_outer_leaves
+      71: iconst_1
+      72: invokestatic  #194                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      75: invokeinterface #197,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      80: invokedynamic #200,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      85: invokevirtual #162                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      88: invokevirtual #201                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P4;
+      91: aload_0
+      92: invokedynamic #207,  0            // InvokeDynamic #5:apply:()Lcom/mojang/datafixers/util/Function4;
+      97: invokevirtual #210                // Method com/mojang/datafixers/Products$P4.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function4;)Lcom/mojang/datafixers/kinds/App;
+     100: areturn
+
+  private static java.lang.Boolean lambda$static$3(com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field onlyOuterLeaves:Z
+       4: invokestatic  #194                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$2(com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field maxVineLength:I
+       4: invokestatic  #177                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Float lambda$static$1(com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field berrySpawnChance:F
+       4: invokestatic  #215                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  private static java.lang.Float lambda$static$0(com.tristankechlo.explorations.worldgen.treedecorators.CaveVineDecorator);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field startProbability:F
+       4: invokestatic  #215                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+       7: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #220,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       5: invokestatic  #221                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #227                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}
