@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+End's Delight membership is RESOLVED. Source 311c1fe binds its sole custom
+generator to chorus succulent plants and covers all three annotated entries.
+Two focused cases pass (0.13s); scoped Ruff/Basedpyright pass. Census: 83 resolved,
+53 open. Next: Aether's Delight's five ore/plant generation chains, its two
+packaged compatibility data packs and loader/event entries, then Ube's Delight.
+Do not redo the closed Farmer's, Coffee or End's Delight providers. Eight
+packaged-generation providers, 24 code-only and 21 unmatched rows remain.
+
 Coffee Delight membership is RESOLVED. Source 49445ab and two focused checks
 (0.10s) establish a vanilla coffee-bush patch and food/item content, with no
 independent family. Scoped Ruff/Basedpyright pass. Census: 82 resolved, 54 open.
