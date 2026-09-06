@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric object-builder membership is resolved from 0fa369a. Thirty-eight focused
+cases and scoped checks pass. Fabric: 37 resolved, six open. Whole providers:
+90 resolved, 46 open. No family added. Interaction capture e030cd8 calls the
+uncaptured InteractionEventsRouter.onInitialize. Item capture 4ddacfa has the
+uncaptured EnchantmentUtil loading delegate; other captured item hooks concern
+components, equipment, durability, enchantment acceptance and tooltips. Resolve
+those direct boundaries next. Do not repeat their 20 captured entry/hook classes.
+Remaining other Fabric modules: networking, registry sync, transfer and loader.
+
+
 Fabric resource-condition membership is resolved from 969f1bb and abcf742.
 It filters consumer resources and selects declared overlays; no independent
 family. All 37 focused cases and scoped checks pass. Fabric: 36 resolved, seven
