@@ -1,0 +1,595 @@
+Classfile create-enchantment-industry-2.4.0.jar!/plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension.class
+  Last modified Jun 5, 2026; size 5949 bytes
+  SHA-256 checksum 2d772e4b4d4b1aeeb6c74087db38c2e1485ffe9ce7ed61a5f8aedcfb68806544
+  Compiled from "DeployerExtension.java"
+public class plus.dragons.createenchantmentindustry.common.kinetics.deployer.DeployerExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #67                         // plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.getAttackingPlayer:()Lnet/minecraft/world/entity/player/Player;
+    #8 = Class              #10           // net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent
+    #9 = NameAndType        #11:#12       // getAttackingPlayer:()Lnet/minecraft/world/entity/player/Player;
+   #10 = Utf8               net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent
+   #11 = Utf8               getAttackingPlayer
+   #12 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+   #13 = Class              #14           // com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+   #14 = Utf8               com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+   #15 = Methodref          #16.#17       // plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+   #16 = Class              #18           // plus/dragons/createenchantmentindustry/config/CEIConfig
+   #17 = NameAndType        #19:#20       // kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+   #18 = Utf8               plus/dragons/createenchantmentindustry/config/CEIConfig
+   #19 = Utf8               kinetics
+   #20 = Utf8               ()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+   #21 = Fieldref           #22.#23       // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerKillDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #22 = Class              #24           // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig
+   #23 = NameAndType        #25:#26       // deployerKillDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #24 = Utf8               plus/dragons/createenchantmentindustry/config/CEIKineticsConfig
+   #25 = Utf8               deployerKillDropXp
+   #26 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #27 = Methodref          #28.#29       // net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+   #28 = Class              #30           // net/createmod/catnip/config/ConfigBase$ConfigBool
+   #29 = NameAndType        #31:#32       // get:()Ljava/lang/Object;
+   #30 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigBool
+   #31 = Utf8               get
+   #32 = Utf8               ()Ljava/lang/Object;
+   #33 = Class              #34           // java/lang/Boolean
+   #34 = Utf8               java/lang/Boolean
+   #35 = Methodref          #33.#36       // java/lang/Boolean.booleanValue:()Z
+   #36 = NameAndType        #37:#38       // booleanValue:()Z
+   #37 = Utf8               booleanValue
+   #38 = Utf8               ()Z
+   #39 = Methodref          #8.#40        // net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.getDroppedExperience:()I
+   #40 = NameAndType        #41:#42       // getDroppedExperience:()I
+   #41 = Utf8               getDroppedExperience
+   #42 = Utf8               ()I
+   #43 = Fieldref           #22.#44       // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerKillXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+   #44 = NameAndType        #45:#46       // deployerKillXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+   #45 = Utf8               deployerKillXpScale
+   #46 = Utf8               Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+   #47 = Methodref          #48.#49       // net/createmod/catnip/config/ConfigBase$ConfigFloat.getF:()F
+   #48 = Class              #50           // net/createmod/catnip/config/ConfigBase$ConfigFloat
+   #49 = NameAndType        #51:#52       // getF:()F
+   #50 = Utf8               net/createmod/catnip/config/ConfigBase$ConfigFloat
+   #51 = Utf8               getF
+   #52 = Utf8               ()F
+   #53 = Methodref          #54.#55       // net/minecraft/util/Mth.ceil:(F)I
+   #54 = Class              #56           // net/minecraft/util/Mth
+   #55 = NameAndType        #57:#58       // ceil:(F)I
+   #56 = Utf8               net/minecraft/util/Mth
+   #57 = Utf8               ceil
+   #58 = Utf8               (F)I
+   #59 = Methodref          #8.#60        // net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.setDroppedExperience:(I)V
+   #60 = NameAndType        #61:#62       // setDroppedExperience:(I)V
+   #61 = Utf8               setDroppedExperience
+   #62 = Utf8               (I)V
+   #63 = Fieldref           #22.#64       // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerCollectXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #64 = NameAndType        #65:#26       // deployerCollectXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #65 = Utf8               deployerCollectXp
+   #66 = Methodref          #67.#68       // plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension.collectExperience:(Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+   #67 = Class              #69           // plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension
+   #68 = NameAndType        #70:#71       // collectExperience:(Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+   #69 = Utf8               plus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension
+   #70 = Utf8               collectExperience
+   #71 = Utf8               (Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+   #72 = Methodref          #8.#73        // net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.setCanceled:(Z)V
+   #73 = NameAndType        #74:#75       // setCanceled:(Z)V
+   #74 = Utf8               setCanceled
+   #75 = Utf8               (Z)V
+   #76 = Methodref          #77.#78       // net/neoforged/neoforge/event/level/BlockDropsEvent.getBreaker:()Lnet/minecraft/world/entity/Entity;
+   #77 = Class              #79           // net/neoforged/neoforge/event/level/BlockDropsEvent
+   #78 = NameAndType        #80:#81       // getBreaker:()Lnet/minecraft/world/entity/Entity;
+   #79 = Utf8               net/neoforged/neoforge/event/level/BlockDropsEvent
+   #80 = Utf8               getBreaker
+   #81 = Utf8               ()Lnet/minecraft/world/entity/Entity;
+   #82 = Fieldref           #22.#83       // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMineDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #83 = NameAndType        #84:#26       // deployerMineDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+   #84 = Utf8               deployerMineDropXp
+   #85 = Methodref          #77.#40       // net/neoforged/neoforge/event/level/BlockDropsEvent.getDroppedExperience:()I
+   #86 = Fieldref           #22.#87       // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMineXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+   #87 = NameAndType        #88:#46       // deployerMineXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+   #88 = Utf8               deployerMineXpScale
+   #89 = Methodref          #77.#90       // net/neoforged/neoforge/event/level/BlockDropsEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #90 = NameAndType        #91:#92       // getState:()Lnet/minecraft/world/level/block/state/BlockState;
+   #91 = Utf8               getState
+   #92 = Utf8               ()Lnet/minecraft/world/level/block/state/BlockState;
+   #93 = Methodref          #94.#95       // net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+   #94 = Class              #96           // net/minecraft/world/level/block/state/BlockState
+   #95 = NameAndType        #97:#98       // getBlock:()Lnet/minecraft/world/level/block/Block;
+   #96 = Utf8               net/minecraft/world/level/block/state/BlockState
+   #97 = Utf8               getBlock
+   #98 = Utf8               ()Lnet/minecraft/world/level/block/Block;
+   #99 = Methodref          #77.#100      // net/neoforged/neoforge/event/level/BlockDropsEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #100 = NameAndType        #101:#102     // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #101 = Utf8               getLevel
+  #102 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #103 = Methodref          #77.#104      // net/neoforged/neoforge/event/level/BlockDropsEvent.getPos:()Lnet/minecraft/core/BlockPos;
+  #104 = NameAndType        #105:#106     // getPos:()Lnet/minecraft/core/BlockPos;
+  #105 = Utf8               getPos
+  #106 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #107 = Methodref          #108.#109     // net/minecraft/world/level/block/Block.popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+  #108 = Class              #110          // net/minecraft/world/level/block/Block
+  #109 = NameAndType        #111:#112     // popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+  #110 = Utf8               net/minecraft/world/level/block/Block
+  #111 = Utf8               popExperience
+  #112 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+  #113 = Methodref          #77.#114      // net/neoforged/neoforge/event/level/BlockDropsEvent.getDrops:()Ljava/util/List;
+  #114 = NameAndType        #115:#116     // getDrops:()Ljava/util/List;
+  #115 = Utf8               getDrops
+  #116 = Utf8               ()Ljava/util/List;
+  #117 = InterfaceMethodref #118.#119     // java/util/List.stream:()Ljava/util/stream/Stream;
+  #118 = Class              #120          // java/util/List
+  #119 = NameAndType        #121:#122     // stream:()Ljava/util/stream/Stream;
+  #120 = Utf8               java/util/List
+  #121 = Utf8               stream
+  #122 = Utf8               ()Ljava/util/stream/Stream;
+  #123 = InvokeDynamic      #0:#124       // #0:apply:()Ljava/util/function/Function;
+  #124 = NameAndType        #125:#126     // apply:()Ljava/util/function/Function;
+  #125 = Utf8               apply
+  #126 = Utf8               ()Ljava/util/function/Function;
+  #127 = InterfaceMethodref #128.#129     // java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #128 = Class              #130          // java/util/stream/Stream
+  #129 = NameAndType        #131:#132     // map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #130 = Utf8               java/util/stream/Stream
+  #131 = Utf8               map
+  #132 = Utf8               (Ljava/util/function/Function;)Ljava/util/stream/Stream;
+  #133 = Methodref          #13.#134      // com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #134 = NameAndType        #135:#136     // getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+  #135 = Utf8               getInventory
+  #136 = Utf8               ()Lnet/minecraft/world/entity/player/Inventory;
+  #137 = Methodref          #138.#139     // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #138 = Class              #140          // java/util/Objects
+  #139 = NameAndType        #141:#142     // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #140 = Utf8               java/util/Objects
+  #141 = Utf8               requireNonNull
+  #142 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #143 = InvokeDynamic      #1:#144       // #1:accept:(Lnet/minecraft/world/entity/player/Inventory;)Ljava/util/function/Consumer;
+  #144 = NameAndType        #145:#146     // accept:(Lnet/minecraft/world/entity/player/Inventory;)Ljava/util/function/Consumer;
+  #145 = Utf8               accept
+  #146 = Utf8               (Lnet/minecraft/world/entity/player/Inventory;)Ljava/util/function/Consumer;
+  #147 = InterfaceMethodref #128.#148     // java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+  #148 = NameAndType        #149:#150     // forEach:(Ljava/util/function/Consumer;)V
+  #149 = Utf8               forEach
+  #150 = Utf8               (Ljava/util/function/Consumer;)V
+  #151 = Methodref          #77.#73       // net/neoforged/neoforge/event/level/BlockDropsEvent.setCanceled:(Z)V
+  #152 = Fieldref           #22.#153      // plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMendItem:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #153 = NameAndType        #154:#26      // deployerMendItem:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+  #154 = Utf8               deployerMendItem
+  #155 = Methodref          #13.#156      // com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+  #156 = NameAndType        #157:#158     // getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+  #157 = Utf8               getMainHandItem
+  #158 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+  #159 = Methodref          #160.#161     // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.canRepairItem:(Lnet/minecraft/world/item/ItemStack;)Z
+  #160 = Class              #162          // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper
+  #161 = NameAndType        #163:#164     // canRepairItem:(Lnet/minecraft/world/item/ItemStack;)Z
+  #162 = Utf8               plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper
+  #163 = Utf8               canRepairItem
+  #164 = Utf8               (Lnet/minecraft/world/item/ItemStack;)Z
+  #165 = Methodref          #13.#166      // com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #166 = NameAndType        #167:#102     // serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #167 = Utf8               serverLevel
+  #168 = Methodref          #160.#169     // plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.repairItem:(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Z)I
+  #169 = NameAndType        #170:#171     // repairItem:(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Z)I
+  #170 = Utf8               repairItem
+  #171 = Utf8               (ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Z)I
+  #172 = Fieldref           #173.#174     // net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+  #173 = Class              #175          // net/minecraft/server/level/ServerLevel
+  #174 = NameAndType        #176:#177     // random:Lnet/minecraft/util/RandomSource;
+  #175 = Utf8               net/minecraft/server/level/ServerLevel
+  #176 = Utf8               random
+  #177 = Utf8               Lnet/minecraft/util/RandomSource;
+  #178 = InterfaceMethodref #179.#180     // net/minecraft/util/RandomSource.nextFloat:()F
+  #179 = Class              #181          // net/minecraft/util/RandomSource
+  #180 = NameAndType        #182:#52      // nextFloat:()F
+  #181 = Utf8               net/minecraft/util/RandomSource
+  #182 = Utf8               nextFloat
+  #183 = Float              3.0f
+  #184 = Fieldref           #185.#186     // com/simibubi/create/AllItems.EXP_NUGGET:Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #185 = Class              #187          // com/simibubi/create/AllItems
+  #186 = NameAndType        #188:#189     // EXP_NUGGET:Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #187 = Utf8               com/simibubi/create/AllItems
+  #188 = Utf8               EXP_NUGGET
+  #189 = Utf8               Lcom/tterrag/registrate/util/entry/ItemEntry;
+  #190 = Methodref          #191.#192     // com/tterrag/registrate/util/entry/ItemEntry.asStack:(I)Lnet/minecraft/world/item/ItemStack;
+  #191 = Class              #193          // com/tterrag/registrate/util/entry/ItemEntry
+  #192 = NameAndType        #194:#195     // asStack:(I)Lnet/minecraft/world/item/ItemStack;
+  #193 = Utf8               com/tterrag/registrate/util/entry/ItemEntry
+  #194 = Utf8               asStack
+  #195 = Utf8               (I)Lnet/minecraft/world/item/ItemStack;
+  #196 = Methodref          #197.#198     // net/minecraft/world/entity/player/Inventory.placeItemBackInInventory:(Lnet/minecraft/world/item/ItemStack;)V
+  #197 = Class              #199          // net/minecraft/world/entity/player/Inventory
+  #198 = NameAndType        #200:#201     // placeItemBackInInventory:(Lnet/minecraft/world/item/ItemStack;)V
+  #199 = Utf8               net/minecraft/world/entity/player/Inventory
+  #200 = Utf8               placeItemBackInInventory
+  #201 = Utf8               (Lnet/minecraft/world/item/ItemStack;)V
+  #202 = Utf8               Code
+  #203 = Utf8               LineNumberTable
+  #204 = Utf8               LocalVariableTable
+  #205 = Utf8               this
+  #206 = Utf8               Lplus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension;
+  #207 = Utf8               onLivingExperienceDrop
+  #208 = Utf8               (Lnet/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent;)V
+  #209 = Utf8               deployer
+  #210 = Utf8               Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+  #211 = Utf8               event
+  #212 = Utf8               Lnet/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent;
+  #213 = Utf8               experience
+  #214 = Utf8               I
+  #215 = Utf8               StackMapTable
+  #216 = Utf8               RuntimeVisibleAnnotations
+  #217 = Utf8               Lnet/neoforged/bus/api/SubscribeEvent;
+  #218 = Utf8               priority
+  #219 = Utf8               Lnet/neoforged/bus/api/EventPriority;
+  #220 = Utf8               LOWEST
+  #221 = Utf8               onBlockDrops
+  #222 = Utf8               (Lnet/neoforged/neoforge/event/level/BlockDropsEvent;)V
+  #223 = Utf8               Lnet/neoforged/neoforge/event/level/BlockDropsEvent;
+  #224 = Utf8               dropXp
+  #225 = Utf8               Z
+  #226 = Utf8               heldItem
+  #227 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #228 = Utf8               nuggets
+  #229 = Utf8               SourceFile
+  #230 = Utf8               DeployerExtension.java
+  #231 = Utf8               Lnet/neoforged/fml/common/EventBusSubscriber;
+  #232 = Utf8               BootstrapMethods
+  #233 = MethodType         #142          //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #234 = MethodHandle       5:#235        // REF_invokeVirtual net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+  #235 = Methodref          #236.#237     // net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+  #236 = Class              #238          // net/minecraft/world/entity/item/ItemEntity
+  #237 = NameAndType        #239:#158     // getItem:()Lnet/minecraft/world/item/ItemStack;
+  #238 = Utf8               net/minecraft/world/entity/item/ItemEntity
+  #239 = Utf8               getItem
+  #240 = MethodType         #241          //  (Lnet/minecraft/world/entity/item/ItemEntity;)Lnet/minecraft/world/item/ItemStack;
+  #241 = Utf8               (Lnet/minecraft/world/entity/item/ItemEntity;)Lnet/minecraft/world/item/ItemStack;
+  #242 = MethodType         #243          //  (Ljava/lang/Object;)V
+  #243 = Utf8               (Ljava/lang/Object;)V
+  #244 = MethodHandle       5:#196        // REF_invokeVirtual net/minecraft/world/entity/player/Inventory.placeItemBackInInventory:(Lnet/minecraft/world/item/ItemStack;)V
+  #245 = MethodType         #201          //  (Lnet/minecraft/world/item/ItemStack;)V
+  #246 = MethodHandle       6:#247        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #247 = Methodref          #248.#249     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #248 = Class              #250          // java/lang/invoke/LambdaMetafactory
+  #249 = NameAndType        #251:#252     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #250 = Utf8               java/lang/invoke/LambdaMetafactory
+  #251 = Utf8               metafactory
+  #252 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #253 = Utf8               InnerClasses
+  #254 = Class              #255          // net/createmod/catnip/config/ConfigBase
+  #255 = Utf8               net/createmod/catnip/config/ConfigBase
+  #256 = Utf8               ConfigBool
+  #257 = Utf8               ConfigFloat
+  #258 = Class              #259          // java/lang/invoke/MethodHandles$Lookup
+  #259 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #260 = Class              #261          // java/lang/invoke/MethodHandles
+  #261 = Utf8               java/lang/invoke/MethodHandles
+  #262 = Utf8               Lookup
+{
+  public plus.dragons.createenchantmentindustry.common.kinetics.deployer.DeployerExtension();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 35: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lplus/dragons/createenchantmentindustry/common/kinetics/deployer/DeployerExtension;
+
+  public static void onLivingExperienceDrop(net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: aload_0
+         1: invokevirtual #7                  // Method net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.getAttackingPlayer:()Lnet/minecraft/world/entity/player/Player;
+         4: astore_2
+         5: aload_2
+         6: instanceof    #13                 // class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+         9: ifeq          20
+        12: aload_2
+        13: checkcast     #13                 // class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+        16: astore_1
+        17: goto          21
+        20: return
+        21: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        24: getfield      #21                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerKillDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        27: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        30: checkcast     #33                 // class java/lang/Boolean
+        33: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        36: ifne          40
+        39: return
+        40: aload_0
+        41: invokevirtual #39                 // Method net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.getDroppedExperience:()I
+        44: i2f
+        45: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        48: getfield      #43                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerKillXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+        51: invokevirtual #47                 // Method net/createmod/catnip/config/ConfigBase$ConfigFloat.getF:()F
+        54: fmul
+        55: invokestatic  #53                 // Method net/minecraft/util/Mth.ceil:(F)I
+        58: istore_2
+        59: aload_0
+        60: iload_2
+        61: invokevirtual #59                 // Method net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.setDroppedExperience:(I)V
+        64: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        67: getfield      #63                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerCollectXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        70: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        73: checkcast     #33                 // class java/lang/Boolean
+        76: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        79: ifeq          92
+        82: aload_1
+        83: iload_2
+        84: invokestatic  #66                 // Method collectExperience:(Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+        87: aload_0
+        88: iconst_1
+        89: invokevirtual #72                 // Method net/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent.setCanceled:(Z)V
+        92: return
+      LineNumberTable:
+        line 38: 0
+        line 39: 20
+        line 40: 21
+        line 41: 39
+        line 42: 40
+        line 43: 59
+        line 44: 64
+        line 45: 82
+        line 46: 87
+        line 48: 92
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           17       3     1 deployer   Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+            0      93     0 event   Lnet/neoforged/neoforge/event/entity/living/LivingExperienceDropEvent;
+           21      72     1 deployer   Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+           59      34     2 experience   I
+      StackMapTable: number_of_entries = 4
+        frame_type = 20 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer ]
+        frame_type = 18 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 51
+          locals = [ int ]
+    RuntimeVisibleAnnotations:
+      0: #217(#218=e#219.#220)
+        net.neoforged.bus.api.SubscribeEvent(
+          priority=Lnet/neoforged/bus/api/EventPriority;.LOWEST
+        )
+
+  public static void onBlockDrops(net.neoforged.neoforge.event.level.BlockDropsEvent);
+    descriptor: (Lnet/neoforged/neoforge/event/level/BlockDropsEvent;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=4, args_size=1
+         0: aload_0
+         1: invokevirtual #76                 // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getBreaker:()Lnet/minecraft/world/entity/Entity;
+         4: astore_2
+         5: aload_2
+         6: instanceof    #13                 // class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+         9: ifeq          20
+        12: aload_2
+        13: checkcast     #13                 // class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer
+        16: astore_1
+        17: goto          21
+        20: return
+        21: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        24: getfield      #82                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMineDropXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        27: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        30: checkcast     #33                 // class java/lang/Boolean
+        33: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        36: istore_2
+        37: iload_2
+        38: ifeq          62
+        41: aload_0
+        42: invokevirtual #85                 // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getDroppedExperience:()I
+        45: i2f
+        46: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        49: getfield      #86                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMineXpScale:Lnet/createmod/catnip/config/ConfigBase$ConfigFloat;
+        52: invokevirtual #47                 // Method net/createmod/catnip/config/ConfigBase$ConfigFloat.getF:()F
+        55: fmul
+        56: invokestatic  #53                 // Method net/minecraft/util/Mth.ceil:(F)I
+        59: goto          63
+        62: iconst_0
+        63: istore_3
+        64: iload_3
+        65: ifle          93
+        68: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+        71: getfield      #63                 // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerCollectXp:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        74: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        77: checkcast     #33                 // class java/lang/Boolean
+        80: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        83: ifeq          93
+        86: aload_1
+        87: iload_3
+        88: invokestatic  #66                 // Method collectExperience:(Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+        91: iconst_0
+        92: istore_3
+        93: iload_3
+        94: ifle          116
+        97: aload_0
+        98: invokevirtual #89                 // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getState:()Lnet/minecraft/world/level/block/state/BlockState;
+       101: invokevirtual #93                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       104: aload_0
+       105: invokevirtual #99                 // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+       108: aload_0
+       109: invokevirtual #103                // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getPos:()Lnet/minecraft/core/BlockPos;
+       112: iload_3
+       113: invokevirtual #107                // Method net/minecraft/world/level/block/Block.popExperience:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;I)V
+       116: aload_0
+       117: invokevirtual #113                // Method net/neoforged/neoforge/event/level/BlockDropsEvent.getDrops:()Ljava/util/List;
+       120: invokeinterface #117,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+       125: invokedynamic #123,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       130: invokeinterface #127,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+       135: aload_1
+       136: invokevirtual #133                // Method com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+       139: dup
+       140: invokestatic  #137                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+       143: pop
+       144: invokedynamic #143,  0            // InvokeDynamic #1:accept:(Lnet/minecraft/world/entity/player/Inventory;)Ljava/util/function/Consumer;
+       149: invokeinterface #147,  2          // InterfaceMethod java/util/stream/Stream.forEach:(Ljava/util/function/Consumer;)V
+       154: aload_0
+       155: iconst_1
+       156: invokevirtual #151                // Method net/neoforged/neoforge/event/level/BlockDropsEvent.setCanceled:(Z)V
+       159: return
+      LineNumberTable:
+        line 52: 0
+        line 53: 20
+        line 54: 21
+        line 55: 37
+        line 56: 41
+        line 57: 62
+        line 58: 64
+        line 59: 86
+        line 60: 91
+        line 62: 93
+        line 63: 97
+        line 65: 116
+        line 66: 130
+        line 67: 136
+        line 68: 154
+        line 69: 159
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           17       3     1 deployer   Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+            0     160     0 event   Lnet/neoforged/neoforge/event/level/BlockDropsEvent;
+           21     139     1 deployer   Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+           37     123     2 dropXp   Z
+           64      96     3 experience   I
+      StackMapTable: number_of_entries = 6
+        frame_type = 20 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer ]
+        frame_type = 252 /* append */
+          offset_delta = 40
+          locals = [ int ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ int ]
+        frame_type = 22 /* same */
+    RuntimeVisibleAnnotations:
+      0: #217(#218=e#219.#220)
+        net.neoforged.bus.api.SubscribeEvent(
+          priority=Lnet/neoforged/bus/api/EventPriority;.LOWEST
+        )
+
+  private static void collectExperience(com.simibubi.create.content.kinetics.deployer.DeployerFakePlayer, int);
+    descriptor: (Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;I)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=5, locals=3, args_size=2
+         0: iload_1
+         1: ifgt          5
+         4: return
+         5: invokestatic  #15                 // Method plus/dragons/createenchantmentindustry/config/CEIConfig.kinetics:()Lplus/dragons/createenchantmentindustry/config/CEIKineticsConfig;
+         8: getfield      #152                // Field plus/dragons/createenchantmentindustry/config/CEIKineticsConfig.deployerMendItem:Lnet/createmod/catnip/config/ConfigBase$ConfigBool;
+        11: invokevirtual #27                 // Method net/createmod/catnip/config/ConfigBase$ConfigBool.get:()Ljava/lang/Object;
+        14: checkcast     #33                 // class java/lang/Boolean
+        17: invokevirtual #35                 // Method java/lang/Boolean.booleanValue:()Z
+        20: ifeq          48
+        23: aload_0
+        24: invokevirtual #155                // Method com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+        27: astore_2
+        28: aload_2
+        29: invokestatic  #159                // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.canRepairItem:(Lnet/minecraft/world/item/ItemStack;)Z
+        32: ifeq          48
+        35: iload_1
+        36: iload_1
+        37: aload_0
+        38: invokevirtual #165                // Method com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        41: aload_2
+        42: iconst_0
+        43: invokestatic  #168                // Method plus/dragons/createenchantmentindustry/common/fluids/experience/ExperienceHelper.repairItem:(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Z)I
+        46: isub
+        47: istore_1
+        48: iload_1
+        49: ifgt          53
+        52: return
+        53: iload_1
+        54: iconst_3
+        55: idiv
+        56: istore_2
+        57: aload_0
+        58: invokevirtual #165                // Method com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.serverLevel:()Lnet/minecraft/server/level/ServerLevel;
+        61: getfield      #172                // Field net/minecraft/server/level/ServerLevel.random:Lnet/minecraft/util/RandomSource;
+        64: invokeinterface #178,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+        69: iload_1
+        70: iconst_3
+        71: irem
+        72: i2f
+        73: ldc           #183                // float 3.0f
+        75: fdiv
+        76: fcmpg
+        77: ifge          83
+        80: iinc          2, 1
+        83: iload_2
+        84: ifle          101
+        87: aload_0
+        88: invokevirtual #133                // Method com/simibubi/create/content/kinetics/deployer/DeployerFakePlayer.getInventory:()Lnet/minecraft/world/entity/player/Inventory;
+        91: getstatic     #184                // Field com/simibubi/create/AllItems.EXP_NUGGET:Lcom/tterrag/registrate/util/entry/ItemEntry;
+        94: iload_2
+        95: invokevirtual #190                // Method com/tterrag/registrate/util/entry/ItemEntry.asStack:(I)Lnet/minecraft/world/item/ItemStack;
+        98: invokevirtual #196                // Method net/minecraft/world/entity/player/Inventory.placeItemBackInInventory:(Lnet/minecraft/world/item/ItemStack;)V
+       101: return
+      LineNumberTable:
+        line 72: 0
+        line 73: 4
+        line 74: 5
+        line 75: 23
+        line 76: 28
+        line 77: 35
+        line 79: 48
+        line 80: 52
+        line 81: 53
+        line 82: 57
+        line 83: 80
+        line 84: 83
+        line 85: 87
+        line 87: 101
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           28      20     2 heldItem   Lnet/minecraft/world/item/ItemStack;
+            0     102     0 deployer   Lcom/simibubi/create/content/kinetics/deployer/DeployerFakePlayer;
+            0     102     1 experience   I
+           57      45     2 nuggets   I
+      StackMapTable: number_of_entries = 5
+        frame_type = 5 /* same */
+        frame_type = 42 /* same */
+        frame_type = 4 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 29
+          locals = [ int ]
+        frame_type = 17 /* same */
+}
+SourceFile: "DeployerExtension.java"
+RuntimeVisibleAnnotations:
+  0: #231()
+    net.neoforged.fml.common.EventBusSubscriber
+BootstrapMethods:
+  0: #246 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #233 (Ljava/lang/Object;)Ljava/lang/Object;
+      #234 REF_invokeVirtual net/minecraft/world/entity/item/ItemEntity.getItem:()Lnet/minecraft/world/item/ItemStack;
+      #240 (Lnet/minecraft/world/entity/item/ItemEntity;)Lnet/minecraft/world/item/ItemStack;
+  1: #246 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #242 (Ljava/lang/Object;)V
+      #244 REF_invokeVirtual net/minecraft/world/entity/player/Inventory.placeItemBackInInventory:(Lnet/minecraft/world/item/ItemStack;)V
+      #245 (Lnet/minecraft/world/item/ItemStack;)V
+InnerClasses:
+  public #256= #28 of #254;               // ConfigBool=class net/createmod/catnip/config/ConfigBase$ConfigBool of class net/createmod/catnip/config/ConfigBase
+  public #257= #48 of #254;               // ConfigFloat=class net/createmod/catnip/config/ConfigBase$ConfigFloat of class net/createmod/catnip/config/ConfigBase
+  public static final #262= #258 of #260; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
