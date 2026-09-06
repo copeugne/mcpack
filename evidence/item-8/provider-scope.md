@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 51 of 136. The exact queue below has 85 open rows.
+Supported provider dispositions: 53 of 136. The exact queue below has 83 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -607,7 +607,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `ends_delight-2.6+neoforge.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
-| `fastasyncworldsave-1.21-2.6.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -643,7 +643,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `sparsestructures-neoforge-1.21.1-3.0.jar` | `sparsestructures-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing structure-set placement modification; no independent family. See small utility provider dispositions below. |
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
-| `structureessentials-1.21.1-5.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `structureessentials-1.21.1-5.0.jar` | `structureessentials-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Existing structure lookup, placement, biome compatibility and diagnostic modifications; no independent family. Frozen activation settings bound below. |
 | `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code` | Resolve feature/structure aliases and injected components against existing roots. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -1407,3 +1407,38 @@ uv run basedpyright tests/item8/test_illagerinvasion_provider_scope.py
 Two focused cases pass; Ruff and Basedpyright pass. No runtime measurement or
 baseline change. Provider dispositions: 51 of 136 resolved, 85 open. Continue
 candidate completeness before canonical grouping and detailed attributes.
+
+## Save and structure utility dispositions
+
+Fast Async World Save and Structure Essentials have complete supported provider
+roles. Source 7a82503 preserves all 32 classes; independent captures reproduce
+exactly. Commands, identities and entry interpretation are in
+sources/small-utility-providers.md. The existing parameterized test accounts for
+every file in both archives, binds the single mod entry in each, and checks every
+declared mixin and the Structure Essentials plugin. No nested executable,
+service, authored generation resource, root, pool or template is unaccounted for.
+
+Fast Async World Save changes saved-data and level-data write execution and
+saved-data filename handling. It provides no independent family. This is a
+provider-role disposition, not a new claim of persistence correctness or speed.
+
+Structure Essentials modifies existing generation and lookup behavior, with
+inspection/timing commands and error handling. Its plugin permits the declared
+mixins under the frozen disableLegacyRandomCrashes=true setting. The frozen
+configuration disables automatic biome expansion and minimum-distance exclusion
+and sets spacingSeparationModifier=1.0. The complete configuration hash is bound
+by the focused test. Search limits and placement exception handling must remain
+part of interpreting existing observations; provider closure does not claim that
+every feature placement succeeds or that all lookup failures mean absence.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Fourteen cases pass, including the twelve previously accepted providers. A local
+statement-count lint exception keeps the explicit archive/config cases in the
+existing test instead of introducing a validation framework. Ruff and Basedpyright
+pass. No runtime measurement, baseline change or detailed family grouping work.
+Provider dispositions: 53 of 136 resolved, 83 open. Continue the remaining census.
