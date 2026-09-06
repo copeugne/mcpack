@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 82 of 136. The exact queue below has 54 open rows.
+Supported provider dispositions: 83 of 136. The exact queue below has 53 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -656,7 +656,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `ends_delight-2.6+neoforge.1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
 | `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
@@ -701,6 +701,54 @@ attributes. This separates unknown membership from incomplete attributes.
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Ends Delight provider disposition
+
+ends_delight-2.6+neoforge.1.21.1.jar is RESOLVED as a vegetation, food/loot
+and existing-item behavior provider, with no independent structure family.
+SHA-256: 65277056eb9ee9e1025633b83cb1b2568ec846dacd16507a35698244f4196881.
+The full 373-file payload comprises 44 classes, 201 assets, 124 JSON data
+files and four metadata/logo files. Full accounting excludes templates, nested
+archives, services, scripts and mixins. The loader metadata has no additional
+entry mechanisms. All three annotated entries and the complete worldgen class
+set are covered by the preserved source and focused checks.
+
+The main constructor registers blocks/items, block entities, a creative tab,
+loot modifiers, common configuration and ModBiomeFeatures. The latter registers
+exactly one feature, chorus_succulent, backed by ChorusSucculentFeature and
+CountConfiguration. Its writer samples horizontal offsets around the supplied
+origin, finds WORLD_SURFACE height and writes a chorus succulent plant state
+where that state can survive. Plant cluster state varies from one to three.
+This is vegetation, not an authored site or template assembly.
+
+The complete generation data has one configured feature (count 20), one placed
+feature referencing it and one neoforge:add_features modifier referencing that
+placed feature. Placement uses rarity, square spread, WORLD_SURFACE and biome
+filtering. The biome modifier selects minecraft:end_highlands at
+vegetal_decoration. These are configuration values, not observed density or a
+claim that all twenty placement attempts succeed.
+
+The client-only subscriber registers an End stove renderer. The other automatic
+subscriber handles LivingDamageEvent.Pre and changes damage when an existing
+attacker holds the dragon-tooth knife against configured mob types. It does not
+generate content. No class references the NeoForge global event bus. Remaining
+data comprises recipes, loot tables/modifiers, tags, advancements and a damage
+type. These can affect existing-family attributes; membership closure does not
+claim a complete gameplay audit of food, teleportation or loot behavior.
+
+Source 311c1fe retains the five inspected classes and its README records the
+exact reproducible command. The accepted packaged JSON catalog retains the
+data. No additional runtime measurement was required.
+
+```sh
+uv run pytest -q tests/item8/test_ends_delight_provider_scope.py
+uv run ruff check tests/item8/test_ends_delight_provider_scope.py
+uv run basedpyright tests/item8/test_ends_delight_provider_scope.py
+```
+
+Two focused cases pass (0.13s); scoped Ruff and Basedpyright pass. Census:
+83 resolved, 53 open. Eight packaged-generation providers, 24 code-only rows
+and 21 unmatched rows remain. No canonical family is added by this disposition.
 
 ## Coffee Delight provider disposition
 
