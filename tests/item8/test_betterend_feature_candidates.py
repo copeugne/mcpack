@@ -19,6 +19,73 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
+def test_betterend_complete_payload_categories_and_carver_consumers() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        files = {n.filename for n in archive.infolist() if not n.is_dir()}
+        assert len(files) == 9639
+        data = {n for n in files if n.startswith("data/")}
+        assert Counter("/".join(n.split("/")[:3]) for n in data) == {
+            "data/betterend/advancement": 879, "data/betterend/recipe": 850,
+            "data/betterend/loot_table": 655, "data/betterend/worldgen": 253,
+            "data/betterend/wover": 160, "data/betterend/structure": 135,
+            "data/minecraft/tags": 76, "data/betterend/tags": 55, "data/wover/tags": 29,
+            "data/betterend/patchouli_books": 25, "data/c/tags": 21,
+            "data/betterend/jukebox_song": 6, "data/betterend/datapacks": 5,
+            "data/bclib/tags": 2, "data/betterend/enchantment": 1,
+            "data/trinkets/entities": 1, "data/trinkets/tags": 1,
+        }
+        assets = {n for n in files if n.startswith("assets/")}
+        assert Counter(Path(n).suffix for n in assets) == {
+            ".json": 4005, ".png": 1686, ".ogg": 45, ".mcmeta": 25,
+            ".frag": 19, ".properties": 10, ".vert": 7, ".ini": 1,
+        }
+        classes = {n for n in files if n.endswith(".class")}
+        assert len(classes) == 668
+        assert {n for n in classes if b"Lnet/neoforged/fml/common/Mod;" in archive.read(n)} == {
+            "org/betterx/betterend/BetterEnd.class",
+        }
+        cache = {n for n in files if n.startswith(".cache/")}
+        assert len(cache) == 10
+        assert files - data - assets - classes - cache == {
+            "META-INF/MANIFEST.MF", "META-INF/accesstransformer.cfg",
+            "META-INF/neoforge.mods.toml", "betterend.accesswidener",
+            "betterend.mixins.client.json", "betterend.mixins.common.json",
+            "betterend.refmap.json", "LICENSE", "LICENSE.ASSETS",
+        }
+        prefix = "data/betterend/worldgen/"
+        assert Counter(n[len(prefix):].split("/")[0] for n in data if n.startswith(prefix)) == {
+            "placed_feature": 147, "configured_feature": 40, "biome": 27,
+            "structure": 14, "structure_set": 12, "template_pool": 6,
+            "processor_list": 5, "configured_carver": 2,
+        }
+        carver_types = {"round_cave": "end_round_cave", "tunnel_cave": "end_tunnel_cave"}
+        for name, kind in carver_types.items():
+            definition = cast("dict[str, JsonValue]", json.loads(archive.read(
+                prefix + "configured_carver/" + name + ".json")))
+            assert definition["type"] == "betterend:" + kind
+        nourishment = "data/betterend/datapacks/nourish_extensions/"
+        assert {n for n in data if n.startswith("data/betterend/datapacks/")} == {
+            nourishment + "pack.mcmeta",
+            *(nourishment + "data/nourish/tags/item/" + name + ".json"
+              for name in ("fats", "fruit", "protein", "sweets")),
+        }
+        directory = Path("evidence/item-8/sources/betterend-configured-carvers")
+        raw = (directory / "identities.json").read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == (
+            "7b8c98b8426309d3b5b6457d99af0a6a4273a16aabf23914bc418360c27223ba"
+        )
+        rows = cast("list[dict[str, str]]", json.loads(raw))
+        assert len(rows) == 8
+        for row in rows:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            raw = (directory / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
+
+
 def test_betterend_remaining_feature_types_have_explicit_roles() -> None:
     roles = {
         "existing_authored_candidates": {
