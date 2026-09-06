@@ -189,6 +189,24 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/mixin/screenhandler/NamedScreenHandlerFactoryMixin.class",
+    "net/fabricmc/fabric/mixin/screenhandler/ServerPlayerEntityMixin.class",
+    "org/sinytra/fabric/screen_handler_api/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/DataPackContentsMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/DataProviderMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/JsonDataLoaderMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/RecipeManagerMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/RegistryLoaderMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/ReloadableRegistriesMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/ResourcePackProfileMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/ServerAdvancementLoaderMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/SinglePreparationResourceReloaderMixin.class",
+    "net/fabricmc/fabric/mixin/resource/conditions/TagManagerLoaderMixin.class",
+    "org/sinytra/fabric/resource_conditions_api/generated/GeneratedEntryPoint.class",
+    "org/sinytra/fabric/rendering/generated/GeneratedEntryPoint.class",
+    "net/fabricmc/fabric/mixin/message/MinecraftServerMixin.class",
+    "net/fabricmc/fabric/mixin/message/PlayerManagerMixin.class",
+    "org/sinytra/fabric/message_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/impl/attachment/AttachmentRegistryImpl.class",
     "net/fabricmc/fabric/impl/content/registry/DataMapModifications.class",
     "net/fabricmc/fabric/impl/attachment/AttachmentEntrypoint.class",
@@ -2432,6 +2450,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar",
+        "META-INF/jars/fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar",
+        "META-INF/jars/fabric-rendering-v1-5.1.0+1a09bd5a19.jar",
+        "META-INF/jars/fabric-message-api-v1-6.0.14+6a754fce19.jar",
         "META-INF/jars/fabric-item-group-api-v1-4.1.7+e324903319.jar",
         "META-INF/jars/fabric-data-generation-api-v1-20.2.34+a4c3605619.jar",
         "META-INF/jars/fabric-data-attachment-api-v1-1.4.5+26d408aa19.jar",
@@ -2481,6 +2503,22 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/fabric-screen-handler-api-v1-1.3.90+8dbc56dd19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "21a6d73340380446112f3b1bf4712937bc7251c857d75545c1b2d7386102f35f",
+        ),
+        "META-INF/jars/fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "2fe82406e1cbc8fb83c4aabeac243aefca1e9f62f6014a29723f2e567ca93c29",
+        ),
+        "META-INF/jars/fabric-rendering-v1-5.1.0+1a09bd5a19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "909cf2039dcc10f72c5d89a9778d294a916d2d79f010c78d89a107e85f7bef0f",
+        ),
+        "META-INF/jars/fabric-message-api-v1-6.0.14+6a754fce19.jar": (
+            "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+            "2756eea4df9dca77e909bb0241a09959b53108eb2deb59bf074382d670c9726e",
+        ),
         "META-INF/jars/fabric-item-group-api-v1-4.1.7+e324903319.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "9869a3d30809a765a9a0a104b6b82dd15f8206b1f3d8d601e17d8c6203feba22",
