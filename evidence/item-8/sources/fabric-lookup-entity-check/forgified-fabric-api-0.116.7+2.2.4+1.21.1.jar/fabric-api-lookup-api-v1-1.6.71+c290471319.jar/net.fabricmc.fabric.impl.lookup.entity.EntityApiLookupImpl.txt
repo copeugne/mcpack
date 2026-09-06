@@ -1,0 +1,1090 @@
+Classfile forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/fabric-api-lookup-api-v1-1.6.71+c290471319.jar!/net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.class
+  Last modified Feb 21, 2026; size 11473 bytes
+  SHA-256 checksum ed14b345e7e3d56427bc4134a7ecdcacf1afc64649394c95dfa8088898301a35
+  Compiled from "EntityApiLookupImpl.java"
+public class net.fabricmc.fabric.impl.lookup.entity.EntityApiLookupImpl<A extends java.lang.Object, C extends java.lang.Object> extends java.lang.Object implements net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup<A, C>
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #14                         // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 9, methods: 15, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = InterfaceMethodref #8.#9         // net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.create:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+    #8 = Class              #10           // net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap
+    #9 = NameAndType        #11:#12       // create:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+   #10 = Utf8               net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap
+   #11 = Utf8               create
+   #12 = Utf8               ()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+   #13 = Fieldref           #14.#15       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+   #14 = Class              #16           // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl
+   #15 = NameAndType        #17:#18       // providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+   #16 = Utf8               net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl
+   #17 = Utf8               providerMap
+   #18 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+   #19 = Class              #20           // java/util/concurrent/CopyOnWriteArrayList
+   #20 = Utf8               java/util/concurrent/CopyOnWriteArrayList
+   #21 = Methodref          #19.#3        // java/util/concurrent/CopyOnWriteArrayList."<init>":()V
+   #22 = Fieldref           #14.#23       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.fallbackProviders:Ljava/util/List;
+   #23 = NameAndType        #24:#25       // fallbackProviders:Ljava/util/List;
+   #24 = Utf8               fallbackProviders
+   #25 = Utf8               Ljava/util/List;
+   #26 = Fieldref           #14.#27       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.identifier:Lnet/minecraft/resources/ResourceLocation;
+   #27 = NameAndType        #28:#29       // identifier:Lnet/minecraft/resources/ResourceLocation;
+   #28 = Utf8               identifier
+   #29 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+   #30 = Fieldref           #14.#31       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.apiClass:Ljava/lang/Class;
+   #31 = NameAndType        #32:#33       // apiClass:Ljava/lang/Class;
+   #32 = Utf8               apiClass
+   #33 = Utf8               Ljava/lang/Class;
+   #34 = Fieldref           #14.#35       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.contextClass:Ljava/lang/Class;
+   #35 = NameAndType        #36:#33       // contextClass:Ljava/lang/Class;
+   #36 = Utf8               contextClass
+   #37 = Fieldref           #14.#38       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.LOOKUPS:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+   #38 = NameAndType        #39:#40       // LOOKUPS:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+   #39 = Utf8               LOOKUPS
+   #40 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+   #41 = InterfaceMethodref #42.#43       // net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap.getLookup:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+   #42 = Class              #44           // net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap
+   #43 = NameAndType        #45:#46       // getLookup:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+   #44 = Utf8               net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap
+   #45 = Utf8               getLookup
+   #46 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+   #47 = Class              #48           // net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup
+   #48 = Utf8               net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup
+   #49 = Fieldref           #14.#50       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.checkEntityLookup:Z
+   #50 = NameAndType        #51:#52       // checkEntityLookup:Z
+   #51 = Utf8               checkEntityLookup
+   #52 = Utf8               Z
+   #53 = Fieldref           #14.#54       // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.REGISTERED_SELVES:Ljava/util/Map;
+   #54 = NameAndType        #55:#56       // REGISTERED_SELVES:Ljava/util/Map;
+   #55 = Utf8               REGISTERED_SELVES
+   #56 = Utf8               Ljava/util/Map;
+   #57 = InvokeDynamic      #0:#58        // #0:accept:(Lnet/minecraft/server/MinecraftServer;)Ljava/util/function/BiConsumer;
+   #58 = NameAndType        #59:#60       // accept:(Lnet/minecraft/server/MinecraftServer;)Ljava/util/function/BiConsumer;
+   #59 = Utf8               accept
+   #60 = Utf8               (Lnet/minecraft/server/MinecraftServer;)Ljava/util/function/BiConsumer;
+   #61 = InterfaceMethodref #62.#63       // java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+   #62 = Class              #64           // java/util/Map
+   #63 = NameAndType        #65:#66       // forEach:(Ljava/util/function/BiConsumer;)V
+   #64 = Utf8               java/util/Map
+   #65 = Utf8               forEach
+   #66 = Utf8               (Ljava/util/function/BiConsumer;)V
+   #67 = String             #68           // Entity may not be null.
+   #68 = Utf8               Entity may not be null.
+   #69 = Methodref          #70.#71       // java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+   #70 = Class              #72           // java/util/Objects
+   #71 = NameAndType        #73:#74       // requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+   #72 = Utf8               java/util/Objects
+   #73 = Utf8               requireNonNull
+   #74 = Utf8               (Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+   #75 = Fieldref           #76.#77       // net/minecraft/world/entity/EntitySelector.ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+   #76 = Class              #78           // net/minecraft/world/entity/EntitySelector
+   #77 = NameAndType        #79:#80       // ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+   #78 = Utf8               net/minecraft/world/entity/EntitySelector
+   #79 = Utf8               ENTITY_STILL_ALIVE
+   #80 = Utf8               Ljava/util/function/Predicate;
+   #81 = InterfaceMethodref #82.#83       // java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+   #82 = Class              #84           // java/util/function/Predicate
+   #83 = NameAndType        #85:#86       // test:(Ljava/lang/Object;)Z
+   #84 = Utf8               java/util/function/Predicate
+   #85 = Utf8               test
+   #86 = Utf8               (Ljava/lang/Object;)Z
+   #87 = Methodref          #88.#89       // net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+   #88 = Class              #90           // net/minecraft/world/entity/Entity
+   #89 = NameAndType        #91:#92       // getType:()Lnet/minecraft/world/entity/EntityType;
+   #90 = Utf8               net/minecraft/world/entity/Entity
+   #91 = Utf8               getType
+   #92 = Utf8               ()Lnet/minecraft/world/entity/EntityType;
+   #93 = InterfaceMethodref #8.#94        // net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #94 = NameAndType        #95:#96       // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #95 = Utf8               get
+   #96 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #97 = Class              #98           // net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider
+   #98 = Utf8               net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider
+   #99 = InterfaceMethodref #97.#100      // net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider.find:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #100 = NameAndType        #101:#102     // find:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #101 = Utf8               find
+  #102 = Utf8               (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #103 = InterfaceMethodref #104.#105     // java/util/List.iterator:()Ljava/util/Iterator;
+  #104 = Class              #106          // java/util/List
+  #105 = NameAndType        #107:#108     // iterator:()Ljava/util/Iterator;
+  #106 = Utf8               java/util/List
+  #107 = Utf8               iterator
+  #108 = Utf8               ()Ljava/util/Iterator;
+  #109 = InterfaceMethodref #110.#111     // java/util/Iterator.hasNext:()Z
+  #110 = Class              #112          // java/util/Iterator
+  #111 = NameAndType        #113:#114     // hasNext:()Z
+  #112 = Utf8               java/util/Iterator
+  #113 = Utf8               hasNext
+  #114 = Utf8               ()Z
+  #115 = InterfaceMethodref #110.#116     // java/util/Iterator.next:()Ljava/lang/Object;
+  #116 = NameAndType        #117:#118     // next:()Ljava/lang/Object;
+  #117 = Utf8               next
+  #118 = Utf8               ()Ljava/lang/Object;
+  #119 = InvokeDynamic      #1:#120       // #1:apply:()Ljava/util/function/Function;
+  #120 = NameAndType        #121:#122     // apply:()Ljava/util/function/Function;
+  #121 = Utf8               apply
+  #122 = Utf8               ()Ljava/util/function/Function;
+  #123 = InterfaceMethodref #62.#124      // java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #124 = NameAndType        #125:#126     // computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #125 = Utf8               computeIfAbsent
+  #126 = Utf8               (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+  #127 = Class              #128          // java/util/Set
+  #128 = Utf8               java/util/Set
+  #129 = Methodref          #130.#131     // java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+  #130 = Class              #132          // java/util/Arrays
+  #131 = NameAndType        #133:#134     // asList:([Ljava/lang/Object;)Ljava/util/List;
+  #132 = Utf8               java/util/Arrays
+  #133 = Utf8               asList
+  #134 = Utf8               ([Ljava/lang/Object;)Ljava/util/List;
+  #135 = InterfaceMethodref #127.#136     // java/util/Set.addAll:(Ljava/util/Collection;)Z
+  #136 = NameAndType        #137:#138     // addAll:(Ljava/util/Collection;)Z
+  #137 = Utf8               addAll
+  #138 = Utf8               (Ljava/util/Collection;)Z
+  #139 = InvokeDynamic      #2:#140       // #2:find:()Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+  #140 = NameAndType        #101:#141     // find:()Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+  #141 = Utf8               ()Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+  #142 = Methodref          #14.#143      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.registerForTypes:(Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;[Lnet/minecraft/world/entity/EntityType;)V
+  #143 = NameAndType        #144:#145     // registerForTypes:(Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;[Lnet/minecraft/world/entity/EntityType;)V
+  #144 = Utf8               registerForTypes
+  #145 = Utf8               (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;[Lnet/minecraft/world/entity/EntityType;)V
+  #146 = String             #147          // EntityApiProvider may not be null.
+  #147 = Utf8               EntityApiProvider may not be null.
+  #148 = Class              #149          // java/lang/IllegalArgumentException
+  #149 = Utf8               java/lang/IllegalArgumentException
+  #150 = String             #151          // Must register at least one EntityType instance with an EntityApiProvider.
+  #151 = Utf8               Must register at least one EntityType instance with an EntityApiProvider.
+  #152 = Methodref          #148.#153     // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+  #153 = NameAndType        #5:#154       // "<init>":(Ljava/lang/String;)V
+  #154 = Utf8               (Ljava/lang/String;)V
+  #155 = InterfaceMethodref #8.#156       // net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #156 = NameAndType        #157:#158     // putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #157 = Utf8               putIfAbsent
+  #158 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #159 = Fieldref           #14.#160      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.LOGGER:Lorg/slf4j/Logger;
+  #160 = NameAndType        #161:#162     // LOGGER:Lorg/slf4j/Logger;
+  #161 = Utf8               LOGGER
+  #162 = Utf8               Lorg/slf4j/Logger;
+  #163 = Fieldref           #164.#165     // net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #164 = Class              #166          // net/minecraft/core/registries/BuiltInRegistries
+  #165 = NameAndType        #167:#168     // ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+  #166 = Utf8               net/minecraft/core/registries/BuiltInRegistries
+  #167 = Utf8               ENTITY_TYPE
+  #168 = Utf8               Lnet/minecraft/core/DefaultedRegistry;
+  #169 = InterfaceMethodref #170.#171     // net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #170 = Class              #172          // net/minecraft/core/DefaultedRegistry
+  #171 = NameAndType        #173:#174     // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #172 = Utf8               net/minecraft/core/DefaultedRegistry
+  #173 = Utf8               getKey
+  #174 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #175 = Methodref          #176.#177     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #176 = Class              #178          // java/lang/String
+  #177 = NameAndType        #179:#180     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #178 = Utf8               java/lang/String
+  #179 = Utf8               valueOf
+  #180 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #181 = InvokeDynamic      #3:#182       // #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #182 = NameAndType        #183:#184     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #183 = Utf8               makeConcatWithConstants
+  #184 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #185 = InterfaceMethodref #186.#187     // org/slf4j/Logger.warn:(Ljava/lang/String;)V
+  #186 = Class              #188          // org/slf4j/Logger
+  #187 = NameAndType        #189:#154     // warn:(Ljava/lang/String;)V
+  #188 = Utf8               org/slf4j/Logger
+  #189 = Utf8               warn
+  #190 = InterfaceMethodref #104.#191     // java/util/List.add:(Ljava/lang/Object;)Z
+  #191 = NameAndType        #192:#86      // add:(Ljava/lang/Object;)Z
+  #192 = Utf8               add
+  #193 = Class              #194          // java/util/LinkedHashSet
+  #194 = Utf8               java/util/LinkedHashSet
+  #195 = Methodref          #193.#3       // java/util/LinkedHashSet."<init>":()V
+  #196 = InterfaceMethodref #127.#105     // java/util/Set.iterator:()Ljava/util/Iterator;
+  #197 = Class              #198          // net/minecraft/world/entity/EntityType
+  #198 = Utf8               net/minecraft/world/entity/EntityType
+  #199 = Methodref          #200.#201     // net/minecraft/server/MinecraftServer.overworld:()Lnet/minecraft/server/level/ServerLevel;
+  #200 = Class              #202          // net/minecraft/server/MinecraftServer
+  #201 = NameAndType        #203:#204     // overworld:()Lnet/minecraft/server/level/ServerLevel;
+  #202 = Utf8               net/minecraft/server/MinecraftServer
+  #203 = Utf8               overworld
+  #204 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #205 = Methodref          #197.#206     // net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #206 = NameAndType        #11:#207      // create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #207 = Utf8               (Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+  #208 = String             #209          // Failed to register self-implementing entities for API class %s. Can not create entity of type %s.
+  #209 = Utf8               Failed to register self-implementing entities for API class %s. Can not create entity of type %s.
+  #210 = Methodref          #211.#212     // java/lang/Class.getCanonicalName:()Ljava/lang/String;
+  #211 = Class              #213          // java/lang/Class
+  #212 = NameAndType        #214:#215     // getCanonicalName:()Ljava/lang/String;
+  #213 = Utf8               java/lang/Class
+  #214 = Utf8               getCanonicalName
+  #215 = Utf8               ()Ljava/lang/String;
+  #216 = Methodref          #176.#217     // java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #217 = NameAndType        #218:#219     // format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #218 = Utf8               format
+  #219 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+  #220 = Class              #221          // java/lang/NullPointerException
+  #221 = Utf8               java/lang/NullPointerException
+  #222 = Methodref          #220.#153     // java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+  #223 = Methodref          #211.#224     // java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+  #224 = NameAndType        #225:#86      // isInstance:(Ljava/lang/Object;)Z
+  #225 = Utf8               isInstance
+  #226 = String             #227          // Failed to register self-implementing entities. API class %s is not assignable from entity class %s.
+  #227 = Utf8               Failed to register self-implementing entities. API class %s is not assignable from entity class %s.
+  #228 = Methodref          #2.#229       // java/lang/Object.getClass:()Ljava/lang/Class;
+  #229 = NameAndType        #230:#231     // getClass:()Ljava/lang/Class;
+  #230 = Utf8               getClass
+  #231 = Utf8               ()Ljava/lang/Class;
+  #232 = String             #233          // fabric-api-lookup-api-v1/entity
+  #233 = Utf8               fabric-api-lookup-api-v1/entity
+  #234 = Methodref          #235.#236     // org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+  #235 = Class              #237          // org/slf4j/LoggerFactory
+  #236 = NameAndType        #238:#239     // getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+  #237 = Utf8               org/slf4j/LoggerFactory
+  #238 = Utf8               getLogger
+  #239 = Utf8               (Ljava/lang/String;)Lorg/slf4j/Logger;
+  #240 = InvokeDynamic      #4:#241       // #4:get:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;
+  #241 = NameAndType        #95:#242      // get:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;
+  #242 = Utf8               ()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;
+  #243 = InterfaceMethodref #42.#244      // net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap.create:(Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;)Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+  #244 = NameAndType        #11:#245      // create:(Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;)Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+  #245 = Utf8               (Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;)Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+  #246 = Class              #247          // java/util/HashMap
+  #247 = Utf8               java/util/HashMap
+  #248 = Methodref          #246.#3       // java/util/HashMap."<init>":()V
+  #249 = Utf8               Signature
+  #250 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap<Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<**>;>;
+  #251 = Utf8               Ljava/util/Map<Ljava/lang/Class<*>;Ljava/util/Set<Lnet/minecraft/world/entity/EntityType<*>;>;>;
+  #252 = Utf8               Ljava/lang/Class<TA;>;
+  #253 = Utf8               Ljava/lang/Class<TC;>;
+  #254 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap<Lnet/minecraft/world/entity/EntityType<*>;Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;>;
+  #255 = Utf8               Ljava/util/List<Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;>;
+  #256 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+  #257 = Utf8               Code
+  #258 = Utf8               LineNumberTable
+  #259 = Utf8               LocalVariableTable
+  #260 = Utf8               this
+  #261 = Utf8               Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+  #262 = Utf8               LocalVariableTypeTable
+  #263 = Utf8               Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+  #264 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class<TA;>;Ljava/lang/Class<TC;>;)V
+  #265 = Utf8               (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup;
+  #266 = Utf8               lookupId
+  #267 = Utf8               <A:Ljava/lang/Object;C:Ljava/lang/Object;>(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class<TA;>;Ljava/lang/Class<TC;>;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<TA;TC;>;
+  #268 = Utf8               checkSelfImplementingTypes
+  #269 = Utf8               (Lnet/minecraft/server/MinecraftServer;)V
+  #270 = Utf8               server
+  #271 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #272 = Utf8               StackMapTable
+  #273 = Class              #274          // java/lang/Throwable
+  #274 = Utf8               java/lang/Throwable
+  #275 = Utf8               instance
+  #276 = Utf8               Ljava/lang/Object;
+  #277 = Utf8               fallback
+  #278 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+  #279 = Utf8               provider
+  #280 = Utf8               entity
+  #281 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #282 = Utf8               context
+  #283 = Utf8               TA;
+  #284 = Utf8               Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+  #285 = Utf8               TC;
+  #286 = Utf8               (Lnet/minecraft/world/entity/Entity;TC;)TA;
+  #287 = Utf8               RuntimeInvisibleAnnotations
+  #288 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #289 = Utf8               RuntimeInvisibleTypeAnnotations
+  #290 = Utf8               registerSelf
+  #291 = Utf8               ([Lnet/minecraft/world/entity/EntityType;)V
+  #292 = Utf8               entityTypes
+  #293 = Utf8               [Lnet/minecraft/world/entity/EntityType;
+  #294 = Utf8               [Lnet/minecraft/world/entity/EntityType<*>;
+  #295 = Class              #293          // "[Lnet/minecraft/world/entity/EntityType;"
+  #296 = Utf8               ([Lnet/minecraft/world/entity/EntityType<*>;)V
+  #297 = Utf8               entityType
+  #298 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #299 = Utf8               Lnet/minecraft/world/entity/EntityType<*>;
+  #300 = Utf8               (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;[Lnet/minecraft/world/entity/EntityType<*>;)V
+  #301 = Utf8               registerFallback
+  #302 = Utf8               (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;)V
+  #303 = Utf8               fallbackProvider
+  #304 = Utf8               (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;)V
+  #305 = Utf8               getId
+  #306 = Utf8               ()Lnet/minecraft/resources/ResourceLocation;
+  #307 = Utf8               ()Ljava/lang/Class<TA;>;
+  #308 = Utf8               ()Ljava/lang/Class<TC;>;
+  #309 = Utf8               getProvider
+  #310 = Utf8               (Lnet/minecraft/world/entity/EntityType;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+  #311 = Utf8               (Lnet/minecraft/world/entity/EntityType<*>;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+  #312 = Utf8               lambda$registerSelf$2
+  #313 = Utf8               lambda$registerSelf$1
+  #314 = Utf8               (Ljava/lang/Class;)Ljava/util/Set;
+  #315 = Utf8               c
+  #316 = Utf8               lambda$checkSelfImplementingTypes$0
+  #317 = Utf8               (Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+  #318 = Utf8               errorMessage
+  #319 = Utf8               Ljava/lang/String;
+  #320 = Utf8               Ljava/util/Set;
+  #321 = Utf8               <clinit>
+  #322 = Utf8               <A:Ljava/lang/Object;C:Ljava/lang/Object;>Ljava/lang/Object;Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<TA;TC;>;
+  #323 = Utf8               SourceFile
+  #324 = Utf8               EntityApiLookupImpl.java
+  #325 = Utf8               BootstrapMethods
+  #326 = MethodType         #327          //  (Ljava/lang/Object;Ljava/lang/Object;)V
+  #327 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)V
+  #328 = MethodHandle       6:#329        // REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$checkSelfImplementingTypes$0:(Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+  #329 = Methodref          #14.#330      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$checkSelfImplementingTypes$0:(Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+  #330 = NameAndType        #316:#317     // lambda$checkSelfImplementingTypes$0:(Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+  #331 = MethodType         #332          //  (Ljava/lang/Class;Ljava/util/Set;)V
+  #332 = Utf8               (Ljava/lang/Class;Ljava/util/Set;)V
+  #333 = MethodType         #96           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #334 = MethodHandle       6:#335        // REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$1:(Ljava/lang/Class;)Ljava/util/Set;
+  #335 = Methodref          #14.#336      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$1:(Ljava/lang/Class;)Ljava/util/Set;
+  #336 = NameAndType        #313:#314     // lambda$registerSelf$1:(Ljava/lang/Class;)Ljava/util/Set;
+  #337 = MethodType         #314          //  (Ljava/lang/Class;)Ljava/util/Set;
+  #338 = MethodType         #102          //  (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #339 = MethodHandle       6:#340        // REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$2:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #340 = Methodref          #14.#341      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$2:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #341 = NameAndType        #312:#102     // lambda$registerSelf$2:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  #342 = String             #343          // Encountered duplicate API provider registration for entity type: \u0001
+  #343 = Utf8               Encountered duplicate API provider registration for entity type: \u0001
+  #344 = MethodType         #46           //  (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+  #345 = MethodHandle       8:#346        // REF_newInvokeSpecial net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+  #346 = Methodref          #14.#347      // net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+  #347 = NameAndType        #5:#256       // "<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+  #348 = MethodType         #265          //  (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup;
+  #349 = MethodHandle       6:#350        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #350 = Methodref          #351.#352     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #351 = Class              #353          // java/lang/invoke/LambdaMetafactory
+  #352 = NameAndType        #354:#355     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #353 = Utf8               java/lang/invoke/LambdaMetafactory
+  #354 = Utf8               metafactory
+  #355 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #356 = MethodHandle       6:#357        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #357 = Methodref          #358.#359     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #358 = Class              #360          // java/lang/invoke/StringConcatFactory
+  #359 = NameAndType        #183:#361     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #360 = Utf8               java/lang/invoke/StringConcatFactory
+  #361 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #362 = Utf8               InnerClasses
+  #363 = Utf8               EntityApiProvider
+  #364 = Class              #365          // net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor
+  #365 = Utf8               net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor
+  #366 = Utf8               LookupConstructor
+  #367 = Class              #368          // java/lang/invoke/MethodHandles$Lookup
+  #368 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #369 = Class              #370          // java/lang/invoke/MethodHandles
+  #370 = Utf8               java/lang/invoke/MethodHandles
+  #371 = Utf8               Lookup
+{
+  private static final org.slf4j.Logger LOGGER;
+    descriptor: Lorg/slf4j/Logger;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private static final net.fabricmc.fabric.api.lookup.v1.custom.ApiLookupMap<net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup<?, ?>> LOOKUPS;
+    descriptor: Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #250                         // Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap<Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<**>;>;
+
+  private static final java.util.Map<java.lang.Class<?>, java.util.Set<net.minecraft.world.entity.EntityType<?>>> REGISTERED_SELVES;
+    descriptor: Ljava/util/Map;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+    Signature: #251                         // Ljava/util/Map<Ljava/lang/Class<*>;Ljava/util/Set<Lnet/minecraft/world/entity/EntityType<*>;>;>;
+
+  private static boolean checkEntityLookup;
+    descriptor: Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private final net.minecraft.resources.ResourceLocation identifier;
+    descriptor: Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  private final java.lang.Class<A> apiClass;
+    descriptor: Ljava/lang/Class;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #252                         // Ljava/lang/Class<TA;>;
+
+  private final java.lang.Class<C> contextClass;
+    descriptor: Ljava/lang/Class;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #253                         // Ljava/lang/Class<TC;>;
+
+  private final net.fabricmc.fabric.api.lookup.v1.custom.ApiProviderMap<net.minecraft.world.entity.EntityType<?>, net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>> providerMap;
+    descriptor: Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #254                         // Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap<Lnet/minecraft/world/entity/EntityType<*>;Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;>;
+
+  private final java.util.List<net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>> fallbackProviders;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #255                         // Ljava/util/List<Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;>;
+
+  private net.fabricmc.fabric.impl.lookup.entity.EntityApiLookupImpl(net.minecraft.resources.ResourceLocation, java.lang.Class<A>, java.lang.Class<C>);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: invokestatic  #7                  // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.create:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+         8: putfield      #13                 // Field providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+        11: aload_0
+        12: new           #19                 // class java/util/concurrent/CopyOnWriteArrayList
+        15: dup
+        16: invokespecial #21                 // Method java/util/concurrent/CopyOnWriteArrayList."<init>":()V
+        19: putfield      #22                 // Field fallbackProviders:Ljava/util/List;
+        22: aload_0
+        23: aload_1
+        24: putfield      #26                 // Field identifier:Lnet/minecraft/resources/ResourceLocation;
+        27: aload_0
+        28: aload_2
+        29: putfield      #30                 // Field apiClass:Ljava/lang/Class;
+        32: aload_0
+        33: aload_3
+        34: putfield      #34                 // Field contextClass:Ljava/lang/Class;
+        37: return
+      LineNumberTable:
+        line 53: 0
+        line 50: 4
+        line 51: 11
+        line 54: 22
+        line 55: 27
+        line 56: 32
+        line 57: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0      38     1 identifier   Lnet/minecraft/resources/ResourceLocation;
+            0      38     2 apiClass   Ljava/lang/Class;
+            0      38     3 contextClass   Ljava/lang/Class;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      38     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0      38     2 apiClass   Ljava/lang/Class<TA;>;
+            0      38     3 contextClass   Ljava/lang/Class<TC;>;
+    Signature: #264                         // (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class<TA;>;Ljava/lang/Class<TC;>;)V
+
+  public static <A extends java.lang.Object, C extends java.lang.Object> net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup<A, C> get(net.minecraft.resources.ResourceLocation, java.lang.Class<A>, java.lang.Class<C>);
+    descriptor: (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=3, args_size=3
+         0: getstatic     #37                 // Field LOOKUPS:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+         3: aload_0
+         4: aload_1
+         5: aload_2
+         6: invokeinterface #41,  4           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap.getLookup:(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+        11: checkcast     #47                 // class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup
+        14: areturn
+      LineNumberTable:
+        line 61: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0 lookupId   Lnet/minecraft/resources/ResourceLocation;
+            0      15     1 apiClass   Ljava/lang/Class;
+            0      15     2 contextClass   Ljava/lang/Class;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      15     1 apiClass   Ljava/lang/Class<TA;>;
+            0      15     2 contextClass   Ljava/lang/Class<TC;>;
+    Signature: #267                         // <A:Ljava/lang/Object;C:Ljava/lang/Object;>(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class<TA;>;Ljava/lang/Class<TC;>;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<TA;TC;>;
+
+  public static void checkSelfImplementingTypes(net.minecraft.server.MinecraftServer);
+    descriptor: (Lnet/minecraft/server/MinecraftServer;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: getstatic     #49                 // Field checkEntityLookup:Z
+         3: ifeq          40
+         6: iconst_0
+         7: putstatic     #49                 // Field checkEntityLookup:Z
+        10: getstatic     #53                 // Field REGISTERED_SELVES:Ljava/util/Map;
+        13: dup
+        14: astore_1
+        15: monitorenter
+        16: getstatic     #53                 // Field REGISTERED_SELVES:Ljava/util/Map;
+        19: aload_0
+        20: invokedynamic #57,  0             // InvokeDynamic #0:accept:(Lnet/minecraft/server/MinecraftServer;)Ljava/util/function/BiConsumer;
+        25: invokeinterface #61,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+        30: aload_1
+        31: monitorexit
+        32: goto          40
+        35: astore_2
+        36: aload_1
+        37: monitorexit
+        38: aload_2
+        39: athrow
+        40: return
+      Exception table:
+         from    to  target type
+            16    32    35   any
+            35    38    35   any
+      LineNumberTable:
+        line 65: 0
+        line 66: 6
+        line 68: 10
+        line 69: 16
+        line 92: 30
+        line 94: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      41     0 server   Lnet/minecraft/server/MinecraftServer;
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 35
+          locals = [ class net/minecraft/server/MinecraftServer, class java/lang/Object ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 250 /* chop */
+          offset_delta = 4
+
+  public A find(net.minecraft.world.entity.Entity, C);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=7, args_size=3
+         0: aload_1
+         1: ldc           #67                 // String Entity may not be null.
+         3: invokestatic  #69                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         6: pop
+         7: getstatic     #75                 // Field net/minecraft/world/entity/EntitySelector.ENTITY_STILL_ALIVE:Ljava/util/function/Predicate;
+        10: aload_1
+        11: invokeinterface #81,  2           // InterfaceMethod java/util/function/Predicate.test:(Ljava/lang/Object;)Z
+        16: ifeq          113
+        19: aload_0
+        20: getfield      #13                 // Field providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+        23: aload_1
+        24: invokevirtual #87                 // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+        27: invokeinterface #93,  2           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        32: checkcast     #97                 // class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider
+        35: astore_3
+        36: aload_3
+        37: ifnull        58
+        40: aload_3
+        41: aload_1
+        42: aload_2
+        43: invokeinterface #99,  3           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider.find:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+        48: astore        4
+        50: aload         4
+        52: ifnull        58
+        55: aload         4
+        57: areturn
+        58: aload_0
+        59: getfield      #22                 // Field fallbackProviders:Ljava/util/List;
+        62: invokeinterface #103,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        67: astore        4
+        69: aload         4
+        71: invokeinterface #109,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        76: ifeq          113
+        79: aload         4
+        81: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        86: checkcast     #97                 // class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider
+        89: astore        5
+        91: aload         5
+        93: aload_1
+        94: aload_2
+        95: invokeinterface #99,  3           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider.find:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+       100: astore        6
+       102: aload         6
+       104: ifnull        110
+       107: aload         6
+       109: areturn
+       110: goto          69
+       113: aconst_null
+       114: areturn
+      LineNumberTable:
+        line 99: 0
+        line 101: 7
+        line 102: 19
+        line 104: 36
+        line 105: 40
+        line 107: 50
+        line 108: 55
+        line 112: 58
+        line 113: 91
+        line 115: 102
+        line 116: 107
+        line 118: 110
+        line 121: 113
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           50       8     4 instance   Ljava/lang/Object;
+          102       8     6 instance   Ljava/lang/Object;
+           91      19     5 fallback   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+           36      77     3 provider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+            0     115     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0     115     1 entity   Lnet/minecraft/world/entity/Entity;
+            0     115     2 context   Ljava/lang/Object;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           50       8     4 instance   TA;
+          102       8     6 instance   TA;
+           91      19     5 fallback   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+           36      77     3 provider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+            0     115     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0     115     2 context   TC;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 58
+          locals = [ class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider ]
+        frame_type = 252 /* append */
+          offset_delta = 10
+          locals = [ class java/util/Iterator ]
+        frame_type = 40 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+    Signature: #286                         // (Lnet/minecraft/world/entity/Entity;TC;)TA;
+    RuntimeInvisibleAnnotations:
+      0: #288()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #288(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  public void registerSelf(net.minecraft.world.entity.EntityType<?>...);
+    descriptor: ([Lnet/minecraft/world/entity/EntityType;)V
+    flags: (0x0081) ACC_PUBLIC, ACC_VARARGS
+    Code:
+      stack=3, locals=4, args_size=2
+         0: getstatic     #53                 // Field REGISTERED_SELVES:Ljava/util/Map;
+         3: dup
+         4: astore_2
+         5: monitorenter
+         6: getstatic     #53                 // Field REGISTERED_SELVES:Ljava/util/Map;
+         9: aload_0
+        10: getfield      #30                 // Field apiClass:Ljava/lang/Class;
+        13: invokedynamic #119,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        18: invokeinterface #123,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+        23: checkcast     #127                // class java/util/Set
+        26: aload_1
+        27: invokestatic  #129                // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+        30: invokeinterface #135,  2          // InterfaceMethod java/util/Set.addAll:(Ljava/util/Collection;)Z
+        35: pop
+        36: aload_2
+        37: monitorexit
+        38: goto          46
+        41: astore_3
+        42: aload_2
+        43: monitorexit
+        44: aload_3
+        45: athrow
+        46: aload_0
+        47: invokedynamic #139,  0            // InvokeDynamic #2:find:()Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+        52: aload_1
+        53: invokevirtual #142                // Method registerForTypes:(Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;[Lnet/minecraft/world/entity/EntityType;)V
+        56: return
+      Exception table:
+         from    to  target type
+             6    38    41   any
+            41    44    41   any
+      LineNumberTable:
+        line 127: 0
+        line 128: 6
+        line 129: 36
+        line 131: 46
+        line 132: 56
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      57     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0      57     1 entityTypes   [Lnet/minecraft/world/entity/EntityType;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      57     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0      57     1 entityTypes   [Lnet/minecraft/world/entity/EntityType<*>;
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 41
+          locals = [ class net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl, class "[Lnet/minecraft/world/entity/EntityType;", class java/lang/Object ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 250 /* chop */
+          offset_delta = 4
+    Signature: #296                         // ([Lnet/minecraft/world/entity/EntityType<*>;)V
+
+  public void registerForTypes(net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>, net.minecraft.world.entity.EntityType<?>...);
+    descriptor: (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;[Lnet/minecraft/world/entity/EntityType;)V
+    flags: (0x0081) ACC_PUBLIC, ACC_VARARGS
+    Code:
+      stack=3, locals=7, args_size=3
+         0: aload_1
+         1: ldc           #146                // String EntityApiProvider may not be null.
+         3: invokestatic  #69                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         6: pop
+         7: aload_2
+         8: arraylength
+         9: ifne          22
+        12: new           #148                // class java/lang/IllegalArgumentException
+        15: dup
+        16: ldc           #150                // String Must register at least one EntityType instance with an EntityApiProvider.
+        18: invokespecial #152                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+        21: athrow
+        22: aload_2
+        23: astore_3
+        24: aload_3
+        25: arraylength
+        26: istore        4
+        28: iconst_0
+        29: istore        5
+        31: iload         5
+        33: iload         4
+        35: if_icmpge     91
+        38: aload_3
+        39: iload         5
+        41: aaload
+        42: astore        6
+        44: aload_0
+        45: getfield      #13                 // Field providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+        48: aload         6
+        50: aload_1
+        51: invokeinterface #155,  3          // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.putIfAbsent:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        56: ifnull        85
+        59: getstatic     #159                // Field LOGGER:Lorg/slf4j/Logger;
+        62: getstatic     #163                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+        65: aload         6
+        67: invokeinterface #169,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        72: invokestatic  #175                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        75: invokedynamic #181,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        80: invokeinterface #185,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+        85: iinc          5, 1
+        88: goto          31
+        91: return
+      LineNumberTable:
+        line 136: 0
+        line 138: 7
+        line 139: 12
+        line 142: 22
+        line 143: 44
+        line 144: 59
+        line 142: 85
+        line 147: 91
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           44      41     6 entityType   Lnet/minecraft/world/entity/EntityType;
+            0      92     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0      92     1 provider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+            0      92     2 entityTypes   [Lnet/minecraft/world/entity/EntityType;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           44      41     6 entityType   Lnet/minecraft/world/entity/EntityType<*>;
+            0      92     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0      92     1 provider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+            0      92     2 entityTypes   [Lnet/minecraft/world/entity/EntityType<*>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 22 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 8
+          locals = [ class "[Lnet/minecraft/world/entity/EntityType;", int, int ]
+        frame_type = 53 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 5
+    Signature: #300                         // (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;[Lnet/minecraft/world/entity/EntityType<*>;)V
+
+  public void registerFallback(net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C>);
+    descriptor: (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: ldc           #146                // String EntityApiProvider may not be null.
+         3: invokestatic  #69                 // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+         6: pop
+         7: aload_0
+         8: getfield      #22                 // Field fallbackProviders:Ljava/util/List;
+        11: aload_1
+        12: invokeinterface #190,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        17: pop
+        18: return
+      LineNumberTable:
+        line 151: 0
+        line 153: 7
+        line 154: 18
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0      19     1 fallbackProvider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      19     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0      19     1 fallbackProvider   Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+    Signature: #304                         // (Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;)V
+
+  public net.minecraft.resources.ResourceLocation getId();
+    descriptor: ()Lnet/minecraft/resources/ResourceLocation;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #26                 // Field identifier:Lnet/minecraft/resources/ResourceLocation;
+         4: areturn
+      LineNumberTable:
+        line 158: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+
+  public java.lang.Class<A> apiClass();
+    descriptor: ()Ljava/lang/Class;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #30                 // Field apiClass:Ljava/lang/Class;
+         4: areturn
+      LineNumberTable:
+        line 163: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+    Signature: #307                         // ()Ljava/lang/Class<TA;>;
+
+  public java.lang.Class<C> contextClass();
+    descriptor: ()Ljava/lang/Class;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #34                 // Field contextClass:Ljava/lang/Class;
+         4: areturn
+      LineNumberTable:
+        line 168: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+    Signature: #308                         // ()Ljava/lang/Class<TC;>;
+
+  public net.fabricmc.fabric.api.lookup.v1.entity.EntityApiLookup$EntityApiProvider<A, C> getProvider(net.minecraft.world.entity.EntityType<?>);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #13                 // Field providerMap:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap;
+         4: aload_1
+         5: invokeinterface #93,  2           // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiProviderMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        10: checkcast     #97                 // class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider
+        13: areturn
+      LineNumberTable:
+        line 174: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl;
+            0      14     1 entityType   Lnet/minecraft/world/entity/EntityType;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Lnet/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl<TA;TC;>;
+            0      14     1 entityType   Lnet/minecraft/world/entity/EntityType<*>;
+    Signature: #311                         // (Lnet/minecraft/world/entity/EntityType<*>;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider<TA;TC;>;
+    RuntimeInvisibleAnnotations:
+      0: #288()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #288(): METHOD_RETURN
+        org.jetbrains.annotations.Nullable
+
+  private static java.lang.Object lambda$registerSelf$2(net.minecraft.world.entity.Entity, java.lang.Object);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: areturn
+      LineNumberTable:
+        line 131: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0 entity   Lnet/minecraft/world/entity/Entity;
+            0       2     1 context   Ljava/lang/Object;
+
+  private static java.util.Set lambda$registerSelf$1(java.lang.Class);
+    descriptor: (Ljava/lang/Class;)Ljava/util/Set;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: new           #193                // class java/util/LinkedHashSet
+         3: dup
+         4: invokespecial #195                // Method java/util/LinkedHashSet."<init>":()V
+         7: areturn
+      LineNumberTable:
+        line 128: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0     c   Ljava/lang/Class;
+
+  private static void lambda$checkSelfImplementingTypes$0(net.minecraft.server.MinecraftServer, java.lang.Class, java.util.Set);
+    descriptor: (Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=6, locals=7, args_size=3
+         0: aload_2
+         1: invokeinterface #196,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+         6: astore_3
+         7: aload_3
+         8: invokeinterface #109,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        13: ifeq          135
+        16: aload_3
+        17: invokeinterface #115,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        22: checkcast     #197                // class net/minecraft/world/entity/EntityType
+        25: astore        4
+        27: aload         4
+        29: aload_0
+        30: invokevirtual #199                // Method net/minecraft/server/MinecraftServer.overworld:()Lnet/minecraft/server/level/ServerLevel;
+        33: invokevirtual #205                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+        36: astore        5
+        38: aload         5
+        40: ifnonnull     84
+        43: ldc           #208                // String Failed to register self-implementing entities for API class %s. Can not create entity of type %s.
+        45: iconst_2
+        46: anewarray     #2                  // class java/lang/Object
+        49: dup
+        50: iconst_0
+        51: aload_1
+        52: invokevirtual #210                // Method java/lang/Class.getCanonicalName:()Ljava/lang/String;
+        55: aastore
+        56: dup
+        57: iconst_1
+        58: getstatic     #163                // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+        61: aload         4
+        63: invokeinterface #169,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+        68: aastore
+        69: invokestatic  #216                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+        72: astore        6
+        74: new           #220                // class java/lang/NullPointerException
+        77: dup
+        78: aload         6
+        80: invokespecial #222                // Method java/lang/NullPointerException."<init>":(Ljava/lang/String;)V
+        83: athrow
+        84: aload_1
+        85: aload         5
+        87: invokevirtual #223                // Method java/lang/Class.isInstance:(Ljava/lang/Object;)Z
+        90: ifne          132
+        93: ldc           #226                // String Failed to register self-implementing entities. API class %s is not assignable from entity class %s.
+        95: iconst_2
+        96: anewarray     #2                  // class java/lang/Object
+        99: dup
+       100: iconst_0
+       101: aload_1
+       102: invokevirtual #210                // Method java/lang/Class.getCanonicalName:()Ljava/lang/String;
+       105: aastore
+       106: dup
+       107: iconst_1
+       108: aload         5
+       110: invokevirtual #228                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       113: invokevirtual #210                // Method java/lang/Class.getCanonicalName:()Ljava/lang/String;
+       116: aastore
+       117: invokestatic  #216                // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+       120: astore        6
+       122: new           #148                // class java/lang/IllegalArgumentException
+       125: dup
+       126: aload         6
+       128: invokespecial #152                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+       131: athrow
+       132: goto          7
+       135: return
+      LineNumberTable:
+        line 70: 0
+        line 71: 27
+        line 73: 38
+        line 74: 43
+        line 76: 52
+        line 77: 63
+        line 74: 69
+        line 79: 74
+        line 82: 84
+        line 83: 93
+        line 85: 102
+        line 86: 110
+        line 83: 117
+        line 88: 122
+        line 90: 132
+        line 91: 135
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           74      10     6 errorMessage   Ljava/lang/String;
+          122      10     6 errorMessage   Ljava/lang/String;
+           38      94     5 entity   Lnet/minecraft/world/entity/Entity;
+           27     105     4 entityType   Lnet/minecraft/world/entity/EntityType;
+            0     136     0 server   Lnet/minecraft/server/MinecraftServer;
+            0     136     1 apiClass   Ljava/lang/Class;
+            0     136     2 entityTypes   Ljava/util/Set;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           27     105     4 entityType   Lnet/minecraft/world/entity/EntityType<*>;
+      StackMapTable: number_of_entries = 4
+        frame_type = 252 /* append */
+          offset_delta = 7
+          locals = [ class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 76
+          locals = [ class net/minecraft/world/entity/EntityType, class net/minecraft/world/entity/Entity ]
+        frame_type = 249 /* chop */
+          offset_delta = 47
+        frame_type = 250 /* chop */
+          offset_delta = 2
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=0, args_size=0
+         0: ldc           #232                // String fabric-api-lookup-api-v1/entity
+         2: invokestatic  #234                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+         5: putstatic     #159                // Field LOGGER:Lorg/slf4j/Logger;
+         8: invokedynamic #240,  0            // InvokeDynamic #4:get:()Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;
+        13: invokestatic  #243                // InterfaceMethod net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap.create:(Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor;)Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+        16: putstatic     #37                 // Field LOOKUPS:Lnet/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap;
+        19: new           #246                // class java/util/HashMap
+        22: dup
+        23: invokespecial #248                // Method java/util/HashMap."<init>":()V
+        26: putstatic     #53                 // Field REGISTERED_SELVES:Ljava/util/Map;
+        29: iconst_1
+        30: putstatic     #49                 // Field checkEntityLookup:Z
+        33: return
+      LineNumberTable:
+        line 42: 0
+        line 43: 8
+        line 44: 19
+        line 45: 29
+}
+Signature: #322                         // <A:Ljava/lang/Object;C:Ljava/lang/Object;>Ljava/lang/Object;Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup<TA;TC;>;
+SourceFile: "EntityApiLookupImpl.java"
+BootstrapMethods:
+  0: #349 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #326 (Ljava/lang/Object;Ljava/lang/Object;)V
+      #328 REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$checkSelfImplementingTypes$0:(Lnet/minecraft/server/MinecraftServer;Ljava/lang/Class;Ljava/util/Set;)V
+      #331 (Ljava/lang/Class;Ljava/util/Set;)V
+  1: #349 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #333 (Ljava/lang/Object;)Ljava/lang/Object;
+      #334 REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$1:(Ljava/lang/Class;)Ljava/util/Set;
+      #337 (Ljava/lang/Class;)Ljava/util/Set;
+  2: #349 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #338 (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+      #339 REF_invokeStatic net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl.lambda$registerSelf$2:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+      #338 (Lnet/minecraft/world/entity/Entity;Ljava/lang/Object;)Ljava/lang/Object;
+  3: #356 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #342 Encountered duplicate API provider registration for entity type: \u0001
+  4: #349 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #344 (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Ljava/lang/Object;
+      #345 REF_newInvokeSpecial net/fabricmc/fabric/impl/lookup/entity/EntityApiLookupImpl."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)V
+      #348 (Lnet/minecraft/resources/ResourceLocation;Ljava/lang/Class;Ljava/lang/Class;)Lnet/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup;
+InnerClasses:
+  public static #363= #97 of #47;         // EntityApiProvider=class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup$EntityApiProvider of class net/fabricmc/fabric/api/lookup/v1/entity/EntityApiLookup
+  public static #366= #364 of #42;        // LookupConstructor=class net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap$LookupConstructor of class net/fabricmc/fabric/api/lookup/v1/custom/ApiLookupMap
+  public static final #371= #367 of #369; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
