@@ -62,7 +62,7 @@ def parse_args() -> argparse.Namespace:
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
-                 "--adora-landmarks", "--adora-facilities"):
+                 "--adora-landmarks", "--adora-facilities", "--adora-nether"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -83,12 +83,13 @@ def main() -> None:
     archive_name = "MoogsVoyagerStructures-1.21-5.0.11.jar" if voyager else archive_name
     archive_name = ("adorabuild-structures-2.11.0-neoforge-1.21.3.jar"
                     if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
-                        or cast("bool", args.adora_facilities)) else
+                        or cast("bool", args.adora_facilities)
+                        or cast("bool", args.adora_nether)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
-                  or cast("bool", args.adora_facilities))
+                  or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -202,9 +203,21 @@ def main() -> None:
         } if cast("bool", args.terralith_buildings) else sheets
         namespace = ("adorabuild_structures"
                      if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
-                        or cast("bool", args.adora_facilities))
+                        or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether))
                      else namespace)
         sheets = {
+            "basalt_chambers": [f"basalt_chambers/{n}" for n in
+                                ("ancient_debris", "dummy_side", "empty", "passage_1",
+                                 "passage_2", "spawner", "trap")],
+            "fortress_parts": [f"nether_fortress/{n}" for n in
+                               ("bridge_1", "dummy_bridge", "stairs_1", "tower_large_1",
+                                "tower_medium_1", "tower_medium_2", "tower_small_1",
+                                "tower_small_2")],
+            "fortresses_temples": ["nether_fortress_large_2", "nether_fortress_medium_1",
+                                   "blackstone_temple_small_1", "nether_temple_medium_1"],
+            "bastions": ["blackstone_bastion_small_1", "blackstone_bastion_medium_1",
+                         "blackstone_bastion_medium_2", "blackstone_bastion_medium_3"],
+        } if cast("bool", args.adora_nether) else {
             "vessels": ["bamboo_raft_1", "cherry_raft_1", "jungle_boat_1", "dark_oak_ship_1",
                         "mangrove_ship_1", "oak_ship_1", "spruce_ship_1", "end_ship_small_1"],
             "frozen_shelters": ["frozen_house_medium_1", "frozen_hut_1", "frozen_hut_2"],
