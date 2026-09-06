@@ -114,6 +114,20 @@ def test_explorations_features_and_frozen_statue_consumers() -> None:
     base = "data/explorations/"
     variants = {"acacia", "bamboo", "birch", "cherry", "dark_oak", "jungle",
                 "mangrove", "oak", "spruce"}
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json").read_bytes()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    scarecrow = contributions["explorations:scarecrow"]
+    variant_ids = sorted("explorations:scarecrow_" + name for name in variants)
+    assert scarecrow["configured_features"] == scarecrow["placed_features"] == variant_ids
+    assert scarecrow["selector"] == "explorations:scarecrow"
+    for path, digest in cast("dict[str, str]", scarecrow["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+    registry = Path("evidence/item-8/runtime/registry-r1/dumps/registry/minecraft")
+    assert set(variant_ids) | {"explorations:scarecrow"} <= set(read_registry(
+        registry / "worldgen_configured_feature.txt"))
+    assert set(variant_ids) <= set(read_registry(registry / "worldgen_placed_feature.txt"))
     configured = base + "worldgen/configured_feature/"
     assert {n.removeprefix(configured).removesuffix(".json") for n in data
             if n.startswith(configured)} == {
