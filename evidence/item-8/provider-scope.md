@@ -1597,3 +1597,48 @@ mixin wins over another provider or that a template request proves placement.
 Four focused cases, Ruff and Basedpyright pass using the commands above. The
 provider remains open: these are candidate and component resolutions, not whole
 BetterEnd closure. Overall provider coverage remains 53 resolved and 83 open.
+
+### BetterEnd complete packaged-template partition
+
+Source b5655b9, selected by d14f2ea, resolves the platform helper and Eternal
+Portal template consumer. GeneratorOptions copies typed GeneratorConfig values;
+the remaining key-to-field binding is explicitly GeneratorConfig, not an
+unbounded helper audit. TerrainGenerator.makeObsidianPlatform either suppresses
+vanilla creation, leaves it alone or relocates its obsidian platform according
+to those option values. It supplies no additional independent template design.
+BiomeIslandFeature fills terrain materials through SDF operations and supplies
+no authored building template or encounter. Preserve its actual placement
+consumers separately rather than interpreting its registry name as a dimension.
+
+EternalPortalStructure loads portal/eternal_portal for the existing live
+betterend:eternal_portal root. Together with the two exit-portal alternatives
+already resolved, this accounts for all three packaged portal templates.
+
+The fifth case in test_betterend_feature_candidates.py accounts for all 128 NBT
+templates in the frozen BetterEnd archive, with no unmatched path category:
+
+| Template group | Count | Disposition |
+| --- | ---: | --- |
+| Six configured building lists | 63 | 42 architectural candidate choices and 21 vegetation choices, as enumerated above. |
+| Other biome templates | 7 | Six vegetation templates and the explicitly disconnected blossoming_spires/house candidate. |
+| Village | 43 | 41 connected components and two disconnected components of the existing End village design. |
+| Central pillars | 12 | Base/top/cage components of existing central End pillars. |
+| Portals | 3 | Eternal Portal component and active/inactive exit-portal alternatives. |
+| Total | 128 | Template accounting, not family count or proof of successful generation. |
+
+The existing village graph retains two missing references:
+`betterend:village/street_decoration/work_01` and
+`betterend:village/terminators/stree_terminator_01`. The two packaged disconnected
+templates are instead `betterend:village/decoration/work_01` and
+`betterend:village/terminators/street_terminator_01`. These are different IDs;
+do not substitute them, rewrite evidence or repair the frozen baseline.
+The graph has no unresolved pool-element codecs. Five native pools connect to
+the root; the sixth native pool, village/decorations, is empty with fallback to
+village/terminators and is not reached by this root graph.
+
+Five focused cases, Ruff and Basedpyright pass with the existing commands. The
+source capture independently reproduced byte for byte. No new measurement or
+schema. BetterEnd still requires remaining code-generation entries, configuration
+binding and shared modifier/consumer reconciliation; complete template accounting
+alone does not close that provider. Overall coverage remains 53 resolved and
+83 open providers. Keep the 128-template boundary closed while doing that work.

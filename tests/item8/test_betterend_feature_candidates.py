@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
@@ -269,3 +271,63 @@ def test_betterend_pillar_candidates_and_existing_end_components() -> None:
             "data/betterend/structure/portal/end_portal_inactive.nbt",
         }:
             assert template_summary(archive.read(name))["size"]
+
+
+def test_betterend_complete_template_partition_and_village_graph() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "BetterEnd-21.0.31.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    directory = Path("evidence/item-8/sources/betterend-platform-portal-consumers")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c"
+    )
+    graph_raw = Path("evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
+    assert hashlib.sha256(graph_raw).hexdigest() == (
+        "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+    )
+    graph = cast("dict[str, dict[str, dict[str, JsonValue]]]",
+                 json.loads(gzip.decompress(graph_raw)))["structures"]["betterend:end_village"]
+    with ZipFile(source.path) as archive:
+        for row in cast("list[dict[str, str]]", json.loads(raw)):
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+        templates = {n for n in archive.namelist() if n.endswith(".nbt")}
+        assert len(templates) == 128
+        assert all(n.startswith("data/betterend/structure/") for n in templates)
+        assert Counter(n.split("/")[3] for n in templates) == {
+            "biome": 70, "village": 43, "pillars": 12, "portal": 3,
+        }
+        village = {"betterend:" + n.removeprefix("data/betterend/structure/").removesuffix(".nbt")
+                   for n in templates if "/structure/village/" in n}
+        connected = set(cast("list[str]", graph["templates"]))
+        assert connected <= village
+        assert village - connected == {
+            "betterend:village/decoration/work_01",
+            "betterend:village/terminators/street_terminator_01",
+        }
+        assert graph["missing"] == [
+            {"id": "betterend:village/street_decoration/work_01", "kind": "template"},
+            {"id": "betterend:village/terminators/stree_terminator_01", "kind": "template"},
+        ]
+        assert graph["unresolved_elements"] == []
+        pools = {"betterend:" + n.removeprefix(
+            "data/betterend/worldgen/template_pool/").removesuffix(".json")
+            for n in archive.namelist()
+            if n.startswith("data/betterend/worldgen/template_pool/") and n.endswith(".json")}
+        assert pools - set(cast("list[str]", graph["pools"])) == {"betterend:village/decorations"}
+        assert json.loads(archive.read(
+            "data/betterend/worldgen/template_pool/village/decorations.json")) == {
+            "elements": [], "fallback": "betterend:village/terminators",
+        }
+        root = cast("dict[str, JsonValue]", json.loads(archive.read(
+            "data/betterend/worldgen/structure/eternal_portal.json")))
+        assert root["type"] == "betterend:eternal_portal"
+        assert template_summary(archive.read(
+            "data/betterend/structure/portal/eternal_portal.nbt"))["size"]
+    registry = read_registry(Path(
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"))
+    assert {"betterend:end_village", "betterend:eternal_portal"} <= set(registry)
