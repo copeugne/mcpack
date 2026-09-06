@@ -637,7 +637,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
 | `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
-| `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
+| `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | c2me-entry, c2me-base-entry, c2me-worldgen-threading, c2me-threading-boundaries | OPEN: outer startup, base dispatch and worldgen-threading module accounted for below. Finish remaining module entries and generation-related hooks; reuse these captures. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `chipped-neoforge-1.21.1-4.0.2.jar` | `chipped-provider`, `chipped-crafting`; complete payload binding. | RESOLVED: building blocks, recipes, player workbench crafting and block behavior. No independent structure family. |
 | `cloth-config-15.0.140-neoforge.jar` | `cloth-config-provider` (6e7567c7), complete payload/source binding. | RESOLVED: config-screen API; sole automatic initialization is client-guarded. No independent family. |
@@ -7751,3 +7751,33 @@ Disposition: no independent generated family. Whole providers: 121 resolved,
 15 open. Working groups remain 410 and 100 explicitly provisional Moog grouping
 decisions remain. Final canonical grouping, attributes and Item 8 review/main
 delivery remain incomplete.
+
+## C2ME partial provider disposition
+
+Provider membership remains OPEN. The outer entry and base module dispatch are
+retained in 957658fa. Worldgen-threading hooks are retained in ff824a0b and
+their direct transformation/state delegates in cb33666e. These 49 captured
+classes account for startup diagnostics, module selection and the complete
+worldgen-threading module hook set. They establish no independent family.
+
+The latter module modifies existing structure state: atomic chest/trap flags
+and references, thread-local piece counts/selection, synchronized collections,
+volatile field annotations, locked mansion grids and guarded region tick writes.
+Its extension exports debug mappings and its transformer changes field access
+flags. Preserve random ownership failures and optional fallback behavior as
+limitations; this inspection does not prove unchanged generation or concurrency
+correctness. No benchmark, fresh server experiment or new measurement system
+was required. Do not trace generic debug formatters or config/executor internals.
+
+```sh
+uv run pytest -q tests/item8/test_c2me_threading_scope.py
+uv run ruff check tests/item8/test_c2me_threading_scope.py
+uv run basedpyright tests/item8/test_c2me_threading_scope.py
+```
+
+The focused test passes and binds the complete module payload, 36 common hooks,
+plugin, entrypoint and five direct delegates to their archive and source hashes.
+Scoped quality checks pass after replacing an initially rejected split string
+with the exact single-line member name. Every capture reproduces byte-for-byte
+with its recorded extractor. Source README files retain the commands and hashes.
+Whole providers remain 121 resolved and 15 open; no canonical grouping changed.

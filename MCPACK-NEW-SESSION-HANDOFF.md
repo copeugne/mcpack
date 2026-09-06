@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-06
 
+C2ME is partially inspected, not a resolved provider. Reuse 957658fa (outer
+startup and base module selection), ff824a0b (all worldgen-threading hooks) and
+cb33666e (their transformation/state delegates). The module changes existing
+structure state, with no independent family. Its focused payload/source test
+and scoped quality checks pass; all captures reproduce exactly. Do not audit
+generic debug/config/executor internals. Continue the other module entries and
+generation-related hooks, including chunkio pool-element access, worldgen
+optimizations and the rewritten chunk generator. Keep family membership first.
+Whole providers remain 121 resolved, 15 open; 410 working groups and 100
+provisional Moog decisions remain. No final count, Item 8 gate, clean review or
+main merge is established. The preceding user-response turn only restated
+status; this turn delivered the C2ME source evidence and module disposition.
+
+
 Amendments membership is resolved from 4ece1d82, e248456f and 97966218, with
 Moonlight's existing shared-plugin capture reused. No independent family;
 retain cauldron replacements in existing structure tags as content modifiers.
