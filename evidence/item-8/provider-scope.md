@@ -9216,3 +9216,11 @@ uv run pytest tests/item8/test_idas_provider_scope.py tests/item8/test_family_de
 uv run ruff check tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
 uv run basedpyright tests/item8/test_idas_provider_scope.py tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from b296565c and independently reproduced exactly.
+SHA-256: 9c4475699659ebec70769cb33202dea7679a4657f09cfc56c3808e60743396fe.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-dependencies-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-dependencies-r2.json
+```

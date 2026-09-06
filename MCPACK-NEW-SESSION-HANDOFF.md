@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches b296565c and reproduces exactly. Canonical-note backlog: 121.
+Coverage groups remain 405. Optional IDAS roots are inactive; adaptive default
+pool selection is resolved, but their design reconciliation remains open.
+
 Three IDAS optional roots are now inactive candidates: archmages_tower, dread_citadel
 and sirens_cove. The exact dependency consumer, inherited caller and NeoForge lookup
 are delivered at b9d76078/82b5f4ec; the frozen runtime log excludes Ars Nouveau and
