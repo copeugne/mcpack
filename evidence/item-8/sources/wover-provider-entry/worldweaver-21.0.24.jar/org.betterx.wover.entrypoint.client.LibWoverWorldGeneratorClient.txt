@@ -1,0 +1,93 @@
+Compiled from "LibWoverWorldGeneratorClient.java"
+public class org.betterx.wover.entrypoint.client.LibWoverWorldGeneratorClient {
+  public org.betterx.wover.entrypoint.client.LibWoverWorldGeneratorClient();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: getstatic     #7                  // Field org/betterx/wover/events/api/client/ClientWorldLifecycle.AFTER_WELCOME_SCREEN:Lorg/betterx/wover/events/api/Event;
+       3: invokedynamic #13,  0             // InvokeDynamic #0:didPresent:()Lorg/betterx/wover/events/api/types/client/AfterWelcomeScreen;
+       8: invokeinterface #17,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      13: pop
+      14: invokestatic  #23                 // Method org/betterx/wover/core/api/ModCore.isClient:()Z
+      17: ifeq          47
+      20: getstatic     #29                 // Field org/betterx/wover/config/api/client/ClientConfigs.CLIENT:Lorg/betterx/wover/config/api/client/ClientConfig;
+      23: getfield      #35                 // Field org/betterx/wover/config/api/client/ClientConfig.forceBetterXPreset:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+      26: invokevirtual #41                 // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+      29: checkcast     #47                 // class java/lang/Boolean
+      32: invokevirtual #49                 // Method java/lang/Boolean.booleanValue:()Z
+      35: ifeq          47
+      38: getstatic     #52                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      41: sipush        2000
+      44: invokestatic  #58                 // Method org/betterx/wover/preset/api/WorldPresetManager.suggestDefault:(Lnet/minecraft/resources/ResourceKey;I)V
+      47: invokedynamic #64,  0             // InvokeDynamic #1:get:()Lorg/betterx/wover/preset/api/client/WorldPresetsUI$PresetEditorGetter;
+      52: invokestatic  #67                 // Method org/betterx/wover/preset/api/client/WorldPresetsUI.registerCustomUI:(Lorg/betterx/wover/preset/api/client/WorldPresetsUI$PresetEditorGetter;)V
+      55: getstatic     #73                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_AMPLIFIED:Lnet/minecraft/resources/ResourceKey;
+      58: invokedynamic #76,  0             // InvokeDynamic #2:createEditScreen:()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;
+      63: invokestatic  #80                 // Method org/betterx/wover/preset/api/client/WorldPresetsUI.registerCustomUI:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;)V
+      66: getstatic     #83                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_LARGE:Lnet/minecraft/resources/ResourceKey;
+      69: invokedynamic #76,  0             // InvokeDynamic #2:createEditScreen:()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;
+      74: invokestatic  #80                 // Method org/betterx/wover/preset/api/client/WorldPresetsUI.registerCustomUI:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;)V
+      77: getstatic     #86                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_SUPERFLAT:Lnet/minecraft/resources/ResourceKey;
+      80: invokedynamic #76,  0             // InvokeDynamic #2:createEditScreen:()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;
+      85: invokestatic  #80                 // Method org/betterx/wover/preset/api/client/WorldPresetsUI.registerCustomUI:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;)V
+      88: return
+
+  private static net.minecraft.client.gui.screens.worldselection.PresetEditor lambda$onClientSetup$1(net.minecraft.core.Holder);
+    Code:
+       0: aload_0
+       1: getstatic     #52                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+       4: invokestatic  #89                 // Method org/betterx/wover/preset/api/client/WorldPresetsUI.isKey:(Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceKey;)Z
+       7: ifeq          16
+      10: invokedynamic #76,  0             // InvokeDynamic #2:createEditScreen:()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;
+      15: areturn
+      16: aload_0
+      17: invokestatic  #93                 // Method org/betterx/wover/preset/api/WorldPresetManager.getDimensions:(Lnet/minecraft/core/Holder;)Ljava/util/Map;
+      20: invokeinterface #97,  1           // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+      25: invokeinterface #103,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      30: astore_1
+      31: aload_1
+      32: invokeinterface #109,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      37: ifeq          88
+      40: aload_1
+      41: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      46: checkcast     #117                // class net/minecraft/world/level/dimension/LevelStem
+      49: astore_2
+      50: aload_2
+      51: invokevirtual #119                // Method net/minecraft/world/level/dimension/LevelStem.generator:()Lnet/minecraft/world/level/chunk/ChunkGenerator;
+      54: astore        4
+      56: aload         4
+      58: instanceof    #123                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      61: ifeq          85
+      64: aload         4
+      66: checkcast     #123                // class org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator
+      69: astore_3
+      70: aload_3
+      71: invokeinterface #125,  1          // InterfaceMethod org/betterx/wover/generator/impl/chunkgenerator/ConfiguredChunkGenerator.wover_getConfiguredWorldPreset:()Lnet/minecraft/resources/ResourceKey;
+      76: ifnull        85
+      79: invokedynamic #76,  0             // InvokeDynamic #2:createEditScreen:()Lnet/minecraft/client/gui/screens/worldselection/PresetEditor;
+      84: areturn
+      85: goto          31
+      88: aconst_null
+      89: areturn
+
+  private static void lambda$onClientSetup$0();
+    Code:
+       0: getstatic     #29                 // Field org/betterx/wover/config/api/client/ClientConfigs.CLIENT:Lorg/betterx/wover/config/api/client/ClientConfig;
+       3: getfield      #35                 // Field org/betterx/wover/config/api/client/ClientConfig.forceBetterXPreset:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+       6: invokevirtual #41                 // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+       9: checkcast     #47                 // class java/lang/Boolean
+      12: invokevirtual #49                 // Method java/lang/Boolean.booleanValue:()Z
+      15: ifeq          30
+      18: getstatic     #52                 // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      21: sipush        2000
+      24: invokestatic  #58                 // Method org/betterx/wover/preset/api/WorldPresetManager.suggestDefault:(Lnet/minecraft/resources/ResourceKey;I)V
+      27: goto          39
+      30: getstatic     #129                // Field net/minecraft/world/level/levelgen/presets/WorldPresets.NORMAL:Lnet/minecraft/resources/ResourceKey;
+      33: sipush        10000
+      36: invokestatic  #58                 // Method org/betterx/wover/preset/api/WorldPresetManager.suggestDefault:(Lnet/minecraft/resources/ResourceKey;I)V
+      39: return
+}
