@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "resourcefullib-neoforge-1.21-3.0.12.jar",
         "comforts-neoforge-9.0.5+1.21.1.jar",
         "cc-tweaked-1.21.1-forge-1.119.0.jar",
         "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
@@ -221,6 +222,8 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/teamresourceful/resourcefullib/neoforge/ResourcefulLibNeoForge.class",
+    "com/teamresourceful/resourcefullib/mixins/neoforge/ResourcefulFlowingFluidMixin.class",
     "com/illusivesoulworks/comforts/ComfortsNeoForgeMod.class",
     "com/illusivesoulworks/comforts/ComfortsCommonMod.class",
     "com/illusivesoulworks/comforts/common/ComfortsCommonEventsListener.class",
@@ -4109,6 +4112,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
                 verbose |= name.startswith("dan200/computercraft/")
                 verbose |= name.startswith("com/ishland/c2me/")
