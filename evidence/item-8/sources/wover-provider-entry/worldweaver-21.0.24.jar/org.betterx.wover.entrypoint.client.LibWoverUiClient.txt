@@ -1,0 +1,35 @@
+Compiled from "LibWoverUiClient.java"
+public class org.betterx.wover.entrypoint.client.LibWoverUiClient {
+  public org.betterx.wover.entrypoint.client.LibWoverUiClient();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: getstatic     #7                  // Field org/betterx/wover/events/api/client/ClientWorldLifecycle.ALLOW_EXPERIMENTAL_WARNING_SCREEN:Lorg/betterx/wover/events/api/Event;
+       3: invokedynamic #13,  0             // InvokeDynamic #0:chain:()Lorg/betterx/wover/events/api/types/client/ShowExperimentalWarningScreen;
+       8: invokeinterface #17,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      13: pop
+      14: getstatic     #23                 // Field org/betterx/wover/events/api/client/ClientWorldLifecycle.ENUMERATE_STARTUP_SCREENS:Lorg/betterx/wover/events/api/Event;
+      17: invokedynamic #26,  0             // InvokeDynamic #1:accept:()Lorg/betterx/wover/events/api/types/client/StartupScreenProvider;
+      22: invokeinterface #17,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      27: pop
+      28: invokestatic  #30                 // Method org/betterx/wover/config/api/client/ClientConfigs.saveConfigs:()V
+      31: return
+
+  private static java.lang.Boolean lambda$onClientSetup$0(java.lang.Boolean);
+    Code:
+       0: getstatic     #35                 // Field org/betterx/wover/config/api/client/ClientConfigs.CLIENT:Lorg/betterx/wover/config/api/client/ClientConfig;
+       3: getfield      #39                 // Field org/betterx/wover/config/api/client/ClientConfig.disableExperimentalWarning:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+       6: invokevirtual #45                 // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+       9: checkcast     #51                 // class java/lang/Boolean
+      12: invokevirtual #53                 // Method java/lang/Boolean.booleanValue:()Z
+      15: ifeq          23
+      18: iconst_0
+      19: invokestatic  #57                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      22: areturn
+      23: aload_0
+      24: areturn
+}
