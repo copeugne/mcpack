@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 66 of 136. The exact queue below has 70 open rows.
+Supported provider dispositions: 67 of 136. The exact queue below has 69 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -562,7 +562,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | `betterdungeons-code` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | Existing platform/gateway, configuration and generator captures; `end-island-provider` (6e1f551); test_end_island_provider_scope.py | RESOLVED: All 41 templates belong to the existing arrival platform, gateway and dragon arena groups. Remaining entry hooks modify these contributions; see disposition below. |
 | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | `jungle-temple-provider` (e4bb5e3), prior suppression source, test_jungle_temple_provider_scope.py | RESOLVED: One existing root, 17 connected pools and 127 templates including two disconnected table props. Custom placement and eight component processors accounted for below. |
-| `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | `mineshafts-code` | Reconcile existing roots, all components and additional feature/entry routes. |
+| `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | Existing `mineshafts-code`; `mineshafts-provider` (26d2a97); test_mineshaft_provider_scope.py | RESOLVED: Thirteen roots in the existing mineshaft group, one structure set and eleven registered piece types. Remaining entries and the diagnostic suppression limitation are accounted for below. |
 | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | `fortress-provider` (5933abb), prior suppression source, test_fortress_provider_scope.py | RESOLVED: One existing root, 15 connected pools, 169 templates with 20 disconnected components and one missing template. Component processors and existing-fortress spawning hook accounted for below. |
 | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | `ocean-monument-provider` (a2f2832), prior suppression source, test_ocean_monument_provider_scope.py | RESOLVED: One existing root, 13 connected pools, 59 templates including two disconnected seagrass components. Ten block processors and marked-trident hook accounted for below. |
 | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | `stronghold-provider` (41964b5), prior suppression source, test_stronghold_provider_scope.py | RESOLVED: One existing root, 12 pools and 97 templates with thirteen disconnected components and one missing pool. Custom placement and component consumers accounted for below. |
@@ -2456,3 +2456,45 @@ Seven focused cases pass. Ruff initially found three long lines and an unused
 complexity exemption; these were corrected. Scoped Ruff and Basedpyright pass.
 The nine-class source capture reproduces exactly. Census: 66 resolved providers,
 70 open. The whole-stack canonical denominator and Item 8 closure remain open.
+
+## Better Mineshafts provider disposition
+
+Reuse mineshafts-code for the specialized generator, component construction,
+frozen configuration, vanilla suppression and locate behavior. Source 26d2a97
+adds only remaining initialization, service, piece registration and mixin classes.
+Together the sources cover all 51 packaged classes with exact archive/class/text
+identities. The focused check accounts for all 95 files and both service bindings.
+
+All thirteen packaged roots equal the captured runtime roots for this provider.
+They use the existing specialized mineshaft generator and differ by biome/config
+inputs, as bound by the existing family-decision check. The sole structure set
+contains all thirteen with weight one each. There are no packaged templates,
+pools, features, functions, nested archives or additional generation data types.
+The eleven piece registrations refer to entrance, tunnel, room, ore-deposit and
+intersection components of this generator. They are not independent families.
+
+Common initialization scans the module package through YUNG API; NeoForge
+initialization loads the existing configuration. The module service delegates to
+an empty default. Platform/service helpers resolve the packaged implementation
+and mod/development queries. Shared YUNG API remains a separate open dependency.
+Other data is biome/block/structure tags and translations, plus visual assets and
+loader metadata. Accessor mixins expose block-survival and bounding-box operations.
+
+SuppressLogMixin cancels logAndPauseIfInIde only when the message starts with
+Detected setBlock in a far chunk and contains bettermineshafts:mineshaft. It does
+not prevent the block write. This is a diagnostic limitation: absence of that
+warning cannot prove absence of far-chunk writes. Preserve existing generator
+and generated-world limitations; no runtime experiment or tuning follows from
+this source finding. Existing evidence continues to bind vanilla mineshaft and
+mesa-mineshaft suppression to the frozen enabled configuration.
+
+```sh
+uv run pytest -q tests/item8/test_mineshaft_provider_scope.py tests/item8/test_family_decisions.py -k 'mineshaft_provider or mineshaft_group or vanilla_mineshaft_suppression'
+uv run ruff check tests/item8/test_mineshaft_provider_scope.py
+uv run basedpyright tests/item8/test_mineshaft_provider_scope.py
+```
+
+Three affected cases pass. One overlong line was corrected after the first Ruff
+run; scoped Ruff and Basedpyright pass. The source capture reproduces exactly.
+Census: 67 resolved providers, 69 open. No additional candidate family was found;
+whole-stack grouping, remaining attributes and the final delivery gate stay open.
