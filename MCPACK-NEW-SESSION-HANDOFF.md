@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Player Animator membership is resolved from d1d22f75. Its only mod entry is
+explicitly client-only, its seventeen hooks are client-only, and its plugin
+adds no further hooks. Full archive/source binding, 22 utility cases and scoped
+quality checks pass. Whole providers: 101 resolved, 35 open. No family added.
+Continue the remaining provider queue and Moog grouping before attributes;
+no further animation-helper inspection is needed.
+
+
 EMI Ores membership is resolved from 824f34de. It reads existing ore/geode
 features and sends filtered information to clients; it does not register or
 place the temporary feature objects. Complete payload/source binding, 21

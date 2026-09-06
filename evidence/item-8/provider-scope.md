@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 100 of 136. The exact queue below has 36 open rows.
+Supported provider dispositions: 101 of 136. The exact queue below has 35 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -677,7 +677,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `naturalist-1.0.2-neoforge-1.21.1.jar` | `naturalist-provider` (9682cb0), test_naturalist_provider_scope.py | RESOLVED: Mob spawning, existing entity/item/crop behavior and client spawn-egg resources. No independent structure family. Full disposition below. |
 | `oceansdelight-neoforge-1.0.4-1.21.1.jar` | `oceansdelight-provider` (2b575d8), test_oceansdelight_provider_scope.py | RESOLVED: Food content and four existing aquatic-mob loot declarations; no independent family. See Ocean's Delight disposition below. |
 | `owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `player-animation-lib-forge-2.0.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `player-animation-lib-forge-2.0.4+1.21.1.jar` | Source d1d22f75; test_small_utility_provider_scope.py | RESOLVED: Client-only animation entry and client mixins; no independent family. See Player Animator disposition below. |
 | `polymorph-neoforge-1.1.0+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `prickle-neoforge-1.21.1-21.1.11.jar` | Sources eb9670dc and 4e7468fb; test_config_library_provider_scope.py | RESOLVED: Configuration adapters, platform lookup and initialization; no independent family. See configuration library disposition below. |
 | `quickrightclick-1.21.1-1.9.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -6966,3 +6966,30 @@ uv run basedpyright tests/item8/test_small_utility_provider_scope.py
 Twenty-one cases and scoped quality checks pass. Whole providers: 100 resolved,
 36 open (19 code-reference, 17 unmatched-search). No family added. Continue the
 remaining provider checks and canonical Moog grouping before detailed attributes.
+
+### Player Animator membership resolved
+
+Source d1d22f75 retains the sole automatic mod entry and declared mixin plugin.
+The entry is explicitly annotated Dist.CLIENT. It registers client animation
+resource reload and rendering compatibility setup. The plugin has empty load,
+pre/post-apply and target callbacks, returns no additional mixins, and filters
+bend-only client hooks using the existing animation capability check.
+
+The complete archive has 127 classes and five metadata/access/mixin files.
+There are no data, assets, templates, services or nested archives. The single
+mixin declaration contains seventeen client hooks and no common/server hooks.
+The focused utility case binds the archive, complete payload, automatic-entry
+set, side annotation, mixin declaration and both source identities. Independent
+source reproduction matches byte for byte. No independent family is contributed.
+Client rendering implementation need not be traced for this dedicated-server
+family membership decision.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twenty-two cases and scoped quality checks pass. Whole providers: 101 resolved,
+35 open. No family added; remaining provider checks and canonical Moog grouping
+precede detailed family attributes.
