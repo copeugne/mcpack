@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 76 of 136. The exact queue below has 60 open rows.
+Supported provider dispositions: 77 of 136. The exact queue below has 59 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -601,7 +601,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `cristellib-neoforge-1.21.1-3.1.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve conditional pack loader and structure-config consumers, including Towns and Towers Waystones declaration. |
 | `cupboard-1.21-3.7.jar` | `cupboard-provider` (77dd750), test_small_utility_provider_scope.py | RESOLVED: Shared configuration, lookups, diagnostics and existing-entity handling; no independent family. Frozen error-suppression setting and limitations below. |
 | `curios-neoforge-9.5.1+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope` | Reuse inactive totem disposition; reconcile Brass and remaining structure/feature entries. |
+| `deep_aether-1.21.1-1.1.5.1.jar` | `deep-aether-totem-scope`, `deep-aether-provider`, `deep-aether-aeroblender`, `deep-aether-biome-setup`; focused candidate and provider checks | RESOLVED: Four roots, fifteen templates, custom feature candidates, common hooks, optional packs and active AeroBlender accounted for. Preserve inactive Sacred Lands and fallen-tree grouping boundaries. See final Deep Aether disposition below. |
 | `dummmmmmy-1.21-2.0.12-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_loot-0.7.9+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `emi_ores-1.2+1.21.1+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -3565,3 +3565,64 @@ its configuration-value builders unless an actual eligibility input needs them.
 Remaining Deep Aether scope is common entry/mixin roles, optional packs and
 the complete provider check including this nested payload. Census remains 76
 resolved and 60 open. All source is delivered; no process remains running.
+
+### Final Deep Aether provider disposition
+
+Deep Aether provider coverage is RESOLVED. Reuse the candidate, Brass, jigsaw,
+totem, fallen-tree and feature dispositions above. The four registered roots,
+fifteen templates and sixty configured features are fully partitioned. Preserve
+the inactive Sacred Lands routes and the named fallen-tree grouping boundary.
+Neither templates nor configuration variants become additional families.
+
+The final common-setup delegates are retained in sources/deep-aether-biome-setup
+at 193bbe3, manifest SHA-256:
+d0c5ae38827b28d5db0048c2f5da5603e116a8c070991d1ab198b610af2a126f.
+DARegion and DARareRegion add climate-to-biome mappings. DASurfaceData selects
+surface block states using biome, noise and depth conditions. These resolve the
+actual common-setup calls without introducing additional authored-site routes.
+
+The captured main entry registers data generation, common setup, capabilities,
+network packets, recipe categories and optional packs. GatherDataEvent is an
+offline data-generation path. Common registration and the fourteen annotated
+entry classes cover entity registration, equipment and combat effects, block
+interactions, client presentation and the generation routes already reconciled.
+Dungeon player/death hooks affect encounters and rewards in existing dungeons.
+They remain attribute inputs, not independent families.
+
+The eleven common mixins handle brewing fuel/menu acceptance, glove attributes,
+trivia text, cloud collision, block sound, fluid replacement, dripstone and snow
+interactions, item conversion and Aerwhale riding/container/entity state. These
+are existing-block/entity behavior. No unresolved authored-site entry remains
+in those captured boundaries. The separately declared client mixins concern
+rendering and presentation.
+
+The whole archive has 4,136 files and 375 classes. Its data contains 132 worldgen
+resources, fifteen structure templates, tags, recipes, advancements, loot and
+item/entity-related definitions. The 265 optional-pack files contain 86 recipe,
+49 advancement and two legacy recipes entries, plus assets and pack metadata.
+There are no additional structure definitions in those packs. Packaged datagen
+cache files are part of the pinned archive identity, not new runtime inputs.
+No outer service declarations or executable function/script files are present.
+
+The selected AeroBlender payload is exactly sixteen classes and nine other files.
+Fourteen classes already captured cover its entry, region/surface support and
+mixins; the two remaining classes define configuration values. Its four data
+files supply density, noise, Aether noise settings and a dimension-type tag.
+The other files are loader/access metadata, mixin configuration and pack metadata.
+There is no additional template or structure payload. The embedded TerraBlender
+4.1.0.3 is not selected; retained 4.1.0.8 remains its own open provider row.
+
+```sh
+uv run pytest -q tests/item8/test_deep_aether_provider_scope.py tests/item8/test_deep_aether_candidates.py tests/item8/test_totem_scope.py
+uv run ruff check tests/item8/test_deep_aether_provider_scope.py
+uv run basedpyright tests/item8/test_deep_aether_provider_scope.py
+```
+
+Five cases pass (1.86 seconds); scoped Ruff and Basedpyright pass. The final case
+binds four preserved source manifests to original class and disassembly bytes,
+the whole payload partition, annotated entries, common mixins, optional-pack
+categories and the complete selected nested payload. It extends the existing
+provider-check pattern to close this specific coverage gap. No new measurement,
+framework or runtime sample was added. Provider closure does not establish
+observed placement, the final canonical count or the eleven family attributes.
+Supported dispositions now cover 77 of 136 providers; 59 remain open.
