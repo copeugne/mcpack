@@ -106,6 +106,15 @@ def test_creating_space_entry_source_coverage() -> None:
     identities = cast("list[dict[str, str]]", json.loads(raw))
     captured = {row["class"] for row in identities}
     assert len(captured) == len(identities) == 39
+    arrival_directory = Path("evidence/item-8/sources/creating-space-arrival")
+    raw = (arrival_directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "04e25ddcbb7b1105bcf0d27eb83c605dda16a97ec4d683d829f94d74e97da0e1"
+    )
+    arrival = cast("list[dict[str, str]]", json.loads(raw))
+    assert [row["class"] for row in arrival] == [
+        "com/rae/creatingspace/content/rocket/CustomTeleporter.class",
+    ]
     with ZipFile(source.path) as archive:
         annotated = {
             n for n in archive.namelist() if n.endswith(".class") and any(
@@ -124,13 +133,13 @@ def test_creating_space_entry_source_coverage() -> None:
         declared.add(str(mixin["plugin"]).replace(".", "/") + ".class")
         assert len(annotated) == 13
         assert len(declared) == 20
-        for row in identities:
-            assert row["archive"] == source.name
-            assert row["archive_sha256"] == source.sha256
-            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
-            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
-                row["disassembly_sha256"]
-            )
+        for capture_directory, rows in ((directory, identities), (arrival_directory, arrival)):
+            for row in rows:
+                assert row["archive"] == source.name
+                assert row["archive_sha256"] == source.sha256
+                assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+                disassembly = (capture_directory / row["disassembly"]).read_bytes()
+                assert hashlib.sha256(disassembly).hexdigest() == row["disassembly_sha256"]
     raw = Path("evidence/item-8/sources/generation-code-references.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
         "95b9991457704f4cf710b09456a82db78c2dcdd79544212c77d8f31d64c8883f"

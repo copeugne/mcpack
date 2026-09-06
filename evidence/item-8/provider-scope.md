@@ -704,6 +704,16 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Creating Space packaged component checkpoint
 
+Arrival follow-up is RESOLVED in source 526983c, extractor 215a6a4. Manifest
+04e25ddcbb7b1105bcf0d27eb83c605dda16a97ec4d683d829f94d74e97da0e1
+is bound by the existing source-coverage test. CustomTeleporter chooses arrival
+height and the rocket's stored destination X/Z (or an ordinary entity's X/Z),
+then constructs DimensionTransition with DO_NOTHING for the post-transition
+action. No platform placement or named template load in this delegate. Do not
+reopen this boundary merely because travel uses dimension and position helpers.
+Continue remaining common-entry/mixin roles, full payload and the disconnected
+outpost's other consumers. This follow-up does not close the entire provider.
+
 The captured crater writer has a terrain role: it writes AIR, updates the
 carving mask and applies CarvingContext.topMaterial through its local callback.
 Its height calculation consumes density values. Its structure references read
