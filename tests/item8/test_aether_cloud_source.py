@@ -69,6 +69,15 @@ def test_aether_packaged_candidate_partition() -> None:
             "", "_aether", "_desert", "_jungle", "_mountain", "_swamp",
         )}
         assert optional_roots.isdisjoint(registry)
+        for name in names:
+            if name.startswith(prefix) and name.endswith(".json"):
+                assert json.loads(archive.read(name))["type"] == "aether:ruined_portal"
+        portal_prefix = "data/aether/structure/ruined_portal/"
+        assert {n.removeprefix(portal_prefix).removesuffix(".nbt")
+                for n in templates if n.startswith(portal_prefix)} == (
+            {f"portal_{i}" for i in range(1, 11)}
+            | {f"giant_portal_{i}" for i in range(1, 4)}
+        )
         configured = {n: cast("dict[str, JsonValue]", json.loads(archive.read(n)))
                       for n in names if n.startswith("data/aether/worldgen/configured_feature/")}
         assert Counter(str(d["type"]) for d in configured.values()) == {
@@ -141,6 +150,8 @@ def test_aether_silver_gold_component_candidates() -> None:
             ("aether-custom-entry",
              "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954"),
             ("aether-provider", "917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee"),
+            ("aether-common-hooks",
+             "9c3b21c8bf2eab73550acc646a9c74081c15daac08c941367f298adf0bb8c50f"),
         ):
             folder = Path("evidence/item-8/sources") / name
             raw = (folder / "identities.json").read_bytes()
@@ -152,6 +163,15 @@ def test_aether_silver_gold_component_candidates() -> None:
                 assert hashlib.sha256((folder / row["disassembly"]).read_bytes()).hexdigest() == (
                     row["disassembly_sha256"]
                 )
+
+
+def test_aether_optional_portal_setting() -> None:
+    raw = Path("evidence/item-6/frozen/config/aether-common.toml").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "67d50cb36d6b96c7cc47d613012c7d481cb6aef2b67540f8fb0ec5b7b7aa5ef2"
+    )
+    config = tomllib.loads(raw.decode())
+    assert config["Data Pack"]["Add Ruined Portals automatically"] is False
 
 
 def test_aether_holiday_tree_candidate_inputs() -> None:

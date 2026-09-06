@@ -3245,3 +3245,37 @@ uv run basedpyright tests/item8/test_aether_cloud_source.py
 Five focused cases and scoped quality checks pass. No new runtime run or
 measurement system. Continue main/common hooks, portal consumers, and the two
 selected embedded library roles before closing Aether's provider row.
+
+### Aether optional ruined-portal disposition
+
+The captured main entry registers builtin/aether_ruined_portal as a server-data
+pack. Its PackSource receives add_ruined_portal_automatically; Aether$2 returns
+that supplied boolean from shouldAddAutomatically. Frozen aether-common.toml
+sets Add Ruined Portals automatically=false. The pack is not required by its
+PackSelectionConfig. All six optional root definitions use aether:ruined_portal
+and are absent from the captured runtime registry. Disposition: optional,
+inactive structure candidates in this frozen registry, not active families.
+
+GlowstoneRuinedPortalStructure selects under the aether namespace from ten
+ruined_portal/portal_1 through portal_10 names and three giant_portal_1 through
+giant_portal_3 names. Its generation stub passes the selected resource to
+GlowstoneRuinedPortalPiece. These account for all thirteen packaged portal
+templates as components of the optional roots. Do not count the pieces as
+thirteen additional families or claim that another configuration cannot enable
+the optional pack.
+
+test_aether_cloud_source.py now binds the common-hook source manifest, exact
+portal template partition, all optional root types and frozen common-config
+hash. The initial read-only ZIP probe mistakenly included a directory entry
+and failed JSON decoding; rerunning with the .json filter resolved that probe
+error. No source evidence or frozen configuration was changed.
+
+```sh
+uv run pytest -q tests/item8/test_aether_cloud_source.py
+uv run ruff check tests/item8/test_aether_cloud_source.py
+uv run basedpyright tests/item8/test_aether_cloud_source.py
+```
+
+Six focused cases and scoped checks pass. This resolves the optional portal
+resource/activation boundary. Aether common-hook roles and selected bundled
+library roles remain open; census remains 75 resolved and 61 open.
