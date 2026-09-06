@@ -1,0 +1,91 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator.class
+  Last modified Jan 1, 1980; size 1089 bytes
+  SHA-256 checksum 3dd8a1fb495cbd0205f0564dd30efdb3ff10c1c5db690212198a121369ced4eb
+  Compiled from "MixinChunkGenerator.java"
+public class com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkGenerator
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinChunkGenerator.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/chunk/ChunkGenerator;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator;
+  #15 = Utf8               redirectBiomeExecutor
+  #16 = Utf8               ()Ljava/util/concurrent/ExecutorService;
+  #17 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #18 = Utf8               method
+  #19 = Utf8               populateBiomes
+  #20 = Utf8               at
+  #21 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #22 = Utf8               INVOKE
+  #23 = Utf8               target
+  #24 = Utf8               Lnet/minecraft/util/Util;getMainWorkerExecutor()Ljava/util/concurrent/ExecutorService;
+  #25 = Utf8               com/ishland/c2me/base/common/util/InvokingExecutorService
+  #26 = Class              #25            // com/ishland/c2me/base/common/util/InvokingExecutorService
+  #27 = Utf8               INSTANCE
+  #28 = Utf8               Lcom/ishland/c2me/base/common/util/InvokingExecutorService;
+  #29 = NameAndType        #27:#28        // INSTANCE:Lcom/ishland/c2me/base/common/util/InvokingExecutorService;
+  #30 = Fieldref           #26.#29        // com/ishland/c2me/base/common/util/InvokingExecutorService.INSTANCE:Lcom/ishland/c2me/base/common/util/InvokingExecutorService;
+  #31 = Utf8               Code
+  #32 = Utf8               LineNumberTable
+  #33 = Utf8               LocalVariableTable
+  #34 = Utf8               RuntimeVisibleAnnotations
+  #35 = Utf8               SourceFile
+  #36 = Utf8               RuntimeInvisibleAnnotations
+{
+  public com.ishland.c2me.rewrites.chunksystem.mixin.MixinChunkGenerator();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 12: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator;
+
+  private java.util.concurrent.ExecutorService redirectBiomeExecutor();
+    descriptor: ()Ljava/util/concurrent/ExecutorService;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=1, args_size=1
+         0: getstatic     #30                 // Field com/ishland/c2me/base/common/util/InvokingExecutorService.INSTANCE:Lcom/ishland/c2me/base/common/util/InvokingExecutorService;
+         3: areturn
+      LineNumberTable:
+        line 16: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       4     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinChunkGenerator;
+    RuntimeVisibleAnnotations:
+      0: #17(#18=[s#19],#20=@#21(#7=s#22,#23=s#24))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["populateBiomes"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/util/Util;getMainWorkerExecutor()Ljava/util/concurrent/ExecutorService;"
+          )
+        )
+}
+SourceFile: "MixinChunkGenerator.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/ChunkGenerator;]
+    )
