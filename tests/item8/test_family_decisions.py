@@ -2631,3 +2631,33 @@ def test_nether_arena_variants_preserve_placement_and_component_ownership() -> N
     assert all(n.startswith("mns:mega_arenas/mobs/1.21/") for n in shared)
     for path, digest in cast("dict[str, str]", group["evidence"]).items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
+
+
+def test_voyager_harvest_heap_preserves_root_variants() -> None:
+    decisions = cast("dict[str, JsonValue]", json.loads(
+        Path("evidence/item-8/family-decisions.json").read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    group = next(g for g in groups if g["family_id"] == "mvs:harvest_heap")
+    ids = ["mvs:haystack", "mvs:pile"]
+    assert group["structure_ids"] == ids
+    assert [m for g in groups for m in cast("list[str]", g["structure_ids"])
+            if m in ids] == ids
+    variants = cast("dict[str, dict[str, JsonValue]]", group["variants"])
+    assert set(variants) == set(ids)
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(Path(
+        "evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes())))
+    expected = {
+        "mvs:haystack": ["haystack", "small_haystack"],
+        "mvs:pile": ["mixed_pile", "pumpkin_pile", "small_pumpkin_pile"],
+    }
+    for rid in ids:
+        name = rid.split(":")[1]
+        definition = next(r["document"] for r in cast(
+            "list[dict[str, JsonValue]]", catalog["resources"])
+            if r["path"] == f"data/mvs/worldgen/structure/{name}.json")
+        assert variants[rid] == {
+            "definition": definition,
+            "templates": [f"mvs:other_decoration/{n}" for n in expected[rid]],
+        }
+    for path, digest in cast("dict[str, str]", group["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest

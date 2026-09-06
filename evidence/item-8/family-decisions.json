@@ -10417,7 +10417,7 @@
       "structure_ids": [
         "mvs:bench"
       ],
-      "rationale": "Five bench layout alternatives share this root, with some containing loot references. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "Five alternatives form one outdoor-bench family with length, seating-material, foliage and accessory variants. Template palettes and block-entity positions identify low seats made with stairs, slabs or campfires and trapdoor/sign trim, rather than crop heaps or a continuous route. Medium and small_bench_2 reference village_plains_house loot; small_bench_3 references houses_common. Large and small_bench_1 have no packaged loot references. None has authored entities or spawners. Alternatives are not separate families, and their loot differences remain attributed to their templates. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:other_decoration/bench",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -10439,7 +10439,11 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-small-views/benches.svg.gz": "35d62597055436a8849566932cecb757102980b541c59675fbfc5733ec848461",
+        "evidence/item-8/sources/voyager-small-views/harvest_heaps.svg.gz": "d14995e3e1a09241336a73414285231ca606f6ecf972200e6bb00cbef79b9aae",
+        "evidence/item-8/sources/voyager-small-views/paths.svg.gz": "0898adbfdaa79be0c7f2bc0cf04016188ae56c63cd5695ba48a70f14553884b1"
       }
     },
     {
@@ -11131,32 +11135,64 @@
       }
     },
     {
-      "family_id": "mvs:haystack",
-      "name": "Moog's Voyager Structures Haystack",
+      "family_id": "mvs:harvest_heap",
+      "name": "Voyager harvest heaps",
       "structure_ids": [
-        "mvs:haystack"
+        "mvs:haystack",
+        "mvs:pile"
       ],
-      "rationale": "Two haystack alternatives share this root with different loot-reference presence. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/haystack",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
+      "rationale": "Haystack and pile roots form one harvest-heap family with hay, pumpkin and mixed-crop material/layout variants. The inspected large alternatives both arrange a loose raised crop heap with containers and campfire decoration; the small and mixed alternatives reduce or rearrange that same heap motif. These are five alternative templates, not five families or five pieces in every instance. Large hay and pumpkin layouts both reference houses_common and houses_uncommon loot; mixed_pile references houses_common, while the two small crop heaps have no packaged loot references. All five lack authored entities and spawners. Preserve both full root definitions and each root-specific template selection below. This family remains separate from benches and linear paths; shared containers do not establish their identity. Effective generation and natural spawning remain unresolved.",
+      "variants": {
+        "mvs:haystack": {
+          "definition": {
+            "biomes": "#c:is_overworld",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/haystack",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": [
+            "mvs:other_decoration/haystack",
+            "mvs:other_decoration/small_haystack"
+          ]
         },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
+        "mvs:pile": {
+          "definition": {
+            "biomes": "#c:is_overworld",
+            "cannot_spawn_in_liquid": true,
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mvs:other_decoration/pile",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+          },
+          "templates": [
+            "mvs:other_decoration/mixed_pile",
+            "mvs:other_decoration/pumpkin_pile",
+            "mvs:other_decoration/small_pumpkin_pile"
+          ]
+        }
       },
-      "custom_generation_settings": {
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin"
-      },
-      "missing_components": [],
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-small-views/benches.svg.gz": "35d62597055436a8849566932cecb757102980b541c59675fbfc5733ec848461",
+        "evidence/item-8/sources/voyager-small-views/harvest_heaps.svg.gz": "d14995e3e1a09241336a73414285231ca606f6ecf972200e6bb00cbef79b9aae",
+        "evidence/item-8/sources/voyager-small-views/paths.svg.gz": "0898adbfdaa79be0c7f2bc0cf04016188ae56c63cd5695ba48a70f14553884b1"
       }
     },
     {
@@ -11730,7 +11766,7 @@
       "structure_ids": [
         "mvs:paths"
       ],
-      "rationale": "Long and short oak pathway alternatives share this root and retain their loot references. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
+      "rationale": "Two alternatives form one landscaped-path family. Both combine dirt-path terrain, fence/wall borders, vegetation, lights and distributed container/campfire decoration in a low linear route, with length and arrangement variants. Both reference houses_common, houses_uncommon and general loot. Neither has authored entities or spawners. Their linear route composition distinguishes them from isolated benches and crop heaps despite shared decoration materials. They are authored route landmarks, not unmodified natural vegetation. Effective generation and natural spawning remain unresolved.",
       "start_pool": "mvs:nature/paths",
       "generation_settings": {
         "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
@@ -11750,36 +11786,11 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
-      }
-    },
-    {
-      "family_id": "mvs:pile",
-      "name": "Moog's Voyager Structures Pile",
-      "structure_ids": [
-        "mvs:pile"
-      ],
-      "rationale": "Mixed and pumpkin pile alternatives share this root and preserve differing loot references. This is a working assignment, not a final canonical-family decision or proof of effective gameplay.",
-      "start_pool": "mvs:other_decoration/pile",
-      "generation_settings": {
-        "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
-        "start_height": {
-          "absolute": 0
-        },
-        "project_start_to_heightmap": "WORLD_SURFACE_WG",
-        "cannot_spawn_in_liquid": true
-      },
-      "custom_generation_settings": {
-        "size": 1,
-        "spawn_overrides": {},
-        "step": "surface_structures",
-        "terrain_adaptation": "beard_thin"
-      },
-      "missing_components": [],
-      "evidence": {
-        "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/voyager-small-views/benches.svg.gz": "35d62597055436a8849566932cecb757102980b541c59675fbfc5733ec848461",
+        "evidence/item-8/sources/voyager-small-views/harvest_heaps.svg.gz": "d14995e3e1a09241336a73414285231ca606f6ecf972200e6bb00cbef79b9aae",
+        "evidence/item-8/sources/voyager-small-views/paths.svg.gz": "0898adbfdaa79be0c7f2bc0cf04016188ae56c63cd5695ba48a70f14553884b1"
       }
     },
     {

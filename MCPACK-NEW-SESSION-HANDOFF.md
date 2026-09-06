@@ -4,6 +4,14 @@
 
 ## Current continuation checkpoint - 2026-09-04
 
+### Continuation update - 2026-09-07
+
+Voyager bench/path decisions and the harvest-heap merge resolve four explicit
+provisionals. Haystack and pile retain both roots and full definitions in one
+family with five material/layout alternatives. Thirteen affected tests and scoped
+quality checks pass. Source views delivered at 77146722. Working groups: 407.
+Explicit provisional remainder: 49, all Voyager. Inventory refresh follows.
+
 ### Continuation update - 2026-09-06
 
 Voyager small-design comparison selects twelve existing templates to test the
