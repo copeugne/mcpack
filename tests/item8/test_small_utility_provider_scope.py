@@ -50,6 +50,28 @@ if TYPE_CHECKING:
      {"META-INF/accesstransformer.cfg", "icon.png", "structure_pool.mixins.json",
       "structure_pool_api-common-common-refmap.json"},
      {"net/fabric_extras/structure_pool/neoforge/NeoForgeMod.class"}),
+    ("almanac", 13,
+     "846bc2adbd79f5625a83d1fd71ea8be43843b42b3ce16e7b001035f0c9fe6bb1",
+     {"Almanac-1.21.1-2-common-common-refmap.json", "almanac.mixins.json", "almanac.png"},
+     {"com/frikinjay/almanac/neoforge/AlmanacNeoForge.class"}),
+    ("libraryferret", 9,
+     "818982bd379cd4f31dc2ece2b16bd22cdbc1332cac40de8a56c87f34b4b60e65",
+     {"assets/libraryferret/lang/en_us.json", "pack.mcmeta", "changelog.md",
+      "license_libraryferret.txt", "icon.png", "pack.png",
+      *(f"assets/libraryferret/{kind}/item/{coin}_coins_jtl.{ext}"
+        for kind, ext in (("models", "json"), ("textures", "png"))
+        for coin in ("diamond", "emerald", "gold", "iron", "netherite")),
+      *(f"data/libraryferret/recipes/{kind}/{coin}_coins_jtl.json"
+        for kind in ("blasting", "smelting")
+        for coin in ("diamond", "emerald", "gold", "iron", "netherite"))},
+     {"com/jtorleonstudios/libraryferret/LibraryFerret.class"}),
+    ("structure-layout-optimizer", 16,
+     "3a24a425f1eae35abdb77547922cedf22f9212c09a69043b4f6baf95b1e5d197",
+     {"assets/structure_layout_optimizer/lang/en_us.json",
+      "META-INF/services/telepathicgrunt.structure_layout_optimizer.services.PlatformService",
+      "structure_layout_optimizer.mixins.json", "structure_layout_optimizer.png",
+      "LICENSE_Structure Layout Optimizer.txt"},
+     {"telepathicgrunt/structure_layout_optimizer/neoforge/entrypoints/Main.class"}),
 ])
 def test_complete_small_utility_payload_and_entry_binding(
     name: str, count: int, manifest: str, other_files: set[str], entry_classes: set[str],
@@ -91,6 +113,8 @@ def test_complete_small_utility_payload_and_entry_binding(
             expected = entry_classes | {
                 "com/builtbroken/ai/improvements/modifier/ModifierSystem.class",
             }
+        elif name == "almanac":
+            expected = {"com/frikinjay/almanac/config/neoforge/AlmanacConfigNeoforge.class"}
         assert subscribers == expected
         metadata = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode())
         assert metadata["modLoader"] == "javafml"
@@ -105,10 +129,10 @@ def test_complete_small_utility_payload_and_entry_binding(
                 for member in cast("list[str]", mixin.get(side, [])):
                     path = f"{mixin['package']}.{member}".replace(".", "/") + ".class"
                     assert path in classes
-        if name == "sparsestructures":
-            service = (
-                "META-INF/services/"
-                "io.github.maxencedc.sparsestructures.platform.services.IPlatformHelper"
-            )
+        for service in sorted(n for n in other_files if n.startswith("META-INF/services/")):
             implementation = archive.read(service).decode().strip().replace(".", "/") + ".class"
             assert implementation in classes
+        if name == "libraryferret":
+            for path in sorted(n for n in other_files if n.startswith("data/")):
+                recipe = cast("dict[str, JsonValue]", json.loads(archive.read(path)))
+                assert recipe["type"] in {"minecraft:blasting", "minecraft:smelting"}

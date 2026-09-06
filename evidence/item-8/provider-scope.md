@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 40 of 136. The exact queue below has 96 open rows.
+Supported provider dispositions: 43 of 136. The exact queue below has 93 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -541,7 +541,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | Retained archive | Existing Item 8 captures to reuse | Next scope check or closure |
 | --- | --- | --- |
 | `AI-Improvements-1.21-0.5.3.jar` | `ai-improvements-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing-entity AI goals and look control; no structure contribution. See small utility provider dispositions below. |
-| `Almanac-1.21.1-2-neoforge-1.5.2.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `Almanac-1.21.1-2-neoforge-1.5.2.jar` | `almanac-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Configuration/command support and existing item/entity behavior. No independent family. See additional shared provider dispositions below. |
 | `BetterEnd-21.0.31.jar` | `betterend-feature-scope`, `betterend-formation-pieces`, `betterend-formations-code`, `betterend-lake-helpers` | Bind six building lists and crashed-ship eligibility; separate building designs from vegetation; reconcile existing roots. |
 | `BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar` | `bop-feature-scope` | Bind anomaly, monolith and bone-spine placement; settle landmark versus terrain disposition; reconcile remaining features. |
 | `CreateDragonsPlus-1.11.2b.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -617,7 +617,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `integrated_villages-1.3.3+1.21.1-neoforge.jar` | `integrated-village-suppression` | Reconcile existing roots, all components and additional feature/entry routes. |
 | `kotlinforforge-5.11.0-all.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `letmedespawn-1.21.x-neoforge-1.5.0.jar` | `letmedespawn-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing mob persistence/discard behavior; no independent family. See small utility provider dispositions below. |
-| `libraryferret-neoforge-1.21.1-4.0.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `libraryferret-neoforge-1.21.1-4.0.0.jar` | `libraryferret-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Abstract consumer-supplied jigsaw/placement support and coin content. No independent family. See additional shared provider dispositions below. |
 | `lithostitched-1.7.10+beta4-neoforge-21.1.jar` | `lithostitched-alias-code`, `lithostitched-biome-injector-code`, `lithostitched-feature-modifier-code`, `lithostitched-platform-modifier-code`, `lithostitched-pool-additions-code`, `lithostitched-pool-compilation-code`, `lithostitched-processor-registration-code`, `lithostitched-random-block-code`, `lithostitched-street-processor-code`, `lithostitched-surface-lifecycle-code`, `pool-codecs` | Reuse modifier, pool, alias and processor captures; reconcile remaining entry/codec consumers and packaged modifiers. |
 | `lootintegrations-1.21.1-4.7.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect core loot callbacks and consumers; addon data closures do not close this implementation. |
 | `mca-neoforge-7.7.11+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -641,7 +641,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `shield_api-neoforge-2.2.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `simplyswords-neoforge-1.63.0-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `sparsestructures-neoforge-1.21.1-3.0.jar` | `sparsestructures-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing structure-set placement modification; no independent family. See small utility provider dispositions below. |
-| `structure_layout_optimizer-neoforge-1.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
 | `structureessentials-1.21.1-5.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code` | Resolve feature/structure aliases and injected components against existing roots. |
@@ -1062,3 +1062,36 @@ Six cases pass. Initial checks found one overlong line and an untyped empty set;
 formatting and a set[str] annotation resolve them. Scoped Ruff and Basedpyright
 pass. Provider dispositions: 40 of 136, with 96 remaining in the exact queue.
 Canonical grouping and family attributes have not been advanced by this closure.
+
+## Additional shared provider dispositions
+
+Almanac, Library Ferret and Structure Layout Optimizer have complete supported
+provider roles. All 38 classes are preserved in 8c60e03 using selector 4f65e40;
+independent captures reproduced exactly. Identities, commands and inspected
+entry/helper boundaries are in `sources/small-utility-providers.md`. The existing
+small-utility test now includes these three archive cases and explicitly accounts
+for their full payload, including all declared mixins and service implementations.
+
+- Almanac: configuration/reload commands, command callback dispatch, equipment-drop
+  support and item custom-data cleanup. It adds no structure-generation route.
+  Its existing Let Me Despawn relationship remains relevant to mob attributes.
+- Library Ferret: coin items and visual/recipe content; abstract jigsaw generation,
+  placement and configuration bases for consumer-supplied structures. No concrete
+  authored generator, root, pool or template is packaged. Its ten legacy-path
+  recipes use smelting/blasting. Do not reinterpret helpers as families or migrate
+  those recipes as part of this inventory.
+- Structure Layout Optimizer: collision, connector, candidate-order and template
+  filtering modifications on existing structures. Its service supplies a method
+  name for processor inspection. No independent authored content is contributed.
+  Provider closure does not claim unchanged layout outcomes or measured performance.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+All nine cases pass, including the previous six. Ruff and Basedpyright pass.
+No new measurement, framework, baseline configuration or family grouping change.
+Provider dispositions now cover 43 of 136; 93 remain in the exact queue. Continue
+whole-provider candidate reconciliation before detailed family attributes.
