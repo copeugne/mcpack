@@ -1,0 +1,756 @@
+Compiled from "ModNioResourcePack.java"
+public class net.fabricmc.fabric.impl.resource.loader.ModNioResourcePack implements net.minecraft.server.packs.PackResources,net.fabricmc.fabric.api.resource.ModResourcePack {
+  private static final org.slf4j.Logger LOGGER;
+
+  private static final java.util.regex.Pattern RESOURCE_PACK_PATH;
+
+  private static final java.nio.file.FileSystem DEFAULT_FS;
+
+  private final java.lang.String id;
+
+  private final net.fabricmc.loader.api.ModContainer mod;
+
+  private final java.util.List<java.nio.file.Path> basePaths;
+
+  private final net.minecraft.server.packs.PackType type;
+
+  private final net.fabricmc.fabric.api.resource.ResourcePackActivationType activationType;
+
+  private final java.util.Map<net.minecraft.server.packs.PackType, java.util.Set<java.lang.String>> namespaces;
+
+  private final net.minecraft.server.packs.PackLocationInfo metadata;
+
+  private final boolean modBundled;
+
+  private static final java.lang.String resPrefix;
+
+  private static final java.lang.String dataPrefix;
+
+  public static net.fabricmc.fabric.impl.resource.loader.ModNioResourcePack create(java.lang.String, net.fabricmc.loader.api.ModContainer, java.lang.String, net.minecraft.server.packs.PackType, net.fabricmc.fabric.api.resource.ResourcePackActivationType, boolean);
+    Code:
+       0: aload_1
+       1: invokeinterface #1,  1            // InterfaceMethod net/fabricmc/loader/api/ModContainer.getRootPaths:()Ljava/util/List;
+       6: astore        6
+       8: aload_2
+       9: ifnonnull     19
+      12: aload         6
+      14: astore        7
+      16: goto          146
+      19: new           #7                  // class java/util/ArrayList
+      22: dup
+      23: aload         6
+      25: invokeinterface #9,  1            // InterfaceMethod java/util/List.size:()I
+      30: invokespecial #15                 // Method java/util/ArrayList."<init>":(I)V
+      33: astore        7
+      35: aload         6
+      37: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      42: astore        8
+      44: aload         8
+      46: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      51: ifeq          146
+      54: aload         8
+      56: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      61: checkcast     #33                 // class java/nio/file/Path
+      64: astore        9
+      66: aload         9
+      68: invokeinterface #35,  1           // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+      73: invokeinterface #39,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      78: astore        9
+      80: aload         9
+      82: aload_2
+      83: ldc           #42                 // String /
+      85: aload         9
+      87: invokeinterface #44,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+      92: invokevirtual #48                 // Method java/nio/file/FileSystem.getSeparator:()Ljava/lang/String;
+      95: invokevirtual #54                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      98: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+     103: invokeinterface #39,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+     108: astore        10
+     110: aload         10
+     112: aload         9
+     114: invokeinterface #64,  2           // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+     119: ifeq          44
+     122: aload         10
+     124: invokestatic  #68                 // Method exists:(Ljava/nio/file/Path;)Z
+     127: ifne          133
+     130: goto          44
+     133: aload         7
+     135: aload         10
+     137: invokeinterface #73,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     142: pop
+     143: goto          44
+     146: aload         7
+     148: invokeinterface #77,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+     153: ifeq          158
+     156: aconst_null
+     157: areturn
+     158: aload_2
+     159: ifnull        177
+     162: iload         5
+     164: ifeq          177
+     167: aload_0
+     168: aload_2
+     169: invokedynamic #80,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     174: goto          178
+     177: aload_0
+     178: astore        8
+     180: aload_2
+     181: ifnonnull     210
+     184: ldc           #84                 // String pack.name.fabricMod
+     186: iconst_1
+     187: anewarray     #86                 // class java/lang/Object
+     190: dup
+     191: iconst_0
+     192: aload_1
+     193: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+     198: invokeinterface #92,  1           // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getName:()Ljava/lang/String;
+     203: aastore
+     204: invokestatic  #97                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     207: goto          245
+     210: ldc           #103                // String pack.name.fabricMod.subPack
+     212: iconst_2
+     213: anewarray     #86                 // class java/lang/Object
+     216: dup
+     217: iconst_0
+     218: aload_1
+     219: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+     224: invokeinterface #92,  1           // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getName:()Ljava/lang/String;
+     229: aastore
+     230: dup
+     231: iconst_1
+     232: aload_2
+     233: invokedynamic #105,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     238: invokestatic  #108                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     241: aastore
+     242: invokestatic  #97                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;[Ljava/lang/Object;)Lnet/minecraft/network/chat/MutableComponent;
+     245: astore        9
+     247: new           #111                // class net/minecraft/server/packs/PackLocationInfo
+     250: dup
+     251: aload         8
+     253: aload         9
+     255: getstatic     #113                // Field net/fabricmc/fabric/impl/resource/loader/ModResourcePackCreator.RESOURCE_PACK_SOURCE:Lnet/minecraft/server/packs/repository/PackSource;
+     258: new           #119                // class net/minecraft/server/packs/repository/KnownPack
+     261: dup
+     262: ldc           #121                // String fabric
+     264: aload         8
+     266: aload_1
+     267: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+     272: invokeinterface #123,  1          // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getVersion:()Lnet/fabricmc/loader/api/Version;
+     277: invokeinterface #127,  1          // InterfaceMethod net/fabricmc/loader/api/Version.getFriendlyString:()Ljava/lang/String;
+     282: invokespecial #132                // Method net/minecraft/server/packs/repository/KnownPack."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+     285: invokestatic  #135                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     288: invokespecial #141                // Method net/minecraft/server/packs/PackLocationInfo."<init>":(Ljava/lang/String;Lnet/minecraft/network/chat/Component;Lnet/minecraft/server/packs/repository/PackSource;Ljava/util/Optional;)V
+     291: astore        10
+     293: new           #69                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+     296: dup
+     297: aload         8
+     299: aload_1
+     300: aload         7
+     302: aload_3
+     303: aload         4
+     305: iload         5
+     307: aload         10
+     309: invokespecial #144                // Method "<init>":(Ljava/lang/String;Lnet/fabricmc/loader/api/ModContainer;Ljava/util/List;Lnet/minecraft/server/packs/PackType;Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;ZLnet/minecraft/server/packs/PackLocationInfo;)V
+     312: astore        11
+     314: aload         11
+     316: aload_3
+     317: invokevirtual #147                // Method getNamespaces:(Lnet/minecraft/server/packs/PackType;)Ljava/util/Set;
+     320: invokeinterface #151,  1          // InterfaceMethod java/util/Set.isEmpty:()Z
+     325: ifeq          332
+     328: aconst_null
+     329: goto          334
+     332: aload         11
+     334: areturn
+
+  private net.fabricmc.fabric.impl.resource.loader.ModNioResourcePack(java.lang.String, net.fabricmc.loader.api.ModContainer, java.util.List<java.nio.file.Path>, net.minecraft.server.packs.PackType, net.fabricmc.fabric.api.resource.ResourcePackActivationType, boolean, net.minecraft.server.packs.PackLocationInfo);
+    Code:
+       0: aload_0
+       1: invokespecial #154                // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #157                // Field id:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: putfield      #161                // Field mod:Lnet/fabricmc/loader/api/ModContainer;
+      14: aload_0
+      15: aload_3
+      16: putfield      #165                // Field basePaths:Ljava/util/List;
+      19: aload_0
+      20: aload         4
+      22: putfield      #169                // Field type:Lnet/minecraft/server/packs/PackType;
+      25: aload_0
+      26: aload         5
+      28: putfield      #173                // Field activationType:Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;
+      31: aload_0
+      32: iload         6
+      34: putfield      #177                // Field modBundled:Z
+      37: aload_0
+      38: aload_3
+      39: aload_2
+      40: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+      45: invokeinterface #181,  1          // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getId:()Ljava/lang/String;
+      50: invokestatic  #184                // Method readNamespaces:(Ljava/util/List;Ljava/lang/String;)Ljava/util/Map;
+      53: putfield      #188                // Field namespaces:Ljava/util/Map;
+      56: aload_0
+      57: aload         7
+      59: putfield      #192                // Field metadata:Lnet/minecraft/server/packs/PackLocationInfo;
+      62: return
+
+  public net.fabricmc.fabric.impl.resource.loader.ModNioResourcePack createOverlay(java.lang.String);
+    Code:
+       0: new           #69                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+       3: dup
+       4: aload_0
+       5: getfield      #157                // Field id:Ljava/lang/String;
+       8: aload_0
+       9: getfield      #161                // Field mod:Lnet/fabricmc/loader/api/ModContainer;
+      12: aload_0
+      13: getfield      #165                // Field basePaths:Ljava/util/List;
+      16: invokeinterface #196,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      21: aload_1
+      22: invokedynamic #200,  0            // InvokeDynamic #2:apply:(Ljava/lang/String;)Ljava/util/function/Function;
+      27: invokeinterface #204,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      32: invokeinterface #210,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      37: aload_0
+      38: getfield      #169                // Field type:Lnet/minecraft/server/packs/PackType;
+      41: aload_0
+      42: getfield      #173                // Field activationType:Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;
+      45: aload_0
+      46: getfield      #177                // Field modBundled:Z
+      49: aload_0
+      50: getfield      #192                // Field metadata:Lnet/minecraft/server/packs/PackLocationInfo;
+      53: invokespecial #144                // Method "<init>":(Ljava/lang/String;Lnet/fabricmc/loader/api/ModContainer;Ljava/util/List;Lnet/minecraft/server/packs/PackType;Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;ZLnet/minecraft/server/packs/PackLocationInfo;)V
+      56: areturn
+
+  static java.util.Map<net.minecraft.server.packs.PackType, java.util.Set<java.lang.String>> readNamespaces(java.util.List<java.nio.file.Path>, java.lang.String);
+    Code:
+       0: new           #213                // class java/util/EnumMap
+       3: dup
+       4: ldc           #215                // class net/minecraft/server/packs/PackType
+       6: invokespecial #217                // Method java/util/EnumMap."<init>":(Ljava/lang/Class;)V
+       9: astore_2
+      10: invokestatic  #220                // Method net/minecraft/server/packs/PackType.values:()[Lnet/minecraft/server/packs/PackType;
+      13: astore_3
+      14: aload_3
+      15: arraylength
+      16: istore        4
+      18: iconst_0
+      19: istore        5
+      21: iload         5
+      23: iload         4
+      25: if_icmpge     340
+      28: aload_3
+      29: iload         5
+      31: aaload
+      32: astore        6
+      34: aconst_null
+      35: astore        7
+      37: aload_0
+      38: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      43: astore        8
+      45: aload         8
+      47: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      52: ifeq          312
+      55: aload         8
+      57: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      62: checkcast     #33                 // class java/nio/file/Path
+      65: astore        9
+      67: aload         9
+      69: aload         6
+      71: invokevirtual #224                // Method net/minecraft/server/packs/PackType.getDirectory:()Ljava/lang/String;
+      74: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      79: astore        10
+      81: aload         10
+      83: iconst_0
+      84: anewarray     #227                // class java/nio/file/LinkOption
+      87: invokestatic  #229                // Method java/nio/file/Files.isDirectory:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      90: ifne          96
+      93: goto          45
+      96: aload         9
+      98: invokeinterface #44,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+     103: invokevirtual #48                 // Method java/nio/file/FileSystem.getSeparator:()Ljava/lang/String;
+     106: astore        11
+     108: aload         10
+     110: invokestatic  #235                // Method java/nio/file/Files.newDirectoryStream:(Ljava/nio/file/Path;)Ljava/nio/file/DirectoryStream;
+     113: astore        12
+     115: aload         12
+     117: invokeinterface #239,  1          // InterfaceMethod java/nio/file/DirectoryStream.iterator:()Ljava/util/Iterator;
+     122: astore        13
+     124: aload         13
+     126: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     131: ifeq          244
+     134: aload         13
+     136: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     141: checkcast     #33                 // class java/nio/file/Path
+     144: astore        14
+     146: aload         14
+     148: iconst_0
+     149: anewarray     #227                // class java/nio/file/LinkOption
+     152: invokestatic  #229                // Method java/nio/file/Files.isDirectory:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+     155: ifne          161
+     158: goto          124
+     161: aload         14
+     163: invokeinterface #242,  1          // InterfaceMethod java/nio/file/Path.getFileName:()Ljava/nio/file/Path;
+     168: invokeinterface #245,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+     173: astore        15
+     175: aload         15
+     177: aload         11
+     179: ldc           #248                // String
+     181: invokevirtual #54                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     184: astore        15
+     186: getstatic     #250                // Field RESOURCE_PACK_PATH:Ljava/util/regex/Pattern;
+     189: aload         15
+     191: invokevirtual #254                // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+     194: invokevirtual #260                // Method java/util/regex/Matcher.matches:()Z
+     197: ifne          217
+     200: getstatic     #265                // Field LOGGER:Lorg/slf4j/Logger;
+     203: ldc_w         #269                // String Fabric NioResourcePack: ignored invalid namespace: {} in mod ID {}
+     206: aload         15
+     208: aload_1
+     209: invokeinterface #271,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     214: goto          124
+     217: aload         7
+     219: ifnonnull     231
+     222: new           #277                // class java/util/HashSet
+     225: dup
+     226: invokespecial #279                // Method java/util/HashSet."<init>":()V
+     229: astore        7
+     231: aload         7
+     233: aload         15
+     235: invokeinterface #280,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     240: pop
+     241: goto          124
+     244: aload         12
+     246: ifnull        288
+     249: aload         12
+     251: invokeinterface #281,  1          // InterfaceMethod java/nio/file/DirectoryStream.close:()V
+     256: goto          288
+     259: astore        13
+     261: aload         12
+     263: ifnull        285
+     266: aload         12
+     268: invokeinterface #281,  1          // InterfaceMethod java/nio/file/DirectoryStream.close:()V
+     273: goto          285
+     276: astore        14
+     278: aload         13
+     280: aload         14
+     282: invokevirtual #286                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     285: aload         13
+     287: athrow
+     288: goto          309
+     291: astore        12
+     293: getstatic     #265                // Field LOGGER:Lorg/slf4j/Logger;
+     296: aload_1
+     297: invokedynamic #292,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     302: aload         12
+     304: invokeinterface #293,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     309: goto          45
+     312: aload_2
+     313: aload         6
+     315: aload         7
+     317: ifnull        325
+     320: aload         7
+     322: goto          328
+     325: invokestatic  #296                // Method java/util/Collections.emptySet:()Ljava/util/Set;
+     328: invokeinterface #302,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     333: pop
+     334: iinc          5, 1
+     337: goto          21
+     340: aload_2
+     341: areturn
+    Exception table:
+       from    to  target type
+         115   244   259   Class java/lang/Throwable
+         266   273   276   Class java/lang/Throwable
+         108   288   291   Class java/io/IOException
+
+  private java.nio.file.Path getPath(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #308                // Method hasAbsentNs:(Ljava/lang/String;)Z
+       5: ifeq          10
+       8: aconst_null
+       9: areturn
+      10: aload_0
+      11: getfield      #165                // Field basePaths:Ljava/util/List;
+      14: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      19: astore_2
+      20: aload_2
+      21: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      26: ifeq          97
+      29: aload_2
+      30: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      35: checkcast     #33                 // class java/nio/file/Path
+      38: astore_3
+      39: aload_3
+      40: aload_1
+      41: ldc           #42                 // String /
+      43: aload_3
+      44: invokeinterface #44,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+      49: invokevirtual #48                 // Method java/nio/file/FileSystem.getSeparator:()Ljava/lang/String;
+      52: invokevirtual #54                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      55: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      60: invokeinterface #35,  1           // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+      65: invokeinterface #39,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+      70: astore        4
+      72: aload         4
+      74: aload_3
+      75: invokeinterface #64,  2           // InterfaceMethod java/nio/file/Path.startsWith:(Ljava/nio/file/Path;)Z
+      80: ifeq          94
+      83: aload         4
+      85: invokestatic  #68                 // Method exists:(Ljava/nio/file/Path;)Z
+      88: ifeq          94
+      91: aload         4
+      93: areturn
+      94: goto          20
+      97: aconst_null
+      98: areturn
+
+  private boolean hasAbsentNs(java.lang.String);
+    Code:
+       0: aload_1
+       1: getstatic     #312                // Field resPrefix:Ljava/lang/String;
+       4: invokevirtual #315                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+       7: ifeq          24
+      10: getstatic     #312                // Field resPrefix:Ljava/lang/String;
+      13: invokevirtual #317                // Method java/lang/String.length:()I
+      16: istore_2
+      17: getstatic     #320                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      20: astore_3
+      21: goto          50
+      24: aload_1
+      25: getstatic     #323                // Field dataPrefix:Ljava/lang/String;
+      28: invokevirtual #315                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      31: ifeq          48
+      34: getstatic     #323                // Field dataPrefix:Ljava/lang/String;
+      37: invokevirtual #317                // Method java/lang/String.length:()I
+      40: istore_2
+      41: getstatic     #326                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      44: astore_3
+      45: goto          50
+      48: iconst_0
+      49: ireturn
+      50: aload_1
+      51: bipush        47
+      53: iload_2
+      54: invokevirtual #329                // Method java/lang/String.indexOf:(II)I
+      57: istore        4
+      59: iload         4
+      61: ifge          66
+      64: iconst_0
+      65: ireturn
+      66: aload_0
+      67: getfield      #188                // Field namespaces:Ljava/util/Map;
+      70: aload_3
+      71: invokeinterface #333,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      76: checkcast     #152                // class java/util/Set
+      79: aload_1
+      80: iload_2
+      81: iload         4
+      83: invokevirtual #337                // Method java/lang/String.substring:(II)Ljava/lang/String;
+      86: invokeinterface #341,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      91: ifne          98
+      94: iconst_1
+      95: goto          99
+      98: iconst_0
+      99: ireturn
+
+  private net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> openFile(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #344                // Method getPath:(Ljava/lang/String;)Ljava/nio/file/Path;
+       5: astore_2
+       6: aload_2
+       7: ifnull        28
+      10: aload_2
+      11: iconst_0
+      12: anewarray     #227                // class java/nio/file/LinkOption
+      15: invokestatic  #347                // Method java/nio/file/Files.isRegularFile:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      18: ifeq          28
+      21: aload_2
+      22: invokedynamic #350,  0            // InvokeDynamic #4:get:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      27: areturn
+      28: aload_1
+      29: aload_0
+      30: getfield      #177                // Field modBundled:Z
+      33: invokestatic  #353                // Method net/fabricmc/fabric/impl/resource/loader/ModResourcePackUtil.containsDefault:(Ljava/lang/String;Z)Z
+      36: ifeq          47
+      39: aload_0
+      40: aload_1
+      41: invokedynamic #359,  0            // InvokeDynamic #5:get:(Lnet/fabricmc/fabric/impl/resource/loader/ModNioResourcePack;Ljava/lang/String;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      46: areturn
+      47: aconst_null
+      48: areturn
+
+  public net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> getRootResource(java.lang.String...);
+    Code:
+       0: aload_1
+       1: invokestatic  #362                // Method net/minecraft/FileUtil.validatePath:([Ljava/lang/String;)V
+       4: aload_0
+       5: ldc           #42                 // String /
+       7: aload_1
+       8: invokestatic  #368                // Method java/lang/String.join:(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;
+      11: invokevirtual #372                // Method openFile:(Ljava/lang/String;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      14: areturn
+
+  public net.minecraft.server.packs.resources.IoSupplier<java.io.InputStream> getResource(net.minecraft.server.packs.PackType, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #376                // Method getFilename:(Lnet/minecraft/server/packs/PackType;Lnet/minecraft/resources/ResourceLocation;)Ljava/lang/String;
+       6: invokevirtual #344                // Method getPath:(Ljava/lang/String;)Ljava/nio/file/Path;
+       9: astore_3
+      10: aload_3
+      11: ifnonnull     18
+      14: aconst_null
+      15: goto          22
+      18: aload_3
+      19: invokestatic  #380                // InterfaceMethod net/minecraft/server/packs/resources/IoSupplier.create:(Ljava/nio/file/Path;)Lnet/minecraft/server/packs/resources/IoSupplier;
+      22: areturn
+
+  public void listResources(net.minecraft.server.packs.PackType, java.lang.String, java.lang.String, net.minecraft.server.packs.PackResources$ResourceOutput);
+    Code:
+       0: aload_0
+       1: getfield      #188                // Field namespaces:Ljava/util/Map;
+       4: aload_1
+       5: invokestatic  #296                // Method java/util/Collections.emptySet:()Ljava/util/Set;
+       8: invokeinterface #385,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #152                // class java/util/Set
+      16: aload_2
+      17: invokeinterface #341,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      22: ifne          26
+      25: return
+      26: aload_0
+      27: getfield      #165                // Field basePaths:Ljava/util/List;
+      30: invokeinterface #19,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      35: astore        5
+      37: aload         5
+      39: invokeinterface #23,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      44: ifeq          183
+      47: aload         5
+      49: invokeinterface #29,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      54: checkcast     #33                 // class java/nio/file/Path
+      57: astore        6
+      59: aload         6
+      61: invokeinterface #44,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+      66: invokevirtual #48                 // Method java/nio/file/FileSystem.getSeparator:()Ljava/lang/String;
+      69: astore        7
+      71: aload         6
+      73: aload_1
+      74: invokevirtual #224                // Method net/minecraft/server/packs/PackType.getDirectory:()Ljava/lang/String;
+      77: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      82: aload_2
+      83: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      88: astore        8
+      90: aload         8
+      92: aload_3
+      93: ldc           #42                 // String /
+      95: aload         7
+      97: invokevirtual #54                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+     100: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+     105: invokeinterface #39,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+     110: astore        9
+     112: aload         9
+     114: invokestatic  #68                 // Method exists:(Ljava/nio/file/Path;)Z
+     117: ifne          123
+     120: goto          37
+     123: aload         9
+     125: new           #388                // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack$1
+     128: dup
+     129: aload_0
+     130: aload         8
+     132: aload         7
+     134: aload_2
+     135: aload         4
+     137: invokespecial #390                // Method net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack$1."<init>":(Lnet/fabricmc/fabric/impl/resource/loader/ModNioResourcePack;Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/String;Lnet/minecraft/server/packs/PackResources$ResourceOutput;)V
+     140: invokestatic  #393                // Method java/nio/file/Files.walkFileTree:(Ljava/nio/file/Path;Ljava/nio/file/FileVisitor;)Ljava/nio/file/Path;
+     143: pop
+     144: goto          180
+     147: astore        10
+     149: getstatic     #265                // Field LOGGER:Lorg/slf4j/Logger;
+     152: aload_3
+     153: aload_2
+     154: aload_0
+     155: getfield      #161                // Field mod:Lnet/fabricmc/loader/api/ModContainer;
+     158: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+     163: invokeinterface #181,  1          // InterfaceMethod net/fabricmc/loader/api/metadata/ModMetadata.getId:()Ljava/lang/String;
+     168: invokedynamic #397,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     173: aload         10
+     175: invokeinterface #293,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     180: goto          37
+     183: return
+    Exception table:
+       from    to  target type
+         123   144   147   Class java/io/IOException
+
+  public java.util.Set<java.lang.String> getNamespaces(net.minecraft.server.packs.PackType);
+    Code:
+       0: aload_0
+       1: getfield      #188                // Field namespaces:Ljava/util/Map;
+       4: aload_1
+       5: invokestatic  #296                // Method java/util/Collections.emptySet:()Ljava/util/Set;
+       8: invokeinterface #385,  3          // InterfaceMethod java/util/Map.getOrDefault:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      13: checkcast     #152                // class java/util/Set
+      16: areturn
+
+  public <T> T getMetadataSection(net.minecraft.server.packs.metadata.MetadataSectionSerializer<T>) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: ldc_w         #400                // String pack.mcmeta
+       4: invokevirtual #372                // Method openFile:(Ljava/lang/String;)Lnet/minecraft/server/packs/resources/IoSupplier;
+       7: invokestatic  #402                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      10: checkcast     #381                // class net/minecraft/server/packs/resources/IoSupplier
+      13: invokeinterface #407,  1          // InterfaceMethod net/minecraft/server/packs/resources/IoSupplier.get:()Ljava/lang/Object;
+      18: checkcast     #409                // class java/io/InputStream
+      21: astore_2
+      22: aload_1
+      23: aload_2
+      24: invokestatic  #411                // Method net/minecraft/server/packs/AbstractPackResources.getMetadataFromStream:(Lnet/minecraft/server/packs/metadata/MetadataSectionSerializer;Ljava/io/InputStream;)Ljava/lang/Object;
+      27: astore_3
+      28: aload_2
+      29: ifnull        36
+      32: aload_2
+      33: invokevirtual #417                // Method java/io/InputStream.close:()V
+      36: aload_3
+      37: areturn
+      38: astore_3
+      39: aload_2
+      40: ifnull        58
+      43: aload_2
+      44: invokevirtual #417                // Method java/io/InputStream.close:()V
+      47: goto          58
+      50: astore        4
+      52: aload_3
+      53: aload         4
+      55: invokevirtual #286                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+      58: aload_3
+      59: athrow
+    Exception table:
+       from    to  target type
+          22    28    38   Class java/lang/Throwable
+          43    47    50   Class java/lang/Throwable
+
+  public net.minecraft.server.packs.PackLocationInfo location();
+    Code:
+       0: aload_0
+       1: getfield      #192                // Field metadata:Lnet/minecraft/server/packs/PackLocationInfo;
+       4: areturn
+
+  public void close();
+    Code:
+       0: return
+
+  public net.fabricmc.loader.api.metadata.ModMetadata getFabricModMetadata();
+    Code:
+       0: aload_0
+       1: getfield      #161                // Field mod:Lnet/fabricmc/loader/api/ModContainer;
+       4: invokeinterface #88,  1           // InterfaceMethod net/fabricmc/loader/api/ModContainer.getMetadata:()Lnet/fabricmc/loader/api/metadata/ModMetadata;
+       9: areturn
+
+  public net.fabricmc.fabric.api.resource.ResourcePackActivationType getActivationType();
+    Code:
+       0: aload_0
+       1: getfield      #173                // Field activationType:Lnet/fabricmc/fabric/api/resource/ResourcePackActivationType;
+       4: areturn
+
+  public java.lang.String packId();
+    Code:
+       0: aload_0
+       1: getfield      #157                // Field id:Ljava/lang/String;
+       4: areturn
+
+  private static boolean exists(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: invokeinterface #44,  1           // InterfaceMethod java/nio/file/Path.getFileSystem:()Ljava/nio/file/FileSystem;
+       6: getstatic     #418                // Field DEFAULT_FS:Ljava/nio/file/FileSystem;
+       9: if_acmpne     24
+      12: aload_0
+      13: invokeinterface #422,  1          // InterfaceMethod java/nio/file/Path.toFile:()Ljava/io/File;
+      18: invokevirtual #426                // Method java/io/File.exists:()Z
+      21: goto          32
+      24: aload_0
+      25: iconst_0
+      26: anewarray     #227                // class java/nio/file/LinkOption
+      29: invokestatic  #430                // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+      32: ireturn
+
+  private static java.lang.String getFilename(net.minecraft.server.packs.PackType, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #432                // Field java/util/Locale.ROOT:Ljava/util/Locale;
+       3: ldc_w         #438                // String %s/%s/%s
+       6: iconst_3
+       7: anewarray     #86                 // class java/lang/Object
+      10: dup
+      11: iconst_0
+      12: aload_0
+      13: invokevirtual #224                // Method net/minecraft/server/packs/PackType.getDirectory:()Ljava/lang/String;
+      16: aastore
+      17: dup
+      18: iconst_1
+      19: aload_1
+      20: invokevirtual #440                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      23: aastore
+      24: dup
+      25: iconst_2
+      26: aload_1
+      27: invokevirtual #445                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      30: aastore
+      31: invokestatic  #447                // Method java/lang/String.format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      34: areturn
+
+  public net.fabricmc.fabric.api.resource.ModResourcePack createOverlay(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #451                // Method createOverlay:(Ljava/lang/String;)Lnet/fabricmc/fabric/impl/resource/loader/ModNioResourcePack;
+       5: areturn
+
+  private java.io.InputStream lambda$openFile$2(java.lang.String) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: getfield      #161                // Field mod:Lnet/fabricmc/loader/api/ModContainer;
+       4: aload_0
+       5: getfield      #169                // Field type:Lnet/minecraft/server/packs/PackType;
+       8: aload_1
+       9: invokestatic  #455                // Method net/fabricmc/fabric/impl/resource/loader/ModResourcePackUtil.openDefault:(Lnet/fabricmc/loader/api/ModContainer;Lnet/minecraft/server/packs/PackType;Ljava/lang/String;)Ljava/io/InputStream;
+      12: areturn
+
+  private static java.io.InputStream lambda$openFile$1(java.nio.file.Path) throws java.io.IOException;
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: anewarray     #459                // class java/nio/file/OpenOption
+       5: invokestatic  #461                // Method java/nio/file/Files.newInputStream:(Ljava/nio/file/Path;[Ljava/nio/file/OpenOption;)Ljava/io/InputStream;
+       8: areturn
+
+  private static java.nio.file.Path lambda$createOverlay$0(java.lang.String, java.nio.file.Path);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokeinterface #60,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       7: areturn
+
+  static {};
+    Code:
+       0: ldc           #69                 // class net/fabricmc/fabric/impl/resource/loader/ModNioResourcePack
+       2: invokestatic  #465                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+       5: putstatic     #265                // Field LOGGER:Lorg/slf4j/Logger;
+       8: ldc_w         #471                // String [a-z0-9-_.]+
+      11: invokestatic  #473                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+      14: putstatic     #250                // Field RESOURCE_PACK_PATH:Ljava/util/regex/Pattern;
+      17: invokestatic  #477                // Method java/nio/file/FileSystems.getDefault:()Ljava/nio/file/FileSystem;
+      20: putstatic     #418                // Field DEFAULT_FS:Ljava/nio/file/FileSystem;
+      23: getstatic     #320                // Field net/minecraft/server/packs/PackType.CLIENT_RESOURCES:Lnet/minecraft/server/packs/PackType;
+      26: invokevirtual #224                // Method net/minecraft/server/packs/PackType.getDirectory:()Ljava/lang/String;
+      29: invokedynamic #482,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      34: putstatic     #312                // Field resPrefix:Ljava/lang/String;
+      37: getstatic     #326                // Field net/minecraft/server/packs/PackType.SERVER_DATA:Lnet/minecraft/server/packs/PackType;
+      40: invokevirtual #224                // Method net/minecraft/server/packs/PackType.getDirectory:()Ljava/lang/String;
+      43: invokedynamic #482,  0            // InvokeDynamic #7:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      48: putstatic     #323                // Field dataPrefix:Ljava/lang/String;
+      51: return
+}
