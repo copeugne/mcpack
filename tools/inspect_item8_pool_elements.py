@@ -1699,6 +1699,14 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
     "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
     "net/mehvahdjukaar/supplementaries/integration/CompatHandler.class",
+    "net/mehvahdjukaar/supplementaries/integration/CCCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/CreateCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/CuriosCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/FarmersDelightCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/QuarkCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/CCCompatImpl.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/CreateCompatImpl.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/QuarkCompatImpl.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1851,6 +1859,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
+                verbose |= name.startswith("net/mehvahdjukaar/supplementaries/integration/")
                 verbose |= name in {
                     "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
                     "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
