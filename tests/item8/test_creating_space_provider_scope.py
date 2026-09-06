@@ -70,3 +70,51 @@ def test_creating_space_packaged_component_partition() -> None:
     for root in roots:
         assert traces[root]["missing"] == []
         assert traces[root]["unresolved_elements"] == []
+
+
+def test_creating_space_entry_source_coverage() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("creatingspace-"))
+    directory = Path("evidence/item-8/sources/creating-space-provider")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "eba1da2e07326fc6b3f57060d05bc7130695911a5fc118be589e2e09a1a515c4"
+    )
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    captured = {row["class"] for row in identities}
+    assert len(captured) == len(identities) == 39
+    with ZipFile(source.path) as archive:
+        annotated = {
+            n for n in archive.namelist() if n.endswith(".class") and any(
+                annotation in archive.read(n) for annotation in (
+                    b"Lnet/neoforged/fml/common/Mod;",
+                    b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                )
+            )
+        }
+        mixin = cast("dict[str, JsonValue]", json.loads(archive.read("creatingspace.mixins.json")))
+        declared = {
+            (str(mixin["package"]) + "." + name).replace(".", "/") + ".class"
+            for key in ("mixins", "client", "server")
+            for name in cast("list[str]", mixin.get(key, []))
+        }
+        declared.add(str(mixin["plugin"]).replace(".", "/") + ".class")
+        assert len(annotated) == 13
+        assert len(declared) == 20
+        for row in identities:
+            assert row["archive"] == source.name
+            assert row["archive_sha256"] == source.sha256
+            assert hashlib.sha256(archive.read(row["class"])).hexdigest() == row["class_sha256"]
+            assert hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest() == (
+                row["disassembly_sha256"]
+            )
+    raw = Path("evidence/item-8/sources/generation-code-references.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "95b9991457704f4cf710b09456a82db78c2dcdd79544212c77d8f31d64c8883f"
+    )
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    referenced = {
+        str(row["path"]) for row in cast("list[dict[str, JsonValue]]", catalog["resources"])
+        if row["archive"] == source.name
+    }
+    assert len(referenced) == 6
+    assert captured == annotated | declared | referenced

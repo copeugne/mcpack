@@ -704,6 +704,24 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Creating Space packaged component checkpoint
 
+Source continuation: c212c8a selects the bounded entry set and 4d43faf retains
+all 39 disassemblies. Manifest SHA-256:
+eba1da2e07326fc6b3f57060d05bc7130695911a5fc118be589e2e09a1a515c4.
+The exact extraction command and independent r1 comparison are recorded in
+sources/creating-space-provider/README.md. The source-coverage case binds all
+thirteen annotated entries, nineteen declared mixins and their plugin, and the
+six indexed generation-reference classes. Two focused cases pass in 0.25s,
+with scoped Ruff and Basedpyright passing. This proves capture coverage of those
+mechanisms, not complete semantic coverage of every reachable operation.
+
+CSMixinPlugin.getMixins returns null, shouldApplyMixin returns true, and its
+other lifecycle methods do not inject code. No additional mixin list is supplied
+by this plugin. CreatingSpace registers the captured CarverInit, common setup,
+custom datapack registries and a block-mass reload listener. Continue with the
+captured event/mixin and crater/rocket roles and any concrete delegated content
+consumer; no need to recapture these 39 sources. The disconnected outpost's
+other-consumer disposition and whole-provider closure remain open.
+
 The exact archive is a02eb4c17201f2add8343ebe7b4476890ae9b59a7f5af7e0309f6e00b9c65866,
 with 1645 non-directory files. Existing family-decision checks already bind the
 four root definitions. The focused component check now accounts for all five
