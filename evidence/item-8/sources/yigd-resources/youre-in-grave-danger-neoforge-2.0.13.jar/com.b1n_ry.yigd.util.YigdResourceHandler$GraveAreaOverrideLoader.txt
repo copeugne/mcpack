@@ -1,0 +1,314 @@
+Classfile youre-in-grave-danger-neoforge-2.0.13.jar!/com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader.class
+  Last modified Jun 22, 2025; size 3195 bytes
+  SHA-256 checksum 43ee92aff12ab0dac210a857ed536af844696fa4c0f1bc498b3863093717e85c
+  Compiled from "YigdResourceHandler.java"
+class com.b1n_ry.yigd.util.YigdResourceHandler$GraveAreaOverrideLoader implements net.minecraft.server.packs.resources.ResourceManagerReloadListener
+  minor version: 0
+  major version: 65
+  flags: (0x0020) ACC_SUPER
+  this_class: #117                        // com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 2, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Class              #8            // com/b1n_ry/yigd/Yigd
+    #8 = Utf8               com/b1n_ry/yigd/Yigd
+    #9 = String             #10           // yigd
+   #10 = Utf8               yigd
+   #11 = String             #12           // custom/grave_areas.json
+   #12 = Utf8               custom/grave_areas.json
+   #13 = Methodref          #14.#15       // net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #14 = Class              #16           // net/minecraft/resources/ResourceLocation
+   #15 = NameAndType        #17:#18       // fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #16 = Utf8               net/minecraft/resources/ResourceLocation
+   #17 = Utf8               fromNamespaceAndPath
+   #18 = Utf8               (Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #19 = InterfaceMethodref #20.#21       // net/minecraft/server/packs/resources/ResourceManager.getResourceStack:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+   #20 = Class              #22           // net/minecraft/server/packs/resources/ResourceManager
+   #21 = NameAndType        #23:#24       // getResourceStack:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+   #22 = Utf8               net/minecraft/server/packs/resources/ResourceManager
+   #23 = Utf8               getResourceStack
+   #24 = Utf8               (Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+   #25 = InterfaceMethodref #26.#27       // java/util/List.iterator:()Ljava/util/Iterator;
+   #26 = Class              #28           // java/util/List
+   #27 = NameAndType        #29:#30       // iterator:()Ljava/util/Iterator;
+   #28 = Utf8               java/util/List
+   #29 = Utf8               iterator
+   #30 = Utf8               ()Ljava/util/Iterator;
+   #31 = InterfaceMethodref #32.#33       // java/util/Iterator.hasNext:()Z
+   #32 = Class              #34           // java/util/Iterator
+   #33 = NameAndType        #35:#36       // hasNext:()Z
+   #34 = Utf8               java/util/Iterator
+   #35 = Utf8               hasNext
+   #36 = Utf8               ()Z
+   #37 = InterfaceMethodref #32.#38       // java/util/Iterator.next:()Ljava/lang/Object;
+   #38 = NameAndType        #39:#40       // next:()Ljava/lang/Object;
+   #39 = Utf8               next
+   #40 = Utf8               ()Ljava/lang/Object;
+   #41 = Class              #42           // net/minecraft/server/packs/resources/Resource
+   #42 = Utf8               net/minecraft/server/packs/resources/Resource
+   #43 = Methodref          #41.#44       // net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+   #44 = NameAndType        #45:#46       // open:()Ljava/io/InputStream;
+   #45 = Utf8               open
+   #46 = Utf8               ()Ljava/io/InputStream;
+   #47 = Fieldref           #7.#48        // com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+   #48 = NameAndType        #49:#50       // LOGGER:Lorg/slf4j/Logger;
+   #49 = Utf8               LOGGER
+   #50 = Utf8               Lorg/slf4j/Logger;
+   #51 = String             #52           // Reloading YIGD grave area overrides (server)
+   #52 = Utf8               Reloading YIGD grave area overrides (server)
+   #53 = InterfaceMethodref #54.#55       // org/slf4j/Logger.info:(Ljava/lang/String;)V
+   #54 = Class              #56           // org/slf4j/Logger
+   #55 = NameAndType        #57:#58       // info:(Ljava/lang/String;)V
+   #56 = Utf8               org/slf4j/Logger
+   #57 = Utf8               info
+   #58 = Utf8               (Ljava/lang/String;)V
+   #59 = Fieldref           #60.#61       // com/b1n_ry/yigd/util/YigdResourceHandler.GSON:Lcom/google/gson/Gson;
+   #60 = Class              #62           // com/b1n_ry/yigd/util/YigdResourceHandler
+   #61 = NameAndType        #63:#64       // GSON:Lcom/google/gson/Gson;
+   #62 = Utf8               com/b1n_ry/yigd/util/YigdResourceHandler
+   #63 = Utf8               GSON
+   #64 = Utf8               Lcom/google/gson/Gson;
+   #65 = Class              #66           // java/io/InputStreamReader
+   #66 = Utf8               java/io/InputStreamReader
+   #67 = Methodref          #65.#68       // java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+   #68 = NameAndType        #5:#69        // "<init>":(Ljava/io/InputStream;)V
+   #69 = Utf8               (Ljava/io/InputStream;)V
+   #70 = Class              #71           // com/b1n_ry/yigd/util/GraveOverrideAreas
+   #71 = Utf8               com/b1n_ry/yigd/util/GraveOverrideAreas
+   #72 = Methodref          #73.#74       // com/google/gson/Gson.fromJson:(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
+   #73 = Class              #75           // com/google/gson/Gson
+   #74 = NameAndType        #76:#77       // fromJson:(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
+   #75 = Utf8               com/google/gson/Gson
+   #76 = Utf8               fromJson
+   #77 = Utf8               (Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
+   #78 = Fieldref           #70.#79       // com/b1n_ry/yigd/util/GraveOverrideAreas.INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+   #79 = NameAndType        #80:#81       // INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+   #80 = Utf8               INSTANCE
+   #81 = Utf8               Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+   #82 = String             #83           // Grave area overrides successfully reloaded (server)
+   #83 = Utf8               Grave area overrides successfully reloaded (server)
+   #84 = Methodref          #85.#86       // java/io/InputStream.close:()V
+   #85 = Class              #87           // java/io/InputStream
+   #86 = NameAndType        #88:#6        // close:()V
+   #87 = Utf8               java/io/InputStream
+   #88 = Utf8               close
+   #89 = Class              #90           // java/lang/Throwable
+   #90 = Utf8               java/lang/Throwable
+   #91 = Methodref          #89.#92       // java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+   #92 = NameAndType        #93:#94       // addSuppressed:(Ljava/lang/Throwable;)V
+   #93 = Utf8               addSuppressed
+   #94 = Utf8               (Ljava/lang/Throwable;)V
+   #95 = Class              #96           // java/io/IOException
+   #96 = Utf8               java/io/IOException
+   #97 = Class              #98           // java/lang/ClassCastException
+   #98 = Utf8               java/lang/ClassCastException
+   #99 = Class              #100          // java/lang/NullPointerException
+  #100 = Utf8               java/lang/NullPointerException
+  #101 = String             #102          // Could not load resource `%s` from datapack `%s`
+  #102 = Utf8               Could not load resource `%s` from datapack `%s`
+  #103 = Methodref          #41.#104      // net/minecraft/server/packs/resources/Resource.sourcePackId:()Ljava/lang/String;
+  #104 = NameAndType        #105:#106     // sourcePackId:()Ljava/lang/String;
+  #105 = Utf8               sourcePackId
+  #106 = Utf8               ()Ljava/lang/String;
+  #107 = Methodref          #108.#109     // java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+  #108 = Class              #110          // java/lang/String
+  #109 = NameAndType        #111:#112     // formatted:([Ljava/lang/Object;)Ljava/lang/String;
+  #110 = Utf8               java/lang/String
+  #111 = Utf8               formatted
+  #112 = Utf8               ([Ljava/lang/Object;)Ljava/lang/String;
+  #113 = InterfaceMethodref #54.#114      // org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #114 = NameAndType        #115:#116     // error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #115 = Utf8               error
+  #116 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+  #117 = Class              #118          // com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader
+  #118 = Utf8               com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader
+  #119 = Class              #120          // net/minecraft/server/packs/resources/ResourceManagerReloadListener
+  #120 = Utf8               net/minecraft/server/packs/resources/ResourceManagerReloadListener
+  #121 = Utf8               Code
+  #122 = Utf8               LineNumberTable
+  #123 = Utf8               LocalVariableTable
+  #124 = Utf8               this
+  #125 = Utf8               Lcom/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader;
+  #126 = Utf8               onResourceManagerReload
+  #127 = Utf8               (Lnet/minecraft/server/packs/resources/ResourceManager;)V
+  #128 = Utf8               is
+  #129 = Utf8               Ljava/io/InputStream;
+  #130 = Utf8               e
+  #131 = Utf8               Ljava/lang/Exception;
+  #132 = Utf8               resource
+  #133 = Utf8               Lnet/minecraft/server/packs/resources/Resource;
+  #134 = Utf8               manager
+  #135 = Utf8               Lnet/minecraft/server/packs/resources/ResourceManager;
+  #136 = Utf8               resourceLocation
+  #137 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #138 = Utf8               resources
+  #139 = Utf8               Ljava/util/List;
+  #140 = Utf8               LocalVariableTypeTable
+  #141 = Utf8               Ljava/util/List<Lnet/minecraft/server/packs/resources/Resource;>;
+  #142 = Utf8               StackMapTable
+  #143 = Class              #144          // java/lang/Exception
+  #144 = Utf8               java/lang/Exception
+  #145 = Utf8               SourceFile
+  #146 = Utf8               YigdResourceHandler.java
+  #147 = Utf8               NestHost
+  #148 = Utf8               InnerClasses
+  #149 = Utf8               GraveAreaOverrideLoader
+{
+  private com.b1n_ry.yigd.util.YigdResourceHandler$GraveAreaOverrideLoader();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 101: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader;
+
+  public void onResourceManagerReload(net.minecraft.server.packs.resources.ResourceManager);
+    descriptor: (Lnet/minecraft/server/packs/resources/ResourceManager;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=9, args_size=2
+         0: ldc           #9                  // String yigd
+         2: ldc           #11                 // String custom/grave_areas.json
+         4: invokestatic  #13                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+         7: astore_2
+         8: aload_1
+         9: aload_2
+        10: invokeinterface #19,  2           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.getResourceStack:(Lnet/minecraft/resources/ResourceLocation;)Ljava/util/List;
+        15: astore_3
+        16: aload_3
+        17: invokeinterface #25,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        22: astore        4
+        24: aload         4
+        26: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        31: ifeq          175
+        34: aload         4
+        36: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        41: checkcast     #41                 // class net/minecraft/server/packs/resources/Resource
+        44: astore        5
+        46: aload         5
+        48: invokevirtual #43                 // Method net/minecraft/server/packs/resources/Resource.open:()Ljava/io/InputStream;
+        51: astore        6
+        53: getstatic     #47                 // Field com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+        56: ldc           #51                 // String Reloading YIGD grave area overrides (server)
+        58: invokeinterface #53,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+        63: getstatic     #59                 // Field com/b1n_ry/yigd/util/YigdResourceHandler.GSON:Lcom/google/gson/Gson;
+        66: new           #65                 // class java/io/InputStreamReader
+        69: dup
+        70: aload         6
+        72: invokespecial #67                 // Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;)V
+        75: ldc           #70                 // class com/b1n_ry/yigd/util/GraveOverrideAreas
+        77: invokevirtual #72                 // Method com/google/gson/Gson.fromJson:(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
+        80: checkcast     #70                 // class com/b1n_ry/yigd/util/GraveOverrideAreas
+        83: putstatic     #78                 // Field com/b1n_ry/yigd/util/GraveOverrideAreas.INSTANCE:Lcom/b1n_ry/yigd/util/GraveOverrideAreas;
+        86: getstatic     #47                 // Field com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+        89: ldc           #82                 // String Grave area overrides successfully reloaded (server)
+        91: invokeinterface #53,  2           // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+        96: aload         6
+        98: ifnull        136
+       101: aload         6
+       103: invokevirtual #84                 // Method java/io/InputStream.close:()V
+       106: goto          136
+       109: astore        7
+       111: aload         6
+       113: ifnull        133
+       116: aload         6
+       118: invokevirtual #84                 // Method java/io/InputStream.close:()V
+       121: goto          133
+       124: astore        8
+       126: aload         7
+       128: aload         8
+       130: invokevirtual #91                 // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+       133: aload         7
+       135: athrow
+       136: goto          172
+       139: astore        6
+       141: getstatic     #47                 // Field com/b1n_ry/yigd/Yigd.LOGGER:Lorg/slf4j/Logger;
+       144: ldc           #101                // String Could not load resource `%s` from datapack `%s`
+       146: iconst_2
+       147: anewarray     #2                  // class java/lang/Object
+       150: dup
+       151: iconst_0
+       152: aload_2
+       153: aastore
+       154: dup
+       155: iconst_1
+       156: aload         5
+       158: invokevirtual #103                // Method net/minecraft/server/packs/resources/Resource.sourcePackId:()Ljava/lang/String;
+       161: aastore
+       162: invokevirtual #107                // Method java/lang/String.formatted:([Ljava/lang/Object;)Ljava/lang/String;
+       165: aload         6
+       167: invokeinterface #113,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Throwable;)V
+       172: goto          24
+       175: return
+      Exception table:
+         from    to  target type
+            53    96   109   Class java/lang/Throwable
+           116   121   124   Class java/lang/Throwable
+            46   136   139   Class java/io/IOException
+            46   136   139   Class java/lang/ClassCastException
+            46   136   139   Class java/lang/NullPointerException
+      LineNumberTable:
+        line 104: 0
+        line 105: 8
+        line 107: 16
+        line 108: 46
+        line 109: 53
+        line 110: 63
+        line 112: 86
+        line 113: 96
+        line 108: 109
+        line 116: 136
+        line 114: 139
+        line 115: 141
+        line 117: 172
+        line 118: 175
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           53      83     6    is   Ljava/io/InputStream;
+          141      31     6     e   Ljava/lang/Exception;
+           46     126     5 resource   Lnet/minecraft/server/packs/resources/Resource;
+            0     176     0  this   Lcom/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader;
+            0     176     1 manager   Lnet/minecraft/server/packs/resources/ResourceManager;
+            8     168     2 resourceLocation   Lnet/minecraft/resources/ResourceLocation;
+           16     160     3 resources   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           16     160     3 resources   Ljava/util/List<Lnet/minecraft/server/packs/resources/Resource;>;
+      StackMapTable: number_of_entries = 8
+        frame_type = 254 /* append */
+          offset_delta = 24
+          locals = [ class net/minecraft/resources/ResourceLocation, class java/util/List, class java/util/Iterator ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 84
+          locals = [ class com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/resources/ResourceLocation, class java/util/List, class java/util/Iterator, class net/minecraft/server/packs/resources/Resource, class java/io/InputStream ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 14
+          locals = [ class com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader, class net/minecraft/server/packs/resources/ResourceManager, class net/minecraft/resources/ResourceLocation, class java/util/List, class java/util/Iterator, class net/minecraft/server/packs/resources/Resource, class java/io/InputStream, class java/lang/Throwable ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 8 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 2
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 250 /* chop */
+          offset_delta = 32
+        frame_type = 250 /* chop */
+          offset_delta = 2
+}
+SourceFile: "YigdResourceHandler.java"
+NestHost: class com/b1n_ry/yigd/util/YigdResourceHandler
+InnerClasses:
+  private static #149= #117 of #60;       // GraveAreaOverrideLoader=class com/b1n_ry/yigd/util/YigdResourceHandler$GraveAreaOverrideLoader of class com/b1n_ry/yigd/util/YigdResourceHandler
