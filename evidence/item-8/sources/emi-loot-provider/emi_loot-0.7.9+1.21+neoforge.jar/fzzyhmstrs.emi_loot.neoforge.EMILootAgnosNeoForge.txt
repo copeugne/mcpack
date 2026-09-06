@@ -1,0 +1,93 @@
+Compiled from "EMILootAgnosNeoForge.java"
+public class fzzyhmstrs.emi_loot.neoforge.EMILootAgnosNeoForge extends fzzyhmstrs.emi_loot.EMILootAgnos {
+  public fzzyhmstrs.emi_loot.neoforge.EMILootAgnosNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #9                  // Method fzzyhmstrs/emi_loot/EMILootAgnos."<init>":()V
+       4: return
+
+  protected java.lang.String getModNameAgnos(java.lang.String);
+    Code:
+       0: aload_1
+       1: ldc           #16                 // String c
+       3: invokevirtual #22                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       6: ifeq          12
+       9: ldc           #24                 // String Common
+      11: areturn
+      12: invokestatic  #30                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      15: aload_1
+      16: invokevirtual #34                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+      19: astore_2
+      20: aload_2
+      21: invokevirtual #40                 // Method java/util/Optional.isPresent:()Z
+      24: ifeq          43
+      27: aload_2
+      28: invokevirtual #43                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      31: checkcast     #45                 // class net/neoforged/fml/ModContainer
+      34: invokevirtual #49                 // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+      37: invokeinterface #55,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDisplayName:()Ljava/lang/String;
+      42: areturn
+      43: invokestatic  #30                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+      46: aload_1
+      47: bipush        95
+      49: bipush        45
+      51: invokevirtual #59                 // Method java/lang/String.replace:(CC)Ljava/lang/String;
+      54: invokevirtual #34                 // Method net/neoforged/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+      57: astore_2
+      58: aload_2
+      59: invokevirtual #40                 // Method java/util/Optional.isPresent:()Z
+      62: ifeq          81
+      65: aload_2
+      66: invokevirtual #43                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      69: checkcast     #45                 // class net/neoforged/fml/ModContainer
+      72: invokevirtual #49                 // Method net/neoforged/fml/ModContainer.getModInfo:()Lnet/neoforged/neoforgespi/language/IModInfo;
+      75: invokeinterface #55,  1           // InterfaceMethod net/neoforged/neoforgespi/language/IModInfo.getDisplayName:()Ljava/lang/String;
+      80: areturn
+      81: aload_1
+      82: bipush        95
+      84: bipush        32
+      86: invokevirtual #59                 // Method java/lang/String.replace:(CC)Ljava/lang/String;
+      89: invokestatic  #64                 // Method org/apache/commons/lang3/text/WordUtils.capitalizeFully:(Ljava/lang/String;)Ljava/lang/String;
+      92: areturn
+
+  protected boolean isDevelopmentEnvironmentAgnos();
+    Code:
+       0: invokestatic  #74                 // Method net/neoforged/fml/loading/FMLLoader.isProduction:()Z
+       3: ifne          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+
+  protected boolean isModLoadedAgnos(java.lang.String);
+    Code:
+       0: invokestatic  #30                 // Method net/neoforged/fml/ModList.get:()Lnet/neoforged/fml/ModList;
+       3: aload_1
+       4: invokevirtual #80                 // Method net/neoforged/fml/ModList.isLoaded:(Ljava/lang/String;)Z
+       7: ireturn
+
+  protected net.minecraft.world.level.storage.loot.LootTable loadLootTableAgnos(net.minecraft.resources.ResourceLocation, net.minecraft.world.level.storage.loot.LootTable);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokestatic  #88                 // Method net/neoforged/neoforge/event/EventHooks.loadLootTable:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/storage/loot/LootTable;)Lnet/minecraft/world/level/storage/loot/LootTable;
+       5: areturn
+
+  protected void releaseBufferAgnos(net.minecraft.network.FriendlyByteBuf);
+    Code:
+       0: return
+
+  protected net.minecraft.world.item.SpawnEggItem getAllSpawnEggsAgnos(net.minecraft.world.entity.EntityType<?>);
+    Code:
+       0: aload_1
+       1: invokestatic  #103                // Method net/minecraft/world/item/SpawnEggItem.byId:(Lnet/minecraft/world/entity/EntityType;)Lnet/minecraft/world/item/SpawnEggItem;
+       4: areturn
+
+  static {};
+    Code:
+       0: new           #2                  // class fzzyhmstrs/emi_loot/neoforge/EMILootAgnosNeoForge
+       3: dup
+       4: invokespecial #107                // Method "<init>":()V
+       7: putstatic     #111                // Field fzzyhmstrs/emi_loot/EMILootAgnos.delegate:Lfzzyhmstrs/emi_loot/EMILootAgnos;
+      10: return
+}

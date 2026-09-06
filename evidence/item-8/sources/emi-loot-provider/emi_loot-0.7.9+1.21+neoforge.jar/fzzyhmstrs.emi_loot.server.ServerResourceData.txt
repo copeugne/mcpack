@@ -1,0 +1,824 @@
+Compiled from "ServerResourceData.java"
+public class fzzyhmstrs.emi_loot.server.ServerResourceData {
+  private static final com.google.common.collect.Multimap<fzzyhmstrs.emi_loot.server.ServerResourceData$TableChecker, net.minecraft.world.level.storage.loot.LootTable> DIRECT_DROPS;
+
+  public static final java.util.List<net.minecraft.resources.ResourceLocation> SHEEP_TABLES;
+
+  private static final java.util.List<fzzyhmstrs.emi_loot.server.ServerResourceData$TableChecker> TABLE_EXCLUSIONS;
+
+  private static final int DIRECT_DROPS_PATH_LENGTH;
+
+  private static final int FILE_SUFFIX_LENGTH;
+
+  public fzzyhmstrs.emi_loot.server.ServerResourceData();
+    Code:
+       0: aload_0
+       1: invokespecial #33                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void loadDirectTables(net.minecraft.server.packs.resources.ResourceManager, net.minecraft.resources.RegistryOps<com.google.gson.JsonElement>);
+    Code:
+       0: getstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+       3: invokeinterface #47,  1           // InterfaceMethod com/google/common/collect/Multimap.clear:()V
+       8: aload_0
+       9: ldc           #49                 // String direct_drops
+      11: invokedynamic #68,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      16: invokeinterface #74,  3           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.listResources:(Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+      21: aload_1
+      22: invokedynamic #87,  0             // InvokeDynamic #1:accept:(Lnet/minecraft/resources/RegistryOps;)Ljava/util/function/BiConsumer;
+      27: invokeinterface #91,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      32: aload_0
+      33: ldc           #93                 // String emi_loot_data
+      35: invokedynamic #98,  0             // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      40: invokeinterface #74,  3           // InterfaceMethod net/minecraft/server/packs/resources/ResourceManager.listResources:(Ljava/lang/String;Ljava/util/function/Predicate;)Ljava/util/Map;
+      45: invokedynamic #105,  0            // InvokeDynamic #3:accept:()Ljava/util/function/BiConsumer;
+      50: invokeinterface #91,  2           // InterfaceMethod java/util/Map.forEach:(Ljava/util/function/BiConsumer;)V
+      55: return
+
+  private static void loadDirectTable(net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.Resource, net.minecraft.resources.RegistryOps<com.google.gson.JsonElement>);
+    Code:
+       0: getstatic     #121                // Field fzzyhmstrs/emi_loot/EMILoot.DEBUG:Z
+       3: ifeq          20
+       6: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+       9: ldc           #127                // String Reading direct drop table from file: {}
+      11: aload_0
+      12: invokevirtual #133                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      15: invokeinterface #139,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      20: aload_0
+      21: invokevirtual #142                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      24: astore_3
+      25: aload_0
+      26: invokevirtual #145                // Method net/minecraft/resources/ResourceLocation.getNamespace:()Ljava/lang/String;
+      29: aload_3
+      30: getstatic     #147                // Field DIRECT_DROPS_PATH_LENGTH:I
+      33: aload_3
+      34: invokevirtual #153                // Method java/lang/String.length:()I
+      37: getstatic     #155                // Field FILE_SUFFIX_LENGTH:I
+      40: isub
+      41: invokevirtual #159                // Method java/lang/String.substring:(II)Ljava/lang/String;
+      44: invokestatic  #163                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      47: astore        4
+      49: aload         4
+      51: invokevirtual #142                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+      54: astore        5
+      56: aload         5
+      58: ldc           #165                // String blocks/
+      60: invokevirtual #169                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      63: ifne          108
+      66: aload         5
+      68: ldc           #171                // String entities/
+      70: invokevirtual #169                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      73: ifne          108
+      76: aload         5
+      78: ldc           #173                // String chests/
+      80: invokevirtual #169                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      83: ifne          108
+      86: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+      89: ldc           #175                // String File path for [{}] not correct; needs a \'blocks\', \'entities\' or \'chests\' subfolder. Skipping.
+      91: aload_0
+      92: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      97: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     100: ldc           #180                // String Example: [./data/mod_id/direct_drops/blocks/cobblestone.json] is a valid block direct drop table path for a block added by [mod_id].
+     102: invokeinterface #183,  2          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;)V
+     107: return
+     108: aload_1
+     109: invokevirtual #189                // Method net/minecraft/server/packs/resources/Resource.openAsReader:()Ljava/io/BufferedReader;
+     112: astore        6
+     114: aload         6
+     116: invokestatic  #195                // Method com/google/gson/JsonParser.parseReader:(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+     119: invokevirtual #201                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     122: astore        7
+     124: aload         4
+     126: aload         7
+     128: invokestatic  #205                // Method loadTableCheckerFromTable:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lfzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker;
+     131: astore        8
+     133: aload         4
+     135: getstatic     #211                // Field net/minecraft/world/level/storage/loot/LootTable.DIRECT_CODEC:Lcom/mojang/serialization/Codec;
+     138: aload_2
+     139: aload         7
+     141: invokeinterface #217,  3          // InterfaceMethod com/mojang/serialization/Codec.parse:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+     146: invokedynamic #230,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     151: invokeinterface #236,  2          // InterfaceMethod com/mojang/serialization/DataResult.getOrThrow:(Ljava/util/function/Function;)Ljava/lang/Object;
+     156: checkcast     #207                // class net/minecraft/world/level/storage/loot/LootTable
+     159: invokestatic  #242                // Method fzzyhmstrs/emi_loot/EMILootAgnos.loadLootTable:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/storage/loot/LootTable;)Lnet/minecraft/world/level/storage/loot/LootTable;
+     162: astore        9
+     164: aload         9
+     166: ifnull        185
+     169: getstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+     172: aload         8
+     174: aload         9
+     176: invokeinterface #246,  3          // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     181: pop
+     182: goto          196
+     185: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     188: ldc           #254                // String Loot table in file [{}] is empty!
+     190: aload_0
+     191: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     196: goto          213
+     199: astore        6
+     201: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     204: ldc_w         #256                // String Failed to open or read direct drops loot table file: {}
+     207: aload_0
+     208: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     213: return
+    Exception table:
+       from    to  target type
+         108   196   199   Class java/lang/Exception
+
+  private static fzzyhmstrs.emi_loot.server.ServerResourceData$TableChecker loadTableCheckerFromTable(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject);
+    Code:
+       0: aload_1
+       1: ldc_w         #275                // String match_tables
+       4: invokevirtual #278                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+       7: ifne          28
+      10: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      13: dup
+      14: aload_0
+      15: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      18: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      21: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      24: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+      27: areturn
+      28: aload_1
+      29: ldc_w         #275                // String match_tables
+      32: invokevirtual #291                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      35: astore_2
+      36: aload_2
+      37: invokevirtual #295                // Method com/google/gson/JsonElement.isJsonObject:()Z
+      40: ifne          73
+      43: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+      46: ldc_w         #297                // String Direct drops table {} has malformed table matcher, needs to be an object
+      49: aload_0
+      50: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      55: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      58: dup
+      59: aload_0
+      60: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      63: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      66: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      69: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+      72: areturn
+      73: aload_2
+      74: invokevirtual #201                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      77: astore_3
+      78: aload_0
+      79: aload_1
+      80: ldc_w         #299                // String Direct drops table
+      83: invokestatic  #303                // Method loadTableChecker:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Lfzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker;
+      86: areturn
+
+  private static fzzyhmstrs.emi_loot.server.ServerResourceData$TableChecker loadTableChecker(net.minecraft.resources.ResourceLocation, com.google.gson.JsonObject, java.lang.String);
+    Code:
+       0: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+       3: astore_3
+       4: aload_1
+       5: ldc_w         #309                // String regex
+       8: invokevirtual #278                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+      11: ifeq          120
+      14: aload_1
+      15: ldc_w         #309                // String regex
+      18: invokevirtual #291                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      21: astore        4
+      23: aload         4
+      25: invokevirtual #312                // Method com/google/gson/JsonElement.isJsonPrimitive:()Z
+      28: ifne          62
+      31: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+      34: ldc_w         #314                // String {} {} has malformed table matcher. \'regex\' key needs a primitive string value
+      37: aload_2
+      38: aload_0
+      39: invokeinterface #317,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      44: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      47: dup
+      48: aload_0
+      49: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      52: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      55: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      58: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+      61: areturn
+      62: aload         4
+      64: invokevirtual #321                // Method com/google/gson/JsonElement.getAsJsonPrimitive:()Lcom/google/gson/JsonPrimitive;
+      67: astore        5
+      69: aload         5
+      71: invokevirtual #326                // Method com/google/gson/JsonPrimitive.isString:()Z
+      74: ifne          108
+      77: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+      80: ldc_w         #328                // String {} {} has malformed table matcher. \'regex\' key needs a string value
+      83: aload_2
+      84: aload_0
+      85: invokeinterface #317,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      90: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      93: dup
+      94: aload_0
+      95: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+      98: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     101: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     104: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     107: areturn
+     108: aload         5
+     110: invokevirtual #331                // Method com/google/gson/JsonPrimitive.getAsString:()Ljava/lang/String;
+     113: invokestatic  #337                // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+     116: invokestatic  #341                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     119: astore_3
+     120: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     123: astore        4
+     125: aload_1
+     126: ldc_w         #343                // String ids
+     129: invokevirtual #278                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+     132: ifeq          437
+     135: aload_1
+     136: ldc_w         #343                // String ids
+     139: invokevirtual #291                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     142: astore        5
+     144: aload         5
+     146: invokevirtual #346                // Method com/google/gson/JsonElement.isJsonArray:()Z
+     149: ifne          183
+     152: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     155: ldc_w         #348                // String {} {} has malformed table matcher. \'ids\' key needs to be an array of strings
+     158: aload_2
+     159: aload_0
+     160: invokeinterface #317,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     165: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     168: dup
+     169: aload_0
+     170: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     173: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     176: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     179: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     182: areturn
+     183: aload         5
+     185: invokevirtual #352                // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+     188: astore        6
+     190: new           #354                // class java/util/ArrayList
+     193: dup
+     194: invokespecial #355                // Method java/util/ArrayList."<init>":()V
+     197: astore        7
+     199: iconst_0
+     200: istore        8
+     202: iload         8
+     204: aload         6
+     206: invokevirtual #360                // Method com/google/gson/JsonArray.size:()I
+     209: if_icmpge     430
+     212: aload         6
+     214: iload         8
+     216: invokevirtual #363                // Method com/google/gson/JsonArray.get:(I)Lcom/google/gson/JsonElement;
+     219: astore        9
+     221: aload         9
+     223: invokevirtual #312                // Method com/google/gson/JsonElement.isJsonPrimitive:()Z
+     226: ifne          278
+     229: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     232: ldc_w         #365                // String {} {} has malformed table matcher. \'id\' key has non-primitive-string value at index {}
+     235: iconst_3
+     236: anewarray     #4                  // class java/lang/Object
+     239: dup
+     240: iconst_0
+     241: aload_2
+     242: aastore
+     243: dup
+     244: iconst_1
+     245: aload_0
+     246: aastore
+     247: dup
+     248: iconst_2
+     249: iload         8
+     251: invokestatic  #371                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     254: aastore
+     255: invokeinterface #374,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+     260: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     263: dup
+     264: aload_0
+     265: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     268: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     271: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     274: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     277: areturn
+     278: aload         9
+     280: invokevirtual #321                // Method com/google/gson/JsonElement.getAsJsonPrimitive:()Lcom/google/gson/JsonPrimitive;
+     283: astore        10
+     285: aload         10
+     287: invokevirtual #326                // Method com/google/gson/JsonPrimitive.isString:()Z
+     290: ifne          342
+     293: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     296: ldc_w         #376                // String {} {} has malformed table matcher. \'id\' key has non-string value at index {}
+     299: iconst_3
+     300: anewarray     #4                  // class java/lang/Object
+     303: dup
+     304: iconst_0
+     305: aload_2
+     306: aastore
+     307: dup
+     308: iconst_1
+     309: aload_0
+     310: aastore
+     311: dup
+     312: iconst_2
+     313: iload         8
+     315: invokestatic  #371                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     318: aastore
+     319: invokeinterface #374,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+     324: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     327: dup
+     328: aload_0
+     329: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     332: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     335: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     338: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     341: areturn
+     342: aload         10
+     344: invokevirtual #331                // Method com/google/gson/JsonPrimitive.getAsString:()Ljava/lang/String;
+     347: invokestatic  #380                // Method net/minecraft/resources/ResourceLocation.tryParse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     350: astore        11
+     352: aload         11
+     354: ifnonnull     414
+     357: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     360: ldc_w         #382                // String {} {} has malformed table matcher. \'id\' key has unparsable identifier {} at index {}
+     363: iconst_4
+     364: anewarray     #4                  // class java/lang/Object
+     367: dup
+     368: iconst_0
+     369: aload_2
+     370: aastore
+     371: dup
+     372: iconst_1
+     373: aload_0
+     374: aastore
+     375: dup
+     376: iconst_2
+     377: aload         10
+     379: invokevirtual #331                // Method com/google/gson/JsonPrimitive.getAsString:()Ljava/lang/String;
+     382: aastore
+     383: dup
+     384: iconst_3
+     385: iload         8
+     387: invokestatic  #371                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     390: aastore
+     391: invokeinterface #374,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+     396: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     399: dup
+     400: aload_0
+     401: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     404: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     407: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     410: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     413: areturn
+     414: aload         7
+     416: aload         11
+     418: invokeinterface #387,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     423: pop
+     424: iinc          8, 1
+     427: goto          202
+     430: aload         7
+     432: invokestatic  #341                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     435: astore        4
+     437: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     440: astore        5
+     442: aload_1
+     443: ldc_w         #389                // String type
+     446: invokevirtual #278                // Method com/google/gson/JsonObject.has:(Ljava/lang/String;)Z
+     449: ifeq          683
+     452: aload_1
+     453: ldc_w         #389                // String type
+     456: invokevirtual #291                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     459: astore        6
+     461: aload         6
+     463: invokevirtual #312                // Method com/google/gson/JsonElement.isJsonPrimitive:()Z
+     466: ifne          500
+     469: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     472: ldc_w         #391                // String {} {} has malformed table matcher. \'type\' key needs a primitive string value
+     475: aload_2
+     476: aload_0
+     477: invokeinterface #317,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     482: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     485: dup
+     486: aload_0
+     487: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     490: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     493: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     496: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     499: areturn
+     500: aload         6
+     502: invokevirtual #321                // Method com/google/gson/JsonElement.getAsJsonPrimitive:()Lcom/google/gson/JsonPrimitive;
+     505: astore        7
+     507: aload         7
+     509: invokevirtual #326                // Method com/google/gson/JsonPrimitive.isString:()Z
+     512: ifne          546
+     515: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     518: ldc_w         #393                // String {} {} has malformed table matcher. \'type\' key needs a string value
+     521: aload_2
+     522: aload_0
+     523: invokeinterface #317,  4          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     528: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     531: dup
+     532: aload_0
+     533: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     536: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     539: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     542: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     545: areturn
+     546: aload         7
+     548: invokevirtual #331                // Method com/google/gson/JsonPrimitive.getAsString:()Ljava/lang/String;
+     551: invokestatic  #380                // Method net/minecraft/resources/ResourceLocation.tryParse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     554: astore        8
+     556: aload         8
+     558: ifnonnull     610
+     561: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     564: ldc_w         #395                // String {} {} has malformed table matcher. \'type\' key has unparsable identifier {}
+     567: iconst_3
+     568: anewarray     #4                  // class java/lang/Object
+     571: dup
+     572: iconst_0
+     573: aload_2
+     574: aastore
+     575: dup
+     576: iconst_1
+     577: aload_0
+     578: aastore
+     579: dup
+     580: iconst_2
+     581: aload         7
+     583: invokevirtual #331                // Method com/google/gson/JsonPrimitive.getAsString:()Ljava/lang/String;
+     586: aastore
+     587: invokeinterface #374,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+     592: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     595: dup
+     596: aload_0
+     597: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     600: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     603: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     606: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     609: areturn
+     610: invokestatic  #401                // InterfaceMethod fzzyhmstrs/emi_loot/mixins/LootContextTypesAccessor.getREGISTRY:()Lcom/google/common/collect/BiMap;
+     613: aload         8
+     615: invokeinterface #405,  2          // InterfaceMethod com/google/common/collect/BiMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     620: checkcast     #407                // class net/minecraft/world/level/storage/loot/parameters/LootContextParamSet
+     623: astore        9
+     625: aload         9
+     627: ifnonnull     676
+     630: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     633: ldc_w         #409                // String {} {} has malformed table matcher. \'type\' key has unregistered context type {}
+     636: iconst_3
+     637: anewarray     #4                  // class java/lang/Object
+     640: dup
+     641: iconst_0
+     642: aload_2
+     643: aastore
+     644: dup
+     645: iconst_1
+     646: aload_0
+     647: aastore
+     648: dup
+     649: iconst_2
+     650: aload         8
+     652: aastore
+     653: invokeinterface #374,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+     658: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     661: dup
+     662: aload_0
+     663: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     666: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     669: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     672: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     675: areturn
+     676: aload         9
+     678: invokestatic  #341                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     681: astore        5
+     683: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     686: dup
+     687: aload_0
+     688: aload_3
+     689: aload         4
+     691: aload         5
+     693: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     696: areturn
+
+  private static void loadTableExclusion(net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.Resource);
+    Code:
+       0: getstatic     #121                // Field fzzyhmstrs/emi_loot/EMILoot.DEBUG:Z
+       3: ifeq          21
+       6: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+       9: ldc_w         #432                // String Reading exclusion table from file: {}
+      12: aload_0
+      13: invokevirtual #133                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      16: invokeinterface #139,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      21: aload_1
+      22: invokevirtual #189                // Method net/minecraft/server/packs/resources/Resource.openAsReader:()Ljava/io/BufferedReader;
+      25: astore_2
+      26: aload_2
+      27: invokestatic  #195                // Method com/google/gson/JsonParser.parseReader:(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+      30: invokevirtual #201                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      33: astore_3
+      34: aload_3
+      35: ldc_w         #434                // String exclusions
+      38: invokevirtual #291                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      41: astore        4
+      43: aload         4
+      45: ifnull        225
+      48: aload         4
+      50: invokevirtual #346                // Method com/google/gson/JsonElement.isJsonArray:()Z
+      53: ifeq          225
+      56: aload         4
+      58: invokevirtual #352                // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+      61: invokevirtual #438                // Method com/google/gson/JsonArray.iterator:()Ljava/util/Iterator;
+      64: astore        5
+      66: aload         5
+      68: invokeinterface #443,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      73: ifeq          222
+      76: aload         5
+      78: invokeinterface #447,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      83: checkcast     #197                // class com/google/gson/JsonElement
+      86: astore        6
+      88: aload         6
+      90: invokevirtual #312                // Method com/google/gson/JsonElement.isJsonPrimitive:()Z
+      93: ifeq          155
+      96: aload         6
+      98: invokevirtual #448                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+     101: invokestatic  #450                // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+     104: astore        7
+     106: getstatic     #121                // Field fzzyhmstrs/emi_loot/EMILoot.DEBUG:Z
+     109: ifeq          125
+     112: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     115: ldc_w         #452                // String Adding exclusion: {}
+     118: aload         7
+     120: invokeinterface #139,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     125: getstatic     #454                // Field TABLE_EXCLUSIONS:Ljava/util/List;
+     128: new           #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+     131: dup
+     132: aload         7
+     134: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     137: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     140: invokestatic  #284                // Method java/util/Optional.empty:()Ljava/util/Optional;
+     143: invokespecial #287                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker."<init>":(Lnet/minecraft/resources/ResourceLocation;Ljava/util/Optional;Ljava/util/Optional;Ljava/util/Optional;)V
+     146: invokeinterface #387,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     151: pop
+     152: goto          219
+     155: aload         6
+     157: invokevirtual #295                // Method com/google/gson/JsonElement.isJsonObject:()Z
+     160: ifeq          206
+     163: getstatic     #121                // Field fzzyhmstrs/emi_loot/EMILoot.DEBUG:Z
+     166: ifeq          182
+     169: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     172: ldc_w         #456                // String Adding complex exclusion: {}
+     175: aload         6
+     177: invokeinterface #139,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     182: getstatic     #454                // Field TABLE_EXCLUSIONS:Ljava/util/List;
+     185: aload_0
+     186: aload         6
+     188: invokevirtual #201                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     191: ldc_w         #458                // String Table exclusion
+     194: invokestatic  #303                // Method loadTableChecker:(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;Ljava/lang/String;)Lfzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker;
+     197: invokeinterface #387,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     202: pop
+     203: goto          219
+     206: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     209: ldc_w         #460                // String Exclusion element not properly formatted: {}
+     212: aload         6
+     214: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     219: goto          66
+     222: goto          237
+     225: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     228: ldc_w         #462                // String Exclusions in file: {} not readable.
+     231: aload_0
+     232: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     237: goto          253
+     240: astore_2
+     241: getstatic     #125                // Field fzzyhmstrs/emi_loot/EMILoot.LOGGER:Lorg/slf4j/Logger;
+     244: ldc_w         #464                // String Failed to open or read table exclusions file: {}
+     247: aload_0
+     248: invokeinterface #178,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     253: return
+    Exception table:
+       from    to  target type
+          21   237   240   Class java/lang/Exception
+
+  public static boolean skipTable(net.minecraft.world.level.storage.loot.LootTable, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: getstatic     #454                // Field TABLE_EXCLUSIONS:Ljava/util/List;
+       3: invokeinterface #471,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       8: astore_2
+       9: aload_2
+      10: invokeinterface #443,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          42
+      18: aload_2
+      19: invokeinterface #447,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      27: astore_3
+      28: aload_3
+      29: aload_0
+      30: aload_1
+      31: invokevirtual #474                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker.check:(Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/resources/ResourceLocation;)Z
+      34: ifeq          39
+      37: iconst_1
+      38: ireturn
+      39: goto          9
+      42: iconst_0
+      43: ireturn
+
+  public static java.util.List<net.minecraft.world.level.storage.loot.LootTable> getDirectTables(net.minecraft.world.level.storage.loot.LootTable, net.minecraft.resources.ResourceLocation, boolean);
+    Code:
+       0: iload_2
+       1: ifne          8
+       4: invokestatic  #481                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+       7: areturn
+       8: new           #354                // class java/util/ArrayList
+      11: dup
+      12: invokespecial #355                // Method java/util/ArrayList."<init>":()V
+      15: astore_3
+      16: getstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+      19: invokeinterface #485,  1          // InterfaceMethod com/google/common/collect/Multimap.keySet:()Ljava/util/Set;
+      24: invokeinterface #488,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      29: astore        4
+      31: aload         4
+      33: invokeinterface #443,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      38: ifeq          87
+      41: aload         4
+      43: invokeinterface #447,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      48: checkcast     #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      51: astore        5
+      53: aload         5
+      55: aload_0
+      56: aload_1
+      57: invokevirtual #474                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker.check:(Lnet/minecraft/world/level/storage/loot/LootTable;Lnet/minecraft/resources/ResourceLocation;)Z
+      60: ifeq          84
+      63: getstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+      66: aload         5
+      68: invokeinterface #491,  2          // InterfaceMethod com/google/common/collect/Multimap.get:(Ljava/lang/Object;)Ljava/util/Collection;
+      73: astore        6
+      75: aload_3
+      76: aload         6
+      78: invokeinterface #495,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      83: pop
+      84: goto          31
+      87: aload_3
+      88: areturn
+
+  public static com.google.common.collect.Multimap<net.minecraft.resources.ResourceLocation, net.minecraft.world.level.storage.loot.LootTable> getMissedDirectDrops(java.util.List<net.minecraft.resources.ResourceLocation>);
+    Code:
+       0: invokestatic  #510                // Method com/google/common/collect/Maps.newLinkedHashMap:()Ljava/util/LinkedHashMap;
+       3: invokedynamic #517,  0            // InvokeDynamic #5:get:()Lcom/google/common/base/Supplier;
+       8: invokestatic  #523                // Method com/google/common/collect/Multimaps.newMultimap:(Ljava/util/Map;Lcom/google/common/base/Supplier;)Lcom/google/common/collect/Multimap;
+      11: astore_1
+      12: getstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+      15: invokeinterface #526,  1          // InterfaceMethod com/google/common/collect/Multimap.entries:()Ljava/util/Collection;
+      20: invokeinterface #529,  1          // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      25: astore_2
+      26: aload_2
+      27: invokeinterface #443,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      32: ifeq          112
+      35: aload_2
+      36: invokeinterface #447,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      41: checkcast     #10                 // class java/util/Map$Entry
+      44: astore_3
+      45: aload_3
+      46: invokeinterface #532,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      51: checkcast     #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      54: invokevirtual #535                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker.isComplex:()Z
+      57: ifne          109
+      60: aload_0
+      61: aload_3
+      62: invokeinterface #532,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      67: checkcast     #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      70: invokevirtual #539                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker.idCheck:()Lnet/minecraft/resources/ResourceLocation;
+      73: invokeinterface #542,  2          // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      78: ifne          109
+      81: aload_1
+      82: aload_3
+      83: invokeinterface #532,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      88: checkcast     #7                  // class fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker
+      91: invokevirtual #539                // Method fzzyhmstrs/emi_loot/server/ServerResourceData$TableChecker.idCheck:()Lnet/minecraft/resources/ResourceLocation;
+      94: aload_3
+      95: invokeinterface #545,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+     100: checkcast     #207                // class net/minecraft/world/level/storage/loot/LootTable
+     103: invokeinterface #246,  3          // InterfaceMethod com/google/common/collect/Multimap.put:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     108: pop
+     109: goto          26
+     112: aload_1
+     113: areturn
+
+  private static boolean lambda$loadDirectTables$2(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #142                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       4: ldc_w         #552                // String .json
+       7: invokevirtual #555                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+      10: ireturn
+
+  private static void lambda$loadDirectTables$1(net.minecraft.resources.RegistryOps, net.minecraft.resources.ResourceLocation, net.minecraft.server.packs.resources.Resource);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_0
+       3: invokestatic  #557                // Method loadDirectTable:(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/server/packs/resources/Resource;Lnet/minecraft/resources/RegistryOps;)V
+       6: return
+
+  private static boolean lambda$loadDirectTables$0(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: invokevirtual #142                // Method net/minecraft/resources/ResourceLocation.getPath:()Ljava/lang/String;
+       4: ldc_w         #552                // String .json
+       7: invokevirtual #555                // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+      10: ireturn
+
+  static {};
+    Code:
+       0: invokestatic  #510                // Method com/google/common/collect/Maps.newLinkedHashMap:()Ljava/util/LinkedHashMap;
+       3: invokedynamic #517,  0            // InvokeDynamic #5:get:()Lcom/google/common/base/Supplier;
+       8: invokestatic  #523                // Method com/google/common/collect/Multimaps.newMultimap:(Ljava/util/Map;Lcom/google/common/base/Supplier;)Lcom/google/common/collect/Multimap;
+      11: putstatic     #42                 // Field DIRECT_DROPS:Lcom/google/common/collect/Multimap;
+      14: new           #560                // class java/util/LinkedList
+      17: dup
+      18: invokespecial #561                // Method java/util/LinkedList."<init>":()V
+      21: putstatic     #454                // Field TABLE_EXCLUSIONS:Ljava/util/List;
+      24: ldc_w         #563                // String direct_drops/
+      27: invokevirtual #153                // Method java/lang/String.length:()I
+      30: putstatic     #147                // Field DIRECT_DROPS_PATH_LENGTH:I
+      33: ldc_w         #552                // String .json
+      36: invokevirtual #153                // Method java/lang/String.length:()I
+      39: putstatic     #155                // Field FILE_SUFFIX_LENGTH:I
+      42: bipush        16
+      44: anewarray     #129                // class net/minecraft/resources/ResourceLocation
+      47: dup
+      48: iconst_0
+      49: getstatic     #569                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_WHITE:Lnet/minecraft/resources/ResourceKey;
+      52: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      55: aastore
+      56: dup
+      57: iconst_1
+      58: getstatic     #577                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_ORANGE:Lnet/minecraft/resources/ResourceKey;
+      61: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      64: aastore
+      65: dup
+      66: iconst_2
+      67: getstatic     #580                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_MAGENTA:Lnet/minecraft/resources/ResourceKey;
+      70: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      73: aastore
+      74: dup
+      75: iconst_3
+      76: getstatic     #583                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_LIGHT_BLUE:Lnet/minecraft/resources/ResourceKey;
+      79: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      82: aastore
+      83: dup
+      84: iconst_4
+      85: getstatic     #586                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_YELLOW:Lnet/minecraft/resources/ResourceKey;
+      88: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      91: aastore
+      92: dup
+      93: iconst_5
+      94: getstatic     #589                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_LIME:Lnet/minecraft/resources/ResourceKey;
+      97: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     100: aastore
+     101: dup
+     102: bipush        6
+     104: getstatic     #592                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_PINK:Lnet/minecraft/resources/ResourceKey;
+     107: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     110: aastore
+     111: dup
+     112: bipush        7
+     114: getstatic     #595                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_GRAY:Lnet/minecraft/resources/ResourceKey;
+     117: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     120: aastore
+     121: dup
+     122: bipush        8
+     124: getstatic     #598                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_LIGHT_GRAY:Lnet/minecraft/resources/ResourceKey;
+     127: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     130: aastore
+     131: dup
+     132: bipush        9
+     134: getstatic     #601                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_CYAN:Lnet/minecraft/resources/ResourceKey;
+     137: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     140: aastore
+     141: dup
+     142: bipush        10
+     144: getstatic     #604                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_PURPLE:Lnet/minecraft/resources/ResourceKey;
+     147: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     150: aastore
+     151: dup
+     152: bipush        11
+     154: getstatic     #607                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_BLUE:Lnet/minecraft/resources/ResourceKey;
+     157: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     160: aastore
+     161: dup
+     162: bipush        12
+     164: getstatic     #610                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_BROWN:Lnet/minecraft/resources/ResourceKey;
+     167: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     170: aastore
+     171: dup
+     172: bipush        13
+     174: getstatic     #613                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_GREEN:Lnet/minecraft/resources/ResourceKey;
+     177: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     180: aastore
+     181: dup
+     182: bipush        14
+     184: getstatic     #616                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_RED:Lnet/minecraft/resources/ResourceKey;
+     187: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     190: aastore
+     191: dup
+     192: bipush        15
+     194: getstatic     #619                // Field net/minecraft/world/level/storage/loot/BuiltInLootTables.SHEEP_BLACK:Lnet/minecraft/resources/ResourceKey;
+     197: invokevirtual #574                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+     200: aastore
+     201: astore_0
+     202: aload_0
+     203: invokestatic  #625                // Method java/util/Arrays.stream:([Ljava/lang/Object;)Ljava/util/stream/Stream;
+     206: invokeinterface #630,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     211: putstatic     #632                // Field SHEEP_TABLES:Ljava/util/List;
+     214: return
+}
