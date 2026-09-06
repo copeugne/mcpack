@@ -1,0 +1,174 @@
+Compiled from "AdventurerMapsHandler.java"
+public class net.mehvahdjukaar.supplementaries.common.entities.trades.AdventurerMapsHandler {
+  public net.mehvahdjukaar.supplementaries.common.entities.trades.AdventurerMapsHandler();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static net.minecraft.world.item.ItemStack createMapOrQuill(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.Structure>, int, boolean, int, net.minecraft.resources.ResourceLocation, java.lang.String, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #7                  // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokevirtual #13                 // Method net/minecraft/server/MinecraftServer.getWorldData:()Lnet/minecraft/world/level/storage/WorldData;
+       7: invokeinterface #19,  1           // InterfaceMethod net/minecraft/world/level/storage/WorldData.worldGenOptions:()Lnet/minecraft/world/level/levelgen/WorldOptions;
+      12: invokevirtual #25                 // Method net/minecraft/world/level/levelgen/WorldOptions.generateStructures:()Z
+      15: ifne          22
+      18: getstatic     #31                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+      21: areturn
+      22: aload_2
+      23: ifnonnull     54
+      26: aload_0
+      27: invokevirtual #37                 // Method net/minecraft/server/level/ServerLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+      30: getstatic     #41                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+      33: invokeinterface #47,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+      38: getstatic     #53                 // Field net/mehvahdjukaar/supplementaries/reg/ModTags.ADVENTURE_MAP_DESTINATIONS:Lnet/minecraft/tags/TagKey;
+      41: invokeinterface #59,  2           // InterfaceMethod net/minecraft/core/Registry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+      46: aconst_null
+      47: invokevirtual #65                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      50: checkcast     #71                 // class net/minecraft/core/HolderSet
+      53: astore_2
+      54: aload_2
+      55: ifnull        68
+      58: aload_2
+      59: invokeinterface #73,  1           // InterfaceMethod net/minecraft/core/HolderSet.size:()I
+      64: iconst_1
+      65: if_icmpge     72
+      68: getstatic     #31                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+      71: areturn
+      72: getstatic     #77                 // Field net/mehvahdjukaar/supplementaries/integration/CompatHandler.QUARK:Z
+      75: ifeq          135
+      78: getstatic     #83                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.QUARK_QUILL:Ljava/util/function/Supplier;
+      81: invokeinterface #89,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      86: checkcast     #95                 // class java/lang/Boolean
+      89: invokevirtual #97                 // Method java/lang/Boolean.booleanValue:()Z
+      92: ifeq          135
+      95: aload_0
+      96: aload_2
+      97: iload_3
+      98: iload         4
+     100: iload         5
+     102: aload         6
+     104: aload         7
+     106: iload         8
+     108: invokestatic  #100                // Method net/mehvahdjukaar/supplementaries/integration/QuarkCompat.makeAdventurerQuill:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+     111: astore        9
+     113: aload         7
+     115: ifnull        132
+     118: aload         9
+     120: getstatic     #106                // Field net/minecraft/core/component/DataComponents.ITEM_NAME:Lnet/minecraft/core/component/DataComponentType;
+     123: aload         7
+     125: invokestatic  #112                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     128: invokevirtual #118                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     131: pop
+     132: aload         9
+     134: areturn
+     135: getstatic     #122                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.RANDOM_ADVENTURER_MAPS_MAX_SEARCHES:Ljava/util/function/Supplier;
+     138: invokeinterface #89,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+     143: checkcast     #125                // class java/lang/Integer
+     146: invokevirtual #127                // Method java/lang/Integer.intValue:()I
+     149: istore        9
+     151: aload_0
+     152: aload_2
+     153: aload_1
+     154: iload_3
+     155: iload         4
+     157: iload         9
+     159: iconst_0
+     160: invokestatic  #130                // Method net/mehvahdjukaar/supplementaries/common/worldgen/StructureLocator.findNearestStructure:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/HolderSet;Lnet/minecraft/core/BlockPos;IZIZ)Lnet/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure;
+     163: astore        10
+     165: aload         10
+     167: ifnull        197
+     170: aload         10
+     172: invokevirtual #136                // Method net/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure.position:()Lnet/minecraft/core/BlockPos;
+     175: astore        11
+     177: aload_0
+     178: aload         11
+     180: aload         10
+     182: invokevirtual #142                // Method net/mehvahdjukaar/supplementaries/common/worldgen/LocatedStructure.structure:()Lnet/minecraft/core/Holder;
+     185: iload         5
+     187: aload         6
+     189: aload         7
+     191: iload         8
+     193: invokestatic  #146                // Method createStructureMap:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Holder;ILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+     196: areturn
+     197: getstatic     #31                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+     200: areturn
+
+  public static net.minecraft.world.item.ItemStack createStructureMap(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.core.Holder<net.minecraft.world.level.levelgen.structure.Structure>, int, net.minecraft.resources.ResourceLocation, java.lang.String, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #152                // Method net/minecraft/core/BlockPos.getX:()I
+       5: aload_1
+       6: invokevirtual #157                // Method net/minecraft/core/BlockPos.getZ:()I
+       9: iload_3
+      10: i2b
+      11: iconst_1
+      12: iconst_1
+      13: invokestatic  #160                // Method net/minecraft/world/item/MapItem.create:(Lnet/minecraft/world/level/Level;IIBZZ)Lnet/minecraft/world/item/ItemStack;
+      16: astore        7
+      18: aload_0
+      19: aload         7
+      21: invokestatic  #166                // Method net/minecraft/world/item/MapItem.renderBiomePreviewMap:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;)V
+      24: aload         4
+      26: ifnonnull     74
+      29: aload_0
+      30: aload_2
+      31: invokestatic  #170                // Method net/mehvahdjukaar/moonlight/api/map/MapDataRegistry.getDecorationFoStructure:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/Holder;)Lnet/minecraft/core/Holder;
+      34: astore        8
+      36: aload         8
+      38: invokeinterface #176,  1          // InterfaceMethod net/minecraft/core/Holder.unwrapKey:()Ljava/util/Optional;
+      43: invokevirtual #182                // Method java/util/Optional.orElseThrow:()Ljava/lang/Object;
+      46: checkcast     #185                // class net/minecraft/resources/ResourceKey
+      49: invokevirtual #187                // Method net/minecraft/resources/ResourceKey.location:()Lnet/minecraft/resources/ResourceLocation;
+      52: astore        4
+      54: iload         6
+      56: ifne          74
+      59: aload         8
+      61: invokeinterface #191,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      66: checkcast     #194                // class net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType
+      69: invokevirtual #196                // Method net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType.getDefaultMapColor:()I
+      72: istore        6
+      74: aload_0
+      75: aload         7
+      77: aload_1
+      78: aload         4
+      80: iload         6
+      82: invokestatic  #199                // Method net/mehvahdjukaar/moonlight/api/map/MapHelper.addTargetDecorationToItem:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/core/BlockPos;Lnet/minecraft/resources/ResourceLocation;I)V
+      85: aload         5
+      87: ifnull        104
+      90: aload         7
+      92: getstatic     #106                // Field net/minecraft/core/component/DataComponents.ITEM_NAME:Lnet/minecraft/core/component/DataComponentType;
+      95: aload         5
+      97: invokestatic  #112                // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     100: invokevirtual #118                // Method net/minecraft/world/item/ItemStack.set:(Lnet/minecraft/core/component/DataComponentType;Ljava/lang/Object;)Ljava/lang/Object;
+     103: pop
+     104: aload         7
+     106: areturn
+
+  public static net.minecraft.world.item.ItemStack createCustomMapForTrade(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.core.HolderSet<net.minecraft.world.level.levelgen.structure.Structure>, java.lang.String, int, net.minecraft.resources.ResourceLocation);
+    Code:
+       0: aload_0
+       1: instanceof    #8                  // class net/minecraft/server/level/ServerLevel
+       4: ifeq          42
+       7: aload_0
+       8: checkcast     #8                  // class net/minecraft/server/level/ServerLevel
+      11: astore        6
+      13: aload         6
+      15: aload_1
+      16: aload_2
+      17: getstatic     #205                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.RANDOM_ADVENTURER_MAX_SEARCH_RADIUS:Ljava/util/function/Supplier;
+      20: invokeinterface #89,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      25: checkcast     #125                // class java/lang/Integer
+      28: invokevirtual #127                // Method java/lang/Integer.intValue:()I
+      31: iconst_1
+      32: iconst_2
+      33: aload         5
+      35: aload_3
+      36: iload         4
+      38: invokestatic  #208                // Method createMapOrQuill:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+      41: areturn
+      42: getstatic     #31                 // Field net/minecraft/world/item/ItemStack.EMPTY:Lnet/minecraft/world/item/ItemStack;
+      45: areturn
+}
