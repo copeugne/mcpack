@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+The final Overworld house relationship is resolved using all existing views and
+contents: 32 furnished-house variants, two raised dwellings and one low oak hut.
+Roof and furnishing differences remain variants; bedless book/storage exceptions
+are explicit. Full original definitions are preserved. The affected case and
+scoped checks pass. Canonical-note backlog: 59, all IDAS. AdoraBuild has zero open
+canonical notes. Coverage groups: 423. Inventory refresh follows. Required
+attributes, 33 nonregistry contributions and final review/main delivery remain.
+
 Inventory matches 03cd8b3d and independently reproduces exactly. All 887 roots
 remain covered once in 421 working groups. Backlog: 60 (IDAS 59, Overworld house
 with 35 roots). Full End/Nether variants are preserved. Next: remaining Overworld
