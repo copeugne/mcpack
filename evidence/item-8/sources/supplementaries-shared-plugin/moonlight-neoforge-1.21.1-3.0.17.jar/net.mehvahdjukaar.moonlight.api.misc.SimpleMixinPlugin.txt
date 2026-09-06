@@ -1,0 +1,116 @@
+Compiled from "SimpleMixinPlugin.java"
+public abstract class net.mehvahdjukaar.moonlight.api.misc.SimpleMixinPlugin implements org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin {
+  public net.mehvahdjukaar.moonlight.api.misc.SimpleMixinPlugin();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void onLoad(java.lang.String);
+    Code:
+       0: return
+
+  public java.lang.String getRefMapperConfig();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public boolean shouldApplyMixin(java.lang.String, java.lang.String);
+    Code:
+       0: invokestatic  #7                  // Method org/spongepowered/asm/service/MixinService.getService:()Lorg/spongepowered/asm/service/IMixinService;
+       3: invokeinterface #13,  1           // InterfaceMethod org/spongepowered/asm/service/IMixinService.getBytecodeProvider:()Lorg/spongepowered/asm/service/IClassBytecodeProvider;
+       8: aload_2
+       9: invokeinterface #19,  2           // InterfaceMethod org/spongepowered/asm/service/IClassBytecodeProvider.getClassNode:(Ljava/lang/String;)Lorg/objectweb/asm/tree/ClassNode;
+      14: astore_3
+      15: goto          22
+      18: astore        4
+      20: iconst_0
+      21: ireturn
+      22: aload_3
+      23: ifnull        187
+      26: aload_3
+      27: getfield      #27                 // Field org/objectweb/asm/tree/ClassNode.invisibleAnnotations:Ljava/util/List;
+      30: ifnull        187
+      33: aload_3
+      34: getfield      #27                 // Field org/objectweb/asm/tree/ClassNode.invisibleAnnotations:Ljava/util/List;
+      37: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      42: astore        4
+      44: aload         4
+      46: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      51: ifeq          187
+      54: aload         4
+      56: invokeinterface #45,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      61: checkcast     #49                 // class org/objectweb/asm/tree/AnnotationNode
+      64: astore        5
+      66: aload         5
+      68: getfield      #51                 // Field org/objectweb/asm/tree/AnnotationNode.desc:Ljava/lang/String;
+      71: ldc           #55                 // class net/mehvahdjukaar/moonlight/api/misc/OptionalMixin
+      73: invokevirtual #57                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      76: bipush        46
+      78: bipush        47
+      80: invokevirtual #63                 // Method java/lang/String.replace:(CC)Ljava/lang/String;
+      83: invokedynamic #69,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      88: invokevirtual #73                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      91: ifeq          184
+      94: aload         5
+      96: getfield      #77                 // Field org/objectweb/asm/tree/AnnotationNode.values:Ljava/util/List;
+      99: astore        6
+     101: aload         6
+     103: invokeinterface #80,  1           // InterfaceMethod java/util/List.size:()I
+     108: iconst_4
+     109: if_icmplt     129
+     112: aload         6
+     114: iconst_3
+     115: invokeinterface #84,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     120: checkcast     #88                 // class java/lang/Boolean
+     123: invokevirtual #90                 // Method java/lang/Boolean.booleanValue:()Z
+     126: ifeq          133
+     129: iconst_1
+     130: goto          134
+     133: iconst_0
+     134: istore        7
+     136: aload         6
+     138: iconst_1
+     139: invokeinterface #84,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     144: invokevirtual #93                 // Method java/lang/Object.toString:()Ljava/lang/String;
+     147: astore        8
+     149: invokestatic  #7                  // Method org/spongepowered/asm/service/MixinService.getService:()Lorg/spongepowered/asm/service/IMixinService;
+     152: invokeinterface #13,  1           // InterfaceMethod org/spongepowered/asm/service/IMixinService.getBytecodeProvider:()Lorg/spongepowered/asm/service/IClassBytecodeProvider;
+     157: aload         8
+     159: invokeinterface #19,  2           // InterfaceMethod org/spongepowered/asm/service/IClassBytecodeProvider.getClassNode:(Ljava/lang/String;)Lorg/objectweb/asm/tree/ClassNode;
+     164: pop
+     165: iload         7
+     167: ifne          172
+     170: iconst_0
+     171: ireturn
+     172: goto          184
+     175: astore        8
+     177: iload         7
+     179: ifeq          184
+     182: iconst_0
+     183: ireturn
+     184: goto          44
+     187: iconst_1
+     188: ireturn
+    Exception table:
+       from    to  target type
+           0    15    18   Class java/lang/Exception
+         136   171   175   Class java/lang/Exception
+
+  public void acceptTargets(java.util.Set<java.lang.String>, java.util.Set<java.lang.String>);
+    Code:
+       0: return
+
+  public java.util.List<java.lang.String> getMixins();
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public void preApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    Code:
+       0: return
+
+  public void postApply(java.lang.String, org.objectweb.asm.tree.ClassNode, java.lang.String, org.spongepowered.asm.mixin.extensibility.IMixinInfo);
+    Code:
+       0: return
+}

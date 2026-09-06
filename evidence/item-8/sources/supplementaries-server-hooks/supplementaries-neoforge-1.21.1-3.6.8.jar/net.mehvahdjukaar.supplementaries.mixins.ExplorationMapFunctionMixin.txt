@@ -1,0 +1,1061 @@
+Classfile supplementaries-neoforge-1.21.1-3.6.8.jar!/net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.class
+  Last modified Feb 1, 1980; size 13248 bytes
+  SHA-256 checksum ddccab045d244e354afbdaebc3c9312d4d31dc4afe768437160133f07d00c351
+  Compiled from "ExplorationMapFunctionMixin.java"
+public abstract class net.mehvahdjukaar.supplementaries.mixins.ExplorationMapFunctionMixin extends net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction implements net.mehvahdjukaar.supplementaries.common.utils.IExplorationFunctionExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #8                          // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin
+  super_class: #2                         // net/minecraft/world/level/storage/loot/functions/LootItemConditionalFunction
+  interfaces: 1, fields: 9, methods: 13, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // net/minecraft/world/level/storage/loot/functions/LootItemConditionalFunction."<init>":(Ljava/util/List;)V
+    #2 = Class              #4            // net/minecraft/world/level/storage/loot/functions/LootItemConditionalFunction
+    #3 = NameAndType        #5:#6         // "<init>":(Ljava/util/List;)V
+    #4 = Utf8               net/minecraft/world/level/storage/loot/functions/LootItemConditionalFunction
+    #5 = Utf8               <init>
+    #6 = Utf8               (Ljava/util/List;)V
+    #7 = Fieldref           #8.#9         // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+    #8 = Class              #10           // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin
+    #9 = NameAndType        #11:#12       // supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+   #10 = Utf8               net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin
+   #11 = Utf8               supplementaries$customDecoration
+   #12 = Utf8               Lnet/minecraft/core/Holder;
+   #13 = InvokeDynamic      #0:#14        // #0:apply:()Ljava/util/function/Function;
+   #14 = NameAndType        #15:#16       // apply:()Ljava/util/function/Function;
+   #15 = Utf8               apply
+   #16 = Utf8               ()Ljava/util/function/Function;
+   #17 = Methodref          #18.#19       // com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+   #18 = Class              #20           // com/mojang/serialization/codecs/RecordCodecBuilder
+   #19 = NameAndType        #21:#22       // mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+   #20 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder
+   #21 = Utf8               mapCodec
+   #22 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+   #23 = Fieldref           #8.#24        // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.CODEC:Lcom/mojang/serialization/MapCodec;
+   #24 = NameAndType        #25:#26       // CODEC:Lcom/mojang/serialization/MapCodec;
+   #25 = Utf8               CODEC
+   #26 = Utf8               Lcom/mojang/serialization/MapCodec;
+   #27 = Fieldref           #28.#29       // net/mehvahdjukaar/supplementaries/integration/CompatHandler.QUARK:Z
+   #28 = Class              #30           // net/mehvahdjukaar/supplementaries/integration/CompatHandler
+   #29 = NameAndType        #31:#32       // QUARK:Z
+   #30 = Utf8               net/mehvahdjukaar/supplementaries/integration/CompatHandler
+   #31 = Utf8               QUARK
+   #32 = Utf8               Z
+   #33 = Fieldref           #34.#35       // net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.REPLACE_VANILLA_MAPS:Ljava/util/function/Supplier;
+   #34 = Class              #36           // net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks
+   #35 = NameAndType        #37:#38       // REPLACE_VANILLA_MAPS:Ljava/util/function/Supplier;
+   #36 = Utf8               net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks
+   #37 = Utf8               REPLACE_VANILLA_MAPS
+   #38 = Utf8               Ljava/util/function/Supplier;
+   #39 = InterfaceMethodref #40.#41       // java/util/function/Supplier.get:()Ljava/lang/Object;
+   #40 = Class              #42           // java/util/function/Supplier
+   #41 = NameAndType        #43:#44       // get:()Ljava/lang/Object;
+   #42 = Utf8               java/util/function/Supplier
+   #43 = Utf8               get
+   #44 = Utf8               ()Ljava/lang/Object;
+   #45 = Class              #46           // java/lang/Boolean
+   #46 = Utf8               java/lang/Boolean
+   #47 = Methodref          #45.#48       // java/lang/Boolean.booleanValue:()Z
+   #48 = NameAndType        #49:#50       // booleanValue:()Z
+   #49 = Utf8               booleanValue
+   #50 = Utf8               ()Z
+   #51 = Methodref          #52.#53       // net/minecraft/server/level/ServerLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+   #52 = Class              #54           // net/minecraft/server/level/ServerLevel
+   #53 = NameAndType        #55:#56       // registryAccess:()Lnet/minecraft/core/RegistryAccess;
+   #54 = Utf8               net/minecraft/server/level/ServerLevel
+   #55 = Utf8               registryAccess
+   #56 = Utf8               ()Lnet/minecraft/core/RegistryAccess;
+   #57 = Fieldref           #58.#59       // net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #58 = Class              #60           // net/minecraft/core/registries/Registries
+   #59 = NameAndType        #61:#62       // STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #60 = Utf8               net/minecraft/core/registries/Registries
+   #61 = Utf8               STRUCTURE
+   #62 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #63 = InterfaceMethodref #64.#65       // net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #64 = Class              #66           // net/minecraft/core/RegistryAccess
+   #65 = NameAndType        #67:#68       // registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #66 = Utf8               net/minecraft/core/RegistryAccess
+   #67 = Utf8               registryOrThrow
+   #68 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+   #69 = Fieldref           #8.#70        // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.destination:Lnet/minecraft/tags/TagKey;
+   #70 = NameAndType        #71:#72       // destination:Lnet/minecraft/tags/TagKey;
+   #71 = Utf8               destination
+   #72 = Utf8               Lnet/minecraft/tags/TagKey;
+   #73 = InterfaceMethodref #74.#75       // net/minecraft/core/Registry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+   #74 = Class              #76           // net/minecraft/core/Registry
+   #75 = NameAndType        #77:#78       // getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+   #76 = Utf8               net/minecraft/core/Registry
+   #77 = Utf8               getTag
+   #78 = Utf8               (Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+   #79 = Methodref          #80.#81       // java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #80 = Class              #82           // java/util/Optional
+   #81 = NameAndType        #83:#84       // orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+   #82 = Utf8               java/util/Optional
+   #83 = Utf8               orElse
+   #84 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+   #85 = Class              #86           // net/minecraft/core/HolderSet$Named
+   #86 = Utf8               net/minecraft/core/HolderSet$Named
+   #87 = InterfaceMethodref #88.#89       // net/minecraft/core/Holder.getRegisteredName:()Ljava/lang/String;
+   #88 = Class              #90           // net/minecraft/core/Holder
+   #89 = NameAndType        #91:#92       // getRegisteredName:()Ljava/lang/String;
+   #90 = Utf8               net/minecraft/core/Holder
+   #91 = Utf8               getRegisteredName
+   #92 = Utf8               ()Ljava/lang/String;
+   #93 = Methodref          #94.#95       // net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #94 = Class              #96           // net/minecraft/resources/ResourceLocation
+   #95 = NameAndType        #97:#98       // parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #96 = Utf8               net/minecraft/resources/ResourceLocation
+   #97 = Utf8               parse
+   #98 = Utf8               (Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+   #99 = Fieldref           #8.#100       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.mapDecoration:Lnet/minecraft/core/Holder;
+  #100 = NameAndType        #101:#12      // mapDecoration:Lnet/minecraft/core/Holder;
+  #101 = Utf8               mapDecoration
+  #102 = Fieldref           #8.#103       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.DEFAULT_DECORATION:Lnet/minecraft/core/Holder;
+  #103 = NameAndType        #104:#12      // DEFAULT_DECORATION:Lnet/minecraft/core/Holder;
+  #104 = Utf8               DEFAULT_DECORATION
+  #105 = Fieldref           #106.#107     // net/minecraft/tags/StructureTags.ON_WOODLAND_EXPLORER_MAPS:Lnet/minecraft/tags/TagKey;
+  #106 = Class              #108          // net/minecraft/tags/StructureTags
+  #107 = NameAndType        #109:#72      // ON_WOODLAND_EXPLORER_MAPS:Lnet/minecraft/tags/TagKey;
+  #108 = Utf8               net/minecraft/tags/StructureTags
+  #109 = Utf8               ON_WOODLAND_EXPLORER_MAPS
+  #110 = Methodref          #111.#112     // net/minecraft/tags/TagKey.equals:(Ljava/lang/Object;)Z
+  #111 = Class              #113          // net/minecraft/tags/TagKey
+  #112 = NameAndType        #114:#115     // equals:(Ljava/lang/Object;)Z
+  #113 = Utf8               net/minecraft/tags/TagKey
+  #114 = Utf8               equals
+  #115 = Utf8               (Ljava/lang/Object;)Z
+  #116 = Methodref          #117.#118     // net/minecraft/world/level/storage/loot/LootContext.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #117 = Class              #119          // net/minecraft/world/level/storage/loot/LootContext
+  #118 = NameAndType        #120:#121     // getLevel:()Lnet/minecraft/server/level/ServerLevel;
+  #119 = Utf8               net/minecraft/world/level/storage/loot/LootContext
+  #120 = Utf8               getLevel
+  #121 = Utf8               ()Lnet/minecraft/server/level/ServerLevel;
+  #122 = Methodref          #123.#124     // net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #123 = Class              #125          // net/minecraft/core/BlockPos
+  #124 = NameAndType        #126:#127     // containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #125 = Utf8               net/minecraft/core/BlockPos
+  #126 = Utf8               containing
+  #127 = Utf8               (Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+  #128 = Fieldref           #8.#129       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.searchRadius:I
+  #129 = NameAndType        #130:#131     // searchRadius:I
+  #130 = Utf8               searchRadius
+  #131 = Utf8               I
+  #132 = Fieldref           #8.#133       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.skipKnownStructures:Z
+  #133 = NameAndType        #134:#32      // skipKnownStructures:Z
+  #134 = Utf8               skipKnownStructures
+  #135 = Fieldref           #8.#136       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.zoom:B
+  #136 = NameAndType        #137:#138     // zoom:B
+  #137 = Utf8               zoom
+  #138 = Utf8               B
+  #139 = Methodref          #140.#141     // net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler.createMapOrQuill:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+  #140 = Class              #142          // net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler
+  #141 = NameAndType        #143:#144     // createMapOrQuill:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+  #142 = Utf8               net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler
+  #143 = Utf8               createMapOrQuill
+  #144 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+  #145 = Methodref          #146.#147     // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #146 = Class              #148          // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #147 = NameAndType        #149:#150     // setReturnValue:(Ljava/lang/Object;)V
+  #148 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+  #149 = Utf8               setReturnValue
+  #150 = Utf8               (Ljava/lang/Object;)V
+  #151 = Methodref          #8.#152       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.commonFields:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+  #152 = NameAndType        #153:#154     // commonFields:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+  #153 = Utf8               commonFields
+  #154 = Utf8               (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+  #155 = Methodref          #111.#156     // net/minecraft/tags/TagKey.codec:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+  #156 = NameAndType        #157:#158     // codec:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+  #157 = Utf8               codec
+  #158 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+  #159 = String             #71           // destination
+  #160 = Fieldref           #8.#161       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.DEFAULT_DESTINATION:Lnet/minecraft/tags/TagKey;
+  #161 = NameAndType        #162:#72      // DEFAULT_DESTINATION:Lnet/minecraft/tags/TagKey;
+  #162 = Utf8               DEFAULT_DESTINATION
+  #163 = InterfaceMethodref #164.#165     // com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #164 = Class              #166          // com/mojang/serialization/Codec
+  #165 = NameAndType        #167:#168     // optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #166 = Utf8               com/mojang/serialization/Codec
+  #167 = Utf8               optionalFieldOf
+  #168 = Utf8               (Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #169 = InvokeDynamic      #1:#14        // #1:apply:()Ljava/util/function/Function;
+  #170 = Methodref          #171.#172     // com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #171 = Class              #173          // com/mojang/serialization/MapCodec
+  #172 = NameAndType        #174:#175     // forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #173 = Utf8               com/mojang/serialization/MapCodec
+  #174 = Utf8               forGetter
+  #175 = Utf8               (Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+  #176 = Fieldref           #177.#178     // net/minecraft/world/level/saveddata/maps/MapDecorationType.CODEC:Lcom/mojang/serialization/Codec;
+  #177 = Class              #179          // net/minecraft/world/level/saveddata/maps/MapDecorationType
+  #178 = NameAndType        #25:#180      // CODEC:Lcom/mojang/serialization/Codec;
+  #179 = Utf8               net/minecraft/world/level/saveddata/maps/MapDecorationType
+  #180 = Utf8               Lcom/mojang/serialization/Codec;
+  #181 = String             #182          // decoration
+  #182 = Utf8               decoration
+  #183 = InvokeDynamic      #2:#14        // #2:apply:()Ljava/util/function/Function;
+  #184 = Fieldref           #164.#185     // com/mojang/serialization/Codec.BYTE:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #185 = NameAndType        #186:#187     // BYTE:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #186 = Utf8               BYTE
+  #187 = Utf8               Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #188 = String             #137          // zoom
+  #189 = Methodref          #190.#191     // java/lang/Byte.valueOf:(B)Ljava/lang/Byte;
+  #190 = Class              #192          // java/lang/Byte
+  #191 = NameAndType        #193:#194     // valueOf:(B)Ljava/lang/Byte;
+  #192 = Utf8               java/lang/Byte
+  #193 = Utf8               valueOf
+  #194 = Utf8               (B)Ljava/lang/Byte;
+  #195 = InterfaceMethodref #196.#165     // com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+  #196 = Class              #197          // com/mojang/serialization/codecs/PrimitiveCodec
+  #197 = Utf8               com/mojang/serialization/codecs/PrimitiveCodec
+  #198 = InvokeDynamic      #3:#14        // #3:apply:()Ljava/util/function/Function;
+  #199 = Fieldref           #164.#200     // com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #200 = NameAndType        #201:#187     // INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #201 = Utf8               INT
+  #202 = String             #203          // search_radius
+  #203 = Utf8               search_radius
+  #204 = Methodref          #205.#206     // java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+  #205 = Class              #207          // java/lang/Integer
+  #206 = NameAndType        #193:#208     // valueOf:(I)Ljava/lang/Integer;
+  #207 = Utf8               java/lang/Integer
+  #208 = Utf8               (I)Ljava/lang/Integer;
+  #209 = InvokeDynamic      #4:#14        // #4:apply:()Ljava/util/function/Function;
+  #210 = Fieldref           #164.#211     // com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #211 = NameAndType        #212:#187     // BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+  #212 = Utf8               BOOL
+  #213 = String             #214          // skip_existing_chunks
+  #214 = Utf8               skip_existing_chunks
+  #215 = Fieldref           #45.#216      // java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+  #216 = NameAndType        #217:#218     // TRUE:Ljava/lang/Boolean;
+  #217 = Utf8               TRUE
+  #218 = Utf8               Ljava/lang/Boolean;
+  #219 = InvokeDynamic      #5:#14        // #5:apply:()Ljava/util/function/Function;
+  #220 = Fieldref           #221.#178     // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType.CODEC:Lcom/mojang/serialization/Codec;
+  #221 = Class              #222          // net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType
+  #222 = Utf8               net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType
+  #223 = String             #224          // custom_decoration
+  #224 = Utf8               custom_decoration
+  #225 = InterfaceMethodref #164.#226     // com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #226 = NameAndType        #167:#227     // optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #227 = Utf8               (Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+  #228 = InvokeDynamic      #6:#14        // #6:apply:()Ljava/util/function/Function;
+  #229 = Methodref          #230.#231     // com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P6;
+  #230 = Class              #232          // com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #231 = NameAndType        #233:#234     // group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P6;
+  #232 = Utf8               com/mojang/serialization/codecs/RecordCodecBuilder$Instance
+  #233 = Utf8               group
+  #234 = Utf8               (Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P6;
+  #235 = Methodref          #236.#237     // com/mojang/datafixers/Products$P1.and:(Lcom/mojang/datafixers/Products$P6;)Lcom/mojang/datafixers/Products$P7;
+  #236 = Class              #238          // com/mojang/datafixers/Products$P1
+  #237 = NameAndType        #239:#240     // and:(Lcom/mojang/datafixers/Products$P6;)Lcom/mojang/datafixers/Products$P7;
+  #238 = Utf8               com/mojang/datafixers/Products$P1
+  #239 = Utf8               and
+  #240 = Utf8               (Lcom/mojang/datafixers/Products$P6;)Lcom/mojang/datafixers/Products$P7;
+  #241 = InvokeDynamic      #7:#242       // #7:apply:()Lcom/mojang/datafixers/util/Function7;
+  #242 = NameAndType        #15:#243      // apply:()Lcom/mojang/datafixers/util/Function7;
+  #243 = Utf8               ()Lcom/mojang/datafixers/util/Function7;
+  #244 = Methodref          #245.#246     // com/mojang/datafixers/Products$P7.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function7;)Lcom/mojang/datafixers/kinds/App;
+  #245 = Class              #247          // com/mojang/datafixers/Products$P7
+  #246 = NameAndType        #15:#248      // apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function7;)Lcom/mojang/datafixers/kinds/App;
+  #247 = Utf8               com/mojang/datafixers/Products$P7
+  #248 = Utf8               (Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function7;)Lcom/mojang/datafixers/kinds/App;
+  #249 = Class              #250          // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction
+  #250 = Utf8               net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction
+  #251 = Methodref          #190.#252     // java/lang/Byte.byteValue:()B
+  #252 = NameAndType        #253:#254     // byteValue:()B
+  #253 = Utf8               byteValue
+  #254 = Utf8               ()B
+  #255 = Methodref          #205.#256     // java/lang/Integer.intValue:()I
+  #256 = NameAndType        #257:#258     // intValue:()I
+  #257 = Utf8               intValue
+  #258 = Utf8               ()I
+  #259 = Methodref          #249.#260     // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction."<init>":(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;BIZ)V
+  #260 = NameAndType        #5:#261       // "<init>":(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;BIZ)V
+  #261 = Utf8               (Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;BIZ)V
+  #262 = Class              #263          // net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension
+  #263 = Utf8               net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension
+  #264 = Methodref          #265.#266     // java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #265 = Class              #267          // java/util/Objects
+  #266 = NameAndType        #268:#84      // requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+  #267 = Utf8               java/util/Objects
+  #268 = Utf8               requireNonNull
+  #269 = InvokeDynamic      #8:#270       // #8:accept:(Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;)Ljava/util/function/Consumer;
+  #270 = NameAndType        #271:#272     // accept:(Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;)Ljava/util/function/Consumer;
+  #271 = Utf8               accept
+  #272 = Utf8               (Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;)Ljava/util/function/Consumer;
+  #273 = Methodref          #80.#274      // java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+  #274 = NameAndType        #275:#276     // ifPresent:(Ljava/util/function/Consumer;)V
+  #275 = Utf8               ifPresent
+  #276 = Utf8               (Ljava/util/function/Consumer;)V
+  #277 = InterfaceMethodref #262.#278     // net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension.supplementaries$getCustomDecoration:()Lnet/minecraft/core/Holder;
+  #278 = NameAndType        #279:#280     // supplementaries$getCustomDecoration:()Lnet/minecraft/core/Holder;
+  #279 = Utf8               supplementaries$getCustomDecoration
+  #280 = Utf8               ()Lnet/minecraft/core/Holder;
+  #281 = Methodref          #80.#282      // java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #282 = NameAndType        #283:#284     // ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+  #283 = Utf8               ofNullable
+  #284 = Utf8               (Ljava/lang/Object;)Ljava/util/Optional;
+  #285 = Fieldref           #249.#133     // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.skipKnownStructures:Z
+  #286 = Methodref          #45.#287      // java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+  #287 = NameAndType        #193:#288     // valueOf:(Z)Ljava/lang/Boolean;
+  #288 = Utf8               (Z)Ljava/lang/Boolean;
+  #289 = Fieldref           #249.#129     // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.searchRadius:I
+  #290 = Fieldref           #249.#136     // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.zoom:B
+  #291 = Fieldref           #249.#100     // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.mapDecoration:Lnet/minecraft/core/Holder;
+  #292 = Fieldref           #249.#70      // net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.destination:Lnet/minecraft/tags/TagKey;
+  #293 = Utf8               Signature
+  #294 = Utf8               Lcom/mojang/serialization/MapCodec<Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;>;
+  #295 = Utf8               RuntimeVisibleAnnotations
+  #296 = Utf8               Lorg/spongepowered/asm/mixin/Mutable;
+  #297 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #298 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #299 = Utf8               Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+  #300 = Utf8               Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/saveddata/maps/MapDecorationType;>;
+  #301 = Utf8               Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;
+  #302 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #303 = Utf8               RuntimeInvisibleAnnotations
+  #304 = Utf8               Lorg/jetbrains/annotations/Nullable;
+  #305 = Utf8               RuntimeInvisibleTypeAnnotations
+  #306 = Utf8               Code
+  #307 = Utf8               LineNumberTable
+  #308 = Utf8               LocalVariableTable
+  #309 = Utf8               this
+  #310 = Utf8               Lnet/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin;
+  #311 = Utf8               predicates
+  #312 = Utf8               Ljava/util/List;
+  #313 = Utf8               LocalVariableTypeTable
+  #314 = Utf8               Ljava/util/List<Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition;>;
+  #315 = Utf8               (Ljava/util/List<Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition;>;)V
+  #316 = Utf8               supp$modifyCodec
+  #317 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #318 = Utf8               ci
+  #319 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #320 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #321 = Utf8               method
+  #322 = Utf8               <clinit>
+  #323 = Utf8               at
+  #324 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #325 = Utf8               value
+  #326 = Utf8               RETURN
+  #327 = Utf8               supp$turnToQuill
+  #328 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/server/level/ServerLevel;)V
+  #329 = Utf8               marker
+  #330 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #331 = Utf8               targets
+  #332 = Utf8               Lnet/minecraft/core/HolderSet$Named;
+  #333 = Utf8               stack
+  #334 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #335 = Utf8               context
+  #336 = Utf8               Lnet/minecraft/world/level/storage/loot/LootContext;
+  #337 = Utf8               cir
+  #338 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #339 = Utf8               pos
+  #340 = Utf8               Lnet/minecraft/world/phys/Vec3;
+  #341 = Utf8               level
+  #342 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #343 = Utf8               Lnet/minecraft/core/HolderSet$Named<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+  #344 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/item/ItemStack;>;
+  #345 = Utf8               StackMapTable
+  #346 = Utf8               (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/item/ItemStack;>;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/server/level/ServerLevel;)V
+  #347 = Utf8               run
+  #348 = Utf8               INVOKE
+  #349 = Utf8               target
+  #350 = Utf8               Lnet/minecraft/server/level/ServerLevel;findNearestMapStructure(Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/BlockPos;IZ)Lnet/minecraft/core/BlockPos;
+  #351 = Utf8               cancellable
+  #352 = Integer            1
+  #353 = Utf8               RuntimeInvisibleParameterAnnotations
+  #354 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #355 = Utf8               ()Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;
+  #356 = Utf8               supplementaries$setCustomDecoration
+  #357 = Utf8               (Lnet/minecraft/core/Holder;)V
+  #358 = Utf8               resourceLocation
+  #359 = Utf8               (Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;)V
+  #360 = Utf8               lambda$supp$modifyCodec$7
+  #361 = Utf8               (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #362 = Utf8               instance
+  #363 = Utf8               Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+  #364 = Utf8               lambda$supp$modifyCodec$6
+  #365 = Utf8               (Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #366 = Utf8               e
+  #367 = Utf8               Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;
+  #368 = Utf8               lootItemConditions
+  #369 = Utf8               structureTagKey
+  #370 = Utf8               mapDecorationTypeHolder
+  #371 = Utf8               aByte
+  #372 = Utf8               Ljava/lang/Byte;
+  #373 = Utf8               integer
+  #374 = Utf8               Ljava/lang/Integer;
+  #375 = Utf8               aBoolean
+  #376 = Utf8               customDeco
+  #377 = Utf8               Ljava/util/Optional;
+  #378 = Utf8               Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #379 = Utf8               lambda$supp$modifyCodec$5
+  #380 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  #381 = Utf8               explorationMapFunction
+  #382 = Utf8               lambda$supp$modifyCodec$4
+  #383 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  #384 = Utf8               lambda$supp$modifyCodec$3
+  #385 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  #386 = Utf8               lambda$supp$modifyCodec$2
+  #387 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  #388 = Utf8               lambda$supp$modifyCodec$1
+  #389 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  #390 = Utf8               lambda$supp$modifyCodec$0
+  #391 = Utf8               (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  #392 = Utf8               SourceFile
+  #393 = Utf8               ExplorationMapFunctionMixin.java
+  #394 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #395 = Utf8               BootstrapMethods
+  #396 = MethodType         #84           //  (Ljava/lang/Object;)Ljava/lang/Object;
+  #397 = MethodHandle       6:#398        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$7:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #398 = Methodref          #8.#399       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$7:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #399 = NameAndType        #360:#361     // lambda$supp$modifyCodec$7:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #400 = MethodType         #361          //  (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  #401 = MethodHandle       6:#402        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$0:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  #402 = Methodref          #8.#403       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$0:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  #403 = NameAndType        #390:#391     // lambda$supp$modifyCodec$0:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  #404 = MethodType         #391          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  #405 = MethodHandle       6:#406        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$1:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  #406 = Methodref          #8.#407       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$1:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  #407 = NameAndType        #388:#389     // lambda$supp$modifyCodec$1:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  #408 = MethodType         #389          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  #409 = MethodHandle       6:#410        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$2:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  #410 = Methodref          #8.#411       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$2:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  #411 = NameAndType        #386:#387     // lambda$supp$modifyCodec$2:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  #412 = MethodType         #387          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  #413 = MethodHandle       6:#414        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$3:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  #414 = Methodref          #8.#415       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$3:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  #415 = NameAndType        #384:#385     // lambda$supp$modifyCodec$3:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  #416 = MethodType         #385          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  #417 = MethodHandle       6:#418        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$4:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  #418 = Methodref          #8.#419       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$4:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  #419 = NameAndType        #382:#383     // lambda$supp$modifyCodec$4:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  #420 = MethodType         #383          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  #421 = MethodHandle       6:#422        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$5:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  #422 = Methodref          #8.#423       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$5:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  #423 = NameAndType        #379:#380     // lambda$supp$modifyCodec$5:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  #424 = MethodType         #380          //  (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  #425 = MethodType         #426          //  (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #426 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #427 = MethodHandle       6:#428        // REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$6:(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #428 = Methodref          #8.#429       // net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$6:(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #429 = NameAndType        #364:#365     // lambda$supp$modifyCodec$6:(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #430 = MethodType         #365          //  (Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  #431 = MethodType         #150          //  (Ljava/lang/Object;)V
+  #432 = MethodHandle       9:#433        // REF_invokeInterface net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension.supplementaries$setCustomDecoration:(Lnet/minecraft/core/Holder;)V
+  #433 = InterfaceMethodref #262.#434     // net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension.supplementaries$setCustomDecoration:(Lnet/minecraft/core/Holder;)V
+  #434 = NameAndType        #356:#357     // supplementaries$setCustomDecoration:(Lnet/minecraft/core/Holder;)V
+  #435 = MethodType         #357          //  (Lnet/minecraft/core/Holder;)V
+  #436 = MethodHandle       6:#437        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #437 = Methodref          #438.#439     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #438 = Class              #440          // java/lang/invoke/LambdaMetafactory
+  #439 = NameAndType        #441:#442     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #440 = Utf8               java/lang/invoke/LambdaMetafactory
+  #441 = Utf8               metafactory
+  #442 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #443 = Utf8               InnerClasses
+  #444 = Class              #445          // net/mehvahdjukaar/supplementaries/configs/CommonConfigs
+  #445 = Utf8               net/mehvahdjukaar/supplementaries/configs/CommonConfigs
+  #446 = Utf8               Tweaks
+  #447 = Class              #448          // net/minecraft/core/HolderSet
+  #448 = Utf8               net/minecraft/core/HolderSet
+  #449 = Utf8               Named
+  #450 = Utf8               Instance
+  #451 = Class              #452          // com/mojang/datafixers/Products
+  #452 = Utf8               com/mojang/datafixers/Products
+  #453 = Utf8               P1
+  #454 = Class              #455          // com/mojang/datafixers/Products$P6
+  #455 = Utf8               com/mojang/datafixers/Products$P6
+  #456 = Utf8               P6
+  #457 = Utf8               P7
+  #458 = Class              #459          // java/lang/invoke/MethodHandles$Lookup
+  #459 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #460 = Class              #461          // java/lang/invoke/MethodHandles
+  #461 = Utf8               java/lang/invoke/MethodHandles
+  #462 = Utf8               Lookup
+{
+  public static com.mojang.serialization.MapCodec<net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction> CODEC;
+    descriptor: Lcom/mojang/serialization/MapCodec;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Signature: #294                         // Lcom/mojang/serialization/MapCodec<Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;>;
+    RuntimeVisibleAnnotations:
+      0: #296()
+        org.spongepowered.asm.mixin.Mutable
+      1: #297()
+        org.spongepowered.asm.mixin.Shadow
+      2: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public static net.minecraft.tags.TagKey<net.minecraft.world.level.levelgen.structure.Structure> DEFAULT_DESTINATION;
+    descriptor: Lnet/minecraft/tags/TagKey;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Signature: #299                         // Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public static net.minecraft.core.Holder<net.minecraft.world.level.saveddata.maps.MapDecorationType> DEFAULT_DECORATION;
+    descriptor: Lnet/minecraft/core/Holder;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Signature: #300                         // Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/saveddata/maps/MapDecorationType;>;
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public net.minecraft.tags.TagKey<net.minecraft.world.level.levelgen.structure.Structure> destination;
+    descriptor: Lnet/minecraft/tags/TagKey;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #299                         // Lnet/minecraft/tags/TagKey<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public net.minecraft.core.Holder<net.minecraft.world.level.saveddata.maps.MapDecorationType> mapDecoration;
+    descriptor: Lnet/minecraft/core/Holder;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #300                         // Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/saveddata/maps/MapDecorationType;>;
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public int searchRadius;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public boolean skipKnownStructures;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  public byte zoom;
+    descriptor: B
+    flags: (0x0001) ACC_PUBLIC
+    RuntimeVisibleAnnotations:
+      0: #297()
+        org.spongepowered.asm.mixin.Shadow
+      1: #298()
+        org.spongepowered.asm.mixin.Final
+
+  net.minecraft.core.Holder<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecorationType<?, ?>> supplementaries$customDecoration;
+    descriptor: Lnet/minecraft/core/Holder;
+    flags: (0x0000)
+    Signature: #301                         // Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;
+    RuntimeVisibleAnnotations:
+      0: #302()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #304()
+        org.jetbrains.annotations.Nullable
+    RuntimeInvisibleTypeAnnotations:
+      0: #304(): FIELD
+        org.jetbrains.annotations.Nullable
+
+  protected net.mehvahdjukaar.supplementaries.mixins.ExplorationMapFunctionMixin(java.util.List<net.minecraft.world.level.storage.loot.predicates.LootItemCondition>);
+    descriptor: (Ljava/util/List;)V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method net/minecraft/world/level/storage/loot/functions/LootItemConditionalFunction."<init>":(Ljava/util/List;)V
+         5: aload_0
+         6: aconst_null
+         7: putfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+        10: return
+      LineNumberTable:
+        line 69: 0
+        line 64: 5
+        line 70: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin;
+            0      11     1 predicates   Ljava/util/List;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      11     1 predicates   Ljava/util/List<Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition;>;
+    Signature: #315                         // (Ljava/util/List<Lnet/minecraft/world/level/storage/loot/predicates/LootItemCondition;>;)V
+
+  private static void supp$modifyCodec(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokedynamic #13,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+         5: invokestatic  #17                 // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+         8: putstatic     #23                 // Field CODEC:Lcom/mojang/serialization/MapCodec;
+        11: return
+      LineNumberTable:
+        line 75: 0
+        line 102: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      12     0    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #320(#321=[s#322],#323=[@#324(#325=s#326)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<clinit>"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+
+  public void supp$turnToQuill(net.minecraft.world.item.ItemStack, net.minecraft.world.level.storage.loot.LootContext, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.item.ItemStack>, net.minecraft.world.phys.Vec3, net.minecraft.server.level.ServerLevel);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/server/level/ServerLevel;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=10, locals=8, args_size=6
+         0: aload_0
+         1: getfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+         4: ifnonnull     30
+         7: getstatic     #27                 // Field net/mehvahdjukaar/supplementaries/integration/CompatHandler.QUARK:Z
+        10: ifeq          162
+        13: getstatic     #33                 // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks.REPLACE_VANILLA_MAPS:Ljava/util/function/Supplier;
+        16: invokeinterface #39,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        21: checkcast     #45                 // class java/lang/Boolean
+        24: invokevirtual #47                 // Method java/lang/Boolean.booleanValue:()Z
+        27: ifeq          162
+        30: aload         5
+        32: invokevirtual #51                 // Method net/minecraft/server/level/ServerLevel.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        35: getstatic     #57                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+        38: invokeinterface #63,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registryOrThrow:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Registry;
+        43: aload_0
+        44: getfield      #69                 // Field destination:Lnet/minecraft/tags/TagKey;
+        47: invokeinterface #73,  2           // InterfaceMethod net/minecraft/core/Registry.getTag:(Lnet/minecraft/tags/TagKey;)Ljava/util/Optional;
+        52: aconst_null
+        53: invokevirtual #79                 // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+        56: checkcast     #85                 // class net/minecraft/core/HolderSet$Named
+        59: astore        6
+        61: aload_0
+        62: getfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+        65: ifnull        85
+        68: aload_0
+        69: getfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+        72: invokeinterface #87,  1           // InterfaceMethod net/minecraft/core/Holder.getRegisteredName:()Ljava/lang/String;
+        77: invokestatic  #93                 // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+        80: astore        7
+        82: goto          128
+        85: aload_0
+        86: getfield      #99                 // Field mapDecoration:Lnet/minecraft/core/Holder;
+        89: getstatic     #102                // Field DEFAULT_DECORATION:Lnet/minecraft/core/Holder;
+        92: if_acmpne     114
+        95: aload_0
+        96: getfield      #69                 // Field destination:Lnet/minecraft/tags/TagKey;
+        99: getstatic     #105                // Field net/minecraft/tags/StructureTags.ON_WOODLAND_EXPLORER_MAPS:Lnet/minecraft/tags/TagKey;
+       102: invokevirtual #110                // Method net/minecraft/tags/TagKey.equals:(Ljava/lang/Object;)Z
+       105: ifne          114
+       108: aconst_null
+       109: astore        7
+       111: goto          128
+       114: aload_0
+       115: getfield      #99                 // Field mapDecoration:Lnet/minecraft/core/Holder;
+       118: invokeinterface #87,  1           // InterfaceMethod net/minecraft/core/Holder.getRegisteredName:()Ljava/lang/String;
+       123: invokestatic  #93                 // Method net/minecraft/resources/ResourceLocation.parse:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       126: astore        7
+       128: aload_3
+       129: aload_2
+       130: invokevirtual #116                // Method net/minecraft/world/level/storage/loot/LootContext.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+       133: aload         4
+       135: invokestatic  #122                // Method net/minecraft/core/BlockPos.containing:(Lnet/minecraft/core/Position;)Lnet/minecraft/core/BlockPos;
+       138: aload         6
+       140: aload_0
+       141: getfield      #128                // Field searchRadius:I
+       144: aload_0
+       145: getfield      #132                // Field skipKnownStructures:Z
+       148: aload_0
+       149: getfield      #135                // Field zoom:B
+       152: aload         7
+       154: aconst_null
+       155: iconst_0
+       156: invokestatic  #139                // Method net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler.createMapOrQuill:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/HolderSet;IZILnet/minecraft/resources/ResourceLocation;Ljava/lang/String;I)Lnet/minecraft/world/item/ItemStack;
+       159: invokevirtual #145                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       162: return
+      LineNumberTable:
+        line 107: 0
+        line 108: 16
+        line 109: 30
+        line 110: 47
+        line 113: 61
+        line 114: 68
+        line 115: 85
+        line 116: 108
+        line 118: 114
+        line 120: 128
+        line 121: 135
+        line 120: 156
+        line 125: 162
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           82       3     7 marker   Lnet/minecraft/resources/ResourceLocation;
+          111       3     7 marker   Lnet/minecraft/resources/ResourceLocation;
+           61     101     6 targets   Lnet/minecraft/core/HolderSet$Named;
+          128      34     7 marker   Lnet/minecraft/resources/ResourceLocation;
+            0     163     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin;
+            0     163     1 stack   Lnet/minecraft/world/item/ItemStack;
+            0     163     2 context   Lnet/minecraft/world/level/storage/loot/LootContext;
+            0     163     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+            0     163     4   pos   Lnet/minecraft/world/phys/Vec3;
+            0     163     5 level   Lnet/minecraft/server/level/ServerLevel;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           61     101     6 targets   Lnet/minecraft/core/HolderSet$Named<Lnet/minecraft/world/level/levelgen/structure/Structure;>;
+            0     163     3   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/item/ItemStack;>;
+      StackMapTable: number_of_entries = 5
+        frame_type = 30 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 54
+          locals = [ class net/minecraft/core/HolderSet$Named ]
+        frame_type = 28 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 13
+          locals = [ class net/minecraft/resources/ResourceLocation ]
+        frame_type = 249 /* chop */
+          offset_delta = 33
+    Signature: #346                         // (Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/storage/loot/LootContext;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/item/ItemStack;>;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/server/level/ServerLevel;)V
+    RuntimeVisibleAnnotations:
+      0: #320(#321=[s#347],#323=[@#324(#325=s#348,#349=s#350)],#351=Z#352)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["run"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/server/level/ServerLevel;findNearestMapStructure(Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/BlockPos;IZ)Lnet/minecraft/core/BlockPos;"
+          )]
+          cancellable=true
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+        0: #354()
+          com.llamalad7.mixinextras.sugar.Local
+      parameter 4:
+        0: #354()
+          com.llamalad7.mixinextras.sugar.Local
+
+  public net.minecraft.core.Holder<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecorationType<?, ?>> supplementaries$getCustomDecoration();
+    descriptor: ()Lnet/minecraft/core/Holder;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+         4: areturn
+      LineNumberTable:
+        line 129: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin;
+    Signature: #355                         // ()Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;
+
+  public void supplementaries$setCustomDecoration(net.minecraft.core.Holder<net.mehvahdjukaar.moonlight.api.map.decoration.MLMapDecorationType<?, ?>>);
+    descriptor: (Lnet/minecraft/core/Holder;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #7                  // Field supplementaries$customDecoration:Lnet/minecraft/core/Holder;
+         5: return
+      LineNumberTable:
+        line 134: 0
+        line 135: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin;
+            0       6     1 resourceLocation   Lnet/minecraft/core/Holder;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       6     1 resourceLocation   Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;
+    Signature: #359                         // (Lnet/minecraft/core/Holder<Lnet/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType<**>;>;)V
+
+  private static com.mojang.datafixers.kinds.App lambda$supp$modifyCodec$7(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    descriptor: (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=9, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #151                // Method commonFields:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/Products$P1;
+         4: aload_0
+         5: getstatic     #57                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+         8: invokestatic  #155                // Method net/minecraft/tags/TagKey.codec:(Lnet/minecraft/resources/ResourceKey;)Lcom/mojang/serialization/Codec;
+        11: ldc           #159                // String destination
+        13: getstatic     #160                // Field DEFAULT_DESTINATION:Lnet/minecraft/tags/TagKey;
+        16: invokeinterface #163,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        21: invokedynamic #169,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+        26: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        29: getstatic     #176                // Field net/minecraft/world/level/saveddata/maps/MapDecorationType.CODEC:Lcom/mojang/serialization/Codec;
+        32: ldc           #181                // String decoration
+        34: getstatic     #102                // Field DEFAULT_DECORATION:Lnet/minecraft/core/Holder;
+        37: invokeinterface #163,  3          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        42: invokedynamic #183,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+        47: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        50: getstatic     #184                // Field com/mojang/serialization/Codec.BYTE:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+        53: ldc           #188                // String zoom
+        55: iconst_2
+        56: invokestatic  #189                // Method java/lang/Byte.valueOf:(B)Ljava/lang/Byte;
+        59: invokeinterface #195,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        64: invokedynamic #198,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+        69: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        72: getstatic     #199                // Field com/mojang/serialization/Codec.INT:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+        75: ldc           #202                // String search_radius
+        77: bipush        50
+        79: invokestatic  #204                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+        82: invokeinterface #195,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+        87: invokedynamic #209,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+        92: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+        95: getstatic     #210                // Field com/mojang/serialization/Codec.BOOL:Lcom/mojang/serialization/codecs/PrimitiveCodec;
+        98: ldc           #213                // String skip_existing_chunks
+       100: getstatic     #215                // Field java/lang/Boolean.TRUE:Ljava/lang/Boolean;
+       103: invokeinterface #195,  3          // InterfaceMethod com/mojang/serialization/codecs/PrimitiveCodec.optionalFieldOf:(Ljava/lang/String;Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+       108: invokedynamic #219,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+       113: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       116: getstatic     #220                // Field net/mehvahdjukaar/moonlight/api/map/decoration/MLMapDecorationType.CODEC:Lcom/mojang/serialization/Codec;
+       119: ldc           #223                // String custom_decoration
+       121: invokeinterface #225,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+       126: invokedynamic #228,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+       131: invokevirtual #170                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+       134: invokevirtual #229                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P6;
+       137: invokevirtual #235                // Method com/mojang/datafixers/Products$P1.and:(Lcom/mojang/datafixers/Products$P6;)Lcom/mojang/datafixers/Products$P7;
+       140: aload_0
+       141: invokedynamic #241,  0            // InvokeDynamic #7:apply:()Lcom/mojang/datafixers/util/Function7;
+       146: invokevirtual #244                // Method com/mojang/datafixers/Products$P7.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/util/Function7;)Lcom/mojang/datafixers/kinds/App;
+       149: areturn
+      LineNumberTable:
+        line 76: 0
+        line 79: 8
+        line 80: 16
+        line 81: 26
+        line 82: 37
+        line 83: 56
+        line 84: 79
+        line 86: 103
+        line 87: 113
+        line 88: 121
+        line 89: 131
+        line 78: 134
+        line 77: 137
+        line 93: 146
+        line 76: 149
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     150     0 instance   Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;
+
+  private static net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction lambda$supp$modifyCodec$6(java.util.List, net.minecraft.tags.TagKey, net.minecraft.core.Holder, java.lang.Byte, java.lang.Integer, java.lang.Boolean, java.util.Optional);
+    descriptor: (Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=8, locals=9, args_size=7
+         0: new           #249                // class net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction
+         3: dup
+         4: aload_0
+         5: aload_1
+         6: aload_2
+         7: aload_3
+         8: invokevirtual #251                // Method java/lang/Byte.byteValue:()B
+        11: aload         4
+        13: invokevirtual #255                // Method java/lang/Integer.intValue:()I
+        16: aload         5
+        18: invokevirtual #47                 // Method java/lang/Boolean.booleanValue:()Z
+        21: invokespecial #259                // Method net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction."<init>":(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;BIZ)V
+        24: astore        7
+        26: aload         7
+        28: instanceof    #262                // class net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension
+        31: ifeq          58
+        34: aload         7
+        36: checkcast     #262                // class net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension
+        39: astore        8
+        41: aload         6
+        43: aload         8
+        45: dup
+        46: invokestatic  #264                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+        49: pop
+        50: invokedynamic #269,  0            // InvokeDynamic #8:accept:(Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;)Ljava/util/function/Consumer;
+        55: invokevirtual #273                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+        58: aload         7
+        60: areturn
+      LineNumberTable:
+        line 94: 0
+        line 96: 26
+        line 97: 41
+        line 99: 58
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           41      17     8     e   Lnet/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension;
+            0      61     0 lootItemConditions   Ljava/util/List;
+            0      61     1 structureTagKey   Lnet/minecraft/tags/TagKey;
+            0      61     2 mapDecorationTypeHolder   Lnet/minecraft/core/Holder;
+            0      61     3 aByte   Ljava/lang/Byte;
+            0      61     4 integer   Ljava/lang/Integer;
+            0      61     5 aBoolean   Ljava/lang/Boolean;
+            0      61     6 customDeco   Ljava/util/Optional;
+           26      35     7 value   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 58
+          locals = [ class net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction ]
+
+  private static java.util.Optional lambda$supp$modifyCodec$5(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: checkcast     #262                // class net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension
+         4: invokeinterface #277,  1          // InterfaceMethod net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension.supplementaries$getCustomDecoration:()Lnet/minecraft/core/Holder;
+         9: invokestatic  #281                // Method java/util/Optional.ofNullable:(Ljava/lang/Object;)Ljava/util/Optional;
+        12: areturn
+      LineNumberTable:
+        line 90: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+
+  private static java.lang.Boolean lambda$supp$modifyCodec$4(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #285                // Field net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.skipKnownStructures:Z
+         4: invokestatic  #286                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+         7: areturn
+      LineNumberTable:
+        line 87: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+
+  private static java.lang.Integer lambda$supp$modifyCodec$3(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #289                // Field net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.searchRadius:I
+         4: invokestatic  #204                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+         7: areturn
+      LineNumberTable:
+        line 84: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+
+  private static java.lang.Byte lambda$supp$modifyCodec$2(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #290                // Field net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.zoom:B
+         4: invokestatic  #189                // Method java/lang/Byte.valueOf:(B)Ljava/lang/Byte;
+         7: areturn
+      LineNumberTable:
+        line 83: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+
+  private static net.minecraft.core.Holder lambda$supp$modifyCodec$1(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #291                // Field net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.mapDecoration:Lnet/minecraft/core/Holder;
+         4: areturn
+      LineNumberTable:
+        line 82: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+
+  private static net.minecraft.tags.TagKey lambda$supp$modifyCodec$0(net.minecraft.world.level.storage.loot.functions.ExplorationMapFunction);
+    descriptor: (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+    flags: (0x100a) ACC_PRIVATE, ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #292                // Field net/minecraft/world/level/storage/loot/functions/ExplorationMapFunction.destination:Lnet/minecraft/tags/TagKey;
+         4: areturn
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0 explorationMapFunction   Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+}
+SourceFile: "ExplorationMapFunctionMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #394(#325=[c#378])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;]
+    )
+BootstrapMethods:
+  0: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #397 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$7:(Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+      #400 (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App;
+  1: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #401 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$0:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+      #404 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/tags/TagKey;
+  2: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #405 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$1:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+      #408 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Lnet/minecraft/core/Holder;
+  3: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #409 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$2:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+      #412 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Byte;
+  4: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #413 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$3:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+      #416 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Integer;
+  5: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #417 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$4:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+      #420 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/lang/Boolean;
+  6: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #396 (Ljava/lang/Object;)Ljava/lang/Object;
+      #421 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$5:(Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+      #424 (Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;)Ljava/util/Optional;
+  7: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #425 (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #427 REF_invokeStatic net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.lambda$supp$modifyCodec$6:(Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+      #430 (Ljava/util/List;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/Holder;Ljava/lang/Byte;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/util/Optional;)Lnet/minecraft/world/level/storage/loot/functions/ExplorationMapFunction;
+  8: #436 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #431 (Ljava/lang/Object;)V
+      #432 REF_invokeInterface net/mehvahdjukaar/supplementaries/common/utils/IExplorationFunctionExtension.supplementaries$setCustomDecoration:(Lnet/minecraft/core/Holder;)V
+      #435 (Lnet/minecraft/core/Holder;)V
+InnerClasses:
+  public static #446= #34 of #444;        // Tweaks=class net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Tweaks of class net/mehvahdjukaar/supplementaries/configs/CommonConfigs
+  public static #449= #85 of #447;        // Named=class net/minecraft/core/HolderSet$Named of class net/minecraft/core/HolderSet
+  public static final #450= #230 of #18;  // Instance=class com/mojang/serialization/codecs/RecordCodecBuilder$Instance of class com/mojang/serialization/codecs/RecordCodecBuilder
+  public static final #453= #236 of #451; // P1=class com/mojang/datafixers/Products$P1 of class com/mojang/datafixers/Products
+  public static final #456= #454 of #451; // P6=class com/mojang/datafixers/Products$P6 of class com/mojang/datafixers/Products
+  public static final #457= #245 of #451; // P7=class com/mojang/datafixers/Products$P7 of class com/mojang/datafixers/Products
+  public static final #462= #458 of #460; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
