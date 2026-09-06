@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoint at e8875ca: Alternate Current, Cupboard and Loot Integrations
+provider scope is resolved, pushed and remote-ref verified. Eighteen focused
+utility cases, Ruff and Basedpyright pass. Current queue: 58 resolved providers,
+78 open. These three add no independent family. Keep Cupboard's frozen disabled
+entity-load suppression and Loot Integrations' actual seven chest-table contents
+as recorded; the table named empty contains bone. The core loot modifier remains
+an attribute input. All source captures reproduce exactly. Continue the remaining
+provider queue using evidence/item-8/provider-scope.md; do not redo these closures.
+
 Latest checkpoint at fd93f7f: BOP provider census is resolved, pushed and remote
 ref verified. Five focused cases, Ruff and Basedpyright pass. Queue: 55 resolved
 providers, 81 open. All 81 BOP registered feature types have supported roles;
