@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 113 of 136. The exact queue below has 23 open rows.
+Supported provider dispositions: 114 of 136. The exact queue below has 22 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -635,7 +635,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `bclib-21.0.24.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettercombat-neoforge-2.3.2+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `bettervillage-neoforge-1.21.1-3.3.1.jar` | `bettervillage-code` | RESOLVED: see Better Village provider disposition below. |
-| `bookshelf-neoforge-1.21.1-21.1.81.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `bookshelf-neoforge-1.21.1-21.1.81.jar` | 3a315ed2 provider entries; 17cdf0d7 common initialization. | RESOLVED: utility codecs, commands and consumer gameplay/loot APIs, no independent generated family. See Bookshelf membership closure. |
 | `bundle-api-neoforge-1.1.0.jar` | `bundle-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom bundle data components, item interaction and rendering; no independent family. See bundle and shield dispositions below. |
 | `c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Include nested C2ME module entry/mixin paths; distinguish generation scheduling changes from content providers. |
 | `cc-tweaked-1.21.1-forge-1.119.0.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -7394,3 +7394,34 @@ coverage and all 28 source identities are bound by:
 test, scoped Ruff and Basedpyright pass. All three captures reproduce exactly
 using commands recorded in their source READMEs. Whole providers: 113 resolved,
 23 open. Working family groups remain 410; Item 8 is not complete.
+
+
+## Bookshelf membership closure
+
+Exact archive bookshelf-neoforge-1.21.1-21.1.81.jar, SHA-256
+19e88d40da2b6a114c2b808f7fb469d96e66a5379df0a8a43fcb7834498b3e76.
+Complete payload: 173 classes, five language assets, fake-player damage type
+and tag, eleven empty creative-tab item tags, five services and metadata.
+No structure definitions, templates or nested archives.
+
+Sources 3a315ed2 and 17cdf0d7 bind the sole automatic entry, all five service
+implementations, all 27 common hooks, common initialization and content-provider
+defaults. Common initialization runs startup checks. The retained content service
+defines ingredient/load-condition/item-predicate/criterion/loot codecs, loot
+descriptions and commands. ContentProvider defaults add no generation. Gameplay
+and render helpers act on supplied objects; network handlers register supplied
+packets; the platform helper exposes loader context.
+
+Hooks expose existing fields and consumer callbacks, apply load conditions and
+loot modifications, manage recipe/reload state, support creative-tab and potion
+contributions, and handle fake-player damage/kill semantics. Preserve these loot
+and encounter effects for attribute attribution. Their existence is not a proof
+of unrestricted or harmless automation. No independent generated family. Do not
+trace generic loot, condition, registry or network internals for membership.
+
+`uv run pytest -q tests/item8/test_bookshelf_provider_scope.py` binds the full
+archive payload, empty tags, entry/hook/service coverage and 35 captured class
+identities. This focused test, scoped Ruff and Basedpyright pass. Both source
+captures reproduce exactly with the commands in their READMEs. Whole providers:
+114 resolved, 22 open. Working groups remain 410 and canonical Moog decisions
+remain provisional. Item 8 is not complete.

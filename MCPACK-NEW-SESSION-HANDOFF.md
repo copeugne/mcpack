@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Bookshelf membership is resolved from 3a315ed2 and 17cdf0d7: utility codecs,
+commands and consumer gameplay/loot APIs, no independent generated family. Full
+payload/entry/hook/service/source binding and scoped checks pass. Whole providers:
+114 resolved, 22 open. Working groups remain 410 and the 100 explicitly
+provisional Moog records still require decisions. Finish provider membership
+and canonical grouping before attributes. Preserve fake-player/loot effects;
+do not trace more generic Bookshelf condition, registry or network internals.
+
+
 Architectury membership is resolved from d943fcbb, 8ed7b7ec and 4a879ad8:
 consumer event/extension/biome APIs and existing-entity synchronization, no
 independent generated family. Full payload/entry/hook/source binding and scoped
