@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def test_supplementaries_components_and_road_sign_feature_chain() -> None:
+def test_supplementaries_components_and_road_sign_feature_chain() -> None:  # noqa: PLR0915
     source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("supplementaries-"))
     assert source.sha256 == "0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d"
     assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
@@ -91,6 +91,34 @@ def test_supplementaries_components_and_road_sign_feature_chain() -> None:
             },
         }},
     }
+    assert (patch_config["tries"], patch_config["xz_spread"], patch_config["y_spread"]) == (
+        9, 4, 1,
+    )
+    urn_pool = resources[prefix + "template_pool/galleon/urns.json"]
+    elements = cast("list[dict[str, JsonValue]]", urn_pool["elements"])
+    assert len(elements) == 1
+    element = cast("dict[str, JsonValue]", elements[0]["element"])
+    assert element["element_type"] == "minecraft:feature_pool_element"
+    assert element["feature"] == {"feature": "supplementaries:urns_patch", "placement": []}
+    assert "supplementaries:galleon/urns" in cast(
+        "list[str]", traces["supplementaries:galleon"]["pools"]
+    )
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_text()))
+    content = cast("dict[str, JsonValue]", decisions["non_registry_content"])
+    contributions = cast("dict[str, dict[str, JsonValue]]", content["contributions"])
+    cache = contributions["supplementaries:cave_urn_cache"]
+    assert cache["families"] == ["supplementaries:cave_urn_cache"]
+    assert cache["configured_feature"] == "supplementaries:urns_patch"
+    assert cache["placed_feature"] == cache["biome_modifier"] == "supplementaries:cave_urns"
+    dispositions = cast("list[dict[str, JsonValue]]", cache["dispositions"])
+    assert [(d["contribution"], d["decision"]) for d in dispositions] == [
+        ("supplementaries:cave_urn_cache", "INCLUDE_ONE_FAMILY"),
+        ("supplementaries:galleon/urns", "EXISTING_FAMILY_COMPONENT"),
+    ]
+    for path, digest in cast("dict[str, str]", cache["evidence"]).items():
+        assert hashlib.sha256(Path(path).read_bytes()).hexdigest() == digest
     modifier_prefix = "data/supplementaries/neoforge/biome_modifier/"
     assert {
         path.removeprefix(modifier_prefix): row["features"]

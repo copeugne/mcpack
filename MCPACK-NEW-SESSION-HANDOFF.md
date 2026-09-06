@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-06
 
+Supplementaries cave-urn membership is settled: one freestanding cache family.
+Galleon use of the same patch remains a ship component. Eight focused cases,
+scoped checks and inventory reproduction pass. Effective urn eligibility and
+reward attributes remain open. Next: remaining registry design grouping
+(including Moog/villages) and 46 provider closures. Quark and the three tree
+boundaries below need no further membership collection absent contrary evidence.
+
 Quark membership is settled: four families (spiral spire, fairy ring with buried
 ore, monster-box encounter, Nether obsidian spike). The previous fallen-log
 family inclusion is corrected to decorated vegetation, preserving source-derived
