@@ -1,0 +1,110 @@
+Compiled from "LibWoverWorldGenerator.java"
+public class org.betterx.wover.entrypoint.LibWoverWorldGenerator {
+  public static final org.betterx.wover.core.api.ModCore C;
+
+  public org.betterx.wover.entrypoint.LibWoverWorldGenerator(net.neoforged.bus.api.IEventBus);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: getstatic     #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+       7: aload_1
+       8: invokevirtual #13                 // Method org/betterx/wover/core/api/ModCore.registerDatapackListener:(Lnet/neoforged/bus/api/IEventBus;)V
+      11: aload_1
+      12: new           #19                 // class org/betterx/wover/generator/datagen/WoverWorldGeneratorDatagen
+      15: dup
+      16: invokespecial #21                 // Method org/betterx/wover/generator/datagen/WoverWorldGeneratorDatagen."<init>":()V
+      19: invokedynamic #22,  0             // InvokeDynamic #0:accept:(Lorg/betterx/wover/generator/datagen/WoverWorldGeneratorDatagen;)Ljava/util/function/Consumer;
+      24: invokeinterface #26,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      29: aload_1
+      30: ldc           #32                 // class net/neoforged/neoforge/registries/RegisterEvent
+      32: invokedynamic #34,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      37: invokeinterface #37,  3           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      42: aload_1
+      43: ldc           #32                 // class net/neoforged/neoforge/registries/RegisterEvent
+      45: invokedynamic #40,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+      50: invokeinterface #37,  3           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      55: getstatic     #41                 // Field org/betterx/wover/preset/api/WorldPresetManager.BOOTSTRAP_WORLD_PRESETS:Lorg/betterx/wover/events/api/Event;
+      58: invokedynamic #47,  0             // InvokeDynamic #3:bootstrap:()Lorg/betterx/wover/preset/api/event/OnBootstrapWorldPresets;
+      63: invokeinterface #51,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      68: pop
+      69: getstatic     #57                 // Field org/betterx/wover/preset/api/WorldPresetTags.TAGS:Lorg/betterx/wover/tag/api/TagRegistry;
+      72: invokeinterface #63,  1           // InterfaceMethod org/betterx/wover/tag/api/TagRegistry.bootstrapEvent:()Lorg/betterx/wover/events/api/Event;
+      77: invokedynamic #69,  0             // InvokeDynamic #4:bootstrap:()Lorg/betterx/wover/tag/api/event/OnBoostrapTags;
+      82: invokeinterface #51,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+      87: pop
+      88: getstatic     #72                 // Field org/betterx/wover/preset/api/WorldPresetInfoRegistry.BOOTSTRAP_WORLD_PRESET_INFO_REGISTRY:Lorg/betterx/wover/events/api/Event;
+      91: invokedynamic #77,  0             // InvokeDynamic #5:bootstrap:()Lorg/betterx/wover/events/api/types/OnBootstrapRegistry;
+      96: invokeinterface #51,  2           // InterfaceMethod org/betterx/wover/events/api/Event.subscribe:(Lorg/betterx/wover/events/api/Subscriber;)Z
+     101: pop
+     102: invokestatic  #80                 // Method org/betterx/wover/core/api/ModCore.isClient:()Z
+     105: ifne          135
+     108: getstatic     #84                 // Field org/betterx/wover/config/api/Configs.MAIN:Lorg/betterx/wover/config/api/MainConfig;
+     111: getfield      #90                 // Field org/betterx/wover/config/api/MainConfig.forceDefaultWorldPresetOnServer:Lde/ambertation/wunderlib/configs/AbstractConfig$BooleanValue;
+     114: invokevirtual #96                 // Method de/ambertation/wunderlib/configs/AbstractConfig$BooleanValue.get:()Ljava/lang/Object;
+     117: checkcast     #102                // class java/lang/Boolean
+     120: invokevirtual #104                // Method java/lang/Boolean.booleanValue:()Z
+     123: ifeq          135
+     126: getstatic     #107                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+     129: sipush        2000
+     132: invokestatic  #113                // Method org/betterx/wover/preset/api/WorldPresetManager.suggestDefault:(Lnet/minecraft/resources/ResourceKey;I)V
+     135: invokestatic  #117                // Method org/betterx/wover/generator/impl/preset/PresetRegistryImpl.ensureStaticallyLoaded:()V
+     138: invokestatic  #122                // Method org/betterx/wover/generator/impl/biomesource/WoverBiomeDataImpl.initialize:()V
+     141: invokestatic  #127                // Method org/betterx/wover/generator/impl/biomesource/BiomeSourceManagerImpl.initialize:()V
+     144: invokestatic  #130                // Method org/betterx/wover/generator/impl/chunkgenerator/ChunkGeneratorManagerImpl.initialize:()V
+     147: invokestatic  #133                // Method org/betterx/wover/generator/impl/chunkgenerator/WoverChunkGeneratorImpl.initialize:()V
+     150: return
+
+  private static void bootstrapPresetInfo(net.minecraft.data.worldgen.BootstrapContext<org.betterx.wover.preset.api.WorldPresetInfo>);
+    Code:
+       0: aload_0
+       1: invokestatic  #136                // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.start:(Lnet/minecraft/data/worldgen/BootstrapContext;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+       4: sipush        1500
+       7: invokeinterface #142,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.order:(I)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      12: getstatic     #146                // Field net/minecraft/world/level/levelgen/presets/WorldPresets.NORMAL:Lnet/minecraft/resources/ResourceKey;
+      15: invokeinterface #151,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.overworldOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      20: getstatic     #107                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      23: invokeinterface #155,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.register:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder;
+      28: pop
+      29: aload_0
+      30: invokestatic  #136                // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.start:(Lnet/minecraft/data/worldgen/BootstrapContext;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      33: sipush        1600
+      36: invokeinterface #142,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.order:(I)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      41: getstatic     #159                // Field net/minecraft/world/level/levelgen/presets/WorldPresets.FLAT:Lnet/minecraft/resources/ResourceKey;
+      44: invokeinterface #151,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.overworldOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      49: getstatic     #107                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      52: invokeinterface #162,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.netherOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      57: getstatic     #107                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      60: invokeinterface #165,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.endOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      65: getstatic     #168                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_SUPERFLAT:Lnet/minecraft/resources/ResourceKey;
+      68: invokeinterface #155,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.register:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder;
+      73: pop
+      74: aload_0
+      75: invokestatic  #136                // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.start:(Lnet/minecraft/data/worldgen/BootstrapContext;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      78: sipush        2500
+      81: invokeinterface #142,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.order:(I)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      86: getstatic     #171                // Field net/minecraft/world/level/levelgen/presets/WorldPresets.AMPLIFIED:Lnet/minecraft/resources/ResourceKey;
+      89: invokeinterface #151,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.overworldOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+      94: getstatic     #107                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD:Lnet/minecraft/resources/ResourceKey;
+      97: invokeinterface #165,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.endOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+     102: getstatic     #174                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_AMPLIFIED:Lnet/minecraft/resources/ResourceKey;
+     105: invokeinterface #155,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.register:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder;
+     110: pop
+     111: aload_0
+     112: invokestatic  #136                // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.start:(Lnet/minecraft/data/worldgen/BootstrapContext;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+     115: sipush        3500
+     118: invokeinterface #142,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.order:(I)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+     123: getstatic     #177                // Field net/minecraft/world/level/levelgen/presets/WorldPresets.LARGE_BIOMES:Lnet/minecraft/resources/ResourceKey;
+     126: invokeinterface #151,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.overworldOverride:(Lnet/minecraft/resources/ResourceKey;)Lorg/betterx/wover/preset/api/WorldPresetInfoBuilder;
+     131: getstatic     #180                // Field org/betterx/wover/generator/api/preset/WorldPresets.WOVER_WORLD_LARGE:Lnet/minecraft/resources/ResourceKey;
+     134: invokeinterface #155,  2          // InterfaceMethod org/betterx/wover/preset/api/WorldPresetInfoBuilder.register:(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/core/Holder;
+     139: pop
+     140: return
+
+  static {};
+    Code:
+       0: ldc           #183                // String wover-generator
+       2: ldc           #185                // String wover
+       4: invokestatic  #187                // Method org/betterx/wover/core/api/ModCore.create:(Ljava/lang/String;Ljava/lang/String;)Lorg/betterx/wover/core/api/ModCore;
+       7: putstatic     #7                  // Field C:Lorg/betterx/wover/core/api/ModCore;
+      10: return
+}
