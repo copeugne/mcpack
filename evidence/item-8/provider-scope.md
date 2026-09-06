@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 90 of 136. The exact queue below has 46 open rows.
+Supported provider dispositions: 91 of 136. The exact queue below has 45 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -659,7 +659,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `ends_delight-2.6+neoforge.1.21.1.jar` | `ends-delight-provider` (311c1fe), test_ends_delight_provider_scope.py | RESOLVED: Chorus succulent vegetation, food/loot and existing knife-attack behavior. No independent structure family. Full disposition below. |
 | `explorations-neoforge-1.21.1-1.6.2.jar` | `explorations-provider` (0e6f5e4), prior scarecrow/slime/deepslate captures, test_explorations_provider_scope.py | RESOLVED: Ten existing roots, one scarecrow design, named decorated-mushroom candidate and four statue components in village houses pools. Missing and unused components preserved below. |
 | `fastasyncworldsave-1.21-2.6.jar` | `fastasyncworldsave-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Saved-data and level-data write processing; no authored structure contribution. See save and structure utility dispositions below. |
-| `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
+| `forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar` | All 43 nested modules, preserved sources and test_fabric_provider_scope.py | RESOLVED: Consumer APIs, biome modifiers, conventional tags and test-only template; all module contribution roles resolved below. No independent family. |
 | `fzzy_config-0.7.6+1.21+neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `geckolib-neoforge-1.21.1-4.8.4.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `idas-1.13.7+1.21.1-neoforge.jar` | `idas-provider` (afb3cee), prior suppression evidence, test_idas_provider_scope.py | RESOLVED: 84 existing roots, complete component partition, compatibility pool declarations and Labyrinth encounter hooks. See IDAS disposition below; shared Integrated API and final attributes remain open. |
@@ -5802,7 +5802,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-sound-api-v1-1.0.23+10b84f8419.jar` | RESOLVED: client utility, no independent server family; see below. |
 | `fabric-transfer-api-v1-5.4.3+a25cb45619.jar` | RESOLVED: Existing inventory/fluid capability adapters and transactional container hooks. Source 94eaafd; no independent family. |
 | `fabric-transitive-access-wideners-v1-6.2.0+6c854b6f19.jar` | RESOLVED: access declarations only; no code or data payload. |
-| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar` | RESOLVED: Loader service and existing FML metadata adaptation; sources 1cb6fe0, 4beaa6b and 6a6fcc4. No independent family. |
 
 The transitive-access-wideners module has exactly five files: manifest, lowcodefml
 metadata, access transformer, icon and nesting metadata. There are no class,
@@ -6643,3 +6643,28 @@ metadata/icon/access-transformer payload. There is no client mixin file or
 generation data. All 43 focused Fabric cases and scoped Ruff/Basedpyright pass.
 Fabric: 42 resolved, one open (loader). Whole providers: 90 resolved, 46 open.
 No canonical family is added.
+
+### Fabric loader and whole-provider membership resolved
+
+The declared loader service (1cb6fe0) installs the launch bootstrap (4beaa6b).
+The bootstrap handles no class transformation phases and forwards the existing
+FML mod list. The delegate (6a6fcc4) wraps those existing metadata records,
+indexes their IDs and provided aliases, rejects duplicate IDs and sets the
+loaded flag. It supplies no generation resource, structure design or placement
+registration. Remaining loader APIs concern mod metadata, entrypoint consumers,
+mappings and language/loader utilities; no independent content is introduced.
+
+The focused test binds all three sources, all 785 classes, the sole service,
+LIBRARY manifest and all sixteen non-class resources. There are no automatic
+Mod/EventBusSubscriber annotations, mixin declarations, nested JARs, templates
+or data resources in this module. All 44 Fabric cases and scoped Ruff and
+Basedpyright pass. All 43 nested modules now have supported dispositions; the
+parent payload and nested generation-data accounting are already verified by
+the existing test. Fabric contributes consumer APIs and modifiers, conventional
+tags and the explicitly test-only empty template, with no independent family.
+
+Whole providers: 91 resolved, 45 open. The remaining provider rows are the
+existing 24 code-reference and 21 unmatched-search rows. These lanes are planning
+inputs, not absence proofs. Canonical Moog grouping remains open independently.
+No family count changes in this increment. Do not reopen Fabric internals
+without a concrete contradictory generation or component finding.
