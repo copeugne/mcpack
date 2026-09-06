@@ -1,0 +1,523 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-opts-dfc-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.class
+  Last modified Jan 1, 1980; size 5080 bytes
+  SHA-256 checksum b8f820d49fc6a25338b4a1be056f9056ace4221b8c0291380fc94836561a710a
+  Compiled from "MixinChunkNoiseSampler.java"
+public abstract class com.ishland.c2me.opts.dfc.mixin.MixinChunkNoiseSampler implements com.ishland.c2me.opts.dfc.common.ducks.IArrayCacheCapable,com.ishland.c2me.opts.dfc.common.ducks.ICoordinatesFilling
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler
+  super_class: #4                         // java/lang/Object
+  interfaces: 2, fields: 7, methods: 8, attributes: 3
+Constant pool:
+    #1 = Utf8               com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler
+    #2 = Class              #1            // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               com/ishland/c2me/opts/dfc/common/ducks/IArrayCacheCapable
+    #6 = Class              #5            // com/ishland/c2me/opts/dfc/common/ducks/IArrayCacheCapable
+    #7 = Utf8               com/ishland/c2me/opts/dfc/common/ducks/ICoordinatesFilling
+    #8 = Class              #7            // com/ishland/c2me/opts/dfc/common/ducks/ICoordinatesFilling
+    #9 = Utf8               MixinChunkNoiseSampler.java
+   #10 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #11 = Utf8               value
+   #12 = Utf8               Lnet/minecraft/world/level/levelgen/NoiseChunk;
+   #13 = Utf8               net/minecraft/world/level/levelgen/DensityFunctions$Marker
+   #14 = Class              #13           // net/minecraft/world/level/levelgen/DensityFunctions$Marker
+   #15 = Utf8               net/minecraft/world/level/levelgen/DensityFunctions
+   #16 = Class              #15           // net/minecraft/world/level/levelgen/DensityFunctions
+   #17 = Utf8               Marker
+   #18 = Utf8               net/minecraft/world/level/levelgen/DensityFunction$Visitor
+   #19 = Class              #18           // net/minecraft/world/level/levelgen/DensityFunction$Visitor
+   #20 = Utf8               net/minecraft/world/level/levelgen/DensityFunction
+   #21 = Class              #20           // net/minecraft/world/level/levelgen/DensityFunction
+   #22 = Utf8               Visitor
+   #23 = Utf8               cellHeight
+   #24 = Utf8               I
+   #25 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #26 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #27 = Utf8               cellWidth
+   #28 = Utf8               cellStartBlockY
+   #29 = Utf8               cellStartBlockX
+   #30 = Utf8               cellStartBlockZ
+   #31 = Utf8               interpolating
+   #32 = Utf8               Z
+   #33 = Utf8               c2me$arrayCache
+   #34 = Utf8               Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+   #35 = Utf8               <init>
+   #36 = Utf8               ()V
+   #37 = NameAndType        #35:#36       // "<init>":()V
+   #38 = Methodref          #4.#37        // java/lang/Object."<init>":()V
+   #39 = Utf8               com/ishland/c2me/opts/dfc/common/util/ArrayCache
+   #40 = Class              #39           // com/ishland/c2me/opts/dfc/common/util/ArrayCache
+   #41 = Methodref          #40.#37       // com/ishland/c2me/opts/dfc/common/util/ArrayCache."<init>":()V
+   #42 = NameAndType        #33:#34       // c2me$arrayCache:Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+   #43 = Fieldref           #2.#42        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.c2me$arrayCache:Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+   #44 = Utf8               this
+   #45 = Utf8               Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+   #46 = Utf8               getBlender
+   #47 = Utf8               ()Lnet/minecraft/world/level/levelgen/blending/Blender;
+   #48 = Utf8               c2me$getArrayCache
+   #49 = Utf8               ()Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+   #50 = Utf8               c2me$fillCoordinates
+   #51 = Utf8               ([I[I[I)V
+   #52 = Utf8               x
+   #53 = Utf8               y
+   #54 = Utf8               z
+   #55 = NameAndType        #23:#24       // cellHeight:I
+   #56 = Fieldref           #2.#55        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.cellHeight:I
+   #57 = NameAndType        #28:#24       // cellStartBlockY:I
+   #58 = Fieldref           #2.#57        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.cellStartBlockY:I
+   #59 = NameAndType        #27:#24       // cellWidth:I
+   #60 = Fieldref           #2.#59        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.cellWidth:I
+   #61 = NameAndType        #29:#24       // cellStartBlockX:I
+   #62 = Fieldref           #2.#61        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.cellStartBlockX:I
+   #63 = NameAndType        #30:#24       // cellStartBlockZ:I
+   #64 = Fieldref           #2.#63        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.cellStartBlockZ:I
+   #65 = Utf8               blockZ
+   #66 = Utf8               k
+   #67 = Utf8               blockX
+   #68 = Utf8               j
+   #69 = Utf8               blockY
+   #70 = Utf8               i
+   #71 = Utf8               [I
+   #72 = Utf8               index
+   #73 = Utf8               protectInterpolationLoop
+   #74 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+   #75 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/DensityFunction;>;)V
+   #76 = Utf8               function
+   #77 = Utf8               cir
+   #78 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #79 = Utf8               method
+   #80 = Utf8               getActualDensityFunctionImpl
+   #81 = Utf8               at
+   #82 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #83 = Utf8               HEAD
+   #84 = NameAndType        #31:#32       // interpolating:Z
+   #85 = Fieldref           #2.#84        // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.interpolating:Z
+   #86 = Utf8               java/lang/IllegalStateException
+   #87 = Class              #86           // java/lang/IllegalStateException
+   #88 = Utf8               Cannot create more wrapping during interpolation loop
+   #89 = String             #88           // Cannot create more wrapping during interpolation loop
+   #90 = Utf8               (Ljava/lang/String;)V
+   #91 = NameAndType        #35:#90       // "<init>":(Ljava/lang/String;)V
+   #92 = Methodref          #87.#91       // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+   #93 = Utf8               Lnet/minecraft/world/level/levelgen/DensityFunction;
+   #94 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/DensityFunction;>;
+   #95 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+   #96 = Utf8               modifyVisitor1
+   #97 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+   #98 = Utf8               visitor
+   #99 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyArg;
+  #100 = Utf8               INVOKE
+  #101 = Utf8               target
+  #102 = Utf8               Lnet/minecraft/world/gen/noise/NoiseRouter;apply(Lnet/minecraft/world/gen/densityfunction/DensityFunction$DensityFunctionVisitor;)Lnet/minecraft/world/gen/noise/NoiseRouter;
+  #103 = Utf8               c2me$getDelegatingBlendingAwareVisitor
+  #104 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+  #105 = NameAndType        #103:#104     // c2me$getDelegatingBlendingAwareVisitor:(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+  #106 = Methodref          #2.#105       // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.c2me$getDelegatingBlendingAwareVisitor:(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+  #107 = Utf8               Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+  #108 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #109 = Utf8               Lorg/jetbrains/annotations/NotNull;
+  #110 = Utf8               com/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor
+  #111 = Class              #110          // com/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor
+  #112 = NameAndType        #46:#47       // getBlender:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+  #113 = Methodref          #2.#112       // com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler.getBlender:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+  #114 = Utf8               net/minecraft/world/level/levelgen/blending/Blender
+  #115 = Class              #114          // net/minecraft/world/level/levelgen/blending/Blender
+  #116 = Utf8               empty
+  #117 = NameAndType        #116:#47      // empty:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+  #118 = Methodref          #115.#117     // net/minecraft/world/level/levelgen/blending/Blender.empty:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+  #119 = Utf8               (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;Z)V
+  #120 = NameAndType        #35:#119      // "<init>":(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;Z)V
+  #121 = Methodref          #111.#120     // com/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor."<init>":(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;Z)V
+  #122 = Utf8               modifyVisitor2
+  #123 = Utf8               createMultiNoiseSampler
+  #124 = Utf8               Lnet/minecraft/world/gen/densityfunction/DensityFunction;apply(Lnet/minecraft/world/gen/densityfunction/DensityFunction$DensityFunctionVisitor;)Lnet/minecraft/world/gen/densityfunction/DensityFunction;
+  #125 = Utf8               require
+  #126 = Integer            7
+  #127 = Utf8               expect
+  #128 = Utf8               RuntimeVisibleAnnotations
+  #129 = Utf8               Code
+  #130 = Utf8               LineNumberTable
+  #131 = Utf8               LocalVariableTable
+  #132 = Utf8               StackMapTable
+  #133 = Utf8               MethodParameters
+  #134 = Utf8               LocalVariableTypeTable
+  #135 = Utf8               Signature
+  #136 = Utf8               RuntimeInvisibleAnnotations
+  #137 = Utf8               RuntimeInvisibleTypeAnnotations
+  #138 = Utf8               InnerClasses
+  #139 = Utf8               SourceFile
+{
+  private int cellHeight;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+      1: #26()
+        org.spongepowered.asm.mixin.Final
+
+  private int cellWidth;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+      1: #26()
+        org.spongepowered.asm.mixin.Final
+
+  private int cellStartBlockY;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int cellStartBlockX;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int cellStartBlockZ;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+
+  private boolean interpolating;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+
+  private final com.ishland.c2me.opts.dfc.common.util.ArrayCache c2me$arrayCache;
+    descriptor: Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public com.ishland.c2me.opts.dfc.mixin.MixinChunkNoiseSampler();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #38                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #40                 // class com/ishland/c2me/opts/dfc/common/util/ArrayCache
+         8: dup
+         9: invokespecial #41                 // Method com/ishland/c2me/opts/dfc/common/util/ArrayCache."<init>":()V
+        12: putfield      #43                 // Field c2me$arrayCache:Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+        15: return
+      LineNumberTable:
+        line 22: 0
+        line 33: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+
+  public abstract net.minecraft.world.level.levelgen.blending.Blender getBlender();
+    descriptor: ()Lnet/minecraft/world/level/levelgen/blending/Blender;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #25()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.opts.dfc.common.util.ArrayCache c2me$getArrayCache();
+    descriptor: ()Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #43                 // Field c2me$arrayCache:Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+         4: ifnull        14
+         7: aload_0
+         8: getfield      #43                 // Field c2me$arrayCache:Lcom/ishland/c2me/opts/dfc/common/util/ArrayCache;
+        11: goto          21
+        14: new           #40                 // class com/ishland/c2me/opts/dfc/common/util/ArrayCache
+        17: dup
+        18: invokespecial #41                 // Method com/ishland/c2me/opts/dfc/common/util/ArrayCache."<init>":()V
+        21: areturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 14 /* same */
+        frame_type = 70 /* same_locals_1_stack_item */
+          stack = [ class com/ishland/c2me/opts/dfc/common/util/ArrayCache ]
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+
+  public void c2me$fillCoordinates(int[], int[], int[]);
+    descriptor: ([I[I[I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=11, args_size=4
+         0: iconst_0
+         1: istore        4
+         3: aload_0
+         4: getfield      #56                 // Field cellHeight:I
+         7: iconst_1
+         8: isub
+         9: istore        5
+        11: iload         5
+        13: iflt          106
+        16: aload_0
+        17: getfield      #58                 // Field cellStartBlockY:I
+        20: iload         5
+        22: iadd
+        23: istore        6
+        25: iconst_0
+        26: istore        7
+        28: iload         7
+        30: aload_0
+        31: getfield      #60                 // Field cellWidth:I
+        34: if_icmpge     100
+        37: aload_0
+        38: getfield      #62                 // Field cellStartBlockX:I
+        41: iload         7
+        43: iadd
+        44: istore        8
+        46: iconst_0
+        47: istore        9
+        49: iload         9
+        51: aload_0
+        52: getfield      #60                 // Field cellWidth:I
+        55: if_icmpge     94
+        58: aload_0
+        59: getfield      #64                 // Field cellStartBlockZ:I
+        62: iload         9
+        64: iadd
+        65: istore        10
+        67: aload_1
+        68: iload         4
+        70: iload         8
+        72: iastore
+        73: aload_2
+        74: iload         4
+        76: iload         6
+        78: iastore
+        79: aload_3
+        80: iload         4
+        82: iload         10
+        84: iastore
+        85: iinc          4, 1
+        88: iinc          9, 1
+        91: goto          49
+        94: iinc          7, 1
+        97: goto          28
+       100: iinc          5, -1
+       103: goto          11
+       106: return
+      StackMapTable: number_of_entries = 6
+        frame_type = 253 /* append */
+          offset_delta = 11
+          locals = [ int, int ]
+        frame_type = 253 /* append */
+          offset_delta = 16
+          locals = [ int, int ]
+        frame_type = 253 /* append */
+          offset_delta = 20
+          locals = [ int, int ]
+        frame_type = 249 /* chop */
+          offset_delta = 44
+        frame_type = 249 /* chop */
+          offset_delta = 5
+        frame_type = 250 /* chop */
+          offset_delta = 5
+      LineNumberTable:
+        line 42: 0
+        line 43: 3
+        line 44: 16
+        line 45: 25
+        line 46: 37
+        line 47: 46
+        line 48: 58
+        line 50: 67
+        line 51: 73
+        line 52: 79
+        line 54: 85
+        line 47: 88
+        line 45: 94
+        line 43: 100
+        line 58: 106
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           67      21    10 blockZ   I
+           49      45     9     k   I
+           46      48     8 blockX   I
+           28      72     7     j   I
+           25      75     6 blockY   I
+           11      95     5     i   I
+            0     107     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+            0     107     1     x   [I
+            0     107     2     y   [I
+            0     107     3     z   [I
+            3     104     4 index   I
+    MethodParameters:
+      Name                           Flags
+      x
+      y
+      z
+
+  private void protectInterpolationLoop(net.minecraft.world.level.levelgen.DensityFunction, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.level.levelgen.DensityFunction>);
+    descriptor: (Lnet/minecraft/world/level/levelgen/DensityFunction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #85                 // Field interpolating:Z
+         4: ifeq          24
+         7: aload_1
+         8: instanceof    #14                 // class net/minecraft/world/level/levelgen/DensityFunctions$Marker
+        11: ifeq          24
+        14: new           #87                 // class java/lang/IllegalStateException
+        17: dup
+        18: ldc           #89                 // String Cannot create more wrapping during interpolation loop
+        20: invokespecial #92                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+        23: athrow
+        24: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 24 /* same */
+      LineNumberTable:
+        line 62: 0
+        line 63: 14
+        line 65: 24
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      25     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+            0      25     1 function   Lnet/minecraft/world/level/levelgen/DensityFunction;
+            0      25     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      25     2   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/DensityFunction;>;
+    Signature: #75                          // (Lnet/minecraft/world/level/levelgen/DensityFunction;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/DensityFunction;>;)V
+    RuntimeVisibleAnnotations:
+      0: #78(#79=[s#80],#81=[@#82(#11=s#83)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["getActualDensityFunctionImpl"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      function
+      cir
+
+  private net.minecraft.world.level.levelgen.DensityFunction$Visitor modifyVisitor1(net.minecraft.world.level.levelgen.DensityFunction$Visitor);
+    descriptor: (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #106                // Method c2me$getDelegatingBlendingAwareVisitor:(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+         5: areturn
+      LineNumberTable:
+        line 69: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+            0       6     1 visitor   Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+    RuntimeVisibleAnnotations:
+      0: #99(#79=[s#35],#81=@#82(#11=s#100,#101=s#102))
+        org.spongepowered.asm.mixin.injection.ModifyArg(
+          method=["<init>"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/gen/noise/NoiseRouter;apply(Lnet/minecraft/world/gen/densityfunction/DensityFunction$DensityFunctionVisitor;)Lnet/minecraft/world/gen/noise/NoiseRouter;"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      visitor
+
+  private com.ishland.c2me.opts.dfc.common.gen.DelegatingBlendingAwareVisitor c2me$getDelegatingBlendingAwareVisitor(net.minecraft.world.level.levelgen.DensityFunction$Visitor);
+    descriptor: (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=2, args_size=2
+         0: new           #111                // class com/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor
+         3: dup
+         4: aload_1
+         5: aload_0
+         6: invokevirtual #113                // Method getBlender:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+         9: invokestatic  #118                // Method net/minecraft/world/level/levelgen/blending/Blender.empty:()Lnet/minecraft/world/level/levelgen/blending/Blender;
+        12: if_acmpeq     19
+        15: iconst_1
+        16: goto          20
+        19: iconst_0
+        20: invokespecial #121                // Method com/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor."<init>":(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;Z)V
+        23: areturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 19
+          locals = [ class com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler, class net/minecraft/world/level/levelgen/DensityFunction$Visitor ]
+          stack = [ uninitialized 0, uninitialized 0, class net/minecraft/world/level/levelgen/DensityFunction$Visitor ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 0
+          locals = [ class com/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler, class net/minecraft/world/level/levelgen/DensityFunction$Visitor ]
+          stack = [ uninitialized 0, uninitialized 0, class net/minecraft/world/level/levelgen/DensityFunction$Visitor, int ]
+      LineNumberTable:
+        line 74: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+            0      24     1 visitor   Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+    RuntimeVisibleAnnotations:
+      0: #108()
+        org.spongepowered.asm.mixin.Unique
+    RuntimeInvisibleAnnotations:
+      0: #109()
+        org.jetbrains.annotations.NotNull
+    RuntimeInvisibleTypeAnnotations:
+      0: #109(): METHOD_RETURN
+        org.jetbrains.annotations.NotNull
+    MethodParameters:
+      Name                           Flags
+      visitor
+
+  private net.minecraft.world.level.levelgen.DensityFunction$Visitor modifyVisitor2(net.minecraft.world.level.levelgen.DensityFunction$Visitor);
+    descriptor: (Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokevirtual #106                // Method c2me$getDelegatingBlendingAwareVisitor:(Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;)Lcom/ishland/c2me/opts/dfc/common/gen/DelegatingBlendingAwareVisitor;
+         5: areturn
+      LineNumberTable:
+        line 79: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/ishland/c2me/opts/dfc/mixin/MixinChunkNoiseSampler;
+            0       6     1 visitor   Lnet/minecraft/world/level/levelgen/DensityFunction$Visitor;
+    RuntimeVisibleAnnotations:
+      0: #99(#79=[s#35,s#123],#81=@#82(#11=s#100,#101=s#124),#125=I#126,#127=I#126)
+        org.spongepowered.asm.mixin.injection.ModifyArg(
+          method=["<init>","createMultiNoiseSampler"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/gen/densityfunction/DensityFunction;apply(Lnet/minecraft/world/gen/densityfunction/DensityFunction$DensityFunctionVisitor;)Lnet/minecraft/world/gen/densityfunction/DensityFunction;"
+          )
+          require=7
+          expect=7
+        )
+    MethodParameters:
+      Name                           Flags
+      visitor
+}
+InnerClasses:
+  public static final #17= #14 of #16;    // Marker=class net/minecraft/world/level/levelgen/DensityFunctions$Marker of class net/minecraft/world/level/levelgen/DensityFunctions
+  public static #22= #19 of #21;          // Visitor=class net/minecraft/world/level/levelgen/DensityFunction$Visitor of class net/minecraft/world/level/levelgen/DensityFunction
+SourceFile: "MixinChunkNoiseSampler.java"
+RuntimeInvisibleAnnotations:
+  0: #10(#11=[c#12])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/NoiseChunk;]
+    )
