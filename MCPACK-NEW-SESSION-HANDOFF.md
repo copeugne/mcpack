@@ -6,6 +6,34 @@
 
 ### Continuation update - 2026-09-06
 
+Latest Zeta source increments c79f551 and the subsequently delivered dynamic
+registration source commit are pushed and remote-ref verified. Census remains
+73 resolved providers and 63 open. Zeta is not closed yet. zeta-provider captures
+25 new entry/proxy/plugin/replacement/common-mixin classes; dynamic-registration
+and dynamic-registry capture RegisterDynamicUtil and ZetaRegistry respectively.
+All three outputs reproduce exactly and scoped extractor checks pass.
+
+The dynamic-registration question is resolved: registry-load notifications
+reach signed-up Zeta instances; each registry selects queued entries by supplied
+registry key, returns for absent/empty queues, evaluates consumer-supplied
+creators and registers their supplied IDs. No new authored content was identified.
+StructureStart sets/clears structure context, while piece/template hooks apply
+consumer block-state replacements. ZetaMod itself starts with null module finder
+and categories plus general configuration. Reuse these captures and the existing
+22 configuration/generation classes. Do not recapture or trace generic holders.
+
+Next write the focused Zeta payload/source check and provider disposition.
+Initial archive accounting: 627 files, 616 classes, no nested JAR or templates,
+one data/zeta/neoforge/biome_modifier/biome_modifier.json declaring
+{"type":"zeta:biome_modifier"}, four assets, loader/pack/mixin metadata.
+Fourteen common mixins plus four Forge-side common mixins are captured; three
+client mixins concern colors/rendering. The sole mod entry is ZetaModForge.
+The interface-delegate plugin handles annotated interface transformations and
+must be included in the role disposition. Shared registry/module/biome/generator
+consumers are already captured, not new independent candidate families.
+Final canonical count, detailed attributes and review/main merge remain open.
+This turn delivered evidence resolving a concrete callback; no blocker exists.
+
 Latest closure at 6e765f5 is pushed and remote-ref verified. Census:
 73 resolved providers, 63 open. Quark provider scope is closed. The existing
 five named site candidates remain spire, fairy ring, fallen log, Monster Box
