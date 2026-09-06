@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "cc-tweaked-1.21.1-forge-1.119.0.jar",
         "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
         "amendments-1.21-2.0.15-neoforge.jar",
         "accessories-neoforge-1.1.0-beta.53+1.21.1.jar",
@@ -219,6 +220,15 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "dan200/computercraft/ComputerCraft.class",
+    "dan200/computercraft/shared/ForgeCommonHooks.class",
+    "dan200/computercraft/mixin/V3818_3Mixin.class",
+    "dan200/computercraft/mixin/DataFixersMixin.class",
+    "dan200/computercraft/mixin/ItemStackComponentizationFixMixin.class",
+    "dan200/computercraft/mixin/V1460Mixin.class",
+    "dan200/computercraft/impl/ComputerCraftAPIImpl.class",
+    "dan200/computercraft/shared/integration/ForgePermissionRegistry$Provider.class",
+    "dan200/computercraft/shared/platform/PlatformHelperImpl.class",
     "com/ishland/c2me/C2MEMod.class",
     "com/ishland/c2me/PreLaunchHandler.class",
     "com/ishland/c2me/server/utils/common/C2MECommands.class",
@@ -4057,6 +4067,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("dan200/computercraft/")
                 verbose |= name.startswith("com/ishland/c2me/")
                 verbose |= name.startswith("io/wispforest/accessories/")
                 verbose |= name.startswith("net/mehvahdjukaar/amendments/")
