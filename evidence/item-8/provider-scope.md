@@ -5751,8 +5751,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Ten membership roles are resolved below;
-33 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Thirteen membership roles are resolved below;
+30 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5766,7 +5766,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-blockrenderlayer-v1-1.1.52+c290471319.jar` | RESOLVED: client utility, no independent server family; see below. |
-| `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-client-tags-api-v1-1.1.15+e053909619.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-command-api-v2-2.2.28+36d727be19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-content-registries-v0-8.0.19+5e0d320019.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-convention-tags-v1-2.1.5+7f945d5b19.jar` | RESOLVED: tag keys and legacy-tag warning callback; no independent family. |
@@ -5790,10 +5790,10 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | `fabric-particles-v1-4.0.2+824f924c19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-recipe-api-v1-5.0.15+59440bcc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-registry-sync-v0-5.3.1+f9aace1619.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-renderer-api-v1-3.4.1+9125b6dc19.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-renderer-indigo-1.7.1+9125b6dc19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-rendering-data-attachment-v1-0.3.49+73761d2e19.jar` | OPEN: inspect entry and declared hook contribution roles. |
-| `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | OPEN: inspect entry and declared hook contribution roles. |
+| `fabric-rendering-fluids-v1-3.1.6+a51883b219.jar` | RESOLVED: empty or client-guarded entry and client API roles; no independent server family. See below. |
 | `fabric-rendering-v1-5.1.0+1a09bd5a19.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-conditions-api-v1-4.3.0+5bdd099819.jar` | OPEN: inspect entry and declared hook contribution roles. |
 | `fabric-resource-loader-v0-1.3.1+4ea8954419.jar` | RESOLVED: consumer pack loading; see above. |
@@ -5872,3 +5872,32 @@ sides and source identities. Eleven focused Fabric cases and scoped checks pass.
 A missing type annotation on an empty set and its resulting line length were
 corrected before acceptance. Module queue: ten resolved, 33 open. Whole-provider
 census remains 90 resolved, 46 open; no family candidate was added.
+
+### Three Fabric client API membership roles resolved
+
+Source 339a264 (extractor 6ff2013) independently reproduces client-tags,
+renderer-api and rendering-fluids entries. Client tags and renderer API have
+constructors that only call Object and return. Fluid rendering guards its
+initializer with FMLEnvironment.dist.isClient. These entry paths add no
+server content. Full module partitions contain respectively 7, 35 and 20 classes;
+all remaining files are exact metadata/icon sets plus the declared client mixin
+configs. No data, service or nested archive payload remains unexplained.
+
+Client tags has no mixin config. Renderer API has four main client mixins and
+one client debug-HUD mixin. Fluid rendering has three client mixins. None of
+these configurations declares common/server hooks or a plugin. Each module
+has only its generated annotated mod entry, with no annotated event subscriber.
+The existing client-utility test now handles the actual zero/two/one config
+partitions and binds every source/class/archive identity. No rendering helper
+inspection is needed for family membership. No family is added.
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All fourteen focused Fabric cases and scoped checks pass. Fabric queue: thirteen
+resolved, thirty open modules. Whole-provider census stays 90 resolved and 46
+open because Fabric is still one unfinished provider. Source reproduction
+commands and exact hashes are in the three source READMEs.

@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Three Fabric client API modules are resolved: client tags, renderer API and
+fluid rendering. Their entries are empty or client-guarded; complete payloads
+and client-only mixin partitions are verified. Source 339a264, extractor 6ff2013.
+Fourteen focused Fabric cases and scoped checks pass. Fabric now has thirteen
+resolved and thirty open modules. Whole-provider census remains 90 resolved,
+46 open. No new family. Continue remaining named membership roles without
+tracing unrelated rendering helpers; retain the delivered grouping decisions.
+
 Explorations' decorated-mushroom boundary is resolved: its procedural stem/canopy
 and hanging-light decorator are recorded as decorated vegetation, with no added
 family. The generation contribution and shuffle limitation remain explicit.

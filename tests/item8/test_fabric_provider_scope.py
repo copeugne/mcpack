@@ -345,6 +345,27 @@ def test_fabric_v2_tag_membership() -> None:
     ("module", "label", "digest", "class_count", "client_count"),
     [
         (
+            "fabric-client-tags-api-v1-1.1.15+e053909619",
+            "fabric-client_tags_api-entry",
+            "c21d8171de5516eadbedab75ab654617416551609d47d38c667bccc6d483bbd2",
+            7,
+            0,
+        ),
+        (
+            "fabric-renderer-api-v1-3.4.1+9125b6dc19",
+            "fabric-renderer_api-entry",
+            "cf785b7b3847dfffba0113e5805331b67d6d5ea866d2c9e20a30fa8e596a7f55",
+            35,
+            5,
+        ),
+        (
+            "fabric-rendering-fluids-v1-3.1.6+a51883b219",
+            "fabric-rendering_fluids-entry",
+            "fced898b4d81ad78a18d99dc2e36d482b63dd3105d049363b8abb9bb59e14908",
+            20,
+            3,
+        ),
+        (
             "fabric-blockrenderlayer-v1-1.1.52+c290471319",
             "fabric-blockrenderlayer-entry",
             "aaa25c57988927d612eb93dcbdd02fac7495d20eb470b27ba724ea0a69830e14",
@@ -393,18 +414,23 @@ def test_fabric_client_utility_membership(
             extras: set[str] = (
                 {f"assets/{name}/sounds/empty.ogg"} if name == "fabric-sound-api-v1" else set()
             )
-            assert files - classes == extras | {
+            mixins: set[str] = {f"{name}.mixins.json"} if client_count else set()
+            if name == "fabric-renderer-api-v1":
+                mixins.add(f"{name}.debughud.mixins.json")
+            assert files - classes == extras | mixins | {
                 "META-INF/MANIFEST.MF",
                 "META-INF/neoforge.mods.toml",
                 "META-INF/architectury-loom-nesting-metadata.json",
-                f"{name}.mixins.json",
                 f"assets/{name}/icon.png",
             }
-            config = cast("dict[str, object]", json.loads(archive.read(f"{name}.mixins.json")))
-            assert len(cast("list[str]", config["client"])) == client_count
-            assert not config.get("mixins")
-            assert not config.get("server")
-            assert not config.get("plugin")
+            clients = 0
+            for mixin in mixins:
+                config = cast("dict[str, object]", json.loads(archive.read(mixin)))
+                clients += len(cast("list[str]", config["client"]))
+                assert not config.get("mixins")
+                assert not config.get("server")
+                assert not config.get("plugin")
+            assert clients == client_count
             assert {
                 n
                 for n in classes
