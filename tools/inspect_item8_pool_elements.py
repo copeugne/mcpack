@@ -1588,6 +1588,7 @@ CLASSES: tuple[str, ...] = (
     "net/regions_unexplored/world/level/feature/tree/IceSpireFeature.class",
     "net/regions_unexplored/worldgen/feature/RURockFeature.class",
     "net/regions_unexplored/worldgen/feature/CarvedLimitedPoolFeature.class",
+    "net/regions_unexplored/world/level/feature/configuration/PointedRedstoneUtils.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
