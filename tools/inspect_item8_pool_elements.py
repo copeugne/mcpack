@@ -210,6 +210,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "fuzs/puzzleslib/impl/core/proxy/ProxyImpl.class",
+    "fuzs/puzzleslib/neoforge/impl/core/NeoForgeProxy.class",
+    "fuzs/puzzleslib/neoforge/impl/event/NeoForgeEventInvokerRegistryImpl.class",
     "fuzs/puzzleslib/impl/PuzzlesLib.class",
     "fuzs/puzzleslib/impl/PuzzlesLibMod.class",
     "fuzs/puzzleslib/mixin/AbstractMinecartMixin.class",
