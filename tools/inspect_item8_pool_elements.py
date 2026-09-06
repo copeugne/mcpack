@@ -100,6 +100,7 @@ ARCHIVES = frozenset(
     }
 )
 GENERATION_PREFIXES = (
+    "com/tristankechlo/explorations/",
     "dev/worldgen/tectonic/Tectonic",
     "dev/worldgen/tectonic/ConfigResourceCondition",
     "dev/worldgen/tectonic/config/ConfigHandler",
@@ -718,6 +719,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "net/stardustlabs/terralith/TerralithNeoforgeClient.class",
                     "dev/worldgen/tectonic/TectonicNeoforge.class",
                     "dev/worldgen/tectonic/TectonicNeoforgeClient.class",
+                    "com/tristankechlo/explorations/NeoforgeExplorations.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RitchiesProjectileLibNeoForge.class",
                     "rbasamoyai/ritchiesprojectilelib/neoforge/RPLNeoForgeClient.class",
                     "rbasamoyai/ritchiesprojectilelib/network/neoforge/RPLNetworkImpl.class",
