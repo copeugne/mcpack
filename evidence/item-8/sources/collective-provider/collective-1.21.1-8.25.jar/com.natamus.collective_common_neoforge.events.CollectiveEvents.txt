@@ -1,0 +1,554 @@
+Compiled from "CollectiveEvents.java"
+public class com.natamus.collective_common_neoforge.events.CollectiveEvents {
+  public static java.util.WeakHashMap<net.minecraft.server.level.ServerLevel, java.util.List<net.minecraft.world.entity.Entity>> entitiesToSpawn;
+
+  public static java.util.WeakHashMap<net.minecraft.server.level.ServerLevel, java.util.WeakHashMap<net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity>> entitiesToRide;
+
+  public static java.util.concurrent.CopyOnWriteArrayList<com.mojang.datafixers.util.Pair<java.lang.Integer, java.lang.Runnable>> scheduledServerRunnables;
+
+  public com.natamus.collective_common_neoforge.events.CollectiveEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void onWorldLoad(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: invokestatic  #7                  // Method com/natamus/collective_common_neoforge/data/Constants.initConstantData:(Lnet/minecraft/world/level/Level;)V
+       4: return
+
+  public static void onWorldTick(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: getstatic     #13                 // Field entitiesToSpawn:Ljava/util/WeakHashMap;
+       3: aload_0
+       4: invokedynamic #19,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+       9: invokevirtual #23                 // Method java/util/WeakHashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      12: checkcast     #29                 // class java/util/List
+      15: invokeinterface #31,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      20: ifne          124
+      23: getstatic     #13                 // Field entitiesToSpawn:Ljava/util/WeakHashMap;
+      26: aload_0
+      27: invokevirtual #35                 // Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      30: checkcast     #29                 // class java/util/List
+      33: invokeinterface #39,  1           // InterfaceMethod java/util/List.getFirst:()Ljava/lang/Object;
+      38: checkcast     #43                 // class net/minecraft/world/entity/Entity
+      41: astore_1
+      42: aload_0
+      43: aload_1
+      44: invokevirtual #45                 // Method net/minecraft/server/level/ServerLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+      47: getstatic     #51                 // Field entitiesToRide:Ljava/util/WeakHashMap;
+      50: aload_0
+      51: invokedynamic #54,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      56: invokevirtual #23                 // Method java/util/WeakHashMap.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      59: checkcast     #24                 // class java/util/WeakHashMap
+      62: aload_1
+      63: invokevirtual #55                 // Method java/util/WeakHashMap.containsKey:(Ljava/lang/Object;)Z
+      66: ifeq          108
+      69: getstatic     #51                 // Field entitiesToRide:Ljava/util/WeakHashMap;
+      72: aload_0
+      73: invokevirtual #35                 // Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      76: checkcast     #24                 // class java/util/WeakHashMap
+      79: aload_1
+      80: invokevirtual #35                 // Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      83: checkcast     #43                 // class net/minecraft/world/entity/Entity
+      86: astore_2
+      87: aload_2
+      88: aload_1
+      89: invokevirtual #59                 // Method net/minecraft/world/entity/Entity.startRiding:(Lnet/minecraft/world/entity/Entity;)Z
+      92: pop
+      93: getstatic     #51                 // Field entitiesToRide:Ljava/util/WeakHashMap;
+      96: aload_0
+      97: invokevirtual #35                 // Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     100: checkcast     #24                 // class java/util/WeakHashMap
+     103: aload_1
+     104: invokevirtual #63                 // Method java/util/WeakHashMap.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+     107: pop
+     108: getstatic     #13                 // Field entitiesToSpawn:Ljava/util/WeakHashMap;
+     111: aload_0
+     112: invokevirtual #35                 // Method java/util/WeakHashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     115: checkcast     #29                 // class java/util/List
+     118: invokeinterface #66,  1           // InterfaceMethod java/util/List.removeFirst:()Ljava/lang/Object;
+     123: pop
+     124: return
+
+  public static void onServerTick(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokevirtual #69                 // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+       4: istore_1
+       5: getstatic     #75                 // Field scheduledServerRunnables:Ljava/util/concurrent/CopyOnWriteArrayList;
+       8: invokevirtual #79                 // Method java/util/concurrent/CopyOnWriteArrayList.iterator:()Ljava/util/Iterator;
+      11: astore_2
+      12: aload_2
+      13: invokeinterface #85,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      18: ifeq          75
+      21: aload_2
+      22: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      27: checkcast     #93                 // class com/mojang/datafixers/util/Pair
+      30: astore_3
+      31: aload_3
+      32: invokevirtual #95                 // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      35: checkcast     #96                 // class java/lang/Integer
+      38: invokevirtual #98                 // Method java/lang/Integer.intValue:()I
+      41: iload_1
+      42: if_icmpgt     72
+      45: aload_0
+      46: new           #101                // class net/minecraft/server/TickTask
+      49: dup
+      50: iload_1
+      51: aload_3
+      52: invokevirtual #103                // Method com/mojang/datafixers/util/Pair.getSecond:()Ljava/lang/Object;
+      55: checkcast     #106                // class java/lang/Runnable
+      58: invokespecial #108                // Method net/minecraft/server/TickTask."<init>":(ILjava/lang/Runnable;)V
+      61: invokevirtual #111                // Method net/minecraft/server/MinecraftServer.execute:(Ljava/lang/Runnable;)V
+      64: getstatic     #75                 // Field scheduledServerRunnables:Ljava/util/concurrent/CopyOnWriteArrayList;
+      67: aload_3
+      68: invokevirtual #115                // Method java/util/concurrent/CopyOnWriteArrayList.remove:(Ljava/lang/Object;)Z
+      71: pop
+      72: goto          12
+      75: return
+
+  public static boolean onEntityJoinLevel(net.minecraft.world.level.Level, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_1
+       1: instanceof    #117                // class net/minecraft/world/entity/LivingEntity
+       4: ifne          9
+       7: iconst_1
+       8: ireturn
+       9: aload_1
+      10: instanceof    #119                // class net/minecraft/world/entity/player/Player
+      13: ifeq          32
+      16: aload_1
+      17: checkcast     #119                // class net/minecraft/world/entity/player/Player
+      20: astore_2
+      21: invokestatic  #121                // Method com/natamus/collective_common_neoforge/features/PlayerHeadCacheFeature.isHeadCachingEnabled:()Z
+      24: ifeq          32
+      27: aload_2
+      28: invokestatic  #126                // Method com/natamus/collective_common_neoforge/features/PlayerHeadCacheFeature.cachePlayer:(Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/item/ItemStack;
+      31: pop
+      32: aload_1
+      33: invokevirtual #130                // Method net/minecraft/world/entity/Entity.isRemoved:()Z
+      36: ifeq          41
+      39: iconst_1
+      40: ireturn
+      41: getstatic     #133                // Field com/natamus/collective_common_neoforge/data/GlobalVariables.globalSAMs:Ljava/util/concurrent/CopyOnWriteArrayList;
+      44: invokevirtual #138                // Method java/util/concurrent/CopyOnWriteArrayList.isEmpty:()Z
+      47: ifeq          52
+      50: iconst_1
+      51: ireturn
+      52: aload_1
+      53: invokevirtual #139                // Method net/minecraft/world/entity/Entity.getTags:()Ljava/util/Set;
+      56: astore_2
+      57: aload_2
+      58: ldc           #145                // String collective.checked
+      60: invokeinterface #147,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+      65: ifeq          70
+      68: iconst_1
+      69: ireturn
+      70: aload_1
+      71: ldc           #145                // String collective.checked
+      73: invokevirtual #152                // Method net/minecraft/world/entity/Entity.addTag:(Ljava/lang/String;)Z
+      76: pop
+      77: aload_1
+      78: invokevirtual #156                // Method net/minecraft/world/entity/Entity.getType:()Lnet/minecraft/world/entity/EntityType;
+      81: astore_3
+      82: getstatic     #160                // Field com/natamus/collective_common_neoforge/data/GlobalVariables.activeSAMEntityTypes:Ljava/util/concurrent/CopyOnWriteArrayList;
+      85: aload_3
+      86: invokevirtual #163                // Method java/util/concurrent/CopyOnWriteArrayList.contains:(Ljava/lang/Object;)Z
+      89: ifne          94
+      92: iconst_1
+      93: ireturn
+      94: aload_2
+      95: ldc           #164                // String collective.fromspawner
+      97: invokeinterface #147,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     102: istore        4
+     104: new           #166                // class java/util/ArrayList
+     107: dup
+     108: invokespecial #168                // Method java/util/ArrayList."<init>":()V
+     111: astore        5
+     113: getstatic     #133                // Field com/natamus/collective_common_neoforge/data/GlobalVariables.globalSAMs:Ljava/util/concurrent/CopyOnWriteArrayList;
+     116: invokevirtual #79                 // Method java/util/concurrent/CopyOnWriteArrayList.iterator:()Ljava/util/Iterator;
+     119: astore        6
+     121: aload         6
+     123: invokeinterface #85,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     128: ifeq          216
+     131: aload         6
+     133: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     138: checkcast     #169                // class com/natamus/collective_common_neoforge/objects/SAMObject
+     141: astore        7
+     143: aload         7
+     145: ifnonnull     151
+     148: goto          121
+     151: aload         7
+     153: getfield      #171                // Field com/natamus/collective_common_neoforge/objects/SAMObject.fromEntityType:Lnet/minecraft/world/entity/EntityType;
+     156: ifnonnull     162
+     159: goto          121
+     162: aload         7
+     164: getfield      #171                // Field com/natamus/collective_common_neoforge/objects/SAMObject.fromEntityType:Lnet/minecraft/world/entity/EntityType;
+     167: aload_3
+     168: invokevirtual #175                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+     171: ifeq          213
+     174: aload         7
+     176: getfield      #178                // Field com/natamus/collective_common_neoforge/objects/SAMObject.onlyFromSpawner:Z
+     179: ifeq          187
+     182: iload         4
+     184: ifeq          121
+     187: aload         7
+     189: getfield      #178                // Field com/natamus/collective_common_neoforge/objects/SAMObject.onlyFromSpawner:Z
+     192: ifne          203
+     195: iload         4
+     197: ifeq          203
+     200: goto          121
+     203: aload         5
+     205: aload         7
+     207: invokeinterface #182,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     212: pop
+     213: goto          121
+     216: aload         5
+     218: invokeinterface #185,  1          // InterfaceMethod java/util/List.size:()I
+     223: istore        6
+     225: iload         6
+     227: ifne          232
+     230: iconst_1
+     231: ireturn
+     232: aload_1
+     233: invokevirtual #188                // Method net/minecraft/world/entity/Entity.position:()Lnet/minecraft/world/phys/Vec3;
+     236: astore        7
+     238: aload_1
+     239: instanceof    #192                // class net/minecraft/world/entity/AgeableMob
+     242: istore        8
+     244: aload_0
+     245: aload         7
+     247: invokestatic  #194                // Method com/natamus/collective_common_neoforge/functions/BlockPosFunctions.isOnSurface:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/phys/Vec3;)Ljava/lang/Boolean;
+     250: invokevirtual #200                // Method java/lang/Boolean.booleanValue:()Z
+     253: istore        9
+     255: aload         5
+     257: invokeinterface #205,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     262: astore        10
+     264: aload         10
+     266: invokeinterface #85,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     271: ifeq          623
+     274: aload         10
+     276: invokeinterface #90,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     281: checkcast     #169                // class com/natamus/collective_common_neoforge/objects/SAMObject
+     284: astore        11
+     286: getstatic     #206                // Field com/natamus/collective_common_neoforge/data/GlobalVariables.random:Ljava/util/Random;
+     289: invokevirtual #210                // Method java/util/Random.nextDouble:()D
+     292: dstore        12
+     294: dload         12
+     296: aload         11
+     298: getfield      #216                // Field com/natamus/collective_common_neoforge/objects/SAMObject.changeChance:D
+     301: dcmpl
+     302: ifle          308
+     305: goto          264
+     308: aload         11
+     310: getfield      #220                // Field com/natamus/collective_common_neoforge/objects/SAMObject.onlyOnSurface:Z
+     313: ifeq          324
+     316: iload         9
+     318: ifne          340
+     321: goto          264
+     324: aload         11
+     326: getfield      #223                // Field com/natamus/collective_common_neoforge/objects/SAMObject.onlyBelowSurface:Z
+     329: ifeq          340
+     332: iload         9
+     334: ifeq          340
+     337: goto          264
+     340: aload         11
+     342: getfield      #226                // Field com/natamus/collective_common_neoforge/objects/SAMObject.onlyBelowSpecificY:Z
+     345: ifeq          366
+     348: aload         7
+     350: getfield      #229                // Field net/minecraft/world/phys/Vec3.y:D
+     353: aload         11
+     355: getfield      #234                // Field com/natamus/collective_common_neoforge/objects/SAMObject.specificY:I
+     358: i2d
+     359: dcmpl
+     360: iflt          366
+     363: goto          264
+     366: aload         11
+     368: getfield      #238                // Field com/natamus/collective_common_neoforge/objects/SAMObject.toEntityType:Lnet/minecraft/world/entity/EntityType;
+     371: aload_0
+     372: invokevirtual #241                // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+     375: astore        14
+     377: aload         14
+     379: ifnonnull     384
+     382: iconst_1
+     383: ireturn
+     384: aload         14
+     386: aload         7
+     388: getfield      #247                // Field net/minecraft/world/phys/Vec3.x:D
+     391: aload         7
+     393: getfield      #229                // Field net/minecraft/world/phys/Vec3.y:D
+     396: aload         7
+     398: getfield      #250                // Field net/minecraft/world/phys/Vec3.z:D
+     401: invokevirtual #253                // Method net/minecraft/world/entity/Entity.setPos:(DDD)V
+     404: iload         8
+     406: ifeq          440
+     409: aload         14
+     411: instanceof    #192                // class net/minecraft/world/entity/AgeableMob
+     414: ifeq          440
+     417: aload         14
+     419: checkcast     #192                // class net/minecraft/world/entity/AgeableMob
+     422: astore        15
+     424: aload         15
+     426: aload_1
+     427: checkcast     #192                // class net/minecraft/world/entity/AgeableMob
+     430: invokevirtual #257                // Method net/minecraft/world/entity/AgeableMob.getAge:()I
+     433: invokevirtual #260                // Method net/minecraft/world/entity/AgeableMob.setAge:(I)V
+     436: aload         15
+     438: astore        14
+     440: iconst_0
+     441: istore        15
+     443: aload         11
+     445: getfield      #264                // Field com/natamus/collective_common_neoforge/objects/SAMObject.itemToHold:Lnet/minecraft/world/item/Item;
+     448: ifnull        509
+     451: aload         14
+     453: instanceof    #117                // class net/minecraft/world/entity/LivingEntity
+     456: ifeq          509
+     459: aload         14
+     461: checkcast     #117                // class net/minecraft/world/entity/LivingEntity
+     464: astore        16
+     466: aload         16
+     468: invokevirtual #268                // Method net/minecraft/world/entity/LivingEntity.getMainHandItem:()Lnet/minecraft/world/item/ItemStack;
+     471: invokevirtual #272                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+     474: aload         11
+     476: getfield      #264                // Field com/natamus/collective_common_neoforge/objects/SAMObject.itemToHold:Lnet/minecraft/world/item/Item;
+     479: invokevirtual #175                // Method java/lang/Object.equals:(Ljava/lang/Object;)Z
+     482: ifne          509
+     485: aload         16
+     487: getstatic     #278                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+     490: new           #273                // class net/minecraft/world/item/ItemStack
+     493: dup
+     494: aload         11
+     496: getfield      #264                // Field com/natamus/collective_common_neoforge/objects/SAMObject.itemToHold:Lnet/minecraft/world/item/Item;
+     499: iconst_1
+     500: invokespecial #284                // Method net/minecraft/world/item/ItemStack."<init>":(Lnet/minecraft/world/level/ItemLike;I)V
+     503: invokevirtual #287                // Method net/minecraft/world/entity/LivingEntity.setItemInHand:(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V
+     506: iconst_1
+     507: istore        15
+     509: iconst_0
+     510: istore        16
+     512: aload         14
+     514: invokestatic  #291                // Method com/natamus/collective_common_neoforge/functions/EntityFunctions.isHorse:(Lnet/minecraft/world/entity/Entity;)Ljava/lang/Boolean;
+     517: invokevirtual #200                // Method java/lang/Boolean.booleanValue:()Z
+     520: ifeq          550
+     523: aload         11
+     525: getfield      #297                // Field com/natamus/collective_common_neoforge/objects/SAMObject.rideNotReplace:Z
+     528: ifeq          550
+     531: aload         14
+     533: checkcast     #300                // class net/minecraft/world/entity/animal/horse/AbstractHorse
+     536: astore        17
+     538: aload         17
+     540: iconst_1
+     541: invokevirtual #302                // Method net/minecraft/world/entity/animal/horse/AbstractHorse.setTamed:(Z)V
+     544: iconst_1
+     545: istore        16
+     547: goto          564
+     550: getstatic     #306                // Field com/natamus/collective_common_neoforge/config/CollectiveConfigHandler.transferItemsBetweenReplacedEntities:Z
+     553: ifeq          564
+     556: aload_1
+     557: aload         14
+     559: iload         15
+     561: invokestatic  #311                // Method com/natamus/collective_common_neoforge/functions/EntityFunctions.transferItemsBetweenEntities:(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Z)V
+     564: aload_0
+     565: instanceof    #46                 // class net/minecraft/server/level/ServerLevel
+     568: ifeq          580
+     571: aload_0
+     572: checkcast     #46                 // class net/minecraft/server/level/ServerLevel
+     575: astore        17
+     577: goto          582
+     580: iconst_1
+     581: ireturn
+     582: iload         16
+     584: ifeq          598
+     587: aload         17
+     589: aload         14
+     591: aload_1
+     592: invokestatic  #315                // Method com/natamus/collective_common_neoforge/functions/SpawnEntityFunctions.startRidingEntityOnNextTick:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+     595: goto          605
+     598: aload_1
+     599: getstatic     #321                // Field net/minecraft/world/entity/Entity$RemovalReason.DISCARDED:Lnet/minecraft/world/entity/Entity$RemovalReason;
+     602: invokevirtual #327                // Method net/minecraft/world/entity/Entity.remove:(Lnet/minecraft/world/entity/Entity$RemovalReason;)V
+     605: aload         14
+     607: ldc           #145                // String collective.checked
+     609: invokevirtual #152                // Method net/minecraft/world/entity/Entity.addTag:(Ljava/lang/String;)Z
+     612: pop
+     613: aload         17
+     615: aload         14
+     617: invokestatic  #330                // Method com/natamus/collective_common_neoforge/functions/SpawnEntityFunctions.spawnEntityOnNextTick:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;)V
+     620: iload         16
+     622: ireturn
+     623: iconst_1
+     624: ireturn
+
+  public static boolean onBlockBreak(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.block.entity.BlockEntity);
+    Code:
+       0: aload_0
+       1: getfield      #334                // Field net/minecraft/world/level/Level.isClientSide:Z
+       4: ifeq          9
+       7: iconst_1
+       8: ireturn
+       9: aload_3
+      10: invokevirtual #339                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      13: astore        5
+      15: aload         5
+      17: instanceof    #345                // class net/minecraft/world/level/block/SkullBlock
+      20: ifne          31
+      23: aload         5
+      25: instanceof    #347                // class net/minecraft/world/level/block/WallSkullBlock
+      28: ifeq          289
+      31: aload_1
+      32: invokevirtual #349                // Method net/minecraft/world/entity/player/Player.isCreative:()Z
+      35: ifeq          40
+      38: iconst_1
+      39: ireturn
+      40: aload_0
+      41: aload_2
+      42: invokevirtual #352                // Method net/minecraft/world/level/Level.getBlockEntity:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;
+      45: astore        6
+      47: aload         6
+      49: instanceof    #356                // class net/minecraft/world/level/block/entity/SkullBlockEntity
+      52: ifeq          65
+      55: aload         6
+      57: checkcast     #356                // class net/minecraft/world/level/block/entity/SkullBlockEntity
+      60: astore        7
+      62: goto          67
+      65: iconst_1
+      66: ireturn
+      67: aload         7
+      69: invokevirtual #358                // Method net/minecraft/world/level/block/entity/SkullBlockEntity.getOwnerProfile:()Lnet/minecraft/world/item/component/ResolvableProfile;
+      72: astore        8
+      74: aload         8
+      76: ifnonnull     81
+      79: iconst_1
+      80: ireturn
+      81: aload         8
+      83: invokevirtual #362                // Method net/minecraft/world/item/component/ResolvableProfile.gameProfile:()Lcom/mojang/authlib/GameProfile;
+      86: astore        9
+      88: aload         9
+      90: invokevirtual #368                // Method com/mojang/authlib/GameProfile.getId:()Ljava/util/UUID;
+      93: astore        10
+      95: aload         10
+      97: invokevirtual #374                // Method java/util/UUID.toString:()Ljava/lang/String;
+     100: ldc_w         #380                // String ffffffff
+     103: invokevirtual #382                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     106: ifeq          111
+     109: iconst_1
+     110: ireturn
+     111: aconst_null
+     112: astore        11
+     114: aload         9
+     116: invokevirtual #387                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+     119: invokevirtual #390                // Method java/lang/String.isEmpty:()Z
+     122: ifne          136
+     125: aload         9
+     127: iconst_1
+     128: invokestatic  #391                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     131: invokestatic  #395                // Method com/natamus/collective_common_neoforge/functions/HeadFunctions.getNewPlayerHead:(Lcom/mojang/authlib/GameProfile;Ljava/lang/Integer;)Lnet/minecraft/world/item/ItemStack;
+     134: astore        11
+     136: aload         11
+     138: ifnonnull     241
+     141: getstatic     #401                // Field com/natamus/collective_common_neoforge/features/PlayerHeadCacheFeature.cachedGameProfileMap:Ljava/util/HashMap;
+     144: aload         10
+     146: invokevirtual #405                // Method java/util/HashMap.containsKey:(Ljava/lang/Object;)Z
+     149: ifeq          168
+     152: getstatic     #401                // Field com/natamus/collective_common_neoforge/features/PlayerHeadCacheFeature.cachedGameProfileMap:Ljava/util/HashMap;
+     155: aload         10
+     157: invokevirtual #408                // Method java/util/HashMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     160: checkcast     #369                // class com/mojang/authlib/GameProfile
+     163: astore        12
+     165: goto          230
+     168: aload_0
+     169: checkcast     #46                 // class net/minecraft/server/level/ServerLevel
+     172: invokevirtual #409                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+     175: invokevirtual #413                // Method net/minecraft/server/MinecraftServer.getSessionService:()Lcom/mojang/authlib/minecraft/MinecraftSessionService;
+     178: astore        13
+     180: aload         13
+     182: aload         10
+     184: iconst_0
+     185: invokeinterface #417,  3          // InterfaceMethod com/mojang/authlib/minecraft/MinecraftSessionService.fetchProfile:(Ljava/util/UUID;Z)Lcom/mojang/authlib/yggdrasil/ProfileResult;
+     190: astore        14
+     192: aload         14
+     194: ifnonnull     199
+     197: iconst_1
+     198: ireturn
+     199: aload         14
+     201: invokevirtual #423                // Method com/mojang/authlib/yggdrasil/ProfileResult.profile:()Lcom/mojang/authlib/GameProfile;
+     204: astore        12
+     206: aload         12
+     208: invokevirtual #387                // Method com/mojang/authlib/GameProfile.getName:()Ljava/lang/String;
+     211: invokevirtual #390                // Method java/lang/String.isEmpty:()Z
+     214: ifeq          219
+     217: iconst_1
+     218: ireturn
+     219: getstatic     #401                // Field com/natamus/collective_common_neoforge/features/PlayerHeadCacheFeature.cachedGameProfileMap:Ljava/util/HashMap;
+     222: aload         10
+     224: aload         12
+     226: invokevirtual #428                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     229: pop
+     230: aload         12
+     232: iconst_1
+     233: invokestatic  #391                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     236: invokestatic  #395                // Method com/natamus/collective_common_neoforge/functions/HeadFunctions.getNewPlayerHead:(Lcom/mojang/authlib/GameProfile;Ljava/lang/Integer;)Lnet/minecraft/world/item/ItemStack;
+     239: astore        11
+     241: aload         11
+     243: ifnull        289
+     246: aload_0
+     247: aload_2
+     248: iconst_0
+     249: invokevirtual #432                // Method net/minecraft/world/level/Level.destroyBlock:(Lnet/minecraft/core/BlockPos;Z)Z
+     252: pop
+     253: aload_0
+     254: new           #436                // class net/minecraft/world/entity/item/ItemEntity
+     257: dup
+     258: aload_0
+     259: aload_2
+     260: invokevirtual #438                // Method net/minecraft/core/BlockPos.getX:()I
+     263: i2d
+     264: aload_2
+     265: invokevirtual #443                // Method net/minecraft/core/BlockPos.getY:()I
+     268: i2d
+     269: ldc2_w        #446                // double 0.5d
+     272: dadd
+     273: aload_2
+     274: invokevirtual #448                // Method net/minecraft/core/BlockPos.getZ:()I
+     277: i2d
+     278: aload         11
+     280: invokespecial #451                // Method net/minecraft/world/entity/item/ItemEntity."<init>":(Lnet/minecraft/world/level/Level;DDDLnet/minecraft/world/item/ItemStack;)V
+     283: invokevirtual #454                // Method net/minecraft/world/level/Level.addFreshEntity:(Lnet/minecraft/world/entity/Entity;)Z
+     286: pop
+     287: iconst_0
+     288: ireturn
+     289: iconst_1
+     290: ireturn
+
+  private static java.util.WeakHashMap lambda$onWorldTick$1(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: new           #24                 // class java/util/WeakHashMap
+       3: dup
+       4: invokespecial #457                // Method java/util/WeakHashMap."<init>":()V
+       7: areturn
+
+  private static java.util.List lambda$onWorldTick$0(net.minecraft.server.level.ServerLevel);
+    Code:
+       0: new           #166                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #168                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  static {};
+    Code:
+       0: new           #24                 // class java/util/WeakHashMap
+       3: dup
+       4: invokespecial #457                // Method java/util/WeakHashMap."<init>":()V
+       7: putstatic     #13                 // Field entitiesToSpawn:Ljava/util/WeakHashMap;
+      10: new           #24                 // class java/util/WeakHashMap
+      13: dup
+      14: invokespecial #457                // Method java/util/WeakHashMap."<init>":()V
+      17: putstatic     #51                 // Field entitiesToRide:Ljava/util/WeakHashMap;
+      20: new           #80                 // class java/util/concurrent/CopyOnWriteArrayList
+      23: dup
+      24: invokespecial #458                // Method java/util/concurrent/CopyOnWriteArrayList."<init>":()V
+      27: putstatic     #75                 // Field scheduledServerRunnables:Ljava/util/concurrent/CopyOnWriteArrayList;
+      30: return
+}
