@@ -618,6 +618,14 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/world/features/BuildingListFeature$StructureInfo.class",
     "org/betterx/betterend/world/features/NBTFeature.class",
     "org/betterx/betterend/util/EndStructureHelper.class",
+    "org/betterx/betterend/world/features/terrain/FallenPillarFeature.class",
+    "org/betterx/betterend/world/features/terrain/ObsidianPillarBasementFeature.class",
+    "org/betterx/betterend/mixin/common/EndPlatformFeatureMixin.class",
+    "org/betterx/betterend/mixin/common/EndPodiumFeatureMixin.class",
+    "org/betterx/betterend/mixin/common/SpikeFeatureMixin.class",
+    "org/betterx/betterend/mixin/common/EndSpikeMixin.class",
+    "org/betterx/betterend/mixin/common/EndDragonFightMixin.class",
+    "org/betterx/betterend/mixin/common/EndCityFeatureMixin.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
