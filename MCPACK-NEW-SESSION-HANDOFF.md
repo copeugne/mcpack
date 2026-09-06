@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-06
 
+Latest closure 716fadb is pushed and remote-ref verified. Repurposed Structures
+provider coverage is RESOLVED. Census is now 75 resolved providers and 61 open.
+Nine focused cases and scoped Ruff/Basedpyright pass. The full disposition is
+at the end of provider-scope.md; its exact queue row and current count are updated.
+
+Delivered source increments: 015f351 covers the ten assembly boundaries with
+manifest 10a3a2a15d647c5c52c171034c84be9c2fc68e1fe42dd571e8a6c725a6de6746;
+6fed290 covers the data-generation entry with manifest
+0d2237b825ac55da59a8908beb120e562b67a58ccc3a5de1c151e1bbd980d9bf.
+Both independently reproduced exactly. The provider check binds twelve existing
+source manifests, 5842 files, 248 classes, both annotated entries, thirty common
+mixins and the exact equality of 107 packaged/runtime roots. Its family boundary
+also includes the existing dungeon/well configuration candidates. Canonical
+grouping, effective eligibility and attributes remain separate unfinished work.
+
+Next is Aether. Reuse aether-custom-entry, aether-bronze, aether-piece-binding,
+aether-placement, aether-trap-bindings and aether-trapped-block. The cloud entry
+README already contains a later tested terrain/provider disposition; do not
+restart its superseded initial follow-up. Reconcile remaining provider entries,
+Silver/Gold consumers and full resource roles without reopening Bronze helper
+internals. No blocker exists. Final Item 8 review/main merge remains mandatory.
+
 Latest feature-role increment fbc383b is pushed and remote-ref verified.
 Source 762b6f9 captures the remaining 31 feature implementations with exact r1
 reproduction; the two earlier NBT features are reused. All 136 configured
