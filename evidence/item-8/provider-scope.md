@@ -704,6 +704,35 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Creating Space packaged component checkpoint
 
+The captured crater writer has a terrain role: it writes AIR, updates the
+carving mask and applies CarvingContext.topMaterial through its local callback.
+Its height calculation consumes density values. Its structure references read
+existing starts and perform bounding-box calculations; they do not construct
+new structure starts. Do not infer successful structure relocation from the
+adjustBoundingBox call: its returned value is discarded. This inspection is
+for content membership, not a crater-shape or relocation correctness experiment.
+
+The focused packaged check binds all three carver configurations and all seven
+biomes' carver declarations. Mars cave/plains select the vanilla cave configuration;
+Moon cave/plains select the custom crater configuration. The separately packaged
+moon_cave carver is not referenced by those seven biome declarations. Venus uses
+the vanilla canyon and space has no carvers. No additional authored family is
+introduced by these carver paths.
+
+RocketContraption.assemble searches an existing moved structure and starts it
+moving. addBlock extends the captured contraption's block information and engine
+properties. RocketContraptionEntity.disassemble updates flight-recorder NBT in
+that block map before calling Create's contraption disassembly. Their indexed
+StructureTemplate references are StructureBlockInfo records for those blocks,
+not named world-generation template loads. Travel delegates to
+CustomTeleporter.getTransition; inspect that actual arrival boundary before
+closing the travel path. This is the next concrete source dependency, not a
+reason to audit the flight scheduler or propulsion equations.
+
+Both focused cases and scoped quality checks pass after adding the carver
+consumer assertions. Other common-entry/mixin roles, complete payload roles and
+the disconnected outpost's possible other consumers still require disposition.
+
 Source continuation: c212c8a selects the bounded entry set and 4d43faf retains
 all 39 disassemblies. Manifest SHA-256:
 eba1da2e07326fc6b3f57060d05bc7130695911a5fc118be589e2e09a1a515c4.
