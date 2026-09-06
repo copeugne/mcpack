@@ -1,0 +1,178 @@
+Compiled from "NetworkEvents.java"
+public class net.bettercombat.neoforge.network.NetworkEvents {
+  public net.bettercombat.neoforge.network.NetworkEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #63                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void register(net.neoforged.neoforge.network.event.RegisterConfigurationTasksEvent);
+    Code:
+       0: aload_0
+       1: new           #15                 // class net/bettercombat/neoforge/network/NetworkEvents$ConfigurationTask
+       4: dup
+       5: invokespecial #70                 // Method net/bettercombat/neoforge/network/NetworkEvents$ConfigurationTask."<init>":()V
+       8: invokevirtual #75                 // Method net/neoforged/neoforge/network/event/RegisterConfigurationTasksEvent.register:(Lnet/minecraft/server/network/ConfigurationTask;)V
+      11: aload_0
+      12: new           #13                 // class net/bettercombat/neoforge/network/NetworkEvents$WeaponRegistrySyncTask
+      15: dup
+      16: invokespecial #76                 // Method net/bettercombat/neoforge/network/NetworkEvents$WeaponRegistrySyncTask."<init>":()V
+      19: invokevirtual #75                 // Method net/neoforged/neoforge/network/event/RegisterConfigurationTasksEvent.register:(Lnet/minecraft/server/network/ConfigurationTask;)V
+      22: return
+
+  public static void register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent);
+    Code:
+       0: aload_0
+       1: ldc           #80                 // String 1
+       3: invokevirtual #86                 // Method net/neoforged/neoforge/network/event/RegisterPayloadHandlersEvent.registrar:(Ljava/lang/String;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+       6: astore_1
+       7: aload_1
+       8: getstatic     #90                 // Field net/bettercombat/network/Packets$Ack.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      11: getstatic     #94                 // Field net/bettercombat/network/Packets$Ack.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      14: invokedynamic #113,  0            // InvokeDynamic #0:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      19: invokevirtual #119                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.configurationToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      22: pop
+      23: aload_1
+      24: getstatic     #120                // Field net/bettercombat/network/Packets$C2S_AttackRequest.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      27: getstatic     #121                // Field net/bettercombat/network/Packets$C2S_AttackRequest.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      30: invokedynamic #128,  0            // InvokeDynamic #1:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      35: invokevirtual #131                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      38: pop
+      39: aload_1
+      40: getstatic     #132                // Field net/bettercombat/network/Packets$C2S_BlockHit.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      43: getstatic     #133                // Field net/bettercombat/network/Packets$C2S_BlockHit.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      46: invokedynamic #140,  0            // InvokeDynamic #2:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      51: invokevirtual #131                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      54: pop
+      55: aload_1
+      56: getstatic     #141                // Field net/bettercombat/network/Packets$AttackAnimation.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      59: getstatic     #142                // Field net/bettercombat/network/Packets$AttackAnimation.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      62: invokedynamic #149,  0            // InvokeDynamic #3:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      67: invokevirtual #152                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playBidirectional:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      70: pop
+      71: aload_1
+      72: getstatic     #153                // Field net/bettercombat/network/Packets$ConfigSync.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      75: getstatic     #154                // Field net/bettercombat/network/Packets$ConfigSync.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      78: invokedynamic #161,  0            // InvokeDynamic #4:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      83: invokevirtual #164                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.configurationToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+      86: pop
+      87: aload_1
+      88: getstatic     #165                // Field net/bettercombat/network/Packets$WeaponRegistrySync.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+      91: getstatic     #166                // Field net/bettercombat/network/Packets$WeaponRegistrySync.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+      94: invokedynamic #173,  0            // InvokeDynamic #5:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+      99: invokevirtual #164                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.configurationToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     102: pop
+     103: aload_1
+     104: getstatic     #174                // Field net/bettercombat/network/Packets$AttackSound.PACKET_ID:Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;
+     107: getstatic     #175                // Field net/bettercombat/network/Packets$AttackSound.CODEC:Lnet/minecraft/network/codec/StreamCodec;
+     110: invokedynamic #182,  0            // InvokeDynamic #6:handle:()Lnet/neoforged/neoforge/network/handling/IPayloadHandler;
+     115: invokevirtual #185                // Method net/neoforged/neoforge/network/registration/PayloadRegistrar.playToClient:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload$Type;Lnet/minecraft/network/codec/StreamCodec;Lnet/neoforged/neoforge/network/handling/IPayloadHandler;)Lnet/neoforged/neoforge/network/registration/PayloadRegistrar;
+     118: pop
+     119: return
+
+  private static void lambda$register$6(net.bettercombat.network.Packets$AttackSound, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: invokestatic  #195                // Method net/bettercombat/client/ClientNetwork.handleAttackSound:(Lnet/bettercombat/network/Packets$AttackSound;)V
+       4: return
+
+  private static void lambda$register$5(net.bettercombat.network.Packets$WeaponRegistrySync, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: invokestatic  #201                // Method net/bettercombat/client/ClientNetwork.handleWeaponRegistrySync:(Lnet/bettercombat/network/Packets$WeaponRegistrySync;)V
+       4: aload_1
+       5: new           #19                 // class net/bettercombat/network/Packets$Ack
+       8: dup
+       9: ldc           #203                // String bettercombat:weapon_registry
+      11: invokespecial #206                // Method net/bettercombat/network/Packets$Ack."<init>":(Ljava/lang/String;)V
+      14: invokeinterface #212,  2          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.reply:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      19: return
+
+  private static void lambda$register$4(net.bettercombat.network.Packets$ConfigSync, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: invokestatic  #217                // Method net/bettercombat/client/ClientNetwork.handleConfigSync:(Lnet/bettercombat/network/Packets$ConfigSync;)V
+       4: aload_1
+       5: new           #19                 // class net/bettercombat/network/Packets$Ack
+       8: dup
+       9: ldc           #219                // String bettercombat:config
+      11: invokespecial #206                // Method net/bettercombat/network/Packets$Ack."<init>":(Ljava/lang/String;)V
+      14: invokeinterface #212,  2          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.reply:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+      19: return
+
+  private static void lambda$register$3(net.bettercombat.network.Packets$AttackAnimation, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_1
+       1: invokeinterface #224,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.flow:()Lnet/minecraft/network/protocol/PacketFlow;
+       6: invokevirtual #230                // Method net/minecraft/network/protocol/PacketFlow.isClientbound:()Z
+       9: ifeq          19
+      12: aload_0
+      13: invokestatic  #234                // Method net/bettercombat/client/ClientNetwork.handleAttackAnimation:(Lnet/bettercombat/network/Packets$AttackAnimation;)V
+      16: goto          40
+      19: aload_1
+      20: invokeinterface #238,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+      25: checkcast     #240                // class net/minecraft/server/level/ServerPlayer
+      28: astore_2
+      29: aload_2
+      30: getfield      #244                // Field net/minecraft/server/level/ServerPlayer.server:Lnet/minecraft/server/MinecraftServer;
+      33: astore_3
+      34: aload_0
+      35: aload_3
+      36: aload_2
+      37: invokestatic  #249                // Method net/bettercombat/network/ServerNetwork.handleAttackAnimation:(Lnet/bettercombat/network/Packets$AttackAnimation;Lnet/minecraft/server/MinecraftServer;Lnet/minecraft/server/level/ServerPlayer;)V
+      40: return
+
+  private static void lambda$register$2(net.bettercombat.network.Packets$C2S_BlockHit, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_1
+       1: invokeinterface #238,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       6: checkcast     #240                // class net/minecraft/server/level/ServerPlayer
+       9: astore_2
+      10: aload_2
+      11: getfield      #244                // Field net/minecraft/server/level/ServerPlayer.server:Lnet/minecraft/server/MinecraftServer;
+      14: astore_3
+      15: aload_0
+      16: aload_3
+      17: aload_2
+      18: invokestatic  #255                // Method net/bettercombat/network/ServerNetwork.handleBlockHit:(Lnet/bettercombat/network/Packets$C2S_BlockHit;Lnet/minecraft/server/MinecraftServer;Lnet/minecraft/server/level/ServerPlayer;)V
+      21: return
+
+  private static void lambda$register$1(net.bettercombat.network.Packets$C2S_AttackRequest, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_1
+       1: invokeinterface #238,  1          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.player:()Lnet/minecraft/world/entity/player/Player;
+       6: checkcast     #240                // class net/minecraft/server/level/ServerPlayer
+       9: astore_2
+      10: aload_2
+      11: getfield      #244                // Field net/minecraft/server/level/ServerPlayer.server:Lnet/minecraft/server/MinecraftServer;
+      14: astore_3
+      15: aload_2
+      16: getfield      #260                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+      19: astore        4
+      21: aload_0
+      22: aload_3
+      23: aload_2
+      24: aload         4
+      26: invokestatic  #264                // Method net/bettercombat/network/ServerNetwork.handleAttackRequest:(Lnet/bettercombat/network/Packets$C2S_AttackRequest;Lnet/minecraft/server/MinecraftServer;Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/server/network/ServerGamePacketListenerImpl;)V
+      29: return
+
+  private static void lambda$register$0(net.bettercombat.network.Packets$Ack, net.neoforged.neoforge.network.handling.IPayloadContext);
+    Code:
+       0: aload_0
+       1: invokevirtual #271                // Method net/bettercombat/network/Packets$Ack.code:()Ljava/lang/String;
+       4: ldc           #219                // String bettercombat:config
+       6: invokevirtual #277                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       9: ifeq          21
+      12: aload_1
+      13: getstatic     #281                // Field net/bettercombat/neoforge/network/NetworkEvents$ConfigurationTask.KEY:Lnet/minecraft/server/network/ConfigurationTask$Type;
+      16: invokeinterface #285,  2          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.finishCurrentTask:(Lnet/minecraft/server/network/ConfigurationTask$Type;)V
+      21: aload_0
+      22: invokevirtual #271                // Method net/bettercombat/network/Packets$Ack.code:()Ljava/lang/String;
+      25: ldc           #203                // String bettercombat:weapon_registry
+      27: invokevirtual #277                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      30: ifeq          42
+      33: aload_1
+      34: getstatic     #286                // Field net/bettercombat/neoforge/network/NetworkEvents$WeaponRegistrySyncTask.KEY:Lnet/minecraft/server/network/ConfigurationTask$Type;
+      37: invokeinterface #285,  2          // InterfaceMethod net/neoforged/neoforge/network/handling/IPayloadContext.finishCurrentTask:(Lnet/minecraft/server/network/ConfigurationTask$Type;)V
+      42: return
+}
