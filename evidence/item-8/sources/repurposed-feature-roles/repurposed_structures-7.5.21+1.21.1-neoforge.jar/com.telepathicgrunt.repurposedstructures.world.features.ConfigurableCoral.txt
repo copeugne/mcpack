@@ -1,0 +1,212 @@
+Compiled from "ConfigurableCoral.java"
+public abstract class com.telepathicgrunt.repurposedstructures.world.features.ConfigurableCoral extends net.minecraft.world.level.levelgen.feature.Feature<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig> {
+  public com.telepathicgrunt.repurposedstructures.world.features.ConfigurableCoral(com.mojang.serialization.Codec<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #17                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #35                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+      23: getfield      #49                 // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.mainBlocks:Lnet/minecraft/core/HolderSet;
+      26: invokeinterface #55,  1           // InterfaceMethod net/minecraft/core/HolderSet.size:()I
+      31: istore        5
+      33: iload         5
+      35: ifne          40
+      38: iconst_0
+      39: ireturn
+      40: aload_1
+      41: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      44: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+      47: getfield      #49                 // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.mainBlocks:Lnet/minecraft/core/HolderSet;
+      50: aload_2
+      51: iload         5
+      53: invokeinterface #65,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+      58: invokeinterface #69,  2           // InterfaceMethod net/minecraft/core/HolderSet.get:(I)Lnet/minecraft/core/Holder;
+      63: invokeinterface #75,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      68: checkcast     #77                 // class net/minecraft/world/level/block/Block
+      71: invokevirtual #81                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+      74: astore        6
+      76: aload_0
+      77: aload_3
+      78: aload_2
+      79: aload         4
+      81: aload         6
+      83: aload_1
+      84: invokevirtual #85                 // Method placeFeature:(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;)Z
+      87: ireturn
+
+  protected abstract boolean placeFeature(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+
+  protected boolean placeCoralBlock(net.minecraft.world.level.LevelAccessor, net.minecraft.util.RandomSource, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<com.telepathicgrunt.repurposedstructures.world.features.configs.ConfigurableCoralConfig>);
+    Code:
+       0: aload_3
+       1: invokevirtual #103                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+       4: astore        6
+       6: aload_1
+       7: aload_3
+       8: invokeinterface #109,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      13: astore        7
+      15: aload         7
+      17: invokevirtual #115                // Method net/minecraft/world/level/block/state/BlockState.getFluidState:()Lnet/minecraft/world/level/material/FluidState;
+      20: getstatic     #121                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+      23: invokevirtual #127                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      26: ifne          51
+      29: aload         7
+      31: getstatic     #132                // Field net/minecraft/tags/BlockTags.CORALS:Lnet/minecraft/tags/TagKey;
+      34: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      37: ifne          51
+      40: aload         7
+      42: getstatic     #138                // Field com/telepathicgrunt/repurposedstructures/modinit/RSTags.DEAD_CORALS:Lnet/minecraft/tags/TagKey;
+      45: invokevirtual #133                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+      48: ifeq          68
+      51: aload_1
+      52: aload         6
+      54: invokeinterface #141,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+      59: getstatic     #121                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+      62: invokevirtual #127                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+      65: ifne          70
+      68: iconst_0
+      69: ireturn
+      70: aload_1
+      71: aload_3
+      72: aload         4
+      74: iconst_3
+      75: invokeinterface #145,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      80: pop
+      81: aload_2
+      82: invokeinterface #149,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      87: ldc           #150                // float 0.25f
+      89: fcmpg
+      90: ifge          170
+      93: aload         5
+      95: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      98: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+     101: getfield      #153                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.floorBlocks:Lnet/minecraft/core/HolderSet;
+     104: invokeinterface #55,  1           // InterfaceMethod net/minecraft/core/HolderSet.size:()I
+     109: istore        8
+     111: iload         8
+     113: ifne          118
+     116: iconst_0
+     117: ireturn
+     118: aload         5
+     120: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     123: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+     126: getfield      #153                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.floorBlocks:Lnet/minecraft/core/HolderSet;
+     129: aload_2
+     130: iload         8
+     132: invokeinterface #65,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     137: invokeinterface #69,  2           // InterfaceMethod net/minecraft/core/HolderSet.get:(I)Lnet/minecraft/core/Holder;
+     142: invokeinterface #75,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     147: checkcast     #77                 // class net/minecraft/world/level/block/Block
+     150: invokevirtual #81                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     153: astore        9
+     155: aload_1
+     156: aload         6
+     158: aload         9
+     160: iconst_3
+     161: invokeinterface #145,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     166: pop
+     167: goto          219
+     170: aload_2
+     171: invokeinterface #149,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     176: ldc           #154                // float 0.05f
+     178: fcmpg
+     179: ifge          219
+     182: aload_1
+     183: aload         6
+     185: getstatic     #160                // Field net/minecraft/world/level/block/Blocks.SEA_PICKLE:Lnet/minecraft/world/level/block/Block;
+     188: invokevirtual #81                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     191: getstatic     #166                // Field net/minecraft/world/level/block/SeaPickleBlock.PICKLES:Lnet/minecraft/world/level/block/state/properties/IntegerProperty;
+     194: aload_2
+     195: iconst_4
+     196: invokeinterface #65,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     201: iconst_1
+     202: iadd
+     203: invokestatic  #172                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     206: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     209: checkcast     #111                // class net/minecraft/world/level/block/state/BlockState
+     212: iconst_2
+     213: invokeinterface #145,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     218: pop
+     219: getstatic     #180                // Field net/minecraft/core/Direction$Plane.HORIZONTAL:Lnet/minecraft/core/Direction$Plane;
+     222: invokevirtual #184                // Method net/minecraft/core/Direction$Plane.iterator:()Ljava/util/Iterator;
+     225: astore        8
+     227: aload         8
+     229: invokeinterface #190,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     234: ifeq          391
+     237: aload         8
+     239: invokeinterface #193,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     244: checkcast     #10                 // class net/minecraft/core/Direction
+     247: astore        9
+     249: aload_2
+     250: invokeinterface #149,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     255: ldc           #194                // float 0.2f
+     257: fcmpg
+     258: ifge          227
+     261: aload_1
+     262: aload_3
+     263: aload         9
+     265: invokevirtual #198                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     268: dup
+     269: astore        10
+     271: invokeinterface #141,  2          // InterfaceMethod net/minecraft/world/level/LevelAccessor.getFluidState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;
+     276: getstatic     #121                // Field net/minecraft/tags/FluidTags.WATER:Lnet/minecraft/tags/TagKey;
+     279: invokevirtual #127                // Method net/minecraft/world/level/material/FluidState.is:(Lnet/minecraft/tags/TagKey;)Z
+     282: ifne          288
+     285: goto          227
+     288: aload         5
+     290: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     293: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+     296: getfield      #201                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.wallBlocks:Lnet/minecraft/core/HolderSet;
+     299: invokeinterface #55,  1           // InterfaceMethod net/minecraft/core/HolderSet.size:()I
+     304: istore        11
+     306: iload         11
+     308: ifne          313
+     311: iconst_0
+     312: ireturn
+     313: aload         5
+     315: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+     318: checkcast     #45                 // class com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig
+     321: getfield      #201                // Field com/telepathicgrunt/repurposedstructures/world/features/configs/ConfigurableCoralConfig.wallBlocks:Lnet/minecraft/core/HolderSet;
+     324: aload_2
+     325: iload         11
+     327: invokeinterface #65,  2           // InterfaceMethod net/minecraft/util/RandomSource.nextInt:(I)I
+     332: invokeinterface #69,  2           // InterfaceMethod net/minecraft/core/HolderSet.get:(I)Lnet/minecraft/core/Holder;
+     337: invokeinterface #75,  1           // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+     342: checkcast     #77                 // class net/minecraft/world/level/block/Block
+     345: invokevirtual #81                 // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     348: astore        12
+     350: aload         12
+     352: getstatic     #207                // Field net/minecraft/world/level/block/BaseCoralWallFanBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     355: invokevirtual #211                // Method net/minecraft/world/level/block/state/BlockState.hasProperty:(Lnet/minecraft/world/level/block/state/properties/Property;)Z
+     358: ifeq          376
+     361: aload         12
+     363: getstatic     #207                // Field net/minecraft/world/level/block/BaseCoralWallFanBlock.FACING:Lnet/minecraft/world/level/block/state/properties/DirectionProperty;
+     366: aload         9
+     368: invokevirtual #176                // Method net/minecraft/world/level/block/state/BlockState.setValue:(Lnet/minecraft/world/level/block/state/properties/Property;Ljava/lang/Comparable;)Ljava/lang/Object;
+     371: checkcast     #111                // class net/minecraft/world/level/block/state/BlockState
+     374: astore        12
+     376: aload_1
+     377: aload         10
+     379: aload         12
+     381: iconst_3
+     382: invokeinterface #145,  4          // InterfaceMethod net/minecraft/world/level/LevelAccessor.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     387: pop
+     388: goto          227
+     391: iconst_1
+     392: ireturn
+}
