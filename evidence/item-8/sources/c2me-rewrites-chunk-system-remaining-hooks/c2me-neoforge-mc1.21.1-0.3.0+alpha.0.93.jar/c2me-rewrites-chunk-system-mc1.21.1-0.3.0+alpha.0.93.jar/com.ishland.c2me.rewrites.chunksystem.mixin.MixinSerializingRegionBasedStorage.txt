@@ -1,0 +1,217 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage.class
+  Last modified Jan 1, 1980; size 2191 bytes
+  SHA-256 checksum ff28e04dbb21ae18514b7382c299d982058d9648500d60e12e1bcd640a28f36c
+  Compiled from "MixinSerializingRegionBasedStorage.java"
+public abstract class com.ishland.c2me.rewrites.chunksystem.mixin.MixinSerializingRegionBasedStorage<R extends java.lang.Object> extends java.lang.Object implements com.ishland.c2me.rewrites.chunksystem.common.ducks.IPOIUnloading
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage
+  super_class: #5                         // java/lang/Object
+  interfaces: 1, fields: 2, methods: 3, attributes: 3
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage
+   #2 = Class              #1             // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage
+   #3 = Utf8               <R:Ljava/lang/Object;>Ljava/lang/Object;Lcom/ishland/c2me/rewrites/chunksystem/common/ducks/IPOIUnloading;
+   #4 = Utf8               java/lang/Object
+   #5 = Class              #4             // java/lang/Object
+   #6 = Utf8               com/ishland/c2me/rewrites/chunksystem/common/ducks/IPOIUnloading
+   #7 = Class              #6             // com/ishland/c2me/rewrites/chunksystem/common/ducks/IPOIUnloading
+   #8 = Utf8               MixinSerializingRegionBasedStorage.java
+   #9 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #10 = Utf8               value
+  #11 = Utf8               Lnet/minecraft/world/level/chunk/storage/SectionStorage;
+  #12 = Utf8               levelHeightAccessor
+  #13 = Utf8               Lnet/minecraft/world/level/LevelHeightAccessor;
+  #14 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #15 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #16 = Utf8               storage
+  #17 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+  #18 = Utf8               Lit/unimi/dsi/fastutil/longs/Long2ObjectMap<Ljava/util/Optional<TR;>;>;
+  #19 = Utf8               <init>
+  #20 = Utf8               ()V
+  #21 = NameAndType        #19:#20        // "<init>":()V
+  #22 = Methodref          #5.#21         // java/lang/Object."<init>":()V
+  #23 = Utf8               this
+  #24 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage<TR;>;
+  #25 = Utf8               Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage;
+  #26 = Utf8               flush
+  #27 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)V
+  #28 = Utf8               c2me$unloadPoi
+  #29 = Utf8               pos
+  #30 = Utf8               com/ishland/c2me/rewrites/chunksystem/common/Config
+  #31 = Class              #30            // com/ishland/c2me/rewrites/chunksystem/common/Config
+  #32 = Utf8               allowPOIUnloading
+  #33 = Utf8               Z
+  #34 = NameAndType        #32:#33        // allowPOIUnloading:Z
+  #35 = Fieldref           #31.#34        // com/ishland/c2me/rewrites/chunksystem/common/Config.allowPOIUnloading:Z
+  #36 = Utf8               c2me$shouldUnloadPoi
+  #37 = Utf8               (Lnet/minecraft/world/level/ChunkPos;)Z
+  #38 = NameAndType        #36:#37        // c2me$shouldUnloadPoi:(Lnet/minecraft/world/level/ChunkPos;)Z
+  #39 = Methodref          #2.#38         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage.c2me$shouldUnloadPoi:(Lnet/minecraft/world/level/ChunkPos;)Z
+  #40 = NameAndType        #26:#27        // flush:(Lnet/minecraft/world/level/ChunkPos;)V
+  #41 = Methodref          #2.#40         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage.flush:(Lnet/minecraft/world/level/ChunkPos;)V
+  #42 = NameAndType        #12:#13        // levelHeightAccessor:Lnet/minecraft/world/level/LevelHeightAccessor;
+  #43 = Fieldref           #2.#42         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage.levelHeightAccessor:Lnet/minecraft/world/level/LevelHeightAccessor;
+  #44 = Utf8               net/minecraft/world/level/LevelHeightAccessor
+  #45 = Class              #44            // net/minecraft/world/level/LevelHeightAccessor
+  #46 = Utf8               getMinSection
+  #47 = Utf8               ()I
+  #48 = NameAndType        #46:#47        // getMinSection:()I
+  #49 = InterfaceMethodref #45.#48        // net/minecraft/world/level/LevelHeightAccessor.getMinSection:()I
+  #50 = Utf8               getMaxSection
+  #51 = NameAndType        #50:#47        // getMaxSection:()I
+  #52 = InterfaceMethodref #45.#51        // net/minecraft/world/level/LevelHeightAccessor.getMaxSection:()I
+  #53 = NameAndType        #16:#17        // storage:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+  #54 = Fieldref           #2.#53         // com/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage.storage:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+  #55 = Utf8               net/minecraft/world/level/ChunkPos
+  #56 = Class              #55            // net/minecraft/world/level/ChunkPos
+  #57 = Utf8               x
+  #58 = Utf8               I
+  #59 = NameAndType        #57:#58        // x:I
+  #60 = Fieldref           #56.#59        // net/minecraft/world/level/ChunkPos.x:I
+  #61 = Utf8               z
+  #62 = NameAndType        #61:#58        // z:I
+  #63 = Fieldref           #56.#62        // net/minecraft/world/level/ChunkPos.z:I
+  #64 = Utf8               net/minecraft/core/SectionPos
+  #65 = Class              #64            // net/minecraft/core/SectionPos
+  #66 = Utf8               asLong
+  #67 = Utf8               (III)J
+  #68 = NameAndType        #66:#67        // asLong:(III)J
+  #69 = Methodref          #65.#68        // net/minecraft/core/SectionPos.asLong:(III)J
+  #70 = Utf8               it/unimi/dsi/fastutil/longs/Long2ObjectMap
+  #71 = Class              #70            // it/unimi/dsi/fastutil/longs/Long2ObjectMap
+  #72 = Utf8               remove
+  #73 = Utf8               (J)Ljava/lang/Object;
+  #74 = NameAndType        #72:#73        // remove:(J)Ljava/lang/Object;
+  #75 = InterfaceMethodref #71.#74        // it/unimi/dsi/fastutil/longs/Long2ObjectMap.remove:(J)Ljava/lang/Object;
+  #76 = Utf8               i
+  #77 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #78 = Utf8               RuntimeVisibleAnnotations
+  #79 = Utf8               Signature
+  #80 = Utf8               Code
+  #81 = Utf8               LineNumberTable
+  #82 = Utf8               LocalVariableTable
+  #83 = Utf8               LocalVariableTypeTable
+  #84 = Utf8               StackMapTable
+  #85 = Utf8               MethodParameters
+  #86 = Utf8               SourceFile
+  #87 = Utf8               RuntimeInvisibleAnnotations
+{
+  protected net.minecraft.world.level.LevelHeightAccessor levelHeightAccessor;
+    descriptor: Lnet/minecraft/world/level/LevelHeightAccessor;
+    flags: (0x0004) ACC_PROTECTED
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Shadow
+      1: #15()
+        org.spongepowered.asm.mixin.Final
+
+  private it.unimi.dsi.fastutil.longs.Long2ObjectMap<java.util.Optional<R>> storage;
+    descriptor: Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #18                          // Lit/unimi/dsi/fastutil/longs/Long2ObjectMap<Ljava/util/Optional<TR;>;>;
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Shadow
+      1: #15()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.rewrites.chunksystem.mixin.MixinSerializingRegionBasedStorage();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage<TR;>;
+
+  public abstract void flush(net.minecraft.world.level.ChunkPos);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #14()
+        org.spongepowered.asm.mixin.Shadow
+
+  public void c2me$unloadPoi(net.minecraft.world.level.ChunkPos);
+    descriptor: (Lnet/minecraft/world/level/ChunkPos;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=3, args_size=2
+         0: getstatic     #35                 // Field com/ishland/c2me/rewrites/chunksystem/common/Config.allowPOIUnloading:Z
+         3: ifne          7
+         6: return
+         7: aload_0
+         8: aload_1
+         9: invokevirtual #39                 // Method c2me$shouldUnloadPoi:(Lnet/minecraft/world/level/ChunkPos;)Z
+        12: ifne          16
+        15: return
+        16: aload_0
+        17: aload_1
+        18: invokevirtual #41                 // Method flush:(Lnet/minecraft/world/level/ChunkPos;)V
+        21: aload_0
+        22: getfield      #43                 // Field levelHeightAccessor:Lnet/minecraft/world/level/LevelHeightAccessor;
+        25: invokeinterface #49,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMinSection:()I
+        30: istore_2
+        31: iload_2
+        32: aload_0
+        33: getfield      #43                 // Field levelHeightAccessor:Lnet/minecraft/world/level/LevelHeightAccessor;
+        36: invokeinterface #52,  1           // InterfaceMethod net/minecraft/world/level/LevelHeightAccessor.getMaxSection:()I
+        41: if_icmpgt     72
+        44: aload_0
+        45: getfield      #54                 // Field storage:Lit/unimi/dsi/fastutil/longs/Long2ObjectMap;
+        48: aload_1
+        49: getfield      #60                 // Field net/minecraft/world/level/ChunkPos.x:I
+        52: iload_2
+        53: aload_1
+        54: getfield      #63                 // Field net/minecraft/world/level/ChunkPos.z:I
+        57: invokestatic  #69                 // Method net/minecraft/core/SectionPos.asLong:(III)J
+        60: invokeinterface #75,  3           // InterfaceMethod it/unimi/dsi/fastutil/longs/Long2ObjectMap.remove:(J)Ljava/lang/Object;
+        65: pop
+        66: iinc          2, 1
+        69: goto          31
+        72: return
+      StackMapTable: number_of_entries = 4
+        frame_type = 7 /* same */
+        frame_type = 8 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 40
+      LineNumberTable:
+        line 27: 0
+        line 29: 7
+        line 30: 15
+        line 33: 16
+        line 34: 21
+        line 35: 44
+        line 34: 66
+        line 37: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           31      41     2     i   I
+            0      73     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage;
+            0      73     1   pos   Lnet/minecraft/world/level/ChunkPos;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Lcom/ishland/c2me/rewrites/chunksystem/mixin/MixinSerializingRegionBasedStorage<TR;>;
+    MethodParameters:
+      Name                           Flags
+      pos
+}
+Signature: #3                           // <R:Ljava/lang/Object;>Ljava/lang/Object;Lcom/ishland/c2me/rewrites/chunksystem/common/ducks/IPOIUnloading;
+SourceFile: "MixinSerializingRegionBasedStorage.java"
+RuntimeInvisibleAnnotations:
+  0: #9(#10=[c#11])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/chunk/storage/SectionStorage;]
+    )

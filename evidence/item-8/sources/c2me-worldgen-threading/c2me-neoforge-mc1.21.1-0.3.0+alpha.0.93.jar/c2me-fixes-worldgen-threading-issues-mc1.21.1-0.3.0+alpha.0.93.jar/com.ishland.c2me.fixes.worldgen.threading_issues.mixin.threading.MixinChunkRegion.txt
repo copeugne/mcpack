@@ -1,0 +1,222 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion.class
+  Last modified Jan 1, 1980; size 2211 bytes
+  SHA-256 checksum 3309a2a434f4c577e7435d3a07c3345c4df84e5ea83a2f039e3c279cde9adeb2
+  Compiled from "MixinChunkRegion.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinChunkRegion
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion
+   #2 = Class              #1             // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinChunkRegion.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/level/WorldGenRegion;
+   #9 = Utf8               LOGGER
+  #10 = Utf8               Lorg/slf4j/Logger;
+  #11 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #13 = Utf8               generatingStep
+  #14 = Utf8               Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #15 = Utf8               currentlyGenerating
+  #16 = Utf8               Ljava/util/function/Supplier;
+  #17 = Utf8               Ljava/util/function/Supplier<Ljava/lang/String;>;
+  #18 = Utf8               <init>
+  #19 = Utf8               ()V
+  #20 = NameAndType        #18:#19        // "<init>":()V
+  #21 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #22 = Utf8               this
+  #23 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion;
+  #24 = Utf8               preventDropItem
+  #25 = Utf8               (ZLnet/minecraft/core/BlockPos;ZLnet/minecraft/world/entity/Entity;I)Z
+  #26 = Utf8               drop
+  #27 = Utf8               pos
+  #28 = Utf8               drop1
+  #29 = Utf8               breakingEntity
+  #30 = Utf8               maxUpdateDepth
+  #31 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #32 = Utf8               method
+  #33 = Utf8               breakBlock
+  #34 = Utf8               at
+  #35 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #36 = Utf8               HEAD
+  #37 = Utf8               argsOnly
+  #38 = Integer            1
+  #39 = NameAndType        #9:#10         // LOGGER:Lorg/slf4j/Logger;
+  #40 = Fieldref           #2.#39         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion.LOGGER:Lorg/slf4j/Logger;
+  #41 = Utf8               Detected breakBlock item drop on pos {}, status: {}, currently generating: {}
+  #42 = String             #41            // Detected breakBlock item drop on pos {}, status: {}, currently generating: {}
+  #43 = NameAndType        #13:#14        // generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #44 = Fieldref           #2.#43         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion.generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+  #45 = Utf8               net/minecraft/world/level/chunk/status/ChunkStep
+  #46 = Class              #45            // net/minecraft/world/level/chunk/status/ChunkStep
+  #47 = Utf8               targetStatus
+  #48 = Utf8               ()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #49 = NameAndType        #47:#48        // targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #50 = Methodref          #46.#49        // net/minecraft/world/level/chunk/status/ChunkStep.targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+  #51 = NameAndType        #15:#16        // currentlyGenerating:Ljava/util/function/Supplier;
+  #52 = Fieldref           #2.#51         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion.currentlyGenerating:Ljava/util/function/Supplier;
+  #53 = Utf8               unknown
+  #54 = String             #53            // unknown
+  #55 = Utf8               net/minecraft/core/BlockPos
+  #56 = Class              #55            // net/minecraft/core/BlockPos
+  #57 = Utf8               net/minecraft/world/entity/Entity
+  #58 = Class              #57            // net/minecraft/world/entity/Entity
+  #59 = Utf8               org/slf4j/Logger
+  #60 = Class              #59            // org/slf4j/Logger
+  #61 = Utf8               java/lang/String
+  #62 = Class              #61            // java/lang/String
+  #63 = Utf8               [Ljava/lang/Object;
+  #64 = Class              #63            // "[Ljava/lang/Object;"
+  #65 = Utf8               java/util/function/Supplier
+  #66 = Class              #65            // java/util/function/Supplier
+  #67 = Utf8               get
+  #68 = Utf8               ()Ljava/lang/Object;
+  #69 = NameAndType        #67:#68        // get:()Ljava/lang/Object;
+  #70 = InterfaceMethodref #66.#69        // java/util/function/Supplier.get:()Ljava/lang/Object;
+  #71 = Utf8               error
+  #72 = Utf8               (Ljava/lang/String;[Ljava/lang/Object;)V
+  #73 = NameAndType        #71:#72        // error:(Ljava/lang/String;[Ljava/lang/Object;)V
+  #74 = InterfaceMethodref #60.#73        // org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+  #75 = Utf8               Z
+  #76 = Utf8               Lnet/minecraft/core/BlockPos;
+  #77 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #78 = Utf8               I
+  #79 = Utf8               RuntimeVisibleAnnotations
+  #80 = Utf8               Signature
+  #81 = Utf8               Code
+  #82 = Utf8               LineNumberTable
+  #83 = Utf8               LocalVariableTable
+  #84 = Utf8               StackMapTable
+  #85 = Utf8               MethodParameters
+  #86 = Utf8               SourceFile
+  #87 = Utf8               RuntimeInvisibleAnnotations
+{
+  private static org.slf4j.Logger LOGGER;
+    descriptor: Lorg/slf4j/Logger;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  private net.minecraft.world.level.chunk.status.ChunkStep generatingStep;
+    descriptor: Lnet/minecraft/world/level/chunk/status/ChunkStep;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  private java.util.function.Supplier<java.lang.String> currentlyGenerating;
+    descriptor: Ljava/util/function/Supplier;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #17                          // Ljava/util/function/Supplier<Ljava/lang/String;>;
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinChunkRegion();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #21                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion;
+
+  private boolean preventDropItem(boolean, net.minecraft.core.BlockPos, boolean, net.minecraft.world.entity.Entity, int);
+    descriptor: (ZLnet/minecraft/core/BlockPos;ZLnet/minecraft/world/entity/Entity;I)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=6, locals=6, args_size=6
+         0: iload_1
+         1: ifeq          56
+         4: getstatic     #40                 // Field LOGGER:Lorg/slf4j/Logger;
+         7: ldc           #42                 // String Detected breakBlock item drop on pos {}, status: {}, currently generating: {}
+         9: iconst_3
+        10: anewarray     #4                  // class java/lang/Object
+        13: dup
+        14: iconst_0
+        15: aload_2
+        16: aastore
+        17: dup
+        18: iconst_1
+        19: aload_0
+        20: getfield      #44                 // Field generatingStep:Lnet/minecraft/world/level/chunk/status/ChunkStep;
+        23: invokevirtual #50                 // Method net/minecraft/world/level/chunk/status/ChunkStep.targetStatus:()Lnet/minecraft/world/level/chunk/status/ChunkStatus;
+        26: aastore
+        27: dup
+        28: iconst_2
+        29: aload_0
+        30: getfield      #52                 // Field currentlyGenerating:Ljava/util/function/Supplier;
+        33: ifnonnull     41
+        36: ldc           #54                 // String unknown
+        38: goto          50
+        41: aload_0
+        42: getfield      #52                 // Field currentlyGenerating:Ljava/util/function/Supplier;
+        45: invokeinterface #70,  1           // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        50: aastore
+        51: invokeinterface #74,  3           // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;[Ljava/lang/Object;)V
+        56: iconst_0
+        57: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 255 /* full_frame */
+          offset_delta = 41
+          locals = [ class com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion, int, class net/minecraft/core/BlockPos, int, class net/minecraft/world/entity/Entity, int ]
+          stack = [ class org/slf4j/Logger, class java/lang/String, class "[Ljava/lang/Object;", class "[Ljava/lang/Object;", int ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 8
+          locals = [ class com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion, int, class net/minecraft/core/BlockPos, int, class net/minecraft/world/entity/Entity, int ]
+          stack = [ class org/slf4j/Logger, class java/lang/String, class "[Ljava/lang/Object;", class "[Ljava/lang/Object;", int, class java/lang/Object ]
+        frame_type = 5 /* same */
+      LineNumberTable:
+        line 32: 0
+        line 33: 4
+        line 34: 23
+        line 33: 51
+        line 36: 56
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      58     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinChunkRegion;
+            0      58     1  drop   Z
+            0      58     2   pos   Lnet/minecraft/core/BlockPos;
+            0      58     3 drop1   Z
+            0      58     4 breakingEntity   Lnet/minecraft/world/entity/Entity;
+            0      58     5 maxUpdateDepth   I
+    RuntimeVisibleAnnotations:
+      0: #31(#32=[s#33],#34=@#35(#7=s#36),#37=Z#38)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["breakBlock"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )
+          argsOnly=true
+        )
+    MethodParameters:
+      Name                           Flags
+      drop
+      pos
+      drop1
+      breakingEntity
+      maxUpdateDepth
+}
+SourceFile: "MixinChunkRegion.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/WorldGenRegion;]
+    )

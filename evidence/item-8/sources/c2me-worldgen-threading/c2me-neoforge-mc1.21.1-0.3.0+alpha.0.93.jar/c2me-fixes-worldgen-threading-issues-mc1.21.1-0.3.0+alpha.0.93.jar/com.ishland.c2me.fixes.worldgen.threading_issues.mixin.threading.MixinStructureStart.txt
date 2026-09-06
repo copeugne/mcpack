@@ -1,0 +1,146 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart.class
+  Last modified Jan 1, 1980; size 1444 bytes
+  SHA-256 checksum 34205ac9b5321ba22c8ee2432bc7a994e905c6f9fe998a50e038e15a1c7d229d
+  Compiled from "MixinStructureStart.java"
+public class com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructureStart
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart
+   #2 = Class              #1             // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinStructureStart.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #9 = Utf8               referencesAtomic
+  #10 = Utf8               Ljava/util/concurrent/atomic/AtomicInteger;
+  #11 = Utf8               <init>
+  #12 = Utf8               ()V
+  #13 = NameAndType        #11:#12        // "<init>":()V
+  #14 = Methodref          #4.#13         // java/lang/Object."<init>":()V
+  #15 = Utf8               java/util/concurrent/atomic/AtomicInteger
+  #16 = Class              #15            // java/util/concurrent/atomic/AtomicInteger
+  #17 = Methodref          #16.#13        // java/util/concurrent/atomic/AtomicInteger."<init>":()V
+  #18 = NameAndType        #9:#10         // referencesAtomic:Ljava/util/concurrent/atomic/AtomicInteger;
+  #19 = Fieldref           #2.#18         // com/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart.referencesAtomic:Ljava/util/concurrent/atomic/AtomicInteger;
+  #20 = Utf8               this
+  #21 = Utf8               Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart;
+  #22 = Utf8               redirectGetReferences
+  #23 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/StructureStart;)I
+  #24 = Utf8               structureStart
+  #25 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #26 = Utf8               method
+  #27 = Utf8               *
+  #28 = Utf8               at
+  #29 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #30 = Utf8               FIELD
+  #31 = Utf8               target
+  #32 = Utf8               Lnet/minecraft/structure/StructureStart;references:I
+  #33 = Utf8               opcode
+  #34 = Integer            180
+  #35 = Utf8               Lorg/spongepowered/asm/mixin/Dynamic;
+  #36 = Utf8               get
+  #37 = Utf8               ()I
+  #38 = NameAndType        #36:#37        // get:()I
+  #39 = Methodref          #16.#38        // java/util/concurrent/atomic/AtomicInteger.get:()I
+  #40 = Utf8               addReference
+  #41 = Utf8               Lorg/spongepowered/asm/mixin/Overwrite;
+  #42 = Utf8               incrementAndGet
+  #43 = NameAndType        #42:#37        // incrementAndGet:()I
+  #44 = Methodref          #16.#43        // java/util/concurrent/atomic/AtomicInteger.incrementAndGet:()I
+  #45 = Utf8               Code
+  #46 = Utf8               LineNumberTable
+  #47 = Utf8               LocalVariableTable
+  #48 = Utf8               RuntimeVisibleAnnotations
+  #49 = Utf8               RuntimeInvisibleAnnotations
+  #50 = Utf8               MethodParameters
+  #51 = Utf8               SourceFile
+{
+  private final java.util.concurrent.atomic.AtomicInteger referencesAtomic;
+    descriptor: Ljava/util/concurrent/atomic/AtomicInteger;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+
+  public com.ishland.c2me.fixes.worldgen.threading_issues.mixin.threading.MixinStructureStart();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #16                 // class java/util/concurrent/atomic/AtomicInteger
+         8: dup
+         9: invokespecial #17                 // Method java/util/concurrent/atomic/AtomicInteger."<init>":()V
+        12: putfield      #19                 // Field referencesAtomic:Ljava/util/concurrent/atomic/AtomicInteger;
+        15: return
+      LineNumberTable:
+        line 14: 0
+        line 16: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      16     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart;
+
+  private int redirectGetReferences(net.minecraft.world.level.levelgen.structure.StructureStart);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/StructureStart;)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #19                 // Field referencesAtomic:Ljava/util/concurrent/atomic/AtomicInteger;
+         4: invokevirtual #39                 // Method java/util/concurrent/atomic/AtomicInteger.get:()I
+         7: ireturn
+      LineNumberTable:
+        line 21: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       8     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart;
+            0       8     1 structureStart   Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+    RuntimeVisibleAnnotations:
+      0: #25(#26=[s#27],#28=@#29(#7=s#30,#31=s#32,#33=I#34))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["*"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/structure/StructureStart;references:I"
+            opcode=180
+          )
+        )
+    RuntimeInvisibleAnnotations:
+      0: #35()
+        org.spongepowered.asm.mixin.Dynamic
+    MethodParameters:
+      Name                           Flags
+      structureStart
+
+  public void addReference();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #19                 // Field referencesAtomic:Ljava/util/concurrent/atomic/AtomicInteger;
+         4: invokevirtual #44                 // Method java/util/concurrent/atomic/AtomicInteger.incrementAndGet:()I
+         7: pop
+         8: return
+      LineNumberTable:
+        line 30: 0
+        line 31: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Lcom/ishland/c2me/fixes/worldgen/threading_issues/mixin/threading/MixinStructureStart;
+    RuntimeVisibleAnnotations:
+      0: #41()
+        org.spongepowered.asm.mixin.Overwrite
+}
+SourceFile: "MixinStructureStart.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/StructureStart;]
+    )

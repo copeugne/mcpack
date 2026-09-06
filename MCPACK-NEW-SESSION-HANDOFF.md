@@ -6,6 +6,66 @@
 
 ### Continuation update - 2026-09-06
 
+C2ME membership is resolved with no independent generated family. Reuse all
+52 C2ME source captures (259 disassemblies), ending with remaining-hook
+increments 7afc4e46 through 241de3bd and command/plugin boundary 56cbfb4f.
+The complete provider and threading evidence tests both pass, as do scoped
+quality checks. Preserve existing generation/lifecycle changes, conditional
+activation limits and the null scheduling entry. Stop all generic C2ME
+helper tracing. Whole providers: 122 resolved, 14 open. Working groups remain
+410; provisional Moog decisions remain 100. Continue the other providers,
+then canonical membership, before detailed attributes. Final Item 8 gate,
+clean review and main merge remain open.
+
+
+C2ME startup delegates are resolved in 914afefd: eight configuration/listener
+classes read settings and update view distance, with no family. 9afeb260 adds
+all 27 declared common hooks from opts-allocs, opts-dfc, opts-math and
+opts-natives-math. Their roles are existing ore/surface/noise allocation and
+computation. Every capture reproduces exactly; extractor quality checks pass.
+Do not expand into numerical, compiler, native-binding or network audits.
+Remaining declared hook groups: base (including accessors), client-uncapvd,
+fixes-general-threading-issues, fixes-worldgen-vanilla-bugs, notickvd,
+opts-chunkio, opts-scheduling, rewrites-chunk-serializer, rewrites-chunk-system,
+rewrites-chunkio, server-utils and threading-lighting. Also reconcile bundled
+library entry roles. The scheduling declaration contains a null list entry;
+preserve it without inventing a target class. Reuse all existing C2ME captures.
+Whole providers: 121 resolved, 15 open. Working groups: 410; explicitly
+provisional Moog decisions: 100. Family membership still comes before
+attributes. Final Item 8 gate, clean review and main delivery remain open.
+
+
+C2ME continued in 5a44fce9 (26 entries/plugins across the other 18 modules),
+7658d2f6 (ten pool/generation hooks) and cb594f9b (existing pool codec wrapper).
+All captures reproduce exactly; extractor quality checks pass. These establish
+settings, supplied-chunk serialization, existing random/terrain/biome behavior
+and executor redirection, with no new family from the inspected boundaries.
+The pool wrapper is resolved: it locks and delegates the existing codec.
+Do not inspect its ManagedLocker helper or generic serializer internals
+without a relevant caller. Continue remaining hook roles, startup Config and
+view-distance listener delegates, and bundled-library entries. Use the existing
+132-reference provider index as a reconciliation aid, not a mandate to
+disassemble every helper. The remaining index points to accessors, density
+functions/noise, surface/ore computation and chunk lifecycle/persistence.
+Whole providers remain 121 resolved, 15 open; working groups 410 and provisional
+Moog decisions 100. Provider membership and canonical grouping remain the next
+deliverable before attributes. No final Item 8 gate, review or main merge.
+
+
+C2ME is partially inspected, not a resolved provider. Reuse 957658fa (outer
+startup and base module selection), ff824a0b (all worldgen-threading hooks) and
+cb33666e (their transformation/state delegates). The module changes existing
+structure state, with no independent family. Its focused payload/source test
+and scoped quality checks pass; all captures reproduce exactly. Do not audit
+generic debug/config/executor internals. Continue the other module entries and
+generation-related hooks, including chunkio pool-element access, worldgen
+optimizations and the rewritten chunk generator. Keep family membership first.
+Whole providers remain 121 resolved, 15 open; 410 working groups and 100
+provisional Moog decisions remain. No final count, Item 8 gate, clean review or
+main merge is established. The preceding user-response turn only restated
+status; this turn delivered the C2ME source evidence and module disposition.
+
+
 Amendments membership is resolved from 4ece1d82, e248456f and 97966218, with
 Moonlight's existing shared-plugin capture reused. No independent family;
 retain cauldron replacements in existing structure tags as content modifiers.

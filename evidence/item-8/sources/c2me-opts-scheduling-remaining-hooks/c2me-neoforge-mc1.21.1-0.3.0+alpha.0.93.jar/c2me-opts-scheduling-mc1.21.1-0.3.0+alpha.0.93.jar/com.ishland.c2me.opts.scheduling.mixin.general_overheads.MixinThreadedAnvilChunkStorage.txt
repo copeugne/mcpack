@@ -1,0 +1,134 @@
+Classfile c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar!/META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar!/com/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage.class
+  Last modified Jan 1, 1980; size 1351 bytes
+  SHA-256 checksum 6b12a3986a81464b2f12a7729fdb20f590a4b6c9a08ae7da66f59820e1944a8f
+  Compiled from "MixinThreadedAnvilChunkStorage.java"
+public class com.ishland.c2me.opts.scheduling.mixin.general_overheads.MixinThreadedAnvilChunkStorage
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // com/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               com/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage
+   #2 = Class              #1             // com/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               MixinThreadedAnvilChunkStorage.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/server/level/ChunkMap;
+   #9 = Utf8               unloadQueue
+  #10 = Utf8               Ljava/util/Queue;
+  #11 = Utf8               Ljava/util/Queue<Ljava/lang/Runnable;>;
+  #12 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = NameAndType        #14:#15        // "<init>":()V
+  #17 = Methodref          #4.#16         // java/lang/Object."<init>":()V
+  #18 = Utf8               this
+  #19 = Utf8               Lcom/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage;
+  #20 = Utf8               redirectUnloadSize
+  #21 = Utf8               (Ljava/util/Queue;)I
+  #22 = Utf8               (Ljava/util/Queue<*>;)I
+  #23 = Utf8               queue
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #25 = Utf8               method
+  #26 = Utf8               unloadChunks
+  #27 = Utf8               at
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #29 = Utf8               INVOKE
+  #30 = Utf8               target
+  #31 = Utf8               Ljava/util/Queue;size()I
+  #32 = NameAndType        #9:#10         // unloadQueue:Ljava/util/Queue;
+  #33 = Fieldref           #2.#32         // com/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage.unloadQueue:Ljava/util/Queue;
+  #34 = Integer            2147483647
+  #35 = Utf8               java/util/Queue
+  #36 = Class              #35            // java/util/Queue
+  #37 = Utf8               size
+  #38 = Utf8               ()I
+  #39 = NameAndType        #37:#38        // size:()I
+  #40 = InterfaceMethodref #36.#39        // java/util/Queue.size:()I
+  #41 = Utf8               Ljava/util/Queue<*>;
+  #42 = Utf8               Signature
+  #43 = Utf8               RuntimeVisibleAnnotations
+  #44 = Utf8               Code
+  #45 = Utf8               LineNumberTable
+  #46 = Utf8               LocalVariableTable
+  #47 = Utf8               StackMapTable
+  #48 = Utf8               LocalVariableTypeTable
+  #49 = Utf8               MethodParameters
+  #50 = Utf8               SourceFile
+  #51 = Utf8               RuntimeInvisibleAnnotations
+{
+  private java.util.Queue<java.lang.Runnable> unloadQueue;
+    descriptor: Ljava/util/Queue;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #11                          // Ljava/util/Queue<Ljava/lang/Runnable;>;
+    RuntimeVisibleAnnotations:
+      0: #12()
+        org.spongepowered.asm.mixin.Shadow
+      1: #13()
+        org.spongepowered.asm.mixin.Final
+
+  public com.ishland.c2me.opts.scheduling.mixin.general_overheads.MixinThreadedAnvilChunkStorage();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 13: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage;
+
+  private int redirectUnloadSize(java.util.Queue<?>);
+    descriptor: (Ljava/util/Queue;)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #33                 // Field unloadQueue:Ljava/util/Queue;
+         4: aload_1
+         5: if_acmpne     11
+         8: ldc           #34                 // int 2147483647
+        10: ireturn
+        11: aload_1
+        12: invokeinterface #40,  1           // InterfaceMethod java/util/Queue.size:()I
+        17: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 11 /* same */
+      LineNumberTable:
+        line 19: 0
+        line 20: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      18     0  this   Lcom/ishland/c2me/opts/scheduling/mixin/general_overheads/MixinThreadedAnvilChunkStorage;
+            0      18     1 queue   Ljava/util/Queue;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      18     1 queue   Ljava/util/Queue<*>;
+    Signature: #22                          // (Ljava/util/Queue<*>;)I
+    RuntimeVisibleAnnotations:
+      0: #24(#25=[s#26],#27=@#28(#7=s#29,#30=s#31))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["unloadChunks"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/Queue;size()I"
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      queue
+}
+SourceFile: "MixinThreadedAnvilChunkStorage.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ChunkMap;]
+    )
