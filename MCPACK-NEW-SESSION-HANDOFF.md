@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-06
 
+Latest checkpoints: IDAS provider scope closed at 26cfbef; Better Witch Huts
+closed at 4e96ee2. Both are pushed and remote-ref verified. Current census is
+61 resolved providers and 75 open. IDAS's 84 roots, 214 pools and 259 templates
+are accounted for, including named compatibility branches, 21 disconnected
+pools, 23 disconnected templates and missing pools on three roots. Its Labyrinth
+hooks modify an existing encounter. Better Witch Huts has two existing roots,
+three pools and six templates, all connected without missing references; its
+five processors are component modifiers. Exact source captures, disposition
+checks, limitations and passing commands are in evidence/item-8/provider-scope.md.
+Do not repeat these closures. Next inspect YUNG's Better Nether Fortresses using
+the existing fortress-suppression evidence. Keep shared API dependencies and
+canonical family grouping open; do not resume detailed attributes yet.
+
 Latest checkpoint at 086bbc8: Integrated Villages provider scope is resolved,
 pushed and remote-ref verified. Five focused cases, Ruff and Basedpyright pass.
 Current queue: 59 resolved providers, 77 open. All twelve existing roots, 421
