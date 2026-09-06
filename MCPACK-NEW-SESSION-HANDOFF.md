@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-06
 
+Resourceful Lib membership is resolved with no independent family. Source
+increments 418a89d6, 47a79be9 and 687f2e87 bind all entry/hook and direct startup
+roles. Six classes reproduce exactly; the focused test and quality checks
+pass. Whole providers: 125 resolved, 11 open. Working groups remain 410 and
+explicit provisional Moog decisions remain 100. Stop Resourceful Lib generic
+API, network and storage tracing. Continue the remaining provider queue and
+canonical grouping before detailed attributes. Final Item 8 acceptance,
+clean review and main merge remain incomplete.
+
+
 Comforts membership is resolved with no independent family. Source increments
 431d2335 and 55948d4a bind sleeping-equipment registration, sleep events and
 nested SpectreLib config entries. All captures reproduce exactly; the focused
