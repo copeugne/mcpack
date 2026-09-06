@@ -24,6 +24,8 @@ def test_creating_space_packaged_component_partition() -> None:
         k: set() for k in ("worldgen/structure", "worldgen/template_pool", "structure")
     }
     features: dict[str, str] = {}
+    carvers: dict[str, str] = {}
+    biome_carvers: dict[str, JsonValue] = {}
     with ZipFile(source.path) as archive:
         names = [n for n in archive.namelist() if not n.endswith("/")]
         assert len(names) == len(set(names)) == 1645
@@ -38,6 +40,14 @@ def test_creating_space_packaged_component_partition() -> None:
             if found:
                 data = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
                 features[found[0]] = cast("str", data["type"])
+            found = resource_identity(name, "worldgen/configured_carver")
+            if found:
+                data = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+                carvers[found[0]] = cast("str", data["type"])
+            found = resource_identity(name, "worldgen/biome")
+            if found:
+                data = cast("dict[str, JsonValue]", json.loads(archive.read(name)))
+                biome_carvers[found[0]] = data["carvers"]
     roots = groups["worldgen/structure"]
     assert roots == {
         "creatingspace:mars/underground_outpost_1", "creatingspace:moon/abandoned_outpost",
@@ -50,6 +60,20 @@ def test_creating_space_packaged_component_partition() -> None:
         "creatingspace:moon/cobalt_ore": "minecraft:ore",
         "creatingspace:moon/nickel_ore": "minecraft:ore",
         "creatingspace:nickel_overworld_replacement": "minecraft:ore",
+    }
+    assert carvers == {
+        "creatingspace:mars_cave": "minecraft:cave",
+        "creatingspace:moon_cave": "minecraft:cave",
+        "creatingspace:moon_crater": "creatingspace:crater",
+    }
+    assert biome_carvers == {
+        "creatingspace:mars_cave": {"air": "creatingspace:mars_cave"},
+        "creatingspace:mars_plains": {"air": "creatingspace:mars_cave"},
+        "creatingspace:moon_cave": {"air": ["creatingspace:moon_crater"]},
+        "creatingspace:moon_plains": {"air": ["creatingspace:moon_crater"]},
+        "creatingspace:space": {},
+        "creatingspace:venus": {"air": ["minecraft:canyon"]},
+        "creatingspace:venus_hellground": {"air": ["minecraft:canyon"]},
     }
     raw = Path("evidence/item-8/sources/pool-traces-content.json.gz").read_bytes()
     assert hashlib.sha256(raw).hexdigest() == (
