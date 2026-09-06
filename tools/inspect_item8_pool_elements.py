@@ -1789,6 +1789,7 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfSoapItemMixin.class",
     "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfWrenchMixin.class",
     "net/mehvahdjukaar/moonlight/api/misc/SimpleMixinPlugin.class",
+    "net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
