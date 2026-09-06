@@ -6,6 +6,10 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory now matches decisions delivered at 0eea8158 and reproduces exactly.
+Working groups: 406. Explicit provisional remainder: 40, all Voyager. Next are
+the eight houses already rendered and inspected in voyager-building-views.
+
 Voyager tower/outbuilding decisions resolve nine explicit provisionals. Red and
 jungle towers merge as tiered-tower variants with full definitions/components;
 other four towers and three outbuildings remain distinct. Sixteen affected cases
