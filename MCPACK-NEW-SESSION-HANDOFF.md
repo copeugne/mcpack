@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Create common dispatch and schematic construction roles are now recorded.
+Sources 65cb9b2 and b546705 independently reproduce; three focused cases and
+scoped quality checks pass. A concrete dynamic datapack call was found in
+ModBusEvents: RuntimeDataGenerator emits recipe/tag inputs, with serialization
+in RuntimeDataGenerator$StandardBuilder still to inspect. Other Create work:
+remaining annotated/common mixin roles, Ponder and embedded-library roles.
+Do not repeat common dispatch, schematic or ore interpretation. Census remains
+89 resolved, 47 open. No runtime or capture process is live.
+
 Create main entry, GameTest template construction, schematic processor
 registration and mixin plugin are captured in 9dcbd3c (extractor cd1fefb),
 independently reproduced and bound by two passing focused cases. GameTest loader

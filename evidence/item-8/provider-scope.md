@@ -5240,3 +5240,38 @@ the commands in the preceding checkpoint. Create remains OPEN. Continue its
 common-event/mixin membership roles, schematic/Ponder consumers and embedded
 library entries. Do not repeat the ore or GameTest loader interpretation.
 Census remains 89 resolved, 47 open. No runtime or capture process is live.
+
+### Create common dispatch and schematic construction
+
+Source 65cb9b2 (extractor 76ac38c) preserves CommonEvents, ModBusEvents and
+three schematic consumers; source b546705 (extractor 6c26595) preserves the
+observed RuntimeDataGenerator. Both independent captures reproduce exactly.
+Their identities hashes are bound in test_create_provider_scope.py.
+
+CommonEvents dispatches existing contraption, minecart, train, logistics,
+redstone and toolbox state updates, player synchronization, command registration,
+recipe/belt reload listeners and lifecycle cleanup. These dispatch roles do not
+add another authored-site candidate. Do not expand into ordinary machine or
+vehicle simulation internals without a concrete membership question.
+
+ServerSchematicLoader accepts a ServerPlayer upload into the uploaded-schematic
+area and associates it with a schematic table. SchematicPrinter requires a
+deployed schematic ItemStack and anchor; it loads the supplied template into a
+SchematicLevel, prepares transformed block/entity targets and material requirements.
+SchematicProcessor handles supplied template NBT and entity filtering. This is
+player construction, not an additional natural-generation family. This scope
+finding is not a security or correctness audit of schematic upload/printing.
+
+ModBusEvents also adds create:dynamic_data through RuntimeDataGenerator. That
+concrete call requires inspection beyond the packaged JSON catalog, using the
+existing extractor rather than a new measurement system. The captured writer
+iterates registered items, constructs cutting/washing recipes and item tags,
+then inserts them into the dynamic pack. Recipe serialization is delegated to
+RuntimeDataGenerator$StandardBuilder and remains the exact uninspected output
+boundary. Preserve that outstanding check; do not claim whole dynamic-pack closure.
+
+Three focused cases pass (0.22s), with scoped Ruff/Basedpyright passing using
+the existing commands above. Create remains OPEN for the dynamic recipe output
+boundary, other annotated/common mixin entry roles, Ponder and embedded-library
+roles. Reuse completed common dispatch and schematic interpretation. Census is
+89 resolved and 47 open. No runtime or source capture process is live.
