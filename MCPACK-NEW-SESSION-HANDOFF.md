@@ -15,7 +15,7 @@ empty packaged tags are extended by consuming providers; do not call their
 effective values empty. Optional weight injection (upper bound 5000, require=0)
 is a declaration, not confirmed execution. Full disposition is in provider-scope.md.
 
-Next reconcile Quark using its existing sixteen source directories listed in
+Next reconcile Quark using its existing source directories listed in
 the provider queue, its recorded nonregistry families and frozen module state.
 Do not recapture known generators or reopen completed YUNG provider work.
 Finish its remaining packaged-resource and generation-entry coverage, then the
