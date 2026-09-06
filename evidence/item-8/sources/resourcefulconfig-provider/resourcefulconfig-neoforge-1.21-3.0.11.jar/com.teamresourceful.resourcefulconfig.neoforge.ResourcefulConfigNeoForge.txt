@@ -1,0 +1,39 @@
+Compiled from "ResourcefulConfigNeoForge.java"
+public class com.teamresourceful.resourcefulconfig.neoforge.ResourcefulConfigNeoForge {
+  public com.teamresourceful.resourcefulconfig.neoforge.ResourcefulConfigNeoForge(net.neoforged.bus.api.IEventBus, net.neoforged.fml.javafmlmod.FMLModContainer);
+    Code:
+       0: aload_0
+       1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+       4: invokestatic  #25                 // Method com/teamresourceful/resourcefulconfig/web/server/WebServer.start:()V
+       7: invokestatic  #31                 // Method net/neoforged/fml/loading/FMLLoader.getDist:()Lnet/neoforged/api/distmarker/Dist;
+      10: invokevirtual #37                 // Method net/neoforged/api/distmarker/Dist.isDedicatedServer:()Z
+      13: ifeq          19
+      16: invokestatic  #42                 // Method com/teamresourceful/resourcefulconfig/common/compat/CompatabilityLayers.initServer:()V
+      19: invokestatic  #31                 // Method net/neoforged/fml/loading/FMLLoader.getDist:()Lnet/neoforged/api/distmarker/Dist;
+      22: invokevirtual #49                 // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+      25: ifeq          32
+      28: aload_2
+      29: invokestatic  #55                 // Method com/teamresourceful/resourcefulconfig/neoforge/ResourcefulConfigNeoForgeClient.onClientInit:(Lnet/neoforged/fml/ModContainer;)V
+      32: aload_1
+      33: invokedynamic #74,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      38: invokeinterface #78,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      43: getstatic     #84                 // Field net/neoforged/neoforge/common/NeoForge.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+      46: invokedynamic #91,  0             // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+      51: invokeinterface #78,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      56: return
+
+  public static void onCommonSetup(net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent);
+    Code:
+       0: invokestatic  #31                 // Method net/neoforged/fml/loading/FMLLoader.getDist:()Lnet/neoforged/api/distmarker/Dist;
+       3: invokevirtual #49                 // Method net/neoforged/api/distmarker/Dist.isClient:()Z
+       6: ifeq          12
+       9: invokestatic  #98                 // Method com/teamresourceful/resourcefulconfig/neoforge/ResourcefulConfigNeoForgeClient.onClientComplete:()V
+      12: return
+
+  public static void onServerStarted(net.neoforged.neoforge.event.server.ServerStartedEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #105                // Method net/neoforged/neoforge/event/server/ServerStartedEvent.getServer:()Lnet/minecraft/server/MinecraftServer;
+       4: invokestatic  #111                // Method com/teamresourceful/resourcefulconfig/common/compat/minecraft/DedicatedServerInfo.setServer:(Lnet/minecraft/server/MinecraftServer;)V
+       7: return
+}
