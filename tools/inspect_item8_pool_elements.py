@@ -224,6 +224,9 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "rbasamoyai/createbigcannons/CreateBigCannons.class",
+    "rbasamoyai/createbigcannons/CBCCommonNeoForgeEvents.class",
+    "rbasamoyai/createbigcannons/CBCModsNeoForge.class",
     "rbasamoyai/createbigcannons/mixin/ContextAwareReloadListenerAccessor.class",
     "rbasamoyai/createbigcannons/mixin/EntityMixin.class",
     "rbasamoyai/createbigcannons/mixin/ExplosionMixin.class",
