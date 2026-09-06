@@ -1,0 +1,1260 @@
+Classfile owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar!/io/wispforest/owo/mixin/ScreenHandlerMixin.class
+  Last modified Jan 1, 1980; size 11709 bytes
+  SHA-256 checksum faf7fc88b29cb1672bcb11ed08f1a55e809ac5c6050eabec9074f94a02faa2d5
+  Compiled from "ScreenHandlerMixin.java"
+public abstract class io.wispforest.owo.mixin.ScreenHandlerMixin implements io.wispforest.owo.client.screens.OwoScreenHandler,io.wispforest.owo.util.pond.OwoScreenHandlerExtension
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // io/wispforest/owo/mixin/ScreenHandlerMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 2, fields: 7, methods: 15, attributes: 4
+Constant pool:
+    #1 = Utf8               io/wispforest/owo/mixin/ScreenHandlerMixin
+    #2 = Class              #1            // io/wispforest/owo/mixin/ScreenHandlerMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               io/wispforest/owo/client/screens/OwoScreenHandler
+    #6 = Class              #5            // io/wispforest/owo/client/screens/OwoScreenHandler
+    #7 = Utf8               io/wispforest/owo/util/pond/OwoScreenHandlerExtension
+    #8 = Class              #7            // io/wispforest/owo/util/pond/OwoScreenHandlerExtension
+    #9 = Utf8               ScreenHandlerMixin.java
+   #10 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #11 = Utf8               value
+   #12 = Utf8               Lnet/minecraft/world/inventory/AbstractContainerMenu;
+   #13 = Utf8               io/wispforest/endec/SerializationAttribute$Instance
+   #14 = Class              #13           // io/wispforest/endec/SerializationAttribute$Instance
+   #15 = Utf8               io/wispforest/endec/SerializationAttribute
+   #16 = Class              #15           // io/wispforest/endec/SerializationAttribute
+   #17 = Utf8               Instance
+   #18 = Utf8               io/wispforest/owo/client/screens/ScreenInternals$LocalPacket
+   #19 = Class              #18           // io/wispforest/owo/client/screens/ScreenInternals$LocalPacket
+   #20 = Utf8               io/wispforest/owo/client/screens/ScreenInternals
+   #21 = Class              #20           // io/wispforest/owo/client/screens/ScreenInternals
+   #22 = Utf8               LocalPacket
+   #23 = Utf8               io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket
+   #24 = Class              #23           // io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket
+   #25 = Utf8               SyncPropertiesPacket
+   #26 = Utf8               java/lang/invoke/MethodHandles$Lookup
+   #27 = Class              #26           // java/lang/invoke/MethodHandles$Lookup
+   #28 = Utf8               java/lang/invoke/MethodHandles
+   #29 = Class              #28           // java/lang/invoke/MethodHandles
+   #30 = Utf8               Lookup
+   #31 = Utf8               suppressRemoteUpdates
+   #32 = Utf8               Z
+   #33 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #34 = Utf8               owo$properties
+   #35 = Utf8               Ljava/util/List;
+   #36 = Utf8               Ljava/util/List<Lio/wispforest/owo/client/screens/SyncedProperty<*>;>;
+   #37 = Utf8               owo$messages
+   #38 = Utf8               Ljava/util/Map;
+   #39 = Utf8               Ljava/util/Map<Ljava/lang/Class<*>;Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<*>;>;
+   #40 = Utf8               owo$clientboundMessages
+   #41 = Utf8               Ljava/util/List<Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<*>;>;
+   #42 = Utf8               owo$serverboundMessages
+   #43 = Utf8               owo$player
+   #44 = Utf8               Lnet/minecraft/world/entity/player/Player;
+   #45 = Utf8               builder
+   #46 = Utf8               Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #47 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+   #48 = Utf8               <init>
+   #49 = Utf8               ()V
+   #50 = NameAndType        #48:#49       // "<init>":()V
+   #51 = Methodref          #4.#50        // java/lang/Object."<init>":()V
+   #52 = Utf8               java/util/ArrayList
+   #53 = Class              #52           // java/util/ArrayList
+   #54 = Methodref          #53.#50       // java/util/ArrayList."<init>":()V
+   #55 = NameAndType        #34:#35       // owo$properties:Ljava/util/List;
+   #56 = Fieldref           #2.#55        // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$properties:Ljava/util/List;
+   #57 = Utf8               java/util/LinkedHashMap
+   #58 = Class              #57           // java/util/LinkedHashMap
+   #59 = Methodref          #58.#50       // java/util/LinkedHashMap."<init>":()V
+   #60 = NameAndType        #37:#38       // owo$messages:Ljava/util/Map;
+   #61 = Fieldref           #2.#60        // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$messages:Ljava/util/Map;
+   #62 = NameAndType        #40:#35       // owo$clientboundMessages:Ljava/util/List;
+   #63 = Fieldref           #2.#62        // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$clientboundMessages:Ljava/util/List;
+   #64 = NameAndType        #42:#35       // owo$serverboundMessages:Ljava/util/List;
+   #65 = Fieldref           #2.#64        // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$serverboundMessages:Ljava/util/List;
+   #66 = NameAndType        #43:#44       // owo$player:Lnet/minecraft/world/entity/player/Player;
+   #67 = Fieldref           #2.#66        // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$player:Lnet/minecraft/world/entity/player/Player;
+   #68 = Utf8               this
+   #69 = Utf8               Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+   #70 = Utf8               createReflectiveBuilder
+   #71 = Utf8               (Lnet/minecraft/world/inventory/MenuType;ILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #72 = Utf8               type
+   #73 = Utf8               syncId
+   #74 = Utf8               ci
+   #75 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #76 = Utf8               method
+   #77 = Utf8               <init>(Lnet/minecraft/world/inventory/MenuType;I)V
+   #78 = Utf8               at
+   #79 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #80 = Utf8               TAIL
+   #81 = Utf8               io/wispforest/endec/impl/ReflectiveEndecBuilder
+   #82 = Class              #81           // io/wispforest/endec/impl/ReflectiveEndecBuilder
+   #83 = Methodref          #82.#50       // io/wispforest/endec/impl/ReflectiveEndecBuilder."<init>":()V
+   #84 = Utf8               io/wispforest/owo/serialization/endec/MinecraftEndecs
+   #85 = Class              #84           // io/wispforest/owo/serialization/endec/MinecraftEndecs
+   #86 = Utf8               addDefaults
+   #87 = Utf8               (Lio/wispforest/endec/impl/ReflectiveEndecBuilder;)Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #88 = NameAndType        #86:#87       // addDefaults:(Lio/wispforest/endec/impl/ReflectiveEndecBuilder;)Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #89 = Methodref          #85.#88       // io/wispforest/owo/serialization/endec/MinecraftEndecs.addDefaults:(Lio/wispforest/endec/impl/ReflectiveEndecBuilder;)Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #90 = NameAndType        #45:#46       // builder:Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #91 = Fieldref           #2.#90        // io/wispforest/owo/mixin/ScreenHandlerMixin.builder:Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #92 = Utf8               Lnet/minecraft/world/inventory/MenuType;
+   #93 = Utf8               I
+   #94 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #95 = Utf8               endecBuilder
+   #96 = Utf8               ()Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+   #97 = Utf8               owo$attachToPlayer
+   #98 = Utf8               (Lnet/minecraft/world/entity/player/Player;)V
+   #99 = Utf8               player
+  #100 = Utf8               ()Lnet/minecraft/world/entity/player/Player;
+  #101 = Utf8               addServerboundMessage
+  #102 = Utf8               (Ljava/lang/Class;Lio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+  #103 = Utf8               <R:Ljava/lang/Record;>(Ljava/lang/Class<TR;>;Lio/wispforest/endec/Endec<TR;>;Ljava/util/function/Consumer<TR;>;)V
+  #104 = Utf8               messageClass
+  #105 = Utf8               endec
+  #106 = Utf8               handler
+  #107 = Utf8               java/util/List
+  #108 = Class              #107          // java/util/List
+  #109 = Utf8               size
+  #110 = Utf8               ()I
+  #111 = NameAndType        #109:#110     // size:()I
+  #112 = InterfaceMethodref #108.#111     // java/util/List.size:()I
+  #113 = Utf8               io/wispforest/owo/client/screens/ScreenhandlerMessageData
+  #114 = Class              #113          // io/wispforest/owo/client/screens/ScreenhandlerMessageData
+  #115 = Utf8               (IZLio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+  #116 = NameAndType        #48:#115      // "<init>":(IZLio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+  #117 = Methodref          #114.#116     // io/wispforest/owo/client/screens/ScreenhandlerMessageData."<init>":(IZLio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+  #118 = Utf8               add
+  #119 = Utf8               (Ljava/lang/Object;)Z
+  #120 = NameAndType        #118:#119     // add:(Ljava/lang/Object;)Z
+  #121 = InterfaceMethodref #108.#120     // java/util/List.add:(Ljava/lang/Object;)Z
+  #122 = Utf8               java/util/Map
+  #123 = Class              #122          // java/util/Map
+  #124 = Utf8               put
+  #125 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #126 = NameAndType        #124:#125     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #127 = InterfaceMethodref #123.#126     // java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #128 = Utf8               io/wispforest/owo/network/NetworkException
+  #129 = Class              #128          // io/wispforest/owo/network/NetworkException
+  #130 = Utf8               java/lang/String
+  #131 = Class              #130          // java/lang/String
+  #132 = Utf8               valueOf
+  #133 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+  #134 = NameAndType        #132:#133     // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #135 = Methodref          #131.#134     // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+  #136 = Utf8               \u0001 is already registered as a message!
+  #137 = String             #136          // \u0001 is already registered as a message!
+  #138 = Utf8               java/lang/invoke/StringConcatFactory
+  #139 = Class              #138          // java/lang/invoke/StringConcatFactory
+  #140 = Utf8               makeConcatWithConstants
+  #141 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #142 = NameAndType        #140:#141     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #143 = Methodref          #139.#142     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #144 = MethodHandle       6:#143        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #145 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #146 = NameAndType        #140:#145     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #147 = InvokeDynamic      #0:#146       // #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #148 = Utf8               (Ljava/lang/String;)V
+  #149 = NameAndType        #48:#148      // "<init>":(Ljava/lang/String;)V
+  #150 = Methodref          #129.#149     // io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+  #151 = Utf8               Ljava/lang/Class<TR;>;
+  #152 = Utf8               Ljava/lang/Class;
+  #153 = Utf8               Lio/wispforest/endec/Endec<TR;>;
+  #154 = Utf8               Lio/wispforest/endec/Endec;
+  #155 = Utf8               Ljava/util/function/Consumer<TR;>;
+  #156 = Utf8               Ljava/util/function/Consumer;
+  #157 = Utf8               id
+  #158 = Utf8               messageData
+  #159 = Utf8               Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<TR;>;
+  #160 = Utf8               Lio/wispforest/owo/client/screens/ScreenhandlerMessageData;
+  #161 = Utf8               addClientboundMessage
+  #162 = Utf8               sendMessage
+  #163 = Utf8               (Ljava/lang/Record;)V
+  #164 = Utf8               <R:Ljava/lang/Record;>(TR;)V
+  #165 = Utf8               message
+  #166 = Utf8               Lorg/jetbrains/annotations/NotNull;
+  #167 = Utf8               Tried to send a message before player was attached
+  #168 = String             #167          // Tried to send a message before player was attached
+  #169 = Utf8               getClass
+  #170 = Utf8               ()Ljava/lang/Class;
+  #171 = NameAndType        #169:#170     // getClass:()Ljava/lang/Class;
+  #172 = Methodref          #4.#171       // java/lang/Object.getClass:()Ljava/lang/Class;
+  #173 = Utf8               get
+  #174 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #175 = NameAndType        #173:#174     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #176 = InterfaceMethodref #123.#175     // java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+  #177 = Utf8               Tried to send message of unknown type \u0001
+  #178 = String             #177          // Tried to send message of unknown type \u0001
+  #179 = InvokeDynamic      #1:#146       // #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #180 = Utf8               net/minecraft/world/entity/player/Player
+  #181 = Class              #180          // net/minecraft/world/entity/player/Player
+  #182 = Utf8               registryAccess
+  #183 = Utf8               ()Lnet/minecraft/core/RegistryAccess;
+  #184 = NameAndType        #182:#183     // registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #185 = Methodref          #181.#184     // net/minecraft/world/entity/player/Player.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+  #186 = Utf8               io/wispforest/owo/serialization/RegistriesAttribute
+  #187 = Class              #186          // io/wispforest/owo/serialization/RegistriesAttribute
+  #188 = Utf8               of
+  #189 = Utf8               (Lnet/minecraft/core/RegistryAccess;)Lio/wispforest/owo/serialization/RegistriesAttribute;
+  #190 = NameAndType        #188:#189     // of:(Lnet/minecraft/core/RegistryAccess;)Lio/wispforest/owo/serialization/RegistriesAttribute;
+  #191 = Methodref          #187.#190     // io/wispforest/owo/serialization/RegistriesAttribute.of:(Lnet/minecraft/core/RegistryAccess;)Lio/wispforest/owo/serialization/RegistriesAttribute;
+  #192 = Utf8               io/wispforest/endec/SerializationContext
+  #193 = Class              #192          // io/wispforest/endec/SerializationContext
+  #194 = Utf8               attributes
+  #195 = Utf8               ([Lio/wispforest/endec/SerializationAttribute$Instance;)Lio/wispforest/endec/SerializationContext;
+  #196 = NameAndType        #194:#195     // attributes:([Lio/wispforest/endec/SerializationAttribute$Instance;)Lio/wispforest/endec/SerializationContext;
+  #197 = Methodref          #193.#196     // io/wispforest/endec/SerializationContext.attributes:([Lio/wispforest/endec/SerializationAttribute$Instance;)Lio/wispforest/endec/SerializationContext;
+  #198 = Utf8               net/minecraft/network/FriendlyByteBuf
+  #199 = Class              #198          // net/minecraft/network/FriendlyByteBuf
+  #200 = Utf8               io/netty/buffer/Unpooled
+  #201 = Class              #200          // io/netty/buffer/Unpooled
+  #202 = Utf8               buffer
+  #203 = Utf8               ()Lio/netty/buffer/ByteBuf;
+  #204 = NameAndType        #202:#203     // buffer:()Lio/netty/buffer/ByteBuf;
+  #205 = Methodref          #201.#204     // io/netty/buffer/Unpooled.buffer:()Lio/netty/buffer/ByteBuf;
+  #206 = Utf8               (Lio/netty/buffer/ByteBuf;)V
+  #207 = NameAndType        #48:#206      // "<init>":(Lio/netty/buffer/ByteBuf;)V
+  #208 = Methodref          #199.#207     // net/minecraft/network/FriendlyByteBuf."<init>":(Lio/netty/buffer/ByteBuf;)V
+  #209 = Utf8               ()Lio/wispforest/endec/Endec;
+  #210 = NameAndType        #105:#209     // endec:()Lio/wispforest/endec/Endec;
+  #211 = Methodref          #114.#210     // io/wispforest/owo/client/screens/ScreenhandlerMessageData.endec:()Lio/wispforest/endec/Endec;
+  #212 = Utf8               write
+  #213 = Utf8               (Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;Ljava/lang/Object;)V
+  #214 = NameAndType        #212:#213     // write:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;Ljava/lang/Object;)V
+  #215 = Methodref          #199.#214     // net/minecraft/network/FriendlyByteBuf.write:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;Ljava/lang/Object;)V
+  #216 = NameAndType        #157:#110     // id:()I
+  #217 = Methodref          #114.#216     // io/wispforest/owo/client/screens/ScreenhandlerMessageData.id:()I
+  #218 = Utf8               (ILnet/minecraft/network/FriendlyByteBuf;)V
+  #219 = NameAndType        #48:#218      // "<init>":(ILnet/minecraft/network/FriendlyByteBuf;)V
+  #220 = Methodref          #19.#219      // io/wispforest/owo/client/screens/ScreenInternals$LocalPacket."<init>":(ILnet/minecraft/network/FriendlyByteBuf;)V
+  #221 = Utf8               clientbound
+  #222 = Utf8               ()Z
+  #223 = NameAndType        #221:#222     // clientbound:()Z
+  #224 = Methodref          #114.#223     // io/wispforest/owo/client/screens/ScreenhandlerMessageData.clientbound:()Z
+  #225 = Utf8               net/minecraft/server/level/ServerPlayer
+  #226 = Class              #225          // net/minecraft/server/level/ServerPlayer
+  #227 = Utf8               Tried to send clientbound message on the server
+  #228 = String             #227          // Tried to send clientbound message on the server
+  #229 = Utf8               connection
+  #230 = Utf8               Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #231 = NameAndType        #229:#230     // connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #232 = Fieldref           #226.#231     // net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+  #233 = Utf8               net/minecraft/server/network/ServerGamePacketListenerImpl
+  #234 = Class              #233          // net/minecraft/server/network/ServerGamePacketListenerImpl
+  #235 = Utf8               send
+  #236 = Utf8               (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #237 = NameAndType        #235:#236     // send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #238 = Methodref          #234.#237     // net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #239 = Utf8               level
+  #240 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #241 = NameAndType        #239:#240     // level:()Lnet/minecraft/world/level/Level;
+  #242 = Methodref          #181.#241     // net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+  #243 = Utf8               net/minecraft/world/level/Level
+  #244 = Class              #243          // net/minecraft/world/level/Level
+  #245 = Utf8               isClientSide
+  #246 = NameAndType        #245:#32      // isClientSide:Z
+  #247 = Fieldref           #244.#246     // net/minecraft/world/level/Level.isClientSide:Z
+  #248 = Utf8               Tried to send serverbound message on the client
+  #249 = String             #248          // Tried to send serverbound message on the client
+  #250 = Utf8               owo$sendToServer
+  #251 = NameAndType        #250:#236     // owo$sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #252 = Methodref          #2.#251       // io/wispforest/owo/mixin/ScreenHandlerMixin.owo$sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #253 = Utf8               serverPlayer
+  #254 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #255 = Utf8               TR;
+  #256 = Utf8               Ljava/lang/Record;
+  #257 = Utf8               ctx
+  #258 = Utf8               Lio/wispforest/endec/SerializationContext;
+  #259 = Utf8               buf
+  #260 = Utf8               Lnet/minecraft/network/FriendlyByteBuf;
+  #261 = Utf8               packet
+  #262 = Utf8               Lio/wispforest/owo/client/screens/ScreenInternals$LocalPacket;
+  #263 = Utf8               payload
+  #264 = Utf8               Lnet/neoforged/api/distmarker/OnlyIn;
+  #265 = Utf8               Lnet/neoforged/api/distmarker/Dist;
+  #266 = Utf8               CLIENT
+  #267 = Utf8               net/minecraft/client/Minecraft
+  #268 = Class              #267          // net/minecraft/client/Minecraft
+  #269 = Utf8               getInstance
+  #270 = Utf8               ()Lnet/minecraft/client/Minecraft;
+  #271 = NameAndType        #269:#270     // getInstance:()Lnet/minecraft/client/Minecraft;
+  #272 = Methodref          #268.#271     // net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+  #273 = Utf8               getConnection
+  #274 = Utf8               ()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+  #275 = NameAndType        #273:#274     // getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+  #276 = Methodref          #268.#275     // net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+  #277 = Utf8               net/minecraft/client/multiplayer/ClientPacketListener
+  #278 = Class              #277          // net/minecraft/client/multiplayer/ClientPacketListener
+  #279 = Methodref          #278.#237     // net/minecraft/client/multiplayer/ClientPacketListener.send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+  #280 = Utf8               Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;
+  #281 = Utf8               owo$handlePacket
+  #282 = Utf8               (Lio/wispforest/owo/client/screens/ScreenInternals$LocalPacket;Z)V
+  #283 = Utf8               packetId
+  #284 = NameAndType        #283:#110     // packetId:()I
+  #285 = Methodref          #19.#284      // io/wispforest/owo/client/screens/ScreenInternals$LocalPacket.packetId:()I
+  #286 = Utf8               (I)Ljava/lang/Object;
+  #287 = NameAndType        #173:#286     // get:(I)Ljava/lang/Object;
+  #288 = InterfaceMethodref #108.#287     // java/util/List.get:(I)Ljava/lang/Object;
+  #289 = Utf8               ()Ljava/util/function/Consumer;
+  #290 = NameAndType        #106:#289     // handler:()Ljava/util/function/Consumer;
+  #291 = Methodref          #114.#290     // io/wispforest/owo/client/screens/ScreenhandlerMessageData.handler:()Ljava/util/function/Consumer;
+  #292 = Utf8               ()Lnet/minecraft/network/FriendlyByteBuf;
+  #293 = NameAndType        #263:#292     // payload:()Lnet/minecraft/network/FriendlyByteBuf;
+  #294 = Methodref          #19.#293      // io/wispforest/owo/client/screens/ScreenInternals$LocalPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+  #295 = Utf8               read
+  #296 = Utf8               (Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;)Ljava/lang/Object;
+  #297 = NameAndType        #295:#296     // read:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;)Ljava/lang/Object;
+  #298 = Methodref          #199.#297     // net/minecraft/network/FriendlyByteBuf.read:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;)Ljava/lang/Object;
+  #299 = Utf8               java/util/function/Consumer
+  #300 = Class              #299          // java/util/function/Consumer
+  #301 = Utf8               accept
+  #302 = Utf8               (Ljava/lang/Object;)V
+  #303 = NameAndType        #301:#302     // accept:(Ljava/lang/Object;)V
+  #304 = InterfaceMethodref #300.#303     // java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+  #305 = Utf8               createProperty
+  #306 = Utf8               (Ljava/lang/Class;Lio/wispforest/endec/Endec;Ljava/lang/Object;)Lio/wispforest/owo/client/screens/SyncedProperty;
+  #307 = Utf8               <T:Ljava/lang/Object;>(Ljava/lang/Class<TT;>;Lio/wispforest/endec/Endec<TT;>;TT;)Lio/wispforest/owo/client/screens/SyncedProperty<TT;>;
+  #308 = Utf8               clazz
+  #309 = Utf8               initial
+  #310 = Utf8               io/wispforest/owo/client/screens/SyncedProperty
+  #311 = Class              #310          // io/wispforest/owo/client/screens/SyncedProperty
+  #312 = Utf8               net/minecraft/world/inventory/AbstractContainerMenu
+  #313 = Class              #312          // net/minecraft/world/inventory/AbstractContainerMenu
+  #314 = Utf8               (ILio/wispforest/endec/Endec;Ljava/lang/Object;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+  #315 = NameAndType        #48:#314      // "<init>":(ILio/wispforest/endec/Endec;Ljava/lang/Object;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+  #316 = Methodref          #311.#315     // io/wispforest/owo/client/screens/SyncedProperty."<init>":(ILio/wispforest/endec/Endec;Ljava/lang/Object;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+  #317 = Utf8               Ljava/lang/Class<TT;>;
+  #318 = Utf8               Lio/wispforest/endec/Endec<TT;>;
+  #319 = Utf8               TT;
+  #320 = Utf8               Ljava/lang/Object;
+  #321 = Utf8               prop
+  #322 = Utf8               Lio/wispforest/owo/client/screens/SyncedProperty<TT;>;
+  #323 = Utf8               Lio/wispforest/owo/client/screens/SyncedProperty;
+  #324 = Utf8               owo$readPropertySync
+  #325 = Utf8               (Lio/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket;)V
+  #326 = Methodref          #24.#293      // io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+  #327 = Utf8               readVarInt
+  #328 = NameAndType        #327:#110     // readVarInt:()I
+  #329 = Methodref          #199.#328     // net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+  #330 = Utf8               (Lnet/minecraft/network/FriendlyByteBuf;)V
+  #331 = NameAndType        #295:#330     // read:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #332 = Methodref          #311.#331     // io/wispforest/owo/client/screens/SyncedProperty.read:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #333 = Utf8               idx
+  #334 = Utf8               i
+  #335 = Utf8               Lio/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket;
+  #336 = Utf8               count
+  #337 = Utf8               syncOnSyncState
+  #338 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #339 = Utf8               sendAllDataToRemote()V
+  #340 = Utf8               RETURN
+  #341 = Utf8               syncProperties
+  #342 = NameAndType        #341:#49      // syncProperties:()V
+  #343 = Methodref          #2.#342       // io/wispforest/owo/mixin/ScreenHandlerMixin.syncProperties:()V
+  #344 = Utf8               syncOnSendContentUpdates
+  #345 = Utf8               broadcastChanges()V
+  #346 = NameAndType        #31:#32       // suppressRemoteUpdates:Z
+  #347 = Fieldref           #2.#346       // io/wispforest/owo/mixin/ScreenHandlerMixin.suppressRemoteUpdates:Z
+  #348 = Utf8               iterator
+  #349 = Utf8               ()Ljava/util/Iterator;
+  #350 = NameAndType        #348:#349     // iterator:()Ljava/util/Iterator;
+  #351 = InterfaceMethodref #108.#350     // java/util/List.iterator:()Ljava/util/Iterator;
+  #352 = Utf8               java/util/Iterator
+  #353 = Class              #352          // java/util/Iterator
+  #354 = Utf8               hasNext
+  #355 = NameAndType        #354:#222     // hasNext:()Z
+  #356 = InterfaceMethodref #353.#355     // java/util/Iterator.hasNext:()Z
+  #357 = Utf8               next
+  #358 = Utf8               ()Ljava/lang/Object;
+  #359 = NameAndType        #357:#358     // next:()Ljava/lang/Object;
+  #360 = InterfaceMethodref #353.#359     // java/util/Iterator.next:()Ljava/lang/Object;
+  #361 = Utf8               needsSync
+  #362 = NameAndType        #361:#222     // needsSync:()Z
+  #363 = Methodref          #311.#362     // io/wispforest/owo/client/screens/SyncedProperty.needsSync:()Z
+  #364 = Utf8               writeVarInt
+  #365 = Utf8               (I)Lnet/minecraft/network/FriendlyByteBuf;
+  #366 = NameAndType        #364:#365     // writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+  #367 = Methodref          #199.#366     // net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+  #368 = Utf8               index
+  #369 = NameAndType        #368:#110     // index:()I
+  #370 = Methodref          #311.#369     // io/wispforest/owo/client/screens/SyncedProperty.index:()I
+  #371 = NameAndType        #212:#330     // write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #372 = Methodref          #311.#371     // io/wispforest/owo/client/screens/SyncedProperty.write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #373 = NameAndType        #48:#330      // "<init>":(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #374 = Methodref          #24.#373      // io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket."<init>":(Lnet/minecraft/network/FriendlyByteBuf;)V
+  #375 = Utf8               property
+  #376 = Utf8               Lio/wispforest/owo/client/screens/SyncedProperty<*>;
+  #377 = Utf8               RuntimeVisibleAnnotations
+  #378 = Utf8               Signature
+  #379 = Utf8               Code
+  #380 = Utf8               LineNumberTable
+  #381 = Utf8               LocalVariableTable
+  #382 = Utf8               MethodParameters
+  #383 = Utf8               StackMapTable
+  #384 = Utf8               LocalVariableTypeTable
+  #385 = Utf8               RuntimeInvisibleTypeAnnotations
+  #386 = Utf8               RuntimeInvisibleParameterAnnotations
+  #387 = Utf8               InnerClasses
+  #388 = Utf8               SourceFile
+  #389 = Utf8               RuntimeInvisibleAnnotations
+  #390 = Utf8               BootstrapMethods
+{
+  private boolean suppressRemoteUpdates;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #33()
+        org.spongepowered.asm.mixin.Shadow
+
+  private final java.util.List<io.wispforest.owo.client.screens.SyncedProperty<?>> owo$properties;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #36                          // Ljava/util/List<Lio/wispforest/owo/client/screens/SyncedProperty<*>;>;
+
+  private final java.util.Map<java.lang.Class<?>, io.wispforest.owo.client.screens.ScreenhandlerMessageData<?>> owo$messages;
+    descriptor: Ljava/util/Map;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #39                          // Ljava/util/Map<Ljava/lang/Class<*>;Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<*>;>;
+
+  private final java.util.List<io.wispforest.owo.client.screens.ScreenhandlerMessageData<?>> owo$clientboundMessages;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #41                          // Ljava/util/List<Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<*>;>;
+
+  private final java.util.List<io.wispforest.owo.client.screens.ScreenhandlerMessageData<?>> owo$serverboundMessages;
+    descriptor: Ljava/util/List;
+    flags: (0x0012) ACC_PRIVATE, ACC_FINAL
+    Signature: #41                          // Ljava/util/List<Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<*>;>;
+
+  private net.minecraft.world.entity.player.Player owo$player;
+    descriptor: Lnet/minecraft/world/entity/player/Player;
+    flags: (0x0002) ACC_PRIVATE
+
+  private io.wispforest.endec.impl.ReflectiveEndecBuilder builder;
+    descriptor: Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #47()
+        org.spongepowered.asm.mixin.Unique
+
+  public io.wispforest.owo.mixin.ScreenHandlerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #51                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #53                 // class java/util/ArrayList
+         8: dup
+         9: invokespecial #54                 // Method java/util/ArrayList."<init>":()V
+        12: putfield      #56                 // Field owo$properties:Ljava/util/List;
+        15: aload_0
+        16: new           #58                 // class java/util/LinkedHashMap
+        19: dup
+        20: invokespecial #59                 // Method java/util/LinkedHashMap."<init>":()V
+        23: putfield      #61                 // Field owo$messages:Ljava/util/Map;
+        26: aload_0
+        27: new           #53                 // class java/util/ArrayList
+        30: dup
+        31: invokespecial #54                 // Method java/util/ArrayList."<init>":()V
+        34: putfield      #63                 // Field owo$clientboundMessages:Ljava/util/List;
+        37: aload_0
+        38: new           #53                 // class java/util/ArrayList
+        41: dup
+        42: invokespecial #54                 // Method java/util/ArrayList."<init>":()V
+        45: putfield      #65                 // Field owo$serverboundMessages:Ljava/util/List;
+        48: aload_0
+        49: aconst_null
+        50: putfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+        53: return
+      LineNumberTable:
+        line 39: 0
+        line 43: 4
+        line 45: 15
+        line 46: 26
+        line 47: 37
+        line 49: 48
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      54     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+
+  private void createReflectiveBuilder(net.minecraft.world.inventory.MenuType, int, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/inventory/MenuType;ILorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: new           #82                 // class io/wispforest/endec/impl/ReflectiveEndecBuilder
+         4: dup
+         5: invokespecial #83                 // Method io/wispforest/endec/impl/ReflectiveEndecBuilder."<init>":()V
+         8: invokestatic  #89                 // Method io/wispforest/owo/serialization/endec/MinecraftEndecs.addDefaults:(Lio/wispforest/endec/impl/ReflectiveEndecBuilder;)Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+        11: putfield      #91                 // Field builder:Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+        14: return
+      LineNumberTable:
+        line 56: 0
+        line 57: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      15     1  type   Lnet/minecraft/world/inventory/MenuType;
+            0      15     2 syncId   I
+            0      15     3    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #75(#76=[s#77],#78=[@#79(#11=s#80)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["<init>(Lnet/minecraft/world/inventory/MenuType;I)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="TAIL"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      type
+      syncId
+      ci
+
+  public io.wispforest.endec.impl.ReflectiveEndecBuilder endecBuilder();
+    descriptor: ()Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #91                 // Field builder:Lio/wispforest/endec/impl/ReflectiveEndecBuilder;
+         4: areturn
+      LineNumberTable:
+        line 61: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+
+  public void owo$attachToPlayer(net.minecraft.world.entity.player.Player);
+    descriptor: (Lnet/minecraft/world/entity/player/Player;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+         5: return
+      LineNumberTable:
+        line 66: 0
+        line 67: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0       6     1 player   Lnet/minecraft/world/entity/player/Player;
+    MethodParameters:
+      Name                           Flags
+      player
+
+  public net.minecraft.world.entity.player.Player player();
+    descriptor: ()Lnet/minecraft/world/entity/player/Player;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+         4: areturn
+      LineNumberTable:
+        line 71: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+
+  public <R extends java.lang.Record> void addServerboundMessage(java.lang.Class<R>, io.wispforest.endec.Endec<R>, java.util.function.Consumer<R>);
+    descriptor: (Ljava/lang/Class;Lio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=6, args_size=4
+         0: aload_0
+         1: getfield      #65                 // Field owo$serverboundMessages:Ljava/util/List;
+         4: invokeinterface #112,  1          // InterfaceMethod java/util/List.size:()I
+         9: istore        4
+        11: new           #114                // class io/wispforest/owo/client/screens/ScreenhandlerMessageData
+        14: dup
+        15: iload         4
+        17: iconst_0
+        18: aload_2
+        19: aload_3
+        20: invokespecial #117                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData."<init>":(IZLio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+        23: astore        5
+        25: aload_0
+        26: getfield      #65                 // Field owo$serverboundMessages:Ljava/util/List;
+        29: aload         5
+        31: invokeinterface #121,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        36: pop
+        37: aload_0
+        38: getfield      #61                 // Field owo$messages:Ljava/util/Map;
+        41: aload_1
+        42: aload         5
+        44: invokeinterface #127,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        49: ifnull        69
+        52: new           #129                // class io/wispforest/owo/network/NetworkException
+        55: dup
+        56: aload_1
+        57: invokestatic  #135                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        60: invokedynamic #147,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        65: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+        68: athrow
+        69: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 253 /* append */
+          offset_delta = 69
+          locals = [ int, class io/wispforest/owo/client/screens/ScreenhandlerMessageData ]
+      LineNumberTable:
+        line 76: 0
+        line 78: 11
+        line 79: 25
+        line 81: 37
+        line 82: 52
+        line 84: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      70     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      70     1 messageClass   Ljava/lang/Class;
+            0      70     2 endec   Lio/wispforest/endec/Endec;
+            0      70     3 handler   Ljava/util/function/Consumer;
+           11      59     4    id   I
+           25      45     5 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      70     1 messageClass   Ljava/lang/Class<TR;>;
+            0      70     2 endec   Lio/wispforest/endec/Endec<TR;>;
+            0      70     3 handler   Ljava/util/function/Consumer<TR;>;
+           25      45     5 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<TR;>;
+    Signature: #103                         // <R:Ljava/lang/Record;>(Ljava/lang/Class<TR;>;Lio/wispforest/endec/Endec<TR;>;Ljava/util/function/Consumer<TR;>;)V
+    MethodParameters:
+      Name                           Flags
+      messageClass
+      endec
+      handler
+
+  public <R extends java.lang.Record> void addClientboundMessage(java.lang.Class<R>, io.wispforest.endec.Endec<R>, java.util.function.Consumer<R>);
+    descriptor: (Ljava/lang/Class;Lio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=6, args_size=4
+         0: aload_0
+         1: getfield      #63                 // Field owo$clientboundMessages:Ljava/util/List;
+         4: invokeinterface #112,  1          // InterfaceMethod java/util/List.size:()I
+         9: istore        4
+        11: new           #114                // class io/wispforest/owo/client/screens/ScreenhandlerMessageData
+        14: dup
+        15: iload         4
+        17: iconst_1
+        18: aload_2
+        19: aload_3
+        20: invokespecial #117                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData."<init>":(IZLio/wispforest/endec/Endec;Ljava/util/function/Consumer;)V
+        23: astore        5
+        25: aload_0
+        26: getfield      #63                 // Field owo$clientboundMessages:Ljava/util/List;
+        29: aload         5
+        31: invokeinterface #121,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        36: pop
+        37: aload_0
+        38: getfield      #61                 // Field owo$messages:Ljava/util/Map;
+        41: aload_1
+        42: aload         5
+        44: invokeinterface #127,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+        49: ifnull        69
+        52: new           #129                // class io/wispforest/owo/network/NetworkException
+        55: dup
+        56: aload_1
+        57: invokestatic  #135                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        60: invokedynamic #147,  0            // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        65: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+        68: athrow
+        69: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 253 /* append */
+          offset_delta = 69
+          locals = [ int, class io/wispforest/owo/client/screens/ScreenhandlerMessageData ]
+      LineNumberTable:
+        line 88: 0
+        line 90: 11
+        line 91: 25
+        line 93: 37
+        line 94: 52
+        line 96: 69
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      70     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      70     1 messageClass   Ljava/lang/Class;
+            0      70     2 endec   Lio/wispforest/endec/Endec;
+            0      70     3 handler   Ljava/util/function/Consumer;
+           11      59     4    id   I
+           25      45     5 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      70     1 messageClass   Ljava/lang/Class<TR;>;
+            0      70     2 endec   Lio/wispforest/endec/Endec<TR;>;
+            0      70     3 handler   Ljava/util/function/Consumer<TR;>;
+           25      45     5 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData<TR;>;
+    Signature: #103                         // <R:Ljava/lang/Record;>(Ljava/lang/Class<TR;>;Lio/wispforest/endec/Endec<TR;>;Ljava/util/function/Consumer<TR;>;)V
+    MethodParameters:
+      Name                           Flags
+      messageClass
+      endec
+      handler
+
+  public <R extends java.lang.Record> void sendMessage(R);
+    descriptor: (Ljava/lang/Record;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=8, args_size=2
+         0: aload_0
+         1: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+         4: ifnonnull     17
+         7: new           #129                // class io/wispforest/owo/network/NetworkException
+        10: dup
+        11: ldc           #168                // String Tried to send a message before player was attached
+        13: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+        16: athrow
+        17: aload_0
+        18: getfield      #61                 // Field owo$messages:Ljava/util/Map;
+        21: aload_1
+        22: invokevirtual #172                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        25: invokeinterface #176,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        30: checkcast     #114                // class io/wispforest/owo/client/screens/ScreenhandlerMessageData
+        33: astore_2
+        34: aload_2
+        35: ifnonnull     58
+        38: new           #129                // class io/wispforest/owo/network/NetworkException
+        41: dup
+        42: aload_1
+        43: invokevirtual #172                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        46: invokestatic  #135                // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        49: invokedynamic #179,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        54: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+        57: athrow
+        58: iconst_1
+        59: anewarray     #14                 // class io/wispforest/endec/SerializationAttribute$Instance
+        62: dup
+        63: iconst_0
+        64: aload_0
+        65: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+        68: invokevirtual #185                // Method net/minecraft/world/entity/player/Player.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        71: invokestatic  #191                // Method io/wispforest/owo/serialization/RegistriesAttribute.of:(Lnet/minecraft/core/RegistryAccess;)Lio/wispforest/owo/serialization/RegistriesAttribute;
+        74: aastore
+        75: invokestatic  #197                // Method io/wispforest/endec/SerializationContext.attributes:([Lio/wispforest/endec/SerializationAttribute$Instance;)Lio/wispforest/endec/SerializationContext;
+        78: astore_3
+        79: new           #199                // class net/minecraft/network/FriendlyByteBuf
+        82: dup
+        83: invokestatic  #205                // Method io/netty/buffer/Unpooled.buffer:()Lio/netty/buffer/ByteBuf;
+        86: invokespecial #208                // Method net/minecraft/network/FriendlyByteBuf."<init>":(Lio/netty/buffer/ByteBuf;)V
+        89: astore        4
+        91: aload         4
+        93: aload_3
+        94: aload_2
+        95: invokevirtual #211                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData.endec:()Lio/wispforest/endec/Endec;
+        98: aload_1
+        99: invokevirtual #215                // Method net/minecraft/network/FriendlyByteBuf.write:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;Ljava/lang/Object;)V
+       102: new           #19                 // class io/wispforest/owo/client/screens/ScreenInternals$LocalPacket
+       105: dup
+       106: aload_2
+       107: invokevirtual #217                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData.id:()I
+       110: aload         4
+       112: invokespecial #220                // Method io/wispforest/owo/client/screens/ScreenInternals$LocalPacket."<init>":(ILnet/minecraft/network/FriendlyByteBuf;)V
+       115: astore        5
+       117: aload_2
+       118: invokevirtual #224                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData.clientbound:()Z
+       121: ifeq          171
+       124: aload_0
+       125: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+       128: astore        7
+       130: aload         7
+       132: instanceof    #226                // class net/minecraft/server/level/ServerPlayer
+       135: ifeq          148
+       138: aload         7
+       140: checkcast     #226                // class net/minecraft/server/level/ServerPlayer
+       143: astore        6
+       145: goto          158
+       148: new           #129                // class io/wispforest/owo/network/NetworkException
+       151: dup
+       152: ldc           #228                // String Tried to send clientbound message on the server
+       154: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+       157: athrow
+       158: aload         6
+       160: getfield      #232                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       163: aload         5
+       165: invokevirtual #238                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+       168: goto          200
+       171: aload_0
+       172: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+       175: invokevirtual #242                // Method net/minecraft/world/entity/player/Player.level:()Lnet/minecraft/world/level/Level;
+       178: getfield      #247                // Field net/minecraft/world/level/Level.isClientSide:Z
+       181: ifne          194
+       184: new           #129                // class io/wispforest/owo/network/NetworkException
+       187: dup
+       188: ldc           #249                // String Tried to send serverbound message on the client
+       190: invokespecial #150                // Method io/wispforest/owo/network/NetworkException."<init>":(Ljava/lang/String;)V
+       193: athrow
+       194: aload_0
+       195: aload         5
+       197: invokevirtual #252                // Method owo$sendToServer:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+       200: return
+      StackMapTable: number_of_entries = 7
+        frame_type = 17 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 40
+          locals = [ class io/wispforest/owo/client/screens/ScreenhandlerMessageData ]
+        frame_type = 254 /* append */
+          offset_delta = 89
+          locals = [ class io/wispforest/endec/SerializationContext, class net/minecraft/network/FriendlyByteBuf, class io/wispforest/owo/client/screens/ScreenInternals$LocalPacket ]
+        frame_type = 252 /* append */
+          offset_delta = 9
+          locals = [ class net/minecraft/server/level/ServerPlayer ]
+        frame_type = 250 /* chop */
+          offset_delta = 12
+        frame_type = 22 /* same */
+        frame_type = 5 /* same */
+      LineNumberTable:
+        line 101: 0
+        line 102: 7
+        line 105: 17
+        line 107: 34
+        line 108: 38
+        line 111: 58
+        line 112: 79
+        line 113: 91
+        line 115: 102
+        line 117: 117
+        line 118: 124
+        line 119: 148
+        line 122: 158
+        line 123: 168
+        line 124: 171
+        line 125: 184
+        line 128: 194
+        line 130: 200
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          145       3     6 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+          158      10     6 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+            0     201     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0     201     1 message   Ljava/lang/Record;
+           34     167     2 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData;
+           79     122     3   ctx   Lio/wispforest/endec/SerializationContext;
+           91     110     4   buf   Lnet/minecraft/network/FriendlyByteBuf;
+          117      84     5 packet   Lio/wispforest/owo/client/screens/ScreenInternals$LocalPacket;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     201     1 message   TR;
+    Signature: #164                         // <R:Ljava/lang/Record;>(TR;)V
+    RuntimeInvisibleTypeAnnotations:
+      0: #166(): METHOD_FORMAL_PARAMETER, param_index=0
+        org.jetbrains.annotations.NotNull
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+        0: #166()
+          org.jetbrains.annotations.NotNull
+    MethodParameters:
+      Name                           Flags
+      message
+
+  private void owo$sendToServer(net.minecraft.network.protocol.common.custom.CustomPacketPayload);
+    descriptor: (Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=2
+         0: invokestatic  #272                // Method net/minecraft/client/Minecraft.getInstance:()Lnet/minecraft/client/Minecraft;
+         3: invokevirtual #276                // Method net/minecraft/client/Minecraft.getConnection:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+         6: aload_1
+         7: invokevirtual #279                // Method net/minecraft/client/multiplayer/ClientPacketListener.send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+        10: return
+      LineNumberTable:
+        line 135: 0
+        line 136: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      11     1 payload   Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;
+    RuntimeVisibleAnnotations:
+      0: #47()
+        org.spongepowered.asm.mixin.Unique
+      1: #264(#11=e#265.#266)
+        net.neoforged.api.distmarker.OnlyIn(
+          value=Lnet/neoforged/api/distmarker/Dist;.CLIENT
+        )
+    MethodParameters:
+      Name                           Flags
+      payload
+
+  public void owo$handlePacket(io.wispforest.owo.client.screens.ScreenInternals$LocalPacket, boolean);
+    descriptor: (Lio/wispforest/owo/client/screens/ScreenInternals$LocalPacket;Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=5, args_size=3
+         0: iload_2
+         1: ifeq          11
+         4: aload_0
+         5: getfield      #63                 // Field owo$clientboundMessages:Ljava/util/List;
+         8: goto          15
+        11: aload_0
+        12: getfield      #65                 // Field owo$serverboundMessages:Ljava/util/List;
+        15: aload_1
+        16: invokevirtual #285                // Method io/wispforest/owo/client/screens/ScreenInternals$LocalPacket.packetId:()I
+        19: invokeinterface #288,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+        24: checkcast     #114                // class io/wispforest/owo/client/screens/ScreenhandlerMessageData
+        27: astore_3
+        28: iconst_1
+        29: anewarray     #14                 // class io/wispforest/endec/SerializationAttribute$Instance
+        32: dup
+        33: iconst_0
+        34: aload_0
+        35: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+        38: invokevirtual #185                // Method net/minecraft/world/entity/player/Player.registryAccess:()Lnet/minecraft/core/RegistryAccess;
+        41: invokestatic  #191                // Method io/wispforest/owo/serialization/RegistriesAttribute.of:(Lnet/minecraft/core/RegistryAccess;)Lio/wispforest/owo/serialization/RegistriesAttribute;
+        44: aastore
+        45: invokestatic  #197                // Method io/wispforest/endec/SerializationContext.attributes:([Lio/wispforest/endec/SerializationAttribute$Instance;)Lio/wispforest/endec/SerializationContext;
+        48: astore        4
+        50: aload_3
+        51: invokevirtual #291                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData.handler:()Ljava/util/function/Consumer;
+        54: aload_1
+        55: invokevirtual #294                // Method io/wispforest/owo/client/screens/ScreenInternals$LocalPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+        58: aload         4
+        60: aload_3
+        61: invokevirtual #211                // Method io/wispforest/owo/client/screens/ScreenhandlerMessageData.endec:()Lio/wispforest/endec/Endec;
+        64: invokevirtual #298                // Method net/minecraft/network/FriendlyByteBuf.read:(Lio/wispforest/endec/SerializationContext;Lio/wispforest/endec/Endec;)Ljava/lang/Object;
+        67: invokeinterface #304,  2          // InterfaceMethod java/util/function/Consumer.accept:(Ljava/lang/Object;)V
+        72: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 11 /* same */
+        frame_type = 67 /* same_locals_1_stack_item */
+          stack = [ class java/util/List ]
+      LineNumberTable:
+        line 141: 0
+        line 142: 28
+        line 144: 50
+        line 145: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      73     1 packet   Lio/wispforest/owo/client/screens/ScreenInternals$LocalPacket;
+            0      73     2 clientbound   Z
+           28      45     3 messageData   Lio/wispforest/owo/client/screens/ScreenhandlerMessageData;
+           50      23     4   ctx   Lio/wispforest/endec/SerializationContext;
+    MethodParameters:
+      Name                           Flags
+      packet
+      clientbound
+
+  public <T extends java.lang.Object> io.wispforest.owo.client.screens.SyncedProperty<T> createProperty(java.lang.Class<T>, io.wispforest.endec.Endec<T>, T);
+    descriptor: (Ljava/lang/Class;Lio/wispforest/endec/Endec;Ljava/lang/Object;)Lio/wispforest/owo/client/screens/SyncedProperty;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=5, args_size=4
+         0: new           #311                // class io/wispforest/owo/client/screens/SyncedProperty
+         3: dup
+         4: aload_0
+         5: getfield      #56                 // Field owo$properties:Ljava/util/List;
+         8: invokeinterface #112,  1          // InterfaceMethod java/util/List.size:()I
+        13: aload_2
+        14: aload_3
+        15: aload_0
+        16: checkcast     #313                // class net/minecraft/world/inventory/AbstractContainerMenu
+        19: invokespecial #316                // Method io/wispforest/owo/client/screens/SyncedProperty."<init>":(ILio/wispforest/endec/Endec;Ljava/lang/Object;Lnet/minecraft/world/inventory/AbstractContainerMenu;)V
+        22: astore        4
+        24: aload_0
+        25: getfield      #56                 // Field owo$properties:Ljava/util/List;
+        28: aload         4
+        30: invokeinterface #121,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+        35: pop
+        36: aload         4
+        38: areturn
+      LineNumberTable:
+        line 149: 0
+        line 150: 24
+        line 151: 36
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      39     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      39     1 clazz   Ljava/lang/Class;
+            0      39     2 endec   Lio/wispforest/endec/Endec;
+            0      39     3 initial   Ljava/lang/Object;
+           24      15     4  prop   Lio/wispforest/owo/client/screens/SyncedProperty;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0      39     1 clazz   Ljava/lang/Class<TT;>;
+            0      39     2 endec   Lio/wispforest/endec/Endec<TT;>;
+            0      39     3 initial   TT;
+           24      15     4  prop   Lio/wispforest/owo/client/screens/SyncedProperty<TT;>;
+    Signature: #307                         // <T:Ljava/lang/Object;>(Ljava/lang/Class<TT;>;Lio/wispforest/endec/Endec<TT;>;TT;)Lio/wispforest/owo/client/screens/SyncedProperty<TT;>;
+    MethodParameters:
+      Name                           Flags
+      clazz
+      endec
+      initial
+
+  public void owo$readPropertySync(io.wispforest.owo.client.screens.ScreenInternals$SyncPropertiesPacket);
+    descriptor: (Lio/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=5, args_size=2
+         0: aload_1
+         1: invokevirtual #326                // Method io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+         4: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+         7: istore_2
+         8: iconst_0
+         9: istore_3
+        10: iload_3
+        11: iload_2
+        12: if_icmpge     51
+        15: aload_1
+        16: invokevirtual #326                // Method io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+        19: invokevirtual #329                // Method net/minecraft/network/FriendlyByteBuf.readVarInt:()I
+        22: istore        4
+        24: aload_0
+        25: getfield      #56                 // Field owo$properties:Ljava/util/List;
+        28: iload         4
+        30: invokeinterface #288,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+        35: checkcast     #311                // class io/wispforest/owo/client/screens/SyncedProperty
+        38: aload_1
+        39: invokevirtual #326                // Method io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket.payload:()Lnet/minecraft/network/FriendlyByteBuf;
+        42: invokevirtual #332                // Method io/wispforest/owo/client/screens/SyncedProperty.read:(Lnet/minecraft/network/FriendlyByteBuf;)V
+        45: iinc          3, 1
+        48: goto          10
+        51: return
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 10
+          locals = [ int, int ]
+        frame_type = 250 /* chop */
+          offset_delta = 40
+      LineNumberTable:
+        line 156: 0
+        line 158: 8
+        line 159: 15
+        line 160: 24
+        line 158: 45
+        line 162: 51
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           24      21     4   idx   I
+           10      41     3     i   I
+            0      52     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      52     1 packet   Lio/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket;
+            8      44     2 count   I
+    MethodParameters:
+      Name                           Flags
+      packet
+
+  private void syncOnSyncState(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: invokevirtual #343                // Method syncProperties:()V
+         4: return
+      LineNumberTable:
+        line 166: 0
+        line 167: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0       5     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #75(#76=[s#339],#78=[@#79(#11=s#340)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["sendAllDataToRemote()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private void syncOnSendContentUpdates(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #347                // Field suppressRemoteUpdates:Z
+         4: ifeq          8
+         7: return
+         8: aload_0
+         9: invokevirtual #343                // Method syncProperties:()V
+        12: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 8 /* same */
+      LineNumberTable:
+        line 171: 0
+        line 173: 8
+        line 174: 12
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      13     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+            0      13     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+    RuntimeVisibleAnnotations:
+      0: #75(#76=[s#345],#78=[@#79(#11=s#340)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["broadcastChanges()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+
+  private void syncProperties();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=6, args_size=1
+         0: aload_0
+         1: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+         4: ifnonnull     8
+         7: return
+         8: aload_0
+         9: getfield      #67                 // Field owo$player:Lnet/minecraft/world/entity/player/Player;
+        12: astore_2
+        13: aload_2
+        14: instanceof    #226                // class net/minecraft/server/level/ServerPlayer
+        17: ifeq          28
+        20: aload_2
+        21: checkcast     #226                // class net/minecraft/server/level/ServerPlayer
+        24: astore_1
+        25: goto          29
+        28: return
+        29: iconst_0
+        30: istore_2
+        31: aload_0
+        32: getfield      #56                 // Field owo$properties:Ljava/util/List;
+        35: invokeinterface #351,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+        40: astore_3
+        41: aload_3
+        42: invokeinterface #356,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+        47: ifeq          75
+        50: aload_3
+        51: invokeinterface #360,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        56: checkcast     #311                // class io/wispforest/owo/client/screens/SyncedProperty
+        59: astore        4
+        61: aload         4
+        63: invokevirtual #363                // Method io/wispforest/owo/client/screens/SyncedProperty.needsSync:()Z
+        66: ifeq          72
+        69: iinc          2, 1
+        72: goto          41
+        75: iload_2
+        76: ifne          80
+        79: return
+        80: new           #199                // class net/minecraft/network/FriendlyByteBuf
+        83: dup
+        84: invokestatic  #205                // Method io/netty/buffer/Unpooled.buffer:()Lio/netty/buffer/ByteBuf;
+        87: invokespecial #208                // Method net/minecraft/network/FriendlyByteBuf."<init>":(Lio/netty/buffer/ByteBuf;)V
+        90: astore_3
+        91: aload_3
+        92: iload_2
+        93: invokevirtual #367                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+        96: pop
+        97: aload_0
+        98: getfield      #56                 // Field owo$properties:Ljava/util/List;
+       101: invokeinterface #351,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       106: astore        4
+       108: aload         4
+       110: invokeinterface #356,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       115: ifeq          160
+       118: aload         4
+       120: invokeinterface #360,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       125: checkcast     #311                // class io/wispforest/owo/client/screens/SyncedProperty
+       128: astore        5
+       130: aload         5
+       132: invokevirtual #363                // Method io/wispforest/owo/client/screens/SyncedProperty.needsSync:()Z
+       135: ifne          141
+       138: goto          108
+       141: aload_3
+       142: aload         5
+       144: invokevirtual #370                // Method io/wispforest/owo/client/screens/SyncedProperty.index:()I
+       147: invokevirtual #367                // Method net/minecraft/network/FriendlyByteBuf.writeVarInt:(I)Lnet/minecraft/network/FriendlyByteBuf;
+       150: pop
+       151: aload         5
+       153: aload_3
+       154: invokevirtual #372                // Method io/wispforest/owo/client/screens/SyncedProperty.write:(Lnet/minecraft/network/FriendlyByteBuf;)V
+       157: goto          108
+       160: aload_1
+       161: getfield      #232                // Field net/minecraft/server/level/ServerPlayer.connection:Lnet/minecraft/server/network/ServerGamePacketListenerImpl;
+       164: new           #24                 // class io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket
+       167: dup
+       168: aload_3
+       169: invokespecial #374                // Method io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket."<init>":(Lnet/minecraft/network/FriendlyByteBuf;)V
+       172: invokevirtual #238                // Method net/minecraft/server/network/ServerGamePacketListenerImpl.send:(Lnet/minecraft/network/protocol/common/custom/CustomPacketPayload;)V
+       175: return
+      StackMapTable: number_of_entries = 10
+        frame_type = 8 /* same */
+        frame_type = 19 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 0
+          locals = [ class net/minecraft/server/level/ServerPlayer ]
+        frame_type = 253 /* append */
+          offset_delta = 11
+          locals = [ int, class java/util/Iterator ]
+        frame_type = 30 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 4 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 27
+          locals = [ class net/minecraft/network/FriendlyByteBuf, class java/util/Iterator ]
+        frame_type = 252 /* append */
+          offset_delta = 32
+          locals = [ class io/wispforest/owo/client/screens/SyncedProperty ]
+        frame_type = 249 /* chop */
+          offset_delta = 18
+      LineNumberTable:
+        line 178: 0
+        line 179: 8
+        line 181: 29
+        line 183: 31
+        line 184: 61
+        line 185: 72
+        line 187: 75
+        line 189: 80
+        line 190: 91
+        line 192: 97
+        line 193: 130
+        line 195: 141
+        line 196: 151
+        line 197: 157
+        line 199: 160
+        line 200: 175
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           25       3     1 player   Lnet/minecraft/server/level/ServerPlayer;
+           61      11     4 property   Lio/wispforest/owo/client/screens/SyncedProperty;
+          130      27     5  prop   Lio/wispforest/owo/client/screens/SyncedProperty;
+            0     176     0  this   Lio/wispforest/owo/mixin/ScreenHandlerMixin;
+           29     147     1 player   Lnet/minecraft/server/level/ServerPlayer;
+           31     145     2 count   I
+           91      85     3   buf   Lnet/minecraft/network/FriendlyByteBuf;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+           61      11     4 property   Lio/wispforest/owo/client/screens/SyncedProperty<*>;
+          130      27     5  prop   Lio/wispforest/owo/client/screens/SyncedProperty<*>;
+    RuntimeVisibleAnnotations:
+      0: #47()
+        org.spongepowered.asm.mixin.Unique
+}
+InnerClasses:
+  public static #17= #14 of #16;          // Instance=class io/wispforest/endec/SerializationAttribute$Instance of class io/wispforest/endec/SerializationAttribute
+  public static final #22= #19 of #21;    // LocalPacket=class io/wispforest/owo/client/screens/ScreenInternals$LocalPacket of class io/wispforest/owo/client/screens/ScreenInternals
+  public static final #25= #24 of #21;    // SyncPropertiesPacket=class io/wispforest/owo/client/screens/ScreenInternals$SyncPropertiesPacket of class io/wispforest/owo/client/screens/ScreenInternals
+  public static final #30= #27 of #29;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+SourceFile: "ScreenHandlerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #10(#11=[c#12])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/inventory/AbstractContainerMenu;]
+    )
+BootstrapMethods:
+  0: #144 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #137 \u0001 is already registered as a message!
+  1: #144 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #178 Tried to send message of unknown type \u0001
