@@ -1,0 +1,53 @@
+Compiled from "CommonConfiguration.java"
+public class com.fastasyncworldsave.config.CommonConfiguration implements com.cupboard.config.ICommonConfig {
+  public boolean skipWeatherOnSleep;
+
+  public com.fastasyncworldsave.config.CommonConfiguration();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #7                  // Field skipWeatherOnSleep:Z
+       9: return
+
+  public com.google.gson.JsonObject serialize();
+    Code:
+       0: new           #13                 // class com/google/gson/JsonObject
+       3: dup
+       4: invokespecial #15                 // Method com/google/gson/JsonObject."<init>":()V
+       7: astore_1
+       8: new           #13                 // class com/google/gson/JsonObject
+      11: dup
+      12: invokespecial #15                 // Method com/google/gson/JsonObject."<init>":()V
+      15: astore_2
+      16: aload_2
+      17: ldc           #16                 // String desc:
+      19: ldc           #18                 // String Whether to skip weather after sleeping: default:false
+      21: invokevirtual #20                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+      24: aload_2
+      25: ldc           #24                 // String skipWeatherOnSleep
+      27: aload_0
+      28: getfield      #7                  // Field skipWeatherOnSleep:Z
+      31: invokestatic  #25                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      34: invokevirtual #31                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+      37: aload_1
+      38: ldc           #24                 // String skipWeatherOnSleep
+      40: aload_2
+      41: invokevirtual #34                 // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+      44: aload_1
+      45: areturn
+
+  public void deserialize(com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #24                 // String skipWeatherOnSleep
+       4: invokevirtual #38                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       7: invokevirtual #42                 // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      10: ldc           #24                 // String skipWeatherOnSleep
+      12: invokevirtual #38                 // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      15: invokevirtual #48                 // Method com/google/gson/JsonElement.getAsBoolean:()Z
+      18: putfield      #7                  // Field skipWeatherOnSleep:Z
+      21: return
+}

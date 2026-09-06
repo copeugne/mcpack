@@ -1,0 +1,592 @@
+Compiled from "CommonConfiguration.java"
+public class com.structureessentials.config.CommonConfiguration implements com.cupboard.config.ICommonConfig {
+  public static com.cupboard.config.CupboardConfig<com.structureessentials.config.CommonConfiguration> config;
+
+  public boolean structurePlacementLogging;
+
+  public int structureSearchTimeout;
+
+  public boolean useFastStructureLookup;
+
+  public boolean warnMissingRegistryEntry;
+
+  public boolean disableLegacyRandomCrashes;
+
+  public int mapSearchRadius;
+
+  public int globalSearchRadius;
+
+  public int locateSearchRadius;
+
+  public double spacingSeparationModifier;
+
+  public int minimumStructureDistance;
+
+  public boolean minimumStructureDistanceEnabled;
+
+  public boolean minimumStructureDistanceLogging;
+
+  public java.util.Set<java.lang.String> dimensionWhitelist;
+
+  public boolean logDuplicatedSalt;
+
+  public boolean autoBiomeCompat;
+
+  public boolean autoBiomeCompatLogging;
+
+  public double autoBiomeCompatStrictness;
+
+  public com.structureessentials.config.CommonConfiguration();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #7                  // Field structurePlacementLogging:Z
+       9: aload_0
+      10: bipush        50
+      12: putfield      #13                 // Field structureSearchTimeout:I
+      15: aload_0
+      16: iconst_1
+      17: putfield      #17                 // Field useFastStructureLookup:Z
+      20: aload_0
+      21: iconst_1
+      22: putfield      #20                 // Field warnMissingRegistryEntry:Z
+      25: aload_0
+      26: iconst_1
+      27: putfield      #23                 // Field disableLegacyRandomCrashes:Z
+      30: aload_0
+      31: bipush        40
+      33: putfield      #26                 // Field mapSearchRadius:I
+      36: aload_0
+      37: bipush        70
+      39: putfield      #29                 // Field globalSearchRadius:I
+      42: aload_0
+      43: bipush        110
+      45: putfield      #32                 // Field locateSearchRadius:I
+      48: aload_0
+      49: dconst_1
+      50: putfield      #35                 // Field spacingSeparationModifier:D
+      53: aload_0
+      54: bipush        32
+      56: putfield      #39                 // Field minimumStructureDistance:I
+      59: aload_0
+      60: iconst_0
+      61: putfield      #42                 // Field minimumStructureDistanceEnabled:Z
+      64: aload_0
+      65: iconst_0
+      66: putfield      #45                 // Field minimumStructureDistanceLogging:Z
+      69: aload_0
+      70: new           #48                 // class java/util/HashSet
+      73: dup
+      74: ldc           #50                 // String minecraft:overworld
+      76: ldc           #52                 // String minecraft:the_end
+      78: ldc           #54                 // String minecraft:the_nether
+      80: invokestatic  #56                 // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+      83: invokespecial #62                 // Method java/util/HashSet."<init>":(Ljava/util/Collection;)V
+      86: putfield      #65                 // Field dimensionWhitelist:Ljava/util/Set;
+      89: aload_0
+      90: iconst_1
+      91: putfield      #69                 // Field logDuplicatedSalt:Z
+      94: aload_0
+      95: iconst_0
+      96: putfield      #72                 // Field autoBiomeCompat:Z
+      99: aload_0
+     100: iconst_1
+     101: putfield      #75                 // Field autoBiomeCompatLogging:Z
+     104: aload_0
+     105: ldc2_w        #78                 // double 1.2d
+     108: putfield      #80                 // Field autoBiomeCompatStrictness:D
+     111: return
+
+  public com.google.gson.JsonObject serialize();
+    Code:
+       0: new           #83                 // class com/google/gson/JsonObject
+       3: dup
+       4: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+       7: astore_1
+       8: new           #83                 // class com/google/gson/JsonObject
+      11: dup
+      12: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+      15: astore_2
+      16: aload_2
+      17: ldc           #86                 // String desc:
+      19: ldc           #88                 // String Enables debug logging of structure placement. Warning: This will spam the logs and is only recommended for debugging purposes. Default: false
+      21: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+      24: aload_2
+      25: ldc           #94                 // String structurePlacementLogging
+      27: aload_0
+      28: getfield      #7                  // Field structurePlacementLogging:Z
+      31: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      34: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+      37: aload_1
+      38: ldc           #94                 // String structurePlacementLogging
+      40: aload_2
+      41: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+      44: new           #83                 // class com/google/gson/JsonObject
+      47: dup
+      48: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+      51: astore_3
+      52: aload_3
+      53: ldc           #86                 // String desc:
+      55: ldc           #108                // String The maximum time (in seconds) a structure search is allowed to take. Default: 50
+      57: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+      60: aload_3
+      61: ldc           #110                // String structureSearchTimeout
+      63: aload_0
+      64: getfield      #13                 // Field structureSearchTimeout:I
+      67: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      70: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+      73: aload_1
+      74: ldc           #110                // String structureSearchTimeout
+      76: aload_3
+      77: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+      80: new           #83                 // class com/google/gson/JsonObject
+      83: dup
+      84: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+      87: astore        4
+      89: aload         4
+      91: ldc           #86                 // String desc:
+      93: ldc           #119                // String Enables faster structure search. Default: true
+      95: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+      98: aload         4
+     100: ldc           #121                // String useFastStructureLookup
+     102: aload_0
+     103: getfield      #17                 // Field useFastStructureLookup:Z
+     106: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     109: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     112: aload_1
+     113: ldc           #121                // String useFastStructureLookup
+     115: aload         4
+     117: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     120: new           #83                 // class com/google/gson/JsonObject
+     123: dup
+     124: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     127: astore        5
+     129: aload         5
+     131: ldc           #86                 // String desc:
+     133: ldc           #122                // String Specifies the maximum radius map items can search for structures. Lowering this value reduces the time structure searches stall the server but decreases the range in which structures are found. Vanilla: 50, Default: 40
+     135: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     138: aload         5
+     140: ldc           #124                // String mapSearchRadius
+     142: aload_0
+     143: getfield      #26                 // Field mapSearchRadius:I
+     146: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     149: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     152: aload_1
+     153: ldc           #124                // String mapSearchRadius
+     155: aload         5
+     157: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     160: new           #83                 // class com/google/gson/JsonObject
+     163: dup
+     164: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     167: astore        6
+     169: aload         6
+     171: ldc           #86                 // String desc:
+     173: ldc           #125                // String Sets the search radius for the locate structure command. Vanilla: 100, Default: 110
+     175: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     178: aload         6
+     180: ldc           #127                // String locateSearchRadius
+     182: aload_0
+     183: getfield      #32                 // Field locateSearchRadius:I
+     186: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     189: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     192: aload_1
+     193: ldc           #127                // String locateSearchRadius
+     195: aload         6
+     197: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     200: new           #83                 // class com/google/gson/JsonObject
+     203: dup
+     204: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     207: astore        7
+     209: aload         7
+     211: ldc           #86                 // String desc:
+     213: ldc           #128                // String Sets the global maximum structure search radius. The vanilla locate command uses 100. Lowering this value reduces the time structure searches stall the server but decreases the range in which structures are found. Default: 70
+     215: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     218: aload         7
+     220: ldc           #130                // String globalSearchRadius
+     222: aload_0
+     223: getfield      #29                 // Field globalSearchRadius:I
+     226: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     229: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     232: aload_1
+     233: ldc           #130                // String globalSearchRadius
+     235: aload         7
+     237: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     240: new           #83                 // class com/google/gson/JsonObject
+     243: dup
+     244: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     247: astore        8
+     249: aload         8
+     251: ldc           #86                 // String desc:
+     253: ldc           #131                // String Adjusts the structure spacing (average spawn distance) and separation (minimum spawn distance). Increasing the value makes structures spawn farther apart, while decreasing it makes them spawn closer together. Vanilla Default: 1.0
+     255: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     258: aload         8
+     260: ldc           #133                // String spacingSeparationModifier
+     262: aload_0
+     263: getfield      #35                 // Field spacingSeparationModifier:D
+     266: invokestatic  #134                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     269: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     272: aload_1
+     273: ldc           #133                // String spacingSeparationModifier
+     275: aload         8
+     277: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     280: new           #83                 // class com/google/gson/JsonObject
+     283: dup
+     284: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     287: astore        9
+     289: aload         9
+     291: ldc           #86                 // String desc:
+     293: ldc           #139                // String Structure sets use a salt value to determine the randomness of their placement. Duplicated use of the same salt value can cause structures to spawn on the same place, this config enables logging duplicated salt values. Default: true
+     295: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     298: aload         9
+     300: ldc           #141                // String logDuplicatedSalt
+     302: aload_0
+     303: getfield      #69                 // Field logDuplicatedSalt:Z
+     306: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     309: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     312: aload_1
+     313: ldc           #141                // String logDuplicatedSalt
+     315: aload         9
+     317: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     320: new           #83                 // class com/google/gson/JsonObject
+     323: dup
+     324: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     327: astore        10
+     329: aload         10
+     331: ldc           #86                 // String desc:
+     333: ldc           #142                // String Set a minimum distance in blocks between structures generated which prevents structure overlaps(not 100% but close). Not recommended to use higher values, as that may strain the worldgen due to repeated structure retries and can prevent surfaces structures when there is some in a cave below. If you want structures more spaced out than this use the spacing/seperation modifier. Default: 32 blocks, range 16-512
+     335: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     338: aload         10
+     340: ldc           #144                // String minimumStructureDistance
+     342: aload_0
+     343: getfield      #39                 // Field minimumStructureDistance:I
+     346: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     349: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     352: aload         10
+     354: ldc           #145                // String enabled
+     356: aload_0
+     357: getfield      #42                 // Field minimumStructureDistanceEnabled:Z
+     360: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     363: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     366: aload         10
+     368: ldc           #147                // String logOverlaps
+     370: aload_0
+     371: getfield      #45                 // Field minimumStructureDistanceLogging:Z
+     374: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     377: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     380: aload_1
+     381: ldc           #144                // String minimumStructureDistance
+     383: aload         10
+     385: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     388: new           #83                 // class com/google/gson/JsonObject
+     391: dup
+     392: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     395: astore        11
+     397: aload         11
+     399: ldc           #86                 // String desc:
+     401: ldc           #149                // String Automatically analyzes present biomes and adjust structure spawning to include fitting ones, Note that this may also spawn structures in undesired biomes, check the logging and adjust the strictness up/down to achieve a good result. Default: false
+     403: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     406: aload         11
+     408: ldc           #151                // String enableBiomeCompat
+     410: aload_0
+     411: getfield      #72                 // Field autoBiomeCompat:Z
+     414: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     417: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     420: aload         11
+     422: ldc           #153                // String enableLogging
+     424: aload_0
+     425: getfield      #75                 // Field autoBiomeCompatLogging:Z
+     428: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     431: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     434: new           #83                 // class com/google/gson/JsonObject
+     437: dup
+     438: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     441: astore        12
+     443: aload         12
+     445: ldc           #86                 // String desc:
+     447: ldc           #155                // String Sets a modifier for how strict the autoBiomeCompat is, lower allows adding less similar biomes to be added. E.g. 0.5 decreases the similarity requirements by 50% . Default: 1.2
+     449: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     452: aload         12
+     454: ldc           #157                // String autoBiomeCompatStrictness
+     456: aload_0
+     457: getfield      #80                 // Field autoBiomeCompatStrictness:D
+     460: invokestatic  #134                // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     463: invokevirtual #116                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Number;)V
+     466: aload         11
+     468: ldc           #158                // String strictness
+     470: aload         12
+     472: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     475: new           #83                 // class com/google/gson/JsonObject
+     478: dup
+     479: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     482: astore        13
+     484: aload         13
+     486: ldc           #86                 // String desc:
+     488: ldc           #160                // String List of allowed dimensions for automatic structure compat, by default only vanilla dimensions
+     490: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     493: new           #162                // class com/google/gson/JsonArray
+     496: dup
+     497: invokespecial #164                // Method com/google/gson/JsonArray."<init>":()V
+     500: astore        14
+     502: aload_0
+     503: getfield      #65                 // Field dimensionWhitelist:Ljava/util/Set;
+     506: invokeinterface #165,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     511: astore        15
+     513: aload         15
+     515: invokeinterface #171,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     520: ifeq          545
+     523: aload         15
+     525: invokeinterface #177,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     530: checkcast     #181                // class java/lang/String
+     533: astore        16
+     535: aload         14
+     537: aload         16
+     539: invokevirtual #183                // Method com/google/gson/JsonArray.add:(Ljava/lang/String;)V
+     542: goto          513
+     545: aload         13
+     547: ldc           #186                // String dimensions
+     549: aload         14
+     551: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     554: aload         11
+     556: ldc           #188                // String dimensionWhitelist
+     558: aload         13
+     560: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     563: aload_1
+     564: ldc           #189                // String autoBiomeCompat
+     566: aload         11
+     568: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     571: new           #83                 // class com/google/gson/JsonObject
+     574: dup
+     575: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     578: astore        15
+     580: aload         15
+     582: ldc           #86                 // String desc:
+     584: ldc           #190                // String Prevents crashes due to missing registry entries (e.g., changes in mod structure IDs) by converting them into log error messages instead. Default: true
+     586: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     589: aload         15
+     591: ldc           #192                // String warnMissingRegistryEntry
+     593: aload_0
+     594: getfield      #20                 // Field warnMissingRegistryEntry:Z
+     597: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     600: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     603: aload_1
+     604: ldc           #192                // String warnMissingRegistryEntry
+     606: aload         15
+     608: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     611: new           #83                 // class com/google/gson/JsonObject
+     614: dup
+     615: invokespecial #85                 // Method com/google/gson/JsonObject."<init>":()V
+     618: astore        16
+     620: aload         16
+     622: ldc           #86                 // String desc:
+     624: ldc           #193                // String Prevents crashes caused by multithreaded access to thread-specific random number generators. Default: true
+     626: invokevirtual #90                 // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/String;)V
+     629: aload         16
+     631: ldc           #195                // String disableLegacyRandomCrashes
+     633: aload_0
+     634: getfield      #23                 // Field disableLegacyRandomCrashes:Z
+     637: invokestatic  #95                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     640: invokevirtual #101                // Method com/google/gson/JsonObject.addProperty:(Ljava/lang/String;Ljava/lang/Boolean;)V
+     643: aload_1
+     644: ldc           #195                // String disableLegacyRandomCrashes
+     646: aload         16
+     648: invokevirtual #104                // Method com/google/gson/JsonObject.add:(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+     651: aload_1
+     652: areturn
+
+  public void deserialize(com.google.gson.JsonObject);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: ldc           #94                 // String structurePlacementLogging
+       4: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+       7: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      10: ldc           #94                 // String structurePlacementLogging
+      12: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      15: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+      18: putfield      #7                  // Field structurePlacementLogging:Z
+      21: aload_0
+      22: aload_1
+      23: ldc           #110                // String structureSearchTimeout
+      25: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      28: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      31: ldc           #110                // String structureSearchTimeout
+      33: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      36: invokevirtual #209                // Method com/google/gson/JsonElement.getAsInt:()I
+      39: putfield      #13                 // Field structureSearchTimeout:I
+      42: aload_0
+      43: aload_1
+      44: ldc           #121                // String useFastStructureLookup
+      46: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      49: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      52: ldc           #121                // String useFastStructureLookup
+      54: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      57: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+      60: putfield      #17                 // Field useFastStructureLookup:Z
+      63: aload_0
+      64: aload_1
+      65: ldc           #192                // String warnMissingRegistryEntry
+      67: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      70: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      73: ldc           #192                // String warnMissingRegistryEntry
+      75: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      78: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+      81: putfield      #20                 // Field warnMissingRegistryEntry:Z
+      84: aload_0
+      85: aload_1
+      86: ldc           #195                // String disableLegacyRandomCrashes
+      88: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      91: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+      94: ldc           #195                // String disableLegacyRandomCrashes
+      96: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+      99: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     102: putfield      #23                 // Field disableLegacyRandomCrashes:Z
+     105: aload_0
+     106: aload_1
+     107: ldc           #124                // String mapSearchRadius
+     109: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     112: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     115: ldc           #124                // String mapSearchRadius
+     117: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     120: invokevirtual #209                // Method com/google/gson/JsonElement.getAsInt:()I
+     123: putfield      #26                 // Field mapSearchRadius:I
+     126: aload_0
+     127: aload_1
+     128: ldc           #130                // String globalSearchRadius
+     130: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     133: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     136: ldc           #130                // String globalSearchRadius
+     138: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     141: invokevirtual #209                // Method com/google/gson/JsonElement.getAsInt:()I
+     144: putfield      #29                 // Field globalSearchRadius:I
+     147: aload_0
+     148: aload_1
+     149: ldc           #127                // String locateSearchRadius
+     151: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     154: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     157: ldc           #127                // String locateSearchRadius
+     159: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     162: invokevirtual #209                // Method com/google/gson/JsonElement.getAsInt:()I
+     165: putfield      #32                 // Field locateSearchRadius:I
+     168: aload_0
+     169: aload_1
+     170: ldc           #133                // String spacingSeparationModifier
+     172: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     175: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     178: ldc           #133                // String spacingSeparationModifier
+     180: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     183: invokevirtual #213                // Method com/google/gson/JsonElement.getAsDouble:()D
+     186: putfield      #35                 // Field spacingSeparationModifier:D
+     189: aload_0
+     190: sipush        512
+     193: bipush        16
+     195: aload_1
+     196: ldc           #144                // String minimumStructureDistance
+     198: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     201: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     204: ldc           #144                // String minimumStructureDistance
+     206: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     209: invokevirtual #209                // Method com/google/gson/JsonElement.getAsInt:()I
+     212: invokestatic  #217                // Method java/lang/Math.max:(II)I
+     215: invokestatic  #223                // Method java/lang/Math.min:(II)I
+     218: putfield      #39                 // Field minimumStructureDistance:I
+     221: aload_0
+     222: aload_1
+     223: ldc           #144                // String minimumStructureDistance
+     225: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     228: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     231: ldc           #145                // String enabled
+     233: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     236: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     239: putfield      #42                 // Field minimumStructureDistanceEnabled:Z
+     242: aload_0
+     243: aload_1
+     244: ldc           #144                // String minimumStructureDistance
+     246: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     249: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     252: ldc           #147                // String logOverlaps
+     254: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     257: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     260: putfield      #45                 // Field minimumStructureDistanceLogging:Z
+     263: aload_0
+     264: aload_1
+     265: ldc           #141                // String logDuplicatedSalt
+     267: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     270: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     273: ldc           #141                // String logDuplicatedSalt
+     275: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     278: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     281: putfield      #69                 // Field logDuplicatedSalt:Z
+     284: aload_0
+     285: aload_1
+     286: ldc           #189                // String autoBiomeCompat
+     288: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     291: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     294: ldc           #151                // String enableBiomeCompat
+     296: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     299: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     302: putfield      #72                 // Field autoBiomeCompat:Z
+     305: aload_0
+     306: aload_1
+     307: ldc           #189                // String autoBiomeCompat
+     309: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     312: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     315: ldc           #153                // String enableLogging
+     317: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     320: invokevirtual #206                // Method com/google/gson/JsonElement.getAsBoolean:()Z
+     323: putfield      #75                 // Field autoBiomeCompatLogging:Z
+     326: aload_0
+     327: aload_1
+     328: ldc           #189                // String autoBiomeCompat
+     330: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     333: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     336: ldc           #158                // String strictness
+     338: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     341: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     344: ldc           #157                // String autoBiomeCompatStrictness
+     346: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     349: invokevirtual #213                // Method com/google/gson/JsonElement.getAsDouble:()D
+     352: putfield      #80                 // Field autoBiomeCompatStrictness:D
+     355: aload_0
+     356: new           #48                 // class java/util/HashSet
+     359: dup
+     360: invokespecial #226                // Method java/util/HashSet."<init>":()V
+     363: putfield      #65                 // Field dimensionWhitelist:Ljava/util/Set;
+     366: aload_1
+     367: ldc           #189                // String autoBiomeCompat
+     369: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     372: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     375: ldc           #188                // String dimensionWhitelist
+     377: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     380: invokevirtual #200                // Method com/google/gson/JsonElement.getAsJsonObject:()Lcom/google/gson/JsonObject;
+     383: ldc           #186                // String dimensions
+     385: invokevirtual #196                // Method com/google/gson/JsonObject.get:(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+     388: invokevirtual #227                // Method com/google/gson/JsonElement.getAsJsonArray:()Lcom/google/gson/JsonArray;
+     391: aload_0
+     392: invokedynamic #231,  0            // InvokeDynamic #0:accept:(Lcom/structureessentials/config/CommonConfiguration;)Ljava/util/function/Consumer;
+     397: invokevirtual #235                // Method com/google/gson/JsonArray.forEach:(Ljava/util/function/Consumer;)V
+     400: return
+
+  private void lambda$deserialize$0(com.google.gson.JsonElement);
+    Code:
+       0: aload_0
+       1: getfield      #65                 // Field dimensionWhitelist:Ljava/util/Set;
+       4: aload_1
+       5: invokevirtual #239                // Method com/google/gson/JsonElement.getAsString:()Ljava/lang/String;
+       8: invokeinterface #243,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      13: pop
+      14: return
+
+  static {};
+    Code:
+       0: new           #246                // class com/cupboard/config/CupboardConfig
+       3: dup
+       4: ldc           #250                // String structureessentials
+       6: new           #8                  // class com/structureessentials/config/CommonConfiguration
+       9: dup
+      10: invokespecial #252                // Method "<init>":()V
+      13: invokespecial #253                // Method com/cupboard/config/CupboardConfig."<init>":(Ljava/lang/String;Lcom/cupboard/config/ICommonConfig;)V
+      16: putstatic     #256                // Field config:Lcom/cupboard/config/CupboardConfig;
+      19: return
+}

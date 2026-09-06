@@ -1,0 +1,894 @@
+Classfile structureessentials-1.21.1-5.0.jar!/com/structureessentials/mixin/StructureStartMinDistMixin.class
+  Last modified Apr 21, 2026; size 9287 bytes
+  SHA-256 checksum 2dddeff399fb0db61ac8fc4371fa0e8f85339cf3a685cb16467c5d517978c9e1
+  Compiled from "StructureStartMinDistMixin.java"
+public abstract class com.structureessentials.mixin.StructureStartMinDistMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #68                         // com/structureessentials/mixin/StructureStartMinDistMixin
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 4, attributes: 4
+Constant pool:
+    #1 = Methodref          #2.#3         // java/lang/Object."<init>":()V
+    #2 = Class              #4            // java/lang/Object
+    #3 = NameAndType        #5:#6         // "<init>":()V
+    #4 = Utf8               java/lang/Object
+    #5 = Utf8               <init>
+    #6 = Utf8               ()V
+    #7 = Methodref          #8.#9         // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+    #8 = Class              #10           // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+    #9 = NameAndType        #11:#12       // getReturnValue:()Ljava/lang/Object;
+   #10 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable
+   #11 = Utf8               getReturnValue
+   #12 = Utf8               ()Ljava/lang/Object;
+   #13 = Fieldref           #14.#15       // net/minecraft/world/level/levelgen/structure/StructureStart.INVALID_START:Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #14 = Class              #16           // net/minecraft/world/level/levelgen/structure/StructureStart
+   #15 = NameAndType        #17:#18       // INVALID_START:Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #16 = Utf8               net/minecraft/world/level/levelgen/structure/StructureStart
+   #17 = Utf8               INVALID_START
+   #18 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+   #19 = Fieldref           #20.#21       // com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+   #20 = Class              #22           // com/structureessentials/config/CommonConfiguration
+   #21 = NameAndType        #23:#24       // config:Lcom/cupboard/config/CupboardConfig;
+   #22 = Utf8               com/structureessentials/config/CommonConfiguration
+   #23 = Utf8               config
+   #24 = Utf8               Lcom/cupboard/config/CupboardConfig;
+   #25 = Methodref          #26.#27       // com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+   #26 = Class              #28           // com/cupboard/config/CupboardConfig
+   #27 = NameAndType        #29:#30       // getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+   #28 = Utf8               com/cupboard/config/CupboardConfig
+   #29 = Utf8               getCommonConfig
+   #30 = Utf8               ()Lcom/cupboard/config/ICommonConfig;
+   #31 = Fieldref           #20.#32       // com/structureessentials/config/CommonConfiguration.minimumStructureDistanceEnabled:Z
+   #32 = NameAndType        #33:#34       // minimumStructureDistanceEnabled:Z
+   #33 = Utf8               minimumStructureDistanceEnabled
+   #34 = Utf8               Z
+   #35 = Class              #36           // com/structureessentials/IGeneratorNearbyStructureHolder
+   #36 = Utf8               com/structureessentials/IGeneratorNearbyStructureHolder
+   #37 = Fieldref           #20.#38       // com/structureessentials/config/CommonConfiguration.minimumStructureDistanceLogging:Z
+   #38 = NameAndType        #39:#34       // minimumStructureDistanceLogging:Z
+   #39 = Utf8               minimumStructureDistanceLogging
+   #40 = Fieldref           #41.#42       // com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+   #41 = Class              #43           // com/structureessentials/StructureEssentials
+   #42 = NameAndType        #44:#45       // LOGGER:Lorg/apache/logging/log4j/Logger;
+   #43 = Utf8               com/structureessentials/StructureEssentials
+   #44 = Utf8               LOGGER
+   #45 = Utf8               Lorg/apache/logging/log4j/Logger;
+   #46 = Methodref          #47.#48       // java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #47 = Class              #49           // java/lang/String
+   #48 = NameAndType        #50:#51       // valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+   #49 = Utf8               java/lang/String
+   #50 = Utf8               valueOf
+   #51 = Utf8               (Ljava/lang/Object;)Ljava/lang/String;
+   #52 = InvokeDynamic      #0:#53        // #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #53 = NameAndType        #54:#55       // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+   #54 = Utf8               makeConcatWithConstants
+   #55 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+   #56 = InterfaceMethodref #57.#58       // org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+   #57 = Class              #59           // org/apache/logging/log4j/Logger
+   #58 = NameAndType        #60:#61       // warn:(Ljava/lang/String;)V
+   #59 = Utf8               org/apache/logging/log4j/Logger
+   #60 = Utf8               warn
+   #61 = Utf8               (Ljava/lang/String;)V
+   #62 = Fieldref           #20.#63       // com/structureessentials/config/CommonConfiguration.minimumStructureDistance:I
+   #63 = NameAndType        #64:#65       // minimumStructureDistance:I
+   #64 = Utf8               minimumStructureDistance
+   #65 = Utf8               I
+   #66 = Integer            3000000
+   #67 = Methodref          #68.#69       // com/structureessentials/mixin/StructureStartMinDistMixin.getModifiedStructureSettings:()Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+   #68 = Class              #70           // com/structureessentials/mixin/StructureStartMinDistMixin
+   #69 = NameAndType        #71:#72       // getModifiedStructureSettings:()Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+   #70 = Utf8               com/structureessentials/mixin/StructureStartMinDistMixin
+   #71 = Utf8               getModifiedStructureSettings
+   #72 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+   #73 = Methodref          #74.#75       // net/minecraft/world/level/levelgen/structure/Structure$StructureSettings.step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #74 = Class              #76           // net/minecraft/world/level/levelgen/structure/Structure$StructureSettings
+   #75 = NameAndType        #77:#78       // step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #76 = Utf8               net/minecraft/world/level/levelgen/structure/Structure$StructureSettings
+   #77 = Utf8               step
+   #78 = Utf8               ()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #79 = Fieldref           #80.#81       // net/minecraft/world/level/levelgen/GenerationStep$Decoration.SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #80 = Class              #82           // net/minecraft/world/level/levelgen/GenerationStep$Decoration
+   #81 = NameAndType        #83:#84       // SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #82 = Utf8               net/minecraft/world/level/levelgen/GenerationStep$Decoration
+   #83 = Utf8               SURFACE_STRUCTURES
+   #84 = Utf8               Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+   #85 = Fieldref           #86.#87       // net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #86 = Class              #88           // net/minecraft/core/registries/Registries
+   #87 = NameAndType        #89:#90       // STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+   #88 = Utf8               net/minecraft/core/registries/Registries
+   #89 = Utf8               STRUCTURE
+   #90 = Utf8               Lnet/minecraft/resources/ResourceKey;
+   #91 = InterfaceMethodref #92.#93       // net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #92 = Class              #94           // net/minecraft/core/RegistryAccess
+   #93 = NameAndType        #95:#96       // registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #94 = Utf8               net/minecraft/core/RegistryAccess
+   #95 = Utf8               registry
+   #96 = Utf8               (Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+   #97 = Methodref          #98.#99       // java/util/Optional.get:()Ljava/lang/Object;
+   #98 = Class              #100          // java/util/Optional
+   #99 = NameAndType        #101:#12      // get:()Ljava/lang/Object;
+  #100 = Utf8               java/util/Optional
+  #101 = Utf8               get
+  #102 = Class              #103          // net/minecraft/core/Registry
+  #103 = Utf8               net/minecraft/core/Registry
+  #104 = Class              #105          // net/minecraft/world/level/levelgen/structure/Structure
+  #105 = Utf8               net/minecraft/world/level/levelgen/structure/Structure
+  #106 = InterfaceMethodref #102.#107     // net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #107 = NameAndType        #108:#109     // getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #108 = Utf8               getKey
+  #109 = Utf8               (Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+  #110 = Methodref          #111.#112     // net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+  #111 = Class              #113          // net/minecraft/resources/ResourceLocation
+  #112 = NameAndType        #114:#115     // toString:()Ljava/lang/String;
+  #113 = Utf8               net/minecraft/resources/ResourceLocation
+  #114 = Utf8               toString
+  #115 = Utf8               ()Ljava/lang/String;
+  #116 = InvokeDynamic      #1:#53        // #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #117 = Methodref          #14.#118      // net/minecraft/world/level/levelgen/structure/StructureStart.getPieces:()Ljava/util/List;
+  #118 = NameAndType        #119:#120     // getPieces:()Ljava/util/List;
+  #119 = Utf8               getPieces
+  #120 = Utf8               ()Ljava/util/List;
+  #121 = InterfaceMethodref #122.#123     // java/util/List.iterator:()Ljava/util/Iterator;
+  #122 = Class              #124          // java/util/List
+  #123 = NameAndType        #125:#126     // iterator:()Ljava/util/Iterator;
+  #124 = Utf8               java/util/List
+  #125 = Utf8               iterator
+  #126 = Utf8               ()Ljava/util/Iterator;
+  #127 = InterfaceMethodref #128.#129     // java/util/Iterator.hasNext:()Z
+  #128 = Class              #130          // java/util/Iterator
+  #129 = NameAndType        #131:#132     // hasNext:()Z
+  #130 = Utf8               java/util/Iterator
+  #131 = Utf8               hasNext
+  #132 = Utf8               ()Z
+  #133 = InterfaceMethodref #128.#134     // java/util/Iterator.next:()Ljava/lang/Object;
+  #134 = NameAndType        #135:#12      // next:()Ljava/lang/Object;
+  #135 = Utf8               next
+  #136 = Class              #137          // net/minecraft/world/level/levelgen/structure/StructurePiece
+  #137 = Utf8               net/minecraft/world/level/levelgen/structure/StructurePiece
+  #138 = Methodref          #136.#139     // net/minecraft/world/level/levelgen/structure/StructurePiece.getLocatorPosition:()Lnet/minecraft/core/BlockPos;
+  #139 = NameAndType        #140:#141     // getLocatorPosition:()Lnet/minecraft/core/BlockPos;
+  #140 = Utf8               getLocatorPosition
+  #141 = Utf8               ()Lnet/minecraft/core/BlockPos;
+  #142 = Methodref          #143.#144     // net/minecraft/core/BlockPos.getX:()I
+  #143 = Class              #145          // net/minecraft/core/BlockPos
+  #144 = NameAndType        #146:#147     // getX:()I
+  #145 = Utf8               net/minecraft/core/BlockPos
+  #146 = Utf8               getX
+  #147 = Utf8               ()I
+  #148 = Methodref          #143.#149     // net/minecraft/core/BlockPos.getY:()I
+  #149 = NameAndType        #150:#147     // getY:()I
+  #150 = Utf8               getY
+  #151 = Methodref          #143.#152     // net/minecraft/core/BlockPos.getZ:()I
+  #152 = NameAndType        #153:#147     // getZ:()I
+  #153 = Utf8               getZ
+  #154 = Methodref          #143.#155     // net/minecraft/core/BlockPos.asLong:(III)J
+  #155 = NameAndType        #156:#157     // asLong:(III)J
+  #156 = Utf8               asLong
+  #157 = Utf8               (III)J
+  #158 = InterfaceMethodref #35.#159      // com/structureessentials/IGeneratorNearbyStructureHolder.getNearby:(J)Ljava/lang/String;
+  #159 = NameAndType        #160:#161     // getNearby:(J)Ljava/lang/String;
+  #160 = Utf8               getNearby
+  #161 = Utf8               (J)Ljava/lang/String;
+  #162 = Methodref          #136.#163     // net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #163 = NameAndType        #164:#165     // getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #164 = Utf8               getBoundingBox
+  #165 = Utf8               ()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #166 = Methodref          #167.#168     // net/minecraft/world/level/levelgen/structure/BoundingBox.getXSpan:()I
+  #167 = Class              #169          // net/minecraft/world/level/levelgen/structure/BoundingBox
+  #168 = NameAndType        #170:#147     // getXSpan:()I
+  #169 = Utf8               net/minecraft/world/level/levelgen/structure/BoundingBox
+  #170 = Utf8               getXSpan
+  #171 = Methodref          #167.#172     // net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+  #172 = NameAndType        #173:#147     // getYSpan:()I
+  #173 = Utf8               getYSpan
+  #174 = Methodref          #167.#175     // net/minecraft/world/level/levelgen/structure/BoundingBox.getZSpan:()I
+  #175 = NameAndType        #176:#147     // getZSpan:()I
+  #176 = Utf8               getZSpan
+  #177 = Methodref          #68.#178      // com/structureessentials/mixin/StructureStartMinDistMixin.getBoundingBoxCorners:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+  #178 = NameAndType        #179:#180     // getBoundingBoxCorners:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+  #179 = Utf8               getBoundingBoxCorners
+  #180 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+  #181 = Methodref          #47.#182      // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #182 = NameAndType        #183:#184     // equals:(Ljava/lang/Object;)Z
+  #183 = Utf8               equals
+  #184 = Utf8               (Ljava/lang/Object;)Z
+  #185 = InvokeDynamic      #2:#186       // #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #186 = NameAndType        #54:#187      // makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #187 = Utf8               (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  #188 = Methodref          #8.#189       // org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+  #189 = NameAndType        #190:#191     // setReturnValue:(Ljava/lang/Object;)V
+  #190 = Utf8               setReturnValue
+  #191 = Utf8               (Ljava/lang/Object;)V
+  #192 = InterfaceMethodref #35.#193      // com/structureessentials/IGeneratorNearbyStructureHolder.setNearby:(JLjava/lang/String;)V
+  #193 = NameAndType        #194:#195     // setNearby:(JLjava/lang/String;)V
+  #194 = Utf8               setNearby
+  #195 = Utf8               (JLjava/lang/String;)V
+  #196 = Methodref          #167.#197     // net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+  #197 = NameAndType        #198:#147     // minX:()I
+  #198 = Utf8               minX
+  #199 = Methodref          #167.#200     // net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+  #200 = NameAndType        #201:#147     // minY:()I
+  #201 = Utf8               minY
+  #202 = Methodref          #167.#203     // net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+  #203 = NameAndType        #204:#147     // minZ:()I
+  #204 = Utf8               minZ
+  #205 = Methodref          #143.#206     // net/minecraft/core/BlockPos."<init>":(III)V
+  #206 = NameAndType        #5:#207       // "<init>":(III)V
+  #207 = Utf8               (III)V
+  #208 = Methodref          #167.#209     // net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+  #209 = NameAndType        #210:#147     // maxZ:()I
+  #210 = Utf8               maxZ
+  #211 = Methodref          #167.#212     // net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+  #212 = NameAndType        #213:#147     // maxY:()I
+  #213 = Utf8               maxY
+  #214 = Methodref          #167.#215     // net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+  #215 = NameAndType        #216:#147     // maxX:()I
+  #216 = Utf8               maxX
+  #217 = InterfaceMethodref #122.#218     // java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+  #218 = NameAndType        #219:#220     // of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+  #219 = Utf8               of
+  #220 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+  #221 = Utf8               Code
+  #222 = Utf8               LineNumberTable
+  #223 = Utf8               LocalVariableTable
+  #224 = Utf8               this
+  #225 = Utf8               Lcom/structureessentials/mixin/StructureStartMinDistMixin;
+  #226 = Utf8               RuntimeVisibleAnnotations
+  #227 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #228 = Utf8               checkOtherStructuresNearby
+  #229 = Utf8               (Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;JLnet/minecraft/world/level/ChunkPos;ILnet/minecraft/world/level/LevelHeightAccessor;Ljava/util/function/Predicate;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+  #230 = Utf8               name
+  #231 = Utf8               Ljava/lang/String;
+  #232 = Utf8               pos
+  #233 = Utf8               Lnet/minecraft/core/BlockPos;
+  #234 = Utf8               center
+  #235 = Utf8               nearby
+  #236 = Utf8               piece
+  #237 = Utf8               Lnet/minecraft/world/level/levelgen/structure/StructurePiece;
+  #238 = Utf8               registryAccess
+  #239 = Utf8               Lnet/minecraft/core/RegistryAccess;
+  #240 = Utf8               generator
+  #241 = Utf8               Lnet/minecraft/world/level/chunk/ChunkGenerator;
+  #242 = Utf8               biomeSource
+  #243 = Utf8               Lnet/minecraft/world/level/biome/BiomeSource;
+  #244 = Utf8               p_226600_
+  #245 = Utf8               Lnet/minecraft/world/level/levelgen/RandomState;
+  #246 = Utf8               p_226601_
+  #247 = Utf8               Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+  #248 = Utf8               p_226602_
+  #249 = Utf8               J
+  #250 = Utf8               p_226603_
+  #251 = Utf8               Lnet/minecraft/world/level/ChunkPos;
+  #252 = Utf8               p_226604_
+  #253 = Utf8               p_226605_
+  #254 = Utf8               Lnet/minecraft/world/level/LevelHeightAccessor;
+  #255 = Utf8               p_226606_
+  #256 = Utf8               Ljava/util/function/Predicate;
+  #257 = Utf8               cir
+  #258 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+  #259 = Utf8               nearbyStructureHolder
+  #260 = Utf8               Lcom/structureessentials/IGeneratorNearbyStructureHolder;
+  #261 = Utf8               distance
+  #262 = Utf8               xzOffset
+  #263 = Utf8               yOffset
+  #264 = Utf8               regID
+  #265 = Utf8               Lnet/minecraft/resources/ResourceLocation;
+  #266 = Utf8               LocalVariableTypeTable
+  #267 = Utf8               Ljava/util/function/Predicate<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+  #268 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;
+  #269 = Utf8               StackMapTable
+  #270 = Class              #271          // net/minecraft/world/level/chunk/ChunkGenerator
+  #271 = Utf8               net/minecraft/world/level/chunk/ChunkGenerator
+  #272 = Class              #273          // net/minecraft/world/level/biome/BiomeSource
+  #273 = Utf8               net/minecraft/world/level/biome/BiomeSource
+  #274 = Class              #275          // net/minecraft/world/level/levelgen/RandomState
+  #275 = Utf8               net/minecraft/world/level/levelgen/RandomState
+  #276 = Class              #277          // net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager
+  #277 = Utf8               net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager
+  #278 = Class              #279          // net/minecraft/world/level/ChunkPos
+  #279 = Utf8               net/minecraft/world/level/ChunkPos
+  #280 = Class              #281          // net/minecraft/world/level/LevelHeightAccessor
+  #281 = Utf8               net/minecraft/world/level/LevelHeightAccessor
+  #282 = Class              #283          // java/util/function/Predicate
+  #283 = Utf8               java/util/function/Predicate
+  #284 = Utf8               Signature
+  #285 = Utf8               (Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;JLnet/minecraft/world/level/ChunkPos;ILnet/minecraft/world/level/LevelHeightAccessor;Ljava/util/function/Predicate<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;)V
+  #286 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #287 = Utf8               method
+  #288 = Utf8               generate
+  #289 = Utf8               at
+  #290 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #291 = Utf8               value
+  #292 = Utf8               RETURN
+  #293 = Utf8               cancellable
+  #294 = Integer            1
+  #295 = Utf8               box
+  #296 = Utf8               Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+  #297 = Utf8               (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List<Lnet/minecraft/core/BlockPos;>;
+  #298 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #299 = Utf8               SourceFile
+  #300 = Utf8               StructureStartMinDistMixin.java
+  #301 = Utf8               RuntimeInvisibleAnnotations
+  #302 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #303 = Utf8               Lnet/minecraft/world/level/levelgen/structure/Structure;
+  #304 = Utf8               BootstrapMethods
+  #305 = String             #306          // Skipping structure minimum distance check, invalid generator: \u0001
+  #306 = Utf8               Skipping structure minimum distance check, invalid generator: \u0001
+  #307 = String             #308          // unknown:\u0001
+  #308 = Utf8               unknown:\u0001
+  #309 = String             #310          // Prevented structure overlap for: \u0001 at: \u0001 existing structure: \u0001
+  #310 = Utf8               Prevented structure overlap for: \u0001 at: \u0001 existing structure: \u0001
+  #311 = MethodHandle       6:#312        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #312 = Methodref          #313.#314     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #313 = Class              #315          // java/lang/invoke/StringConcatFactory
+  #314 = NameAndType        #54:#316      // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #315 = Utf8               java/lang/invoke/StringConcatFactory
+  #316 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #317 = Utf8               InnerClasses
+  #318 = Utf8               StructureSettings
+  #319 = Class              #320          // net/minecraft/world/level/levelgen/GenerationStep
+  #320 = Utf8               net/minecraft/world/level/levelgen/GenerationStep
+  #321 = Utf8               Decoration
+  #322 = Class              #323          // java/lang/invoke/MethodHandles$Lookup
+  #323 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #324 = Class              #325          // java/lang/invoke/MethodHandles
+  #325 = Utf8               java/lang/invoke/MethodHandles
+  #326 = Utf8               Lookup
+{
+  public com.structureessentials.mixin.StructureStartMinDistMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 33: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/structureessentials/mixin/StructureStartMinDistMixin;
+
+  public abstract net.minecraft.world.level.levelgen.structure.Structure$StructureSettings getModifiedStructureSettings();
+    descriptor: ()Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #227()
+        org.spongepowered.asm.mixin.Shadow
+
+  private void checkOtherStructuresNearby(net.minecraft.core.RegistryAccess, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.world.level.biome.BiomeSource, net.minecraft.world.level.levelgen.RandomState, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager, long, net.minecraft.world.level.ChunkPos, int, net.minecraft.world.level.LevelHeightAccessor, java.util.function.Predicate<net.minecraft.core.Holder<net.minecraft.world.level.biome.Biome>>, org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.level.levelgen.structure.StructureStart>);
+    descriptor: (Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;JLnet/minecraft/world/level/ChunkPos;ILnet/minecraft/world/level/LevelHeightAccessor;Ljava/util/function/Predicate;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=5, locals=25, args_size=12
+         0: aload         12
+         2: invokevirtual #7                  // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+         5: getstatic     #13                 // Field net/minecraft/world/level/levelgen/structure/StructureStart.INVALID_START:Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+         8: if_acmpeq     26
+        11: getstatic     #19                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+        14: invokevirtual #25                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        17: checkcast     #20                 // class com/structureessentials/config/CommonConfiguration
+        20: getfield      #31                 // Field com/structureessentials/config/CommonConfiguration.minimumStructureDistanceEnabled:Z
+        23: ifne          27
+        26: return
+        27: aload_2
+        28: instanceof    #35                 // class com/structureessentials/IGeneratorNearbyStructureHolder
+        31: ifne          67
+        34: getstatic     #19                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+        37: invokevirtual #25                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        40: checkcast     #20                 // class com/structureessentials/config/CommonConfiguration
+        43: getfield      #37                 // Field com/structureessentials/config/CommonConfiguration.minimumStructureDistanceLogging:Z
+        46: ifeq          66
+        49: getstatic     #40                 // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+        52: aload_2
+        53: invokestatic  #46                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+        56: invokedynamic #52,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+        61: invokeinterface #56,  2           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+        66: return
+        67: aload_2
+        68: checkcast     #35                 // class com/structureessentials/IGeneratorNearbyStructureHolder
+        71: astore        13
+        73: getstatic     #19                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+        76: invokevirtual #25                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+        79: checkcast     #20                 // class com/structureessentials/config/CommonConfiguration
+        82: getfield      #62                 // Field com/structureessentials/config/CommonConfiguration.minimumStructureDistance:I
+        85: istore        14
+        87: ldc           #66                 // int 3000000
+        89: iload         14
+        91: imul
+        92: istore        15
+        94: aload_0
+        95: invokevirtual #67                 // Method getModifiedStructureSettings:()Lnet/minecraft/world/level/levelgen/structure/Structure$StructureSettings;
+        98: invokevirtual #73                 // Method net/minecraft/world/level/levelgen/structure/Structure$StructureSettings.step:()Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       101: getstatic     #79                 // Field net/minecraft/world/level/levelgen/GenerationStep$Decoration.SURFACE_STRUCTURES:Lnet/minecraft/world/level/levelgen/GenerationStep$Decoration;
+       104: if_acmpne     113
+       107: sipush        2000
+       110: goto          116
+       113: sipush        500
+       116: istore        16
+       118: aload_1
+       119: getstatic     #85                 // Field net/minecraft/core/registries/Registries.STRUCTURE:Lnet/minecraft/resources/ResourceKey;
+       122: invokeinterface #91,  2           // InterfaceMethod net/minecraft/core/RegistryAccess.registry:(Lnet/minecraft/resources/ResourceKey;)Ljava/util/Optional;
+       127: invokevirtual #97                 // Method java/util/Optional.get:()Ljava/lang/Object;
+       130: checkcast     #102                // class net/minecraft/core/Registry
+       133: aload_0
+       134: checkcast     #104                // class net/minecraft/world/level/levelgen/structure/Structure
+       137: invokeinterface #106,  2          // InterfaceMethod net/minecraft/core/Registry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+       142: astore        18
+       144: aload         18
+       146: ifnull        159
+       149: aload         18
+       151: invokevirtual #110                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       154: astore        17
+       156: goto          170
+       159: aload_0
+       160: invokestatic  #46                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       163: invokedynamic #116,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       168: astore        17
+       170: aload         12
+       172: invokevirtual #7                  // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+       175: checkcast     #14                 // class net/minecraft/world/level/levelgen/structure/StructureStart
+       178: invokevirtual #117                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getPieces:()Ljava/util/List;
+       181: invokeinterface #121,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       186: astore        19
+       188: aload         19
+       190: invokeinterface #127,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       195: ifeq          473
+       198: aload         19
+       200: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       205: checkcast     #136                // class net/minecraft/world/level/levelgen/structure/StructurePiece
+       208: astore        20
+       210: aload         20
+       212: invokevirtual #138                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getLocatorPosition:()Lnet/minecraft/core/BlockPos;
+       215: astore        21
+       217: aload         13
+       219: aload         21
+       221: invokevirtual #142                // Method net/minecraft/core/BlockPos.getX:()I
+       224: iload         15
+       226: iadd
+       227: iload         14
+       229: idiv
+       230: aload         21
+       232: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+       235: iload         16
+       237: iadd
+       238: iload         14
+       240: idiv
+       241: aload         21
+       243: invokevirtual #151                // Method net/minecraft/core/BlockPos.getZ:()I
+       246: iload         15
+       248: iadd
+       249: iload         14
+       251: idiv
+       252: invokestatic  #154                // Method net/minecraft/core/BlockPos.asLong:(III)J
+       255: invokeinterface #158,  3          // InterfaceMethod com/structureessentials/IGeneratorNearbyStructureHolder.getNearby:(J)Ljava/lang/String;
+       260: astore        22
+       262: aload         22
+       264: ifnonnull     409
+       267: aload         20
+       269: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       272: invokevirtual #166                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getXSpan:()I
+       275: bipush        8
+       277: if_icmpgt     306
+       280: aload         20
+       282: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       285: invokevirtual #171                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+       288: bipush        8
+       290: if_icmpgt     306
+       293: aload         20
+       295: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       298: invokevirtual #174                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getZSpan:()I
+       301: bipush        8
+       303: if_icmple     409
+       306: aload         20
+       308: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       311: invokestatic  #177                // Method getBoundingBoxCorners:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+       314: invokeinterface #121,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       319: astore        23
+       321: aload         23
+       323: invokeinterface #127,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       328: ifeq          409
+       331: aload         23
+       333: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       338: checkcast     #143                // class net/minecraft/core/BlockPos
+       341: astore        24
+       343: aload         13
+       345: aload         24
+       347: invokevirtual #142                // Method net/minecraft/core/BlockPos.getX:()I
+       350: iload         15
+       352: iadd
+       353: iload         14
+       355: idiv
+       356: aload         24
+       358: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+       361: iload         16
+       363: iadd
+       364: iload         14
+       366: idiv
+       367: aload         24
+       369: invokevirtual #151                // Method net/minecraft/core/BlockPos.getZ:()I
+       372: iload         15
+       374: iadd
+       375: iload         14
+       377: idiv
+       378: invokestatic  #154                // Method net/minecraft/core/BlockPos.asLong:(III)J
+       381: invokeinterface #158,  3          // InterfaceMethod com/structureessentials/IGeneratorNearbyStructureHolder.getNearby:(J)Ljava/lang/String;
+       386: astore        22
+       388: aload         22
+       390: ifnull        406
+       393: aload         22
+       395: aload         17
+       397: invokevirtual #181                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       400: ifne          406
+       403: goto          409
+       406: goto          321
+       409: aload         22
+       411: ifnull        470
+       414: aload         22
+       416: aload         17
+       418: invokevirtual #181                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       421: ifne          470
+       424: getstatic     #19                 // Field com/structureessentials/config/CommonConfiguration.config:Lcom/cupboard/config/CupboardConfig;
+       427: invokevirtual #25                 // Method com/cupboard/config/CupboardConfig.getCommonConfig:()Lcom/cupboard/config/ICommonConfig;
+       430: checkcast     #20                 // class com/structureessentials/config/CommonConfiguration
+       433: getfield      #37                 // Field com/structureessentials/config/CommonConfiguration.minimumStructureDistanceLogging:Z
+       436: ifeq          461
+       439: getstatic     #40                 // Field com/structureessentials/StructureEssentials.LOGGER:Lorg/apache/logging/log4j/Logger;
+       442: aload         17
+       444: aload         21
+       446: invokestatic  #46                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+       449: aload         22
+       451: invokedynamic #185,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+       456: invokeinterface #56,  2           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;)V
+       461: aload         12
+       463: getstatic     #13                 // Field net/minecraft/world/level/levelgen/structure/StructureStart.INVALID_START:Lnet/minecraft/world/level/levelgen/structure/StructureStart;
+       466: invokevirtual #188                // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.setReturnValue:(Ljava/lang/Object;)V
+       469: return
+       470: goto          188
+       473: aload         12
+       475: invokevirtual #7                  // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.getReturnValue:()Ljava/lang/Object;
+       478: checkcast     #14                 // class net/minecraft/world/level/levelgen/structure/StructureStart
+       481: invokevirtual #117                // Method net/minecraft/world/level/levelgen/structure/StructureStart.getPieces:()Ljava/util/List;
+       484: invokeinterface #121,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       489: astore        19
+       491: aload         19
+       493: invokeinterface #127,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       498: ifeq          694
+       501: aload         19
+       503: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       508: checkcast     #136                // class net/minecraft/world/level/levelgen/structure/StructurePiece
+       511: astore        20
+       513: aload         20
+       515: invokevirtual #138                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getLocatorPosition:()Lnet/minecraft/core/BlockPos;
+       518: astore        21
+       520: aload         13
+       522: aload         21
+       524: invokevirtual #142                // Method net/minecraft/core/BlockPos.getX:()I
+       527: iload         15
+       529: iadd
+       530: iload         14
+       532: idiv
+       533: aload         21
+       535: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+       538: sipush        2000
+       541: iadd
+       542: iload         14
+       544: idiv
+       545: aload         21
+       547: invokevirtual #151                // Method net/minecraft/core/BlockPos.getZ:()I
+       550: iload         15
+       552: iadd
+       553: iload         14
+       555: idiv
+       556: invokestatic  #154                // Method net/minecraft/core/BlockPos.asLong:(III)J
+       559: aload         17
+       561: invokeinterface #192,  4          // InterfaceMethod com/structureessentials/IGeneratorNearbyStructureHolder.setNearby:(JLjava/lang/String;)V
+       566: aload         20
+       568: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       571: invokevirtual #166                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getXSpan:()I
+       574: bipush        8
+       576: if_icmpgt     605
+       579: aload         20
+       581: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       584: invokevirtual #171                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getYSpan:()I
+       587: bipush        8
+       589: if_icmpgt     605
+       592: aload         20
+       594: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       597: invokevirtual #174                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.getZSpan:()I
+       600: bipush        8
+       602: if_icmple     691
+       605: aload         20
+       607: invokevirtual #162                // Method net/minecraft/world/level/levelgen/structure/StructurePiece.getBoundingBox:()Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+       610: invokestatic  #177                // Method getBoundingBoxCorners:(Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+       613: invokeinterface #121,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       618: astore        22
+       620: aload         22
+       622: invokeinterface #127,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+       627: ifeq          691
+       630: aload         22
+       632: invokeinterface #133,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       637: checkcast     #143                // class net/minecraft/core/BlockPos
+       640: astore        23
+       642: aload         13
+       644: aload         23
+       646: invokevirtual #142                // Method net/minecraft/core/BlockPos.getX:()I
+       649: iload         15
+       651: iadd
+       652: iload         14
+       654: idiv
+       655: aload         23
+       657: invokevirtual #148                // Method net/minecraft/core/BlockPos.getY:()I
+       660: sipush        2000
+       663: iadd
+       664: iload         14
+       666: idiv
+       667: aload         23
+       669: invokevirtual #151                // Method net/minecraft/core/BlockPos.getZ:()I
+       672: iload         15
+       674: iadd
+       675: iload         14
+       677: idiv
+       678: invokestatic  #154                // Method net/minecraft/core/BlockPos.asLong:(III)J
+       681: aload         17
+       683: invokeinterface #192,  4          // InterfaceMethod com/structureessentials/IGeneratorNearbyStructureHolder.setNearby:(JLjava/lang/String;)V
+       688: goto          620
+       691: goto          491
+       694: return
+      LineNumberTable:
+        line 54: 0
+        line 56: 26
+        line 59: 27
+        line 61: 34
+        line 63: 49
+        line 65: 66
+        line 68: 67
+        line 70: 73
+        line 71: 87
+        line 72: 94
+        line 75: 118
+        line 76: 144
+        line 78: 149
+        line 82: 159
+        line 85: 170
+        line 87: 210
+        line 88: 217
+        line 89: 221
+        line 90: 232
+        line 91: 243
+        line 89: 252
+        line 93: 262
+        line 95: 306
+        line 97: 343
+        line 98: 358
+        line 99: 369
+        line 97: 378
+        line 101: 388
+        line 103: 403
+        line 105: 406
+        line 108: 409
+        line 110: 424
+        line 112: 439
+        line 116: 461
+        line 117: 469
+        line 119: 470
+        line 121: 473
+        line 123: 513
+        line 124: 520
+        line 127: 566
+        line 129: 605
+        line 131: 642
+        line 133: 688
+        line 135: 691
+        line 136: 694
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          156       3    17  name   Ljava/lang/String;
+          343      63    24   pos   Lnet/minecraft/core/BlockPos;
+          217     253    21 center   Lnet/minecraft/core/BlockPos;
+          262     208    22 nearby   Ljava/lang/String;
+          210     260    20 piece   Lnet/minecraft/world/level/levelgen/structure/StructurePiece;
+          642      46    23   pos   Lnet/minecraft/core/BlockPos;
+          520     171    21 center   Lnet/minecraft/core/BlockPos;
+          513     178    20 piece   Lnet/minecraft/world/level/levelgen/structure/StructurePiece;
+            0     695     0  this   Lcom/structureessentials/mixin/StructureStartMinDistMixin;
+            0     695     1 registryAccess   Lnet/minecraft/core/RegistryAccess;
+            0     695     2 generator   Lnet/minecraft/world/level/chunk/ChunkGenerator;
+            0     695     3 biomeSource   Lnet/minecraft/world/level/biome/BiomeSource;
+            0     695     4 p_226600_   Lnet/minecraft/world/level/levelgen/RandomState;
+            0     695     5 p_226601_   Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;
+            0     695     6 p_226602_   J
+            0     695     8 p_226603_   Lnet/minecraft/world/level/ChunkPos;
+            0     695     9 p_226604_   I
+            0     695    10 p_226605_   Lnet/minecraft/world/level/LevelHeightAccessor;
+            0     695    11 p_226606_   Ljava/util/function/Predicate;
+            0     695    12   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;
+           73     622    13 nearbyStructureHolder   Lcom/structureessentials/IGeneratorNearbyStructureHolder;
+           87     608    14 distance   I
+           94     601    15 xzOffset   I
+          118     577    16 yOffset   I
+          170     525    17  name   Ljava/lang/String;
+          144     551    18 regID   Lnet/minecraft/resources/ResourceLocation;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0     695    11 p_226606_   Ljava/util/function/Predicate<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;
+            0     695    12   cir   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;
+      StackMapTable: number_of_entries = 21
+        frame_type = 26 /* same */
+        frame_type = 0 /* same */
+        frame_type = 38 /* same */
+        frame_type = 0 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 45
+          locals = [ class com/structureessentials/IGeneratorNearbyStructureHolder, int, int ]
+        frame_type = 66 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 254 /* append */
+          offset_delta = 42
+          locals = [ int, top, class net/minecraft/resources/ResourceLocation ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 10
+          locals = [ class com/structureessentials/mixin/StructureStartMinDistMixin, class net/minecraft/core/RegistryAccess, class net/minecraft/world/level/chunk/ChunkGenerator, class net/minecraft/world/level/biome/BiomeSource, class net/minecraft/world/level/levelgen/RandomState, class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager, long, class net/minecraft/world/level/ChunkPos, int, class net/minecraft/world/level/LevelHeightAccessor, class java/util/function/Predicate, class org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable, class com/structureessentials/IGeneratorNearbyStructureHolder, int, int, int, class java/lang/String, class net/minecraft/resources/ResourceLocation ]
+          stack = []
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ class java/util/Iterator ]
+        frame_type = 254 /* append */
+          offset_delta = 117
+          locals = [ class net/minecraft/world/level/levelgen/structure/StructurePiece, class net/minecraft/core/BlockPos, class java/lang/String ]
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class java/util/Iterator ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 84
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 51 /* same */
+        frame_type = 248 /* chop */
+          offset_delta = 8
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 252 /* append */
+          offset_delta = 17
+          locals = [ class java/util/Iterator ]
+        frame_type = 253 /* append */
+          offset_delta = 113
+          locals = [ class net/minecraft/world/level/levelgen/structure/StructurePiece, class net/minecraft/core/BlockPos ]
+        frame_type = 252 /* append */
+          offset_delta = 14
+          locals = [ class java/util/Iterator ]
+        frame_type = 248 /* chop */
+          offset_delta = 70
+        frame_type = 250 /* chop */
+          offset_delta = 2
+    Signature: #285                         // (Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/world/level/chunk/ChunkGenerator;Lnet/minecraft/world/level/biome/BiomeSource;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplateManager;JLnet/minecraft/world/level/ChunkPos;ILnet/minecraft/world/level/LevelHeightAccessor;Ljava/util/function/Predicate<Lnet/minecraft/core/Holder<Lnet/minecraft/world/level/biome/Biome;>;>;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable<Lnet/minecraft/world/level/levelgen/structure/StructureStart;>;)V
+    RuntimeVisibleAnnotations:
+      0: #286(#287=[s#288],#289=[@#290(#291=s#292)],#293=Z#294)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["generate"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="RETURN"
+          )]
+          cancellable=true
+        )
+
+  private static java.util.List<net.minecraft.core.BlockPos> getBoundingBoxCorners(net.minecraft.world.level.levelgen.structure.BoundingBox);
+    descriptor: (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=12, locals=1, args_size=1
+         0: new           #143                // class net/minecraft/core/BlockPos
+         3: dup
+         4: aload_0
+         5: invokevirtual #196                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+         8: aload_0
+         9: invokevirtual #199                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+        12: aload_0
+        13: invokevirtual #202                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+        16: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        19: new           #143                // class net/minecraft/core/BlockPos
+        22: dup
+        23: aload_0
+        24: invokevirtual #196                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+        27: aload_0
+        28: invokevirtual #199                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+        31: aload_0
+        32: invokevirtual #208                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+        35: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        38: new           #143                // class net/minecraft/core/BlockPos
+        41: dup
+        42: aload_0
+        43: invokevirtual #196                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+        46: aload_0
+        47: invokevirtual #211                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+        50: aload_0
+        51: invokevirtual #202                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+        54: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        57: new           #143                // class net/minecraft/core/BlockPos
+        60: dup
+        61: aload_0
+        62: invokevirtual #196                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minX:()I
+        65: aload_0
+        66: invokevirtual #211                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+        69: aload_0
+        70: invokevirtual #208                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+        73: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        76: new           #143                // class net/minecraft/core/BlockPos
+        79: dup
+        80: aload_0
+        81: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+        84: aload_0
+        85: invokevirtual #199                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+        88: aload_0
+        89: invokevirtual #202                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+        92: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+        95: new           #143                // class net/minecraft/core/BlockPos
+        98: dup
+        99: aload_0
+       100: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+       103: aload_0
+       104: invokevirtual #199                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minY:()I
+       107: aload_0
+       108: invokevirtual #208                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+       111: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       114: new           #143                // class net/minecraft/core/BlockPos
+       117: dup
+       118: aload_0
+       119: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+       122: aload_0
+       123: invokevirtual #211                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+       126: aload_0
+       127: invokevirtual #202                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.minZ:()I
+       130: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       133: new           #143                // class net/minecraft/core/BlockPos
+       136: dup
+       137: aload_0
+       138: invokevirtual #214                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxX:()I
+       141: aload_0
+       142: invokevirtual #211                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxY:()I
+       145: aload_0
+       146: invokevirtual #208                // Method net/minecraft/world/level/levelgen/structure/BoundingBox.maxZ:()I
+       149: invokespecial #205                // Method net/minecraft/core/BlockPos."<init>":(III)V
+       152: invokestatic  #217                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+       155: areturn
+      LineNumberTable:
+        line 141: 0
+        line 142: 5
+        line 143: 24
+        line 144: 43
+        line 145: 62
+        line 146: 81
+        line 147: 100
+        line 148: 119
+        line 149: 138
+        line 141: 152
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     156     0   box   Lnet/minecraft/world/level/levelgen/structure/BoundingBox;
+    Signature: #297                         // (Lnet/minecraft/world/level/levelgen/structure/BoundingBox;)Ljava/util/List<Lnet/minecraft/core/BlockPos;>;
+    RuntimeVisibleAnnotations:
+      0: #298()
+        org.spongepowered.asm.mixin.Unique
+}
+SourceFile: "StructureStartMinDistMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #302(#291=[c#303])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/levelgen/structure/Structure;]
+    )
+BootstrapMethods:
+  0: #311 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #305 Skipping structure minimum distance check, invalid generator: \u0001
+  1: #311 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #307 unknown:\u0001
+  2: #311 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #309 Prevented structure overlap for: \u0001 at: \u0001 existing structure: \u0001
+InnerClasses:
+  public static final #318= #74 of #104;  // StructureSettings=class net/minecraft/world/level/levelgen/structure/Structure$StructureSettings of class net/minecraft/world/level/levelgen/structure/Structure
+  public static final #321= #80 of #319;  // Decoration=class net/minecraft/world/level/levelgen/GenerationStep$Decoration of class net/minecraft/world/level/levelgen/GenerationStep
+  public static final #326= #322 of #324; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
