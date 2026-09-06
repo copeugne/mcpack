@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar",
         "kotlinforforge-5.11.0-all.jar",
         "fzzy_config-0.7.6+1.21+neoforge.jar",
         "curios-neoforge-9.5.1+1.21.1.jar",
@@ -228,6 +229,50 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "io/wispforest/owo/Owo.class",
+    "io/wispforest/owo/client/OwoClient.class",
+    "io/wispforest/owo/config/ConfigAP.class",
+    "io/wispforest/owo/mixin/CachedRegistryInfoGetterAccessor.class",
+    "io/wispforest/owo/mixin/ClientConnectionMixin.class",
+    "io/wispforest/owo/mixin/ComponentTypeBuilderMixin.class",
+    "io/wispforest/owo/mixin/Copenhagen.class",
+    "io/wispforest/owo/mixin/DataResultMixin.class",
+    "io/wispforest/owo/mixin/DataResultMixin$DataResultErrorMixin.class",
+    "io/wispforest/owo/mixin/ForwardingDynamicOpsAccessor.class",
+    "io/wispforest/owo/mixin/NbtCompoundMixin.class",
+    "io/wispforest/owo/mixin/PacketByteBufMixin.class",
+    "io/wispforest/owo/mixin/RegistryOpsAccessor.class",
+    "io/wispforest/owo/mixin/ScreenHandlerInvoker.class",
+    "io/wispforest/owo/mixin/ScreenHandlerMixin.class",
+    "io/wispforest/owo/mixin/ServerCommonNetworkHandlerAccessor.class",
+    "io/wispforest/owo/mixin/ServerPlayerEntityMixin.class",
+    "io/wispforest/owo/mixin/ServerPlayerInteractionManagerMixin.class",
+    "io/wispforest/owo/mixin/SetComponentsLootFunctionAccessor.class",
+    "io/wispforest/owo/mixin/TagGroupLoaderMixin.class",
+    "io/wispforest/owo/mixin/ext/ComponentMapImplAccessor.class",
+    "io/wispforest/owo/mixin/ext/ComponentMapImplMixin.class",
+    "io/wispforest/owo/mixin/ext/ItemMixin.class",
+    "io/wispforest/owo/mixin/ext/ItemStackMixin.class",
+    "io/wispforest/owo/mixin/itemgroup/ItemGroupAccessor.class",
+    "io/wispforest/owo/mixin/itemgroup/ItemMixin.class",
+    "io/wispforest/owo/mixin/itemgroup/ItemSettingsMixin.class",
+    "io/wispforest/owo/mixin/offline/AdvancementProgressAccessor.class",
+    "io/wispforest/owo/mixin/offline/PlayerAdvancementTrackerMixin.class",
+    "io/wispforest/owo/mixin/offline/ProgressMapAccessor.class",
+    "io/wispforest/owo/mixin/offline/WorldSaveHandlerMixin.class",
+    "io/wispforest/owo/mixin/recipe_remainders/CraftingResultSlotMixin.class",
+    "io/wispforest/owo/mixin/recipe_remainders/RecipeManagerMixin.class",
+    "io/wispforest/owo/mixin/registry/ReferenceAccessor.class",
+    "io/wispforest/owo/mixin/registry/SimpleRegistryMixin.class",
+    "io/wispforest/owo/mixin/text/LanguageMixin.class",
+    "io/wispforest/owo/mixin/text/TextCodecsMixin.class",
+    "io/wispforest/owo/mixin/tweaks/EulaReaderMixin.class",
+    "io/wispforest/owo/mixin/tweaks/LevelInfoMixin.class",
+    "io/wispforest/owo/mixin/ui/SlotAccessor.class",
+    "io/wispforest/owo/mixin/ui/SlotMixin.class",
+    "io/wispforest/owo/mixin/ui/access/BlockEntityAccessor.class",
+    "io/wispforest/owo/mixin/neoforge/NetworkRegistryMixin.class",
+    "io/wispforest/owo/mixin/MainMixin.class",
     "net/mehvahdjukaar/moonlight/core/pack/DynamicResourcesInternals.class",
     "net/mehvahdjukaar/moonlight/api/platform/platform/RegHelperImpl.class",
     "net/mehvahdjukaar/moonlight/core/commands/ModCommands.class",
@@ -4372,6 +4417,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 verbose |= name.startswith("top/theillusivec4/curios/")
                 verbose |= name.startswith("me/fzzyhmstrs/fzzy_config/")
                 verbose |= name.startswith("thedarkcolour/kotlinforforge/")
+                verbose |= name.startswith("io/wispforest/owo/")
                 verbose |= name.startswith("net/mehvahdjukaar/moonlight/")
                 verbose |= name.startswith("com/teamresourceful/resourcefullib/")
                 verbose |= name.startswith("com/illusivesoulworks/")
