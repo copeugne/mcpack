@@ -1,0 +1,175 @@
+Classfile supplementaries-neoforge-1.21.1-3.6.8.jar!/net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin.class
+  Last modified Feb 1, 1980; size 2099 bytes
+  SHA-256 checksum bd0f1ab44a18b3446ee70069c65e8fbd1c7ae52219f908a3dcd13361f41b9e72
+  Compiled from "ServerPlayerMixin.java"
+public abstract class net.mehvahdjukaar.supplementaries.mixins.ServerPlayerMixin extends net.minecraft.world.entity.player.Player implements net.mehvahdjukaar.supplementaries.common.utils.IQuiverPlayer
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #14                         // net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin
+  super_class: #2                         // net/minecraft/world/entity/player/Player
+  interfaces: 1, fields: 1, methods: 5, attributes: 3
+Constant pool:
+   #1 = Methodref          #2.#3          // net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #2 = Class              #4             // net/minecraft/world/entity/player/Player
+   #3 = NameAndType        #5:#6          // "<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #4 = Utf8               net/minecraft/world/entity/player/Player
+   #5 = Utf8               <init>
+   #6 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+   #7 = Fieldref           #8.#9          // net/mehvahdjukaar/supplementaries/common/utils/SlotReference.EMPTY:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty;
+   #8 = Class              #10            // net/mehvahdjukaar/supplementaries/common/utils/SlotReference
+   #9 = NameAndType        #11:#12        // EMPTY:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty;
+  #10 = Utf8               net/mehvahdjukaar/supplementaries/common/utils/SlotReference
+  #11 = Utf8               EMPTY
+  #12 = Utf8               Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty;
+  #13 = Fieldref           #14.#15        // net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin.supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+  #14 = Class              #16            // net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin
+  #15 = NameAndType        #17:#18        // supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+  #16 = Utf8               net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin
+  #17 = Utf8               supp$lastQuiverSlot
+  #18 = Utf8               Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+  #19 = InterfaceMethodref #8.#20         // net/mehvahdjukaar/supplementaries/common/utils/SlotReference.get:(Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;
+  #20 = NameAndType        #21:#22        // get:(Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;
+  #21 = Utf8               get
+  #22 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;
+  #23 = Class              #24            // net/mehvahdjukaar/supplementaries/common/utils/IQuiverPlayer
+  #24 = Utf8               net/mehvahdjukaar/supplementaries/common/utils/IQuiverPlayer
+  #25 = Utf8               RuntimeVisibleAnnotations
+  #26 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #27 = Utf8               Code
+  #28 = Utf8               LineNumberTable
+  #29 = Utf8               LocalVariableTable
+  #30 = Utf8               this
+  #31 = Utf8               Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+  #32 = Utf8               level
+  #33 = Utf8               Lnet/minecraft/world/level/Level;
+  #34 = Utf8               pos
+  #35 = Utf8               Lnet/minecraft/core/BlockPos;
+  #36 = Utf8               yRot
+  #37 = Utf8               F
+  #38 = Utf8               gameProfile
+  #39 = Utf8               Lcom/mojang/authlib/GameProfile;
+  #40 = Utf8               supplementaries$getQuiverSlot
+  #41 = Utf8               ()Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+  #42 = Utf8               supplementaries$setQuiverSlot
+  #43 = Utf8               (Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;)V
+  #44 = Utf8               slot
+  #45 = Utf8               supplementaries$getQuiver
+  #46 = Utf8               ()Lnet/minecraft/world/item/ItemStack;
+  #47 = Utf8               supplementaries$setQuiver
+  #48 = Utf8               (Lnet/minecraft/world/item/ItemStack;)V
+  #49 = Utf8               quiver
+  #50 = Utf8               Lnet/minecraft/world/item/ItemStack;
+  #51 = Utf8               SourceFile
+  #52 = Utf8               ServerPlayerMixin.java
+  #53 = Utf8               RuntimeInvisibleAnnotations
+  #54 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+  #55 = Utf8               value
+  #56 = Utf8               Lnet/minecraft/server/level/ServerPlayer;
+  #57 = Utf8               InnerClasses
+  #58 = Class              #59            // net/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty
+  #59 = Utf8               net/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty
+  #60 = Utf8               Empty
+{
+  private net.mehvahdjukaar.supplementaries.common.utils.SlotReference supp$lastQuiverSlot;
+    descriptor: Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #26()
+        org.spongepowered.asm.mixin.Unique
+
+  public net.mehvahdjukaar.supplementaries.mixins.ServerPlayerMixin(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, float, com.mojang.authlib.GameProfile);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=5, args_size=5
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: fload_3
+         4: aload         4
+         6: invokespecial #1                  // Method net/minecraft/world/entity/player/Player."<init>":(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLcom/mojang/authlib/GameProfile;)V
+         9: aload_0
+        10: getstatic     #7                  // Field net/mehvahdjukaar/supplementaries/common/utils/SlotReference.EMPTY:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty;
+        13: putfield      #13                 // Field supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+        16: return
+      LineNumberTable:
+        line 22: 0
+        line 18: 9
+        line 23: 16
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      17     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+            0      17     1 level   Lnet/minecraft/world/level/Level;
+            0      17     2   pos   Lnet/minecraft/core/BlockPos;
+            0      17     3  yRot   F
+            0      17     4 gameProfile   Lcom/mojang/authlib/GameProfile;
+
+  public net.mehvahdjukaar.supplementaries.common.utils.SlotReference supplementaries$getQuiverSlot();
+    descriptor: ()Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+         4: areturn
+      LineNumberTable:
+        line 27: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+
+  public void supplementaries$setQuiverSlot(net.mehvahdjukaar.supplementaries.common.utils.SlotReference);
+    descriptor: (Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #13                 // Field supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+         5: return
+      LineNumberTable:
+        line 32: 0
+        line 33: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+            0       6     1  slot   Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+
+  public net.minecraft.world.item.ItemStack supplementaries$getQuiver();
+    descriptor: ()Lnet/minecraft/world/item/ItemStack;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field supp$lastQuiverSlot:Lnet/mehvahdjukaar/supplementaries/common/utils/SlotReference;
+         4: aload_0
+         5: invokeinterface #19,  2           // InterfaceMethod net/mehvahdjukaar/supplementaries/common/utils/SlotReference.get:(Lnet/minecraft/world/entity/LivingEntity;)Lnet/minecraft/world/item/ItemStack;
+        10: areturn
+      LineNumberTable:
+        line 37: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      11     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+
+  public void supplementaries$setQuiver(net.minecraft.world.item.ItemStack);
+    descriptor: (Lnet/minecraft/world/item/ItemStack;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 42: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Lnet/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin;
+            0       1     1 quiver   Lnet/minecraft/world/item/ItemStack;
+}
+SourceFile: "ServerPlayerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #54(#55=[c#56])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerPlayer;]
+    )
+InnerClasses:
+  public static final #60= #58 of #8;     // Empty=class net/mehvahdjukaar/supplementaries/common/utils/SlotReference$Empty of class net/mehvahdjukaar/supplementaries/common/utils/SlotReference

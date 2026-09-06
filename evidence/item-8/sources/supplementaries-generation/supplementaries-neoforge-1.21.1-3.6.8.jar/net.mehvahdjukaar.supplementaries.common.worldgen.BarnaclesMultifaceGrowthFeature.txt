@@ -1,0 +1,245 @@
+Compiled from "BarnaclesMultifaceGrowthFeature.java"
+public class net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature$Config> {
+  public net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  public static boolean placeGrowthIfPossible(net.minecraft.world.level.WorldGenLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature$Config, net.minecraft.util.RandomSource, java.util.Collection<net.minecraft.core.Direction>);
+    Code:
+       0: aload_1
+       1: invokevirtual #13                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+       4: astore        6
+       6: aload         5
+       8: invokeinterface #19,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      13: astore        7
+      15: aload         7
+      17: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      22: ifne          27
+      25: iconst_0
+      26: ireturn
+      27: aload         7
+      29: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #35                 // class net/minecraft/core/Direction
+      37: astore        8
+      39: aload_0
+      40: aload         6
+      42: aload_1
+      43: aload         8
+      45: invokevirtual #37                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      48: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      53: astore        9
+      55: aload         9
+      57: aload_3
+      58: invokestatic  #49                 // Method cantBePlacedOn:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config;)Z
+      61: ifne          15
+      64: aload_3
+      65: getfield      #55                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.placeBlock:Lnet/minecraft/world/level/block/MultifaceBlock;
+      68: aload_2
+      69: aload_0
+      70: aload_1
+      71: aload         8
+      73: invokevirtual #59                 // Method net/minecraft/world/level/block/MultifaceBlock.getStateForPlacement:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/level/block/state/BlockState;
+      76: astore        10
+      78: aload         10
+      80: ifnonnull     85
+      83: iconst_0
+      84: ireturn
+      85: aload_0
+      86: aload_1
+      87: aload         10
+      89: iconst_3
+      90: invokeinterface #65,  4           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+      95: pop
+      96: aload         4
+      98: invokeinterface #69,  1           // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     103: aload_3
+     104: getfield      #75                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.chanceOfSpreading:F
+     107: fcmpg
+     108: ifge          131
+     111: aload_3
+     112: getfield      #55                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.placeBlock:Lnet/minecraft/world/level/block/MultifaceBlock;
+     115: invokevirtual #79                 // Method net/minecraft/world/level/block/MultifaceBlock.getSpreader:()Lnet/minecraft/world/level/block/MultifaceSpreader;
+     118: aload         10
+     120: aload_0
+     121: aload_1
+     122: aload         8
+     124: aload         4
+     126: iconst_0
+     127: invokevirtual #83                 // Method net/minecraft/world/level/block/MultifaceSpreader.spreadFromFaceTowardRandomDirection:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;Lnet/minecraft/util/RandomSource;Z)Ljava/util/Optional;
+     130: pop
+     131: iconst_1
+     132: ireturn
+
+  private static boolean cantBePlacedOn(net.minecraft.world.level.block.state.BlockState, net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature$Config);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getfield      #89                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.cantBePlacedOn:Lnet/minecraft/core/HolderSet;
+       5: invokevirtual #92                 // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/core/HolderSet;)Z
+       8: ifne          18
+      11: aload_0
+      12: invokestatic  #98                 // Method isAirOrWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      15: ifeq          22
+      18: iconst_1
+      19: goto          23
+      22: iconst_0
+      23: ireturn
+
+  private static boolean isAirOrWater(net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokevirtual #102                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+       4: ifne          17
+       7: aload_0
+       8: getstatic     #105                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+      11: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      14: ifeq          21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  private static boolean isCliffFace(net.minecraft.core.BlockPos, net.minecraft.world.level.Level, net.minecraft.core.Direction);
+    Code:
+       0: aload_2
+       1: invokevirtual #114                // Method net/minecraft/core/Direction.getAxis:()Lnet/minecraft/core/Direction$Axis;
+       4: invokevirtual #118                // Method net/minecraft/core/Direction$Axis.isVertical:()Z
+       7: ifeq          12
+      10: iconst_0
+      11: ireturn
+      12: aload_1
+      13: aload_0
+      14: aload_2
+      15: invokevirtual #123                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+      18: invokevirtual #127                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+      21: invokevirtual #131                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      24: astore_3
+      25: iconst_0
+      26: ireturn
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.mehvahdjukaar.supplementaries.common.worldgen.BarnaclesMultifaceGrowthFeature$Config>);
+    Code:
+       0: aload_1
+       1: invokevirtual #134                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+       4: astore_2
+       5: aload_1
+       6: invokevirtual #140                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+       9: astore_3
+      10: aload_1
+      11: invokevirtual #144                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      14: astore        4
+      16: aload_1
+      17: invokevirtual #148                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+      20: checkcast     #2                  // class net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config
+      23: astore        5
+      25: aload_2
+      26: aload_3
+      27: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      32: astore        6
+      34: aload         6
+      36: aload         5
+      38: getfield      #55                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.placeBlock:Lnet/minecraft/world/level/block/MultifaceBlock;
+      41: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+      44: ifeq          67
+      47: aload         5
+      49: getfield      #55                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.placeBlock:Lnet/minecraft/world/level/block/MultifaceBlock;
+      52: invokevirtual #79                 // Method net/minecraft/world/level/block/MultifaceBlock.getSpreader:()Lnet/minecraft/world/level/block/MultifaceSpreader;
+      55: aload         6
+      57: aload_2
+      58: aload_3
+      59: aload         4
+      61: invokevirtual #152                // Method net/minecraft/world/level/block/MultifaceSpreader.spreadFromRandomFaceTowardRandomDirection:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Ljava/util/Optional;
+      64: pop
+      65: iconst_1
+      66: ireturn
+      67: aload         6
+      69: invokestatic  #98                 // Method isAirOrWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+      72: ifne          77
+      75: iconst_0
+      76: ireturn
+      77: aload         5
+      79: aload         4
+      81: invokevirtual #156                // Method net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.getShuffledDirections:(Lnet/minecraft/util/RandomSource;)Ljava/util/Collection;
+      84: astore        7
+      86: aload_2
+      87: aload_3
+      88: aload_2
+      89: aload_3
+      90: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+      95: aload         5
+      97: aload         4
+      99: aload         7
+     101: invokestatic  #160                // Method placeGrowthIfPossible:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config;Lnet/minecraft/util/RandomSource;Ljava/util/Collection;)Z
+     104: ifeq          109
+     107: iconst_1
+     108: ireturn
+     109: aload_3
+     110: invokevirtual #13                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     113: astore        8
+     115: iconst_0
+     116: istore        9
+     118: aload         7
+     120: invokeinterface #19,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+     125: astore        10
+     127: aload         10
+     129: invokeinterface #25,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     134: ifeq          257
+     137: aload         10
+     139: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     144: checkcast     #35                 // class net/minecraft/core/Direction
+     147: astore        11
+     149: aload         8
+     151: aload_3
+     152: invokevirtual #164                // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     155: pop
+     156: aload         5
+     158: aload         4
+     160: aload         11
+     162: invokevirtual #123                // Method net/minecraft/core/Direction.getOpposite:()Lnet/minecraft/core/Direction;
+     165: invokevirtual #168                // Method net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.getShuffledDirectionsExcept:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/Direction;)Ljava/util/List;
+     168: astore        12
+     170: iconst_0
+     171: istore        13
+     173: iload         13
+     175: aload         5
+     177: getfield      #172                // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.searchRange:I
+     180: if_icmpge     254
+     183: aload         8
+     185: aload_3
+     186: aload         11
+     188: invokevirtual #37                 // Method net/minecraft/core/BlockPos$MutableBlockPos.setWithOffset:(Lnet/minecraft/core/Vec3i;Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     191: pop
+     192: aload_2
+     193: aload         8
+     195: invokeinterface #43,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     200: astore        14
+     202: aload         14
+     204: invokestatic  #98                 // Method isAirOrWater:(Lnet/minecraft/world/level/block/state/BlockState;)Z
+     207: ifne          226
+     210: aload         14
+     212: aload         5
+     214: getfield      #55                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config.placeBlock:Lnet/minecraft/world/level/block/MultifaceBlock;
+     217: invokevirtual #111                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/world/level/block/Block;)Z
+     220: ifne          226
+     223: goto          254
+     226: aload_2
+     227: aload         8
+     229: aload         14
+     231: aload         5
+     233: aload         4
+     235: aload         12
+     237: invokestatic  #160                // Method placeGrowthIfPossible:(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature$Config;Lnet/minecraft/util/RandomSource;Ljava/util/Collection;)Z
+     240: ifeq          248
+     243: iconst_1
+     244: istore        9
+     246: iconst_1
+     247: ireturn
+     248: iinc          13, 1
+     251: goto          173
+     254: goto          127
+     257: iload         9
+     259: ireturn
+}

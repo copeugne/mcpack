@@ -6,6 +6,50 @@
 
 ### Continuation update - 2026-09-06
 
+Supplementaries provider membership is now RESOLVED. The final disposition in
+evidence/item-8/provider-scope.md supersedes all older open Supplementaries
+checkpoints. Reuse server-hook/shared-plugin source 46127c7 and map delegate
+3660300. All 73 declared common mixins are accounted for, including the four
+previously captured structure hooks. The remaining entries add no independent
+site. Galleon, road sign and the named cave-urn cache boundary remain the inputs
+to later canonical reconciliation; no final family count is asserted.
+Nine focused checks and scoped Ruff/Basedpyright pass. Census: 79 resolved,
+57 open. Next: the twelve remaining packaged-generation providers, beginning
+with Creeper Overhaul. Keep the completed RU feature checkpoints. Do not redo
+Supplementaries, inspect unrelated gameplay helpers, or resume attributes
+before whole-stack membership and named canonical decisions are resolved.
+
+MixinSquared inspection identified a concrete extractor limitation: its Forge
+wrapper contains META-INF/jars/MixinSquared-0.3.3.jar, one level deeper than the
+existing nested-archive reader supports. Close this actual executable-library
+boundary by extending the existing pinned reader to traverse the exact nested
+member chain. Keep parent and leaf SHA-256 checks and existing output format;
+do not add a new extraction system. The wrapper SHA-256 is
+e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3;
+the inner SHA-256 is
+0eaa67fa937cc65ab78a981cd9e4e741d03eaf7236983d7e30818ac99da0632f.
+Trinkets fallback is resolved in 4d50c66. Reuse the latest Supplementaries
+checkpoint in evidence/item-8/provider-scope.md; census remains 78/136 resolved.
+
+Supplementaries placement/processor membership paths are resolved in source
+a74ae7b, extracted by e1e2005. Reuse sources/supplementaries-placement-processor
+under evidence/item-8. Three class identities are bound by the existing provider
+test: both cases pass; scoped Ruff and Basedpyright pass after a line-length fix.
+The exclusion placement only queries other structure sets; the processor
+transforms blocks within existing template block information. Neither adds a
+family. Cave-urn cache remains a named canonical-boundary candidate.
+
+Provider census remains 78 resolved, 58 open. Next concrete Supplementaries
+membership checks are its SupplementariesForge loader and common delegates,
+MixinPlugin and declared common hooks (including the two Stronghold sconce
+mixins), plus full payload and the two nested archives. Exploratory metadata
+inspection found mixinsquared-forge-0.3.3.jar and
+sable-companion-common-1.21.1-1.6.0.jar. This is not a nested-provider disposition
+or authorization to re-enable Sable. Bind the actual loader reachability and
+contribution roles using existing tooling before closing Supplementaries.
+Do not repeat resolved roots, pools, templates, features, elevator or processor
+analysis. Source captures alone do not reduce the provider/family backlog.
+
 Creating Space provider coverage is now RESOLVED. See its final disposition in
 evidence/item-8/provider-scope.md and test_creating_space_provider_scope.py.
 Four existing roots, five connected pools and six templates are accounted for;

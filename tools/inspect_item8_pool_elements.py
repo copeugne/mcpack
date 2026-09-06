@@ -7,6 +7,7 @@ import hashlib
 import json
 import subprocess
 from contextlib import ExitStack
+from io import BytesIO
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import cast
@@ -103,6 +104,7 @@ ARCHIVES = frozenset(
         "BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
         "deep_aether-1.21.1-1.1.5.1.jar",
         "creatingspace-1.21.1-1.7.18.jar",
+        "moonlight-neoforge-1.21.1-3.0.17.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -1670,6 +1672,124 @@ CLASSES: tuple[str, ...] = (
     "com/rae/creatingspace/content/planets/CSDimensionUtil.class",
     "com/rae/creatingspace/content/life_support/sealer/RoomAtmosphere.class",
     "com/rae/creatingspace/legacy/saved/UnlockedDesignManager.class",
+    "net/mehvahdjukaar/supplementaries/reg/ModWorldgen.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/BarnaclesMultifaceGrowthFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/BasaltAshFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/GalleonStructure.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignStructure.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/MineshaftElevatorPiece.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/MineshaftElevatorPiece$1.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MineshaftCorridorMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MineshaftPiecesMixin.class",
+    "net/mehvahdjukaar/supplementaries/common/block/tiles/BlockGeneratorBlockTile.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RemoveDisabledBlocksProcessor$Replacement.class",
+    "net/mehvahdjukaar/supplementaries/common/worldgen/RandomSpreadStructurePlacementWithExclusion.class",
+    "net/mehvahdjukaar/supplementaries/Supplementaries.class",
+    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForge.class",
+    "net/mehvahdjukaar/supplementaries/common/events/ServerEvents.class",
+    "net/mehvahdjukaar/supplementaries/common/events/platform/ServerEventsForge.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MixinPlugin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/StrongholdCrossingSconceMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/StrongholdRoomSconceMixin.class",
+    "dev/ryanhcode/sable/companion/SableCompanion.class",
+    "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion.class",
+    "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion$DistHelper.class",
+    "dev/ryanhcode/sable/companion/impl/SableCompanionUtil.class",
+    "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
+    "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
+    "net/mehvahdjukaar/supplementaries/integration/CompatHandler.class",
+    "net/mehvahdjukaar/supplementaries/integration/CCCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/CreateCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/CuriosCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/FarmersDelightCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/QuarkCompat.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/CCCompatImpl.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/CreateCompatImpl.class",
+    "net/mehvahdjukaar/supplementaries/integration/platform/QuarkCompatImpl.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinCancellerLoader.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinSquaredMixinConfigPlugin.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinAnnotationAdjusterLoader.class",
+    "com/bawnorton/mixinsquared/platform/forge/MixinSquaredMod.class",
+    "com/bawnorton/mixinsquared/MixinSquaredBootstrap.class",
+    "com/bawnorton/mixinsquared/ext/ExtensionRegistrar.class",
+    "com/bawnorton/mixinsquared/canceller/MixinCancellerRegistrar.class",
+    "com/bawnorton/mixinsquared/adjuster/MixinAnnotationAdjusterRegistrar.class",
+    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForgeClient.class",
+    "net/mehvahdjukaar/supplementaries/client/renderers/platform/PicklePlayer.class",
+    "net/mehvahdjukaar/supplementaries/mixins/AbstractArrowMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/AbstractHorseMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/AbstractSkeletonMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/BannerPatternItemMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/BlockSourceMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/BowMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/BrushItemMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CampfireBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CartographyTableInputSlotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CartographyTableMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CatSitOnBlockGoalMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CelebrateVillagersSurvivedRaidMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ComparatorBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/CreeperMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/EntityAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/EntityMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/EvokerMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ExplorationMapFunctionMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ExplosionMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/FallingBlockEntityMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/FireBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/GoalUtilsMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/GrindstoneInputSlotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/GrindstoneMenuMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/GrindstoneTestSlotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/IDispenserAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/IHangingEntityAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/InkSackMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/IronBarsBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ItemsMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/LanternBlockPlacementMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/LivingEntityAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/LivingEntityMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/LoomInputSlotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/LoomMenuMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/MapItemMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ObserverBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/PlayerAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/PlayerMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/PlayerProjectileMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ProjectileWeaponItemMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/RedMerchantSpawnerMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ServerGamePacketListenerMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ServerLevelMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ServerPlayerMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ShulkerBoxBlockEntityMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ShulkerSlotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/SkeletonMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/SkellyHorseMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/SlimeMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/StrayMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/WanderingTraderMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/ZombieHorseMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/compat/CompatCreeperArclightMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/ChunkHolderMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/FireBlockAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/ItemStackAccessor.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/LivingEntityMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/TreasureMapForEmeraldsMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfFlammableFluidBlockMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfFrameMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfGunpowderMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfLumiseneFluidMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfNetheriteDoorMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfPlanterMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfSafeMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfSlingshotMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfSoapItemMixin.class",
+    "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfWrenchMixin.class",
+    "net/mehvahdjukaar/moonlight/api/misc/SimpleMixinPlugin.class",
+    "net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1695,13 +1815,28 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
         "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar",
-        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar"])
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar",
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar",
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar",
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar!/META-INF/jars/MixinSquared-0.3.3.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "e5f1afc19c38005b03615d7c3af65df6b9150cb25150ac5267b587a116f425e3",
+        ),
+        "META-INF/jarjar/mixinsquared-forge-0.3.3.jar!/META-INF/jars/MixinSquared-0.3.3.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "0eaa67fa937cc65ab78a981cd9e4e741d03eaf7236983d7e30818ac99da0632f",
+        ),
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed",
+        ),
         "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar": (
             "deep_aether-1.21.1-1.1.5.1.jar",
             "85739c5737ae2d3a289022aaa2834c4889838a3e6c53125a5334535c12ae7588",
@@ -1747,7 +1882,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
             classpath = source.path
             archive_name, archive_sha = source.name, source.sha256
             if nested:
-                nested_payload = parent.read(nested)
+                members = nested.split("!/")
+                nested_payload = parent.read(members[0])
+                for member in members[1:]:
+                    with ZipFile(BytesIO(nested_payload)) as container:
+                        nested_payload = container.read(member)
                 archive_sha = hashlib.sha256(nested_payload).hexdigest()
                 if archive_sha != nested_sources[nested][1]:
                     message = f"bundled archive identity mismatch: {nested}"
@@ -1816,6 +1955,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
+                verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
+                verbose |= name.startswith("net/mehvahdjukaar/supplementaries/integration/")
+                verbose |= name.startswith("com/bawnorton/mixinsquared/")
+                verbose |= name in {
+                    "net/mehvahdjukaar/supplementaries/platform/SupplementariesForgeClient.class",
+                    "net/mehvahdjukaar/supplementaries/client/renderers/platform/PicklePlayer.class",
+                }
+                verbose |= name in {
+                    "net/mehvahdjukaar/supplementaries/reg/ModSetup.class",
+                    "net/mehvahdjukaar/supplementaries/reg/RegUtils.class",
+                    "net/mehvahdjukaar/supplementaries/integration/CompatHandler.class",
+                }
                 verbose |= (
                     source.name in {
                         "integrated_villages-1.3.3+1.21.1-neoforge.jar",

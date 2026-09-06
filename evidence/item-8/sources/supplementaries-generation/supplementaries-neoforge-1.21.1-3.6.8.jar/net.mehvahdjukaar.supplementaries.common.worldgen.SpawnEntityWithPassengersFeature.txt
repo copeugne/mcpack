@@ -1,0 +1,280 @@
+Compiled from "SpawnEntityWithPassengersFeature.java"
+public class net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature$Config> {
+  public net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature();
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokespecial #7                  // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       7: return
+
+  private static boolean trySpawningAt(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature$Config>, net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature$Config, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.WorldGenLevel);
+    Code:
+       0: aload_1
+       1: getfield      #13                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.entity:Lnet/minecraft/world/entity/EntityType;
+       4: aload_2
+       5: invokevirtual #17                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+       8: astore        5
+      10: aload         5
+      12: ifnonnull     17
+      15: iconst_0
+      16: ireturn
+      17: aload         5
+      19: instanceof    #23                 // class net/minecraft/world/entity/vehicle/Boat
+      22: ifeq          99
+      25: aload         5
+      27: checkcast     #23                 // class net/minecraft/world/entity/vehicle/Boat
+      30: astore        6
+      32: aload_1
+      33: getfield      #25                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.data:Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData;
+      36: getfield      #29                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData.boatType:Ljava/util/Optional;
+      39: invokevirtual #35                 // Method java/util/Optional.isPresent:()Z
+      42: ifeq          99
+      45: aload         6
+      47: aload_1
+      48: getfield      #25                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.data:Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData;
+      51: getfield      #29                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData.boatType:Ljava/util/Optional;
+      54: invokevirtual #41                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      57: checkcast     #45                 // class net/mehvahdjukaar/moonlight/api/set/wood/WoodType
+      60: invokevirtual #47                 // Method net/mehvahdjukaar/moonlight/api/set/wood/WoodType.toVanillaBoat:()Lnet/minecraft/world/entity/vehicle/Boat$Type;
+      63: invokevirtual #51                 // Method net/minecraft/world/entity/vehicle/Boat.setVariant:(Lnet/minecraft/world/entity/vehicle/Boat$Type;)V
+      66: aload         5
+      68: instanceof    #55                 // class net/mehvahdjukaar/supplementaries/common/entities/CannonBoatEntity
+      71: ifeq          99
+      74: aload         5
+      76: checkcast     #55                 // class net/mehvahdjukaar/supplementaries/common/entities/CannonBoatEntity
+      79: astore        7
+      81: aload         7
+      83: aload_1
+      84: getfield      #25                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.data:Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData;
+      87: getfield      #29                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData.boatType:Ljava/util/Optional;
+      90: invokevirtual #41                 // Method java/util/Optional.get:()Ljava/lang/Object;
+      93: checkcast     #45                 // class net/mehvahdjukaar/moonlight/api/set/wood/WoodType
+      96: invokevirtual #57                 // Method net/mehvahdjukaar/supplementaries/common/entities/CannonBoatEntity.setWoodType:(Lnet/mehvahdjukaar/moonlight/api/set/wood/WoodType;)V
+      99: aload         5
+     101: instanceof    #61                 // class net/minecraft/world/entity/vehicle/ContainerEntity
+     104: ifeq          153
+     107: aload         5
+     109: checkcast     #61                 // class net/minecraft/world/entity/vehicle/ContainerEntity
+     112: astore        6
+     114: aload_1
+     115: getfield      #25                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.data:Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData;
+     118: getfield      #63                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData.lootTable:Ljava/util/Optional;
+     121: invokevirtual #35                 // Method java/util/Optional.isPresent:()Z
+     124: ifeq          153
+     127: aload         6
+     129: getstatic     #66                 // Field net/minecraft/core/registries/Registries.LOOT_TABLE:Lnet/minecraft/resources/ResourceKey;
+     132: aload_1
+     133: getfield      #25                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.data:Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData;
+     136: getfield      #63                 // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$ExtraData.lootTable:Ljava/util/Optional;
+     139: invokevirtual #41                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     142: checkcast     #72                 // class net/minecraft/resources/ResourceLocation
+     145: invokestatic  #74                 // Method net/minecraft/resources/ResourceKey.create:(Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/resources/ResourceKey;
+     148: invokeinterface #79,  2           // InterfaceMethod net/minecraft/world/entity/vehicle/ContainerEntity.setLootTable:(Lnet/minecraft/resources/ResourceKey;)V
+     153: aload         5
+     155: aload_3
+     156: invokevirtual #83                 // Method net/minecraft/core/BlockPos.getX:()I
+     159: i2d
+     160: ldc2_w        #89                 // double 0.5d
+     163: dadd
+     164: aload_3
+     165: invokevirtual #91                 // Method net/minecraft/core/BlockPos.getY:()I
+     168: i2d
+     169: aload_3
+     170: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getZ:()I
+     173: i2d
+     174: ldc2_w        #89                 // double 0.5d
+     177: dadd
+     178: ldc           #97                 // float 360.0f
+     180: aload_0
+     181: invokevirtual #98                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     184: invokeinterface #104,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+     189: fmul
+     190: fconst_0
+     191: invokevirtual #110                // Method net/minecraft/world/entity/Entity.moveTo:(DDDFF)V
+     194: aload_1
+     195: getfield      #116                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.passengers:Ljava/util/List;
+     198: invokeinterface #120,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     203: astore        6
+     205: aload         6
+     207: invokeinterface #126,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     212: ifeq          271
+     215: aload         6
+     217: invokeinterface #131,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     222: checkcast     #18                 // class net/minecraft/world/entity/EntityType
+     225: astore        7
+     227: aload         7
+     229: aload_2
+     230: invokevirtual #17                 // Method net/minecraft/world/entity/EntityType.create:(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;
+     233: astore        8
+     235: aload         8
+     237: ifnull        268
+     240: aload         8
+     242: aload_3
+     243: invokevirtual #83                 // Method net/minecraft/core/BlockPos.getX:()I
+     246: i2d
+     247: aload_3
+     248: invokevirtual #91                 // Method net/minecraft/core/BlockPos.getY:()I
+     251: i2d
+     252: aload_3
+     253: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getZ:()I
+     256: i2d
+     257: invokevirtual #134                // Method net/minecraft/world/entity/Entity.setPos:(DDD)V
+     260: aload         8
+     262: aload         5
+     264: invokevirtual #138                // Method net/minecraft/world/entity/Entity.startRiding:(Lnet/minecraft/world/entity/Entity;)Z
+     267: pop
+     268: goto          205
+     271: aload         5
+     273: invokevirtual #142                // Method net/minecraft/world/entity/Entity.getSelfAndPassengers:()Ljava/util/stream/Stream;
+     276: invokeinterface #146,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+     281: invokeinterface #120,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     286: astore        6
+     288: aload         6
+     290: invokeinterface #126,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     295: ifeq          360
+     298: aload         6
+     300: invokeinterface #131,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     305: checkcast     #111                // class net/minecraft/world/entity/Entity
+     308: astore        7
+     310: aload         7
+     312: instanceof    #152                // class net/minecraft/world/entity/Mob
+     315: ifeq          357
+     318: aload         7
+     320: checkcast     #152                // class net/minecraft/world/entity/Mob
+     323: astore        8
+     325: aload_1
+     326: getfield      #154                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.persistent:Z
+     329: ifeq          337
+     332: aload         8
+     334: invokevirtual #158                // Method net/minecraft/world/entity/Mob.setPersistenceRequired:()V
+     337: aload         8
+     339: aload         4
+     341: aload         4
+     343: aload_3
+     344: invokeinterface #162,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getCurrentDifficultyAt:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/DifficultyInstance;
+     349: getstatic     #168                // Field net/minecraft/world/entity/MobSpawnType.STRUCTURE:Lnet/minecraft/world/entity/MobSpawnType;
+     352: aconst_null
+     353: invokevirtual #174                // Method net/minecraft/world/entity/Mob.finalizeSpawn:(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;
+     356: pop
+     357: goto          288
+     360: aload         4
+     362: aload         5
+     364: invokeinterface #178,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.addFreshEntityWithPassengers:(Lnet/minecraft/world/entity/Entity;)V
+     369: aload_2
+     370: invokevirtual #182                // Method net/minecraft/server/level/ServerLevel.getServer:()Lnet/minecraft/server/MinecraftServer;
+     373: astore        6
+     375: aload         6
+     377: new           #188                // class net/minecraft/server/TickTask
+     380: dup
+     381: aload         6
+     383: invokevirtual #190                // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+     386: iconst_1
+     387: iadd
+     388: invokedynamic #195,  0            // InvokeDynamic #0:run:()Ljava/lang/Runnable;
+     393: invokespecial #199                // Method net/minecraft/server/TickTask."<init>":(ILjava/lang/Runnable;)V
+     396: invokevirtual #202                // Method net/minecraft/server/MinecraftServer.tell:(Ljava/lang/Runnable;)V
+     399: iconst_1
+     400: ireturn
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.mehvahdjukaar.supplementaries.common.worldgen.SpawnEntityWithPassengersFeature$Config>);
+    Code:
+       0: aload_1
+       1: invokevirtual #206                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #2                  // class net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #210                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #214                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      17: astore        4
+      19: aload         4
+      21: invokeinterface #218,  1          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getLevel:()Lnet/minecraft/server/level/ServerLevel;
+      26: astore        5
+      28: iconst_0
+      29: istore        6
+      31: iload         6
+      33: aload_2
+      34: getfield      #222                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.attempts:I
+      37: iconst_5
+      38: iadd
+      39: if_icmpge     211
+      42: aload_1
+      43: invokevirtual #98                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      46: aload_2
+      47: getfield      #226                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.spread:I
+      50: ineg
+      51: aload_2
+      52: getfield      #226                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.spread:I
+      55: invokeinterface #229,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+      60: istore        7
+      62: aload_1
+      63: invokevirtual #98                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+      66: aload_2
+      67: getfield      #226                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.spread:I
+      70: ineg
+      71: aload_2
+      72: getfield      #226                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.spread:I
+      75: invokeinterface #229,  3          // InterfaceMethod net/minecraft/util/RandomSource.nextIntBetweenInclusive:(II)I
+      80: istore        8
+      82: aload_3
+      83: iload         7
+      85: iconst_0
+      86: iload         8
+      88: invokevirtual #233                // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      91: astore        9
+      93: aload_2
+      94: getfield      #237                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.projection:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+      97: getstatic     #241                // Field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection.TERRAIN_MATCHING:Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;
+     100: if_acmpne     132
+     103: aload         4
+     105: getstatic     #246                // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE_WG:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     108: aload_3
+     109: invokevirtual #83                 // Method net/minecraft/core/BlockPos.getX:()I
+     112: aload_3
+     113: invokevirtual #94                 // Method net/minecraft/core/BlockPos.getZ:()I
+     116: invokeinterface #252,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeight:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;II)I
+     121: istore        10
+     123: aload         9
+     125: iload         10
+     127: invokevirtual #256                // Method net/minecraft/core/BlockPos.atY:(I)Lnet/minecraft/core/BlockPos;
+     130: astore        9
+     132: aload         4
+     134: aload         9
+     136: invokeinterface #260,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     141: ifeq          205
+     144: aload         9
+     146: invokevirtual #264                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     149: astore        10
+     151: aload_2
+     152: getfield      #267                // Field net/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config.groundRule:Lnet/minecraft/world/level/levelgen/structure/templatesystem/RuleTest;
+     155: aload         4
+     157: aload         10
+     159: invokeinterface #271,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     164: aload_1
+     165: invokevirtual #98                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     168: invokevirtual #275                // Method net/minecraft/world/level/levelgen/structure/templatesystem/RuleTest.test:(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/util/RandomSource;)Z
+     171: ifeq          205
+     174: aload         4
+     176: aload         10
+     178: invokeinterface #281,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.hasChunkAt:(Lnet/minecraft/core/BlockPos;)Z
+     183: ifne          189
+     186: goto          205
+     189: aload_1
+     190: aload_2
+     191: aload         5
+     193: aload         9
+     195: aload         4
+     197: invokestatic  #284                // Method trySpawningAt:(Lnet/minecraft/world/level/levelgen/feature/FeaturePlaceContext;Lnet/mehvahdjukaar/supplementaries/common/worldgen/SpawnEntityWithPassengersFeature$Config;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/WorldGenLevel;)Z
+     200: ifeq          205
+     203: iconst_1
+     204: ireturn
+     205: iinc          6, 1
+     208: goto          31
+     211: iconst_0
+     212: ireturn
+
+  private static void lambda$trySpawningAt$0();
+    Code:
+       0: return
+}

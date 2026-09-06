@@ -1,0 +1,195 @@
+Compiled from "BlockGeneratorBlockTile.java"
+public class net.mehvahdjukaar.supplementaries.common.block.tiles.BlockGeneratorBlockTile extends net.minecraft.world.level.block.entity.BlockEntity {
+  private static final java.util.concurrent.ExecutorService EXECUTORS;
+
+  private java.util.concurrent.CompletableFuture<java.util.List<net.mehvahdjukaar.supplementaries.common.worldgen.LocatedStructure>> threadResult;
+
+  private boolean firstTick;
+
+  private net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config config;
+
+  public net.mehvahdjukaar.supplementaries.common.block.tiles.BlockGeneratorBlockTile(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: getstatic     #1                  // Field net/mehvahdjukaar/supplementaries/reg/ModRegistry.BLOCK_GENERATOR_TILE:Ljava/util/function/Supplier;
+       4: invokeinterface #7,  1            // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+       9: checkcast     #13                 // class net/minecraft/world/level/block/entity/BlockEntityType
+      12: aload_1
+      13: aload_2
+      14: invokespecial #15                 // Method net/minecraft/world/level/block/entity/BlockEntity."<init>":(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V
+      17: aload_0
+      18: iconst_1
+      19: putfield      #21                 // Field firstTick:Z
+      22: aload_0
+      23: aconst_null
+      24: putfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      27: return
+
+  public static void tick(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.mehvahdjukaar.supplementaries.common.block.tiles.BlockGeneratorBlockTile);
+    Code:
+       0: aload_3
+       1: getfield      #21                 // Field firstTick:Z
+       4: ifeq          39
+       7: aload_3
+       8: iconst_0
+       9: putfield      #21                 // Field firstTick:Z
+      12: aload_3
+      13: aload_0
+      14: aload_1
+      15: invokedynamic #31,  0             // InvokeDynamic #0:get:(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Ljava/util/function/Supplier;
+      20: getstatic     #34                 // Field EXECUTORS:Ljava/util/concurrent/ExecutorService;
+      23: invokestatic  #38                 // Method java/util/concurrent/CompletableFuture.supplyAsync:(Ljava/util/function/Supplier;Ljava/util/concurrent/Executor;)Ljava/util/concurrent/CompletableFuture;
+      26: aload_1
+      27: invokedynamic #44,  0             // InvokeDynamic #1:apply:(Lnet/minecraft/core/BlockPos;)Ljava/util/function/Function;
+      32: invokevirtual #48                 // Method java/util/concurrent/CompletableFuture.exceptionally:(Ljava/util/function/Function;)Ljava/util/concurrent/CompletableFuture;
+      35: putfield      #52                 // Field threadResult:Ljava/util/concurrent/CompletableFuture;
+      38: return
+      39: aload_3
+      40: getfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      43: ifnull        63
+      46: aload_3
+      47: getfield      #52                 // Field threadResult:Ljava/util/concurrent/CompletableFuture;
+      50: ifnull        63
+      53: aload_3
+      54: getfield      #52                 // Field threadResult:Ljava/util/concurrent/CompletableFuture;
+      57: invokevirtual #56                 // Method java/util/concurrent/CompletableFuture.isCompletedExceptionally:()Z
+      60: ifeq          71
+      63: aload_0
+      64: aload_1
+      65: iconst_0
+      66: invokevirtual #60                 // Method net/minecraft/world/level/Level.removeBlock:(Lnet/minecraft/core/BlockPos;Z)Z
+      69: pop
+      70: return
+      71: aload_3
+      72: getfield      #52                 // Field threadResult:Ljava/util/concurrent/CompletableFuture;
+      75: invokevirtual #66                 // Method java/util/concurrent/CompletableFuture.isDone:()Z
+      78: ifeq          121
+      81: aload_3
+      82: getfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      85: aload_0
+      86: checkcast     #69                 // class net/minecraft/server/level/ServerLevel
+      89: aload_1
+      90: aload_3
+      91: getfield      #52                 // Field threadResult:Ljava/util/concurrent/CompletableFuture;
+      94: invokevirtual #71                 // Method java/util/concurrent/CompletableFuture.get:()Ljava/lang/Object;
+      97: checkcast     #72                 // class java/util/List
+     100: invokestatic  #74                 // Method net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature.applyPostProcess:(Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Ljava/util/List;)V
+     103: goto          121
+     106: astore        4
+     108: aload_0
+     109: aload_1
+     110: iconst_0
+     111: invokevirtual #60                 // Method net/minecraft/world/level/Level.removeBlock:(Lnet/minecraft/core/BlockPos;Z)Z
+     114: pop
+     115: aload_1
+     116: aload         4
+     118: invokestatic  #82                 // Method throwError:(Lnet/minecraft/core/BlockPos;Ljava/lang/Throwable;)V
+     121: return
+    Exception table:
+       from    to  target type
+          81   103   106   Class java/lang/Exception
+
+  private static void throwError(net.minecraft.core.BlockPos, java.lang.Throwable);
+    Code:
+       0: getstatic     #86                 // Field net/mehvahdjukaar/supplementaries/Supplementaries.LOGGER:Lorg/apache/logging/log4j/Logger;
+       3: ldc           #92                 // String Failed to generate road sign at {}: {}
+       5: aload_0
+       6: aload_1
+       7: invokeinterface #94,  4           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      12: return
+
+  public void setConfig(net.mehvahdjukaar.supplementaries.common.worldgen.RoadSignFeature$Config);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+       5: return
+
+  protected void saveAdditional(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #100                // Method net/minecraft/world/level/block/entity/BlockEntity.saveAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+       6: aload_0
+       7: getfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      10: ifnull        51
+      13: aload_2
+      14: getstatic     #104                // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+      17: invokeinterface #110,  2          // InterfaceMethod net/minecraft/core/HolderLookup$Provider.createSerializationContext:(Lcom/mojang/serialization/DynamicOps;)Lnet/minecraft/resources/RegistryOps;
+      22: astore_3
+      23: aload_1
+      24: ldc           #116                // String config
+      26: getstatic     #117                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.CODEC:Lcom/mojang/serialization/Codec;
+      29: aload_3
+      30: aload_0
+      31: getfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      34: invokeinterface #123,  3          // InterfaceMethod com/mojang/serialization/Codec.encodeStart:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      39: invokeinterface #129,  1          // InterfaceMethod com/mojang/serialization/DataResult.getOrThrow:()Ljava/lang/Object;
+      44: checkcast     #134                // class net/minecraft/nbt/Tag
+      47: invokevirtual #136                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+      50: pop
+      51: return
+
+  protected void loadAdditional(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #142                // Method net/minecraft/world/level/block/entity/BlockEntity.loadAdditional:(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/core/HolderLookup$Provider;)V
+       6: aload_1
+       7: ldc           #116                // String config
+       9: invokevirtual #145                // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+      12: ifeq          58
+      15: aload_2
+      16: getstatic     #104                // Field net/minecraft/nbt/NbtOps.INSTANCE:Lnet/minecraft/nbt/NbtOps;
+      19: invokeinterface #110,  2          // InterfaceMethod net/minecraft/core/HolderLookup$Provider.createSerializationContext:(Lcom/mojang/serialization/DynamicOps;)Lnet/minecraft/resources/RegistryOps;
+      24: astore_3
+      25: aload_0
+      26: getstatic     #117                // Field net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config.CODEC:Lcom/mojang/serialization/Codec;
+      29: aload_3
+      30: aload_1
+      31: ldc           #116                // String config
+      33: invokevirtual #149                // Method net/minecraft/nbt/CompoundTag.get:(Ljava/lang/String;)Lnet/minecraft/nbt/Tag;
+      36: invokeinterface #152,  3          // InterfaceMethod com/mojang/serialization/Codec.decode:(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;
+      41: invokeinterface #129,  1          // InterfaceMethod com/mojang/serialization/DataResult.getOrThrow:()Ljava/lang/Object;
+      46: checkcast     #155                // class com/mojang/datafixers/util/Pair
+      49: invokevirtual #157                // Method com/mojang/datafixers/util/Pair.getFirst:()Ljava/lang/Object;
+      52: checkcast     #118                // class net/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config
+      55: putfield      #27                 // Field config:Lnet/mehvahdjukaar/supplementaries/common/worldgen/RoadSignFeature$Config;
+      58: return
+
+  private static java.util.List lambda$tick$1(net.minecraft.core.BlockPos, java.lang.Throwable);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #82                 // Method throwError:(Lnet/minecraft/core/BlockPos;Ljava/lang/Throwable;)V
+       5: aconst_null
+       6: areturn
+
+  private static java.util.List lambda$tick$0(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: checkcast     #69                 // class net/minecraft/server/level/ServerLevel
+       4: getstatic     #160                // Field net/mehvahdjukaar/supplementaries/reg/ModTags.ROAD_SIGN_DESTINATIONS:Lnet/minecraft/tags/TagKey;
+       7: aload_1
+       8: sipush        250
+      11: iconst_0
+      12: iconst_2
+      13: getstatic     #166                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.ROAD_SIGN_MAX_SEARCHES:Ljava/util/function/Supplier;
+      16: invokeinterface #7,  1            // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      21: checkcast     #171                // class java/lang/Integer
+      24: invokevirtual #173                // Method java/lang/Integer.intValue:()I
+      27: getstatic     #177                // Field net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Building.ROAD_SIGN_EXIT_EARLY:Ljava/util/function/Supplier;
+      30: invokeinterface #7,  1            // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+      35: checkcast     #180                // class java/lang/Boolean
+      38: invokevirtual #182                // Method java/lang/Boolean.booleanValue:()Z
+      41: invokestatic  #185                // Method net/mehvahdjukaar/supplementaries/common/worldgen/StructureLocator.findNearestStructures:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/tags/TagKey;Lnet/minecraft/core/BlockPos;IZIIZ)Ljava/util/List;
+      44: areturn
+
+  static {};
+    Code:
+       0: invokestatic  #191                // Method java/util/concurrent/Executors.newCachedThreadPool:()Ljava/util/concurrent/ExecutorService;
+       3: putstatic     #34                 // Field EXECUTORS:Ljava/util/concurrent/ExecutorService;
+       6: return
+}

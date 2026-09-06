@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 78 of 136. The exact queue below has 58 open rows.
+Supported provider dispositions: 79 of 136. The exact queue below has 57 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -695,12 +695,372 @@ attributes. This separates unknown membership from incomplete attributes.
 | `structure_layout_optimizer-neoforge-1.0.12.jar` | `structure-layout-optimizer-provider` (8c60e03), test_small_utility_provider_scope.py | RESOLVED: Existing jigsaw assembly and template filtering modifications. No independent family. See additional shared provider dispositions below. |
 | `structure_pool_api-neoforge-1.2.1+1.21.1.jar` | `structure-pool-api-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Caller-supplied pool injection and piece limits; no independent family. See small utility provider dispositions below. |
 | `structureessentials-1.21.1-5.0.jar` | `structureessentials-provider` (7a82503), test_small_utility_provider_scope.py | RESOLVED: Existing structure lookup, placement, biome compatibility and diagnostic modifications; no independent family. Frozen activation settings bound below. |
-| `supplementaries-neoforge-1.21.1-3.6.8.jar` | `supplementaries-tags-code` | Resolve feature/structure aliases and injected components against existing roots. |
+| `supplementaries-neoforge-1.21.1-3.6.8.jar` | Existing generation, data, common-entry and integration captures; final server hooks 46127c7 and map delegate 3660300; test_supplementaries_provider_scope.py | RESOLVED: Galleon and road-sign roots, cave-urn cache candidate, all pools/templates, component injections, full payload and executable contribution roles accounted for below. Cave-urn canonical boundary and effective family attributes remain separate. |
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Resolve feature/modifier/template consumers and any independent generation routes. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+
+## Supplementaries packaged component checkpoint
+
+### Final provider membership disposition
+
+Supplementaries provider coverage is RESOLVED. Reuse the two existing root
+candidates, supplementaries:galleon and supplementaries:road_sign, and retain
+the freestanding cave-urn cache as a named canonical-boundary candidate.
+The road-sign configured feature is part of the root's generation chain, not
+another family. Galleon urns are components of the ship; the same urn patch's
+freestanding cave placement requires the separate cache-versus-decoration
+decision. All twelve pools and eighteen templates already have these links.
+Mineshaft elevator/rope and stronghold sconces modify existing families.
+Barnacles, basalt ash and wild flax retain their natural-generation roles.
+
+Source 46127c7 (extractor 2e97fb8) closes the remaining declared hook boundary:
+69 server/common mixins plus the inherited Moonlight SimpleMixinPlugin. The
+four previously captured mineshaft/stronghold hooks are reused. The existing
+provider check now requires exact equality between all 73 declared common
+mixins and the captured classes, rather than checking four names as a subset.
+The retained disassemblies supply method bodies, injection targets and optional
+annotations. Manifest hashes:
+
+- supplementaries-server-hooks: eff83e4817ac4c20f7cf47c3b8beb8647257a27a28db5492825037df90a503d0.
+- supplementaries-shared-plugin: 05fbc861b5d5a7e0290ac0bdcd10d29ae1afd2410c7833b97f5fd560a9640e75.
+- supplementaries-map-lookup (3660300, extractor c989eb6): 3e28fdfcaf21c79d87ef0ad595aa145dea869903dd1692776fc9643bebdac3f2.
+
+The remaining hooks have these contribution roles. Names below are relative
+to the declared mixin package; the second configuration uses neoforge/.
+
+| Hooks | Membership disposition from entry behavior |
+| --- | --- |
+| AbstractArrowMixin, AbstractSkeletonMixin, BowMixin, PlayerMixin, PlayerProjectileMixin, ProjectileWeaponItemMixin, ServerPlayerMixin, SkeletonMixin, StrayMixin | Quiver storage, ammunition selection/consumption, equipment at entity spawn, drops and synchronization. These affect existing entities and items, not site layouts. |
+| AbstractHorseMixin, SkellyHorseMixin, ZombieHorseMixin | Feeding, taming, conversion and persistence of existing horses. Conversion preserves entity equipment/ownership; it is not structure generation. |
+| CatSitOnBlockGoalMixin, GoalUtilsMixin, WanderingTraderMixin | Cat destination selection, boat path evaluation and trader door-opening goals. |
+| RedMerchantSpawnerMixin | On a failed wandering-trader spawn, conditionally spawns a RedMerchantEntity near a player or existing meeting POI, with a despawn delay and wander restriction. It does not create that POI or a merchant site. Difficulty/season inputs are not measured occurrence rates. |
+| CreeperMixin, compat/CompatCreeperArclightMixin, CelebrateVillagersSurvivedRaidMixin | Festive entity state, explosion wrapping, particles and raid-celebration events. Both optional Creeper alternatives have the same non-site role. |
+| EvokerMixin, SlimeMixin, LivingEntityMixin, neoforge/LivingEntityMixin | Existing-entity state, slime effects, rope movement, lunch-basket consumption and fluid travel. |
+| EntityAccessor, LivingEntityAccessor, PlayerAccessor, IDispenserAccessor, IHangingEntityAccessor, neoforge/FireBlockAccessor, neoforge/ItemStackAccessor | Access to passenger, item, loot, shoulder, dispenser, facing and fire operations. These accessor declarations add no generation route. |
+| BlockSourceMixin, EntityMixin, FallingBlockEntityMixin | Dispenser source positioning, step sounds and falling-block fluid sampling. |
+| ExplorationMapFunctionMixin, neoforge/TreasureMapForEmeraldsMixin | Consume structure destinations for loot/trade map items or Quark quills. The captured AdventurerMapsHandler uses existing holders or ADVENTURE_MAP_DESTINATIONS, requests a location, and creates/decorates an item. No independent layout is defined. The previously recorded null-returning Quark implementation prevents a claim of successful quill creation. |
+| MapItemMixin, CartographyTableMixin, CartographyTableInputSlotMixin, InkSackMixin | Existing map height, color, lighting and antique-ink data; cartography inventory handling and sign interaction. |
+| BannerPatternItemMixin, BrushItemMixin, ItemsMixin, LoomInputSlotMixin, LoomMenuMixin | Tooltip creation, player brushing, shulker-shell item substitution and flag crafting. |
+| GrindstoneInputSlotMixin, GrindstoneMenuMixin, GrindstoneTestSlotMixin, ShulkerBoxBlockEntityMixin, ShulkerSlotMixin | Crafting result/experience and container insertion behavior. |
+| CampfireBlockMixin, ComparatorBlockMixin, FireBlockMixin, IronBarsBlockMixin, LanternBlockPlacementMixin, ObserverBlockMixin | Existing block smoke, redstone updates, fluid ignition, connection states, rope support and moving-block observer behavior. Ignition and neighbor changes are not authored sites. |
+| ExplosionMixin, ServerLevelMixin, neoforge/ChunkHolderMixin | Explosion visual callback, dispenser event redirection, lightning targeting and antique-ink capability synchronization. The deferred chunk callback sends existing block-entity state to players. |
+| ServerGamePacketListenerMixin | Constructor-only class; no injected method body. |
+| neoforge/self/SelfFlammableFluidBlockMixin, SelfLumiseneFluidMixin, SelfGunpowderMixin | Client block extensions, fluid-type access and ignition of existing gunpowder blocks. |
+| neoforge/self/SelfFrameMixin, SelfPlanterMixin, SelfNetheriteDoorMixin, SelfSafeMixin | Held-block enchanting power, plant support and player destruction permission checks. |
+| neoforge/self/SelfSlingshotMixin, SelfSoapItemMixin, SelfWrenchMixin | Item enchantment/action support and player-driven hanging-entity rotation. |
+
+SimpleMixinPlugin reads OptionalMixin annotations and tests named class
+availability. It returns no additional mixin list and performs no pre/post
+application work. The captured optional conditions concern Arclight Creeper
+compatibility and Domestication Innovation horse compatibility. Both the
+included and excluded hook roles above add no independent family, so no new
+class-presence experiment is needed to establish membership. This resolves the
+plugin used by Supplementaries, not the separate full Moonlight provider row.
+
+Previously captured common entries complete the non-mixin boundary: loader
+initialization reaches the accounted worldgen registry, dynamic server data and
+setup delegates. Other registries and reload inputs provide items, entities,
+recipes, trades, maps, fluids, songs, hourglass data, captured mobs and player
+interactions. Server events perform interactions, goals, item pickup, entity
+damage, player ticks and note-block behavior. Lifecycle entries initialize
+faucet/fake-level support, register placeable books, synchronize data and clear
+caches. These do not add an unexplained authored-site candidate. Client-only
+entry annotations, integrations, both bundled libraries and the complete
+parent payload retain their earlier verified dispositions below.
+
+This closes provider membership only. Canonical grouping, effective biome and
+dimension eligibility, actual placement, map success and the eleven family
+attributes must retain their existing uncertainty. No runtime or baseline
+change was made. Census: 79 resolved providers, 57 open. Earlier open statements
+below are superseded by this final disposition.
+
+Validation: nine focused cases pass (2.97s); scoped Ruff and Basedpyright pass.
+The initial statement-count lint finding was fixed by separating the existing
+frozen-input assertions into their own test, without changing their coverage.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py 'tests/item8/test_family_decisions.py::test_provider_groups_bind_full_definitions_pools_and_registry[supplementaries-2]'
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py
+```
+
+Client entry disposition: source aff2fde, extracted by 5e58a1a, binds both
+SupplementariesForgeClient and PicklePlayer to class-level EventBusSubscriber
+annotations with value Dist.CLIENT. Their automatic registration is excluded
+from the dedicated server. The existing provider source check binds both
+classes and their disassemblies to the frozen archive. This resolves the
+client-entry question below, without inspecting unrelated rendering behavior.
+Remaining membership work is the server common/mixin entry roles, including
+the inherited Moonlight mixin-plugin behavior. Packaged data, nested libraries,
+integrations and the previously resolved generation paths must not be repeated.
+Validation: all six Supplementaries provider cases pass (2.16s), with scoped
+Ruff and Basedpyright clean. This source binding closes no additional provider;
+the membership census remains 78 resolved and 58 open.
+
+The complete parent payload is now partitioned by the existing provider test:
+6,364 non-directory files comprise 1,179 classes, 3,577 assets, 1,589 data files
+and nineteen other files. The latter are the exact metadata/license/icon files,
+two already inspected embedded libraries and nine darker-rope texture-pack
+files. No optional data pack is hidden in that resource-pack directory.
+The test records every data category and fails on an unexplained category or
+changed count, under the frozen whole-archive hash. The twenty-nine worldgen
+files and eighteen templates reuse the already reconciled roots, sets, pools,
+processor, configured features and placed features. Five biome modifiers were
+already bound separately. This does not create another family denominator.
+
+The less conventional data folders also have explicit roles: six placeable-book
+definitions describe item placement; Trinkets entities/slots describe player
+equipment slots; Moonlight files describe 109 soft fluids, 34 map markers and
+21 trade-folder files. The parsed catalog contains twenty trade JSON files;
+the remaining file is cartographer/example.json.disabled. Two other nonstandard
+data files are flute_songs/midi_converter.py (interactive note conversion) and
+flute_songs/revenge.json1 (song notes). The test binds the exact three-file
+exception set. The converter was inspected, not executed or installed as a
+server workflow. A strict-JSON exploratory read rejected a commented trade;
+the already accepted commented-JSON catalog was reused, without changing parsers.
+
+This closes packaged file accounting, not all executable roles. The annotation
+candidate set is bound to SupplementariesForge, SupplementariesForgeClient and
+PicklePlayer; the latter two still need their explicit client-side disposition.
+Remaining common/mixin hooks must also be reconciled. Six focused cases passed
+(2.20s); after adding the nonstandard-file assertion, its affected case passed
+(0.25s). Scoped Ruff and Basedpyright pass. Census remains 78 resolved, 58 open.
+
+MixinSquared's bundled-library role is resolved. Source 88d7f4f (extractor
+27c648b) retains four wrapper and four core entry classes, independently
+reproduced. Wrapper manifest SHA-256:
+6a7cbdcfb28d23625a5a4468a982f9d5011767bc226793639d02532001fc47c2.
+Core manifest SHA-256:
+a46ec939d8f5fba8cbb02ca91e76e87d25d830ebc7be3711056659e04a14d673.
+The existing extractor now traverses the observed two-level nested path while
+preserving pinned parent/leaf identities and output format. Its smoke output
+remains in evidence/raw/item8/mixinsquared-nested-smoke.
+
+The wrapper's configuration declares a plugin but no mixin/client/server lists.
+Its plugin initializes MixinSquared, loads service-provided cancellers and
+annotation adjusters, and reorders transformation extensions. Core bootstrap
+registers the dynamic target selector and cancellation/annotation-adjustment
+extensions. The captured registrars operate on mixin methods, annotations and
+extension registries. This is transformation support for consumers' mixins,
+not an independent authored-site generator. The wrapper has eleven files and
+the core has sixty-three; neither contains assets or data. Their original class,
+archive and disassembly identities are bound by the existing provider test.
+
+Five focused cases pass (2.13s). A line-length issue was corrected before the
+scoped quality checks. Do not recapture either bundled library or reopen the
+Trinkets fallback. Remaining Supplementaries scope is other common/mixin hooks
+and full parent payload accounting. Census remains 78 resolved and 58 open.
+
+The Trinkets fallback is now resolved. The existing provider test checks the
+exact dev/emi/trinkets/api/TrinketsApi.class path, including prefixed copies,
+in every hash-verified retained and platform archive and recursively embedded
+JAR. None supplies that class. Together with the already bound runtime absence
+of the trinkets mod ID and the captured dispatcher condition, this excludes the
+Trinkets initialization branch for the frozen inputs. No extra source capture
+or general scanning framework was needed. Four focused cases pass (2.10s);
+scoped Ruff and Basedpyright pass. This supersedes the open Trinkets instructions
+below. MixinSquared, remaining common/mixin roles and parent payload accounting
+remain open; census stays 78 resolved and 58 open.
+
+Retained integration entries are captured in 11b6396 (extractor 5355d74),
+manifest 1ec5f3694856a3a56bf280d1ceb4bf980a741f63fe7ad1fddba78ea6c7d2b1d3.
+All eight class/disassembly identities and the existing runtime log are bound by
+the focused provider test; independent r1 matches every generated file.
+
+| Entry | Membership role |
+| --- | --- |
+| CreateCompat and CreateCompatImpl | init is empty; setup registers bamboo-spike and hourglass movement behaviors for existing contraptions. No independent structure registration. Preserve the dispatcher's platform condition rather than inferring activation from the mod name. |
+| CCCompat and CCCompatImpl | Registers speaker/cannon capabilities and a capability event callback for their existing block entities. No independent authored-site generator. |
+| CuriosCompat | Registers the Curio slot-reference codec; other helpers inspect equipped keys and quivers. Inventory compatibility. |
+| FarmersDelightCompat | init is empty. Its other helpers handle existing crop/block and food interactions. No initialization-time family contribution. |
+| QuarkCompat and QuarkCompatImpl | Registers Tater-in-a-Jar block/item/block-entity compatibility and subscribes to the Quark load bus. Other helpers address existing pistons, blocks, inventories and items. The tag-based quill method reads the structure tag then calls a holder-set overload that returns null; do not claim a generated quill or discoverability behavior from its name. |
+
+The preserved runtime log lists create, computercraft, farmersdelight, quark and
+curios. It does not list soul_fire_d, shulkerboxtooltip, decorative_blocks,
+endergetic, caverns_and_chasms, infernalexp, architects_palette or trinkets.
+Soul-fired dispatch is also hard-coded false in the captured CompatHandler
+initializer. Trinkets is not yet excluded by its missing mod ID: its dispatcher
+also tests dev.emi.trinkets.api.TrinketsApi class presence. Resolve that concrete
+fallback or the delegate's membership role before closing compatibility coverage.
+
+Three focused cases pass (0.89s); scoped Ruff and Basedpyright pass. Remaining
+provider work is the Trinkets boundary, MixinSquared, remaining common/mixin
+roles and complete parent payload accounting. Do not repeat these integration
+captures or infer Item 8 attribute completion. Census remains 78 resolved, 58 open.
+
+Common setup dispatch is now retained in 6bfcf37 (extractor 9e9c74b), manifest
+cbab9d898accfb9bedc9ab98c56e9b85f08747a062353dd8350d5699dbfad049.
+Its bootstrap targets bind the registered setup, asyncSetup and tag-dependent
+callbacks. The latter two reach the already inspected disabled-block processor
+and road-sign destination cache. Reuse those component roles. Setup registers
+flammability, frame filling, item behavior and compatibility callbacks; it is
+not itself an independent site generator.
+
+Source dbcbefc (extractor 77b2261), manifest
+3a14ffe0a11a67a2cb31b7825dce2fe1bdef83b644754f89816a63558144b58a,
+retains RegUtils and CompatHandler. RegUtils.registerAdditionalPlacements passes
+pancakes, sticks, blaze rods, gunpowder and lunch baskets to item-placement APIs.
+This resolves that named route as item-to-block placement, not world generation.
+CompatHandler.setup has four conditional calls: CreateCompat, CCCompat,
+SoulFiredCompat and ShulkerBoxTooltipCompat. Its optional registry initialization
+also dispatches named integrations. Their retained/absent status and contribution
+roles still need reconciliation; the dispatcher capture alone does not close
+them. Keep this specific remaining boundary instead of reopening all setup code.
+
+Both captures reproduce independently and their class/disassembly identities
+are bound in the existing provider test. Three focused cases pass (0.90s), with
+scoped Ruff and Basedpyright passing. MixinSquared, remaining common and mixin
+roles, and complete parent payload accounting remain open. Census stays 78
+resolved and 58 open. No final canonical-family denominator is claimed.
+
+Bundled Sable Companion service role is resolved in source 53c2374 (extractor
+bbae69f). Its four-class manifest is
+0e58be3a4ae7cc39891a83c05fd25707e7dafc44831648596ee5ea64dafef660,
+independently reproduced and bound by the existing provider test. The nested
+archive has fourteen classes and five metadata/service/image/license files, with
+no packaged generation data. Its service declaration names DefaultSableCompanion.
+That implementation returns empty or null sublevel lookups, zero sublevel
+velocities, coordinate projections and supplied-callback results. It has no
+independent authored-site generator. The interface selects the highest-priority
+ServiceLoader provider and supplies coordinate overloads; the direct helpers
+provide vector/quaternion codecs and client-level access. This does not prove
+which service implementation wins across all retained archives or validate the
+mathematical correctness of every distance overload. It does not re-enable Sable.
+Three focused cases pass (0.83s); scoped Ruff and Basedpyright pass. Remaining
+Supplementaries membership work includes MixinSquared, common delegates and
+remaining hooks/payload accounting. Census remains 78 resolved and 58 open.
+
+Stronghold component roles are resolved by source 1d28c70 (extractor b0508d1).
+The seven-class common-entry manifest is
+7d0fe813b6039a677168e347e9c9d73c4af2aae8d9b2728cab6e9b9783ac2e74;
+independent r1 matches, and the existing focused test binds original classes
+and disassemblies. StrongholdCrossingSconceMixin injects at postProcess TAIL
+on vanilla StrongholdPieces.FiveCrossing, placing one wall sconce inside that
+piece. StrongholdRoomSconceMixin targets RoomCrossing and places four sconces
+when its room type is zero. Both check SCONCE_ENABLED. The frozen building.sconce
+enabled flag is true and bound by the test. These are components of existing
+vanilla stronghold pieces, not independent families. Their presence does not
+prove those vanilla pieces generate under the retained stronghold replacements.
+
+Placement/processor source a74ae7b (extractor e1e2005) resolves those roles:
+the galleon placement queries exclusion zones against existing structure sets;
+the processor substitutes disabled blocks inside supplied template block info.
+Neither introduces another family. Its three-class manifest
+aaae4d5157a42bdff7bc12d048945a324e3c0c45d8e0bf06edf46a06a7264195 is
+independently reproduced and bound by the same focused test.
+
+The common-entry capture also retains SupplementariesForge, Supplementaries,
+ServerEventsForge, ServerEvents and MixinPlugin. The loader calls commonInit and
+server-event registration; commonInit reaches the already inspected ModWorldgen
+and ModServerDynamicResources. MixinPlugin adds no methods beyond construction
+and inherits Moonlight SimpleMixinPlugin. Preserve that shared dependency for
+the remaining entry coverage rather than treating the plugin name as proof.
+ModSetup and other common delegates, remaining declared mixins, bundled code and
+full payload reconciliation still prevent whole-provider closure. Do not repeat
+the resolved generation implementations or stronghold/mineshaft component roles.
+Both focused cases pass (0.79s); scoped Ruff and Basedpyright pass. Census remains
+78 resolved, 58 open. This checkpoint supersedes the older open processor and
+placement instructions below, not the remaining provider gate.
+
+Custom-generation role follow-up: BarnaclesMultifaceGrowthFeature uses the
+configured multiface block's placement and spread operations; BasaltAshFeature
+scans a matching surface and writes the configured top and optional lower block.
+These are natural growth and terrain decoration. SpawnEntityWithPassengersFeature
+creates the configured entities/passengers, handles boat variants/container loot
+and supplies the existing galleon component pools. It is not another site family.
+RoadSignStructure and GalleonStructure select suitable positions and call vanilla
+JigsawPlacement.addPieces with their start pools. Their configuration-dependent
+eligibility and assembled attributes remain separate from membership.
+
+RoadSignFeature includes deferred construction. It places a generator block and
+stores its configuration. Source ccbfda7 (extractor dabd675) captures that block
+entity callback; manifest a6a99e646dd7b65793defda3168306b20e1a70a901b7d37e024d4aea3f6f5194
+is independently reproduced and bound by the focused test. The first tick starts
+an asynchronous ROAD_SIGN_DESTINATIONS lookup; completion invokes the already
+captured applyPostProcess to finish sign blocks, text, lighting and optional
+notice-board content. Failure paths log and/or remove the generator. A feature
+placement returning true is therefore not proof that a finished sign was observed.
+This remains the same root/component design chain, not another family.
+
+Preserve one named nonregistry grouping question: the freestanding cave-urn
+cache candidate. The cave_urns biome modifier selects the cave_urns placed feature,
+which selects urns_patch: a vanilla random patch of simple urn blocks marked
+treasure=true. The galleon urn pool also consumes urns_patch as a component.
+Do not count that component again as a galleon family, and do not silently exclude
+the freestanding treasure-bearing patch as vegetation. Its cache-versus-decoration
+family boundary is for explicit canonical reconciliation; no new family total is
+claimed here. The other four biome modifiers select basalt ash, ocean/shore
+barnacles and wild flax. All five modifier references are bound by the existing
+focused component test, as is the urn patch's treasure-bearing block definition.
+
+Two focused cases pass in 0.79s; scoped Ruff and Basedpyright pass. No new runtime
+measurement or graph was added. Remaining provider work: shared processor and
+placement roles, loader/event/mixin entry coverage and full payload reconciliation.
+Reuse these resolved generation paths. Census remains 78 resolved, 58 open.
+
+Generation source d6221a7, extractor 24f0a75, captures eleven identified classes
+with manifest 0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d.
+Independent r1 matches, and the focused test binds every source to the archive.
+ModWorldgen registers two structure types, four feature types, the elevator
+piece, a placement type and a block-removal processor. The two roots and four
+feature implementations are captured; remaining processor/placement semantics
+must reuse existing evidence where available before adding source captures.
+
+The elevator membership boundary is resolved: MineshaftPiecesMixin injects at
+the head of vanilla MineshaftPieces.createRandomShaftPiece and substitutes the
+result of MineshaftElevatorPiece.getElevator when non-null. This is a component
+of existing mineshafts, not a separate structure-family root. The corridor mixin
+can replace chain supports with the selected rope under its cutout condition.
+Both mixins occur in supplementaries-common.mixins.json.
+
+The elevator method rejects Y greater than 48 and checks a random draw against
+MINESHAFT_ELEVATOR, plus PULLEY_ENABLED, ROPE_ENABLED and TURN_TABLE_ENABLED.
+The frozen common config records pulley/rope/turntable enabled and an elevator
+setting of 0.035. This is a configured input, not an observed occurrence rate;
+the actual selected mineshaft implementation and placement constraints still
+matter. Do not infer that elevators were observed in the clean worlds.
+
+Two focused cases pass in 0.80s, with scoped Ruff and Basedpyright passing.
+Continue the captured custom-generation implementation roles, then remaining
+loader/event/mixin and payload coverage. The complete provider remains open;
+the census is still 78 resolved and 58 open. Do not recapture these eleven
+classes or count elevator pieces as new families.
+
+The exact retained archive SHA-256 is
+0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d.
+Existing family-decision checks account for galleon and road_sign roots. The new
+focused component check reconciles all twelve packaged pools and eighteen
+templates with the accepted pool graph. All are connected to these roots;
+neither graph records missing references or unresolved pool elements.
+
+The road-sign graph connects start_pool, the road_sign template and feature_pool.
+The feature pool invokes the placed road_sign feature, which selects the
+configured road_sign feature of custom type supplementaries:road_sign. These
+are linked representations within the existing root candidate, not three extra
+families. This proves the packaged relationship, not its actual placement success
+or completeness of the custom feature implementation. Preserve the same design
+boundary when reconciling any other consumers.
+
+The galleon graph includes hull, room, sail, urn and entity-feature components.
+Do not promote its boats or inhabitants to independent structure families.
+Common-worldgen code also contains MineshaftElevatorPiece; its registration and
+injection consumer require inspection. That is a concrete additional component
+question, not an accepted family. Custom structure/feature implementations,
+other generation hooks and full provider payload still require disposition.
+Provider census remains 78 resolved and 58 open.
+
+```sh
+uv run pytest -q tests/item8/test_supplementaries_provider_scope.py
+uv run ruff check tests/item8/test_supplementaries_provider_scope.py
+uv run basedpyright tests/item8/test_supplementaries_provider_scope.py
+```
+
+One focused case passed in 0.73s, with both scoped quality checks passing. The
+existing packaged catalog handles the commented road-sign pool JSON. No new
+parser, graph, runtime measurement or canonical-inventory rewrite was needed.
 
 ## Creating Space packaged component checkpoint
 
