@@ -1316,6 +1316,7 @@ CLASSES: tuple[str, ...] = (
     "org/violetmoon/zetaimplforge/mod/ZetaModCommonProxy.class",
     "org/violetmoon/zetaimplforge/mod/ZetaModForge.class",
     "org/violetmoon/zeta/util/RegisterDynamicUtil.class",
+    "org/violetmoon/zeta/registry/ZetaRegistry.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
