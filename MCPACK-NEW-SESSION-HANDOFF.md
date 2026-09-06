@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 79ed59c4 and reproduces exactly. Canonical-note backlog: 100
+(IDAS 59, AdoraBuild 31, Terralith 10). Coverage groups: 405. Remaining Terralith
+building relationships need bounded layout comparison using the existing renderer;
+content summaries alone do not settle those boundaries. No new measurement system
+is justified. Required attributes and nonregistry work remain open.
+
 Terralith rubble is reconciled as one archaeological ruin family with six roots
 and their size alternatives. Existing template loot bindings support the design
 and terrain distinction. The affected case and scoped checks pass. Canonical-note

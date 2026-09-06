@@ -9430,3 +9430,12 @@ uv run pytest tests/item8/test_family_decisions.py -q -k terralith
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+Inventory regenerated from 79ed59c4 and independently reproduced exactly.
+Only the rubble grouping decision and the decision input identity changed.
+SHA-256: d86bac33950fd68da7afc7939df4543ecb868fa22b50273228408d4279a96cf5.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-rubble-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-rubble-r2.json
+```
