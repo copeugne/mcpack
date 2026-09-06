@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 91 of 136. The exact queue below has 45 open rows.
+Supported provider dispositions: 92 of 136. The exact queue below has 44 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -699,7 +699,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `tectonic-3.0.22-neoforge-21.1.jar` | `tectonic-provider`, `tectonic-config-selection` (fba027c), test_tectonic_provider_scope.py | RESOLVED: Terrain, placement modifications and the named underground-river lantern candidate. No packaged structure roots, pools or templates. See Tectonic disposition below. |
 | `ubesdelight-neoforge-1.21.1-0.4.13.jar` | `ubes-delight-provider` (b6ef5a0), MidnightLib ca67c60, config delegates e40ea32; test_ubes_delight_provider_scope.py | RESOLVED: Four crop chains, food/item interactions and bundled configuration support. No independent structure family. Full disposition below. |
 | `worldweaver-21.0.24.jar` | `pool-codecs` | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `wunderlib-21.0.10.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `wunderlib-21.0.10.jar` | Source 185b55c; test_small_utility_provider_scope.py | RESOLVED: Networking entries and supplied-coordinate geometry; no independent family. See WunderLib disposition below. |
 | `youre-in-grave-danger-neoforge-2.0.13.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 
 ## Final Regions Unexplored provider disposition
@@ -6668,3 +6668,25 @@ existing 24 code-reference and 21 unmatched-search rows. These lanes are plannin
 inputs, not absence proofs. Canonical Moog grouping remains open independently.
 No family count changes in this increment. Do not reopen Fabric internals
 without a concrete contradictory generation or component finding.
+
+### WunderLib membership resolved
+
+Source 185b55c preserves both automatic entry classes and the single indexed
+structure-reference class. The common entry installs networking payload handlers,
+the client entry installs network adapters, and Bounds converts supplied numeric
+extrema into a BoundingBox. Other Bounds methods perform geometry, interpolation
+and serialization. This is a shared math/UI/network library without an independent
+authored design or generation registration. The bounding-box reference is fully
+explained; no generic geometry or network helper audit is needed.
+
+The small-utility test binds the pinned archive, all 142 classes, both automatic
+entries and the complete four-file non-class payload. Only the plain manifest,
+NeoForge mod metadata, icon and license accompany the classes. There are no
+mixins, service declarations, nested modules, templates or generation data.
+Nineteen small-utility cases and scoped Basedpyright pass; the sole initial Ruff
+finding was a long assertion, corrected before the passing scoped Ruff run.
+The source independently reproduces byte for byte.
+
+Whole providers: 92 resolved, 44 open (23 code-reference and 21 unmatched-search
+rows). No family added or grouping changed. Continue remaining contribution
+boundaries and Moog grouping before attributes.
