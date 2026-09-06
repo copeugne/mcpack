@@ -189,6 +189,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/resource/conditions/ResourceConditionsImpl.class",
+    "net/fabricmc/fabric/impl/resource/conditions/OverlayConditionsMetadata.class",
     "net/fabricmc/fabric/mixin/screenhandler/NamedScreenHandlerFactoryMixin.class",
     "net/fabricmc/fabric/mixin/screenhandler/ServerPlayerEntityMixin.class",
     "org/sinytra/fabric/screen_handler_api/generated/GeneratedEntryPoint.class",
