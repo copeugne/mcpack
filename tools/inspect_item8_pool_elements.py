@@ -33,6 +33,7 @@ PATCHED_SERVER = ArchiveInput(
 )
 ARCHIVES = frozenset(
     {
+        "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
         "amendments-1.21-2.0.15-neoforge.jar",
         "accessories-neoforge-1.1.0-beta.53+1.21.1.jar",
         "CreateDragonsPlus-1.11.2b.jar",
@@ -218,6 +219,12 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/ishland/c2me/C2MEMod.class",
+    "com/ishland/c2me/PreLaunchHandler.class",
+    "com/ishland/c2me/base/C2MEBaseMod.class",
+    "com/ishland/c2me/base/ModuleEntryPoint.class",
+    "com/ishland/c2me/base/TheMixinPlugin.class",
+    "com/ishland/c2me/base/common/ModuleMixinPlugin.class",
     "net/mehvahdjukaar/amendments/common/block/StructureCauldronHack.class",
     "net/mehvahdjukaar/amendments/integration/neoforge/BlueprintIntegration$BlockStateRepaletter.class",
     "net/mehvahdjukaar/amendments/integration/SuppCompat.class",
@@ -3300,6 +3307,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/c2me-base-mc1.21.1-0.3.0+alpha.0.93-all.jar",
         "META-INF/jarjar/conditional-mixin-neoforge-0.6.4.jar",
         "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar",
@@ -3362,6 +3370,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/c2me-base-mc1.21.1-0.3.0+alpha.0.93-all.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "3ae0e52d8791bb495bf6c5215320966d4809cce0788e2a52191abb3af975e162",
+        ),
         "META-INF/jarjar/conditional-mixin-neoforge-0.6.4.jar": (
             "CreateDragonsPlus-1.11.2b.jar",
             "0ae7b346d87879e81f276e6a590a6af1e723193e6eb3e94c1f71f7ab5b54d59f",
@@ -3684,6 +3696,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ))
                 verbose |= name.startswith("net/mehvahdjukaar/supplementaries/mixins/")
                 verbose |= name.startswith("plus/dragons/createdragonsplus/")
+                verbose |= name.startswith("com/ishland/c2me/")
                 verbose |= name.startswith("io/wispforest/accessories/")
                 verbose |= name.startswith("net/mehvahdjukaar/amendments/")
                 verbose |= name.startswith("org/betterx/wover/entrypoint/")
