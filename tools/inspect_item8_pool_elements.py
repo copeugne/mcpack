@@ -37,6 +37,7 @@ ARCHIVES = frozenset(
         "cloth-config-15.0.140-neoforge.jar",
         "cristellib-neoforge-1.21.1-3.1.7.jar",
         "ranged_weapon_api-neoforge-2.3.3+1.21.1.jar",
+        "quickrightclick-1.21.1-1.9.jar",
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
         "chipped-neoforge-1.21.1-4.0.2.jar",
@@ -206,6 +207,14 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/natamus/quickrightclick/ModNeoForge.class",
+    "com/natamus/quickrightclick/neoforge/events/NeoForgeQuickEvent.class",
+    "com/natamus/quickrightclick_common_neoforge/ModCommon.class",
+    "com/natamus/quickrightclick_common_neoforge/events/QuickEvent.class",
+    "com/natamus/quickrightclick_common_neoforge/mixin/LivingEntityMixin.class",
+    "com/natamus/quickrightclick_common_neoforge/mixin/ServerPlayerMixin.class",
+    "com/natamus/quickrightclick_common_neoforge/mixin/ShulkerBoxBlockEntityMixin.class",
+
     "net/fabric_extras/ranged_weapon/neoforge/NeoForgeMod.class",
     "net/fabric_extras/ranged_weapon/neoforge/client/NeoForgeClientMod.class",
     "net/fabric_extras/ranged_weapon/RangedWeaponMod.class",
