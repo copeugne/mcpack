@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-07
 
+Five AdoraBuild landmark relationships are resolved against views 0df11558 and
+existing template content. The affected case and scoped checks pass. Backlog: 79
+(IDAS 59, AdoraBuild 20). Coverage groups: 406. Inventory refresh follows. AdoraBuild
+remainder: ancient_palace, basalt_chambers, blackstone_bastion, blackstone_temple,
+buried_sand_castle, dark_oak_mansion, end_ship, end_temple, frozen_shelter, house,
+library, mountain_mine, nether_fortress, nether_temple, ocean_temple, prison,
+red_sand_temple, sand_castle, sand_pyramid, watercraft. Attributes and nonregistry
+contributions remain open.
+
 AdoraBuild bubble, gateway/portal and fossil relationships need ten fixed template
 views using the existing renderer. Their content differs materially (habitats,
 sculk installation, gateway/portal blocks and decorated fossils); names alone do
