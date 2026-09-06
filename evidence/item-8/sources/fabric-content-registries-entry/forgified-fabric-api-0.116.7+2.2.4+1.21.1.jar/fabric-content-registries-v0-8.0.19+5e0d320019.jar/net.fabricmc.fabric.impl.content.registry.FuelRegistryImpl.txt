@@ -1,0 +1,299 @@
+Compiled from "FuelRegistryImpl.java"
+public final class net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl implements net.fabricmc.fabric.api.registry.FuelRegistry {
+  private static final org.slf4j.Logger LOGGER;
+
+  private final it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.world.level.ItemLike> itemCookTimes;
+
+  private final it.unimi.dsi.fastutil.objects.Object2IntMap<net.minecraft.tags.TagKey<net.minecraft.world.item.Item>> tagCookTimes;
+
+  private final java.util.Map<net.minecraft.world.item.Item, java.lang.Integer> finalTimes;
+
+  public net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap
+       8: dup
+       9: invokespecial #9                  // Method it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap."<init>":()V
+      12: putfield      #10                 // Field itemCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      15: aload_0
+      16: new           #7                  // class it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap
+      19: dup
+      20: invokespecial #9                  // Method it/unimi/dsi/fastutil/objects/Object2IntLinkedOpenHashMap."<init>":()V
+      23: putfield      #16                 // Field tagCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      26: aload_0
+      27: new           #19                 // class java/util/IdentityHashMap
+      30: dup
+      31: invokespecial #21                 // Method java/util/IdentityHashMap."<init>":()V
+      34: putfield      #22                 // Field finalTimes:Ljava/util/Map;
+      37: return
+
+  public java.util.Map<net.minecraft.world.item.Item, java.lang.Integer> getFuelTimes();
+    Code:
+       0: invokestatic  #26                 // Method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity.getFuel:()Ljava/util/Map;
+       3: areturn
+
+  public java.lang.Integer get(net.minecraft.world.level.ItemLike);
+    Code:
+       0: aload_0
+       1: invokevirtual #32                 // Method getFuelTimes:()Ljava/util/Map;
+       4: aload_1
+       5: invokeinterface #35,  1           // InterfaceMethod net/minecraft/world/level/ItemLike.asItem:()Lnet/minecraft/world/item/Item;
+      10: invokeinterface #41,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      15: checkcast     #47                 // class java/lang/Integer
+      18: areturn
+
+  public void add(net.minecraft.world.level.ItemLike, java.lang.Integer);
+    Code:
+       0: aload_2
+       1: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+       4: sipush        32767
+       7: if_icmple     28
+      10: getstatic     #53                 // Field LOGGER:Lorg/slf4j/Logger;
+      13: aload_2
+      14: aload_1
+      15: invokestatic  #57                 // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+      18: invokedynamic #63,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/Integer;Ljava/lang/String;)Ljava/lang/String;
+      23: invokeinterface #67,  2           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      28: aload_0
+      29: getfield      #10                 // Field itemCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      32: aload_1
+      33: aload_2
+      34: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+      37: invokeinterface #73,  3           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.put:(Ljava/lang/Object;I)I
+      42: pop
+      43: aload_0
+      44: invokevirtual #79                 // Method resetCache:()V
+      47: return
+
+  public void add(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>, java.lang.Integer);
+    Code:
+       0: aload_2
+       1: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+       4: sipush        32767
+       7: if_icmple     28
+      10: getstatic     #53                 // Field LOGGER:Lorg/slf4j/Logger;
+      13: aload_2
+      14: aload_1
+      15: invokestatic  #82                 // Method getTagName:(Lnet/minecraft/tags/TagKey;)Ljava/lang/String;
+      18: invokedynamic #63,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/Integer;Ljava/lang/String;)Ljava/lang/String;
+      23: invokeinterface #67,  2           // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      28: aload_0
+      29: getfield      #16                 // Field tagCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      32: aload_1
+      33: aload_2
+      34: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+      37: invokeinterface #73,  3           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.put:(Ljava/lang/Object;I)I
+      42: pop
+      43: aload_0
+      44: invokevirtual #79                 // Method resetCache:()V
+      47: return
+
+  public void remove(net.minecraft.world.level.ItemLike);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokestatic  #86                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       6: invokevirtual #89                 // Method add:(Lnet/minecraft/world/level/ItemLike;Ljava/lang/Integer;)V
+       9: aload_0
+      10: invokevirtual #79                 // Method resetCache:()V
+      13: return
+
+  public void remove(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokestatic  #86                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       6: invokevirtual #93                 // Method add:(Lnet/minecraft/tags/TagKey;Ljava/lang/Integer;)V
+       9: aload_0
+      10: invokevirtual #79                 // Method resetCache:()V
+      13: return
+
+  public void clear(net.minecraft.world.level.ItemLike);
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field itemCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+       4: aload_1
+       5: invokeinterface #96,  2           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.removeInt:(Ljava/lang/Object;)I
+      10: pop
+      11: aload_0
+      12: invokevirtual #79                 // Method resetCache:()V
+      15: return
+
+  public void clear(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>);
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field tagCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+       4: aload_1
+       5: invokeinterface #96,  2           // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.removeInt:(Ljava/lang/Object;)I
+      10: pop
+      11: aload_0
+      12: invokevirtual #79                 // Method resetCache:()V
+      15: return
+
+  public void resetCache();
+    Code:
+       0: aload_0
+       1: getstatic     #100                // Field net/minecraft/core/registries/BuiltInRegistries.ITEM:Lnet/minecraft/core/DefaultedRegistry;
+       4: invokevirtual #106                // Method resetCache:(Lnet/minecraft/core/Registry;)V
+       7: return
+
+  public void resetCache(net.minecraft.core.Registry<net.minecraft.world.item.Item>);
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field finalTimes:Ljava/util/Map;
+       4: invokeinterface #109,  1          // InterfaceMethod java/util/Map.clear:()V
+       9: aload_0
+      10: getfield      #16                 // Field tagCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      13: invokeinterface #112,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.keySet:()Lit/unimi/dsi/fastutil/objects/ObjectSet;
+      18: invokeinterface #116,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectSet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+      23: astore_2
+      24: aload_2
+      25: invokeinterface #122,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      30: ifeq          126
+      33: aload_2
+      34: invokeinterface #128,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #132                // class net/minecraft/tags/TagKey
+      42: astore_3
+      43: aload_0
+      44: getfield      #16                 // Field tagCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+      47: aload_3
+      48: invokeinterface #134,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.getInt:(Ljava/lang/Object;)I
+      53: istore        4
+      55: aload_1
+      56: aload_3
+      57: invokeinterface #137,  2          // InterfaceMethod net/minecraft/core/Registry.getTagOrEmpty:(Lnet/minecraft/tags/TagKey;)Ljava/lang/Iterable;
+      62: invokeinterface #143,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      67: astore        5
+      69: aload         5
+      71: invokeinterface #122,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      76: ifeq          123
+      79: aload         5
+      81: invokeinterface #128,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      86: checkcast     #148                // class net/minecraft/core/Holder
+      89: astore        6
+      91: aload         6
+      93: invokeinterface #150,  1          // InterfaceMethod net/minecraft/core/Holder.value:()Ljava/lang/Object;
+      98: checkcast     #153                // class net/minecraft/world/item/Item
+     101: astore        7
+     103: aload_0
+     104: getfield      #22                 // Field finalTimes:Ljava/util/Map;
+     107: aload         7
+     109: iload         4
+     111: invokestatic  #86                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     114: invokeinterface #155,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     119: pop
+     120: goto          69
+     123: goto          24
+     126: aload_0
+     127: getfield      #10                 // Field itemCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+     130: invokeinterface #112,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.keySet:()Lit/unimi/dsi/fastutil/objects/ObjectSet;
+     135: invokeinterface #116,  1          // InterfaceMethod it/unimi/dsi/fastutil/objects/ObjectSet.iterator:()Lit/unimi/dsi/fastutil/objects/ObjectIterator;
+     140: astore_2
+     141: aload_2
+     142: invokeinterface #122,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     147: ifeq          196
+     150: aload_2
+     151: invokeinterface #128,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     156: checkcast     #36                 // class net/minecraft/world/level/ItemLike
+     159: astore_3
+     160: aload_0
+     161: getfield      #10                 // Field itemCookTimes:Lit/unimi/dsi/fastutil/objects/Object2IntMap;
+     164: aload_3
+     165: invokeinterface #134,  2          // InterfaceMethod it/unimi/dsi/fastutil/objects/Object2IntMap.getInt:(Ljava/lang/Object;)I
+     170: istore        4
+     172: aload_0
+     173: getfield      #22                 // Field finalTimes:Ljava/util/Map;
+     176: aload_3
+     177: invokeinterface #35,  1           // InterfaceMethod net/minecraft/world/level/ItemLike.asItem:()Lnet/minecraft/world/item/Item;
+     182: iload         4
+     184: invokestatic  #86                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     187: invokeinterface #155,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     192: pop
+     193: goto          141
+     196: return
+
+  static void reload(net.neoforged.neoforge.registries.datamaps.DataMapsUpdatedEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #158                // Field net/minecraft/core/registries/Registries.ITEM:Lnet/minecraft/resources/ResourceKey;
+       4: invokedynamic #163,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       9: invokevirtual #167                // Method net/neoforged/neoforge/registries/datamaps/DataMapsUpdatedEvent.ifRegistry:(Lnet/minecraft/resources/ResourceKey;Ljava/util/function/Consumer;)V
+      12: return
+
+  static void getBurnTime(net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent);
+    Code:
+       0: getstatic     #173                // Field net/fabricmc/fabric/api/registry/FuelRegistry.INSTANCE:Lnet/fabricmc/fabric/api/registry/FuelRegistry;
+       3: checkcast     #11                 // class net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl
+       6: astore_1
+       7: aload_1
+       8: getfield      #22                 // Field finalTimes:Ljava/util/Map;
+      11: aload_0
+      12: invokevirtual #179                // Method net/neoforged/neoforge/event/furnace/FurnaceFuelBurnTimeEvent.getItemStack:()Lnet/minecraft/world/item/ItemStack;
+      15: invokevirtual #185                // Method net/minecraft/world/item/ItemStack.getItem:()Lnet/minecraft/world/item/Item;
+      18: invokeinterface #41,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      23: checkcast     #47                 // class java/lang/Integer
+      26: astore_2
+      27: aload_2
+      28: ifnull        50
+      31: aload_0
+      32: aload_2
+      33: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+      36: ifge          43
+      39: iconst_0
+      40: goto          47
+      43: aload_2
+      44: invokevirtual #49                 // Method java/lang/Integer.intValue:()I
+      47: invokevirtual #190                // Method net/neoforged/neoforge/event/furnace/FurnaceFuelBurnTimeEvent.setBurnTime:(I)V
+      50: return
+
+  private static java.lang.String getTagName(net.minecraft.tags.TagKey<?>);
+    Code:
+       0: aload_0
+       1: invokevirtual #194                // Method net/minecraft/tags/TagKey.location:()Lnet/minecraft/resources/ResourceLocation;
+       4: invokevirtual #198                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+       7: areturn
+
+  public void add(net.minecraft.tags.TagKey, java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: checkcast     #47                 // class java/lang/Integer
+       6: invokevirtual #93                 // Method add:(Lnet/minecraft/tags/TagKey;Ljava/lang/Integer;)V
+       9: return
+
+  public void add(net.minecraft.world.level.ItemLike, java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: checkcast     #47                 // class java/lang/Integer
+       6: invokevirtual #89                 // Method add:(Lnet/minecraft/world/level/ItemLike;Ljava/lang/Integer;)V
+       9: return
+
+  public java.lang.Object get(net.minecraft.world.level.ItemLike);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #204                // Method get:(Lnet/minecraft/world/level/ItemLike;)Ljava/lang/Integer;
+       5: areturn
+
+  private static void lambda$reload$0(net.minecraft.core.Registry);
+    Code:
+       0: getstatic     #173                // Field net/fabricmc/fabric/api/registry/FuelRegistry.INSTANCE:Lnet/fabricmc/fabric/api/registry/FuelRegistry;
+       3: checkcast     #11                 // class net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl
+       6: aload_0
+       7: invokevirtual #106                // Method resetCache:(Lnet/minecraft/core/Registry;)V
+      10: return
+
+  static {};
+    Code:
+       0: ldc           #11                 // class net/fabricmc/fabric/impl/content/registry/FuelRegistryImpl
+       2: invokestatic  #207                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/Class;)Lorg/slf4j/Logger;
+       5: putstatic     #53                 // Field LOGGER:Lorg/slf4j/Logger;
+       8: return
+}
