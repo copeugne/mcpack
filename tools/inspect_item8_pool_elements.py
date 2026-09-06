@@ -105,6 +105,7 @@ ARCHIVES = frozenset(
         "deep_aether-1.21.1-1.1.5.1.jar",
         "creatingspace-1.21.1-1.7.18.jar",
         "moonlight-neoforge-1.21.1-3.0.17.jar",
+        "CreeperOverhaul-neoforge-1.21.1-4.0.6.jar",
         "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
         "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
         "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
@@ -1790,6 +1791,23 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/mixins/neoforge/self/SelfWrenchMixin.class",
     "net/mehvahdjukaar/moonlight/api/misc/SimpleMixinPlugin.class",
     "net/mehvahdjukaar/supplementaries/common/entities/trades/AdventurerMapsHandler.class",
+    "tech/thatgravyboat/creeperoverhaul/Creepers.class",
+    "tech/thatgravyboat/creeperoverhaul/forge/CreepersForge.class",
+    "tech/thatgravyboat/creeperoverhaul/forge/CreepersForge$1.class",
+    "tech/thatgravyboat/creeperoverhaul/api/CreeperPlugin.class",
+    "tech/thatgravyboat/creeperoverhaul/api/PluginRegistry.class",
+    "tech/thatgravyboat/creeperoverhaul/common/registry/ModSpawns.class",
+    "tech/thatgravyboat/creeperoverhaul/common/registry/ModEntities.class",
+    "tech/thatgravyboat/creeperoverhaul/common/registry/ModBlocks.class",
+    "tech/thatgravyboat/creeperoverhaul/common/utils/Events.class",
+    "tech/thatgravyboat/creeperoverhaul/common/utils/neoforge/PlatformUtilsImpl.class",
+    "tech/thatgravyboat/creeperoverhaul/mixin/IronGolemMixin.class",
+    "tech/thatgravyboat/creeperoverhaul/mixin/PlayerListMixin.class",
+    (
+        "architectury_inject_CreeperOverhaul_common_631d2b68f9d942ccb91d19c357dc7698_5074e7e37"
+        "c9218544d6a3bdd6fab054dc5791d81201e6912c6e22aba8f3601e3CreeperOverhaul406devjar/Platf"
+        "ormMethods.class"
+    ),
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1951,6 +1969,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 class_name = name.removesuffix(".class").replace("/", ".")
                 verbose = source.name.startswith((
                     "alternate_current-", "cupboard-", "lootintegrations-", "creatingspace-",
+                    "CreeperOverhaul-",
                     "mcw-", "AI-Improvements-", "attributefix-", "LeavesBeGone-",
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
