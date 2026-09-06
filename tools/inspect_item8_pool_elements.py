@@ -214,6 +214,20 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/wover/entrypoint/BiomeDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/FeatureDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/ItemDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/PottableDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/StructureDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/SurfaceDatapackRegistryEntrypoint.class",
+    "org/betterx/wover/entrypoint/Wover.class",
+    "org/betterx/wover/entrypoint/client/LibWoverBlockClient.class",
+    "org/betterx/wover/entrypoint/client/LibWoverCommonClient.class",
+    "org/betterx/wover/entrypoint/client/LibWoverEventsClient.class",
+    "org/betterx/wover/entrypoint/client/LibWoverUiClient.class",
+    "org/betterx/wover/entrypoint/client/LibWoverWorldGeneratorClient.class",
+    "org/betterx/wover/entrypoint/client/ModMenuEntryPoint.class",
+
     "com/llamalad7/mixinextras/platform/neoforge/MixinExtrasConfigPlugin.class",
     "org/betterx/bclib/mixin/common/AnvilBlockMixin.class",
     "org/betterx/bclib/mixin/common/AnvilMenuMixin.class",
