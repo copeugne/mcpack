@@ -1,0 +1,174 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin.class
+  Last modified Jan 1, 1980; size 1891 bytes
+  SHA-256 checksum 762a5d2228f9f69aaa8e769f5835632a2ef8a4e538f3dc09abc163af061c1c6d
+  Compiled from "PokemonEntityMixin.java"
+public abstract class me.wesley1808.servercore.mixin.compat.cobblemon.PokemonEntityMixin extends net.minecraft.world.entity.animal.ShoulderRidingEntity
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin
+  super_class: #4                         // net/minecraft/world/entity/animal/ShoulderRidingEntity
+  interfaces: 0, fields: 2, methods: 3, attributes: 3
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin
+   #3 = Utf8               net/minecraft/world/entity/animal/ShoulderRidingEntity
+   #4 = Class              #3             // net/minecraft/world/entity/animal/ShoulderRidingEntity
+   #5 = Utf8               PokemonEntityMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lcom/cobblemon/mod/common/entity/pokemon/PokemonEntity;
+   #9 = Utf8               remap
+  #10 = Integer            0
+  #11 = Utf8               net/minecraft/world/entity/Entity$RemovalReason
+  #12 = Class              #11            // net/minecraft/world/entity/Entity$RemovalReason
+  #13 = Utf8               net/minecraft/world/entity/Entity
+  #14 = Class              #13            // net/minecraft/world/entity/Entity
+  #15 = Utf8               RemovalReason
+  #16 = Utf8               queuedToDespawn
+  #17 = Utf8               Z
+  #18 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #19 = Utf8               ticksLived
+  #20 = Utf8               I
+  #21 = Utf8               <init>
+  #22 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #23 = Utf8               (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/animal/ShoulderRidingEntity;>;Lnet/minecraft/world/level/Level;)V
+  #24 = Utf8               type
+  #25 = Utf8               level
+  #26 = NameAndType        #21:#22        // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #27 = Methodref          #4.#26         // net/minecraft/world/entity/animal/ShoulderRidingEntity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #28 = Utf8               this
+  #29 = Utf8               Lme/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin;
+  #30 = Utf8               Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/animal/ShoulderRidingEntity;>;
+  #31 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #32 = Utf8               Lnet/minecraft/world/level/Level;
+  #33 = Utf8               servercore$inactiveTick
+  #34 = Utf8               ()V
+  #35 = NameAndType        #33:#34        // servercore$inactiveTick:()V
+  #36 = Methodref          #4.#35         // net/minecraft/world/entity/animal/ShoulderRidingEntity.servercore$inactiveTick:()V
+  #37 = NameAndType        #16:#17        // queuedToDespawn:Z
+  #38 = Fieldref           #2.#37         // me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin.queuedToDespawn:Z
+  #39 = Utf8               DISCARDED
+  #40 = Utf8               Lnet/minecraft/world/entity/Entity$RemovalReason;
+  #41 = NameAndType        #39:#40        // DISCARDED:Lnet/minecraft/world/entity/Entity$RemovalReason;
+  #42 = Fieldref           #12.#41        // net/minecraft/world/entity/Entity$RemovalReason.DISCARDED:Lnet/minecraft/world/entity/Entity$RemovalReason;
+  #43 = Utf8               remove
+  #44 = Utf8               (Lnet/minecraft/world/entity/Entity$RemovalReason;)V
+  #45 = NameAndType        #43:#44        // remove:(Lnet/minecraft/world/entity/Entity$RemovalReason;)V
+  #46 = Methodref          #2.#45         // me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin.remove:(Lnet/minecraft/world/entity/Entity$RemovalReason;)V
+  #47 = NameAndType        #19:#20        // ticksLived:I
+  #48 = Fieldref           #2.#47         // me/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin.ticksLived:I
+  #49 = Utf8               ()Lnet/minecraft/world/level/EntityGetter;
+  #50 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #51 = NameAndType        #25:#50        // level:()Lnet/minecraft/world/level/Level;
+  #52 = Methodref          #4.#51         // net/minecraft/world/entity/animal/ShoulderRidingEntity.level:()Lnet/minecraft/world/level/Level;
+  #53 = Utf8               RuntimeVisibleAnnotations
+  #54 = Utf8               Code
+  #55 = Utf8               LineNumberTable
+  #56 = Utf8               LocalVariableTable
+  #57 = Utf8               LocalVariableTypeTable
+  #58 = Utf8               Signature
+  #59 = Utf8               MethodParameters
+  #60 = Utf8               StackMapTable
+  #61 = Utf8               InnerClasses
+  #62 = Utf8               SourceFile
+  #63 = Utf8               RuntimeInvisibleAnnotations
+{
+  private boolean queuedToDespawn;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #18()
+        org.spongepowered.asm.mixin.Shadow
+
+  private int ticksLived;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #18()
+        org.spongepowered.asm.mixin.Shadow
+
+  private me.wesley1808.servercore.mixin.compat.cobblemon.PokemonEntityMixin(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.animal.ShoulderRidingEntity>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #27                 // Method net/minecraft/world/entity/animal/ShoulderRidingEntity."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: return
+      LineNumberTable:
+        line 18: 0
+        line 19: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lme/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin;
+            0       7     1  type   Lnet/minecraft/world/entity/EntityType;
+            0       7     2 level   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       7     1  type   Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/animal/ShoulderRidingEntity;>;
+    Signature: #23                          // (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/animal/ShoulderRidingEntity;>;Lnet/minecraft/world/level/Level;)V
+    MethodParameters:
+      Name                           Flags
+      type
+      level
+
+  public void servercore$inactiveTick();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #36                 // Method net/minecraft/world/entity/animal/ShoulderRidingEntity.servercore$inactiveTick:()V
+         4: aload_0
+         5: getfield      #38                 // Field queuedToDespawn:Z
+         8: ifeq          19
+        11: aload_0
+        12: getstatic     #42                 // Field net/minecraft/world/entity/Entity$RemovalReason.DISCARDED:Lnet/minecraft/world/entity/Entity$RemovalReason;
+        15: invokevirtual #46                 // Method remove:(Lnet/minecraft/world/entity/Entity$RemovalReason;)V
+        18: return
+        19: aload_0
+        20: dup
+        21: getfield      #48                 // Field ticksLived:I
+        24: iconst_1
+        25: iadd
+        26: putfield      #48                 // Field ticksLived:I
+        29: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 19 /* same */
+      LineNumberTable:
+        line 23: 0
+        line 25: 4
+        line 26: 11
+        line 27: 18
+        line 30: 19
+        line 31: 29
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      30     0  this   Lme/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin;
+
+  public net.minecraft.world.level.EntityGetter level();
+    descriptor: ()Lnet/minecraft/world/level/EntityGetter;
+    flags: (0x1041) ACC_PUBLIC, ACC_BRIDGE, ACC_SYNTHETIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #52                 // Method net/minecraft/world/entity/animal/ShoulderRidingEntity.level:()Lnet/minecraft/world/level/Level;
+         4: areturn
+      LineNumberTable:
+        line 10: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/compat/cobblemon/PokemonEntityMixin;
+}
+InnerClasses:
+  public static final #15= #12 of #14;    // RemovalReason=class net/minecraft/world/entity/Entity$RemovalReason of class net/minecraft/world/entity/Entity
+SourceFile: "PokemonEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8],#9=Z#10)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lcom/cobblemon/mod/common/entity/pokemon/PokemonEntity;]
+      remap=false
+    )

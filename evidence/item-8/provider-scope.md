@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 133 of 136. The exact queue below has 3 open rows.
+Supported provider dispositions: 134 of 136. The exact queue below has 2 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -688,7 +688,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Sources b335f9e8; test_config_library_provider_scope.py | RESOLVED: Configuration parsing, interface initialization and server settings accessors; no independent family. See configuration library disposition below. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | resourcefullib-provider, startup and storage; focused provider test | RESOLVED: consumer fluid, registry and networking APIs plus application storage, no independent family. See Resourceful Lib membership closure below. |
 | `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
-| `servercore-neoforge-1.5.17+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `servercore-neoforge-1.5.17+1.21.1.jar` | Five ServerCore source increments | RESOLVED: existing-server ticking, spawning and lookup changes; no independent family. See ServerCore closure below. |
 | `shield_api-neoforge-2.2.0.jar` | `shield-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom shield interaction, item attributes, rendering and EMI integration; no independent family. See bundle and shield dispositions below. |
 | `simplyswords-neoforge-1.63.0-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `sparsestructures-neoforge-1.21.1-3.0.jar` | `sparsestructures-provider` (69119c6), test_small_utility_provider_scope.py | RESOLVED: Existing structure-set placement modification; no independent family. See small utility provider dispositions below. |
@@ -8414,3 +8414,60 @@ that style correction was applied and scoped Ruff/Basedpyright pass. Provider
 membership is resolved, not general library or gameplay correctness. Whole
 providers: 133 resolved, 3 open. Working groups remain 410 and explicit provisional
 Moog decisions remain 100. Final canonical membership and attributes remain open.
+
+## ServerCore provider closure
+
+The retained archive SHA-256 is
+5d3b3ac3fc61ef304af929cec2637481eed211fc694d6074258e02abbcfe3467.
+It contains 692 classes, no data resources or NBT templates, one automatic mod
+entry, four services and 60 declared common mixins. The plugin selects optimization
+and compatibility hooks from configuration and loaded-mod checks. No client or
+server-only mixin lists are declared. This records packaged possibilities, not a
+claim that every conditional hook is active.
+
+Sources 5fbd3211, 57d2f8b8, a181a2df, 6ea01b7a and b1076151 preserve 70 classes.
+All entry/service/plugin boundaries and 60 hooks are bound by the focused test.
+The two platform services supply environment/version/config, permissions, chunk
+tick forcing and text parsing. The other two services implement shaded Adventure
+text serialization. Three nested configuration libraries (Dazzleconf core, its
+SnakeYAML adapter, and SnakeYAML) contain 119, 16 and 237 classes respectively.
+They contain no Minecraft class references, data/templates, services or deeper
+archives. They are not authored-content providers.
+
+Startup initializes platform access and configuration. Server events reload
+configuration, initialize dynamic settings, update them on ticks and reset them
+on shutdown. DynamicManager adjusts existing view/simulation distances and mob
+capacities. The registered command groups concern ServerCore, statistics and mob
+caps. None of these paths declares independent structure content.
+
+Feature hooks change existing entity activation/inactive ticking, breeding caps,
+item/experience merging, autosave timing, movement into unloaded chunks and
+villager ticking. Spawning hooks gate existing monster spawners, natural spawn
+intervals, infested effects, portal random ticks and zombie reinforcements. These
+are relevant mob-attribute context; no new structure family follows from them.
+Do not claim unchanged encounter behavior or runtime activation solely from this
+membership decision. Reuse the frozen configuration for later attribution.
+
+Optimization hooks change existing biome and structure checks, chunk tickets,
+command parsing, map/player handling, pathfinding, chunk loading, broadcasts,
+cached ticking sets and random lightning/fluid/ice/snow work. StructureCheckMixin
+uses an approximate position and biome eligibility to avoid some synchronous
+loads; it does not construct a structure. ChunkGeneratorMixin reads existing
+structure references through an available chunk or the existing manager. This
+is not a new template/root registration or proof of optimization correctness.
+No independent ServerCore family is added. Stop general tick/performance/helper
+tracing here; performance and broad compatibility remain outside this scope.
+
+All five source captures reproduce exactly into independent r1 directories.
+Their READMEs retain reproduction commands and manifest identities. Validation:
+
+```sh
+uv run pytest -q tests/item8/test_servercore_provider_scope.py
+uv run ruff check tests/item8/test_servercore_provider_scope.py tools/inspect_item8_pool_elements.py
+uv run basedpyright tests/item8/test_servercore_provider_scope.py tools/inspect_item8_pool_elements.py
+```
+
+One focused case passes. One long test line was wrapped after Ruff reported it;
+scoped Ruff/Basedpyright pass. Whole providers: 134 resolved, 2 open. Working
+groups remain 410 and explicit provisional Moog decisions remain 100. Canonical
+reconciliation, required attributes and final Item 8 acceptance remain incomplete.
