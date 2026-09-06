@@ -35,6 +35,7 @@ ARCHIVES = frozenset(
     {
         MAPPED_SERVER.name,
         PATCHED_SERVER.name,
+        "TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
         "GlitchCore-neoforge-1.21.1-2.1.0.2.jar",
         "mca-neoforge-7.7.11+1.21.1.jar",
         "wunderlib-21.0.10.jar",
@@ -192,6 +193,20 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "terrablender/core/TerraBlender.class",
+    "terrablender/core/TerraBlenderNeoForge.class",
+    "terrablender/handler/InitializationHandler.class",
+    "terrablender/mixin/MixinBiomeSource.class",
+    "terrablender/mixin/MixinBuiltInRegistries.class",
+    "terrablender/mixin/MixinChunkGenerator.class",
+    "terrablender/mixin/MixinMultiNoiseBiomeSource.class",
+    "terrablender/mixin/MixinNoiseBasedChunkGenerator.class",
+    "terrablender/mixin/MixinNoiseGeneratorSettings.class",
+    "terrablender/mixin/MixinParameterList.class",
+    "terrablender/mixin/MixinPrimaryLevelData.class",
+    "terrablender/mixin/MixinTheEndBiomeSource.class",
+    "terrablender/mixin/MultiNoiseBiomeSourceAccess.class",
+
     "glitchcore/core/GlitchCore.class",
     "glitchcore/mixin/MixinItemStack.class",
     "glitchcore/mixin/MixinServerConfigurationPacketListenerImpl.class",
