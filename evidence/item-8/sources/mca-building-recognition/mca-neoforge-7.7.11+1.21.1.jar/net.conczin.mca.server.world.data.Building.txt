@@ -1,0 +1,1351 @@
+Compiled from "Building.java"
+public class net.conczin.mca.server.world.data.Building {
+  public static final long SCAN_COOLDOWN = 4800l;
+
+  private static final net.minecraft.core.Direction[] directions;
+
+  private final java.util.Map<net.minecraft.resources.ResourceLocation, java.util.List<net.minecraft.core.BlockPos>> blocks;
+
+  private java.lang.String type;
+
+  private boolean isTypeForced;
+
+  private int size;
+
+  private int pos0X;
+
+  private int pos0Y;
+
+  private int pos0Z;
+
+  private int pos1X;
+
+  private int pos1Y;
+
+  private int pos1Z;
+
+  private int posX;
+
+  private int posY;
+
+  private int posZ;
+
+  private int id;
+
+  private boolean strictScan;
+
+  private long lastScan;
+
+  public net.conczin.mca.server.world.data.Building();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+      12: putfield      #10                 // Field blocks:Ljava/util/Map;
+      15: aload_0
+      16: ldc           #16                 // String building
+      18: putfield      #18                 // Field type:Ljava/lang/String;
+      21: aload_0
+      22: iconst_0
+      23: putfield      #22                 // Field isTypeForced:Z
+      26: return
+
+  public net.conczin.mca.server.world.data.Building(net.minecraft.core.BlockPos);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_0
+       3: invokespecial #26                 // Method "<init>":(Lnet/minecraft/core/BlockPos;Z)V
+       6: return
+
+  public net.conczin.mca.server.world.data.Building(net.minecraft.core.BlockPos, boolean);
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method "<init>":()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+       9: putfield      #36                 // Field pos0X:I
+      12: aload_0
+      13: aload_1
+      14: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+      17: putfield      #43                 // Field pos0Y:I
+      20: aload_0
+      21: aload_1
+      22: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+      25: putfield      #49                 // Field pos0Z:I
+      28: aload_0
+      29: aload_0
+      30: getfield      #36                 // Field pos0X:I
+      33: putfield      #52                 // Field pos1X:I
+      36: aload_0
+      37: aload_0
+      38: getfield      #43                 // Field pos0Y:I
+      41: putfield      #55                 // Field pos1Y:I
+      44: aload_0
+      45: aload_0
+      46: getfield      #49                 // Field pos0Z:I
+      49: putfield      #58                 // Field pos1Z:I
+      52: aload_0
+      53: aload_0
+      54: getfield      #36                 // Field pos0X:I
+      57: putfield      #61                 // Field posX:I
+      60: aload_0
+      61: aload_0
+      62: getfield      #43                 // Field pos0Y:I
+      65: putfield      #64                 // Field posY:I
+      68: aload_0
+      69: aload_0
+      70: getfield      #49                 // Field pos0Z:I
+      73: putfield      #67                 // Field posZ:I
+      76: aload_0
+      77: iload_2
+      78: putfield      #70                 // Field strictScan:Z
+      81: return
+
+  public net.conczin.mca.server.world.data.Building(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #7                  // class java/util/HashMap
+       8: dup
+       9: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+      12: putfield      #10                 // Field blocks:Ljava/util/Map;
+      15: aload_0
+      16: ldc           #16                 // String building
+      18: putfield      #18                 // Field type:Ljava/lang/String;
+      21: aload_0
+      22: iconst_0
+      23: putfield      #22                 // Field isTypeForced:Z
+      26: aload_0
+      27: aload_1
+      28: ldc           #73                 // String id
+      30: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      33: putfield      #81                 // Field id:I
+      36: aload_0
+      37: aload_1
+      38: ldc           #83                 // String size
+      40: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      43: putfield      #85                 // Field size:I
+      46: aload_0
+      47: aload_1
+      48: ldc           #87                 // String pos0X
+      50: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      53: putfield      #36                 // Field pos0X:I
+      56: aload_0
+      57: aload_1
+      58: ldc           #88                 // String pos0Y
+      60: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      63: putfield      #43                 // Field pos0Y:I
+      66: aload_0
+      67: aload_1
+      68: ldc           #89                 // String pos0Z
+      70: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      73: putfield      #49                 // Field pos0Z:I
+      76: aload_0
+      77: aload_1
+      78: ldc           #90                 // String pos1X
+      80: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      83: putfield      #52                 // Field pos1X:I
+      86: aload_0
+      87: aload_1
+      88: ldc           #91                 // String pos1Y
+      90: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      93: putfield      #55                 // Field pos1Y:I
+      96: aload_0
+      97: aload_1
+      98: ldc           #92                 // String pos1Z
+     100: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     103: putfield      #58                 // Field pos1Z:I
+     106: aload_1
+     107: ldc           #93                 // String posX
+     109: invokevirtual #94                 // Method net/minecraft/nbt/CompoundTag.contains:(Ljava/lang/String;)Z
+     112: ifeq          148
+     115: aload_0
+     116: aload_1
+     117: ldc           #93                 // String posX
+     119: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     122: putfield      #61                 // Field posX:I
+     125: aload_0
+     126: aload_1
+     127: ldc           #98                 // String posY
+     129: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     132: putfield      #64                 // Field posY:I
+     135: aload_0
+     136: aload_1
+     137: ldc           #99                 // String posZ
+     139: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+     142: putfield      #67                 // Field posZ:I
+     145: goto          177
+     148: aload_0
+     149: invokevirtual #100                // Method getCenter:()Lnet/minecraft/core/BlockPos;
+     152: astore_2
+     153: aload_0
+     154: aload_2
+     155: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+     158: putfield      #61                 // Field posX:I
+     161: aload_0
+     162: aload_2
+     163: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+     166: putfield      #64                 // Field posY:I
+     169: aload_0
+     170: aload_2
+     171: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+     174: putfield      #67                 // Field posZ:I
+     177: aload_0
+     178: aload_1
+     179: ldc           #104                // String isTypeForced
+     181: invokevirtual #105                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+     184: putfield      #22                 // Field isTypeForced:Z
+     187: aload_0
+     188: aload_1
+     189: ldc           #108                // String type
+     191: invokevirtual #109                // Method net/minecraft/nbt/CompoundTag.getString:(Ljava/lang/String;)Ljava/lang/String;
+     194: putfield      #18                 // Field type:Ljava/lang/String;
+     197: aload_0
+     198: aload_1
+     199: ldc           #113                // String strictScan
+     201: invokevirtual #105                // Method net/minecraft/nbt/CompoundTag.getBoolean:(Ljava/lang/String;)Z
+     204: putfield      #70                 // Field strictScan:Z
+     207: aload_0
+     208: getfield      #10                 // Field blocks:Ljava/util/Map;
+     211: aload_1
+     212: ldc           #114                // String blocks2
+     214: invokevirtual #116                // Method net/minecraft/nbt/CompoundTag.getCompound:(Ljava/lang/String;)Lnet/minecraft/nbt/CompoundTag;
+     217: invokedynamic #120,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+     222: invokedynamic #124,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+     227: invokestatic  #125                // InterfaceMethod net/conczin/mca/util/NbtHelper.toMap:(Lnet/minecraft/nbt/CompoundTag;Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/Map;
+     230: invokeinterface #131,  2          // InterfaceMethod java/util/Map.putAll:(Ljava/util/Map;)V
+     235: return
+
+  public net.minecraft.nbt.CompoundTag save();
+    Code:
+       0: new           #76                 // class net/minecraft/nbt/CompoundTag
+       3: dup
+       4: invokespecial #137                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc           #73                 // String id
+      11: aload_0
+      12: getfield      #81                 // Field id:I
+      15: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      18: aload_1
+      19: ldc           #83                 // String size
+      21: aload_0
+      22: getfield      #85                 // Field size:I
+      25: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      28: aload_1
+      29: ldc           #87                 // String pos0X
+      31: aload_0
+      32: getfield      #36                 // Field pos0X:I
+      35: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      38: aload_1
+      39: ldc           #88                 // String pos0Y
+      41: aload_0
+      42: getfield      #43                 // Field pos0Y:I
+      45: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      48: aload_1
+      49: ldc           #89                 // String pos0Z
+      51: aload_0
+      52: getfield      #49                 // Field pos0Z:I
+      55: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      58: aload_1
+      59: ldc           #90                 // String pos1X
+      61: aload_0
+      62: getfield      #52                 // Field pos1X:I
+      65: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      68: aload_1
+      69: ldc           #91                 // String pos1Y
+      71: aload_0
+      72: getfield      #55                 // Field pos1Y:I
+      75: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      78: aload_1
+      79: ldc           #92                 // String pos1Z
+      81: aload_0
+      82: getfield      #58                 // Field pos1Z:I
+      85: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      88: aload_1
+      89: ldc           #93                 // String posX
+      91: aload_0
+      92: getfield      #61                 // Field posX:I
+      95: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      98: aload_1
+      99: ldc           #98                 // String posY
+     101: aload_0
+     102: getfield      #64                 // Field posY:I
+     105: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+     108: aload_1
+     109: ldc           #99                 // String posZ
+     111: aload_0
+     112: getfield      #67                 // Field posZ:I
+     115: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+     118: aload_1
+     119: ldc           #104                // String isTypeForced
+     121: aload_0
+     122: getfield      #22                 // Field isTypeForced:Z
+     125: invokevirtual #142                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+     128: aload_1
+     129: ldc           #108                // String type
+     131: aload_0
+     132: getfield      #18                 // Field type:Ljava/lang/String;
+     135: invokevirtual #146                // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     138: aload_1
+     139: ldc           #113                // String strictScan
+     141: aload_0
+     142: getfield      #70                 // Field strictScan:Z
+     145: invokevirtual #142                // Method net/minecraft/nbt/CompoundTag.putBoolean:(Ljava/lang/String;Z)V
+     148: new           #76                 // class net/minecraft/nbt/CompoundTag
+     151: dup
+     152: invokespecial #137                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     155: astore_2
+     156: aload_2
+     157: aload_0
+     158: getfield      #10                 // Field blocks:Ljava/util/Map;
+     161: invokedynamic #150,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+     166: invokedynamic #151,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+     171: invokestatic  #152                // InterfaceMethod net/conczin/mca/util/NbtHelper.fromMap:(Lnet/minecraft/nbt/CompoundTag;Ljava/util/Map;Ljava/util/function/Function;Ljava/util/function/Function;)Lnet/minecraft/nbt/CompoundTag;
+     174: pop
+     175: aload_1
+     176: ldc           #114                // String blocks2
+     178: aload_2
+     179: invokevirtual #156                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     182: pop
+     183: aload_1
+     184: areturn
+
+  public net.minecraft.core.BlockPos getPos0();
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: invokevirtual #164                // Method net/conczin/mca/resources/data/BuildingType.getMargin:()I
+       7: istore_1
+       8: new           #31                 // class net/minecraft/core/BlockPos
+      11: dup
+      12: aload_0
+      13: getfield      #36                 // Field pos0X:I
+      16: aload_0
+      17: getfield      #43                 // Field pos0Y:I
+      20: aload_0
+      21: getfield      #49                 // Field pos0Z:I
+      24: invokespecial #169                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      27: new           #172                // class net/minecraft/core/Vec3i
+      30: dup
+      31: iload_1
+      32: iload_1
+      33: iload_1
+      34: invokespecial #174                // Method net/minecraft/core/Vec3i."<init>":(III)V
+      37: invokevirtual #175                // Method net/minecraft/core/BlockPos.subtract:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      40: areturn
+
+  public net.minecraft.core.BlockPos getPos1();
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: invokevirtual #164                // Method net/conczin/mca/resources/data/BuildingType.getMargin:()I
+       7: istore_1
+       8: new           #31                 // class net/minecraft/core/BlockPos
+      11: dup
+      12: aload_0
+      13: getfield      #52                 // Field pos1X:I
+      16: aload_0
+      17: getfield      #55                 // Field pos1Y:I
+      20: aload_0
+      21: getfield      #58                 // Field pos1Z:I
+      24: invokespecial #169                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      27: new           #172                // class net/minecraft/core/Vec3i
+      30: dup
+      31: iload_1
+      32: iload_1
+      33: iload_1
+      34: invokespecial #174                // Method net/minecraft/core/Vec3i."<init>":(III)V
+      37: invokevirtual #179                // Method net/minecraft/core/BlockPos.offset:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos;
+      40: areturn
+
+  public net.minecraft.core.BlockPos getCenter();
+    Code:
+       0: new           #31                 // class net/minecraft/core/BlockPos
+       3: dup
+       4: aload_0
+       5: getfield      #36                 // Field pos0X:I
+       8: aload_0
+       9: getfield      #52                 // Field pos1X:I
+      12: iadd
+      13: iconst_2
+      14: idiv
+      15: aload_0
+      16: getfield      #43                 // Field pos0Y:I
+      19: aload_0
+      20: getfield      #55                 // Field pos1Y:I
+      23: iadd
+      24: iconst_2
+      25: idiv
+      26: aload_0
+      27: getfield      #49                 // Field pos0Z:I
+      30: aload_0
+      31: getfield      #58                 // Field pos1Z:I
+      34: iadd
+      35: iconst_2
+      36: idiv
+      37: invokespecial #169                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      40: areturn
+
+  public net.minecraft.core.BlockPos getSourceBlock();
+    Code:
+       0: new           #31                 // class net/minecraft/core/BlockPos
+       3: dup
+       4: aload_0
+       5: getfield      #61                 // Field posX:I
+       8: aload_0
+       9: getfield      #64                 // Field posY:I
+      12: aload_0
+      13: getfield      #67                 // Field posZ:I
+      16: invokespecial #169                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      19: areturn
+
+  public void validateBlocks(net.minecraft.world.level.Level);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #182                // Method net/minecraft/world/level/Level.getGameTime:()J
+       5: invokevirtual #188                // Method setLastScan:(J)V
+       8: aload_0
+       9: getfield      #10                 // Field blocks:Ljava/util/Map;
+      12: invokeinterface #192,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      17: invokeinterface #196,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      22: astore_2
+      23: aload_2
+      24: invokeinterface #202,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      29: ifeq          95
+      32: aload_2
+      33: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      38: checkcast     #212                // class java/util/Map$Entry
+      41: astore_3
+      42: aload_3
+      43: invokeinterface #214,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      48: checkcast     #217                // class java/util/List
+      51: invokeinterface #219,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      56: aload_1
+      57: aload_3
+      58: invokedynamic #223,  0            // InvokeDynamic #4:test:(Lnet/minecraft/world/level/Level;Ljava/util/Map$Entry;)Ljava/util/function/Predicate;
+      63: invokeinterface #227,  2          // InterfaceMethod java/util/stream/Stream.filter:(Ljava/util/function/Predicate;)Ljava/util/stream/Stream;
+      68: invokeinterface #233,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      73: astore        4
+      75: aload_3
+      76: invokeinterface #214,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      81: checkcast     #217                // class java/util/List
+      84: aload         4
+      86: invokeinterface #237,  2          // InterfaceMethod java/util/List.removeAll:(Ljava/util/Collection;)Z
+      91: pop
+      92: goto          23
+      95: return
+
+  public java.util.stream.Stream<net.minecraft.core.BlockPos> getBlockPosStream();
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field blocks:Ljava/util/Map;
+       4: invokeinterface #241,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #245,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: invokedynamic #248,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+      19: invokeinterface #249,  2          // InterfaceMethod java/util/stream/Stream.flatMap:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      24: areturn
+
+  public void addPOI(net.minecraft.world.level.Level, net.minecraft.core.BlockPos);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: invokevirtual #253                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       5: invokevirtual #257                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: astore_3
+       9: aload_0
+      10: aload_3
+      11: aload_2
+      12: invokevirtual #263                // Method removeBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+      15: aload_0
+      16: aload_3
+      17: aload_2
+      18: invokevirtual #267                // Method addBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+      21: aload_0
+      22: aload_1
+      23: invokevirtual #270                // Method validateBlocks:(Lnet/minecraft/world/level/Level;)V
+      26: aload_0
+      27: invokevirtual #274                // Method getBlockPosStream:()Ljava/util/stream/Stream;
+      30: invokeinterface #277,  1          // InterfaceMethod java/util/stream/Stream.count:()J
+      35: l2i
+      36: istore        4
+      38: iload         4
+      40: ifle          125
+      43: aload_0
+      44: invokevirtual #274                // Method getBlockPosStream:()Ljava/util/stream/Stream;
+      47: getstatic     #280                // Field net/minecraft/core/BlockPos.ZERO:Lnet/minecraft/core/BlockPos;
+      50: invokedynamic #284,  0            // InvokeDynamic #6:apply:()Ljava/util/function/BinaryOperator;
+      55: invokeinterface #287,  3          // InterfaceMethod java/util/stream/Stream.reduce:(Ljava/lang/Object;Ljava/util/function/BinaryOperator;)Ljava/lang/Object;
+      60: checkcast     #31                 // class net/minecraft/core/BlockPos
+      63: astore        5
+      65: aload_0
+      66: aload         5
+      68: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+      71: iload         4
+      73: idiv
+      74: putfield      #36                 // Field pos0X:I
+      77: aload_0
+      78: aload         5
+      80: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+      83: iload         4
+      85: idiv
+      86: putfield      #43                 // Field pos0Y:I
+      89: aload_0
+      90: aload         5
+      92: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+      95: iload         4
+      97: idiv
+      98: putfield      #49                 // Field pos0Z:I
+     101: aload_0
+     102: aload_0
+     103: getfield      #36                 // Field pos0X:I
+     106: putfield      #52                 // Field pos1X:I
+     109: aload_0
+     110: aload_0
+     111: getfield      #43                 // Field pos0Y:I
+     114: putfield      #55                 // Field pos1Y:I
+     117: aload_0
+     118: aload_0
+     119: getfield      #49                 // Field pos0Z:I
+     122: putfield      #58                 // Field pos1Z:I
+     125: return
+
+  public net.conczin.mca.server.world.data.Building$validationResult validateBuilding(net.minecraft.world.level.Level, java.util.Set<net.minecraft.core.BlockPos>);
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: invokevirtual #291                // Method net/conczin/mca/resources/data/BuildingType.grouped:()Z
+       7: ifeq          40
+      10: aload_0
+      11: aload_1
+      12: invokevirtual #270                // Method validateBlocks:(Lnet/minecraft/world/level/Level;)V
+      15: aload_0
+      16: invokevirtual #274                // Method getBlockPosStream:()Ljava/util/stream/Stream;
+      19: invokeinterface #294,  1          // InterfaceMethod java/util/stream/Stream.findAny:()Ljava/util/Optional;
+      24: invokevirtual #298                // Method java/util/Optional.isEmpty:()Z
+      27: ifeq          36
+      30: getstatic     #303                // Field net/conczin/mca/server/world/data/Building$validationResult.TOO_SMALL:Lnet/conczin/mca/server/world/data/Building$validationResult;
+      33: goto          39
+      36: getstatic     #309                // Field net/conczin/mca/server/world/data/Building$validationResult.SUCCESS:Lnet/conczin/mca/server/world/data/Building$validationResult;
+      39: areturn
+      40: aload_0
+      41: getfield      #10                 // Field blocks:Ljava/util/Map;
+      44: invokeinterface #312,  1          // InterfaceMethod java/util/Map.clear:()V
+      49: aload_0
+      50: iconst_0
+      51: putfield      #85                 // Field size:I
+      54: aload_0
+      55: aload_1
+      56: invokevirtual #182                // Method net/minecraft/world/level/Level.getGameTime:()J
+      59: invokevirtual #188                // Method setLastScan:(J)V
+      62: new           #315                // class java/util/HashSet
+      65: dup
+      66: invokespecial #317                // Method java/util/HashSet."<init>":()V
+      69: astore_3
+      70: new           #318                // class java/util/LinkedList
+      73: dup
+      74: invokespecial #320                // Method java/util/LinkedList."<init>":()V
+      77: astore        4
+      79: aload_0
+      80: invokevirtual #321                // Method getSourceBlock:()Lnet/minecraft/core/BlockPos;
+      83: astore        5
+      85: aload         4
+      87: aload         5
+      89: invokevirtual #324                // Method java/util/LinkedList.add:(Ljava/lang/Object;)Z
+      92: pop
+      93: aload_3
+      94: aload         5
+      96: invokeinterface #328,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     101: pop
+     102: invokestatic  #329                // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+     105: getfield      #335                // Field net/conczin/mca/Config.minBuildingSize:I
+     108: istore        6
+     110: invokestatic  #329                // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+     113: getfield      #338                // Field net/conczin/mca/Config.maxBuildingSize:I
+     116: istore        7
+     118: invokestatic  #329                // Method net/conczin/mca/Config.getInstance:()Lnet/conczin/mca/Config;
+     121: getfield      #341                // Field net/conczin/mca/Config.maxBuildingRadius:I
+     124: istore        8
+     126: iconst_0
+     127: istore        9
+     129: iconst_0
+     130: istore        10
+     132: iconst_0
+     133: istore        11
+     135: new           #7                  // class java/util/HashMap
+     138: dup
+     139: invokespecial #9                  // Method java/util/HashMap."<init>":()V
+     142: astore        12
+     144: aload         4
+     146: invokevirtual #344                // Method java/util/LinkedList.isEmpty:()Z
+     149: ifne          518
+     152: iload         9
+     154: iload         7
+     156: if_icmpge     518
+     159: aload         4
+     161: invokevirtual #345                // Method java/util/LinkedList.removeLast:()Ljava/lang/Object;
+     164: checkcast     #31                 // class net/minecraft/core/BlockPos
+     167: astore        13
+     169: aload_2
+     170: aload         13
+     172: invokeinterface #348,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     177: ifeq          189
+     180: iload         9
+     182: ifle          189
+     185: getstatic     #350                // Field net/conczin/mca/server/world/data/Building$validationResult.OVERLAP:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     188: areturn
+     189: aload         13
+     191: aload         5
+     193: invokevirtual #353                // Method net/minecraft/core/BlockPos.distManhattan:(Lnet/minecraft/core/Vec3i;)I
+     196: iload         8
+     198: if_icmpge     508
+     201: getstatic     #357                // Field directions:[Lnet/minecraft/core/Direction;
+     204: astore        14
+     206: aload         14
+     208: arraylength
+     209: istore        15
+     211: iconst_0
+     212: istore        16
+     214: iload         16
+     216: iload         15
+     218: if_icmpge     505
+     221: aload         14
+     223: iload         16
+     225: aaload
+     226: astore        17
+     228: aload         13
+     230: aload         17
+     232: invokevirtual #361                // Method net/minecraft/core/BlockPos.relative:(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;
+     235: astore        18
+     237: aload_3
+     238: aload         18
+     240: invokeinterface #348,  2          // InterfaceMethod java/util/Set.contains:(Ljava/lang/Object;)Z
+     245: ifne          499
+     248: aload_1
+     249: aload         18
+     251: invokevirtual #253                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     254: astore        19
+     256: aload_3
+     257: aload         18
+     259: invokeinterface #328,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+     264: pop
+     265: aload         19
+     267: invokevirtual #365                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     270: ifeq          470
+     273: aload         12
+     275: aload         18
+     277: invokeinterface #368,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     282: ifne          438
+     285: aload         18
+     287: astore        20
+     289: bipush        16
+     291: istore        21
+     293: iconst_0
+     294: istore        22
+     296: iload         22
+     298: iload         21
+     300: if_icmpge     438
+     303: aload         12
+     305: aload         20
+     307: iconst_0
+     308: invokestatic  #371                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     311: invokeinterface #377,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     316: pop
+     317: aload         20
+     319: invokevirtual #380                // Method net/minecraft/core/BlockPos.above:()Lnet/minecraft/core/BlockPos;
+     322: astore        20
+     324: aload_1
+     325: aload         20
+     327: invokevirtual #253                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     330: astore        23
+     332: aload         23
+     334: invokevirtual #365                // Method net/minecraft/world/level/block/state/BlockState.isAir:()Z
+     337: ifeq          352
+     340: aload         12
+     342: aload         20
+     344: invokeinterface #368,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     349: ifeq          432
+     352: aload         12
+     354: aload         20
+     356: invokeinterface #368,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+     361: ifeq          382
+     364: aload         12
+     366: aload         20
+     368: invokeinterface #383,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     373: checkcast     #372                // class java/lang/Boolean
+     376: invokevirtual #387                // Method java/lang/Boolean.booleanValue:()Z
+     379: ifeq          438
+     382: aload         23
+     384: getstatic     #390                // Field net/minecraft/tags/BlockTags.LEAVES:Lnet/minecraft/tags/TagKey;
+     387: invokevirtual #396                // Method net/minecraft/world/level/block/state/BlockState.is:(Lnet/minecraft/tags/TagKey;)Z
+     390: ifne          438
+     393: iload         22
+     395: istore        24
+     397: iload         24
+     399: iflt          429
+     402: aload         20
+     404: invokevirtual #400                // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     407: astore        20
+     409: aload         12
+     411: aload         20
+     413: iconst_1
+     414: invokestatic  #371                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     417: invokeinterface #377,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     422: pop
+     423: iinc          24, -1
+     426: goto          397
+     429: goto          438
+     432: iinc          22, 1
+     435: goto          296
+     438: aload         12
+     440: aload         18
+     442: invokeinterface #383,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     447: checkcast     #372                // class java/lang/Boolean
+     450: invokevirtual #387                // Method java/lang/Boolean.booleanValue:()Z
+     453: ifeq          499
+     456: iinc          10, 1
+     459: aload         4
+     461: aload         18
+     463: invokevirtual #324                // Method java/util/LinkedList.add:(Ljava/lang/Object;)Z
+     466: pop
+     467: goto          499
+     470: aload         19
+     472: invokevirtual #257                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     475: instanceof    #403                // class net/minecraft/world/level/block/DoorBlock
+     478: ifeq          499
+     481: aload_0
+     482: getfield      #70                 // Field strictScan:Z
+     485: ifne          496
+     488: aload         4
+     490: aload         18
+     492: invokevirtual #324                // Method java/util/LinkedList.add:(Ljava/lang/Object;)Z
+     495: pop
+     496: iconst_1
+     497: istore        11
+     499: iinc          16, 1
+     502: goto          214
+     505: goto          512
+     508: getstatic     #405                // Field net/conczin/mca/server/world/data/Building$validationResult.SIZE_LIMIT:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     511: areturn
+     512: iinc          9, 1
+     515: goto          144
+     518: aload         4
+     520: invokevirtual #344                // Method java/util/LinkedList.isEmpty:()Z
+     523: ifne          530
+     526: getstatic     #408                // Field net/conczin/mca/server/world/data/Building$validationResult.BLOCK_LIMIT:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     529: areturn
+     530: aload_3
+     531: invokeinterface #411,  1          // InterfaceMethod java/util/Set.size:()I
+     536: iload         6
+     538: if_icmpgt     545
+     541: getstatic     #303                // Field net/conczin/mca/server/world/data/Building$validationResult.TOO_SMALL:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     544: areturn
+     545: iload         11
+     547: ifne          554
+     550: getstatic     #413                // Field net/conczin/mca/server/world/data/Building$validationResult.NO_DOOR:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     553: areturn
+     554: aload         5
+     556: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+     559: istore        13
+     561: aload         5
+     563: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+     566: istore        14
+     568: aload         5
+     570: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+     573: istore        15
+     575: iload         13
+     577: istore        16
+     579: iload         14
+     581: istore        17
+     583: iload         15
+     585: istore        18
+     587: aload_3
+     588: invokeinterface #196,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     593: astore        19
+     595: aload         19
+     597: invokeinterface #202,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     602: ifeq          765
+     605: aload         19
+     607: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     612: checkcast     #31                 // class net/minecraft/core/BlockPos
+     615: astore        20
+     617: iload         13
+     619: aload         20
+     621: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+     624: invokestatic  #416                // Method java/lang/Math.min:(II)I
+     627: istore        13
+     629: iload         14
+     631: aload         20
+     633: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+     636: invokestatic  #416                // Method java/lang/Math.min:(II)I
+     639: istore        14
+     641: iload         15
+     643: aload         20
+     645: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+     648: invokestatic  #416                // Method java/lang/Math.min:(II)I
+     651: istore        15
+     653: iload         16
+     655: aload         20
+     657: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+     660: invokestatic  #422                // Method java/lang/Math.max:(II)I
+     663: istore        16
+     665: iload         17
+     667: aload         20
+     669: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+     672: invokestatic  #422                // Method java/lang/Math.max:(II)I
+     675: istore        17
+     677: iload         18
+     679: aload         20
+     681: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+     684: invokestatic  #422                // Method java/lang/Math.max:(II)I
+     687: istore        18
+     689: aload_1
+     690: aload         20
+     692: invokevirtual #253                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     695: astore        21
+     697: aload         21
+     699: invokevirtual #257                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+     702: astore        22
+     704: aload_0
+     705: getstatic     #425                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+     708: aload         22
+     710: invokeinterface #431,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+     715: invokevirtual #437                // Method isBuildingBlock:(Lnet/minecraft/resources/ResourceLocation;)Z
+     718: ifeq          762
+     721: aload         22
+     723: instanceof    #441                // class net/minecraft/world/level/block/BedBlock
+     726: ifeq          754
+     729: aload         21
+     731: getstatic     #443                // Field net/minecraft/world/level/block/BedBlock.PART:Lnet/minecraft/world/level/block/state/properties/EnumProperty;
+     734: invokevirtual #447                // Method net/minecraft/world/level/block/state/BlockState.getValue:(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;
+     737: getstatic     #450                // Field net/minecraft/world/level/block/state/properties/BedPart.HEAD:Lnet/minecraft/world/level/block/state/properties/BedPart;
+     740: if_acmpne     762
+     743: aload_0
+     744: aload         22
+     746: aload         20
+     748: invokevirtual #267                // Method addBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+     751: goto          762
+     754: aload_0
+     755: aload         22
+     757: aload         20
+     759: invokevirtual #267                // Method addBlock:(Lnet/minecraft/world/level/block/Block;Lnet/minecraft/core/BlockPos;)V
+     762: goto          595
+     765: aload_0
+     766: iload         13
+     768: putfield      #36                 // Field pos0X:I
+     771: aload_0
+     772: iload         14
+     774: putfield      #43                 // Field pos0Y:I
+     777: aload_0
+     778: iload         15
+     780: putfield      #49                 // Field pos0Z:I
+     783: aload_0
+     784: iload         16
+     786: putfield      #52                 // Field pos1X:I
+     789: aload_0
+     790: iload         17
+     792: putfield      #55                 // Field pos1Y:I
+     795: aload_0
+     796: iload         18
+     798: putfield      #58                 // Field pos1Z:I
+     801: aload_0
+     802: iload         10
+     804: putfield      #85                 // Field size:I
+     807: aload_0
+     808: invokevirtual #456                // Method isTypeForced:()Z
+     811: ifne          821
+     814: aload_0
+     815: invokevirtual #458                // Method determineType:()Z
+     818: ifeq          827
+     821: getstatic     #309                // Field net/conczin/mca/server/world/data/Building$validationResult.SUCCESS:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     824: goto          830
+     827: getstatic     #461                // Field net/conczin/mca/server/world/data/Building$validationResult.INVALID_TYPE:Lnet/conczin/mca/server/world/data/Building$validationResult;
+     830: areturn
+
+  private boolean isBuildingBlock(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: invokestatic  #464                // Method net/conczin/mca/resources/BuildingTypes.getInstance:()Lnet/conczin/mca/resources/BuildingTypes;
+       3: invokevirtual #469                // Method net/conczin/mca/resources/BuildingTypes.iterator:()Ljava/util/Iterator;
+       6: astore_2
+       7: aload_2
+       8: invokeinterface #202,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          39
+      16: aload_2
+      17: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #165                // class net/conczin/mca/resources/data/BuildingType
+      25: astore_3
+      26: aload_3
+      27: aload_1
+      28: invokevirtual #470                // Method net/conczin/mca/resources/data/BuildingType.matchesBlock:(Lnet/minecraft/resources/ResourceLocation;)Z
+      31: ifeq          36
+      34: iconst_1
+      35: ireturn
+      36: goto          7
+      39: iconst_0
+      40: ireturn
+
+  public boolean determineType();
+    Code:
+       0: iconst_m1
+       1: istore_1
+       2: iconst_0
+       3: istore_2
+       4: invokestatic  #464                // Method net/conczin/mca/resources/BuildingTypes.getInstance:()Lnet/conczin/mca/resources/BuildingTypes;
+       7: invokevirtual #469                // Method net/conczin/mca/resources/BuildingTypes.iterator:()Ljava/util/Iterator;
+      10: astore_3
+      11: aload_3
+      12: invokeinterface #202,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      17: ifeq          105
+      20: aload_3
+      21: invokeinterface #208,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      26: checkcast     #165                // class net/conczin/mca/resources/data/BuildingType
+      29: astore        4
+      31: aload         4
+      33: invokevirtual #473                // Method net/conczin/mca/resources/data/BuildingType.priority:()I
+      36: iload_1
+      37: if_icmple     102
+      40: aload         4
+      42: aload_0
+      43: getfield      #10                 // Field blocks:Ljava/util/Map;
+      46: invokevirtual #476                // Method net/conczin/mca/resources/data/BuildingType.getGroups:(Ljava/util/Map;)Ljava/util/Map;
+      49: astore        5
+      51: aload         4
+      53: invokevirtual #480                // Method net/conczin/mca/resources/data/BuildingType.getGroups:()Ljava/util/Map;
+      56: invokeinterface #192,  1          // InterfaceMethod java/util/Map.entrySet:()Ljava/util/Set;
+      61: invokeinterface #483,  1          // InterfaceMethod java/util/Set.stream:()Ljava/util/stream/Stream;
+      66: aload         5
+      68: invokedynamic #484,  0            // InvokeDynamic #7:test:(Ljava/util/Map;)Ljava/util/function/Predicate;
+      73: invokeinterface #487,  2          // InterfaceMethod java/util/stream/Stream.noneMatch:(Ljava/util/function/Predicate;)Z
+      78: istore        6
+      80: iload         6
+      82: ifeq          102
+      85: aload         4
+      87: invokevirtual #473                // Method net/conczin/mca/resources/data/BuildingType.priority:()I
+      90: istore_1
+      91: aload_0
+      92: aload         4
+      94: invokevirtual #491                // Method net/conczin/mca/resources/data/BuildingType.name:()Ljava/lang/String;
+      97: putfield      #18                 // Field type:Ljava/lang/String;
+     100: iconst_1
+     101: istore_2
+     102: goto          11
+     105: iload_2
+     106: ireturn
+
+  public java.lang.String getType();
+    Code:
+       0: aload_0
+       1: getfield      #18                 // Field type:Ljava/lang/String;
+       4: areturn
+
+  public void setType(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #18                 // Field type:Ljava/lang/String;
+       5: return
+
+  public boolean isTypeForced();
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field isTypeForced:Z
+       4: ireturn
+
+  public void setTypeForced(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #22                 // Field isTypeForced:Z
+       5: return
+
+  public net.conczin.mca.resources.data.BuildingType getBuildingType();
+    Code:
+       0: invokestatic  #464                // Method net/conczin/mca/resources/BuildingTypes.getInstance:()Lnet/conczin/mca/resources/BuildingTypes;
+       3: aload_0
+       4: getfield      #18                 // Field type:Ljava/lang/String;
+       7: invokevirtual #495                // Method net/conczin/mca/resources/BuildingTypes.getBuildingType:(Ljava/lang/String;)Lnet/conczin/mca/resources/data/BuildingType;
+      10: areturn
+
+  public java.util.Map<net.minecraft.resources.ResourceLocation, java.util.List<net.minecraft.core.BlockPos>> getBlocks();
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field blocks:Ljava/util/Map;
+       4: areturn
+
+  public void addBlock(net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #425                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokeinterface #431,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+       9: astore_3
+      10: aload_0
+      11: getfield      #10                 // Field blocks:Ljava/util/Map;
+      14: aload_3
+      15: invokedynamic #498,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+      20: invokeinterface #499,  3          // InterfaceMethod java/util/Map.computeIfAbsent:(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
+      25: pop
+      26: aload_0
+      27: getfield      #10                 // Field blocks:Ljava/util/Map;
+      30: aload_3
+      31: invokeinterface #383,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      36: checkcast     #217                // class java/util/List
+      39: aload_2
+      40: invokeinterface #503,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      45: pop
+      46: return
+
+  public void removeBlock(net.minecraft.world.level.block.Block, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #425                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_1
+       4: invokeinterface #431,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+       9: astore_3
+      10: aload_0
+      11: getfield      #10                 // Field blocks:Ljava/util/Map;
+      14: aload_3
+      15: invokeinterface #368,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      20: ifeq          43
+      23: aload_0
+      24: getfield      #10                 // Field blocks:Ljava/util/Map;
+      27: aload_3
+      28: invokeinterface #383,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      33: checkcast     #217                // class java/util/List
+      36: aload_2
+      37: invokeinterface #504,  2          // InterfaceMethod java/util/List.remove:(Ljava/lang/Object;)Z
+      42: pop
+      43: return
+
+  public int getBlockCount();
+    Code:
+       0: aload_0
+       1: getfield      #10                 // Field blocks:Ljava/util/Map;
+       4: invokeinterface #241,  1          // InterfaceMethod java/util/Map.values:()Ljava/util/Collection;
+       9: invokeinterface #245,  1          // InterfaceMethod java/util/Collection.stream:()Ljava/util/stream/Stream;
+      14: invokedynamic #507,  0            // InvokeDynamic #9:applyAsInt:()Ljava/util/function/ToIntFunction;
+      19: invokeinterface #511,  2          // InterfaceMethod java/util/stream/Stream.mapToInt:(Ljava/util/function/ToIntFunction;)Ljava/util/stream/IntStream;
+      24: invokeinterface #515,  1          // InterfaceMethod java/util/stream/IntStream.sum:()I
+      29: ireturn
+
+  public int getId();
+    Code:
+       0: aload_0
+       1: getfield      #81                 // Field id:I
+       4: ireturn
+
+  public void setId(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #81                 // Field id:I
+       5: return
+
+  public boolean overlaps(net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_0
+       1: getfield      #52                 // Field pos1X:I
+       4: aload_1
+       5: getfield      #36                 // Field pos0X:I
+       8: if_icmple     70
+      11: aload_0
+      12: getfield      #36                 // Field pos0X:I
+      15: aload_1
+      16: getfield      #52                 // Field pos1X:I
+      19: if_icmpge     70
+      22: aload_0
+      23: getfield      #55                 // Field pos1Y:I
+      26: aload_1
+      27: getfield      #43                 // Field pos0Y:I
+      30: if_icmple     70
+      33: aload_0
+      34: getfield      #43                 // Field pos0Y:I
+      37: aload_1
+      38: getfield      #55                 // Field pos1Y:I
+      41: if_icmpge     70
+      44: aload_0
+      45: getfield      #58                 // Field pos1Z:I
+      48: aload_1
+      49: getfield      #49                 // Field pos0Z:I
+      52: if_icmple     70
+      55: aload_0
+      56: getfield      #49                 // Field pos0Z:I
+      59: aload_1
+      60: getfield      #58                 // Field pos1Z:I
+      63: if_icmpge     70
+      66: iconst_1
+      67: goto          71
+      70: iconst_0
+      71: ireturn
+
+  public boolean containsPos(net.minecraft.core.Vec3i);
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: invokevirtual #291                // Method net/conczin/mca/resources/data/BuildingType.grouped:()Z
+       7: ifeq          27
+      10: aload_1
+      11: aload_0
+      12: invokevirtual #100                // Method getCenter:()Lnet/minecraft/core/BlockPos;
+      15: aload_0
+      16: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+      19: invokevirtual #164                // Method net/conczin/mca/resources/data/BuildingType.getMargin:()I
+      22: i2d
+      23: invokevirtual #520                // Method net/minecraft/core/Vec3i.closerThan:(Lnet/minecraft/core/Vec3i;D)Z
+      26: ireturn
+      27: aload_1
+      28: invokevirtual #524                // Method net/minecraft/core/Vec3i.getX:()I
+      31: aload_0
+      32: getfield      #36                 // Field pos0X:I
+      35: if_icmplt     97
+      38: aload_1
+      39: invokevirtual #524                // Method net/minecraft/core/Vec3i.getX:()I
+      42: aload_0
+      43: getfield      #52                 // Field pos1X:I
+      46: if_icmpgt     97
+      49: aload_1
+      50: invokevirtual #525                // Method net/minecraft/core/Vec3i.getY:()I
+      53: aload_0
+      54: getfield      #43                 // Field pos0Y:I
+      57: if_icmplt     97
+      60: aload_1
+      61: invokevirtual #525                // Method net/minecraft/core/Vec3i.getY:()I
+      64: aload_0
+      65: getfield      #55                 // Field pos1Y:I
+      68: if_icmpgt     97
+      71: aload_1
+      72: invokevirtual #526                // Method net/minecraft/core/Vec3i.getZ:()I
+      75: aload_0
+      76: getfield      #49                 // Field pos0Z:I
+      79: if_icmplt     97
+      82: aload_1
+      83: invokevirtual #526                // Method net/minecraft/core/Vec3i.getZ:()I
+      86: aload_0
+      87: getfield      #58                 // Field pos1Z:I
+      90: if_icmpgt     97
+      93: iconst_1
+      94: goto          98
+      97: iconst_0
+      98: ireturn
+
+  public boolean isIdentical(net.conczin.mca.server.world.data.Building);
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field pos0X:I
+       4: aload_1
+       5: getfield      #36                 // Field pos0X:I
+       8: if_icmpne     70
+      11: aload_0
+      12: getfield      #52                 // Field pos1X:I
+      15: aload_1
+      16: getfield      #52                 // Field pos1X:I
+      19: if_icmpne     70
+      22: aload_0
+      23: getfield      #43                 // Field pos0Y:I
+      26: aload_1
+      27: getfield      #43                 // Field pos0Y:I
+      30: if_icmpne     70
+      33: aload_0
+      34: getfield      #55                 // Field pos1Y:I
+      37: aload_1
+      38: getfield      #55                 // Field pos1Y:I
+      41: if_icmpne     70
+      44: aload_0
+      45: getfield      #49                 // Field pos0Z:I
+      48: aload_1
+      49: getfield      #49                 // Field pos0Z:I
+      52: if_icmpne     70
+      55: aload_0
+      56: getfield      #58                 // Field pos1Z:I
+      59: aload_1
+      60: getfield      #58                 // Field pos1Z:I
+      63: if_icmpne     70
+      66: iconst_1
+      67: goto          71
+      70: iconst_0
+      71: ireturn
+
+  public int getSize();
+    Code:
+       0: aload_0
+       1: getfield      #85                 // Field size:I
+       4: ireturn
+
+  public long getLastScan();
+    Code:
+       0: aload_0
+       1: getfield      #527                // Field lastScan:J
+       4: lreturn
+
+  public void setLastScan(long);
+    Code:
+       0: aload_0
+       1: lload_1
+       2: putfield      #527                // Field lastScan:J
+       5: return
+
+  public boolean isStrictScan();
+    Code:
+       0: aload_0
+       1: getfield      #70                 // Field strictScan:Z
+       4: ireturn
+
+  public boolean isComplete();
+    Code:
+       0: aload_0
+       1: invokevirtual #160                // Method getBuildingType:()Lnet/conczin/mca/resources/data/BuildingType;
+       4: astore_1
+       5: aload_1
+       6: invokevirtual #531                // Method net/conczin/mca/resources/data/BuildingType.getMinBlocks:()I
+       9: istore_2
+      10: iload_2
+      11: ifeq          22
+      14: aload_0
+      15: invokevirtual #534                // Method getBlockCount:()I
+      18: iload_2
+      19: if_icmplt     26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: ireturn
+
+  private static java.util.List lambda$addBlock$6(net.minecraft.resources.ResourceLocation);
+    Code:
+       0: new           #537                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #539                // Method java/util/ArrayList."<init>":()V
+       7: areturn
+
+  private static boolean lambda$determineType$5(java.util.Map, java.util.Map$Entry);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #540,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+       7: invokeinterface #368,  2          // InterfaceMethod java/util/Map.containsKey:(Ljava/lang/Object;)Z
+      12: ifeq          50
+      15: aload_0
+      16: aload_1
+      17: invokeinterface #540,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      22: invokeinterface #383,  2          // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      27: checkcast     #217                // class java/util/List
+      30: invokeinterface #542,  1          // InterfaceMethod java/util/List.size:()I
+      35: aload_1
+      36: invokeinterface #214,  1          // InterfaceMethod java/util/Map$Entry.getValue:()Ljava/lang/Object;
+      41: checkcast     #543                // class java/lang/Integer
+      44: invokevirtual #545                // Method java/lang/Integer.intValue:()I
+      47: if_icmpge     54
+      50: iconst_1
+      51: goto          55
+      54: iconst_0
+      55: ireturn
+
+  private static boolean lambda$validateBlocks$4(net.minecraft.world.level.Level, java.util.Map$Entry, net.minecraft.core.BlockPos);
+    Code:
+       0: getstatic     #425                // Field net/minecraft/core/registries/BuiltInRegistries.BLOCK:Lnet/minecraft/core/DefaultedRegistry;
+       3: aload_0
+       4: aload_2
+       5: invokevirtual #253                // Method net/minecraft/world/level/Level.getBlockState:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+       8: invokevirtual #257                // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+      11: invokeinterface #431,  2          // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      16: aload_1
+      17: invokeinterface #540,  1          // InterfaceMethod java/util/Map$Entry.getKey:()Ljava/lang/Object;
+      22: invokevirtual #548                // Method net/minecraft/resources/ResourceLocation.equals:(Ljava/lang/Object;)Z
+      25: ifne          32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: ireturn
+
+  private static net.minecraft.nbt.Tag lambda$save$3(java.util.List);
+    Code:
+       0: aload_0
+       1: invokedynamic #553,  0            // InvokeDynamic #10:apply:()Ljava/util/function/Function;
+       6: invokestatic  #554                // InterfaceMethod net/conczin/mca/util/NbtHelper.fromList:(Ljava/lang/Iterable;Ljava/util/function/Function;)Lnet/minecraft/nbt/ListTag;
+       9: areturn
+
+  private static net.minecraft.nbt.Tag lambda$save$2(net.minecraft.core.BlockPos);
+    Code:
+       0: new           #76                 // class net/minecraft/nbt/CompoundTag
+       3: dup
+       4: invokespecial #137                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: ldc_w         #558                // String x
+      12: aload_0
+      13: invokevirtual #30                 // Method net/minecraft/core/BlockPos.getX:()I
+      16: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      19: aload_1
+      20: ldc_w         #560                // String y
+      23: aload_0
+      24: invokevirtual #40                 // Method net/minecraft/core/BlockPos.getY:()I
+      27: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      30: aload_1
+      31: ldc_w         #562                // String z
+      34: aload_0
+      35: invokevirtual #46                 // Method net/minecraft/core/BlockPos.getZ:()I
+      38: invokevirtual #138                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+      41: aload_1
+      42: areturn
+
+  private static java.util.List lambda$new$1(net.minecraft.nbt.Tag);
+    Code:
+       0: aload_0
+       1: invokedynamic #564,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+       6: invokestatic  #565                // InterfaceMethod net/conczin/mca/util/NbtHelper.toList:(Lnet/minecraft/nbt/Tag;Ljava/util/function/Function;)Ljava/util/List;
+       9: areturn
+
+  private static net.minecraft.core.BlockPos lambda$new$0(net.minecraft.nbt.Tag);
+    Code:
+       0: aload_0
+       1: checkcast     #76                 // class net/minecraft/nbt/CompoundTag
+       4: astore_1
+       5: new           #31                 // class net/minecraft/core/BlockPos
+       8: dup
+       9: aload_1
+      10: ldc_w         #558                // String x
+      13: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      16: aload_1
+      17: ldc_w         #560                // String y
+      20: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      23: aload_1
+      24: ldc_w         #562                // String z
+      27: invokevirtual #75                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+      30: invokespecial #169                // Method net/minecraft/core/BlockPos."<init>":(III)V
+      33: areturn
+
+  static {};
+    Code:
+       0: bipush        6
+       2: anewarray     #568                // class net/minecraft/core/Direction
+       5: dup
+       6: iconst_0
+       7: getstatic     #570                // Field net/minecraft/core/Direction.UP:Lnet/minecraft/core/Direction;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: getstatic     #574                // Field net/minecraft/core/Direction.DOWN:Lnet/minecraft/core/Direction;
+      16: aastore
+      17: dup
+      18: iconst_2
+      19: getstatic     #577                // Field net/minecraft/core/Direction.NORTH:Lnet/minecraft/core/Direction;
+      22: aastore
+      23: dup
+      24: iconst_3
+      25: getstatic     #580                // Field net/minecraft/core/Direction.EAST:Lnet/minecraft/core/Direction;
+      28: aastore
+      29: dup
+      30: iconst_4
+      31: getstatic     #583                // Field net/minecraft/core/Direction.SOUTH:Lnet/minecraft/core/Direction;
+      34: aastore
+      35: dup
+      36: iconst_5
+      37: getstatic     #586                // Field net/minecraft/core/Direction.WEST:Lnet/minecraft/core/Direction;
+      40: aastore
+      41: putstatic     #357                // Field directions:[Lnet/minecraft/core/Direction;
+      44: return
+}
