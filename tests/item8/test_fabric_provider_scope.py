@@ -106,6 +106,20 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
     ("module", "label", "digest", "count", "consumers"),
     [
         (
+            "fabric-command-api-v2-2.2.28+36d727be19",
+            "fabric-command-entry",
+            "2905c60a6b616efc27154aa9fb5cf2768184f535238df1cbaf8d406d1a72a3f5",
+            1,
+            {"org/sinytra/fabric/command_api/generated/GeneratedEntryPoint.class"},
+        ),
+        (
+            "fabric-lifecycle-events-v1-2.6.0+e40d8add19",
+            "fabric-lifecycle-entry",
+            "81ff99421170db72fbeeb1e0bb07befbddf71c8dae57b6a037860883a83409b6",
+            7,
+            {"org/sinytra/fabric/lifecycle_events/generated/GeneratedEntryPoint.class"},
+        ),
+        (
             "fabric-entity-events-v1-1.8.0+5ede667619",
             "fabric-entity-events-entry",
             "f856b1bc1999cd9d480f5d8142b5561d05e62796bc6febf77d22588847531798",
@@ -226,9 +240,12 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
             prefix = cast("str", config["package"]).replace(".", "/") + "/"
             declared = {prefix + name.replace(".", "/") + ".class"
                         for name in cast("list[str]", config["mixins"])}
+            server = cast("list[str]", config.get("server", []))
+            assert server == (["server.WorldChunkMixin"]
+                              if module.startswith("fabric-lifecycle-events-v1-") else [])
+            declared.update(prefix + item.replace(".", "/") + ".class" for item in server)
             assert len(declared) == count
             assert not config.get("plugin")
-            assert not config.get("server")
             assert {r["class"] for r in rows} == declared | consumers
             name = module.rsplit("-", 1)[0]
             if name == "fabric-api-lookup-api-v1":
@@ -254,6 +271,16 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert extra["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             initializer_sources = {
+                "fabric-command-api-v2": (
+                    "fabric-command-init",
+                    "54cc77ba015cd890542609a6a8a98742763b3bde85eef35c857ad253445205a4",
+                    {"org/sinytra/fabric/command_api/FabricCommandApiV2.class"},
+                ),
+                "fabric-lifecycle-events-v1": (
+                    "fabric-lifecycle-init",
+                    "1abb7ebad9fe2aee3ce06b5d23c59aec1beb4509d798793e9717f66f324826fe",
+                    {"net/fabricmc/fabric/impl/event/lifecycle/LifecycleEventsImpl.class"},
+                ),
                 "fabric-loot-api-v2": (
                     "fabric-loot-v2-init",
                     "fdd70793358e39363a47a89dea1e357a60bbc26f051d182c66c7fd97c7be0d6e",
@@ -281,6 +308,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert row["disassembly_sha256"] == hashlib.sha256(
                         (extra_dir / row["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
+                "fabric-command-api-v2": (16, 1),
+                "fabric-lifecycle-events-v1": (73, 5),
                 "fabric-entity-events-v1": (47, 0),
                 "fabric-game-rule-api-v1": (27, 3),
                 "fabric-loot-api-v2": (14, 0),
@@ -306,7 +335,8 @@ def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit sourc
                     assert not client.get("server")
                     assert not client.get("plugin")
                 if name in {"fabric-block-view-api-v2", "fabric-game-rule-api-v1",
-                            "fabric-recipe-api-v1"}:
+                            "fabric-recipe-api-v1", "fabric-command-api-v2",
+                            "fabric-lifecycle-events-v1"}:
                     extras.add("META-INF/accesstransformer.cfg")
                 assert files - classes == extras | {
                     "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",

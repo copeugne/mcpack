@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric command and lifecycle membership is resolved. Initializer sources are
+703f0ac and 353d68f, supplementing existing entry captures. All 29 focused cases
+and scoped checks pass, including the lifecycle server-only hook. Fabric now
+has 28 resolved modules and 15 open. Whole providers remain 90 resolved and
+46 open; no family added. The remaining provider index consists of one packaged
+candidate provider (Fabric), 24 code-reference providers and 21 unmatched-search
+providers. These lanes are triage, not semantic absence proof. Close the named
+membership queue and outstanding grouping decisions before detailed attributes.
+Do not repeat the completed command/lifecycle source paths.
+
+
 Fabric entity-event membership is resolved, source 9402ecf. Twenty-seven Fabric
 cases and scoped checks pass. Fabric now has 26 resolved, 17 open modules; whole
 providers stay 90 resolved, 46 open. Command source 0224278 and lifecycle source
