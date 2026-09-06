@@ -216,6 +216,8 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "io/wispforest/accessories/Accessories.class",
+    "io/wispforest/accessories/impl/AccessoriesEventHandler.class",
     "io/wispforest/accessories/mixin/AccessoriesMixinPlugin.class",
     "io/wispforest/accessories/mixin/ApplyBonusCountMixin.class",
     "io/wispforest/accessories/mixin/ArmorSlotMixin.class",
