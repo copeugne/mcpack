@@ -1,0 +1,103 @@
+Compiled from "Tectonic.java"
+public class dev.worldgen.tectonic.Tectonic {
+  public static final java.lang.String MOD_ID = "tectonic";
+
+  public static final org.slf4j.Logger LOGGER;
+
+  public static int BLENDING_VERSION;
+
+  public static java.lang.String BLENDING_KEY;
+
+  public static java.nio.file.Path FOLDER;
+
+  public dev.worldgen.tectonic.Tectonic();
+    Code:
+       0: aload_0
+       1: invokespecial #25                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init(java.nio.file.Path);
+    Code:
+       0: aload_0
+       1: putstatic     #32                 // Field FOLDER:Ljava/nio/file/Path;
+       4: aload_0
+       5: ldc           #34                 // String config
+       7: invokeinterface #40,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      12: ldc           #42                 // String tectonic.json
+      14: invokeinterface #40,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      19: invokestatic  #47                 // Method dev/worldgen/tectonic/config/ConfigHandler.load:(Ljava/nio/file/Path;)V
+      22: return
+
+  public static net.minecraft.resources.ResourceLocation idVanilla(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #55                 // Method net/minecraft/resources/ResourceLocation.withDefaultNamespace:(Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  public static net.minecraft.resources.ResourceLocation id(java.lang.String);
+    Code:
+       0: ldc           #14                 // String tectonic
+       2: aload_0
+       3: invokestatic  #60                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+       6: areturn
+
+  public static int getBlendingVersion(net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: getstatic     #65                 // Field BLENDING_KEY:Ljava/lang/String;
+       4: invokevirtual #71                 // Method net/minecraft/nbt/CompoundTag.getInt:(Ljava/lang/String;)I
+       7: ireturn
+
+  public static boolean canRunCommand(net.minecraft.commands.CommandSourceStack);
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokevirtual #81                 // Method net/minecraft/commands/CommandSourceStack.hasPermission:(I)Z
+       5: ireturn
+
+  public static void registerDensityFunctionTypes(java.util.function.BiConsumer<java.lang.String, com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.levelgen.DensityFunction>>);
+    Code:
+       0: aload_0
+       1: ldc           #88                 // String config_clamp
+       3: getstatic     #94                 // Field dev/worldgen/tectonic/worldgen/densityfunction/ConfigClamp.DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+       6: invokeinterface #100,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      11: aload_0
+      12: ldc           #102                // String config_constant
+      14: getstatic     #105                // Field dev/worldgen/tectonic/worldgen/densityfunction/ConfigConstant.DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+      17: invokeinterface #100,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      22: aload_0
+      23: ldc           #107                // String config_noise
+      25: getstatic     #110                // Field dev/worldgen/tectonic/worldgen/densityfunction/ConfigNoise.DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+      28: invokeinterface #100,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      33: aload_0
+      34: ldc           #112                // String invert
+      36: getstatic     #115                // Field dev/worldgen/tectonic/worldgen/densityfunction/Invert.DATA_CODEC:Lcom/mojang/serialization/MapCodec;
+      39: invokeinterface #100,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      44: return
+
+  public static void registerPlacementModifierTypes(java.util.function.BiConsumer<java.lang.String, net.minecraft.world.level.levelgen.placement.PlacementModifierType<?>>);
+    Code:
+       0: aload_0
+       1: ldc           #121                // String height_stabilized_count
+       3: getstatic     #127                // Field dev/worldgen/tectonic/worldgen/placementmodifier/HeightStabilizedCount.TYPE:Lnet/minecraft/world/level/levelgen/placement/PlacementModifierType;
+       6: invokeinterface #100,  3          // InterfaceMethod java/util/function/BiConsumer.accept:(Ljava/lang/Object;Ljava/lang/Object;)V
+      11: return
+
+  public static boolean isEnabled();
+    Code:
+       0: invokestatic  #134                // Method dev/worldgen/tectonic/config/ConfigHandler.getState:()Ldev/worldgen/tectonic/config/state/ConfigState;
+       3: getfield      #138                // Field dev/worldgen/tectonic/config/state/ConfigState.general:Ldev/worldgen/tectonic/config/state/ConfigState$General;
+       6: getfield      #142                // Field dev/worldgen/tectonic/config/state/ConfigState$General.modEnabled:Z
+       9: ireturn
+
+  static {};
+    Code:
+       0: ldc           #14                 // String tectonic
+       2: invokestatic  #149                // Method org/slf4j/LoggerFactory.getLogger:(Ljava/lang/String;)Lorg/slf4j/Logger;
+       5: putstatic     #151                // Field LOGGER:Lorg/slf4j/Logger;
+       8: iconst_1
+       9: putstatic     #153                // Field BLENDING_VERSION:I
+      12: ldc           #155                // String tectonic:blending_version
+      14: putstatic     #65                 // Field BLENDING_KEY:Ljava/lang/String;
+      17: return
+}
