@@ -3279,3 +3279,30 @@ uv run basedpyright tests/item8/test_aether_cloud_source.py
 Six focused cases and scoped checks pass. This resolves the optional portal
 resource/activation boundary. Aether common-hook roles and selected bundled
 library roles remain open; census remains 75 resolved and 61 open.
+
+### Aether selected-library entry boundaries
+
+Source aether-cumulus-entry (62defac) records the Cumulus mod entry's CLIENT
+restriction, its client subscribers and its globally declared storage mixin.
+The mixin wraps the directory-lock check while loading level summaries: it
+returns false when world preview is active and MixinHooks.canUnlockLevel permits
+it, otherwise calling the original check. It does not place a structure in this
+captured method. The exact platform service is IPlatformHelper implemented by
+NeoForgePlatformHelper. Its behavior remains to be inspected before closure.
+
+Source aether-nitrogen-entry (9c29cff) records Nitrogen's entry and tooltip
+subscriber. In addition to user information and packet handling, the constructor
+registers loot types, biome-modifier serializers, foliage placers and trunk
+placers. Do not exclude its world-generation support based on its user hooks.
+Reconcile these serializers and their actual packaged consumers.
+
+The existing packaged partition test now checks both embedded payloads for data,
+packs and further embedded archives, enumerates their common mixins and binds
+the Cumulus platform-service declaration. Neither contains packaged data, packs
+or further JARs. Nitrogen has no common mixins or services; Cumulus has the one
+storage mixin and one platform service above. The first test attempt incorrectly
+asserted no services and failed on Cumulus. The corrected expectation preserves
+that discovered entry; it does not silently ignore it. Scoped type errors in
+the new mixin-list accumulation were also corrected. Six focused cases and
+scoped checks pass using the commands immediately above. Contribution roles
+remain open, not inferred from this payload partition alone.
