@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-06
 
+Create ore-source and packaged-data checks are delivered. Source 1fa2306
+(extractor cb34d9e) reproduces independently. Three ore chains introduce no
+additional site candidate; 67 GameTest and 178 Ponder NBT paths are partitioned.
+One focused test and scoped quality checks pass. Remaining Create membership
+work: common entry hooks, embedded-library roles and exact template consumers.
+Do not repeat the ore-writer or data-category pass. Census remains 89 resolved,
+47 open. No runtime or capture process is live.
+
 Regions Unexplored membership is RESOLVED. Final common-entry interpretation
 and root/processor source f4ad223 close the outstanding gap. All 23 packaged tree
 component classes (including roots) are bound, correcting the earlier 21-class
