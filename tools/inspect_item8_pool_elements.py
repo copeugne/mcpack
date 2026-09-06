@@ -209,6 +209,7 @@ CLASSES: tuple[str, ...] = (
     "earth/terrarium/chipped/mixins/NetherWartBlockMixin.class",
     "earth/terrarium/chipped/common/network/NetworkHandler.class",
     "earth/terrarium/chipped/common/network/ServerboundCraftPacket.class",
+    "earth/terrarium/chipped/common/network/ServerboundCraftPacket$Type.class",
     "software/bernie/geckolib/GeckoLibConstants.class",
     "software/bernie/geckolib/service/GeckoLibNetworking.class",
     "software/bernie/geckolib/GeckoLib.class",
