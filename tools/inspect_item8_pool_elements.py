@@ -232,6 +232,9 @@ GENERATION_PREFIXES = (
 )
 CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
+    "com/b1n_ry/yigd/events/ServerEventHandler.class",
+    "com/b1n_ry/yigd/events/YigdServerEventHandler.class",
+    "com/b1n_ry/yigd/util/YigdResourceHandler.class",
     "com/b1n_ry/yigd/Yigd.class",
     "com/b1n_ry/yigd/client/YigdClient.class",
     "com/b1n_ry/yigd/mixin/CompassItemMixin.class",
