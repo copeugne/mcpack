@@ -214,6 +214,9 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/bclib/api/v2/levelgen/LevelGenEvents.class",
+    "org/betterx/bclib/api/v2/levelgen/structures/TemplatePiece.class",
+    "org/betterx/bclib/BCLibPatch.class",
     "com/illusivesoulworks/polymorph/common/util/BlockEntityTicker.class",
     "com/illusivesoulworks/polymorph/common/PolymorphCommonEvents.class",
     "com/illusivesoulworks/polymorph/common/integration/fastbench/FastBenchModule.class",
