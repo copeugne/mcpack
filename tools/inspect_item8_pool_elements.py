@@ -2134,6 +2134,7 @@ CLASSES: tuple[str, ...] = (
     "com/simibubi/create/content/schematics/SchematicPrinter.class",
     "com/simibubi/create/content/schematics/ServerSchematicLoader.class",
     "com/simibubi/create/foundation/data/RuntimeDataGenerator.class",
+    "com/simibubi/create/foundation/data/RuntimeDataGenerator$StandardBuilder.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
