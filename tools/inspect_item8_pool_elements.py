@@ -221,6 +221,32 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/ishland/c2me/C2MEMod.class",
     "com/ishland/c2me/PreLaunchHandler.class",
+    "com/ishland/c2me/client/uncapvd/ModuleEntryPoint.class",
+    "com/ishland/c2me/client/uncapvd/common/UncapVDInitializer.class",
+    "com/ishland/c2me/fixes/chunkio/threading_issues/ModuleEntryPoint.class",
+    "com/ishland/c2me/fixes/general/threading_issues/ModuleEntryPoint.class",
+    "com/ishland/c2me/fixes/worldgen/vanilla_bugs/ModuleEntryPoint.class",
+    "com/ishland/c2me/notickvd/ModuleEntryPoint.class",
+    "com/ishland/c2me/notickvd/common/NoTickVDInitializer.class",
+    "com/ishland/c2me/opts/allocs/MixinPlugin.class",
+    "com/ishland/c2me/opts/allocs/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/chunkio/MixinPlugin.class",
+    "com/ishland/c2me/opts/chunkio/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/dfc/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/math/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/natives_math/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/scheduling/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/scheduling/mixin/MixinPlugin.class",
+    "com/ishland/c2me/opts/worldgen/general/ModuleEntryPoint.class",
+    "com/ishland/c2me/opts/worldgen/vanilla/MixinPlugin.class",
+    "com/ishland/c2me/opts/worldgen/vanilla/ModuleEntryPoint.class",
+    "com/ishland/c2me/rewrites/chunk_serializer/ModuleEntryPoint.class",
+    "com/ishland/c2me/rewrites/chunk_serializer/TheMod.class",
+    "com/ishland/c2me/rewrites/chunksystem/MixinPlugin.class",
+    "com/ishland/c2me/rewrites/chunksystem/ModuleEntryPoint.class",
+    "com/ishland/c2me/rewrites/chunkio/ModuleEntryPoint.class",
+    "com/ishland/c2me/server/utils/ModuleEntryPoint.class",
+    "com/ishland/c2me/threading/lighting/ModuleEntryPoint.class",
     "com/ishland/c2me/fixes/worldgen/threading_issues/MixinPlugin$1.class",
     "com/ishland/c2me/fixes/worldgen/threading_issues/asm/ASMTransformerMakeVolatile.class",
     "com/ishland/c2me/fixes/worldgen/threading_issues/common/Config.class",
@@ -3350,6 +3376,25 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jars/c2me-client-uncapvd-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-fixes-chunkio-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-fixes-general-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-fixes-worldgen-vanilla-bugs-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-notickvd-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-allocs-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-chunkio-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-dfc-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-math-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-natives-math-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-worldgen-general-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-opts-worldgen-vanilla-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-rewrites-chunk-serializer-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-rewrites-chunkio-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-server-utils-mc1.21.1-0.3.0+alpha.0.93.jar",
+        "META-INF/jars/c2me-threading-lighting-mc1.21.1-0.3.0+alpha.0.93.jar",
+
         "META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar",
         "META-INF/jars/c2me-base-mc1.21.1-0.3.0+alpha.0.93-all.jar",
         "META-INF/jarjar/conditional-mixin-neoforge-0.6.4.jar",
@@ -3414,6 +3459,79 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jars/c2me-client-uncapvd-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "9fd9e416c95b7e79cd91f9f0f6873b10f2c2d5a435d797aca166ad465834965c",
+        ),
+        "META-INF/jars/c2me-fixes-chunkio-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "58786b417fbce717d36c8655400c43b30e533e12b9fd1b1a34417bb211787958",
+        ),
+        "META-INF/jars/c2me-fixes-general-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "697546a41012dd9c3fbedc3e0f4e21438d3823d048eba20c992ce316ea59ad10",
+        ),
+        "META-INF/jars/c2me-fixes-worldgen-vanilla-bugs-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "7b0dbd180b9c692830404d2cf19d9da4a082f28eede9d3f912334e48c13a734c",
+        ),
+        "META-INF/jars/c2me-notickvd-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "548da1b6d7f8c1ce41e37d02997b079556a40a00d50ecafa9b2611a76f5a10f5",
+        ),
+        "META-INF/jars/c2me-opts-allocs-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "12702759ff21cb3b7eb9438aee03acb2dbee200c61d5e9b3a75a7ddb3149cf20",
+        ),
+        "META-INF/jars/c2me-opts-chunkio-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "3d8a348a76bc05073e9827406073136ccfb1a7e20a9f3e91866bec0d20f48f0e",
+        ),
+        "META-INF/jars/c2me-opts-dfc-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "3c59e5348d1dcc9e33ac613e1d78a94fe23660c6b41433b867030397ed124ea6",
+        ),
+        "META-INF/jars/c2me-opts-math-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "f3ee10fa32231757410755d0cf7bd6551b11adf40faa6696a4943c19fc3eaf95",
+        ),
+        "META-INF/jars/c2me-opts-natives-math-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "59333c54f4184f2a2453060341c96f0802f88707f3af5ca0f501288fc5978965",
+        ),
+        "META-INF/jars/c2me-opts-scheduling-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "e7c4829b8e137c65a4de74d75518aef119feb0b945f71fbf217894db562b4272",
+        ),
+        "META-INF/jars/c2me-opts-worldgen-general-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "0269bd4c1d5e4c0f2a1fa5a5a961e5835a942011f3920fe0db1e49a1953c64e9",
+        ),
+        "META-INF/jars/c2me-opts-worldgen-vanilla-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "b12f9852e952855c266468216df991ace445ba247c83e6bfbcf2691894b899b2",
+        ),
+        "META-INF/jars/c2me-rewrites-chunk-serializer-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "359e95af5780b80442b6fd4e1d48c429500049606d4798c57beed489ae1f9ab7",
+        ),
+        "META-INF/jars/c2me-rewrites-chunk-system-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "efa7a43d6721ea78f498ff57878a3e104f0c1f5b3353879f1d62c1789ae5cb9f",
+        ),
+        "META-INF/jars/c2me-rewrites-chunkio-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "ec94e0591a5f3f93d17f93afd339d4f8f8b453f9ef1b66e704c8f67e051947fe",
+        ),
+        "META-INF/jars/c2me-server-utils-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "fdfefe112b7d461a50d530fc47a0f7ce6107ac1e31d47ebcd55a5ac3e8056b49",
+        ),
+        "META-INF/jars/c2me-threading-lighting-mc1.21.1-0.3.0+alpha.0.93.jar": (
+            "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
+            "afe3cefbfc5e46028720083e7e5285370ebc199ada5ca729e771c209b684554a",
+        ),
+
         "META-INF/jars/c2me-fixes-worldgen-threading-issues-mc1.21.1-0.3.0+alpha.0.93.jar": (
             "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
             "7f780a5be2f877117870543b08805e4fee9fec852571fae08e51fc244be22f65",
