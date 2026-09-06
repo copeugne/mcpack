@@ -897,6 +897,17 @@ CLASSES: tuple[str, ...] = (
     "biomesoplenty/worldgen/feature/tree/BOPTreeFeature.class",
     "biomesoplenty/worldgen/feature/misc/LargeRoseQuartzFeature$LargeRoseQuartz.class",
     "biomesoplenty/util/biome/RoseQuartzUtils.class",
+    "architectury_inject_IntegratedVillages_common_dac55d1c3d7c43d0b24fcf81e4608720_81a8cfc75ab7849b22873acf463ab0d4326a7a023946e85fdc1fb3c982d0127bintegrated_villages1331211commondevjar/PlatformMethods.class",
+    "com/craisinlord/integrated_villages/IntegratedVillages.class",
+    "com/craisinlord/integrated_villages/config/ConfigModule$General.class",
+    "com/craisinlord/integrated_villages/config/ConfigModule.class",
+    "com/craisinlord/integrated_villages/config/IntegratedVillagesConfigNeoforge.class",
+    "com/craisinlord/integrated_villages/lootmanager/StructureModdedLootImporter.class",
+    "com/craisinlord/integrated_villages/mixins/LocateVillagesCommandMixin.class",
+    "com/craisinlord/integrated_villages/neoforge/IntegratedVillagesNeoforge.class",
+    "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool$ExpandedPoolEntry.class",
+    "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager$AdditionalStructureTemplatePool.class",
+    "com/craisinlord/integrated_villages/pooladditions/PoolAdditionMergerManager.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1023,6 +1034,11 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "Almanac-", "libraryferret-", "structure_layout_optimizer-",
                     "letmedespawn-", "sparsestructures-", "structure_pool_api-",
                 ))
+                verbose |= (
+                    source.name == "integrated_villages-1.3.3+1.21.1-neoforge.jar"
+                    and not name.endswith("ConfigGeneralNeoforge.class")
+                    and not name.endswith("ConfigModuleNeoforge.class")
+                )
                 verbose |= "/mixin/" in name or "/mixins/" in name or name in {
                     "biomesoplenty/core/BiomesOPlenty.class",
                     "biomesoplenty/neoforge/core/BiomesOPlentyNeoForge.class",
