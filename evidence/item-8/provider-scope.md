@@ -9084,3 +9084,27 @@ SHA-256: 8119e9753a9fcbf79e581851738d0c7a8e3e797f0c6bfd325cb1d8868007dda9.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-facilities-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-facilities-r2.json
 ```
+
+### Voyager shelter and sculpture decisions, 2026-09-07
+
+Fox and snowy dog huts share one small shelter motif with biome, roof, ground and
+accessory variants. Both complete definitions and root-specific templates remain
+in animal_hut. The existing small-variant preservation test now also covers this
+merge. Neither template authors an animal. Bee dome remains a distinct glazed
+apiary enclosure, with hive block entities rather than an inferred bee count.
+
+Large mushroom remains an authored constructed landmark based on its crafted
+materials and broad cap/stalk layout. It is distinct from the narrow pedestal
+mushroom figure. Duck, horned devil, villager and skeletal-arch fossil designs
+retain their different sculptural compositions. No authored mob is inferred from
+any sculpture name. The existing source views and template contents suffice.
+
+Seventeen affected cases and scoped Ruff/Basedpyright pass. Working groups: 405.
+Explicit provisional remainder: 14. Attribute completion, nonregistry reconciliation
+and final review remain open. Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```

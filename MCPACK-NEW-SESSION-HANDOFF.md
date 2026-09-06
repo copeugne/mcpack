@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-07
 
+Shelter/sculpture decisions resolve nine explicit provisionals. Fox and dog huts
+merge as animal-hut variants with both full definitions retained. Seven other
+designs remain distinct; large_mushroom is authored construction, not a vegetation
+exclusion. Seventeen affected cases and scoped checks pass. Working groups: 405.
+Explicit remainder: 14, listed below. Existing views suffice; inventory refresh
+follows. Required attributes and nonregistry reconciliation remain open.
+
+- mvs:castle_ruins
+- mvs:crystal
+- mvs:gallows
+- mvs:log_ruin
+- mvs:railway
+- mvs:ruined_beacon
+- mvs:small_ruin
+- mvs:small_ship
+- mvs:statue_ruins
+- mvs:stone_fountain
+- mvs:stone_pillars
+- mvs:sunzi_gate
+- mvs:tree_monument
+- mvs:windmill
+
+
 Inventory matches decisions delivered at f7a27e9a and reproduces exactly.
 Working groups: 406. Explicit provisional remainder: the 23 Voyager names below.
 All their comparison views are already delivered and inspected.
