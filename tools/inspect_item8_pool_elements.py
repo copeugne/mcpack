@@ -189,6 +189,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/fabricmc/fabric/impl/lookup/ApiLookupImpl.class",
     "org/sinytra/fabric/api_lookup_api/generated/GeneratedEntryPoint.class",
     "net/fabricmc/fabric/mixin/lookup/ServerWorldMixin.class",
     "org/sinytra/fabric/block_api/generated/GeneratedEntryPoint.class",
