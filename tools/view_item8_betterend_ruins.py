@@ -17,8 +17,10 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bool = False) -> str:
+def diagram(raw: bytes, title: str, origin: tuple[int, int], *,
+            exposed: bool = False, omit_water: bool = False) -> str:
     """Project occupied block cells; preserve material names in SVG tooltips."""
+    origin_x, origin_y = origin
     root = decode_compound_nbt(gzip.decompress(raw))
     palette = cast("list[dict[str, JsonValue]]", root["palette"])
     blocks = cast("list[dict[str, JsonValue]]", root["blocks"])
@@ -29,7 +31,8 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bo
     for block in blocks:
         x, y, z = cast("list[int]", block["pos"])
         name = str(palette[cast("int", block["state"])]["Name"])
-        if name not in {"minecraft:air", "minecraft:cave_air", "minecraft:structure_void"}:
+        if (name not in {"minecraft:air", "minecraft:cave_air", "minecraft:structure_void"}
+                and not (omit_water and name == "minecraft:water")):
             cells.append((x, y, z, name))
     occupied: set[tuple[int, int, int]] = {(x, y, z) for x, y, z, _ in cells} if exposed else set()
     for x, y, z, name in sorted(cells, key=lambda cell: (sum(cell[:3]), cell[1])):
@@ -63,7 +66,7 @@ def parse_args() -> argparse.Namespace:
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
-                 "--adora-monuments"):
+                 "--adora-monuments", "--adora-ocean"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -86,13 +89,14 @@ def main() -> None:
                     if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                         or cast("bool", args.adora_facilities)
                         or cast("bool", args.adora_nether)
-                        or cast("bool", args.adora_monuments)) else
+                        or cast("bool", args.adora_monuments)
+                        or cast("bool", args.adora_ocean)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                   or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
-                        or cast("bool", args.adora_monuments))
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -207,9 +211,12 @@ def main() -> None:
         namespace = ("adorabuild_structures"
                      if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                         or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
-                        or cast("bool", args.adora_monuments))
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean))
                      else namespace)
         sheets = {
+            "ocean_architecture": ["ocean_temple_small_1", "ocean_temple_small_2",
+                                   "ocean_temple_medium_1", "ocean_temple_medium_2"],
+        } if cast("bool", args.adora_ocean) else {
             "palaces_mansion": ["ancient_palace_1", "ancient_palace_2",
                                 "ancient_palace_3", "dark_oak_mansion_medium_1"],
             "end_ocean_temples": ["end_temple_small_1", "end_temple_large_1",
@@ -253,8 +260,9 @@ def main() -> None:
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
-                pieces.append(diagram(raw, title, 20 + index % 2 * 300,
-                                      35 + index // 2 * 300, exposed=compressed))
+                pieces.append(diagram(raw, title, (20 + index % 2 * 300,
+                                      35 + index // 2 * 300), exposed=compressed,
+                                      omit_water=cast("bool", args.adora_ocean)))
             height = ((len(names) + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',

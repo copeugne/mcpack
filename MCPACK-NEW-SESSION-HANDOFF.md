@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Ocean-temple views at ee31d68f are obscured by water cubes. The existing renderer
+needs one opt-in omission of minecraft:water for the four fixed ocean templates
+to expose architecture. Keep the original views and NBT; this is an inspection
+view, not drainage, an exposure measurement or a new measurement system. Other
+selections retain their existing behavior. Backlog remains 61.
+
 Inventory matches fa28c80a and independently reproduces exactly. All 887 roots
 remain assigned once in 414 working groups. Canonical-note backlog: 61 (IDAS 59,
 AdoraBuild ocean_temple and house). Next: resolve ocean layouts obscured by water,
