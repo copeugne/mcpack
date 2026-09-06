@@ -8986,3 +8986,31 @@ SHA-256: ba90f9bc4a827236676bd6fd061574d149b9a3d72a74aa93dc6cc23f6b3351b2.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-voyager-small-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-voyager-small-r2.json
 ```
+
+### Voyager tower and outbuilding relationships, 2026-09-07
+
+Views delivered at b580a10f resolve six tower roots and three outbuilding roots.
+Red and jungle towers share a broad tiered, buttressed and tapering composition;
+they merge into one family with material, vegetation, layout and encounter
+variants. Both full root definitions and all five component identities remain.
+Jungle/taiga biome constraints, different size limits and terrain checks are
+preserved. The comparison filename nether_towers does not establish a dimension.
+
+Cartographer, large warped, ocean and small pillager towers retain distinct
+shaft/crown, side-turret, cylindrical and open stacked-platform compositions.
+Barn, shed and out-house remain distinct hall, shallow enclosure and narrow
+shelter designs. Tops, lower pieces and shared villager templates are components.
+Empty spawner entity objects remain unresolved. These decisions establish source
+design relationships, not observed gameplay or natural spawning.
+
+Sixteen affected cases pass, including direct merged-root definition and component
+preservation. Scoped Ruff/Basedpyright pass. Working groups: 406. Explicit
+provisional remainder: 40, including eight houses whose views are already inspected.
+Attribute completion, nonregistry reconciliation and final review remain open.
+Inventory refresh follows.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k 'mvs or voyager'
+uv run ruff check tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+uv run basedpyright tests/item8/test_family_decisions.py tools/build_item8_inventory.py
+```
