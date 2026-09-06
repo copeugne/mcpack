@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Nine End/Nether house roots are reconciled using existing abfaa574 views and
+contents: raised End rooms (2), low End houses (3), crimson tower (1), crimson
+hall (1), warped houses (2). Full definitions and inhabitants remain attached to
+each variant. The affected case and scoped checks pass. Inventory refresh follows.
+Coverage groups: 421. Backlog remains 60 (IDAS 59, Overworld house with 35 roots).
+Next: domestic, raised and partly buried Overworld layouts, with no recapture.
+
 Inventory matches f0f0fcf6 and independently reproduces exactly. Full variants
 are unchanged across the bamboo-cache split; all 887 roots occur once in 416
 working groups. Backlog: 60 (IDAS 59, house with 44 roots). Continue existing
