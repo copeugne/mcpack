@@ -1,0 +1,56 @@
+Compiled from "ServerboundCraftPacket.java"
+class earth.terrarium.chipped.common.network.ServerboundCraftPacket$Type extends com.teamresourceful.resourcefullib.common.network.defaults.CodecPacketType<earth.terrarium.chipped.common.network.ServerboundCraftPacket> implements com.teamresourceful.resourcefullib.common.network.base.ServerboundPacketType<earth.terrarium.chipped.common.network.ServerboundCraftPacket> {
+  public earth.terrarium.chipped.common.network.ServerboundCraftPacket$Type();
+    Code:
+       0: aload_0
+       1: ldc           #10                 // class earth/terrarium/chipped/common/network/ServerboundCraftPacket
+       3: ldc           #25                 // String chipped
+       5: ldc           #27                 // String craft
+       7: invokestatic  #33                 // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      10: getstatic     #39                 // Field com/teamresourceful/resourcefullib/common/bytecodecs/ExtraByteCodecs.ITEM_STACK:Lcom/teamresourceful/bytecodecs/base/ByteCodec;
+      13: invokedynamic #59,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      18: invokeinterface #65,  2           // InterfaceMethod com/teamresourceful/bytecodecs/base/ByteCodec.fieldOf:(Ljava/util/function/Function;)Lcom/teamresourceful/bytecodecs/base/ObjectEntryByteCodec;
+      23: getstatic     #68                 // Field com/teamresourceful/bytecodecs/base/ByteCodec.BOOLEAN:Lcom/teamresourceful/bytecodecs/base/ByteCodec;
+      26: invokedynamic #76,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      31: invokeinterface #65,  2           // InterfaceMethod com/teamresourceful/bytecodecs/base/ByteCodec.fieldOf:(Ljava/util/function/Function;)Lcom/teamresourceful/bytecodecs/base/ObjectEntryByteCodec;
+      36: invokedynamic #87,  0             // InvokeDynamic #2:apply:()Lcom/teamresourceful/bytecodecs/utils/Functions$Function2;
+      41: invokestatic  #93                 // Method com/teamresourceful/bytecodecs/base/object/ObjectByteCodec.create:(Lcom/teamresourceful/bytecodecs/base/ObjectEntryByteCodec;Lcom/teamresourceful/bytecodecs/base/ObjectEntryByteCodec;Lcom/teamresourceful/bytecodecs/utils/Functions$Function2;)Lcom/teamresourceful/bytecodecs/base/ByteCodec;
+      44: invokespecial #96                 // Method com/teamresourceful/resourcefullib/common/network/defaults/CodecPacketType."<init>":(Ljava/lang/Class;Lnet/minecraft/resources/ResourceLocation;Lcom/teamresourceful/bytecodecs/base/ByteCodec;)V
+      47: return
+
+  public java.util.function.Consumer<net.minecraft.world.entity.player.Player> handle(earth.terrarium.chipped.common.network.ServerboundCraftPacket);
+    Code:
+       0: aload_1
+       1: invokedynamic #114,  0            // InvokeDynamic #3:accept:(Learth/terrarium/chipped/common/network/ServerboundCraftPacket;)Ljava/util/function/Consumer;
+       6: areturn
+
+  public java.util.function.Consumer handle(com.teamresourceful.resourcefullib.common.network.Packet);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #10                 // class earth/terrarium/chipped/common/network/ServerboundCraftPacket
+       5: invokevirtual #118                // Method handle:(Learth/terrarium/chipped/common/network/ServerboundCraftPacket;)Ljava/util/function/Consumer;
+       8: areturn
+
+  private static void lambda$handle$0(earth.terrarium.chipped.common.network.ServerboundCraftPacket, net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_1
+       1: getfield      #125                // Field net/minecraft/world/entity/player/Player.containerMenu:Lnet/minecraft/world/inventory/AbstractContainerMenu;
+       4: astore_3
+       5: aload_3
+       6: instanceof    #127                // class earth/terrarium/chipped/common/menus/WorkbenchMenu
+       9: ifeq          36
+      12: aload_3
+      13: checkcast     #127                // class earth/terrarium/chipped/common/menus/WorkbenchMenu
+      16: astore_2
+      17: aload_2
+      18: aload_0
+      19: getfield      #130                // Field earth/terrarium/chipped/common/network/ServerboundCraftPacket.stack:Lnet/minecraft/world/item/ItemStack;
+      22: aload_0
+      23: getfield      #133                // Field earth/terrarium/chipped/common/network/ServerboundCraftPacket.replaceAll:Z
+      26: invokevirtual #135                // Method earth/terrarium/chipped/common/menus/WorkbenchMenu.craft:(Lnet/minecraft/world/item/ItemStack;Z)V
+      29: aload_1
+      30: getfield      #125                // Field net/minecraft/world/entity/player/Player.containerMenu:Lnet/minecraft/world/inventory/AbstractContainerMenu;
+      33: invokevirtual #140                // Method net/minecraft/world/inventory/AbstractContainerMenu.broadcastChanges:()V
+      36: return
+}
