@@ -214,6 +214,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "com/llamalad7/mixinextras/platform/neoforge/MixinExtrasConfigPlugin.class",
     "org/betterx/bclib/mixin/common/AnvilBlockMixin.class",
     "org/betterx/bclib/mixin/common/AnvilMenuMixin.class",
     "org/betterx/bclib/mixin/common/ComposterBlockAccessor.class",
@@ -3056,6 +3057,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     _ = parser.add_argument("--archive", choices=sorted(ARCHIVES))
     _ = parser.add_argument("--class-name", action="append", choices=CLASSES)
     _ = parser.add_argument("--nested-archive", choices=[
+        "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar",
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar",
         "META-INF/jars/fabric-transfer-api-v1-5.4.3+a25cb45619.jar",
         "META-INF/jars/fabric-registry-sync-v0-5.3.1+f9aace1619.jar",
@@ -3116,6 +3118,10 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/mixinextras-neoforge-0.5.0.jar": (
+            "bclib-21.0.24.jar",
+            "9c617719248f8b89847348fc7ea5e705739c147ae5e172551264d225bc9f2507",
+        ),
         "META-INF/jars/forgified-fabric-loader-2.5.68+0.18.4+1.21.1-full.jar": (
             "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
             "fe0b6b5e95917ab26fd1271e8d72fc714283a4c2542c5a732fb1261a69f18c43",
