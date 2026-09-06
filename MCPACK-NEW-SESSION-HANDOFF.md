@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Fabric lookup is resolved. Source 6a7858d (extractor 65b700e) shows its startup
+callback validates caller-supplied entity types by constructing an instance and
+checking API compatibility, without adding it to the world or registering a
+generation route. Existing entry/cache/payload evidence is reused; initializer
+and callback hashes are now bound. Twenty-two cases and scoped checks pass.
+Fabric has twenty-one resolved and twenty-two open modules; whole-provider
+census stays 90 resolved, 46 open. No family added. Continue remaining named
+modules and family groupings; no further lookup helper tracing is needed.
+
 Fabric block API, block-view API and rendering-data attachment are resolved as
 consumer interfaces/accessors and climbing behavior, with no independent family.
 Source 771947f, extractor 231284d. Twenty-two focused cases and scoped checks pass;

@@ -166,7 +166,7 @@ def test_fabric_packaged_data_and_modifier_source() -> None:
         ),
     ],
 )
-def test_fabric_sources_cover_declared_mixins(
+def test_fabric_sources_cover_declared_mixins(  # noqa: PLR0915 - explicit source and payload bindings.
     module: str, label: str, digest: str, count: int, consumers: set[str]
 ) -> None:
     source = next(
@@ -194,6 +194,28 @@ def test_fabric_sources_cover_declared_mixins(
             assert not config.get("server")
             assert {r["class"] for r in rows} == declared | consumers
             name = module.rsplit("-", 1)[0]
+            if name == "fabric-api-lookup-api-v1":
+                for capture, identity, target in (
+                    ("fabric-lookup-init",
+                     "feb6c7996b8b362e2aacc07549301ad0e44c23c02b6e9a4a79ee5f1f08b904be",
+                     "ApiLookupImpl"),
+                    ("fabric-lookup-entity-check",
+                     "fea7a06fabe1eea4364d75c4cbc4c7d272033a5af585f44296fa5d1aeebfbd60",
+                     "entity/EntityApiLookupImpl"),
+                ):
+                    extra_dir = Path("evidence/item-8/sources") / capture
+                    extra_raw = (extra_dir / "identities.json").read_bytes()
+                    assert hashlib.sha256(extra_raw).hexdigest() == identity
+                    extra_rows = cast("list[dict[str, str]]", json.loads(extra_raw))
+                    assert len(extra_rows) == 1
+                    extra = extra_rows[0]
+                    assert extra["class"] == "net/fabricmc/fabric/impl/lookup/" + target + ".class"
+                    assert extra["archive"] == source.name + "!/" + member
+                    assert extra["archive_sha256"] == hashlib.sha256(payload).hexdigest()
+                    assert extra["class_sha256"] == hashlib.sha256(
+                        archive.read(extra["class"])).hexdigest()
+                    assert extra["disassembly_sha256"] == hashlib.sha256(
+                        (extra_dir / extra["disassembly"]).read_bytes()).hexdigest()
             block_modules = {
                 "fabric-api-lookup-api-v1": (29, 0),
                 "fabric-block-api-v1": (8, 0),

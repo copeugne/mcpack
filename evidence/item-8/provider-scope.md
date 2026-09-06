@@ -5751,8 +5751,8 @@ remains 90 resolved, 46 open providers; no family candidate was added.
 
 ### Exact Fabric module queue
 
-The frozen parent contains 43 modules. Twenty membership roles are resolved below;
-23 remain open. These are internal modules of one retained provider, not added
+The frozen parent contains 43 modules. Twenty-one membership roles are resolved below;
+22 remain open. These are internal modules of one retained provider, not added
 providers or families. All packaged data is already partitioned by the existing
 Fabric check. Open rows require contribution-role inspection, not an audit of
 every implementation method. Reuse existing captures and stop at the content
@@ -5761,7 +5761,7 @@ boundary. This queue replaces the unspecified phrase "other Fabric modules".
 | Fabric module | Membership disposition |
 | --- | --- |
 | `fabric-api-base-0.4.42+d1308ded19.jar` | RESOLVED: empty loader entry and consumer-driven event/utility library; see below. |
-| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | OPEN: entry/cache hooks captured; inspect EntityApiLookupImpl.checkSelfImplementingTypes registered at server start. |
+| `fabric-api-lookup-api-v1-1.6.71+c290471319.jar` | RESOLVED: consumer API caches and startup type validation; no independent family. See below. |
 | `fabric-biome-api-v1-13.0.31+1e62d33c19.jar` | RESOLVED: biome selection and consumer callbacks; see above. |
 | `fabric-block-api-v1-1.1.0+b0c22bb819.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
 | `fabric-block-view-api-v2-1.0.11+e9036fd419.jar` | RESOLVED: block interface, read/accessor or climbing roles; no independent family. See below. |
@@ -5971,3 +5971,33 @@ All twenty-two focused cases and scoped checks pass. Three membership roles
 close, giving twenty resolved and twenty-three open Fabric modules. No family
 is added. Whole-provider census stays 90 resolved and 46 open. Exact source
 reproduction commands and hashes are in the five source READMEs.
+
+### Fabric lookup membership resolved
+
+Source 6a7858d (extractor 65b700e) independently reproduces the identified
+EntityApiLookupImpl callback. Its REGISTERED_SELVES map starts empty and is
+populated by registerSelf with caller-supplied entity types. At server start,
+the one-time callback constructs an instance with EntityType.create and checks
+Class.isInstance. It throws explicitly for a null instance or incompatible
+API class. It does not add the instance to the world or register a generation
+route. Construction alone is not an authored spawn. Consumer entity definitions
+remain attributable to their own providers, without a general constructor audit.
+
+This closes the remaining lookup contribution boundary using the existing
+entry/cache capture and complete 29-class payload partition. The existing test
+now also binds the initializer and callback manifests, class hashes and exact
+disassembly hashes. No family is added.
+
+```sh
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+```
+
+All twenty-two cases and scoped checks pass. The focused binding function now
+has 52 explicit statements; a local PLR0915 exception retains the direct checks
+without adding a helper or framework merely to satisfy the statement limit.
+The initial lint finding was corrected before acceptance. Fabric queue:
+twenty-one resolved, twenty-two open modules. Whole-provider census remains
+90 resolved, 46 open. Reuse all lookup sources; no remaining lookup membership
+question requires further helper tracing.
