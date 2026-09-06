@@ -1,0 +1,330 @@
+Compiled from "CarvedLimitedPoolFeature.java"
+public class net.regions_unexplored.worldgen.feature.CarvedLimitedPoolFeature extends net.minecraft.world.level.levelgen.feature.Feature<net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig> {
+  public net.regions_unexplored.worldgen.feature.CarvedLimitedPoolFeature(com.mojang.serialization.Codec<net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #22                 // Method net/minecraft/world/level/levelgen/feature/Feature."<init>":(Lcom/mojang/serialization/Codec;)V
+       5: return
+
+  public boolean place(net.minecraft.world.level.levelgen.feature.FeaturePlaceContext<net.regions_unexplored.worldgen.feature.config.CarvedLimitedPoolFeatureConfig>);
+    Code:
+       0: aload_1
+       1: invokevirtual #37                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.config:()Lnet/minecraft/world/level/levelgen/feature/configurations/FeatureConfiguration;
+       4: checkcast     #39                 // class net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #43                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.level:()Lnet/minecraft/world/level/WorldGenLevel;
+      12: astore_3
+      13: aload_1
+      14: invokevirtual #47                 // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.origin:()Lnet/minecraft/core/BlockPos;
+      17: astore        4
+      19: aload         4
+      21: invokevirtual #51                 // Method net/minecraft/core/BlockPos.mutable:()Lnet/minecraft/core/BlockPos$MutableBlockPos;
+      24: astore        5
+      26: iconst_1
+      27: istore        6
+      29: iconst_0
+      30: istore        7
+      32: iload         7
+      34: iload         6
+      36: if_icmpge     705
+      39: iconst_0
+      40: istore        8
+      42: bipush        18
+      44: bipush        18
+      46: multianewarray #55,  2            // class "[[Z"
+      50: astore        9
+      52: iconst_m1
+      53: istore        10
+      55: iload         10
+      57: bipush        17
+      59: if_icmpge     456
+      62: iconst_m1
+      63: istore        11
+      65: iload         11
+      67: bipush        17
+      69: if_icmpge     450
+      72: iload         7
+      74: ifne          121
+      77: aload_3
+      78: aload_3
+      79: getstatic     #59                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+      82: aload         4
+      84: iload         10
+      86: iconst_0
+      87: iload         11
+      89: invokevirtual #63                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+      92: invokeinterface #67,  3           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+      97: invokevirtual #70                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     100: invokeinterface #74,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isWaterAt:(Lnet/minecraft/core/BlockPos;)Z
+     105: ifeq          121
+     108: aload         9
+     110: iload         10
+     112: iconst_1
+     113: iadd
+     114: aaload
+     115: iload         11
+     117: iconst_1
+     118: iadd
+     119: iconst_1
+     120: bastore
+     121: aload         5
+     123: aload_3
+     124: getstatic     #77                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.OCEAN_FLOOR:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     127: aload         4
+     129: iload         10
+     131: iconst_0
+     132: iload         11
+     134: invokevirtual #63                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     137: invokeinterface #67,  3           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+     142: invokevirtual #70                 // Method net/minecraft/core/BlockPos.below:()Lnet/minecraft/core/BlockPos;
+     145: invokevirtual #81                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     148: astore        5
+     150: aload_2
+     151: invokevirtual #85                 // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.pool:()Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;
+     154: aload_3
+     155: aload         5
+     157: invokeinterface #91,  3           // InterfaceMethod net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     162: ifeq          444
+     165: aload_2
+     166: invokevirtual #94                 // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.wall:()Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;
+     169: aload_3
+     170: aload         5
+     172: invokevirtual #95                 // Method net/minecraft/core/BlockPos$MutableBlockPos.below:()Lnet/minecraft/core/BlockPos;
+     175: invokeinterface #91,  3           // InterfaceMethod net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     180: ifne          186
+     183: goto          444
+     186: iconst_1
+     187: istore        12
+     189: aload         5
+     191: iconst_m1
+     192: iconst_1
+     193: iconst_m1
+     194: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     197: aload         5
+     199: iconst_1
+     200: iconst_1
+     201: iconst_1
+     202: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     205: invokestatic  #100                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+     208: invokeinterface #106,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     213: astore        13
+     215: aload         13
+     217: invokeinterface #112,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     222: ifeq          282
+     225: aload         13
+     227: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     232: checkcast     #10                 // class net/minecraft/core/BlockPos
+     235: astore        14
+     237: iload         12
+     239: ifeq          268
+     242: aload_3
+     243: aload         14
+     245: invokeinterface #119,  2          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isEmptyBlock:(Lnet/minecraft/core/BlockPos;)Z
+     250: ifne          264
+     253: aload_3
+     254: aload         14
+     256: invokeinterface #74,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isWaterAt:(Lnet/minecraft/core/BlockPos;)Z
+     261: ifeq          268
+     264: iconst_1
+     265: goto          269
+     268: iconst_0
+     269: istore        12
+     271: iload         12
+     273: ifne          279
+     276: goto          282
+     279: goto          215
+     282: iload         12
+     284: ifne          290
+     287: goto          444
+     290: iconst_1
+     291: istore        13
+     293: aload         5
+     295: iconst_m1
+     296: iconst_0
+     297: iconst_m1
+     298: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     301: aload         5
+     303: iconst_1
+     304: iconst_0
+     305: iconst_1
+     306: invokevirtual #96                 // Method net/minecraft/core/BlockPos$MutableBlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     309: invokestatic  #100                // Method net/minecraft/core/BlockPos.betweenClosed:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Ljava/lang/Iterable;
+     312: invokeinterface #106,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     317: astore        14
+     319: aload         14
+     321: invokeinterface #112,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     326: ifeq          390
+     329: aload         14
+     331: invokeinterface #116,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     336: checkcast     #10                 // class net/minecraft/core/BlockPos
+     339: astore        15
+     341: iload         13
+     343: ifeq          376
+     346: aload_2
+     347: invokevirtual #94                 // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.wall:()Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;
+     350: aload_3
+     351: aload         15
+     353: invokeinterface #91,  3           // InterfaceMethod net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     358: ifne          372
+     361: aload_3
+     362: aload         15
+     364: invokeinterface #74,  2           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.isWaterAt:(Lnet/minecraft/core/BlockPos;)Z
+     369: ifeq          376
+     372: iconst_1
+     373: goto          377
+     376: iconst_0
+     377: istore        13
+     379: iload         13
+     381: ifne          387
+     384: goto          390
+     387: goto          319
+     390: iload         13
+     392: ifne          398
+     395: goto          444
+     398: aload_3
+     399: aload         5
+     401: getstatic     #125                // Field net/minecraft/world/level/block/Blocks.WATER:Lnet/minecraft/world/level/block/Block;
+     404: invokevirtual #131                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     407: iconst_3
+     408: invokeinterface #135,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     413: pop
+     414: aload         9
+     416: iload         10
+     418: iconst_1
+     419: iadd
+     420: aaload
+     421: iload         11
+     423: iconst_1
+     424: iadd
+     425: iconst_1
+     426: bastore
+     427: iload         8
+     429: ifne          444
+     432: iload         6
+     434: aload_2
+     435: invokevirtual #139                // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.depth:()I
+     438: if_icmpge     444
+     441: iinc          6, 1
+     444: iinc          11, 1
+     447: goto          65
+     450: iinc          10, 1
+     453: goto          55
+     456: iload         7
+     458: ifne          699
+     461: iconst_0
+     462: istore        10
+     464: iload         10
+     466: bipush        16
+     468: if_icmpge     699
+     471: iconst_0
+     472: istore        11
+     474: iload         11
+     476: bipush        16
+     478: if_icmpge     693
+     481: iconst_0
+     482: istore        12
+     484: iconst_m1
+     485: istore        13
+     487: iload         13
+     489: iconst_2
+     490: if_icmpge     563
+     493: iconst_m1
+     494: istore        14
+     496: iload         14
+     498: iconst_2
+     499: if_icmpge     549
+     502: iload         12
+     504: ifne          528
+     507: aload         9
+     509: iload         10
+     511: iconst_1
+     512: iadd
+     513: iload         13
+     515: iadd
+     516: aaload
+     517: iload         11
+     519: iconst_1
+     520: iadd
+     521: iload         14
+     523: iadd
+     524: baload
+     525: ifeq          532
+     528: iconst_1
+     529: goto          533
+     532: iconst_0
+     533: istore        12
+     535: iload         12
+     537: ifeq          543
+     540: goto          549
+     543: iinc          14, 1
+     546: goto          496
+     549: iload         12
+     551: ifeq          557
+     554: goto          563
+     557: iinc          13, 1
+     560: goto          487
+     563: iload         12
+     565: ifeq          571
+     568: goto          687
+     571: iconst_1
+     572: istore        13
+     574: iload         13
+     576: aload_2
+     577: invokevirtual #143                // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.slopeDepth:()Lnet/minecraft/util/valueproviders/IntProvider;
+     580: aload_1
+     581: invokevirtual #147                // Method net/minecraft/world/level/levelgen/feature/FeaturePlaceContext.random:()Lnet/minecraft/util/RandomSource;
+     584: invokevirtual #153                // Method net/minecraft/util/valueproviders/IntProvider.sample:(Lnet/minecraft/util/RandomSource;)I
+     587: iconst_1
+     588: iadd
+     589: if_icmpgt     687
+     592: aload         5
+     594: aload_3
+     595: getstatic     #59                 // Field net/minecraft/world/level/levelgen/Heightmap$Types.WORLD_SURFACE:Lnet/minecraft/world/level/levelgen/Heightmap$Types;
+     598: aload         4
+     600: iload         10
+     602: iconst_0
+     603: iload         11
+     605: invokevirtual #63                 // Method net/minecraft/core/BlockPos.offset:(III)Lnet/minecraft/core/BlockPos;
+     608: invokeinterface #67,  3           // InterfaceMethod net/minecraft/world/level/WorldGenLevel.getHeightmapPos:(Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/BlockPos;
+     613: iload         13
+     615: invokevirtual #156                // Method net/minecraft/core/BlockPos.below:(I)Lnet/minecraft/core/BlockPos;
+     618: invokevirtual #81                 // Method net/minecraft/core/BlockPos$MutableBlockPos.set:(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/core/BlockPos$MutableBlockPos;
+     621: astore        5
+     623: aload_2
+     624: invokevirtual #94                 // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.wall:()Lnet/minecraft/world/level/levelgen/blockpredicates/BlockPredicate;
+     627: aload_3
+     628: aload         5
+     630: invokeinterface #91,  3           // InterfaceMethod net/minecraft/world/level/levelgen/blockpredicates/BlockPredicate.test:(Ljava/lang/Object;Ljava/lang/Object;)Z
+     635: ifeq          687
+     638: aload_3
+     639: aload         5
+     641: iload         13
+     643: iconst_1
+     644: if_icmpne     662
+     647: aload_2
+     648: invokevirtual #160                // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.slopeTop:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     651: invokestatic  #165                // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+     654: aload         5
+     656: invokevirtual #171                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     659: goto          674
+     662: aload_2
+     663: invokevirtual #174                // Method net/regions_unexplored/worldgen/feature/config/CarvedLimitedPoolFeatureConfig.slope:()Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;
+     666: invokestatic  #165                // InterfaceMethod net/minecraft/util/RandomSource.create:()Lnet/minecraft/util/RandomSource;
+     669: aload         5
+     671: invokevirtual #171                // Method net/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider.getState:(Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;
+     674: iconst_3
+     675: invokeinterface #135,  4          // InterfaceMethod net/minecraft/world/level/WorldGenLevel.setBlock:(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z
+     680: pop
+     681: iinc          13, 1
+     684: goto          574
+     687: iinc          11, 1
+     690: goto          474
+     693: iinc          10, 1
+     696: goto          464
+     699: iinc          7, 1
+     702: goto          32
+     705: iconst_1
+     706: ireturn
+}
