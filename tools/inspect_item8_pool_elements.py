@@ -1692,6 +1692,10 @@ CLASSES: tuple[str, ...] = (
     "net/mehvahdjukaar/supplementaries/mixins/MixinPlugin.class",
     "net/mehvahdjukaar/supplementaries/mixins/StrongholdCrossingSconceMixin.class",
     "net/mehvahdjukaar/supplementaries/mixins/StrongholdRoomSconceMixin.class",
+    "dev/ryanhcode/sable/companion/SableCompanion.class",
+    "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion.class",
+    "dev/ryanhcode/sable/companion/impl/DefaultSableCompanion$DistHelper.class",
+    "dev/ryanhcode/sable/companion/impl/SableCompanionUtil.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
@@ -1717,13 +1721,18 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
         "META-INF/jarjar/biolith-neoforge-3.0.10.jar",
         "META-INF/jarjar/cumulus_menus-1.21.1-2.0.7-neoforge.jar",
         "META-INF/jarjar/nitrogen_internals-1.21.1-1.1.25-neoforge.jar",
-        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar"])
+        "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar",
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar"])
     args = parser.parse_args()
     output = cast("Path", args.output)
     selected_archive = cast("str | None", args.archive)
     selected_classes = cast("list[str] | None", args.class_name)
     nested = cast("str | None", args.nested_archive)
     nested_sources = {
+        "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar": (
+            "supplementaries-neoforge-1.21.1-3.6.8.jar",
+            "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed",
+        ),
         "META-INF/jarjar/aeroblender-1.21.1-1.0.0-neoforge.jar": (
             "deep_aether-1.21.1-1.1.5.1.jar",
             "85739c5737ae2d3a289022aaa2834c4889838a3e6c53125a5334535c12ae7588",
