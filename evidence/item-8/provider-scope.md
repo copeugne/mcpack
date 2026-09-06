@@ -704,6 +704,23 @@ attributes. This separates unknown membership from incomplete attributes.
 
 ## Supplementaries packaged component checkpoint
 
+Bundled Sable Companion service role is resolved in source 53c2374 (extractor
+bbae69f). Its four-class manifest is
+0e58be3a4ae7cc39891a83c05fd25707e7dafc44831648596ee5ea64dafef660,
+independently reproduced and bound by the existing provider test. The nested
+archive has fourteen classes and five metadata/service/image/license files, with
+no packaged generation data. Its service declaration names DefaultSableCompanion.
+That implementation returns empty or null sublevel lookups, zero sublevel
+velocities, coordinate projections and supplied-callback results. It has no
+independent authored-site generator. The interface selects the highest-priority
+ServiceLoader provider and supplies coordinate overloads; the direct helpers
+provide vector/quaternion codecs and client-level access. This does not prove
+which service implementation wins across all retained archives or validate the
+mathematical correctness of every distance overload. It does not re-enable Sable.
+Three focused cases pass (0.83s); scoped Ruff and Basedpyright pass. Remaining
+Supplementaries membership work includes MixinSquared, common delegates and
+remaining hooks/payload accounting. Census remains 78 resolved and 58 open.
+
 Stronghold component roles are resolved by source 1d28c70 (extractor b0508d1).
 The seven-class common-entry manifest is
 7d0fe813b6039a677168e347e9c9d73c4af2aae8d9b2728cab6e9b9783ac2e74;

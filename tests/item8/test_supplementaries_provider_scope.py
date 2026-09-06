@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import json
 import tomllib
+from io import BytesIO
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 from zipfile import ZipFile
@@ -163,3 +164,40 @@ def test_supplementaries_generation_sources_and_elevator_inputs() -> None:
     assert config["redstone"]["turn_table"]["enabled"] is True
     assert config["functional"]["rope"]["enabled"] is True
     assert config["building"]["sconce"]["enabled"] is True
+
+
+def test_supplementaries_bundled_companion_service() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name.startswith("supplementaries-"))
+    assert source.sha256 == "0dd0445af35aa15ad012833c4b8024d2ed70320d1ace0316d2f5b684b06a997d"
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    nested_path = "META-INF/jarjar/sable-companion-common-1.21.1-1.6.0.jar"
+    nested_sha = "873633e35046e3761b277ff8a1ecad0d55d9a3014fa81a0b084c9aecba1f3bed"
+    directory = Path("evidence/item-8/sources/supplementaries-sable-companion")
+    raw = (directory / "identities.json").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "0e58be3a4ae7cc39891a83c05fd25707e7dafc44831648596ee5ea64dafef660"
+    )
+    identities = cast("list[dict[str, str]]", json.loads(raw))
+    assert len(identities) == len({row["class"] for row in identities}) == 4
+    with ZipFile(source.path) as parent:
+        raw = parent.read(nested_path)
+    assert hashlib.sha256(raw).hexdigest() == nested_sha
+    with ZipFile(BytesIO(raw)) as nested:
+        names = {n for n in nested.namelist() if not n.endswith("/")}
+        classes = {n for n in names if n.endswith(".class")}
+        assert len(names) == 19
+        assert len(classes) == 14
+        service = "META-INF/services/dev.ryanhcode.sable.companion.SableCompanion"
+        assert names - classes == {
+            "META-INF/MANIFEST.MF", "META-INF/neoforge.mods.toml",
+            "sablecompanion.png", "LICENSE", service,
+        }
+        assert nested.read(service).decode().strip() == (
+            "dev.ryanhcode.sable.companion.impl.DefaultSableCompanion"
+        )
+        for row in identities:
+            assert row["archive"] == source.name + "!/" + nested_path
+            assert row["archive_sha256"] == nested_sha
+            assert hashlib.sha256(nested.read(row["class"])).hexdigest() == row["class_sha256"]
+            raw = (directory / row["disassembly"]).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == row["disassembly_sha256"]
