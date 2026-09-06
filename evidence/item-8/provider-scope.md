@@ -5475,3 +5475,31 @@ Current census: 90 resolved, 46 open providers. Forgified Fabric API is the last
 open packaged-generation lane provider; 24 code-only and 21 unmatched rows also
 remain. Resolve those membership rows, then named canonical merge/split decisions
 before resuming the eleven attributes. These provider counts are not family counts.
+
+### Forgified Fabric API packaged-data boundary
+
+Source 6eb28e4, produced by extractor bbdf6f3 and independently reproduced,
+resolves the sole packaged biome modifier. FabricBiomeApiV1 registers a unit
+codec whose modifier receives BiomeModificationImpl's sorted list. That list
+starts empty and addModifier receives predicates and consumer callbacks from
+callers. FabricBiomeModifier selects the phase and biome, then applies those
+records. BiomeModifications exposes caller-supplied feature, carver and spawn
+registration. This is shared dispatch, not an independent authored site.
+
+The parent contains 43 nested archives and five other metadata/icon files.
+All nested archives have been checked for data and further archives. No deeper
+JAR or binary NBT template exists. Packaged data is exactly 491 conventional
+tags, the biome modifier JSON and one empty GameTest SNBT fixture. The focused
+check binds that partition and all five captured class/disassembly identities.
+
+```sh
+uv run ruff check tests/item8/test_fabric_provider_scope.py
+uv run basedpyright tests/item8/test_fabric_provider_scope.py
+uv run pytest -q tests/item8/test_fabric_provider_scope.py
+```
+
+One case and scoped checks pass. This closes the packaged-data question, not
+whole provider membership. Remaining: bundled entry/mixin contribution roles,
+including biome selection and resource/test consumers. Do not repeat the
+modifier capture or expand generic callback internals without an unresolved
+site contribution. No new family candidate; census stays 90 resolved, 46 open.

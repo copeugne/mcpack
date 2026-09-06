@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Forgified Fabric API packaged-data boundary is resolved by source 6eb28e4
+(extractor bbdf6f3), independently reproduced. Its biome modifier dispatches
+consumer callbacks from an initially empty list. All 43 nested archives contain
+only 491 tags, one modifier JSON and one empty GameTest SNBT as packaged data;
+no deeper JAR or binary NBT. One focused case and scoped checks pass. Remaining
+Fabric work: bundled entry/mixin contribution roles, including biome selection
+and resource/test consumers. Reuse the five captured classes. Census remains
+90 resolved, 46 open. No live runtime or capture process.
+
 Create membership is RESOLVED. Ponder source 0177383 (extractor 28badcf)
 and the final complete parent partition close the last gaps. Ponder templates
 are client guide scenes, GameTest templates are fixtures, and generation is
