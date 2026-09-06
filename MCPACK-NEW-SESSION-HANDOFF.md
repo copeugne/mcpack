@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Create dynamic-pack membership is resolved: StandardBuilder source 23fbee3
+(extractor 346e42e) writes recipe JSON; parent writes item tags. No family added.
+Four focused checks and scoped quality checks pass. Remaining top-level entry
+surface is explicit: 54 uncaptured annotated classes and 43 common mixins;
+client-only exclusions require annotation inspection, not gameplay audits.
+Ponder template consumers and the three embedded libraries (Flywheel, Ponder,
+Registrate) also remain. Reuse all resolved Create roles. Census: 89 resolved,
+47 open. No runtime or capture process is live.
+
 Create common dispatch and schematic construction roles are now recorded.
 Sources 65cb9b2 and b546705 independently reproduce; three focused cases and
 scoped quality checks pass. A concrete dynamic datapack call was found in

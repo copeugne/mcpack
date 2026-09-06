@@ -134,6 +134,11 @@ def test_create_common_schematic_and_dynamic_data_sources() -> None:
                 "48b9e6ce6979db0df0ea0003fffcfa95545336480a694270ff952993b1c3c70c",
                 1,
             ),
+            (
+                "create-dynamic-recipe-serializer",
+                "3bfb8d0f3a362eec0930be85992d6ee2470bf3aa40b1621748ec7c78061b7292",
+                1,
+            ),
         ):
             directory = Path("evidence/item-8/sources") / label
             raw = (directory / "identities.json").read_bytes()
@@ -148,3 +153,30 @@ def test_create_common_schematic_and_dynamic_data_sources() -> None:
                     hashlib.sha256((directory / row["disassembly"]).read_bytes()).hexdigest()
                     == row["disassembly_sha256"]
                 )
+
+
+def test_create_remaining_declared_entry_inventory() -> None:
+    source = next(s for s in retained_sources(Path.cwd()) if s.name == "create-1.21.1-6.0.10.jar")
+    assert hashlib.sha256(source.path.read_bytes()).hexdigest() == source.sha256
+    with ZipFile(source.path) as archive:
+        annotated = {
+            n
+            for n in archive.namelist()
+            if n.endswith(".class")
+            and any(
+                marker in archive.read(n)
+                for marker in (
+                    b"Lnet/neoforged/fml/common/Mod;",
+                    b"Lnet/neoforged/fml/common/EventBusSubscriber;",
+                )
+            )
+        }
+        assert len(annotated) == 58
+        config = cast("dict[str, object]", json.loads(archive.read("create.mixins.json")))
+        prefix = cast("str", config["package"]).replace(".", "/") + "/"
+        common = {
+            prefix + n.replace(".", "/") + ".class" for n in cast("list[str]", config["mixins"])
+        }
+        assert len(common) == 43
+        assert not annotated & common
+        assert common <= set(archive.namelist())
