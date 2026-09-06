@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-06
 
+Ritchie's Projectile Library provider coverage now passes. Its complete 34-class
+capture 50bc747 using 0cbba5c reproduced exactly. The reused provider test has
+12 passing cases. Preserve the packaging finding: both mixin JSON files lack
+NeoForge TOML and manifest declarations; their source is not activation proof.
+No baseline repair. Projectile/chunk-loading and network support adds no authored
+family. Counts: 47 resolved providers, 89 open. Continue the provider queue before
+canonical grouping and attributes. Do not expand into projectile physics testing.
+
+
 Bundle API and Shield API provider coverage now passes. Complete 30-class capture
 a14b5e0 using 49dd5dd reproduced exactly. The reused small-utility test has eleven
 passing cases. Its initial added cases confused client subscribers with @Mod

@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: search index delivered; candidate completeness is NOT VERIFIED.
-Supported provider dispositions: 46 of 136. The exact queue below has 90 open rows.
+Supported provider dispositions: 47 of 136. The exact queue below has 89 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive
 identity and the relevant packaged paths and code-reference candidates. Minecraft
@@ -636,7 +636,7 @@ attributes. This separates unknown membership from incomplete attributes.
 | `repurposed_structures-7.5.21+1.21.1-neoforge.jar` | `pool-codecs`, `repurposed-mansion`, `repurposed-mansion-bindings`, `repurposed-mansion-layout`, `repurposed-mansion-processors`, `repurposed-monument`, `repurposed-monument-processors`, `repurposed-monument-rooms` | Reuse mansion/monument and codec captures; reconcile all feature/injection entries and unmatched components. |
 | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `resourcefullib-neoforge-1.21-3.0.12.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
-| `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
+| `ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar` | `projectile-library-provider` (50bc747), test_small_utility_provider_scope.py | RESOLVED: Projectile entity, chunk-loading and synchronization support; no authored structure family. Packaged mixin files lack loader declarations. See disposition below. |
 | `servercore-neoforge-1.5.17+1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
 | `shield_api-neoforge-2.2.0.jar` | `shield-api-provider` (a14b5e0), test_small_utility_provider_scope.py | RESOLVED: Custom shield interaction, item attributes, rendering and EMI integration; no independent family. See bundle and shield dispositions below. |
 | `simplyswords-neoforge-1.63.0-1.21.1.jar` | Packaged/search catalogs; no Item 8 disassembly directory indexed here. | Inspect loader, event, mixin and nested entries; account for full payload and supported role. |
@@ -1157,3 +1157,34 @@ the one @Mod class from the client EventBusSubscriber in each archive. A local
 complexity exception keeps these explicit cases in the existing test without
 adding an abstraction. Scoped Ruff and Basedpyright pass. Provider dispositions:
 46 of 136 resolved, 90 open. No family grouping or detailed attribute work resumed.
+
+## Projectile library provider disposition
+
+Ritchie's Projectile Library contributes projectile/chunk-loading/network support,
+not an independent authored structure family. All 34 classes are preserved in
+50bc747 using 0cbba5c and reproduced independently. Its @Mod entry and two
+subscribers configure network, player-login, level-tick and client effects. The
+saved chunk manager services supplied chunk coordinates; ProjectileBurst supplies
+abstract projectile behavior and collision callbacks. These may affect gameplay
+and loaded chunks, but introduce no authored root, layout, pool or template.
+
+Full archive accounting covers every class and seven other files: manifest,
+NeoForge metadata, icon, pack metadata, access widener and two mixin JSON files.
+The first check correctly failed because neither mixin file is declared in the
+loader TOML, and the manifest contains only its version header. The check now
+preserves that exact state and separately binds the packaged mixin classes.
+The common file references ServerEntityMixin, implementing precise motion sync;
+the Forge file's list is empty. Do not present this code as empirically activated,
+repair the baseline or infer a new compatibility failure from its packaging alone.
+
+```sh
+uv run pytest -q tests/item8/test_small_utility_provider_scope.py
+uv run ruff check tests/item8/test_small_utility_provider_scope.py
+uv run basedpyright tests/item8/test_small_utility_provider_scope.py
+```
+
+Twelve cases pass. The explicit archive case required a local branch-count lint
+exception, retaining the existing direct test instead of a new metadata framework.
+Ruff and Basedpyright pass. No additional measurement or family grouping change.
+Provider dispositions: 47 of 136 resolved, 89 open. Continue candidate completeness
+before detailed attributes.

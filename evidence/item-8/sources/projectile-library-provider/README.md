@@ -20,8 +20,10 @@ cover channel version checking, precise entity motion, screen shaking and burst
 subprojectile synchronization. Client handlers operate on those client effects
 and existing entities. They do not load authored structure data.
 
-The single common mixin changes motion synchronization for tagged entity types.
-The Forge mixin declaration is empty. The access widener exposes the Projectile
+The packaged common mixin implements motion synchronization for tagged entity
+types. The packaged Forge mixin list is empty. Neither configuration is declared
+in neoforge.mods.toml or the minimal MANIFEST.MF. These are packaged implementation
+findings, not proof of activation. No baseline correction is made. The access widener exposes the Projectile
 constructor, not a generation entry. Tags are code-defined entity tag keys,
 without packaged tag or generation data. Configurations control projectile chunk
 loading; saved ChunkManager queues/ticks force-loading requests for supplied
