@@ -1,0 +1,101 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin.class
+  Last modified Jan 1, 1980; size 1072 bytes
+  SHA-256 checksum 503d710400350dc5337f308db1bebd3f09d4be27bdd1c1d2d5385c95118c7b7b
+  Compiled from "CatMixin.java"
+public class me.wesley1808.servercore.mixin.features.activation_range.fixes.CatMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               CatMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/entity/animal/Cat;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lme/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin;
+  #15 = Utf8               servercore$fixCatDespawning
+  #16 = Utf8               (Lnet/minecraft/world/entity/animal/Cat;)I
+  #17 = Utf8               cat
+  #18 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+  #19 = Utf8               method
+  #20 = Utf8               removeWhenFarAway(D)Z
+  #21 = Utf8               at
+  #22 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #23 = Utf8               FIELD
+  #24 = Utf8               target
+  #25 = Utf8               Lnet/minecraft/world/entity/animal/Cat;tickCount:I
+  #26 = Utf8               opcode
+  #27 = Integer            180
+  #28 = Utf8               net/minecraft/world/entity/animal/Cat
+  #29 = Class              #28            // net/minecraft/world/entity/animal/Cat
+  #30 = Utf8               servercore$getFullTickCount
+  #31 = Utf8               ()I
+  #32 = NameAndType        #30:#31        // servercore$getFullTickCount:()I
+  #33 = Methodref          #29.#32        // net/minecraft/world/entity/animal/Cat.servercore$getFullTickCount:()I
+  #34 = Utf8               Code
+  #35 = Utf8               LineNumberTable
+  #36 = Utf8               LocalVariableTable
+  #37 = Utf8               RuntimeVisibleAnnotations
+  #38 = Utf8               MethodParameters
+  #39 = Utf8               SourceFile
+  #40 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.features.activation_range.fixes.CatMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 10: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin;
+
+  private int servercore$fixCatDespawning(net.minecraft.world.entity.animal.Cat);
+    descriptor: (Lnet/minecraft/world/entity/animal/Cat;)I
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #33                 // Method net/minecraft/world/entity/animal/Cat.servercore$getFullTickCount:()I
+         4: ireturn
+      LineNumberTable:
+        line 21: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/fixes/CatMixin;
+            0       5     1   cat   Lnet/minecraft/world/entity/animal/Cat;
+    RuntimeVisibleAnnotations:
+      0: #18(#19=[s#20],#21=@#22(#7=s#23,#24=s#25,#26=I#27))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["removeWhenFarAway(D)Z"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/world/entity/animal/Cat;tickCount:I"
+            opcode=180
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      cat
+}
+SourceFile: "CatMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/animal/Cat;]
+    )

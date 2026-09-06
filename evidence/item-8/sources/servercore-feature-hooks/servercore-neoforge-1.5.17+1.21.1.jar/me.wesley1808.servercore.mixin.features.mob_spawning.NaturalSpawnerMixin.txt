@@ -1,0 +1,202 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin.class
+  Last modified Jan 1, 1980; size 2117 bytes
+  SHA-256 checksum c7cb245c5b388531ca4c2cf136bbc5f2f99b7afa6f0df63ed3a59a4dab4aea08
+  Compiled from "NaturalSpawnerMixin.java"
+public class me.wesley1808.servercore.mixin.features.mob_spawning.NaturalSpawnerMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               NaturalSpawnerMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/NaturalSpawner;
+   #9 = Utf8               priority
+  #10 = Integer            900
+  #11 = Utf8               <init>
+  #12 = Utf8               ()V
+  #13 = NameAndType        #11:#12        // "<init>":()V
+  #14 = Methodref          #4.#13         // java/lang/Object."<init>":()V
+  #15 = Utf8               this
+  #16 = Utf8               Lme/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin;
+  #17 = Utf8               servercore$neverSpawnPersistent
+  #18 = Utf8               (Z)Z
+  #19 = Utf8               shouldSpawnPersistent
+  #20 = Utf8               Lorg/spongepowered/asm/mixin/injection/ModifyVariable;
+  #21 = Utf8               method
+  #22 = Utf8               spawnForChunk(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/world/level/NaturalSpawner$SpawnState;ZZZ)V
+  #23 = Utf8               at
+  #24 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #25 = Utf8               HEAD
+  #26 = Utf8               index
+  #27 = Integer            5
+  #28 = Utf8               argsOnly
+  #29 = Integer            1
+  #30 = Utf8               Z
+  #31 = Utf8               servercore$shouldCancelSpawn
+  #32 = Utf8               (ZLnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;)Z
+  #33 = Utf8               isPersistent
+  #34 = Utf8               level
+  #35 = Utf8               category
+  #36 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #37 = Utf8               INVOKE
+  #38 = Utf8               target
+  #39 = Utf8               Lnet/minecraft/world/entity/MobCategory;isPersistent()Z
+  #40 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #41 = Utf8               ordinal
+  #42 = Integer            0
+  #43 = Utf8               net/minecraft/world/entity/MobCategory
+  #44 = Class              #43            // net/minecraft/world/entity/MobCategory
+  #45 = Utf8               getMaxInstancesPerChunk
+  #46 = Utf8               ()I
+  #47 = NameAndType        #45:#46        // getMaxInstancesPerChunk:()I
+  #48 = Methodref          #44.#47        // net/minecraft/world/entity/MobCategory.getMaxInstancesPerChunk:()I
+  #49 = Utf8               me/wesley1808/servercore/common/interfaces/IMobCategory
+  #50 = Class              #49            // me/wesley1808/servercore/common/interfaces/IMobCategory
+  #51 = Utf8               getSpawnInterval
+  #52 = Utf8               (Lnet/minecraft/world/entity/MobCategory;)I
+  #53 = NameAndType        #51:#52        // getSpawnInterval:(Lnet/minecraft/world/entity/MobCategory;)I
+  #54 = InterfaceMethodref #50.#53        // me/wesley1808/servercore/common/interfaces/IMobCategory.getSpawnInterval:(Lnet/minecraft/world/entity/MobCategory;)I
+  #55 = Utf8               net/minecraft/server/level/ServerLevel
+  #56 = Class              #55            // net/minecraft/server/level/ServerLevel
+  #57 = Utf8               getGameTime
+  #58 = Utf8               ()J
+  #59 = NameAndType        #57:#58        // getGameTime:()J
+  #60 = Methodref          #56.#59        // net/minecraft/server/level/ServerLevel.getGameTime:()J
+  #61 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #62 = Utf8               Lnet/minecraft/world/entity/MobCategory;
+  #63 = Utf8               interval
+  #64 = Utf8               I
+  #65 = Utf8               Code
+  #66 = Utf8               LineNumberTable
+  #67 = Utf8               LocalVariableTable
+  #68 = Utf8               RuntimeVisibleAnnotations
+  #69 = Utf8               MethodParameters
+  #70 = Utf8               StackMapTable
+  #71 = Utf8               RuntimeInvisibleParameterAnnotations
+  #72 = Utf8               SourceFile
+  #73 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.features.mob_spawning.NaturalSpawnerMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 14: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/mob_spawning/NaturalSpawnerMixin;
+
+  private static boolean servercore$neverSpawnPersistent(boolean);
+    descriptor: (Z)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: iconst_0
+         1: ireturn
+      LineNumberTable:
+        line 18: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       2     0 shouldSpawnPersistent   Z
+    RuntimeVisibleAnnotations:
+      0: #20(#21=[s#22],#23=@#24(#7=s#25),#26=I#27,#28=Z#29)
+        org.spongepowered.asm.mixin.injection.ModifyVariable(
+          method=["spawnForChunk(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/world/level/NaturalSpawner$SpawnState;ZZZ)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )
+          index=5
+          argsOnly=true
+        )
+    MethodParameters:
+      Name                           Flags
+      shouldSpawnPersistent
+
+  private static boolean servercore$shouldCancelSpawn(boolean, net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.MobCategory);
+    descriptor: (ZLnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/MobCategory;)Z
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_2
+         1: invokevirtual #48                 // Method net/minecraft/world/entity/MobCategory.getMaxInstancesPerChunk:()I
+         4: ifgt          9
+         7: iconst_1
+         8: ireturn
+         9: aload_2
+        10: invokestatic  #54                 // InterfaceMethod me/wesley1808/servercore/common/interfaces/IMobCategory.getSpawnInterval:(Lnet/minecraft/world/entity/MobCategory;)I
+        13: istore_3
+        14: iload_3
+        15: iconst_1
+        16: if_icmple     35
+        19: aload_1
+        20: invokevirtual #60                 // Method net/minecraft/server/level/ServerLevel.getGameTime:()J
+        23: iload_3
+        24: i2l
+        25: lrem
+        26: lconst_0
+        27: lcmp
+        28: ifeq          35
+        31: iconst_1
+        32: goto          36
+        35: iconst_0
+        36: ireturn
+      StackMapTable: number_of_entries = 3
+        frame_type = 9 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 25
+          locals = [ int ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 29: 0
+        line 30: 7
+        line 33: 9
+        line 34: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      37     0 isPersistent   Z
+            0      37     1 level   Lnet/minecraft/server/level/ServerLevel;
+            0      37     2 category   Lnet/minecraft/world/entity/MobCategory;
+           14      23     3 interval   I
+    RuntimeVisibleAnnotations:
+      0: #36(#21=[s#22],#23=[@#24(#7=s#37,#38=s#39)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["spawnForChunk(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/chunk/LevelChunk;Lnet/minecraft/world/level/NaturalSpawner$SpawnState;ZZZ)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/MobCategory;isPersistent()Z"
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+        0: #40(#41=I#42)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+    MethodParameters:
+      Name                           Flags
+      isPersistent
+      level
+      category
+}
+SourceFile: "NaturalSpawnerMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8],#9=I#10)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/NaturalSpawner;]
+      priority=900
+    )

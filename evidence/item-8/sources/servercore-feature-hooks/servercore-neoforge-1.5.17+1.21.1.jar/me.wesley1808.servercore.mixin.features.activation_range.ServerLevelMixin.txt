@@ -1,0 +1,356 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin.class
+  Last modified Jan 1, 1980; size 3574 bytes
+  SHA-256 checksum 60f618b53e5ae5d45831e832745a44078e060b475aa58b1a47bebd7d700773ca
+  Compiled from "ServerLevelMixin.java"
+public class me.wesley1808.servercore.mixin.features.activation_range.ServerLevelMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 5, attributes: 2
+Constant pool:
+    #1 = Utf8               me/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin
+    #2 = Class              #1            // me/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               ServerLevelMixin.java
+    #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+    #7 = Utf8               value
+    #8 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+    #9 = Utf8               server
+   #10 = Utf8               Lnet/minecraft/server/MinecraftServer;
+   #11 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+   #12 = Utf8               Lorg/spongepowered/asm/mixin/Final;
+   #13 = Utf8               <init>
+   #14 = Utf8               ()V
+   #15 = NameAndType        #13:#14       // "<init>":()V
+   #16 = Methodref          #4.#15        // java/lang/Object."<init>":()V
+   #17 = Utf8               this
+   #18 = Utf8               Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+   #19 = Utf8               servercore$activateEntities
+   #20 = Utf8               (Ljava/util/function/BooleanSupplier;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+   #21 = Utf8               booleanSupplier
+   #22 = Utf8               ci
+   #23 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+   #24 = Utf8               method
+   #25 = Utf8               tick(Ljava/util/function/BooleanSupplier;)V
+   #26 = Utf8               at
+   #27 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+   #28 = Utf8               INVOKE
+   #29 = Utf8               target
+   #30 = Utf8               Lnet/minecraft/world/level/entity/EntityTickList;forEach(Ljava/util/function/Consumer;)V
+   #31 = NameAndType        #9:#10        // server:Lnet/minecraft/server/MinecraftServer;
+   #32 = Fieldref           #2.#31        // me/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin.server:Lnet/minecraft/server/MinecraftServer;
+   #33 = Utf8               net/minecraft/server/MinecraftServer
+   #34 = Class              #33           // net/minecraft/server/MinecraftServer
+   #35 = Utf8               getTickCount
+   #36 = Utf8               ()I
+   #37 = NameAndType        #35:#36       // getTickCount:()I
+   #38 = Methodref          #34.#37       // net/minecraft/server/MinecraftServer.getTickCount:()I
+   #39 = Utf8               net/minecraft/server/level/ServerLevel
+   #40 = Class              #39           // net/minecraft/server/level/ServerLevel
+   #41 = Utf8               me/wesley1808/servercore/common/activation_range/ActivationRange
+   #42 = Class              #41           // me/wesley1808/servercore/common/activation_range/ActivationRange
+   #43 = Utf8               activateEntities
+   #44 = Utf8               (Lnet/minecraft/server/level/ServerLevel;I)V
+   #45 = NameAndType        #43:#44       // activateEntities:(Lnet/minecraft/server/level/ServerLevel;I)V
+   #46 = Methodref          #42.#45       // me/wesley1808/servercore/common/activation_range/ActivationRange.activateEntities:(Lnet/minecraft/server/level/ServerLevel;I)V
+   #47 = Utf8               Ljava/util/function/BooleanSupplier;
+   #48 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+   #49 = Utf8               currentTick
+   #50 = Utf8               I
+   #51 = Utf8               servercore$shouldTickEntity
+   #52 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+   #53 = Utf8               entity
+   #54 = Utf8               Lcom/llamalad7/mixinextras/injector/v2/WrapWithCondition;
+   #55 = Utf8               tickNonPassenger(Lnet/minecraft/world/entity/Entity;)V
+   #56 = Utf8               Lnet/minecraft/world/entity/Entity;tick()V
+   #57 = Utf8               checkIfActive
+   #58 = Utf8               (Lnet/minecraft/world/entity/Entity;I)Z
+   #59 = NameAndType        #57:#58       // checkIfActive:(Lnet/minecraft/world/entity/Entity;I)Z
+   #60 = Methodref          #42.#59       // me/wesley1808/servercore/common/activation_range/ActivationRange.checkIfActive:(Lnet/minecraft/world/entity/Entity;I)Z
+   #61 = Utf8               net/minecraft/world/entity/Entity
+   #62 = Class              #61           // net/minecraft/world/entity/Entity
+   #63 = Utf8               servercore$setInactive
+   #64 = Utf8               (Z)V
+   #65 = NameAndType        #63:#64       // servercore$setInactive:(Z)V
+   #66 = Methodref          #62.#65       // net/minecraft/world/entity/Entity.servercore$setInactive:(Z)V
+   #67 = Utf8               tickCount
+   #68 = NameAndType        #67:#50       // tickCount:I
+   #69 = Fieldref           #62.#68       // net/minecraft/world/entity/Entity.tickCount:I
+   #70 = Utf8               servercore$inactiveTick
+   #71 = NameAndType        #70:#14       // servercore$inactiveTick:()V
+   #72 = Methodref          #62.#71       // net/minecraft/world/entity/Entity.servercore$inactiveTick:()V
+   #73 = Utf8               Lnet/minecraft/world/entity/Entity;
+   #74 = Utf8               servercore$shouldTickPassenger
+   #75 = Utf8               (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+   #76 = Utf8               passenger
+   #77 = Utf8               vehicle
+   #78 = Utf8               ignored
+   #79 = Utf8               tickPassenger(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+   #80 = Utf8               Lnet/minecraft/world/entity/Entity;rideTick()V
+   #81 = Utf8               net/minecraft/world/phys/Vec3
+   #82 = Class              #81           // net/minecraft/world/phys/Vec3
+   #83 = Utf8               ZERO
+   #84 = Utf8               Lnet/minecraft/world/phys/Vec3;
+   #85 = NameAndType        #83:#84       // ZERO:Lnet/minecraft/world/phys/Vec3;
+   #86 = Fieldref           #82.#85       // net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+   #87 = Utf8               setDeltaMovement
+   #88 = Utf8               (Lnet/minecraft/world/phys/Vec3;)V
+   #89 = NameAndType        #87:#88       // setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V
+   #90 = Methodref          #62.#89       // net/minecraft/world/entity/Entity.setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V
+   #91 = Utf8               positionRider
+   #92 = Utf8               (Lnet/minecraft/world/entity/Entity;)V
+   #93 = NameAndType        #91:#92       // positionRider:(Lnet/minecraft/world/entity/Entity;)V
+   #94 = Methodref          #62.#93       // net/minecraft/world/entity/Entity.positionRider:(Lnet/minecraft/world/entity/Entity;)V
+   #95 = Utf8               servercore$redirectTickCount
+   #96 = Utf8               (Lnet/minecraft/world/entity/Entity;I)V
+   #97 = Utf8               Lorg/spongepowered/asm/mixin/injection/Redirect;
+   #98 = Utf8               FIELD
+   #99 = Utf8               Lnet/minecraft/world/entity/Entity;tickCount:I
+  #100 = Utf8               opcode
+  #101 = Integer            181
+  #102 = Utf8               servercore$incFullTickCount
+  #103 = NameAndType        #102:#14      // servercore$incFullTickCount:()V
+  #104 = Methodref          #62.#103      // net/minecraft/world/entity/Entity.servercore$incFullTickCount:()V
+  #105 = Utf8               RuntimeVisibleAnnotations
+  #106 = Utf8               Code
+  #107 = Utf8               LineNumberTable
+  #108 = Utf8               LocalVariableTable
+  #109 = Utf8               StackMapTable
+  #110 = Utf8               MethodParameters
+  #111 = Utf8               SourceFile
+  #112 = Utf8               RuntimeInvisibleAnnotations
+{
+  private net.minecraft.server.MinecraftServer server;
+    descriptor: Lnet/minecraft/server/MinecraftServer;
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #11()
+        org.spongepowered.asm.mixin.Shadow
+      1: #12()
+        org.spongepowered.asm.mixin.Final
+
+  public me.wesley1808.servercore.mixin.features.activation_range.ServerLevelMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 28: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+
+  private void servercore$activateEntities(java.util.function.BooleanSupplier, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Ljava/util/function/BooleanSupplier;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=4, args_size=3
+         0: aload_0
+         1: getfield      #32                 // Field server:Lnet/minecraft/server/MinecraftServer;
+         4: invokevirtual #38                 // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+         7: istore_3
+         8: iload_3
+         9: bipush        20
+        11: irem
+        12: ifne          23
+        15: aload_0
+        16: checkcast     #40                 // class net/minecraft/server/level/ServerLevel
+        19: iload_3
+        20: invokestatic  #46                 // Method me/wesley1808/servercore/common/activation_range/ActivationRange.activateEntities:(Lnet/minecraft/server/level/ServerLevel;I)V
+        23: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 23
+          locals = [ int ]
+      LineNumberTable:
+        line 41: 0
+        line 42: 8
+        line 43: 15
+        line 45: 23
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+            0      24     1 booleanSupplier   Ljava/util/function/BooleanSupplier;
+            0      24     2    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            8      16     3 currentTick   I
+    RuntimeVisibleAnnotations:
+      0: #23(#24=[s#25],#26=[@#27(#7=s#28,#29=s#30)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["tick(Ljava/util/function/BooleanSupplier;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/entity/EntityTickList;forEach(Ljava/util/function/Consumer;)V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      booleanSupplier
+      ci
+
+  private boolean servercore$shouldTickEntity(net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_1
+         1: aload_0
+         2: getfield      #32                 // Field server:Lnet/minecraft/server/MinecraftServer;
+         5: invokevirtual #38                 // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+         8: invokestatic  #60                 // Method me/wesley1808/servercore/common/activation_range/ActivationRange.checkIfActive:(Lnet/minecraft/world/entity/Entity;I)Z
+        11: ifeq          31
+        14: aload_1
+        15: iconst_0
+        16: invokevirtual #66                 // Method net/minecraft/world/entity/Entity.servercore$setInactive:(Z)V
+        19: aload_1
+        20: dup
+        21: getfield      #69                 // Field net/minecraft/world/entity/Entity.tickCount:I
+        24: iconst_1
+        25: iadd
+        26: putfield      #69                 // Field net/minecraft/world/entity/Entity.tickCount:I
+        29: iconst_1
+        30: ireturn
+        31: aload_1
+        32: iconst_1
+        33: invokevirtual #66                 // Method net/minecraft/world/entity/Entity.servercore$setInactive:(Z)V
+        36: aload_1
+        37: invokevirtual #72                 // Method net/minecraft/world/entity/Entity.servercore$inactiveTick:()V
+        40: iconst_0
+        41: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 31 /* same */
+      LineNumberTable:
+        line 55: 0
+        line 56: 14
+        line 57: 19
+        line 58: 29
+        line 60: 31
+        line 61: 36
+        line 62: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+            0      42     1 entity   Lnet/minecraft/world/entity/Entity;
+    RuntimeVisibleAnnotations:
+      0: #54(#24=[s#55],#26=[@#27(#7=s#28,#29=s#56)])
+        com.llamalad7.mixinextras.injector.v2.WrapWithCondition(
+          method=["tickNonPassenger(Lnet/minecraft/world/entity/Entity;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/Entity;tick()V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      entity
+
+  private boolean servercore$shouldTickPassenger(net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_1
+         1: aload_0
+         2: getfield      #32                 // Field server:Lnet/minecraft/server/MinecraftServer;
+         5: invokevirtual #38                 // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+         8: invokestatic  #60                 // Method me/wesley1808/servercore/common/activation_range/ActivationRange.checkIfActive:(Lnet/minecraft/world/entity/Entity;I)Z
+        11: ifeq          31
+        14: aload_1
+        15: iconst_0
+        16: invokevirtual #66                 // Method net/minecraft/world/entity/Entity.servercore$setInactive:(Z)V
+        19: aload_1
+        20: dup
+        21: getfield      #69                 // Field net/minecraft/world/entity/Entity.tickCount:I
+        24: iconst_1
+        25: iadd
+        26: putfield      #69                 // Field net/minecraft/world/entity/Entity.tickCount:I
+        29: iconst_1
+        30: ireturn
+        31: aload_1
+        32: getstatic     #86                 // Field net/minecraft/world/phys/Vec3.ZERO:Lnet/minecraft/world/phys/Vec3;
+        35: invokevirtual #90                 // Method net/minecraft/world/entity/Entity.setDeltaMovement:(Lnet/minecraft/world/phys/Vec3;)V
+        38: aload_1
+        39: iconst_1
+        40: invokevirtual #66                 // Method net/minecraft/world/entity/Entity.servercore$setInactive:(Z)V
+        43: aload_1
+        44: invokevirtual #72                 // Method net/minecraft/world/entity/Entity.servercore$inactiveTick:()V
+        47: aload_2
+        48: aload_1
+        49: invokevirtual #94                 // Method net/minecraft/world/entity/Entity.positionRider:(Lnet/minecraft/world/entity/Entity;)V
+        52: iconst_0
+        53: ireturn
+      StackMapTable: number_of_entries = 1
+        frame_type = 31 /* same */
+      LineNumberTable:
+        line 74: 0
+        line 75: 14
+        line 76: 19
+        line 77: 29
+        line 79: 31
+        line 80: 38
+        line 81: 43
+        line 82: 47
+        line 83: 52
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      54     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+            0      54     1 passenger   Lnet/minecraft/world/entity/Entity;
+            0      54     2 vehicle   Lnet/minecraft/world/entity/Entity;
+            0      54     3 ignored   Lnet/minecraft/world/entity/Entity;
+    RuntimeVisibleAnnotations:
+      0: #54(#24=[s#79],#26=[@#27(#7=s#28,#29=s#80)])
+        com.llamalad7.mixinextras.injector.v2.WrapWithCondition(
+          method=["tickPassenger(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/Entity;rideTick()V"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      passenger
+      vehicle
+      ignored
+
+  private void servercore$redirectTickCount(net.minecraft.world.entity.Entity, int);
+    descriptor: (Lnet/minecraft/world/entity/Entity;I)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=1, locals=3, args_size=3
+         0: aload_1
+         1: invokevirtual #104                // Method net/minecraft/world/entity/Entity.servercore$incFullTickCount:()V
+         4: return
+      LineNumberTable:
+        line 98: 0
+        line 99: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/ServerLevelMixin;
+            0       5     1 entity   Lnet/minecraft/world/entity/Entity;
+            0       5     2 value   I
+    RuntimeVisibleAnnotations:
+      0: #97(#24=[s#55,s#79],#26=@#27(#7=s#98,#29=s#99,#100=I#101))
+        org.spongepowered.asm.mixin.injection.Redirect(
+          method=["tickNonPassenger(Lnet/minecraft/world/entity/Entity;)V","tickPassenger(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V"]
+          at=@org.spongepowered.asm.mixin.injection.At(
+            value="FIELD"
+            target="Lnet/minecraft/world/entity/Entity;tickCount:I"
+            opcode=181
+          )
+        )
+    MethodParameters:
+      Name                           Flags
+      entity
+      value
+}
+SourceFile: "ServerLevelMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/server/level/ServerLevel;]
+    )

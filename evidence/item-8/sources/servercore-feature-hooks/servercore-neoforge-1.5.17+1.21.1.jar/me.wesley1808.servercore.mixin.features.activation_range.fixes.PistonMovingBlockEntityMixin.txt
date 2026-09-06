@@ -1,0 +1,210 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin.class
+  Last modified Jan 1, 1980; size 2611 bytes
+  SHA-256 checksum ef892f9abe1a041e36582458b0457e54617ab7aa2e2dec1552de1c96676569f9
+  Compiled from "PistonMovingBlockEntityMixin.java"
+public class me.wesley1808.servercore.mixin.features.activation_range.fixes.PistonMovingBlockEntityMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 3
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               PistonMovingBlockEntityMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;
+   #9 = Utf8               priority
+  #10 = Integer            900
+  #11 = Utf8               org/spongepowered/asm/mixin/injection/At$Shift
+  #12 = Class              #11            // org/spongepowered/asm/mixin/injection/At$Shift
+  #13 = Utf8               org/spongepowered/asm/mixin/injection/At
+  #14 = Class              #13            // org/spongepowered/asm/mixin/injection/At
+  #15 = Utf8               Shift
+  #16 = Utf8               <init>
+  #17 = Utf8               ()V
+  #18 = NameAndType        #16:#17        // "<init>":()V
+  #19 = Methodref          #4.#18         // java/lang/Object."<init>":()V
+  #20 = Utf8               this
+  #21 = Utf8               Lme/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin;
+  #22 = Utf8               servercore$onPushEntity
+  #23 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/entity/Entity;)V
+  #24 = Utf8               level
+  #25 = Utf8               pos
+  #26 = Utf8               f
+  #27 = Utf8               piston
+  #28 = Utf8               ci
+  #29 = Utf8               entity
+  #30 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #31 = Utf8               method
+  #32 = Utf8               moveCollidedEntities(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;)V
+  #33 = Utf8               at
+  #34 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #35 = Utf8               INVOKE
+  #36 = Utf8               target
+  #37 = Utf8               Lnet/minecraft/world/entity/Entity;setDeltaMovement(DDD)V
+  #38 = Utf8               shift
+  #39 = Utf8               Lorg/spongepowered/asm/mixin/injection/At$Shift;
+  #40 = Utf8               AFTER
+  #41 = Utf8               Lcom/llamalad7/mixinextras/sugar/Local;
+  #42 = Utf8               ordinal
+  #43 = Integer            0
+  #44 = Utf8               net/minecraft/world/level/Level
+  #45 = Class              #44            // net/minecraft/world/level/Level
+  #46 = Utf8               getServer
+  #47 = Utf8               ()Lnet/minecraft/server/MinecraftServer;
+  #48 = NameAndType        #46:#47        // getServer:()Lnet/minecraft/server/MinecraftServer;
+  #49 = Methodref          #45.#48        // net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+  #50 = Utf8               net/minecraft/server/MinecraftServer
+  #51 = Class              #50            // net/minecraft/server/MinecraftServer
+  #52 = Utf8               getTickCount
+  #53 = Utf8               ()I
+  #54 = NameAndType        #52:#53        // getTickCount:()I
+  #55 = Methodref          #51.#54        // net/minecraft/server/MinecraftServer.getTickCount:()I
+  #56 = Utf8               net/minecraft/world/entity/Entity
+  #57 = Class              #56            // net/minecraft/world/entity/Entity
+  #58 = Utf8               servercore$getActivatedTick
+  #59 = NameAndType        #58:#53        // servercore$getActivatedTick:()I
+  #60 = Methodref          #57.#59        // net/minecraft/world/entity/Entity.servercore$getActivatedTick:()I
+  #61 = Utf8               java/lang/Math
+  #62 = Class              #61            // java/lang/Math
+  #63 = Utf8               max
+  #64 = Utf8               (II)I
+  #65 = NameAndType        #63:#64        // max:(II)I
+  #66 = Methodref          #62.#65        // java/lang/Math.max:(II)I
+  #67 = Utf8               servercore$setActivatedTick
+  #68 = Utf8               (I)V
+  #69 = NameAndType        #67:#68        // servercore$setActivatedTick:(I)V
+  #70 = Methodref          #57.#69        // net/minecraft/world/entity/Entity.servercore$setActivatedTick:(I)V
+  #71 = Utf8               servercore$getActivatedImmunityTick
+  #72 = NameAndType        #71:#53        // servercore$getActivatedImmunityTick:()I
+  #73 = Methodref          #57.#72        // net/minecraft/world/entity/Entity.servercore$getActivatedImmunityTick:()I
+  #74 = Utf8               servercore$setActivatedImmunityTick
+  #75 = NameAndType        #74:#68        // servercore$setActivatedImmunityTick:(I)V
+  #76 = Methodref          #57.#75        // net/minecraft/world/entity/Entity.servercore$setActivatedImmunityTick:(I)V
+  #77 = Utf8               tick
+  #78 = Utf8               I
+  #79 = Utf8               Lnet/minecraft/world/level/Level;
+  #80 = Utf8               Lnet/minecraft/core/BlockPos;
+  #81 = Utf8               F
+  #82 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #83 = Utf8               Lnet/minecraft/world/entity/Entity;
+  #84 = Utf8               server
+  #85 = Utf8               Lnet/minecraft/server/MinecraftServer;
+  #86 = Utf8               Code
+  #87 = Utf8               LineNumberTable
+  #88 = Utf8               LocalVariableTable
+  #89 = Utf8               StackMapTable
+  #90 = Utf8               RuntimeVisibleAnnotations
+  #91 = Utf8               RuntimeInvisibleParameterAnnotations
+  #92 = Utf8               MethodParameters
+  #93 = Utf8               InnerClasses
+  #94 = Utf8               SourceFile
+  #95 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.features.activation_range.fixes.PistonMovingBlockEntityMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 22: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/fixes/PistonMovingBlockEntityMixin;
+
+  private static void servercore$onPushEntity(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, float, net.minecraft.world.level.block.piston.PistonMovingBlockEntity, org.spongepowered.asm.mixin.injection.callback.CallbackInfo, net.minecraft.world.entity.Entity);
+    descriptor: (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;Lnet/minecraft/world/entity/Entity;)V
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+    Code:
+      stack=3, locals=8, args_size=6
+         0: aload_0
+         1: invokevirtual #49                 // Method net/minecraft/world/level/Level.getServer:()Lnet/minecraft/server/MinecraftServer;
+         4: astore        6
+         6: aload         6
+         8: ifnull        51
+        11: aload         6
+        13: invokevirtual #55                 // Method net/minecraft/server/MinecraftServer.getTickCount:()I
+        16: bipush        10
+        18: iadd
+        19: istore        7
+        21: aload         5
+        23: aload         5
+        25: invokevirtual #60                 // Method net/minecraft/world/entity/Entity.servercore$getActivatedTick:()I
+        28: iload         7
+        30: invokestatic  #66                 // Method java/lang/Math.max:(II)I
+        33: invokevirtual #70                 // Method net/minecraft/world/entity/Entity.servercore$setActivatedTick:(I)V
+        36: aload         5
+        38: aload         5
+        40: invokevirtual #73                 // Method net/minecraft/world/entity/Entity.servercore$getActivatedImmunityTick:()I
+        43: iload         7
+        45: invokestatic  #66                 // Method java/lang/Math.max:(II)I
+        48: invokevirtual #76                 // Method net/minecraft/world/entity/Entity.servercore$setActivatedImmunityTick:(I)V
+        51: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 51
+          locals = [ class net/minecraft/server/MinecraftServer ]
+      LineNumberTable:
+        line 34: 0
+        line 35: 6
+        line 36: 11
+        line 37: 21
+        line 38: 36
+        line 40: 51
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      30     7  tick   I
+            0      52     0 level   Lnet/minecraft/world/level/Level;
+            0      52     1   pos   Lnet/minecraft/core/BlockPos;
+            0      52     2     f   F
+            0      52     3 piston   Lnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;
+            0      52     4    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            0      52     5 entity   Lnet/minecraft/world/entity/Entity;
+            6      46     6 server   Lnet/minecraft/server/MinecraftServer;
+    RuntimeVisibleAnnotations:
+      0: #30(#31=[s#32],#33=[@#34(#7=s#35,#36=s#37,#38=e#39.#40)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["moveCollidedEntities(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;FLnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/entity/Entity;setDeltaMovement(DDD)V"
+            shift=Lorg/spongepowered/asm/mixin/injection/At$Shift;.AFTER
+          )]
+        )
+    RuntimeInvisibleParameterAnnotations:
+      parameter 0:
+      parameter 1:
+      parameter 2:
+      parameter 3:
+      parameter 4:
+      parameter 5:
+        0: #41(#42=I#43)
+          com.llamalad7.mixinextras.sugar.Local(
+            ordinal=0
+          )
+    MethodParameters:
+      Name                           Flags
+      level
+      pos
+      f
+      piston
+      ci
+      entity
+}
+InnerClasses:
+  public static final #15= #12 of #14;    // Shift=class org/spongepowered/asm/mixin/injection/At$Shift of class org/spongepowered/asm/mixin/injection/At
+SourceFile: "PistonMovingBlockEntityMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8],#9=I#10)
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/block/piston/PistonMovingBlockEntity;]
+      priority=900
+    )

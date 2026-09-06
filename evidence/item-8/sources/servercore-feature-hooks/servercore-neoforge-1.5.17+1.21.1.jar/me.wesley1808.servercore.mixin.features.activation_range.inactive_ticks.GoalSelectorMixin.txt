@@ -1,0 +1,108 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin.class
+  Last modified Jan 1, 1980; size 979 bytes
+  SHA-256 checksum 65cd0e7bd4881fad72a19418b61638a9374e986e6a0d6c008ae9757fbee41f0a
+  Compiled from "GoalSelectorMixin.java"
+public abstract class me.wesley1808.servercore.mixin.features.activation_range.inactive_ticks.GoalSelectorMixin implements me.wesley1808.servercore.common.interfaces.activation_range.Inactive
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               me/wesley1808/servercore/common/interfaces/activation_range/Inactive
+   #6 = Class              #5             // me/wesley1808/servercore/common/interfaces/activation_range/Inactive
+   #7 = Utf8               GoalSelectorMixin.java
+   #8 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #9 = Utf8               value
+  #10 = Utf8               Lnet/minecraft/world/entity/ai/goal/GoalSelector;
+  #11 = Utf8               servercore$curRate
+  #12 = Utf8               I
+  #13 = Utf8               Lorg/spongepowered/asm/mixin/Unique;
+  #14 = Utf8               <init>
+  #15 = Utf8               ()V
+  #16 = NameAndType        #14:#15        // "<init>":()V
+  #17 = Methodref          #4.#16         // java/lang/Object."<init>":()V
+  #18 = Utf8               this
+  #19 = Utf8               Lme/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin;
+  #20 = Utf8               tick
+  #21 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #22 = Utf8               servercore$inactiveTick
+  #23 = NameAndType        #11:#12        // servercore$curRate:I
+  #24 = Fieldref           #2.#23         // me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin.servercore$curRate:I
+  #25 = NameAndType        #20:#15        // tick:()V
+  #26 = Methodref          #2.#25         // me/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin.tick:()V
+  #27 = Utf8               RuntimeVisibleAnnotations
+  #28 = Utf8               Code
+  #29 = Utf8               LineNumberTable
+  #30 = Utf8               LocalVariableTable
+  #31 = Utf8               StackMapTable
+  #32 = Utf8               SourceFile
+  #33 = Utf8               RuntimeInvisibleAnnotations
+{
+  private int servercore$curRate;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+    RuntimeVisibleAnnotations:
+      0: #13()
+        org.spongepowered.asm.mixin.Unique
+
+  public me.wesley1808.servercore.mixin.features.activation_range.inactive_ticks.GoalSelectorMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin;
+
+  public abstract void tick();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #21()
+        org.spongepowered.asm.mixin.Shadow
+
+  public void servercore$inactiveTick();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: dup
+         2: getfield      #24                 // Field servercore$curRate:I
+         5: iconst_1
+         6: iadd
+         7: dup_x1
+         8: putfield      #24                 // Field servercore$curRate:I
+        11: bipush        20
+        13: irem
+        14: ifne          21
+        17: aload_0
+        18: invokevirtual #26                 // Method tick:()V
+        21: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 21 /* same */
+      LineNumberTable:
+        line 26: 0
+        line 27: 17
+        line 29: 21
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      22     0  this   Lme/wesley1808/servercore/mixin/features/activation_range/inactive_ticks/GoalSelectorMixin;
+}
+SourceFile: "GoalSelectorMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #8(#9=[c#10])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/ai/goal/GoalSelector;]
+    )

@@ -1,0 +1,171 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin.class
+  Last modified Jan 1, 1980; size 2743 bytes
+  SHA-256 checksum d15f6aab0f1cca9bd14d3f62235612af87729e2f5a019f13fd2e8c24fe3bd0e4
+  Compiled from "NetherPortalBlockMixin.java"
+public class me.wesley1808.servercore.mixin.features.mob_spawning.NetherPortalBlockMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               NetherPortalBlockMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/level/block/NetherPortalBlock;
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lme/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin;
+  #15 = Utf8               servercore$enforceMobCap
+  #16 = Utf8               (ZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z
+  #17 = Utf8               isValidSpawn
+  #18 = Utf8               state
+  #19 = Utf8               level
+  #20 = Utf8               pos
+  #21 = Utf8               random
+  #22 = Utf8               Lcom/llamalad7/mixinextras/injector/ModifyExpressionValue;
+  #23 = Utf8               method
+  #24 = Utf8               randomTick(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V
+  #25 = Utf8               at
+  #26 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #27 = Utf8               INVOKE
+  #28 = Utf8               target
+  #29 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;isValidSpawn(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/EntityType;)Z
+  #30 = Utf8               net/minecraft/world/level/ChunkPos
+  #31 = Class              #30            // net/minecraft/world/level/ChunkPos
+  #32 = Utf8               (Lnet/minecraft/core/BlockPos;)V
+  #33 = NameAndType        #9:#32         // "<init>":(Lnet/minecraft/core/BlockPos;)V
+  #34 = Methodref          #31.#33        // net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+  #35 = Utf8               net/minecraft/world/entity/EntityType
+  #36 = Class              #35            // net/minecraft/world/entity/EntityType
+  #37 = Utf8               ZOMBIFIED_PIGLIN
+  #38 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #39 = NameAndType        #37:#38        // ZOMBIFIED_PIGLIN:Lnet/minecraft/world/entity/EntityType;
+  #40 = Fieldref           #36.#39        // net/minecraft/world/entity/EntityType.ZOMBIFIED_PIGLIN:Lnet/minecraft/world/entity/EntityType;
+  #41 = Utf8               getCategory
+  #42 = Utf8               ()Lnet/minecraft/world/entity/MobCategory;
+  #43 = NameAndType        #41:#42        // getCategory:()Lnet/minecraft/world/entity/MobCategory;
+  #44 = Methodref          #36.#43        // net/minecraft/world/entity/EntityType.getCategory:()Lnet/minecraft/world/entity/MobCategory;
+  #45 = Utf8               me/wesley1808/servercore/common/config/Config
+  #46 = Class              #45            // me/wesley1808/servercore/common/config/Config
+  #47 = Utf8               get
+  #48 = Utf8               ()Lme/wesley1808/servercore/common/config/MainConfig;
+  #49 = NameAndType        #47:#48        // get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #50 = Methodref          #46.#49        // me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #51 = Utf8               me/wesley1808/servercore/common/config/MainConfig
+  #52 = Class              #51            // me/wesley1808/servercore/common/config/MainConfig
+  #53 = Utf8               mobSpawning
+  #54 = Utf8               ()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #55 = NameAndType        #53:#54        // mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #56 = InterfaceMethodref #52.#55        // me/wesley1808/servercore/common/config/MainConfig.mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #57 = Utf8               me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig
+  #58 = Class              #57            // me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig
+  #59 = Utf8               portalRandomTicks
+  #60 = Utf8               ()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #61 = NameAndType        #59:#60        // portalRandomTicks:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #62 = InterfaceMethodref #58.#61        // me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig.portalRandomTicks:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #63 = Utf8               me/wesley1808/servercore/common/utils/Mobcaps
+  #64 = Class              #63            // me/wesley1808/servercore/common/utils/Mobcaps
+  #65 = Utf8               canSpawnForCategory
+  #66 = Utf8               (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #67 = NameAndType        #65:#66        // canSpawnForCategory:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #68 = Methodref          #64.#67        // me/wesley1808/servercore/common/utils/Mobcaps.canSpawnForCategory:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #69 = Utf8               Z
+  #70 = Utf8               Lnet/minecraft/world/level/block/state/BlockState;
+  #71 = Utf8               Lnet/minecraft/server/level/ServerLevel;
+  #72 = Utf8               Lnet/minecraft/core/BlockPos;
+  #73 = Utf8               Lnet/minecraft/util/RandomSource;
+  #74 = Utf8               Code
+  #75 = Utf8               LineNumberTable
+  #76 = Utf8               LocalVariableTable
+  #77 = Utf8               StackMapTable
+  #78 = Utf8               RuntimeVisibleAnnotations
+  #79 = Utf8               MethodParameters
+  #80 = Utf8               SourceFile
+  #81 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.features.mob_spawning.NetherPortalBlockMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin;
+
+  private boolean servercore$enforceMobCap(boolean, net.minecraft.world.level.block.state.BlockState, net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.util.RandomSource);
+    descriptor: (ZLnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)Z
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=6, args_size=6
+         0: iload_1
+         1: ifeq          43
+         4: aload_3
+         5: new           #31                 // class net/minecraft/world/level/ChunkPos
+         8: dup
+         9: aload         4
+        11: invokespecial #34                 // Method net/minecraft/world/level/ChunkPos."<init>":(Lnet/minecraft/core/BlockPos;)V
+        14: getstatic     #40                 // Field net/minecraft/world/entity/EntityType.ZOMBIFIED_PIGLIN:Lnet/minecraft/world/entity/EntityType;
+        17: invokevirtual #44                 // Method net/minecraft/world/entity/EntityType.getCategory:()Lnet/minecraft/world/entity/MobCategory;
+        20: invokestatic  #50                 // Method me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+        23: invokeinterface #56,  1           // InterfaceMethod me/wesley1808/servercore/common/config/MainConfig.mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+        28: invokeinterface #62,  1           // InterfaceMethod me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig.portalRandomTicks:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+        33: invokestatic  #68                 // Method me/wesley1808/servercore/common/utils/Mobcaps.canSpawnForCategory:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+        36: ifeq          43
+        39: iconst_1
+        40: goto          44
+        43: iconst_0
+        44: ireturn
+      StackMapTable: number_of_entries = 2
+        frame_type = 43 /* same */
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+      LineNumberTable:
+        line 27: 0
+        line 30: 17
+        line 31: 20
+        line 27: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      45     0  this   Lme/wesley1808/servercore/mixin/features/mob_spawning/NetherPortalBlockMixin;
+            0      45     1 isValidSpawn   Z
+            0      45     2 state   Lnet/minecraft/world/level/block/state/BlockState;
+            0      45     3 level   Lnet/minecraft/server/level/ServerLevel;
+            0      45     4   pos   Lnet/minecraft/core/BlockPos;
+            0      45     5 random   Lnet/minecraft/util/RandomSource;
+    RuntimeVisibleAnnotations:
+      0: #22(#23=[s#24],#25=[@#26(#7=s#27,#28=s#29)])
+        com.llamalad7.mixinextras.injector.ModifyExpressionValue(
+          method=["randomTick(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/util/RandomSource;)V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Lnet/minecraft/world/level/block/state/BlockState;isValidSpawn(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/EntityType;)Z"
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      isValidSpawn
+      state
+      level
+      pos
+      random
+}
+SourceFile: "NetherPortalBlockMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/level/block/NetherPortalBlock;]
+    )

@@ -1,0 +1,194 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin.class
+  Last modified Jan 1, 1980; size 2791 bytes
+  SHA-256 checksum 81211e19c3906d74926a6115c244c50d85e30f80bbb41401151674f191420d3b
+  Compiled from "InfestedMobEffectMixin.java"
+public class me.wesley1808.servercore.mixin.features.mob_spawning.InfestedMobEffectMixin
+  minor version: 0
+  major version: 65
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 2, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin
+   #3 = Utf8               java/lang/Object
+   #4 = Class              #3             // java/lang/Object
+   #5 = Utf8               InfestedMobEffectMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               targets
+   #8 = Utf8               net/minecraft/world/effect/InfestedMobEffect
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = NameAndType        #9:#10         // "<init>":()V
+  #12 = Methodref          #4.#11         // java/lang/Object."<init>":()V
+  #13 = Utf8               this
+  #14 = Utf8               Lme/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin;
+  #15 = Utf8               servercore$enforceMobcap
+  #16 = Utf8               (Lnet/minecraft/world/entity/LivingEntity;ILnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #17 = Utf8               entity
+  #18 = Utf8               amplifier
+  #19 = Utf8               source
+  #20 = Utf8               damage
+  #21 = Utf8               ci
+  #22 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #23 = Utf8               method
+  #24 = Utf8               onMobHurt(Lnet/minecraft/world/entity/LivingEntity;ILnet/minecraft/world/damagesource/DamageSource;F)V
+  #25 = Utf8               cancellable
+  #26 = Integer            1
+  #27 = Utf8               at
+  #28 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #29 = Utf8               value
+  #30 = Utf8               INVOKE
+  #31 = Utf8               target
+  #32 = Utf8               Ljava/util/function/ToIntFunction;applyAsInt(Ljava/lang/Object;)I
+  #33 = Utf8               ordinal
+  #34 = Integer            0
+  #35 = Utf8               net/minecraft/world/entity/LivingEntity
+  #36 = Class              #35            // net/minecraft/world/entity/LivingEntity
+  #37 = Utf8               level
+  #38 = Utf8               ()Lnet/minecraft/world/level/Level;
+  #39 = NameAndType        #37:#38        // level:()Lnet/minecraft/world/level/Level;
+  #40 = Methodref          #36.#39        // net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+  #41 = Utf8               chunkPosition
+  #42 = Utf8               ()Lnet/minecraft/world/level/ChunkPos;
+  #43 = NameAndType        #41:#42        // chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+  #44 = Methodref          #36.#43        // net/minecraft/world/entity/LivingEntity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+  #45 = Utf8               net/minecraft/world/entity/EntityType
+  #46 = Class              #45            // net/minecraft/world/entity/EntityType
+  #47 = Utf8               SILVERFISH
+  #48 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #49 = NameAndType        #47:#48        // SILVERFISH:Lnet/minecraft/world/entity/EntityType;
+  #50 = Fieldref           #46.#49        // net/minecraft/world/entity/EntityType.SILVERFISH:Lnet/minecraft/world/entity/EntityType;
+  #51 = Utf8               getCategory
+  #52 = Utf8               ()Lnet/minecraft/world/entity/MobCategory;
+  #53 = NameAndType        #51:#52        // getCategory:()Lnet/minecraft/world/entity/MobCategory;
+  #54 = Methodref          #46.#53        // net/minecraft/world/entity/EntityType.getCategory:()Lnet/minecraft/world/entity/MobCategory;
+  #55 = Utf8               me/wesley1808/servercore/common/config/Config
+  #56 = Class              #55            // me/wesley1808/servercore/common/config/Config
+  #57 = Utf8               get
+  #58 = Utf8               ()Lme/wesley1808/servercore/common/config/MainConfig;
+  #59 = NameAndType        #57:#58        // get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #60 = Methodref          #56.#59        // me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #61 = Utf8               me/wesley1808/servercore/common/config/MainConfig
+  #62 = Class              #61            // me/wesley1808/servercore/common/config/MainConfig
+  #63 = Utf8               mobSpawning
+  #64 = Utf8               ()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #65 = NameAndType        #63:#64        // mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #66 = InterfaceMethodref #62.#65        // me/wesley1808/servercore/common/config/MainConfig.mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+  #67 = Utf8               me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig
+  #68 = Class              #67            // me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig
+  #69 = Utf8               infested
+  #70 = Utf8               ()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #71 = NameAndType        #69:#70        // infested:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #72 = InterfaceMethodref #68.#71        // me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig.infested:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+  #73 = Utf8               me/wesley1808/servercore/common/utils/Mobcaps
+  #74 = Class              #73            // me/wesley1808/servercore/common/utils/Mobcaps
+  #75 = Utf8               canSpawnForCategory
+  #76 = Utf8               (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #77 = NameAndType        #75:#76        // canSpawnForCategory:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #78 = Methodref          #74.#77        // me/wesley1808/servercore/common/utils/Mobcaps.canSpawnForCategory:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+  #79 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #80 = Class              #79            // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #81 = Utf8               cancel
+  #82 = NameAndType        #81:#10        // cancel:()V
+  #83 = Methodref          #80.#82        // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #84 = Utf8               Lnet/minecraft/world/entity/LivingEntity;
+  #85 = Utf8               I
+  #86 = Utf8               Lnet/minecraft/world/damagesource/DamageSource;
+  #87 = Utf8               F
+  #88 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #89 = Utf8               canSpawn
+  #90 = Utf8               Z
+  #91 = Utf8               Code
+  #92 = Utf8               LineNumberTable
+  #93 = Utf8               LocalVariableTable
+  #94 = Utf8               StackMapTable
+  #95 = Utf8               RuntimeVisibleAnnotations
+  #96 = Utf8               MethodParameters
+  #97 = Utf8               SourceFile
+  #98 = Utf8               RuntimeInvisibleAnnotations
+{
+  public me.wesley1808.servercore.mixin.features.mob_spawning.InfestedMobEffectMixin();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 14: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lme/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin;
+
+  private void servercore$enforceMobcap(net.minecraft.world.entity.LivingEntity, int, net.minecraft.world.damagesource.DamageSource, float, org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lnet/minecraft/world/entity/LivingEntity;ILnet/minecraft/world/damagesource/DamageSource;FLorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=7, args_size=6
+         0: aload_1
+         1: invokevirtual #40                 // Method net/minecraft/world/entity/LivingEntity.level:()Lnet/minecraft/world/level/Level;
+         4: aload_1
+         5: invokevirtual #44                 // Method net/minecraft/world/entity/LivingEntity.chunkPosition:()Lnet/minecraft/world/level/ChunkPos;
+         8: getstatic     #50                 // Field net/minecraft/world/entity/EntityType.SILVERFISH:Lnet/minecraft/world/entity/EntityType;
+        11: invokevirtual #54                 // Method net/minecraft/world/entity/EntityType.getCategory:()Lnet/minecraft/world/entity/MobCategory;
+        14: invokestatic  #60                 // Method me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+        17: invokeinterface #66,  1           // InterfaceMethod me/wesley1808/servercore/common/config/MainConfig.mobSpawning:()Lme/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig;
+        22: invokeinterface #72,  1           // InterfaceMethod me/wesley1808/servercore/common/config/data/mob_spawning/MobSpawnConfig.infested:()Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;
+        27: invokestatic  #78                 // Method me/wesley1808/servercore/common/utils/Mobcaps.canSpawnForCategory:(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/ChunkPos;Lnet/minecraft/world/entity/MobCategory;Lme/wesley1808/servercore/common/config/data/mob_spawning/EnforcedMobcap;)Z
+        30: istore        6
+        32: iload         6
+        34: ifne          42
+        37: aload         5
+        39: invokevirtual #83                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        42: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 42
+          locals = [ int ]
+      LineNumberTable:
+        line 26: 0
+        line 27: 1
+        line 28: 5
+        line 29: 11
+        line 30: 14
+        line 26: 27
+        line 33: 32
+        line 34: 37
+        line 36: 42
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      43     0  this   Lme/wesley1808/servercore/mixin/features/mob_spawning/InfestedMobEffectMixin;
+            0      43     1 entity   Lnet/minecraft/world/entity/LivingEntity;
+            0      43     2 amplifier   I
+            0      43     3 source   Lnet/minecraft/world/damagesource/DamageSource;
+            0      43     4 damage   F
+            0      43     5    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+           32      11     6 canSpawn   Z
+    RuntimeVisibleAnnotations:
+      0: #22(#23=[s#24],#25=Z#26,#27=[@#28(#29=s#30,#31=s#32,#33=I#34)])
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["onMobHurt(Lnet/minecraft/world/entity/LivingEntity;ILnet/minecraft/world/damagesource/DamageSource;F)V"]
+          cancellable=true
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="INVOKE"
+            target="Ljava/util/function/ToIntFunction;applyAsInt(Ljava/lang/Object;)I"
+            ordinal=0
+          )]
+        )
+    MethodParameters:
+      Name                           Flags
+      entity
+      amplifier
+      source
+      damage
+      ci
+}
+SourceFile: "InfestedMobEffectMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[s#8])
+    org.spongepowered.asm.mixin.Mixin(
+      targets=["net/minecraft/world/effect/InfestedMobEffect"]
+    )

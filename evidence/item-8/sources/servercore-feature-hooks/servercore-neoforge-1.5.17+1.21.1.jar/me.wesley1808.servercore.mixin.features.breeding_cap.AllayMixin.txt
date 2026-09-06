@@ -1,0 +1,184 @@
+Classfile servercore-neoforge-1.5.17+1.21.1.jar!/me/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin.class
+  Last modified Jan 1, 1980; size 2495 bytes
+  SHA-256 checksum 497a0769f27ce0f406a8dcf246071b0f376d9fa9fad3758c8855de7aa24839b4
+  Compiled from "AllayMixin.java"
+public abstract class me.wesley1808.servercore.mixin.features.breeding_cap.AllayMixin extends net.minecraft.world.entity.PathfinderMob
+  minor version: 0
+  major version: 65
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #2                          // me/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin
+  super_class: #4                         // net/minecraft/world/entity/PathfinderMob
+  interfaces: 0, fields: 0, methods: 3, attributes: 2
+Constant pool:
+   #1 = Utf8               me/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin
+   #2 = Class              #1             // me/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin
+   #3 = Utf8               net/minecraft/world/entity/PathfinderMob
+   #4 = Class              #3             // net/minecraft/world/entity/PathfinderMob
+   #5 = Utf8               AllayMixin.java
+   #6 = Utf8               Lorg/spongepowered/asm/mixin/Mixin;
+   #7 = Utf8               value
+   #8 = Utf8               Lnet/minecraft/world/entity/animal/allay/Allay;
+   #9 = Utf8               <init>
+  #10 = Utf8               (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #11 = Utf8               (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/PathfinderMob;>;Lnet/minecraft/world/level/Level;)V
+  #12 = Utf8               entityType
+  #13 = Utf8               level
+  #14 = NameAndType        #9:#10         // "<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #15 = Methodref          #4.#14         // net/minecraft/world/entity/PathfinderMob."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+  #16 = Utf8               this
+  #17 = Utf8               Lme/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin;
+  #18 = Utf8               Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/PathfinderMob;>;
+  #19 = Utf8               Lnet/minecraft/world/entity/EntityType;
+  #20 = Utf8               Lnet/minecraft/world/level/Level;
+  #21 = Utf8               resetDuplicationCooldown
+  #22 = Utf8               ()V
+  #23 = Utf8               Lorg/spongepowered/asm/mixin/Shadow;
+  #24 = Utf8               servercore$enforceBreedCap
+  #25 = Utf8               (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+  #26 = Utf8               ci
+  #27 = Utf8               Lorg/spongepowered/asm/mixin/injection/Inject;
+  #28 = Utf8               method
+  #29 = Utf8               duplicateAllay()V
+  #30 = Utf8               at
+  #31 = Utf8               Lorg/spongepowered/asm/mixin/injection/At;
+  #32 = Utf8               HEAD
+  #33 = Utf8               cancellable
+  #34 = Integer            1
+  #35 = Utf8               me/wesley1808/servercore/common/config/Config
+  #36 = Class              #35            // me/wesley1808/servercore/common/config/Config
+  #37 = Utf8               get
+  #38 = Utf8               ()Lme/wesley1808/servercore/common/config/MainConfig;
+  #39 = NameAndType        #37:#38        // get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #40 = Methodref          #36.#39        // me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+  #41 = Utf8               me/wesley1808/servercore/common/config/MainConfig
+  #42 = Class              #41            // me/wesley1808/servercore/common/config/MainConfig
+  #43 = Utf8               breedingCap
+  #44 = Utf8               ()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+  #45 = NameAndType        #43:#44        // breedingCap:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+  #46 = InterfaceMethodref #42.#45        // me/wesley1808/servercore/common/config/MainConfig.breedingCap:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+  #47 = Utf8               me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig
+  #48 = Class              #47            // me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig
+  #49 = Utf8               enabled
+  #50 = Utf8               ()Z
+  #51 = NameAndType        #49:#50        // enabled:()Z
+  #52 = InterfaceMethodref #48.#51        // me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig.enabled:()Z
+  #53 = Utf8               animals
+  #54 = Utf8               ()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap;
+  #55 = NameAndType        #53:#54        // animals:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap;
+  #56 = InterfaceMethodref #48.#55        // me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig.animals:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap;
+  #57 = Utf8               me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap
+  #58 = Class              #57            // me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap
+  #59 = Utf8               exceedsLimit
+  #60 = Utf8               (Lnet/minecraft/world/entity/Entity;)Z
+  #61 = NameAndType        #59:#60        // exceedsLimit:(Lnet/minecraft/world/entity/Entity;)Z
+  #62 = InterfaceMethodref #58.#61        // me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap.exceedsLimit:(Lnet/minecraft/world/entity/Entity;)Z
+  #63 = NameAndType        #21:#22        // resetDuplicationCooldown:()V
+  #64 = Methodref          #2.#63         // me/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin.resetDuplicationCooldown:()V
+  #65 = Utf8               org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #66 = Class              #65            // org/spongepowered/asm/mixin/injection/callback/CallbackInfo
+  #67 = Utf8               cancel
+  #68 = NameAndType        #67:#22        // cancel:()V
+  #69 = Methodref          #66.#68        // org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+  #70 = Utf8               Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+  #71 = Utf8               config
+  #72 = Utf8               Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+  #73 = Utf8               Code
+  #74 = Utf8               LineNumberTable
+  #75 = Utf8               LocalVariableTable
+  #76 = Utf8               LocalVariableTypeTable
+  #77 = Utf8               Signature
+  #78 = Utf8               MethodParameters
+  #79 = Utf8               RuntimeVisibleAnnotations
+  #80 = Utf8               StackMapTable
+  #81 = Utf8               SourceFile
+  #82 = Utf8               RuntimeInvisibleAnnotations
+{
+  private me.wesley1808.servercore.mixin.features.breeding_cap.AllayMixin(net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.PathfinderMob>, net.minecraft.world.level.Level);
+    descriptor: (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: aload_1
+         2: aload_2
+         3: invokespecial #15                 // Method net/minecraft/world/entity/PathfinderMob."<init>":(Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/level/Level;)V
+         6: return
+      LineNumberTable:
+        line 18: 0
+        line 19: 6
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       7     0  this   Lme/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin;
+            0       7     1 entityType   Lnet/minecraft/world/entity/EntityType;
+            0       7     2 level   Lnet/minecraft/world/level/Level;
+      LocalVariableTypeTable:
+        Start  Length  Slot  Name   Signature
+            0       7     1 entityType   Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/PathfinderMob;>;
+    Signature: #11                          // (Lnet/minecraft/world/entity/EntityType<+Lnet/minecraft/world/entity/PathfinderMob;>;Lnet/minecraft/world/level/Level;)V
+    MethodParameters:
+      Name                           Flags
+      entityType
+      level
+
+  protected abstract void resetDuplicationCooldown();
+    descriptor: ()V
+    flags: (0x0404) ACC_PROTECTED, ACC_ABSTRACT
+    RuntimeVisibleAnnotations:
+      0: #23()
+        org.spongepowered.asm.mixin.Shadow
+
+  public void servercore$enforceBreedCap(org.spongepowered.asm.mixin.injection.callback.CallbackInfo);
+    descriptor: (Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: invokestatic  #40                 // Method me/wesley1808/servercore/common/config/Config.get:()Lme/wesley1808/servercore/common/config/MainConfig;
+         3: invokeinterface #46,  1           // InterfaceMethod me/wesley1808/servercore/common/config/MainConfig.breedingCap:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+         8: astore_2
+         9: aload_2
+        10: invokeinterface #52,  1           // InterfaceMethod me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig.enabled:()Z
+        15: ifeq          41
+        18: aload_2
+        19: invokeinterface #56,  1           // InterfaceMethod me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig.animals:()Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap;
+        24: aload_0
+        25: invokeinterface #62,  2           // InterfaceMethod me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCap.exceedsLimit:(Lnet/minecraft/world/entity/Entity;)Z
+        30: ifeq          41
+        33: aload_0
+        34: invokevirtual #64                 // Method resetDuplicationCooldown:()V
+        37: aload_1
+        38: invokevirtual #69                 // Method org/spongepowered/asm/mixin/injection/callback/CallbackInfo.cancel:()V
+        41: return
+      StackMapTable: number_of_entries = 1
+        frame_type = 252 /* append */
+          offset_delta = 41
+          locals = [ class me/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig ]
+      LineNumberTable:
+        line 26: 0
+        line 27: 9
+        line 28: 33
+        line 29: 37
+        line 31: 41
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      42     0  this   Lme/wesley1808/servercore/mixin/features/breeding_cap/AllayMixin;
+            0      42     1    ci   Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;
+            9      33     2 config   Lme/wesley1808/servercore/common/config/data/breeding_cap/BreedingCapConfig;
+    RuntimeVisibleAnnotations:
+      0: #27(#28=[s#29],#30=[@#31(#7=s#32)],#33=Z#34)
+        org.spongepowered.asm.mixin.injection.Inject(
+          method=["duplicateAllay()V"]
+          at=[@org.spongepowered.asm.mixin.injection.At(
+            value="HEAD"
+          )]
+          cancellable=true
+        )
+    MethodParameters:
+      Name                           Flags
+      ci
+}
+SourceFile: "AllayMixin.java"
+RuntimeInvisibleAnnotations:
+  0: #6(#7=[c#8])
+    org.spongepowered.asm.mixin.Mixin(
+      value=[class Lnet/minecraft/world/entity/animal/allay/Allay;]
+    )
