@@ -1,0 +1,90 @@
+Compiled from "PostLoadModuleNeoForge.java"
+public class com.yungnickyoung.minecraft.yungsapi.module.PostLoadModuleNeoForge {
+  public static java.util.List<java.lang.reflect.Method> METHODS;
+
+  public com.yungnickyoung.minecraft.yungsapi.module.PostLoadModuleNeoForge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void init();
+    Code:
+       0: getstatic     #7                  // Field com/yungnickyoung/minecraft/yungsapi/YungsApiNeoForge.loadingContextEventBus:Lnet/neoforged/bus/api/IEventBus;
+       3: invokedynamic #13,  0             // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       8: invokeinterface #17,  2           // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      13: return
+
+  private static void commonSetup(net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: aload_0
+       1: invokedynamic #23,  0             // InvokeDynamic #1:run:()Ljava/lang/Runnable;
+       6: invokevirtual #27                 // Method net/neoforged/fml/event/lifecycle/FMLCommonSetupEvent.enqueueWork:(Ljava/lang/Runnable;)Ljava/util/concurrent/CompletableFuture;
+       9: pop
+      10: invokestatic  #33                 // Method com/yungnickyoung/minecraft/yungsapi/module/CompostModuleNeoForge.registerCompostables:()V
+      13: return
+
+  private static void lambda$commonSetup$1();
+    Code:
+       0: getstatic     #38                 // Field METHODS:Ljava/util/List;
+       3: invokedynamic #44,  0             // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+       8: invokeinterface #45,  2           // InterfaceMethod java/util/List.forEach:(Ljava/util/function/Consumer;)V
+      13: return
+
+  private static void lambda$commonSetup$0(java.lang.reflect.Method);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: iconst_0
+       3: anewarray     #2                  // class java/lang/Object
+       6: invokevirtual #50                 // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+       9: pop
+      10: goto          83
+      13: astore_1
+      14: getstatic     #60                 // Field com/yungnickyoung/minecraft/yungsapi/YungsApiCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      17: ldc           #66                 // String Unable to invoke AutoRegister method {}
+      19: aload_0
+      20: invokevirtual #68                 // Method java/lang/reflect/Method.getName:()Ljava/lang/String;
+      23: invokeinterface #72,  3           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+      28: getstatic     #60                 // Field com/yungnickyoung/minecraft/yungsapi/YungsApiCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      31: ldc           #78                 // String Make sure the method is static and has no parameters!
+      33: invokeinterface #80,  2           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      38: new           #83                 // class java/lang/RuntimeException
+      41: dup
+      42: aload_1
+      43: invokespecial #85                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      46: athrow
+      47: astore_1
+      48: ldc           #90                 // String Attempted to invoke AutoRegister method with null object. Did you forget to include a \'static\' modifier for method \'%s\'?
+      50: iconst_1
+      51: anewarray     #2                  // class java/lang/Object
+      54: dup
+      55: iconst_0
+      56: aload_0
+      57: invokevirtual #68                 // Method java/lang/reflect/Method.getName:()Ljava/lang/String;
+      60: aastore
+      61: invokestatic  #92                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      64: astore_2
+      65: getstatic     #60                 // Field com/yungnickyoung/minecraft/yungsapi/YungsApiCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+      68: aload_2
+      69: invokeinterface #80,  2           // InterfaceMethod org/apache/logging/log4j/Logger.error:(Ljava/lang/String;)V
+      74: new           #83                 // class java/lang/RuntimeException
+      77: dup
+      78: aload_2
+      79: invokespecial #98                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      82: athrow
+      83: return
+    Exception table:
+       from    to  target type
+           0    10    13   Class java/lang/IllegalAccessException
+           0    10    13   Class java/lang/reflect/InvocationTargetException
+           0    10    47   Class java/lang/NullPointerException
+
+  static {};
+    Code:
+       0: new           #100                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #102                // Method java/util/ArrayList."<init>":()V
+       7: putstatic     #38                 // Field METHODS:Ljava/util/List;
+      10: return
+}
