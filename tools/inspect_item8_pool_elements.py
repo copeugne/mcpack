@@ -205,6 +205,11 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "de/cristelknight/cristellib/data/condition/ConditionNode.class",
+    "de/cristelknight/cristellib/data/condition/ConditionRegistry.class",
+    "de/cristelknight/cristellib/data/condition/conditions/ModLoadedCondition.class",
+    "de/cristelknight/cristellib/neoforge/ModLoadingUtilImpl.class",
+
     "de/cristelknight/cristellib/StructureConfigToggle.class",
     "de/cristelknight/cristellib/StructureConfigPlacement.class",
     "de/cristelknight/cristellib/StructureConfig.class",
