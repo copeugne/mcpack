@@ -793,6 +793,14 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/blocks/HydraluxSaplingBlock.class",
     "org/betterx/betterend/blocks/LanceleafSeedBlock.class",
     "org/betterx/betterend/blocks/NeonCactusPlantBlock.class",
+    "org/betterx/betterend/registry/EndCarvers.class",
+    "org/betterx/betterend/world/carvers/CaveSurfaceCoater$ColumnResolver.class",
+    "org/betterx/betterend/world/carvers/CaveSurfaceCoater.class",
+    "org/betterx/betterend/world/carvers/EndCaveCarver.class",
+    "org/betterx/betterend/world/carvers/EndCaveCarverConfiguration.class",
+    "org/betterx/betterend/world/carvers/EndTunnelCarver$Noises3.class",
+    "org/betterx/betterend/world/carvers/EndTunnelCarver.class",
+    "org/betterx/betterend/world/carvers/EndTunnelCarverConfiguration.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
