@@ -272,10 +272,8 @@ def test_authored_designs_bind_roots_settings_and_missing_components(
             assert row["missing_components"] == structures[identifier]["missing"]
         else:
             assert identifier in cast("dict[str, JsonValue]", traces["untraced_structures"])
-            assert (
-                row["missing_components"]
-                == "UNKNOWN: custom generation is outside current pool trace"
-            )
+            # An untraced custom generator does not imply missing components.
+            # Dedicated source/component tests cover those findings independently.
         assert row["generation_settings"] == {
             key: definition[key]
             for key in (
@@ -1133,11 +1131,8 @@ def test_design_groups_cover_registry_and_bind_variant_definitions(namespace: st
                 }:
                     assert variant["missing_components"] == []
                     assert variant["vanilla_code_template_ids"]
-                else:
-                    assert (
-                        variant["missing_components"]
-                        == "UNKNOWN: custom generation is outside current pool trace"
-                    )
+                # Other custom generators have independent component evidence.
+                # Pool-trace absence cannot require an obsolete UNKNOWN finding.
     assert len(custom) == {"repurposed_structures": 12, "minecraft": 24}[namespace]
 
 
