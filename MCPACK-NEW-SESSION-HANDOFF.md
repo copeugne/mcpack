@@ -6,6 +6,9 @@
 
 ### Continuation update - 2026-09-06
 
+Inventory now reproduces the Nether decisions delivered at a9637207 exactly.
+Next: 53 explicit Voyager decisions. Working groups remain 408.
+
 Nether landmark decisions now resolve all seven remaining explicit Nether
 provisionals and the existing well, circle-ruin and fragment relationship notes.
 The two comparison sheets are delivered at 8d99f50c. Nine affected source-binding
