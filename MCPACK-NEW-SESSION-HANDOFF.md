@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+AdoraBuild Nether comparisons require the 23 selected templates across basalt
+chambers, fortress assembly/alternatives, bastions and temples. Reuse the existing
+renderer. The basalt graph has a preserved missing minecraft:basalt_chambers/
+chambers pool; do not repair it or infer successful assembly. Backlog remains 73.
+
 Inventory matches 7e14281a and reproduces exactly. All 887 roots remain covered
 once; full watercraft variants are preserved after the split. Coverage groups:
 408. Canonical-note backlog: 73 (IDAS 59, AdoraBuild 14). Next: remaining AdoraBuild
