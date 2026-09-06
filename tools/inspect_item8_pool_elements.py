@@ -687,6 +687,18 @@ CLASSES: tuple[str, ...] = (
     "org/betterx/betterend/mixin/common/StructureMixin.class",
     "org/betterx/betterend/mixin/common/WorldGenRegionMixin.class",
     "org/betterx/betterend/mixin/common/portal/EntityMixin.class",
+    "org/betterx/wover/biome/impl/modification/BiomeModificationImpl.class",
+    "org/betterx/wover/biome/impl/modification/BiomeModificationRegistryImpl.class",
+    "org/betterx/wover/biome/impl/modification/BiomeTagModificationWorker.class",
+    "org/betterx/wover/biome/impl/modification/GenerationSettingsWorker.class",
+    "org/betterx/wover/biome/impl/modification/FeatureMap.class",
+    "org/betterx/wover/biome/impl/modification/predicates/BiomePredicateRegistryImpl.class",
+    "org/betterx/wover/biome/impl/modification/predicates/And.class",
+    "org/betterx/wover/biome/impl/modification/predicates/Or.class",
+    "org/betterx/wover/biome/impl/modification/predicates/Not.class",
+    "org/betterx/wover/biome/impl/modification/predicates/HasTag.class",
+    "org/betterx/wover/biome/impl/modification/predicates/IsNamespace.class",
+    "org/betterx/wover/biome/impl/modification/predicates/LocationPathContains.class",
 )
 REGISTRATION_KEYS = (
     b"yung_single_element",
