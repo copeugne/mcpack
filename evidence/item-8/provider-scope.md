@@ -1,7 +1,7 @@
 # Retained-provider scope pass
 
 Status: every retained provider has a supported membership disposition.
-Canonical family reconciliation remains incomplete.
+Canonical family reconciliation is now integrated in inventory.json; final review and main delivery remain open.
 Supported provider dispositions: 136 of 136. The exact queue below has 0 open rows.
 The index and its keyword-based partition do not prove a complete candidate universe.
 Every retained candidate has a row in provider-scope.json.gz, with exact archive

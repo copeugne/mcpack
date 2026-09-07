@@ -1,16 +1,16 @@
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from pathlib import Path
 from typing import TYPE_CHECKING, cast
 
-from tools.build_item8_inventory import main as build_inventory
+from tools.build_item8_inventory import assemble
 
 from mcpack_evidence.item8_registry import read_registry
 
 if TYPE_CHECKING:
-    import pytest
     from pydantic import JsonValue
 
 
@@ -83,13 +83,35 @@ def test_dimension_capture_preserves_stack_and_registry_identity() -> None:
     )
 
 
-def test_inventory_dimension_join_covers_every_frozen_root(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    output = tmp_path / "inventory.json"
-    monkeypatch.setattr("sys.argv", ["build_item8_inventory", "--output", str(output)])
-    build_inventory()
-    inventory = cast("dict[str, JsonValue]", json.loads(output.read_bytes()))
+def test_inventory_dimension_join_covers_every_frozen_root() -> None:
+    # Verify the raw biome-overlap join before descriptive family assessments
+    # replace its shape. Final active/nonregistry coverage has its own integration test.
+    decisions = cast("dict[str, JsonValue]", json.loads(Path(
+        "evidence/item-8/family-decisions.json"
+    ).read_bytes()))
+    groups = cast("list[dict[str, JsonValue]]", decisions["groups"])
+    for group in groups:
+        attributes = cast("dict[str, JsonValue]", group.get("attributes", {}))
+        _ = attributes.pop("dimension", None)
+    source_root = Path("evidence/item-8/sources")
+    inventory = assemble(
+        read_registry(Path(
+            "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt"
+        )),
+        groups,
+        cast("dict[str, JsonValue]", json.loads(
+            (source_root / "structure-inputs.json").read_bytes()
+        )),
+        cast("dict[str, JsonValue]", json.loads(gzip.decompress(
+            (source_root / "pool-traces-content.json.gz").read_bytes()
+        ))),
+        cast("dict[str, JsonValue]", json.loads(gzip.decompress(
+            (source_root / "world-bounds.json.gz").read_bytes()
+        ))),
+        cast("dict[str, list[str]]", json.loads(Path(
+            "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        ).read_bytes())),
+    )
     families = cast("dict[str, dict[str, JsonValue]]", inventory["families"])
     memberships: dict[str, JsonValue] = {}
     for family in families.values():
