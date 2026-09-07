@@ -653,3 +653,49 @@ existing catalog; the inventory lists distinct table IDs and preserves weighted
 trial reward lists and their exact pointers. Only these five content assessments
 and direct source identities change; geometry remains open. Inventory SHA-256:
 d38dcfb6cbbe7f4ba2eb8fe4ebced9630a4d83985b94c6a959a29d89c162831e.
+
+## Aviary and Fort geometry
+
+Four attributes finish these two families from the same immutable template and
+packaged-JSON catalogs identified above. Exact archive:
+DungeonsArise-1.21.1-2.1.68-release.jar. Template paths are
+`data/dungeons_arise/structure/<family>/<family>_<piece>.nbt`.
+Inspect document.size and block_entities[].nbt jigsaw name/target/joint,
+block_entities[].pos and the indexed palette orientation. Pools under
+worldgen/template_pool/eerie/aviary and fortified/illager_fort use rigid
+projection, empty processors and empty fallbacks.
+
+Aviary parts0..26 all measure48x32x48. Relative to part4 origin(0,0,0),
+parts0..8 have XZ origins respectively(-48,-48),(0,-48),(48,-48),(48,0),
+(0,0),(-48,0),(-48,48),(0,48),(48,48). Side pairs0/1,2/3,4/5,6/7 join
+center4 to1,3,7,5; pairs8/9,10/11,12/13,14/15 join the corners. Every
+boundary connector is at0 or47 and joins an adjacent block, giving48 steps.
+Parts9..17 repeat at Y32 with side names suffixed_top; parts18..26 repeat
+at Y64 with suffix_top_two. Centers4/13/22 join aligned up_west/down_west
+at(23,31,24)/(23,0,24), names18/19 and21/20. Start pool selects part13.
+Thus the nominal full assembly is144x96x144, with at most four architectural
+edges from the starting center, within depth7. Five1x2x1 spawner alternatives
+have their incoming connector at(0,1,0); upward receivers keep their two-block
+height inside the architecture. This is a source envelope, not a retained start.
+
+Fort lower parts0/1/2/3 have origins(0,0,0),(32,0,0),(32,0,27),(0,0,27)
+and sizes32x43x27,23x43x27,23x43x20,32x43x20. Side pairs0/1,3/2,4/5,6/7
+join matching boundaries. Aligned upper pairs0/1,3/2,4/5,6/7 (side_up prefix)
+place parts4/5/7/6 above those lower parts at Y43. Their height17 yields
+55x60x47. Note that part6 belongs above part3, not part2.
+
+All nine room alternatives are9x9x14, incoming down_north at(4,0,13).
+Aligned receivers yield these global XZ ranges: part0 north receiver(27,17)
+gives23..31,4..17; part0 west(22,22) gives9..22,18..26; part1 east(0,22)
+gives32..45,18..26; part3 south(27,0) gives23..31,27..40. Receiver Y values
+are1,11,22,32 (north omits22); room origins are receiver Y+1 and maximum
+room Y is41. Four1x3x1 entity alternatives attach above receivers inside
+these rooms or lower architecture and remain within the full envelope.
+Consequently interior alternatives do not enlarge55x60x47. Horizontal
+rotation exchanges the footprint axes. Placement success and occupied-block
+volume are not established by these source bounding boxes.
+
+Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Focused check: `uv run pytest -q tests/item8/test_wda_provider_scope.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py`.
+Semantic comparison permits only the two families' geometry attributes,
+corresponding grouping decisions and the decisions input hash to change.
