@@ -6,6 +6,125 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed village assessed after d59de7f4
+
+Seven entries integrated for14 variants/1345 distinct shared templates. Exact
+variant entity mappings preserve land zombie alternatives, ocean drowned and
+Nether inhabitants; no template spawners or generation markers. All34 loot
+sources resolve. Tree beehive decorators remain an additional potential source.
+Nine competing crop lists are not selected by these claims: both candidates
+lack enemy/loot injections, while base bottom-pillar support differs from compat.
+All14 bottom-pillar delegates were inspected. Exact crops/support extent are
+unspecified, not an Item8 experiment backlog. Existing saved geometry reused.
+No runtime or tool added. All85 focused checks pass (63.89s); only village/input
+identity changed. Total410/448 assessed; remaining38 families/343 required
+entries are all IDAS. Quantify existing IDAS evidence versus missing claims
+before starting investigation. Final integration, acceptance, backup/history
+and PR/review/main remain open.
+Details: evidence/item-8/sources/repurposed-village-assessment/README.md.
+Inventory SHA-256: 14263af15dd4870e4a94a2b0dddd047628fed6d3b37dc1f64a8001afe125a646.
+
+
+#### Repurposed ancient city assessed after 24897d14
+
+Seven remaining entries integrated for three variants/173 templates. Ocean
+contains authored drowned/guardian, Nether ghast, End non-mob end crystals.
+End endermite and Nether magma-cube ordinary spawner lists each use weight100;
+natural overrides remain separate. Six literal chest tables plus ocean archaeology
+are defined. Placement and qualitative discoverability preserve variant differences.
+Existing geometry reused; no runtime or tool added. All 85 focused checks pass
+(67.59s); only ancient_city and input identity changed. Total409/448 assessed;
+39 families/350 required entries remain: IDAS38/343, Repurposed village1/7.
+Next village has14 variants/1345 templates and accepted geometry; inspect existing
+resource precedence for its competing crop-randomizer definitions before attribution.
+Details: evidence/item-8/sources/repurposed-ancient-city-assessment/README.md.
+Inventory SHA-256: 1481b4cdafc7e1f724d65c06f3db66d68b53f78b2ddbfe0fd8cc5f7d968e3d7e.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### Repurposed fortress assessed after 6c2d2d70
+
+Seven remaining entries integrated for one family/17 templates. Water-dependent
+drowned feature, ordinary silverfish spawner, natural monster overrides and four
+loot sources are distinguished. Configured flooding is not measured water depth.
+Existing saved geometry and processor evidence reused; no runtime or tool added.
+All 85 focused checks pass (77.12s); only fortress and input identity changed.
+Total 408/448 assessed; 40 families/357 required entries remain: IDAS 38/343,
+Repurposed 2/14 (ancient_city and village, each with accepted geometry).
+Details: evidence/item-8/sources/repurposed-fortress-assessment/README.md.
+Inventory SHA-256: 526222da7ee35e5322ca9341db14d47befae0414e3ae298b3691bc13c31ec6a4.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Before further investigation, quantify existing evidence versus missing claims.
+An initial read-only comparison finds original world-bounds full-chunk observations
+for 6 of the remaining 38 IDAS families, and pool-trace missing/unresolved elements
+for ancient_mines and desert_pyramid. The other 32 lack observations in that
+catalog only; additional existing captures and direct geometry derivations have
+not yet been checked, so this is not a count of required new experiments.
+
+
+#### Repurposed underground bastion assessed after 3cd811d5
+
+Seven remaining entries integrated for162 templates. Bat-only direct template
+entities do not omit eight selected skeleton/skeleton-horseman features. Treasure
+ordinary skeleton spawner and natural piece override remain separate. Four loot
+tables defined. Underground placement/degradation limits retained; feature names
+are not measured difficulty tiers. No runtime/tool added. All85 focused checks
+pass (69.74s);only bastion/input identity changed. Total407/448 assessed;41 families/
+364 required entries remain: IDAS38/343,Repurposed3/21. Remaining Repurposed:
+ancient_city,fortress,village, each seven content/placement entries with accepted
+geometry. Quantify next batch and reuse evidence. Details in
+ evidence/item-8/sources/repurposed-bastion-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 630aab7522669ee2a80243f55d3362072340d037140a571d3d67e4256e3fd43a.
+
+#### Repurposed stronghold assessed after ad56d7e5
+
+Seven remaining entries integrated for two variants/45 templates. Four selected
+spawner lists distinguish mixed general Nether spawners from blaze portal-room
+spawners; End selects endermites and feature shulkers. Natural overrides remain
+separate. Six literal loot tables defined. Portal-eye processor does not establish
+portal activation; End height checks preserve cumulative subtraction and burial
+limits. No runtime/tool added. All85 focused checks pass (65.85s);only stronghold/
+input identity changed. Total406/448 assessed;42 families/371 required entries
+remain: IDAS38/343,Repurposed4/28. Remaining Repurposed: ancient_city,bastion,
+fortress,village, each seven content/placement entries with accepted geometry.
+Quantify next batch and reuse evidence. Details in
+ evidence/item-8/sources/repurposed-stronghold-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 2df763aa4cb2186125e0987fb59682f892cdc58769b94ca62530832dece8754b.
+
+#### Repurposed city assessed after a07bf6c4
+
+Seven remaining entries integrated for two variants/87 pool templates.
+Overworld villagers/furnishings and Nether authored blazes/wither skeletons remain
+distinct. Nether feature adds persistent equipped bow skeletons; natural piece
+spawn overrides are separate. Two literal loot tables defined; no template
+spawners/markers. Column clearance and support limits recorded without whole-city
+exposure guarantees. No runtime/tool added. All85 focused checks pass (62.47s);
+only city/input identity changed. Total405/448 assessed;43 families/378 required
+entries remain: IDAS38/343,Repurposed5/35. Remaining Repurposed: ancient_city,
+bastion,fortress,stronghold,village, each seven content/placement entries with
+accepted size evidence. Quantify next batch and reuse existing source captures.
+Details in evidence/item-8/sources/repurposed-city-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 4476ed51a4e69e4a5ea958902ca9c22a3e4aeabdd67064075dc0638b0aa23134.
+
+#### Repurposed outpost assessed after 57b5cb41
+
+Seven remaining attributes integrated for18 variants/205 pool templates.
+Authored cages/towers, End shulker feature and natural spawn overrides remain
+separate. Ocean full-bounded pufferfish/empty-category rules are explicit.
+No template spawners/markers;18 literal loot tables all defined. Bottom-layer
+pillar extension/waterlogging code directly inspected; support extents remain
+outside saved-piece geometry. No new runtime/tool. All85 focused checks pass
+(60.57s);only outpost/input identity changed. Total404/448 assessed;44 families/
+385 required entries remain: IDAS38/343,Repurposed6/42. Remaining Repurposed:
+ancient_city,bastion,city,fortress,stronghold,village, each seven content/placement
+entries with accepted size examples. Quantify next batch and reuse evidence.
+Details in evidence/item-8/sources/repurposed-outpost-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 70c897fb7b2b6bf348f61e4d01482cff1a634b7278d5b5176611a2c23bab8ab6.
+
 #### Remaining Repurposed geometry accepted after 91011cb9
 
 Both predeclared seed42 runs passed readiness, seven81-chunk completions,
