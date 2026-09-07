@@ -7,6 +7,46 @@
 ### Continuation update - 2026-09-07
 
 
+#### Jungle Temple geometry finished after 8350a9e7
+
+Declared seed42 one-target/81-requested-chunk capture passed readiness,
+correlated flush, clean exit0 and frozen configuration acceptance. Full start
+chunk7,-277,line601 has38 pieces and51x54x60 saved assembly envelope. Downward
+PillarProcessor extensions remain separate. Archive253 files/4,339,310 bytes
+published at source8350a9e7; local/downloaded restores verified every file and
+downloaded line601 reproduced the geometry. No Java process remains. Exact
+commands, hashes, diagnostics and limitations: evidence/item-8/sources/
+jungle-temple-provider/README.md, Jungle geometry result and custody.
+Two size attributes finish this family. All85 focused tests pass (59.29s).
+Registry320/408,nonregistry40/40,total360/448 assessed,88 remaining. Next quantify
+another YUNG batch; Desert Temple, Fortress and Stronghold remain. Final
+canonical integration, acceptance, verified backup/history preparation and
+PR review/main delivery remain open. Inventory SHA-256:
+f606c1122d00ef45520e7a7dbb2afb2b612842f6cd9d495173ec80f47b7b6559.
+
+
+
+#### Jungle content and geometry declaration after 7e3a6ebe
+
+Eight required attributes integrated from125 traced templates and existing
+processor sources. Keep absent-mod crocodiles separate from active silverfish,
+infested blocks, conditional Create/Supplementaries machinery and source trap
+NBT. Four loot tables and puzzle/filter/trap fixed content are attributed.
+Two size attributes remain: baseline observations372/752 are carvers; three
+start shells do not establish the whole connected envelope. One seed42 target,
+81 requested chunks, timeout900 is declared in evidence/item-8/sources/
+jungle-temple-provider/README.md, Declared Jungle Temple geometry capture.
+Next execute that exact existing workflow, retain/restore raw evidence and
+integrate full-start geometry with downward pillar extensions separate.
+No new tooling. All85 focused tests pass (58.69s). Only this family and input
+identity changed; geometry placeholders and observations were preserved.
+Counts stay359/448 assessed,89 remaining until both sizes are resolved.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+aafac5f6d1b8c8e8cd82ce271e3dac89948d59c7a3886791a9a70e7adfcd82a7.
+
+
+
 #### Ocean Monument assessed after 573234a7
 
 Ten attributes finish Better Ocean Monument using57 traced templates, six
