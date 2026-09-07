@@ -38605,7 +38605,8 @@
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-          "evidence/item-8/sources/neoforge-biome-tag-constants/identities.json": "49546d98082b45ceae38961256f56e24545cdf2c5fbe2d16ff4552aa78d135d8"
+          "evidence/item-8/sources/neoforge-biome-tag-constants/identities.json": "49546d98082b45ceae38961256f56e24545cdf2c5fbe2d16ff4552aa78d135d8",
+          "evidence/item-8/sources/quark-fairy-ring-bindings/identities.json": "728e62fac4bad9dfccf8d942bf4cf36fae8b7bcb823e6fe3ee2b04bc186ef020"
         },
         "interpretation": "evidence/item-8/sources/quark-landmark-encounter-generators/README.md#fairy-ring-interpretation",
         "frozen_configuration": {
@@ -38625,7 +38626,8 @@
                 "minecraft:overworld"
               ]
             }
-          }
+          },
+          "binding": "Annotated fields and callbacks, recorded module display name, shared Zeta mapping/initial-refresh evidence, and exact frozen-file identity establish the initial settings."
         },
         "families": [
           {
@@ -38645,7 +38647,10 @@
             "surface_underground": "Combined surface marker and buried ore deposit. The generator searches for dirt from Y=128 down to Y=30 and anchors one block below it.",
             "observation_status": "UNKNOWN: no direct saved-world attribution is accepted yet.",
             "attributes": {
-              "dimension": "Source default and frozen settings name minecraft:overworld. Effective module configuration binding remains unresolved.",
+              "dimension": {
+                "value": "minecraft:overworld",
+                "basis": "The annotated dimensions field maps to the frozen non-blacklist Overworld allowlist. effective_enablement records the module/category and initial refresh derivation; generator terrain checks remain separate."
+              },
               "biome_constraints": {
                 "selection": "Sample the biome at Y=128. Forest membership selects forestChance; only non-forest plains membership selects plainsChance. Other biomes have zero chance.",
                 "resolved_tags": {
@@ -38840,7 +38845,10 @@
               "approximate_vertical_size": "Direct writes fit anchor offsets -45 through 6, a conservative 52-block span including empty space and buried ore. This is not visible height and excludes delegated flower-feature writes.",
               "intended_hostility": "The direct generator authors a landmark and buried ore reward without a hostile encounter. Delegated feature content and natural mobs remain separate.",
               "mob_source": "No direct entity requests. Natural mob composition and delegated feature effects remain UNKNOWN.",
-              "loot_table_source": "No direct container loot-table assignment. Ore blocks are the authored reward; ordinary mining drops and delegated feature effects remain separate.",
+              "loot_table_source": {
+                "value": "No direct container loot-table assignment. The callback resolves the configured minecraft:emerald_ore and minecraft:diamond_ore states into the ore list; the generator selects one for the buried ore reward.",
+                "basis": "effective_enablement.ore_callback, frozen_configuration and the retained FairyRingGenerator body. Ordinary mining-drop outcomes are separate; delegated flower-feature effects remain the one open question."
+              },
               "generated_spawners": "No direct physical-spawner placement. Delegated feature content remains unresolved.",
               "visual_discoverability": "Source-derived surface flower ring marking buried ore. Incomplete placement or copied air can prevent a visible ring. No measured visibility distance.",
               "authored_or_natural_enemies": "No enemies authored directly by FairyRingGenerator. Natural mobs remain unresolved.",
@@ -38848,9 +38856,16 @@
             }
           }
         ],
-        "remaining": "Resolve effective configuration/callback binding, biome-tag membership, delegated flower-feature content and saved-world attribution. Do not recapture the already interpreted generator or split the ore deposit into a separate family.",
+        "remaining": "Only delegated flower-feature effects remain to assess for required geometry/content answers. Initial configuration/callback binding and tag membership are resolved; do not repeat them.",
         "scope": "Canonical membership settled for this provider contribution. Effective attributes and generated-world reconciliation remain open; no Item 9 classification or final global count.",
-        "membership_decision": "INCLUDE_ONE_FAMILY"
+        "membership_decision": "INCLUDE_ONE_FAMILY",
+        "effective_enablement": {
+          "status": "RESOLVED_SOURCE_CONFIG_LOG_DERIVATION",
+          "enabled_after_initial_refresh": true,
+          "binding": "FairyRingsModule has only category world in ZetaLoadModule. forestChance, plainsChance and dimensions have Config annotations; oresRaw is explicitly named Ores. setup and configChanged carry LoadEvent. Registry-r1 debug line 13845 records construction as Fairy Rings; the shared Zeta naming/mapping path selects world.fairy_rings. Frozen category and module toggles are true. Reuse quark:monster_box.effective_enablement and the linked world-category, module naming, configuration mapper and initial-refresh evidence.",
+          "ore_callback": "configChanged clears ores, resolves each oresRaw entry through BuiltInRegistries.BLOCK and appends non-air default states. The frozen Ores list and module defaults agree on minecraft:emerald_ore and minecraft:diamond_ore. The retained initial-refresh event follows onReload and the callback is explicitly annotated for the existing Zeta load-event path. Invalid entries would be reported rather than silently accepted.",
+          "limitations": "Initial source/configuration/log derivation, not a direct ore-list or module-field dump, observed generation or proof of later runtime immutability."
+        }
       },
       "quark:fallen_log": {
         "mechanism": "FallenLogsModule registers FallenLogGenerator at TOP_LAYER_MODIFICATION through Zeta, with weight one. It places logs and decoration directly without templates.",
