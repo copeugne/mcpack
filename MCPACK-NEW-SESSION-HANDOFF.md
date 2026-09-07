@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Galleon encounter and reward assessment after e50b4b68
+
+Six attributes finish Galleon using existing template, feature, Moonlight,
+processor and urn evidence. Distinguish regional spawn lists, direct entities,
+boat passengers, urn break creatures and ordinary block spawners. Nine possible
+boat attempts stop at first success; ContainerEntity guards table assignment.
+Thirteen focused tests pass. No capture or tooling addition. Four completed
+placement/geometry attributes remain unchanged. Registry272/410, nonregistry40/40,
+total312/450 assessed,138 remaining. Both Supplementaries registry families
+are assessed. Retire them absent contradiction. Quantify the next provider
+batch before editing. Final canonical integration, acceptance, verified backup/
+history preparation and PR review/main delivery remain open. Inventory SHA-256:
+ce61f4dd05b1e4c70b2b3fab5fc62b1ee7a9a5cad6f6765c908e9859c0953983.
+
 #### Galleon placement and geometry after 00a1662b
 
 Four attributes integrate source geometry19x37x47, dimension compatibility
