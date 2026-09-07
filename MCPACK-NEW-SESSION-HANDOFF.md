@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 024dc7b3 and reproduces exactly. Canonical backlog: 16, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus and
+wizard comparisons are finished. Continue remaining IDAS records, including
+farmhouse alternatives. Attributes, nonregistry and final delivery remain open.
+
 Nexus resolves to one family with six alternatives after completed visual and
 content comparison. Preserve sculk extents/entities, pool weights, processor
 loot and spawner declarations; raw pig SpawnData is not the effective mob claim.
