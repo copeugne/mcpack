@@ -26998,43 +26998,171 @@
     },
     "betterend:mountain": {
       "approximate_footprint": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_xz_blocks": [
-          [
-            108,
-            108
-          ],
-          [
-            110,
-            110
-          ],
-          [
-            122,
-            122
-          ],
-          [
-            146,
-            146
-          ],
-          [
-            146,
-            147
-          ],
-          [
-            152,
-            152
-          ]
-        ]
+        "crystal_decoration": "Lateral radius1..3 around centers restricted to[r,15-r] within each processed chunk. This can extend outside the body disk but stays chunk-local.",
+        "nominal_body_diameter_blocks": [
+          100,
+          200
+        ],
+        "observed_generation_envelopes": [
+          {
+            "chunk_x": 97,
+            "chunk_z": -12,
+            "envelope": [
+              1508,
+              8,
+              -237,
+              1617,
+              117,
+              -128
+            ],
+            "line": 7376,
+            "run": "run-a",
+            "seed": 6671238423019257953,
+            "size_xyz": [
+              110,
+              110,
+              110
+            ],
+            "source": "run-a/mountainous/chunks.jsonl",
+            "structure_id": "betterend:painted_mountain"
+          },
+          {
+            "chunk_x": 91,
+            "chunk_z": -11,
+            "envelope": [
+              1415,
+              9,
+              -224,
+              1522,
+              116,
+              -117
+            ],
+            "line": 6030,
+            "run": "run-a",
+            "seed": 95920844204830198,
+            "size_xyz": [
+              108,
+              108,
+              108
+            ],
+            "source": "run-a/ocean-heavy/chunks.jsonl",
+            "structure_id": "betterend:mountain"
+          },
+          {
+            "chunk_x": 90,
+            "chunk_z": 13,
+            "envelope": [
+              1374,
+              -9,
+              145,
+              1519,
+              137,
+              290
+            ],
+            "line": 6653,
+            "run": "run-a",
+            "seed": 95920844204830198,
+            "size_xyz": [
+              146,
+              147,
+              146
+            ],
+            "source": "run-a/ocean-heavy/chunks.jsonl",
+            "structure_id": "betterend:mountain"
+          },
+          {
+            "chunk_x": 102,
+            "chunk_z": -11,
+            "envelope": [
+              1566,
+              -13,
+              -245,
+              1717,
+              139,
+              -94
+            ],
+            "line": 7408,
+            "run": "run-a",
+            "seed": 95920844204830198,
+            "size_xyz": [
+              152,
+              153,
+              152
+            ],
+            "source": "run-a/ocean-heavy/chunks.jsonl",
+            "structure_id": "betterend:mountain"
+          },
+          {
+            "chunk_x": 103,
+            "chunk_z": 6,
+            "envelope": [
+              1592,
+              -4,
+              43,
+              1713,
+              118,
+              164
+            ],
+            "line": 7868,
+            "run": "run-a",
+            "seed": 95920844204830198,
+            "size_xyz": [
+              122,
+              123,
+              122
+            ],
+            "source": "run-a/ocean-heavy/chunks.jsonl",
+            "structure_id": "betterend:mountain"
+          },
+          {
+            "chunk_x": 85,
+            "chunk_z": -5,
+            "envelope": [
+              1295,
+              -12,
+              -143,
+              1440,
+              134,
+              3
+            ],
+            "line": 6180,
+            "run": "run-b",
+            "seed": -3503646078644842058,
+            "size_xyz": [
+              146,
+              147,
+              147
+            ],
+            "source": "run-b/biome-diverse/chunks.jsonl",
+            "structure_id": "betterend:painted_mountain"
+          }
+        ],
+        "scope": "Nominal body scale and saved horizontal generation-envelope examples, not occupied area or typical/all-layout extrema. Saved Y spans are context only.",
+        "source": "evidence/item-8/sources/betterend-formation-pieces/README.md#mountain-geometry-assessment",
+        "source_radius_selection": "Both generators use integer MHelper.randRange(50,100), inclusive. Both body paths restrict columns to squared distance below R*R.",
+        "world_bounds_source": "evidence/item-8/sources/world-bounds.json.gz"
       },
       "approximate_vertical_size": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_y_blocks": [
-          108,
-          110,
-          123,
-          147,
-          153
-        ]
+        "column_top_formulas": {
+          "betterend:mountain": "C.y + (1-(D2/(R*R))^0.3)*H*K*(0.7+0.3*N05)*(0.8+0.1*N10)",
+          "betterend:painted_mountain": "C.y + (1-D2/(R*R))*H*K*(0.7+0.3*N05)*(0.9+0.1*N10)",
+          "definitions": "C is center, D2 squared horizontal distance, N05/N10 are noise1 sampled at scales0.05/0.1. K is the weighted support-height clamp in[0,1], using sample radius12 for crystal or10 for painted."
+        },
+        "crystal_decoration": "At current surface h, L=floor(r*randRange(1.5,3.0)+0.3*(h-80)); exclusive top=h+L+a*dx+b*dz with a,b in[-1,1]. Bottom=max(localSurface-randRange(3,7),h-8). Candidate predicates and nonempty intervals still apply.",
+        "nominal_height_parameter_scales_blocks": {
+          "betterend:mountain": [
+            40,
+            120
+          ],
+          "betterend:painted_mountain": [
+            20,
+            60
+          ]
+        },
+        "parameter_definition": "H=R*randRange(0.8,1.2) for crystal and R*randRange(0.4,0.6) for painted, with R an integer50..100. Nominal scales, not strict floating-point extrema or realized relief.",
+        "placement": "Supported columns require supportY>C.y-8. Writes begin at supportY-1, with Y<int(top) for crystal body and Y<top for painted.",
+        "scope": "Source-derived scale and terrain-dependent geometry. MountainPiece saved Y bounds use radius, not H; do not report their span as occupied mountain height. No occupied-relief measurement or all-world maximum is claimed.",
+        "source": "evidence/item-8/sources/betterend-formation-pieces/README.md#mountain-geometry-assessment"
       },
       "authored_or_natural_enemies": {
         "authored": "No direct authored enemies or spawners in the inspected mountain generators and pieces.",
@@ -27080,6 +27208,173 @@
       },
       "grouping_decision": {
         "attributes": {
+          "approximate_footprint": {
+            "crystal_decoration": "Lateral radius1..3 around centers restricted to[r,15-r] within each processed chunk. This can extend outside the body disk but stays chunk-local.",
+            "nominal_body_diameter_blocks": [
+              100,
+              200
+            ],
+            "observed_generation_envelopes": [
+              {
+                "chunk_x": 97,
+                "chunk_z": -12,
+                "envelope": [
+                  1508,
+                  8,
+                  -237,
+                  1617,
+                  117,
+                  -128
+                ],
+                "line": 7376,
+                "run": "run-a",
+                "seed": 6671238423019257953,
+                "size_xyz": [
+                  110,
+                  110,
+                  110
+                ],
+                "source": "run-a/mountainous/chunks.jsonl",
+                "structure_id": "betterend:painted_mountain"
+              },
+              {
+                "chunk_x": 91,
+                "chunk_z": -11,
+                "envelope": [
+                  1415,
+                  9,
+                  -224,
+                  1522,
+                  116,
+                  -117
+                ],
+                "line": 6030,
+                "run": "run-a",
+                "seed": 95920844204830198,
+                "size_xyz": [
+                  108,
+                  108,
+                  108
+                ],
+                "source": "run-a/ocean-heavy/chunks.jsonl",
+                "structure_id": "betterend:mountain"
+              },
+              {
+                "chunk_x": 90,
+                "chunk_z": 13,
+                "envelope": [
+                  1374,
+                  -9,
+                  145,
+                  1519,
+                  137,
+                  290
+                ],
+                "line": 6653,
+                "run": "run-a",
+                "seed": 95920844204830198,
+                "size_xyz": [
+                  146,
+                  147,
+                  146
+                ],
+                "source": "run-a/ocean-heavy/chunks.jsonl",
+                "structure_id": "betterend:mountain"
+              },
+              {
+                "chunk_x": 102,
+                "chunk_z": -11,
+                "envelope": [
+                  1566,
+                  -13,
+                  -245,
+                  1717,
+                  139,
+                  -94
+                ],
+                "line": 7408,
+                "run": "run-a",
+                "seed": 95920844204830198,
+                "size_xyz": [
+                  152,
+                  153,
+                  152
+                ],
+                "source": "run-a/ocean-heavy/chunks.jsonl",
+                "structure_id": "betterend:mountain"
+              },
+              {
+                "chunk_x": 103,
+                "chunk_z": 6,
+                "envelope": [
+                  1592,
+                  -4,
+                  43,
+                  1713,
+                  118,
+                  164
+                ],
+                "line": 7868,
+                "run": "run-a",
+                "seed": 95920844204830198,
+                "size_xyz": [
+                  122,
+                  123,
+                  122
+                ],
+                "source": "run-a/ocean-heavy/chunks.jsonl",
+                "structure_id": "betterend:mountain"
+              },
+              {
+                "chunk_x": 85,
+                "chunk_z": -5,
+                "envelope": [
+                  1295,
+                  -12,
+                  -143,
+                  1440,
+                  134,
+                  3
+                ],
+                "line": 6180,
+                "run": "run-b",
+                "seed": -3503646078644842058,
+                "size_xyz": [
+                  146,
+                  147,
+                  147
+                ],
+                "source": "run-b/biome-diverse/chunks.jsonl",
+                "structure_id": "betterend:painted_mountain"
+              }
+            ],
+            "scope": "Nominal body scale and saved horizontal generation-envelope examples, not occupied area or typical/all-layout extrema. Saved Y spans are context only.",
+            "source": "evidence/item-8/sources/betterend-formation-pieces/README.md#mountain-geometry-assessment",
+            "source_radius_selection": "Both generators use integer MHelper.randRange(50,100), inclusive. Both body paths restrict columns to squared distance below R*R.",
+            "world_bounds_source": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "approximate_vertical_size": {
+            "column_top_formulas": {
+              "betterend:mountain": "C.y + (1-(D2/(R*R))^0.3)*H*K*(0.7+0.3*N05)*(0.8+0.1*N10)",
+              "betterend:painted_mountain": "C.y + (1-D2/(R*R))*H*K*(0.7+0.3*N05)*(0.9+0.1*N10)",
+              "definitions": "C is center, D2 squared horizontal distance, N05/N10 are noise1 sampled at scales0.05/0.1. K is the weighted support-height clamp in[0,1], using sample radius12 for crystal or10 for painted."
+            },
+            "crystal_decoration": "At current surface h, L=floor(r*randRange(1.5,3.0)+0.3*(h-80)); exclusive top=h+L+a*dx+b*dz with a,b in[-1,1]. Bottom=max(localSurface-randRange(3,7),h-8). Candidate predicates and nonempty intervals still apply.",
+            "nominal_height_parameter_scales_blocks": {
+              "betterend:mountain": [
+                40,
+                120
+              ],
+              "betterend:painted_mountain": [
+                20,
+                60
+              ]
+            },
+            "parameter_definition": "H=R*randRange(0.8,1.2) for crystal and R*randRange(0.4,0.6) for painted, with R an integer50..100. Nominal scales, not strict floating-point extrema or realized relief.",
+            "placement": "Supported columns require supportY>C.y-8. Writes begin at supportY-1, with Y<int(top) for crystal body and Y<top for painted.",
+            "scope": "Source-derived scale and terrain-dependent geometry. MountainPiece saved Y bounds use radius, not H; do not report their span as occupied mountain height. No occupied-relief measurement or all-world maximum is claimed.",
+            "source": "evidence/item-8/sources/betterend-formation-pieces/README.md#mountain-geometry-assessment"
+          },
           "authored_or_natural_enemies": {
             "authored": "No direct authored enemies or spawners in the inspected mountain generators and pieces.",
             "natural": "Both packaged structure definitions have empty spawn_overrides. Enemies may arise from biome spawning or other external systems; this family does not author a structure-specific spawn list.",
@@ -27148,10 +27443,19 @@
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "betterend:mountain",
         "name": "BetterEnd Mountain Formation",
+        "processor_inspection": {
+          "archive": "bclib-21.0.24.jar",
+          "archive_sha256": "a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093",
+          "basis": "Direct inspection of integer and float randRange overloads; exact command and interpretation in mountain geometry assessment. This helper is not a structure processor.",
+          "members": {
+            "org/betterx/bclib/util/MHelper.class": "2367076b2f831616da7540e03fc3fa09255c178faec1b6ecea4fcf1577e41423"
+          }
+        },
         "rationale": "Two procedural mountain designs form one terrain-formation family. Both use the shared FeatureBaseStructure path and sample WORLD_SURFACE_WG before constructing a mountain piece. Ordinary mountain creates CrystalMountainPiece; painted mountain creates PaintedMountainPiece with an authored layer palette. Preserve differences in biome constraints, minimum terrain height, shape parameters and piece/material implementation as variants, not separate families merely because their types differ. Both definitions use raw_generation and empty spawn overrides. This grouping does not establish complete material contents, loot/mob absence, occupied dimensions or actual discoverability.",
         "structure_ids": [
           "betterend:mountain",
@@ -224514,7 +224818,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0cacf3a9b63e9b02665bf451f91d277be5014a926ea50f50ebae8810e7eb76f6",
+    "evidence/item-8/family-decisions.json": "01bcba51815a669915f4735fc3fbf8506894b9e3e2dfeef085369340a48f8097",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
