@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Quantified increment: ruined church, ruined fort and redhorn guild, eleven fields
+each. Ten source-based interpretations per family now supplement the unchanged
+biome constraints. Guild villagers/guards and its unidentified entity remain
+distinct from ruins with no authored defenders. Frozen enablement and dimension
+overlap are recorded. Focused IDAS and scoped checks pass; inventory refresh
+follows. No new measurement/tooling or inactive-field cleanup was added.
+
 Inventory matches witches-treestump attribute decision 5c5ee66a and reproduces
 exactly. One family was assessed across eleven fields, with ten explicit source
 interpretations and unchanged resolved biome constraints. Thirteen of fifteen
