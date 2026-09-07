@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS pillager fortress assessed after 8451bdda
+
+Seven entries integrated for eight connected templates. Fourteen physical
+ordinary spawners select sole pillager15; direct hostile entities are distinct
+from optional absent-provider animals and non-mob entities. Twelve ID-less
+records are empty NBT compounds. Four loot definitions exist; legacy idasbasic
+and pillagerjail references have no packaged definition and remain explicit
+baseline defects. Three CORNER markers are not DATA enemy instructions.
+Accepted sampled size reused; no runtime/tool added. All85 focused checks pass
+(65.59s); only pillager_fortress/input identity changed. Total423/448 assessed;
+25 IDAS families/223 entries remain: ruins_of_the_deep needs7,24 connected
+assemblies need9 each. Next ruins_of_the_deep: four components/seven entries,
+reuse accepted size and inspect top/bottom processor lists before integration.
+Details: evidence/item-8/sources/idas-pillager-fortress-assessment/README.md.
+Inventory SHA-256: a103e189798552fea7e1fe678ff5f43b128ea0663dd8df65aa5a8950bf9e81ba.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS apothecary abode assessed after a13de04a
 
 Seven entries integrated for two connected templates. Authored illusioners and
