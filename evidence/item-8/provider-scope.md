@@ -10701,3 +10701,22 @@ claim, and report facts awaiting integration separately from such investigations
 and final validation/delivery. Do not repeat settled provider/design work, render
 existing views again, or add another tracking system. Use affected checks and the
 full applicable final gate. Preserve atomic commits and PR/review/merge requirements.
+
+
+### Six single-template families integrated
+
+Predeclared batch: botanist, hermits_hollow, hunters_cabin, mason_house,
+nether_pump_camp and the_log, eleven fields each. Decision 1bcb80f8 integrates
+existing design/source facts, with frozen placement and dimension overlap.
+Hunter's four saved spawners and pillager processor resource remain distinct.
+Nether pump camp retains observations 109 and 509 and their 12 by 12 by 3
+saved-piece envelopes alongside its nominal dimensions. No new research,
+rendering or measurement was necessary. Unknown entity compounds and source limits
+remain explicit. Focused IDAS check: 1 passed, 77 deselected.
+
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-six-single-template-attributes.json`.
+Inventory SHA-256: d72496ff313e23ec0cb8073ec3680656b62e01cd2cebf2c8adc863b0826254a0.
+Only the six families and decision input identity change. Membership, biome lists,
+observations, trace IDs and other rows are preserved. Existing facts still require
+integration elsewhere; unresolved mandatory claims and final acceptance are not
+measured by top-level placeholder counts. Final gate/review/main delivery is open.
