@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-07
 
+#### Explorify geometry completed using 5bc81f0e
+
+Five targeted ordinary-seed structures now have ten geometry answers integrated.
+All five regions, correlated save/stop and frozen configuration checks passed.
+Saved targeted start chunks are full; envelopes remain example dimensions,
+including padding, not occupied volumes or family-wide extrema. Retire all 14
+Explorify assessments. Registry assessment is 87/410; nonregistry is 40/40.
+Total assessed is 127/450, with 323 registry families still open.
+
+The existing gap tool now accepts explicit structure targets, with legacy
+behavior retained. Eight lifecycle tests and scoped quality checks pass.
+Six affected inventory tests and builder quality checks pass. Inventory SHA-256:
+41bfb09c46df6a52c9af2b25ddaddd2b496bed90b275b67abfb6eb6121a3ef71.
+Exact derivations, commands and custody are in the Explorify source README.
+Raw archive release item-8-explorify-geometry-2026-09-07-r1 has 271 files and
+passed local and downloaded restore. No live runtime remains from this batch.
+User AGENTS.md edits and protected untracked files remain untouched.
+
+Continue the other 323 families in quantified batches, reusing existing facts.
+All-family presentation, final acceptance/consistency, verified backup/history
+consolidation, PR review and main delivery remain open. Do not repeat assessed
+Explorify evidence or introduce more measurements absent a specific unmet claim.
+
 #### Five Explorify settlements: attribution integrated after bff151b9
 
 Campsite, dark_forest_settlement, farmstead, ruins and tavern now have eight
