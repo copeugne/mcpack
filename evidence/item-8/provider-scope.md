@@ -10367,3 +10367,37 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-witches-attribut
 ```
 
 Use fresh output files. Item 8 and its final acceptance gate remain open.
+
+### Guild and ruins attribute increment
+
+Predeclared scope: ruined church, ruined fort and redhorn guild, eleven fields
+each. Decision be81f551 supplies ten source-based attribute interpretations per
+family and retains the resolved biome lists. Nominal XYZ template sizes are
+38 by 29 by 29, 13 by 23 by 26 and 28 by 48 by 30 respectively. All use surface
+projection. The guild has authored villagers/guards and one entity without an ID;
+the ruins have no authored entities. No selected template has physical spawners.
+Visibility remains qualitative, with no measured approach or discovery distance.
+
+Frozen toggles enable all three at weight 3 in idas_common. The church and fort
+each overlap 27 of 29 tag-matched biomes in the captured Overworld; the guild
+overlaps 29 of 30. Absent registered biomes remain explicit, not silently counted
+as generated habitat. No captured generated-world occurrence is claimed.
+
+Focused IDAS checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright
+checks. Two fresh builds agree exactly, SHA-256
+8707975c86b830fd24bf179a30fe127cefba0b1af3b1cc54bd4ae051b42af4fc.
+Only these three family rows and the decision input identity change. Membership,
+world observations, biome constraints and all other family rows remain unchanged.
+No new measurement or tooling was introduced.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-guild-ruins-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+cmp evidence/raw/item8/inventory-guild-ruins-attributes-r1.json evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+```
+
+Use fresh output files. Item 8 and its final acceptance gate remain open.
