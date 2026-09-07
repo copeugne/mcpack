@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Better Mineshafts and Spider placement after 6e8d9728
+
+Four dimension/discoverability attributes integrated for Better Mineshafts and
+Spider Dungeon using existing effective biomes and specialized generation
+sources. Both are Overworld-compatible; visibility is conditional source
+inference. Four geometry attributes remain, so counts stay351/449 assessed,
+98 remaining. Existing starts are all non-full. Mineshaft entrance envelopes
+reach maximum build height, not occupied height; preserve that distinction.
+Exact derivations: evidence/item-8/sources/mineshafts-code/README.md and
+betterdungeons-code/README.md. No new runtime or tooling. Next resolve the
+four geometry attributes using existing sources and only a necessary capture;
+do not turn optional live loot/population unknowns into this item's backlog.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+e1888e642376c531efb738fef57d0bebe1f002e40149e580ddd7a84c11143667.
+
 #### Active WDA assessments finished after e5cc3aff
 
 Six geometry attributes finish Foundry, Mining Complex and Scorched Mines from
