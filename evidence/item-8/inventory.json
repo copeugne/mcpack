@@ -304,7 +304,10 @@
         "packaged_template_y_blocks": 17,
         "template_id": "adorabuild_structures:ancient_palace_1"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:ancient_palace_1": {
           "biomes": [
@@ -344,11 +347,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -357,7 +361,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_1"
         ],
@@ -377,12 +381,96 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 17,
             "template_id": "adorabuild_structures:ancient_palace_1"
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:ancient_palace_1": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_1"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:ancient_palace_1"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_1"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {},
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_1"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Multi-level flat-roofed End-stone palace with columned entrance and upper window band."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-monument-views/end_ocean_temples.svg.gz": "99538d48190234027b950e59c0bdbbd1f1719b83bebab086435d41437757a8f9",
           "evidence/item-8/sources/adora-monument-views/palaces_mansion.svg.gz": "8852228e8bb443076ff655f63e50e4491471a327cc64b39c529f50582f7347bd",
           "evidence/item-8/sources/adora-monument-views/sand_designs.svg.gz": "829df11804c58354fae0d55fc0e000d7259312217a267e94270dea7058348fb8",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -390,7 +478,7 @@
         },
         "family_id": "adorabuild_structures:ancient_palace",
         "name": "AdoraBuild ancient palace",
-        "rationale": "The first End-stone palace is a multi-level, flat-roofed building with columned entrance, upper window band, ladder and End-city loot. The broad stepped-roof hall and open pavilion are separate complete layouts, not assembly pieces or aliases. Empty spawn overrides and absent template entities do not imply absence of natural enemies. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "The first End-stone palace is a multi-level, flat-roofed building with columned entrance, upper window band, ladder and End-city loot. The broad stepped-roof hall and open pavilion are separate complete layouts, not assembly pieces or aliases. Empty spawn overrides and absent template entities do not imply absence of natural enemies. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:ancient_palace_1"
         ],
@@ -415,9 +503,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -431,13 +523,14 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_1"
         ]
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -447,7 +540,7 @@
           "unresolved_entities"
         ],
         "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_1"
         ],
@@ -461,8 +554,14 @@
       "structure_ids": [
         "adorabuild_structures:ancient_palace_1"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Multi-level flat-roofed End-stone palace with columned entrance and upper window band."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -482,7 +581,10 @@
         "packaged_template_y_blocks": 19,
         "template_id": "adorabuild_structures:ancient_palace_2"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:ancient_palace_2": {
           "biomes": [
@@ -522,11 +624,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -535,7 +638,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_2"
         ],
@@ -555,12 +658,96 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 19,
             "template_id": "adorabuild_structures:ancient_palace_2"
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:ancient_palace_2": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_2"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:ancient_palace_2"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_2"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {},
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_2"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Broad enclosed End-stone hall with stepped roof and tall wall/column divisions."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-monument-views/end_ocean_temples.svg.gz": "99538d48190234027b950e59c0bdbbd1f1719b83bebab086435d41437757a8f9",
           "evidence/item-8/sources/adora-monument-views/palaces_mansion.svg.gz": "8852228e8bb443076ff655f63e50e4491471a327cc64b39c529f50582f7347bd",
           "evidence/item-8/sources/adora-monument-views/sand_designs.svg.gz": "829df11804c58354fae0d55fc0e000d7259312217a267e94270dea7058348fb8",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -568,7 +755,7 @@
         },
         "family_id": "adorabuild_structures:ancient_palace_hall",
         "name": "AdoraBuild ancient palace hall",
-        "rationale": "One broad enclosed End-stone hall with stepped roof, tall wall/column divisions, purple glazing, ladder and End-city loot. Its complete hall layout differs from the multi-level first palace and open pavilion; the common material and loot theme is preserved without collapsing designs. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "One broad enclosed End-stone hall with stepped roof, tall wall/column divisions, purple glazing, ladder and End-city loot. Its complete hall layout differs from the multi-level first palace and open pavilion; the common material and loot theme is preserved without collapsing designs. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:ancient_palace_2"
         ],
@@ -593,9 +780,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -609,13 +800,14 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_2"
         ]
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -625,7 +817,7 @@
           "unresolved_entities"
         ],
         "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_2"
         ],
@@ -639,8 +831,14 @@
       "structure_ids": [
         "adorabuild_structures:ancient_palace_2"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Broad enclosed End-stone hall with stepped roof and tall wall/column divisions."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -660,7 +858,10 @@
         "packaged_template_y_blocks": 15,
         "template_id": "adorabuild_structures:ancient_palace_3"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:ancient_palace_3": {
           "biomes": [
@@ -700,11 +901,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -713,7 +915,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_3"
         ],
@@ -733,12 +935,96 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 15,
             "template_id": "adorabuild_structures:ancient_palace_3"
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:ancient_palace_3": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_3"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:ancient_palace_3"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_3"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {},
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:ancient_palace_3"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Open columned End-stone pavilion with raised platform and stepped roof."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-monument-views/end_ocean_temples.svg.gz": "99538d48190234027b950e59c0bdbbd1f1719b83bebab086435d41437757a8f9",
           "evidence/item-8/sources/adora-monument-views/palaces_mansion.svg.gz": "8852228e8bb443076ff655f63e50e4491471a327cc64b39c529f50582f7347bd",
           "evidence/item-8/sources/adora-monument-views/sand_designs.svg.gz": "829df11804c58354fae0d55fc0e000d7259312217a267e94270dea7058348fb8",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -746,7 +1032,7 @@
         },
         "family_id": "adorabuild_structures:ancient_palace_pavilion",
         "name": "AdoraBuild ancient palace pavilion",
-        "rationale": "One open columned End-stone pavilion with raised platform, stepped roof, chorus flower, purple glazing and End-city loot. The open platform layout differs from the enclosed hall and multi-level palace. There are no authored template entities and the spawn overrides are empty; natural enemies are not excluded. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "One open columned End-stone pavilion with raised platform, stepped roof, chorus flower, purple glazing and End-city loot. The open platform layout differs from the enclosed hall and multi-level palace. There are no authored template entities and the spawn overrides are empty; natural enemies are not excluded. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:ancient_palace_3"
         ],
@@ -771,9 +1057,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "End-city-loot building without authored resident enemies. Natural spawning is not excluded."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -787,13 +1077,14 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_3"
         ]
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -803,7 +1094,7 @@
           "unresolved_entities"
         ],
         "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:ancient_palace_3"
         ],
@@ -817,8 +1108,14 @@
       "structure_ids": [
         "adorabuild_structures:ancient_palace_3"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Open columned End-stone pavilion with raised platform and stepped roof."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -3861,9 +4158,53 @@
       }
     },
     "adorabuild_structures:end_bubble": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_bubble_large_1": {
+            "template_id": "adorabuild_structures:end_bubble_large_1",
+            "xz_blocks": [
+              24,
+              24
+            ]
+          },
+          "adorabuild_structures:end_bubble_medium_1": {
+            "template_id": "adorabuild_structures:end_bubble_medium_1",
+            "xz_blocks": [
+              16,
+              16
+            ]
+          },
+          "adorabuild_structures:end_bubble_medium_2": {
+            "template_id": "adorabuild_structures:end_bubble_medium_2",
+            "xz_blocks": [
+              11,
+              11
+            ]
+          }
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_bubble_large_1": {
+            "template_id": "adorabuild_structures:end_bubble_large_1",
+            "y_blocks": 18
+          },
+          "adorabuild_structures:end_bubble_medium_1": {
+            "template_id": "adorabuild_structures:end_bubble_medium_1",
+            "y_blocks": 10
+          },
+          "adorabuild_structures:end_bubble_medium_2": {
+            "template_id": "adorabuild_structures:end_bubble_medium_2",
+            "y_blocks": 19
+          }
+        }
+      },
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_bubble_large_1": {
           "biomes": [
@@ -3969,11 +4310,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -3982,7 +4324,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_bubble_large_1",
           "adorabuild_structures:end_bubble_medium_1",
@@ -3991,8 +4333,173 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_bubble_large_1": {
+                "template_id": "adorabuild_structures:end_bubble_large_1",
+                "xz_blocks": [
+                  24,
+                  24
+                ]
+              },
+              "adorabuild_structures:end_bubble_medium_1": {
+                "template_id": "adorabuild_structures:end_bubble_medium_1",
+                "xz_blocks": [
+                  16,
+                  16
+                ]
+              },
+              "adorabuild_structures:end_bubble_medium_2": {
+                "template_id": "adorabuild_structures:end_bubble_medium_2",
+                "xz_blocks": [
+                  11,
+                  11
+                ]
+              }
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_bubble_large_1": {
+                "template_id": "adorabuild_structures:end_bubble_large_1",
+                "y_blocks": 18
+              },
+              "adorabuild_structures:end_bubble_medium_1": {
+                "template_id": "adorabuild_structures:end_bubble_medium_1",
+                "y_blocks": 10
+              },
+              "adorabuild_structures:end_bubble_medium_2": {
+                "template_id": "adorabuild_structures:end_bubble_medium_2",
+                "y_blocks": 19
+              }
+            }
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_bubble_large_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_bubble_medium_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_bubble_medium_2": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_bubble_large_1",
+              "adorabuild_structures:end_bubble_medium_1",
+              "adorabuild_structures:end_bubble_medium_2"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "Enclosed animal/vegetation habitats with axolotl, tropical-fish and saved hive-bee sources; no authored hostile resident encounter. Bee retaliation remains possible."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_bubble_medium_1"
+                ],
+                "value": "adorabuild_structures:beehive_loot"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_bubble_medium_1"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_bubble_large_1",
+              "adorabuild_structures:end_bubble_medium_1",
+              "adorabuild_structures:end_bubble_medium_2"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "block_entity_sources": [
+              {
+                "basis": "Raw retained template block-entity NBT, separate from top-level entities. Legacy keys are preserved; successful loading or bee release is not asserted.",
+                "block_entity": "minecraft:beehive",
+                "entity_id": "minecraft:bee",
+                "path": "Bees[].EntityData.id",
+                "saved_entries": 3,
+                "template_id": "adorabuild_structures:end_bubble_medium_1"
+              }
+            ],
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {
+              "minecraft:axolotl": [
+                "adorabuild_structures:end_bubble_large_1"
+              ],
+              "minecraft:tropical_fish": [
+                "adorabuild_structures:end_bubble_medium_2"
+              ]
+            },
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_bubble_large_1",
+              "adorabuild_structures:end_bubble_medium_1",
+              "adorabuild_structures:end_bubble_medium_2"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Obsidian and purple-glass enclosed habitats, with broad and pedestal-supported variants containing vegetation, tree or water."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-landmark-views/bubbles.svg.gz": "6e6d7894a258b901b10d308d8b89621ad73e0d9bd45611dfe40c5a39477cffe5",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -4000,7 +4507,7 @@
         },
         "family_id": "adorabuild_structures:end_bubble",
         "name": "AdoraBuild end bubble",
-        "rationale": "Three enclosed habitat variants use obsidian and purple-glass envelopes, including broad and pedestal-supported forms. Their interiors differ: lush vegetation and authored axolotls, a tree/nest with loot chests, or an aquatic habitat with authored tropical fish. Those habitat and envelope differences remain explicit variants of the enclosed-display design, not a claim of identical rewards. They differ from the prismarine/glass sculk installation. Canonical design relationships are resolved. Effective generation, occupied geometry, exposure and remaining gameplay attributes remain unproven.",
+        "rationale": "Three enclosed habitat variants use obsidian and purple-glass envelopes, including broad and pedestal-supported forms. Their interiors differ: lush vegetation and authored axolotls, a tree/nest with loot chests, or an aquatic habitat with authored tropical fish. Those habitat and envelope differences remain explicit variants of the enclosed-display design, not a claim of identical rewards. They differ from the prismarine/glass sculk installation. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_bubble_large_1",
           "adorabuild_structures:end_bubble_medium_1",
@@ -4063,9 +4570,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "Enclosed animal/vegetation habitats with axolotl, tropical-fish and saved hive-bee sources; no authored hostile resident encounter. Bee retaliation remains possible."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -4086,7 +4597,7 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_bubble_large_1",
           "adorabuild_structures:end_bubble_medium_1",
@@ -4095,7 +4606,18 @@
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+        "block_entity_sources": [
+          {
+            "basis": "Raw retained template block-entity NBT, separate from top-level entities. Legacy keys are preserved; successful loading or bee release is not asserted.",
+            "block_entity": "minecraft:beehive",
+            "entity_id": "minecraft:bee",
+            "path": "Bees[].EntityData.id",
+            "saved_entries": 3,
+            "template_id": "adorabuild_structures:end_bubble_medium_1"
+          }
+        ],
         "custom_generation": {},
         "fields": [
           "authored_entities",
@@ -4111,7 +4633,7 @@
             "adorabuild_structures:end_bubble_medium_2"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_bubble_large_1",
           "adorabuild_structures:end_bubble_medium_1",
@@ -4131,17 +4653,56 @@
         "adorabuild_structures:end_bubble_medium_1",
         "adorabuild_structures:end_bubble_medium_2"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Obsidian and purple-glass enclosed habitats, with broad and pedestal-supported variants containing vegetation, tree or water."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
       }
     },
     "adorabuild_structures:end_gateway": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_gateway_large_1": {
+            "template_id": "adorabuild_structures:end_gateway_large_1",
+            "xz_blocks": [
+              9,
+              9
+            ]
+          },
+          "adorabuild_structures:end_gateway_small_1": {
+            "template_id": "adorabuild_structures:end_gateway_small_1",
+            "xz_blocks": [
+              7,
+              7
+            ]
+          }
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_gateway_large_1": {
+            "template_id": "adorabuild_structures:end_gateway_large_1",
+            "y_blocks": 27
+          },
+          "adorabuild_structures:end_gateway_small_1": {
+            "template_id": "adorabuild_structures:end_gateway_small_1",
+            "y_blocks": 9
+          }
+        }
+      },
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_gateway_large_1": {
           "biomes": [
@@ -4214,11 +4775,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -4227,7 +4789,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_gateway_large_1",
           "adorabuild_structures:end_gateway_small_1"
@@ -4235,8 +4797,125 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_gateway_large_1": {
+                "template_id": "adorabuild_structures:end_gateway_large_1",
+                "xz_blocks": [
+                  9,
+                  9
+                ]
+              },
+              "adorabuild_structures:end_gateway_small_1": {
+                "template_id": "adorabuild_structures:end_gateway_small_1",
+                "xz_blocks": [
+                  7,
+                  7
+                ]
+              }
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_gateway_large_1": {
+                "template_id": "adorabuild_structures:end_gateway_large_1",
+                "y_blocks": 27
+              },
+              "adorabuild_structures:end_gateway_small_1": {
+                "template_id": "adorabuild_structures:end_gateway_small_1",
+                "y_blocks": 9
+              }
+            }
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "No authored hostile resident encounter in the supplied sources. Animals/hive contents where present are authored inputs; natural ambient spawning remains separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_gateway_large_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_gateway_small_1": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_gateway_large_1",
+              "adorabuild_structures:end_gateway_small_1"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "source_detail": "Both gateway block entities save ExactTeleport=1 and ExitPortal=(100,50,0); these are authored destination inputs, not tested destination validity.",
+            "value": "Gateway installation without authored resident enemies or container loot. Teleport behavior and destination safety are not tested."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_gateway_large_1",
+              "adorabuild_structures:end_gateway_small_1"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {},
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_gateway_large_1",
+              "adorabuild_structures:end_gateway_small_1"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Small and tall purpur/bedrock gateway frames; the tall variant adds beacon and expanded vertical framing."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-landmark-views/gateways_portal.svg.gz": "dc96d67d325a1a21aa72e274076880c0a4e847a5c05f992bcfda0761b5aa9028",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -4244,7 +4923,7 @@
         },
         "family_id": "adorabuild_structures:end_gateway",
         "name": "AdoraBuild end gateway",
-        "rationale": "Small and tall variants share framed purpur-and-bedrock gateway construction with actual end_gateway block entities. The tall version extends the frame vertically and adds beacon, diamond and crying-obsidian contents; the small version retains emerald material. These are gateway design variants. They differ from the Nether-brick portal shrine rather than being material aliases of it. Canonical design relationships are resolved. Effective generation, occupied geometry, exposure and remaining gameplay attributes remain unproven.",
+        "rationale": "Small and tall variants share framed purpur-and-bedrock gateway construction with actual end_gateway block entities. The tall version extends the frame vertically and adds beacon, diamond and crying-obsidian contents; the small version retains emerald material. These are gateway design variants. They differ from the Nether-brick portal shrine rather than being material aliases of it. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_gateway_large_1",
           "adorabuild_structures:end_gateway_small_1"
@@ -4288,15 +4967,20 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "source_detail": "Both gateway block entities save ExactTeleport=1 and ExitPortal=(100,50,0); these are authored destination inputs, not tested destination validity.",
+        "value": "Gateway installation without authored resident enemies or container loot. Teleport behavior and destination safety are not tested."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
         ],
         "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_gateway_large_1",
           "adorabuild_structures:end_gateway_small_1"
@@ -4304,6 +4988,7 @@
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -4313,7 +4998,7 @@
           "unresolved_entities"
         ],
         "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_gateway_large_1",
           "adorabuild_structures:end_gateway_small_1"
@@ -4330,17 +5015,67 @@
         "adorabuild_structures:end_gateway_large_1",
         "adorabuild_structures:end_gateway_small_1"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Small and tall purpur/bedrock gateway frames; the tall variant adds beacon and expanded vertical framing."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
       }
     },
     "adorabuild_structures:end_house": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_house_medium_2": {
+            "template_id": "adorabuild_structures:end_house_medium_2",
+            "xz_blocks": [
+              11,
+              12
+            ]
+          },
+          "adorabuild_structures:end_house_small_1": {
+            "template_id": "adorabuild_structures:end_house_small_1",
+            "xz_blocks": [
+              10,
+              10
+            ]
+          },
+          "adorabuild_structures:end_house_small_2": {
+            "template_id": "adorabuild_structures:end_house_small_2",
+            "xz_blocks": [
+              9,
+              8
+            ]
+          }
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_house_medium_2": {
+            "template_id": "adorabuild_structures:end_house_medium_2",
+            "y_blocks": 11
+          },
+          "adorabuild_structures:end_house_small_1": {
+            "template_id": "adorabuild_structures:end_house_small_1",
+            "y_blocks": 7
+          },
+          "adorabuild_structures:end_house_small_2": {
+            "template_id": "adorabuild_structures:end_house_small_2",
+            "y_blocks": 7
+          }
+        }
+      },
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_house_medium_2": {
           "biomes": [
@@ -4446,11 +5181,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -4459,7 +5195,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_2",
           "adorabuild_structures:end_house_small_1",
@@ -4468,9 +5204,157 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_house_medium_2": {
+                "template_id": "adorabuild_structures:end_house_medium_2",
+                "xz_blocks": [
+                  11,
+                  12
+                ]
+              },
+              "adorabuild_structures:end_house_small_1": {
+                "template_id": "adorabuild_structures:end_house_small_1",
+                "xz_blocks": [
+                  10,
+                  10
+                ]
+              },
+              "adorabuild_structures:end_house_small_2": {
+                "template_id": "adorabuild_structures:end_house_small_2",
+                "xz_blocks": [
+                  9,
+                  8
+                ]
+              }
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_house_medium_2": {
+                "template_id": "adorabuild_structures:end_house_medium_2",
+                "y_blocks": 11
+              },
+              "adorabuild_structures:end_house_small_1": {
+                "template_id": "adorabuild_structures:end_house_small_1",
+                "y_blocks": 7
+              },
+              "adorabuild_structures:end_house_small_2": {
+                "template_id": "adorabuild_structures:end_house_small_2",
+                "y_blocks": 7
+              }
+            }
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_house_medium_2": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_house_small_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_house_small_2": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_2",
+              "adorabuild_structures:end_house_small_1",
+              "adorabuild_structures:end_house_small_2"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "Authored shulker encounter in templates listed by mob_source. end_house_small_2 lacks the shulker input present in the other low-house variants."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_house_medium_2",
+                  "adorabuild_structures:end_house_small_1",
+                  "adorabuild_structures:end_house_small_2"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_2",
+              "adorabuild_structures:end_house_small_1",
+              "adorabuild_structures:end_house_small_2"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {
+              "minecraft:shulker": [
+                "adorabuild_structures:end_house_medium_2",
+                "adorabuild_structures:end_house_small_1"
+              ]
+            },
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_2",
+              "adorabuild_structures:end_house_small_1",
+              "adorabuild_structures:end_house_small_2"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Low enclosed End-stone/purpur rooms with purple glazing and differing entrance/roof forms."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-house-views/end.svg.gz": "2db2961c4af1415a89260b0db20c15a42dd564afcdf8109a4a53d5b64a59bdfb",
           "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -4478,7 +5362,7 @@
         },
         "family_id": "adorabuild_structures:end_house",
         "name": "AdoraBuild End house",
-        "rationale": "Three low enclosed End-stone/purpur house variants share rectangular rooms, purple glazing, end rods, End-city loot and ender-chest contents. Projecting entrance, stepped roof and plain roof remain layout variants. Authored shulkers occur in medium_2 and small_1, but not small_2. These are complete buildings rather than parts of an End city or the raised-room house design. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "Three low enclosed End-stone/purpur house variants share rectangular rooms, purple glazing, end rods, End-city loot and ender-chest contents. Projecting entrance, stepped roof and plain roof remain layout variants. Authored shulkers occur in medium_2 and small_1, but not small_2. These are complete buildings rather than parts of an End city or the raised-room house design. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_house_medium_2",
           "adorabuild_structures:end_house_small_1",
@@ -4541,9 +5425,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "Authored shulker encounter in templates listed by mob_source. end_house_small_2 lacks the shulker input present in the other low-house variants."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -4559,7 +5447,7 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_2",
           "adorabuild_structures:end_house_small_1",
@@ -4568,6 +5456,7 @@
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -4582,7 +5471,7 @@
             "adorabuild_structures:end_house_small_1"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_2",
           "adorabuild_structures:end_house_small_1",
@@ -4602,17 +5491,56 @@
         "adorabuild_structures:end_house_small_1",
         "adorabuild_structures:end_house_small_2"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Low enclosed End-stone/purpur rooms with purple glazing and differing entrance/roof forms."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
       }
     },
     "adorabuild_structures:end_raised_house": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_house_medium_1": {
+            "template_id": "adorabuild_structures:end_house_medium_1",
+            "xz_blocks": [
+              8,
+              8
+            ]
+          },
+          "adorabuild_structures:end_house_medium_3": {
+            "template_id": "adorabuild_structures:end_house_medium_3",
+            "xz_blocks": [
+              9,
+              9
+            ]
+          }
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_house_medium_1": {
+            "template_id": "adorabuild_structures:end_house_medium_1",
+            "y_blocks": 12
+          },
+          "adorabuild_structures:end_house_medium_3": {
+            "template_id": "adorabuild_structures:end_house_medium_3",
+            "y_blocks": 14
+          }
+        }
+      },
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_house_medium_1": {
           "biomes": [
@@ -4685,11 +5613,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -4698,7 +5627,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_1",
           "adorabuild_structures:end_house_medium_3"
@@ -4706,9 +5635,139 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_house_medium_1": {
+                "template_id": "adorabuild_structures:end_house_medium_1",
+                "xz_blocks": [
+                  8,
+                  8
+                ]
+              },
+              "adorabuild_structures:end_house_medium_3": {
+                "template_id": "adorabuild_structures:end_house_medium_3",
+                "xz_blocks": [
+                  9,
+                  9
+                ]
+              }
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_house_medium_1": {
+                "template_id": "adorabuild_structures:end_house_medium_1",
+                "y_blocks": 12
+              },
+              "adorabuild_structures:end_house_medium_3": {
+                "template_id": "adorabuild_structures:end_house_medium_3",
+                "y_blocks": 14
+              }
+            }
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_house_medium_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_house_medium_3": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_1",
+              "adorabuild_structures:end_house_medium_3"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "Authored shulker encounter in the retained template variants."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_house_medium_1",
+                  "adorabuild_structures:end_house_medium_3"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_1",
+              "adorabuild_structures:end_house_medium_3"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {
+              "minecraft:shulker": [
+                "adorabuild_structures:end_house_medium_1",
+                "adorabuild_structures:end_house_medium_3"
+              ]
+            },
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_house_medium_1",
+              "adorabuild_structures:end_house_medium_3"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Expanded upper room on a narrow supporting stem, with windows and roof-opening variants."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-house-views/end.svg.gz": "2db2961c4af1415a89260b0db20c15a42dd564afcdf8109a4a53d5b64a59bdfb",
           "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -4716,7 +5775,7 @@
         },
         "family_id": "adorabuild_structures:end_raised_house",
         "name": "AdoraBuild raised End house",
-        "rationale": "Two raised-room designs share a narrow supporting stem beneath an expanded upper room, with End-stone/purpur materials, End-city loot and authored shulkers. Roof opening, window bands, ladder and ender-chest differences remain variants. This raised layout differs from the low End house rooms and ordinary surface dwellings. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "Two raised-room designs share a narrow supporting stem beneath an expanded upper room, with End-stone/purpur materials, End-city loot and authored shulkers. Roof opening, window bands, ladder and ender-chest differences remain variants. This raised layout differs from the low End house rooms and ordinary surface dwellings. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_house_medium_1",
           "adorabuild_structures:end_house_medium_3"
@@ -4760,9 +5819,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "Authored shulker encounter in the retained template variants."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -4777,7 +5840,7 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_1",
           "adorabuild_structures:end_house_medium_3"
@@ -4785,6 +5848,7 @@
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -4799,7 +5863,7 @@
             "adorabuild_structures:end_house_medium_3"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_house_medium_1",
           "adorabuild_structures:end_house_medium_3"
@@ -4816,8 +5880,14 @@
         "adorabuild_structures:end_house_medium_1",
         "adorabuild_structures:end_house_medium_3"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Expanded upper room on a narrow supporting stem, with windows and roof-opening variants."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -4837,7 +5907,10 @@
         "packaged_template_y_blocks": 10,
         "template_id": "adorabuild_structures:end_ship_small_1"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_ship_small_1": {
           "biomes": [
@@ -4877,11 +5950,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -4890,7 +5964,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_ship_small_1"
         ],
@@ -4910,10 +5984,98 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 10,
             "template_id": "adorabuild_structures:end_ship_small_1"
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_ship_small_1": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_ship_small_1"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "Authored shulker encounter in the retained template variants."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_ship_small_1"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_ship_small_1"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {
+              "minecraft:shulker": [
+                "adorabuild_structures:end_ship_small_1"
+              ]
+            },
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_ship_small_1"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Compact End-material ship with mast-like center and deck/frame form; its generator follows terrain rather than proving an airborne craft."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-facility-views/vessels.svg.gz": "258dd16f8cc65f277e0e540de07dfefff051937e7b25dfdfe74d0141c697edb6",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -4921,7 +6083,7 @@
         },
         "family_id": "adorabuild_structures:end_ship",
         "name": "AdoraBuild end ship",
-        "rationale": "One compact End-material ship with mast-like center, chest/skull content and authored shulker. Its small deck-and-frame form differs from the Overworld sailing ships, rafts and covered boat. Preserve its zero start height and lack of heightmap projection without inferring effective airborne placement. Canonical design relationships are resolved. Effective generation, occupied geometry, exposure and remaining gameplay attributes remain unproven.",
+        "rationale": "One compact End-material ship with mast-like center, chest/skull content and authored shulker. Its small deck-and-frame form differs from the Overworld sailing ships, rafts and covered boat. Preserve its zero start height and lack of heightmap projection without inferring effective airborne placement. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_ship_small_1"
         ],
@@ -4946,9 +6108,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "Authored shulker encounter in the retained template variants."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -4962,13 +6128,14 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_ship_small_1"
         ]
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -4982,7 +6149,7 @@
             "adorabuild_structures:end_ship_small_1"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_ship_small_1"
         ],
@@ -4996,17 +6163,56 @@
       "structure_ids": [
         "adorabuild_structures:end_ship_small_1"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Compact End-material ship with mast-like center and deck/frame form; its generator follows terrain rather than proving an airborne craft."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
       }
     },
     "adorabuild_structures:end_temple": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_temple_large_1": {
+            "template_id": "adorabuild_structures:end_temple_large_1",
+            "xz_blocks": [
+              17,
+              19
+            ]
+          },
+          "adorabuild_structures:end_temple_small_1": {
+            "template_id": "adorabuild_structures:end_temple_small_1",
+            "xz_blocks": [
+              12,
+              12
+            ]
+          }
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+        "by_structure": {
+          "adorabuild_structures:end_temple_large_1": {
+            "template_id": "adorabuild_structures:end_temple_large_1",
+            "y_blocks": 11
+          },
+          "adorabuild_structures:end_temple_small_1": {
+            "template_id": "adorabuild_structures:end_temple_small_1",
+            "y_blocks": 9
+          }
+        }
+      },
+      "authored_or_natural_enemies": {
+        "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+        "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+      },
       "biome_constraints": {
         "adorabuild_structures:end_temple_large_1": {
           "biomes": [
@@ -5079,11 +6285,12 @@
             "minecraft:the_end"
           ]
         },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
+        "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
         "observed": []
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "spawner_blocks",
@@ -5092,7 +6299,7 @@
         "generation_marker_templates": [],
         "packaged_entity_sources": [],
         "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_temple_large_1",
           "adorabuild_structures:end_temple_small_1"
@@ -5100,10 +6307,143 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_temple_large_1": {
+                "template_id": "adorabuild_structures:end_temple_large_1",
+                "xz_blocks": [
+                  17,
+                  19
+                ]
+              },
+              "adorabuild_structures:end_temple_small_1": {
+                "template_id": "adorabuild_structures:end_temple_small_1",
+                "xz_blocks": [
+                  12,
+                  12
+                ]
+              }
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Sole traced template per variant with no jigsaw block entities. Full nominal source envelope includes air/padding; rotation may exchange horizontal axes. Not observed occupied geometry or exposed height.",
+            "by_structure": {
+              "adorabuild_structures:end_temple_large_1": {
+                "template_id": "adorabuild_structures:end_temple_large_1",
+                "y_blocks": 11
+              },
+              "adorabuild_structures:end_temple_small_1": {
+                "template_id": "adorabuild_structures:end_temple_small_1",
+                "y_blocks": 9
+              }
+            }
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Empty spawn overrides do not disable biome spawning. No physical spawner or marker source is supplied. No natural population is measured.",
+            "value": "Shulkers in the listed variants are authored template enemies; natural ambient spawning is separate."
+          },
+          "dimension": {
+            "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "biome_compatible_by_structure": {
+              "adorabuild_structures:end_temple_large_1": [
+                "minecraft:the_end"
+              ],
+              "adorabuild_structures:end_temple_small_1": [
+                "minecraft:the_end"
+              ]
+            },
+            "eligibility": "Captured biome-source overlap with the resolved retained End biome tag, plus the custom generator height condition. EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "observed": []
+          },
+          "generated_spawners": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "spawner_blocks",
+              "generation_markers"
+            ],
+            "generation_marker_templates": [],
+            "packaged_entity_sources": [],
+            "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_temple_large_1",
+              "adorabuild_structures:end_temple_small_1"
+            ],
+            "unresolved_sources": {}
+          },
+          "intended_hostility": {
+            "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+            "value": "Authored shulker encounter; large temple additionally contains an end-crystal entity, a separate interaction hazard."
+          },
+          "loot_table_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "custom_generation": {},
+            "fields": [
+              "loot_references"
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "adorabuild_structures:end_temple_large_1",
+                  "adorabuild_structures:end_temple_small_1"
+                ],
+                "value": "minecraft:chests/end_city_treasure"
+              }
+            ],
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_temple_large_1",
+              "adorabuild_structures:end_temple_small_1"
+            ]
+          },
+          "mob_source": {
+            "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+            "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
+            "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+            "custom_generation": {},
+            "fields": [
+              "authored_entities",
+              "spawner_blocks",
+              "generation_markers",
+              "unresolved_entities"
+            ],
+            "packaged_authored_entity_templates": {
+              "minecraft:end_crystal": [
+                "adorabuild_structures:end_temple_large_1"
+              ],
+              "minecraft:shulker": [
+                "adorabuild_structures:end_temple_large_1",
+                "adorabuild_structures:end_temple_small_1"
+              ]
+            },
+            "status": "SOURCE_ASSESSED",
+            "template_ids": [
+              "adorabuild_structures:end_temple_large_1",
+              "adorabuild_structures:end_temple_small_1"
+            ],
+            "unresolved_authored_entities": {}
+          },
+          "underground_surface_classification": {
+            "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+            "value": "Surface-relative custom-generator start."
+          },
+          "visual_discoverability": {
+            "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+            "source_form": "Low purpur temple halls with decorated corner columns and purple glazing; larger variant expands the hall."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/adora-monument-views/end_ocean_temples.svg.gz": "99538d48190234027b950e59c0bdbbd1f1719b83bebab086435d41437757a8f9",
           "evidence/item-8/sources/adora-monument-views/palaces_mansion.svg.gz": "8852228e8bb443076ff655f63e50e4491471a327cc64b39c529f50582f7347bd",
           "evidence/item-8/sources/adora-monument-views/sand_designs.svg.gz": "829df11804c58354fae0d55fc0e000d7259312217a267e94270dea7058348fb8",
+          "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -5111,7 +6451,7 @@
         },
         "family_id": "adorabuild_structures:end_temple",
         "name": "AdoraBuild end temple",
-        "rationale": "Two purpur temple variants share a low rectangular hall, decorated corner columns and purple glazing, with shulkers and End-city loot. The larger variant expands the same architectural form and adds end crystal, ender chest, crying obsidian and chorus flower content. The full definitions remain distinct variants; neither template contents nor common End placement proves identical encounter behavior. Canonical design relationships are resolved. Effective attributes remain open.",
+        "rationale": "Two purpur temple variants share a low rectangular hall, decorated corner columns and purple glazing, with shulkers and End-city loot. The larger variant expands the same architectural form and adds end crystal, ender chest, crying obsidian and chorus flower content. The full definitions remain distinct variants; neither template contents nor common End placement proves identical encounter behavior. Canonical design and required source descriptions are assessed. Custom placement is explained in attributes; realized populations, interactions and visibility distances are not claimed.",
         "structure_ids": [
           "adorabuild_structures:end_temple_large_1",
           "adorabuild_structures:end_temple_small_1"
@@ -5155,9 +6495,13 @@
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Interpretation of retained entity, block-entity and loot sources, not measured difficulty or a guarantee of safe interactions.",
+        "value": "Authored shulker encounter; large temple additionally contains an end-crystal entity, a separate interaction hazard."
+      },
       "loot_table_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "custom_generation": {},
         "fields": [
           "loot_references"
@@ -5172,7 +6516,7 @@
             "value": "minecraft:chests/end_city_treasure"
           }
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_temple_large_1",
           "adorabuild_structures:end_temple_small_1"
@@ -5180,6 +6524,7 @@
       },
       "mob_source": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+        "assessment": "One fully traced template per variant, empty spawn overrides, no unresolved entity IDs, spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors only substitute material/vegetation/coral blocks. Exact saved sources are retained; no successful placement, realized population or rewards are asserted.",
         "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
         "custom_generation": {},
         "fields": [
@@ -5197,7 +6542,7 @@
             "adorabuild_structures:end_temple_small_1"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
+        "status": "SOURCE_ASSESSED",
         "template_ids": [
           "adorabuild_structures:end_temple_large_1",
           "adorabuild_structures:end_temple_small_1"
@@ -5214,8 +6559,14 @@
         "adorabuild_structures:end_temple_large_1",
         "adorabuild_structures:end_temple_small_1"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "EndJigsawStructure.findGenerationPoint samples start_height, then, because project_start_to_heightmap is absent, queries WORLD_SURFACE_WG at chunk minimum X/Z and adds the sampled offset. It rejects height below min_absolute_height before calling vanilla JigsawPlacement.addPieces. All these definitions use offset 0, minimum 10 and beard_box adaptation. This is a surface-relative start, not absolute Y=0 or observed exposure.",
+        "value": "Surface-relative custom-generator start."
+      },
+      "visual_discoverability": {
+        "basis": "Previously inspected design views and retained template content, with custom surface-relative placement. Enclosed rooms, foliage and glazing affect local cues; exposure and visibility distance are not measured.",
+        "source_form": "Low purpur temple halls with decorated corner columns and purple glazing; larger variant expands the hall."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -173748,7 +175099,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "da51dd1e0e950ce0e5ea7006bda4578aeac1c0672d38bba4043920bca2b2e655",
+    "evidence/item-8/family-decisions.json": "4af21e7005dbd41a7632b83bfa42075251c407fd64c4e058ca248a43337d935c",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",

@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Nine AdoraBuild End assessments after d330f931
+
+Retire ancient_palace, ancient_palace_hall, ancient_palace_pavilion, end_bubble,
+end_gateway, end_house, end_raised_house, end_ship and end_temple. Their 16 roots
+use the captured End generator's surface-height-plus-offset branch, not absolute
+Y=0. Integrated 46 missing descriptions and reconciled 36 existing attribution
+answers. Raw hive NBT adds three saved bee entries separately from top-level
+entities; gateway destination inputs remain source facts, not tested behavior.
+Existing provider README records the exact derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-end-descriptions.json`, SHA-256
+a1ffb379e81a7c23bdb1a4717a98aa0d79ec3a25d8685fdd09a6bb2899dc80db.
+Only these nine registry rows changed; biomes, observations and all nonregistry
+contributions are unchanged. Registry assessment is 56/410, with 354 remaining;
+nonregistry is 40/40. Continue the remaining AdoraBuild Nether/Overworld custom
+families and two modular families in quantified batches. Final integration,
+acceptance, backed-up history consolidation, PR review and main delivery remain
+open. Do not reopen retired source descriptions without contradictory evidence.
+
 #### Eleven AdoraBuild variant assessments after 51125031
 
 Retire buried_sand_castle, frozen_shelter, house, library, prison, raft,
