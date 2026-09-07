@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Final three Soaring families assessed after 10d82998
+
+Thirty attributes finish Arena, Jungle and Volcano across 35 templates. Finite
+connector-derived geometry, ordinary/trial spawners, vault payload boundaries,
+saved bogged and loaded dispensers are integrated. Existing vanilla evidence
+supplies trial reward default symbols. No capture or tooling. Source review
+corrected Volcano's draft width from 92 to 98 before acceptance; the rejected
+draft remains raw. Ten shared tests pass. Derivations and limits are in the
+existing moog-generator-code README. Inventory SHA:
+4fda5442d385c104d88096e7ac359c46af4d3c2e533dd25fb7cc7e3c42f6bdd8.
+Soaring 26/26; registry 216/410, nonregistry 40/40, total 256/450 assessed,
+194 remaining. Retire Soaring assessment absent contradictory evidence.
+Continue other providers in quantified coherent batches. Final integration,
+acceptance, verified backup/history consolidation and PR review/main delivery
+remain open.
+
 #### Five developed Soaring complexes assessed after 51c7f1f6
 
 Fifty attributes finish Diorite House, White House, Large Tower, Leaf Hollow
