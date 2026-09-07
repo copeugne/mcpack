@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9f0ac12d and reproduces exactly. Canonical backlog: 28, all
+IDAS. The 887 roots and full variants remain in 426 working groups. Continue
+remaining IDAS buildings and assemblies. Attributes, 33 nonregistry contributions
+and final validation/review/main delivery remain open.
+
 Bearclaw inn, treetop tavern and Tudor pub decisions now distinguish their
 lodge-path-stables, four-section and main-bottom assemblies using existing
 connectors and full contents. Components are not additional families. The focused
