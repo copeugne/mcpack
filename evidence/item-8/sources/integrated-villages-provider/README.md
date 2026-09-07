@@ -110,3 +110,67 @@ The132 literal loot-table references are already preserved by the trace/inventor
 join and describe them rather than rebuilding the extraction. Existing source
 captures and packaged resources remain the first investigation path. No new
 schema, validator or measurement system is needed merely to integrate these facts.
+
+## Content assessment
+
+The five remaining village content attributes are now integrated. This resolves
+the village family, not Integrated Stronghold's seven remaining attributes.
+No new runtime or measurement implementation was added.
+
+The696 reachable-template trace contains civilian, animal, defensive and display
+or contraption entities. The31 distinct packaged entity IDs are retained in the
+mob_source attribute; these IDs are not31 mobs or an observed population.
+The captured registry-r1 debug.log mod list, parsed by existing runtime_mod_ids,
+has Create, Quark and Supplementaries, but lacks Alex's Mobs, Cobblemon, Guard
+Villagers and Iron's Spellbooks. Consequently their template references are
+optional authored candidates, not evidence of enabled entities in this stack.
+The log SHA-256 is e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b,
+retained under the registry-r1 raw-custody manifest. All twelve village roots have
+empty spawn_overrides; natural hazards are not excluded.
+
+The armorer-bottom spawner identified in the previous assessment is configured
+by its selected pool element: mossy_mounds/house/armorer_bottom.json uses
+minecraft:single_pool_element, rigid projection and mossy_mounds_processor.
+Processor index2 is integrated_api:spawner_randomizing_processor and references
+integrated_villages:generic. The packaged integrated_structure_spawners/generic.json
+contains zombie weight15 and skeleton weight10. These are selection inputs, not
+observed population or a guarantee of a spawner in every village.
+
+Direct SpawnerRandomizingProcessor.processBlock inspection shows that SpawnerBlock
+inputs obtain fresh NBT from SetMobSpawnerEntity. It writes the selected entity
+into SpawnData and one weight1 SpawnPotentials entry, plus delay20, minimum200,
+maximum800, count4, nearby limit6, player range16, spawn range4 and block-light
+range0..7. The initially empty template entity is therefore not the final
+configured mob choice. A null manager selection replaces the block with its
+configured replacement state, default air. The source does not prove actual
+placement or successful live spawning.
+
+MobSpawnerManager is a JSON reload listener for integrated_structure_spawners;
+IntegratedAPI.registerDatapackListener registers its singleton. Loading parses
+mobs, resolves entity types, removes zero-weight or unresolved entries, rejects
+negative weights and logs parse failures. getSpawnerMob sums weights and selects
+from the list. Missing lists log and fall back to the vanilla dungeon mob array;
+a zero total returns null; selection exceptions log and return pig. Preserve
+those failure branches rather than silently assuming a successful zombie choice.
+The referenced zombie/skeleton list has positive weights and vanilla IDs.
+Both directly inspected class member hashes are in processor_inspection.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath downloads/item3/candidates/integrated_api-1.7.3+1.21.1-neoforge.jar \
+  com.craisinlord.integrated_api.world.processors.SpawnerRandomizingProcessor \
+  com.craisinlord.integrated_api.misc.mobspawners.MobSpawnerManager
+```
+
+The reachable structure-block marker entries comprise15 CORNER,3 LOAD and1 SAVE,
+with no DATA marker. They are retained authoring metadata, not additional
+mob-spawn marker evidence. The settlement intent remains civilian with a local
+hostile-spawner possibility in Mossy Mounds. Contraptions, displays and vehicles
+are distinguished from enemies, and optional mod references remain scoped.
+
+All132 literal reachable-template LootTable references have current-path packaged
+loot_table definitions. The authoritative attribute lists the exact IDs, and
+the preserved pool trace retains the template associations. This identifies
+sources without claiming container placement, reward yield or applied changes
+from the diagnostic loot-importer map described above. No baseline content was
+repaired or enabled as part of this assessment.
