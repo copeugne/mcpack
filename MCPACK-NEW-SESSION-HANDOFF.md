@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager Pond assessed after 382ec3b5
+
+Ten attributes finish Pond's two roots. Direct connector alignment derives
+nominal Mushroom/Oak envelopes 11x9x15 and 12x10x16 XYZ, retaining upper loot
+ownership and attachment uncertainty. No new capture, measurement or tooling.
+Derivations are in moog-generator-code README. Ten affected tests and builder
+checks pass. Inventory SHA-256:
+19252b3a985f9aaf95edcd40bfe5458e5b547fb9946b42eec5a3ac6615a4da51.
+
+Retire Pond assessment. Voyager 48/65; registry 155/410, nonregistry 40/40,
+total 195/450 assessed, 255 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager trees, rocks and harvest heaps assessed after c82079a3
 
 Twenty-eight attributes finish Living Tree, Rock and Harvest Heap across

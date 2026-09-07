@@ -19195,7 +19195,107 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_attached_xz_blocks_by_structure": {
+            "mvs:mushroom_pond": [
+              11,
+              15
+            ],
+            "mvs:small_oak_pond": [
+              12,
+              16
+            ]
+          },
+          "basis": "Mushroom upper 11x8x15 has aligned down_north connector [1,0,0], matching lower 11x1x15 up_north [1,0,0]; lower origin [0,-1,0] gives Y -1..7. Oak upper 12x8x16 has down_west [7,0,0], matching lower 12x2x16 up_west [7,1,0]; lower origin [0,-2,0] gives Y -2..7. Ordinary rigid single elements preserve X/Z; each lower connector is consumed by its join, with no further attachments. Fully attached nominal envelopes are 11x9x15 and 12x10x16 XYZ. Includes air/padding and possible X/Z exchange on rotation, not guaranteed runtime attachment, occupied-world bounds or exposure."
+        },
+        "approximate_vertical_size": {
+          "nominal_attached_y_blocks_by_structure": {
+            "mvs:mushroom_pond": 9,
+            "mvs:small_oak_pond": 10
+          },
+          "upper_only_y_blocks": 8,
+          "basis": "Mushroom upper 11x8x15 has aligned down_north connector [1,0,0], matching lower 11x1x15 up_north [1,0,0]; lower origin [0,-1,0] gives Y -1..7. Oak upper 12x8x16 has down_west [7,0,0], matching lower 12x2x16 up_west [7,1,0]; lower origin [0,-2,0] gives Y -2..7. Ordinary rigid single elements preserve X/Z; each lower connector is consumed by its join, with no further attachments. Fully attached nominal envelopes are 11x9x15 and 12x10x16 XYZ. Includes air/padding and possible X/Z exchange on rotation, not guaranteed runtime attachment, occupied-world bounds or exposure."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership."
+        },
+        "intended_hostility": {
+          "value": "Environmental pond layouts without authored enemies",
+          "basis": "All four template entity lists are empty. Block entities are architectural jigsaws, containers and one campfire, with no contained mobs, physical spawners or generation markers. Conditional natural spawning, water and terrain remain hazards."
+        },
+        "mob_source": {
+          "authored_entities": [],
+          "contained_entities": [],
+          "structure_spawn_overrides": {},
+          "basis": "Four selected templates have no authored or contained mobs. Oak campfire Items is empty. Jigsaws attach lower terrain components; they do not identify enemy sources. Natural spawning remains conditional on biome and world state."
+        },
+        "loot_table_source": {
+          "packaged_references_by_template": {
+            "mvs:nature/mushroom_pond/mushroom_pond_lower": [],
+            "mvs:nature/mushroom_pond/mushroom_pond_upper": [
+              "mvs:mushroom_pond"
+            ],
+            "mvs:nature/small_oak_pond": [
+              "mvs:pond"
+            ],
+            "mvs:nature/small_oak_pond_lower": []
+          },
+          "basis": "Mushroom upper owns mvs:mushroom_pond; Oak upper owns mvs:pond. Neither lower has a LootTable reference. All pools use minecraft:empty processors. No rolled loot, ordinary salvage yield or equal reward value is inferred."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "basis": "No physical spawner NBT or generation markers in any of the four templates; their architectural connectors join terrain components. Empty processors introduce no spawner substitution."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [],
+          "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected pond with a lower terrain component",
+          "placement_inputs_by_structure": {
+            "mvs:mushroom_pond": {
+              "biomes": "#c:is_overworld",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:nature/mushroom_pond/start_pool",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:small_oak_pond": {
+              "biomes": "#c:is_overworld",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:nature/small_oak_pond/start_pool",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            }
+          },
+          "basis": "Both roots use generic jigsaw, WORLD_SURFACE_WG, zero start height, beard_thin and cannot_spawn_in_liquid=true; optional terrain range/radius are omitted. Lower pieces extend beneath upper origin by one or two blocks. Center-column liquid checks do not remove authored pond water or guarantee a dry/exposed footprint."
+        },
+        "visual_discoverability": {
+          "source_form": "Low landscaped ponds with mushroom or oak vegetation and surface containers. Vegetation and terrain can obscure water edges or contents.",
+          "basis": "Qualitative inference from retained pond forms, source dimensions and placement. No measured viewing distance, guaranteed exposure or discovery rate."
+        }
       }
     },
     {

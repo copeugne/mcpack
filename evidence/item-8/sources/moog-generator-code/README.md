@@ -502,3 +502,38 @@ Only three family rows and the decisions input hash changed; Living Tree geometr
 biomes, observation links and nonregistry content remain unchanged. Inventory
 matches `evidence/raw/item8/inventory-mvs-tree-rock-harvest.json`, SHA-256
 02f306b67b70385e756d6abf9de83ce02ef401798d9aa66f3d377e6739887cd7.
+
+## Voyager Pond family
+
+After 382ec3b5, ten attributes finish Mushroom Pond and Small Oak Pond as two
+variants of one family. Existing hash-bound template/pool evidence is sufficient;
+no capture, measurement or tooling. Each start pool selects its upper template
+and side pool its lower, all ordinary rigid single elements with empty processors.
+
+Mushroom upper is 11x8x15 XYZ, with aligned down_north jigsaw at [1,0,0], target
+mvs:mushroom_pond_top. Lower is 11x1x15, with matching up_north at [1,0,0], name
+mvs:mushroom_pond_top. Its origin moves to [0,-1,0], yielding Y-1..7 and a nominal
+11x9x15 envelope. Oak upper is 12x8x16 with down_west at [7,0,0], target
+mvs:small_oak_pond_top; lower is 12x2x16 with matching up_west at [7,1,0], name
+mvs:small_oak_pond_top. Lower origin [0,-2,0] yields Y-2..7 and 12x10x16. The
+only lower connector participates in each join; no further piece extends it.
+Upper-only heights are 8. Source bounds include air/padding and possible X/Z
+exchange on rotation; complete runtime attachment or exposure is not guaranteed.
+
+Both root biome intersections are Overworld-only. Generic jigsaw uses
+WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid check, with
+no optional terrain range/radius. Lower components extend below upper origin;
+the center-column liquid check does not remove authored pond water or guarantee
+a dry/exposed footprint. All four entity lists are empty with no spawners or
+generation markers. Inspected block entities are jigsaws, containers and Oak's
+campfire with empty Items; no contained mob source. Natural spawning remains
+conditional. Mushroom upper owns mvs:mushroom_pond, Oak upper mvs:pond, and
+neither lower has container loot. No reward rolls or salvage yields are asserted.
+Low landscaped pond forms and vegetation support qualitative discoverability,
+without measured sight distance or guaranteed visible containers.
+
+Ten affected provider/inventory tests and builder Ruff/Basedpyright checks pass.
+Reproduce with build_item8_inventory to an absent path. Only Pond and decisions
+input hash changed; biomes, observations and nonregistry are preserved. Inventory
+matches `evidence/raw/item8/inventory-mvs-ponds.json`, SHA-256
+19252b3a985f9aaf95edcd40bfe5458e5b547fb9946b42eec5a3ac6615a4da51.
