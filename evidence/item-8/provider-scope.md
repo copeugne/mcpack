@@ -10021,3 +10021,27 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-spire-r2.js
 
 Use fresh output files. Successful placement and effective encounters remain
 separate from this component decision.
+
+
+### Wizard tower variant inventory refresh
+
+Decision d7f9f894 binds all three main/bottom pairs to b56b2e00 views and full
+contents. Preserve the red variant's spawner and loot differences. The focused
+IDAS case and scoped Ruff/Basedpyright pass. Canonical backlog: 23, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+f608eda3079b03b4a475f378966fed092421ec68f3a84312c584c1124d1d9373.
+Only the wizard-tower grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Nexus, effective attributes, nonregistry reconciliation and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-wizard-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-wizard-r2.json
+cmp evidence/raw/item8/inventory-idas-wizard-r1.json evidence/raw/item8/inventory-idas-wizard-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-wizard-r2.json
+```
+
+Use fresh output files. Variants retain their contents independently.
