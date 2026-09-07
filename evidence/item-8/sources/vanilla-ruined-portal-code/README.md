@@ -89,3 +89,25 @@ The inventory was rebuilt at `84faa88` with the command above. Inventory SHA:
 `fdd49f9bb42cd4169fa57f946bae28f43b7045a67f44bbc91d292d9874c1c3e7`.
 Changes are confined to the ruined portal content/grouping record and decision
 input identity. Existing observed geometry, dimensions and world links remain.
+
+
+## Geometry and visual assessment
+
+Five existing full-start examples cover mountain, ocean, Nether and desert root variants. Each generator selects one of13 ordinary/giant portal templates with rotation and mirror; saved boxes give approximate structural extent, not the surrounding altered terrain.
+
+Examples are not a population range or coverage of every template/placement variant. Netherrack spread, downward columns, vines and overgrowth can extend beyond the saved template box; no all-effects bound or occupied-volume claim.
+
+Broken obsidian/crying-obsidian portal frames and surrounding netherrack or altered materials provide cues where exposed. Surface, mountain, underground, partly buried, ocean-floor and Nether placement modes differ; overgrowth and terrain/water can conceal the frame. No guaranteed exposed portal or measured discovery distance.
+
+The following existing full-start records are retained under world-bounds.json.gz;
+the family binds its hash and exact raw source/line, seed, coordinates and bounds.
+No new capture or measurement tool is introduced. These three required attributes
+now supersede earlier pending geometry/visual integration statements.
+
+| Root | Source | Line | Saved size X,Y,Z |
+|---|---|---:|---|
+| minecraft:ruined_portal_mountain | run-a/mountainous/chunks.jsonl | 10701 | 10,8,12 |
+| minecraft:ruined_portal_mountain | run-a/mountainous/chunks.jsonl | 14100 | 6,10,6 |
+| minecraft:ruined_portal_ocean | run-a/ocean-heavy/chunks.jsonl | 13583 | 9,9,14 |
+| minecraft:ruined_portal_nether | run-a/biome-diverse/chunks.jsonl | 2385 | 10,8,9 |
+| minecraft:ruined_portal_desert | run-a/biome-diverse/chunks.jsonl | 13701 | 16,17,11 |

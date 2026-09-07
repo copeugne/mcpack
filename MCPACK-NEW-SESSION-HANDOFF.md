@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Ocean ruin and ruined portal assessment after cb7b690c
+
+Six remaining attributes integrated: both sizes and visual cues for each family.
+Ocean ruins use retained small cold7x7x6 and warm assembled37x25x42 full-start
+examples, distinguishing component envelopes and cold layers from clusters.
+Portals use five full-start examples across mountain/ocean/Nether/desert roots;
+spread/columns/vines/overgrowth are not bounded by saved template boxes. No
+occupied-volume,typical/all-layout or sightline/pacing claims. Existing missing
+variants/retained-mod scope limitations remain. No new capture/tool.
+All87 focused inventory/two-family source checks pass (61.78s); only these two
+families/input identity changed. Registry346/408,nonregistry40/40,total386/448
+assessed;62 families and590 required attribute slots remain: IDAS38/380,
+Repurposed17/154,vanilla7/56. Vanilla remaining: ancient_city9,bastion_remnant9,
+end_city5,mansion9,pillager_outpost8,trail_ruins8,trial_chambers8. Quantify next
+batch and reuse existing content/source/world evidence. Final integration,
+acceptance,backup/history preparation and final PR/review/main remain open.
+Inventory SHA-256: f37ff09ba05d2a740d0d790a7d25b463d8c82aeafa3f5675bc1e6b03b92571c8.
+
+
 #### Vanilla dimensions and remaining descriptions after a1363bb5
 
 Nineteen entries integrated from existing evidence: dimension attribution for13
