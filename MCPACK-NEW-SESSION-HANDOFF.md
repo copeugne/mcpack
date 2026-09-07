@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### PR18 second review: current continuation records reconciled
+
+Review5135049255 at4f30ddc completed with one valid finding: current report text
+still instructed preservation before opening a PR. Inline comment3952418717 is
+resolved by updating the report and the same stale ledger status/next-step text.
+Both now record completed preservation, the clean-checkout495-test pass and active
+PR18, with only clean reviewed delivery remaining. No accepted evidence, inventory,
+code or runtime behavior changes; manual text/diff review is the applicable check.
+Next: push the documentation correction, request fresh @codex review on PR18,
+then complete the clean review loop and verified main merge. Do not rerun accepted
+preservation, reconstruction or measurements. Item8 remains IN PROGRESS.
+
+
 #### Both PR18 findings resolved with clean-checkout verification
 
 Status correction4cdb13f1 is delivered. The remaining prerequisite finding is

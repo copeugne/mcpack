@@ -1,7 +1,7 @@
 # Item 8: Baseline Structure-Family Inventory
 
 **Current status:** `IN PROGRESS`. Family inventory integration is delivered;
-local acceptance is verified; preservation/history preparation and reviewed main delivery remain open.
+local acceptance and preservation/history preparation are verified; reviewed main delivery remains open.
 
 The exact136 retained candidates have been inventoried through runtime registries,
 packaged data, frozen configuration, generation code/logs and preserved world
@@ -23,16 +23,24 @@ spawning and unresolved baseline defects. Source attribution is not measured ene
 population, loot yield, sightline distance, exploration pacing or working machinery.
 These additional measurements are not an Item8 repair backlog.
 
-The local requirement/evidence gate is verified. The495-test Item8 run passed494
-tests and exposed one stale dimension-test assumption; the corrected two-test
-module passes, with changed-code lint/type checks clean. The complete inventory
-rebuild matches byte for byte. The [acceptance record](../../evidence/item-8/README.md)
-preserves the initial failure, correction, commands and requirement-level proof.
+The local requirement/evidence gate is verified. A clean tracked-file export with
+freshly acquired pinned JARs and the restored registry capture passed all495 Item8
+tests in122.06s. Changed-code lint/type checks pass. The current inventory separates
+448 ASSESSED families and18 DISPOSITIONED registry groups from the item delivery
+lifecycle. The [acceptance record](../../evidence/item-8/README.md) contains setup
+commands, current inventory identity and the preserved earlier failed test result.
 
-Remaining before the PR: authorized preservation and history preparation.
-Completion additionally requires a clean Codex review loop, merge and verified main
-ref. Item9 remains dependency-blocked. Item7's explicit review exception is preserved
-in the execution ledger and does not apply to Item8.
+Preservation and history preparation are complete. Original source branches,
+recovery tags, evidence references and verified backups remain preserved. The
+[preservation record](../../evidence/item-8/preservation.md) links both history
+mappings and the245 coherent milestones plus provenance increment. Subsequent
+review fixes remain separate commits. [PR18](https://github.com/copeugne/mcpack/pull/18)
+is the active delivery PR; PR17 was superseded without merging.
+
+Remaining: finish PR18's clean Codex review loop, merge and verify main. Do not
+repeat preservation, history reconstruction or accepted measurements. Item9 remains
+dependency-blocked. Item7's explicit review exception is preserved in the execution
+ledger and does not apply to Item8.
 
 ## Historical zero-mod report, superseded
 
