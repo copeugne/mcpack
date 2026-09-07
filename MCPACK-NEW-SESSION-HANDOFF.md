@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager wells assessed after c971b6c6
+
+Ten attributes finish Well across 17 roots and 20 selected templates. Direct
+connector alignment establishes nominal ordinary/rare assemblies of 4x9x4 and
+9x11x8 XYZ; standalone variants remain distinct. Per-root dimensions and
+Overworld/End/Nether eligibility are integrated with actual version selections.
+No new capture, measurement or tooling. Derivations are in moog-generator-code
+README. Ten affected tests and builder checks pass. Inventory SHA-256:
+c07384cf9665de83e8a0ae7a5a568e28f1cfe3ddc33badfaf1c2c50cd4b3f402.
+
+Retire Well assessment. Voyager 39/65; registry 146/410, nonregistry 40/40,
+total 186/450 assessed, 264 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager benches, paths and Out House assessed after 8f3cce21
 
 Thirty attributes finish Bench, Paths and Out House. Independent template
