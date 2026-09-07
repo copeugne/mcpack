@@ -6,6 +6,170 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 93c174d2 and reproduces exactly in two fresh runs. All 887 roots
+remain assigned once in 423 working groups. AdoraBuild canonical notes are closed;
+the remaining 59 are all IDAS. Next: IDAS design reconciliation using preserved
+graphs/content before selecting any necessary views. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain.
+
+The final Overworld house relationship is resolved using all existing views and
+contents: 32 furnished-house variants, two raised dwellings and one low oak hut.
+Roof and furnishing differences remain variants; bedless book/storage exceptions
+are explicit. Full original definitions are preserved. The affected case and
+scoped checks pass. Canonical-note backlog: 59, all IDAS. AdoraBuild has zero open
+canonical notes. Coverage groups: 423. Inventory refresh follows. Required
+attributes, 33 nonregistry contributions and final review/main delivery remain.
+
+Inventory matches 03cd8b3d and independently reproduces exactly. All 887 roots
+remain covered once in 421 working groups. Backlog: 60 (IDAS 59, Overworld house
+with 35 roots). Full End/Nether variants are preserved. Next: remaining Overworld
+house layouts using existing views. Attributes, nonregistry and delivery remain.
+
+Nine End/Nether house roots are reconciled using existing abfaa574 views and
+contents: raised End rooms (2), low End houses (3), crimson tower (1), crimson
+hall (1), warped houses (2). Full definitions and inhabitants remain attached to
+each variant. The affected case and scoped checks pass. Inventory refresh follows.
+Coverage groups: 421. Backlog remains 60 (IDAS 59, Overworld house with 35 roots).
+Next: domestic, raised and partly buried Overworld layouts, with no recapture.
+
+Inventory matches f0f0fcf6 and independently reproduces exactly. Full variants
+are unchanged across the bamboo-cache split; all 887 roots occur once in 416
+working groups. Backlog: 60 (IDAS 59, house with 44 roots). Continue existing
+house comparisons without recapture. Attributes, nonregistry and delivery remain.
+
+House content inspection separates bamboo_house_small_2 as bamboo_cache: a low
+platform with simple-dungeon trapped chest, piston and magma block, without bed
+or domestic workstation. Do not claim tested trap operation. All original
+variants remain preserved. The affected case and scoped checks pass. Inventory
+refresh follows. Backlog remains 60 (IDAS 59, house with 44 remaining roots).
+Coverage groups: 416. Complete views at abfaa574 need no recapture. Next reconcile
+the remaining domestic, raised, End and Nether layouts against furnishings.
+
+AdoraBuild house reconciliation needs all 45 standalone layouts. The existing
+renderer selects them on eight sheets; material groupings are inspection order,
+not family decisions. Authored inhabitants and loot differ, including shulkers,
+piglin brute/hoglin and ordinary domestic furnishings. Reuse preserved content
+and exact definitions alongside views. No new measurement system. Backlog: 60.
+
+Inventory matches 9bb60f9f and independently reproduces byte-for-byte. All 887
+roots remain assigned once in 415 working groups. Canonical-note backlog: 60
+(IDAS 59, AdoraBuild house). Next: all 45 house templates. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain.
+
+Ocean designs are reconciled using 391184f1: two open gold-bearing shrine variants
+with drowned overrides, and two roofed loot/sponge temple variants with guardian
+overrides. All four complete definitions remain preserved. The affected case and
+scoped checks pass. Backlog: 60 (IDAS 59, AdoraBuild house). Coverage groups: 415.
+Inventory refresh follows. Next: all 45 house templates. Required attributes,
+33 nonregistry contributions and final review/delivery remain open.
+
+Ocean-temple views at ee31d68f are obscured by water cubes. The existing renderer
+needs one opt-in omission of minecraft:water for the four fixed ocean templates
+to expose architecture. Keep the original views and NBT; this is an inspection
+view, not drainage, an exposure measurement or a new measurement system. Other
+selections retain their existing behavior. Backlog remains 61.
+
+Inventory matches fa28c80a and independently reproduces exactly. All 887 roots
+remain assigned once in 414 working groups. Canonical-note backlog: 61 (IDAS 59,
+AdoraBuild ocean_temple and house). Next: resolve ocean layouts obscured by water,
+then all 45 house templates. Required attributes, nonregistry and delivery remain.
+
+Seven AdoraBuild records are reconciled using ee31d68f views and packaged content.
+Palace, hall and pavilion are separated, as are red sandstone hall and trapped
+shrine. Buried castle and End temple variants retain their full differences.
+The focused source-binding case and scoped checks pass. Canonical-note backlog:
+61 (IDAS 59, AdoraBuild ocean_temple and house). Coverage groups: 414. Inventory
+refresh follows. Ocean geometry is obscured by water in the preserved projection;
+do not treat that projection as a completed layout comparison. Houses have 45
+templates. Required attributes and 33 nonregistry contributions remain open.
+
+The eight remaining non-house AdoraBuild records contain sixteen standalone
+templates with no missing trace components. Existing content shows different
+loot, inhabitants and building envelopes; compare their complete layouts with
+the existing renderer before deciding variants. This fixed selection adds no
+measurement system. Backlog remains 68 until decisions are verified.
+
+Inventory matches aad4e79f and reproduces byte-for-byte independently. All 887
+roots remain covered once in 411 working groups. Canonical-note backlog: 68
+(IDAS 59, AdoraBuild 9). Next: the remaining AdoraBuild buildings listed below.
+Required attributes, 33 nonregistry contributions and final review/delivery remain.
+
+Five AdoraBuild Nether records are reconciled against views 190bd9d1 and packaged
+content. Separate the fortress network, courtyard and wart house, and the tall
+bastion compound from low bastion variants. Full root definitions are preserved.
+The affected source-binding case and scoped checks pass. Canonical-note backlog:
+68 (IDAS 59, AdoraBuild 9). Coverage groups: 411. Inventory refresh follows.
+The nine AdoraBuild records are ancient_palace, buried_sand_castle,
+dark_oak_mansion, end_temple, house, ocean_temple, red_sand_temple, sand_castle and
+sand_pyramid. Required attributes and 33 nonregistry contributions remain open.
+
+AdoraBuild Nether comparisons require the 23 selected templates across basalt
+chambers, fortress assembly/alternatives, bastions and temples. Reuse the existing
+renderer. The basalt graph has a preserved missing minecraft:basalt_chambers/
+chambers pool; do not repair it or infer successful assembly. Backlog remains 73.
+
+Inventory matches 7e14281a and reproduces exactly. All 887 roots remain covered
+once; full watercraft variants are preserved after the split. Coverage groups:
+408. Canonical-note backlog: 73 (IDAS 59, AdoraBuild 14). Next: remaining AdoraBuild
+architecture. Required attributes and nonregistry reconciliation remain open.
+
+Six AdoraBuild vessel/facility records are resolved against views 03112db3 and
+source contents. Watercraft separates into sailing ships, rafts and covered
+riverboat with full variants retained. The affected definition/root/evidence case
+and scoped checks pass. Backlog: 73 (IDAS 59, AdoraBuild 14). Coverage groups: 408.
+Inventory refresh follows. Required attributes and nonregistry work remain open.
+
+AdoraBuild vessels and facilities require comparison of their complete seventeen
+templates (watercraft, End ship, frozen shelters, libraries, mines and prisons).
+Use the existing renderer to distinguish design variants; no new measurement
+system is needed. Canonical-note backlog remains 79 until decisions are verified.
+
+Inventory matches 622762bf and reproduces exactly. Canonical-note backlog: 79
+(IDAS 59, AdoraBuild 20). Coverage groups: 406. Next: remaining AdoraBuild building
+and vessel comparisons. Required attributes and 33 nonregistry contributions remain.
+
+Five AdoraBuild landmark relationships are resolved against views 0df11558 and
+existing template content. The affected case and scoped checks pass. Backlog: 79
+(IDAS 59, AdoraBuild 20). Coverage groups: 406. Inventory refresh follows. AdoraBuild
+remainder: ancient_palace, basalt_chambers, blackstone_bastion, blackstone_temple,
+buried_sand_castle, dark_oak_mansion, end_ship, end_temple, frozen_shelter, house,
+library, mountain_mine, nether_fortress, nether_temple, ocean_temple, prison,
+red_sand_temple, sand_castle, sand_pyramid, watercraft. Attributes and nonregistry
+contributions remain open.
+
+AdoraBuild bubble, gateway/portal and fossil relationships need ten fixed template
+views using the existing renderer. Their content differs materially (habitats,
+sculk installation, gateway/portal blocks and decorated fossils); names alone do
+not settle design boundaries. No new measurement system is justified. Backlog: 84.
+
+Inventory matches 54e4d725 and reproduces exactly. All 887 roots remain covered
+once; the birch workshop split preserves full variants. Coverage groups: 406.
+Canonical-note backlog: 84 (IDAS 59, AdoraBuild 25). Next: remaining AdoraBuild
+design relationships. Required attributes and nonregistry work remain open.
+
+AdoraBuild furnished tree relationships are resolved using views a052167e. Birch
+workshop is separated from cherry/oak tree camps; tree-house variants and mushroom
+residence retain their distinct forms. The affected definition/root/evidence case
+and scoped checks pass. Backlog: 84 (IDAS 59, AdoraBuild 25). Coverage groups: 406,
+up one after the justified split. Inventory refresh follows; attributes and
+33 nonregistry contributions remain open.
+
+The furnished AdoraBuild tree/mushroom/tree-house boundary needs a direct layout
+comparison: content lists cannot distinguish built-in tree rooms from separate
+canopy houses. Select their seven exact templates with the existing renderer.
+No new measurement system or broader capture is justified. Backlog remains 87.
+
+Inventory matches 1ccfea35 and reproduces exactly. Canonical-note backlog: 87
+(IDAS 59, AdoraBuild 28). Next: furnished tree/mushroom/tree-house relationships
+and remaining AdoraBuild designs. Coverage groups: 405. Required attributes and
+33 nonregistry contributions remain open.
+
+AdoraBuild well, bamboo camp and apiary design relationships are resolved from
+existing template content. Tree and mushroom descriptions now correctly identify
+furnished installations/residence; their design reconciliation remains open. The
+affected case and scoped checks pass. Canonical-note backlog: 87 (IDAS 59,
+AdoraBuild 28). Inventory refresh follows. Attributes and nonregistry work remain.
+
 Inventory matches 9d75c96b and reproduces exactly. Canonical-note backlog: 90
 (IDAS 59, AdoraBuild 31). Coverage groups: 405. Next: remaining IDAS/AdoraBuild
 design relationships using existing evidence and only necessary layout views.

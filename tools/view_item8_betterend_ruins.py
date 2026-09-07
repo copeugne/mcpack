@@ -17,8 +17,10 @@ if TYPE_CHECKING:
     from pydantic import JsonValue
 
 
-def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bool = False) -> str:
+def diagram(raw: bytes, title: str, origin: tuple[int, int], *,
+            exposed: bool = False, omit_water: bool = False) -> str:
     """Project occupied block cells; preserve material names in SVG tooltips."""
+    origin_x, origin_y = origin
     root = decode_compound_nbt(gzip.decompress(raw))
     palette = cast("list[dict[str, JsonValue]]", root["palette"])
     blocks = cast("list[dict[str, JsonValue]]", root["blocks"])
@@ -29,7 +31,8 @@ def diagram(raw: bytes, title: str, origin_x: int, origin_y: int, *, exposed: bo
     for block in blocks:
         x, y, z = cast("list[int]", block["pos"])
         name = str(palette[cast("int", block["state"])]["Name"])
-        if name not in {"minecraft:air", "minecraft:cave_air", "minecraft:structure_void"}:
+        if (name not in {"minecraft:air", "minecraft:cave_air", "minecraft:structure_void"}
+                and not (omit_water and name == "minecraft:water")):
             cells.append((x, y, z, name))
     occupied: set[tuple[int, int, int]] = {(x, y, z) for x, y, z, _ in cells} if exposed else set()
     for x, y, z, name in sorted(cells, key=lambda cell: (sum(cell[:3]), cell[1])):
@@ -61,7 +64,9 @@ def parse_args() -> argparse.Namespace:
     selection = parser.add_mutually_exclusive_group()
     for flag in ("--soaring", "--nether", "--nether-houses", "--nether-arenas",
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
-                 "--voyager-landmarks", "--terralith-buildings"):
+                 "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
+                 "--adora-landmarks", "--adora-facilities", "--adora-nether",
+                 "--adora-monuments", "--adora-ocean", "--adora-houses"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -80,9 +85,20 @@ def main() -> None:
     archive_name = "MoogsSoaringStructures-1.21-2.1.2.jar" if soaring else "BetterEnd-21.0.31.jar"
     archive_name = "MoogsNetherStructures-1.21-3.0.0-alpha.2.jar" if nether else archive_name
     archive_name = "MoogsVoyagerStructures-1.21-5.0.11.jar" if voyager else archive_name
-    archive_name = ("Terralith_1.21.1_v2.6.2_Neoforge.jar"
+    archive_name = ("adorabuild-structures-2.11.0-neoforge-1.21.3.jar"
+                    if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
+                        or cast("bool", args.adora_facilities)
+                        or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments)
+                        or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses)) else
+                    "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else archive_name)
-    compressed = soaring or nether or voyager or cast("bool", args.terralith_buildings)
+    compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
+                  or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
+                  or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -194,15 +210,87 @@ def main() -> None:
                              ("complex", "barracks", "house", "house2", "house3",
                               "road_straight", "road_crosswalk")],
         } if cast("bool", args.terralith_buildings) else sheets
+        namespace = ("adorabuild_structures"
+                     if (cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
+                        or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
+                        or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
+                        or cast("bool", args.adora_houses))
+                     else namespace)
+        sheets = {
+            "acacia_bamboo": ["acacia_house_medium_1", "acacia_house_medium_2",
+                              "acacia_house_medium_3", "acacia_house_small_1",
+                              "acacia_house_small_2", "bamboo_house_small_1",
+                              "bamboo_house_small_2"],
+            "birch_cherry": ["birch_house_medium_1", "birch_house_medium_2",
+                             "birch_house_small_1", "birch_house_small_2",
+                             "cherry_house_large_1", "cherry_house_medium_1",
+                             "cherry_house_medium_2"],
+            "nether": ["crimson_house_medium_1", "crimson_house_medium_2",
+                       "warped_house_small_1", "warped_house_small_2"],
+            "end": ["end_house_medium_1", "end_house_medium_2", "end_house_medium_3",
+                    "end_house_small_1", "end_house_small_2"],
+            "oak": ["oak_house_large_1", "oak_house_medium_1", "oak_house_medium_2",
+                    "oak_house_small_1", "oak_house_small_2", "oak_house_small_3",
+                    "oak_hut_1"],
+            "sand": ["red_sand_house_medium_1", "red_sand_house_small_1",
+                     "sand_house_medium_1", "sand_house_medium_2",
+                     "sand_house_small_1", "sand_house_small_2"],
+            "spruce": ["spruce_house_large_1", "spruce_house_medium_1",
+                       "spruce_house_small_1", "spruce_house_small_2",
+                       "spruce_house_small_3"],
+            "dark_oak_jungle_mangrove": ["dark_oak_house_large_1", "dark_oak_house_small_1",
+                                         "jungle_house_small_1", "mangrove_house_small_1"],
+        } if cast("bool", args.adora_houses) else {
+            "ocean_architecture": ["ocean_temple_small_1", "ocean_temple_small_2",
+                                   "ocean_temple_medium_1", "ocean_temple_medium_2"],
+        } if cast("bool", args.adora_ocean) else {
+            "palaces_mansion": ["ancient_palace_1", "ancient_palace_2",
+                                "ancient_palace_3", "dark_oak_mansion_medium_1"],
+            "end_ocean_temples": ["end_temple_small_1", "end_temple_large_1",
+                                  "ocean_temple_small_1", "ocean_temple_small_2",
+                                  "ocean_temple_medium_1", "ocean_temple_medium_2"],
+            "sand_designs": ["red_sand_temple_small_1", "red_sand_temple_medium_1",
+                             "sand_castle_small_1", "sand_underground_castle_1",
+                             "sand_castle_tiny_1", "sand_pyramid_1"],
+        } if cast("bool", args.adora_monuments) else {
+            "basalt_chambers": [f"basalt_chambers/{n}" for n in
+                                ("ancient_debris", "dummy_side", "empty", "passage_1",
+                                 "passage_2", "spawner", "trap")],
+            "fortress_parts": [f"nether_fortress/{n}" for n in
+                               ("bridge_1", "dummy_bridge", "stairs_1", "tower_large_1",
+                                "tower_medium_1", "tower_medium_2", "tower_small_1",
+                                "tower_small_2")],
+            "fortresses_temples": ["nether_fortress_large_2", "nether_fortress_medium_1",
+                                   "blackstone_temple_small_1", "nether_temple_medium_1"],
+            "bastions": ["blackstone_bastion_small_1", "blackstone_bastion_medium_1",
+                         "blackstone_bastion_medium_2", "blackstone_bastion_medium_3"],
+        } if cast("bool", args.adora_nether) else {
+            "vessels": ["bamboo_raft_1", "cherry_raft_1", "jungle_boat_1", "dark_oak_ship_1",
+                        "mangrove_ship_1", "oak_ship_1", "spruce_ship_1", "end_ship_small_1"],
+            "frozen_shelters": ["frozen_house_medium_1", "frozen_hut_1", "frozen_hut_2"],
+            "libraries": ["library_small_1", "library_large_1"],
+            "mines_prisons": ["mountain_mine_1", "mountain_mine_2",
+                              "prison_small_1", "prison_large_1"],
+        } if cast("bool", args.adora_facilities) else {
+            "bubbles": ["end_bubble_large_1", "end_bubble_medium_1", "end_bubble_medium_2",
+                        "ocean_bubble_1"],
+            "gateways_portal": ["end_gateway_small_1", "end_gateway_large_1",
+                                "nether_portal_small_1"],
+            "fossils": [f"nether_fossil/fossil_{i}" for i in (1, 2, 3)],
+        } if cast("bool", args.adora_landmarks) else {
+            "trees_mushroom": ["birch_tree_1", "cherry_tree_1", "oak_tree_1", "mushroom_large_1"],
+            "tree_houses": ["jungle_tree_house_1", "mangrove_tree_house_1",
+                            "mangrove_tree_house_2"],
+        } if cast("bool", args.adora_trees) else sheets
         for biome, names in sheets.items():
-            count = len(names)
             pieces: list[str] = []
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
-                pieces.append(diagram(raw, title, 20 + index % 2 * 300,
-                                      35 + index // 2 * 300, exposed=compressed))
-            height = ((count + 1) // 2) * 300
+                pieces.append(diagram(raw, title, (20 + index % 2 * 300,
+                                      35 + index // 2 * 300), exposed=compressed,
+                                      omit_water=cast("bool", args.adora_ocean)))
+            height = ((len(names) + 1) // 2) * 300
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',

@@ -9471,3 +9471,310 @@ SHA-256: 04bc241dbb692e7473df65b408f83da459dff061bf895493134e78ef14d73613.
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-terralith-buildings-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-terralith-buildings-r2.json
 ```
+
+### AdoraBuild small installations and furnished vegetation correction, 2026-09-07
+
+Existing template contents distinguish the acacia well, bamboo sleeping/cooking
+camp and birch apiary. The well preserves dispenser/tripwire/redstone inputs;
+operation is unproven. The apiary preserves dedicated loot, hive blocks and authored
+bee entities rather than being dismissed as a natural nest. These three canonical
+design relationships are resolved without new capture or measurement.
+
+The prior tree description was inaccurate: all three tree templates contain
+ladders, campfires and loot chests; birch also contains masonry, bookshelves,
+crafting and enchanting equipment. Cherry and oak preserve their own nest/crafting
+contents. The mushroom is furnished accommodation. Both records now describe
+these authored contents, but their relationships to other residence/tree-house
+designs remain open. Neither is excluded as vegetation based on its filename.
+
+The affected definition/registry/evidence case and scoped checks pass. Canonical
+backlog: 87, down from 90 (IDAS 59, AdoraBuild 28). Coverage groups remain 405.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 1ccfea35 and independently reproduced exactly.
+Only the five AdoraBuild grouping decisions and the decision input identity changed.
+Three records are resolved; tree and mushroom remain open.
+SHA-256: 98a4a76bcae6e401ae55bb8b11e1a6883359b3a476a5e8ced8df82c39ca86c80.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-installations-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-installations-r2.json
+```
+
+### AdoraBuild furnished tree family boundaries, 2026-09-07
+
+Views a052167e and preserved template contents show a substantial masonry workshop
+beneath birch, distinct from cherry/oak tree-and-camp caches. The birch root moves
+to birch_tree_workshop with its full definition retained. Negative offset and bury
+adaptation are source inputs, not observed exposure. Cherry/oak remain variants
+with their nest, loot and crafting differences. The tree-house alternatives retain
+their constructed room volumes and different chest/pot elevations. The furnished
+mushroom stem-and-cap residence remains a separate design.
+
+The existing definition/registry/evidence check now expects the split and continues
+to bind every root exactly once to full packaged definitions and component traces.
+That case and scoped quality checks pass. Canonical-note backlog: 84, down from 87
+(IDAS 59, AdoraBuild 25). Coverage groups: 406, up from 405 because of the justified
+birch split. No new root or provider was introduced. Required attributes and
+33 nonregistry contribution records remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
+
+Inventory regenerated from 54e4d725 and independently reproduced exactly.
+Only the three original design records, the new birch workshop record and the
+decision input identity changed. Root-specific fields separate with the birch
+root; all 887 roots remain covered exactly once and full variants are preserved.
+SHA-256: ed705d7d330b1bae950b92245a3f8500ff4bba7415ba3e73dd1d3ca55728edd7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-trees-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-trees-r2.json
+```
+
+### AdoraBuild landmark family boundaries, 2026-09-07
+
+Views 0df11558 and existing contents resolve five records. End bubbles retain
+broad and pedestal habitat variants with different inhabitants and rewards;
+the prismarine/glass ocean sculk installation remains separate. Small and tall
+End gateway frames retain their block-entity/material differences within one
+family. The Nether-brick portal shrine is distinct. The three bone-frame fossils
+retain their skull, chain and soul-campfire decoration as landmark variants.
+Portal/gateway usability and sculk encounter behavior remain unproven.
+
+The affected definition/registry/evidence case and scoped checks pass. Canonical
+backlog: 79, down from 84 (IDAS 59, AdoraBuild 20). Coverage groups remain 406.
+Required attributes and reconciliation of 33 nonregistry contributions remain open.
+The source README preserves view limitations, including opaque glass/water and
+clipped ocean-template geometry. No new measurement system was added.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Inventory regenerated from 622762bf and independently reproduced exactly.
+Only the five landmark grouping decisions and the decision input identity changed.
+SHA-256: 652a636e2b0726bd4d80653b3e8853c6fdc43c6724e6ce4fa79d57b4896fa8e7.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-landmarks-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-landmarks-r2.json
+```
+
+### AdoraBuild vessel and facility family boundaries, 2026-09-07
+
+Views 03112db3 and existing contents resolve six original records. Watercraft
+separates into four sailing-ship variants, two raft variants and one covered
+riverboat, retaining all full roots and encounter/loot differences. The compact
+End ship remains distinct. Frozen shelters preserve their furnished ice forms;
+libraries preserve chamber/gallery and placement alternatives; mines preserve
+ladder/rail access alternatives; prisons preserve building and population variants.
+No boat operation, portal-like travel, mechanism behavior or effective placement
+is inferred from authored templates. Filename size labels remain non-authoritative.
+
+The existing definition/registry/evidence check expects the split and binds all
+provider roots exactly once to full definitions and traces. That case and scoped
+quality checks pass. Canonical-note backlog: 73, down from 79 (IDAS 59, AdoraBuild
+14). Coverage groups: 408, up from 406 because of the watercraft split. Required
+attributes and 33 nonregistry contribution records remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
+
+Inventory regenerated from 7e14281a and independently reproduced exactly.
+Only the six original design records, the two new vessel groups and the decision
+input identity changed. Root-specific fields separate with their roots; all 887
+roots remain covered once and full watercraft variants are preserved.
+SHA-256: 025824a16a5c7180f67b76304a518e1953c55d77751b8b0c6b9df50ac3ca0783.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-facilities-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-facilities-r2.json
+```
+# AdoraBuild Nether design reconciliation (2026-09-07)
+
+Derived inventory matches aad4e79f. Two fresh runs are byte-identical; changes
+are confined to the five reconciled records and three separated designs plus
+the input decision hash. All 887 roots remain assigned once in 411 working groups.
+Inventory SHA-256:
+6ae901112b231b83c53c7bcf3fd45a5718145a06ce7e0a710bcff7eaf38313e6.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-nether-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-nether-r2.json
+cmp evidence/raw/item8/inventory-adora-nether-r1.json evidence/raw/item8/inventory-adora-nether-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-nether-r2.json
+```
+
+Views at 190bd9d1 and preserved template contents resolve the five Nether records.
+The fortress network, standalone courtyard and roofed wart house are separate
+designs. The tall bastion compound is separate from three low building variants.
+Basalt chambers remain one modular design with their missing pool reference
+preserved. Blackstone and nether-brick shrines retain separate forms and declared
+spawn behavior. No successful assembly or effective exposure is inferred.
+
+All 887 roots and full variants are preserved exactly. Working groups rise from
+408 to 411. Canonical-note backlog falls from 73 to 68 (IDAS 59, AdoraBuild 9).
+The focused AdoraBuild definition, trace and evidence-binding case passes, as do
+scoped Ruff and Basedpyright checks. Inventory regeneration follows separately.
+Required attributes, 33 nonregistry contribution records and final delivery remain.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+```
+# AdoraBuild palace and sand design reconciliation (2026-09-07)
+
+Decisions at fa28c80a resolve seven records using all sixteen comparison templates
+preserved at ee31d68f, with packaged contents and full placement definitions.
+Separate palace, hall and pavilion layouts and the trapped red sandstone shrine
+from the roofed hall. Keep buried castle and End temple design variants with their
+content differences. Ocean temples remain unresolved because water obscures their
+architecture in the existing view; houses still require all 45 template comparisons.
+
+The affected AdoraBuild source-binding case and scoped Ruff/Basedpyright checks
+pass. All original root IDs and complete variants are preserved. The derived
+inventory changes only the seven records, three new designs and decision hash.
+Two fresh runs match byte-for-byte. Coverage: 887 roots once, 414 working groups.
+Canonical-note backlog: 61 (IDAS 59, AdoraBuild 2). Attributes and nonregistry
+reconciliation remain open, along with final validation, review and main delivery.
+
+Inventory SHA-256:
+d84271bae0af5abacfe048e3a64ace84ea39817335f9494c53ae0ccd566159a6.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-monuments-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-monuments-r2.json
+cmp evidence/raw/item8/inventory-adora-monuments-r1.json evidence/raw/item8/inventory-adora-monuments-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-monuments-r2.json
+```
+# AdoraBuild ocean relationship closure (2026-09-07)
+
+Decision 9bb60f9f separates two open gold-bearing ocean shrine variants with
+drowned overrides from two roofed loot/sponge temple variants with guardian
+overrides. Water-omitted architecture views at 391184f1 resolve the prior opaque
+projection limitation; original views remain preserved. This does not establish
+effective underwater discoverability or runtime mob creation. Full definitions
+and all original variants are retained exactly.
+
+The affected AdoraBuild case and scoped code checks pass. The inventory reproduces
+byte-for-byte in two fresh runs. Only ocean temple/shrine records and the decision
+input hash change. All 887 roots are assigned once in 415 working groups. Backlog:
+60 canonical notes (IDAS 59, AdoraBuild house). Attributes, 33 nonregistry records
+and final validation/review/main delivery remain open.
+
+Inventory SHA-256:
+3fbdb6fd8f536f3fd58c3a0705c84615aa21002ee5641e3950253ef9ad7bd298.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-ocean-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-ocean-r2.json
+cmp evidence/raw/item8/inventory-adora-ocean-r1.json evidence/raw/item8/inventory-adora-ocean-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-ocean-r2.json
+```
+# AdoraBuild bamboo cache correction (2026-09-07)
+
+Decision f0f0fcf6 separates bamboo_house_small_2 from dwelling variants. The
+preserved acacia/bamboo view at abfaa574 shows a low roofed platform; its template
+contains a simple-dungeon trapped chest, piston and magma block, without bed or
+ordinary domestic workstation. This establishes a distinct cache design without
+claiming tested trap operation. The remaining house record contains 44 roots and
+remains open. No new capture or measurement system was added.
+
+The affected source-binding case and scoped code checks pass. Complete original
+variants are unchanged. The derived inventory changes only house/cache records
+and the decision hash. Two fresh runs match exactly; 887 roots occur once in 416
+working groups. Canonical-note backlog remains 60 (IDAS 59, house 1). Required
+attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+Inventory SHA-256:
+37d033a55b893126f31c30c60699b55b5174f00471b8d072adbc082909e0552a.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-bamboo-cache-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+cmp evidence/raw/item8/inventory-adora-bamboo-cache-r1.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-bamboo-cache-r2.json
+```
+# AdoraBuild End and Nether house relationships (2026-09-07)
+
+Decision 03cd8b3d resolves nine roots from the former house group using existing
+abfaa574 views, contents and complete custom-generator definitions. Raised End
+rooms (2) are distinct from low End houses (3). Crimson tower (1), crimson hall
+(1) and warped-house variants (2) preserve their different layouts and authored
+inhabitants. All original variants and root identities remain intact. No new
+capture or measurement system is needed. The 35 Overworld house roots remain open.
+
+The focused AdoraBuild source-binding case and scoped code checks pass. Two fresh
+inventory runs are byte-identical; changes are limited to house and the five
+separated designs plus the decision input hash. Coverage: 887 roots once, 421
+working groups. Canonical-note backlog: 60 (IDAS 59, Overworld house 1). Required
+attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+Inventory SHA-256:
+76f24562c146a09f38f08a3109ee7d61aba15675c51cdd467e684725be650e76.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-dimensional-houses-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+cmp evidence/raw/item8/inventory-adora-dimensional-houses-r1.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
+```
+# AdoraBuild Overworld house relationship closure (2026-09-07)
+
+Decision 93c174d2 resolves the final 35 Overworld roots using complete abfaa574
+views and preserved contents/definitions. Thirty-two furnished-house variants
+retain roof, floor, material and furnishing differences. The two bedless oak
+book/storage variants are explicit exceptions to sleeping facilities, not silently
+treated as having beds. Two raised dwellings and the low terrain-enclosed oak hut
+retain separate access/layout relationships. Exact definitions and all original
+variants are preserved; projected terrain is not a measured burial depth.
+
+The focused AdoraBuild source-binding case and scoped Ruff/Basedpyright checks
+pass. Two fresh inventory runs match exactly. Only house, raised_house, oak_hut
+and the decision hash change. All 887 roots remain assigned once in 423 working
+groups. AdoraBuild has zero open canonical notes. The canonical-note backlog is
+59, all IDAS. Required attributes, 33 nonregistry contribution records and final
+validation, review and main delivery remain open.
+
+Inventory SHA-256:
+51f01320de4aa62ad120c861aa4544c662a470d03d26209c91e5bb724d065cc2.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-overworld-houses-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+cmp evidence/raw/item8/inventory-adora-overworld-houses-r1.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+```
