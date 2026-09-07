@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five developed Soaring complexes assessed after 51c7f1f6
+
+Fifty attributes finish Diorite House, White House, Large Tower, Leaf Hollow
+and Muddy Water Hole across 23 templates. Finite connector-derived geometry,
+saved villagers/trades, frames, potion dispenser and component encounter/loot
+sources are integrated. Muddy's three unassigned spawners remain a source
+limitation, not an experiment backlog. Ten shared tests pass; no capture or
+new tooling. Direct derivations are in moog-generator-code README.
+Inventory SHA: 8dcb32b088b1c7108afc75398edc99f08671533b047c762aa1ba3cce4015cfaf.
+Soaring 23/26; registry 213/410, nonregistry 40/40, total 253/450 assessed,
+197 remaining. Three mss families remain: arena (21 templates), jungle (8)
+and volcano (6). Quantify their next batch before editing. Final integration,
+acceptance, verified backup/history consolidation and PR review/main delivery
+remain open.
+
 #### Five bounded Soaring assemblies assessed after 9de946ed
 
 Fifty attributes finish Castle Tower, Mangrove, Taiga, Red Sand and Desert
