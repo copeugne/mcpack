@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Ruined pillar assessed after 8408bbb3
+
+Eight required answers complete the pillar family's descriptive assessment.
+Two dependency captures establish capped-cone half-height and angle-axis rotation;
+this prevents wrong dimensions and inference of horizontal orientation from the
+fallen name. Approximate parent geometry remains distinct from weathering,
+subtraction, voxelization and observed exposure. The original material callbacks
+supply no direct mob, physical-spawner or container-loot source.
+
+Sixteen affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-pillar-descriptions.json`, SHA-256
+9cd00233764a2ac33e9554d813c57221042cc65b1148e542592b9b0a70e0d335.
+Registry rows and all other contributions are unchanged. The existing extractor
+and new two-class source README record the narrow reason and exact commands.
+Retire supported pillar answers. Nonregistry assessment is now 39/40; only the
+Supplementaries cave urn cache remains. Registry work and final integration,
+acceptance, PR review and verified main delivery remain open.
+
 #### Crashed ship assessed after f365bb84
 
 Eight required crashed-ship answers now join the three existing descriptions.
