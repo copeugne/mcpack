@@ -210,3 +210,59 @@ uv run -m tools.run_item7_gap_targets \
   --structure towns_and_towers:village_forest \
   --structure towns_and_towers:village_savanna_plateau
 ```
+
+### Village geometry result and custody
+
+Executed from 4075bc17b2890f3b76ebd9522f2b95d1ac9abe25. Both targets completed,
+with readiness, correlated save, clean exit and accepted frozen configuration.
+No runtime remains. The existing decoder retained 2,763 chunk records, including
+partial and locate-created chunks, not a sampling denominator.
+
+| Root | Decoded line | Start chunk XZ | Pieces | Envelope | Size XYZ |
+| --- | --- | --- | --- | --- | --- |
+| towns_and_towers:village_forest | 118 | 30,-186 | 148 | 375,87,-3053,572,126,-2917 | 198,40,137 |
+| towns_and_towers:village_savanna_plateau | 2103 | 1756,-1488 | 17 | 28096,115,-23808,28112,142,-23789 | 17,28,20 |
+
+Both saved starts are in full chunks. Existing
+mcpack_evidence.item8_world_bounds.observed_bounds derives these envelopes from
+preserved piece boxes and inclusive max-min+1 dimensions. Full start chunks do
+not imply every distant component is fully placed. Decoded SHA-256:
+a05f6105a442330494ff5542e5b2e163f54c28b49bd5f7782d2029b9c7ac1765.
+
+Compact source examples supplement, rather than extrapolate, these layouts.
+Grove's grove_meeting_point_1 is 25x15x21; small villager/cat/golem attachments
+stay within that envelope. Snowy Slopes' snowy_slopes_meeting_point_1 is
+21x12x15. Its table is 10x3x6, incoming (4,1,0) north_up. The inn's north
+receiver (10,1,0) north_up attaches the 180-degree table at (5,0,-6); south
+receiver (10,1,14) south_up attaches the unrotated table at (6,0,15).
+Union (0,0,-6)..(20,11,20) is 21x12x27. Decor is rigid with common_swiss
+material rules; small inhabitant pieces stay inside. Waystone content remains
+subject to the previously assessed optional integration and is not assumed
+available. Neither compact example establishes dimensions for all 26 variants.
+
+Executed preservation commands (use absent destinations when reproducing):
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/towns-village-geometry-r1"), Path("evidence/raw/item8/towns-village-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/towns-village-geometry-r1/world --output evidence/raw/item8/towns-village-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/towns-village-geometry-r1 --archive evidence/raw/item8/item8-towns-village-geometry-r1-4075bc17.tar.gz --manifest evidence/item-8/raw-custody/towns-village-geometry-r1-manifest.json --revision 4075bc17b2890f3b76ebd9522f2b95d1ac9abe25
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-towns-village-geometry-r1-4075bc17.tar.gz --manifest evidence/item-8/raw-custody/towns-village-geometry-r1-manifest.json --target evidence/raw/item8/towns-village-geometry-r1-restored --receipt evidence/item-8/raw-custody/towns-village-geometry-r1-local-restore.json
+gh release download item-8-towns-village-geometry-2026-09-07-r1 --repo copeugne/mcpack --dir evidence/raw/item8/towns-village-geometry-download --pattern item8-towns-village-geometry-r1-4075bc17.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/towns-village-geometry-download/item8-towns-village-geometry-r1-4075bc17.tar.gz --manifest evidence/item-8/raw-custody/towns-village-geometry-r1-manifest.json --target evidence/raw/item8/towns-village-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/towns-village-geometry-r1-downloaded-restore.json
+```
+
+Archive: 4,805,146 bytes, 252 files, 31,684,214 uncompressed bytes. SHA-256:
+ebf11d6046dd7f688feadf84493fe4863312ec87fd6253e703870f859ca366e9.
+It retains stopped-world data excluding session.lock, decoded chunks, complete
+logs, captured configuration, sanitization record and run receipt. Local copies
+share a disk. The separate durable copy is the
+[published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-towns-village-geometry-2026-09-07-r1).
+Local and downloaded restores each verified 252 files; the remote tag resolves
+to the exact source revision above. Custody does not establish Item 8 completion.
+
+Two geometry attributes and the directly affected dimension/visibility text
+are integrated; source attribution, original observation links and unrelated
+families remain unchanged. Eight tests pass:
+`uv run pytest -q tests/item8/test_world_bounds.py tests/item8/test_towns_towers_provider_scope.py tests/item8/test_inventory_sources.py`.
+Inventory SHA-256:
+`35f2d8ff90f72fd1765b875a70d0e9a5f4d444efb05d5810d0a23f697123090b`.

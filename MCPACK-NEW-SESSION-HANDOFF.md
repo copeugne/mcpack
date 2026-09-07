@@ -6,13 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
-Village geometry next action: existing sources do not provide assembled starts.
-A two-target ordinary-seed capture is predeclared in sources/towns-towers-entry/
-README.md: Forest and Savanna Plateau, 162 requested chunks, timeout 900 seconds,
-existing harness only. New target/raw paths are towns-village-geometry-r1.
-No Java process was present during preparation; pinned prerequisite paths exist.
-Execution is not yet claimed. Preserve failures and source commit, inspect the
-actual harness handle before restarting, then decode, archive/restore, integrate.
+#### Towns and Towers Village geometry after 4075bc17
+
+The two-target seed42 capture completed with correlated save, clean exit and
+accepted frozen configuration. Forest example 198x40x137, Savanna Plateau
+17x28x20; both full start chunks. Grove 25x15x21 and Snowy Slopes 21x12x27
+are bounded source examples. No family-wide extrema are claimed. Raw archive
+252 files/4,805,146 bytes is published under item-8-towns-village-geometry-2026-09-07-r1,
+source revision 4075bc17b2890f3b76ebd9522f2b95d1ac9abe25; both local and
+downloaded restores pass. No runtime remains. README has exact commands/hashes.
+Eight applicable tests pass. Inventory SHA:
+35f2d8ff90f72fd1765b875a70d0e9a5f4d444efb05d5810d0a23f697123090b.
+Towns and Towers 8/8; registry 251/410, nonregistry 40/40, total 291/450
+assessed, 159 remaining. Retire these assessments absent contradiction.
+Quantify the next provider batch before editing. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Assessment counts do not establish Item 8 acceptance.
 
 #### Towns and Towers Village attribution after 3ffbac6e
 
