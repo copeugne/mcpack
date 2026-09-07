@@ -9887,3 +9887,34 @@ uv run basedpyright tools/build_item8_inventory.py
 
 Use fresh output files. The focused IDAS case passes (77 other cases deselected);
 scoped Ruff and Basedpyright pass. Views are preserved at d62d6212.
+
+
+### Mines and pyramid assembly reconciliation
+
+Decision 3decfe2b uses the existing packaged JSON, templates and full pool traces
+for the 19-piece mines and 31-piece pyramid graphs. Those are reachable template
+counts, not guaranteed generated piece counts. Exact missing targets remain in
+both variants. The pyramid villager pool has a different ID from its connector's
+target; no substitution or baseline repair is accepted. Source graph topology
+and contents suffice for these component boundaries without another renderer.
+
+Four focused IDAS checks pass, with 77 unrelated cases deselected. Scoped Ruff
+and Basedpyright pass. Two fresh inventory builds agree exactly, SHA-256
+7d5486cf34bc0cb02594e9fffe3292f6b2d4c0df71ea84d6f0177d08ca6d7050.
+Only the two grouping decisions and input identity change. All 887 memberships,
+full variants, missing edges and derived attributes are preserved in 426 working
+groups. Canonical backlog: 34, all IDAS. Effective attributes, 33 nonregistry
+contributions and final validation/review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py tests/item8/test_idas_provider_scope.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-mines-pyramid-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+cmp evidence/raw/item8/inventory-idas-mines-pyramid-r1.json evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+```
+
+Use fresh output files. Generated placement and effective encounter behavior are
+not acceptance claims of this source-boundary decision.
