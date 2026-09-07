@@ -610,3 +610,34 @@ an absent output path. Only Small Ship and decisions input hash changed; biomes,
 observations and nonregistry remain unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-small-ship.json`, SHA-256
 0b451177a4b41df207a2da02dac81bfe0626b3e0189270acabce2dcc7a93e564.
+
+## Voyager Flower Hole
+
+After 877019b1, ten attributes finish Flower Hole using existing hash-bound
+architecture, pools, templates and runtime biome evidence. Main envelope is
+27x8x25 XYZ. Its up_east rollable villager connectors [12,1,14] and [12,1,15]
+match downward [0,0,0] connectors, placing 1x2-or-3x1 options at [12,2,14] and
+[12,2,15], inside the main envelope. No other attachments extend it. Dimensions
+include air/padding and rotation caveats, not guaranteed attachment or exposure.
+
+Main ordinary single element is rigid with empty processors. Plains-villager
+options are rigid legacy_single, empty inline processors, with nitwit/baby/
+unemployed weights 1/1/10. Each option stores one villager; two positions do not
+prove realized occupants. Main entity list is empty. Its containers, two furnaces
+and smoker contain no mobs; furnace/smoker Items lists are empty. No physical
+spawners or generation markers. Main owns mvs:houses_common and mvs:houses_flower
+loot, while villager pieces have none. No rolled reward or production is inferred.
+
+Runtime biome intersection is Overworld-only. Generic jigsaw uses
+WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid checking,
+without optional terrain range/radius. Recessed built spaces and planted covering
+are source architecture, not evidence of measured underground burial depth.
+Vegetation/enclosure can conceal contents; discoverability is qualitative, not
+a measured sight distance. Natural spawning and terrain hazards remain conditional.
+
+No capture, measurement or tooling. Ten affected provider/inventory tests and
+builder Ruff/Basedpyright checks pass. Reproduce with build_item8_inventory to
+an absent path. Only Flower Hole and decisions input hash changed; biomes,
+observations and nonregistry remain unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-flower-hole.json`, SHA-256
+fa055b9dc39da1ab98b962de354748e5651d22254ece92c3ee305d6f3f264165.

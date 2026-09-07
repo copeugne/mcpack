@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager Flower Hole assessed after 877019b1
+
+Ten attributes finish Flower Hole. Two optional villager pieces fit within
+27x8x25 XYZ main bounds. Surface projection is distinguished from the recessed
+source architecture without asserting measured burial depth. No new capture
+or tooling. Derivations are in moog-generator-code README. Ten affected tests
+and builder checks pass. Inventory SHA-256:
+fa055b9dc39da1ab98b962de354748e5651d22254ece92c3ee305d6f3f264165.
+
+Retire Flower Hole assessment. Voyager 52/65; registry 159/410, nonregistry 40/40,
+total 199/450 assessed, 251 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager Small Ship assessed after 890ffc0f
 
 Ten attributes finish Small Ship. Its optional villager piece fits inside the
