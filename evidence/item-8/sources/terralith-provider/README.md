@@ -112,3 +112,72 @@ only these six families and the decisions pin; identities, biomes and original
 observations remain unchanged. No runtime capture or tooling addition.
 Inventory SHA-256:
 `81f98410e22ee9605e4f18ea741842b2ef00a2d7ef3b8814f0a998908ab5f100`.
+
+## Mage Tower and Spire
+
+Twenty attributes assess two families, six roots and sixteen unique templates.
+Use the pinned templates-redacted catalog, archive
+Terralith_1.21.1_v2.6.2_Neoforge.jar, paths data/terralith/structure/mage/
+and data/terralith/structure/spire/, together with their selected pool traces
+and packaged worldgen definitions. These are direct source assessments, not
+new runtime measurements. No selected template is missing or unresolved.
+
+All five tower architectures are 24x58x24. Seven upward connectors attach
+1x2x1 mob templates inside that envelope; the highest receiver Y is 34 in
+the ordinary tower and 35 in seasonal towers. The other receiver coordinates
+also remain inside the architecture. Ordinary/autumn/spring/summer use pillager,
+evoker, vindicator and witch components; winter substitutes stray for pillager.
+The saved vindicator has empty hands, so an axe is not inferred. Pillager saves
+a crossbow and stray a bow. Each architecture saves an axolotl; ordinary tower
+additionally saves an item containing two arrows. No ordinary/trial spawners
+occur. Pool mage/ground replaces grass_block over existing calcite with calcite;
+it does not inject entities, spawners or loot. Mob processors are empty.
+
+Spire starts at layer2. Its rigid pieces have XYZ sizes: layer2 37x26x34,
+layer1 94x27x98, base_r 107x31x54, base_l 107x31x53, layer3 35x37x32,
+layer4 18x51x19. For each edge, child origin equals parent origin plus
+outgoing connector position plus its facing unit vector minus incoming position:
+
+| Edge | Outgoing position/facing | Incoming position/facing | Child origin |
+| --- | --- | --- | --- |
+| layer2 to layer1 | 36,0,0 down_south | 65,26,33 up_south | -29,-27,-33 |
+| layer1 to base_r | 93,0,0 down_east | 95,30,6 up_east | -31,-58,-39 |
+| base_r to base_l | 106,30,53 south_up | 106,30,0 north_up | -31,-58,15 |
+| layer2 to layer3 | 36,25,0 up_east | 34,0,0 down_east | 2,26,0 |
+| layer3 to layer4 | 23,36,7 up_west | 17,0,0 down_west | 8,63,7 |
+
+The vertical joints are aligned with matching top directions. The horizontal
+base join is rollable, but its opposing horizontal faces already fix relative
+rotation under the generator's horizontal rotations. All names/targets are
+terralith:spire. Each pool selects one weight-one rigid piece with empty
+processors/fallback. The furthest edge is three connections from the root,
+within size6. The nominal union has inclusive minimum -31,-58,-39 and maximum
+75,113,67, giving 107x172x107. This is intended connected architecture, not proof
+that every placement succeeds or a measurement of occupied/exposed blocks.
+
+Base_l spawner block-entity indices11/12/13 assign zombie/stray/silverfish.
+Base_r indices3/9/10/16/17/20/21 assign drowned/cave_spider/skeleton/zombie/
+cave_spider/skeleton/cave_spider. Their retained NBT uses delay200..800,
+nearby limit6, spawn count4, spawn range4 and player range16. Ten source blocks
+are not ten observed active spawners or a live enemy count. Base_l saves eleven
+bats, base_r six bats, layer4 an armor stand. The latter saves a diamond helmet
+with legacy ProtectionIII, UnbreakingII, BindingI, netherite/silence trim and
+attribute modifiers. Its source equipment is preserved, without claiming those
+legacy effects survive runtime loading or are recoverable loot.
+
+Exact per-template loot paths remain in the assessments. Towers use
+terralith:mage/treasure. Spire bases use common/junk/rare, base_r additionally
+treasure, and layer4 treasure. No nonempty fixed Items/Book container payload
+occurs in these sixteen templates. All six root spawn overrides are empty.
+Captured biome overlap is Overworld; no retained start observations exist here.
+Ordinary tower projects to WORLD_SURFACE_WG; seasonal starts are absolute
+243/224/194/264 without heightmap projection. Spire starts at absolute92 with
+no terrain adaptation. Source silhouettes support qualitative discoverability,
+not measured visibility distance, exposure, live encounters or exploration pace.
+
+Rebuild and focused validation use the commands above. The semantic change is
+limited to these two families and the decisions identity; existing observations,
+biome constraints and registry assignments are preserved.
+
+Seven focused tests pass. Inventory SHA-256:
+`01cae86e2773d7656a307672fd58f4ce6e3e8ad49b9138ef850dcad613a70f25`.
