@@ -846,3 +846,89 @@ PY
 
 Rebuild and eight focused checks use the existing commands above. Semantic
 comparison changes only Asylum geometry and direct evidence/input identities.
+
+## Bandit, Pub, Nest and Thornborn content
+
+Forty attributes integrate five families with285 available templates:
+Bandit Towers26, Bandit Village31, Greenwood Pub35, Mechanical Nest160,
+Thornborn Towers33. Their ten geometry attributes remain open; none of these
+five is counted assessed yet. No retained starts occur in world-bounds.
+Use the same immutable WDA archive and template/packaged/trace catalogs above.
+Exact paths are data/dungeons_arise/structure/<family>/<family>_<piece>.nbt,
+worldgen/structure/<family>.json, and the traced template_pool paths.
+All effective biome intersections select Overworld. Root spawn_overrides are
+empty; natural spawning is separate from the authored sources below.
+
+Bandit Towers starts at absoluteY135, Mechanical Nest190, Thornborn130,
+without heightmap projection. These heights are not offsets above terrain.
+Bandit Village projects WORLD_SURFACE_WG at offset0 with beard_thin;
+Greenwood projects that heightmap at offset-18. Visual discoverability records
+source inference about exterior silhouettes and concealed interiors, not
+human sight distance or exploration pacing.
+
+Bandit Towers has seven dedicated ordinary-spawner alternatives, block_entities0:
+ranged_illager0 pillager Health40, ranged_skeleton1 Health26, skeleton_assassin0/1
+Health16/5, skeleton_juggernaut0/1/2 Health46/24/40. Assassin1 saves legacy
+invisibility; juggernaut2 has potion passenger. Three other ordinary spawners
+occur in crossing5 indices8/18 and part0 index14: firework rocket carrying
+persistent husk, min/max delay24000 and count3. These are authored payloads,
+not proof of a functioning rocket encounter. No direct saved entities or
+nonempty Items/Book payloads. Exact table references chests/desert_city_big,
+chests/desert_city_medium,chests/desert_city_small are absent from the selected
+WDA loot_table catalog; preserve unresolved reward references, not invented loot.
+
+Bandit Village hoglin0/1 block_entities0 are ordinary spawners with
+zombification-immune hoglin carrying wither skeleton/potion or husk.
+House6 index1 spawns firework rocket carrying persistent husk. Archer0 and
+assassin0 separately save persistent skeleton Health15 and husk Health10.
+No nonempty fixed Items/Book payloads in available templates. Referenced
+bandit_village_deco_3 is absent; this limits available-template absence claims.
+
+Greenwood spawner0/1 ordinary payloads are skeleton Health30 with potion
+passenger and zombie Health2. Furniture/rooms save17 villagers Health20 and
+one Health19, PersistenceRequired0; these are counts across alternatives,
+not one pub population. Room3 entities1 and room4 entities0 each save
+persistent vindicator Health99 with empty hands. Two saved item frames are
+decoration. Stairs2 block_entities2 has a ten-page writable book. Processor
+greenwood_pub_main replaces red_stained_glass with structure_void, mud_bricks
+with packed_mud at0.2, stone_bricks with mossy_stone_bricks at0.15. It does
+not append rewards or entities.
+
+Mechanical Nest ordinary spawner0..5 block_entities0 save skeleton Health40;
+skeleton Health40/firework passenger; two equal-weight zombie Health6 payloads;
+wither skeleton Health80; ravager Health60/creeper Health40 passenger; skeleton
+Health20. Preserve full gear and both zombie payloads in existing spawner_blocks.
+Crossing8 indices6/7/8/10/11/12 additionally spawn potion carrying lightning_bolt.
+Crossing9 entities7..14 are eight persistent powered creepers Health20 with
+legacy effects12/13. Bridge10 entities0/1/4/5 are effect clouds with legacy
+Id25, duration60 effect, cloud durations1999980 or2001380 and positive ages;
+this is not a claim of persistent live levitation. Roof2 entities6/7/8 are
+glow squids with Health37/33.459999084472656/38. Frames, paintings and armor
+stands are decoration. No trial spawners occur in the available batch templates.
+
+Nest nonempty Items/Book locations are integrated with exact indices:
+bridge5 barrels2..5 hold coarse dirt/rotten flesh/poisonous potatoes;
+deco_machines4 index1 flint_and_steel; deco_machines5 index1 nine strong_harming
+splash potions; mecha4 index2 lever; towers8_special index14 six strong_slowness
+splash potions. Bridge11_special index18 holds writable book without pages;
+roof0 index1 has18 pages. These fixed payloads are distinct from table rewards.
+Processor mechanical_nest_main modifies campfire/lantern and mud/copper blocks
+and then replaces magenta_glazed_terracotta with TNT. It appends neither loot
+nor entities. Neither source TNT nor potion contents prove a working trap.
+
+Thornborn seven ordinary spawner alternatives (block_entities0) save skeleton
+Health36, skeleton Health36/potion passenger, ranged skeleton without explicit
+Health, phantom Health30 Size5/skeleton Health60 passenger, top juggernaut
+Health50, top ranged Health40 and witch. No direct entities or nonempty fixed
+Items/Book payloads in available templates. Referenced
+thornborn_towers_hanging_bridge_2_medium_terminator is absent. Bandit and
+Thornborn selected template processors are empty; an empty pool element is
+not an uninspected processor. Missing templates are retained in grouping data.
+
+Loot-table IDs and nonempty fixed payload pointers are now in authoritative
+attributes. Complete passenger/effect/gear/timing NBT stays in the retained
+catalog at template_contents[template_id].spawner_blocks or the exact template
+block_entities/entities index. Legacy serialization is not live-conversion
+proof. Required next work is ten whole-layout geometry attributes, using
+existing source evidence before any justified capture. No new measurement or
+tooling was added. Rebuild and focused test commands remain those above.

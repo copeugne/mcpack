@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five WDA content assessments after 91d9db57
+
+Forty attributes integrate Bandit Towers, Bandit Village, Greenwood Pub,
+Mechanical Nest and Thornborn Towers across285 available templates. Preserve
+missing Village deco3 and Thornborn hanging-bridge terminator, three absent
+Towers desert_city loot tables, saved mobs versus spawners, Nest lightning/
+passenger/charged-creeper/cloud sources and TNT processor, and fixed rewards.
+Derivations: evidence/item-8/sources/wda-provider-scope/README.md, Bandit, Pub,
+Nest and Thornborn content. Eight focused tests pass. No runtime/tool added.
+Ten geometry attributes remain for these five; none is counted assessed yet.
+Total remains342/450 assessed,108 remaining; WDA30/40. Next inspect connected
+source geometry for these five before deciding whether any capture is needed.
+No retained world-bounds starts exist for them. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+aa1e8866430f980bd969dfe4a7065452c9d34c211a39d00585ff2785432f98bc.
+
 #### Plague Asylum geometry delivered after 9a3221a5
 
 The predeclared one-target seed42 run completed with correlated save, clean
