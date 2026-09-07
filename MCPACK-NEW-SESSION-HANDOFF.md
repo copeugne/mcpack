@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 2551f9ac and independently reproduces exactly. Canonical
+backlog: 24, all IDAS. All 887 roots and full variants remain in 426 working
+groups. Next compare wizard-tower and nexus alternatives, preserving content
+differences. Attributes, nonregistry and final review/main delivery remain open.
+
 Necromancers spire is resolved as one four-component assembly from existing
 connectors and contents. Focused IDAS and scoped checks pass. Canonical backlog:
 24, all IDAS. Inventory refresh follows. Wizard tower and nexus remain open:
