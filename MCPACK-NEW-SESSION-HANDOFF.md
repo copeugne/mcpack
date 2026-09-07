@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mega Fortress assessed after a938d1a0
+
+Ten attributes integrate the final Nether Structures family. Existing planned
+start observations provide explicitly limited approximate layout dimensions;
+pool-owned spawners, authored mobs, natural override, loot and visibility are
+attributed from retained sources. No capture, new tooling or measurement.
+Ten shared tests pass. Direct derivation: sources/moog-arena-processors/README.md.
+Inventory SHA: af5a9899efe6ed451a87a6c60817d421ffb0a75d3bfe3970df7d090273859737.
+Nether Structures 27/27; registry 243/410, nonregistry 40/40, total 283/450
+assessed, 167 remaining. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open. Quantify
+the next provider batch before editing; do not reopen assessed families without
+a concrete contradiction. These counts do not establish Item 8 acceptance.
+
 #### Arena and Dragon Arena assessed after 787174a4
 
 Twenty attributes finish two families across three roots and 36 unique templates.

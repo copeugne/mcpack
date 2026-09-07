@@ -181,3 +181,43 @@ Integration validation: all ten shared tests pass. Rebuilt inventory SHA-256:
 `4c5eb68aa0ac4f2151935ce30d0666f81c2ee4f269ba073569096b42ad8773ea`.
 Semantic comparison changes only Arena/Dragon family rows and the decisions input
 pin; unrelated rows, registry identities, biomes and observations are preserved.
+
+## Mega Fortress integration
+
+The same preserved pillar and ordinary spawner implementations support the
+Mega Fortress assessment, without another capture or tool. Exact source JSON
+paths are data/mns/worldgen/processor_list/{pillars,pillars_armored,pillars_blaze}.json
+in the retained Nether Structures archive. The first two assign equal-weight
+wither skeleton/blaze/skeleton spawners; the third assigns blaze only. Each
+uses nearby 6, delay 200..800, player range 16, count 4 and spawn range 4.
+The three selected spawners/spawner_{end_1,side_1,side_2} templates use
+pillars_blaze. The root center uses pillars_armored. Other selected spawner
+pieces use pillars. Raw source spawner IDs do not supersede those processors.
+
+The full selected template list and exact NBT identities already exist in
+pool-traces-content.json.gz under structures[mns:mega_fortress]. Its 196
+components remain one branching family. Mob pool JSON selects six versioned
+1.21 mob templates, separately from ordinary spawners and the root's explicit
+piece-bounded natural spawn override. Armor-stand sets in pillars_armored are
+recorded as declared configuration, not proven placed equipment or recoverable
+loot. Empty-metadata SAVE structure blocks do not author additional enemies.
+Per-template loot references remain authoritative; fixed payloads additionally
+include central-room tipped-arrow dispensers (block_entities 2/3), eastern-room
+potion dispensers, northern-room arrow dispensers and journal, and the fork's
+framed note. Their exact selected NBT paths are recorded in the family assessment.
+
+Existing world-bounds observations 29/441 are repeated run-a/run-b records of
+seed 42, Nether start chunk (16,20), source ordinary/chunks.jsonl line 2637.
+Both have structure_starts status, not full placement. Their planned envelope
+[128,19,193,384,74,452] gives inclusive dimensions 257x56x260 by subtracting each
+minimum from its corresponding maximum and adding one. This supports the
+required approximate architectural size with an explicit lifecycle boundary;
+it does not prove finished blocks, two independent sites or size distribution.
+Down pillars (configured length 128), up chains (40) and terrain carving are
+separate conditional effects. Boundary-exempt end pools prevent treating the
+configured 128 center distance as a strict whole-layout cap. No additional
+experiment is needed to report this approximate layout and its limits.
+
+All ten shared tests pass. The final direct attribution correction adds the
+central-room dispenser reference only; rebuilding changes only Mega Fortress
+and the decisions input pin. Inventory SHA-256: `af5a9899efe6ed451a87a6c60817d421ffb0a75d3bfe3970df7d090273859737`.
