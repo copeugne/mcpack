@@ -148,3 +148,86 @@ observations, hostility and nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-illager-assemblies-attribution.json`, SHA-256
 229401ae20ea01d07325fd0738b4fd13c851fd76c7729c0e18eadf24c5479a25.
 Retire the thirteen supported descriptions; neither family is yet fully assessed.
+
+## Targeted assembly geometry r1
+
+Four claims remain: footprint and height for Firecaller Hut and Labyrinth. Reuse
+the existing gap lifecycle with two explicit targets, ordinary seed 42, frozen
+configuration and 136 retained JARs plus the established Chunky instrumentation.
+No simulator, probe, schema or new measurement implementation is introduced.
+Saved piece envelopes will describe targeted examples, including air/padding,
+not family-wide extrema or occupied geometry. A failed locate or missing saved
+start is a failed observation, not a substituted component-size answer.
+Runtime code source is 84a92353befacf1b6e567acb2fb539f06b33c080.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/illager-geometry-r1 \
+  --log-path evidence/raw/item8/illager-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/illager-geometry-r1/configuration \
+  --receipt evidence/raw/item8/illager-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure illagerinvasion:firecaller_hut \
+  --structure illagerinvasion:labyrinth
+```
+
+### Geometry r1 accepted results
+
+Both target regions completed. The correlated save and clean exit passed, as did
+frozen configuration capture. `evidence/item-8/runtime/illager-geometry-r1/run.json` records the identities and lifecycle. The original instance
+and source capture remain preserved.
+
+| Family | Decoded line | Inclusive envelope (min XYZ, max XYZ) | Size XYZ | Pieces |
+| --- | ---: | --- | --- | ---: |
+| firecaller_hut | 287 | -3731,248,-2549,-3704,256,-2529 | 28,9,21 | 7 |
+| labyrinth | 2127 | 4698,23,-974,4855,84,-844 | 158,62,131 | 76 |
+
+Both targeted start chunks are minecraft:full in the Overworld. The entire
+decoded stream has 2,763 chunks, including locate-created and surrounding partial
+chunks; that is not a full-chunk sampling denominator. `chunks.jsonl` SHA-256:
+49ef0b8a410fc1a1ec7469106d1711e582c0334bb3823db229964aff6f0a4404.
+For the exact rows above, take minimum piece minima and maximum piece maxima,
+then max-minus-min-plus-one on each axis, as implemented in the existing
+`mcpack_evidence.item8_world_bounds.observed_bounds`. X/Z supplies footprint and
+Y height. The Labyrinth envelope reaching Y84 does not contradict its generation
+stub Y <= 47 filter; a start-position filter is not a cap on all attached pieces.
+No whole-layout exposure, occupancy or family-wide size-range claim is made.
+
+After verified shutdown, existing tools preserved and decoded the world:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/illager-geometry-r1"), Path("evidence/raw/item8/illager-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/illager-geometry-r1/world --output evidence/raw/item8/illager-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/illager-geometry-r1 --archive evidence/raw/item8/item8-illager-geometry-r1-84a92353.tar.gz --manifest evidence/item-8/raw-custody/illager-geometry-r1-manifest.json --revision 84a92353befacf1b6e567acb2fb539f06b33c080
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-illager-geometry-r1-84a92353.tar.gz --manifest evidence/item-8/raw-custody/illager-geometry-r1-manifest.json --target evidence/raw/item8/illager-geometry-r1-restored --receipt evidence/item-8/raw-custody/illager-geometry-r1-local-restore.json
+```
+
+World copying uses the Java-compatible POSIX record lock and excludes session.lock.
+Archive size is 6,018,145 bytes, 259 files, 32,811,498 uncompressed bytes. SHA-256:
+98599a56e3e0841a71d7b3a530f4c3685e363fe5a2abf149b8fbb50bf9687ef3.
+It retains logs, run receipt, configuration, stopped-world boundary and decoded
+chunks, without server binaries.
+
+[Published raw archive](https://github.com/copeugne/mcpack/releases/tag/item-8-illager-geometry-2026-09-07-r1).
+Local and downloaded copies both restored all 259 files with verified hashes:
+
+```sh
+gh release download item-8-illager-geometry-2026-09-07-r1 --dir evidence/raw/item8/illager-geometry-download --pattern item8-illager-geometry-r1-84a92353.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/illager-geometry-download/item8-illager-geometry-r1-84a92353.tar.gz --manifest evidence/item-8/raw-custody/illager-geometry-r1-manifest.json --target evidence/raw/item8/illager-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/illager-geometry-r1-downloaded-restore.json
+```
+
+Local copies share a disk; GitHub supplies the separate durable copy. Use absent
+archive and restore destinations for reproduction. All four geometry answers are
+integrated. Seven affected tests and builder quality checks pass. Inventory
+matches `evidence/raw/item8/inventory-illager-geometry.json`, SHA-256
+3715e2e9625840de9c1fdb28638ca430a2ffcb8393d393126e2084ae5936337c.
+Only these two rows' geometry, associated evidence and discoverability limitation
+changed; prior source attribution and nonregistry content are unchanged.

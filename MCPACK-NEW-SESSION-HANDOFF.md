@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Illager Invasion geometry finished from 84a92353
+
+Four geometry answers finish firecaller_hut and labyrinth. One fresh ordinary-seed
+run reused the existing gap lifecycle. Both targets, correlated save, clean stop
+and frozen configuration checks passed. Full start-piece envelopes are 28x9x21
+and 158x62x131 XYZ. Example dimensions include padding; no family-wide extrema
+or full-layout occupancy claim. The custom Labyrinth stub filter is not a cap
+on its attached pieces. Retire all five Illager Invasion family assessments.
+
+Seven affected tests and builder checks pass. Inventory SHA-256:
+3715e2e9625840de9c1fdb28638ca430a2ffcb8393d393126e2084ae5936337c.
+Raw release item-8-illager-geometry-2026-09-07-r1 preserves 259 files; local and
+downloaded restores pass. Source revision and remote tag are 84a92353. Commands,
+exact decoded lines and geometry derivation are in illagerinvasion-provider README.
+No runtime remains active. Registry assessment is 97/410; nonregistry 40/40,
+total 137/450 assessed, 313 remaining. Continue other providers in quantified
+batches. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
 #### Firecaller and Labyrinth source attribution after 3a2c6d78
 
 Thirteen answers are integrated for the two remaining Illager Invasion families:
