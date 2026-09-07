@@ -127052,7 +127052,10 @@
         "packaged_template_y_blocks": 22,
         "template_id": "mvs:ruins/castle_ruins"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:castle_ruins": {
           "biomes": [
@@ -127353,30 +127356,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:castle_ruins": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/castle_ruins"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -127392,6 +127377,80 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 22,
             "template_id": "mvs:ruins/castle_ruins"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/castle_ruins"
+                ],
+                "value": "mvs:general"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/castle_ruins"
+                ],
+                "value": "mvs:houses_common"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/castle_ruins"
+                ],
+                "value": "mvs:houses_rare"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/castle_ruins"
+                ],
+                "value": "mvs:houses_uncommon"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 2,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Tall broken castle masonry with interior containers; walls can conceal contents."
           }
         },
         "custom_generation_settings": {
@@ -127403,9 +127462,12 @@
           "terrain_height_radius_check": 2
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -127426,13 +127488,12 @@
           "mvs:castle_ruins"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -127462,28 +127523,13 @@
             ],
             "value": "mvs:houses_uncommon"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/castle_ruins"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/castle_ruins"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Castle Ruins",
       "pool_trace_ids": [
@@ -127493,8 +127539,25 @@
       "structure_ids": [
         "mvs:castle_ruins"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 2,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Tall broken castle masonry with interior containers; walls can conceal contents."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -136102,7 +136165,10 @@
         "packaged_template_y_blocks": 12,
         "template_id": "mvs:nature/large_mushroom"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:large_mushroom": {
           "biomes": [
@@ -136126,30 +136192,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:large_mushroom": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:nature/large_mushroom"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -136165,6 +136213,49 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 12,
             "template_id": "mvs:nature/large_mushroom"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": []
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Large mushroom canopy and stem, potentially blending with mushroom-biome surroundings."
           }
         },
         "custom_generation_settings": {
@@ -136174,9 +136265,12 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3",
           "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4"
@@ -136198,35 +136292,19 @@
           "mvs:large_mushroom"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:nature/large_mushroom"
-        ]
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+        "packaged_references": []
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:nature/large_mushroom"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Large Mushroom",
       "pool_trace_ids": [
@@ -136236,8 +136314,23 @@
       "structure_ids": [
         "mvs:large_mushroom"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Large mushroom canopy and stem, potentially blending with mushroom-biome surroundings."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -138174,7 +138267,10 @@
         "packaged_template_y_blocks": 13,
         "template_id": "mvs:ruins/log_ruin"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:log_ruin": {
           "biomes": [
@@ -138475,30 +138571,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:log_ruin": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/log_ruin"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -138514,6 +138592,59 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 13,
             "template_id": "mvs:ruins/log_ruin"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/log_ruin"
+                ],
+                "value": "mvs:swamps"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 2,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Broad ruined timber structure with beds and containers, potentially blending into wooded surroundings."
           }
         },
         "custom_generation_settings": {
@@ -138525,9 +138656,12 @@
           "terrain_height_radius_check": 2
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -138548,13 +138682,12 @@
           "mvs:log_ruin"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -138563,28 +138696,13 @@
             ],
             "value": "mvs:swamps"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/log_ruin"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/log_ruin"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Log Ruin",
       "pool_trace_ids": [
@@ -138594,8 +138712,25 @@
       "structure_ids": [
         "mvs:log_ruin"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 2,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Broad ruined timber structure with beds and containers, potentially blending into wooded surroundings."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -139568,7 +139703,10 @@
         "packaged_template_y_blocks": 10,
         "template_id": "mvs:other_decoration/mushroom_statue"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:mushroom_statue": {
           "biomes": [
@@ -139592,30 +139730,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:mushroom_statue": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/mushroom_statue"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -139631,6 +139751,49 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 10,
             "template_id": "mvs:other_decoration/mushroom_statue"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": []
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Narrow upright mushroom-themed decorative form."
           }
         },
         "custom_generation_settings": {
@@ -139640,9 +139803,12 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3",
           "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4"
@@ -139664,35 +139830,19 @@
           "mvs:mushroom_statue"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/mushroom_statue"
-        ]
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+        "packaged_references": []
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/mushroom_statue"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Mushroom Statue",
       "pool_trace_ids": [
@@ -139702,8 +139852,23 @@
       "structure_ids": [
         "mvs:mushroom_statue"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Narrow upright mushroom-themed decorative form."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -141482,7 +141647,10 @@
         "packaged_template_y_blocks": 5,
         "template_id": "mvs:railway"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:railway": {
           "biomes": [
@@ -141783,30 +141951,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:railway": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:railway"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -141822,6 +141972,66 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 5,
             "template_id": "mvs:railway"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:railway"
+                ],
+                "value": "mvs:houses_common"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:railway"
+                ],
+                "value": "mvs:houses_uncommon"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 1,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Low elongated railway feature with two referenced chests; no operational transport behavior is established."
           }
         },
         "custom_generation_settings": {
@@ -141833,9 +142043,12 @@
           "terrain_height_radius_check": 1
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/landmarks.svg.gz": "50a33d1e32a21f14f7b6cf057b8ff98821ebc4b5a594a88fcb43cccdd9bcbd8a"
         },
@@ -141856,13 +142069,12 @@
           "mvs:railway"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -141878,28 +142090,13 @@
             ],
             "value": "mvs:houses_uncommon"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:railway"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:railway"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Railway",
       "pool_trace_ids": [
@@ -141909,8 +142106,25 @@
       "structure_ids": [
         "mvs:railway"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 1,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Low elongated railway feature with two referenced chests; no operational transport behavior is established."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -142220,7 +142434,10 @@
         "packaged_template_y_blocks": 9,
         "template_id": "mvs:ruins/ruined_beacon"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:ruined_beacon": {
           "biomes": [
@@ -142521,30 +142738,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:ruined_beacon": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/ruined_beacon"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -142560,6 +142759,51 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 9,
             "template_id": "mvs:ruins/ruined_beacon"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Versioned pool selects mvs:ruins/ruined_beacon for 1.21.1. tuff_to_iron has ordered tuff-match inputs 0.2 -> raw_iron_block and 0.05 -> iron_block; these are source salvage rules, not independent observed yields. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": []
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 1,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Low ruined beacon-shaped feature. The selected template has no beacon block; its name does not establish an active beam."
           }
         },
         "custom_generation_settings": {
@@ -142571,9 +142815,12 @@
           "terrain_height_radius_check": 1
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -142594,35 +142841,19 @@
           "mvs:ruined_beacon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/ruined_beacon"
-        ]
+        "basis": "Exact selected-template container references and owners. Versioned pool selects mvs:ruins/ruined_beacon for 1.21.1. tuff_to_iron has ordered tuff-match inputs 0.2 -> raw_iron_block and 0.05 -> iron_block; these are source salvage rules, not independent observed yields. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+        "packaged_references": []
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/ruined_beacon"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Ruined Beacon",
       "pool_trace_ids": [
@@ -142632,8 +142863,25 @@
       "structure_ids": [
         "mvs:ruined_beacon"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 1,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Low ruined beacon-shaped feature. The selected template has no beacon block; its name does not establish an active beam."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -143316,7 +143564,10 @@
         "packaged_template_y_blocks": 14,
         "template_id": "mvs:ruins/small_ruin"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:small_ruin": {
           "biomes": [
@@ -143617,30 +143868,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:small_ruin": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/small_ruin"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -143656,6 +143889,59 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 14,
             "template_id": "mvs:ruins/small_ruin"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/small_ruin"
+                ],
+                "value": "mvs:houses_uncommon"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 2,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Small upright masonry ruin containing a referenced chest."
           }
         },
         "custom_generation_settings": {
@@ -143667,9 +143953,12 @@
           "terrain_height_radius_check": 2
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -143690,13 +143979,12 @@
           "mvs:small_ruin"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -143705,28 +143993,13 @@
             ],
             "value": "mvs:houses_uncommon"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/small_ruin"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/small_ruin"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Small Ruin",
       "pool_trace_ids": [
@@ -143736,8 +144009,25 @@
       "structure_ids": [
         "mvs:small_ruin"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 2,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Small upright masonry ruin containing a referenced chest."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -144085,7 +144375,10 @@
         "packaged_template_y_blocks": 12,
         "template_id": "mvs:other_decoration/snowy_medium_fossil"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:snowy_fossil": {
           "biomes": [
@@ -144141,30 +144434,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:snowy_fossil": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/snowy_medium_fossil"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -144180,6 +144455,49 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 12,
             "template_id": "mvs:other_decoration/snowy_medium_fossil"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": []
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Snow-biome fossil-shaped structure; local snow and terrain can obscure portions."
           }
         },
         "custom_generation_settings": {
@@ -144189,9 +144507,12 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3",
           "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4"
@@ -144213,35 +144534,19 @@
           "mvs:snowy_fossil"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/snowy_medium_fossil"
-        ]
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+        "packaged_references": []
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:other_decoration/snowy_medium_fossil"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Snowy Fossil",
       "pool_trace_ids": [
@@ -144251,8 +144556,23 @@
       "structure_ids": [
         "mvs:snowy_fossil"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Snow-biome fossil-shaped structure; local snow and terrain can obscure portions."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -145651,7 +145971,10 @@
         "packaged_template_y_blocks": 7,
         "template_id": "mvs:ruins/statue_ruins"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:statue_ruins": {
           "biomes": [
@@ -145952,30 +146275,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:statue_ruins": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/statue_ruins"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -145991,6 +146296,59 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 7,
             "template_id": "mvs:ruins/statue_ruins"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/statue_ruins"
+                ],
+                "value": "mvs:abandoned"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 1,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Low ruined statue form with a referenced barrel."
           }
         },
         "custom_generation_settings": {
@@ -146002,9 +146360,12 @@
           "terrain_height_radius_check": 1
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -146025,13 +146386,12 @@
           "mvs:statue_ruins"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -146040,28 +146400,13 @@
             ],
             "value": "mvs:abandoned"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/statue_ruins"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/statue_ruins"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Statue Ruins",
       "pool_trace_ids": [
@@ -146071,8 +146416,25 @@
       "structure_ids": [
         "mvs:statue_ruins"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 1,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Low ruined statue form with a referenced barrel."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -146526,7 +146888,10 @@
         "packaged_template_y_blocks": 10,
         "template_id": "mvs:ruins/stone_pillars"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [],
+        "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+      },
       "biome_constraints": {
         "mvs:stone_pillars": {
           "biomes": [
@@ -146827,30 +147192,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mvs:stone_pillars": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/stone_pillars"
-        ],
-        "unresolved_sources": {}
+        "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
@@ -146866,6 +147213,59 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 10,
             "template_id": "mvs:ruins/stone_pillars"
+          },
+          "authored_or_natural_enemies": {
+            "authored": [],
+            "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners.",
+            "packaged_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+            "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "mvs:ruins/stone_pillars"
+                ],
+                "value": "mvs:houses_rare"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+            "contained_entities": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+            "placement_inputs": {
+              "allowed_terrain_height_range": 3,
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "start_height": {
+                "absolute": 0
+              },
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 1,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "value": "Surface-projected feature"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+            "source_form": "Upright stone-pillar group with a referenced chest and lectern."
           }
         },
         "custom_generation_settings": {
@@ -146877,9 +147277,12 @@
           "terrain_height_radius_check": 1
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/voyager-landmark-views/ruins.svg.gz": "33b10e6145fef9791f9d4afd1cf81fd539c5878d794ced2ab0d56314b72784d6"
         },
@@ -146900,13 +147303,12 @@
           "mvs:stone_pillars"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards.",
+        "value": "Environmental ruin or decorative feature with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact selected-template container references and owners. Relevant pool uses minecraft:empty processors. Empty container references do not imply absence of ordinary block drops; no rolled reward or runtime container outcome is asserted.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -146915,28 +147317,13 @@
             ],
             "value": "mvs:houses_rare"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/stone_pillars"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mvs:ruins/stone_pillars"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "Template entity list and block-entity payloads inspected separately; no authored or contained mob source identified. Natural spawning remains conditional on biome and world state.",
+        "contained_entities": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Moog's Voyager Structures Stone Pillars",
       "pool_trace_ids": [
@@ -146946,8 +147333,25 @@
       "structure_ids": [
         "mvs:stone_pillars"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG offset zero and beard_thin. Center-column liquid and configured terrain checks do not guarantee the entire footprint is exposed or dry. Optional terrain inputs are preserved only where declared.",
+        "placement_inputs": {
+          "allowed_terrain_height_range": 3,
+          "cannot_spawn_in_liquid": true,
+          "project_start_to_heightmap": "WORLD_SURFACE_WG",
+          "start_height": {
+            "absolute": 0
+          },
+          "terrain_adaptation": "beard_thin",
+          "terrain_height_radius_check": 1,
+          "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+        },
+        "value": "Surface-projected feature"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from selected architecture, stored geometry and surface placement. No viewing distance, guaranteed exposure or discovery rate is measured.",
+        "source_form": "Upright stone-pillar group with a referenced chest and lectern."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -183763,7 +184167,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "f3be9a9821a72d2048eec8a9d5af2d8a0a13b73062a048bd8b41d5b97230fb6a",
+    "evidence/item-8/family-decisions.json": "93ac25f7aaaa7c590c8fd3737b1d5fab9a02231590be15a622497fd8fe6d4fcb",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
