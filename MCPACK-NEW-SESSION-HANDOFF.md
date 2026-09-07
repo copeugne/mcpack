@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed mineshaft assessed after 7a8fabb5
+
+Seven remaining entries integrated for16 variants/226 pool-traced templates.
+Sixteen feature-selected minecart templates each carry a defined matching loot
+table; the empty literal pool loot trace was not accepted as no loot. Sixteen
+spawner lists replace source cave spiders with variant-specific cave spiders,
+strays,drowned,endermites or blazes. End natural piece overrides remain separate.
+Placement/source limitations include terrain adjustment, rail/sky suppression,
+conditional minecart placement and discarded placeInWorld result. No new runtime
+or tool. All85 focused checks pass (58.85s);only mineshaft/input identity changed.
+Total402/448 assessed;46 families/413 entries remain: IDAS38/343,Repurposed8/70.
+Next pyramid has seven remaining entries and existing accepted geometry. Reuse
+its22 templates/15 selected processor lists; quantify missing claims before any
+new investigation. Remaining seven Repurposed geometry gaps and village crop
+precedence conflicts stay open. Details in repurposed-mineshaft-assessment README
+under evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: fc9221d93bb26079030c6f051e2719b03a039d04fb37403bcea3eb86cfb772d9.
+
 #### Repurposed mineshaft and pyramid sizes integrated after 67fa3d4e
 
 Four required size entries now explicitly accept existing full-start envelopes.
