@@ -231,6 +231,10 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/minecraft/world/level/biome/BiomeGenerationSettings.class",
+    "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature.class",
+    "net/minecraft/world/level/levelgen/placement/BlockPredicateFilter.class",
+
     "net/neoforged/neoforge/common/Tags$Biomes.class",
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler$GraveServerModelLoader.class",
