@@ -26,7 +26,7 @@ INPUTS = {
     SOURCES: "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
     TRACES: "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
     BOUNDS: "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
-    DECISIONS: "8c394ecf7d2e9fdf79db3879a376d063f5442f056364eeafdd61500756c3ddff",
+    DECISIONS: "e98a6edcaf38343a6314cedcc153d06eaa9719acf4fcdacd57b07c75e77b6ebe",
     REGISTRY: "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     DIMENSION_BIOMES: "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
 }
@@ -286,6 +286,66 @@ def assemble(  # noqa: C901, PLR0913, PLR0917 - keep explicit evidence joins in 
     }
 
 
+def consolidate(
+    result: dict[str, JsonValue], contributions: dict[str, dict[str, JsonValue]]
+) -> None:
+    """List active families together while retaining other registry groups and source records."""
+    families = cast("dict[str, dict[str, JsonValue]]", result["families"])
+    other: dict[str, JsonValue] = {}
+    for family, row in list(families.items()):
+        decision = cast("dict[str, JsonValue]", row["grouping_decision"])
+        variants = cast("dict[str, dict[str, JsonValue]]", decision.get("variants", {}))
+        suppressed = bool(variants) and all(
+            cast("dict[str, JsonValue]", variant.get("normal_generation", {})).get("status")
+            == "SUPPRESSED" for variant in variants.values()
+        )
+        if "contribution_disposition" in decision or suppressed:
+            other[family] = families.pop(family)
+    required = {
+        "dimension", "biome_constraints", "approximate_footprint", "approximate_vertical_size",
+        "intended_hostility", "mob_source", "loot_table_source", "generated_spawners",
+        "authored_or_natural_enemies", "visual_discoverability",
+        "underground_surface_classification",
+    }
+    for contributor, contribution in contributions.items():
+        declared = cast("list[str | dict[str, JsonValue]]", contribution.get("families", []))
+        for declaration in declared:
+            if isinstance(declaration, dict):
+                family = str(declaration["family"])
+                source = declaration
+            else:
+                family = declaration
+                if "designs" in contribution:
+                    designs = cast("dict[str, dict[str, JsonValue]]", contribution["designs"])
+                    source = designs[family]
+                elif len(declared) == 1:
+                    source = contribution
+                else:
+                    message = f"missing per-family source assessments: {contributor}"
+                    raise ValueError(message)
+            attributes = cast("dict[str, JsonValue]", source["attributes"])
+            if set(attributes) != required:
+                message = f"non-registry family attributes differ from requirements: {family}"
+                raise ValueError(message)
+            if family in families or family in other:
+                message = f"duplicate canonical family: {family}"
+                raise ValueError(message)
+            families[family] = {
+                "name": family,
+                "structure_ids": [],
+                "contribution_id": contributor,
+                "status": "INCOMPLETE",
+                **attributes,
+            }
+    result["other_registry_groups"] = other
+    result["scope"] = (
+        "Canonical active-family listing joins registry and non-registry assessments. "
+        "Other registry groups retain inactive and excluded coverage dispositions. "
+        "Contribution records preserve source relationships and evidence. "
+        "Final acceptance, review and delivery remain open; this is not an exit-gate pass."
+    )
+
+
 def main() -> None:
     """Bind the delivered source files and write the reviewable working inventory."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -311,6 +371,8 @@ def main() -> None:
         cast("dict[str, list[str]]", documents[DIMENSION_BIOMES]),
     )
     result["non_registry_content"] = documents[DECISIONS]["non_registry_content"]
+    non_registry = cast("dict[str, JsonValue]", result["non_registry_content"])
+    consolidate(result, cast("dict[str, dict[str, JsonValue]]", non_registry["contributions"]))
     result["inputs"] = dict(INPUTS)
     with output.open("x", encoding="utf-8") as stream:
         _ = stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
