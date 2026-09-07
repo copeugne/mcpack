@@ -9749,3 +9749,32 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-dimensional-houses-r1.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-dimensional-houses-r2.json
 ```
+# AdoraBuild Overworld house relationship closure (2026-09-07)
+
+Decision 93c174d2 resolves the final 35 Overworld roots using complete abfaa574
+views and preserved contents/definitions. Thirty-two furnished-house variants
+retain roof, floor, material and furnishing differences. The two bedless oak
+book/storage variants are explicit exceptions to sleeping facilities, not silently
+treated as having beds. Two raised dwellings and the low terrain-enclosed oak hut
+retain separate access/layout relationships. Exact definitions and all original
+variants are preserved; projected terrain is not a measured burial depth.
+
+The focused AdoraBuild source-binding case and scoped Ruff/Basedpyright checks
+pass. Two fresh inventory runs match exactly. Only house, raised_house, oak_hut
+and the decision hash change. All 887 roots remain assigned once in 423 working
+groups. AdoraBuild has zero open canonical notes. The canonical-note backlog is
+59, all IDAS. Required attributes, 33 nonregistry contribution records and final
+validation, review and main delivery remain open.
+
+Inventory SHA-256:
+51f01320de4aa62ad120c861aa4544c662a470d03d26209c91e5bb724d065cc2.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k adorabuild
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-overworld-houses-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+cmp evidence/raw/item8/inventory-adora-overworld-houses-r1.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
+```

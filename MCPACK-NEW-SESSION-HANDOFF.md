@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 93c174d2 and reproduces exactly in two fresh runs. All 887 roots
+remain assigned once in 423 working groups. AdoraBuild canonical notes are closed;
+the remaining 59 are all IDAS. Next: IDAS design reconciliation using preserved
+graphs/content before selecting any necessary views. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain.
+
 The final Overworld house relationship is resolved using all existing views and
 contents: 32 furnished-house variants, two raised dwellings and one low oak hut.
 Roof and furnishing differences remain variants; bedless book/storage exceptions
