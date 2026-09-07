@@ -16733,7 +16733,114 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+      },
+      "processor_inspection": {
+        "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+        "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+        "members": {
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/SkeletonMobSpawnerProcessor.class": "6b594a6097850dd4662001b2aef23779edca655387b80a86879ffc13f45220fb",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/SkeletonDungeonLegProcessor.class": "4c5a6a7cc1a9a6030931e41a3a0df6837f75b053a30df73c8dde36852abb63b8",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/RuinedStoneBrickProcessor.class": "13188674a2dcfbaf8e154c9c0a9711d312989c7b81ef2ef7289d1f5b18323351"
+        },
+        "basis": "Direct pinned-javap inspection; derivation in sources/dungeons-provider/README.md, Skeleton Dungeon assessment."
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "139 effective biomes intersect only the captured Overworld; no missing required or unresolved biome references."
+        },
+        "approximate_footprint": {
+          "observed_xz_blocks": [
+            31,
+            31
+          ],
+          "observation_indexes": [
+            277,
+            666
+          ],
+          "envelope": [
+            417,
+            -47,
+            65,
+            447,
+            -35,
+            95
+          ],
+          "basis": "Inclusive saved-piece union from one full-start ocean-heavy example repeated in run-b. Illustrative assembled footprint, not occupied volume, family extrema or complete placement of every distant component."
+        },
+        "approximate_vertical_size": {
+          "observed_piece_height_blocks": 13,
+          "observation_indexes": [
+            277,
+            666
+          ],
+          "basis": "Inclusive saved-piece maxY-minY+1 in the retained full-start example.",
+          "support_extension": "SkeletonDungeonLegProcessor extends blue-marker support columns down through air/fluid until solid terrain or build-height bounds. This variable extension is outside the saved-piece envelope;13 is not fixed total occupied height."
+        },
+        "intended_hostility": {
+          "value": "Hostile skeleton dungeon",
+          "basis": "Authored skeleton spawner processor plus explicit piece-bounded skeleton monster spawning."
+        },
+        "mob_source": {
+          "authored": "SkeletonMobSpawnerProcessor replaces ordinary spawner data with skeleton spawn potentials and entity type. Saved pig values are template input, not the effective authored mob.",
+          "natural_spawn_override": {
+            "type": "minecraft:skeleton",
+            "weight": 100,
+            "minCount": 4,
+            "maxCount": 15,
+            "bounding_box": "piece"
+          },
+          "basis": "Packaged structure and processor list plus direct processor inspection. No directly saved entities in the58 reachable templates; live populations remain conditional."
+        },
+        "loot_table_source": {
+          "tables": [
+            "betterdungeons:skeleton_dungeon/chests/common",
+            "betterdungeons:skeleton_dungeon/chests/middle"
+          ],
+          "basis": "Exact reachable template LootTable references in template-content trace. No nonempty fixed Items lists found in the58 templates. Table source attribution, not measured effective rewards."
+        },
+        "generated_spawners": {
+          "block": "minecraft:spawner",
+          "templates_with_one_spawner": [
+            "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
+            "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
+            "betterdungeons:skeleton_dungeon/stair1/stair1_0",
+            "betterdungeons:skeleton_dungeon/stair1/stair1_1",
+            "betterdungeons:skeleton_dungeon/stair1/stair1_2",
+            "betterdungeons:skeleton_dungeon/stair1/stair1_3",
+            "betterdungeons:skeleton_dungeon/stair2/stair2_1",
+            "betterdungeons:skeleton_dungeon/stair2/stair2_2",
+            "betterdungeons:skeleton_dungeon/stair2/stair2_3",
+            "betterdungeons:skeleton_dungeon/stair2/stair2_5"
+          ],
+          "processor_entity": "minecraft:skeleton",
+          "processor_settings": {
+            "RequiredPlayerRange": 18,
+            "MaxNearbyEntities": 8,
+            "MaxSpawnDelay": 650
+          },
+          "basis": "Ten reachable component templates each have one spawner in palette/state counts and saved NBT. SkeletonMobSpawnerProcessor.processBlock explicitly replaces NBT with skeleton singleton spawn potentials and these settings. Alternative pieces are not a per-dungeon total."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Skeleton ordinary-spawner assignments; no direct saved entities in the selected templates.",
+          "natural": "Piece-bounded skeleton monster spawning overrides biome monster selection in that scope.",
+          "scope": "Source-supported spawning routes, not observed enemy counts."
+        },
+        "visual_discoverability": {
+          "assessment": "Underground masonry stair/bridge complex; cave exposure or excavation can reveal it, but no surface entrance is established by the selected topology.",
+          "basis": "Packaged underground step, absolute anchorY-50..-30, component trace and terrain-responsive ruined-brick/support processors. Source inference, not human discovery distance."
+        },
+        "underground_surface_classification": {
+          "value": "Underground complex with downward terrain supports",
+          "basis": "underground_structures step, uniform absolute start_height-50..-30 and no surface heightmap projection. Initial height is not total structure height."
+        }
       }
     },
     {
