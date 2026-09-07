@@ -913,3 +913,34 @@ def test_fabric_loader_membership_payload() -> None:
             assert row["class_sha256"] == hashlib.sha256(archive.read(row["class"])).hexdigest()
             assert row["disassembly_sha256"] == hashlib.sha256(
                 (directory / row["disassembly"]).read_bytes()).hexdigest()
+
+
+def test_frozen_stack_has_no_external_fabric_biome_modification_consumer() -> None:
+    """Bind the direct-consumer absence used for the three End feature routes."""
+    module = (
+        "forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar!/META-INF/jars/"
+        "fabric-biome-api-v1-13.0.31+1e62d33c19.jar"
+    )
+    terms = (
+        b"net/fabricmc/fabric/api/biome/v1/BiomeModification",
+        b"net/fabricmc/fabric/impl/biome/modification/BiomeModificationImpl",
+    )
+    matches: list[tuple[str, str]] = []
+    for source in retained_sources(Path.cwd()):
+        payload = source.path.read_bytes()
+        assert hashlib.sha256(payload).hexdigest() == source.sha256
+        pending = [(source.name, payload)]
+        while pending:
+            location, raw = pending.pop()
+            with ZipFile(BytesIO(raw)) as archive:
+                names = archive.namelist()
+                assert len(names) == len(set(names)), location
+                for name in names:
+                    if name.endswith(".jar"):
+                        pending.append((f"{location}!/{name}", archive.read(name)))
+                    elif name.endswith(".class"):
+                        body = archive.read(name)
+                        if any(term in body for term in terms):
+                            matches.append((location, name))
+    assert len(matches) == 16
+    assert {location for location, _ in matches} == {module}, matches

@@ -65,30 +65,36 @@ and paired spikes span 3..138. The attribute records their combined inclusive
 height formulas and the P=65 fallback example (136 blocks), without claiming a
 universal terrain height or observed occupied extent.
 
-Only one shared question remains from this group, affecting biome_constraints
-for arrival_platform, gateway and dragon_arena: which retained consumers register
-Fabric biome callbacks, and do their selected callbacks change end_platform,
-end_spike or end_gateway_return? The retained dispatcher was inspected: its list
-starts empty, callers add phase/selector/callback records, and matching records
-are invoked. There is no unconditional alteration by the dispatcher itself.
-This narrows the question to consumer registrations; do not reinspect the API
-or infer absence of changes from its empty constructor list. Next inspect the
-existing retained-provider consumer evidence and relevant archive call sites.
-No new runtime experiment is justified by the current evidence.
+The remaining Better End Island biome question is resolved and retired for the
+frozen packaged direct-consumer path. A complete hash-verified inspection of
+retained/platform archives and nested JARs found 16 class references to Fabric's
+biome modification API/implementation owners, all internal to its biome module.
+The captured module registers the codec and dispatches caller records from an
+initially empty list; no external direct consumer is present. No reflective or
+dynamic registration is evidenced; a demonstrated registration would reopen the
+disposition. The three biome attributes now bind this conclusion alongside the
+existing additive Zeta resolution and separate lifecycle scope.
 
-Affected End Island/Fabric tests: 45 passed. Inventory matches
-`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-residuals.json`.
-SHA-256: 078700af8755b568a20f2c5eff2f2d1592fb34377bd8b00edd2ae765a15c2000.
-Registry rows and other contributions remain unchanged. Fourteen nonregistry
-families have been assessed, 26 remain unassessed, and only the three named
-biome-field cases carry forward from Better End Island. Keep supported answers
-retired; final consistency, acceptance and review gates remain separate.
+One focused check was added to the existing Fabric test because the prior capture
+proved only dispatcher behavior, not whether retained callers populated its list.
+The exact inspection logic is committed there; no new framework, source capture
+or runtime measurement was added. Test: 1 passed, 44 deselected. Scoped Ruff and
+Basedpyright pass. The evidence derivation and command are in
+`evidence/item-8/sources/fabric-biome-modifier/README.md`.
+Inventory matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-biome-resolution.json`.
+SHA-256: fc06c640748347fafd2ba1414c8b26462522363505a355d67513ead11f203c75.
+
+Fourteen nonregistry families are now assessed with no specific unanswered
+mandatory claims carried forward from those passes. Retire their supported
+requirements; do not repeat them without changed or contradictory evidence.
+Twenty-six nonregistry families remain unassessed. Final cross-record consistency,
+identity, acceptance, PR review and delivery checks remain separate.
 
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 26 not yet assessed; 14 assessed | One concrete Better End Island residual question is listed above. Supported descriptions are retired; continue the other 26 records. |
+| Nonregistry | 26 not yet assessed; 14 assessed | No specific residual claim from the 14 assessed families. Their supported requirements are retired; continue the other 26 records. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
