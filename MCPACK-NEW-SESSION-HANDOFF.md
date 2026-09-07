@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches decision 7e7654fb and reproduces exactly. Canonical backlog:
+13, all IDAS. All 887 roots remain in 426 working groups with full variants and
+derived attributes unchanged. Next inspect the remaining house and ruin designs
+using existing packaged contents and comparisons where needed. Attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
 Castle and farmhouse canonical decisions pass the focused IDAS check and scoped
 Ruff/Basedpyright checks. Castle preserves three distinct settlement designs,
 their separate bottom components and the village connection present only in the

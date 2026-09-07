@@ -10162,3 +10162,27 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-fortress-r2
 ```
 
 Use fresh output files. Source reachability is not effective assembly proof.
+
+### Castle and farmhouse inventory refresh
+
+Decision 7e7654fb preserves the three castle settlement layouts and ordinary versus
+abandoned farmhouse alternatives using the completed template comparisons and
+packaged contents. Focused IDAS checks pass (1 passed, 77 deselected), as do scoped
+Ruff/Basedpyright checks. Canonical backlog: 13, all IDAS. Two fresh builds agree
+exactly, SHA-256
+bdb538a493177ad7c494f7fd976f07848c8029e643c03e12c07464a323004169.
+Only these two grouping decisions and the input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-castle-farm-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-castle-farm-r2.json
+cmp evidence/raw/item8/inventory-idas-castle-farm-r1.json evidence/raw/item8/inventory-idas-castle-farm-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-castle-farm-r2.json
+```
+
+Use fresh output files. Source alternatives are not complete generated assemblies.
