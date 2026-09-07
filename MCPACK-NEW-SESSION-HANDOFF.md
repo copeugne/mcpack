@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ruins of the deep assessed after 8500e458
+
+Seven entries integrated for four connected components. Civilian entrance and
+hostile interior distinguished. Upper16 ordinary spawners select wraith5,
+forgotten5,skeleton10,zombie10; lower1 selects drowned5. Eight literal loot
+sources defined. Optional GuardVillagers/AlexsCaves/AlexsMobs absent; five empty
+entity NBT records and one CORNER marker explicitly dispositioned. Accepted
+sampled size reused; no runtime/tool added. All85 focused checks pass (67.84s);
+only ruins_of_the_deep/input identity changed. Total424/448 assessed;24 IDAS
+connected families/216 entries remain (nine each). Next quantify a connector
+assessment batch and reuse existing template/connector findings before any new
+capture. All existing-size seven-entry families are now integrated.
+Details: evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md.
+Inventory SHA-256: e20c94d0c203738e7a40624f158c676f3fdd8f1e18e4a194b1ee4a5888c4070b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS pillager fortress assessed after 8451bdda
 
 Seven entries integrated for eight connected templates. Fourteen physical
