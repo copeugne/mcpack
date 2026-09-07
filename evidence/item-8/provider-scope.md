@@ -10701,3 +10701,64 @@ claim, and report facts awaiting integration separately from such investigations
 and final validation/delivery. Do not repeat settled provider/design work, render
 existing views again, or add another tracking system. Use affected checks and the
 full applicable final gate. Preserve atomic commits and PR/review/merge requirements.
+
+
+### Six single-template families integrated
+
+Predeclared batch: botanist, hermits_hollow, hunters_cabin, mason_house,
+nether_pump_camp and the_log, eleven fields each. Decision 1bcb80f8 integrates
+existing design/source facts, with frozen placement and dimension overlap.
+Hunter's four saved spawners and pillager processor resource remain distinct.
+Nether pump camp retains observations 109 and 509 and their 12 by 12 by 3
+saved-piece envelopes alongside its nominal dimensions. No new research,
+rendering or measurement was necessary. Unknown entity compounds and source limits
+remain explicit. Focused IDAS check: 1 passed, 77 deselected.
+
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-six-single-template-attributes.json`.
+Inventory SHA-256: d72496ff313e23ec0cb8073ec3680656b62e01cd2cebf2c8adc863b0826254a0.
+Only the six families and decision input identity change. Membership, biome lists,
+observations, trace IDs and other rows are preserved. Existing facts still require
+integration elsewhere; unresolved mandatory claims and final acceptance are not
+measured by top-level placeholder counts. Final gate/review/main delivery is open.
+
+### Single-template geometry integration
+
+Predeclared scope: 97 existing candidate families, two required geometry fields
+each. Integrate retained template sizes directly into existing decision overrides.
+Each selected family has one fully traced template, no missing/unresolved trace
+components and no template jigsaw block entities. The three inactive Deep Aether
+records are excluded. Both fields were previously UNKNOWN; all existing attributes
+are preserved. Sizes agree between template_contents.template_size_xyz and the
+source template document.size, identified by archive and resource path. Each new
+field records its template ID and explicitly limits the claim to a nominal padded
+envelope, not observed occupied-world bounds or exposed terrain height.
+
+This is one generated evidence increment across 97 records, not 97 investigations.
+The large diff is the existing JSON representation of 194 directly sourced values;
+no schema, helper, renderer, measurement or builder behavior was added. Its only
+code change binds the decision file hash in the existing inventory builder.
+
+Decision 225b3fec passes all 78 family-decision tests (60.42 seconds).
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-single-template-geometry.json`.
+Inventory SHA-256: 6839fc03ada8068fb8e247aaf73cf3f93cffef270f8b583f3bd912eab30f366b.
+The generated diff changes only geometry and matching grouping decisions in the
+97 rows, plus the decision input hash. All other fields, observations, memberships
+and nonregistry content remain unchanged. No full Item 8 acceptance is claimed.
+
+### Standard jigsaw placement integration
+
+Predeclared batch: 37 candidate families, one required placement field each.
+Only retained definitions explicitly using minecraft:jigsaw with a surface or
+floor heightmap qualify. Existing inactive families remain excluded. Per-variant
+heightmap, start-height rule and terrain adaptation are copied exactly; absolute
+negative/zero/positive offsets are distinguished. This records the authored start
+placement, not the burial or exposure of every attached room. Prior attributes,
+family memberships and source definitions remain unchanged. The larger generated
+JSON diff preserves the full variant mapping instead of flattening it into one
+misleading surface label. No new measurement, schema or builder behavior.
+
+Decision 29c66271 passes all 78 family-decision tests (61.19 seconds).
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-standard-jigsaw-placement.json`.
+Inventory SHA-256: a80084247cf9bae7f08b098404f60aa05ac859b13e94a20b09330f0a1b6a99b6.
+Only placement and matching decisions in 37 rows, plus the decision input hash,
+change. All other fields and nonregistry records are preserved. Item 8 remains open.
