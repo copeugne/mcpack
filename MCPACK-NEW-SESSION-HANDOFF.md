@@ -6,6 +6,86 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five Explorify settlements: attribution integrated after bff151b9
+
+Campsite, dark_forest_settlement, farmstead, ruins and tavern now have eight
+explicit attributes plus resolved biomes: 40 answers integrated (20 missing
+placement/design descriptions, 20 existing source attributions reconciled).
+Retire these supported answers. Ten assembly-geometry answers remain open,
+footprint and vertical size per family. No saved layout observations exist in
+the retained bounds catalog; do not substitute component sizes for settlements.
+Ruins' f15 overlays explicitly add common/rare archaeology loot with processor
+caps 3/1 for house and 5/2 for path, not guaranteed whole-family counts.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-settlement-attribution.json`, SHA-256
+34650625900b0a3b019dc05b989a1ad5a4455757a3fd5b8217f05c59cf575444.
+Only these five rows changed; geometry, biomes, observations and nonregistry
+content are unchanged. Registry complete-assessment count remains 82/410, with
+328 families still open, now including five with only geometry outstanding.
+Nonregistry remains 40/40. Resolve these ten geometry answers through the smallest
+existing evidence/runtime path; do not build a generalized assembly simulator or
+restart their completed attribution. Final integration, acceptance, verified
+backups/consolidation, PR review and main delivery remain open.
+
+#### Hut and shipwreck assessed after 825b0bd4
+
+Retire explorify:mangrove_hut and explorify:end_shipwreck. Twelve missing answers
+and eight existing attributions are integrated. Small rigid connector graphs
+resolve nominal geometry: hut child entity components fit inside 14x32x16 main;
+shipwreck selects 12x13x27 or 13x11x25 hull one layer above its base, giving
+assembled piece-envelope heights 14 or 12. Padding/base air is not occupied volume.
+No new world run, source capture or tooling. Exact derivation is in the existing
+Explorify source README; witch/cat and End-city loot remain separate source facts.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-hut-wreck-descriptions.json`, SHA-256
+1d5d836a946949169650daf3c64bfb38818e880d7fdaadf14b630366d9b5dbfc.
+Only these two rows changed; biomes, observations and nonregistry are unchanged.
+Registry assessment is 82/410, leaving 328; nonregistry remains 40/40. Explorify
+has campsite, dark_forest_settlement, farmstead, ruins and tavern remaining.
+Final integration, acceptance, verified backups/history consolidation, PR review
+and main delivery remain open. Do not conflate piece sizes with settlement size.
+
+#### Black Spiral assessed after 6c99b1c1
+
+Ten answers assess explorify:black_spiral: six missing descriptions and four
+reconciled attributions. Saved assembly is one ocean-heavy-seed planned layout
+reproduced across runs, 13x48x97, at structure_starts rather than populated chunks.
+Twenty component templates retain authored piglins/brutes and blaze/hoglin spawner
+inputs. Processor-added lava and bridge gaps are source hazards, not measured
+rates or tested traversal. No new capture or measurement.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-spiral-descriptions.json`, SHA-256
+2c027be2aa0c73d9f68d660245540e0b2ea7bdf16bdfd77aa95408d35b6e62e3.
+Only Black Spiral changed; biomes, observations and nonregistry remain unchanged.
+Registry assessment is 80/410, leaving 330; nonregistry remains 40/40. Explorify
+has seven families left. Existing observation scan found no saved layout records
+for those seven; use their retained assembly inputs to resolve geometry without
+assuming single-piece dimensions describe an entire settlement. Final integration,
+acceptance, backed-up consolidation, PR review and main delivery remain open.
+
+#### Six Explorify standalone assessments after 72b14d81
+
+Retire badlands_pyramid, desert_shrine, guide_post, supply_cache, watchtower and
+mausoleum: 15 roots and 16 standalone templates. Integrated 32 missing descriptions
+and reconciled 24 existing attributions. Mausoleum's source-declared f15 overlay
+adds decorated-pot loot beyond saved dungeon references. Exact pack metadata is
+retained to support that attribution, because the existing generic selector
+excludes this prefix. No new selector/framework or runtime measurement is needed;
+do not overlook this explicitly recorded overlay in final source consistency.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-standalone-descriptions.json`, SHA-256
+e992af5e73efbccf4e672cc07fc3a5c2effa955b08f034f12decc20a422f32ab.
+Only these six registry rows changed; biomes, observations and nonregistry content
+are unchanged. Registry assessment is 79/410, leaving 331; nonregistry is 40/40.
+Explorify has eight families remaining, while all 49 AdoraBuild descriptions stay
+assessed. Final all-family integration, acceptance, verified file backups/history
+consolidation, PR review and main delivery remain open. Source derivation and the
+initial failed schema lookup are recorded in explorify-descriptions/README.md.
+
 #### AdoraBuild descriptive assessment finished after 96fbd175
 
 Retire basalt_chambers and nether_fortress source descriptions. Ten missing
