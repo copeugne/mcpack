@@ -7,6 +7,23 @@
 ### Continuation update - 2026-09-07
 
 
+#### Stronghold content integrated after 92f1f9a3
+
+Quantified one family, ten attributes, 84 traced templates, missing spiral_stairs
+pool and no retained full-start observation. Eight attributes now integrated
+from existing pinned data/configuration/provider sources: placement, discovery,
+enemy/spawner attribution and rewards. Grand Library/prison removal rules and
+armor-stand AIR-helmet original-entity return are explicit. No new tools added.
+All85 focused tests pass (58.77s); only Stronghold and input identity changed.
+Two sizes remain. One seed42 capture,81 requested chunks,timeout900 is declared
+in evidence/item-8/sources/stronghold-provider/README.md. Next execute it, preserve
+logs and stopped world, verify archive and downloaded restore, and integrate full
+start bounds with support extensions separate. Counts remain362/448 assessed,
+86 families remaining. Final integration, acceptance, backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+4565ab3cfa355bb8b9709a13be0cdc0420b6ab7b4438d500f549e17d0b3d03b9.
+
+
 #### Desert Temple geometry finished after 0548abd2
 
 Declared seed42 capture passed readiness, correlated flush, clean exit0 and
