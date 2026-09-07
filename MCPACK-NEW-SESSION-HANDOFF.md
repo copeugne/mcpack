@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 9f4bd417 and reproduces exactly. Canonical backlog: 17, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus views
+are now fully inspected; finish its decision with preserved contents/processors.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
 Bazaar and frozen crypt component decisions pass focused IDAS and scoped checks.
 Canonical backlog: 17, all IDAS. Inventory refresh follows. Nexus conversion
 session 44369 completed successfully; all six alternatives were visually inspected
