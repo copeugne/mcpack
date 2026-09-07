@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Three Illager Invasion buildings assessed after 20900e85
+
+Twenty-four answers finish illager_fort, illusioner_tower and sorcerer_hut.
+Rigid mob components fit inside their architectural envelopes; no new runtime
+or measurement. Tower/hut use legacy-single elements, preserved explicitly.
+Source facts and direct geometry derivation are recorded in the existing
+illagerinvasion-provider README. Seven affected tests and builder checks pass.
+Inventory SHA-256:
+c4e80a428427523e29b1f54fa7f315a556b57900bf05bd7198a8893345b212b5.
+
+Retire these three descriptions. Registry assessment is 95/410; nonregistry
+40/40, total 135/450 assessed, 315 remaining. Illager Invasion still has
+firecaller_hut and labyrinth assemblies open. Neither has retained world-bounds
+observations. Reuse their existing source facts before considering geometry
+measurement. Final all-family integration, acceptance, verified backed-up history
+consolidation, PR review and main delivery remain open.
+
 #### Seven Seas assessments completed after b4fca803
 
 Ten answers integrate dimension and qualitative discoverability for all five

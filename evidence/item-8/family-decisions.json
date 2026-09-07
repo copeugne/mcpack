@@ -36904,13 +36904,140 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. The retained root is vanilla minecraft:jigsaw, projected to WORLD_SURFACE_WG at offset zero; no other dimension eligibility is inferred."
+        },
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            26,
+            28
+          ],
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 30,
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "mob_source": {
+          "authored_entity_templates": {
+            "illagerinvasion:inquisitor": [
+              "illagerinvasion:mobs/inquisitor"
+            ],
+            "illagerinvasion:provoker": [
+              "illagerinvasion:mobs/provoker"
+            ],
+            "minecraft:vindicator": [
+              "illagerinvasion:mobs/vindicator"
+            ]
+          },
+          "structure_spawn_overrides": {
+            "monster": {
+              "bounding_box": "full",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:pillager",
+                  "weight": 3
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:marauder",
+                  "weight": 3
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:basher",
+                  "weight": 1
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:provoker",
+                  "weight": 3
+                }
+              ]
+            }
+          },
+          "basis": "Explicit reachable template entity IDs and root spawn_overrides. Components may be selected and placed; this is not a count of inhabitants."
+        },
+        "loot_table_source": {
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "illagerinvasion:illager_fort/illager_fort"
+              ],
+              "value": "illagerinvasion:chests/illager_fort_ground"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "illagerinvasion:illager_fort/illager_fort"
+              ],
+              "value": "illagerinvasion:chests/illager_fort_tower"
+            }
+          ],
+          "basis": "Saved architectural container LootTable references. Relevant pools use vanilla rigid single or legacy-single elements and empty processor lists. These are source table identities, not rolled rewards or runtime container outcomes."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "basis": "No spawner block NBT or generation markers in the complete reachable template graph. Mob templates contain authored entities instead. Root spawn overrides are natural-spawn rules, not physical spawners."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [
+            "illagerinvasion:inquisitor",
+            "illagerinvasion:provoker",
+            "minecraft:vindicator"
+          ],
+          "natural_spawn_overrides": {
+            "monster": {
+              "bounding_box": "full",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:pillager",
+                  "weight": 3
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:marauder",
+                  "weight": 3
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:basher",
+                  "weight": 1
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "illagerinvasion:provoker",
+                  "weight": 3
+                }
+              ]
+            }
+          },
+          "basis": "Authored hostile components are distinct from natural spawning. Fort declares a full-bounds monster list for pillager, marauder, basher and provoker; other two roots have empty spawn_overrides. Natural population remains conditional on world state."
+        },
+        "visual_discoverability": {
+          "source_form": "Surface fort building with multiple interior and elevated encounter positions.",
+          "basis": "Architecture, dimensions and surface heightmap projection establish qualitative form. No measured viewing distance, guaranteed visibility or observed exposure is asserted."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       }
     },
     {
@@ -36969,13 +37096,102 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. The retained root is vanilla minecraft:jigsaw, projected to WORLD_SURFACE_WG at offset zero; no other dimension eligibility is inferred."
+        },
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            15,
+            15
+          ],
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 37,
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "mob_source": {
+          "authored_entity_templates": {
+            "illagerinvasion:alchemist": [
+              "illagerinvasion:mobs/alchemist"
+            ],
+            "illagerinvasion:archivist": [
+              "illagerinvasion:mobs/archivist"
+            ],
+            "illagerinvasion:basher": [
+              "illagerinvasion:mobs/basher"
+            ],
+            "illagerinvasion:provoker": [
+              "illagerinvasion:mobs/provoker"
+            ],
+            "minecraft:allay": [
+              "illagerinvasion:mobs/allay"
+            ],
+            "minecraft:illusioner": [
+              "illagerinvasion:mobs/illusioner"
+            ],
+            "minecraft:villager": [
+              "illagerinvasion:mobs/villager"
+            ],
+            "minecraft:vindicator": [
+              "illagerinvasion:mobs/vindicator"
+            ]
+          },
+          "structure_spawn_overrides": {},
+          "basis": "Explicit reachable template entity IDs and root spawn_overrides. Components may be selected and placed; this is not a count of inhabitants. Allay and villager components in tower alternatives are not hostile enemies."
+        },
+        "loot_table_source": {
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "illagerinvasion:illusioner_tower/tower_1",
+                "illagerinvasion:illusioner_tower/tower_2",
+                "illagerinvasion:illusioner_tower/tower_3"
+              ],
+              "value": "illagerinvasion:chests/illusioner_tower_entrance"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "illagerinvasion:illusioner_tower/tower_1",
+                "illagerinvasion:illusioner_tower/tower_2",
+                "illagerinvasion:illusioner_tower/tower_3"
+              ],
+              "value": "illagerinvasion:chests/illusioner_tower_stairs"
+            }
+          ],
+          "basis": "Saved architectural container LootTable references. Relevant pools use vanilla rigid single or legacy-single elements and empty processor lists. These are source table identities, not rolled rewards or runtime container outcomes."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "basis": "No spawner block NBT or generation markers in the complete reachable template graph. Mob templates contain authored entities instead. Root spawn overrides are natural-spawn rules, not physical spawners."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [
+            "illagerinvasion:alchemist",
+            "illagerinvasion:archivist",
+            "illagerinvasion:basher",
+            "illagerinvasion:provoker",
+            "minecraft:illusioner",
+            "minecraft:vindicator"
+          ],
+          "natural_spawn_overrides": {},
+          "basis": "Authored hostile components are distinct from natural spawning. Fort declares a full-bounds monster list for pillager, marauder, basher and provoker; other two roots have empty spawn_overrides. Natural population remains conditional on world state."
+        },
+        "visual_discoverability": {
+          "source_form": "Tall, narrow surface tower; three architectural alternatives share dimensions and stacked encounter elevations.",
+          "basis": "Architecture, dimensions and surface heightmap projection establish qualitative form. No measured viewing distance, guaranteed visibility or observed exposure is asserted."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       }
     },
     {
@@ -37086,13 +37302,69 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. The retained root is vanilla minecraft:jigsaw, projected to WORLD_SURFACE_WG at offset zero; no other dimension eligibility is inferred."
+        },
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            9,
+            9
+          ],
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 11,
+          "basis": "Packaged architectural template extent, before horizontal rotation, including air and padding. All reachable child templates are rigid 1x3x1 mob components with downward connector at [0,0,0]; architectural connectors face upward and place them inside the building envelope. Children terminate at minecraft:empty. This is nominal assembly geometry, not observed occupied volume or placement success."
+        },
+        "mob_source": {
+          "authored_entity_templates": {
+            "illagerinvasion:sorcerer": [
+              "illagerinvasion:mobs/sorcerer"
+            ],
+            "minecraft:vindicator": [
+              "illagerinvasion:mobs/vindicator"
+            ]
+          },
+          "structure_spawn_overrides": {},
+          "basis": "Explicit reachable template entity IDs and root spawn_overrides. Components may be selected and placed; this is not a count of inhabitants."
+        },
+        "loot_table_source": {
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "illagerinvasion:sorcerer_hut/sorcerer_hut"
+              ],
+              "value": "illagerinvasion:chests/sorcerer_hut"
+            }
+          ],
+          "basis": "Saved architectural container LootTable references. Relevant pools use vanilla rigid single or legacy-single elements and empty processor lists. These are source table identities, not rolled rewards or runtime container outcomes."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "basis": "No spawner block NBT or generation markers in the complete reachable template graph. Mob templates contain authored entities instead. Root spawn overrides are natural-spawn rules, not physical spawners."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [
+            "illagerinvasion:sorcerer",
+            "minecraft:vindicator"
+          ],
+          "natural_spawn_overrides": {},
+          "basis": "Authored hostile components are distinct from natural spawning. Fort declares a full-bounds monster list for pillager, marauder, basher and provoker; other two roots have empty spawn_overrides. Natural population remains conditional on world state."
+        },
+        "visual_discoverability": {
+          "source_form": "Small standalone surface hut; enclosed interior can hide occupants and rewards.",
+          "basis": "Architecture, dimensions and surface heightmap projection establish qualitative form. No measured viewing distance, guaranteed visibility or observed exposure is asserted."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       }
     },
     {

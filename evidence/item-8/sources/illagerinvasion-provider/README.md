@@ -57,3 +57,53 @@ Full payload and graph reconciliation belong to the focused provider check.
 Keep the disconnected pillager pool/template and effective mansion replacement
 selection explicit. Provider coverage does not settle combined loot, encounter
 attributes or generated-world outcomes.
+
+## Three building assessments
+
+After 20900e85, Illager Fort, Illusioner Tower and Sorcerer Hut each had two
+recorded descriptions. This batch integrates their eight remaining attributes,
+24 answers total, without a new capture or measurement. Firecaller Hut and
+Labyrinth are not included in this building batch.
+
+Direct source derivation uses the retained packaged JSON and template catalogs,
+pool-traces-content, structure-inputs and runtime dimension-biomes. Their hashes
+are linked in each family decision. All three roots use vanilla jigsaw,
+WORLD_SURFACE_WG, offset zero and beard_thin. Resolved biome counts are 33, 5 and
+1 respectively; intersection with runtime possible-biome sets yields only the
+Overworld. This is eligibility, not an observed population or generation rate.
+
+| Family | Architecture XYZ | Upward connector Y | Child top Y |
+| --- | --- | --- | --- |
+| illager_fort | 26x30x28 | 0,1,4,6,11 | at most 14 |
+| illusioner_tower | 15x37x15 for all three alternatives | 0,5,10,15,21 | at most 24 |
+| sorcerer_hut | 9x11x9 | 1 | 4 |
+
+In `templates-redacted.json.gz`, inspect the respective architectural templates
+under `data/illagerinvasion/structure/`, including tower_1 through tower_3.
+All architectural connectors point upward at interior X/Z positions. Every
+reachable mob template is 1x3x1 with downward connector [0,0,0] and terminal
+minecraft:empty pool. Thus a child occupies parent connector Y+1 through Y+3
+without enlarging the architectural envelope. Rotation does not enlarge a
+1x1 horizontal child. All relevant pool elements are rigid with empty processor
+lists. Fort architecture and mob components use single_pool_element; tower and
+hut architecture use legacy_single_pool_element. The initial check assumed only
+single_pool_element and failed on these legacy alternatives. The source text
+now records both. This does not change nominal dimensions, and no generated or
+occupied-volume claim is made.
+
+The complete reachable graphs contain no missing resources, unresolved entities,
+spawner blocks or generation markers. Authored mob components supply fort
+inquisitor/provoker/vindicator; tower alchemist/archivist/basher/provoker,
+illusioner/vindicator plus nonhostile allay/villager; hut sorcerer/vindicator.
+Fort separately declares a full-bounds natural monster spawn override for
+pillager/marauder/basher/provoker. The other two overrides are empty. Neither
+source proves simultaneous inhabitants. Container references resolve by template
+to fort ground/tower tables, tower entrance/stairs tables and sorcerer_hut table,
+all under illagerinvasion:chests. The inventory retains exact table owners.
+
+Surface fort/tower/hut form supplies qualitative discoverability; sight distance
+and exposure are not measured. Existing hostility and placement answers, biome
+constraints and world observation links remain unchanged. Only these three rows
+and the decisions input identity changed. Inventory matches
+`evidence/raw/item8/inventory-illager-buildings-final.json`, SHA-256
+c4e80a428427523e29b1f54fa7f315a556b57900bf05bd7198a8893345b212b5.
