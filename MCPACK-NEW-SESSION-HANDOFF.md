@@ -79,7 +79,11 @@ hash-verified JARs each. First Play may download assets; client launch and join
 remain unverified. The observed-combat requirement is retained. Sparse Structures is present with
 spread factor 2; the historical absent-mod result is superseded context.
 The 40 nonregistry families need occurrence coverage beyond structure starts.
-Finish and freeze the protocol before collecting new measurements.
+The [protocol proposal](evidence/item-10/protocol.md) now offers automated static
+collection and four 30-minute solo combat sessions. The user challenged the
+75-hour generic matrix; the proposed two-hour personal-time cap awaits agreement.
+Occurrence recording and observation coverage still need concrete rules before
+freezing or collecting acceptance evidence. Item 5 is not silently amended.
 
 After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
 run, repair or lint Item 11 workflows. The blind-human requirement remains.

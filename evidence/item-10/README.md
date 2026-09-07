@@ -3,7 +3,10 @@
 Status: IN PROGRESS. Pre-experiment dependency inspection, 2026-09-08.
 No Item 10 measurement experiment or tuning has been performed.
 The separately requested player servers generated operational smoke-test worlds.
-The sampling proposal below is not an accepted measurement result.
+The [sampling proposal](protocol.md) is a draft, not an accepted measurement
+result or an amendment to Item 5. It proposes automated static collection and
+a two-hour solo combat sample instead of the generic matrix. User review of that
+explicit scope and the remaining collection rules are pending.
 
 ## Verified dependencies and delivery
 
