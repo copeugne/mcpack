@@ -17336,7 +17336,7 @@
       "structure_ids": [
         "betterfortresses:fortress"
       ],
-      "rationale": "A fortress assembly with halls and other sections reached from its starts pool. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
+      "rationale": "One fortress assembly with keep, bridge, hall, room, mob and blaze-platform components. The149 available traced templates and missing halls/hall_4 reference are retained separately. Source-supported attributes and illustrative full-start geometry below do not make component, depth, altitude or Create-dependent alternatives additional families.",
       "start_pool": "betterfortresses:starts",
       "generation_settings": {
         "type": "yungsapi:yung_jigsaw",
@@ -17359,7 +17359,146 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/fortress-provider/identities.json": "3dfe3d5fc9c799adcff26bc710001126477a9f8d712b227bed501f3612835598",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:the_nether"
+          ],
+          "basis": "Fourteen of15 effective biomes intersect the captured Nether membership; regions_unexplored:redstone_abyss occurs in no captured dimension. No other dimension intersects. Full-start observations also occur in the Nether."
+        },
+        "approximate_footprint": {
+          "observed_example_xz_blocks": [
+            [
+              228,
+              210
+            ],
+            [
+              186,
+              191
+            ]
+          ],
+          "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+          "observation_indices": [
+            124,
+            524,
+            216,
+            610
+          ],
+          "basis": "Mountainous and ocean-heavy seed examples, each repeated in run-a/run-b, have full start chunks. These are saved assembly envelopes including padding, not occupied volume, fully populated component coverage or family-wide extrema. Direct support/arch writes are separate."
+        },
+        "approximate_vertical_size": {
+          "observed_example_y_blocks": [
+            92,
+            100
+          ],
+          "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+          "observation_indices": [
+            124,
+            524,
+            216,
+            610
+          ],
+          "basis": "Inclusive saved Y6..97 and11..110 give92 and100 blocks. Nonfull observations21/433 are not accepted examples.",
+          "extension": "PillarProcessor, StairPillarProcessor and RedSandstoneStairsProcessor extend supports down through air/fluid to solid terrain or a build-height boundary. BridgeArchProcessor also performs neighboring arch writes. Saved piece envelopes do not include a guaranteed total of these terrain-dependent direct writes."
+        },
+        "intended_hostility": {
+          "value": "Hostile Nether fortress with authored blaze spawner and wither-skeleton components, piglin jail residents, and natural fortress monsters.",
+          "basis": "Spawner/entity templates, matching mob connectors, the five-entry monster override and FixMobSpawningMixin establish intended pressure. Assembly alternatives and conditions do not guarantee all encounters in each fortress."
+        },
+        "mob_source": {
+          "authored": "blaze/blaze_0 encodes one blaze spawner. mobs/wither_skeleton contains one persistent wither skeleton with a stone sword; keep components have matching targets. mobs/piglin contains one persistent piglin; jail_md_l_0/r_0 have matching targets.",
+          "pool_selection": "mobs/skeleton is pool-listed but no matching skeleton target appears in the available traced templates; it is not claimed as a placed authored resident. Frames and Create super_glue are objects.",
+          "natural_spawn_override": [
+            {
+              "entity": "minecraft:blaze",
+              "weight": 10,
+              "minCount": 2,
+              "maxCount": 3
+            },
+            {
+              "entity": "minecraft:zombified_piglin",
+              "weight": 5,
+              "minCount": 4,
+              "maxCount": 4
+            },
+            {
+              "entity": "minecraft:wither_skeleton",
+              "weight": 8,
+              "minCount": 5,
+              "maxCount": 5
+            },
+            {
+              "entity": "minecraft:skeleton",
+              "weight": 2,
+              "minCount": 5,
+              "maxCount": 5
+            },
+            {
+              "entity": "minecraft:magma_cube",
+              "weight": 3,
+              "minCount": 4,
+              "maxCount": 4
+            }
+          ],
+          "retained_hook": "FixMobSpawningMixin returns true for the monster fortress-spawn check when nether bricks are below the tested position and a valid betterfortresses:fortress start contains it.",
+          "scope": "Piece-bounded natural override plus the retained floor/start hook; conditional spawning inputs, not measured population or frequency."
+        },
+        "loot_table_source": {
+          "tables": [
+            "minecraft:chests/nether_bridge",
+            "betterfortresses:chests/hall",
+            "betterfortresses:chests/extra",
+            "betterfortresses:chests/obsidian",
+            "betterfortresses:chests/puzzle",
+            "betterfortresses:chests/quarters",
+            "betterfortresses:chests/storage",
+            "betterfortresses:chests/worship",
+            "betterfortresses:chests/keep"
+          ],
+          "basis": "Exact template/block-entity references remain in pool-traces-content.json.gz. No nonempty fixed container Items list occurs in the149 available templates.",
+          "frame_processors": "ItemFrameProcessor selects by original Item.id: stone_sword uses weapon randomizer, iron_ingot loot, cobweb study, apple mess-hall, nether_wart alchemy. AIR selections remove the entity. glowstone_dust becomes blaze_powder or is removed. Other frame items persist subject to coordinate/rotation rewriting.",
+          "frame_sources": "ItemFrameChances supplies weapons/shield including possible netherite sword; gold nuggets/ingots and nether wart; books/paper/writable or enchanted books; porkchop/cooked porkchop/gold ingot; quartz/magma cream/fire charge. The enchanted-book branch writes stored-enchantment component NBT; source encoding is not proof of accepted runtime enchantments or realized rewards.",
+          "scope": "Named tables and source transformations. No guaranteed loot quantity, pickup, enchantment or global loot-modifier yield is asserted."
+        },
+        "generated_spawners": {
+          "block": "minecraft:spawner",
+          "entity": "minecraft:blaze",
+          "template": "betterfortresses:blaze/blaze_0",
+          "nbt_path": "/block_entities/1/nbt",
+          "source_settings": {
+            "Delay": 0,
+            "MaxNearbyEntities": 6,
+            "MaxSpawnDelay": 800,
+            "MinSpawnDelay": 200,
+            "RequiredPlayerRange": 16,
+            "SpawnCount": 4,
+            "SpawnRange": 4
+          },
+          "trial_spawner_blocks": false,
+          "basis": "The sole ordinary-spawner template state among149 available templates has SpawnData.entity.id=minecraft:blaze and empty SpawnPotentials. The blaze pool applies min_required_depth28; the component is conditional, not a count per generated fortress. Main processors do not replace its spawner NBT.",
+          "limitation": "Missing halls/hall_4 has no inspectable content; preserve the missing reference without inventing its contents. Generated placement and active spawning counts are not measured."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Wither-skeleton component entities, piglin jail entities and the conditional blaze spawner are authored sources.",
+          "natural": "Blaze, zombified piglin, wither skeleton, skeleton and magma cube are declared natural monster entries with the retained nether-brick floor/start hook.",
+          "scope": "Pool-listed skeleton is not assumed placed without a matching connector. Source group settings do not establish live encounter counts. Missing hall content remains explicitly unavailable."
+        },
+        "visual_discoverability": {
+          "value": "Large Nether fortress of keeps, elevated bridges and halls; exposed spans are visible across open Nether terrain, while terrain can enclose parts of the assembly.",
+          "basis": "Start anchor80..100, surface_structures step, custom top-carve/bottom-none terrain adaptation and the connected template architecture. Full-start envelopes provide size examples, not measured sightlines.",
+          "limitation": "Detection distance, exposed area and human visibility are not measured; proximity or a saved start alone does not prove visibility."
+        },
+        "underground_surface_classification": {
+          "value": "Nether-cavern fortress with elevated bridges/keep, terrain-intersecting halls and downward supports.",
+          "basis": "Absolute anchor80..100 without a surface heightmap projection; custom top-carve/bottom-none adaptation (kernel distance/size24), plus direct support processors. It is not an Overworld surface/underground category or a single fixed floor height."
+        }
       }
     },
     {
