@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Jungle/plains statue inventory matches 44660271 and reproduces exactly. Fourteen
+families have current-phase assessments. Remaining: 393 registry candidates with
+2,145 literal gaps, forty nonregistry assignments needing integration, seventeen
+filled records needing acceptance assessment. No new measurement/tooling.
+Quantify the next batch before editing; final Item 8 acceptance remains open.
+
 Desert statue/train inventory matches 3213a41a and reproduces exactly. Twelve
 families have current-phase source assessments. Remaining planning count: 395
 registry candidates with 2,157 literal gaps, forty nonregistry assignments needing
