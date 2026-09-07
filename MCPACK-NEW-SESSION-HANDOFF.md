@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS tree of wisdom assessed after 0de7c791
+
+Nine entries integrated for six connected components. Nominal112 by113 footprint,
+136 height; rigid base/top distinguished from four terrain-matching surrounds.
+No authored entities or spawners. One defined loot source in top; CORNER/SAVE
+markers have empty metadata. Ticking-only processor inspection reused. No runtime
+or tool added. All85 focused checks pass (61.70s); only tree_of_wisdom and input
+identity changed. Total443/448 assessed; five IDAS families/45 entries remain:
+ancient_mines,castle,collectors_museum,desert_pyramid,labyrinth, nine each.
+Next labyrinth batch: five connected components and nine required entries; prior
+source findings already identify two legacy loot paths and split processor behavior.
+Details: evidence/item-8/sources/idas-tree-of-wisdom-assessment/README.md.
+Inventory SHA-256: 9caa705b67762bcdd4e87e25c8b8a0e7241f45f4804590e3c172ef9dadc61e62.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS tinkers citadel assessed after e9834ee8
 
 Nine entries integrated for four rigid branching components. Nominal70 by110
