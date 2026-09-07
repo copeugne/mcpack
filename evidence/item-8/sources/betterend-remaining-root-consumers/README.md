@@ -101,3 +101,47 @@ examples include margins and support allowance, not occupied area, deck thicknes
 typical dimensions or all-layout maxima. The ocean-heavy record repeats the
 same layout; it is not a fifth independent sample. The bridge is now assessed
 for all Item8 attributes without claiming Item8 as a whole is complete.
+
+## Ice star assessment
+
+Nine remaining attributes are integrated from GiantIceStarStructure, the retained
+VoxelPiece and FeatureBaseStructure, and existing cone/rotation semantics under
+pillar-shape-semantics. No runtime observation or new measurement tool is needed.
+
+getSDF selects S using randRange(20,35) and25..40 Fibonacci direction points.
+Each parent cone has half-height S, lower/upper radii3+0.2*(S-5) and0, then
+translation Y=S-0.5. It rotates these cones and unions them. The already captured
+SDFCappedCone uses height as half-height, so20..35 is not total spike length.
+Special near-pole handling uses the actual Y-axis rotation branch; do not replace
+it with an idealized perfectly symmetric star.
+
+A cylinder enclosing a translated cone has |Y| at most2*S-0.5 and lateral radius
+r=3+0.2*(S-5). It fits a sphere of radius sqrt((2*S-0.5)^2+r^2). Rotations and
+unions preserve that enclosing sphere, giving a conservative continuous diameter
+of2*sqrt((2*S-0.5)^2+r^2), approximately80 to141 blocks over the nominal parameter
+range. This is an approximate parent scale on all three axes, not a measured
+occupied footprint, attained size or strict floating-point voxel bound.
+
+Direct pinned BCLib getDistance inspection confirms SDFTranslate subtracts its
+translation from query coordinates and SDFUnion returns the minimum of the two
+source distances. Exact class/JAR identities are in processor_inspection.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.sdf.operator.SDFTranslate org.betterx.bclib.sdf.operator.SDFUnion
+```
+
+The supplied postprocess callback chooses ANCIENT_EMERALD_ICE,
+DENSE_EMERALD_ICE, EMERALD_ICE or original DENSE_SNOW from distance/random
+thresholds. It returns a block state, without adding geometry or an encounter.
+The root's fillRecursive callback builds the StructureWorld consumed by
+VoxelPiece; that piece places stored chunks and primes heightmaps. The inspected
+root/callback/piece paths have no direct entities, spawners or container-loot
+assignment. Empty packaged spawn_overrides leave natural spawning and other
+systems possible; harvested materials are not a structure loot-table source.
+
+findVoidGenerationPoint supplies a stub at Y80 without a terrain-height test.
+The root overrides generation and independently selects center Y32..128, plus
+local X/Z offsets4..12. Do not apply SDFStructureFeature's separate surface-rooted
+static generation method to this override. The formation has floating intent,
+but source placement does not guarantee clearance from terrain. Its radial
+spikes and snow/ice zones are qualitative discovery cues, not measured visibility.

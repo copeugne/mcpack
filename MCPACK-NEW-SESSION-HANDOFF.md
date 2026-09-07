@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd giant ice star assessed after 1c36e61e
+
+Nine attributes integrated from retained root/VoxelPiece/base and cone/rotation
+sources, with direct pinned union/translation semantics. S20..35 is cone half-
+height, not total height. Conservative continuous parent envelope diameter is
+2*sqrt((2*S-0.5)^2+(3+0.2*(S-5))^2), approximately80..141; explicitly not an
+observed/attained or strict floating-point voxel bound.25..40 cones and material
+callbacks author snow/emerald ice, not direct enemies/spawners/container tables.
+Stub Y80 differs from selected center Y32..128; no terrain clearance claim.
+Exact source derivation, helper hashes and limitations are integrated. No new
+runtime/tool. All85 focused checks pass (61.94s); only ice star/input identity
+changed. Registry336/408,nonregistry40/40,total376/448 assessed;72 families and
+644 explicit attribute slots remain: IDAS38/380slots,Repurposed17/154,
+vanilla13/81,BetterEnd4/29. BetterEnd remaining: village2slots,
+giant_mossy_glowshroom9,small_island9,sulphuric_cave9. Quantify next batch and
+reuse existing SDF/root/piece evidence. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256: defe1def317409e6baf507fe91caeaf3769ad59ca1571b50786e3f514d73af63.
+
+
 #### BetterEnd village and eternal portal assessed after 68f2b423
 
 Sixteen of18 batch attributes integrated: village seven descriptions, portal nine
