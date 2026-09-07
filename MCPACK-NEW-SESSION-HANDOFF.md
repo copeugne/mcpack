@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-07
 
+#### Nine Soaring families assessed after 4d641199
+
+Seventy-two attributes finish nine standalone mss families, retaining geometry.
+Authored encounter sources and Calcite's dropped containers/missing loot target
+are integrated. Ten shared tests pass; no capture or tooling. Source derivations
+are in moog-generator-code README. Inventory SHA:
+5c2fd7eb3f7b849d0a9528eccad7bffe77743f091c8d7fe47dd590c6fe435a09.
+Soaring Structures 9/26; registry 199/410, nonregistry 40/40, total 239/450 assessed,
+211 remaining. Retire these nine assessments and continue the seventeen remaining
+mss families in quantified coherent batches. Final integration, acceptance,
+verified backup/history consolidation and PR review/main delivery remain open.
+
 #### Mega Ship assessed after d8dc726b
 
 Ten attributes finish eight Mega Ship variants. Finite connector-derived nominal

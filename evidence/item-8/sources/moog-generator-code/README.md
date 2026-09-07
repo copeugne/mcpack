@@ -987,3 +987,45 @@ identity change; biomes, world observations and nonregistry content are preserve
 Rebuild using `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Inventory SHA: 02e0f36208a2c49c7e2054967dcee254383ab403c55756aee5e6d02ca187b891.
 End Structures is 18/18 assessed; retire its assessment absent contradictory evidence.
+
+## Nine standalone Soaring Structures families
+
+After 4d641199, 72 attributes finish calcite_house, castle_ruin, desert_well,
+mushroom, nether_portal, palm_island, small_deepslate_house, small_oak_house and
+spruce_huts. Existing geometry remains unchanged. Each pool has one ordinary
+weight-1 rigid element, empty processors and no attachments. Full definitions
+and source content are integrated from the pinned packaged JSON and templates.
+
+All nine are Overworld-biome-compatible, even Nether Portal. Generic projection
+uses WORLD_SURFACE_WG plus uniform +45..150 (Desert Well +30..120), adaptation
+none, explicit cannot_spawn_in_liquid=false and ignore_waterlogging. Optional
+terrain/Y checks are absent. Palm and Spruce have size 2 but only one template.
+
+| Family | Authored source |
+| --- | --- |
+| Castle Ruin | three cave-spider spawners |
+| Mushroom | one pillager, one vex and one evoker spawner |
+| Nether Portal | four piglin-brute spawners |
+| Small Deepslate House | three saved pillagers and four pillager spawners |
+| Calcite House | seven saved dropped container items, not mobs |
+| Other four families | no authored entity or spawner |
+
+Spawn overrides are empty; no generation markers occur. Inspected block-entity
+payloads add no mobs. Natural spawning, activation and dimension-dependent mob
+conversion are not measured. Calcite's six lecterns contain no book payload;
+Spruce bookshelves and inspected cooking blocks do not add enemy sources.
+
+Exact loot references retain ownership. Calcite's six chest items and one barrel
+item have Age 5999 and PickupDelay 32767; do not count them as placed containers
+or guaranteed rewards. Its /entities/2 container_loot reference is
+mss:chests/houses_common, for which no packaged loot table occurs. Preserve this
+missing-target defect without repairing the frozen baseline. mss:empty really
+has 0..2 cobweb/string rolls (weights 5/3, count 1..2), not guaranteed zero loot.
+Desert Well has no loot reference. Source architectural views support qualitative
+visibility descriptions, not observed sight distances or exposure. No capture or
+tooling was added.
+
+Ten shared affected tests pass. Only nine family rows and the decisions identity
+change; geometry, biome constraints, observations and nonregistry are preserved.
+Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 5c2fd7eb3f7b849d0a9528eccad7bffe77743f091c8d7fe47dd590c6fe435a09.
