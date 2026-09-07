@@ -6,6 +6,103 @@
 
 ### Continuation update - 2026-09-07
 
+#### Castle assessed; all family assessments integrated after 49f8e926
+
+Seven Castle content/placement entries integrated from existing source findings.
+Three designs and shared plains branches remain one family. No source spawners
+or markers across136 reachable templates; all13 literal loot IDs defined. One
+empty Castle2 entity, absent guards/Bountiful and conditional shared zombie-villager
+sources dispositioned. Direct pinned board-replacement inspection documented.
+Accepted generated geometry reused. No new experiment/tool. All85 focused checks
+pass (61.06s); only castle/input identity changed.
+Total448/448 active family assessments now present. Zero outstanding family
+attribute entries under the current assessment denominator. This is NOT Item8
+completion: final canonical output integration and acceptance remain open.
+Details: evidence/item-8/sources/idas-castle-assessment/README.md.
+Inventory SHA-256: 2cf414bc937c5a8feebf52c29b2ed7a60b63d2b7b4bc45fc398c225dac4f39d4.
+
+Next quantified batch: consolidate40 already-assessed nonregistry families from33
+contribution records into the final family listing, retaining408 active registry
+families,17 suppressed groups and excluded cloud disposition without double count.
+Current builder lists426 registry groups and carries nonregistry contributions
+separately, with stale INCOMPLETE/scoping text. Do not simply declare COMPLETE.
+Existing source shapes differ: YUNG/Quark/BetterEndIsland families are inline dict
+rows keyed family, some singleton contributors use string family IDs plus sibling
+attributes, BetterEnd biome_buildings/biome_ruins use designs. Reuse these records;
+no new provider discovery, schema or measurement system. Inspect exact attribute
+mappings before adding the smallest direct normalization in existing builder.
+Then reconcile final report/ledger, applicable acceptance, preservation/backup
+preparation, PR Codex review loop and merge/main verification. Earlier detailed
+backup/history authorization remains below; preserve user AGENTS/protected files.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### Final IDAS geometry captured and integrated after cfe1b06f
+
+Existing frozen gap runner captured Pyramid and Castle together at seed42:81
+requested chunks each, readiness, correlated flush, clean exit0,228-file frozen
+configuration accepted with allowed comment normalization. Decoded2765 records.
+Full Castle chunk10,-110,line609:61 pieces,105x58x151(X,Y,Z). Full Pyramid
+chunk850,1209,line2255:104 pieces,171x81x208. Example envelopes, not typical/all
+layouts or full component population. No runtime process remains.
+Archive263 files,4553430 bytes SHA2f8662353b9f6c7d9fd8dcc3844a588712f8e686a93e201b15833e7ef9ea69a6
+published at GitHub release item-8-idas-final-geometry-2026-09-07-r1. Local and
+fresh downloaded restores pass; restored lines reproduce both sizes/full status.
+Four size attributes integrated. All85 focused checks pass (60.94s); only Castle,
+Pyramid and input identity changed. Total447/448 assessed; Castle's seven content/
+placement attributes alone remain before family assessment closure. No new tool.
+Source/capture/reproduction: evidence/item-8/sources/idas-desert-pyramid-assessment/README.md.
+Inventory SHA-256: 23662070c435ed44adb5bf67e9488b040d88bc0df65d63a9da7554e45756cfd7.
+
+Castle findings already inspected, integrate rather than rediscover: 136 reachable
+source templates, no ordinary/trial spawners or generation markers anywhere in
+trace. Core castle1 villagers/chicken/pig; castle2 mounts/displays/glue/seat and
+one empty entity record /entities/10/nbt; castle3 mounts/displays. All designs have
+villager and absent GuardVillagers entity pools; first two connect plains village
+centers, third does not. Shared branches include animals,iron_golem and optional
+zombie-villager templates, not a guaranteed hostile encounter. Existing inventory
+preserves exact template ownership and13 literal loot IDs, all defined. Common
+castle processor only replaces purple glass pane with optional Bountiful board,
+otherwise air. Bountiful and GuardVillagers absent from runtime Mod List.
+Direct pinned javap IntegratedBlockReplaceProcessor classSHA
+ a92f6d152a9351de0c3a1312430540a1eb7c3a7fa8b92fe918a332fb99b31de3:
+input block compare0..12; requiredMod check15..22; absent branch271..333 resolves
+otherwiseBlock and returns its default state using createBlockInfo; nonmatch
+returns input334..336. Selected castle JSON has no output_nbt. Copy this direct
+inspection into Castle assessment with exact artifact refs. Main terrain kernels
+size/distance20/15,20/25,35/35; root surface0,size4,range10/radius1,biome radius1,
+ignore_waterlogging,enhanced none. Villager_random weights empty1,adult3,baby1,
+nitwit1. Shared processor IDs empty,farm_plains,mossify10/20/70,street_plains,
+zombie_plains,castle. Reuse existing village source assessments for those links.
+Disk free2.8GB. Preserve source worlds and raw/restores; no cleanup authorized here.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS desert pyramid content assessed after 23d8847e
+
+Seven content/placement entries integrated for31 reachable templates. Eleven source
+spawner blocks are not a per-assembly count: eight randomize to husk15,stray10;
+room8 retains husk/cave_spider sources under ticking-only processing. Six defined
+literal chest tables plus two conditional modern archaeology sources. Two CORNER
+markers and three empty raw spawner compounds dispositioned; no unresolved entity
+NBT. Missing villager pool and disconnected caves preserved, not substituted.
+All85 focused checks pass (62.13s); only desert_pyramid and input identity changed.
+No new tool/runtime for content. Total446/448 fully assessed;11 attributes remain:
+castle9,desert_pyramid2(footprint,height). Do not report pyramid complete yet.
+Pyramid hall/intersection/turn pools branch repeatedly. Existing raw Item8
+chunks.jsonl search finds no pyramid start, so fixed template extents cannot supply
+an honest complete-family size. Use existing frozen gap-target capture for one
+full-start example, not a new measurement system. Inspect Castle's already-known
+village branches and available observations before deciding whether to combine
+its necessary size capture. Existing run command/custody pattern:
+evidence/item-8/sources/integrated-stronghold-provider/README.md lines124 onward.
+Disk free was3.4GB: budget fresh capture/archive/restore space before launch;
+preserve existing evidence. No runtime process launched for this increment.
+Details: evidence/item-8/sources/idas-desert-pyramid-assessment/README.md.
+Inventory SHA-256: 3a99ca3f423a961ba7092d95d4089a44221b214082663c12807e48590421648b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ancient mines assessed after 4a6d46cb
 
 Nine entries integrated for19 known rigid components. Explicit connector table
