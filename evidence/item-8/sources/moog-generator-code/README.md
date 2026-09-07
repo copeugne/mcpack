@@ -329,3 +329,55 @@ absent output path. Only three family rows and the decisions input hash changed;
 biomes, observation links and nonregistry content remain unchanged. Inventory
 matches `evidence/raw/item8/inventory-mvs-benches-paths-outhouse.json`, SHA-256
 ecf965d9df92ca1de317af3260e054458bebd76a6f8acdff36c576572bcceba8.
+
+## Voyager Well family
+
+After c971b6c6, ten attributes finish the 17-root Well family. Existing variant
+boundaries remain unchanged. Direct inspection of hash-bound pools, templates,
+connectors and captured generic/Nether codecs supports the descriptions; no
+capture, measurement or tooling is added.
+
+Fifteen variants are standalone templates: twelve biome wells are 5x7x5 XYZ,
+Small Copper Well is 7x5x7, Small Tower Well 3x7x6, and Small Well 8x5x6. All
+use versioned single elements. The frozen runtime selects the 1.21-1.21.8
+resources except Small Tower Well, whose 1.21-1.21.4 entry explicitly selects
+mvs:1_21_4/small_tower_well. Its path is not an incompatibility finding.
+Rare Well's upper element also selects its 1.21-1.21.8 resource. Ordinary
+Well upper/lower and Rare lower use ordinary single elements. All are rigid
+with empty processors.
+
+For ordinary Well, upper 4x6x4 has an aligned down_west connector at [1,0,0],
+name mvs:welltop, target minecraft:empty. Each lower alternative 4x3x4 has
+matching up_west at [1,2,0], name minecraft:empty. Adjacent connector alignment
+places lower origin [0,-3,0], giving X0..3, Y-3..5, Z0..3: 4x9x4 XYZ. Rare
+upper 9x9x8 has down_west at [4,0,0], name mvs:rare_well_top; lower 9x2x8 has
+up_west at [4,1,0], name minecraft:empty. Its lower origin is [0,-2,0], giving
+X0..8, Y-2..8, Z0..7: 9x11x8 XYZ. The matching lower connectors participate
+in those joins, with no additional attachment. Upper-only heights are 6 and 9.
+These are nominal fully attached source envelopes, not guaranteed placement
+or exposed heights. Air/padding is included and rotation can exchange X/Z.
+
+Runtime biome intersections identify End Well with the End, Nether Well with
+the Nether, and the other 15 roots with Overworld. All definitions declare zero
+start height, beard_thin, explicit liquid check and ignore_waterlogging. Generic
+roots consume WORLD_SURFACE_WG; Rare Well alone declares terrain range 3/radius
+2. Nether Well uses the captured HIGHEST_LAND repositioning path, whose codec
+does not read the packaged heightmap field. Lower components extend below their
+upper origin. No whole-footprint exposure or dryness guarantee is inferred.
+
+All 20 selected templates have empty entity lists and no spawners or generation
+markers. Inspected block entities are signs, barrels and architectural jigsaws,
+without contained mobs. Natural spawning remains dimension/biome-dependent.
+Ordinary lower with barrel references mvs:houses_uncommon; its alternative has
+none. Rare lower uses mvs:houses_rare. Small Tower Well uses mvs:empty, which
+can yield cobweb/string. All remaining selected templates have no container
+LootTable reference. Exact owners are integrated; no rolled reward is asserted.
+Compact upper well forms and potentially concealed lower contents support a
+qualitative visibility description without a measured discovery distance.
+
+Ten affected provider/inventory tests and scoped builder Ruff/Basedpyright
+checks pass. Reproduce using build_item8_inventory with an absent output path.
+Only Well and the decisions input hash changed; biomes, observation links and
+nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-wells.json`, SHA-256
+c07384cf9665de83e8a0ae7a5a568e28f1cfe3ddc33badfaf1c2c50cd4b3f402.
