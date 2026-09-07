@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed mineshaft and pyramid sizes integrated after 67fa3d4e
+
+Four required size entries now explicitly accept existing full-start envelopes.
+Mineshaft soul run-a ordinary line2085 gives137x20x108; pyramid Nether run-a
+mountainous line2498 gives21x13x21. All observed alternatives and limits remain
+in the authoritative attributes. No new capture/tool. All85 focused checks pass
+(60.15s); only the two intended families/input identity changed. Families remain
+401/448 assessed;47 families/420 required entries remain: IDAS38/343,Repurposed9/77.
+Next complete seven content/placement entries each for mineshaft and pyramid.
+Remaining seven Repurposed families have no full-start envelope in the inventory;
+a search of21 additional original decoded Item8 captures found no matching full
+starts. Inspect assembly evidence before declaring necessary runtime capture.
+Selected processor definitions exist for all nine remaining families. Village has
+nine competing crop_randomizer definitions requiring precedence assessment; do
+not silently choose by catalog order. Reuse existing resource selection/code.
+Details in evidence/item-8/sources/repurposed-mineshaft-pyramid-geometry/README.md.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Inventory SHA-256: 849013b2732c587a02659926e4535283f829e3cb79147e1cdac1d608e498aacc.
+
 #### Repurposed temple assessed after 3d65f246
 
 Nine required entries integrated for seven variants/seven templates, using existing
