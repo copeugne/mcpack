@@ -145,3 +145,36 @@ local X/Z offsets4..12. Do not apply SDFStructureFeature's separate surface-root
 static generation method to this override. The formation has floating intent,
 but source placement does not guarantee clearance from terrain. Its radial
 spikes and snow/ice zones are qualitative discovery cues, not measured visibility.
+
+## Glowshroom content assessment
+
+Seven descriptive attributes are integrated from the retained
+GiantMossyGlowshroomStructure, SDFStructureFeature, FeatureBaseStructure and
+VoxelPiece code. Footprint and vertical size remain open. No new source capture,
+world experiment or measurement implementation was introduced.
+
+The root uses the shared surface generator, unlike giant ice star's override.
+FeatureBaseStructure first samples WORLD_SURFACE_WG for its generation point and
+requires sampled height at least10. The separate SDFStructureFeature generator
+chooses local X/Z offsets4..12, samples base surface height, requires height>5,
+and positions the volume at that sample. Preserve the two distinct checks.
+Packaged spawn_overrides are empty. The result is surface-rooted by design, not
+proof of actual complete exposure.
+
+The root builds a cap from cone/subtraction/wave/smoothing components, a stem
+from a spline, and a basal sphere. It selects cap, hymenophore and mossy-glowshroom
+wood/bark states. The postprocessor creates cap-transition states where wood and
+cap meet, and can add MOSSY_GLOWSHROOM_FUR to adjacent air and beneath hymenophore.
+These are material/vegetation writes, not direct entity insertion, spawner
+configuration or container-loot assignment. The callbacks and VoxelPiece path
+therefore support no directly authored encounter or table reward. This does not
+exclude natural biome enemies, external systems or harvested material drops.
+
+Stem, cap, underside and fur are qualitative visual cues, not a measured sight
+distance. The selected stem-length parameter is10..25 and final scale2..3.5,
+but these alone do not describe total occupied size. Cap coordinate modification,
+flat waves, smooth unions, final round radius1.5 and neighboring fur writes must
+be accounted for before final size attribution. Reuse the already known cone,
+translation and union semantics, and inspect only the remaining shared operators
+needed for the two outstanding geometry claims. Do not introduce a new simulation
+or measurement framework merely to reproduce this source description.

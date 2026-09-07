@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd glowshroom content assessed after 4149b60e
+
+Seven descriptions integrated from retained root/SDF/base/VoxelPiece code:
+surface-rooted fungal volume, cap/hymenophore/wood/bark/fur, no direct authored
+entities/spawners/container tables, natural spawning remains possible. Adjacent
+fur writes are explicit. Separate base minimum10 and generator height>5 samples
+remain distinct. All85 focused checks pass (60.37s); only glowshroom/input
+identity changed. No new capture/tool. Two geometry attributes remain; known
+stem parameter10..25, final scale2..3.5, round radius1.5, cap coordinate warp,
+flat waves/smooth unions and fur must be accounted for rather than calling
+primitive bounds final size. Existing shared cone/rotation/translation/union
+semantics are available; inspect only missing shared operator semantics needed
+for geometry. Registry336/408,nonregistry40/40,total376/448 assessed;
+72 families and637 explicit attribute slots remain: IDAS38/380slots,
+Repurposed17/154,vanilla13/81,BetterEnd4/22. BetterEnd remaining: village2slots,
+glowshroom2,small_island9,sulphuric_cave9. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: d51432739e524f2df579c6a550d0a671d23e9091080eeb8490706d5efec1f712.
+
+
 #### BetterEnd giant ice star assessed after 1c36e61e
 
 Nine attributes integrated from retained root/VoxelPiece/base and cone/rotation
