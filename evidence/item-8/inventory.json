@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "d5b016d5609a2e0d213896bf7ee27fc44e491601450cdfe6aa034c4f48341214",
+    "evidence/item-8/family-decisions.json": "00f63dd1348f3c9313d3ac17db9edea23a48ebf7bd4566346272edfcf8306193",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -172128,6 +172128,7 @@
         "evidence": {
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_biome.txt": "0970c5296980495640901e3ba7fd44fa90e97da4774900368fa924a263446713",
+          "evidence/item-8/sources/fairy-ring-flower-delegate/identities.json": "e9afc8e580f580eff8cf6ded050ec99b1edcf570f2c81dcef28ee744a348aace",
           "evidence/item-8/sources/neoforge-biome-tag-constants/identities.json": "49546d98082b45ceae38961256f56e24545cdf2c5fbe2d16ff4552aa78d135d8",
           "evidence/item-8/sources/quark-fairy-ring-bindings/identities.json": "728e62fac4bad9dfccf8d942bf4cf36fae8b7bcb823e6fe3ee2b04bc186ef020",
           "evidence/item-8/sources/quark-landmark-encounter-generators/identities.json": "9e85bdd251270a20b8922c12a2b3567a9ffa18920426b94b1fec4bd1e9965971",
@@ -172138,9 +172139,9 @@
             "approximate_footprint": "The surface design spans seven blocks across. Direct writes fit 7 by 7 horizontally; delegated flower-feature extent remains unresolved.",
             "approximate_vertical_size": "Direct writes fit anchor offsets -45 through 6, a conservative 52-block span including empty space and buried ore. This is not visible height and excludes delegated flower-feature writes.",
             "attributes": {
-              "approximate_footprint": "The surface design spans seven blocks across. Direct writes fit 7 by 7 horizontally; delegated flower-feature extent remains unresolved.",
-              "approximate_vertical_size": "Direct writes fit anchor offsets -45 through 6, a conservative 52-block span including empty space and buried ore. This is not visible height and excludes delegated flower-feature writes.",
-              "authored_or_natural_enemies": "No enemies authored directly by FairyRingGenerator. Natural mobs remain unresolved.",
+              "approximate_footprint": "Direct ring and retained packaged flower delegates fit a conservative 7 by 7 horizontal envelope. The outer random patch is bypassed, so its spread settings do not enlarge this footprint. See flower_delegate.",
+              "approximate_vertical_size": "Conservative combined envelope spans anchor offsets -45 through 7, or 53 blocks including empty space, buried ore and a possible double-plant upper half. Direct writes alone span -45..6 (52 blocks). This is not visible height; see flower_delegate.",
+              "authored_or_natural_enemies": "No authored enemy source in the direct generator or retained flower-delegate path. Ambient natural mobs are separate; population measurement is not claimed.",
               "biome_constraints": {
                 "basis": "Existing biome_constraint applied to structure-inputs.biome_tags against the captured biome registry. NeoForge Tags$Biomes initializes IS_PLAINS with tag(\"is_plains\"), whose helper uses namespace c. Configuration enablement and callback binding remain the separately named question.",
                 "dimension_overlap": {
@@ -172335,13 +172336,13 @@
                 "basis": "The annotated dimensions field maps to the frozen non-blacklist Overworld allowlist. effective_enablement records the module/category and initial refresh derivation; generator terrain checks remain separate.",
                 "value": "minecraft:overworld"
               },
-              "generated_spawners": "No direct physical-spawner placement. Delegated feature content remains unresolved.",
-              "intended_hostility": "The direct generator authors a landmark and buried ore reward without a hostile encounter. Delegated feature content and natural mobs remain separate.",
+              "generated_spawners": "No physical-spawner placement in the direct generator or retained flower delegate. The delegate only places a plant state, with an optional double-plant upper half.",
+              "intended_hostility": "Ambient flower-ring landmark marking buried ore. Neither the direct generator nor its retained packaged flower delegate authors enemies. Plant-state hazards, including a possible wither-rose choice in the conservative catalog, are distinct from an authored hostile encounter.",
               "loot_table_source": {
-                "basis": "effective_enablement.ore_callback, frozen_configuration and the retained FairyRingGenerator body. Ordinary mining-drop outcomes are separate; delegated flower-feature effects remain the one open question.",
+                "basis": "effective_enablement.ore_callback, frozen_configuration, FairyRingGenerator and flower_delegate. The delegate assigns no container loot table; ordinary mining or plant-drop outcomes remain separate.",
                 "value": "No direct container loot-table assignment. The callback resolves the configured minecraft:emerald_ore and minecraft:diamond_ore states into the ore list; the generator selects one for the buried ore reward."
               },
-              "mob_source": "No direct entity requests. Natural mob composition and delegated feature effects remain UNKNOWN.",
+              "mob_source": "No entity creation in FairyRingGenerator or the retained simple-block flower delegate. Ambient natural spawning remains separate from generated landmark content.",
               "underground_surface_classification": "Combined surface marker and buried ore deposit. The generator searches for dirt from Y=128 down to Y=30 and anchors one block below it.",
               "visual_discoverability": "Source-derived surface flower ring marking buried ore. Incomplete placement or copied air can prevent a visible ring. No measured visibility distance."
             },
@@ -172360,6 +172361,14 @@
             "visual_discoverability": "Source-derived surface flower ring marking buried ore. Incomplete placement or copied air can prevent a visible ring. No measured visibility distance."
           }
         ],
+        "flower_delegate": {
+          "content": "The delegated feature performs plant-state placement, not entity creation, loot-table assignment or spawner configuration. Packaged state inputs include flowers, grasses and shrubs, including wither rose; environmental block hazards do not constitute an authored enemy population. Later plant interactions and ambient natural populations are separate.",
+          "geometry": "BlockPredicateFilter tests the current position. SimpleBlockFeature obtains one state, requires canSurvive, and writes at that origin or invokes DoublePlantBlock.placeAt after checking the block above is empty. The latter adds an upper half one block above; no horizontal offset is added. Fairy Ring floor search permits the flower origin through anchor+6, hence a double plant can reach anchor+7. With the buried ore lower bound -45, the combined nominal envelope is 7x53x7.",
+          "limitations": "Source-derived requested envelope and packaged delegate possibilities. Failed placement can leave air for subsequent ring-state copies; no completed visible ring, actual flower choice or measured frequency is asserted.",
+          "packaged_scope": "All 76 minecraft:flower objects across the retained packaged catalog use an inline minecraft:simple_block delegate with one block_predicate_filter and no other placement modifier. This whole-catalog set is a conservative superset of eligible biome choices, not a claim that every flower can occur in every biome.",
+          "selection": "BiomeGenerationSettings builds its flower list by Feature.FLOWER identity. FairyRingGenerator chooses a configured flower, extracts RandomPatchConfiguration.feature(), and calls that inner placed feature rather than the outer patch. The outer tries/xz_spread/y_spread therefore do not expand the ring. An empty list uses oxeye daisy.",
+          "verification": "uv run pytest tests/item8/test_feature_modifier_references.py -k fairy_ring_packaged -q"
+        },
         "frozen_configuration": {
           "binding": "Annotated fields and callbacks, recorded module display name, shared Zeta mapping/initial-refresh evidence, and exact frozen-file identity establish the initial settings.",
           "file": "evidence/item-6/frozen/config/quark-common.toml",
@@ -172383,7 +172392,7 @@
         "interpretation": "evidence/item-8/sources/quark-landmark-encounter-generators/README.md#fairy-ring-interpretation",
         "mechanism": "FairyRingsModule registers FairyRingGenerator through Zeta at TOP_LAYER_MODIFICATION. It constructs a flower ring and associated buried ore directly, with a delegated biome flower feature for its first flower selection.",
         "membership_decision": "INCLUDE_ONE_FAMILY",
-        "remaining": "Only delegated flower-feature effects remain to assess for required geometry/content answers. Initial configuration/callback binding and tag membership are resolved; do not repeat them.",
+        "remaining": "No specific unanswered mandatory claim remains in this family assessment. Preserve source scopes and observation limits; reopen only on a relevant changed input or contradiction.",
         "scope": "Canonical membership settled for this provider contribution. Effective attributes and generated-world reconciliation remain open; no Item 9 classification or final global count."
       },
       "quark:fallen_log": {

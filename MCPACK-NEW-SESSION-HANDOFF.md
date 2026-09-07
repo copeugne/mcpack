@@ -102,7 +102,7 @@ no new measurement or test framework was added. Inventory matches
 `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-assessment.json`.
 SHA-256: 3ac533a2dcfe3ba5dc97b315c72984b76203aad353d0baf2c52933fae7a93537.
 
-Fairy Ring has one residual question; configuration and biome membership are retired:
+Fairy Ring assessment is resolved; all three former questions below are retired:
 
 - dimension and configured ore reward are resolved and retired. The verbose
   FairyRingsModule capture confirms Config fields (including explicit Ores name),
@@ -117,15 +117,18 @@ Fairy Ring has one residual question; configuration and biome membership are ret
   NeoForge Tags$Biomes capture was needed because the retained generator named
   only the field, not its key. It proves IS_PLAINS is c:is_plains. The existing
   extractor gained only that class allowlist entry; no new tool or measurement.
-- approximate geometry and mob/loot/spawner attribution: which flower feature is
-  selected from the eligible biome, and what can that delegated call add? The
-  direct 7 by 7 ring and buried-ore envelope are known. Next inspect the existing
-  biome/configured-feature catalog using the generator's actual selection rule;
-  retain its direct findings and add only the delegated contribution needed for
-  these required answers. Existing direct visual and placement answers are retired.
+- delegated flower geometry/content is resolved and retired. Fairy Ring executes
+  the inner placed feature, not the outer patch. The whole packaged catalog's
+  76 flower objects all delegate to simple_block with predicate-only placement.
+  Three vanilla captures bind Feature.FLOWER selection and direct placement.
+  Double plants can extend one block upward; combined nominal geometry is now
+  7x53x7 including the buried ore, not visible height. No entity, container-loot
+  or physical-spawner operation is added by the delegate. A possible wither-rose
+  state is an environmental hazard, not an authored mob. All affected attributes
+  are integrated; do not retain the old delegate uncertainty as a backlog.
 
-Eighteen nonregistry families have now been assessed: seventeen have no specific
-unanswered claim carried forward, and Fairy Ring has only the delegated flower-effects question above.
+Eighteen nonregistry families have now been assessed with no specific unanswered
+mandatory claims carried forward from those passes.
 Twenty-two remain unassessed: eighteen BetterEnd, two BOP, scarecrow and urn cache.
 Do not requeue the seventeen supported families under generic shared-effect or
 unknown-population labels. Final consistency, acceptance and PR review remain.
@@ -146,11 +149,20 @@ annotations. Its README records the exact command and shared evidence derivation
 No new runtime, schema, validator or measurement framework. Registry families,
 other nonregistry contributions and resolved biome membership are preserved.
 
+Fairy Ring delegate validation: focused packaged-delegate test passes, scoped
+Ruff and Basedpyright pass, and inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-delegate.json`.
+SHA-256: 695c1eb2e85b0648751fdaf02f970b065d5e94830781e070f65017695e26b66f.
+Registry rows and other contributions are preserved. The delegate source README
+records reproduction and the narrow reason for the three existing-extractor class
+selections and one existing-file test. Next assess the remaining 22 nonregistry
+families; do not reopen any supported Fairy Ring answer without new evidence.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 22 not yet assessed; 18 assessed | One Fairy Ring delegated flower-effects question above. Supported requirements for the other seventeen families are retired. |
+| Nonregistry | 22 not yet assessed; 18 assessed | No specific residual claim from the eighteen assessed families. Their supported requirements are retired. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
