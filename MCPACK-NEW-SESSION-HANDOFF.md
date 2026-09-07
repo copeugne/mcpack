@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five branching WDA geometry targets after 84b0a247
+
+Ten geometry attributes remain for the active five-family batch. Existing
+sources show branching extensions beyond main pieces and no retained starts.
+One existing gap-run capture is declared: seed42, Bandit Towers, Bandit Village,
+Greenwood Pub, Mechanical Nest, Thornborn Towers;81 requested chunks each/405
+total, timeout900. Exact rationale and command are in
+ evidence/item-8/sources/wda-provider-scope/README.md. No new tooling.
+Next run the declared fresh capture, preserve failures/config/lifecycle,
+require full starts, derive saved-piece bounds and verify archive restores
+before integrating geometry. Counts remain342/450 assessed,108 remaining.
+
 #### Five WDA content assessments after 91d9db57
 
 Forty attributes integrate Bandit Towers, Bandit Village, Greenwood Pub,
