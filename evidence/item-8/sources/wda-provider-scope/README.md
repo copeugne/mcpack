@@ -699,3 +699,58 @@ Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Focused check: `uv run pytest -q tests/item8/test_wda_provider_scope.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py`.
 Semantic comparison permits only the two families' geometry attributes,
 corresponding grouping decisions and the decisions input hash to change.
+
+## Infested Temple and Kisegi geometry
+
+Four geometry attributes complete these two families using the same immutable
+WDA archive and catalogs cited above. Exact template paths:
+`data/dungeons_arise/structure/infested_temple/infested_temple_<piece>.nbt`
+and `data/dungeons_arise/structure/kisegi_sanctuary/kisegi_sanctuary_<piece>.nbt`.
+Read size, jigsaw positions/name/target/joint and indexed palette orientations.
+The respective start pools select main_0 only; all selected pools use rigid
+projection and empty fallbacks. Their material/loot processors were already
+attributed above and do not append architectural pieces.
+
+Infested main_0 measures101x181x101. Its ten level receivers at(50,Y,50),
+Y70,78,86,94,102,110,118,126,134,142 alternate aligned up_east/up_west.
+All five level alternatives measure39x8x39 with incoming down_north at
+(19,1,19). Rotation preserves the centered square: global X/Z31..69 and
+origin Y equal to receiver Y because incoming local Y is1. Maximum level Y149.
+Level room receivers have local X/Z coordinates between7 and31, at Y0.
+All ten13x6x13 rooms have centered incoming down_west at(6,0,6), and the
+parent joint is rollable. Every allowed horizontal rotation keeps rooms
+inside local X/Z1..37 and Y1..6 of the level. Five trial-spawner and three
+vault alternatives are1x2x1, incoming down at(0,1,0). Their upward receivers
+in rooms/levels leave these attachments inside those pieces. Main receivers
+are X37..63,Z36..63,Y55..152, also contained. No compatible child enlarges
+the main envelope101x181x101.
+
+Kisegi main_0 measures125x215x125. Its four architectural receivers point
+down_south and are aligned. Corresponding rooms point up_south, so there
+is no horizontal rotation relative to main. Matching adjacent connector
+positions give these origins and inclusive boxes:
+
+| Piece | Origin XYZ | Size XYZ | Inclusive maximum XYZ |
+|---|---|---|---|
+| lower_room_0 | 0,90,44 | 125,13,81 | 124,102,124 |
+| middle_room_0 | 0,103,0 | 125,13,125 | 124,115,124 |
+| top_room_0_0/1/2 alternatives | 27,148,47 | 71,13,31 | 97,160,77 |
+| top_room_1_0 | 27,161,47 | 71,13,31 | 97,173,77 |
+
+Main receiver positions are(62,91,124),(62,104,124),(62,149,62),
+(62,162,62); incoming room positions are(62,0,80),(62,0,124),
+(35,0,15),(35,0,15). The lower and middle room connectors sit at local
+Y0 despite pointing up. The origin therefore is main receiver Y minus1,
+not minus room height. All boxes still lie inside main.
+
+Twelve trial-spawner and four vault alternatives measure1x2x1 and have
+incoming down_west at(0,1,0). Upward receivers in lower/middle/top rooms
+have local Y at most7/9/9, respectively, keeping attachments within their
+13-block height. Main receivers occupy X18..99,Z19..112,Y32..195 and
+remain contained. Thus the nominal source envelope is125x215x125.
+Neither result proves placement success, occupied-block volume or live
+encounter behavior. No retained start or additional capture is claimed.
+
+Rebuild and focused check commands are the same as the preceding geometry
+increment. Semantic comparison changes only these two families' geometry,
+corresponding grouping decisions and the input identity.

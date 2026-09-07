@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Infested Temple and Kisegi geometry after 5b7af2e9
+
+Four geometry attributes finish both families: source envelopes101x181x101
+and125x215x125, with compatible interiors contained. Exact connector derivations
+are in evidence/item-8/sources/wda-provider-scope/README.md, Infested Temple
+and Kisegi geometry. Eight focused tests pass; no capture or tooling addition.
+Registry301/410, nonregistry40/40, total341/450 assessed,109 remaining;
+WDA29/40 assessed. Current five-family batch now has only two geometry
+attributes remaining, both Plague Asylum. Inspect existing branching-layout
+sources and retained observations before deciding whether a targeted existing
+capture is necessary. Do not reopen the four completed geometry assessments
+without a concrete contradiction. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+dd9c971677381c326c5a67ff35ac18a04cd740d57318c4e5dd1d46e032a13ad3.
+
 #### Aviary and Fort geometry after 783e2f99
 
 Four geometry attributes finish Aviary and Illager Fort using connected source
