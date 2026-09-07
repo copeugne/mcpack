@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Wizard tower is one paired-component design with three alternatives, bound to
+b56b2e00 views. Preserve red loot/spawner differences and the authored zoglins in
+bottom components. Focused IDAS and scoped checks pass. Canonical backlog: 23,
+all IDAS. Inventory refresh follows. Nexus conversion session 44369 remains live
+as of this checkpoint; poll it rather than restarting. Nexus decision, attributes,
+nonregistry and final validation/review/main delivery remain open.
+
 Compare all six wizard-tower components and six nexus alternatives with a fixed
 selection in the existing renderer, using its corrected IDAS framing. Different
 spawner and loot contents make a color-name shortcut insufficient. This uses
