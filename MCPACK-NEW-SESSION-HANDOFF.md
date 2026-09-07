@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed ruins content assessed after dc6515d6
+
+Seven descriptive entries integrated for five variants/57templates. No authored
+mobs or spawners/markers; cold/warm item entities are not mobs. Nine chest tables
+plus four processor-appended archaeology tables all have definitions. Land caps5
+are processor limits, not reward counts. Nether pillar/material rules and icy
+powder snow hazards kept distinct from hostility. Surface-rooted land versus
+Nether LOWEST_LAND placement recorded. No new capture/tool. All85 focused checks
+pass (60.86s); only ruins/input identity changed. Two geometry entries remain open
+for ruins; inspect additional retained observations before declaring capture.
+Total398/448 assessed;50 families/444 entries remain: IDAS38/343,Repurposed12/101.
+Quantify next batch. Details in repurposed-ruins-assessment README under evidence/item-8.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 53b9c9d05808151424642411e57d8790465a380875615fe83a9a3ea71a3bea20.
+
+
 #### Repurposed igloo assessed after c936316e
 
 Nine remaining attributes integrated from24-template/four-variant graph and
