@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Towns and Towers Fort/Tower outposts assessed after 9f5c2ac4
+
+Eighteen attributes finish two families across 25 variants/42 unique templates.
+Single-base dimensions and Mediterranean field alternatives are attributed with
+terrain limits. Nilotic is preserved as a packaged variant with no compatible
+runtime biome. Six applicable tests pass; no capture, new tooling or measurement.
+Derivation: sources/towns-towers-entry/README.md. Inventory SHA:
+ab41272b615fda7958bbf685cbcc698c2b50a83d5ebacecb38341d0ac47ca96a.
+Towns and Towers 6/8; registry 249/410, nonregistry 40/40, total 289/450
+assessed, 161 remaining. Its remaining Camp family has five roots/35 unique
+templates; Village has 26 roots/777 unique templates. Quantify the next
+required claims before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+
 #### Four Towns and Towers sites assessed after a73fd67e
 
 Forty attributes integrate Ocean Outpost, Ocean Village, Ocean Wreckage and
