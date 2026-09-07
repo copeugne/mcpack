@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Village geometry next action: existing sources do not provide assembled starts.
+A two-target ordinary-seed capture is predeclared in sources/towns-towers-entry/
+README.md: Forest and Savanna Plateau, 162 requested chunks, timeout 900 seconds,
+existing harness only. New target/raw paths are towns-village-geometry-r1.
+No Java process was present during preparation; pinned prerequisite paths exist.
+Execution is not yet claimed. Preserve failures and source commit, inspect the
+actual harness handle before restarting, then decode, archive/restore, integrate.
+
 #### Towns and Towers Village attribution after 3ffbac6e
 
 Seven attributes are integrated for Village's 26 variants/777 present templates.

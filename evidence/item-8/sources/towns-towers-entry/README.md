@@ -172,3 +172,41 @@ Six applicable tests pass. Only Village attribution and the decisions pin
 change; geometry, existing placement, biomes, identities and observations remain
 unchanged. Inventory SHA-256:
 `ef7e3b2a9c099eddb88c50f4b34f0a1262b0a1abea4f3d3baed9dc6ceb791c05`.
+
+### Predeclared Village geometry capture
+
+Two illustrative roots on ordinary seed42: Forest for branching streets and
+Savanna Plateau for vertical ramshackle assemblies. Reuse the existing gap
+harness, 81 requested chunks per target (162 total), timeout 900 seconds.
+This addresses approximate assembled dimensions, not all-variant extrema,
+frequency, pacing or complete gameplay. Compact source-bounded variants can be
+attributed separately. Keep all variant definitions and source limitations.
+No new measurement tool or schema is necessary. The absent assembled evidence,
+not a desire for additional assurance, warrants this run.
+
+Use fresh verified frozen materialization with the existing Chunky instrument,
+readiness, correlated save and clean stop. Preserve failures. Decode the stopped
+world using existing tools, require a full start chunk for accepted placed-start
+envelopes, and record inclusive dimensions with existing observed_bounds.
+Archive raw evidence and test local/published-download restores with the existing
+archive tool, retaining source revision. Do not repeat an unchanged passing run.
+The following command is predeclared and not yet claimed successful:
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/towns-village-geometry-r1 \
+  --log-path evidence/raw/item8/towns-village-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/towns-village-geometry-r1/configuration \
+  --receipt evidence/raw/item8/towns-village-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure towns_and_towers:village_forest \
+  --structure towns_and_towers:village_savanna_plateau
+```
