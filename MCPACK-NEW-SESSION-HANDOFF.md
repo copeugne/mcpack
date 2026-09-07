@@ -6,6 +6,62 @@
 
 ### Continuation update - 2026-09-07
 
+#### Illager Invasion geometry finished from 84a92353
+
+Four geometry answers finish firecaller_hut and labyrinth. One fresh ordinary-seed
+run reused the existing gap lifecycle. Both targets, correlated save, clean stop
+and frozen configuration checks passed. Full start-piece envelopes are 28x9x21
+and 158x62x131 XYZ. Example dimensions include padding; no family-wide extrema
+or full-layout occupancy claim. The custom Labyrinth stub filter is not a cap
+on its attached pieces. Retire all five Illager Invasion family assessments.
+
+Seven affected tests and builder checks pass. Inventory SHA-256:
+3715e2e9625840de9c1fdb28638ca430a2ffcb8393d393126e2084ae5936337c.
+Raw release item-8-illager-geometry-2026-09-07-r1 preserves 259 files; local and
+downloaded restores pass. Source revision and remote tag are 84a92353. Commands,
+exact decoded lines and geometry derivation are in illagerinvasion-provider README.
+No runtime remains active. Registry assessment is 97/410; nonregistry 40/40,
+total 137/450 assessed, 313 remaining. Continue other providers in quantified
+batches. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
+#### Firecaller and Labyrinth source attribution after 3a2c6d78
+
+Thirteen answers are integrated for the two remaining Illager Invasion families:
+six source descriptions each plus Labyrinth underground placement. Both now have
+eight explicit attributes plus resolved biomes. Retire these supported answers.
+Four geometry answers remain, footprint and height for each assembly. No saved
+bounds observations exist; no new runtime was launched in this batch.
+Labyrinth's custom generation-stub filter Y <= 47, -40 surface projection offset
+and bury adaptation are explicitly attributed. Mob templates, no-liquid element
+scope, loot ownership and the empty natural monster override are preserved.
+
+Seven affected tests and builder checks pass. Inventory SHA-256:
+229401ae20ea01d07325fd0738b4fd13c851fd76c7729c0e18eadf24c5479a25.
+Registry fully assessed remains 95/410; nonregistry 40/40, total 135/450.
+315 families remain, including these two with geometry only. Resolve geometry
+through direct finite assembly derivation if adequate or the existing targeted
+gap runtime; do not add a simulator or repeat established descriptions.
+Final integration, acceptance, backed-up history consolidation and PR/main
+delivery remain open.
+
+#### Three Illager Invasion buildings assessed after 20900e85
+
+Twenty-four answers finish illager_fort, illusioner_tower and sorcerer_hut.
+Rigid mob components fit inside their architectural envelopes; no new runtime
+or measurement. Tower/hut use legacy-single elements, preserved explicitly.
+Source facts and direct geometry derivation are recorded in the existing
+illagerinvasion-provider README. Seven affected tests and builder checks pass.
+Inventory SHA-256:
+c4e80a428427523e29b1f54fa7f315a556b57900bf05bd7198a8893345b212b5.
+
+Retire these three descriptions. Registry assessment is 95/410; nonregistry
+40/40, total 135/450 assessed, 315 remaining. Illager Invasion still has
+firecaller_hut and labyrinth assemblies open. Neither has retained world-bounds
+observations. Reuse their existing source facts before considering geometry
+measurement. Final all-family integration, acceptance, verified backed-up history
+consolidation, PR review and main delivery remain open.
+
 #### Seven Seas assessments completed after b4fca803
 
 Ten answers integrate dimension and qualitative discoverability for all five
