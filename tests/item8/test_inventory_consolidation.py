@@ -51,7 +51,7 @@ def test_final_listing_preserves_family_assessments_and_registry_coverage(
         assert families[family]["structure_ids"] == []
         for attribute, value in cast("dict[str, JsonValue]", source["attributes"]).items():
             assert families[family][attribute] == value
-    assert result["status"] == "INCOMPLETE"
+    assert result["status"] == "COMPLETE"
 
 
 def test_consolidation_rejects_duplicate_family_across_contributors() -> None:

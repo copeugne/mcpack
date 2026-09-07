@@ -12,8 +12,9 @@ PR18 merged reviewed head2023a22a84372483841f7ad286a868584df564fa as
 326979dd2eee7da3f881f1316eb845fb16e8ea6b. Fetched origin/main contains the
 reviewed head. The final Codex cycle completed clean with a PR thumbs-up and
 no new findings. Item8 is COMPLETE; evidence/item-8/README.md records the exact
-review and delivery references and explains the preserved pre-merge inventory
-lifecycle value. No inventory, measurement or preservation work remains.
+review and delivery references. PR19 review finding3952497292 requires the
+canonical inventory lifecycle to agree: the builder and JSON now record COMPLETE,
+while Git preserves the old pre-merge snapshot. No inventory, measurement or preservation work remains.
 Items9 through11 were not advanced. Earlier continuation instructions below
 are historical checkpoints and do not require repeating completed work.
 

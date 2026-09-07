@@ -20,10 +20,24 @@ source relationships, limitations, failed attempts and raw custody remain below.
 The clean-checkout acceptance result is495/495 passing tests. No additional
 measurement or runtime change was required for delivery.
 
-`inventory.json` is the immutable pre-merge assessment snapshot. Its top-level
-INCOMPLETE value records the delivery state when built, while its448 ASSESSED
-rows describe completed family assessments. This dated delivery record supersedes
-that lifecycle value without rewriting the accepted snapshot or its hash.
+The canonical `inventory.json` and source-pinned builder now record COMPLETE,
+matching the verified PR18 delivery. The previous pre-merge snapshot remains
+preserved in Git at2023a22a with its original hash. PR19 review finding3952497292
+correctly rejected leaving that old lifecycle value in the canonical artifact.
+Only top-level status and scope change; family assessments and inputs are unchanged.
+Current inventory SHA-256:
+`4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d`.
+Validation: five affected tests passed in0.77s; Ruff and basedpyright pass after
+correcting a string-concatenation formatting error. Reproduction commands:
+
+```sh
+uv run -m tools.build_item8_inventory --output /tmp/item8-completed-pr19-rebuild.json
+cmp evidence/item-8/inventory.json /tmp/item8-completed-pr19-rebuild.json
+uv run pytest -q tests/item8/test_inventory_consolidation.py tests/item8/test_dimension_capture.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+```
+
 Item9 may consume this inventory; Items9 through11 were not performed here.
 
 ## Acceptance-suite prerequisites for a clean checkout
