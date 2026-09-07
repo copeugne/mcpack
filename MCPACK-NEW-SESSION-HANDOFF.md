@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches d7f9f894 and reproduces exactly. Canonical backlog: 23, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus visual
+inspection is next; conversion session 44369 was last confirmed live. Effective
+attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
 Wizard tower is one paired-component design with three alternatives, bound to
 b56b2e00 views. Preserve red loot/spawner differences and the authored zoglins in
 bottom components. Focused IDAS and scoped checks pass. Canonical backlog: 23,
