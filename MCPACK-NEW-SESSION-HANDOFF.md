@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS abandoned vineyard assessed after 0500f8bb
+
+Nine entries integrated for two rigid connected templates. Matching down_east/
+up_east connectors yield nominal24 by22 footprint and20 height, with bottom
+origin0,-7,0. This is direct reference geometry, not observed placement/burial.
+No mobs, spawners, markers or literal loot references; sole item entity is not
+an enemy. Fixed food-storage contents remain distinct from loot-table absence.
+Ticking-only processor inspection reused. No runtime/tool added. All85 focused
+checks pass (65.98s); only abandoned_vineyard/input identity changed.
+Total425/448 assessed;23 connected IDAS families/207 entries remain, nine each.
+Next quantify a remaining connector/content batch, reusing preserved findings.
+Beekeepers_house is a two-component candidate with nine remaining entries;
+inspect its connector origins and nested bee/seat evidence before integration.
+Details: evidence/item-8/sources/idas-abandoned-vineyard-assessment/README.md.
+Inventory SHA-256: 2a53fe620e8b779cc5896519651c12bbee62a9912a24eb6179d0975990fe3597.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ruins of the deep assessed after 8500e458
 
 Seven entries integrated for four connected components. Civilian entrance and
