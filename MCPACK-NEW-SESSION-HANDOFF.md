@@ -55,10 +55,11 @@ contains all 448 provisional classifications and passes its focused local gate.
 [rubric and evidence](evidence/item-9/README.md), and
 [current report](docs/items/Item-9-Provisional-Structure-Classification.md)
 are authoritative. [PR20](https://github.com/copeugne/mcpack/pull/20) is open.
-The first review completed at `96c16355` with two documentation findings,
-recorded and dispositioned in the evidence README. The archive remains verbatim
-in immutable Git history and in the existing local file; it is not duplicated
-in the PR. Workspace preservation instructions now require direct inspection.
+The first review's archive/workspace findings are fixed. The second review at
+`d96f6035` requested an executable entry point for the existing gate. Its exact
+logic now lives in `evidence/item-9/check.sh`; the direct invocation passes with
+unchanged results. Review dispositions are in the evidence README. This is only
+a relocation of existing logic, not a new validation surface or framework.
 Push these fixes, request fresh `@codex review`, inspect completed reviews and
 all comments, and repeat until clean. Merge only after the clean final cycle,
 then verify main delivery and reconcile completion status. Item 9 remains
