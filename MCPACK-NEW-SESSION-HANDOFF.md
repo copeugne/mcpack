@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches guild/ruins attribute decision be81f551 and reproduces exactly.
+The predeclared three-family batch is delivered with ten updated fields per
+family and unchanged resolved biome lists. No new measurement or tooling. Four
+families have now received this source-attribute assessment in the current phase;
+the other candidate records, nonregistry integration and final gate remain open.
+Quantify the next batch before editing and retain all generated-world limitations.
+
 Quantified increment: ruined church, ruined fort and redhorn guild, eleven fields
 each. Ten source-based interpretations per family now supplement the unchanged
 biome constraints. Guild villagers/guards and its unidentified entity remain
