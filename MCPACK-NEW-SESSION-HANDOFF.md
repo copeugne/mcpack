@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 7aaef93e and reproduces exactly. Canonical-note backlog is zero.
+All 887 roots remain in 426 working coverage groups, with full variants and
+derived attributes unchanged. Next reconcile the 33 nonregistry contributions
+and enumerate outstanding effective-attribute decisions. Item 8 remains open
+through those steps, final validation, clean review and verified main delivery.
+
 The final eight IDAS canonical decisions pass focused IDAS and scoped checks.
 Canonical-note backlog is now zero. This closes the tracked design-reconciliation
 notes, not Item 8: 33 nonregistry contributions, all required effective attributes,

@@ -10210,3 +10210,29 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-connected-r
 ```
 
 Use fresh output files. Component reachability does not establish effective spawns.
+
+### Final IDAS canonical-design inventory refresh
+
+Decision 7aaef93e resolves the final eight tracked IDAS design notes using the
+twelve inspected templates and their existing packaged contents. Focused IDAS
+checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright checks.
+Canonical-note backlog is zero; this is not Item 8 completion. Two fresh builds
+agree exactly, SHA-256
+3abed2261fc7db8f6cf3c980213aba4a86cfca733ce9bc118902fe3151a6de92.
+Only these eight grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions, coverage reconciliation and final
+validation/review/main delivery remain open. Working groups include inactive
+and excluded records and are not the final active authored-family count.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-final-designs-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-final-designs-r2.json
+cmp evidence/raw/item8/inventory-idas-final-designs-r1.json evidence/raw/item8/inventory-idas-final-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-final-designs-r2.json
+```
+
+Use fresh output files. Canonical decisions do not close effective attributes.
