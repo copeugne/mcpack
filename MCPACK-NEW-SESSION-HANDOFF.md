@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS underground camp assessed after 6757d644
+
+Nine entries integrated for two roots/four independent alternatives. Nominal
+sizes6 by3 by6 or6 by3 by5, fixed startY20 or-10, no authored entities/spawners.
+All templates reference defined mining archaeology; deep2 additionally references
+surface archaeology. Selected ticking-only processor reused. Machinery operation,
+yield and burial remain unmeasured. No runtime/tool added. All85 focused checks
+pass (67.68s); only underground_camp/input identity changed. Total417/448 assessed;
+31 IDAS families/279 entries remain. Existing-candidate geometry group now7;
+24 connected assemblies still need geometry assessment. Next small independent
+case: sunken_ship/sunken_ship_ruins, two alternatives/nine entries. Quantify and
+inspect its selected processor before attributing spawners from a processor name.
+Details: evidence/item-8/sources/idas-underground-camp-assessment/README.md.
+Inventory SHA-256: 83663c10ee1380ebeaa517f616a84116d045795635aea3c3f254739630e888c0.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS desert camp assessed after 3431aa49
 
 Nine entries integrated for four independent11 by4 by12 templates. No authored
