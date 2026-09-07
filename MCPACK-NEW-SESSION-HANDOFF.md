@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Towns and Towers sites assessed after a73fd67e
+
+Forty attributes integrate Ocean Outpost, Ocean Village, Ocean Wreckage and
+Desert Mimic. Four roots have 37 template references, 34 unique templates.
+Existing observations support lifecycle-limited approximate dimensions; source
+mob/spawner, loot, fixed payload and placement assessments are integrated.
+Six applicable tests pass. No capture, new tooling or measurement. Derivation:
+sources/towns-towers-entry/README.md. Inventory SHA:
+0441e3ad4343bb732cd8e3df24818a5cabf93800dfdbb4c173a4fd84b5c00d08.
+Towns and Towers 4/8; registry 247/410, nonregistry 40/40, total 287/450
+assessed, 163 remaining. Its remaining families are outpost_fort, outpost_tower,
+outpost_camp and village. Quantify their selected graphs before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Counts do not establish acceptance.
+
 #### Mega Fortress assessed after a938d1a0
 
 Ten attributes integrate the final Nether Structures family. Existing planned
