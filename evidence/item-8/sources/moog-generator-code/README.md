@@ -896,3 +896,42 @@ Ten shared provider/inventory tests pass. Rebuild with
 Only eleven family rows and the decisions hash change; existing geometry,
 biomes, world observations and nonregistry content are preserved. Inventory SHA:
 960f87010b6506043e805360c6e7336f146e53d44435c730b2bc7770b12b6970.
+
+## Six End alternatives and Starlight Voyager
+
+After b116d1f7, sixty attributes finish six families. The fifteen templates are
+independent weight-1 rigid ordinary single elements, with empty processors and
+no attachments. Per-template dimensions are integrated rather than summed:
+
+| Family | Nominal XYZ alternatives | Loot source |
+| --- | --- | --- |
+| enderpin_spikes | 5x8x5; 5x10x5 | none |
+| endscraps | 10x6x9; 10x7x10; 9x6x8; 9x7x9 | mes:end_uncommon, all alternatives |
+| monolith | 11x16x11; 11x26x11; 11x36x11 | mes:end_uncommon, all alternatives |
+| placid_prairie | 11x14x11; 7x12x7 | mes:end_uncommon, both alternatives |
+| ruined_pillar | 3x3x7; 3x4x5; 3x3x7 | none |
+| starlight_voyager | 16x24x32 | mes:end_uncommon and saved frame item |
+
+All are End-biome-compatible only, with min_y_allowed 45 and empty spawn
+overrides. Range/radius is 3/1 except Starlight 4/1. Enderpin uses +4 surface
+height input, Prairie uniform +8..56 and Starlight uniform +20..65, all with no
+terrain adaptation. The others use zero/beard_thin. These are placement inputs,
+not final absolute Y or observed exposure. The omitted liquid flag defaults false.
+
+Only Starlight has saved entities: eight shulkers and an item frame at
+/entities/6. Its Item is an elytra with legacy Mending I/Unbreaking III tags.
+No template has a physical spawner, generation marker or hidden mob payload.
+Endscraps 2 /block_entities/0 and Starlight /block_entities/3 preserve both Items
+and LootTable; complete saved lists are integrated without claiming their contents
+plus rolled loot as a guaranteed reward. Prairie 1 has three air/count-zero
+brushable payloads; Ruined Pillar variants have three/one/four respectively, all
+without a loot table. These do not establish archaeology rewards.
+
+Monolith's bedrock palette, tallest variant's ancient debris/lava cauldron,
+source lighting and elevated silhouettes are retained descriptive facts, not
+passability, production or discoverability measurements. Existing Starlight world
+observations remain linked alongside its source envelope. No capture or tooling.
+Ten shared affected tests pass. Only these six rows and decisions hash change;
+biomes, world observations and nonregistry content are preserved. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 288eeb652708ff0c39fbf581e96e1f387e40aeec57fcc5cf365c3a0108776eb8.
