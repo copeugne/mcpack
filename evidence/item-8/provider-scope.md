@@ -10681,3 +10681,23 @@ Twelve literal gaps resolved. Remaining: 391 registry candidates with 2,133
 literal gaps, forty nonregistry assignments needing integration, nineteen filled
 registry records needing acceptance assessment. Sixteen families have current-phase
 assessments. No new measurement/tooling. Final acceptance and delivery remain open.
+
+
+### Cafe/store integration and revised work approach
+
+Decision 95ac9e0f integrates the predeclared two families and eleven required
+fields from existing evidence. Focused IDAS test passes (1 passed, 77 deselected),
+with scoped Ruff/Basedpyright passing. Inventory generated with
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cafe-store-attributes.json`.
+SHA-256: 7ec82de43fd8211af43697adf13724987b301a2dbd7ff7a010d06ab9593c886a.
+Only the two family rows and decision input identity changed; registry membership,
+biomes, observations, trace IDs and other rows are unchanged. No new measurement.
+
+User direction received through the side audit: reduce repetitive work. Existing
+rationales already contain substantial attribute evidence. Top-level UNKNOWN
+counts measure integration gaps, not uninvestigated families. Reuse that evidence
+in larger coherent batches, investigate only a specifically unsupported mandatory
+claim, and report facts awaiting integration separately from such investigations
+and final validation/delivery. Do not repeat settled provider/design work, render
+existing views again, or add another tracking system. Use affected checks and the
+full applicable final gate. Preserve atomic commits and PR/review/merge requirements.
