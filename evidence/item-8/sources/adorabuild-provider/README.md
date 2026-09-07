@@ -33,3 +33,49 @@ existing graph and runtime-root regression. Keep the basalt chambers reference
 to missing minecraft:basalt_chambers/chambers unresolved as a component failure;
 do not silently substitute a differently namespaced pool. Candidate coverage
 does not certify successful generation or canonical grouping of all 106 roots.
+
+## Twelve single-template source assessments
+
+The following families now retain all eleven Item 8 descriptions: acacia_well,
+bamboo_cache, bamboo_campfire, birch_beehive, birch_tree_workshop,
+dark_oak_mansion, mushroom, oak_hut, red_sand_shrine, red_sand_temple,
+sand_castle and sand_pyramid (all adorabuild_structures namespace).
+This batch supplies 36 missing hostility, enemy-origin and discoverability
+answers and reconciles 48 existing dimension/mob/loot/spawner answers. Existing
+geometry, placement and resolved biome answers are retained. No new source
+capture, world run, measurement or schema is needed.
+
+Direct inspection: each family has one root and one fully traced template in
+pool-traces-content.json.gz, no missing references, unresolved elements, marker
+entries or unresolved entity IDs. Each retained definition is minecraft:jigsaw
+with empty spawn_overrides. Ten use minecraft:empty processors. The mansion's
+structure/dark_oak_mansion_medium_1 processor removes glass and randomly removes
+dark-oak leaves. The red-sand hall's randomize_stone processor replaces stone
+with ores. Their full rules are in packaged-json-redacted.json.gz; neither
+contains an entity, spawner or loot assignment. Template IDs, exact loot tables
+and entity ownership remain in the authoritative family rows.
+
+The raw templates in templates-redacted.json.gz establish that the apiary's
+three hive block entities have empty Bees lists; its explicit entity list supplies
+bees. The mansion supplies evoker, pillager and vindicator entities. Mushroom's
+armor stand is an object; sand castle's turtles and turtle eggs are animal and
+block content, not a hostile encounter. Other batch templates have no explicit
+entities. All have no physical-spawner or generation-marker inputs. These are
+source descriptions, not generated population claims. Empty spawn overrides do
+not disable ambient biome spawning.
+
+Previously inspected comparison views and retained palettes support the visual
+forms. Negative offsets, bury adaptation and room-enclosing terrain remain
+explicit. Dispensers, tripwire, pistons, trapped chests, magma, TNT and lava are
+hazard ingredients where present, not tested mechanisms. No visibility distance,
+observed safe interaction or realized reward is inferred. The existing biome
+answers have no missing required values or unresolved tags. Dimension attribution
+uses those biomes and the captured dimension source overlap; occurrence remains
+separate in world_observations.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-single-descriptions.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
