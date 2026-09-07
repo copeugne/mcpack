@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Tinkers citadel, workshop and tree of wisdom now have explicit component
+boundaries from existing graphs and contents. Citadel branches, workshop follows
+a numbered chain, and the tree base links surrounding pieces and a top. Machinery
+and assembled-size claims remain unproven. The focused IDAS test and scoped
+checks pass. Canonical backlog: 25, all IDAS. Inventory refresh follows. Required
+attributes, 33 nonregistry contributions and final delivery remain open.
+
 Inventory matches 9f0ac12d and reproduces exactly. Canonical backlog: 28, all
 IDAS. The 887 roots and full variants remain in 426 working groups. Continue
 remaining IDAS buildings and assemblies. Attributes, 33 nonregistry contributions
