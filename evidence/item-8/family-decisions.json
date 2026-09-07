@@ -69108,7 +69108,7 @@
       "structure_ids": [
         "supplementaries:galleon"
       ],
-      "rationale": "One galleon design with hull-room and sail alternatives. The custom definition declares galleon_enemies spawn boxes with pillager and plunderer entries; matching moonlight:spawn_box markers are generation components, not ordinary block spawners or additional families. Sea-level requirement, biome-point constraints and y_offset are preserved. Effective custom generation and remaining attributes require resolution.",
+      "rationale": "One galleon design with hull-room and sail alternatives. The custom definition declares galleon_enemies spawn boxes with pillager and plunderer entries; matching moonlight:spawn_box markers are generation components, not ordinary block spawners or additional families. Sea-level requirement, biome-point constraints and y_offset are preserved. Required source-based attributes are integrated below. Spawn regions, direct mob features, saved entities and urn break creatures remain distinct; runtime occurrence and live outcomes are not inferred.",
       "variants": {
         "supplementaries:galleon": {
           "definition": {
@@ -69176,7 +69176,291 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-6/frozen/config/supplementaries-common.toml": "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
-        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225"
+        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/supplementaries-generation/identities.json": "0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d",
+        "evidence/item-8/sources/moonlight-common-hooks/identities.json": "e110a8843fa506d7ebea72c4c231d30993dfaff40aeff4b138cd8a32d241f312",
+        "evidence/item-8/sources/moonlight-generation-delegates/identities.json": "eee5815a67288e010a4d111e5ce759515d13604db6de351e9474be933fb7f3e0",
+        "evidence/item-8/sources/supplementaries-placement-processor/identities.json": "aaae4d5157a42bdff7bc12d048945a324e3c0c45d8e0bf06edf46a06a7264195",
+        "evidence/item-8/sources/urn-reward-behavior/identities.json": "22b3ddf0bdcc520052ba72182c71316fa8d3cf1621dcb3d53d1202c934c742ff",
+        "evidence/item-8/sources/urn-patch-geometry/identities.json": "a4c5f6d002b6bc375d96c128ae277646e08a5cacb8d57d3c2a6c2bc59b3da5d5"
+      },
+      "attributes": {
+        "dimension": {
+          "biome_compatible": [
+            "minecraft:overworld"
+          ],
+          "basis": "The resolved has_galleons biome set intersects twelve captured Overworld biomes and no other captured dimension. GalleonStructure additionally checks sea level and the declared climate parameter point. Biome compatibility is not a generated occurrence; no retained world start exists."
+        },
+        "approximate_footprint": {
+          "nominal_architectural_xz_blocks": [
+            19,
+            47
+          ],
+          "basis": "Main galleon template is19x37x47. Connected sail, orlop, room and compatible hull alternatives remain inside this architectural envelope. Direct connector derivation in sources/supplementaries-generation/README.md. Includes air/padding, not observed occupied/exposed blocks or boat/mob encounter radius. Feature-spawned boats and later entity movement are separate."
+        },
+        "approximate_vertical_size": {
+          "nominal_architectural_y_blocks": 37,
+          "basis": "Main template Y0..36 bounds the architecture. Sails occupy Y24..30, orlop Y1..3, rooms Y4..7 and the compatible hull chain Y4..7. Source envelope, not exposed height or proof every connector succeeds."
+        },
+        "underground_surface_classification": {
+          "value": "Sea-surface ship with submerged lower hull and above-water superstructure.",
+          "basis": "GalleonStructure.getSuitablePosition samples first occupied WORLD_SURFACE_WG height plus1 at chunk center, requires exact equality with generator sea level under require_sea_level=true, checks the declared climate ranges, then adds y_offset=-3. findGenerationPoint invokes JigsawPlacement with size10, expansion false, no added heightmap projection and max distance64. These are placement inputs, not measured ship size or guaranteed successful placement.",
+          "climate_constraints": {
+            "continentalness": {
+              "max": -0.48,
+              "min": -0.92
+            },
+            "depth": {
+              "max": 2,
+              "min": -2
+            },
+            "erosion": {
+              "max": 2,
+              "min": -2
+            },
+            "humidity": {
+              "max": 2,
+              "min": -2
+            },
+            "offset": 0,
+            "temperature": {
+              "max": 2,
+              "min": -2
+            },
+            "weirdness": {
+              "max": 2,
+              "min": -2
+            }
+          }
+        },
+        "intended_hostility": {
+          "value": "Authored hostile naval encounter with optional ravager and boat crews",
+          "basis": "Retained mob feature pools select plunderers/pillagers, one compatible hull alternative saves a ravager, and four named spawn-box markers reference the declared galleon_enemies monster list. Iron golem is defensive ancillary content. No live encounter count or difficulty rating is inferred."
+        },
+        "mob_source": {
+          "saved_entities_by_template": {
+            "supplementaries:galleon/galleon": [],
+            "supplementaries:galleon/hull_back01": [],
+            "supplementaries:galleon/hull_back02": [],
+            "supplementaries:galleon/hull_back03": [
+              {
+                "id": "minecraft:ravager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "supplementaries:galleon/hull_front01": [],
+            "supplementaries:galleon/hull_front02": [
+              {
+                "id": "minecraft:armor_stand",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "supplementaries:galleon/hull_mid01": [],
+            "supplementaries:galleon/hull_mid02": [],
+            "supplementaries:galleon/hull_room01": [],
+            "supplementaries:galleon/hull_room02": [
+              {
+                "id": "minecraft:iron_golem",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "supplementaries:galleon/hull_room03": [],
+            "supplementaries:galleon/orlop_room01": [],
+            "supplementaries:galleon/orlop_room02": [],
+            "supplementaries:galleon/sail01": [],
+            "supplementaries:galleon/sail02": [],
+            "supplementaries:galleon/sail03": [],
+            "supplementaries:galleon/sail04": []
+          },
+          "saved_entity_details": "hull_back03 entities/0 saves ravager Health100, PersistenceRequired1, empty equipment. hull_room02 entities/0 saves iron_golem Health100, PersistenceRequired0, empty equipment. hull_front02 entities/0 saves armor stand Health20 with chainmail helmet. These saved records do not establish successful placement or survival.",
+          "feature_pool": "galleon/plunderer selects plunderer/pillager/empty at weights4/1/1. SpawnEntityWithPassengersFeature creates selected entities, finalizes mobs with STRUCTURE spawn type, conditionally applies its configured persistence and adds the entity with passengers.",
+          "boats": "Boat pool weights1/1/2/1/2 select dark-oak boat with plunderer+pillager, boat with plunderer, cannon_boat with plunderer, unoccupied boat, or empty. Nonempty entries declare attempts4 and spread4. The implementation loops attempts+5, so up to nine candidate attempts; it returns on first successful placement, not nine boats. X/Z offsets are inclusive -4..4. Terrain matching uses WORLD_SURFACE_WG at the feature origin, then requires candidate air, ground-rule acceptance and an available chunk.",
+          "named_spawn_boxes": [
+            {
+              "category": "monster",
+              "name": "galleon_enemies",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:pillager",
+                  "weight": 5
+                },
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "supplementaries:plunderer",
+                  "weight": 7
+                }
+              ]
+            }
+          ],
+          "spawn_box_basis": "Four main-template moonlight:spawn_box markers name galleon_enemies. GalleonStructure exposes its SpawnBoxSettings. Moonlight ChunkGeneratorMixin intercepts getMobsAt to request special spawn lists; SpawnBoxStructurePiece resolves a named box containing the queried position. This is a configured regional spawn-list mechanism, not a block spawner or measured recurring population.",
+          "urn_break_creatures": "Treasure urns placed by urns_patch can release an entity on break, subject to the frozen0.01 random check, doTileDrops and no prevents_infested_spawns tool enchantment. Selection uses actual urn_spawn tag holders. Required packaged declarations are silverfish, slime and bat; optional declarations are not asserted available. Reuse urn-reward-behavior evidence.",
+          "ordinary_natural": "Root spawn_overrides is empty, but the separate named spawn-box declaration must not be discarded. Ordinary biome/world spawning outside special handling remains conditional."
+        },
+        "generated_spawners": {
+          "ordinary_or_trial_blocks": "None in any of the seventeen templates; selected processors and features do not introduce ordinary/trial spawner blocks.",
+          "regional_markers": [
+            {
+              "nbt": {
+                "final_state": "minecraft:air",
+                "id": "moonlight:spawn_box",
+                "name": "galleon_enemies",
+                "posX": -5,
+                "posY": -4,
+                "posZ": -9,
+                "showBB": 1,
+                "sizeX": 11,
+                "sizeY": 6,
+                "sizeZ": 16
+              },
+              "path": "/block_entities/28",
+              "position": [
+                9,
+                8,
+                21
+              ]
+            },
+            {
+              "nbt": {
+                "final_state": "minecraft:air",
+                "id": "moonlight:spawn_box",
+                "name": "galleon_enemies",
+                "posX": -4,
+                "posY": -4,
+                "posZ": -3,
+                "showBB": 1,
+                "sizeX": 9,
+                "sizeY": 7,
+                "sizeZ": 6
+              },
+              "path": "/block_entities/41",
+              "position": [
+                9,
+                11,
+                31
+              ]
+            },
+            {
+              "nbt": {
+                "final_state": "minecraft:air",
+                "id": "moonlight:spawn_box",
+                "name": "galleon_enemies",
+                "posX": -2,
+                "posY": -4,
+                "posZ": -1,
+                "showBB": 1,
+                "sizeX": 5,
+                "sizeY": 7,
+                "sizeZ": 5
+              },
+              "path": "/block_entities/42",
+              "position": [
+                9,
+                11,
+                36
+              ]
+            },
+            {
+              "nbt": {
+                "final_state": "minecraft:air",
+                "id": "moonlight:spawn_box",
+                "name": "galleon_enemies",
+                "posX": -5,
+                "posY": -3,
+                "posZ": 0,
+                "showBB": 1,
+                "sizeX": 11,
+                "sizeY": 6,
+                "sizeZ": 10
+              },
+              "path": "/block_entities/45",
+              "position": [
+                9,
+                13,
+                2
+              ]
+            }
+          ],
+          "basis": "Four named markers are spawn-list regions. Mob features directly create entities and urn breaking may create a critter; none is an ordinary block spawner. No actual placed/active marker or mob count is measured."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Saved ravager and feature-selected plunderer/pillager crew, including boat passengers. Authored treasure urns have a conditional break-creature path.",
+          "natural": "Declared galleon_enemies regional monster list uses pillager weight5 and plunderer weight7, each group1. This controls eligible source types within named regions; it is not observed spawn frequency. Ordinary world spawning remains conditional.",
+          "other_entities": "Saved iron golem and armor stand are not classified as hostile crew.",
+          "limitation": "Pool weights, saved entity records, attempts, spawn-list weights and live populations are different quantities."
+        },
+        "loot_table_source": {
+          "per_template": {
+            "supplementaries:galleon/galleon": [
+              {
+                "path": "/block_entities/13/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/key"
+              },
+              {
+                "path": "/block_entities/22/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/cannon"
+              },
+              {
+                "path": "/block_entities/23/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/cannon"
+              },
+              {
+                "path": "/block_entities/32/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/cannon"
+              },
+              {
+                "path": "/block_entities/33/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/cannon"
+              },
+              {
+                "path": "/block_entities/34/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/safe"
+              },
+              {
+                "path": "/block_entities/49/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/chest"
+              }
+            ],
+            "supplementaries:galleon/hull_back01": [],
+            "supplementaries:galleon/hull_back02": [],
+            "supplementaries:galleon/hull_back03": [],
+            "supplementaries:galleon/hull_front01": [
+              {
+                "path": "/block_entities/0/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/chest"
+              }
+            ],
+            "supplementaries:galleon/hull_front02": [
+              {
+                "path": "/block_entities/4/nbt/LootTable",
+                "value": "supplementaries:loot/galleon/chest"
+              }
+            ],
+            "supplementaries:galleon/hull_mid01": [],
+            "supplementaries:galleon/hull_mid02": [],
+            "supplementaries:galleon/hull_room01": [],
+            "supplementaries:galleon/hull_room02": [],
+            "supplementaries:galleon/hull_room03": [],
+            "supplementaries:galleon/orlop_room01": [],
+            "supplementaries:galleon/orlop_room02": [],
+            "supplementaries:galleon/sail01": [],
+            "supplementaries:galleon/sail02": [],
+            "supplementaries:galleon/sail03": [],
+            "supplementaries:galleon/sail04": []
+          },
+          "feature_boat_table": "Boat feature data declares supplementaries:loot/galleon/cannon. trySpawningAt applies it only if the created entity implements ContainerEntity; do not claim ordinary non-container boats receive an inventory.",
+          "urn_rewards": "Treasure urn block loot refers to urn common/uncommon/rare/epic reward tables with weight/quality60/-5,32/-2,7/2,1/5; silk-touch and treasure-state conditions remain separate. UrnBlock.getDrops appends existing container contents. Reuse the exact tables and conditions recorded for supplementaries:cave_urn_cache and urn-reward-behavior; Galleon selects urns_patch directly without the cave-urn six-origin placement repetition.",
+          "fixed_payloads": "Main block_entities/35 pulley saves one rope. hull_front02 block_entities/1 urn saves one ash; its armor stand saves a chainmail helmet. hull_room01 block_entities/1 jar saves six cookies in slots0..5 and an empty fluid. These are source payloads, not verified recovery or live loot outcomes.",
+          "processors": "remove_disabled_blocks replaces configured-disabled blocks while preserving incoming position/NBT. Frozen cannon, urn, jar, globe, cannonball, ash, candle-holder, gold door/trapdoor/bars and sconce settings are enabled. Sail04 uses empty processors. No invented container loot or block-spawner injection is attributed."
+        },
+        "visual_discoverability": {
+          "source_form": "Large sailing ship with mast/sails, deck, submerged hull rooms and optional nearby boats.",
+          "basis": "Retained19x37x47 architecture and sea-level start rule. Sails provide a qualitative above-water landmark; lower rooms are concealed by hull/water. No measured sight distance, exposure, live boats or exploration pace. Interior variants do not become additional families."
+        }
       }
     },
     {
@@ -69185,7 +69469,7 @@
       "structure_ids": [
         "supplementaries:road_sign"
       ],
-      "rationale": "One road-sign design. The frozen common config and resolved dynamic biome tag remain relevant; the custom generator uses min_y/max_y. Its strongholds generation step does not establish that a road sign is underground. Effective custom generation and remaining attributes require resolution.",
+      "rationale": "One custom-generated road-sign landmark. Its single template is a jigsaw trigger envelope, not the visible sign. The feature creates ground/post material and a deferred callback adds destination signs or a notice board. These are components of one family. Required source-based attributes and retained start-envelope observations are integrated; callback success, visibility distance and live world behavior are not inferred.",
       "variants": {
         "supplementaries:road_sign": {
           "definition": {
@@ -69206,7 +69490,70 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-6/frozen/config/supplementaries-common.toml": "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
-        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225"
+        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/supplementaries-generation/identities.json": "0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d",
+        "evidence/item-8/sources/supplementaries-road-sign-callback/identities.json": "a6a99e646dd7b65793defda3168306b20e1a70a901b7d37e024d4aea3f6f5194"
+      },
+      "attributes": {
+        "dimension": {
+          "biome_compatible": [
+            "minecraft:overworld"
+          ],
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "basis": "Resolved root biome set intersects captured Overworld source. RoadSignStructure additionally requires possible-biome overlap with its destination-structure biome cache. Preserved full start proves Overworld eligibility in the frozen stack, not guaranteed occurrence at every eligible site."
+        },
+        "approximate_footprint": {
+          "observed_piece_envelope_xz_blocks": [
+            7,
+            7
+          ],
+          "feature_ground_patch_xz_blocks": [
+            5,
+            5
+          ],
+          "basis": "world-bounds indexes374/754 are repeated full-chunk observations of the same start, not independent sites;407/787 are one other planned-only start. All piece envelopes are7x7x7. RoadSignFeature.place writes its centered ground patch over X/Z -2..2 excluding corners. Piece reservation is not occupied footprint."
+        },
+        "approximate_vertical_size": {
+          "observed_piece_envelope_y_blocks": 7,
+          "source_feature_working_height_blocks": 6,
+          "basis": "Template is a7x7x7 envelope with only two jigsaw blocks. Feature.place uses base=feature origin below1, writes ground at base-1/base and temporary/post/generator positions through base+4, six levels. Callback replaces the generator and adds nearby signs/lighting. Neither box height nor successful full-chunk generation proves callback completion or exposed height."
+        },
+        "intended_hostility": {
+          "value": "Navigation landmark without authored enemies",
+          "basis": "RoadSignFeature and its callback place ground, post, sign/lighting or notice board. No mob or spawner writer exists in this path. Fallback book text about monsters does not create or verify monsters."
+        },
+        "mob_source": {
+          "authored": "No saved template entities or feature/callback entity-spawn path.",
+          "natural": "Root spawn_overrides is empty. Ordinary biome and world spawning remains conditional."
+        },
+        "loot_table_source": {
+          "packaged_tables": [],
+          "fixed_payload": "RoadSignFeature.applyPostProcess empty-destination branch creates a writable book with text nothing here but monsters followed by newlines and installs it on a notice board at callback position below2. This is generated fixed content, not a loot-table reference or proof of recovery.",
+          "navigation": "Nonempty results produce pointing signs; distance text is enabled in the frozen config. Early-exit lookup is true, so nearest-destination semantics are not guaranteed.",
+          "basis": "Preserved template, configured feature, RoadSignFeature.applyPostProcess and BlockGeneratorBlockTile.tick."
+        },
+        "generated_spawners": {
+          "value": "None",
+          "basis": "No ordinary/trial spawner in the template, configured feature or callback. BLOCK_GENERATOR is a deferred sign-construction helper, not a mob spawner."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "None identified in the retained complete sign-generation path.",
+          "natural": "Conditional ordinary world spawning only; no structure-specific override. Book wording is authored flavor text, not enemy evidence."
+        },
+        "visual_discoverability": {
+          "source_form": "Small ground patch with a wood/stone post, directional signs and optional lantern/candle details. Empty destination result creates a notice board instead.",
+          "basis": "Configured spruce post/oak sign and RoadSignFeature callback. Surface placement supports nearby navigation cues; no measured sight distance or pacing. A full start does not prove a populated sign or successful lookup."
+        },
+        "underground_surface_classification": {
+          "value": "Surface landmark on a locally near-level, non-fluid terrain sample.",
+          "basis": "RoadSignStructure.getSuitablePosition samples WORLD_SURFACE_WG at chunk center and four +/-2 corners; rejects center heights outside40..105 or below sea level, fluid corner samples and sampled height spread greater than1, then uses Math.round(sum/5.0f) plus1. The strongholds step label does not mean underground.",
+          "lifecycle": "Feature saves a BlockGeneratorBlockTile configuration. Its asynchronous destination lookup must finish before postprocessing; missing config or failed lookup can remove the generator. That state is not measured by the retained structure-piece bounds."
+        }
       }
     },
     {

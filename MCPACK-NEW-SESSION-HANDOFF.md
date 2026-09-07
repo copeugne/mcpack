@@ -6,6 +6,51 @@
 
 ### Continuation update - 2026-09-07
 
+#### Galleon encounter and reward assessment after e50b4b68
+
+Six attributes finish Galleon using existing template, feature, Moonlight,
+processor and urn evidence. Distinguish regional spawn lists, direct entities,
+boat passengers, urn break creatures and ordinary block spawners. Nine possible
+boat attempts stop at first success; ContainerEntity guards table assignment.
+Thirteen focused tests pass. No capture or tooling addition. Four completed
+placement/geometry attributes remain unchanged. Registry272/410, nonregistry40/40,
+total312/450 assessed,138 remaining. Both Supplementaries registry families
+are assessed. Retire them absent contradiction. Quantify the next provider
+batch before editing. Final canonical integration, acceptance, verified backup/
+history preparation and PR review/main delivery remain open. Inventory SHA-256:
+ce61f4dd05b1e4c70b2b3fab5fc62b1ee7a9a5cad6f6765c908e9859c0953983.
+
+#### Galleon placement and geometry after 00a1662b
+
+Four attributes integrate source geometry19x37x47, dimension compatibility
+and sea-level placement. Seventeen templates inspected; compatible interior
+components fit the main envelope. Back02 connector-name mismatch is preserved
+in sources/supplementaries-generation/README.md. No retained start exists and
+no runtime capture/tool was added. Six attributes remain for Galleon, so total
+stays311/450 assessed,139 remaining. Next: integrate saved ravager/iron golem,
+feature mobs and boats, Moonlight spawn boxes, fixed/table rewards and urn
+break creatures using existing sources. Existing urn-reward-behavior/README.md
+already resolves treasure-urn reward and break-spawn logic; reuse it. Do not
+confuse four markers with spawner blocks or boat attempts with spawn counts.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+e330e017db912e263e9c9750835ca86c4605a3fa43cef9483a738ee848a7e4a3.
+
+#### Supplementaries Road Sign assessed after dcf03749
+
+Ten attributes integrate one root/trigger template and the retained feature/
+callback. Existing full and planned-only starts are distinguished;7x7x7 is
+piece reservation, while source construction has a5x5 ground patch and six
+working levels. Empty destination callback creates a fixed notice-board book,
+not monsters or table loot. Fifteen focused tests pass. No new capture/tool.
+Registry271/410, nonregistry40/40, total311/450 assessed,139 remaining.
+Galleon remains: one root,17 templates,10 attributes, custom spawn boxes,
+feature-spawned boats/passengers and processor paths. Inspect existing evidence
+before extending investigation. Derivation: sources/supplementaries-generation/README.md.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+99be3abcf4eb55f3d1864658a58cabd5a465307743cf37e5c0e5acf659d53303.
+
 #### Four Creating Space families assessed after 4fbcfd08
 
 Thirty-five attributes finish four roots/seven traced templates. Mars fallback
