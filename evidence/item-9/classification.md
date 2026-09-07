@@ -319,3 +319,139 @@ comparison groups are provisional concerns, not removal decisions.
 | idas:winter_wagon | C | H | - | camp | Furnished trader-oriented wagon supports civilian staging venue. | No movable-vehicle or service operation inferred. |
 | idas:witches_treestump | T1 | M | - | house | Stump site has potential hostile witch source with separate cats. | Effective witch population unmeasured. |
 | idas:wizard_tower | T2 | M | - | tower | Connected lower and upper tower assembly carries variant-specific hostile sources. | Red differs from purple/yellow wraith composition; no player magic progression. |
+| mes:astral_hideaway | C | M | - | house | Furnished bed-bearing End shelter supports refuge utility without authored enemies. | Safety and services unmeasured. |
+| mes:astral_meteorite | T0 | H | D | nature | Low obsidian/glass formation supplies landmark form with environmental fire. | Fire is not an authored mob encounter. |
+| mes:ender_spire | T0 | H | D | tower | Narrow End-stone/purpur spire lacks authored mob encounter. | standard |
+| mes:enderbloom_grove | T0 | H | D | nature | Colored illuminated composition supplies environmental exploration. | No tested special interaction inferred. |
+| mes:enderkeep_courtyard | T1 | M | - | outpost | Broad courtyard localizes authored shulkers and loot. | Interior traversal could support T2 after play evidence. |
+| mes:enderpin_spikes | T0 | H | D | statue | Thin lit purpur spikes provide ambient ornament. | standard |
+| mes:enderskog | T0 | H | D | nature | Low amethyst/purpur candle composition supplies ambient discovery. | standard |
+| mes:enderwatch_tower | T2 | M | - | tower | Tall enclosed tower combines shulkers with vertical access. | Usable internal traversal and difficulty unmeasured. |
+| mes:endscraps | T0 | H | D | ruin | Low End rubble and vegetation contain incidental caches without authored encounter. | standard |
+| mes:manuscript_shrine | T0 | H | D | shrine | Compact lectern/glass shrine supplies incidental landmark rather than proved challenge. | Lectern does not prove readable book or active objective. |
+| mes:mega_ship | T3 | M | - | ship | Large attached ship assemblies combine authored/spawner/natural hostile sources and aerial access. | Wrecks and material variants differ in access and inhabitants. |
+| mes:monolith | T0 | M | D,S | tower,statue | Tall loot-bearing monolith lacks authored combat sources. | Bedrock and rare materials affect access/salvage; not a proved mechanic. |
+| mes:mystical_archway | T0 | H | D,S,O | portal | Large archway lacks established gameplay function despite barrier/reinforced-block content. | Passability and noncombat utility untested. |
+| mes:mythic_garden | T0 | H | D | nature | Planted lit garden with incidental chests supplies environmental discovery. | standard |
+| mes:phantom_citadel | T2 | M | - | dungeon-fort | Elevated broad citadel combines phantom/enderman spawners and enclosed exploration. | Approach may raise T3 demands; realized encounter spread unmeasured. |
+| mes:placid_prairie | T0 | H | D | nature | Small elevated grass/vine forms with chests provide ambient discovery. | Height creates access cost without proving dungeon objective. |
+| mes:ruined_pillar | T1 | M | D | ruin,statue | Low fragments include suspicious sand supporting local archaeology interaction. | Effective reward and excavation significance unmeasured. |
+| mes:starlight_voyager | T2 | M | - | ship | Elevated elongated ship combines shulkers and enclosed loot access. | Aerial approach may support T3; not a functional vehicle. |
+| mns:arena | T2 | M | - | arena,dungeon-trial | Walled court/galleries and entrance structures combine equipped mobs and ordinary/trial spawners. | Small/Large variants can differ between local fight and dungeon traversal. |
+| mns:bridge | T0 | H | - | bridge | Low bridge designs supply potential crossing utility without selected authored enemies. | Actual terrain usefulness unmeasured. |
+| mns:circle_ruin | T1 | H | - | ruin,arena | Open circular ruins localize variant-specific hostile spawner encounters. | Blackstone and Nether-brick inhabitants differ. |
+| mns:copper_tower | T0 | H | D | tower,cache | Squat stepped chest-bearing mound lacks authored enemies or spawners. | Tower name does not establish vertical dungeon. |
+| mns:crimson_forge | C | M | - | worksite | Open-sided workshop and blast furnaces support industrial staging design. | No tested production operation. |
+| mns:dragon_arena | T2 | M | - | arena,dungeon-trial | Sculptural dragon above platform/enclosed spaces carries encounter receivers and spawner content. | Depicted dragon is not evidence of world boss or T4 objective. |
+| mns:giant_skull | T1 | M | D | statue | Skeletal-head landmark localizes wither-skeleton spawner at its base. | Large sculpture is not equivalent to internal gameplay volume. |
+| mns:grave_yard | T1 | H | - | ruin | Bounded cemetery localizes wither-skeleton spawner encounter. | standard |
+| mns:large_house_1 | T2 | M | - | house,tower | Long hall and tall end tower contain several hostile spawner types. | Enemy inputs do not establish simultaneous population. |
+| mns:lava_pool | T0 | M | D | nature,cache | Rimmed lava/material deposit provides environmental discovery without authored mobs. | Lava and resource recovery may demand deliberate interaction. |
+| mns:medium_fungus | T0 | H | D | nature | Upright fungus alternatives supply ambient vegetation form. | standard |
+| mns:medium_house | T1 | M | - | house | Compact gabled houses contain piglin/brute and spawner sources. | Five unassigned spawners prevent complete encounter attribution. |
+| mns:mega_fortress | T3 | M | - | dungeon-fort | Branching upper passages and towers combine equipped mobs and spawner/natural hostility. | Actual traversal and selected encounter composition unmeasured. |
+| mns:nether_tower | C | M | S | tower,worksite | Multilevel tower contains workshop/storage furnishings without authored encounter. | Tall dungeon-like form may chiefly serve T0 exploration rather than useful staging. |
+| mns:nether_wart_farm | C | M | - | worksite | Roofed wart cultivation installation supports resource/staging purpose. | Production throughput and operation untested. |
+| mns:ruin_fragments | T0 | H | D | ruin | Scattered pillars/walls/rubble have no authored mob or spawner source. | Lava/fire hazards vary. |
+| mns:ruined_portal | T0 | H | D | portal,ruin | Broken overgrown obsidian frame supplies ambient exploration. | Working portal not established. |
+| mns:sandy_skull | T0 | H | D | statue | Compact skull and incidental chest lack authored encounter source. | standard |
+| mns:shrine | T0 | H | D | shrine | Low gold-bearing lit marker supplies incidental salvage landmark. | Material value unmeasured. |
+| mns:smoking_shrine | T0 | M | D | shrine | Raised lava/campfire ring supplies environmental landmark without authored enemies. | Contact/fire hazard remains. |
+| mns:soul_fire | T0 | H | D | shrine | Open masonry surrounds environmental soul fire rather than a mob encounter. | standard |
+| mns:sword | T0 | H | D | statue | Monumental sword sculpture has no selected authored encounter. | Depicted weapon is not obtainable weapon evidence. |
+| mns:train | T0 | H | D | worksite | Train sculpture and track-like base provide industrial scenery. | Functional transport not established. |
+| mns:warped_dome | T0 | M | D,S | house | Ribbed shell lacks authored mob or spawner encounter. | Cache/exploration utility may remain. |
+| mns:warped_house | C | M | - | house | Compact framed house alternatives support domestic utility design. | Conditional piece-bound piglin spawning can add danger. |
+| mns:warped_pool | T0 | M | D | nature,cache | Vegetated opening and lower lava/chest cavity supply incidental discovery. | Lava access can create meaningful local challenge. |
+| mns:well | T0 | M | D | shrine | Roofed well pavilions and lower shafts lack authored mob encounters. | Medium variants have hidden contents and environmental hazards. |
+| mss:arena | T3 | M | - | arena,dungeon-trial | Upper arena joins extensive lower/side chambers with bogged trials and vault content. | Realized traversal and keyed reward operation unmeasured. |
+| mss:calcite_house | C | M | - | house | Bed-bearing roofed dwelling on planted island supports refuge utility. | Air access is a constraint, not itself hostile content. |
+| mss:castle_ruin | T1 | M | - | ruin | Low island ruins localize cave-spider encounter sources. | Island volume does not prove extended dungeon traversal. |
+| mss:castle_tower | T1 | M | - | tower,outpost | Compact fortified tower localizes upper skeleton spawner. | Vertical access may warrant T2 after observation. |
+| mss:desert_pyramid | T2 | M | - | dungeon-tomb | Connected pyramid top/side assembly contains zombie/husk encounters. | Island support is not occupied dungeon area. |
+| mss:desert_well | T0 | H | D | shrine | Small well atop dry island lacks authored mob encounter. | Aerial approach does not establish encounter purpose. |
+| mss:diorite_house | C | H | - | house | Developed residential island has saved villagers and no authored hostile source. | Lower island mass is not interior gameplay volume. |
+| mss:jungle | T2 | M | - | dungeon-fort | Furnished elevated complex combines multiple brute/witch spawners and loaded dispensers. | Foliage and island mass can exceed playable interior. |
+| mss:large_tower | T3 | M | - | tower | Developed base, platforms and upper tower distribute hostile/harming-dispenser sources. | T2 boundary remains without measured access and traversal. |
+| mss:leaf_hollow | T2 | M | - | dungeon-fort | Extended leafy mound and connected side rooms carry pillager encounters. | Actual enemy spread unmeasured. |
+| mss:mangrove | T2 | M | - | house | Furnished tapered-island interior carries multiple witch spawners. | Narrow realized layout may play as T1. |
+| mss:muddy_water_hole | T2 | M | - | dungeon-tomb | Chambered bowl, side and upper sections contain drowned-spawner encounter. | Additional empty entity objects leave some spawners unattributed. |
+| mss:mushroom | T1 | M | - | house,nature | Low furnished mushroom island has localized illager/vex source encounters. | Larger actual traversal could support T2. |
+| mss:nether_portal | T1 | M | - | portal | Open island portal monument carries piglin-brute encounter source. | Overworld motif does not establish a usable portal or T4 gate. |
+| mss:palm_island | T0 | H | D | nature | Small palm island and chest focal form lack authored encounter. | Signs do not prove quest or transport function. |
+| mss:pond | T0 | H | D | nature | Frozen/temperate pond islands provide environmental exploration. | Cultivated patch and climate vary. |
+| mss:red_sand | T2 | M | - | dungeon-tomb | Arid developed island has terraces/rooms and husk/phantom encounters. | Three unassigned spawners preserve source ambiguity. |
+| mss:river | T0 | H | D | nature | Birch/cherry river-island designs supply environmental variety. | Water form does not establish functional transportation route. |
+| mss:small_deepslate_house | T1 | M | - | house | Low dwelling localizes pillager encounter sources. | Large surrounding island is not dungeon volume. |
+| mss:small_oak_house | C | M | - | house | Sleeping/cooking dwelling supports refuge on narrow island. | Aerial accessibility and utility unmeasured. |
+| mss:small_tower | T1 | M | - | tower,ruin | Narrow vertical ruin contains local witch/wither-skeleton spawner encounter. | Descending remnants are same template, not extra dungeons. |
+| mss:spruce_huts | C | M | - | house | Paired huts on shared platform support temporary habitation without authored enemies. | No staffed services established. |
+| mss:taiga | T2 | M | - | dungeon-fort | Furnished mound/interiors within conifer island carry several hostile spawner types. | Trees and island bulk are not all gameplay. |
+| mss:tree | T0 | H | D | nature | Tree/island alternatives provide ambient elevated landscapes. | Source heights do not establish discovery distances. |
+| mss:volcano | T3 | M | - | dungeon-fort | Connected crater-like encounter spaces contain multiple hostile spawner and dispenser sources. | Source counts are not realized simultaneous population. |
+| mss:white_house | C | H | - | house | Planted residential platform has saved villagers without authored hostile source. | Attached lower island mass does not add encounters. |
+| mvs:animal_hut | C | M | - | house | Tiny open-front shelter design supports animal/refuge utility. | Name alone does not establish generated animals. |
+| mvs:azelea_house | C | M | - | house | Planted gabled residence has optional villagers and no authored enemy source. | Inhabitants are conditional. |
+| mvs:barn | C | M | - | worksite,house | Furnished storage barn supports agricultural staging. | No operating production loop claimed. |
+| mvs:beach_bar | C | M | - | house | Barrels, brewing/campfire furnishings support civilian venue purpose. | Staffed services untested. |
+| mvs:bee_dome | C | M | - | worksite | Hive-containing dome supports beekeeping utility. | Saved hive bees and defensive interactions remain conditional. |
+| mvs:bench | T0 | H | D | camp | Low seating forms are ambient resting landmarks without authored encounters. | Brief resting utility does not make a settlement. |
+| mvs:campsite | C | M | - | camp | Fire-camp and furnished campsite alternatives support temporary staging. | Small forms may function mainly as T0. |
+| mvs:cart | C | M | - | camp | Cargo/trader cart designs support provisional supply venue purpose. | Saved traders vary; static cart is not functioning transport. |
+| mvs:cartographer_tower | C | M | - | tower,house | Furnished tower with optional villager supports civilian venue. | No map trade or staffed service guarantee. |
+| mvs:castle_ruins | T0 | M | D,S | ruin,tower | Broken castle masonry and containers lack authored encounter sources. | Vertical cache exploration may be meaningful. |
+| mvs:cathedral | T3 | M | - | dungeon-tomb | Furnished cathedral joins branching hostile lower corridors. | Surface church form does not reveal full underground play. |
+| mvs:crimson_enchanting_table | C | M | - | worksite | Actual enchanting-table installation supports explicit utility purpose. | Enchanting interaction and access untested. |
+| mvs:crystal | T0 | H | D | nature | Tall crystal with lower loot component supplies landmark/cache discovery. | No special crystal mechanic established. |
+| mvs:dead_tree | T0 | H | D | nature | Bare tree/trunk alternatives are ambient landscape forms. | standard |
+| mvs:deepslate_house | C | M | - | house | Broad planted residence has optional villagers without authored enemy sources. | Inhabitants and practical services conditional. |
+| mvs:desert_house | C | M | - | house | Enclosed dwelling/storage design supports shelter utility. | No staffed services established. |
+| mvs:desert_pump | T0 | H | D | worksite | Decorative pump form and signs supply industrial scenery. | Functioning pump not established. |
+| mvs:duck | T0 | H | D | statue | Duck sculpture is an ornament, not a generated animal. | standard |
+| mvs:end_scraps | T0 | H | D | ruin | Low scrap/container layouts provide incidental End exploration. | standard |
+| mvs:floating_islands | T0 | M | D | nature | Elevated landscape alternatives chiefly provide environmental discovery. | House variant has optional villager and alternate C purpose. |
+| mvs:flower_hole | C | M | - | house | Recessed built dwelling under planting has optional inhabitants. | Entrances and service utility unmeasured. |
+| mvs:gallows | T0 | H | D | statue | Gallows/storage landmark lacks authored enemy source. | Depiction does not establish execution mechanic. |
+| mvs:harvest_heap | T0 | H | D | worksite | Crop/hay heaps and containers supply incidental agricultural scenery. | Resource value unmeasured. |
+| mvs:horse_pen | C | M | - | worksite | Pen infrastructure supports provisional livestock/staging purpose. | Name does not prove generated horses. |
+| mvs:house | C | M | - | house | Furnished broad residence supports habitation with optional villagers. | Inhabitants and services conditional. |
+| mvs:igloo | C | M | - | house | Snow dwellings establish primary shelter design with optional villagers. | Small Igloo has an authored stray-spawner source. |
+| mvs:lamp_chest | T0 | H | - | cache | Low lamp/container arrangement supplies incidental cache discovery. | standard |
+| mvs:lantern | T0 | H | D | statue | Slender light installations provide ambient navigation cues. | Actual visibility unmeasured. |
+| mvs:large_mushroom | T0 | H | D | nature | Canopy and stem form provide environmental landmark without authored encounter. | standard |
+| mvs:large_warped_tower | T2 | M | - | tower | Enclosed tall tower contains many skeleton-spawner inputs. | Two additional spawners lack mob IDs; source counts are not realized population. |
+| mvs:lecturn_garden | T0 | M | D | shrine | Small garden and book-bearing lectern supply local discovery. | Book content does not establish an active quest here. |
+| mvs:living_tree | T0 | H | D | nature | Living tree alternatives supply landscape variety and occasional containers. | Big Oak loot does not generalize to every variant. |
+| mvs:log_pile | T0 | H | D | worksite | Compact wood stacks provide incidental resource scenery. | Salvage value unmeasured. |
+| mvs:log_ruin | T0 | M | D | ruin,house | Ruined timber with beds/containers supports abandoned-site discovery. | Potential refuge does not establish inhabited settlement. |
+| mvs:mine_with_campsite | T1 | M | - | dungeon-mine,camp | Camp entrance and lower mining component localize skeleton-spawner encounter. | Civilian inhabitants may coexist. |
+| mvs:mineshaft | T2 | M | S | dungeon-mine | Branching corridors, junctions and stairs form hostile modular mining network. | Repeated corridor archetype may be shallow; civilians can coexist. |
+| mvs:mushroom_statue | T0 | H | D | statue | Narrow mushroom sculpture supplies decorative exploration. | standard |
+| mvs:nether_devil | T0 | H | D | statue | Horned masonry/fire figure is scenery rather than live devil encounter. | Environmental fire remains hazardous. |
+| mvs:ocean_tower | T2 | M | - | tower | Developed cylindrical tower combines aquatic hostile sources and enclosed access. | Ocean-floor placement does not guarantee above-water entrance. |
+| mvs:out_house | C | M | - | house | Compact roofed shelter with lower loot component supports refuge design. | Practical utility untested. |
+| mvs:paths | T0 | H | - | bridge | Landscaped linear routes support local navigation/scenery. | Templates do not establish a connected transport network. |
+| mvs:pond | T0 | H | D | nature | Landscaped pond variants supply environmental discovery with incidental containers. | standard |
+| mvs:railway | T0 | H | D | worksite | Low railway/cache feature depicts transport infrastructure without operating behavior. | Functional connection not established. |
+| mvs:rock | T0 | H | D | nature | Boulder/rock alternatives supply natural-looking ambient landmarks. | standard |
+| mvs:ruined_beacon | T0 | H | D | ruin | Beacon-shaped ruin lacks an actual beacon block. | No active beam or power inferred. |
+| mvs:shed | C | M | - | house,worksite | Compact furnished outbuilding supports storage/worksite utility. | Services untested. |
+| mvs:small_pillager_tower | T1 | M | - | tower,outpost | Narrow open tower localizes pillager encounter. | Platforms add access effort without proving extended dungeon. |
+| mvs:small_ruin | T0 | H | D | ruin | Small upright chest-bearing masonry remnant is ambient exploration. | standard |
+| mvs:small_ship | C | M | - | ship | Compact furnished hull has optional villager and supply-venue potential. | Uninhabited variant may function mainly as T0. |
+| mvs:small_swamp_house | C | M | - | house | Raised cabin supplies provisional refuge design. | Water access and safe shelter untested. |
+| mvs:snowy_fossil | T0 | H | D | nature | Snow fossil form supplies scenery without authored enemy source. | standard |
+| mvs:stall | C | M | - | camp | Canopy and cargo/storage design supports provisional market venue. | No staffed trade guaranteed. |
+| mvs:statue_ruins | T0 | H | D | ruin,statue | Low broken statue and barrel supply incidental exploration. | standard |
+| mvs:stone_fountain | T0 | H | D | shrine | Masonry water basin and central form provide ambient landmark. | standard |
+| mvs:stone_pillars | T0 | H | D | statue,ruin | Pillar group with chest/lectern supports landmark discovery. | No readable lead or quest inferred. |
+| mvs:sunzi_gate | T0 | H | D | shrine | Broad-roofed framed passage supplies architectural landmark form. | Furnishings do not establish an encounter or settlement. |
+| mvs:tall_house | C | M | - | house,tower | Raised furnished residence supports habitation with optional villagers. | Inhabitants and services conditional. |
+| mvs:tiered_tower | T2 | M | - | tower | Large tiered tower has jungle-variant skeleton-spawner sources. | Red variant lacks authored hostility and may serve T0. |
+| mvs:tree_monument | T0 | H | D | shrine,nature | Landscaped court and broken masonry border supply ornamental exploration. | standard |
+| mvs:villager_statue | T0 | H | D | statue | Weathered stone figure depicts a villager without creating one. | standard |
+| mvs:warped_house | C | M | - | house | Broad furnished roofed house supports provisional shelter/storage use. | No operating services or safety guaranteed. |
+| mvs:well | T0 | M | D | shrine | Well variants supply local landmarks with concealed lower containers. | Larger rare/tower forms vary; no observed rarity claimed. |
+| mvs:wheat_grain_bin | C | M | - | worksite | Storage bin and hopper support agricultural utility design. | Operating production loop untested. |
+| mvs:windmill | T0 | H | D | worksite | Small sail-like rotor depiction supplies industrial landmark form. | Rotation and power output not demonstrated. |
+| mvs:wooden_wheat_farm | C | M | - | worksite | Fenced crops, composters and optional villagers support cultivation purpose. | Production and effective inhabitants unmeasured. |
