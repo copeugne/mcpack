@@ -66,7 +66,9 @@ def parse_args() -> argparse.Namespace:
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
-                 "--adora-monuments", "--adora-ocean", "--adora-houses"):
+                 "--adora-monuments", "--adora-ocean", "--adora-houses", "--idas-related",
+                 "--idas-variants", "--idas-worksites", "--idas-buildings",
+                 "--idas-tower-nexus", "--idas-castle-farm", "--idas-small-designs"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -93,12 +95,26 @@ def main() -> None:
                         or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
-                    if cast("bool", args.terralith_buildings) else archive_name)
+                    if cast("bool", args.terralith_buildings) else
+                    "idas-1.13.7+1.21.1-neoforge.jar"
+                    if (cast("bool", args.idas_related) or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites)
+                        or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs))
+                    else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                   or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
-                        or cast("bool", args.adora_houses))
+                        or cast("bool", args.adora_houses) or cast("bool", args.idas_related)
+                  or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites)
+                        or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -215,8 +231,70 @@ def main() -> None:
                         or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses))
-                     else namespace)
+                     else "idas" if (cast("bool", args.idas_related)
+                                     or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites)
+                        or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs)) else namespace)
         sheets = {
+            "houses": ["abandonedhouse/abandonedhouse", "abandonedhouse/abandonedhouse2",
+                       "cottage/cottage", "cottage/cottage2"],
+            "brickhouse": ["brickhouse/brickhouse", "brickhouse/brickhouse_windmill",
+                           "brickhouse/brickhouse_path"],
+            "camp_guild": ["pillager_camp/pillager_camp2", "redhorn_guild/redhorn_guild"],
+            "ruins_stump": ["ruined_church/ruined_church", "ruined_fort/ruined_fort",
+                            "witches_treestump/witches_treestump"],
+        } if cast("bool", args.idas_small_designs) else {
+            "castle_main": [f"castle/castle{i}" for i in (1, 2, 3)],
+            "castle_bottom": [f"castle/castle{i}_bottom" for i in (1, 2, 3)],
+            "farmhouse": ["farmhouse/farmhouse", "farmhouse/abandoned_farmhouse",
+                          "farmhouse/farmhouse_path"],
+        } if cast("bool", args.idas_castle_farm) else {
+            "wizard_towers": [f"wizard_tower/{n}wizardtower1" for n in
+                              ("purple", "red", "yellow")],
+            "wizard_bottoms": [f"wizard_tower/{n}wizardtower2" for n in
+                               ("purple", "red", "yellow")],
+            "nexus": [f"nexus/nexus{n}" for n in
+                      ("", "_blue", "_red", "_white", "_prismarine", "_sculk")],
+        } if cast("bool", args.idas_tower_nexus) else {
+            "lighthouse_fishing": ["abandoned_lighthouse/abandoned_lighthouse",
+                                   "fishermans_lodge/fishermans_lodge"],
+            "woodland": ["hermits_hollow/hermits_hollow", "hunters_cabin/hunters_cabin"],
+            "workshops": ["botanist/botanist", "mason_house/mason_house"],
+            "shops": ["pumpkin_cafe/pumpkin_cafe", "wacky_wares/wacky_wares_general_store"],
+        } if cast("bool", args.idas_buildings) else {
+            "dig_site": ["dig_site/dig_site", "dig_site/dig_site_bottom",
+                         "dig_site/dig_site_stables", "dig_site/dig_site_stables_bottom"],
+            "desert_dig": ["dig_site/dig_site_desert", "dig_site/dig_site_desert_bottom"],
+            "worksites": ["nether_pump_camp/nether_pump_camp", "washing_camp/washing_camp",
+                          "the_log/the_log"],
+            "transport": ["train_ruins/train_ruins", "winter_wagon/winter_wagon"],
+        } if cast("bool", args.idas_worksites) else {
+            "statues": [f"ancient_statue/ancient_statue_{n}" for n in
+                        ("desert", "jungle", "plains")],
+            "dens": [f"animal_den/{n}_den" for n in ("wolf", "polar_bear", "foxhound")],
+            "desert_camps": [f"desert_camp/desert_camp{n}" for n in
+                             ("", "_bygwindswept", "_orange", "_red")],
+            "desert_markets": [f"desert_market/desert_market{n}" for n in
+                               ("", "_orange", "_red")],
+            "lumber_vanilla": [f"lumber_camp/lumber_camp_{n}" for n in
+                               ("acacia", "birch", "dark_oak", "jungle", "oak", "spruce")],
+            "lumber_modded": [f"lumber_camp/lumber_camp_{n}" for n in
+                              ("bopmahogany", "bopredwood", "bygmahogany", "bygredwood")],
+        } if cast("bool", args.idas_variants) else {
+            "portals": ["ancient_portal/ancient_portal1", "ancient_portal/ancient_portal2",
+                        "ancient_portal/nether_ancient_portal1",
+                        "ancient_portal/nether_ancient_portal2"],
+            "camps": ["underground_camp/underground_camp1",
+                      "underground_camp/underground_camp2",
+                      "underground_camp/underground_camp_deep1",
+                      "underground_camp/underground_camp_deep2"],
+            "ships": ["sunken_ship/sunken_ship", "sunken_ship/sunken_ship2",
+                      "sunken_ship/sunken_ship_coral", "sunken_ship/sunken_ship_ruins1",
+                      "sunken_ship/sunken_ship_ruins2"],
+        } if cast("bool", args.idas_related) else {
             "acacia_bamboo": ["acacia_house_medium_1", "acacia_house_medium_2",
                               "acacia_house_medium_3", "acacia_house_small_1",
                               "acacia_house_small_2", "bamboo_house_small_1",
@@ -287,10 +365,29 @@ def main() -> None:
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
-                pieces.append(diagram(raw, title, (20 + index % 2 * 300,
-                                      35 + index // 2 * 300), exposed=compressed,
+                pieces.append(diagram(raw, title, (
+                    (100 if ((cast("bool", args.idas_castle_farm)
+                              and name == "farmhouse/farmhouse_path")
+                             or (cast("bool", args.idas_small_designs)
+                                 and name == "brickhouse/brickhouse_path")) else
+                     50 if (cast("bool", args.idas_worksites)
+                           or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs)) else 20) + index % 2 * 300,
+                    35 + index // 2 * (400 if (cast("bool", args.idas_worksites)
+                            or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs)) else 300)),
+                                      exposed=compressed,
                                       omit_water=cast("bool", args.adora_ocean)))
-            height = ((len(names) + 1) // 2) * 300
+            height = ((len(names) + 1) // 2) * (
+                400 if (cast("bool", args.idas_worksites)
+                            or cast("bool", args.idas_buildings)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)
+                        or cast("bool", args.idas_small_designs)) else 300)
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',

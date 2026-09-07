@@ -9778,3 +9778,560 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-overworld-houses-r1.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
 ```
+# IDAS portal, camp and ship relationship closure (2026-09-07)
+
+Decision 6c8adbbc resolves ancient_portal, underground_camp, sunken_ship and
+sunken_ship/sunken_ship_ruins using 1506ccef comparisons and full source data.
+Portal halves are assembly components with corresponding dimension variants.
+Camps retain paired workstation/material alternatives. Long ship hull variants
+remain distinct from detached wreckage. Different processors, authored spawner
+data, optional entity references, loot and placement rules remain explicit.
+The ordinary ship's second alternative has an empty processor while the first
+uses the spawner randomizer, so raw spawner contents are not a uniform runtime claim.
+
+The focused IDAS source-binding case and scoped code checks pass. Definitions,
+root assignments and variants are unchanged. Two fresh inventory runs match
+exactly; only the four grouping decisions and input hash change. All 887 roots
+remain covered once in 423 working groups. Canonical-note backlog: 55, all IDAS.
+Required attributes, 33 nonregistry contributions and final validation/review/main
+delivery remain open.
+
+Inventory SHA-256:
+56f6f7f6eae61fd676bce27a576d6a7be2ba90f8317bc30bffda2bd22996d308.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-related-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-related-r2.json
+cmp evidence/raw/item8/inventory-idas-related-r1.json evidence/raw/item8/inventory-idas-related-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-related-r2.json
+```
+# IDAS statue, den and camp relationship closure (2026-09-07)
+
+Decision 02a5622a resolves five records against the complete 84aefdf8 comparisons
+and preserved source contents. Desert, jungle and plains statues have separate
+forms and remain separate designs. Den, desert-camp, market and lumber-camp
+material/content changes remain variants. All exact root definitions and variants
+are preserved. Container contents are not inferred empty from absent loot tables;
+machinery and optional entities are not claimed operational merely from templates.
+
+The focused IDAS source-binding case and scoped code checks pass. Two fresh
+inventory runs match byte-for-byte. Only the five records, two separated statue
+designs and the decision hash change. All 887 roots remain covered once in 425
+working groups. Canonical-note backlog: 50, all IDAS. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Inventory SHA-256:
+42a0c89deca10eafef9e6fdd8096ff3be3b5d7fe309a9b62c94dd7aaa9779017.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-variants-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-variants-r2.json
+cmp evidence/raw/item8/inventory-idas-variants-r1.json evidence/raw/item8/inventory-idas-variants-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-variants-r2.json
+```
+# IDAS worksite and transport relationship closure (2026-09-07)
+
+Decision 862a41f9 resolves six records using corrected 0c67f005 views and complete
+contents/definitions. The desert excavation compound is separate from the roofed
+dig site and stable assembly; their pieces remain components. Nether pump camp,
+washing camp, furnished log, train wreck and winter wagon retain distinct forms
+and roles. Machinery, glue, seats, optional or nested entity references do not
+establish runtime operation, population or vehicle usability. The failed clipped
+views remain preserved and are superseded for layout inspection by the correction.
+
+The focused IDAS source-binding case and scoped code checks pass. Full original
+definitions and variants are unchanged. Two fresh inventory runs match exactly;
+changes are confined to the six records, separated desert dig site and decision
+hash. All 887 roots remain assigned once in 426 working groups. Canonical-note
+backlog: 44, all IDAS. Required attributes, 33 nonregistry contributions and final
+validation/review/main delivery remain open.
+
+Inventory SHA-256:
+44b9d0d026446f775b92208fa76ca08d3032fcec43c2e5cee6e17998a93518d7.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-worksites-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-worksites-r2.json
+cmp evidence/raw/item8/inventory-idas-worksites-r1.json evidence/raw/item8/inventory-idas-worksites-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-worksites-r2.json
+```
+
+
+### IDAS eight-building inventory refresh
+
+Inventory incorporates decision commit 7f6ac0a9. Two fresh builds reproduce
+exactly, SHA-256 fa1649f975119509fdbf55153ca49fceec1203dfdc25ac2e671e8e274db49106.
+Only the eight grouping decisions and input identity change. Registry memberships,
+full variants and derived attributes remain unchanged: 887 roots in 426 working
+groups. Canonical-decision backlog is 36, all IDAS. This does not close effective
+attributes, 33 nonregistry contributions or final acceptance and delivery.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-buildings-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-buildings-r2.json
+cmp evidence/raw/item8/inventory-idas-buildings-r1.json evidence/raw/item8/inventory-idas-buildings-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-buildings-r2.json
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Use fresh output files. The focused IDAS case passes (77 other cases deselected);
+scoped Ruff and Basedpyright pass. Views are preserved at d62d6212.
+
+
+### Mines and pyramid assembly reconciliation
+
+Decision 3decfe2b uses the existing packaged JSON, templates and full pool traces
+for the 19-piece mines and 31-piece pyramid graphs. Those are reachable template
+counts, not guaranteed generated piece counts. Exact missing targets remain in
+both variants. The pyramid villager pool has a different ID from its connector's
+target; no substitution or baseline repair is accepted. Source graph topology
+and contents suffice for these component boundaries without another renderer.
+
+Four focused IDAS checks pass, with 77 unrelated cases deselected. Scoped Ruff
+and Basedpyright pass. Two fresh inventory builds agree exactly, SHA-256
+7d5486cf34bc0cb02594e9fffe3292f6b2d4c0df71ea84d6f0177d08ca6d7050.
+Only the two grouping decisions and input identity change. All 887 memberships,
+full variants, missing edges and derived attributes are preserved in 426 working
+groups. Canonical backlog: 34, all IDAS. Effective attributes, 33 nonregistry
+contributions and final validation/review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py tests/item8/test_idas_provider_scope.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-mines-pyramid-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+cmp evidence/raw/item8/inventory-idas-mines-pyramid-r1.json evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-mines-pyramid-r2.json
+```
+
+Use fresh output files. Generated placement and effective encounter behavior are
+not acceptance claims of this source-boundary decision.
+
+
+### Adaptive IDAS assembly refresh
+
+Decision 8a3b3ffd resolves enchanting-tower variants, intended manor components
+and the labyrinth chain using preserved template contents and pool graphs.
+Default-pool selections remain unchanged. The manor connector namespace mismatch
+is retained as a placement concern, with no baseline repair. Four focused IDAS
+checks and scoped Ruff/Basedpyright pass. Canonical backlog: 31, all IDAS.
+
+Two fresh builds agree exactly, SHA-256
+2cb58917226dc134dc26f25dc7c0dcd021b1cc25e716ce4ff76c8262a00e32bc.
+Only those three grouping decisions and the input hash change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py tests/item8/test_idas_provider_scope.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-adaptive-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-adaptive-r2.json
+cmp evidence/raw/item8/inventory-idas-adaptive-r1.json evidence/raw/item8/inventory-idas-adaptive-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-adaptive-r2.json
+```
+
+Use fresh output files. Source components do not prove successful assembly.
+
+
+### IDAS inns and pub inventory refresh
+
+Decision 9f0ac12d resolves Bearclaw inn, treetop tavern and Tudor pub component
+boundaries from existing connector and content evidence. The focused IDAS case
+and scoped Ruff/Basedpyright pass. Canonical backlog: 28, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+e6f82b249000774f06c04e58e2bb91b2e97e9eafedcc0dc111db6f540d60dfd8.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-inns-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-inns-r2.json
+cmp evidence/raw/item8/inventory-idas-inns-r1.json evidence/raw/item8/inventory-idas-inns-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-inns-r2.json
+```
+
+Use fresh output files. Source connectors and entity declarations are not claims
+of successful assembly or effective inhabitants.
+
+
+### Tinkers and tree assembly inventory refresh
+
+Decision 328a58ea distinguishes the citadel attachments, workshop chain and
+six-component tree assembly using existing contents and connectors. The focused
+IDAS case and scoped Ruff/Basedpyright pass. Canonical backlog: 25, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+d47972662edea9a498387fdb431a196ba8326c029b4c0ee77f56ebcf1108aa4f.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-tinkers-tree-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+cmp evidence/raw/item8/inventory-idas-tinkers-tree-r1.json evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+```
+
+Use fresh output files. Machinery operation and generated extents remain separate
+from this component-boundary decision.
+
+
+### Necromancer spire inventory refresh
+
+Decision 2551f9ac resolves the four spire components from existing connectors and
+contents. The focused IDAS case and scoped Ruff/Basedpyright pass. Canonical
+backlog: 24, all IDAS. Wizard tower and nexus alternatives remain open.
+Two fresh inventory builds agree exactly, SHA-256
+f3ec07fc3d3e79519db7f8ce748add7c232b7bf05ceaa2c5fb4a1a1e5f3e0bb6.
+Only the spire grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-spire-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-spire-r2.json
+cmp evidence/raw/item8/inventory-idas-spire-r1.json evidence/raw/item8/inventory-idas-spire-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-spire-r2.json
+```
+
+Use fresh output files. Successful placement and effective encounters remain
+separate from this component decision.
+
+
+### Wizard tower variant inventory refresh
+
+Decision d7f9f894 binds all three main/bottom pairs to b56b2e00 views and full
+contents. Preserve the red variant's spawner and loot differences. The focused
+IDAS case and scoped Ruff/Basedpyright pass. Canonical backlog: 23, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+f608eda3079b03b4a475f378966fed092421ec68f3a84312c584c1124d1d9373.
+Only the wizard-tower grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Nexus, effective attributes, nonregistry reconciliation and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-wizard-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-wizard-r2.json
+cmp evidence/raw/item8/inventory-idas-wizard-r1.json evidence/raw/item8/inventory-idas-wizard-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-wizard-r2.json
+```
+
+Use fresh output files. Variants retain their contents independently.
+
+
+### Collector museum inventory refresh
+
+Decision 8834f268 resolves the intended two-component museum and preserves
+borrowed loot references without family aliases. The focused IDAS case and scoped
+Ruff/Basedpyright pass. Canonical backlog: 22, all IDAS. Two fresh builds agree,
+SHA-256 59d2e4eda2cb2a474ec5fb0d88d4b6b31cf3fcc884a73fd54138412db410ee42.
+Only the museum grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Nexus, effective attributes, nonregistry reconciliation and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-museum-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-museum-r2.json
+cmp evidence/raw/item8/inventory-idas-museum-r1.json evidence/raw/item8/inventory-idas-museum-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-museum-r2.json
+```
+
+Use fresh output files. Source dimensions do not prove generated assembly bounds.
+
+
+### Vineyard, apothecary and beekeeper inventory refresh
+
+Decision 38f3cbea resolves three two-component assemblies using existing contents
+and connectors. The focused IDAS case and scoped Ruff/Basedpyright pass.
+Canonical backlog: 19, all IDAS. Two fresh builds agree exactly, SHA-256
+1ba58cee0390549ccc60cb5bf3c95cfd2037cad8bb57df70f1988ad69e160a87.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Farmhouse, nexus, effective attributes, nonregistry and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-abodes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-abodes-r2.json
+cmp evidence/raw/item8/inventory-idas-abodes-r1.json evidence/raw/item8/inventory-idas-abodes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-abodes-r2.json
+```
+
+Use fresh output files. Preserve missing entity IDs and stored container contents.
+
+
+### Bazaar and frozen crypt inventory refresh
+
+Decision 9f4bd417 resolves nine bazaar and two crypt components using existing
+contents and connectors. Focused IDAS and scoped Ruff/Basedpyright checks pass.
+Canonical backlog: 17, all IDAS. Two fresh builds agree exactly, SHA-256
+b9afbd4d9ba6db4152ac90e6c5cd61717629b6ece2a7bc67f0671eada8f18705.
+Only these two grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, nonregistry reconciliation and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-bazaar-crypt-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+cmp evidence/raw/item8/inventory-idas-bazaar-crypt-r1.json evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+```
+
+Use fresh output files. Nexus visual conversion completed successfully; its
+comparison does not yet close its decision.
+
+
+### Nexus alternative inventory refresh
+
+Decision 024dc7b3 binds all six alternatives to the completed comparison and
+preserves their contents and common processor declarations. Focused IDAS and
+scoped Ruff/Basedpyright checks pass. Canonical backlog: 16, all IDAS.
+Two fresh builds agree exactly, SHA-256
+168d5267004d6783a6ae21b7049444edb6c6e2de44258cf8ca021800ca9aceaa.
+Only the nexus grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-nexus-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-nexus-r2.json
+cmp evidence/raw/item8/inventory-idas-nexus-r1.json evidence/raw/item8/inventory-idas-nexus-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-nexus-r2.json
+```
+
+Use fresh output files. Raw spawner NBT is not effective processed spawn behavior.
+
+
+### Pillager fortress inventory refresh
+
+Decision 3c63c375 resolves eight fortress components using existing contents and
+connectors. Focused IDAS and scoped Ruff/Basedpyright checks pass. Canonical
+backlog: 15, all IDAS. Two fresh builds agree exactly, SHA-256
+3f45d4047b8366c25bcfff39a10565c7c1abc6bc7b6370e6a9cde351c01775ad.
+Only the fortress grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Castle alternatives, attributes, nonregistry and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-fortress-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-fortress-r2.json
+cmp evidence/raw/item8/inventory-idas-fortress-r1.json evidence/raw/item8/inventory-idas-fortress-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-fortress-r2.json
+```
+
+Use fresh output files. Source reachability is not effective assembly proof.
+
+### Castle and farmhouse inventory refresh
+
+Decision 7e7654fb preserves the three castle settlement layouts and ordinary versus
+abandoned farmhouse alternatives using the completed template comparisons and
+packaged contents. Focused IDAS checks pass (1 passed, 77 deselected), as do scoped
+Ruff/Basedpyright checks. Canonical backlog: 13, all IDAS. Two fresh builds agree
+exactly, SHA-256
+bdb538a493177ad7c494f7fd976f07848c8029e643c03e12c07464a323004169.
+Only these two grouping decisions and the input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-castle-farm-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-castle-farm-r2.json
+cmp evidence/raw/item8/inventory-idas-castle-farm-r1.json evidence/raw/item8/inventory-idas-castle-farm-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-castle-farm-r2.json
+```
+
+Use fresh output files. Source alternatives are not complete generated assemblies.
+
+### Connected IDAS assembly inventory refresh
+
+Decision a591b248 resolves desert ruins, ruined well, ruins of the deep,
+snifferhenge and windswept shrine using existing packaged contents and matching
+component connectors. Focused IDAS checks pass (1 passed, 77 deselected), as do
+scoped Ruff/Basedpyright checks. Canonical backlog: 8, all IDAS. Two fresh builds
+agree exactly, SHA-256
+fceaee3c66556f838fb7a8e22510ccff91f6b0a779d141374132370031b175f8.
+Only these five grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-connected-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-connected-r2.json
+cmp evidence/raw/item8/inventory-idas-connected-r1.json evidence/raw/item8/inventory-idas-connected-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-connected-r2.json
+```
+
+Use fresh output files. Component reachability does not establish effective spawns.
+
+### Final IDAS canonical-design inventory refresh
+
+Decision 7aaef93e resolves the final eight tracked IDAS design notes using the
+twelve inspected templates and their existing packaged contents. Focused IDAS
+checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright checks.
+Canonical-note backlog is zero; this is not Item 8 completion. Two fresh builds
+agree exactly, SHA-256
+3abed2261fc7db8f6cf3c980213aba4a86cfca733ce9bc118902fe3151a6de92.
+Only these eight grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions, coverage reconciliation and final
+validation/review/main delivery remain open. Working groups include inactive
+and excluded records and are not the final active authored-family count.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-final-designs-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-final-designs-r2.json
+cmp evidence/raw/item8/inventory-idas-final-designs-r1.json evidence/raw/item8/inventory-idas-final-designs-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-final-designs-r2.json
+```
+
+Use fresh output files. Canonical decisions do not close effective attributes.
+
+### Remaining Item 8 work after canonical-design reconciliation
+
+Inventory 2cc71537 has no unassigned registry IDs and the tracked canonical-design
+notes are resolved. Its 426 groups still include inactive and excluded records.
+Do not report 426 as the final active authored-family count.
+
+The complete existing family-decision test file passes: 78 passed in 59.60s with
+`uv run pytest tests/item8/test_family_decisions.py -q`. This verifies that focused
+changes also satisfy the existing broader partition and evidence checks; it is
+not the final Item 8 exit gate.
+
+The 33 records at family-decisions.json/non_registry_content/contributions have
+a finite assignment breakdown. Fourteen records explicitly list 39 distinct
+family IDs, none overlapping registry-group IDs. Explorations scarecrow has one
+additional family assignment in its relationship text. Fifteen records have
+empty family lists and explicit exclusions. Village Taverns and Chefs Delight
+contribute components to existing families. Deep Aether totem is an inactive
+candidate. Thus 15 contribution records supply 40 family assignments, 15 are
+excluded, two are component contributions and one is inactive. These assignments
+still require integration with required attributes and final coverage validation;
+they are not 33 uninvestigated providers or 33 additional families.
+
+Current attribute bookkeeping is directly inspectable in inventory.json/families.
+For the six fields below, count a row only when the field is a string beginning
+with UNKNOWN. Object-valued alternatives are not automatically accepted results.
+
+| Required field | UNKNOWN strings among 426 working groups |
+| --- | ---: |
+| approximate_footprint | 347 |
+| approximate_vertical_size | 345 |
+| intended_hostility | 396 |
+| authored_or_natural_enemies | 398 |
+| visual_discoverability | 419 |
+| underground_surface_classification | 401 |
+
+The other five required fields already contain structured source data. Dimension
+and biome constraints have objects in all 426 rows but still require effective
+eligibility reconciliation. Mob source and generated spawners each have 400 rows
+with the explicit status "packaged possibilities; effective generation and
+injections unresolved"; loot-table source has 402. Mob source also has one row
+explicitly retaining unresolved mod transformations. Other objects need assessment
+on their own evidence, not acceptance from a missing status flag.
+
+These are field-shape counts in the pinned inventory, not counts of missing
+experiments. Resolve inactive/excluded dispositions first, reuse existing source,
+configuration, log and world evidence, and perform new measurement only for a
+specific required claim that those sources cannot establish. Finish by checking
+all eleven attributes for every included registry and nonregistry family, then
+the final applicable validation, clean PR review loop and verified main delivery.
+
+### Quantified implementation scope after user clarification
+
+The user requires quantification before implementation and rejects cosmetic
+UNKNOWN-to-not-applicable cleanup. No inactive-field rewrite or witches-treestump
+attribute edit was made. Existing inactive and excluded dispositions are retained.
+
+At inventory 2cc71537, the 426 registry groups contain 15 inactive groups and one
+excluded cloud-formation group. The inactive groups are the three optional IDAS
+roots, Terralith fortified village, the three sacred-lands Deep Aether roots,
+and vanilla desert pyramid, fortress, jungle pyramid, mineshaft, monument,
+stronghold, swamp hut and village. These follow explicit contribution dispositions
+or SUPPRESSED normal_generation on every member variant. They cover 21 registry
+roots; the cloud group covers one. The remaining 410 candidate families cover
+865 roots. Together with the 40 nonregistry family assignments, the current
+attribute-assessment scope is 450 candidate family records. This is a bounded
+working scope, not a final active-generation count or 450 new experiments.
+
+The remaining registry candidates have these literal UNKNOWN field counts:
+
+| Field | UNKNOWN | Already structured, still subject to evidence assessment |
+| --- | ---: | ---: |
+| approximate_footprint | 333 | 77 |
+| approximate_vertical_size | 331 | 79 |
+| intended_hostility | 384 | 26 |
+| authored_or_natural_enemies | 386 | 24 |
+| visual_discoverability | 406 | 4 |
+| underground_surface_classification | 389 | 21 |
+
+Dimension, biome constraints, mob source, loot-table source and generated
+spawners already have structured source data in all 410 registry candidates.
+Their final interpretation remains work. The 40 nonregistry assignments carry
+varied existing content evidence and need the same eleven required fields
+integrated consistently. There are 33 registry candidate groups with explicit
+attribute overrides; their existing work must be reused rather than recreated.
+
+The next implementation increment is limited to one family, witches treestump:
+assess its eleven required fields against the already retained template, pool,
+processor, structure definition, frozen toggles/placement, resolved biome and
+dimension lists and inspected template view. Its generated-world observation
+list is empty. Do not infer observed discovery distance, encounters or successful
+placement. A source-based approximate envelope and qualitative placement intent
+are different claims and must be labeled accordingly. No new measurement has
+been justified for this increment. Any new experiment requires identifying the
+specific mandatory claim the existing evidence cannot support first.
+
+Before the final PR, finish these attribute assessments and nonregistry
+integration, check machine/narrative agreement and run the final applicable gate.
+The already-passing family-decision tests do not replace that gate.

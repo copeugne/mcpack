@@ -6,6 +6,323 @@
 
 ### Continuation update - 2026-09-07
 
+User clarification: do not spend time on cosmetic UNKNOWN-to-not-applicable
+cleanup. Existing inactive/excluded dispositions suffice; no such edits were
+made. Quantify each substantive increment before starting it. Current scope is
+410 registry-backed candidate families plus 40 nonregistry family assignments.
+Fifteen registry groups are already inactive and one cloud group is excluded.
+The revised attribute counts and implementation boundary are recorded at the end
+of provider-scope.md. No witches-treestump attribute edits have started. Next
+declare its exact fields, reused evidence and any justified new evidence before
+editing; do not equate a placeholder count with an experiment count.
+
+Canonical-design reconciliation is delivered through 2cc71537. The next phase is
+supported by all 78 existing family-decision tests passing. Remaining work is
+bounded in provider-scope.md under Remaining Item 8 work: 33 nonregistry records
+represent 40 family assignments across 15 contribution records, 15 exclusions,
+two village-component contributions and one inactive totem candidate. Their
+attributes and final integration remain open. The same section records actual
+UNKNOWN field counts for all 426 working groups. They are bookkeeping gaps, not
+new-experiment counts. Resolve inactive/excluded records and reuse existing
+evidence before considering any new measurement. No new framework was added.
+
+Inventory matches 7aaef93e and reproduces exactly. Canonical-note backlog is zero.
+All 887 roots remain in 426 working coverage groups, with full variants and
+derived attributes unchanged. Next reconcile the 33 nonregistry contributions
+and enumerate outstanding effective-attribute decisions. Item 8 remains open
+through those steps, final validation, clean review and verified main delivery.
+
+The final eight IDAS canonical decisions pass focused IDAS and scoped checks.
+Canonical-note backlog is now zero. This closes the tracked design-reconciliation
+notes, not Item 8: 33 nonregistry contributions, all required effective attributes,
+coverage reconciliation, final validation/review/main delivery remain open.
+Preserve the 426 working groups as a working coverage count, not a final active
+authored-family count. Derived inventory refresh follows. Next reconcile the
+existing nonregistry dispositions and enumerate outstanding attribute decisions.
+
+All twelve remaining design templates were visually inspected. The four small
+design sheets reproduce exactly at renderer 4323e1e3. No conversion sessions
+remain running. Canonical decisions for the eight records follow. Existing
+contents and pools show abandoned-house weights 3/2, cottage weights 1/1,
+brickhouse to path to windmill connectors, and witch/cat spawn overrides for
+witches_treestump despite no authored entities or physical spawners.
+
+Select the twelve templates belonging to the eight remaining canonical records
+in the existing renderer. Compare abandoned-house and cottage alternatives,
+brickhouse and windmill/path components, camp, guild, church, fort and stump.
+This fixed selection addresses the remaining design comparisons; no new
+measurement system is needed. Canonical backlog remains 8 until decisions pass.
+
+Inventory matches a591b248 and reproduces exactly. Canonical backlog is 8, listed
+below. All 887 roots remain in 426 working groups with full variants and derived
+attributes unchanged. Remaining house and ruin comparisons come next. Attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Five connected assemblies now have resolved canonical decisions: desert ruins,
+ruined well, ruins of the deep, snifferhenge and windswept shrine. Existing pool,
+template and connector evidence proves which named parts are components. Focused
+IDAS and scoped checks pass. Canonical backlog is 8: abandonedhouse, brickhouse,
+cottage, pillager_camp, redhorn_guild, ruined_church, ruined_fort and
+witches_treestump. Derived inventory refresh follows. Attributes, 33 nonregistry
+contributions and final validation/review/main delivery remain open.
+
+Inventory matches decision 7e7654fb and reproduces exactly. Canonical backlog:
+13, all IDAS. All 887 roots remain in 426 working groups with full variants and
+derived attributes unchanged. Next inspect the remaining house and ruin designs
+using existing packaged contents and comparisons where needed. Attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Castle and farmhouse canonical decisions pass the focused IDAS check and scoped
+Ruff/Basedpyright checks. Castle preserves three distinct settlement designs,
+their separate bottom components and the village connection present only in the
+first two. Farmhouse preserves ordinary and abandoned encounter differences and
+the ordinary-only path. Canonical backlog is 13, all IDAS. Derived inventory
+refresh follows; attributes, 33 nonregistry contributions and final delivery
+remain open. No new measurement system or family-count expansion was added.
+
+Castle/farm views reproduce exactly with selector 7c00d51e and narrow path-frame
+fix 3356f800. All nine selected templates visually inspected. Main castle PNG
+conversion completed successfully; no conversion sessions remain running.
+Castle alternatives have different tower, courtyard and roof arrangements.
+Preserve their distinct layouts and extents when reconciling the family decision.
+The README preserves the rejected clipped-path attempt and corrected hashes.
+Farmhouse start weights are ordinary 4 and abandoned 1. Only the ordinary template
+connects to the matching path; abandoned has two zombie-villager spawners and no
+jigsaws. Preserve these differences. Canonical backlog remains 15. Inventory is
+still the delivered 48f9c791 version; no family decision or attribute changed.
+
+Compare six castle main/bottom templates and three farmhouse/path templates
+using a fixed selection in the existing renderer and corrected IDAS framing.
+Castle alternatives have different extents; farmhouse alternatives have different
+encounter contents. Existing village-component dispositions remain intact. No new
+measurement system. Canonical backlog remains 15 until decisions pass.
+
+Inventory matches 3c63c375 and reproduces exactly. Canonical backlog: 15, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Compare
+castle and farmhouse alternatives next. Attributes, 33 nonregistry contributions
+and final validation/review/main delivery remain open.
+
+Pillager fortress resolves to one eight-component assembly with its authored
+encounter content preserved. Focused IDAS and scoped checks pass. Canonical
+backlog: 15, all IDAS. Inventory refresh follows. Castle remains open: its three
+main alternatives differ greatly in size and its 136 reachable templates include
+village components. Compare main/bottom designs without recounting shared village
+components as new families. Attributes, nonregistry and final delivery remain open.
+
+Inventory matches 024dc7b3 and reproduces exactly. Canonical backlog: 16, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus and
+wizard comparisons are finished. Continue remaining IDAS records, including
+farmhouse alternatives. Attributes, nonregistry and final delivery remain open.
+
+Nexus resolves to one family with six alternatives after completed visual and
+content comparison. Preserve sculk extents/entities, pool weights, processor
+loot and spawner declarations; raw pig SpawnData is not the effective mob claim.
+Focused IDAS and scoped checks pass. Canonical backlog: 16, all IDAS. Inventory
+refresh follows. Attributes, nonregistry and final delivery remain open. No image
+conversion remains running.
+
+Inventory matches 9f4bd417 and reproduces exactly. Canonical backlog: 17, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus views
+are now fully inspected; finish its decision with preserved contents/processors.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+Bazaar and frozen crypt component decisions pass focused IDAS and scoped checks.
+Canonical backlog: 17, all IDAS. Inventory refresh follows. Nexus conversion
+session 44369 completed successfully; all six alternatives were visually inspected
+and fit their frames. Finish its content/processor comparison before a decision.
+Attributes, nonregistry and final delivery remain open.
+
+Inventory matches 38f3cbea and reproduces exactly. Canonical backlog: 19, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Farmhouse
+alternatives need comparison; nexus conversion session 44369 was last live.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+Vineyard, apothecary and beekeeper assemblies are reconciled from existing
+connectors and full contents. Preserve illagers/spawners, missing entity IDs and
+stored-content versus loot-table distinctions. Focused IDAS and scoped checks
+pass. Canonical backlog: 19, all IDAS. Inventory refresh follows. Farmhouse
+ordinary/abandoned alternatives still need comparison. Nexus session 44369 was
+last confirmed live. Attributes, nonregistry and final delivery remain open.
+
+Inventory matches 8834f268 and reproduces exactly. Canonical backlog: 22, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus
+conversion session 44369 was last confirmed live; inspect its output when done.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+Collectors museum is one intended two-component assembly; borrowed loot tables
+do not create family aliases. Preserve its large component extents, root limits
+and 18 physical spawner blocks without asserting generated assembly bounds.
+Focused IDAS and scoped checks pass. Canonical backlog: 22, all IDAS. Inventory
+refresh follows. Nexus conversion session 44369 remains active at this checkpoint.
+Attributes, nonregistry and final delivery remain open.
+
+Inventory matches d7f9f894 and reproduces exactly. Canonical backlog: 23, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus visual
+inspection is next; conversion session 44369 was last confirmed live. Effective
+attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+Wizard tower is one paired-component design with three alternatives, bound to
+b56b2e00 views. Preserve red loot/spawner differences and the authored zoglins in
+bottom components. Focused IDAS and scoped checks pass. Canonical backlog: 23,
+all IDAS. Inventory refresh follows. Nexus conversion session 44369 remains live
+as of this checkpoint; poll it rather than restarting. Nexus decision, attributes,
+nonregistry and final validation/review/main delivery remain open.
+
+Compare all six wizard-tower components and six nexus alternatives with a fixed
+selection in the existing renderer, using its corrected IDAS framing. Different
+spawner and loot contents make a color-name shortcut insufficient. This uses
+existing source evidence and rendering, with no new measurement system. Backlog
+remains 24 until decisions pass.
+
+Inventory matches 2551f9ac and independently reproduces exactly. Canonical
+backlog: 24, all IDAS. All 887 roots and full variants remain in 426 working
+groups. Next compare wizard-tower and nexus alternatives, preserving content
+differences. Attributes, nonregistry and final review/main delivery remain open.
+
+Necromancers spire is resolved as one four-component assembly from existing
+connectors and contents. Focused IDAS and scoped checks pass. Canonical backlog:
+24, all IDAS. Inventory refresh follows. Wizard tower and nexus remain open:
+compare their alternatives rather than assuming color names imply one design.
+Red wizard tower has no physical spawners, unlike purple and yellow (two each).
+Nexus is a broad underground structure, not a tower. Attributes, nonregistry
+and final validation/review/main delivery remain open.
+
+Inventory matches 328a58ea and independently reproduces exactly. Canonical
+backlog: 25, all IDAS. All 887 roots and full variants remain in 426 working
+groups. Continue remaining IDAS buildings and assemblies. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Tinkers citadel, workshop and tree of wisdom now have explicit component
+boundaries from existing graphs and contents. Citadel branches, workshop follows
+a numbered chain, and the tree base links surrounding pieces and a top. Machinery
+and assembled-size claims remain unproven. The focused IDAS test and scoped
+checks pass. Canonical backlog: 25, all IDAS. Inventory refresh follows. Required
+attributes, 33 nonregistry contributions and final delivery remain open.
+
+Inventory matches 9f0ac12d and reproduces exactly. Canonical backlog: 28, all
+IDAS. The 887 roots and full variants remain in 426 working groups. Continue
+remaining IDAS buildings and assemblies. Attributes, 33 nonregistry contributions
+and final validation/review/main delivery remain open.
+
+Bearclaw inn, treetop tavern and Tudor pub decisions now distinguish their
+lodge-path-stables, four-section and main-bottom assemblies using existing
+connectors and full contents. Components are not additional families. The focused
+IDAS test and scoped Ruff/Basedpyright pass. Canonical backlog: 28, all IDAS.
+Inventory refresh follows. Attributes, nonregistry and final delivery remain open.
+
+Inventory matches 8a3b3ffd and independently reproduces exactly. All 887 roots
+and full variants remain in 426 working groups. Canonical backlog: 31, all IDAS.
+Continue the remaining buildings and assemblies. Preserve the manor connector
+mismatch for effective placement assessment. Attributes, nonregistry and final
+validation/review/main delivery remain open.
+
+Enchanting tower, haunted manor and labyrinth component decisions are resolved
+from existing source contents and graphs, preserving default-pool selection.
+The manor has minecraft versus idas connector-name mismatches between its first
+and receiving pieces; pool reachability is not successful assembly. Preserve this
+defect for effective placement attributes without repairing the baseline. Four
+focused IDAS checks and scoped code checks pass. Canonical backlog: 31, all IDAS.
+Inventory refresh follows. Attributes, nonregistry and final delivery remain open.
+
+Inventory matches 3decfe2b and reproduces exactly. Only mines and pyramid
+grouping decisions and input identity change. Canonical backlog: 34, all IDAS;
+426 working groups retain all 887 roots and full variants. Continue remaining
+IDAS assemblies. Attributes, nonregistry and final delivery remain open.
+
+Ancient mines and desert pyramid now have explicit assembly decisions from the
+existing full graphs and contents. Missing pool targets remain packaged defects;
+the differently named pyramid villager pool is not substituted. No baseline
+repair or new measurement is needed for these component boundaries. Canonical
+backlog: 34, all IDAS. Inventory refresh follows. Attributes and successful
+placement effects remain open, as do nonregistry reconciliation and delivery.
+
+Inventory now matches 7f6ac0a9 and reproduces exactly in two fresh builds. Only
+the eight grouping decisions and input identity change; all 887 roots and full
+variants are preserved in 426 working groups. Canonical backlog: 36, all IDAS.
+Next: remaining IDAS assemblies, including the recorded missing-pool dispositions.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+Eight IDAS building decisions now bind the delivered d62d6212 views and full
+contents. Lighthouse, lodge, botanist, hollow, hunter cabin, mason house, pumpkin
+cafe and general store remain distinct. Hunter cabin retains pillagers and four
+spawner blocks; nested optional entities and missing IDs remain explicit. The
+focused IDAS test and scoped Ruff/Basedpyright checks pass. Canonical backlog: 36,
+all IDAS. Groups remain 426. Inventory refresh follows. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Next IDAS comparison covers eight single-template buildings: abandoned_lighthouse,
+botanist, fishermans_lodge, hermits_hollow, hunters_cabin, mason_house, pumpkin_cafe
+and wacky_wares. Some are large despite being single-template. Reuse the corrected
+worksite framing in the existing renderer. Full contents include distinct loot,
+workstations and inhabitants; filenames do not establish peacefulness. No new
+measurement system. Backlog remains 44 until decisions pass.
+
+Inventory matches 862a41f9 and independently reproduces exactly. All 887 roots
+remain assigned once in 426 working groups; full dig-site variants survive the
+split. Backlog: 44, all IDAS. Next: remaining IDAS buildings/assemblies using
+existing graphs and contents before necessary views. Attributes, nonregistry and
+final validation/review/main delivery remain open.
+
+Six worksite/transport records are reconciled against corrected 0c67f005 views
+and complete contents. Desert dig site is a separate assembly from the roofed
+dig site/stables; pump camp, washing camp, furnished log, train wreck and winter
+wagon remain distinct. Full variants are preserved, with no operating machinery
+or vehicle claim. The focused IDAS case and scoped checks pass. Backlog: 44, all
+IDAS. Coverage groups: 426. Inventory refresh follows. Attributes, nonregistry
+and final delivery remain open.
+
+Worksite views at 4d60aff5 materially clip the larger templates. Fix this within
+the existing selection by increasing row spacing/height from 300 to 400 and
+shifting its origin right by 30. Keep source templates, projection scale and other
+selections unchanged. Preserve the failed attempt; verify the new visible bounds
+before family decisions. This reproduced defect needs no new measurement system.
+
+Next IDAS comparison covers eleven templates for dig_site (six pieces across two
+roots), nether_pump_camp, washing_camp, the_log, train_ruins and winter_wagon.
+Use the existing renderer and preserved contents to distinguish assemblies from
+related designs. All traces have no missing components. Optional/nested entity
+references remain declarations, not proof of creation. No new measurement system.
+Backlog remains 50 until decisions pass.
+
+Inventory matches 02a5622a and independently reproduces exactly. All 887 roots
+remain covered once in 425 working groups. Full statue definitions/variants are
+unchanged across the split. Backlog: 50, all IDAS. Next: remaining IDAS authored
+building and assembly relationships. Attributes, nonregistry and delivery remain.
+
+Five IDAS records are reconciled using 84aefdf8 views and complete contents.
+Desert, jungle and plains statues are distinct designs; den, desert camp, market
+and lumber-camp differences remain variants. Stored container contents are not
+declared empty merely because loot-table references are absent. Full variants
+are preserved. The focused IDAS case and scoped checks pass. Backlog: 50, all
+IDAS. Coverage groups: 425. Inventory refresh follows. Required attributes,
+33 nonregistry contributions and final review/main delivery remain open.
+
+Next IDAS comparison selects all 23 templates for ancient_statue, animal_den,
+desert_camp, desert_market and lumber_camp with the existing renderer. Similar
+envelopes do not prove identical architecture; statues have materially different
+sizes, and one lumber variant also differs in width. Preserve optional entity and
+material references without inferring runtime creation. No new measurement system.
+Backlog remains 55 until decisions pass.
+
+Inventory matches 6c8adbbc and reproduces exactly in two fresh runs. Changes are
+limited to the four IDAS grouping decisions and the input hash. All 887 roots
+remain covered once in 423 working groups. Backlog: 55, all IDAS. Next: remaining
+IDAS variant and assembly relationships. Attributes, nonregistry and delivery remain.
+
+Four IDAS records are reconciled against 1506ccef views and full source content:
+ancient_portal, underground_camp, sunken_ship and detached ship ruins. Existing
+groups/variants remain unchanged. Ship alternative processor differences are
+explicit; raw spawner data is not effective enemy proof. The focused IDAS case and
+scoped checks pass. Backlog: 55, all IDAS. Coverage groups: 423. Inventory refresh
+follows. Attributes, 33 nonregistry contributions and final delivery remain open.
+
+IDAS starts with four related-design records: ancient_portal, underground_camp,
+sunken_ship and sunken_ship/sunken_ship_ruins. Their complete thirteen templates
+and traced alternatives/components need layout comparison with the existing
+renderer; equal envelopes alone do not establish family identity. No new
+measurement system. Backlog stays 59 until decisions pass. Existing missing pools
+in ancient_mines and desert_pyramid remain preserved for later reconciliation.
+
 Inventory matches 93c174d2 and reproduces exactly in two fresh runs. All 887 roots
 remain assigned once in 423 working groups. AdoraBuild canonical notes are closed;
 the remaining 59 are all IDAS. Next: IDAS design reconciliation using preserved
