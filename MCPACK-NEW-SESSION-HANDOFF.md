@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed village assessed after d59de7f4
+
+Seven entries integrated for14 variants/1345 distinct shared templates. Exact
+variant entity mappings preserve land zombie alternatives, ocean drowned and
+Nether inhabitants; no template spawners or generation markers. All34 loot
+sources resolve. Tree beehive decorators remain an additional potential source.
+Nine competing crop lists are not selected by these claims: both candidates
+lack enemy/loot injections, while base bottom-pillar support differs from compat.
+All14 bottom-pillar delegates were inspected. Exact crops/support extent are
+unspecified, not an Item8 experiment backlog. Existing saved geometry reused.
+No runtime or tool added. All85 focused checks pass (63.89s); only village/input
+identity changed. Total410/448 assessed; remaining38 families/343 required
+entries are all IDAS. Quantify existing IDAS evidence versus missing claims
+before starting investigation. Final integration, acceptance, backup/history
+and PR/review/main remain open.
+Details: evidence/item-8/sources/repurposed-village-assessment/README.md.
+Inventory SHA-256: 14263af15dd4870e4a94a2b0dddd047628fed6d3b37dc1f64a8001afe125a646.
+
+
 #### Repurposed ancient city assessed after 24897d14
 
 Seven remaining entries integrated for three variants/173 templates. Ocean
