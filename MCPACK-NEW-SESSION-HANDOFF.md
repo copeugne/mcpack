@@ -7,6 +7,24 @@
 ### Continuation update - 2026-09-07
 
 
+#### Bastion remnant assessed after 6a7c94c8
+
+Nine remaining attributes integrated from167-template trace,12 degradation lists,
+four defined loot sources and existing full-start biome-diverse run-a line1032,
+chunk-9,13,envelope[-175,31,192,-120,95,255],size56x65x64. Five entity templates
+contain piglins,hoglins and piglin brutes (including both melee_piglin names).
+Treasure/lava_basin ordinary magma-cube spawner NBT retained; conditional layout
+is not a universal per-bastion count. Four start alternatives remain one family.
+Empty root spawn overrides do not exclude natural/external mobs. FixedY33 and
+Nether enclosure distinguish pipeline surface_structures from open-sky claims.
+No new capture/tool. All85 focused checks pass (59.37s);only bastion/input identity
+changed. Registry349/408,nonregistry40/40,total389/448 assessed;59 families and567
+required attributes remain: IDAS38/380,Repurposed17/154,vanilla4/33 (mansion9,
+pillager_outpost8,trail_ruins8,trial_chambers8). Quantify next batch and reuse
+existing evidence. Final integration,acceptance,backup/history preparation and
+PR/review/main remain open. Inventory SHA-256: b78455462ec7e795de238015ec61920088530c7becac410d222ba5e6f8752702.
+
+
 #### Ancient city assessed after 053c856a
 
 Nine remaining attributes integrated from57-template trace, selected degradation
