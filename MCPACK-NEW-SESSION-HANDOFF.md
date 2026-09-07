@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Compare all six wizard-tower components and six nexus alternatives with a fixed
+selection in the existing renderer, using its corrected IDAS framing. Different
+spawner and loot contents make a color-name shortcut insufficient. This uses
+existing source evidence and rendering, with no new measurement system. Backlog
+remains 24 until decisions pass.
+
 Inventory matches 2551f9ac and independently reproduces exactly. Canonical
 backlog: 24, all IDAS. All 887 roots and full variants remain in 426 working
 groups. Next compare wizard-tower and nexus alternatives, preserving content
