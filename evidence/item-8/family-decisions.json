@@ -73888,11 +73888,12 @@
         "evidence/item-8/sources/idas-variant-views/lumber_vanilla.svg.gz": "667f6ddce64f552c062d11a6659d157e7d15fddcd4e075dcd9e002f44d997ef1",
         "evidence/item-8/sources/idas-variant-views/lumber_modded.svg.gz": "17152879523e4f3992a8fe41eb3709b3963eecc01e8c050a172d7fc728b0b485",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/raw/item8/registry-r1/debug.log": "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
       },
       "family_id": "idas:desert_market",
       "name": "IDAS desert market",
-      "rationale": "Three market variants share the multi-level framed stall layout with shaded planted upper details, containers, bazaar/food loot, waystone and authored guard references. Material and ladder substitutions remain variants within the same complete market design. Their building form and contents differ from the low desert worksite camp. Waystone, optional containers and guard references remain declarations, not proof of successful runtime interaction or population. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Three market variants share the multi-level framed stall layout with shaded planted upper details, containers, bazaar/food loot, waystone and authored guard references. Material and ladder substitutions remain variants within the same complete market design. Their building form and contents differ from the low desert worksite camp. Waystone, optional containers and guard references remain declarations, not proof of successful runtime interaction or population. Canonical design relationships are resolved. Required attributes assessed; guard mod absence is explicit and final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:desert_market/desert_market",
         "idas:desert_market/desert_market_orange",
@@ -74001,6 +74002,104 @@
             "idas:desert_market/desert_market_red": 16
           },
           "basis": "Exact packaged template height for each independent alternative. Not burial depth or measured terrain relief."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "guardvillagers:guard": [
+              "idas:desert_market/desert_market",
+              "idas:desert_market/desert_market_orange",
+              "idas:desert_market/desert_market_red"
+            ]
+          },
+          "status": "Template and ticking-processor sources assessed; absent guard mod retained as a source limitation.",
+          "template_ids": [
+            "idas:desert_market/desert_market",
+            "idas:desert_market/desert_market_orange",
+            "idas:desert_market/desert_market_red"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "Each of three independent templates declares guardvillagers:guard. The frozen runtime Mod List lacks guardvillagers; preserve the authored reference without asserting successful guard creation. No unresolved entity compounds, generation markers or missing graph components. The selected processor schedules dispenser/dropper ticks and returns the incoming block info, not an entity substitution."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:desert_market/desert_market",
+                "idas:desert_market/desert_market_orange",
+                "idas:desert_market/desert_market_red"
+              ],
+              "value": "idas:chests/bazaar/bazaar"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:desert_market/desert_market",
+                "idas:desert_market/desert_market_orange",
+                "idas:desert_market/desert_market_red"
+              ],
+              "value": "idas:chests/bazaar/bazaar_food"
+            }
+          ],
+          "status": "Template and ticking-processor sources assessed; absent guard mod retained as a source limitation.",
+          "template_ids": [
+            "idas:desert_market/desert_market",
+            "idas:desert_market/desert_market_orange",
+            "idas:desert_market/desert_market_red"
+          ],
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "All three alternatives reference defined idas:chests/bazaar/bazaar and idas:chests/bazaar/bazaar_food. The selected waterlogging_fix_processor contains only tick_blocks_processor for dispensers/droppers, with no appended loot-table NBT. Shared bazaar loot does not merge this single-template market family with the separate assembled bazaar. Container references do not establish reward quantities or working waystone interactions."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Template and ticking-processor sources assessed; absent guard mod retained as a source limitation.",
+          "template_ids": [
+            "idas:desert_market/desert_market",
+            "idas:desert_market/desert_market_orange",
+            "idas:desert_market/desert_market_red"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "No ordinary or trial spawner blocks and no generation markers in the three templates. The selected ticking processor does not add spawner blocks or mutate incoming NBT. No successful guard population or exclusion of natural spawning is inferred."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "Only authored entity identifier is guardvillagers:guard, whose mod is absent from the frozen runtime list. No authored hostile entity or physical spawner is identified. All three roots have empty spawn_overrides, so they declare no family-specific natural spawn rule; ordinary environmental spawning remains possible."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "Market/stall design with food and supply loot and an authored guard reference, but no demonstrated guard creation in the retained stack. No identified authored hostile encounter source or spawner. Do not describe the site as reliably guarded, uniformly safe or a measured combat encounter."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "Multi-level framed stalls, shaded planted upper details and17-by17 template footprint with16-block height provide architectural cues. Desert material and ladder differences remain variants. Terrain can obscure the structure; no measured discovery distance, visible-entrance guarantee or tested navigation claim."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-desert-market-assessment/README.md",
+          "assessment": "Surface-associated market variants use integrated_api:generic_structure, WORLD_SURFACE_WG projection, start offset0, size1, beard_thin adaptation and biome radius1. Red additionally declares terrain-height range10 and radius1. Nominal single-template dimensions do not establish final terrain relief or foundation burial."
         }
       }
     },

@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS desert market assessed after 05c9d5c3
+
+Seven entries integrated for three alternatives. Authored guardvillagers:guard
+is preserved with absent frozen Mod List provider, not claimed successful
+population. Two defined bazaar loot tables and no spawners/markers. Selected
+processor only schedules dispenser/dropper ticks and returns incoming block
+info; direct class identity and inspection recorded. Existing dimensions reused.
+No runtime/tool added. All85 focused checks pass (63.72s); only desert_market/
+input identity changed. Total412/448 assessed;36 IDAS families/321 required
+entries remain. Next nexus: six alternatives/seven entries with dimensions
+already integrated; inspect the selected loot/spawner processor before using
+raw pig spawner NBT as an enemy claim. Quantify any missing source requirement.
+Details: evidence/item-8/sources/idas-desert-market-assessment/README.md.
+Inventory SHA-256: 90bfbe07e24508b3b346550a2606c5081b9f8cc9f1bcb9262994f530d8190b4e.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS enchanting tower assessed after b0b72b08
 
 Seven remaining entries integrated for three equal-weight rigid alternatives.
