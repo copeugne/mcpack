@@ -205,3 +205,65 @@ uv run -m tools.run_item7_gap_targets \
 The target-input change is checked by the existing lifecycle regression with
 both legacy and explicit Explorify targets, including exact commands and clean
 flush/stop completion. Run results and geometry acceptance are pending.
+
+### Accepted geometry r1 results
+
+Run source: `5bc81f0e3bcb7d0ebfd9d760145ca00021f069b8`. All five target
+regions completed, the correlated save succeeded, exit code was zero and the
+frozen configuration capture passed. The committed lifecycle receipt is
+`evidence/item-8/runtime/explorify-geometry-r1/run.json`.
+
+| Family | Decoded line | Inclusive envelope (min XYZ, max XYZ) | Size XYZ | Pieces |
+| --- | ---: | --- | --- | ---: |
+| campsite | 1666 | -2606,66,1375,-2592,71,1401 | 15,6,27 | 4 |
+| dark_forest_settlement | 3364 | 185,144,9571,279,173,9647 | 95,30,77 | 54 |
+| farmstead | 2217 | 243,66,-2437,270,75,-2410 | 28,10,28 | 8 |
+| ruins | 569 | -5816,113,-2880,-5728,128,-2808 | 89,16,73 | 104 |
+| tavern | 5037 | 1622,63,-2013,1646,80,-1991 | 25,18,23 | 13 |
+
+Each targeted start is `minecraft:full` in `minecraft:overworld`. Take the minimum
+of all saved piece minima and maximum of all piece maxima, then subtract minima
+from maxima and add one, as implemented by
+`mcpack_evidence.item8_world_bounds.observed_bounds`. X/Z gives footprint and Y
+vertical size. This direct derivation uses the exact `chunks.jsonl` lines above;
+its SHA-256 is 3edc76f13e4c711f241df3391cdd956523a484bd0b72ce243415047ec3469c4f.
+The 5,646 decoded chunks include locate-generated and surrounding partial chunks,
+not 5,646 completed sampling chunks. An incidental tavern at line 3501 has a
+21x12x25 planned envelope at `minecraft:structure_starts`; it is preserved but
+not substituted for the predeclared targeted example. No frequency estimate.
+
+The ten geometry attributes are integrated into `family-decisions.json` and
+`inventory.json`. All fourteen Explorify family descriptions are now assessed.
+Only these five inventory rows and the decisions input hash changed. Six affected
+inventory tests, Ruff and Basedpyright passed. Inventory matches
+`evidence/raw/item8/inventory-explorify-settlement-geometry-final.json`, SHA-256
+41bfb09c46df6a52c9af2b25ddaddd2b496bed90b275b67abfb6eb6121a3ef71.
+
+Preservation and reproduction use existing tools. After verified clean stop:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/explorify-geometry-r1"), Path("evidence/raw/item8/explorify-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/explorify-geometry-r1/world --output evidence/raw/item8/explorify-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/explorify-geometry-r1 --archive evidence/raw/item8/item8-explorify-geometry-r1-5bc81f0e.tar.gz --manifest evidence/item-8/raw-custody/explorify-geometry-r1-manifest.json --revision 5bc81f0e3bcb7d0ebfd9d760145ca00021f069b8
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-explorify-geometry-r1-5bc81f0e.tar.gz --manifest evidence/item-8/raw-custody/explorify-geometry-r1-manifest.json --target evidence/raw/item8/explorify-geometry-r1-restored --receipt evidence/item-8/raw-custody/explorify-geometry-r1-local-restore.json
+```
+
+World copying holds the Java-compatible POSIX record lock and excludes
+`session.lock`. Original instance and capture remain preserved. The archive is
+12,675,799 bytes, 271 files, 65,478,116 uncompressed bytes, SHA-256
+513dd78e1fd108cbb477d96039a9cd4da9ea74714aa14695dc54b59daea227e2.
+It includes logs, captured configuration, the stopped-world boundary, decoded
+chunks and run receipt. No server binaries are included.
+
+[Published raw archive](https://github.com/copeugne/mcpack/releases/tag/item-8-explorify-geometry-2026-09-07-r1).
+The release is non-draft; fetched and remote tags resolve to the run source above.
+Release metadata is retained in `raw-custody/explorify-geometry-r1-release.json`.
+The downloaded archive restored all 271 files with verified hashes:
+
+```sh
+gh release download item-8-explorify-geometry-2026-09-07-r1 --dir evidence/raw/item8/explorify-geometry-download --pattern item8-explorify-geometry-r1-5bc81f0e.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/explorify-geometry-download/item8-explorify-geometry-r1-5bc81f0e.tar.gz --manifest evidence/item-8/raw-custody/explorify-geometry-r1-manifest.json --target evidence/raw/item8/explorify-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/explorify-geometry-r1-downloaded-restore.json
+```
+
+Local copies share one disk; the GitHub asset is the separate durable copy.
+Use absent destinations when reproducing archive or restore operations.
