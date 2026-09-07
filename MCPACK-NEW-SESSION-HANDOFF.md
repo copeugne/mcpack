@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Scarecrow assessed after c84b5af3
+
+Scarecrow now records all eleven descriptive answers. Six added answers reuse
+the full writer and its configuration defaults; nine biome tags resolve with no
+missing/unresolved inputs, and each overlaps only the captured Overworld.
+Retire these supported answers. Seventeen affected tests and scoped quality
+checks pass. The existing scarecrow source README records derivation, commands
+and the corrected initial test-filename failure.
+
+Inventory matches `evidence/raw/item8/inventory-scarecrow-descriptions.json`,
+SHA-256 9e634f3027f65baffbab3a5ea303e066fd57957fd45e435575028cc5db806a15.
+Registry rows and all other contributions are unchanged.
+Nonregistry assessment is 37/40. Three remain: BetterEnd crashed ship, ruined
+obsidian pillar and Supplementaries cave urn cache. Continue assessment and
+integration together; registry work and final acceptance/PR gates remain open.
+
 #### BOP landmarks assessed after 56758604
 
 Integrated sixteen existing-source answers for anomaly and monolith. Both now
