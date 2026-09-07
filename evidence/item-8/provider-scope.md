@@ -9808,3 +9808,30 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas
 cmp evidence/raw/item8/inventory-idas-related-r1.json evidence/raw/item8/inventory-idas-related-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-related-r2.json
 ```
+# IDAS statue, den and camp relationship closure (2026-09-07)
+
+Decision 02a5622a resolves five records against the complete 84aefdf8 comparisons
+and preserved source contents. Desert, jungle and plains statues have separate
+forms and remain separate designs. Den, desert-camp, market and lumber-camp
+material/content changes remain variants. All exact root definitions and variants
+are preserved. Container contents are not inferred empty from absent loot tables;
+machinery and optional entities are not claimed operational merely from templates.
+
+The focused IDAS source-binding case and scoped code checks pass. Two fresh
+inventory runs match byte-for-byte. Only the five records, two separated statue
+designs and the decision hash change. All 887 roots remain covered once in 425
+working groups. Canonical-note backlog: 50, all IDAS. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
+Inventory SHA-256:
+42a0c89deca10eafef9e6fdd8096ff3be3b5d7fe309a9b62c94dd7aaa9779017.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-variants-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-variants-r2.json
+cmp evidence/raw/item8/inventory-idas-variants-r1.json evidence/raw/item8/inventory-idas-variants-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-variants-r2.json
+```
