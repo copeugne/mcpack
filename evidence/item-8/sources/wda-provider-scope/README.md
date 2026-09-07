@@ -176,3 +176,106 @@ builder's decisions identity. It adds no tool, runtime or measurement system.
 
 Eight focused tests pass. Inventory SHA-256:
 4f0cde2359d75f890e8ef1be793eb6f522b374e3e59c98e694f1b64cc2179c7c.
+
+## Heavenly fleet, Coliseum and Keep Kayra
+
+Fifty attributes assess heavenly_challenger, heavenly_conqueror, heavenly_rider,
+coliseum and keep_kayra: five roots/49 selected templates. Use the same pinned
+WDA archive and catalogs above, structure/<family>/<template>.nbt and
+worldgen/structure/<family>.json. All selected pool elements are rigid with
+minecraft:empty processors; traces have no missing or unresolved elements.
+All roots use minecraft:jigsaw, depth7,max distance114, ignore_waterlogging,
+expansion disabled and empty spawn_overrides. No retained start is linked for
+these five. No capture or new tooling was needed for this source assessment.
+
+The Heavenly roots start at absolute Y200 without heightmap projection, not
+surface+200. Their resolved biome intersections include both Overworld and End.
+Coliseum intersects Overworld, projects WORLD_SURFACE_WG at offset-3 and uses
+beard_box adaptation. Keep intersects Overworld and starts at absolute Y54
+without heightmap projection. Its start_jigsaw_name keep_kayra_start matches
+main_0 block_entities0 at(88,0,81). Architecture relative to terrain is not
+verified by an unobserved nominal source envelope.
+
+Connected geometry uses adjacent matching connectors. Rotation exchanges X/Z;
+envelopes include saved air/padding and do not guarantee complete placement.
+
+- Challenger starts part2 or3. Place part2 at(0,0,0). Its north(0,0,0)
+  side9 joins part1 south(0,0,47) side8, putting part1 at(0,0,-48).
+  Part1 east(30,0,0) side1 joins part0 west(0,0,0) side0, origin(31,0,-48).
+  Part2 east side3 joins part3 west side2, origin(31,0,0).
+  Part2 south(0,0,47) side6 joins part5 north(0,0,0) side7, origin(0,0,48).
+  Part5 east side5 joins part4 west side4, origin(31,0,48).
+  Left column width31, right30; row lengths48,48,35; all height48.
+  Inclusive unionX0..60,Y0..47,Z-48..82 is61x48x131.
+- Conqueror has four32x48x32 quadrants. Part0 east(31,0,0) joins part1
+  west(0,0,0); part1 south(31,0,31) joins part2 north(31,0,0);
+  part0 south(0,0,31) joins part3 north(0,0,0). Origins are
+  (0,0,0),(32,0,0),(32,0,32),(0,0,32), union64x48x64.
+  Coliseum uses the same quadrant positions with32x32x32 pieces, union64x32x64.
+  The remaining side connectors close each square consistently. Horizontal
+  front directions fix the relevant rotation even where joints are rollable.
+- Rider lower parts0..3 follow that64x32x64 square. Part0 up_north(0,31,0)
+  matches part4 down_north(0,0,0), both aligned, origin(0,32,0).
+  Top parts4..7 use matching suffixed side names and32x16x32 quadrants above
+  the corresponding lower pieces. Overall64x48x64. The top pool is reached
+  through part0; its pieces are not additional root families.
+- Keep main_0 is163x250x163. Its nine spawner alternatives are1x2x1 and
+  compatible vertical attachments stay inside that envelope. Preserve the
+  south-facing connector at(90,59,141): the middle alternatives have downward
+  incoming connectors, so this particular connector cannot attach them under
+  horizontal template rotations. It does not invalidate the main template.
+  The starting connector targets minecraft:empty, not another keep copy.
+
+Coliseum enemy_0 entities0 saves persistent Health20 iron-axe skeleton with
+iron chest/helmet and dyed leather boots. Spawner_0 block_entities0 saves
+Health50 Size16 phantom with skeleton passenger. Passenger equipment includes
+PowerV/PunchIII bow, enchanted armor and legacy tipped arrows. Its explicit
+DeathLootTable is dungeons_arise:entities/gladiator_loot. This is the only
+selected table reference, not chest loot. Delay30,min/max11420,SpawnCount2
+must not be replaced with the other designs' common200..800 interval.
+
+Challenger has six ordinary spawner alternatives: hoglin_rider_0 (Health40
+hoglin with Health50 wither skeleton); phantom_rider_0/1 (wither-skeleton
+passengers Health40); skeleton_juggernaut_0/1 (wither skeletons Health60/40,
+first with potion passenger); skeleton_theater_0 (Health30 wither skeleton
+with Health20 slime passenger). Two saved-entity templates skeleton_theater_2
+and skeleton_theater_3_main contain persistent wither skeletons Health30/60,
+respectively bow/legacy tipped arrows and netherite sword. Source armor,
+attributes and effects remain in each exact NBT document.
+
+Conqueror has four ordinary spawner alternatives: juggernaut_0/1 Health30
+wither skeletons, mounted_0 hoglin with Health20 wither skeleton, and
+phantom_rider_0 Size5 phantom with Health20 wither skeleton. Rider has three:
+husk_0, mounted_melee_0 hoglin with Health60 wither skeleton, and
+mounted_skeleton_0 Health10 Size5 phantom with wither skeleton. The latter
+uses min/max2400/4800; other Heavenly spawners use200/800. Initial Delays vary
+and are preserved in source NBT. No direct saved entities occur in the
+Conqueror/Rider hulls. Pool equal weights do not establish encounter frequencies:
+connector names select compatible alternatives and generation may reject pieces.
+
+Keep main_0 entities0..19 are paintings;20..42 are frogs with positive saved
+Health. These are not43 hostile enemies. Nine spawner pieces use connector
+classes high0..3, middle4..5, low6..8. Variant3 is Health30 Size1 slime carrying
+Health2 creeper with Fuse10/ExplosionRadius3. Others include skeleton/wither
+skeleton and potion passengers; some potion Items are rotten_flesh/slime_ball.
+Preserve these unusual legacy payloads rather than assert functioning attacks.
+Main block_entities619 and637..644 each save27 strong_harming splash potions
+in barrels. Dispensers621..628 each save seven strong_harming, one
+strong_slowness and one strong_poison splash potion. Fixed inventory and a
+source dispenser do not prove working trap activation. No other family in
+this batch has nonempty fixed Items/Book container payloads.
+
+The inventory records distinct loot-table IDs by template and points to
+pool-traces-content template_contents[template_id].loot_references for every
+exact source pointer. Spawner attributes similarly link the existing full
+spawner_blocks records, including SpawnData, SpawnPotentials and passengers,
+without duplicating that NBT again. Selected Heavenly/Keep chest tables and
+Coliseum entity drops remain separate. Legacy conversion, realized rewards,
+natural populations and difficulty are not measured by this attribution.
+
+Rebuild and focused validation use the commands above. This increment changes
+only these five assessments and direct source identities. It adds no runtime,
+measurement system, validator or generalized helper.
+
+Eight focused tests pass. Inventory SHA-256:
+97446b913ab5d36ba54899805ffd963ee66b2e4a733f0462fb63a751f06ee73a.
