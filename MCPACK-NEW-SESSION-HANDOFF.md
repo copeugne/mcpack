@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed ruins geometry accepted after b950029e
+
+Fresh ordinary seed42 Overworld ruins_land_warm capture passed readiness,
+81 requested chunks,correlated flush,clean exit0 and frozen config acceptance.
+Decoded1802 records; downloaded full start line401,chunk-214,43,19pieces,
+envelope[-3435,62,665,-3415,77,710],size21x16x46. Both size attributes and observed
+Overworld dimension integrated. Variant/pillar/population limits remain explicit.
+Archive item8-repurposed-ruins-geometry-r1-b950029e.tar.gz:253files,3,014,248bytes,
+SHAc5c3faf290f1489936b3676c62be53be3c2829180a249f0dad2e560c87f57b99.
+Local/downloaded restores pass; release/tag verified atb950029e. No runtime remains.
+All85 focused checks pass (66.18s);only ruins/input identity changed. No new tool.
+Total399/448 assessed;49 families/442 entries remain: IDAS38/343,Repurposed11/99.
+Quantify next batch; reuse evidence. Commands/custody in repurposed-ruins-assessment
+README. Final integration,acceptance,backup/history and PR/review/main stay open.
+Inventory SHA-256: 74baf22c2187479b68733780af62930eb6ba5a1ce704f0fedb91a40ec1e80eb5.
+
+
 #### Repurposed ruins content assessed after dc6515d6
 
 Seven descriptive entries integrated for five variants/57templates. No authored

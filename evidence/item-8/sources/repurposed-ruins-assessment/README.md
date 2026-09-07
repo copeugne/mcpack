@@ -85,3 +85,46 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/repurposed-ruins-geometry-r1/run.json \
   --timeout-seconds 900 --structure repurposed_structures:ruins_land_warm
 ```
+
+
+## Geometry acceptance
+
+Declared seed42 run passed readiness, matching81-chunk target completion, correlated
+flush, clean exit0 and frozen configuration acceptance. Comment-normalized changes
+remain in run.json. Decoding produced1802 records; this is not the requested sample
+denominator. Downloaded chunks.jsonl line401 contains full ruins_land_warm start
+chunk-214,43,19pieces,envelope[-3435,62,665,-3415,77,710],size21x16x46.
+This is one saved assembly, not typical/all-variant dimensions, occupied area,
+exposed height or proof of completed population in every component chunk. Nether
+pillar extensions remain outside this land-sample claim. Raw warnings remain intact.
+
+Archive item8-repurposed-ruins-geometry-r1-b950029e.tar.gz contains253files,
+3,014,248 compressed bytes and20,746,865 uncompressed bytes. SHA-256:
+c5c3faf290f1489936b3676c62be53be3c2829180a249f0dad2e560c87f57b99.
+Decoded chunks SHA-256:
+15d8e982997df09352cf3a970123f83a3298910845e32496e5373466a9876094.
+Local and freshly downloaded restores verify253files. Remote release/tag
+item-8-repurposed-ruins-geometry-2026-09-07-r1 resolves to declaration commit
+b950029efea7b4b3f5bbec7d6c9b9ac483dc7f08. GitHub is separate storage; local archive
+and restores share a disk. Three raw-custody records are hash-bound in the family.
+
+Both size attributes and observed Overworld dimension are integrated, superseding
+the geometry-open statements above. This finishes the family assessment, not Item8.
+
+Reproduction using unused output paths:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/repurposed-ruins-geometry-r1"), Path("evidence/raw/item8/repurposed-ruins-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/repurposed-ruins-geometry-r1/world --output evidence/raw/item8/repurposed-ruins-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/repurposed-ruins-geometry-r1 --archive evidence/raw/item8/item8-repurposed-ruins-geometry-r1-b950029e.tar.gz --manifest evidence/item-8/raw-custody/repurposed-ruins-geometry-r1-manifest.json --revision b950029efea7b4b3f5bbec7d6c9b9ac483dc7f08
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-repurposed-ruins-geometry-r1-b950029e.tar.gz --manifest evidence/item-8/raw-custody/repurposed-ruins-geometry-r1-manifest.json --target evidence/raw/item8/repurposed-ruins-geometry-r1-restored --receipt evidence/item-8/raw-custody/repurposed-ruins-geometry-r1-local-restore.json
+gh release download item-8-repurposed-ruins-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-repurposed-ruins-geometry-r1-b950029e.tar.gz --dir evidence/raw/item8/repurposed-ruins-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/repurposed-ruins-geometry-r1-download/item8-repurposed-ruins-geometry-r1-b950029e.tar.gz --manifest evidence/item-8/raw-custody/repurposed-ruins-geometry-r1-manifest.json --target evidence/raw/item8/repurposed-ruins-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/repurposed-ruins-geometry-r1-downloaded-restore.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/repurposed-ruins-complete-r1.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+Apply existing observed_bounds(ChunkRecord.model_validate_json(line)) to downloaded
+one-based chunks.jsonl line401, from mcpack_evidence.item8_world_bounds and
+item7_nbt_models. Require matching structure_id, chunk_full=true and the recorded
+inclusive bounds. No new measurement algorithm was introduced.
