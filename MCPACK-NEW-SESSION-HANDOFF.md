@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches witches-treestump attribute decision 5c5ee66a and reproduces
+exactly. One family was assessed across eleven fields, with ten explicit source
+interpretations and unchanged resolved biome constraints. Thirteen of fifteen
+tag-matched biomes overlap captured dimensions; deciduous_forest and pumpkin_fields
+from Regions Unexplored do not. No new measurement/tooling, occurrence claim or
+inactive-field rewrite. Quantify the next substantive family batch before edits.
+Other candidate attributes, nonregistry integration and final PR gate remain open.
+
 Witches treestump now has source-based interpretations for its required fields:
 29 by 25 nominal footprint, height 20, surface placement, qualitative woodland
 visibility, witch/cat spawn overrides, two loot-bearing chests and no packaged
