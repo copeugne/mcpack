@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Crashed ship assessed after f365bb84
+
+Eight required crashed-ship answers now join the three existing descriptions.
+The retained template, generator and replacer resolve nominal hull geometry,
+placement, filtered markers/entities and direct loot/mob/spawner attribution.
+One narrowly necessary StructureErode capture resolves the previously absent
+post-placement callee. It shows Gaussian debris offsets beyond the hull, so
+13x24x29 is explicitly nominal hull geometry, not a total occupied bound.
+No new world measurement or framework. Exact capture and build commands and
+reason are in `evidence/item-8/sources/crashed-ship-erosion/README.md`.
+
+Sixteen affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-crashed-ship-descriptions.json`, SHA-256
+df6c5bb59a73f0784c5469405beaab4dba06a0cf95f9d60e4baa3ae40bade898.
+Registry rows and all other nonregistry contributions are unchanged.
+Retire this descriptive assessment. Nonregistry is now 38/40; ruined obsidian
+pillar and cave urn cache remain. Registry reconciliation and final all-family
+integration, acceptance, PR review and main delivery remain open.
+
 #### Scarecrow assessed after c84b5af3
 
 Scarecrow now records all eleven descriptive answers. Six added answers reuse

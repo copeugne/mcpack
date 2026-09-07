@@ -231,6 +231,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "org/betterx/bclib/util/StructureErode.class",
     "net/minecraft/world/level/biome/BiomeGenerationSettings.class",
     "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature.class",
     "net/minecraft/world/level/levelgen/placement/BlockPredicateFilter.class",
