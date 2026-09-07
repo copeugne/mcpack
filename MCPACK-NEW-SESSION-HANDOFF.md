@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five Explorify settlements: attribution integrated after bff151b9
+
+Campsite, dark_forest_settlement, farmstead, ruins and tavern now have eight
+explicit attributes plus resolved biomes: 40 answers integrated (20 missing
+placement/design descriptions, 20 existing source attributions reconciled).
+Retire these supported answers. Ten assembly-geometry answers remain open,
+footprint and vertical size per family. No saved layout observations exist in
+the retained bounds catalog; do not substitute component sizes for settlements.
+Ruins' f15 overlays explicitly add common/rare archaeology loot with processor
+caps 3/1 for house and 5/2 for path, not guaranteed whole-family counts.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-settlement-attribution.json`, SHA-256
+34650625900b0a3b019dc05b989a1ad5a4455757a3fd5b8217f05c59cf575444.
+Only these five rows changed; geometry, biomes, observations and nonregistry
+content are unchanged. Registry complete-assessment count remains 82/410, with
+328 families still open, now including five with only geometry outstanding.
+Nonregistry remains 40/40. Resolve these ten geometry answers through the smallest
+existing evidence/runtime path; do not build a generalized assembly simulator or
+restart their completed attribution. Final integration, acceptance, verified
+backups/consolidation, PR review and main delivery remain open.
+
 #### Hut and shipwreck assessed after 825b0bd4
 
 Retire explorify:mangrove_hut and explorify:end_shipwreck. Twelve missing answers
