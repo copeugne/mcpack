@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Five connected assemblies now have resolved canonical decisions: desert ruins,
+ruined well, ruins of the deep, snifferhenge and windswept shrine. Existing pool,
+template and connector evidence proves which named parts are components. Focused
+IDAS and scoped checks pass. Canonical backlog is 8: abandonedhouse, brickhouse,
+cottage, pillager_camp, redhorn_guild, ruined_church, ruined_fort and
+witches_treestump. Derived inventory refresh follows. Attributes, 33 nonregistry
+contributions and final validation/review/main delivery remain open.
+
 Inventory matches decision 7e7654fb and reproduces exactly. Canonical backlog:
 13, all IDAS. All 887 roots remain in 426 working groups with full variants and
 derived attributes unchanged. Next inspect the remaining house and ruin designs
