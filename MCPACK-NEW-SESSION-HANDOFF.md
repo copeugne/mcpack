@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+The final eight IDAS canonical decisions pass focused IDAS and scoped checks.
+Canonical-note backlog is now zero. This closes the tracked design-reconciliation
+notes, not Item 8: 33 nonregistry contributions, all required effective attributes,
+coverage reconciliation, final validation/review/main delivery remain open.
+Preserve the 426 working groups as a working coverage count, not a final active
+authored-family count. Derived inventory refresh follows. Next reconcile the
+existing nonregistry dispositions and enumerate outstanding attribute decisions.
+
 All twelve remaining design templates were visually inspected. The four small
 design sheets reproduce exactly at renderer 4323e1e3. No conversion sessions
 remain running. Canonical decisions for the eight records follow. Existing
