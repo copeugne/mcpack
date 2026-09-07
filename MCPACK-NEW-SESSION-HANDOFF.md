@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `7cbe06c7d8b074fa6121c1143432d28d02996712`.
+  `edd1dcf9f210097934b17aaa0e054d954077feb4`.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -59,24 +59,36 @@ The final Codex cycle completed with a thumbs-up and no new findings.
 record all 448 classifications and the passing local gate. No classification,
 measurement, Item 8 preservation or PR20 review work remains.
 
-The delivery-status follow-up is on `codex/item9-delivery-record`; it only
-reconciles status and records verified references. The accepted classification
-values, checker and Item 8 inputs remain unchanged.
+## Item 10 active work
 
-Item 10 is the next dependency, outside the completed Item 9 task. No Item 10
-work was performed. The old 21-family Item 9 report is superseded. The cross-item
-audit and human-observation restrictions for Item 11 remain in AGENTS.md and
-SPECS.md. Do not resume historical archive commands as current instructions.
+PR21 merged the Item 9 completion records as `edd1dcf9`, verified against
+GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
+`codex/item10-density`, based on that main commit.
+[Item 10 evidence](evidence/item-10/README.md) records verified dependency hashes,
+reusable evidence, missing measurements, proposed batches and resource estimates.
+No Item 10 experiment has run. No Item 8 or Item 9 work was repeated.
+
+Before implementation, resolve persistent storage and measurement semantics.
+Only 1.8 GiB persistent space is free. Item 5 requires ground-truthed combat
+encounters; the historical static hostility proxy cannot satisfy that contract.
+Questions about storage and that requirement have been sent to the user.
+Silence preserves the existing requirement. Sparse Structures is present with
+spread factor 2; the historical absent-mod result is superseded context.
+The 40 nonregistry families need occurrence coverage beyond structure starts.
+Finish and freeze the protocol before collecting new measurements.
+
+After Item 10 delivery, audit Items 2 through 10 together. Do not implement,
+run, repair or lint Item 11 workflows. The blind-human requirement remains.
 
 ## Local workspace to preserve
 
-The delivery-status branch is `codex/item9-delivery-record`. Verify its upstream
-and actual delivered state before continuing.
+The prior branch `codex/item9-delivery-record` remains pushed at `3f758cb2`.
+That unmerged commit changes only the historical reference filename. Preserve it.
 Inspect actual staged, unstaged and untracked state before mutation. A clean
 checkout does not reproduce another workstation's uncommitted edits, deletions
 or private backups; do not invent or recreate those changes from this handoff.
 Preserve any existing local changes and archives. The local historical archive
-at `docs/history/MCPACK-HANDOFF-2026-09-07-ARCHIVE.md` is not a tracked dependency;
+at `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md` is not a tracked dependency;
 the immutable link above supplies durable historical context.
 Protected artifacts include `.codegraph`, `.omo/` and
 `mcpack-reconstructed-28(1).bundle` wherever present. Do not stage or delete them.
