@@ -6,6 +6,36 @@
 
 ### Continuation update - 2026-09-07
 
+#### Local acceptance verified after a66d1a9a
+
+Full495-test Item8 run completed494 passes/one stale dimension-test failure129.77s.
+Failure expected raw by-root dimension shape in final listing after descriptive
+attribute overrides/nonregistry consolidation. Narrow fix tests the raw assemble
+join before dimension overrides; final canonical coverage remains covered by the
+new integration test. Corrected dimension module2/2 passes0.32s, Ruff/basedpyright
+changed builder/tests clean. No runtime implementation or source evidence changed.
+Initial full log and corrected-module log committed under evidence/item-8/.
+Fresh final-acceptance-r1 inventory rebuild compares byte for byte. All448 active
+rows have11 nonempty assessments. Exact registry accounting remains887 roots,
+448 active families,18
+other registry groups. Requirement-level acceptance recorded in evidence README;
+provider/report/ledger current status updated, historical contexts preserved.
+No process remains running. Full suite need not repeat unchanged for reassurance.
+
+Remaining before PR: execute already-authorized preservation/history preparation.
+Exact authorization is in this handoff section "Authorized history consolidation
+before the final PR". Preserve originals, old published ref, self-contained verified
+external Git bundle, tags/evidence commits, userAGENTS and nonregenerable untracked/
+ignored evidence. Reuse existing raw release manifests/restores where adequate,
+not duplicate8GB of already-durable raw data blindly. Disk free about2.7GB; .git238MB,
+evidence/raw/item8 8.1GB. No second mounted data filesystem found. Inventory ignored
+content and existing external custody before selecting backup strategy. Do not
+modify refs until preservation is verified. Existing branch is ~1985 commits ahead
+of main; use isolated coherent milestone reconstruction with final-tree equality.
+Then open PR promptly, request @codex review, wait/triage/fix/review until clean,
+merge and verify main. Do not declare Item8 complete or start Item9 yet.
+
+
 #### Canonical listing consolidated and delivered at 8d04ef66
 
 Builder integration eb303538 and isolated generated migration8d04ef66 are pushed

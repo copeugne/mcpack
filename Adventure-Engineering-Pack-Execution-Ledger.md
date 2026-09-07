@@ -305,15 +305,16 @@ Exact-SHA local reviews at `97262a21b0b76c253f57e32b8665e48d0a63f822`, `8c7e7b8b
 
 **Continuation decision, 2026-09-04:** The user explicitly authorized Item 8 after the continuation audit found that Item 7's final clean GitHub Codex review is not visible. Item 7 remains empirically verified and merged; its completion receipt rebuilt byte for byte and all 210 Item 7 tests passed. Proceeding is an explicit user exception to that prior review prerequisite, not a claim that the missing review occurred. Preserve r14 without regeneration. Item 8 must satisfy the full final-review and delivery requirements with no inherited exception.
 
-**Status: `IN PROGRESS`; canonical family listing integrated, final acceptance/delivery open.**
+**Status: `IN PROGRESS`; canonical family listing and local acceptance verified; reviewed delivery open.**
 The active branch is `codex/item-8-completion`. Inventory delivery through `8d04ef66`
 contains448 active families (408 registry,40 nonregistry), with18 other registry
 groups retaining inactive/excluded coverage. All887 runtime roots are assigned once.
 All active families have the eleven Item8 assessments; provider discovery and
 family assessment are resolved. The33 nonregistry contribution records retain
-component relationships and source evidence. The consolidated listing passes88
-focused checks; final acceptance, preservation/backup preparation and the clean
-PR review/verified main merge remain open. Current report:
+component relationships and source evidence. The local gate includes a byte-identical rebuild,494/495 full-suite passes plus
+the corrected stale dimension test (affected module2/2), and clean lint/type checks.
+Initial failure and correction are retained in evidence/item-8/README.md.
+Preservation/history preparation and clean PR review/verified main merge remain open. Current report:
 `docs/items/Item-8-Baseline-Structure-Inventory.md`; reproduction/evidence:
 `evidence/item-8/README.md`. The report retains the superseded zero-mod history as
 context, not current acceptance evidence.
@@ -462,7 +463,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
-| 8 | Structure-family inventory | `IN PROGRESS` | Canonical listing delivered through `8d04ef66`:448 active families,18 other registry groups,887 roots assigned once. Provider discovery and all family assessments resolved. Final acceptance, preservation/backup, clean Codex review and verified main merge remain open. Current evidence: `evidence/item-8/README.md`. |
+| 8 | Structure-family inventory | `IN PROGRESS` | Canonical listing delivered through `8d04ef66`:448 active families,18 other registry groups,887 roots assigned once. Provider discovery, all family assessments and local acceptance verified. Preservation/history preparation, clean Codex review and verified main merge remain open. Current evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
 | 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
 | 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
