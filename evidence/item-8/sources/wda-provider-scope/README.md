@@ -466,3 +466,38 @@ family-specific descriptive attribution are integrated into the inventory.
 Eight focused tests pass. Only the five intended families and direct source
 identities change. Inventory SHA-256:
 3bb272edbb4c9c7213be4a81ce924d2292862b1bc5d5e4c169d92f7b7f1d5b8d.
+
+## Predeclared campsite geometry capture
+
+Resolve the four remaining Merchant/Illager Campsite geometry attributes with
+one ordinary-seed42 run, two roots,81 requested chunks per target,162 total,
+timeout900 seconds. Existing source modules establish branching and terrain
+matching but do not provide a complete observed camp; no retained starts exist.
+This narrowly addresses required assembled dimensions. Do not measure pacing,
+frequency, all-layout extrema or gameplay. No new tool/schema is required.
+Reuse fresh hash-verified Item6 materialization, existing Chunky instrument,
+readiness, correlated save and clean stop. Preserve failed attempts. Decode the
+stopped world, require full start chunks, derive bounds with existing
+item8_world_bounds.observed_bounds, retain archive manifest and tested local/
+published-download restores using the same commands as the Towns Village run.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/wda-camps-geometry-r1 \
+  --log-path evidence/raw/item8/wda-camps-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/wda-camps-geometry-r1/configuration \
+  --receipt evidence/raw/item8/wda-camps-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure dungeons_arise:merchant_campsite \
+  --structure dungeons_arise:illager_campsite
+```
+
+This declaration does not claim a successful run or resolved geometry.
