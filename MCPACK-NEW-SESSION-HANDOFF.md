@@ -7,6 +7,18 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated Stronghold geometry declared after f9362ad7
+
+Next batch is one family, two attributes: footprint and height. No full-start
+observation is retained; root placement settings alone do not establish assembled
+dimensions. The provider README predeclares one ordinary seed42/81-chunk capture
+with the existing runner and fresh integrated-stronghold-geometry-r1 paths.
+No runtime has yet started and no geometry success is claimed. Preserve failures,
+verify lifecycle/configuration, decode full-start piece bounds, and publish/restore
+raw custody before integrating dimensions. No new measurement tool is needed.
+Overall370/448 assessed,78 families and693 explicit attribute slots remain.
+
+
 #### Integrated Stronghold content assessed after aa1372ac
 
 Five outstanding attributes integrated: hostility, authored/natural enemies,
