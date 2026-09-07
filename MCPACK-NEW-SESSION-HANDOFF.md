@@ -6,6 +6,31 @@
 
 ### Continuation update - 2026-09-07
 
+#### Canonical listing consolidated and delivered at 8d04ef66
+
+Builder integration eb303538 and isolated generated migration8d04ef66 are pushed
+and verified. inventory.families now448 active families (408registry+40nonregistry),
+other_registry_groups18; all887 runtime roots assigned exactly once. Original426
+registry rows compare exactly equal before/after moving inactive/excluded records.
+Nonregistry source records remain under non_registry_content.contributions (33).
+Scarecrow already had assessment/rationale but no explicit families key: supplied
+its existing ID, fixing the first test's447 total without new scope or evidence.
+New test_inventory_consolidation covers source-shape preservation, root coverage,
+duplicate family rejection and missing attributes. All88 affected tests pass60.23s;
+Ruff/basedpyright changed builder/test clean. Inventory migration is large solely
+from moving existing records plus40 new rows; code/evidence migration split perAGENTS.
+Main report and ledger now reflect this state; historical zero-mod context retained.
+
+Next: complete final requirement/evidence reconciliation and applicable acceptance
+gate. Then authorized backup/history preparation and prompt PR opening, clean Codex
+review loop and merge/main verification. Do not mark complete or start Item9.
+No further provider discovery or family assessment/measurement currently required.
+Check test/tool consumers for old426-family layout before final gate. Source output
+keeps INCOMPLETE because final acceptance/review/delivery remain open, not because
+provider coverage is unresolved. Follow existing backup authorization below; no
+new preservation framework. Preserve user AGENTS and protected artifacts.
+
+
 #### Castle assessed; all family assessments integrated after 49f8e926
 
 Seven Castle content/placement entries integrated from existing source findings.
