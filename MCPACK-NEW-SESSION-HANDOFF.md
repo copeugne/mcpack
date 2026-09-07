@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five branching WDA geometries delivered after edd25249
+
+Ten geometry attributes finish Bandit Towers, Bandit Village, Greenwood Pub,
+Mechanical Nest and Thornborn Towers using five full starts from the declared
+seed42 capture. All targets completed with correlated save, clean exit0 and
+accepted frozen configuration. Archive357 files/12,164,719 bytes is published
+under item-8-wda-branching-geometry-2026-09-07-r1 at sourceedd25249. Local
+and published-download restores verified every file and reproduced geometry.
+No runtime remains. Exact results/commands/limitations:
+evidence/item-8/sources/wda-provider-scope/README.md. Eight focused tests pass.
+Registry307/410, nonregistry40/40, total347/450 assessed,103 remaining;
+WDA35/40. Remaining WDA families: Foundry, Mining Complex, Mining System,
+Scorched Mines, Shiraz Palace. Quantify their next batch before investigating;
+reuse existing evidence first. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+fd9ba05b942813cf6593b59ae63ef52277221b80e927f33ed19cbd2a9bea919f.
+
 #### Five branching WDA geometry targets after 84b0a247
 
 Ten geometry attributes remain for the active five-family batch. Existing
