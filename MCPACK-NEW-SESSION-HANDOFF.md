@@ -6,6 +6,37 @@
 
 ### Continuation update - 2026-09-07
 
+#### Castle assessed; all family assessments integrated after 49f8e926
+
+Seven Castle content/placement entries integrated from existing source findings.
+Three designs and shared plains branches remain one family. No source spawners
+or markers across136 reachable templates; all13 literal loot IDs defined. One
+empty Castle2 entity, absent guards/Bountiful and conditional shared zombie-villager
+sources dispositioned. Direct pinned board-replacement inspection documented.
+Accepted generated geometry reused. No new experiment/tool. All85 focused checks
+pass (61.06s); only castle/input identity changed.
+Total448/448 active family assessments now present. Zero outstanding family
+attribute entries under the current assessment denominator. This is NOT Item8
+completion: final canonical output integration and acceptance remain open.
+Details: evidence/item-8/sources/idas-castle-assessment/README.md.
+Inventory SHA-256: 2cf414bc937c5a8feebf52c29b2ed7a60b63d2b7b4bc45fc398c225dac4f39d4.
+
+Next quantified batch: consolidate40 already-assessed nonregistry families from33
+contribution records into the final family listing, retaining408 active registry
+families,17 suppressed groups and excluded cloud disposition without double count.
+Current builder lists426 registry groups and carries nonregistry contributions
+separately, with stale INCOMPLETE/scoping text. Do not simply declare COMPLETE.
+Existing source shapes differ: YUNG/Quark/BetterEndIsland families are inline dict
+rows keyed family, some singleton contributors use string family IDs plus sibling
+attributes, BetterEnd biome_buildings/biome_ruins use designs. Reuse these records;
+no new provider discovery, schema or measurement system. Inspect exact attribute
+mappings before adding the smallest direct normalization in existing builder.
+Then reconcile final report/ledger, applicable acceptance, preservation/backup
+preparation, PR Codex review loop and merge/main verification. Earlier detailed
+backup/history authorization remains below; preserve user AGENTS/protected files.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### Final IDAS geometry captured and integrated after cfe1b06f
 
 Existing frozen gap runner captured Pyramid and Castle together at seed42:81
