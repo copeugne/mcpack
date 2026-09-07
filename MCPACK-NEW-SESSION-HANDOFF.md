@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed outpost assessed after 57b5cb41
+
+Seven remaining attributes integrated for18 variants/205 pool templates.
+Authored cages/towers, End shulker feature and natural spawn overrides remain
+separate. Ocean full-bounded pufferfish/empty-category rules are explicit.
+No template spawners/markers;18 literal loot tables all defined. Bottom-layer
+pillar extension/waterlogging code directly inspected; support extents remain
+outside saved-piece geometry. No new runtime/tool. All85 focused checks pass
+(60.57s);only outpost/input identity changed. Total404/448 assessed;44 families/
+385 required entries remain: IDAS38/343,Repurposed6/42. Remaining Repurposed:
+ancient_city,bastion,city,fortress,stronghold,village, each seven content/placement
+entries with accepted size examples. Quantify next batch and reuse evidence.
+Details in evidence/item-8/sources/repurposed-outpost-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 70c897fb7b2b6bf348f61e4d01482cff1a634b7278d5b5176611a2c23bab8ab6.
+
 #### Remaining Repurposed geometry accepted after 91011cb9
 
 Both predeclared seed42 runs passed readiness, seven81-chunk completions,
