@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### Vanilla dimensions and remaining descriptions after a1363bb5
+
+Nineteen entries integrated from existing evidence: dimension attribution for13
+active vanilla families, plus hostility/visual descriptions for igloo, shipwreck
+and Nether fossil. These complete buried treasure and those three assessments.
+Dimension mappings reuse the existing builder join, preserving observed versus
+biome-compatible dimensions and variant mappings. Nether fossil is explicitly
+eligible/observed in both Overworld (biomesoplenty:dryland) and Nether
+(minecraft:soul_sand_valley); do not infer Nether-only from its name. No new
+capture/tool. All88 focused inventory/three-family source checks pass (65.14s).
+Only13 vanilla families/input identity changed. Registry344/408,nonregistry40/40,
+total384/448 assessed;64 families and596 required attribute slots remain:
+IDAS38/380,Repurposed17/154,vanilla9/62. Vanilla remaining: ancient_city9,
+bastion_remnant9,end_city5,mansion9,ocean_ruin3,pillager_outpost8,ruined_portal3,
+trail_ruins8,trial_chambers8. Quantify next batch and inspect already captured
+sources/world examples before more investigation. Final canonical integration,
+acceptance,backup/history preparation and final PR/review/main remain open.
+Inventory SHA-256: 3abc5ca73423ef48a77cc0bf79e89c475dc8991f4f5cdcce47ee7c1f210e43e3.
+
+
 #### BetterEnd village geometry accepted after f2f5b2b6
 
 Fresh predeclared seed42 End capture passes readiness,81 requested chunks,

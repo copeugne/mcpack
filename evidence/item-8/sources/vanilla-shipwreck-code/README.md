@@ -102,3 +102,17 @@ raw world bounds and world_observations links are unchanged. The dimension
 attributes now report nominal template envelopes instead of sample-only sizes;
 observed geometry remains available through those original links. Overall Item 8
 and remaining effective family attributes are still incomplete.
+
+
+## Remaining descriptive assessment
+
+Wreck exploration with container rewards and water/burial hazards; no mobs or spawners are authored by the inspected templates or marker handler.
+
+Ship hull fragments and, in applicable templates, a mast provide visual cues. Ocean-floor and partially buried beached placement change exposure; nominal template dimensions are not visible dimensions.
+
+These two required descriptions reuse the content and placement evidence already
+integrated above. Dimension attribution now also records the existing inventory
+builder join of effective structure biomes with captured dimension membership,
+keeping observed dimensions separate from eligibility. No new tool, capture,
+population count or sightline measurement is introduced. Earlier statements that
+these descriptive attributes remain open are superseded by this integration.
