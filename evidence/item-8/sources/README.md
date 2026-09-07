@@ -353,3 +353,41 @@ or proof that every piece has finished placement. The start chunk's full status
 does not establish that all intersecting chunks are full. Structures absent from
 these bounded worlds still need other evidence. Do not interpret sample extrema
 as global size limits or these observations as exploration pacing.
+
+## Seven Seas descriptive completion
+
+After b4fca803, five vessel families lacked two explicit attributes each:
+dimension and visual discoverability. Ten answers are now integrated into the
+family decisions and authoritative inventory. The eight existing descriptions
+per family are preserved, including source-only geometry, container references,
+spawner inputs and the missing Small Yacht spawner component. Observed populations,
+occupied geometry and effective loot transformations are not asserted by these
+source descriptions and are not additional measurements in this batch.
+
+Direct derivation uses these retained artifacts:
+
+- `structure-inputs.json`: each of the five resolved `has_structure/*_biomes`
+  tags has twelve ocean biomes, no missing required entries or unresolved tags.
+- `../runtime/dimension-r3/dimension-biomes.json`: intersection of those biomes
+  with each dimension's possible biome set yields only `minecraft:overworld`.
+  Existing Overworld observations for Corvette and Galleon remain linked;
+  absence of observations for the other vessels is not a generation-failure claim.
+- `packaged-json-redacted.json.gz`: the five resources under
+  `data/dungeons_arise_seven_seas/worldgen/structure/` all use `minecraft:jigsaw`,
+  `WORLD_SURFACE_WG`, `surface_structures`, and empty `spawn_overrides`.
+  Corvette/Junk/Yacht/Galleon/Frigate start offsets are -2/0/-3/-4/-1.
+- `templates-redacted.json.gz`: respective main `*_0.nbt` template XYZ sizes
+  are 60x55x26, 68x63x20, 38x43x15, 64x55x29 and 115x121x45. Ocean-surface
+  projection and these authored vessel forms support a qualitative above-water
+  outline cue. This is an inference from source geometry and placement, not a
+  measured visible height, viewing distance or guarantee of exposure.
+
+No new capture, measurement or tool was added. The initial inspection tried an
+`attributes` key on inventory rows; those rows expose attributes directly, so
+that lookup failed before edits. Inspection then used the correct existing shape.
+Six tests in `test_seven_seas_provider_scope.py` and `test_inventory_sources.py`
+pass, as do Ruff and Basedpyright for the builder. Only the five families'
+dimension, discoverability and evidence references changed; previous attributes,
+biomes, observations and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-seven-seas-descriptions.json`, SHA-256
+ab26067a99bc7d21b7573ec3b76a61bddf98b654f2837fad9cac2907a8f2ebcd.
