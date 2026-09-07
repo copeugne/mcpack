@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Skeleton Dungeon assessed after 70d4a16c
+
+Skeleton/Zombie batch quantified20 attributes and127 traced templates (58/69).
+Skeleton's ten attributes are integrated: retained full-start31x13x31 example,
+variable downward supports, effective skeleton-spawner assignment replacing raw
+pig NBT, natural override and two loot tables. Exact source/member hashes and
+derivation: evidence/item-8/sources/dungeons-provider/README.md, Skeleton Dungeon
+assessment. No new runtime or tooling. All85 focused tests pass; semantic
+inventory changes only Skeleton Dungeon and input identity. Registry317/408,
+nonregistry40/40,total357/448 assessed,91 remaining. Zombie's ten attributes
+remain:69 traced templates, missing big_stairs_crumbled_0 retained, no existing
+world-bounds start. Next inspect Zombie's processors and connected layout before
+justifying any geometry capture. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+78ec43534da81e62ef3b83997a5ece47e27afb48c33e5ab1312670081f392862.
+
 #### Small Dungeon assessed after dc4d01d0
 
 Ten attributes finish Small Dungeon using16 templates, existing full-start

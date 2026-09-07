@@ -146,3 +146,57 @@ only Small Dungeon and the input identity. No new tooling or raw evidence class.
 
 All85 focused tests passed. Total356/448 active families assessed,92 remaining.
 This completes Small Dungeon attribution, not the final Item8 gate.
+
+## Skeleton Dungeon assessment
+
+Batch initially quantified Skeleton and Zombie Dungeon together:20 attributes,
+58 and69 traced templates respectively. Skeleton is now assessed; Zombie's ten
+attributes remain, with no retained world-bounds start and missing
+betterdungeons:zombie_dungeon/big_stairs_crumbled_0 preserved. No missing
+component was reported for Skeleton. No new measurement was needed for Skeleton.
+
+Skeleton's139 effective biomes intersect only the captured Overworld, with no
+missing/unresolved biome tags. Its root uses underground_structures, absolute
+anchorY-50..-30, no surface heightmap projection and piece-bounded monster override
+skeleton weight100,min4,max15. The58 templates have no direct saved entities or
+nonempty fixed Items. Their two loot-table references are
+betterdungeons:skeleton_dungeon/chests/common and chests/middle. This is source
+attribution, not measured reward quantities or enemy counts.
+
+Ordinary spawners occur once in each of ten selected component templates:
+bridges/bridge_big_0 and bridge_big_2; stair1/stair1_0..3; stair2/stair2_1,2,3,5.
+Paths are under betterdungeons:skeleton_dungeon/. Palette/state_counts and NBT
+agree. These alternatives are not ten spawners in every dungeon. Raw pig NBT
+is replaced by SkeletonMobSpawnerProcessor.processBlock offsets14..108:
+skeleton singleton SpawnPotentials, requiredPlayerRange18,maxNearbyEntities8,
+maxSpawnDelay650 and EntityType.SKELETON. Its lambda writes minecraft:skeleton.
+Authored spawners and the separate natural override both remain explicit.
+
+World-bounds index277 (repeat666) is a full-start example at ocean-heavy seed
+95920844204830198, chunk27,5. Source run-a/ocean-heavy/chunks.jsonl line13529.
+Envelope[417,-47,65,447,-35,95] gives31x13x31 inclusive saved-piece size.
+This illustrative example is not family-wide extrema or occupied volume.
+SkeletonDungeonLegProcessor uses blue glass markers and extends cobble support
+columns downward through air/fluid until solid terrain/build limits. Record
+that variable extension separately;13 is saved-piece height, not total occupied
+height. RuinedStoneBrickProcessor varies/removes yellow-glass/prismarine-brick-slab markers according
+to existing air and material selection at their original position. Underground
+stairs/bridges may be exposed in caves; no measured surface visibility is claimed.
+
+Exact archive and three class-member hashes are in processor_inspection in the
+family decision. Direct inspection used pinned javap on the immutable retained
+archive. An initial guessed ruined-brick class name failed; inspecting the archive
+member list resolved the actual name RuinedStoneBrickProcessor. That failed
+inspection changed no evidence. Reproduce each exact dotted member name with:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.skeleton_dungeon.SkeletonMobSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/skeleton-dungeon-assessed-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+All ten attributes enter the authoritative inventory. Semantic comparison changes
+only Skeleton Dungeon and input identity. No new tooling or raw evidence class.
+
+All85 focused tests passed. Total357/448 assessed,91 remaining. Zombie Dungeon
+is not yet assessed; its ten attributes remain within this two-family batch.
