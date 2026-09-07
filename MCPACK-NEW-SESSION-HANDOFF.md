@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS tinkers citadel assessed after e9834ee8
+
+Nine entries integrated for four rigid branching components. Nominal70 by110
+footprint,118 height. Ten spawners select skeleton10,zombie10,forgotten10;
+seven empty raw entity compounds preserved. Fish/non-mob entities distinct from
+hostile spawner sources. Six defined loot tables,two CORNER markers. Direct pinned
+WindmillBearingProcessor inspection records QueueAssembly=true and tick0 without
+claiming operation; no runtime/tool added. Element terrain kernels retained.
+All85 focused checks pass (60.37s); only tinkers_citadel/input identity changed.
+Total442/448 assessed;six connected IDAS families/54 entries remain,nine each.
+Quantify next batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-tinkers-citadel-assessment/README.md.
+Inventory SHA-256: f5229b488d9b24ad9fabd955b1e77cfc9920a1a4a9956e11fac3c68aed8100bc.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS tinkers workshop assessed after 50c11592
 
 Nine entries integrated for eight rigid serial components. Nominal63 by81
