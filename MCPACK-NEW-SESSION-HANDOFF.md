@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### Gold content and placement after 04a6c457
+
+One family, seven of nine outstanding attributes integrated from pinned templates,
+Gold pieces, placement and processor sources. The template chest starts with
+bronze Kind but its marker assigns gold type and the exact gold reward table.
+Sun Spirit authorship, empty natural-spawn overrides, source spawner attribution,
+placement and discoverability are recorded. No runtime or tool added.
+All85 focused tests pass (58.41s). Only Gold and input identities changed.
+Counts remain365/448 assessed,83 families remaining; outstanding explicit
+attribute slots fall732 to725. Gold two sizes and Bronze two sizes remain.
+Before any capture, finish direct geometry inspection: island38x43x38,
+stub15-cube at radius16.8..<19.8, chamber23x9x28, tunnel7x5x16.
+Chamber connection uses tunnelFromOddSquareRoom, terrain query uses
+ tunnelFromEvenSquareRoom. Eighteen cave point boxes do not bound actual carving.
+Whole-family geometry must account for those paths and foliage separately.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+003f5fd6c7ae40f40f1ac40f496abbe52e545041670f99f7ec29a4b2e19cc27c.
+
+
 #### Silver assessed after c2412503
 
 One family,nine outstanding attributes integrated from existing pinned Silver

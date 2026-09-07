@@ -126,3 +126,68 @@ dimension answer. Reproduce with fresh output paths:
 uv run -m tools.build_item8_inventory --output evidence/raw/item8/silver-assessed-inventory.json
 uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
 ```
+
+## Gold content and placement assessment
+
+Seven outstanding descriptions are integrated for `aether:gold_dungeon`.
+Dimension was already established. Approximate footprint and vertical size
+remain outstanding; the central island template alone is insufficient.
+
+Use the pinned `aether-custom-entry` GoldDungeonStructure, this directory's
+Gold pieces, `aether-placement` AetherLoot/BossRoomProcessor/DoubleDropsProcessor
+and the four selected templates in `templates-redacted.json.gz`. The selected
+processor lists are `gold_boss_room`, `gold_island` and `gold_tunnel` in
+`packaged-json-redacted.json.gz`. All identities are bound in family-decisions.
+
+The templates are island38x43x38, stub15x15x15, boss_room23x9x28 and
+ tunnel7x5x16. Only boss_room contains an entity: one `aether:sun_spirit`, with
+`BossFight=0`. GoldBossRoom.makeSettings enables entity finalization. No selected
+template palette contains an ordinary or trial spawner. Structure spawn
+settings have twelve empty full-box lists. These facts distinguish authored
+boss content from natural spawning; they do not prove activation or population.
+
+The boss template contains a locked treasure chest with empty Items and initial
+Kind `aether:bronze`. Its `Treasure Chest` marker sits one block above.
+GoldBossRoom.handleDataMarker assigns GOLD_DUNGEON_REWARD with a random long seed
+when the block below is a randomizable container, sets dungeon type `aether:gold`
+and clears the marker. AetherLoot binds that key to
+`aether:chests/dungeon/gold/gold_dungeon_reward`. No direct template LootTable
+reference or fixed container contents occur. Accessibility and reward yield
+are not inferred from the marker binding.
+
+Selected rule processors replace locked hellfire stone with its light variant,
+and holystone with mossy holystone. BossRoomProcessor supplies dungeon metadata;
+DoubleDropsProcessor changes a block-state property. Direct inspection of
+SurfaceRuleProcessor.process shows tagged dirt top-material replacement;
+VerticalGradientProcessor.process may change underlying holystone to dirt;
+NoReplaceProcessor.process preserves existing baseblock, configured as air.
+These inspected paths add no conventional spawner. Their exact JAR and member
+hashes are recorded in the existing processor_inspection field. Inspect with:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath downloads/item3/candidates/aether-1.21.1-1.5.10-neoforge.jar \
+  com.aetherteam.aether.world.processor.SurfaceRuleProcessor \
+  com.aetherteam.aether.world.processor.VerticalGradientProcessor \
+  com.aetherteam.aether.world.processor.NoReplaceProcessor
+```
+
+GoldDungeonStructure.findGenerationPoint initially anchors at
+max(WORLD_SURFACE_WG base height minus20,40+nextInt(60)). generatePieces creates
+the island, stubs, cave pieces, boss room and one tunnel. tunnelFromBossRoom
+uses tunnelFromOddSquareRoom for the chamber connection, and
+ tunnelFromEvenSquareRoom for the terrain query beyond the tunnel. A positive
+difference between exit terrain height and tunnel origin Y shifts all pieces
+upward. Initial anchor height is therefore not final height.
+
+addIslandStubs selects8+nextInt(5) pieces around the island center, using radius
+(nextFloat*0.125+0.7)*24 and negative vertical offset floor(24*nextFloat*0.3).
+placeGumdropCaves selects18 point anchors with independent differences of two
+nextInt(24) values on each axis. GoldStubCave.postProcess carves beyond those
+point boxes, so saved point bounds alone would not describe carving extent.
+afterPlace attempts configured golden oaks on island/stub upper surfaces.
+The island and foliage can be landmarks while the chamber is enclosed. This is
+source-based discoverability, without measured sightlines or a guarantee that
+terrain leaves the tunnel visible.
+
+No new runtime capture, measurement tool or validation framework was added.
