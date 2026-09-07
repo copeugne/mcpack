@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Bazaar and frozen crypt component decisions pass focused IDAS and scoped checks.
+Canonical backlog: 17, all IDAS. Inventory refresh follows. Nexus conversion
+session 44369 completed successfully; all six alternatives were visually inspected
+and fit their frames. Finish its content/processor comparison before a decision.
+Attributes, nonregistry and final delivery remain open.
+
 Inventory matches 38f3cbea and reproduces exactly. Canonical backlog: 19, all
 IDAS. All 887 roots and full variants remain in 426 working groups. Farmhouse
 alternatives need comparison; nexus conversion session 44369 was last live.
