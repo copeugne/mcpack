@@ -6,6 +6,180 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining Repurposed geometry accepted after 91011cb9
+
+Both predeclared seed42 runs passed readiness, seven81-chunk completions,
+correlated flush, clean exit0 and frozen config acceptance. Overworld decoded6607
+records; End1803. All seven target full starts verified through downloaded restores.
+Fourteen size attributes integrated: ancient_city,bastion,city,fortress,outpost,
+stronghold,village. Saved-piece envelopes exclude occupied/support/population claims.
+Overworld archive291files/15,976,388bytes SHA3f076e47d1c843a31e83e19f335760de9a0522c3444097cd7c224242837209e3;
+End271files/1,906,622bytes SHA29b73f1cd9ec7f322d159ab57751e0c4e65972a3edbae48f7233010b84939487.
+Both local/downloaded restores pass. Release/tag
+item-8-repurposed-final-geometry-2026-09-07-r1 verified at91011cb9. No run remains
+active. Raw spawner-list/item-loading/aquifer errors retained with size-only
+disposition; content reconciliation remains open. Commands, exact lines/bounds
+and identities in evidence/item-8/sources/repurposed-final-geometry/README.md.
+All85 focused checks pass (61.89s);only seven families/input identity changed.
+Total remains403/448 assessed;45 families/392 required entries remain: IDAS38/343,
+Repurposed7/49. All remaining Repurposed size requirements now have accepted
+examples. Next assess seven content/placement entries per remaining family;
+village crop precedence conflicts and IDAS spawner failures remain relevant.
+No new tool/framework. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: f6be55f27ff1674883d809ee5bf7817a67082880345f65d795f975829afae7ef.
+
+#### Repurposed pyramid assessed after bd54fff9
+
+Seven remaining entries integrated for11 variants/22 pool templates. Three
+replacement spawner lists select husk/endermite/zombified piglin; snowy retains
+its template stray. Jungle infested-block conditional silverfish and archaeology
+are recorded alongside13 literal loot sources; all14 tables defined. TNT/magma
+hazards are not claimed operational traps. Placement uses effective Nether
+land_search_direction, preserving the unused packaged selector distinction.
+No new capture/tool. All85 focused checks pass (58.99s);only pyramid/input
+identity changed. Total403/448 assessed;45 families/406 required entries remain:
+IDAS38/343,Repurposed7/63. Remaining Repurposed: ancient_city,bastion,city,fortress,
+outpost,stronghold,village. All seven lack full-start geometry in current inputs;
+check direct assembly derivation before declaring captures. Village has nine
+competing crop processor definitions. Quantify next batch and reuse evidence.
+Details in evidence/item-8/sources/repurposed-pyramid-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: e01bb97b34b4b8d5734793575f4bcb0d1cb683ecbff0787ff822f747ae1ca79d.
+
+#### Repurposed mineshaft assessed after 7a8fabb5
+
+Seven remaining entries integrated for16 variants/226 pool-traced templates.
+Sixteen feature-selected minecart templates each carry a defined matching loot
+table; the empty literal pool loot trace was not accepted as no loot. Sixteen
+spawner lists replace source cave spiders with variant-specific cave spiders,
+strays,drowned,endermites or blazes. End natural piece overrides remain separate.
+Placement/source limitations include terrain adjustment, rail/sky suppression,
+conditional minecart placement and discarded placeInWorld result. No new runtime
+or tool. All85 focused checks pass (58.85s);only mineshaft/input identity changed.
+Total402/448 assessed;46 families/413 entries remain: IDAS38/343,Repurposed8/70.
+Next pyramid has seven remaining entries and existing accepted geometry. Reuse
+its22 templates/15 selected processor lists; quantify missing claims before any
+new investigation. Remaining seven Repurposed geometry gaps and village crop
+precedence conflicts stay open. Details in repurposed-mineshaft-assessment README
+under evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: fc9221d93bb26079030c6f051e2719b03a039d04fb37403bcea3eb86cfb772d9.
+
+#### Repurposed mineshaft and pyramid sizes integrated after 67fa3d4e
+
+Four required size entries now explicitly accept existing full-start envelopes.
+Mineshaft soul run-a ordinary line2085 gives137x20x108; pyramid Nether run-a
+mountainous line2498 gives21x13x21. All observed alternatives and limits remain
+in the authoritative attributes. No new capture/tool. All85 focused checks pass
+(60.15s); only the two intended families/input identity changed. Families remain
+401/448 assessed;47 families/420 required entries remain: IDAS38/343,Repurposed9/77.
+Next complete seven content/placement entries each for mineshaft and pyramid.
+Remaining seven Repurposed families have no full-start envelope in the inventory;
+a search of21 additional original decoded Item8 captures found no matching full
+starts. Inspect assembly evidence before declaring necessary runtime capture.
+Selected processor definitions exist for all nine remaining families. Village has
+nine competing crop_randomizer definitions requiring precedence assessment; do
+not silently choose by catalog order. Reuse existing resource selection/code.
+Details in evidence/item-8/sources/repurposed-mineshaft-pyramid-geometry/README.md.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Inventory SHA-256: 849013b2732c587a02659926e4535283f829e3cb79147e1cdac1d608e498aacc.
+
+#### Repurposed temple assessed after 3d65f246
+
+Nine required entries integrated for seven variants/seven templates, using existing
+source and world evidence. Nether spawner processors select magma cube, zoglin,
+skeleton, strider and zombified piglin by variant; original basalt piglin data is
+not final attribution. Fifteen literal loot tables plus ocean archaeology source
+are defined. Existing full crimson mountainous line2198 supplies12x14x15 envelope.
+Placement and qualitative visibility retain exposure/population limitations.
+All85 focused checks pass (61.64s); only temple/input identity changed. No new
+capture/tool. Total401/448 assessed;47 families/424 entries remain: IDAS38/343,
+Repurposed9/81. Seven remaining Repurposed families lack a full-start envelope
+in the existing inventory; this is not yet proof of missing evidence, since other
+retained captures and direct assembly derivations must be checked first.
+Details in evidence/item-8/sources/repurposed-temple-assessment/README.md.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Inventory SHA-256: a59959e49b656097d55015480c63d708e8c36d0636a7a182ca6b5d4c2f977972.
+
+
+#### Repurposed shipwreck assessed after 255bd9a6
+
+Nine remaining attributes integrated for four variants/21templates, empty
+processors and ten defined loot tables. Nether authored wither skeletons and
+piece-bounded natural override kept separate; End has no authored mobs in trace.
+Existing full End run-a ocean-heavy line7794,chunk110,3 supplies24x9x9 envelope.
+Nether fixed anchors/air-fluid sample checks and End LOWEST_SIDE placement
+recorded without exposure/population guarantees. No new capture/tool. All85
+focused checks pass (59.95s); only shipwreck/input identity changed. Total400/448
+assessed;48 families/433 entries remain: IDAS38/343,Repurposed10/90. Quantify next
+batch and reuse evidence. Details in repurposed-shipwreck-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: e5664e34b9c4997e3a68cbf91a527c1b0e3f2c11a9aceff74d85d4f17afd9e2f.
+
+
+#### Repurposed ruins geometry accepted after b950029e
+
+Fresh ordinary seed42 Overworld ruins_land_warm capture passed readiness,
+81 requested chunks,correlated flush,clean exit0 and frozen config acceptance.
+Decoded1802 records; downloaded full start line401,chunk-214,43,19pieces,
+envelope[-3435,62,665,-3415,77,710],size21x16x46. Both size attributes and observed
+Overworld dimension integrated. Variant/pillar/population limits remain explicit.
+Archive item8-repurposed-ruins-geometry-r1-b950029e.tar.gz:253files,3,014,248bytes,
+SHAc5c3faf290f1489936b3676c62be53be3c2829180a249f0dad2e560c87f57b99.
+Local/downloaded restores pass; release/tag verified atb950029e. No runtime remains.
+All85 focused checks pass (66.18s);only ruins/input identity changed. No new tool.
+Total399/448 assessed;49 families/442 entries remain: IDAS38/343,Repurposed11/99.
+Quantify next batch; reuse evidence. Commands/custody in repurposed-ruins-assessment
+README. Final integration,acceptance,backup/history and PR/review/main stay open.
+Inventory SHA-256: 74baf22c2187479b68733780af62930eb6ba5a1ce704f0fedb91a40ec1e80eb5.
+
+
+#### Repurposed ruins content assessed after dc6515d6
+
+Seven descriptive entries integrated for five variants/57templates. No authored
+mobs or spawners/markers; cold/warm item entities are not mobs. Nine chest tables
+plus four processor-appended archaeology tables all have definitions. Land caps5
+are processor limits, not reward counts. Nether pillar/material rules and icy
+powder snow hazards kept distinct from hostility. Surface-rooted land versus
+Nether LOWEST_LAND placement recorded. No new capture/tool. All85 focused checks
+pass (60.86s); only ruins/input identity changed. Two geometry entries remain open
+for ruins; inspect additional retained observations before declaring capture.
+Total398/448 assessed;50 families/444 entries remain: IDAS38/343,Repurposed12/101.
+Quantify next batch. Details in repurposed-ruins-assessment README under evidence/item-8.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 53b9c9d05808151424642411e57d8790465a380875615fe83a9a3ea71a3bea20.
+
+
+#### Repurposed igloo assessed after c936316e
+
+Nine remaining attributes integrated from24-template/four-variant graph and
+existing full igloo_stone run-a mountainous line14209,chunk3,27,envelope7x37x10.
+No new capture/tool. Grassy/stone villager+zombie-villager, mangrove frog+magma-cube,
+mushroom cattle+item-frame sources kept distinct; matching basement loot tables
+verified. Grassy/stone infested-block processor rules supply conditional silverfish,
+not ordinary spawners. Direct pinned InfestedBlock inspection records break guards.
+Surface shelter/optional buried basement and exposure/population limits retained.
+All85 focused checks pass (59.42s); only igloo/input identity changed. Total398/448
+assessed;50 families/451 entries remain: IDAS38/343,Repurposed12/108. Quantify next
+batch and reuse evidence. Details in repurposed-igloo-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: 329f3a2d82ffb9fa25ebdd6c85372f6f343aa0958fbfb13c9402ab95775bb265.
+
+
+#### Repurposed End portal ruin assessed after 62505f51
+
+Nine remaining attributes integrated from existing two-template pool, empty
+processors and GenericJigsawStructure source. Single rigid alternatives have
+nominal sizes14x23x17 and9x16x11; neither has jigsaw connections, entities,
+spawners or generation markers. Two defined large/small portal loot tables;
+large template lava is a hazard, not an enemy source. Burial/minY constraints
+and visibility limitations retained. No new capture/tool. All85 focused checks
+pass (59.64s); only ruined_portal/input identity changed. Total397/448 assessed;
+51 families/460 entries remain: IDAS38/343,Repurposed13/117. Quantify next batch
+before starting. Details in repurposed-end-portal-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: 19cb4dd77591d30c8b34c08ecd33343ff7b0bb5dbeb64e6d311c8d8563dd46c4.
+
+
 #### Repurposed mansion and monument assessed after 57addac8
 
 Corrected prior remaining-entry count474 to476: two preexisting vertical-size
