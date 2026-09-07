@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS necromancer spire assessed after 481392a5
+
+Nine entries integrated for four rigid connected components. Origins0,0,0;
+0,43,0;4,2,27;4,43,27 give nominal27 by46 footprint,89 height. Direct hostile
+mobs, four raw skeleton/soul-vulture spawners and natural piece-bound wraith10
+(group1) remain separate. AlexsMobs absent; optional sources not successful
+encounters. One defined loot source and one CORNER marker dispositioned.
+Ticking-only processor inspection reused; no runtime/tool added. All85 focused
+checks pass (60.95s); only necromancers_spire/input identity changed.
+Total434/448 assessed;14 connected IDAS families/126 entries remain, nine each.
+Quantify next batch and reuse existing findings; keep nominal dimensions distinct
+from observed placement and preserve authored/spawner/natural distinctions.
+Details: evidence/item-8/sources/idas-necromancers-spire-assessment/README.md.
+Inventory SHA-256: 0c83c8de9f0cd4be1dc9e873993aa693408bad36b31bf42a2451c21b20be0b43.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS treetop tavern assessed after 08ec9794
 
 Nine entries integrated for four rigid connected sections. Origins0,0,0;
