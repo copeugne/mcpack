@@ -3,10 +3,10 @@
 Status: IN PROGRESS. Pre-experiment dependency inspection, 2026-09-08.
 No Item 10 measurement experiment or tuning has been performed.
 The separately requested player servers generated operational smoke-test worlds.
-The [sampling proposal](protocol.md) is a draft, not an accepted measurement
-result or an amendment to Item 5. It proposes automated static collection and
-a two-hour solo combat sample instead of the generic matrix. User review of that
-explicit scope and the remaining collection rules are pending.
+The [sampling protocol](protocol.md) is under reassessment. The user rejected
+long recorded play and the proposed combat logger. No human workload is scheduled.
+The static census remains the primary deliverable; the Item 5 combat contract
+conflict must be resolved explicitly, not hidden by a proxy or a shorter session.
 
 ## Verified dependencies and delivery
 
@@ -49,9 +49,10 @@ Each future materialization must verify its actual files and Java executable.
 ## Available evidence versus missing measurements
 
 The [Item 5 protocol](../../measurement/item5/protocol-v1.json) defines
-denominators, repetitions, retained failures and uncertainty. Its density
-contracts currently also require player cases, 900-second warm-up and
-3,600-second observations. `combat_encounters_per_1000_chunks` explicitly
+denominators, repetitions, retained failures and uncertainty. Its original density
+contracts use player cases, 900-second warm-up and 3,600-second observations.
+The rejected Item 10 session proposal does not supersede that contract.
+[protocol.md](protocol.md) records the unresolved scope conflict. `combat_encounters_per_1000_chunks` explicitly
 requires ground-truthed combat encounters. A hostility label or spawner count
 cannot replace that metric. Proper dungeons are Tier 2+ and major expeditions
 Tier 3+ in this protocol; report exclusive tiers separately to avoid ambiguity.
@@ -194,20 +195,23 @@ manifest, report 228.205 to 332.567 seconds per 6,852 selected chunks on their
 original host. Linear scaling of the scenario above is 14.6 to 21.2 hours,
 excluding extra passes, analysis, restoration and controls. Different current
 host pressure makes this an estimate, not a promised completion time.
-The Item 5 observation matrix is four seeds times five player cases times three
-repetitions: 60 runs and 75 server-hours at 4,500 seconds each, before discarded
-warm-up replicates. Multiple metrics can share qualifying runs.
+The original Item 5 observation matrix implies 60 runs and 75 server-hours,
+before discarded warm-up replicates. The user rejected both that burden and the
+subsequent proposed recorded-play approach. No replacement human schedule or
+methodology amendment is accepted. Resolve the specific contract conflict.
 
 Material pending inputs:
 
 - Bound peak experiment storage to current capacity with verified sequential
   custody, or obtain another persistent location. The authorized duplicate
   cleanup is complete; it does not authorize removing additional artifacts.
-- Arrange Item 5's required player observations. The user requested separate
-  local profiles for later login; the observed-combat requirement remains in
-  force. Profile creation does not satisfy the observation matrix.
+- Resolve the combat metric and methodology conflict without assuming a
+  recorded-play workload or silently substituting static hostility.
 - Complete the nonregistry occurrence method and Sparse Structures attribution
   design using existing evidence. No new generic framework is justified yet.
 
 No implementation should expand around unresolved measurement semantics.
 The next work is protocol resolution, not configuration tuning or Item 11.
+
+[Decoder preparation validation](decoder.md) records the custom-dimension
+identification fix and remaining authoritative-start-coordinate limitation.

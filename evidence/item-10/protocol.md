@@ -1,49 +1,34 @@
-# Item 10 sampling proposal
+# Item 10 sampling protocol
 
-Status: DRAFT, not authorization to collect acceptance evidence. No observations
-have been inspected to choose this design. This proposal resolves the spatial
-sampling choices; the Item 5 methodology change and occurrence instrumentation
-must be resolved before freezing it. The existing Item 5 contract remains active.
+Status: UNDER REASSESSMENT. On 2026-09-08 the user rejected the proposed long
+recorded-play sessions and subsequent combat-logger proposal. Both approaches
+are withdrawn. The six-hour availability and tentative ten-hour offer do not
+constitute an approved workload. No recording or combat logger was started.
 
-## Proposed separation from Item 5's generic observation matrix
+## Measurement boundary
 
-Apply static spatial counting to fresh generated worlds without player-count,
-warm-up or fixed-duration requirements. Generate one independent materialization
-per seed, with one separately generated ordinary-seed pilot repeat to check
-reproducibility. The repeat is validation, not an independent statistical sample.
-This changes only static collection for structure count, structure distance and
-static category densities. It does not convert combat into a static label.
+Item 10 is primarily a spatial census. Its generated-region counts, category
+densities, distances, clustering, empty regions and biome/seed comparisons need
+source-bound automated analysis. Item 11 separately specifies player exploration
+and pacing. Do not import Item 11 play sessions into Item 10 preparation.
 
-Proposed Item 10 combat baseline: four solo sessions, one per frozen seed,
-30 minutes of active observation each. Personal participation is capped at two
-hours total. Allow up to ten minutes of unattended server stabilization before
-each session, giving at most two hours forty minutes of scheduled server time,
-excluding automated world generation and initial client troubleshooting. Do not
-add discarded human replicates or extend sessions to reach a desired count.
+The original Item 5 protocol additionally defines combat density as ground-truthed
+encounters and applies its generic player/repetition matrix to static metrics.
+That contract has not been validly replaced merely by a time-budget discussion.
+The rejected shorter-session proposal is not an accepted successor protocol.
+Resolve the specific metric and collection-contract conflict before claiming
+acceptance. An authored hostile location, a successful spawn activation and a
+player's actual fight are different measured quantities. Never silently substitute
+one for another, infer absence from missing observation, or mark Item 10 complete
+with that requirement unresolved.
 
-This explicitly replaces the generic Item 5 player-case/repetition/duration
-matrix for Item 10 baseline combat only. It does not revise later multiplayer
-performance, balance, depletion or Item 11 human-exploration requirements. It
-provides a limited solo baseline, not a multiplayer comparison or precise
-all-dimension encounter estimate. User agreement and a reviewed methodology
-amendment are required before this becomes the accepted contract.
+The replacement design must first demonstrate a small automated spatial sample
+from raw generation through verified counts and useful output. Human effort is
+not scheduled. Any remaining behavior check must identify the exact unresolved
+claim and prove a bounded method before asking for participation. Avoid a new
+telemetry system or long video archive merely to bypass an undefined metric.
 
-Use a predeclared Overworld observation area for each seed, with its exact full
-chunk coverage recorded. After the static pilot establishes what can be observed
-within a session, freeze area, starting equipment, permitted interactions and
-coverage recording before any accepted combat session. Do not select areas for
-high encounter counts after inspecting results. Record encounters actually
-engaged, not potential hostile sites, with timestamps, locations, participating
-mobs, encounter boundaries and video or equivalent ground-truth evidence.
-
-The combat event rule must distinguish one continuous engagement from renewed
-engagement and simultaneous independent encounters. Record zero-event and
-interrupted sessions, unvisited chunks and visibility limitations. Report the
-numerator, fully generated area denominator and actual observation coverage
-separately. A zero count during thirty minutes does not mean that area has no
-possible combat. No rate precision or multiplayer generalization is promised.
-Casual play in either operational profile is not an accepted run. This proposal
-does not implement any Item 11 exploration workflow.
+The spatial design below remains a draft, not a frozen experiment protocol.
 
 ## Fixed spatial frame
 

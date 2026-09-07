@@ -132,3 +132,11 @@ wrong-sized, excluding libraries and installation workspace. The launcher manage
 remaining downloads. Full measurement storage still needs a bounded plan.
 The task world is separate from free roaming and cannot be called an accepted
 observation run until its protocol and recording conditions are met.
+
+## Recording proposal withdrawn
+
+The user rejected long gameplay recording and the subsequent proposed combat
+logger on 2026-09-08. No capture or combat logger was started. Installed recording
+tools are not evidence of an adequate measurement workflow. The two local play
+profiles remain available for the user's separate play request; neither implies
+an approved measurement session or acceptance of Item 10 combat density.
