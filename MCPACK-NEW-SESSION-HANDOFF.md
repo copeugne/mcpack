@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+IDAS starts with four related-design records: ancient_portal, underground_camp,
+sunken_ship and sunken_ship/sunken_ship_ruins. Their complete thirteen templates
+and traced alternatives/components need layout comparison with the existing
+renderer; equal envelopes alone do not establish family identity. No new
+measurement system. Backlog stays 59 until decisions pass. Existing missing pools
+in ancient_mines and desert_pyramid remain preserved for later reconciliation.
+
 Inventory matches 93c174d2 and reproduces exactly in two fresh runs. All 887 roots
 remain assigned once in 423 working groups. AdoraBuild canonical notes are closed;
 the remaining 59 are all IDAS. Next: IDAS design reconciliation using preserved

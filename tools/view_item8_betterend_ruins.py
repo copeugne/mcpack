@@ -66,7 +66,7 @@ def parse_args() -> argparse.Namespace:
                  "--nether-landmarks", "--voyager-small", "--voyager-buildings",
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
-                 "--adora-monuments", "--adora-ocean", "--adora-houses"):
+                 "--adora-monuments", "--adora-ocean", "--adora-houses", "--idas-related"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -93,12 +93,14 @@ def main() -> None:
                         or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses)) else
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
-                    if cast("bool", args.terralith_buildings) else archive_name)
+                    if cast("bool", args.terralith_buildings) else
+                    "idas-1.13.7+1.21.1-neoforge.jar"
+                    if cast("bool", args.idas_related) else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                   or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
-                        or cast("bool", args.adora_houses))
+                        or cast("bool", args.adora_houses) or cast("bool", args.idas_related))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -215,8 +217,19 @@ def main() -> None:
                         or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses))
-                     else namespace)
+                     else "idas" if cast("bool", args.idas_related) else namespace)
         sheets = {
+            "portals": ["ancient_portal/ancient_portal1", "ancient_portal/ancient_portal2",
+                        "ancient_portal/nether_ancient_portal1",
+                        "ancient_portal/nether_ancient_portal2"],
+            "camps": ["underground_camp/underground_camp1",
+                      "underground_camp/underground_camp2",
+                      "underground_camp/underground_camp_deep1",
+                      "underground_camp/underground_camp_deep2"],
+            "ships": ["sunken_ship/sunken_ship", "sunken_ship/sunken_ship2",
+                      "sunken_ship/sunken_ship_coral", "sunken_ship/sunken_ship_ruins1",
+                      "sunken_ship/sunken_ship_ruins2"],
+        } if cast("bool", args.idas_related) else {
             "acacia_bamboo": ["acacia_house_medium_1", "acacia_house_medium_2",
                               "acacia_house_medium_3", "acacia_house_small_1",
                               "acacia_house_small_2", "bamboo_house_small_1",
