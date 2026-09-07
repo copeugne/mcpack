@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Integrated standard-jigsaw placement for 37 families at 29c66271, retaining
+per-variant offsets and terrain adaptation. All 78 family-decision tests pass;
+inventory matches fresh generation with only intended placement fields changed.
+This is source start placement, not measured burial of every attached room.
+Continue integrating existing facts; custom placement and other unsupported claims
+need specific interpretation, not blanket surface labels. No new measurement/tooling.
+
 Integrated 194 nominal geometry fields across 97 single-template families at
 225b3fec, reusing retained sizes and checking no jigsaw attachments. Existing
 attributes and observations remain unchanged. All 78 family-decision tests pass;
