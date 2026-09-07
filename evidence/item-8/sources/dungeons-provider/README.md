@@ -74,3 +74,75 @@ and corresponding input identity. No root membership or component trace changes.
 
 All85 focused tests passed. Small Dungeon remains unassessed; do not count this
 inactive disposition as completing an active family.
+
+## Small Dungeon assessment
+
+Scope: one active family, ten attributes, sixteen reachable templates. Reuse
+existing packaged JSON, templates, world-bounds and frozen configuration. No
+missing traced components. All139 effective biomes intersect only Overworld;
+no unresolved or missing required tags. The root has empty spawn_overrides,
+underground_structures, absolute anchorY-50..50 and no surface-heightmap projection.
+This describes a concealed cave/excavation room, not a surface landmark or a
+measured human discovery distance.
+
+Six rigid small_dungeon/shells/small_shell variants5x5,7x5,7x7,9x5,9x7,9x9
+have actual XYZ sizes7x7x7,9x7x7,9x7x9,11x7x7,11x7x9,11x7x11.
+Each has four internal horizontal loot-pile connectors atY1, with sufficient
+inset for at-most2x2x2 pieces; empty pile is1x1x1. These remain in the shell
+footprint. Nominal height is7, with variable downward supports described below.
+World-bounds full-start indexes174/268/273 (repeat571/657/662) corroborate
+11x7x7,11x7x11,11x7x9. Index174 is mountainous chunk5,0 at run-a line13347;
+268 is ocean-heavy chunk26,-13 at line12632;273 is ocean-heavy chunk27,0 at
+line13369. Non-full indexes259/288/293 and repeats remain excluded from this
+corroboration. No new capture or estimate of frequency/extrema is needed.
+
+Each shell's palette/state_counts records exactly one ordinary spawner. Lack
+of saved spawner NBT is not absence of a spawner block. The start pool has each
+size with skeleton/spider/zombie processor themes weighted1/1/2. MobSpawnerProcessor
+processBlock offsets0..109 identifies SpawnerBlock, builds singleton spawn
+potentials and sets the selected entity, returning new spawner data. Its lambda
+writes the spawner_mob resource ID. These are authored assignments; ambient
+spawns remain conditional. All16 templates have no direct saved entities.
+
+Shell chest NBT uses minecraft:chests/simple_dungeon. Loot-pile1 block_entities
+1/2/3, pile3 index2 and pile5 index1 use betterdungeons:small_dungeon/chests/loot_piles
+in barrels. No nonempty fixed Items lists exist in these templates. The empty
+pile has weight7/max_count2; each other pile weight1/max_count1. These YUNG
+single-element limits are component selection rules, not encounter measurements.
+
+SmallDungeonChestProcessor.processBlock offsets14..138 uses DungeonContext
+count: below minimum preserve/increment; at maximum replace with cave_air;
+between limits preserve/increment only when nextFloat<=0.2. Frozen minimum1,
+maximum2 are source controls, not guaranteed observed final totals across chunk
+placement. Existing DungeonContextMixin resets context at template placement.
+SmallDungeonOreProcessor gates ore-tagged props on enableOreProps; frozen Allow
+Ore Blocks in Corners=true preserves this salvage source, separate from table loot.
+
+Direct immutable archive inspection used pinned javap on the same
+YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar SHA-256 recorded above. The eight
+exact class member hashes are in family-decisions.json processor_inspection:
+MobSpawnerProcessor and small_dungeon SmallDungeonChestProcessor,LegProcessor,
+CeilingProcessor,CeilingLampPropProcessor,CeilingPropProcessor,OreProcessor,
+CobblestoneProcessor (each name includes SmallDungeon prefix where applicable).
+LegProcessor.processBlock offsets86..207 extends yellow-marker support columns
+down through air/fluid until solid terrain/build limits, at unchanged X/Z.
+CeilingProcessor treats orange markers using existing terrain or cobblestone
+for water/lava. Ceiling props/lamp processors choose chain or cave_air based
+on support/randomness at their template position; CobblestoneProcessor responds
+to the existing terrain. Thus seven-block nominal room height excludes downward
+support extension; it is not fixed total occupied height.
+
+Reproduce direct class inspection with the exact dotted member name from
+processor_inspection.members (remove .class and replace slashes with dots):
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.MobSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/small-dungeon-assessed-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+All ten attributes enter the authoritative inventory; semantic comparison changes
+only Small Dungeon and the input identity. No new tooling or raw evidence class.
+
+All85 focused tests passed. Total356/448 active families assessed,92 remaining.
+This completes Small Dungeon attribution, not the final Item8 gate.

@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Small Dungeon assessed after dc4d01d0
+
+Ten attributes finish Small Dungeon using16 templates, existing full-start
+observations and direct inspection of eight exact processor members. Six shell
+sizes have nominal height7; downward terrain supports remain explicitly variable.
+Preserve one authored spawner per shell with skeleton/spider/zombie themes,
+vanilla shell-chest table versus loot-pile barrels, chest-removal rules and
+conditional ambient spawning. Exact class hashes and source derivations:
+evidence/item-8/sources/dungeons-provider/README.md, Small Dungeon assessment.
+No new runtime or tooling. All85 focused tests pass; semantic inventory changes
+only this family and input identity. Registry316/408 and nonregistry40/40,
+total356/448 assessed,92 remaining. Next quantify another remaining YUNG batch
+and reuse established evidence before investigating. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+4c849b88fff92e48e213397432d9df0cb2325daa6e3652228df0fbe4bdf52ac7.
+
 #### Small Nether Dungeon inactive after cea53d82
 
 The next batch was Small Dungeon and Small Nether Dungeon,20 attributes and99
