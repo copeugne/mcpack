@@ -6,6 +6,92 @@
 
 ### Continuation update - 2026-09-07
 
+#### Assessment queue correction after 7c0db515
+
+This checkpoint supersedes the assessment counts below. It does not declare
+Item 8 complete or the final PR ready.
+
+The first registry reconciliation pass retires 24 already-integrated IDAS
+family assessments. Each has ten explicit descriptive attributes in
+`evidence/item-8/family-decisions.json` and a resolved eleventh attribute,
+biome_constraints, in `evidence/item-8/inventory.json`. Direct inspection found
+no missing required biome members or unresolved tags for these rows. The 25
+unique evidence paths referenced by their decisions all match their recorded
+SHA-256 values. Read the individual attribute bases and limitations; this is
+reuse of existing assessments, not acceptance inferred from field presence.
+
+Retired from repeated descriptive assessment:
+
+- `idas:abandoned_lighthouse`
+- `idas:abandonedhouse`
+- `idas:ancient_statue`
+- `idas:ancient_statue_jungle`
+- `idas:ancient_statue_plains`
+- `idas:botanist`
+- `idas:brickhouse`
+- `idas:cottage`
+- `idas:fishermans_lodge`
+- `idas:hermits_hollow`
+- `idas:hunters_cabin`
+- `idas:mason_house`
+- `idas:nether_pump_camp`
+- `idas:pillager_camp`
+- `idas:pumpkin_cafe`
+- `idas:redhorn_guild`
+- `idas:ruined_church`
+- `idas:ruined_fort`
+- `idas:the_log`
+- `idas:train_ruins`
+- `idas:wacky_wares`
+- `idas:washing_camp`
+- `idas:winter_wagon`
+- `idas:witches_treestump`
+
+These records distinguish nominal geometry from observed bounds, declared mobs
+from actual populations, processor candidates from saved spawner sources, and
+qualitative visual form from measured detection distance. Preserve the observed
+Nether pump geometry. No new frequency, machinery-operation, trading or live
+population test is required by these descriptive answers.
+
+Five families retain nine authored entity compounds without IDs: abandonedhouse
+(1), hunters_cabin (4), pumpkin_cafe (2), redhorn_guild (1), winter_wagon (1).
+Their mob-source and enemy-attribution answers explicitly preserve these malformed
+source records and scope claims to identified entities. Do not fabricate an ID,
+claim complete realized populations, or turn unavailable IDs into nine new
+investigations. Reopen only if a concrete required attribution cannot be supported
+with this documented source limitation or contradictory evidence appears.
+
+Remaining assessment population, excluding these 24 and the previously assessed
+18 nonregistry families:
+
+| Existing-evidence assessment batch | Families still awaiting reconciliation |
+| --- | ---: |
+| AdoraBuild, Explorify, Explorations | 73 |
+| Moog | 136 |
+| IDAS, WDA, Seven Seas, Illager Invasion | 88 |
+| CTOV, Towns and Towers, Integrated Villages | 11 |
+| Other registry families | 78 |
+| Nonregistry | 22 |
+| Total | 408 |
+
+The 386 registry and 22 nonregistry rows are a bounded assessment queue, not a
+count of absent answers or new investigations. Exact missing mandatory claims
+for the remaining registry rows have not yet been established. Finish that
+reconciliation before starting another research or implementation batch. Reuse
+existing geometry, content, source captures and observations; retire supported
+answers as assessed, and carry forward only specific family/attribute questions.
+
+The current uncommitted BetterEnd draft adds 112 attributes across 16 building/ruin
+families, bringing each to ten recorded attributes. It has not yet been validated
+or regenerated into inventory.json. Loot attribution, including relevant block
+conversion, remains to assess. These 16 are included in the 22 above.
+
+After assessment: integrate all 40 nonregistry families consistently into the
+inventory, reconcile final claims and frozen identities, verify existing raw
+custody/restore evidence, run the applicable final checks, and open the main PR.
+The clean Codex review loop and verified main merge remain required afterward.
+No new tracker, measurement system or validation framework is introduced.
+
 #### Remaining work quantified at c417925c
 
 Discovery is closed: 136 retained-provider dispositions, 887 registry roots
