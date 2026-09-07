@@ -1,0 +1,468 @@
+Compiled from "SpawnerRandomizingProcessor.java"
+public class com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor> CODEC;
+
+  public final java.util.List<com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor$WeightedEntity> weightedEntities;
+
+  public final int delay;
+
+  public final int maxNearbyEntities;
+
+  public final int maxSpawnDelay;
+
+  public final int minSpawnDelay;
+
+  public final int requiredPlayerRange;
+
+  public final int spawnCount;
+
+  public final int spawnRange;
+
+  public final net.minecraft.world.level.block.state.BlockState replacementState;
+
+  private com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor(java.util.List<com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor$WeightedEntity>, int, int, int, int, int, int, int, net.minecraft.world.level.block.state.BlockState);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field weightedEntities:Ljava/util/List;
+       9: aload_0
+      10: iload_2
+      11: putfield      #13                 // Field delay:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #17                 // Field maxNearbyEntities:I
+      19: aload_0
+      20: iload         4
+      22: putfield      #20                 // Field maxSpawnDelay:I
+      25: aload_0
+      26: iload         5
+      28: putfield      #23                 // Field minSpawnDelay:I
+      31: aload_0
+      32: iload         6
+      34: putfield      #26                 // Field requiredPlayerRange:I
+      37: aload_0
+      38: iload         7
+      40: putfield      #29                 // Field spawnCount:I
+      43: aload_0
+      44: iload         8
+      46: putfield      #32                 // Field spawnRange:I
+      49: aload_0
+      50: aload         9
+      52: putfield      #35                 // Field replacementState:Lnet/minecraft/world/level/block/state/BlockState;
+      55: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: invokevirtual #45                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: instanceof    #51                 // class net/minecraft/world/level/block/SpawnerBlock
+      11: ifeq          78
+      14: aload         5
+      16: invokevirtual #53                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      19: astore        7
+      21: aload         6
+      23: aload         5
+      25: invokevirtual #53                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+      28: invokevirtual #57                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings.getRandom:(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/util/RandomSource;
+      31: astore        8
+      33: aload_0
+      34: aload         8
+      36: invokevirtual #63                 // Method buildSpawnerNbt:(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/nbt/CompoundTag;
+      39: astore        9
+      41: aload         9
+      43: ifnonnull     61
+      46: new           #40                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      49: dup
+      50: aload         7
+      52: aload_0
+      53: getfield      #35                 // Field replacementState:Lnet/minecraft/world/level/block/state/BlockState;
+      56: aconst_null
+      57: invokespecial #67                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+      60: areturn
+      61: new           #40                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+      64: dup
+      65: aload         7
+      67: aload         5
+      69: invokevirtual #39                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+      72: aload         9
+      74: invokespecial #67                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+      77: areturn
+      78: aload         5
+      80: areturn
+
+  private net.minecraft.nbt.CompoundTag buildSpawnerNbt(net.minecraft.util.RandomSource);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field weightedEntities:Ljava/util/List;
+       4: invokeinterface #70,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+       9: ifeq          14
+      12: aconst_null
+      13: areturn
+      14: aload_0
+      15: getfield      #7                  // Field weightedEntities:Ljava/util/List;
+      18: aload_1
+      19: invokestatic  #76                 // Method pickWeightedRandom:(Ljava/util/List;Lnet/minecraft/util/RandomSource;)Lcom/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity;
+      22: astore_2
+      23: aload_2
+      24: ifnonnull     29
+      27: aconst_null
+      28: areturn
+      29: getstatic     #80                 // Field net/minecraft/core/registries/BuiltInRegistries.ENTITY_TYPE:Lnet/minecraft/core/DefaultedRegistry;
+      32: aload_2
+      33: invokevirtual #86                 // Method com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity.entity:()Lnet/minecraft/world/entity/EntityType;
+      36: invokeinterface #92,  2           // InterfaceMethod net/minecraft/core/DefaultedRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      41: astore_3
+      42: new           #98                 // class net/minecraft/nbt/CompoundTag
+      45: dup
+      46: invokespecial #100                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+      49: astore        4
+      51: aload_2
+      52: invokevirtual #101                // Method com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity.nbt:()Ljava/util/Optional;
+      55: aload         4
+      57: invokedynamic #105,  0            // InvokeDynamic #0:accept:(Lnet/minecraft/nbt/CompoundTag;)Ljava/util/function/Consumer;
+      62: invokevirtual #109                // Method java/util/Optional.ifPresent:(Ljava/util/function/Consumer;)V
+      65: aload         4
+      67: ldc           #115                // String id
+      69: aload_3
+      70: invokevirtual #117                // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      73: invokevirtual #123                // Method net/minecraft/nbt/CompoundTag.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      76: new           #98                 // class net/minecraft/nbt/CompoundTag
+      79: dup
+      80: invokespecial #100                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+      83: astore        5
+      85: aload         5
+      87: ldc           #127                // String Delay
+      89: aload_0
+      90: getfield      #13                 // Field delay:I
+      93: i2s
+      94: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+      97: aload         5
+      99: ldc           #133                // String MinSpawnDelay
+     101: aload_0
+     102: getfield      #23                 // Field minSpawnDelay:I
+     105: i2s
+     106: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     109: aload         5
+     111: ldc           #135                // String MaxSpawnDelay
+     113: aload_0
+     114: getfield      #20                 // Field maxSpawnDelay:I
+     117: i2s
+     118: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     121: aload         5
+     123: ldc           #137                // String SpawnCount
+     125: aload_0
+     126: getfield      #29                 // Field spawnCount:I
+     129: i2s
+     130: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     133: aload         5
+     135: ldc           #139                // String MaxNearbyEntities
+     137: aload_0
+     138: getfield      #17                 // Field maxNearbyEntities:I
+     141: i2s
+     142: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     145: aload         5
+     147: ldc           #141                // String RequiredPlayerRange
+     149: aload_0
+     150: getfield      #26                 // Field requiredPlayerRange:I
+     153: i2s
+     154: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     157: aload         5
+     159: ldc           #143                // String SpawnRange
+     161: aload_0
+     162: getfield      #32                 // Field spawnRange:I
+     165: i2s
+     166: invokevirtual #129                // Method net/minecraft/nbt/CompoundTag.putShort:(Ljava/lang/String;S)V
+     169: new           #98                 // class net/minecraft/nbt/CompoundTag
+     172: dup
+     173: invokespecial #100                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     176: astore        6
+     178: aload         6
+     180: ldc           #145                // String entity
+     182: aload         4
+     184: invokevirtual #146                // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+     187: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     190: pop
+     191: new           #98                 // class net/minecraft/nbt/CompoundTag
+     194: dup
+     195: invokespecial #100                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     198: astore        7
+     200: aload         7
+     202: ldc           #154                // String data
+     204: aload         6
+     206: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     209: pop
+     210: aload         7
+     212: ldc           #156                // String weight
+     214: iconst_1
+     215: invokevirtual #158                // Method net/minecraft/nbt/CompoundTag.putInt:(Ljava/lang/String;I)V
+     218: new           #162                // class net/minecraft/nbt/ListTag
+     221: dup
+     222: invokespecial #164                // Method net/minecraft/nbt/ListTag."<init>":()V
+     225: astore        8
+     227: aload         8
+     229: aload         7
+     231: invokevirtual #165                // Method net/minecraft/nbt/ListTag.add:(Ljava/lang/Object;)Z
+     234: pop
+     235: aload         5
+     237: ldc           #169                // String SpawnPotentials
+     239: aload         8
+     241: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     244: pop
+     245: new           #98                 // class net/minecraft/nbt/CompoundTag
+     248: dup
+     249: invokespecial #100                // Method net/minecraft/nbt/CompoundTag."<init>":()V
+     252: astore        9
+     254: aload         9
+     256: ldc           #145                // String entity
+     258: aload         4
+     260: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     263: pop
+     264: aload         5
+     266: ldc           #171                // String SpawnData
+     268: aload         9
+     270: invokevirtual #150                // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     273: pop
+     274: aload         5
+     276: areturn
+
+  private static com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor$WeightedEntity pickWeightedRandom(java.util.List<com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor$WeightedEntity>, net.minecraft.util.RandomSource);
+    Code:
+       0: dconst_0
+       1: dstore_2
+       2: aload_0
+       3: invokeinterface #173,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       8: astore        4
+      10: aload         4
+      12: invokeinterface #177,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      17: ifeq          44
+      20: aload         4
+      22: invokeinterface #182,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      27: checkcast     #87                 // class com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity
+      30: astore        5
+      32: dload_2
+      33: aload         5
+      35: invokevirtual #186                // Method com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity.weight:()I
+      38: i2d
+      39: dadd
+      40: dstore_2
+      41: goto          10
+      44: aload_1
+      45: invokeinterface #189,  1          // InterfaceMethod net/minecraft/util/RandomSource.nextFloat:()F
+      50: f2d
+      51: dload_2
+      52: dmul
+      53: dstore        4
+      55: aload_0
+      56: invokeinterface #173,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      61: astore        6
+      63: aload         6
+      65: invokeinterface #177,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      70: ifeq          109
+      73: aload         6
+      75: invokeinterface #182,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      80: checkcast     #87                 // class com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity
+      83: astore        7
+      85: dload         4
+      87: aload         7
+      89: invokevirtual #186                // Method com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity.weight:()I
+      92: i2d
+      93: dsub
+      94: dstore        4
+      96: dload         4
+      98: dconst_0
+      99: dcmpg
+     100: ifgt          106
+     103: aload         7
+     105: areturn
+     106: goto          63
+     109: aload_0
+     110: aload_0
+     111: invokeinterface #195,  1          // InterfaceMethod java/util/List.size:()I
+     116: iconst_1
+     117: isub
+     118: invokeinterface #198,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     123: checkcast     #87                 // class com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity
+     126: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #202                // Field com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.SPAWNER_RANDOMIZING_PROCESSOR:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+       3: invokeinterface #208,  1          // InterfaceMethod com/finndog/moogs_structures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #212                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static void lambda$buildSpawnerNbt$10(net.minecraft.nbt.CompoundTag, net.minecraft.nbt.CompoundTag);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #146                // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+       5: invokevirtual #214                // Method net/minecraft/nbt/CompoundTag.merge:(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;
+       8: pop
+       9: return
+
+  private static com.mojang.datafixers.kinds.App lambda$static$9(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #218                // Field com/finndog/moogs_structures/world/processors/SpawnerRandomizingProcessor$WeightedEntity.CODEC:Lcom/mojang/serialization/Codec;
+       4: invokeinterface #222,  1          // InterfaceMethod com/mojang/serialization/Codec.listOf:()Lcom/mojang/serialization/Codec;
+       9: ldc           #228                // String weighted_entities
+      11: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      16: invokedynamic #234,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      21: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      24: iconst_0
+      25: ldc           #246                // int 2147483647
+      27: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      30: ldc           #251                // String delay
+      32: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      37: bipush        20
+      39: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      42: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      45: invokedynamic #260,  0            // InvokeDynamic #2:apply:()Ljava/util/function/Function;
+      50: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      53: iconst_0
+      54: ldc           #246                // int 2147483647
+      56: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      59: ldc_w         #261                // String max_nearby_entities
+      62: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      67: bipush        6
+      69: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      72: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+      75: invokedynamic #263,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+      80: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      83: iconst_0
+      84: ldc           #246                // int 2147483647
+      86: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+      89: ldc_w         #264                // String max_spawn_delay
+      92: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      97: sipush        800
+     100: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     103: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     106: invokedynamic #266,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+     111: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     114: iconst_0
+     115: ldc           #246                // int 2147483647
+     117: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     120: ldc_w         #267                // String min_spawn_delay
+     123: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     128: sipush        200
+     131: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     134: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     137: invokedynamic #269,  0            // InvokeDynamic #5:apply:()Ljava/util/function/Function;
+     142: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     145: iconst_0
+     146: ldc           #246                // int 2147483647
+     148: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     151: ldc_w         #270                // String required_player_range
+     154: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     159: bipush        16
+     161: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     164: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     167: invokedynamic #272,  0            // InvokeDynamic #6:apply:()Ljava/util/function/Function;
+     172: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     175: iconst_0
+     176: ldc           #246                // int 2147483647
+     178: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     181: ldc_w         #273                // String spawn_count
+     184: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     189: iconst_4
+     190: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     193: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     196: invokedynamic #275,  0            // InvokeDynamic #7:apply:()Ljava/util/function/Function;
+     201: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     204: iconst_0
+     205: ldc           #246                // int 2147483647
+     207: invokestatic  #247                // InterfaceMethod com/mojang/serialization/Codec.intRange:(II)Lcom/mojang/serialization/Codec;
+     210: ldc_w         #276                // String spawn_range
+     213: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     218: iconst_4
+     219: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     222: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     225: invokedynamic #278,  0            // InvokeDynamic #8:apply:()Ljava/util/function/Function;
+     230: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     233: getstatic     #279                // Field net/minecraft/world/level/block/state/BlockState.CODEC:Lcom/mojang/serialization/Codec;
+     236: ldc_w         #280                // String spawner_replacement_block
+     239: invokeinterface #230,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+     244: getstatic     #282                // Field net/minecraft/world/level/block/Blocks.AIR:Lnet/minecraft/world/level/block/Block;
+     247: invokevirtual #288                // Method net/minecraft/world/level/block/Block.defaultBlockState:()Lnet/minecraft/world/level/block/state/BlockState;
+     250: invokevirtual #256                // Method com/mojang/serialization/MapCodec.orElse:(Ljava/lang/Object;)Lcom/mojang/serialization/MapCodec;
+     253: invokedynamic #293,  0            // InvokeDynamic #9:apply:()Ljava/util/function/Function;
+     258: invokevirtual #238                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+     261: invokevirtual #294                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P9;
+     264: aload_0
+     265: aload_0
+     266: invokedynamic #300,  0            // InvokeDynamic #10:apply:()Lcom/mojang/datafixers/util/Function9;
+     271: invokevirtual #303                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+     274: invokevirtual #307                // Method com/mojang/datafixers/Products$P9.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+     277: areturn
+
+  private static net.minecraft.world.level.block.state.BlockState lambda$static$8(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field replacementState:Lnet/minecraft/world/level/block/state/BlockState;
+       4: areturn
+
+  private static java.lang.Integer lambda$static$7(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field spawnRange:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$6(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field spawnCount:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$5(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field requiredPlayerRange:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$4(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #23                 // Field minSpawnDelay:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$3(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field maxSpawnDelay:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$2(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field maxNearbyEntities:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.lang.Integer lambda$static$1(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field delay:I
+       4: invokestatic  #252                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       7: areturn
+
+  private static java.util.List lambda$static$0(com.finndog.moogs_structures.world.processors.SpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field weightedEntities:Ljava/util/List;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #312,  0            // InvokeDynamic #11:apply:()Ljava/util/function/Function;
+       5: invokestatic  #313                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #319                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

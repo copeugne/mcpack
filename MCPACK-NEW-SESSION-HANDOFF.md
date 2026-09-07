@@ -6,6 +6,79 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mega Fortress assessed after a938d1a0
+
+Ten attributes integrate the final Nether Structures family. Existing planned
+start observations provide explicitly limited approximate layout dimensions;
+pool-owned spawners, authored mobs, natural override, loot and visibility are
+attributed from retained sources. No capture, new tooling or measurement.
+Ten shared tests pass. Direct derivation: sources/moog-arena-processors/README.md.
+Inventory SHA: af5a9899efe6ed451a87a6c60817d421ffb0a75d3bfe3970df7d090273859737.
+Nether Structures 27/27; registry 243/410, nonregistry 40/40, total 283/450
+assessed, 167 remaining. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open. Quantify
+the next provider batch before editing; do not reopen assessed families without
+a concrete contradiction. These counts do not establish Item 8 acceptance.
+
+#### Arena and Dragon Arena assessed after 787174a4
+
+Twenty attributes finish two families across three roots and 36 unique templates.
+Processor-owned ordinary/trial spawners and vaults, saved mob and fixed payloads,
+finite architectural geometry and conditional pillar extensions are integrated.
+Direct derivations and source limits are in sources/moog-arena-processors/README.md.
+Ten shared tests pass. No runtime capture or new measurement was required.
+Inventory SHA: 4c5eb68aa0ac4f2151935ce30d0666f81c2ee4f269ba073569096b42ad8773ea.
+Nether Structures 26/27; registry 242/410, nonregistry 40/40, total 282/450
+assessed, 168 remaining. Next batch is Mega Fortress: one family, one root,
+196 traced component templates, ten assessment attributes. Inspect existing
+sources and observations before considering any new measurement. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/main
+delivery remain open. Assessment counts do not establish Item 8 acceptance.
+
+#### Four Nether ruin/well/pool families assessed after e2779b23
+
+Forty attributes finish Ruin Fragments, Well, Lava Pool and Warped Pool across
+18 roots/21 templates. Duplicate fragment selection remains explicit; finite
+upper/lower geometry and lower-container loot ownership are integrated. No
+selected entities or spawners. Ten shared tests pass; no capture or tooling.
+Direct derivations are in the existing moog-generator-code README.
+Inventory SHA: e7b9578ac62a2390621fa08da4f034ea04bd74c2919418d17c51390d64cde96d.
+Nether Structures 24/27; registry 240/410, nonregistry 40/40, total 280/450
+assessed, 170 remaining. Three mns families remain: arena, dragon_arena and
+mega_fortress. Quantify the next coherent batch before editing. Final
+integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
+#### Ten Nether alternative families assessed after b9d94109
+
+One hundred attributes finish Bridge, Medium Fungus, Circle Ruin, Medium House,
+Crimson Forge, Ruined Portal, Sandy Skull, Shrine, Sword and Warped House.
+Twenty roots/25 standalone alternatives retain source dimensions and encounter/
+loot ownership. Warped House's natural piglin override and fixed upgrade-template
+payload are distinct; Bridge's Y allowance is not whole-box containment proof.
+Ten shared tests pass; no capture or tooling. Existing README records derivations.
+Inventory SHA: aa7a6cca167386529f0c89b3b19774ca50d3a2a2c6d209161e973b095782281a.
+Nether Structures 20/27; registry 236/410, nonregistry 40/40, total 276/450
+assessed, 174 remaining. Seven mns families remain: ruin_fragments, well,
+lava_pool, warped_pool, arena, dragon_arena and mega_fortress. Quantify their
+next coherent batch before editing. Final integration, acceptance, verified
+backup/history consolidation and PR review/main delivery remain open.
+
+#### Ten standalone Nether families assessed after 1d6e3be8
+
+Eighty attributes finish Copper Tower, Giant Skull, Grave Yard, Large House 1,
+Nether Tower, Nether Wart Farm, Smoking Shrine, Soul Fire, Train and Warped Dome.
+Existing geometry is unchanged. Nether-specific placement, source spawners and
+loot attribution are integrated; mns:chests/empty is explicitly not no loot.
+Ten shared tests pass; no capture or tooling. Derivations are in the existing
+moog-generator-code README. Inventory SHA:
+0ec9375718e28d4136221c039a5ac6d1e5c84dc670a998cf660744af126008bb.
+Nether Structures 10/27; registry 226/410, nonregistry 40/40, total 266/450
+assessed, 184 remaining. Retire these ten absent contradictory evidence.
+Continue the remaining seventeen mns families in quantified coherent batches.
+Final integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
 #### Final three Soaring families assessed after 10d82998
 
 Thirty attributes finish Arena, Jungle and Volcano across 35 templates. Finite
