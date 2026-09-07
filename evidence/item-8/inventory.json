@@ -110950,7 +110950,10 @@
         "packaged_template_y_blocks": 17,
         "template_id": "mns:copper_tower"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:copper_tower": {
           "biomes": [
@@ -110980,30 +110983,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:copper_tower": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:copper_tower"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:copper_tower": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -111019,6 +111007,79 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 17,
             "template_id": "mns:copper_tower"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:copper_tower": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:copper_tower": [
+                {
+                  "path": "/block_entities/0/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/1/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/2/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/3/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                }
+              ]
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:copper_tower": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:copper_tower": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:copper_tower_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Squat stepped mound with projecting details and four chests."
           }
         },
         "custom_generation_settings": {
@@ -111029,10 +111090,14 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-pair-views/skulls_shrines_towers.svg.gz": "d4c7b3d3ca94a80b81e418622a4e958773b93dd44269f03d8b5847dbca61900c",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:copper_tower",
@@ -111051,43 +111116,39 @@
           "mns:copper_tower"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:copper_tower"
-            ],
-            "value": "mns:chests/uncommon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:copper_tower"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:copper_tower": [
+            {
+              "path": "/block_entities/0/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/1/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/2/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/3/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            }
+          ]
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:copper_tower"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:copper_tower": {}
+        }
       },
       "name": "Moog's Nether Structures Copper Tower",
       "pool_trace_ids": [
@@ -111097,8 +111158,30 @@
       "structure_ids": [
         "mns:copper_tower"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:copper_tower": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:copper_tower_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Squat stepped mound with projecting details and four chests."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -111659,7 +111742,12 @@
         "packaged_template_y_blocks": 32,
         "template_id": "mns:giant_skull"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [
+          "minecraft:wither_skeleton"
+        ],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:giant_skull": {
           "biomes": [
@@ -111674,41 +111762,25 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:giant_skull": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
-          "minecraft:the_nether"
-        ]
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:wither_skeleton",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:giant_skull"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:giant_skull"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:giant_skull": [
+            {
+              "entity_id": "minecraft:wither_skeleton",
+              "path": "/block_entities/0",
+              "position": [
+                17,
+                0,
+                27
+              ]
+            }
+          ]
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -111724,6 +111796,83 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 32,
             "template_id": "mns:giant_skull"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [
+              "minecraft:wither_skeleton"
+            ],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:giant_skull": [
+                {
+                  "entity_id": "minecraft:wither_skeleton",
+                  "path": "/block_entities/0",
+                  "position": [
+                    17,
+                    0,
+                    27
+                  ]
+                }
+              ]
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "Authored minecraft:wither_skeleton spawner encounter."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:giant_skull": [
+                {
+                  "path": "/block_entities/1/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/2/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                }
+              ]
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:giant_skull": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:giant_skull": {
+                "biomes": "#mns:has_structure/nether_wastes_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:giant_skull_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Elongated skeletal head with jaw and tall horn-like projections; the source spawner is at its base."
           }
         },
         "custom_generation_settings": {
@@ -111734,10 +111883,14 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-pair-views/skulls_shrines_towers.svg.gz": "d4c7b3d3ca94a80b81e418622a4e958773b93dd44269f03d8b5847dbca61900c",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:giant_skull",
@@ -111756,43 +111909,31 @@
           "mns:giant_skull"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "Authored minecraft:wither_skeleton spawner encounter."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:giant_skull"
-            ],
-            "value": "mns:chests/uncommon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:giant_skull"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:giant_skull": [
+            {
+              "path": "/block_entities/1/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/2/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            }
+          ]
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:giant_skull"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:giant_skull": {}
+        }
       },
       "name": "Moog's Nether Structures Giant Skull",
       "pool_trace_ids": [
@@ -111802,8 +111943,30 @@
       "structure_ids": [
         "mns:giant_skull"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:giant_skull": {
+            "biomes": "#mns:has_structure/nether_wastes_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:giant_skull_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Elongated skeletal head with jaw and tall horn-like projections; the source spawner is at its base."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -111827,7 +111990,12 @@
         "packaged_template_y_blocks": 8,
         "template_id": "mns:grave_yard"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [
+          "minecraft:wither_skeleton"
+        ],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:grave_yard": {
           "biomes": [
@@ -111842,39 +112010,25 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:grave_yard": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:wither_skeleton",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:grave_yard"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:grave_yard"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:grave_yard": [
+            {
+              "entity_id": "minecraft:wither_skeleton",
+              "path": "/block_entities/1",
+              "position": [
+                13,
+                0,
+                6
+              ]
+            }
+          ]
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -111890,6 +112044,87 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 8,
             "template_id": "mns:grave_yard"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [
+              "minecraft:wither_skeleton"
+            ],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:grave_yard": [
+                {
+                  "entity_id": "minecraft:wither_skeleton",
+                  "path": "/block_entities/1",
+                  "position": [
+                    13,
+                    0,
+                    6
+                  ]
+                }
+              ]
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "Authored minecraft:wither_skeleton spawner encounter."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:grave_yard": [
+                {
+                  "path": "/block_entities/0/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/2/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/3/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                }
+              ]
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:grave_yard": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:grave_yard": {
+                "biomes": "#mns:has_structure/soul_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:grave_yard_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Low rectangular cemetery with rows of markers and a bounded plot."
           }
         },
         "custom_generation_settings": {
@@ -111900,11 +112135,15 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-landmark-views/landmarks.svg.gz": "41da851782f11d2d95850c402c327eca034c52052f2e19a03abf20a68ce9679d",
           "evidence/item-8/sources/nether-landmark-views/well_ruin_comparison.svg.gz": "3694f4b4ae53c9ec16dd3de3b0742bce94199c3c5dea6da18a69735aa03d10c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:grave_yard",
@@ -111923,50 +112162,35 @@
           "mns:grave_yard"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "Authored minecraft:wither_skeleton spawner encounter."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:grave_yard"
-            ],
-            "value": "mns:chests/treasure"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:grave_yard"
-            ],
-            "value": "mns:chests/uncommon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:grave_yard"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:grave_yard": [
+            {
+              "path": "/block_entities/0/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/2/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/3/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            }
+          ]
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:grave_yard"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:grave_yard": {}
+        }
       },
       "name": "Moog's Nether Structures Grave Yard",
       "pool_trace_ids": [
@@ -111976,8 +112200,30 @@
       "structure_ids": [
         "mns:grave_yard"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:grave_yard": {
+            "biomes": "#mns:has_structure/soul_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:grave_yard_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Low rectangular cemetery with rows of markers and a bounded plot."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -111997,7 +112243,15 @@
         "packaged_template_y_blocks": 45,
         "template_id": "mns:houses/large_house_1"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [
+          "minecraft:blaze",
+          "minecraft:piglin",
+          "minecraft:piglin_brute",
+          "minecraft:wither_skeleton"
+        ],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:large_house_1": {
           "biomes": [
@@ -112012,63 +112266,79 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:large_house_1": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:blaze",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:houses/large_house_1"
-            ]
-          },
-          {
-            "entity_id": "minecraft:piglin",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:houses/large_house_1"
-            ]
-          },
-          {
-            "entity_id": "minecraft:piglin_brute",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:houses/large_house_1"
-            ]
-          },
-          {
-            "entity_id": "minecraft:wither_skeleton",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "mns:houses/large_house_1"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:houses/large_house_1"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:houses/large_house_1": [
+            {
+              "entity_id": "minecraft:wither_skeleton",
+              "path": "/block_entities/4",
+              "position": [
+                10,
+                1,
+                14
+              ]
+            },
+            {
+              "entity_id": "minecraft:wither_skeleton",
+              "path": "/block_entities/9",
+              "position": [
+                37,
+                3,
+                12
+              ]
+            },
+            {
+              "entity_id": "minecraft:blaze",
+              "path": "/block_entities/39",
+              "position": [
+                31,
+                13,
+                11
+              ]
+            },
+            {
+              "entity_id": "minecraft:blaze",
+              "path": "/block_entities/40",
+              "position": [
+                31,
+                13,
+                15
+              ]
+            },
+            {
+              "entity_id": "minecraft:piglin_brute",
+              "path": "/block_entities/47",
+              "position": [
+                12,
+                15,
+                15
+              ]
+            },
+            {
+              "entity_id": "minecraft:piglin",
+              "path": "/block_entities/50",
+              "position": [
+                38,
+                19,
+                13
+              ]
+            },
+            {
+              "entity_id": "minecraft:piglin_brute",
+              "path": "/block_entities/54",
+              "position": [
+                38,
+                20,
+                14
+              ]
+            }
+          ]
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -112084,6 +112354,197 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 45,
             "template_id": "mns:houses/large_house_1"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [
+              "minecraft:blaze",
+              "minecraft:piglin",
+              "minecraft:piglin_brute",
+              "minecraft:wither_skeleton"
+            ],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:houses/large_house_1": [
+                {
+                  "entity_id": "minecraft:wither_skeleton",
+                  "path": "/block_entities/4",
+                  "position": [
+                    10,
+                    1,
+                    14
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:wither_skeleton",
+                  "path": "/block_entities/9",
+                  "position": [
+                    37,
+                    3,
+                    12
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:blaze",
+                  "path": "/block_entities/39",
+                  "position": [
+                    31,
+                    13,
+                    11
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:blaze",
+                  "path": "/block_entities/40",
+                  "position": [
+                    31,
+                    13,
+                    15
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:piglin_brute",
+                  "path": "/block_entities/47",
+                  "position": [
+                    12,
+                    15,
+                    15
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:piglin",
+                  "path": "/block_entities/50",
+                  "position": [
+                    38,
+                    19,
+                    13
+                  ]
+                },
+                {
+                  "entity_id": "minecraft:piglin_brute",
+                  "path": "/block_entities/54",
+                  "position": [
+                    38,
+                    20,
+                    14
+                  ]
+                }
+              ]
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "Authored minecraft:blaze, minecraft:piglin, minecraft:piglin_brute, minecraft:wither_skeleton spawner encounter."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:houses/large_house_1": [
+                {
+                  "path": "/block_entities/0/nbt/LootTable",
+                  "value": "mns:chests/empty"
+                },
+                {
+                  "path": "/block_entities/1/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/2/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/3/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/5/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/10/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/11/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/12/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/20/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/21/nbt/LootTable",
+                  "value": "mns:chests/empty"
+                },
+                {
+                  "path": "/block_entities/30/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/32/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/36/nbt/LootTable",
+                  "value": "mns:chests/uncommon"
+                },
+                {
+                  "path": "/block_entities/38/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                },
+                {
+                  "path": "/block_entities/49/nbt/LootTable",
+                  "value": "mns:chests/empty"
+                },
+                {
+                  "path": "/block_entities/51/nbt/LootTable",
+                  "value": "mns:chests/empty"
+                }
+              ]
+            },
+            "empty_table_disposition": "mns:chests/empty is data/mns/loot_table/chests/empty.json, not no loot. It has uniform 2..4 rolls with weighted empty, nether_wart, gold_nugget, bone, string, cobweb, rotten_flesh, gunpowder, blaze_powder and fire_charge entries. Preserve source weights/count functions; no rolled reward claim."
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:large_house_1": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:large_house_1": {
+                "biomes": "#mns:has_structure/warped_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:large_house_1_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Long hall joined to a tall end tower; enclosed rooms can conceal source spawners and loot."
           }
         },
         "custom_generation_settings": {
@@ -112094,10 +112555,14 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-house-views/house_comparison.svg.gz": "9c6b16aaceb9d5c81f7a313c729bf633402c15db409dbf2bf438bfd3e7eac667",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:large_house_1",
@@ -112116,64 +112581,88 @@
           "mns:large_house_1"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "Authored minecraft:blaze, minecraft:piglin, minecraft:piglin_brute, minecraft:wither_skeleton spawner encounter."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:houses/large_house_1"
-            ],
-            "value": "mns:chests/empty"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:houses/large_house_1"
-            ],
-            "value": "mns:chests/houses"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:houses/large_house_1"
-            ],
-            "value": "mns:chests/treasure"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:houses/large_house_1"
-            ],
-            "value": "mns:chests/uncommon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:houses/large_house_1"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:houses/large_house_1": [
+            {
+              "path": "/block_entities/0/nbt/LootTable",
+              "value": "mns:chests/empty"
+            },
+            {
+              "path": "/block_entities/1/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/2/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/3/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/5/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/10/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/11/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/12/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/20/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/21/nbt/LootTable",
+              "value": "mns:chests/empty"
+            },
+            {
+              "path": "/block_entities/30/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/32/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/36/nbt/LootTable",
+              "value": "mns:chests/uncommon"
+            },
+            {
+              "path": "/block_entities/38/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            },
+            {
+              "path": "/block_entities/49/nbt/LootTable",
+              "value": "mns:chests/empty"
+            },
+            {
+              "path": "/block_entities/51/nbt/LootTable",
+              "value": "mns:chests/empty"
+            }
+          ]
+        },
+        "empty_table_disposition": "mns:chests/empty is data/mns/loot_table/chests/empty.json, not no loot. It has uniform 2..4 rolls with weighted empty, nether_wart, gold_nugget, bone, string, cobweb, rotten_flesh, gunpowder, blaze_powder and fire_charge entries. Preserve source weights/count functions; no rolled reward claim."
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:houses/large_house_1"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:large_house_1": {}
+        }
       },
       "name": "Moog's Nether Structures Large House 1",
       "pool_trace_ids": [
@@ -112183,8 +112672,30 @@
       "structure_ids": [
         "mns:large_house_1"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:large_house_1": {
+            "biomes": "#mns:has_structure/warped_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:large_house_1_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Long hall joined to a tall end tower; enclosed rooms can conceal source spawners and loot."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -113987,7 +114498,10 @@
         "packaged_template_y_blocks": 46,
         "template_id": "mns:nether_tower"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:nether_tower": {
           "biomes": [
@@ -114017,32 +114531,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:nether_tower": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
-          "minecraft:the_nether"
-        ]
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_tower"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:nether_tower": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -114058,6 +114555,131 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 46,
             "template_id": "mns:nether_tower"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:nether_tower": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:nether_tower": [
+                {
+                  "path": "/block_entities/3/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/4/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/5/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/6/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/7/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/8/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/10/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/11/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/12/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/13/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/16/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/17/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/20/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/21/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/27/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/31/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/51/nbt/LootTable",
+                  "value": "mns:chests/treasure"
+                }
+              ]
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:nether_tower": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:nether_tower": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:nether_tower_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Tall multilevel tower and upper spire with furnished workshop/storage enclosure."
           }
         },
         "custom_generation_settings": {
@@ -114068,10 +114690,14 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-pair-views/skulls_shrines_towers.svg.gz": "d4c7b3d3ca94a80b81e418622a4e958773b93dd44269f03d8b5847dbca61900c",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:nether_tower",
@@ -114090,50 +114716,91 @@
           "mns:nether_tower"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:nether_tower"
-            ],
-            "value": "mns:chests/houses"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:nether_tower"
-            ],
-            "value": "mns:chests/treasure"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_tower"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:nether_tower": [
+            {
+              "path": "/block_entities/3/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/4/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/5/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/6/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/7/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/8/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/10/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/11/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/12/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/13/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/16/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/17/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/20/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/21/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/27/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/31/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/51/nbt/LootTable",
+              "value": "mns:chests/treasure"
+            }
+          ]
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_tower"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:nether_tower": {}
+        }
       },
       "name": "Moog's Nether Structures Nether Tower",
       "pool_trace_ids": [
@@ -114143,8 +114810,30 @@
       "structure_ids": [
         "mns:nether_tower"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:nether_tower": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:nether_tower_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Tall multilevel tower and upper spire with furnished workshop/storage enclosure."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -114167,7 +114856,10 @@
         "packaged_template_y_blocks": 20,
         "template_id": "mns:nether_wart_farm"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:nether_wart_farm": {
           "biomes": [
@@ -114197,30 +114889,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:nether_wart_farm": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_wart_farm"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:nether_wart_farm": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -114236,6 +114913,75 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 20,
             "template_id": "mns:nether_wart_farm"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:nether_wart_farm": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:nether_wart_farm": [
+                {
+                  "path": "/block_entities/0/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/1/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                },
+                {
+                  "path": "/block_entities/2/nbt/LootTable",
+                  "value": "mns:chests/houses"
+                }
+              ]
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:nether_wart_farm": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:nether_wart_farm": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:nether_wart_farm_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Upright roofed cultivation building surrounded by wart on soul sand."
           }
         },
         "custom_generation_settings": {
@@ -114246,11 +114992,15 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-landmark-views/landmarks.svg.gz": "41da851782f11d2d95850c402c327eca034c52052f2e19a03abf20a68ce9679d",
           "evidence/item-8/sources/nether-landmark-views/well_ruin_comparison.svg.gz": "3694f4b4ae53c9ec16dd3de3b0742bce94199c3c5dea6da18a69735aa03d10c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:nether_wart_farm",
@@ -114269,43 +115019,35 @@
           "mns:nether_wart_farm"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "mns:nether_wart_farm"
-            ],
-            "value": "mns:chests/houses"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_wart_farm"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:nether_wart_farm": [
+            {
+              "path": "/block_entities/0/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/1/nbt/LootTable",
+              "value": "mns:chests/houses"
+            },
+            {
+              "path": "/block_entities/2/nbt/LootTable",
+              "value": "mns:chests/houses"
+            }
+          ]
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:nether_wart_farm"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:nether_wart_farm": {}
+        }
       },
       "name": "Moog's Nether Structures Nether Wart Farm",
       "pool_trace_ids": [
@@ -114315,8 +115057,30 @@
       "structure_ids": [
         "mns:nether_wart_farm"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:nether_wart_farm": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:nether_wart_farm_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Upright roofed cultivation building surrounded by wart on soul sand."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -115605,7 +116369,10 @@
         "packaged_template_y_blocks": 9,
         "template_id": "mns:smoking_shrine"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:smoking_shrine": {
           "biomes": [
@@ -115635,32 +116402,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:smoking_shrine": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
-          "minecraft:the_nether"
-        ]
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:smoking_shrine"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:smoking_shrine": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -115676,6 +116426,62 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 9,
             "template_id": "mns:smoking_shrine"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:smoking_shrine": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:smoking_shrine": []
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:smoking_shrine": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:smoking_shrine": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:smoking_shrine_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Raised blackstone ring with lava and soul campfires; source fire details are environmental hazards."
           }
         },
         "custom_generation_settings": {
@@ -115686,10 +116492,14 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-pair-views/skulls_shrines_towers.svg.gz": "d4c7b3d3ca94a80b81e418622a4e958773b93dd44269f03d8b5847dbca61900c",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:smoking_shrine",
@@ -115708,35 +116518,22 @@
           "mns:smoking_shrine"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:smoking_shrine"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:smoking_shrine": []
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:smoking_shrine"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:smoking_shrine": {}
+        }
       },
       "name": "Moog's Nether Structures Smoking Shrine",
       "pool_trace_ids": [
@@ -115746,8 +116543,30 @@
       "structure_ids": [
         "mns:smoking_shrine"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:smoking_shrine": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:smoking_shrine_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Raised blackstone ring with lava and soul campfires; source fire details are environmental hazards."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -115770,7 +116589,10 @@
         "packaged_template_y_blocks": 15,
         "template_id": "mns:soul_fire"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:soul_fire": {
           "biomes": [
@@ -115800,32 +116622,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:soul_fire": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
-          "minecraft:the_nether"
-        ]
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:soul_fire"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:soul_fire": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -115841,6 +116646,62 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 15,
             "template_id": "mns:soul_fire"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:soul_fire": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:soul_fire": []
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:soul_fire": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:soul_fire": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:soul_fire_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Upright open masonry surrounding soul fire, an environmental hazard rather than a saved enemy."
           }
         },
         "custom_generation_settings": {
@@ -115851,11 +116712,15 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-landmark-views/landmarks.svg.gz": "41da851782f11d2d95850c402c327eca034c52052f2e19a03abf20a68ce9679d",
           "evidence/item-8/sources/nether-landmark-views/well_ruin_comparison.svg.gz": "3694f4b4ae53c9ec16dd3de3b0742bce94199c3c5dea6da18a69735aa03d10c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:soul_fire",
@@ -115874,35 +116739,22 @@
           "mns:soul_fire"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:soul_fire"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:soul_fire": []
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:soul_fire"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:soul_fire": {}
+        }
       },
       "name": "Moog's Nether Structures Soul Fire",
       "pool_trace_ids": [
@@ -115912,8 +116764,30 @@
       "structure_ids": [
         "mns:soul_fire"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:soul_fire": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:soul_fire_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Upright open masonry surrounding soul fire, an environmental hazard rather than a saved enemy."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -116073,7 +116947,10 @@
         "packaged_template_y_blocks": 13,
         "template_id": "mns:train"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:train": {
           "biomes": [
@@ -116103,30 +116980,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:train": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:train"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:train": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -116142,6 +117004,62 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 13,
             "template_id": "mns:train"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:train": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:train": []
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:train": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:train": {
+                "biomes": "#mns:has_structure/nether_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:train_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Elongated train sculpture on a track-like base. Its depiction does not establish a functional vehicle."
           }
         },
         "custom_generation_settings": {
@@ -116152,11 +117070,15 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-landmark-views/landmarks.svg.gz": "41da851782f11d2d95850c402c327eca034c52052f2e19a03abf20a68ce9679d",
           "evidence/item-8/sources/nether-landmark-views/well_ruin_comparison.svg.gz": "3694f4b4ae53c9ec16dd3de3b0742bce94199c3c5dea6da18a69735aa03d10c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:train",
@@ -116175,35 +117097,22 @@
           "mns:train"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:train"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:train": []
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:train"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:train": {}
+        }
       },
       "name": "Moog's Nether Structures Train",
       "pool_trace_ids": [
@@ -116213,8 +117122,30 @@
       "structure_ids": [
         "mns:train"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:train": {
+            "biomes": "#mns:has_structure/nether_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:train_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Elongated train sculpture on a track-like base. Its depiction does not establish a functional vehicle."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -116234,7 +117165,10 @@
         "packaged_template_y_blocks": 15,
         "template_id": "mns:warped_dome"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+      },
       "biome_constraints": {
         "mns:warped_dome": {
           "biomes": [
@@ -116249,30 +117183,15 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "mns:warped_dome": [
-            "minecraft:the_nether"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+        "value": "minecraft:the_nether"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:warped_dome"
-        ],
-        "unresolved_sources": {}
+        "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+        "by_template": {
+          "mns:warped_dome": []
+        },
+        "generation_markers": []
       },
       "grouping_decision": {
         "attributes": {
@@ -116288,6 +117207,62 @@
             "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes.",
             "packaged_template_y_blocks": 15,
             "template_id": "mns:warped_dome"
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "natural": "Root spawn_overrides are empty. Conditional Nether biome/world spawning remains separate from authored assignments; no observed live population or safety guarantee."
+          },
+          "dimension": {
+            "basis": "Resolved root biome constraints intersect only Nether runtime possible biomes. Eligibility is not observed placement.",
+            "value": "minecraft:the_nether"
+          },
+          "generated_spawners": {
+            "basis": "Giant Skull /block_entities/0 and Grave Yard /1 each assign wither_skeleton. Large House /4,/9 assign wither_skeleton; /39,/40 blaze; /47,/54 piglin_brute; /50 piglin. The other seven selected templates have no spawner. Source blocks do not prove activation.",
+            "by_template": {
+              "mns:warped_dome": []
+            },
+            "generation_markers": []
+          },
+          "intended_hostility": {
+            "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+            "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+          },
+          "loot_table_source": {
+            "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+            "by_template": {
+              "mns:warped_dome": []
+            }
+          },
+          "mob_source": {
+            "authored_entities": [],
+            "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+            "spawn_overrides_by_structure": {
+              "mns:warped_dome": {}
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+            "placement_inputs_by_structure": {
+              "mns:warped_dome": {
+                "biomes": "#mns:has_structure/warped_biomes",
+                "cannot_spawn_in_liquid": true,
+                "land_search_direction": "HIGHEST_LAND",
+                "size": 1,
+                "spawn_overrides": {},
+                "start_height": {
+                  "absolute": 0
+                },
+                "start_pool": "mns:warped_dome_start_pool",
+                "step": "surface_structures",
+                "terrain_adaptation": "beard_thin",
+                "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+              }
+            },
+            "value": "Nether land-search site within Nether terrain"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+            "source_form": "Rounded ribbed shell with raised cap and irregular surrounding ground."
           }
         },
         "custom_generation_settings": {
@@ -116298,11 +117273,15 @@
           "terrain_adaptation": "beard_thin"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8",
+          "evidence/item-8/sources/moog-nether-generator-code/identities.json": "b2c32e424ebd99ccf40bbb5e1edd93c617e70b64c2636e6f846bd5732749315f",
           "evidence/item-8/sources/nether-landmark-views/landmarks.svg.gz": "41da851782f11d2d95850c402c327eca034c52052f2e19a03abf20a68ce9679d",
           "evidence/item-8/sources/nether-landmark-views/well_ruin_comparison.svg.gz": "3694f4b4ae53c9ec16dd3de3b0742bce94199c3c5dea6da18a69735aa03d10c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "mns:warped_dome",
@@ -116321,35 +117300,22 @@
           "mns:warped_dome"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Direct selected template entity and block-entity contents. No measured difficulty, safety or simultaneous-population claim.",
+        "value": "No authored mob or spawner in the selected template; ordinary environmental hazards and conditional natural mobs remain."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:warped_dome"
-        ]
+        "basis": "Exact template-owned LootTable references. Smoking Shrine, Soul Fire, Train and Warped Dome have none. Selected machine/container Items and campfire Items are empty; furniture and crop presence do not establish productive operation or measured yield.",
+        "by_template": {
+          "mns:warped_dome": []
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "mns:warped_dome"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entities": [],
+        "basis": "All ten selected entity lists are empty and no generation markers occur. Physical spawners remain separately recorded. Furnishings, skulls and vehicle sculpture are not mob assignments.",
+        "spawn_overrides_by_structure": {
+          "mns:warped_dome": {}
+        }
       },
       "name": "Moog's Nether Structures Warped Dome",
       "pool_trace_ids": [
@@ -116359,8 +117325,30 @@
       "structure_ids": [
         "mns:warped_dome"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "GenericNetherJigsawStructure postLayoutAdjustments uses HIGHEST_LAND with inverse cannotSpawnInLiquid (false here), then land Y or its sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero; start_height absolute 0 is not final Y. All declare beard_thin. This is the captured Nether-specific path, not Overworld heightmap projection; exposed/buried extent is not measured.",
+        "placement_inputs_by_structure": {
+          "mns:warped_dome": {
+            "biomes": "#mns:has_structure/warped_biomes",
+            "cannot_spawn_in_liquid": true,
+            "land_search_direction": "HIGHEST_LAND",
+            "size": 1,
+            "spawn_overrides": {},
+            "start_height": {
+              "absolute": 0
+            },
+            "start_pool": "mns:warped_dome_start_pool",
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "type": "moogs_structures:moogs_structures_generic_nether_jigsaw_structure"
+          }
+        },
+        "value": "Nether land-search site within Nether terrain"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative inference from preserved block-layout views, nominal dimensions and Nether land-search placement. Terrain can conceal the site; no measured sight distance or discovery rate.",
+        "source_form": "Rounded ribbed shell with raised cap and irregular surrounding ground."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -209913,7 +210901,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "8faf69d13e8580c0709b97042656f91db31e42d550820695280aa49fa7ec88a2",
+    "evidence/item-8/family-decisions.json": "092da834ae78317af4aeb8789f0d0f296d81796355778fb43b4c3719d8acbfe9",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",

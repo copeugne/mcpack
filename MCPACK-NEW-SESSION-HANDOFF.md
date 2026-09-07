@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Ten standalone Nether families assessed after 1d6e3be8
+
+Eighty attributes finish Copper Tower, Giant Skull, Grave Yard, Large House 1,
+Nether Tower, Nether Wart Farm, Smoking Shrine, Soul Fire, Train and Warped Dome.
+Existing geometry is unchanged. Nether-specific placement, source spawners and
+loot attribution are integrated; mns:chests/empty is explicitly not no loot.
+Ten shared tests pass; no capture or tooling. Derivations are in the existing
+moog-generator-code README. Inventory SHA:
+0ec9375718e28d4136221c039a5ac6d1e5c84dc670a998cf660744af126008bb.
+Nether Structures 10/27; registry 226/410, nonregistry 40/40, total 266/450
+assessed, 184 remaining. Retire these ten absent contradictory evidence.
+Continue the remaining seventeen mns families in quantified coherent batches.
+Final integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
 #### Final three Soaring families assessed after 10d82998
 
 Thirty attributes finish Arena, Jungle and Volcano across 35 templates. Finite

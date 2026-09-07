@@ -1327,3 +1327,58 @@ the corrected r2 includes the full 98-block width. Ten shared tests pass.
 Only three family rows and the decisions pin change; biome constraints,
 world observations and nonregistry content are preserved.
 Inventory SHA: 4fda5442d385c104d88096e7ac359c46af4d3c2e533dd25fb7cc7e3c42f6bdd8.
+
+## Ten standalone Nether families
+
+After 1d6e3be8, eighty attributes finish Copper Tower, Giant Skull, Grave Yard,
+Large House 1, Nether Tower, Nether Wart Farm, Smoking Shrine, Soul Fire, Train
+and Warped Dome. Their existing two geometry attributes are preserved exactly.
+Each family has one root and one fully traced template without attachments.
+Source references are the mns root entries in pool-traces-content.json.gz,
+their exact source paths from MoogsNetherStructures-1.21-3.0.0-alpha.2.jar in
+templates-redacted.json.gz, and corresponding packaged structure/start-pool JSON.
+Large House's selected template is houses/large_house_1; other template paths
+match their root names. Hashes are bound in the family evidence maps.
+
+All ten runtime biome intersections identify minecraft:the_nether. Roots use
+GenericNetherJigsawStructure, HIGHEST_LAND, cannot_spawn_in_liquid true,
+start_height absolute 0, depth 1 and beard_thin. The existing
+moog-nether-generator-code identities bind postLayoutAdjustments: HIGHEST_LAND
+calls getHighestLand with inverse cannotSpawnInLiquid, then chooses land or
+sea-level fallback and moves the pieces. Omitted ledge_offset_y defaults zero.
+Initial Y0 is not final placement. This is the already-inspected Nether-specific
+path, not Overworld heightmap projection. Source views and dimensions support
+qualitative discoverability; actual terrain exposure and sight distance are not
+measured.
+
+All entity lists and generation-marker lists are empty. Giant Skull
+/block_entities/0 and Grave Yard /1 assign wither_skeleton. Large House /4 and
+/9 assign wither_skeleton, /39 and /40 blaze, /47 and /54 piglin_brute, /50
+piglin. The other seven templates contain no spawner. Empty spawn_overrides
+leave ordinary conditional biome/world spawning separate from authored mobs.
+These counts describe source blocks, not activated or simultaneous populations.
+
+| Family | Template-owned loot-table sources |
+| --- | --- |
+| Copper Tower | mns:chests/uncommon |
+| Giant Skull | mns:chests/uncommon |
+| Grave Yard | mns:chests/uncommon, mns:chests/treasure |
+| Large House | mns:chests/empty, treasure, uncommon, houses |
+| Nether Tower | mns:chests/houses, mns:chests/treasure |
+| Nether Wart Farm | mns:chests/houses |
+| Smoking Shrine, Soul Fire, Train, Warped Dome | No template loot reference |
+
+Exact container paths remain in the authoritative attributes. Large House's
+mns:chests/empty resolves to data/mns/loot_table/chests/empty.json: uniform 2..4
+rolls, with empty weight 8 and possible nether wart, gold nugget, bone, string,
+cobweb, rotten flesh, gunpowder, blaze powder and fire charge. It is not no loot.
+Selected machine/container and campfire Items are empty. Furnishings, crop
+layout and train sculpture do not establish functioning production or transport.
+Source fire/lava details remain environmental hazards, not authored enemies.
+No new capture, measurement or tooling was added.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Ten tests pass. Only ten family rows and the decisions pin change; geometry,
+biome constraints, observations and nonregistry content are preserved.
+Inventory SHA: 0ec9375718e28d4136221c039a5ac6d1e5c84dc670a998cf660744af126008bb.
