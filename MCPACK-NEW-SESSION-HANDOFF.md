@@ -7,6 +7,27 @@
 ### Continuation update - 2026-09-07
 
 
+#### Jungle content and geometry declaration after 7e3a6ebe
+
+Eight required attributes integrated from125 traced templates and existing
+processor sources. Keep absent-mod crocodiles separate from active silverfish,
+infested blocks, conditional Create/Supplementaries machinery and source trap
+NBT. Four loot tables and puzzle/filter/trap fixed content are attributed.
+Two size attributes remain: baseline observations372/752 are carvers; three
+start shells do not establish the whole connected envelope. One seed42 target,
+81 requested chunks, timeout900 is declared in evidence/item-8/sources/
+jungle-temple-provider/README.md, Declared Jungle Temple geometry capture.
+Next execute that exact existing workflow, retain/restore raw evidence and
+integrate full-start geometry with downward pillar extensions separate.
+No new tooling. All85 focused tests pass (58.69s). Only this family and input
+identity changed; geometry placeholders and observations were preserved.
+Counts stay359/448 assessed,89 remaining until both sizes are resolved.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+aafac5f6d1b8c8e8cd82ce271e3dac89948d59c7a3886791a9a70e7adfcd82a7.
+
+
+
 #### Ocean Monument assessed after 573234a7
 
 Ten attributes finish Better Ocean Monument using57 traced templates, six

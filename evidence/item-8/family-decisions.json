@@ -17387,7 +17387,65 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/jungle-temple-provider/identities.json": "c58f507bc5d0896b3f5fd6238d7ab9b3a79ce4ff4408417e896c041d6ce0c027",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-3/runtime/retained-server-candidates.txt": "78e5bdc0697299782a535400ad5b313c088e8db10cfe075085ae4c8a531e30cb"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "All13 effective jungle-related biomes intersect the captured Overworld membership and no other captured dimension. Biome constraints remain separately derived."
+        },
+        "intended_hostility": {
+          "value": "Trap and puzzle temple with authored silverfish, infested blocks and conditional machinery hazards.",
+          "basis": "Treasure-room silverfish, dispenser and marker processors, and Create/Supplementaries component conditions support this intent. It is not a generic naturally populated monster dungeon: piece-bounded monster, creature and ambient overrides are empty.",
+          "limitation": "Authored traps and machinery do not establish successful activation, encounter difficulty or realized damage."
+        },
+        "mob_source": {
+          "authored": "treasure_room/treasure_room_1 contains four minecraft:silverfish entities. Infested-block outputs supply a separate conditional silverfish source.",
+          "conditional_components": "The crocodile pit requires alexsmobs plus a forge loader condition. Alexsmobs is absent from the retained manifest, so its two packaged crocodiles are not active residents. Create and Supplementaries are retained; their machinery components have mod predicates and the sawblade room additionally allows only none/counterclockwise_90 rotations.",
+          "other_entities": "Item/glow-item frames, Create super_glue and a minecart are objects, not enemy families or mobs.",
+          "natural": "The root declares empty piece-bounded monster, creature and ambient spawn lists. This suppresses those override categories in their applicable bounds; it is not a universal no-mobs guarantee."
+        },
+        "loot_table_source": {
+          "tables": [
+            "minecraft:chests/jungle_temple",
+            "betterjungletemples:archaeology/emerald",
+            "betterjungletemples:chests/campsite",
+            "betterjungletemples:chests/treasure"
+          ],
+          "basis": "Exact component paths and NBT loot references are preserved in pool-traces-content.json.gz. Emerald archaeology belongs to gravel challenge alternatives; campsite and treasure tables belong to their respective components.",
+          "fixed_content": "Template Items lists include emeralds, brushes, flint_and_steel, redstone, colored concrete, golden swords, botanical materials, bone/bone_meal, candles, gold/iron ingots and raw metals, plus lava/water buckets and splash/lingering potions. Frame Item data contains emeralds or honeycomb. These include puzzle/filter/trap inputs, not just rewards.",
+          "processor_content": "EmptyDispenserProcessor fills an empty Items list with possible ordinary or poison-tipped arrows via ArrowData (thresholds0.2 and0.3). FireballDispenserProcessor turns orange concrete into upward dispensers and writes fire charges at slot4 and optional other slots (nextFloat<0.1). Both write uppercase Count=1. Preserve this source encoding without claiming verified loaded ammunition or successful firing.",
+          "scope": "Source tables and authored content, not realized reward totals, functioning puzzle acceptance or global loot-modifier yields."
+        },
+        "generated_spawners": {
+          "ordinary_spawner_blocks": false,
+          "trial_spawner_blocks": false,
+          "basis": "No ordinary or trial spawner palette states or block entities occur in the125 traced templates. Main-list block processors create traps, vegetation, supports and infested blocks, not block spawners.",
+          "other_hostile_sources": "Four authored silverfish in treasure_room_1 and processor-created infested blocks are separate from spawner blocks."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Four silverfish in treasure_room_1. Main block replacements convert pink_concrete to infested_cobblestone, allow infested_cobblestone among polished_granite outputs and infested_chiseled_stone_bricks among chiseled_red_sandstone outputs. These blocks provide conditional silverfish encounters.",
+          "natural": "Empty piece-bounded monster/creature/ambient lists restrict those categories. Nearby or externally arriving mobs are not ruled out.",
+          "inactive": "Crocodile integration is excluded by its absent-mod condition, not counted as an active authored encounter.",
+          "scope": "Source-supported hostility and attribution; no live population claim."
+        },
+        "visual_discoverability": {
+          "value": "Jungle temple with a surface-connected entrance and substantial lower rooms; vegetation and terrain can obscure the approach.",
+          "basis": "WORLD_SURFACE_WG projection, anchor offset-30..-25 and entrance connectors in each start support a surface-connected, partly buried design. Start shells are52x54x51,60x54x43 and60x54x51; these are not accepted complete-assembly geometry.",
+          "limitation": "Existing world observations372/752 stop at minecraft:carvers and do not prove populated appearance. Human detection distance and exposed area are not measured."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-connected temple with below-surface chambers and terrain-dependent downward pillars.",
+          "basis": "Root uses WORLD_SURFACE_WG plus anchor offset-30..-25, surface_structures step and enhanced terrain adaptation yungsapi:none. PillarProcessor writes downward through air/fluid until solid terrain or a build-height boundary, independently of saved piece bounds. The configured anchor is not the floor."
+        }
       }
     },
     {
