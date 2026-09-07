@@ -10401,3 +10401,101 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-guild-ruins-attr
 ```
 
 Use fresh output files. Item 8 and its final acceptance gate remain open.
+
+
+### Cottage and camp attribute increment
+
+Predeclared scope: cottage and pillager camp, eleven fields each. Decision
+e9bbf9ba supplies ten source interpretations per family and retains resolved biome
+constraints. Nominal XYZ envelopes are 9 by 9 by 7 and 17 by 5 by 14. Cottage loot
+belongs only to its second equal-weight alternative. The camp has mixed authored
+inhabitants and two physical pillager spawners; the selected processor's sole mob
+entry and conditional spawn settings remain explicit. Neither has a retained
+world occurrence. No new measurement or tooling was introduced.
+
+Focused IDAS checks pass (1 passed, 77 deselected). Two fresh inventory builds
+agree exactly, SHA-256
+d88a9578fd3dc570fed02d82855b296710efa55bf85c2934dafeb4eb387696e3.
+Only the two family rows and decision input identity change. Membership, biome
+constraints, world observations, pool trace IDs and all other rows are unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cottage-camp-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+cmp evidence/raw/item8/inventory-cottage-camp-attributes-r1.json evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+```
+
+### Remaining attribute workload after cottage and camp
+
+Planning count against the inventory SHA above, excluding exactly the same fifteen
+inactive groups and cloud group identified in the quantified scope section:
+401 of 410 registry candidates have at least one top-level required field whose
+string starts with UNKNOWN. They contain 2,193 such field gaps. This is a count
+of unfinished recorded values, not experiments, effort hours or acceptance.
+
+| Required field | Literal field gaps |
+| --- | ---: |
+| approximate_footprint | 327 |
+| approximate_vertical_size | 325 |
+| intended_hostility | 378 |
+| authored_or_natural_enemies | 380 |
+| visual_discoverability | 400 |
+| underground_surface_classification | 383 |
+
+The other five fields have structured data for all 410 candidates, but some
+explicitly retain unresolved effective-generation interpretation. The nine
+records without a top-level UNKNOWN are BetterEnd end_lake and mountain,
+Minecraft buried_treasure, and IDAS cottage, pillager_camp, redhorn_guild,
+ruined_church, ruined_fort and witches_treestump. Their filled fields do not prove
+final acceptance. Thirty-nine candidates have some explicit attribute overrides;
+reuse that work. Six families received the current source-attribute assessment.
+
+The forty nonregistry family assignments remain a separate integration and
+attribute task. Therefore 441 records have demonstrated recording/integration
+work, and nine require assessment of their existing filled values before they
+can be counted as accepted. All 450 remain within the final coverage check.
+Do not call this 450 new investigations or introduce experiments to fill strings.
+Resolve required claims from existing source and observation evidence first.
+
+Registry candidates with literal gaps, by namespace:
+
+| Namespace | Families |
+| --- | ---: |
+| adorabuild_structures | 49 |
+| aether | 3 |
+| betterdeserttemples | 1 |
+| betterdungeons | 5 |
+| betterend | 7 |
+| betterfortresses | 1 |
+| betterjungletemples | 1 |
+| bettermineshafts | 1 |
+| betteroceanmonuments | 1 |
+| betterstrongholds | 1 |
+| betterwitchhuts | 2 |
+| creatingspace | 4 |
+| ctov | 2 |
+| deep_aether | 1 |
+| dungeons_arise | 40 |
+| dungeons_arise_seven_seas | 5 |
+| explorations | 10 |
+| explorify | 14 |
+| idas | 56 |
+| illagerinvasion | 5 |
+| integrated_stronghold | 1 |
+| integrated_villages | 1 |
+| mes | 18 |
+| minecraft | 12 |
+| mns | 27 |
+| mss | 26 |
+| mvs | 65 |
+| repurposed_structures | 17 |
+| supplementaries | 2 |
+| terralith | 15 |
+| towns_and_towers | 8 |
+
+These planning counts are derived by selecting the 410 rows defined above,
+checking the eleven SPECS fields for top-level UNKNOWN strings, counting rows
+with at least one such value, and grouping those row IDs by namespace. They do
+not establish semantic sufficiency or close the Item 8 gate.
