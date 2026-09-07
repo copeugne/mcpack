@@ -6,6 +6,115 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining registry work by evidence path at 7200f884
+
+All 386 remaining registry families have now been partitioned against the existing
+pool trace, not generic UNKNOWN strings. This is a work breakdown, not final
+acceptance of every attribute. Use the 24 retired IDAS IDs below and the existing
+15 inactive plus one excluded registry dispositions to reproduce the population.
+For each remaining family, inspect its structure_ids in the structures mapping of
+`evidence/item-8/sources/pool-traces-content.json.gz` (SHA-256
+703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5).
+
+| Mutually exclusive path | Families | Concrete work before acceptance |
+| --- | ---: | --- |
+| Every root traced, no missing references or unresolved elements | 340 | Integrate descriptive answers from selected template content, root definitions and existing design assessments. Resolve only relevant processor/hook effects; graph completeness is not assembled geometry. |
+| Every root traced, at least one missing reference or unresolved element | 21 | Reuse recorded broken-reference dispositions, identify affected geometry/content claims, and describe the supported assembly without inventing absent components. |
+| At least one root outside the pool trace | 25 | Use existing captured generator/piece code and world observations for the specific unanswered attributes. A custom root is not an uninspected provider. |
+
+The 21 trace-exception families are:
+
+- `adorabuild_structures:basalt_chambers`
+- `betterdungeons:zombie_dungeon`
+- `betterend:end_village`
+- `betterfortresses:fortress`
+- `betterstrongholds:stronghold`
+- `ctov:pillager_outpost`
+- `ctov:village`
+- `dungeons_arise:bandit_village`
+- `dungeons_arise:foundry`
+- `dungeons_arise:mechanical_nest`
+- `dungeons_arise:thornborn_towers`
+- `dungeons_arise_seven_seas:small_yacht`
+- `explorations:underground_temple`
+- `idas:ancient_mines`
+- `idas:desert_pyramid`
+- `integrated_stronghold:stronghold`
+- `integrated_villages:village`
+- `minecraft:ancient_city`
+- `towns_and_towers:outpost_camp`
+- `towns_and_towers:outpost_tower`
+- `towns_and_towers:village`
+
+These exceptions are missing pool/template references in the frozen data, not
+21 new source-capture tasks. The existing missing-template-code README and four
+captured vanilla classes already establish the base missing-template path for
+Small Yacht. IDAS ancient_mines and desert_pyramid explicitly identify their
+broken connector edges in their decisions. Preserve these findings. Do not repair
+the frozen pack, substitute similarly named resources or infer that a whole
+family is inactive merely because one optional component is absent.
+
+The 25 custom/mixed families are:
+
+- `aether:bronze_dungeon`
+- `aether:gold_dungeon`
+- `aether:silver_dungeon`
+- `betterdungeons:spider_dungeon`
+- `betterend:end_bridge`
+- `betterend:end_lake`
+- `betterend:eternal_portal`
+- `betterend:giant_ice_star`
+- `betterend:giant_mossy_glowshroom`
+- `betterend:mountain`
+- `betterend:small_island`
+- `betterend:sulphuric_cave`
+- `bettermineshafts:mineshaft`
+- `deep_aether:brass_dungeon`
+- `explorations:slime_cave`
+- `minecraft:buried_treasure`
+- `minecraft:end_city`
+- `minecraft:igloo`
+- `minecraft:mansion`
+- `minecraft:nether_fossil`
+- `minecraft:ocean_ruin`
+- `minecraft:ruined_portal`
+- `minecraft:shipwreck`
+- `repurposed_structures:mansion`
+- `repurposed_structures:monument`
+
+Geometry work is a separate, overlapping dimension of this same population:
+173 rows already record both footprint and vertical-size answers; preserve these
+and their scope. The other 213 need integration or derivation for at least one
+geometry answer (213 footprints and 211 heights). Inspect their existing design
+comparisons, template dimensions, connected assemblies and generator parameters
+before deciding evidence is missing. Component maxima alone cannot stand in for
+an assembled footprint. Neither this count nor a template catalog implies that
+213 new measurements are required.
+
+Biome reconciliation narrows to one family and three variant references:
+`idas:lumber_camp/lumber_camp_bopmahogany`,
+`idas:lumber_camp/lumber_camp_bygmahogany`, and
+`idas:lumber_camp/lumber_camp_bygredwood`. The corresponding required tag names
+are already preserved in structure-inputs.json and inventory.json. The retained
+runtime debug log, line 19005, explicitly warns that these exact tags are absent
+from the biome data pack. Its restored bytes match SHA-256
+e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b;
+restore location is `evidence/raw/item8/custody-r1/restored-download/debug.log`,
+with durable custody under `evidence/item-8/raw-custody/`.
+Next integrate this existing runtime corroboration into the family's biome answer.
+Do not invent memberships or infer whole-family inactivity. Any stronger claim
+about those three variants' eligibility needs the relevant consumption semantics.
+No other remaining registry row has a missing required or unresolved biome tag
+in the current resolved inputs.
+
+This pass finds existing evidence to reuse and narrows known exception handling.
+It does not yet establish an exact total of genuinely missing evidence claims.
+The remaining descriptive work includes family-specific encounter and visual
+interpretation, placement and relevant effective content, plus geometry above.
+Resolve these through the three bounded paths; do not repeat provider discovery,
+canonical comparisons, the 24 retired assessments or already-supported attributes.
+No new source capture or measurement is authorized merely by this partition.
+
 #### Assessment queue correction after 7c0db515
 
 This checkpoint supersedes the assessment counts below. It does not declare
