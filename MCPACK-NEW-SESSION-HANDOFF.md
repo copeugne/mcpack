@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-07
 
+#### Pre-PR preservation verified at e96cdc8b
+
+Backup origin/codex/item8-preserved-e96cdc8b resolves exactly to implementation
+ e96cdc8b0587a93fbcb20e9d766773381f835249. Original branch/tags untouched.
+Self-contained --all bundle108 refs,74140500 bytes, verified and mirror-restored;
+fsck clean. Private workspace archive2132192096 bytes covers personal/untracked
+state, .codegraph target, all raw evidence and instances except regenerable
+mods/libraries/JARs. Entire archive compares against originals; personal state
+extraction and AGENTS cmp pass. Patches/status/refs saved. Both backups are outside
+repo at /home/lonestar/Desktop/Projects/mcpack-preservation-e96cdc8b on SAME DISK.
+No public upload of private all-ref bundle or workspace archive. Accepted history
+has remote backup ref; existing accepted raw archives retain remote releases.
+Hashes, exclusions, commands and recovery: evidence/item-8/preservation.md.
+No rewrite/new PR branch yet. Disk free562MB after backup and restore tests; do not
+copy large raw evidence or create a full second instance. Isolated Git commit-tree
+or no-checkout branch preparation can avoid full duplicate checkout if appropriate.
+Original main is an ancestor of implementation. About1985 first-parent commits;
+evidence dominates final diff (5619 item8 evidence paths,137 test files,14 src files
+plus tools/docs). Preserve all evidence-referenced commits through original branch,
+backup ref, tags and bundle. Build coherent milestones with exact final-tree equality,
+not a giant mixed omnibus. No further Item8 assessment/testing expansion needed.
+Then open final PR promptly, @codex review loop, merge and verify main.
+
+
 #### Local acceptance verified after a66d1a9a
 
 Full495-test Item8 run completed494 passes/one stale dimension-test failure129.77s.
