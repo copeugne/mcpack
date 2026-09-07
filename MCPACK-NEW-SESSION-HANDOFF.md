@@ -7,6 +7,29 @@
 ### Continuation update - 2026-09-07
 
 
+#### Desert spawners and placement after bdcc3c31
+
+Quantified one family,ten attributes,197 traced templates,no missing components.
+Four attributes integrated: dimension, effective spawners, visual discoverability
+and placement classification. Four exact processor members convert gravel/bone/
+infested-cracked-brick/yellow-wool markers into husk/skeleton/silverfish spawners;
+no literal template spawners is not absence of generated spawners. Component
+counts and legacy equipment encoding remain source-scoped. Exact derivation and
+member hashes: family-decisions.json processor_inspection and evidence/item-8/
+sources/desert-temple-provider/README.md, Effective spawners and placement.
+Six required attributes remain: four content assessments (Pharaoh, mob/enemy
+attribution and rewards) plus two assembly sizes. Next inspect Pharaoh, frame,
+armor-stand, pot and archaeology paths using existing provider state/mixin facts;
+then inspect layout before any smallest justified geometry capture. No runtime
+or new tooling was added. All85 focused tests pass (58.38s). Only this family and
+input identity changed; geometry, membership and observations stay unchanged.
+Counts remain361/448 assessed,87 remaining. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main remain open.
+Inventory SHA-256:
+deb862ce161395da3e0d678fef78e6811b2320260fa4620f7795395a7168554a.
+
+
+
 #### Better Fortress assessed after 7fcbb310
 
 Ten attributes integrated from149 available traced templates, existing processor
