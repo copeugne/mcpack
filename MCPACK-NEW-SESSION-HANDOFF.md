@@ -76,7 +76,7 @@ Inspect actual staged, unstaged and untracked state before mutation. A clean
 checkout does not reproduce another workstation's uncommitted edits, deletions
 or private backups; do not invent or recreate those changes from this handoff.
 Preserve any existing local changes and archives. The local historical archive
-at `docs/history/MCPACK-HANDOFF-2026-09-07-ARCHIVE.md` is not a tracked dependency;
+at `docs/history/HISTORICAL-MCPACK-HANDOFF-2026-09-07-REFERENCE-ONLY.md` is not a tracked dependency;
 the immutable link above supplies durable historical context.
 Protected artifacts include `.codegraph`, `.omo/` and
 `mcpack-reconstructed-28(1).bundle` wherever present. Do not stage or delete them.
