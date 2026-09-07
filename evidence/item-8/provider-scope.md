@@ -9918,3 +9918,31 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-mines-pyram
 
 Use fresh output files. Generated placement and effective encounter behavior are
 not acceptance claims of this source-boundary decision.
+
+
+### Adaptive IDAS assembly refresh
+
+Decision 8a3b3ffd resolves enchanting-tower variants, intended manor components
+and the labyrinth chain using preserved template contents and pool graphs.
+Default-pool selections remain unchanged. The manor connector namespace mismatch
+is retained as a placement concern, with no baseline repair. Four focused IDAS
+checks and scoped Ruff/Basedpyright pass. Canonical backlog: 31, all IDAS.
+
+Two fresh builds agree exactly, SHA-256
+2cb58917226dc134dc26f25dc7c0dcd021b1cc25e716ce4ff76c8262a00e32bc.
+Only those three grouping decisions and the input hash change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final validation/review/main delivery
+remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py tests/item8/test_idas_provider_scope.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-adaptive-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-adaptive-r2.json
+cmp evidence/raw/item8/inventory-idas-adaptive-r1.json evidence/raw/item8/inventory-idas-adaptive-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-adaptive-r2.json
+```
+
+Use fresh output files. Source components do not prove successful assembly.

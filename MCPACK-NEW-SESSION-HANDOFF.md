@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 8a3b3ffd and independently reproduces exactly. All 887 roots
+and full variants remain in 426 working groups. Canonical backlog: 31, all IDAS.
+Continue the remaining buildings and assemblies. Preserve the manor connector
+mismatch for effective placement assessment. Attributes, nonregistry and final
+validation/review/main delivery remain open.
+
 Enchanting tower, haunted manor and labyrinth component decisions are resolved
 from existing source contents and graphs, preserving default-pool selection.
 The manor has minecraft versus idas connector-name mismatches between its first
