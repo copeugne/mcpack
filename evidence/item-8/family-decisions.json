@@ -17106,7 +17106,93 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/witch-hut-provider/identities.json": "a5945737834c9c643fa966de790d0e63f40c1d4df9b301b4856ffb66e1c9e098",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags."
+        },
+        "approximate_footprint": {
+          "template_sizes_xyz": {
+            "betterwitchhuts:witch_circle": [
+              9,
+              5,
+              9
+            ]
+          },
+          "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z."
+        },
+        "approximate_vertical_size": {
+          "nominal_template_heights_blocks": {
+            "betterwitchhuts:witch_circle": 5
+          },
+          "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+          "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+        },
+        "intended_hostility": {
+          "value": "Hostile witch site with a nonhostile cat",
+          "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name."
+        },
+        "mob_source": {
+          "authored_templates": {
+            "betterwitchhuts:witch": {
+              "entity": "minecraft:witch",
+              "health": 26,
+              "persistence_required": true
+            },
+            "betterwitchhuts:cat": {
+              "entity": "minecraft:cat",
+              "variant": "minecraft:all_black",
+              "health": 10,
+              "persistence_required": true
+            }
+          },
+          "natural_spawn_overrides": {
+            "monster": {
+              "type": "minecraft:witch",
+              "weight": 1,
+              "minCount": 1,
+              "maxCount": 1,
+              "bounding_box": "piece"
+            },
+            "creature": {
+              "type": "minecraft:cat",
+              "weight": 1,
+              "minCount": 1,
+              "maxCount": 1,
+              "bounding_box": "piece"
+            }
+          },
+          "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional."
+        },
+        "generated_spawners": {
+          "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners.",
+          "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Saved persistent witch in the named mob component.",
+          "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+          "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+        },
+        "visual_discoverability": {
+          "assessment": "Small low masonry circle with campfire and cauldron; less vertical silhouette than a hut and potentially obscured by swamp vegetation.",
+          "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+        },
+        "underground_surface_classification": {
+          "value": "Surface structure with downward terrain supports",
+          "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon."
+        },
+        "loot_table_source": {
+          "value": "No authored container loot-table reference in the reachable circle/cat/witch templates.",
+          "basis": "Circle has an empty campfire inventory, cauldron and two mob connectors; no brewing stand. Main processors do not add container loot tables. Entity drops and salvage are separate reward sources."
+        }
       }
     },
     {
@@ -17128,7 +17214,118 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/witch-hut-provider/identities.json": "a5945737834c9c643fa966de790d0e63f40c1d4df9b301b4856ffb66e1c9e098",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags."
+        },
+        "approximate_footprint": {
+          "template_sizes_xyz": {
+            "betterwitchhuts:witch_hut_sm": [
+              7,
+              8,
+              9
+            ],
+            "betterwitchhuts:witch_hut_lg": [
+              11,
+              7,
+              11
+            ],
+            "betterwitchhuts:witch_hut_double": [
+              15,
+              9,
+              13
+            ]
+          },
+          "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z."
+        },
+        "approximate_vertical_size": {
+          "nominal_template_heights_blocks": {
+            "betterwitchhuts:witch_hut_sm": 8,
+            "betterwitchhuts:witch_hut_lg": 7,
+            "betterwitchhuts:witch_hut_double": 9
+          },
+          "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+          "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+        },
+        "intended_hostility": {
+          "value": "Hostile witch site with a nonhostile cat",
+          "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name."
+        },
+        "mob_source": {
+          "authored_templates": {
+            "betterwitchhuts:witch": {
+              "entity": "minecraft:witch",
+              "health": 26,
+              "persistence_required": true
+            },
+            "betterwitchhuts:cat": {
+              "entity": "minecraft:cat",
+              "variant": "minecraft:all_black",
+              "health": 10,
+              "persistence_required": true
+            }
+          },
+          "natural_spawn_overrides": {
+            "monster": {
+              "type": "minecraft:witch",
+              "weight": 1,
+              "minCount": 1,
+              "maxCount": 1,
+              "bounding_box": "piece"
+            },
+            "creature": {
+              "type": "minecraft:cat",
+              "weight": 1,
+              "minCount": 1,
+              "maxCount": 1,
+              "bounding_box": "piece"
+            }
+          },
+          "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional."
+        },
+        "generated_spawners": {
+          "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners.",
+          "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Saved persistent witch in the named mob component.",
+          "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+          "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+        },
+        "visual_discoverability": {
+          "assessment": "Surface wooden hut with roof and supports; vegetation and swamp terrain can obscure it.",
+          "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+        },
+        "underground_surface_classification": {
+          "value": "Surface structure with downward terrain supports",
+          "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon."
+        },
+        "loot_table_source": {
+          "table": "betterwitchhuts:chests/hut_0",
+          "template_references": {
+            "witch_hut_double": [
+              "block_entities/1",
+              "block_entities/5",
+              "block_entities/6"
+            ],
+            "witch_hut_lg": [
+              "block_entities/2",
+              "block_entities/5"
+            ],
+            "witch_hut_sm": []
+          },
+          "additional_source": "BrewingStandProcessor populates the one brewing stand in each hut template. Five ingredient/potion combinations: glistering_melon_slice/healing, sugar/swiftness, pufferfish/water_breathing, golden_carrot/night_vision, phantom_membrane/slow_falling. Direct item generation, not another loot table.",
+          "basis": "Reachable NBT LootTable fields, packaged chests/hut_0.json and preserved BrewingStandProcessor.populateItemsList/addBrewingRecipe. Exact source serialization is retained; this does not assert runtime survival or effective reward amounts."
+        }
       }
     },
     {
