@@ -6,6 +6,66 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mage Complex assessed after 1325620c
+
+Nine attributes finish Mage Complex, one root and eleven templates. Source
+layout example is 35x58x51 with tower, straight road, crosswalk and two barracks
+at aligned connector levels. It is not an observed or all-choices envelope;
+terrain-following roads change actual height. The rejected overlapping no-straight
+example is preserved in the source README. Six zero-health house entity records
+are distinguished from live enemies; fixed legacy potions and equipment remain
+source payloads. No runtime capture or new tool. Seven focused tests pass.
+Registry 266/410, nonregistry 40/40, total 306/450 assessed, 144 remaining.
+Terralith active families are now 15/15 assessed; Fortified Village remains
+inactive. Retire these assessments absent a concrete contradiction. Quantify
+the next provider batch before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+f72a67f874d5a8d959754b7dd4327c39dc02d959657b66e4a11636493cd1f74a.
+
+#### Mage Tower and Spire assessed after d16a6a31
+
+Twenty attributes assess two families, six roots and sixteen unique templates.
+Connected Spire geometry is source-derived; no capture or tooling addition.
+Seven focused tests pass. Semantic comparison changes only these two families
+and the decisions identity. Derivation: sources/terralith-provider/README.md.
+Registry 265/410, nonregistry 40/40, total 305/450 assessed, 145 remaining.
+Terralith has one active family remaining: Mage Complex, one root and eleven
+traced templates, with nine attributes still to integrate. Fortified Village
+is already explicitly inactive under the frozen Integrated Villages hook;
+it is not an outstanding active family. Quantify missing evidence versus
+existing evidence before investigating Mage Complex's branching assembly.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+01cae86e2773d7656a307672fd58f4ce6e3e8ad49b9138ef850dcad613a70f25.
+
+#### Six Terralith alternative families assessed after 97dfe7fc
+
+Fifty-seven attributes finish Glacial Hut, Rubble, Giant Bee Hive, Mining
+Outpost, Underground Cabin and Valley Lodge, twelve roots/34 unique templates.
+Source geometry, nested hive bees, villager attachments and loot ownership are
+integrated. Seven applicable tests pass; no capture or tooling addition.
+Derivation: sources/terralith-provider/README.md. Inventory SHA:
+81f98410e22ee9605e4f18ea741842b2ef00a2d7ef3b8814f0a998908ab5f100.
+Registry 263/410, nonregistry 40/40, total 303/450 assessed, 147 remaining.
+Terralith groups still needing assessment/disposition checks: Fortified Village,
+Mage Complex, Mage Tower and Spire. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open.
+
+#### Six Terralith families assessed after 88903ef0
+
+Forty-five attributes finish Desert Outpost, Igloo, Witch Hut, Frosted Dungeon,
+Old Refinery and Sunken Tower across seven roots/six templates. Geometry is
+preserved. Source spawners, natural overrides, archaeology and absolute-height
+placement are distinguished; underground Witch Hut remains biome-ineligible.
+Seven applicable tests pass; no capture or new tooling. Source derivation:
+sources/terralith-provider/README.md. Inventory SHA:
+9d18d1d522871d0f25c2e95a0e392ba858f167147746098416830fecbc5274ea.
+Registry 257/410, nonregistry 40/40, total 297/450 assessed, 153 remaining.
+Quantify the next batch before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+
 #### Towns and Towers Village geometry after 4075bc17
 
 The two-target seed42 capture completed with correlated save, clean exit and
