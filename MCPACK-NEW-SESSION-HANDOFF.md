@@ -7,6 +7,29 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd dimensions and lake geometry assessed after 96814bc6
+
+Eleven existing-evidence entries integrated: End dimension eligibility for all
+nine BetterEnd families and lake footprint/height. Three distinct full starts:
+normal seed42/run-a line6419 size57x44x57; rare biome-diverse/run-a line7809
+size75x45x75; rare biome-diverse/run-b line7441 size77x46x77. Exact sources,
+positions and envelopes are in attributes. These are procedural generation
+bounds, not water dimensions: EndLakePiece.makeBoundingBox uses
+floor(1.5*radius)+10 horizontally and Y[waterLevel-floor(depth)-12,centerY+22].
+The different rare-lake positions across runs remain explicit. No new runtime,
+archive or tool. All85 focused checks pass (58.47s); only nine BetterEnd families
+and input identity changed. Lake family assessed. Registry332/408,nonregistry40/40,
+total372/448 assessed;76 families and680 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd8/65. Next quantify the
+BetterEnd continuation; mountain has only its two geometry attributes left,
+with existing generator/piece sources and full-start envelopes already retained.
+Do not call radius-based saved box height occupied mountain height. The other
+seven BetterEnd families have nine attributes each left. Reuse established
+source captures before new investigation. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: 28408a5f1d3cefaa270f3d5055730ad2131567083b1995105a802d872753ef11.
+
+
 #### Integrated Stronghold geometry assessed after 84a0377b
 
 Predeclared seed42/81-chunk capture passed ready, correlated flush, clean exit0
