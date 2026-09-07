@@ -135,3 +135,44 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/betterend-village-geometry-r1/run.json \
   --timeout-seconds 900 --dimension minecraft:the_end --structure betterend:end_village
 ```
+
+
+## Village geometry acceptance
+
+The declared seed42 End target passed readiness,81 requested chunks, correlated
+save flush, clean exit0 and frozen configuration acceptance. Allowed comment-only
+normalization differences remain in run.json. The stopped world decoded1802 chunk
+records; this is retained coverage, not the requested sampling denominator.
+
+Full start chunk34,-316 is chunks.jsonl line478, with45 pieces and envelope
+[482,56,-5139,581,76,-5034], giving100x21x106 blocks by inclusive subtraction.
+Both required dimensions now use this assembled example. It includes air/padding,
+not occupied volume, a typical size, all-layout extrema or proof that every
+component chunk's population was completed. Terrain adaptation and feature writes
+may differ from saved bounds. Existing missing work_01/stree_terminator_01 inputs
+remain disclosed; no repair or general compatibility acceptance is implied.
+Raw logs preserve existing optional/integration warnings, including nonexistent
+Integrated Villages villager_random pools and multiple-Overworld Biolith warnings.
+
+Archive item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz contains247 files,
+1,873,483 compressed bytes and18,313,798 uncompressed bytes. Archive SHA-256:
+ed725ed290e01baee8d29ad4d180ee11ef03642fe20f563e21e7aa5c19235813.
+Manifest SHA-256: cbc316bc5cf6cc3a2d026840f24d0b72e23cac1b5e98110061576497f65c39f9.
+Decoded chunks SHA-256: 22fc7e6b0ee458864eceab8d6c0d999a08d39c297c3a0c6bac6b5e92a2b1d2fb.
+Release/tag item-8-betterend-village-geometry-2026-09-07-r1 points to source revision
+f2f5b2b64513e3d2acfd14f5df2ddbf56602fc8c, verified remotely. Both local and fresh
+GitHub-download restores verified all247 files. observed_bounds on downloaded
+line478 reproduced the full start,45 pieces and100x21x106 envelope. Local copies
+share a filesystem; the GitHub release is separate durable storage.
+
+Reproduce with fresh output paths using the existing tools:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/betterend-village-geometry-r1"), Path("evidence/raw/item8/betterend-village-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/betterend-village-geometry-r1/world --output evidence/raw/item8/betterend-village-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/betterend-village-geometry-r1 --archive evidence/raw/item8/item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz --manifest evidence/item-8/raw-custody/betterend-village-geometry-r1-manifest.json --revision f2f5b2b64513e3d2acfd14f5df2ddbf56602fc8c
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz --manifest evidence/item-8/raw-custody/betterend-village-geometry-r1-manifest.json --target evidence/raw/item8/betterend-village-geometry-r1-restored --receipt evidence/item-8/raw-custody/betterend-village-geometry-r1-local-restore.json
+gh release download item-8-betterend-village-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz --dir evidence/raw/item8/betterend-village-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/betterend-village-geometry-r1-download/item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz --manifest evidence/item-8/raw-custody/betterend-village-geometry-r1-manifest.json --target evidence/raw/item8/betterend-village-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/betterend-village-geometry-r1-downloaded-restore.json
+uv run python -c 'from pathlib import Path; from mcpack_evidence.item7_nbt_models import ChunkRecord; from mcpack_evidence.item8_world_bounds import observed_bounds; print(observed_bounds(ChunkRecord.model_validate_json(Path("evidence/raw/item8/betterend-village-geometry-r1-downloaded-restore/chunks.jsonl").read_text().splitlines()[477])))'
+```
