@@ -7,6 +7,108 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated Stronghold geometry assessed after 84a0377b
+
+Predeclared seed42/81-chunk capture passed ready, correlated flush, clean exit0
+and frozen configuration acceptance with preserved comment normalization. Full
+start chunk-112,-662 at decoded line326 has50 pieces and envelope
+[-1906,-60,-10690,-1665,51,-10486], size242x112x205. Both required size attributes
+now use this one saved layout; no typical/all-layout or full-population claim.
+Skipped optional/empty entity IDs and invalid/missing optional item errors remain
+in raw logs.263-file archive published at source84a0377b; local and downloaded
+restores and downloaded geometry verified. Exact hashes/commands are in provider
+README and raw-custody. No Java remains. All85 focused checks pass (59.79s).
+Only stronghold/input identity changed. Registry331/408,nonregistry40/40,
+total371/448 assessed;77 families and691 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd9/76. Quantify and inspect
+existing evidence before the next provider batch. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: 7989d78493ca80305d487abddbb1705902821487a7447614603543fb03b50cc3.
+
+
+#### Integrated Stronghold geometry declared after f9362ad7
+
+Next batch is one family, two attributes: footprint and height. No full-start
+observation is retained; root placement settings alone do not establish assembled
+dimensions. The provider README predeclares one ordinary seed42/81-chunk capture
+with the existing runner and fresh integrated-stronghold-geometry-r1 paths.
+No runtime has yet started and no geometry success is claimed. Preserve failures,
+verify lifecycle/configuration, decode full-start piece bounds, and publish/restore
+raw custody before integrating dimensions. No new measurement tool is needed.
+Overall370/448 assessed,78 families and693 explicit attribute slots remain.
+
+
+#### Integrated Stronghold content assessed after aa1372ac
+
+Five outstanding attributes integrated: hostility, authored/natural enemies,
+spawners, loot sources and qualitative discoverability. Existing mob_source now
+includes authored content. Shared Integrated API spawner inspection reused;
+23 reachable templates have pig-default spawners, replaced through19 referenced
+processor lists (bedroom has no spawner processor), seven weighted selections.
+Six literal and fourteen processor loot references have packaged definitions.
+AlexsMobs and MowziesMobs are absent in retained runtime; their template entities
+are not asserted as live enemies. Quark monster-box source/bindings reused.
+All85 focused tests pass (59.36s). Only stronghold/input identity changed.
+No new tool or runtime. Registry330/408,nonregistry40/40,total370/448 assessed;
+78 families remain,693 explicit attribute slots outstanding. Stronghold retains
+only footprint and height. Its max_distance_from_center128 alone is not adequate
+geometry evidence. Next inspect existing assembly source for a sufficient direct
+bound; otherwise predeclare one seed42 targeted full-start capture with the
+existing runner and infrastructure lifecycle/custody workflow. Do not create a
+new measurement system. Other remaining families: IDAS38,Repurposed17,vanilla13,
+BetterEnd9. Final integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. A read-only probe initially passed a
+Path instead of text to runtime_mod_ids and failed before producing evidence;
+corrected read_text invocation established the recorded runtime attribution.
+Inventory SHA-256: 7d50630d6e6837ead91e233c28682e4aa9b51a6ef90a403a37af5f42ad5c0049.
+
+
+#### Integrated Villages content assessed after a75744b4
+
+Five content attributes integrated, completing the village family. Its empty
+armorer-bottom spawner is configured by selected mossy_mounds_processor index2:
+integrated_villages:generic contains zombie15/skeleton10. Direct pinned processor
+and MobSpawnerManager inspection preserves loading, missing-list dungeon-array
+fallback, zero-total null and selection-exception pig branches. No observed
+population claim.31 template entity IDs include non-mobs and absent optional
+AlexsMobs/Cobblemon/GuardVillagers/IronsSpellbooks providers; retained mod-list
+source is registry-r1/debug.log, not ANSI capture console.19 structure markers
+are15 CORNER/3 LOAD/1 SAVE, none DATA. All132 literal loot-table IDs have packaged
+current-path definitions. Source README and attributes retain exact scope.
+All85 focused tests pass (58.93s); only village/input identity changed. No new
+runtime/tool. Registry330/408,nonregistry40/40,total370/448 assessed,78 remain;
+698 explicit attribute slots outstanding. Next: Integrated Stronghold one family,
+seven attributes remaining; inspect shared existing evidence before geometry
+capture. Overall remaining: IDAS38,Repurposed17,vanilla13,BetterEnd9,Stronghold1.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+932908b80ae034673c568447530ae9d6e7be22abc92a468fe5914b5e50f70be3.
+
+
+#### Integrated placement and existing geometry after 0e9e6a95
+
+Quantified two-family batch: Integrated Villages ten outstanding attributes,
+Integrated Stronghold eight. Six are integrated: both Overworld dimensions,
+village existing193x66x185 airship geometry, declared placement and visibility.
+The airship example is one seed42 layout repeated across runs A/B, not two
+independent samples. Other variants have offset0 except pirate-19; airship100.
+Twelve attributes remain in this batch: five village content and seven stronghold.
+Village content sources:696 reachable templates,14 processor-list references,
+132 literal loot-table references, optional-mod entity IDs, and an unconfigured
+ordinary spawner in mossy_mounds_armorer_bottom BE0 at[24,2,10] with empty
+SpawnData.entity and SpawnPotentials. Reuse current pool traces, catalogs,
+IASinglePoolElement capture and direct pinned Integrated API class inspection;
+no new measurement framework. Stronghold still lacks full-start geometry.
+Initial edit attempt hit missing attributes before writing decisions; its unchanged
+build and tests do not support acceptance. Corrected build is integrated-placement-
+inventory-r2.json; only the two families/input identity changed. All85 focused
+tests pass on corrected state (59.12s). No runtime launched. Overall369/448
+assessed,79 remain;703 explicit attribute slots outstanding.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+59eff456312ffa0a0646af8aaa9697910049d5a7562e74235586ba31ae0608f4.
+
+
 #### CTOV outpost geometry finished after 78604262
 
 Declared seed42/81-chunk capture passed ready, correlated flush, clean exit0 and

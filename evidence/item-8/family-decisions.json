@@ -2985,7 +2985,14 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
         "evidence/item-8/sources/integrated-stronghold-provider/identities.json": "0044580a6b6f71c9b32c8d385d539779c7b0b2ad22d4c21bf1a5bfbbf2785d5b",
-        "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b"
+        "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/quark-monster-box-behavior/identities.json": "9ce1a6e746759357630f45fcd135c126df48f38f4951d5fa0932144b3788e79b",
+        "evidence/item-8/sources/quark-monster-box-bindings/identities.json": "e8b2cf605a2c485da43a062cf0a37128491fb085d92d46f54a3c694eff4a28ae",
+        "evidence/item-8/sources/integrated-api-dependency-caller/identities.json": "d48afad5e1c7a3ca12a455587d1a9b8da139d1ab479a9aaf2bae2a25c5f74a3a",
+        "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee",
+        "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json": "3dc7b8f3d835d629850c7300919a235f94673010dced59545a06b0ea6c0e966d"
       },
       "attributes": {
         "mob_source": {
@@ -3009,18 +3016,269 @@
             }
           },
           "basis": "Packaged structure definition. This is a natural monster-spawn override within piece bounds, not an authored spawn count.",
-          "authored_content": "Reachable template entities, spawners and processors remain to be attributed.",
+          "authored_content": {
+            "template_entity_ids": [
+              "alexsmobs:crow",
+              "alexsmobs:murmur",
+              "alexsmobs:murmur_head",
+              "create:seat",
+              "create:super_glue",
+              "minecraft:bat",
+              "minecraft:chest_minecart",
+              "minecraft:creeper",
+              "minecraft:item_frame",
+              "minecraft:painting",
+              "minecraft:sheep",
+              "minecraft:spider",
+              "minecraft:tnt_minecart",
+              "minecraft:zombie",
+              "mowziesmobs:ferrous_wroughtnaut",
+              "quark:glass_frame"
+            ],
+            "absent_provider_namespaces": [
+              "alexsmobs",
+              "mowziesmobs"
+            ],
+            "ordinary_spawners": "See generated_spawners for processor assignments; packaged pig defaults are not the effective selection.",
+            "monster_boxes": "Quark one-use spawn-egg selection: witch weight1, cave spider weight2, zombie weight7. See preserved Quark behavior and frozen bindings.",
+            "basis": "Authored entries include decorative entities and vehicles. These are potential sources, not successful live population counts.",
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+          },
           "source_trace": "integrated_stronghold:stronghold"
         },
         "underground_surface_classification": {
           "value": "Underground start with assembled surface exposure unresolved",
           "basis": "Packaged start_height is a uniform distribution with both absolute endpoints at Y=15 and generation step strongholds. The custom generator and terrain determine the final occupied extent."
+        },
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Every effective root biome set intersects only captured Overworld dimension membership. Dimension eligibility is distinguished from successful generation.",
+          "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "intended_hostility": {
+          "value": "Hostile underground dungeon with authored enemies, hostile spawner selection and natural monster overrides.",
+          "basis": "Reachable templates contain creepers, spiders and zombies; selected processors configure hostile spawner lists. Optional AlexsMobs and MowziesMobs entities have no retained provider.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "value": "Both",
+          "authored": "Template creepers, spiders and zombies, processor-configured ordinary spawners and Quark monster boxes. Optional packaged enemies are distinguished from retained providers.",
+          "natural": "Piece-bounds silverfish and enderman monster override retained in mob_source.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+        },
+        "generated_spawners": {
+          "template_ids": [
+            "integrated_stronghold:dining_hall/dining_hall_storage_left",
+            "integrated_stronghold:dining_hall/dining_hall_storage_right",
+            "integrated_stronghold:enchanting/enchanting_hallway",
+            "integrated_stronghold:grand_library/grand_library_secret_lab",
+            "integrated_stronghold:maze/maze1",
+            "integrated_stronghold:maze/maze2",
+            "integrated_stronghold:maze/maze3",
+            "integrated_stronghold:nether_portal/nether_portal",
+            "integrated_stronghold:nether_portal/nether_portal_hallway",
+            "integrated_stronghold:portal_room/portal_room",
+            "integrated_stronghold:prison/prison",
+            "integrated_stronghold:prison/prison_hallway",
+            "integrated_stronghold:prison/torture_chamber",
+            "integrated_stronghold:sanctorum/intersection2",
+            "integrated_stronghold:sanctorum/sanctorum",
+            "integrated_stronghold:small_room/small_brewing_left",
+            "integrated_stronghold:small_room/small_brewing_right",
+            "integrated_stronghold:small_room/small_crypt_left",
+            "integrated_stronghold:small_room/small_crypt_right",
+            "integrated_stronghold:small_room/small_prison_left",
+            "integrated_stronghold:small_room/small_prison_right",
+            "integrated_stronghold:small_room/small_storage_left",
+            "integrated_stronghold:small_room/small_storage_right"
+          ],
+          "packaged_default": "Ordinary spawner NBT names minecraft:pig with empty SpawnPotentials. Selected processors replace the NBT with their chosen entity and settings.",
+          "processor_spawner_lists": {
+            "armory_processor": "integrated_stronghold:stronghold",
+            "bedroom_processor": null,
+            "brewing_processor": "integrated_stronghold:enchanting",
+            "crypt_processor": "integrated_stronghold:stronghold",
+            "dining_hall_processor": "integrated_stronghold:stronghold",
+            "elevator_processor": "integrated_stronghold:stronghold",
+            "enchanting_processor": "integrated_stronghold:enchanting",
+            "farm_processor": "integrated_stronghold:stronghold",
+            "intersection_processor": "integrated_stronghold:stronghold",
+            "library_processor": "integrated_stronghold:library",
+            "maze_processor": "integrated_stronghold:maze",
+            "nether_portal_processor": "integrated_stronghold:nether_portal",
+            "portal_room_processor": "integrated_stronghold:portal_room",
+            "prison_processor": "integrated_stronghold:prison",
+            "sanctorum_processor": "integrated_stronghold:stronghold",
+            "secret_lab_processor": "integrated_stronghold:enchanting",
+            "storage_processor": "integrated_stronghold:stronghold",
+            "stronghold_processor": "integrated_stronghold:stronghold",
+            "torture_chamber_processor": "integrated_stronghold:prison"
+          },
+          "weighted_lists": {
+            "enchanting": [
+              {
+                "name": "minecraft:skeleton",
+                "weight": 10
+              },
+              {
+                "name": "minecraft:zombie",
+                "weight": 10
+              },
+              {
+                "name": "quark:forgotten",
+                "weight": 5
+              }
+            ],
+            "library": [
+              {
+                "name": "minecraft:cave_spider",
+                "weight": 20
+              },
+              {
+                "name": "minecraft:spider",
+                "weight": 5
+              }
+            ],
+            "maze": [
+              {
+                "name": "minecraft:skeleton",
+                "weight": 10
+              },
+              {
+                "name": "minecraft:zombie",
+                "weight": 10
+              },
+              {
+                "name": "quark:forgotten",
+                "weight": 5
+              }
+            ],
+            "nether_portal": [
+              {
+                "name": "minecraft:skeleton",
+                "weight": 10
+              }
+            ],
+            "portal_room": [
+              {
+                "name": "quark:forgotten",
+                "weight": 15
+              }
+            ],
+            "prison": [
+              {
+                "name": "minecraft:skeleton",
+                "weight": 10
+              },
+              {
+                "name": "minecraft:zombie",
+                "weight": 10
+              },
+              {
+                "name": "quark:forgotten",
+                "weight": 5
+              }
+            ],
+            "stronghold": [
+              {
+                "name": "minecraft:skeleton",
+                "weight": 10
+              },
+              {
+                "name": "minecraft:zombie",
+                "weight": 10
+              },
+              {
+                "name": "quark:forgotten",
+                "weight": 5
+              }
+            ]
+          },
+          "settings": {
+            "delay": 20,
+            "min_spawn_delay": 200,
+            "max_spawn_delay": 800,
+            "spawn_count": 4,
+            "max_nearby_entities": 6,
+            "required_player_range": 16,
+            "spawn_range": 4,
+            "valid_block_light_level": {
+              "min_inclusive": 0,
+              "max_inclusive": 7
+            }
+          },
+          "monster_box_conversion": "Where declared, minecraft:rule changes quark:monster_box to minecraft:spawner with probability0.1 before spawner randomization. Unconverted monster boxes are a separate one-use encounter source.",
+          "limitations": "Template presence is not a placed count. Rule removals and remove_floating_blocks processors can affect placement. Shared manager discards unresolved entity types and zero weights; missing lists fall back to the dungeon array, zero total returns null, and selection exceptions return pig. No successful spawn or observed distribution is claimed.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+        },
+        "loot_table_source": {
+          "literal_template_tables": [
+            "integrated_stronghold:chests/dining_hall",
+            "integrated_stronghold:chests/maze",
+            "integrated_stronghold:chests/mine",
+            "integrated_stronghold:chests/storage",
+            "integrated_stronghold:chests/treasure",
+            "integrated_stronghold:dispensers/maze"
+          ],
+          "processor_assigned_tables": [
+            "integrated_stronghold:chests/bedroom",
+            "integrated_stronghold:chests/brewing",
+            "integrated_stronghold:chests/crypt",
+            "integrated_stronghold:chests/enchanting",
+            "integrated_stronghold:chests/farm",
+            "integrated_stronghold:chests/grand_library",
+            "integrated_stronghold:chests/intersection",
+            "integrated_stronghold:chests/maze",
+            "integrated_stronghold:chests/nether_portal",
+            "integrated_stronghold:chests/prison",
+            "integrated_stronghold:chests/sanctorum",
+            "integrated_stronghold:chests/secret_lab",
+            "integrated_stronghold:chests/stronghold",
+            "integrated_stronghold:chests/torture_chamber"
+          ],
+          "definition_status": "Every listed literal and processor-assigned table has a current-path packaged definition.",
+          "basis": "Template LootTable NBT and selected processor append_loot modifiers in the preserved catalogs. Container removal rules, fixed Items, traps and optional-mod table entries are not proof of a successfully generated reward. Monster-box mob-selection and conditional extra drops use separate Quark tables.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Primarily a below-ground discovery target; surface visibility depends on the generated layout and terrain.",
+          "basis": "The root declares strongholds generation step, absolute start Y15 and no surface heightmap projection, rooted at the fountain template. This is a qualitative placement-based assessment, not a measured sightline or a guarantee that every piece stays buried.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
+        },
+        "approximate_footprint": {
+          "observed_example_xz_blocks": [
+            242,
+            205
+          ],
+          "archive_manifest": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 326,
+          "basis": "Frozen seed42 full start chunk-112,-662 has50 pieces and envelope[-1906,-60,-10690,-1665,51,-10486]. Inclusive saved assembly extent including air/padding; not occupied volume, a typical or all-layout bound, or proof that every surrounding component chunk reached full population."
+        },
+        "approximate_vertical_size": {
+          "observed_example_y_blocks": 112,
+          "archive_manifest": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 326,
+          "basis": "Frozen seed42 full start chunk-112,-662 has50 pieces and envelope[-1906,-60,-10690,-1665,51,-10486]. Inclusive saved assembly extent including air/padding; not occupied volume, a typical or all-layout bound, or proof that every surrounding component chunk reached full population."
         }
       },
       "missing_components": [
         "integrated_stronghold:small_room/small_armory_left",
         "integrated_stronghold:small_room/small_armory_right"
-      ]
+      ],
+      "processor_inspection": {
+        "archive": "integrated_api-1.7.3+1.21.1-neoforge.jar",
+        "archive_sha256": "81bffee0e09dce9160376c36c3f38b26af4470393ecf7b2d6fdc3fa5c40593ec",
+        "members": {
+          "com/craisinlord/integrated_api/world/processors/SpawnerRandomizingProcessor.class": "ea399f6d6226b44d427382a920164cba85d42f499aeda99dbd157864223fd8a0",
+          "com/craisinlord/integrated_api/misc/mobspawners/MobSpawnerManager.class": "222a6c72d2c4e49ff85770c573e82ed19019db37a0b40eb833ac81e000e91c7d"
+        },
+        "basis": "Reuse the pinned shared spawner processor and manager inspection documented in Integrated Villages content assessment."
+      }
     },
     {
       "family_id": "integrated_villages:village",
@@ -3763,7 +4021,311 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/integrated-villages-provider/identities.json": "b7edce7fe258c480a4b60ad5869b379a9501ea9f7d02e5ed287519f4122334c9",
+        "evidence/item-8/sources/integrated-api-provider/identities.json": "fa79c4ec7cb6bc0ec4b3c537a36d1ef725a89189d1cc4ae1762fbf5a39310f5e",
+        "evidence/item-8/sources/pool-codecs/identities.json": "4f1484523b4f3dea5154273eaaffea2459eb8a158af4d39dafcc0ca966a1bb98",
+        "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Every effective root biome set intersects only captured Overworld dimension membership. Dimension eligibility is distinguished from successful generation.",
+          "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+          "observed_envelope_xz_blocks": [
+            [
+              193,
+              185
+            ]
+          ],
+          "source": "evidence/item-8/sources/world-bounds.json.gz",
+          "scope": "One ordinary-seed airship layout at chunk6,23, decoded line14084, repeated in run-a and run-b. Not two independent samples, all-design coverage, a typical village or family extrema."
+        },
+        "approximate_vertical_size": {
+          "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+          "observed_envelope_y_blocks": [
+            66
+          ],
+          "source": "evidence/item-8/sources/world-bounds.json.gz",
+          "scope": "One ordinary-seed airship layout at chunk6,23, decoded line14084, repeated in run-a and run-b. Not two independent samples, all-design coverage, a typical village or family extrema."
+        },
+        "underground_surface_classification": {
+          "value": "Terrain-projected settlement family, including elevated airship and lowered pirate design variants.",
+          "packaged_heightmap": "WORLD_SURFACE_WG",
+          "packaged_start_offsets_by_structure": {
+            "integrated_villages:airship_village": 100,
+            "integrated_villages:cabin_village": 0,
+            "integrated_villages:clockwork_village": 0,
+            "integrated_villages:kutcha_village": 0,
+            "integrated_villages:marketstead_village": 0,
+            "integrated_villages:mediterranean_village": 0,
+            "integrated_villages:mossy_mounds": 0,
+            "integrated_villages:oasis_village": 0,
+            "integrated_villages:pirate_village": -19,
+            "integrated_villages:quark/minka_village": 0,
+            "integrated_villages:sunken_village": 0,
+            "integrated_villages:tavern_village": 0
+          },
+          "basis": "All twelve packaged definitions request WORLD_SURFACE_WG projection. Airship uses offset100, pirate uses-19, and the other ten use0. These are declared start inputs, not every piece elevation. The name sunken_village alone does not prove submerged placement.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#placement-and-existing-geometry-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Settlement buildings and paths are potential landmarks; elevated airships provide an aerial silhouette and lowered pirate components can be obscured by terrain or water.",
+          "basis": "Packaged placement inputs and retained airship layout spanning193x66x185 at Y138..203 support this qualitative assessment. Other design exposure remains terrain-dependent.",
+          "scope": "No measured sightline or discovery distance. An observed airship example does not establish visibility for every village design.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#placement-and-existing-geometry-assessment"
+        },
+        "intended_hostility": {
+          "value": "Primarily civilian settlement designs, with a localized hostile spawner source in Mossy Mounds.",
+          "basis": "Reachable template entities largely represent villagers, animals, defensive golems and non-mob displays/contraptions. The armorer-bottom spawner selects the generic zombie/skeleton list through mossy_mounds_processor. Every village root has empty spawn_overrides, not an exclusion of natural dangers.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#content-assessment"
+        },
+        "mob_source": {
+          "packaged_authored_entity_ids": [
+            "alexsmobs:catfish",
+            "cobblemon:pokemon",
+            "create:crafting_blueprint",
+            "create:stationary_contraption",
+            "create:super_glue",
+            "guardvillagers:guard",
+            "irons_spellbooks:priest",
+            "minecraft:armor_stand",
+            "minecraft:boat",
+            "minecraft:camel",
+            "minecraft:cat",
+            "minecraft:chest_minecart",
+            "minecraft:cow",
+            "minecraft:donkey",
+            "minecraft:glow_item_frame",
+            "minecraft:hopper_minecart",
+            "minecraft:horse",
+            "minecraft:iron_golem",
+            "minecraft:item",
+            "minecraft:item_frame",
+            "minecraft:mule",
+            "minecraft:painting",
+            "minecraft:parrot",
+            "minecraft:pig",
+            "minecraft:salmon",
+            "minecraft:sheep",
+            "minecraft:tropical_fish",
+            "minecraft:villager",
+            "quark:glass_frame",
+            "supplementaries:dispenser_minecart",
+            "supplementaries:hat_stand"
+          ],
+          "absent_optional_provider_mod_ids": [
+            "alexsmobs",
+            "cobblemon",
+            "guardvillagers",
+            "irons_spellbooks"
+          ],
+          "configured_spawner_entities": {
+            "minecraft:zombie": 15,
+            "minecraft:skeleton": 10
+          },
+          "natural": "All twelve root spawn_overrides are empty; biome/world conditions govern natural spawning, with raids and external arrivals separate from template authorship.",
+          "scope": "Template IDs, retained mod presence and configured spawner sources. Display entities, vehicles, contraptions and items are not counted as mobs. Optional provider presence is not inferred from a template reference; no realized population claim.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#content-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "The Mossy Mounds armorer-bottom ordinary spawner is a structure-authored hostile source; its selected processor supplies zombie/skeleton NBT. Other template entities predominantly serve civilian, animal, defensive or non-mob roles.",
+          "natural": "Empty structure spawn_overrides leave biome/world spawning in effect. Source authorship does not guarantee every village contains a hostile encounter.",
+          "scope": "Optional-mod references and configured mob selections are not observed entity counts or combat behavior.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#content-assessment"
+        },
+        "generated_spawners": {
+          "template": "integrated_villages:mossy_mounds/house/mossy_mounds_armorer_bottom",
+          "block_entity_index": 0,
+          "template_position": [
+            24,
+            2,
+            10
+          ],
+          "packaged_nbt": "Ordinary spawner with empty SpawnData.entity and empty SpawnPotentials. No explicit authored entity ID in that NBT.",
+          "selected_processor": "integrated_villages:mossy_mounds_processor /processors/2, integrated_api:spawner_randomizing_processor",
+          "mob_list": "integrated_villages:generic",
+          "configured_weights": {
+            "minecraft:zombie": 15,
+            "minecraft:skeleton": 10
+          },
+          "settings": {
+            "delay": 20,
+            "min_spawn_delay": 200,
+            "max_spawn_delay": 800,
+            "spawn_count": 4,
+            "max_nearby_entities": 6,
+            "required_player_range": 16,
+            "spawn_range": 4,
+            "block_light": [
+              0,
+              7
+            ]
+          },
+          "processor_behavior": "On a SpawnerBlock the processor replaces NBT with selected entity SpawnData and a single weight1 potential plus configured settings. A null selection replaces the spawner with configured replacement state, default air. Missing-list lookup logs and falls back to the vanilla dungeon mob array; selection exceptions log and return pig.",
+          "marker_scope": "The reachable generation-marker entries are CORNER, LOAD or SAVE blocks, with no DATA markers. They are not additional authored mob-spawn markers.",
+          "scope": "One identified packaged spawner target, not one guaranteed spawner per generated village. Configured weights are not a measured runtime distribution.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#content-assessment"
+        },
+        "loot_table_source": {
+          "template_table_ids": [
+            "integrated_villages:chests/airship_village/airship_village",
+            "integrated_villages:chests/airship_village/airship_village_bedroom",
+            "integrated_villages:chests/airship_village/airship_village_cartographer",
+            "integrated_villages:chests/airship_village/airship_village_cleric",
+            "integrated_villages:chests/airship_village/airship_village_farmhouse",
+            "integrated_villages:chests/airship_village/airship_village_fletcher",
+            "integrated_villages:chests/airship_village/airship_village_kitchen",
+            "integrated_villages:chests/airship_village/airship_village_leatherworker",
+            "integrated_villages:chests/airship_village/airship_village_library",
+            "integrated_villages:chests/airship_village/airship_village_mason",
+            "integrated_villages:chests/cabin_village/cabin_village",
+            "integrated_villages:chests/cabin_village/cabin_village_blacksmith",
+            "integrated_villages:chests/cabin_village/cabin_village_cleric",
+            "integrated_villages:chests/cabin_village/cabin_village_farmhouse",
+            "integrated_villages:chests/cabin_village/cabin_village_fisherman",
+            "integrated_villages:chests/cabin_village/cabin_village_fletcher",
+            "integrated_villages:chests/cabin_village/cabin_village_kitchen",
+            "integrated_villages:chests/cabin_village/cabin_village_leatherworker",
+            "integrated_villages:chests/cabin_village/cabin_village_mason",
+            "integrated_villages:chests/clockwork_village/clockwork_village",
+            "integrated_villages:chests/clockwork_village/clockwork_village_bedroom",
+            "integrated_villages:chests/clockwork_village/clockwork_village_blacksmith",
+            "integrated_villages:chests/clockwork_village/clockwork_village_cartographer",
+            "integrated_villages:chests/clockwork_village/clockwork_village_farmhouse",
+            "integrated_villages:chests/clockwork_village/clockwork_village_fletcher",
+            "integrated_villages:chests/clockwork_village/clockwork_village_kitchen",
+            "integrated_villages:chests/clockwork_village/clockwork_village_leatherworker",
+            "integrated_villages:chests/clockwork_village/clockwork_village_library",
+            "integrated_villages:chests/kutcha_village/kutcha_village",
+            "integrated_villages:chests/kutcha_village/kutcha_village_bedroom",
+            "integrated_villages:chests/kutcha_village/kutcha_village_blacksmith",
+            "integrated_villages:chests/kutcha_village/kutcha_village_cartographer",
+            "integrated_villages:chests/kutcha_village/kutcha_village_cleric",
+            "integrated_villages:chests/kutcha_village/kutcha_village_farmhouse",
+            "integrated_villages:chests/kutcha_village/kutcha_village_fisherman",
+            "integrated_villages:chests/kutcha_village/kutcha_village_kitchen",
+            "integrated_villages:chests/kutcha_village/kutcha_village_leatherworker",
+            "integrated_villages:chests/kutcha_village/kutcha_village_library",
+            "integrated_villages:chests/kutcha_village/kutcha_village_mason",
+            "integrated_villages:chests/kutcha_village/kutcha_village_shepard",
+            "integrated_villages:chests/marketstead_village/marketstead_village",
+            "integrated_villages:chests/marketstead_village/marketstead_village_bedroom",
+            "integrated_villages:chests/marketstead_village/marketstead_village_blacksmith",
+            "integrated_villages:chests/marketstead_village/marketstead_village_butcher",
+            "integrated_villages:chests/marketstead_village/marketstead_village_cleric",
+            "integrated_villages:chests/marketstead_village/marketstead_village_create",
+            "integrated_villages:chests/marketstead_village/marketstead_village_farmhouse",
+            "integrated_villages:chests/marketstead_village/marketstead_village_fisherman",
+            "integrated_villages:chests/marketstead_village/marketstead_village_fletcher",
+            "integrated_villages:chests/marketstead_village/marketstead_village_kitchen",
+            "integrated_villages:chests/marketstead_village/marketstead_village_leatherworker",
+            "integrated_villages:chests/marketstead_village/marketstead_village_library",
+            "integrated_villages:chests/marketstead_village/marketstead_village_mason",
+            "integrated_villages:chests/marketstead_village/marketstead_village_tomb",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_bedroom",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_blacksmith",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_butcher",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_create",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_farmhouse",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_kitchen",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_library",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_shepard",
+            "integrated_villages:chests/mediterranean_village/mediterranean_village_treasure",
+            "integrated_villages:chests/minka_village/minka_village_bedroom",
+            "integrated_villages:chests/minka_village/minka_village_blacksmith",
+            "integrated_villages:chests/minka_village/minka_village_cleric",
+            "integrated_villages:chests/minka_village/minka_village_farmhouse",
+            "integrated_villages:chests/minka_village/minka_village_fisherman",
+            "integrated_villages:chests/minka_village/minka_village_fletcher",
+            "integrated_villages:chests/minka_village/minka_village_kitchen",
+            "integrated_villages:chests/minka_village/minka_village_library",
+            "integrated_villages:chests/minka_village/minka_village_treasure",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_bedroom",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_blacksmith",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_cartographer",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_cleric",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_farmhouse",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_fisherman",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_kitchen",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_library",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_mason",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_shepard",
+            "integrated_villages:chests/mossy_mounds/mossy_mounds_treasure",
+            "integrated_villages:chests/oasis_village/oasis_village",
+            "integrated_villages:chests/oasis_village/oasis_village_bedroom",
+            "integrated_villages:chests/oasis_village/oasis_village_blacksmith",
+            "integrated_villages:chests/oasis_village/oasis_village_cartographer",
+            "integrated_villages:chests/oasis_village/oasis_village_cleric",
+            "integrated_villages:chests/oasis_village/oasis_village_farmhouse",
+            "integrated_villages:chests/oasis_village/oasis_village_kitchen",
+            "integrated_villages:chests/oasis_village/oasis_village_leatherworker",
+            "integrated_villages:chests/oasis_village/oasis_village_library",
+            "integrated_villages:chests/oasis_village/oasis_village_shepard",
+            "integrated_villages:chests/pirate_village/pirate_village",
+            "integrated_villages:chests/pirate_village/pirate_village_bedroom",
+            "integrated_villages:chests/pirate_village/pirate_village_blacksmith",
+            "integrated_villages:chests/pirate_village/pirate_village_cartographer",
+            "integrated_villages:chests/pirate_village/pirate_village_cleric",
+            "integrated_villages:chests/pirate_village/pirate_village_farmhouse",
+            "integrated_villages:chests/pirate_village/pirate_village_kitchen",
+            "integrated_villages:chests/pirate_village/pirate_village_leatherworker",
+            "integrated_villages:chests/pirate_village/pirate_village_library",
+            "integrated_villages:chests/pirate_village/pirate_village_mason",
+            "integrated_villages:chests/pirate_village/pirate_village_treasure",
+            "integrated_villages:chests/swamp_village/swamp_village",
+            "integrated_villages:chests/swamp_village/swamp_village_armorer",
+            "integrated_villages:chests/swamp_village/swamp_village_blacksmith",
+            "integrated_villages:chests/swamp_village/swamp_village_butcher",
+            "integrated_villages:chests/swamp_village/swamp_village_cleric",
+            "integrated_villages:chests/swamp_village/swamp_village_farmhouse",
+            "integrated_villages:chests/swamp_village/swamp_village_fisherman",
+            "integrated_villages:chests/swamp_village/swamp_village_fletcher",
+            "integrated_villages:chests/swamp_village/swamp_village_kitchen",
+            "integrated_villages:chests/swamp_village/swamp_village_leatherworker",
+            "integrated_villages:chests/swamp_village/swamp_village_library",
+            "integrated_villages:chests/swamp_village/swamp_village_mason",
+            "integrated_villages:chests/swamp_village/swamp_village_tomb",
+            "integrated_villages:chests/tavern_village/tavern_village",
+            "integrated_villages:chests/tavern_village/tavern_village_bedroom",
+            "integrated_villages:chests/tavern_village/tavern_village_blacksmith",
+            "integrated_villages:chests/tavern_village/tavern_village_butcher",
+            "integrated_villages:chests/tavern_village/tavern_village_create",
+            "integrated_villages:chests/tavern_village/tavern_village_farmhouse",
+            "integrated_villages:chests/tavern_village/tavern_village_kitchen",
+            "integrated_villages:chests/tavern_village/tavern_village_library",
+            "integrated_villages:chests/tavern_village/tavern_village_shepard",
+            "integrated_villages:chests/tavern_village/tavern_village_treasure",
+            "minecraft:chests/simple_dungeon",
+            "minecraft:chests/village/village_cartographer",
+            "minecraft:chests/village/village_shepherd"
+          ],
+          "missing_packaged_table_definitions": [],
+          "basis": "All132 literal reachable-template LootTable IDs have current-path packaged definitions. Exact template associations remain in pool-traces-content.json.gz.",
+          "scope": "Table-source attribution, not sampled yield or proof that each optional container is placed. Integrated Villages loot-importer map declarations are diagnostic and are not claimed as applied loot mutations.",
+          "source": "evidence/item-8/sources/integrated-villages-provider/README.md#content-assessment"
+        }
+      },
+      "processor_inspection": {
+        "archive": "integrated_api-1.7.3+1.21.1-neoforge.jar",
+        "archive_sha256": "81bffee0e09dce9160376c36c3f38b26af4470393ecf7b2d6fdc3fa5c40593ec",
+        "members": {
+          "com/craisinlord/integrated_api/world/processors/SpawnerRandomizingProcessor.class": "ea399f6d6226b44d427382a920164cba85d42f499aeda99dbd157864223fd8a0",
+          "com/craisinlord/integrated_api/misc/mobspawners/MobSpawnerManager.class": "222a6c72d2c4e49ff85770c573e82ed19019db37a0b40eb833ac81e000e91c7d"
+        },
+        "basis": "Direct pinned-javap inspection of processBlock, SetMobSpawnerEntity, replacement-state default, manager loading and getSpawnerMob; see content assessment."
       }
     },
     {
