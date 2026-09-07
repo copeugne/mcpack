@@ -57,3 +57,31 @@ uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory
 
 Use a fresh output path. Only this family and input identity may change. Descriptions
 are source-derived; focused checks validate existing evidence/integration boundaries.
+
+## Geometry capture declaration
+
+After262fc206, additional original Item8 chunks.jsonl captures were inspected and
+contain no ruins-family starts. The main catalog has no full-start envelope.
+Predeclare one fresh seed42 Overworld target repurposed_structures:ruins_land_warm,
+81 requested chunks, using the existing gap runner. Require readiness, matching
+completion, correlated flush, clean exit and frozen config acceptance, then archive,
+local restore, remote delivery and downloaded restore before accepting geometry.
+This is one assembled example for two size entries, not every variant or occupied
+pillar extent. No new tooling or baseline tuning is needed.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/repurposed-ruins-geometry-r1 \
+  --log-path evidence/raw/item8/repurposed-ruins-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/repurposed-ruins-geometry-r1/configuration \
+  --receipt evidence/raw/item8/repurposed-ruins-geometry-r1/run.json \
+  --timeout-seconds 900 --structure repurposed_structures:ruins_land_warm
+```
