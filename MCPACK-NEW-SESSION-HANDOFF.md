@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed temple assessed after 3d65f246
+
+Nine required entries integrated for seven variants/seven templates, using existing
+source and world evidence. Nether spawner processors select magma cube, zoglin,
+skeleton, strider and zombified piglin by variant; original basalt piglin data is
+not final attribution. Fifteen literal loot tables plus ocean archaeology source
+are defined. Existing full crimson mountainous line2198 supplies12x14x15 envelope.
+Placement and qualitative visibility retain exposure/population limitations.
+All85 focused checks pass (61.64s); only temple/input identity changed. No new
+capture/tool. Total401/448 assessed;47 families/424 entries remain: IDAS38/343,
+Repurposed9/81. Seven remaining Repurposed families lack a full-start envelope
+in the existing inventory; this is not yet proof of missing evidence, since other
+retained captures and direct assembly derivations must be checked first.
+Details in evidence/item-8/sources/repurposed-temple-assessment/README.md.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Inventory SHA-256: a59959e49b656097d55015480c63d708e8c36d0636a7a182ca6b5d4c2f977972.
+
+
 #### Repurposed shipwreck assessed after 255bd9a6
 
 Nine remaining attributes integrated for four variants/21templates, empty
