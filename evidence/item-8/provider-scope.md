@@ -10774,3 +10774,9 @@ observations and contribution evidence remain intact. Remaining uncertainty in
 those descriptions remains uncertainty; normalization is not acceptance. The other
 22 identified family assignments still need extraction from their contribution
 records. No new investigation, measurement or schema machinery was added.
+
+Decision 4c8868e5 passes all 78 family-decision tests (60.28 seconds).
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nonregistry-attribute-integration.json`.
+Inventory SHA-256: 1b12bd29abe66dc7a8c6bdc6c651a2adb1436cec17e3ef48adacf9df1be9083d.
+Registry rows are unchanged; nonregistry content matches the delivered decision
+records exactly. Final integration/acceptance and main delivery remain open.

@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Integrated 95 existing attribute values in eighteen detailed nonregistry records
+at 4c8868e5. Registry rows unchanged; inventory matches fresh generation. All 78
+family-decision tests pass. Other 22 family assignments remain in contribution
+records, including sixteen BetterEnd building/ruin designs. Extract established
+facts next; existing unresolved Quark statements are not resolved by normalization.
+No new investigation or measurement. Final Item 8 acceptance remains open.
+
 Integrated standard-jigsaw placement for 37 families at 29c66271, retaining
 per-variant offsets and terrain adaptation. All 78 family-decision tests pass;
 inventory matches fresh generation with only intended placement fields changed.
