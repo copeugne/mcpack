@@ -138,3 +138,52 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/vanilla-end-city-geometry-r1/run.json \
   --timeout-seconds 900 --dimension minecraft:the_end --structure minecraft:end_city
 ```
+
+
+## Final family assessment
+
+The declared seed42 End capture passes readiness,81 requested chunks, correlated
+flush,clean exit0 and frozen configuration acceptance. Allowed comment-only
+normalization differences remain in run.json. The stopped world decoded1802
+records; this retained coverage is not the requested sampling denominator.
+Full start chunk-80,-154 is chunks.jsonl line202:51 saved pieces,envelope
+[-1286,61,-2495,-1227,150,-2372],size60x90x124. This is one assembled envelope,
+including air/padding, not occupied volume,typical/all-layout dimensions or proof
+of completed population in every component chunk. Dimension observation now
+includes this additional End capture rather than retaining an empty observation.
+
+The retained Sentry/Chest/Elytra paths support an authored shulker encounter with
+chest and optional ship-item-frame rewards. Towers and bridges provide an elevated
+silhouette, with a ship conditional on assembly selection. No intensity,guaranteed
+ship/reward, sightline distance or pacing is measured. The root selects rotation,
+uses getLowestYIn5by5BoxOffset7Blocks, rejects a base belowY60 and calls
+startHouseTower. This supports surface-rooted vertical placement, without proving
+clearance or visibility of every piece. These five required attributes supersede
+earlier pending assessment statements; retained scope limitations remain explicit.
+
+Raw warnings remain intact, including nonexistent Integrated Villages
+villager_random pools and Biolith multiple-Overworld warnings. No baseline repair
+or general compatibility claim follows from this size capture.
+
+Archive item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz contains251 files,
+1,824,912 compressed bytes and18,155,474 uncompressed bytes. SHA-256:
+fac1099318a2df73ca2754c4937dd134fbbcc5e7b89f53e681b8e75c6d66c017.
+Manifest SHA-256: 0fa3015bd16db5a804da1c7e73bb2f9796b556a44814b34d70059fd8992da0c9.
+Decoded chunks SHA-256: ced10012c1af0c1f1821a61f792a6f31c72fd111646851ee83ec4421b58fc10f.
+Release/tag item-8-vanilla-end-city-geometry-2026-09-07-r1 was verified at
+77c3248fbe96e1ddcd395a9098e6e0de4929bee8. Local and fresh downloaded restores
+verify all251 files; observed_bounds on downloaded line202 reproduces the full
+start,51 pieces and60x90x124 envelope. Local copies share a filesystem; GitHub
+release storage is separate. No new measurement tool was introduced.
+
+Reproduction commands, using fresh output paths:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/vanilla-end-city-geometry-r1"), Path("evidence/raw/item8/vanilla-end-city-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/vanilla-end-city-geometry-r1/world --output evidence/raw/item8/vanilla-end-city-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/vanilla-end-city-geometry-r1 --archive evidence/raw/item8/item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz --manifest evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-manifest.json --revision 77c3248fbe96e1ddcd395a9098e6e0de4929bee8
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz --manifest evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-manifest.json --target evidence/raw/item8/vanilla-end-city-geometry-r1-restored --receipt evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-local-restore.json
+gh release download item-8-vanilla-end-city-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz --dir evidence/raw/item8/vanilla-end-city-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/vanilla-end-city-geometry-r1-download/item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz --manifest evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-manifest.json --target evidence/raw/item8/vanilla-end-city-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-downloaded-restore.json
+uv run python -c 'from pathlib import Path; from mcpack_evidence.item7_nbt_models import ChunkRecord; from mcpack_evidence.item8_world_bounds import observed_bounds; print(observed_bounds(ChunkRecord.model_validate_json(Path("evidence/raw/item8/vanilla-end-city-geometry-r1-downloaded-restore/chunks.jsonl").read_text().splitlines()[201])))'
+```

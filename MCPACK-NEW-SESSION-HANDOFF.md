@@ -7,6 +7,29 @@
 ### Continuation update - 2026-09-07
 
 
+#### End city assessed after 77c3248f
+
+All five remaining attributes integrated. Fresh seed42 End capture passes readiness,
+81 requested chunks,correlated flush,clean exit0 and frozen config acceptance.
+1802 decoded records;line202 full start chunk-80,-154 has51 pieces and envelope
+[-1286,61,-2495,-1227,150,-2372],size60x90x124. Source marker and section-generator
+evidence supplies hostility/visual/surface-placement descriptions. Dimension
+observed now includes End. Saved bounds do not prove occupied volume,typical size
+or completed population in every component chunk; warnings/limitations retained.
+Archive item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz:251 files,1,824,912 bytes,
+SHAfac1099318a2df73ca2754c4937dd134fbbcc5e7b89f53e681b8e75c6d66c017.
+Release/tag item-8-vanilla-end-city-geometry-2026-09-07-r1 verified at source
+77c3248fbe96e1ddcd395a9098e6e0de4929bee8. Both restores verify251 files and downloaded
+line202 reproduces bounds. No Java remains;no new tooling. Commands/custody in
+vanilla-end-city-code README. All86 focused checks pass (61.43s);only End city/input
+identity changed. Registry347/408,nonregistry40/40,total387/448 assessed;61 families
+and585 required attributes remain: IDAS38/380,Repurposed17/154,vanilla6/51.
+Vanilla remaining ancient_city9,bastion_remnant9,mansion9,pillager_outpost8,
+trail_ruins8,trial_chambers8. Quantify next batch and reuse existing evidence.
+Final integration,acceptance,backup/history preparation and PR/review/main remain
+open. Inventory SHA-256: 88533c75279ec97a349f347e9400e5b482e21ebb14c497a6c1d38b5473d52cef.
+
+
 #### End city capture declaration after 8dd91e7d
 
 Next batch is one family/five attributes. Source/template evidence supports
