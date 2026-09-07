@@ -188,3 +188,72 @@ comparison groups are provisional concerns, not removal decisions.
 | yungsextras:swamp_cubby | T0 | H | D | ruin | Compact recessed masonry form supplies ambient exploration. | standard |
 | yungsextras:swamp_ogre | T0 | H | D | statue | Block-built ogre is an ornament, not a spawned creature. | standard |
 | yungsextras:swamp_pillar | T0 | H | D | statue,ruin | Freestanding pillar and campfire variants are ambient landmarks. | standard |
+| dungeons_arise:abandoned_temple | T3 | M | - | dungeon-tomb | Tall hostile temple core with connected roads supports major site exploration. | Roads enlarge envelope without proving equivalent internal gameplay. |
+| dungeons_arise:aviary | T3 | M | - | dungeon-fort | Three-layer connected End architecture spans hostile rooms and crystal content. | Crystal objects are not mobs; realized encounter spread unmeasured. |
+| dungeons_arise:bandit_towers | T3 | M | - | tower,dungeon-fort | Elevated towers and bridges distribute hostile encounter architecture vertically. | Absolute altitude is not height above terrain. |
+| dungeons_arise:bandit_village | T2 | M | - | village,outpost | Hostile streets, houses and tents form a connected settlement encounter. | Outdoor spread may play differently from enclosed dungeon traversal. |
+| dungeons_arise:bathhouse | T2 | M | - | dungeon-mansion | Vertical bathhouse stack combines hostile rooms and effect interaction. | Selected base/middle/top changes traversal; effects untested. |
+| dungeons_arise:ceryneian_hind | T0 | M | S,O | ship | Large three-section treasure ship form lacks packaged hostile encounter. | Access and treasure search may be meaningful; volume alone does not prove it. |
+| dungeons_arise:coliseum | T1 | M | - | arena | Broad arena focuses authored combat in one encounter space. | Potential difficulty does not establish multi-room dungeon purpose. |
+| dungeons_arise:fishing_hut | T1 | H | - | house | Low fishing hut disguises a local zombie-spawner encounter. | standard |
+| dungeons_arise:foundry | T3 | M | - | dungeon-mine,worksite | Extensive subterranean hostile corridor network supports industrial expedition design. | Working machinery and duration unmeasured. |
+| dungeons_arise:giant_mushroom | T2 | M | - | nature,tower | Connected vertical mushroom architecture contains hostile encounter sources. | Red and Twin geometry differ; cap size is not all gameplay. |
+| dungeons_arise:greenwood_pub | T2 | M | - | house,dungeon-mansion | Large pub with interior stairs and hostile rooms supports mixed-use dungeon traversal. | Civilian venue role coexists; not a uniformly hostile building. |
+| dungeons_arise:heavenly_challenger | T3 | M | - | ship | Large elevated hostile architecture adds airborne approach and internal exploration. | Terrain can meet fixed altitude; preparation unmeasured. |
+| dungeons_arise:heavenly_conqueror | T3 | M | - | ship | Large elevated hostile design supports airborne expedition access. | Actual access and encounter duration unmeasured. |
+| dungeons_arise:heavenly_rider | T3 | M | - | ship | Elevated hostile architecture combines approach constraints and substantial site scale. | T2 boundary depends on playable layout and access. |
+| dungeons_arise:illager_campsite | T2 | M | - | camp,outpost | Branching streets and hostile tent assemblies distribute encampment encounters. | Broad terrain footprint is not enclosed room volume; T1 boundary remains. |
+| dungeons_arise:illager_corsair | T2 | M | - | ship | Two-section hostile vessel has interior encounter pieces beyond a single platform. | Naval access may raise expedition demands. |
+| dungeons_arise:illager_fort | T3 | M | - | dungeon-fort | Two-level fortified assembly combines room alternatives and hostile residents. | Realized room selection and duration unmeasured. |
+| dungeons_arise:illager_galley | T2 | M | - | ship | Two-section ship joins interior hostile encounter content. | Difference from corsair needs later gameplay comparison, not automatic merging. |
+| dungeons_arise:illager_windmill | T2 | M | - | tower,outpost | Tall hostile windmill core and fields combine vertical and outdoor encounters. | Fields inflate footprint; combat distribution unmeasured. |
+| dungeons_arise:infested_temple | T3 | M | - | dungeon-trial | Ten internal level positions and room alternatives support extensive trial/vault traversal. | Large main envelope includes non-playable architecture; keyed outcomes untested. |
+| dungeons_arise:jungle_tree_house | T2 | M | - | house,tower | Large vertical tree-house form combines husk/skeleton encounter sources. | Canopy and selected start alter access. |
+| dungeons_arise:keep_kayra | T3 | M | - | dungeon-fort | Very tall broad keep combines hostile and nonhostile inhabitants. | Fixed anchor can bury lower sections; population and traversal unmeasured. |
+| dungeons_arise:kisegi_sanctuary | T3 | M | - | dungeon-trial | Tall connected sanctuary levels combine trial encounters and keyed vaults. | TNT ingredients and vault access are not tested outcomes. |
+| dungeons_arise:lighthouse | T0 | M | S,O | tower | Tall loot tower has no selected authored enemy or spawner source. | Navigation and climb value may exist; internal gameplay significance unmeasured. |
+| dungeons_arise:mechanical_nest | T3 | M | - | dungeon-fort,worksite | High-altitude hostile bridges and rooms form a broad vertical complex. | Mechanical appearance does not prove functioning machines. |
+| dungeons_arise:merchant_campsite | C | H | - | camp,village | Authored villagers and branching tent streets support civilian encampment. | No guaranteed services or safety. |
+| dungeons_arise:mining_complex | T3 | M | - | dungeon-mine,worksite | Large vertical mining assembly and blimp components combine hostile exploration. | Exterior mass is not measured meaningful play; machinery untested. |
+| dungeons_arise:monastery | C | H | - | village | Rooms, corridors and bridges house villagers and defensive golem without authored monsters. | Defensive content does not guarantee safety. |
+| dungeons_arise:mushroom_house | T2 | M | - | house,tower | Connected roots, lower house and elevated cap support hostile vertical exploration. | Selected room variants change realized play. |
+| dungeons_arise:mushroom_mines | T3 | M | - | dungeon-mine | Eight connected architectural sections form a substantial hostile mining complex. | T2 boundary remains without measured traversal. |
+| dungeons_arise:mushroom_village | T2 | M | - | village,outpost | Hostile central mushroom building and peripheral houses form a compound encounter. | Attachments can fail or collide; realized scope varies. |
+| dungeons_arise:plague_asylum | T3 | M | - | dungeon-mansion | Extensive underground rooms, cells and passages supply hostile expedition topology. | Route quality and duration unmeasured. |
+| dungeons_arise:scorched_mines | T3 | M | - | dungeon-mine | Hub and broad concealed hostile corridors support mining expedition. | Saved envelope is not occupied gameplay area. |
+| dungeons_arise:shiraz_palace | T3 | M | - | dungeon-mansion | Three connected architectural layers carry rooms, towers and hostile spawner alternatives. | Gardens/exterior sections may add noncombat volume. |
+| dungeons_arise:small_blimp | T2 | M | - | ship | Elevated blimp body and hanging ladder lead to authored skeleton encounter sources. | Airborne approach could justify T3; small name is not size proof. |
+| dungeons_arise:thornborn_towers | T3 | M | - | tower,dungeon-fort | Towers, hanging bridges and rooms combine major vertical hostile traversal. | Terrain exposure and bypass effort unmeasured. |
+| dungeons_arise:typhon | T0 | M | S,O | ship | Large three-section underwater treasure site lacks packaged hostile encounter. | Underwater exploration may be substantial despite absent authored combat. |
+| dungeons_arise:undead_pirate_ship | T2 | M | - | ship | Two-section ship contains interior hostile encounter pieces. | Naval access and enemy pressure unmeasured. |
+| dungeons_arise:wishing_well | T1 | M | - | shrine | Localized effect interaction includes beneficial and harmful wither alternatives. | Effects are source-supported possibilities, not observed outcomes. |
+| dungeons_arise_seven_seas:corsair_corvette | T2 | M | - | ship | Hostile vessel's hull/superstructure supports boarding and interior exploration. | Occupied layout and duration unmeasured. |
+| dungeons_arise_seven_seas:pirate_junk | T2 | M | - | ship | Extended hostile ship design supports naval dungeon traversal. | Source envelope includes air, not measured usable space. |
+| dungeons_arise_seven_seas:small_yacht | T1 | M | - | ship | Smaller hostile vessel supports a localized boarding encounter. | Below-deck traversal could support T2 after play evidence. |
+| dungeons_arise_seven_seas:unicorn_galleon | T2 | M | - | ship | Hostile hull/superstructure supports shipboard encounter traversal. | Actual occupied volume and naval demands unmeasured. |
+| dungeons_arise_seven_seas:victory_frigate | T3 | M | - | ship | Long broad hostile vessel supports a major boarding expedition design. | Envelope is not measured play duration; T2 remains plausible. |
+| explorations:campsite | C | M | - | camp | Tents, seating and pen components support temporary staging. | No authored inhabitants or enemies identified. |
+| explorations:desert_ruin | T0 | H | D | ruin | Small damaged masonry alternatives supply ambient exploration. | standard |
+| explorations:floating_island | T0 | M | D | nature | Small elevated island is an environmental landmark without authored enemies. | Height creates access challenge, not by itself a dungeon objective. |
+| explorations:forgotten_well | T0 | H | D | shrine | Compact surface well supplies ambient landmark form. | No operating mechanism inferred. |
+| explorations:jungle_temple | T1 | M | - | shrine,cache | Temple and exterior stairs carry localized dispenser hazard inputs. | Trap operation and sustained traversal untested. |
+| explorations:large_oak_tree | T0 | H | D | nature | Broad-canopy tree provides environmental distinction without authored enemies. | May blend with surrounding trees. |
+| explorations:logs | T0 | H | D | nature | Low fallen-log alternatives provide ambient scenery. | standard |
+| explorations:scarecrow | T0 | H | D | statue | Five-position block figure is decorative, not a live encounter. | standard |
+| explorations:shrine | T0 | H | D | shrine | Small aged masonry shrine has no authored enemy source. | Incidental rewards do not establish dungeon purpose. |
+| explorations:slime_cave | T1 | H | - | dungeon-trial | Compact underground chamber localizes an authored slime encounter. | standard |
+| explorations:underground_temple | T2 | M | - | dungeon-tomb | Connected corridors, shafts and rooms carry spawner/natural hostile inputs. | Saved layouts vary widely; quest-tower name does not prove active quest. |
+| explorify:badlands_pyramid | T1 | M | - | shrine,cache | Enclosed pyramid loot pairs with TNT trap ingredients. | Operation untested. |
+| explorify:black_spiral | T2 | M | - | tower,dungeon-fort | Spiral tower/bridge assembly combines piglin/brute encounters and optional spawner rooms. | Lava/gap processors and selected components change traversal. |
+| explorify:campsite | C | H | - | camp | Civilian/animal tent assembly supplies temporary habitation. | Defensive interactions do not imply universal safety. |
+| explorify:dark_forest_settlement | C | H | - | village | Connected centre, houses and paths carry civilian/animal sources. | Services and safety untested. |
+| explorify:desert_shrine | T0 | H | D | shrine | Compact stored-loot shrine has no authored resident or spawner encounter. | Partial burial changes access. |
+| explorify:end_shipwreck | T0 | H | D | ship,ruin | Overturned loot hull lacks authored enemies or physical spawners. | Natural End danger remains. |
+| explorify:farmstead | C | H | - | village,worksite | Agricultural buildings/paths contain villagers and animals. | Productive operation untested. |
+| explorify:guide_post | T0 | H | - | tower | Tall guide-post and campfire installation supports navigation landmark role. | No measured sight distance. |
+| explorify:mangrove_hut | T1 | H | - | house | Hut contains an authored witch encounter with separate cat component. | Terrain and mangrove cover affect access. |
+| explorify:mausoleum | T1 | H | - | dungeon-tomb | Compact mausoleum localizes zombie spawner and loot. | Building form does not prove extended dungeon traversal. |
+| explorify:ruins | T1 | M | D | ruin | Ruined settlement combines archaeology and local zombie-spawner monument component. | Broad ruin footprint is not uniform combat space. |
+| explorify:supply_cache | T0 | H | - | cache | Tiny biome-themed stored-supply installation supports incidental resupply discovery. | No authored encounter source. |
+| explorify:tavern | C | H | - | house | Connected tavern rooms and village entity components support civilian venue. | Operating services untested. |
+| explorify:watchtower | T0 | H | S | tower | Slender storage tower lacks authored residents or spawner inputs. | Climb/cache utility may be meaningful without combat. |
