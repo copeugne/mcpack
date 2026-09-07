@@ -6,6 +6,98 @@
 
 ### Continuation update - 2026-09-07
 
+Cafe/store fields integrated at 95ac9e0f; derived inventory matches the fresh build.
+User correction via side audit: stop repetitive two-family process cycles. Most
+remaining rows already have substantial evidence in their rationales/catalogs.
+Use larger coherent field-integration batches, retain real limits, investigate
+only specifically unsupported mandatory claims, and separate those from existing
+facts awaiting integration and final validation/delivery. Do not present UNKNOWN
+row counts as research backlog. No new tracker, schema or measurement system.
+
+Wagon/washing camp inventory matches 7928ff01 and reproduces exactly. Sixteen
+families have current-phase assessments. Remaining: 391 registry candidates with
+2,133 literal gaps, forty nonregistry assignments needing integration, nineteen
+filled records needing acceptance assessment. No new measurement/tooling.
+Quantify the next batch before edits; Item 8 remains open.
+
+Jungle/plains statue inventory matches 44660271 and reproduces exactly. Fourteen
+families have current-phase assessments. Remaining: 393 registry candidates with
+2,145 literal gaps, forty nonregistry assignments needing integration, seventeen
+filled records needing acceptance assessment. No new measurement/tooling.
+Quantify the next batch before editing; final Item 8 acceptance remains open.
+
+Desert statue/train inventory matches 3213a41a and reproduces exactly. Twelve
+families have current-phase source assessments. Remaining planning count: 395
+registry candidates with 2,157 literal gaps, forty nonregistry assignments needing
+integration, fifteen filled records needing acceptance assessment. No new
+measurement/tooling. Quantify the next batch before edits.
+
+Lighthouse/lodge inventory matches d05f082d and reproduces exactly. Ten families
+have current-phase source assessments. Remaining: 397 registry candidates with
+literal gaps (2,169 values), forty nonregistry assignments needing integration,
+thirteen filled registry records needing acceptance assessment. No new measurement
+or tooling. Quantify the next batch before editing.
+
+House attribute inventory matches df2b2680 and reproduces exactly. Eight families
+have current-phase source assessments. Remaining planning count: 399 registry
+candidates with literal gaps (2,181 values), forty nonregistry assignments needing
+integration, eleven filled registry records needing acceptance assessment.
+No new measurement/tooling. Quantify each subsequent batch before edits.
+
+Predeclared abandonedhouse/brickhouse batch: two families, eleven fields each.
+Ten source-based interpretations retain the resolved biome constraints. Generic
+processor candidates differ from saved spawner mobs; both are preserved. Brick
+house nominal flat assembly is 22 by 48 blocks, derived explicitly from three
+matching connector positions; terrain-matching effects remain unobserved.
+Focused IDAS and scoped quality checks pass. Decision delivery and inventory
+refresh follow. No new measurement, renderer or framework was introduced.
+
+Cottage/camp inventory now matches decision e9bbf9ba and reproduces exactly.
+Six families have current-phase source-attribute assessments. Planning audit:
+401 registry candidates have literal required-field gaps (2,193 field values);
+40 nonregistry assignments need integration; nine registry candidates have filled
+fields that still require acceptance assessment. These are bounded record counts,
+not experiment counts. Detailed field and namespace counts are in provider-scope.md.
+No additional family batch has started. Quantify the next batch before edits and
+reuse the existing 39 partially or fully overridden candidate records.
+
+Cottage and pillager camp: predeclared two-family, eleven-field batch assessed
+from existing evidence. Ten interpretations per family preserve unchanged biome
+constraints. Camp processor spawner settings and its sole pillager mob entry are
+explicit; cottage loot remains limited to its second equal-weight alternative.
+Focused IDAS and scoped checks pass. Inventory refresh follows. No new measurement
+or tooling. This is source attribution, not observed placement or discovery.
+
+Inventory matches guild/ruins attribute decision be81f551 and reproduces exactly.
+The predeclared three-family batch is delivered with ten updated fields per
+family and unchanged resolved biome lists. No new measurement or tooling. Four
+families have now received this source-attribute assessment in the current phase;
+the other candidate records, nonregistry integration and final gate remain open.
+Quantify the next batch before editing and retain all generated-world limitations.
+
+Quantified increment: ruined church, ruined fort and redhorn guild, eleven fields
+each. Ten source-based interpretations per family now supplement the unchanged
+biome constraints. Guild villagers/guards and its unidentified entity remain
+distinct from ruins with no authored defenders. Frozen enablement and dimension
+overlap are recorded. Focused IDAS and scoped checks pass; inventory refresh
+follows. No new measurement/tooling or inactive-field cleanup was added.
+
+Inventory matches witches-treestump attribute decision 5c5ee66a and reproduces
+exactly. One family was assessed across eleven fields, with ten explicit source
+interpretations and unchanged resolved biome constraints. Thirteen of fifteen
+tag-matched biomes overlap captured dimensions; deciduous_forest and pumpkin_fields
+from Regions Unexplored do not. No new measurement/tooling, occurrence claim or
+inactive-field rewrite. Quantify the next substantive family batch before edits.
+Other candidate attributes, nonregistry integration and final PR gate remain open.
+
+Witches treestump now has source-based interpretations for its required fields:
+29 by 25 nominal footprint, height 20, surface placement, qualitative woodland
+visibility, witch/cat spawn overrides, two loot-bearing chests and no packaged
+spawner blocks. Resolved biomes remain unchanged. Frozen toggle and common-set
+placement are bound as evidence. Focused IDAS and scoped checks pass. No new
+measurement was added; world occurrence and detection distance remain unobserved.
+Inventory refresh follows. This increment does not close the full Item 8 gate.
+
 User clarification: do not spend time on cosmetic UNKNOWN-to-not-applicable
 cleanup. Existing inactive/excluded dispositions suffice; no such edits were
 made. Quantify each substantive increment before starting it. Current scope is

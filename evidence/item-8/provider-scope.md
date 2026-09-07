@@ -10335,3 +10335,369 @@ specific mandatory claim the existing evidence cannot support first.
 Before the final PR, finish these attribute assessments and nonregistry
 integration, check machine/narrative agreement and run the final applicable gate.
 The already-passing family-decision tests do not replace that gate.
+
+### Witches treestump attribute increment
+
+Predeclared scope: one family and eleven fields, using existing retained evidence.
+Decision 5c5ee66a supplies ten attribute interpretations and retains the resolved
+biome constraints. Nominal template size is 29 by 20 by 25; visibility is a
+qualitative source-based description, not a measured discovery distance. Root
+spawn rules provide witch/cat candidates, while the template has two loot-table
+chests and no physical spawners. The frozen toggle is enabled. Of fifteen
+tag-matched registered biomes, thirteen occur in the captured Overworld and none
+overlap another captured dimension; Regions Unexplored deciduous_forest and
+pumpkin_fields occur in no captured dimension biome source.
+
+Focused IDAS checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright
+checks. Two fresh inventory builds agree exactly, SHA-256
+4df059e58a5074c892a167fd1f4a0afafaa037814837b687d2ccf33c8e64a2d4.
+Only this family and the decision input identity change. Registry membership,
+world observations, biome constraints and all other family rows remain unchanged.
+Source attribution is not a claim of observed placement, encounters or universal
+absence of external modifications. No new measurement or tooling was introduced.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witches-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witches-attributes-r2.json
+cmp evidence/raw/item8/inventory-witches-attributes-r1.json evidence/raw/item8/inventory-witches-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-witches-attributes-r2.json
+```
+
+Use fresh output files. Item 8 and its final acceptance gate remain open.
+
+### Guild and ruins attribute increment
+
+Predeclared scope: ruined church, ruined fort and redhorn guild, eleven fields
+each. Decision be81f551 supplies ten source-based attribute interpretations per
+family and retains the resolved biome lists. Nominal XYZ template sizes are
+38 by 29 by 29, 13 by 23 by 26 and 28 by 48 by 30 respectively. All use surface
+projection. The guild has authored villagers/guards and one entity without an ID;
+the ruins have no authored entities. No selected template has physical spawners.
+Visibility remains qualitative, with no measured approach or discovery distance.
+
+Frozen toggles enable all three at weight 3 in idas_common. The church and fort
+each overlap 27 of 29 tag-matched biomes in the captured Overworld; the guild
+overlaps 29 of 30. Absent registered biomes remain explicit, not silently counted
+as generated habitat. No captured generated-world occurrence is claimed.
+
+Focused IDAS checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright
+checks. Two fresh builds agree exactly, SHA-256
+8707975c86b830fd24bf179a30fe127cefba0b1af3b1cc54bd4ae051b42af4fc.
+Only these three family rows and the decision input identity change. Membership,
+world observations, biome constraints and all other family rows remain unchanged.
+No new measurement or tooling was introduced.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-guild-ruins-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+cmp evidence/raw/item8/inventory-guild-ruins-attributes-r1.json evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-guild-ruins-attributes-r2.json
+```
+
+Use fresh output files. Item 8 and its final acceptance gate remain open.
+
+
+### Cottage and camp attribute increment
+
+Predeclared scope: cottage and pillager camp, eleven fields each. Decision
+e9bbf9ba supplies ten source interpretations per family and retains resolved biome
+constraints. Nominal XYZ envelopes are 9 by 9 by 7 and 17 by 5 by 14. Cottage loot
+belongs only to its second equal-weight alternative. The camp has mixed authored
+inhabitants and two physical pillager spawners; the selected processor's sole mob
+entry and conditional spawn settings remain explicit. Neither has a retained
+world occurrence. No new measurement or tooling was introduced.
+
+Focused IDAS checks pass (1 passed, 77 deselected). Two fresh inventory builds
+agree exactly, SHA-256
+d88a9578fd3dc570fed02d82855b296710efa55bf85c2934dafeb4eb387696e3.
+Only the two family rows and decision input identity change. Membership, biome
+constraints, world observations, pool trace IDs and all other rows are unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cottage-camp-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+cmp evidence/raw/item8/inventory-cottage-camp-attributes-r1.json evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-cottage-camp-attributes-r2.json
+```
+
+### Remaining attribute workload after cottage and camp
+
+Planning count against the inventory SHA above, excluding exactly the same fifteen
+inactive groups and cloud group identified in the quantified scope section:
+401 of 410 registry candidates have at least one top-level required field whose
+string starts with UNKNOWN. They contain 2,193 such field gaps. This is a count
+of unfinished recorded values, not experiments, effort hours or acceptance.
+
+| Required field | Literal field gaps |
+| --- | ---: |
+| approximate_footprint | 327 |
+| approximate_vertical_size | 325 |
+| intended_hostility | 378 |
+| authored_or_natural_enemies | 380 |
+| visual_discoverability | 400 |
+| underground_surface_classification | 383 |
+
+The other five fields have structured data for all 410 candidates, but some
+explicitly retain unresolved effective-generation interpretation. The nine
+records without a top-level UNKNOWN are BetterEnd end_lake and mountain,
+Minecraft buried_treasure, and IDAS cottage, pillager_camp, redhorn_guild,
+ruined_church, ruined_fort and witches_treestump. Their filled fields do not prove
+final acceptance. Thirty-nine candidates have some explicit attribute overrides;
+reuse that work. Six families received the current source-attribute assessment.
+
+The forty nonregistry family assignments remain a separate integration and
+attribute task. Therefore 441 records have demonstrated recording/integration
+work, and nine require assessment of their existing filled values before they
+can be counted as accepted. All 450 remain within the final coverage check.
+Do not call this 450 new investigations or introduce experiments to fill strings.
+Resolve required claims from existing source and observation evidence first.
+
+Registry candidates with literal gaps, by namespace:
+
+| Namespace | Families |
+| --- | ---: |
+| adorabuild_structures | 49 |
+| aether | 3 |
+| betterdeserttemples | 1 |
+| betterdungeons | 5 |
+| betterend | 7 |
+| betterfortresses | 1 |
+| betterjungletemples | 1 |
+| bettermineshafts | 1 |
+| betteroceanmonuments | 1 |
+| betterstrongholds | 1 |
+| betterwitchhuts | 2 |
+| creatingspace | 4 |
+| ctov | 2 |
+| deep_aether | 1 |
+| dungeons_arise | 40 |
+| dungeons_arise_seven_seas | 5 |
+| explorations | 10 |
+| explorify | 14 |
+| idas | 56 |
+| illagerinvasion | 5 |
+| integrated_stronghold | 1 |
+| integrated_villages | 1 |
+| mes | 18 |
+| minecraft | 12 |
+| mns | 27 |
+| mss | 26 |
+| mvs | 65 |
+| repurposed_structures | 17 |
+| supplementaries | 2 |
+| terralith | 15 |
+| towns_and_towers | 8 |
+
+These planning counts are derived by selecting the 410 rows defined above,
+checking the eleven SPECS fields for top-level UNKNOWN strings, counting rows
+with at least one such value, and grouping those row IDs by namespace. They do
+not establish semantic sufficiency or close the Item 8 gate.
+
+
+### Abandoned house and brick house attribute increment
+
+Predeclared two-family, eleven-field assessment delivered in decision df2b2680.
+Ten interpretations per family preserve resolved biome constraints. Both frozen
+toggles are enabled at weight 5 in idas_common; 27 of 29 tag biomes overlap the
+captured Overworld only. The two absent registered biomes remain explicit.
+
+Abandoned house alternatives retain weights 3 and 2, footprints 21 by 17 and
+21 by 15, and heights 20 and 21. Each has three spawners; the second also has an
+authored cave spider and one unidentified entity. Brick house has three connected
+components with a nominal flat footprint 22 by 48 and height 23. Exact connector
+positions and the flat-reference derivation are recorded in its footprint field.
+Terrain matching and incomplete placement can change actual dimensions. Windmill
+has one saved spider spawner. Both families select the generic processor resource
+with zombie/skeleton/wraith candidates, distinct from saved template mob IDs.
+Legacy loot IDs are preserved. No generated-world occurrence is claimed.
+
+Focused IDAS tests pass (1 passed, 77 deselected); scoped Ruff/Basedpyright checks
+pass. Two fresh inventory builds match exactly, SHA-256
+f61b0a283ad7c6f83e5f22b02e64652fc5551e33702d817c38f174ba8a58e887.
+Only these two families and decision input identity change; membership, biome
+constraints, world observations, pool trace IDs and other rows remain unchanged.
+No new measurement or tooling was added.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-house-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-house-attributes-r2.json
+cmp evidence/raw/item8/inventory-house-attributes-r1.json evidence/raw/item8/inventory-house-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-house-attributes-r2.json
+```
+
+This removes twelve literal field gaps, six per family. The previous planning
+count becomes 399 registry candidates with 2,181 literal field gaps, forty
+nonregistry assignments needing integration, and eleven filled registry records
+still subject to acceptance assessment. IDAS accounts for 54 of the 399 remaining
+rows with literal gaps. Eight families have current-phase attribute assessments.
+Item 8 acceptance, final review and main delivery remain open.
+
+
+### Lighthouse and fishing lodge attribute increment
+
+Predeclared scope: two families, eleven fields each. Decision d05f082d records ten
+source interpretations per family while retaining resolved biome constraints.
+Nominal XYZ envelopes are 9 by 13 by 8 and 25 by 41 by 27. The lodge's start offset
+is -15, so template height is not exposed height. Both have no authored entities
+or physical spawners. Lighthouse uses dispenser/dropper ticking; lodge uses an
+empty processor list. Both retain their loot-table references and source limits.
+Frozen toggles enable both; all seven lighthouse biomes and the single lodge biome
+overlap only the captured Overworld. Neither has retained world occurrence.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh builds match, SHA-256
+dda8914dfb8a06a4957ef70578efac0247b4898a7b19365294fcc8fc26378388.
+Only the two family rows and decision input identity change. Registry membership,
+biomes, observations, trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-lighthouse-lodge-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+cmp evidence/raw/item8/inventory-lighthouse-lodge-attributes-r1.json evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+```
+
+Twelve literal field gaps are resolved. Remaining planning counts: 397 registry
+candidates with 2,169 literal gaps, forty nonregistry assignments needing
+integration, thirteen filled registry records needing acceptance assessment.
+Ten families have current-phase assessments. No new measurement or tooling.
+Item 8 acceptance, PR review and verified main delivery remain open.
+
+
+### Desert statue and train ruins attribute increment
+
+Predeclared scope: two families, eleven fields each. The ancient_statue family ID
+is specifically the desert design; jungle and plains remain separate families.
+Decision 3213a41a records ten interpretations per family with unchanged biome
+constraints. Nominal XYZ sizes: 15 by 23 by 26 and 27 by 15 by 50. Neither has a
+retained world occurrence. Desert statue preserves seven rattlesnake and five item
+entries, without claiming unconditional hostility or realized populations. Train
+has only item/glue entities. Neither contains physical spawners. The train
+processor additionally declares probability-0.2 gravel conversion and archaeology
+loot, distinct from twelve saved container references. No observed yield is claimed.
+Both frozen toggles are enabled at weight 2 in idas_small. All three statue biomes
+and eight of nine train biomes overlap only the captured Overworld; train's
+Regions Unexplored deciduous_forest has no captured dimension overlap.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+c20b0b9e744d592e80fe8e742f3a4575bb1be1a1fd352b2f91b7a622a5546bfd.
+Only these two families and decision input identity change. Membership, biome
+constraints, observations, pool trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-statue-train-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-statue-train-attributes-r2.json
+cmp evidence/raw/item8/inventory-statue-train-attributes-r1.json evidence/raw/item8/inventory-statue-train-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-statue-train-attributes-r2.json
+```
+
+Twelve literal field gaps resolved. Remaining planning counts: 395 registry
+candidates with 2,157 literal gaps, forty nonregistry assignments needing
+integration, fifteen filled registry records needing acceptance assessment.
+Twelve families have current-phase assessments. No new measurement or tooling.
+Final Item 8 acceptance, review and main delivery remain open.
+
+
+### Jungle and plains statue attribute increment
+
+Predeclared two-family, eleven-field batch. Decision 44660271 preserves separate
+canonical designs and adds ten source interpretations each with unchanged biome
+constraints. Nominal XYZ sizes: jungle 10 by 14 by 9, plains 15 by 18 by 14.
+No authored entities or spawners occur. Jungle has six archaeology and three
+chest loot references; plains has thirteen archaeology and two treasure references.
+Mechanical parts do not prove a working trap/puzzle. Frozen toggles enable both
+at weight 3 in idas_small. All fifteen jungle biomes and 27 of 29 plains biomes
+overlap only the captured Overworld; plains retains the two absent RU biomes.
+Neither has a retained world occurrence. Visibility remains qualitative.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+c275658a92c4677431a46971407d789877d78c181716bca3cc300c6d71061738.
+Only these two families and decision input identity change; memberships, biome
+constraints, observations, pool trace IDs and other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-jungle-plains-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+cmp evidence/raw/item8/inventory-jungle-plains-attributes-r1.json evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-jungle-plains-attributes-r2.json
+```
+
+Twelve literal field gaps resolved. Remaining planning counts: 393 registry
+candidates with 2,145 literal gaps, forty nonregistry assignments needing
+integration, seventeen filled registry records needing acceptance assessment.
+Fourteen families have current-phase assessments. No new measurement/tooling.
+Final Item 8 acceptance, review and main delivery remain open.
+
+
+### Winter wagon and washing camp attribute increment
+
+Predeclared two-family, eleven-field batch. Decision 7928ff01 adds ten source
+interpretations each with unchanged biome constraints. Nominal XYZ sizes are
+37 by 20 by 26 and 12 by 4 by 11. Wagon trader/golem/furnishing references retain
+one unidentified entity. Washing camp has no entities or loot-table references;
+its toolbox is not assumed empty. Neither contains physical spawners. Both use
+waterlogging_fix_processor. No world occurrence or working machinery is claimed.
+Frozen toggles enable both. Wagon overlaps 13 of 15 biomes in the captured
+Overworld only; washing camp overlaps 27 of 29. Absent biomes remain explicit.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+4933bdd06985e263b401e647db941fd24c39396ffc8fad513d4b044a95f301da.
+Only these two families and decision input identity change. Membership, biomes,
+observations, pool trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wagon-washing-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+cmp evidence/raw/item8/inventory-wagon-washing-attributes-r1.json evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+```
+
+Twelve literal gaps resolved. Remaining: 391 registry candidates with 2,133
+literal gaps, forty nonregistry assignments needing integration, nineteen filled
+registry records needing acceptance assessment. Sixteen families have current-phase
+assessments. No new measurement/tooling. Final acceptance and delivery remain open.
+
+
+### Cafe/store integration and revised work approach
+
+Decision 95ac9e0f integrates the predeclared two families and eleven required
+fields from existing evidence. Focused IDAS test passes (1 passed, 77 deselected),
+with scoped Ruff/Basedpyright passing. Inventory generated with
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-cafe-store-attributes.json`.
+SHA-256: 7ec82de43fd8211af43697adf13724987b301a2dbd7ff7a010d06ab9593c886a.
+Only the two family rows and decision input identity changed; registry membership,
+biomes, observations, trace IDs and other rows are unchanged. No new measurement.
+
+User direction received through the side audit: reduce repetitive work. Existing
+rationales already contain substantial attribute evidence. Top-level UNKNOWN
+counts measure integration gaps, not uninvestigated families. Reuse that evidence
+in larger coherent batches, investigate only a specifically unsupported mandatory
+claim, and report facts awaiting integration separately from such investigations
+and final validation/delivery. Do not repeat settled provider/design work, render
+existing views again, or add another tracking system. Use affected checks and the
+full applicable final gate. Preserve atomic commits and PR/review/merge requirements.
