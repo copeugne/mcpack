@@ -809,3 +809,45 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/voyager-networks-r1/run.json \
   --timeout-seconds 900 --structure mvs:cathedral --structure mvs:mineshaft
 ```
+
+### Voyager network geometry result and custody
+
+Executed from 3b2305ac90d1508df38a06215d2c838f19f64418. Both targets completed,
+followed by correlated save, clean exit and passing frozen configuration checks.
+The decoder retained 2,763 records, including partial and locate-created chunks,
+not a sampling denominator. Full-start observations in chunks.jsonl are:
+
+| Root | Line | Start chunk XZ | Piece boxes | Inclusive envelope | XYZ |
+| --- | --- | --- | --- | --- | --- |
+| mvs:cathedral | 497 | [-335,22] | 21 | [-5395,51,317,-5325,96,386] | 71x46x70 |
+| mvs:mineshaft | 1442 | [-689,426] | 182 | [-11081,-20,6759,-10966,96,6873] | 116x117x115 |
+
+Existing mcpack_evidence.item8_world_bounds.observed_bounds takes the minima and
+maxima over saved piece boxes and derives inclusive sizes with max-min+1. These
+are illustrative saved layouts, not occupied volume, exposed height or extrema.
+Decoded SHA: 258e15e1b54238f3af9236858cf26c733ab91f7a9780cc1e1f94a6a0d5240d2a.
+
+Executed preservation commands (use absent destinations for reproduction):
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/voyager-networks-r1"), Path("evidence/raw/item8/voyager-networks-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/voyager-networks-r1/world --output evidence/raw/item8/voyager-networks-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/voyager-networks-r1 --archive evidence/raw/item8/item8-voyager-networks-r1-3b2305ac.tar.gz --manifest evidence/item-8/raw-custody/voyager-networks-r1-manifest.json --revision 3b2305ac90d1508df38a06215d2c838f19f64418
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-voyager-networks-r1-3b2305ac.tar.gz --manifest evidence/item-8/raw-custody/voyager-networks-r1-manifest.json --target evidence/raw/item8/voyager-networks-r1-restored --receipt evidence/item-8/raw-custody/voyager-networks-r1-local-restore.json
+gh release download item-8-voyager-networks-2026-09-07-r1 --dir evidence/raw/item8/voyager-networks-download --pattern item8-voyager-networks-r1-3b2305ac.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/voyager-networks-download/item8-voyager-networks-r1-3b2305ac.tar.gz --manifest evidence/item-8/raw-custody/voyager-networks-r1-manifest.json --target evidence/raw/item8/voyager-networks-downloaded-restore --receipt evidence/item-8/raw-custody/voyager-networks-r1-downloaded-restore.json
+```
+
+Archive: 4,662,295 bytes, 266 files, 31,352,212 uncompressed bytes. SHA-256:
+67e7e1519675c8f3f6b42d34d4a17027751eb379ac2456ad51023136aed504fd.
+It retains stopped worlds excluding session.lock, decoded chunks, both logs,
+configuration and run receipt. Local copies share a disk. The
+[published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-voyager-networks-2026-09-07-r1)
+is the separate durable copy. Local and downloaded restores verified all 266
+files; the remote tag resolves to the source commit above.
+
+Four geometry answers are integrated; prior source answers, biomes and original
+observation links are preserved, with this capture bound by added evidence refs.
+Twelve affected world-bounds/provider/inventory tests pass. No runtime remains.
+Inventory SHA: 8d1a84b976d3aebf20a760a6fe1c0f1c09abde8336cbc9dab907328a984f216e.
+Voyager is 65/65 assessed. Retire its assessment absent contradictory evidence.
