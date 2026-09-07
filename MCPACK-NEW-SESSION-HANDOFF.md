@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed igloo assessed after c936316e
+
+Nine remaining attributes integrated from24-template/four-variant graph and
+existing full igloo_stone run-a mountainous line14209,chunk3,27,envelope7x37x10.
+No new capture/tool. Grassy/stone villager+zombie-villager, mangrove frog+magma-cube,
+mushroom cattle+item-frame sources kept distinct; matching basement loot tables
+verified. Grassy/stone infested-block processor rules supply conditional silverfish,
+not ordinary spawners. Direct pinned InfestedBlock inspection records break guards.
+Surface shelter/optional buried basement and exposure/population limits retained.
+All85 focused checks pass (59.42s); only igloo/input identity changed. Total398/448
+assessed;50 families/451 entries remain: IDAS38/343,Repurposed12/108. Quantify next
+batch and reuse evidence. Details in repurposed-igloo-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: 329f3a2d82ffb9fa25ebdd6c85372f6f343aa0958fbfb13c9402ab95775bb265.
+
+
 #### Repurposed End portal ruin assessed after 62505f51
 
 Nine remaining attributes integrated from existing two-template pool, empty
