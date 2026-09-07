@@ -137,3 +137,51 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/ctov-outpost-geometry-r1/run.json \
   --timeout-seconds 900 --structure ctov:pillager_outpost_plains
 ```
+
+## Outpost geometry result and custody
+
+The declared seed42 capture passed readiness, completed the81 requested chunks,
+matched save-all flush, exited cleanly with code0 and passed frozen configuration
+acceptance. The receipt preserves accepted comment-line normalization differences;
+no gameplay configuration was changed. The stopped world decoded to1803 records,
+which are retained coverage, not the81-chunk requested denominator.
+
+Full start chunk -476,-108 is chunks.jsonl line385:12 pieces and envelope
+[-7632,66,-1758,-7586,96,-1713]. Inclusive subtraction gives47x31x46 blocks
+(X,Y,Z). This is approximate saved assembly geometry for one plains variant,
+including air/padding. It is not occupied volume, an all-variant range, or proof
+that every component chunk reached full population. The existing missing-template
+and missing-loot dispositions remain unchanged.
+
+The console preserves optional-mod loot/tag errors, IDAS spawner-list errors,
+WDA advancement errors and oversized potion-component errors. It also reports
+Better Caves failure to fetch AquiferContext at lines2683-2684, warning that
+liquid regions may not generate properly. These do not prevent decoding the
+CTOV saved-piece layout for approximate dimensions. They preclude treating this
+run as general compatibility acceptance; no baseline repair or tuning was done.
+
+Archive `item8-ctov-outpost-geometry-r1-78604262.tar.gz` contains259 files,
+3,007,971 bytes (20,792,792 uncompressed), SHA-256:
+1de9d3f9e31118b0a8e8494426da13588890196810224465ea5cb9ee37f75349.
+Manifest SHA-256:
+527f20d8a1e5b56454e825b1150e4920ae2275a84d14940e5e854f46e0533525.
+Decoded chunks SHA-256:
+1e6f8ee97ba85b74fc86804f1b6c54771a3ef4f3e33951558fb8c624c49a4fc7.
+Release/tag `item-8-ctov-outpost-geometry-2026-09-07-r1` references source
+78604262eb74e0c550974200268fe2a9b2132286, verified remotely. Local and downloaded
+restores verified all259 files; existing observed_bounds on downloaded line385
+reproduced the full start,12 pieces and47x31x46 envelope. Local copies share the
+workspace disk; the GitHub release is separate storage.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/ctov-outpost-geometry-r1"), Path("evidence/raw/item8/ctov-outpost-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/ctov-outpost-geometry-r1/world --output evidence/raw/item8/ctov-outpost-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/ctov-outpost-geometry-r1 --archive evidence/raw/item8/item8-ctov-outpost-geometry-r1-78604262.tar.gz --manifest evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json --revision 78604262eb74e0c550974200268fe2a9b2132286
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-ctov-outpost-geometry-r1-78604262.tar.gz --manifest evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json --target evidence/raw/item8/ctov-outpost-geometry-r1-restored --receipt evidence/item-8/raw-custody/ctov-outpost-geometry-r1-local-restore.json
+gh release download item-8-ctov-outpost-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-ctov-outpost-geometry-r1-78604262.tar.gz --dir evidence/raw/item8/ctov-outpost-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/ctov-outpost-geometry-r1-download/item8-ctov-outpost-geometry-r1-78604262.tar.gz --manifest evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json --target evidence/raw/item8/ctov-outpost-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/ctov-outpost-geometry-r1-downloaded-restore.json
+uv run python -c 'from pathlib import Path; from mcpack_evidence.item7_nbt_models import ChunkRecord; from mcpack_evidence.item8_world_bounds import observed_bounds; print(observed_bounds(ChunkRecord.model_validate_json(Path("evidence/raw/item8/ctov-outpost-geometry-r1-downloaded-restore/chunks.jsonl").read_text().splitlines()[384])))'
+```
+
+Use fresh output paths for reruns. Both CTOV families are now assessed for Item8;
+no new measurement or validation implementation was needed.
