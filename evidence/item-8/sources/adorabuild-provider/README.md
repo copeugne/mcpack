@@ -260,3 +260,48 @@ uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Two modular-family source assessments
+
+Basalt chambers and Nether fortress complete AdoraBuild's descriptive family
+assessment. Ten missing descriptions and ten existing answers are integrated;
+resolved biomes are retained. Components remain pieces, not additional families.
+
+world-bounds.json.gz observation 6 is a basalt start with chunk_full=true and
+saved piece envelope [112,12,-158,167,18,-96], hence inclusive 56x7x63 blocks.
+Retain the limitation that a full start chunk does not prove every component
+chunk populated. Fortress observations 1/413 repeat seed 42 across runs with
+25x23x30 envelopes at initialize_light; 338/719 repeat biome-diverse seed with
+35x23x40 envelopes at structure_starts. They are two planned layouts reproduced
+across runs, not four independent population observations. Earlier chunk stages
+are adequate evidence for saved planned layout size, not populated world bounds.
+No new world generation is needed for this scoped approximate-geometry answer.
+
+Both roots use standard minecraft:jigsaw, depth 6, no heightmap projection:
+basalt absolute 13/bury, fortress absolute 32/beard_box. Saved piece envelopes
+start at Y=12/31. Placement inputs and envelopes do not prove exposure or clearance.
+Fortress's complete eight-template graph uses empty processors. Its three tower
+loot sources retain nether-bridge tables; no initial entities or physical spawner
+inputs occur. Exact piece-bounded monster override describes natural spawn
+selection separately from initial residents and generated population.
+
+Basalt's reachable spawner template supplies a blaze source with saved legacy
+minecraft:mob_spawner ID. Conversion/success/count is not inferred. The center
+processor randomize_ancient_debris replaces resource blocks with netherite block
+or lodestone; replace_magma_with_tnt changes trap ingredients. No container-loot
+reference or top-level entity occurs. Authored TNT/tripwire is not tested operation.
+
+The exact broken reference is dummy_side's jigsaw at [0,3,3], pool
+minecraft:basalt_chambers/chambers. The graph also reaches the differently named
+adorabuild_structures:basalt_chambers/chambers. Preserve the broken connector,
+without namespace substitution or baseline repair. Other graph paths and the
+saved assembled start establish this family's presence. Its source inventory is
+assessed with a connector-defect disposition, not a claim that every branch works.
+No additional family or generic research backlog is created by that failure.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-modular-descriptions.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
