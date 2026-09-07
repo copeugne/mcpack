@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 8834f268 and reproduces exactly. Canonical backlog: 22, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Nexus
+conversion session 44369 was last confirmed live; inspect its output when done.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
 Collectors museum is one intended two-component assembly; borrowed loot tables
 do not create family aliases. Preserve its large component extents, root limits
 and 18 physical spawner blocks without asserting generated assembly bounds.
