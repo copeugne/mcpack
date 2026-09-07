@@ -10286,3 +10286,52 @@ configuration, log and world evidence, and perform new measurement only for a
 specific required claim that those sources cannot establish. Finish by checking
 all eleven attributes for every included registry and nonregistry family, then
 the final applicable validation, clean PR review loop and verified main delivery.
+
+### Quantified implementation scope after user clarification
+
+The user requires quantification before implementation and rejects cosmetic
+UNKNOWN-to-not-applicable cleanup. No inactive-field rewrite or witches-treestump
+attribute edit was made. Existing inactive and excluded dispositions are retained.
+
+At inventory 2cc71537, the 426 registry groups contain 15 inactive groups and one
+excluded cloud-formation group. The inactive groups are the three optional IDAS
+roots, Terralith fortified village, the three sacred-lands Deep Aether roots,
+and vanilla desert pyramid, fortress, jungle pyramid, mineshaft, monument,
+stronghold, swamp hut and village. These follow explicit contribution dispositions
+or SUPPRESSED normal_generation on every member variant. They cover 21 registry
+roots; the cloud group covers one. The remaining 410 candidate families cover
+865 roots. Together with the 40 nonregistry family assignments, the current
+attribute-assessment scope is 450 candidate family records. This is a bounded
+working scope, not a final active-generation count or 450 new experiments.
+
+The remaining registry candidates have these literal UNKNOWN field counts:
+
+| Field | UNKNOWN | Already structured, still subject to evidence assessment |
+| --- | ---: | ---: |
+| approximate_footprint | 333 | 77 |
+| approximate_vertical_size | 331 | 79 |
+| intended_hostility | 384 | 26 |
+| authored_or_natural_enemies | 386 | 24 |
+| visual_discoverability | 406 | 4 |
+| underground_surface_classification | 389 | 21 |
+
+Dimension, biome constraints, mob source, loot-table source and generated
+spawners already have structured source data in all 410 registry candidates.
+Their final interpretation remains work. The 40 nonregistry assignments carry
+varied existing content evidence and need the same eleven required fields
+integrated consistently. There are 33 registry candidate groups with explicit
+attribute overrides; their existing work must be reused rather than recreated.
+
+The next implementation increment is limited to one family, witches treestump:
+assess its eleven required fields against the already retained template, pool,
+processor, structure definition, frozen toggles/placement, resolved biome and
+dimension lists and inspected template view. Its generated-world observation
+list is empty. Do not infer observed discovery distance, encounters or successful
+placement. A source-based approximate envelope and qualitative placement intent
+are different claims and must be labeled accordingly. No new measurement has
+been justified for this increment. Any new experiment requires identifying the
+specific mandatory claim the existing evidence cannot support first.
+
+Before the final PR, finish these attribute assessments and nonregistry
+integration, check machine/narrative agreement and run the final applicable gate.
+The already-passing family-decision tests do not replace that gate.
