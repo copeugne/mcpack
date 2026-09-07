@@ -96,3 +96,43 @@ these five rows and input identity changed; prior Shrine geometry, biomes,
 world observations and nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-explorations-standalone.json`, SHA-256
 3ee3f9bef8a1f391f8336285d67e91714234143defb373e9b0cfa4164084ef39.
+
+## Large Oak Tree and Slime Cave completion
+
+After d0693aaa, this batch integrates fourteen descriptions: ten for the tree
+and four for the cave. Slime Cave's six earlier entity, marker, loot and placement
+answers remain unchanged. No capture, runtime experiment or tool was added.
+The earlier cave processor gap is already resolved in explorations-deepslate;
+do not reopen it from the dated wording in the original cave capture README.
+
+Existing inventory joins expose full-start-chunk world-bounds observations:
+tree footprint 14x15 or 15x14 and height 12; cave footprint 15x15 and height 12.
+These values and their exact observation indexes are integrated into the explicit
+family attributes, bound to the existing world-bounds artifact hash. They remain
+saved piece envelopes with padding, not occupied volume or family-wide extrema.
+Tree observations 148,165,169,170 record the mountainous-seed run-a examples;
+545,562,566,567 retain their run-b counterparts. Repeated runs are not independent
+layout samples. Existing cave observation indexes and all source limitations
+remain attached without inventing a frequency denominator.
+
+Tree base is 6x4x5 with a connector to the 15x8x14 top; this confirms why one
+component alone would not describe its assembled size. Both pools use vanilla
+rigid single elements with minecraft:empty processors. Templates contain only
+their jigsaw block entities, with no authored entities, loot references, spawners
+or generation markers. The surface-projected tree is an environmental feature;
+ordinary biome spawning and ordinary block drops remain separate possibilities.
+
+Both families' resolved biome sets intersect only the Overworld runtime possible
+biomes, consistent with the retained saved starts. Tree uses WORLD_SURFACE_WG,
+offset zero and beard_thin. The cave's captured generator rejects sea level <=30
+or a height span below ten, then selects its below-sea-level start and one rotated
+piece. DeepslateProcessor changes stone/mossy cobblestone below Y0 without changing
+the envelope or erasing marker/chest metadata. The cave may be exposed by natural
+terrain, but neither exposure rate nor a guaranteed surface landmark is claimed.
+
+Eight affected tests in the provider, slime-cave-source and inventory-source
+suites pass, along with scoped builder quality checks. Only these two families
+and the decisions input hash changed; existing cave source answers, biome and
+observation links, and nonregistry content remain unchanged. Inventory matches
+`evidence/raw/item8/inventory-explorations-tree-cave.json`, SHA-256
+4dc15e0a4513ab56f5794cd7e872131d20d4f29f40e2d1dab0d83f7740920d86.

@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Explorations tree and cave assessed after d0693aaa
+
+Fourteen answers finish large_oak_tree and slime_cave. Existing full-start bounds
+supply 14x15 footprint/12 height tree and 15x15/12 cave examples. Source geometry
+scope, repeated-run caveats and Slime Cave's six prior marker/loot/placement
+answers remain unchanged. The deepslate processor was already resolved; do not
+restart that dated gap. No new capture, measurement or tooling.
+
+Eight affected tests and builder checks pass. Inventory SHA-256:
+4dc15e0a4513ab56f5794cd7e872131d20d4f29f40e2d1dab0d83f7740920d86.
+Retire both descriptions. Registry assessment 104/410; nonregistry 40/40,
+total 144/450 assessed, 306 remaining. Explorations retains campsite,
+jungle_temple and underground_temple. Underground Temple has saved bounds and
+two known missing templates; preserve their disposition. Campsite and Jungle
+Temple have no retained bounds observations. Quantify their missing answers,
+reuse available source facts, and do not substitute component sizes for layouts.
+Final integration, acceptance, backed-up history consolidation, PR review and
+main delivery remain open.
+
 #### Five Explorations standalone families assessed after d4cc7261
 
 Forty-eight answers finish desert_ruin, floating_island, forgotten_well, logs
