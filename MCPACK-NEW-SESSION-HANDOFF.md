@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-07
 
+User clarification: do not spend time on cosmetic UNKNOWN-to-not-applicable
+cleanup. Existing inactive/excluded dispositions suffice; no such edits were
+made. Quantify each substantive increment before starting it. Current scope is
+410 registry-backed candidate families plus 40 nonregistry family assignments.
+Fifteen registry groups are already inactive and one cloud group is excluded.
+The revised attribute counts and implementation boundary are recorded at the end
+of provider-scope.md. No witches-treestump attribute edits have started. Next
+declare its exact fields, reused evidence and any justified new evidence before
+editing; do not equate a placeholder count with an experiment count.
+
 Canonical-design reconciliation is delivered through 2cc71537. The next phase is
 supported by all 78 existing family-decision tests passing. Remaining work is
 bounded in provider-scope.md under Remaining Item 8 work: 33 nonregistry records
