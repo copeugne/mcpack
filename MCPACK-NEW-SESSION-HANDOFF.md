@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Zombie content and geometry declaration after 989452f3
+
+Eight attributes integrated for Zombie Dungeon from69 available templates and
+seven directly inspected processor members. Preserve separate ordinary zombie
+spawners and skeleton/iron-sword tombstone marker conversion, natural zombie
+override, three loot tables and conditional surface staircase. Missing
+big_stairs_crumbled_0 remains. Exact derivations/member hashes:
+evidence/item-8/sources/dungeons-provider/README.md, Zombie Dungeon content and
+placement. Two geometry attributes remain; counts stay357/448 assessed,91
+remaining. The25x8x17 start has eight exterior stair connections and no retained
+world-bounds start. One existing frozen seed42 target/81 requested chunks is
+declared there, timeout900. Next execute the declared run, retain/restore raw
+evidence and integrate illustrative assembly bounds with external processor
+extensions explicitly separate. No new tooling. All85 focused tests pass;
+semantic inventory changes only Zombie Dungeon and input identity. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+6e4a535bddde5ade9c43d9a50abdfc2aecda41659480f924ac73b1f31d5b42ff.
+
 #### Skeleton Dungeon assessed after 70d4a16c
 
 Skeleton/Zombie batch quantified20 attributes and127 traced templates (58/69).

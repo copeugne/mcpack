@@ -200,3 +200,79 @@ only Skeleton Dungeon and input identity. No new tooling or raw evidence class.
 
 All85 focused tests passed. Total357/448 assessed,91 remaining. Zombie Dungeon
 is not yet assessed; its ten attributes remain within this two-family batch.
+
+## Zombie Dungeon content and placement
+
+Scope: one family, ten required attributes. Eight content/placement attributes
+are integrated; the two geometry attributes remain. All69 traced templates are
+available, with the additional missing big_stairs_crumbled_0 reference preserved.
+There are no directly saved entities or nonempty fixed Items in those69 templates.
+LootTable references resolve to betterdungeons:zombie_dungeon/chests/common,
+chests/special and chests/tombstone. Effective139 biomes intersect only Overworld,
+with no unresolved or missing required biome tags. The root overrides piece
+monster spawning with zombie weight100,min4,max15, uses underground_structures
+and absolute anchorY50..51 without surface heightmap projection.
+
+Two templates have one ordinary spawner each: zombie_start and
+cubby_prop/cubby_prop_spawner_2. ZombieMobSpawnerProcessor.processBlock builds
+zombie singleton SpawnPotentials, EntityType.ZOMBIE and MaxNearbyEntities8.
+Raw pig data in the start is not the effective authored entity. Three templates
+have one black-glass marker each: tombstone/tombstone_spawner_closed,
+tombstone_spawner_open_0 and tombstone_spawner_open_1.
+ZombieTombstoneSpawnerProcessor.processBlock converts the marker to a SKELETON
+spawner and writes nextSpawnData.HandItems containing an ItemStack-codec encoded
+IRON_SWORD. Main and cubby lists apply ordinary zombie conversion first, then
+tombstone conversion, so the newly created skeleton spawner is not converted
+back to zombie by this list. This is saved source data, not a live combat test.
+
+ZombieMainStairsProcessor consumes the warped-stairs marker in zombie_start,
+consults WORLD_SURFACE_WG and frozen zombieDungeonMaxSurfaceStaircaseLength20,
+and writes stairs outside the template. Conditional surface entry is possible,
+not proven visible in every instance. Leg/stair processors also adapt surrounding
+terrain; cubby/rot processors alter existing component blocks. Exact seven
+member hashes and archive identity are in processor_inspection. Direct pinned
+javap inspection is reproducible using each exact dotted member name:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.zombie_dungeon.ZombieTombstoneSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/zombie-content-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+### Declared Zombie geometry target
+
+No retained world-bounds start exists. The25x8x17 start has eight exterior
+big_stairs connections at[0,2,4],[0,2,13],[7,2,0],[8,2,16],[16,2,0],
+[17,2,16],[24,2,3],[24,2,12], so start-only geometry omits connected rooms.
+The existing frozen gap runner is smaller than implementing a layout simulator.
+Declare one seed42 target,81 requested chunks, timeout900. Require a full start,
+accepted configuration, correlated save and clean stop. Preserve missing-template
+logs/failures and any incidental partial starts. Use existing decoder/archive
+and local/published-download restores. Report illustrative saved assembly size,
+with external processor stair/support extensions explicitly separate; do not
+claim occupied volume, family extrema or completeness of distant block placement.
+No new measurement tool, schema or evidence class is required.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/zombie-geometry-r1 \
+  --log-path evidence/raw/item8/zombie-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/zombie-geometry-r1/configuration \
+  --receipt evidence/raw/item8/zombie-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure betterdungeons:zombie_dungeon
+```
+
+This declares the capture, not a successful result. No family count increment
+until both geometry attributes are supported and integrated.
+
+All85 focused tests passed. Semantic inventory comparison changes only Zombie
+content/placement and input identity. Two size attributes remain unresolved.

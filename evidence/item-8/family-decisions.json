@@ -17224,7 +17224,82 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml": "3bedf4e1c213bf204faf5f56bdd22f2fa7b045cbcb3da2d6285a4bdb116aeb37",
+        "evidence/item-8/sources/dungeons-provider/identities.json": "a5b208a65d4a97e7fb79d6a1211cc90517c7a5dce8d03bfe5c697bdc0392718f"
+      },
+      "processor_inspection": {
+        "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+        "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+        "members": {
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieMobSpawnerProcessor.class": "d73f53209796bc271040ed9cd02a9ff2da48b238e40be172630b0837632c3689",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieTombstoneSpawnerProcessor.class": "9773c0e0869b0310153b223477c05f3f3da06326b807802253e952e51924003e",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieMainStairsProcessor.class": "7ea1a4a2fa18a94b6006f7954aae3f2a27f3608e5fcbb463059f5ad250afb6bb",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonLegProcessor.class": "7041053d90ae4665c22fe71e245220669aa6d630e2a8bc33036846b3c356cd83",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonStairProcessor.class": "db827e2470ced6326b5ab850ba330bc699872fc5b5290b233ed20e4883ba23ce",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonCubbyProcessor.class": "6aa6d3e7c294a45777b5eef2427efbd9c36df3234bd4e611fa5dd71c113430ad",
+          "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieRotProcessor.class": "5946e6045d7563ff2ce4f530ce2dc501cda07ef4af261778c77af6e82c971430"
+        },
+        "basis": "Direct pinned-javap inspection, with named methods/derivations in sources/dungeons-provider/README.md, Zombie Dungeon content and placement."
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "139 effective zombie_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome tags."
+        },
+        "intended_hostility": {
+          "value": "Hostile zombie dungeon with skeleton tombstone spawners",
+          "basis": "Explicit zombie processor, separate skeleton tombstone processor and zombie natural monster override."
+        },
+        "mob_source": {
+          "authored": "ZombieMobSpawnerProcessor replaces ordinary spawner NBT with zombie singleton spawn potentials, EntityType.ZOMBIE and MaxNearbyEntities8. ZombieTombstoneSpawnerProcessor replaces black-glass markers with skeleton spawners and writes an iron-sword item to nextSpawnData.HandItems.",
+          "natural_spawn_override": {
+            "type": "minecraft:zombie",
+            "weight": 100,
+            "minCount": 4,
+            "maxCount": 15,
+            "bounding_box": "piece"
+          },
+          "basis": "Packaged root/processor lists, exact processor code and selected template markers. Tombstone skeletons are not zombies despite the processor family name; saved pig NBT is not effective ordinary-spawner identity."
+        },
+        "loot_table_source": {
+          "tables": [
+            "betterdungeons:zombie_dungeon/chests/common",
+            "betterdungeons:zombie_dungeon/chests/special",
+            "betterdungeons:zombie_dungeon/chests/tombstone"
+          ],
+          "basis": "Exact reachable LootTable references across69 available templates. No nonempty fixed Items or directly saved entities were found. This identifies sources, not effective reward amounts."
+        },
+        "generated_spawners": {
+          "ordinary_zombie_templates": [
+            "betterdungeons:zombie_dungeon/zombie_start",
+            "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2"
+          ],
+          "skeleton_marker_templates": [
+            "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_closed",
+            "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_0",
+            "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1"
+          ],
+          "basis": "Each listed template has one ordinary spawner or one black-glass marker. Main/cubby processor order applies zombie spawner processing before tombstone marker conversion. The new tombstone skeleton is therefore not reprocessed as a zombie in this list.",
+          "scope": "Possible authored components, not per-dungeon totals. Saved sword data is not a tested combat/loadout result. Missing big_stairs_crumbled_0 remains a separate missing-template defect."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Zombie ordinary-spawner assignment plus skeleton tombstone-spawner assignment. No direct saved entities in the69 available templates.",
+          "natural": "Piece-bounded zombie monster spawn override, conditional on runtime spawning rules."
+        },
+        "visual_discoverability": {
+          "assessment": "Underground chambers/tombs with a conditional surface staircase; terrain can expose an entry cue, while interior sections remain concealed.",
+          "basis": "ZombieMainStairsProcessor consumes a warped-stairs marker, WORLD_SURFACE_WG height and frozen max surface staircase length20. It writes staircase blocks outside the source template. This is source-supported possibility, not a measured visible entrance or discovery distance."
+        },
+        "underground_surface_classification": {
+          "value": "Underground complex with conditional surface staircase and terrain supports",
+          "basis": "underground_structures step, absolute anchorY50..51, no surface heightmap projection on the root; the main-stairs processor independently consults surface height. Leg/stair processors also adapt to surrounding terrain. Initial Y is not total height."
+        }
       }
     },
     {
