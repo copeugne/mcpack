@@ -10068,3 +10068,26 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-museum-r2.j
 ```
 
 Use fresh output files. Source dimensions do not prove generated assembly bounds.
+
+
+### Vineyard, apothecary and beekeeper inventory refresh
+
+Decision 38f3cbea resolves three two-component assemblies using existing contents
+and connectors. The focused IDAS case and scoped Ruff/Basedpyright pass.
+Canonical backlog: 19, all IDAS. Two fresh builds agree exactly, SHA-256
+1ba58cee0390549ccc60cb5bf3c95cfd2037cad8bb57df70f1988ad69e160a87.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Farmhouse, nexus, effective attributes, nonregistry and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-abodes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-abodes-r2.json
+cmp evidence/raw/item8/inventory-idas-abodes-r1.json evidence/raw/item8/inventory-idas-abodes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-abodes-r2.json
+```
+
+Use fresh output files. Preserve missing entity IDs and stored container contents.
