@@ -98,3 +98,41 @@ This supports a qualitative underground discovery assessment, with exposure
 dependent on layout and terrain. It does not establish final dimensions or a
 measured sightline. The declared max_distance_from_center128 is not itself an
 observed footprint, so the two geometry attributes remain open.
+
+## Geometry capture declaration
+
+Two required attributes remain: footprint and vertical size. There is no retained
+full-start geometry observation. The declared size30 and max-distance128, plus
+individual template sizes, do not describe a realized assembled layout. A direct
+look at the pinned PieceLimitedJigsawManager confirms that root placement and
+subsequent assembly are separate; no numerical size claim is derived from it.
+One existing targeted capture is sufficient and avoids extending source analysis
+into a new assembly measurement implementation.
+
+Predeclare integrated_stronghold:stronghold, ordinary seed42, the existing
+81-chunk target protocol under the frozen Item6 baseline. Use the fresh paths
+below. Preserve locate failure, missing armory references and optional entity
+failures without repairing the baseline. Require readiness, correlated save flush,
+clean shutdown, accepted frozen configuration, stopped-world decoding and a full
+structure start. Its saved piece envelope supplies one approximate layout, not
+typical size, all-layout extrema, occupied volume or complete entity population.
+Retain raw evidence through the existing archive, restore and release workflow
+before accepting dimensions. Follow the infrastructure document's lifecycle and
+process-group rules. No new runner or measurement system is introduced.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/integrated-stronghold-geometry-r1 \
+  --log-path evidence/raw/item8/integrated-stronghold-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/integrated-stronghold-geometry-r1/configuration \
+  --receipt evidence/raw/item8/integrated-stronghold-geometry-r1/run.json \
+  --timeout-seconds 900 --structure integrated_stronghold:stronghold
+```
