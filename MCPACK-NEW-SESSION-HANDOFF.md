@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated Stronghold geometry assessed after 84a0377b
+
+Predeclared seed42/81-chunk capture passed ready, correlated flush, clean exit0
+and frozen configuration acceptance with preserved comment normalization. Full
+start chunk-112,-662 at decoded line326 has50 pieces and envelope
+[-1906,-60,-10690,-1665,51,-10486], size242x112x205. Both required size attributes
+now use this one saved layout; no typical/all-layout or full-population claim.
+Skipped optional/empty entity IDs and invalid/missing optional item errors remain
+in raw logs.263-file archive published at source84a0377b; local and downloaded
+restores and downloaded geometry verified. Exact hashes/commands are in provider
+README and raw-custody. No Java remains. All85 focused checks pass (59.79s).
+Only stronghold/input identity changed. Registry331/408,nonregistry40/40,
+total371/448 assessed;77 families and691 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd9/76. Quantify and inspect
+existing evidence before the next provider batch. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: 7989d78493ca80305d487abddbb1705902821487a7447614603543fb03b50cc3.
+
+
 #### Integrated Stronghold geometry declared after f9362ad7
 
 Next batch is one family, two attributes: footprint and height. No full-start
