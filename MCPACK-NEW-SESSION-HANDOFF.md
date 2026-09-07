@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd small island assessed after 251a2629
+
+Nine remaining attributes integrated using retained root/IslandGeometry/VoxelPiece,
+13 existing full-start envelopes and direct pinned StructureWorld.getBounds.
+XZ bounds cover whole chunk columns, not occupied diameters. Single-layer records
+and differing same-seed/start run A/B envelopes remain explicit limitations.
+Flower-islets treatment uses sangnum/pallidium/umbralith and vines; other treatment
+uses moss/stalactites. waterfallCoat does not itself write water. No direct authored
+entities/spawners/container tables. Actual centerY48..68 differs from stubY58;
+25-percent skip and five-point native-land rejection preserved. No new runtime/tool.
+All85 focused checks pass (59.10s); only small island/input identity changed.
+Registry338/408,nonregistry40/40,total378/448 assessed;70 families and626 required
+attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,BetterEnd2/11
+(village2,sulphuric_cave9). Next quantify sulphuric cave one family/nine attributes,
+reusing retained EndSulphuricCaveStructure/CavePiece/SulphuricCavePiece sources.
+Final canonical integration, acceptance, backup/history preparation and final PR,
+review/main delivery remain open. Inventory SHA-256: 67dd4cf1ce8ebc56aa7daaf172a3be51f01e6faf17b86f471c12cf6ccf6febb4.
+
+
 #### BetterEnd glowshroom geometry assessed after 2d075ee1
 
 Two size attributes integrated from retained root and directly inspected pinned
