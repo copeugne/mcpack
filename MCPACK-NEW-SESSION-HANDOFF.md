@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager assessment finished from 3b2305ac
+
+Four geometry answers finish Cathedral and Mineshaft using full-start examples
+71x46x70 and 116x117x115 XYZ. Runtime passed readiness, correlated save, clean
+exit and frozen configuration checks. Raw release item-8-voyager-networks-2026-09-07-r1
+preserves 266 files and passes local/downloaded restores; source tag 3b2305ac.
+Twelve affected tests pass. No runtime remains. Inventory SHA:
+8d1a84b976d3aebf20a760a6fe1c0f1c09abde8336cbc9dab907328a984f216e.
+Voyager 65/65; registry 172/410, nonregistry 40/40, total 212/450 assessed,
+238 remaining. Retire Voyager assessment absent contradictory evidence. Continue
+other providers in quantified coherent batches. Final integration, acceptance,
+verified backup/history consolidation and PR review/main delivery remain open.
+
 #### Voyager network sources integrated after fad0b837
 
 Fourteen attributes added for Cathedral/Mineshaft; four geometry answers remain.
