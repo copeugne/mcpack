@@ -94,3 +94,44 @@ are not claimed. Nominal21x19 footprint (axes may swap) and12-block template
 height satisfy approximate architectural description, not surviving occupied
 bounds. Existing missing components and this defect remain visible for later
 decisions; neither is silently repaired or hidden by Item8 assessment.
+
+
+## Village geometry capture declaration
+
+Two required claims remain: assembled village footprint and height. The retained
+pool/template data describes components and size6/distance80 placement inputs,
+not an observed assembly. There is no retained full-start village observation.
+A single ordinary-seed42 End target using the existing81-chunk gap protocol is
+the smallest direct assembled example. Do not infer a population range, occupied
+volume, full realization of every component or repeatability from that example.
+
+The existing runner was hard-coded to Overworld locate, Chunky completion and
+configuration paths. It now accepts the End explicitly through those same paths;
+Overworld remains its default. This fixes the concrete inability to target this
+End-only family without a new runner, schema version or capture framework. Focused
+lifecycle/configuration tests pass (17 tests), including both dimension command
+sequences and rejecting the other dimension's completion marker. Scoped Ruff and
+Basedpyright pass. The actual End run below remains necessary to validate its
+runtime behavior and supply the missing geometry evidence.
+
+Require fresh frozen materialization, readiness, a matching81-chunk End completion,
+correlated save flush, clean stop, frozen configuration acceptance and stopped-world
+decoding. Preserve missing templates and all other warnings. Use the existing
+archive/restore/release workflow before accepting dimensions. No baseline repair.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/betterend-village-geometry-r1 \
+  --log-path evidence/raw/item8/betterend-village-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/betterend-village-geometry-r1/configuration \
+  --receipt evidence/raw/item8/betterend-village-geometry-r1/run.json \
+  --timeout-seconds 900 --dimension minecraft:the_end --structure betterend:end_village
+```

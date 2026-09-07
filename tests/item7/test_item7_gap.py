@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import secrets
 from pathlib import Path
+from typing import Literal
 
 import pytest
 from tools import run_item7_gap_targets
@@ -33,9 +34,13 @@ def _parse_rejected(line: str, target: item7_gap.GapTarget) -> str:
     return item7_gap.parse_locate_line(line, target).structure
 
 
+@pytest.mark.parametrize("dimension", ["minecraft:overworld", "minecraft:the_end"])
 @pytest.mark.parametrize("custom_targets", [False, True])
 def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, custom_targets: bool
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    custom_targets: bool,
+    dimension: Literal["minecraft:overworld", "minecraft:the_end"],
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("gap"))
     request = _request(tmp_path, monkeypatch)
@@ -51,6 +56,7 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
     )
     request = item7_gap.GapRequest(
         runtime=request.runtime,
+        dimension=dimension,
         targets=tuple(item7_gap.GapTarget(structure=identifier) for identifier in identifiers),
     )
     request.runtime.target.mkdir()
@@ -63,10 +69,10 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
         _located(identifiers[1], -64, 96),
         _located(identifiers[2], 128, 160),
         _located(identifiers[3], -192, -224),
-        "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
-        "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
-        "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
-        "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
+        f"[Chunky] Task finished for {dimension}. Processed: 81 chunks (100.00%)\n",
+        f"[Chunky] Task finished for {dimension}. Processed: 81 chunks (100.00%)\n",
+        f"[Chunky] Task finished for {dimension}. Processed: 81 chunks (100.00%)\n",
+        f"[Chunky] Task finished for {dimension}. Processed: 81 chunks (100.00%)\n",
     )
     process = FakeProcess(
         lines,
@@ -93,24 +99,25 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
     )
     assert receipt.clean_stop is True
     assert receipt.completed_targets == identifiers
+    prefix = "" if dimension == "minecraft:overworld" else f"execute in {dimension} run "
     assert process.stdin.getvalue().splitlines() == [
-        f"locate structure {identifiers[0]}",
-        f"locate structure {identifiers[1]}",
-        f"locate structure {identifiers[2]}",
-        f"locate structure {identifiers[3]}",
-        "chunky world minecraft:overworld",
+        f"{prefix}locate structure {identifiers[0]}",
+        f"{prefix}locate structure {identifiers[1]}",
+        f"{prefix}locate structure {identifiers[2]}",
+        f"{prefix}locate structure {identifiers[3]}",
+        f"chunky world {dimension}",
         "chunky center 32 -48",
         "chunky radius 4c",
         "chunky start",
-        "chunky world minecraft:overworld",
+        f"chunky world {dimension}",
         "chunky center -64 96",
         "chunky radius 4c",
         "chunky start",
-        "chunky world minecraft:overworld",
+        f"chunky world {dimension}",
         "chunky center 128 160",
         "chunky radius 4c",
         "chunky start",
-        "chunky world minecraft:overworld",
+        f"chunky world {dimension}",
         "chunky center -192 -224",
         "chunky radius 4c",
         "chunky start",
@@ -282,3 +289,11 @@ def test_gap_cli_preserves_atomic_rejected_receipt_without_java(tmp_path: Path) 
 
     document = json.loads(receipt.read_text(encoding="utf-8"))
     assert "target must be absent" in document["rejection_reason"]
+
+
+@pytest.mark.parametrize("dimension", ["minecraft:overworld", "minecraft:the_end"])
+def test_completion_rejects_other_dimension(dimension: str) -> None:
+    other = "minecraft:the_end" if dimension == "minecraft:overworld" else "minecraft:overworld"
+    line = f"[Chunky] Task finished for {other}. Processed: 81 chunks (100.00%)"
+    with pytest.raises(item7_gap.GapError, match="completion marker differs"):
+        item7_gap.parse_completion_marker(line, item7_gap.GAP_TARGETS[0], dimension)
