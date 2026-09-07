@@ -15,7 +15,14 @@ from mcpack_evidence.item7_config import (
     ConfigCaptureReceipt,
     capture_runtime_configuration,
 )
-from mcpack_evidence.item7_gap import GapError, GapLifecycleReceipt, GapRequest, run_gap_lifecycle
+from mcpack_evidence.item7_gap import (
+    GAP_TARGETS,
+    GapError,
+    GapLifecycleReceipt,
+    GapRequest,
+    GapTarget,
+    run_gap_lifecycle,
+)
 from mcpack_evidence.item7_runtime import (
     Item7RuntimeError,
     PreflightReceipt,
@@ -44,6 +51,7 @@ class _Arguments(BaseModel):
     captured_config: Path
     receipt: Path
     timeout_seconds: int
+    structure: list[str] | None = None
 
 
 class GapRunReceipt(BaseModel):
@@ -114,6 +122,9 @@ def build_parser() -> argparse.ArgumentParser:
     ):
         _ = parser.add_argument(f"--{name}", type=Path, required=True)
     _ = parser.add_argument("--timeout-seconds", type=int, default=900)
+    _ = parser.add_argument(
+        "--structure", action="append", help="Explicit target ID; repeat for each structure"
+    )
     return parser
 
 
@@ -136,7 +147,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         selections=PILOT_SELECTIONS,
         timeout_seconds=arguments.timeout_seconds,
     )
-    receipt = execute(GapRequest(runtime=runtime))
+    targets = (
+        tuple(GapTarget(structure=identifier) for identifier in arguments.structure)
+        if arguments.structure is not None
+        else GAP_TARGETS
+    )
+    receipt = execute(GapRequest(runtime=runtime, targets=targets))
     _atomic_write(arguments.receipt, receipt.model_dump_json(indent=2) + "\n")
     print(receipt.model_dump_json(indent=2))
     return 0 if receipt.rejection_reason is None else 1
