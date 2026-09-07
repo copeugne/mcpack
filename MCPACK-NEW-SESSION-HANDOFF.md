@@ -6,6 +6,149 @@
 
 ### Continuation update - 2026-09-07
 
+#### AdoraBuild descriptive assessment finished after 96fbd175
+
+Retire basalt_chambers and nether_fortress source descriptions. Ten missing
+answers and ten existing answers are integrated. Basalt uses its preserved
+full-start-chunk saved envelope. Fortress uses two saved planned layouts,
+repeated across runs, explicitly retaining initialize_light/structure_starts
+stages rather than calling them populated observations. The exact broken basalt
+connector has a frozen-baseline defect disposition; no namespace repair or
+population/branch-success claim. Existing provider README records derivation.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-modular-descriptions.json`, SHA-256
+5876baeb669b1981dca7cb4af7733edb51e71edf3453d3eab090b4ccc083622d.
+Only these two registry rows changed; biomes, observations and nonregistry content
+are unchanged. All 49 AdoraBuild families now have ten explicit attribute answers
+plus their resolved biome descriptions. Registry assessment is 73/410, with 337
+remaining; nonregistry remains 40/40. Continue other providers in quantified
+batches without reopening assessed AdoraBuild descriptions absent new evidence.
+Final all-family integration, acceptance, backed-up consolidation, PR review and
+main delivery remain open. Generic inventory status strings are not a backlog.
+
+#### Four AdoraBuild Overworld assessments after 2bc91d31
+
+Retire mountain_mine, ocean_bubble, ocean_shrine and ocean_temple. Seven roots
+now have all source descriptions: 22 missing answers integrated and 16 existing
+attributions reconciled. Custom height checks distinguish mountain eligibility
+from the -12 offset and ocean-floor projection from a second projection.
+Retained can_summon=false shrieker state and exact category spawn overrides are
+recorded without a claim of tested interaction. No new measurement or capture.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-overworld-descriptions.json`, SHA-256
+821bcde1ed61ac198de9b335bff2af6c6ce643e82799cc7891f19b0f24e15771.
+Only these four registry rows changed; biome answers, observations and nonregistry
+contributions are unchanged. Registry assessment is 71/410, with 339 remaining;
+nonregistry is 40/40. AdoraBuild now has only basalt_chambers and nether_fortress
+modular families left. Preserve the missing basalt pool failure; do not replace
+its namespace or conflate individual pieces with full-family geometry.
+Final integration, acceptance, backed-up history consolidation, PR review and
+main delivery remain open. Source derivations are in the existing provider README.
+
+#### Eleven AdoraBuild Nether assessments after 87ef63fa
+
+Retire blackstone_bastion, blackstone_bastion_towers, blackstone_temple,
+crimson_hall, crimson_tower_house, nether_fortress_courtyard,
+nether_fortress_wart_house, nether_fossil, nether_portal, nether_temple and
+warped_house. Fourteen roots now have all required source descriptions: 52
+missing descriptions integrated and 44 existing attributions reconciled.
+Four families have natural-monster overrides, including fossil's distinct table.
+Custom placement preserves the narrow column test and non-air support limitation.
+No new capture or measurement. Existing provider README records derivation.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-nether-descriptions-final.json`, SHA-256
+585eb6cc5d3988f567962f7e03e3597697cd705ebdcf785330fd0d5cb6ee2cfc.
+Only these eleven registry rows changed; biomes, observations and nonregistry
+contributions remain unchanged. Registry assessment is 67/410, with 343
+remaining. Nonregistry remains 40/40. AdoraBuild has four Overworld-generator
+families and two modular families left; final all-family integration, acceptance,
+backed-up consolidation, PR review and main delivery remain open.
+
+#### Nine AdoraBuild End assessments after d330f931
+
+Retire ancient_palace, ancient_palace_hall, ancient_palace_pavilion, end_bubble,
+end_gateway, end_house, end_raised_house, end_ship and end_temple. Their 16 roots
+use the captured End generator's surface-height-plus-offset branch, not absolute
+Y=0. Integrated 46 missing descriptions and reconciled 36 existing attribution
+answers. Raw hive NBT adds three saved bee entries separately from top-level
+entities; gateway destination inputs remain source facts, not tested behavior.
+Existing provider README records the exact derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-end-descriptions.json`, SHA-256
+a1ffb379e81a7c23bdb1a4717a98aa0d79ec3a25d8685fdd09a6bb2899dc80db.
+Only these nine registry rows changed; biomes, observations and all nonregistry
+contributions are unchanged. Registry assessment is 56/410, with 354 remaining;
+nonregistry is 40/40. Continue the remaining AdoraBuild Nether/Overworld custom
+families and two modular families in quantified batches. Final integration,
+acceptance, backed-up history consolidation, PR review and main delivery remain
+open. Do not reopen retired source descriptions without contradictory evidence.
+
+#### Eleven AdoraBuild variant assessments after 51125031
+
+Retire buried_sand_castle, frozen_shelter, house, library, prison, raft,
+raised_house, riverboat, tree, tree_house and watercraft. Their 55 roots each
+have one fully traced template, with no jigsaw block entities. Integrated 57
+missing descriptions and reconciled 44 existing attribution answers. Existing
+biomes and observations are unchanged, and variant-specific entities, rewards,
+geometry and placement remain explicit. No new measurement or source capture.
+The existing AdoraBuild provider README records direct derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-variant-descriptions.json`, SHA-256
+9b4eb817c1a876045b565d5e8566af55fb5490536186f2b027be41bcec848613.
+Only these eleven registry rows changed; all nonregistry contributions remain
+unchanged. Registry assessment is now 47/410, with 363 remaining. Nonregistry
+remains 40/40. AdoraBuild's custom-generator families and two modular families
+remain for subsequent quantified batches; do not reopen the assessed families.
+
+The user clarified that pre-rewrite backups must be actual external files,
+not only backup branches/tags. Verify bundle and separate non-Git archive hashes,
+restore them outside the checkout and compare restored content with originals.
+Reuse existing raw archives only after checking coverage and restoration; cover
+missing raw/uncommitted artifacts explicitly. Keep originals in place. Prefer a
+second independent storage copy where available, and distinguish same-disk backup
+from protection against disk loss. Use existing tools, not a new framework.
+
+#### Twelve AdoraBuild source assessments after a6ea03a8
+
+Retire acacia_well, bamboo_cache, bamboo_campfire, birch_beehive,
+birch_tree_workshop, dark_oak_mansion, mushroom, oak_hut, red_sand_shrine,
+red_sand_temple, sand_castle and sand_pyramid. Each has all eleven descriptions:
+36 new interpretive answers and 48 reconciled existing attribution answers;
+geometry, placement and resolved biomes are retained. Source mob, loot and
+spawner answers preserve realized-behavior limitations without generic new
+investigations. Existing provider README records direct derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-single-descriptions.json`, SHA-256
+87984027812c48cc83de36b949c35f98fb7765abe1aa11003a8d36e5df8676e5.
+Only these twelve registry rows changed; all nonregistry contributions remain
+unchanged. Registry assessment is now 36/410, with 374 remaining to assess and
+integrate. Nonregistry remains 40/40. Final presentation, acceptance and delivery
+are open. Continue in quantified source-backed batches, not a global re-audit.
+
+#### Authorized history consolidation before the final PR
+
+The user explicitly authorized rewriting/consolidating history before the PR,
+provided no data is lost and everything not quickly regenerable is backed up.
+This overrides the default no-rewrite rule for this delivery step. Execute only
+after Item 8 implementation is stable. Preserve old history under a published
+backup ref and verified self-contained external bundle; preserve existing tags
+and every evidence-referenced commit. Before ref changes, inventory and back up
+staged/unstaged work, relevant untracked content and nonregenerable raw artifacts.
+A Git bundle does not cover ignored or untracked files. Keep originals, preserve
+the user's AGENTS.md edits, and verify hashes and restorability first.
+
+Build coherent milestone commits in isolation; verify final-tree equality with
+the preserved implementation, accounting separately for provenance documentation.
+Use a new codex/ PR branch or an exact expected-old-ref lease after backups pass.
+Record actual old/new refs and recovery instructions here or under evidence when
+executed. Do not rewrite raw evidence identities or repeat completed assessment.
+
 #### Cave urn assessed after ce897b5b
 
 Nine answers complete the last nonregistry descriptive assessment: now 40/40.
