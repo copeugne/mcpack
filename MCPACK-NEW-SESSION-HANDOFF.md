@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Desert statue/train inventory matches 3213a41a and reproduces exactly. Twelve
+families have current-phase source assessments. Remaining planning count: 395
+registry candidates with 2,157 literal gaps, forty nonregistry assignments needing
+integration, fifteen filled records needing acceptance assessment. No new
+measurement/tooling. Quantify the next batch before edits.
+
 Lighthouse/lodge inventory matches d05f082d and reproduces exactly. Ten families
 have current-phase source assessments. Remaining: 397 registry candidates with
 literal gaps (2,169 values), forty nonregistry assignments needing integration,
