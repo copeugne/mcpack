@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Pillager fortress resolves to one eight-component assembly with its authored
+encounter content preserved. Focused IDAS and scoped checks pass. Canonical
+backlog: 15, all IDAS. Inventory refresh follows. Castle remains open: its three
+main alternatives differ greatly in size and its 136 reachable templates include
+village components. Compare main/bottom designs without recounting shared village
+components as new families. Attributes, nonregistry and final delivery remain open.
+
 Inventory matches 024dc7b3 and reproduces exactly. Canonical backlog: 16, all
 IDAS. All 887 roots and full variants remain in 426 working groups. Nexus and
 wizard comparisons are finished. Continue remaining IDAS records, including
