@@ -10091,3 +10091,27 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-abodes-r2.j
 ```
 
 Use fresh output files. Preserve missing entity IDs and stored container contents.
+
+
+### Bazaar and frozen crypt inventory refresh
+
+Decision 9f4bd417 resolves nine bazaar and two crypt components using existing
+contents and connectors. Focused IDAS and scoped Ruff/Basedpyright checks pass.
+Canonical backlog: 17, all IDAS. Two fresh builds agree exactly, SHA-256
+b9afbd4d9ba6db4152ac90e6c5cd61717629b6ece2a7bc67f0671eada8f18705.
+Only these two grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, nonregistry reconciliation and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-bazaar-crypt-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+cmp evidence/raw/item8/inventory-idas-bazaar-crypt-r1.json evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-bazaar-crypt-r2.json
+```
+
+Use fresh output files. Nexus visual conversion completed successfully; its
+comparison does not yet close its decision.
