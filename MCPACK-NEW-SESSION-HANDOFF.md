@@ -6,6 +6,78 @@
 
 ### Continuation update - 2026-09-07
 
+#### Final three Soaring families assessed after 10d82998
+
+Thirty attributes finish Arena, Jungle and Volcano across 35 templates. Finite
+connector-derived geometry, ordinary/trial spawners, vault payload boundaries,
+saved bogged and loaded dispensers are integrated. Existing vanilla evidence
+supplies trial reward default symbols. No capture or tooling. Source review
+corrected Volcano's draft width from 92 to 98 before acceptance; the rejected
+draft remains raw. Ten shared tests pass. Derivations and limits are in the
+existing moog-generator-code README. Inventory SHA:
+4fda5442d385c104d88096e7ac359c46af4d3c2e533dd25fb7cc7e3c42f6bdd8.
+Soaring 26/26; registry 216/410, nonregistry 40/40, total 256/450 assessed,
+194 remaining. Retire Soaring assessment absent contradictory evidence.
+Continue other providers in quantified coherent batches. Final integration,
+acceptance, verified backup/history consolidation and PR review/main delivery
+remain open.
+
+#### Five developed Soaring complexes assessed after 51c7f1f6
+
+Fifty attributes finish Diorite House, White House, Large Tower, Leaf Hollow
+and Muddy Water Hole across 23 templates. Finite connector-derived geometry,
+saved villagers/trades, frames, potion dispenser and component encounter/loot
+sources are integrated. Muddy's three unassigned spawners remain a source
+limitation, not an experiment backlog. Ten shared tests pass; no capture or
+new tooling. Direct derivations are in moog-generator-code README.
+Inventory SHA: 8dcb32b088b1c7108afc75398edc99f08671533b047c762aa1ba3cce4015cfaf.
+Soaring 23/26; registry 213/410, nonregistry 40/40, total 253/450 assessed,
+197 remaining. Three mss families remain: arena (21 templates), jungle (8)
+and volcano (6). Quantify their next batch before editing. Final integration,
+acceptance, verified backup/history consolidation and PR review/main delivery
+remain open.
+
+#### Five bounded Soaring assemblies assessed after 9de946ed
+
+Fifty attributes finish Castle Tower, Mangrove, Taiga, Red Sand and Desert
+Pyramid from eleven templates. Connector-derived nominal geometry, component
+mob/loot ownership and elevated placement are integrated. Red Sand's three
+unassigned spawners remain a source limitation, not an experiment backlog.
+Ten shared tests pass; no capture or tooling. Derivations are in the existing
+moog-generator-code README. Inventory SHA:
+235a2af533da92a5da864f669317022135616e50516ad246338f745caac00e18.
+Soaring 18/26; registry 208/410, nonregistry 40/40, total 248/450 assessed,
+202 remaining. Eight mss families remain: arena, diorite_house, jungle,
+large_tower, leaf_hollow, muddy_water_hole, volcano and white_house.
+Continue quantified coherent batches. Final integration, acceptance, verified
+backup/history consolidation and PR review/main delivery remain open.
+
+#### Four Soaring landmarks assessed after 3facdfb9
+
+Forty attributes finish Tree, Pond, River and Small Tower across thirteen roots.
+Arena was excluded after confirming its 21 templates are connected pieces,
+not independent alternatives. Ten shared tests pass; no capture or tooling.
+Derivations are in moog-generator-code README. Inventory SHA:
+f335ad6b03e80b4a430d8d2f362c0cf49d8df8366e57676efffae71cfceb2248.
+Soaring Structures 13/26; registry 203/410, nonregistry 40/40, total 243/450 assessed,
+207 remaining. Thirteen mss modular families remain: arena, castle_tower,
+desert_pyramid, diorite_house, jungle, large_tower, leaf_hollow, mangrove,
+muddy_water_hole, red_sand, taiga, volcano and white_house. Continue quantified
+coherent assembly batches. Final integration, acceptance, verified backup/history
+consolidation and PR review/main delivery remain open.
+
+#### Nine Soaring families assessed after 4d641199
+
+Seventy-two attributes finish nine standalone mss families, retaining geometry.
+Authored encounter sources and Calcite's dropped containers/missing loot target
+are integrated. Ten shared tests pass; no capture or tooling. Source derivations
+are in moog-generator-code README. Inventory SHA:
+5c2fd7eb3f7b849d0a9528eccad7bffe77743f091c8d7fe47dd590c6fe435a09.
+Soaring Structures 9/26; registry 199/410, nonregistry 40/40, total 239/450 assessed,
+211 remaining. Retire these nine assessments and continue the seventeen remaining
+mss families in quantified coherent batches. Final integration, acceptance,
+verified backup/history consolidation and PR review/main delivery remain open.
+
 #### Mega Ship assessed after d8dc726b
 
 Ten attributes finish eight Mega Ship variants. Finite connector-derived nominal

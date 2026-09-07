@@ -987,3 +987,343 @@ identity change; biomes, world observations and nonregistry content are preserve
 Rebuild using `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Inventory SHA: 02e0f36208a2c49c7e2054967dcee254383ab403c55756aee5e6d02ca187b891.
 End Structures is 18/18 assessed; retire its assessment absent contradictory evidence.
+
+## Nine standalone Soaring Structures families
+
+After 4d641199, 72 attributes finish calcite_house, castle_ruin, desert_well,
+mushroom, nether_portal, palm_island, small_deepslate_house, small_oak_house and
+spruce_huts. Existing geometry remains unchanged. Each pool has one ordinary
+weight-1 rigid element, empty processors and no attachments. Full definitions
+and source content are integrated from the pinned packaged JSON and templates.
+
+All nine are Overworld-biome-compatible, even Nether Portal. Generic projection
+uses WORLD_SURFACE_WG plus uniform +45..150 (Desert Well +30..120), adaptation
+none, explicit cannot_spawn_in_liquid=false and ignore_waterlogging. Optional
+terrain/Y checks are absent. Palm and Spruce have size 2 but only one template.
+
+| Family | Authored source |
+| --- | --- |
+| Castle Ruin | three cave-spider spawners |
+| Mushroom | one pillager, one vex and one evoker spawner |
+| Nether Portal | four piglin-brute spawners |
+| Small Deepslate House | three saved pillagers and four pillager spawners |
+| Calcite House | seven saved dropped container items, not mobs |
+| Other four families | no authored entity or spawner |
+
+Spawn overrides are empty; no generation markers occur. Inspected block-entity
+payloads add no mobs. Natural spawning, activation and dimension-dependent mob
+conversion are not measured. Calcite's six lecterns contain no book payload;
+Spruce bookshelves and inspected cooking blocks do not add enemy sources.
+
+Exact loot references retain ownership. Calcite's six chest items and one barrel
+item have Age 5999 and PickupDelay 32767; do not count them as placed containers
+or guaranteed rewards. Its /entities/2 container_loot reference is
+mss:chests/houses_common, for which no packaged loot table occurs. Preserve this
+missing-target defect without repairing the frozen baseline. mss:empty really
+has 0..2 cobweb/string rolls (weights 5/3, count 1..2), not guaranteed zero loot.
+Desert Well has no loot reference. Source architectural views support qualitative
+visibility descriptions, not observed sight distances or exposure. No capture or
+tooling was added.
+
+Ten shared affected tests pass. Only nine family rows and the decisions identity
+change; geometry, biome constraints, observations and nonregistry are preserved.
+Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 5c2fd7eb3f7b849d0a9528eccad7bffe77743f091c8d7fe47dd590c6fe435a09.
+
+## Four standalone Soaring landmark families
+
+After 3facdfb9, forty attributes finish Tree, Pond, River and Small Tower across
+thirteen roots. Each root selects one rigid weight-1 ordinary template with
+empty processors and no attachments. Arena was excluded from this batch after
+source inspection confirmed its 21 pieces are a connected assembly, not
+alternatives. This correction avoids forcing an exceptional case into the batch.
+
+Nominal XYZ source sizes remain per template:
+
+| Family | Root/template suffixes and XYZ |
+| --- | --- |
+| Tree | 1:13x22x13; 2:17x25x17; 3:20x30x21; 4:21x30x20; 5:25x31x20; 6:20x28x20; 7/8:20x40x20 |
+| Pond | frozen_pond:36x38x35; small_pond:20x40x20 |
+| River | birch_river:35x35x33; cherry_river:31x38x31 |
+| Small Tower | small_tower:33x48x38 |
+
+All roots intersect only Overworld runtime biomes. Generic surface projection
+adds uniform +35..100 for Tree, +30..120 for temperate Pond and +45..150 for
+others, with adaptation none. Cherry River's omitted liquid flag defaults false,
+matching the others' explicit false. Optional terrain/Y checks are absent.
+These are inputs, not measured absolute placement or exposure.
+
+All entity lists are empty. Tree, Pond and River have no block entities or loot.
+Small Tower has witch and wither-skeleton spawners at /block_entities/2 and /3,
+two chests referencing mss:rare and mss:houses_rare, and four decorated pots with
+brick sherds and no item/loot payload. No generation markers occur. Natural
+spawning remains conditional and separate. Preserved source views and dimensions
+support qualitative visibility, not sight-distance or production measurements.
+No capture or tooling was added.
+
+Ten shared affected tests pass. Only these four families and the decisions hash
+change; biome constraints, existing world observations and nonregistry content
+are preserved. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: f335ad6b03e80b4a430d8d2f362c0cf49d8df8366e57676efffae71cfceb2248.
+
+## Five bounded Soaring assemblies
+
+After 9de946ed, fifty attributes assess Castle Tower, Mangrove, Taiga, Red Sand
+and Desert Pyramid. Direct references are the selected `mss:<name>` entries in
+pool-traces-content.json.gz, the corresponding
+`data/mss/structure/<name>.nbt` resources in templates-redacted.json.gz, and
+`data/mss/worldgen/structure/<family>.json` plus each traced template_pool
+resource in packaged-json-redacted.json.gz. These artifacts and the generator
+identity are hash-bound in each family decision. All eleven selected templates
+belong to MoogsSoaringStructures-1.21-2.1.2.jar.
+
+Each pool has one rigid weight-1 element, empty processors and empty fallback.
+Castle Tower, Taiga and Desert Pyramid main elements select their original paths
+through the 1.21-1.21.8 version mapping, not the 1_21_9 fallback. Other selected
+elements are ordinary single elements. With the main origin at (0,0,0), align
+opposing jigsaws one block apart. Their aligned orientations require no relative
+rotation. Union the translated template boxes, including air and padding:
+
+| Family | Main XYZ | Main outgoing connector | Child incoming connector | Child origin and XYZ | Union XYZ |
+| --- | --- | --- | --- | --- | --- |
+| Castle Tower | 29x48x31 | (8,47,10) up_west | top (8,0,10) down_west | (0,48,0), 29x15x31 | 29x63x31 |
+| Mangrove | 32x48x40 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 32x20x40 | 32x68x40 |
+| Taiga | 45x48x42 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 45x10x42 | 45x58x42 |
+| Red Sand | 48x35x48 | (3,18,47) south_up | side (3,18,0) north_up | (0,0,48), 48x35x15 | 48x35x63 |
+| Desert Pyramid | 48x48x48 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 48x15x48 | 48x63x53 with side |
+
+Pyramid top also connects (14,0,47) south_up to side (0,7,0) north_up.
+The side origin is (14,41,48), size 17x8x5. Its Z interval 48..52 does not
+overlap the main/top boxes. These are finite nominal full assemblies; attachment
+checks can omit pieces, and whole-structure rotation can exchange X/Z. Existing
+world observations remain separately linked. No capture is needed for these
+approximate source dimensions.
+
+Source spawners: Castle top /block_entities/5 skeleton; Mangrove main /0, /1,
+/10 witch; Taiga main /0 cave_spider, /3 and /11 zombie_villager, /8 through /10
+zombie. Red Sand main /2 phantom, /4, /13, /16 husk, /3 and /5 empty entity
+objects; its side /1 also has an empty entity object. Those three effective mobs
+remain UNKNOWN as a source limitation, not a new experiment backlog. Pyramid
+main has five zombie and five husk assignments; top /5 adds one husk. Exact
+paths and template ownership are retained in the authoritative attributes.
+
+All entity lists are empty. Mangrove, Taiga and Pyramid top /block_entities/0
+are SAVE-mode structure blocks with empty metadata, not enemy markers.
+Selected decorated pots contain brick sherds without item or table payload.
+Taiga main /block_entities/12 has four legacy single beef Items in campfire
+slots 0..3; this is neither a mob source nor guaranteed production. Loot-table
+references remain per component. Castle's mss:empty is the already-inspected
+0..2-roll cobweb/string table, not no loot.
+
+All five biome sets intersect only Overworld runtime possible biomes. Generic
+WORLD_SURFACE_WG projection adds +45..150, with adaptation none and explicit
+liquid check false. Qualitative island visibility follows preserved source views
+and placement, not measured sight distance or guaranteed exposure. No new
+measurement or tooling was added.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared validation: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Ten tests pass. Only five family rows and the decisions identity changed;
+biome constraints, observations and nonregistry content are preserved.
+Inventory SHA: 235a2af533da92a5da864f669317022135616e50516ad246338f745caac00e18.
+
+## Five developed Soaring complexes
+
+After 51c7f1f6, fifty attributes assess Diorite House, White House, Large Tower,
+Leaf Hollow and Muddy Water Hole from 23 selected templates. References are
+`mss:<family>` in pool-traces-content.json.gz, its exact traced
+`data/mss/structure/<template>.nbt` resources from
+MoogsSoaringStructures-1.21-2.1.2.jar in templates-redacted.json.gz, and the
+corresponding structure/template_pool JSON resources. Family evidence maps
+bind these preserved artifacts, runtime biomes and generator identities.
+
+All selected pools are rigid weight-1 single elements with empty processors and
+fallback. Large Tower main and top use their 1.21-1.21.8 versioned mapping;
+other selected elements are ordinary. Main origins are (0,0,0). For each edge,
+child origin = parent origin + outgoing position + outward unit vector minus
+incoming position. Opposing aligned orientations need no relative rotation.
+The following direct source coordinates establish the finite nominal boxes:
+
+| Family/child suffix | Parent | Outgoing XYZ/direction | Incoming XYZ/direction | Child origin | Child XYZ size |
+| --- | --- | --- | --- | --- | --- |
+| diorite_house/_lower | main | 47,0,42 down_south | 35,47,32 up_south | 12,-48,10 | 43,48,43 |
+| diorite_house/_side | main | 47,24,10 east_up | 0,24,1 west_up | 48,0,9 | 10,48,48 |
+| diorite_house/_side_2 | main | 45,27,47 south_up | 45,27,0 north_up | 0,0,48 | 48,48,12 |
+| white_house/_lower | main | 26,0,3 down_north | 26,47,3 up_north | 0,-48,0 | 48,48,48 |
+| white_house/_side | main | 47,23,7 east_up | 0,23,7 west_up | 48,0,0 | 10,48,48 |
+| white_house/_side_2 | main | 8,19,47 south_up | 8,19,0 north_up | 0,0,48 | 48,48,10 |
+| white_house/_lower_side | _side | 0,0,0 down_north | 0,47,0 up_north | 48,-48,0 | 15,48,48 |
+| large_tower/_lower | main | 11,0,23 down_west | 0,37,26 up_west | 11,-38,-3 | 48,38,48 |
+| large_tower/_lower_2 | main | 27,0,47 down_west | 1,39,2 up_west | 26,-40,45 | 25,40,20 |
+| large_tower/_side | main | 47,19,45 east_up | 0,19,45 west_up | 48,0,0 | 11,48,48 |
+| large_tower/_side_2 | main | 9,18,47 south_up | 0,18,0 north_up | 9,0,48 | 48,48,12 |
+| large_tower/_top | main | 19,47,13 up_north | 14,0,4 down_north | 5,48,9 | 25,25,25 |
+| leaf_hollow/_side | main | 47,29,0 north_up | 40,26,35 south_up | 7,3,-36 | 41,27,36 |
+| leaf_hollow/_side_2 | _side | 40,26,32 east_up | 0,27,34 west_up | 48,2,-38 | 25,28,48 |
+| leaf_hollow/_side_3 | main | 47,22,11 east_up | 0,20,1 west_up | 48,2,10 | 21,21,23 |
+| muddy_water_hole/_side_1 | main | 47,32,45 east_up | 0,19,38 west_up | 48,13,7 | 15,48,48 |
+| muddy_water_hole/_side_2 | main | 12,24,47 south_up | 1,9,0 north_up | 11,15,48 | 37,30,8 |
+| muddy_water_hole/_top | main | 17,47,8 up_north | 17,0,8 down_north | 0,48,0 | 48,12,48 |
+
+Main size is 48x48x48 except Leaf Hollow 48x30x48. Inclusive union bounds:
+Diorite (0,-48,0)..(57,47,59), 58x96x60;
+White (0,-48,0)..(62,47,57), 63x96x58;
+Large Tower (0,-40,-3)..(58,72,64), 59x113x68;
+Leaf (0,0,-38)..(72,29,47), 73x30x86;
+Muddy (0,0,0)..(62,60,55), 63x61x56.
+Component boxes do not overlap in these arrangements. Actual attachment remains
+subject to generation checks; these nominal dimensions include air/padding and
+can exchange X/Z on rotation, not measured occupancy or exposed height.
+
+Diorite and White main templates each contain three villagers; no selected
+hostile entity or spawner occurs in either family. Diorite's six beehives and
+Large Tower's 36 have empty bees lists. House lecterns contain no Book.
+White main /entities/1/nbt/Offers/Recipes preserves librarian Mending I (index 2)
+and Density III (index 5), among other trades with existing usage state.
+Its /entities/0 inventory contains one wheat and four seeds. Record these as
+saved payloads, not guaranteed trade availability or renewable rewards.
+
+Large Tower main /block_entities/102 assigns piglin_brute, /139 skeleton;
+top /0 assigns skeleton. Its main /6 dispenser stores six single lingering
+harming potions. Main glow frames /entities/0 and /1 hold an enchanted golden
+apple and diamond. These objects and conditional dispenser contents are distinct
+from mobs. Leaf main /entities/0 is a crossbow-equipped pillager, side /0..2
+and side_2 /0 assign pillager spawners. Muddy main /2,3,4,7 assign drowned;
+/9,15,20 have empty entity objects. Their effective mobs remain a source
+limitation, not an experiment backlog. Muddy's two pots have no item/table
+payload. SAVE-mode empty-metadata blocks are authoring records, not mob markers.
+Loot references remain template-owned; mss:empty retains its cobweb/string table.
+
+All roots intersect only Overworld runtime possible biomes. Generic surface
+projection adds +100..200 for the houses and Large Tower, +45..150 for Leaf
+and Muddy. Adaptation none, liquid check false, ignore_waterlogging and absent
+optional terrain/Y checks do not establish exposure. Lower island pieces do not
+imply underground placement. Visibility descriptions are qualitative source
+inferences; no new capture, measurement or tooling was needed.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+
+Ten shared tests pass. Only five family rows and the decisions identity change;
+biome constraints, world observations and nonregistry content are preserved.
+Inventory SHA: 8dcb32b088b1c7108afc75398edc99f08671533b047c762aa1ba3cce4015cfaf.
+
+## Final three Soaring assemblies
+
+After 10d82998, thirty attributes assess Arena, Jungle and Volcano from 35
+selected templates. Exact resources are the three mss family entries in
+pool-traces-content.json.gz and their source archive/path references into
+MoogsSoaringStructures-1.21-2.1.2.jar in templates-redacted.json.gz. Corresponding
+structure and template_pool JSON resources establish selection. Evidence maps
+bind their hashes. Every pool has one rigid weight-1 element, empty processors
+and fallback. Arena pieces 2, 3 and 4 select original 1.21-1.21.8 paths through
+version mappings; other selected elements are ordinary.
+
+For nominal geometry, put the main template at (0,0,0), align the unique child
+jigsaw name to its parent's target, and use opposing aligned orientations.
+Child origin = parent origin + outgoing connector position + outward unit
+vector - child incoming position. No relative rotation is required. The finite
+source connector graphs yield these component origins:
+
+| Jungle suffix | Parent | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- |
+| main | root | 0,0,0 | 48,48,48 |
+| _east | main | 48,0,0 | 25,48,48 |
+| _south | main | 0,0,48 | 48,48,30 |
+| _south_east | _south | 48,0,48 | 25,48,30 |
+| _top | main | 0,48,0 | 48,10,48 |
+| _east_top | _east | 48,48,0 | 25,10,48 |
+| _south_top | _south | 0,48,48 | 48,10,30 |
+| _south_east_top | _south_east | 48,48,48 | 25,10,30 |
+
+Jungle uses matching horizontal connector coordinates across X/Z boundaries and
+(0,47,0) up_east to (0,0,0) down_east for each top. Union is
+(0,0,0)..(72,57,77), nominal 73x58x78 XYZ.
+
+| Volcano suffix | Parent | Outgoing XYZ | Incoming XYZ | Direction | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- | --- | --- | --- |
+| main | root | n/a | n/a | n/a | 0,0,0 | 48,41,48 |
+| _side_3 | main | 4,31,47 | 4,32,0 | south | 0,-1,48 | 48,42,45 |
+| _side_2 | _side_3 | 47,41,11 | 0,47,15 | east | 48,-8,44 | 42,48,48 |
+| _side_1 | _side_2 | 9,47,0 | 9,47,37 | north | 48,-8,6 | 48,48,38 |
+| _side_4 | main | 0,24,36 | 1,2,1 | west | -2,22,35 | 2,3,9 |
+| _side_5 | main | 32,40,43 | 0,0,8 | up | 32,41,35 | 25,30,25 |
+
+Volcano union is (-2,-8,0)..(95,70,92), nominal 98x79x93 XYZ.
+The side_1 width is 48, extending X through 95 rather than side_2's 89.
+
+Arena template IDs are `mss:arena/arena_<number>`. Main is 1. Each child has
+one incoming matching name. The table retains parent, origin and size so that
+all 21 boxes can be checked against the preserved connector positions:
+
+| Piece | Parent | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- |
+| 1 | root | 0,0,0 | 48,48,48 |
+| 2 | 1 | 0,0,48 | 48,48,48 |
+| 3 | 2 | 48,0,48 | 48,48,48 |
+| 4 | 1 | 48,0,0 | 48,48,48 |
+| 5 | 1 | 15,0,-48 | 48,48,48 |
+| 6 | 4 | 63,0,-48 | 48,48,48 |
+| 7 | 6 | 111,0,-48 | 25,4,48 |
+| 8 | 4 | 96,0,13 | 15,20,48 |
+| 9 | 3 | 96,0,61 | 15,20,20 |
+| 10 | 2 | 15,-48,48 | 48,48,48 |
+| 11 | 1 | 15,-48,0 | 48,48,48 |
+| 12 | 11 | 15,-48,-48 | 48,48,48 |
+| 13 | 14 | 63,-48,-48 | 48,48,48 |
+| 14 | 4 | 63,-48,0 | 48,48,48 |
+| 15 | 3 | 63,-48,48 | 48,48,48 |
+| 16 | 14 | 66,-65,30 | 31,17,30 |
+| 17 | 13 | 91,-73,-45 | 31,25,30 |
+| 18 | 12 | 59,-41,-66 | 48,48,18 |
+| 19 | 18 | 107,-41,-66 | 30,48,18 |
+| 20 | 13 | 111,-48,-48 | 25,48,48 |
+| 21 | 14 | 111,-35,0 | 16,30,16 |
+
+Examples: piece 11 attaches main (15,0,35) down_west to (0,47,35) up_west;
+piece 18 attaches piece 12 (44,28,0) north_up to (0,21,17) south_up.
+Arena union is (0,-73,-66)..(136,47,95), nominal 137x121x162 XYZ.
+These full source arrangements include air/padding. Actual attachments remain
+conditional on generation checks; rotation may exchange X/Z. They are not
+measured occupied volume or exposed/buried dimensions. No capture was needed.
+
+Jungle's main /block_entities/4 and /17 and east /1 assign piglin_brute;
+main /9 and south /2 assign witch. Main /18 has 39 legacy strong_harming tipped
+arrows and /19 six strong_poison tipped arrows in dispensers. Volcano has 14
+ordinary spawner blocks: main eight, side_1 one, side_2 five. Their assignments
+and positions remain in the authoritative template-owned records. Side_2 /6
+and /9 contain 36 and 16 arrows in dispensers. Neither family has saved entities.
+Their pots have no item/table payload, and campfire Items are empty.
+
+Arena has nine saved bogged in piece 3, and eleven ordinary spawners: five bogged
+assignments, four empty entity objects and two absent SpawnData records. Seven
+trial blocks explicitly assign six bogged and one skeleton, with matching saved
+spawn_data and normal/ominous weight-1 potentials. Exact full NBT is retained.
+Four vaults at piece 1 /14, piece 3 /25, piece 4 /27 and /38 set trial_key but
+omit an explicit loot table. That source limitation does not mean no reward.
+No new experiment is required solely to replace these unknown source defaults.
+
+Trial reward defaults are supported by the existing hash-bound vanilla
+TrialSpawnerConfig disassembly. lambda$static$0 offsets 203..252 use DEFAULT
+for omitted loot_tables_to_eject and items_to_drop_when_ominous; static
+initializer offsets 19..37 assign SPAWNER_TRIAL_CHAMBER_CONSUMABLES,
+SPAWNER_TRIAL_CHAMBER_KEY and SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS.
+Those symbolic table sources are distinct from rolled rewards. All SAVE-mode
+markers have empty metadata and are authoring records, not enemy markers.
+
+All three roots intersect only Overworld runtime biomes. Generic surface
+projection adds +45..150 for Jungle/Volcano, +120..170 for Arena. Arena declares
+depth 30 and max_distance_from_center 128; the others depth 5. All have adaptation
+none, liquid checking false and ignore_waterlogging. Source placement and views
+support qualitative elevated-site visibility, not measured discovery rate.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+
+The initial raw draft inventory-mss-final-three.json understated Volcano width
+as 92 by overlooking side_1 extension. It is rejected for that geometry claim;
+the corrected r2 includes the full 98-block width. Ten shared tests pass.
+Only three family rows and the decisions pin change; biome constraints,
+world observations and nonregistry content are preserved.
+Inventory SHA: 4fda5442d385c104d88096e7ac359c46af4d3c2e533dd25fb7cc7e3c42f6bdd8.
