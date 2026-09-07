@@ -33,21 +33,36 @@ def _parse_rejected(line: str, target: item7_gap.GapTarget) -> str:
     return item7_gap.parse_locate_line(line, target).structure
 
 
+@pytest.mark.parametrize("custom_targets", [False, True])
 def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, custom_targets: bool
 ) -> None:
     monkeypatch.setattr(secrets, "token_hex", fixed_token("gap"))
     request = _request(tmp_path, monkeypatch)
+    identifiers = (
+        (
+            "explorify:campsite",
+            "explorify:dark_forest_settlement",
+            "explorify:ruins",
+            "explorify:tavern",
+        )
+        if custom_targets
+        else tuple(target.structure for target in item7_gap.GAP_TARGETS)
+    )
+    request = item7_gap.GapRequest(
+        runtime=request.runtime,
+        targets=tuple(item7_gap.GapTarget(structure=identifier) for identifier in identifiers),
+    )
     request.runtime.target.mkdir()
     logs = request.runtime.target / "logs"
     logs.mkdir()
     (logs / "latest.log").write_text("authoritative log\n", encoding="utf-8")
     lines = (
         '[Server thread/INFO]: Done (1.0s)! For help, type "help"\n',
-        _located("betterdeserttemples:desert_temple", 32, -48),
-        _located("betterstrongholds:stronghold", -64, 96),
-        _located("betterwitchhuts:witch_hut", 128, 160),
-        _located("integrated_stronghold:stronghold", -192, -224),
+        _located(identifiers[0], 32, -48),
+        _located(identifiers[1], -64, 96),
+        _located(identifiers[2], 128, 160),
+        _located(identifiers[3], -192, -224),
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
         "[Chunky] Task finished for minecraft:overworld. Processed: 81 chunks (100.00%)\n",
@@ -77,12 +92,12 @@ def test_gap_targets_are_sorted_and_locations_drive_exact_chunky_commands(
         sorted(target.structure for target in item7_gap.GAP_TARGETS)
     )
     assert receipt.clean_stop is True
-    assert receipt.completed_targets == tuple(target.structure for target in item7_gap.GAP_TARGETS)
+    assert receipt.completed_targets == identifiers
     assert process.stdin.getvalue().splitlines() == [
-        "locate structure betterdeserttemples:desert_temple",
-        "locate structure betterstrongholds:stronghold",
-        "locate structure betterwitchhuts:witch_hut",
-        "locate structure integrated_stronghold:stronghold",
+        f"locate structure {identifiers[0]}",
+        f"locate structure {identifiers[1]}",
+        f"locate structure {identifiers[2]}",
+        f"locate structure {identifiers[3]}",
         "chunky world minecraft:overworld",
         "chunky center 32 -48",
         "chunky radius 4c",
