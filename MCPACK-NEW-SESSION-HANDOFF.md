@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Small Nether Dungeon inactive after cea53d82
+
+The next batch was Small Dungeon and Small Nether Dungeon,20 attributes and99
+templates. Frozen enablement inspection establishes Small Nether Dungeon is
+inactive: exact false config binds enabled, then findGenerationPoint returns
+empty before assembly. Retain its root and83 templates. Exact class/config
+references and derivation: evidence/item-8/sources/dungeons-provider/README.md,
+Small Nether Dungeon inactive disposition. No new runtime or tooling.
+This corrects the denominator, not an assessed-family increment:448 active,
+355 assessed,93 remaining. Registry315/408; nonregistry40/40. Registry groups
+remain426, with17 inactive andone excluded. All85 focused tests pass; inventory
+changes only this disposition/evidence and input identity. Next finish Small
+Dungeon's ten attributes using its16 existing templates and processor sources.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+5baa9dee259e5498665d2f7d378325b6097d13b49bee016cb1332fd0c428d453.
+
 #### Witch Circle and Witch Hut assessed after 483f54e4
 
 Twenty attributes finish the two Better Witch Huts families from six existing
