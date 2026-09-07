@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "b9c13f899a341b4de6da5264a4eeecc859f395ef2483156ab3a37afc7bacac67",
+    "evidence/item-8/family-decisions.json": "cbcceaccbc09178531872147b6137352d80fba38b16e8c0cd675ea555a1949e9",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -170304,6 +170304,14 @@
               "sha256": "ce414908a4ff8cf2e8a527f16e6f79f203f7a7a07282de72f1bdc31f54aaaf6f"
             }
           ],
+          "fabric_dispatch_resolution": {
+            "basis": "Retained complete BiomeModificationImpl constructor, both addModifier overloads, and FabricBiomeModifier.modify/isInPhase bodies.",
+            "evidence": {
+              "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f"
+            },
+            "finding": "BiomeModificationImpl constructs an empty modifier list. addModifier appends caller-supplied phase, selector and callback records. FabricBiomeModifier.modify applies records only for their matching phase and biome predicate. It performs no unconditional feature insertion or removal itself.",
+            "remaining": "Identify the retained consumer registrations and their selected callbacks before concluding preservation or modification of end_platform, end_spike and end_gateway_return. The generic dispatcher cannot answer that consumer-specific question."
+          },
           "finding": "These retained NeoForge biome-modifier documents name code-backed modifier types without declaring target biomes or feature changes. Their documents cannot prove either removal or preservation of the packaged End feature lists.",
           "required_followup": "Resolve relevant registrations and callbacks for these two implementations before asserting that the packaged biome feature membership is effective. Reuse existing source extraction; do not infer modifications from provider names alone.",
           "scope": "Concrete unresolved code-delegation paths found in the packaged catalog. This is not a claim that these modifiers alter End features or an exhaustive list of all cross-provider effects.",
@@ -170408,6 +170416,7 @@
           "evidence/item-8/sources/better-end-island-platform-gateway/identities.json": "6d6944ae221e62182308d1ac3cdcc10a9b028d98bb0e2fa0d72e910cd366b48a",
           "evidence/item-8/sources/better-end-island-processors/identities.json": "dfeb5a2586c4b82b3e0e6eb5712149d1ab8adfc6689cc7ece108490a2b7d9b95",
           "evidence/item-8/sources/better-end-island-spike-podium/identities.json": "edd47178444d8218268335284bbe3ae1b394d4249c22b02ad85208caa2d63c52",
+          "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f",
           "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
           "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb"
         },
@@ -170678,6 +170687,26 @@
               },
               "approximate_vertical_size": {
                 "basis": "Component envelopes only, including air. Each paired spike has a nominal 19x136x19 envelope. Whole-arena occupied footprint and vertical extent are not measured here; the recorded radius-42 center layout is distinct from component dimensions.",
+                "combined_nominal_envelope": {
+                  "basis": "spike_geometry places the lower 67-block template at Y=70-67=3 and upper 69-block template at Y=70. podium_invocation.arguments places at portalLocation.below(5); podium_geometry has full height 27 or bottom-only height 11. Inclusive upper coordinates are origin + height - 1.",
+                  "bottom_only_arena_height_blocks": "max(138, P+5) - min(3, P-5) + 1",
+                  "bottom_only_podium_y_inclusive": [
+                    "P-5",
+                    "P+5"
+                  ],
+                  "fallback_example": "At the recorded fallback P=65, both forms fit the spike envelope Y=3..138, a 136-block nominal span. This is an example for that branch, not an observed or universal podium anchor.",
+                  "full_arena_height_blocks": "max(138, P+21) - min(3, P-5) + 1",
+                  "full_podium_y_inclusive": [
+                    "P-5",
+                    "P+21"
+                  ],
+                  "podium_anchor": "P is the portalLocation Y after origin_adjustment; the feature is invoked at P-5.",
+                  "scope": "Nominal template envelopes including air, before terrain clipping and successful-write effects. Entity positions, flight, explosions and removal volumes are not building height.",
+                  "spikes_y_inclusive": [
+                    3,
+                    138
+                  ]
+                },
                 "packaged_template_y_blocks": [
                   67,
                   69,
