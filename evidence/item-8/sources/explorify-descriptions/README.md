@@ -54,3 +54,36 @@ uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_i
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Black Spiral assembly
+
+Ten explicit answers complete source assessment: six missing descriptions and
+four reconciled attributions. Existing resolved biome answers are retained.
+world-bounds observations 225/620 are the same ocean-heavy-seed start in two runs
+at structure_starts, not full chunks. Inclusive envelope [116,31,346,128,78,442]
+gives 13x48x97 planned-layout blocks. This is one layout reproduced, not two
+independent samples, populated blocks or a family-wide bound. The root uses
+standard jigsaw absolute 32, depth 7, no projection and no terrain adaptation.
+
+Twenty reachable templates include the tower, bridges, resource/dungeon features
+and vanilla bastion mob components. There are no missing graph references,
+unresolved entity IDs or generation markers. Preserve template-owned piglin/brute
+entities and legacy blaze/hoglin spawner inputs separately. No realized population,
+conversion or simultaneous component selection is asserted. Empty spawn overrides
+do not disable ambient spawning. Exact bridge/treasure chest sources remain saved
+loot references; resource blocks remain distinct from container rewards.
+
+Complete retained spiral_tower_randomization rules only replace material, including
+blackstone to lava at a configured 0.01 match probability. The bridge processor
+removes matching blackstone at 0.25. These are authored hazard ingredients and
+rule probabilities, not observed hazard frequency or tested traversal difficulty.
+No processor adds a mob, physical spawner or loot assignment. The graph and saved
+assembly supply visual form while Nether terrain and chunk stage limit exposure
+claims. No new source capture or measurement was necessary.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-explorify-spiral-descriptions.json
+uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```

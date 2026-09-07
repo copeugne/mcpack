@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Black Spiral assessed after 6c99b1c1
+
+Ten answers assess explorify:black_spiral: six missing descriptions and four
+reconciled attributions. Saved assembly is one ocean-heavy-seed planned layout
+reproduced across runs, 13x48x97, at structure_starts rather than populated chunks.
+Twenty component templates retain authored piglins/brutes and blaze/hoglin spawner
+inputs. Processor-added lava and bridge gaps are source hazards, not measured
+rates or tested traversal. No new capture or measurement.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-spiral-descriptions.json`, SHA-256
+2c027be2aa0c73d9f68d660245540e0b2ea7bdf16bdfd77aa95408d35b6e62e3.
+Only Black Spiral changed; biomes, observations and nonregistry remain unchanged.
+Registry assessment is 80/410, leaving 330; nonregistry remains 40/40. Explorify
+has seven families left. Existing observation scan found no saved layout records
+for those seven; use their retained assembly inputs to resolve geometry without
+assuming single-piece dimensions describe an entire settlement. Final integration,
+acceptance, backed-up consolidation, PR review and main delivery remain open.
+
 #### Six Explorify standalone assessments after 72b14d81
 
 Retire badlands_pyramid, desert_shrine, guide_post, supply_cache, watchtower and
