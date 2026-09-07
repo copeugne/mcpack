@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Compare six castle main/bottom templates and three farmhouse/path templates
+using a fixed selection in the existing renderer and corrected IDAS framing.
+Castle alternatives have different extents; farmhouse alternatives have different
+encounter contents. Existing village-component dispositions remain intact. No new
+measurement system. Canonical backlog remains 15 until decisions pass.
+
 Inventory matches 3c63c375 and reproduces exactly. Canonical backlog: 15, all
 IDAS. All 887 roots and full variants remain in 426 working groups. Compare
 castle and farmhouse alternatives next. Attributes, 33 nonregistry contributions

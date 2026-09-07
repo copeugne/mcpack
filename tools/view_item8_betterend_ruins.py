@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
                  "--adora-monuments", "--adora-ocean", "--adora-houses", "--idas-related",
                  "--idas-variants", "--idas-worksites", "--idas-buildings",
-                 "--idas-tower-nexus"):
+                 "--idas-tower-nexus", "--idas-castle-farm"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -100,7 +100,8 @@ def main() -> None:
                     if (cast("bool", args.idas_related) or cast("bool", args.idas_variants)
                         or cast("bool", args.idas_worksites)
                         or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus))
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm))
                     else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
@@ -110,7 +111,8 @@ def main() -> None:
                   or cast("bool", args.idas_variants)
                         or cast("bool", args.idas_worksites)
                         or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus))
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -231,8 +233,14 @@ def main() -> None:
                                      or cast("bool", args.idas_variants)
                         or cast("bool", args.idas_worksites)
                         or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus)) else namespace)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)) else namespace)
         sheets = {
+            "castle_main": [f"castle/castle{i}" for i in (1, 2, 3)],
+            "castle_bottom": [f"castle/castle{i}_bottom" for i in (1, 2, 3)],
+            "farmhouse": ["farmhouse/farmhouse", "farmhouse/abandoned_farmhouse",
+                          "farmhouse/farmhouse_path"],
+        } if cast("bool", args.idas_castle_farm) else {
             "wizard_towers": [f"wizard_tower/{n}wizardtower1" for n in
                               ("purple", "red", "yellow")],
             "wizard_bottoms": [f"wizard_tower/{n}wizardtower2" for n in
@@ -349,16 +357,19 @@ def main() -> None:
                 pieces.append(diagram(raw, title, (
                     (50 if (cast("bool", args.idas_worksites)
                            or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus)) else 20) + index % 2 * 300,
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)) else 20) + index % 2 * 300,
                     35 + index // 2 * (400 if (cast("bool", args.idas_worksites)
                             or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus)) else 300)),
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)) else 300)),
                                       exposed=compressed,
                                       omit_water=cast("bool", args.adora_ocean)))
             height = ((len(names) + 1) // 2) * (
                 400 if (cast("bool", args.idas_worksites)
                             or cast("bool", args.idas_buildings)
-                        or cast("bool", args.idas_tower_nexus)) else 300)
+                        or cast("bool", args.idas_tower_nexus)
+                        or cast("bool", args.idas_castle_farm)) else 300)
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',
