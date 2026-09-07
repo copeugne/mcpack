@@ -44,3 +44,55 @@ The source capture supports provider reconciliation, not observed placement,
 successful block writes or final family attributes. Preserve the underground
 temple's missing references and the named mushroom/decoration grouping question
 in provider-scope.md rather than silently modifying the frozen content.
+
+## Five standalone family descriptions
+
+After d4cc7261, Desert Ruin, Floating Island, Forgotten Well, Logs and Shrine
+had 48 missing explicit descriptions. Shrine's two existing geometry answers
+are retained unchanged. This batch integrates those 48 answers using existing
+source artifacts; no new capture, measurement or tooling is introduced.
+
+Direct inspection of the complete pool traces and template catalog establishes
+thirteen standalone templates, no attachments, no authored entities, physical
+spawner NBT, generation markers or missing graph resources:
+
+| Family | Template alternatives | Stored XYZ sizes |
+| --- | ---: | --- |
+| desert_ruin | 8 | 6x7x7, 6x5x7, 6x5x7, 6x6x7, 6x5x7, 6x5x7, 6x3x7, 6x6x7 |
+| floating_island | 1 | 11x14x9 |
+| forgotten_well | 1 | 5x6x5 |
+| logs | 2 | small 5x4x5; large 5x4x8 |
+| shrine | 1 | 9x8x9 |
+
+The desert rows correspond to ruins/desert_1 through desert_8; the other template
+IDs are retained directly in each inventory entry. Absence of jigsaw blocks
+makes these template envelopes adequate nominal assembly dimensions, including
+air/padding. Rotation may exchange X/Z. They are not occupied-world or exposed
+height measurements.
+
+The five root definitions under data/explorations/worldgen/structure use vanilla
+jigsaw, depth one, WORLD_SURFACE_WG and empty spawn_overrides. Start offsets are
+0/60/1/0/0 in table order. Floating Island has no terrain adaptation, Shrine has
+beard_box, and the others have beard_thin. Resolved biome sets contain 1/12/41/56/56
+biomes, all intersecting only the Overworld runtime possible-biome set. Existing
+world observation links remain unchanged.
+
+Desert Ruin, Floating Island and Shrine reference their same-named
+explorations:chests tables. Well and Logs have no saved container table references;
+that does not imply absence of block salvage. Floating Island uses randomize_stone:
+eight ordered 0.05 random stone-match rules yield coal, iron, copper, redstone,
+lapis, gold, diamond or emerald ore. These are individual rule inputs, not eight
+independent observed 5% yields. Shrine uses randomize_stonebrick, whose captured
+StoneBrickAgingProcessor changes stone-brick/masonry states to aged variants.
+The other pools use minecraft:empty processors. No processor here adds spawners.
+
+Qualitative discovery descriptions follow the small surface ruins, well, low
+logs, shrine and elevated island forms. No viewing distance or safety guarantee
+is inferred. Empty authored enemy sources leave conditional natural spawning;
+Floating Island also presents access and fall hazards through its elevation.
+
+Seven provider/inventory tests and scoped builder quality checks pass. Only
+these five rows and input identity changed; prior Shrine geometry, biomes,
+world observations and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-explorations-standalone.json`, SHA-256
+3ee3f9bef8a1f391f8336285d67e91714234143defb373e9b0cfa4164084ef39.
