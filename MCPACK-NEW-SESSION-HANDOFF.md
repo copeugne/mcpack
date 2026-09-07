@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS farmhouse assessed after dd56fe8a
+
+Nine entries integrated for ordinary/abandoned alternatives and ordinary-only
+path. Nominal ordinary52 by40,height44 from path origin-4,0,11; abandoned48 by40,
+height47 has no connector. Ordinary villagers/pigs and furnishings differ from
+two abandoned zombie-villager spawners, unchanged by ticking-only processor.
+Six empty entity NBT records and one CORNER marker dispositioned. Four defined
+loot sources retain ownership; pool weights4/1 are not observed frequencies.
+No runtime/tool added. All85 focused checks pass (66.52s); only farmhouse/input
+identity changed. Total432/448 assessed;16 connected IDAS families/144 entries
+remain, nine each. Quantify next batch and reuse existing findings; do not apply
+family graph components indiscriminately to every alternative.
+Details: evidence/item-8/sources/idas-farmhouse-assessment/README.md.
+Inventory SHA-256: 29a2ca07ad268f56c624442eef13cfde01794a213097ea1126f13b35f957a0ef.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ruined well assessed after ef26969f
 
 Nine entries integrated for two rigid connected components. Matching down_east/
