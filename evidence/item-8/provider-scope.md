@@ -10756,3 +10756,9 @@ placement, not the burial or exposure of every attached room. Prior attributes,
 family memberships and source definitions remain unchanged. The larger generated
 JSON diff preserves the full variant mapping instead of flattening it into one
 misleading surface label. No new measurement, schema or builder behavior.
+
+Decision 29c66271 passes all 78 family-decision tests (61.19 seconds).
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-standard-jigsaw-placement.json`.
+Inventory SHA-256: a80084247cf9bae7f08b098404f60aa05ac859b13e94a20b09330f0a1b6a99b6.
+Only placement and matching decisions in 37 rows, plus the decision input hash,
+change. All other fields and nonregistry records are preserved. Item 8 remains open.
