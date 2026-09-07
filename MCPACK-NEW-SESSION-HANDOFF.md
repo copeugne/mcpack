@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Bearclaw inn, treetop tavern and Tudor pub decisions now distinguish their
+lodge-path-stables, four-section and main-bottom assemblies using existing
+connectors and full contents. Components are not additional families. The focused
+IDAS test and scoped Ruff/Basedpyright pass. Canonical backlog: 28, all IDAS.
+Inventory refresh follows. Attributes, nonregistry and final delivery remain open.
+
 Inventory matches 8a3b3ffd and independently reproduces exactly. All 887 roots
 and full variants remain in 426 working groups. Canonical backlog: 31, all IDAS.
 Continue the remaining buildings and assemblies. Preserve the manor connector
