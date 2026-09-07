@@ -83,7 +83,7 @@ comparison groups are provisional concerns, not removal decisions.
 | betterend:pedestal_altar | T0 | H | D | shrine | Central pedestal/base composition has no direct encounter source. | Altar name does not establish a mechanic. |
 | betterend:pedestal_court_ruin | T0 | H | D | ruin,shrine | Paved court and peripheral columns retain ornamental ruin purpose. | Storage and damage vary. |
 | betterend:ruined_obsidian_pillar | T0 | H | D | statue,ruin | Weathered obsidian column is independently generated environmental architecture. | Not a central dragon-arena component. |
-| betterend:shadow_forest_mansion | C | M | S,O | house | Tall furnished mansion supplies storage/smelting but no direct authored encounter. | Large domestic shell may function as T0; sparse combat is not absent shelter value. |
+| betterend:shadow_forest_mansion | C | M | S | house | Furnished mansion supplies storage/smelting but no direct authored encounter. | Nominal 17 by 16 by 24 template does not itself establish oversizing; may function as T0. |
 | betterend:small_island | T0 | H | D | nature | Natural island generator provides terrain rather than an authored encounter. | Void access remains hazardous. |
 | betterend:stone_column_remnant | T0 | H | D | ruin,statue | Single worked-stone column and fallen variants are ambient remains. | standard |
 | betterend:sulphuric_cave | T0 | M | D | nature | Submerged natural cavern supplies environmental traversal rather than authored combat. | Water access may create substantial practical challenge. |

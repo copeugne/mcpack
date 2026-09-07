@@ -1,75 +1,76 @@
-# Item 9 — Provisional Baseline Structure Classification
+# Item 9: Provisional structure classification
 
-**Status:** `COMPLETE`
-**Scope:** zero-mod vanilla control
-**Decision state:** provisional diagnosis only; no retention/removal decision
+Status: IN PROGRESS. Local classification gate: PASS. Decision version:
+`item9-provisional-v1`. Final clean PR review and verified main delivery remain.
 
-## Classification result
+The [authoritative family matrix](../../evidence/item-9/classification.md)
+classifies all 448 accepted Item 8 active canonical families exactly once.
+The [evidence record](../../evidence/item-9/README.md) defines the rubric,
+source references, confidence, ambiguity, flags and reproducible coverage check.
+The 18 separately dispositioned inactive/excluded groups are outside this population.
+No Item 8 family identities, raw evidence, configuration or runtime changed.
 
-Every one of the 21 Item 8 gameplay families has exactly one primary role:
+| Primary category | Families |
+| --- | ---: |
+| Tier 0, ambient landmark | 152 |
+| Civilization | 97 |
+| Tier 1, small encounter | 84 |
+| Tier 2, proper dungeon | 65 |
+| Tier 3, major expedition | 47 |
+| Tier 4, world objective | 3 |
+| Total | 448 |
 
-| Category | Count | Families |
-|---|---:|---|
-| Tier 0 — Ambient Landmark | 4 | igloo, shipwreck, Nether fossil, ruined portal |
-| Civilization | 1 | village |
-| Tier 1 — Small Encounter | 8 | pillager outpost, mineshaft, jungle temple, desert pyramid, swamp hut, ocean ruin, buried treasure, trail ruins |
-| Tier 2 — Proper Dungeon | 1 | trial chambers |
-| Tier 3 — Major Expedition | 5 | woodland mansion, ocean monument, End city, bastion remnant, ancient city |
-| Tier 4 — World Objective | 2 | stronghold, Nether fortress |
+These are provisional source-derived roles, not measured duration, difficulty,
+encounter frequency or final Item 19 tiers. Every row has a rationale and exact
+Item 8 key reference, confidence and inherited plus family-specific ambiguity.
+There are 156 H, 287 M and 5 L confidence decisions. The five L cases retain
+specific assembly/reward defects: AdoraBuild basalt chambers and IDAS ancient
+mines, desert pyramid, haunted manor and nexus.
 
-The classification validator proves 21 expected and 21 classified families, no duplicates, no omissions, no invalid category and a non-empty rationale for every family.
+All eight requested flag classes have explicit dispositions: 130 decorative
+flags, 28 dungeon-like shallow-content concerns, 6 oversizing concerns, and
+comparison groups covering overlapping themes. Potential redundancy groups
+contain 17 village/settlement candidates, 56 ruins, 53 towers and 88 dungeon
+archetype candidates. Groups overlap and are not extra families. These are
+comparison candidates, not proven redundant content or removal decisions.
 
-## Interpretation rules
+The six oversizing concerns are WDA Ceryneian Hind, Typhon and Lighthouse,
+Terralith Spire, IDAS Windswept Shrine and Moog End Mystical Archway. Their
+accepted architecture and limited supported encounter purpose justify checking
+internal gameplay later. Treasure search, navigation and noncombat utility may
+still justify them. Environmental mountains and giant trees are not failed
+dungeons merely because their envelopes are large.
 
-- The tier describes the family's primary gameplay role, not its physical size or maximum time spent.
-- Large does not mean “proper dungeon.” Mineshafts are large networks of repeated small encounters and therefore remain Tier 1 with a mechanical-shallowness flag.
-- Required progression destinations may be Tier 4 even when their encounter topology is weak. Strongholds and Nether fortresses are world objectives because they gate End/Nether capability progression.
-- Non-combat search/excavation can exceed Tier 0 when it has a meaningful objective/reward. Buried treasure and trail ruins are Tier 1.
-- A biome palette is not a separate gameplay family. Five villages, seven ruined portals, two shipwrecks, two ocean ruins and two mineshafts remain internal variants.
+The village comparison includes CTOV, Integrated Villages, Towns & Towers and
+Repurposed Structures, alongside other settlement designs. Their inhabited,
+abandoned, aquatic and hostile variants remain distinct. Better Village and
+Village Taverns stay attributed as components of existing families. Ruin
+comparisons preserve differences between ambient fragments, archaeology and
+hostile ruins. Tower comparisons distinguish civilian venues, unguarded caches
+and multi-level encounters. Mining, tomb, fort, mansion and trial groups identify
+shared dungeon archetypes while retaining different topology and enemy sources.
 
-## Flagged deficiencies
+Tier 4 is reserved here for the central dragon arena and the two retained
+progression-oriented strongholds. Portal frames and processor evidence support
+intended End progression; effective Eye targeting and portal activation are
+unmeasured. Nether fortress resource access alone does not prove a mandatory
+world objective in this retained stack. Optional boss dungeons do not receive
+Tier 4 merely for containing a boss.
 
-### Dungeon-like but mechanically shallow
+The documented local gate passed on 2026-09-08: accepted inventory hash matches,
+448 expected IDs equal 448 classified IDs with no duplicates, all seven table
+fields are populated, category/confidence/flag/group vocabulary is valid, and
+whitespace checks pass. Manual table/source review checked role rationale,
+mixed variants, progression claims and affirmative flags. It removed one draft
+oversizing flag unsupported by the accepted geometry. No code, runtime or broad
+Item 8 regression suite was changed or rerun.
 
-- Mineshaft: oversized procedural network, repetition, no finale.
-- Swamp hut: hostile dressing with almost no traversal/gameplay volume.
-- Stronghold: progression objective with repeated corridors and limited authored combat.
-- Nether fortress: progression objective with repeated corridors and no authored multi-phase finale.
+The previous 21-family zero-mod report remains in Git at `ff43d826` and is
+SUPERSEDED. Its lost matrix/verification artifacts and historical claims are
+not acceptance evidence for these 448 families.
 
-### Oversized relative to internal gameplay
-
-- Mineshaft is the clearest baseline case.
-- Woodland mansion has real expedition scale but substantial room repetition and a weak/variable finale.
-
-### Mostly decoration or ambient by design
-
-- Nether fossil is primarily decorative.
-- Igloo, shipwreck and ruined portal intentionally serve ambient/salvage roles rather than pretending to be dungeons.
-
-### Concentrated value or weak distribution
-
-- Desert pyramid and buried treasure concentrate value in one small target.
-- End city and bastion reward value can concentrate heavily by generated archetype/ship/treasure room.
-- Ocean monument has strong salvage/objective value but weak conventional chest-loot distribution.
-
-### Discoverability concern
-
-- Ancient cities and trial chambers lack assured surface discovery language.
-- Trail ruins expose only a small cue.
-- Strongholds and buried treasure are intentionally lead/map dependent.
-
-## Redundancy result
-
-No baseline gameplay family is provisionally redundant because the zero-mod control contains no overlapping third-party structure generators. Internal biome/environment variants are consolidated under one family. Procedural-corridor repetition overlaps among mineshafts, strongholds and fortresses, but their primary roles differ. Trial chambers remain distinct through encounter infrastructure.
-
-This does **not** protect vanilla content from later replacement or pruning. It only means redundancy cannot be claimed within the current control without measured evidence.
-
-## Machine record
-
-- `structure-inventory/item9-provisional-classification.json` records every rationale and defect flag.
-- `evidence/structure-inventory/item9-classification-verification.json` proves total/exact family coverage.
-
-## Exit decision
-
-All baseline families have one provisional primary role and every requested deficiency/redundancy class has a recorded disposition. No final solution or mod selection was made. Item 10 may now measure actual baseline structure/encounter density using these family/category identities.
-
+Item 10 must use these canonical identities only after Item 9's review and
+merge gates pass. No density measurement or downstream workflow was performed.
+Items 11 through 19 retain their own observation and dependency gates; this
+classification does not establish human discoverability, repetition, combat
+quality, working services, reward economy or actual redundancy.

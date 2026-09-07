@@ -328,8 +328,14 @@ context, not current acceptance evidence.
 
 ### 5.8 Item 9 provisional-classification status
 
-**Status: `BLOCKED` - previously complete; family matrix and verification evidence lost**
-The surviving report records all 21 baseline families with exactly one provisional primary category: 4 ambient, 1 civilization, 8 Tier 1, 1 Tier 2, 5 Tier 3, and 2 Tier 4. It also records explicit mechanical-depth, decoration, repetition, oversizing, value-concentration, discoverability, and internal-variant overlap flags, with no family declared redundant and no final retention decision. The report survives as `Item-9-Provisional-Structure-Classification.md`, but the family matrix and `evidence/structure-inventory/item9-classification-verification.json` do not. Item 9 must be reconstructed after Item 8 before its reproducibility exit gate may return to `COMPLETE`.
+**Status: `IN PROGRESS`; local classification gate `PASS`, reviewed delivery pending.**
+All 448 accepted Item 8 active families are classified once in
+`evidence/item-9/classification.md`, with rationale, direct evidence reference,
+confidence, ambiguity and the eight requested flag dispositions. The rubric and
+focused gate are in `evidence/item-9/README.md`; current report:
+`docs/items/Item-9-Provisional-Structure-Classification.md`. The historical
+21-family zero-mod report is superseded, not current acceptance evidence.
+No Item 8 audit or measurement was repeated. No Item 10 work was performed.
 
 ### 5.9 Item 10 structure-density status
 
@@ -471,7 +477,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
 | 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
-| 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
+| 9 | Initial structure classification | `IN PROGRESS` | All 448 canonical families classified; local gate PASS. Clean PR review and main delivery pending. Evidence: `evidence/item-9/README.md`. |
 | 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
 | 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
 | 12–18 | Remaining baseline forensics | `UNSTARTED` | Strict dependency on completed Item 11 evidence. |
@@ -487,7 +493,7 @@ This register is additive. More variables will be discovered during artifact ins
 
 1. Preserve the accepted Item 7 evidence and merged delivery. The user explicitly authorized proceeding despite the missing final clean review record, as recorded in section 5.7. Do not claim that review occurred.
 2. Item 8 is complete through reviewed, verified PR18 delivery. Preserve its accepted inventory and custody records. Item 9 can use the448-family listing when that work begins; do not repeat completed inventory or preservation work.
-3. Continue Items 9 and 10 in dependency order, then audit Items 2 through 10 together for identity and narrative consistency.
+3. Finish Item 9 review and verified main delivery before Item 10. After Item 10, audit Items 2 through 10 together for identity and narrative consistency.
 4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Item 11 will still require real-client evidence from at least two blind human operators.
 
 No later item will be marked complete out of order or from inference.
