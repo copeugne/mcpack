@@ -7,6 +7,28 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd mountain geometry assessed after bbaca20a
+
+Two required size attributes integrated from existing root/piece code and six
+full-start envelope examples. Both body radii select integer50..100. Height
+parameter is R times randRange(0.8,1.2) for crystal or(0.4,0.6) for painted;
+nominal scales40..120 and20..60 are not realized relief. Exact radial, support,
+noise, integer column endpoints and terrain-dependent crystal formulas are
+in authoritative attributes and betterend-formation-pieces README. The cubic
+saved Y envelope remains explicitly unsuitable as occupied height. Direct pinned
+BCLib MHelper inspection resolves random-range semantics with class/JAR identities;
+no new extractor, capture or measurement tool. All85 focused checks pass (59.54s).
+Only mountain/input identity changed. Registry333/408,nonregistry40/40,
+total373/448 assessed;75 families and678 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd7/63. BetterEnd remaining
+families are end_bridge,end_village,eternal_portal,giant_ice_star,
+giant_mossy_glowshroom,small_island,sulphuric_cave. Each has dimension integrated
+and nine attributes left. Next quantify and reuse retained root/piece/template
+sources before any investigation; bridge already has full-start observations.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256: e95d95f16fcbe59c56c4b207c5cbebf17628768e843c3e546723c179aa1d6852.
+
+
 #### BetterEnd dimensions and lake geometry assessed after 96814bc6
 
 Eleven existing-evidence entries integrated: End dimension eligibility for all
