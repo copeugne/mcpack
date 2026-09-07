@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Eleven standalone End families assessed after ec3ef2ae
+
+Eighty-eight attributes finish eleven mes families with existing geometry.
+Variant-owned shulkers/spawners, loot seeds, empty archaeology payloads and
+Citadel's elevated placement are integrated. Ten shared tests pass; no capture
+or new tooling. Source derivations are in moog-generator-code README.
+Inventory SHA: 960f87010b6506043e805360c6e7336f146e53d44435c730b2bc7770b12b6970.
+End Structures 11/18; registry 183/410, nonregistry 40/40, total 223/450 assessed,
+227 remaining. Retire these eleven assessments. Seven mes families remain:
+enderpin_spikes, endscraps, monolith, placid_prairie, ruined_pillar,
+starlight_voyager and mega_ship. Continue quantified coherent batches.
+Final integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
 #### Voyager assessment finished from 3b2305ac
 
 Four geometry answers finish Cathedral and Mineshaft using full-start examples
