@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mage Tower and Spire assessed after d16a6a31
+
+Twenty attributes assess two families, six roots and sixteen unique templates.
+Connected Spire geometry is source-derived; no capture or tooling addition.
+Seven focused tests pass. Semantic comparison changes only these two families
+and the decisions identity. Derivation: sources/terralith-provider/README.md.
+Registry 265/410, nonregistry 40/40, total 305/450 assessed, 145 remaining.
+Terralith has one active family remaining: Mage Complex, one root and eleven
+traced templates, with nine attributes still to integrate. Fortified Village
+is already explicitly inactive under the frozen Integrated Villages hook;
+it is not an outstanding active family. Quantify missing evidence versus
+existing evidence before investigating Mage Complex's branching assembly.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+01cae86e2773d7656a307672fd58f4ce6e3e8ad49b9138ef850dcad613a70f25.
+
 #### Six Terralith alternative families assessed after 97dfe7fc
 
 Fifty-seven attributes finish Glacial Hut, Rubble, Giant Bee Hive, Mining
