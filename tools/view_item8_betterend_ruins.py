@@ -67,7 +67,7 @@ def parse_args() -> argparse.Namespace:
                  "--voyager-landmarks", "--terralith-buildings", "--adora-trees",
                  "--adora-landmarks", "--adora-facilities", "--adora-nether",
                  "--adora-monuments", "--adora-ocean", "--adora-houses", "--idas-related",
-                 "--idas-variants"):
+                 "--idas-variants", "--idas-worksites"):
         _ = selection.add_argument(flag, action="store_true")
     return parser.parse_args()
 
@@ -96,14 +96,16 @@ def main() -> None:
                     "Terralith_1.21.1_v2.6.2_Neoforge.jar"
                     if cast("bool", args.terralith_buildings) else
                     "idas-1.13.7+1.21.1-neoforge.jar"
-                    if (cast("bool", args.idas_related) or cast("bool", args.idas_variants))
+                    if (cast("bool", args.idas_related) or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites))
                     else archive_name)
     compressed = (soaring or nether or voyager or cast("bool", args.terralith_buildings)
                   or cast("bool", args.adora_trees) or cast("bool", args.adora_landmarks)
                   or cast("bool", args.adora_facilities) or cast("bool", args.adora_nether)
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses) or cast("bool", args.idas_related)
-                  or cast("bool", args.idas_variants))
+                  or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites))
     source = next(s for s in retained_sources(Path.cwd()) if s.name == archive_name)
     if hashlib.sha256(source.path.read_bytes()).hexdigest() != source.sha256:
         message = f"Archive identity mismatch: {archive_name}"
@@ -221,8 +223,16 @@ def main() -> None:
                         or cast("bool", args.adora_monuments) or cast("bool", args.adora_ocean)
                         or cast("bool", args.adora_houses))
                      else "idas" if (cast("bool", args.idas_related)
-                                     or cast("bool", args.idas_variants)) else namespace)
+                                     or cast("bool", args.idas_variants)
+                        or cast("bool", args.idas_worksites)) else namespace)
         sheets = {
+            "dig_site": ["dig_site/dig_site", "dig_site/dig_site_bottom",
+                         "dig_site/dig_site_stables", "dig_site/dig_site_stables_bottom"],
+            "desert_dig": ["dig_site/dig_site_desert", "dig_site/dig_site_desert_bottom"],
+            "worksites": ["nether_pump_camp/nether_pump_camp", "washing_camp/washing_camp",
+                          "the_log/the_log"],
+            "transport": ["train_ruins/train_ruins", "winter_wagon/winter_wagon"],
+        } if cast("bool", args.idas_worksites) else {
             "statues": [f"ancient_statue/ancient_statue_{n}" for n in
                         ("desert", "jungle", "plains")],
             "dens": [f"animal_den/{n}_den" for n in ("wolf", "polar_bear", "foxhound")],
