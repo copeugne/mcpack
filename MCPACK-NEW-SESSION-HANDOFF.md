@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed fortress assessed after 6c2d2d70
+
+Seven remaining entries integrated for one family/17 templates. Water-dependent
+drowned feature, ordinary silverfish spawner, natural monster overrides and four
+loot sources are distinguished. Configured flooding is not measured water depth.
+Existing saved geometry and processor evidence reused; no runtime or tool added.
+All 85 focused checks pass (77.12s); only fortress and input identity changed.
+Total 408/448 assessed; 40 families/357 required entries remain: IDAS 38/343,
+Repurposed 2/14 (ancient_city and village, each with accepted geometry).
+Details: evidence/item-8/sources/repurposed-fortress-assessment/README.md.
+Inventory SHA-256: 526222da7ee35e5322ca9341db14d47befae0414e3ae298b3691bc13c31ec6a4.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+Before further investigation, quantify existing evidence versus missing claims.
+An initial read-only comparison finds original world-bounds full-chunk observations
+for 6 of the remaining 38 IDAS families, and pool-trace missing/unresolved elements
+for ancient_mines and desert_pyramid. The other 32 lack observations in that
+catalog only; additional existing captures and direct geometry derivations have
+not yet been checked, so this is not a count of required new experiments.
+
+
 #### Repurposed underground bastion assessed after 3cd811d5
 
 Seven remaining entries integrated for162 templates. Bat-only direct template
