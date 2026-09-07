@@ -105361,7 +105361,10 @@
         "saved_example_height_blocks": 31,
         "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "assessment": "Authored marker encounters include evokers, vindicators or bashers, provokers, archivists and invokers. Secret-room spiders use an authored spawner. Allays are authored non-hostile entities. Natural biome mobs may coexist; empty root overrides do not exclude them.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+      },
       "biome_constraints": {
         "minecraft:mansion": {
           "biomes": [
@@ -105420,23 +105423,26 @@
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:mansion": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:woodland_mansion"
-          }
+        "ordinary_spawner": {
+          "delay": 0,
+          "entity": "minecraft:spider",
+          "max_delay": 800,
+          "max_nearby_entities": 6,
+          "min_delay": 200,
+          "packaged_nbt_id": "minecraft:mob_spawner",
+          "position": [
+            4,
+            1,
+            3
+          ],
+          "potential_weight": 1,
+          "required_player_range": 16,
+          "spawn_count": 4,
+          "spawn_range": 4,
+          "template": "minecraft:woodland_mansion/1x1_as2"
         },
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_sources": {}
+        "scope": "Conditional secret-room component, not a spawner in every mansion. No trial spawner in the selected template palettes. Marker-authored mobs are separate from ordinary spawner blocks.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
       },
       "grouping_decision": {
         "attributes": {
@@ -105475,6 +105481,10 @@
             "saved_example_height_blocks": 31,
             "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
           },
+          "authored_or_natural_enemies": {
+            "assessment": "Authored marker encounters include evokers, vindicators or bashers, provokers, archivists and invokers. Secret-room spiders use an authored spawner. Allays are authored non-hostile entities. Natural biome mobs may coexist; empty root overrides do not exclude them.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
           "dimension": {
             "additional_observation": {
               "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
@@ -105511,21 +105521,157 @@
             "observed": [
               "minecraft:overworld"
             ]
+          },
+          "generated_spawners": {
+            "ordinary_spawner": {
+              "delay": 0,
+              "entity": "minecraft:spider",
+              "max_delay": 800,
+              "max_nearby_entities": 6,
+              "min_delay": 200,
+              "packaged_nbt_id": "minecraft:mob_spawner",
+              "position": [
+                4,
+                1,
+                3
+              ],
+              "potential_weight": 1,
+              "required_player_range": 16,
+              "spawn_count": 4,
+              "spawn_range": 4,
+              "template": "minecraft:woodland_mansion/1x1_as2"
+            },
+            "scope": "Conditional secret-room component, not a spawner in every mansion. No trial spawner in the selected template palettes. Marker-authored mobs are separate from ordinary spawner blocks.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
+          "intended_hostility": {
+            "assessment": "Hostile multi-room illager building with conditional secret-room spider encounter. Retained Illager Invasion replacements expand the authored enemy sources. No per-mansion population, difficulty score or guaranteed occurrence of every room or mob is inferred.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
+          "loot_table_source": {
+            "literal_template_sources": {
+              "minecraft:chests/stronghold_library": [
+                "minecraft:woodland_mansion/1x2_c4",
+                "minecraft:woodland_mansion/2x2_b3"
+              ],
+              "minecraft:chests/woodland_mansion": [
+                "minecraft:woodland_mansion/2x2_b1"
+              ]
+            },
+            "marker_source": "Chest prefix invokes createChest with BuiltInLootTables.WOODLAND_MANSION, minecraft:chests/woodland_mansion. Directional suffix controls chest facing.",
+            "other_content": "Some template chests contain literal Items or empty inventories, not loot-table references. Those are authored content rather than additional table sources.",
+            "scope": "Both referenced tables have packaged definitions. Mod loot injection can modify table contents; this assessment records table provenance, not reward quantities or probabilities.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
+          "mob_source": {
+            "effective_marker_sources": {
+              "Archivist": "illagerinvasion:archivist",
+              "Group of Allays": "minecraft:allay, 1..3 creation attempts per selected marker",
+              "Mage": "minecraft:evoker",
+              "Provoker": "illagerinvasion:provoker",
+              "Warrior": "illagerinvasion:basher when nextInt(2)==0; otherwise vanilla minecraft:vindicator",
+              "invoker": "illagerinvasion:invoker"
+            },
+            "marker_templates": {
+              "Archivist": [
+                "minecraft:woodland_mansion/1x2_c1",
+                "minecraft:woodland_mansion/1x2_c4",
+                "minecraft:woodland_mansion/2x2_b2",
+                "minecraft:woodland_mansion/2x2_b3"
+              ],
+              "ChestNorth": [
+                "minecraft:woodland_mansion/1x2_b4",
+                "minecraft:woodland_mansion/1x2_se1"
+              ],
+              "ChestSouth": [
+                "minecraft:woodland_mansion/1x2_a1",
+                "minecraft:woodland_mansion/1x2_b3",
+                "minecraft:woodland_mansion/1x2_s1",
+                "minecraft:woodland_mansion/1x2_se1",
+                "minecraft:woodland_mansion/2x2_b5"
+              ],
+              "ChestWest": [
+                "minecraft:woodland_mansion/1x1_a4",
+                "minecraft:woodland_mansion/1x1_as1",
+                "minecraft:woodland_mansion/1x2_d2"
+              ],
+              "Group of Allays": [
+                "minecraft:woodland_mansion/2x2_a1"
+              ],
+              "Mage": [
+                "minecraft:woodland_mansion/1x2_d3",
+                "minecraft:woodland_mansion/2x2_b1",
+                "minecraft:woodland_mansion/2x2_b2",
+                "minecraft:woodland_mansion/2x2_b4"
+              ],
+              "Provoker": [
+                "minecraft:woodland_mansion/1x2_a4",
+                "minecraft:woodland_mansion/1x2_a9",
+                "minecraft:woodland_mansion/1x2_b3",
+                "minecraft:woodland_mansion/1x2_d5",
+                "minecraft:woodland_mansion/2x2_a3",
+                "minecraft:woodland_mansion/2x2_b1",
+                "minecraft:woodland_mansion/2x2_b5"
+              ],
+              "Warrior": [
+                "minecraft:woodland_mansion/1x2_a1",
+                "minecraft:woodland_mansion/1x2_a3",
+                "minecraft:woodland_mansion/1x2_a8",
+                "minecraft:woodland_mansion/1x2_a9",
+                "minecraft:woodland_mansion/1x2_b1",
+                "minecraft:woodland_mansion/1x2_b2",
+                "minecraft:woodland_mansion/1x2_b3",
+                "minecraft:woodland_mansion/1x2_c3",
+                "minecraft:woodland_mansion/1x2_c4",
+                "minecraft:woodland_mansion/1x2_d3",
+                "minecraft:woodland_mansion/2x2_a1",
+                "minecraft:woodland_mansion/2x2_a2",
+                "minecraft:woodland_mansion/2x2_a3",
+                "minecraft:woodland_mansion/2x2_b1",
+                "minecraft:woodland_mansion/2x2_b2",
+                "minecraft:woodland_mansion/2x2_b3",
+                "minecraft:woodland_mansion/2x2_b4",
+                "minecraft:woodland_mansion/2x2_b5"
+              ],
+              "invoker": [
+                "minecraft:woodland_mansion/1x2_c_stairs",
+                "minecraft:woodland_mansion/1x2_d_stairs"
+              ]
+            },
+            "other_sources": [
+              "minecraft:spider from secret-room ordinary spawner",
+              "ordinary biome spawning remains possible because root spawn_overrides is empty"
+            ],
+            "scope": "Marker handling creates persistent STRUCTURE mobs; source requests do not prove successful insertion or a particular population. Template entities are ignored by makeSettings. Reachable templates and markers are layout components, not families.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
+          "underground_surface_classification": {
+            "assessment": "Surface-rooted mansion. WoodlandMansionStructure.findGenerationPoint chooses rotation, computes getLowestYIn5by5BoxOffset7Blocks and rejects base Y below 60. Foundations and enclosed rooms can extend below the visible building; saved bounds are not terrain-exposure measurements.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+          },
+          "visual_discoverability": {
+            "assessment": "Large surface building with walls, windows, roof and entrance; the saved example spans 79x31x61. Forest cover, terrain and approach affect visibility. No sightline distance or guaranteed visible footprint is measured.",
+            "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
           }
         },
         "evidence": {
+          "evidence/item-6/frozen/config/lithostitched.json": "d8a63933ec4757186a594debea59dd35724a0a895fe601b324f96217c28312df",
           "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json": "500586f2dac72e3f92a6f2b75f92a7c86f3b8288910907262f281d53d943bfd5",
           "evidence/item-8/raw-custody/vanilla-final-geometry-r1-local-restore.json": "d07c12631589f021d69441ec543e1ecff258e33f39f0d55fbb1e07131ed47653",
           "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json": "d6d5b4da0b286f3c2d271a750da62662aa26ace7f5a652e0da1ab77c019d9f31",
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/sources/illagerinvasion-provider/identities.json": "74b6cb2b01b81d99417d139334cf85e7629fb6fef50947d06227b864ec7574c9",
+          "evidence/item-8/sources/lithostitched-provider-hooks/identities.json": "7b4524568318a99cc4fc77d5ac4d8c23c125cc492d5c3045ae6347f3d170a8c2",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
           "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "minecraft:mansion",
         "name": "Vanilla mansion",
-        "rationale": "One vanilla mansion generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+        "rationale": "One custom mansion generation family. All 73 selected template IDs are components or alternatives, including 13 retained-mod replacements, not additional families. Source assessment and saved geometry are integrated with stated population and visibility limits.",
         "structure_ids": [
           "minecraft:mansion"
         ],
@@ -105537,45 +105683,114 @@
               "step": "surface_structures",
               "type": "minecraft:woodland_mansion"
             },
-            "missing_components": "UNKNOWN: custom generation is outside current pool trace"
+            "missing_components": {
+              "processor": "lithostitched:woodland_mansion has an empty processor list.",
+              "selection": "Vanilla placer literals, floor room selections and stair alternatives, with frozen Lithostitched breaks_seed_parity=true template lists. The latter include 1x1_b5 beyond the vanilla second-floor nextInt(4) selection. Illager Invasion replaces 13 same-ID templates; 86 packaged rows are 73 unique components.",
+              "status": "No missing selected component among 73 unique template IDs."
+            }
           }
         }
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "assessment": "Hostile multi-room illager building with conditional secret-room spider encounter. Retained Illager Invasion replacements expand the authored enemy sources. No per-mansion population, difficulty score or guaranteed occurrence of every room or mob is inferred.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {
-          "minecraft:mansion": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:woodland_mansion"
-          }
+        "literal_template_sources": {
+          "minecraft:chests/stronghold_library": [
+            "minecraft:woodland_mansion/1x2_c4",
+            "minecraft:woodland_mansion/2x2_b3"
+          ],
+          "minecraft:chests/woodland_mansion": [
+            "minecraft:woodland_mansion/2x2_b1"
+          ]
         },
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": []
+        "marker_source": "Chest prefix invokes createChest with BuiltInLootTables.WOODLAND_MANSION, minecraft:chests/woodland_mansion. Directional suffix controls chest facing.",
+        "other_content": "Some template chests contain literal Items or empty inventories, not loot-table references. Those are authored content rather than additional table sources.",
+        "scope": "Both referenced tables have packaged definitions. Mod loot injection can modify table contents; this assessment records table provenance, not reward quantities or probabilities.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {
-          "minecraft:mansion": {
-            "reason": "no direct start_pool; inspect custom generation path",
-            "type": "minecraft:woodland_mansion"
-          }
+        "effective_marker_sources": {
+          "Archivist": "illagerinvasion:archivist",
+          "Group of Allays": "minecraft:allay, 1..3 creation attempts per selected marker",
+          "Mage": "minecraft:evoker",
+          "Provoker": "illagerinvasion:provoker",
+          "Warrior": "illagerinvasion:basher when nextInt(2)==0; otherwise vanilla minecraft:vindicator",
+          "invoker": "illagerinvasion:invoker"
         },
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
+        "marker_templates": {
+          "Archivist": [
+            "minecraft:woodland_mansion/1x2_c1",
+            "minecraft:woodland_mansion/1x2_c4",
+            "minecraft:woodland_mansion/2x2_b2",
+            "minecraft:woodland_mansion/2x2_b3"
+          ],
+          "ChestNorth": [
+            "minecraft:woodland_mansion/1x2_b4",
+            "minecraft:woodland_mansion/1x2_se1"
+          ],
+          "ChestSouth": [
+            "minecraft:woodland_mansion/1x2_a1",
+            "minecraft:woodland_mansion/1x2_b3",
+            "minecraft:woodland_mansion/1x2_s1",
+            "minecraft:woodland_mansion/1x2_se1",
+            "minecraft:woodland_mansion/2x2_b5"
+          ],
+          "ChestWest": [
+            "minecraft:woodland_mansion/1x1_a4",
+            "minecraft:woodland_mansion/1x1_as1",
+            "minecraft:woodland_mansion/1x2_d2"
+          ],
+          "Group of Allays": [
+            "minecraft:woodland_mansion/2x2_a1"
+          ],
+          "Mage": [
+            "minecraft:woodland_mansion/1x2_d3",
+            "minecraft:woodland_mansion/2x2_b1",
+            "minecraft:woodland_mansion/2x2_b2",
+            "minecraft:woodland_mansion/2x2_b4"
+          ],
+          "Provoker": [
+            "minecraft:woodland_mansion/1x2_a4",
+            "minecraft:woodland_mansion/1x2_a9",
+            "minecraft:woodland_mansion/1x2_b3",
+            "minecraft:woodland_mansion/1x2_d5",
+            "minecraft:woodland_mansion/2x2_a3",
+            "minecraft:woodland_mansion/2x2_b1",
+            "minecraft:woodland_mansion/2x2_b5"
+          ],
+          "Warrior": [
+            "minecraft:woodland_mansion/1x2_a1",
+            "minecraft:woodland_mansion/1x2_a3",
+            "minecraft:woodland_mansion/1x2_a8",
+            "minecraft:woodland_mansion/1x2_a9",
+            "minecraft:woodland_mansion/1x2_b1",
+            "minecraft:woodland_mansion/1x2_b2",
+            "minecraft:woodland_mansion/1x2_b3",
+            "minecraft:woodland_mansion/1x2_c3",
+            "minecraft:woodland_mansion/1x2_c4",
+            "minecraft:woodland_mansion/1x2_d3",
+            "minecraft:woodland_mansion/2x2_a1",
+            "minecraft:woodland_mansion/2x2_a2",
+            "minecraft:woodland_mansion/2x2_a3",
+            "minecraft:woodland_mansion/2x2_b1",
+            "minecraft:woodland_mansion/2x2_b2",
+            "minecraft:woodland_mansion/2x2_b3",
+            "minecraft:woodland_mansion/2x2_b4",
+            "minecraft:woodland_mansion/2x2_b5"
+          ],
+          "invoker": [
+            "minecraft:woodland_mansion/1x2_c_stairs",
+            "minecraft:woodland_mansion/1x2_d_stairs"
+          ]
+        },
+        "other_sources": [
+          "minecraft:spider from secret-room ordinary spawner",
+          "ordinary biome spawning remains possible because root spawn_overrides is empty"
         ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [],
-        "unresolved_authored_entities": {}
+        "scope": "Marker handling creates persistent STRUCTURE mobs; source requests do not prove successful insertion or a particular population. Template entities are ignored by makeSettings. Reachable templates and markers are layout components, not families.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
       },
       "name": "Vanilla mansion",
       "pool_trace_ids": [],
@@ -105583,8 +105798,14 @@
       "structure_ids": [
         "minecraft:mansion"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "assessment": "Surface-rooted mansion. WoodlandMansionStructure.findGenerationPoint chooses rotation, computes getLowestYIn5by5BoxOffset7Blocks and rejects base Y below 60. Foundations and enclosed rooms can extend below the visible building; saved bounds are not terrain-exposure measurements.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+      },
+      "visual_discoverability": {
+        "assessment": "Large surface building with walls, windows, roof and entrance; the saved example spans 79x31x61. Forest cover, terrain and approach affect visibility. No sightline distance or guaranteed visible footprint is measured.",
+        "source": "evidence/item-8/sources/vanilla-mansion-assessment/README.md"
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -227878,7 +228099,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "c3d72b8f4dbb5d442dd0fb8c44f1a417a5f100278700ed650c22f0d7178920a7",
+    "evidence/item-8/family-decisions.json": "16571b58c6a2bfd99c700f9addc20c6f23bb36996301a4a7b49d7879985144f2",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
