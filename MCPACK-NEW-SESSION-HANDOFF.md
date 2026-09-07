@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five WDA landmarks assessed after 1bb2f0cf
+
+Fifty attributes assess Fishing Hut, Jungle Tree House, Lighthouse, Small Blimp
+and Wishing Well, five roots/20 selected templates. Source connected envelopes
+are distinguished from absent retained starts. Blimp begins with its ladder;
+well effect clouds and Jungle saved mobs are not spawner blocks. Preserve
+legacy effect and passenger limitations. Eight focused tests pass; no new
+capture/tool. Registry282/410, nonregistry40/40, total322/450 assessed,
+128 remaining. WDA10/40 assessed. Exact derivations and reproduction commands:
+sources/wda-provider-scope/README.md. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+4f0cde2359d75f890e8ef1be793eb6f522b374e3e59c98e694f1b64cc2179c7c.
+
 #### Five WDA ship designs assessed after cde57670
 
 Fifty attributes assess Hind, Corsair, Galley, Typhon and Undead Pirate Ship,

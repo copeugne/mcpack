@@ -92,3 +92,87 @@ Eight focused tests pass. Semantic comparison changes only these five family
 assessments and the decisions identity; registry membership, biome constraints
 and retained observations remain unchanged. Inventory SHA-256:
 `ad560639057b709679115139b5b65772a8565bfc5aa86244efe3ac299060fd9d`.
+
+## Hut, tree house, lighthouse, blimp and well
+
+Fifty attributes assess fishing_hut, jungle_tree_house, lighthouse, small_blimp
+and wishing_well: five roots,20 selected templates. Same exact WDA archive and
+catalog paths as above. Templates catalog SHA-256:
+b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705.
+Each root is minecraft:jigsaw with empty spawn_overrides, WORLD_SURFACE_WG
+projection, ignore_waterlogging and expansion disabled. Offsets in the order
+above are -2,-5,-1,20,-7. Fishing depth3, others7; max distance114 throughout.
+Resolved dimension-biome intersections are Overworld only. No retained start
+is linked for these five. The existing world observations remain unchanged.
+Selected pools have empty processors and rigid elements; Fishing uses
+legacy_single_pool_element, the other four single_pool_element. Traces have
+no missing components or unresolved elements. No new capture is required.
+
+Geometry is a nominal connector-compatible envelope, including air/padding,
+not observed occupied blocks or a guarantee every component places. Whole
+rotation exchanges horizontal axes. Incoming connectors are placed adjacent
+to the parent connector, then the rotated incoming coordinate is subtracted.
+
+- Fishing main21x14x17 has up_west(10,5,5); spawner1x2x1 has
+  down_west(0,1,0). Aligned attachment origin(10,5,5) fits main21x14x17.
+- Jungle main31x48x31 down_north(15,0,15) matches roots31x16x31
+  up_north(15,15,15), putting roots at(0,-16,0). Union31x64x31.
+  The selected main pool contains both, so either may start. This preserves
+  shape up to translation but changes surface-relative placement. Eleven
+  main up-facing mob connectors accept1x3x1 saved-entity pieces within its
+  envelope. These are not physical spawners or a measured population.
+- Lighthouse starts part1(31x31x31). Its up_south(15,30,20) joins
+  part2(31x37x31) down_south(15,0,20), origin(0,31,0), union31x68x31.
+  Only these complementary architecture connectors occur; the tower pool
+  containing both pieces does not establish an arbitrarily repeating tower.
+- Blimp starts only ladders_0(2x48x1). Its aligned up_north(1,47,0)
+  joins part0 down_north(28,0,11), origin(-27,48,-11). Part0 east(30,0,0)
+  joins part1 west(0,0,0), origin(4,48,-11), using side1/side0 names.
+  Hull parts are31x25x31. UnionX-27..34,Z-11..19,Y48..72 is62x25x31;
+  ladderY0..47 stays within that XZ envelope, making62x73x31 overall.
+  Ladder bottom points down into main pool, which contains only part0/part1;
+  neither has the matching upward ladders connector. Do not invent a repeated
+  ladder chain. Four hull spawner attachment points fit within the hull.
+- Well16x25x16 up_north(7,1,7) joins effect5x2x5 down_south(2,0,2).
+  Both are rollable. Unrotated origin(5,2,5) and allowed rotations keep the
+  centered effect piece inside the well. Envelope stays16x25x16. The separate
+  wishing_well_0_no_effects template/pool is not selected by this root and is
+  not a seventh selected template or an additional family.
+
+Fishing spawner_0 block_entities0 saves zombie with fishing rod, dyed leather
+chestplate and redacted player head. Jungle husk_0/skeleton_0 entities0 save
+Health40 and PersistenceRequired1: stone-axe husk or bow skeleton, with chain/
+leather armor and bone/golden helmet respectively. Lighthouse saves neither
+entities nor spawners. Source equipment is not proof of effective legacy NBT.
+
+Blimp skeleton_0/1/2 block_entities0 each saves an ordinary spawner. Variant0
+is Health30 golden-axe skeleton;1 is Health20 skeleton holding FireAspectI
+flint-and-steel with Health20 Size0 magma-cube passenger;2 is Health20 skeleton
+with minecraft:potion passenger whose Item is soul_lantern with legacy
+CustomPotionEffects Id7/Amplifier0/Duration1 and Id15/Amplifier0/Duration400.
+Preserve that unusual payload without claiming a functioning potion attack.
+Full nested NBT is retained in generated_spawners. All four source spawner
+variants across hut/blimp have Delay0,min/max200/800,nearby6,count4,range4,
+player range16. Source variant counts are not placed spawner or enemy counts.
+Blimp part0 block_entities26 hopper has one diamond;31 dispenser has arrows
+2+2+4+6+6+6+2=28. These fixed contents are separate from loot-table references
+and do not prove a working trap. Other selected templates have no nonempty
+fixed Items/Book container payload. Per-template table pointers are retained
+in loot_table_source; entity equipment is separate.
+
+Well effects pool has five equal-weight alternatives, each with one saved
+area_effect_cloud at entities0. Speed/regen/wither/resistance/haste save legacy
+Effects IDs1/10/20/11/3; speed amplifier1, others0; wither duration200, others3200.
+Every cloud saves Radius3,Duration19999980,DurationOnUse0,RadiusOnUse0,
+RadiusPerTick0,ReapplicationDelay0,WaitTime0. Saved Ages are394/389/403/163/273.
+Particles are large_smoke for speed/regen/haste and cloud for wither/resistance.
+These are authored effect choices, not enemies or spawners, and no container
+loot is assigned. Neither full persistence nor successful legacy effect
+conversion is claimed. Natural spawning remains conditional for all families.
+
+Rebuild and focused validation use the commands above. This increment changes
+only these five assessments, their direct template-source reference and the
+builder's decisions identity. It adds no tool, runtime or measurement system.
+
+Eight focused tests pass. Inventory SHA-256:
+4f0cde2359d75f890e8ef1be793eb6f522b374e3e59c98e694f1b64cc2179c7c.
