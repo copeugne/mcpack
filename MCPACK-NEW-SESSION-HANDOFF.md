@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### PR18 first review: assessment status fixed, prerequisite instructions open
+
+PR18 https://github.com/copeugne/mcpack/pull/18 replaces closed PR17. Its review
+of47e370d completed with two valid findings, recorded at issuecomment-5575126251.
+The assessment-status fix separates448 ASSESSED families and18 DISPOSITIONED
+registry groups from the still-INCOMPLETE item lifecycle. Five affected tests,
+Ruff and basedpyright pass; only statuses/scope change in the rebuilt inventory.
+
+Remaining review fix: document existing candidate acquisition and raw-registry
+restore prerequisites for tests/item8, then verify the actual suite inputs in a
+clean checkout context. Reuse tools/acquire_candidate_artifacts.py and
+ tools/archive_item7_evidence.py; do not regenerate worlds or add infrastructure.
+After both fixes, push and request fresh @codex review on PR18. Final delivery
+still requires clean completed review, status reconciliation and verified merge.
+
+
 #### User-requested coherent milestones replace the first PR history
 
 Do not merge PR17. The user explicitly requested a second consolidation because

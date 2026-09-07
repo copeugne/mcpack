@@ -25,6 +25,8 @@ def test_final_listing_preserves_family_assessments_and_registry_coverage(
     other = cast("dict[str, dict[str, JsonValue]]", result["other_registry_groups"])
     assert len(families) == 448
     assert len(other) == 18
+    assert all(row["status"] == "ASSESSED" for row in families.values())
+    assert all(row["status"] == "DISPOSITIONED" for row in other.values())
     assert not families.keys() & other.keys()
     assert "aether:large_aercloud" in other
     assert "minecraft:stronghold" in other

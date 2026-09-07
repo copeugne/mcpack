@@ -3,6 +3,25 @@
 Status: IN PROGRESS. Family assessments and provider discovery are resolved;
 local acceptance is verified; preservation/history preparation and reviewed main delivery remain open.
 
+## PR18 assessment-status correction
+
+Review at47e370d identified that family INCOMPLETE values conflated assessment
+coverage with item delivery. The builder now emits ASSESSED for active families
+whose eleven required values are present and do not begin with UNKNOWN. The18
+inactive/excluded registry groups are DISPOSITIONED. Overall item status remains
+INCOMPLETE pending reviewed delivery. Nested source uncertainty is retained.
+All448 active assessments are ASSESSED. No assessment values, grouping, source
+identities or raw evidence changed; semantic comparison allows only status fields
+and the scope explanation to differ. Current inventory SHA-256:
+3cb52cdf5ffa8107d0c4b4eccd0458a6c40ebf235644608fe07ab993ac3c5be7.
+The prior acceptance hash below is preserved as the pre-review result.
+
+Focused validation: the consolidation and dimension modules pass5 tests (0.78s).
+Ruff and basedpyright pass on the changed builder and consolidation test. Initial
+lint feedback on function complexity and assertion typing was corrected directly,
+without new helpers or changed scope. Rebuild through the existing builder;
+PR18's separate clean-checkout prerequisite documentation finding remains open.
+
 ## Final local acceptance, 2026-09-07
 
 Local Item8 requirements are verified; overall completion remains IN PROGRESS

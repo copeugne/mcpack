@@ -292,7 +292,16 @@ def consolidate(
     """List active families together while retaining other registry groups and source records."""
     families = cast("dict[str, dict[str, JsonValue]]", result["families"])
     other: dict[str, JsonValue] = {}
+    required = {
+        "dimension", "biome_constraints", "approximate_footprint", "approximate_vertical_size",
+        "intended_hostility", "mob_source", "loot_table_source", "generated_spawners",
+        "authored_or_natural_enemies", "visual_discoverability",
+        "underground_surface_classification",
+    }
     for family, row in list(families.items()):
+        row["status"] = "ASSESSED" if all(
+            row.get(field) and not str(row[field]).startswith("UNKNOWN") for field in required
+        ) else "INCOMPLETE"
         decision = cast("dict[str, JsonValue]", row["grouping_decision"])
         variants = cast("dict[str, dict[str, JsonValue]]", decision.get("variants", {}))
         suppressed = bool(variants) and all(
@@ -301,12 +310,7 @@ def consolidate(
         )
         if "contribution_disposition" in decision or suppressed:
             other[family] = families.pop(family)
-    required = {
-        "dimension", "biome_constraints", "approximate_footprint", "approximate_vertical_size",
-        "intended_hostility", "mob_source", "loot_table_source", "generated_spawners",
-        "authored_or_natural_enemies", "visual_discoverability",
-        "underground_surface_classification",
-    }
+            row["status"] = "DISPOSITIONED"
     for contributor, contribution in contributions.items():
         declared = cast("list[str | dict[str, JsonValue]]", contribution.get("families", []))
         for declaration in declared:
@@ -334,7 +338,9 @@ def consolidate(
                 "name": family,
                 "structure_ids": [],
                 "contribution_id": contributor,
-                "status": "INCOMPLETE",
+                "status": "ASSESSED" if all(
+                    value and not str(value).startswith("UNKNOWN") for value in attributes.values()
+                ) else "INCOMPLETE",
                 **attributes,
             }
     result["other_registry_groups"] = other
@@ -342,7 +348,8 @@ def consolidate(
         "Canonical active-family listing joins registry and non-registry assessments. "
         "Other registry groups retain inactive and excluded coverage dispositions. "
         "Contribution records preserve source relationships and evidence. "
-        "Final acceptance, review and delivery remain open; this is not an exit-gate pass."
+        "Family status describes assessment coverage; DISPOSITIONED marks other registry groups. "
+        "Item status remains INCOMPLETE pending review and delivery, independently of assessments."
     )
 
 
