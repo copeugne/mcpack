@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "cee158bb097d990fe39964a760ed9f94348e4c863f511562a1a72c70bc454c21",
+    "evidence/item-8/family-decisions.json": "329d0f65d7d53c7219ab865252a41b6a7bedc4085354dc63b803eb6e1668a760",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -172430,6 +172430,24 @@
       },
       "betterend:crashed_ship": {
         "attributes": {
+          "approximate_footprint": {
+            "basis": "Selected vanilla template dimensions; rotation can exchange axes. Placement intersects the template box with makeBox.",
+            "erosion_scope": "StructureErode.erodeIntense may relocate block states to floor(x+2*nextGaussian()+0.5), likewise Z. This path has no explicit finite horizontal clamp, so the nominal hull is not a bound on all scattered debris. No observed occupied footprint is claimed.",
+            "nominal_hull_xz_blocks": [
+              13,
+              29
+            ],
+            "template": "minecraft:end_city/ship"
+          },
+          "approximate_vertical_size": {
+            "basis": "Selected vanilla template height before erosion. getYOffset passes height>>3 and height>>2 (3 and 6) to MHelper.randRange and negates the result; place applies Java integer conversion after adding 0.5.",
+            "erosion_scope": "Erosion and drop search down toward the intersected box minimum Y minus 10 and may place displaced blocks outside the hull height. This is not exposed height or a strict total debris bound.",
+            "nominal_hull_y_blocks": 24
+          },
+          "authored_or_natural_enemies": {
+            "basis": "IgnoreEntities=true, filtered Sentry markers and no custom mob creation. Do not copy End-city encounters merely because the hull template is shared.",
+            "value": "No direct authored enemies from the ship template/marker path; natural enemies may occur."
+          },
           "biome_constraints": {
             "basis": "The placed definition applies rarity 500, in-square and biome filters. Twenty-seven packaged BetterEnd biomes reference it directly; twenty-one occur in the captured End biome source. This establishes a natural-generation route, not observed occurrence or exploration frequency."
           },
@@ -172437,6 +172455,31 @@
             "basis": "The placed definition applies rarity 500, in-square and biome filters. Twenty-seven packaged BetterEnd biomes reference it directly; twenty-one occur in the captured End biome source. This establishes a natural-generation route, not observed occurrence or exploration frequency.",
             "limitation": "Captured biome-source overlap and packaged route, not observed occurrence.",
             "value": "minecraft:the_end"
+          },
+          "generated_spawners": {
+            "processor_behavior": "CrashedShipFeature$1 replaces Blocks.SPAWNER with AIR and null NBT. Erosion does not create a spawner or spawner NBT.",
+            "scope": "Template and generator contribution; surrounding pre-existing blocks are not inventoried as authored ship contents.",
+            "template_spawners": []
+          },
+          "intended_hostility": {
+            "basis": "Structure/air markers are ignored and template entities disabled. No EndCityPiece marker handler is called. The replacer converts spawners and wool-sound blocks to air; erosion handles block states.",
+            "value": "Abandoned wreck without the vanilla End-city authored defenders."
+          },
+          "loot_table_source": {
+            "direct_assigned_tables": [],
+            "elytra": "Elytra marker is ignored; this feature does not call the vanilla marker handler that creates the item frame/reward.",
+            "fixed_contents": "The brewing stand contains two saved minecraft:potion stacks with minecraft:strong_healing potion components, slots 0 and 2. These are fixed template contents, not loot-table rolls.",
+            "scope": "Source attribution. Placement and erosion can remove or alter blocks; no guaranteed surviving chest, potion reward, dragon head or elytra is asserted.",
+            "template_chests": "Two saved chest compounds have Items=[] and no LootTable. Chest markers are ignored; no vanilla End-city chest table assignment is invoked."
+          },
+          "mob_source": {
+            "basis": "Selected template entity list is empty, placement ignores entities and Sentry data markers are filtered rather than processed by EndCityPiece. Erosion removes/relocates block states, with no direct entity creation.",
+            "direct_authored_entities": [],
+            "natural_source": "Natural biome mobs and surrounding world conditions remain separate; no live encounter is claimed."
+          },
+          "underground_surface_classification": {
+            "basis": "Origin is moved to chunk center at Y=128 before getGround. Requires selected ground Y>5 and END_STONES below. canSpawn computes both distance terms from chunk X, accepting 2*(X>>4)^2>=3600, not a radial X/Z exclusion. Rotation/mirror and negative template-height-derived offset are applied; no terrain merge is selected.",
+            "value": "Grounded, partly lowered wreck with erosion."
           },
           "visual_discoverability": {
             "basis": "Source-derived form, not measured approach visibility or discovery distance.",
@@ -172451,8 +172494,13 @@
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_configured_feature.txt": "7522f8d6f1bcd1f3c5d9211c89f3fcf2e201c80cee88dab52d4e2274b0fbc844",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
+          "evidence/item-8/sources/betterend-entry-template-consumers/identities.json": "22dee10074c502f7026b266335c5d2966a47374504ae836d2f1da17e79a895d8",
           "evidence/item-8/sources/betterend-feature-scope/identities.json": "7a3fe03fddacad093573ad808d94b41463643acf11df321dc2b7a6fdeb5dd30d",
-          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+          "evidence/item-8/sources/betterend-lake-helpers/identities.json": "80e48ad38d1350b83906950d68567f0d97909b1c062bea40ce50e2952a6f99c2",
+          "evidence/item-8/sources/betterend-remaining-features/identities.json": "8ff7d86a2ca142e9a4fc4eac7bfee020c9e5301be3cb894ad7b42015578d0254",
+          "evidence/item-8/sources/crashed-ship-erosion/identities.json": "3ef70855f3233566c3e7b3b7c11d1e35edc63cc3aa4f20761c6bb6afb1dfaecb",
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "families": [
           "betterend:crashed_ship"
