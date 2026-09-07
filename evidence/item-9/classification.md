@@ -1,6 +1,6 @@
 # Provisional canonical family matrix
 
-Decision version: item9-provisional-v1. Status: IN PROGRESS.
+Decision version: item9-provisional-v1. Status: COMPLETE.
 Read [the rubric, evidence addressing and flag semantics](README.md) first.
 Each family ID identifies its exact accepted Item 8 evidence record. Flags and
 comparison groups are provisional concerns, not removal decisions.

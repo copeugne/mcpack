@@ -1,7 +1,9 @@
 # Item 9: Provisional structure classification
 
-Status: IN PROGRESS. Local classification gate: PASS. Decision version:
-`item9-provisional-v1`. Final clean PR review and verified main delivery remain.
+Status: COMPLETE. Local classification gate: PASS. Decision version:
+`item9-provisional-v1`. [PR20](https://github.com/copeugne/mcpack/pull/20) merged
+reviewed head `5073af26` as `7cbe06c7`, verified in fetched main.
+Exact review and delivery references are in the evidence record.
 
 The [authoritative family matrix](../../evidence/item-9/classification.md)
 classifies all 448 accepted Item 8 active canonical families exactly once.
@@ -62,15 +64,16 @@ The documented local gate passed on 2026-09-08: accepted inventory hash matches,
 fields are populated, category/confidence/flag/group vocabulary is valid, and
 whitespace checks pass. Manual table/source review checked role rationale,
 mixed variants, progression claims and affirmative flags. It removed one draft
-oversizing flag unsupported by the accepted geometry. No code, runtime or broad
-Item 8 regression suite was changed or rerun.
+oversizing flag unsupported by the accepted geometry. The existing gate was
+relocated into a tracked Bash entry point during review.
+No runtime or Item 8 regression suite was changed or rerun.
 
 The previous 21-family zero-mod report remains in Git at `ff43d826` and is
 SUPERSEDED. Its lost matrix/verification artifacts and historical claims are
 not acceptance evidence for these 448 families.
 
-Item 10 must use these canonical identities only after Item 9's review and
-merge gates pass. No density measurement or downstream workflow was performed.
+Item 10 can now consume these canonical identities after its other dependencies
+are checked. No density measurement or downstream workflow was performed.
 Items 11 through 19 retain their own observation and dependency gates; this
 classification does not establish human discoverability, repetition, combat
 quality, working services, reward economy or actual redundancy.
