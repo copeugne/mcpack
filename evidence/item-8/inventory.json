@@ -52159,7 +52159,11 @@
     "explorations:campsite": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "basis": "No authored mob source identified. Natural spawning remains conditional; absence of authored enemies is not a safety guarantee.",
+        "natural_spawn_overrides": {}
+      },
       "biome_constraints": {
         "explorations:campsite": {
           "biomes": [
@@ -52216,43 +52220,72 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "explorations:campsite": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG at offset zero.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:campsite/animal_pen",
-          "explorations:campsite/base_1",
-          "explorations:campsite/base_2",
-          "explorations:campsite/hayblocks",
-          "explorations:campsite/seats_1",
-          "explorations:campsite/seats_2",
-          "explorations:campsite/tent_1",
-          "explorations:campsite/tent_2"
-        ],
-        "unresolved_sources": {}
+        "basis": "No spawner block NBT or generation markers in the complete reachable graph. Relevant processors do not add spawners.",
+        "missing_components": [],
+        "packaged_entity_sources": []
       },
       "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "basis": "No authored mob source identified. Natural spawning remains conditional; absence of authored enemies is not a safety guarantee.",
+            "natural_spawn_overrides": {}
+          },
+          "dimension": {
+            "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG at offset zero.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No spawner block NBT or generation markers in the complete reachable graph. Relevant processors do not add spawners.",
+            "missing_components": [],
+            "packaged_entity_sources": []
+          },
+          "intended_hostility": {
+            "basis": "No saved entities, spawners or generation markers in the complete eight-template graph; empty root spawn_overrides leaves conditional natural spawning.",
+            "value": "Environmental campsite with no authored enemy source identified"
+          },
+          "loot_table_source": {
+            "basis": "Exact available-template table references and owners. Tent wool-replacing processor changes colored block states; other campsite elements use empty processors. These sources do not establish rolled rewards or successful runtime container outcomes.",
+            "missing_components": [],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:campsite/tent_1",
+                  "explorations:campsite/tent_2"
+                ],
+                "value": "explorations:chests/campsite/tent"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entity_templates": {},
+            "basis": "No saved entities or spawner sources in the complete available graph. Empty spawn_overrides leaves conditional natural biome spawning; a pen component does not prove animals are authored.",
+            "missing_components": [],
+            "spawner_sources": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG, offset zero, beard_thin terrain adaptation. Attached components and terrain may extend above or below the start reference.",
+            "value": "Surface-projected assembly"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+            "source_form": "Surface campsite with alternative bases, tents, seating, hay and pen components; low outdoor forms can blend with terrain."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/explorations-provider/identities.json": "7889daf6336c190cec169bc57eac369ebf863eb4c72e2b7895341aa12b4e9b8f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "explorations:campsite",
         "generation_settings": {
@@ -52270,13 +52303,13 @@
           "explorations:campsite"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "No saved entities, spawners or generation markers in the complete eight-template graph; empty root spawn_overrides leaves conditional natural spawning.",
+        "value": "Environmental campsite with no authored enemy source identified"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact available-template table references and owners. Tent wool-replacing processor changes colored block states; other campsite elements use empty processors. These sources do not establish rolled rewards or successful runtime container outcomes.",
+        "missing_components": [],
         "packaged_references": [
           {
             "field": "LootTable",
@@ -52286,42 +52319,14 @@
             ],
             "value": "explorations:chests/campsite/tent"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:campsite/animal_pen",
-          "explorations:campsite/base_1",
-          "explorations:campsite/base_2",
-          "explorations:campsite/hayblocks",
-          "explorations:campsite/seats_1",
-          "explorations:campsite/seats_2",
-          "explorations:campsite/tent_1",
-          "explorations:campsite/tent_2"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:campsite/animal_pen",
-          "explorations:campsite/base_1",
-          "explorations:campsite/base_2",
-          "explorations:campsite/hayblocks",
-          "explorations:campsite/seats_1",
-          "explorations:campsite/seats_2",
-          "explorations:campsite/tent_1",
-          "explorations:campsite/tent_2"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entity_templates": {},
+        "basis": "No saved entities or spawner sources in the complete available graph. Empty spawn_overrides leaves conditional natural biome spawning; a pen component does not prove animals are authored.",
+        "missing_components": [],
+        "spawner_sources": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Explorations Campsite",
       "pool_trace_ids": [
@@ -52331,8 +52336,14 @@
       "structure_ids": [
         "explorations:campsite"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG, offset zero, beard_thin terrain adaptation. Attached components and terrain may extend above or below the start reference.",
+        "value": "Surface-projected assembly"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+        "source_form": "Surface campsite with alternative bases, tents, seating, hay and pen components; low outdoor forms can blend with terrain."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -53000,7 +53011,11 @@
     "explorations:jungle_temple": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [],
+        "basis": "No authored mob source identified. Natural spawning remains conditional; absence of authored enemies is not a safety guarantee.",
+        "natural_spawn_overrides": {}
+      },
       "biome_constraints": {
         "explorations:jungle_temple": {
           "biomes": [
@@ -53031,54 +53046,79 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "explorations:jungle_temple": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG at offset zero.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:jungle_temple/jungle_temple",
-          "explorations:jungle_temple/outside_stairs_chest",
-          "explorations:jungle_temple/outside_stairs_empty",
-          "explorations:jungle_temple/outside_stairs_full"
-        ],
-        "unresolved_sources": {
-          "explorations:jungle_temple/jungle_temple": [
-            {
-              "block_path": "/block_entities/3",
-              "mode": "ordinary",
-              "path": "/SpawnPotentials/0",
-              "unresolved": "invalid or missing potential weight"
-            },
-            {
-              "block_path": "/block_entities/3",
-              "mode": "ordinary",
-              "path": "/SpawnData/entity/id",
-              "unresolved": "missing or empty explicit entity ID"
-            }
-          ]
-        }
+        "basis": "No spawner block NBT or generation markers in the complete reachable graph. Relevant processors do not add spawners.",
+        "missing_components": [],
+        "packaged_entity_sources": []
       },
       "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [],
+            "basis": "No authored mob source identified. Natural spawning remains conditional; absence of authored enemies is not a safety guarantee.",
+            "natural_spawn_overrides": {}
+          },
+          "dimension": {
+            "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG at offset zero.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No spawner block NBT or generation markers in the complete reachable graph. Relevant processors do not add spawners.",
+            "missing_components": [],
+            "packaged_entity_sources": []
+          },
+          "intended_hostility": {
+            "basis": "No authored mob or spawner inputs identified, but the main template references a dispenser table containing arrows and slowness/weakness tipped-arrow inputs. This establishes hazard intent, not successful trap operation.",
+            "value": "Temple with authored dispenser hazard inputs"
+          },
+          "loot_table_source": {
+            "basis": "Exact available-template table references and owners. All pool processor lists are minecraft:empty; dispenser and chest tables remain distinct. These sources do not establish rolled rewards or successful runtime container outcomes.",
+            "missing_components": [],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:jungle_temple/jungle_temple",
+                  "explorations:jungle_temple/outside_stairs_chest"
+                ],
+                "value": "explorations:chests/jungle_temple/chest_main"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:jungle_temple/jungle_temple"
+                ],
+                "value": "explorations:chests/jungle_temple/dispenser_main"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entity_templates": {},
+            "basis": "No saved entities or spawner sources in the complete available graph. Empty spawn_overrides leaves conditional natural biome spawning; a pen component does not prove animals are authored.",
+            "missing_components": [],
+            "spawner_sources": [],
+            "structure_spawn_overrides": {}
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG, offset zero, beard_box terrain adaptation. Attached components and terrain may extend above or below the start reference.",
+            "value": "Surface-projected assembly"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+            "source_form": "Surface masonry temple with exterior stair alternatives and dispenser-based hazard inputs; jungle vegetation can obscure the building."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/explorations-provider/identities.json": "7889daf6336c190cec169bc57eac369ebf863eb4c72e2b7895341aa12b4e9b8f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "explorations:jungle_temple",
         "generation_settings": {
@@ -53096,13 +53136,13 @@
           "explorations:jungle_temple"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "No authored mob or spawner inputs identified, but the main template references a dispenser table containing arrows and slowness/weakness tipped-arrow inputs. This establishes hazard intent, not successful trap operation.",
+        "value": "Temple with authored dispenser hazard inputs"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Exact available-template table references and owners. All pool processor lists are minecraft:empty; dispenser and chest tables remain distinct. These sources do not establish rolled rewards or successful runtime container outcomes.",
+        "missing_components": [],
         "packaged_references": [
           {
             "field": "LootTable",
@@ -53119,34 +53159,14 @@
             ],
             "value": "explorations:chests/jungle_temple/dispenser_main"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:jungle_temple/jungle_temple",
-          "explorations:jungle_temple/outside_stairs_chest",
-          "explorations:jungle_temple/outside_stairs_empty",
-          "explorations:jungle_temple/outside_stairs_full"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:jungle_temple/jungle_temple",
-          "explorations:jungle_temple/outside_stairs_chest",
-          "explorations:jungle_temple/outside_stairs_empty",
-          "explorations:jungle_temple/outside_stairs_full"
-        ],
-        "unresolved_authored_entities": {}
+        "authored_entity_templates": {},
+        "basis": "No saved entities or spawner sources in the complete available graph. Empty spawn_overrides leaves conditional natural biome spawning; a pen component does not prove animals are authored.",
+        "missing_components": [],
+        "spawner_sources": [],
+        "structure_spawn_overrides": {}
       },
       "name": "Explorations Jungle Temple",
       "pool_trace_ids": [
@@ -53156,8 +53176,14 @@
       "structure_ids": [
         "explorations:jungle_temple"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG, offset zero, beard_box terrain adaptation. Attached components and terrain may extend above or below the start reference.",
+        "value": "Surface-projected assembly"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+        "source_form": "Surface masonry temple with exterior stair alternatives and dispenser-based hazard inputs; jungle vegetation can obscure the building."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -54655,7 +54681,53 @@
     },
     "explorations:underground_temple": {
       "approximate_footprint": {
+        "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+        "limitation": "Includes the retained 2x2x2 minimal envelope; do not represent it as a typical complete dungeon or erase it. Missing source branches remain unresolved by these observed layouts.",
+        "observation_indexes": [
+          51,
+          53,
+          67,
+          79,
+          84,
+          85,
+          95,
+          150,
+          151,
+          166,
+          190,
+          251,
+          255,
+          267,
+          284,
+          287,
+          290,
+          354,
+          358,
+          366,
+          375,
+          454,
+          456,
+          470,
+          482,
+          487,
+          488,
+          498,
+          547,
+          548,
+          563,
+          587,
+          640,
+          644,
+          656,
+          673,
+          676,
+          679,
+          734,
+          738,
+          746,
+          755
+        ],
         "observed_envelope_xz_blocks": [
           [
             2,
@@ -54700,7 +54772,53 @@
         ]
       },
       "approximate_vertical_size": {
+        "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+        "limitation": "Includes the retained 2x2x2 minimal envelope; do not represent it as a typical complete dungeon or erase it. Missing source branches remain unresolved by these observed layouts.",
+        "observation_indexes": [
+          51,
+          53,
+          67,
+          79,
+          84,
+          85,
+          95,
+          150,
+          151,
+          166,
+          190,
+          251,
+          255,
+          267,
+          284,
+          287,
+          290,
+          354,
+          358,
+          366,
+          375,
+          454,
+          456,
+          470,
+          482,
+          487,
+          488,
+          498,
+          547,
+          548,
+          563,
+          587,
+          640,
+          644,
+          656,
+          673,
+          676,
+          679,
+          734,
+          738,
+          746,
+          755
+        ],
         "observed_envelope_y_blocks": [
           2,
           19,
@@ -54711,7 +54829,41 @@
           43
         ]
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored_spawner_entity_ids": [
+          "minecraft:cave_spider",
+          "minecraft:skeleton",
+          "minecraft:spider",
+          "minecraft:witch",
+          "minecraft:zombie"
+        ],
+        "basis": "Spawner-generated enemies are authored sources. Piece-bounds natural spawn rules separately specify illusioner/pillager/vindicator, each weight 100 and group inputs 4..9. Neither source establishes population.",
+        "natural_spawn_overrides": {
+          "monster": {
+            "bounding_box": "piece",
+            "spawns": [
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:illusioner",
+                "weight": 100
+              },
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:pillager",
+                "weight": 100
+              },
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:vindicator",
+                "weight": 100
+              }
+            ]
+          }
+        }
+      },
       "biome_constraints": {
         "explorations:underground_temple": {
           "biomes": [
@@ -55010,25 +55162,21 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "explorations:underground_temple": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
-          "minecraft:overworld"
-        ]
+        "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Custom UndergroundTempleStructure selects an underground start before delegating to JigsawPlacement; saved starts also occur in the Overworld.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
+        "basis": "Legacy minecraft:mob_spawner NBT in the dungeon room supplies skeleton/spider/witch/zombie inputs; walkway/spawner supplies cave_spider. No observed placement count is asserted.",
+        "missing_components": [
+          {
+            "id": "explorations:underground_temple/intrusions/corner",
+            "kind": "template"
+          },
+          {
+            "id": "explorations:underground_temple/rooms/small_hall_down",
+            "kind": "template"
+          }
         ],
-        "generation_marker_templates": [],
         "packaged_entity_sources": [
           {
             "entity_id": "minecraft:cave_spider",
@@ -55070,40 +55218,438 @@
               "explorations:underground_temple/rooms/dungeon"
             ]
           }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:underground_temple/dead_ends/chest",
-          "explorations:underground_temple/dead_ends/normal",
-          "explorations:underground_temple/intersections/four_way",
-          "explorations:underground_temple/intersections/three_way",
-          "explorations:underground_temple/quest_tower",
-          "explorations:underground_temple/rooms/bedroom",
-          "explorations:underground_temple/rooms/cells",
-          "explorations:underground_temple/rooms/dungeon",
-          "explorations:underground_temple/rooms/enchanting",
-          "explorations:underground_temple/rooms/large_hall",
-          "explorations:underground_temple/rooms/large_hall_down",
-          "explorations:underground_temple/rooms/library",
-          "explorations:underground_temple/shafts/dead_end",
-          "explorations:underground_temple/shafts/large",
-          "explorations:underground_temple/shafts/small",
-          "explorations:underground_temple/walkways/broken",
-          "explorations:underground_temple/walkways/iron_bars",
-          "explorations:underground_temple/walkways/lava",
-          "explorations:underground_temple/walkways/normal",
-          "explorations:underground_temple/walkways/spawner",
-          "explorations:underground_temple/walkways/stairs",
-          "explorations:underground_temple/walkways/stairs_bars"
-        ],
-        "unresolved_sources": {}
+        ]
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+            "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+            "limitation": "Includes the retained 2x2x2 minimal envelope; do not represent it as a typical complete dungeon or erase it. Missing source branches remain unresolved by these observed layouts.",
+            "observation_indexes": [
+              51,
+              53,
+              67,
+              79,
+              84,
+              85,
+              95,
+              150,
+              151,
+              166,
+              190,
+              251,
+              255,
+              267,
+              284,
+              287,
+              290,
+              354,
+              358,
+              366,
+              375,
+              454,
+              456,
+              470,
+              482,
+              487,
+              488,
+              498,
+              547,
+              548,
+              563,
+              587,
+              640,
+              644,
+              656,
+              673,
+              676,
+              679,
+              734,
+              738,
+              746,
+              755
+            ],
+            "observed_envelope_xz_blocks": [
+              [
+                2,
+                2
+              ],
+              [
+                63,
+                100
+              ],
+              [
+                69,
+                75
+              ],
+              [
+                74,
+                49
+              ],
+              [
+                75,
+                77
+              ],
+              [
+                81,
+                82
+              ],
+              [
+                85,
+                77
+              ],
+              [
+                89,
+                97
+              ],
+              [
+                91,
+                94
+              ],
+              [
+                92,
+                100
+              ]
+            ]
+          },
+          "approximate_vertical_size": {
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+            "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+            "limitation": "Includes the retained 2x2x2 minimal envelope; do not represent it as a typical complete dungeon or erase it. Missing source branches remain unresolved by these observed layouts.",
+            "observation_indexes": [
+              51,
+              53,
+              67,
+              79,
+              84,
+              85,
+              95,
+              150,
+              151,
+              166,
+              190,
+              251,
+              255,
+              267,
+              284,
+              287,
+              290,
+              354,
+              358,
+              366,
+              375,
+              454,
+              456,
+              470,
+              482,
+              487,
+              488,
+              498,
+              547,
+              548,
+              563,
+              587,
+              640,
+              644,
+              656,
+              673,
+              676,
+              679,
+              734,
+              738,
+              746,
+              755
+            ],
+            "observed_envelope_y_blocks": [
+              2,
+              19,
+              27,
+              31,
+              33,
+              37,
+              43
+            ]
+          },
+          "authored_or_natural_enemies": {
+            "authored_spawner_entity_ids": [
+              "minecraft:cave_spider",
+              "minecraft:skeleton",
+              "minecraft:spider",
+              "minecraft:witch",
+              "minecraft:zombie"
+            ],
+            "basis": "Spawner-generated enemies are authored sources. Piece-bounds natural spawn rules separately specify illusioner/pillager/vindicator, each weight 100 and group inputs 4..9. Neither source establishes population.",
+            "natural_spawn_overrides": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:illusioner",
+                    "weight": 100
+                  },
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:pillager",
+                    "weight": 100
+                  },
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:vindicator",
+                    "weight": 100
+                  }
+                ]
+              }
+            }
+          },
+          "dimension": {
+            "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Custom UndergroundTempleStructure selects an underground start before delegating to JigsawPlacement; saved starts also occur in the Overworld.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "Legacy minecraft:mob_spawner NBT in the dungeon room supplies skeleton/spider/witch/zombie inputs; walkway/spawner supplies cave_spider. No observed placement count is asserted.",
+            "missing_components": [
+              {
+                "id": "explorations:underground_temple/intrusions/corner",
+                "kind": "template"
+              },
+              {
+                "id": "explorations:underground_temple/rooms/small_hall_down",
+                "kind": "template"
+              }
+            ],
+            "packaged_entity_sources": [
+              {
+                "entity_id": "minecraft:cave_spider",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/walkways/spawner"
+                ]
+              },
+              {
+                "entity_id": "minecraft:skeleton",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:spider",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:witch",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:zombie",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              }
+            ]
+          },
+          "intended_hostility": {
+            "basis": "Retained spawner NBT and piece-bounds monster override supply hostile sources; dispenser loot also contains arrows and slowness/weakness tipped-arrow inputs.",
+            "value": "Hostile dungeon with spawner and natural-spawn inputs"
+          },
+          "loot_table_source": {
+            "basis": "Exact available-template table references and owners. Pools use the previously captured masonry-aging processor; missing templates are not assigned invented loot. These sources do not establish rolled rewards or successful runtime container outcomes.",
+            "missing_components": [
+              {
+                "id": "explorations:underground_temple/intrusions/corner",
+                "kind": "template"
+              },
+              {
+                "id": "explorations:underground_temple/rooms/small_hall_down",
+                "kind": "template"
+              }
+            ],
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/bedroom",
+                  "explorations:underground_temple/rooms/cells"
+                ],
+                "value": "explorations:chests/underground_temple/barrel"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/bedroom"
+                ],
+                "value": "explorations:chests/underground_temple/bedrooms"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/dead_ends/chest"
+                ],
+                "value": "explorations:chests/underground_temple/dead_end"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/quest_tower"
+                ],
+                "value": "explorations:chests/underground_temple/dispenser"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ],
+                "value": "explorations:chests/underground_temple/dungeon"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/enchanting"
+                ],
+                "value": "explorations:chests/underground_temple/enchanting"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/large_hall"
+                ],
+                "value": "explorations:chests/underground_temple/large_room"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/rooms/library"
+                ],
+                "value": "explorations:chests/underground_temple/library"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "explorations:underground_temple/quest_tower"
+                ],
+                "value": "explorations:chests/underground_temple/quest_tower"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entity_templates": {
+              "minecraft:armor_stand": [
+                "explorations:underground_temple/rooms/bedroom"
+              ]
+            },
+            "basis": "Explicit available-template entities, spawner NBT and root spawning rules. Armor stand is decorative. These are possible sources, not live populations or counts.",
+            "missing_components": [
+              {
+                "id": "explorations:underground_temple/intrusions/corner",
+                "kind": "template"
+              },
+              {
+                "id": "explorations:underground_temple/rooms/small_hall_down",
+                "kind": "template"
+              }
+            ],
+            "spawner_sources": [
+              {
+                "entity_id": "minecraft:cave_spider",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/walkways/spawner"
+                ]
+              },
+              {
+                "entity_id": "minecraft:skeleton",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:spider",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:witch",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              },
+              {
+                "entity_id": "minecraft:zombie",
+                "mode": "ordinary",
+                "spawner_id": "minecraft:mob_spawner",
+                "templates": [
+                  "explorations:underground_temple/rooms/dungeon"
+                ]
+              }
+            ],
+            "structure_spawn_overrides": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:illusioner",
+                    "weight": 100
+                  },
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:pillager",
+                    "weight": 100
+                  },
+                  {
+                    "maxCount": 9,
+                    "minCount": 4,
+                    "type": "minecraft:vindicator",
+                    "weight": 100
+                  }
+                ]
+              }
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "Custom generator rejects sea level <=30 or span <10, then uses Y=minY+15+nextInt(abs(seaLevel-15-(minY+15))) at chunk middle. Underground generation step; connected pieces can extend beyond the start and intersect caves. This is not measured burial.",
+            "value": "Underground-biased branching temple"
+          },
+          "visual_discoverability": {
+            "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+            "source_form": "Underground corridors, shafts and rooms with a quest-tower component; cave intersections may reveal interiors, but no guaranteed surface landmark is established."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/explorations-provider/identities.json": "7889daf6336c190cec169bc57eac369ebf863eb4c72e2b7895341aa12b4e9b8f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "explorations:underground_temple",
         "generation_settings": {
@@ -55126,12 +55672,21 @@
           "explorations:underground_temple"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Retained spawner NBT and piece-bounds monster override supply hostile sources; dispenser loot also contains arrows and slowness/weakness tipped-arrow inputs.",
+        "value": "Hostile dungeon with spawner and natural-spawn inputs"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
+        "basis": "Exact available-template table references and owners. Pools use the previously captured masonry-aging processor; missing templates are not assigned invented loot. These sources do not establish rolled rewards or successful runtime container outcomes.",
+        "missing_components": [
+          {
+            "id": "explorations:underground_temple/intrusions/corner",
+            "kind": "template"
+          },
+          {
+            "id": "explorations:underground_temple/rooms/small_hall_down",
+            "kind": "template"
+          }
         ],
         "packaged_references": [
           {
@@ -55198,74 +55753,92 @@
             ],
             "value": "explorations:chests/underground_temple/quest_tower"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:underground_temple/dead_ends/chest",
-          "explorations:underground_temple/dead_ends/normal",
-          "explorations:underground_temple/intersections/four_way",
-          "explorations:underground_temple/intersections/three_way",
-          "explorations:underground_temple/quest_tower",
-          "explorations:underground_temple/rooms/bedroom",
-          "explorations:underground_temple/rooms/cells",
-          "explorations:underground_temple/rooms/dungeon",
-          "explorations:underground_temple/rooms/enchanting",
-          "explorations:underground_temple/rooms/large_hall",
-          "explorations:underground_temple/rooms/large_hall_down",
-          "explorations:underground_temple/rooms/library",
-          "explorations:underground_temple/shafts/dead_end",
-          "explorations:underground_temple/shafts/large",
-          "explorations:underground_temple/shafts/small",
-          "explorations:underground_temple/walkways/broken",
-          "explorations:underground_temple/walkways/iron_bars",
-          "explorations:underground_temple/walkways/lava",
-          "explorations:underground_temple/walkways/normal",
-          "explorations:underground_temple/walkways/spawner",
-          "explorations:underground_temple/walkways/stairs",
-          "explorations:underground_temple/walkways/stairs_bars"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {
+        "authored_entity_templates": {
           "minecraft:armor_stand": [
             "explorations:underground_temple/rooms/bedroom"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "explorations:underground_temple/dead_ends/chest",
-          "explorations:underground_temple/dead_ends/normal",
-          "explorations:underground_temple/intersections/four_way",
-          "explorations:underground_temple/intersections/three_way",
-          "explorations:underground_temple/quest_tower",
-          "explorations:underground_temple/rooms/bedroom",
-          "explorations:underground_temple/rooms/cells",
-          "explorations:underground_temple/rooms/dungeon",
-          "explorations:underground_temple/rooms/enchanting",
-          "explorations:underground_temple/rooms/large_hall",
-          "explorations:underground_temple/rooms/large_hall_down",
-          "explorations:underground_temple/rooms/library",
-          "explorations:underground_temple/shafts/dead_end",
-          "explorations:underground_temple/shafts/large",
-          "explorations:underground_temple/shafts/small",
-          "explorations:underground_temple/walkways/broken",
-          "explorations:underground_temple/walkways/iron_bars",
-          "explorations:underground_temple/walkways/lava",
-          "explorations:underground_temple/walkways/normal",
-          "explorations:underground_temple/walkways/spawner",
-          "explorations:underground_temple/walkways/stairs",
-          "explorations:underground_temple/walkways/stairs_bars"
+        "basis": "Explicit available-template entities, spawner NBT and root spawning rules. Armor stand is decorative. These are possible sources, not live populations or counts.",
+        "missing_components": [
+          {
+            "id": "explorations:underground_temple/intrusions/corner",
+            "kind": "template"
+          },
+          {
+            "id": "explorations:underground_temple/rooms/small_hall_down",
+            "kind": "template"
+          }
         ],
-        "unresolved_authored_entities": {}
+        "spawner_sources": [
+          {
+            "entity_id": "minecraft:cave_spider",
+            "mode": "ordinary",
+            "spawner_id": "minecraft:mob_spawner",
+            "templates": [
+              "explorations:underground_temple/walkways/spawner"
+            ]
+          },
+          {
+            "entity_id": "minecraft:skeleton",
+            "mode": "ordinary",
+            "spawner_id": "minecraft:mob_spawner",
+            "templates": [
+              "explorations:underground_temple/rooms/dungeon"
+            ]
+          },
+          {
+            "entity_id": "minecraft:spider",
+            "mode": "ordinary",
+            "spawner_id": "minecraft:mob_spawner",
+            "templates": [
+              "explorations:underground_temple/rooms/dungeon"
+            ]
+          },
+          {
+            "entity_id": "minecraft:witch",
+            "mode": "ordinary",
+            "spawner_id": "minecraft:mob_spawner",
+            "templates": [
+              "explorations:underground_temple/rooms/dungeon"
+            ]
+          },
+          {
+            "entity_id": "minecraft:zombie",
+            "mode": "ordinary",
+            "spawner_id": "minecraft:mob_spawner",
+            "templates": [
+              "explorations:underground_temple/rooms/dungeon"
+            ]
+          }
+        ],
+        "structure_spawn_overrides": {
+          "monster": {
+            "bounding_box": "piece",
+            "spawns": [
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:illusioner",
+                "weight": 100
+              },
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:pillager",
+                "weight": 100
+              },
+              {
+                "maxCount": 9,
+                "minCount": 4,
+                "type": "minecraft:vindicator",
+                "weight": 100
+              }
+            ]
+          }
+        }
       },
       "name": "Explorations Underground Temple",
       "pool_trace_ids": [
@@ -55275,8 +55848,14 @@
       "structure_ids": [
         "explorations:underground_temple"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Custom generator rejects sea level <=30 or span <10, then uses Y=minY+15+nextInt(abs(seaLevel-15-(minY+15))) at chunk middle. Underground generation step; connected pieces can extend beyond the start and intersect caves. This is not measured burial.",
+        "value": "Underground-biased branching temple"
+      },
+      "visual_discoverability": {
+        "basis": "Qualitative architecture and placement description, not measured viewing distance, exposure rate or guaranteed discovery.",
+        "source_form": "Underground corridors, shafts and rooms with a quest-tower component; cave intersections may reveal interiors, but no guaranteed surface landmark is established."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -182642,7 +183221,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "bf584391ecda939039eafc49e8b0ebb89b27a84b55c893a80e475f00fe1718cb",
+    "evidence/item-8/family-decisions.json": "064af2190f8852ffabfd54b68923b478613e9789e277a5670771885cf55ec66b",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",

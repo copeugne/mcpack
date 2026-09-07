@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Explorations assembly attribution after 00cda891
+
+Twenty-six answers integrate campsite, jungle_temple and underground_temple
+source descriptions; the latter also uses existing observed geometry. Retire
+Underground Temple assessment, preserving both missing templates and minimal
+2x2x2 observed envelopes explicitly. Campsite and Jungle Temple each have eight
+attributes plus resolved biomes; only four geometry answers remain for them.
+No new capture, measurement or tool. Seven affected tests and builder checks pass.
+Inventory SHA-256:
+ec0ab5295d23c674f933300468b5c68d5562eefc29a234b46c2226092f8627ea.
+
+Registry assessment is 105/410; nonregistry 40/40, total 145/450 assessed,
+305 remaining. Explorations has two geometry-only families left. Resolve their
+assembly sizes through adequate direct derivation or existing targeted runtime;
+do not repeat the completed source attributions. Final integration, acceptance,
+verified backed-up history consolidation, PR review and main delivery remain open.
+
 #### Explorations tree and cave assessed after d0693aaa
 
 Fourteen answers finish large_oak_tree and slime_cave. Existing full-start bounds
