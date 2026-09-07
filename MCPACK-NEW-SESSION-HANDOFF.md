@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS bazaar assessed after ffec0df0
+
+Nine entries integrated for nine rigid connected market components. Connector
+origins give nominal115 by112 footprint,31 height; center starts at y0 and other
+pieces y1. Villagers/llama distinct from absent-provider guards/cockroach and
+non-mob entities. Twenty-six empty entity NBT records dispositioned. Two literal
+loot sources defined; packaged bazaar_tools alone is not a reference. No spawners
+or markers. Ticking-only processor inspection reused; no runtime/tool added.
+All85 focused checks pass (59.42s); only bazaar/input identity changed.
+Total438/448 assessed;10 connected IDAS families/90 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-bazaar-assessment/README.md.
+Inventory SHA-256: 470a11159c78897d7e0f4c439fed301272e17e61e8750b368d50dee4bf1e8cc6.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS desert ruins assessed after 1547ade6
 
 Nine entries integrated for two rigid connected components. Bottom origin0,-12,0
