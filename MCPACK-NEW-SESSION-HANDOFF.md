@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Hut and shipwreck assessed after 825b0bd4
+
+Retire explorify:mangrove_hut and explorify:end_shipwreck. Twelve missing answers
+and eight existing attributions are integrated. Small rigid connector graphs
+resolve nominal geometry: hut child entity components fit inside 14x32x16 main;
+shipwreck selects 12x13x27 or 13x11x25 hull one layer above its base, giving
+assembled piece-envelope heights 14 or 12. Padding/base air is not occupied volume.
+No new world run, source capture or tooling. Exact derivation is in the existing
+Explorify source README; witch/cat and End-city loot remain separate source facts.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-hut-wreck-descriptions.json`, SHA-256
+1d5d836a946949169650daf3c64bfb38818e880d7fdaadf14b630366d9b5dbfc.
+Only these two rows changed; biomes, observations and nonregistry are unchanged.
+Registry assessment is 82/410, leaving 328; nonregistry remains 40/40. Explorify
+has campsite, dark_forest_settlement, farmstead, ruins and tavern remaining.
+Final integration, acceptance, verified backups/history consolidation, PR review
+and main delivery remain open. Do not conflate piece sizes with settlement size.
+
 #### Black Spiral assessed after 6c99b1c1
 
 Ten answers assess explorify:black_spiral: six missing descriptions and four
