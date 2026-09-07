@@ -38816,7 +38816,8 @@
         "mechanism": "NetherObsidianSpikesModule registers ObsidianSpikeGenerator through Zeta at UNDERGROUND_DECORATION with weight 10. Direct block generation has no member structure templates.",
         "evidence": {
           "evidence/item-8/sources/quark-nether-spikes/identities.json": "5c80fe8dba773400a3cd3fd42309d5b374499a9f7ff5c12e22c51c8c87a3ce4f",
-          "evidence/item-8/sources/zeta-horizontal-directions/identities.json": "d1fe1dd3ec67af3303fbee2b9b688b9191c82a19ea2d38d39b95f5b9ede28950"
+          "evidence/item-8/sources/zeta-horizontal-directions/identities.json": "d1fe1dd3ec67af3303fbee2b9b688b9191c82a19ea2d38d39b95f5b9ede28950",
+          "evidence/item-8/sources/lootintegrations-provider/identities.json": "0f49a269c6f23ed70f832752833a5c8c0d00a18f33737d147644015c5fe0c137"
         },
         "interpretation": "evidence/item-8/sources/quark-nether-spikes/README.md",
         "shared_enablement_evidence": "quark:monster_box.effective_enablement and its linked shared Zeta sources. This module also specifies only category world; frozen category/module toggles are true.",
@@ -38869,7 +38870,77 @@
               "approximate_vertical_size": "Source requested envelope: ordinary 17..24 blocks, large 36..43 blocks, including ten layers below the lava target. Occupied height may differ due to skipped unbreakable base blocks and unchecked write results.",
               "intended_hostility": "Ordinary variant has no authored enemies. Large variant with Big Spike Spawners enabled authors a blaze-spawner encounter over lava.",
               "mob_source": "Large encounter branch places minecraft:spawner and requests EntityType.BLAZE through BaseSpawner.setEntityId. No immediate entity spawn is requested by this generator. Ambient mobs remain unresolved.",
-              "loot_table_source": "Large encounter branch places one chest and assigns minecraft:chests/nether_bridge when its block entity is a randomizable container. Selected base definition is bound in loot_source. Later global loot modifications remain separate.",
+              "loot_table_source": {
+                "base_source": "Large encounter branch places one chest and assigns minecraft:chests/nether_bridge when its block entity is a randomizable container. Selected base definition is bound in loot_source. Later global loot modifications remain separate.",
+                "retained_integration_definitions": [
+                  {
+                    "archive": "lootintegrations-1.21.1-4.7.jar",
+                    "path": "data/lootintegrations/loot/dungeonloot_no_overflow.json",
+                    "sha256": "af4384757af0a44187f58f9a31d0cbe89e1ed5b2091b5aa1a600850953ff29f0",
+                    "document": {
+                      "integrated_loot_tables": {
+                        "minecraft:chests/abandoned_mineshaft": 0,
+                        "minecraft:chests/ancient_city": 0,
+                        "minecraft:chests/bastion_bridge": 0,
+                        "minecraft:chests/bastion_hoglin_stable": 0,
+                        "minecraft:chests/bastion_other": 0,
+                        "minecraft:chests/bastion_treasure": 0,
+                        "minecraft:chests/buried_treasure": 0,
+                        "minecraft:chests/desert_pyramid": 0,
+                        "minecraft:chests/end_city_treasure": 0,
+                        "minecraft:chests/jungle_temple": 0,
+                        "minecraft:chests/nether_bridge": 0,
+                        "minecraft:chests/pillager_outpost": 0,
+                        "minecraft:chests/ruined_portal": 0,
+                        "minecraft:chests/shipwreck_map": 0,
+                        "minecraft:chests/shipwreck_supply": 0,
+                        "minecraft:chests/shipwreck_treasure": 0,
+                        "minecraft:chests/simple_dungeon": 0,
+                        "minecraft:chests/stronghold_corridor": 0,
+                        "minecraft:chests/stronghold_crossing": 0,
+                        "minecraft:chests/stronghold_library": 0,
+                        "minecraft:chests/underwater_ruin_big": 0,
+                        "minecraft:chests/underwater_ruin_small": 0,
+                        "minecraft:chests/village/village_weaponsmith": 0,
+                        "minecraft:chests/woodland_mansion": 0
+                      },
+                      "loot_table": "lootintegrations:chests/empty",
+                      "max_result_itemcount": 13
+                    }
+                  },
+                  {
+                    "archive": "lootintegrations-1.21.1-4.7.jar",
+                    "path": "data/lootintegrations/loot/lootintegrations_nether_bridge.json",
+                    "sha256": "67e5d581a7339746d32ab074fd15ea7ad770dfc784018217069d16182dec7110",
+                    "document": {
+                      "integrated_loot_tables": {
+                        "lootintegrations:chests/nether": 10
+                      },
+                      "loot_table": "minecraft:chests/nether_bridge",
+                      "max_result_itemcount": 100
+                    }
+                  },
+                  {
+                    "archive": "lootintegrations_vanilla-1.6.jar",
+                    "path": "data/lootintegrations/loot/loot_vanilla_nether.json",
+                    "sha256": "5656fdb7355c3af1dfc67a04bad3ea16fe7285495708c96c8b5fa675be7ad987",
+                    "document": {
+                      "integrated_loot_tables": {
+                        "minecraft:chests/bastion_bridge": 1,
+                        "minecraft:chests/bastion_hoglin_stable": 1,
+                        "minecraft:chests/bastion_other": 1,
+                        "minecraft:chests/bastion_treasure": 2,
+                        "minecraft:chests/nether_bridge": 2,
+                        "minecraft:chests/ruined_portal": 1
+                      },
+                      "loot_table": "lootintegrations:chests/nether",
+                      "max_result_itemcount": 9
+                    }
+                  }
+                ],
+                "interpretation": "The nether_bridge integration adds lootintegrations:chests/nether as a weighted source. The retained vanilla addon contributes weighted vanilla Nether chest sources to that nether pool, including nether_bridge. The dungeonloot_no_overflow definition separately names nether_bridge with zero weight; its presence is not a positive selection or observed reward. The captured Loot Integrations manager guards recursive application.",
+                "basis": "Exact packaged integration definitions plus sources/lootintegrations-provider/README.md and its bound manager implementation. These identify source relationships, not reward frequencies, resulting item counts or a loot-balance claim."
+              },
               "generated_spawners": "One physical blaze spawner in the large encounter branch, one block below the first tip layer. No spawner in ordinary spikes. Successful placement and subsequent spawning are not observed.",
               "visual_discoverability": "Source-derived vertical obsidian spike emerging from lava. Large encounter variant has a tip decoration selected conditionally between a blaze lantern and glowstone; exact selected material, terrain occlusion and visibility distance are not observed.",
               "authored_or_natural_enemies": "Large-variant blaze selection is authored through a physical spawner. Ambient natural spawning is separate and unresolved.",

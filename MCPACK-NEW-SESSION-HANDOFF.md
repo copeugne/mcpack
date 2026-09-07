@@ -90,11 +90,48 @@ requirements; do not repeat them without changed or contradictory evidence.
 Twenty-six nonregistry families remain unassessed. Final cross-record consistency,
 identity, acceptance, PR review and delivery checks remain separate.
 
+Quark assessment covers four more families. Retire the supported answers for
+spiral_spire, monster_box and nether_obsidian_spike. Their source/configuration
+bindings, direct geometry, authored encounters, spawner distinctions, loot sources
+and qualitative discovery/placement descriptions are already recorded. Natural
+population counts and positive live encounters are not required to repeat those
+answers. The Nether spike loot attribute now also preserves the three relevant
+packaged Loot Integrations definitions and distinguishes positive source selection
+from the zero-weight reference. The existing selected-loot-source test passes;
+no new measurement or test framework was added. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-assessment.json`.
+SHA-256: 3ac533a2dcfe3ba5dc97b315c72984b76203aad353d0baf2c52933fae7a93537.
+
+Fairy Ring is assessed with three residual questions, not a blank family backlog:
+
+- dimension and configured ore reward: does the initial module/config callback
+  apply the frozen Overworld allowlist and populate the emerald/diamond ore list?
+  The module and callback bodies plus frozen values exist; their annotations and
+  initial refresh binding have not yet been joined. Next inspect FairyRingsModule
+  in quark-landmark-encounter-generators and reuse the shared Zeta configuration
+  and quark-world-category evidence. Do not recapture the generator.
+- biome_constraints: which registered biomes resolve minecraft:is_forest and
+  NeoForge IS_PLAINS, with forest priority? Both packaged tag graphs already exist
+  in structure-inputs.json. Next resolve those existing graphs against the captured
+  biome registry and dimension memberships; confirm the IS_PLAINS resource key.
+- approximate geometry and mob/loot/spawner attribution: which flower feature is
+  selected from the eligible biome, and what can that delegated call add? The
+  direct 7 by 7 ring and buried-ore envelope are known. Next inspect the existing
+  biome/configured-feature catalog using the generator's actual selection rule;
+  retain its direct findings and add only the delegated contribution needed for
+  these required answers. Existing direct visual and placement answers are retired.
+
+Eighteen nonregistry families have now been assessed: seventeen have no specific
+unanswered claim carried forward, and Fairy Ring has the three questions above.
+Twenty-two remain unassessed: eighteen BetterEnd, two BOP, scarecrow and urn cache.
+Do not requeue the seventeen supported families under generic shared-effect or
+unknown-population labels. Final consistency, acceptance and PR review remain.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 26 not yet assessed; 14 assessed | No specific residual claim from the 14 assessed families. Their supported requirements are retired; continue the other 26 records. |
+| Nonregistry | 22 not yet assessed; 18 assessed | Three Fairy Ring questions above. Supported requirements for the other seventeen families are retired. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
