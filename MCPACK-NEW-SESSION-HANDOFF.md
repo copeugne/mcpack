@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Plague Asylum geometry delivered after 9a3221a5
+
+The predeclared one-target seed42 run completed with correlated save, clean
+exit0 and accepted frozen configuration. Full-start line1729 has171 pieces,
+envelope196x54x173. Both geometry attributes are integrated; the five-family
+batch is finished. Archive257 files/3,002,188 bytes is published under
+item-8-wda-asylum-geometry-2026-09-07-r1 at source9a3221a5; local and
+published-download restores verified every file. No runtime remains.
+Exact result/commands/limitations: evidence/item-8/sources/wda-provider-scope/README.md.
+Eight focused tests pass. Registry302/410, nonregistry40/40, total342/450
+assessed,108 remaining; WDA30/40. Ten WDA families remain with ten attributes
+each: Bandit Towers, Bandit Village, Foundry, Greenwood Pub, Mechanical Nest,
+Mining Complex, Mining System, Scorched Mines, Shiraz Palace, Thornborn Towers.
+Quantify the next batch before investigating; reuse existing evidence first.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ed51c64a0310c7fcc69f7a45a30d3e7a875fb5b2b43a3b3ee793c8ebfcef65d1.
+
 #### Plague Asylum geometry capture declaration after c766f6d3
 
 One seed42 target/81 requested chunks, timeout900, using the existing gap
