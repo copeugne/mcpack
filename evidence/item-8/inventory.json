@@ -81498,7 +81498,13 @@
     "illagerinvasion:firecaller_hut": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [
+          "illagerinvasion:firecaller"
+        ],
+        "basis": "Empty spawn_overrides preserve conditional natural biome spawning; the authored firecaller component is a separate hostile source.",
+        "natural_spawn_overrides": {}
+      },
       "biome_constraints": {
         "illagerinvasion:firecaller_hut": {
           "biomes": [
@@ -81525,41 +81531,30 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "illagerinvasion:firecaller_hut": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG with start offset zero.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:firecaller_hut/base_plate",
-          "illagerinvasion:firecaller_hut/feature_crops",
-          "illagerinvasion:firecaller_hut/feature_hay",
-          "illagerinvasion:firecaller_hut/feature_obelisk",
-          "illagerinvasion:firecaller_hut/feature_stable",
-          "illagerinvasion:firecaller_hut/feature_well",
-          "illagerinvasion:firecaller_hut/hut",
-          "illagerinvasion:mobs/firecaller",
-          "illagerinvasion:mobs/llama"
-        ],
-        "unresolved_sources": {}
+        "basis": "No spawner block NBT, generation markers or unresolved entities in the complete reachable graph. Authored entity templates and root natural-spawn rules are distinct from physical spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
+          "authored_or_natural_enemies": {
+            "authored": [
+              "illagerinvasion:firecaller"
+            ],
+            "basis": "Empty spawn_overrides preserve conditional natural biome spawning; the authored firecaller component is a separate hostile source.",
+            "natural_spawn_overrides": {}
+          },
+          "dimension": {
+            "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Vanilla jigsaw root projects to WORLD_SURFACE_WG with start offset zero.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No spawner block NBT, generation markers or unresolved entities in the complete reachable graph. Authored entity templates and root natural-spawn rules are distinct from physical spawners.",
+            "packaged_spawner_blocks": []
+          },
           "intended_hostility": {
             "authored_hostile_entity_ids": [
               "illagerinvasion:firecaller"
@@ -81567,6 +81562,22 @@
             "basis": "Explicit hostile entity IDs in reachable packaged mob components, not inferred from the structure name.",
             "limitation": "Reachable components are possibilities; selection, processing and a live population are not established for every generated structure.",
             "value": "Authored hostile illager encounter"
+          },
+          "loot_table_source": {
+            "basis": "No saved loot-table references in the complete nine-template graph. Vanilla single/legacy-single elements have empty processor lists. This does not imply blocks or entities have no salvage or drops. This is source attribution, not rolled rewards or runtime container outcomes.",
+            "packaged_references": []
+          },
+          "mob_source": {
+            "authored_entity_templates": {
+              "illagerinvasion:firecaller": [
+                "illagerinvasion:mobs/firecaller"
+              ],
+              "minecraft:llama": [
+                "illagerinvasion:mobs/llama"
+              ]
+            },
+            "basis": "Explicit entity and passenger IDs in the complete reachable graph. Firecaller is the hostile source; llama is a separate animal component. Source possibilities do not establish component selection or inhabitants.",
+            "structure_spawn_overrides": {}
           },
           "underground_surface_classification": {
             "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
@@ -81583,9 +81594,15 @@
                 "terrain_adaptation": "beard_thin"
               }
             }
+          },
+          "visual_discoverability": {
+            "basis": "Retained architecture and placement settings establish qualitative form. No measured viewing distance, exposure rate or complete assembly dimensions are asserted.",
+            "source_form": "Surface farm compound with hut and crop, hay, obelisk, stable or well features. Outdoor forms provide qualitative discovery cues; interior contents can remain concealed."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/sources/illagerinvasion-provider/identities.json": "74b6cb2b01b81d99417d139334cf85e7629fb6fef50947d06227b864ec7574c9",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -81627,36 +81644,11 @@
         "value": "Authored hostile illager encounter"
       },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:firecaller_hut/base_plate",
-          "illagerinvasion:firecaller_hut/feature_crops",
-          "illagerinvasion:firecaller_hut/feature_hay",
-          "illagerinvasion:firecaller_hut/feature_obelisk",
-          "illagerinvasion:firecaller_hut/feature_stable",
-          "illagerinvasion:firecaller_hut/feature_well",
-          "illagerinvasion:firecaller_hut/hut",
-          "illagerinvasion:mobs/firecaller",
-          "illagerinvasion:mobs/llama"
-        ]
+        "basis": "No saved loot-table references in the complete nine-template graph. Vanilla single/legacy-single elements have empty processor lists. This does not imply blocks or entities have no salvage or drops. This is source attribution, not rolled rewards or runtime container outcomes.",
+        "packaged_references": []
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {
+        "authored_entity_templates": {
           "illagerinvasion:firecaller": [
             "illagerinvasion:mobs/firecaller"
           ],
@@ -81664,19 +81656,8 @@
             "illagerinvasion:mobs/llama"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:firecaller_hut/base_plate",
-          "illagerinvasion:firecaller_hut/feature_crops",
-          "illagerinvasion:firecaller_hut/feature_hay",
-          "illagerinvasion:firecaller_hut/feature_obelisk",
-          "illagerinvasion:firecaller_hut/feature_stable",
-          "illagerinvasion:firecaller_hut/feature_well",
-          "illagerinvasion:firecaller_hut/hut",
-          "illagerinvasion:mobs/firecaller",
-          "illagerinvasion:mobs/llama"
-        ],
-        "unresolved_authored_entities": {}
+        "basis": "Explicit entity and passenger IDs in the complete reachable graph. Firecaller is the hostile source; llama is a separate animal component. Source possibilities do not establish component selection or inhabitants.",
+        "structure_spawn_overrides": {}
       },
       "name": "Illager Invasion firecaller hut",
       "pool_trace_ids": [
@@ -81702,7 +81683,10 @@
           }
         }
       },
-      "visual_discoverability": "UNKNOWN",
+      "visual_discoverability": {
+        "basis": "Retained architecture and placement settings establish qualitative form. No measured viewing distance, exposure rate or complete assembly dimensions are asserted.",
+        "source_form": "Surface farm compound with hut and crop, hay, obelisk, stable or well features. Outdoor forms provide qualitative discovery cues; interior contents can remain concealed."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -82445,7 +82429,25 @@
     "illagerinvasion:labyrinth": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": [
+          "illagerinvasion:alchemist",
+          "illagerinvasion:archivist",
+          "illagerinvasion:basher",
+          "illagerinvasion:marauder",
+          "illagerinvasion:necromancer",
+          "illagerinvasion:provoker",
+          "minecraft:evoker",
+          "minecraft:vindicator"
+        ],
+        "basis": "The full-bounds monster override has an empty spawn list, while authored hostile components remain explicit sources. This does not prohibit reinforcements, wandering mobs or other event sources.",
+        "natural_spawn_overrides": {
+          "monster": {
+            "bounding_box": "full",
+            "spawns": []
+          }
+        }
+      },
       "biome_constraints": {
         "illagerinvasion:labyrinth": {
           "biomes": [
@@ -82567,62 +82569,42 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "illagerinvasion:labyrinth": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Custom LabyrinthStructure delegates to vanilla jigsaw and accepts only generation-stub Y <= 47; that filters placement, not a separate dimension.",
+        "value": "minecraft:overworld"
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:labyrinth/halls/left_no_rooms",
-          "illagerinvasion:labyrinth/halls/right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_and_right",
-          "illagerinvasion:labyrinth/halls/straight_and_left_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_right_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_left_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_left_room",
-          "illagerinvasion:labyrinth/halls/straight_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_right_room",
-          "illagerinvasion:labyrinth/halls/straight_two_rooms",
-          "illagerinvasion:labyrinth/rooms/room_0",
-          "illagerinvasion:labyrinth/rooms/room_1",
-          "illagerinvasion:labyrinth/rooms/room_2",
-          "illagerinvasion:labyrinth/rooms/room_3",
-          "illagerinvasion:labyrinth/rooms/room_4",
-          "illagerinvasion:labyrinth/rooms/room_5",
-          "illagerinvasion:labyrinth/rooms/room_6",
-          "illagerinvasion:labyrinth/rooms/room_7",
-          "illagerinvasion:labyrinth/rooms/room_8",
-          "illagerinvasion:labyrinth/rooms/room_9",
-          "illagerinvasion:labyrinth/tower",
-          "illagerinvasion:mobs/alchemist",
-          "illagerinvasion:mobs/archivist",
-          "illagerinvasion:mobs/basher",
-          "illagerinvasion:mobs/evoker",
-          "illagerinvasion:mobs/marauder",
-          "illagerinvasion:mobs/necromancer",
-          "illagerinvasion:mobs/provoker",
-          "illagerinvasion:mobs/vindicator"
-        ],
-        "unresolved_sources": {}
+        "basis": "No spawner block NBT, generation markers or unresolved entities in the complete reachable graph. Authored entity templates and root natural-spawn rules are distinct from physical spawners.",
+        "packaged_spawner_blocks": []
       },
       "grouping_decision": {
         "attributes": {
+          "authored_or_natural_enemies": {
+            "authored": [
+              "illagerinvasion:alchemist",
+              "illagerinvasion:archivist",
+              "illagerinvasion:basher",
+              "illagerinvasion:marauder",
+              "illagerinvasion:necromancer",
+              "illagerinvasion:provoker",
+              "minecraft:evoker",
+              "minecraft:vindicator"
+            ],
+            "basis": "The full-bounds monster override has an empty spawn list, while authored hostile components remain explicit sources. This does not prohibit reinforcements, wandering mobs or other event sources.",
+            "natural_spawn_overrides": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": []
+              }
+            }
+          },
+          "dimension": {
+            "basis": "Resolved family biome constraints intersect only the Overworld runtime possible-biome set. Custom LabyrinthStructure delegates to vanilla jigsaw and accepts only generation-stub Y <= 47; that filters placement, not a separate dimension.",
+            "value": "minecraft:overworld"
+          },
+          "generated_spawners": {
+            "basis": "No spawner block NBT, generation markers or unresolved entities in the complete reachable graph. Authored entity templates and root natural-spawn rules are distinct from physical spawners.",
+            "packaged_spawner_blocks": []
+          },
           "intended_hostility": {
             "authored_hostile_entity_ids": [
               "illagerinvasion:alchemist",
@@ -82637,9 +82619,90 @@
             "basis": "Explicit hostile entity IDs in reachable packaged mob components, not inferred from the structure name.",
             "limitation": "Reachable components are possibilities; selection, processing and a live population are not established for every generated structure.",
             "value": "Authored hostile illager encounter"
+          },
+          "loot_table_source": {
+            "basis": "Labyrinth and labyrinth_map tables belong to rooms; woodland_mansion belongs to the tower. Custom no-liquid elements affect component placement; their declared processor lists are empty. This is source attribution, not rolled rewards or runtime container outcomes.",
+            "packaged_references": [
+              {
+                "field": "LootTable",
+                "templates": [
+                  "illagerinvasion:labyrinth/rooms/room_2",
+                  "illagerinvasion:labyrinth/rooms/room_4",
+                  "illagerinvasion:labyrinth/rooms/room_8"
+                ],
+                "value": "illagerinvasion:chests/labyrinth"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "illagerinvasion:labyrinth/rooms/room_7",
+                  "illagerinvasion:labyrinth/rooms/room_8",
+                  "illagerinvasion:labyrinth/rooms/room_9"
+                ],
+                "value": "illagerinvasion:chests/labyrinth_map"
+              },
+              {
+                "field": "LootTable",
+                "templates": [
+                  "illagerinvasion:labyrinth/tower"
+                ],
+                "value": "minecraft:chests/woodland_mansion"
+              }
+            ]
+          },
+          "mob_source": {
+            "authored_entity_templates": {
+              "illagerinvasion:alchemist": [
+                "illagerinvasion:mobs/alchemist"
+              ],
+              "illagerinvasion:archivist": [
+                "illagerinvasion:mobs/archivist"
+              ],
+              "illagerinvasion:basher": [
+                "illagerinvasion:mobs/basher"
+              ],
+              "illagerinvasion:marauder": [
+                "illagerinvasion:mobs/marauder"
+              ],
+              "illagerinvasion:necromancer": [
+                "illagerinvasion:mobs/necromancer"
+              ],
+              "illagerinvasion:provoker": [
+                "illagerinvasion:mobs/provoker"
+              ],
+              "minecraft:armor_stand": [
+                "illagerinvasion:labyrinth/rooms/room_2"
+              ],
+              "minecraft:evoker": [
+                "illagerinvasion:mobs/evoker"
+              ],
+              "minecraft:item_frame": [
+                "illagerinvasion:labyrinth/rooms/room_9"
+              ],
+              "minecraft:vindicator": [
+                "illagerinvasion:mobs/vindicator"
+              ]
+            },
+            "basis": "Explicit entity and passenger IDs in the complete reachable graph. Armor stand and item frame are decorative entities, not hostile enemies. Source possibilities do not establish component selection or inhabitants.",
+            "structure_spawn_overrides": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": []
+              }
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "WORLD_SURFACE_WG start offset -40, bury terrain adaptation and custom generation-stub filter Y <= 47. The surface_structures step is not proof of surface exposure. Connected pieces and tower may extend above the start; whole-layout burial is not measured.",
+            "value": "Underground-biased dungeon with tower component"
+          },
+          "visual_discoverability": {
+            "basis": "Retained architecture and placement settings establish qualitative form. No measured viewing distance, exposure rate or complete assembly dimensions are asserted.",
+            "source_form": "Tower connected to underground halls and rooms. Buried interiors are not an open surface landmark; tower exposure depends on terrain and actual placement."
           }
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+          "evidence/item-8/sources/illagerinvasion-provider/identities.json": "74b6cb2b01b81d99417d139334cf85e7629fb6fef50947d06227b864ec7574c9",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -82693,11 +82756,7 @@
         "value": "Authored hostile illager encounter"
       },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
+        "basis": "Labyrinth and labyrinth_map tables belong to rooms; woodland_mansion belongs to the tower. Custom no-liquid elements affect component placement; their declared processor lists are empty. This is source attribution, not rolled rewards or runtime container outcomes.",
         "packaged_references": [
           {
             "field": "LootTable",
@@ -82724,52 +82783,10 @@
             ],
             "value": "minecraft:chests/woodland_mansion"
           }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:labyrinth/halls/left_no_rooms",
-          "illagerinvasion:labyrinth/halls/right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_and_right",
-          "illagerinvasion:labyrinth/halls/straight_and_left_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_right_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_left_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_left_room",
-          "illagerinvasion:labyrinth/halls/straight_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_right_room",
-          "illagerinvasion:labyrinth/halls/straight_two_rooms",
-          "illagerinvasion:labyrinth/rooms/room_0",
-          "illagerinvasion:labyrinth/rooms/room_1",
-          "illagerinvasion:labyrinth/rooms/room_2",
-          "illagerinvasion:labyrinth/rooms/room_3",
-          "illagerinvasion:labyrinth/rooms/room_4",
-          "illagerinvasion:labyrinth/rooms/room_5",
-          "illagerinvasion:labyrinth/rooms/room_6",
-          "illagerinvasion:labyrinth/rooms/room_7",
-          "illagerinvasion:labyrinth/rooms/room_8",
-          "illagerinvasion:labyrinth/rooms/room_9",
-          "illagerinvasion:labyrinth/tower",
-          "illagerinvasion:mobs/alchemist",
-          "illagerinvasion:mobs/archivist",
-          "illagerinvasion:mobs/basher",
-          "illagerinvasion:mobs/evoker",
-          "illagerinvasion:mobs/marauder",
-          "illagerinvasion:mobs/necromancer",
-          "illagerinvasion:mobs/provoker",
-          "illagerinvasion:mobs/vindicator"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {
+        "authored_entity_templates": {
           "illagerinvasion:alchemist": [
             "illagerinvasion:mobs/alchemist"
           ],
@@ -82801,40 +82818,13 @@
             "illagerinvasion:mobs/vindicator"
           ]
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "illagerinvasion:labyrinth/halls/left_no_rooms",
-          "illagerinvasion:labyrinth/halls/right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_and_right",
-          "illagerinvasion:labyrinth/halls/straight_and_left_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_and_left_right_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_left_room",
-          "illagerinvasion:labyrinth/halls/straight_and_right_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_left_room",
-          "illagerinvasion:labyrinth/halls/straight_no_rooms",
-          "illagerinvasion:labyrinth/halls/straight_right_room",
-          "illagerinvasion:labyrinth/halls/straight_two_rooms",
-          "illagerinvasion:labyrinth/rooms/room_0",
-          "illagerinvasion:labyrinth/rooms/room_1",
-          "illagerinvasion:labyrinth/rooms/room_2",
-          "illagerinvasion:labyrinth/rooms/room_3",
-          "illagerinvasion:labyrinth/rooms/room_4",
-          "illagerinvasion:labyrinth/rooms/room_5",
-          "illagerinvasion:labyrinth/rooms/room_6",
-          "illagerinvasion:labyrinth/rooms/room_7",
-          "illagerinvasion:labyrinth/rooms/room_8",
-          "illagerinvasion:labyrinth/rooms/room_9",
-          "illagerinvasion:labyrinth/tower",
-          "illagerinvasion:mobs/alchemist",
-          "illagerinvasion:mobs/archivist",
-          "illagerinvasion:mobs/basher",
-          "illagerinvasion:mobs/evoker",
-          "illagerinvasion:mobs/marauder",
-          "illagerinvasion:mobs/necromancer",
-          "illagerinvasion:mobs/provoker",
-          "illagerinvasion:mobs/vindicator"
-        ],
-        "unresolved_authored_entities": {}
+        "basis": "Explicit entity and passenger IDs in the complete reachable graph. Armor stand and item frame are decorative entities, not hostile enemies. Source possibilities do not establish component selection or inhabitants.",
+        "structure_spawn_overrides": {
+          "monster": {
+            "bounding_box": "full",
+            "spawns": []
+          }
+        }
       },
       "name": "Illager Invasion labyrinth",
       "pool_trace_ids": [
@@ -82844,8 +82834,14 @@
       "structure_ids": [
         "illagerinvasion:labyrinth"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "WORLD_SURFACE_WG start offset -40, bury terrain adaptation and custom generation-stub filter Y <= 47. The surface_structures step is not proof of surface exposure. Connected pieces and tower may extend above the start; whole-layout burial is not measured.",
+        "value": "Underground-biased dungeon with tower component"
+      },
+      "visual_discoverability": {
+        "basis": "Retained architecture and placement settings establish qualitative form. No measured viewing distance, exposure rate or complete assembly dimensions are asserted.",
+        "source_form": "Tower connected to underground halls and rooms. Buried interiors are not an open surface landmark; tower exposure depends on terrain and actual placement."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -182061,7 +182057,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "72292fb518f654a40b19687dbe0a236bdf477a9edbcae7307e2c182c99836361",
+    "evidence/item-8/family-decisions.json": "5ad126571dec5c728fe2a0fb489a72dd30efe72fa3cfcc4815217610696948b8",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
