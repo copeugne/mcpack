@@ -18384,7 +18384,10 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/idas-small-design-views/houses.svg.gz": "8c9891bf5a9932d60f23728de08ad19daced475c2201d51e75fc9ced04aa5965"
+        "evidence/item-8/sources/idas-small-design-views/houses.svg.gz": "8c9891bf5a9932d60f23728de08ad19daced475c2201d51e75fc9ced04aa5965",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_toggle_config.json5": "8121bc178bab6ef501849f7c628c4cba28553335ade5943735268a5987138609",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_placement_config.json5": "956b78cd4554c9d71745a4b67281e6bd1f402f14deffe7ed7f9d3b455b2410ec",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "family_id": "idas:cottage",
       "name": "IDAS cottage",
@@ -18410,6 +18413,111 @@
             "valid_biome_radius_check": 1
           },
           "missing_components": []
+        }
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            9,
+            7
+          ],
+          "basis": "Both equal-weight cottage alternatives have the same 9 by 9 by 7 template envelope and no jigsaws.",
+          "limitation": "Approximate template envelope including air/padding; rotation may exchange axes. Not observed occupied-world bounds or terrain adaptation."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 9,
+          "basis": "Declared template height, shared by all selected alternatives.",
+          "limitation": "Not measured exposed height above terrain."
+        },
+        "intended_hostility": {
+          "value": "Small dwelling with no dedicated authored defenders.",
+          "basis": "Neither alternative has authored entities, physical spawners or root spawn overrides. Natural biome spawning is not excluded."
+        },
+        "authored_or_natural_enemies": {
+          "value": "No source-authored enemies identified; natural spawning and external effects remain possible.",
+          "basis": "Both template entity/spawner lists and root spawn overrides are empty.",
+          "limitation": "No generated-world encounter observation or full population attribution."
+        },
+        "visual_discoverability": {
+          "value": "Small roofed surface dwelling, with limited prominence relative to larger buildings.",
+          "basis": "Qualitative inference from inspected template forms, nominal heights and surface heightmap projection.",
+          "limitation": "No measured discovery distance, approach visibility or player observation."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected site.",
+          "basis": "WORLD_SURFACE_WG projection, absolute start offset 0, beard_thin adaptation and no attached underground components.",
+          "limitation": "Actual terrain exposure or partial burial was not observed."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "idas:cottage": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Twenty-seven of twenty-nine tag-matched registered biomes occur in the captured Overworld; regions_unexplored:barley_fields and regions_unexplored:deciduous_forest occur in no captured dimension. No eligible overlap occurs in other captured dimensions. The frozen toggle enables the root; idas_small includes it at weight 3 with spacing 26, separation 20 and salt 169480673. Exclusion-zone and biome checks still apply; this is eligibility, not observed generation.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:cottage/cottage",
+            "idas:cottage/cottage2"
+          ],
+          "unresolved_authored_entities": {},
+          "structure_spawn_overrides": {},
+          "basis": "Both alternatives contain no authored entities or spawners, and the root has no spawn override. This does not exclude natural biome enemies."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:cottage/cottage2"
+              ],
+              "value": "idas:chests/cottage/cottage"
+            }
+          ],
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:cottage/cottage",
+            "idas:cottage/cottage2"
+          ],
+          "basis": "Only cottage/cottage2 declares idas:chests/cottage/cottage; cottage/cottage has no LootTable reference. The equal weights remain explicit, so loot is not attributed to every alternative. waterlogging_fix_processor declares dispenser/dropper ticking, not loot reassignment. No claim is made about realized rewards or other container contents."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:cottage/cottage",
+            "idas:cottage/cottage2"
+          ],
+          "unresolved_sources": {},
+          "basis": "Neither cottage template contains physical spawners or generation markers. The selected processor list declares only dispenser/dropper ticking and no spawner-writing processor.",
+          "limitation": "Packaged and processor-declared contribution, not observed successful placement, activation or generated counts."
         }
       }
     },
@@ -19518,7 +19626,10 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/idas-small-design-views/camp_guild.svg.gz": "dbb73bdd1debd6cd178f76d14f11c7f3ba47308d718af82f200ffc3c2576923e"
+        "evidence/item-8/sources/idas-small-design-views/camp_guild.svg.gz": "dbb73bdd1debd6cd178f76d14f11c7f3ba47308d718af82f200ffc3c2576923e",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_toggle_config.json5": "8121bc178bab6ef501849f7c628c4cba28553335ade5943735268a5987138609",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_placement_config.json5": "956b78cd4554c9d71745a4b67281e6bd1f402f14deffe7ed7f9d3b455b2410ec",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "family_id": "idas:pillager_camp",
       "name": "IDAS pillager camp",
@@ -19544,6 +19655,156 @@
             "valid_biome_radius_check": 1
           },
           "missing_components": []
+        }
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            17,
+            14
+          ],
+          "basis": "Single selected camp template, with no jigsaw attachments.",
+          "limitation": "Approximate template envelope including air/padding; rotation may exchange axes. Not observed occupied-world bounds or terrain adaptation."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 5,
+          "basis": "Declared template height, shared by all selected alternatives.",
+          "limitation": "Not measured exposed height above terrain."
+        },
+        "intended_hostility": {
+          "value": "Hostile pillager camp with mixed authored inhabitants.",
+          "basis": "The selected template contains pillagers and a vindicator, alongside villager, guard and glass-frame entities, plus two pillager spawners. Their activation and actual population are conditional."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Authored illagers and spawner-supplied pillagers; natural enemies may also occur.",
+          "basis": "Keep authored entities, the two physical spawners and processor settings distinct. Villager, guard and glass-frame declarations are not all hostile enemies.",
+          "limitation": "No generated-world encounter observation or full population attribution."
+        },
+        "visual_discoverability": {
+          "value": "Low surface camp, readily obscured by terrain or vegetation.",
+          "basis": "Qualitative inference from inspected template forms, nominal heights and surface heightmap projection.",
+          "limitation": "No measured discovery distance, approach visibility or player observation."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected site.",
+          "basis": "WORLD_SURFACE_WG projection, absolute start offset 0, beard_thin adaptation and no attached underground components.",
+          "limitation": "Actual terrain exposure or partial burial was not observed."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "idas:pillager_camp": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Fifty-three of fifty-seven tag-matched registered biomes occur in the captured Overworld; regions_unexplored:barley_fields, golden_boreal_taiga, mauve_hills and temperate_grove occur in no captured dimension. No eligible overlap occurs in other captured dimensions. The frozen toggle enables the root; idas_small includes it at weight 3 with spacing 26, separation 20 and salt 169480673. Exclusion-zone and biome checks still apply; this is eligibility, not observed generation.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "guardvillagers:guard": [
+              "idas:pillager_camp/pillager_camp2"
+            ],
+            "minecraft:pillager": [
+              "idas:pillager_camp/pillager_camp2"
+            ],
+            "minecraft:villager": [
+              "idas:pillager_camp/pillager_camp2"
+            ],
+            "minecraft:vindicator": [
+              "idas:pillager_camp/pillager_camp2"
+            ],
+            "quark:glass_frame": [
+              "idas:pillager_camp/pillager_camp2"
+            ]
+          },
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:pillager_camp/pillager_camp2"
+          ],
+          "unresolved_authored_entities": {},
+          "structure_spawn_overrides": {},
+          "basis": "Authored base IDs and physical spawner sources are preserved separately. The root has no natural-spawn override; the selected processor uses idas:pillager, whose sole mob entry is minecraft:pillager with weight 15. Weight is not an entity count."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_camp/pillager_camp2"
+              ],
+              "value": "idas:chests/pillager_camp/pillager_camp"
+            }
+          ],
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:pillager_camp/pillager_camp2"
+          ],
+          "basis": "The selected camp template references idas:chests/pillager_camp/pillager_camp. Its processor declares material replacement and spawner randomization, not loot reassignment. No claim is made about realized rewards or other container contents."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:pillager",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:pillager_camp/pillager_camp2"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:pillager_camp/pillager_camp2"
+          ],
+          "unresolved_sources": {},
+          "basis": "Two physical spawners in the selected template start with pillager SpawnData. The processor uses the sole pillager mob entry and replaces spawn settings; preserve its block-light range 0 through 7, delay 20, spawn_count 4, max_nearby_entities 6, delays 200 through 800, player range 16 and spawn range 4.",
+          "limitation": "Packaged and processor-declared contribution, not observed successful placement, activation or generated counts.",
+          "processor_declaration": {
+            "delay": 20,
+            "integrated_api_spawner_resourcelocation": "idas:pillager",
+            "max_nearby_entities": 6,
+            "max_spawn_delay": 800,
+            "min_spawn_delay": 200,
+            "processor_type": "integrated_api:spawner_randomizing_processor",
+            "required_player_range": 16,
+            "spawn_count": 4,
+            "spawn_range": 4,
+            "valid_block_light_level": {
+              "max_inclusive": 7,
+              "min_inclusive": 0
+            }
+          },
+          "processor_mob_resource": {
+            "mobs": [
+              {
+                "name": "minecraft:pillager",
+                "weight": 15
+              }
+            ]
+          }
         }
       }
     },
