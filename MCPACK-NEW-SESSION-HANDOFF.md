@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS desert ruins assessed after 1547ade6
+
+Nine entries integrated for two rigid connected components. Bottom origin0,-12,0
+gives nominal14 by15 footprint,21 height. No authored entities,spawners,markers,
+unresolved records or literal loot references. Fixed contents/salvage absence
+is not inferred. Ticking-only processor inspection reused; no runtime/tool added.
+All85 focused checks pass (60.13s); only desert_ruins/input identity changed.
+Total437/448 assessed;11 connected IDAS families/99 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-desert-ruins-assessment/README.md.
+Inventory SHA-256: f9347093705e51f7d1df6b9120af51b0ed273addfd86b56cb33792464eb98c33.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS desert dig site assessed after 8d94acc0
 
 Nine entries integrated for two rigid connected components. Bottom origin0,-10,0
