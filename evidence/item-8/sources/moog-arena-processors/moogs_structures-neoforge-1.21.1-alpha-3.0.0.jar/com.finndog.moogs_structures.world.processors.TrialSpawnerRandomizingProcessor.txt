@@ -1,0 +1,162 @@
+Compiled from "TrialSpawnerRandomizingProcessor.java"
+public class com.finndog.moogs_structures.world.processors.TrialSpawnerRandomizingProcessor extends net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessor {
+  public static final com.mojang.serialization.MapCodec<com.finndog.moogs_structures.world.processors.TrialSpawnerRandomizingProcessor> CODEC;
+
+  public final net.minecraft.resources.ResourceLocation normalConfig;
+
+  public final java.util.Optional<net.minecraft.resources.ResourceLocation> ominousConfig;
+
+  private com.finndog.moogs_structures.world.processors.TrialSpawnerRandomizingProcessor(net.minecraft.resources.ResourceLocation, java.util.Optional<net.minecraft.resources.ResourceLocation>);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessor."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #7                  // Field normalConfig:Lnet/minecraft/resources/ResourceLocation;
+       9: aload_0
+      10: aload_2
+      11: putfield      #13                 // Field ominousConfig:Ljava/util/Optional;
+      14: return
+
+  public net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo processBlock(net.minecraft.world.level.LevelReader, net.minecraft.core.BlockPos, net.minecraft.core.BlockPos, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate$StructureBlockInfo, net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings);
+    Code:
+       0: aload         5
+       2: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+       5: invokevirtual #23                 // Method net/minecraft/world/level/block/state/BlockState.getBlock:()Lnet/minecraft/world/level/block/Block;
+       8: instanceof    #29                 // class net/minecraft/world/level/block/TrialSpawnerBlock
+      11: ifne          17
+      14: aload         5
+      16: areturn
+      17: aload         5
+      19: invokevirtual #31                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.nbt:()Lnet/minecraft/nbt/CompoundTag;
+      22: astore        7
+      24: aload         7
+      26: ifnull        37
+      29: aload         7
+      31: invokevirtual #35                 // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+      34: goto          44
+      37: new           #36                 // class net/minecraft/nbt/CompoundTag
+      40: dup
+      41: invokespecial #40                 // Method net/minecraft/nbt/CompoundTag."<init>":()V
+      44: astore        8
+      46: aload         8
+      48: ldc           #41                 // String server_data
+      50: invokevirtual #43                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+      53: aload         8
+      55: ldc           #47                 // String shared_data
+      57: invokevirtual #43                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+      60: aload         8
+      62: ldc           #49                 // String spawn_data
+      64: invokevirtual #43                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+      67: aload         8
+      69: ldc           #51                 // String cooldown_end_at_tick
+      71: invokevirtual #43                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+      74: aload         8
+      76: ldc           #53                 // String next_mob_spawns_at
+      78: invokevirtual #43                 // Method net/minecraft/nbt/CompoundTag.remove:(Ljava/lang/String;)V
+      81: getstatic     #55                 // Field com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.INSTANCE:Lcom/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager;
+      84: aload_0
+      85: getfield      #7                  // Field normalConfig:Lnet/minecraft/resources/ResourceLocation;
+      88: invokevirtual #61                 // Method com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.get:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/nbt/CompoundTag;
+      91: astore        9
+      93: aload         9
+      95: ifnonnull     120
+      98: getstatic     #65                 // Field com/finndog/moogs_structures/MoogsStructuresCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     101: ldc           #71                 // String Moog\'s Structure Lib: trial_spawner config \'{}\' not found at {}
+     103: aload_0
+     104: getfield      #7                  // Field normalConfig:Lnet/minecraft/resources/ResourceLocation;
+     107: aload         5
+     109: invokevirtual #73                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     112: invokeinterface #77,  4           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     117: goto          133
+     120: aload         8
+     122: ldc           #83                 // String normal_config
+     124: aload         9
+     126: invokevirtual #35                 // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+     129: invokevirtual #85                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     132: pop
+     133: aload_0
+     134: getfield      #13                 // Field ominousConfig:Ljava/util/Optional;
+     137: invokevirtual #89                 // Method java/util/Optional.isPresent:()Z
+     140: ifeq          204
+     143: getstatic     #55                 // Field com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.INSTANCE:Lcom/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager;
+     146: aload_0
+     147: getfield      #13                 // Field ominousConfig:Ljava/util/Optional;
+     150: invokevirtual #95                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     153: checkcast     #98                 // class net/minecraft/resources/ResourceLocation
+     156: invokevirtual #61                 // Method com/finndog/moogs_structures/misc/trialspawnerconfig/TrialSpawnerConfigManager.get:(Lnet/minecraft/resources/ResourceLocation;)Lnet/minecraft/nbt/CompoundTag;
+     159: astore        10
+     161: aload         10
+     163: ifnonnull     191
+     166: getstatic     #65                 // Field com/finndog/moogs_structures/MoogsStructuresCommon.LOGGER:Lorg/apache/logging/log4j/Logger;
+     169: ldc           #71                 // String Moog\'s Structure Lib: trial_spawner config \'{}\' not found at {}
+     171: aload_0
+     172: getfield      #13                 // Field ominousConfig:Ljava/util/Optional;
+     175: invokevirtual #95                 // Method java/util/Optional.get:()Ljava/lang/Object;
+     178: aload         5
+     180: invokevirtual #73                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     183: invokeinterface #77,  4           // InterfaceMethod org/apache/logging/log4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     188: goto          204
+     191: aload         8
+     193: ldc           #100                // String ominous_config
+     195: aload         10
+     197: invokevirtual #35                 // Method net/minecraft/nbt/CompoundTag.copy:()Lnet/minecraft/nbt/CompoundTag;
+     200: invokevirtual #85                 // Method net/minecraft/nbt/CompoundTag.put:(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;
+     203: pop
+     204: new           #18                 // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo
+     207: dup
+     208: aload         5
+     210: invokevirtual #73                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.pos:()Lnet/minecraft/core/BlockPos;
+     213: aload         5
+     215: invokevirtual #17                 // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo.state:()Lnet/minecraft/world/level/block/state/BlockState;
+     218: aload         8
+     220: invokespecial #102                // Method net/minecraft/world/level/levelgen/structure/templatesystem/StructureTemplate$StructureBlockInfo."<init>":(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/nbt/CompoundTag;)V
+     223: areturn
+
+  protected net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType<?> getType();
+    Code:
+       0: getstatic     #105                // Field com/finndog/moogs_structures/modinit/MoogsStructuresProcessors.TRIAL_SPAWNER_RANDOMIZING_PROCESSOR:Lcom/finndog/moogs_structures/modinit/registry/RegistryEntry;
+       3: invokeinterface #111,  1          // InterfaceMethod com/finndog/moogs_structures/modinit/registry/RegistryEntry.get:()Ljava/lang/Object;
+       8: checkcast     #114                // class net/minecraft/world/level/levelgen/structure/templatesystem/StructureProcessorType
+      11: areturn
+
+  private static com.mojang.datafixers.kinds.App lambda$static$2(com.mojang.serialization.codecs.RecordCodecBuilder$Instance);
+    Code:
+       0: aload_0
+       1: getstatic     #116                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+       4: ldc           #83                 // String normal_config
+       6: invokeinterface #120,  2          // InterfaceMethod com/mojang/serialization/Codec.fieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      11: invokedynamic #126,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      16: invokevirtual #130                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      19: getstatic     #116                // Field net/minecraft/resources/ResourceLocation.CODEC:Lcom/mojang/serialization/Codec;
+      22: ldc           #100                // String ominous_config
+      24: invokeinterface #136,  2          // InterfaceMethod com/mojang/serialization/Codec.optionalFieldOf:(Ljava/lang/String;)Lcom/mojang/serialization/MapCodec;
+      29: invokedynamic #139,  0            // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      34: invokevirtual #130                // Method com/mojang/serialization/MapCodec.forGetter:(Ljava/util/function/Function;)Lcom/mojang/serialization/codecs/RecordCodecBuilder;
+      37: invokevirtual #140                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.group:(Lcom/mojang/datafixers/kinds/App;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/Products$P2;
+      40: aload_0
+      41: aload_0
+      42: invokedynamic #146,  0            // InvokeDynamic #2:apply:()Ljava/util/function/BiFunction;
+      47: invokevirtual #149                // Method com/mojang/serialization/codecs/RecordCodecBuilder$Instance.stable:(Ljava/lang/Object;)Lcom/mojang/datafixers/kinds/App;
+      50: invokevirtual #153                // Method com/mojang/datafixers/Products$P2.apply:(Lcom/mojang/datafixers/kinds/Applicative;Lcom/mojang/datafixers/kinds/App;)Lcom/mojang/datafixers/kinds/App;
+      53: areturn
+
+  private static java.util.Optional lambda$static$1(com.finndog.moogs_structures.world.processors.TrialSpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field ominousConfig:Ljava/util/Optional;
+       4: areturn
+
+  private static net.minecraft.resources.ResourceLocation lambda$static$0(com.finndog.moogs_structures.world.processors.TrialSpawnerRandomizingProcessor);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field normalConfig:Lnet/minecraft/resources/ResourceLocation;
+       4: areturn
+
+  static {};
+    Code:
+       0: invokedynamic #158,  0            // InvokeDynamic #3:apply:()Ljava/util/function/Function;
+       5: invokestatic  #159                // Method com/mojang/serialization/codecs/RecordCodecBuilder.mapCodec:(Ljava/util/function/Function;)Lcom/mojang/serialization/MapCodec;
+       8: putstatic     #165                // Field CODEC:Lcom/mojang/serialization/MapCodec;
+      11: return
+}

@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-07
 
+Arena/Dragon assessment in progress: five processor classes captured through the
+existing extractor at sources/moog-arena-processors. Ruff/type checks and five
+manifest-bound disassembly hashes pass. Its README records exact command and
+source findings. Processor assignments supersede raw empty spawner/vault fields;
+terrain-dependent pillars extend beyond architectural boxes. This necessary
+source increment also serves Mega Fortress, with no new framework or capture.
+Next integrate two families (three roots, 36 unique templates) with pool-owned
+processors, trial configs, fixed payloads and connector geometry. Current count
+remains 280/450 assessed, 170 remaining until those attributes are integrated.
+
 #### Four Nether ruin/well/pool families assessed after e2779b23
 
 Forty attributes finish Ruin Fragments, Well, Lava Pool and Warped Pool across
