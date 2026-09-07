@@ -6,6 +6,274 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager assessment finished from 3b2305ac
+
+Four geometry answers finish Cathedral and Mineshaft using full-start examples
+71x46x70 and 116x117x115 XYZ. Runtime passed readiness, correlated save, clean
+exit and frozen configuration checks. Raw release item-8-voyager-networks-2026-09-07-r1
+preserves 266 files and passes local/downloaded restores; source tag 3b2305ac.
+Twelve affected tests pass. No runtime remains. Inventory SHA:
+8d1a84b976d3aebf20a760a6fe1c0f1c09abde8336cbc9dab907328a984f216e.
+Voyager 65/65; registry 172/410, nonregistry 40/40, total 212/450 assessed,
+238 remaining. Retire Voyager assessment absent contradictory evidence. Continue
+other providers in quantified coherent batches. Final integration, acceptance,
+verified backup/history consolidation and PR review/main delivery remain open.
+
+#### Voyager network sources integrated after fad0b837
+
+Fourteen attributes added for Cathedral/Mineshaft; four geometry answers remain.
+Mineshaft's evoker egg in a dispenser is now a conditional authored source.
+Ten shared tests pass. The provider README predeclares one existing-harness
+ordinary-seed capture for both branching layouts, because preserved full-start
+observations are absent. No new tooling. Source-stage inventory SHA:
+c6c82d4485aa988f10495c7a3ff03229be1736f9260bc18db8b4193eebb589c8.
+Still 210/450 assessed, 240 remaining; Voyager 63/65. Next execute the committed
+capture, preserve lifecycle and raw custody, and integrate its geometry. Other
+family work and final integration/acceptance/backup/history/PR delivery remain.
+
+#### Six bounded Voyager families assessed after 709273c8
+
+Fifty-eight attributes finish Cartographer Tower, Crystal, Floating Islands,
+Tiered Tower, Large Warped Tower and Mine with Campsite across eight roots.
+Direct finite geometry, variant-owned mob/loot sources and placement are
+integrated. Two unidentified Warped Tower spawner records remain a source
+limitation, not an experiment backlog. Ten shared affected tests pass; no new
+capture or tooling. Derivations are in moog-generator-code README.
+Inventory SHA: 0af5280a56a4dad7ff9bdcf69af65c23765c631890638e1af28e0dc99694be60.
+Voyager 63/65; registry 170/410, nonregistry 40/40, total 210/450 assessed,
+240 remaining. Voyager Cathedral and Mineshaft remain branching-layout cases.
+Continue quantified coherent batches, reusing established evidence. Final
+integration, acceptance, verified backup/history consolidation and PR review/
+main delivery remain open.
+
+#### Five Voyager dwellings assessed after 81b9aa10
+
+Fifty attributes finish azelea_house, deepslate_house, house, tall_house and
+wooden_wheat_farm. Their optional villager boxes fit inside the main envelopes;
+House's saved items remain distinct from mobs. Shared source derivations are in
+moog-generator-code README. One shared ten-test run passes; no capture/tooling.
+Inventory SHA: 22876ac64f5a49f5decf03c9606a9cf5c89c3f16b9b02976cffb29c0cc354656.
+Voyager 57/65; registry 164/410, nonregistry 40/40, total 204/450 assessed,
+246 remaining. Retire supported claims and continue coherent mechanism/evidence
+batches, normally 5-15 families where natural. Single-family batches require a
+specific exception. Share validation and concise checkpoints; no repeated code
+checks for a hash literal alone. Final integration, acceptance, verified backup/
+history consolidation and PR review/main delivery remain open.
+
+#### Voyager Flower Hole assessed after 877019b1
+
+Ten attributes finish Flower Hole. Two optional villager pieces fit within
+27x8x25 XYZ main bounds. Surface projection is distinguished from the recessed
+source architecture without asserting measured burial depth. No new capture
+or tooling. Derivations are in moog-generator-code README. Ten affected tests
+and builder checks pass. Inventory SHA-256:
+fa055b9dc39da1ab98b962de354748e5651d22254ece92c3ee305d6f3f264165.
+
+Retire Flower Hole assessment. Voyager 52/65; registry 159/410, nonregistry 40/40,
+total 199/450 assessed, 251 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager Small Ship assessed after 890ffc0f
+
+Ten attributes finish Small Ship. Its optional villager piece fits inside the
+15x10x9 XYZ selected main envelope. Version choice, offset -1, no terrain
+adaptation and explicit liquid check are preserved without flotation or motion
+claims. No new capture or tooling. Derivations are in moog-generator-code README.
+Ten affected tests and builder checks pass. Inventory SHA-256:
+0b451177a4b41df207a2da02dac81bfe0626b3e0189270acabce2dcc7a93e564.
+
+Retire Small Ship assessment. Voyager 51/65; registry 158/410, nonregistry 40/40,
+total 198/450 assessed, 252 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager animal huts and igloos assessed after 377e3e5a
+
+Twenty attributes finish Animal Hut and Igloo across four roots. Igloo
+villager options fit inside the main envelopes; Small lower extends the
+nominal layout to 7x6x10 XYZ and owns a stray spawner. Animal huts author no
+animals. No new capture or tooling. Derivations are in moog-generator-code
+README. Ten affected tests and builder checks pass. Inventory SHA-256:
+836115beba40036735c4fb26f139761d34a18aada8aa6298c4ff9ffa8d3964f9.
+
+Retire these assessments. Voyager 50/65; registry 157/410, nonregistry 40/40,
+total 197/450 assessed, 253 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager Pond assessed after 382ec3b5
+
+Ten attributes finish Pond's two roots. Direct connector alignment derives
+nominal Mushroom/Oak envelopes 11x9x15 and 12x10x16 XYZ, retaining upper loot
+ownership and attachment uncertainty. No new capture, measurement or tooling.
+Derivations are in moog-generator-code README. Ten affected tests and builder
+checks pass. Inventory SHA-256:
+19252b3a985f9aaf95edcd40bfe5458e5b547fb9946b42eec5a3ac6615a4da51.
+
+Retire Pond assessment. Voyager 48/65; registry 155/410, nonregistry 40/40,
+total 195/450 assessed, 255 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager trees, rocks and harvest heaps assessed after c82079a3
+
+Twenty-eight attributes finish Living Tree, Rock and Harvest Heap across
+thirteen roots. Living Tree geometry is unchanged. Per-alternative dimensions,
+loot and placement retain their distinctions, including Big Oak's versioned
+selection. No new capture, measurement or tooling. Derivations are in
+moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+02f306b67b70385e756d6abf9de83ce02ef401798d9aa66f3d377e6739887cd7.
+
+Retire these assessments. Voyager 47/65; registry 154/410, nonregistry 40/40,
+total 194/450 assessed, 256 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager Dead Tree assessed after 5f02a697
+
+Ten attributes finish eight Dead Tree roots. Direct pool/template inspection
+corrects the earlier component wording: tree and trunk are independent
+weight-1 alternatives, not attached pieces. Sixteen per-template dimensions
+and three SAVE-mode authoring records are integrated. No new capture or tooling.
+Derivations are in moog-generator-code README. Ten affected tests and builder
+checks pass. Inventory SHA-256:
+3190d2277029a999b8383f5b1525e7ed97fa8d957b32127f2e90bddc6f00ef42.
+
+Retire this assessment. Voyager 44/65; registry 151/410, nonregistry 40/40,
+total 191/450 assessed, 259 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Four Voyager landmark families assessed after d3b54c73
+
+Forty attributes finish Log Pile, Lantern, Stall and End Scraps across 25 roots.
+Standalone variant dimensions, dimension eligibility and exact loot owners are
+integrated without new captures, measurements or tooling. End Scraps retains
+its omitted liquid flag and variant 2's extra loot source. Direct derivations
+are in moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+3f14a5d39bc684048f19422e3345ac16bdedb5fe782e7dfadd561f6b7b784e90.
+
+Retire these assessments. Voyager 43/65; registry 150/410, nonregistry 40/40,
+total 190/450 assessed, 260 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager wells assessed after c971b6c6
+
+Ten attributes finish Well across 17 roots and 20 selected templates. Direct
+connector alignment establishes nominal ordinary/rare assemblies of 4x9x4 and
+9x11x8 XYZ; standalone variants remain distinct. Per-root dimensions and
+Overworld/End/Nether eligibility are integrated with actual version selections.
+No new capture, measurement or tooling. Derivations are in moog-generator-code
+README. Ten affected tests and builder checks pass. Inventory SHA-256:
+c07384cf9665de83e8a0ae7a5a568e28f1cfe3ddc33badfaf1c2c50cd4b3f402.
+
+Retire Well assessment. Voyager 39/65; registry 146/410, nonregistry 40/40,
+total 186/450 assessed, 264 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager benches, paths and Out House assessed after 8f3cce21
+
+Thirty attributes finish Bench, Paths and Out House. Independent template
+alternatives retain separate geometry and loot. Out House connector alignment
+derives a nominal fully attached 8x8x5 XYZ envelope, not guaranteed runtime
+attachment. No new capture, measurement or tooling. Direct derivations are in
+moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+ecf965d9df92ca1de317af3260e054458bebd76a6f8acdff36c576572bcceba8.
+
+Retire these assessments. Voyager 38/65; registry 145/410, nonregistry 40/40,
+total 185/450 assessed, 265 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Voyager carts, camps and facilities assessed after d42bb242
+
+Forty attributes finish Cart (four roots), Campsite (three roots), Wheat Grain
+Bin and Windmill. Variant template dimensions, source mobs and exact loot owners
+are integrated. SAVE-mode cart structure blocks are not asserted mob-generation
+markers; Horse Campsite contains no authored horse. No new capture, measurement
+or tooling. Direct derivations are in moog-generator-code README. Ten affected
+tests and builder checks pass. Inventory SHA-256:
+25caadcfa0fbd1b542783357152283877b64430a607fc1e052e879da57d8e030.
+
+Retire these assessments. Voyager 35/65; registry 142/410, nonregistry 40/40,
+total 182/450 assessed, 268 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Four Voyager families assessed after 2730cd27
+
+Thirty-two answers finish crimson_enchanting_table, nether_devil, ocean_tower
+and warped_house. Existing geometry remains unchanged. Nether codec attribution
+separates ignored packaged heightmap/terrain fields from effective land search;
+Ocean Tower's saved mobs and spawners are separate source records; Warped House
+is Overworld-eligible. No new capture, measurement or tooling. Direct derivations
+are in moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+af705d1e244246e24e96faeb6dc0b6271daa8a0acdf411723458ff2f52d3a5cb.
+
+Retire these assessments. Voyager 31/65; registry 138/410, nonregistry 40/40,
+total 178/450 assessed, 272 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
+#### Seven Voyager surface families assessed after c581177f
+
+Fifty-six answers finish shed, small_pillager_tower, small_swamp_house,
+stone_fountain, sunzi_gate, tree_monument and villager_statue. Existing geometry
+is preserved. Source inspection records two pillager spawners, 15 empty swamp
+house hives, and Tree Monument's ordered ore substitutions without live counts
+or yield claims. No new capture, measurement or tooling. Direct derivations are
+in the moog-generator-code README; ten affected tests and builder checks pass.
+Inventory SHA-256:
+37d8e2ffb6a778ac97ae7254ebd2d2f8f1248c08f54494918f208fb6643106cb.
+
+Retire these assessments. Voyager 27/65; registry 134/410, nonregistry 40/40,
+total 174/450 assessed, 276 remaining. Continue remaining families in quantified
+batches. Final all-family integration, acceptance, verified backup/history
+consolidation, PR review and main delivery remain open.
+
+#### Ten Voyager ruins/decorations assessed after bbb8b3ce
+
+Eighty answers finish castle_ruins, log_ruin, mushroom_statue, large_mushroom,
+railway, ruined_beacon, small_ruin, snowy_fossil, statue_ruins and stone_pillars.
+Existing geometry stays unchanged. Ruined Beacon's selected template has no
+beacon block; ordered tuff-to-raw-iron/iron rules remain source salvage inputs,
+not observed yields. No new capture, measurement or tooling. Direct source
+attribution is in moog-generator-code README.
+
+Ten affected tests and builder checks pass. Inventory SHA-256:
+2d5db4d403447299020293b7564e1f41b6a0c4e38ed486675b2f219b02f5f346.
+Retire these descriptions. Voyager 20/65; registry 127/410, nonregistry 40/40,
+total 167/450 assessed, 283 remaining. Continue remaining families in quantified
+batches and preserve their actual version-selected resources and contained
+entity distinctions. Final integration, acceptance, verified backed-up history
+consolidation, PR review and main delivery remain open.
+
+#### Ten Voyager families assessed after c13eba18
+
+Eighty answers finish mvs:barn, beach_bar, bee_dome, desert_house, desert_pump,
+duck, gallows, horse_pen, lamp_chest and lecturn_garden. Earlier geometry is
+preserved. Bee Dome has three saved bees in two hive block entities despite
+empty top-level entities; mvs:empty can yield cobweb/string; Duck has a 0.25
+stone-to-diamond-ore source rule. These are source inputs, not observed yields.
+Versioned pools select the frozen 1.21.1 resources. Direct derivations are in
+moog-generator-code README. No new capture, measurement or tooling.
+
+Ten affected tests and builder checks pass. Inventory SHA-256:
+8f3e1a1c359e8f3fa72cd7a65277fa5540cc204746ebd2ac4b3a1b99c2e4f499.
+Retire these descriptions. Voyager 10/65 assessed; registry 117/410,
+nonregistry 40/40, total 157/450 assessed, 293 remaining. Continue remaining
+providers in quantified batches, checking contained block-entity contents when
+attributing mobs. Do not introduce a new tracking or measurement framework.
+Final integration, acceptance, verified backed-up history consolidation, PR
+review and main delivery remain open.
+
 #### Explorations geometry complete from 22c81eb4
 
 Four geometry answers finish Campsite and Jungle Temple. Temple uses direct
