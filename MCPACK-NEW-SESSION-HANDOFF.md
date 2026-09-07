@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed pyramid assessed after bd54fff9
+
+Seven remaining entries integrated for11 variants/22 pool templates. Three
+replacement spawner lists select husk/endermite/zombified piglin; snowy retains
+its template stray. Jungle infested-block conditional silverfish and archaeology
+are recorded alongside13 literal loot sources; all14 tables defined. TNT/magma
+hazards are not claimed operational traps. Placement uses effective Nether
+land_search_direction, preserving the unused packaged selector distinction.
+No new capture/tool. All85 focused checks pass (58.99s);only pyramid/input
+identity changed. Total403/448 assessed;45 families/406 required entries remain:
+IDAS38/343,Repurposed7/63. Remaining Repurposed: ancient_city,bastion,city,fortress,
+outpost,stronghold,village. All seven lack full-start geometry in current inputs;
+check direct assembly derivation before declaring captures. Village has nine
+competing crop processor definitions. Quantify next batch and reuse evidence.
+Details in evidence/item-8/sources/repurposed-pyramid-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: e01bb97b34b4b8d5734793575f4bcb0d1cb683ecbff0787ff822f747ae1ca79d.
+
 #### Repurposed mineshaft assessed after 7a8fabb5
 
 Seven remaining entries integrated for16 variants/226 pool-traced templates.
