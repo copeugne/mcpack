@@ -220,3 +220,59 @@ not a requirement to simulate every random layout or measure live occupied size.
 ```sh
 downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.sdf.operator.SDFScale org.betterx.bclib.sdf.operator.SDFScale3D org.betterx.bclib.sdf.operator.SDFFlatWave org.betterx.bclib.sdf.operator.SDFDisplacement org.betterx.bclib.sdf.operator.SDFSmoothUnion org.betterx.bclib.sdf.operator.SDFRound org.betterx.bclib.util.SplineHelper
 ```
+
+
+## Small island assessment
+
+Nine remaining attributes use retained SmallIslandStructure, IslandGeometry,
+SDFStructureFeature and VoxelPiece, existing world-bounds observations, and direct
+pinned StructureWorld.getBounds inspection. No new experiment or tool is needed.
+
+The root uses void stub Y58, then independently selects center Y48..68 and local
+X/Z6..10. It returns before construction when nextFloat<0.25, or when any of five
+WORLD_SURFACE_WG base-height samples exceeds minimum build height: center and
+cardinal offsets of the rounded radius. This is not exhaustive terrain clearance.
+The selected center's flower_islets biome chooses radius6..12 and flowerCoat;
+otherwise radius12..17 and waterfallCoat. Both construct a smoothed, radially
+noised and horizontally warped cone-based end-stone island through fillRecursive.
+
+flowerCoat selects sangnum or pallidium surface states, writes umbralith below
+pallidium, and can append3..10-block bulb/twisted/jungle vines at underside patches.
+waterfallCoat selects end moss and can append2..5-block end-stone stalactites.
+Despite the method name, that callback does not place water. These methods author
+terrain and vegetation, not entities, spawners or container loot tables. Empty
+root spawn overrides leave natural biome spawning and external systems possible.
+The exposed floating terrain and hanging materials are source-based visual cues,
+not measured sightline distance or encounter pacing.
+
+VoxelPiece obtains its saved box from StructureWorld.getBounds. Direct inspection
+shows X/Z extrema shifted from chunk coordinates and the upper coordinate OR15;
+Y extrema are used directly. Thus saved widths include whole chunk columns and
+must not be presented as occupied diameters. The following already retained
+full-start envelopes are copied from world-bounds.json.gz, whose hash is bound in
+the family evidence. Heights include the single-layer records; those are retained
+limitations, not normal island-height claims. Same-seed/start run differences are
+preserved without claiming deterministic geometry or diagnosing their cause.
+
+| Source | Line | Chunk X,Z | Saved size X,Y,Z |
+|---|---:|---|---|
+| run-a/ordinary/chunks.jsonl | 6577 | 92,10 | 16,1,16 |
+| run-a/ordinary/chunks.jsonl | 7822 | 111,4 | 48,13,48 |
+| run-a/mountainous/chunks.jsonl | 7435 | 102,-10 | 16,1,16 |
+| run-a/mountainous/chunks.jsonl | 7758 | 101,2 | 32,9,16 |
+| run-a/ocean-heavy/chunks.jsonl | 6138 | 95,-7 | 48,10,48 |
+| run-a/ocean-heavy/chunks.jsonl | 6644 | 81,13 | 48,14,48 |
+| run-a/ocean-heavy/chunks.jsonl | 7571 | 103,-5 | 48,15,48 |
+| run-a/ocean-heavy/chunks.jsonl | 8055 | 101,13 | 48,16,48 |
+| run-b/ocean-heavy/chunks.jsonl | 6138 | 95,-7 | 32,5,16 |
+| run-b/ocean-heavy/chunks.jsonl | 6644 | 81,13 | 16,1,16 |
+| run-b/ocean-heavy/chunks.jsonl | 7571 | 103,-5 | 32,10,48 |
+| run-b/ocean-heavy/chunks.jsonl | 8055 | 101,13 | 48,14,32 |
+| run-b/biome-diverse/chunks.jsonl | 8037 | 110,12 | 48,9,48 |
+
+The class/JAR hashes are recorded in the family's processor_inspection field
+(the helper is geometry storage, not a processor). Direct inspection command:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.api.v2.levelgen.structures.StructureWorld
+```
