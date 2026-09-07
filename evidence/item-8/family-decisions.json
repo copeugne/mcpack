@@ -80953,7 +80953,8 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
         "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
-        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961"
       },
       "content_role": "NATURAL_FORMATION",
       "attributes": {
@@ -80964,6 +80965,43 @@
           "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
           "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "intended_hostility": {
+          "value": "Giant fungal environmental landmark without a directly authored encounter.",
+          "basis": "The generator builds fungal geometry and block-material callbacks; no direct enemy authoring. Terrain and natural enemies can still pose risks.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "mob_source": {
+          "direct_generator_entity_ids": [],
+          "structure_spawn_overrides": {},
+          "basis": "The root delegates to surface SDF generation, constructs cone/sphere/spline geometry and fungal block callbacks, then VoxelPiece places stored chunks. No direct entity creation in these inspected paths.",
+          "scope": "Direct source attribution, not live population or complete external-system coverage.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "loot_table_source": {
+          "direct_generator_assigned_tables": [],
+          "basis": "The generator and callbacks write fungal materials without containers or loot-table assignment. Harvested wood/fungus drops are a separate mechanism.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "generated_spawners": {
+          "direct_generator_spawner_block_types": [],
+          "basis": "Authored materials are mossy-glowshroom cap, hymenophore, wood/bark and fur, not spawners. No spawner block-entity configuration occurs in the inspected root/callback/piece path.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No directly authored enemies or spawners in the inspected formation path.",
+          "natural": "Empty root spawn overrides leave biome spawning and other retained systems possible.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Large stem and fungal cap with hymenophore, transition surfaces and adjacent fur.",
+          "basis": "Source-defined geometry/material cues. The callback can write fur to neighboring air and below hymenophore; visual extent is not just the original smooth volume. Visibility distance and actual occlusion are unmeasured.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Surface-rooted fungal formation.",
+          "basis": "Uses FeatureBaseStructure generation-point check and SDFStructureFeature static surface generator. Base point samples WORLD_SURFACE_WG with minimum10; separate generation sample at local offsets4..12 requires height>5 and positions the fungal volume there. These are separate samples, not one combined threshold.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#glowshroom-content-assessment"
         }
       }
     },
