@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS enchanting tower assessed after b0b72b08
+
+Seven remaining entries integrated for three equal-weight rigid alternatives.
+Active default pool authors villagers, references three defined loot tables and
+uses empty processors. No physical spawners, markers or unresolved template
+entities. Existing absent-ars_nouveau selection evidence keeps compatibility
+alternatives inactive. Prior nominal dimensions reused; no runtime/tool added.
+All85 focused checks pass (64.83s); only enchantingtower/input identity changed.
+Total411/448 assessed;37 IDAS families/328 required entries remain. Next smallest
+content batch: desert_market, three alternatives/seven entries with dimensions
+already integrated. Reuse catalog and processor/provider evidence; quantify any
+actual missing claims before further investigation. Geometry survey remains:
+ten existing full-start candidates and24 connected assemblies needing assessment.
+Details: evidence/item-8/sources/idas-enchanting-tower-assessment/README.md.
+Inventory SHA-256: 15b5916b36f0bf532f51d528e322a252145f792bb7c65383bba0524e70007119.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS existing geometry quantified and integrated after a2d9e5f9
 
 All38 remaining IDAS families compared with original bounds and23 original
