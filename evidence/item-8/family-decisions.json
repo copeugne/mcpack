@@ -72504,11 +72504,12 @@
         "evidence/item-8/sources/idas-related-views/camps.svg.gz": "0485afb5dc85a8b038a50a4850778a0dd8b9140242342a5961fecbec4f02692c",
         "evidence/item-8/sources/idas-related-views/ships.svg.gz": "4d6437867341af61d2b4a157d8ff680d8ae59275bea635b5e8b37c0815669986",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/raw/item8/registry-r1/debug.log": "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
       },
       "family_id": "idas:ancient_portal",
       "name": "IDAS ancient portal",
-      "rationale": "Overworld and Nether roots use corresponding two-piece monumental portal-frame architecture. Each pair forms one assembly; neither halves nor dimension variants are separate families. The four templates preserve obsidian/crying obsidian, physical spawners and trapped-chest loot, with dimension-specific ancient-portal loot tables. Full definitions preserve fixed underground versus Nether land-search placement and different silverfish/wraith overrides; generic versus waterlogging-fix processor references remain in traces. No active portal blocks or tested portal use are established by the frame. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Overworld and Nether roots use corresponding two-piece monumental portal-frame architecture. Each pair forms one assembly; neither halves nor dimension variants are separate families. The four templates preserve obsidian/crying obsidian, physical spawners and trapped-chest loot, with dimension-specific ancient-portal loot tables. Full definitions preserve fixed underground versus Nether land-search placement and different silverfish/wraith overrides; generic versus waterlogging-fix processor references remain in traces. No active portal blocks or tested portal use are established by the frame. Canonical design relationships are resolved. Required attributes assessed with variant processor and optional-provider limits; final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:ancient_portal/ancient_portal",
         "idas:ancient_portal/nether_ancient_portal"
@@ -72595,6 +72596,181 @@
             "minecraft:the_nether"
           ],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_xz_blocks": [
+            [
+              37,
+              57
+            ]
+          ],
+          "example_reference": {
+            "source": "run-a/ordinary/chunks.jsonl",
+            "line": 2252,
+            "seed": 42,
+            "structure_id": "idas:ancient_portal/nether_ancient_portal",
+            "chunk_x": 9,
+            "chunk_z": 6,
+            "envelope": [
+              126,
+              88,
+              53,
+              162,
+              122,
+              109
+            ],
+            "size_xyz": [
+              37,
+              35,
+              57
+            ],
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "basis": "Inclusive envelope of saved piece boxes in one full start chunk. Sampled layout extents including air/padding, not maximum family size or occupied geometry. Full start chunk does not prove all component chunks populated."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_y_blocks": [
+            35
+          ],
+          "example_reference": {
+            "source": "run-a/ordinary/chunks.jsonl",
+            "line": 2252,
+            "seed": 42,
+            "structure_id": "idas:ancient_portal/nether_ancient_portal",
+            "chunk_x": 9,
+            "chunk_z": 6,
+            "envelope": [
+              126,
+              88,
+              53,
+              162,
+              122,
+              109
+            ],
+            "size_xyz": [
+              37,
+              35,
+              57
+            ],
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Four connected templates across two variants have no directly authored entities, unresolved entity compounds or generation markers. Overworld pieces select generic spawner randomization; Nether pieces retain raw spawner data under ticking-only processing. Natural silverfish/wraith overrides are separate. No missing graph components; source declarations do not establish live populations."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ],
+              "value": "idas:chests/ancient_portal/ancient_portal_nether"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ancient_portal/ancient_portal1",
+                "idas:ancient_portal/ancient_portal2"
+              ],
+              "value": "idas:chests/ancient_portal/ancient_portal_overworld"
+            }
+          ],
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Both Overworld components reference defined idas:chests/ancient_portal/ancient_portal_overworld; both Nether components reference defined idas:chests/ancient_portal/ancient_portal_nether. Selected ticking/spawner processors append no container loot NBT. Trapped-chest source references do not establish successful trap behavior or reward quantities."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "alexsmobs:soul_vulture",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ]
+            },
+            {
+              "entity_id": "quark:wraith",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ancient_portal/ancient_portal1",
+                "idas:ancient_portal/ancient_portal2",
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Each Overworld template contains one ordinary raw-wraith spawner and selects idas:generic_processor, whose idas:generic list declares zombie15,skeleton10,wraith5. Each Nether template contains three ordinary spawners with raw wraith/soul_vulture sources and selects only waterlogging_fix_processor, so those declarations are not randomized. AlexsMobs is absent; soul_vulture is not a verified viable spawn source. No trial spawners. Counts are authored blocks per component, not observed generated counts. Existing manager failure/fallback limits apply to the randomized path."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Authored sources are ordinary spawners with variant-specific processing. Overworld natural piece overrides separately declare silverfish and wraith each weight3 group1..4; Nether declares wraith weight10 group1. Quark is present but AlexsMobs is absent in the frozen Mod List. Spawner source selection and natural weights do not establish realized encounters."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Loot-bearing monumental frame assemblies with ordinary spawners and natural monster overrides. Optional absent soul-vulture provider limits Nether source viability. No measured intensity, guaranteed trap operation or difficulty tier. Obsidian/crying-obsidian frame form does not prove an active or usable portal."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Large portal-frame architecture provides an interior landmark when exposed; underground placement and Nether terrain can obscure it. No surface marker, visible entrance, measured sightline or tested portal navigation is established."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Overworld generic_structure root uses absoluteY-45, underground_structures, size2 and beard_box: underground intent without measured burial. Nether uses nether_structure, HIGHEST_LAND offset0, surface_structures, size2 and beard_box: Nether land-associated frame. Accepted Nether saved-piece sample does not bound every variant or measure occupied volume."
         }
       }
     },
@@ -72954,11 +73130,13 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json": "3dc7b8f3d835d629850c7300919a235f94673010dced59545a06b0ea6c0e966d",
+        "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-downloaded-restore.json": "1de7330119798e18b672d113ca022061eb6ed9df776bb21474a43ec9d84144d8"
       },
       "family_id": "idas:apothecary_abode",
       "name": "IDAS apothecary abode",
-      "rationale": "One two-component assembly links abode1 to abode2 through matching apothecary_abode2 connectors. Its 37 by 39 by 40 and 23 by 33 by 40 templates contain brewing, bed, crop and storage content, authored illusioners and pillagers, three physical spawner blocks and abode/books loot. This differs from the bee-and-villager assembly and the compact vineyard with bottom storage. The domestic name does not imply peaceful inhabitants. Preserve item and experience-orb declarations, size-3 surface-projected root and custom terrain adaptation. The second piece is a component rather than an alternative dwelling or extra family. Source dimensions and declared inhabitants do not prove effective placement or encounters. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One two-component assembly links abode1 to abode2 through matching apothecary_abode2 connectors. Its 37 by 39 by 40 and 23 by 33 by 40 templates contain brewing, bed, crop and storage content, authored illusioners and pillagers, three physical spawner blocks and abode/books loot. This differs from the bee-and-villager assembly and the compact vineyard with bottom storage. The domestic name does not imply peaceful inhabitants. Preserve item and experience-orb declarations, size-3 surface-projected root and custom terrain adaptation. The second piece is a component rather than an alternative dwelling or extra family. Source dimensions and declared inhabitants do not prove effective placement or encounters. Canonical design relationships are resolved. Required attributes assessed with explicit source limits; final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:apothecary_abode"
       ],
@@ -73003,6 +73181,182 @@
             "minecraft:overworld"
           ],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_xz_blocks": [
+            [
+              40,
+              60
+            ]
+          ],
+          "example_reference": {
+            "structure_id": "idas:apothecary_abode",
+            "dimension": "minecraft:overworld",
+            "chunk_x": -112,
+            "chunk_z": -666,
+            "envelope": [
+              -1812,
+              63,
+              -10697,
+              -1773,
+              101,
+              -10638
+            ],
+            "size_xyz": [
+              40,
+              39,
+              60
+            ],
+            "artifact": "evidence/raw/item8/integrated-stronghold-geometry-r1/chunks.jsonl",
+            "line": 202,
+            "decoded_sha256": "5c861017eab639e754d396e7c8897b64c59daa686efac5e65014f6d1d0834c0e",
+            "manifest": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive envelope of saved piece boxes in one full start chunk. Sampled layout extents including air/padding, not maximum family size or occupied geometry. Full start chunk does not prove all component chunks populated."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_y_blocks": [
+            39
+          ],
+          "example_reference": {
+            "structure_id": "idas:apothecary_abode",
+            "dimension": "minecraft:overworld",
+            "chunk_x": -112,
+            "chunk_z": -666,
+            "envelope": [
+              -1812,
+              63,
+              -10697,
+              -1773,
+              101,
+              -10638
+            ],
+            "size_xyz": [
+              40,
+              39,
+              60
+            ],
+            "artifact": "evidence/raw/item8/integrated-stronghold-geometry-r1/chunks.jsonl",
+            "line": 202,
+            "decoded_sha256": "5c861017eab639e754d396e7c8897b64c59daa686efac5e65014f6d1d0834c0e",
+            "manifest": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:experience_orb": [
+              "idas:apothecary_abode/apothecary_abode1"
+            ],
+            "minecraft:illusioner": [
+              "idas:apothecary_abode/apothecary_abode1",
+              "idas:apothecary_abode/apothecary_abode2"
+            ],
+            "minecraft:item": [
+              "idas:apothecary_abode/apothecary_abode1"
+            ],
+            "minecraft:pillager": [
+              "idas:apothecary_abode/apothecary_abode1",
+              "idas:apothecary_abode/apothecary_abode2"
+            ]
+          },
+          "status": "Authored illager, spawner and literal loot sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:apothecary_abode/apothecary_abode1",
+            "idas:apothecary_abode/apothecary_abode2"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Both connected templates author minecraft:illusioner and minecraft:pillager. Main component additionally has item and experience-orb entities, which are not enemies. No unresolved entity compounds, missing components or generation markers. Selected processor randomizes ordinary spawners using the pillager list; direct illagers and spawner sources remain separate. No realized population is measured."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:apothecary_abode/apothecary_abode1",
+                "idas:apothecary_abode/apothecary_abode2"
+              ],
+              "value": "idas:chests/apothecary_abode/apothecary_abode"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:apothecary_abode/apothecary_abode1"
+              ],
+              "value": "idas:chests/apothecary_abode/apothecary_abode_books"
+            }
+          ],
+          "status": "Authored illager, spawner and literal loot sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:apothecary_abode/apothecary_abode1",
+            "idas:apothecary_abode/apothecary_abode2"
+          ],
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Both components reference defined idas:chests/apothecary_abode/apothecary_abode; main additionally references defined idas:chests/apothecary_abode/apothecary_abode_books. Selected spawner processor appends no container loot NBT. Literal sources are not measured reward quantities or proof of working brewing/storage interactions."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:pillager",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:apothecary_abode/apothecary_abode1",
+                "idas:apothecary_abode/apothecary_abode2"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Authored illager, spawner and literal loot sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:apothecary_abode/apothecary_abode1",
+            "idas:apothecary_abode/apothecary_abode2"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Ordinary pillager spawner blocks occur in both templates; no trial spawners or generation markers. All select apothecary_abode_processor, referencing integrated_structure_spawners/pillager with sole minecraft:pillager weight15. Settings delay20,min200,max800,count4,nearby6,player range16,spawn range4,block-light0..7. Existing manager failure/fallback behavior remains applicable; configuration is not observed spawning success."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Illusioners and pillagers are directly authored hostile sources; processor-selected pillager spawners are a separate authored source. Item and experience-orb entities are not additional enemies. Root spawn_overrides is empty, so no family-specific natural override is declared. Ordinary environmental spawning remains possible."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Furnished brewing/storage abode with authored illagers and ordinary pillager spawners. Its domestic name does not establish a peaceful building. Hostile potential is supported without assigning a tier, measured intensity, successful encounter population or spell-progression system."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Connected furnished buildings with brewing, beds, crops and storage provide architectural cues. Terrain and vegetation may conceal parts of the compound; domestic appearance does not reveal every hostile source. No measured sightline or visible-entry guarantee."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-apothecary-assessment/README.md",
+          "assessment": "Surface-associated generic_structure assembly: WORLD_SURFACE_WG offset0,size3,terrain range10/radius1,biome radius1. Enhanced custom terrain adaptation declares beards/carves and kernel size/distance20. These settings are not measured terrain alteration or burial. Accepted saved-piece geometry remains a sample excluding occupied-volume and all-component-population claims."
         }
       }
     },
@@ -73118,7 +73472,7 @@
       },
       "family_id": "idas:bearclaw_inn",
       "name": "IDAS bearclaw inn",
-      "rationale": "One lodge-path-stables assembly, with matching named connectors linking the three templates. The 35 by 20 by 26 lodge contains bedroom and food loot and authored villagers; its 5 by 7 by 15 path leads to the 13 by 11 by 21 stables with authored horse, mule and pig entities. This separate animal-yard arrangement distinguishes it from the pub with a bottom section and the four-section treetop tavern. Path and stables are components rather than extra families. No physical spawner blocks occur in these three templates. Preserve the size-3 root, beard_thin adaptation and exact biome constraints. Source connections and inhabitants do not prove successful generated placement or effective inhabitants. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One lodge-path-stables assembly, with matching named connectors linking the three templates. The 35 by 20 by 26 lodge contains bedroom and food loot and authored villagers; its 5 by 7 by 15 path leads to the 13 by 11 by 21 stables with authored horse, mule and pig entities. This separate animal-yard arrangement distinguishes it from the pub with a bottom section and the four-section treetop tavern. Path and stables are components rather than extra families. No physical spawner blocks occur in these three templates. Preserve the size-3 root, beard_thin adaptation and exact biome constraints. Source connections and inhabitants do not prove successful generated placement or effective inhabitants. Canonical design relationships are resolved. Required attributes assessed; CORNER authoring marker distinguished from enemy instructions. Final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:bearclaw_inn"
       ],
@@ -73157,6 +73511,173 @@
             "minecraft:overworld"
           ],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_xz_blocks": [
+            [
+              27,
+              53
+            ]
+          ],
+          "example_reference": {
+            "source": "run-a/mountainous/chunks.jsonl",
+            "line": 12226,
+            "seed": 6671238423019257953,
+            "structure_id": "idas:bearclaw_inn",
+            "chunk_x": 4,
+            "chunk_z": -25,
+            "envelope": [
+              51,
+              67,
+              -417,
+              77,
+              86,
+              -365
+            ],
+            "size_xyz": [
+              27,
+              20,
+              53
+            ],
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "basis": "Inclusive envelope of saved piece boxes in one full start chunk. Sampled layout extents including air/padding, not maximum family size or occupied geometry. Full start chunk does not prove all component chunks populated."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_y_blocks": [
+            20
+          ],
+          "example_reference": {
+            "source": "run-a/mountainous/chunks.jsonl",
+            "line": 12226,
+            "seed": 6671238423019257953,
+            "structure_id": "idas:bearclaw_inn",
+            "chunk_x": 4,
+            "chunk_z": -25,
+            "envelope": [
+              51,
+              67,
+              -417,
+              77,
+              86,
+              -365
+            ],
+            "size_xyz": [
+              27,
+              20,
+              53
+            ],
+            "artifact": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:horse": [
+              "idas:bearclaw_inn/bearclaw_inn_stables"
+            ],
+            "minecraft:mule": [
+              "idas:bearclaw_inn/bearclaw_inn_stables"
+            ],
+            "minecraft:pig": [
+              "idas:bearclaw_inn/bearclaw_inn_stables"
+            ],
+            "minecraft:villager": [
+              "idas:bearclaw_inn/bearclaw_inn_lodge"
+            ],
+            "quark:glass_frame": [
+              "idas:bearclaw_inn/bearclaw_inn_lodge"
+            ]
+          },
+          "status": "Template, authoring-marker and ticking-processor sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:bearclaw_inn/bearclaw_inn_lodge",
+            "idas:bearclaw_inn/bearclaw_inn_path",
+            "idas:bearclaw_inn/bearclaw_inn_stables"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Lodge authors villagers and non-mob Quark glass frames; stables author horse, mule and pig. Path has no additional authored entity source. No unresolved entity compounds or missing components. Selected waterlogging_fix_processor only schedules dispenser/dropper ticks; it does not substitute entities. Source declarations are not measured populations."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:bearclaw_inn/bearclaw_inn_lodge"
+              ],
+              "value": "idas:chests/bearclaw_inn/bearclaw_inn_bedroom"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:bearclaw_inn/bearclaw_inn_lodge"
+              ],
+              "value": "idas:chests/bearclaw_inn/bearclaw_inn_food"
+            }
+          ],
+          "status": "Template, authoring-marker and ticking-processor sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:bearclaw_inn/bearclaw_inn_lodge",
+            "idas:bearclaw_inn/bearclaw_inn_path",
+            "idas:bearclaw_inn/bearclaw_inn_stables"
+          ],
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Lodge references defined idas:chests/bearclaw_inn/bearclaw_inn_bedroom and idas:chests/bearclaw_inn/bearclaw_inn_food. Path/stables add no literal loot table; selected ticking processor adds no loot NBT. Furnishings and fixed contents are separate from realized table yields."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [
+            "idas:bearclaw_inn/bearclaw_inn_lodge"
+          ],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Template, authoring-marker and ticking-processor sources assessed; runtime quantities unmeasured.",
+          "template_ids": [
+            "idas:bearclaw_inn/bearclaw_inn_lodge",
+            "idas:bearclaw_inn/bearclaw_inn_path",
+            "idas:bearclaw_inn/bearclaw_inn_stables"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "No ordinary or trial spawners across lodge/path/stables. Lodge structure-block marker at block_entities/119, position34,7,21, uses CORNER with empty metadata and name minecraft:bearclaw_inn_path. This authoring marker is not a DATA enemy instruction or additional family. Selected ticking processor introduces no spawner."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Authored villagers and stable animals are distinguished from non-mob glass frames. No identified authored hostile entity or spawner; root spawn_overrides is empty. Ordinary environmental spawning remains possible, and template inhabitants do not prove runtime population."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Furnished inn with connected path/stables, civilian and animal source declarations, and bedroom/food loot. No identified authored hostile encounter source. This does not guarantee a safe settlement, functioning services or a measured combat tier."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Lodge building, connecting path and separate stable yard provide settlement cues distinct from a single isolated house. Terrain and vegetation can hide parts of the assembly. No measured sightline, visible route guarantee or actual service availability is established."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md",
+          "assessment": "Surface-associated lodge assembly: generic_structure root projects to WORLD_SURFACE_WG at offset0, size3, beard_thin, terrain range10/radius1 and biome radius1. Accepted sampled piece envelope is separate from measured terrain burial or complete population of every component chunk."
         }
       }
     },
@@ -76712,11 +77233,13 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/illager-geometry-r1-manifest.json": "d1b6eda94eafe45cf5fdb259b7b43b716e8cfbc899e774bc4302f14c3d6a727c",
+        "evidence/item-8/raw-custody/illager-geometry-r1-downloaded-restore.json": "4fbbb6635e7eaa2f11ee371669680843500acb8dd0c648ae954c29d3bae7e4c8"
       },
       "family_id": "idas:pillager_fortress",
       "name": "IDAS pillager fortress",
-      "rationale": "One eight-component fortress assembly: piece 1 links pieces 2, 3 and 7; piece 2 links 4 and 5; piece 3 links 6; piece 4 links 8. Matching numbered connector names retain these as components rather than independent forts or alternative families. The first four templates contain fourteen physical spawner blocks, authored illagers and ravagers, other entities and optional animal references, with basic, bedroom, jail and library loot. Preserve legacy idasbasic and pillagerjail loot paths alongside the namespaced fortress tables. Pieces 5 through 8 contain no authored entities, physical spawners or loot-table references and remain attached components. This authored encounter assembly is distinct from the castle pool alternatives and smaller pillager camp. Preserve size 8, fixed rotation, surface projection, beard_thin adaptation and full source contents; graph reachability is not successful generated assembly or effective encounter proof. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One eight-component fortress assembly: piece 1 links pieces 2, 3 and 7; piece 2 links 4 and 5; piece 3 links 6; piece 4 links 8. Matching numbered connector names retain these as components rather than independent forts or alternative families. The first four templates contain fourteen physical spawner blocks, authored illagers and ravagers, other entities and optional animal references, with basic, bedroom, jail and library loot. Preserve legacy idasbasic and pillagerjail loot paths alongside the namespaced fortress tables. Pieces 5 through 8 contain no authored entities, physical spawners or loot-table references and remain attached components. This authored encounter assembly is distinct from the castle pool alternatives and smaller pillager camp. Preserve size 8, fixed rotation, surface projection, beard_thin adaptation and full source contents; graph reachability is not successful generated assembly or effective encounter proof. Canonical design relationships are resolved. Required attributes are assessed with explicit source limitations; sampled geometry does not prove full population.",
       "structure_ids": [
         "idas:pillager_fortress"
       ],
@@ -76754,6 +77277,346 @@
           "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are separate. This identifies biome-compatible dimensions, not guaranteed placement or occurrence in every eligible dimension. An empty list is a verified lack of overlap, not an observed generation failure.",
           "observed": [],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_xz_blocks": [
+            [
+              63,
+              63
+            ]
+          ],
+          "example_reference": {
+            "structure_id": "idas:pillager_fortress",
+            "dimension": "minecraft:overworld",
+            "chunk_x": 296,
+            "chunk_z": -56,
+            "envelope": [
+              4691,
+              63,
+              -918,
+              4753,
+              151,
+              -856
+            ],
+            "size_xyz": [
+              63,
+              89,
+              63
+            ],
+            "artifact": "evidence/raw/item8/illager-geometry-r1/chunks.jsonl",
+            "line": 2151,
+            "decoded_sha256": "49ef0b8a410fc1a1ec7469106d1711e582c0334bb3823db229964aff6f0a4404",
+            "manifest": "evidence/item-8/raw-custody/illager-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/illager-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive envelope of saved piece boxes in one full start chunk. Sampled layout extents including air/padding, not maximum family size or occupied geometry. Full start chunk does not prove all component chunks populated."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_y_blocks": [
+            89
+          ],
+          "example_reference": {
+            "structure_id": "idas:pillager_fortress",
+            "dimension": "minecraft:overworld",
+            "chunk_x": 296,
+            "chunk_z": -56,
+            "envelope": [
+              4691,
+              63,
+              -918,
+              4753,
+              151,
+              -856
+            ],
+            "size_xyz": [
+              63,
+              89,
+              63
+            ],
+            "artifact": "evidence/raw/item8/illager-geometry-r1/chunks.jsonl",
+            "line": 2151,
+            "decoded_sha256": "49ef0b8a410fc1a1ec7469106d1711e582c0334bb3823db229964aff6f0a4404",
+            "manifest": "evidence/item-8/raw-custody/illager-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/illager-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "alexsmobs:alligator_snapping_turtle": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "alexsmobs:bunfungus": [
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "alexsmobs:dropbear": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "alexsmobs:grizzly_bear": [
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "alexsmobs:komodo_dragon": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "alexsmobs:tiger": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "alexsmobs:tusklin": [
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "create:seat": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "create:super_glue": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "minecraft:armor_stand": [
+              "idas:pillager_fortress/pillager_fortress2"
+            ],
+            "minecraft:evoker": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress2"
+            ],
+            "minecraft:iron_golem": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "minecraft:painting": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "minecraft:pillager": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "minecraft:ravager": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress3",
+              "idas:pillager_fortress/pillager_fortress4"
+            ],
+            "minecraft:villager": [
+              "idas:pillager_fortress/pillager_fortress1"
+            ],
+            "minecraft:vindicator": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress2",
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "minecraft:zoglin": [
+              "idas:pillager_fortress/pillager_fortress3"
+            ],
+            "quark:glass_frame": [
+              "idas:pillager_fortress/pillager_fortress1",
+              "idas:pillager_fortress/pillager_fortress2",
+              "idas:pillager_fortress/pillager_fortress3"
+            ]
+          },
+          "status": "Sources assessed with explicit absent-provider, malformed-entity and missing-loot dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:pillager_fortress/pillager_fortress1",
+            "idas:pillager_fortress/pillager_fortress2",
+            "idas:pillager_fortress/pillager_fortress3",
+            "idas:pillager_fortress/pillager_fortress4",
+            "idas:pillager_fortress/pillager_fortress5",
+            "idas:pillager_fortress/pillager_fortress6",
+            "idas:pillager_fortress/pillager_fortress7",
+            "idas:pillager_fortress/pillager_fortress8"
+          ],
+          "unresolved_authored_entities": {
+            "idas:pillager_fortress/pillager_fortress1": [
+              {
+                "path": "/entities/78/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/72/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/68/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/39/nbt",
+                "reason": "authored entity lacks an ID"
+              }
+            ],
+            "idas:pillager_fortress/pillager_fortress3": [
+              {
+                "path": "/entities/32/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/30/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/28/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/26/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/17/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/15/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/13/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/11/nbt",
+                "reason": "authored entity lacks an ID"
+              }
+            ]
+          },
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Pieces1 through4 author evokers, pillagers, vindicators, ravagers and a zoglin, alongside villagers, an iron golem and non-mob decorative/Create entities. Seven AlexsMobs entity IDs are declared but that mod is absent from the frozen runtime. Twelve entity compounds lack IDs (four in piece1, eight in piece3); retain their exact source paths without inventing identities or counting successful mobs. Pieces5 through8 have no authored entities. Ordinary spawner sources are assessed separately; no realized population is claimed."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress1"
+              ],
+              "value": "idas:chests/idasbasic"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress1",
+                "idas:pillager_fortress/pillager_fortress3",
+                "idas:pillager_fortress/pillager_fortress4"
+              ],
+              "value": "idas:chests/pillager_fortress/pillager_basic"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress1",
+                "idas:pillager_fortress/pillager_fortress3"
+              ],
+              "value": "idas:chests/pillager_fortress/pillager_bedroom"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress1",
+                "idas:pillager_fortress/pillager_fortress3"
+              ],
+              "value": "idas:chests/pillager_fortress/pillager_jail"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress2"
+              ],
+              "value": "idas:chests/pillager_fortress/pillager_library"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress3"
+              ],
+              "value": "idas:chests/pillagerjail"
+            }
+          ],
+          "status": "Sources assessed with explicit absent-provider, malformed-entity and missing-loot dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:pillager_fortress/pillager_fortress1",
+            "idas:pillager_fortress/pillager_fortress2",
+            "idas:pillager_fortress/pillager_fortress3",
+            "idas:pillager_fortress/pillager_fortress4",
+            "idas:pillager_fortress/pillager_fortress5",
+            "idas:pillager_fortress/pillager_fortress6",
+            "idas:pillager_fortress/pillager_fortress7",
+            "idas:pillager_fortress/pillager_fortress8"
+          ],
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Six literal table IDs occur in pieces1 through4. Four definitions exist under idas:chests/pillager_fortress/: pillager_basic, pillager_bedroom, pillager_jail and pillager_library. Legacy idas:chests/idasbasic (piece1) and idas:chests/pillagerjail (piece3) have no definition in the preserved packaged JSON catalog. Keep these dangling references as baseline defects rather than substituting similarly named tables. Pieces5 through8 have no literal loot references. Selected processor declares optional decorative block replacements and spawner randomization, with no loot NBT assignment. Reward yield is not measured.",
+          "missing_packaged_definitions": [
+            "idas:chests/idasbasic",
+            "idas:chests/pillagerjail"
+          ]
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [
+            "idas:pillager_fortress/pillager_fortress2",
+            "idas:pillager_fortress/pillager_fortress6",
+            "idas:pillager_fortress/pillager_fortress8"
+          ],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:pillager",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:pillager_fortress/pillager_fortress1",
+                "idas:pillager_fortress/pillager_fortress2",
+                "idas:pillager_fortress/pillager_fortress3",
+                "idas:pillager_fortress/pillager_fortress4"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Sources assessed with explicit absent-provider, malformed-entity and missing-loot dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:pillager_fortress/pillager_fortress1",
+            "idas:pillager_fortress/pillager_fortress2",
+            "idas:pillager_fortress/pillager_fortress3",
+            "idas:pillager_fortress/pillager_fortress4",
+            "idas:pillager_fortress/pillager_fortress5",
+            "idas:pillager_fortress/pillager_fortress6",
+            "idas:pillager_fortress/pillager_fortress7",
+            "idas:pillager_fortress/pillager_fortress8"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Fourteen physical ordinary pillager spawners across pieces1 through4 (6,1,6,1), none in pieces5 through8 and no trial spawners. All eight pools select idas:pillager_processor; its randomizer uses idas:pillager, containing only minecraft:pillager weight15. Delay20,min200,max800,count4,nearby6,player range16,spawn range4,block-light0..7. Reuse the existing Integrated API spawner/manager inspection and fallback limits. Three structure-block markers, in pieces2,6,8, are CORNER mode with empty metadata, not DATA enemy instructions. Physical source count is not realized spawner population."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Direct authored illagers, ravagers and zoglin plus processor-selected pillager spawners establish hostile sources. Absent-provider animals and ID-less entity compounds do not establish successful enemies. Villagers, iron golem and non-mob entities remain distinct. Empty root spawn_overrides means no family-specific natural spawning override; ordinary environmental spawning remains possible."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Connected fortified illager complex with direct hostile mobs, ordinary pillager spawners and differentiated jail, bedroom and library loot sources. Hostile expedition content is supported by source evidence without assigning an Item9 tier or claiming measured combat intensity, encounter success or complete population."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Large surface-associated fortress assembly provides architectural cues; accepted saved-piece sample spans63 by63 blocks horizontally and89 vertically. These are layout extents, not a visible silhouette or sightline measurement. Terrain and vegetation may conceal parts; no guaranteed visible entrance is claimed."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-pillager-fortress-assessment/README.md",
+          "assessment": "Surface-associated integrated_api:generic_structure: WORLD_SURFACE_WG offset0,size8,fixed rotation,beard_thin adaptation,terrain range10/radius3,biome radius1,ignore_waterlogging. Eight connected templates are components of one fortress. Accepted sampled saved-piece bounds are reused; source settings and full start chunk do not prove every component populated or establish burial depth."
         }
       }
     },
@@ -77482,11 +78345,13 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json": "d6d5b4da0b286f3c2d271a750da62662aa26ace7f5a652e0da1ab77c019d9f31",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json": "500586f2dac72e3f92a6f2b75f92a7c86f3b8288910907262f281d53d943bfd5"
       },
       "family_id": "idas:ruins_of_the_deep",
       "name": "IDAS ruins of the deep",
-      "rationale": "One four-component expedition assembly with matching connector chain entrance to tunnel to ruins1 to ruins2. Component extents are respectively 53 by 22 by 45, 17 by 12 by 17, 60 by 42 by 74 and 59 by 27 by 53. The entrance contains villagers and guards with basic, bedroom and tools loot. The tunnel has no entities, physical spawners or loot references. Ruins1 contains 16 physical spawners, turtle and display/item entities, with basic, bedroom, Create, food, library, tools and treasure loot. Ruins2 contains one physical spawner, ocean loot, optional hullbreaker and giant-squid entity references, and five authored entities lacking IDs. These interconnected encounter areas are components, not four independent families; retain the civilian entrance and hostile interior distinctions. Preserve top and bottom processors, custom entrance terrain kernel and the fixed-rotation size-5 surface-projected root with no root enhanced adaptation. Seventeen packaged spawner blocks across the graph do not establish effective generated spawner counts or inhabitants. All four reachable templates have no missing components. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One four-component expedition assembly with matching connector chain entrance to tunnel to ruins1 to ruins2. Component extents are respectively 53 by 22 by 45, 17 by 12 by 17, 60 by 42 by 74 and 59 by 27 by 53. The entrance contains villagers and guards with basic, bedroom and tools loot. The tunnel has no entities, physical spawners or loot references. Ruins1 contains 16 physical spawners, turtle and display/item entities, with basic, bedroom, Create, food, library, tools and treasure loot. Ruins2 contains one physical spawner, ocean loot, optional hullbreaker and giant-squid entity references, and five authored entities lacking IDs. These interconnected encounter areas are components, not four independent families; retain the civilian entrance and hostile interior distinctions. Preserve top and bottom processors, custom entrance terrain kernel and the fixed-rotation size-5 surface-projected root with no root enhanced adaptation. Seventeen packaged spawner blocks across the graph do not establish effective generated spawner counts or inhabitants. All four reachable templates have no missing components. Canonical design relationships are resolved. Required attributes are assessed with explicit source limitations; sampled geometry does not prove full population.",
       "structure_ids": [
         "idas:ruins_of_the_deep"
       ],
@@ -77526,6 +78391,278 @@
           "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are separate. This identifies biome-compatible dimensions, not guaranteed placement or occurrence in every eligible dimension. An empty list is a verified lack of overlap, not an observed generation failure.",
           "observed": [],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_xz_blocks": [
+            [
+              60,
+              74
+            ]
+          ],
+          "example_reference": {
+            "structure_id": "idas:ruins_of_the_deep",
+            "dimension": "minecraft:overworld",
+            "chunk_x": 399,
+            "chunk_z": -437,
+            "envelope": [
+              6353,
+              -13,
+              -7029,
+              6412,
+              89,
+              -6956
+            ],
+            "size_xyz": [
+              60,
+              103,
+              74
+            ],
+            "artifact": "evidence/raw/item8/vanilla-final-geometry-r1/chunks.jsonl",
+            "line": 2122,
+            "decoded_sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "manifest": "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive envelope of saved piece boxes in one full start chunk. Sampled layout extents including air/padding, not maximum family size or occupied geometry. Full start chunk does not prove all component chunks populated."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-existing-world-geometry/README.md",
+          "observed_envelope_y_blocks": [
+            103
+          ],
+          "example_reference": {
+            "structure_id": "idas:ruins_of_the_deep",
+            "dimension": "minecraft:overworld",
+            "chunk_x": 399,
+            "chunk_z": -437,
+            "envelope": [
+              6353,
+              -13,
+              -7029,
+              6412,
+              89,
+              -6956
+            ],
+            "size_xyz": [
+              60,
+              103,
+              74
+            ],
+            "artifact": "evidence/raw/item8/vanilla-final-geometry-r1/chunks.jsonl",
+            "line": 2122,
+            "decoded_sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "manifest": "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json",
+            "downloaded_restore": "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json"
+          },
+          "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "alexscaves:hullbreaker": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep2"
+            ],
+            "alexsmobs:giant_squid": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep2"
+            ],
+            "guardvillagers:guard": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep_entrance"
+            ],
+            "minecraft:armor_stand": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep1"
+            ],
+            "minecraft:item": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep1"
+            ],
+            "minecraft:painting": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep1"
+            ],
+            "minecraft:turtle": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep1"
+            ],
+            "minecraft:villager": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep_entrance"
+            ],
+            "quark:glass_frame": [
+              "idas:ruins_of_the_deep/ruins_of_the_deep1"
+            ]
+          },
+          "status": "Sources assessed with explicit absent-provider and empty-entity dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:ruins_of_the_deep/ruins_of_the_deep1",
+            "idas:ruins_of_the_deep/ruins_of_the_deep2",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_entrance",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_tunnel"
+          ],
+          "unresolved_authored_entities": {
+            "idas:ruins_of_the_deep/ruins_of_the_deep2": [
+              {
+                "path": "/entities/49/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/47/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/46/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/44/nbt",
+                "reason": "authored entity lacks an ID"
+              },
+              {
+                "path": "/entities/10/nbt",
+                "reason": "authored entity lacks an ID"
+              }
+            ]
+          },
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Entrance authors villagers and guardvillagers:guard; upper ruins authors a turtle and non-mob item/display entities; lower ruins declares alexscaves:hullbreaker and alexsmobs:giant_squid. GuardVillagers, AlexsCaves and AlexsMobs are absent in the frozen Mod List, so their declarations do not prove generated inhabitants. Five ID-less lower-ruins entity records have empty NBT compounds; preserve paths without invented identities. Tunnel has no entities. Selected upper and lower ordinary spawner sources remain separate from direct authored entities."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1",
+                "idas:ruins_of_the_deep/ruins_of_the_deep_entrance"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_basic"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1",
+                "idas:ruins_of_the_deep/ruins_of_the_deep_entrance"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_bedroom"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_create"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_food"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_library"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep2"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_ocean"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1",
+                "idas:ruins_of_the_deep/ruins_of_the_deep_entrance"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_tools"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1"
+              ],
+              "value": "idas:chests/ruins_of_the_deep/ruins_treasure"
+            }
+          ],
+          "status": "Sources assessed with explicit absent-provider and empty-entity dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:ruins_of_the_deep/ruins_of_the_deep1",
+            "idas:ruins_of_the_deep/ruins_of_the_deep2",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_entrance",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_tunnel"
+          ],
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Eight defined literal tables under idas:chests/ruins_of_the_deep/: ruins_basic,ruins_bedroom,ruins_create,ruins_food,ruins_library,ruins_ocean,ruins_tools,ruins_treasure. Entrance uses basic/bedroom/tools; upper ruins uses all except ocean; lower ruins uses ocean; tunnel has no literal loot reference. Selected processors add no loot NBT. Sources establish attribution, not realized yields or operational machinery."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [
+            "idas:ruins_of_the_deep/ruins_of_the_deep1"
+          ],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:drowned",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1",
+                "idas:ruins_of_the_deep/ruins_of_the_deep2"
+              ]
+            },
+            {
+              "entity_id": "minecraft:pig",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ruins_of_the_deep/ruins_of_the_deep1"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Sources assessed with explicit absent-provider and empty-entity dispositions; realized quantities unmeasured.",
+          "template_ids": [
+            "idas:ruins_of_the_deep/ruins_of_the_deep1",
+            "idas:ruins_of_the_deep/ruins_of_the_deep2",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_entrance",
+            "idas:ruins_of_the_deep/ruins_of_the_deep_tunnel"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Seventeen physical ordinary spawners:16 in upper ruins and1 in lower ruins, none in entrance/tunnel and no trial spawners. Raw upper pig/drowned data is replaced by the top processor list: quark:wraith5,quark:forgotten5,minecraft:skeleton10,minecraft:zombie10. Lower drowned data selects the bottom list, sole minecraft:drowned5. Both randomizers declare delay20,min200,max800,count4,nearby6,player range16,spawn range4,block-light0..7. Reuse existing Integrated API processor/manager semantics and fallback limitations. Upper ruins has one CORNER marker with empty metadata, not a DATA enemy instruction. These are sources and weights, not realized counts."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Upper and lower processor-selected ordinary spawners provide distinct authored hostile sources. Civilian entrance villagers and upper turtle/display entities do not establish hostile mobs. Optional guard, hullbreaker and giant-squid declarations have absent providers; five empty entity compounds add no identifiable source. Empty root spawn_overrides declares no family-specific natural override. Environmental spawning remains separate."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Expedition assembly combines a civilian entrance, connecting tunnel and hostile spawner-bearing upper/lower ruins. Retain this internal distinction rather than treating every component as a separate family or uniformly hostile zone. No Item9 tier, realized intensity or successful optional boss encounter is claimed."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Surface-associated entrance provides an architectural discovery cue leading through a tunnel to deeper ruins. The accepted60 by74 horizontal and103 vertical saved-piece sample describes the assembly envelope, not its visible portion. Interior extent and hostile sources need not be visible from outside; no measured sightline or guaranteed visible entrance."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md",
+          "assessment": "Mixed surface entrance and deeper connected ruins. Root generic_structure projects WORLD_SURFACE_WG offset0,size5,fixed rotation,terrain range10/radius2,biome radius1,ignore_waterlogging,with enhanced adaptation none. Entrance pool separately declares custom beards/carves,kernel size17/distance17. Entrance and tunnel use ticking-only waterlogging_fix_processor; upper/lower ruins use their respective spawner processors. Root projection does not classify every connected room as surface or measure burial depth."
         }
       }
     },

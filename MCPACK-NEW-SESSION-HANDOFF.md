@@ -6,6 +6,109 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ruins of the deep assessed after 8500e458
+
+Seven entries integrated for four connected components. Civilian entrance and
+hostile interior distinguished. Upper16 ordinary spawners select wraith5,
+forgotten5,skeleton10,zombie10; lower1 selects drowned5. Eight literal loot
+sources defined. Optional GuardVillagers/AlexsCaves/AlexsMobs absent; five empty
+entity NBT records and one CORNER marker explicitly dispositioned. Accepted
+sampled size reused; no runtime/tool added. All85 focused checks pass (67.84s);
+only ruins_of_the_deep/input identity changed. Total424/448 assessed;24 IDAS
+connected families/216 entries remain (nine each). Next quantify a connector
+assessment batch and reuse existing template/connector findings before any new
+capture. All existing-size seven-entry families are now integrated.
+Details: evidence/item-8/sources/idas-ruins-of-the-deep-assessment/README.md.
+Inventory SHA-256: e20c94d0c203738e7a40624f158c676f3fdd8f1e18e4a194b1ee4a5888c4070b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS pillager fortress assessed after 8451bdda
+
+Seven entries integrated for eight connected templates. Fourteen physical
+ordinary spawners select sole pillager15; direct hostile entities are distinct
+from optional absent-provider animals and non-mob entities. Twelve ID-less
+records are empty NBT compounds. Four loot definitions exist; legacy idasbasic
+and pillagerjail references have no packaged definition and remain explicit
+baseline defects. Three CORNER markers are not DATA enemy instructions.
+Accepted sampled size reused; no runtime/tool added. All85 focused checks pass
+(65.59s); only pillager_fortress/input identity changed. Total423/448 assessed;
+25 IDAS families/223 entries remain: ruins_of_the_deep needs7,24 connected
+assemblies need9 each. Next ruins_of_the_deep: four components/seven entries,
+reuse accepted size and inspect top/bottom processor lists before integration.
+Details: evidence/item-8/sources/idas-pillager-fortress-assessment/README.md.
+Inventory SHA-256: a103e189798552fea7e1fe678ff5f43b128ea0663dd8df65aa5a8950bf9e81ba.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS apothecary abode assessed after a13de04a
+
+Seven entries integrated for two connected templates. Authored illusioners and
+pillagers separate from item/orb entities; ordinary spawner list selects pillager15.
+Two defined loot sources and custom surface-adaptation inputs preserved. Domestic
+appearance is not peaceful intent or tested brewing operation. Sampled size reused.
+No runtime/tool added. All85 focused checks pass (66.43s); only apothecary_abode/
+input identity changed. Total422/448 assessed;26 IDAS families/230 entries remain.
+Pillager_fortress and ruins_of_the_deep each need7 content entries with accepted
+sizes;24 connected assemblies need9 each. Quantify next batch and reuse the
+existing generic/pillager processor inspections and source catalog findings.
+Details: evidence/item-8/sources/idas-apothecary-assessment/README.md.
+Inventory SHA-256: 0ddd216df3464408a1b4db4a08688cabcf1fc604a43b19006fb3777258581390.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS ancient portal assessed after 6390e6d2
+
+Seven entries integrated for two variants/four components. Overworld generic
+processor selects zombie15,skeleton10,wraith5; Nether ticking-only path retains
+raw wraith/soul-vulture declarations. Absent AlexsMobs limits soul-vulture viability.
+Two defined dimension-specific loot tables and natural overrides remain separate.
+No portal operation claim. Sampled geometry reused; no runtime/tool added.
+All85 focused checks pass (66.63s); only ancient_portal/input identity changed.
+Total421/448 assessed;27 IDAS families/237 entries remain. Three accepted-size
+families need7 content entries each: apothecary_abode,pillager_fortress,
+ruins_of_the_deep.24 connected assemblies need9 each. Quantify next batch before
+investigation and reuse prior source findings and processor inspections.
+Details: evidence/item-8/sources/idas-ancient-portal-assessment/README.md.
+Inventory SHA-256: 87bce6feaa3afdf675733c269694289e9238878cfc5a44acb29b0e684575c8c3.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS Bearclaw Inn assessed after 452be573
+
+Seven entries integrated for lodge/path/stables. Villagers and stable animals
+separate from non-mob frames; no spawners. Lodge CORNER marker with empty metadata
+is authoring data, not an enemy instruction. Two defined loot tables and ticking
+processor assessed; accepted sampled geometry reused. No runtime/tool added.
+All85 focused checks pass (66.09s); only bearclaw_inn/input identity changed.
+Total420/448 assessed;28 IDAS families/244 entries remain. Four families have
+accepted sampled sizes and7 content entries each (ancient_portal,apothecary_abode,
+pillager_fortress,ruins_of_the_deep);24 connected assemblies need9 each.
+Quantify next content or connector batch and reuse preserved findings.
+Details: evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md.
+Inventory SHA-256: cb6b87cf9fc3f1a01f4111f32e78af81b6ad143b0748926056e58658c7582a19.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS existing world geometry integrated after 810213ad
+
+Ten required size entries integrated for ancient_portal,bearclaw_inn,
+apothecary_abode,pillager_fortress,ruins_of_the_deep. Two original catalog samples
+and three later captures reuse existing observed_bounds logic. Later decoded
+files match manifest hashes and downloaded-restored copies; bound restore
+receipts match manifest identities. Saved-piece envelopes are samples, not
+occupied volume, all-component population or maximum family size. No runtime,
+archive or tool added. All85 focused checks pass (69.40s); only five families/
+input identity changed. Total419/448 assessed;29 IDAS families/251 entries
+remain: five now need7 content entries each,24 connected assemblies need9 each.
+Geometry assessment is confined to those24; inspect existing connector evidence
+before scheduling new captures. Next complete a7-entry content family using
+existing sources and accepted size; quantify the chosen batch before starting.
+Details: evidence/item-8/sources/idas-existing-world-geometry/README.md.
+Inventory SHA-256: ae8e41d45e59c281ba45c02fb7a4bee2bd4b63762974253d065cb95a87d00f8d.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS sunken ship assessed after af081292
 
 Nine entries integrated for three independent17 by28 by45 hull alternatives.
