@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS apothecary abode assessed after a13de04a
+
+Seven entries integrated for two connected templates. Authored illusioners and
+pillagers separate from item/orb entities; ordinary spawner list selects pillager15.
+Two defined loot sources and custom surface-adaptation inputs preserved. Domestic
+appearance is not peaceful intent or tested brewing operation. Sampled size reused.
+No runtime/tool added. All85 focused checks pass (66.43s); only apothecary_abode/
+input identity changed. Total422/448 assessed;26 IDAS families/230 entries remain.
+Pillager_fortress and ruins_of_the_deep each need7 content entries with accepted
+sizes;24 connected assemblies need9 each. Quantify next batch and reuse the
+existing generic/pillager processor inspections and source catalog findings.
+Details: evidence/item-8/sources/idas-apothecary-assessment/README.md.
+Inventory SHA-256: 0ddd216df3464408a1b4db4a08688cabcf1fc604a43b19006fb3777258581390.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ancient portal assessed after 6390e6d2
 
 Seven entries integrated for two variants/four components. Overworld generic
