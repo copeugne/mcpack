@@ -932,3 +932,50 @@ block_entities/entities index. Legacy serialization is not live-conversion
 proof. Required next work is ten whole-layout geometry attributes, using
 existing source evidence before any justified capture. No new measurement or
 tooling was added. Rebuild and focused test commands remain those above.
+
+## Five branching WDA geometry targets
+
+Ten remaining geometry attributes require whole-layout examples for Bandit
+Towers, Bandit Village, Greenwood Pub, Mechanical Nest and Thornborn Towers.
+None has a retained start. Available templates establish branching, not fixed
+main/interior containment. Towers starts with crossing0/1/2, each31x18x31,
+with vertical main links and bridges to more crossings. Village starts with
+terrain-matching street2. Pub main31x48x31 has an exterior north stairs
+connector at(24,3,0); stairs lead to repeating/branching hallways and rooms
+outside main. Nest start31x48x31 has three bridge exits leading to crossing
+networks. Thornborn main17x17x17 links supports, tops, bridges and hanging
+architecture. Main-only dimensions or maximum-distance limits would not
+supply useful whole-layout approximations. Source simulation would require
+more work and machinery than the existing capture path.
+
+Reuse one fresh frozen seed42 run, five targets in the order below,81 requested
+chunks each,405 total, timeout900 seconds. Require full saved starts, correlated
+flushed save, clean exit and configuration parity. Existing observed_bounds
+provides inclusive saved-piece envelopes, not occupied volume, placement of
+every distant piece, family extrema, density or gameplay. Preserve missing
+Village/Thornborn template references and failures; do not repair frozen
+content. Reuse existing archive/local/download restore workflow. No new tool.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/wda-branching-geometry-r1 \
+  --log-path evidence/raw/item8/wda-branching-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/wda-branching-geometry-r1/configuration \
+  --receipt evidence/raw/item8/wda-branching-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure dungeons_arise:bandit_towers \
+  --structure dungeons_arise:bandit_village \
+  --structure dungeons_arise:greenwood_pub \
+  --structure dungeons_arise:mechanical_nest \
+  --structure dungeons_arise:thornborn_towers
+```
+
+This declaration does not claim a successful run or resolved geometry.
