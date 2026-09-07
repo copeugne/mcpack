@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### Six Terralith families assessed after 88903ef0
+
+Forty-five attributes finish Desert Outpost, Igloo, Witch Hut, Frosted Dungeon,
+Old Refinery and Sunken Tower across seven roots/six templates. Geometry is
+preserved. Source spawners, natural overrides, archaeology and absolute-height
+placement are distinguished; underground Witch Hut remains biome-ineligible.
+Seven applicable tests pass; no capture or new tooling. Source derivation:
+sources/terralith-provider/README.md. Inventory SHA:
+9d18d1d522871d0f25c2e95a0e392ba858f167147746098416830fecbc5274ea.
+Registry 257/410, nonregistry 40/40, total 297/450 assessed, 153 remaining.
+Quantify the next batch before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+
 #### Towns and Towers Village geometry after 4075bc17
 
 The two-target seed42 capture completed with correlated save, clean exit and
