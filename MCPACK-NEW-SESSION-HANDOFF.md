@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-07
 
+Castle/farm views reproduce exactly with selector 7c00d51e and narrow path-frame
+fix 3356f800. All nine selected templates visually inspected. Main castle PNG
+conversion completed successfully; no conversion sessions remain running.
+Castle alternatives have different tower, courtyard and roof arrangements.
+Preserve their distinct layouts and extents when reconciling the family decision.
+The README preserves the rejected clipped-path attempt and corrected hashes.
+Farmhouse start weights are ordinary 4 and abandoned 1. Only the ordinary template
+connects to the matching path; abandoned has two zombie-villager spawners and no
+jigsaws. Preserve these differences. Canonical backlog remains 15. Inventory is
+still the delivered 48f9c791 version; no family decision or attribute changed.
+
 Compare six castle main/bottom templates and three farmhouse/path templates
 using a fixed selection in the existing renderer and corrected IDAS framing.
 Castle alternatives have different extents; farmhouse alternatives have different
