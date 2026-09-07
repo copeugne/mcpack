@@ -6,6 +6,238 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS bazaar assessed after ffec0df0
+
+Nine entries integrated for nine rigid connected market components. Connector
+origins give nominal115 by112 footprint,31 height; center starts at y0 and other
+pieces y1. Villagers/llama distinct from absent-provider guards/cockroach and
+non-mob entities. Twenty-six empty entity NBT records dispositioned. Two literal
+loot sources defined; packaged bazaar_tools alone is not a reference. No spawners
+or markers. Ticking-only processor inspection reused; no runtime/tool added.
+All85 focused checks pass (59.42s); only bazaar/input identity changed.
+Total438/448 assessed;10 connected IDAS families/90 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-bazaar-assessment/README.md.
+Inventory SHA-256: 470a11159c78897d7e0f4c439fed301272e17e61e8750b368d50dee4bf1e8cc6.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS desert ruins assessed after 1547ade6
+
+Nine entries integrated for two rigid connected components. Bottom origin0,-12,0
+gives nominal14 by15 footprint,21 height. No authored entities,spawners,markers,
+unresolved records or literal loot references. Fixed contents/salvage absence
+is not inferred. Ticking-only processor inspection reused; no runtime/tool added.
+All85 focused checks pass (60.13s); only desert_ruins/input identity changed.
+Total437/448 assessed;11 connected IDAS families/99 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-desert-ruins-assessment/README.md.
+Inventory SHA-256: f9347093705e51f7d1df6b9120af51b0ed273addfd86b56cb33792464eb98c33.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS desert dig site assessed after 8d94acc0
+
+Nine entries integrated for two rigid connected components. Bottom origin0,-10,0
+gives nominal38 by48 footprint,43 height. Villagers/seats distinct from absent
+GuardVillagers references; eight empty entity NBT records dispositioned. Three
+literal chest sources and two modern conditional archaeology sources reuse the
+dig-site processor assessment. No spawners or markers. Main terrain kernel20/25
+preserved separately from root adaptation none. No runtime/tool added.
+All85 focused checks pass (59.85s); only desert_dig_site/input identity changed.
+Total436/448 assessed;12 connected IDAS families/108 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-desert-dig-site-assessment/README.md.
+Inventory SHA-256: 766233c9cb12896c89119fab78be948147859d0a6fb069c7c90df3dfa4997601.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS dig site assessed after 2870ac21
+
+Nine entries integrated for four rigid connected components. Main0,0,0,bottom
+0,-9,0,stable-12,0,3,stable-bottom-12,-1,3 yield nominal42 by39 footprint,21 height.
+Villagers/horses distinct from absent-provider guards and item entities. Three
+literal chest tables plus two conditional modern append_loot archaeology sources
+are defined and preserved separately. Two CORNER markers; no spawners or unresolved
+entities. Per-element terrain kernels distinct from root adaptation none.
+No runtime/tool added. All85 focused checks pass (60.79s); only dig_site/input
+identity changed. Total435/448 assessed;13 connected IDAS families/117 entries
+remain, nine each. Next desert_dig_site is two components/nine entries sharing
+this processor; quantify before integrating its distinct geometry/content.
+Root IDs differ from family IDs here: dig_site/dig_site and dig_site/dig_site_desert.
+Details: evidence/item-8/sources/idas-dig-site-assessment/README.md.
+Inventory SHA-256: 0cb43625c4cbd83e44527842d2d20463d849e2e1163e8fbebef38ba1440bc78b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS necromancer spire assessed after 481392a5
+
+Nine entries integrated for four rigid connected components. Origins0,0,0;
+0,43,0;4,2,27;4,43,27 give nominal27 by46 footprint,89 height. Direct hostile
+mobs, four raw skeleton/soul-vulture spawners and natural piece-bound wraith10
+(group1) remain separate. AlexsMobs absent; optional sources not successful
+encounters. One defined loot source and one CORNER marker dispositioned.
+Ticking-only processor inspection reused; no runtime/tool added. All85 focused
+checks pass (60.95s); only necromancers_spire/input identity changed.
+Total434/448 assessed;14 connected IDAS families/126 entries remain, nine each.
+Quantify next batch and reuse existing findings; keep nominal dimensions distinct
+from observed placement and preserve authored/spawner/natural distinctions.
+Details: evidence/item-8/sources/idas-necromancers-spire-assessment/README.md.
+Inventory SHA-256: 0c83c8de9f0cd4be1dc9e873993aa693408bad36b31bf42a2451c21b20be0b43.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS treetop tavern assessed after 08ec9794
+
+Nine entries integrated for four rigid connected sections. Origins0,0,0;
+-30,0,0;-30,0,-26;0,0,-26 give nominal55 by52 footprint,37 height. Villagers/
+parrots distinct from non-mob entities and absent-provider toucans. Four empty
+entity NBT records dispositioned. Four defined loot sources retain section
+ownership; no spawners or markers. Ticking-only processor inspection reused.
+No runtime/tool added. All85 focused checks pass (66.12s); only treetop_tavern/
+input identity changed. Total433/448 assessed;15 connected IDAS families/135
+entries remain, nine each. Quantify next batch and reuse existing source findings;
+nominal connected dimensions do not prove observed complete placement.
+Details: evidence/item-8/sources/idas-treetop-tavern-assessment/README.md.
+Inventory SHA-256: b82c99bad11e9f1c9ca831c7dd13d2a483b8b9633dc90452fe5f92b2064932c7.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS farmhouse assessed after dd56fe8a
+
+Nine entries integrated for ordinary/abandoned alternatives and ordinary-only
+path. Nominal ordinary52 by40,height44 from path origin-4,0,11; abandoned48 by40,
+height47 has no connector. Ordinary villagers/pigs and furnishings differ from
+two abandoned zombie-villager spawners, unchanged by ticking-only processor.
+Six empty entity NBT records and one CORNER marker dispositioned. Four defined
+loot sources retain ownership; pool weights4/1 are not observed frequencies.
+No runtime/tool added. All85 focused checks pass (66.52s); only farmhouse/input
+identity changed. Total432/448 assessed;16 connected IDAS families/144 entries
+remain, nine each. Quantify next batch and reuse existing findings; do not apply
+family graph components indiscriminately to every alternative.
+Details: evidence/item-8/sources/idas-farmhouse-assessment/README.md.
+Inventory SHA-256: 29a2ca07ad268f56c624442eef13cfde01794a213097ea1126f13b35f957a0ef.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS ruined well assessed after ef26969f
+
+Nine entries integrated for two rigid connected components. Matching down_east/
+up_east connectors give bottom origin0,-12,0 and nominal18 by23 footprint,
+27 height. Bottom glue is non-mob data; no authored mobs, spawners, markers,
+unresolved entities or literal loot references. Fixed-content absence and
+operating machinery are not inferred. Ticking-only processor inspection reused.
+No runtime/tool added. All85 focused checks pass (66.02s); only ruined_well/input
+identity changed. Total431/448 assessed;17 connected IDAS families/153 entries
+remain, nine each. Quantify next connector/content batch before investigation;
+reuse preserved findings and distinguish nominal geometry from actual burial.
+Details: evidence/item-8/sources/idas-ruined-well-assessment/README.md.
+Inventory SHA-256: 1d3487f8b533aa7069182aeaccfa3f95f3cf787ddad2441b2b2e0f3a84570fc7.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS windswept shrine assessed after 71c20d9a
+
+Nine entries integrated for one six-component assembly. Main origins0,0,0;
+21,0,0;-41,0,-11 and matching bottoms give nominal81 by54 footprint,33 height.
+Sections are connected components, not alternatives. No mobs/spawners; frames
+and glue are non-mob entities. Four CORNER markers have empty metadata; one
+defined shrine loot source. Dispenser-ticking-only processor inspection reused.
+Per-main custom terrain kernels retained separately from root adaptation none.
+No runtime/tool added. All85 focused checks pass (66.18s); only windswept_shrine/
+input identity changed. Total430/448 assessed;18 connected IDAS families/162
+entries remain, nine each. Quantify the next connector/content batch before
+investigation; reuse existing findings and distinguish nominal from observed size.
+Details: evidence/item-8/sources/idas-windswept-shrine-assessment/README.md.
+Inventory SHA-256: 0804fff575ebf6e6e8f8b4d08848d7bf070d4e0423aa4319c240f097fa5864d1.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS wizard tower assessed after e2a87426
+
+Nine entries integrated for three paired variants/six templates. Matching
+vertical connectors give each bottom origin0,-6,0 and nominal24 by25 footprint,
+48 height. Every bottom authors zoglin; purple/yellow each have two ordinary
+spawners selecting sole Quark wraith5, red has none. Four defined loot sources
+retain variant mapping. No markers or unresolved entities. Existing processor
+inspection reused; no runtime/tool added. All85 focused checks pass (66.77s);
+only wizard_tower/input identity changed. Total429/448 assessed;19 connected
+IDAS families/171 entries remain, nine each. Quantify the next connector/content
+batch before investigation; reuse existing findings and keep variant geometry
+separate from observed placement and alternative counts separate from families.
+Details: evidence/item-8/sources/idas-wizard-tower-assessment/README.md.
+Inventory SHA-256: 8282f965a7780f2dbffe92acd78c12e1ca4d66f81e70b2129cce71bc441e0b23.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS snifferhenge assessed after 3a384a1b
+
+Nine entries integrated for two rigid connected components. Matching down_west/
+up_west connectors give bottom origin0,-7,0 and nominal24 by27 footprint,
+21 height. One defined shared archaeology table, no authored entities, spawners,
+markers or unresolved records. No live sniffer encounter inferred from name or
+archaeology. Existing ticking-only processor inspection reused. No runtime/tool
+added. All85 focused checks pass (65.95s); only snifferhenge/input identity changed.
+Total428/448 assessed;20 connected IDAS families/180 entries remain, nine each.
+Quantify the next connector/content batch before investigating; reuse source
+findings and nominal geometry where sufficient, without automatic new captures.
+Details: evidence/item-8/sources/idas-snifferhenge-assessment/README.md.
+Inventory SHA-256: 2ee343bc8f9af88d74d7026fa4da3853cf604022ef97de9229bdc053e6b7e212.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS Tudor pub assessed after f7b7185e
+
+Nine entries integrated for two rigid connected sections. Matching down_south/
+up_south connectors give bottom origin0,-11,0 and nominal35 by25 footprint,
+32 height. Villagers/seats distinguished from absent GuardVillagers declaration;
+one empty NBT entity record preserved. Five defined loot tables, no physical
+spawners or markers. Generic randomizer has no spawner input here; its configured
+list is not a generated enemy source. Existing processor inspection reused.
+No runtime/tool added. All85 focused checks pass (65.98s); only tudor_pub/input
+identity changed. Total427/448 assessed;21 connected IDAS families/189 entries
+remain, nine each. Quantify the next connector/content batch before investigation
+and reuse existing findings rather than initiating captures for empty fields.
+Details: evidence/item-8/sources/idas-tudor-pub-assessment/README.md.
+Inventory SHA-256: e25d25ef030909786d52bd581bd2cf44f1117ebe2ccff00d040cbbdb6baed7ac.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS beekeeper house assessed after d8b742bc
+
+Nine entries integrated for two rigid connected components. Matching east_up/
+west_up connectors give second origin33,0,-2 and nominal62 by50 footprint,
+26 height. Bees/villagers distinguished from non-mob entities; ten legacy saved
+bee entries in five hives are not successful releases. Nine empty entity NBT
+records and one SAVE marker explicitly dispositioned. Three defined loot tables,
+no spawners, ticking-only processor reused. No runtime/tool added. All85 focused
+checks pass (65.57s); only beekeepers_house/input identity changed.
+Total426/448 assessed;22 connected IDAS families/198 entries remain, nine each.
+Quantify the next connector/content batch before investigating; reuse existing
+source findings and simple connector geometry where it satisfies approximate size.
+Details: evidence/item-8/sources/idas-beekeepers-house-assessment/README.md.
+Inventory SHA-256: 6ab337208aac93722bfab4224f625f9589b842ba547e5c9fc90663cd862fd212.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS abandoned vineyard assessed after 0500f8bb
+
+Nine entries integrated for two rigid connected templates. Matching down_east/
+up_east connectors yield nominal24 by22 footprint and20 height, with bottom
+origin0,-7,0. This is direct reference geometry, not observed placement/burial.
+No mobs, spawners, markers or literal loot references; sole item entity is not
+an enemy. Fixed food-storage contents remain distinct from loot-table absence.
+Ticking-only processor inspection reused. No runtime/tool added. All85 focused
+checks pass (65.98s); only abandoned_vineyard/input identity changed.
+Total425/448 assessed;23 connected IDAS families/207 entries remain, nine each.
+Next quantify a remaining connector/content batch, reusing preserved findings.
+Beekeepers_house is a two-component candidate with nine remaining entries;
+inspect its connector origins and nested bee/seat evidence before integration.
+Details: evidence/item-8/sources/idas-abandoned-vineyard-assessment/README.md.
+Inventory SHA-256: 2a53fe620e8b779cc5896519651c12bbee62a9912a24eb6179d0975990fe3597.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS ruins of the deep assessed after 8500e458
 
 Seven entries integrated for four connected components. Civilian entrance and
