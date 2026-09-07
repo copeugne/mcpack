@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Witch Circle and Witch Hut assessed after 483f54e4
+
+Twenty attributes finish the two Better Witch Huts families from six existing
+templates, effective biome evidence and preserved processors. Circle9x5x9;
+hut alternatives7x8x9,11x7x11,15x9x13. Interior witch/cat components fit inside.
+Height explicitly adds variable downward terrain supports, not a fixed total.
+Preserve authored witch/cat versus natural overrides, absent spawner blocks,
+hut chest loot and processor-populated brewing stands; circle has no such loot.
+Exact derivation: evidence/item-8/sources/witch-hut-provider/README.md,
+Two-family attribute assessment. No new runtime, extraction or tooling.
+All85 focused tests pass; semantic inventory changes only these two families
+and input identity. Registry315/409, nonregistry40/40, total355/449 assessed,
+94 remaining. Next quantify a remaining YUNG batch and reuse existing evidence.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+d8845a0c138ab40f663626be9358fad55449301e1fd679ecc2c7025cf3f186d4.
+
 #### Mineshaft and Spider geometry finished after 9a815914
 
 Four size attributes finish Better Mineshafts and Spider Dungeon. The declared
