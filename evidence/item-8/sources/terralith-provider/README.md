@@ -181,3 +181,59 @@ biome constraints and registry assignments are preserved.
 
 Seven focused tests pass. Inventory SHA-256:
 `01cae86e2773d7656a307672fd58f4ce6e3e8ad49b9138ef850dcad613a70f25`.
+
+## Mage Complex
+
+Nine attributes complete the existing surface-placement assessment for one
+root and eleven selected templates. Existing catalogs above suffice; no new
+runtime capture or measurement tool is introduced. No retained start exists.
+Approximate geometry uses an explicit nominal layout, not an observed result,
+a bound across all random branches or the root's max-distance setting as size.
+
+Choose complex, road_straight, road_crosswalk, two barracks, then empty road
+continuation. Roads select crosswalk/straight/empty with weights1/2/2; houses
+select house/house2/house3/barracks with equal weight. With the tower origin
+(0,0,0) and connector levels aligned, straight origin is (11,0,-11): tower
+outgoing (12,0,0) north attaches to road incoming (1,0,10) south. Crosswalk
+origin is (8,0,-24), joining straight's north connector (1,0,0) to crosswalk's
+south connector (4,0,12). Crosswalk's west/east receivers (0,0,6)/(8,0,6)
+attach barracks incoming (8,0,12). Rotate west barracks by (x,z)->(z,-x),
+origin (-5,0,-10); rotate east barracks by (x,z)->(-z,x), origin (29,0,-26).
+
+Inclusive XZ boxes: tower [0,0,23,23], straight [11,-11,13,-1], crosswalk
+[8,-24,16,-12], west barracks [-5,-27,7,-10], east barracks [17,-26,29,-9].
+These component boxes do not overlap. Union [-5,-27,29,23] is 35x51.
+Tower height58 exceeds roads2 and barracks10 in this aligned-level example.
+Selected mob attachments fit the tower envelope. Houses instead of barracks,
+road length/empty selection and terrain-matching road heights change the layout.
+Rigid buildings use ground processing; roads are terrain_matching. Actual total
+height and exposure are terrain-dependent. No frequency or successful-world
+placement claim is made. Rejected inspection example: omitting the straight
+road yielded 35x40 but overlapped the tower and barracks, so it is not accepted.
+
+The main tower saves an axolotl and attaches the same four hostile mob-component
+types assessed for Mage Tower. Barracks saves four empty-handed Health24 pillagers
+and two armor stands. House2/House3 save three/two empty-handed Health24 pillagers.
+House entities0..5 alternate witch/pillager with Health0; entities8/9 save witch
+Health26 and pillager Health24. Zero-health records are not live enemy counts.
+All these building hostile records have PersistenceRequired1. Do not infer
+crossbows from the pillager ID. No ordinary/trial spawner occurs in any selected
+template. No root spawn override augments ordinary conditional world spawning.
+
+Loot ownership: tower treasure, barracks barracks, house/house3 extras. House2
+block_entities/1 saves two legacy potions, swiftness slot1 and strong_leaping
+slot2. House entities6/7 save two glass bottles/one stick. Barracks armor stands
+save leather leggings/helmet and iron boots/chestplate respectively. No other
+nonempty fixed Items/Book container payload occurs. Runtime legacy conversion,
+item lifetime, entity survival and recoverability are not asserted.
+
+mage/road is a material rule list: vegetation locations become air; basalt over
+water preserves water; grass/calcite/podzol locations permit grass, horizontal
+basalt, cobblestone or warped nylium replacements with declared random predicates.
+It injects no entities, spawners or loot. mage/ground retains the calcite rule
+described above. These processors and source shapes support qualitative visual
+assessment, not exposure or pacing measurements. The original root placement
+assessment, biome constraints and world-observation list remain unchanged.
+
+Seven focused tests pass with the existing command. Inventory SHA-256:
+`f72a67f874d5a8d959754b7dd4327c39dc02d959657b66e4a11636493cd1f74a`.

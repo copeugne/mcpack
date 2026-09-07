@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mage Complex assessed after 1325620c
+
+Nine attributes finish Mage Complex, one root and eleven templates. Source
+layout example is 35x58x51 with tower, straight road, crosswalk and two barracks
+at aligned connector levels. It is not an observed or all-choices envelope;
+terrain-following roads change actual height. The rejected overlapping no-straight
+example is preserved in the source README. Six zero-health house entity records
+are distinguished from live enemies; fixed legacy potions and equipment remain
+source payloads. No runtime capture or new tool. Seven focused tests pass.
+Registry 266/410, nonregistry 40/40, total 306/450 assessed, 144 remaining.
+Terralith active families are now 15/15 assessed; Fortified Village remains
+inactive. Retire these assessments absent a concrete contradiction. Quantify
+the next provider batch before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+f72a67f874d5a8d959754b7dd4327c39dc02d959657b66e4a11636493cd1f74a.
+
 #### Mage Tower and Spire assessed after d16a6a31
 
 Twenty attributes assess two families, six roots and sixteen unique templates.
