@@ -10236,3 +10236,53 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-final-desig
 ```
 
 Use fresh output files. Canonical decisions do not close effective attributes.
+
+### Remaining Item 8 work after canonical-design reconciliation
+
+Inventory 2cc71537 has no unassigned registry IDs and the tracked canonical-design
+notes are resolved. Its 426 groups still include inactive and excluded records.
+Do not report 426 as the final active authored-family count.
+
+The complete existing family-decision test file passes: 78 passed in 59.60s with
+`uv run pytest tests/item8/test_family_decisions.py -q`. This verifies that focused
+changes also satisfy the existing broader partition and evidence checks; it is
+not the final Item 8 exit gate.
+
+The 33 records at family-decisions.json/non_registry_content/contributions have
+a finite assignment breakdown. Fourteen records explicitly list 39 distinct
+family IDs, none overlapping registry-group IDs. Explorations scarecrow has one
+additional family assignment in its relationship text. Fifteen records have
+empty family lists and explicit exclusions. Village Taverns and Chefs Delight
+contribute components to existing families. Deep Aether totem is an inactive
+candidate. Thus 15 contribution records supply 40 family assignments, 15 are
+excluded, two are component contributions and one is inactive. These assignments
+still require integration with required attributes and final coverage validation;
+they are not 33 uninvestigated providers or 33 additional families.
+
+Current attribute bookkeeping is directly inspectable in inventory.json/families.
+For the six fields below, count a row only when the field is a string beginning
+with UNKNOWN. Object-valued alternatives are not automatically accepted results.
+
+| Required field | UNKNOWN strings among 426 working groups |
+| --- | ---: |
+| approximate_footprint | 347 |
+| approximate_vertical_size | 345 |
+| intended_hostility | 396 |
+| authored_or_natural_enemies | 398 |
+| visual_discoverability | 419 |
+| underground_surface_classification | 401 |
+
+The other five required fields already contain structured source data. Dimension
+and biome constraints have objects in all 426 rows but still require effective
+eligibility reconciliation. Mob source and generated spawners each have 400 rows
+with the explicit status "packaged possibilities; effective generation and
+injections unresolved"; loot-table source has 402. Mob source also has one row
+explicitly retaining unresolved mod transformations. Other objects need assessment
+on their own evidence, not acceptance from a missing status flag.
+
+These are field-shape counts in the pinned inventory, not counts of missing
+experiments. Resolve inactive/excluded dispositions first, reuse existing source,
+configuration, log and world evidence, and perform new measurement only for a
+specific required claim that those sources cannot establish. Finish by checking
+all eleven attributes for every included registry and nonregistry family, then
+the final applicable validation, clean PR review loop and verified main delivery.
