@@ -6,6 +6,34 @@
 
 ### Continuation update - 2026-09-07
 
+#### BetterEnd building/ruin batch delivered after d1fe647f
+
+Sixteen BetterEnd building/ruin families now have all eleven descriptive answers
+integrated in the authoritative decisions and inventory. Added 128 answers from
+existing evidence, preserving the three previously recorded geometry/form answers
+per family. Loot source attribution distinguishes exact saved template tables
+from the chest processor's conditional biome assignment and preserves legacy
+block-entity IDs. It does not claim successful conversion or realized rewards.
+The precise derivation and commands are in the existing
+`evidence/item-8/sources/betterend-entry-template-consumers/README.md`.
+
+Validation: 16 affected tests pass; scoped Ruff and Basedpyright pass. Inventory
+is byte-identical to `evidence/raw/item8/inventory-betterend-building-complete-descriptions.json`,
+SHA-256 fd387ee0d6adf4ee95830c5884f5d0f8807e0a44f01a07ad4671a6790defea3c.
+Registry rows and every other nonregistry contribution are unchanged.
+Retire these sixteen descriptive assessments without a generic conversion,
+population or shared-effect research backlog. Reopen a specific claim only on
+changed or contradictory evidence.
+
+Nonregistry assessment now covers 34 of 40 families. Six remain: BetterEnd crashed
+ship and ruined obsidian pillar, BOP anomaly and monolith, scarecrow and cave urn.
+Registry reconciliation remains 386 families in the existing 340/21/25 evidence
+paths. The user clarified that this breakdown is sufficient: assessment and
+integration proceed together in coherent batches. Do not require a global
+reconciliation before implementation or add another planning-only pass.
+Final all-family presentation, consistency, evidence durability, applicable final
+checks, PR review and verified main merge remain open.
+
 #### Remaining registry work by evidence path at 7200f884
 
 All 386 remaining registry families have now been partitioned against the existing
