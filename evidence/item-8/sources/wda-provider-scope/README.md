@@ -1121,9 +1121,9 @@ trap. Selected processors are empty.
 
 Shiraz Palace projects WORLD_SURFACE_WG offset16, depth7, surface_structures.
 Architectural sections, towers and gardens support an exterior landmark
-inference, not human discovery range. Fifteen ordinary spawner templates,
+inference, not human discovery range. Fourteen reachable ordinary spawner templates,
 each block_entities0: axe_illusion2 skeleton Health15; crossbow_illusion1
-pillager Health15; husk_elite0 Health50; husk_garden0/2 Health60/40;
+pillager Health15; husk_garden0/2 Health60/40;
 husk_garden_exterior0 cow Health30 carrying husk Health60; husk_tower0
 Health50; skeleton_elite0 wither skeleton Health20; skeleton_garden1
 Health40; skeleton_garden_exterior1 cow Health20 carrying skeleton Health40;
@@ -1137,3 +1137,39 @@ All ordinary table IDs and nonempty fixed-payload locations are integrated in
 attributes. Exact source references carry descriptive claims; no additional
 validator or measurement was needed. Rebuild and focused checks use commands
 above. Geometry remains eight explicit attributes for the same four families.
+
+## Shiraz Palace geometry and spawner correction
+
+Exact WDA templates data/dungeons_arise/structure/shiraz_palace/
+shiraz_palace_part_0.nbt through part_26.nbt each measure48x32x48.
+Start pool desertic/shiraz_palace/shiraz_palace_start selects part13.
+The main pool uses rigid sections with empty processors. Relative to part4
+origin(0,0,0), parts0..8 have XZ origins(-48,-48),(0,-48),(48,-48),(48,0),
+(0,0),(-48,0),(-48,48),(0,48),(48,48). Named shiraz_palace_side pairs
+0/1,2/3,4/5,6/7 connect center4 to1,3,7,5; pairs8/9,10/11,12/13,14/15
+connect corners. Opposing connectors at0/47 join adjacent blocks, giving48
+horizontal steps. Parts9..17 repeat atY32 with suffix_top and18..26 atY64
+with suffix_top_two. Aligned up_west/down_west connectors at(23,31,24)/
+(23,0,24), pairs18/19 and21/20, connect centers4/13/22. The resulting nominal
+source envelope is144x96x144, within four architectural edges from start13.
+
+Fourteen reachable spawner alternatives measure1x2x1 with incoming down_north
+at(0,1,0). Upward receivers in the sections are within localXZ0..47 and
+Y1..28, so attached boxes remain inside the architectural sections. No other
+reachable nonarchitectural template enlarges the envelope. This is source
+geometry, not a retained start or successful-placement claim.
+
+A narrow attribution defect was found while reconciling the41-template trace:
+27 architectural sections plus14 reachable spawner alternatives. The archive
+also contains shiraz_palace_husk_elite_0, but no reachable pool selects it.
+The preceding content increment counted this unreferenced Health50 husk among
+15 alternatives. Correct the authoritative summaries to14, retain its explicit
+unreferenced disposition, and correct the descriptive list above. The existing
+source_templates list already excluded it and remains unchanged. A focused
+comparison of spawner templates against the selected traces found no analogous
+unselected spawner in Foundry, Mining Complex or Scorched Mines. No new tool
+or broad regression framework is needed for this direct artifact distinction.
+
+Rebuild and eight focused tests use the existing commands above. Only Shiraz
+geometry and this direct spawner correction change. Six geometry attributes
+remain for Foundry, Mining Complex and Scorched Mines.

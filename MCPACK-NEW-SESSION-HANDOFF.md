@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Shiraz geometry and spawner correction after 18bc7712
+
+Two source geometry attributes finish Shiraz Palace, nominal144x96x144 from
+27 rigid connected sections. Fourteen reachable spawner alternatives fit inside.
+Corrected prior15-alternative prose: husk_elite0 exists but is unreferenced by
+reachable pools; existing source_templates list already excluded it. Retained
+its explicit disposition. No analogous unselected spawner found in the other
+three active WDA batch families. Exact derivation and correction are in
+evidence/item-8/sources/wda-provider-scope/README.md. Eight focused tests pass;
+no runtime/tool added. Registry308/409, nonregistry40/40, total348/449 assessed,
+101 remaining; WDA36/39. Six geometry attributes remain for Foundry, Mining
+Complex and Scorched Mines. Next inspect connected source extensions before
+adding any justified existing capture. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+63188e053bbfbbbf2dabb90b8c119b6a463ed1f75aa0dbcf4c61937c37c68a10.
+
 #### Final four WDA content assessments after be9994d2
 
 Thirty-two attributes integrate Foundry, Mining Complex, Scorched Mines and
