@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Supplementaries Road Sign assessed after dcf03749
+
+Ten attributes integrate one root/trigger template and the retained feature/
+callback. Existing full and planned-only starts are distinguished;7x7x7 is
+piece reservation, while source construction has a5x5 ground patch and six
+working levels. Empty destination callback creates a fixed notice-board book,
+not monsters or table loot. Fifteen focused tests pass. No new capture/tool.
+Registry271/410, nonregistry40/40, total311/450 assessed,139 remaining.
+Galleon remains: one root,17 templates,10 attributes, custom spawn boxes,
+feature-spawned boats/passengers and processor paths. Inspect existing evidence
+before extending investigation. Derivation: sources/supplementaries-generation/README.md.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+99be3abcf4eb55f3d1864658a58cabd5a465307743cf37e5c0e5acf659d53303.
+
 #### Four Creating Space families assessed after 4fbcfd08
 
 Thirty-five attributes finish four roots/seven traced templates. Mars fallback
