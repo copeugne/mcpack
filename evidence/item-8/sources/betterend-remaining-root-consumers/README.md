@@ -52,3 +52,273 @@ Remaining provider work: reconcile other feature registration consumers,
 remaining common mixin generation hooks and shared integration/modifier
 activation. Do not reopen the completed 128-template partition. Whole-provider
 coverage and canonical family totals remain incomplete.
+
+## Bridge assessment
+
+Provider discovery above is historical and is now closed. This increment assesses
+the nine remaining bridge attributes using the already captured EndBridgeStructure,
+its Anchor, EndBridgePiece and the existing full-start observations. No new
+capture, source extractor or measurement system is needed.
+
+The packaged root has empty spawn_overrides and surface_structures generation
+step. Its custom findGenerationPoint supplies a stub at Y0, then generatePieces
+samples terrain heights and chooses two anchors. The stub is not deck elevation.
+Candidate endpoints require horizontal separation24 to96 and height difference
+at most12, with other terrain/island/angular predicates. Missing suitable anchors
+can produce no piece; these are placement constraints, not separate families.
+
+EndBridgePiece constructs a deck, railings, landings and supporting columns.
+Its write paths use END_STONE_BRICKS, the CRACKED and WEATHERED slots of
+END_STONE_BRICK_VARIATIONS, and END_STONE_BRICK_WALL. BlocksHelper is consulted
+for replaceability; it is not a content generator. The root/piece path has no
+entity creation, template entity loading, container-loot assignment or explicit
+spawner configuration. It therefore authors a traversal structure without a
+direct encounter or container reward. Empty spawn overrides do not suppress
+natural biome enemies. These source statements do not assert complete runtime
+absence of external mobs or loot injections.
+
+Deck and railings provide visual cues, with weathered/cracked material variation
+and possible railing gaps. Supports extend below the crossing. Exposure and
+terrain occlusion are qualitative assessments; no visibility-distance or player
+discovery measurement is inferred from source code or structure-start presence.
+
+Five retained full starts represent four distinct layouts:
+
+| Seed | Run and decoded line | Chunk | Saved size X,Y,Z |
+| --- | --- | --- | --- |
+| 6671238423019257953 | run-a/mountainous:6443 | 88,5 | 35,23,35 |
+| 6671238423019257953 | run-a/mountainous:6654 | 91,13 | 24,19,40 |
+| 95920844204830198 | run-a/ocean-heavy:8106 | 98,15 | 64,27,80 |
+| 95920844204830198 | run-b/ocean-heavy:8106 | 98,15 | 64,27,80 |
+| -3503646078644842058 | run-b/biome-diverse:7457 | 97,-9 | 24,23,40 |
+
+Each source is the corresponding chunks.jsonl in preserved Item7 custody, joined
+by world-bounds.json.gz. Exact envelopes and references are integrated in the
+authoritative attributes. The existing observed_bounds implementation supplies
+inclusive spans. makeBoundingBox expands endpoint minima/maxima by six on X/Z,
+and uses min(endpointY)-12 to max(endpointY)+6 vertically. Thus the reported
+examples include margins and support allowance, not occupied area, deck thickness,
+typical dimensions or all-layout maxima. The ocean-heavy record repeats the
+same layout; it is not a fifth independent sample. The bridge is now assessed
+for all Item8 attributes without claiming Item8 as a whole is complete.
+
+## Ice star assessment
+
+Nine remaining attributes are integrated from GiantIceStarStructure, the retained
+VoxelPiece and FeatureBaseStructure, and existing cone/rotation semantics under
+pillar-shape-semantics. No runtime observation or new measurement tool is needed.
+
+getSDF selects S using randRange(20,35) and25..40 Fibonacci direction points.
+Each parent cone has half-height S, lower/upper radii3+0.2*(S-5) and0, then
+translation Y=S-0.5. It rotates these cones and unions them. The already captured
+SDFCappedCone uses height as half-height, so20..35 is not total spike length.
+Special near-pole handling uses the actual Y-axis rotation branch; do not replace
+it with an idealized perfectly symmetric star.
+
+A cylinder enclosing a translated cone has |Y| at most2*S-0.5 and lateral radius
+r=3+0.2*(S-5). It fits a sphere of radius sqrt((2*S-0.5)^2+r^2). Rotations and
+unions preserve that enclosing sphere, giving a conservative continuous diameter
+of2*sqrt((2*S-0.5)^2+r^2), approximately80 to141 blocks over the nominal parameter
+range. This is an approximate parent scale on all three axes, not a measured
+occupied footprint, attained size or strict floating-point voxel bound.
+
+Direct pinned BCLib getDistance inspection confirms SDFTranslate subtracts its
+translation from query coordinates and SDFUnion returns the minimum of the two
+source distances. Exact class/JAR identities are in processor_inspection.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.sdf.operator.SDFTranslate org.betterx.bclib.sdf.operator.SDFUnion
+```
+
+The supplied postprocess callback chooses ANCIENT_EMERALD_ICE,
+DENSE_EMERALD_ICE, EMERALD_ICE or original DENSE_SNOW from distance/random
+thresholds. It returns a block state, without adding geometry or an encounter.
+The root's fillRecursive callback builds the StructureWorld consumed by
+VoxelPiece; that piece places stored chunks and primes heightmaps. The inspected
+root/callback/piece paths have no direct entities, spawners or container-loot
+assignment. Empty packaged spawn_overrides leave natural spawning and other
+systems possible; harvested materials are not a structure loot-table source.
+
+findVoidGenerationPoint supplies a stub at Y80 without a terrain-height test.
+The root overrides generation and independently selects center Y32..128, plus
+local X/Z offsets4..12. Do not apply SDFStructureFeature's separate surface-rooted
+static generation method to this override. The formation has floating intent,
+but source placement does not guarantee clearance from terrain. Its radial
+spikes and snow/ice zones are qualitative discovery cues, not measured visibility.
+
+## Glowshroom content assessment
+
+Seven descriptive attributes are integrated from the retained
+GiantMossyGlowshroomStructure, SDFStructureFeature, FeatureBaseStructure and
+VoxelPiece code. Footprint and vertical size remain open. No new source capture,
+world experiment or measurement implementation was introduced.
+
+The root uses the shared surface generator, unlike giant ice star's override.
+FeatureBaseStructure first samples WORLD_SURFACE_WG for its generation point and
+requires sampled height at least10. The separate SDFStructureFeature generator
+chooses local X/Z offsets4..12, samples base surface height, requires height>5,
+and positions the volume at that sample. Preserve the two distinct checks.
+Packaged spawn_overrides are empty. The result is surface-rooted by design, not
+proof of actual complete exposure.
+
+The root builds a cap from cone/subtraction/wave/smoothing components, a stem
+from a spline, and a basal sphere. It selects cap, hymenophore and mossy-glowshroom
+wood/bark states. The postprocessor creates cap-transition states where wood and
+cap meet, and can add MOSSY_GLOWSHROOM_FUR to adjacent air and beneath hymenophore.
+These are material/vegetation writes, not direct entity insertion, spawner
+configuration or container-loot assignment. The callbacks and VoxelPiece path
+therefore support no directly authored encounter or table reward. This does not
+exclude natural biome enemies, external systems or harvested material drops.
+
+Stem, cap, underside and fur are qualitative visual cues, not a measured sight
+distance. The selected stem-length parameter is10..25 and final scale2..3.5,
+but these alone do not describe total occupied size. Cap coordinate modification,
+flat waves, smooth unions, final round radius1.5 and neighboring fur writes must
+be accounted for before final size attribution. Reuse the already known cone,
+translation and union semantics, and inspect only the remaining shared operators
+needed for the two outstanding geometry claims. Do not introduce a new simulation
+or measurement framework merely to reproduce this source description.
+
+## Glowshroom geometry assessment
+
+Both size attributes now describe nominal parent scale with explicit deformation
+limits. This uses the retained root and direct inspection of its BCLib helpers,
+with exact identities in processor_inspection. No new capture or simulator is
+needed to satisfy an approximate description.
+
+The positive cap parents are a centered half-height2.5 cone, a half-height3 cone
+translated upward5, a copy of that cut cone translated another1.25 and scaled
+X/Z by1.2, and an inner half-height3 cone translated4.25. Subtracted geometry
+cannot enlarge these undeformed parents. Their maximum lateral radius is15.6,
+and parent Y range is[-2.5,9.25]. The later +2.5 translation and stem-tip
+attachment give cap parent Y[L,L+11.75]. The basal sphere has radius4 and Y
+scale0.7, reaching -2.8. L is selected10..25 and final uniform scale Q is2..3.5.
+Thus nominal cap diameter31.2*Q is62.4..109.2; scaled stem endpoint length L*Q
+is20..87.5; the undeformed parent vertical span (L+14.55)*Q is49.1..138.425.
+These component/parent scales are not occupied dimensions or all-layout maxima.
+
+The direct helper interpretation is:
+
+- SDFScale evaluates source at coordinates divided by Q, then multiplies distance
+  by Q. SDFScale3D divides coordinates separately, without distance rescaling.
+- SDFFlatWave adds cos(atan2(x,z)*rays+angle)*intensity to source distance via
+  SDFDisplacement. Cap uses12 rays/intensity1.3; base uses5 rays/intensity1.5.
+- Smooth union uses h=clamp(0.5+0.5*(b-a)/k,0,1), then
+  lerp(h,b,a)-k*h*(1-h). The root uses smoothing radii3 and4.
+- The cap coordinate callback changes query Y to Y+0.3*R*N-0.15*R, where
+  R=sqrt(x*x+z*z) and N is the captured position-dependent noise sample.
+- Final SDFRound subtracts1.5 from distance after uniform scaling. The material
+  postprocessor can add neighboring fur, including one block below hymenophore.
+
+SplineHelper.offsetParts iterates from index1 through the final point and adds
+nextGaussian times the supplied per-axis scale. The root supplies(1,0,1), so
+horizontal offsets have no explicit clamp and include the cap attachment tip.
+Do not invent a finite universal footprint or call the nominal cap diameter the
+whole realized formation width. These limitations are part of the assessment,
+not a requirement to simulate every random layout or measure live occupied size.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.sdf.operator.SDFScale org.betterx.bclib.sdf.operator.SDFScale3D org.betterx.bclib.sdf.operator.SDFFlatWave org.betterx.bclib.sdf.operator.SDFDisplacement org.betterx.bclib.sdf.operator.SDFSmoothUnion org.betterx.bclib.sdf.operator.SDFRound org.betterx.bclib.util.SplineHelper
+```
+
+
+## Small island assessment
+
+Nine remaining attributes use retained SmallIslandStructure, IslandGeometry,
+SDFStructureFeature and VoxelPiece, existing world-bounds observations, and direct
+pinned StructureWorld.getBounds inspection. No new experiment or tool is needed.
+
+The root uses void stub Y58, then independently selects center Y48..68 and local
+X/Z6..10. It returns before construction when nextFloat<0.25, or when any of five
+WORLD_SURFACE_WG base-height samples exceeds minimum build height: center and
+cardinal offsets of the rounded radius. This is not exhaustive terrain clearance.
+The selected center's flower_islets biome chooses radius6..12 and flowerCoat;
+otherwise radius12..17 and waterfallCoat. Both construct a smoothed, radially
+noised and horizontally warped cone-based end-stone island through fillRecursive.
+
+flowerCoat selects sangnum or pallidium surface states, writes umbralith below
+pallidium, and can append3..10-block bulb/twisted/jungle vines at underside patches.
+waterfallCoat selects end moss and can append2..5-block end-stone stalactites.
+Despite the method name, that callback does not place water. These methods author
+terrain and vegetation, not entities, spawners or container loot tables. Empty
+root spawn overrides leave natural biome spawning and external systems possible.
+The exposed floating terrain and hanging materials are source-based visual cues,
+not measured sightline distance or encounter pacing.
+
+VoxelPiece obtains its saved box from StructureWorld.getBounds. Direct inspection
+shows X/Z extrema shifted from chunk coordinates and the upper coordinate OR15;
+Y extrema are used directly. Thus saved widths include whole chunk columns and
+must not be presented as occupied diameters. The following already retained
+full-start envelopes are copied from world-bounds.json.gz, whose hash is bound in
+the family evidence. Heights include the single-layer records; those are retained
+limitations, not normal island-height claims. Same-seed/start run differences are
+preserved without claiming deterministic geometry or diagnosing their cause.
+
+| Source | Line | Chunk X,Z | Saved size X,Y,Z |
+|---|---:|---|---|
+| run-a/ordinary/chunks.jsonl | 6577 | 92,10 | 16,1,16 |
+| run-a/ordinary/chunks.jsonl | 7822 | 111,4 | 48,13,48 |
+| run-a/mountainous/chunks.jsonl | 7435 | 102,-10 | 16,1,16 |
+| run-a/mountainous/chunks.jsonl | 7758 | 101,2 | 32,9,16 |
+| run-a/ocean-heavy/chunks.jsonl | 6138 | 95,-7 | 48,10,48 |
+| run-a/ocean-heavy/chunks.jsonl | 6644 | 81,13 | 48,14,48 |
+| run-a/ocean-heavy/chunks.jsonl | 7571 | 103,-5 | 48,15,48 |
+| run-a/ocean-heavy/chunks.jsonl | 8055 | 101,13 | 48,16,48 |
+| run-b/ocean-heavy/chunks.jsonl | 6138 | 95,-7 | 32,5,16 |
+| run-b/ocean-heavy/chunks.jsonl | 6644 | 81,13 | 16,1,16 |
+| run-b/ocean-heavy/chunks.jsonl | 7571 | 103,-5 | 32,10,48 |
+| run-b/ocean-heavy/chunks.jsonl | 8055 | 101,13 | 48,14,32 |
+| run-b/biome-diverse/chunks.jsonl | 8037 | 110,12 | 48,9,48 |
+
+The class/JAR hashes are recorded in the family's processor_inspection field
+(the helper is geometry storage, not a processor). Direct inspection command:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.api.v2.levelgen.structures.StructureWorld
+```
+
+
+## Sulphuric cave assessment
+
+Nine remaining attributes use retained EndSulphuricCaveStructure and its concrete
+SulphuricCavePiece (which extends BasePiece, not CavePiece), the existing shared
+base/helper assessment, and one full-start world-bounds observation. No new
+capture or measurement tool is needed. Source manifests are bound in the family.
+
+At local X/Z4..12 the root samples WORLD_SURFACE_WG height H and rejects H<10.
+It selects radius R from nominal10..30 and centerY as
+H-floor(1.3*R+5)-nextInt(max(1,floor(R))); centerY<10 also rejects placement.
+The piece sets waterLevel=Cy+randRange(floor(0.8*R),floor(R)). Its interior test
+uses dx*dx+dz*dz+(1.6*dy)^2 against the square of
+0.75*R+0.25*R*noise(x*0.1,y*0.1,z*0.1). Replaceable interior becomes water below
+waterLevel and cave air otherwise. A further5-unit shell selects sulphuric rock
+or brimstone using noise and existing-block predicates. Active brimstone adjacent
+to water can place waterlogged sulphur-crystal blocks in neighboring positions.
+
+The retained full-start example is run-b/mountainous/chunks.jsonl line6358,
+seed6671238423019257953, chunk81,2, with envelope
+[1282,17,22,1326,46,66], size45x30x45. The existing world-bounds artifact supplies
+this observation. It is an example, not a frequency or typical-size estimate.
+With A=floor(R)+5, the saved box uses X/Z center plus/minus A and Y endpoints
+floor(Cy-A/1.6)-1 through floor(Cy+A/1.6)+1. The main carving loop excludes the
+extra one-block Y margins and clamps to build height. These bounds describe the
+cavern generation envelope, not exact occupied geometry or all resulting effects.
+
+Vent selection is empty unless nextInt(4)==0; otherwise5..20 candidate offsets
+are selected from floor(2*nextGaussian+0.5) independently for X/Z. Placement still
+filters candidate positions against the current chunk/body XZ region and local
+radius/terrain predicates. A vent searches downward through fluid/water plants,
+builds sulphuric rock with possible neighboring tube-worm blocks, places a
+hydrothermal vent, then replaces water upward with bubble-column blocks and
+schedules their ticks. The water-following path uses build-height checks rather
+than the saved cavern's Y endpoints. Do not call that box a bound on all vent
+writes. Neighbor crystal/tube-worm writes are also explicit limitations.
+
+There is no direct entity creation, spawner configuration or container-loot
+assignment in the root/piece. Tube worms are blocks in this path. BlockFixer is
+the already assessed block-repair/fluid-tick helper retained under
+betterend-lake-helpers; this does not establish absence of block behavior,
+natural mobs or external injections. Empty spawn overrides leave those possible.
+This is a subsurface water-filled natural formation, with mineral and vent cues
+when entered or exposed. Its depth rule does not prove a sealed roof or guarantee
+an entrance; no discovery distance or exploration pacing is claimed.

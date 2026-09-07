@@ -7,6 +7,189 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd sulphuric cave assessed after 154238c8
+
+Nine remaining attributes integrated from retained root and concrete SulphuricCavePiece
+(which extends BasePiece, not CavePiece), existing BlockFixer assessment and one
+full-start record: mountainous run-b line6358,chunk81,2,size45x30x45. Saved envelope
+formula and limits are explicit; water-following vent columns and neighboring
+crystal/tube-worm blocks are not bounded by the main cavern box. No direct authored
+entities/spawners/container loot. Subsurface center-depth rule and water level are
+recorded without claiming a sealed roof or guaranteed entrance. No new runtime/tool.
+All85 focused checks pass (59.17s); only sulphuric cave/input identity changed.
+Registry339/408,nonregistry40/40,total379/448 assessed;69 families and617 required
+attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,BetterEnd1/2
+(village footprint/height). Next quantify the village two-attribute batch and reuse
+retained jigsaw/template evidence before determining whether new observation is
+necessary. Existing gap runner is Overworld-only. Final integration, acceptance,
+backup/history preparation and PR/review/main delivery remain open.
+Inventory SHA-256: e8c13df4936878fd6c6df1f83c11a6c0d7cbf53e23d1645f8578f15fc005da6d.
+
+
+#### BetterEnd small island assessed after 251a2629
+
+Nine remaining attributes integrated using retained root/IslandGeometry/VoxelPiece,
+13 existing full-start envelopes and direct pinned StructureWorld.getBounds.
+XZ bounds cover whole chunk columns, not occupied diameters. Single-layer records
+and differing same-seed/start run A/B envelopes remain explicit limitations.
+Flower-islets treatment uses sangnum/pallidium/umbralith and vines; other treatment
+uses moss/stalactites. waterfallCoat does not itself write water. No direct authored
+entities/spawners/container tables. Actual centerY48..68 differs from stubY58;
+25-percent skip and five-point native-land rejection preserved. No new runtime/tool.
+All85 focused checks pass (59.10s); only small island/input identity changed.
+Registry338/408,nonregistry40/40,total378/448 assessed;70 families and626 required
+attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,BetterEnd2/11
+(village2,sulphuric_cave9). Next quantify sulphuric cave one family/nine attributes,
+reusing retained EndSulphuricCaveStructure/CavePiece/SulphuricCavePiece sources.
+Final canonical integration, acceptance, backup/history preparation and final PR,
+review/main delivery remain open. Inventory SHA-256: 67dd4cf1ce8ebc56aa7daaf172a3be51f01e6faf17b86f471c12cf6ccf6febb4.
+
+
+#### BetterEnd glowshroom geometry assessed after 2d075ee1
+
+Two size attributes integrated from retained root and directly inspected pinned
+BCLib operators. Nominal cap diameter62.4..109.2, scaled stem20..87.5 and
+undeformed parent vertical scale49.1..138.425 are explicitly not realized bounds.
+Gaussian horizontal offsets include the cap tip; wave, warp, smoothing, rounding
+and fur limitations are preserved. No new capture/tool. All85 focused checks pass
+(62.92s). Registry337/408,nonregistry40/40,total377/448 assessed;71 families and
+635 required attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,
+BetterEnd3/20 (village2,small_island9,sulphuric_cave9). Next batch: small island,
+one family/nine attributes; inspect retained root/IslandGeometry/VoxelPiece and
+existing full-start observations before any new investigation. Final integration,
+acceptance, backup/history preparation and PR/review/main delivery remain open.
+Inventory SHA-256: baee90becc746220f63e152dc631de8c976f25b462d9ca7a3643e5cfde047e8e.
+
+
+#### BetterEnd glowshroom content assessed after 4149b60e
+
+Seven descriptions integrated from retained root/SDF/base/VoxelPiece code:
+surface-rooted fungal volume, cap/hymenophore/wood/bark/fur, no direct authored
+entities/spawners/container tables, natural spawning remains possible. Adjacent
+fur writes are explicit. Separate base minimum10 and generator height>5 samples
+remain distinct. All85 focused checks pass (60.37s); only glowshroom/input
+identity changed. No new capture/tool. Two geometry attributes remain; known
+stem parameter10..25, final scale2..3.5, round radius1.5, cap coordinate warp,
+flat waves/smooth unions and fur must be accounted for rather than calling
+primitive bounds final size. Existing shared cone/rotation/translation/union
+semantics are available; inspect only missing shared operator semantics needed
+for geometry. Registry336/408,nonregistry40/40,total376/448 assessed;
+72 families and637 explicit attribute slots remain: IDAS38/380slots,
+Repurposed17/154,vanilla13/81,BetterEnd4/22. BetterEnd remaining: village2slots,
+glowshroom2,small_island9,sulphuric_cave9. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: d51432739e524f2df579c6a550d0a671d23e9091080eeb8490706d5efec1f712.
+
+
+#### BetterEnd giant ice star assessed after 1c36e61e
+
+Nine attributes integrated from retained root/VoxelPiece/base and cone/rotation
+sources, with direct pinned union/translation semantics. S20..35 is cone half-
+height, not total height. Conservative continuous parent envelope diameter is
+2*sqrt((2*S-0.5)^2+(3+0.2*(S-5))^2), approximately80..141; explicitly not an
+observed/attained or strict floating-point voxel bound.25..40 cones and material
+callbacks author snow/emerald ice, not direct enemies/spawners/container tables.
+Stub Y80 differs from selected center Y32..128; no terrain clearance claim.
+Exact source derivation, helper hashes and limitations are integrated. No new
+runtime/tool. All85 focused checks pass (61.94s); only ice star/input identity
+changed. Registry336/408,nonregistry40/40,total376/448 assessed;72 families and
+644 explicit attribute slots remain: IDAS38/380slots,Repurposed17/154,
+vanilla13/81,BetterEnd4/29. BetterEnd remaining: village2slots,
+giant_mossy_glowshroom9,small_island9,sulphuric_cave9. Quantify next batch and
+reuse existing SDF/root/piece evidence. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256: defe1def317409e6baf507fe91caeaf3769ad59ca1571b50786e3f514d73af63.
+
+
+#### BetterEnd village and eternal portal assessed after 68f2b423
+
+Sixteen of18 batch attributes integrated: village seven descriptions, portal nine
+remaining attributes. Village41 reachable templates have no entities/spawners/
+markers and three defined literal loot sources; work_01 and stree_terminator_01
+remain missing. Village footprint/height still need assembled evidence; no full
+start exists in retained world-bounds. Portal uses sole21x12x19 template, six
+empty pedestal compounds, no entities/spawners/loot. Direct pinned NBTPiece
+inspection records rotation/mirror, height-4 root placement and erosion/cover,
+reusing captured StructureErode. Concrete defect: postProcess upper corner Y
+uses piece.maxX at bytecode37. Preserve this baseline defect; nominal geometry
+is not a bound on world effects or proof of successful activation. Exact sources,
+class hash and interpretations are in attributes and provider README. No new
+runtime/tool. All85 focused checks pass (61.61s); only village/portal and input
+identity changed. Registry335/408,nonregistry40/40,total375/448 assessed;
+73 families and653 explicit attribute slots remain: IDAS38/380slots,
+Repurposed17/154,vanilla13/81,BetterEnd5/38. BetterEnd remaining: village2slots,
+giant_ice_star9,giant_mossy_glowshroom9,small_island9,sulphuric_cave9.
+Next quantify and reuse existing source evidence. Existing gap runner is
+Overworld-only; do not launch it for an End root or casually extend it. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256: 5661b53026fa31abe2c3412a849fc21b296aa76fd2f2d32ecd22a90771ed3deb.
+
+
+#### BetterEnd bridge assessed after 4b5ed54b
+
+Nine attributes integrated from retained root/piece code, packaged root and five
+full-start records representing four layouts. Ocean-heavy chunk98,15 repeats
+across runs A/B. Saved envelopes include X/Z endpoint margins6 and Y margins
+-12/+6; they are not occupied footprint/deck thickness. The surface-anchored deck,
+railings and supports have no direct entity, spawner or container-loot authoring;
+empty root overrides leave natural spawning possible. Initial stub Y0 is not deck
+height. Exact examples, sources and limits are integrated in the authoritative
+attributes and betterend-remaining-root-consumers README. No new runtime/tool.
+All85 focused checks pass (59.42s); only bridge/input identity changed.
+Registry334/408,nonregistry40/40,total374/448 assessed;74 families and669 explicit
+attribute slots remain: IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd6/54.
+BetterEnd remaining: end_village,eternal_portal,giant_ice_star,
+giant_mossy_glowshroom,small_island,sulphuric_cave. Each has nine attributes left.
+Quantify the next batch and reuse retained source/template evidence. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256: cc91679ad241b97e8a787f8925894ce02995b239f93c5fedd92deb62675806a9.
+
+
+#### BetterEnd mountain geometry assessed after bbaca20a
+
+Two required size attributes integrated from existing root/piece code and six
+full-start envelope examples. Both body radii select integer50..100. Height
+parameter is R times randRange(0.8,1.2) for crystal or(0.4,0.6) for painted;
+nominal scales40..120 and20..60 are not realized relief. Exact radial, support,
+noise, integer column endpoints and terrain-dependent crystal formulas are
+in authoritative attributes and betterend-formation-pieces README. The cubic
+saved Y envelope remains explicitly unsuitable as occupied height. Direct pinned
+BCLib MHelper inspection resolves random-range semantics with class/JAR identities;
+no new extractor, capture or measurement tool. All85 focused checks pass (59.54s).
+Only mountain/input identity changed. Registry333/408,nonregistry40/40,
+total373/448 assessed;75 families and678 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd7/63. BetterEnd remaining
+families are end_bridge,end_village,eternal_portal,giant_ice_star,
+giant_mossy_glowshroom,small_island,sulphuric_cave. Each has dimension integrated
+and nine attributes left. Next quantify and reuse retained root/piece/template
+sources before any investigation; bridge already has full-start observations.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256: e95d95f16fcbe59c56c4b207c5cbebf17628768e843c3e546723c179aa1d6852.
+
+
+#### BetterEnd dimensions and lake geometry assessed after 96814bc6
+
+Eleven existing-evidence entries integrated: End dimension eligibility for all
+nine BetterEnd families and lake footprint/height. Three distinct full starts:
+normal seed42/run-a line6419 size57x44x57; rare biome-diverse/run-a line7809
+size75x45x75; rare biome-diverse/run-b line7441 size77x46x77. Exact sources,
+positions and envelopes are in attributes. These are procedural generation
+bounds, not water dimensions: EndLakePiece.makeBoundingBox uses
+floor(1.5*radius)+10 horizontally and Y[waterLevel-floor(depth)-12,centerY+22].
+The different rare-lake positions across runs remain explicit. No new runtime,
+archive or tool. All85 focused checks pass (58.47s); only nine BetterEnd families
+and input identity changed. Lake family assessed. Registry332/408,nonregistry40/40,
+total372/448 assessed;76 families and680 explicit attribute slots remain:
+IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd8/65. Next quantify the
+BetterEnd continuation; mountain has only its two geometry attributes left,
+with existing generator/piece sources and full-start envelopes already retained.
+Do not call radius-based saved box height occupied mountain height. The other
+seven BetterEnd families have nine attributes each left. Reuse established
+source captures before new investigation. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256: 28408a5f1d3cefaa270f3d5055730ad2131567083b1995105a802d872753ef11.
+
+
 #### Integrated Stronghold geometry assessed after 84a0377b
 
 Predeclared seed42/81-chunk capture passed ready, correlated flush, clean exit0
