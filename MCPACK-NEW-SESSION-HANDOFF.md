@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### User-requested coherent milestones replace the first PR history
+
+Do not merge PR17. The user explicitly requested a second consolidation because
+1711 commits remained fragmented despite the first bounded pass. The bot's
+single-commit claim was factually incorrect and has an evidence-backed PR reply;
+that does not dismiss the user's separate, valid fragmentation concern.
+
+Active branch codex/item8-milestones-r2. Its245-milestone head
+11fa125c46f7b973a5c181f619015db237e2544c exactly equals preserved source d15e179.
+All1711 source mappings and245 endpoint trees/titles verified. Original branches,
+tags and user AGENTS unchanged. The single provenance increment makes246 commits;
+plan, mapping, reproduction and preservation are in evidence/item-8/preservation.md.
+No inventory/runtime changes or additional measurements. Next: publish replacement
+PR against main, link and close superseded PR17 without deleting its branch,
+request fresh Codex review, triage valid findings narrowly, and obtain completed
+clean review before merge and main verification. Item8 remains IN PROGRESS.
+
+
 #### Isolated PR history prepared from eab3ce95
 
 Active branch now codex/item8-final-pr. Base reconstructed head

@@ -106,3 +106,53 @@ The subsequent provenance commit adds only this completion record, the mapping
 and the continuation checkpoint. It is accounted separately from the exact-tree
 comparison. User AGENTS.md changes and protected untracked artifacts remain in
 the working tree, unstaged. Remaining work is final PR review and main delivery.
+
+## Coherent milestone reconstruction, 2026-09-07
+
+The user explicitly requested more coherent milestones after the first pass still
+left 1711 commits. This correction is distinct from PR17's first review finding,
+which incorrectly described the aggregate PR diff as one commit. GitHub's PR API
+reported1711 commits and its commit API reported only3 files at d15e179. The
+finding and evidence-backed disposition remain at:
+https://github.com/copeugne/mcpack/pull/17#issuecomment-5574884881
+https://github.com/copeugne/mcpack/pull/17#issuecomment-5574893849
+No clean review is inferred from that disposition.
+
+The revised plan history-milestone-ranges-r2.tsv defines245 chronological outcomes.
+It combines coupled implementation, tests, source evidence, inventory integration
+and necessary documentation. Independent provider census outcomes remain separate;
+shared tools, registry integration and the final generated layout migration have
+explicit boundaries. The245 groups were quantified before reconstruction. An
+initial196-group draft was split where13 batches combined independent providers.
+
+Source d15e1792187b6e2aaaca571a8315c9250dc144e1 remains on codex/item8-final-pr.
+New milestone head11fa125c46f7b973a5c181f619015db237e2544c on
+codex/item8-milestones-r2 has the exact source tree. Every one of245 resulting
+milestone trees and titles was compared to its declared source endpoint and title.
+The1711-row history-old-to-new-r2.tsv covers every source commit in chronological
+order, with245 unique destinations. The original1988-row mapping remains intact,
+so original source references can be followed through both mappings. All preexisting
+local branches and tags were compared before and after and remain unchanged.
+Remote source, original implementation and backup refs were reverified. AGENTS.md
+passes its before/after SHA-256 check. Protected and ignored workspace content was
+not modified. Existing verified bundles and raw custody remain sufficient; no new
+world capture or archive was created.
+
+The existing script accepts an optional explicit plan, uses its milestone titles,
+and counts explicitly listed singleton groups. Its Bash syntax check passed; the
+actual245-group run exercised these changes. It verifies every produced endpoint
+tree and final equality before publishing the new local ref.
+
+```sh
+bash -n tools/consolidate_item8_history.sh
+bash tools/consolidate_item8_history.sh d15e1792187b6e2aaaca571a8315c9250dc144e1 codex/item8-milestones-r2 evidence/item-8/history-old-to-new-r2.tsv evidence/item-8/history-milestone-ranges-r2.tsv
+git diff --exit-code d15e1792187b6e2aaaca571a8315c9250dc144e1 11fa125c46f7b973a5c181f619015db237e2544c
+git rev-list --count b0e4fc0f1c997414d64ef73af208f92028528054..11fa125c46f7b973a5c181f619015db237e2544c
+```
+
+Reproduction requires a fresh destination branch and mapping path. The subsequent
+single provenance commit contains only this record, the continuation checkpoint,
+the revised plan and mapping, and the direct script adjustment. That makes246 PR
+commits. Source and inventory content remain unchanged, so accepted Item8 tests
+and runtime evidence are not rerun for reassurance. A fresh completed clean Codex
+review and verified main merge are still required. PR17 must not be merged.

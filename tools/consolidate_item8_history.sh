@@ -6,7 +6,7 @@ source_ref=$1
 target_branch=$2
 mapping=$3
 base=b0e4fc0f1c997414d64ef73af208f92028528054
-plan=evidence/item-8/history-consolidation-ranges.tsv
+plan=${4:-evidence/item-8/history-consolidation-ranges.tsv}
 git check-ref-format "refs/heads/$target_branch"
 test "$(git rev-parse origin/main)" = "$base"
 git merge-base --is-ancestor "$base" "$source_ref"
@@ -17,9 +17,11 @@ if git show-ref --verify --quiet "refs/heads/$target_branch"; then
 fi
 
 declare -A endpoints
+declare -A titles
 while IFS=$'\t' read -r first last title; do
     test -z "${endpoints[$first]+set}"
     endpoints[$first]=$last
+    titles[$first]=$title
 done < "$plan"
 mapfile -t commits < <(git rev-list --first-parent --reverse "$base..$source_ref")
 parent=$base
@@ -38,8 +40,12 @@ for ((i=0; i<${#commits[@]}; i++)); do
             exit 1
         fi
     done
-    if test "$first" != "$last"; then consumed=$((consumed+1)); fi
-    git show -s --format=%B "$last" > "$message"
+    if test -n "${endpoints[$first]+set}"; then
+        consumed=$((consumed+1))
+        printf '%s\n' "${titles[$first]}" > "$message"
+    else
+        git show -s --format=%B "$last" > "$message"
+    fi
     printf '\nPreserved source interval: %s..%s\n' "$first" "$last" >> "$message"
     tree=$(git rev-parse "$last^{tree}")
     next=$(
