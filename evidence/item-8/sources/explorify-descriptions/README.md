@@ -159,3 +159,49 @@ uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_i
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Five settlement geometry run
+
+The ten outstanding claims are approximate footprint and vertical size for
+campsite, dark_forest_settlement, farmstead, ruins and tavern. The retained bounds
+catalog has no observations for these five assemblies, and component sizes do
+not establish settlement dimensions. Reuse the Item 7 locate/Chunky lifecycle,
+with explicit target IDs, rather than introducing a simulator or runtime agent.
+The only tool extension accepts targets while preserving the existing defaults,
+frozen materialization, 81-chunk target regions and correlated save/stop checks.
+This uses the previously established Chunky instrumentation, 136 retained JARs
+plus Chunky, with the pinned Java, heap, configuration and ordinary seed 42.
+
+One fresh run requests five locations. Saved start-piece envelopes, if present,
+will describe examples, including air/padding, not global family bounds or fully
+populated component chunks. A failed locate or missing start remains a failed
+observation; neither configuration radius nor component size substitutes for it.
+No gameplay, encounter-rate or pacing claim is intended.
+
+Reproduction from the repository root (new output and target paths required):
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/explorify-geometry-r1 \
+  --log-path evidence/raw/item8/explorify-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/explorify-geometry-r1/configuration \
+  --receipt evidence/raw/item8/explorify-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure explorify:campsite \
+  --structure explorify:dark_forest_settlement \
+  --structure explorify:farmstead \
+  --structure explorify:ruins \
+  --structure explorify:tavern
+```
+
+The target-input change is checked by the existing lifecycle regression with
+both legacy and explicit Explorify targets, including exact commands and clean
+flush/stop completion. Run results and geometry acceptance are pending.
