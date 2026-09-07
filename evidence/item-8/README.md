@@ -1,16 +1,46 @@
-# Item 8 evidence plan
+# Item 8 evidence
 
-Status: IN PROGRESS. No family count or completion claim is accepted yet.
+Status: IN PROGRESS. Family assessments and provider discovery are resolved;
+final acceptance, report reconciliation and reviewed main delivery remain open.
 
-Current working inventory regenerated at `dc45426`, SHA-256
-`d0c65f0812e1b61b08a8d648276cf8b6f23af5c8c727395bce41ba3f833bee41`.
-All 887 registered roots are assigned once in 421 working groups. This is not
-the final accepted canonical family count. The dimension field now joins each
-root's biome constraints to captured live dimension memberships. Three unresolved
-IDAS constraints stay unknown, and nine roots have no overlap. Remaining family
-attributes, provider reconciliation and the final review/delivery gate are open.
+## Canonical listing integration, 2026-09-07
 
-## Current delivery work at 934dbcb
+The existing builder now joins408 active registry families and40 assessed
+nonregistry families into448 active family rows. The other18 registry groups
+retain their inactive/excluded dispositions separately. All887 runtime roots
+remain assigned once. The33 contribution records remain intact as source context;
+components and excluded features are not promoted into extra families.
+
+Scarecrow already had a complete assessment and one-family rationale, but lacked
+an explicit families list. Adding its existing family ID makes that source join
+explicit. No source investigation or family scope was added.
+
+The generated inventory migration is isolated because sorting the new layout moves
+large existing records. Semantic comparison confirms all426 original registry
+rows are unchanged;40 nonregistry rows are added from existing attributes. Three
+focused integration tests exercise the source layouts, preserve registry coverage,
+and reject duplicate family IDs or missing attributes. All88 affected checks pass
+(60.23s), with Ruff and basedpyright clean on the changed builder/test.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/canonical-listing-r2.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py tests/item8/test_inventory_consolidation.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+```
+
+Use a fresh output path. This validates integration, not the final Item8 exit gate.
+Current requirement: reconcile the final report/ledger, run the full applicable
+acceptance gate once for the final candidate, finish authorized backup/history
+preparation, then open the PR and complete review/merge/main verification.
+
+## Historical implementation checkpoints
+
+The remainder preserves dated implementation/recovery context. Its older counts,
+open-work statements and continuation directions are superseded by the current
+checkpoint above, the latest handoff and current committed artifacts.
+
+## Historical delivery work at 934dbcb
 
 This section supersedes the historical work order below. It is the current
 status summary, not another measurement system. Family-specific evidence and
