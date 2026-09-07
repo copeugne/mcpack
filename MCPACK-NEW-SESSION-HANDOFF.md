@@ -6,6 +6,42 @@
 
 ### Continuation update - 2026-09-07
 
+#### Twelve AdoraBuild source assessments after a6ea03a8
+
+Retire acacia_well, bamboo_cache, bamboo_campfire, birch_beehive,
+birch_tree_workshop, dark_oak_mansion, mushroom, oak_hut, red_sand_shrine,
+red_sand_temple, sand_castle and sand_pyramid. Each has all eleven descriptions:
+36 new interpretive answers and 48 reconciled existing attribution answers;
+geometry, placement and resolved biomes are retained. Source mob, loot and
+spawner answers preserve realized-behavior limitations without generic new
+investigations. Existing provider README records direct derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-single-descriptions.json`, SHA-256
+87984027812c48cc83de36b949c35f98fb7765abe1aa11003a8d36e5df8676e5.
+Only these twelve registry rows changed; all nonregistry contributions remain
+unchanged. Registry assessment is now 36/410, with 374 remaining to assess and
+integrate. Nonregistry remains 40/40. Final presentation, acceptance and delivery
+are open. Continue in quantified source-backed batches, not a global re-audit.
+
+#### Authorized history consolidation before the final PR
+
+The user explicitly authorized rewriting/consolidating history before the PR,
+provided no data is lost and everything not quickly regenerable is backed up.
+This overrides the default no-rewrite rule for this delivery step. Execute only
+after Item 8 implementation is stable. Preserve old history under a published
+backup ref and verified self-contained external bundle; preserve existing tags
+and every evidence-referenced commit. Before ref changes, inventory and back up
+staged/unstaged work, relevant untracked content and nonregenerable raw artifacts.
+A Git bundle does not cover ignored or untracked files. Keep originals, preserve
+the user's AGENTS.md edits, and verify hashes and restorability first.
+
+Build coherent milestone commits in isolation; verify final-tree equality with
+the preserved implementation, accounting separately for provenance documentation.
+Use a new codex/ PR branch or an exact expected-old-ref lease after backups pass.
+Record actual old/new refs and recovery instructions here or under evidence when
+executed. Do not rewrite raw evidence identities or repeat completed assessment.
+
 #### Cave urn assessed after ce897b5b
 
 Nine answers complete the last nonregistry descriptive assessment: now 40/40.
