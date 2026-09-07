@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed city assessed after a07bf6c4
+
+Seven remaining entries integrated for two variants/87 pool templates.
+Overworld villagers/furnishings and Nether authored blazes/wither skeletons remain
+distinct. Nether feature adds persistent equipped bow skeletons; natural piece
+spawn overrides are separate. Two literal loot tables defined; no template
+spawners/markers. Column clearance and support limits recorded without whole-city
+exposure guarantees. No runtime/tool added. All85 focused checks pass (62.47s);
+only city/input identity changed. Total405/448 assessed;43 families/378 required
+entries remain: IDAS38/343,Repurposed5/35. Remaining Repurposed: ancient_city,
+bastion,fortress,stronghold,village, each seven content/placement entries with
+accepted size evidence. Quantify next batch and reuse existing source captures.
+Details in evidence/item-8/sources/repurposed-city-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 4476ed51a4e69e4a5ea958902ca9c22a3e4aeabdd67064075dc0638b0aa23134.
+
 #### Repurposed outpost assessed after 57b5cb41
 
 Seven remaining attributes integrated for18 variants/205 pool templates.
