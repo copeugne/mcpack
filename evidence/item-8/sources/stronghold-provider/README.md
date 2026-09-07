@@ -185,3 +185,45 @@ restores through the existing custody workflow. LegProcessor downward supports
 and lateral stair/slab writes can extend beyond template boxes; keep those
 separate from the saved assembly envelope. No new tools or world sampling system
 are needed.
+
+### Stronghold geometry result and custody
+
+The declared seed42 capture passed readiness, correlated flush, clean exit0 and
+frozen configuration acceptance (run.json rejection_reason=null). Full start
+chunk41,-320 is chunks.jsonl line863:594 pieces and saved envelope
+[587,-14,-5183,725,40,-5063]. Inclusive subtraction gives139x55x121 blocks.
+The1802 decoded records describe retained world coverage, not the requested
+81-chunk denominator. LegProcessor downward and lateral support writes remain
+separate; this observation is neither a family-wide maximum nor occupied volume.
+
+The console retains optional-mod loot/tag failures, IDAS spawner-list failures,
+WDA advancement failures, oversized potion component errors and unknown
+forge:entity_gravity warnings. These do not invalidate the decoded saved assembly
+for approximate geometry. They do preclude treating lifecycle success as proof
+of complete gameplay or reward compatibility. No baseline repair was performed.
+
+Archive item8-stronghold-geometry-r1-39515832.tar.gz contains249 files,
+3,071,926 bytes (20,818,379 uncompressed), SHA-256:
+226ecda565af19ac9b9e933a7c282a04cdf1853f283b940cd32ffdadf1740a4f.
+Manifest SHA-256:
+6649871c028daebf700cd40f8a088adb7b175b3a2c0caa421464e5db6e588623.
+Decoded chunks SHA-256:
+aa3caf43eb28c8899861c757a6a72136f8902c5b4c9912c7e37f188329dd1118.
+Release/tag item-8-stronghold-geometry-2026-09-07-r1 references source
+3951583290e08bd50674f451f051bcbd7fa7b50a, verified remotely. Both local and
+independently downloaded restores verified all249 files. Applying existing
+observed_bounds to downloaded line863 reproduced the full-start envelope and
+594 pieces. Local copies share the workspace disk; GitHub is separate storage.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/stronghold-geometry-r1"), Path("evidence/raw/item8/stronghold-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/stronghold-geometry-r1/world --output evidence/raw/item8/stronghold-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/stronghold-geometry-r1 --archive evidence/raw/item8/item8-stronghold-geometry-r1-39515832.tar.gz --manifest evidence/item-8/raw-custody/stronghold-geometry-r1-manifest.json --revision 3951583290e08bd50674f451f051bcbd7fa7b50a
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-stronghold-geometry-r1-39515832.tar.gz --manifest evidence/item-8/raw-custody/stronghold-geometry-r1-manifest.json --target evidence/raw/item8/stronghold-geometry-r1-restored --receipt evidence/item-8/raw-custody/stronghold-geometry-r1-local-restore.json
+gh release download item-8-stronghold-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-stronghold-geometry-r1-39515832.tar.gz --dir evidence/raw/item8/stronghold-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/stronghold-geometry-r1-download/item8-stronghold-geometry-r1-39515832.tar.gz --manifest evidence/item-8/raw-custody/stronghold-geometry-r1-manifest.json --target evidence/raw/item8/stronghold-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/stronghold-geometry-r1-downloaded-restore.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/stronghold-assessed-inventory.json
+```
+
+Use fresh output paths. Exact decoded-record inspection and the inclusive
+subtraction above reuse tracked logic, without a new measurement framework.

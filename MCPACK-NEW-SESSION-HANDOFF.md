@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Stronghold geometry finished after 39515832
+
+Declared seed42 one-target capture passed readiness, correlated flush, clean
+exit0 and frozen configuration acceptance. Full start chunk41,-320,line863 has
+594 pieces and139x55x121 saved envelope. Downward/lateral supports remain
+separate. Archive249 files/3,071,926 bytes published at source39515832; local and
+downloaded restores verified every file and downloaded line863 reproduced bounds.
+Exact commands, hashes and diagnostic dispositions: evidence/item-8/sources/
+stronghold-provider/README.md, Stronghold geometry result and custody. All85
+focused tests pass (59.72s). No Java process remains. Stronghold and all active
+YUNG families are assessed. Registry323/408,nonregistry40/40,total363/448 assessed,
+85 remaining: IDAS38,Repurposed17,vanilla13,BetterEnd9,Aether/DeepAether4,CTOV2,
+IntegratedStronghold/Villages2. Next quantify one remaining provider batch and
+reuse existing evidence before any investigation. Final integration, acceptance,
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+2b88100637f00062e1f9b9b5890101d5caa57030a67d222eb1d5c12aa4f5a08b.
+
+
 #### Stronghold content integrated after 92f1f9a3
 
 Quantified one family, ten attributes, 84 traced templates, missing spiral_stairs
