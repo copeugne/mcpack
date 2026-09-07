@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Soaring landmarks assessed after 3facdfb9
+
+Forty attributes finish Tree, Pond, River and Small Tower across thirteen roots.
+Arena was excluded after confirming its 21 templates are connected pieces,
+not independent alternatives. Ten shared tests pass; no capture or tooling.
+Derivations are in moog-generator-code README. Inventory SHA:
+f335ad6b03e80b4a430d8d2f362c0cf49d8df8366e57676efffae71cfceb2248.
+Soaring Structures 13/26; registry 203/410, nonregistry 40/40, total 243/450 assessed,
+207 remaining. Thirteen mss modular families remain: arena, castle_tower,
+desert_pyramid, diorite_house, jungle, large_tower, leaf_hollow, mangrove,
+muddy_water_hole, red_sand, taiga, volcano and white_house. Continue quantified
+coherent assembly batches. Final integration, acceptance, verified backup/history
+consolidation and PR review/main delivery remain open.
+
 #### Nine Soaring families assessed after 4d641199
 
 Seventy-two attributes finish nine standalone mss families, retaining geometry.
