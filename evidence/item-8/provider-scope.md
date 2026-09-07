@@ -9996,3 +9996,28 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-tinkers-tre
 
 Use fresh output files. Machinery operation and generated extents remain separate
 from this component-boundary decision.
+
+
+### Necromancer spire inventory refresh
+
+Decision 2551f9ac resolves the four spire components from existing connectors and
+contents. The focused IDAS case and scoped Ruff/Basedpyright pass. Canonical
+backlog: 24, all IDAS. Wizard tower and nexus alternatives remain open.
+Two fresh inventory builds agree exactly, SHA-256
+f3ec07fc3d3e79519db7f8ce748add7c232b7bf05ceaa2c5fb4a1a1e5f3e0bb6.
+Only the spire grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-spire-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-spire-r2.json
+cmp evidence/raw/item8/inventory-idas-spire-r1.json evidence/raw/item8/inventory-idas-spire-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-spire-r2.json
+```
+
+Use fresh output files. Successful placement and effective encounters remain
+separate from this component decision.
