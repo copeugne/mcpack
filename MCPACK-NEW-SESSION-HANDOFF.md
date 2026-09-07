@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Towns and Towers Camp assessed after f0496c7b
+
+Nine attributes integrate five variants/35 present templates. Eight preexisting
+missing Savanna references remain explicit, with available-design geometry and
+no invented payloads or runtime outcomes. Six applicable tests pass; no capture,
+new tooling or measurement. Derivation: sources/towns-towers-entry/README.md.
+Inventory SHA: 1b22f228c91204f7b548287885c80dc70ae85eaf387490b002b3a9596660cd0c.
+Towns and Towers 7/8; registry 250/410, nonregistry 40/40, total 290/450
+assessed, 160 remaining. Village is its last family: 26 roots/777 unique
+present templates. Inspect existing evidence and quantify unresolved claims
+before extending investigation. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Assessment counts do not establish Item 8 acceptance.
+
 #### Towns and Towers Fort/Tower outposts assessed after 9f5c2ac4
 
 Eighteen attributes finish two families across 25 variants/42 unique templates.

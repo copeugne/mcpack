@@ -95,3 +95,41 @@ Eighteen attributes complete these two assessments. Six applicable tests pass
 using the command above. Semantic comparison preserves identities, biome and
 world observations, existing placement classification and unrelated families.
 Inventory SHA-256: `ab41272b615fda7958bbf685cbcc698c2b50a83d5ebacecb38341d0ac47ca96a`.
+
+## Camp outposts
+
+Five roots, 35 present unique templates, nine added attributes. Existing placement
+classification is preserved. All present selected pools use empty processors;
+shared illager source attribution applies, and saved allays remain neutral.
+No spawners occur in those present templates. Exact source loot refs and fixed
+base diamond/book chests, beach charcoal and kitchen coal remain distinct.
+
+Geometry uses the same opposite-connector derivation. Beach/snowy-beach are
+single 14x12x28 bases; their mob receivers are at most Y2. The other centers
+are 9x4x9 with side receivers west (0,1,4), north (4,1,0), south (4,1,8),
+east (8,1,4). Kitchen/workshop incoming joints are (4,0,14) south, except
+Savanna workshop (7,0,14). For Sparse Jungle, north tent origin is (2,1,-7),
+west tent (-7,1,2), kitchen (9,1,0), workshop (0,1,9). Union is
+(-7,0,-7)..(23,9,23), giving 31x10x31. Wooded Badlands tents are 9x5x9
+with (4,0,8) south incoming, yielding north (0,1,-9), west (-9,1,0)
+and union (-9,0,-9)..(23,9,23), 33x10x33. Mob attachments fit these boxes.
+
+Savanna has weighted alternatives and repeatable towers. Available tent_5
+is 13x21x13 with incoming (6,1,0) north; rotating for the north or west
+receiver permits a footprint reaching -13 on those axes. Kitchen/workshop
+reach +23, giving up to nominal 37x37 for available primary pieces. Their
+roughly 21..22-block height is separate from optional four-high tower segments
+and three-to-five-high fallback caps. Root size is 4 with expansion hack;
+collision and fallback selection mean this is not a completed-world envelope.
+
+The preserved trace already records eight missing resources: tent_6 and seven
+camp-path tower_top templates. The fallback pool references present village-path
+caps instead. Do not silently substitute those caps for the missing primary
+choices, claim the graph complete, infer absent payloads or repair the frozen
+mod as inventory work. Its available-design dimensions and content are reported
+with this packaged defect. No runtime failure outcome was inferred or fabricated.
+
+Six applicable tests pass using the command above. Semantic comparison changes
+only Camp and the decisions pin, preserving placement, biomes, identities and
+observations. Inventory SHA-256:
+`1b22f228c91204f7b548287885c80dc70ae85eaf387490b002b3a9596660cd0c`.
