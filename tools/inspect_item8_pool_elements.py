@@ -231,6 +231,7 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/neoforged/neoforge/common/Tags$Biomes.class",
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler$GraveServerModelLoader.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler$GraveyardDataLoader.class",

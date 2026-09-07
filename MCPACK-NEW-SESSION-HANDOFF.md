@@ -102,7 +102,7 @@ no new measurement or test framework was added. Inventory matches
 `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-assessment.json`.
 SHA-256: 3ac533a2dcfe3ba5dc97b315c72984b76203aad353d0baf2c52933fae7a93537.
 
-Fairy Ring is assessed with three residual questions, not a blank family backlog:
+Fairy Ring is assessed with two residual questions; biome membership is retired:
 
 - dimension and configured ore reward: does the initial module/config callback
   apply the frozen Overworld allowlist and populate the emerald/diamond ore list?
@@ -110,10 +110,12 @@ Fairy Ring is assessed with three residual questions, not a blank family backlog
   initial refresh binding have not yet been joined. Next inspect FairyRingsModule
   in quark-landmark-encounter-generators and reuse the shared Zeta configuration
   and quark-world-category evidence. Do not recapture the generator.
-- biome_constraints: which registered biomes resolve minecraft:is_forest and
-  NeoForge IS_PLAINS, with forest priority? Both packaged tag graphs already exist
-  in structure-inputs.json. Next resolve those existing graphs against the captured
-  biome registry and dimension memberships; confirm the IS_PLAINS resource key.
+- biome_constraints is resolved and retired: 41 forest and 27 plains registered
+  biomes, one overlap, 26 plains-only after forest priority. Existing merged tags
+  resolve without missing required members or unresolved references. A single
+  NeoForge Tags$Biomes capture was needed because the retained generator named
+  only the field, not its key. It proves IS_PLAINS is c:is_plains. The existing
+  extractor gained only that class allowlist entry; no new tool or measurement.
 - approximate geometry and mob/loot/spawner attribution: which flower feature is
   selected from the eligible biome, and what can that delegated call add? The
   direct 7 by 7 ring and buried-ore envelope are known. Next inspect the existing
@@ -122,16 +124,24 @@ Fairy Ring is assessed with three residual questions, not a blank family backlog
   these required answers. Existing direct visual and placement answers are retired.
 
 Eighteen nonregistry families have now been assessed: seventeen have no specific
-unanswered claim carried forward, and Fairy Ring has the three questions above.
+unanswered claim carried forward, and Fairy Ring has two questions above (configuration/callback binding and delegated flower effects).
 Twenty-two remain unassessed: eighteen BetterEnd, two BOP, scarecrow and urn cache.
 Do not requeue the seventeen supported families under generic shared-effect or
 unknown-population labels. Final consistency, acceptance and PR review remain.
+
+Fairy Ring tag integration validation: ten existing biome resolver/tag tests pass;
+scoped Ruff and Basedpyright pass. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-biomes.json`.
+SHA-256: 8adc2029283a174d0cca16c196741eca740509751a90974c10184e2e8ebb3897.
+Registry rows and other contributions are preserved. The source README records
+the one-class capture command, failed allowlist attempt and exact tag derivation.
+Do not repeat resolved tag membership while handling the two remaining questions.
 
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 22 not yet assessed; 18 assessed | Three Fairy Ring questions above. Supported requirements for the other seventeen families are retired. |
+| Nonregistry | 22 not yet assessed; 18 assessed | Two Fairy Ring questions above. Supported requirements for the other seventeen families are retired. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
