@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager animal huts and igloos assessed after 377e3e5a
+
+Twenty attributes finish Animal Hut and Igloo across four roots. Igloo
+villager options fit inside the main envelopes; Small lower extends the
+nominal layout to 7x6x10 XYZ and owns a stray spawner. Animal huts author no
+animals. No new capture or tooling. Derivations are in moog-generator-code
+README. Ten affected tests and builder checks pass. Inventory SHA-256:
+836115beba40036735c4fb26f139761d34a18aada8aa6298c4ff9ffa8d3964f9.
+
+Retire these assessments. Voyager 50/65; registry 157/410, nonregistry 40/40,
+total 197/450 assessed, 253 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager Pond assessed after 382ec3b5
 
 Ten attributes finish Pond's two roots. Direct connector alignment derives

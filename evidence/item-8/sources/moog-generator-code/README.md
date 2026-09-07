@@ -537,3 +537,44 @@ Reproduce with build_item8_inventory to an absent path. Only Pond and decisions
 input hash changed; biomes, observations and nonregistry are preserved. Inventory
 matches `evidence/raw/item8/inventory-mvs-ponds.json`, SHA-256
 19252b3a985f9aaf95edcd40bfe5458e5b547fb9946b42eec5a3ac6615a4da51.
+
+## Voyager animal huts and igloos
+
+After 377e3e5a, twenty attributes finish Animal Hut and Igloo across four roots.
+Direct hash-bound template/pool inspection establishes the source geometry and
+content; no capture, measurement or tooling. Fox Hut is 5x8x4 XYZ and Snowy Dog
+Hut 5x4x6, each a standalone ordinary rigid template without entities, block
+entities, spawners or loot. Their names do not establish authored animals.
+
+Medium Igloo main is 9x7x14. Its up_north villager connector at [4,1,8]
+places a 1x2-or-3x1 child at [4,2,8], inside the main envelope. Small Igloo main
+is 7x5x10, placing its villager child at [3,1,5], also inside. Its down_west
+connector at [5,0,0], name mvs:small_igloo_top, targets minecraft:empty;
+the 7x1x10 lower has matching up_west at [5,0,0], name minecraft:empty.
+The aligned rigid join places lower origin [0,-1,0], giving Y-1..4 and nominal
+7x6x10 XYZ. No further lower connector extends it. Fully attached sizes include
+air/padding and do not guarantee runtime attachment, occupied bounds or exposure.
+
+Each main has one snowy-villager attachment position. The rigid legacy_single
+pool selects nitwit/baby/unemployed with weights 1/1/10 and empty inline
+processors. Each option stores one villager; three options do not mean three
+guaranteed villagers. Architecture uses ordinary rigid single elements and
+empty processors. Small lower alone has a stray spawner at local [2,0,6],
+/block_entities/0, using legacy mob_spawner and SpawnData/entity/id. Exact NBT
+is integrated as a source record, not observed activation or live population.
+Architectural entity lists are empty; no contained mobs or generation markers.
+Medium loot is mvs:houses_common; Small upper mvs:houses_uncommon. Lower and
+villager pieces have none. Authored stray hostility remains specific to Small.
+
+All four roots intersect only Overworld runtime biomes and use generic jigsaw,
+WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid check.
+Igloos omit terrain range/radius; Fox Hut declares 3/1, Snowy Dog Hut 3/2.
+Full definitions preserve snowy/taiga constraints. Enclosed snowy dwellings and
+small shelters support qualitative visibility only; natural spawning remains
+conditional and no whole-footprint dryness or safety is inferred.
+
+Ten affected provider/inventory tests and builder Ruff/Basedpyright checks pass.
+Reproduce with build_item8_inventory to an absent output path. Only two family
+rows and decisions input hash changed; biomes, observations and nonregistry are
+preserved. Inventory matches `evidence/raw/item8/inventory-mvs-huts-igloos.json`,
+SHA-256 836115beba40036735c4fb26f139761d34a18aada8aa6298c4ff9ffa8d3964f9.

@@ -16209,7 +16209,147 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_xz_blocks_by_structure": {
+            "mvs:medium_igloo_1": [
+              9,
+              14
+            ],
+            "mvs:small_igloo": [
+              7,
+              10
+            ]
+          },
+          "basis": "Medium main 9x7x14 has an upward villager connector at [4,1,8], placing a 1x2-or-3x1 child at [4,2,8], inside its envelope. Small main 7x5x10 places its villager child at [3,1,5], also inside. Its aligned down_west connector [5,0,0] matches lower up_west [5,0,0], placing 7x1x10 lower at origin [0,-1,0], hence Y -1..4 and full 7x6x10 XYZ. Lower has no additional connector beyond this join. Source envelopes include air/padding and possible X/Z exchange, not guaranteed attachment, occupied bounds or exposure."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks_by_structure": {
+            "mvs:medium_igloo_1": 7,
+            "mvs:small_igloo": 6
+          },
+          "small_upper_only_y_blocks": 5,
+          "basis": "Medium main 9x7x14 has an upward villager connector at [4,1,8], placing a 1x2-or-3x1 child at [4,2,8], inside its envelope. Small main 7x5x10 places its villager child at [3,1,5], also inside. Its aligned down_west connector [5,0,0] matches lower up_west [5,0,0], placing 7x1x10 lower at origin [0,-1,0], hence Y -1..4 and full 7x6x10 XYZ. Lower has no additional connector beyond this join. Source envelopes include air/padding and possible X/Z exchange, not guaranteed attachment, occupied bounds or exposure."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership."
+        },
+        "intended_hostility": {
+          "value": "Snowy dwellings with optional villagers; Small Igloo additionally has an authored stray-spawner source",
+          "basis": "Medium architecture has no physical spawner. Small lower contains one stray spawner. Each main has one connector to alternative snowy-villager pieces. These differing sources do not prove realized inhabitants, active spawners or equal encounter pressure."
+        },
+        "mob_source": {
+          "villager_options": [
+            "minecraft:village/snowy/villagers/nitwit",
+            "minecraft:village/snowy/villagers/baby",
+            "minecraft:village/snowy/villagers/unemployed"
+          ],
+          "pool_weights": [
+            1,
+            1,
+            10
+          ],
+          "structure_spawn_overrides": {},
+          "contained_entities": [],
+          "basis": "Each igloo has one villager attachment position; each option stores one minecraft:villager at /entities/0/nbt. Options are alternatives, not three guaranteed villagers. The architectural entity lists are empty. Small lower also contains a separate stray spawner. No live population or activation is inferred."
+        },
+        "loot_table_source": {
+          "packaged_references_by_template": {
+            "minecraft:village/snowy/villagers/baby": [],
+            "minecraft:village/snowy/villagers/nitwit": [],
+            "minecraft:village/snowy/villagers/unemployed": [],
+            "mvs:houses/medium_igloo_1": [
+              "mvs:houses_common"
+            ],
+            "mvs:houses/small_igloo": [
+              "mvs:houses_uncommon"
+            ],
+            "mvs:houses/small_igloo_lower": []
+          },
+          "basis": "Exact saved LootTable ownership per template. Architecture uses rigid ordinary single elements with empty processors; shared villager options use rigid legacy_single with an empty inline processor list. No rolled outcome or salvage yield is inferred."
+        },
+        "generated_spawners": {
+          "template_id": "mvs:houses/small_igloo_lower",
+          "packaged_spawner_blocks": [
+            {
+              "nbt": {
+                "Delay": 0,
+                "MaxNearbyEntities": 6,
+                "MaxSpawnDelay": 800,
+                "MinSpawnDelay": 200,
+                "RequiredPlayerRange": 16,
+                "SpawnCount": 4,
+                "SpawnData": {
+                  "entity": {
+                    "id": "minecraft:stray"
+                  }
+                },
+                "SpawnPotentials": [],
+                "SpawnRange": 4,
+                "components": {},
+                "id": "minecraft:mob_spawner"
+              },
+              "path": "/block_entities/0",
+              "position": [
+                2,
+                0,
+                6
+              ]
+            }
+          ],
+          "basis": "One physical legacy minecraft:mob_spawner at lower local [2,0,6], targeting minecraft:stray via SpawnData/entity/id. Other selected templates have none; no generation markers. Exact source NBT is retained, not a claim of runtime activation."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [
+            "minecraft:stray via Small Igloo lower spawner"
+          ],
+          "natural": "Empty root spawn_overrides leaves conditional natural biome spawning. Optional villagers are inhabitants, not an authored enemy source."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected dwelling with lower component in Small Igloo",
+          "placement_inputs_by_structure": {
+            "mvs:medium_igloo_1": {
+              "biomes": "#c:is_snowy",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:houses/medium_igloo_1/start_pool",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:small_igloo": {
+              "biomes": "#c:is_snowy",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:houses/small_igloo/start_pool",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            }
+          },
+          "basis": "All roots use generic jigsaw, WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid check. Igloos omit terrain range/radius; Fox Hut uses 3/1 and Snowy Dog Hut 3/2. Center-column liquid checks do not guarantee a dry/exposed whole footprint; Small Igloo lower lies beneath its upper origin."
+        },
+        "visual_discoverability": {
+          "source_form": "Snowy igloo dwellings with enclosed interiors; snow-colored architecture can blend with the environment. Small Igloo lower threat is not implied visible from outside.",
+          "basis": "Qualitative inference from retained source forms, dimensions and placement. No sight distance, guaranteed exposure or discovery rate is measured."
+        }
       }
     },
     {
@@ -18070,7 +18210,103 @@
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/voyager-landmark-views/shelters.svg.gz": "7d6ded3c058f53c71124aec68b86ea3c8aa96de4a48354f796b9bcb9535f67a4",
-        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3"
+        "evidence/item-8/sources/voyager-landmark-views/sculptures.svg.gz": "731f0b18c4d930191d0292f19c65c7e6028f12eca03aba9f409710bed4c03eb3",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "packaged_template_xz_blocks_by_template": {
+            "mvs:other_decoration/fox_hut": [
+              5,
+              4
+            ],
+            "mvs:other_decoration/snowy_dog_hut": [
+              5,
+              6
+            ]
+          },
+          "basis": "Each root selects one standalone rigid template without jigsaw attachments. Declared source envelopes include air/padding; rotation may exchange X/Z. Not observed occupied-world bounds or exposed height."
+        },
+        "approximate_vertical_size": {
+          "packaged_template_y_blocks_by_template": {
+            "mvs:other_decoration/fox_hut": 8,
+            "mvs:other_decoration/snowy_dog_hut": 4
+          },
+          "basis": "Each root selects one standalone rigid template without jigsaw attachments. Declared source envelopes include air/padding; rotation may exchange X/Z. Not observed occupied-world bounds or exposed height."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership."
+        },
+        "intended_hostility": {
+          "value": "Environmental building or landmark with no authored enemy source identified",
+          "basis": "Selected standalone template and inspected block-entity contents have no authored entities, spawner NBT or generation markers. Empty spawn_overrides leaves conditional natural spawning; terrain and mobs can still create hazards."
+        },
+        "mob_source": {
+          "authored_entities": [],
+          "contained_entities": [],
+          "structure_spawn_overrides": {},
+          "basis": "Both templates have empty entity lists and no block entities. The fox/dog names do not establish authored animals. Natural spawning remains conditional on biome and world state."
+        },
+        "loot_table_source": {
+          "packaged_references_by_template": {
+            "mvs:other_decoration/fox_hut": [],
+            "mvs:other_decoration/snowy_dog_hut": []
+          },
+          "basis": "Neither standalone template has a saved LootTable reference. Empty processors do not add container loot; ordinary salvage is separate."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "basis": "No physical spawner NBT or generation markers in the selected standalone template; its processor does not add spawners."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [],
+          "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected animal-shelter depiction",
+          "placement_inputs_by_structure": {
+            "mvs:fox_hut": {
+              "allowed_terrain_height_range": 3,
+              "biomes": "#c:is_taiga",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:other_decoration/fox_hut/start_pool",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 1,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:snowy_dog_hut": {
+              "allowed_terrain_height_range": 3,
+              "biomes": "#c:is_snowy",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:other_decoration/snowy_dog_hut",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "terrain_height_radius_check": 2,
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            }
+          },
+          "basis": "All roots use generic jigsaw, WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid check. Igloos omit terrain range/radius; Fox Hut uses 3/1 and Snowy Dog Hut 3/2. Center-column liquid checks do not guarantee a dry/exposed whole footprint; Small Igloo lower lies beneath its upper origin."
+        },
+        "visual_discoverability": {
+          "source_form": "Tiny open-front shelters with pitched wooden roofs and biome-specific accessories. Low shelter forms may be obscured by snow, vegetation or terrain.",
+          "basis": "Qualitative inference from retained source forms, dimensions and placement. No sight distance, guaranteed exposure or discovery rate is measured."
+        }
       }
     },
     {
