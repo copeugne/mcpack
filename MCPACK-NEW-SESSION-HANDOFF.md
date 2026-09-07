@@ -6,6 +6,29 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed mansion and monument assessed after 57addac8
+
+Corrected prior remaining-entry count474 to476: two preexisting vertical-size
+attributes still held value UNKNOWN and were incorrectly counted as resolved.
+This increment resolves all seven actual remaining entries in these two families:
+three source-backed visual/placement descriptions and four saved geometry entries.
+Fresh seed42 Overworld capture passed readiness,two81-chunk completions,correlated
+flush,clean exit0 and frozen config. Decoded2764 records; downloaded full mansion_oak
+line1443,644 pieces,size61x31x79; monument_desert line1924,74 pieces,size58x22x58.
+Foundation/variant/population limits remain. Raw minecraft:air invalid-item loading
+error preserved; geometry acceptance does not establish loot correctness.
+Archive item8-repurposed-mansion-monument-geometry-r1-57addac8.tar.gz:264files,
+5,428,486bytes,SHA3bf2fc5cfc5877d3aec7bdc26ac6d92fb6833afefa83710b1db45105b05dbcfc.
+Both restores pass; immutable release/tag verified at57addac8. No runtime remains.
+All85 focused checks pass (60.43s); only two families/input identity changed.
+Total396/448 assessed;52 families/469 entries remain: IDAS38/343,Repurposed14/126.
+No remaining assessed attribute has the specific value UNKNOWN form found here;
+continue checking actual claim contents, not merely field presence. Commands and
+derivations in repurposed-mansion-monument-completion README under evidence/item-8.
+Quantify next batch. Final integration,acceptance,backup/history and PR/review/main
+remain open. Inventory SHA-256: 37491982dd6efd185b3d330017ab6f9674e60fc8843bfd1317df356f5ec53028.
+
+
 #### Repurposed witch-hut assessment completed after 52e59e40
 
 Six remaining attributes integrated for the six-variant family. Existing templates
