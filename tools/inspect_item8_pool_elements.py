@@ -231,6 +231,13 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/minecraft/world/level/levelgen/feature/RandomPatchFeature.class",
+    "net/mehvahdjukaar/supplementaries/common/block/blocks/UrnBlock.class",
+    "net/mehvahdjukaar/supplementaries/common/block/tiles/UrnBlockTile.class",
+    "net/mehvahdjukaar/supplementaries/common/entities/FallingUrnEntity.class",
+    "org/betterx/bclib/sdf/primitive/SDFCappedCone.class",
+    "org/betterx/bclib/sdf/operator/SDFRotation.class",
+    "org/betterx/bclib/util/StructureErode.class",
     "net/minecraft/world/level/biome/BiomeGenerationSettings.class",
     "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature.class",
     "net/minecraft/world/level/levelgen/placement/BlockPredicateFilter.class",
@@ -4493,7 +4500,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                 ):
                     continue
                 if (
-                    source.name == MAPPED_SERVER.name and name not in CLASSES[:48]
+                    source.name == MAPPED_SERVER.name and name not in CLASSES[:52]
                     and name != (
                         "net/minecraft/world/level/levelgen/feature/EndPlatformFeature.class"
                     )

@@ -6,6 +6,327 @@
 
 ### Continuation update - 2026-09-07
 
+#### Cave urn assessed after ce897b5b
+
+Nine answers complete the last nonregistry descriptive assessment: now 40/40.
+Urn break behavior identifies conditional creature creation and the explicit loot
+chain; dynamic biome eligibility resolves 280 biomes and only captured Overworld
+overlap. Per-patch source geometry is 9x9x3 candidate block positions, not a filled
+or persistent cache. Required and optional creature declarations remain distinct.
+
+Three urn captures and one RandomPatchFeature capture use the existing extractor.
+They resolve missing mob/reward behavior and spread semantics required by Item 8;
+no new measurement or framework. The mapped-server prefix length is adjusted for
+the four inserted class selections to preserve every previously eligible class.
+Exact commands, source derivation and failed lookup dispositions are recorded in
+`evidence/item-8/sources/urn-reward-behavior/README.md`.
+
+Sixteen affected tests and scoped quality checks pass. Inventory equals
+`evidence/raw/item8/inventory-urn-descriptions.json`, SHA-256
+727f4d4abc05cf46ad7df5071f4690b3582de24feb4528c8a1d56f37508eb635.
+Registry rows and every other nonregistry contribution are unchanged. Retire
+supported urn answers. Registry assessment/integration still covers 386 families
+in the existing 340/21/25 evidence paths. Quantify each batch's actual missing
+answers before editing; assess and integrate together. Consistent all-family
+presentation, final acceptance, PR review and verified main delivery remain open.
+
+#### Ruined pillar assessed after 8408bbb3
+
+Eight required answers complete the pillar family's descriptive assessment.
+Two dependency captures establish capped-cone half-height and angle-axis rotation;
+this prevents wrong dimensions and inference of horizontal orientation from the
+fallen name. Approximate parent geometry remains distinct from weathering,
+subtraction, voxelization and observed exposure. The original material callbacks
+supply no direct mob, physical-spawner or container-loot source.
+
+Sixteen affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-pillar-descriptions.json`, SHA-256
+9cd00233764a2ac33e9554d813c57221042cc65b1148e542592b9b0a70e0d335.
+Registry rows and all other contributions are unchanged. The existing extractor
+and new two-class source README record the narrow reason and exact commands.
+Retire supported pillar answers. Nonregistry assessment is now 39/40; only the
+Supplementaries cave urn cache remains. Registry work and final integration,
+acceptance, PR review and verified main delivery remain open.
+
+#### Crashed ship assessed after f365bb84
+
+Eight required crashed-ship answers now join the three existing descriptions.
+The retained template, generator and replacer resolve nominal hull geometry,
+placement, filtered markers/entities and direct loot/mob/spawner attribution.
+One narrowly necessary StructureErode capture resolves the previously absent
+post-placement callee. It shows Gaussian debris offsets beyond the hull, so
+13x24x29 is explicitly nominal hull geometry, not a total occupied bound.
+No new world measurement or framework. Exact capture and build commands and
+reason are in `evidence/item-8/sources/crashed-ship-erosion/README.md`.
+
+Sixteen affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-crashed-ship-descriptions.json`, SHA-256
+df6c5bb59a73f0784c5469405beaab4dba06a0cf95f9d60e4baa3ae40bade898.
+Registry rows and all other nonregistry contributions are unchanged.
+Retire this descriptive assessment. Nonregistry is now 38/40; ruined obsidian
+pillar and cave urn cache remain. Registry reconciliation and final all-family
+integration, acceptance, PR review and main delivery remain open.
+
+#### Scarecrow assessed after c84b5af3
+
+Scarecrow now records all eleven descriptive answers. Six added answers reuse
+the full writer and its configuration defaults; nine biome tags resolve with no
+missing/unresolved inputs, and each overlaps only the captured Overworld.
+Retire these supported answers. Seventeen affected tests and scoped quality
+checks pass. The existing scarecrow source README records derivation, commands
+and the corrected initial test-filename failure.
+
+Inventory matches `evidence/raw/item8/inventory-scarecrow-descriptions.json`,
+SHA-256 9e634f3027f65baffbab3a5ea303e066fd57957fd45e435575028cc5db806a15.
+Registry rows and all other contributions are unchanged.
+Nonregistry assessment is 37/40. Three remain: BetterEnd crashed ship, ruined
+obsidian pillar and Supplementaries cave urn cache. Continue assessment and
+integration together; registry work and final acceptance/PR gates remain open.
+
+#### BOP landmarks assessed after 56758604
+
+Integrated sixteen existing-source answers for anomaly and monolith. Both now
+record all eleven descriptive attributes, with cube/landmark geometry separated
+from conditional terrain modification. Generator-source attribution does not
+claim safe block interactions, realized rewards or observed populations. The
+existing bop-feature-scope README records the direct derivation and commands.
+Retire these supported descriptive answers; no additional measurement is needed.
+
+Five affected BOP tests pass; scoped Ruff and Basedpyright pass. Inventory matches
+`evidence/raw/item8/inventory-bop-landmark-descriptions.json`, SHA-256
+dd1b57a1ac85eeed7f49369b7844c864acb44095a54b1a0a5e04b5f2aad33893.
+Registry rows and all other nonregistry contributions are unchanged.
+
+Nonregistry assessment is now 36/40. Four remain: BetterEnd crashed ship and
+ruined obsidian pillar, Explorations scarecrow, Supplementaries cave urn cache.
+Use their existing evidence; urn reward behavior needs a specific source answer,
+not a new broad inventory pass. Registry work remains 386 families in the existing
+340/21/25 evidence paths. Final integration, acceptance, PR review and main delivery
+remain open.
+
+#### BetterEnd building/ruin batch delivered after d1fe647f
+
+Sixteen BetterEnd building/ruin families now have all eleven descriptive answers
+integrated in the authoritative decisions and inventory. Added 128 answers from
+existing evidence, preserving the three previously recorded geometry/form answers
+per family. Loot source attribution distinguishes exact saved template tables
+from the chest processor's conditional biome assignment and preserves legacy
+block-entity IDs. It does not claim successful conversion or realized rewards.
+The precise derivation and commands are in the existing
+`evidence/item-8/sources/betterend-entry-template-consumers/README.md`.
+
+Validation: 16 affected tests pass; scoped Ruff and Basedpyright pass. Inventory
+is byte-identical to `evidence/raw/item8/inventory-betterend-building-complete-descriptions.json`,
+SHA-256 fd387ee0d6adf4ee95830c5884f5d0f8807e0a44f01a07ad4671a6790defea3c.
+Registry rows and every other nonregistry contribution are unchanged.
+Retire these sixteen descriptive assessments without a generic conversion,
+population or shared-effect research backlog. Reopen a specific claim only on
+changed or contradictory evidence.
+
+Nonregistry assessment now covers 34 of 40 families. Six remain: BetterEnd crashed
+ship and ruined obsidian pillar, BOP anomaly and monolith, scarecrow and cave urn.
+Registry reconciliation remains 386 families in the existing 340/21/25 evidence
+paths. The user clarified that this breakdown is sufficient: assessment and
+integration proceed together in coherent batches. Do not require a global
+reconciliation before implementation or add another planning-only pass.
+Final all-family presentation, consistency, evidence durability, applicable final
+checks, PR review and verified main merge remain open.
+
+#### Remaining registry work by evidence path at 7200f884
+
+All 386 remaining registry families have now been partitioned against the existing
+pool trace, not generic UNKNOWN strings. This is a work breakdown, not final
+acceptance of every attribute. Use the 24 retired IDAS IDs below and the existing
+15 inactive plus one excluded registry dispositions to reproduce the population.
+For each remaining family, inspect its structure_ids in the structures mapping of
+`evidence/item-8/sources/pool-traces-content.json.gz` (SHA-256
+703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5).
+
+| Mutually exclusive path | Families | Concrete work before acceptance |
+| --- | ---: | --- |
+| Every root traced, no missing references or unresolved elements | 340 | Integrate descriptive answers from selected template content, root definitions and existing design assessments. Resolve only relevant processor/hook effects; graph completeness is not assembled geometry. |
+| Every root traced, at least one missing reference or unresolved element | 21 | Reuse recorded broken-reference dispositions, identify affected geometry/content claims, and describe the supported assembly without inventing absent components. |
+| At least one root outside the pool trace | 25 | Use existing captured generator/piece code and world observations for the specific unanswered attributes. A custom root is not an uninspected provider. |
+
+The 21 trace-exception families are:
+
+- `adorabuild_structures:basalt_chambers`
+- `betterdungeons:zombie_dungeon`
+- `betterend:end_village`
+- `betterfortresses:fortress`
+- `betterstrongholds:stronghold`
+- `ctov:pillager_outpost`
+- `ctov:village`
+- `dungeons_arise:bandit_village`
+- `dungeons_arise:foundry`
+- `dungeons_arise:mechanical_nest`
+- `dungeons_arise:thornborn_towers`
+- `dungeons_arise_seven_seas:small_yacht`
+- `explorations:underground_temple`
+- `idas:ancient_mines`
+- `idas:desert_pyramid`
+- `integrated_stronghold:stronghold`
+- `integrated_villages:village`
+- `minecraft:ancient_city`
+- `towns_and_towers:outpost_camp`
+- `towns_and_towers:outpost_tower`
+- `towns_and_towers:village`
+
+These exceptions are missing pool/template references in the frozen data, not
+21 new source-capture tasks. The existing missing-template-code README and four
+captured vanilla classes already establish the base missing-template path for
+Small Yacht. IDAS ancient_mines and desert_pyramid explicitly identify their
+broken connector edges in their decisions. Preserve these findings. Do not repair
+the frozen pack, substitute similarly named resources or infer that a whole
+family is inactive merely because one optional component is absent.
+
+The 25 custom/mixed families are:
+
+- `aether:bronze_dungeon`
+- `aether:gold_dungeon`
+- `aether:silver_dungeon`
+- `betterdungeons:spider_dungeon`
+- `betterend:end_bridge`
+- `betterend:end_lake`
+- `betterend:eternal_portal`
+- `betterend:giant_ice_star`
+- `betterend:giant_mossy_glowshroom`
+- `betterend:mountain`
+- `betterend:small_island`
+- `betterend:sulphuric_cave`
+- `bettermineshafts:mineshaft`
+- `deep_aether:brass_dungeon`
+- `explorations:slime_cave`
+- `minecraft:buried_treasure`
+- `minecraft:end_city`
+- `minecraft:igloo`
+- `minecraft:mansion`
+- `minecraft:nether_fossil`
+- `minecraft:ocean_ruin`
+- `minecraft:ruined_portal`
+- `minecraft:shipwreck`
+- `repurposed_structures:mansion`
+- `repurposed_structures:monument`
+
+Geometry work is a separate, overlapping dimension of this same population:
+173 rows already record both footprint and vertical-size answers; preserve these
+and their scope. The other 213 need integration or derivation for at least one
+geometry answer (213 footprints and 211 heights). Inspect their existing design
+comparisons, template dimensions, connected assemblies and generator parameters
+before deciding evidence is missing. Component maxima alone cannot stand in for
+an assembled footprint. Neither this count nor a template catalog implies that
+213 new measurements are required.
+
+Biome reconciliation narrows to one family and three variant references:
+`idas:lumber_camp/lumber_camp_bopmahogany`,
+`idas:lumber_camp/lumber_camp_bygmahogany`, and
+`idas:lumber_camp/lumber_camp_bygredwood`. The corresponding required tag names
+are already preserved in structure-inputs.json and inventory.json. The retained
+runtime debug log, line 19005, explicitly warns that these exact tags are absent
+from the biome data pack. Its restored bytes match SHA-256
+e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b;
+restore location is `evidence/raw/item8/custody-r1/restored-download/debug.log`,
+with durable custody under `evidence/item-8/raw-custody/`.
+Next integrate this existing runtime corroboration into the family's biome answer.
+Do not invent memberships or infer whole-family inactivity. Any stronger claim
+about those three variants' eligibility needs the relevant consumption semantics.
+No other remaining registry row has a missing required or unresolved biome tag
+in the current resolved inputs.
+
+This pass finds existing evidence to reuse and narrows known exception handling.
+It does not yet establish an exact total of genuinely missing evidence claims.
+The remaining descriptive work includes family-specific encounter and visual
+interpretation, placement and relevant effective content, plus geometry above.
+Resolve these through the three bounded paths; do not repeat provider discovery,
+canonical comparisons, the 24 retired assessments or already-supported attributes.
+No new source capture or measurement is authorized merely by this partition.
+
+#### Assessment queue correction after 7c0db515
+
+This checkpoint supersedes the assessment counts below. It does not declare
+Item 8 complete or the final PR ready.
+
+The first registry reconciliation pass retires 24 already-integrated IDAS
+family assessments. Each has ten explicit descriptive attributes in
+`evidence/item-8/family-decisions.json` and a resolved eleventh attribute,
+biome_constraints, in `evidence/item-8/inventory.json`. Direct inspection found
+no missing required biome members or unresolved tags for these rows. The 25
+unique evidence paths referenced by their decisions all match their recorded
+SHA-256 values. Read the individual attribute bases and limitations; this is
+reuse of existing assessments, not acceptance inferred from field presence.
+
+Retired from repeated descriptive assessment:
+
+- `idas:abandoned_lighthouse`
+- `idas:abandonedhouse`
+- `idas:ancient_statue`
+- `idas:ancient_statue_jungle`
+- `idas:ancient_statue_plains`
+- `idas:botanist`
+- `idas:brickhouse`
+- `idas:cottage`
+- `idas:fishermans_lodge`
+- `idas:hermits_hollow`
+- `idas:hunters_cabin`
+- `idas:mason_house`
+- `idas:nether_pump_camp`
+- `idas:pillager_camp`
+- `idas:pumpkin_cafe`
+- `idas:redhorn_guild`
+- `idas:ruined_church`
+- `idas:ruined_fort`
+- `idas:the_log`
+- `idas:train_ruins`
+- `idas:wacky_wares`
+- `idas:washing_camp`
+- `idas:winter_wagon`
+- `idas:witches_treestump`
+
+These records distinguish nominal geometry from observed bounds, declared mobs
+from actual populations, processor candidates from saved spawner sources, and
+qualitative visual form from measured detection distance. Preserve the observed
+Nether pump geometry. No new frequency, machinery-operation, trading or live
+population test is required by these descriptive answers.
+
+Five families retain nine authored entity compounds without IDs: abandonedhouse
+(1), hunters_cabin (4), pumpkin_cafe (2), redhorn_guild (1), winter_wagon (1).
+Their mob-source and enemy-attribution answers explicitly preserve these malformed
+source records and scope claims to identified entities. Do not fabricate an ID,
+claim complete realized populations, or turn unavailable IDs into nine new
+investigations. Reopen only if a concrete required attribution cannot be supported
+with this documented source limitation or contradictory evidence appears.
+
+Remaining assessment population, excluding these 24 and the previously assessed
+18 nonregistry families:
+
+| Existing-evidence assessment batch | Families still awaiting reconciliation |
+| --- | ---: |
+| AdoraBuild, Explorify, Explorations | 73 |
+| Moog | 136 |
+| IDAS, WDA, Seven Seas, Illager Invasion | 88 |
+| CTOV, Towns and Towers, Integrated Villages | 11 |
+| Other registry families | 78 |
+| Nonregistry | 22 |
+| Total | 408 |
+
+The 386 registry and 22 nonregistry rows are a bounded assessment queue, not a
+count of absent answers or new investigations. Exact missing mandatory claims
+for the remaining registry rows have not yet been established. Finish that
+reconciliation before starting another research or implementation batch. Reuse
+existing geometry, content, source captures and observations; retire supported
+answers as assessed, and carry forward only specific family/attribute questions.
+
+The current uncommitted BetterEnd draft adds 112 attributes across 16 building/ruin
+families, bringing each to ten recorded attributes. It has not yet been validated
+or regenerated into inventory.json. Loot attribution, including relevant block
+conversion, remains to assess. These 16 are included in the 22 above.
+
+After assessment: integrate all 40 nonregistry families consistently into the
+inventory, reconcile final claims and frozen identities, verify existing raw
+custody/restore evidence, run the applicable final checks, and open the main PR.
+The clean Codex review loop and verified main merge remain required afterward.
+No new tracker, measurement system or validation framework is introduced.
+
 #### Remaining work quantified at c417925c
 
 Discovery is closed: 136 retained-provider dispositions, 887 registry roots
