@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS desert dig site assessed after 8d94acc0
+
+Nine entries integrated for two rigid connected components. Bottom origin0,-10,0
+gives nominal38 by48 footprint,43 height. Villagers/seats distinct from absent
+GuardVillagers references; eight empty entity NBT records dispositioned. Three
+literal chest sources and two modern conditional archaeology sources reuse the
+dig-site processor assessment. No spawners or markers. Main terrain kernel20/25
+preserved separately from root adaptation none. No runtime/tool added.
+All85 focused checks pass (59.85s); only desert_dig_site/input identity changed.
+Total436/448 assessed;12 connected IDAS families/108 entries remain, nine each.
+Quantify next connector/content batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-desert-dig-site-assessment/README.md.
+Inventory SHA-256: 766233c9cb12896c89119fab78be948147859d0a6fb069c7c90df3dfa4997601.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS dig site assessed after 2870ac21
 
 Nine entries integrated for four rigid connected components. Main0,0,0,bottom
