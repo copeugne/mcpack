@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS Bearclaw Inn assessed after 452be573
+
+Seven entries integrated for lodge/path/stables. Villagers and stable animals
+separate from non-mob frames; no spawners. Lodge CORNER marker with empty metadata
+is authoring data, not an enemy instruction. Two defined loot tables and ticking
+processor assessed; accepted sampled geometry reused. No runtime/tool added.
+All85 focused checks pass (66.09s); only bearclaw_inn/input identity changed.
+Total420/448 assessed;28 IDAS families/244 entries remain. Four families have
+accepted sampled sizes and7 content entries each (ancient_portal,apothecary_abode,
+pillager_fortress,ruins_of_the_deep);24 connected assemblies need9 each.
+Quantify next content or connector batch and reuse preserved findings.
+Details: evidence/item-8/sources/idas-bearclaw-inn-assessment/README.md.
+Inventory SHA-256: cb6b87cf9fc3f1a01f4111f32e78af81b6ad143b0748926056e58658c7582a19.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS existing world geometry integrated after 810213ad
 
 Ten required size entries integrated for ancient_portal,bearclaw_inn,
