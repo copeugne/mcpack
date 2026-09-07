@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ancient mines assessed after 4a6d46cb
+
+Nine entries integrated for19 known rigid components. Explicit connector table
+with quarter-turned halls gives nominal124 by143,height119. Missing entrance2
+pool preserved, independent room1 branch retained; no invented component bounds.
+Six top spawners select spider15,cave_spider10,stray15;19 bottom select cave_spider15.
+Eighteen empty authored entity compounds retained, direct/non-mob/optional sources
+separated from piece-bound silverfish/wraith natural overrides. Three defined
+loot IDs and missing legacy chests/mineshall in hall3; one CORNER marker.
+No runtime/tool added. All85 focused checks pass (61.28s); only ancient_mines and
+input identity changed. Total446/448 assessed; two families/18 entries remain:
+castle and desert_pyramid, nine each. Next pyramid has31 reachable templates and
+one missing villager-pool ID already dispositioned; use existing source findings
+before deciding whether additional geometry observation is strictly required.
+Details: evidence/item-8/sources/idas-ancient-mines-assessment/README.md.
+Inventory SHA-256: f4c8f9df6f2d8d20c568e5a0d48189c8d5f99b001a135e34d4a31f5035a002d3.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS collectors museum assessed after c645f4d7
 
 Nine entries integrated for two connected source components. Nominal213 by211
