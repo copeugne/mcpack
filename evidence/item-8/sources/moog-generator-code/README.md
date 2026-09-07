@@ -1127,3 +1127,84 @@ Shared validation: `uv run pytest -q tests/item8/test_moog_data_provider_scope.p
 Ten tests pass. Only five family rows and the decisions identity changed;
 biome constraints, observations and nonregistry content are preserved.
 Inventory SHA: 235a2af533da92a5da864f669317022135616e50516ad246338f745caac00e18.
+
+## Five developed Soaring complexes
+
+After 51c7f1f6, fifty attributes assess Diorite House, White House, Large Tower,
+Leaf Hollow and Muddy Water Hole from 23 selected templates. References are
+`mss:<family>` in pool-traces-content.json.gz, its exact traced
+`data/mss/structure/<template>.nbt` resources from
+MoogsSoaringStructures-1.21-2.1.2.jar in templates-redacted.json.gz, and the
+corresponding structure/template_pool JSON resources. Family evidence maps
+bind these preserved artifacts, runtime biomes and generator identities.
+
+All selected pools are rigid weight-1 single elements with empty processors and
+fallback. Large Tower main and top use their 1.21-1.21.8 versioned mapping;
+other selected elements are ordinary. Main origins are (0,0,0). For each edge,
+child origin = parent origin + outgoing position + outward unit vector minus
+incoming position. Opposing aligned orientations need no relative rotation.
+The following direct source coordinates establish the finite nominal boxes:
+
+| Family/child suffix | Parent | Outgoing XYZ/direction | Incoming XYZ/direction | Child origin | Child XYZ size |
+| --- | --- | --- | --- | --- | --- |
+| diorite_house/_lower | main | 47,0,42 down_south | 35,47,32 up_south | 12,-48,10 | 43,48,43 |
+| diorite_house/_side | main | 47,24,10 east_up | 0,24,1 west_up | 48,0,9 | 10,48,48 |
+| diorite_house/_side_2 | main | 45,27,47 south_up | 45,27,0 north_up | 0,0,48 | 48,48,12 |
+| white_house/_lower | main | 26,0,3 down_north | 26,47,3 up_north | 0,-48,0 | 48,48,48 |
+| white_house/_side | main | 47,23,7 east_up | 0,23,7 west_up | 48,0,0 | 10,48,48 |
+| white_house/_side_2 | main | 8,19,47 south_up | 8,19,0 north_up | 0,0,48 | 48,48,10 |
+| white_house/_lower_side | _side | 0,0,0 down_north | 0,47,0 up_north | 48,-48,0 | 15,48,48 |
+| large_tower/_lower | main | 11,0,23 down_west | 0,37,26 up_west | 11,-38,-3 | 48,38,48 |
+| large_tower/_lower_2 | main | 27,0,47 down_west | 1,39,2 up_west | 26,-40,45 | 25,40,20 |
+| large_tower/_side | main | 47,19,45 east_up | 0,19,45 west_up | 48,0,0 | 11,48,48 |
+| large_tower/_side_2 | main | 9,18,47 south_up | 0,18,0 north_up | 9,0,48 | 48,48,12 |
+| large_tower/_top | main | 19,47,13 up_north | 14,0,4 down_north | 5,48,9 | 25,25,25 |
+| leaf_hollow/_side | main | 47,29,0 north_up | 40,26,35 south_up | 7,3,-36 | 41,27,36 |
+| leaf_hollow/_side_2 | _side | 40,26,32 east_up | 0,27,34 west_up | 48,2,-38 | 25,28,48 |
+| leaf_hollow/_side_3 | main | 47,22,11 east_up | 0,20,1 west_up | 48,2,10 | 21,21,23 |
+| muddy_water_hole/_side_1 | main | 47,32,45 east_up | 0,19,38 west_up | 48,13,7 | 15,48,48 |
+| muddy_water_hole/_side_2 | main | 12,24,47 south_up | 1,9,0 north_up | 11,15,48 | 37,30,8 |
+| muddy_water_hole/_top | main | 17,47,8 up_north | 17,0,8 down_north | 0,48,0 | 48,12,48 |
+
+Main size is 48x48x48 except Leaf Hollow 48x30x48. Inclusive union bounds:
+Diorite (0,-48,0)..(57,47,59), 58x96x60;
+White (0,-48,0)..(62,47,57), 63x96x58;
+Large Tower (0,-40,-3)..(58,72,64), 59x113x68;
+Leaf (0,0,-38)..(72,29,47), 73x30x86;
+Muddy (0,0,0)..(62,60,55), 63x61x56.
+Component boxes do not overlap in these arrangements. Actual attachment remains
+subject to generation checks; these nominal dimensions include air/padding and
+can exchange X/Z on rotation, not measured occupancy or exposed height.
+
+Diorite and White main templates each contain three villagers; no selected
+hostile entity or spawner occurs in either family. Diorite's six beehives and
+Large Tower's 36 have empty bees lists. House lecterns contain no Book.
+White main /entities/1/nbt/Offers/Recipes preserves librarian Mending I (index 2)
+and Density III (index 5), among other trades with existing usage state.
+Its /entities/0 inventory contains one wheat and four seeds. Record these as
+saved payloads, not guaranteed trade availability or renewable rewards.
+
+Large Tower main /block_entities/102 assigns piglin_brute, /139 skeleton;
+top /0 assigns skeleton. Its main /6 dispenser stores six single lingering
+harming potions. Main glow frames /entities/0 and /1 hold an enchanted golden
+apple and diamond. These objects and conditional dispenser contents are distinct
+from mobs. Leaf main /entities/0 is a crossbow-equipped pillager, side /0..2
+and side_2 /0 assign pillager spawners. Muddy main /2,3,4,7 assign drowned;
+/9,15,20 have empty entity objects. Their effective mobs remain a source
+limitation, not an experiment backlog. Muddy's two pots have no item/table
+payload. SAVE-mode empty-metadata blocks are authoring records, not mob markers.
+Loot references remain template-owned; mss:empty retains its cobweb/string table.
+
+All roots intersect only Overworld runtime possible biomes. Generic surface
+projection adds +100..200 for the houses and Large Tower, +45..150 for Leaf
+and Muddy. Adaptation none, liquid check false, ignore_waterlogging and absent
+optional terrain/Y checks do not establish exposure. Lower island pieces do not
+imply underground placement. Visibility descriptions are qualitative source
+inferences; no new capture, measurement or tooling was needed.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+
+Ten shared tests pass. Only five family rows and the decisions identity change;
+biome constraints, world observations and nonregistry content are preserved.
+Inventory SHA: 8dcb32b088b1c7108afc75398edc99f08671533b047c762aa1ba3cce4015cfaf.
