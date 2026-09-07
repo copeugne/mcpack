@@ -501,3 +501,66 @@ uv run -m tools.run_item7_gap_targets \
 ```
 
 This declaration does not claim a successful run or resolved geometry.
+
+### Campsite geometry result and custody
+
+Run source revision f9e5fa8d57ecd3e5537999a9ca23ba75bcff9b98. Both targets
+completed with readiness, correlated flushed save, clean exit0 and accepted
+frozen configuration. No runtime remains. Decode retained2,768 chunks including
+locate-created/partial chunks; that count is not the requested sampling denominator.
+
+| Root | Decoded line | Start chunk XZ | Pieces | Envelope | Size XYZ |
+| --- | --- | --- | --- | --- | --- |
+| dungeons_arise:merchant_campsite | 594 | -393,302 | 50 | -6378,63,4787,-6222,69,4906 | 157,7,120 |
+| dungeons_arise:illager_campsite | 2179 | 407,-296 | 81 | 6452,65,-4825,6550,77,-4699 | 99,13,127 |
+
+Both saved starts are in full chunks. Bounds include all saved piece boxes,
+not occupied volume, exposed tent height or proof distant pieces were fully
+placed. These are two illustrative family examples, not extrema or pacing.
+They resolve the four geometry attributes left open above. The two dimension
+assessments now also reference these observations. Baseline world_observations
+indexes remain unchanged because this is a separately archived supplemental run.
+
+Archive264 files,4,288,483 bytes,30,970,089 uncompressed bytes. SHA-256:
+3b5e0026b68889f5d3a4267a966df3e40429431f82ea2fbd219d48da9db4a4ae.
+Decoded chunks SHA-256:
+dd66df3963caf928ceb11b9bd89ab816ae0723a6efe4fad1e86fc308eab99b45.
+The archive retains stopped-world files excluding session.lock, complete console
+log, decoded records, sanitized configuration, sanitization receipt and run
+receipt. Retained warnings include unknown legacy forge:entity_gravity and
+Better Caves AquiferContext messages; successful lifecycle is not evidence
+that all gameplay/compatibility warnings are resolved. No new balance claim.
+
+Executed preservation commands (use absent destinations for reproduction):
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/wda-camps-geometry-r1"), Path("evidence/raw/item8/wda-camps-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/wda-camps-geometry-r1/world --output evidence/raw/item8/wda-camps-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/wda-camps-geometry-r1 --archive evidence/raw/item8/item8-wda-camps-geometry-r1-f9e5fa8d.tar.gz --manifest evidence/item-8/raw-custody/wda-camps-geometry-r1-manifest.json --revision f9e5fa8d57ecd3e5537999a9ca23ba75bcff9b98
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-wda-camps-geometry-r1-f9e5fa8d.tar.gz --manifest evidence/item-8/raw-custody/wda-camps-geometry-r1-manifest.json --target evidence/raw/item8/wda-camps-geometry-r1-restored --receipt evidence/item-8/raw-custody/wda-camps-geometry-r1-local-restore.json
+gh release download item-8-wda-camps-geometry-2026-09-07-r1 --repo copeugne/mcpack --dir evidence/raw/item8/wda-camps-geometry-download --pattern item8-wda-camps-geometry-r1-f9e5fa8d.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/wda-camps-geometry-download/item8-wda-camps-geometry-r1-f9e5fa8d.tar.gz --manifest evidence/item-8/raw-custody/wda-camps-geometry-r1-manifest.json --target evidence/raw/item8/wda-camps-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/wda-camps-geometry-r1-downloaded-restore.json
+```
+
+Both restores verified264 files. Local copies share a disk; the separate durable
+copy is the [published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-wda-camps-geometry-2026-09-07-r1).
+The remote tag was verified to resolve to the run source revision above.
+To reproduce the table from either restored decoded stream, use existing logic:
+
+```sh
+uv run python - <<'PY'
+from pathlib import Path
+from mcpack_evidence.item7_nbt_models import ChunkRecord
+from mcpack_evidence.item8_world_bounds import observed_bounds
+source = Path('evidence/raw/item8/wda-camps-geometry-downloaded-restore/chunks.jsonl')
+for line, raw in enumerate(source.open(), 1):
+    for observation in observed_bounds(ChunkRecord.model_validate_json(raw)):
+        if observation['structure_id'] in ('dungeons_arise:merchant_campsite', 'dungeons_arise:illager_campsite'):
+            print(line, {key: value for key, value in observation.items() if key != 'piece_boxes'}, 'pieces', len(observation['piece_boxes']))
+PY
+```
+
+Eight focused tests pass. Semantic comparison changes only the two campsite
+geometry/dimension assessments, direct evidence identities and builder input.
+Inventory SHA-256:
+201360490224b28829da9a67a2de47898a0262ed44d10138e4ae046a813799d7.
