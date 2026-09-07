@@ -1039,3 +1039,33 @@ PY
 
 Rebuild and focused checks use the existing commands above. Semantic comparison
 changes only these ten geometry attributes and direct evidence/input identity.
+
+## Mining System inactive disposition
+
+Direct inspection of the exact WDA packaged resource
+`data/dungeons_arise/tags/worldgen/biome/has_structure/mining_system_biomes.json`
+finds replace:false, values:[]. The effective structure-inputs catalog entry
+structure_biomes[dungeons_arise:mining_system] has biomes:[], no missing_required
+and no unresolved_tags. No captured dimension can intersect this empty set.
+Its registered root selects that tag and a jigsaw start at absoluteY5,
+underground_structures, bury; those settings do not supply an eligible biome.
+
+Record Mining System as registered but inactive, following existing inactive
+family treatment. Preserve its root, eight available templates and grouping
+rationale. No runtime probe or manual placement is necessary to establish
+normal-generation ineligibility. This does not prove manual placement impossible
+or remove the content from packaged coverage.
+
+The previous450 active-family candidate denominator included this unresolved
+candidate. Correct it to449:409 registry-based active candidates plus40
+nonregistry families. Assessed remains347, remaining102. Registry-root coverage
+remains887 assigned exactly once. Registry grouping rows remain426, now409
+active,16 inactive and one excluded cloud formation. WDA has39 active families,
+35 assessed and four remaining: Foundry, Mining Complex, Scorched Mines,
+Shiraz Palace. Their available template counts45/59/21/41 total166. Foundry
+references missing pool underworld/foundry/foundry_corridor_gears. No retained
+start exists for these four; their40 attributes remain the next batch.
+
+Rebuild and focused checks use existing commands above. Only Mining System's
+disposition, direct supporting identities and builder input identity change;
+no source templates, registered roots or existing family assessment is removed.

@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mining System inactive disposition after 2313cbbb
+
+Mining System has an explicitly empty effective biome tag, no unresolved tags
+or missing required entries, and no compatible captured dimension. Recorded as
+registered but inactive, retaining its root/eight templates. Existing denominator
+450 included that unresolved candidate: corrected active total449, assessed347,
+remaining102. Registry307/409 assessed; nonregistry40/40. Root coverage remains
+887 assigned once;426 registry groups now409 active,16 inactive,one excluded.
+WDA35/39 assessed. This is an eligibility correction, not a completed assessment.
+Exact derivation: evidence/item-8/sources/wda-provider-scope/README.md,
+Mining System inactive disposition. Eight focused tests pass; no runtime/tool.
+Next batch is four active WDA families/40 attributes/166 templates: Foundry45,
+Mining Complex59, Scorched Mines21, Shiraz Palace41. Foundry references missing
+pool underworld/foundry/foundry_corridor_gears. No retained starts exist for
+these four. Inspect and integrate existing evidence before extending measurement.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ae2797bde057fcc6a7065c6a1d91383c7099fa37c1ec044ff259dde0c6bfc9e3.
+
 #### Five branching WDA geometries delivered after edd25249
 
 Ten geometry attributes finish Bandit Towers, Bandit Village, Greenwood Pub,
