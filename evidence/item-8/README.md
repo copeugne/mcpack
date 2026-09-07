@@ -1,7 +1,85 @@
 # Item 8 evidence
 
 Status: IN PROGRESS. Family assessments and provider discovery are resolved;
-local acceptance is verified; preservation/history preparation and reviewed main delivery remain open.
+local acceptance and preservation/history preparation are verified; reviewed main delivery remains open.
+
+## Acceptance-suite prerequisites for a clean checkout
+
+Run from the repository root with Python3.13+, `uv`, `jq`, `curl`, `gh`, and
+`sha256sum` available. `uv sync --frozen` installs the locked test dependencies.
+GitHub release access must work through `gh` (authenticate if the host requires it).
+The suite reads138 exact archives:136 retained candidates plus Minecraft and
+NeoForge. It also reads the original registry log, including evidence references
+stored in family decisions. Restore the complete241-file registry capture using
+its existing custody manifest. No server installation, Java execution, fresh world,
+other raw-world archives or personal workspace backup is needed for this suite.
+
+Use the following commands before `uv run pytest -q tests/item8`. The setup output
+and restored registry targets must be absent. Preserve any existing evidence and
+use a separate clean checkout instead of overwriting it. Candidate acquisition can
+reuse existing files only after verifying their pinned publisher hashes. It selects
+only the retained136 from the source matrix; it does not install190 candidates.
+Downloaded binaries and setup outputs stay ignored and must not be committed.
+
+```sh
+set -euo pipefail
+uv sync --frozen
+mkdir -p evidence/raw/item8/test-setup-r1
+jq --rawfile retained evidence/item-3/runtime/retained-server-candidates.txt \
+  '.candidates |= map(select(.candidate_filename as $name | ($retained | split("\n") | index($name)) != null)) | .inventory_count = (.candidates | length) | .resolved_count = .inventory_count' \
+  evidence/item-3/source-identity-matrix.json > evidence/raw/item8/test-setup-r1/retained-source-matrix.json
+uv run -m tools.acquire_candidate_artifacts \
+  --source-matrix evidence/raw/item8/test-setup-r1/retained-source-matrix.json \
+  --download-root downloads/item3/candidates \
+  --output evidence/raw/item8/test-setup-r1/acquisition.json
+jq -r --rawfile retained evidence/item-3/runtime/retained-server-candidates.txt \
+  '.artifacts[] | select(.candidate_filename as $name | ($retained | split("\n") | index($name)) != null) | .identity.computed_sha256 + "  downloads/item3/candidates/" + .candidate_filename' \
+  evidence/item-3/artifact-acquisition-manifest.json > evidence/raw/item8/test-setup-r1/candidates.sha256
+sha256sum -c evidence/raw/item8/test-setup-r1/candidates.sha256
+mkdir -p downloads/item2/minecraft instances/pristine-baseline-v0/libraries/net/neoforged/neoforge/21.1.249
+curl --fail --location --silent --show-error \
+  https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar \
+  --output downloads/item2/minecraft/server.jar
+curl --fail --location --silent --show-error \
+  https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.249/neoforge-21.1.249-universal.jar \
+  --output instances/pristine-baseline-v0/libraries/net/neoforged/neoforge/21.1.249/neoforge-21.1.249-universal.jar
+printf '%s\n' \
+  'e3bc55693e93cda0188f2e60aea28113fc647c5e85a15fa3d1b347349231b4bb  downloads/item2/minecraft/server.jar' \
+  '63ba902edcae4476d49ffc28b18d566b0fcc5bf12edebcce1a2033f254f28155  instances/pristine-baseline-v0/libraries/net/neoforged/neoforge/21.1.249/neoforge-21.1.249-universal.jar' \
+  | sha256sum -c -
+gh release download item-8-registry-raw-2026-09-05-r1 --repo copeugne/mcpack \
+  --pattern item8-registry-r1-376e8e6.tar.gz --dir evidence/raw/item8/test-setup-r1
+uv run -m tools.archive_item7_evidence restore \
+  --archive evidence/raw/item8/test-setup-r1/item8-registry-r1-376e8e6.tar.gz \
+  --manifest evidence/item-8/raw-custody/registry-r1-manifest.json \
+  --target evidence/raw/item8/registry-r1 \
+  --receipt evidence/raw/item8/test-setup-r1/registry-restore.json
+uv run pytest -q tests/item8
+```
+
+The two platform URLs are the pinned Mojang artifact and NeoForge Maven artifact;
+their SHA-256 values match `item8_sources.retained_sources`. Restoring the registry
+archive verifies its size/hash, every member, and all241 file hashes. Existing
+custody details and failed historical attempts remain in raw-custody/README.md.
+These are test-input preparation commands, not new empirical capture commands.
+
+### Verified clean-checkout reproduction, 2026-09-07
+
+A fresh `git archive 4cdb13f1` export, with its own `uv sync --frozen` environment,
+ran the preparation above and passed all495 tests in122.06s. The136 candidates
+were freshly downloaded and publisher-verified (485621323 bytes), then compared
+to their committed SHA-256 identities. Both platform JARs were freshly downloaded
+and matched their pinned hashes. The downloaded registry archive restored241
+verified files. No other ignored instances, raw worlds, logs or downloads were
+provided. An attempted copy-on-write cache shortcut failed across filesystems;
+no candidate cache was copied and fresh acquisition succeeded instead.
+
+The full output is final-acceptance-clean-checkout-r1.txt. Candidate acquisition
+output is clean-checkout-acquisition-r1.txt; the existing archive tool's restore
+result is clean-checkout-registry-restore-r1.json. The earlier494-pass/one-failure
+run below remains historical evidence. This new495-pass run covers both the status
+fix and documented setup. No world generation or gameplay experiment was repeated.
+The PR still requires a fresh completed clean review and verified main delivery.
 
 ## PR18 assessment-status correction
 

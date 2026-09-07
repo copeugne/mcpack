@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Both PR18 findings resolved with clean-checkout verification
+
+Status correction4cdb13f1 is delivered. The remaining prerequisite finding is
+resolved by the evidence README's exact retained136 acquisition, two platform-JAR
+retrieval/hash checks and existing registry-archive restore commands. A fresh
+tracked-file export at4cdb13f1, with its own locked uv environment and only those
+newly acquired/restored external inputs, passes all495 Item8 tests in122.06s.
+Outputs and the existing restore receipt are committed under evidence/item-8/.
+No new framework, server startup or world-generation measurement was added.
+
+Next: push this prerequisite fix and request fresh @codex review on PR18. Inspect
+completed review, inline and discussion comments; fix valid relevant findings
+narrowly. Item8 remains IN PROGRESS pending clean review and verified main merge.
+The older status-finding checkpoint below is superseded by this result.
+
+
 #### PR18 first review: assessment status fixed, prerequisite instructions open
 
 PR18 https://github.com/copeugne/mcpack/pull/18 replaces closed PR17. Its review
