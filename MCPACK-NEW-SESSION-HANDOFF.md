@@ -6,15 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
-Arena/Dragon assessment in progress: five processor classes captured through the
-existing extractor at sources/moog-arena-processors. Ruff/type checks and five
-manifest-bound disassembly hashes pass. Its README records exact command and
-source findings. Processor assignments supersede raw empty spawner/vault fields;
-terrain-dependent pillars extend beyond architectural boxes. This necessary
-source increment also serves Mega Fortress, with no new framework or capture.
-Next integrate two families (three roots, 36 unique templates) with pool-owned
-processors, trial configs, fixed payloads and connector geometry. Current count
-remains 280/450 assessed, 170 remaining until those attributes are integrated.
+#### Arena and Dragon Arena assessed after 787174a4
+
+Twenty attributes finish two families across three roots and 36 unique templates.
+Processor-owned ordinary/trial spawners and vaults, saved mob and fixed payloads,
+finite architectural geometry and conditional pillar extensions are integrated.
+Direct derivations and source limits are in sources/moog-arena-processors/README.md.
+Ten shared tests pass. No runtime capture or new measurement was required.
+Inventory SHA: 4c5eb68aa0ac4f2151935ce30d0666f81c2ee4f269ba073569096b42ad8773ea.
+Nether Structures 26/27; registry 242/410, nonregistry 40/40, total 282/450
+assessed, 168 remaining. Next batch is Mega Fortress: one family, one root,
+196 traced component templates, ten assessment attributes. Inspect existing
+sources and observations before considering any new measurement. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/main
+delivery remain open. Assessment counts do not establish Item 8 acceptance.
 
 #### Four Nether ruin/well/pool families assessed after e2779b23
 
