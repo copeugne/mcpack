@@ -208,3 +208,51 @@ clean stop from the existing runner. Stage/decode the stopped world with existin
 tools, inspect its full start through observed_bounds, and publish immutable raw
 evidence with source revision, SHA-256 manifest and local/downloaded restore.
 No new measurement framework or baseline tuning is authorized by this capture.
+
+### Desert geometry result and custody
+
+Declared seed42 one-target/81-requested-chunk capture passed readiness, correlated
+flush, clean exit0 and frozen configuration acceptance (rejection_reason=null).
+The full start is chunk-46,-289, chunks.jsonl line513,479 pieces, envelope
+[-777,52,-4665,-695,121,-4583]. Inclusive subtraction gives83x70x83 blocks.
+The1802 decoded records are retained world coverage, not the requested81-chunk
+denominator. YellowStainedGlassProcessor's exact member hash is now also pinned:
+it replaces yellow glass with sandstone, then writes downward through air or
+nonempty fluid until solid terrain or a build-height boundary. Keep this variable
+extension separate from the saved70-block height; do not assert occupied volume
+or successful population of every component chunk.
+
+Raw console diagnostics include the existing IDAS optional tag/entity failures,
+WDA advancement failures and Better Caves AquiferContext compatibility error.
+Line2697 additionally reports an invalid minecraft:air item load. Preserve it
+without inventing a cause or claiming all authored equipment/rewards loaded.
+Disposition for this Item8 capture: the full saved assembly remains usable for
+approximate geometry; reward and gameplay acceptance are not established. No
+baseline repair or broader reward experiment is part of this size capture.
+
+Archive item8-desert-geometry-r1-0548abd2.tar.gz:249 files,2,905,942 bytes,
+20,685,093 uncompressed bytes; SHA-256:
+bbb3025c6c8a498c6d9012958e0f8fc4ecb14b3b19779066ab7dde0a4cb801ea.
+Manifest SHA-256:
+437fa507af99d61807dfe605e7655fb595d9e2a0dfa71bce07134358f66eb2bc.
+Decoded chunks SHA-256:
+28143a9c4938101ec880cf19ae4a7628822c2b2201b5fa5408d206274dc38dc0.
+Release item-8-desert-geometry-2026-09-07-r1 and remote tag both reference source
+0548abd2ca187d53a31fe17d8d4657d5d29a89bd. Local and independently downloaded
+restores verified every249 files. Applying existing observed_bounds to restored
+line513 reproduced479 pieces and the accepted full-start envelope. Local copies
+share the workspace disk; the GitHub release is the separate storage location.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/desert-geometry-r1"), Path("evidence/raw/item8/desert-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/desert-geometry-r1/world --output evidence/raw/item8/desert-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/desert-geometry-r1 --archive evidence/raw/item8/item8-desert-geometry-r1-0548abd2.tar.gz --manifest evidence/item-8/raw-custody/desert-geometry-r1-manifest.json --revision 0548abd2ca187d53a31fe17d8d4657d5d29a89bd
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-desert-geometry-r1-0548abd2.tar.gz --manifest evidence/item-8/raw-custody/desert-geometry-r1-manifest.json --target evidence/raw/item8/desert-geometry-r1-restored --receipt evidence/item-8/raw-custody/desert-geometry-r1-local-restore.json
+gh release download item-8-desert-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-desert-geometry-r1-0548abd2.tar.gz --dir evidence/raw/item8/desert-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/desert-geometry-r1-download/item8-desert-geometry-r1-0548abd2.tar.gz --manifest evidence/item-8/raw-custody/desert-geometry-r1-manifest.json --target evidence/raw/item8/desert-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/desert-geometry-r1-downloaded-restore.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/desert-assessed-inventory.json
+```
+
+Commands require fresh output paths. Reuse the tracked decoder and
+mcpack_evidence.item8_world_bounds.observed_bounds for processing; the exact
+record and inclusive derivation above require no new measurement framework.

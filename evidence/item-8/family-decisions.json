@@ -16687,7 +16687,7 @@
       "structure_ids": [
         "betterdeserttemples:desert_temple"
       ],
-      "rationale": "A temple assembly rooted at starts, with rooms, corridors and decorations as components. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
+      "rationale": "One desert-temple assembly with connected puzzle, parkour, throne, entrance and room alternatives. The197 traced templates have no missing components. Ten required attributes distinguish marker-generated spawners, authored versus natural mobs, conditional Pharaoh behavior, source loot transformations and illustrative full-start geometry. Pieces, pools and templates are components, not extra families.",
       "start_pool": "betterdeserttemples:starts",
       "generation_settings": {
         "type": "yungsapi:yung_jigsaw",
@@ -16711,7 +16711,8 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
         "evidence/item-8/sources/desert-temple-provider/identities.json": "b64f030b80004ea67adeecadf91809f2f82e40526fa2fbe91905d9a2f53e66f2",
-        "evidence/item-6/frozen/config/betterdeserttemples-neoforge-1_21.toml": "d086bc41b30a69de78c1799f0d4850118fbf26919dc343a12b3230560d06f73c"
+        "evidence/item-6/frozen/config/betterdeserttemples-neoforge-1_21.toml": "d086bc41b30a69de78c1799f0d4850118fbf26919dc343a12b3230560d06f73c",
+        "evidence/item-8/raw-custody/desert-geometry-r1-manifest.json": "437fa507af99d61807dfe605e7655fb595d9e2a0dfa71bce07134358f66eb2bc"
       },
       "processor_inspection": {
         "archive": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
@@ -16727,7 +16728,8 @@
           "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/PotProcessor.class": "860aae790f88ea3d0fcfbb810d18d92cc1483c9e18192de9347a86a3fc600bc0",
           "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/OrangeStainedGlassProcessor.class": "5617a071235e3edee046d42e82a6bf0665478e4d3d81dcb3d1d10caba3021408",
           "com/yungnickyoung/minecraft/betterdeserttemples/world/ItemFrameChances.class": "1a59b557a2f92133b68c13ccd8a88bf39fc0b3d87d5c37038e0cfd2c07cc7340",
-          "com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances.class": "125b11e76f9f1b1d1c4b20451445cd66fdc50405fe9b7bdd4d93f9fb9e3b3cf4"
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/ArmorStandChances.class": "125b11e76f9f1b1d1c4b20451445cd66fdc50405fe9b7bdd4d93f9fb9e3b3cf4",
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/YellowStainedGlassProcessor.class": "82efa41c1b94c9bebe08b03f9710a5171a72803873fea92ae796361ff0e433de"
         },
         "basis": "Direct pinned-javap inspection of exact members; see desert-temple-provider/README.md, Effective spawners and placement, and Pharaoh and reward attribution."
       },
@@ -16781,7 +16783,7 @@
         "visual_discoverability": {
           "value": "Desert temple with a terrain-relative entrance and buried lower rooms; burial varies with terrain and the selected vertical offset.",
           "basis": "Root uses WORLD_SURFACE_WG projection and uniform offset-24..-4 with a named temple_anchor. Template trace contains connected rooms, parkour, puzzles and Pharaoh content.",
-          "limitation": "No full-start world geometry or measured human sightline is available yet; complete size remains a separate required gap."
+          "limitation": "The supplemental full-start observation establishes saved geometry, not measured human sightlines or exposed area."
         },
         "underground_surface_classification": {
           "value": "Surface-connected, partly buried desert temple.",
@@ -16844,7 +16846,25 @@
           "frame_processor": "For ordinary frames, iron_sword selects the armory randomizer and bread the storage randomizer. AIR removes Item, not the frame entity. Other selectors retain item/rotation after coordinate correction. Armory/storage choices are pinned in ItemFrameChances; no generated yield is claimed.",
           "armor_stand_processor": "The two stands use leather_helmet (hall_room_5x5_25) and iron_helmet (hall_room_5x5_32). Iron selects armory chainmail/gold alternatives; other helmets select wardrobe chainmail/leather alternatives, with AIR choices. Processor-written Count/tag/Damage encoding remains source data, not verified runtime armor/durability.",
           "pots": "PotProcessor replaces each decorated pot sherd list with four independently selected archer/miner/prize/skull sherd or brick entries; each sherd uses a0.05 interval, brick the remaining interval. Existing other NBT, including loot reference where present, is retained.",
-          "scope": "Direct table references, explicit authored content and relevant processor transformations. Actual pickups, total rewards, functioning traps and global loot-modifier yields are not measured."
+          "scope": "Direct table references, explicit authored content and relevant processor transformations. Actual pickups, total rewards, functioning traps and global loot-modifier yields are not measured. The geometry capture logs an invalid minecraft:air item load; retain that diagnostic without claiming all authored items loaded successfully or identifying an unproven cause."
+        },
+        "approximate_footprint": {
+          "observed_example_xz_blocks": [
+            83,
+            83
+          ],
+          "archive_manifest": "evidence/item-8/raw-custody/desert-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 513,
+          "basis": "Frozen seed42 full start at chunk-46,-289 has479 pieces and envelope[-777,52,-4665,-695,121,-4583]. Inclusive saved assembly extent, not occupied volume, populated status of every component chunk or a family-wide extremum."
+        },
+        "approximate_vertical_size": {
+          "observed_example_y_blocks": 70,
+          "archive_manifest": "evidence/item-8/raw-custody/desert-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 513,
+          "basis": "Inclusive saved Y52..121 gives70 blocks.",
+          "extension": "YellowStainedGlassProcessor replaces yellow stained-glass markers with sandstone and writes columns downward through air/nonempty fluid until terrain or a build-height boundary. These terrain-dependent writes can extend below saved piece bounds; total occupied height is not asserted."
         }
       }
     },
