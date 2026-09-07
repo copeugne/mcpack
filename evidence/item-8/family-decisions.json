@@ -37083,7 +37083,8 @@
           "evidence/item-8/sources/better-end-island-activation/identities.json": "65c8b9e69ad267dced5a68b6035808345da4d67193d919e1760028ccf8ec399a",
           "evidence/item-8/sources/better-end-island-activation/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar/mixin-metadata.json": "fd67753423f30ae9026bc7a92d2a70ad3fbf6caf4cdb92c26bbc93fd4607a7cf",
           "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee",
-          "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb"
+          "evidence/item-8/sources/vanilla-end-platform-caller/identities.json": "f12714cdddce670e7ed2bde4eb4d51b2d8e720d6e7c6d61a8a80f2b3fbfe4fcb",
+          "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f"
         },
         "processor_effects": {
           "DragonEggProcessor": "Reads the existing world block at the incoming target position. If it is DRAGON_EGG, replaces the incoming block state with default DRAGON_EGG while preserving position and incoming NBT. Otherwise returns the incoming block unchanged. This preserves an existing egg, rather than creating an egg reward at an empty target.",
@@ -38002,7 +38003,27 @@
                   27,
                   11
                 ],
-                "basis": "Component envelopes only, including air. Each paired spike has a nominal 19x136x19 envelope. Whole-arena occupied footprint and vertical extent are not measured here; the recorded radius-42 center layout is distinct from component dimensions."
+                "basis": "Component envelopes only, including air. Each paired spike has a nominal 19x136x19 envelope. Whole-arena occupied footprint and vertical extent are not measured here; the recorded radius-42 center layout is distinct from component dimensions.",
+                "combined_nominal_envelope": {
+                  "spikes_y_inclusive": [
+                    3,
+                    138
+                  ],
+                  "podium_anchor": "P is the portalLocation Y after origin_adjustment; the feature is invoked at P-5.",
+                  "full_podium_y_inclusive": [
+                    "P-5",
+                    "P+21"
+                  ],
+                  "bottom_only_podium_y_inclusive": [
+                    "P-5",
+                    "P+5"
+                  ],
+                  "full_arena_height_blocks": "max(138, P+21) - min(3, P-5) + 1",
+                  "bottom_only_arena_height_blocks": "max(138, P+5) - min(3, P-5) + 1",
+                  "fallback_example": "At the recorded fallback P=65, both forms fit the spike envelope Y=3..138, a 136-block nominal span. This is an example for that branch, not an observed or universal podium anchor.",
+                  "basis": "spike_geometry places the lower 67-block template at Y=70-67=3 and upper 69-block template at Y=70. podium_invocation.arguments places at portalLocation.below(5); podium_geometry has full height 27 or bottom-only height 11. Inclusive upper coordinates are origin + height - 1.",
+                  "scope": "Nominal template envelopes including air, before terrain clipping and successful-write effects. Entity positions, flight, explosions and removal volumes are not building height."
+                }
               },
               "intended_hostility": {
                 "value": "Dragon-fight encounter, inferred from the arena lifecycle and explicit dragon creation request. End Crystals are encounter objects, not hostile mobs. This is design attribution, not observed combat behavior or an Item 9 tier.",
@@ -38510,6 +38531,14 @@
               "file_identity": "Custody-restored configuration/config/quark-common.toml is byte-identical to the frozen file, SHA-256 94bfff490eea33f9bb105fae298606c4708ddb8af2f3df8630cc0f0ac7e85327.",
               "result": "Source/configuration/log attribution supports End-only dimensions, End Highlands biome allowlist, empty tag blacklist, rarity 200 and radius 15 for the initial configuration. This is not a direct runtime field dump or proof of generated occurrence. Other consumers and natural spawning remain separate."
             }
+          },
+          "fabric_dispatch_resolution": {
+            "evidence": {
+              "evidence/item-8/sources/fabric-biome-modifier/identities.json": "5c927be105ad9117e051c9263e5b1e4ba39978bd1a423f1a9887afb35150f83f"
+            },
+            "finding": "BiomeModificationImpl constructs an empty modifier list. addModifier appends caller-supplied phase, selector and callback records. FabricBiomeModifier.modify applies records only for their matching phase and biome predicate. It performs no unconditional feature insertion or removal itself.",
+            "basis": "Retained complete BiomeModificationImpl constructor, both addModifier overloads, and FabricBiomeModifier.modify/isInPhase bodies.",
+            "remaining": "Identify the retained consumer registrations and their selected callbacks before concluding preservation or modification of end_platform, end_spike and end_gateway_return. The generic dispatcher cannot answer that consumer-specific question."
           }
         }
       },

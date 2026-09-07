@@ -59,30 +59,36 @@ Retire supported, integrated answers for the eleven YUNG bridge/Extras families
 and these three Better End Island families from the working assessment queue.
 Do not repeat those requirements without a relevant contradiction or change.
 Fourteen nonregistry families have now been assessed; 26 await direct assessment.
-Only these two concrete questions carry forward from the Better End Island pass:
+The arena vertical-size question is now resolved and retired. For the recorded
+podium portalLocation Y=P, full podium spans P-5..P+21, bottom-only spans P-5..P+5,
+and paired spikes span 3..138. The attribute records their combined inclusive
+height formulas and the P=65 fallback example (136 blocks), without claiming a
+universal terrain height or observed occupied extent.
 
-- arrival_platform, gateway and dragon_arena, biome_constraints: do the retained
-  Fabric biome callbacks preserve or alter the recorded packaged feature routes?
-  The packaged consumers and additive Zeta behavior are known; the current record
-  does not bind the Fabric consumer effects. Next inspect the existing
-  sources/fabric-biome-modifier and linked provider callback captures, and integrate
-  their actual effect. No new capture is authorized merely by the stale gap prose.
-- dragon_arena, approximate_vertical_size: how does the terrain-anchored podium
-  combine with spikes at nominal Y=3..138? Component heights are known, but the
-  current attribute does not describe the combined terrain-dependent extent.
-  Next use spike_podium_generators.podium_invocation.origin_adjustment and
-  podium_geometry already in family-decisions.json to state the derived envelope
-  as a function of the podium anchor; inspect its preserved source if ambiguous.
+Only one shared question remains from this group, affecting biome_constraints
+for arrival_platform, gateway and dragon_arena: which retained consumers register
+Fabric biome callbacks, and do their selected callbacks change end_platform,
+end_spike or end_gateway_return? The retained dispatcher was inspected: its list
+starts empty, callers add phase/selector/callback records, and matching records
+are invoked. There is no unconditional alteration by the dispatcher itself.
+This narrows the question to consumer registrations; do not reinspect the API
+or infer absence of changes from its empty constructor list. Next inspect the
+existing retained-provider consumer evidence and relevant archive call sites.
+No new runtime experiment is justified by the current evidence.
 
-These are four family/field cases arising from two shared questions, not four
-new investigations. Final identity, consistency and review checks remain, but do
-not requeue all supported descriptions under a generic shared-effects label.
+Affected End Island/Fabric tests: 45 passed. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-residuals.json`.
+SHA-256: 078700af8755b568a20f2c5eff2f2d1592fb34377bd8b00edd2ae765a15c2000.
+Registry rows and other contributions remain unchanged. Fourteen nonregistry
+families have been assessed, 26 remain unassessed, and only the three named
+biome-field cases carry forward from Better End Island. Keep supported answers
+retired; final consistency, acceptance and review gates remain separate.
 
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 26 not yet assessed; 14 assessed | Two concrete Better End Island residual questions are listed above. Supported descriptions are retired; continue the other 26 records. |
+| Nonregistry | 26 not yet assessed; 14 assessed | One concrete Better End Island residual question is listed above. Supported descriptions are retired; continue the other 26 records. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
