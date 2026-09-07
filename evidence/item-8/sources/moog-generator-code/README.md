@@ -233,3 +233,51 @@ Only four family rows and the decisions input hash changed; geometry, biomes,
 observation links and nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-nether-ocean-house.json`, SHA-256
 af705d1e244246e24e96faeb6dc0b6271daa8a0acdf411723458ff2f52d3a5cb.
+
+## Voyager carts, camps and two facilities
+
+After d42bb242, 40 required attributes finish Cart (four roots), Campsite
+(three roots), Wheat Grain Bin and Windmill. Existing variant decisions supply
+family boundaries; direct inspection of the same hash-bound templates, pool
+traces, definitions and block-entity payloads supplies the integrated answers.
+All nine roots select one terminal ordinary rigid single template each with
+empty processors, no missing components and no unresolved pool elements.
+
+Declared XYZ envelopes are Cart 3x4x3, Large Cart 1 9x8x11, Large Cart 2 9x8x7,
+Bamboo Cart 4x4x6; Campsite 19x8x13, Fire Camp 7x2x8, Horse Campsite 9x3x6;
+Wheat Grain Bin 7x13x7; Windmill 5x8x6. These are per-variant source envelopes,
+including air/padding, with no jigsaw attachments. They are not occupied-world
+bounds or exposed heights. Inventory stores XZ and Y separately by template.
+
+All nine runtime biome intersections are Overworld-only. Generic jigsaw uses
+WORLD_SURFACE_WG, offset zero and beard_thin. Bamboo Cart omits the liquid flag,
+which defaults false; the other eight explicitly enable it. Large carts declare
+terrain range 3/radius 1; Campsite 2/1, Fire Camp 3/1 and Horse Campsite 4/3.
+Campsite's depth input is 3; others are 1. Grain Bin, Windmill and the two small
+carts omit optional terrain range/radius. Full per-root definitions are preserved.
+These candidate-placement inputs do not guarantee exposed or dry footprints.
+
+Cart and Bamboo Cart each have one wandering_trader at /entities/0/nbt; large
+carts have empty entity lists. All four retain a SAVE-mode structure block at
+/block_entities/0 with empty metadata. The trace's generation_markers category
+therefore contains authoring records, not demonstrated hostile-generation
+markers. No physical spawners occur. The remaining five templates have no saved
+entities or generation markers, including Horse Campsite: no authored horse is
+inferred. Inspected block entities contain no hidden mob source. Grain Bin's
+hopper Items list is empty. Natural spawning remains conditional.
+
+Exact table ownership is integrated per template: Cart mvs:cart, both large
+carts mvs:large_carts, Bamboo Cart none; Campsite mvs:general, mvs:abandoned,
+mvs:houses_common and mvs:houses_uncommon; Fire Camp none; Horse Campsite
+mvs:abandoned; Grain Bin mvs:houses_common and mvs:houses_uncommon; Windmill
+mvs:empty. The last can yield cobweb/string. A hopper or windmill depiction
+is not proof of a production loop, rotation or power output. Discoverability
+uses retained forms and dimensions without a measured sight distance.
+
+No new capture, measurement or tooling. Ten affected provider/inventory tests
+and scoped builder Ruff/Basedpyright checks pass. Reproduce with the existing
+build_item8_inventory command to an absent output path. Only four family rows
+and the decisions input hash changed; biome constraints, observation links and
+nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-cart-camp-facilities.json`, SHA-256
+25caadcfa0fbd1b542783357152283877b64430a607fc1e052e879da57d8e030.

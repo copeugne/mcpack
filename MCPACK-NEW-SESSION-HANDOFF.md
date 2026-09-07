@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager carts, camps and facilities assessed after d42bb242
+
+Forty attributes finish Cart (four roots), Campsite (three roots), Wheat Grain
+Bin and Windmill. Variant template dimensions, source mobs and exact loot owners
+are integrated. SAVE-mode cart structure blocks are not asserted mob-generation
+markers; Horse Campsite contains no authored horse. No new capture, measurement
+or tooling. Direct derivations are in moog-generator-code README. Ten affected
+tests and builder checks pass. Inventory SHA-256:
+25caadcfa0fbd1b542783357152283877b64430a607fc1e052e879da57d8e030.
+
+Retire these assessments. Voyager 35/65; registry 142/410, nonregistry 40/40,
+total 182/450 assessed, 268 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Four Voyager families assessed after 2730cd27
 
 Thirty-two answers finish crimson_enchanting_table, nether_devil, ocean_tower
