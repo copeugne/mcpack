@@ -106,3 +106,35 @@ Inventory SHA-256:
 Only this family's component provenance and four attributes change semantically.
 Overall Item 8 completion and this family's remaining effective attributes are
 still unproven; no runtime experiment or broader measurement system was added.
+
+
+## Assembled geometry capture declaration
+
+Five required attributes remain: footprint, height, hostility, visual cues and
+placement classification. Existing source/template evidence supports the last
+three, but has no retained End city start. Recursion depth and component sizes
+cannot establish assembled dimensions. Predeclare one fresh ordinary-seed42
+End target with81 requested chunks using the existing End-capable gap runner.
+No new tool or framework is required. Require readiness, matching End completion,
+correlated flush, clean exit, frozen config acceptance and stopped-world decoding.
+Preserve all failures/warnings without modifying the baseline. Accept one saved
+piece-envelope example only after archive, local restore, GitHub delivery and
+fresh downloaded restore. This is not a population, occupied-volume, all-layout
+or complete component-population measurement.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/vanilla-end-city-geometry-r1 \
+  --log-path evidence/raw/item8/vanilla-end-city-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/vanilla-end-city-geometry-r1/configuration \
+  --receipt evidence/raw/item8/vanilla-end-city-geometry-r1/run.json \
+  --timeout-seconds 900 --dimension minecraft:the_end --structure minecraft:end_city
+```
