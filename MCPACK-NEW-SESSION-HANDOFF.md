@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining vanilla geometry accepted after 1416f44c
+
+One fresh seed42 Overworld capture completed all three targets with 81 requested
+chunks each, readiness, correlated flush, clean exit0 and frozen configuration
+acceptance. No runtime remains. Decoded3724 records: full trail-ruin line421,
+18 pieces,50x27x26; mansion line2238,544 pieces,79x31x61; outpost line2949,
+13 pieces,48x30x48. Saved envelopes are not typical sizes or population evidence.
+Archive item8-vanilla-final-geometry-r1-1416f44c.tar.gz has266 files,6,698,468bytes,
+SHA6c9bafa9aee0a0a24401e1d15ce0655bc3483e50aad1921f3471032bd6147070.
+Local and downloaded restores pass; immutable release/tag is verified at1416f44c.
+Six sizes and observed dimensions integrated;85 focused checks pass (61.36s).
+Only three intended families/input identity changed. Total392/448 assessed,
+56 families/541 entries remain: IDAS38/380,Repurposed17/154,vanilla mansion1/7.
+Next batch is mansion's seven non-geometry attributes. Initial direct inspection
+of mapped-server WoodlandMansionPieces$WoodlandMansionPiece.handleDataMarker
+shows Mage->evoker,Warrior->vindicator,Group of Allays->1..3 allay attempts and
+Chest prefix->WOODLAND_MANSION loot. ClassSHAf1d2cd100e5459a1ec1512fd437480c6a69ab522e9cad77eaed1baf7db1d7f1b.
+These are preliminary source findings, not accepted complete mansion attribution;
+finish template selection and integrate in the authoritative attributes. No new
+inspection tool is needed. Geometry commands/custody are in the outpost/trail
+assessment README. Final integration,acceptance,backup/history and PR/review/main
+remain open. Inventory SHA-256: f8d9eceddcfd56bc879f084deb454eb19618ca211c8bb3d0373fb7168ea89daa.
+
+
 #### Outpost and trail-ruin content assessed after 36f139f2
 
 Twelve descriptive entries integrated for two families from existing 11-template

@@ -94,3 +94,55 @@ uv run -m tools.run_item7_gap_targets \
   --structure minecraft:pillager_outpost --structure minecraft:trail_ruins \
   --structure minecraft:mansion
 ```
+
+
+## Geometry acceptance
+
+The declared capture passed readiness, all three 81-chunk target completions,
+correlated save-all flush, clean exit 0 and frozen configuration acceptance.
+Allowed comment normalization is preserved in run.json. The decoder produced
+3724 records, including surrounding generation stages, not 3724 requested samples.
+Downloaded-archive records establish these full-start examples (X by Y by Z):
+
+| Family | chunks.jsonl line | Chunk | Pieces | Envelope | Size |
+| --- | ---: | --- | ---: | --- | --- |
+| Trail ruins | 421 | 20,97 | 18 | [281,38,1538,330,64,1563] | 50x27x26 |
+| Mansion | 2238 | 403,-433 | 544 | [6388,68,-6940,6466,98,-6880] | 79x31x61 |
+| Outpost | 2949 | 222,-22 | 13 | [3536,64,-368,3583,93,-321] | 48x30x48 |
+
+These are saved assembled piece envelopes, not typical sizes, occupied volumes,
+visibility measurements or proof of complete population in every component chunk.
+Pieces remain components of one family. Raw warnings and logs remain unaltered.
+
+Archive `item8-vanilla-final-geometry-r1-1416f44c.tar.gz` contains 266 files,
+6,698,468 compressed bytes and 41,948,780 uncompressed bytes. SHA-256:
+`6c9bafa9aee0a0a24401e1d15ce0655bc3483e50aad1921f3471032bd6147070`.
+Decoded chunks SHA-256:
+`83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d`.
+Both local and fresh downloaded restores verified all 266 files. The remote tag
+`item-8-vanilla-final-geometry-2026-09-07-r1` resolves to declaration commit
+`1416f44c7982305e01ececb14bc4df25967f7fbf`. GitHub release storage is separate from
+the local filesystem, on which the local archive and restore copies reside.
+The three custody records are under `evidence/item-8/raw-custody/` with prefix
+`vanilla-final-geometry-r1-` and are hash-bound in the three family decisions.
+
+The six size attributes and observed Overworld dimension are integrated into the
+authoritative decisions and inventory. Outpost and trail ruins are fully assessed;
+mansion still needs its seven non-geometry attributes. This is not Item 8 closure.
+
+Reproduction, using unused output paths:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/vanilla-final-geometry-r1"), Path("evidence/raw/item8/vanilla-final-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/vanilla-final-geometry-r1/world --output evidence/raw/item8/vanilla-final-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/vanilla-final-geometry-r1 --archive evidence/raw/item8/item8-vanilla-final-geometry-r1-1416f44c.tar.gz --manifest evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json --revision 1416f44c7982305e01ececb14bc4df25967f7fbf
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-vanilla-final-geometry-r1-1416f44c.tar.gz --manifest evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json --target evidence/raw/item8/vanilla-final-geometry-r1-restored --receipt evidence/item-8/raw-custody/vanilla-final-geometry-r1-local-restore.json
+gh release download item-8-vanilla-final-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-vanilla-final-geometry-r1-1416f44c.tar.gz --dir evidence/raw/item8/vanilla-final-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/vanilla-final-geometry-r1-download/item8-vanilla-final-geometry-r1-1416f44c.tar.gz --manifest evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json --target evidence/raw/item8/vanilla-final-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json
+```
+
+Apply the existing `observed_bounds(ChunkRecord.model_validate_json(line))` from
+`mcpack_evidence.item8_world_bounds` and `mcpack_evidence.item7_nbt_models` to
+one-based lines 421, 2238 and 2949 of the downloaded restore's chunks.jsonl.
+Require chunk_full and the corresponding structure_id before accepting the
+inclusive envelope and size_xyz. No new decoder or measurement logic is needed.
