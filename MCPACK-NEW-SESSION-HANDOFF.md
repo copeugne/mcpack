@@ -7,6 +7,29 @@
 ### Continuation update - 2026-09-07
 
 
+#### Brass assessed and Aether dimensions integrated after 2dac361f
+
+Quantified Aether/DeepAether batch: four families,33 explicit attributes initially
+remaining, no retained geometry observations. Existing sources resolve Brass's
+fixed architecture directly:62x52x62 with stochastic cloud support separate.
+Exact pivot/quadrant/template derivation is in evidence/item-8/sources/
+deep-aether-provider/README.md, Brass family assessment. No runtime capture or
+new measurement tool was needed. Cockatrice spawners, controller/segments and
+BABY_ZEPHYR trapped-plank supplier are attributed; two exact direct class members
+are pinned. Three chest-table IDs and full-box natural-spawn suppression remain
+source-scoped. All ten Brass attributes plus the other three Aether dimensions
+are integrated. Only four families/input identity changed; membership, biome
+constraints and retained observations are unchanged. All85 focused tests pass
+(59.48s). Registry324/408,nonregistry40/40,total364/448 assessed,84 remaining.
+Next Aether work: Bronze two sizes, Silver nine attributes, Gold nine attributes
+(20 total). Reuse captures before additional investigation; the existing gap
+runner is Overworld-only and has not been modified or run for Aether. Check
+source derivation sufficiency before extending it. Final integration, acceptance,
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+a2dab7bcf354cb83849081907a5792f58885bfb9f42f3d6bd77639e2badd4100.
+
+
 #### Stronghold geometry finished after 39515832
 
 Declared seed42 one-target capture passed readiness, correlated flush, clean
