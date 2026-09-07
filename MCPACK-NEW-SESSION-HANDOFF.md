@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### Six End families assessed after b116d1f7
+
+Sixty attributes finish Enderpin Spikes, Endscraps, Monolith, Placid Prairie,
+Ruined Pillar and Starlight Voyager. Per-alternative geometry, eight saved
+shulkers, the elytra frame, mixed Items/LootTable and empty brushable payloads
+are integrated. Ten shared tests pass; no capture or tooling. Inventory SHA:
+288eeb652708ff0c39fbf581e96e1f387e40aeec57fcc5cf365c3a0108776eb8.
+End Structures 17/18; registry 189/410, nonregistry 40/40, total 229/450 assessed,
+221 remaining. Mega Ship is the only mes family left, with eight modular root
+variants. Retire these six assessments and continue quantified coherent batches.
+Final integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
 #### Eleven standalone End families assessed after ec3ef2ae
 
 Eighty-eight attributes finish eleven mes families with existing geometry.
