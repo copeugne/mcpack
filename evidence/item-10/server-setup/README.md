@@ -72,7 +72,16 @@ Minecraft 1.21.10 client is not compatible with this server's frozen version.
 Follow the [official NeoForge client procedure](https://docs.neoforged.net/user/docs/client/)
 with the pinned 21.1.249 installer, not a newer default version.
 
-Persistent space after server setup is about 1.4 GiB. Sustained exploration,
-client downloads and Item 10 evidence need a storage budget before proceeding.
+Persistent space after server setup is about 1.4 GiB. A read-only estimate using
+Minecraft 1.21.1's asset index 17 (SHA-1
+`dda7c8d44a8c7e3f5db430d657106af4e5bdc715`) found 2,098 of 3,888 unique
+objects absent or of the wrong size in the existing client cache. Their declared
+sizes sum to 648,853,008 bytes. The index was fetched from its URL in
+`downloads/item2/minecraft/1.21.1.json` and its SHA-1 verified. This is a local
+size/existence estimate, not verification of existing object contents. It excludes
+the 26,836,906-byte client JAR, libraries, installer intermediates and runtime.
+No client download or launcher-profile mutation has been performed. A persistent
+storage location or explicit disposable-file disposition has been requested.
+Sustained exploration, client downloads and Item 10 evidence need that budget.
 The task world must be kept separate from free roaming and must not be called
 an accepted observation run until its protocol and recording conditions are met.
