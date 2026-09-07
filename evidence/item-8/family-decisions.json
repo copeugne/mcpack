@@ -225,7 +225,12 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
-        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+        "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/ctov-provider/identities.json": "892790797564491473c7bf42d1e92f182cdb640721aa5e00c9a9b9c044de489e",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "design_variants": {
         "ctov:village_beach": {
@@ -2386,6 +2391,107 @@
           },
           "basis": "Every root projects to WORLD_SURFACE_WG; the three underground-design roots use offset -14, the other 63 use zero. All share the surface_structures generation step.",
           "limitation": "Start intent only. Preserve underground, canopy and fortified designs separately within the family. Room elevations, terrain exposure and visual discovery are not proved by the generation step or start offset."
+        },
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Every effective root biome set intersects only the captured Overworld dimension. This is dimension eligibility; the village also has retained Overworld starts.",
+          "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "mob_source": {
+          "authored_entity_ids": [
+            "minecraft:armor_stand",
+            "minecraft:camel",
+            "minecraft:cat",
+            "minecraft:chicken",
+            "minecraft:cow",
+            "minecraft:horse",
+            "minecraft:iron_golem",
+            "minecraft:item_frame",
+            "minecraft:pig",
+            "minecraft:sheep",
+            "minecraft:villager"
+          ],
+          "basis": "Reachable templates provide villagers, passive animals, defensive iron golems and display entities. Empty structure spawn_overrides leave natural spawning to biome and world conditions.",
+          "scope": "Source attribution, not a realized population or proof that every optional component is placed. Per-template entity bindings remain in the preserved pool trace.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "loot_table_source": {
+          "template_table_ids": [
+            "chefsdelight:chests/cooker",
+            "ctov:chests/village/village_badlands_house",
+            "ctov:chests/village/village_bakery",
+            "ctov:chests/village/village_beach_house",
+            "ctov:chests/village/village_dark_forest_house",
+            "ctov:chests/village/village_farm",
+            "ctov:chests/village/village_jungle_house",
+            "ctov:chests/village/village_library",
+            "ctov:chests/village/village_mountain_house",
+            "ctov:chests/village/village_mushroom_house",
+            "ctov:chests/village/village_smith",
+            "ctov:chests/village/village_swamp_house",
+            "ctov:village/desert/",
+            "ctov:village/desert_fortified/bakery",
+            "ctov:village/swamp/leatherworker",
+            "minecraft:chests/village/village_butcher",
+            "minecraft:chests/village/village_cartographer",
+            "minecraft:chests/village/village_desert_house",
+            "minecraft:chests/village/village_fisher",
+            "minecraft:chests/village/village_fletcher",
+            "minecraft:chests/village/village_mason",
+            "minecraft:chests/village/village_plains_house",
+            "minecraft:chests/village/village_savanna_house",
+            "minecraft:chests/village/village_shepherd",
+            "minecraft:chests/village/village_snowy_house",
+            "minecraft:chests/village/village_taiga_house",
+            "minecraft:chests/village/village_tannery",
+            "minecraft:chests/village/village_temple"
+          ],
+          "missing_packaged_table_definitions": [
+            "ctov:village/desert/",
+            "ctov:village/desert_fortified/bakery",
+            "ctov:village/swamp/leatherworker"
+          ],
+          "basis": "Literal reachable-template LootTable references joined to packaged current-path loot_table definitions. Preserve absent definitions as content defects, without substituting a plausible table ID. Per-template bindings are retained in pool-traces-content.json.gz.",
+          "scope": "Loot source inventory, not reward yield or a claim that every referenced table supplies working loot. Conditional compatibility and missing template dispositions remain in provider-scope.md.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "visual_discoverability": {
+          "value": "Settlement buildings, paths, fortifications and canopy designs can provide surface landmarks; the underground design starts14 below the surface projection.",
+          "basis": "All66 roots project to WORLD_SURFACE_WG. Three retained distinct layouts span122x35x107,123x109x143 and129x29x120 blocks, including terrain variation and saved-piece padding. These samples do not cover every design or size.",
+          "scope": "Source-based visibility assessment; terrain and viewpoint affect exposure. No measured sightline, discovery distance or guaranteed visible entrance.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "approximate_footprint": {
+          "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+          "observed_envelope_xz_blocks": [
+            [
+              122,
+              107
+            ],
+            [
+              123,
+              143
+            ],
+            [
+              129,
+              120
+            ]
+          ],
+          "source": "evidence/item-8/sources/world-bounds.json.gz",
+          "scope": "Three distinct saved layouts repeated across runs A/B, not six independent samples; two mountainous village roots and one biome-diverse desert root. No family extrema or all-design coverage claim."
+        },
+        "approximate_vertical_size": {
+          "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
+          "observed_envelope_y_blocks": [
+            29,
+            35,
+            109
+          ],
+          "source": "evidence/item-8/sources/world-bounds.json.gz",
+          "scope": "Three distinct saved layouts repeated across runs A/B, not six independent samples; two mountainous village roots and one biome-diverse desert root. No family extrema or all-design coverage claim."
         }
       }
     },
@@ -54642,12 +54748,71 @@
           "heightmap": "WORLD_SURFACE_WG",
           "basis": "The packaged start height is added to WORLD_SURFACE_WG projection. The generation step is surface_structures, including the underground village; that step is not a burial measurement.",
           "limitation": "Start placement intent only, not every piece elevation or terrain exposure. Underground rooms and above-ground entrances require geometry or world evidence; no visibility distance is inferred."
+        },
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Every effective root biome set intersects only the captured Overworld dimension. This is dimension eligibility; the village also has retained Overworld starts.",
+          "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "mob_source": {
+          "authored_entity_ids": [
+            "minecraft:allay",
+            "minecraft:iron_golem",
+            "minecraft:ravager"
+          ],
+          "basis": "Reachable templates author allays, iron golems and ravagers. Full-box monster overrides separately select pillager, evoker, vindicator and witch, each weight1 and group1..1.",
+          "scope": "Source attribution, not a realized population or proof that every optional component is placed. Per-template entity bindings remain in the preserved pool trace.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "loot_table_source": {
+          "template_table_ids": [
+            "ctov:pillager_outpost/halloween/tower",
+            "minecraft:chests/pillager_outpost"
+          ],
+          "missing_packaged_table_definitions": [
+            "ctov:pillager_outpost/halloween/tower"
+          ],
+          "basis": "Literal reachable-template LootTable references joined to packaged current-path loot_table definitions. Preserve absent definitions as content defects, without substituting a plausible table ID. Per-template bindings are retained in pool-traces-content.json.gz.",
+          "scope": "Loot source inventory, not reward yield or a claim that every referenced table supplies working loot. Conditional compatibility and missing template dispositions remain in provider-scope.md.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "visual_discoverability": {
+          "value": "Above-ground tower and surrounding camp features provide potential visual landmarks.",
+          "basis": "All12 roots project to WORLD_SURFACE_WG with offset0. The plains start combines a16x30x16 base plate,13x26x13 tower and terrain-matching feature plates, so a tower template alone is not the assembled footprint.",
+          "scope": "Source-based visibility assessment; terrain and viewpoint affect exposure. No measured sightline, discovery distance or guaranteed visible entrance.",
+          "source": "evidence/item-8/sources/ctov-provider/README.md#family-description-integration"
+        },
+        "approximate_footprint": {
+          "observed_example_xz_blocks": [
+            47,
+            46
+          ],
+          "archive_manifest": "evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 385,
+          "basis": "Frozen seed42 full start chunk-476,-108 has12 pieces and envelope[-7632,66,-1758,-7586,96,-1713]. Inclusive saved assembly extent, including air/padding; not occupied volume, an all-variant bound or full population of every surrounding component chunk."
+        },
+        "approximate_vertical_size": {
+          "observed_example_y_blocks": 31,
+          "archive_manifest": "evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json",
+          "decoded_relative_path": "chunks.jsonl",
+          "decoded_line": 385,
+          "basis": "Frozen seed42 full start chunk-476,-108 has12 pieces and envelope[-7632,66,-1758,-7586,96,-1713]. Inclusive saved assembly extent, including air/padding; not occupied volume, an all-variant bound or full population of every surrounding component chunk."
         }
       },
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/ctov-provider/identities.json": "892790797564491473c7bf42d1e92f182cdb640721aa5e00c9a9b9c044de489e",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/raw-custody/ctov-outpost-geometry-r1-manifest.json": "527f20d8a1e5b56454e825b1150e4920ae2275a84d14940e5e854f46e0533525"
       }
     },
     {
