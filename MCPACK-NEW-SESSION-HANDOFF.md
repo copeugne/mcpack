@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Castle and farmhouse canonical decisions pass the focused IDAS check and scoped
+Ruff/Basedpyright checks. Castle preserves three distinct settlement designs,
+their separate bottom components and the village connection present only in the
+first two. Farmhouse preserves ordinary and abandoned encounter differences and
+the ordinary-only path. Canonical backlog is 13, all IDAS. Derived inventory
+refresh follows; attributes, 33 nonregistry contributions and final delivery
+remain open. No new measurement system or family-count expansion was added.
+
 Castle/farm views reproduce exactly with selector 7c00d51e and narrow path-frame
 fix 3356f800. All nine selected templates visually inspected. Main castle PNG
 conversion completed successfully; no conversion sessions remain running.
