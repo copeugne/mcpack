@@ -6,6 +6,297 @@
 
 ### Continuation update - 2026-09-07
 
+#### Active WDA assessments finished after e5cc3aff
+
+Six geometry attributes finish Foundry, Mining Complex and Scorched Mines from
+three full starts in the declared seed42 run. Correlated save, clean exit0,
+accepted frozen configuration. Incidental non-full Foundry start retained but
+excluded. Archive305 files/8,091,263 bytes published under
+item-8-wda-final-geometry-2026-09-07-r1 at sourcee5cc3aff. Local/download
+restores verified every file and reproduced accepted geometry. No runtime.
+Exact results/commands/limitations: evidence/item-8/sources/wda-provider-scope/README.md.
+Eight focused tests pass. Registry311/409, nonregistry40/40, total351/449
+assessed,98 remaining. WDA39/39 active assessed; Mining System remains inactive.
+Retire WDA assessments absent a concrete contradiction. Quantify next remaining
+provider batch before investigation and reuse established source evidence.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ae856777231466eb5c3946f7cbb55d3e1672384313ccff7ad8b4bafbe89e1f69.
+
+#### Final three WDA geometry targets after 763608a5
+
+Six geometry attributes remain for Foundry, Mining Complex and Scorched Mines.
+Existing sources show exterior branching connections, with no retained starts.
+Declared one existing gap-run capture: seed42, three targets/243 requested
+chunks, timeout900. Exact rationale and command:
+evidence/item-8/sources/wda-provider-scope/README.md, Final three WDA geometry
+targets. Preserve Foundry missing pool. No new tooling. Next run fresh capture,
+verify lifecycle/config/full starts, derive bounds, archive and restore before
+integration. Counts remain348/449 assessed,101 remaining; WDA36/39.
+
+#### Shiraz geometry and spawner correction after 18bc7712
+
+Two source geometry attributes finish Shiraz Palace, nominal144x96x144 from
+27 rigid connected sections. Fourteen reachable spawner alternatives fit inside.
+Corrected prior15-alternative prose: husk_elite0 exists but is unreferenced by
+reachable pools; existing source_templates list already excluded it. Retained
+its explicit disposition. No analogous unselected spawner found in the other
+three active WDA batch families. Exact derivation and correction are in
+evidence/item-8/sources/wda-provider-scope/README.md. Eight focused tests pass;
+no runtime/tool added. Registry308/409, nonregistry40/40, total348/449 assessed,
+101 remaining; WDA36/39. Six geometry attributes remain for Foundry, Mining
+Complex and Scorched Mines. Next inspect connected source extensions before
+adding any justified existing capture. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+63188e053bbfbbbf2dabb90b8c119b6a463ed1f75aa0dbcf4c61937c37c68a10.
+
+#### Final four WDA content assessments after be9994d2
+
+Thirty-two attributes integrate Foundry, Mining Complex, Scorched Mines and
+Shiraz Palace across166 selected templates. Preserve Foundry missing corridor
+pool, Mining Complex processor-added pot loot and fixed wind charges, Scorched
+fixed potion, and source mob/passenger distinctions. Source derivation:
+evidence/item-8/sources/wda-provider-scope/README.md, Foundry, Mining Complex,
+Scorched Mines and Shiraz content. Eight focused tests pass; no runtime/tool.
+Eight geometry attributes remain for these four, so total stays347/449 assessed,
+102 remaining, WDA35/39. No retained starts exist. Next inspect Shiraz connected
+sections, Scorched hub/extensions, Mining Complex main/extensions and Foundry
+branching source before adding any justified existing capture. Geometry facts
+must enter authoritative attributes, not only this checkpoint.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+5511015a4e6cfdcd65458201c255a1cd35b6a6219cf363acb790f31b49d7e41d.
+
+#### Mining System inactive disposition after 2313cbbb
+
+Mining System has an explicitly empty effective biome tag, no unresolved tags
+or missing required entries, and no compatible captured dimension. Recorded as
+registered but inactive, retaining its root/eight templates. Existing denominator
+450 included that unresolved candidate: corrected active total449, assessed347,
+remaining102. Registry307/409 assessed; nonregistry40/40. Root coverage remains
+887 assigned once;426 registry groups now409 active,16 inactive,one excluded.
+WDA35/39 assessed. This is an eligibility correction, not a completed assessment.
+Exact derivation: evidence/item-8/sources/wda-provider-scope/README.md,
+Mining System inactive disposition. Eight focused tests pass; no runtime/tool.
+Next batch is four active WDA families/40 attributes/166 templates: Foundry45,
+Mining Complex59, Scorched Mines21, Shiraz Palace41. Foundry references missing
+pool underworld/foundry/foundry_corridor_gears. No retained starts exist for
+these four. Inspect and integrate existing evidence before extending measurement.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ae2797bde057fcc6a7065c6a1d91383c7099fa37c1ec044ff259dde0c6bfc9e3.
+
+#### Five branching WDA geometries delivered after edd25249
+
+Ten geometry attributes finish Bandit Towers, Bandit Village, Greenwood Pub,
+Mechanical Nest and Thornborn Towers using five full starts from the declared
+seed42 capture. All targets completed with correlated save, clean exit0 and
+accepted frozen configuration. Archive357 files/12,164,719 bytes is published
+under item-8-wda-branching-geometry-2026-09-07-r1 at sourceedd25249. Local
+and published-download restores verified every file and reproduced geometry.
+No runtime remains. Exact results/commands/limitations:
+evidence/item-8/sources/wda-provider-scope/README.md. Eight focused tests pass.
+Registry307/410, nonregistry40/40, total347/450 assessed,103 remaining;
+WDA35/40. Remaining WDA families: Foundry, Mining Complex, Mining System,
+Scorched Mines, Shiraz Palace. Quantify their next batch before investigating;
+reuse existing evidence first. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+fd9ba05b942813cf6593b59ae63ef52277221b80e927f33ed19cbd2a9bea919f.
+
+#### Five branching WDA geometry targets after 84b0a247
+
+Ten geometry attributes remain for the active five-family batch. Existing
+sources show branching extensions beyond main pieces and no retained starts.
+One existing gap-run capture is declared: seed42, Bandit Towers, Bandit Village,
+Greenwood Pub, Mechanical Nest, Thornborn Towers;81 requested chunks each/405
+total, timeout900. Exact rationale and command are in
+ evidence/item-8/sources/wda-provider-scope/README.md. No new tooling.
+Next run the declared fresh capture, preserve failures/config/lifecycle,
+require full starts, derive saved-piece bounds and verify archive restores
+before integrating geometry. Counts remain342/450 assessed,108 remaining.
+
+#### Five WDA content assessments after 91d9db57
+
+Forty attributes integrate Bandit Towers, Bandit Village, Greenwood Pub,
+Mechanical Nest and Thornborn Towers across285 available templates. Preserve
+missing Village deco3 and Thornborn hanging-bridge terminator, three absent
+Towers desert_city loot tables, saved mobs versus spawners, Nest lightning/
+passenger/charged-creeper/cloud sources and TNT processor, and fixed rewards.
+Derivations: evidence/item-8/sources/wda-provider-scope/README.md, Bandit, Pub,
+Nest and Thornborn content. Eight focused tests pass. No runtime/tool added.
+Ten geometry attributes remain for these five; none is counted assessed yet.
+Total remains342/450 assessed,108 remaining; WDA30/40. Next inspect connected
+source geometry for these five before deciding whether any capture is needed.
+No retained world-bounds starts exist for them. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+aa1e8866430f980bd969dfe4a7065452c9d34c211a39d00585ff2785432f98bc.
+
+#### Plague Asylum geometry delivered after 9a3221a5
+
+The predeclared one-target seed42 run completed with correlated save, clean
+exit0 and accepted frozen configuration. Full-start line1729 has171 pieces,
+envelope196x54x173. Both geometry attributes are integrated; the five-family
+batch is finished. Archive257 files/3,002,188 bytes is published under
+item-8-wda-asylum-geometry-2026-09-07-r1 at source9a3221a5; local and
+published-download restores verified every file. No runtime remains.
+Exact result/commands/limitations: evidence/item-8/sources/wda-provider-scope/README.md.
+Eight focused tests pass. Registry302/410, nonregistry40/40, total342/450
+assessed,108 remaining; WDA30/40. Ten WDA families remain with ten attributes
+each: Bandit Towers, Bandit Village, Foundry, Greenwood Pub, Mechanical Nest,
+Mining Complex, Mining System, Scorched Mines, Shiraz Palace, Thornborn Towers.
+Quantify the next batch before investigating; reuse existing evidence first.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ed51c64a0310c7fcc69f7a45a30d3e7a875fb5b2b43a3b3ee793c8ebfcef65d1.
+
+#### Plague Asylum geometry capture declaration after c766f6d3
+
+One seed42 target/81 requested chunks, timeout900, using the existing gap
+runner. Two geometry attributes require a whole-layout example; existing
+33-template branching source and absent retained start cannot supply it.
+Exact rationale and command: evidence/item-8/sources/wda-provider-scope/README.md,
+Plague Asylum geometry target declaration. No new measurement tooling.
+Counts unchanged341/450 assessed,109 remaining. Next execute the declared
+fresh capture, preserve lifecycle/configuration evidence, derive full-start
+bounds, archive and verify restores, then integrate those two attributes.
+
+#### Infested Temple and Kisegi geometry after 5b7af2e9
+
+Four geometry attributes finish both families: source envelopes101x181x101
+and125x215x125, with compatible interiors contained. Exact connector derivations
+are in evidence/item-8/sources/wda-provider-scope/README.md, Infested Temple
+and Kisegi geometry. Eight focused tests pass; no capture or tooling addition.
+Registry301/410, nonregistry40/40, total341/450 assessed,109 remaining;
+WDA29/40 assessed. Current five-family batch now has only two geometry
+attributes remaining, both Plague Asylum. Inspect existing branching-layout
+sources and retained observations before deciding whether a targeted existing
+capture is necessary. Do not reopen the four completed geometry assessments
+without a concrete contradiction. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+dd9c971677381c326c5a67ff35ac18a04cd740d57318c4e5dd1d46e032a13ad3.
+
+#### Aviary and Fort geometry after 783e2f99
+
+Four geometry attributes finish Aviary and Illager Fort using connected source
+layouts144x96x144 and55x60x47. Interior attachments fit those envelopes; these
+are nominal source dimensions, not retained generated starts. Exact derivations:
+evidence/item-8/sources/wda-provider-scope/README.md, Aviary and Fort geometry.
+Eight focused tests pass. No new runtime, measurement system or tooling.
+Registry299/410, nonregistry40/40, total339/450 assessed,111 remaining;
+WDA27/40 assessed. The current five-family batch has six geometry attributes
+remaining: Infested Temple, Kisegi Sanctuary and Plague Asylum. First inspect
+existing main/interior connectors; add a capture only if existing evidence
+cannot support the required approximation. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+a1ef409a469a9d461b0409b39e3a281a7a56c8a1cd2e3e819b3a3b1f9f1de74e.
+
+#### Five large WDA families attributed after ac2361b6
+
+Forty attributes integrate Aviary, Illager Fort, Infested Temple, Kisegi Sanctuary
+and Plague Asylum: five roots/133 templates. Preserve trial normal/ominous modes,
+weighted reward lists, vault keys, processor pot/archaeology loot and TNT,
+ordinary spawners versus saved entities, and fixed payload pointers. No new
+capture/tool. Ten geometry attributes remain for these five; do not count them
+assessed yet. Next derive Aviary/Fort connected envelopes, Infested/Kisegi
+main/interior extents, then resolve Asylum branching geometry. Derivations:
+sources/wda-provider-scope/README.md. Eight focused tests pass.
+Total remains337/450 assessed,113 remaining; WDA25/40 assessed. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/
+main delivery remain open. Inventory SHA-256:
+d38dcfb6cbbe7f4ba2eb8fe4ebced9630a4d83985b94c6a959a29d89c162831e.
+
+#### Two campsite geometries captured after f9e5fa8d
+
+Predeclared seed42 Merchant/Illager run completed both81-chunk targets with
+correlated save, clean exit and accepted frozen configuration. Full-start
+piece envelopes157x7x120 and99x13x127 resolve the four geometry attributes;
+no family extrema or live population claim. Archive264 files/4,288,483 bytes
+published under item-8-wda-camps-geometry-2026-09-07-r1 at source f9e5fa8d.
+Local and published-download restores verified all files; no runtime remains.
+Derivations, commands and limitations: sources/wda-provider-scope/README.md.
+Registry297/410, nonregistry40/40, total337/450 assessed,113 remaining;
+WDA25/40 assessed. Quantify the next batch before editing. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/
+main delivery remain open. Eight focused tests pass.
+Inventory SHA-256:
+201360490224b28829da9a67a2de47898a0262ed44d10138e4ae046a813799d7.
+
+#### Temple, Bathhouse, Monastery and campsite attribution after 94d13fa8
+
+Forty-six attributes integrate five roots/83 templates. Abandoned Temple and
+Monastery use retained mountainous full-start examples; Bathhouse has a source
+31x31 footprint and36..70 height. Three families assessed. Both campsites have
+eight attributes integrated; their four geometry attributes remain open.
+Next resolve supported whole-camp geometry from existing sources before adding
+measurements. Merchant golem-named template is empty; do not invent an entity.
+Registry295/410, nonregistry40/40, total335/450 assessed,115 remaining;
+WDA23/40 assessed. No new capture/tool. Derivations and commands:
+sources/wda-provider-scope/README.md. Eight focused tests pass.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+3bb272edbb4c9c7213be4a81ce924d2292862b1bc5d5e4c169d92f7b7f1d5b8d.
+
+#### Four mushroom designs and Windmill assessed after 72488ffd
+
+Fifty attributes assess Giant Mushroom, Mushroom House, Mushroom Mines,
+Mushroom Village and Illager Windmill: five roots/57 templates. Preserve fixed
+connected envelopes versus variable village/terrain-field extents, saved mobs
+versus spawners, Village processor location predicates and fixed lectern book.
+Two House loot-table references are absent from the selected WDA catalog;
+retain exact IDs and unresolved reward disposition. No new capture/tool.
+Registry292/410, nonregistry40/40, total332/450 assessed,118 remaining.
+WDA20/40 assessed. Derivations: sources/wda-provider-scope/README.md.
+Eight focused tests pass. Quantify the next batch before editing. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+a5e17f2b481b5091b7d1add14652242bcac38356c8a9624d7dd584dd119f6c19.
+
+#### Heavenly fleet, Coliseum and Keep assessed after eceedf65
+
+Fifty attributes assess Heavenly Challenger, Conqueror, Rider, Coliseum and
+Keep Kayra: five roots/49 templates. Connected source envelopes distinguish
+fixed altitude from surface projection; Heavenly biome compatibility includes
+Overworld and End. Coliseum entity-drop table and Keep fixed potion contents
+are distinct from ordinary chest loot. No new capture/tool. Registry287/410,
+nonregistry40/40, total327/450 assessed,123 remaining. WDA15/40 assessed.
+Exact derivations and commands: sources/wda-provider-scope/README.md.
+Eight focused tests pass. Quantify the next batch before editing. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+97446b913ab5d36ba54899805ffd963ee66b2e4a733f0462fb63a751f06ee73a.
+
+#### Five WDA landmarks assessed after 1bb2f0cf
+
+Fifty attributes assess Fishing Hut, Jungle Tree House, Lighthouse, Small Blimp
+and Wishing Well, five roots/20 selected templates. Source connected envelopes
+are distinguished from absent retained starts. Blimp begins with its ladder;
+well effect clouds and Jungle saved mobs are not spawner blocks. Preserve
+legacy effect and passenger limitations. Eight focused tests pass; no new
+capture/tool. Registry282/410, nonregistry40/40, total322/450 assessed,
+128 remaining. WDA10/40 assessed. Exact derivations and reproduction commands:
+sources/wda-provider-scope/README.md. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+4f0cde2359d75f890e8ef1be793eb6f522b374e3e59c98e694f1b64cc2179c7c.
+
+#### Five WDA ship designs assessed after cde57670
+
+Fifty attributes assess Hind, Corsair, Galley, Typhon and Undead Pirate Ship,
+five roots/22 templates. Source connected envelopes and repeated Galley full
+starts are distinguished. Preserve nested Undead spawner passengers and legacy
+mob gear; source populations are not live counts. Eight focused tests pass.
+No capture/tool addition. Registry277/410, nonregistry40/40, total317/450
+assessed,133 remaining. WDA5/40 assessed. Derivation and exact sources:
+sources/wda-provider-scope/README.md. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ad560639057b709679115139b5b65772a8565bfc5aa86244efe3ac299060fd9d.
+
 #### Galleon encounter and reward assessment after e50b4b68
 
 Six attributes finish Galleon using existing template, feature, Moonlight,
