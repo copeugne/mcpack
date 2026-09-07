@@ -1,7 +1,58 @@
 # Item 8 evidence
 
 Status: IN PROGRESS. Family assessments and provider discovery are resolved;
-final acceptance, report reconciliation and reviewed main delivery remain open.
+local acceptance is verified; preservation/history preparation and reviewed main delivery remain open.
+
+## Final local acceptance, 2026-09-07
+
+Local Item8 requirements are verified; overall completion remains IN PROGRESS
+until authorized preservation/history preparation, clean PR review and main merge.
+Inventory SHA-256 d0809df67f7d157e53e513a1e0dbe12e8ae35e0c15a2ed545f99e594a19c8db7.
+A fresh build at evidence/raw/item8/final-acceptance-r1/inventory-rebuilt.json
+compares byte for byte with inventory.json. All448 active rows contain the eleven
+required assessments, with no empty or top-level UNKNOWN required value. Nested
+raw unknowns/limitations remain preserved rather than silently resolved.
+
+| Item8 requirement | Current proof |
+| --- | --- |
+| WDA and Seven Seas |39 dungeons_arise families and5 Seven Seas families; inactive registered roots retained separately. |
+| YUNG structures |26 active families across the retained YUNG namespaces, including Bridges, Extras and End Island; source decisions distinguish components and inactive content. |
+| IDAS |62 active families, with absent-mod roots and packaged defects retained separately. |
+| Integrated Stronghold and Villages |One canonical family each; source grouping and suppression/variant evidence retained. |
+| Moog families |136 across mes,mns,mss,mvs; designs, variants and components explicitly reconciled. |
+| Explorify and Explorations |14 and11 active families, including nonregistry Scarecrow. |
+| Repurposed Structures |17 active canonical families, preserving dimension/material/design variants. |
+| AdoraBuild |49 active families, with material/size alternatives grouped by documented design evidence. |
+| CTOV and Towns & Towers |2 and8 active families; root variants preserved rather than counted as families. |
+| Better Village and Village Taverns |Verified replacements/injected components of consuming village/Castle families; not extra standalone families. |
+| Eleven attributes per family |Dimension,biomes,footprint,height,hostility,mob source,loot source,spawners,authored/natural enemies,discoverability and surface/underground descriptions in every active inventory row. |
+| Complete retained scope |136/136 provider dispositions,887 roots assigned once,448 active families and18 other registry groups; nonregistry contribution relationships preserved. |
+| Reproducibility and limitations |Pinned builder inputs, family/contribution evidence references, committed extraction/decoding logic, raw-custody manifests and restore receipts; nominal and generated geometry and known defects remain distinct. |
+
+The full495-test Item8 run produced494 passes and one stale dimension-test failure
+in129.77s, preserved in final-acceptance-pytest-r1.txt. That test assumed the final
+listing still exposed only raw registry-join shapes. It now tests the raw overlap
+join before descriptive overrides; the new consolidation test independently
+covers final listing preservation and root coverage. Both tests in the corrected
+dimension module pass (0.32s), recorded in final-acceptance-dimension-corrected.txt.
+No implementation or accepted evidence changed for this correction. Per AGENTS,
+only affected checks were rerun rather than repeating the unchanged full suite.
+Changed builder and both affected test files pass Ruff and basedpyright.
+
+```sh
+uv run pytest -q tests/item8
+uv run pytest -q tests/item8/test_dimension_capture.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/final-acceptance-r1/inventory-rebuilt.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/final-acceptance-r1/inventory-rebuilt.json
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py tests/item8/test_dimension_capture.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py tests/item8/test_dimension_capture.py
+```
+
+Use fresh output paths. The source evidence preserves missing pools/loot IDs,
+absent optional entities, suppressed/ineligible roots, failed captures and placement
+limits. This gate inventories the frozen baseline; it does not fix baseline mods,
+measure pacing/reward yields, validate working machinery, or authorize Item9.
+Review and verified main delivery remain mandatory.
 
 ## Canonical listing integration, 2026-09-07
 

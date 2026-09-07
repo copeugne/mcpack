@@ -1,7 +1,7 @@
 # Item 8: Baseline Structure-Family Inventory
 
 **Current status:** `IN PROGRESS`. Family inventory integration is delivered;
-final acceptance and reviewed main delivery are not complete.
+local acceptance is verified; preservation/history preparation and reviewed main delivery remain open.
 
 The exact136 retained candidates have been inventoried through runtime registries,
 packaged data, frozen configuration, generation code/logs and preserved world
@@ -23,9 +23,13 @@ spawning and unresolved baseline defects. Source attribution is not measured ene
 population, loot yield, sightline distance, exploration pacing or working machinery.
 These additional measurements are not an Item8 repair backlog.
 
-The integration passes88 focused tests and changed-code lint/type checks. This is
-not the final acceptance gate. Remaining before the PR: final requirement/evidence
-reconciliation and applicable gate, then authorized preservation/backup preparation.
+The local requirement/evidence gate is verified. The495-test Item8 run passed494
+tests and exposed one stale dimension-test assumption; the corrected two-test
+module passes, with changed-code lint/type checks clean. The complete inventory
+rebuild matches byte for byte. The [acceptance record](../../evidence/item-8/README.md)
+preserves the initial failure, correction, commands and requirement-level proof.
+
+Remaining before the PR: authorized preservation and history preparation.
 Completion additionally requires a clean Codex review loop, merge and verified main
 ref. Item9 remains dependency-blocked. Item7's explicit review exception is preserved
 in the execution ledger and does not apply to Item8.

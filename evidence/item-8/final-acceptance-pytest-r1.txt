@@ -1,0 +1,34 @@
+........................................................................ [ 14%]
+..........................F............................................. [ 29%]
+........................................................................ [ 43%]
+........................................................................ [ 58%]
+........................................................................ [ 72%]
+........................................................................ [ 87%]
+...............................................................          [100%]
+=================================== FAILURES ===================================
+____________ test_inventory_dimension_join_covers_every_frozen_root ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-lonestar/pytest-6/test_inventory_dimension_join_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f4d4995ad70>
+
+    def test_inventory_dimension_join_covers_every_frozen_root(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        output = tmp_path / "inventory.json"
+        monkeypatch.setattr("sys.argv", ["build_item8_inventory", "--output", str(output)])
+        build_inventory()
+        inventory = cast("dict[str, JsonValue]", json.loads(output.read_bytes()))
+        families = cast("dict[str, dict[str, JsonValue]]", inventory["families"])
+        memberships: dict[str, JsonValue] = {}
+        for family in families.values():
+            dimension = cast("dict[str, JsonValue]", family["dimension"])
+>           by_root = cast("dict[str, JsonValue]", dimension["biome_compatible_by_structure"])
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'biome_compatible_by_structure'
+
+tests/item8/test_dimension_capture.py:97: KeyError
+----------------------------- Captured stdout call -----------------------------
+Working inventory written; completion remains unproven
+=========================== short test summary info ============================
+FAILED tests/item8/test_dimension_capture.py::test_inventory_dimension_join_covers_every_frozen_root
+1 failed, 494 passed in 129.77s (0:02:09)
