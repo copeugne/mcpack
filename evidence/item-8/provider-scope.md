@@ -10139,3 +10139,26 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-nexus-r2.js
 ```
 
 Use fresh output files. Raw spawner NBT is not effective processed spawn behavior.
+
+
+### Pillager fortress inventory refresh
+
+Decision 3c63c375 resolves eight fortress components using existing contents and
+connectors. Focused IDAS and scoped Ruff/Basedpyright checks pass. Canonical
+backlog: 15, all IDAS. Two fresh builds agree exactly, SHA-256
+3f45d4047b8366c25bcfff39a10565c7c1abc6bc7b6370e6a9cde351c01775ad.
+Only the fortress grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Castle alternatives, attributes, nonregistry and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-fortress-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-fortress-r2.json
+cmp evidence/raw/item8/inventory-idas-fortress-r1.json evidence/raw/item8/inventory-idas-fortress-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-fortress-r2.json
+```
+
+Use fresh output files. Source reachability is not effective assembly proof.
