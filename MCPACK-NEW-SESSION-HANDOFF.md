@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ancient portal assessed after 6390e6d2
+
+Seven entries integrated for two variants/four components. Overworld generic
+processor selects zombie15,skeleton10,wraith5; Nether ticking-only path retains
+raw wraith/soul-vulture declarations. Absent AlexsMobs limits soul-vulture viability.
+Two defined dimension-specific loot tables and natural overrides remain separate.
+No portal operation claim. Sampled geometry reused; no runtime/tool added.
+All85 focused checks pass (66.63s); only ancient_portal/input identity changed.
+Total421/448 assessed;27 IDAS families/237 entries remain. Three accepted-size
+families need7 content entries each: apothecary_abode,pillager_fortress,
+ruins_of_the_deep.24 connected assemblies need9 each. Quantify next batch before
+investigation and reuse prior source findings and processor inspections.
+Details: evidence/item-8/sources/idas-ancient-portal-assessment/README.md.
+Inventory SHA-256: 87bce6feaa3afdf675733c269694289e9238878cfc5a44acb29b0e684575c8c3.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS Bearclaw Inn assessed after 452be573
 
 Seven entries integrated for lodge/path/stables. Villagers and stable animals
