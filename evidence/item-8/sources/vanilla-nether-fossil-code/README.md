@@ -68,3 +68,17 @@ The inventory was rebuilt at delivered source revision `9e13390` with the comman
 above. Inventory SHA-256:
 `d2be7cc46dd728e03729370881c10747960302a91770644fc98a8bbcc87bb573`.
 Source inspection is delivered in `fab790e`. Item 8 remains incomplete.
+
+
+## Remaining descriptive assessment
+
+Ambient bone formation without authored mobs, spawners or container loot in the inspected templates/generator. Natural biome enemies remain possible.
+
+Bone-block skeletal fragments above a supporting surface provide a visual cue. Frozen-stack occurrences include Overworld dryland as well as Nether soul-sand valley; exposure and sightline distance are not measured.
+
+These two required descriptions reuse the content and placement evidence already
+integrated above. Dimension attribution now also records the existing inventory
+builder join of effective structure biomes with captured dimension membership,
+keeping observed dimensions separate from eligibility. No new tool, capture,
+population count or sightline measurement is introduced. Earlier statements that
+these descriptive attributes remain open are superseded by this integration.
