@@ -7,6 +7,70 @@
 ### Continuation update - 2026-09-07
 
 
+#### Desert Temple geometry finished after 0548abd2
+
+Declared seed42 capture passed readiness, correlated flush, clean exit0 and
+frozen configuration acceptance. Full start chunk-46,-289,line513 has479 pieces,
+83x70x83 saved envelope. YellowStainedGlassProcessor support columns remain
+separate. Archive249 files/2,905,942 bytes published at source0548abd2; local and
+downloaded restores verified every file and downloaded line513 reproduced bounds.
+Console invalid minecraft:air item load is preserved with scoped disposition,
+not an invented root cause or a claim all rewards loaded. No Java process remains.
+Exact commands/hashes/limitations: evidence/item-8/sources/desert-temple-provider/
+README.md, Desert geometry result and custody. All85 focused tests pass (59.50s).
+Two sizes finish Desert Temple. Registry322/408,nonregistry40/40,total362/448
+assessed,86 remaining. Next quantify Stronghold, the last YUNG family, before
+inspection. Final integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+e422ce7b268a969bd71cd4919596d1a326d894ad33d96137aadf4aa4f921da1f.
+
+
+
+#### Desert content and geometry declaration after 48bbfd4b
+
+Four content attributes integrated; Desert Temple now has eight of ten.
+Matching creeper/slime/Pharaoh connectors, natural husk/cat/rabbit lists, frozen
+mining-fatigue state predicates, eleven direct chest tables, processor-added
+archaeology, pot/frame/armor-stand transformations and fixed puzzle/trap content
+are attributed. Seven further exact class members are pinned; reuse prior
+spawner evidence. Exact derivations: evidence/item-8/sources/desert-temple-provider/
+README.md, Pharaoh and reward attribution. Two sizes remain: no retained full
+start and11x23x11 center with six external main-pool connections. One seed42
+capture,81 requested chunks,timeout900 is declared in the same README.
+Next execute that exact existing workflow, then preserve/restore and integrate
+full-start bounds with support extensions separate. No new tooling was added.
+All85 focused tests pass (58.36s). Only this family and input identity changed;
+existing geometry/spawner/dimension data and observations stay unchanged.
+Counts remain361/448 assessed,87 remaining. Final integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+f35f99de22624f993ddf2255ff097d1bbb365bf1a508e058d858d709e7c10a1e.
+
+
+
+#### Desert spawners and placement after bdcc3c31
+
+Quantified one family,ten attributes,197 traced templates,no missing components.
+Four attributes integrated: dimension, effective spawners, visual discoverability
+and placement classification. Four exact processor members convert gravel/bone/
+infested-cracked-brick/yellow-wool markers into husk/skeleton/silverfish spawners;
+no literal template spawners is not absence of generated spawners. Component
+counts and legacy equipment encoding remain source-scoped. Exact derivation and
+member hashes: family-decisions.json processor_inspection and evidence/item-8/
+sources/desert-temple-provider/README.md, Effective spawners and placement.
+Six required attributes remain: four content assessments (Pharaoh, mob/enemy
+attribution and rewards) plus two assembly sizes. Next inspect Pharaoh, frame,
+armor-stand, pot and archaeology paths using existing provider state/mixin facts;
+then inspect layout before any smallest justified geometry capture. No runtime
+or new tooling was added. All85 focused tests pass (58.38s). Only this family and
+input identity changed; geometry, membership and observations stay unchanged.
+Counts remain361/448 assessed,87 remaining. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main remain open.
+Inventory SHA-256:
+deb862ce161395da3e0d678fef78e6811b2320260fa4620f7795395a7168554a.
+
+
+
 #### Better Fortress assessed after 7fcbb310
 
 Ten attributes integrated from149 available traced templates, existing processor
