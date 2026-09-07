@@ -10648,3 +10648,36 @@ candidates with 2,145 literal gaps, forty nonregistry assignments needing
 integration, seventeen filled registry records needing acceptance assessment.
 Fourteen families have current-phase assessments. No new measurement/tooling.
 Final Item 8 acceptance, review and main delivery remain open.
+
+
+### Winter wagon and washing camp attribute increment
+
+Predeclared two-family, eleven-field batch. Decision 7928ff01 adds ten source
+interpretations each with unchanged biome constraints. Nominal XYZ sizes are
+37 by 20 by 26 and 12 by 4 by 11. Wagon trader/golem/furnishing references retain
+one unidentified entity. Washing camp has no entities or loot-table references;
+its toolbox is not assumed empty. Neither contains physical spawners. Both use
+waterlogging_fix_processor. No world occurrence or working machinery is claimed.
+Frozen toggles enable both. Wagon overlaps 13 of 15 biomes in the captured
+Overworld only; washing camp overlaps 27 of 29. Absent biomes remain explicit.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+4933bdd06985e263b401e647db941fd24c39396ffc8fad513d4b044a95f301da.
+Only these two families and decision input identity change. Membership, biomes,
+observations, pool trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wagon-washing-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+cmp evidence/raw/item8/inventory-wagon-washing-attributes-r1.json evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-wagon-washing-attributes-r2.json
+```
+
+Twelve literal gaps resolved. Remaining: 391 registry candidates with 2,133
+literal gaps, forty nonregistry assignments needing integration, nineteen filled
+registry records needing acceptance assessment. Sixteen families have current-phase
+assessments. No new measurement/tooling. Final acceptance and delivery remain open.

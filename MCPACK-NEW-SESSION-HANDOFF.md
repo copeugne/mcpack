@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Wagon/washing camp inventory matches 7928ff01 and reproduces exactly. Sixteen
+families have current-phase assessments. Remaining: 391 registry candidates with
+2,133 literal gaps, forty nonregistry assignments needing integration, nineteen
+filled records needing acceptance assessment. No new measurement/tooling.
+Quantify the next batch before edits; Item 8 remains open.
+
 Jungle/plains statue inventory matches 44660271 and reproduces exactly. Fourteen
 families have current-phase assessments. Remaining: 393 registry candidates with
 2,145 literal gaps, forty nonregistry assignments needing integration, seventeen
