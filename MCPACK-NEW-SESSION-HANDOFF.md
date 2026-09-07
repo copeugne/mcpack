@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Cafe/store fields integrated at 95ac9e0f; derived inventory matches the fresh build.
+User correction via side audit: stop repetitive two-family process cycles. Most
+remaining rows already have substantial evidence in their rationales/catalogs.
+Use larger coherent field-integration batches, retain real limits, investigate
+only specifically unsupported mandatory claims, and separate those from existing
+facts awaiting integration and final validation/delivery. Do not present UNKNOWN
+row counts as research backlog. No new tracker, schema or measurement system.
+
 Wagon/washing camp inventory matches 7928ff01 and reproduces exactly. Sixteen
 families have current-phase assessments. Remaining: 391 registry candidates with
 2,133 literal gaps, forty nonregistry assignments needing integration, nineteen
