@@ -935,3 +935,55 @@ Ten shared affected tests pass. Only these six rows and decisions hash change;
 biomes, world observations and nonregistry content are preserved. Rebuild with
 `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Inventory SHA: 288eeb652708ff0c39fbf581e96e1f387e40aeec57fcc5cf365c3a0108776eb8.
+
+## Mega Ship: eight finite variants
+
+Ten attributes finish the remaining End family after d8dc726b. Direct inspected
+connector alignment establishes finite nominal layouts without a new capture.
+Each selected pool contains one weight-1 rigid element with empty processors.
+Deepslate 2 middle is versioned and selects its 1.21-1.21.8 resource; other
+elements are ordinary single. No repeating middle chain occurs.
+
+Every initial is 48x48x48. Its south [24,0,47] matches middle north [24,0,0],
+placing the 48x48x48 middle at [0,0,48]. Middle south [25,6,47] matches end north
+[17,0,0], giving end origin [8,6,96], except Crashed Deepslate's end connector
+[18,0,0] gives [7,6,96]. Ends are 35x20x23. Other derived origins, relative to
+initial and without rotation, are integrated with their individual XYZ sizes:
+
+| Variant suffix | Additional component origins | Nominal XYZ |
+| --- | --- | --- |
+| base/basic | side [48,34,53] | 51x48x119 |
+| crashed/crashed_2 | side [-6,21,53] | 54x48x119 |
+| crashed_deepslate | side [48,20,52] | 61x48x119 |
+| deepslate | side [48,32,53]; top [0,48,76] | 56x52x119 |
+| deepslate_2 | side [48,30,44]; side_2 [48,9,86]; side_3 [48,19,3]; side_4 [-11,27,76]; top [0,48,46] | 75x69x119 |
+| deepslate_3 | side [48,25,43]; side_2 [48,14,5]; side_3 [-2,48,89]; top [0,48,51] | 67x73x119 |
+
+For each attachment, child origin is parent origin + parent connector + unit
+facing vector - matching child connector. Matching orientations are opposing
+without rotation. Union minima and maxima over these boxes give inclusive sizes.
+These are fully attached nominal source envelopes including air/padding, not
+proof all attachments survive collision/placement checks or observed exposure.
+
+Variant-owned entities, spawners and loot are integrated. Base has no saved hostile
+mob or physical spawner and no LootTable references, but has an elytra frame,
+three healing splash potions and a natural shulker override. Basic/airborne
+deepslate variants save strays; their frames/potions and loot differ. Three wrecks
+carry enderman spawners. Crashed Deepslate middle /block_entities/3 omits SpawnData
+and has an empty SpawnPotentials entity: retain its unidentified effective mob
+without inventing a default or opening an experiment. SAVE-mode empty-metadata
+structure blocks are authoring records. Dispensers have no Items; inspected
+container payloads add potions rather than hidden mobs.
+
+All eight roots are End-biome-compatible. Their five airborne and three wreck
+forms preserve full distinct height/terrain and piece-box spawn overrides.
+Natural shulkers/endermen are conditional sources, not saved population counts.
+Frame enchantments and exact loot-table owners remain distinct; names containing
+empty do not imply empty rolls. No rolled reward, functional vehicle, sight
+distance, salvage production or live population is asserted.
+
+Ten shared provider/inventory tests pass. Only this family and the decisions
+identity change; biomes, world observations and nonregistry content are preserved.
+Rebuild using `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 02e0f36208a2c49c7e2054967dcee254383ab403c55756aee5e6d02ca187b891.
+End Structures is 18/18 assessed; retire its assessment absent contradictory evidence.
