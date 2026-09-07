@@ -1066,3 +1066,64 @@ change; biome constraints, existing world observations and nonregistry content
 are preserved. Rebuild with
 `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Inventory SHA: f335ad6b03e80b4a430d8d2f362c0cf49d8df8366e57676efffae71cfceb2248.
+
+## Five bounded Soaring assemblies
+
+After 9de946ed, fifty attributes assess Castle Tower, Mangrove, Taiga, Red Sand
+and Desert Pyramid. Direct references are the selected `mss:<name>` entries in
+pool-traces-content.json.gz, the corresponding
+`data/mss/structure/<name>.nbt` resources in templates-redacted.json.gz, and
+`data/mss/worldgen/structure/<family>.json` plus each traced template_pool
+resource in packaged-json-redacted.json.gz. These artifacts and the generator
+identity are hash-bound in each family decision. All eleven selected templates
+belong to MoogsSoaringStructures-1.21-2.1.2.jar.
+
+Each pool has one rigid weight-1 element, empty processors and empty fallback.
+Castle Tower, Taiga and Desert Pyramid main elements select their original paths
+through the 1.21-1.21.8 version mapping, not the 1_21_9 fallback. Other selected
+elements are ordinary single elements. With the main origin at (0,0,0), align
+opposing jigsaws one block apart. Their aligned orientations require no relative
+rotation. Union the translated template boxes, including air and padding:
+
+| Family | Main XYZ | Main outgoing connector | Child incoming connector | Child origin and XYZ | Union XYZ |
+| --- | --- | --- | --- | --- | --- |
+| Castle Tower | 29x48x31 | (8,47,10) up_west | top (8,0,10) down_west | (0,48,0), 29x15x31 | 29x63x31 |
+| Mangrove | 32x48x40 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 32x20x40 | 32x68x40 |
+| Taiga | 45x48x42 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 45x10x42 | 45x58x42 |
+| Red Sand | 48x35x48 | (3,18,47) south_up | side (3,18,0) north_up | (0,0,48), 48x35x15 | 48x35x63 |
+| Desert Pyramid | 48x48x48 | (1,47,0) up_east | top (1,0,0) down_east | (0,48,0), 48x15x48 | 48x63x53 with side |
+
+Pyramid top also connects (14,0,47) south_up to side (0,7,0) north_up.
+The side origin is (14,41,48), size 17x8x5. Its Z interval 48..52 does not
+overlap the main/top boxes. These are finite nominal full assemblies; attachment
+checks can omit pieces, and whole-structure rotation can exchange X/Z. Existing
+world observations remain separately linked. No capture is needed for these
+approximate source dimensions.
+
+Source spawners: Castle top /block_entities/5 skeleton; Mangrove main /0, /1,
+/10 witch; Taiga main /0 cave_spider, /3 and /11 zombie_villager, /8 through /10
+zombie. Red Sand main /2 phantom, /4, /13, /16 husk, /3 and /5 empty entity
+objects; its side /1 also has an empty entity object. Those three effective mobs
+remain UNKNOWN as a source limitation, not a new experiment backlog. Pyramid
+main has five zombie and five husk assignments; top /5 adds one husk. Exact
+paths and template ownership are retained in the authoritative attributes.
+
+All entity lists are empty. Mangrove, Taiga and Pyramid top /block_entities/0
+are SAVE-mode structure blocks with empty metadata, not enemy markers.
+Selected decorated pots contain brick sherds without item or table payload.
+Taiga main /block_entities/12 has four legacy single beef Items in campfire
+slots 0..3; this is neither a mob source nor guaranteed production. Loot-table
+references remain per component. Castle's mss:empty is the already-inspected
+0..2-roll cobweb/string table, not no loot.
+
+All five biome sets intersect only Overworld runtime possible biomes. Generic
+WORLD_SURFACE_WG projection adds +45..150, with adaptation none and explicit
+liquid check false. Qualitative island visibility follows preserved source views
+and placement, not measured sight distance or guaranteed exposure. No new
+measurement or tooling was added.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared validation: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Ten tests pass. Only five family rows and the decisions identity changed;
+biome constraints, observations and nonregistry content are preserved.
+Inventory SHA: 235a2af533da92a5da864f669317022135616e50516ad246338f745caac00e18.

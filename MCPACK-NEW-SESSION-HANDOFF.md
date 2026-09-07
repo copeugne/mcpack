@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five bounded Soaring assemblies assessed after 9de946ed
+
+Fifty attributes finish Castle Tower, Mangrove, Taiga, Red Sand and Desert
+Pyramid from eleven templates. Connector-derived nominal geometry, component
+mob/loot ownership and elevated placement are integrated. Red Sand's three
+unassigned spawners remain a source limitation, not an experiment backlog.
+Ten shared tests pass; no capture or tooling. Derivations are in the existing
+moog-generator-code README. Inventory SHA:
+235a2af533da92a5da864f669317022135616e50516ad246338f745caac00e18.
+Soaring 18/26; registry 208/410, nonregistry 40/40, total 248/450 assessed,
+202 remaining. Eight mss families remain: arena, diorite_house, jungle,
+large_tower, leaf_hollow, muddy_water_hole, volcano and white_house.
+Continue quantified coherent batches. Final integration, acceptance, verified
+backup/history consolidation and PR review/main delivery remain open.
+
 #### Four Soaring landmarks assessed after 3facdfb9
 
 Forty attributes finish Tree, Pond, River and Small Tower across thirteen roots.
