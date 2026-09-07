@@ -27,7 +27,7 @@ entire archive at startup or resume work merely because it appears there.
 - [PR19](https://github.com/copeugne/mcpack/pull/19), the delivery-status follow-up,
   is also merged. Its head is `ad65a6eb6c2e3f85746bd696296f177be6d2e87d`.
 - Fetched `origin/main` at this checkpoint is
-  `be64d458fee3539e5132049d871d1c32ebc3655b`.
+  `7cbe06c7d8b074fa6121c1143432d28d02996712`.
 - The accepted inventory accounts for 136 providers and 887 runtime roots,
   with 448 assessed active canonical families and 18 separately dispositioned
   inactive/excluded registry groups. These are different populations.
@@ -47,34 +47,31 @@ entire archive at startup or resume work merely because it appears there.
 - [Preservation](evidence/item-8/preservation.md): backups, restore verification
   and history consolidation. Preserve those artifacts and recovery references.
 
-## Item 9 current work and next action
+## Item 9 completion and next dependency
 
-The user authorized Item 9 end to end. Branch `codex/item9-classification`
-contains all 448 provisional classifications and passes its focused local gate.
+Item 9 is COMPLETE. [PR20](https://github.com/copeugne/mcpack/pull/20) merged
+reviewed head `5073af269d6e253edb0d314346d671acf7d294cf` as
+`7cbe06c7d8b074fa6121c1143432d28d02996712`, verified in fetched main.
+The final Codex cycle completed with a thumbs-up and no new findings.
 [Matrix](evidence/item-9/classification.md),
-[rubric and evidence](evidence/item-9/README.md), and
+[evidence and review dispositions](evidence/item-9/README.md), and
 [current report](docs/items/Item-9-Provisional-Structure-Classification.md)
-are authoritative. [PR20](https://github.com/copeugne/mcpack/pull/20) is open.
-The first review's archive/workspace findings are fixed. The second review at
-`d96f6035` requested an executable entry point for the existing gate. Its exact
-logic now lives in `evidence/item-9/check.sh`; the direct invocation passes with
-unchanged results. Review dispositions are in the evidence README. This is only
-a relocation of existing logic, not a new validation surface or framework.
-Push these fixes, request fresh `@codex review`, inspect completed reviews and
-all comments, and repeat until clean. Merge only after the clean final cycle,
-then verify main delivery and reconcile completion status. Item 9 remains
-IN PROGRESS until those gates pass.
+record all 448 classifications and the passing local gate. No classification,
+measurement, Item 8 preservation or PR20 review work remains.
 
-No Item 8 family assessment, measurement, preservation or PR18/PR19 delivery
-work remains. Its accepted inventory and raw evidence were reused unchanged.
-The old 21-family Item 9 report is superseded. No Item 10 work was performed.
-After Item 9, Item 10 remains the next dependency, outside this task's scope.
-The cross-item audit and human-observation restrictions for Item 11 remain
-in AGENTS.md and SPECS.md.
+The delivery-status follow-up is on `codex/item9-delivery-record`; it only
+reconciles status and records verified references. The accepted classification
+values, checker and Item 8 inputs remain unchanged.
+
+Item 10 is the next dependency, outside the completed Item 9 task. No Item 10
+work was performed. The old 21-family Item 9 report is superseded. The cross-item
+audit and human-observation restrictions for Item 11 remain in AGENTS.md and
+SPECS.md. Do not resume historical archive commands as current instructions.
 
 ## Local workspace to preserve
 
-The delivery branch is `codex/item9-classification`, tracking its origin branch.
+The delivery-status branch is `codex/item9-delivery-record`. Verify its upstream
+and actual delivered state before continuing.
 Inspect actual staged, unstaged and untracked state before mutation. A clean
 checkout does not reproduce another workstation's uncommitted edits, deletions
 or private backups; do not invent or recreate those changes from this handoff.

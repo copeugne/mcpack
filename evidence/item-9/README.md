@@ -1,6 +1,24 @@
 # Item 9 classification evidence
 
-Status: IN PROGRESS. Decision version: item9-provisional-v1.
+Status: COMPLETE. Decision version: item9-provisional-v1.
+
+## Verified delivery
+
+[PR20](https://github.com/copeugne/mcpack/pull/20) merged reviewed head
+`5073af269d6e253edb0d314346d671acf7d294cf` as
+`7cbe06c7d8b074fa6121c1143432d28d02996712` on 2026-09-07 at 22:29:52 UTC
+(2026-09-08 local date). Fetched `origin/main` contains that exact head;
+`git merge-base --is-ancestor 5073af269d6e253edb0d314346d671acf7d294cf origin/main`
+returned zero. The [clean final review](https://github.com/copeugne/mcpack/pull/20#issuecomment-5576222112)
+identifies this head; the review summary records completion at 22:28:55 UTC,
+and the Codex bot returned a PR thumbs-up. Review records, inline comments and
+discussion comments were inspected. The final cycle added no findings; all
+three earlier valid findings have the dispositions below.
+
+Item 9 is COMPLETE: exact family coverage, required classifications and flags,
+source references and limitations, focused gate, durable evidence, clean review
+and main merge are satisfied. Classification values and accepted Item 8 inputs
+are unchanged by this delivery-status follow-up. Item 10 was not performed.
 
 ## Population and evidence
 
@@ -112,7 +130,7 @@ uncertain until their owning later gates.
 
 At intake, 448 existing assessments awaited role/flag integration. All are now
 integrated; no missing raw evidence prerequisite for provisional classification
-was identified. Validation and reviewed delivery remain separate gates.
+was identified. Validation and reviewed delivery have both passed.
 The work is 448 primary decisions and 3,584 flag dispositions, not that many
 commits or tests. Batches: 49 AdoraBuild; 132 vanilla/YUNG/dimension and other
 providers; 69 WDA/Explorify/Explorations; 62 IDAS; 136 Moog. The first batch tests
@@ -159,8 +177,8 @@ Confidence: H 156, M 287, L 5. Flags: D 130, S 28, O 6; theme comparison coverag
 archetype candidates 88. Counts overlap across flag classes, not within primary
 roles. All classifications and comparisons remain provisional.
 
-The local exit gate is satisfied. Overall Item 9 remains IN PROGRESS until the
-required clean Codex review and merge are verified. No required provisional
+The local exit gate and required clean Codex review/main delivery are satisfied.
+No required provisional
 classification claim remains unsupported; empirical quality, timing, actual
 redundancy and functional behavior remain explicitly outside this gate.
 
@@ -187,7 +205,7 @@ Affected checks: the local archive still compares byte for byte with
 link resolves that same committed history. The active handoff is below 200 lines,
 new Item 9/current-handoff prose contains no prohibited dash characters, and
 `git diff --check` passes. Classification data and its passing gate are unchanged.
-A fresh completed clean review is still required before merge.
+Those findings were superseded by the clean final review recorded above.
 
 [Second completed review](https://github.com/copeugne/mcpack/pull/20#discussion_r3952891421),
 head `d96f60357fa8e51c027ca4900e50ffa52622e7f4`, requested an executable tracked
