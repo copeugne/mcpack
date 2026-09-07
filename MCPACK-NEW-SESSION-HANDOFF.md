@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager Dead Tree assessed after 5f02a697
+
+Ten attributes finish eight Dead Tree roots. Direct pool/template inspection
+corrects the earlier component wording: tree and trunk are independent
+weight-1 alternatives, not attached pieces. Sixteen per-template dimensions
+and three SAVE-mode authoring records are integrated. No new capture or tooling.
+Derivations are in moog-generator-code README. Ten affected tests and builder
+checks pass. Inventory SHA-256:
+3190d2277029a999b8383f5b1525e7ed97fa8d957b32127f2e90bddc6f00ef42.
+
+Retire this assessment. Voyager 44/65; registry 151/410, nonregistry 40/40,
+total 191/450 assessed, 259 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Four Voyager landmark families assessed after d3b54c73
 
 Forty attributes finish Log Pile, Lantern, Stall and End Scraps across 25 roots.

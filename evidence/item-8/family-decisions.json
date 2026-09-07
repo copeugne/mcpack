@@ -13421,7 +13421,7 @@
         "mvs:dead_tree_oak",
         "mvs:dead_tree_spruce"
       ],
-      "rationale": "Eight dead-tree wood and biome variants form one working family. Each root reaches a tree template and a matching trunk template; these are components, not separate families or a guarantee of a fixed assembled height. Preserve each component size and original generation definition. Mangrove omits cannot_spawn_in_liquid while the other seven set it true, so their liquid behavior must not be conflated. Other definition differences are limited to biome references and start pools. None of the sixteen reachable templates has authored entities, loot references or spawners. Acacia, acacia_trunk and birch retain SAVE-mode structure-block markers with empty metadata; their effective processing remains unresolved. The initial draft incorrectly claimed no generation markers, and the source check exposed this before acceptance. Effective placement and natural spawning remain unresolved.",
+      "rationale": "Eight dead-tree wood and biome variants form one family. Each root pool offers a tree and a trunk as two weight-1 ordinary single-element alternatives, not attached components. None has jigsaw connectors. Preserve each alternative size and original generation definition. The earlier component wording was incorrect and is superseded by direct pool inspection. Mangrove omits cannot_spawn_in_liquid while the other seven set it true. None of the sixteen selected alternatives has authored entities, loot references or spawners. Acacia, acacia_trunk and birch retain SAVE-mode structure blocks with empty metadata; these authoring records do not establish mob-generation sources. The earlier no-marker claim remains a rejected interpretation. Source facts do not prove runtime placement, live populations or exposed height.",
       "variants": {
         "mvs:dead_tree_acacia": {
           "definition": {
@@ -13650,7 +13650,345 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "packaged_template_xz_blocks_by_template": {
+            "mvs:dead_tree/acacia": [
+              2,
+              3
+            ],
+            "mvs:dead_tree/acacia_trunk": [
+              2,
+              3
+            ],
+            "mvs:dead_tree/birch": [
+              6,
+              4
+            ],
+            "mvs:dead_tree/birch_trunk": [
+              1,
+              1
+            ],
+            "mvs:dead_tree/cherry": [
+              7,
+              6
+            ],
+            "mvs:dead_tree/cherry_trunk": [
+              1,
+              4
+            ],
+            "mvs:dead_tree/dark_oak": [
+              6,
+              7
+            ],
+            "mvs:dead_tree/dark_oak_trunk": [
+              3,
+              3
+            ],
+            "mvs:dead_tree/jungle": [
+              8,
+              9
+            ],
+            "mvs:dead_tree/jungle_trunk": [
+              3,
+              4
+            ],
+            "mvs:dead_tree/mangrove": [
+              6,
+              6
+            ],
+            "mvs:dead_tree/mangrove_trunk": [
+              3,
+              2
+            ],
+            "mvs:dead_tree/oak": [
+              4,
+              3
+            ],
+            "mvs:dead_tree/oak_trunk": [
+              1,
+              2
+            ],
+            "mvs:dead_tree/spruce": [
+              4,
+              4
+            ],
+            "mvs:dead_tree/spruce_trunk": [
+              1,
+              2
+            ]
+          },
+          "basis": "Each wood-specific start pool offers two weight-1 rigid ordinary single alternatives with empty processors, and neither template has jigsaw connectors. Dimensions describe each independent alternative, not a summed assembly. Declared envelopes include air/padding; rotation can exchange X/Z. Not observed occupied-world bounds or exposed height."
+        },
+        "approximate_vertical_size": {
+          "packaged_template_y_blocks_by_template": {
+            "mvs:dead_tree/acacia": 8,
+            "mvs:dead_tree/acacia_trunk": 8,
+            "mvs:dead_tree/birch": 9,
+            "mvs:dead_tree/birch_trunk": 3,
+            "mvs:dead_tree/cherry": 9,
+            "mvs:dead_tree/cherry_trunk": 3,
+            "mvs:dead_tree/dark_oak": 9,
+            "mvs:dead_tree/dark_oak_trunk": 6,
+            "mvs:dead_tree/jungle": 18,
+            "mvs:dead_tree/jungle_trunk": 7,
+            "mvs:dead_tree/mangrove": 9,
+            "mvs:dead_tree/mangrove_trunk": 4,
+            "mvs:dead_tree/oak": 9,
+            "mvs:dead_tree/oak_trunk": 3,
+            "mvs:dead_tree/spruce": 8,
+            "mvs:dead_tree/spruce_trunk": 4
+          },
+          "basis": "Each wood-specific start pool offers two weight-1 rigid ordinary single alternatives with empty processors, and neither template has jigsaw connectors. Dimensions describe each independent alternative, not a summed assembly. Declared envelopes include air/padding; rotation can exchange X/Z. Not observed occupied-world bounds or exposed height."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved biome constraints intersect only the Overworld runtime possible-biome set. Shared generic-jigsaw liquid/terrain checks further constrain placement, not dimension membership."
+        },
+        "intended_hostility": {
+          "value": "Environmental dead-tree or trunk landmark without authored enemies",
+          "basis": "All sixteen entity lists are empty, with no physical spawners or contained mobs. Three SAVE-mode structure blocks with empty metadata are authoring records, not demonstrated hostile-generation sources. Empty root spawn_overrides leaves conditional natural spawning and terrain hazards."
+        },
+        "mob_source": {
+          "authored_entities": [],
+          "contained_entities": [],
+          "structure_spawn_overrides": {},
+          "basis": "All sixteen saved entity lists are empty. The only block entities are SAVE-mode structure blocks in acacia, acacia_trunk and birch, each with empty metadata. No additional mob source is established; natural biome spawning remains conditional."
+        },
+        "loot_table_source": {
+          "packaged_references": [],
+          "basis": "No selected alternative has a saved LootTable reference. All processors are minecraft:empty. Wood and other ordinary salvage are separate from container loot; no yield or production rate is asserted."
+        },
+        "generated_spawners": {
+          "packaged_spawner_blocks": [],
+          "authoring_markers_by_template": {
+            "mvs:dead_tree/acacia": [
+              {
+                "nbt": {
+                  "author": "?",
+                  "id": "minecraft:structure_block",
+                  "ignoreEntities": 1,
+                  "integrity": 1.0,
+                  "metadata": "",
+                  "mirror": "NONE",
+                  "mode": "SAVE",
+                  "name": "mvs:dead_tree/acacia",
+                  "posX": 0,
+                  "posY": 0,
+                  "posZ": 0,
+                  "powered": 0,
+                  "rotation": "NONE",
+                  "seed": 0,
+                  "showair": 0,
+                  "showboundingbox": 1,
+                  "sizeX": 2,
+                  "sizeY": 8,
+                  "sizeZ": 3
+                },
+                "path": "/block_entities/0",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ],
+            "mvs:dead_tree/acacia_trunk": [
+              {
+                "nbt": {
+                  "author": "FinnDog_123",
+                  "id": "minecraft:structure_block",
+                  "ignoreEntities": 1,
+                  "integrity": 1.0,
+                  "metadata": "",
+                  "mirror": "NONE",
+                  "mode": "SAVE",
+                  "name": "mvs:dead_tree/acacia_trunk",
+                  "posX": 0,
+                  "posY": 0,
+                  "posZ": 0,
+                  "powered": 0,
+                  "rotation": "NONE",
+                  "seed": 0,
+                  "showair": 0,
+                  "showboundingbox": 1,
+                  "sizeX": 2,
+                  "sizeY": 8,
+                  "sizeZ": 3
+                },
+                "path": "/block_entities/0",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ],
+            "mvs:dead_tree/birch": [
+              {
+                "nbt": {
+                  "author": "?",
+                  "id": "minecraft:structure_block",
+                  "ignoreEntities": 1,
+                  "integrity": 1.0,
+                  "metadata": "",
+                  "mirror": "NONE",
+                  "mode": "SAVE",
+                  "name": "mvs:dead_tree/birch",
+                  "posX": 0,
+                  "posY": 0,
+                  "posZ": 0,
+                  "powered": 0,
+                  "rotation": "NONE",
+                  "seed": 0,
+                  "showair": 0,
+                  "showboundingbox": 1,
+                  "sizeX": 6,
+                  "sizeY": 9,
+                  "sizeZ": 4
+                },
+                "path": "/block_entities/0",
+                "position": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          "basis": "No physical spawner NBT. Preserve the three SAVE-mode authoring records with empty metadata, without recasting them as spawners or established enemy-generation markers."
+        },
+        "authored_or_natural_enemies": {
+          "authored": [],
+          "natural": "No authored enemy source identified. Root spawn_overrides is empty, leaving conditional natural biome spawning; this is not a safety guarantee."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected dead-tree/trunk alternative",
+          "placement_inputs_by_structure": {
+            "mvs:dead_tree_acacia": {
+              "biomes": "#c:is_savanna",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/acacia",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_birch": {
+              "biomes": "#c:is_birch_forest",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/birch",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_cherry": {
+              "biomes": "#mvs:primary_wood_type/cherry",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/cherry",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_dark_oak": {
+              "biomes": "#mvs:is_dark_forest",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/dark_oak",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_jungle": {
+              "biomes": "#c:is_jungle",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/jungle",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_mangrove": {
+              "biomes": "#mvs:primary_wood_type/mangrove",
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/mangrove",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_oak": {
+              "biomes": "#c:is_overworld",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/oak",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            },
+            "mvs:dead_tree_spruce": {
+              "biomes": "#c:is_taiga",
+              "cannot_spawn_in_liquid": true,
+              "project_start_to_heightmap": "WORLD_SURFACE_WG",
+              "size": 1,
+              "spawn_overrides": {},
+              "start_height": {
+                "absolute": 0
+              },
+              "start_pool": "mvs:dead_tree/spruce",
+              "step": "surface_structures",
+              "terrain_adaptation": "beard_thin",
+              "type": "moogs_structures:moogs_structures_generic_jigsaw_structure"
+            }
+          },
+          "basis": "Generic jigsaw uses WORLD_SURFACE_WG, zero start height and beard_thin. Mangrove omits cannot_spawn_in_liquid and defaults false; seven others explicitly enable the center-column liquid check. Optional terrain range/radius are absent. These inputs do not guarantee a dry or exposed complete footprint."
+        },
+        "visual_discoverability": {
+          "source_form": "Bare wood/tree silhouettes or smaller trunk remnants, with size and biome-material differences. They may blend with surrounding woodland or vegetation.",
+          "basis": "Qualitative inference from the retained tree/trunk forms and per-alternative dimensions. No discovery rate, viewing distance or guaranteed exposure is measured."
+        }
       }
     },
     {

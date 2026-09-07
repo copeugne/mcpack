@@ -427,3 +427,38 @@ Only four family rows and the decisions input hash changed; biomes, observation
 links and nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-landmark-variants.json`, SHA-256
 3f14a5d39bc684048f19422e3345ac16bdedb5fe782e7dfadd561f6b7b784e90.
+
+## Voyager Dead Tree alternatives
+
+After 5f02a697, ten attributes finish Dead Tree's eight roots and sixteen
+alternatives. Direct inspection corrects the previous component interpretation:
+each data/mvs/worldgen/template_pool/dead_tree/<wood>.json has two weight-1
+ordinary rigid single elements with empty processors, selecting <wood> or
+<wood>_trunk independently. None of the sixteen templates has a jigsaw block
+entity. They are not attached pieces and their heights must not be summed.
+The authoritative rationale now preserves and supersedes that earlier mistake.
+
+Source XYZ dimensions (tree / trunk) are acacia 2x8x3 / 2x8x3, birch 6x9x4 /
+1x3x1, cherry 7x9x6 / 1x3x4, dark_oak 6x9x7 / 3x6x3, jungle 8x18x9 / 3x7x4,
+mangrove 6x9x6 / 3x4x2, oak 4x9x3 / 1x3x2, and spruce 4x8x4 / 1x4x2.
+Inventory stores per-template XZ and Y. These include air/padding and possible
+X/Z exchange on rotation, not observed occupied-world bounds or exposed height.
+
+All roots intersect only Overworld runtime biomes and use generic jigsaw,
+WORLD_SURFACE_WG, zero start height and beard_thin. Mangrove omits the liquid
+flag and defaults false; seven others explicitly enable the center-column
+check. Optional terrain range/radius are absent. Full definitions are retained.
+All entity lists are empty with no loot references or physical spawners. The
+only block entities are SAVE-mode structure blocks with empty metadata in
+acacia, acacia_trunk and birch. Exact marker records remain integrated as
+authoring payloads, not asserted mob-generation sources. Natural spawning and
+terrain hazards remain conditional. Ordinary wood salvage is separate from
+container loot. Bare tree and smaller trunk silhouettes support qualitative
+visibility only, without sight-distance or discovery-rate measurements.
+
+No capture, measurement or tooling was added. Ten affected provider/inventory
+tests and builder Ruff/Basedpyright checks pass. Reproduce with the existing
+build_item8_inventory command to an absent path. Only Dead Tree and the decisions
+input hash changed; biomes, observations and nonregistry content are preserved.
+Inventory matches `evidence/raw/item8/inventory-mvs-dead-trees.json`, SHA-256
+3190d2277029a999b8383f5b1525e7ed97fa8d957b32127f2e90bddc6f00ef42.
