@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Voyager families assessed after 2730cd27
+
+Thirty-two answers finish crimson_enchanting_table, nether_devil, ocean_tower
+and warped_house. Existing geometry remains unchanged. Nether codec attribution
+separates ignored packaged heightmap/terrain fields from effective land search;
+Ocean Tower's saved mobs and spawners are separate source records; Warped House
+is Overworld-eligible. No new capture, measurement or tooling. Direct derivations
+are in moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+af705d1e244246e24e96faeb6dc0b6271daa8a0acdf411723458ff2f52d3a5cb.
+
+Retire these assessments. Voyager 31/65; registry 138/410, nonregistry 40/40,
+total 178/450 assessed, 272 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Seven Voyager surface families assessed after c581177f
 
 Fifty-six answers finish shed, small_pillager_tower, small_swamp_house,

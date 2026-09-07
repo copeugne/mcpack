@@ -176,3 +176,60 @@ rows and decisions input hash changed; geometry, biomes, observation links and
 nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-seven-surface.json`, SHA-256
 37d8e2ffb6a778ac97ae7254ebd2d2f8f1248c08f54494918f208fb6643106cb.
+
+## Four Voyager Nether, ocean and house families
+
+After 2730cd27, 32 answers finish crimson_enchanting_table, nether_devil,
+ocean_tower and warped_house. Their two existing geometry attributes are
+unchanged. Direct attribution uses each family's hash-bound packaged JSON,
+templates and pool trace, runtime biome intersections, and existing generic
+and Nether generator disassembly. No new capture, measurement or tool.
+
+All four start pools are terminal ordinary rigid single elements with empty
+processors and no generation markers. Crimson Enchanting Table and Nether
+Devil intersect only Nether runtime biomes; Ocean Tower and Warped House only
+Overworld biomes. Warped materials do not make the house a Nether structure.
+
+The existing moog-nether-generator-code identities manifest binds
+GenericNetherJigsawStructure. Its codec field list does not read the two roots'
+project_start_to_heightmap, allowed_terrain_height_range or
+terrain_height_radius_check. Its constructor passes empty inherited optionals
+for heightmap and terrain checks. The assessment preserves declared fields but
+does not claim they control placement. In postLayoutAdjustments, HIGHEST_LAND
+calls getHighestLand with the inverse of cannotSpawnInLiquid (both roots declare
+true), then chooses land Y or the sea-level fallback for out-of-range land and
+repositions pieces. Both omit ledge_offset_y, whose fallback is zero. This is
+a Nether land-search feature, not ordinary Overworld surface projection.
+
+Ocean Tower instead uses generic OCEAN_FLOOR_WG projection, zero start-height
+input and y_allowance max_y_allowed 25. Omitted cannot_spawn_in_liquid defaults
+false. Its 44-block source height is not claimed wholly below Y25 or visibly
+above water. Warped House uses WORLD_SURFACE_WG, zero offset, explicit liquid
+check and terrain range 3/radius 2. All four declare beard_thin.
+
+In mvs:ocean_tower, /entities/0..59/nbt contain 44 guardian and 16 drowned
+records, individually referenced by the existing trace. Physical spawners are
+separate: /block_entities/0..5 target drowned and /block_entities/22..29 target
+guardians through SpawnData/entity/id. Their exact NBT and positions are now
+integrated. These are source records, not live counts or proven activation.
+Other block entities are chests. Empty spawn_overrides does not remove those
+authored sources; conditional natural spawning remains separate.
+
+The other three templates have no saved entities, contained mobs or spawners.
+Crimson's sole block entity is an enchanting table, an actual workstation.
+Nether Devil has no block entities and depicts a creature without authoring it;
+its fire details and Nether environment remain hazards. Warped House contains
+furnishings and containers, with an empty furnace Items list. Its table owners
+are mvs:empty, mvs:houses_common and mvs:houses_uncommon. The empty table can
+produce cobweb/string. Ocean Tower owns mvs:crystal, mvs:general,
+mvs:houses_uncommon, mvs:houses_rare and mvs:rare. Both Nether templates have
+no saved container loot references. No reward roll or salvage yield is asserted.
+
+Visibility is a qualitative architectural inference with explicit water/terrain
+occlusion limits, not a measured discovery distance. Ten affected provider and
+inventory tests pass; scoped builder Ruff/Basedpyright checks pass. Reproduce
+with the existing build_item8_inventory command and an absent output path.
+Only four family rows and the decisions input hash changed; geometry, biomes,
+observation links and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-nether-ocean-house.json`, SHA-256
+af705d1e244246e24e96faeb6dc0b6271daa8a0acdf411723458ff2f52d3a5cb.
