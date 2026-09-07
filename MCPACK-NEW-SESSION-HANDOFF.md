@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Final four WDA content assessments after be9994d2
+
+Thirty-two attributes integrate Foundry, Mining Complex, Scorched Mines and
+Shiraz Palace across166 selected templates. Preserve Foundry missing corridor
+pool, Mining Complex processor-added pot loot and fixed wind charges, Scorched
+fixed potion, and source mob/passenger distinctions. Source derivation:
+evidence/item-8/sources/wda-provider-scope/README.md, Foundry, Mining Complex,
+Scorched Mines and Shiraz content. Eight focused tests pass; no runtime/tool.
+Eight geometry attributes remain for these four, so total stays347/449 assessed,
+102 remaining, WDA35/39. No retained starts exist. Next inspect Shiraz connected
+sections, Scorched hub/extensions, Mining Complex main/extensions and Foundry
+branching source before adding any justified existing capture. Geometry facts
+must enter authoritative attributes, not only this checkpoint.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+5511015a4e6cfdcd65458201c255a1cd35b6a6219cf363acb790f31b49d7e41d.
+
 #### Mining System inactive disposition after 2313cbbb
 
 Mining System has an explicitly empty effective biome tag, no unresolved tags

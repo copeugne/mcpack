@@ -1069,3 +1069,71 @@ start exists for these four; their40 attributes remain the next batch.
 Rebuild and focused checks use existing commands above. Only Mining System's
 disposition, direct supporting identities and builder input identity change;
 no source templates, registered roots or existing family assessment is removed.
+
+## Foundry, Mining Complex, Scorched Mines and Shiraz content
+
+Thirty-two attributes integrate four families/166 traced templates: Foundry45,
+Mining Complex59, Scorched Mines21, Shiraz Palace41. Eight geometry attributes
+remain; none is counted assessed yet. Same immutable WDA archive and catalogs
+as above, exact templates data/dungeons_arise/structure/<family>/<family>_<piece>.nbt,
+root worldgen/structure/<family>.json. All effective biome intersections select
+Overworld. Root spawn_overrides are empty; biome/world-condition spawning is
+separate from authored ordinary spawners. No trial spawners occur in available
+selected templates. Preserve complete NBT in existing spawner_blocks pointers,
+including gear, effects, timing and passenger chains; no legacy conversion or
+live encounter-frequency claim.
+
+Foundry starts absoluteY-10, no heightmap, depth6, underground_structures.
+Eight dedicated ordinary spawners, block_entities0: blaze0 Health55, magma0/1
+Size8/4, piglin0 zombification-immune brute Health50, wither_skeleton0 Health55,
+wither_skeleton1 zombification-immune hoglin carrying wither skeleton Health45,
+wither_skeleton2 Health80, wither_skeleton3 phantom Health40 Size5 carrying
+wither skeleton Health80. No direct entities or nonempty fixed Items/Book
+payloads in available templates. Missing pool
+underworld/foundry/foundry_corridor_gears remains in grouping data; absence
+claims are limited to available components. Selected processors are empty.
+
+Mining Complex starts absoluteY-5, no heightmap, depth7, bury and
+underground_structures. Main0 measures57x197x57 and blimp components occur;
+therefore underground generation step alone does not prove wholly buried
+content. Exterior cues remain terrain-dependent. Seven ordinary spawner0..6
+payloads at block_entities0 are skeleton Health8/14/24, pillager Health34,
+skeleton Health34/26/34. Direct saved entities are four paintings, two armor
+stands and24 item frames, not authored monsters. Counts span selected templates,
+not a guaranteed population in one generated layout.
+
+Mining main0 dispenser indices162/163/164/184/187 contain fixed wind_charge
+stacks with lowercase count fields; exact Items remain preserved. Blimp1
+index11 and intersection0 index40 contain writable books without saved pages.
+Processor mining_complex_main changes deepslate, mossy cobblestone, spruce,
+mud/copper and lantern materials; its second rule processor appends decorated
+pot loot from dungeons_arise:pots/mining_complex/mining_complex_pots. It does
+not inject entities. The ordinary loot references include Mechanical Nest's
+normal table, retained as the exact source reference rather than renamed.
+
+Scorched Mines projects WORLD_SURFACE_WG offset-14, depth7, surface_structures.
+Hub can supply an exterior cue while connected corridors conceal content.
+Ordinary spawner0..2 block_entities0 save wither skeleton Health36, skeleton
+Health30, husk Health30. No direct entities. Corridor2_temptation index0
+saves one splash potion in dispenser slot4 with legacy CustomPotionEffects
+Id2,Amplifier5,Duration300. This is a fixed payload, not proof of a working
+trap. Selected processors are empty.
+
+Shiraz Palace projects WORLD_SURFACE_WG offset16, depth7, surface_structures.
+Architectural sections, towers and gardens support an exterior landmark
+inference, not human discovery range. Fifteen ordinary spawner templates,
+each block_entities0: axe_illusion2 skeleton Health15; crossbow_illusion1
+pillager Health15; husk_elite0 Health50; husk_garden0/2 Health60/40;
+husk_garden_exterior0 cow Health30 carrying husk Health60; husk_tower0
+Health50; skeleton_elite0 wither skeleton Health20; skeleton_garden1
+Health40; skeleton_garden_exterior1 cow Health20 carrying skeleton Health40;
+skeleton_illusion0 wither skeleton Health30; skeleton_library0 Health40;
+skeleton_tower1 wither skeleton Health30; spider0 cave spider Health8;
+spider1 cave spider Health8 carrying cave spider Health6. Names containing
+illusion do not make these illusioner mobs. No direct entities or nonempty
+fixed Items/Book payloads. Selected processors are empty.
+
+All ordinary table IDs and nonempty fixed-payload locations are integrated in
+attributes. Exact source references carry descriptive claims; no additional
+validator or measurement was needed. Rebuild and focused checks use commands
+above. Geometry remains eight explicit attributes for the same four families.
