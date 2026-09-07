@@ -68,14 +68,15 @@ GitHub metadata and fetched main on 2026-09-08. Item 10 work is now on
 reusable evidence, missing measurements, proposed batches and resource estimates.
 No Item 10 experiment has run. No Item 8 or Item 9 work was repeated.
 
-Before implementation, resolve persistent storage and measurement semantics.
-Only 1.8 GiB persistent space is free. Item 5 requires ground-truthed combat
+Before experiments, freeze sampling, retention and measurement semantics.
+About 15 GiB is now free after authorized cleanup and client setup. Item 5 requires ground-truthed combat
 encounters; the historical static hostility proxy cannot satisfy that contract.
 The user requested local free-roaming and task servers for later login.
 [Server setup](evidence/item-10/server-setup/README.md) records both separate
 profiles and successful startup, correlated save and clean shutdown checks.
-Both are stopped. Official-launcher client preparation remains in progress.
-Storage remains unresolved; the observed-combat requirement is retained. Sparse Structures is present with
+Both are stopped. Two official-launcher client profiles are installed with 108
+hash-verified JARs each. First Play may download assets; client launch and join
+remain unverified. The observed-combat requirement is retained. Sparse Structures is present with
 spread factor 2; the historical absent-mod result is superseded context.
 The 40 nonregistry families need occurrence coverage beyond structure starts.
 Finish and freeze the protocol before collecting new measurements.

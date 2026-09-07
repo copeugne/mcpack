@@ -67,21 +67,68 @@ resolved. The full retained-stack warnings were not re-audited in this setup.
 Focused Ruff lint and formatting checks pass for the setup tool. The initial
 string-concatenation and formatting findings were corrected before delivery.
 
-The official client profiles are still being prepared. The existing local
-Minecraft 1.21.10 client is not compatible with this server's frozen version.
-Follow the [official NeoForge client procedure](https://docs.neoforged.net/user/docs/client/)
-with the pinned 21.1.249 installer, not a newer default version.
+## Official client profiles
 
-Persistent space after server setup is about 1.4 GiB. A read-only estimate using
-Minecraft 1.21.1's asset index 17 (SHA-1
-`dda7c8d44a8c7e3f5db430d657106af4e5bdc715`) found 2,098 of 3,888 unique
-objects absent or of the wrong size in the existing client cache. Their declared
-sizes sum to 648,853,008 bytes. The index was fetched from its URL in
-`downloads/item2/minecraft/1.21.1.json` and its SHA-1 verified. This is a local
-size/existence estimate, not verification of existing object contents. It excludes
-the 26,836,906-byte client JAR, libraries, installer intermediates and runtime.
-No client download or launcher-profile mutation has been performed. A persistent
-storage location or explicit disposable-file disposition has been requested.
-Sustained exploration, client downloads and Item 10 evidence need that budget.
-The task world must be kept separate from free roaming and must not be called
-an accepted observation run until its protocol and recording conditions are met.
+Created `mcpack: free-roaming` and `mcpack: task` in the official launcher's
+`launcher_profiles.json`. Their game directories are respectively
+`instances/item10-client-profiles/free-roaming` and
+`instances/item10-client-profiles/task`. Both select `neoforge-21.1.249`, pinned
+Temurin and `-Xms1G -Xmx4G`. Existing profile entries and other JSON fields were
+compared against the local pre-edit backup and preserved. The launcher was
+closed before mutation. The backup remains in the ignored client target.
+
+Executed setup, after installing NeoForge using the
+[official client procedure](https://docs.neoforged.net/user/docs/client/):
+
+```sh
+uv run --no-sync python -m tools.setup_item10_play_clients \
+  --target instances/item10-client-profiles \
+  --minecraft "$HOME/.minecraft" \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1
+```
+
+Close the launcher before this command. It refuses an existing target or profile.
+Do not remove an existing game directory to rerun it. The rejection was exercised
+on the created target. Focused Ruff lint and formatting pass. Each destination's
+108 JAR hashes were independently compared with the accepted acquisition manifest.
+The frozen configuration validator passed before copying `config` and
+`defaultconfigs`; the sanitized Resourceful web secret file is omitted, as in the
+server materializer. Client-generated settings and compatibility remain unverified.
+
+The [client candidate list](client-candidates.txt), SHA-256
+`02b9e1a1c88bf1c4fe3527960e06eb25cd3fecb736b237e9e1de0babf156c122`,
+is provisional client scope, not a change to the accepted dedicated-server set.
+It uses 102 of the retained 136 candidates whose publisher client-side declaration
+is not unsupported in `../../item-3/source-identity-matrix.json`. Actual required
+client/shared dependency declarations in `../../item-3/jar-inspection.json` add
+Lithostitched, Repurposed Structures and Structure Pool API despite publisher side
+labels. Three client dependencies are added from the accepted acquisition cache:
+Athena, EMI and Simply Tooltips. Simply Tooltips was rejected for the dedicated
+server; this explicit client-only inclusion does not restore it to either server.
+The existing dedicated-server evaluator is not evidence of client compatibility.
+No Simply More, Sable, Aeronautics, Every Compat or Spell Engine family was added.
+Exact per-JAR sizes and hashes are in `../../item-3/artifact-acquisition-manifest.json`.
+
+The pinned NeoForge installer SHA-256 is
+`d88b448eab73cd65bdf1720844a4828262de30a15fc71bd04dd81acc61c5399a`.
+An initial attempt failed because no launcher profile file existed. After creating
+an empty profile container, the second attempt exited 0 and installed
+`neoforge-21.1.249`. Both console logs remain under ignored
+`evidence/raw/item10/client-setup/`. They are operational diagnostics, not accepted
+Item 10 measurement evidence. The official launcher subsequently populated its
+standard release/snapshot entries; those entries were preserved by client setup.
+
+Reopen the launcher and select the desired profile under Installations. First Play
+may download assets and requires the user's normal authenticated account. Join
+the matching destination in the table only after its server reports readiness.
+A client launch and server join have not yet been verified. Neither the profiles
+nor server startup prove client compatibility or any Item 10 metric.
+
+The prior 1.4 GiB storage blocker was relieved by user cleanup and explicitly
+authorized removal of eight byte-identical duplicate evidence directories,
+retaining their matching copies. About 15 GiB is available after client profile
+materialization. The prior asset-index estimate was 648,853,008 bytes missing or
+wrong-sized, excluding libraries and installation workspace. The launcher manages
+remaining downloads. Full measurement storage still needs a bounded plan.
+The task world is separate from free roaming and cannot be called an accepted
+observation run until its protocol and recording conditions are met.
