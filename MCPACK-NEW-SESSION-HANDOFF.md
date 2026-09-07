@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS lumber camp assessed after 27d4e962
+
+Eight entries integrated for ten alternatives. No template entities, loot-table
+references or spawners; ticking-only processor reused. Seven variants retain
+Overworld membership. Three missing biome tags are resolved to no fresh-baseline
+eligible membership by HolderSet.Named initialization, MappedRegistry.bindTags
+semantics and registry-r1 warning line19005. Raw missing_required evidence and
+registered variant identities remain unchanged. This is a documented derivation,
+not a runtime sample, tag repair or stale-hot-reload claim. Existing sizes reused.
+All85 focused checks pass (67.37s); only lumber_camp/input identity changed.
+Total414/448 assessed;34 IDAS families/306 required entries remain. All remaining
+families have dimension entries; geometry survey now divides them into ten
+existing full-start candidates and24 connected assemblies needing assessment.
+Next quantify an existing-candidate or nominal connector batch before investigation.
+Details: evidence/item-8/sources/idas-lumber-camp-assessment/README.md.
+Inventory SHA-256: af1f9ef3fb2a5088102fb32b15837da793ac5f12f0f57370eb6c3a88f8599444.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS nexus assessed after d753ab21
 
 Seven entries integrated for six alternatives. Raw pig spawners are distinguished
