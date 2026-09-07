@@ -851,3 +851,139 @@ observation links are preserved, with this capture bound by added evidence refs.
 Twelve affected world-bounds/provider/inventory tests pass. No runtime remains.
 Inventory SHA: 8d1a84b976d3aebf20a760a6fe1c0f1c09abde8336cbc9dab907328a984f216e.
 Voyager is 65/65 assessed. Retire its assessment absent contradictory evidence.
+
+## Eleven standalone End families
+
+After ec3ef2ae, 88 source attributes finish eleven mes families while preserving
+their existing template geometry. Each root uses one ordinary rigid single
+pool element, weight 1, minecraft:empty processors and no attachment. Direct
+source pointers are in family-decisions; packaged-json-redacted supplies complete
+root definitions, templates-redacted supplies palette/block-entity payloads,
+and pool-traces-content supplies exact entity/spawner/loot references.
+
+| Family | Authored encounter source | Loot table suffix under mes |
+| --- | --- | --- |
+| astral_hideaway | none identified | end_common |
+| astral_meteorite | none identified; fire is a separate hazard | end_common |
+| ender_spire | none identified | end_common |
+| enderbloom_grove | none identified | no reference |
+| enderkeep_courtyard | seven saved shulkers | end_rare |
+| enderskog | none identified | end_common |
+| enderwatch_tower | eleven saved shulkers | end_rare |
+| manuscript_shrine | none identified | end_common |
+| mystical_archway | none identified | end_rare |
+| mythic_garden | none identified | end_uncommon |
+| phantom_citadel | two phantom and two enderman spawners | end_uncommon |
+
+All roots are End-biome-compatible only, with empty spawn overrides and
+min_y_allowed 45. Generic code applies height/terrain constraints, not a promise
+of exposure. Range/radius is 3/1 except Courtyard 5/2 and Watch/Citadel 4/1.
+Citadel uses surface offset +24 and no terrain adaptation; all other roots use
+zero and beard_thin. Omitted liquid flag defaults false. Full declarations are
+integrated, including settings absent from the earlier abbreviated grouping.
+
+No other mob payload occurs in inspected block entities. Meteorite has fifteen
+brushable blocks with air/count-zero items and no loot table; its separate chest
+owns end_common. Archway retains five explicit LootTableSeed values and its
+barrier/reinforced-deepslate palette, without inferring passability or a portal.
+Manuscript's lectern has no book payload. Source light/vegetation/material cues
+support qualitative visibility descriptions, not measured sight distances or
+lighting. No live population, rolled reward or sustainable salvage yield is
+claimed. No capture, new tooling or expansion into tuning.
+
+Ten shared provider/inventory tests pass. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Only eleven family rows and the decisions hash change; existing geometry,
+biomes, world observations and nonregistry content are preserved. Inventory SHA:
+960f87010b6506043e805360c6e7336f146e53d44435c730b2bc7770b12b6970.
+
+## Six End alternatives and Starlight Voyager
+
+After b116d1f7, sixty attributes finish six families. The fifteen templates are
+independent weight-1 rigid ordinary single elements, with empty processors and
+no attachments. Per-template dimensions are integrated rather than summed:
+
+| Family | Nominal XYZ alternatives | Loot source |
+| --- | --- | --- |
+| enderpin_spikes | 5x8x5; 5x10x5 | none |
+| endscraps | 10x6x9; 10x7x10; 9x6x8; 9x7x9 | mes:end_uncommon, all alternatives |
+| monolith | 11x16x11; 11x26x11; 11x36x11 | mes:end_uncommon, all alternatives |
+| placid_prairie | 11x14x11; 7x12x7 | mes:end_uncommon, both alternatives |
+| ruined_pillar | 3x3x7; 3x4x5; 3x3x7 | none |
+| starlight_voyager | 16x24x32 | mes:end_uncommon and saved frame item |
+
+All are End-biome-compatible only, with min_y_allowed 45 and empty spawn
+overrides. Range/radius is 3/1 except Starlight 4/1. Enderpin uses +4 surface
+height input, Prairie uniform +8..56 and Starlight uniform +20..65, all with no
+terrain adaptation. The others use zero/beard_thin. These are placement inputs,
+not final absolute Y or observed exposure. The omitted liquid flag defaults false.
+
+Only Starlight has saved entities: eight shulkers and an item frame at
+/entities/6. Its Item is an elytra with legacy Mending I/Unbreaking III tags.
+No template has a physical spawner, generation marker or hidden mob payload.
+Endscraps 2 /block_entities/0 and Starlight /block_entities/3 preserve both Items
+and LootTable; complete saved lists are integrated without claiming their contents
+plus rolled loot as a guaranteed reward. Prairie 1 has three air/count-zero
+brushable payloads; Ruined Pillar variants have three/one/four respectively, all
+without a loot table. These do not establish archaeology rewards.
+
+Monolith's bedrock palette, tallest variant's ancient debris/lava cauldron,
+source lighting and elevated silhouettes are retained descriptive facts, not
+passability, production or discoverability measurements. Existing Starlight world
+observations remain linked alongside its source envelope. No capture or tooling.
+Ten shared affected tests pass. Only these six rows and decisions hash change;
+biomes, world observations and nonregistry content are preserved. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 288eeb652708ff0c39fbf581e96e1f387e40aeec57fcc5cf365c3a0108776eb8.
+
+## Mega Ship: eight finite variants
+
+Ten attributes finish the remaining End family after d8dc726b. Direct inspected
+connector alignment establishes finite nominal layouts without a new capture.
+Each selected pool contains one weight-1 rigid element with empty processors.
+Deepslate 2 middle is versioned and selects its 1.21-1.21.8 resource; other
+elements are ordinary single. No repeating middle chain occurs.
+
+Every initial is 48x48x48. Its south [24,0,47] matches middle north [24,0,0],
+placing the 48x48x48 middle at [0,0,48]. Middle south [25,6,47] matches end north
+[17,0,0], giving end origin [8,6,96], except Crashed Deepslate's end connector
+[18,0,0] gives [7,6,96]. Ends are 35x20x23. Other derived origins, relative to
+initial and without rotation, are integrated with their individual XYZ sizes:
+
+| Variant suffix | Additional component origins | Nominal XYZ |
+| --- | --- | --- |
+| base/basic | side [48,34,53] | 51x48x119 |
+| crashed/crashed_2 | side [-6,21,53] | 54x48x119 |
+| crashed_deepslate | side [48,20,52] | 61x48x119 |
+| deepslate | side [48,32,53]; top [0,48,76] | 56x52x119 |
+| deepslate_2 | side [48,30,44]; side_2 [48,9,86]; side_3 [48,19,3]; side_4 [-11,27,76]; top [0,48,46] | 75x69x119 |
+| deepslate_3 | side [48,25,43]; side_2 [48,14,5]; side_3 [-2,48,89]; top [0,48,51] | 67x73x119 |
+
+For each attachment, child origin is parent origin + parent connector + unit
+facing vector - matching child connector. Matching orientations are opposing
+without rotation. Union minima and maxima over these boxes give inclusive sizes.
+These are fully attached nominal source envelopes including air/padding, not
+proof all attachments survive collision/placement checks or observed exposure.
+
+Variant-owned entities, spawners and loot are integrated. Base has no saved hostile
+mob or physical spawner and no LootTable references, but has an elytra frame,
+three healing splash potions and a natural shulker override. Basic/airborne
+deepslate variants save strays; their frames/potions and loot differ. Three wrecks
+carry enderman spawners. Crashed Deepslate middle /block_entities/3 omits SpawnData
+and has an empty SpawnPotentials entity: retain its unidentified effective mob
+without inventing a default or opening an experiment. SAVE-mode empty-metadata
+structure blocks are authoring records. Dispensers have no Items; inspected
+container payloads add potions rather than hidden mobs.
+
+All eight roots are End-biome-compatible. Their five airborne and three wreck
+forms preserve full distinct height/terrain and piece-box spawn overrides.
+Natural shulkers/endermen are conditional sources, not saved population counts.
+Frame enchantments and exact loot-table owners remain distinct; names containing
+empty do not imply empty rolls. No rolled reward, functional vehicle, sight
+distance, salvage production or live population is asserted.
+
+Ten shared provider/inventory tests pass. Only this family and the decisions
+identity change; biomes, world observations and nonregistry content are preserved.
+Rebuild using `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: 02e0f36208a2c49c7e2054967dcee254383ab403c55756aee5e6d02ca187b891.
+End Structures is 18/18 assessed; retire its assessment absent contradictory evidence.
