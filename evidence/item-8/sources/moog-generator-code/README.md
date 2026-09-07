@@ -1208,3 +1208,122 @@ Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py te
 Ten shared tests pass. Only five family rows and the decisions identity change;
 biome constraints, world observations and nonregistry content are preserved.
 Inventory SHA: 8dcb32b088b1c7108afc75398edc99f08671533b047c762aa1ba3cce4015cfaf.
+
+## Final three Soaring assemblies
+
+After 10d82998, thirty attributes assess Arena, Jungle and Volcano from 35
+selected templates. Exact resources are the three mss family entries in
+pool-traces-content.json.gz and their source archive/path references into
+MoogsSoaringStructures-1.21-2.1.2.jar in templates-redacted.json.gz. Corresponding
+structure and template_pool JSON resources establish selection. Evidence maps
+bind their hashes. Every pool has one rigid weight-1 element, empty processors
+and fallback. Arena pieces 2, 3 and 4 select original 1.21-1.21.8 paths through
+version mappings; other selected elements are ordinary.
+
+For nominal geometry, put the main template at (0,0,0), align the unique child
+jigsaw name to its parent's target, and use opposing aligned orientations.
+Child origin = parent origin + outgoing connector position + outward unit
+vector - child incoming position. No relative rotation is required. The finite
+source connector graphs yield these component origins:
+
+| Jungle suffix | Parent | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- |
+| main | root | 0,0,0 | 48,48,48 |
+| _east | main | 48,0,0 | 25,48,48 |
+| _south | main | 0,0,48 | 48,48,30 |
+| _south_east | _south | 48,0,48 | 25,48,30 |
+| _top | main | 0,48,0 | 48,10,48 |
+| _east_top | _east | 48,48,0 | 25,10,48 |
+| _south_top | _south | 0,48,48 | 48,10,30 |
+| _south_east_top | _south_east | 48,48,48 | 25,10,30 |
+
+Jungle uses matching horizontal connector coordinates across X/Z boundaries and
+(0,47,0) up_east to (0,0,0) down_east for each top. Union is
+(0,0,0)..(72,57,77), nominal 73x58x78 XYZ.
+
+| Volcano suffix | Parent | Outgoing XYZ | Incoming XYZ | Direction | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- | --- | --- | --- |
+| main | root | n/a | n/a | n/a | 0,0,0 | 48,41,48 |
+| _side_3 | main | 4,31,47 | 4,32,0 | south | 0,-1,48 | 48,42,45 |
+| _side_2 | _side_3 | 47,41,11 | 0,47,15 | east | 48,-8,44 | 42,48,48 |
+| _side_1 | _side_2 | 9,47,0 | 9,47,37 | north | 48,-8,6 | 48,48,38 |
+| _side_4 | main | 0,24,36 | 1,2,1 | west | -2,22,35 | 2,3,9 |
+| _side_5 | main | 32,40,43 | 0,0,8 | up | 32,41,35 | 25,30,25 |
+
+Volcano union is (-2,-8,0)..(95,70,92), nominal 98x79x93 XYZ.
+The side_1 width is 48, extending X through 95 rather than side_2's 89.
+
+Arena template IDs are `mss:arena/arena_<number>`. Main is 1. Each child has
+one incoming matching name. The table retains parent, origin and size so that
+all 21 boxes can be checked against the preserved connector positions:
+
+| Piece | Parent | Origin XYZ | Size XYZ |
+| --- | --- | --- | --- |
+| 1 | root | 0,0,0 | 48,48,48 |
+| 2 | 1 | 0,0,48 | 48,48,48 |
+| 3 | 2 | 48,0,48 | 48,48,48 |
+| 4 | 1 | 48,0,0 | 48,48,48 |
+| 5 | 1 | 15,0,-48 | 48,48,48 |
+| 6 | 4 | 63,0,-48 | 48,48,48 |
+| 7 | 6 | 111,0,-48 | 25,4,48 |
+| 8 | 4 | 96,0,13 | 15,20,48 |
+| 9 | 3 | 96,0,61 | 15,20,20 |
+| 10 | 2 | 15,-48,48 | 48,48,48 |
+| 11 | 1 | 15,-48,0 | 48,48,48 |
+| 12 | 11 | 15,-48,-48 | 48,48,48 |
+| 13 | 14 | 63,-48,-48 | 48,48,48 |
+| 14 | 4 | 63,-48,0 | 48,48,48 |
+| 15 | 3 | 63,-48,48 | 48,48,48 |
+| 16 | 14 | 66,-65,30 | 31,17,30 |
+| 17 | 13 | 91,-73,-45 | 31,25,30 |
+| 18 | 12 | 59,-41,-66 | 48,48,18 |
+| 19 | 18 | 107,-41,-66 | 30,48,18 |
+| 20 | 13 | 111,-48,-48 | 25,48,48 |
+| 21 | 14 | 111,-35,0 | 16,30,16 |
+
+Examples: piece 11 attaches main (15,0,35) down_west to (0,47,35) up_west;
+piece 18 attaches piece 12 (44,28,0) north_up to (0,21,17) south_up.
+Arena union is (0,-73,-66)..(136,47,95), nominal 137x121x162 XYZ.
+These full source arrangements include air/padding. Actual attachments remain
+conditional on generation checks; rotation may exchange X/Z. They are not
+measured occupied volume or exposed/buried dimensions. No capture was needed.
+
+Jungle's main /block_entities/4 and /17 and east /1 assign piglin_brute;
+main /9 and south /2 assign witch. Main /18 has 39 legacy strong_harming tipped
+arrows and /19 six strong_poison tipped arrows in dispensers. Volcano has 14
+ordinary spawner blocks: main eight, side_1 one, side_2 five. Their assignments
+and positions remain in the authoritative template-owned records. Side_2 /6
+and /9 contain 36 and 16 arrows in dispensers. Neither family has saved entities.
+Their pots have no item/table payload, and campfire Items are empty.
+
+Arena has nine saved bogged in piece 3, and eleven ordinary spawners: five bogged
+assignments, four empty entity objects and two absent SpawnData records. Seven
+trial blocks explicitly assign six bogged and one skeleton, with matching saved
+spawn_data and normal/ominous weight-1 potentials. Exact full NBT is retained.
+Four vaults at piece 1 /14, piece 3 /25, piece 4 /27 and /38 set trial_key but
+omit an explicit loot table. That source limitation does not mean no reward.
+No new experiment is required solely to replace these unknown source defaults.
+
+Trial reward defaults are supported by the existing hash-bound vanilla
+TrialSpawnerConfig disassembly. lambda$static$0 offsets 203..252 use DEFAULT
+for omitted loot_tables_to_eject and items_to_drop_when_ominous; static
+initializer offsets 19..37 assign SPAWNER_TRIAL_CHAMBER_CONSUMABLES,
+SPAWNER_TRIAL_CHAMBER_KEY and SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS.
+Those symbolic table sources are distinct from rolled rewards. All SAVE-mode
+markers have empty metadata and are authoring records, not enemy markers.
+
+All three roots intersect only Overworld runtime biomes. Generic surface
+projection adds +45..150 for Jungle/Volcano, +120..170 for Arena. Arena declares
+depth 30 and max_distance_from_center 128; the others depth 5. All have adaptation
+none, liquid checking false and ignore_waterlogging. Source placement and views
+support qualitative elevated-site visibility, not measured discovery rate.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+
+The initial raw draft inventory-mss-final-three.json understated Volcano width
+as 92 by overlooking side_1 extension. It is rejected for that geometry claim;
+the corrected r2 includes the full 98-block width. Ten shared tests pass.
+Only three family rows and the decisions pin change; biome constraints,
+world observations and nonregistry content are preserved.
+Inventory SHA: 4fda5442d385c104d88096e7ac359c46af4d3c2e533dd25fb7cc7e3c42f6bdd8.
