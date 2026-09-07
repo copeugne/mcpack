@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Explorations geometry complete from 22c81eb4
+
+Four geometry answers finish Campsite and Jungle Temple. Temple uses direct
+finite assembly derivation: fully attached 29x18x29 XYZ from main plus four
+stair sides, not guaranteed runtime attachment. Campsite uses one fresh targeted
+ordinary-seed observation, 19x5x19 XYZ, seven pieces in a full start chunk.
+Correlated save, clean exit and frozen configuration checks passed. No new tool.
+All ten Explorations family descriptions are assessed; retire them absent new
+contradictory evidence. Source derivations and commands are in its provider README.
+
+Seven affected tests and scoped builder checks pass. Inventory SHA-256:
+3f3955752c7796c666df1bee7a7188cc6f9ad286d976d381c90ddb11ef31295e.
+Raw release item-8-explorations-campsite-2026-09-07-r1 preserves 249 files and
+passes both local and downloaded restore. Remote tag/source is 22c81eb4.
+No runtime remains active. Registry assessment is 107/410; nonregistry 40/40,
+total 147/450 assessed, 303 remaining. Continue other providers in quantified
+batches. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
 #### Explorations assembly attribution after 00cda891
 
 Twenty-six answers integrate campsite, jungle_temple and underground_temple
