@@ -4656,6 +4656,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
                     "org/violetmoon/quark/base/proxy/CommonProxy.class",
                     "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
+                    "org/violetmoon/quark/content/world/module/FairyRingsModule.class",
                     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
                     "org/violetmoon/quark/content/world/block/MonsterBoxBlock.class",
                     "org/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity.class",
