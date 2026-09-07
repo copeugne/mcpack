@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed underground bastion assessed after 3cd811d5
+
+Seven remaining entries integrated for162 templates. Bat-only direct template
+entities do not omit eight selected skeleton/skeleton-horseman features. Treasure
+ordinary skeleton spawner and natural piece override remain separate. Four loot
+tables defined. Underground placement/degradation limits retained; feature names
+are not measured difficulty tiers. No runtime/tool added. All85 focused checks
+pass (69.74s);only bastion/input identity changed. Total407/448 assessed;41 families/
+364 required entries remain: IDAS38/343,Repurposed3/21. Remaining Repurposed:
+ancient_city,fortress,village, each seven content/placement entries with accepted
+geometry. Quantify next batch and reuse evidence. Details in
+ evidence/item-8/sources/repurposed-bastion-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 630aab7522669ee2a80243f55d3362072340d037140a571d3d67e4256e3fd43a.
+
 #### Repurposed stronghold assessed after ad56d7e5
 
 Seven remaining entries integrated for two variants/45 templates. Four selected
