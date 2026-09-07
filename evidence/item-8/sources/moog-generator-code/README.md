@@ -1029,3 +1029,40 @@ Ten shared affected tests pass. Only nine family rows and the decisions identity
 change; geometry, biome constraints, observations and nonregistry are preserved.
 Rebuild with `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Inventory SHA: 5c2fd7eb3f7b849d0a9528eccad7bffe77743f091c8d7fe47dd590c6fe435a09.
+
+## Four standalone Soaring landmark families
+
+After 3facdfb9, forty attributes finish Tree, Pond, River and Small Tower across
+thirteen roots. Each root selects one rigid weight-1 ordinary template with
+empty processors and no attachments. Arena was excluded from this batch after
+source inspection confirmed its 21 pieces are a connected assembly, not
+alternatives. This correction avoids forcing an exceptional case into the batch.
+
+Nominal XYZ source sizes remain per template:
+
+| Family | Root/template suffixes and XYZ |
+| --- | --- |
+| Tree | 1:13x22x13; 2:17x25x17; 3:20x30x21; 4:21x30x20; 5:25x31x20; 6:20x28x20; 7/8:20x40x20 |
+| Pond | frozen_pond:36x38x35; small_pond:20x40x20 |
+| River | birch_river:35x35x33; cherry_river:31x38x31 |
+| Small Tower | small_tower:33x48x38 |
+
+All roots intersect only Overworld runtime biomes. Generic surface projection
+adds uniform +35..100 for Tree, +30..120 for temperate Pond and +45..150 for
+others, with adaptation none. Cherry River's omitted liquid flag defaults false,
+matching the others' explicit false. Optional terrain/Y checks are absent.
+These are inputs, not measured absolute placement or exposure.
+
+All entity lists are empty. Tree, Pond and River have no block entities or loot.
+Small Tower has witch and wither-skeleton spawners at /block_entities/2 and /3,
+two chests referencing mss:rare and mss:houses_rare, and four decorated pots with
+brick sherds and no item/loot payload. No generation markers occur. Natural
+spawning remains conditional and separate. Preserved source views and dimensions
+support qualitative visibility, not sight-distance or production measurements.
+No capture or tooling was added.
+
+Ten shared affected tests pass. Only these four families and the decisions hash
+change; biome constraints, existing world observations and nonregistry content
+are preserved. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Inventory SHA: f335ad6b03e80b4a430d8d2f362c0cf49d8df8366e57676efffae71cfceb2248.
