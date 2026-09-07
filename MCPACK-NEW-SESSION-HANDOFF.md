@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Six Terralith alternative families assessed after 97dfe7fc
+
+Fifty-seven attributes finish Glacial Hut, Rubble, Giant Bee Hive, Mining
+Outpost, Underground Cabin and Valley Lodge, twelve roots/34 unique templates.
+Source geometry, nested hive bees, villager attachments and loot ownership are
+integrated. Seven applicable tests pass; no capture or tooling addition.
+Derivation: sources/terralith-provider/README.md. Inventory SHA:
+81f98410e22ee9605e4f18ea741842b2ef00a2d7ef3b8814f0a998908ab5f100.
+Registry 263/410, nonregistry 40/40, total 303/450 assessed, 147 remaining.
+Terralith groups still needing assessment/disposition checks: Fortified Village,
+Mage Complex, Mage Tower and Spire. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open.
+
 #### Six Terralith families assessed after 88903ef0
 
 Forty-five attributes finish Desert Outpost, Igloo, Witch Hut, Frosted Dungeon,
