@@ -109,3 +109,84 @@ Still unresolved: exact effective room-provider callback binding, boss rotation
 and coverage helper details where required for placement attribution, inherited
 writers and retained modifications, actual assembled envelopes and visual
 observations. Do not repeat these source reads to infer measured geometry.
+
+## Bronze geometry assessment
+
+The two outstanding Item8 size descriptions are resolved from the preserved
+builder, piece constructors and surface-ruin implementation. Architectural
+footprint has a conservative211x211-block enclosing square, including the exit
+corridor. Underground template height is14 blocks. The optional surface ruins
+have a terrain-dependent vertical extension described below. Neither the square
+nor the height is a measured whole-world occupied envelope or a typical layout.
+
+Let O be the original generation-context chunk minimum and A the selected boss
+anchor. BronzeDungeonStructure.searchNearbyChunks searches offsets[-1,1] on
+each chunk axis, so A.x/z-O.x/z is one of -16,0,16. The boss uses a half-template
+pivot; ordinary rooms and tunnels rotate about zero. Component sizes are bound
+in the selected component catalog above. Coordinate intervals below are inclusive.
+
+New propagated chest/lobby origins pass isCloseToCenter against the ORIGINAL
+context chunk, limiting each origin coordinate to O+[-48,63]. The first chest
+origin, which bypasses that check, is A+(2,20),(-4,2),(14,-4), or(20,14) in X/Z
+for NONE,CLOCKWISE_90,CLOCKWISE_180,COUNTERCLOCKWISE_90 respectively. It too is
+inside O+[-48,63]. Relative to A, room origins therefore fit[-64,79]; rotated
+12-wide rooms fit[-75,90] on either axis. Boss16-wide placement also fits.
+
+BlockLogicUtil.tunnelFromEvenSquareRoom returns the source box minY. For a
+12-wide room and6-wide connection it offsets the box center by at most6 blocks
+on either horizontal axis; the center is within[-5,6] of a zero-pivot room origin.
+A6-cube connection then adds at most5 further blocks in either direction.
+Thus even connection pieces fit A+[-80,96]. The initial boss connection fits
+inside that interval as well. Collision and coverage tests can only reject
+these attempted pieces. maxrooms=8 is not assumed to guarantee eight rooms.
+
+buildTunnelFromRoom places a6x8x1 entrance from the final room and advances its
+origin one block in the selected direction. The entrance origin fits
+A+[-75,91], its bounds[-80,96], and the first corridor origin[-76,92]. The loop
+uses the ENTRANCE template Z size,1, as its increment, although each selected
+end_corridor template is6x8x5. After each addition it tests whether either
+origin coordinate differs from A by at least100. Consequently corridor origins
+never exceed A+[-100,100]; their zero-pivot rotated templates extend at most5
+further blocks. All architecture fits A+[-105,105] on X/Z, giving211x211.
+This is a conservative common bound, not a claim that a single layout spans
+both extremes. The three exit attempts retain one attempt; failed attempts may
+be retained and are not claimed as open entrances.
+
+For Y, the boss spans A.y..A.y+13. The first connection uses the boss box moved
+up2, and the helper returns that minimum. Every later room/connection uses its
+source box minimum without another upward offset. Thus chest rooms span
+A.y+2..+9, lobby+2..+13, square tunnels+2..+7 and entrance/end corridors+2..+9.
+The underground template union is14 blocks high.
+
+The optional surface piece is horizontally inset3 on each side of a selected
+room, so it does not enlarge that architectural footprint. If B is that room's
+box and H is OCEAN_FLOOR_WG first occupied height at its center, the piece exists
+only when B.maxY+1<=H. Its saved Y interval is[B.maxY+1,H+4]. The architectural
+union INCLUDING that saved component therefore has height max(14,H+5-A.y).
+This formula preserves the terrain dependency instead of inventing a fixed
+full-family height.
+
+Saved surface bounds are not an occupied-write bound. At each perimeter column,
+BronzeDungeonSurfaceRuins uses local world height h and offset k in[-2,1]. Its
+scan visits from the surface piece minY up to h+k-1, filters eligible positions,
+and the cap writes at h+k. Gap endpoint writes stay between scan positions.
+If local terrain differs from the sampled center, writes can lie outside the
+saved surface box, including a cap below its minimum. The column X/Z stays on
+the inset perimeter. A conditional flower patch is an additional decoration:
+its anchor is the clipping-box center projected to terrain. No flower-patch
+extent or measured occupied full-family height is asserted.
+
+The shared helper was directly inspected from the pinned Aether JAR; its member
+identity is bound in family-decisions.processor_inspection. For reproduction:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath downloads/item3/candidates/aether-1.21.1-1.5.10-neoforge.jar \
+  com.aetherteam.aether.world.BlockLogicUtil
+```
+
+BoundingBox center and StructureTemplate rotation conventions use the same
+pinned Minecraft sources and identities recorded in the Gold geometry assessment
+in `../aether-provider/README.md`. The arithmetic here is a direct derivation,
+not a simulation or executable measurement. No new runtime capture, runner
+extension or measurement framework is required for these approximate dimensions.

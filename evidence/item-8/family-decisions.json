@@ -78540,7 +78540,7 @@
       "structure_ids": [
         "aether:bronze_dungeon"
       ],
-      "rationale": "One room-and-tunnel dungeon assembly. The entry invokes BronzeDungeonBuilder, which binds boss_room, chest_room, lobby, square_tunnel, entrance and end_corridor through its room, connection and surface-tunnel paths. These six template roles remain components of one design. The boss template authors a Slider; chest markers select ordinary chests or mimic blocks. Its connected tunnels and rooms differ from the Silver multi-floor building, Gold island and Brass rotated-room assembly. Canonical design relationships and selected component roles are resolved. Successful assembly, effective placement, encounter behavior and complete gameplay attributes remain unproven; source bindings are not generated-world observations.",
+      "rationale": "One room-and-tunnel dungeon assembly with six selected template roles, authored Slider and chest/mimic marker choices. Its source-derived architectural footprint fits a conservative211x211 envelope including the exit corridor; underground templates are14 high, with conditional terrain-dependent surface ruins and flower decoration separately described. All Item8 descriptions are assessed without inferring measured assembly or encounter success. Components remain one family, distinct from Silver, Gold and Brass designs.",
       "start_pool": null,
       "generation_settings": {
         "type": "aether:bronze_dungeon"
@@ -78618,7 +78618,8 @@
         "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
         "evidence/item-8/sources/aether-trapped-block/identities.json": "729a601cbf86cbb65c8e4f7dd16842cc36dfa6ddecf1e86de83b0a00578750c5",
         "evidence/item-8/sources/aether-trap-bindings/identities.json": "f2815a15dad2b0e62e2d2db44ce5e27a86476a5ed269a49f186bb18ffa8b1261",
-        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/missing-template-code/identities.json": "3f237bac34103b26e4d8576c0c27eb40716ff7408074a4f6ddf38f4f1fcfe8b5"
       },
       "attributes": {
         "intended_hostility": {
@@ -78666,9 +78667,33 @@
           "basis": "Effective required biome set intersects only the captured Aether dimension. The three Aether dungeon sets each resolve15 biomes; Brass resolves2, without missing required or unresolved biome references. This identifies dimension eligibility, not successful generation.",
           "source": "evidence/item-8/sources/structure-inputs.json",
           "dimension_membership_source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        },
+        "approximate_footprint": {
+          "architectural_xz_envelope_blocks": [
+            211,
+            211
+          ],
+          "basis": "Conservative source-derived A+[-105,105] bound on both axes, including room connections and retained end-corridor attempt. Propagated room origins are limited by three chunks from original context; boss anchor may move one chunk. Exit origins advance one block and stop after reaching a100-coordinate difference, with up to5 template blocks beyond. Exact derivation is in the source README.",
+          "scope": "Enclosing bound, not a typical size, occupied area or observed layout. Surface columns are inset within a selected room; the conditional flower patch is separate decoration.",
+          "source": "evidence/item-8/sources/aether-bronze/README.md#bronze-geometry-assessment"
+        },
+        "approximate_vertical_size": {
+          "underground_template_y_blocks": 14,
+          "basis": "Boss A.y..A.y+13; other templates start at A.y+2, with lobby at most12 high. All room propagation preserves minimum Y after the initial2-block offset.",
+          "surface_component": "If selected room B has B.maxY+1<=sampled center terrain H, its saved surface box spans B.maxY+1..H+4. Union with underground architecture has height max(14,H+5-A.y). Otherwise no surface box is added.",
+          "occupied_write_limit": "Surface columns use local terrain h, scanning from piece minY toward h+k and capping at h+k, k in[-2,1]. Local heights can place writes outside saved bounds. Flower patch is separate; no fixed occupied whole-family height is claimed.",
+          "source": "evidence/item-8/sources/aether-bronze/README.md#bronze-geometry-assessment"
         }
       },
-      "processor_effects": "Shared AetherTemplateStructurePiece callback is bound to StructurePlaceSettings.addProcessor for each configured list entry. BossRoomProcessor adds Dungeon metadata to authored entity NBT; DoubleDropsProcessor sets DOUBLE_DROPS=true where supported while preserving position and NBT. This is source attribution, not proof of effective world placement."
+      "processor_effects": "Shared AetherTemplateStructurePiece callback is bound to StructurePlaceSettings.addProcessor for each configured list entry. BossRoomProcessor adds Dungeon metadata to authored entity NBT; DoubleDropsProcessor sets DOUBLE_DROPS=true where supported while preserving position and NBT. This is source attribution, not proof of effective world placement.",
+      "processor_inspection": {
+        "archive": "aether-1.21.1-1.5.10-neoforge.jar",
+        "archive_sha256": "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8",
+        "members": {
+          "com/aetherteam/aether/world/BlockLogicUtil.class": "6867de707e469d8b7fcd3795fa4d7ae8c904eb939bb282166b817c67ba985a70"
+        },
+        "basis": "Direct tunnelFromEvenSquareRoom geometry inspection, reused from the pinned Aether artifact. See Bronze geometry assessment."
+      }
     },
     {
       "family_id": "aether:gold_dungeon",
