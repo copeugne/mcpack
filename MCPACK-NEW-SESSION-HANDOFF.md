@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS haunted manor assessed after 90b67729
+
+Nine entries integrated with frozen connector defect. Integrated API Assembler
+calls GeneralUtils.canJigsawsAttach, requiring exact target/name equality;
+start minecraft: targets fail idas: receiver names. Frozen source estimate is
+starting piece47 by36,height48, not repaired four-piece manor. Piece1 skeletons/
+two spawners distinct from detached piece2's three spawners and other packaged
+contents. Three defined loot tables and natural full-bounds wraith3,group3..4
+preserved. Ice and Fire absent keeps default pool. No baseline repair/runtime/tool
+added; direct pinned consumer inspection recorded with class hashes.
+All85 focused checks pass (61.21s); only haunted_manor/input identity changed.
+Total440/448 assessed;eight connected IDAS families/72 entries remain,nine each.
+Quantify next batch and reuse findings; exact connector compatibility is necessary
+before claiming a nominal complete assembly. GeneralUtils inspection is reusable.
+Details: evidence/item-8/sources/idas-haunted-manor-assessment/README.md.
+Inventory SHA-256: 3f5f484806595dbf393925c32cea1c844e6353db716cbfb3f3e7ba57b909fc11.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS frozen crypt assessed after bbf5d092
 
 Nine entries integrated for entrance/crypt. Crypt origin-7,-15,-14 gives nominal
