@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Next IDAS comparison covers eight single-template buildings: abandoned_lighthouse,
+botanist, fishermans_lodge, hermits_hollow, hunters_cabin, mason_house, pumpkin_cafe
+and wacky_wares. Some are large despite being single-template. Reuse the corrected
+worksite framing in the existing renderer. Full contents include distinct loot,
+workstations and inhabitants; filenames do not establish peacefulness. No new
+measurement system. Backlog remains 44 until decisions pass.
+
 Inventory matches 862a41f9 and independently reproduces exactly. All 887 roots
 remain assigned once in 426 working groups; full dig-site variants survive the
 split. Backlog: 44, all IDAS. Next: remaining IDAS buildings/assemblies using
