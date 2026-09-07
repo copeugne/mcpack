@@ -10186,3 +10186,27 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-castle-farm
 ```
 
 Use fresh output files. Source alternatives are not complete generated assemblies.
+
+### Connected IDAS assembly inventory refresh
+
+Decision a591b248 resolves desert ruins, ruined well, ruins of the deep,
+snifferhenge and windswept shrine using existing packaged contents and matching
+component connectors. Focused IDAS checks pass (1 passed, 77 deselected), as do
+scoped Ruff/Basedpyright checks. Canonical backlog: 8, all IDAS. Two fresh builds
+agree exactly, SHA-256
+fceaee3c66556f838fb7a8e22510ccff91f6b0a779d141374132370031b175f8.
+Only these five grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-connected-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-connected-r2.json
+cmp evidence/raw/item8/inventory-idas-connected-r1.json evidence/raw/item8/inventory-idas-connected-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-connected-r2.json
+```
+
+Use fresh output files. Component reachability does not establish effective spawns.

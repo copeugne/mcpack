@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches a591b248 and reproduces exactly. Canonical backlog is 8, listed
+below. All 887 roots remain in 426 working groups with full variants and derived
+attributes unchanged. Remaining house and ruin comparisons come next. Attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
 Five connected assemblies now have resolved canonical decisions: desert ruins,
 ruined well, ruins of the deep, snifferhenge and windswept shrine. Existing pool,
 template and connector evidence proves which named parts are components. Focused
