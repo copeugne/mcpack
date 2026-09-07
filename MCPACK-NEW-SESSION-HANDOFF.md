@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed shipwreck assessed after 255bd9a6
+
+Nine remaining attributes integrated for four variants/21templates, empty
+processors and ten defined loot tables. Nether authored wither skeletons and
+piece-bounded natural override kept separate; End has no authored mobs in trace.
+Existing full End run-a ocean-heavy line7794,chunk110,3 supplies24x9x9 envelope.
+Nether fixed anchors/air-fluid sample checks and End LOWEST_SIDE placement
+recorded without exposure/population guarantees. No new capture/tool. All85
+focused checks pass (59.95s); only shipwreck/input identity changed. Total400/448
+assessed;48 families/433 entries remain: IDAS38/343,Repurposed10/90. Quantify next
+batch and reuse evidence. Details in repurposed-shipwreck-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: e5664e34b9c4997e3a68cbf91a527c1b0e3f2c11a9aceff74d85d4f17afd9e2f.
+
+
 #### Repurposed ruins geometry accepted after b950029e
 
 Fresh ordinary seed42 Overworld ruins_land_warm capture passed readiness,
