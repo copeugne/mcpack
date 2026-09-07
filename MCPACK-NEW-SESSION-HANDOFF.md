@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Creating Space families assessed after 4fbcfd08
+
+Thirty-five attributes finish four roots/seven traced templates. Mars fallback
+legs are not appended to its connector-free primary template. Moon connected
+outpost envelope15x21x15 is source-derived; its clipboard and oxygen contents
+are fixed payloads despite absent loot-table refs. Wreck geometry is preserved.
+No runtime capture or new tooling. Registry270/410, nonregistry40/40,
+total310/450 assessed,140 remaining. Derivation and focused test command:
+sources/creating-space-provider/README.md. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Quantify the next batch before editing. Inventory SHA-256:
+41237d2aaa4fd87e555c80d88fc8b1b79d4f21ce64b65752a3973f9ef072f1da.
+
 #### Mage Complex assessed after 1325620c
 
 Nine attributes finish Mage Complex, one root and eleven templates. Source
