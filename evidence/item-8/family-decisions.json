@@ -72504,11 +72504,12 @@
         "evidence/item-8/sources/idas-related-views/camps.svg.gz": "0485afb5dc85a8b038a50a4850778a0dd8b9140242342a5961fecbec4f02692c",
         "evidence/item-8/sources/idas-related-views/ships.svg.gz": "4d6437867341af61d2b4a157d8ff680d8ae59275bea635b5e8b37c0815669986",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/raw/item8/registry-r1/debug.log": "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
       },
       "family_id": "idas:ancient_portal",
       "name": "IDAS ancient portal",
-      "rationale": "Overworld and Nether roots use corresponding two-piece monumental portal-frame architecture. Each pair forms one assembly; neither halves nor dimension variants are separate families. The four templates preserve obsidian/crying obsidian, physical spawners and trapped-chest loot, with dimension-specific ancient-portal loot tables. Full definitions preserve fixed underground versus Nether land-search placement and different silverfish/wraith overrides; generic versus waterlogging-fix processor references remain in traces. No active portal blocks or tested portal use are established by the frame. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Overworld and Nether roots use corresponding two-piece monumental portal-frame architecture. Each pair forms one assembly; neither halves nor dimension variants are separate families. The four templates preserve obsidian/crying obsidian, physical spawners and trapped-chest loot, with dimension-specific ancient-portal loot tables. Full definitions preserve fixed underground versus Nether land-search placement and different silverfish/wraith overrides; generic versus waterlogging-fix processor references remain in traces. No active portal blocks or tested portal use are established by the frame. Canonical design relationships are resolved. Required attributes assessed with variant processor and optional-provider limits; final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:ancient_portal/ancient_portal",
         "idas:ancient_portal/nether_ancient_portal"
@@ -72656,6 +72657,120 @@
             "artifact": "evidence/item-8/sources/world-bounds.json.gz"
           },
           "basis": "Inclusive vertical envelope of the same sampled saved piece boxes; not burial depth, terrain relief or guaranteed complete population."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Four connected templates across two variants have no directly authored entities, unresolved entity compounds or generation markers. Overworld pieces select generic spawner randomization; Nether pieces retain raw spawner data under ticking-only processing. Natural silverfish/wraith overrides are separate. No missing graph components; source declarations do not establish live populations."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ],
+              "value": "idas:chests/ancient_portal/ancient_portal_nether"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:ancient_portal/ancient_portal1",
+                "idas:ancient_portal/ancient_portal2"
+              ],
+              "value": "idas:chests/ancient_portal/ancient_portal_overworld"
+            }
+          ],
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Both Overworld components reference defined idas:chests/ancient_portal/ancient_portal_overworld; both Nether components reference defined idas:chests/ancient_portal/ancient_portal_nether. Selected ticking/spawner processors append no container loot NBT. Trapped-chest source references do not establish successful trap behavior or reward quantities."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "alexsmobs:soul_vulture",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ]
+            },
+            {
+              "entity_id": "quark:wraith",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:ancient_portal/ancient_portal1",
+                "idas:ancient_portal/ancient_portal2",
+                "idas:ancient_portal/nether_ancient_portal1",
+                "idas:ancient_portal/nether_ancient_portal2"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Variant-specific spawner, template and natural sources assessed; absent optional provider preserved.",
+          "template_ids": [
+            "idas:ancient_portal/ancient_portal1",
+            "idas:ancient_portal/ancient_portal2",
+            "idas:ancient_portal/nether_ancient_portal1",
+            "idas:ancient_portal/nether_ancient_portal2"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Each Overworld template contains one ordinary raw-wraith spawner and selects idas:generic_processor, whose idas:generic list declares zombie15,skeleton10,wraith5. Each Nether template contains three ordinary spawners with raw wraith/soul_vulture sources and selects only waterlogging_fix_processor, so those declarations are not randomized. AlexsMobs is absent; soul_vulture is not a verified viable spawn source. No trial spawners. Counts are authored blocks per component, not observed generated counts. Existing manager failure/fallback limits apply to the randomized path."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Authored sources are ordinary spawners with variant-specific processing. Overworld natural piece overrides separately declare silverfish and wraith each weight3 group1..4; Nether declares wraith weight10 group1. Quark is present but AlexsMobs is absent in the frozen Mod List. Spawner source selection and natural weights do not establish realized encounters."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Loot-bearing monumental frame assemblies with ordinary spawners and natural monster overrides. Optional absent soul-vulture provider limits Nether source viability. No measured intensity, guaranteed trap operation or difficulty tier. Obsidian/crying-obsidian frame form does not prove an active or usable portal."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Large portal-frame architecture provides an interior landmark when exposed; underground placement and Nether terrain can obscure it. No surface marker, visible entrance, measured sightline or tested portal navigation is established."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-ancient-portal-assessment/README.md",
+          "assessment": "Overworld generic_structure root uses absoluteY-45, underground_structures, size2 and beard_box: underground intent without measured burial. Nether uses nether_structure, HIGHEST_LAND offset0, surface_structures, size2 and beard_box: Nether land-associated frame. Accepted Nether saved-piece sample does not bound every variant or measure occupied volume."
         }
       }
     },
