@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS dig site assessed after 2870ac21
+
+Nine entries integrated for four rigid connected components. Main0,0,0,bottom
+0,-9,0,stable-12,0,3,stable-bottom-12,-1,3 yield nominal42 by39 footprint,21 height.
+Villagers/horses distinct from absent-provider guards and item entities. Three
+literal chest tables plus two conditional modern append_loot archaeology sources
+are defined and preserved separately. Two CORNER markers; no spawners or unresolved
+entities. Per-element terrain kernels distinct from root adaptation none.
+No runtime/tool added. All85 focused checks pass (60.79s); only dig_site/input
+identity changed. Total435/448 assessed;13 connected IDAS families/117 entries
+remain, nine each. Next desert_dig_site is two components/nine entries sharing
+this processor; quantify before integrating its distinct geometry/content.
+Root IDs differ from family IDs here: dig_site/dig_site and dig_site/dig_site_desert.
+Details: evidence/item-8/sources/idas-dig-site-assessment/README.md.
+Inventory SHA-256: 0cb43625c4cbd83e44527842d2d20463d849e2e1163e8fbebef38ba1440bc78b.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS necromancer spire assessed after 481392a5
 
 Nine entries integrated for four rigid connected components. Origins0,0,0;
