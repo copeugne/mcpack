@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Bronze geometry assessed after cbacb732
+
+Bronze's two outstanding sizes resolved from preserved source: conservative
+211x211 architectural bound including end corridor,14-block underground height,
+and explicit conditional surface-height formula. Surface column writes use local
+terrain and may escape saved Y bounds; flower decoration is separate. No typical
+layout or occupied whole-world maximum is claimed. Exact origin, connection,
+post-addition cutoff and vertical derivation are in the Bronze geometry README.
+No capture/tool added. All85 focused tests pass (58.91s); only Bronze/input identity
+changed. Registry327/408,nonregistry40/40,total367/448 assessed,81 remain;
+721 outstanding explicit attribute slots. Aether and DeepAether are assessed.
+Remaining families: IDAS38,Repurposed17,vanilla13,BetterEnd9,CTOV2,
+IntegratedStronghold/Villages2. Quantify and inspect existing evidence for the next
+provider batch; do not reopen completed Aether work without a concrete defect.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+92737b4b1a3ed9fba30af17fdf2666ef40287157cc7e0bcfd641a37601f8483d.
+
+
 #### Gold geometry assessed after 087ed897
 
 Two remaining Gold sizes resolved by direct coordinate derivation. All templates
