@@ -88682,7 +88682,12 @@
     "integrated_stronghold:stronghold": {
       "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
       "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "Template creepers, spiders and zombies, processor-configured ordinary spawners and Quark monster boxes. Optional packaged enemies are distinguished from retained providers.",
+        "natural": "Piece-bounds silverfish and enderman monster override retained in mob_source.",
+        "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+        "value": "Both"
+      },
       "biome_constraints": {
         "integrated_stronghold:stronghold": {
           "biomes": [
@@ -88875,34 +88880,206 @@
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [
-          "integrated_stronghold:dining_hall/dining_hall",
-          "integrated_stronghold:dining_hall/dining_hall_hallway",
-          "integrated_stronghold:enchanting/enchanting",
-          "integrated_stronghold:fountain/fountain_hallway1",
-          "integrated_stronghold:fountain/intersection",
-          "integrated_stronghold:fountain/intersection_hallway1",
-          "integrated_stronghold:grand_library/grand_library",
+        "limitations": "Template presence is not a placed count. Rule removals and remove_floating_blocks processors can affect placement. Shared manager discards unresolved entity types and zero weights; missing lists fall back to the dungeon array, zero total returns null, and selection exceptions return pig. No successful spawn or observed distribution is claimed.",
+        "monster_box_conversion": "Where declared, minecraft:rule changes quark:monster_box to minecraft:spawner with probability0.1 before spawner randomization. Unconverted monster boxes are a separate one-use encounter source.",
+        "packaged_default": "Ordinary spawner NBT names minecraft:pig with empty SpawnPotentials. Selected processors replace the NBT with their chosen entity and settings.",
+        "processor_spawner_lists": {
+          "armory_processor": "integrated_stronghold:stronghold",
+          "bedroom_processor": null,
+          "brewing_processor": "integrated_stronghold:enchanting",
+          "crypt_processor": "integrated_stronghold:stronghold",
+          "dining_hall_processor": "integrated_stronghold:stronghold",
+          "elevator_processor": "integrated_stronghold:stronghold",
+          "enchanting_processor": "integrated_stronghold:enchanting",
+          "farm_processor": "integrated_stronghold:stronghold",
+          "intersection_processor": "integrated_stronghold:stronghold",
+          "library_processor": "integrated_stronghold:library",
+          "maze_processor": "integrated_stronghold:maze",
+          "nether_portal_processor": "integrated_stronghold:nether_portal",
+          "portal_room_processor": "integrated_stronghold:portal_room",
+          "prison_processor": "integrated_stronghold:prison",
+          "sanctorum_processor": "integrated_stronghold:stronghold",
+          "secret_lab_processor": "integrated_stronghold:enchanting",
+          "storage_processor": "integrated_stronghold:stronghold",
+          "stronghold_processor": "integrated_stronghold:stronghold",
+          "torture_chamber_processor": "integrated_stronghold:prison"
+        },
+        "settings": {
+          "delay": 20,
+          "max_nearby_entities": 6,
+          "max_spawn_delay": 800,
+          "min_spawn_delay": 200,
+          "required_player_range": 16,
+          "spawn_count": 4,
+          "spawn_range": 4,
+          "valid_block_light_level": {
+            "max_inclusive": 7,
+            "min_inclusive": 0
+          }
+        },
+        "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+        "template_ids": [
+          "integrated_stronghold:dining_hall/dining_hall_storage_left",
+          "integrated_stronghold:dining_hall/dining_hall_storage_right",
+          "integrated_stronghold:enchanting/enchanting_hallway",
+          "integrated_stronghold:grand_library/grand_library_secret_lab",
+          "integrated_stronghold:maze/maze1",
+          "integrated_stronghold:maze/maze2",
+          "integrated_stronghold:maze/maze3",
           "integrated_stronghold:nether_portal/nether_portal",
+          "integrated_stronghold:nether_portal/nether_portal_hallway",
           "integrated_stronghold:portal_room/portal_room",
-          "integrated_stronghold:portal_room/portal_room_gate",
           "integrated_stronghold:prison/prison",
+          "integrated_stronghold:prison/prison_hallway",
+          "integrated_stronghold:prison/torture_chamber",
           "integrated_stronghold:sanctorum/intersection2",
           "integrated_stronghold:sanctorum/sanctorum",
-          "integrated_stronghold:sanctorum/sanctorum_hallway"
+          "integrated_stronghold:small_room/small_brewing_left",
+          "integrated_stronghold:small_room/small_brewing_right",
+          "integrated_stronghold:small_room/small_crypt_left",
+          "integrated_stronghold:small_room/small_crypt_right",
+          "integrated_stronghold:small_room/small_prison_left",
+          "integrated_stronghold:small_room/small_prison_right",
+          "integrated_stronghold:small_room/small_storage_left",
+          "integrated_stronghold:small_room/small_storage_right"
         ],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:pig",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
+        "weighted_lists": {
+          "enchanting": [
+            {
+              "name": "minecraft:skeleton",
+              "weight": 10
+            },
+            {
+              "name": "minecraft:zombie",
+              "weight": 10
+            },
+            {
+              "name": "quark:forgotten",
+              "weight": 5
+            }
+          ],
+          "library": [
+            {
+              "name": "minecraft:cave_spider",
+              "weight": 20
+            },
+            {
+              "name": "minecraft:spider",
+              "weight": 5
+            }
+          ],
+          "maze": [
+            {
+              "name": "minecraft:skeleton",
+              "weight": 10
+            },
+            {
+              "name": "minecraft:zombie",
+              "weight": 10
+            },
+            {
+              "name": "quark:forgotten",
+              "weight": 5
+            }
+          ],
+          "nether_portal": [
+            {
+              "name": "minecraft:skeleton",
+              "weight": 10
+            }
+          ],
+          "portal_room": [
+            {
+              "name": "quark:forgotten",
+              "weight": 15
+            }
+          ],
+          "prison": [
+            {
+              "name": "minecraft:skeleton",
+              "weight": 10
+            },
+            {
+              "name": "minecraft:zombie",
+              "weight": 10
+            },
+            {
+              "name": "quark:forgotten",
+              "weight": 5
+            }
+          ],
+          "stronghold": [
+            {
+              "name": "minecraft:skeleton",
+              "weight": 10
+            },
+            {
+              "name": "minecraft:zombie",
+              "weight": 10
+            },
+            {
+              "name": "quark:forgotten",
+              "weight": 5
+            }
+          ]
+        }
+      },
+      "grouping_decision": {
+        "attributes": {
+          "authored_or_natural_enemies": {
+            "authored": "Template creepers, spiders and zombies, processor-configured ordinary spawners and Quark monster boxes. Optional packaged enemies are distinguished from retained providers.",
+            "natural": "Piece-bounds silverfish and enderman monster override retained in mob_source.",
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+            "value": "Both"
+          },
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured Overworld dimension membership. Dimension eligibility is distinguished from successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "limitations": "Template presence is not a placed count. Rule removals and remove_floating_blocks processors can affect placement. Shared manager discards unresolved entity types and zero weights; missing lists fall back to the dungeon array, zero total returns null, and selection exceptions return pig. No successful spawn or observed distribution is claimed.",
+            "monster_box_conversion": "Where declared, minecraft:rule changes quark:monster_box to minecraft:spawner with probability0.1 before spawner randomization. Unconverted monster boxes are a separate one-use encounter source.",
+            "packaged_default": "Ordinary spawner NBT names minecraft:pig with empty SpawnPotentials. Selected processors replace the NBT with their chosen entity and settings.",
+            "processor_spawner_lists": {
+              "armory_processor": "integrated_stronghold:stronghold",
+              "bedroom_processor": null,
+              "brewing_processor": "integrated_stronghold:enchanting",
+              "crypt_processor": "integrated_stronghold:stronghold",
+              "dining_hall_processor": "integrated_stronghold:stronghold",
+              "elevator_processor": "integrated_stronghold:stronghold",
+              "enchanting_processor": "integrated_stronghold:enchanting",
+              "farm_processor": "integrated_stronghold:stronghold",
+              "intersection_processor": "integrated_stronghold:stronghold",
+              "library_processor": "integrated_stronghold:library",
+              "maze_processor": "integrated_stronghold:maze",
+              "nether_portal_processor": "integrated_stronghold:nether_portal",
+              "portal_room_processor": "integrated_stronghold:portal_room",
+              "prison_processor": "integrated_stronghold:prison",
+              "sanctorum_processor": "integrated_stronghold:stronghold",
+              "secret_lab_processor": "integrated_stronghold:enchanting",
+              "storage_processor": "integrated_stronghold:stronghold",
+              "stronghold_processor": "integrated_stronghold:stronghold",
+              "torture_chamber_processor": "integrated_stronghold:prison"
+            },
+            "settings": {
+              "delay": 20,
+              "max_nearby_entities": 6,
+              "max_spawn_delay": 800,
+              "min_spawn_delay": 200,
+              "required_player_range": 16,
+              "spawn_count": 4,
+              "spawn_range": 4,
+              "valid_block_light_level": {
+                "max_inclusive": 7,
+                "min_inclusive": 0
+              }
+            },
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+            "template_ids": [
               "integrated_stronghold:dining_hall/dining_hall_storage_left",
               "integrated_stronghold:dining_hall/dining_hall_storage_right",
               "integrated_stronghold:enchanting/enchanting_hallway",
@@ -88926,85 +89103,151 @@
               "integrated_stronghold:small_room/small_prison_right",
               "integrated_stronghold:small_room/small_storage_left",
               "integrated_stronghold:small_room/small_storage_right"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "integrated_stronghold:dining_hall/dining_hall",
-          "integrated_stronghold:dining_hall/dining_hall_hallway",
-          "integrated_stronghold:dining_hall/dining_hall_kitchen",
-          "integrated_stronghold:dining_hall/dining_hall_kitchen_stairs",
-          "integrated_stronghold:dining_hall/dining_hall_quarters",
-          "integrated_stronghold:dining_hall/dining_hall_storage_left",
-          "integrated_stronghold:dining_hall/dining_hall_storage_right",
-          "integrated_stronghold:dining_hall/dining_hall_water_wheel",
-          "integrated_stronghold:elevator/elevator",
-          "integrated_stronghold:elevator/elevator_hallway",
-          "integrated_stronghold:elevator/maze_hallway",
-          "integrated_stronghold:enchanting/enchanting",
-          "integrated_stronghold:enchanting/enchanting_hallway",
-          "integrated_stronghold:fountain/fountain",
-          "integrated_stronghold:fountain/fountain_hallway1",
-          "integrated_stronghold:fountain/fountain_stairs",
-          "integrated_stronghold:fountain/intersection",
-          "integrated_stronghold:fountain/intersection_hallway1",
-          "integrated_stronghold:grand_library/grand_library",
-          "integrated_stronghold:grand_library/grand_library_hallway",
-          "integrated_stronghold:grand_library/grand_library_pedestal_room",
-          "integrated_stronghold:grand_library/grand_library_secret_lab",
-          "integrated_stronghold:maze/maze1",
-          "integrated_stronghold:maze/maze2",
-          "integrated_stronghold:maze/maze3",
-          "integrated_stronghold:maze/maze_entrance",
-          "integrated_stronghold:maze/maze_ladder",
-          "integrated_stronghold:nether_portal/nether_portal",
-          "integrated_stronghold:nether_portal/nether_portal_hallway",
-          "integrated_stronghold:portal_room/portal_room",
-          "integrated_stronghold:portal_room/portal_room_gate",
-          "integrated_stronghold:portal_room/portal_room_hallway",
-          "integrated_stronghold:prison/prison",
-          "integrated_stronghold:prison/prison_hallway",
-          "integrated_stronghold:prison/prison_hallway2",
-          "integrated_stronghold:prison/torture_chamber",
-          "integrated_stronghold:sanctorum/intersection2",
-          "integrated_stronghold:sanctorum/intersection2_hallway1",
-          "integrated_stronghold:sanctorum/intersection2_hallway2",
-          "integrated_stronghold:sanctorum/sanctorum",
-          "integrated_stronghold:sanctorum/sanctorum_hallway",
-          "integrated_stronghold:sanctorum/sanctorum_water_wheel",
-          "integrated_stronghold:small_room/small_bedroom_left",
-          "integrated_stronghold:small_room/small_bedroom_right",
-          "integrated_stronghold:small_room/small_brewing_left",
-          "integrated_stronghold:small_room/small_brewing_right",
-          "integrated_stronghold:small_room/small_crypt_left",
-          "integrated_stronghold:small_room/small_crypt_right",
-          "integrated_stronghold:small_room/small_farm_left",
-          "integrated_stronghold:small_room/small_farm_right",
-          "integrated_stronghold:small_room/small_library_left",
-          "integrated_stronghold:small_room/small_library_right",
-          "integrated_stronghold:small_room/small_mines_left",
-          "integrated_stronghold:small_room/small_mines_right",
-          "integrated_stronghold:small_room/small_prison_left",
-          "integrated_stronghold:small_room/small_prison_right",
-          "integrated_stronghold:small_room/small_storage_left",
-          "integrated_stronghold:small_room/small_storage_right"
-        ],
-        "unresolved_sources": {}
-      },
-      "grouping_decision": {
-        "attributes": {
-          "dimension": {
-            "basis": "Every effective root biome set intersects only captured Overworld dimension membership. Dimension eligibility is distinguished from successful generation.",
-            "biome_source": "evidence/item-8/sources/structure-inputs.json",
-            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-            "value": [
-              "minecraft:overworld"
-            ]
+            ],
+            "weighted_lists": {
+              "enchanting": [
+                {
+                  "name": "minecraft:skeleton",
+                  "weight": 10
+                },
+                {
+                  "name": "minecraft:zombie",
+                  "weight": 10
+                },
+                {
+                  "name": "quark:forgotten",
+                  "weight": 5
+                }
+              ],
+              "library": [
+                {
+                  "name": "minecraft:cave_spider",
+                  "weight": 20
+                },
+                {
+                  "name": "minecraft:spider",
+                  "weight": 5
+                }
+              ],
+              "maze": [
+                {
+                  "name": "minecraft:skeleton",
+                  "weight": 10
+                },
+                {
+                  "name": "minecraft:zombie",
+                  "weight": 10
+                },
+                {
+                  "name": "quark:forgotten",
+                  "weight": 5
+                }
+              ],
+              "nether_portal": [
+                {
+                  "name": "minecraft:skeleton",
+                  "weight": 10
+                }
+              ],
+              "portal_room": [
+                {
+                  "name": "quark:forgotten",
+                  "weight": 15
+                }
+              ],
+              "prison": [
+                {
+                  "name": "minecraft:skeleton",
+                  "weight": 10
+                },
+                {
+                  "name": "minecraft:zombie",
+                  "weight": 10
+                },
+                {
+                  "name": "quark:forgotten",
+                  "weight": 5
+                }
+              ],
+              "stronghold": [
+                {
+                  "name": "minecraft:skeleton",
+                  "weight": 10
+                },
+                {
+                  "name": "minecraft:zombie",
+                  "weight": 10
+                },
+                {
+                  "name": "quark:forgotten",
+                  "weight": 5
+                }
+              ]
+            }
+          },
+          "intended_hostility": {
+            "basis": "Reachable templates contain creepers, spiders and zombies; selected processors configure hostile spawner lists. Optional AlexsMobs and MowziesMobs entities have no retained provider.",
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+            "value": "Hostile underground dungeon with authored enemies, hostile spawner selection and natural monster overrides."
+          },
+          "loot_table_source": {
+            "basis": "Template LootTable NBT and selected processor append_loot modifiers in the preserved catalogs. Container removal rules, fixed Items, traps and optional-mod table entries are not proof of a successfully generated reward. Monster-box mob-selection and conditional extra drops use separate Quark tables.",
+            "definition_status": "Every listed literal and processor-assigned table has a current-path packaged definition.",
+            "literal_template_tables": [
+              "integrated_stronghold:chests/dining_hall",
+              "integrated_stronghold:chests/maze",
+              "integrated_stronghold:chests/mine",
+              "integrated_stronghold:chests/storage",
+              "integrated_stronghold:chests/treasure",
+              "integrated_stronghold:dispensers/maze"
+            ],
+            "processor_assigned_tables": [
+              "integrated_stronghold:chests/bedroom",
+              "integrated_stronghold:chests/brewing",
+              "integrated_stronghold:chests/crypt",
+              "integrated_stronghold:chests/enchanting",
+              "integrated_stronghold:chests/farm",
+              "integrated_stronghold:chests/grand_library",
+              "integrated_stronghold:chests/intersection",
+              "integrated_stronghold:chests/maze",
+              "integrated_stronghold:chests/nether_portal",
+              "integrated_stronghold:chests/prison",
+              "integrated_stronghold:chests/sanctorum",
+              "integrated_stronghold:chests/secret_lab",
+              "integrated_stronghold:chests/stronghold",
+              "integrated_stronghold:chests/torture_chamber"
+            ],
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
           },
           "mob_source": {
-            "authored_content": "Reachable template entities, spawners and processors remain to be attributed.",
+            "authored_content": {
+              "absent_provider_namespaces": [
+                "alexsmobs",
+                "mowziesmobs"
+              ],
+              "basis": "Authored entries include decorative entities and vehicles. These are potential sources, not successful live population counts.",
+              "monster_boxes": "Quark one-use spawn-egg selection: witch weight1, cave spider weight2, zombie weight7. See preserved Quark behavior and frozen bindings.",
+              "ordinary_spawners": "See generated_spawners for processor assignments; packaged pig defaults are not the effective selection.",
+              "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+              "template_entity_ids": [
+                "alexsmobs:crow",
+                "alexsmobs:murmur",
+                "alexsmobs:murmur_head",
+                "create:seat",
+                "create:super_glue",
+                "minecraft:bat",
+                "minecraft:chest_minecart",
+                "minecraft:creeper",
+                "minecraft:item_frame",
+                "minecraft:painting",
+                "minecraft:sheep",
+                "minecraft:spider",
+                "minecraft:tnt_minecart",
+                "minecraft:zombie",
+                "mowziesmobs:ferrous_wroughtnaut",
+                "quark:glass_frame"
+              ]
+            },
             "basis": "Packaged structure definition. This is a natural monster-spawn override within piece bounds, not an authored spawn count.",
             "source_trace": "integrated_stronghold:stronghold",
             "structure_spawn_override": {
@@ -89030,14 +89273,23 @@
           "underground_surface_classification": {
             "basis": "Packaged start_height is a uniform distribution with both absolute endpoints at Y=15 and generation step strongholds. The custom generator and terrain determine the final occupied extent.",
             "value": "Underground start with assembled surface exposure unresolved"
+          },
+          "visual_discoverability": {
+            "basis": "The root declares strongholds generation step, absolute start Y15 and no surface heightmap projection, rooted at the fountain template. This is a qualitative placement-based assessment, not a measured sightline or a guarantee that every piece stays buried.",
+            "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+            "value": "Primarily a below-ground discovery target; surface visibility depends on the generated layout and terrain."
           }
         },
         "evidence": {
+          "evidence/item-8/raw-custody/registry-r1-manifest.json": "2e97fcfd93bba7cb3963b1e88afb1fae7e8804a9fe1aec54ff3be245a59642ee",
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/integrated-api-dependency-caller/identities.json": "d48afad5e1c7a3ca12a455587d1a9b8da139d1ab479a9aaf2bae2a25c5f74a3a",
           "evidence/item-8/sources/integrated-stronghold-provider/identities.json": "0044580a6b6f71c9b32c8d385d539779c7b0b2ad22d4c21bf1a5bfbbf2785d5b",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/quark-monster-box-behavior/identities.json": "9ce1a6e746759357630f45fcd135c126df48f38f4951d5fa0932144b3788e79b",
+          "evidence/item-8/sources/quark-monster-box-bindings/identities.json": "e8b2cf605a2c485da43a062cf0a37128491fb085d92d46f54a3c694eff4a28ae",
           "evidence/item-8/sources/stronghold-suppression/identities.json": "56e90dc542fe8ef9a152ccaa201cfa79e2e4f629f4b9b68623a4bf9c96f7224b",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
         },
@@ -89047,135 +89299,84 @@
           "integrated_stronghold:small_room/small_armory_right"
         ],
         "name": "Integrated Stronghold",
+        "processor_inspection": {
+          "archive": "integrated_api-1.7.3+1.21.1-neoforge.jar",
+          "archive_sha256": "81bffee0e09dce9160376c36c3f38b26af4470393ecf7b2d6fdc3fa5c40593ec",
+          "basis": "Reuse the pinned shared spawner processor and manager inspection documented in Integrated Villages content assessment.",
+          "members": {
+            "com/craisinlord/integrated_api/misc/mobspawners/MobSpawnerManager.class": "222a6c72d2c4e49ff85770c573e82ed19019db37a0b40eb833ac81e000e91c7d",
+            "com/craisinlord/integrated_api/world/processors/SpawnerRandomizingProcessor.class": "ea399f6d6226b44d427382a920164cba85d42f499aeda99dbd157864223fd8a0"
+          }
+        },
         "rationale": "One assembled stronghold rooted at the fountain start pool. Dining halls, libraries, prisons, portal rooms and other connected pools are components of this structure, not independent families. The Integrated Stronghold and Better Strongholds suppression hooks target vanilla StructureType.STRONGHOLD. This root uses integrated_api:generic_structure and the Better Strongholds root uses yungsapi:yung_jigsaw, so neither matches those vanilla-type filters. Their distinct assembled designs remain separate families, while vanilla is retained as a suppressed candidate. This resolves the replacement boundary without claiming observed placement, completed attributes or an effective Eye of Ender target.",
         "start_pool": "integrated_stronghold:fountain/fountain",
         "structure_ids": [
           "integrated_stronghold:stronghold"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Reachable templates contain creepers, spiders and zombies; selected processors configure hostile spawner lists. Optional AlexsMobs and MowziesMobs entities have no retained provider.",
+        "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+        "value": "Hostile underground dungeon with authored enemies, hostile spawner selection and natural monster overrides."
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
+        "basis": "Template LootTable NBT and selected processor append_loot modifiers in the preserved catalogs. Container removal rules, fixed Items, traps and optional-mod table entries are not proof of a successfully generated reward. Monster-box mob-selection and conditional extra drops use separate Quark tables.",
+        "definition_status": "Every listed literal and processor-assigned table has a current-path packaged definition.",
+        "literal_template_tables": [
+          "integrated_stronghold:chests/dining_hall",
+          "integrated_stronghold:chests/maze",
+          "integrated_stronghold:chests/mine",
+          "integrated_stronghold:chests/storage",
+          "integrated_stronghold:chests/treasure",
+          "integrated_stronghold:dispensers/maze"
         ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:dining_hall/dining_hall_kitchen",
-              "integrated_stronghold:dining_hall/dining_hall_storage_left",
-              "integrated_stronghold:dining_hall/dining_hall_storage_right"
-            ],
-            "value": "integrated_stronghold:chests/dining_hall"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:maze/maze_entrance"
-            ],
-            "value": "integrated_stronghold:chests/maze"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:small_room/small_mines_left",
-              "integrated_stronghold:small_room/small_mines_right"
-            ],
-            "value": "integrated_stronghold:chests/mine"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:maze/maze_entrance",
-              "integrated_stronghold:small_room/small_storage_left",
-              "integrated_stronghold:small_room/small_storage_right"
-            ],
-            "value": "integrated_stronghold:chests/storage"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:maze/maze_entrance",
-              "integrated_stronghold:small_room/small_library_left",
-              "integrated_stronghold:small_room/small_library_right"
-            ],
-            "value": "integrated_stronghold:chests/treasure"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "integrated_stronghold:maze/maze1",
-              "integrated_stronghold:maze/maze2"
-            ],
-            "value": "integrated_stronghold:dispensers/maze"
-          }
+        "processor_assigned_tables": [
+          "integrated_stronghold:chests/bedroom",
+          "integrated_stronghold:chests/brewing",
+          "integrated_stronghold:chests/crypt",
+          "integrated_stronghold:chests/enchanting",
+          "integrated_stronghold:chests/farm",
+          "integrated_stronghold:chests/grand_library",
+          "integrated_stronghold:chests/intersection",
+          "integrated_stronghold:chests/maze",
+          "integrated_stronghold:chests/nether_portal",
+          "integrated_stronghold:chests/prison",
+          "integrated_stronghold:chests/sanctorum",
+          "integrated_stronghold:chests/secret_lab",
+          "integrated_stronghold:chests/stronghold",
+          "integrated_stronghold:chests/torture_chamber"
         ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "integrated_stronghold:dining_hall/dining_hall",
-          "integrated_stronghold:dining_hall/dining_hall_hallway",
-          "integrated_stronghold:dining_hall/dining_hall_kitchen",
-          "integrated_stronghold:dining_hall/dining_hall_kitchen_stairs",
-          "integrated_stronghold:dining_hall/dining_hall_quarters",
-          "integrated_stronghold:dining_hall/dining_hall_storage_left",
-          "integrated_stronghold:dining_hall/dining_hall_storage_right",
-          "integrated_stronghold:dining_hall/dining_hall_water_wheel",
-          "integrated_stronghold:elevator/elevator",
-          "integrated_stronghold:elevator/elevator_hallway",
-          "integrated_stronghold:elevator/maze_hallway",
-          "integrated_stronghold:enchanting/enchanting",
-          "integrated_stronghold:enchanting/enchanting_hallway",
-          "integrated_stronghold:fountain/fountain",
-          "integrated_stronghold:fountain/fountain_hallway1",
-          "integrated_stronghold:fountain/fountain_stairs",
-          "integrated_stronghold:fountain/intersection",
-          "integrated_stronghold:fountain/intersection_hallway1",
-          "integrated_stronghold:grand_library/grand_library",
-          "integrated_stronghold:grand_library/grand_library_hallway",
-          "integrated_stronghold:grand_library/grand_library_pedestal_room",
-          "integrated_stronghold:grand_library/grand_library_secret_lab",
-          "integrated_stronghold:maze/maze1",
-          "integrated_stronghold:maze/maze2",
-          "integrated_stronghold:maze/maze3",
-          "integrated_stronghold:maze/maze_entrance",
-          "integrated_stronghold:maze/maze_ladder",
-          "integrated_stronghold:nether_portal/nether_portal",
-          "integrated_stronghold:nether_portal/nether_portal_hallway",
-          "integrated_stronghold:portal_room/portal_room",
-          "integrated_stronghold:portal_room/portal_room_gate",
-          "integrated_stronghold:portal_room/portal_room_hallway",
-          "integrated_stronghold:prison/prison",
-          "integrated_stronghold:prison/prison_hallway",
-          "integrated_stronghold:prison/prison_hallway2",
-          "integrated_stronghold:prison/torture_chamber",
-          "integrated_stronghold:sanctorum/intersection2",
-          "integrated_stronghold:sanctorum/intersection2_hallway1",
-          "integrated_stronghold:sanctorum/intersection2_hallway2",
-          "integrated_stronghold:sanctorum/sanctorum",
-          "integrated_stronghold:sanctorum/sanctorum_hallway",
-          "integrated_stronghold:sanctorum/sanctorum_water_wheel",
-          "integrated_stronghold:small_room/small_bedroom_left",
-          "integrated_stronghold:small_room/small_bedroom_right",
-          "integrated_stronghold:small_room/small_brewing_left",
-          "integrated_stronghold:small_room/small_brewing_right",
-          "integrated_stronghold:small_room/small_crypt_left",
-          "integrated_stronghold:small_room/small_crypt_right",
-          "integrated_stronghold:small_room/small_farm_left",
-          "integrated_stronghold:small_room/small_farm_right",
-          "integrated_stronghold:small_room/small_library_left",
-          "integrated_stronghold:small_room/small_library_right",
-          "integrated_stronghold:small_room/small_mines_left",
-          "integrated_stronghold:small_room/small_mines_right",
-          "integrated_stronghold:small_room/small_prison_left",
-          "integrated_stronghold:small_room/small_prison_right",
-          "integrated_stronghold:small_room/small_storage_left",
-          "integrated_stronghold:small_room/small_storage_right"
-        ]
+        "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment"
       },
       "mob_source": {
-        "authored_content": "Reachable template entities, spawners and processors remain to be attributed.",
+        "authored_content": {
+          "absent_provider_namespaces": [
+            "alexsmobs",
+            "mowziesmobs"
+          ],
+          "basis": "Authored entries include decorative entities and vehicles. These are potential sources, not successful live population counts.",
+          "monster_boxes": "Quark one-use spawn-egg selection: witch weight1, cave spider weight2, zombie weight7. See preserved Quark behavior and frozen bindings.",
+          "ordinary_spawners": "See generated_spawners for processor assignments; packaged pig defaults are not the effective selection.",
+          "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+          "template_entity_ids": [
+            "alexsmobs:crow",
+            "alexsmobs:murmur",
+            "alexsmobs:murmur_head",
+            "create:seat",
+            "create:super_glue",
+            "minecraft:bat",
+            "minecraft:chest_minecart",
+            "minecraft:creeper",
+            "minecraft:item_frame",
+            "minecraft:painting",
+            "minecraft:sheep",
+            "minecraft:spider",
+            "minecraft:tnt_minecart",
+            "minecraft:zombie",
+            "mowziesmobs:ferrous_wroughtnaut",
+            "quark:glass_frame"
+          ]
+        },
         "basis": "Packaged structure definition. This is a natural monster-spawn override within piece bounds, not an authored spawn count.",
         "source_trace": "integrated_stronghold:stronghold",
         "structure_spawn_override": {
@@ -89210,7 +89411,11 @@
         "basis": "Packaged start_height is a uniform distribution with both absolute endpoints at Y=15 and generation step strongholds. The custom generator and terrain determine the final occupied extent.",
         "value": "Underground start with assembled surface exposure unresolved"
       },
-      "visual_discoverability": "UNKNOWN",
+      "visual_discoverability": {
+        "basis": "The root declares strongholds generation step, absolute start Y15 and no surface heightmap projection, rooted at the fountain template. This is a qualitative placement-based assessment, not a measured sightline or a guarantee that every piece stays buried.",
+        "source": "evidence/item-8/sources/integrated-stronghold-provider/README.md#content-assessment",
+        "value": "Primarily a below-ground discovery target; surface visibility depends on the generated layout and terrain."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -223920,7 +224125,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "0739f1bdf2f6eb09a29cca974140f7f13cf3b70514c420a9681dee863b61e08a",
+    "evidence/item-8/family-decisions.json": "ee6b515a8f22666284172e3c729340d2d19a69ef4322c31c7dcc279c874e10bd",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
