@@ -10045,3 +10045,26 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-wizard-r2.j
 ```
 
 Use fresh output files. Variants retain their contents independently.
+
+
+### Collector museum inventory refresh
+
+Decision 8834f268 resolves the intended two-component museum and preserves
+borrowed loot references without family aliases. The focused IDAS case and scoped
+Ruff/Basedpyright pass. Canonical backlog: 22, all IDAS. Two fresh builds agree,
+SHA-256 59d2e4eda2cb2a474ec5fb0d88d4b6b31cf3fcc884a73fd54138412db410ee42.
+Only the museum grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Nexus, effective attributes, nonregistry reconciliation and delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-museum-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-museum-r2.json
+cmp evidence/raw/item8/inventory-idas-museum-r1.json evidence/raw/item8/inventory-idas-museum-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-museum-r2.json
+```
+
+Use fresh output files. Source dimensions do not prove generated assembly bounds.
