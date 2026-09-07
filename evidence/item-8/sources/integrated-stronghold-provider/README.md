@@ -136,3 +136,50 @@ uv run -m tools.run_item7_gap_targets \
   --receipt evidence/raw/item8/integrated-stronghold-geometry-r1/run.json \
   --timeout-seconds 900 --structure integrated_stronghold:stronghold
 ```
+
+## Geometry acceptance
+
+The predeclared seed42 target completed81 requested chunks and passed readiness,
+correlated flush, clean exit0 and frozen configuration acceptance. Accepted
+comment-line normalization differences remain in run.json. No baseline tuning
+was performed. The stopped world decoded to1803 records; that is retained
+coverage, not the requested sampling denominator. No Java process remained.
+
+Full start chunk-112,-662 is chunks.jsonl line326:50 saved pieces with envelope
+[-1906,-60,-10690,-1665,51,-10486]. Inclusive subtraction gives242x112x205 blocks
+(X,Y,Z). Footprint and height now use this observed example. It includes air and
+padding and does not establish occupied volume, typical/all-layout dimensions or
+full population of every component chunk. The low start and saved Y-60..51
+support the underground assessment without proving complete terrain concealment.
+
+The raw console preserves missing optional-mod items, invalid air item stacks,
+and skipped optional or empty entity IDs, including AlexsMobs entries at
+lines2763-2765 and2781-2783. These do not invalidate the saved piece bounds, but
+preclude treating this capture as successful realization of every authored
+entity or reward. Existing missing armory components remain dispositioned.
+No general compatibility acceptance is claimed.
+
+Archive item8-integrated-stronghold-geometry-r1-84a0377b.tar.gz contains263 files,
+3,986,103 bytes (21,730,301 uncompressed), SHA-256:
+ec6abe3716322313e0294fadcee622c0b1f5416c4e699ee5c9871846723b72ab.
+Manifest SHA-256:
+3dc7b8f3d835d629850c7300919a235f94673010dced59545a06b0ea6c0e966d.
+Decoded chunks SHA-256:
+5c861017eab639e754d396e7c8897b64c59daa686efac5e65014f6d1d0834c0e.
+Release/tag item-8-integrated-stronghold-geometry-2026-09-07-r1 references
+84a0377b7f27187f3008129b99711119b2ba97e7, verified remotely. Local and downloaded
+restores verified all263 files; existing observed_bounds on downloaded line326
+reproduced the full start,50 pieces and242x112x205 size. Local copies share the
+workspace filesystem; the GitHub release is separate durable storage.
+
+Reproduce using fresh output paths:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/integrated-stronghold-geometry-r1"), Path("evidence/raw/item8/integrated-stronghold-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/integrated-stronghold-geometry-r1/world --output evidence/raw/item8/integrated-stronghold-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/integrated-stronghold-geometry-r1 --archive evidence/raw/item8/item8-integrated-stronghold-geometry-r1-84a0377b.tar.gz --manifest evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json --revision 84a0377b7f27187f3008129b99711119b2ba97e7
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-integrated-stronghold-geometry-r1-84a0377b.tar.gz --manifest evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json --target evidence/raw/item8/integrated-stronghold-geometry-r1-restored --receipt evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-local-restore.json
+gh release download item-8-integrated-stronghold-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-integrated-stronghold-geometry-r1-84a0377b.tar.gz --dir evidence/raw/item8/integrated-stronghold-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/integrated-stronghold-geometry-r1-download/item8-integrated-stronghold-geometry-r1-84a0377b.tar.gz --manifest evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-manifest.json --target evidence/raw/item8/integrated-stronghold-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/integrated-stronghold-geometry-r1-downloaded-restore.json
+uv run python -c 'from pathlib import Path; from mcpack_evidence.item7_nbt_models import ChunkRecord; from mcpack_evidence.item8_world_bounds import observed_bounds; print(observed_bounds(ChunkRecord.model_validate_json(Path("evidence/raw/item8/integrated-stronghold-geometry-r1-downloaded-restore/chunks.jsonl").read_text().splitlines()[325])))'
+```
