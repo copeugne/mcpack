@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager benches, paths and Out House assessed after 8f3cce21
+
+Thirty attributes finish Bench, Paths and Out House. Independent template
+alternatives retain separate geometry and loot. Out House connector alignment
+derives a nominal fully attached 8x8x5 XYZ envelope, not guaranteed runtime
+attachment. No new capture, measurement or tooling. Direct derivations are in
+moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+ecf965d9df92ca1de317af3260e054458bebd76a6f8acdff36c576572bcceba8.
+
+Retire these assessments. Voyager 38/65; registry 145/410, nonregistry 40/40,
+total 185/450 assessed, 265 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager carts, camps and facilities assessed after d42bb242
 
 Forty attributes finish Cart (four roots), Campsite (three roots), Wheat Grain
