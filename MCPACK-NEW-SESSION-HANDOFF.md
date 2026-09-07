@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed End portal ruin assessed after 62505f51
+
+Nine remaining attributes integrated from existing two-template pool, empty
+processors and GenericJigsawStructure source. Single rigid alternatives have
+nominal sizes14x23x17 and9x16x11; neither has jigsaw connections, entities,
+spawners or generation markers. Two defined large/small portal loot tables;
+large template lava is a hazard, not an enemy source. Burial/minY constraints
+and visibility limitations retained. No new capture/tool. All85 focused checks
+pass (59.64s); only ruined_portal/input identity changed. Total397/448 assessed;
+51 families/460 entries remain: IDAS38/343,Repurposed13/117. Quantify next batch
+before starting. Details in repurposed-end-portal-assessment README under
+evidence/item-8/sources. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: 19cb4dd77591d30c8b34c08ecd33343ff7b0bb5dbeb64e6d311c8d8563dd46c4.
+
+
 #### Repurposed mansion and monument assessed after 57addac8
 
 Corrected prior remaining-entry count474 to476: two preexisting vertical-size
