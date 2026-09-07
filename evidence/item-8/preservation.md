@@ -64,3 +64,25 @@ GitHub backup ref provides an independent source for the accepted implementation
 
 Remaining: coherent isolated PR history, final-tree equality (with provenance
 documentation accounted separately), PR review loop and verified main delivery.
+
+## Reviewed history consolidation plan
+
+The61 exact ranges in history-consolidation-ranges.tsv combine adjacent source
+selection, source capture and membership-test steps for one provider-disposition
+outcome. Each range ends at its original accepted membership endpoint and contains
+only chore/evidence/test increments; fixes and family assessment increments remain
+separate. The reviewed ranges remove278 administrative commits. Other increments
+are retained. This is bounded consolidation, not a new feature/evidence migration.
+
+The committed tools/consolidate_item8_history.sh creates a new branch using the
+original endpoint trees and verifies tree equality at every milestone and at the
+final source head. It preserves original author metadata and records original
+intervals; an old-to-new mapping retains every source commit reference. It refuses
+an existing destination branch or changed main base. Originals, tags and backups
+are untouched. It uses Git objects without a duplicate checkout because free disk
+is limited. No accepted evidence, source identity or runtime behavior is rewritten.
+
+Run with the committed source revision, a new codex/ branch and a fresh mapping
+path outside ordinary Git, then deliver the mapping as provenance. History-only
+changes with exact source-tree equality do not warrant repeating runtime captures
+or unchanged tests. Final provenance additions must be identified separately.
