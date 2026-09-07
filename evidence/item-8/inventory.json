@@ -24073,29 +24073,79 @@
     },
     "betterdungeons:small_dungeon": {
       "approximate_footprint": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_xz_blocks": [
+        "basis": "One rigid shell with four interior loot-pile connectors. Loot piles are at most2x2x2 and remain within its footprint. Inclusive full-start envelopes in world-bounds corroborate three layouts; rotation can exchange X/Z. No family-frequency claim.",
+        "observation_indexes": [
+          174,
+          268,
+          273,
+          571,
+          657,
+          662
+        ],
+        "observed_xz_blocks": [
           [
             11,
             7
           ],
           [
             11,
-            9
+            11
           ],
           [
             11,
+            9
+          ]
+        ],
+        "template_sizes_xyz": {
+          "small_shell_5x5": [
+            7,
+            7,
+            7
+          ],
+          "small_shell_7x5": [
+            9,
+            7,
+            7
+          ],
+          "small_shell_7x7": [
+            9,
+            7,
+            9
+          ],
+          "small_shell_9x5": [
+            11,
+            7,
+            7
+          ],
+          "small_shell_9x7": [
+            11,
+            7,
+            9
+          ],
+          "small_shell_9x9": [
+            11,
+            7,
             11
           ]
-        ]
+        }
       },
       "approximate_vertical_size": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_y_blocks": [
-          7
-        ]
+        "basis": "All six shells are seven blocks high; interior loot-pile pieces fit within that envelope. Full-start examples agree.",
+        "nominal_room_height_blocks": 7,
+        "observation_indexes": [
+          174,
+          268,
+          273,
+          571,
+          657,
+          662
+        ],
+        "support_extension": "SmallDungeonLegProcessor replaces yellow markers and extends downward through air/fluid until solid terrain or build-height boundary. These terrain-dependent supports can exceed the saved room box. Seven is nominal room height, not fixed total occupied height."
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "Skeleton, spider or zombie ordinary-spawner assignment. No directly saved entities in the16 templates.",
+        "natural": "Conditional ambient biome spawning, with no structure-specific override."
+      },
       "biome_constraints": {
         "betterdungeons:small_dungeon": {
           "biomes": [
@@ -24281,67 +24331,152 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterdungeons:small_dungeon": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "All139 effective small_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+        "value": [
           "minecraft:overworld"
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
+        "basis": "Each shell palette/state count contains one ordinary spawner even where no saved spawner block-entity NBT exists. MobSpawnerProcessor replaces its data with the selected type and singleton spawn potentials. Loot-pile templates contain no spawner blocks.",
+        "block": "minecraft:spawner",
+        "processor_entity_alternatives": [
+          "minecraft:skeleton",
+          "minecraft:spider",
+          "minecraft:zombie"
         ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:pig",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "betterdungeons:small_dungeon/shells/small_shell_5x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x5",
-              "betterdungeons:small_dungeon/shells/small_shell_9x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x9"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
-        ],
-        "unresolved_sources": {}
+        "scope": "Authored source counts and assignment, not measured successful spawning.",
+        "template_count_per_shell": 1
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "One rigid shell with four interior loot-pile connectors. Loot piles are at most2x2x2 and remain within its footprint. Inclusive full-start envelopes in world-bounds corroborate three layouts; rotation can exchange X/Z. No family-frequency claim.",
+            "observation_indexes": [
+              174,
+              268,
+              273,
+              571,
+              657,
+              662
+            ],
+            "observed_xz_blocks": [
+              [
+                11,
+                7
+              ],
+              [
+                11,
+                11
+              ],
+              [
+                11,
+                9
+              ]
+            ],
+            "template_sizes_xyz": {
+              "small_shell_5x5": [
+                7,
+                7,
+                7
+              ],
+              "small_shell_7x5": [
+                9,
+                7,
+                7
+              ],
+              "small_shell_7x7": [
+                9,
+                7,
+                9
+              ],
+              "small_shell_9x5": [
+                11,
+                7,
+                7
+              ],
+              "small_shell_9x7": [
+                11,
+                7,
+                9
+              ],
+              "small_shell_9x9": [
+                11,
+                7,
+                11
+              ]
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "All six shells are seven blocks high; interior loot-pile pieces fit within that envelope. Full-start examples agree.",
+            "nominal_room_height_blocks": 7,
+            "observation_indexes": [
+              174,
+              268,
+              273,
+              571,
+              657,
+              662
+            ],
+            "support_extension": "SmallDungeonLegProcessor replaces yellow markers and extends downward through air/fluid until solid terrain or build-height boundary. These terrain-dependent supports can exceed the saved room box. Seven is nominal room height, not fixed total occupied height."
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Skeleton, spider or zombie ordinary-spawner assignment. No directly saved entities in the16 templates.",
+            "natural": "Conditional ambient biome spawning, with no structure-specific override."
+          },
+          "dimension": {
+            "basis": "All139 effective small_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Each shell palette/state count contains one ordinary spawner even where no saved spawner block-entity NBT exists. MobSpawnerProcessor replaces its data with the selected type and singleton spawn potentials. Loot-pile templates contain no spawner blocks.",
+            "block": "minecraft:spawner",
+            "processor_entity_alternatives": [
+              "minecraft:skeleton",
+              "minecraft:spider",
+              "minecraft:zombie"
+            ],
+            "scope": "Authored source counts and assignment, not measured successful spawning.",
+            "template_count_per_shell": 1
+          },
+          "intended_hostility": {
+            "basis": "Every shell contains one ordinary spawner block; start-pool processor variants assign skeleton, spider or zombie.",
+            "value": "Hostile spawner room"
+          },
+          "loot_table_source": {
+            "basis": "Shell chest NBT references the vanilla table; loot piles1,3,5 reference the provider table in barrels. No nonempty fixed Items or direct entities occur in the16 templates.",
+            "chest_selection": "SmallDungeonChestProcessor preserves candidate chests below frozen minimum1, removes candidates at maximum2, and between limits preserves candidates when nextFloat<=0.2. DungeonContext tracks the count during template placement. These are code/config rules, not guaranteed observed final counts across chunk placement.",
+            "other_rewards": "Ore props remain enabled by frozen Allow Ore Blocks in Corners=true. They are salvage, not extra loot-table sources. Empty pile weighted7/max_count2; each other pile weighted1/max_count1 via YUNG single elements.",
+            "tables": [
+              "minecraft:chests/simple_dungeon",
+              "betterdungeons:small_dungeon/chests/loot_piles"
+            ]
+          },
+          "mob_source": {
+            "authored": "MobSpawnerProcessor sets the spawner entity and singleton spawn potentials from spawner_mob. Six shell sizes each have skeleton/spider/zombie theme entries weighted1/1/2.",
+            "basis": "Packaged small_dungeon pool, three theme processor lists and direct MobSpawnerProcessor.processBlock/lambda inspection. Theme weights describe authored selection, not measured encounters.",
+            "natural": "Empty structure spawn_overrides; ambient spawning remains biome/world-dependent."
+          },
+          "underground_surface_classification": {
+            "basis": "Packaged underground_structures, start_height uniform absolute-50..50 and no surface heightmap projection. Initial anchor Y is not total height.",
+            "value": "Underground room with terrain-dependent support and ceiling treatment"
+          },
+          "visual_discoverability": {
+            "assessment": "Compact underground masonry room, potentially visible through cave openings or excavation; no surface entrance or exterior landmark in this topology.",
+            "basis": "Underground generation step, absolute start range-50..50, room/loot-pile topology and ceiling/terrain processors. Source inference, not measured human discovery distance."
+          }
+        },
         "evidence": {
+          "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml": "3bedf4e1c213bf204faf5f56bdd22f2fa7b045cbcb3da2d6285a4bdb116aeb37",
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/dungeons-provider/identities.json": "a5b208a65d4a97e7fb79d6a1211cc90517c7a5dce8d03bfe5c697bdc0392718f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "betterdungeons:small_dungeon",
         "generation_settings": {
@@ -24358,93 +24493,44 @@
         },
         "missing_components": [],
         "name": "betterdungeons Small Dungeon",
+        "processor_inspection": {
+          "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+          "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+          "basis": "Direct pinned-javap inspection; methods and derivations recorded in sources/dungeons-provider/README.md, Small Dungeon assessment.",
+          "members": {
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/MobSpawnerProcessor.class": "a80ec9cbf16b425c8fc6cfc1a31893f82351e9a4eaadec31010e16b2eb92d8f1",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingLampPropProcessor.class": "a405894e116375067f6359681b921319b73b8c2dbbf78d626dc809b3b00ca372",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingProcessor.class": "e69b492c362b960257ad9239c914f9c11a8c33af61bceb230e463b223828e462",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingPropProcessor.class": "1bc9b2df852be45fb161e98c2b66b74d7a97fe22a2605109a0cd11421ff7e11e",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonChestProcessor.class": "a6c73478528608fe479d3a8c3f0613084e8a4cd8658acf0eaa561f686e50f2dd",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCobblestoneProcessor.class": "066f2c3272b2309483b6b7cb9a863c63fc0b613d38c007345620ad59dd6f8689",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonLegProcessor.class": "1a79e53f4f3247cc6da03659283abd280c1652e54f34b1b9996e3c7922543557",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonOreProcessor.class": "a5b3e83644bf320552f20c619f48206c8e7841c8612b47119cdba9dd4d03ed4f"
+          }
+        },
         "rationale": "A small overworld dungeon assembly with its own start pool and anchor. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
         "start_pool": "betterdungeons:small_dungeon",
         "structure_ids": [
           "betterdungeons:small_dungeon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Every shell contains one ordinary spawner block; start-pool processor variants assign skeleton, spider or zombie.",
+        "value": "Hostile spawner room"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_5"
-            ],
-            "value": "betterdungeons:small_dungeon/chests/loot_piles"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:small_dungeon/shells/small_shell_5x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x5",
-              "betterdungeons:small_dungeon/shells/small_shell_9x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x9"
-            ],
-            "value": "minecraft:chests/simple_dungeon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
+        "basis": "Shell chest NBT references the vanilla table; loot piles1,3,5 reference the provider table in barrels. No nonempty fixed Items or direct entities occur in the16 templates.",
+        "chest_selection": "SmallDungeonChestProcessor preserves candidate chests below frozen minimum1, removes candidates at maximum2, and between limits preserves candidates when nextFloat<=0.2. DungeonContext tracks the count during template placement. These are code/config rules, not guaranteed observed final counts across chunk placement.",
+        "other_rewards": "Ore props remain enabled by frozen Allow Ore Blocks in Corners=true. They are salvage, not extra loot-table sources. Empty pile weighted7/max_count2; each other pile weighted1/max_count1 via YUNG single elements.",
+        "tables": [
+          "minecraft:chests/simple_dungeon",
+          "betterdungeons:small_dungeon/chests/loot_piles"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
-        ],
-        "unresolved_authored_entities": {}
+        "authored": "MobSpawnerProcessor sets the spawner entity and singleton spawn potentials from spawner_mob. Six shell sizes each have skeleton/spider/zombie theme entries weighted1/1/2.",
+        "basis": "Packaged small_dungeon pool, three theme processor lists and direct MobSpawnerProcessor.processBlock/lambda inspection. Theme weights describe authored selection, not measured encounters.",
+        "natural": "Empty structure spawn_overrides; ambient spawning remains biome/world-dependent."
       },
       "name": "betterdungeons Small Dungeon",
       "pool_trace_ids": [
@@ -24454,8 +24540,14 @@
       "structure_ids": [
         "betterdungeons:small_dungeon"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Packaged underground_structures, start_height uniform absolute-50..50 and no surface heightmap projection. Initial anchor Y is not total height.",
+        "value": "Underground room with terrain-dependent support and ceiling treatment"
+      },
+      "visual_discoverability": {
+        "assessment": "Compact underground masonry room, potentially visible through cave openings or excavation; no surface entrance or exterior landmark in this topology.",
+        "basis": "Underground generation step, absolute start range-50..50, room/loot-pile topology and ceiling/terrain processors. Source inference, not measured human discovery distance."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -231133,7 +231225,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "2afa9244c8aa724b7c2322a5bac0ea2c526250b1a5425f03eb59671e08bbddb4",
+    "evidence/item-8/family-decisions.json": "bcf134defc30e14e23dacce0084ff04400d5a4d9a2faad10c66e19bdc3ef7d70",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
