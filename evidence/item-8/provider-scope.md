@@ -10499,3 +10499,45 @@ These planning counts are derived by selecting the 410 rows defined above,
 checking the eleven SPECS fields for top-level UNKNOWN strings, counting rows
 with at least one such value, and grouping those row IDs by namespace. They do
 not establish semantic sufficiency or close the Item 8 gate.
+
+
+### Abandoned house and brick house attribute increment
+
+Predeclared two-family, eleven-field assessment delivered in decision df2b2680.
+Ten interpretations per family preserve resolved biome constraints. Both frozen
+toggles are enabled at weight 5 in idas_common; 27 of 29 tag biomes overlap the
+captured Overworld only. The two absent registered biomes remain explicit.
+
+Abandoned house alternatives retain weights 3 and 2, footprints 21 by 17 and
+21 by 15, and heights 20 and 21. Each has three spawners; the second also has an
+authored cave spider and one unidentified entity. Brick house has three connected
+components with a nominal flat footprint 22 by 48 and height 23. Exact connector
+positions and the flat-reference derivation are recorded in its footprint field.
+Terrain matching and incomplete placement can change actual dimensions. Windmill
+has one saved spider spawner. Both families select the generic processor resource
+with zombie/skeleton/wraith candidates, distinct from saved template mob IDs.
+Legacy loot IDs are preserved. No generated-world occurrence is claimed.
+
+Focused IDAS tests pass (1 passed, 77 deselected); scoped Ruff/Basedpyright checks
+pass. Two fresh inventory builds match exactly, SHA-256
+f61b0a283ad7c6f83e5f22b02e64652fc5551e33702d817c38f174ba8a58e887.
+Only these two families and decision input identity change; membership, biome
+constraints, world observations, pool trace IDs and other rows remain unchanged.
+No new measurement or tooling was added.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-house-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-house-attributes-r2.json
+cmp evidence/raw/item8/inventory-house-attributes-r1.json evidence/raw/item8/inventory-house-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-house-attributes-r2.json
+```
+
+This removes twelve literal field gaps, six per family. The previous planning
+count becomes 399 registry candidates with 2,181 literal field gaps, forty
+nonregistry assignments needing integration, and eleven filled registry records
+still subject to acceptance assessment. IDAS accounts for 54 of the 399 remaining
+rows with literal gaps. Eight families have current-phase attribute assessments.
+Item 8 acceptance, final review and main delivery remain open.
