@@ -281,3 +281,51 @@ and the decisions input hash changed; biome constraints, observation links and
 nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-cart-camp-facilities.json`, SHA-256
 25caadcfa0fbd1b542783357152283877b64430a607fc1e052e879da57d8e030.
+
+## Voyager benches, paths and Out House
+
+After 8f3cce21, 30 attributes finish Bench, Paths and Out House. Existing
+family decisions and source forms are reused. Hash-bound packaged pools,
+templates and trace entries provide direct dimensions, attachment and content
+attribution. No new capture, measurement or tooling.
+
+Bench selects five rigid ordinary single alternatives with empty processors:
+large 7x4x2, medium 5x4x4, small_1 4x2x2, small_2 and small_3 4x3x2 XYZ.
+Paths selects long 10x4x28 or short 10x4x13. These alternatives have no jigsaw
+attachments and are not assembled together. Dimensions include air/padding,
+not merely occupied blocks. Rotation can exchange horizontal axes.
+
+Out House start_pool selects out_house/out_house (8x7x5). Its /block_entities/0
+connector is down_east at [2,0,0], name mvs:out_house_top, target minecraft:empty,
+and points to side_pool. That pool's only candidate is out_house_lower (8x1x5),
+whose /block_entities/0 is up_east at [2,0,0], name minecraft:empty and target
+mvs:out_house_top. Both joints are aligned and elements rigid. Adjacent matching
+connectors place the lower origin at [0,-1,0] relative to upper. The resulting
+nominal envelope is X0..7, Y-1..6, Z0..4, or 8x8x5 XYZ. No other connector
+extends it; the lower connector participates in this join. The upper-only
+height is 7. This derivation does not guarantee successful runtime attachment,
+terrain exposure or a particular occupied-world envelope.
+
+All three resolved biome sets intersect only Overworld runtime possible biomes.
+Generic jigsaw uses WORLD_SURFACE_WG, offset zero, beard_thin and explicit
+cannot_spawn_in_liquid true. Bench declares terrain range 3/radius 2, Out House
+3/1, and Paths omits both. These checks do not guarantee exposed/dry footprints.
+Out House has a surface-projected shelter and a lower attached component.
+
+All selected entity lists are empty, with no spawners or generation markers.
+Block entities are signs, campfires and containers, plus Out House's architectural
+jigsaw connectors; no contained mob source is identified. Natural spawning and
+terrain hazards remain conditional. Exact loot ownership: Bench medium and
+small_2 use minecraft:chests/village/village_plains_house, small_3 uses
+mvs:houses_common, and large/small_1 have none. Both Paths alternatives use
+mvs:general, mvs:houses_common and mvs:houses_uncommon. Out House lower uses
+mvs:houses_common; upper has none. Ordinary salvage is separate from these
+container sources. Low benches, landscaped routes and the pitched-roof shelter
+support qualitative discoverability descriptions, not a measured sight distance.
+
+Ten affected provider/inventory tests and scoped builder Ruff/Basedpyright
+checks pass. Reproduce using the existing build_item8_inventory command with an
+absent output path. Only three family rows and the decisions input hash changed;
+biomes, observation links and nonregistry content remain unchanged. Inventory
+matches `evidence/raw/item8/inventory-mvs-benches-paths-outhouse.json`, SHA-256
+ecf965d9df92ca1de317af3260e054458bebd76a6f8acdff36c576572bcceba8.
