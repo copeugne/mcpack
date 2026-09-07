@@ -9864,3 +9864,26 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas
 cmp evidence/raw/item8/inventory-idas-worksites-r1.json evidence/raw/item8/inventory-idas-worksites-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-worksites-r2.json
 ```
+
+
+### IDAS eight-building inventory refresh
+
+Inventory incorporates decision commit 7f6ac0a9. Two fresh builds reproduce
+exactly, SHA-256 fa1649f975119509fdbf55153ca49fceec1203dfdc25ac2e671e8e274db49106.
+Only the eight grouping decisions and input identity change. Registry memberships,
+full variants and derived attributes remain unchanged: 887 roots in 426 working
+groups. Canonical-decision backlog is 36, all IDAS. This does not close effective
+attributes, 33 nonregistry contributions or final acceptance and delivery.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-buildings-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-buildings-r2.json
+cmp evidence/raw/item8/inventory-idas-buildings-r1.json evidence/raw/item8/inventory-idas-buildings-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-buildings-r2.json
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+Use fresh output files. The focused IDAS case passes (77 other cases deselected);
+scoped Ruff and Basedpyright pass. Views are preserved at d62d6212.

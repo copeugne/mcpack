@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory now matches 7f6ac0a9 and reproduces exactly in two fresh builds. Only
+the eight grouping decisions and input identity change; all 887 roots and full
+variants are preserved in 426 working groups. Canonical backlog: 36, all IDAS.
+Next: remaining IDAS assemblies, including the recorded missing-pool dispositions.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
 Eight IDAS building decisions now bind the delivered d62d6212 views and full
 contents. Lighthouse, lodge, botanist, hollow, hunter cabin, mason house, pumpkin
 cafe and general store remain distinct. Hunter cabin retains pillagers and four
