@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Six single-template IDAS families integrated at 1bcb80f8: botanist, hermits_hollow,
+hunters_cabin, mason_house, nether_pump_camp and the_log. Inventory matches the
+fresh build; existing Nether pump observations are retained. No new investigation,
+rendering or measurement. Continue larger coherent integration batches, preserving
+real limits and distinguishing unsupported claims from facts awaiting integration.
+
 Cafe/store fields integrated at 95ac9e0f; derived inventory matches the fresh build.
 User correction via side audit: stop repetitive two-family process cycles. Most
 remaining rows already have substantial evidence in their rationales/catalogs.
