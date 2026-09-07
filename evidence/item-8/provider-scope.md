@@ -10762,3 +10762,15 @@ Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/i
 Inventory SHA-256: a80084247cf9bae7f08b098404f60aa05ac859b13e94a20b09330f0a1b6a99b6.
 Only placement and matching decisions in 37 rows, plus the decision input hash,
 change. All other fields and nonregistry records are preserved. Item 8 remains open.
+
+### Existing nonregistry attributes integrated
+
+Predeclared scope: the eighteen already-detailed nonregistry family records.
+Their existing evidence supplies 95 values under the standard required attribute
+names: eleven YUNG's records with geometry and eligibility, three Better End Island
+records with geometry and one existing visibility description, and four Quark
+records with all eleven field descriptions. Original descriptions, geometry scope,
+observations and contribution evidence remain intact. Remaining uncertainty in
+those descriptions remains uncertainty; normalization is not acceptance. The other
+22 identified family assignments still need extraction from their contribution
+records. No new investigation, measurement or schema machinery was added.
