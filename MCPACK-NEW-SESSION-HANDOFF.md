@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Ten Nether alternative families assessed after b9d94109
+
+One hundred attributes finish Bridge, Medium Fungus, Circle Ruin, Medium House,
+Crimson Forge, Ruined Portal, Sandy Skull, Shrine, Sword and Warped House.
+Twenty roots/25 standalone alternatives retain source dimensions and encounter/
+loot ownership. Warped House's natural piglin override and fixed upgrade-template
+payload are distinct; Bridge's Y allowance is not whole-box containment proof.
+Ten shared tests pass; no capture or tooling. Existing README records derivations.
+Inventory SHA: aa7a6cca167386529f0c89b3b19774ca50d3a2a2c6d209161e973b095782281a.
+Nether Structures 20/27; registry 236/410, nonregistry 40/40, total 276/450
+assessed, 174 remaining. Seven mns families remain: ruin_fragments, well,
+lava_pool, warped_pool, arena, dragon_arena and mega_fortress. Quantify their
+next coherent batch before editing. Final integration, acceptance, verified
+backup/history consolidation and PR review/main delivery remain open.
+
 #### Ten standalone Nether families assessed after 1d6e3be8
 
 Eighty attributes finish Copper Tower, Giant Skull, Grave Yard, Large House 1,
