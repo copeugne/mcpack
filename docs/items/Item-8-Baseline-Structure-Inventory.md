@@ -1,18 +1,34 @@
 # Item 8: Baseline Structure-Family Inventory
 
-**Current status:** `IN PROGRESS`. Item 8 is not complete.
+**Current status:** `IN PROGRESS`. Family inventory integration is delivered;
+final acceptance and reviewed main delivery are not complete.
 
-The active baseline contains the exact 136 retained candidates frozen by Items
-3 and 6. The current [working inventory](../../evidence/item-8/inventory.json)
-accounts for 887 registered structure roots in 421 provisional groups. These
-are not an accepted final family count. See the
-[evidence record](../../evidence/item-8/README.md) for input identities,
-reproduction commands, source limitations and the latest delivered increments.
+The exact136 retained candidates have been inventoried through runtime registries,
+packaged data, frozen configuration, generation code/logs and preserved world
+observations. The [canonical listing](../../evidence/item-8/inventory.json) contains
+448 active families:408 registry families and40 nonregistry families. Its separate
+other_registry_groups retains18 inactive/excluded registry groups. Together these
+account for all887 runtime roots exactly once, with zero unassigned roots.
 
-Remaining work includes canonical family reconciliation, non-registry provider
-coverage, required family attributes, final narrative/evidence reconciliation,
-the clean PR review cycle and verified delivery to main. Item 9 is not authorized
-by this report. Successful registry coverage alone does not close Item 8.
+All448 active families carry the eleven Item8 attributes. Nonregistry attributes
+are joined from the existing33 contribution records; injected components, aliases,
+pools and templates are not counted as extra families. Original426 registry-group
+rows were preserved unchanged by consolidation. The [evidence record](../../evidence/item-8/README.md)
+contains reproduction commands and links to the authoritative source decisions.
+
+Dimensions distinguish nominal template/connector geometry from preserved generated
+examples, including padding and observation limits. Mob and loot sources distinguish
+raw declarations, selected processor behavior, absent optional providers, natural
+spawning and unresolved baseline defects. Source attribution is not measured enemy
+population, loot yield, sightline distance, exploration pacing or working machinery.
+These additional measurements are not an Item8 repair backlog.
+
+The integration passes88 focused tests and changed-code lint/type checks. This is
+not the final acceptance gate. Remaining before the PR: final requirement/evidence
+reconciliation and applicable gate, then authorized preservation/backup preparation.
+Completion additionally requires a clean Codex review loop, merge and verified main
+ref. Item9 remains dependency-blocked. Item7's explicit review exception is preserved
+in the execution ledger and does not apply to Item8.
 
 ## Historical zero-mod report, superseded
 
