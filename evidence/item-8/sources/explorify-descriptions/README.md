@@ -119,3 +119,43 @@ uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_i
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Five settlement-family attributions, geometry still open
+
+Campsite, dark forest settlement, farmstead, ruins and tavern now integrate eight
+explicit attributes each, plus their existing resolved biome answers. This is
+40 answers: 20 missing placement/design interpretations and 20 reconciled source
+attributions. Ten approximate assembled-geometry answers remain unresolved.
+There are no retained saved layout observations for these families; piece sizes
+are not substituted for whole settlements. No family completion count advances.
+
+All five roots have complete traces with no missing references, unresolved entity
+IDs or generation markers. Preserve exact template-owned animals/villagers/cats/
+golem where present, and ruins monument/02's saved zombie-spawner input. These
+are authored sources, not simultaneous realized populations. Empty spawn overrides
+do not disable ambient spawning. Exact saved loot tables remain attributed to
+components. Other than the ruins overlays below, inspected processors only alter
+material, aging or path/water adaptation, not entities or physical spawners.
+
+Root offset is 0 and adaptation beard_thin. Preserve projection/depth/expansion
+choices: campsite WORLD_SURFACE/7/false, dark forest WORLD_SURFACE_WG/3/true,
+farmstead MOTION_BLOCKING_NO_LEAVES/6/false, ruins OCEAN_FLOOR_WG/4/true,
+tavern WORLD_SURFACE/7/true. These describe starts, not terrain exposure or the
+extent of the assembled network. Qualitative component roles supply visual forms.
+
+The same pack metadata retained above declares f15 applicability. Overlay
+ruins_house_processor adds capped suspicious-gravel append_loot delegates with
+limits 3 for minecraft:archaeology/trail_ruins_common and 1 for trail_ruins_rare.
+ruins_path_processor uses limits 5 and 2 respectively. Both match the
+minecraft:trail_ruins_replaceable tag. Exact overlay hashes, table IDs, inputs
+and limits are now explicit in ruins loot_table_source. Limits are processor
+inputs, not guaranteed whole-family counts. Root-only generic selection would
+omit this evidence, so do not drop it in final integration. No new selector,
+source capture or world measurement was added.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-explorify-settlement-attribution.json
+uv run pytest -q tests/item8/test_explorify_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
