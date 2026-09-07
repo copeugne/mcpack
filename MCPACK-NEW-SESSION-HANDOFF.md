@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Jungle Temple geometry finished after 8350a9e7
+
+Declared seed42 one-target/81-requested-chunk capture passed readiness,
+correlated flush, clean exit0 and frozen configuration acceptance. Full start
+chunk7,-277,line601 has38 pieces and51x54x60 saved assembly envelope. Downward
+PillarProcessor extensions remain separate. Archive253 files/4,339,310 bytes
+published at source8350a9e7; local/downloaded restores verified every file and
+downloaded line601 reproduced the geometry. No Java process remains. Exact
+commands, hashes, diagnostics and limitations: evidence/item-8/sources/
+jungle-temple-provider/README.md, Jungle geometry result and custody.
+Two size attributes finish this family. All85 focused tests pass (59.29s).
+Registry320/408,nonregistry40/40,total360/448 assessed,88 remaining. Next quantify
+another YUNG batch; Desert Temple, Fortress and Stronghold remain. Final
+canonical integration, acceptance, verified backup/history preparation and
+PR review/main delivery remain open. Inventory SHA-256:
+f606c1122d00ef45520e7a7dbb2afb2b612842f6cd9d495173ec80f47b7b6559.
+
+
+
 #### Jungle content and geometry declaration after 7e3a6ebe
 
 Eight required attributes integrated from125 traced templates and existing
