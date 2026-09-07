@@ -125,3 +125,50 @@ uv run basedpyright tools/build_item8_inventory.py
 
 The 55 raw templates also contain no minecraft:jigsaw block entities, confirming
 that their envelopes describe standalone variants rather than repeated pieces.
+
+## Nine End-generator family assessments
+
+Ancient palace, hall and pavilion, End bubble, gateway, house, raised house,
+ship and temple cover 16 roots. This increment adds 46 missing descriptions
+(ten geometry, nine placement and 27 design interpretations) and reconciles
+36 existing dimension/mob/loot/spawner answers. No new capture or measurement.
+
+EndJigsawStructure.findGenerationPoint bytecode offsets 65..184 handle absent
+projectStartToHeightmap: get WORLD_SURFACE_WG base height at chunk minimum X/Z,
+add sampled startHeight, check optional minimum/maximum and construct the start.
+Offset 228 delegates to JigsawPlacement.addPieces. Every selected definition has
+start_height absolute 0, min_absolute_height 10, no heightmap projection and
+beard_box adaptation. These are surface-relative starts, not absolute Y=0.
+Biome answers resolve without missing required values or unresolved tags; captured
+dimension overlap remains the dimension evidence, not a guarantee of occurrence.
+
+Each root traces one template, with no missing/unresolved graph edges, jigsaw
+block entities, unresolved entity IDs, physical-spawner inputs or markers.
+Missing geometry answers directly use retained template_size_xyz per root,
+including padding. Five nonempty processor lists affect the bubble alternatives:
+randomize_emerald_block, randomize_grass_and_flowers, and structure/
+end_bubble_medium_1_birch, end_bubble_medium_1_cherry, end_bubble_medium_2.
+Their complete packaged rules only substitute blocks: metals, wood/leaves,
+flowers/grass, coral and water. No entity, spawner or loot assignment occurs.
+
+Top-level template entities supply variant-specific shulkers, axolotls, tropical
+fish and the large temple's end crystal. Direct raw NBT inspection additionally
+finds three Bees[].EntityData.id=minecraft:bee entries in end_bubble_medium_1's
+hive. Record these separately from top-level entities, preserving the legacy keys
+and avoiding a claim of successful release. Both gateway block entities preserve
+ExactTeleport=1 and ExitPortal=(100,50,0), which establishes authored inputs,
+not safe or successful teleportation. None has a generated physical spawner.
+Empty spawn overrides do not prevent ambient spawning.
+
+Exact loot references remain template-owned. Gateway has no container-loot
+reference; other families retain End-city and, for bubble, beehive loot sources.
+Existing views and template contents supply distinct forms, while the generator
+explains placement. These descriptions retire source assessment without asserting
+realized populations, interaction outcomes or measured discoverability.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-end-descriptions.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
