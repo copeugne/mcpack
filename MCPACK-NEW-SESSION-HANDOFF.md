@@ -6,6 +6,82 @@
 
 ### Continuation update - 2026-09-07
 
+#### Towns and Towers Village geometry after 4075bc17
+
+The two-target seed42 capture completed with correlated save, clean exit and
+accepted frozen configuration. Forest example 198x40x137, Savanna Plateau
+17x28x20; both full start chunks. Grove 25x15x21 and Snowy Slopes 21x12x27
+are bounded source examples. No family-wide extrema are claimed. Raw archive
+252 files/4,805,146 bytes is published under item-8-towns-village-geometry-2026-09-07-r1,
+source revision 4075bc17b2890f3b76ebd9522f2b95d1ac9abe25; both local and
+downloaded restores pass. No runtime remains. README has exact commands/hashes.
+Eight applicable tests pass. Inventory SHA:
+35f2d8ff90f72fd1765b875a70d0e9a5f4d444efb05d5810d0a23f697123090b.
+Towns and Towers 8/8; registry 251/410, nonregistry 40/40, total 291/450
+assessed, 159 remaining. Retire these assessments absent contradiction.
+Quantify the next provider batch before editing. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Assessment counts do not establish Item 8 acceptance.
+
+#### Towns and Towers Village attribution after 3ffbac6e
+
+Seven attributes are integrated for Village's 26 variants/777 present templates.
+Dimension exceptions, source inhabitants, malformed/missing payloads, absence
+of present-template spawners, natural overrides, archaeology/loot and visibility
+are explicit. Six applicable tests pass. No capture, new tool or measurement.
+Geometry remains open: approximate whole-settlement footprint and vertical size.
+No retained starts exist; individual template sizes cannot substitute for an
+assembled branching settlement. Determine the smallest adequate geometry proof
+before extending investigation. Existing README records scope and exact sources.
+Inventory SHA: ef7e3b2a9c099eddb88c50f4b34f0a1262b0a1abea4f3d3baed9dc6ceb791c05.
+Total remains 290/450 assessed, 160 remaining; Village now has eight of ten
+explicit attributes including its preexisting placement assessment. Towns and
+Towers remains 7/8. Final canonical integration, acceptance, verified backup/
+history preparation and PR review/main delivery remain open.
+
+#### Towns and Towers Camp assessed after f0496c7b
+
+Nine attributes integrate five variants/35 present templates. Eight preexisting
+missing Savanna references remain explicit, with available-design geometry and
+no invented payloads or runtime outcomes. Six applicable tests pass; no capture,
+new tooling or measurement. Derivation: sources/towns-towers-entry/README.md.
+Inventory SHA: 1b22f228c91204f7b548287885c80dc70ae85eaf387490b002b3a9596660cd0c.
+Towns and Towers 7/8; registry 250/410, nonregistry 40/40, total 290/450
+assessed, 160 remaining. Village is its last family: 26 roots/777 unique
+present templates. Inspect existing evidence and quantify unresolved claims
+before extending investigation. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Assessment counts do not establish Item 8 acceptance.
+
+#### Towns and Towers Fort/Tower outposts assessed after 9f5c2ac4
+
+Eighteen attributes finish two families across 25 variants/42 unique templates.
+Single-base dimensions and Mediterranean field alternatives are attributed with
+terrain limits. Nilotic is preserved as a packaged variant with no compatible
+runtime biome. Six applicable tests pass; no capture, new tooling or measurement.
+Derivation: sources/towns-towers-entry/README.md. Inventory SHA:
+ab41272b615fda7958bbf685cbcc698c2b50a83d5ebacecb38341d0ac47ca96a.
+Towns and Towers 6/8; registry 249/410, nonregistry 40/40, total 289/450
+assessed, 161 remaining. Its remaining Camp family has five roots/35 unique
+templates; Village has 26 roots/777 unique templates. Quantify the next
+required claims before editing. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+
+#### Four Towns and Towers sites assessed after a73fd67e
+
+Forty attributes integrate Ocean Outpost, Ocean Village, Ocean Wreckage and
+Desert Mimic. Four roots have 37 template references, 34 unique templates.
+Existing observations support lifecycle-limited approximate dimensions; source
+mob/spawner, loot, fixed payload and placement assessments are integrated.
+Six applicable tests pass. No capture, new tooling or measurement. Derivation:
+sources/towns-towers-entry/README.md. Inventory SHA:
+0441e3ad4343bb732cd8e3df24818a5cabf93800dfdbb4c173a4fd84b5c00d08.
+Towns and Towers 4/8; registry 247/410, nonregistry 40/40, total 287/450
+assessed, 163 remaining. Its remaining families are outpost_fort, outpost_tower,
+outpost_camp and village. Quantify their selected graphs before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Counts do not establish acceptance.
+
 #### Mega Fortress assessed after a938d1a0
 
 Ten attributes integrate the final Nether Structures family. Existing planned
