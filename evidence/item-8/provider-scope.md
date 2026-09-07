@@ -10737,3 +10737,10 @@ This is one generated evidence increment across 97 records, not 97 investigation
 The large diff is the existing JSON representation of 194 directly sourced values;
 no schema, helper, renderer, measurement or builder behavior was added. Its only
 code change binds the decision file hash in the existing inventory builder.
+
+Decision 225b3fec passes all 78 family-decision tests (60.42 seconds).
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-single-template-geometry.json`.
+Inventory SHA-256: 6839fc03ada8068fb8e247aaf73cf3f93cffef270f8b583f3bd912eab30f366b.
+The generated diff changes only geometry and matching grouping decisions in the
+97 rows, plus the decision input hash. All other fields, observations, memberships
+and nonregistry content remain unchanged. No full Item 8 acceptance is claimed.

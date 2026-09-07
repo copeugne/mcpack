@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Integrated 194 nominal geometry fields across 97 single-template families at
+225b3fec, reusing retained sizes and checking no jigsaw attachments. Existing
+attributes and observations remain unchanged. All 78 family-decision tests pass;
+inventory matches the fresh build. No new measurement, schema or builder behavior.
+Continue requirement-based integration in coherent batches; do not equate filled
+geometry with full family acceptance. User's concurrent AGENTS.md update was read
+and respected, but not staged as part of this work.
+
 Six single-template IDAS families integrated at 1bcb80f8: botanist, hermits_hollow,
 hunters_cabin, mason_house, nether_pump_camp and the_log. Inventory matches the
 fresh build; existing Nether pump observations are retained. No new investigation,
