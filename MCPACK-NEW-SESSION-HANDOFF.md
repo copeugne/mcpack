@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ruined well assessed after ef26969f
+
+Nine entries integrated for two rigid connected components. Matching down_east/
+up_east connectors give bottom origin0,-12,0 and nominal18 by23 footprint,
+27 height. Bottom glue is non-mob data; no authored mobs, spawners, markers,
+unresolved entities or literal loot references. Fixed-content absence and
+operating machinery are not inferred. Ticking-only processor inspection reused.
+No runtime/tool added. All85 focused checks pass (66.02s); only ruined_well/input
+identity changed. Total431/448 assessed;17 connected IDAS families/153 entries
+remain, nine each. Quantify next connector/content batch before investigation;
+reuse preserved findings and distinguish nominal geometry from actual burial.
+Details: evidence/item-8/sources/idas-ruined-well-assessment/README.md.
+Inventory SHA-256: 1d3487f8b533aa7069182aeaccfa3f95f3cf787ddad2441b2b2e0f3a84570fc7.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS windswept shrine assessed after 71c20d9a
 
 Nine entries integrated for one six-component assembly. Main origins0,0,0;
