@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS Tudor pub assessed after f7b7185e
+
+Nine entries integrated for two rigid connected sections. Matching down_south/
+up_south connectors give bottom origin0,-11,0 and nominal35 by25 footprint,
+32 height. Villagers/seats distinguished from absent GuardVillagers declaration;
+one empty NBT entity record preserved. Five defined loot tables, no physical
+spawners or markers. Generic randomizer has no spawner input here; its configured
+list is not a generated enemy source. Existing processor inspection reused.
+No runtime/tool added. All85 focused checks pass (65.98s); only tudor_pub/input
+identity changed. Total427/448 assessed;21 connected IDAS families/189 entries
+remain, nine each. Quantify the next connector/content batch before investigation
+and reuse existing findings rather than initiating captures for empty fields.
+Details: evidence/item-8/sources/idas-tudor-pub-assessment/README.md.
+Inventory SHA-256: e25d25ef030909786d52bd581bd2cf44f1117ebe2ccff00d040cbbdb6baed7ac.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS beekeeper house assessed after d8b742bc
 
 Nine entries integrated for two rigid connected components. Matching east_up/
