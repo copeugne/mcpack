@@ -80857,7 +80857,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
         "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
-        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/pillar-shape-semantics/identities.json": "4b56f8aba8e03dc878104a27ff75e4e3896ebc151a3d702e9628ba6bf6861b0a",
+        "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961"
       },
       "content_role": "NATURAL_FORMATION",
       "attributes": {
@@ -80868,7 +80870,65 @@
           "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
           "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "nominal_parent_horizontal_envelope_blocks": "About80 to141 across either axis, a conservative continuous parent envelope.",
+          "derivation": "Size S is selected with randRange(20,35); capped-cone half-height S, base radius r=3+0.2*(S-5), tip radius0, translated by S-0.5. A cylinder enclosing each translated cone fits a sphere with radius sqrt((2*S-0.5)^2+r^2). Rotation and union preserve that enclosing sphere, giving diameter2*sqrt((2*S-0.5)^2+r^2).",
+          "scope": "Approximate source-derived scale, not attained extents, measured occupied blocks or a strict floating-point/voxel bound. Direction sampling and special rotation branch can produce asymmetric shapes.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "approximate_vertical_size": {
+          "nominal_parent_vertical_envelope_blocks": "About80 to141, a conservative continuous parent envelope.",
+          "derivation": "Size S is selected with randRange(20,35); capped-cone half-height S, base radius r=3+0.2*(S-5), tip radius0, translated by S-0.5. A cylinder enclosing each translated cone fits a sphere with radius sqrt((2*S-0.5)^2+r^2). Rotation and union preserve that enclosing sphere, giving diameter2*sqrt((2*S-0.5)^2+r^2).",
+          "scope": "Approximate source-derived scale, not attained extents, measured occupied blocks or a strict floating-point/voxel bound. Direction sampling and special rotation branch can produce asymmetric shapes.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "intended_hostility": {
+          "value": "Floating environmental ice formation without a direct authored encounter.",
+          "basis": "The generator fills snow and emerald-ice geometry and defines no direct enemy source. Falling and natural dangers remain possible.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "mob_source": {
+          "direct_generator_entity_ids": [],
+          "structure_spawn_overrides": {},
+          "basis": "Root builds rotated cone unions and material callbacks, then VoxelPiece stores and places the generated block volume. No direct entity authoring is present in these inspected paths.",
+          "scope": "Direct generator attribution, not a runtime population census.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "loot_table_source": {
+          "direct_generator_assigned_tables": [],
+          "basis": "The root/material callback authors dense snow and emerald ice variants, with no containers or loot-table assignment. Harvested block drops are separate from structure reward tables.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "generated_spawners": {
+          "direct_generator_spawner_block_types": [],
+          "basis": "Selected material states are DENSE_SNOW, EMERALD_ICE, DENSE_EMERALD_ICE and ANCIENT_EMERALD_ICE. The root callback and VoxelPiece path do not explicitly author spawners.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "No direct entity or spawner authoring in the inspected formation path.",
+          "natural": "Empty root spawn_overrides leave biome spawning or other systems possible.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Radial spiked snow/ice landmark, with emerald-ice material zones.",
+          "basis": "Union of25..40 direction-selected cones with material postprocessing. This is a form/cue assessment; distance, terrain occlusion and player discovery probability are unmeasured.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Void-positioned formation; terrain intersections are possible.",
+          "basis": "findVoidGenerationPoint creates a stub at Y80 without a surface-height test. The overridden generatePieces chooses center Y with integer randRange(32,128) and local X/Z offsets4..12. The stub is not the actual center; floating intent does not prove total terrain clearance.",
+          "source": "evidence/item-8/sources/betterend-remaining-root-consumers/README.md#ice-star-assessment"
         }
+      },
+      "processor_inspection": {
+        "archive": "bclib-21.0.24.jar",
+        "archive_sha256": "a7efd02dd3409dbac9c8455c5ed4fa4ca340e2af1c39f211038198dfa1c92093",
+        "members": {
+          "org/betterx/bclib/sdf/operator/SDFUnion.class": "dd9537f8f32e12934d4a19576073d55737b7f87adee8623ba2e40f7049b4f6b3",
+          "org/betterx/bclib/sdf/operator/SDFTranslate.class": "f6170e00110493f34b8c1055fc8af824411cde96196f6fdd692a5bce296b4a94"
+        },
+        "basis": "Direct getDistance inspection: minimum of sources for union, coordinate subtraction for translation. Geometry helpers, not structure processors."
       }
     },
     {
