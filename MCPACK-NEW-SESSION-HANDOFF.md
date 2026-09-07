@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Ten Voyager families assessed after c13eba18
+
+Eighty answers finish mvs:barn, beach_bar, bee_dome, desert_house, desert_pump,
+duck, gallows, horse_pen, lamp_chest and lecturn_garden. Earlier geometry is
+preserved. Bee Dome has three saved bees in two hive block entities despite
+empty top-level entities; mvs:empty can yield cobweb/string; Duck has a 0.25
+stone-to-diamond-ore source rule. These are source inputs, not observed yields.
+Versioned pools select the frozen 1.21.1 resources. Direct derivations are in
+moog-generator-code README. No new capture, measurement or tooling.
+
+Ten affected tests and builder checks pass. Inventory SHA-256:
+8f3e1a1c359e8f3fa72cd7a65277fa5540cc204746ebd2ac4b3a1b99c2e4f499.
+Retire these descriptions. Voyager 10/65 assessed; registry 117/410,
+nonregistry 40/40, total 157/450 assessed, 293 remaining. Continue remaining
+providers in quantified batches, checking contained block-entity contents when
+attributing mobs. Do not introduce a new tracking or measurement framework.
+Final integration, acceptance, verified backed-up history consolidation, PR
+review and main delivery remain open.
+
 #### Explorations geometry complete from 22c81eb4
 
 Four geometry answers finish Campsite and Jungle Temple. Temple uses direct
