@@ -6,6 +6,148 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS ancient mines assessed after 4a6d46cb
+
+Nine entries integrated for19 known rigid components. Explicit connector table
+with quarter-turned halls gives nominal124 by143,height119. Missing entrance2
+pool preserved, independent room1 branch retained; no invented component bounds.
+Six top spawners select spider15,cave_spider10,stray15;19 bottom select cave_spider15.
+Eighteen empty authored entity compounds retained, direct/non-mob/optional sources
+separated from piece-bound silverfish/wraith natural overrides. Three defined
+loot IDs and missing legacy chests/mineshall in hall3; one CORNER marker.
+No runtime/tool added. All85 focused checks pass (61.28s); only ancient_mines and
+input identity changed. Total446/448 assessed; two families/18 entries remain:
+castle and desert_pyramid, nine each. Next pyramid has31 reachable templates and
+one missing villager-pool ID already dispositioned; use existing source findings
+before deciding whether additional geometry observation is strictly required.
+Details: evidence/item-8/sources/idas-ancient-mines-assessment/README.md.
+Inventory SHA-256: f4c8f9df6f2d8d20c568e5a0d48189c8d5f99b001a135e34d4a31f5035a002d3.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS collectors museum assessed after c645f4d7
+
+Nine entries integrated for two connected source components. Nominal213 by211
+footprint,139 height, lower origin0,-78,0; full placement remains unclaimed.
+All18 raw empty spawner entity compounds select zombie15,skeleton10,wraith5.
+Eleven distinct literal loot IDs defined; borrowed tables do not merge families.
+Optional AlexsMobs/CloudStorage absent; frames/glue non-mob display data. No
+markers or trial spawners. Existing processor inspection reused; no runtime/tool.
+All85 focused checks pass (62.80s); only collectors_museum and input identity
+changed. Total445/448 assessed; three families/27 entries remain:
+ancient_mines,castle,desert_pyramid, nine each.
+Next ancient_mines:19 reachable components/nine entries; missing entrance2 pool
+already dispositioned, separate room1 connection remains. Existing inventory has
+no retained full-start geometry. Inspect existing source geometry and observations
+before deciding whether any additional measurement is strictly required.
+Details: evidence/item-8/sources/idas-collectors-museum-assessment/README.md.
+Inventory SHA-256: b6d4796d9e8f864244b3e71f03c515bdf8bd57751fe8c34d670a1f317a6b5209.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS labyrinth assessed after 8e522bef
+
+Nine entries integrated for five connected default components. Nominal55 by64
+footprint,88 height. Floor1 twelve spawners select husk15,stray10; floor2 six
+retain authored data under ticking-only processing, including absent anaconda.
+Direct hostiles distinct from absent AlexsMobs entities and non-mob display data.
+Four defined literal loot sources plus conditional archaeology; two missing legacy
+paths chests/labyrinth and chests/throne preserved as baseline content defects.
+One CORNER marker, no trial spawners. ModAdaptive default selection retained.
+No runtime/tool added. All85 focused checks pass (61.64s); only labyrinth and input
+identity changed. Total444/448 assessed; four families/36 entries remain:
+ancient_mines,castle,collectors_museum,desert_pyramid, nine each.
+Next museum is two components/nine entries. Existing connectors imply nominal
+213 by211,height139 at lower origin0,-78,0, but placement constraints remain
+separate; inspect selected processing and reuse existing source findings first.
+Details: evidence/item-8/sources/idas-labyrinth-assessment/README.md.
+Inventory SHA-256: 58d33e39e62b9bfba5b6c47e7fade4e6a7483023aea94e2823a6d872caf1bb76.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS tree of wisdom assessed after 0de7c791
+
+Nine entries integrated for six connected components. Nominal112 by113 footprint,
+136 height; rigid base/top distinguished from four terrain-matching surrounds.
+No authored entities or spawners. One defined loot source in top; CORNER/SAVE
+markers have empty metadata. Ticking-only processor inspection reused. No runtime
+or tool added. All85 focused checks pass (61.70s); only tree_of_wisdom and input
+identity changed. Total443/448 assessed; five IDAS families/45 entries remain:
+ancient_mines,castle,collectors_museum,desert_pyramid,labyrinth, nine each.
+Next labyrinth batch: five connected components and nine required entries; prior
+source findings already identify two legacy loot paths and split processor behavior.
+Details: evidence/item-8/sources/idas-tree-of-wisdom-assessment/README.md.
+Inventory SHA-256: 9caa705b67762bcdd4e87e25c8b8a0e7241f45f4804590e3c172ef9dadc61e62.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS tinkers citadel assessed after e9834ee8
+
+Nine entries integrated for four rigid branching components. Nominal70 by110
+footprint,118 height. Ten spawners select skeleton10,zombie10,forgotten10;
+seven empty raw entity compounds preserved. Fish/non-mob entities distinct from
+hostile spawner sources. Six defined loot tables,two CORNER markers. Direct pinned
+WindmillBearingProcessor inspection records QueueAssembly=true and tick0 without
+claiming operation; no runtime/tool added. Element terrain kernels retained.
+All85 focused checks pass (60.37s); only tinkers_citadel/input identity changed.
+Total442/448 assessed;six connected IDAS families/54 entries remain,nine each.
+Quantify next batch and reuse existing source findings.
+Details: evidence/item-8/sources/idas-tinkers-citadel-assessment/README.md.
+Inventory SHA-256: f5229b488d9b24ad9fabd955b1e77cfc9920a1a4a9956e11fac3c68aed8100bc.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS tinkers workshop assessed after 50c11592
+
+Nine entries integrated for eight rigid serial components. Nominal63 by81
+footprint,130 vertical span from y-93..36; placement/world-height limitations
+remain explicit. Ten ordinary spawners differ by processor:2/3 retain forgotten/
+cave-spider sources;4/6 randomize to skeleton10,forgotten5. Direct forgotten/
+cave spiders separate from entrance civilians and absent komodo. Five defined
+loot sources; no markers or authored ID gaps. Existing processor inspections
+reused; no runtime/tool added. All85 focused checks pass (60.92s); only
+tinkers_workshop/input identity changed. Total441/448 assessed;seven connected
+IDAS families/63 entries remain,nine each. Quantify next batch and reuse findings.
+Details: evidence/item-8/sources/idas-tinkers-workshop-assessment/README.md.
+Inventory SHA-256: 3cd400271288ecfdcc43d4c13bcc4dd65b212572f343ef54988a189cab83b427.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS haunted manor assessed after 90b67729
+
+Nine entries integrated with frozen connector defect. Integrated API Assembler
+calls GeneralUtils.canJigsawsAttach, requiring exact target/name equality;
+start minecraft: targets fail idas: receiver names. Frozen source estimate is
+starting piece47 by36,height48, not repaired four-piece manor. Piece1 skeletons/
+two spawners distinct from detached piece2's three spawners and other packaged
+contents. Three defined loot tables and natural full-bounds wraith3,group3..4
+preserved. Ice and Fire absent keeps default pool. No baseline repair/runtime/tool
+added; direct pinned consumer inspection recorded with class hashes.
+All85 focused checks pass (61.21s); only haunted_manor/input identity changed.
+Total440/448 assessed;eight connected IDAS families/72 entries remain,nine each.
+Quantify next batch and reuse findings; exact connector compatibility is necessary
+before claiming a nominal complete assembly. GeneralUtils inspection is reusable.
+Details: evidence/item-8/sources/idas-haunted-manor-assessment/README.md.
+Inventory SHA-256: 3f5f484806595dbf393925c32cea1c844e6353db716cbfb3f3e7ba57b909fc11.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS frozen crypt assessed after bbf5d092
+
+Nine entries integrated for entrance/crypt. Crypt origin-7,-15,-14 gives nominal
+29 by36 footprint,21 height. Direct strays distinct from absent Ice and Fire troll.
+Five spawners select sole stray5; four empty raw entity compounds remain preserved
+but processor NBT replacement resolves selected source. One defined loot table,
+one CORNER marker; entrance terrain kernel10/10 distinct from root none.
+Existing processor inspection reused; no runtime/tool added. All85 focused checks
+pass (59.21s); only frozen_crypt/input identity changed. Total439/448 assessed;
+nine connected IDAS families/81 entries remain, nine each. Quantify next batch
+and reuse existing findings; do not confuse raw source gaps with selected output.
+Details: evidence/item-8/sources/idas-frozen-crypt-assessment/README.md.
+Inventory SHA-256: 7c486bcc55c8584270b985517e2c115f32b856aacfefeb2768d70e40743a92bc.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS bazaar assessed after ffec0df0
 
 Nine entries integrated for nine rigid connected market components. Connector
