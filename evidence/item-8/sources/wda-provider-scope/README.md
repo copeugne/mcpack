@@ -279,3 +279,107 @@ measurement system, validator or generalized helper.
 
 Eight focused tests pass. Inventory SHA-256:
 97446b913ab5d36ba54899805ffd963ee66b2e4a733f0462fb63a751f06ee73a.
+
+## Four mushroom designs and Illager Windmill
+
+Fifty attributes assess giant_mushroom, mushroom_house, mushroom_mines,
+mushroom_village and illager_windmill: five roots/57 selected templates.
+Exact WDA archive/catalog identities and paths are those above. All root traces
+have no missing templates or unresolved pool elements; this does not establish
+loot-table completeness. No retained start is linked for these five. Resolved
+biome intersections are Overworld only. All roots use minecraft:jigsaw with
+WORLD_SURFACE_WG projection, max distance114, ignore_waterlogging, expansion
+false and empty spawn_overrides. Offsets in that order are -5,0,-8,0,-2;
+house/village depth6 with beard_thin; others depth7. Mushroom Mines adapt_noise
+true is not evidence that a standard minecraft:jigsaw root uses WDA's codec.
+
+Nominal geometry comes from adjacent matching connectors, not a new world
+measurement. Whole rotation exchanges axes. Air/padding, failed attachment,
+terrain and visibility prevent equating source envelopes with occupied/exposed
+blocks. Derive origins by adding the parent's outward unit vector then
+subtracting the rotated incoming connector coordinate.
+
+- Giant red starts part0. Part0 east(31,0,0) joins part1 west(0,0,0),
+  origin(32,0,0); part1 south(20,0,31) joins part2 north(20,0,0),
+  origin(32,0,32); part0 south(0,0,31) joins part3 north(0,0,0),
+  origin(0,0,32). Widths32/21,lengths32/21,height38 give53x38x53.
+  Twin starts part0 and has analogous widths32/9,lengths32/19,height32.
+  Its aligned up_south(31,31,31) joins part4 down_south(31,0,31), adding
+  the second identical layer at Y32. Twin envelope41x64x51. Red/twins side
+  names prevent mixing the two architectural designs into one giant envelope.
+- Mushroom House starts one of four15x8x15 bottoms. Bottom down_north(7,0,7)
+  joins roots up_north(15,12,15), giving roots origin(-8,-13,-8), size31x13x31.
+  Bottom up_north(7,7,7) joins one of five tops down_north(15,0,15), origin
+  (-8,8,-8), size31x31x31. All aligned. Union31x52x31; alternatives share
+  geometry but retain their contents. Compatible spawner attachments fit inside.
+- Mushroom Mines has eight32-cube architectural sections. Lower parts0..3
+  form a64x32x64 square using origins(0,0,0),(32,0,0),(32,0,32),(0,0,32).
+  Part0 up_north(0,31,0) joins part4 down_north(0,0,0); corresponding top
+  parts4..7 sit at Y32. Named top side connectors give64x64x64 overall.
+- Mushroom Village starts one45x45x45 big house. Its twelve perimeter
+  connectors at Y1 target terminal small houses with one incoming connector
+  also at Y1. Small sizes are11x16x11,12x16x11 and11x21x11. Their attachment
+  edges are11 or12 blocks deep. The central envelope plus at most12 outside
+  each face gives a conservative69x69 horizontal bound; small houses remain
+  below the central45 height. This is an upper source envelope, not a predicted
+  full village or measured range. Some neighboring attachments can collide.
+- Windmill starts part0(48x32x34); up_south(0,31,33) joins part1
+  down_south(0,0,33), giving core48x64x34. Both rigid. Fields are
+  terrain_matching. Example: core west(0,9,16) joins field4 east(31,3,15),
+  nominal source origin(-32,6,1). Core plus that32x4x32 field gives80x64x34
+  in a level reference assembly. This example excludes other fields and is
+  not a family maximum or an observed terrain layout. Core connectors accept
+  field0(19x4x19) or field4; field4 additionally targets terminal small
+  fields1/2/3 of12x4x12,9x4x9,6x4x6. Terrain and other attachments change
+  both footprint and the whole vertical span. Preserve the64-high core
+  separately rather than invent a fixed whole-field height.
+
+Giant has two skeleton spawner pieces, each block_entities0, saving Health40,
+PunchI bow and legacy tipped arrow Id2/Amplifier4/Duration80. No direct saved
+entities. Mushroom House has three spawner pieces piglin_0/1/2 at
+block_entities0: Health20 golden-sword brute, crossbow piglin, and brute with
+crimson fungus/strong_harming potion plus potion passenger. All declare
+IsImmuneToZombification1. No actual conversion/effect behavior is claimed.
+
+Mines uses saved entities in skeleton_ranged_0, zombie_armored_0/1, entities0:
+persistent skeleton Health20/bow; zombie Health20/iron pickaxe; zombie
+Health19.200000762939453/diamond pickaxe. These are not physical spawners.
+Village big house block_entities30,35,60 are ordinary spawners saving Health25
+piglin brutes with golden swords and IsImmuneToZombification1. Small house7
+entities0 is persistent Health30 turtle. A village name does not prove villagers.
+
+Windmill has no physical spawners. Saved mob pool weights20/1/1 select
+pillager/vindicator/witch pieces with persistent Health24/24/26. Fields0/4
+save three persistent Health30 zombie villagers each, fields1/2 two each,
+all holding iron hoes. Field3 saves one Health24 pillager, PersistenceRequired0.
+These are source counts per selected piece, not live enemies or guaranteed
+placement. Windmill part0 block_entities3 hopper saves one diamond, slot1.
+Village small_4 block_entities1 lectern saves a ten-page writable book about
+mushrooms and fictional mushroom scripture. Those fixed payloads are distinct
+from table loot. No other selected template in this batch has nonempty fixed
+Items/Book container contents.
+
+Village's mushroom_village_houses processor applies two world-location tests:
+existing red or brown mushroom block, random probability0.5, with always_true
+incoming predicate, produces the opposite cap block. These predicates do not
+merely recolor incoming cap blocks; other incoming blocks can be replaced when
+the location matches. Another rule changes incoming light_gray_wool to
+mushroom_stem. No entity/spawner/loot injection is declared. Original payload
+preservation under every location is not asserted. Other selected processors
+are empty. All non-field elements are rigid.
+
+Preserve exact loot IDs and pointers in the existing pool-trace catalog.
+Mushroom House references singular mushroom_house_barrel and
+mushroom_village_weaponry, absent at their exact data/dungeons_arise/loot_table/
+chests paths in the WDA packaged catalog. Plural mushroom_house_barrels exists.
+These are unresolved source reward references, not permission to substitute a
+similar table or claim delivered rewards. Template/pool completeness did not
+prove those table paths existed. No frozen content is repaired in Item8.
+
+Rebuild and focused validation use the commands above. Source references,
+explicit derivations and existing validation suffice; no new capture/tool.
+
+Eight focused tests pass. Semantic comparison changes only these five family
+assessments and direct source identities; biome constraints, membership and
+observations remain unchanged. Inventory SHA-256:
+a5e17f2b481b5091b7d1add14652242bcac38356c8a9624d7dd584dd119f6c19.

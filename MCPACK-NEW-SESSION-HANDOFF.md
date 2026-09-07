@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four mushroom designs and Windmill assessed after 72488ffd
+
+Fifty attributes assess Giant Mushroom, Mushroom House, Mushroom Mines,
+Mushroom Village and Illager Windmill: five roots/57 templates. Preserve fixed
+connected envelopes versus variable village/terrain-field extents, saved mobs
+versus spawners, Village processor location predicates and fixed lectern book.
+Two House loot-table references are absent from the selected WDA catalog;
+retain exact IDs and unresolved reward disposition. No new capture/tool.
+Registry292/410, nonregistry40/40, total332/450 assessed,118 remaining.
+WDA20/40 assessed. Derivations: sources/wda-provider-scope/README.md.
+Eight focused tests pass. Quantify the next batch before editing. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+a5e17f2b481b5091b7d1add14652242bcac38356c8a9624d7dd584dd119f6c19.
+
 #### Heavenly fleet, Coliseum and Keep assessed after eceedf65
 
 Fifty attributes assess Heavenly Challenger, Conqueror, Rider, Coliseum and
