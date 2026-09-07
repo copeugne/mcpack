@@ -6,6 +6,30 @@
 
 ### Continuation update - 2026-09-07
 
+#### Cave urn assessed after ce897b5b
+
+Nine answers complete the last nonregistry descriptive assessment: now 40/40.
+Urn break behavior identifies conditional creature creation and the explicit loot
+chain; dynamic biome eligibility resolves 280 biomes and only captured Overworld
+overlap. Per-patch source geometry is 9x9x3 candidate block positions, not a filled
+or persistent cache. Required and optional creature declarations remain distinct.
+
+Three urn captures and one RandomPatchFeature capture use the existing extractor.
+They resolve missing mob/reward behavior and spread semantics required by Item 8;
+no new measurement or framework. The mapped-server prefix length is adjusted for
+the four inserted class selections to preserve every previously eligible class.
+Exact commands, source derivation and failed lookup dispositions are recorded in
+`evidence/item-8/sources/urn-reward-behavior/README.md`.
+
+Sixteen affected tests and scoped quality checks pass. Inventory equals
+`evidence/raw/item8/inventory-urn-descriptions.json`, SHA-256
+727f4d4abc05cf46ad7df5071f4690b3582de24feb4528c8a1d56f37508eb635.
+Registry rows and every other nonregistry contribution are unchanged. Retire
+supported urn answers. Registry assessment/integration still covers 386 families
+in the existing 340/21/25 evidence paths. Quantify each batch's actual missing
+answers before editing; assess and integrate together. Consistent all-family
+presentation, final acceptance, PR review and verified main delivery remain open.
+
 #### Ruined pillar assessed after 8408bbb3
 
 Eight required answers complete the pillar family's descriptive assessment.
