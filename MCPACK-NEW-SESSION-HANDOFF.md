@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 02a5622a and independently reproduces exactly. All 887 roots
+remain covered once in 425 working groups. Full statue definitions/variants are
+unchanged across the split. Backlog: 50, all IDAS. Next: remaining IDAS authored
+building and assembly relationships. Attributes, nonregistry and delivery remain.
+
 Five IDAS records are reconciled using 84aefdf8 views and complete contents.
 Desert, jungle and plains statues are distinct designs; den, desert camp, market
 and lumber-camp differences remain variants. Stored container contents are not
