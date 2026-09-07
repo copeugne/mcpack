@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS beekeeper house assessed after d8b742bc
+
+Nine entries integrated for two rigid connected components. Matching east_up/
+west_up connectors give second origin33,0,-2 and nominal62 by50 footprint,
+26 height. Bees/villagers distinguished from non-mob entities; ten legacy saved
+bee entries in five hives are not successful releases. Nine empty entity NBT
+records and one SAVE marker explicitly dispositioned. Three defined loot tables,
+no spawners, ticking-only processor reused. No runtime/tool added. All85 focused
+checks pass (65.57s); only beekeepers_house/input identity changed.
+Total426/448 assessed;22 connected IDAS families/198 entries remain, nine each.
+Quantify the next connector/content batch before investigating; reuse existing
+source findings and simple connector geometry where it satisfies approximate size.
+Details: evidence/item-8/sources/idas-beekeepers-house-assessment/README.md.
+Inventory SHA-256: 6ab337208aac93722bfab4224f625f9589b842ba547e5c9fc90663cd862fd212.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS abandoned vineyard assessed after 0500f8bb
 
 Nine entries integrated for two rigid connected templates. Matching down_east/
