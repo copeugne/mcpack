@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Six Explorify standalone assessments after 72b14d81
+
+Retire badlands_pyramid, desert_shrine, guide_post, supply_cache, watchtower and
+mausoleum: 15 roots and 16 standalone templates. Integrated 32 missing descriptions
+and reconciled 24 existing attributions. Mausoleum's source-declared f15 overlay
+adds decorated-pot loot beyond saved dungeon references. Exact pack metadata is
+retained to support that attribution, because the existing generic selector
+excludes this prefix. No new selector/framework or runtime measurement is needed;
+do not overlook this explicitly recorded overlay in final source consistency.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-explorify-standalone-descriptions.json`, SHA-256
+e992af5e73efbccf4e672cc07fc3a5c2effa955b08f034f12decc20a422f32ab.
+Only these six registry rows changed; biomes, observations and nonregistry content
+are unchanged. Registry assessment is 79/410, leaving 331; nonregistry is 40/40.
+Explorify has eight families remaining, while all 49 AdoraBuild descriptions stay
+assessed. Final all-family integration, acceptance, verified file backups/history
+consolidation, PR review and main delivery remain open. Source derivation and the
+initial failed schema lookup are recorded in explorify-descriptions/README.md.
+
 #### AdoraBuild descriptive assessment finished after 96fbd175
 
 Retire basalt_chambers and nether_fortress source descriptions. Ten missing
