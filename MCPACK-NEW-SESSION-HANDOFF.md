@@ -7,6 +7,22 @@
 ### Continuation update - 2026-09-07
 
 
+#### End-target capture support after 39293bc9
+
+Village two-size-attribute batch requires an assembled observation: retained
+components/size6/distance80 are not assembled dimensions and no full-start record
+exists. Narrowly extend existing gap runner for explicit End locate, Chunky world,
+matching completion and configuration capture. No new runner/schema version or
+measurement framework. Both dimension command sequences and wrong-dimension
+rejection are tested;17 focused lifecycle/config tests pass, scoped Ruff and
+Basedpyright pass. Capture predeclared under betterend-platform-portal-consumers
+README: ordinary seed42,betterend:end_village,minecraft:the_end,81 requested chunks,
+betterend-village-geometry-r1. Run is not yet started;6.3GB free,no Java observed.
+Reuse lifecycle/stopped-world/archive/restore/release workflow and retain failures.
+Counts unchanged379/448 assessed,69 families/617 attributes remain. Final inventory
+integration, acceptance, backup/history preparation and PR/review/main remain open.
+
+
 #### BetterEnd sulphuric cave assessed after 154238c8
 
 Nine remaining attributes integrated from retained root and concrete SulphuricCavePiece
