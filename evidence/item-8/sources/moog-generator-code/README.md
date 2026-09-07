@@ -742,3 +742,70 @@ world observations, nonregistry content and existing Mine hostility answers are
 preserved. Inventory matches
 `evidence/raw/item8/inventory-mvs-six-bounded-layouts-final.json`, SHA-256
 0af5280a56a4dad7ff9bdcf69af65c23765c631890638e1af28e0dc99694be60.
+
+## Voyager branching networks: source assessment and geometry target
+
+Fourteen source attributes are integrated for Cathedral and Mineshaft after
+fad0b837. Four geometry answers remain: neither has a retained full-start
+observation, and branching/collision-dependent layouts cannot be represented
+by summing all 29/38 reachable template alternatives. A targeted observation
+for each is the smallest existing method that supplies an actual assembled
+example. No simulator, new probe, new evidence class or broader survey is added.
+
+Exact entity, spawner and loot paths are integrated from the pinned template
+trace. Inspection of template block entities additionally found intersection_8
+/block_entities/3/nbt/Items/0: one evoker spawn egg in a dispenser. This is a
+conditional authored enemy source, not proof of activation. Other dispensers
+contain minecarts/TNT minecart, harming arrows/potion, or no items. These are
+potential authored hazards rather than additional mobs. The remaining inspected
+block-entity payloads introduce no hidden mob source. Cathedral has no saved
+entities and nine spawner records across alternatives; Mineshaft has thirteen
+spawner records across alternatives. These are not per-instance counts.
+
+Cathedral's monster override covers the full bounding box: skeleton weight 1,
+group 1-2; zombie weight 2, group 2-5. Mineshaft has no override. Its previous
+hostility source assessment is retained and amended with the dispenser finding.
+Cathedral base's SAVE-mode empty-metadata structure block is an authoring record.
+
+All pool projections are rigid. Versioned Cathedral resources and Mineshaft
+entrance select 1.21-1.21.8 paths. Mineshaft processors are empty. Cathedral
+base/lower are empty; passages use mvs:cathedral, whose ordered rules change
+crimson_sign to air (1), blue_wool to dirt (1), redstone_block to stone (0.9),
+redstone_lamp to redstone_lamp (1), lantern to air (0.9). These rules neither
+rewrite the two minecraft:mvs/cathedral_common loot references nor establish
+realized lighting or salvage yield. No matching packaged loot-table resource
+exists for that exact ID; preserve the defect without changing the baseline.
+
+Ten shared affected provider/inventory tests pass. Only these two rows and the
+decisions identity changed; existing geometry, biomes and observation links are
+preserved. Reproduce with build_item8_inventory to an absent output path.
+Source-stage inventory SHA-256: c6c82d4485aa988f10495c7a3ff03229be1736f9260bc18db8b4193eebb589c8.
+
+### Predeclared geometry capture
+
+Reuse run_item7_gap_targets for one ordinary-seed locate target per family,
+81 requested chunks around each target. This is an illustrative geometry capture,
+not a density or pacing sample or family-wide extrema. Use the frozen retained
+stack plus the existing Chunky instrument, fresh hash-verified materialization,
+readiness, correlated save and clean stop. Preserve rejected results. Decode
+stopped worlds with the existing decoder, require full start chunks, and derive
+inclusive envelopes with existing observed_bounds. Archive and test local and
+published-download restores through archive_item7_evidence. The committed command
+below is the predeclaration; runtime outcome and source commit follow separately.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/voyager-networks-r1 \
+  --log-path evidence/raw/item8/voyager-networks-r1/console.log \
+  --captured-config evidence/raw/item8/voyager-networks-r1/configuration \
+  --receipt evidence/raw/item8/voyager-networks-r1/run.json \
+  --timeout-seconds 900 --structure mvs:cathedral --structure mvs:mineshaft
+```

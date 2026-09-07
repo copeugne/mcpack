@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager network sources integrated after fad0b837
+
+Fourteen attributes added for Cathedral/Mineshaft; four geometry answers remain.
+Mineshaft's evoker egg in a dispenser is now a conditional authored source.
+Ten shared tests pass. The provider README predeclares one existing-harness
+ordinary-seed capture for both branching layouts, because preserved full-start
+observations are absent. No new tooling. Source-stage inventory SHA:
+c6c82d4485aa988f10495c7a3ff03229be1736f9260bc18db8b4193eebb589c8.
+Still 210/450 assessed, 240 remaining; Voyager 63/65. Next execute the committed
+capture, preserve lifecycle and raw custody, and integrate its geometry. Other
+family work and final integration/acceptance/backup/history/PR delivery remain.
+
 #### Six bounded Voyager families assessed after 709273c8
 
 Fifty-eight attributes finish Cartographer Tower, Crystal, Floating Islands,

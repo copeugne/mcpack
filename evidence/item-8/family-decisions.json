@@ -17806,7 +17806,313 @@
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
+      },
+      "attributes": {
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved root biomes intersect only the Overworld runtime possible-biome set; realized placement is distinct from eligibility."
+        },
+        "mob_source": {
+          "authored_entities_by_template": {},
+          "spawn_overrides": {
+            "monster": {
+              "bounding_box": "full",
+              "spawns": [
+                {
+                  "maxCount": 2,
+                  "minCount": 1,
+                  "type": "minecraft:skeleton",
+                  "weight": 1
+                },
+                {
+                  "maxCount": 5,
+                  "minCount": 2,
+                  "type": "minecraft:zombie",
+                  "weight": 2
+                }
+              ]
+            }
+          },
+          "basis": "Selected reachable components own the saved entity records. They are alternatives and repeated components, not one simultaneous population. Spawner assignments are retained separately; armor stands are objects."
+        },
+        "intended_hostility": {
+          "value": "Hostile cathedral and branching lower passages",
+          "basis": "Zombie/skeleton spawner assignments and a full-bounding-box monster spawn override establish encounter intent, not observed difficulty or population."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Zombie and skeleton physical spawners; no saved template entities.",
+          "natural_structure_override": {
+            "monster": {
+              "bounding_box": "full",
+              "spawns": [
+                {
+                  "maxCount": 2,
+                  "minCount": 1,
+                  "type": "minecraft:skeleton",
+                  "weight": 1
+                },
+                {
+                  "maxCount": 5,
+                  "minCount": 2,
+                  "type": "minecraft:zombie",
+                  "weight": 2
+                }
+              ]
+            }
+          },
+          "basis": "Full-box monster overrides select skeleton groups 1-2 at weight 1 and zombie groups 2-5 at weight 2. These are conditional spawning inputs, not guaranteed residents or activation counts."
+        },
+        "generated_spawners": {
+          "by_template": {
+            "mvs:cathedral/base/bottom": [
+              {
+                "path": "/block_entities/6",
+                "position": [
+                  16,
+                  1,
+                  10
+                ],
+                "entity_id": "minecraft:zombie"
+              }
+            ],
+            "mvs:cathedral/special/corner_3": [
+              {
+                "path": "/block_entities/1",
+                "position": [
+                  2,
+                  1,
+                  9
+                ],
+                "entity_id": "minecraft:skeleton"
+              }
+            ],
+            "mvs:cathedral/special/staircase_1": [
+              {
+                "path": "/block_entities/1",
+                "position": [
+                  4,
+                  1,
+                  13
+                ],
+                "entity_id": "minecraft:skeleton"
+              },
+              {
+                "path": "/block_entities/5",
+                "position": [
+                  8,
+                  1,
+                  8
+                ],
+                "entity_id": "minecraft:zombie"
+              },
+              {
+                "path": "/block_entities/11",
+                "position": [
+                  1,
+                  5,
+                  5
+                ],
+                "entity_id": "minecraft:skeleton"
+              }
+            ],
+            "mvs:cathedral/special/three_way_1": [
+              {
+                "path": "/block_entities/3",
+                "position": [
+                  9,
+                  1,
+                  13
+                ],
+                "entity_id": "minecraft:skeleton"
+              },
+              {
+                "path": "/block_entities/6",
+                "position": [
+                  12,
+                  1,
+                  8
+                ],
+                "entity_id": "minecraft:zombie"
+              }
+            ],
+            "mvs:cathedral/special/three_way_2": [
+              {
+                "path": "/block_entities/3",
+                "position": [
+                  5,
+                  1,
+                  3
+                ],
+                "entity_id": "minecraft:skeleton"
+              },
+              {
+                "path": "/block_entities/4",
+                "position": [
+                  5,
+                  1,
+                  12
+                ],
+                "entity_id": "minecraft:zombie"
+              }
+            ]
+          },
+          "basis": "Physical spawner records in reachable templates. Repeated and optional pieces prevent treating summed source records as a per-start count. Cathedral base has one SAVE-mode structure block with empty metadata, not a demonstrated mob-generation marker; Mineshaft has none."
+        },
+        "loot_table_source": {
+          "by_template": {
+            "mvs:cathedral/base/base": [
+              "mvs:cathedral_base",
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/base/bottom": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_1": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_2": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_3": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_4": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_5": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_6": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/corridors/corridor_7": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/special/corner_1": [
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/corner_2": [
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/corner_3": [
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/corner_4": [
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/dead_end_2": [
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/dead_end_3": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/special/staircase_1": [
+              "minecraft:mvs/cathedral_common",
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/staircase_2": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/special/staircase_3": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/special/three_way_1": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/special/three_way_2": [
+              "minecraft:mvs/cathedral_common",
+              "mvs:cathedral_common",
+              "mvs:cathedral_rare"
+            ],
+            "mvs:cathedral/special/three_way_3": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_1": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_2": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_3": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_4": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_7": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_8": [
+              "mvs:cathedral_common"
+            ],
+            "mvs:cathedral/start_corridors/corridor_9": [
+              "mvs:cathedral_common"
+            ]
+          },
+          "basis": "Exact authored container references, including decorated-pot loot where present. mvs:empty is not necessarily empty. No rolled loot or salvage yield is inferred.",
+          "unresolved_reference_disposition": {
+            "reference": "minecraft:mvs/cathedral_common",
+            "templates": [
+              "mvs:cathedral/special/staircase_1",
+              "mvs:cathedral/special/three_way_2"
+            ],
+            "value": "No matching data/minecraft/loot_table/mvs/cathedral_common.json resource occurs in the retained packaged JSON capture. Preserve this missing packaged target and do not silently repair its namespace. Effective container outcome is unmeasured; this inventory records the defect without tuning the baseline."
+          }
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected cathedral with branching lower passages",
+          "placement_inputs": {
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
+            "start_height": {
+              "absolute": 0
+            },
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "cannot_spawn_in_liquid": true,
+            "allowed_terrain_height_range": 5,
+            "liquid_settings": "ignore_waterlogging",
+            "max_distance_from_center": 35,
+            "size": 17,
+            "spawn_overrides": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:skeleton",
+                    "weight": 1
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 2,
+                    "type": "minecraft:zombie",
+                    "weight": 2
+                  }
+                ]
+              }
+            },
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 1,
+            "start_pool": "mvs:cathedral/temp"
+          },
+          "basis": "Generic surface projection, offset zero, beard_thin and explicit center-column liquid checking. Source-relative lower passages do not establish measured burial depth. Size 17 is a jigsaw depth input, not 17 rooms; max_distance_from_center is not an observed footprint. Mineshaft corridor_overflow is expressly allowed to ignore boundaries."
+        },
+        "visual_discoverability": {
+          "source_form": "Furnished main cathedral building with branching lower corridors. Surface architecture may mark the site while terrain and enclosure conceal passages.",
+          "basis": "Qualitative source/placement inference, not measured discovery distance or guaranteed exposure."
+        }
       }
     },
     {
@@ -20701,7 +21007,11 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/sources/moog-generator-code/identities.json": "4287c67414d06b14d55cd69c4c76c5d164487ce4fe0cd70a962dddd9b1f01ee8"
       },
       "attributes": {
         "intended_hostility": {
@@ -20724,8 +21034,735 @@
             "minecraft:villager"
           ],
           "natural_structure_override_entity_ids": [],
-          "basis": "Both root definitions have empty spawn_overrides. Hostile template entities and generator-placed spawner NBT are authored sources, distinct from natural biome/world spawning.",
-          "limitation": "Potential sources only. Template placement settings, processors and runtime transformations may change effective entities. No per-start population, simultaneous spawner count or absence of natural enemies is claimed."
+          "basis": "The root has empty spawn_overrides. Saved hostile entities, spawner NBT and the intersection_8 dispenser spawn egg are authored sources, distinct from conditional natural biome/world spawning.",
+          "limitation": "Potential sources only. Template placement settings, processors and runtime transformations may change effective entities. No per-start population, simultaneous spawner count or absence of natural enemies is claimed.",
+          "conditional_dispenser_entity_ids": [
+            "minecraft:evoker"
+          ]
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "Resolved root biomes intersect only the Overworld runtime possible-biome set; realized placement is distinct from eligibility."
+        },
+        "mob_source": {
+          "authored_entities_by_template": {
+            "mvs:mineshaft/dead_end_2": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/dead_end_3": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_1": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_10": [
+              {
+                "id": "minecraft:evoker",
+                "path": "/entities/13/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/12/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/11/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/10/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/9/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/8/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/7/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/6/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/5/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/4/nbt"
+              },
+              {
+                "id": "minecraft:armor_stand",
+                "path": "/entities/3/nbt"
+              },
+              {
+                "id": "minecraft:armor_stand",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:armor_stand",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:armor_stand",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_3": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_4": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_5": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_6": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_8": [
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/29/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/28/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/27/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/26/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/25/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/24/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/23/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/22/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/21/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/20/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/19/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/18/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/17/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/16/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/15/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/14/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/13/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/12/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/11/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/10/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/9/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/8/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/7/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/6/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/5/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/4/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/3/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/intersection_9": [
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/39/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/38/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/37/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/36/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/35/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/34/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/33/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/32/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/31/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/30/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/29/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/28/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/27/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/26/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/25/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/24/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/23/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/22/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/21/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/20/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/19/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/18/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/17/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/16/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/15/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/14/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/13/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/12/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/11/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/10/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/9/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/8/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/7/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/6/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/5/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/4/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/3/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:bogged",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:skeleton",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/straight_5": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/straight_6": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/straight_8": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "mvs:mineshaft/straight_9": [
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/2/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/1/nbt"
+              },
+              {
+                "id": "minecraft:villager",
+                "path": "/entities/0/nbt"
+              }
+            ]
+          },
+          "spawn_overrides": {},
+          "basis": "Selected reachable components own the saved entity records. They are alternatives and repeated components, not one simultaneous population. Spawner assignments are retained separately; armor stands are objects.",
+          "conditional_dispenser_source": {
+            "template": "mvs:mineshaft/intersection_8",
+            "path": "/block_entities/3/nbt/Items/0",
+            "item": "minecraft:evoker_spawn_egg",
+            "count": 1,
+            "basis": "Authored dispenser inventory can supply an evoker if activated; activation and a live spawn are not established."
+          }
+        },
+        "generated_spawners": {
+          "by_template": {
+            "mvs:mineshaft/intersection_10": [
+              {
+                "path": "/block_entities/135",
+                "position": [
+                  20,
+                  11,
+                  29
+                ],
+                "entity_id": "minecraft:bogged"
+              }
+            ],
+            "mvs:mineshaft/intersection_2": [
+              {
+                "path": "/block_entities/0",
+                "position": [
+                  13,
+                  0,
+                  13
+                ],
+                "entity_id": "minecraft:creeper"
+              }
+            ],
+            "mvs:mineshaft/intersection_8": [
+              {
+                "path": "/block_entities/25",
+                "position": [
+                  8,
+                  4,
+                  8
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/26",
+                "position": [
+                  8,
+                  4,
+                  20
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/27",
+                "position": [
+                  14,
+                  4,
+                  14
+                ],
+                "entity_id": "minecraft:skeleton"
+              },
+              {
+                "path": "/block_entities/28",
+                "position": [
+                  20,
+                  4,
+                  8
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/29",
+                "position": [
+                  20,
+                  4,
+                  20
+                ],
+                "entity_id": "minecraft:bogged"
+              }
+            ],
+            "mvs:mineshaft/intersection_9": [
+              {
+                "path": "/block_entities/20",
+                "position": [
+                  8,
+                  4,
+                  8
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/21",
+                "position": [
+                  8,
+                  4,
+                  20
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/22",
+                "position": [
+                  14,
+                  4,
+                  14
+                ],
+                "entity_id": "minecraft:skeleton"
+              },
+              {
+                "path": "/block_entities/23",
+                "position": [
+                  20,
+                  4,
+                  8
+                ],
+                "entity_id": "minecraft:bogged"
+              },
+              {
+                "path": "/block_entities/24",
+                "position": [
+                  20,
+                  4,
+                  20
+                ],
+                "entity_id": "minecraft:bogged"
+              }
+            ]
+          },
+          "basis": "Physical spawner records in reachable templates. Repeated and optional pieces prevent treating summed source records as a per-start count. Cathedral base has one SAVE-mode structure block with empty metadata, not a demonstrated mob-generation marker; Mineshaft has none."
+        },
+        "loot_table_source": {
+          "by_template": {
+            "mvs:mineshaft/corner_3": [
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/corner_4": [
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/corner_5": [
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/corner_6": [
+              "mvs:empty",
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/dead_end_2": [
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/dead_end_3": [
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/dead_end_4": [
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/dead_end_5": [
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/entrance": [
+              "mvs:mineshaft/common"
+            ],
+            "mvs:mineshaft/intersection_1": [
+              "mvs:mineshaft/pot"
+            ],
+            "mvs:mineshaft/intersection_10": [
+              "mvs:empty",
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/intersection_2": [
+              "mvs:mineshaft/pot",
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/intersection_3": [
+              "mvs:empty",
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/pot"
+            ],
+            "mvs:mineshaft/intersection_4": [
+              "mvs:mineshaft/pot"
+            ],
+            "mvs:mineshaft/intersection_5": [
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/intersection_8": [
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/intersection_9": [
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/round_staircase": [
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/round_staircase_2": [
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/straight_1": [
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/straight_2": [
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/straight_3": [
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/rare"
+            ],
+            "mvs:mineshaft/straight_5": [
+              "mvs:mineshaft/common"
+            ],
+            "mvs:mineshaft/straight_6": [
+              "mvs:empty",
+              "mvs:mineshaft/common",
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/straight_8": [
+              "mvs:mineshaft/uncommon"
+            ],
+            "mvs:mineshaft/straight_9": [
+              "mvs:mineshaft/rare",
+              "mvs:mineshaft/uncommon"
+            ]
+          },
+          "basis": "Exact authored container references, including decorated-pot loot where present. mvs:empty is not necessarily empty. No rolled loot or salvage yield is inferred."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected mine entrance leading into a branching lower network",
+          "placement_inputs": {
+            "type": "moogs_structures:moogs_structures_generic_jigsaw_structure",
+            "start_height": {
+              "absolute": 0
+            },
+            "project_start_to_heightmap": "WORLD_SURFACE_WG",
+            "cannot_spawn_in_liquid": true,
+            "allowed_terrain_height_range": 4,
+            "liquid_settings": "ignore_waterlogging",
+            "max_distance_from_center": 45,
+            "pools_that_ignore_boundaries": [
+              "mvs:mineshaft/corridor_overflow"
+            ],
+            "size": 17,
+            "spawn_overrides": {},
+            "step": "surface_structures",
+            "terrain_adaptation": "beard_thin",
+            "terrain_height_radius_check": 1,
+            "start_pool": "mvs:mineshaft/mineshaft"
+          },
+          "basis": "Generic surface projection, offset zero, beard_thin and explicit center-column liquid checking. Source-relative lower passages do not establish measured burial depth. Size 17 is a jigsaw depth input, not 17 rooms; max_distance_from_center is not an observed footprint. Mineshaft corridor_overflow is expressly allowed to ignore boundaries."
+        },
+        "visual_discoverability": {
+          "source_form": "Mine entrance is the surface clue; branching corridors, junctions and stairs need not be externally visible.",
+          "basis": "Qualitative source/placement inference, not measured discovery distance or guaranteed exposure."
         }
       }
     },
