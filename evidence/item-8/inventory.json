@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "329d0f65d7d53c7219ab865252a41b6a7bedc4085354dc63b803eb6e1668a760",
+    "evidence/item-8/family-decisions.json": "e1e09ab3be7be221b6cdf958f96aff8df947eb2530aa861af4d3749b5df66035",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -172533,6 +172533,44 @@
       },
       "betterend:ruined_obsidian_pillar": {
         "attributes": {
+          "approximate_footprint": {
+            "basis": "Both radii are equal. Fallen writer selects radius with randRange(2,4); basement uses randRange(2,5). These are parent-cylinder diameters before rotation, displacement, subtraction and voxelization.",
+            "nominal_parent_diameter_blocks": {
+              "betterend:fallen_pillar": [
+                4,
+                8
+              ],
+              "betterend:obsidian_pillar_basement": [
+                4,
+                10
+              ]
+            },
+            "scope": "Approximate source geometry, not occupied-world bounds. Fallen displaces its cylinder; basement subtracts a displaced plane. Do not claim a fixed rectangular footprint.",
+            "world_space_interpretation": "For parent axial length L, radius r and tilt theta about a horizontal axis, horizontal span along the tilt direction is L*abs(sin(theta))+2*r*abs(cos(theta)); transverse span is 2*r. Random azimuth changes X/Z projections."
+          },
+          "approximate_vertical_size": {
+            "basis": "Both writers pass L/2 to SDFCappedCone.setHeight. Captured getDistance uses abs(y)-height and twice-height in its side segment, establishing a centered half-height convention.",
+            "nominal_parent_axial_length_blocks": {
+              "betterend:fallen_pillar": [
+                20,
+                40
+              ],
+              "betterend:obsidian_pillar_basement": [
+                10,
+                35
+              ]
+            },
+            "nominal_parent_vertical_span": "L*abs(cos(theta))+2*r*abs(sin(theta)) before weathering/subtraction and voxelization. Translation changes altitude, not span.",
+            "rotation_parameters": {
+              "betterend:fallen_pillar": "theta=pi+0.05*nextGaussian(), about a random horizontal axis. Near pi reverses the axis; the name does not prove a horizontal fallen log.",
+              "betterend:obsidian_pillar_basement": "Final theta=0.2*nextFloat(), after the displaced-plane subtraction. Plane rotation is separate from final cylinder rotation."
+            },
+            "scope": "Approximate parent envelope. Basement cutting removes part of that body; fallen displacement changes its boundary. Not observed exposed height or a promise of successful recursive fill."
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Shape and material callbacks contain no mob-source declaration. Do not attribute the central End spike crystal or cage to these independent features.",
+            "value": "No directly authored enemies or spawners; natural enemies may occur."
+          },
           "biome_constraints": {
             "limitation": "Packaged direct consumer; shared modifiers may extend eligibility.",
             "packaged_biome_consumer": "betterend:dragon_graveyards"
@@ -172541,6 +172579,28 @@
             "basis": "Canonical grouping based on preserved generator geometry and packaged placement relationships. The placed IDs are registered and Dragon Graveyards is in the captured End biome source. This does not assert successful world placement, a measured orientation or footprint, or completion of all required attributes. Central spike components and the BOP rectilinear monolith remain distinct contributions.",
             "limitation": "Captured biome-source overlap and packaged route, not observed occurrence.",
             "value": "minecraft:the_end"
+          },
+          "generated_spawners": {
+            "basis": "Neither supplied shape state nor the moss callback is a spawner; no spawner block-entity data is authored by these features.",
+            "direct_spawner_blocks": []
+          },
+          "intended_hostility": {
+            "basis": "The writers supply obsidian shapes and mossy-obsidian surface postprocessing, not defender or loot-container definitions. This does not establish safe terrain or interactions.",
+            "value": "Environmental obsidian landmark without a directly authored mob encounter."
+          },
+          "loot_table_source": {
+            "basis": "No container or loot-table assignment in either feature body or callback.",
+            "direct_assigned_tables": [],
+            "scope": "Container loot attribution. Harvested obsidian/mossy obsidian is separate from container rewards."
+          },
+          "mob_source": {
+            "basis": "Neither feature body or its supplied callbacks constructs an entity. The recursive shape fill receives obsidian/mossy-obsidian states.",
+            "direct_authored_entities": [],
+            "natural_source": "Natural biome spawning and surrounding world state remain separate; no population is measured."
+          },
+          "underground_surface_classification": {
+            "basis": "Both add random 0..15 X/Z offsets, call getPosOnSurface and require END_STONES five blocks below. Fallen also requires air at the selected point. Both allow replacement of END_STONES or replaceable/plant states. Fallen translates by radius/2-2 before rotation; basement translates its parent by L/2-3 before cutting and final tilt.",
+            "value": "Surface-selected obsidian column remnants with terrain intersection."
           },
           "visual_discoverability": {
             "basis": "Source-derived form, not measured approach visibility or discovery distance.",
@@ -172552,7 +172612,8 @@
           "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_placed_feature.txt": "20d3a7d932b6e5c8f417ff07060a1fa63e95294f35ef78d92651efc221a4a48f",
           "evidence/item-8/sources/betterend-pillar-end-hooks/identities.json": "f39ee57a16f67349f29e98bfdd3fe2acf567b39b9d56f737f9d8d3655f860e04",
-          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd"
+          "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
+          "evidence/item-8/sources/pillar-shape-semantics/identities.json": "4b56f8aba8e03dc878104a27ff75e4e3896ebc151a3d702e9628ba6bf6861b0a"
         },
         "families": [
           "betterend:ruined_obsidian_pillar"
