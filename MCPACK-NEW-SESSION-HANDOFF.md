@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS desert camp assessed after 3431aa49
+
+Nine entries integrated for four independent11 by4 by12 templates. No authored
+entities, spawners, markers or literal loot tables. Fixed sack contents and
+machinery operation remain distinct claims. Ticking-only processor reused.
+Existing empty windswept biome overlap retained, not declared a generation
+failure. No runtime/tool added. All85 focused checks pass (67.11s); only
+desert_camp/input identity changed. Total416/448 assessed;32 IDAS families/
+288 required entries remain. Existing-candidate geometry group now8 families;
+24 connected assemblies still need geometry assessment. Next underground_camp
+has two roots/four independent alternatives and nine entries; quantify before
+using its existing content and dimensions. Final integration, acceptance,
+backup/history and PR/review/main remain open.
+Details: evidence/item-8/sources/idas-desert-camp-assessment/README.md.
+Inventory SHA-256: 66ce4a01c5b645f1a9d71ba9e28a6a76195dd0b3ebab66f2cfa3e4a8229e6e46.
+
+
 #### IDAS animal den assessed after 61ba7660
 
 Nine entries integrated for three independent den alternatives. All templates
