@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 3c63c375 and reproduces exactly. Canonical backlog: 15, all
+IDAS. All 887 roots and full variants remain in 426 working groups. Compare
+castle and farmhouse alternatives next. Attributes, 33 nonregistry contributions
+and final validation/review/main delivery remain open.
+
 Pillager fortress resolves to one eight-component assembly with its authored
 encounter content preserved. Focused IDAS and scoped checks pass. Canonical
 backlog: 15, all IDAS. Inventory refresh follows. Castle remains open: its three
