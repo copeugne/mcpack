@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Eight IDAS building decisions now bind the delivered d62d6212 views and full
+contents. Lighthouse, lodge, botanist, hollow, hunter cabin, mason house, pumpkin
+cafe and general store remain distinct. Hunter cabin retains pillagers and four
+spawner blocks; nested optional entities and missing IDs remain explicit. The
+focused IDAS test and scoped Ruff/Basedpyright checks pass. Canonical backlog: 36,
+all IDAS. Groups remain 426. Inventory refresh follows. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
 Next IDAS comparison covers eight single-template buildings: abandoned_lighthouse,
 botanist, fishermans_lodge, hermits_hollow, hunters_cabin, mason_house, pumpkin_cafe
 and wacky_wares. Some are large despite being single-template. Reuse the corrected
