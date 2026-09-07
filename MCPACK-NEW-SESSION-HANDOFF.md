@@ -7,6 +7,22 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd glowshroom geometry assessed after 2d075ee1
+
+Two size attributes integrated from retained root and directly inspected pinned
+BCLib operators. Nominal cap diameter62.4..109.2, scaled stem20..87.5 and
+undeformed parent vertical scale49.1..138.425 are explicitly not realized bounds.
+Gaussian horizontal offsets include the cap tip; wave, warp, smoothing, rounding
+and fur limitations are preserved. No new capture/tool. All85 focused checks pass
+(62.92s). Registry337/408,nonregistry40/40,total377/448 assessed;71 families and
+635 required attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,
+BetterEnd3/20 (village2,small_island9,sulphuric_cave9). Next batch: small island,
+one family/nine attributes; inspect retained root/IslandGeometry/VoxelPiece and
+existing full-start observations before any new investigation. Final integration,
+acceptance, backup/history preparation and PR/review/main delivery remain open.
+Inventory SHA-256: baee90becc746220f63e152dc631de8c976f25b462d9ca7a3643e5cfde047e8e.
+
+
 #### BetterEnd glowshroom content assessed after 4149b60e
 
 Seven descriptions integrated from retained root/SDF/base/VoxelPiece code:

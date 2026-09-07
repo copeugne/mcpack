@@ -178,3 +178,45 @@ be accounted for before final size attribution. Reuse the already known cone,
 translation and union semantics, and inspect only the remaining shared operators
 needed for the two outstanding geometry claims. Do not introduce a new simulation
 or measurement framework merely to reproduce this source description.
+
+## Glowshroom geometry assessment
+
+Both size attributes now describe nominal parent scale with explicit deformation
+limits. This uses the retained root and direct inspection of its BCLib helpers,
+with exact identities in processor_inspection. No new capture or simulator is
+needed to satisfy an approximate description.
+
+The positive cap parents are a centered half-height2.5 cone, a half-height3 cone
+translated upward5, a copy of that cut cone translated another1.25 and scaled
+X/Z by1.2, and an inner half-height3 cone translated4.25. Subtracted geometry
+cannot enlarge these undeformed parents. Their maximum lateral radius is15.6,
+and parent Y range is[-2.5,9.25]. The later +2.5 translation and stem-tip
+attachment give cap parent Y[L,L+11.75]. The basal sphere has radius4 and Y
+scale0.7, reaching -2.8. L is selected10..25 and final uniform scale Q is2..3.5.
+Thus nominal cap diameter31.2*Q is62.4..109.2; scaled stem endpoint length L*Q
+is20..87.5; the undeformed parent vertical span (L+14.55)*Q is49.1..138.425.
+These component/parent scales are not occupied dimensions or all-layout maxima.
+
+The direct helper interpretation is:
+
+- SDFScale evaluates source at coordinates divided by Q, then multiplies distance
+  by Q. SDFScale3D divides coordinates separately, without distance rescaling.
+- SDFFlatWave adds cos(atan2(x,z)*rays+angle)*intensity to source distance via
+  SDFDisplacement. Cap uses12 rays/intensity1.3; base uses5 rays/intensity1.5.
+- Smooth union uses h=clamp(0.5+0.5*(b-a)/k,0,1), then
+  lerp(h,b,a)-k*h*(1-h). The root uses smoothing radii3 and4.
+- The cap coordinate callback changes query Y to Y+0.3*R*N-0.15*R, where
+  R=sqrt(x*x+z*z) and N is the captured position-dependent noise sample.
+- Final SDFRound subtracts1.5 from distance after uniform scaling. The material
+  postprocessor can add neighboring fur, including one block below hymenophore.
+
+SplineHelper.offsetParts iterates from index1 through the final point and adds
+nextGaussian times the supplied per-axis scale. The root supplies(1,0,1), so
+horizontal offsets have no explicit clamp and include the cap attachment tip.
+Do not invent a finite universal footprint or call the nominal cap diameter the
+whole realized formation width. These limitations are part of the assessment,
+not a requirement to simulate every random layout or measure live occupied size.
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.sdf.operator.SDFScale org.betterx.bclib.sdf.operator.SDFScale3D org.betterx.bclib.sdf.operator.SDFFlatWave org.betterx.bclib.sdf.operator.SDFDisplacement org.betterx.bclib.sdf.operator.SDFSmoothUnion org.betterx.bclib.sdf.operator.SDFRound org.betterx.bclib.util.SplineHelper
+```
