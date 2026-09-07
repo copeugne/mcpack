@@ -82,3 +82,44 @@ these ten families and the decisions input hash changed. Existing geometry,
 biomes, observation links and nonregistry content remain unchanged. Inventory
 matches `evidence/raw/item8/inventory-mvs-overworld-small.json`, SHA-256
 8f3e1a1c359e8f3fa72cd7a65277fa5540cc204746ebd2ac4b3a1b99c2e4f499.
+
+## Ten Voyager ruins and decorative families
+
+After bbb8b3ce, eighty answers finish castle_ruins, log_ruin, mushroom_statue,
+large_mushroom, railway, ruined_beacon, small_ruin, snowy_fossil, statue_ruins and
+stone_pillars. Existing geometry stays unchanged. Direct inspection of selected
+templates, block entities, root definitions and pools supplies the remaining
+source descriptions; no new capture, runtime measurement or tooling.
+
+All ten resolved biome sets intersect only the Overworld runtime possible-biome
+set. Roots use generic jigsaw, WORLD_SURFACE_WG offset zero, beard_thin and the
+liquid check. Seven declare terrain range 3: castle_ruins/log_ruin/small_ruin use
+radius input 2, railway/ruined_beacon/statue_ruins/stone_pillars use 1. Mushroom
+Statue, Large Mushroom and Snowy Fossil omit these optional terrain fields. Source
+inputs remain distinct from successful placement or measured exposure.
+
+Selected template contents have no authored entities, contained mobs, physical
+spawners or generation markers. Block entities are containers, beds, campfires
+or a lectern; the three mushroom/fossil templates and Ruined Beacon contain none.
+This supports environmental intent with conditional natural biome spawning,
+not a safety guarantee. Nine pools are rigid ordinary single elements with empty
+processors. Ruined Beacon uses the existing versioned element, selecting
+mvs:ruins/ruined_beacon for 1.21.1 and processor mvs:tuff_to_iron. Its two ordered
+rules match tuff with inputs 0.2 -> raw_iron_block, then 0.05 -> iron_block. These
+are source substitution probabilities, not independently observed yields. The
+selected template palette contains no beacon block; no active beacon beam or
+beacon reward is inferred from the family name.
+
+Container table ownership is recorded exactly: Castle Ruins general/common/rare/
+uncommon; Log Ruin swamps; Railway common/uncommon; Small Ruin houses_uncommon;
+Statue Ruins abandoned; Stone Pillars houses_rare, under mvs namespace with exact
+houses_* IDs retained in inventory. Mushroom Statue, Large Mushroom, Snowy Fossil
+and Ruined Beacon have no saved container tables. Ordinary salvage remains
+separate. Qualitative visibility descriptions use the architectural forms and
+recorded dimensions, without measurement of sight distance or discovery rate.
+
+Ten affected Moog-provider/inventory tests and scoped builder checks pass. Only
+these ten rows and the decisions input identity changed; existing geometry,
+biomes, observations and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-ruins-decoration.json`, SHA-256
+2d5db4d403447299020293b7564e1f41b6a0c4e38ed486675b2f219b02f5f346.

@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Ten Voyager ruins/decorations assessed after bbb8b3ce
+
+Eighty answers finish castle_ruins, log_ruin, mushroom_statue, large_mushroom,
+railway, ruined_beacon, small_ruin, snowy_fossil, statue_ruins and stone_pillars.
+Existing geometry stays unchanged. Ruined Beacon's selected template has no
+beacon block; ordered tuff-to-raw-iron/iron rules remain source salvage inputs,
+not observed yields. No new capture, measurement or tooling. Direct source
+attribution is in moog-generator-code README.
+
+Ten affected tests and builder checks pass. Inventory SHA-256:
+2d5db4d403447299020293b7564e1f41b6a0c4e38ed486675b2f219b02f5f346.
+Retire these descriptions. Voyager 20/65; registry 127/410, nonregistry 40/40,
+total 167/450 assessed, 283 remaining. Continue remaining families in quantified
+batches and preserve their actual version-selected resources and contained
+entity distinctions. Final integration, acceptance, verified backed-up history
+consolidation, PR review and main delivery remain open.
+
 #### Ten Voyager families assessed after c13eba18
 
 Eighty answers finish mvs:barn, beach_bar, bee_dome, desert_house, desert_pump,
