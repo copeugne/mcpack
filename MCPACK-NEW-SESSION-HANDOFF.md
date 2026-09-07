@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### Better Fortress assessed after 7fcbb310
+
+Ten attributes integrated from149 available traced templates, existing processor
+sources and two full-start geometries (228x92x210 and186x100x191), each repeated
+across baseline runs. Missing halls/hall_4 remains explicit; support/arch direct
+writes stay separate from saved bounds. Blaze spawner, authored piglin/wither
+skeleton targets, pool-listed skeleton without target, five natural monster
+entries and frame-selection effects are separately attributed. Fourteen of15
+effective biomes intersect only the Nether; redstone_abyss is unmatched.
+Exact derivations: evidence/item-8/sources/fortress-provider/README.md, Fortress
+family assessment. No new runtime/tooling. All85 focused tests pass (58.39s).
+Only Fortress and input identity changed; membership/observations are unchanged.
+Registry321/408,nonregistry40/40,total361/448 assessed,87 remaining. Next quantify
+Desert Temple or Stronghold, the two remaining YUNG families, before inspection.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+1bc105e8fd124eaf61e3602d391958a94fe2b0745490f52adc42c79f32e6563e.
+
+
+
 #### Jungle Temple geometry finished after 8350a9e7
 
 Declared seed42 one-target/81-requested-chunk capture passed readiness,
