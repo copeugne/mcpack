@@ -851,3 +851,48 @@ observation links are preserved, with this capture bound by added evidence refs.
 Twelve affected world-bounds/provider/inventory tests pass. No runtime remains.
 Inventory SHA: 8d1a84b976d3aebf20a760a6fe1c0f1c09abde8336cbc9dab907328a984f216e.
 Voyager is 65/65 assessed. Retire its assessment absent contradictory evidence.
+
+## Eleven standalone End families
+
+After ec3ef2ae, 88 source attributes finish eleven mes families while preserving
+their existing template geometry. Each root uses one ordinary rigid single
+pool element, weight 1, minecraft:empty processors and no attachment. Direct
+source pointers are in family-decisions; packaged-json-redacted supplies complete
+root definitions, templates-redacted supplies palette/block-entity payloads,
+and pool-traces-content supplies exact entity/spawner/loot references.
+
+| Family | Authored encounter source | Loot table suffix under mes |
+| --- | --- | --- |
+| astral_hideaway | none identified | end_common |
+| astral_meteorite | none identified; fire is a separate hazard | end_common |
+| ender_spire | none identified | end_common |
+| enderbloom_grove | none identified | no reference |
+| enderkeep_courtyard | seven saved shulkers | end_rare |
+| enderskog | none identified | end_common |
+| enderwatch_tower | eleven saved shulkers | end_rare |
+| manuscript_shrine | none identified | end_common |
+| mystical_archway | none identified | end_rare |
+| mythic_garden | none identified | end_uncommon |
+| phantom_citadel | two phantom and two enderman spawners | end_uncommon |
+
+All roots are End-biome-compatible only, with empty spawn overrides and
+min_y_allowed 45. Generic code applies height/terrain constraints, not a promise
+of exposure. Range/radius is 3/1 except Courtyard 5/2 and Watch/Citadel 4/1.
+Citadel uses surface offset +24 and no terrain adaptation; all other roots use
+zero and beard_thin. Omitted liquid flag defaults false. Full declarations are
+integrated, including settings absent from the earlier abbreviated grouping.
+
+No other mob payload occurs in inspected block entities. Meteorite has fifteen
+brushable blocks with air/count-zero items and no loot table; its separate chest
+owns end_common. Archway retains five explicit LootTableSeed values and its
+barrier/reinforced-deepslate palette, without inferring passability or a portal.
+Manuscript's lectern has no book payload. Source light/vegetation/material cues
+support qualitative visibility descriptions, not measured sight distances or
+lighting. No live population, rolled reward or sustainable salvage yield is
+claimed. No capture, new tooling or expansion into tuning.
+
+Ten shared provider/inventory tests pass. Rebuild with
+`uv run -m tools.build_item8_inventory --output <absent-path>`.
+Only eleven family rows and the decisions hash change; existing geometry,
+biomes, world observations and nonregistry content are preserved. Inventory SHA:
+960f87010b6506043e805360c6e7336f146e53d44435c730b2bc7770b12b6970.
