@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Lighthouse/lodge inventory matches d05f082d and reproduces exactly. Ten families
+have current-phase source assessments. Remaining: 397 registry candidates with
+literal gaps (2,169 values), forty nonregistry assignments needing integration,
+thirteen filled registry records needing acceptance assessment. No new measurement
+or tooling. Quantify the next batch before editing.
+
 House attribute inventory matches df2b2680 and reproduces exactly. Eight families
 have current-phase source assessments. Remaining planning count: 399 registry
 candidates with literal gaps (2,181 values), forty nonregistry assignments needing

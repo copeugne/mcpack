@@ -10541,3 +10541,37 @@ nonregistry assignments needing integration, and eleven filled registry records
 still subject to acceptance assessment. IDAS accounts for 54 of the 399 remaining
 rows with literal gaps. Eight families have current-phase attribute assessments.
 Item 8 acceptance, final review and main delivery remain open.
+
+
+### Lighthouse and fishing lodge attribute increment
+
+Predeclared scope: two families, eleven fields each. Decision d05f082d records ten
+source interpretations per family while retaining resolved biome constraints.
+Nominal XYZ envelopes are 9 by 13 by 8 and 25 by 41 by 27. The lodge's start offset
+is -15, so template height is not exposed height. Both have no authored entities
+or physical spawners. Lighthouse uses dispenser/dropper ticking; lodge uses an
+empty processor list. Both retain their loot-table references and source limits.
+Frozen toggles enable both; all seven lighthouse biomes and the single lodge biome
+overlap only the captured Overworld. Neither has retained world occurrence.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh builds match, SHA-256
+dda8914dfb8a06a4957ef70578efac0247b4898a7b19365294fcc8fc26378388.
+Only the two family rows and decision input identity change. Registry membership,
+biomes, observations, trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-lighthouse-lodge-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+cmp evidence/raw/item8/inventory-lighthouse-lodge-attributes-r1.json evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-lighthouse-lodge-attributes-r2.json
+```
+
+Twelve literal field gaps are resolved. Remaining planning counts: 397 registry
+candidates with 2,169 literal gaps, forty nonregistry assignments needing
+integration, thirteen filled registry records needing acceptance assessment.
+Ten families have current-phase assessments. No new measurement or tooling.
+Item 8 acceptance, PR review and verified main delivery remain open.
