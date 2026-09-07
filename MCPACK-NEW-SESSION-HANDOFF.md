@@ -6,6 +6,88 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining work quantified at c417925c
+
+Discovery is closed: 136 retained-provider dispositions, 887 registry roots
+assigned exactly once, and no remaining canonical design decision. The assessment
+population is 410 candidate registry families plus 40 nonregistry families. Fifteen
+inactive registry groups and the excluded cloud contribution retain their existing
+dispositions and are not an attribute-filling backlog.
+
+Established facts awaiting integration:
+
+1. Four nonregistry families (YUNG bridge and three Better End Island families)
+   already contain five direct encounter attributes each in direct_encounter_content.
+   Integrate these 20 values, preserving their source scope and limitations.
+2. Ten YUNG Extras families already contain template mob, loot and spawner inputs
+   in packaged_content. Integrate these 30 values, including the desert well's
+   separately recorded processor loot sources. Empty template lists do not prove
+   absence of generator additions. These two content batches concern 14 families
+   and 50 existing values, not 14 new investigations.
+3. Present all 40 nonregistry families consistently in the authoritative inventory
+   alongside registry families, preserving their contribution evidence and keeping
+   components/exclusions separate. Their identities are settled; this is integration.
+
+Evidence sufficiency still to assess, not evidence declared missing:
+
+| Bounded assessment batch | Families | Primary existing evidence and question |
+| --- | ---: | --- |
+| Nonregistry | 40 | Contribution records and captured generators/processors. Finish direct content integration above; assess effective placement, conversion and approximate geometry. |
+| AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
+| Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
+| IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
+| CTOV, Towns and Towers, Integrated Villages | 11 | Existing variant/component relationships and injection evidence. Assess assembled geometry and effective content, not each house as a family. |
+| Remaining registry families | 78 | Existing vanilla, YUNG, Aether, BetterEnd, Repurposed and other custom-generator evidence. Reconcile required answers with preserved source/configuration/world observations. |
+| Total, mutually exclusive | 450 | Assess eleven Item 8 attributes per family. This is not 4,950 investigations or a count of new measurements. |
+
+The 14 content-integration families above are included in the 40-family assessment,
+not additional work outside this population. Filled attributes are not automatically
+accepted, and generic builder INCOMPLETE/UNKNOWN text is not proof of missing evidence.
+
+No claim has yet been demonstrated by this reconciliation to require new evidence
+collection. This does not mean no such gap exists. Specific recorded uncertainties
+whose sufficiency still needs assessment include Fairy Ring module/tag binding and
+delegated flower effects, BetterEnd building/ruin conversion and loot, and cave-urn
+reward behavior. Inspect the already retained relevant code/configuration and exact
+consumer records first. Capture or measure only if those cannot answer the mandatory
+claim, naming the missing dependency before doing so. Natural spawn frequencies,
+exact live populations, measured discovery distance and Item 9 classification are
+not added to Item 8 merely because existing prose calls them unresolved.
+
+Final delivery: reconcile accepted machine/narrative claims and frozen identities;
+check existing raw-evidence durability and restore records; run the applicable final
+checks on the PR candidate; push and open the main-targeted PR promptly. Complete
+Codex review, narrowly resolve valid findings, obtain a completed clean review cycle,
+merge and verify main. No final acceptance or PR readiness is claimed yet.
+
+
+Six remaining nonregistry assignments now expose 19 established attributes.
+All 40 nonregistry assignments have partial attribute integration in their existing
+contribution/design records. This does not establish all eleven required answers.
+Affected tests: 31 passed. Registry rows are unchanged, and the inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-six-nonregistry-attributes.json`.
+Inventory SHA-256: f158bf05f11072648276d094d68f0ef13d5d3143e410bf5db842a0ca7ce093c0.
+Next reconcile existing evidence against mandatory claims across 410 registry and
+40 nonregistry candidates before further investigation. Provider discovery and
+canonical membership are settled; generic builder placeholders are not a research
+queue. Final attribute acceptance, PR, review and main delivery remain open.
+The following incremental checkpoints are historical and may name work now done.
+
+Sixteen BetterEnd building/ruin families now expose 48 established geometry/form
+attributes at 166025d1. Affected tests: 16 passed; inventory matches fresh build.
+Effective conversion, loot and placement still require separate attribution.
+Six other identified nonregistry assignments still need extraction; eighteen
+detailed records and these sixteen have partial/full standard attributes, not
+blanket acceptance. No new measurement or rendering. Continue existing-evidence
+integration and investigate only specifically unsupported mandatory claims.
+
+Integrated 95 existing attribute values in eighteen detailed nonregistry records
+at 4c8868e5. Registry rows unchanged; inventory matches fresh generation. All 78
+family-decision tests pass. Other 22 family assignments remain in contribution
+records, including sixteen BetterEnd building/ruin designs. Extract established
+facts next; existing unresolved Quark statements are not resolved by normalization.
+No new investigation or measurement. Final Item 8 acceptance remains open.
+
 Integrated standard-jigsaw placement for 37 families at 29c66271, retaining
 per-variant offsets and terrain adaptation. All 78 family-decision tests pass;
 inventory matches fresh generation with only intended placement fields changed.
