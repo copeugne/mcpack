@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS existing world geometry integrated after 810213ad
+
+Ten required size entries integrated for ancient_portal,bearclaw_inn,
+apothecary_abode,pillager_fortress,ruins_of_the_deep. Two original catalog samples
+and three later captures reuse existing observed_bounds logic. Later decoded
+files match manifest hashes and downloaded-restored copies; bound restore
+receipts match manifest identities. Saved-piece envelopes are samples, not
+occupied volume, all-component population or maximum family size. No runtime,
+archive or tool added. All85 focused checks pass (69.40s); only five families/
+input identity changed. Total419/448 assessed;29 IDAS families/251 entries
+remain: five now need7 content entries each,24 connected assemblies need9 each.
+Geometry assessment is confined to those24; inspect existing connector evidence
+before scheduling new captures. Next complete a7-entry content family using
+existing sources and accepted size; quantify the chosen batch before starting.
+Details: evidence/item-8/sources/idas-existing-world-geometry/README.md.
+Inventory SHA-256: ae8e41d45e59c281ba45c02fb7a4bee2bd4b63762974253d065cb95a87d00f8d.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS sunken ship assessed after af081292
 
 Nine entries integrated for three independent17 by28 by45 hull alternatives.
