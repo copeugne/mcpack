@@ -10720,3 +10720,20 @@ Only the six families and decision input identity change. Membership, biome list
 observations, trace IDs and other rows are preserved. Existing facts still require
 integration elsewhere; unresolved mandatory claims and final acceptance are not
 measured by top-level placeholder counts. Final gate/review/main delivery is open.
+
+### Single-template geometry integration
+
+Predeclared scope: 97 existing candidate families, two required geometry fields
+each. Integrate retained template sizes directly into existing decision overrides.
+Each selected family has one fully traced template, no missing/unresolved trace
+components and no template jigsaw block entities. The three inactive Deep Aether
+records are excluded. Both fields were previously UNKNOWN; all existing attributes
+are preserved. Sizes agree between template_contents.template_size_xyz and the
+source template document.size, identified by archive and resource path. Each new
+field records its template ID and explicitly limits the claim to a nominal padded
+envelope, not observed occupied-world bounds or exposed terrain height.
+
+This is one generated evidence increment across 97 records, not 97 investigations.
+The large diff is the existing JSON representation of 194 directly sourced values;
+no schema, helper, renderer, measurement or builder behavior was added. Its only
+code change binds the decision file hash in the existing inventory builder.
