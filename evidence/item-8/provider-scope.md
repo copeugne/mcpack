@@ -9946,3 +9946,28 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-adaptive-r2
 ```
 
 Use fresh output files. Source components do not prove successful assembly.
+
+
+### IDAS inns and pub inventory refresh
+
+Decision 9f0ac12d resolves Bearclaw inn, treetop tavern and Tudor pub component
+boundaries from existing connector and content evidence. The focused IDAS case
+and scoped Ruff/Basedpyright pass. Canonical backlog: 28, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+e6f82b249000774f06c04e58e2bb91b2e97e9eafedcc0dc111db6f540d60dfd8.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-inns-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-inns-r2.json
+cmp evidence/raw/item8/inventory-idas-inns-r1.json evidence/raw/item8/inventory-idas-inns-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-inns-r2.json
+```
+
+Use fresh output files. Source connectors and entity declarations are not claims
+of successful assembly or effective inhabitants.
