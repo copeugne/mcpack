@@ -6,6 +6,25 @@
 
 ### Continuation update - 2026-09-07
 
+#### Outpost and trail-ruin content assessed after 36f139f2
+
+Twelve descriptive entries integrated for two families from existing 11-template
+outpost and 84-template trail-ruin traces and selected packaged processors.
+Outpost pillagers use the full-bounds monster override; cage golem/allays are
+authored. Neither family has template spawners or generation markers. Trail-ruin
+archaeology loot is processor-appended despite absent literal template references.
+No new capture/tool. All 85 focused checks pass (59.11s); only these two families
+and input identity changed. Total remains 390/448 fully assessed, 58 families and
+547 required attributes open: IDAS 38/380, Repurposed 17/154, vanilla 3/13.
+Vanilla remaining: mansion 9, outpost 2 sizes, trail ruins 2 sizes. Neither latter
+root has a full-start observation in the current world-bounds catalog. Inspect
+other retained observations before declaring a new capture necessary. Mansion
+custom generation assessment remains open. Final integration, acceptance,
+backup/history and PR/review/main remain open. Details and reproduction are in
+sources/vanilla-outpost-trail-assessment/README.md under evidence/item-8.
+Inventory SHA-256: 8f2b4ed1aae9d3c3bf56a10afbd9dd2e726d9b9ceed8ba7dc02f824b68dd4990.
+
+
 
 #### Trial chambers assessed after e36b316f
 
