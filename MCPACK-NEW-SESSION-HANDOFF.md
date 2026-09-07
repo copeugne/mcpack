@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS windswept shrine assessed after 71c20d9a
+
+Nine entries integrated for one six-component assembly. Main origins0,0,0;
+21,0,0;-41,0,-11 and matching bottoms give nominal81 by54 footprint,33 height.
+Sections are connected components, not alternatives. No mobs/spawners; frames
+and glue are non-mob entities. Four CORNER markers have empty metadata; one
+defined shrine loot source. Dispenser-ticking-only processor inspection reused.
+Per-main custom terrain kernels retained separately from root adaptation none.
+No runtime/tool added. All85 focused checks pass (66.18s); only windswept_shrine/
+input identity changed. Total430/448 assessed;18 connected IDAS families/162
+entries remain, nine each. Quantify the next connector/content batch before
+investigation; reuse existing findings and distinguish nominal from observed size.
+Details: evidence/item-8/sources/idas-windswept-shrine-assessment/README.md.
+Inventory SHA-256: 0804fff575ebf6e6e8f8b4d08848d7bf070d4e0423aa4319c240f097fa5864d1.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS wizard tower assessed after e2a87426
 
 Nine entries integrated for three paired variants/six templates. Matching
