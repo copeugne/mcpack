@@ -92,3 +92,48 @@ Inventory SHA-256:
 `2f915136cf8ff69430a4be1e099f675ea9e7a928175c7621c51f485d3020740d`.
 The trace is unchanged. Only this family's grouping evidence and mob-source
 attribute change semantically. Overall Item 8 completion remains unproven.
+
+
+## Remaining family assessment
+
+Eight remaining attributes now use existing171-template trace, root/processor
+JSON, two full-start observations and the already captured trial-spawner code.
+No new capture or tool is needed. The five omitted explicit ominous lists remain
+in generated_spawners.unresolved_sources with a cross-reference to the conditional
+initial-state disposition above. They are not silently replaced with normal lists.
+The sole retained generation marker, walkway_with_bridge_1, is a SAVE-mode
+structure block with empty metadata, not a DATA encounter marker. No authored
+template entities occur in this trace. All eight ordinary spawn categories are
+empty with piece scope; this does not turn off configured trial spawners.
+
+The existing literal loot map is preserved for chests/barrels/pots/dispensers,
+vaults,equipment and explicit ominous ejection lists. Three additional default
+sources follow from captured TrialSpawnerConfig: loot_tables_to_eject defaults to
+SPAWNER_TRIAL_CHAMBER_CONSUMABLES and SPAWNER_TRIAL_CHAMBER_KEY, while
+items_to_drop_when_ominous defaults to SPAWNER_TRIAL_ITEMS_TO_DROP_WHEN_OMINOUS.
+The retained BuiltInLootTables initializer maps these to Minecraft IDs
+spawners/trial_chamber/consumables,spawners/trial_chamber/key and
+spawners/trial_chamber/items_to_drop_when_ominous. All have packaged definitions.
+These defaults apply to omitted fields, not explicit replacement configurations.
+They identify sources, not observed reward rolls or guaranteed contents.
+
+reward/vault NBT selects chests/trial_chambers/reward with trial_key;
+reward/ominous_vault selects chests/trial_chambers/reward_ominous with
+ominous_trial_key. This does not measure unlocking, cooldown or reward frequency.
+The selected copper-bulb degradation list changes waxed bulb oxidation states
+and uses protected-block checks; it does not append loot or spawn entities.
+
+Two retained full-start assemblies supply approximate geometry:
+
+| Source | Line | Chunk | Saved envelope | Size X,Y,Z |
+|---|---:|---|---|---|
+| run-a/ordinary/chunks.jsonl | 14331 | 29,30 | 401,-36,408,497,14,527 | 97,51,120 |
+| run-a/biome-diverse/chunks.jsonl | 14190 | 16,26 | 209,-46,368,319,-10,482 | 111,37,115 |
+
+These include air/padding, not occupied volume,typical/all-layout size or full
+component population. Root anchorY-40..-20,underground_structures,encapsulate and
+dimension_padding10 support underground placement; one observed envelope reaches
+Y14, which does not establish surface exposure. Copper lighting,corridors,rooms,
+spawners and vaults provide internal cues. No guaranteed entrance,sightline or
+exploration-pacing claim follows. Normal/ominous encounter design is supported by
+source configurations, not a measured difficulty or complete gameplay test.

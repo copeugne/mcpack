@@ -7,6 +7,24 @@
 ### Continuation update - 2026-09-07
 
 
+#### Trial chambers assessed after e36b316f
+
+Eight remaining attributes integrated from171-template trace, root/processor,
+existing trial lifecycle/default code and two full-start examples97x51x120 and
+111x37x115. Preserve existing spawner source maps and five ominous omissions with
+conditional mob_source interpretation; SAVE marker is not DATA encounter marker.
+Literal reward references retained; code-default ejection consumables/key and
+items_to_drop_when_ominous now included from TrialSpawnerConfig/BuiltInLootTables.
+Normal/ominous vault tables/keys recorded. Eight empty piece-scoped ordinary spawn
+lists do not disable trial spawners. Negative anchor is not a total-height range.
+No new capture/tool. All95 focused inventory/template-NBT checks pass (58.57s);
+only trial chambers/input identity changed. Registry350/408,nonregistry40/40,
+total390/448 assessed;58 families and559 required attributes remain: IDAS38/380,
+Repurposed17/154,vanilla3/25 (mansion9,pillager_outpost8,trail_ruins8). Quantify next
+batch and reuse existing evidence. Final integration,acceptance,backup/history
+preparation and PR/review/main remain open. Inventory SHA-256: 03d9c8c323c52069f78d4228f38091d44346258c92bd644b5f125d6796deccaf.
+
+
 #### Bastion remnant assessed after 6a7c94c8
 
 Nine remaining attributes integrated from167-template trace,12 degradation lists,
