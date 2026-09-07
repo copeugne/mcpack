@@ -578,3 +578,35 @@ Reproduce with build_item8_inventory to an absent output path. Only two family
 rows and decisions input hash changed; biomes, observations and nonregistry are
 preserved. Inventory matches `evidence/raw/item8/inventory-mvs-huts-igloos.json`,
 SHA-256 836115beba40036735c4fb26f139761d34a18aada8aa6298c4ff9ffa8d3964f9.
+
+## Voyager Small Ship
+
+After 890ffc0f, ten attributes finish Small Ship. The versioned start element
+selects mvs:small_ship for 1.21-1.21.8, with rigid projection and empty processors.
+Its 15x10x9 XYZ main envelope contains the optional villager piece: up_south
+connector [8,3,4] matches the rollable downward connector [0,0,0], placing a
+1x2-or-3x1 child at [8,4,4]. It remains inside the main bounds with no further
+attachment. Source dimensions include air/padding and possible X/Z exchange,
+not guaranteed entity placement or occupied-world bounds.
+
+The plains-villager pool uses rigid legacy_single options nitwit/baby/unemployed
+with weights 1/1/10 and an empty inline processor list. Each contains one villager;
+there is one attachment position, not three guaranteed occupants. Main entity
+list is empty; its block entities are banners, barrels and that connector.
+No contained mobs, spawners or generation markers. Both barrels reference
+mvs:houses_common; villager options have no container loot. These are source
+inputs, not observed populations, rolled rewards or a working moving vessel.
+
+Runtime biome intersection is Overworld-only. Generic jigsaw uses
+WORLD_SURFACE_WG offset -1, terrain adaptation none, valid biome radius input
+3 and explicit cannot_spawn_in_liquid=true. Optional terrain range/radius are
+absent. Preserve the liquid check despite the ship name; no actual flotation,
+water placement or motion is inferred. Hull, deck details and banners support
+qualitative visibility with possible concealed contents, not measured distance.
+
+No capture, measurement or tooling. Ten affected provider/inventory tests and
+builder Ruff/Basedpyright checks pass. Reproduce with build_item8_inventory to
+an absent output path. Only Small Ship and decisions input hash changed; biomes,
+observations and nonregistry remain unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-small-ship.json`, SHA-256
+0b451177a4b41df207a2da02dac81bfe0626b3e0189270acabce2dcc7a93e564.
