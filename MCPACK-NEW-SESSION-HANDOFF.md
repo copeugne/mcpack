@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-07
 
+#### AdoraBuild descriptive assessment finished after 96fbd175
+
+Retire basalt_chambers and nether_fortress source descriptions. Ten missing
+answers and ten existing answers are integrated. Basalt uses its preserved
+full-start-chunk saved envelope. Fortress uses two saved planned layouts,
+repeated across runs, explicitly retaining initialize_light/structure_starts
+stages rather than calling them populated observations. The exact broken basalt
+connector has a frozen-baseline defect disposition; no namespace repair or
+population/branch-success claim. Existing provider README records derivation.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-modular-descriptions.json`, SHA-256
+5876baeb669b1981dca7cb4af7733edb51e71edf3453d3eab090b4ccc083622d.
+Only these two registry rows changed; biomes, observations and nonregistry content
+are unchanged. All 49 AdoraBuild families now have ten explicit attribute answers
+plus their resolved biome descriptions. Registry assessment is 73/410, with 337
+remaining; nonregistry remains 40/40. Continue other providers in quantified
+batches without reopening assessed AdoraBuild descriptions absent new evidence.
+Final all-family integration, acceptance, backed-up consolidation, PR review and
+main delivery remain open. Generic inventory status strings are not a backlog.
+
 #### Four AdoraBuild Overworld assessments after 2bc91d31
 
 Retire mountain_mine, ocean_bubble, ocean_shrine and ocean_temple. Seven roots
