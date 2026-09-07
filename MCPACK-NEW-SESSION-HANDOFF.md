@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Aviary and Fort geometry after 783e2f99
+
+Four geometry attributes finish Aviary and Illager Fort using connected source
+layouts144x96x144 and55x60x47. Interior attachments fit those envelopes; these
+are nominal source dimensions, not retained generated starts. Exact derivations:
+evidence/item-8/sources/wda-provider-scope/README.md, Aviary and Fort geometry.
+Eight focused tests pass. No new runtime, measurement system or tooling.
+Registry299/410, nonregistry40/40, total339/450 assessed,111 remaining;
+WDA27/40 assessed. The current five-family batch has six geometry attributes
+remaining: Infested Temple, Kisegi Sanctuary and Plague Asylum. First inspect
+existing main/interior connectors; add a capture only if existing evidence
+cannot support the required approximation. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+a1ef409a469a9d461b0409b39e3a281a7a56c8a1cd2e3e819b3a3b1f9f1de74e.
+
 #### Five large WDA families attributed after ac2361b6
 
 Forty attributes integrate Aviary, Illager Fort, Infested Temple, Kisegi Sanctuary
