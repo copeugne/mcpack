@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 3decfe2b and reproduces exactly. Only mines and pyramid
+grouping decisions and input identity change. Canonical backlog: 34, all IDAS;
+426 working groups retain all 887 roots and full variants. Continue remaining
+IDAS assemblies. Attributes, nonregistry and final delivery remain open.
+
 Ancient mines and desert pyramid now have explicit assembly decisions from the
 existing full graphs and contents. Missing pool targets remain packaged defects;
 the differently named pyramid villager pool is not substituted. No baseline
