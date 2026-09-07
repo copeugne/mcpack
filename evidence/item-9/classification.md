@@ -257,3 +257,65 @@ comparison groups are provisional concerns, not removal decisions.
 | explorify:supply_cache | T0 | H | - | cache | Tiny biome-themed stored-supply installation supports incidental resupply discovery. | No authored encounter source. |
 | explorify:tavern | C | H | - | house | Connected tavern rooms and village entity components support civilian venue. | Operating services untested. |
 | explorify:watchtower | T0 | H | S | tower | Slender storage tower lacks authored residents or spawner inputs. | Climb/cache utility may be meaningful without combat. |
+| idas:abandoned_lighthouse | T0 | M | S | tower,ruin | Narrow abandoned loot tower lacks identified dedicated defenders. | Climbing/navigation value unmeasured. |
+| idas:abandoned_vineyard | T0 | H | - | house,worksite | Abandoned food-storage building provides noncombat discovery and salvage. | No operating vineyard or wine progression inferred. |
+| idas:abandonedhouse | T2 | M | - | house,dungeon-mansion | Multi-level abandoned dwelling carries authored hostile encounter sources. | Compact traversal may play as T1. |
+| idas:ancient_mines | T3 | L | - | dungeon-mine | Surface entrance leads into extensive hostile mining rooms and halls. | Missing pool/loot paths and unresolved entities limit realized content. |
+| idas:ancient_portal | T2 | M | - | portal,dungeon-tomb | Monumental underground frames combine spawners, monster overrides and loot. | No usable portal established; absent soul-vulture provider limits Nether variant. |
+| idas:ancient_statue | T1 | M | D | statue | Desert monument carries authored rattlesnake encounter potential. | Creature interaction rather than sustained dungeon combat. |
+| idas:ancient_statue_jungle | T0 | H | D | statue | Compact overgrown monument lacks identified dedicated defenders. | standard |
+| idas:ancient_statue_plains | T0 | H | D | statue | Open angled monument supplies ambient exploration without dedicated defenders. | standard |
+| idas:animal_den | T1 | M | - | nature | Small animal-occupied cavity supplies localized creature interaction. | Species/behavior differ; not uniformly hostile or peaceful. |
+| idas:apothecary_abode | T2 | M | - | house,dungeon-mansion | Connected furnished buildings carry illagers and pillager spawners. | Domestic form is not safe settlement evidence. |
+| idas:bazaar | C | H | - | village | Broad connected market has civilian/animal declarations and supply loot. | Optional providers and actual services remain limited. |
+| idas:bearclaw_inn | C | H | - | house | Furnished lodge, path and stable yard support inhabited staging venue. | Services untested; source inhabitants have limitations. |
+| idas:beekeepers_house | C | H | - | house,worksite | Furnished house and hive area support civilian beekeeping purpose. | Bee retaliation and production operation untested. |
+| idas:botanist | C | M | - | house,worksite | Plant-rich furnished compound lacks identified dedicated hostile defenders. | Cultivation/service operation untested. |
+| idas:brickhouse | C | M | - | house,worksite | Domestic house and path-connected windmill support primary habitation/worksite design. | Windmill contains enemy sources, an alternate local encounter. |
+| idas:castle | C | M | - | village | Castle-settlement designs contain inhabitants, mounts and village extensions rather than core hostile dungeon. | Zombie-villager alternatives and absent guards prevent safe-zone claims. |
+| idas:collectors_museum | T3 | M | - | dungeon-mansion | Broad museum and deep lower component both carry hostile spawner sources. | Exhibit volume may exceed play; optional displays and machines may not operate. |
+| idas:cottage | C | M | - | house | Small dwelling supports habitation/shelter without dedicated defenders. | Actual services and safety unmeasured. |
+| idas:desert_camp | C | M | - | camp,worksite | Open camp/worksite furnishings support temporary staging and work purpose. | Saw/hand-crank operation untested. |
+| idas:desert_dig_site | T1 | M | - | worksite | Framed excavation and lower archaeology layer supply deliberate recovery objective. | Civilian worksite also supports C; reward quantity unmeasured. |
+| idas:desert_market | C | M | - | village | Framed stalls, food and supplies support market venue purpose. | Guard reference is not demonstrated live protection. |
+| idas:desert_pyramid | T3 | L | - | dungeon-tomb | Surface entrances connect to branching hostile underground tomb/room network. | Missing villager-pool connection limits complete layout. |
+| idas:desert_ruins | T0 | H | D | ruin | Small ruin/lower-section assembly lacks authored hostile source. | Cache exploration may remain meaningful. |
+| idas:dig_site | T1 | M | - | worksite | Excavation, lower section and archaeology rewards support local recovery objective. | Civilian/stable staging coexists. |
+| idas:enchantingtower | C | H | - | tower,house | Furnished tower with villagers supports civilian utility venue. | Inactive Ars compatibility does not add wizard progression. |
+| idas:farmhouse | C | M | - | house,worksite | Ordinary furnished farmhouse establishes primary agricultural habitation design. | Abandoned alternative has zombie-villager spawners; weights are not observed frequency. |
+| idas:fishermans_lodge | C | M | - | house | Raised gabled dwelling supports fishing-lodge staging purpose without dedicated defenders. | Services untested. |
+| idas:frozen_crypt | T2 | M | - | dungeon-tomb | Entrance connects to larger crypt with authored strays and multiple spawner inputs. | Absent optional troll does not remove supported stray encounters. |
+| idas:haunted_manor | T2 | L | - | dungeon-mansion | Surviving multi-level starting piece retains hostile skeleton/spawner sources. | Connector defect leaves intended wings detached; no full-mansion T3 claim. |
+| idas:hermits_hollow | C | M | - | house | Broad planted arched dwelling supports refuge without identified dedicated enemies. | Safety and services unmeasured. |
+| idas:hunters_cabin | T1 | H | - | house,outpost | Gabled cabin localizes an authored hostile illager encounter. | standard |
+| idas:labyrinth | T3 | M | - | dungeon-tomb | Layered subterranean floors and tomb combine hostile entities and spawners. | Legacy loot paths and absent optional mobs limit content. |
+| idas:lumber_camp | C | M | - | camp,worksite | Logging worksite, campfire and equipment support staging purpose. | No tested saw or production behavior. |
+| idas:mason_house | C | M | - | house,worksite | Gabled furnished compound supports domestic/worksite role without dedicated hostile defenders. | Actual service operation unmeasured. |
+| idas:necromancers_spire | T2 | M | - | tower | Four-piece tall spire connects hostile mob/spawner content vertically. | Optional-provider failures remain; no player spell system introduced. |
+| idas:nether_pump_camp | C | M | - | camp,worksite | Open fluid-handling worksite supports provisional staging/industrial role. | Pump operation and Nether safety untested. |
+| idas:nexus | T1 | L | - | dungeon-trial | Multi-lobed chamber localizes central spawner and natural hostile overrides. | Legacy barrel-reward assignment is ineffective; no intended reward success claimed. |
+| idas:pillager_camp | T1 | H | - | outpost,camp | Low camp localizes pillager hostility with mixed inhabitants. | Nonhostile residents are not enemies. |
+| idas:pillager_fortress | T3 | M | - | dungeon-fort | Tall connected fortress combines direct illagers, spawners and differentiated rooms/loot. | Full population and gameplay duration unmeasured. |
+| idas:pumpkin_cafe | C | H | - | house | Inhabited cafe and lower wings support civilian venue. | Actual services untested. |
+| idas:redhorn_guild | C | M | - | village,tower | Civilian/defensive guild building supports settlement staging. | Guard sources do not guarantee safe operation. |
+| idas:ruined_church | T0 | M | D,S | ruin,tower | Gabled hall/tower ruin offers loot without dedicated defenders. | Interior exploration value unmeasured. |
+| idas:ruined_fort | T0 | M | D,S | ruin,tower | Broken fort wall/tower provides cache landmark without dedicated defenders. | Climb and salvage value unmeasured. |
+| idas:ruined_well | T0 | H | D | ruin,shrine | Well and lower section provide exploration without authored hostility. | No operating machinery inferred. |
+| idas:ruins_of_the_deep | T3 | M | - | ruin,dungeon-tomb | Entrance and tunnel lead to upper/lower hostile spawner-bearing ruins. | Civilian entrance and optional boss limitations remain distinct. |
+| idas:snifferhenge | T1 | M | - | shrine | Monument and lower suspicious-gravel section support archaeology objective. | No live sniffer population established. |
+| idas:sunken_ship | T2 | M | - | ship | Submerged hull/deck architecture combines loot, spawners and natural wraith overrides. | Variants and absent shark provider alter content; water adds pressure. |
+| idas:sunken_ship/sunken_ship_ruins | T0 | H | D | ship,ruin | Detached seabed debris/cache lacks identified authored hostile encounter. | Underwater access remains an environmental constraint. |
+| idas:the_log | C | M | - | house | Furnished log-shaped dwelling supports habitation/staging. | No dedicated defenders does not mean safe. |
+| idas:tinkers_citadel | T3 | M | - | dungeon-fort,worksite | Branching industrial citadel combines hostile spawners and vault loot. | Machinery requests do not establish operation or required engineering progression. |
+| idas:tinkers_workshop | T3 | M | - | dungeon-mine,worksite | Entrance leads through a deep serial hostile workshop chain to vault loot. | Full placement, machinery and reward outcomes unmeasured. |
+| idas:train_ruins | T0 | H | D | ruin,worksite | Overgrown train wreck provides industrial discovery without dedicated defenders. | No operating train or salvage value assumed. |
+| idas:tree_of_wisdom | T0 | M | D | nature | Giant loot-bearing tree lacks identified authored hostile source and serves landmark role. | Large natural form is not a failed dungeon; search value unmeasured. |
+| idas:treetop_tavern | C | H | - | house | Connected elevated tavern sections carry civilian/bird declarations. | Tree cover and source limitations remain. |
+| idas:tudor_pub | C | H | - | house | Furnished bedroom/kitchen/storage venue has no authored hostile source. | Absent guards prevent protection claim. |
+| idas:underground_camp | T1 | M | - | camp,worksite | Workstation and archaeology cache support localized recovery objective. | Also a potential staging site; machinery operation untested. |
+| idas:wacky_wares | C | H | - | house | Villager store supports civilian supply venue. | Services and trade outputs untested. |
+| idas:washing_camp | C | M | - | camp,worksite | Open worksite supports provisional industrial staging without dedicated defenders. | Operating washing machinery untested. |
+| idas:windswept_shrine | T0 | M | S,O | shrine | Broad connected shrine compound has loot/furnishings but no authored hostile encounter. | Noncombat exploration may justify its scale; actual utility unmeasured. |
+| idas:winter_wagon | C | H | - | camp | Furnished trader-oriented wagon supports civilian staging venue. | No movable-vehicle or service operation inferred. |
+| idas:witches_treestump | T1 | M | - | house | Stump site has potential hostile witch source with separate cats. | Effective witch population unmeasured. |
+| idas:wizard_tower | T2 | M | - | tower | Connected lower and upper tower assembly carries variant-specific hostile sources. | Red differs from purple/yellow wraith composition; no player magic progression. |
