@@ -136,3 +136,51 @@ and the decisions input hash changed; existing cave source answers, biome and
 observation links, and nonregistry content remain unchanged. Inventory matches
 `evidence/raw/item8/inventory-explorations-tree-cave.json`, SHA-256
 4dc15e0a4513ab56f5794cd7e872131d20d4f29f40e2d1dab0d83f7740920d86.
+
+## Remaining assembly source assessments
+
+After 00cda891, Campsite, Jungle Temple and Underground Temple had thirty
+unintegrated descriptions. Twenty-six now have explicit answers: eight each
+for Campsite and Jungle Temple, and all ten for Underground Temple. Footprint
+and height remain open for the first two. No new capture, measurement or tool.
+
+All three resolved biome sets intersect only Overworld runtime possible biomes.
+Campsite and Jungle Temple are vanilla jigsaw roots, WORLD_SURFACE_WG offset zero,
+depth three, with empty spawn_overrides and beard_thin/beard_box respectively.
+Their complete graphs have no authored entities, physical spawners or generation
+markers. The pen template is not evidence of authored animals. Campsite tents
+reference explorations:chests/campsite/tent; their wool_replacing processor changes
+wool state and retains position/NBT, leaving non-wool unchanged. Other components
+use empty processors. Jungle Temple's empty-processor elements preserve main
+chest/dispenser table references and the outside-stairs chest alternative.
+Dispenser_main contains arrow and slowness/weakness tipped-arrow inputs, supporting
+hazard intent without claiming successful trap firing.
+
+UndergroundTempleStructure.generateStartPos rejects sea level <=30 and a computed
+height span below ten, then chooses chunk-middle X/Z and
+Y=minY+15+nextInt(abs(seaLevel-15-(minY+15))). Its parent JigsawStructure delegates
+to JigsawPlacement. The underground step and start algorithm establish placement
+intent, not guaranteed burial of all connected pieces. Existing saved full-start
+bounds are integrated with exact observation indexes. Minimal 2x2x2 layouts at
+indexes 51,255,267 and repeat-run counterparts 454,644,656 remain included;
+they are not described as typical complete dungeons. Other retained envelopes
+are not family-wide extrema. No independent-sample or pacing claim.
+
+Known missing templates remain explicit:
+explorations:underground_temple/intrusions/corner and
+explorations:underground_temple/rooms/small_hall_down. Their intended contents
+are not fabricated. Available rooms/walkways retain legacy mob_spawner NBT for
+cave_spider, skeleton, spider, witch and zombie. The root separately specifies
+piece-bounds illusioner/pillager/vindicator natural spawning, each weight 100,
+group inputs 4..9. Armor stand is decorative, not an enemy. Table references and
+exact owners cover barrel, bedrooms, dead_end, dispenser, dungeon, enchanting,
+large_room, library and quest_tower under explorations:chests/underground_temple.
+The dispenser source includes arrow inputs; masonry-aging processors do not
+establish loot rolls or population. Missing graph branches retain their source
+failure disposition despite observed partial/successful layouts.
+
+Seven affected provider/inventory tests and builder quality checks pass. Only
+these three families and the input identity changed; biome/observation links and
+nonregistry content remain unchanged. Inventory matches
+`evidence/raw/item8/inventory-explorations-assemblies.json`, SHA-256
+ec0ab5295d23c674f933300468b5c68d5562eefc29a234b46c2226092f8627ea.
