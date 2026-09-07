@@ -94,3 +94,22 @@ The inventory was rebuilt at `ddecb9b` using the command above. Inventory SHA:
 `bcc6a0988f1abf235b2f1b5f6eab4b6cc793e24bf02c4a1adabc4201eb45317c`.
 Only the ocean ruin content/grouping record and decision input identity change.
 Observed geometry, dimensions and world-observation links are preserved.
+
+
+## Geometry and visual assessment
+
+Existing full-start examples include small cold7x7x6 and assembled warm37x25x42 envelopes. Nominal small components are6x7x7 and large components16x16x16; cold brick/cracked/mossy layers overlap rather than defining separate families. Cluster pieces and terrain-dependent vertical placement can exceed individual component dimensions.
+
+Saved piece envelopes, not occupied volume, a typical-size range or all-layout extrema. The two examples do not measure large/cluster selection frequency.
+
+Seafloor masonry remnants in warm and cold material treatments, with variable integrity and possible multiple buildings. Water cover, supporting terrain and burial affect exposure; neither the family name nor nominal template size proves visibility from the surface.
+
+The following existing full-start records are retained under world-bounds.json.gz;
+the family binds its hash and exact raw source/line, seed, coordinates and bounds.
+No new capture or measurement tool is introduced. These three required attributes
+now supersede earlier pending geometry/visual integration statements.
+
+| Root | Source | Line | Saved size X,Y,Z |
+|---|---|---:|---|
+| minecraft:ocean_ruin_cold | run-a/ordinary/chunks.jsonl | 8724 | 7,7,6 |
+| minecraft:ocean_ruin_warm | run-a/ordinary/chunks.jsonl | 10008 | 37,25,42 |
