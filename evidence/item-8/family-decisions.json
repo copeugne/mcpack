@@ -47627,7 +47627,8 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "underground_surface_classification": {
@@ -47677,6 +47678,202 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "value": "minecraft:overworld",
+          "basis": "All five resolved biome constraints intersect Overworld runtime biomes only. No retained direct start observations; compatibility is not generation proof."
+        },
+        "approximate_footprint": {
+          "nominal_xz_by_variant": {
+            "beach": [
+              14,
+              28
+            ],
+            "snowy_beach": [
+              14,
+              28
+            ],
+            "sparse_jungle": [
+              31,
+              31
+            ],
+            "wooded_badlands": [
+              33,
+              33
+            ]
+          },
+          "savanna_plateau": "Available primary pieces produce a nominal cross-shaped layout up to 37x37 including largest present tent choices. Missing tent_6 prevents claiming an exhaustive all-choice size. Tower segments/caps attach within the primary footprint.",
+          "basis": "Direct source connector derivation in sources/towns-towers-entry/README.md. Nominal successful rigid attachments, not occupied blocks, completed placement or guaranteed selection. Rotation can exchange axes."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_by_variant": {
+            "beach": 12,
+            "snowy_beach": 12,
+            "sparse_jungle": 10,
+            "wooded_badlands": 10
+          },
+          "savanna_plateau": "Available primary tent/workshop boxes reach roughly 21..22 blocks high relative to the center. Optional tower pieces add four blocks per repeated segment and terminal caps are three to five high, constrained by root size 4, collision, expansion-hack and fallback selection. Missing primary alternatives and absent world observations prevent a measured whole-variant height.",
+          "basis": "Approximate source architecture with optional extensions explicitly separate. No invented replacement for missing templates."
+        },
+        "intended_hostility": {
+          "value": "Illager encampments with authored captain/grunt pieces and conditional full-bounds natural pillager spawning.",
+          "basis": "Packaged hostile intent, not measured population, activation or balance."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "roots": [
+            "towns_and_towers:pillager_outpost_beach",
+            "towns_and_towers:pillager_outpost_savanna_plateau",
+            "towns_and_towers:pillager_outpost_snowy_beach",
+            "towns_and_towers:pillager_outpost_sparse_jungle",
+            "towns_and_towers:pillager_outpost_wooded_badlands"
+          ],
+          "selection": "Use each structures[root].templates list and corresponding template_contents fields with exact source archive/NBT/hash. Preserve missing entries separately; do not substitute similarly named templates.",
+          "fields": [
+            "authored_entities",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "assessment": "Shared captain and equal-weight pillager/vindicator grunt pools. Previously preserved saved equipment, PatrolLeader and persistence fields apply. Beach bases and other variants workshop templates save allays; neutral allays are not enemies.",
+          "limits": "All present selected pools use empty processors. Missing Savanna templates have no inspectable content; their filenames establish neither enemies nor replacement geometry."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "roots": [
+            "towns_and_towers:pillager_outpost_beach",
+            "towns_and_towers:pillager_outpost_savanna_plateau",
+            "towns_and_towers:pillager_outpost_snowy_beach",
+            "towns_and_towers:pillager_outpost_sparse_jungle",
+            "towns_and_towers:pillager_outpost_wooded_badlands"
+          ],
+          "selection": "Use each structures[root].templates list and corresponding template_contents fields with exact source archive/NBT/hash. Preserve missing entries separately; do not substitute similarly named templates.",
+          "field": "spawner_blocks",
+          "assessment": "No ordinary/trial spawners in the 35 present traced templates. Empty processors do not inject spawners. Keep authored mob attachments distinct.",
+          "missing_template_disposition": [
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tent_savanna_plateau_6",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_1",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_2",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_3",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_4",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_5",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_6",
+              "kind": "template"
+            },
+            {
+              "id": "kaisyn:outpost/camps/savanna_plateau/side/tower_pieces/savanna_plateau_tower_top_7",
+              "kind": "template"
+            }
+          ],
+          "limits": "Absence claim covers preserved templates only, not nonexistent resource payloads. Inventory the packaged defect without repairing the frozen mod."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Captain/grunt mob templates; allays separately neutral.",
+          "natural_spawn_overrides_by_structure": {
+            "towns_and_towers:pillager_outpost_beach": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 1
+                  }
+                ]
+              }
+            },
+            "towns_and_towers:pillager_outpost_savanna_plateau": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 1
+                  }
+                ]
+              }
+            },
+            "towns_and_towers:pillager_outpost_snowy_beach": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 1
+                  }
+                ]
+              }
+            },
+            "towns_and_towers:pillager_outpost_sparse_jungle": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 1
+                  }
+                ]
+              }
+            },
+            "towns_and_towers:pillager_outpost_wooded_badlands": {
+              "monster": {
+                "bounding_box": "full",
+                "spawns": [
+                  {
+                    "maxCount": 2,
+                    "minCount": 1,
+                    "type": "minecraft:pillager",
+                    "weight": 1
+                  }
+                ]
+              }
+            }
+          },
+          "limits": "Full-bounds pillager overrides configure conditional natural spawning, not generated enemy counts. Eight missing Savanna resource references remain explicit."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "roots": [
+            "towns_and_towers:pillager_outpost_beach",
+            "towns_and_towers:pillager_outpost_savanna_plateau",
+            "towns_and_towers:pillager_outpost_snowy_beach",
+            "towns_and_towers:pillager_outpost_sparse_jungle",
+            "towns_and_towers:pillager_outpost_wooded_badlands"
+          ],
+          "selection": "Use each structures[root].templates list and corresponding template_contents fields with exact source archive/NBT/hash. Preserve missing entries separately; do not substitute similarly named templates.",
+          "field": "loot_references",
+          "assessment": "Exact per-template vanilla/kaisyn table ownership remains in retained loot_references.",
+          "fixed_payloads": "Every base saves four diamonds and a writable book at block_entities 0. Beach/snowy-beach each save two charcoal at indices 17/16. Savanna Plateau, Sparse Jungle and Wooded Badlands kitchen index 0 saves one coal. Fixed Items are separate from table rolls.",
+          "limits": "Legacy saved item NBT and books are source payloads, not tested recovery, recipe logic or rolled yield. Missing Savanna templates supply no inspectable loot content."
+        },
+        "visual_discoverability": {
+          "value": "Open camps with low tents and utility areas. Savanna Plateau includes taller ramshackle forms and optional towers; beach camps have a small elongated silhouette.",
+          "basis": "Source architectural/placement inference, not guaranteed visibility, measured sight distance or discovery pacing."
         }
       }
     },
