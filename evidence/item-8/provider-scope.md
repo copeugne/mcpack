@@ -10115,3 +10115,27 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-bazaar-cryp
 
 Use fresh output files. Nexus visual conversion completed successfully; its
 comparison does not yet close its decision.
+
+
+### Nexus alternative inventory refresh
+
+Decision 024dc7b3 binds all six alternatives to the completed comparison and
+preserves their contents and common processor declarations. Focused IDAS and
+scoped Ruff/Basedpyright checks pass. Canonical backlog: 16, all IDAS.
+Two fresh builds agree exactly, SHA-256
+168d5267004d6783a6ae21b7049444edb6c6e2de44258cf8ca021800ca9aceaa.
+Only the nexus grouping decision and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-nexus-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-nexus-r2.json
+cmp evidence/raw/item8/inventory-idas-nexus-r1.json evidence/raw/item8/inventory-idas-nexus-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-nexus-r2.json
+```
+
+Use fresh output files. Raw spawner NBT is not effective processed spawn behavior.
