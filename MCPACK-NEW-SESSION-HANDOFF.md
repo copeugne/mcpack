@@ -11,7 +11,7 @@ vocabulary and decisions, checking dated status against current delivery evidenc
 Read [infrastructure instructions](INFRASTRUCTURE-INSTALLATION-AND-SERVER-TESTING.md)
 before infrastructure installation or server testing.
 
-The [previous handoff archive](docs/history/MCPACK-HANDOFF-2026-09-07-ARCHIVE.md)
+The [previous handoff archive](https://github.com/copeugne/mcpack/blob/be64d458fee3539e5132049d871d1c32ebc3655b/MCPACK-NEW-SESSION-HANDOFF.md)
 is preserved verbatim for targeted historical lookup only. Its commands, next
 steps, counters and status claims are historical, not current instructions.
 Relative paths inside that archive refer to the repository root. Do not read the
@@ -54,12 +54,15 @@ contains all 448 provisional classifications and passes its focused local gate.
 [Matrix](evidence/item-9/classification.md),
 [rubric and evidence](evidence/item-9/README.md), and
 [current report](docs/items/Item-9-Provisional-Structure-Classification.md)
-are authoritative. All five provider batches are committed and delivered;
-final local-gate/report commit is `59ee0490`. Push the remaining checkpoint,
-open the main PR, request `@codex review`, inspect completed reviews and all
-comments, resolve valid findings, and repeat until clean. Merge only after the
-clean final cycle, then verify main delivery and reconcile completion status.
-Item 9 remains IN PROGRESS until those gates pass.
+are authoritative. [PR20](https://github.com/copeugne/mcpack/pull/20) is open.
+The first review completed at `96c16355` with two documentation findings,
+recorded and dispositioned in the evidence README. The archive remains verbatim
+in immutable Git history and in the existing local file; it is not duplicated
+in the PR. Workspace preservation instructions now require direct inspection.
+Push these fixes, request fresh `@codex review`, inspect completed reviews and
+all comments, and repeat until clean. Merge only after the clean final cycle,
+then verify main delivery and reconcile completion status. Item 9 remains
+IN PROGRESS until those gates pass.
 
 No Item 8 family assessment, measurement, preservation or PR18/PR19 delivery
 work remains. Its accepted inventory and raw evidence were reused unchanged.
@@ -70,12 +73,15 @@ in AGENTS.md and SPECS.md.
 
 ## Local workspace to preserve
 
-The checkout is `codex/item9-classification`, tracking its origin branch. Existing unstaged AGENTS.md edits and a CLOUD_HANDOFF.md deletion predate
-this cleanup. Preserve their intent; do not restore or stage unrelated changes.
-The existing shortened handoff is delivered with its byte-identical historical
-archive; no new history consolidation or preservation experiment was performed.
-Protected untracked artifacts include `.codegraph`, `.omo/` and
-`mcpack-reconstructed-28(1).bundle`. Recheck status before any mutation or delivery.
+The delivery branch is `codex/item9-classification`, tracking its origin branch.
+Inspect actual staged, unstaged and untracked state before mutation. A clean
+checkout does not reproduce another workstation's uncommitted edits, deletions
+or private backups; do not invent or recreate those changes from this handoff.
+Preserve any existing local changes and archives. The local historical archive
+at `docs/history/MCPACK-HANDOFF-2026-09-07-ARCHIVE.md` is not a tracked dependency;
+the immutable link above supplies durable historical context.
+Protected artifacts include `.codegraph`, `.omo/` and
+`mcpack-reconstructed-28(1).bundle` wherever present. Do not stage or delete them.
 
 ## Maintaining this checkpoint
 

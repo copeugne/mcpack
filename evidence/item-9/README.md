@@ -196,3 +196,28 @@ The local exit gate is satisfied. Overall Item 9 remains IN PROGRESS until the
 required clean Codex review and merge are verified. No required provisional
 classification claim remains unsupported; empirical quality, timing, actual
 redundancy and functional behavior remain explicitly outside this gate.
+
+## PR20 review dispositions
+
+[First completed review](https://github.com/copeugne/mcpack/pull/20#issuecomment-5576140993),
+head `96c16355f3c53fe7efd07f48e985f6dc4828c142`, reported two documentation issues.
+No classification finding was reported.
+
+1. P1, prohibited dash characters in the newly tracked historical archive.
+   The character finding is valid, but rewriting the user's existing verbatim
+   archive would lose fidelity and contradict preservation intent. The narrow
+   fix removes only the duplicate archive from the tracked PR tree, leaving the
+   local file untouched, and links the active handoff to the exact immutable
+   prior Git blob at `be64d458`. Git already durably preserves those bytes.
+2. P2, workstation changes described as if recoverable from the reviewed tree.
+   The edits/deletion were real local observations, but cannot describe a clean
+   checkout. The handoff now requires inspecting actual state and explicitly
+   forbids recreating uncommitted changes from its text. No user edits are staged,
+   restored or deleted by this correction.
+
+Affected checks: the local archive still compares byte for byte with
+`git show be64d458:MCPACK-NEW-SESSION-HANDOFF.md`; the current handoff's immutable
+link resolves that same committed history. The active handoff is below 200 lines,
+new Item 9/current-handoff prose contains no prohibited dash characters, and
+`git diff --check` passes. Classification data and its passing gate are unchanged.
+A fresh completed clean review is still required before merge.
