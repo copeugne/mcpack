@@ -6,6 +6,187 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS sunken ship assessed after af081292
+
+Nine entries integrated for three independent17 by28 by45 hull alternatives.
+Ordinary1/coral select drowned weight15 randomization; ordinary2 uses empty
+processors and retains raw drowned/frilled-shark data. AlexsMobs is absent;
+coral direct shark and unrandomized shark spawner are not successful encounter
+claims. Natural Quark wraith override and two defined loot sources are separate.
+No runtime/tool added. All85 focused checks pass (66.08s); only sunken_ship/input
+identity changed. Total419/448 assessed;29 IDAS families/261 entries remain.
+Remaining geometry: five existing full-start candidates (ancient_portal,
+apothecary_abode,bearclaw_inn,pillager_fortress,ruins_of_the_deep), plus24 connected
+assemblies needing geometry assessment. Quantify next batch and bind existing
+candidate custody before accepting observations; no automatic new runtime batch.
+Details: evidence/item-8/sources/idas-sunken-ship-assessment/README.md.
+Inventory SHA-256: 9014422d9f5562f1020ad3ed56813c7b274669cf44a4c0e74e6191652d7bed2c.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS detached ship ruins assessed after 1cd9662f
+
+Nine entries integrated for two independent wreckage alternatives. Nominal
+sizes8 by6 by9 and12 by5 by12; no entities/spawners/markers. Selected spawner
+randomizer has no SpawnerBlock input here, so no enemy is inferred from its
+name. Defined supply/treasure tables preserved. Seabed placement inputs remain
+distinct from observed water depth. No runtime/tool added. All85 focused checks
+pass (66.18s); only ship-ruins/input identity changed. Total418/448 assessed;
+30 IDAS families/270 entries remain. Existing-candidate geometry group now6;
+24 connected assemblies need geometry assessment. Next sunken_ship: two roots,
+three alternatives/nine entries; inspect processor-selected versus raw spawners
+and absent optional authored entities before claiming encounter sources.
+Details: evidence/item-8/sources/idas-ship-ruins-assessment/README.md.
+Inventory SHA-256: a1ec81c49025f213a4ba941c0d79652a1698fa6c9438dc16042aa9d00fba04fa.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS underground camp assessed after 6757d644
+
+Nine entries integrated for two roots/four independent alternatives. Nominal
+sizes6 by3 by6 or6 by3 by5, fixed startY20 or-10, no authored entities/spawners.
+All templates reference defined mining archaeology; deep2 additionally references
+surface archaeology. Selected ticking-only processor reused. Machinery operation,
+yield and burial remain unmeasured. No runtime/tool added. All85 focused checks
+pass (67.68s); only underground_camp/input identity changed. Total417/448 assessed;
+31 IDAS families/279 entries remain. Existing-candidate geometry group now7;
+24 connected assemblies still need geometry assessment. Next small independent
+case: sunken_ship/sunken_ship_ruins, two alternatives/nine entries. Quantify and
+inspect its selected processor before attributing spawners from a processor name.
+Details: evidence/item-8/sources/idas-underground-camp-assessment/README.md.
+Inventory SHA-256: 83663c10ee1380ebeaa517f616a84116d045795635aea3c3f254739630e888c0.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS desert camp assessed after 3431aa49
+
+Nine entries integrated for four independent11 by4 by12 templates. No authored
+entities, spawners, markers or literal loot tables. Fixed sack contents and
+machinery operation remain distinct claims. Ticking-only processor reused.
+Existing empty windswept biome overlap retained, not declared a generation
+failure. No runtime/tool added. All85 focused checks pass (67.11s); only
+desert_camp/input identity changed. Total416/448 assessed;32 IDAS families/
+288 required entries remain. Existing-candidate geometry group now8 families;
+24 connected assemblies still need geometry assessment. Next underground_camp
+has two roots/four independent alternatives and nine entries; quantify before
+using its existing content and dimensions. Final integration, acceptance,
+backup/history and PR/review/main remain open.
+Details: evidence/item-8/sources/idas-desert-camp-assessment/README.md.
+Inventory SHA-256: 66ce4a01c5b645f1a9d71ba9e28a6a76195dd0b3ebab66f2cfa3e4a8229e6e46.
+
+
+#### IDAS animal den assessed after 61ba7660
+
+Nine entries integrated for three independent den alternatives. All templates
+13 by8 by15; nominal dimensions reused directly, not promoted to measured world
+bounds. Authored wolf/polar bear/foxhound and non-mob glass frames distinguished.
+No block entities, loot tables, spawners or generation markers; selected ticking
+processor reused. Natural overrides empty; source declarations do not establish
+aggression or effective population. No runtime/tool added. All85 focused checks
+pass (67.27s); only animal_den/input identity changed. Total415/448 assessed;
+33 IDAS families/297 required entries remain. Existing-candidate geometry group
+now9 families;24 connected assemblies still need geometry assessment. Next small
+batch can assess desert_camp or underground_camp using independent template
+alternatives and existing content; quantify scope before starting.
+Details: evidence/item-8/sources/idas-animal-den-assessment/README.md.
+Inventory SHA-256: 9f24eb9bc72005ffa3b1fbafe732c1e8a9c38e4c660551425f0bc4a5856db816.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS lumber camp assessed after 27d4e962
+
+Eight entries integrated for ten alternatives. No template entities, loot-table
+references or spawners; ticking-only processor reused. Seven variants retain
+Overworld membership. Three missing biome tags are resolved to no fresh-baseline
+eligible membership by HolderSet.Named initialization, MappedRegistry.bindTags
+semantics and registry-r1 warning line19005. Raw missing_required evidence and
+registered variant identities remain unchanged. This is a documented derivation,
+not a runtime sample, tag repair or stale-hot-reload claim. Existing sizes reused.
+All85 focused checks pass (67.37s); only lumber_camp/input identity changed.
+Total414/448 assessed;34 IDAS families/306 required entries remain. All remaining
+families have dimension entries; geometry survey now divides them into ten
+existing full-start candidates and24 connected assemblies needing assessment.
+Next quantify an existing-candidate or nominal connector batch before investigation.
+Details: evidence/item-8/sources/idas-lumber-camp-assessment/README.md.
+Inventory SHA-256: af1f9ef3fb2a5088102fb32b15837da793ac5f12f0f57370eb6c3a88f8599444.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS nexus assessed after d753ab21
+
+Seven entries integrated for six alternatives. Raw pig spawners are distinguished
+from selected quark:wraith weight5 and natural silverfish/wraith rules. Sculk
+chicken/item entities remain non-hostile declarations. A concrete baseline loot
+defect is preserved: nexus minecraft:rule uses output_nbt, while the pinned
+ProcessorRule codec reads block_entity_modifier and defaults to Passthrough.
+The declared nexus table exists but is not assigned by this rule. Targeted
+catalog/direct-edge check found no other assessed family requiring the same
+correction. No tuning or broad regression expansion. Existing dimensions reused.
+All85 focused checks pass (66.88s); only nexus/input identity changed.
+Total413/448 assessed;35 IDAS families/314 required entries remain. Lumber camp
+has8 entries including unresolved biome variants; other families retain the
+existing geometry survey. Quantify the next source/attribute batch and reuse
+prior findings. No new runtime or tool added.
+Details: evidence/item-8/sources/idas-nexus-assessment/README.md.
+Inventory SHA-256: 598519aa3eaf9cfdf36165de25ff6055688a2375051333824cac9dfbb6accb68.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS desert market assessed after 05c9d5c3
+
+Seven entries integrated for three alternatives. Authored guardvillagers:guard
+is preserved with absent frozen Mod List provider, not claimed successful
+population. Two defined bazaar loot tables and no spawners/markers. Selected
+processor only schedules dispenser/dropper ticks and returns incoming block
+info; direct class identity and inspection recorded. Existing dimensions reused.
+No runtime/tool added. All85 focused checks pass (63.72s); only desert_market/
+input identity changed. Total412/448 assessed;36 IDAS families/321 required
+entries remain. Next nexus: six alternatives/seven entries with dimensions
+already integrated; inspect the selected loot/spawner processor before using
+raw pig spawner NBT as an enemy claim. Quantify any missing source requirement.
+Details: evidence/item-8/sources/idas-desert-market-assessment/README.md.
+Inventory SHA-256: 90bfbe07e24508b3b346550a2606c5081b9f8cc9f1bcb9262994f530d8190b4e.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS enchanting tower assessed after b0b72b08
+
+Seven remaining entries integrated for three equal-weight rigid alternatives.
+Active default pool authors villagers, references three defined loot tables and
+uses empty processors. No physical spawners, markers or unresolved template
+entities. Existing absent-ars_nouveau selection evidence keeps compatibility
+alternatives inactive. Prior nominal dimensions reused; no runtime/tool added.
+All85 focused checks pass (64.83s); only enchantingtower/input identity changed.
+Total411/448 assessed;37 IDAS families/328 required entries remain. Next smallest
+content batch: desert_market, three alternatives/seven entries with dimensions
+already integrated. Reuse catalog and processor/provider evidence; quantify any
+actual missing claims before further investigation. Geometry survey remains:
+ten existing full-start candidates and24 connected assemblies needing assessment.
+Details: evidence/item-8/sources/idas-enchanting-tower-assessment/README.md.
+Inventory SHA-256: 15b5916b36f0bf532f51d528e322a252145f792bb7c65383bba0524e70007119.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
+#### IDAS existing geometry quantified and integrated after a2d9e5f9
+
+All38 remaining IDAS families compared with original bounds and23 original
+additional decoded captures. Ten have existing full-start candidates; four
+others use independent single-template alternatives;24 connected assemblies
+still need geometry assessment before deciding on runtime work. Ten candidates
+are availability findings, not newly accepted world measurements.
+Eight required size entries integrated for enchantingtower,desert_market,
+lumber_camp,nexus from22 existing templates. No new runtime or tool. All85
+focused checks pass (65.33s). Total410/448 families assessed;38 families/335
+required entries remain. Existing rationale/connector/content findings must be
+reused. Known specific defects: ancient_mines entrance2 pool, desert_pyramid
+villager pool, three lumber-camp biome constraints. No new-experiment count is
+claimed for the24 assemblies; nominal connector derivation may suffice.
+Details and candidate locations:
+evidence/item-8/sources/idas-existing-geometry-assessment/README.md.
+Inventory SHA-256: f1e993efd2863b6a45a8cbd458984dd722bf9b8282c8e7960b9a778c5dc49c9c.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### Repurposed village assessed after d59de7f4
 
 Seven entries integrated for14 variants/1345 distinct shared templates. Exact
