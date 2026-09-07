@@ -16706,7 +16706,78 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "processor_inspection": {
+        "archive": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+        "archive_sha256": "2c3191ad447092cc7873a06e92f16bd3e2ff9dc31e93268b8893d06dd89e1fd6",
+        "members": {
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/GravelProcessor.class": "7deb17341c490e4dc948a26db93f8a40a58c3c66bd0d0a61f2c6c3c0734454ad",
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/BoneBlockProcessor.class": "fda67546e83aeb84d5d7b4949b3ca4058ff4170ac5d440b2b9e50db724ec0752",
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/InfestedCrackedStoneBricksProcessor.class": "225bf4a79bddd54c54839677e378c098e0bb4f34eac5548f041834911d36f301",
+          "com/yungnickyoung/minecraft/betterdeserttemples/world/processor/YellowWoolProcessor.class": "9c78fb966198f178c58f01a8ad5f24dcdbbc0937fca11e3dd8abc1bf3b8358d3"
+        },
+        "basis": "Direct pinned-javap inspection of exact members; see desert-temple-provider/README.md, Effective spawners and placement."
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "All three effective biomes intersect only captured Overworld membership. Effective biome references have no unresolved tags; biome constraints remain separately derived."
+        },
+        "generated_spawners": {
+          "ordinary_spawner_blocks": true,
+          "trial_spawner_blocks": false,
+          "marker_conversions": [
+            {
+              "marker": "minecraft:gravel",
+              "processor": "GravelProcessor",
+              "entity": "minecraft:husk",
+              "maxNearbyEntities": 8,
+              "requiredPlayerRange": 24,
+              "templates": "puzzle_big_2_{0,1,2,4}, puzzle_big_7_{0,1,2,3,4,5}, rooms/room_tomb_{0,1,3}: one marker each."
+            },
+            {
+              "marker": "minecraft:bone_block",
+              "processor": "BoneBlockProcessor",
+              "entity": "minecraft:skeleton",
+              "requiredPlayerRange": 32,
+              "templates": "hall_room/parkour/parkour_bottom_2: two markers.",
+              "spawn_data": "Writes an empty HandItems list to nextSpawnData before saving."
+            },
+            {
+              "marker": "minecraft:infested_cracked_stone_bricks",
+              "processor": "InfestedCrackedStoneBricksProcessor",
+              "entity": "minecraft:silverfish",
+              "requiredPlayerRange": 24,
+              "templates": "hall_room/parkour/parkour_bottom_3: two markers."
+            },
+            {
+              "marker": "minecraft:yellow_wool",
+              "processor": "YellowWoolProcessor",
+              "entity": "minecraft:husk",
+              "maxNearbyEntities": 8,
+              "requiredPlayerRange": 24,
+              "templates": "hall_room/throne_room: four markers.",
+              "spawn_data": "Writes HandItems and ArmorItems to nextSpawnData, including golden sword/shield and armor using uppercase Count and legacy tag fields. This is source encoding, not verified runtime equipment."
+            }
+          ],
+          "basis": "The197 traced templates contain no literal ordinary/trial spawner states. Four registered main-list processors replace the listed marker blocks with minecraft:spawner and MobSpawnerData.save output. Marker-bearing alternatives, pools and template components are not extra families.",
+          "scope": "Effective source conversion and exact component marker counts, not successful placement, per-assembly spawner counts or live spawning measurements. No processor-created trial spawner is identified."
+        },
+        "visual_discoverability": {
+          "value": "Desert temple with a terrain-relative entrance and buried lower rooms; burial varies with terrain and the selected vertical offset.",
+          "basis": "Root uses WORLD_SURFACE_WG projection and uniform offset-24..-4 with a named temple_anchor. Template trace contains connected rooms, parkour, puzzles and Pharaoh content.",
+          "limitation": "No full-start world geometry or measured human sightline is available yet; complete size remains a separate required gap."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-connected, partly buried desert temple.",
+          "basis": "WORLD_SURFACE_WG plus anchor offset-24..-4, surface_structures generation step and ignore_waterlogging liquid setting. The anchor offset is not the structure floor or complete vertical span."
+        }
       }
     },
     {
