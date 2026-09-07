@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mega Ship assessed after d8dc726b
+
+Ten attributes finish eight Mega Ship variants. Finite connector-derived nominal
+geometry avoids a capture; authored/natural encounters, frame items, potions,
+loot and the unidentified wreck spawner remain distinct. Ten shared tests pass.
+Derivations are in moog-generator-code README. Inventory SHA:
+02e0f36208a2c49c7e2054967dcee254383ab403c55756aee5e6d02ca187b891.
+End Structures 18/18; registry 190/410, nonregistry 40/40, total 230/450 assessed,
+220 remaining. Retire mes assessment absent contradictory evidence. Continue
+other providers in quantified coherent batches. Final integration, acceptance,
+verified backup/history consolidation and PR review/main delivery remain open.
+
 #### Six End families assessed after b116d1f7
 
 Sixty attributes finish Enderpin Spikes, Endscraps, Monolith, Placid Prairie,
