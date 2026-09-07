@@ -1213,3 +1213,64 @@ uv run -m tools.run_item7_gap_targets \
   --structure dungeons_arise:mining_complex \
   --structure dungeons_arise:scorched_mines
 ```
+
+### Final three geometry results and custody
+
+Source revisione5cc3afff8cea0d68f9e83e36c1cf20dfbede05f. All three targets
+completed with readiness, correlated flushed save, clean exit0 and accepted
+frozen configuration. Decoded3,738 records include locate-created and partial
+chunks; this count is not the243 requested-chunk denominator.
+
+| Family | Decoded line | Start chunk XZ | Pieces | Envelope | Size XYZ |
+|---|---|---|---|---|---|
+| Foundry | 516 | -494,1 | 228 | -7982,-11,-62,-7789,37,124 | 194,49,187 |
+| Mining Complex | 2633 | -98,-593 | 76 | -1700,-12,-9619,-1512,190,-9440 | 189,203,180 |
+| Scorched Mines | 1254 | -797,202 | 82 | -12846,-6,3114,-12637,67,3337 | 210,74,224 |
+
+These three starts are in full chunks. Incidental Foundry line2890, chunk-198,-598,
+is only minecraft:structure_starts, with181 planned pieces and197x49x197 bounds;
+retain but exclude it from acceptance. The three full examples resolve six
+geometry attributes, without claims of occupied volume, complete distant-piece
+placement, extrema or gameplay. Foundry's missing pool remains documented.
+Baseline world_observations indexes are unchanged; attributes bind supplemental
+archive and decoded lines. Downloaded restore reproduces the accepted examples
+using existing observed_bounds and the explicit full-start condition.
+
+Archive305 files,8,091,263 bytes,43,639,216 uncompressed bytes. SHA-256:
+07cdd87e5058f2a876754fc83991683fc73690284ffe69106d39eec8bc4dd9dc.
+Decoded SHA-256:
+b2a945b1a61d423f5987dfa4fbe309239bcd8d07f9ee36c62f59435fa0d95728.
+Manifest SHA-256:
+639fb32cec532057aedd3b43e86d7d2cb44cc030a566e03b335af7a65f6287fb.
+Archive includes stopped world excluding session.lock, logs, decoded records,
+sanitized configuration/sanitization receipt and lifecycle/configuration receipt.
+Warnings and incidental incomplete records remain preserved. Both local and
+published-download restores verified305 files. Local copies share one disk;
+independent copy is the
+[published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-wda-final-geometry-2026-09-07-r1).
+Remote tag matches source revision; no runtime remains.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/wda-final-geometry-r1"), Path("evidence/raw/item8/wda-final-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/wda-final-geometry-r1/world --output evidence/raw/item8/wda-final-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/wda-final-geometry-r1 --archive evidence/raw/item8/item8-wda-final-geometry-r1-e5cc3aff.tar.gz --manifest evidence/item-8/raw-custody/wda-final-geometry-r1-manifest.json --revision e5cc3afff8cea0d68f9e83e36c1cf20dfbede05f
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-wda-final-geometry-r1-e5cc3aff.tar.gz --manifest evidence/item-8/raw-custody/wda-final-geometry-r1-manifest.json --target evidence/raw/item8/wda-final-geometry-r1-restored --receipt evidence/item-8/raw-custody/wda-final-geometry-r1-local-restore.json
+gh release download item-8-wda-final-geometry-2026-09-07-r1 --repo copeugne/mcpack --dir evidence/raw/item8/wda-final-geometry-download --pattern item8-wda-final-geometry-r1-e5cc3aff.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/wda-final-geometry-download/item8-wda-final-geometry-r1-e5cc3aff.tar.gz --manifest evidence/item-8/raw-custody/wda-final-geometry-r1-manifest.json --target evidence/raw/item8/wda-final-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/wda-final-geometry-r1-downloaded-restore.json
+uv run python - <<'PY'
+from pathlib import Path
+from mcpack_evidence.item7_nbt_models import ChunkRecord
+from mcpack_evidence.item8_world_bounds import observed_bounds
+names = {'dungeons_arise:' + n for n in ('foundry', 'mining_complex', 'scorched_mines')}
+source = Path('evidence/raw/item8/wda-final-geometry-downloaded-restore/chunks.jsonl')
+for line, raw in enumerate(source.open(), 1):
+    for observation in observed_bounds(ChunkRecord.model_validate_json(raw)):
+        if observation['structure_id'] in names:
+            print(line, {key: value for key, value in observation.items() if key != 'piece_boxes'}, 'pieces', len(observation['piece_boxes']))
+PY
+```
+
+Rebuild and eight focused checks use existing commands above. Only six geometry
+attributes and direct evidence/input identities change. WDA39 active families
+are now assessed; Mining System remains registered but inactive. This is not
+the Item8 exit gate: other providers and final canonical integration remain.
