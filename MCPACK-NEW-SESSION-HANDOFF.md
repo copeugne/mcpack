@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager Small Ship assessed after 890ffc0f
+
+Ten attributes finish Small Ship. Its optional villager piece fits inside the
+15x10x9 XYZ selected main envelope. Version choice, offset -1, no terrain
+adaptation and explicit liquid check are preserved without flotation or motion
+claims. No new capture or tooling. Derivations are in moog-generator-code README.
+Ten affected tests and builder checks pass. Inventory SHA-256:
+0b451177a4b41df207a2da02dac81bfe0626b3e0189270acabce2dcc7a93e564.
+
+Retire Small Ship assessment. Voyager 51/65; registry 158/410, nonregistry 40/40,
+total 198/450 assessed, 252 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager animal huts and igloos assessed after 377e3e5a
 
 Twenty attributes finish Animal Hut and Igloo across four roots. Igloo
