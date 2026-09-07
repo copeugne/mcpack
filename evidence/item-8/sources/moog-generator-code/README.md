@@ -1382,3 +1382,70 @@ Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py te
 Ten tests pass. Only ten family rows and the decisions pin change; geometry,
 biome constraints, observations and nonregistry content are preserved.
 Inventory SHA: 0ec9375718e28d4136221c039a5ac6d1e5c84dc670a998cf660744af126008bb.
+
+## Ten Nether families with standalone alternatives
+
+After b9d94109, one hundred attributes finish Bridge, Medium Fungus, Circle
+Ruin, Medium House, Crimson Forge, Ruined Portal, Sandy Skull, Shrine, Sword
+and Warped House: 20 roots and 25 templates. The existing grouping preserves
+family/variant boundaries. Each root selects one standalone rigid template,
+with empty processors/fallback and no attachments. Warped House selects one
+of six weight-1 alternatives. Crimson Forge uses its original path under the
+1.21-1.21.4 version mapping. Other elements are ordinary single elements.
+Exact references are the mns root traces, their source paths from
+MoogsNetherStructures-1.21-3.0.0-alpha.2.jar in templates-redacted.json.gz,
+and corresponding structure/start-pool JSON in packaged-json-redacted.json.gz.
+Evidence maps bind these artifacts, source views and generator identities.
+
+Per-template nominal XYZ, including air/padding and possible X/Z exchange:
+
+| Family | Template suffix and XYZ |
+| --- | --- |
+| Bridge | bridges/bridge_1:5x5x9; 2:17x4x5; 3:5x5x9; 4:5x5x13; 5:9x5x13; 6:5x5x5 |
+| Medium Fungus | nature/medium_crimson_fungus_1:11x20x11; crimson_2:12x17x10; warped_1:9x22x9; warped_2:13x14x8 |
+| Circle Ruin | ruins/circle_blackstone:15x6x18; circle_nether_brick:17x10x17 |
+| Medium House | houses/medium_house_1 and _2:19x14x11 |
+| Crimson Forge | crimson_forge:19x12x16 |
+| Ruined Portal | ruins/ruined_portal:13x13x18 |
+| Sandy Skull | sandy_skull:14x13x19 |
+| Shrine | shrine:5x5x9 |
+| Sword | sword:15x27x32 |
+| Warped House | houses/warped_house_1..3:18x25x15; _4:18x27x15; _5:18x26x15; _6:18x26x14 |
+
+All roots intersect only Nether runtime possible biomes. The existing Nether
+postLayoutAdjustments uses LOWEST_LAND for Bridge, Fungus and Medium House,
+HIGHEST_LAND for the others. Search receives inverse cannotSpawnInLiquid, true
+only for Bridge. Land Y or sea-level fallback plus zero start/ledge offset is
+followed by allowance adjustment. Bridge declares adaptation none, Y30..32;
+other roots beard_thin. Offsets 301..352 adjust for the upper bound using box
+height before the lower-bound adjustment. A bridge taller than that three-block
+interval can have the lower bound take precedence; the declaration does not
+prove the whole bridge fits Y30..32. Warped House's underground_structures step
+is not proof of burial. Visibility remains a qualitative source inference.
+
+Circle Blackstone /block_entities/2 assigns wither_skeleton and has houses loot;
+Circle Nether Brick /2 and /3 assign piglin_brute and piglin, with no table
+reference. Medium House 1 saves one piglin and four piglin_brute; House 2 saves
+four piglin_brute. House 1 /25 assigns piglin, while /24,/32,/34 and House 2
+/34,/36 have empty entity objects. Preserve these five unassigned records as
+source limitations, not a default-mob inference or an experiment backlog.
+Other selected templates have no authored entity or spawner. No generation
+markers occur. Warped House instead declares a piece-bounded monster override
+for piglin, weight 100, minCount 1/maxCount 2. These source values do not measure
+encounters or establish live population.
+
+Medium House uses empty/houses/uncommon tables; Crimson Forge and Warped House
+houses; Sandy Skull uncommon. Bridge, Fungus, Portal, Shrine and Sword have no
+loot references. mns:chests/empty remains the already-inspected weighted table.
+Warped House variant 1 /block_entities/0/nbt/Items stores a netherite-upgrade
+smithing template and saddle alongside glowstone, gold nuggets and crimson
+nylium. Preserve the exact saved list separately from other houses-table
+containers; this is not measured reward frequency. Furnishings and depicted
+portal/bridge forms do not prove productive or traversal utility.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Ten tests pass. Only ten family rows and the decisions identity change;
+biome constraints, observations and nonregistry content remain unchanged.
+No new measurement, capture or tooling was added.
+Inventory SHA: aa7a6cca167386529f0c89b3b19774ca50d3a2a2c6d209161e973b095782281a.
