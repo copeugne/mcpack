@@ -7,6 +7,23 @@
 ### Continuation update - 2026-09-07
 
 
+#### Gold geometry assessed after 087ed897
+
+Two remaining Gold sizes resolved by direct coordinate derivation. All templates
+fit55x43x55; cave candidate loops and one-block-below processor extension fit
+60x54x60 (X,Y,Z), with foliage separate. These are conservative source envelopes,
+not measured or typical occupied sizes. Exact four-rotation tunnel table and
+carving derivation are in the Gold geometry assessment source README.
+No runtime/tool added. All85 focused tests pass (58.70s). Only Gold/input identity
+changed. Registry326/408,nonregistry40/40,total366/448 assessed,82 remain;
+723 outstanding explicit attribute slots. Next quantified batch: Bronze one
+family,two sizes. Existing Bronze builder/template/surface-ruin captures are
+available; investigate their bounds before deciding whether a capture is needed.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+2024561ceb15eb9058c07706b39514ccdf9e4ebd66de6373574f9c1d4693968d.
+
+
 #### Gold content and placement after 04a6c457
 
 One family, seven of nine outstanding attributes integrated from pinned templates,

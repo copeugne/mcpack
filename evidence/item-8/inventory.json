@@ -22194,8 +22194,30 @@
       }
     },
     "aether:gold_dungeon": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
+      "approximate_footprint": {
+        "basis": "Direct derivation of all selected island/stub/chamber/tunnel template boxes and GoldStubCave carving. Relative to island center, template boxes fit X/Z[-27,27]; cave candidate loops fit X/Z[-30,29]. These conservative envelopes are not occupied area, an observed example or a typical-size estimate.",
+        "central_island_xz_blocks": [
+          38,
+          38
+        ],
+        "extension": "Golden-oak foliage is a separate surface extension, not included in these bounds.",
+        "non_foliage_xz_envelope_blocks": [
+          60,
+          60
+        ],
+        "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment",
+        "template_xz_envelope_blocks": [
+          55,
+          55
+        ]
+      },
+      "approximate_vertical_size": {
+        "basis": "Central island spans centerY[-21,21]; stubs, boss and tunnel fit that height. Cave candidate loops span centerY[-24,29]; one-block-below vertical-gradient writes also fit this envelope. The final terrain adjustment translates all pieces equally. Conservative source bounds, not measured occupied height.",
+        "extension": "Golden-oak foliage above surfaces remains separate.",
+        "non_foliage_y_envelope_blocks": 54,
+        "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment",
+        "template_y_blocks": 43
+      },
       "authored_or_natural_enemies": {
         "authored": "Sun Spirit from the boss-room template, rather than a natural-spawn list.",
         "natural": "The structure definition supplies empty full-box lists for all twelve listed categories. Entity persistence and external handlers are not measured by these sources.",
@@ -22245,6 +22267,30 @@
       },
       "grouping_decision": {
         "attributes": {
+          "approximate_footprint": {
+            "basis": "Direct derivation of all selected island/stub/chamber/tunnel template boxes and GoldStubCave carving. Relative to island center, template boxes fit X/Z[-27,27]; cave candidate loops fit X/Z[-30,29]. These conservative envelopes are not occupied area, an observed example or a typical-size estimate.",
+            "central_island_xz_blocks": [
+              38,
+              38
+            ],
+            "extension": "Golden-oak foliage is a separate surface extension, not included in these bounds.",
+            "non_foliage_xz_envelope_blocks": [
+              60,
+              60
+            ],
+            "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment",
+            "template_xz_envelope_blocks": [
+              55,
+              55
+            ]
+          },
+          "approximate_vertical_size": {
+            "basis": "Central island spans centerY[-21,21]; stubs, boss and tunnel fit that height. Cave candidate loops span centerY[-24,29]; one-block-below vertical-gradient writes also fit this envelope. The final terrain adjustment translates all pieces equally. Conservative source bounds, not measured occupied height.",
+            "extension": "Golden-oak foliage above surfaces remains separate.",
+            "non_foliage_y_envelope_blocks": 54,
+            "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment",
+            "template_y_blocks": 43
+          },
           "authored_or_natural_enemies": {
             "authored": "Sun Spirit from the boss-room template, rather than a natural-spawn list.",
             "natural": "The structure definition supplies empty full-box lists for all twelve listed categories. Entity persistence and external handlers are not measured by these sources.",
@@ -22374,6 +22420,7 @@
           "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
           "evidence/item-8/sources/aether-placement/identities.json": "14d7c34fe022eaf47cfa324ad56646b2bf4e736b4cfc0a249ddd94b8d1408113",
           "evidence/item-8/sources/aether-provider/identities.json": "917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee",
+          "evidence/item-8/sources/missing-template-code/identities.json": "3f237bac34103b26e4d8576c0c27eb40716ff7408074a4f6ddf38f4f1fcfe8b5",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
           "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
@@ -22388,14 +22435,15 @@
         "processor_inspection": {
           "archive": "aether-1.21.1-1.5.10-neoforge.jar",
           "archive_sha256": "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8",
-          "basis": "Direct pinned-javap process-method inspection; see Gold content and placement assessment. Existing captured piece, boss metadata and double-drops sources are reused.",
+          "basis": "Direct pinned-javap process-method inspection; see Gold content and placement assessment. Existing captured piece, boss metadata and double-drops sources are reused. BlockLogicUtil.tunnelFromOddSquareRoom supplies the geometry connection offset; see Gold geometry assessment.",
           "members": {
+            "com/aetherteam/aether/world/BlockLogicUtil.class": "6867de707e469d8b7fcd3795fa4d7ae8c904eb939bb282166b817c67ba985a70",
             "com/aetherteam/aether/world/processor/NoReplaceProcessor.class": "b21f493103700968885f281eaf48f421ecfec13425731cd8d269e5f7bf01dab8",
             "com/aetherteam/aether/world/processor/SurfaceRuleProcessor.class": "82235a3295344dabb87ce5751a83bb4a3f5178f411b41255be1fb276d00c9b4d",
             "com/aetherteam/aether/world/processor/VerticalGradientProcessor.class": "c34fd14bc5ef0e4e92851cd327a1875e5cb203a8c930e864c5335d1308c1f75b"
           }
         },
-        "rationale": "One dungeon-island design assembled from island, boss_room, stub and tunnel components, with cave carving and foliage. The boss template authors a Sun Spirit and its marker binds the gold reward table. Source placement and encounter attribution are assessed; whole-family approximate geometry remains outstanding. Pieces, processors and foliage are not separate families.",
+        "rationale": "One dungeon-island design assembled from island, boss_room, stub and tunnel components, with cave carving and foliage. The boss template authors a Sun Spirit and its marker binds the gold reward table. Source-derived non-foliage envelope60x54x60 includes the55x43x55 template envelope and cave carving; foliage is separate. All Item8 descriptive attributes are assessed without inferring observed assembly or combat success. Pieces, processors and foliage are not separate families.",
         "start_pool": null,
         "structure_ids": [
           "aether:gold_dungeon"
@@ -229579,7 +229627,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "d32c15724113a6b50beccfb5939ce8f39c7cd8ffdbd12b1d31778557c89fd294",
+    "evidence/item-8/family-decisions.json": "f1e588bf4913799bda58788b5c43c7db034e73c522c5e07c53ccfa69f5b76cb8",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
