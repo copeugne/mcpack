@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS tinkers workshop assessed after 50c11592
+
+Nine entries integrated for eight rigid serial components. Nominal63 by81
+footprint,130 vertical span from y-93..36; placement/world-height limitations
+remain explicit. Ten ordinary spawners differ by processor:2/3 retain forgotten/
+cave-spider sources;4/6 randomize to skeleton10,forgotten5. Direct forgotten/
+cave spiders separate from entrance civilians and absent komodo. Five defined
+loot sources; no markers or authored ID gaps. Existing processor inspections
+reused; no runtime/tool added. All85 focused checks pass (60.92s); only
+tinkers_workshop/input identity changed. Total441/448 assessed;seven connected
+IDAS families/63 entries remain,nine each. Quantify next batch and reuse findings.
+Details: evidence/item-8/sources/idas-tinkers-workshop-assessment/README.md.
+Inventory SHA-256: 3cd400271288ecfdcc43d4c13bcc4dd65b212572f343ef54988a189cab83b427.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS haunted manor assessed after 90b67729
 
 Nine entries integrated with frozen connector defect. Integrated API Assembler
