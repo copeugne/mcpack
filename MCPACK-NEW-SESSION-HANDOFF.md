@@ -6,6 +6,28 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining Repurposed geometry accepted after 91011cb9
+
+Both predeclared seed42 runs passed readiness, seven81-chunk completions,
+correlated flush, clean exit0 and frozen config acceptance. Overworld decoded6607
+records; End1803. All seven target full starts verified through downloaded restores.
+Fourteen size attributes integrated: ancient_city,bastion,city,fortress,outpost,
+stronghold,village. Saved-piece envelopes exclude occupied/support/population claims.
+Overworld archive291files/15,976,388bytes SHA3f076e47d1c843a31e83e19f335760de9a0522c3444097cd7c224242837209e3;
+End271files/1,906,622bytes SHA29b73f1cd9ec7f322d159ab57751e0c4e65972a3edbae48f7233010b84939487.
+Both local/downloaded restores pass. Release/tag
+item-8-repurposed-final-geometry-2026-09-07-r1 verified at91011cb9. No run remains
+active. Raw spawner-list/item-loading/aquifer errors retained with size-only
+disposition; content reconciliation remains open. Commands, exact lines/bounds
+and identities in evidence/item-8/sources/repurposed-final-geometry/README.md.
+All85 focused checks pass (61.89s);only seven families/input identity changed.
+Total remains403/448 assessed;45 families/392 required entries remain: IDAS38/343,
+Repurposed7/49. All remaining Repurposed size requirements now have accepted
+examples. Next assess seven content/placement entries per remaining family;
+village crop precedence conflicts and IDAS spawner failures remain relevant.
+No new tool/framework. Final integration,acceptance,backup/history and
+PR/review/main remain open. Inventory SHA-256: f6be55f27ff1674883d809ee5bf7817a67082880345f65d795f975829afae7ef.
+
 #### Repurposed pyramid assessed after bd54fff9
 
 Seven remaining entries integrated for11 variants/22 pool templates. Three
