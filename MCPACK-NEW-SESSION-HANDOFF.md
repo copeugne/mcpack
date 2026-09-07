@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS animal den assessed after 61ba7660
+
+Nine entries integrated for three independent den alternatives. All templates
+13 by8 by15; nominal dimensions reused directly, not promoted to measured world
+bounds. Authored wolf/polar bear/foxhound and non-mob glass frames distinguished.
+No block entities, loot tables, spawners or generation markers; selected ticking
+processor reused. Natural overrides empty; source declarations do not establish
+aggression or effective population. No runtime/tool added. All85 focused checks
+pass (67.27s); only animal_den/input identity changed. Total415/448 assessed;
+33 IDAS families/297 required entries remain. Existing-candidate geometry group
+now9 families;24 connected assemblies still need geometry assessment. Next small
+batch can assess desert_camp or underground_camp using independent template
+alternatives and existing content; quantify scope before starting.
+Details: evidence/item-8/sources/idas-animal-den-assessment/README.md.
+Inventory SHA-256: 9f24eb9bc72005ffa3b1fbafe732c1e8a9c38e4c660551425f0bc4a5856db816.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS lumber camp assessed after 27d4e962
 
 Eight entries integrated for ten alternatives. No template entities, loot-table
