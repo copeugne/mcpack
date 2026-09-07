@@ -25543,7 +25543,7 @@
         "adorabuild_structures:blackstone_bastion_medium_2",
         "adorabuild_structures:blackstone_bastion_small_1"
       ],
-      "rationale": "Three low blackstone buildings retain a shared enclosed, windowed bastion design with gilded details, authored piglins or brutes and bastion loot. Their square, elongated and stepped forms are variants; chest versus trapped-chest and loot differences remain in source content. The tall multi-tower medium_3 compound is separated as blackstone_bastion_towers. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Three low blackstone buildings retain a shared enclosed, windowed bastion design with gilded details, authored piglins or brutes and bastion loot. Their square, elongated and stepped forms are variants; chest versus trapped-chest and loot differences remain in source content. The tall multi-tower medium_3 compound is separated as blackstone_bastion_towers. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:blackstone_bastion_medium_1": {
           "definition": {
@@ -25611,7 +25611,159 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "by_template": {
+            "adorabuild_structures:blackstone_bastion_medium_1": [
+              16,
+              7
+            ],
+            "adorabuild_structures:blackstone_bastion_medium_2": [
+              13,
+              7
+            ],
+            "adorabuild_structures:blackstone_bastion_small_1": [
+              9,
+              9
+            ]
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "approximate_vertical_size": {
+          "by_template": {
+            "adorabuild_structures:blackstone_bastion_medium_1": 8,
+            "adorabuild_structures:blackstone_bastion_medium_2": 10,
+            "adorabuild_structures:blackstone_bastion_small_1": 8
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_1": [
+              "minecraft:the_nether"
+            ],
+            "adorabuild_structures:blackstone_bastion_medium_2": [
+              "minecraft:the_nether"
+            ],
+            "adorabuild_structures:blackstone_bastion_small_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:piglin": [
+              "adorabuild_structures:blackstone_bastion_medium_1",
+              "adorabuild_structures:blackstone_bastion_small_1"
+            ],
+            "minecraft:piglin_brute": [
+              "adorabuild_structures:blackstone_bastion_medium_1",
+              "adorabuild_structures:blackstone_bastion_medium_2",
+              "adorabuild_structures:blackstone_bastion_small_1"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_1",
+            "adorabuild_structures:blackstone_bastion_medium_2",
+            "adorabuild_structures:blackstone_bastion_small_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_1": {},
+            "adorabuild_structures:blackstone_bastion_medium_2": {},
+            "adorabuild_structures:blackstone_bastion_small_1": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:blackstone_bastion_medium_1",
+                "adorabuild_structures:blackstone_bastion_medium_2",
+                "adorabuild_structures:blackstone_bastion_small_1"
+              ],
+              "value": "minecraft:chests/bastion_other"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:blackstone_bastion_medium_2"
+              ],
+              "value": "minecraft:chests/bastion_treasure"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_1",
+            "adorabuild_structures:blackstone_bastion_medium_2",
+            "adorabuild_structures:blackstone_bastion_small_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_1",
+            "adorabuild_structures:blackstone_bastion_medium_2",
+            "adorabuild_structures:blackstone_bastion_small_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Piglin/brute encounter, preserving template-specific occupants.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_1": {},
+            "adorabuild_structures:blackstone_bastion_medium_2": {},
+            "adorabuild_structures:blackstone_bastion_small_1": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Low enclosed blackstone buildings with windows and gilded details; square, elongated and stepped variants.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
+        }
       }
     },
     {
@@ -25620,7 +25772,7 @@
       "structure_ids": [
         "adorabuild_structures:blackstone_temple_small_1"
       ],
-      "rationale": "One compact open-sided blackstone shrine with a gold block, distinct from the larger tiered nether-brick temple and inhabited bastions. Its template has no authored entities or block entities and its definition has empty spawn overrides; this does not exclude natural enemies. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One compact open-sided blackstone shrine with a gold block, distinct from the larger tiered nether-brick temple and inhabited bastions. Its template has no authored entities or block entities and its definition has empty spawn overrides; this does not exclude natural enemies. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:blackstone_temple_small_1": {
           "definition": {
@@ -25650,7 +25802,9 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -25665,6 +25819,86 @@
           "packaged_template_y_blocks": 8,
           "template_id": "adorabuild_structures:blackstone_temple_small_1",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:blackstone_temple_small_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_temple_small_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_temple_small_1": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_temple_small_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_temple_small_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Landmark or utility/cache structure without authored hostile residents; material and interaction hazards remain separate.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_temple_small_1": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Compact open-sided blackstone shrine with a gold block.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -29199,7 +29433,7 @@
       "structure_ids": [
         "adorabuild_structures:nether_fossil_1"
       ],
-      "rationale": "Three low bone-frame alternatives share the same size envelope and decorated arrangement of chains, skeleton skulls and soul campfire. Their corresponding fossil forms remain variants of one authored landmark. The decorative campfire/skull/chain assembly distinguishes this from a bare terrain fossil. No top-level authored entities or loot references occur in these templates. Canonical design relationships are resolved. Effective generation, occupied geometry, exposure and remaining gameplay attributes remain unproven.",
+      "rationale": "Three low bone-frame alternatives share the same size envelope and decorated arrangement of chains, skeleton skulls and soul campfire. Their corresponding fossil forms remain variants of one authored landmark. The decorative campfire/skull/chain assembly distinguishes this from a bare terrain fossil. No top-level authored entities or loot references occur in these templates. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:nether_fossil_1": {
           "definition": {
@@ -29250,7 +29484,170 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/adora-landmark-views/fossils.svg.gz": "93ef706364521ea33bc004315c70a21742382e08efa5ce70e3c6dc48227ed2f8"
+        "evidence/item-8/sources/adora-landmark-views/fossils.svg.gz": "93ef706364521ea33bc004315c70a21742382e08efa5ce70e3c6dc48227ed2f8",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "by_template": {
+            "adorabuild_structures:nether_fossil/fossil_1": [
+              9,
+              9
+            ],
+            "adorabuild_structures:nether_fossil/fossil_2": [
+              9,
+              9
+            ],
+            "adorabuild_structures:nether_fossil/fossil_3": [
+              9,
+              9
+            ]
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "approximate_vertical_size": {
+          "by_template": {
+            "adorabuild_structures:nether_fossil/fossil_1": 5,
+            "adorabuild_structures:nether_fossil/fossil_2": 5,
+            "adorabuild_structures:nether_fossil/fossil_3": 5
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:nether_fossil_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fossil/fossil_1",
+            "adorabuild_structures:nether_fossil/fossil_2",
+            "adorabuild_structures:nether_fossil/fossil_3"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fossil_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 8
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fossil/fossil_1",
+            "adorabuild_structures:nether_fossil/fossil_2",
+            "adorabuild_structures:nether_fossil/fossil_3"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fossil/fossil_1",
+            "adorabuild_structures:nether_fossil/fossil_2",
+            "adorabuild_structures:nether_fossil/fossil_3"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Decorated fossil with configured skeleton, wither-skeleton and zombified-piglin natural spawning despite no template residents. Exact override differs from the fortress table.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Template-owned entities are authored. Nonempty root overrides configure the natural monster-spawn selection within piece bounds, not initial residents or physical spawners.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fossil_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 8
+                  }
+                ]
+              }
+            }
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Low decorated bone frames with chains, skulls and soul campfire; three standalone alternatives.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
+        }
       }
     },
     {
@@ -29259,7 +29656,7 @@
       "structure_ids": [
         "adorabuild_structures:nether_portal_small_1"
       ],
-      "rationale": "One Nether-brick shrine/frame design with obsidian, crying obsidian, gold, respawn anchor and actual nether_portal blocks. Its architecture and portal-block content differ from the purpur End gateway frames. Packaged portal blocks are inputs, not proof of a usable or correctly linked portal after generation. Canonical design relationships are resolved. Effective generation, occupied geometry, exposure and remaining gameplay attributes remain unproven.",
+      "rationale": "One Nether-brick shrine/frame design with obsidian, crying obsidian, gold, respawn anchor and actual nether_portal blocks. Its architecture and portal-block content differ from the purpur End gateway frames. Packaged portal blocks are inputs, not proof of a usable or correctly linked portal after generation. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:nether_portal_small_1": {
           "definition": {
@@ -29286,7 +29683,9 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/adora-landmark-views/gateways_portal.svg.gz": "dc96d67d325a1a21aa72e274076880c0a4e847a5c05f992bcfda0761b5aa9028"
+        "evidence/item-8/sources/adora-landmark-views/gateways_portal.svg.gz": "dc96d67d325a1a21aa72e274076880c0a4e847a5c05f992bcfda0761b5aa9028",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -29301,6 +29700,87 @@
           "packaged_template_y_blocks": 12,
           "template_id": "adorabuild_structures:nether_portal_small_1",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:nether_portal_small_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_portal_small_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_portal_small_1": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_portal_small_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_portal_small_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Landmark or utility/cache structure without authored hostile residents; material and interaction hazards remain separate.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction.",
+          "interaction_scope": "Authored portal blocks and respawn anchor do not prove a usable, correctly linked or safe portal."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_portal_small_1": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Nether-brick shrine/frame with obsidian, crying obsidian, gold, respawn anchor and portal blocks.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -29310,7 +29790,7 @@
       "structure_ids": [
         "adorabuild_structures:nether_temple_medium_1"
       ],
-      "rationale": "One tiered nether-brick shrine with gold, lava, fire and chains, distinct from the compact blackstone shrine and fortress buildings. There are no authored entities or block entities in this template, but the definition explicitly supplies the fortress monster spawn override; absence of template mobs does not imply peacefulness. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One tiered nether-brick shrine with gold, lava, fire and chains, distinct from the compact blackstone shrine and fortress buildings. There are no authored entities or block entities in this template, but the definition explicitly supplies the fortress monster spawn override; absence of template mobs does not imply peacefulness. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:nether_temple_medium_1": {
           "definition": {
@@ -29376,7 +29856,9 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -29391,6 +29873,158 @@
           "packaged_template_y_blocks": 9,
           "template_id": "adorabuild_structures:nether_temple_medium_1",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:nether_temple_medium_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_temple_medium_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_temple_medium_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_temple_medium_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_temple_medium_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Configured fortress-style natural monster spawning despite no template residents; lava/fire also occur in the temple.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Template-owned entities are authored. Nonempty root overrides configure the natural monster-spawn selection within piece bounds, not initial residents or physical spawners.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_temple_medium_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Tiered nether-brick shrine with gold, lava, fire and chains.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -36573,7 +37207,7 @@
       "structure_ids": [
         "adorabuild_structures:blackstone_bastion_medium_3"
       ],
-      "rationale": "A complete multi-tower blackstone compound with a tall central tower and shorter surrounding towers, distinct from the low bastion buildings. Authored piglins and brutes and bastion bridge, treasure and other loot remain attached to this single template. Shared materials and inhabitants do not make its compound layout an alias of a low building. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "A complete multi-tower blackstone compound with a tall central tower and shorter surrounding towers, distinct from the low bastion buildings. Authored piglins and brutes and bastion bridge, treasure and other loot remain attached to this single template. Shared materials and inhabitants do not make its compound layout an alias of a low building. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:blackstone_bastion_medium_3": {
           "definition": {
@@ -36603,7 +37237,9 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -36618,6 +37254,115 @@
           "packaged_template_y_blocks": 19,
           "template_id": "adorabuild_structures:blackstone_bastion_medium_3",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_3": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:piglin": [
+              "adorabuild_structures:blackstone_bastion_medium_3"
+            ],
+            "minecraft:piglin_brute": [
+              "adorabuild_structures:blackstone_bastion_medium_3"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_3"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_3": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:blackstone_bastion_medium_3"
+              ],
+              "value": "minecraft:chests/bastion_bridge"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:blackstone_bastion_medium_3"
+              ],
+              "value": "minecraft:chests/bastion_other"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:blackstone_bastion_medium_3"
+              ],
+              "value": "minecraft:chests/bastion_treasure"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_3"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:blackstone_bastion_medium_3"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Piglin/brute encounter, preserving template-specific occupants.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:blackstone_bastion_medium_3": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Blackstone compound with tall central tower and shorter surrounding towers.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -36627,7 +37372,7 @@
       "structure_ids": [
         "adorabuild_structures:nether_fortress_large_2"
       ],
-      "rationale": "A standalone low nether-brick courtyard with a perimeter wall and corner details, distinct from the modular tower network and roofed wart building. The template authors blaze, skeleton and wither-skeleton entities and nether-bridge loot. Its custom Nether generator and full fortress spawn override remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "A standalone low nether-brick courtyard with a perimeter wall and corner details, distinct from the modular tower network and roofed wart building. The template authors blaze, skeleton and wither-skeleton entities and nether-bridge loot. Its custom Nether generator and full fortress spawn override remain preserved. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:nether_fortress_large_2": {
           "definition": {
@@ -36693,7 +37438,9 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -36708,6 +37455,176 @@
           "packaged_template_y_blocks": 7,
           "template_id": "adorabuild_structures:nether_fortress_large_2",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:nether_fortress_large_2": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:blaze": [
+              "adorabuild_structures:nether_fortress_large_2"
+            ],
+            "minecraft:skeleton": [
+              "adorabuild_structures:nether_fortress_large_2"
+            ],
+            "minecraft:wither_skeleton": [
+              "adorabuild_structures:nether_fortress_large_2"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_large_2"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fortress_large_2": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:nether_fortress_large_2"
+              ],
+              "value": "minecraft:chests/nether_bridge"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_large_2"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_large_2"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Authored blaze/skeleton/wither-skeleton encounter plus configured fortress-style natural monster spawning.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Template-owned entities are authored. Nonempty root overrides configure the natural monster-spawn selection within piece bounds, not initial residents or physical spawners.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fortress_large_2": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Low open nether-brick courtyard with perimeter wall and corner details.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -36717,7 +37634,7 @@
       "structure_ids": [
         "adorabuild_structures:nether_fortress_medium_1"
       ],
-      "rationale": "A standalone roofed nether-brick building with window bands, soul sand, nether wart and nether-bridge loot. This enclosed crop-bearing layout differs from the open courtyard and modular tower network. The template has no authored entities, but its full fortress monster override remains preserved with the custom Nether generator. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "A standalone roofed nether-brick building with window bands, soul sand, nether wart and nether-bridge loot. This enclosed crop-bearing layout differs from the open courtyard and modular tower network. The template has no authored entities, but its full fortress monster override remains preserved with the custom Nether generator. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:nether_fortress_medium_1": {
           "definition": {
@@ -36783,7 +37700,188 @@
         "evidence/item-8/sources/adora-nether-views/fortress_parts.svg.gz": "6aaca282864926c55d24d231f83b509934319d0632fad9f74e3855a3453823a1",
         "evidence/item-8/sources/adora-nether-views/fortresses_temples.svg.gz": "cba4d724c8ed6f1a981f09d5776ed135f16c4a95a8a24484862af4c66a4bdfe7",
         "evidence/item-8/sources/adora-nether-views/bastions.svg.gz": "215398b3b090ed44f8071305b793043b0fa88933893838c2899a2162159dd4a5",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "by_template": {
+            "adorabuild_structures:nether_fortress_medium_1": [
+              9,
+              9
+            ]
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "approximate_vertical_size": {
+          "by_template": {
+            "adorabuild_structures:nether_fortress_medium_1": 9
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:nether_fortress_medium_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": [
+            "minecraft:the_nether"
+          ]
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_medium_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fortress_medium_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:nether_fortress_medium_1"
+              ],
+              "value": "minecraft:chests/nether_bridge"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_medium_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:nether_fortress_medium_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Configured fortress-style natural monster spawning despite no template residents; lava/fire also occur in the temple.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Template-owned entities are authored. Nonempty root overrides configure the natural monster-spawn selection within piece bounds, not initial residents or physical spawners.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:nether_fortress_medium_1": {
+              "monster": {
+                "bounding_box": "piece",
+                "spawns": [
+                  {
+                    "maxCount": 3,
+                    "minCount": 2,
+                    "type": "minecraft:blaze",
+                    "weight": 10
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:zombified_piglin",
+                    "weight": 5
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:wither_skeleton",
+                    "weight": 8
+                  },
+                  {
+                    "maxCount": 5,
+                    "minCount": 5,
+                    "type": "minecraft:skeleton",
+                    "weight": 2
+                  },
+                  {
+                    "maxCount": 4,
+                    "minCount": 4,
+                    "type": "minecraft:magma_cube",
+                    "weight": 3
+                  }
+                ]
+              }
+            }
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Roofed nether-brick building with window bands, soul sand and nether wart.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
+        }
       }
     },
     {
@@ -37867,7 +38965,7 @@
       "structure_ids": [
         "adorabuild_structures:crimson_house_medium_1"
       ],
-      "rationale": "One compact stacked crimson building with projecting floor/roof bands, nether-bridge loot, armor stand, lever and redstone lamp. Its tall stacked layout differs from the broad crimson hall; redstone ingredients do not prove tested operation. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One compact stacked crimson building with projecting floor/roof bands, nether-bridge loot, armor stand, lever and redstone lamp. Its tall stacked layout differs from the broad crimson hall; redstone ingredients do not prove tested operation. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:crimson_house_medium_1": {
           "definition": {
@@ -37895,7 +38993,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/adora-house-views/end.svg.gz": "2db2961c4af1415a89260b0db20c15a42dd564afcdf8109a4a53d5b64a59bdfb",
-        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c"
+        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -37910,6 +39010,98 @@
           "packaged_template_y_blocks": 10,
           "template_id": "adorabuild_structures:crimson_house_medium_1",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:crimson_house_medium_1": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:armor_stand": [
+              "adorabuild_structures:crimson_house_medium_1"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_1"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:crimson_house_medium_1": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:crimson_house_medium_1"
+              ],
+              "value": "minecraft:chests/nether_bridge"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_1"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_1"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Landmark or utility/cache structure without authored hostile residents; material and interaction hazards remain separate.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:crimson_house_medium_1": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Compact stacked crimson tower with projecting floor/roof bands and redstone lamp.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -37919,7 +39111,7 @@
       "structure_ids": [
         "adorabuild_structures:crimson_house_medium_2"
       ],
-      "rationale": "One broad low crimson hall with fenced content, authored hoglin and piglin brute, bastion-treasure loot and redstone lamp/block. Its low elongated layout and inhabitants differ from the compact crimson tower house. It is not an ordinary peaceful dwelling merely because its root is named house. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "One broad low crimson hall with fenced content, authored hoglin and piglin brute, bastion-treasure loot and redstone lamp/block. Its low elongated layout and inhabitants differ from the compact crimson tower house. It is not an ordinary peaceful dwelling merely because its root is named house. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:crimson_house_medium_2": {
           "definition": {
@@ -37947,7 +39139,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/adora-house-views/end.svg.gz": "2db2961c4af1415a89260b0db20c15a42dd564afcdf8109a4a53d5b64a59bdfb",
-        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c"
+        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "attributes": {
         "approximate_footprint": {
@@ -37962,6 +39156,101 @@
           "packaged_template_y_blocks": 6,
           "template_id": "adorabuild_structures:crimson_house_medium_2",
           "basis": "Declared envelope of the sole fully traced template, with no jigsaw attachments. Includes air and padding. Nominal source dimensions, not observed occupied-world bounds, terrain adaptation or exposed height. Rotation may exchange horizontal axes."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:crimson_house_medium_2": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:hoglin": [
+              "adorabuild_structures:crimson_house_medium_2"
+            ],
+            "minecraft:piglin_brute": [
+              "adorabuild_structures:crimson_house_medium_2"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_2"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:crimson_house_medium_2": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:crimson_house_medium_2"
+              ],
+              "value": "minecraft:chests/bastion_treasure"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_2"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:crimson_house_medium_2"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Hoglin and piglin-brute encounter in the authored hall.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:crimson_house_medium_2": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Broad low crimson hall with fenced contents and lamp/block ingredients.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
         }
       }
     },
@@ -37972,7 +39261,7 @@
         "adorabuild_structures:warped_house_small_1",
         "adorabuild_structures:warped_house_small_2"
       ],
-      "rationale": "Two low warped-wood buildings retain roof, entrance and framing variations within one compact house design. Both include nether-bridge loot and soul campfire/lantern content; small_1 additionally contains lava and an authored strider. These are distinct from crimson hall/tower designs; absent entities in small_2 do not exclude natural enemies. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Two low warped-wood buildings retain roof, entrance and framing variations within one compact house design. Both include nether-bridge loot and soul campfire/lantern content; small_1 additionally contains lava and an authored strider. These are distinct from crimson hall/tower designs; absent entities in small_2 do not exclude natural enemies. Full custom-generator definitions, biome constraints and empty spawn overrides remain preserved. Canonical design and required source descriptions are assessed. Custom placement and spawn overrides are explained in attributes; realized behavior and visibility distances are not claimed.",
       "variants": {
         "adorabuild_structures:warped_house_small_1": {
           "definition": {
@@ -38019,7 +39308,132 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/adora-house-views/end.svg.gz": "2db2961c4af1415a89260b0db20c15a42dd564afcdf8109a4a53d5b64a59bdfb",
-        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c"
+        "evidence/item-8/sources/adora-house-views/nether.svg.gz": "a166c11760eb54aceedfe2ab1df571c07233d0c8744f5b4ccf3d4f27bc0e188c",
+        "evidence/item-8/sources/adorabuild-provider/identities.json": "446d2811b3bd46642a1ae419f030e7d78b24fa061eb12c8e37f2702b086f038d",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "by_template": {
+            "adorabuild_structures:warped_house_small_1": [
+              10,
+              9
+            ],
+            "adorabuild_structures:warped_house_small_2": [
+              10,
+              10
+            ]
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "approximate_vertical_size": {
+          "by_template": {
+            "adorabuild_structures:warped_house_small_1": 6,
+            "adorabuild_structures:warped_house_small_2": 6
+          },
+          "basis": "Nominal standalone template envelopes including padding; no jigsaw block entities occur. Fossil templates are alternatives, not attached pieces. Rotation may exchange horizontal axes. Not measured occupied geometry or exposed height."
+        },
+        "underground_surface_classification": {
+          "value": "Nether interior column-selected floor/cavity start, nominal selection Y=32..96.",
+          "basis": "NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "adorabuild_structures:warped_house_small_1": [
+              "minecraft:the_nether"
+            ],
+            "adorabuild_structures:warped_house_small_2": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Resolved biome-source overlap and custom column-search constraints identify eligible placement. NetherJigsawStructure.findGenerationPoint queries the base column at chunk minimum X/Z. It scans upward from minAbsoluteHeight+sampledOffset through maxAbsoluteHeight, selecting the first Y with non-air at Y-1 and air at Y and Y+2 (Y+1 is not explicitly tested). It rejects no match, then starts at selectedY+offset and delegates JigsawPlacement.addPieces. All these roots use offset 0, min 32, max 96, no projection and beard_box adaptation. Non-air support can include fluid; this is not a guaranteed solid floor or measured clearance.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:strider": [
+              "adorabuild_structures:warped_house_small_1"
+            ]
+          },
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:warped_house_small_1",
+            "adorabuild_structures:warped_house_small_2"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:warped_house_small_1": {},
+            "adorabuild_structures:warped_house_small_2": {}
+          }
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "adorabuild_structures:warped_house_small_1",
+                "adorabuild_structures:warped_house_small_2"
+              ],
+              "value": "minecraft:chests/nether_bridge"
+            }
+          ],
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:warped_house_small_1",
+            "adorabuild_structures:warped_house_small_2"
+          ],
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "SOURCE_ASSESSED",
+          "template_ids": [
+            "adorabuild_structures:warped_house_small_1",
+            "adorabuild_structures:warped_house_small_2"
+          ],
+          "unresolved_sources": {},
+          "assessment": "Complete traces with no unresolved entities, physical-spawner inputs or generation markers. Custom generator delegates vanilla jigsaw assembly. Nonempty processors replace gold with debris/lodestone, remove glass, or replace/remove decorative skulls. No processor supplies mobs, physical spawners or loot assignments. Source entities/rewards are not realized population or drop claims."
+        },
+        "intended_hostility": {
+          "value": "Warped shelter with a strider in small_1 and lava material; no authored hostile resident encounter.",
+          "basis": "Retained entity inputs, exact root spawn overrides and template contents; source interpretation, not measured difficulty or safe interaction."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Explicit template piglins/brutes/hoglins where listed are authored encounter inputs. Armor stands are objects and striders are animals. Natural ambient spawning is not disabled by empty overrides.",
+          "spawn_overrides_by_structure": {
+            "adorabuild_structures:warped_house_small_1": {},
+            "adorabuild_structures:warped_house_small_2": {}
+          },
+          "basis": "Preserve override entity types, weights and min/max counts from definitions. These are configured selection inputs, not measured simultaneous populations."
+        },
+        "visual_discoverability": {
+          "source_form": "Low warped-wood buildings with different roof/entrance framing and soul-lighting; small_1 includes lava.",
+          "basis": "Previously inspected canonical design views and retained template content. Nether cavity walls, terrain and the narrow column test can conceal or intersect the structure. No visibility distance or successful whole-footprint clearance is measured."
+        }
       }
     },
     {

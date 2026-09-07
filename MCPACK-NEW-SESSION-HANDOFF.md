@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Eleven AdoraBuild Nether assessments after 87ef63fa
+
+Retire blackstone_bastion, blackstone_bastion_towers, blackstone_temple,
+crimson_hall, crimson_tower_house, nether_fortress_courtyard,
+nether_fortress_wart_house, nether_fossil, nether_portal, nether_temple and
+warped_house. Fourteen roots now have all required source descriptions: 52
+missing descriptions integrated and 44 existing attributions reconciled.
+Four families have natural-monster overrides, including fossil's distinct table.
+Custom placement preserves the narrow column test and non-air support limitation.
+No new capture or measurement. Existing provider README records derivation.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-nether-descriptions-final.json`, SHA-256
+585eb6cc5d3988f567962f7e03e3597697cd705ebdcf785330fd0d5cb6ee2cfc.
+Only these eleven registry rows changed; biomes, observations and nonregistry
+contributions remain unchanged. Registry assessment is 67/410, with 343
+remaining. Nonregistry remains 40/40. AdoraBuild has four Overworld-generator
+families and two modular families left; final all-family integration, acceptance,
+backed-up consolidation, PR review and main delivery remain open.
+
 #### Nine AdoraBuild End assessments after d330f931
 
 Retire ancient_palace, ancient_palace_hall, ancient_palace_pavilion, end_bubble,
