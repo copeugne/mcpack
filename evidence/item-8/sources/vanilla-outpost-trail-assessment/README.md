@@ -58,3 +58,39 @@ uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory
 Direct source inspection supports the descriptions. Existing tests validate the
 inventory integration and source identities; they do not certify prose or prove
 Item 8 completion. No executable behavior changed beyond the decisions hash pin.
+
+## Remaining vanilla geometry capture declaration
+
+After ea6bf76a, inspect additional retained Item 8 captures before new generation.
+The CTOV outpost capture has a vanilla outpost at chunks.jsonl line 1803, but its
+status is minecraft:structure_starts and full is false. It does not satisfy the
+existing full-start-chunk geometry standard. No mansion or trail-ruin records were
+found in those additional original chunks.jsonl captures. The main world-bounds
+catalog also has no full-start observations for these three roots.
+
+Predeclare one fresh ordinary seed 42 Overworld run with targets, in order:
+minecraft:pillager_outpost, minecraft:trail_ruins, minecraft:mansion. Request 81
+chunks around each located target using the existing gap runner. Preserve readiness,
+matching completion, save-all flush confirmation, clean stop and frozen configuration
+validation. Accept saved assembled envelopes only after raw archive and verified
+local and downloaded restores. This is six required size entries, not a population,
+all-layout or pacing experiment. No new tool or baseline change is required.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/vanilla-final-geometry-r1 \
+  --log-path evidence/raw/item8/vanilla-final-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/vanilla-final-geometry-r1/configuration \
+  --receipt evidence/raw/item8/vanilla-final-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure minecraft:pillager_outpost --structure minecraft:trail_ruins \
+  --structure minecraft:mansion
+```
