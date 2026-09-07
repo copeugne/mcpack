@@ -81912,7 +81912,112 @@
             "minecraft:overworld"
           ],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_examples": [
+            {
+              "source": "run-a/mountainous/chunks.jsonl",
+              "line": 13428,
+              "seed": 6671238423019257953,
+              "chunk_x": 22,
+              "chunk_z": 2,
+              "envelope": [
+                237,
+                -52,
+                -74,
+                458,
+                -22,
+                140
+              ],
+              "size_xyz": [
+                222,
+                31,
+                215
+              ]
+            },
+            {
+              "source": "run-a/ocean-heavy/chunks.jsonl",
+              "line": 12215,
+              "seed": 95920844204830198,
+              "chunk_x": 25,
+              "chunk_z": -26,
+              "envelope": [
+                343,
+                -52,
+                -525,
+                507,
+                -22,
+                -304
+              ],
+              "size_xyz": [
+                165,
+                31,
+                222
+              ]
+            }
+          ],
+          "basis": "Two retained full-start assembly envelopes:222x215 and165x222 horizontally. Pieces, pools and templates belong to one city family.",
+          "limitations": "Saved bounds include air/padding and do not measure occupied volume, all effects, typical size or all-layout extrema.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 31,
+          "basis": "Both referenced assemblies span inclusiveY-52..-22. Start anchor absoluteY-27 is not the overall bottom.",
+          "limitations": "Saved piece height, not necessarily exposed height or a bound on sculk growth/terrain adaptation.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "intended_hostility": {
+          "value": "Sculk-triggered Warden hazard within an underground exploration/reward structure.",
+          "basis": "Selected ancient-city sculk-patch feature can generate summoning-capable shriekers; ordinary empty spawn lists do not disable triggered spawning. This is a source-based design assessment, not measured difficulty or guaranteed Warden appearance.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "mob_source": {
+          "authored_template_entities": [],
+          "mechanism": "Selected minecraft:sculk_patch_ancient_city has extra_rare_growths uniform1..3. SculkPatchFeature attempts CAN_SUMMON=true shriekers at suitable air/support positions. SculkShriekerBlockEntity checks summoning capability, non-Peaceful difficulty and doWardenSpawning; warningLevel>=4 gates a TRIGGERED Warden spawn attempt, subject to warning-tracker and spawn-position checks.",
+          "limitations": "Feature inputs are not guaranteed placed counts, and conditional spawning is not an observed entity population. Retained external hooks are not ruled out.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "loot_table_source": {
+          "literal_tables": [
+            "minecraft:chests/ancient_city",
+            "minecraft:chests/ancient_city_ice_box"
+          ],
+          "basis": "Literal template chest references resolve to preserved packaged loot definitions. The three selected degradation processors change blocks/protection, not loot tables.",
+          "limitations": "Sources identify tables, not observed contents or effective external loot additions.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "generated_spawners": {
+          "ordinary_or_trial_spawner_blocks": [],
+          "other_mechanism": "Summoning-capable sculk shriekers are generated through the selected feature, not ordinary/trial spawner blocks.",
+          "basis": "57 reachable templates have no ordinary/trial spawner blocks in the retained content trace; feature and shrieker behavior inspected separately.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Conditional Warden threat supplied by selected feature-generated shriekers; no entities or DATA encounter markers in the57 reachable templates.",
+          "natural": "Root explicitly supplies empty lists for all eight spawn categories over the full structure box. This controls ordinary structure spawn lists, not every triggered or external entity source.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "visual_discoverability": {
+          "value": "Large buried city with deepslate walls/buildings, soul-lantern cues and selected sculk patches. Primarily discoverable within underground openings rather than from a guaranteed surface landmark.",
+          "basis": "Packaged pools, degradation rules, negative start anchor and retained negative-Y assembled examples.",
+          "limitations": "No guaranteed entrance, sightline distance, exposure survey or exploration pacing measured.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "underground_surface_classification": {
+          "value": "Underground city assembly.",
+          "basis": "Vanilla jigsaw start_height absolute-27 with minecraft:city_anchor and beard_box adaptation; retained examples spanY-52..-22.",
+          "limitations": "Anchor and sample envelopes do not prove a sealed roof or complete concealment in every terrain layout.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
         }
+      },
+      "processor_inspection": {
+        "archive": "server-1.21.1-20240808.144430-srg.jar",
+        "archive_sha256": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+        "members": {
+          "net/minecraft/world/level/levelgen/feature/SculkPatchFeature.class": "a370e35a2719b693db496c90c263bc69d8960ab9bddc8b577a29249f095bb67d",
+          "net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.class": "09d5b757b45ecb2ea9b8754f22234a4b585541743920a57a78aafdbc81a9598f"
+        },
+        "basis": "Direct inspection of selected feature and triggered-spawn mechanism, not structure processors. Selected processor lists are the packaged ancient_city_generic/start/walls_degradation lists."
       }
     },
     {

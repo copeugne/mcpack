@@ -7,6 +7,24 @@
 ### Continuation update - 2026-09-07
 
 
+#### Ancient city assessed after 053c856a
+
+Nine remaining attributes integrated from57-template trace, selected degradation
+processors/sculk feature, two retained full-start envelopes and direct pinned
+SculkPatchFeature/SculkShriekerBlockEntity inspection. No template entities or
+ordinary/trial spawners, but selected extra-rare growths can place CAN_SUMMON
+shriekers. Triggered Warden path has difficulty/game-rule/warning/spawn guards;
+empty ordinary spawn lists do not disable it. Two defined chest tables recorded.
+Examples222x31x215 and165x31x222 spanY-52..-22; anchorY-27 is not assembly bottom.
+Missing wall-stairs template and all stated limits retained. No new capture/tool.
+All85 focused checks pass (61.03s);only ancient city/input identity changed.
+Registry348/408,nonregistry40/40,total388/448 assessed;60 families and576 required
+attributes remain: IDAS38/380,Repurposed17/154,vanilla5/42 (bastion9,mansion9,
+pillager_outpost8,trail_ruins8,trial_chambers8). Quantify next batch and reuse
+existing evidence. Final integration,acceptance,backup/history preparation and
+PR/review/main remain open. Inventory SHA-256: 460a67c039635153be35b9b15a8c312a3ac1df06e011cba7659d98d40ed53ce9.
+
+
 #### End city assessed after 77c3248f
 
 All five remaining attributes integrated. Fresh seed42 End capture passes readiness,
