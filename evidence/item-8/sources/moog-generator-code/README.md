@@ -641,3 +641,48 @@ an absent path. Only Flower Hole and decisions input hash changed; biomes,
 observations and nonregistry remain unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-flower-hole.json`, SHA-256
 fa055b9dc39da1ab98b962de354748e5651d22254ece92c3ee305d6f3f264165.
+
+## Five Voyager dwellings and cultivation layouts
+
+After 81b9aa10, fifty attributes finish azelea_house, deepslate_house, house,
+tall_house and wooden_wheat_farm in one shared-evidence batch. Each has one
+main template plus plains-villager options using the mechanism established above.
+Azelea's versioned element selects houses/azelea_house for 1.21-1.21.8; the other
+four main elements are ordinary single. All main/child projections are rigid,
+with empty processors. No capture or tooling is added.
+
+Main XYZ envelopes and upward connector positions are:
+
+| Family | Main XYZ | Connector XYZ positions |
+| --- | --- | --- |
+| Azelea House | 19x20x20 | [7,9,7], [7,9,10] |
+| Deepslate House | 22x15x21 | [4,1,4], [15,1,6] |
+| House | 20x17x20 | [7,4,12] |
+| Tall House | 19x21x26 | [11,6,4], [12,6,5] |
+| Wooden Wheat Farm | 17x5x17 | [6,1,2], [7,1,2] |
+
+Each rollable child connector is downward at [0,0,0]. A child begins one block
+above the main connector; all 1x2-or-3x1 child boxes fit inside these envelopes.
+There are no other attachments. Existing template/pool references and this direct
+alignment establish nominal sizes, subject to the source-bound caveats above.
+
+All roots intersect only Overworld runtime biomes. Their generic surface inputs
+are identical except that the farm omits the houses' range 3/radius 2 terrain
+checks. Optional villagers are distinct from authored enemies. Only House's
+main entity list is nonempty: /entities/0..2 are item records carrying one iron
+nugget, one bread and four wheat seeds. They are not mobs or guaranteed rewards.
+Inspected block entities contain no mob payloads; no spawners or markers occur.
+
+Main loot owners, under mvs namespace: Azelea empty/houses_common/houses_uncommon/
+houses_rare/houses_books; Deepslate houses_common; House empty/houses_common/
+houses_uncommon/houses_rare; Tall abandoned/houses_common/houses_uncommon/
+houses_rare; Farm general/houses_common/houses_uncommon. Exact IDs are integrated.
+The shared villager pool and empty-table interpretation remain as established.
+Visibility descriptions retain each building/crop form without new measurements.
+
+One shared run of the ten affected provider/inventory tests passes. The builder
+changed only its decisions hash. Only five family rows and that input identity
+changed; biomes, observations and nonregistry content are preserved. Reproduce
+with the existing builder and an absent output path. Inventory matches
+`evidence/raw/item8/inventory-mvs-five-dwellings.json`, SHA-256
+22876ac64f5a49f5decf03c9606a9cf5c89c3f16b9b02976cffb29c0cc354656.

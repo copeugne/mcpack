@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five Voyager dwellings assessed after 81b9aa10
+
+Fifty attributes finish azelea_house, deepslate_house, house, tall_house and
+wooden_wheat_farm. Their optional villager boxes fit inside the main envelopes;
+House's saved items remain distinct from mobs. Shared source derivations are in
+moog-generator-code README. One shared ten-test run passes; no capture/tooling.
+Inventory SHA: 22876ac64f5a49f5decf03c9606a9cf5c89c3f16b9b02976cffb29c0cc354656.
+Voyager 57/65; registry 164/410, nonregistry 40/40, total 204/450 assessed,
+246 remaining. Retire supported claims and continue coherent mechanism/evidence
+batches, normally 5-15 families where natural. Single-family batches require a
+specific exception. Share validation and concise checkpoints; no repeated code
+checks for a hash literal alone. Final integration, acceptance, verified backup/
+history consolidation and PR review/main delivery remain open.
+
 #### Voyager Flower Hole assessed after 877019b1
 
 Ten attributes finish Flower Hole. Two optional villager pieces fit within
