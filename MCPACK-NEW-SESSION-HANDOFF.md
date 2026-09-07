@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Active WDA assessments finished after e5cc3aff
+
+Six geometry attributes finish Foundry, Mining Complex and Scorched Mines from
+three full starts in the declared seed42 run. Correlated save, clean exit0,
+accepted frozen configuration. Incidental non-full Foundry start retained but
+excluded. Archive305 files/8,091,263 bytes published under
+item-8-wda-final-geometry-2026-09-07-r1 at sourcee5cc3aff. Local/download
+restores verified every file and reproduced accepted geometry. No runtime.
+Exact results/commands/limitations: evidence/item-8/sources/wda-provider-scope/README.md.
+Eight focused tests pass. Registry311/409, nonregistry40/40, total351/449
+assessed,98 remaining. WDA39/39 active assessed; Mining System remains inactive.
+Retire WDA assessments absent a concrete contradiction. Quantify next remaining
+provider batch before investigation and reuse established source evidence.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ae856777231466eb5c3946f7cbb55d3e1672384313ccff7ad8b4bafbe89e1f69.
+
 #### Final three WDA geometry targets after 763608a5
 
 Six geometry attributes remain for Foundry, Mining Complex and Scorched Mines.
