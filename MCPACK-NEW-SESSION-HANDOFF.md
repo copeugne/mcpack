@@ -7,6 +7,17 @@
 ### Continuation update - 2026-09-07
 
 
+#### End city capture declaration after 8dd91e7d
+
+Next batch is one family/five attributes. Source/template evidence supports
+hostility,visual cues and surface placement; no retained End city starts exist
+in world-bounds, so assembled geometry requires one fresh sample. Predeclared
+ordinary seed42,minecraft:the_end,minecraft:end_city,81 requested chunks,
+vanilla-end-city-geometry-r1 under vanilla-end-city-code README. Reuse the existing
+End-capable runner, lifecycle/config validation and archive/restore/release path.
+No new tool. Capture not yet started;62 families/590 attributes remain.
+
+
 #### Ocean ruin and ruined portal assessment after cb7b690c
 
 Six remaining attributes integrated: both sizes and visual cues for each family.
