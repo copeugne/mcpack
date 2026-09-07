@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS collectors museum assessed after c645f4d7
+
+Nine entries integrated for two connected source components. Nominal213 by211
+footprint,139 height, lower origin0,-78,0; full placement remains unclaimed.
+All18 raw empty spawner entity compounds select zombie15,skeleton10,wraith5.
+Eleven distinct literal loot IDs defined; borrowed tables do not merge families.
+Optional AlexsMobs/CloudStorage absent; frames/glue non-mob display data. No
+markers or trial spawners. Existing processor inspection reused; no runtime/tool.
+All85 focused checks pass (62.80s); only collectors_museum and input identity
+changed. Total445/448 assessed; three families/27 entries remain:
+ancient_mines,castle,desert_pyramid, nine each.
+Next ancient_mines:19 reachable components/nine entries; missing entrance2 pool
+already dispositioned, separate room1 connection remains. Existing inventory has
+no retained full-start geometry. Inspect existing source geometry and observations
+before deciding whether any additional measurement is strictly required.
+Details: evidence/item-8/sources/idas-collectors-museum-assessment/README.md.
+Inventory SHA-256: b6d4796d9e8f864244b3e71f03c515bdf8bd57751fe8c34d670a1f317a6b5209.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS labyrinth assessed after 8e522bef
 
 Nine entries integrated for five connected default components. Nominal55 by64
