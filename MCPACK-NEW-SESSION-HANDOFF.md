@@ -6,6 +6,78 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed mansion and monument assessed after 57addac8
+
+Corrected prior remaining-entry count474 to476: two preexisting vertical-size
+attributes still held value UNKNOWN and were incorrectly counted as resolved.
+This increment resolves all seven actual remaining entries in these two families:
+three source-backed visual/placement descriptions and four saved geometry entries.
+Fresh seed42 Overworld capture passed readiness,two81-chunk completions,correlated
+flush,clean exit0 and frozen config. Decoded2764 records; downloaded full mansion_oak
+line1443,644 pieces,size61x31x79; monument_desert line1924,74 pieces,size58x22x58.
+Foundation/variant/population limits remain. Raw minecraft:air invalid-item loading
+error preserved; geometry acceptance does not establish loot correctness.
+Archive item8-repurposed-mansion-monument-geometry-r1-57addac8.tar.gz:264files,
+5,428,486bytes,SHA3bf2fc5cfc5877d3aec7bdc26ac6d92fb6833afefa83710b1db45105b05dbcfc.
+Both restores pass; immutable release/tag verified at57addac8. No runtime remains.
+All85 focused checks pass (60.43s); only two families/input identity changed.
+Total396/448 assessed;52 families/469 entries remain: IDAS38/343,Repurposed14/126.
+No remaining assessed attribute has the specific value UNKNOWN form found here;
+continue checking actual claim contents, not merely field presence. Commands and
+derivations in repurposed-mansion-monument-completion README under evidence/item-8.
+Quantify next batch. Final integration,acceptance,backup/history and PR/review/main
+remain open. Inventory SHA-256: 37491982dd6efd185b3d330017ab6f9674e60fc8843bfd1317df356f5ec53028.
+
+
+#### Repurposed witch-hut assessment completed after 52e59e40
+
+Six remaining attributes integrated for the six-variant family. Existing templates
+provide authored witch/cat; root piece-bounded natural overrides remain separate.
+No template loot/spawners/markers; selected pillar and material processors add
+supports, not encounters. The giant-tree-taiga self-list reference is applied to
+replacement states without red-glass triggers. Template7x8x9 excludes pillar extent.
+All85 focused checks pass (59.01s); only witch-hut/input identity changed. No new
+capture/tool. Total394/448 assessed;54 families/474 entries remain: IDAS38/343,
+Repurposed16/131. Quantify next batch and reuse existing evidence. Details in
+repurposed-witch-hut-assessment README under evidence/item-8/sources. Final
+canonical integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: e0ad5a5d63539f9844b13dc27c159bd530e00b8dbc7659aa24d85eb09a3953fa.
+
+
+#### Remaining-provider dimensions integrated after 5ca62565
+
+54 existing dimension assessments integrated: Repurposed17, IDAS37. Exact builder
+biome-compatible maps and observed lists preserved. No new capture/tool;85 focused
+checks pass (60.09s). Only54 dimensions/group evidence/input identity changed.
+Lumber camp excluded: three variants reference missing required biome tags
+idas:has_structure/bopmahogany_biomes,bygmahogany_biomes,bygredwood_biomes.
+Their UNKNOWN state is unchanged and requires disposition before dimension
+acceptance. Desert-camp bygwindswept variant has a resolved empty overlap, which
+is not an observed generation failure. Details in remaining-provider-dimensions
+README under evidence/item-8/sources. Total393/448 assessed;55 families/480 entries
+remain: IDAS38/343,Repurposed17/137. Quantify next family batch before starting.
+Final canonical integration,acceptance,backup/history and PR/review/main stay open.
+Inventory SHA-256: 03e810142a4abb5cdb0a62d9e14082b7af2ff22f7b4cf906821c804501cb7ea2.
+
+
+#### Mansion assessment completed after a791fda5
+
+Seven remaining attributes integrated from pinned vanilla classes, existing
+Illager Invasion/Lithostitched captures, frozen config and packaged templates.
+73 unique components: vanilla code references72; active Lithostitched lists add
+1x1_b5. Thirteen Illager Invasion replacements are same-ID resources, not families.
+Warrior selects basher on nextInt(2)==0 and otherwise vanilla vindicator; Provoker,
+Archivist,invoker use mod handlers; Mage/allays remain vanilla. Secret1x1_as2
+ordinary spider spawner and mansion/stronghold-library table sources recorded.
+No new capture/tool. All85 focused checks pass (59.61s); only mansion/input identity
+changed. All vanilla assessments now integrated. Total393/448 assessed;55 families
+and534 entries remain: IDAS38/380,Repurposed17/154. Quantify the next provider batch
+before starting and reuse existing evidence. Final canonical integration of40
+nonregistry families, acceptance, backup/history and PR/review/main remain open.
+Exact derivation is in evidence/item-8/sources/vanilla-mansion-assessment/README.md.
+Inventory SHA-256: 65c0d61bdfe9cc306e5cf9b792db4deb997b86c7a4d7aa0aaec4f737a0fb3669.
+
+
 #### Remaining vanilla geometry accepted after 1416f44c
 
 One fresh seed42 Overworld capture completed all three targets with 81 requested
