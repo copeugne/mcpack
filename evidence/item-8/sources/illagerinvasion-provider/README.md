@@ -107,3 +107,44 @@ constraints and world observation links remain unchanged. Only these three rows
 and the decisions input identity changed. Inventory matches
 `evidence/raw/item8/inventory-illager-buildings-final.json`, SHA-256
 c4e80a428427523e29b1f54fa7f315a556b57900bf05bd7198a8893345b212b5.
+
+## Firecaller and Labyrinth attribution
+
+After 3a2c6d78, these two assemblies had seventeen outstanding descriptions.
+Thirteen are now integrated: six each for dimension, entity sources, loot,
+spawners, enemy origin and qualitative discoverability; Labyrinth additionally
+receives its underground-placement description. Four geometry answers remain.
+The retained bounds catalog has no observations for either family. The component
+sizes do not establish a whole-assembly size, and no new measurement was run.
+
+The existing root definitions and runtime biome intersection support Overworld
+eligibility. Firecaller uses surface projection with offset zero. For Labyrinth,
+`LabyrinthStructure.findGenerationPoint` delegates to vanilla jigsaw and filters
+its result through `lambda$findGenerationPoint$12`, accepting generation-stub
+Y <= 47 (disassembly lines 26-52 in this provider capture). Combined with the
+configured WORLD_SURFACE_WG offset -40 and bury adaptation, that establishes
+underground-biased placement, not whole-layout burial or tower exposure.
+
+Firecaller's complete graph has nine templates: base plate, hut, five feature
+alternatives, firecaller and llama. Vanilla single/legacy-single pool elements
+have empty processor lists. There are no saved loot-table references, physical
+spawners, generation markers or unresolved entities. This does not imply absence
+of ordinary block salvage or entity drops. The llama is not a hostile enemy.
+
+Labyrinth has thirty templates including halls, rooms, tower and mob components.
+Its architectural pools use the previously inspected no-liquid single element
+and empty declared processor lists. The graph retains authored alchemist,
+archivist, basher, marauder, necromancer, provoker, evoker and vindicator entities.
+Room armor stand and item frame entities are decorative. There are no physical
+spawner blocks, markers or unresolved entities. Root full-bounds monster spawning
+has an empty list; authored components remain separate enemy sources. This does
+not claim that other mobs cannot wander in or arise through other events.
+Rooms reference illagerinvasion:chests/labyrinth and labyrinth_map; tower references
+minecraft:chests/woodland_mansion. Exact template owners are integrated.
+
+Seven affected provider/inventory tests and scoped builder quality checks pass.
+Only these two rows and input identity changed. Existing geometry, biomes,
+observations, hostility and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-illager-assemblies-attribution.json`, SHA-256
+229401ae20ea01d07325fd0738b4fd13c851fd76c7729c0e18eadf24c5479a25.
+Retire the thirteen supported descriptions; neither family is yet fully assessed.

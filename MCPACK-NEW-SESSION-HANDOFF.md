@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Firecaller and Labyrinth source attribution after 3a2c6d78
+
+Thirteen answers are integrated for the two remaining Illager Invasion families:
+six source descriptions each plus Labyrinth underground placement. Both now have
+eight explicit attributes plus resolved biomes. Retire these supported answers.
+Four geometry answers remain, footprint and height for each assembly. No saved
+bounds observations exist; no new runtime was launched in this batch.
+Labyrinth's custom generation-stub filter Y <= 47, -40 surface projection offset
+and bury adaptation are explicitly attributed. Mob templates, no-liquid element
+scope, loot ownership and the empty natural monster override are preserved.
+
+Seven affected tests and builder checks pass. Inventory SHA-256:
+229401ae20ea01d07325fd0738b4fd13c851fd76c7729c0e18eadf24c5479a25.
+Registry fully assessed remains 95/410; nonregistry 40/40, total 135/450.
+315 families remain, including these two with geometry only. Resolve geometry
+through direct finite assembly derivation if adequate or the existing targeted
+gap runtime; do not add a simulator or repeat established descriptions.
+Final integration, acceptance, backed-up history consolidation and PR/main
+delivery remain open.
+
 #### Three Illager Invasion buildings assessed after 20900e85
 
 Twenty-four answers finish illager_fort, illusioner_tower and sorcerer_hut.
