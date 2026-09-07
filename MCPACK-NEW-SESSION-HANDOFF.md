@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS nexus assessed after d753ab21
+
+Seven entries integrated for six alternatives. Raw pig spawners are distinguished
+from selected quark:wraith weight5 and natural silverfish/wraith rules. Sculk
+chicken/item entities remain non-hostile declarations. A concrete baseline loot
+defect is preserved: nexus minecraft:rule uses output_nbt, while the pinned
+ProcessorRule codec reads block_entity_modifier and defaults to Passthrough.
+The declared nexus table exists but is not assigned by this rule. Targeted
+catalog/direct-edge check found no other assessed family requiring the same
+correction. No tuning or broad regression expansion. Existing dimensions reused.
+All85 focused checks pass (66.88s); only nexus/input identity changed.
+Total413/448 assessed;35 IDAS families/314 required entries remain. Lumber camp
+has8 entries including unresolved biome variants; other families retain the
+existing geometry survey. Quantify the next source/attribute batch and reuse
+prior findings. No new runtime or tool added.
+Details: evidence/item-8/sources/idas-nexus-assessment/README.md.
+Inventory SHA-256: 598519aa3eaf9cfdf36165de25ff6055688a2375051333824cac9dfbb6accb68.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS desert market assessed after 05c9d5c3
 
 Seven entries integrated for three alternatives. Authored guardvillagers:guard

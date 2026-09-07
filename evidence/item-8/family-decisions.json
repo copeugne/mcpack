@@ -75990,7 +75990,7 @@
       },
       "family_id": "idas:nexus",
       "name": "IDAS nexus",
-      "rationale": "Six single-template alternatives share the broad multi-lobed arrangement shown in the preserved full-template comparison. Material, barrel position, height and sculk detailing remain variants of this underground design. Preserve sculk dimensions 53 by 24 by 53 versus the other templates around 57 by 21 or 22 by 57 (prismarine width 58), and sculk authored chicken/item entities rather than declaring all variants entity-free. Each template has one central physical spawner with pig SpawnData and barrels without loot-table references. These raw values do not establish pig encounters or an unrewarded structure: the common nexus_processor declares barrel loot idas:chests/nexus/nexus and an Integrated API spawner randomizer referencing idas:nexus. Preserve the default template weight 2 and all five other weights 1. All are alternatives in one pool, not components of a six-part assembly or six independently counted families. The absolute -50 underground root and piece-bound silverfish/Quark wraith spawn overrides remain unchanged. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Six single-template alternatives share the broad multi-lobed arrangement shown in the preserved full-template comparison. Material, barrel position, height and sculk detailing remain variants of this underground design. Preserve sculk dimensions 53 by 24 by 53 versus the other templates around 57 by 21 or 22 by 57 (prismarine width 58), and sculk authored chicken/item entities rather than declaring all variants entity-free. Each template has one central physical spawner with pig SpawnData and barrels without loot-table references. These raw values do not establish pig encounters or an unrewarded structure: the common nexus_processor declares barrel loot idas:chests/nexus/nexus and an Integrated API spawner randomizer referencing idas:nexus. Preserve the default template weight 2 and all five other weights 1. All are alternatives in one pool, not components of a six-part assembly or six independently counted families. The absolute -50 underground root and piece-bound silverfish/Quark wraith spawn overrides remain unchanged. Canonical design relationships are resolved. Required attributes assessed. Declared output_nbt loot assignment is ineffective under the pinned vanilla codec; final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:nexus"
       ],
@@ -76084,6 +76084,113 @@
             "idas:nexus/nexus_white": 21
           },
           "basis": "Exact packaged template height for each independent alternative. Not burial depth or measured terrain relief."
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:chicken": [
+              "idas:nexus/nexus_sculk"
+            ],
+            "minecraft:item": [
+              "idas:nexus/nexus_sculk"
+            ]
+          },
+          "status": "Sources assessed; legacy loot assignment defect preserved and live quantities unmeasured.",
+          "template_ids": [
+            "idas:nexus/nexus",
+            "idas:nexus/nexus_blue",
+            "idas:nexus/nexus_prismarine",
+            "idas:nexus/nexus_red",
+            "idas:nexus/nexus_sculk",
+            "idas:nexus/nexus_white"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "Six independent alternatives each contain an ordinary spawner with raw pig SpawnData; selected nexus_processor instead declares Integrated API randomization using idas:nexus, whose sole listed entity is quark:wraith weight5. Sculk additionally authors chicken and item entities. No missing components, unresolved template entities or generation markers. Natural silverfish/wraith overrides are separate. These source selections are not observed populations."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "Sources assessed; legacy loot assignment defect preserved and live quantities unmeasured.",
+          "template_ids": [
+            "idas:nexus/nexus",
+            "idas:nexus/nexus_blue",
+            "idas:nexus/nexus_prismarine",
+            "idas:nexus/nexus_red",
+            "idas:nexus/nexus_sculk",
+            "idas:nexus/nexus_white"
+          ],
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "No literal template loot-table references. nexus_processor declares output_nbt.LootTable=idas:chests/nexus/nexus on a minecraft:rule, and that table definition exists. However the pinned ProcessorRule codec reads block_entity_modifier, not output_nbt, defaulting to Passthrough, so this legacy field does not assign the declared loot table. Record ineffective processor assignment as a baseline defect, not verified barrel loot or proof that all fixed contents are empty.",
+          "ineffective_declared_source": "idas:chests/nexus/nexus"
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:pig",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:nexus/nexus",
+                "idas:nexus/nexus_blue",
+                "idas:nexus/nexus_prismarine",
+                "idas:nexus/nexus_red",
+                "idas:nexus/nexus_sculk",
+                "idas:nexus/nexus_white"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Sources assessed; legacy loot assignment defect preserved and live quantities unmeasured.",
+          "template_ids": [
+            "idas:nexus/nexus",
+            "idas:nexus/nexus_blue",
+            "idas:nexus/nexus_prismarine",
+            "idas:nexus/nexus_red",
+            "idas:nexus/nexus_sculk",
+            "idas:nexus/nexus_white"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "One ordinary raw-pig spawner per template alternative; no trial spawner. All select integrated_api:spawner_randomizing_processor with idas:nexus list: quark:wraith weight5. Settings delay20,min200,max800,count4,nearby6,player range16,spawn range4,block-light0..7. Existing manager inspection preserves missing-list fallback, unresolved-entry filtering, zero-total/null replacement and exception-to-pig branches; source configuration is not live spawn success.",
+          "selected_spawner_mobs": {
+            "quark:wraith": 5
+          }
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "Processor-selected wraith is an authored spawner source, distinct from the raw pig template default. Root piece-bound natural overrides select silverfish and quark:wraith, each weight3 and group1..4. Sculk chicken and item entities are not hostile enemy declarations. No measured encounter population or spawning success is claimed."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "Underground chamber design with ordinary spawner randomization declaring wraiths and natural silverfish/wraith overrides. The apparent barrel reward assignment uses unsupported legacy rule NBT and is ineffective by source inspection. Preserve hostile potential and the reward-assignment defect without inventing a difficulty tier or treating raw pig as the intended encounter."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "Broad multi-lobed underground chamber alternatives with central spawner, barrels, material variation and sculk detail. These offer local interior cues but no surface discovery marker is established. No visible entrance, sightline distance or generated exposure measurement."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-nexus-assessment/README.md",
+          "assessment": "Underground intent: generic_structure root, absolute startY-50, underground_structures step, size1, terrain_adaptation none, no heightmap projection. Six rigid single-template alternatives have preserved nominal dimensions. Fixed start height does not prove exact burial beneath every terrain column or realized occupied volume."
         }
       }
     },
