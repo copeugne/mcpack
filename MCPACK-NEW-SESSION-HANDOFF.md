@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Select the twelve templates belonging to the eight remaining canonical records
+in the existing renderer. Compare abandoned-house and cottage alternatives,
+brickhouse and windmill/path components, camp, guild, church, fort and stump.
+This fixed selection addresses the remaining design comparisons; no new
+measurement system is needed. Canonical backlog remains 8 until decisions pass.
+
 Inventory matches a591b248 and reproduces exactly. Canonical backlog is 8, listed
 below. All 887 roots remain in 426 working groups with full variants and derived
 attributes unchanged. Remaining house and ruin comparisons come next. Attributes,
