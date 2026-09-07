@@ -78540,7 +78540,7 @@
       "structure_ids": [
         "aether:bronze_dungeon"
       ],
-      "rationale": "One room-and-tunnel dungeon assembly. The entry invokes BronzeDungeonBuilder, which binds boss_room, chest_room, lobby, square_tunnel, entrance and end_corridor through its room, connection and surface-tunnel paths. These six template roles remain components of one design. The boss template authors a Slider; chest markers select ordinary chests or mimic blocks. Its connected tunnels and rooms differ from the Silver multi-floor building, Gold island and Brass rotated-room assembly. Canonical design relationships and selected component roles are resolved. Successful assembly, effective placement, encounter behavior and complete gameplay attributes remain unproven; source bindings are not generated-world observations.",
+      "rationale": "One room-and-tunnel dungeon assembly with six selected template roles, authored Slider and chest/mimic marker choices. Its source-derived architectural footprint fits a conservative211x211 envelope including the exit corridor; underground templates are14 high, with conditional terrain-dependent surface ruins and flower decoration separately described. All Item8 descriptions are assessed without inferring measured assembly or encounter success. Components remain one family, distinct from Silver, Gold and Brass designs.",
       "start_pool": null,
       "generation_settings": {
         "type": "aether:bronze_dungeon"
@@ -78617,7 +78617,9 @@
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
         "evidence/item-8/sources/aether-trapped-block/identities.json": "729a601cbf86cbb65c8e4f7dd16842cc36dfa6ddecf1e86de83b0a00578750c5",
-        "evidence/item-8/sources/aether-trap-bindings/identities.json": "f2815a15dad2b0e62e2d2db44ce5e27a86476a5ed269a49f186bb18ffa8b1261"
+        "evidence/item-8/sources/aether-trap-bindings/identities.json": "f2815a15dad2b0e62e2d2db44ce5e27a86476a5ed269a49f186bb18ffa8b1261",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/missing-template-code/identities.json": "3f237bac34103b26e4d8576c0c27eb40716ff7408074a4f6ddf38f4f1fcfe8b5"
       },
       "attributes": {
         "intended_hostility": {
@@ -78657,9 +78659,41 @@
         "underground_surface_classification": {
           "source": "Terrain-covered room candidates with attempted horizontal exit and conditional surface-ruin component.",
           "scope": "Room coverage uses sampled generator base columns. End-tunnel selection can retain an unsuccessful attempt, and the surface component can be omitted. Final terrain-relative placement remains unobserved."
+        },
+        "dimension": {
+          "value": [
+            "aether:the_aether"
+          ],
+          "basis": "Effective required biome set intersects only the captured Aether dimension. The three Aether dungeon sets each resolve15 biomes; Brass resolves2, without missing required or unresolved biome references. This identifies dimension eligibility, not successful generation.",
+          "source": "evidence/item-8/sources/structure-inputs.json",
+          "dimension_membership_source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        },
+        "approximate_footprint": {
+          "architectural_xz_envelope_blocks": [
+            211,
+            211
+          ],
+          "basis": "Conservative source-derived A+[-105,105] bound on both axes, including room connections and retained end-corridor attempt. Propagated room origins are limited by three chunks from original context; boss anchor may move one chunk. Exit origins advance one block and stop after reaching a100-coordinate difference, with up to5 template blocks beyond. Exact derivation is in the source README.",
+          "scope": "Enclosing bound, not a typical size, occupied area or observed layout. Surface columns are inset within a selected room; the conditional flower patch is separate decoration.",
+          "source": "evidence/item-8/sources/aether-bronze/README.md#bronze-geometry-assessment"
+        },
+        "approximate_vertical_size": {
+          "underground_template_y_blocks": 14,
+          "basis": "Boss A.y..A.y+13; other templates start at A.y+2, with lobby at most12 high. All room propagation preserves minimum Y after the initial2-block offset.",
+          "surface_component": "If selected room B has B.maxY+1<=sampled center terrain H, its saved surface box spans B.maxY+1..H+4. Union with underground architecture has height max(14,H+5-A.y). Otherwise no surface box is added.",
+          "occupied_write_limit": "Surface columns use local terrain h, scanning from piece minY toward h+k and capping at h+k, k in[-2,1]. Local heights can place writes outside saved bounds. Flower patch is separate; no fixed occupied whole-family height is claimed.",
+          "source": "evidence/item-8/sources/aether-bronze/README.md#bronze-geometry-assessment"
         }
       },
-      "processor_effects": "Shared AetherTemplateStructurePiece callback is bound to StructurePlaceSettings.addProcessor for each configured list entry. BossRoomProcessor adds Dungeon metadata to authored entity NBT; DoubleDropsProcessor sets DOUBLE_DROPS=true where supported while preserving position and NBT. This is source attribution, not proof of effective world placement."
+      "processor_effects": "Shared AetherTemplateStructurePiece callback is bound to StructurePlaceSettings.addProcessor for each configured list entry. BossRoomProcessor adds Dungeon metadata to authored entity NBT; DoubleDropsProcessor sets DOUBLE_DROPS=true where supported while preserving position and NBT. This is source attribution, not proof of effective world placement.",
+      "processor_inspection": {
+        "archive": "aether-1.21.1-1.5.10-neoforge.jar",
+        "archive_sha256": "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8",
+        "members": {
+          "com/aetherteam/aether/world/BlockLogicUtil.class": "6867de707e469d8b7fcd3795fa4d7ae8c904eb939bb282166b817c67ba985a70"
+        },
+        "basis": "Direct tunnelFromEvenSquareRoom geometry inspection, reused from the pinned Aether artifact. See Bronze geometry assessment."
+      }
     },
     {
       "family_id": "aether:gold_dungeon",
@@ -78667,7 +78701,7 @@
       "structure_ids": [
         "aether:gold_dungeon"
       ],
-      "rationale": "One dungeon-island design whose generator selects island, boss_room, stub and tunnel components. The boss template authors a Sun Spirit. Stub caves, tunnels, island processors and foliage remain parts or treatments of that island assembly. Its island-and-chamber organization differs from Bronze connected rooms, Silver multi-floor architecture and Brass rotated rooms. Canonical design relationships and selected component roles are resolved. Successful assembly, effective placement, encounter behavior and complete gameplay attributes remain unproven; source bindings are not generated-world observations.",
+      "rationale": "One dungeon-island design assembled from island, boss_room, stub and tunnel components, with cave carving and foliage. The boss template authors a Sun Spirit and its marker binds the gold reward table. Source-derived non-foliage envelope60x54x60 includes the55x43x55 template envelope and cave carving; foliage is separate. All Item8 descriptive attributes are assessed without inferring observed assembly or combat success. Pieces, processors and foliage are not separate families.",
       "start_pool": null,
       "generation_settings": {
         "type": "aether:gold_dungeon"
@@ -78752,7 +78786,97 @@
         "evidence/item-8/sources/aether-custom-entry/identities.json": "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954",
         "evidence/item-8/sources/aether-provider/identities.json": "917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee",
         "evidence/item-8/sources/aether-common-hooks/identities.json": "9c3b21c8bf2eab73550acc646a9c74081c15daac08c941367f298adf0bb8c50f",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/aether-placement/identities.json": "14d7c34fe022eaf47cfa324ad56646b2bf4e736b4cfc0a249ddd94b8d1408113",
+        "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
+        "evidence/item-8/sources/missing-template-code/identities.json": "3f237bac34103b26e4d8576c0c27eb40716ff7408074a4f6ddf38f4f1fcfe8b5"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "aether:the_aether"
+          ],
+          "basis": "Effective required biome set intersects only the captured Aether dimension. The three Aether dungeon sets each resolve15 biomes; Brass resolves2, without missing required or unresolved biome references. This identifies dimension eligibility, not successful generation.",
+          "source": "evidence/item-8/sources/structure-inputs.json",
+          "dimension_membership_source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        },
+        "underground_surface_classification": {
+          "value": "Dungeon chamber embedded in a generated island, with a surface-facing tunnel.",
+          "basis": "Initial anchor is max(WORLD_SURFACE_WG base height minus20,40+nextInt(60)). Assembly compares the tunnel exit terrain height with tunnel origin Y and shifts every piece upward when the difference is positive. Initial anchor Y is not final placement Y.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Island exterior and golden-oak foliage are potential landmarks; the boss chamber is enclosed.",
+          "basis": "GoldDungeonStructure assembles island/stub templates and a chamber/tunnel, then attempts configured golden-oak placement on island and stub surfaces. Terrain, foliage success and viewpoint affect visibility. No measured discovery distance or guaranteed exposed entrance is claimed.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "intended_hostility": {
+          "value": "Authored Sun Spirit boss dungeon.",
+          "basis": "The selected boss_room template contains one aether:sun_spirit with BossFight=0. This identifies encounter intent, not immediate aggression or observed activation.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "mob_source": {
+          "authored": "One aether:sun_spirit entity in boss_room; the other three selected templates have no entities. GoldBossRoom enables entity finalization.",
+          "natural": "All twelve listed vanilla/Aether categories have empty full-box spawn overrides. This does not exclude external arrivals.",
+          "scope": "Template and structure source attribution, not observed live population or combat behavior.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Sun Spirit from the boss-room template, rather than a natural-spawn list.",
+          "natural": "The structure definition supplies empty full-box lists for all twelve listed categories. Entity persistence and external handlers are not measured by these sources.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "generated_spawners": {
+          "ordinary_and_trial": "No ordinary or trial spawner in the four selected template palettes or the inspected Gold piece marker paths.",
+          "processor_scope": "Selected rules alter hellfire stone and holystone; surface_rule selects tagged dirt top material, vertical_gradient changes underlying holystone to dirt, no_replace preserves existing air, double_drops changes a state property, and boss_room supplies dungeon metadata. These paths do not introduce a conventional spawner.",
+          "other_sources": "The authored Sun Spirit is an entity, not a spawner block.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "loot_table_source": {
+          "marker_tables": [
+            "aether:chests/dungeon/gold/gold_dungeon_reward"
+          ],
+          "basis": "GoldBossRoom Treasure Chest marker assigns GOLD_DUNGEON_REWARD with nextLong seed to a RandomizableContainerBlockEntity below when present, sets dungeon type aether:gold, then clears the marker. AetherLoot binds the exact table ID.",
+          "template_detail": "The template chest has empty Items, Locked=1 and initial Kind=aether:bronze; the marker changes its dungeon type to gold. No direct template LootTable reference or fixed container contents.",
+          "scope": "Source binding, not observed loot yield, successful container placement or treasure accessibility.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-content-and-placement-assessment"
+        },
+        "approximate_footprint": {
+          "non_foliage_xz_envelope_blocks": [
+            60,
+            60
+          ],
+          "template_xz_envelope_blocks": [
+            55,
+            55
+          ],
+          "central_island_xz_blocks": [
+            38,
+            38
+          ],
+          "basis": "Direct derivation of all selected island/stub/chamber/tunnel template boxes and GoldStubCave carving. Relative to island center, template boxes fit X/Z[-27,27]; cave candidate loops fit X/Z[-30,29]. These conservative envelopes are not occupied area, an observed example or a typical-size estimate.",
+          "extension": "Golden-oak foliage is a separate surface extension, not included in these bounds.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment"
+        },
+        "approximate_vertical_size": {
+          "non_foliage_y_envelope_blocks": 54,
+          "template_y_blocks": 43,
+          "basis": "Central island spans centerY[-21,21]; stubs, boss and tunnel fit that height. Cave candidate loops span centerY[-24,29]; one-block-below vertical-gradient writes also fit this envelope. The final terrain adjustment translates all pieces equally. Conservative source bounds, not measured occupied height.",
+          "extension": "Golden-oak foliage above surfaces remains separate.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#gold-geometry-assessment"
+        }
+      },
+      "processor_inspection": {
+        "archive": "aether-1.21.1-1.5.10-neoforge.jar",
+        "archive_sha256": "a999a9265eb550a46a0f8eedfee7c3c75371d7f6cf34b7c09ff800e48633e9f8",
+        "members": {
+          "com/aetherteam/aether/world/processor/SurfaceRuleProcessor.class": "82235a3295344dabb87ce5751a83bb4a3f5178f411b41255be1fb276d00c9b4d",
+          "com/aetherteam/aether/world/processor/VerticalGradientProcessor.class": "c34fd14bc5ef0e4e92851cd327a1875e5cb203a8c930e864c5335d1308c1f75b",
+          "com/aetherteam/aether/world/processor/NoReplaceProcessor.class": "b21f493103700968885f281eaf48f421ecfec13425731cd8d269e5f7bf01dab8",
+          "com/aetherteam/aether/world/BlockLogicUtil.class": "6867de707e469d8b7fcd3795fa4d7ae8c904eb939bb282166b817c67ba985a70"
+        },
+        "basis": "Direct pinned-javap process-method inspection; see Gold content and placement assessment. Existing captured piece, boss metadata and double-drops sources are reused. BlockLogicUtil.tunnelFromOddSquareRoom supplies the geometry connection offset; see Gold geometry assessment."
       }
     },
     {
@@ -78823,7 +78947,7 @@
       "structure_ids": [
         "aether:silver_dungeon"
       ],
-      "rationale": "One multi-floor dungeon building assembled from rear, skeleton and boss_room, with the Silver builder supplying floor, wall, doors, staircases and chest-room components. The boss template authors a Valkyrie Queen. These ten selected templates belong to one building design; test_door is an unselected packaged component in the inspected paths. Cloud bedding is supporting terrain, not a separate authored family. This assembly differs from Bronze room/tunnel generation, Gold island generation and Brass rotated rooms. Canonical design relationships and selected component roles are resolved. Successful assembly, effective placement, encounter behavior and complete gameplay attributes remain unproven; source bindings are not generated-world observations.",
+      "rationale": "One multi-floor temple assembled from rear/skeleton shells, boss room and internal floor/wall/door/stair/chest components. Ten selected templates define one architectural design; test_door is unselected. Source-derived32x30x57 architecture is distinguished from stochastic cloud bedding and live placement. Its queen, trapped-floor Valkyries and chest/mimic selection remain separate encounter sources within this family. Distinct from Bronze room/tunnel, Gold island and Brass quadrant assemblies.",
       "start_pool": null,
       "generation_settings": {
         "type": "aether:silver_dungeon"
@@ -78899,7 +79023,79 @@
         "evidence/item-8/sources/aether-custom-entry/identities.json": "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954",
         "evidence/item-8/sources/aether-provider/identities.json": "917c3ffbb199539bfbe375f4a7381d4498f327a2ce9d5cdc28ad01d978f604ee",
         "evidence/item-8/sources/aether-common-hooks/identities.json": "9c3b21c8bf2eab73550acc646a9c74081c15daac08c941367f298adf0bb8c50f",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/aether-placement/identities.json": "14d7c34fe022eaf47cfa324ad56646b2bf4e736b4cfc0a249ddd94b8d1408113",
+        "evidence/item-8/sources/aether-piece-binding/identities.json": "659938555001e750eb6f21b84c1b797f9641783d99775916315cab9f68dbb48d",
+        "evidence/item-8/sources/aether-trapped-block/identities.json": "729a601cbf86cbb65c8e4f7dd16842cc36dfa6ddecf1e86de83b0a00578750c5",
+        "evidence/item-8/sources/aether-trap-bindings/identities.json": "f2815a15dad2b0e62e2d2db44ce5e27a86476a5ed269a49f186bb18ffa8b1261"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "aether:the_aether"
+          ],
+          "basis": "Effective required biome set intersects only the captured Aether dimension. The three Aether dungeon sets each resolve15 biomes; Brass resolves2, without missing required or unresolved biome references. This identifies dimension eligibility, not successful generation.",
+          "source": "evidence/item-8/sources/structure-inputs.json",
+          "dimension_membership_source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        },
+        "approximate_footprint": {
+          "architectural_xz_blocks": [
+            32,
+            57
+          ],
+          "basis": "Source-derived rear shell32x30x31 and skeleton shell32x27x26 placed consecutively along rotated SOUTH. Boss room and the3x3x3 interior grid remain inside this shell union. Horizontal axes swap under quarter turns. Exact coordinate derivation is in the source README.",
+          "extension": "Random cloud bedding extends independently beyond the architectural box; this is not occupied cloud area or a saved whole-start maximum.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "approximate_vertical_size": {
+          "architectural_y_blocks": 30,
+          "basis": "Rear shell spans anchorY..Y+29; skeleton spansY..Y+26. Boss room startsY+3 and is17 high; grid levels startY+5,+10,+15 and even a14-high tall staircase ends byY+28. These components fit inside30 architectural blocks.",
+          "extension": "Cloud bedding remains separate from architectural height. No generated-world geometry is claimed.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Surface-adjacent or elevated temple on cloud bedding",
+          "basis": "Let h=WORLD_SURFACE_WG base height minus2. On nextInt(5)<3, anchor starts at h+18 and adds nextInt(128-(h+18)) only when h+18<128; otherwise it stays h+18. The other branch uses max(h,35+nextInt(70)). Thus maxY128 is not an unconditional cap.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Exposed temple shell and cloud support provide potential visual landmarks.",
+          "basis": "Source placement is surface-adjacent/elevated, with a32x57 architectural plan and30-block shell height. Terrain and viewer position can obstruct it; there is no measured sightline or discovery distance.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "intended_hostility": {
+          "value": "Authored dungeon challenge with Valkyrie Queen, triggered Valkyries and chest-mimic possibilities.",
+          "basis": "The boss template authors aether:valkyrie_queen. Selected floor rules create angelic trap blocks bound to VALKYRIE; chest markers choose chest or CHEST_MIMIC. These sources do not mean every entity attacks immediately or every encounter is activated.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "mob_source": {
+          "authored": "One queen entity in the selected boss_room template. Floor-created trapped_angelic_stone and trapped_light_angelic_stone use Aether TrappedBlock with VALKYRIE suppliers. Chest/mimic marker selection provides a separate interaction/break-triggered MIMIC source.",
+          "natural": "All twelve vanilla/Aether categories have empty full-bounding-box spawn overrides. Those structure-level natural-spawn rules do not suppress authored entities or prove no external arrivals.",
+          "scope": "Possible encounter sources, not observed population, aggression state or successful event-triggered spawning.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "generated_spawners": {
+          "ordinary_and_trial": "No ordinary or trial spawner block in the ten selected templates, selected processor outputs or inspected marker paths.",
+          "other_sources": "Queen entity, Valkyrie trap blocks and chest mimic blocks are distinct from conventional spawners.",
+          "basis": "Template palettes and selected silver_room, silver_floor, silver_boss_room lists, plus SilverDungeonRoom/SilverBossRoom markers. test_door is unselected and does not add a family or a generator path.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Template queen, player-triggered Valkyrie suppliers and interaction/break-triggered mimics. BossRoom enables entity finalization and Dungeon tracking; afterPlace updates queen dungeon bounds when it finds a queen.",
+          "natural": "Empty full-box overrides for the twelve listed categories; actual entity behavior and external spawn handlers remain outside this source inventory.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        },
+        "loot_table_source": {
+          "marker_tables": [
+            "aether:chests/dungeon/silver/silver_dungeon",
+            "aether:chests/dungeon/silver/silver_dungeon_reward"
+          ],
+          "ordinary_marker": "Chest marker clears itself and selects a random X/Z within the room box, reverting to marker position if outside the supplied clipping box. nextInt(5)>1 selects ordinary chest, otherwise CHEST_MIMIC. It passes SILVER_DUNGEON to inherited createChest and discards success. A random-facing setValue result is also discarded, so random orientation is not claimed.",
+          "reward_marker": "Treasure Chest sets SILVER_DUNGEON_REWARD on a randomizable container below when present, assigns dungeon type aether:silver and clears the marker.",
+          "scope": "No direct loot-table references or fixed container Items in the selected templates; the sources are marker-assigned. Mimic blocks are encounter sources, not guaranteed loot-bearing ordinary chests. No reward yield, treasure accessibility or successful generation claim.",
+          "source": "evidence/item-8/sources/aether-provider/README.md#silver-family-assessment"
+        }
       }
     },
     {
@@ -78944,7 +79140,7 @@
       "structure_ids": [
         "deep_aether:brass_dungeon"
       ],
-      "rationale": "One dungeon assembly with rotated room selections, upper room parts and a door on cloud bedding. The generator selects five numbered room alternatives and their boss forms through the same room-selection path; boss templates author eots_controller. All twelve packaged templates are components of this assembly. Its own Brass piece namespace and room organization distinguish it from Aether Bronze room-and-tunnel generation; bronze_boss_room processor naming does not make it an alias. Shared cloud support does not merge it with the separate Silver building. Canonical design relationships and selected component roles are resolved. Successful assembly, effective placement, encounter behavior and complete gameplay attributes remain unproven; source bindings are not generated-world observations.",
+      "rationale": "One elevated Brass assembly with four rotated lower rooms, matching upper parts, one door and cloud bedding. Five room designs and boss alternatives share the same architectural dimensions; one selected quadrant uses its boss form. All twelve templates are components, not families. Source-derived62x52x62 architecture is distinguished from stochastic cloud support and live generation. Its own generator and room organization remain separate from Aether Bronze, Silver and Gold designs.",
       "start_pool": null,
       "generation_settings": {
         "type": "deep_aether:brass_dungeon"
@@ -79014,7 +79210,89 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/deep-aether-provider/identities.json": "71c441da5bd3213d84b0ce9f1f38f098979d158b3f16146397428b99e958d5c4",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/aether-placement/identities.json": "14d7c34fe022eaf47cfa324ad56646b2bf4e736b4cfc0a249ddd94b8d1408113",
+        "evidence/item-8/sources/aether-trapped-block/identities.json": "729a601cbf86cbb65c8e4f7dd16842cc36dfa6ddecf1e86de83b0a00578750c5",
+        "evidence/item-8/sources/aether-custom-entry/identities.json": "e33ddae6869cc516beafc2eff72976b2db2ee6d7602443d2af389c2778b01954"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "aether:the_aether"
+          ],
+          "basis": "Effective required biome set intersects only the captured Aether dimension. The three Aether dungeon sets each resolve15 biomes; Brass resolves2, without missing required or unresolved biome references. This identifies dimension eligibility, not successful generation.",
+          "source": "evidence/item-8/sources/structure-inputs.json",
+          "dimension_membership_source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json"
+        },
+        "approximate_footprint": {
+          "architectural_xz_blocks": [
+            62,
+            62
+          ],
+          "basis": "Source-derived union of four31x31 room quadrants around pivot(31,0,0), with the one-block relative offsets in generatePieces. The31x31 door is inset by four blocks along rotated EAST and stays within this union. Five random room designs share identical dimensions. Detailed inclusive-coordinate derivation is in the source README.",
+          "extension": "Two stochastic cloud beds extend beyond the architectural footprint; no occupied-cloud area or observed family maximum is asserted.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "approximate_vertical_size": {
+          "architectural_y_blocks": 52,
+          "basis": "Each lower room is32 blocks high at anchor Y; its upper part is20 high at Y+32. Union Y..Y+51 gives52 blocks. Door height32 does not enlarge it.",
+          "extension": "Cloud support is generated separately below/around the building. This is source-derived architectural size, not saved whole-start or occupied volume.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Elevated building on cloud bedding",
+          "basis": "findGenerationPoint uses minY+nextInt(rangeY), frozen184+nextInt(5), hence anchor184..188. It does not project to a surface heightmap. generatePieces adds four rotated room/upper-part pairs, a door and two cloud beds.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Exposed elevated architecture and cloud mass, potentially visible from surrounding airspace.",
+          "basis": "Fixed high-altitude architecture rather than a buried structure. Terrain, weather and viewer position can obstruct it; no live sightline or discovery-distance measurement is claimed.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "intended_hostility": {
+          "value": "Authored boss encounter with conditional cockatrice spawners and baby-zephyr traps.",
+          "basis": "One selected boss-form room contains deep_aether:eots_controller; room_3 alternatives contain cockatrice spawners. Selected processor rules can turn locked skyroot planks into trapped planks bound to BABY_ZEPHYR.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "mob_source": {
+          "authored": "Boss template deep_aether:eots_controller; start() invokes spawnSegments() for its segmented encounter. Each selected room_3 or room_3_boss has two ordinary cockatrice spawner inputs. DABlocks trapped_skyroot_planks supplier selects BABY_ZEPHYR via the inherited player-triggered TrappedBlock path.",
+          "natural": "All twelve declared vanilla/Aether spawn categories have empty full-bounding-box overrides. This is structure-level natural-spawn suppression, not absence of authored or externally triggered enemies.",
+          "scope": "Source attribution, not successful encounter activation, segment counts or observed enemy population.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "generated_spawners": {
+          "ordinary": "Two minecraft:spawner blocks in each selected brass_dungeon_room_3 or brass_dungeon_room_3_boss; initial SpawnData is aether:cockatrice and SpawnPotentials is empty. Other numbered room alternatives have none.",
+          "processors": "Selected bronze_boss_room rules do not replace spawners. Trapped planks and the boss controller are separate entity sources, not additional conventional spawner blocks.",
+          "trial": "No trial-spawner blocks in the twelve selected templates or selected processor outputs.",
+          "scope": "Component possibilities, not a guarantee room_3 occurs or either block successfully spawns.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Controller/segments, cockatrice spawners and triggered baby-zephyr traps are authored sources. Boss-room finalization is enabled; the boss-room processor attaches Dungeon tracking bounds to entity NBT.",
+          "natural": "Empty full-box overrides suppress listed natural-spawn categories inside the structure. Movement from outside and external event behavior are not measured by this inventory.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        },
+        "loot_table_source": {
+          "direct_tables": [
+            "deep_aether:chests/dungeon/brass/brass_dungeon_loot",
+            "deep_aether:chests/dungeon/brass/brass_dungeon_combinder_loot",
+            "deep_aether:chests/dungeon/brass/brass_dungeon_reward"
+          ],
+          "basis": "Direct chest/treasure-chest NBT in the twelve selected templates. Preserve the packaged spelling combinder. No nonempty fixed container Items were found in these templates.",
+          "other_content": "Flower/squash markers write vegetation; selected double_drops processor marks states that support that property. Neither is an additional chest table.",
+          "scope": "Authored loot sources, not measured reward yield, boss-clearance behavior or successful access to treasure chests.",
+          "source": "evidence/item-8/sources/deep-aether-provider/README.md#brass-family-assessment"
+        }
+      },
+      "processor_inspection": {
+        "archive": "deep_aether-1.21.1-1.1.5.1.jar",
+        "archive_sha256": "0f55ad970715bb933344e785b2c35a7354dfba25ffd426c0b68921d08bbe0ce5",
+        "members": {
+          "io/github/razordevs/deep_aether/init/DABlocks.class": "2484b36f261408301c03155abe5a17ed67ce5b50315e74a92482164443af8016",
+          "io/github/razordevs/deep_aether/entity/living/boss/eots/EOTSController.class": "975b6e7952e957b6b94bdb7ddccc3621e5635b04af21c973622c086a3fe3dc5e"
+        },
+        "basis": "Direct pinned-javap inspection of DABlocks bootstrap248/lambda$static$218 and EOTSController start/spawnSegments; see Brass family assessment README. Existing captured Brass generation and inherited trap sources are reused."
       }
     },
     {

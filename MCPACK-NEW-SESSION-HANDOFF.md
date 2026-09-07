@@ -7,6 +7,104 @@
 ### Continuation update - 2026-09-07
 
 
+#### Bronze geometry assessed after cbacb732
+
+Bronze's two outstanding sizes resolved from preserved source: conservative
+211x211 architectural bound including end corridor,14-block underground height,
+and explicit conditional surface-height formula. Surface column writes use local
+terrain and may escape saved Y bounds; flower decoration is separate. No typical
+layout or occupied whole-world maximum is claimed. Exact origin, connection,
+post-addition cutoff and vertical derivation are in the Bronze geometry README.
+No capture/tool added. All85 focused tests pass (58.91s); only Bronze/input identity
+changed. Registry327/408,nonregistry40/40,total367/448 assessed,81 remain;
+721 outstanding explicit attribute slots. Aether and DeepAether are assessed.
+Remaining families: IDAS38,Repurposed17,vanilla13,BetterEnd9,CTOV2,
+IntegratedStronghold/Villages2. Quantify and inspect existing evidence for the next
+provider batch; do not reopen completed Aether work without a concrete defect.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+92737b4b1a3ed9fba30af17fdf2666ef40287157cc7e0bcfd641a37601f8483d.
+
+
+#### Gold geometry assessed after 087ed897
+
+Two remaining Gold sizes resolved by direct coordinate derivation. All templates
+fit55x43x55; cave candidate loops and one-block-below processor extension fit
+60x54x60 (X,Y,Z), with foliage separate. These are conservative source envelopes,
+not measured or typical occupied sizes. Exact four-rotation tunnel table and
+carving derivation are in the Gold geometry assessment source README.
+No runtime/tool added. All85 focused tests pass (58.70s). Only Gold/input identity
+changed. Registry326/408,nonregistry40/40,total366/448 assessed,82 remain;
+723 outstanding explicit attribute slots. Next quantified batch: Bronze one
+family,two sizes. Existing Bronze builder/template/surface-ruin captures are
+available; investigate their bounds before deciding whether a capture is needed.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+2024561ceb15eb9058c07706b39514ccdf9e4ebd66de6373574f9c1d4693968d.
+
+
+#### Gold content and placement after 04a6c457
+
+One family, seven of nine outstanding attributes integrated from pinned templates,
+Gold pieces, placement and processor sources. The template chest starts with
+bronze Kind but its marker assigns gold type and the exact gold reward table.
+Sun Spirit authorship, empty natural-spawn overrides, source spawner attribution,
+placement and discoverability are recorded. No runtime or tool added.
+All85 focused tests pass (58.41s). Only Gold and input identities changed.
+Counts remain365/448 assessed,83 families remaining; outstanding explicit
+attribute slots fall732 to725. Gold two sizes and Bronze two sizes remain.
+Before any capture, finish direct geometry inspection: island38x43x38,
+stub15-cube at radius16.8..<19.8, chamber23x9x28, tunnel7x5x16.
+Chamber connection uses tunnelFromOddSquareRoom, terrain query uses
+ tunnelFromEvenSquareRoom. Eighteen cave point boxes do not bound actual carving.
+Whole-family geometry must account for those paths and foliage separately.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+003f5fd6c7ae40f40f1ac40f496abbe52e545041670f99f7ec29a4b2e19cc27c.
+
+
+#### Silver assessed after c2412503
+
+One family,nine outstanding attributes integrated from existing pinned Silver
+sources, templates, selected processors and trap/loot bindings. Architectural
+size32x30x57 derives from consecutive fixed shells and bounded interior grid;
+cloud support is separate. Exact derivation and source limits are in
+ evidence/item-8/sources/aether-provider/README.md, Silver family assessment.
+Queen, Valkyrie trap suppliers, chest/mimic marker selection and two marker loot
+tables are distinguished. maxY128 is not an unconditional cap; discarded facing
+setValue is not claimed as randomized chest orientation. No runtime/tool added.
+All85 focused tests pass (58.90s); only Silver/input identity changed, preserving
+membership, biome constraints and observations. Registry325/408,nonregistry40/40,
+total365/448 assessed,83 remaining. Next Aether work: Bronze two sizes and Gold
+nine attributes (11 total). Reuse existing sources before any capture or runner
+extension. Final integration, acceptance, backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+ffb13a2c8da8e2ffb2d6b31d16b37ff828bf2d1101dfcdb150ed37b88ce301b8.
+
+
+#### Brass assessed and Aether dimensions integrated after 2dac361f
+
+Quantified Aether/DeepAether batch: four families,33 explicit attributes initially
+remaining, no retained geometry observations. Existing sources resolve Brass's
+fixed architecture directly:62x52x62 with stochastic cloud support separate.
+Exact pivot/quadrant/template derivation is in evidence/item-8/sources/
+deep-aether-provider/README.md, Brass family assessment. No runtime capture or
+new measurement tool was needed. Cockatrice spawners, controller/segments and
+BABY_ZEPHYR trapped-plank supplier are attributed; two exact direct class members
+are pinned. Three chest-table IDs and full-box natural-spawn suppression remain
+source-scoped. All ten Brass attributes plus the other three Aether dimensions
+are integrated. Only four families/input identity changed; membership, biome
+constraints and retained observations are unchanged. All85 focused tests pass
+(59.48s). Registry324/408,nonregistry40/40,total364/448 assessed,84 remaining.
+Next Aether work: Bronze two sizes, Silver nine attributes, Gold nine attributes
+(20 total). Reuse captures before additional investigation; the existing gap
+runner is Overworld-only and has not been modified or run for Aether. Check
+source derivation sufficiency before extending it. Final integration, acceptance,
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+a2dab7bcf354cb83849081907a5792f58885bfb9f42f3d6bd77639e2badd4100.
+
+
 #### Stronghold geometry finished after 39515832
 
 Declared seed42 one-target capture passed readiness, correlated flush, clean
