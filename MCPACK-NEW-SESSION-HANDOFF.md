@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Five IDAS records are reconciled using 84aefdf8 views and complete contents.
+Desert, jungle and plains statues are distinct designs; den, desert camp, market
+and lumber-camp differences remain variants. Stored container contents are not
+declared empty merely because loot-table references are absent. Full variants
+are preserved. The focused IDAS case and scoped checks pass. Backlog: 50, all
+IDAS. Coverage groups: 425. Inventory refresh follows. Required attributes,
+33 nonregistry contributions and final review/main delivery remain open.
+
 Next IDAS comparison selects all 23 templates for ancient_statue, animal_den,
 desert_camp, desert_market and lumber_camp with the existing renderer. Similar
 envelopes do not prove identical architecture; statues have materially different
