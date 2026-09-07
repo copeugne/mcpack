@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed ancient city assessed after 24897d14
+
+Seven remaining entries integrated for three variants/173 templates. Ocean
+contains authored drowned/guardian, Nether ghast, End non-mob end crystals.
+End endermite and Nether magma-cube ordinary spawner lists each use weight100;
+natural overrides remain separate. Six literal chest tables plus ocean archaeology
+are defined. Placement and qualitative discoverability preserve variant differences.
+Existing geometry reused; no runtime or tool added. All 85 focused checks pass
+(67.59s); only ancient_city and input identity changed. Total409/448 assessed;
+39 families/350 required entries remain: IDAS38/343, Repurposed village1/7.
+Next village has14 variants/1345 templates and accepted geometry; inspect existing
+resource precedence for its competing crop-randomizer definitions before attribution.
+Details: evidence/item-8/sources/repurposed-ancient-city-assessment/README.md.
+Inventory SHA-256: 1481b4cdafc7e1f724d65c06f3db66d68b53f78b2ddbfe0fd8cc5f7d968e3d7e.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### Repurposed fortress assessed after 6c2d2d70
 
 Seven remaining entries integrated for one family/17 templates. Water-dependent
