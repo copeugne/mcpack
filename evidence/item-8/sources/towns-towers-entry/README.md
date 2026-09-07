@@ -53,3 +53,45 @@ Validation: `uv run pytest -q tests/item8/test_towns_towers_provider_scope.py te
 All six tests pass. Semantic comparison changes only these four families and
 the decisions pin; unrelated families, biomes, identities and observations are
 preserved. Inventory SHA-256: `0441e3ad4343bb732cd8e3df24818a5cabf93800dfdbb4c173a4fd84b5c00d08`.
+
+## Fort and Tower outposts
+
+Two families preserve 25 variants and 42 unique selected templates. Nine Fort
+and sixteen Tower roots retain their existing placement definitions. All base
+templates have only upward small mob attachments except the Mediterranean
+fort's two architectural fields. The authoritative assessment records each
+base's XYZ size directly from its selected NBT. Upward receiver Y plus three
+blocks remains below the base top, and single-column footprints stay inside it.
+These source dimensions do not imply observed generation or exposed area.
+
+For Mediterranean, put the 16x15x19 base at (0,0,0). Its field receivers are
+(0,1,9) west_up and (15,1,9) east_up. Field_1 is 14x3x24 with incoming
+(13,1,12) east_up; field_2 is 13x5x18 with incoming (0,1,9) west_up.
+Align opposite faces and translate by outgoing plus outward unit vector minus
+rotated incoming. Left field_1 origin is (-14,0,-3); right field_1, rotated
+180 degrees, is (16,0,-2). Right field_2 origin is (16,0,0); left field_2,
+rotated 180 degrees, is (-13,0,1). Both field_1 yields 44x25 XZ; both field_2
+42x19; mixed choices 43x24. Failed attachments can leave only the central
+footprint. Field_1's terrain_matching projection means these nominal origins
+do not establish final Y or terrain-warped height. Record that limitation.
+
+All variants share authored captain/grunt choices already inspected above.
+No spawners or generation markers occur in the selected trace. Iberian uses
+kaisyn:village/exclusives/iberian/house_iberian and Nilotic uses
+kaisyn:outpost/exclusives/outpost_nilotic; both are minecraft:rule lists with
+building-material substitutions only. Other selected lists are empty. Their
+source JSON is under data/kaisyn/worldgen/processor_list. Neutral allays,
+captive villagers, bees/hive occupants, cats and decorative equipment retain
+variant ownership; none are automatically hostile encounters. Fixed container
+items and frames are attributed separately from the existing exact loot refs.
+
+The initial dimension assertion rejected Nilotic before any file write: its
+resolved biome constraint has no intersection with frozen runtime biomes.
+The accepted result preserves this ineligible packaged variant explicitly;
+the other 24 variants intersect Overworld only. Neither family has retained
+direct start observations. Do not turn biome compatibility into generation proof.
+
+Eighteen attributes complete these two assessments. Six applicable tests pass
+using the command above. Semantic comparison preserves identities, biome and
+world observations, existing placement classification and unrelated families.
+Inventory SHA-256: `ab41272b615fda7958bbf685cbcc698c2b50a83d5ebacecb38341d0ac47ca96a`.
