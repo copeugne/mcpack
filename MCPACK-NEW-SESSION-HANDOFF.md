@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-07
 
+#### Two-family geometry targets after f293e2be
+
+Four size attributes remain for Better Mineshafts and Spider Dungeon. Source
+inspection confirms the entrance updates shaft length without shrinking its
+initial build-height box. One existing frozen seed42 capture is declared for
+two targets/162 requested chunks, timeout900; no new tooling. Exact command
+and interpretation boundary: evidence/item-8/sources/mineshafts-code/README.md,
+Two-family geometry capture declaration. Next execute, inspect full starts and
+saved entrance fields, retain and restore evidence, then integrate supported
+sizes. Counts stay351/449 assessed,98 remaining. No capture success claimed.
+
 #### Better Mineshafts and Spider placement after 6e8d9728
 
 Four dimension/discoverability attributes integrated for Better Mineshafts and
