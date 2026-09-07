@@ -6,6 +6,18 @@
 
 ### Continuation update - 2026-09-07
 
+Six remaining nonregistry assignments now expose 19 established attributes.
+All 40 nonregistry assignments have partial attribute integration in their existing
+contribution/design records. This does not establish all eleven required answers.
+Affected tests: 31 passed. Registry rows are unchanged, and the inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-six-nonregistry-attributes.json`.
+Inventory SHA-256: f158bf05f11072648276d094d68f0ef13d5d3143e410bf5db842a0ca7ce093c0.
+Next reconcile existing evidence against mandatory claims across 410 registry and
+40 nonregistry candidates before further investigation. Provider discovery and
+canonical membership are settled; generic builder placeholders are not a research
+queue. Final attribute acceptance, PR, review and main delivery remain open.
+The following incremental checkpoints are historical and may name work now done.
+
 Sixteen BetterEnd building/ruin families now expose 48 established geometry/form
 attributes at 166025d1. Affected tests: 16 passed; inventory matches fresh build.
 Effective conversion, loot and placement still require separate attribution.
