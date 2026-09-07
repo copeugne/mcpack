@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Four IDAS records are reconciled against 1506ccef views and full source content:
+ancient_portal, underground_camp, sunken_ship and detached ship ruins. Existing
+groups/variants remain unchanged. Ship alternative processor differences are
+explicit; raw spawner data is not effective enemy proof. The focused IDAS case and
+scoped checks pass. Backlog: 55, all IDAS. Coverage groups: 423. Inventory refresh
+follows. Attributes, 33 nonregistry contributions and final delivery remain open.
+
 IDAS starts with four related-design records: ancient_portal, underground_camp,
 sunken_ship and sunken_ship/sunken_ship_ruins. Their complete thirteen templates
 and traced alternatives/components need layout comparison with the existing
