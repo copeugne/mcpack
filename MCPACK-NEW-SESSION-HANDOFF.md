@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Voyager trees, rocks and harvest heaps assessed after c82079a3
+
+Twenty-eight attributes finish Living Tree, Rock and Harvest Heap across
+thirteen roots. Living Tree geometry is unchanged. Per-alternative dimensions,
+loot and placement retain their distinctions, including Big Oak's versioned
+selection. No new capture, measurement or tooling. Derivations are in
+moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+02f306b67b70385e756d6abf9de83ce02ef401798d9aa66f3d377e6739887cd7.
+
+Retire these assessments. Voyager 47/65; registry 154/410, nonregistry 40/40,
+total 194/450 assessed, 256 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager Dead Tree assessed after 5f02a697
 
 Ten attributes finish eight Dead Tree roots. Direct pool/template inspection
