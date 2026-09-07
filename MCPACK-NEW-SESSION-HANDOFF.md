@@ -7,6 +7,28 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd village geometry accepted after f2f5b2b6
+
+Fresh predeclared seed42 End capture passes readiness,81 requested chunks,
+correlated flush,clean exit0 and frozen config acceptance.1802 decoded records;
+line478 full start chunk34,-316 has45 pieces,envelope[482,56,-5139,581,76,-5034],
+size100x21x106. Both size attributes integrated with padding/coverage limits.
+Missing packaged templates and raw warnings retained; no baseline repair.
+Archive item8-betterend-village-geometry-r1-f2f5b2b6.tar.gz:247 files,1,873,483 bytes,
+SHAed725ed290e01baee8d29ad4d180ee11ef03642fe20f563e21e7aa5c19235813.
+GitHub release/tag item-8-betterend-village-geometry-2026-09-07-r1 verified at
+f2f5b2b64513e3d2acfd14f5df2ddbf56602fc8c. Both restores verify247 files;
+downloaded line478 reproduces bounds. No Java remains. Reproduction/custody
+commands are in betterend-platform-portal-consumers README.
+All85 focused inventory checks pass (61.68s); only village/input identity changed.
+Registry340/408,nonregistry40/40,total380/448 assessed;68 families and615 required
+attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81. BetterEnd all
+active families assessed. Next quantify a remaining-provider batch, inspect its
+existing evidence/history and integrate known facts before new investigation.
+Final canonical integration, acceptance, backup/history preparation and final
+PR/review/main delivery remain open. Inventory SHA-256: e82fabe360aec58bfcbcf10444a6cbd7a43df1abaa2e074b5e6f6efdd1e82afb.
+
+
 #### End-target capture support after 39293bc9
 
 Village two-size-attribute batch requires an assembled observation: retained
