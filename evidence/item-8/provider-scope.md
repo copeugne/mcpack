@@ -9971,3 +9971,28 @@ cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-inns-r2.jso
 
 Use fresh output files. Source connectors and entity declarations are not claims
 of successful assembly or effective inhabitants.
+
+
+### Tinkers and tree assembly inventory refresh
+
+Decision 328a58ea distinguishes the citadel attachments, workshop chain and
+six-component tree assembly using existing contents and connectors. The focused
+IDAS case and scoped Ruff/Basedpyright pass. Canonical backlog: 25, all IDAS.
+Two fresh inventory builds agree exactly, SHA-256
+d47972662edea9a498387fdb431a196ba8326c029b4c0ee77f56ebcf1108aa4f.
+Only these three grouping decisions and input identity change. All 887 roots,
+426 working groups, full variants and derived attributes remain unchanged.
+Attributes, 33 nonregistry contributions and final review/main delivery remain open.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-tinkers-tree-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+cmp evidence/raw/item8/inventory-idas-tinkers-tree-r1.json evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-tinkers-tree-r2.json
+```
+
+Use fresh output files. Machinery operation and generated extents remain separate
+from this component-boundary decision.

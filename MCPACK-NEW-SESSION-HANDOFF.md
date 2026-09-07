@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 328a58ea and independently reproduces exactly. Canonical
+backlog: 25, all IDAS. All 887 roots and full variants remain in 426 working
+groups. Continue remaining IDAS buildings and assemblies. Required attributes,
+33 nonregistry contributions and final validation/review/main delivery remain open.
+
 Tinkers citadel, workshop and tree of wisdom now have explicit component
 boundaries from existing graphs and contents. Citadel branches, workshop follows
 a numbered chain, and the tree base links surrounding pieces and a top. Machinery
