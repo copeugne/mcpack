@@ -6,6 +6,109 @@
 
 ### Continuation update - 2026-09-07
 
+#### Zombie Dungeon geometry finished after 5cea5861
+
+Declared seed42 one-target/81-requested-chunk capture passed readiness, correlated
+flush, clean exit0 and frozen configuration acceptance. Full start chunk127,-54,
+line1017 has768 pieces and99x26x124 saved assembly envelope. Processor stairs/
+supports remain separate extensions; missing big_stairs_crumbled_0 is retained.
+Archive250 files/3,015,336 bytes published at source5cea5861; both restores
+verified every file and downloaded evidence reproduced geometry. No runtime.
+Exact commands/hashes/limitations: evidence/item-8/sources/dungeons-provider/README.md,
+Zombie geometry result and custody. Two size attributes finish the family;
+all85 focused tests pass. Registry318/408,nonregistry40/40,total358/448 assessed,
+90 remaining. Next quantify another remaining YUNG batch and reuse existing
+sources. Final canonical integration, acceptance, verified backup/history
+preparation and PR review/main delivery remain open. Inventory SHA-256:
+5cf25568bc68f7c7afcf3db43f10e5fb3b29107f9e36831a6bf7a3d030f2da07.
+
+#### Zombie content and geometry declaration after 989452f3
+
+Eight attributes integrated for Zombie Dungeon from69 available templates and
+seven directly inspected processor members. Preserve separate ordinary zombie
+spawners and skeleton/iron-sword tombstone marker conversion, natural zombie
+override, three loot tables and conditional surface staircase. Missing
+big_stairs_crumbled_0 remains. Exact derivations/member hashes:
+evidence/item-8/sources/dungeons-provider/README.md, Zombie Dungeon content and
+placement. Two geometry attributes remain; counts stay357/448 assessed,91
+remaining. The25x8x17 start has eight exterior stair connections and no retained
+world-bounds start. One existing frozen seed42 target/81 requested chunks is
+declared there, timeout900. Next execute the declared run, retain/restore raw
+evidence and integrate illustrative assembly bounds with external processor
+extensions explicitly separate. No new tooling. All85 focused tests pass;
+semantic inventory changes only Zombie Dungeon and input identity. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+6e4a535bddde5ade9c43d9a50abdfc2aecda41659480f924ac73b1f31d5b42ff.
+
+#### Skeleton Dungeon assessed after 70d4a16c
+
+Skeleton/Zombie batch quantified20 attributes and127 traced templates (58/69).
+Skeleton's ten attributes are integrated: retained full-start31x13x31 example,
+variable downward supports, effective skeleton-spawner assignment replacing raw
+pig NBT, natural override and two loot tables. Exact source/member hashes and
+derivation: evidence/item-8/sources/dungeons-provider/README.md, Skeleton Dungeon
+assessment. No new runtime or tooling. All85 focused tests pass; semantic
+inventory changes only Skeleton Dungeon and input identity. Registry317/408,
+nonregistry40/40,total357/448 assessed,91 remaining. Zombie's ten attributes
+remain:69 traced templates, missing big_stairs_crumbled_0 retained, no existing
+world-bounds start. Next inspect Zombie's processors and connected layout before
+justifying any geometry capture. Final canonical integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+78ec43534da81e62ef3b83997a5ece47e27afb48c33e5ab1312670081f392862.
+
+#### Small Dungeon assessed after dc4d01d0
+
+Ten attributes finish Small Dungeon using16 templates, existing full-start
+observations and direct inspection of eight exact processor members. Six shell
+sizes have nominal height7; downward terrain supports remain explicitly variable.
+Preserve one authored spawner per shell with skeleton/spider/zombie themes,
+vanilla shell-chest table versus loot-pile barrels, chest-removal rules and
+conditional ambient spawning. Exact class hashes and source derivations:
+evidence/item-8/sources/dungeons-provider/README.md, Small Dungeon assessment.
+No new runtime or tooling. All85 focused tests pass; semantic inventory changes
+only this family and input identity. Registry316/408 and nonregistry40/40,
+total356/448 assessed,92 remaining. Next quantify another remaining YUNG batch
+and reuse established evidence before investigating. Final canonical integration,
+acceptance, verified backup/history preparation and PR review/main delivery
+remain open. Inventory SHA-256:
+4c849b88fff92e48e213397432d9df0cb2325daa6e3652228df0fbe4bdf52ac7.
+
+#### Small Nether Dungeon inactive after cea53d82
+
+The next batch was Small Dungeon and Small Nether Dungeon,20 attributes and99
+templates. Frozen enablement inspection establishes Small Nether Dungeon is
+inactive: exact false config binds enabled, then findGenerationPoint returns
+empty before assembly. Retain its root and83 templates. Exact class/config
+references and derivation: evidence/item-8/sources/dungeons-provider/README.md,
+Small Nether Dungeon inactive disposition. No new runtime or tooling.
+This corrects the denominator, not an assessed-family increment:448 active,
+355 assessed,93 remaining. Registry315/408; nonregistry40/40. Registry groups
+remain426, with17 inactive andone excluded. All85 focused tests pass; inventory
+changes only this disposition/evidence and input identity. Next finish Small
+Dungeon's ten attributes using its16 existing templates and processor sources.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+5baa9dee259e5498665d2f7d378325b6097d13b49bee016cb1332fd0c428d453.
+
+#### Witch Circle and Witch Hut assessed after 483f54e4
+
+Twenty attributes finish the two Better Witch Huts families from six existing
+templates, effective biome evidence and preserved processors. Circle9x5x9;
+hut alternatives7x8x9,11x7x11,15x9x13. Interior witch/cat components fit inside.
+Height explicitly adds variable downward terrain supports, not a fixed total.
+Preserve authored witch/cat versus natural overrides, absent spawner blocks,
+hut chest loot and processor-populated brewing stands; circle has no such loot.
+Exact derivation: evidence/item-8/sources/witch-hut-provider/README.md,
+Two-family attribute assessment. No new runtime, extraction or tooling.
+All85 focused tests pass; semantic inventory changes only these two families
+and input identity. Registry315/409, nonregistry40/40, total355/449 assessed,
+94 remaining. Next quantify a remaining YUNG batch and reuse existing evidence.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+d8845a0c138ab40f663626be9358fad55449301e1fd679ecc2c7025cf3f186d4.
+
 #### Mineshaft and Spider geometry finished after 9a815914
 
 Four size attributes finish Better Mineshafts and Spider Dungeon. The declared

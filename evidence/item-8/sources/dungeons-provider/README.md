@@ -31,3 +31,294 @@ and discovery, not additional independent designs.
 Provider payload/root/component accounting is still required before closure.
 This capture does not establish successful generation, effective configuration
 values or complete Item 8 attributes.
+
+## Small Nether Dungeon inactive disposition
+
+The two-family small-dungeon assessment batch initially contained20 attributes
+and99 reachable templates:16 Small Dungeon and83 Small Nether Dungeon. Inspecting
+frozen enablement first resolves the latter as inactive, without assessing the
+83 inactive component templates or changing the baseline. This is a denominator
+correction, not a completed active assessment:448 active families,355 assessed,
+93 remaining. Registry groups remain426:408 active,17 inactive,one excluded;
+all887 runtime roots remain assigned exactly once. Forty nonregistry families
+remain assessed. Small Dungeon still needs its ten attributes.
+
+Frozen config/betterdungeons-neoforge-1_21.toml, Small Nether Dungeons section,
+sets Enable Small Nether Dungeons=false. Direct immutable archive inspection:
+YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar SHA-256
+61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04,
+member com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.class
+SHA-2564c003a33419279dc99568d133a0d633f4964cc1429dfdd176438cc18bab48d92.
+Its constructor offsets26..32 defines that exact key with false default and
+stores enabled. Preserved ConfigModuleNeoForge offsets171..189 reads this
+ConfigValue into CONFIG.smallNetherDungeons.enabled. Preserved
+SmallNetherDungeonStructure.findGenerationPoint offsets0..15 checks the field
+and returns Optional.empty when false, before any assembly. These sources,
+configuration and precise member identity are bound in the authoritative decision.
+
+The existing locate mixin also rejects this disabled root, but is not the basis
+for claiming generation is disabled. Preserve the root, pools and83 templates.
+This disposition concerns normal generation in the frozen stack, not modified
+configuration or pre-existing worlds. No new runtime or tooling is needed.
+
+Direct inspection command (pinned javap, exact hash-verified archive):
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.config.ConfigSmallNetherDungeonsNeoForge
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/small-nether-inactive-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+The inventory comparison changes only the inactive family's disposition/evidence
+and corresponding input identity. No root membership or component trace changes.
+
+All85 focused tests passed. Small Dungeon remains unassessed; do not count this
+inactive disposition as completing an active family.
+
+## Small Dungeon assessment
+
+Scope: one active family, ten attributes, sixteen reachable templates. Reuse
+existing packaged JSON, templates, world-bounds and frozen configuration. No
+missing traced components. All139 effective biomes intersect only Overworld;
+no unresolved or missing required tags. The root has empty spawn_overrides,
+underground_structures, absolute anchorY-50..50 and no surface-heightmap projection.
+This describes a concealed cave/excavation room, not a surface landmark or a
+measured human discovery distance.
+
+Six rigid small_dungeon/shells/small_shell variants5x5,7x5,7x7,9x5,9x7,9x9
+have actual XYZ sizes7x7x7,9x7x7,9x7x9,11x7x7,11x7x9,11x7x11.
+Each has four internal horizontal loot-pile connectors atY1, with sufficient
+inset for at-most2x2x2 pieces; empty pile is1x1x1. These remain in the shell
+footprint. Nominal height is7, with variable downward supports described below.
+World-bounds full-start indexes174/268/273 (repeat571/657/662) corroborate
+11x7x7,11x7x11,11x7x9. Index174 is mountainous chunk5,0 at run-a line13347;
+268 is ocean-heavy chunk26,-13 at line12632;273 is ocean-heavy chunk27,0 at
+line13369. Non-full indexes259/288/293 and repeats remain excluded from this
+corroboration. No new capture or estimate of frequency/extrema is needed.
+
+Each shell's palette/state_counts records exactly one ordinary spawner. Lack
+of saved spawner NBT is not absence of a spawner block. The start pool has each
+size with skeleton/spider/zombie processor themes weighted1/1/2. MobSpawnerProcessor
+processBlock offsets0..109 identifies SpawnerBlock, builds singleton spawn
+potentials and sets the selected entity, returning new spawner data. Its lambda
+writes the spawner_mob resource ID. These are authored assignments; ambient
+spawns remain conditional. All16 templates have no direct saved entities.
+
+Shell chest NBT uses minecraft:chests/simple_dungeon. Loot-pile1 block_entities
+1/2/3, pile3 index2 and pile5 index1 use betterdungeons:small_dungeon/chests/loot_piles
+in barrels. No nonempty fixed Items lists exist in these templates. The empty
+pile has weight7/max_count2; each other pile weight1/max_count1. These YUNG
+single-element limits are component selection rules, not encounter measurements.
+
+SmallDungeonChestProcessor.processBlock offsets14..138 uses DungeonContext
+count: below minimum preserve/increment; at maximum replace with cave_air;
+between limits preserve/increment only when nextFloat<=0.2. Frozen minimum1,
+maximum2 are source controls, not guaranteed observed final totals across chunk
+placement. Existing DungeonContextMixin resets context at template placement.
+SmallDungeonOreProcessor gates ore-tagged props on enableOreProps; frozen Allow
+Ore Blocks in Corners=true preserves this salvage source, separate from table loot.
+
+Direct immutable archive inspection used pinned javap on the same
+YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar SHA-256 recorded above. The eight
+exact class member hashes are in family-decisions.json processor_inspection:
+MobSpawnerProcessor and small_dungeon SmallDungeonChestProcessor,LegProcessor,
+CeilingProcessor,CeilingLampPropProcessor,CeilingPropProcessor,OreProcessor,
+CobblestoneProcessor (each name includes SmallDungeon prefix where applicable).
+LegProcessor.processBlock offsets86..207 extends yellow-marker support columns
+down through air/fluid until solid terrain/build limits, at unchanged X/Z.
+CeilingProcessor treats orange markers using existing terrain or cobblestone
+for water/lava. Ceiling props/lamp processors choose chain or cave_air based
+on support/randomness at their template position; CobblestoneProcessor responds
+to the existing terrain. Thus seven-block nominal room height excludes downward
+support extension; it is not fixed total occupied height.
+
+Reproduce direct class inspection with the exact dotted member name from
+processor_inspection.members (remove .class and replace slashes with dots):
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.MobSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/small-dungeon-assessed-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+All ten attributes enter the authoritative inventory; semantic comparison changes
+only Small Dungeon and the input identity. No new tooling or raw evidence class.
+
+All85 focused tests passed. Total356/448 active families assessed,92 remaining.
+This completes Small Dungeon attribution, not the final Item8 gate.
+
+## Skeleton Dungeon assessment
+
+Batch initially quantified Skeleton and Zombie Dungeon together:20 attributes,
+58 and69 traced templates respectively. Skeleton is now assessed; Zombie's ten
+attributes remain, with no retained world-bounds start and missing
+betterdungeons:zombie_dungeon/big_stairs_crumbled_0 preserved. No missing
+component was reported for Skeleton. No new measurement was needed for Skeleton.
+
+Skeleton's139 effective biomes intersect only the captured Overworld, with no
+missing/unresolved biome tags. Its root uses underground_structures, absolute
+anchorY-50..-30, no surface heightmap projection and piece-bounded monster override
+skeleton weight100,min4,max15. The58 templates have no direct saved entities or
+nonempty fixed Items. Their two loot-table references are
+betterdungeons:skeleton_dungeon/chests/common and chests/middle. This is source
+attribution, not measured reward quantities or enemy counts.
+
+Ordinary spawners occur once in each of ten selected component templates:
+bridges/bridge_big_0 and bridge_big_2; stair1/stair1_0..3; stair2/stair2_1,2,3,5.
+Paths are under betterdungeons:skeleton_dungeon/. Palette/state_counts and NBT
+agree. These alternatives are not ten spawners in every dungeon. Raw pig NBT
+is replaced by SkeletonMobSpawnerProcessor.processBlock offsets14..108:
+skeleton singleton SpawnPotentials, requiredPlayerRange18,maxNearbyEntities8,
+maxSpawnDelay650 and EntityType.SKELETON. Its lambda writes minecraft:skeleton.
+Authored spawners and the separate natural override both remain explicit.
+
+World-bounds index277 (repeat666) is a full-start example at ocean-heavy seed
+95920844204830198, chunk27,5. Source run-a/ocean-heavy/chunks.jsonl line13529.
+Envelope[417,-47,65,447,-35,95] gives31x13x31 inclusive saved-piece size.
+This illustrative example is not family-wide extrema or occupied volume.
+SkeletonDungeonLegProcessor uses blue glass markers and extends cobble support
+columns downward through air/fluid until solid terrain/build limits. Record
+that variable extension separately;13 is saved-piece height, not total occupied
+height. RuinedStoneBrickProcessor varies/removes yellow-glass/prismarine-brick-slab markers according
+to existing air and material selection at their original position. Underground
+stairs/bridges may be exposed in caves; no measured surface visibility is claimed.
+
+Exact archive and three class-member hashes are in processor_inspection in the
+family decision. Direct inspection used pinned javap on the immutable retained
+archive. An initial guessed ruined-brick class name failed; inspecting the archive
+member list resolved the actual name RuinedStoneBrickProcessor. That failed
+inspection changed no evidence. Reproduce each exact dotted member name with:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.skeleton_dungeon.SkeletonMobSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/skeleton-dungeon-assessed-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+All ten attributes enter the authoritative inventory. Semantic comparison changes
+only Skeleton Dungeon and input identity. No new tooling or raw evidence class.
+
+All85 focused tests passed. Total357/448 assessed,91 remaining. Zombie Dungeon
+is not yet assessed; its ten attributes remain within this two-family batch.
+
+## Zombie Dungeon content and placement
+
+Scope: one family, ten required attributes. Eight content/placement attributes
+are integrated; the two geometry attributes remain. All69 traced templates are
+available, with the additional missing big_stairs_crumbled_0 reference preserved.
+There are no directly saved entities or nonempty fixed Items in those69 templates.
+LootTable references resolve to betterdungeons:zombie_dungeon/chests/common,
+chests/special and chests/tombstone. Effective139 biomes intersect only Overworld,
+with no unresolved or missing required biome tags. The root overrides piece
+monster spawning with zombie weight100,min4,max15, uses underground_structures
+and absolute anchorY50..51 without surface heightmap projection.
+
+Two templates have one ordinary spawner each: zombie_start and
+cubby_prop/cubby_prop_spawner_2. ZombieMobSpawnerProcessor.processBlock builds
+zombie singleton SpawnPotentials, EntityType.ZOMBIE and MaxNearbyEntities8.
+Raw pig data in the start is not the effective authored entity. Three templates
+have one black-glass marker each: tombstone/tombstone_spawner_closed,
+tombstone_spawner_open_0 and tombstone_spawner_open_1.
+ZombieTombstoneSpawnerProcessor.processBlock converts the marker to a SKELETON
+spawner and writes nextSpawnData.HandItems containing an ItemStack-codec encoded
+IRON_SWORD. Main and cubby lists apply ordinary zombie conversion first, then
+tombstone conversion, so the newly created skeleton spawner is not converted
+back to zombie by this list. This is saved source data, not a live combat test.
+
+ZombieMainStairsProcessor consumes the warped-stairs marker in zombie_start,
+consults WORLD_SURFACE_WG and frozen zombieDungeonMaxSurfaceStaircaseLength20,
+and writes stairs outside the template. Conditional surface entry is possible,
+not proven visible in every instance. Leg/stair processors also adapt surrounding
+terrain; cubby/rot processors alter existing component blocks. Exact seven
+member hashes and archive identity are in processor_inspection. Direct pinned
+javap inspection is reproducible using each exact dotted member name:
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar com.yungnickyoung.minecraft.betterdungeons.world.processor.zombie_dungeon.ZombieTombstoneSpawnerProcessor
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/zombie-content-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+### Declared Zombie geometry target
+
+No retained world-bounds start exists. The25x8x17 start has eight exterior
+big_stairs connections at[0,2,4],[0,2,13],[7,2,0],[8,2,16],[16,2,0],
+[17,2,16],[24,2,3],[24,2,12], so start-only geometry omits connected rooms.
+The existing frozen gap runner is smaller than implementing a layout simulator.
+Declare one seed42 target,81 requested chunks, timeout900. Require a full start,
+accepted configuration, correlated save and clean stop. Preserve missing-template
+logs/failures and any incidental partial starts. Use existing decoder/archive
+and local/published-download restores. Report illustrative saved assembly size,
+with external processor stair/support extensions explicitly separate; do not
+claim occupied volume, family extrema or completeness of distant block placement.
+No new measurement tool, schema or evidence class is required.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/zombie-geometry-r1 \
+  --log-path evidence/raw/item8/zombie-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/zombie-geometry-r1/configuration \
+  --receipt evidence/raw/item8/zombie-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure betterdungeons:zombie_dungeon
+```
+
+This declares the capture, not a successful result. No family count increment
+until both geometry attributes are supported and integrated.
+
+All85 focused tests passed. Semantic inventory comparison changes only Zombie
+content/placement and input identity. Two size attributes remain unresolved.
+
+### Zombie geometry result and custody
+
+The declared one-target seed42 run completed readiness, generation, correlated
+flush, clean exit0 and accepted frozen configuration. No process-group kill.
+Full start chunk127,-54 is chunks.jsonl line1017:768 saved pieces, envelope
+[1963,25,-924,2061,50,-801],99x26x124 inclusive. Existing observed_bounds
+computes this union. These are saved assembly dimensions; processor-written
+surface stairs and supports are separate extensions. Do not equate them with
+occupied volume, family extrema or complete placement of distant components.
+The pre-existing missing-template reference remains unchanged. Raw warnings and
+errors are retained; successful lifecycle is not universal compatibility proof.
+
+Archive item8-zombie-geometry-r1-5cea5861.tar.gz:250 files,3,015,336 bytes,
+20,822,442 uncompressed bytes; SHA-256
+10cd5fbac0b6f75f0c0d105879a1ad81071d3a73114a8701907787416589e1d4.
+Manifest SHA-256 ce34d16c96e3b45d956f863727ad51aca78bd6bdc1c8703c05ad946970f04e94.
+The250 files include1802 decoded chunk records, not the81 requested-chunk
+sampling denominator. chunks.jsonl SHA-256
+88d5c9a201764a9551a7a7f9116e0e641ecf669cdcaae5f4e2a1c5fd681fd517.
+Published release item-8-zombie-geometry-2026-09-07-r1 on copeugne/mcpack;
+remote tag verified at source5cea586192242f243b73a7726ff84539ade5497a.
+Local and published-download restores verified all250 files. The downloaded
+copy reproduced line1017 full status,768 pieces and99x26x124 envelope.
+Both geometry attributes are integrated. No new tooling was added.
+
+Executed after clean stop:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/zombie-geometry-r1"), Path("evidence/raw/item8/zombie-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/zombie-geometry-r1/world --output evidence/raw/item8/zombie-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/zombie-geometry-r1 --archive evidence/raw/item8/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --revision 5cea586192242f243b73a7726ff84539ade5497a
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --target evidence/raw/item8/zombie-geometry-r1-restored --receipt evidence/item-8/raw-custody/zombie-geometry-r1-local-restore.json
+gh release download item-8-zombie-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-zombie-geometry-r1-5cea5861.tar.gz --dir evidence/raw/item8/zombie-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/zombie-geometry-r1-download/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --target evidence/raw/item8/zombie-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/zombie-geometry-r1-downloaded-restore.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/zombie-complete-inventory.json
+```
+
+For reproduced geometry, parse retained line1017 using existing
+item7_nbt_models.ChunkRecord.model_validate_json and pass it to
+item8_world_bounds.observed_bounds. Select betterdungeons:zombie_dungeon;
+verify chunk_full,768 piece boxes and the inclusive envelope above.
+
+All85 focused tests passed. The semantic inventory comparison adds only Zombie
+size attributes/archive evidence and input identity. Total358/448 assessed,
+90 remaining. Final canonical integration and Item8 acceptance remain open.

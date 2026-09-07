@@ -23555,21 +23555,38 @@
     },
     "betterdungeons:skeleton_dungeon": {
       "approximate_footprint": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_xz_blocks": [
-          [
-            31,
-            31
-          ]
+        "basis": "Inclusive saved-piece union from one full-start ocean-heavy example repeated in run-b. Illustrative assembled footprint, not occupied volume, family extrema or complete placement of every distant component.",
+        "envelope": [
+          417,
+          -47,
+          65,
+          447,
+          -35,
+          95
+        ],
+        "observation_indexes": [
+          277,
+          666
+        ],
+        "observed_xz_blocks": [
+          31,
+          31
         ]
       },
       "approximate_vertical_size": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_y_blocks": [
-          13
-        ]
+        "basis": "Inclusive saved-piece maxY-minY+1 in the retained full-start example.",
+        "observation_indexes": [
+          277,
+          666
+        ],
+        "observed_piece_height_blocks": 13,
+        "support_extension": "SkeletonDungeonLegProcessor extends blue-marker support columns down through air/fluid until solid terrain or build-height bounds. This variable extension is outside the saved-piece envelope;13 is not fixed total occupied height."
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "Skeleton ordinary-spawner assignments; no direct saved entities in the selected templates.",
+        "natural": "Piece-bounded skeleton monster spawning overrides biome monster selection in that scope.",
+        "scope": "Source-supported spawning routes, not observed enemy counts."
+      },
       "biome_constraints": {
         "betterdungeons:skeleton_dungeon": {
           "biomes": [
@@ -23755,31 +23772,84 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterdungeons:skeleton_dungeon": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "139 effective biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+        "value": [
           "minecraft:overworld"
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:pig",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
+        "basis": "Ten reachable component templates each have one spawner in palette/state counts and saved NBT. SkeletonMobSpawnerProcessor.processBlock explicitly replaces NBT with skeleton singleton spawn potentials and these settings. Alternative pieces are not a per-dungeon total.",
+        "block": "minecraft:spawner",
+        "processor_entity": "minecraft:skeleton",
+        "processor_settings": {
+          "MaxNearbyEntities": 8,
+          "MaxSpawnDelay": 650,
+          "RequiredPlayerRange": 18
+        },
+        "templates_with_one_spawner": [
+          "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
+          "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
+          "betterdungeons:skeleton_dungeon/stair1/stair1_0",
+          "betterdungeons:skeleton_dungeon/stair1/stair1_1",
+          "betterdungeons:skeleton_dungeon/stair1/stair1_2",
+          "betterdungeons:skeleton_dungeon/stair1/stair1_3",
+          "betterdungeons:skeleton_dungeon/stair2/stair2_1",
+          "betterdungeons:skeleton_dungeon/stair2/stair2_2",
+          "betterdungeons:skeleton_dungeon/stair2/stair2_3",
+          "betterdungeons:skeleton_dungeon/stair2/stair2_5"
+        ]
+      },
+      "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "Inclusive saved-piece union from one full-start ocean-heavy example repeated in run-b. Illustrative assembled footprint, not occupied volume, family extrema or complete placement of every distant component.",
+            "envelope": [
+              417,
+              -47,
+              65,
+              447,
+              -35,
+              95
+            ],
+            "observation_indexes": [
+              277,
+              666
+            ],
+            "observed_xz_blocks": [
+              31,
+              31
+            ]
+          },
+          "approximate_vertical_size": {
+            "basis": "Inclusive saved-piece maxY-minY+1 in the retained full-start example.",
+            "observation_indexes": [
+              277,
+              666
+            ],
+            "observed_piece_height_blocks": 13,
+            "support_extension": "SkeletonDungeonLegProcessor extends blue-marker support columns down through air/fluid until solid terrain or build-height bounds. This variable extension is outside the saved-piece envelope;13 is not fixed total occupied height."
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Skeleton ordinary-spawner assignments; no direct saved entities in the selected templates.",
+            "natural": "Piece-bounded skeleton monster spawning overrides biome monster selection in that scope.",
+            "scope": "Source-supported spawning routes, not observed enemy counts."
+          },
+          "dimension": {
+            "basis": "139 effective biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Ten reachable component templates each have one spawner in palette/state counts and saved NBT. SkeletonMobSpawnerProcessor.processBlock explicitly replaces NBT with skeleton singleton spawn potentials and these settings. Alternative pieces are not a per-dungeon total.",
+            "block": "minecraft:spawner",
+            "processor_entity": "minecraft:skeleton",
+            "processor_settings": {
+              "MaxNearbyEntities": 8,
+              "MaxSpawnDelay": 650,
+              "RequiredPlayerRange": 18
+            },
+            "templates_with_one_spawner": [
               "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
               "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
               "betterdungeons:skeleton_dungeon/stair1/stair1_0",
@@ -23791,77 +23861,46 @@
               "betterdungeons:skeleton_dungeon/stair2/stair2_3",
               "betterdungeons:skeleton_dungeon/stair2/stair2_5"
             ]
+          },
+          "intended_hostility": {
+            "basis": "Authored skeleton spawner processor plus explicit piece-bounded skeleton monster spawning.",
+            "value": "Hostile skeleton dungeon"
+          },
+          "loot_table_source": {
+            "basis": "Exact reachable template LootTable references in template-content trace. No nonempty fixed Items lists found in the58 templates. Table source attribution, not measured effective rewards.",
+            "tables": [
+              "betterdungeons:skeleton_dungeon/chests/common",
+              "betterdungeons:skeleton_dungeon/chests/middle"
+            ]
+          },
+          "mob_source": {
+            "authored": "SkeletonMobSpawnerProcessor replaces ordinary spawner data with skeleton spawn potentials and entity type. Saved pig values are template input, not the effective authored mob.",
+            "basis": "Packaged structure and processor list plus direct processor inspection. No directly saved entities in the58 reachable templates; live populations remain conditional.",
+            "natural_spawn_override": {
+              "bounding_box": "piece",
+              "maxCount": 15,
+              "minCount": 4,
+              "type": "minecraft:skeleton",
+              "weight": 100
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "underground_structures step, uniform absolute start_height-50..-30 and no surface heightmap projection. Initial height is not total structure height.",
+            "value": "Underground complex with downward terrain supports"
+          },
+          "visual_discoverability": {
+            "assessment": "Underground masonry stair/bridge complex; cave exposure or excavation can reveal it, but no surface entrance is established by the selected topology.",
+            "basis": "Packaged underground step, absolute anchorY-50..-30, component trace and terrain-responsive ruined-brick/support processors. Source inference, not human discovery distance."
           }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:skeleton_dungeon/2x3/2x3_0",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_1",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_10",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_2",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_3",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_4",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_5",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_6",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_7",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_8",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_9",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_empty",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_10",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_3",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_4",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_5",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_6",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_7",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_8",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_9",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_empty",
-          "betterdungeons:skeleton_dungeon/arches/arch_0",
-          "betterdungeons:skeleton_dungeon/arches/arch_1",
-          "betterdungeons:skeleton_dungeon/arches/arch_10",
-          "betterdungeons:skeleton_dungeon/arches/arch_11",
-          "betterdungeons:skeleton_dungeon/arches/arch_2",
-          "betterdungeons:skeleton_dungeon/arches/arch_3",
-          "betterdungeons:skeleton_dungeon/arches/arch_4",
-          "betterdungeons:skeleton_dungeon/arches/arch_5",
-          "betterdungeons:skeleton_dungeon/arches/arch_6",
-          "betterdungeons:skeleton_dungeon/arches/arch_7",
-          "betterdungeons:skeleton_dungeon/arches/arch_8",
-          "betterdungeons:skeleton_dungeon/arches/arch_9",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_1",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_3",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_stone",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_wood",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_0",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_1",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_2",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_3",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_4",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_5",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_6",
-          "betterdungeons:skeleton_dungeon/skeleton_shell",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_0",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_1",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_2",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_0",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_1",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_2",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_4",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_5",
-          "betterdungeons:skeleton_dungeon/stair_bottom/stair_bottom"
-        ],
-        "unresolved_sources": {}
-      },
-      "grouping_decision": {
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "betterdungeons:skeleton_dungeon",
         "generation_settings": {
@@ -23878,180 +23917,43 @@
         },
         "missing_components": [],
         "name": "betterdungeons Skeleton Dungeon",
+        "processor_inspection": {
+          "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+          "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+          "basis": "Direct pinned-javap inspection; derivation in sources/dungeons-provider/README.md, Skeleton Dungeon assessment.",
+          "members": {
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/RuinedStoneBrickProcessor.class": "13188674a2dcfbaf8e154c9c0a9711d312989c7b81ef2ef7289d1f5b18323351",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/SkeletonDungeonLegProcessor.class": "4c5a6a7cc1a9a6030931e41a3a0df6837f75b053a30df73c8dde36852abb63b8",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/skeleton_dungeon/SkeletonMobSpawnerProcessor.class": "6b594a6097850dd4662001b2aef23779edca655387b80a86879ffc13f45220fb"
+          }
+        },
         "rationale": "A skeleton-dungeon assembly with its own start pool and anchor. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
         "start_pool": "betterdungeons:skeleton_dungeon",
         "structure_ids": [
           "betterdungeons:skeleton_dungeon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Authored skeleton spawner processor plus explicit piece-bounded skeleton monster spawning.",
+        "value": "Hostile skeleton dungeon"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:skeleton_dungeon/2x3/2x3_0",
-              "betterdungeons:skeleton_dungeon/2x3/2x3_1",
-              "betterdungeons:skeleton_dungeon/2x3/2x3_4",
-              "betterdungeons:skeleton_dungeon/2x3/2x3_5",
-              "betterdungeons:skeleton_dungeon/3x3/3x3_10",
-              "betterdungeons:skeleton_dungeon/3x3/3x3_3",
-              "betterdungeons:skeleton_dungeon/3x3/3x3_7",
-              "betterdungeons:skeleton_dungeon/stair1/stair1_0",
-              "betterdungeons:skeleton_dungeon/stair2/stair2_2",
-              "betterdungeons:skeleton_dungeon/stair2/stair2_5"
-            ],
-            "value": "betterdungeons:skeleton_dungeon/chests/common"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_1",
-              "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_2"
-            ],
-            "value": "betterdungeons:skeleton_dungeon/chests/middle"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:skeleton_dungeon/2x3/2x3_0",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_1",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_10",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_2",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_3",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_4",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_5",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_6",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_7",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_8",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_9",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_empty",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_10",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_3",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_4",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_5",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_6",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_7",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_8",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_9",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_empty",
-          "betterdungeons:skeleton_dungeon/arches/arch_0",
-          "betterdungeons:skeleton_dungeon/arches/arch_1",
-          "betterdungeons:skeleton_dungeon/arches/arch_10",
-          "betterdungeons:skeleton_dungeon/arches/arch_11",
-          "betterdungeons:skeleton_dungeon/arches/arch_2",
-          "betterdungeons:skeleton_dungeon/arches/arch_3",
-          "betterdungeons:skeleton_dungeon/arches/arch_4",
-          "betterdungeons:skeleton_dungeon/arches/arch_5",
-          "betterdungeons:skeleton_dungeon/arches/arch_6",
-          "betterdungeons:skeleton_dungeon/arches/arch_7",
-          "betterdungeons:skeleton_dungeon/arches/arch_8",
-          "betterdungeons:skeleton_dungeon/arches/arch_9",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_1",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_3",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_stone",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_wood",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_0",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_1",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_2",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_3",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_4",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_5",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_6",
-          "betterdungeons:skeleton_dungeon/skeleton_shell",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_0",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_1",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_2",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_0",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_1",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_2",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_4",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_5",
-          "betterdungeons:skeleton_dungeon/stair_bottom/stair_bottom"
+        "basis": "Exact reachable template LootTable references in template-content trace. No nonempty fixed Items lists found in the58 templates. Table source attribution, not measured effective rewards.",
+        "tables": [
+          "betterdungeons:skeleton_dungeon/chests/common",
+          "betterdungeons:skeleton_dungeon/chests/middle"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:skeleton_dungeon/2x3/2x3_0",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_1",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_10",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_2",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_3",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_4",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_5",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_6",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_7",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_8",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_9",
-          "betterdungeons:skeleton_dungeon/2x3/2x3_empty",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_10",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_3",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_4",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_5",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_6",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_7",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_8",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_9",
-          "betterdungeons:skeleton_dungeon/3x3/3x3_empty",
-          "betterdungeons:skeleton_dungeon/arches/arch_0",
-          "betterdungeons:skeleton_dungeon/arches/arch_1",
-          "betterdungeons:skeleton_dungeon/arches/arch_10",
-          "betterdungeons:skeleton_dungeon/arches/arch_11",
-          "betterdungeons:skeleton_dungeon/arches/arch_2",
-          "betterdungeons:skeleton_dungeon/arches/arch_3",
-          "betterdungeons:skeleton_dungeon/arches/arch_4",
-          "betterdungeons:skeleton_dungeon/arches/arch_5",
-          "betterdungeons:skeleton_dungeon/arches/arch_6",
-          "betterdungeons:skeleton_dungeon/arches/arch_7",
-          "betterdungeons:skeleton_dungeon/arches/arch_8",
-          "betterdungeons:skeleton_dungeon/arches/arch_9",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_0",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_1",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_2",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_big_3",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_stone",
-          "betterdungeons:skeleton_dungeon/bridges/bridge_wood",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_0",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_1",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_2",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_3",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_4",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_5",
-          "betterdungeons:skeleton_dungeon/campfire_prop/campfire_prop_6",
-          "betterdungeons:skeleton_dungeon/skeleton_shell",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_0",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_1",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_2",
-          "betterdungeons:skeleton_dungeon/stair1/stair1_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_0",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_1",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_2",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_3",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_4",
-          "betterdungeons:skeleton_dungeon/stair2/stair2_5",
-          "betterdungeons:skeleton_dungeon/stair_bottom/stair_bottom"
-        ],
-        "unresolved_authored_entities": {}
+        "authored": "SkeletonMobSpawnerProcessor replaces ordinary spawner data with skeleton spawn potentials and entity type. Saved pig values are template input, not the effective authored mob.",
+        "basis": "Packaged structure and processor list plus direct processor inspection. No directly saved entities in the58 reachable templates; live populations remain conditional.",
+        "natural_spawn_override": {
+          "bounding_box": "piece",
+          "maxCount": 15,
+          "minCount": 4,
+          "type": "minecraft:skeleton",
+          "weight": 100
+        }
       },
       "name": "betterdungeons Skeleton Dungeon",
       "pool_trace_ids": [
@@ -24061,8 +23963,14 @@
       "structure_ids": [
         "betterdungeons:skeleton_dungeon"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "underground_structures step, uniform absolute start_height-50..-30 and no surface heightmap projection. Initial height is not total structure height.",
+        "value": "Underground complex with downward terrain supports"
+      },
+      "visual_discoverability": {
+        "assessment": "Underground masonry stair/bridge complex; cave exposure or excavation can reveal it, but no surface entrance is established by the selected topology.",
+        "basis": "Packaged underground step, absolute anchorY-50..-30, component trace and terrain-responsive ruined-brick/support processors. Source inference, not human discovery distance."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -24073,29 +23981,79 @@
     },
     "betterdungeons:small_dungeon": {
       "approximate_footprint": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_xz_blocks": [
+        "basis": "One rigid shell with four interior loot-pile connectors. Loot piles are at most2x2x2 and remain within its footprint. Inclusive full-start envelopes in world-bounds corroborate three layouts; rotation can exchange X/Z. No family-frequency claim.",
+        "observation_indexes": [
+          174,
+          268,
+          273,
+          571,
+          657,
+          662
+        ],
+        "observed_xz_blocks": [
           [
             11,
             7
           ],
           [
             11,
-            9
+            11
           ],
           [
             11,
+            9
+          ]
+        ],
+        "template_sizes_xyz": {
+          "small_shell_5x5": [
+            7,
+            7,
+            7
+          ],
+          "small_shell_7x5": [
+            9,
+            7,
+            7
+          ],
+          "small_shell_7x7": [
+            9,
+            7,
+            9
+          ],
+          "small_shell_9x5": [
+            11,
+            7,
+            7
+          ],
+          "small_shell_9x7": [
+            11,
+            7,
+            9
+          ],
+          "small_shell_9x9": [
+            11,
+            7,
             11
           ]
-        ]
+        }
       },
       "approximate_vertical_size": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_y_blocks": [
-          7
-        ]
+        "basis": "All six shells are seven blocks high; interior loot-pile pieces fit within that envelope. Full-start examples agree.",
+        "nominal_room_height_blocks": 7,
+        "observation_indexes": [
+          174,
+          268,
+          273,
+          571,
+          657,
+          662
+        ],
+        "support_extension": "SmallDungeonLegProcessor replaces yellow markers and extends downward through air/fluid until solid terrain or build-height boundary. These terrain-dependent supports can exceed the saved room box. Seven is nominal room height, not fixed total occupied height."
       },
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "authored_or_natural_enemies": {
+        "authored": "Skeleton, spider or zombie ordinary-spawner assignment. No directly saved entities in the16 templates.",
+        "natural": "Conditional ambient biome spawning, with no structure-specific override."
+      },
       "biome_constraints": {
         "betterdungeons:small_dungeon": {
           "biomes": [
@@ -24281,67 +24239,152 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterdungeons:small_dungeon": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "All139 effective small_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+        "value": [
           "minecraft:overworld"
         ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
+        "basis": "Each shell palette/state count contains one ordinary spawner even where no saved spawner block-entity NBT exists. MobSpawnerProcessor replaces its data with the selected type and singleton spawn potentials. Loot-pile templates contain no spawner blocks.",
+        "block": "minecraft:spawner",
+        "processor_entity_alternatives": [
+          "minecraft:skeleton",
+          "minecraft:spider",
+          "minecraft:zombie"
         ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:pig",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "betterdungeons:small_dungeon/shells/small_shell_5x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x5",
-              "betterdungeons:small_dungeon/shells/small_shell_9x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x9"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
-        ],
-        "unresolved_sources": {}
+        "scope": "Authored source counts and assignment, not measured successful spawning.",
+        "template_count_per_shell": 1
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "One rigid shell with four interior loot-pile connectors. Loot piles are at most2x2x2 and remain within its footprint. Inclusive full-start envelopes in world-bounds corroborate three layouts; rotation can exchange X/Z. No family-frequency claim.",
+            "observation_indexes": [
+              174,
+              268,
+              273,
+              571,
+              657,
+              662
+            ],
+            "observed_xz_blocks": [
+              [
+                11,
+                7
+              ],
+              [
+                11,
+                11
+              ],
+              [
+                11,
+                9
+              ]
+            ],
+            "template_sizes_xyz": {
+              "small_shell_5x5": [
+                7,
+                7,
+                7
+              ],
+              "small_shell_7x5": [
+                9,
+                7,
+                7
+              ],
+              "small_shell_7x7": [
+                9,
+                7,
+                9
+              ],
+              "small_shell_9x5": [
+                11,
+                7,
+                7
+              ],
+              "small_shell_9x7": [
+                11,
+                7,
+                9
+              ],
+              "small_shell_9x9": [
+                11,
+                7,
+                11
+              ]
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "All six shells are seven blocks high; interior loot-pile pieces fit within that envelope. Full-start examples agree.",
+            "nominal_room_height_blocks": 7,
+            "observation_indexes": [
+              174,
+              268,
+              273,
+              571,
+              657,
+              662
+            ],
+            "support_extension": "SmallDungeonLegProcessor replaces yellow markers and extends downward through air/fluid until solid terrain or build-height boundary. These terrain-dependent supports can exceed the saved room box. Seven is nominal room height, not fixed total occupied height."
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Skeleton, spider or zombie ordinary-spawner assignment. No directly saved entities in the16 templates.",
+            "natural": "Conditional ambient biome spawning, with no structure-specific override."
+          },
+          "dimension": {
+            "basis": "All139 effective small_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome references.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Each shell palette/state count contains one ordinary spawner even where no saved spawner block-entity NBT exists. MobSpawnerProcessor replaces its data with the selected type and singleton spawn potentials. Loot-pile templates contain no spawner blocks.",
+            "block": "minecraft:spawner",
+            "processor_entity_alternatives": [
+              "minecraft:skeleton",
+              "minecraft:spider",
+              "minecraft:zombie"
+            ],
+            "scope": "Authored source counts and assignment, not measured successful spawning.",
+            "template_count_per_shell": 1
+          },
+          "intended_hostility": {
+            "basis": "Every shell contains one ordinary spawner block; start-pool processor variants assign skeleton, spider or zombie.",
+            "value": "Hostile spawner room"
+          },
+          "loot_table_source": {
+            "basis": "Shell chest NBT references the vanilla table; loot piles1,3,5 reference the provider table in barrels. No nonempty fixed Items or direct entities occur in the16 templates.",
+            "chest_selection": "SmallDungeonChestProcessor preserves candidate chests below frozen minimum1, removes candidates at maximum2, and between limits preserves candidates when nextFloat<=0.2. DungeonContext tracks the count during template placement. These are code/config rules, not guaranteed observed final counts across chunk placement.",
+            "other_rewards": "Ore props remain enabled by frozen Allow Ore Blocks in Corners=true. They are salvage, not extra loot-table sources. Empty pile weighted7/max_count2; each other pile weighted1/max_count1 via YUNG single elements.",
+            "tables": [
+              "minecraft:chests/simple_dungeon",
+              "betterdungeons:small_dungeon/chests/loot_piles"
+            ]
+          },
+          "mob_source": {
+            "authored": "MobSpawnerProcessor sets the spawner entity and singleton spawn potentials from spawner_mob. Six shell sizes each have skeleton/spider/zombie theme entries weighted1/1/2.",
+            "basis": "Packaged small_dungeon pool, three theme processor lists and direct MobSpawnerProcessor.processBlock/lambda inspection. Theme weights describe authored selection, not measured encounters.",
+            "natural": "Empty structure spawn_overrides; ambient spawning remains biome/world-dependent."
+          },
+          "underground_surface_classification": {
+            "basis": "Packaged underground_structures, start_height uniform absolute-50..50 and no surface heightmap projection. Initial anchor Y is not total height.",
+            "value": "Underground room with terrain-dependent support and ceiling treatment"
+          },
+          "visual_discoverability": {
+            "assessment": "Compact underground masonry room, potentially visible through cave openings or excavation; no surface entrance or exterior landmark in this topology.",
+            "basis": "Underground generation step, absolute start range-50..50, room/loot-pile topology and ceiling/terrain processors. Source inference, not measured human discovery distance."
+          }
+        },
         "evidence": {
+          "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml": "3bedf4e1c213bf204faf5f56bdd22f2fa7b045cbcb3da2d6285a4bdb116aeb37",
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/dungeons-provider/identities.json": "a5b208a65d4a97e7fb79d6a1211cc90517c7a5dce8d03bfe5c697bdc0392718f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "betterdungeons:small_dungeon",
         "generation_settings": {
@@ -24358,93 +24401,44 @@
         },
         "missing_components": [],
         "name": "betterdungeons Small Dungeon",
+        "processor_inspection": {
+          "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+          "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+          "basis": "Direct pinned-javap inspection; methods and derivations recorded in sources/dungeons-provider/README.md, Small Dungeon assessment.",
+          "members": {
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/MobSpawnerProcessor.class": "a80ec9cbf16b425c8fc6cfc1a31893f82351e9a4eaadec31010e16b2eb92d8f1",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingLampPropProcessor.class": "a405894e116375067f6359681b921319b73b8c2dbbf78d626dc809b3b00ca372",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingProcessor.class": "e69b492c362b960257ad9239c914f9c11a8c33af61bceb230e463b223828e462",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCeilingPropProcessor.class": "1bc9b2df852be45fb161e98c2b66b74d7a97fe22a2605109a0cd11421ff7e11e",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonChestProcessor.class": "a6c73478528608fe479d3a8c3f0613084e8a4cd8658acf0eaa561f686e50f2dd",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonCobblestoneProcessor.class": "066f2c3272b2309483b6b7cb9a863c63fc0b613d38c007345620ad59dd6f8689",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonLegProcessor.class": "1a79e53f4f3247cc6da03659283abd280c1652e54f34b1b9996e3c7922543557",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/small_dungeon/SmallDungeonOreProcessor.class": "a5b3e83644bf320552f20c619f48206c8e7841c8612b47119cdba9dd4d03ed4f"
+          }
+        },
         "rationale": "A small overworld dungeon assembly with its own start pool and anchor. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
         "start_pool": "betterdungeons:small_dungeon",
         "structure_ids": [
           "betterdungeons:small_dungeon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Every shell contains one ordinary spawner block; start-pool processor variants assign skeleton, spider or zombie.",
+        "value": "Hostile spawner room"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-              "betterdungeons:small_dungeon/loot_piles/loot_pile_5"
-            ],
-            "value": "betterdungeons:small_dungeon/chests/loot_piles"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:small_dungeon/shells/small_shell_5x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x5",
-              "betterdungeons:small_dungeon/shells/small_shell_7x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x5",
-              "betterdungeons:small_dungeon/shells/small_shell_9x7",
-              "betterdungeons:small_dungeon/shells/small_shell_9x9"
-            ],
-            "value": "minecraft:chests/simple_dungeon"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
+        "basis": "Shell chest NBT references the vanilla table; loot piles1,3,5 reference the provider table in barrels. No nonempty fixed Items or direct entities occur in the16 templates.",
+        "chest_selection": "SmallDungeonChestProcessor preserves candidate chests below frozen minimum1, removes candidates at maximum2, and between limits preserves candidates when nextFloat<=0.2. DungeonContext tracks the count during template placement. These are code/config rules, not guaranteed observed final counts across chunk placement.",
+        "other_rewards": "Ore props remain enabled by frozen Allow Ore Blocks in Corners=true. They are salvage, not extra loot-table sources. Empty pile weighted7/max_count2; each other pile weighted1/max_count1 via YUNG single elements.",
+        "tables": [
+          "minecraft:chests/simple_dungeon",
+          "betterdungeons:small_dungeon/chests/loot_piles"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_0",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_1",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_2",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_3",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_4",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_5",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_6",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_7",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_8",
-          "betterdungeons:small_dungeon/loot_piles/loot_pile_empty",
-          "betterdungeons:small_dungeon/shells/small_shell_5x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x5",
-          "betterdungeons:small_dungeon/shells/small_shell_7x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x5",
-          "betterdungeons:small_dungeon/shells/small_shell_9x7",
-          "betterdungeons:small_dungeon/shells/small_shell_9x9"
-        ],
-        "unresolved_authored_entities": {}
+        "authored": "MobSpawnerProcessor sets the spawner entity and singleton spawn potentials from spawner_mob. Six shell sizes each have skeleton/spider/zombie theme entries weighted1/1/2.",
+        "basis": "Packaged small_dungeon pool, three theme processor lists and direct MobSpawnerProcessor.processBlock/lambda inspection. Theme weights describe authored selection, not measured encounters.",
+        "natural": "Empty structure spawn_overrides; ambient spawning remains biome/world-dependent."
       },
       "name": "betterdungeons Small Dungeon",
       "pool_trace_ids": [
@@ -24454,8 +24448,14 @@
       "structure_ids": [
         "betterdungeons:small_dungeon"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "Packaged underground_structures, start_height uniform absolute-50..50 and no surface heightmap projection. Initial anchor Y is not total height.",
+        "value": "Underground room with terrain-dependent support and ceiling treatment"
+      },
+      "visual_discoverability": {
+        "assessment": "Compact underground masonry room, potentially visible through cave openings or excavation; no surface entrance or exterior landmark in this topology.",
+        "basis": "Underground generation step, absolute start range-50..50, room/loot-pile topology and ceiling/terrain processors. Source inference, not measured human discovery distance."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": [
@@ -24632,8 +24632,22 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "contribution_disposition": "Registered but inactive in the frozen stack: Enable Small Nether Dungeons=false makes SmallNetherDungeonStructure.findGenerationPoint return Optional.empty before assembly. Retain the root and83 templates for coverage; exclude from active canonical families.",
+        "default_basis": {
+          "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+          "binding": "ConfigSmallNetherDungeonsNeoForge constructor offsets26..32 defines the exact key and stores enabled; ConfigModuleNeoForge offsets171..189 loads the value into CONFIG.smallNetherDungeons.enabled. SmallNetherDungeonStructure.findGenerationPoint offsets0..15 returns empty when false.",
+          "configuration_file": "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml",
+          "configuration_key": "YUNG's Better Dungeons.Small Nether Dungeons.Enable Small Nether Dungeons",
+          "inspected_class_member": "com/yungnickyoung/minecraft/betterdungeons/config/ConfigSmallNetherDungeonsNeoForge.class",
+          "inspected_class_sha256": "4c003a33419279dc99568d133a0d633f4964cc1429dfdd176438cc18bab48d92",
+          "scope": "Normal generation under the frozen configuration. Registry presence and available packaged components do not establish active generation; no claim about changed configurations or pre-existing worlds.",
+          "value": false
+        },
         "evidence": {
+          "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml": "3bedf4e1c213bf204faf5f56bdd22f2fa7b045cbcb3da2d6285a4bdb116aeb37",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/betterdungeons-code/identities.json": "c82c912cff651c87b11db309057ff0cd5c2f00ee5e0e12146ad645ac0f563036",
+          "evidence/item-8/sources/dungeons-provider/identities.json": "a5b208a65d4a97e7fb79d6a1211cc90517c7a5dce8d03bfe5c697bdc0392718f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
         },
@@ -25330,9 +25344,37 @@
       }
     },
     "betterdungeons:zombie_dungeon": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "archive_manifest": "evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json",
+        "basis": "Inclusive union of768 saved pieces in one full-start seed42 example, chunk127,-54. Includes connected branches beyond the start room.",
+        "decoded_line": 1017,
+        "decoded_relative_path": "chunks.jsonl",
+        "envelope": [
+          1963,
+          25,
+          -924,
+          2061,
+          50,
+          -801
+        ],
+        "observed_xz_blocks": [
+          99,
+          124
+        ],
+        "scope": "Illustrative saved assembly envelope, not occupied volume, family extrema or complete placement of distant components. Main-stairs processor writes outside piece bounds and can extend the footprint; frozen staircase length setting20 is an input, not a measured extra extent."
+      },
+      "approximate_vertical_size": {
+        "archive_manifest": "evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json",
+        "basis": "Inclusive saved-piece maxY-minY+1.",
+        "decoded_line": 1017,
+        "decoded_relative_path": "chunks.jsonl",
+        "extensions": "Conditional surface staircase and terrain-support writes can extend above/below the saved assembly box. The source/configuration derivation is recorded with discoverability/classification;26 is not fixed total occupied height.",
+        "observed_piece_height_blocks": 26
+      },
+      "authored_or_natural_enemies": {
+        "authored": "Zombie ordinary-spawner assignment plus skeleton tombstone-spawner assignment. No direct saved entities in the69 available templates.",
+        "natural": "Piece-bounded zombie monster spawn override, conditional on runtime spawning rules."
+      },
       "biome_constraints": {
         "betterdungeons:zombie_dungeon": {
           "biomes": [
@@ -25518,121 +25560,118 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterdungeons:zombie_dungeon": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "139 effective zombie_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome tags.",
+        "value": [
+          "minecraft:overworld"
+        ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
+        "basis": "Each listed template has one ordinary spawner or one black-glass marker. Main/cubby processor order applies zombie spawner processing before tombstone marker conversion. The new tombstone skeleton is therefore not reprocessed as a zombie in this list.",
+        "ordinary_zombie_templates": [
+          "betterdungeons:zombie_dungeon/zombie_start",
+          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2"
         ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [
-          {
-            "entity_id": "minecraft:pig",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "betterdungeons:zombie_dungeon/zombie_start"
-            ]
-          },
-          {
-            "entity_id": "minecraft:zombie",
-            "mode": "ordinary",
-            "spawner_id": "minecraft:mob_spawner",
-            "templates": [
-              "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2"
-            ]
-          }
-        ],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_1",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_2",
-          "betterdungeons:zombie_dungeon/cubby/cubby_double_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_single_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_sm_single_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_2",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_3",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_4",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_5",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_6",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_7",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_8",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_9",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_empty",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_0",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_1",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_stairs",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_specialroom_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_0",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_1",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_2",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_4",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_1",
+        "scope": "Possible authored components, not per-dungeon totals. Saved sword data is not a tested combat/loadout result. Missing big_stairs_crumbled_0 remains a separate missing-template defect.",
+        "skeleton_marker_templates": [
           "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_closed",
           "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1",
-          "betterdungeons:zombie_dungeon/zombie_start"
-        ],
-        "unresolved_sources": {}
+          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1"
+        ]
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "archive_manifest": "evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json",
+            "basis": "Inclusive union of768 saved pieces in one full-start seed42 example, chunk127,-54. Includes connected branches beyond the start room.",
+            "decoded_line": 1017,
+            "decoded_relative_path": "chunks.jsonl",
+            "envelope": [
+              1963,
+              25,
+              -924,
+              2061,
+              50,
+              -801
+            ],
+            "observed_xz_blocks": [
+              99,
+              124
+            ],
+            "scope": "Illustrative saved assembly envelope, not occupied volume, family extrema or complete placement of distant components. Main-stairs processor writes outside piece bounds and can extend the footprint; frozen staircase length setting20 is an input, not a measured extra extent."
+          },
+          "approximate_vertical_size": {
+            "archive_manifest": "evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json",
+            "basis": "Inclusive saved-piece maxY-minY+1.",
+            "decoded_line": 1017,
+            "decoded_relative_path": "chunks.jsonl",
+            "extensions": "Conditional surface staircase and terrain-support writes can extend above/below the saved assembly box. The source/configuration derivation is recorded with discoverability/classification;26 is not fixed total occupied height.",
+            "observed_piece_height_blocks": 26
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Zombie ordinary-spawner assignment plus skeleton tombstone-spawner assignment. No direct saved entities in the69 available templates.",
+            "natural": "Piece-bounded zombie monster spawn override, conditional on runtime spawning rules."
+          },
+          "dimension": {
+            "basis": "139 effective zombie_dungeon biomes intersect only the captured Overworld; no missing required or unresolved biome tags.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Each listed template has one ordinary spawner or one black-glass marker. Main/cubby processor order applies zombie spawner processing before tombstone marker conversion. The new tombstone skeleton is therefore not reprocessed as a zombie in this list.",
+            "ordinary_zombie_templates": [
+              "betterdungeons:zombie_dungeon/zombie_start",
+              "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2"
+            ],
+            "scope": "Possible authored components, not per-dungeon totals. Saved sword data is not a tested combat/loadout result. Missing big_stairs_crumbled_0 remains a separate missing-template defect.",
+            "skeleton_marker_templates": [
+              "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_closed",
+              "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_0",
+              "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1"
+            ]
+          },
+          "intended_hostility": {
+            "basis": "Explicit zombie processor, separate skeleton tombstone processor and zombie natural monster override.",
+            "value": "Hostile zombie dungeon with skeleton tombstone spawners"
+          },
+          "loot_table_source": {
+            "basis": "Exact reachable LootTable references across69 available templates. No nonempty fixed Items or directly saved entities were found. This identifies sources, not effective reward amounts.",
+            "tables": [
+              "betterdungeons:zombie_dungeon/chests/common",
+              "betterdungeons:zombie_dungeon/chests/special",
+              "betterdungeons:zombie_dungeon/chests/tombstone"
+            ]
+          },
+          "mob_source": {
+            "authored": "ZombieMobSpawnerProcessor replaces ordinary spawner NBT with zombie singleton spawn potentials, EntityType.ZOMBIE and MaxNearbyEntities8. ZombieTombstoneSpawnerProcessor replaces black-glass markers with skeleton spawners and writes an iron-sword item to nextSpawnData.HandItems.",
+            "basis": "Packaged root/processor lists, exact processor code and selected template markers. Tombstone skeletons are not zombies despite the processor family name; saved pig NBT is not effective ordinary-spawner identity.",
+            "natural_spawn_override": {
+              "bounding_box": "piece",
+              "maxCount": 15,
+              "minCount": 4,
+              "type": "minecraft:zombie",
+              "weight": 100
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "underground_structures step, absolute anchorY50..51, no surface heightmap projection on the root; the main-stairs processor independently consults surface height. Leg/stair processors also adapt to surrounding terrain. Initial Y is not total height.",
+            "value": "Underground complex with conditional surface staircase and terrain supports"
+          },
+          "visual_discoverability": {
+            "assessment": "Underground chambers/tombs with a conditional surface staircase; terrain can expose an entry cue, while interior sections remain concealed.",
+            "basis": "ZombieMainStairsProcessor consumes a warped-stairs marker, WORLD_SURFACE_WG height and frozen max surface staircase length20. It writes staircase blocks outside the source template. This is source-supported possibility, not a measured visible entrance or discovery distance."
+          }
+        },
         "evidence": {
+          "evidence/item-6/frozen/config/betterdungeons-neoforge-1_21.toml": "3bedf4e1c213bf204faf5f56bdd22f2fa7b045cbcb3da2d6285a4bdb116aeb37",
+          "evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json": "ce34d16c96e3b45d956f863727ad51aca78bd6bdc1c8703c05ad946970f04e94",
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+          "evidence/item-8/sources/dungeons-provider/identities.json": "a5b208a65d4a97e7fb79d6a1211cc90517c7a5dce8d03bfe5c697bdc0392718f",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
         },
         "family_id": "betterdungeons:zombie_dungeon",
         "generation_settings": {
@@ -25654,202 +25693,48 @@
           }
         ],
         "name": "betterdungeons Zombie Dungeon",
+        "processor_inspection": {
+          "archive": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+          "archive_sha256": "61816c3b7c9d92c6b44f93dce87ceb0a22827f20285d5d9c4d10d519d734de04",
+          "basis": "Direct pinned-javap inspection, with named methods/derivations in sources/dungeons-provider/README.md, Zombie Dungeon content and placement.",
+          "members": {
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonCubbyProcessor.class": "6aa6d3e7c294a45777b5eef2427efbd9c36df3234bd4e611fa5dd71c113430ad",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonLegProcessor.class": "7041053d90ae4665c22fe71e245220669aa6d630e2a8bc33036846b3c356cd83",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieDungeonStairProcessor.class": "db827e2470ced6326b5ab850ba330bc699872fc5b5290b233ed20e4883ba23ce",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieMainStairsProcessor.class": "7ea1a4a2fa18a94b6006f7954aae3f2a27f3608e5fcbb463059f5ad250afb6bb",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieMobSpawnerProcessor.class": "d73f53209796bc271040ed9cd02a9ff2da48b238e40be172630b0837632c3689",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieRotProcessor.class": "5946e6045d7563ff2ce4f530ce2dc501cda07ef4af261778c77af6e82c971430",
+            "com/yungnickyoung/minecraft/betterdungeons/world/processor/zombie_dungeon/ZombieTombstoneSpawnerProcessor.class": "9773c0e0869b0310153b223477c05f3f3da06326b807802253e952e51924003e"
+          }
+        },
         "rationale": "A separately rooted zombie-dungeon assembly, with its own anchor and zombie spawn override. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
         "start_pool": "betterdungeons:zombie_dungeon",
         "structure_ids": [
           "betterdungeons:zombie_dungeon"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Explicit zombie processor, separate skeleton tombstone processor and zombie natural monster override.",
+        "value": "Hostile zombie dungeon with skeleton tombstone spawners"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_0",
-              "betterdungeons:zombie_dungeon/zombie_start"
-            ],
-            "value": "betterdungeons:zombie_dungeon/chests/common"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:zombie_dungeon/floor1/room/floor1_specialroom_0"
-            ],
-            "value": "betterdungeons:zombie_dungeon/chests/special"
-          },
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_closed",
-              "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_0",
-              "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_1"
-            ],
-            "value": "betterdungeons:zombie_dungeon/chests/tombstone"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_1",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_2",
-          "betterdungeons:zombie_dungeon/cubby/cubby_double_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_single_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_sm_single_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_2",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_3",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_4",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_5",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_6",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_7",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_8",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_9",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_empty",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_0",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_1",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_stairs",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_specialroom_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_0",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_1",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_2",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_4",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1",
-          "betterdungeons:zombie_dungeon/zombie_start"
+        "basis": "Exact reachable LootTable references across69 available templates. No nonempty fixed Items or directly saved entities were found. This identifies sources, not effective reward amounts.",
+        "tables": [
+          "betterdungeons:zombie_dungeon/chests/common",
+          "betterdungeons:zombie_dungeon/chests/special",
+          "betterdungeons:zombie_dungeon/chests/tombstone"
         ]
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {},
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_0",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_1",
-          "betterdungeons:zombie_dungeon/big_stairs/big_stairs_crumbled_2",
-          "betterdungeons:zombie_dungeon/cubby/cubby_double_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_single_0",
-          "betterdungeons:zombie_dungeon/cubby/cubby_sm_single_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_2",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_3",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_4",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_5",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_6",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_7",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_8",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_9",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_empty",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_0",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_1",
-          "betterdungeons:zombie_dungeon/cubby_prop/cubby_prop_spawner_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_0",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_1",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_2",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_room_stairs",
-          "betterdungeons:zombie_dungeon/floor1/room/floor1_specialroom_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor1/terminator/floor1_room_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_0",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_1",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_2",
-          "betterdungeons:zombie_dungeon/floor2/room/floor2_room_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_hall_terminator_4",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_0",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_1",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_2",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_3",
-          "betterdungeons:zombie_dungeon/floor2/terminator/floor2_room_terminator_4",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_bow_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_chest_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_empty_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_flower_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_skull_open_1",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_closed",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_0",
-          "betterdungeons:zombie_dungeon/tombstone/tombstone_spawner_open_1",
-          "betterdungeons:zombie_dungeon/zombie_start"
-        ],
-        "unresolved_authored_entities": {}
+        "authored": "ZombieMobSpawnerProcessor replaces ordinary spawner NBT with zombie singleton spawn potentials, EntityType.ZOMBIE and MaxNearbyEntities8. ZombieTombstoneSpawnerProcessor replaces black-glass markers with skeleton spawners and writes an iron-sword item to nextSpawnData.HandItems.",
+        "basis": "Packaged root/processor lists, exact processor code and selected template markers. Tombstone skeletons are not zombies despite the processor family name; saved pig NBT is not effective ordinary-spawner identity.",
+        "natural_spawn_override": {
+          "bounding_box": "piece",
+          "maxCount": 15,
+          "minCount": 4,
+          "type": "minecraft:zombie",
+          "weight": 100
+        }
       },
       "name": "betterdungeons Zombie Dungeon",
       "pool_trace_ids": [
@@ -25859,8 +25744,14 @@
       "structure_ids": [
         "betterdungeons:zombie_dungeon"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "underground_structures step, absolute anchorY50..51, no surface heightmap projection on the root; the main-stairs processor independently consults surface height. Leg/stair processors also adapt to surrounding terrain. Initial Y is not total height.",
+        "value": "Underground complex with conditional surface staircase and terrain supports"
+      },
+      "visual_discoverability": {
+        "assessment": "Underground chambers/tombs with a conditional surface staircase; terrain can expose an entry cue, while interior sections remain concealed.",
+        "basis": "ZombieMainStairsProcessor consumes a warped-stairs marker, WORLD_SURFACE_WG height and frozen max surface staircase length20. It writes staircase blocks outside the source template. This is source-supported possibility, not a measured visible entrance or discovery distance."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -30595,9 +30486,28 @@
       }
     },
     "betterwitchhuts:witch_circle": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z.",
+        "template_sizes_xyz": {
+          "betterwitchhuts:witch_circle": [
+            9,
+            5,
+            9
+          ]
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+        "nominal_template_heights_blocks": {
+          "betterwitchhuts:witch_circle": 5
+        },
+        "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+      },
+      "authored_or_natural_enemies": {
+        "authored": "Saved persistent witch in the named mob component.",
+        "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+        "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+      },
       "biome_constraints": {
         "betterwitchhuts:witch_circle": {
           "biomes": [
@@ -30614,38 +30524,106 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterwitchhuts:witch_circle": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags.",
+        "value": [
+          "minecraft:overworld"
+        ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_circle"
-        ],
-        "unresolved_sources": {}
+        "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations.",
+        "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners."
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z.",
+            "template_sizes_xyz": {
+              "betterwitchhuts:witch_circle": [
+                9,
+                5,
+                9
+              ]
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+            "nominal_template_heights_blocks": {
+              "betterwitchhuts:witch_circle": 5
+            },
+            "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Saved persistent witch in the named mob component.",
+            "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+            "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+          },
+          "dimension": {
+            "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations.",
+            "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners."
+          },
+          "intended_hostility": {
+            "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name.",
+            "value": "Hostile witch site with a nonhostile cat"
+          },
+          "loot_table_source": {
+            "basis": "Circle has an empty campfire inventory, cauldron and two mob connectors; no brewing stand. Main processors do not add container loot tables. Entity drops and salvage are separate reward sources.",
+            "value": "No authored container loot-table reference in the reachable circle/cat/witch templates."
+          },
+          "mob_source": {
+            "authored_templates": {
+              "betterwitchhuts:cat": {
+                "entity": "minecraft:cat",
+                "health": 10,
+                "persistence_required": true,
+                "variant": "minecraft:all_black"
+              },
+              "betterwitchhuts:witch": {
+                "entity": "minecraft:witch",
+                "health": 26,
+                "persistence_required": true
+              }
+            },
+            "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional.",
+            "natural_spawn_overrides": {
+              "creature": {
+                "bounding_box": "piece",
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:cat",
+                "weight": 1
+              },
+              "monster": {
+                "bounding_box": "piece",
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:witch",
+                "weight": 1
+              }
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon.",
+            "value": "Surface structure with downward terrain supports"
+          },
+          "visual_discoverability": {
+            "assessment": "Small low masonry circle with campfire and cauldron; less vertical silhouette than a hut and potentially obscured by swamp vegetation.",
+            "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/witch-hut-provider/identities.json": "a5945737834c9c643fa966de790d0e63f40c1d4df9b301b4856ffb66e1c9e098"
         },
         "family_id": "betterwitchhuts:witch_circle",
         "generation_settings": {
@@ -30663,46 +30641,45 @@
           "betterwitchhuts:witch_circle"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name.",
+        "value": "Hostile witch site with a nonhostile cat"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_circle"
-        ]
+        "basis": "Circle has an empty campfire inventory, cauldron and two mob connectors; no brewing stand. Main processors do not add container loot tables. Entity drops and salvage are separate reward sources.",
+        "value": "No authored container loot-table reference in the reachable circle/cat/witch templates."
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {
-          "minecraft:cat": [
-            "betterwitchhuts:cat"
-          ],
-          "minecraft:witch": [
-            "betterwitchhuts:witch"
-          ]
+        "authored_templates": {
+          "betterwitchhuts:cat": {
+            "entity": "minecraft:cat",
+            "health": 10,
+            "persistence_required": true,
+            "variant": "minecraft:all_black"
+          },
+          "betterwitchhuts:witch": {
+            "entity": "minecraft:witch",
+            "health": 26,
+            "persistence_required": true
+          }
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_circle"
-        ],
-        "unresolved_authored_entities": {}
+        "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional.",
+        "natural_spawn_overrides": {
+          "creature": {
+            "bounding_box": "piece",
+            "maxCount": 1,
+            "minCount": 1,
+            "type": "minecraft:cat",
+            "weight": 1
+          },
+          "monster": {
+            "bounding_box": "piece",
+            "maxCount": 1,
+            "minCount": 1,
+            "type": "minecraft:witch",
+            "weight": 1
+          }
+        }
       },
       "name": "betterwitchhuts Witch Circle",
       "pool_trace_ids": [
@@ -30712,17 +30689,54 @@
       "structure_ids": [
         "betterwitchhuts:witch_circle"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon.",
+        "value": "Surface structure with downward terrain supports"
+      },
+      "visual_discoverability": {
+        "assessment": "Small low masonry circle with campfire and cauldron; less vertical silhouette than a hut and potentially obscured by swamp vegetation.",
+        "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
       }
     },
     "betterwitchhuts:witch_hut": {
-      "approximate_footprint": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "approximate_vertical_size": "UNKNOWN: no retained full-start-chunk envelope observation",
-      "authored_or_natural_enemies": "UNKNOWN: requires generation and natural-spawn disposition",
+      "approximate_footprint": {
+        "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z.",
+        "template_sizes_xyz": {
+          "betterwitchhuts:witch_hut_double": [
+            15,
+            9,
+            13
+          ],
+          "betterwitchhuts:witch_hut_lg": [
+            11,
+            7,
+            11
+          ],
+          "betterwitchhuts:witch_hut_sm": [
+            7,
+            8,
+            9
+          ]
+        }
+      },
+      "approximate_vertical_size": {
+        "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+        "nominal_template_heights_blocks": {
+          "betterwitchhuts:witch_hut_double": 9,
+          "betterwitchhuts:witch_hut_lg": 7,
+          "betterwitchhuts:witch_hut_sm": 8
+        },
+        "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+      },
+      "authored_or_natural_enemies": {
+        "authored": "Saved persistent witch in the named mob component.",
+        "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+        "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+      },
       "biome_constraints": {
         "betterwitchhuts:witch_hut": {
           "biomes": [
@@ -30740,40 +30754,131 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterwitchhuts:witch_hut": [
-            "minecraft:overworld"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags.",
+        "value": [
+          "minecraft:overworld"
+        ]
       },
       "generated_spawners": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "spawner_blocks",
-          "generation_markers"
-        ],
-        "generation_marker_templates": [],
-        "packaged_entity_sources": [],
-        "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_hut_double",
-          "betterwitchhuts:witch_hut_lg",
-          "betterwitchhuts:witch_hut_sm"
-        ],
-        "unresolved_sources": {}
+        "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations.",
+        "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners."
       },
       "grouping_decision": {
+        "attributes": {
+          "approximate_footprint": {
+            "basis": "One rigid architecture template plus interior one-block-wide witch/cat pieces. All mob connectors lie inside the architecture footprint. Rotation can exchange X/Z; support processors extend vertically at the same X/Z.",
+            "template_sizes_xyz": {
+              "betterwitchhuts:witch_hut_double": [
+                15,
+                9,
+                13
+              ],
+              "betterwitchhuts:witch_hut_lg": [
+                11,
+                7,
+                11
+              ],
+              "betterwitchhuts:witch_hut_sm": [
+                7,
+                8,
+                9
+              ]
+            }
+          },
+          "approximate_vertical_size": {
+            "basis": "Interior upward mob connectors add contained cat1x2x1 and witch1x3x1 pieces. Hut connector Y values2..4 or circleY1 place their tops within the architecture envelope.",
+            "nominal_template_heights_blocks": {
+              "betterwitchhuts:witch_hut_double": 9,
+              "betterwitchhuts:witch_hut_lg": 7,
+              "betterwitchhuts:witch_hut_sm": 8
+            },
+            "support_extension": "Additional terrain-dependent downward supports are outside nominal template height. LegProcessor/FenceLegProcessor extend through air or fluid until solid terrain or build-height boundary; WitchCircleProcessor similarly extends masonry. This is the supported size description, not a fixed total occupied height."
+          },
+          "authored_or_natural_enemies": {
+            "authored": "Saved persistent witch in the named mob component.",
+            "natural": "Piece-bounded witch monster spawning explicitly enabled by the structure override.",
+            "scope": "Both sources exist; no claim about measured counts or successful spawning in every instance."
+          },
+          "dimension": {
+            "basis": "Effective biome tag intersection with captured dimension-biome catalog. Hut: swamp and mangrove_swamp; circle: swamp. No unresolved or missing required biome tags.",
+            "value": [
+              "minecraft:overworld"
+            ]
+          },
+          "generated_spawners": {
+            "basis": "Complete selected template palettes/block entities, template-content trace and retained processor implementations.",
+            "value": "No ordinary or trial spawner blocks in any reachable template; the five registered main processors modify supports, masonry, plants and brewing-stand contents, not entity spawners."
+          },
+          "intended_hostility": {
+            "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name.",
+            "value": "Hostile witch site with a nonhostile cat"
+          },
+          "loot_table_source": {
+            "additional_source": "BrewingStandProcessor populates the one brewing stand in each hut template. Five ingredient/potion combinations: glistering_melon_slice/healing, sugar/swiftness, pufferfish/water_breathing, golden_carrot/night_vision, phantom_membrane/slow_falling. Direct item generation, not another loot table.",
+            "basis": "Reachable NBT LootTable fields, packaged chests/hut_0.json and preserved BrewingStandProcessor.populateItemsList/addBrewingRecipe. Exact source serialization is retained; this does not assert runtime survival or effective reward amounts.",
+            "table": "betterwitchhuts:chests/hut_0",
+            "template_references": {
+              "witch_hut_double": [
+                "block_entities/1",
+                "block_entities/5",
+                "block_entities/6"
+              ],
+              "witch_hut_lg": [
+                "block_entities/2",
+                "block_entities/5"
+              ],
+              "witch_hut_sm": []
+            }
+          },
+          "mob_source": {
+            "authored_templates": {
+              "betterwitchhuts:cat": {
+                "entity": "minecraft:cat",
+                "health": 10,
+                "persistence_required": true,
+                "variant": "minecraft:all_black"
+              },
+              "betterwitchhuts:witch": {
+                "entity": "minecraft:witch",
+                "health": 26,
+                "persistence_required": true
+              }
+            },
+            "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional.",
+            "natural_spawn_overrides": {
+              "creature": {
+                "bounding_box": "piece",
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:cat",
+                "weight": 1
+              },
+              "monster": {
+                "bounding_box": "piece",
+                "maxCount": 1,
+                "minCount": 1,
+                "type": "minecraft:witch",
+                "weight": 1
+              }
+            }
+          },
+          "underground_surface_classification": {
+            "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon.",
+            "value": "Surface structure with downward terrain supports"
+          },
+          "visual_discoverability": {
+            "assessment": "Surface wooden hut with roof and supports; vegetation and swamp terrain can obscure it.",
+            "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+          }
+        },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
-          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5"
+          "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+          "evidence/item-8/sources/witch-hut-provider/identities.json": "a5945737834c9c643fa966de790d0e63f40c1d4df9b301b4856ffb66e1c9e098"
         },
         "family_id": "betterwitchhuts:witch_hut",
         "generation_settings": {
@@ -30791,59 +30896,58 @@
           "betterwitchhuts:witch_hut"
         ]
       },
-      "intended_hostility": "UNKNOWN",
+      "intended_hostility": {
+        "basis": "Explicit authored witch entity and piece-bounded witch monster spawn override, not inference from the family name.",
+        "value": "Hostile witch site with a nonhostile cat"
+      },
       "loot_table_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "custom_generation": {},
-        "fields": [
-          "loot_references"
-        ],
-        "packaged_references": [
-          {
-            "field": "LootTable",
-            "templates": [
-              "betterwitchhuts:witch_hut_double",
-              "betterwitchhuts:witch_hut_lg"
-            ],
-            "value": "betterwitchhuts:chests/hut_0"
-          }
-        ],
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_hut_double",
-          "betterwitchhuts:witch_hut_lg",
-          "betterwitchhuts:witch_hut_sm"
-        ]
+        "additional_source": "BrewingStandProcessor populates the one brewing stand in each hut template. Five ingredient/potion combinations: glistering_melon_slice/healing, sugar/swiftness, pufferfish/water_breathing, golden_carrot/night_vision, phantom_membrane/slow_falling. Direct item generation, not another loot table.",
+        "basis": "Reachable NBT LootTable fields, packaged chests/hut_0.json and preserved BrewingStandProcessor.populateItemsList/addBrewingRecipe. Exact source serialization is retained; this does not assert runtime survival or effective reward amounts.",
+        "table": "betterwitchhuts:chests/hut_0",
+        "template_references": {
+          "witch_hut_double": [
+            "block_entities/1",
+            "block_entities/5",
+            "block_entities/6"
+          ],
+          "witch_hut_lg": [
+            "block_entities/2",
+            "block_entities/5"
+          ],
+          "witch_hut_sm": []
+        }
       },
       "mob_source": {
-        "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
-        "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
-        "custom_generation": {},
-        "fields": [
-          "authored_entities",
-          "spawner_blocks",
-          "generation_markers",
-          "unresolved_entities"
-        ],
-        "packaged_authored_entity_templates": {
-          "minecraft:cat": [
-            "betterwitchhuts:cat"
-          ],
-          "minecraft:witch": [
-            "betterwitchhuts:witch"
-          ]
+        "authored_templates": {
+          "betterwitchhuts:cat": {
+            "entity": "minecraft:cat",
+            "health": 10,
+            "persistence_required": true,
+            "variant": "minecraft:all_black"
+          },
+          "betterwitchhuts:witch": {
+            "entity": "minecraft:witch",
+            "health": 26,
+            "persistence_required": true
+          }
         },
-        "status": "packaged possibilities; effective generation and injections unresolved",
-        "template_ids": [
-          "betterwitchhuts:cat",
-          "betterwitchhuts:witch",
-          "betterwitchhuts:witch_hut_double",
-          "betterwitchhuts:witch_hut_lg",
-          "betterwitchhuts:witch_hut_sm"
-        ],
-        "unresolved_authored_entities": {}
+        "basis": "Packaged structure definitions, mobs pool and saved entity NBT. Each architecture template targets one witch and one cat by connector name; equal pool weights do not make these targets interchangeable. Live population is conditional.",
+        "natural_spawn_overrides": {
+          "creature": {
+            "bounding_box": "piece",
+            "maxCount": 1,
+            "minCount": 1,
+            "type": "minecraft:cat",
+            "weight": 1
+          },
+          "monster": {
+            "bounding_box": "piece",
+            "maxCount": 1,
+            "minCount": 1,
+            "type": "minecraft:witch",
+            "weight": 1
+          }
+        }
       },
       "name": "betterwitchhuts Witch Hut",
       "pool_trace_ids": [
@@ -30853,8 +30957,14 @@
       "structure_ids": [
         "betterwitchhuts:witch_hut"
       ],
-      "underground_surface_classification": "UNKNOWN",
-      "visual_discoverability": "UNKNOWN",
+      "underground_surface_classification": {
+        "basis": "surface_structures step and WORLD_SURFACE_WG projection; start offset+1 for hut,0 for circle. Supports do not make the authored site an underground dungeon.",
+        "value": "Surface structure with downward terrain supports"
+      },
+      "visual_discoverability": {
+        "assessment": "Surface wooden hut with roof and supports; vegetation and swamp terrain can obscure it.",
+        "basis": "Architecture palette/size and WORLD_SURFACE_WG placement. Source-derived description, not measured sight distance or human exploration pacing."
+      },
       "world_observations": {
         "artifact": "evidence/item-8/sources/world-bounds.json.gz",
         "observation_indexes": []
@@ -230900,7 +231010,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "b56350281c8a25624037f8d46fe15287238bd47926517dfb21cb2f7123f18a01",
+    "evidence/item-8/family-decisions.json": "fe4f2223968e30231694564602a526d398c03abf7b8e0b62612ac23d75311ac0",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
