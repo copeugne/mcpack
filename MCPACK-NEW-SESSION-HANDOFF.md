@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Nexus resolves to one family with six alternatives after completed visual and
+content comparison. Preserve sculk extents/entities, pool weights, processor
+loot and spawner declarations; raw pig SpawnData is not the effective mob claim.
+Focused IDAS and scoped checks pass. Canonical backlog: 16, all IDAS. Inventory
+refresh follows. Attributes, nonregistry and final delivery remain open. No image
+conversion remains running.
+
 Inventory matches 9f4bd417 and reproduces exactly. Canonical backlog: 17, all
 IDAS. All 887 roots and full variants remain in 426 working groups. Nexus views
 are now fully inspected; finish its decision with preserved contents/processors.
