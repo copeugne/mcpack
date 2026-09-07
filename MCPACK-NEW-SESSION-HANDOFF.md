@@ -7,6 +7,28 @@
 ### Continuation update - 2026-09-07
 
 
+#### Desert content and geometry declaration after 48bbfd4b
+
+Four content attributes integrated; Desert Temple now has eight of ten.
+Matching creeper/slime/Pharaoh connectors, natural husk/cat/rabbit lists, frozen
+mining-fatigue state predicates, eleven direct chest tables, processor-added
+archaeology, pot/frame/armor-stand transformations and fixed puzzle/trap content
+are attributed. Seven further exact class members are pinned; reuse prior
+spawner evidence. Exact derivations: evidence/item-8/sources/desert-temple-provider/
+README.md, Pharaoh and reward attribution. Two sizes remain: no retained full
+start and11x23x11 center with six external main-pool connections. One seed42
+capture,81 requested chunks,timeout900 is declared in the same README.
+Next execute that exact existing workflow, then preserve/restore and integrate
+full-start bounds with support extensions separate. No new tooling was added.
+All85 focused tests pass (58.36s). Only this family and input identity changed;
+existing geometry/spawner/dimension data and observations stay unchanged.
+Counts remain361/448 assessed,87 remaining. Final integration, acceptance,
+verified backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+f35f99de22624f993ddf2255ff097d1bbb365bf1a508e058d858d709e7c10a1e.
+
+
+
 #### Desert spawners and placement after bdcc3c31
 
 Quantified one family,ten attributes,197 traced templates,no missing components.

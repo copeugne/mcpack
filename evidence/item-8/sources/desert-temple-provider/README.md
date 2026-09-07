@@ -106,3 +106,105 @@ Pharaoh, frame, armor-stand, pot and archaeology processor paths for the remaini
 four content attributes. Inspect connected layout before declaring the smallest
 necessary geometry capture for the two size attributes. No optional live reward,
 combat population or blind-client measurement is added to Item8.
+
+## Pharaoh and reward attribution
+
+Four additional required content attributes are integrated. Reuse the preceding
+spawner assessment; only the two complete-assembly size attributes remain.
+Direct inspection uses the same pinned archive/catalogs and the seven additional
+class-member hashes in family-decisions.json processor_inspection. The existing
+provider identities bind PharaohUtil, state and mixin sources. Frozen
+betterdeserttemples-neoforge-1_21.toml has Apply Mining Fatigue=true and is now
+pinned in the family evidence map.
+
+Template paths below are under data/betterdeserttemples/structure/:
+
+- mobs/creeper, mobs/slime and mobs/pharaoh each contain one persistent entity.
+  parkour_bottom_5 has four matching creeper targets, parkour_bottom_6 six slime
+  targets, throne_room one Pharaoh target. The slime has Size0. Pharaoh is
+  encoded as a husk with Health/max_health60, sword/shield, armor and a player-head
+  component. These are source alternatives/connector counts, not live populations.
+- PharaohProcessor calls PharaohUtil.isPharaoh(nbt,registryAccess), then attaches
+  transformed spawn position if recognized. Reuse the existing utility and
+  death/discard hooks: recognition depends on Husk identity and head texture;
+  clearance uses stored original position, or current position if absent.
+  ServerPlayerTickMixin checks survival, periodic ticks, enabled config, loaded
+  valid tagged temple and uncleared state before its mining-fatigue path. It
+  constructs amplifier2/duration600. This is conditional source behavior, not
+  proof of runtime profile decoding, effect application or clearance persistence.
+- Root monster override is husk weight100/group10..32, piece-bounded. Creature
+  entries are cat and rabbit, each weight100/group4..4. Ordinary natural husks
+  are not automatically Pharaohs. Authored spawners are separately recorded.
+- Eleven direct chest table IDs are preserved in trace loot_references:
+  minecraft:chests/desert_pyramid and betterdeserttemples:chests/{storage,statue,
+  library,pot,food_storage,wardrobe,tomb_pharaoh,lab,pharaoh_hidden,tomb}.
+  OrangeStainedGlassProcessor additionally writes suspicious sand with
+  minecraft:archaeology/desert_pyramid when nextFloat<0.01. Other branches supply
+  sand/sandstone variants. This threshold is not an observed frequency.
+- Fixed container Items encode splash potions, golden swords, blue/yellow/black
+  concrete, arrows, water buckets, flint_and_steel, bows and a gold ingot. These
+  include puzzle filters and traps. Frames contain swords/banners/bread or no
+  item; ordinary frames alone enter ItemFrameProcessor, not glow frames.
+- ItemFrameProcessor selects armory for iron_sword and storage for bread. AIR
+  removes the Item field, preserving the entity. Other items retain selection/
+  rotation after coordinate correction. The two randomizers remain exactly
+  pinned through ItemFrameChances; their possibilities are not guaranteed loot.
+- Armor stands in hall_room/5x5/hall_room_5x5_25 and _32 have leather and iron
+  helmet markers respectively. ArmorStandProcessor chooses wardrobe for the
+  former, armory for the latter; ArmorStandChances supplies chainmail/leather or
+  chainmail/gold choices, including AIR. Preserve uppercase Count and legacy
+  tag/Damage writes without asserting effective armor or durability.
+- PotProcessor retains other input NBT while replacing sherds with four draws.
+  Archer/miner/prize/skull sherds occupy successive0.05 intervals; remaining
+  outputs are brick. Pot contents and loot references remain separate.
+
+Short-form direct inspection (exact class hashes are in the family decision):
+
+```sh
+downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c \
+  -classpath downloads/item3/candidates/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.processor.PharaohProcessor \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.processor.ItemFrameProcessor \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.processor.ArmorStandProcessor \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.processor.PotProcessor \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.processor.OrangeStainedGlassProcessor \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.ItemFrameChances \
+  com.yungnickyoung.minecraft.betterdeserttemples.world.ArmorStandChances
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/desert-content-inventory.json
+uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py
+```
+
+## Declared Desert Temple geometry capture
+
+Unmet requirement: approximate full-assembly footprint and height. There is no
+retained full-start observation. starts/center.nbt is11x23x11 with six main-pool
+connections: tnt_bottom, front/right/left puzzle connectors, entrance_connector
+and top_center. Its shell is not the full temple. Use one existing gap target,
+seed42,81 requested chunks, timeout900. This is a geometry example, not a reward,
+combat, clearance, frequency or human-visibility experiment. Retain failures if
+any; require a full start before accepting saved assembly bounds. Yellow stained-
+glass support behavior must remain distinct from saved piece bounds.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/desert-geometry-r1 \
+  --log-path evidence/raw/item8/desert-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/desert-geometry-r1/configuration \
+  --receipt evidence/raw/item8/desert-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure betterdeserttemples:desert_temple
+```
+
+Use fresh hash-verified materialization, readiness, correlated save-all flush and
+clean stop from the existing runner. Stage/decode the stopped world with existing
+tools, inspect its full start through observed_bounds, and publish immutable raw
+evidence with source revision, SHA-256 manifest and local/downloaded restore.
+No new measurement framework or baseline tuning is authorized by this capture.
