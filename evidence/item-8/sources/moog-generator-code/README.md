@@ -462,3 +462,43 @@ build_item8_inventory command to an absent path. Only Dead Tree and the decision
 input hash changed; biomes, observations and nonregistry content are preserved.
 Inventory matches `evidence/raw/item8/inventory-mvs-dead-trees.json`, SHA-256
 3190d2277029a999b8383f5b1525e7ed97fa8d957b32127f2e90bddc6f00ef42.
+
+## Voyager living trees, rocks and harvest heaps
+
+After c82079a3, 28 attributes finish Living Tree (nine roots), Rock (two) and
+Harvest Heap (two). Living Tree's two existing geometry answers are unchanged.
+Direct inspection uses the hash-bound templates, pool traces, definitions and
+runtime biomes. All 27 reachable templates are independent alternatives, without
+jigsaw attachments. Big Oak's versioned entry selects mvs:nature/big_oak_tree
+for 1.21-1.21.8; other elements are ordinary single. All are rigid with empty
+processors. No capture, measurement or tooling is added.
+
+Rock source XYZ sizes are boulder 5x5x6, both medium stone alternatives 5x4x5,
+small diorite/granite 4x4x3, small stone 2x3x3 and small stone_2 3x4x3. Harvest
+Heap sizes are haystack 6x5x6, small haystack 4x3x3, mixed 3x3x3, pumpkin 7x5x6,
+and small pumpkin 3x4x2. Per-alternative XZ and Y are integrated with air/padding
+and rotation caveats; these are not occupied-world bounds or exposed heights.
+
+All thirteen roots intersect only Overworld runtime biomes and use generic
+jigsaw, WORLD_SURFACE_WG, zero start height, beard_thin and explicit liquid
+check. Big Oak alone declares terrain range 4/radius 2; others omit both.
+Full root definitions preserve biome differences. These inputs do not guarantee
+complete dry/exposed footprints or safety.
+
+All entity lists are empty without spawner or generation-marker records. Rock
+has no block entities; Living Tree has only Big Oak's chest. Harvest Heap
+contains campfires and containers plus a sign, without contained mob sources.
+Natural spawning remains conditional. Big Oak alone among living trees uses
+mvs:general. Rock has no container loot. Large hay/pumpkin alternatives use
+mvs:houses_common and mvs:houses_uncommon, mixed uses houses_common, and the two
+small crop heaps have no LootTable references. Exact ownership is integrated.
+Ordinary wood/stone/crop salvage is separate from container loot and does not
+establish a sustainable production rate. Tree canopies, low rocks and crop heaps
+support qualitative visibility descriptions without discovery-rate measurements.
+
+Ten affected provider/inventory tests and scoped builder Ruff/Basedpyright
+checks pass. Reproduce with build_item8_inventory to an absent output path.
+Only three family rows and the decisions input hash changed; Living Tree geometry,
+biomes, observation links and nonregistry content remain unchanged. Inventory
+matches `evidence/raw/item8/inventory-mvs-tree-rock-harvest.json`, SHA-256
+02f306b67b70385e756d6abf9de83ce02ef401798d9aa66f3d377e6739887cd7.
