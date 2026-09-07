@@ -6,6 +6,176 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining vanilla geometry accepted after 1416f44c
+
+One fresh seed42 Overworld capture completed all three targets with 81 requested
+chunks each, readiness, correlated flush, clean exit0 and frozen configuration
+acceptance. No runtime remains. Decoded3724 records: full trail-ruin line421,
+18 pieces,50x27x26; mansion line2238,544 pieces,79x31x61; outpost line2949,
+13 pieces,48x30x48. Saved envelopes are not typical sizes or population evidence.
+Archive item8-vanilla-final-geometry-r1-1416f44c.tar.gz has266 files,6,698,468bytes,
+SHA6c9bafa9aee0a0a24401e1d15ce0655bc3483e50aad1921f3471032bd6147070.
+Local and downloaded restores pass; immutable release/tag is verified at1416f44c.
+Six sizes and observed dimensions integrated;85 focused checks pass (61.36s).
+Only three intended families/input identity changed. Total392/448 assessed,
+56 families/541 entries remain: IDAS38/380,Repurposed17/154,vanilla mansion1/7.
+Next batch is mansion's seven non-geometry attributes. Initial direct inspection
+of mapped-server WoodlandMansionPieces$WoodlandMansionPiece.handleDataMarker
+shows Mage->evoker,Warrior->vindicator,Group of Allays->1..3 allay attempts and
+Chest prefix->WOODLAND_MANSION loot. ClassSHAf1d2cd100e5459a1ec1512fd437480c6a69ab522e9cad77eaed1baf7db1d7f1b.
+These are preliminary source findings, not accepted complete mansion attribution;
+finish template selection and integrate in the authoritative attributes. No new
+inspection tool is needed. Geometry commands/custody are in the outpost/trail
+assessment README. Final integration,acceptance,backup/history and PR/review/main
+remain open. Inventory SHA-256: f8d9eceddcfd56bc879f084deb454eb19618ca211c8bb3d0373fb7168ea89daa.
+
+
+#### Outpost and trail-ruin content assessed after 36f139f2
+
+Twelve descriptive entries integrated for two families from existing 11-template
+outpost and 84-template trail-ruin traces and selected packaged processors.
+Outpost pillagers use the full-bounds monster override; cage golem/allays are
+authored. Neither family has template spawners or generation markers. Trail-ruin
+archaeology loot is processor-appended despite absent literal template references.
+No new capture/tool. All 85 focused checks pass (59.11s); only these two families
+and input identity changed. Total remains 390/448 fully assessed, 58 families and
+547 required attributes open: IDAS 38/380, Repurposed 17/154, vanilla 3/13.
+Vanilla remaining: mansion 9, outpost 2 sizes, trail ruins 2 sizes. Neither latter
+root has a full-start observation in the current world-bounds catalog. Inspect
+other retained observations before declaring a new capture necessary. Mansion
+custom generation assessment remains open. Final integration, acceptance,
+backup/history and PR/review/main remain open. Details and reproduction are in
+sources/vanilla-outpost-trail-assessment/README.md under evidence/item-8.
+Inventory SHA-256: 8f2b4ed1aae9d3c3bf56a10afbd9dd2e726d9b9ceed8ba7dc02f824b68dd4990.
+
+
+
+#### Trial chambers assessed after e36b316f
+
+Eight remaining attributes integrated from171-template trace, root/processor,
+existing trial lifecycle/default code and two full-start examples97x51x120 and
+111x37x115. Preserve existing spawner source maps and five ominous omissions with
+conditional mob_source interpretation; SAVE marker is not DATA encounter marker.
+Literal reward references retained; code-default ejection consumables/key and
+items_to_drop_when_ominous now included from TrialSpawnerConfig/BuiltInLootTables.
+Normal/ominous vault tables/keys recorded. Eight empty piece-scoped ordinary spawn
+lists do not disable trial spawners. Negative anchor is not a total-height range.
+No new capture/tool. All95 focused inventory/template-NBT checks pass (58.57s);
+only trial chambers/input identity changed. Registry350/408,nonregistry40/40,
+total390/448 assessed;58 families and559 required attributes remain: IDAS38/380,
+Repurposed17/154,vanilla3/25 (mansion9,pillager_outpost8,trail_ruins8). Quantify next
+batch and reuse existing evidence. Final integration,acceptance,backup/history
+preparation and PR/review/main remain open. Inventory SHA-256: 03d9c8c323c52069f78d4228f38091d44346258c92bd644b5f125d6796deccaf.
+
+
+#### Bastion remnant assessed after 6a7c94c8
+
+Nine remaining attributes integrated from167-template trace,12 degradation lists,
+four defined loot sources and existing full-start biome-diverse run-a line1032,
+chunk-9,13,envelope[-175,31,192,-120,95,255],size56x65x64. Five entity templates
+contain piglins,hoglins and piglin brutes (including both melee_piglin names).
+Treasure/lava_basin ordinary magma-cube spawner NBT retained; conditional layout
+is not a universal per-bastion count. Four start alternatives remain one family.
+Empty root spawn overrides do not exclude natural/external mobs. FixedY33 and
+Nether enclosure distinguish pipeline surface_structures from open-sky claims.
+No new capture/tool. All85 focused checks pass (59.37s);only bastion/input identity
+changed. Registry349/408,nonregistry40/40,total389/448 assessed;59 families and567
+required attributes remain: IDAS38/380,Repurposed17/154,vanilla4/33 (mansion9,
+pillager_outpost8,trail_ruins8,trial_chambers8). Quantify next batch and reuse
+existing evidence. Final integration,acceptance,backup/history preparation and
+PR/review/main remain open. Inventory SHA-256: b78455462ec7e795de238015ec61920088530c7becac410d222ba5e6f8752702.
+
+
+#### Ancient city assessed after 053c856a
+
+Nine remaining attributes integrated from57-template trace, selected degradation
+processors/sculk feature, two retained full-start envelopes and direct pinned
+SculkPatchFeature/SculkShriekerBlockEntity inspection. No template entities or
+ordinary/trial spawners, but selected extra-rare growths can place CAN_SUMMON
+shriekers. Triggered Warden path has difficulty/game-rule/warning/spawn guards;
+empty ordinary spawn lists do not disable it. Two defined chest tables recorded.
+Examples222x31x215 and165x31x222 spanY-52..-22; anchorY-27 is not assembly bottom.
+Missing wall-stairs template and all stated limits retained. No new capture/tool.
+All85 focused checks pass (61.03s);only ancient city/input identity changed.
+Registry348/408,nonregistry40/40,total388/448 assessed;60 families and576 required
+attributes remain: IDAS38/380,Repurposed17/154,vanilla5/42 (bastion9,mansion9,
+pillager_outpost8,trail_ruins8,trial_chambers8). Quantify next batch and reuse
+existing evidence. Final integration,acceptance,backup/history preparation and
+PR/review/main remain open. Inventory SHA-256: 460a67c039635153be35b9b15a8c312a3ac1df06e011cba7659d98d40ed53ce9.
+
+
+#### End city assessed after 77c3248f
+
+All five remaining attributes integrated. Fresh seed42 End capture passes readiness,
+81 requested chunks,correlated flush,clean exit0 and frozen config acceptance.
+1802 decoded records;line202 full start chunk-80,-154 has51 pieces and envelope
+[-1286,61,-2495,-1227,150,-2372],size60x90x124. Source marker and section-generator
+evidence supplies hostility/visual/surface-placement descriptions. Dimension
+observed now includes End. Saved bounds do not prove occupied volume,typical size
+or completed population in every component chunk; warnings/limitations retained.
+Archive item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz:251 files,1,824,912 bytes,
+SHAfac1099318a2df73ca2754c4937dd134fbbcc5e7b89f53e681b8e75c6d66c017.
+Release/tag item-8-vanilla-end-city-geometry-2026-09-07-r1 verified at source
+77c3248fbe96e1ddcd395a9098e6e0de4929bee8. Both restores verify251 files and downloaded
+line202 reproduces bounds. No Java remains;no new tooling. Commands/custody in
+vanilla-end-city-code README. All86 focused checks pass (61.43s);only End city/input
+identity changed. Registry347/408,nonregistry40/40,total387/448 assessed;61 families
+and585 required attributes remain: IDAS38/380,Repurposed17/154,vanilla6/51.
+Vanilla remaining ancient_city9,bastion_remnant9,mansion9,pillager_outpost8,
+trail_ruins8,trial_chambers8. Quantify next batch and reuse existing evidence.
+Final integration,acceptance,backup/history preparation and PR/review/main remain
+open. Inventory SHA-256: 88533c75279ec97a349f347e9400e5b482e21ebb14c497a6c1d38b5473d52cef.
+
+
+#### End city capture declaration after 8dd91e7d
+
+Next batch is one family/five attributes. Source/template evidence supports
+hostility,visual cues and surface placement; no retained End city starts exist
+in world-bounds, so assembled geometry requires one fresh sample. Predeclared
+ordinary seed42,minecraft:the_end,minecraft:end_city,81 requested chunks,
+vanilla-end-city-geometry-r1 under vanilla-end-city-code README. Reuse the existing
+End-capable runner, lifecycle/config validation and archive/restore/release path.
+No new tool. Capture not yet started;62 families/590 attributes remain.
+
+
+#### Ocean ruin and ruined portal assessment after cb7b690c
+
+Six remaining attributes integrated: both sizes and visual cues for each family.
+Ocean ruins use retained small cold7x7x6 and warm assembled37x25x42 full-start
+examples, distinguishing component envelopes and cold layers from clusters.
+Portals use five full-start examples across mountain/ocean/Nether/desert roots;
+spread/columns/vines/overgrowth are not bounded by saved template boxes. No
+occupied-volume,typical/all-layout or sightline/pacing claims. Existing missing
+variants/retained-mod scope limitations remain. No new capture/tool.
+All87 focused inventory/two-family source checks pass (61.78s); only these two
+families/input identity changed. Registry346/408,nonregistry40/40,total386/448
+assessed;62 families and590 required attribute slots remain: IDAS38/380,
+Repurposed17/154,vanilla7/56. Vanilla remaining: ancient_city9,bastion_remnant9,
+end_city5,mansion9,pillager_outpost8,trail_ruins8,trial_chambers8. Quantify next
+batch and reuse existing content/source/world evidence. Final integration,
+acceptance,backup/history preparation and final PR/review/main remain open.
+Inventory SHA-256: f37ff09ba05d2a740d0d790a7d25b463d8c82aeafa3f5675bc1e6b03b92571c8.
+
+
+#### Vanilla dimensions and remaining descriptions after a1363bb5
+
+Nineteen entries integrated from existing evidence: dimension attribution for13
+active vanilla families, plus hostility/visual descriptions for igloo, shipwreck
+and Nether fossil. These complete buried treasure and those three assessments.
+Dimension mappings reuse the existing builder join, preserving observed versus
+biome-compatible dimensions and variant mappings. Nether fossil is explicitly
+eligible/observed in both Overworld (biomesoplenty:dryland) and Nether
+(minecraft:soul_sand_valley); do not infer Nether-only from its name. No new
+capture/tool. All88 focused inventory/three-family source checks pass (65.14s).
+Only13 vanilla families/input identity changed. Registry344/408,nonregistry40/40,
+total384/448 assessed;64 families and596 required attribute slots remain:
+IDAS38/380,Repurposed17/154,vanilla9/62. Vanilla remaining: ancient_city9,
+bastion_remnant9,end_city5,mansion9,ocean_ruin3,pillager_outpost8,ruined_portal3,
+trail_ruins8,trial_chambers8. Quantify next batch and inspect already captured
+sources/world examples before more investigation. Final canonical integration,
+acceptance,backup/history preparation and final PR/review/main remain open.
+Inventory SHA-256: 3abc5ca73423ef48a77cc0bf79e89c475dc8991f4f5cdcce47ee7c1f210e43e3.
+
 
 #### BetterEnd village geometry accepted after f2f5b2b6
 

@@ -81895,7 +81895,129 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+      },
+      "attributes": {
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:ancient_city": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_examples": [
+            {
+              "source": "run-a/mountainous/chunks.jsonl",
+              "line": 13428,
+              "seed": 6671238423019257953,
+              "chunk_x": 22,
+              "chunk_z": 2,
+              "envelope": [
+                237,
+                -52,
+                -74,
+                458,
+                -22,
+                140
+              ],
+              "size_xyz": [
+                222,
+                31,
+                215
+              ]
+            },
+            {
+              "source": "run-a/ocean-heavy/chunks.jsonl",
+              "line": 12215,
+              "seed": 95920844204830198,
+              "chunk_x": 25,
+              "chunk_z": -26,
+              "envelope": [
+                343,
+                -52,
+                -525,
+                507,
+                -22,
+                -304
+              ],
+              "size_xyz": [
+                165,
+                31,
+                222
+              ]
+            }
+          ],
+          "basis": "Two retained full-start assembly envelopes:222x215 and165x222 horizontally. Pieces, pools and templates belong to one city family.",
+          "limitations": "Saved bounds include air/padding and do not measure occupied volume, all effects, typical size or all-layout extrema.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 31,
+          "basis": "Both referenced assemblies span inclusiveY-52..-22. Start anchor absoluteY-27 is not the overall bottom.",
+          "limitations": "Saved piece height, not necessarily exposed height or a bound on sculk growth/terrain adaptation.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "intended_hostility": {
+          "value": "Sculk-triggered Warden hazard within an underground exploration/reward structure.",
+          "basis": "Selected ancient-city sculk-patch feature can generate summoning-capable shriekers; ordinary empty spawn lists do not disable triggered spawning. This is a source-based design assessment, not measured difficulty or guaranteed Warden appearance.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "mob_source": {
+          "authored_template_entities": [],
+          "mechanism": "Selected minecraft:sculk_patch_ancient_city has extra_rare_growths uniform1..3. SculkPatchFeature attempts CAN_SUMMON=true shriekers at suitable air/support positions. SculkShriekerBlockEntity checks summoning capability, non-Peaceful difficulty and doWardenSpawning; warningLevel>=4 gates a TRIGGERED Warden spawn attempt, subject to warning-tracker and spawn-position checks.",
+          "limitations": "Feature inputs are not guaranteed placed counts, and conditional spawning is not an observed entity population. Retained external hooks are not ruled out.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "loot_table_source": {
+          "literal_tables": [
+            "minecraft:chests/ancient_city",
+            "minecraft:chests/ancient_city_ice_box"
+          ],
+          "basis": "Literal template chest references resolve to preserved packaged loot definitions. The three selected degradation processors change blocks/protection, not loot tables.",
+          "limitations": "Sources identify tables, not observed contents or effective external loot additions.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "generated_spawners": {
+          "ordinary_or_trial_spawner_blocks": [],
+          "other_mechanism": "Summoning-capable sculk shriekers are generated through the selected feature, not ordinary/trial spawner blocks.",
+          "basis": "57 reachable templates have no ordinary/trial spawner blocks in the retained content trace; feature and shrieker behavior inspected separately.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Conditional Warden threat supplied by selected feature-generated shriekers; no entities or DATA encounter markers in the57 reachable templates.",
+          "natural": "Root explicitly supplies empty lists for all eight spawn categories over the full structure box. This controls ordinary structure spawn lists, not every triggered or external entity source.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "visual_discoverability": {
+          "value": "Large buried city with deepslate walls/buildings, soul-lantern cues and selected sculk patches. Primarily discoverable within underground openings rather than from a guaranteed surface landmark.",
+          "basis": "Packaged pools, degradation rules, negative start anchor and retained negative-Y assembled examples.",
+          "limitations": "No guaranteed entrance, sightline distance, exposure survey or exploration pacing measured.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        },
+        "underground_surface_classification": {
+          "value": "Underground city assembly.",
+          "basis": "Vanilla jigsaw start_height absolute-27 with minecraft:city_anchor and beard_box adaptation; retained examples spanY-52..-22.",
+          "limitations": "Anchor and sample envelopes do not prove a sealed roof or complete concealment in every terrain layout.",
+          "source": "evidence/item-8/sources/vanilla-ancient-city-code/README.md"
+        }
+      },
+      "processor_inspection": {
+        "archive": "server-1.21.1-20240808.144430-srg.jar",
+        "archive_sha256": "26ca9c40d7e1681190b428583c38816852218e78df3f8bdb60a59a78503aec71",
+        "members": {
+          "net/minecraft/world/level/levelgen/feature/SculkPatchFeature.class": "a370e35a2719b693db496c90c263bc69d8960ab9bddc8b577a29249f095bb67d",
+          "net/minecraft/world/level/block/entity/SculkShriekerBlockEntity.class": "09d5b757b45ecb2ea9b8754f22234a4b585541743920a57a78aafdbc81a9598f"
+        },
+        "basis": "Direct inspection of selected feature and triggered-spawn mechanism, not structure processors. Selected processor lists are the packaged ancient_city_generic/start/walls_degradation lists."
       }
     },
     {
@@ -81926,7 +82048,167 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+      },
+      "attributes": {
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:bastion_remnant": [
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:the_nether"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_example": {
+            "source": "run-a/biome-diverse/chunks.jsonl",
+            "line": 1032,
+            "seed": -3503646078644842058,
+            "chunk_x": -9,
+            "chunk_z": 13,
+            "envelope": [
+              -175,
+              31,
+              192,
+              -120,
+              95,
+              255
+            ],
+            "size_xyz": [
+              56,
+              65,
+              64
+            ]
+          },
+          "basis": "One retained full-start assembly has56x64 horizontal saved extent. Four start choices and167 reachable templates are layout/component alternatives of this family.",
+          "limitations": "Saved piece envelope including air/padding, not occupied volume, typical/all-layout extent or complete population of every piece.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 65,
+          "basis": "Same full-start envelope spans inclusiveY31..95. Root start height33 is an assembly input, not total height or bottom.",
+          "limitations": "One saved-envelope example, not a universal height, exposed height or all-world-effects bound.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "intended_hostility": {
+          "value": "Authored piglin, piglin-brute and hoglin encounters with layout-dependent treasure-room magma-cube spawning and container rewards.",
+          "basis": "Actual template entity IDs and treasure/lava_basin spawner NBT, rather than template names. Hostility is a design assessment, not measured encounter strength or guaranteed aggression of every piglin.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "mob_source": {
+          "authored_entities_by_template": {
+            "minecraft:bastion/mobs/crossbow_piglin": [
+              {
+                "id": "minecraft:piglin",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "minecraft:bastion/mobs/hoglin": [
+              {
+                "id": "minecraft:hoglin",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "minecraft:bastion/mobs/melee_piglin": [
+              {
+                "id": "minecraft:piglin_brute",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "minecraft:bastion/mobs/melee_piglin_always": [
+              {
+                "id": "minecraft:piglin_brute",
+                "path": "/entities/0/nbt"
+              }
+            ],
+            "minecraft:bastion/mobs/sword_piglin": [
+              {
+                "id": "minecraft:piglin",
+                "path": "/entities/0/nbt"
+              }
+            ]
+          },
+          "mechanism": "Selected jigsaw templates carry authored entity NBT. The melee_piglin and melee_piglin_always templates contain minecraft:piglin_brute. Treasure lava_basin carries an ordinary magma-cube spawner.",
+          "limitations": "Template content and conditional layout paths, not observed population totals. Natural biome mobs and external retained systems remain possible.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "loot_table_source": {
+          "literal_tables": [
+            "minecraft:chests/bastion_bridge",
+            "minecraft:chests/bastion_hoglin_stable",
+            "minecraft:chests/bastion_other",
+            "minecraft:chests/bastion_treasure"
+          ],
+          "basis": "All literal references in the retained reachable-template trace resolve to packaged definitions. Selected degradation processor lists contain block rules, not loot-table appenders.",
+          "limitations": "Table sources, not rolled rewards or proof of absent external loot modification.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "generated_spawners": {
+          "by_template": {
+            "minecraft:bastion/treasure/bases/lava_basin": [
+              {
+                "nbt": {
+                  "Delay": 0,
+                  "MaxNearbyEntities": 6,
+                  "MaxSpawnDelay": 800,
+                  "MinSpawnDelay": 200,
+                  "RequiredPlayerRange": 16,
+                  "SpawnCount": 4,
+                  "SpawnData": {
+                    "entity": {
+                      "id": "minecraft:magma_cube"
+                    }
+                  },
+                  "SpawnPotentials": [
+                    {
+                      "data": {
+                        "entity": {
+                          "id": "minecraft:magma_cube"
+                        }
+                      },
+                      "weight": 1
+                    }
+                  ],
+                  "SpawnRange": 4,
+                  "id": "minecraft:mob_spawner"
+                },
+                "path": "/block_entities/6",
+                "position": [
+                  11,
+                  7,
+                  19
+                ]
+              }
+            ]
+          },
+          "basis": "Retained spawner compound specifies magma_cube in SpawnData and its sole weight1 potential, delay0,min/max200/800,count4,nearby6,player range16,spawn range4.",
+          "limitations": "Conditional on selecting and successfully placing the treasure component. This is not one guaranteed spawner per bastion or a measured spawn rate.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Template piglins, piglin brutes, hoglins and treasure magma-cube spawner. No DATA encounter markers or unresolved entity records in the retained167-template trace.",
+          "natural": "Root spawn_overrides is empty; natural biome spawning and retained external sources are not excluded.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "visual_discoverability": {
+          "value": "Large blackstone ramparts, walls, bridges and multi-storey spaces, with cracked/gilded materials and layout-dependent lava/treasure areas.",
+          "basis": "Four start-pool choices, reachable component names/materials and inspected degradation rules; the retained assembly reachesY95.",
+          "limitations": "Nether terrain may enclose or obscure it. No guaranteed exposure, entrance or measured sightline/pacing claim.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        },
+        "underground_surface_classification": {
+          "value": "Nether terrain/cavern-associated multi-storey assembly, with layout-dependent enclosure.",
+          "basis": "Rigid jigsaw start choices at absoluteY33, surface_structures generation step, and observedY31..95 envelope. There is no surface-heightmap projection in this root definition.",
+          "limitations": "The generation-step label does not establish open-sky surface placement or full burial. Actual surrounding terrain is not inferred solely from bounds.",
+          "source": "evidence/item-8/sources/vanilla-bastion-assessment/README.md"
+        }
       }
     },
     {
@@ -81955,7 +82237,9 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/vanilla-buried-treasure-code/identities.json": "a3ee21e981a4c041695e894ba4c5ef8221ac720283870f2e71f9cb41b0a5bd4f",
-        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "intended_hostility": {
@@ -82012,6 +82296,17 @@
           "direct_write_envelope_blocks": 2,
           "basis": "The chest target is at relative Y 0; infill can affect horizontal neighbors and the neighbor at Y 1. The neighbor below is the already-verified solid support, so it cannot pass the air/liquid replacement condition.",
           "scope": "Direct writes span relative Y 0 through 1 when placement is attempted. Actual changed blocks can be fewer or none; indirect physics effects and retained-mod changes are excluded."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:buried_treasure": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
         }
       }
     },
@@ -82148,7 +82443,12 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-manifest.json": "0fa3015bd16db5a804da1c7e73bb2f9796b556a44814b34d70059fd8992da0c9",
+        "evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-local-restore.json": "68e15027fa41a1ebe3659b35573a04b8f83ea0f9b59be0794e1b1777a2149d8c",
+        "evidence/item-8/raw-custody/vanilla-end-city-geometry-r1-downloaded-restore.json": "575bd1d2ed5265b14e0b1967f9f19307b8c00949ce105892f0f97900ab797563"
       },
       "attributes": {
         "mob_source": {
@@ -82210,6 +82510,72 @@
           "authored": "Shulkers created by Sentry DATA markers.",
           "natural": "The packaged structure has an empty spawn_overrides object; natural biome spawning is not established by this marker inspection.",
           "scope": "Vanilla source attribution; retained-mod effects remain unresolved."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:end_city": [
+              "minecraft:the_end"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:the_end"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json",
+          "additional_observation_source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
+        },
+        "approximate_footprint": {
+          "saved_example": {
+            "archive": "item8-vanilla-end-city-geometry-r1-77c3248f.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "ced10012c1af0c1f1821a61f792a6f31c72fd111646851ee83ec4421b58fc10f",
+            "line": 202,
+            "seed": 42,
+            "dimension": "minecraft:the_end",
+            "chunk_x": -80,
+            "chunk_z": -154,
+            "piece_count": 51,
+            "envelope": [
+              -1286,
+              61,
+              -2495,
+              -1227,
+              150,
+              -2372
+            ],
+            "size_xyz": [
+              60,
+              90,
+              124
+            ]
+          },
+          "basis": "One full-start assembled example from the predeclared fresh End capture, reproduced from the downloaded archive. Footprint60x124 comes from inclusive saved piece bounds.",
+          "limitations": "Includes air/padding, not occupied volume, typical size, all-layout extrema or proof of completed population in every component chunk.",
+          "source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 90,
+          "basis": "The same51-piece assembly spans inclusiveY61..150. Towers, bridges and possible ship are components of this family, not separate families.",
+          "limitations": "One saved-envelope example, not exposed height everywhere or a population/all-layout range.",
+          "source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
+        },
+        "intended_hostility": {
+          "value": "Authored shulker encounters in a vertical exploration structure, with chest rewards and an elytra item-frame path in an applicable ship component.",
+          "basis": "Retained Sentry, Chest and Elytra marker handlers. Fall/void exposure is an environmental hazard; this is a design interpretation, not measured encounter intensity or guaranteed rewards in every city.",
+          "source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Above-ground towers and elevated connecting bridges provide a distinctive silhouette; a ship may be selected as part of the assembly.",
+          "basis": "Retained house/tower/bridge/ship section generators and template references, supported by the observedY61..150 assembly.",
+          "limitations": "No guaranteed ship or discovery distance. Terrain, sightlines and rendering distance are not measured.",
+          "source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Surface-rooted, vertically assembled End structure.",
+          "basis": "EndCityStructure selects rotation, calls getLowestYIn5by5BoxOffset7Blocks and rejects its base belowY60, then invokes startHouseTower. The observed start envelope spansY61..150.",
+          "limitations": "Placement rule and one example do not establish complete terrain clearance or visibility of every piece.",
+          "source": "evidence/item-8/sources/vanilla-end-city-code/README.md#final-family-assessment"
         }
       }
     },
@@ -82311,7 +82677,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/vanilla-igloo-code/identities.json": "5104752aa5eb795053f75e8d62731b7ea7d79af1f9cacfdccfe2e55f9336838e",
-        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "approximate_footprint": {
@@ -82390,6 +82758,29 @@
           "classification": "Surface shelter with optional underground ladder and basement.",
           "basis": "WORLD_SURFACE_WG height adjustment, top component at the adjusted surface reference, ladder and basement at negative vertical offsets. Basement selection is nextDouble < 0.5; n = nextInt(8) + 4 controls depth.",
           "scope": "Vanilla placement design. Code selection probability is not observed frequency, and terrain exposure is not measured."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:igloo": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "intended_hostility": {
+          "value": "Surface shelter with an optional basement containing an authored zombie villager and villager; no general combat encounter is authored in the surface shelter.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-igloo-code/README.md#remaining-descriptive-assessment"
+        },
+        "visual_discoverability": {
+          "value": "The small surface igloo is the visible cue; the ladder and basement are below the surface reference. Snow cover and terrain can obscure it; no discovery distance is measured.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-igloo-code/README.md#remaining-descriptive-assessment"
         }
       }
     },
@@ -82509,7 +82900,86 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json": "d6d5b4da0b286f3c2d271a750da62662aa26ace7f5a652e0da1ab77c019d9f31",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-local-restore.json": "d07c12631589f021d69441ec543e1ecff258e33f39f0d55fbb1e07131ed47653",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json": "500586f2dac72e3f92a6f2b75f92a7c86f3b8288910907262f281d53d943bfd5"
+      },
+      "attributes": {
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:mansion": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json",
+          "additional_observation": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 2238,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 403,
+            "chunk_z": -433,
+            "piece_count": 544,
+            "envelope": [
+              6388,
+              68,
+              -6940,
+              6466,
+              98,
+              -6880
+            ],
+            "size_xyz": [
+              79,
+              31,
+              61
+            ]
+          }
+        },
+        "approximate_footprint": {
+          "saved_example": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 2238,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 403,
+            "chunk_z": -433,
+            "piece_count": 544,
+            "envelope": [
+              6388,
+              68,
+              -6940,
+              6466,
+              98,
+              -6880
+            ],
+            "size_xyz": [
+              79,
+              31,
+              61
+            ]
+          },
+          "basis": "Inclusive saved piece-envelope example from the predeclared fresh Overworld capture, reproduced from the downloaded archive.",
+          "limitations": "Includes air and padding, not occupied volume, typical size, all-layout extrema or proof of completed population in every component chunk.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 31,
+          "basis": "Same 544-piece assembly spans inclusive Y 68 through 98.",
+          "limitations": "Saved piece bounds do not measure exposed height or foundations/terrain alterations outside those bounds.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
+        }
       }
     },
     {
@@ -82663,7 +83133,9 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/vanilla-nether-fossil-code/identities.json": "611e91bd71be08103760e8cd78339d1f904655941601f37214db08dd6a31b44e",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "approximate_footprint": {
@@ -82772,6 +83244,34 @@
           "classification": "Nether floor formation, with air above its support.",
           "basis": "Searches the base column downward for air above soul sand or a sturdy upward face; rejects support Y at or below sea level. Initial height is sampled from absolute 32 to two below world top.",
           "scope": "Vanilla placement rule; underground_decoration generation step does not imply complete burial. Actual exposure remains unmeasured."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:nether_fossil": [
+              "minecraft:overworld",
+              "minecraft:the_nether"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld",
+            "minecraft:the_nether"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json",
+          "basis": "Overworld eligibility comes from biomesoplenty:dryland; Nether eligibility from minecraft:soul_sand_valley. Both dimensions also have retained start observations. The family name does not restrict it to the Nether in this frozen stack."
+        },
+        "intended_hostility": {
+          "value": "Ambient bone formation without authored mobs, spawners or container loot in the inspected templates/generator. Natural biome enemies remain possible.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-nether-fossil-code/README.md#remaining-descriptive-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Bone-block skeletal fragments above a supporting surface provide a visual cue. Frozen-stack occurrences include Overworld dryland as well as Nether soul-sand valley; exposure and sightline distance are not measured.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-nether-fossil-code/README.md#remaining-descriptive-assessment"
         }
       }
     },
@@ -82869,7 +83369,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/vanilla-ocean-ruin-code/identities.json": "966f0fe1112562cc35c718bad64a241c2ef4dd8ad7331f9afd4a77b7da155382",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "intended_hostility": {
@@ -82910,6 +83412,87 @@
           "classification": "Seafloor ruins with terrain-adjusted placement.",
           "basis": "Each piece samples OCEAN_FLOOR_WG and applies getHeight support adjustment before placement; initial constructor Y 90 is not final Y.",
           "scope": "Vanilla placement rule. It does not prove every ruin is submerged, exposed or visible; cluster parts may occupy different heights."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:ocean_ruin_cold": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ocean_ruin_warm": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_examples": [
+            {
+              "structure_id": "minecraft:ocean_ruin_cold",
+              "source": "run-a/ordinary/chunks.jsonl",
+              "line": 8724,
+              "dimension": "minecraft:overworld",
+              "seed": 42,
+              "chunk_x": -24,
+              "chunk_z": -23,
+              "envelope": [
+                -390,
+                1,
+                -368,
+                -384,
+                7,
+                -363
+              ],
+              "size_xyz": [
+                7,
+                7,
+                6
+              ]
+            },
+            {
+              "structure_id": "minecraft:ocean_ruin_warm",
+              "source": "run-a/ordinary/chunks.jsonl",
+              "line": 10008,
+              "dimension": "minecraft:overworld",
+              "seed": 42,
+              "chunk_x": -20,
+              "chunk_z": 7,
+              "envelope": [
+                -347,
+                21,
+                80,
+                -311,
+                45,
+                121
+              ],
+              "size_xyz": [
+                37,
+                25,
+                42
+              ]
+            }
+          ],
+          "basis": "Existing full-start examples include small cold7x7x6 and assembled warm37x25x42 envelopes. Nominal small components are6x7x7 and large components16x16x16; cold brick/cracked/mossy layers overlap rather than defining separate families. Cluster pieces and terrain-dependent vertical placement can exceed individual component dimensions.",
+          "limitations": "Saved piece envelopes, not occupied volume, a typical-size range or all-layout extrema. The two examples do not measure large/cluster selection frequency.",
+          "source": "evidence/item-8/sources/vanilla-ocean-ruin-code/README.md#geometry-and-visual-assessment"
+        },
+        "approximate_vertical_size": {
+          "saved_example_heights_blocks": [
+            7,
+            25
+          ],
+          "basis": "Heights correspond in order to the linked footprint examples, using inclusive saved piece-envelope Y bounds. Existing full-start examples include small cold7x7x6 and assembled warm37x25x42 envelopes. Nominal small components are6x7x7 and large components16x16x16; cold brick/cracked/mossy layers overlap rather than defining separate families. Cluster pieces and terrain-dependent vertical placement can exceed individual component dimensions.",
+          "limitations": "Saved piece envelopes, not occupied volume, a typical-size range or all-layout extrema. The two examples do not measure large/cluster selection frequency.",
+          "source": "evidence/item-8/sources/vanilla-ocean-ruin-code/README.md#geometry-and-visual-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Seafloor masonry remnants in warm and cold material treatments, with variable integrity and possible multiple buildings. Water cover, supporting terrain and burial affect exposure; neither the family name nor nominal template size proves visibility from the surface.",
+          "basis": "Descriptive inference from retained template materials, generator placement and processor behavior. No sightline or exploration-pacing experiment.",
+          "source": "evidence/item-8/sources/vanilla-ocean-ruin-code/README.md#geometry-and-visual-assessment"
         }
       }
     },
@@ -82919,7 +83502,7 @@
       "structure_ids": [
         "minecraft:pillager_outpost"
       ],
-      "rationale": "One vanilla pillager outpost generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "One vanilla generation design. Traced pieces, pools and layout alternatives are components, not additional families. Content, descriptive attributes and one saved assembled geometry example are assessed with stated limitations.",
       "variants": {
         "minecraft:pillager_outpost": {
           "definition": {
@@ -82955,7 +83538,12 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json": "d6d5b4da0b286f3c2d271a750da62662aa26ace7f5a652e0da1ab77c019d9f31",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-local-restore.json": "d07c12631589f021d69441ec543e1ecff258e33f39f0d55fbb1e07131ed47653",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json": "500586f2dac72e3f92a6f2b75f92a7c86f3b8288910907262f281d53d943bfd5"
       },
       "attributes": {
         "underground_surface_classification": {
@@ -82973,6 +83561,183 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:pillager_outpost": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json",
+          "additional_observation": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 2949,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 222,
+            "chunk_z": -22,
+            "piece_count": 13,
+            "envelope": [
+              3536,
+              64,
+              -368,
+              3583,
+              93,
+              -321
+            ],
+            "size_xyz": [
+              48,
+              30,
+              48
+            ]
+          }
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "minecraft:allay": [
+              "minecraft:pillager_outpost/feature_cage_with_allays"
+            ],
+            "minecraft:iron_golem": [
+              "minecraft:pillager_outpost/feature_cage1"
+            ]
+          },
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:pillager_outpost/base_plate",
+            "minecraft:pillager_outpost/feature_cage1",
+            "minecraft:pillager_outpost/feature_cage2",
+            "minecraft:pillager_outpost/feature_cage_with_allays",
+            "minecraft:pillager_outpost/feature_logs",
+            "minecraft:pillager_outpost/feature_plate",
+            "minecraft:pillager_outpost/feature_targets",
+            "minecraft:pillager_outpost/feature_tent1",
+            "minecraft:pillager_outpost/feature_tent2",
+            "minecraft:pillager_outpost/watchtower",
+            "minecraft:pillager_outpost/watchtower_overgrown"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "Reachable cage templates author minecraft:iron_golem and minecraft:allay. Root monster override uses full structure bounds and minecraft:pillager with weight 1 and minCount=maxCount=1. This is a natural-spawn selection rule, not one guaranteed pillager or an ordinary spawner. Selected outpost_rot processor only applies block rot with integrity 0.05."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:pillager_outpost/watchtower",
+                "minecraft:pillager_outpost/watchtower_overgrown"
+              ],
+              "value": "minecraft:chests/pillager_outpost"
+            }
+          ],
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:pillager_outpost/base_plate",
+            "minecraft:pillager_outpost/feature_cage1",
+            "minecraft:pillager_outpost/feature_cage2",
+            "minecraft:pillager_outpost/feature_cage_with_allays",
+            "minecraft:pillager_outpost/feature_logs",
+            "minecraft:pillager_outpost/feature_plate",
+            "minecraft:pillager_outpost/feature_targets",
+            "minecraft:pillager_outpost/feature_tent1",
+            "minecraft:pillager_outpost/feature_tent2",
+            "minecraft:pillager_outpost/watchtower",
+            "minecraft:pillager_outpost/watchtower_overgrown"
+          ],
+          "assessment": "Both watchtower and watchtower_overgrown reference minecraft:chests/pillager_outpost through LootTable. Its packaged definition exists at data/minecraft/loot_table/chests/pillager_outpost.json. outpost_rot introduces no alternate loot source. Template alternatives do not establish generated chest counts."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:pillager_outpost/base_plate",
+            "minecraft:pillager_outpost/feature_cage1",
+            "minecraft:pillager_outpost/feature_cage2",
+            "minecraft:pillager_outpost/feature_cage_with_allays",
+            "minecraft:pillager_outpost/feature_logs",
+            "minecraft:pillager_outpost/feature_plate",
+            "minecraft:pillager_outpost/feature_targets",
+            "minecraft:pillager_outpost/feature_tent1",
+            "minecraft:pillager_outpost/feature_tent2",
+            "minecraft:pillager_outpost/watchtower",
+            "minecraft:pillager_outpost/watchtower_overgrown"
+          ],
+          "unresolved_sources": {},
+          "assessment": "No ordinary or trial spawner blocks, generation markers or unresolved entity sources in the 11 reachable templates. Selected outpost_rot is block rot, not a spawner-producing processor. The pillager spawn override is separate from spawner blocks."
+        },
+        "intended_hostility": {
+          "assessment": "Hostile pillager outpost, supported by the full-bounds monster spawn override. Caged golems and allays are separate authored non-hostile entities; their presence is conditional on selected cage pieces.",
+          "basis": "Root spawn_overrides and 11-template content trace."
+        },
+        "authored_or_natural_enemies": {
+          "assessment": "Pillagers come from structure-specific natural spawning, not template-authored hostile entities or spawner blocks. Golem and allay cage entities are authored. Spawn conditions and actual populations are not inferred from the registry list."
+        },
+        "visual_discoverability": {
+          "assessment": "Surface-projected watchtower with optional tents, cages, targets and logs provides an above-ground architectural cue. Terrain, vegetation and selected attachments affect visibility; no measured sightline or guaranteed detection distance.",
+          "basis": "WORLD_SURFACE_WG root projection and reachable watchtower/feature templates."
+        },
+        "approximate_footprint": {
+          "saved_example": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 2949,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 222,
+            "chunk_z": -22,
+            "piece_count": 13,
+            "envelope": [
+              3536,
+              64,
+              -368,
+              3583,
+              93,
+              -321
+            ],
+            "size_xyz": [
+              48,
+              30,
+              48
+            ]
+          },
+          "basis": "Inclusive saved piece-envelope example from the predeclared fresh Overworld capture, reproduced from the downloaded archive.",
+          "limitations": "Includes air and padding, not occupied volume, typical size, all-layout extrema or proof of completed population in every component chunk.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 30,
+          "basis": "Same 13-piece assembly spans inclusive Y 64 through 93.",
+          "limitations": "Saved piece bounds do not measure exposed height or foundations/terrain alterations outside those bounds.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
         }
       }
     },
@@ -83275,7 +84040,9 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/vanilla-ruined-portal-code/identities.json": "c5cde03aa864cfadf9b167a01e4cd90d2193ba6e67b5c5b0a4edaff56ef93f79",
-        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705"
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "intended_hostility": {
@@ -83333,6 +84100,172 @@
           },
           "basis": "The shared generator consumes each root setup and runs its corresponding findSuitableY placement branch, then searches corner-column support.",
           "scope": "Placement modes, not observed exposure. Surface, partly buried, underground, mountain, Nether and ocean-floor cases must remain distinct; final support boundary return does not guarantee three supported corners."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:ruined_portal": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ruined_portal_desert": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ruined_portal_jungle": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ruined_portal_mountain": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ruined_portal_nether": [
+              "minecraft:the_nether"
+            ],
+            "minecraft:ruined_portal_ocean": [
+              "minecraft:overworld"
+            ],
+            "minecraft:ruined_portal_swamp": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld",
+            "minecraft:the_nether"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_examples": [
+            {
+              "structure_id": "minecraft:ruined_portal_mountain",
+              "source": "run-a/mountainous/chunks.jsonl",
+              "line": 10701,
+              "dimension": "minecraft:overworld",
+              "seed": 6671238423019257953,
+              "chunk_x": -31,
+              "chunk_z": 29,
+              "envelope": [
+                -494,
+                174,
+                452,
+                -485,
+                181,
+                463
+              ],
+              "size_xyz": [
+                10,
+                8,
+                12
+              ]
+            },
+            {
+              "structure_id": "minecraft:ruined_portal_mountain",
+              "source": "run-a/mountainous/chunks.jsonl",
+              "line": 14100,
+              "dimension": "minecraft:overworld",
+              "seed": 6671238423019257953,
+              "chunk_x": 22,
+              "chunk_z": 23,
+              "envelope": [
+                352,
+                253,
+                368,
+                357,
+                262,
+                373
+              ],
+              "size_xyz": [
+                6,
+                10,
+                6
+              ]
+            },
+            {
+              "structure_id": "minecraft:ruined_portal_ocean",
+              "source": "run-a/ocean-heavy/chunks.jsonl",
+              "line": 13583,
+              "dimension": "minecraft:overworld",
+              "seed": 95920844204830198,
+              "chunk_x": 17,
+              "chunk_z": 7,
+              "envelope": [
+                275,
+                27,
+                110,
+                283,
+                35,
+                123
+              ],
+              "size_xyz": [
+                9,
+                9,
+                14
+              ]
+            },
+            {
+              "structure_id": "minecraft:ruined_portal_nether",
+              "source": "run-a/biome-diverse/chunks.jsonl",
+              "line": 2385,
+              "dimension": "minecraft:the_nether",
+              "seed": -3503646078644842058,
+              "chunk_x": 7,
+              "chunk_z": 11,
+              "envelope": [
+                103,
+                58,
+                176,
+                112,
+                65,
+                184
+              ],
+              "size_xyz": [
+                10,
+                8,
+                9
+              ]
+            },
+            {
+              "structure_id": "minecraft:ruined_portal_desert",
+              "source": "run-a/biome-diverse/chunks.jsonl",
+              "line": 13701,
+              "dimension": "minecraft:overworld",
+              "seed": -3503646078644842058,
+              "chunk_x": 7,
+              "chunk_z": 11,
+              "envelope": [
+                109,
+                71,
+                179,
+                124,
+                87,
+                189
+              ],
+              "size_xyz": [
+                16,
+                17,
+                11
+              ]
+            }
+          ],
+          "basis": "Five existing full-start examples cover mountain, ocean, Nether and desert root variants. Each generator selects one of13 ordinary/giant portal templates with rotation and mirror; saved boxes give approximate structural extent, not the surrounding altered terrain.",
+          "limitations": "Examples are not a population range or coverage of every template/placement variant. Netherrack spread, downward columns, vines and overgrowth can extend beyond the saved template box; no all-effects bound or occupied-volume claim.",
+          "source": "evidence/item-8/sources/vanilla-ruined-portal-code/README.md#geometry-and-visual-assessment"
+        },
+        "approximate_vertical_size": {
+          "saved_example_heights_blocks": [
+            8,
+            10,
+            9,
+            8,
+            17
+          ],
+          "basis": "Heights correspond in order to the linked footprint examples, using inclusive saved piece-envelope Y bounds. Five existing full-start examples cover mountain, ocean, Nether and desert root variants. Each generator selects one of13 ordinary/giant portal templates with rotation and mirror; saved boxes give approximate structural extent, not the surrounding altered terrain.",
+          "limitations": "Examples are not a population range or coverage of every template/placement variant. Netherrack spread, downward columns, vines and overgrowth can extend beyond the saved template box; no all-effects bound or occupied-volume claim.",
+          "source": "evidence/item-8/sources/vanilla-ruined-portal-code/README.md#geometry-and-visual-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Broken obsidian/crying-obsidian portal frames and surrounding netherrack or altered materials provide cues where exposed. Surface, mountain, underground, partly buried, ocean-floor and Nether placement modes differ; overgrowth and terrain/water can conceal the frame. No guaranteed exposed portal or measured discovery distance.",
+          "basis": "Descriptive inference from retained template materials, generator placement and processor behavior. No sightline or exploration-pacing experiment.",
+          "source": "evidence/item-8/sources/vanilla-ruined-portal-code/README.md#geometry-and-visual-assessment"
         }
       }
     },
@@ -83409,7 +84342,9 @@
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/vanilla-shipwreck-code/identities.json": "313d8031a873de27b39ca5fa8fed9ab1ea1f3694fc56db8afcd7127a3e4415b8",
-        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "attributes": {
         "approximate_footprint": {
@@ -83479,6 +84414,34 @@
           "minecraft:shipwreck_beached": "Surface-associated, partially buried placement: sampled minimum WORLD_SURFACE_WG height minus half template height (integer division) minus nextInt(3).",
           "basis": "evidence/item-8/sources/vanilla-shipwreck-code/identities.json",
           "scope": "Frozen vanilla placement rule; actual exposure, water cover and retained-mod changes are not measured."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:shipwreck": [
+              "minecraft:overworld"
+            ],
+            "minecraft:shipwreck_beached": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "intended_hostility": {
+          "value": "Wreck exploration with container rewards and water/burial hazards; no mobs or spawners are authored by the inspected templates or marker handler.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-shipwreck-code/README.md#remaining-descriptive-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Ship hull fragments and, in applicable templates, a mast provide visual cues. Ocean-floor and partially buried beached placement change exposure; nominal template dimensions are not visible dimensions.",
+          "basis": "Direct interpretation of the already integrated template content and placement/marker code; no new experiment.",
+          "limitations": "Source-based description. Natural spawning, retained block behavior and external injections are not excluded, and no encounter or sightline measurement is claimed.",
+          "source": "evidence/item-8/sources/vanilla-shipwreck-code/README.md#remaining-descriptive-assessment"
         }
       }
     },
@@ -83661,7 +84624,7 @@
       "structure_ids": [
         "minecraft:trail_ruins"
       ],
-      "rationale": "One vanilla trail ruins generation design. Its components and layout alternatives are not extra families. Packaged definition identity is preserved; retained-mod hooks, effective content and remaining attributes require reconciliation.",
+      "rationale": "One vanilla generation design. Traced pieces, pools and layout alternatives are components, not additional families. Content, descriptive attributes and one saved assembled geometry example are assessed with stated limitations.",
       "variants": {
         "minecraft:trail_ruins": {
           "definition": {
@@ -83685,7 +84648,12 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-manifest.json": "d6d5b4da0b286f3c2d271a750da62662aa26ace7f5a652e0da1ab77c019d9f31",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-local-restore.json": "d07c12631589f021d69441ec543e1ecff258e33f39f0d55fbb1e07131ed47653",
+        "evidence/item-8/raw-custody/vanilla-final-geometry-r1-downloaded-restore.json": "500586f2dac72e3f92a6f2b75f92a7c86f3b8288910907262f281d53d943bfd5"
       },
       "attributes": {
         "underground_surface_classification": {
@@ -83703,6 +84671,398 @@
           },
           "basis": "Standard minecraft:jigsaw start projection and height offset from each retained definition. Variants remain separate; terrain adaptation is preserved.",
           "limitation": "Classifies the authored start placement. Attached pieces, foundations and terrain can extend above or below that reference; this is not measured burial or a claim that every room is on the surface."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:trail_ruins": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json",
+          "additional_observation": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 421,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 20,
+            "chunk_z": 97,
+            "piece_count": 18,
+            "envelope": [
+              281,
+              38,
+              1538,
+              330,
+              64,
+              1563
+            ],
+            "size_xyz": [
+              50,
+              27,
+              26
+            ]
+          }
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:trail_ruins/buildings/group_full_1",
+            "minecraft:trail_ruins/buildings/group_full_2",
+            "minecraft:trail_ruins/buildings/group_full_3",
+            "minecraft:trail_ruins/buildings/group_full_4",
+            "minecraft:trail_ruins/buildings/group_full_5",
+            "minecraft:trail_ruins/buildings/group_hall_1",
+            "minecraft:trail_ruins/buildings/group_hall_2",
+            "minecraft:trail_ruins/buildings/group_hall_3",
+            "minecraft:trail_ruins/buildings/group_hall_4",
+            "minecraft:trail_ruins/buildings/group_hall_5",
+            "minecraft:trail_ruins/buildings/group_lower_1",
+            "minecraft:trail_ruins/buildings/group_lower_2",
+            "minecraft:trail_ruins/buildings/group_lower_3",
+            "minecraft:trail_ruins/buildings/group_lower_4",
+            "minecraft:trail_ruins/buildings/group_lower_5",
+            "minecraft:trail_ruins/buildings/group_room_1",
+            "minecraft:trail_ruins/buildings/group_room_2",
+            "minecraft:trail_ruins/buildings/group_room_3",
+            "minecraft:trail_ruins/buildings/group_room_4",
+            "minecraft:trail_ruins/buildings/group_room_5",
+            "minecraft:trail_ruins/buildings/group_upper_1",
+            "minecraft:trail_ruins/buildings/group_upper_2",
+            "minecraft:trail_ruins/buildings/group_upper_3",
+            "minecraft:trail_ruins/buildings/group_upper_4",
+            "minecraft:trail_ruins/buildings/group_upper_5",
+            "minecraft:trail_ruins/buildings/large_room_1",
+            "minecraft:trail_ruins/buildings/large_room_2",
+            "minecraft:trail_ruins/buildings/large_room_3",
+            "minecraft:trail_ruins/buildings/large_room_4",
+            "minecraft:trail_ruins/buildings/large_room_5",
+            "minecraft:trail_ruins/buildings/one_room_1",
+            "minecraft:trail_ruins/buildings/one_room_2",
+            "minecraft:trail_ruins/buildings/one_room_3",
+            "minecraft:trail_ruins/buildings/one_room_4",
+            "minecraft:trail_ruins/buildings/one_room_5",
+            "minecraft:trail_ruins/decor/decor_1",
+            "minecraft:trail_ruins/decor/decor_2",
+            "minecraft:trail_ruins/decor/decor_3",
+            "minecraft:trail_ruins/decor/decor_4",
+            "minecraft:trail_ruins/decor/decor_5",
+            "minecraft:trail_ruins/decor/decor_6",
+            "minecraft:trail_ruins/decor/decor_7",
+            "minecraft:trail_ruins/roads/long_road_end",
+            "minecraft:trail_ruins/roads/road_end_1",
+            "minecraft:trail_ruins/roads/road_section_1",
+            "minecraft:trail_ruins/roads/road_section_2",
+            "minecraft:trail_ruins/roads/road_section_3",
+            "minecraft:trail_ruins/roads/road_section_4",
+            "minecraft:trail_ruins/roads/road_spacer_1",
+            "minecraft:trail_ruins/tower/hall_1",
+            "minecraft:trail_ruins/tower/hall_2",
+            "minecraft:trail_ruins/tower/hall_3",
+            "minecraft:trail_ruins/tower/hall_4",
+            "minecraft:trail_ruins/tower/hall_5",
+            "minecraft:trail_ruins/tower/large_hall_1",
+            "minecraft:trail_ruins/tower/large_hall_2",
+            "minecraft:trail_ruins/tower/large_hall_3",
+            "minecraft:trail_ruins/tower/large_hall_4",
+            "minecraft:trail_ruins/tower/large_hall_5",
+            "minecraft:trail_ruins/tower/one_room_1",
+            "minecraft:trail_ruins/tower/one_room_2",
+            "minecraft:trail_ruins/tower/one_room_3",
+            "minecraft:trail_ruins/tower/one_room_4",
+            "minecraft:trail_ruins/tower/one_room_5",
+            "minecraft:trail_ruins/tower/platform_1",
+            "minecraft:trail_ruins/tower/platform_2",
+            "minecraft:trail_ruins/tower/platform_3",
+            "minecraft:trail_ruins/tower/platform_4",
+            "minecraft:trail_ruins/tower/platform_5",
+            "minecraft:trail_ruins/tower/stable_1",
+            "minecraft:trail_ruins/tower/stable_2",
+            "minecraft:trail_ruins/tower/stable_3",
+            "minecraft:trail_ruins/tower/stable_4",
+            "minecraft:trail_ruins/tower/stable_5",
+            "minecraft:trail_ruins/tower/tower_1",
+            "minecraft:trail_ruins/tower/tower_2",
+            "minecraft:trail_ruins/tower/tower_3",
+            "minecraft:trail_ruins/tower/tower_4",
+            "minecraft:trail_ruins/tower/tower_5",
+            "minecraft:trail_ruins/tower/tower_top_1",
+            "minecraft:trail_ruins/tower/tower_top_2",
+            "minecraft:trail_ruins/tower/tower_top_3",
+            "minecraft:trail_ruins/tower/tower_top_4",
+            "minecraft:trail_ruins/tower/tower_top_5"
+          ],
+          "unresolved_authored_entities": {},
+          "assessment": "All 84 reachable templates have no authored entities, generation markers or spawner blocks. No unresolved entities or missing templates. The three selected archaeology processor lists alter blocks and append loot, not entities. Empty root spawn_overrides leaves ordinary biome spawning applicable."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [],
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:trail_ruins/buildings/group_full_1",
+            "minecraft:trail_ruins/buildings/group_full_2",
+            "minecraft:trail_ruins/buildings/group_full_3",
+            "minecraft:trail_ruins/buildings/group_full_4",
+            "minecraft:trail_ruins/buildings/group_full_5",
+            "minecraft:trail_ruins/buildings/group_hall_1",
+            "minecraft:trail_ruins/buildings/group_hall_2",
+            "minecraft:trail_ruins/buildings/group_hall_3",
+            "minecraft:trail_ruins/buildings/group_hall_4",
+            "minecraft:trail_ruins/buildings/group_hall_5",
+            "minecraft:trail_ruins/buildings/group_lower_1",
+            "minecraft:trail_ruins/buildings/group_lower_2",
+            "minecraft:trail_ruins/buildings/group_lower_3",
+            "minecraft:trail_ruins/buildings/group_lower_4",
+            "minecraft:trail_ruins/buildings/group_lower_5",
+            "minecraft:trail_ruins/buildings/group_room_1",
+            "minecraft:trail_ruins/buildings/group_room_2",
+            "minecraft:trail_ruins/buildings/group_room_3",
+            "minecraft:trail_ruins/buildings/group_room_4",
+            "minecraft:trail_ruins/buildings/group_room_5",
+            "minecraft:trail_ruins/buildings/group_upper_1",
+            "minecraft:trail_ruins/buildings/group_upper_2",
+            "minecraft:trail_ruins/buildings/group_upper_3",
+            "minecraft:trail_ruins/buildings/group_upper_4",
+            "minecraft:trail_ruins/buildings/group_upper_5",
+            "minecraft:trail_ruins/buildings/large_room_1",
+            "minecraft:trail_ruins/buildings/large_room_2",
+            "minecraft:trail_ruins/buildings/large_room_3",
+            "minecraft:trail_ruins/buildings/large_room_4",
+            "minecraft:trail_ruins/buildings/large_room_5",
+            "minecraft:trail_ruins/buildings/one_room_1",
+            "minecraft:trail_ruins/buildings/one_room_2",
+            "minecraft:trail_ruins/buildings/one_room_3",
+            "minecraft:trail_ruins/buildings/one_room_4",
+            "minecraft:trail_ruins/buildings/one_room_5",
+            "minecraft:trail_ruins/decor/decor_1",
+            "minecraft:trail_ruins/decor/decor_2",
+            "minecraft:trail_ruins/decor/decor_3",
+            "minecraft:trail_ruins/decor/decor_4",
+            "minecraft:trail_ruins/decor/decor_5",
+            "minecraft:trail_ruins/decor/decor_6",
+            "minecraft:trail_ruins/decor/decor_7",
+            "minecraft:trail_ruins/roads/long_road_end",
+            "minecraft:trail_ruins/roads/road_end_1",
+            "minecraft:trail_ruins/roads/road_section_1",
+            "minecraft:trail_ruins/roads/road_section_2",
+            "minecraft:trail_ruins/roads/road_section_3",
+            "minecraft:trail_ruins/roads/road_section_4",
+            "minecraft:trail_ruins/roads/road_spacer_1",
+            "minecraft:trail_ruins/tower/hall_1",
+            "minecraft:trail_ruins/tower/hall_2",
+            "minecraft:trail_ruins/tower/hall_3",
+            "minecraft:trail_ruins/tower/hall_4",
+            "minecraft:trail_ruins/tower/hall_5",
+            "minecraft:trail_ruins/tower/large_hall_1",
+            "minecraft:trail_ruins/tower/large_hall_2",
+            "minecraft:trail_ruins/tower/large_hall_3",
+            "minecraft:trail_ruins/tower/large_hall_4",
+            "minecraft:trail_ruins/tower/large_hall_5",
+            "minecraft:trail_ruins/tower/one_room_1",
+            "minecraft:trail_ruins/tower/one_room_2",
+            "minecraft:trail_ruins/tower/one_room_3",
+            "minecraft:trail_ruins/tower/one_room_4",
+            "minecraft:trail_ruins/tower/one_room_5",
+            "minecraft:trail_ruins/tower/platform_1",
+            "minecraft:trail_ruins/tower/platform_2",
+            "minecraft:trail_ruins/tower/platform_3",
+            "minecraft:trail_ruins/tower/platform_4",
+            "minecraft:trail_ruins/tower/platform_5",
+            "minecraft:trail_ruins/tower/stable_1",
+            "minecraft:trail_ruins/tower/stable_2",
+            "minecraft:trail_ruins/tower/stable_3",
+            "minecraft:trail_ruins/tower/stable_4",
+            "minecraft:trail_ruins/tower/stable_5",
+            "minecraft:trail_ruins/tower/tower_1",
+            "minecraft:trail_ruins/tower/tower_2",
+            "minecraft:trail_ruins/tower/tower_3",
+            "minecraft:trail_ruins/tower/tower_4",
+            "minecraft:trail_ruins/tower/tower_5",
+            "minecraft:trail_ruins/tower/tower_top_1",
+            "minecraft:trail_ruins/tower/tower_top_2",
+            "minecraft:trail_ruins/tower/tower_top_3",
+            "minecraft:trail_ruins/tower/tower_top_4",
+            "minecraft:trail_ruins/tower/tower_top_5"
+          ],
+          "processor_sources": {
+            "minecraft:trail_ruins_houses_archaeology": {
+              "minecraft:archaeology/trail_ruins_common": 6,
+              "minecraft:archaeology/trail_ruins_rare": 3
+            },
+            "minecraft:trail_ruins_roads_archaeology": {
+              "minecraft:archaeology/trail_ruins_common": 2
+            },
+            "minecraft:trail_ruins_tower_top_archaeology": {
+              "minecraft:archaeology/trail_ruins_common": 2
+            }
+          },
+          "assessment": "Selected capped rule processors replace blocks matching minecraft:trail_ruins_replaceable with suspicious gravel and append the named loot table. Numbers are configured processor caps, not per-family reward counts or guarantees. Both tables have packaged definitions under data/minecraft/loot_table/archaeology/. No literal template loot reference is required for this processor-supplied source."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Assessed packaged template and selected processor sources; occurrence and population are conditional, not measured counts.",
+          "template_ids": [
+            "minecraft:trail_ruins/buildings/group_full_1",
+            "minecraft:trail_ruins/buildings/group_full_2",
+            "minecraft:trail_ruins/buildings/group_full_3",
+            "minecraft:trail_ruins/buildings/group_full_4",
+            "minecraft:trail_ruins/buildings/group_full_5",
+            "minecraft:trail_ruins/buildings/group_hall_1",
+            "minecraft:trail_ruins/buildings/group_hall_2",
+            "minecraft:trail_ruins/buildings/group_hall_3",
+            "minecraft:trail_ruins/buildings/group_hall_4",
+            "minecraft:trail_ruins/buildings/group_hall_5",
+            "minecraft:trail_ruins/buildings/group_lower_1",
+            "minecraft:trail_ruins/buildings/group_lower_2",
+            "minecraft:trail_ruins/buildings/group_lower_3",
+            "minecraft:trail_ruins/buildings/group_lower_4",
+            "minecraft:trail_ruins/buildings/group_lower_5",
+            "minecraft:trail_ruins/buildings/group_room_1",
+            "minecraft:trail_ruins/buildings/group_room_2",
+            "minecraft:trail_ruins/buildings/group_room_3",
+            "minecraft:trail_ruins/buildings/group_room_4",
+            "minecraft:trail_ruins/buildings/group_room_5",
+            "minecraft:trail_ruins/buildings/group_upper_1",
+            "minecraft:trail_ruins/buildings/group_upper_2",
+            "minecraft:trail_ruins/buildings/group_upper_3",
+            "minecraft:trail_ruins/buildings/group_upper_4",
+            "minecraft:trail_ruins/buildings/group_upper_5",
+            "minecraft:trail_ruins/buildings/large_room_1",
+            "minecraft:trail_ruins/buildings/large_room_2",
+            "minecraft:trail_ruins/buildings/large_room_3",
+            "minecraft:trail_ruins/buildings/large_room_4",
+            "minecraft:trail_ruins/buildings/large_room_5",
+            "minecraft:trail_ruins/buildings/one_room_1",
+            "minecraft:trail_ruins/buildings/one_room_2",
+            "minecraft:trail_ruins/buildings/one_room_3",
+            "minecraft:trail_ruins/buildings/one_room_4",
+            "minecraft:trail_ruins/buildings/one_room_5",
+            "minecraft:trail_ruins/decor/decor_1",
+            "minecraft:trail_ruins/decor/decor_2",
+            "minecraft:trail_ruins/decor/decor_3",
+            "minecraft:trail_ruins/decor/decor_4",
+            "minecraft:trail_ruins/decor/decor_5",
+            "minecraft:trail_ruins/decor/decor_6",
+            "minecraft:trail_ruins/decor/decor_7",
+            "minecraft:trail_ruins/roads/long_road_end",
+            "minecraft:trail_ruins/roads/road_end_1",
+            "minecraft:trail_ruins/roads/road_section_1",
+            "minecraft:trail_ruins/roads/road_section_2",
+            "minecraft:trail_ruins/roads/road_section_3",
+            "minecraft:trail_ruins/roads/road_section_4",
+            "minecraft:trail_ruins/roads/road_spacer_1",
+            "minecraft:trail_ruins/tower/hall_1",
+            "minecraft:trail_ruins/tower/hall_2",
+            "minecraft:trail_ruins/tower/hall_3",
+            "minecraft:trail_ruins/tower/hall_4",
+            "minecraft:trail_ruins/tower/hall_5",
+            "minecraft:trail_ruins/tower/large_hall_1",
+            "minecraft:trail_ruins/tower/large_hall_2",
+            "minecraft:trail_ruins/tower/large_hall_3",
+            "minecraft:trail_ruins/tower/large_hall_4",
+            "minecraft:trail_ruins/tower/large_hall_5",
+            "minecraft:trail_ruins/tower/one_room_1",
+            "minecraft:trail_ruins/tower/one_room_2",
+            "minecraft:trail_ruins/tower/one_room_3",
+            "minecraft:trail_ruins/tower/one_room_4",
+            "minecraft:trail_ruins/tower/one_room_5",
+            "minecraft:trail_ruins/tower/platform_1",
+            "minecraft:trail_ruins/tower/platform_2",
+            "minecraft:trail_ruins/tower/platform_3",
+            "minecraft:trail_ruins/tower/platform_4",
+            "minecraft:trail_ruins/tower/platform_5",
+            "minecraft:trail_ruins/tower/stable_1",
+            "minecraft:trail_ruins/tower/stable_2",
+            "minecraft:trail_ruins/tower/stable_3",
+            "minecraft:trail_ruins/tower/stable_4",
+            "minecraft:trail_ruins/tower/stable_5",
+            "minecraft:trail_ruins/tower/tower_1",
+            "minecraft:trail_ruins/tower/tower_2",
+            "minecraft:trail_ruins/tower/tower_3",
+            "minecraft:trail_ruins/tower/tower_4",
+            "minecraft:trail_ruins/tower/tower_5",
+            "minecraft:trail_ruins/tower/tower_top_1",
+            "minecraft:trail_ruins/tower/tower_top_2",
+            "minecraft:trail_ruins/tower/tower_top_3",
+            "minecraft:trail_ruins/tower/tower_top_4",
+            "minecraft:trail_ruins/tower/tower_top_5"
+          ],
+          "unresolved_sources": {},
+          "assessment": "No ordinary or trial spawner blocks in the reachable templates, no generation markers, and no spawner-producing rule in trail_ruins_houses_archaeology, trail_ruins_roads_archaeology or trail_ruins_tower_top_archaeology."
+        },
+        "intended_hostility": {
+          "assessment": "Archaeological ruin with no authored combat population in the selected templates or processors. Natural hostile mobs remain possible; excavation is not guaranteed safe.",
+          "basis": "84-template content trace, empty root spawn overrides and three selected archaeology processors."
+        },
+        "authored_or_natural_enemies": {
+          "assessment": "No authored enemies in the traced generation content. Ordinary biome spawning remains possible; this is source attribution, not an observed population count."
+        },
+        "visual_discoverability": {
+          "assessment": "Buried road, room and tower layout. Root projects to WORLD_SURFACE_WG with offset -15 and bury terrain adaptation, so exposed tower material can provide a clue while much of the layout is concealed. Exposure depends on terrain and assembly; no guaranteed visible top or measured sightline.",
+          "basis": "data/minecraft/worldgen/structure/trail_ruins.json and reachable tower/building/road templates."
+        },
+        "approximate_footprint": {
+          "saved_example": {
+            "archive": "item8-vanilla-final-geometry-r1-1416f44c.tar.gz",
+            "member": "chunks.jsonl",
+            "sha256": "83120ac66982a3866329bf0ab36a736b8698375ddd7ed169543dad8323dda32d",
+            "line": 421,
+            "seed": 42,
+            "dimension": "minecraft:overworld",
+            "chunk_x": 20,
+            "chunk_z": 97,
+            "piece_count": 18,
+            "envelope": [
+              281,
+              38,
+              1538,
+              330,
+              64,
+              1563
+            ],
+            "size_xyz": [
+              50,
+              27,
+              26
+            ]
+          },
+          "basis": "Inclusive saved piece-envelope example from the predeclared fresh Overworld capture, reproduced from the downloaded archive.",
+          "limitations": "Includes air and padding, not occupied volume, typical size, all-layout extrema or proof of completed population in every component chunk.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
+        },
+        "approximate_vertical_size": {
+          "saved_example_height_blocks": 27,
+          "basis": "Same 18-piece assembly spans inclusive Y 38 through 64.",
+          "limitations": "Saved piece bounds do not measure exposed height or foundations/terrain alterations outside those bounds.",
+          "source": "evidence/item-8/sources/vanilla-outpost-trail-assessment/README.md#geometry-acceptance"
         }
       }
     },
@@ -83872,7 +85232,10 @@
         "evidence/item-8/sources/lithostitched-alias-code/identities.json": "eea3af78139809c0a2452a0027bfe83fac321380574b3a10ba3d8dcc16c1691b",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
         "evidence/item-8/sources/vanilla-trial-spawner-code/identities.json": "aa43a73247921fd7ece2e3a71d811c0bddba492a6ea04e198825fc111082449e",
-        "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/identities.json": "658728eebd2eec80ac69ecf077c4ca305efa3102a3f4d2b2c9655ca95d962aab"
+        "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/identities.json": "658728eebd2eec80ac69ecf077c4ca305efa3102a3f4d2b2c9655ca95d962aab",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/vanilla-end-city-code/identities.json": "ca7cb2c777ad0fc638e28cded50a78ab048ca26ad243eeb564fa72be7cac943c"
       },
       "attributes": {
         "mob_source": {
@@ -83911,6 +85274,809 @@
             "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/identities.json"
           ],
           "limitations": "Conditional vanilla-source attribution, not a normal-config copy, observed spawning, or encounter frequencies. Does not establish arbitrary saved/command-modified states or retained-mod transformations. Template entities and generation markers remain available in the bound trace."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "minecraft:trial_chambers": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Effective biome-set overlap with captured dimension membership, computed by the existing inventory builder. Retained start observations are recorded separately. This identifies eligible dimensions without asserting successful placement in unobserved dimensions.",
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "approximate_footprint": {
+          "saved_examples": [
+            {
+              "source": "run-a/ordinary/chunks.jsonl",
+              "line": 14331,
+              "seed": 42,
+              "chunk_x": 29,
+              "chunk_z": 30,
+              "envelope": [
+                401,
+                -36,
+                408,
+                497,
+                14,
+                527
+              ],
+              "size_xyz": [
+                97,
+                51,
+                120
+              ]
+            },
+            {
+              "source": "run-a/biome-diverse/chunks.jsonl",
+              "line": 14190,
+              "seed": -3503646078644842058,
+              "chunk_x": 16,
+              "chunk_z": 26,
+              "envelope": [
+                209,
+                -46,
+                368,
+                319,
+                -10,
+                482
+              ],
+              "size_xyz": [
+                111,
+                37,
+                115
+              ]
+            }
+          ],
+          "basis": "Two retained full-start assemblies give97x120 and111x115 horizontal envelopes. Aliases and171 reachable component templates remain within one chamber family.",
+          "limitations": "Includes air/padding; not occupied volume,typical/all-layout size or complete piece-population proof.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "approximate_vertical_size": {
+          "saved_example_heights_blocks": [
+            51,
+            37
+          ],
+          "basis": "Referenced examples span inclusiveY-36..14 andY-46..-10. Start-height range-40..-20 is an anchor input, not a structure-height range.",
+          "limitations": "Saved piece-envelope height, not guaranteed exposure or a bound on every block effect.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "intended_hostility": {
+          "value": "Authored trial-spawner encounters with normal and ominous configurations, associated rewards, vaults and dispenser content.",
+          "basis": "Packaged spawner/vault NBT and retained lifecycle code. Alias choices vary mob sets within this family.",
+          "limitations": "Source-based encounter design, not observed combat intensity, completion time or guaranteed reward.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/decor/barrel"
+              ],
+              "value": "minecraft:chests/trial_chambers/corridor"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/corridor/entrance_1",
+                "minecraft:trial_chambers/corridor/entrance_2",
+                "minecraft:trial_chambers/corridor/entrance_3"
+              ],
+              "value": "minecraft:chests/trial_chambers/entrance"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/intersection/intersection_2",
+                "minecraft:trial_chambers/intersection/intersection_3"
+              ],
+              "value": "minecraft:chests/trial_chambers/intersection_barrel"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/corridor/entrance_1",
+                "minecraft:trial_chambers/hallway/rubble",
+                "minecraft:trial_chambers/hallway/rubble_chamber"
+              ],
+              "value": "minecraft:chests/trial_chambers/reward"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/chests/supply"
+              ],
+              "value": "minecraft:chests/trial_chambers/supply"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/dispensers/chamber",
+                "minecraft:trial_chambers/dispensers/floor_dispenser",
+                "minecraft:trial_chambers/dispensers/wall_dispenser"
+              ],
+              "value": "minecraft:dispensers/trial_chambers/chamber"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/corridor/addon/arrow_dispenser"
+              ],
+              "value": "minecraft:dispensers/trial_chambers/corridor"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "minecraft:trial_chambers/decor/flow_pot",
+                "minecraft:trial_chambers/decor/guster_pot",
+                "minecraft:trial_chambers/decor/scrape_pot",
+                "minecraft:trial_chambers/decor/undecorated_pot"
+              ],
+              "value": "minecraft:pots/trial_chambers/corridor"
+            },
+            {
+              "field": "loot_table",
+              "templates": [
+                "minecraft:trial_chambers/reward/vault"
+              ],
+              "value": "minecraft:chests/trial_chambers/reward"
+            },
+            {
+              "field": "loot_table",
+              "templates": [
+                "minecraft:trial_chambers/reward/ominous_vault"
+              ],
+              "value": "minecraft:chests/trial_chambers/reward_ominous"
+            },
+            {
+              "field": "loot_table",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/husk",
+                "minecraft:trial_chambers/spawner/melee/zombie",
+                "minecraft:trial_chambers/spawner/small_melee/baby_zombie",
+                "regions_unexplored:trial_chambers/ashen"
+              ],
+              "value": "minecraft:equipment/trial_chamber_melee"
+            },
+            {
+              "field": "loot_table",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/ranged/skeleton",
+                "minecraft:trial_chambers/spawner/ranged/stray",
+                "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/stray"
+              ],
+              "value": "minecraft:equipment/trial_chamber_ranged"
+            },
+            {
+              "field": "loot_tables_to_eject",
+              "templates": [
+                "minecraft:trial_chambers/spawner/breeze/breeze",
+                "minecraft:trial_chambers/spawner/melee/husk",
+                "minecraft:trial_chambers/spawner/melee/spider",
+                "minecraft:trial_chambers/spawner/melee/zombie",
+                "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/ranged/skeleton",
+                "minecraft:trial_chambers/spawner/ranged/stray",
+                "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/stray",
+                "minecraft:trial_chambers/spawner/small_melee/baby_zombie",
+                "minecraft:trial_chambers/spawner/small_melee/cave_spider",
+                "minecraft:trial_chambers/spawner/small_melee/silverfish",
+                "minecraft:trial_chambers/spawner/small_melee/slime",
+                "regions_unexplored:trial_chambers/ashen"
+              ],
+              "value": [
+                {
+                  "data": "minecraft:spawners/ominous/trial_chamber/key",
+                  "weight": 3
+                },
+                {
+                  "data": "minecraft:spawners/ominous/trial_chamber/consumables",
+                  "weight": 7
+                }
+              ]
+            }
+          ],
+          "status": "Packaged literal references plus inspected vanilla code defaults; no rolled reward measurement.",
+          "template_ids": [
+            "minecraft:trial_chambers/chamber/addon/c1_breeze",
+            "minecraft:trial_chambers/chamber/addon/full_corner_column",
+            "minecraft:trial_chambers/chamber/addon/full_stacked_walkway",
+            "minecraft:trial_chambers/chamber/addon/full_stacked_walkway_2",
+            "minecraft:trial_chambers/chamber/addon/grate_bridge",
+            "minecraft:trial_chambers/chamber/addon/hanging_platform",
+            "minecraft:trial_chambers/chamber/addon/lower_staircase_down",
+            "minecraft:trial_chambers/chamber/addon/short_grate_platform",
+            "minecraft:trial_chambers/chamber/addon/short_platform",
+            "minecraft:trial_chambers/chamber/addon/walkway_with_bridge_1",
+            "minecraft:trial_chambers/chamber/assembly",
+            "minecraft:trial_chambers/chamber/assembly/cover_1",
+            "minecraft:trial_chambers/chamber/assembly/cover_2",
+            "minecraft:trial_chambers/chamber/assembly/cover_3",
+            "minecraft:trial_chambers/chamber/assembly/cover_4",
+            "minecraft:trial_chambers/chamber/assembly/cover_5",
+            "minecraft:trial_chambers/chamber/assembly/cover_6",
+            "minecraft:trial_chambers/chamber/assembly/cover_7",
+            "minecraft:trial_chambers/chamber/assembly/full_column",
+            "minecraft:trial_chambers/chamber/assembly/hanging_1",
+            "minecraft:trial_chambers/chamber/assembly/hanging_2",
+            "minecraft:trial_chambers/chamber/assembly/hanging_3",
+            "minecraft:trial_chambers/chamber/assembly/hanging_4",
+            "minecraft:trial_chambers/chamber/assembly/hanging_5",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_1",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_2",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_3",
+            "minecraft:trial_chambers/chamber/assembly/platform_1",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_1",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_2",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_3",
+            "minecraft:trial_chambers/chamber/assembly/spawner_1",
+            "minecraft:trial_chambers/chamber/chamber_1",
+            "minecraft:trial_chambers/chamber/chamber_2",
+            "minecraft:trial_chambers/chamber/chamber_4",
+            "minecraft:trial_chambers/chamber/chamber_8",
+            "minecraft:trial_chambers/chamber/entrance_cap",
+            "minecraft:trial_chambers/chamber/eruption",
+            "minecraft:trial_chambers/chamber/eruption/breeze_slice_1",
+            "minecraft:trial_chambers/chamber/eruption/center_1",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_1",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_2",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_3",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_4",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_5",
+            "minecraft:trial_chambers/chamber/eruption/slice_1",
+            "minecraft:trial_chambers/chamber/eruption/slice_2",
+            "minecraft:trial_chambers/chamber/eruption/slice_3",
+            "minecraft:trial_chambers/chamber/pedestal",
+            "minecraft:trial_chambers/chamber/pedestal/center_1",
+            "minecraft:trial_chambers/chamber/pedestal/ominous_slice_1",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_1",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_2",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_3",
+            "minecraft:trial_chambers/chamber/pedestal/slice_1",
+            "minecraft:trial_chambers/chamber/pedestal/slice_2",
+            "minecraft:trial_chambers/chamber/pedestal/slice_3",
+            "minecraft:trial_chambers/chamber/pedestal/slice_4",
+            "minecraft:trial_chambers/chamber/pedestal/slice_5",
+            "minecraft:trial_chambers/chamber/slanted",
+            "minecraft:trial_chambers/chamber/slanted/center",
+            "minecraft:trial_chambers/chamber/slanted/hallway_1",
+            "minecraft:trial_chambers/chamber/slanted/hallway_2",
+            "minecraft:trial_chambers/chamber/slanted/hallway_3",
+            "minecraft:trial_chambers/chamber/slanted/hallway_4",
+            "minecraft:trial_chambers/chamber/slanted/hallway_5",
+            "minecraft:trial_chambers/chamber/slanted/ominous_upper_arm_1",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_1",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_2",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_3",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_4",
+            "minecraft:trial_chambers/chamber/slanted/ramp_1",
+            "minecraft:trial_chambers/chamber/slanted/ramp_2",
+            "minecraft:trial_chambers/chamber/slanted/ramp_3",
+            "minecraft:trial_chambers/chamber/slanted/ramp_4",
+            "minecraft:trial_chambers/chests/connectors/supply",
+            "minecraft:trial_chambers/chests/supply",
+            "minecraft:trial_chambers/corridor/addon/arrow_dispenser",
+            "minecraft:trial_chambers/corridor/addon/bridge_lower",
+            "minecraft:trial_chambers/corridor/addon/chandelier_upper",
+            "minecraft:trial_chambers/corridor/addon/decoration_upper",
+            "minecraft:trial_chambers/corridor/addon/display_1",
+            "minecraft:trial_chambers/corridor/addon/display_2",
+            "minecraft:trial_chambers/corridor/addon/display_3",
+            "minecraft:trial_chambers/corridor/addon/head_upper",
+            "minecraft:trial_chambers/corridor/addon/ladder_to_middle",
+            "minecraft:trial_chambers/corridor/addon/open_walkway",
+            "minecraft:trial_chambers/corridor/addon/open_walkway_upper",
+            "minecraft:trial_chambers/corridor/addon/reward_upper",
+            "minecraft:trial_chambers/corridor/addon/staircase",
+            "minecraft:trial_chambers/corridor/addon/wall",
+            "minecraft:trial_chambers/corridor/addon/walled_walkway",
+            "minecraft:trial_chambers/corridor/atrium/bogged_relief",
+            "minecraft:trial_chambers/corridor/atrium/breeze_relief",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_1",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_2",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_3",
+            "minecraft:trial_chambers/corridor/atrium/spider_relief",
+            "minecraft:trial_chambers/corridor/atrium/spiral_relief",
+            "minecraft:trial_chambers/corridor/atrium_1",
+            "minecraft:trial_chambers/corridor/end_1",
+            "minecraft:trial_chambers/corridor/end_2",
+            "minecraft:trial_chambers/corridor/entrance_1",
+            "minecraft:trial_chambers/corridor/entrance_2",
+            "minecraft:trial_chambers/corridor/entrance_3",
+            "minecraft:trial_chambers/corridor/first_plate",
+            "minecraft:trial_chambers/corridor/second_plate",
+            "minecraft:trial_chambers/corridor/straight_1",
+            "minecraft:trial_chambers/corridor/straight_2",
+            "minecraft:trial_chambers/corridor/straight_3",
+            "minecraft:trial_chambers/corridor/straight_4",
+            "minecraft:trial_chambers/corridor/straight_5",
+            "minecraft:trial_chambers/corridor/straight_6",
+            "minecraft:trial_chambers/corridor/straight_7",
+            "minecraft:trial_chambers/corridor/straight_8",
+            "minecraft:trial_chambers/decor/barrel",
+            "minecraft:trial_chambers/decor/candle_1",
+            "minecraft:trial_chambers/decor/candle_2",
+            "minecraft:trial_chambers/decor/candle_3",
+            "minecraft:trial_chambers/decor/candle_4",
+            "minecraft:trial_chambers/decor/dead_bush_pot",
+            "minecraft:trial_chambers/decor/empty_pot",
+            "minecraft:trial_chambers/decor/flow_pot",
+            "minecraft:trial_chambers/decor/guster_pot",
+            "minecraft:trial_chambers/decor/scrape_pot",
+            "minecraft:trial_chambers/decor/undecorated_pot",
+            "minecraft:trial_chambers/dispensers/chamber",
+            "minecraft:trial_chambers/dispensers/floor_dispenser",
+            "minecraft:trial_chambers/dispensers/wall_dispenser",
+            "minecraft:trial_chambers/hallway/cache_1",
+            "minecraft:trial_chambers/hallway/corner_staircase",
+            "minecraft:trial_chambers/hallway/corner_staircase_down",
+            "minecraft:trial_chambers/hallway/corridor_connector_1",
+            "minecraft:trial_chambers/hallway/left_corner",
+            "minecraft:trial_chambers/hallway/long_straight_staircase",
+            "minecraft:trial_chambers/hallway/long_straight_staircase_down",
+            "minecraft:trial_chambers/hallway/lower_hallway_connector",
+            "minecraft:trial_chambers/hallway/right_corner",
+            "minecraft:trial_chambers/hallway/rubble",
+            "minecraft:trial_chambers/hallway/rubble_chamber",
+            "minecraft:trial_chambers/hallway/rubble_chamber_thin",
+            "minecraft:trial_chambers/hallway/rubble_thin",
+            "minecraft:trial_chambers/hallway/straight",
+            "minecraft:trial_chambers/hallway/straight_staircase",
+            "minecraft:trial_chambers/hallway/straight_staircase_down",
+            "minecraft:trial_chambers/hallway/upper_hallway_connector",
+            "minecraft:trial_chambers/intersection/intersection_1",
+            "minecraft:trial_chambers/intersection/intersection_2",
+            "minecraft:trial_chambers/intersection/intersection_3",
+            "minecraft:trial_chambers/reward/ominous_vault",
+            "minecraft:trial_chambers/reward/vault",
+            "minecraft:trial_chambers/spawner/breeze/breeze",
+            "minecraft:trial_chambers/spawner/connectors/breeze",
+            "minecraft:trial_chambers/spawner/connectors/melee",
+            "minecraft:trial_chambers/spawner/connectors/ranged",
+            "minecraft:trial_chambers/spawner/connectors/slow_ranged",
+            "minecraft:trial_chambers/spawner/connectors/small_melee",
+            "minecraft:trial_chambers/spawner/melee/husk",
+            "minecraft:trial_chambers/spawner/melee/spider",
+            "minecraft:trial_chambers/spawner/melee/zombie",
+            "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+            "minecraft:trial_chambers/spawner/ranged/skeleton",
+            "minecraft:trial_chambers/spawner/ranged/stray",
+            "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton",
+            "minecraft:trial_chambers/spawner/slow_ranged/skeleton",
+            "minecraft:trial_chambers/spawner/slow_ranged/stray",
+            "minecraft:trial_chambers/spawner/small_melee/baby_zombie",
+            "minecraft:trial_chambers/spawner/small_melee/cave_spider",
+            "minecraft:trial_chambers/spawner/small_melee/silverfish",
+            "minecraft:trial_chambers/spawner/small_melee/slime",
+            "regions_unexplored:trial_chambers/ashen"
+          ],
+          "code_default_sources": {
+            "loot_tables_to_eject": [
+              "minecraft:spawners/trial_chamber/consumables",
+              "minecraft:spawners/trial_chamber/key"
+            ],
+            "items_to_drop_when_ominous": "minecraft:spawners/trial_chamber/items_to_drop_when_ominous"
+          },
+          "default_basis": "TrialSpawnerConfig optional fields use DEFAULT lootTablesToEject and itemsToDropWhenOminous. Its static initializer selects these BuiltInLootTables constants; captured registry initializer resolves their IDs. Defaults apply where the inline field is omitted, not in place of explicit ominous overrides.",
+          "vault_sources": {
+            "normal": {
+              "table": "minecraft:chests/trial_chambers/reward",
+              "key": "minecraft:trial_key"
+            },
+            "ominous": {
+              "table": "minecraft:chests/trial_chambers/reward_ominous",
+              "key": "minecraft:ominous_trial_key"
+            }
+          },
+          "assessment_source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [
+            "minecraft:trial_chambers/chamber/addon/walkway_with_bridge_1"
+          ],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "minecraft:bogged",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton"
+              ]
+            },
+            {
+              "entity_id": "minecraft:breeze",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/breeze/breeze"
+              ]
+            },
+            {
+              "entity_id": "minecraft:cave_spider",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/small_melee/cave_spider"
+              ]
+            },
+            {
+              "entity_id": "minecraft:husk",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/husk"
+              ]
+            },
+            {
+              "entity_id": "minecraft:silverfish",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/small_melee/silverfish"
+              ]
+            },
+            {
+              "entity_id": "minecraft:skeleton",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/skeleton"
+              ]
+            },
+            {
+              "entity_id": "minecraft:slime",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/small_melee/slime"
+              ]
+            },
+            {
+              "entity_id": "minecraft:spider",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/spider"
+              ]
+            },
+            {
+              "entity_id": "minecraft:stray",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/stray",
+                "minecraft:trial_chambers/spawner/slow_ranged/stray"
+              ]
+            },
+            {
+              "entity_id": "minecraft:zombie",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/zombie",
+                "minecraft:trial_chambers/spawner/small_melee/baby_zombie"
+              ]
+            },
+            {
+              "entity_id": "regions_unexplored:ashen",
+              "mode": "normal_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "regions_unexplored:trial_chambers/ashen"
+              ]
+            },
+            {
+              "entity_id": "minecraft:bogged",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton"
+              ]
+            },
+            {
+              "entity_id": "minecraft:husk",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/husk"
+              ]
+            },
+            {
+              "entity_id": "minecraft:skeleton",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/skeleton",
+                "minecraft:trial_chambers/spawner/slow_ranged/skeleton"
+              ]
+            },
+            {
+              "entity_id": "minecraft:stray",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/ranged/stray",
+                "minecraft:trial_chambers/spawner/slow_ranged/stray"
+              ]
+            },
+            {
+              "entity_id": "minecraft:zombie",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "minecraft:trial_chambers/spawner/melee/zombie",
+                "minecraft:trial_chambers/spawner/small_melee/baby_zombie"
+              ]
+            },
+            {
+              "entity_id": "regions_unexplored:ashen",
+              "mode": "ominous_config",
+              "spawner_id": "minecraft:trial_spawner",
+              "templates": [
+                "regions_unexplored:trial_chambers/ashen"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Packaged trial-spawner configurations assessed with preserved conditional ominous lifecycle attribution.",
+          "template_ids": [
+            "minecraft:trial_chambers/chamber/addon/c1_breeze",
+            "minecraft:trial_chambers/chamber/addon/full_corner_column",
+            "minecraft:trial_chambers/chamber/addon/full_stacked_walkway",
+            "minecraft:trial_chambers/chamber/addon/full_stacked_walkway_2",
+            "minecraft:trial_chambers/chamber/addon/grate_bridge",
+            "minecraft:trial_chambers/chamber/addon/hanging_platform",
+            "minecraft:trial_chambers/chamber/addon/lower_staircase_down",
+            "minecraft:trial_chambers/chamber/addon/short_grate_platform",
+            "minecraft:trial_chambers/chamber/addon/short_platform",
+            "minecraft:trial_chambers/chamber/addon/walkway_with_bridge_1",
+            "minecraft:trial_chambers/chamber/assembly",
+            "minecraft:trial_chambers/chamber/assembly/cover_1",
+            "minecraft:trial_chambers/chamber/assembly/cover_2",
+            "minecraft:trial_chambers/chamber/assembly/cover_3",
+            "minecraft:trial_chambers/chamber/assembly/cover_4",
+            "minecraft:trial_chambers/chamber/assembly/cover_5",
+            "minecraft:trial_chambers/chamber/assembly/cover_6",
+            "minecraft:trial_chambers/chamber/assembly/cover_7",
+            "minecraft:trial_chambers/chamber/assembly/full_column",
+            "minecraft:trial_chambers/chamber/assembly/hanging_1",
+            "minecraft:trial_chambers/chamber/assembly/hanging_2",
+            "minecraft:trial_chambers/chamber/assembly/hanging_3",
+            "minecraft:trial_chambers/chamber/assembly/hanging_4",
+            "minecraft:trial_chambers/chamber/assembly/hanging_5",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_1",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_2",
+            "minecraft:trial_chambers/chamber/assembly/left_staircase_3",
+            "minecraft:trial_chambers/chamber/assembly/platform_1",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_1",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_2",
+            "minecraft:trial_chambers/chamber/assembly/right_staircase_3",
+            "minecraft:trial_chambers/chamber/assembly/spawner_1",
+            "minecraft:trial_chambers/chamber/chamber_1",
+            "minecraft:trial_chambers/chamber/chamber_2",
+            "minecraft:trial_chambers/chamber/chamber_4",
+            "minecraft:trial_chambers/chamber/chamber_8",
+            "minecraft:trial_chambers/chamber/entrance_cap",
+            "minecraft:trial_chambers/chamber/eruption",
+            "minecraft:trial_chambers/chamber/eruption/breeze_slice_1",
+            "minecraft:trial_chambers/chamber/eruption/center_1",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_1",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_2",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_3",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_4",
+            "minecraft:trial_chambers/chamber/eruption/quadrant_5",
+            "minecraft:trial_chambers/chamber/eruption/slice_1",
+            "minecraft:trial_chambers/chamber/eruption/slice_2",
+            "minecraft:trial_chambers/chamber/eruption/slice_3",
+            "minecraft:trial_chambers/chamber/pedestal",
+            "minecraft:trial_chambers/chamber/pedestal/center_1",
+            "minecraft:trial_chambers/chamber/pedestal/ominous_slice_1",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_1",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_2",
+            "minecraft:trial_chambers/chamber/pedestal/quadrant_3",
+            "minecraft:trial_chambers/chamber/pedestal/slice_1",
+            "minecraft:trial_chambers/chamber/pedestal/slice_2",
+            "minecraft:trial_chambers/chamber/pedestal/slice_3",
+            "minecraft:trial_chambers/chamber/pedestal/slice_4",
+            "minecraft:trial_chambers/chamber/pedestal/slice_5",
+            "minecraft:trial_chambers/chamber/slanted",
+            "minecraft:trial_chambers/chamber/slanted/center",
+            "minecraft:trial_chambers/chamber/slanted/hallway_1",
+            "minecraft:trial_chambers/chamber/slanted/hallway_2",
+            "minecraft:trial_chambers/chamber/slanted/hallway_3",
+            "minecraft:trial_chambers/chamber/slanted/hallway_4",
+            "minecraft:trial_chambers/chamber/slanted/hallway_5",
+            "minecraft:trial_chambers/chamber/slanted/ominous_upper_arm_1",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_1",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_2",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_3",
+            "minecraft:trial_chambers/chamber/slanted/quadrant_4",
+            "minecraft:trial_chambers/chamber/slanted/ramp_1",
+            "minecraft:trial_chambers/chamber/slanted/ramp_2",
+            "minecraft:trial_chambers/chamber/slanted/ramp_3",
+            "minecraft:trial_chambers/chamber/slanted/ramp_4",
+            "minecraft:trial_chambers/chests/connectors/supply",
+            "minecraft:trial_chambers/chests/supply",
+            "minecraft:trial_chambers/corridor/addon/arrow_dispenser",
+            "minecraft:trial_chambers/corridor/addon/bridge_lower",
+            "minecraft:trial_chambers/corridor/addon/chandelier_upper",
+            "minecraft:trial_chambers/corridor/addon/decoration_upper",
+            "minecraft:trial_chambers/corridor/addon/display_1",
+            "minecraft:trial_chambers/corridor/addon/display_2",
+            "minecraft:trial_chambers/corridor/addon/display_3",
+            "minecraft:trial_chambers/corridor/addon/head_upper",
+            "minecraft:trial_chambers/corridor/addon/ladder_to_middle",
+            "minecraft:trial_chambers/corridor/addon/open_walkway",
+            "minecraft:trial_chambers/corridor/addon/open_walkway_upper",
+            "minecraft:trial_chambers/corridor/addon/reward_upper",
+            "minecraft:trial_chambers/corridor/addon/staircase",
+            "minecraft:trial_chambers/corridor/addon/wall",
+            "minecraft:trial_chambers/corridor/addon/walled_walkway",
+            "minecraft:trial_chambers/corridor/atrium/bogged_relief",
+            "minecraft:trial_chambers/corridor/atrium/breeze_relief",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_1",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_2",
+            "minecraft:trial_chambers/corridor/atrium/grand_staircase_3",
+            "minecraft:trial_chambers/corridor/atrium/spider_relief",
+            "minecraft:trial_chambers/corridor/atrium/spiral_relief",
+            "minecraft:trial_chambers/corridor/atrium_1",
+            "minecraft:trial_chambers/corridor/end_1",
+            "minecraft:trial_chambers/corridor/end_2",
+            "minecraft:trial_chambers/corridor/entrance_1",
+            "minecraft:trial_chambers/corridor/entrance_2",
+            "minecraft:trial_chambers/corridor/entrance_3",
+            "minecraft:trial_chambers/corridor/first_plate",
+            "minecraft:trial_chambers/corridor/second_plate",
+            "minecraft:trial_chambers/corridor/straight_1",
+            "minecraft:trial_chambers/corridor/straight_2",
+            "minecraft:trial_chambers/corridor/straight_3",
+            "minecraft:trial_chambers/corridor/straight_4",
+            "minecraft:trial_chambers/corridor/straight_5",
+            "minecraft:trial_chambers/corridor/straight_6",
+            "minecraft:trial_chambers/corridor/straight_7",
+            "minecraft:trial_chambers/corridor/straight_8",
+            "minecraft:trial_chambers/decor/barrel",
+            "minecraft:trial_chambers/decor/candle_1",
+            "minecraft:trial_chambers/decor/candle_2",
+            "minecraft:trial_chambers/decor/candle_3",
+            "minecraft:trial_chambers/decor/candle_4",
+            "minecraft:trial_chambers/decor/dead_bush_pot",
+            "minecraft:trial_chambers/decor/empty_pot",
+            "minecraft:trial_chambers/decor/flow_pot",
+            "minecraft:trial_chambers/decor/guster_pot",
+            "minecraft:trial_chambers/decor/scrape_pot",
+            "minecraft:trial_chambers/decor/undecorated_pot",
+            "minecraft:trial_chambers/dispensers/chamber",
+            "minecraft:trial_chambers/dispensers/floor_dispenser",
+            "minecraft:trial_chambers/dispensers/wall_dispenser",
+            "minecraft:trial_chambers/hallway/cache_1",
+            "minecraft:trial_chambers/hallway/corner_staircase",
+            "minecraft:trial_chambers/hallway/corner_staircase_down",
+            "minecraft:trial_chambers/hallway/corridor_connector_1",
+            "minecraft:trial_chambers/hallway/left_corner",
+            "minecraft:trial_chambers/hallway/long_straight_staircase",
+            "minecraft:trial_chambers/hallway/long_straight_staircase_down",
+            "minecraft:trial_chambers/hallway/lower_hallway_connector",
+            "minecraft:trial_chambers/hallway/right_corner",
+            "minecraft:trial_chambers/hallway/rubble",
+            "minecraft:trial_chambers/hallway/rubble_chamber",
+            "minecraft:trial_chambers/hallway/rubble_chamber_thin",
+            "minecraft:trial_chambers/hallway/rubble_thin",
+            "minecraft:trial_chambers/hallway/straight",
+            "minecraft:trial_chambers/hallway/straight_staircase",
+            "minecraft:trial_chambers/hallway/straight_staircase_down",
+            "minecraft:trial_chambers/hallway/upper_hallway_connector",
+            "minecraft:trial_chambers/intersection/intersection_1",
+            "minecraft:trial_chambers/intersection/intersection_2",
+            "minecraft:trial_chambers/intersection/intersection_3",
+            "minecraft:trial_chambers/reward/ominous_vault",
+            "minecraft:trial_chambers/reward/vault",
+            "minecraft:trial_chambers/spawner/breeze/breeze",
+            "minecraft:trial_chambers/spawner/connectors/breeze",
+            "minecraft:trial_chambers/spawner/connectors/melee",
+            "minecraft:trial_chambers/spawner/connectors/ranged",
+            "minecraft:trial_chambers/spawner/connectors/slow_ranged",
+            "minecraft:trial_chambers/spawner/connectors/small_melee",
+            "minecraft:trial_chambers/spawner/melee/husk",
+            "minecraft:trial_chambers/spawner/melee/spider",
+            "minecraft:trial_chambers/spawner/melee/zombie",
+            "minecraft:trial_chambers/spawner/ranged/poison_skeleton",
+            "minecraft:trial_chambers/spawner/ranged/skeleton",
+            "minecraft:trial_chambers/spawner/ranged/stray",
+            "minecraft:trial_chambers/spawner/slow_ranged/poison_skeleton",
+            "minecraft:trial_chambers/spawner/slow_ranged/skeleton",
+            "minecraft:trial_chambers/spawner/slow_ranged/stray",
+            "minecraft:trial_chambers/spawner/small_melee/baby_zombie",
+            "minecraft:trial_chambers/spawner/small_melee/cave_spider",
+            "minecraft:trial_chambers/spawner/small_melee/silverfish",
+            "minecraft:trial_chambers/spawner/small_melee/slime",
+            "regions_unexplored:trial_chambers/ashen"
+          ],
+          "unresolved_sources": {
+            "minecraft:trial_chambers/spawner/breeze/breeze": [
+              {
+                "block_path": "/block_entities/1",
+                "mode": "ominous_config",
+                "path": "/ominous_config/spawn_potentials",
+                "unresolved": "missing or non-list spawn potentials"
+              }
+            ],
+            "minecraft:trial_chambers/spawner/melee/spider": [
+              {
+                "block_path": "/block_entities/1",
+                "mode": "ominous_config",
+                "path": "/ominous_config/spawn_potentials",
+                "unresolved": "missing or non-list spawn potentials"
+              }
+            ],
+            "minecraft:trial_chambers/spawner/small_melee/cave_spider": [
+              {
+                "block_path": "/block_entities/1",
+                "mode": "ominous_config",
+                "path": "/ominous_config/spawn_potentials",
+                "unresolved": "missing or non-list spawn potentials"
+              }
+            ],
+            "minecraft:trial_chambers/spawner/small_melee/silverfish": [
+              {
+                "block_path": "/block_entities/1",
+                "mode": "ominous_config",
+                "path": "/ominous_config/spawn_potentials",
+                "unresolved": "missing or non-list spawn potentials"
+              }
+            ],
+            "minecraft:trial_chambers/spawner/small_melee/slime": [
+              {
+                "block_path": "/block_entities/1",
+                "mode": "ominous_config",
+                "path": "/ominous_config/spawn_potentials",
+                "unresolved": "missing or non-list spawn potentials"
+              }
+            ]
+          },
+          "conditional_ominous_disposition": "The five missing explicit ominous lists remain preserved in unresolved_sources. Their unmodified initial-state interpretation is recorded in mob_source.conditional_ominous_sources; do not replace them with an unconditional normal-list copy.",
+          "generation_marker_disposition": "walkway_with_bridge_1 contains a SAVE-mode structure block with empty metadata, not an authored DATA encounter marker.",
+          "assessment_source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Configured trial-spawner entities; no authored template entities. The five omitted explicit ominous lists use the conditional lifecycle interpretation in mob_source.",
+          "natural": "All eight root spawn categories have empty lists scoped to piece bounds. This does not disable configured trial spawners or rule out external entity sources.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "visual_discoverability": {
+          "value": "Buried chamber/corridor complex with copper-bulb lighting and oxidation variants, spawners, vaults and room connections as internal cues.",
+          "basis": "Packaged root, reachable template content and copper-bulb degradation processor; retained negative/near-surface Y envelopes.",
+          "limitations": "No guaranteed surface landmark or entrance, sightline distance or exploration pacing measurement.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
+        },
+        "underground_surface_classification": {
+          "value": "Underground chamber complex with terrain-dependent exposure.",
+          "basis": "Uniform start anchorY-40..-20, underground_structures step, encapsulate terrain adaptation and dimension_padding10. One retained envelope extends toY14; another endsY-10.",
+          "limitations": "Anchor range and envelopes do not prove complete burial or a sealed roof in every terrain layout.",
+          "source": "evidence/item-8/sources/vanilla-trial-spawner-lifecycle-code/README.md#remaining-family-assessment"
         }
       }
     },

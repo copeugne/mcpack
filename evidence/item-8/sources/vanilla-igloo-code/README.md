@@ -95,3 +95,17 @@ input hash change in the inventory; world-observation links are unchanged.
 Decision SHA: `06cff81b09d0caa84837c979acd85bfa207b9037ab27e3e9134853ba6811a89d`.
 Inventory SHA: `9f2fa36230e5520571b71f9535b3d1291527c939ec9fee4867e04bfaefc06d01`.
 Retained-mod effects and remaining effective attributes are still open.
+
+
+## Remaining descriptive assessment
+
+Surface shelter with an optional basement containing an authored zombie villager and villager; no general combat encounter is authored in the surface shelter.
+
+The small surface igloo is the visible cue; the ladder and basement are below the surface reference. Snow cover and terrain can obscure it; no discovery distance is measured.
+
+These two required descriptions reuse the content and placement evidence already
+integrated above. Dimension attribution now also records the existing inventory
+builder join of effective structure biomes with captured dimension membership,
+keeping observed dimensions separate from eligibility. No new tool, capture,
+population count or sightline measurement is introduced. Earlier statements that
+these descriptive attributes remain open are superseded by this integration.
