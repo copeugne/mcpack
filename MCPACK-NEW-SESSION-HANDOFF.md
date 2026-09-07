@@ -7,6 +7,42 @@
 ### Continuation update - 2026-09-07
 
 
+#### Stronghold geometry finished after 39515832
+
+Declared seed42 one-target capture passed readiness, correlated flush, clean
+exit0 and frozen configuration acceptance. Full start chunk41,-320,line863 has
+594 pieces and139x55x121 saved envelope. Downward/lateral supports remain
+separate. Archive249 files/3,071,926 bytes published at source39515832; local and
+downloaded restores verified every file and downloaded line863 reproduced bounds.
+Exact commands, hashes and diagnostic dispositions: evidence/item-8/sources/
+stronghold-provider/README.md, Stronghold geometry result and custody. All85
+focused tests pass (59.72s). No Java process remains. Stronghold and all active
+YUNG families are assessed. Registry323/408,nonregistry40/40,total363/448 assessed,
+85 remaining: IDAS38,Repurposed17,vanilla13,BetterEnd9,Aether/DeepAether4,CTOV2,
+IntegratedStronghold/Villages2. Next quantify one remaining provider batch and
+reuse existing evidence before any investigation. Final integration, acceptance,
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+2b88100637f00062e1f9b9b5890101d5caa57030a67d222eb1d5c12aa4f5a08b.
+
+
+#### Stronghold content integrated after 92f1f9a3
+
+Quantified one family, ten attributes, 84 traced templates, missing spiral_stairs
+pool and no retained full-start observation. Eight attributes now integrated
+from existing pinned data/configuration/provider sources: placement, discovery,
+enemy/spawner attribution and rewards. Grand Library/prison removal rules and
+armor-stand AIR-helmet original-entity return are explicit. No new tools added.
+All85 focused tests pass (58.77s); only Stronghold and input identity changed.
+Two sizes remain. One seed42 capture,81 requested chunks,timeout900 is declared
+in evidence/item-8/sources/stronghold-provider/README.md. Next execute it, preserve
+logs and stopped world, verify archive and downloaded restore, and integrate full
+start bounds with support extensions separate. Counts remain362/448 assessed,
+86 families remaining. Final integration, acceptance, backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+4565ab3cfa355bb8b9709a13be0cdc0420b6ab7b4438d500f549e17d0b3d03b9.
+
+
 #### Desert Temple geometry finished after 0548abd2
 
 Declared seed42 capture passed readiness, correlated flush, clean exit0 and
