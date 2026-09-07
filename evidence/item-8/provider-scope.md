@@ -9835,3 +9835,32 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas
 cmp evidence/raw/item8/inventory-idas-variants-r1.json evidence/raw/item8/inventory-idas-variants-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-variants-r2.json
 ```
+# IDAS worksite and transport relationship closure (2026-09-07)
+
+Decision 862a41f9 resolves six records using corrected 0c67f005 views and complete
+contents/definitions. The desert excavation compound is separate from the roofed
+dig site and stable assembly; their pieces remain components. Nether pump camp,
+washing camp, furnished log, train wreck and winter wagon retain distinct forms
+and roles. Machinery, glue, seats, optional or nested entity references do not
+establish runtime operation, population or vehicle usability. The failed clipped
+views remain preserved and are superseded for layout inspection by the correction.
+
+The focused IDAS source-binding case and scoped code checks pass. Full original
+definitions and variants are unchanged. Two fresh inventory runs match exactly;
+changes are confined to the six records, separated desert dig site and decision
+hash. All 887 roots remain assigned once in 426 working groups. Canonical-note
+backlog: 44, all IDAS. Required attributes, 33 nonregistry contributions and final
+validation/review/main delivery remain open.
+
+Inventory SHA-256:
+44b9d0d026446f775b92208fa76ca08d3032fcec43c2e5cee6e17998a93518d7.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_family_decisions.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-worksites-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-worksites-r2.json
+cmp evidence/raw/item8/inventory-idas-worksites-r1.json evidence/raw/item8/inventory-idas-worksites-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-worksites-r2.json
+```

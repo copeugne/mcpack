@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 862a41f9 and independently reproduces exactly. All 887 roots
+remain assigned once in 426 working groups; full dig-site variants survive the
+split. Backlog: 44, all IDAS. Next: remaining IDAS buildings/assemblies using
+existing graphs and contents before necessary views. Attributes, nonregistry and
+final validation/review/main delivery remain open.
+
 Six worksite/transport records are reconciled against corrected 0c67f005 views
 and complete contents. Desert dig site is a separate assembly from the roofed
 dig site/stables; pump camp, washing camp, furnished log, train wreck and winter
