@@ -184,3 +184,80 @@ these three families and the input identity changed; biome/observation links and
 nonregistry content remain unchanged. Inventory matches
 `evidence/raw/item8/inventory-explorations-assemblies.json`, SHA-256
 ec0ab5295d23c674f933300468b5c68d5562eefc29a234b46c2226092f8627ea.
+
+## Final two geometry assessments
+
+Four remaining answers concern Campsite and Jungle Temple. Jungle Temple can be
+derived directly from the retained templates, avoiding a runtime measurement.
+Main is 17x18x17 with outward connectors at [0,1,8], [8,1,0], [8,1,16] and
+[16,1,8]. All three exterior-stair alternatives are 7x6x6 with inward connector
+[3,1,0], empty downstream pool, rigid projection and empty processors. Adjacent
+connector placement adds six blocks outside each attached side, at unchanged Y.
+With all four sides attached, the source envelope is 29x18x29. Stairs remain
+below the main roof and do not intersect each other. This is a fully attached
+nominal layout, including air/padding, not proof of attachment success everywhere.
+
+Campsite has two 7x3x7 bases and eight competing horizontal attachment positions.
+Six child alternatives have different lengths/widths and can collide; largest
+component sizes alone are not an observed assembly. A single ordinary-seed target
+uses the existing gap runtime for its footprint/height example. No new simulator,
+probe or tool is introduced. Runtime source: 22c81eb4f5c83cddaf6ae103aea05d46ddd60920.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/explorations-campsite-r1 \
+  --log-path evidence/raw/item8/explorations-campsite-r1/console.log \
+  --captured-config evidence/raw/item8/explorations-campsite-r1/configuration \
+  --receipt evidence/raw/item8/explorations-campsite-r1/run.json \
+  --timeout-seconds 900 --structure explorations:campsite
+```
+
+### Campsite runtime result and custody
+
+The ordinary-seed target [288,-1616] completed, followed by correlated save,
+clean exit and passing configuration capture. Committed receipt:
+`evidence/item-8/runtime/explorations-campsite-r1/run.json`. Existing locked world
+copying excludes session.lock; original instance and capture remain preserved.
+The decoder produced 1,802 records including surrounding and locate-created
+partial chunks, not a completed sampling denominator. Decoded line 770 is the
+full Campsite start at chunk [18,-101], with seven pieces and inclusive envelope
+[283,65,-1629,301,69,-1611]. Max-minus-min-plus-one gives 19x5x19 XYZ, using the
+existing observed_bounds derivation. It is one example with padding, not occupied
+volume or family-wide extrema. Decoded chunks.jsonl SHA-256:
+66e1a6c364bf52eae599f8c9a66ee6f276a0451ba3332f6c3450e88b8f0f5301.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/explorations-campsite-r1"), Path("evidence/raw/item8/explorations-campsite-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/explorations-campsite-r1/world --output evidence/raw/item8/explorations-campsite-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/explorations-campsite-r1 --archive evidence/raw/item8/item8-explorations-campsite-r1-22c81eb4.tar.gz --manifest evidence/item-8/raw-custody/explorations-campsite-r1-manifest.json --revision 22c81eb4f5c83cddaf6ae103aea05d46ddd60920
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-explorations-campsite-r1-22c81eb4.tar.gz --manifest evidence/item-8/raw-custody/explorations-campsite-r1-manifest.json --target evidence/raw/item8/explorations-campsite-r1-restored --receipt evidence/item-8/raw-custody/explorations-campsite-r1-local-restore.json
+```
+
+Archive: 2,834,850 bytes, 249 files, 20,477,930 uncompressed bytes. SHA-256:
+3a3222648745f3228e2809c5aa81529a5c9bfd05dc878c17b287b3fbd5cf1cb6.
+It retains world boundary, decoded chunks, logs, run receipt and configuration,
+without server binaries. Local copies share a disk; the published GitHub asset
+is the separate durable copy. Local and downloaded restores verify all 249 files.
+Use absent archive/restore destinations for reproduction.
+
+[Published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-explorations-campsite-2026-09-07-r1).
+
+```sh
+gh release download item-8-explorations-campsite-2026-09-07-r1 --dir evidence/raw/item8/explorations-campsite-download --pattern item8-explorations-campsite-r1-22c81eb4.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/explorations-campsite-download/item8-explorations-campsite-r1-22c81eb4.tar.gz --manifest evidence/item-8/raw-custody/explorations-campsite-r1-manifest.json --target evidence/raw/item8/explorations-campsite-downloaded-restore --receipt evidence/item-8/raw-custody/explorations-campsite-r1-downloaded-restore.json
+```
+
+All four geometry answers are integrated. Seven affected tests and scoped builder
+checks pass. Only Campsite/Jungle Temple geometry and evidence references changed;
+prior source answers, biome/observation links and nonregistry content are unchanged.
+Inventory matches `evidence/raw/item8/inventory-explorations-final-geometry.json`,
+SHA-256 3f3955752c7796c666df1bee7a7188cc6f9ad286d976d381c90ddb11ef31295e.
+All ten Explorations family descriptions are now assessed.
