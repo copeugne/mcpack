@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-07
 
+#### Plague Asylum geometry capture declaration after c766f6d3
+
+One seed42 target/81 requested chunks, timeout900, using the existing gap
+runner. Two geometry attributes require a whole-layout example; existing
+33-template branching source and absent retained start cannot supply it.
+Exact rationale and command: evidence/item-8/sources/wda-provider-scope/README.md,
+Plague Asylum geometry target declaration. No new measurement tooling.
+Counts unchanged341/450 assessed,109 remaining. Next execute the declared
+fresh capture, preserve lifecycle/configuration evidence, derive full-start
+bounds, archive and verify restores, then integrate those two attributes.
+
 #### Infested Temple and Kisegi geometry after 5b7af2e9
 
 Four geometry attributes finish both families: source envelopes101x181x101
