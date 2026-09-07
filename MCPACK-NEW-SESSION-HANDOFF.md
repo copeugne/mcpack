@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Cottage and pillager camp: predeclared two-family, eleven-field batch assessed
+from existing evidence. Ten interpretations per family preserve unchanged biome
+constraints. Camp processor spawner settings and its sole pillager mob entry are
+explicit; cottage loot remains limited to its second equal-weight alternative.
+Focused IDAS and scoped checks pass. Inventory refresh follows. No new measurement
+or tooling. This is source attribution, not observed placement or discovery.
+
 Inventory matches guild/ruins attribute decision be81f551 and reproduces exactly.
 The predeclared three-family batch is delivered with ten updated fields per
 family and unchanged resolved biome lists. No new measurement or tooling. Four
