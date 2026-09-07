@@ -77589,11 +77589,12 @@
         "evidence/item-8/sources/idas-related-views/camps.svg.gz": "0485afb5dc85a8b038a50a4850778a0dd8b9140242342a5961fecbec4f02692c",
         "evidence/item-8/sources/idas-related-views/ships.svg.gz": "4d6437867341af61d2b4a157d8ff680d8ae59275bea635b5e8b37c0815669986",
         "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
-        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/raw/item8/registry-r1/debug.log": "e5b47378d791027242ba28dd36c999c07ae4e01a1b90e1534e66bcd42c1e694b"
       },
       "family_id": "idas:sunken_ship",
       "name": "IDAS sunken ship",
-      "rationale": "Ordinary, second ordinary and coral templates share the long wrecked ship hull, mast/deck form, furnishings and ship supply/treasure loot. They are alternatives within one ship family, distinct from detached wreckage. Physical spawners retain authored shark/drowned data as applicable, and the coral template includes an authored frilled-shark entity reference. The ordinary pool uses the spawner-randomizing processor on its first alternative but an empty processor on its second; coral uses the randomizer. Therefore raw spawner data is not a uniform effective enemy claim. Full biome, waterlogging, burial and wraith-override declarations remain preserved; optional entity references do not prove creation. Canonical design relationships are resolved. Effective attributes remain open.",
+      "rationale": "Ordinary, second ordinary and coral templates share the long wrecked ship hull, mast/deck form, furnishings and ship supply/treasure loot. They are alternatives within one ship family, distinct from detached wreckage. Physical spawners retain authored shark/drowned data as applicable, and the coral template includes an authored frilled-shark entity reference. The ordinary pool uses the spawner-randomizing processor on its first alternative but an empty processor on its second; coral uses the randomizer. Therefore raw spawner data is not a uniform effective enemy claim. Full biome, waterlogging, burial and wraith-override declarations remain preserved; optional entity references do not prove creation. Canonical design relationships are resolved. Required attributes assessed with processor differences and absent shark provider preserved; final Item8 acceptance remains open.",
       "structure_ids": [
         "idas:sunken_ship/sunken_ship",
         "idas:sunken_ship/sunken_ship_coral"
@@ -77678,6 +77679,135 @@
             "minecraft:overworld"
           ],
           "biome_source": "evidence/item-8/sources/structure-inputs.json"
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {
+            "alexsmobs:frilled_shark": [
+              "idas:sunken_ship/sunken_ship_coral"
+            ]
+          },
+          "status": "Variant-specific template and processor sources assessed; absent optional shark provider preserved.",
+          "template_ids": [
+            "idas:sunken_ship/sunken_ship",
+            "idas:sunken_ship/sunken_ship2",
+            "idas:sunken_ship/sunken_ship_coral"
+          ],
+          "unresolved_authored_entities": {},
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Three independent hull alternatives. Coral declares an authored alexsmobs:frilled_shark, but alexsmobs is absent from the frozen Mod List; no successful shark creation is asserted. First ordinary and coral templates select drowned spawner randomization, while ordinary2 preserves raw spawner data. Natural wraith overrides are separate. No missing graph components, unresolved entity compounds or generation markers."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:sunken_ship/sunken_ship",
+                "idas:sunken_ship/sunken_ship2",
+                "idas:sunken_ship/sunken_ship_coral"
+              ],
+              "value": "idas:chests/sunken_ship/sunken_ship_supply"
+            },
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:sunken_ship/sunken_ship",
+                "idas:sunken_ship/sunken_ship2",
+                "idas:sunken_ship/sunken_ship_coral"
+              ],
+              "value": "idas:chests/sunken_ship/sunken_ship_treasure"
+            }
+          ],
+          "status": "Variant-specific template and processor sources assessed; absent optional shark provider preserved.",
+          "template_ids": [
+            "idas:sunken_ship/sunken_ship",
+            "idas:sunken_ship/sunken_ship2",
+            "idas:sunken_ship/sunken_ship_coral"
+          ],
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "All three alternatives reference defined idas:chests/sunken_ship/sunken_ship_supply and idas:chests/sunken_ship/sunken_ship_treasure. Selected spawner processor does not append loot NBT; ordinary2 uses empty processors. Literal references establish source identity, not realized rewards or container availability."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [
+            {
+              "entity_id": "alexsmobs:frilled_shark",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:sunken_ship/sunken_ship",
+                "idas:sunken_ship/sunken_ship2",
+                "idas:sunken_ship/sunken_ship_coral"
+              ]
+            },
+            {
+              "entity_id": "minecraft:drowned",
+              "mode": "ordinary",
+              "spawner_id": "minecraft:mob_spawner",
+              "templates": [
+                "idas:sunken_ship/sunken_ship",
+                "idas:sunken_ship/sunken_ship2"
+              ]
+            }
+          ],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Variant-specific template and processor sources assessed; absent optional shark provider preserved.",
+          "template_ids": [
+            "idas:sunken_ship/sunken_ship",
+            "idas:sunken_ship/sunken_ship2",
+            "idas:sunken_ship/sunken_ship_coral"
+          ],
+          "unresolved_sources": {},
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Ordinary1 and ordinary2 each contain two ordinary spawner blocks with raw frilled_shark and drowned SpawnData, empty SpawnPotentials. Coral has one raw frilled_shark spawner. Ordinary1 and coral select idas:sunken_ship_processor and integrated_structure_spawners/sunken_ship, sole drowned weight15; ordinary2 uses minecraft:empty and retains both raw declarations. AlexsMobs is absent, so its unrandomized shark entry is not a verified viable enemy source. No trial spawners. Existing manager failure/fallback branches and unmeasured spawn success remain explicit."
+        },
+        "authored_or_natural_enemies": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Authored sources distinguish randomized drowned spawners from ordinary2 raw drowned/shark data and coral direct shark entity. The shark provider is absent. Both roots separately declare piece-bound natural quark:wraith weight5 group1..2; Quark is present. Weights and group settings are source parameters, not observed populations."
+        },
+        "intended_hostility": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Loot-bearing submerged ship hulls with ordinary spawners and natural wraith overrides. Variant processor differences and absent optional shark provider prevent a uniform enemy claim. Underwater access adds environmental pressure; no measured intensity or difficulty tier is assigned."
+        },
+        "visual_discoverability": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Long hull, mast/deck and furnishings provide ship-shaped cues, with coral decoration in its variant. Water and seabed terrain may obscure the wreck. This differs from detached debris but does not establish visible masts above water, a surface marker or measured sightline."
+        },
+        "underground_surface_classification": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "assessment": "Both generic_structure roots use OCEAN_FLOOR_WG, LOWEST_CORNER, start offset-1, apply_waterlogging, size1, beard_box and biome radius1. Seabed/submerged intent, with variant biome constraints preserved. No measured burial fraction, water depth or final occupied terrain extent."
+        },
+        "approximate_footprint": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "template_xz_blocks": [
+            17,
+            45
+          ],
+          "basis": "All three independent single-template alternatives have exact size17,28,45. Rotation can exchange axes; this is nominal template envelope excluding terrain adaptation and occupied volume."
+        },
+        "approximate_vertical_size": {
+          "source": "evidence/item-8/sources/idas-sunken-ship-assessment/README.md",
+          "template_y_blocks": 28,
+          "basis": "Exact height of each independent template; not measured water depth or burial."
         }
       }
     },

@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS sunken ship assessed after af081292
+
+Nine entries integrated for three independent17 by28 by45 hull alternatives.
+Ordinary1/coral select drowned weight15 randomization; ordinary2 uses empty
+processors and retains raw drowned/frilled-shark data. AlexsMobs is absent;
+coral direct shark and unrandomized shark spawner are not successful encounter
+claims. Natural Quark wraith override and two defined loot sources are separate.
+No runtime/tool added. All85 focused checks pass (66.08s); only sunken_ship/input
+identity changed. Total419/448 assessed;29 IDAS families/261 entries remain.
+Remaining geometry: five existing full-start candidates (ancient_portal,
+apothecary_abode,bearclaw_inn,pillager_fortress,ruins_of_the_deep), plus24 connected
+assemblies needing geometry assessment. Quantify next batch and bind existing
+candidate custody before accepting observations; no automatic new runtime batch.
+Details: evidence/item-8/sources/idas-sunken-ship-assessment/README.md.
+Inventory SHA-256: 9014422d9f5562f1020ad3ed56813c7b274669cf44a4c0e74e6191652d7bed2c.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS detached ship ruins assessed after 1cd9662f
 
 Nine entries integrated for two independent wreckage alternatives. Nominal
