@@ -6,6 +6,78 @@
 
 ### Continuation update - 2026-09-07
 
+#### Explorations geometry complete from 22c81eb4
+
+Four geometry answers finish Campsite and Jungle Temple. Temple uses direct
+finite assembly derivation: fully attached 29x18x29 XYZ from main plus four
+stair sides, not guaranteed runtime attachment. Campsite uses one fresh targeted
+ordinary-seed observation, 19x5x19 XYZ, seven pieces in a full start chunk.
+Correlated save, clean exit and frozen configuration checks passed. No new tool.
+All ten Explorations family descriptions are assessed; retire them absent new
+contradictory evidence. Source derivations and commands are in its provider README.
+
+Seven affected tests and scoped builder checks pass. Inventory SHA-256:
+3f3955752c7796c666df1bee7a7188cc6f9ad286d976d381c90ddb11ef31295e.
+Raw release item-8-explorations-campsite-2026-09-07-r1 preserves 249 files and
+passes both local and downloaded restore. Remote tag/source is 22c81eb4.
+No runtime remains active. Registry assessment is 107/410; nonregistry 40/40,
+total 147/450 assessed, 303 remaining. Continue other providers in quantified
+batches. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
+#### Explorations assembly attribution after 00cda891
+
+Twenty-six answers integrate campsite, jungle_temple and underground_temple
+source descriptions; the latter also uses existing observed geometry. Retire
+Underground Temple assessment, preserving both missing templates and minimal
+2x2x2 observed envelopes explicitly. Campsite and Jungle Temple each have eight
+attributes plus resolved biomes; only four geometry answers remain for them.
+No new capture, measurement or tool. Seven affected tests and builder checks pass.
+Inventory SHA-256:
+ec0ab5295d23c674f933300468b5c68d5562eefc29a234b46c2226092f8627ea.
+
+Registry assessment is 105/410; nonregistry 40/40, total 145/450 assessed,
+305 remaining. Explorations has two geometry-only families left. Resolve their
+assembly sizes through adequate direct derivation or existing targeted runtime;
+do not repeat the completed source attributions. Final integration, acceptance,
+verified backed-up history consolidation, PR review and main delivery remain open.
+
+#### Explorations tree and cave assessed after d0693aaa
+
+Fourteen answers finish large_oak_tree and slime_cave. Existing full-start bounds
+supply 14x15 footprint/12 height tree and 15x15/12 cave examples. Source geometry
+scope, repeated-run caveats and Slime Cave's six prior marker/loot/placement
+answers remain unchanged. The deepslate processor was already resolved; do not
+restart that dated gap. No new capture, measurement or tooling.
+
+Eight affected tests and builder checks pass. Inventory SHA-256:
+4dc15e0a4513ab56f5794cd7e872131d20d4f29f40e2d1dab0d83f7740920d86.
+Retire both descriptions. Registry assessment 104/410; nonregistry 40/40,
+total 144/450 assessed, 306 remaining. Explorations retains campsite,
+jungle_temple and underground_temple. Underground Temple has saved bounds and
+two known missing templates; preserve their disposition. Campsite and Jungle
+Temple have no retained bounds observations. Quantify their missing answers,
+reuse available source facts, and do not substitute component sizes for layouts.
+Final integration, acceptance, backed-up history consolidation, PR review and
+main delivery remain open.
+
+#### Five Explorations standalone families assessed after d4cc7261
+
+Forty-eight answers finish desert_ruin, floating_island, forgotten_well, logs
+and shrine. Thirteen standalone templates have no attachments; direct template
+geometry is adequate. Preserve Shrine's earlier geometry and all observation
+links. Ore substitution and masonry aging are source inputs, not measured yields.
+No new capture, measurement or tooling. Seven affected tests and builder checks
+pass. Inventory SHA-256:
+3ee3f9bef8a1f391f8336285d67e91714234143defb373e9b0cfa4164084ef39.
+
+Retire these five descriptions. Registry assessment is 102/410; nonregistry
+40/40, total 142/450 assessed, 308 remaining. Explorations still has campsite,
+jungle_temple, large_oak_tree, slime_cave and underground_temple. Reuse their
+existing component/marker interpretations and any retained bounds before new
+research. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
 #### Illager Invasion geometry finished from 84a92353
 
 Four geometry answers finish firecaller_hut and labyrinth. One fresh ordinary-seed
