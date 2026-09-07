@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five Explorations standalone families assessed after d4cc7261
+
+Forty-eight answers finish desert_ruin, floating_island, forgotten_well, logs
+and shrine. Thirteen standalone templates have no attachments; direct template
+geometry is adequate. Preserve Shrine's earlier geometry and all observation
+links. Ore substitution and masonry aging are source inputs, not measured yields.
+No new capture, measurement or tooling. Seven affected tests and builder checks
+pass. Inventory SHA-256:
+3ee3f9bef8a1f391f8336285d67e91714234143defb373e9b0cfa4164084ef39.
+
+Retire these five descriptions. Registry assessment is 102/410; nonregistry
+40/40, total 142/450 assessed, 308 remaining. Explorations still has campsite,
+jungle_temple, large_oak_tree, slime_cave and underground_temple. Reuse their
+existing component/marker interpretations and any retained bounds before new
+research. Final integration, acceptance, verified backed-up history consolidation,
+PR review and main delivery remain open.
+
 #### Illager Invasion geometry finished from 84a92353
 
 Four geometry answers finish firecaller_hut and labyrinth. One fresh ordinary-seed
