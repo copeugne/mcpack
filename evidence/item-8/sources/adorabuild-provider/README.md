@@ -79,3 +79,49 @@ uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_
 uv run ruff check tools/build_item8_inventory.py
 uv run basedpyright tools/build_item8_inventory.py
 ```
+
+## Eleven variant-family source assessments
+
+The next batch covers buried_sand_castle, frozen_shelter, house, library, prison,
+raft, raised_house, riverboat, tree, tree_house and watercraft: 11 families and
+55 roots. Each root has exactly one fully traced template. Directly read its
+size_xyz from pool-traces-content template_contents to retain per-root X/Z and
+Y envelopes. No concatenation of unrelated variant dimensions or observed bounds
+is performed. Twenty geometry answers join the riverboat's existing geometry.
+Four fixed-height placement answers retain frozen-shelter/raft/riverboat Y=63
+and ship Y=62 or 63, without interpreting absolute height as terrain projection.
+Existing surface-relative and buried placement answers remain unchanged.
+
+Four nonempty processor lists occur in this batch: adapt_frozen_house changes
+ice to water with probability 0.3; randomize_cobweb and randomize_vines remove
+matching blocks with probability 0.5; replace_glass_with_air removes glass.
+Read their complete packaged processor definitions. All remaining processor
+references are minecraft:empty. None supplies mob, spawner or loot assignments.
+Every root has empty spawn_overrides, all biome answers resolve without missing
+required values or unresolved tags, and no template has unresolved entity IDs,
+physical spawner inputs or generation markers.
+
+Exact entity and loot references remain attributed to templates. In particular,
+prisons supply illagers and villager captives with additional large-variant
+entities; dark-oak ship supplies illagers, spruce ship a stray, and oak/mangrove
+ships villagers. House animals are not hostile residents, armor stands/item frames
+are objects, and cherry raft's chest boat is not a mob. Four birch_house_small_2
+hive block entities have empty Bees lists; explicit template bees remain distinct.
+Source-scoped absence does not exclude natural spawning, retaliation or material
+hazards. Castle TNT/pressure plate and lava remain untested mechanism ingredients.
+
+Previously inspected facility, house, tree and vessel views support qualitative
+forms. Source template padding, terrain concealment, fixed-height placement and
+variant differences prevent claims of realized visibility distance or population.
+The batch integrates 57 missing descriptions and reconciles 44 existing source
+attributions, retaining resolved biome answers and all original observations.
+
+```sh
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-adora-variant-descriptions.json
+uv run pytest -q tests/item8/test_adorabuild_provider_scope.py tests/item8/test_inventory_sources.py
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+```
+
+The 55 raw templates also contain no minecraft:jigsaw block entities, confirming
+that their envelopes describe standalone variants rather than repeated pieces.

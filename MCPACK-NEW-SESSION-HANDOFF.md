@@ -6,6 +6,32 @@
 
 ### Continuation update - 2026-09-07
 
+#### Eleven AdoraBuild variant assessments after 51125031
+
+Retire buried_sand_castle, frozen_shelter, house, library, prison, raft,
+raised_house, riverboat, tree, tree_house and watercraft. Their 55 roots each
+have one fully traced template, with no jigsaw block entities. Integrated 57
+missing descriptions and reconciled 44 existing attribution answers. Existing
+biomes and observations are unchanged, and variant-specific entities, rewards,
+geometry and placement remain explicit. No new measurement or source capture.
+The existing AdoraBuild provider README records direct derivation and commands.
+
+Six affected tests and scoped quality checks pass. Inventory matches
+`evidence/raw/item8/inventory-adora-variant-descriptions.json`, SHA-256
+9b4eb817c1a876045b565d5e8566af55fb5490536186f2b027be41bcec848613.
+Only these eleven registry rows changed; all nonregistry contributions remain
+unchanged. Registry assessment is now 47/410, with 363 remaining. Nonregistry
+remains 40/40. AdoraBuild's custom-generator families and two modular families
+remain for subsequent quantified batches; do not reopen the assessed families.
+
+The user clarified that pre-rewrite backups must be actual external files,
+not only backup branches/tags. Verify bundle and separate non-Git archive hashes,
+restore them outside the checkout and compare restored content with originals.
+Reuse existing raw archives only after checking coverage and restoration; cover
+missing raw/uncommitted artifacts explicitly. Keep originals in place. Prefer a
+second independent storage copy where available, and distinguish same-disk backup
+from protection against disk loss. Use existing tools, not a new framework.
+
 #### Twelve AdoraBuild source assessments after a6ea03a8
 
 Retire acacia_well, bamboo_cache, bamboo_campfire, birch_beehive,
