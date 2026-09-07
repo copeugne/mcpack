@@ -67,3 +67,14 @@ Focused validation: `uv run pytest -q tests/item8/test_family_decisions.py tests
 All85 tests passed. Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
 Semantic comparison changed only dimension/discoverability and corresponding
 source/input identities for Spider Dungeon and Better Mineshafts.
+
+## Spider assembled-size result
+
+The declared two-family seed42 capture now supplies a full Spider Dungeon start:
+chunks.jsonl line2680, chunk129,-133,20 pieces, envelope
+[2042,11,-2130,2118,74,-2069],77x64x62 blocks. Footprint77x62 and height64
+are authoritative attributes. This is one saved assembly envelope, not occupied
+volume, all-piece placement or family-wide extrema. Exact commands, manifest,
+publication and verified local/download restore derivations are recorded in
+../mineshafts-code/README.md, Two-family results and custody. Both geometry
+attributes are resolved; earlier non-full observations remain preserved.
