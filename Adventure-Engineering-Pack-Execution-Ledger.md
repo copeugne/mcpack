@@ -305,9 +305,10 @@ Exact-SHA local reviews at `97262a21b0b76c253f57e32b8665e48d0a63f822`, `8c7e7b8b
 
 **Continuation decision, 2026-09-04:** The user explicitly authorized Item 8 after the continuation audit found that Item 7's final clean GitHub Codex review is not visible. Item 7 remains empirically verified and merged; its completion receipt rebuilt byte for byte and all 210 Item 7 tests passed. Proceeding is an explicit user exception to that prior review prerequisite, not a claim that the missing review occurred. Preserve r14 without regeneration. Item 8 must satisfy the full final-review and delivery requirements with no inherited exception.
 
-**Status: `IN PROGRESS`; canonical family listing and local acceptance verified; reviewed delivery open.**
-The active branch is `codex/item8-milestones-r2`; delivery is in
-[PR18](https://github.com/copeugne/mcpack/pull/18), superseding closed PR17.
+**Status: `COMPLETE`; inventory gate, clean review and main delivery verified.**
+[PR18](https://github.com/copeugne/mcpack/pull/18) merged reviewed head2023a22a
+as326979dd2eee7da3f881f1316eb845fb16e8ea6b, verified in fetched `origin/main`.
+It supersedes closed, unmerged PR17.
 The inventory contains448 ASSESSED active families (408 registry,40 nonregistry),
 with18 DISPOSITIONED other registry groups retaining inactive/excluded coverage.
 All887 runtime roots are assigned once. All active families have the eleven Item8
@@ -318,8 +319,9 @@ The local gate includes a byte-identical inventory rebuild and495/495 tests pass
 from a clean tracked-file export with newly acquired/restored external inputs,
 plus affected lint/type checks. Initial failures and their corrections are retained
 in evidence/item-8/README.md. Preservation/history preparation is complete, with
-original refs, recovery tags, backups and both mappings retained. Clean completed
-PR review and verified main merge remain open. Current report:
+original refs, recovery tags, backups and both mappings retained. The final Codex
+cycle completed clean with a bot thumbs-up and no new findings. Its exact review
+and delivery references are in the evidence README. Current report:
 `docs/items/Item-8-Baseline-Structure-Inventory.md`; reproduction/evidence:
 `evidence/item-8/README.md`. The report retains the superseded zero-mod history as
 context, not current acceptance evidence.
@@ -468,7 +470,7 @@ This register is additive. More variables will be discovered during artifact ins
 | 5 | Measurement methodology | `COMPLETE` | Strict 24-contract protocol, deterministic analyzer, pinned Temurin pilot, accepted/rejected handling, and cross-artifact hash validation pass. Evidence: `docs/items/Item-5-Measurement-Methodology-Closure.md`, `measurement/item5/`, `evidence/item-5/`. |
 | 6 | Existing configuration audit | `COMPLETE` | Retained 136-JAR stack, 228 manifest paths with 4/223/1/0 stages, exhaustive 88/140 accounting, 29 systems, 105 legacy setting rows, 44 grouped surfaces with 1,874 grouped leaves, 7 findings, lifecycle/materialization receipts, sanitization binding, path and capture fail-closed gates, and `evidence/item-6/` report evidence pass. |
 | 7 | Terrain/worldgen interactions | `COMPLETE` | The exit gate passes, PR #15 merged accepted head `a57a00c`, and verified `origin/main` is `a0f2fc2`. The r14 raw-evidence release remains an immutable evidence source, not the repository completion boundary. |
-| 8 | Structure-family inventory | `IN PROGRESS` | PR18 contains448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Provider discovery, all family assessments, clean-checkout495-test acceptance and preservation/history preparation are verified. Clean Codex review and verified main merge remain open. Current evidence: `evidence/item-8/README.md`. |
+| 8 | Structure-family inventory | `COMPLETE` | PR18 merged after clean Codex review, verified at326979dd on main. All136 providers,448 assessed active families,18 dispositioned registry groups and887 roots assigned once. Clean-checkout495-test acceptance and preservation verified. Delivery evidence: `evidence/item-8/README.md`. |
 | 9 | Initial structure classification | `BLOCKED` | Classification summary survives; family matrix and validator evidence must be reconstructed. |
 | 10 | Baseline structure/encounter density | `BLOCKED` | Final report survives; raw generation, analysis, and validation evidence must be rerun. |
 | 11 | Exploration pacing/repetition | `BLOCKED` | Also depends on recovered Item 10; afterward requires real-client observations from at least two blind human operators. |
@@ -484,7 +486,7 @@ This register is additive. More variables will be discovered during artifact ins
 ## 8. Next Authorized Execution Step
 
 1. Preserve the accepted Item 7 evidence and merged delivery. The user explicitly authorized proceeding despite the missing final clean review record, as recorded in section 5.7. Do not claim that review occurred.
-2. Finish Item 8 delivery through PR18. Inventory, acceptance and preservation/history preparation are verified. Resolve valid review findings, obtain a completed clean review, merge and verify `origin/main` before declaring completion. Do not repeat completed inventory or preservation work.
+2. Item 8 is complete through reviewed, verified PR18 delivery. Preserve its accepted inventory and custody records. Item 9 can use the448-family listing when that work begins; do not repeat completed inventory or preservation work.
 3. Continue Items 9 and 10 in dependency order, then audit Items 2 through 10 together for identity and narrative consistency.
 4. Do not implement, run, repair, or lint Item 11 until the cross-item audit passes. Item 11 will still require real-client evidence from at least two blind human operators.
 

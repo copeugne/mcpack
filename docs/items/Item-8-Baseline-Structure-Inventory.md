@@ -1,7 +1,7 @@
 # Item 8: Baseline Structure-Family Inventory
 
-**Current status:** `IN PROGRESS`. Family inventory integration is delivered;
-local acceptance and preservation/history preparation are verified; reviewed main delivery remains open.
+**Current status:** `COMPLETE`. The inventory gate, clean Codex review and main
+delivery passed. The verified delivery record is in [Item8 evidence](../../evidence/item-8/README.md).
 
 The exact136 retained candidates have been inventoried through runtime registries,
 packaged data, frozen configuration, generation code/logs and preserved world
@@ -35,12 +35,12 @@ recovery tags, evidence references and verified backups remain preserved. The
 [preservation record](../../evidence/item-8/preservation.md) links both history
 mappings and the245 coherent milestones plus provenance increment. Subsequent
 review fixes remain separate commits. [PR18](https://github.com/copeugne/mcpack/pull/18)
-is the active delivery PR; PR17 was superseded without merging.
+merged after a completed clean review; PR17 was superseded without merging.
 
-Remaining: finish PR18's clean Codex review loop, merge and verify main. Do not
-repeat preservation, history reconstruction or accepted measurements. Item9 remains
-dependency-blocked. Item7's explicit review exception is preserved in the execution
-ledger and does not apply to Item8.
+No Item8 inventory or delivery work remains. Item9 may consume the verified
+listing; its classification work was not performed here. Do not repeat preservation,
+history reconstruction or accepted measurements. Item7's explicit review exception
+is preserved in the execution ledger and was not used for Item8.
 
 ## Historical zero-mod report, superseded
 

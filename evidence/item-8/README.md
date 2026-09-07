@@ -1,7 +1,30 @@
 # Item 8 evidence
 
-Status: IN PROGRESS. Family assessments and provider discovery are resolved;
-local acceptance and preservation/history preparation are verified; reviewed main delivery remains open.
+Status: COMPLETE. Item8's inventory gate, clean review and main delivery passed.
+
+## Verified delivery - 2026-09-07
+
+[PR18](https://github.com/copeugne/mcpack/pull/18) merged reviewed head
+`2023a22a84372483841f7ad286a868584df564fa` at20:33:40 UTC as
+`326979dd2eee7da3f881f1316eb845fb16e8ea6b`. A fresh fetch confirmed that
+`origin/main` contains the reviewed head (`git merge-base --is-ancestor` exited0).
+The [completed clean review](https://github.com/copeugne/mcpack/pull/18#issuecomment-5575382457)
+identifies that head; the bot also gave the PR a thumbs-up reaction. Review,
+inline and discussion comments were inspected. All three earlier valid findings
+were resolved by4cdb13f1,4f30ddc3 and2023a22a; the final cycle added no findings.
+
+The Item8 exit gate passes:136 providers accounted for,887 runtime roots assigned
+exactly once,448 active canonical families with all eleven required assessments,
+and18 inactive/excluded groups separately dispositioned. Evidence identities,
+source relationships, limitations, failed attempts and raw custody remain below.
+The clean-checkout acceptance result is495/495 passing tests. No additional
+measurement or runtime change was required for delivery.
+
+`inventory.json` is the immutable pre-merge assessment snapshot. Its top-level
+INCOMPLETE value records the delivery state when built, while its448 ASSESSED
+rows describe completed family assessments. This dated delivery record supersedes
+that lifecycle value without rewriting the accepted snapshot or its hash.
+Item9 may consume this inventory; Items9 through11 were not performed here.
 
 ## Acceptance-suite prerequisites for a clean checkout
 
