@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Two campsite geometries captured after f9e5fa8d
+
+Predeclared seed42 Merchant/Illager run completed both81-chunk targets with
+correlated save, clean exit and accepted frozen configuration. Full-start
+piece envelopes157x7x120 and99x13x127 resolve the four geometry attributes;
+no family extrema or live population claim. Archive264 files/4,288,483 bytes
+published under item-8-wda-camps-geometry-2026-09-07-r1 at source f9e5fa8d.
+Local and published-download restores verified all files; no runtime remains.
+Derivations, commands and limitations: sources/wda-provider-scope/README.md.
+Registry297/410, nonregistry40/40, total337/450 assessed,113 remaining;
+WDA25/40 assessed. Quantify the next batch before editing. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/
+main delivery remain open. Eight focused tests pass.
+Inventory SHA-256:
+201360490224b28829da9a67a2de47898a0262ed44d10138e4ae046a813799d7.
+
 #### Temple, Bathhouse, Monastery and campsite attribution after 94d13fa8
 
 Forty-six attributes integrate five roots/83 templates. Abandoned Temple and
