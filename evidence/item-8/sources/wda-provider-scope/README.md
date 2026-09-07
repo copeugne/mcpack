@@ -979,3 +979,63 @@ uv run -m tools.run_item7_gap_targets \
 ```
 
 This declaration does not claim a successful run or resolved geometry.
+
+### Five branching geometry results and custody
+
+Source revisionedd25249b8189e322c174a662bdee41304a87524. All five targets
+completed, with readiness, correlated flushed save, clean exit0 and accepted
+frozen configuration. Decode retained5,681 records including locate-created
+and partial chunks; this is not the405 requested-chunk denominator.
+
+| Family | Decoded line | Start chunk XZ | Pieces | Envelope | Size XYZ |
+|---|---|---|---|---|---|
+| Bandit Towers | 3666 | -1397,-899 | 285 | -22453,36,-14423,-22276,227,-14299 | 178,192,125 |
+| Bandit Village | 1512 | -492,202 | 99 | -7914,144,3179,-7837,180,3258 | 78,37,80 |
+| Greenwood Pub | 659 | -493,408 | 78 | -7952,37,6498,-7870,94,6569 | 83,58,72 |
+| Mechanical Nest | 5401 | 801,8 | 796 | 12687,104,29,12888,295,257 | 202,192,229 |
+| Thornborn Towers | 2025 | -91,-796 | 191 | -1511,27,-12798,-1394,206,-12635 | 118,180,164 |
+
+All starts are in full chunks. Bounds include saved piece boxes, not occupied
+volume, exposure or proof all distant pieces placed. These illustrative
+examples resolve ten geometry attributes. They do not erase missing packaged
+components or reward references, nor assert family-wide extrema or gameplay.
+Baseline world_observations indexes are unchanged; supplemental attributes
+bind the exact archive manifest and decoded lines. Downloaded restore yielded
+the same five observations through existing observed_bounds logic.
+
+Archive357 files,12,164,719 bytes,65,952,568 uncompressed bytes. SHA-256:
+64730ecea5cd213c448ee4b9d6496bc30f14e120b4eb833bb42e6d7986372659.
+Decoded SHA-256:
+89088b9f0efac7aee8edb3849d9aabafe4da36907e856fabef13fa4aedb58231.
+Manifest SHA-256:
+4a5c415d0755a3815790d27ebf15aee05d9a82b68caf9d8ab4faad7267b20ae1.
+Stopped world excludes session.lock; archive includes logs, decoded records,
+sanitized configuration and its receipt, and lifecycle/configuration receipt.
+Runtime warnings remain preserved, not treated as a gameplay pass. Both local
+and downloaded restores verified357 files. Local copies share one disk;
+independent copy is the
+[published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-wda-branching-geometry-2026-09-07-r1).
+Remote tag matches the source revision. No runtime remains.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/wda-branching-geometry-r1"), Path("evidence/raw/item8/wda-branching-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/wda-branching-geometry-r1/world --output evidence/raw/item8/wda-branching-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/wda-branching-geometry-r1 --archive evidence/raw/item8/item8-wda-branching-geometry-r1-edd25249.tar.gz --manifest evidence/item-8/raw-custody/wda-branching-geometry-r1-manifest.json --revision edd25249b8189e322c174a662bdee41304a87524
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-wda-branching-geometry-r1-edd25249.tar.gz --manifest evidence/item-8/raw-custody/wda-branching-geometry-r1-manifest.json --target evidence/raw/item8/wda-branching-geometry-r1-restored --receipt evidence/item-8/raw-custody/wda-branching-geometry-r1-local-restore.json
+gh release download item-8-wda-branching-geometry-2026-09-07-r1 --repo copeugne/mcpack --dir evidence/raw/item8/wda-branching-geometry-download --pattern item8-wda-branching-geometry-r1-edd25249.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/wda-branching-geometry-download/item8-wda-branching-geometry-r1-edd25249.tar.gz --manifest evidence/item-8/raw-custody/wda-branching-geometry-r1-manifest.json --target evidence/raw/item8/wda-branching-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/wda-branching-geometry-r1-downloaded-restore.json
+uv run python - <<'PY'
+from pathlib import Path
+from mcpack_evidence.item7_nbt_models import ChunkRecord
+from mcpack_evidence.item8_world_bounds import observed_bounds
+names = {'dungeons_arise:' + n for n in ('bandit_towers', 'bandit_village', 'greenwood_pub', 'mechanical_nest', 'thornborn_towers')}
+source = Path('evidence/raw/item8/wda-branching-geometry-downloaded-restore/chunks.jsonl')
+for line, raw in enumerate(source.open(), 1):
+    for observation in observed_bounds(ChunkRecord.model_validate_json(raw)):
+        if observation['structure_id'] in names:
+            print(line, {key: value for key, value in observation.items() if key != 'piece_boxes'}, 'pieces', len(observation['piece_boxes']))
+PY
+```
+
+Rebuild and focused checks use the existing commands above. Semantic comparison
+changes only these ten geometry attributes and direct evidence/input identity.
