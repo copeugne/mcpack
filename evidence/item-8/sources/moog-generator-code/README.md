@@ -123,3 +123,56 @@ these ten rows and the decisions input identity changed; existing geometry,
 biomes, observations and nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-ruins-decoration.json`, SHA-256
 2d5db4d403447299020293b7564e1f41b6a0c4e38ed486675b2f219b02f5f346.
+
+## Seven Voyager surface families
+
+After c581177f, 56 descriptions finish shed, small_pillager_tower,
+small_swamp_house, stone_fountain, sunzi_gate, tree_monument and villager_statue.
+Existing geometry is preserved. Direct inspection uses the packaged JSON and
+redacted template artifacts already hash-bound by each family, the corresponding
+pool-traces-content entries, and the captured generic/versioned generator code.
+No new capture, measurement or tooling is required.
+
+All seven biome intersections are Overworld-only. Their roots use generic
+jigsaw with WORLD_SURFACE_WG offset zero and beard_thin. Small Swamp House omits
+cannot_spawn_in_liquid, selecting the captured codec's false default, and omits
+optional terrain range/radius. Villager Statue also omits terrain range/radius.
+Shed, Small Pillager Tower and Stone Fountain declare range 3/radius 1; Sunzi
+Gate declares range 3/radius 2 and use_bounding_box_hack true; Tree Monument
+range 4/radius 1. Stone Fountain retains liquid_settings ignore_waterlogging.
+The remaining six explicitly enable the center-column liquid check. These are
+placement inputs, not proof that the complete template is exposed or dry.
+
+Small Pillager Tower's versioned single element selects mvs:small_pillager_tower
+for 1.21-1.21.8. In that template, block_entities indices 10 and 28 at local XYZ
+[8,6,6] and [5,9,6] contain legacy minecraft:mob_spawner NBT with
+SpawnData/entity/id minecraft:pillager. Exact records are retained in the
+assessment. They support authored hostility, not observed activation or counts.
+The other six pools use ordinary single elements. All seven are rigid and
+terminal; processors are minecraft:empty except Tree Monument's tuff_to_ores.
+
+Top-level entity lists and generation markers are empty in all seven. The
+Swamp House's 15 hive block entities each have an empty bees list; its smoker
+Items list is empty. Other block entities are furnishings, containers and the
+tower's explicit spawners, not hidden authored animals. Fountain, Tree Monument
+and Villager Statue have no block entities. A villager-shaped statue therefore
+does not establish an actual villager source. Natural biome spawning remains
+conditional and no environmental family is claimed safe.
+
+Container references are Shed mvs:houses_common/houses_uncommon, Small Pillager
+Tower mvs:general/houses_uncommon/pillager, Swamp House mvs:swamps, and Sunzi Gate
+mvs:empty/houses_books. The other three have none. Sunzi's empty table can produce
+cobweb/string, as already established; its lectern book is separate. Tree
+Monument's processor has ordered random tuff-match rules with input probabilities
+0.3 to diamond_ore, 0.3 to emerald_ore, and 0.4 to coal_ore. These are salvage
+inputs, not independent realized yield percentages. Qualitative discoverability
+uses the already documented architectural forms and source dimensions, without
+new sight-distance or discovery-rate claims.
+
+Reproduction: run `uv run -m tools.build_item8_inventory --output` with an absent
+output path and compare to inventory.json. Ten affected Moog-provider/inventory
+tests and scoped builder Ruff/Basedpyright checks pass. Only the seven intended
+rows and decisions input hash changed; geometry, biomes, observation links and
+nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-seven-surface.json`, SHA-256
+37d8e2ffb6a778ac97ae7254ebd2d2f8f1248c08f54494918f208fb6643106cb.

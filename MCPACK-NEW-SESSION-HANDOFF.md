@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Seven Voyager surface families assessed after c581177f
+
+Fifty-six answers finish shed, small_pillager_tower, small_swamp_house,
+stone_fountain, sunzi_gate, tree_monument and villager_statue. Existing geometry
+is preserved. Source inspection records two pillager spawners, 15 empty swamp
+house hives, and Tree Monument's ordered ore substitutions without live counts
+or yield claims. No new capture, measurement or tooling. Direct derivations are
+in the moog-generator-code README; ten affected tests and builder checks pass.
+Inventory SHA-256:
+37d8e2ffb6a778ac97ae7254ebd2d2f8f1248c08f54494918f208fb6643106cb.
+
+Retire these assessments. Voyager 27/65; registry 134/410, nonregistry 40/40,
+total 174/450 assessed, 276 remaining. Continue remaining families in quantified
+batches. Final all-family integration, acceptance, verified backup/history
+consolidation, PR review and main delivery remain open.
+
 #### Ten Voyager ruins/decorations assessed after bbb8b3ce
 
 Eighty answers finish castle_ruins, log_ruin, mushroom_statue, large_mushroom,
