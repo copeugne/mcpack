@@ -20453,7 +20453,10 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
-        "evidence/item-8/sources/idas-small-design-views/ruins_stump.svg.gz": "d41652050b41e0649cee3fc89ab5602b4bd519371a328174770285a3dfa91cef"
+        "evidence/item-8/sources/idas-small-design-views/ruins_stump.svg.gz": "d41652050b41e0649cee3fc89ab5602b4bd519371a328174770285a3dfa91cef",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_toggle_config.json5": "8121bc178bab6ef501849f7c628c4cba28553335ade5943735268a5987138609",
+        "evidence/item-6/frozen/config/cristellib/idas/structure_placement_config.json5": "956b78cd4554c9d71745a4b67281e6bd1f402f14deffe7ed7f9d3b455b2410ec",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
       },
       "family_id": "idas:witches_treestump",
       "name": "IDAS witches treestump",
@@ -20504,6 +20507,132 @@
             "valid_biome_radius_check": 1
           },
           "missing_components": []
+        }
+      },
+      "attributes": {
+        "approximate_footprint": {
+          "nominal_xz_blocks": [
+            29,
+            25
+          ],
+          "basis": "Single reachable template has declared size [29,20,25] and no jigsaws. This is an approximate template envelope, including air/padding; rotation can exchange X and Z.",
+          "limitation": "Not a measured occupied-world footprint. Terrain adaptation and actual placement remain outside this envelope."
+        },
+        "approximate_vertical_size": {
+          "nominal_y_blocks": 20,
+          "basis": "Declared height of the sole reachable witches_treestump template.",
+          "limitation": "Not measured exposed height above terrain; includes the template envelope."
+        },
+        "intended_hostility": {
+          "value": "Potential hostile witch site, with cats as non-hostile inhabitants.",
+          "basis": "The structure definition supplies piece-bounded witch monster and cat creature spawn lists. Neither list proves that an entity is present when a player arrives."
+        },
+        "authored_or_natural_enemies": {
+          "value": "Structure-defined natural-spawn override, not directly placed defenders.",
+          "basis": "Template entities and physical spawner lists are empty. The root supplies a witch spawn override; spawn-cycle conditions still govern actual population.",
+          "limitation": "No generated-world encounter observation for this family. Other retained-stack spawning effects are not established by this source attribution."
+        },
+        "visual_discoverability": {
+          "value": "Surface stump landmark, potentially obscured by surrounding woodland.",
+          "basis": "Qualitative inference from the inspected irregular stump form, 20-block nominal height, surface heightmap projection and forest/woodland biome eligibility.",
+          "limitation": "No measured detection distance, terrain exposure, approach visibility or player discovery observation. This describes source-based visual character only."
+        },
+        "underground_surface_classification": {
+          "value": "Surface-projected dwelling.",
+          "basis": "WORLD_SURFACE_WG projection, absolute start offset 0 and beard_thin adaptation; the single template has no attached underground component.",
+          "limitation": "Local terrain may cover part of the template; burial and exposed elevations were not observed."
+        },
+        "dimension": {
+          "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+          "biome_compatible_by_structure": {
+            "idas:witches_treestump": [
+              "minecraft:overworld"
+            ]
+          },
+          "eligibility": "Overworld biome eligibility: thirteen of fifteen tag-matched registered biomes occur in the captured Overworld, with no overlap in other captured dimensions. regions_unexplored:deciduous_forest and regions_unexplored:pumpkin_fields are absent from every captured dimension biome source. The frozen toggle enables witches_treestump; idas_common selects it with weight 3 and frozen spacing 21/separation 12/salt 169480670. Placement still depends on the exclusion zone, terrain and biome checks. This is source/configuration eligibility, not an observed start.",
+          "observed": []
+        },
+        "mob_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "authored_entity_scope": "Base IDs of template entities and passengers, including non-mob entities. Not a hostile-enemy classification or spawned population.",
+          "custom_generation": {},
+          "fields": [
+            "authored_entities",
+            "spawner_blocks",
+            "generation_markers",
+            "unresolved_entities"
+          ],
+          "packaged_authored_entity_templates": {},
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:witches_treestump/witches_treestump"
+          ],
+          "unresolved_authored_entities": {},
+          "structure_spawn_overrides": {
+            "creature": {
+              "bounding_box": "piece",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:cat",
+                  "weight": 1
+                }
+              ]
+            },
+            "monster": {
+              "bounding_box": "piece",
+              "spawns": [
+                {
+                  "maxCount": 1,
+                  "minCount": 1,
+                  "type": "minecraft:witch",
+                  "weight": 1
+                }
+              ]
+            }
+          },
+          "basis": "No authored template entities or physical spawners. Witch and cat candidates come from the root spawn overrides, each weight 1 and min/max count 1; this is not a total population limit or guaranteed encounter."
+        },
+        "loot_table_source": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "loot_references"
+          ],
+          "packaged_references": [
+            {
+              "field": "LootTable",
+              "templates": [
+                "idas:witches_treestump/witches_treestump"
+              ],
+              "value": "idas:chests/witches_treestump/witches_treestump"
+            }
+          ],
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:witches_treestump/witches_treestump"
+          ],
+          "basis": "Two packaged Quark variant trapped chests reference idas:chests/witches_treestump/witches_treestump. Other stored containers and furnishings have no LootTable field; no inference of empty contents is made.",
+          "processor_declaration": "The selected waterlogging_fix_processor declares only integrated_api:tick_blocks_processor for dispenser and dropper blocks; it declares no loot reassignment."
+        },
+        "generated_spawners": {
+          "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
+          "custom_generation": {},
+          "fields": [
+            "spawner_blocks",
+            "generation_markers"
+          ],
+          "generation_marker_templates": [],
+          "packaged_entity_sources": [],
+          "source_scope": "Explicit base entity IDs from initial data and positive-weight potentials. Not generated counts, passenger attribution or effective processor results. Generation markers require separate interpretation.",
+          "status": "Source attribution recorded; generated-world occurrence not observed.",
+          "template_ids": [
+            "idas:witches_treestump/witches_treestump"
+          ],
+          "unresolved_sources": {},
+          "basis": "Zero physical spawner blocks or generation markers in the sole packaged template. The selected processor list declares dispenser/dropper ticking, with no spawner-writing processor. Witch/cat spawn overrides are not spawner blocks.",
+          "limitation": "Packaged contribution only; no observed world count or universal absence of external modifications is claimed."
         }
       }
     },
