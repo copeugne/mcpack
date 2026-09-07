@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed stronghold assessed after ad56d7e5
+
+Seven remaining entries integrated for two variants/45 templates. Four selected
+spawner lists distinguish mixed general Nether spawners from blaze portal-room
+spawners; End selects endermites and feature shulkers. Natural overrides remain
+separate. Six literal loot tables defined. Portal-eye processor does not establish
+portal activation; End height checks preserve cumulative subtraction and burial
+limits. No runtime/tool added. All85 focused checks pass (65.85s);only stronghold/
+input identity changed. Total406/448 assessed;42 families/371 required entries
+remain: IDAS38/343,Repurposed4/28. Remaining Repurposed: ancient_city,bastion,
+fortress,village, each seven content/placement entries with accepted geometry.
+Quantify next batch and reuse evidence. Details in
+ evidence/item-8/sources/repurposed-stronghold-assessment/README.md.
+Final integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: 2df763aa4cb2186125e0987fb59682f892cdc58769b94ca62530832dece8754b.
+
 #### Repurposed city assessed after a07bf6c4
 
 Seven remaining entries integrated for two variants/87 pool templates.
