@@ -1198,7 +1198,9 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
     if namespace == "idas":
         expected = {
             "ancient_portal": ("idas:ancient_portal/", 2),
-            "ancient_statue": ("idas:ancient_statue/", 3),
+            "ancient_statue": ("idas:ancient_statue/ancient_statue_desert", 1),
+            "ancient_statue_jungle": ("idas:ancient_statue/ancient_statue_jungle", 1),
+            "ancient_statue_plains": ("idas:ancient_statue/ancient_statue_plains", 1),
             "animal_den": ("idas:animal_den/", 3),
             "desert_camp": ("idas:desert_camp/", 4),
             "desert_market": ("idas:desert_market/", 3),
@@ -1214,7 +1216,7 @@ def test_provider_groups_bind_full_definitions_pools_and_registry(
         }
         expected.update(singletons)
         expected["sunken_ship/sunken_ship_ruins"] = ("idas:sunken_ship/", 1)
-        assert len(expected) == 62
+        assert len(expected) == 64
     if namespace == "adorabuild_structures":
         counts = {
             "acacia_well": 1,
