@@ -6,6 +6,23 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS wizard tower assessed after e2a87426
+
+Nine entries integrated for three paired variants/six templates. Matching
+vertical connectors give each bottom origin0,-6,0 and nominal24 by25 footprint,
+48 height. Every bottom authors zoglin; purple/yellow each have two ordinary
+spawners selecting sole Quark wraith5, red has none. Four defined loot sources
+retain variant mapping. No markers or unresolved entities. Existing processor
+inspection reused; no runtime/tool added. All85 focused checks pass (66.77s);
+only wizard_tower/input identity changed. Total429/448 assessed;19 connected
+IDAS families/171 entries remain, nine each. Quantify the next connector/content
+batch before investigation; reuse existing findings and keep variant geometry
+separate from observed placement and alternative counts separate from families.
+Details: evidence/item-8/sources/idas-wizard-tower-assessment/README.md.
+Inventory SHA-256: 8282f965a7780f2dbffe92acd78c12e1ca4d66f81e70b2129cce71bc441e0b23.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS snifferhenge assessed after 3a384a1b
 
 Nine entries integrated for two rigid connected components. Matching down_west/
