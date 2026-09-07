@@ -10575,3 +10575,41 @@ candidates with 2,169 literal gaps, forty nonregistry assignments needing
 integration, thirteen filled registry records needing acceptance assessment.
 Ten families have current-phase assessments. No new measurement or tooling.
 Item 8 acceptance, PR review and verified main delivery remain open.
+
+
+### Desert statue and train ruins attribute increment
+
+Predeclared scope: two families, eleven fields each. The ancient_statue family ID
+is specifically the desert design; jungle and plains remain separate families.
+Decision 3213a41a records ten interpretations per family with unchanged biome
+constraints. Nominal XYZ sizes: 15 by 23 by 26 and 27 by 15 by 50. Neither has a
+retained world occurrence. Desert statue preserves seven rattlesnake and five item
+entries, without claiming unconditional hostility or realized populations. Train
+has only item/glue entities. Neither contains physical spawners. The train
+processor additionally declares probability-0.2 gravel conversion and archaeology
+loot, distinct from twelve saved container references. No observed yield is claimed.
+Both frozen toggles are enabled at weight 2 in idas_small. All three statue biomes
+and eight of nine train biomes overlap only the captured Overworld; train's
+Regions Unexplored deciduous_forest has no captured dimension overlap.
+
+Focused IDAS test passes (1 passed, 77 deselected); scoped Ruff/Basedpyright pass.
+Two fresh inventory builds match exactly, SHA-256
+c20b0b9e744d592e80fe8e742f3a4575bb1be1a1fd352b2f91b7a622a5546bfd.
+Only these two families and decision input identity change. Membership, biome
+constraints, observations, pool trace IDs and all other rows remain unchanged.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-statue-train-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-statue-train-attributes-r2.json
+cmp evidence/raw/item8/inventory-statue-train-attributes-r1.json evidence/raw/item8/inventory-statue-train-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-statue-train-attributes-r2.json
+```
+
+Twelve literal field gaps resolved. Remaining planning counts: 395 registry
+candidates with 2,157 literal gaps, forty nonregistry assignments needing
+integration, fifteen filled registry records needing acceptance assessment.
+Twelve families have current-phase assessments. No new measurement or tooling.
+Final Item 8 acceptance, review and main delivery remain open.
