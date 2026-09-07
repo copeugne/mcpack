@@ -10780,3 +10780,22 @@ Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/i
 Inventory SHA-256: 1b12bd29abe66dc7a8c6bdc6c651a2adb1436cec17e3ef48adacf9df1be9083d.
 Registry rows are unchanged; nonregistry content matches the delivered decision
 records exactly. Final integration/acceptance and main delivery remain open.
+
+
+### BetterEnd design attribute integration
+
+Predeclared sixteen-family batch supplies 48 established fields: footprint,
+height and qualitative visual form. Decision 166025d1 preserves every building
+and ruin template mapping; geometry uses the retained template document.size,
+with dimensions kept per alternative rather than summed. Source-form descriptions
+reuse the inspected design rationale. These are nominal envelopes including
+supports/vegetation, not measured exposed-world geometry. Effective conversion,
+loot and placement claims remain separate open work. The six other identified
+nonregistry assignments still need their facts extracted; the sixteen now have
+partial standard attributes in their existing design records. No new measurement.
+
+Affected BetterEnd tests: 16 passed in 4.33 seconds.
+Generation: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-betterend-design-attributes.json`.
+Inventory SHA-256: 075432cd542754186dbc8c39b029862498d2096c6f1eec8b457924f4c8418719.
+Registry rows are unchanged; nonregistry content matches the delivered decisions.
+Final Item 8 acceptance and delivery remain open.

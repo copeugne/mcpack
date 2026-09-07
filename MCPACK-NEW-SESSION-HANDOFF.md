@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Sixteen BetterEnd building/ruin families now expose 48 established geometry/form
+attributes at 166025d1. Affected tests: 16 passed; inventory matches fresh build.
+Effective conversion, loot and placement still require separate attribution.
+Six other identified nonregistry assignments still need extraction; eighteen
+detailed records and these sixteen have partial/full standard attributes, not
+blanket acceptance. No new measurement or rendering. Continue existing-evidence
+integration and investigate only specifically unsupported mandatory claims.
+
 Integrated 95 existing attribute values in eighteen detailed nonregistry records
 at 4c8868e5. Registry rows unchanged; inventory matches fresh generation. All 78
 family-decision tests pass. Other 22 family assignments remain in contribution
