@@ -6,6 +6,27 @@
 
 ### Continuation update - 2026-09-07
 
+#### BOP landmarks assessed after 56758604
+
+Integrated sixteen existing-source answers for anomaly and monolith. Both now
+record all eleven descriptive attributes, with cube/landmark geometry separated
+from conditional terrain modification. Generator-source attribution does not
+claim safe block interactions, realized rewards or observed populations. The
+existing bop-feature-scope README records the direct derivation and commands.
+Retire these supported descriptive answers; no additional measurement is needed.
+
+Five affected BOP tests pass; scoped Ruff and Basedpyright pass. Inventory matches
+`evidence/raw/item8/inventory-bop-landmark-descriptions.json`, SHA-256
+dd1b57a1ac85eeed7f49369b7844c864acb44095a54b1a0a5e04b5f2aad33893.
+Registry rows and all other nonregistry contributions are unchanged.
+
+Nonregistry assessment is now 36/40. Four remain: BetterEnd crashed ship and
+ruined obsidian pillar, Explorations scarecrow, Supplementaries cave urn cache.
+Use their existing evidence; urn reward behavior needs a specific source answer,
+not a new broad inventory pass. Registry work remains 386 families in the existing
+340/21/25 evidence paths. Final integration, acceptance, PR review and main delivery
+remain open.
+
 #### BetterEnd building/ruin batch delivered after d1fe647f
 
 Sixteen BetterEnd building/ruin families now have all eleven descriptive answers

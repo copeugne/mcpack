@@ -169472,7 +169472,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "4b3ae8f859e0ad9b4276b2b03dd1258d6b9ee001d8fb2be9ea6e7b3d8ec1dd6a",
+    "evidence/item-8/family-decisions.json": "1b9c679810d4a75427b5f07cc841e4ab66f6143ea2746c477cd8f32ccc1ee50b",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
@@ -174031,6 +174031,38 @@
       },
       "biomesoplenty:anomaly": {
         "attributes": {
+          "approximate_footprint": {
+            "basis": "n=2+nextInt(3). Cube loops 0..n inclusive; terrain loops -3..n+3 inclusive on X/Z. The outer corner exclusions do not expand these envelopes.",
+            "cube_side_range_blocks": [
+              3,
+              5
+            ],
+            "scope": "Source write envelopes; conditional terrain changes are not a fully occupied footprint.",
+            "terrain_write_envelope_side_range_blocks": [
+              9,
+              11
+            ]
+          },
+          "approximate_vertical_size": {
+            "basis": "Cube origin offset o=nextInt(4), cube writes Y=o..o+n. Terrain loop writes candidate offsets Y=4 down through -127 (strictly greater than -128). Combined envelope is -127..max(4,o+n), inclusive, or 132..135 blocks.",
+            "combined_nominal_height_range_blocks": [
+              132,
+              135
+            ],
+            "cube_bottom_relative_to_support_range": [
+              0,
+              3
+            ],
+            "cube_height_range_blocks": [
+              3,
+              5
+            ],
+            "scope": "Includes deep conditional terrain processing, not visible landmark height. World bounds and predicates can reject writes; the cube itself is only 3..5 blocks tall."
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Captured generator bodies and local helpers write blocks. Environmental effects are not classified as authored enemy populations.",
+            "value": "No directly authored mobs or spawners in this feature; natural enemies may occur."
+          },
           "biome_constraints": {
             "limitation": "Packaged direct consumer; shared modifiers may extend eligibility.",
             "packaged_biome_consumer": "biomesoplenty:end_corruption"
@@ -174039,6 +174071,30 @@
             "basis": "Family membership resolved. Configured and placed IDs are present in captured runtime registries and the sole packaged biome consumer is in the captured End biome source. This establishes a natural-generation route, not observed occurrence, frequency or completion of all eleven attributes.",
             "limitation": "Captured biome-source overlap and packaged route, not observed occurrence.",
             "value": "minecraft:the_end"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner placement or block-entity setup in the captured writer; placed materials are explicitly visible in the source.",
+            "direct_generator_spawner_blocks": [],
+            "scope": "Direct generator contribution, not a universal absence claim for surrounding terrain."
+          },
+          "intended_hostility": {
+            "basis": "Captured feature writes blocks without an entity creation, physical spawner or container-loot operation. Anomaly state names and terrain modification are not a guarantee of safe interaction.",
+            "scope": "Generator intent only; natural mobs and subsequent block interactions are separate.",
+            "value": "Environmental landmark rather than a directly authored mob encounter."
+          },
+          "loot_table_source": {
+            "basis": "The captured feature writes landmark/terrain blocks, with no container creation or loot-table assignment.",
+            "direct_generator_assigned_tables": [],
+            "scope": "Container loot source attribution; harvested block drops and later interactions are separate."
+          },
+          "mob_source": {
+            "basis": "The complete captured feature writer and local helper methods contain block predicates and writes, with no entity creation or insertion.",
+            "direct_authored_entities": [],
+            "natural_source": "Biome spawning and world conditions may supply mobs; no population is measured."
+          },
+          "underground_surface_classification": {
+            "basis": "Searches downward for END_STONE or UNMAPPED_END_STONE; cube space must be air or ANOMALY and below absolute Y=255. Terrain writes use replaceable predicates and AIR, NULL_BLOCK or NULL_END_STONE. This is a terrain-affecting landmark, not an underground dungeon.",
+            "value": "Surface-associated cube with deep terrain replacement beneath and around it."
           },
           "visual_discoverability": {
             "basis": "Source-derived form, not measured approach visibility or discovery distance.",
@@ -174119,6 +174175,34 @@
       },
       "biomesoplenty:monolith": {
         "attributes": {
+          "approximate_footprint": {
+            "basis": "Independent x/z limits are 1+nextInt(3); inclusive loops run from zero through each limit. This gives 2..4 blocks per axis.",
+            "nominal_x_range_blocks": [
+              2,
+              4
+            ],
+            "nominal_z_range_blocks": [
+              2,
+              4
+            ],
+            "scope": "Direct write envelope; predicate rejection and ignored write results may leave fewer blocks."
+          },
+          "approximate_vertical_size": {
+            "above_support_height_range_blocks": [
+              6,
+              12
+            ],
+            "basis": "Height limit h=5+nextInt(7). Relative to support.above(), the write loop is -6..h inclusive, hence h+7=12..18 blocks. Above-support portion is offsets 0..h, hence 6..12. The h-1 layer writes only corner columns.",
+            "nominal_height_range_blocks": [
+              12,
+              18
+            ],
+            "scope": "Attempted envelope, not guaranteed solid volume or observed exposure."
+          },
+          "authored_or_natural_enemies": {
+            "basis": "Captured generator bodies and local helpers write blocks. Environmental effects are not classified as authored enemy populations.",
+            "value": "No directly authored mobs or spawners in this feature; natural enemies may occur."
+          },
           "biome_constraints": {
             "limitation": "Packaged direct consumer; shared modifiers may extend eligibility.",
             "packaged_biome_consumer": "biomesoplenty:end_corruption"
@@ -174127,6 +174211,30 @@
             "basis": "Family membership resolved. Configured and placed IDs are present in captured runtime registries and the sole packaged biome consumer is in the captured End biome source. This establishes a natural-generation route, not observed occurrence, frequency or completion of all eleven attributes.",
             "limitation": "Captured biome-source overlap and packaged route, not observed occurrence.",
             "value": "minecraft:the_end"
+          },
+          "generated_spawners": {
+            "basis": "No physical spawner placement or block-entity setup in the captured writer; placed materials are explicitly visible in the source.",
+            "direct_generator_spawner_blocks": [],
+            "scope": "Direct generator contribution, not a universal absence claim for surrounding terrain."
+          },
+          "intended_hostility": {
+            "basis": "Captured feature writes blocks without an entity creation, physical spawner or container-loot operation. Anomaly state names and terrain modification are not a guarantee of safe interaction.",
+            "scope": "Generator intent only; natural mobs and subsequent block interactions are separate.",
+            "value": "Environmental landmark rather than a directly authored mob encounter."
+          },
+          "loot_table_source": {
+            "basis": "The captured feature writes landmark/terrain blocks, with no container creation or loot-table assignment.",
+            "direct_generator_assigned_tables": [],
+            "scope": "Container loot source attribution; harvested block drops and later interactions are separate."
+          },
+          "mob_source": {
+            "basis": "The complete captured feature writer and local helper methods contain block predicates and writes, with no entity creation or insertion.",
+            "direct_authored_entities": [],
+            "natural_source": "Biome spawning and world conditions may supply mobs; no population is measured."
+          },
+          "underground_surface_classification": {
+            "basis": "Searches downward through replaceable blocks, requires UNMAPPED_END_STONE support and checks above-support space below absolute Y=255. Replacement accepts air/leaves, REPLACEABLE_BY_TREES, BushBlock or NULL_END_STONE. Below-origin writes still require that predicate; they do not prove a solid buried foundation.",
+            "value": "Surface-rooted obsidian landmark with a below-origin extension."
           },
           "visual_discoverability": {
             "basis": "Source-derived form, not measured approach visibility or discovery distance.",
