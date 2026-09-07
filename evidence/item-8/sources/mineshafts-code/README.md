@@ -127,3 +127,42 @@ physical-height measurements. Four dimension/discoverability attributes across
 this family and Spider Dungeon are integrated; both families' four geometry
 attributes remain open. Reuse the source explanation before interpreting any
 future saved entrance bounding box as occupied geometry.
+
+## Two-family geometry capture declaration
+
+Four required size attributes remain for Better Mineshafts and Spider Dungeon.
+Existing starts are non-full. The mineshaft VerticalEntrance.determineDirection
+updates yAxisLen/localYEnd from terrain, but does not shrink boundingBox.
+getInitialBoundingBox reserves center X/Z plus or minus24 and maximum build Y.
+Thus even a saved full start's raw entrance box is not occupied shaft height.
+Inspect its saved hasTunnel, centerPos, yAxisLen and floorAltitude alongside
+non-entrance pieces before deriving an approximate vertical extent. Preserve the
+raw envelope separately. Spider uses recursively assembled custom tunnel pieces.
+Neither a single piece nor initial placement Y establishes its assembled size.
+
+Declare one fresh frozen seed42 capture, two targets,81 requested chunks each
+(162 total), timeout900. Select the lush mineshaft variant as one illustration
+of the shared generator, not all13 variants or a size distribution. Require full
+starts, correlated save, clean exit and accepted frozen configuration. Preserve
+all failures. Reuse existing runner, NBT decoder and archive/restore workflow;
+no new measurement system. An observed piece envelope is approximate assembly
+geometry, not occupied volume or proof that every distant piece was placed.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/mineshaft-spider-geometry-r1 \
+  --log-path evidence/raw/item8/mineshaft-spider-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/mineshaft-spider-geometry-r1/configuration \
+  --receipt evidence/raw/item8/mineshaft-spider-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure bettermineshafts:mineshaft_lush \
+  --structure betterdungeons:spider_dungeon
+```
