@@ -7,6 +7,28 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated Villages content assessed after a75744b4
+
+Five content attributes integrated, completing the village family. Its empty
+armorer-bottom spawner is configured by selected mossy_mounds_processor index2:
+integrated_villages:generic contains zombie15/skeleton10. Direct pinned processor
+and MobSpawnerManager inspection preserves loading, missing-list dungeon-array
+fallback, zero-total null and selection-exception pig branches. No observed
+population claim.31 template entity IDs include non-mobs and absent optional
+AlexsMobs/Cobblemon/GuardVillagers/IronsSpellbooks providers; retained mod-list
+source is registry-r1/debug.log, not ANSI capture console.19 structure markers
+are15 CORNER/3 LOAD/1 SAVE, none DATA. All132 literal loot-table IDs have packaged
+current-path definitions. Source README and attributes retain exact scope.
+All85 focused tests pass (58.93s); only village/input identity changed. No new
+runtime/tool. Registry330/408,nonregistry40/40,total370/448 assessed,78 remain;
+698 explicit attribute slots outstanding. Next: Integrated Stronghold one family,
+seven attributes remaining; inspect shared existing evidence before geometry
+capture. Overall remaining: IDAS38,Repurposed17,vanilla13,BetterEnd9,Stronghold1.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+932908b80ae034673c568447530ae9d6e7be22abc92a468fe5914b5e50f70be3.
+
+
 #### Integrated placement and existing geometry after 0e9e6a95
 
 Quantified two-family batch: Integrated Villages ten outstanding attributes,
