@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Next IDAS comparison selects all 23 templates for ancient_statue, animal_den,
+desert_camp, desert_market and lumber_camp with the existing renderer. Similar
+envelopes do not prove identical architecture; statues have materially different
+sizes, and one lumber variant also differs in width. Preserve optional entity and
+material references without inferring runtime creation. No new measurement system.
+Backlog remains 55 until decisions pass.
+
 Inventory matches 6c8adbbc and reproduces exactly in two fresh runs. Changes are
 limited to the four IDAS grouping decisions and the input hash. All 887 roots
 remain covered once in 423 working groups. Backlog: 55, all IDAS. Next: remaining
