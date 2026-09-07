@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Necromancers spire is resolved as one four-component assembly from existing
+connectors and contents. Focused IDAS and scoped checks pass. Canonical backlog:
+24, all IDAS. Inventory refresh follows. Wizard tower and nexus remain open:
+compare their alternatives rather than assuming color names imply one design.
+Red wizard tower has no physical spawners, unlike purple and yellow (two each).
+Nexus is a broad underground structure, not a tower. Attributes, nonregistry
+and final validation/review/main delivery remain open.
+
 Inventory matches 328a58ea and independently reproduces exactly. Canonical
 backlog: 25, all IDAS. All 887 roots and full variants remain in 426 working
 groups. Continue remaining IDAS buildings and assemblies. Required attributes,
