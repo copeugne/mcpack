@@ -1,7 +1,44 @@
 # Item 8 evidence
 
-Status: IN PROGRESS. Family assessments and provider discovery are resolved;
-local acceptance and preservation/history preparation are verified; reviewed main delivery remains open.
+Status: COMPLETE. Item8's inventory gate, clean review and main delivery passed.
+
+## Verified delivery - 2026-09-07
+
+[PR18](https://github.com/copeugne/mcpack/pull/18) merged reviewed head
+`2023a22a84372483841f7ad286a868584df564fa` at20:33:40 UTC as
+`326979dd2eee7da3f881f1316eb845fb16e8ea6b`. A fresh fetch confirmed that
+`origin/main` contains the reviewed head (`git merge-base --is-ancestor` exited0).
+The [completed clean review](https://github.com/copeugne/mcpack/pull/18#issuecomment-5575382457)
+identifies that head; the bot also gave the PR a thumbs-up reaction. Review,
+inline and discussion comments were inspected. All three earlier valid findings
+were resolved by4cdb13f1,4f30ddc3 and2023a22a; the final cycle added no findings.
+
+The Item8 exit gate passes:136 providers accounted for,887 runtime roots assigned
+exactly once,448 active canonical families with all eleven required assessments,
+and18 inactive/excluded groups separately dispositioned. Evidence identities,
+source relationships, limitations, failed attempts and raw custody remain below.
+The clean-checkout acceptance result is495/495 passing tests. No additional
+measurement or runtime change was required for delivery.
+
+The canonical `inventory.json` and source-pinned builder now record COMPLETE,
+matching the verified PR18 delivery. The previous pre-merge snapshot remains
+preserved in Git at2023a22a with its original hash. PR19 review finding3952497292
+correctly rejected leaving that old lifecycle value in the canonical artifact.
+Only top-level status and scope change; family assessments and inputs are unchanged.
+Current inventory SHA-256:
+`4f7853b7b6531f99d3f0592b2129291d2e0cf24b4ad5d1381b3883dbdcfbc52d`.
+Validation: five affected tests passed in0.77s; Ruff and basedpyright pass after
+correcting a string-concatenation formatting error. Reproduction commands:
+
+```sh
+uv run -m tools.build_item8_inventory --output /tmp/item8-completed-pr19-rebuild.json
+cmp evidence/item-8/inventory.json /tmp/item8-completed-pr19-rebuild.json
+uv run pytest -q tests/item8/test_inventory_consolidation.py tests/item8/test_dimension_capture.py
+uv run ruff check tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+uv run basedpyright tools/build_item8_inventory.py tests/item8/test_inventory_consolidation.py
+```
+
+Item9 may consume this inventory; Items9 through11 were not performed here.
 
 ## Acceptance-suite prerequisites for a clean checkout
 

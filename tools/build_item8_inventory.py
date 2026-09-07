@@ -354,7 +354,7 @@ def consolidate(
 
 
 def main() -> None:
-    """Bind the delivered source files and write the reviewable working inventory."""
+    """Rebuild the source-pinned inventory accepted and delivered through PR18."""
     parser = argparse.ArgumentParser(description=__doc__)
     _ = parser.add_argument("--output", type=Path, required=True)
     output = cast("Path", parser.parse_args().output)
@@ -380,10 +380,19 @@ def main() -> None:
     result["non_registry_content"] = documents[DECISIONS]["non_registry_content"]
     non_registry = cast("dict[str, JsonValue]", result["non_registry_content"])
     consolidate(result, cast("dict[str, dict[str, JsonValue]]", non_registry["contributions"]))
+    result["status"] = "COMPLETE"
+    result["scope"] = str(result["scope"]).replace(
+        "Item status remains INCOMPLETE pending review and delivery, independently of assessments.",
+        (
+            "Item8 completed through clean-reviewed PR18, merged as "
+            "326979dd2eee7da3f881f1316eb845fb16e8ea6b. "
+            "This builder reproduces that accepted, source-pinned inventory."
+        ),
+    )
     result["inputs"] = dict(INPUTS)
     with output.open("x", encoding="utf-8") as stream:
         _ = stream.write(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    print("Working inventory written; completion remains unproven")
+    print("Completed source-pinned Item8 inventory written; delivery: PR18")
 
 
 if __name__ == "__main__":
