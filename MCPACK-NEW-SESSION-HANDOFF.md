@@ -7,6 +7,30 @@
 ### Continuation update - 2026-09-07
 
 
+#### Integrated placement and existing geometry after 0e9e6a95
+
+Quantified two-family batch: Integrated Villages ten outstanding attributes,
+Integrated Stronghold eight. Six are integrated: both Overworld dimensions,
+village existing193x66x185 airship geometry, declared placement and visibility.
+The airship example is one seed42 layout repeated across runs A/B, not two
+independent samples. Other variants have offset0 except pirate-19; airship100.
+Twelve attributes remain in this batch: five village content and seven stronghold.
+Village content sources:696 reachable templates,14 processor-list references,
+132 literal loot-table references, optional-mod entity IDs, and an unconfigured
+ordinary spawner in mossy_mounds_armorer_bottom BE0 at[24,2,10] with empty
+SpawnData.entity and SpawnPotentials. Reuse current pool traces, catalogs,
+IASinglePoolElement capture and direct pinned Integrated API class inspection;
+no new measurement framework. Stronghold still lacks full-start geometry.
+Initial edit attempt hit missing attributes before writing decisions; its unchanged
+build and tests do not support acceptance. Corrected build is integrated-placement-
+inventory-r2.json; only the two families/input identity changed. All85 focused
+tests pass on corrected state (59.12s). No runtime launched. Overall369/448
+assessed,79 remain;703 explicit attribute slots outstanding.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+59eff456312ffa0a0646af8aaa9697910049d5a7562e74235586ba31ae0608f4.
+
+
 #### CTOV outpost geometry finished after 78604262
 
 Declared seed42/81-chunk capture passed ready, correlated flush, clean exit0 and
