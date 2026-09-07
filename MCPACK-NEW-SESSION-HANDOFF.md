@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### CTOV outpost geometry finished after 78604262
+
+Declared seed42/81-chunk capture passed ready, correlated flush, clean exit0 and
+frozen configuration acceptance. Full start chunk-476,-108,decoded line385,
+12 pieces,envelope[-7632,66,-1758,-7586,96,-1713],size47x31x46. This is one
+plains-variant saved envelope, not all-variant extrema or occupied volume.
+Archive259 files/3,007,971 bytes published at source78604262, with both local and
+downloaded restores verified. Downloaded geometry reproduced. Raw console retains
+Better Caves AquiferContext error and existing loot/tag/spawner/advancement/potion
+errors; no general compatibility claim or baseline repair. No Java process remains.
+Both CTOV families assessed. All85 focused tests pass (60.05s); only outpost/input
+identity changed. Registry329/408,nonregistry40/40,total369/448 assessed,
+79 families remain,709 explicit attribute slots outstanding. Remaining: IDAS38,
+Repurposed17,vanilla13,BetterEnd9,IntegratedStronghold/Villages2. Quantify the next
+provider batch and reuse existing evidence before any new investigation.
+Final integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+068f81075fc0d8bc97e30bab6d353db125eed74edf969661728c8654e654c5b0.
+
+
 #### CTOV descriptions and outpost capture declaration after 805aa36e
 
 Ten outstanding attributes integrated across two CTOV families. Village uses
