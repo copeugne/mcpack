@@ -1173,3 +1173,43 @@ or broad regression framework is needed for this direct artifact distinction.
 Rebuild and eight focused tests use the existing commands above. Only Shiraz
 geometry and this direct spawner correction change. Six geometry attributes
 remain for Foundry, Mining Complex and Scorched Mines.
+
+## Final three WDA geometry targets
+
+Six geometry attributes remain for Foundry, Mining Complex and Scorched Mines.
+No retained starts exist. Foundry crossing_start0 is31x48x31 with four corridor
+exits atY3 and four elevated passage exits atY32; corridor0 connects onward.
+Mining main0 is57x197x57 with exterior facility exits at north/southY2 and
+separate dripstone/lush sections west/eastY32. Scorched hub comprises four
+24/25-wide sections with multiple exterior corridor exits and a well connector.
+Main-only geometry would omit required connected content. Existing capture is
+smaller than implementing a branching-layout simulator or inferring typical
+geometry from maximum-distance limits.
+
+Reuse one fresh frozen seed42 run with exactly three targets below,81 requested
+chunks each/243 total, timeout900. Require full starts, correlated flushed save,
+clean stop and accepted configuration; preserve failures and Foundry's missing
+pool. Derive one illustrative saved-piece envelope per family with existing
+observed_bounds. No family extrema, density, occupied-volume, distant-piece
+placement or gameplay claim. Archive and verify local/download restores with
+existing tools. This declaration does not claim successful capture.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/wda-final-geometry-r1 \
+  --log-path evidence/raw/item8/wda-final-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/wda-final-geometry-r1/configuration \
+  --receipt evidence/raw/item8/wda-final-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure dungeons_arise:foundry \
+  --structure dungeons_arise:mining_complex \
+  --structure dungeons_arise:scorched_mines
+```
