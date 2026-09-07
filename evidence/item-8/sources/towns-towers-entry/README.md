@@ -133,3 +133,42 @@ Six applicable tests pass using the command above. Semantic comparison changes
 only Camp and the decisions pin, preserving placement, biomes, identities and
 observations. Inventory SHA-256:
 `1b22f228c91204f7b548287885c80dc70ae85eaf387490b002b3a9596660cd0c`.
+
+## Village attribution, geometry still open
+
+Seven attributes are integrated across 26 variants and 777 unique present
+templates. Existing surface/underground assessment is unchanged. Per-root
+selected template_contents retain exact source identities and entity/loot
+ownership. Nilotic and Piglin have no runtime biome intersection; the other
+24 intersect Overworld. Neither compatible biomes nor inhabited template
+names prove observed population or generation.
+
+Present identified inhabitants comprise villagers/traders, livestock, cats,
+wolves, camels, defensive golems and Piglin-variant hoglins, alongside decorative
+entities. Saved trader Offers and equipment remain source NBT, not tested live
+trade availability. Sparse Jungle tiki_torch_1 /entities/0/nbt has no ID;
+keep that source payload unresolved rather than inventing its entity type.
+Missing pools include Mediterranean bishop, Beach lighthouse master, Meadow
+villagers and Sparse Jungle chief; Nilotic has three missing houses and Swamp
+two missing crossroads. Exact IDs remain in the authoritative assessment.
+
+No spawners occur in the present template trace. Selected processors are empty,
+block-substitution rules or jigsaw_replacement. Inspected final states contain
+architectural/material blocks, not spawners. Forest street rules are a material
+loot exception: data/kaisyn/worldgen/processor_list/village/forest_ruins/street_forest.json
+converts grass candidates to suspicious gravel and appends
+kaisyn:archeology/forest_ruins_common (configured rule chance .01) or
+forest_ruins_rare (.005). Ordered rules do not imply independent observed loot
+probabilities. These processor sources supplement per-template container refs.
+
+Whole-settlement footprint and vertical size remain unresolved. No retained
+starts exist for this family; adding individual building dimensions would not
+prove an assembled branching settlement envelope. Do not count this family as
+fully assessed yet. Determine the smallest adequate geometry evidence next,
+reusing existing tools and distinguishing bounded concentrated variants from
+branching streets. No new runtime or measurement was performed for attribution.
+
+Six applicable tests pass. Only Village attribution and the decisions pin
+change; geometry, existing placement, biomes, identities and observations remain
+unchanged. Inventory SHA-256:
+`ef7e3b2a9c099eddb88c50f4b34f0a1262b0a1abea4f3d3baed9dc6ceb791c05`.
