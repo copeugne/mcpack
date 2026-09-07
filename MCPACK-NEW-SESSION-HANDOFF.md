@@ -6,6 +6,17 @@
 
 ### Continuation update - 2026-09-07
 
+#### Final three WDA geometry targets after 763608a5
+
+Six geometry attributes remain for Foundry, Mining Complex and Scorched Mines.
+Existing sources show exterior branching connections, with no retained starts.
+Declared one existing gap-run capture: seed42, three targets/243 requested
+chunks, timeout900. Exact rationale and command:
+evidence/item-8/sources/wda-provider-scope/README.md, Final three WDA geometry
+targets. Preserve Foundry missing pool. No new tooling. Next run fresh capture,
+verify lifecycle/config/full starts, derive bounds, archive and restore before
+integration. Counts remain348/449 assessed,101 remaining; WDA36/39.
+
 #### Shiraz geometry and spawner correction after 18bc7712
 
 Two source geometry attributes finish Shiraz Palace, nominal144x96x144 from
