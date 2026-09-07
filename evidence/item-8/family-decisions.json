@@ -24,7 +24,10 @@
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
         "evidence/item-8/sources/mineshafts-code/identities.json": "5e78a733f4198752de93fb640557a87fae13334a92a3fbad422cd33bb5d41127",
-        "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml": "ee344cb26d156e67baa987f193fb44947fa6b3869b80aa16ef2b257370dc1ff1"
+        "evidence/item-6/frozen/config/bettermineshafts-neoforge-1_21.toml": "ee344cb26d156e67baa987f193fb44947fa6b3869b80aa16ef2b257370dc1ff1",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "distinctions": {
         "minecraft:mineshaft": "Separate vanilla generator, registered but suppressed by the frozen Better Mineshafts hook",
@@ -85,6 +88,17 @@
           "value": "Underground mining network with a VerticalEntrance generation component",
           "basis": "Packaged step is underground_structures. BetterMineshaftStructure selects initial Y from the frozen -55 through 30 range and begins generation with VerticalEntrance.",
           "limitation": "Initial Y is not total vertical size. The entrance envelope uses maximum build height and does not prove occupied blocks or a visible surface opening."
+        },
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Union of effective biomes across every registered variant intersected with retained runtime dimension-biome catalog; no other captured dimension has a compatible biome."
+        },
+        "visual_discoverability": {
+          "assessment": "Underground tunnels are generally concealed; VerticalEntrance has vertical-shaft and surface-tunnel generation paths that may provide an entry cue. Their successful exposure depends on terrain and placement.",
+          "basis": "Preserved specialized generator/piece sources, packaged underground generation step and existing placement attribution. Source inference, not measured sight distance or exploration pacing.",
+          "limitation": "Retained starts are not full chunks. No completed-world visibility claim is based on them."
         }
       }
     },
@@ -16758,7 +16772,10 @@
         "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonEggRoomPiece.txt": "65398c079b518df46b8dadbe3e732a0644f9e14b77660a93a111913a9d509790",
         "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonNestPiece.txt": "9a388699755a9be37db49e3177c2bb2f57549e4a49ccd62f4685dade515e7835",
         "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonPiece.txt": "16e179bc5e0ecf12cfbb5ea2c08d41b4fc675ae5595f9612a2b0109d4abd188d",
-        "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonSmallTunnelPiece.txt": "1211ec38e2dd217971d217e795bdd44326e2249f20494e4055b30b6b58a367be"
+        "evidence/item-8/sources/betterdungeons-code/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar/com.yungnickyoung.minecraft.betterdungeons.world.structure.spider_dungeon.piece.SpiderDungeonSmallTunnelPiece.txt": "1211ec38e2dd217971d217e795bdd44326e2249f20494e4055b30b6b58a367be",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
       },
       "custom_components": [
         "SpiderDungeonBigTunnelPiece",
@@ -16829,6 +16846,17 @@
           "value": "Underground dungeon generation",
           "basis": "Packaged step is underground_structures. The generator samples the declared absolute initial Y range 70 through 71 before constructing BigTunnel.",
           "limitation": "Initial Y and generation step do not establish occupied vertical extent, surface exposure or discoverability."
+        },
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "Union of effective biomes across every registered variant intersected with retained runtime dimension-biome catalog; no other captured dimension has a compatible biome."
+        },
+        "visual_discoverability": {
+          "assessment": "Big/small tunnels, nests and egg rooms form underground content; cave or terrain openings may reveal it, but an exterior landmark is not established.",
+          "basis": "Preserved specialized generator/piece sources, packaged underground generation step and existing placement attribution. Source inference, not measured sight distance or exploration pacing.",
+          "limitation": "Retained starts are not full chunks. No completed-world visibility claim is based on them."
         }
       }
     },

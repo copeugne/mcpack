@@ -110,3 +110,20 @@ Decision/test increment: `9e8f032`. Rebuilt inventory SHA-256:
 `3ac3368b6de3d939f9ac78d117eb0397bbe0c2092967b72e71b6d2b4223d13f3`.
 The inventory diff adds only the two variant dispositions, metadata evidence
 identity and updated decision hash. Other family fields remain unchanged.
+
+## Dimension and discoverability attribution
+
+The effective biome union for all13 Better Mineshafts IDs intersects only the
+captured Overworld biome set. These exact catalogs are now directly bound in
+family evidence. VerticalEntrance.postProcess invokes generateVerticalShaft and
+generateSurfaceTunnel. Record the conditional possibility of a surface entry
+cue, while subterranean tunnels remain concealed; no successful visible opening
+or human discovery distance is established by source inspection.
+
+Retained world-bounds indexes90/270/291 and repeated493/659/680 are non-full
+starts (structure_starts or biomes). Their generation envelopes extend toY320
+because the initial entrance uses maximum build height. They are not completed
+physical-height measurements. Four dimension/discoverability attributes across
+this family and Spider Dungeon are integrated; both families' four geometry
+attributes remain open. Reuse the source explanation before interpreting any
+future saved entrance bounding box as occupied geometry.
