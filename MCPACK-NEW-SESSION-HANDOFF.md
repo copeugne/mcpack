@@ -6,6 +6,19 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five WDA ship designs assessed after cde57670
+
+Fifty attributes assess Hind, Corsair, Galley, Typhon and Undead Pirate Ship,
+five roots/22 templates. Source connected envelopes and repeated Galley full
+starts are distinguished. Preserve nested Undead spawner passengers and legacy
+mob gear; source populations are not live counts. Eight focused tests pass.
+No capture/tool addition. Registry277/410, nonregistry40/40, total317/450
+assessed,133 remaining. WDA5/40 assessed. Derivation and exact sources:
+sources/wda-provider-scope/README.md. Quantify the next batch before editing.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+ad560639057b709679115139b5b65772a8565bfc5aa86244efe3ac299060fd9d.
+
 #### Galleon encounter and reward assessment after e50b4b68
 
 Six attributes finish Galleon using existing template, feature, Moonlight,
