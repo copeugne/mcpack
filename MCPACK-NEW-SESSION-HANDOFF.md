@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Seven Seas assessments completed after b4fca803
+
+Ten answers integrate dimension and qualitative discoverability for all five
+Seven Seas vessels. Eight existing descriptions per family are preserved,
+including the missing Small Yacht spawner component and source limitations.
+No new capture, measurement or tool. Direct derivation is recorded in the sources
+README. Six affected tests and builder quality checks pass. Inventory SHA-256:
+ab26067a99bc7d21b7573ec3b76a61bddf98b654f2837fad9cac2907a8f2ebcd.
+
+Retire these five family descriptions. Registry assessment is 92/410;
+nonregistry is 40/40, total 132/450 assessed, 318 remaining. Only the five rows'
+dimension/discoverability and source references changed. Continue remaining
+providers in quantified batches; generic UNKNOWN strings are not new research
+requirements. Final all-family presentation, acceptance, verified backed-up
+history consolidation, PR review and main delivery remain open.
+
 #### Explorify geometry completed using 5bc81f0e
 
 Five targeted ordinary-seed structures now have ten geometry answers integrated.
