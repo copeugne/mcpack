@@ -6,6 +6,16 @@
 
 ### Continuation update - 2026-09-07
 
+Canonical-design reconciliation is delivered through 2cc71537. The next phase is
+supported by all 78 existing family-decision tests passing. Remaining work is
+bounded in provider-scope.md under Remaining Item 8 work: 33 nonregistry records
+represent 40 family assignments across 15 contribution records, 15 exclusions,
+two village-component contributions and one inactive totem candidate. Their
+attributes and final integration remain open. The same section records actual
+UNKNOWN field counts for all 426 working groups. They are bookkeeping gaps, not
+new-experiment counts. Resolve inactive/excluded records and reuse existing
+evidence before considering any new measurement. No new framework was added.
+
 Inventory matches 7aaef93e and reproduces exactly. Canonical-note backlog is zero.
 All 887 roots remain in 426 working coverage groups, with full variants and
 derived attributes unchanged. Next reconcile the 33 nonregistry contributions
