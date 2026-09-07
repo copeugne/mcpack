@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Temple, Bathhouse, Monastery and campsite attribution after 94d13fa8
+
+Forty-six attributes integrate five roots/83 templates. Abandoned Temple and
+Monastery use retained mountainous full-start examples; Bathhouse has a source
+31x31 footprint and36..70 height. Three families assessed. Both campsites have
+eight attributes integrated; their four geometry attributes remain open.
+Next resolve supported whole-camp geometry from existing sources before adding
+measurements. Merchant golem-named template is empty; do not invent an entity.
+Registry295/410, nonregistry40/40, total335/450 assessed,115 remaining;
+WDA23/40 assessed. No new capture/tool. Derivations and commands:
+sources/wda-provider-scope/README.md. Eight focused tests pass.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+3bb272edbb4c9c7213be4a81ce924d2292862b1bc5d5e4c169d92f7b7f1d5b8d.
+
 #### Four mushroom designs and Windmill assessed after 72488ffd
 
 Fifty attributes assess Giant Mushroom, Mushroom House, Mushroom Mines,

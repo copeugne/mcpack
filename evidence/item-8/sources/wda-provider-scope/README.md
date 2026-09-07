@@ -383,3 +383,86 @@ Eight focused tests pass. Semantic comparison changes only these five family
 assessments and direct source identities; biome constraints, membership and
 observations remain unchanged. Inventory SHA-256:
 a5e17f2b481b5091b7d1add14652242bcac38356c8a9624d7dd584dd119f6c19.
+
+## Temple, Bathhouse, Monastery and campsite attribution
+
+Forty-six attributes integrate five roots/83 templates: abandoned_temple,
+bathhouse, monastery, merchant_campsite and illager_campsite. Three families
+are assessed; campsite footprint/vertical size (four attributes) remain open.
+Their eight supported attributes each are integrated now. No new capture/tool.
+Same pinned WDA archive and source catalogs as above, exact structure/<family>/
+template paths and worldgen/structure/<family>.json. Template traces are complete.
+
+All roots are minecraft:jigsaw, WORLD_SURFACE_WG projected, Overworld biome
+compatible, max distance114, ignore_waterlogging and expansion disabled.
+Abandoned offset-2, others0; Bathhouse/Illager depth5, others7. Bathhouse
+beard_box, others beard_thin. Packaged adapt_noise true does not establish
+execution of the WDA custom codec. Empty processors except Bathhouse middle/
+top bathhouse_main, which changes incoming calcite to diorite with probability0.1.
+That rule has no entity, spawner or loot injection.
+
+Abandoned full-start world-bounds observations181/578 repeat one mountainous
+seed6671238423019257953 location in run-a/run-b, chunk7,5. Box
+[15,161,-17,204,290,207] yields190x130x225 by inclusive subtraction. Its temple
+core is31x48x31 but terrain-matching roads greatly enlarge the whole envelope.
+Monastery observations183/580 repeat one location in the same seed, chunk5,8,
+box[51,241,83,80,281,157],30x41x75. These are full start-chunk piece envelopes,
+not occupied/exposed blocks, complete placement of all referenced pieces,
+family-wide extrema or independent samples. Existing observation links remain.
+
+Bathhouse uses one base, middle and top. All are31x31 horizontally, with central
+aligned up_south/down_south connectors at(15,height-1,15)/(15,0,15).
+Base heights are12,11,11,13,6,21; middle17,17,17,22; top13,19,27,20,13,21,21.
+Origins stack at YbaseHeight and YbaseHeight+middleHeight, so nominal complete
+height is36..70. Small spawner pieces fit the architecture. No retained start
+exists; this is a source range, not exposed height or observed generation.
+
+Abandoned illusioner_normal_0 entities0 saves Health32/PersistenceRequired0;
+skeleton_armored_0/1 entities0 save Health20/PersistenceRequired1. All save
+empty hands. Root full-bounds monster spawn override is stray weight1/group1.
+That conditional natural list is separate from authored saved entities; no
+physical spawner blocks occur. Monastery villager_normal_0 and
+iron_golem_normal_0 entities0 save Health20/100, both PersistenceRequired0.
+No authored monster or spawner occurs there; ordinary spawning remains possible.
+
+Bathhouse spawner_0/1/2 block_entities0 select weight5/5/1: Health40 husk with
+legacy invisibility and potion passenger, Health20 skeleton, cold frog carrying
+Health20 PowerIII-bow skeleton. Full NBT remains in source spawner_blocks.
+Paintings/item frames/armor stands are decoration and fixed items, not enemies.
+Middle3 entities2/3/4 are tropical fish Health3. Entities8 is area_effect_cloud,
+Radius5,Duration200000390, legacy Effects Id10/11,Amplifier1,Duration200.
+Effective conversion and full cloud lifetime are not asserted.
+
+Bathhouse base3 block_entities24 has a five-page writable book of golden-themed
+sayings; top0 block_entities4 a three-page written book about a steam machine.
+Middle3 block_entities9 saves nine splash potions named Bathhouse's Curse,
+weakness plus legacy effects Id4/A3,Id9/A5,Id33/A1,Duration1200. Source contents
+are not proof of dispenser activation or working potion effects. Item frames
+include food/potions and middle3 entities19 enchanted_golden_apple; middle3
+armor stand entities16 has diamond helmet. These are separate from table loot.
+Other selected templates in this batch have no nonempty fixed Items/Book payload.
+
+Merchant villager_normal_0 entities0 saves Health20/PersistenceRequired0. Its
+iron_golem_normal_0 template is1x2x1, with only one jigsaw and no saved entities
+or spawner. Do not invent an iron golem from the filename. Villagers pool weights
+are1 for that empty named piece and2 for villager; incoming connector names still
+control compatibility. Illager enemies pool weights1/3/2 select persistent
+vindicator Health24/iron axe, pillager Health24/crossbow, and pillager
+Health50/MultishotI QuickChargeII crossbow. Deco0 entities0 adds persistent
+Health20 zombie villager. Neither campsite has physical spawner blocks.
+
+Campsite geometry remains a specific four-attribute gap. Existing sources show
+15-block street modules with terrain_matching projection and rigid tents,
+branching under root depths7/5. No retained start is linked. Merchant starts
+street4_main15x6x15, Illager street6_main15x7x15. Single-street or single-tent
+examples would not establish a complete camp envelope, so they are not marked
+assessed. Resolve a supported whole-layout approximation using the existing
+sources before considering any additional measurement.
+
+Rebuild and focused validation use the commands above. Exact source loot
+pointers and full spawner NBT remain in pool-traces-content; table IDs and
+family-specific descriptive attribution are integrated into the inventory.
+
+Eight focused tests pass. Only the five intended families and direct source
+identities change. Inventory SHA-256:
+3bb272edbb4c9c7213be4a81ce924d2292862b1bc5d5e4c169d92f7b7f1d5b8d.
