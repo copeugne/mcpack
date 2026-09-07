@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Enchanting tower, haunted manor and labyrinth component decisions are resolved
+from existing source contents and graphs, preserving default-pool selection.
+The manor has minecraft versus idas connector-name mismatches between its first
+and receiving pieces; pool reachability is not successful assembly. Preserve this
+defect for effective placement attributes without repairing the baseline. Four
+focused IDAS checks and scoped code checks pass. Canonical backlog: 31, all IDAS.
+Inventory refresh follows. Attributes, nonregistry and final delivery remain open.
+
 Inventory matches 3decfe2b and reproduces exactly. Only mines and pyramid
 grouping decisions and input identity change. Canonical backlog: 34, all IDAS;
 426 working groups retain all 887 roots and full variants. Continue remaining
