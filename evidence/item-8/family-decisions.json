@@ -17396,7 +17396,7 @@
       "structure_ids": [
         "betteroceanmonuments:ocean_monument"
       ],
-      "rationale": "An ocean-monument assembly with rooms and other monument sections as components. Rooms, pieces, pools and alternative templates are not additional families. This root assignment does not establish effective placement, replacement behavior or completed gameplay attributes.",
+      "rationale": "One ocean-monument assembly with rooms, mob connectors, kelp, shrines and monument sections as components. Its 57 traced templates have no missing components. The required attributes below distinguish authored content, natural spawning, saved assembly geometry and variable support extensions. Components and alternative templates are not additional families.",
       "start_pool": "betteroceanmonuments:starts",
       "generation_settings": {
         "type": "yungsapi:yung_jigsaw",
@@ -17414,7 +17414,87 @@
       "evidence": {
         "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941"
+        "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/ocean-monument-provider/identities.json": "8eea5e78334604ab4ff0f9e02bdf127030a4a5bc07a418bc9461ff835c03bab2",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c"
+      },
+      "attributes": {
+        "dimension": {
+          "value": [
+            "minecraft:overworld"
+          ],
+          "basis": "All six effective biomes intersect the captured Overworld membership and no other captured dimension. Biome constraints remain separately derived from the effective structure tag."
+        },
+        "approximate_footprint": {
+          "observed_example_xz_blocks": [
+            126,
+            115
+          ],
+          "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+          "observation_indices": [
+            280,
+            669
+          ],
+          "basis": "Two independent runs of the ocean-heavy seed record the same full start at chunk2,9. Inclusive envelope [-31,16,57,94,79,171] gives126x64x115. This is an illustrative saved assembly envelope, including padding, not occupied volume or a family-wide extremum."
+        },
+        "approximate_vertical_size": {
+          "observed_example_y_blocks": 64,
+          "artifact": "evidence/item-8/sources/world-bounds.json.gz",
+          "observation_indices": [
+            280,
+            669
+          ],
+          "extension": "LegProcessor replaces blue stained glass with prismarine bricks and writes downward through air or nonempty fluid until solid terrain or the build-height boundary. This terrain-dependent extension can extend below saved piece bounds. Total occupied height is not asserted.",
+          "basis": "Full-start inclusive Y16..79 is64. LegProcessor.processBlock offsets53..197 establish the separate support path."
+        },
+        "intended_hostility": {
+          "value": "Hostile aquatic monument with authored elder-guardian encounters and conditional natural guardian spawning.",
+          "basis": "Matching elder-guardian component connectors and the explicit piece-bounded guardian monster override establish intent. Axolotls are separate authored aquatic residents; tridents are objects. No encounter difficulty or population measurement is claimed."
+        },
+        "mob_source": {
+          "authored": "The mobs pool contains elder_guardian, elder_guardian_heart_of_sea, guardian and axolotl templates. Each has one entity. Matching connector targets select elder guardians in battle/side rooms, the heart-of-the-sea elder guardian in start, and axolotls in maze_chamber_battle_room_1.",
+          "selection_limit": "The four pool entries have equal weights but distinct connector names. No guardian target occurs in the57 traced templates, so the pool-listed regular guardian is not claimed as an authored placed resident.",
+          "natural_spawn_override": {
+            "category": "monster",
+            "bounding_box": "piece",
+            "entity": "minecraft:guardian",
+            "weight": 1,
+            "minCount": 1,
+            "maxCount": 3
+          },
+          "scope": "Authored source possibilities and conditional natural-spawn settings, not realized live populations."
+        },
+        "loot_table_source": {
+          "table": "betteroceanmonuments:chests/upper_side_chamber",
+          "template_reference": "betteroceanmonuments:start /block_entities/523/nbt/LootTable",
+          "packaged_table_contents": "Nautilus shells, prismarine shards and prismarine crystals. The57 traced templates have no nonempty fixed container Items lists.",
+          "other_authored_rewards": "lower_middle_chamber_1/2/3 each encode a trident entity with item.id=minecraft:trident and pickup=1. mobs/elder_guardian_heart_of_sea encodes one heart_of_the_sea in HandItems[0], HandDropChances[0]=1.0. These are authored data, not verified pickups or drops.",
+          "salvage": "start includes18 gold blocks,31 wet sponges and32 orange stained-glass markers. Parthenon alternatives contain wet sponges. RandomSpongeProcessor replaces each orange marker with wet sponge when nextFloat<0.75, otherwise water. Source counts/probability are not observed yields.",
+          "retained_behavior": "PersistentTridentMixin conditionally cancels despawn for a server-side trident with its exact authored owner marker inside a valid monument piece. This is not a general persistence guarantee.",
+          "scope": "Named source table, entity rewards and salvage. Realized quantities and retained global loot transformations are not measured here."
+        },
+        "generated_spawners": {
+          "ordinary_spawner_blocks": false,
+          "trial_spawner_blocks": false,
+          "basis": "No minecraft:spawner or minecraft:trial_spawner states or spawner block entities in the57 traced templates. The main processor list uses ten block-decoration, water and support processors; none creates a spawner. Entities are authored separately from block spawners."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "Elder guardians are authored entity components attached through matching jigsaw targets. The heart-of-the-sea variant is a distinct component, not an extra family.",
+          "natural": "Regular guardians are supplied by the piece-bounded monster spawn override, conditional on effective spawning conditions.",
+          "scope": "Source attribution does not establish how many entities survive generation or are present during play. The unused regular-guardian connector name is not proof of an authored spawn."
+        },
+        "visual_discoverability": {
+          "value": "Large ocean monument with chamber, dome, ring, parthenon and outside-shrine architecture; underwater portions require aquatic visibility, while upper portions may rise above sea level.",
+          "basis": "Source template sections and the full-start example spanningY16..79 support this description. AirProcessor converts ordinary AIR below sea level to water; it preserves AIR at or above sea level. The root is included in minecraft:on_ocean_explorer_maps.",
+          "limitation": "Map-tag inclusion is source eligibility, not a verified trade or map acquisition. Visibility distance, exposed area and human detection are not measured."
+        },
+        "underground_surface_classification": {
+          "value": "Ocean structure with submerged chambers and potentially above-water upper sections, plus seabed supports.",
+          "basis": "Effective deep-ocean biomes, surface_structures generation step, absolute anchor interval54..64 and exampleY16..79. AirProcessor floods ordinary AIR below sea level; LegProcessor extends support columns downward. The anchor is not the structure floor."
+        }
       }
     },
     {

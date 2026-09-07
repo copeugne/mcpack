@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+
+#### Ocean Monument assessed after 573234a7
+
+Ten attributes finish Better Ocean Monument using57 traced templates, six
+effective Overworld biomes, existing processor sources and full-start examples
+280/669 (126x64x115). Downward support extensions remain separate. Matching mob
+connectors distinguish authored elder guardians/axolotls from the pool-listed
+regular guardian without a matching target; natural guardian override remains.
+Chest table, trident objects, heart-of-the-sea entity data and salvage are scoped
+source attributions, not realized reward/population claims. Exact derivation:
+evidence/item-8/sources/ocean-monument-provider/README.md, Ocean Monument family
+assessment. No new runtime or tooling. All85 focused tests pass (58.32s).
+Inventory changes only this family and input identity. Registry319/408,
+nonregistry40/40,total359/448 assessed,89 remain. Next quantify another remaining
+YUNG batch before inspection; Desert Temple, Fortress, Jungle Temple and
+Stronghold remain. Final canonical integration, acceptance, verified backup/
+history preparation and PR review/main delivery remain open. Inventory SHA-256:
+67625e119061f112b7ce25288674529bdbd98839a7b4c4a74fd4f66d0cc9a839.
+
+
 #### Zombie Dungeon geometry finished after 5cea5861
 
 Declared seed42 one-target/81-requested-chunk capture passed readiness, correlated
