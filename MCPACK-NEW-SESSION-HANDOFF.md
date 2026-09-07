@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Remaining-provider dimensions integrated after 5ca62565
+
+54 existing dimension assessments integrated: Repurposed17, IDAS37. Exact builder
+biome-compatible maps and observed lists preserved. No new capture/tool;85 focused
+checks pass (60.09s). Only54 dimensions/group evidence/input identity changed.
+Lumber camp excluded: three variants reference missing required biome tags
+idas:has_structure/bopmahogany_biomes,bygmahogany_biomes,bygredwood_biomes.
+Their UNKNOWN state is unchanged and requires disposition before dimension
+acceptance. Desert-camp bygwindswept variant has a resolved empty overlap, which
+is not an observed generation failure. Details in remaining-provider-dimensions
+README under evidence/item-8/sources. Total393/448 assessed;55 families/480 entries
+remain: IDAS38/343,Repurposed17/137. Quantify next family batch before starting.
+Final canonical integration,acceptance,backup/history and PR/review/main stay open.
+Inventory SHA-256: 03e810142a4abb5cdb0a62d9e14082b7af2ff22f7b4cf906821c804501cb7ea2.
+
+
 #### Mansion assessment completed after a791fda5
 
 Seven remaining attributes integrated from pinned vanilla classes, existing
