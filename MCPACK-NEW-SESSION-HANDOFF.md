@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd sulphuric cave assessed after 154238c8
+
+Nine remaining attributes integrated from retained root and concrete SulphuricCavePiece
+(which extends BasePiece, not CavePiece), existing BlockFixer assessment and one
+full-start record: mountainous run-b line6358,chunk81,2,size45x30x45. Saved envelope
+formula and limits are explicit; water-following vent columns and neighboring
+crystal/tube-worm blocks are not bounded by the main cavern box. No direct authored
+entities/spawners/container loot. Subsurface center-depth rule and water level are
+recorded without claiming a sealed roof or guaranteed entrance. No new runtime/tool.
+All85 focused checks pass (59.17s); only sulphuric cave/input identity changed.
+Registry339/408,nonregistry40/40,total379/448 assessed;69 families and617 required
+attribute slots remain: IDAS38/380,Repurposed17/154,vanilla13/81,BetterEnd1/2
+(village footprint/height). Next quantify the village two-attribute batch and reuse
+retained jigsaw/template evidence before determining whether new observation is
+necessary. Existing gap runner is Overworld-only. Final integration, acceptance,
+backup/history preparation and PR/review/main delivery remain open.
+Inventory SHA-256: e8c13df4936878fd6c6df1f83c11a6c0d7cbf53e23d1645f8578f15fc005da6d.
+
+
 #### BetterEnd small island assessed after 251a2629
 
 Nine remaining attributes integrated using retained root/IslandGeometry/VoxelPiece,

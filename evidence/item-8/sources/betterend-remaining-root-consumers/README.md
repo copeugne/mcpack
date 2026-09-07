@@ -276,3 +276,49 @@ The class/JAR hashes are recorded in the family's processor_inspection field
 ```sh
 downloads/item2/temurin/extracted/jdk-21.0.12.1+1/bin/javap -p -c -classpath downloads/item3/candidates/bclib-21.0.24.jar org.betterx.bclib.api.v2.levelgen.structures.StructureWorld
 ```
+
+
+## Sulphuric cave assessment
+
+Nine remaining attributes use retained EndSulphuricCaveStructure and its concrete
+SulphuricCavePiece (which extends BasePiece, not CavePiece), the existing shared
+base/helper assessment, and one full-start world-bounds observation. No new
+capture or measurement tool is needed. Source manifests are bound in the family.
+
+At local X/Z4..12 the root samples WORLD_SURFACE_WG height H and rejects H<10.
+It selects radius R from nominal10..30 and centerY as
+H-floor(1.3*R+5)-nextInt(max(1,floor(R))); centerY<10 also rejects placement.
+The piece sets waterLevel=Cy+randRange(floor(0.8*R),floor(R)). Its interior test
+uses dx*dx+dz*dz+(1.6*dy)^2 against the square of
+0.75*R+0.25*R*noise(x*0.1,y*0.1,z*0.1). Replaceable interior becomes water below
+waterLevel and cave air otherwise. A further5-unit shell selects sulphuric rock
+or brimstone using noise and existing-block predicates. Active brimstone adjacent
+to water can place waterlogged sulphur-crystal blocks in neighboring positions.
+
+The retained full-start example is run-b/mountainous/chunks.jsonl line6358,
+seed6671238423019257953, chunk81,2, with envelope
+[1282,17,22,1326,46,66], size45x30x45. The existing world-bounds artifact supplies
+this observation. It is an example, not a frequency or typical-size estimate.
+With A=floor(R)+5, the saved box uses X/Z center plus/minus A and Y endpoints
+floor(Cy-A/1.6)-1 through floor(Cy+A/1.6)+1. The main carving loop excludes the
+extra one-block Y margins and clamps to build height. These bounds describe the
+cavern generation envelope, not exact occupied geometry or all resulting effects.
+
+Vent selection is empty unless nextInt(4)==0; otherwise5..20 candidate offsets
+are selected from floor(2*nextGaussian+0.5) independently for X/Z. Placement still
+filters candidate positions against the current chunk/body XZ region and local
+radius/terrain predicates. A vent searches downward through fluid/water plants,
+builds sulphuric rock with possible neighboring tube-worm blocks, places a
+hydrothermal vent, then replaces water upward with bubble-column blocks and
+schedules their ticks. The water-following path uses build-height checks rather
+than the saved cavern's Y endpoints. Do not call that box a bound on all vent
+writes. Neighbor crystal/tube-worm writes are also explicit limitations.
+
+There is no direct entity creation, spawner configuration or container-loot
+assignment in the root/piece. Tube worms are blocks in this path. BlockFixer is
+the already assessed block-repair/fluid-tick helper retained under
+betterend-lake-helpers; this does not establish absence of block behavior,
+natural mobs or external injections. Empty spawn overrides leave those possible.
+This is a subsurface water-filled natural formation, with mineral and vent cues
+when entered or exposed. Its depth rule does not prove a sealed roof or guarantee
+an entrance; no discovery distance or exploration pacing is claimed.
