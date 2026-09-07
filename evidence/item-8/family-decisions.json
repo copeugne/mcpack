@@ -69185,7 +69185,7 @@
       "structure_ids": [
         "supplementaries:road_sign"
       ],
-      "rationale": "One road-sign design. The frozen common config and resolved dynamic biome tag remain relevant; the custom generator uses min_y/max_y. Its strongholds generation step does not establish that a road sign is underground. Effective custom generation and remaining attributes require resolution.",
+      "rationale": "One custom-generated road-sign landmark. Its single template is a jigsaw trigger envelope, not the visible sign. The feature creates ground/post material and a deferred callback adds destination signs or a notice board. These are components of one family. Required source-based attributes and retained start-envelope observations are integrated; callback success, visibility distance and live world behavior are not inferred.",
       "variants": {
         "supplementaries:road_sign": {
           "definition": {
@@ -69206,7 +69206,70 @@
         "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
         "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
         "evidence/item-6/frozen/config/supplementaries-common.toml": "14210291891759b831951eba24c65985ed5bd27a7d09b6383aeb9fd3e8f1bc8c",
-        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225"
+        "evidence/item-6/frozen/config/cristellib/supplementaries/structure_toggle_config.json5": "1715fab1db080ca0bd264dce0cb2f8de8218d6e2989d085b0a3cb72b0f8c6225",
+        "evidence/item-8/sources/templates-redacted.json.gz": "b4a2ed8ff0d16ff06c224119f623f248e75e9c8c838fbf2455bf37936c6d3705",
+        "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b",
+        "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
+        "evidence/item-8/sources/supplementaries-generation/identities.json": "0eb64c666c0db4bd45091038bb2b3d622a1e57f896d31fe0df1279f2ff357e5d",
+        "evidence/item-8/sources/supplementaries-road-sign-callback/identities.json": "a6a99e646dd7b65793defda3168306b20e1a70a901b7d37e024d4aea3f6f5194"
+      },
+      "attributes": {
+        "dimension": {
+          "biome_compatible": [
+            "minecraft:overworld"
+          ],
+          "observed": [
+            "minecraft:overworld"
+          ],
+          "basis": "Resolved root biome set intersects captured Overworld source. RoadSignStructure additionally requires possible-biome overlap with its destination-structure biome cache. Preserved full start proves Overworld eligibility in the frozen stack, not guaranteed occurrence at every eligible site."
+        },
+        "approximate_footprint": {
+          "observed_piece_envelope_xz_blocks": [
+            7,
+            7
+          ],
+          "feature_ground_patch_xz_blocks": [
+            5,
+            5
+          ],
+          "basis": "world-bounds indexes374/754 are repeated full-chunk observations of the same start, not independent sites;407/787 are one other planned-only start. All piece envelopes are7x7x7. RoadSignFeature.place writes its centered ground patch over X/Z -2..2 excluding corners. Piece reservation is not occupied footprint."
+        },
+        "approximate_vertical_size": {
+          "observed_piece_envelope_y_blocks": 7,
+          "source_feature_working_height_blocks": 6,
+          "basis": "Template is a7x7x7 envelope with only two jigsaw blocks. Feature.place uses base=feature origin below1, writes ground at base-1/base and temporary/post/generator positions through base+4, six levels. Callback replaces the generator and adds nearby signs/lighting. Neither box height nor successful full-chunk generation proves callback completion or exposed height."
+        },
+        "intended_hostility": {
+          "value": "Navigation landmark without authored enemies",
+          "basis": "RoadSignFeature and its callback place ground, post, sign/lighting or notice board. No mob or spawner writer exists in this path. Fallback book text about monsters does not create or verify monsters."
+        },
+        "mob_source": {
+          "authored": "No saved template entities or feature/callback entity-spawn path.",
+          "natural": "Root spawn_overrides is empty. Ordinary biome and world spawning remains conditional."
+        },
+        "loot_table_source": {
+          "packaged_tables": [],
+          "fixed_payload": "RoadSignFeature.applyPostProcess empty-destination branch creates a writable book with text nothing here but monsters followed by newlines and installs it on a notice board at callback position below2. This is generated fixed content, not a loot-table reference or proof of recovery.",
+          "navigation": "Nonempty results produce pointing signs; distance text is enabled in the frozen config. Early-exit lookup is true, so nearest-destination semantics are not guaranteed.",
+          "basis": "Preserved template, configured feature, RoadSignFeature.applyPostProcess and BlockGeneratorBlockTile.tick."
+        },
+        "generated_spawners": {
+          "value": "None",
+          "basis": "No ordinary/trial spawner in the template, configured feature or callback. BLOCK_GENERATOR is a deferred sign-construction helper, not a mob spawner."
+        },
+        "authored_or_natural_enemies": {
+          "authored": "None identified in the retained complete sign-generation path.",
+          "natural": "Conditional ordinary world spawning only; no structure-specific override. Book wording is authored flavor text, not enemy evidence."
+        },
+        "visual_discoverability": {
+          "source_form": "Small ground patch with a wood/stone post, directional signs and optional lantern/candle details. Empty destination result creates a notice board instead.",
+          "basis": "Configured spruce post/oak sign and RoadSignFeature callback. Surface placement supports nearby navigation cues; no measured sight distance or pacing. A full start does not prove a populated sign or successful lookup."
+        },
+        "underground_surface_classification": {
+          "value": "Surface landmark on a locally near-level, non-fluid terrain sample.",
+          "basis": "RoadSignStructure.getSuitablePosition samples WORLD_SURFACE_WG at chunk center and four +/-2 corners; rejects center heights outside40..105 or below sea level, fluid corner samples and sampled height spread greater than1, then uses Math.round(sum/5.0f) plus1. The strongholds step label does not mean underground.",
+          "lifecycle": "Feature saves a BlockGeneratorBlockTile configuration. Its asynchronous destination lookup must finish before postprocessing; missing config or failed lookup can remove the generator. That state is not measured by the retained structure-piece bounds."
+        }
       }
     },
     {
