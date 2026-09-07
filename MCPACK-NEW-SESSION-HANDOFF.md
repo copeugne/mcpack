@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Witches treestump now has source-based interpretations for its required fields:
+29 by 25 nominal footprint, height 20, surface placement, qualitative woodland
+visibility, witch/cat spawn overrides, two loot-bearing chests and no packaged
+spawner blocks. Resolved biomes remain unchanged. Frozen toggle and common-set
+placement are bound as evidence. Focused IDAS and scoped checks pass. No new
+measurement was added; world occurrence and detection distance remain unobserved.
+Inventory refresh follows. This increment does not close the full Item 8 gate.
+
 User clarification: do not spend time on cosmetic UNKNOWN-to-not-applicable
 cleanup. Existing inactive/excluded dispositions suffice; no such edits were
 made. Quantify each substantive increment before starting it. Current scope is
