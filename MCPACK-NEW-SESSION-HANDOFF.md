@@ -7,6 +7,26 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd bridge assessed after 4b5ed54b
+
+Nine attributes integrated from retained root/piece code, packaged root and five
+full-start records representing four layouts. Ocean-heavy chunk98,15 repeats
+across runs A/B. Saved envelopes include X/Z endpoint margins6 and Y margins
+-12/+6; they are not occupied footprint/deck thickness. The surface-anchored deck,
+railings and supports have no direct entity, spawner or container-loot authoring;
+empty root overrides leave natural spawning possible. Initial stub Y0 is not deck
+height. Exact examples, sources and limits are integrated in the authoritative
+attributes and betterend-remaining-root-consumers README. No new runtime/tool.
+All85 focused checks pass (59.42s); only bridge/input identity changed.
+Registry334/408,nonregistry40/40,total374/448 assessed;74 families and669 explicit
+attribute slots remain: IDAS38/380slots,Repurposed17/154,vanilla13/81,BetterEnd6/54.
+BetterEnd remaining: end_village,eternal_portal,giant_ice_star,
+giant_mossy_glowshroom,small_island,sulphuric_cave. Each has nine attributes left.
+Quantify the next batch and reuse retained source/template evidence. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256: cc91679ad241b97e8a787f8925894ce02995b239f93c5fedd92deb62675806a9.
+
+
 #### BetterEnd mountain geometry assessed after bbaca20a
 
 Two required size attributes integrated from existing root/piece code and six
