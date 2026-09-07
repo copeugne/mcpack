@@ -34,6 +34,18 @@ SHA-256: 8f2913ba3474ba2f2017eb9fbeb1150d19a0b25c414497e1b4bbe880d2543541.
 The generated change preserves registry rows and all previous nonregistry fields.
 These source-scoped descriptions do not assert complete retained-stack effects.
 
+Direct descriptive assessment now covers all eleven required attributes for the
+YUNG bridge and ten Extras families. Integrated 42 existing-source placement,
+visual, intended-hostility and authored-enemy descriptions. Nominal geometry stays
+separate from terrain-dependent supports; natural population counts and measured
+visibility are not new requirements. Two affected provider tests pass. Inventory
+matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-nonregistry-descriptions.json`.
+SHA-256: e92f3258a68b68e24f2e47b64b7cb592c6a7eedb811da677c3e9f4aa7b54e675.
+Registry families and prior attributes are preserved. The next nonregistry direct
+assessment covers 29 families: three Better End Island, four Quark, eighteen
+BetterEnd, two BOP, one scarecrow and one urn cache. Whole-stack reconciliation
+and final acceptance remain necessary; these eleven are not declared Item 8 complete.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
