@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Galleon placement and geometry after 00a1662b
+
+Four attributes integrate source geometry19x37x47, dimension compatibility
+and sea-level placement. Seventeen templates inspected; compatible interior
+components fit the main envelope. Back02 connector-name mismatch is preserved
+in sources/supplementaries-generation/README.md. No retained start exists and
+no runtime capture/tool was added. Six attributes remain for Galleon, so total
+stays311/450 assessed,139 remaining. Next: integrate saved ravager/iron golem,
+feature mobs and boats, Moonlight spawn boxes, fixed/table rewards and urn
+break creatures using existing sources. Existing urn-reward-behavior/README.md
+already resolves treasure-urn reward and break-spawn logic; reuse it. Do not
+confuse four markers with spawner blocks or boat attempts with spawn counts.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+e330e017db912e263e9c9750835ca86c4605a3fa43cef9483a738ee848a7e4a3.
+
 #### Supplementaries Road Sign assessed after dcf03749
 
 Ten attributes integrate one root/trigger template and the retained feature/
