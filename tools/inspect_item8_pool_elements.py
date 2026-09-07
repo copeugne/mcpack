@@ -231,6 +231,11 @@ GENERATION_PREFIXES = (
     "net/mehvahdjukaar/supplementaries/configs/CommonConfigs$Functional",
 )
 CLASSES: tuple[str, ...] = (
+    "net/minecraft/world/level/biome/BiomeGenerationSettings.class",
+    "net/minecraft/world/level/levelgen/feature/SimpleBlockFeature.class",
+    "net/minecraft/world/level/levelgen/placement/BlockPredicateFilter.class",
+
+    "net/neoforged/neoforge/common/Tags$Biomes.class",
     "net/mehvahdjukaar/amendments/reg/ModRegistry.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler$GraveServerModelLoader.class",
     "com/b1n_ry/yigd/util/YigdResourceHandler$GraveyardDataLoader.class",
@@ -4655,6 +4660,7 @@ def main() -> None:  # noqa: C901, PLR0912, PLR0915 - explicit verified archive 
                     "org/violetmoon/quark/content/world/gen/ObsidianSpikeGenerator.class",
                     "org/violetmoon/quark/base/proxy/CommonProxy.class",
                     "org/violetmoon/zetaimplforge/module/ModFileScanDataModuleFinder.class",
+                    "org/violetmoon/quark/content/world/module/FairyRingsModule.class",
                     "org/violetmoon/quark/content/world/module/MonsterBoxModule.class",
                     "org/violetmoon/quark/content/world/block/MonsterBoxBlock.class",
                     "org/violetmoon/quark/content/world/block/be/MonsterBoxBlockEntity.class",

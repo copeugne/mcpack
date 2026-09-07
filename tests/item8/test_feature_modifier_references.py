@@ -1197,3 +1197,32 @@ def test_better_end_island_template_links_cover_catalog_without_counting_positio
             "sha256": row["sha256"], "nominal_xyz_blocks": document["size"],
             "entities": document["entities"], "block_entities": document["block_entities"],
         }
+
+
+def test_fairy_ring_packaged_flower_delegates() -> None:
+    """Preserve the complete packaged flower set behind the direct delegate bound."""
+    raw = Path("evidence/item-8/sources/packaged-json-redacted.json.gz").read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == (
+        "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd")
+    catalog = cast("dict[str, JsonValue]", json.loads(gzip.decompress(raw)))
+    flowers: list[dict[str, JsonValue]] = []
+    for row in cast("list[dict[str, JsonValue]]", catalog["resources"]):
+        pending: list[JsonValue] = [row["document"]]
+        while pending:
+            value = pending.pop()
+            if isinstance(value, dict):
+                if value.get("type") == "minecraft:flower":
+                    flowers.append(value)
+                pending.extend(value.values())
+            elif isinstance(value, list):
+                pending.extend(value)
+    assert len(flowers) == 76
+    for flower in flowers:
+        config = cast("dict[str, JsonValue]", flower["config"])
+        delegate = cast("dict[str, JsonValue]", config["feature"])
+        feature = cast("dict[str, JsonValue]", delegate["feature"])
+        assert feature["type"] == "minecraft:simple_block"
+        assert set(cast("dict[str, JsonValue]", feature["config"])) == {"to_place"}
+        placement = cast("list[dict[str, JsonValue]]", delegate["placement"])
+        assert len(placement) == 1
+        assert placement[0]["type"] == "minecraft:block_predicate_filter"

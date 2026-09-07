@@ -14,13 +14,13 @@ population is 410 candidate registry families plus 40 nonregistry families. Fift
 inactive registry groups and the excluded cloud contribution retain their existing
 dispositions and are not an attribute-filling backlog.
 
-Established facts awaiting integration:
+Established-fact integration batches (first two now finished):
 
 1. Four nonregistry families (YUNG bridge and three Better End Island families)
    already contain five direct encounter attributes each in direct_encounter_content.
-   Integrate these 20 values, preserving their source scope and limitations.
+   Integrated these 20 values, preserving their source scope and limitations.
 2. Ten YUNG Extras families already contain template mob, loot and spawner inputs
-   in packaged_content. Integrate these 30 values, including the desert well's
+   in packaged_content. Integrated these 30 values, including the desert well's
    separately recorded processor loot sources. Empty template lists do not prove
    absence of generator additions. These two content batches concern 14 families
    and 50 existing values, not 14 new investigations.
@@ -28,11 +28,141 @@ Established facts awaiting integration:
    alongside registry families, preserving their contribution evidence and keeping
    components/exclusions separate. Their identities are settled; this is integration.
 
+The two content batches pass their three existing provider-scope tests. The inventory
+matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nonregistry-direct-content.json`.
+SHA-256: 8f2913ba3474ba2f2017eb9fbeb1150d19a0b25c414497e1b4bbe880d2543541.
+The generated change preserves registry rows and all previous nonregistry fields.
+These source-scoped descriptions do not assert complete retained-stack effects.
+
+Direct descriptive assessment now covers all eleven required attributes for the
+YUNG bridge and ten Extras families. Integrated 42 existing-source placement,
+visual, intended-hostility and authored-enemy descriptions. Nominal geometry stays
+separate from terrain-dependent supports; natural population counts and measured
+visibility are not new requirements. Two affected provider tests pass. Inventory
+matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-yungs-nonregistry-descriptions.json`.
+SHA-256: e92f3258a68b68e24f2e47b64b7cb592c6a7eedb811da677c3e9f4aa7b54e675.
+Registry families and prior attributes are preserved. The next nonregistry direct
+assessment covers 29 families: three Better End Island, four Quark, eighteen
+BetterEnd, two BOP, one scarecrow and one urn cache. Whole-stack reconciliation
+and final acceptance remain necessary; these eleven are not declared Item 8 complete.
+
+Better End Island direct assessment now covers three more families. Integrated
+11 existing dimension, packaged-biome-route, placement and visual answers, and
+added the arena's conservative 103 by 103 nominal horizontal envelope from the
+recorded radius-42 layout and 19-wide components. Retain existing component sizes
+and observation limitations. The affected provider test passes; registry rows and
+other nonregistry contributions are unchanged. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-descriptions.json`.
+SHA-256: ca92198bb3f03658d26bbda013dcca3bf61cb415327bc1fefe67395905464262.
+
+Retire supported, integrated answers for the eleven YUNG bridge/Extras families
+and these three Better End Island families from the working assessment queue.
+Do not repeat those requirements without a relevant contradiction or change.
+Fourteen nonregistry families have now been assessed; 26 await direct assessment.
+The arena vertical-size question is now resolved and retired. For the recorded
+podium portalLocation Y=P, full podium spans P-5..P+21, bottom-only spans P-5..P+5,
+and paired spikes span 3..138. The attribute records their combined inclusive
+height formulas and the P=65 fallback example (136 blocks), without claiming a
+universal terrain height or observed occupied extent.
+
+The remaining Better End Island biome question is resolved and retired for the
+frozen packaged direct-consumer path. A complete hash-verified inspection of
+retained/platform archives and nested JARs found 16 class references to Fabric's
+biome modification API/implementation owners, all internal to its biome module.
+The captured module registers the codec and dispatches caller records from an
+initially empty list; no external direct consumer is present. No reflective or
+dynamic registration is evidenced; a demonstrated registration would reopen the
+disposition. The three biome attributes now bind this conclusion alongside the
+existing additive Zeta resolution and separate lifecycle scope.
+
+One focused check was added to the existing Fabric test because the prior capture
+proved only dispatcher behavior, not whether retained callers populated its list.
+The exact inspection logic is committed there; no new framework, source capture
+or runtime measurement was added. Test: 1 passed, 44 deselected. Scoped Ruff and
+Basedpyright pass. The evidence derivation and command are in
+`evidence/item-8/sources/fabric-biome-modifier/README.md`.
+Inventory matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-biome-resolution.json`.
+SHA-256: fc06c640748347fafd2ba1414c8b26462522363505a355d67513ead11f203c75.
+
+Fourteen nonregistry families are now assessed with no specific unanswered
+mandatory claims carried forward from those passes. Retire their supported
+requirements; do not repeat them without changed or contradictory evidence.
+Twenty-six nonregistry families remain unassessed. Final cross-record consistency,
+identity, acceptance, PR review and delivery checks remain separate.
+
+Quark assessment covers four more families. Retire the supported answers for
+spiral_spire, monster_box and nether_obsidian_spike. Their source/configuration
+bindings, direct geometry, authored encounters, spawner distinctions, loot sources
+and qualitative discovery/placement descriptions are already recorded. Natural
+population counts and positive live encounters are not required to repeat those
+answers. The Nether spike loot attribute now also preserves the three relevant
+packaged Loot Integrations definitions and distinguishes positive source selection
+from the zero-weight reference. The existing selected-loot-source test passes;
+no new measurement or test framework was added. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-quark-assessment.json`.
+SHA-256: 3ac533a2dcfe3ba5dc97b315c72984b76203aad353d0baf2c52933fae7a93537.
+
+Fairy Ring assessment is resolved; all three former questions below are retired:
+
+- dimension and configured ore reward are resolved and retired. The verbose
+  FairyRingsModule capture confirms Config fields (including explicit Ores name),
+  LoadEvent setup/configChanged methods and world-only module annotation. The
+  retained module-construction log, shared Zeta mapping/refresh evidence and true
+  category/module toggles establish the initial Overworld allowlist and callback
+  binding. The callback resolves the frozen/default emerald and diamond ore inputs.
+  This is a source/configuration/log derivation, not a field dump or observed ring.
+- biome_constraints is resolved and retired: 41 forest and 27 plains registered
+  biomes, one overlap, 26 plains-only after forest priority. Existing merged tags
+  resolve without missing required members or unresolved references. A single
+  NeoForge Tags$Biomes capture was needed because the retained generator named
+  only the field, not its key. It proves IS_PLAINS is c:is_plains. The existing
+  extractor gained only that class allowlist entry; no new tool or measurement.
+- delegated flower geometry/content is resolved and retired. Fairy Ring executes
+  the inner placed feature, not the outer patch. The whole packaged catalog's
+  76 flower objects all delegate to simple_block with predicate-only placement.
+  Three vanilla captures bind Feature.FLOWER selection and direct placement.
+  Double plants can extend one block upward; combined nominal geometry is now
+  7x53x7 including the buried ore, not visible height. No entity, container-loot
+  or physical-spawner operation is added by the delegate. A possible wither-rose
+  state is an environmental hazard, not an authored mob. All affected attributes
+  are integrated; do not retain the old delegate uncertainty as a backlog.
+
+Eighteen nonregistry families have now been assessed with no specific unanswered
+mandatory claims carried forward from those passes.
+Twenty-two remain unassessed: eighteen BetterEnd, two BOP, scarecrow and urn cache.
+Do not requeue the seventeen supported families under generic shared-effect or
+unknown-population labels. Final consistency, acceptance and PR review remain.
+
+Fairy Ring tag integration validation: ten existing biome resolver/tag tests pass;
+scoped Ruff and Basedpyright pass. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-biomes.json`.
+SHA-256: 8adc2029283a174d0cca16c196741eca740509751a90974c10184e2e8ebb3897.
+Registry rows and other contributions are preserved. The source README records
+the one-class capture command, failed allowlist attempt and exact tag derivation.
+Do not repeat resolved tag membership while handling the two remaining questions.
+
+Fairy Ring binding integration: scoped Ruff and Basedpyright pass; inventory
+matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-bindings.json`.
+SHA-256: f31e078afd75505bc00ecb69ad217d3e6621f3f0bc2d067117a092a74f7c634c.
+The new verbose source is necessary only because the earlier capture omitted the
+annotations. Its README records the exact command and shared evidence derivation.
+No new runtime, schema, validator or measurement framework. Registry families,
+other nonregistry contributions and resolved biome membership are preserved.
+
+Fairy Ring delegate validation: focused packaged-delegate test passes, scoped
+Ruff and Basedpyright pass, and inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-fairy-ring-delegate.json`.
+SHA-256: 695c1eb2e85b0648751fdaf02f970b065d5e94830781e070f65017695e26b66f.
+Registry rows and other contributions are preserved. The delegate source README
+records reproduction and the narrow reason for the three existing-extractor class
+selections and one existing-file test. Next assess the remaining 22 nonregistry
+families; do not reopen any supported Fairy Ring answer without new evidence.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 40 | Contribution records and captured generators/processors. Finish direct content integration above; assess effective placement, conversion and approximate geometry. |
+| Nonregistry | 22 not yet assessed; 18 assessed | No specific residual claim from the eighteen assessed families. Their supported requirements are retired. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
