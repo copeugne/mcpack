@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+Next IDAS comparison covers eleven templates for dig_site (six pieces across two
+roots), nether_pump_camp, washing_camp, the_log, train_ruins and winter_wagon.
+Use the existing renderer and preserved contents to distinguish assemblies from
+related designs. All traces have no missing components. Optional/nested entity
+references remain declarations, not proof of creation. No new measurement system.
+Backlog remains 50 until decisions pass.
+
 Inventory matches 02a5622a and independently reproduces exactly. All 887 roots
 remain covered once in 425 working groups. Full statue definitions/variants are
 unchanged across the split. Backlog: 50, all IDAS. Next: remaining IDAS authored
