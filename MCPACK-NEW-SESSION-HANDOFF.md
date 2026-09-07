@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS frozen crypt assessed after bbf5d092
+
+Nine entries integrated for entrance/crypt. Crypt origin-7,-15,-14 gives nominal
+29 by36 footprint,21 height. Direct strays distinct from absent Ice and Fire troll.
+Five spawners select sole stray5; four empty raw entity compounds remain preserved
+but processor NBT replacement resolves selected source. One defined loot table,
+one CORNER marker; entrance terrain kernel10/10 distinct from root none.
+Existing processor inspection reused; no runtime/tool added. All85 focused checks
+pass (59.21s); only frozen_crypt/input identity changed. Total439/448 assessed;
+nine connected IDAS families/81 entries remain, nine each. Quantify next batch
+and reuse existing findings; do not confuse raw source gaps with selected output.
+Details: evidence/item-8/sources/idas-frozen-crypt-assessment/README.md.
+Inventory SHA-256: 7c486bcc55c8584270b985517e2c115f32b856aacfefeb2768d70e40743a92bc.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS bazaar assessed after ffec0df0
 
 Nine entries integrated for nine rigid connected market components. Connector
