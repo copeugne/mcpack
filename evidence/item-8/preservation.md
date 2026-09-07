@@ -86,3 +86,23 @@ Run with the committed source revision, a new codex/ branch and a fresh mapping
 path outside ordinary Git, then deliver the mapping as provenance. History-only
 changes with exact source-tree equality do not warrant repeating runtime captures
 or unchanged tests. Final provenance additions must be identified separately.
+
+## Completed isolated history preparation
+
+Source head eab3ce95 (full source history retained on origin/codex/item-8-completion)
+was reconstructed as52aa48f8c2acb4a2a51ef6cc7b850dac260ecc2c on codex/item8-final-pr.
+Source1988 commits became1710 through61 reviewed ranges, removing278 administrative
+commits. Every resulting milestone tree equals its preserved source endpoint;
+final git diff --exit-code eab3ce95 codex/item8-final-pr returns0. Original tags and
+refs remain unchanged. history-old-to-new.tsv maps all1988 source commits to their
+resulting milestone, including folded intermediate commits. No content rewrite.
+
+```sh
+bash tools/consolidate_item8_history.sh eab3ce95 codex/item8-final-pr evidence/raw/item8/history-old-to-new.tsv
+git diff --exit-code eab3ce95 52aa48f8c2acb4a2a51ef6cc7b850dac260ecc2c
+```
+
+The subsequent provenance commit adds only this completion record, the mapping
+and the continuation checkpoint. It is accounted separately from the exact-tree
+comparison. User AGENTS.md changes and protected untracked artifacts remain in
+the working tree, unstaged. Remaining work is final PR review and main delivery.

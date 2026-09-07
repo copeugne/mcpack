@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### Isolated PR history prepared from eab3ce95
+
+Active branch now codex/item8-final-pr. Base reconstructed head
+52aa48f8c2acb4a2a51ef6cc7b850dac260ecc2c equals source eab3ce95 tree exactly.
+1988 source commits become1710;61 coherent provider sequences remove278 source-
+selection/capture administrative commits. Other increments and fixes remain
+separate. Original source history delivered on origin/codex/item-8-completion;
+backup ref/bundle/workspace archives preserved as previously verified. Mapping
+at evidence/item-8/history-old-to-new.tsv covers all1988 old commits. Committed
+script/plan reproduce boundaries and refuse an existing destination ref.
+Only mapping, preservation completion note and this checkpoint differ after the
+exact-tree verification. No runtime/data change; no unchanged gate rerun needed.
+User AGENTS/protected untracked artifacts preserved. Free disk560MB.
+Next immediate step: push codex/item8-final-pr, open PR against main, request
+@codex review and inspect completed cycle/reactions/comments. Fix valid relevant
+findings narrowly, rerun affected checks, push and request fresh review until
+clean thumbs-up with no unresolved findings. Then merge and verify main. Item8
+remains IN PROGRESS until that delivery is verified; do not start Item9.
+
+
 #### Pre-PR preservation verified at e96cdc8b
 
 Backup origin/codex/item8-preserved-e96cdc8b resolves exactly to implementation
