@@ -6,6 +6,24 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mansion assessment completed after a791fda5
+
+Seven remaining attributes integrated from pinned vanilla classes, existing
+Illager Invasion/Lithostitched captures, frozen config and packaged templates.
+73 unique components: vanilla code references72; active Lithostitched lists add
+1x1_b5. Thirteen Illager Invasion replacements are same-ID resources, not families.
+Warrior selects basher on nextInt(2)==0 and otherwise vanilla vindicator; Provoker,
+Archivist,invoker use mod handlers; Mage/allays remain vanilla. Secret1x1_as2
+ordinary spider spawner and mansion/stronghold-library table sources recorded.
+No new capture/tool. All85 focused checks pass (59.61s); only mansion/input identity
+changed. All vanilla assessments now integrated. Total393/448 assessed;55 families
+and534 entries remain: IDAS38/380,Repurposed17/154. Quantify the next provider batch
+before starting and reuse existing evidence. Final canonical integration of40
+nonregistry families, acceptance, backup/history and PR/review/main remain open.
+Exact derivation is in evidence/item-8/sources/vanilla-mansion-assessment/README.md.
+Inventory SHA-256: 65c0d61bdfe9cc306e5cf9b792db4deb997b86c7a4d7aa0aaec4f737a0fb3669.
+
+
 #### Remaining vanilla geometry accepted after 1416f44c
 
 One fresh seed42 Overworld capture completed all three targets with 81 requested
