@@ -6,6 +6,12 @@
 
 ### Continuation update - 2026-09-07
 
+House attribute inventory matches df2b2680 and reproduces exactly. Eight families
+have current-phase source assessments. Remaining planning count: 399 registry
+candidates with literal gaps (2,181 values), forty nonregistry assignments needing
+integration, eleven filled registry records needing acceptance assessment.
+No new measurement/tooling. Quantify each subsequent batch before edits.
+
 Predeclared abandonedhouse/brickhouse batch: two families, eleven fields each.
 Ten source-based interpretations retain the resolved biome constraints. Generic
 processor candidates differ from saved spawner mobs; both are preserved. Brick
