@@ -106,3 +106,69 @@ Validation for this increment: `uv run pytest -q tests/item8/test_supplementarie
 Semantic comparison changes only Galleon and the decisions identity; original
 biomes, membership and observations remain unchanged. Inventory SHA-256:
 `e330e017db912e263e9c9750835ca86c4605a3fa43cef9483a738ee848a7e4a3`.
+
+## Galleon encounter, rewards and visibility
+
+Six attributes complete Galleon using the existing sources. Geometry/placement
+remain unchanged. Use SpawnEntityWithPassengersFeature here, Moonlight's
+ChunkGeneratorMixin in moonlight-common-hooks and SpawnBoxStructurePiece in
+moonlight-generation-delegates, existing supplementaries-placement-processor,
+and urn-reward-behavior/urn-patch-geometry. Their identity manifests are linked
+in the family. No new capture, validator or measurement tool is introduced.
+
+Main template block_entities28/41/42/45 are moonlight:spawn_box markers named
+galleon_enemies, not physical spawners. Their exact positions, offsets and sizes
+remain in the assessment. The structure supplies a monster list: pillager
+weight5/group1 and plunderer weight7/group1. GalleonStructure exposes its settings;
+ChunkGeneratorMixin.getMobsAt requests special spawn lists and the retained
+SpawnBoxStructurePiece.getNamedBoxesAt resolves a containing named box. This
+attributes the regional spawn source without claiming measured spawn counts or
+frequency. All seventeen templates have no ordinary/trial spawner blocks.
+
+hull_back03 saves ravager Health100/PersistenceRequired1; hull_room02 saves
+iron_golem Health100/PersistenceRequired0; both have empty hands/armor.
+hull_front02 saves an armor stand with chainmail helmet. Only ravager belongs
+to the hostile crew assessment. Plunderer feature weights are4 plunderer,1
+pillager,1 empty. Boat pool weights1/1/2/1/2 choose boat with plunderer+pillager,
+boat with plunderer, cannon boat with plunderer, empty boat, or empty element.
+These are selection weights, not actual populations.
+
+SpawnEntityWithPassengersFeature.place loops attempts+5, so the declared4 boat
+attempts permit up to9 candidate positions, returning on first success. X/Z
+spread4 means inclusive offsets-4..4. Terrain-matching height is sampled at the
+feature origin, not each randomized candidate. Candidate air, ground-rule and
+chunk checks remain required. trySpawningAt creates passengers, starts riding,
+finalizes mobs with STRUCTURE type and applies configured persistence before
+adding the entity with passengers. Null creation/failing candidates can yield
+no entity. The declared cannon loot table is assigned only to ContainerEntity;
+it must not be generalized to an ordinary non-container boat inventory.
+
+The urn pool selects urns_patch directly:9 tries, spreads4/1, supported-air
+filter and treasure=true. It does not apply cave_urns' six separate-origin
+repetitions. The already assessed urn break path can select an actual urn_spawn
+tag entity after the frozen0.01 random check, doTileDrops and enchantment guard.
+Required packaged entries are silverfish/slime/bat; optional declarations retain
+the existing uncertainty rather than being invented as available entities.
+Urn creature releases are conditional interactions, not resident mobs/spawners.
+The existing urn assessment records common/uncommon/rare/epic reward tables,
+weight/quality60/-5,32/-2,7/2,1/5, separate silk-touch/treasure conditions and
+appending stored contents. Reuse those exact sources rather than duplicate them.
+
+Main template loot refs include key, cannon, safe and chest; front01/front02
+also bind chest. Exact NBT paths remain in the inventory. Fixed contents:
+main block_entities35 pulley has one rope; front02 block_entities1 urn has one
+ash; room01 block_entities1 jar has six cookies in slots0..5 and empty fluid;
+front02's armor stand has the helmet. Source contents are not verified runtime
+recovery. remove_disabled_blocks preserves incoming position/NBT when replacing
+a disabled block. Frozen cannon/urn/jar/globe/cannonball/ash/candle-holder/gold
+and sconce settings inspected here are enabled. Sail04 uses empty processors.
+The processor does not introduce a block-spawner path.
+
+The ship/sails and sea-level placement support a qualitative maritime landmark,
+with hull rooms concealed by the hull and water. This is not measured visibility,
+encounter difficulty or exploration pace. No retained Galleon start is claimed.
+
+Thirteen focused tests pass using the preceding command. Semantic comparison
+changes only these six Galleon attributes, rationale/evidence and decisions pin;
+its prior four attributes and all original membership/observations are preserved.
+Inventory SHA-256: `ce61f4dd05b1e4c70b2b3fab5fc62b1ee7a9a5cad6f6765c908e9859c0953983`.
