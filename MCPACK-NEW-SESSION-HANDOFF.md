@@ -46,11 +46,43 @@ assessment covers 29 families: three Better End Island, four Quark, eighteen
 BetterEnd, two BOP, one scarecrow and one urn cache. Whole-stack reconciliation
 and final acceptance remain necessary; these eleven are not declared Item 8 complete.
 
+Better End Island direct assessment now covers three more families. Integrated
+11 existing dimension, packaged-biome-route, placement and visual answers, and
+added the arena's conservative 103 by 103 nominal horizontal envelope from the
+recorded radius-42 layout and 19-wide components. Retain existing component sizes
+and observation limitations. The affected provider test passes; registry rows and
+other nonregistry contributions are unchanged. Inventory matches
+`uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-end-island-descriptions.json`.
+SHA-256: ca92198bb3f03658d26bbda013dcca3bf61cb415327bc1fefe67395905464262.
+
+Retire supported, integrated answers for the eleven YUNG bridge/Extras families
+and these three Better End Island families from the working assessment queue.
+Do not repeat those requirements without a relevant contradiction or change.
+Fourteen nonregistry families have now been assessed; 26 await direct assessment.
+Only these two concrete questions carry forward from the Better End Island pass:
+
+- arrival_platform, gateway and dragon_arena, biome_constraints: do the retained
+  Fabric biome callbacks preserve or alter the recorded packaged feature routes?
+  The packaged consumers and additive Zeta behavior are known; the current record
+  does not bind the Fabric consumer effects. Next inspect the existing
+  sources/fabric-biome-modifier and linked provider callback captures, and integrate
+  their actual effect. No new capture is authorized merely by the stale gap prose.
+- dragon_arena, approximate_vertical_size: how does the terrain-anchored podium
+  combine with spikes at nominal Y=3..138? Component heights are known, but the
+  current attribute does not describe the combined terrain-dependent extent.
+  Next use spike_podium_generators.podium_invocation.origin_adjustment and
+  podium_geometry already in family-decisions.json to state the derived envelope
+  as a function of the podium anchor; inspect its preserved source if ambiguous.
+
+These are four family/field cases arising from two shared questions, not four
+new investigations. Final identity, consistency and review checks remain, but do
+not requeue all supported descriptions under a generic shared-effects label.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 40 | Contribution records and captured generators/processors. Direct content integration above is done; assess effective placement, conversion and approximate geometry. |
+| Nonregistry | 26 not yet assessed; 14 assessed | Two concrete Better End Island residual questions are listed above. Supported descriptions are retired; continue the other 26 records. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
