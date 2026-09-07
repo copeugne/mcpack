@@ -276,3 +276,49 @@ until both geometry attributes are supported and integrated.
 
 All85 focused tests passed. Semantic inventory comparison changes only Zombie
 content/placement and input identity. Two size attributes remain unresolved.
+
+### Zombie geometry result and custody
+
+The declared one-target seed42 run completed readiness, generation, correlated
+flush, clean exit0 and accepted frozen configuration. No process-group kill.
+Full start chunk127,-54 is chunks.jsonl line1017:768 saved pieces, envelope
+[1963,25,-924,2061,50,-801],99x26x124 inclusive. Existing observed_bounds
+computes this union. These are saved assembly dimensions; processor-written
+surface stairs and supports are separate extensions. Do not equate them with
+occupied volume, family extrema or complete placement of distant components.
+The pre-existing missing-template reference remains unchanged. Raw warnings and
+errors are retained; successful lifecycle is not universal compatibility proof.
+
+Archive item8-zombie-geometry-r1-5cea5861.tar.gz:250 files,3,015,336 bytes,
+20,822,442 uncompressed bytes; SHA-256
+10cd5fbac0b6f75f0c0d105879a1ad81071d3a73114a8701907787416589e1d4.
+Manifest SHA-256 ce34d16c96e3b45d956f863727ad51aca78bd6bdc1c8703c05ad946970f04e94.
+The250 files include1802 decoded chunk records, not the81 requested-chunk
+sampling denominator. chunks.jsonl SHA-256
+88d5c9a201764a9551a7a7f9116e0e641ecf669cdcaae5f4e2a1c5fd681fd517.
+Published release item-8-zombie-geometry-2026-09-07-r1 on copeugne/mcpack;
+remote tag verified at source5cea586192242f243b73a7726ff84539ade5497a.
+Local and published-download restores verified all250 files. The downloaded
+copy reproduced line1017 full status,768 pieces and99x26x124 envelope.
+Both geometry attributes are integrated. No new tooling was added.
+
+Executed after clean stop:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/zombie-geometry-r1"), Path("evidence/raw/item8/zombie-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/zombie-geometry-r1/world --output evidence/raw/item8/zombie-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/zombie-geometry-r1 --archive evidence/raw/item8/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --revision 5cea586192242f243b73a7726ff84539ade5497a
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --target evidence/raw/item8/zombie-geometry-r1-restored --receipt evidence/item-8/raw-custody/zombie-geometry-r1-local-restore.json
+gh release download item-8-zombie-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-zombie-geometry-r1-5cea5861.tar.gz --dir evidence/raw/item8/zombie-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/zombie-geometry-r1-download/item8-zombie-geometry-r1-5cea5861.tar.gz --manifest evidence/item-8/raw-custody/zombie-geometry-r1-manifest.json --target evidence/raw/item8/zombie-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/zombie-geometry-r1-downloaded-restore.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/zombie-complete-inventory.json
+```
+
+For reproduced geometry, parse retained line1017 using existing
+item7_nbt_models.ChunkRecord.model_validate_json and pass it to
+item8_world_bounds.observed_bounds. Select betterdungeons:zombie_dungeon;
+verify chunk_full,768 piece boxes and the inclusive envelope above.
+
+All85 focused tests passed. The semantic inventory comparison adds only Zombie
+size attributes/archive evidence and input identity. Total358/448 assessed,
+90 remaining. Final canonical integration and Item8 acceptance remain open.
