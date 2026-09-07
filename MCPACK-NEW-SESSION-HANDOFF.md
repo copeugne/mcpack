@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Six bounded Voyager families assessed after 709273c8
+
+Fifty-eight attributes finish Cartographer Tower, Crystal, Floating Islands,
+Tiered Tower, Large Warped Tower and Mine with Campsite across eight roots.
+Direct finite geometry, variant-owned mob/loot sources and placement are
+integrated. Two unidentified Warped Tower spawner records remain a source
+limitation, not an experiment backlog. Ten shared affected tests pass; no new
+capture or tooling. Derivations are in moog-generator-code README.
+Inventory SHA: 0af5280a56a4dad7ff9bdcf69af65c23765c631890638e1af28e0dc99694be60.
+Voyager 63/65; registry 170/410, nonregistry 40/40, total 210/450 assessed,
+240 remaining. Voyager Cathedral and Mineshaft remain branching-layout cases.
+Continue quantified coherent batches, reusing established evidence. Final
+integration, acceptance, verified backup/history consolidation and PR review/
+main delivery remain open.
+
 #### Five Voyager dwellings assessed after 81b9aa10
 
 Fifty attributes finish azelea_house, deepslate_house, house, tall_house and
