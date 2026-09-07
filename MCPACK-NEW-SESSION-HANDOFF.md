@@ -7,6 +7,25 @@
 ### Continuation update - 2026-09-07
 
 
+#### Silver assessed after c2412503
+
+One family,nine outstanding attributes integrated from existing pinned Silver
+sources, templates, selected processors and trap/loot bindings. Architectural
+size32x30x57 derives from consecutive fixed shells and bounded interior grid;
+cloud support is separate. Exact derivation and source limits are in
+ evidence/item-8/sources/aether-provider/README.md, Silver family assessment.
+Queen, Valkyrie trap suppliers, chest/mimic marker selection and two marker loot
+tables are distinguished. maxY128 is not an unconditional cap; discarded facing
+setValue is not claimed as randomized chest orientation. No runtime/tool added.
+All85 focused tests pass (58.90s); only Silver/input identity changed, preserving
+membership, biome constraints and observations. Registry325/408,nonregistry40/40,
+total365/448 assessed,83 remaining. Next Aether work: Bronze two sizes and Gold
+nine attributes (11 total). Reuse existing sources before any capture or runner
+extension. Final integration, acceptance, backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256:
+ffb13a2c8da8e2ffb2d6b31d16b37ff828bf2d1101dfcdb150ed37b88ce301b8.
+
+
 #### Brass assessed and Aether dimensions integrated after 2dac361f
 
 Quantified Aether/DeepAether batch: four families,33 explicit attributes initially
