@@ -7,6 +7,30 @@
 ### Continuation update - 2026-09-07
 
 
+#### BetterEnd village and eternal portal assessed after 68f2b423
+
+Sixteen of18 batch attributes integrated: village seven descriptions, portal nine
+remaining attributes. Village41 reachable templates have no entities/spawners/
+markers and three defined literal loot sources; work_01 and stree_terminator_01
+remain missing. Village footprint/height still need assembled evidence; no full
+start exists in retained world-bounds. Portal uses sole21x12x19 template, six
+empty pedestal compounds, no entities/spawners/loot. Direct pinned NBTPiece
+inspection records rotation/mirror, height-4 root placement and erosion/cover,
+reusing captured StructureErode. Concrete defect: postProcess upper corner Y
+uses piece.maxX at bytecode37. Preserve this baseline defect; nominal geometry
+is not a bound on world effects or proof of successful activation. Exact sources,
+class hash and interpretations are in attributes and provider README. No new
+runtime/tool. All85 focused checks pass (61.61s); only village/portal and input
+identity changed. Registry335/408,nonregistry40/40,total375/448 assessed;
+73 families and653 explicit attribute slots remain: IDAS38/380slots,
+Repurposed17/154,vanilla13/81,BetterEnd5/38. BetterEnd remaining: village2slots,
+giant_ice_star9,giant_mossy_glowshroom9,small_island9,sulphuric_cave9.
+Next quantify and reuse existing source evidence. Existing gap runner is
+Overworld-only; do not launch it for an End root or casually extend it. Final
+canonical integration, acceptance, verified backup/history preparation and PR
+review/main delivery remain open. Inventory SHA-256: 5661b53026fa31abe2c3412a849fc21b296aa76fd2f2d32ecd22a90771ed3deb.
+
+
 #### BetterEnd bridge assessed after 4b5ed54b
 
 Nine attributes integrated from retained root/piece code, packaged root and five
