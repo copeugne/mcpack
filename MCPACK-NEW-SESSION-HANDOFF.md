@@ -6,6 +6,47 @@
 
 ### Continuation update - 2026-09-07
 
+#### Final IDAS geometry captured and integrated after cfe1b06f
+
+Existing frozen gap runner captured Pyramid and Castle together at seed42:81
+requested chunks each, readiness, correlated flush, clean exit0,228-file frozen
+configuration accepted with allowed comment normalization. Decoded2765 records.
+Full Castle chunk10,-110,line609:61 pieces,105x58x151(X,Y,Z). Full Pyramid
+chunk850,1209,line2255:104 pieces,171x81x208. Example envelopes, not typical/all
+layouts or full component population. No runtime process remains.
+Archive263 files,4553430 bytes SHA2f8662353b9f6c7d9fd8dcc3844a588712f8e686a93e201b15833e7ef9ea69a6
+published at GitHub release item-8-idas-final-geometry-2026-09-07-r1. Local and
+fresh downloaded restores pass; restored lines reproduce both sizes/full status.
+Four size attributes integrated. All85 focused checks pass (60.94s); only Castle,
+Pyramid and input identity changed. Total447/448 assessed; Castle's seven content/
+placement attributes alone remain before family assessment closure. No new tool.
+Source/capture/reproduction: evidence/item-8/sources/idas-desert-pyramid-assessment/README.md.
+Inventory SHA-256: 23662070c435ed44adb5bf67e9488b040d88bc0df65d63a9da7554e45756cfd7.
+
+Castle findings already inspected, integrate rather than rediscover: 136 reachable
+source templates, no ordinary/trial spawners or generation markers anywhere in
+trace. Core castle1 villagers/chicken/pig; castle2 mounts/displays/glue/seat and
+one empty entity record /entities/10/nbt; castle3 mounts/displays. All designs have
+villager and absent GuardVillagers entity pools; first two connect plains village
+centers, third does not. Shared branches include animals,iron_golem and optional
+zombie-villager templates, not a guaranteed hostile encounter. Existing inventory
+preserves exact template ownership and13 literal loot IDs, all defined. Common
+castle processor only replaces purple glass pane with optional Bountiful board,
+otherwise air. Bountiful and GuardVillagers absent from runtime Mod List.
+Direct pinned javap IntegratedBlockReplaceProcessor classSHA
+ a92f6d152a9351de0c3a1312430540a1eb7c3a7fa8b92fe918a332fb99b31de3:
+input block compare0..12; requiredMod check15..22; absent branch271..333 resolves
+otherwiseBlock and returns its default state using createBlockInfo; nonmatch
+returns input334..336. Selected castle JSON has no output_nbt. Copy this direct
+inspection into Castle assessment with exact artifact refs. Main terrain kernels
+size/distance20/15,20/25,35/35; root surface0,size4,range10/radius1,biome radius1,
+ignore_waterlogging,enhanced none. Villager_random weights empty1,adult3,baby1,
+nitwit1. Shared processor IDs empty,farm_plains,mossify10/20/70,street_plains,
+zombie_plains,castle. Reuse existing village source assessments for those links.
+Disk free2.8GB. Preserve source worlds and raw/restores; no cleanup authorized here.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS desert pyramid content assessed after 23d8847e
 
 Seven content/placement entries integrated for31 reachable templates. Eleven source
