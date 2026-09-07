@@ -6,6 +6,13 @@
 
 ### Continuation update - 2026-09-07
 
+All twelve remaining design templates were visually inspected. The four small
+design sheets reproduce exactly at renderer 4323e1e3. No conversion sessions
+remain running. Canonical decisions for the eight records follow. Existing
+contents and pools show abandoned-house weights 3/2, cottage weights 1/1,
+brickhouse to path to windmill connectors, and witch/cat spawn overrides for
+witches_treestump despite no authored entities or physical spawners.
+
 Select the twelve templates belonging to the eight remaining canonical records
 in the existing renderer. Compare abandoned-house and cottage alternatives,
 brickhouse and windmill/path components, camp, guild, church, fort and stump.
