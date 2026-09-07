@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS snifferhenge assessed after 3a384a1b
+
+Nine entries integrated for two rigid connected components. Matching down_west/
+up_west connectors give bottom origin0,-7,0 and nominal24 by27 footprint,
+21 height. One defined shared archaeology table, no authored entities, spawners,
+markers or unresolved records. No live sniffer encounter inferred from name or
+archaeology. Existing ticking-only processor inspection reused. No runtime/tool
+added. All85 focused checks pass (65.95s); only snifferhenge/input identity changed.
+Total428/448 assessed;20 connected IDAS families/180 entries remain, nine each.
+Quantify the next connector/content batch before investigating; reuse source
+findings and nominal geometry where sufficient, without automatic new captures.
+Details: evidence/item-8/sources/idas-snifferhenge-assessment/README.md.
+Inventory SHA-256: 2ee343bc8f9af88d74d7026fa4da3853cf604022ef97de9229bdc053e6b7e212.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS Tudor pub assessed after f7b7185e
 
 Nine entries integrated for two rigid connected sections. Matching down_south/
