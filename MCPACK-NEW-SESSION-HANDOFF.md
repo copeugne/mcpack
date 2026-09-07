@@ -6,6 +6,26 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS labyrinth assessed after 8e522bef
+
+Nine entries integrated for five connected default components. Nominal55 by64
+footprint,88 height. Floor1 twelve spawners select husk15,stray10; floor2 six
+retain authored data under ticking-only processing, including absent anaconda.
+Direct hostiles distinct from absent AlexsMobs entities and non-mob display data.
+Four defined literal loot sources plus conditional archaeology; two missing legacy
+paths chests/labyrinth and chests/throne preserved as baseline content defects.
+One CORNER marker, no trial spawners. ModAdaptive default selection retained.
+No runtime/tool added. All85 focused checks pass (61.64s); only labyrinth and input
+identity changed. Total444/448 assessed; four families/36 entries remain:
+ancient_mines,castle,collectors_museum,desert_pyramid, nine each.
+Next museum is two components/nine entries. Existing connectors imply nominal
+213 by211,height139 at lower origin0,-78,0, but placement constraints remain
+separate; inspect selected processing and reuse existing source findings first.
+Details: evidence/item-8/sources/idas-labyrinth-assessment/README.md.
+Inventory SHA-256: 58d33e39e62b9bfba5b6c47e7fade4e6a7483023aea94e2823a6d872caf1bb76.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS tree of wisdom assessed after 0de7c791
 
 Nine entries integrated for six connected components. Nominal112 by113 footprint,
