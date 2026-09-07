@@ -10744,3 +10744,15 @@ Inventory SHA-256: 6839fc03ada8068fb8e247aaf73cf3f93cffef270f8b583f3bd912eab30f3
 The generated diff changes only geometry and matching grouping decisions in the
 97 rows, plus the decision input hash. All other fields, observations, memberships
 and nonregistry content remain unchanged. No full Item 8 acceptance is claimed.
+
+### Standard jigsaw placement integration
+
+Predeclared batch: 37 candidate families, one required placement field each.
+Only retained definitions explicitly using minecraft:jigsaw with a surface or
+floor heightmap qualify. Existing inactive families remain excluded. Per-variant
+heightmap, start-height rule and terrain adaptation are copied exactly; absolute
+negative/zero/positive offsets are distinguished. This records the authored start
+placement, not the burial or exposure of every attached room. Prior attributes,
+family memberships and source definitions remain unchanged. The larger generated
+JSON diff preserves the full variant mapping instead of flattening it into one
+misleading surface label. No new measurement, schema or builder behavior.
