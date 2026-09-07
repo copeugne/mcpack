@@ -6,6 +6,52 @@
 
 ### Continuation update - 2026-09-07
 
+#### Mineshaft and Spider geometry finished after 9a815914
+
+Four size attributes finish Better Mineshafts and Spider Dungeon. The declared
+seed42 two-target/162-requested-chunk capture passed readiness, correlated flush,
+clean exit0 and frozen configuration acceptance. Full mineshaft start has91
+pieces but entrance hasTunnel0: exclude its unused build-height reservation.
+The90 network pieces span135x26x120; Spider's20 pieces span77x64x62. These are
+illustrative saved assembly envelopes, not occupied volume or family extrema.
+Exact source/NBT derivations, raw envelope and commands:
+evidence/item-8/sources/mineshafts-code/README.md, Two-family results and custody.
+Published archive250 files/6,047,640 bytes at source9a815914; local/download
+restores verified all files and reproduced both geometry results. No runtime.
+All85 focused tests pass. Inventory changes only these two families and input
+identity. Registry313/409 and nonregistry40/40 assessed: total353/449,96 remain.
+Next quantify a small remaining YUNG batch and reuse existing content sources.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+9ef5c21045a38d92622d1908b23797fb499c9f68224b3626338ef2ccb698d458.
+
+#### Two-family geometry targets after f293e2be
+
+Four size attributes remain for Better Mineshafts and Spider Dungeon. Source
+inspection confirms the entrance updates shaft length without shrinking its
+initial build-height box. One existing frozen seed42 capture is declared for
+two targets/162 requested chunks, timeout900; no new tooling. Exact command
+and interpretation boundary: evidence/item-8/sources/mineshafts-code/README.md,
+Two-family geometry capture declaration. Next execute, inspect full starts and
+saved entrance fields, retain and restore evidence, then integrate supported
+sizes. Counts stay351/449 assessed,98 remaining. No capture success claimed.
+
+#### Better Mineshafts and Spider placement after 6e8d9728
+
+Four dimension/discoverability attributes integrated for Better Mineshafts and
+Spider Dungeon using existing effective biomes and specialized generation
+sources. Both are Overworld-compatible; visibility is conditional source
+inference. Four geometry attributes remain, so counts stay351/449 assessed,
+98 remaining. Existing starts are all non-full. Mineshaft entrance envelopes
+reach maximum build height, not occupied height; preserve that distinction.
+Exact derivations: evidence/item-8/sources/mineshafts-code/README.md and
+betterdungeons-code/README.md. No new runtime or tooling. Next resolve the
+four geometry attributes using existing sources and only a necessary capture;
+do not turn optional live loot/population unknowns into this item's backlog.
+Final canonical integration, acceptance, verified backup/history preparation
+and PR review/main delivery remain open. Inventory SHA-256:
+e1888e642376c531efb738fef57d0bebe1f002e40149e580ddd7a84c11143667.
+
 #### Active WDA assessments finished after e5cc3aff
 
 Six geometry attributes finish Foundry, Mining Complex and Scorched Mines from

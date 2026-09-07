@@ -110,3 +110,122 @@ Decision/test increment: `9e8f032`. Rebuilt inventory SHA-256:
 `3ac3368b6de3d939f9ac78d117eb0397bbe0c2092967b72e71b6d2b4223d13f3`.
 The inventory diff adds only the two variant dispositions, metadata evidence
 identity and updated decision hash. Other family fields remain unchanged.
+
+## Dimension and discoverability attribution
+
+The effective biome union for all13 Better Mineshafts IDs intersects only the
+captured Overworld biome set. These exact catalogs are now directly bound in
+family evidence. VerticalEntrance.postProcess invokes generateVerticalShaft and
+generateSurfaceTunnel. Record the conditional possibility of a surface entry
+cue, while subterranean tunnels remain concealed; no successful visible opening
+or human discovery distance is established by source inspection.
+
+Retained world-bounds indexes90/270/291 and repeated493/659/680 are non-full
+starts (structure_starts or biomes). Their generation envelopes extend toY320
+because the initial entrance uses maximum build height. They are not completed
+physical-height measurements. Four dimension/discoverability attributes across
+this family and Spider Dungeon are integrated; both families' four geometry
+attributes remain open. Reuse the source explanation before interpreting any
+future saved entrance bounding box as occupied geometry.
+
+## Two-family geometry capture declaration
+
+Four required size attributes remain for Better Mineshafts and Spider Dungeon.
+Existing starts are non-full. The mineshaft VerticalEntrance.determineDirection
+updates yAxisLen/localYEnd from terrain, but does not shrink boundingBox.
+getInitialBoundingBox reserves center X/Z plus or minus24 and maximum build Y.
+Thus even a saved full start's raw entrance box is not occupied shaft height.
+Inspect its saved hasTunnel, centerPos, yAxisLen and floorAltitude alongside
+non-entrance pieces before deriving an approximate vertical extent. Preserve the
+raw envelope separately. Spider uses recursively assembled custom tunnel pieces.
+Neither a single piece nor initial placement Y establishes its assembled size.
+
+Declare one fresh frozen seed42 capture, two targets,81 requested chunks each
+(162 total), timeout900. Select the lush mineshaft variant as one illustration
+of the shared generator, not all13 variants or a size distribution. Require full
+starts, correlated save, clean exit and accepted frozen configuration. Preserve
+all failures. Reuse existing runner, NBT decoder and archive/restore workflow;
+no new measurement system. An observed piece envelope is approximate assembly
+geometry, not occupied volume or proof that every distant piece was placed.
+
+```sh
+uv run -m tools.run_item7_gap_targets \
+  --pristine instances/pristine-baseline-v0 \
+  --artifact-manifest evidence/item-3/artifact-acquisition-manifest.json \
+  --retained-manifest evidence/item-3/runtime/retained-server-candidates.txt \
+  --seed-suite test-environment/seed-suite.json \
+  --frozen-config evidence/item-6/frozen \
+  --frozen-manifest evidence/item-6/generated-config-manifest.json \
+  --config-audit evidence/item-6/config-audit.json \
+  --java-home downloads/item2/temurin/extracted/jdk-21.0.12.1+1 \
+  --target instances/item8/mineshaft-spider-geometry-r1 \
+  --log-path evidence/raw/item8/mineshaft-spider-geometry-r1/console.log \
+  --captured-config evidence/raw/item8/mineshaft-spider-geometry-r1/configuration \
+  --receipt evidence/raw/item8/mineshaft-spider-geometry-r1/run.json \
+  --timeout-seconds 900 \
+  --structure bettermineshafts:mineshaft_lush \
+  --structure betterdungeons:spider_dungeon
+```
+
+### Two-family results and custody
+
+The declared seed42 run completed both targets, readiness, correlated flush,
+clean exit0 and frozen configuration acceptance. No process-group kill. The raw
+logs preserve baseline warnings and errors; successful lifecycle is not a claim
+of universal compatibility. Archive250 files,6,047,640 bytes (32,433,811 bytes
+uncompressed), SHA-256 d14c00bb34a7151b312ca18b8f82820772aca904659cfa2e3e19b8cfd16ea536.
+Source revision9a8159147c846e1b07451405d8eaea40dc48b2c7 is also the verified tag
+item-8-mineshaft-spider-geometry-2026-09-07-r1 on copeugne/mcpack. Local and
+published-download restores verified all250 files. Manifest and both restore
+receipts are under evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-*.
+Manifest SHA-256 771509208ba54aae65a35a114d896131caf7f04b049934d21f057cff922d1aa8.
+The archive contains2763 decoded records, not the requested162-chunk denominator.
+chunks.jsonl SHA-256 86d9c76862de2fd08c9b4ea6b554f88edef58c7241ac31054178ad46f4342dba.
+
+Line1517: mineshaft_lush, full chunk32,-39,91 pieces, raw envelope
+[446,-26,-743,580,320,-597]. Region world/region/r.1.-2.mca slot800,
+structures.starts[bettermineshafts:mineshaft_lush].Children[0] is
+bettermineshafts:bmsverticalentrance, BB[491,-22,-645,539,320,-597],
+centerPos[515,-22,-621],hasTunnel0,yAxisLen83,tunnelLen0,floorAltitude0.
+VerticalEntrance.postProcess branches directly to return when hasTunnel is false
+after determineDirection. Thus yAxisLen83 alone is not a generated shaft.
+Exclude this unused entrance reservation. Children[1:] contain90 network pieces;
+axis-wise inclusive union is[446,-26,-743,580,-1,-624],135x26x120 blocks.
+This is an approximate assembly envelope, not a count of occupied blocks or
+proof that every distant piece was placed. Keep the raw reserved box unchanged.
+
+Line2680: Spider Dungeon, full chunk129,-133,20 pieces, envelope
+[2042,11,-2130,2118,74,-2069],77x64x62 blocks. Existing observed_bounds derives
+this inclusive union. Both are illustrative assemblies, not family-wide extrema.
+The published-download restore reproduced both results and saved entrance fields.
+An initial offline inspection incorrectly accessed the observed_bounds dictionary
+as an object and failed; corrected dictionary access produced these results.
+No raw evidence was changed by that failed inspection.
+
+Executed after the clean run:
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/mineshaft-spider-geometry-r1"), Path("evidence/raw/item8/mineshaft-spider-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/mineshaft-spider-geometry-r1/world --output evidence/raw/item8/mineshaft-spider-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/mineshaft-spider-geometry-r1 --archive evidence/raw/item8/item8-mineshaft-spider-geometry-r1-9a815914.tar.gz --manifest evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-manifest.json --revision 9a8159147c846e1b07451405d8eaea40dc48b2c7
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-mineshaft-spider-geometry-r1-9a815914.tar.gz --manifest evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-manifest.json --target evidence/raw/item8/mineshaft-spider-geometry-r1-restored --receipt evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-local-restore.json
+gh release download item-8-mineshaft-spider-geometry-2026-09-07-r1 --repo copeugne/mcpack --pattern item8-mineshaft-spider-geometry-r1-9a815914.tar.gz --dir evidence/raw/item8/mineshaft-spider-geometry-r1-download
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/mineshaft-spider-geometry-r1-download/item8-mineshaft-spider-geometry-r1-9a815914.tar.gz --manifest evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-manifest.json --target evidence/raw/item8/mineshaft-spider-geometry-r1-downloaded-restore --receipt evidence/item-8/raw-custody/mineshaft-spider-geometry-r1-downloaded-restore.json
+```
+
+For direct NBT inspection, use existing item7_anvil._slots/_chunk_payload and
+item7_nbt.decode_compound_nbt on the exact retained region/slot above. No custom
+binary decoder is needed. The explicit child selection and inclusive union
+above define the derivation; do not use the unfiltered347-block reserved height.
+
+Validation:85 tests passed with the existing command
+`uv run pytest -q tests/item8/test_family_decisions.py tests/item8/test_inventory_sources.py tests/item8/test_world_bounds.py`.
+Rebuild command: `uv run -m tools.build_item8_inventory --output evidence/raw/item8/mineshaft-spider-finished-inventory-r2.json`.
+Semantic comparison changed only the two families' four geometry attributes,
+archive evidence references and corresponding input identity. No schema or
+measurement tooling was added. Registry313/409 and nonregistry40/40 assessed,
+total353/449,96 remaining; final canonical integration and acceptance stay open.
+
+Final staged inspection clarified both visibility limitations: only baseline
+starts are non-full; supplemental full starts do not measure visibility. The
+rebuild passed after this prose correction; no measurement or source changed.
