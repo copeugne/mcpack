@@ -25528,14 +25528,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:end_bridge": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -25559,12 +25555,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "AUTHORED_STRUCTURE",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "surface_structures"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -25643,8 +25650,77 @@
     },
     "betterend:end_lake": {
       "approximate_footprint": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_xz_blocks": [
+        "assessment": "evidence/item-8/sources/betterend-formation-pieces/README.md#lake-geometry-and-dimension-assessment",
+        "basis": "Three full-start saved procedural envelopes, normal and rare lake variants. EndLakePiece.makeBoundingBox includes radial shore/padding and vertical support/clearance margins, so these are generation envelopes, not water width/depth or occupied-volume measurements. They do not establish typical size or the unobserved megalake variants.",
+        "examples": [
+          {
+            "chunk_x": 90,
+            "chunk_z": 4,
+            "envelope": [
+              1424,
+              40,
+              48,
+              1480,
+              83,
+              104
+            ],
+            "line": 6419,
+            "run": "run-a",
+            "seed": 42,
+            "size_xyz": [
+              57,
+              44,
+              57
+            ],
+            "source": "run-a/ordinary/chunks.jsonl",
+            "structure_id": "betterend:end_lake_normal"
+          },
+          {
+            "chunk_x": 98,
+            "chunk_z": 4,
+            "envelope": [
+              1536,
+              38,
+              36,
+              1610,
+              82,
+              110
+            ],
+            "line": 7809,
+            "run": "run-a",
+            "seed": -3503646078644842058,
+            "size_xyz": [
+              75,
+              45,
+              75
+            ],
+            "source": "run-a/biome-diverse/chunks.jsonl",
+            "structure_id": "betterend:end_lake_rare"
+          },
+          {
+            "chunk_x": 108,
+            "chunk_z": -10,
+            "envelope": [
+              1695,
+              35,
+              -193,
+              1771,
+              80,
+              -117
+            ],
+            "line": 7441,
+            "run": "run-b",
+            "seed": -3503646078644842058,
+            "size_xyz": [
+              77,
+              46,
+              77
+            ],
+            "source": "run-b/biome-diverse/chunks.jsonl",
+            "structure_id": "betterend:end_lake_rare"
+          }
+        ],
+        "observed_examples_xz_blocks": [
           [
             57,
             57
@@ -25657,15 +25733,86 @@
             77,
             77
           ]
-        ]
+        ],
+        "source": "evidence/item-8/sources/world-bounds.json.gz"
       },
       "approximate_vertical_size": {
-        "basis": "Saved-piece envelopes from linked world_observations with chunk_full=true. Approximate layout extents in blocks, including air and piece padding. Full start chunks do not prove all component chunks were populated. Observed samples only, not family-wide bounds or occupied geometry.",
-        "observed_envelope_y_blocks": [
+        "assessment": "evidence/item-8/sources/betterend-formation-pieces/README.md#lake-geometry-and-dimension-assessment",
+        "basis": "Three full-start saved procedural envelopes, normal and rare lake variants. EndLakePiece.makeBoundingBox includes radial shore/padding and vertical support/clearance margins, so these are generation envelopes, not water width/depth or occupied-volume measurements. They do not establish typical size or the unobserved megalake variants.",
+        "examples": [
+          {
+            "chunk_x": 90,
+            "chunk_z": 4,
+            "envelope": [
+              1424,
+              40,
+              48,
+              1480,
+              83,
+              104
+            ],
+            "line": 6419,
+            "run": "run-a",
+            "seed": 42,
+            "size_xyz": [
+              57,
+              44,
+              57
+            ],
+            "source": "run-a/ordinary/chunks.jsonl",
+            "structure_id": "betterend:end_lake_normal"
+          },
+          {
+            "chunk_x": 98,
+            "chunk_z": 4,
+            "envelope": [
+              1536,
+              38,
+              36,
+              1610,
+              82,
+              110
+            ],
+            "line": 7809,
+            "run": "run-a",
+            "seed": -3503646078644842058,
+            "size_xyz": [
+              75,
+              45,
+              75
+            ],
+            "source": "run-a/biome-diverse/chunks.jsonl",
+            "structure_id": "betterend:end_lake_rare"
+          },
+          {
+            "chunk_x": 108,
+            "chunk_z": -10,
+            "envelope": [
+              1695,
+              35,
+              -193,
+              1771,
+              80,
+              -117
+            ],
+            "line": 7441,
+            "run": "run-b",
+            "seed": -3503646078644842058,
+            "size_xyz": [
+              77,
+              46,
+              77
+            ],
+            "source": "run-b/biome-diverse/chunks.jsonl",
+            "structure_id": "betterend:end_lake_rare"
+          }
+        ],
+        "observed_examples_y_blocks": [
           44,
           45,
           46
-        ]
+        ],
+        "source": "evidence/item-8/sources/world-bounds.json.gz"
       },
       "authored_or_natural_enemies": {
         "authored": "No direct entity or explicit spawner authoring in the captured lake paths.",
@@ -25734,26 +25881,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:end_lake": [
-            "minecraft:the_end"
-          ],
-          "betterend:end_lake_normal": [
-            "minecraft:the_end"
-          ],
-          "betterend:end_lake_rare": [
-            "minecraft:the_end"
-          ],
-          "betterend:megalake": [
-            "minecraft:the_end"
-          ],
-          "betterend:megalake_small": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -25764,10 +25895,183 @@
       },
       "grouping_decision": {
         "attributes": {
+          "approximate_footprint": {
+            "assessment": "evidence/item-8/sources/betterend-formation-pieces/README.md#lake-geometry-and-dimension-assessment",
+            "basis": "Three full-start saved procedural envelopes, normal and rare lake variants. EndLakePiece.makeBoundingBox includes radial shore/padding and vertical support/clearance margins, so these are generation envelopes, not water width/depth or occupied-volume measurements. They do not establish typical size or the unobserved megalake variants.",
+            "examples": [
+              {
+                "chunk_x": 90,
+                "chunk_z": 4,
+                "envelope": [
+                  1424,
+                  40,
+                  48,
+                  1480,
+                  83,
+                  104
+                ],
+                "line": 6419,
+                "run": "run-a",
+                "seed": 42,
+                "size_xyz": [
+                  57,
+                  44,
+                  57
+                ],
+                "source": "run-a/ordinary/chunks.jsonl",
+                "structure_id": "betterend:end_lake_normal"
+              },
+              {
+                "chunk_x": 98,
+                "chunk_z": 4,
+                "envelope": [
+                  1536,
+                  38,
+                  36,
+                  1610,
+                  82,
+                  110
+                ],
+                "line": 7809,
+                "run": "run-a",
+                "seed": -3503646078644842058,
+                "size_xyz": [
+                  75,
+                  45,
+                  75
+                ],
+                "source": "run-a/biome-diverse/chunks.jsonl",
+                "structure_id": "betterend:end_lake_rare"
+              },
+              {
+                "chunk_x": 108,
+                "chunk_z": -10,
+                "envelope": [
+                  1695,
+                  35,
+                  -193,
+                  1771,
+                  80,
+                  -117
+                ],
+                "line": 7441,
+                "run": "run-b",
+                "seed": -3503646078644842058,
+                "size_xyz": [
+                  77,
+                  46,
+                  77
+                ],
+                "source": "run-b/biome-diverse/chunks.jsonl",
+                "structure_id": "betterend:end_lake_rare"
+              }
+            ],
+            "observed_examples_xz_blocks": [
+              [
+                57,
+                57
+              ],
+              [
+                75,
+                75
+              ],
+              [
+                77,
+                77
+              ]
+            ],
+            "source": "evidence/item-8/sources/world-bounds.json.gz"
+          },
+          "approximate_vertical_size": {
+            "assessment": "evidence/item-8/sources/betterend-formation-pieces/README.md#lake-geometry-and-dimension-assessment",
+            "basis": "Three full-start saved procedural envelopes, normal and rare lake variants. EndLakePiece.makeBoundingBox includes radial shore/padding and vertical support/clearance margins, so these are generation envelopes, not water width/depth or occupied-volume measurements. They do not establish typical size or the unobserved megalake variants.",
+            "examples": [
+              {
+                "chunk_x": 90,
+                "chunk_z": 4,
+                "envelope": [
+                  1424,
+                  40,
+                  48,
+                  1480,
+                  83,
+                  104
+                ],
+                "line": 6419,
+                "run": "run-a",
+                "seed": 42,
+                "size_xyz": [
+                  57,
+                  44,
+                  57
+                ],
+                "source": "run-a/ordinary/chunks.jsonl",
+                "structure_id": "betterend:end_lake_normal"
+              },
+              {
+                "chunk_x": 98,
+                "chunk_z": 4,
+                "envelope": [
+                  1536,
+                  38,
+                  36,
+                  1610,
+                  82,
+                  110
+                ],
+                "line": 7809,
+                "run": "run-a",
+                "seed": -3503646078644842058,
+                "size_xyz": [
+                  75,
+                  45,
+                  75
+                ],
+                "source": "run-a/biome-diverse/chunks.jsonl",
+                "structure_id": "betterend:end_lake_rare"
+              },
+              {
+                "chunk_x": 108,
+                "chunk_z": -10,
+                "envelope": [
+                  1695,
+                  35,
+                  -193,
+                  1771,
+                  80,
+                  -117
+                ],
+                "line": 7441,
+                "run": "run-b",
+                "seed": -3503646078644842058,
+                "size_xyz": [
+                  77,
+                  46,
+                  77
+                ],
+                "source": "run-b/biome-diverse/chunks.jsonl",
+                "structure_id": "betterend:end_lake_rare"
+              }
+            ],
+            "observed_examples_y_blocks": [
+              44,
+              45,
+              46
+            ],
+            "source": "evidence/item-8/sources/world-bounds.json.gz"
+          },
           "authored_or_natural_enemies": {
             "authored": "No direct entity or explicit spawner authoring in the captured lake paths.",
             "natural": "All five packaged definitions have empty spawn_overrides, so these roots do not supply structure-specific natural-spawn lists. Biome spawning and external systems remain possible.",
             "scope": "Source attribution, not observed populations; material-provider and external injection coverage remain open."
+          },
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
           },
           "generated_spawners": {
             "direct_generator_spawner_block_types": [],
@@ -25835,6 +26139,7 @@
         },
         "content_role": "NATURAL_FORMATION",
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39",
           "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961",
           "evidence/item-8/sources/betterend-lake-helpers/identities.json": "80e48ad38d1350b83906950d68567f0d97909b1c062bea40ce50e2952a6f99c2",
@@ -25842,7 +26147,8 @@
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
           "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",
-          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef"
+          "evidence/item-8/sources/structure-inputs.json": "fcd9e53c1802b8ab2f03785baacce7a032ae525446f24e1172dbdeee868367ef",
+          "evidence/item-8/sources/world-bounds.json.gz": "fd8ebda1d1778b51c312cb98734248ce8c8ead623b201d79943df05ff36f169b"
         },
         "family_id": "betterend:end_lake",
         "name": "BetterEnd Lake Formation",
@@ -26015,14 +26321,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:end_village": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
+          "minecraft:the_end"
+        ]
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
@@ -26081,6 +26385,16 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "AUTHORED_STRUCTURE",
         "custom_generation_settings": {
           "max_distance_from_center": 80,
@@ -26091,6 +26405,7 @@
           "use_expansion_hack": false
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -26310,14 +26625,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:eternal_portal": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
+          "minecraft:the_end"
+        ]
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
@@ -26339,12 +26652,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "AUTHORED_STRUCTURE",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "raw_generation"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -26430,14 +26754,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:giant_ice_star": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -26461,12 +26781,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "NATURAL_FORMATION",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "surface_structures"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -26554,14 +26885,12 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:giant_mossy_glowshroom": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": []
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
+          "minecraft:the_end"
+        ]
       },
       "generated_spawners": {
         "artifact": "evidence/item-8/sources/pool-traces-content.json.gz",
@@ -26583,12 +26912,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "NATURAL_FORMATION",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "surface_structures"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -26726,17 +27066,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:mountain": [
-            "minecraft:the_end"
-          ],
-          "betterend:painted_mountain": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -26751,6 +27084,14 @@
             "authored": "No direct authored enemies or spawners in the inspected mountain generators and pieces.",
             "natural": "Both packaged structure definitions have empty spawn_overrides. Enemies may arise from biome spawning or other external systems; this family does not author a structure-specific spawn list.",
             "scope": "Generation-source attribution, not observed populations or complete retained-mod injection coverage."
+          },
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
           },
           "generated_spawners": {
             "direct_generator_spawner_block_types": [],
@@ -26800,6 +27141,7 @@
         },
         "content_role": "NATURAL_FORMATION",
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-formation-pieces/identities.json": "2ecc0877f072bee316254a4e5df4395c43e24802d923a29bd83c19c8a7718f39",
           "evidence/item-8/sources/betterend-formations-code/identities.json": "150df9fc0a941cc523bca51a782c39fcd0f08a32b11af77a64cf6f248c170961",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
@@ -26964,14 +27306,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:small_island": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -26995,12 +27333,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "NATURAL_FORMATION",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "raw_generation"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -27146,14 +27495,10 @@
         }
       },
       "dimension": {
-        "artifact": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
-        "biome_compatible_by_structure": {
-          "betterend:sulphuric_cave": [
-            "minecraft:the_end"
-          ]
-        },
-        "eligibility": "Biome overlap only. Structure-set selection, custom-generator conditions and effective structure constraints remain to be reconciled. An empty match is not an observed generation failure.",
-        "observed": [
+        "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+        "biome_source": "evidence/item-8/sources/structure-inputs.json",
+        "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+        "value": [
           "minecraft:the_end"
         ]
       },
@@ -27177,12 +27522,23 @@
         "unresolved_sources": {}
       },
       "grouping_decision": {
+        "attributes": {
+          "dimension": {
+            "basis": "Every effective root biome set intersects only captured End dimension membership. This establishes dimension eligibility, not successful generation.",
+            "biome_source": "evidence/item-8/sources/structure-inputs.json",
+            "source": "evidence/item-8/runtime/dimension-r3/dimension-biomes.json",
+            "value": [
+              "minecraft:the_end"
+            ]
+          }
+        },
         "content_role": "NATURAL_FORMATION",
         "custom_generation_settings": {
           "spawn_overrides": {},
           "step": "raw_generation"
         },
         "evidence": {
+          "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
           "evidence/item-8/sources/betterend-platform-portal-consumers/identities.json": "816d2f16a1da5e6778d7d4f1f5a00104444dc94403d430c752c141926b0f8f0c",
           "evidence/item-8/sources/betterend-remaining-root-consumers/identities.json": "eb0d8ea37b2766dc0081c0e84035d9c37168758023bb33400d3028ef73363dbd",
           "evidence/item-8/sources/packaged-json-redacted.json.gz": "a5279d453f32edf7b1adc5c06b09953785b990b4b01c362b1423ed2f88930fdd",
@@ -224158,7 +224514,7 @@
     }
   },
   "inputs": {
-    "evidence/item-8/family-decisions.json": "104dba142b697552bd8dbad00af2df6c4b4e1d8c7d5686efbab8c06f2457ab80",
+    "evidence/item-8/family-decisions.json": "0cacf3a9b63e9b02665bf451f91d277be5014a926ea50f50ebae8810e7eb76f6",
     "evidence/item-8/runtime/dimension-r3/dimension-biomes.json": "08fa8185cd2c3f54b5255b2e8f86946c4b37ed471fb1991d0f82c835ffe20c7c",
     "evidence/item-8/runtime/registry-r1/dumps/registry/minecraft/worldgen_structure.txt": "9d245430730173e9ce5304317a7476e7ecd4267d208b25a16a0d7b2cf3f16941",
     "evidence/item-8/sources/pool-traces-content.json.gz": "703eed7b5d558b54a62985c7f919d0254e8de613292364c514c5b47b298accc5",

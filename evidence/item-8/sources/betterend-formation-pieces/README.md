@@ -39,3 +39,41 @@ the saved piece envelope must not be presented as measured occupied mountain
 height. Content inspection and inventory attribute integration remain pending.
 This capture does not establish absence of indirect content, final geometry,
 observed discoverability, or Item 8 completion.
+
+## Lake geometry and dimension assessment
+
+This increment integrates eleven existing facts: dimension eligibility for all
+nine BetterEnd families and the lake family's two size attributes. The effective
+root biome sets in structure-inputs.json intersect only minecraft:the_end in the
+captured dimension-r3/dimension-biomes.json. Eligibility is not generation success.
+The lake family now has all required Item8 attributes; the other eight BetterEnd
+families still need assessment. No new capture or measurement tool is needed.
+
+The preserved world-bounds.json.gz contains three full-start lake observations:
+
+| Root | Seed | Decoded source and line | Chunk | Saved size X,Y,Z |
+| --- | --- | --- | --- | --- |
+| end_lake_normal | 42 | run-a/ordinary/chunks.jsonl:6419 | 90,4 | 57,44,57 |
+| end_lake_rare | -3503646078644842058 | run-a/biome-diverse/chunks.jsonl:7809 | 98,4 | 75,45,75 |
+| end_lake_rare | -3503646078644842058 | run-b/biome-diverse/chunks.jsonl:7441 | 108,-10 | 77,46,77 |
+
+These are three distinct observed starts, not repeated measurements of one
+identical layout. Preserve their different positions and dimensions across runs.
+The exact envelopes and identities are integrated in family-decisions.json.
+Inclusive envelope subtraction is performed by the existing observed_bounds
+implementation; the world-bounds artifact and underlying Item7 custody remain
+the evidence source. No new runtime or archive is introduced.
+
+EndLakePiece.makeBoundingBox uses floor(1.5 * radius), with ten blocks of additional
+margin on each side horizontally. Its lower Y is waterLevel minus floor(depth)
+minus twelve, and upper Y is centerY plus22. The saved vertical span consequently
+includes support and clearance, not just water depth. These explicitly labelled
+generation envelopes provide approximate examples for this procedural family;
+they are not occupied volumes, typical dimensions, or all-variant maxima.
+No full-start megalake example is present in this set. That limitation does not
+turn variant sampling or a water-depth measurement into additional Item8 work.
+
+The source inspection and exact class identities above explain the envelope's
+meaning. The mountain family must retain its separate warning: MountainPiece
+uses radius on Y, so a cubic saved box must not be described as occupied mountain
+height. Its two size attributes remain open after this increment.
