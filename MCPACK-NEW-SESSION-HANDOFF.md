@@ -14,13 +14,13 @@ population is 410 candidate registry families plus 40 nonregistry families. Fift
 inactive registry groups and the excluded cloud contribution retain their existing
 dispositions and are not an attribute-filling backlog.
 
-Established facts awaiting integration:
+Established-fact integration batches (first two now finished):
 
 1. Four nonregistry families (YUNG bridge and three Better End Island families)
    already contain five direct encounter attributes each in direct_encounter_content.
-   Integrate these 20 values, preserving their source scope and limitations.
+   Integrated these 20 values, preserving their source scope and limitations.
 2. Ten YUNG Extras families already contain template mob, loot and spawner inputs
-   in packaged_content. Integrate these 30 values, including the desert well's
+   in packaged_content. Integrated these 30 values, including the desert well's
    separately recorded processor loot sources. Empty template lists do not prove
    absence of generator additions. These two content batches concern 14 families
    and 50 existing values, not 14 new investigations.
@@ -28,11 +28,17 @@ Established facts awaiting integration:
    alongside registry families, preserving their contribution evidence and keeping
    components/exclusions separate. Their identities are settled; this is integration.
 
+The two content batches pass their three existing provider-scope tests. The inventory
+matches `uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-nonregistry-direct-content.json`.
+SHA-256: 8f2913ba3474ba2f2017eb9fbeb1150d19a0b25c414497e1b4bbe880d2543541.
+The generated change preserves registry rows and all previous nonregistry fields.
+These source-scoped descriptions do not assert complete retained-stack effects.
+
 Evidence sufficiency still to assess, not evidence declared missing:
 
 | Bounded assessment batch | Families | Primary existing evidence and question |
 | --- | ---: | --- |
-| Nonregistry | 40 | Contribution records and captured generators/processors. Finish direct content integration above; assess effective placement, conversion and approximate geometry. |
+| Nonregistry | 40 | Contribution records and captured generators/processors. Direct content integration above is done; assess effective placement, conversion and approximate geometry. |
 | AdoraBuild, Explorify, Explorations | 73 | Existing design decisions, template/pool traces and definitions. Reconcile encounter, visual and placement descriptions; use retained geometry. |
 | Moog (mes, mns, mss, mvs) | 136 | Existing canonical decisions, custom generation settings and content traces. Assess geometry and effective content without repeating design comparisons. |
 | IDAS, WDA, Seven Seas, Illager Invasion | 112 | Existing per-family assessments, processor bindings, templates and observations. Reuse completed IDAS attributes; assess only outstanding required answers. |
