@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### IDAS treetop tavern assessed after 08ec9794
+
+Nine entries integrated for four rigid connected sections. Origins0,0,0;
+-30,0,0;-30,0,-26;0,0,-26 give nominal55 by52 footprint,37 height. Villagers/
+parrots distinct from non-mob entities and absent-provider toucans. Four empty
+entity NBT records dispositioned. Four defined loot sources retain section
+ownership; no spawners or markers. Ticking-only processor inspection reused.
+No runtime/tool added. All85 focused checks pass (66.12s); only treetop_tavern/
+input identity changed. Total433/448 assessed;15 connected IDAS families/135
+entries remain, nine each. Quantify next batch and reuse existing source findings;
+nominal connected dimensions do not prove observed complete placement.
+Details: evidence/item-8/sources/idas-treetop-tavern-assessment/README.md.
+Inventory SHA-256: b82c99bad11e9f1c9ca831c7dd13d2a483b8b9633dc90452fe5f92b2064932c7.
+Final integration, acceptance, backup/history and PR/review/main remain open.
+
+
 #### IDAS farmhouse assessed after dd56fe8a
 
 Nine entries integrated for ordinary/abandoned alternatives and ordinary-only
