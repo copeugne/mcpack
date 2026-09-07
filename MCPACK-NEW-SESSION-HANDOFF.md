@@ -6,6 +6,22 @@
 
 ### Continuation update - 2026-09-07
 
+#### Zombie Dungeon geometry finished after 5cea5861
+
+Declared seed42 one-target/81-requested-chunk capture passed readiness, correlated
+flush, clean exit0 and frozen configuration acceptance. Full start chunk127,-54,
+line1017 has768 pieces and99x26x124 saved assembly envelope. Processor stairs/
+supports remain separate extensions; missing big_stairs_crumbled_0 is retained.
+Archive250 files/3,015,336 bytes published at source5cea5861; both restores
+verified every file and downloaded evidence reproduced geometry. No runtime.
+Exact commands/hashes/limitations: evidence/item-8/sources/dungeons-provider/README.md,
+Zombie geometry result and custody. Two size attributes finish the family;
+all85 focused tests pass. Registry318/408,nonregistry40/40,total358/448 assessed,
+90 remaining. Next quantify another remaining YUNG batch and reuse existing
+sources. Final canonical integration, acceptance, verified backup/history
+preparation and PR review/main delivery remain open. Inventory SHA-256:
+5cf25568bc68f7c7afcf3db43f10e5fb3b29107f9e36831a6bf7a3d030f2da07.
+
 #### Zombie content and geometry declaration after 989452f3
 
 Eight attributes integrated for Zombie Dungeon from69 available templates and
