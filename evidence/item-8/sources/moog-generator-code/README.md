@@ -1449,3 +1449,57 @@ Ten tests pass. Only ten family rows and the decisions identity change;
 biome constraints, observations and nonregistry content remain unchanged.
 No new measurement, capture or tooling was added.
 Inventory SHA: aa7a6cca167386529f0c89b3b19774ca50d3a2a2c6d209161e973b095782281a.
+
+## Four Nether ruin, well and pool families
+
+After e2779b23, forty attributes finish Ruin Fragments, Well, Lava Pool and
+Warped Pool across 18 roots and 21 traced templates. All root traces have no
+missing references. Ruins preserve 13 registry IDs but only 12 selected
+standalone templates: very_small_nether_brick uses the same blackstone pool as
+very_small_blackstone. This is one family with explicit duplicate selection,
+not an extra template or family. Their per-root source sizes are integrated.
+
+Exact references are the four mns family root traces and their source paths
+from MoogsNetherStructures-1.21-3.0.0-alpha.2.jar in
+templates-redacted.json.gz, plus corresponding structure/start/side-pool JSON.
+Family evidence maps bind hashes. Selected pools contain one ordinary rigid
+weight-1 element with empty processors/fallback. Ruins and crimson_lava_well
+are standalone. Other roots have one upper and one lower component:
+
+| Root | Upper XYZ | Upper outgoing | Lower incoming | Lower origin XYZ | Lower XYZ | Union XYZ |
+| --- | --- | --- | --- | --- | --- | --- |
+| medium_crimson_well | 9,10,9 | 4,0,0 down_south | 4,7,0 up_south | 0,-8,0 | 9,8,9 | 9,18,9 |
+| medium_warped_well | 9,10,9 | 4,0,0 down_west | 4,7,0 up_west | 0,-8,0 | 9,8,9 | 9,18,9 |
+| lava_pool | 23,5,22 | 2,0,0 down_south | 2,2,0 up_south | 0,-3,0 | 23,3,22 | 23,8,22 |
+| warped_pool | 15,12,15 | 5,0,0 down_west | 5,6,0 up_west | 0,-7,0 | 15,7,15 | 15,19,15 |
+
+Origins use parent outgoing position plus down unit vector minus child incoming
+position. Incoming names are minecraft:empty, matching upper targets. The
+medium-well and lava upper names have an mvs prefix while their lower targets
+have mns, but this does not invalidate the forward match. Side pools select
+only the lower template; its target does not match another lower's empty name,
+so this is not a repeating shaft. These are nominal full source boxes including
+air/padding, conditional on attachment; rotation can exchange X/Z. Crimson lava
+well alone is 7x11x7. No new generation or measurement was needed.
+
+All 21 selected entity lists are empty, with no spawners or generation markers.
+Ruin fragments and crimson lava well have no block entities. Other block entities
+are jigsaws and lower containers. Each medium-well lower has one barrel using
+mns:chests/uncommon; Warped Pool lower has a chest using that table. Upper pieces
+and Lava Pool have no loot reference. Lava Pool's lower lava/material-deposit
+blocks are distinct from table loot; no salvage yield or renewability claim.
+
+All roots intersect only Nether runtime possible biomes. The existing Nether
+postLayoutAdjustments source establishes HIGHEST_LAND for Ruins, Well and Warped
+Pool, LOWEST_LAND for Lava Pool. All set cannot_spawn_in_liquid true, initial
+height 0, depth 1, beard_thin and omitted ledge offset. Source land search and
+sea-level fallback move the assembly; lower boxes do not by themselves establish
+burial. Empty spawn_overrides leave natural populations conditional. Source
+forms and placement support qualitative discoverability, not measured sight
+ranges or exposure. Lava hazards do not imply an authored enemy source.
+
+Rebuild: `uv run -m tools.build_item8_inventory --output <absent-path>`.
+Shared checks: `uv run pytest -q tests/item8/test_moog_data_provider_scope.py tests/item8/test_moog_library_provider_scope.py tests/item8/test_inventory_sources.py`.
+Ten tests pass. Only four family rows and the decisions identity change;
+biome constraints, observations and nonregistry content remain unchanged.
+Inventory SHA: e7b9578ac62a2390621fa08da4f034ea04bd74c2919418d17c51390d64cde96d.

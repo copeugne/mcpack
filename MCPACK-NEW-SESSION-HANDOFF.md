@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Nether ruin/well/pool families assessed after e2779b23
+
+Forty attributes finish Ruin Fragments, Well, Lava Pool and Warped Pool across
+18 roots/21 templates. Duplicate fragment selection remains explicit; finite
+upper/lower geometry and lower-container loot ownership are integrated. No
+selected entities or spawners. Ten shared tests pass; no capture or tooling.
+Direct derivations are in the existing moog-generator-code README.
+Inventory SHA: e7b9578ac62a2390621fa08da4f034ea04bd74c2919418d17c51390d64cde96d.
+Nether Structures 24/27; registry 240/410, nonregistry 40/40, total 280/450
+assessed, 170 remaining. Three mns families remain: arena, dragon_arena and
+mega_fortress. Quantify the next coherent batch before editing. Final
+integration, acceptance, verified backup/history consolidation and PR
+review/main delivery remain open.
+
 #### Ten Nether alternative families assessed after b9d94109
 
 One hundred attributes finish Bridge, Medium Fungus, Circle Ruin, Medium House,
