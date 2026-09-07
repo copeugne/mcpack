@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Predeclared abandonedhouse/brickhouse batch: two families, eleven fields each.
+Ten source-based interpretations retain the resolved biome constraints. Generic
+processor candidates differ from saved spawner mobs; both are preserved. Brick
+house nominal flat assembly is 22 by 48 blocks, derived explicitly from three
+matching connector positions; terrain-matching effects remain unobserved.
+Focused IDAS and scoped quality checks pass. Decision delivery and inventory
+refresh follow. No new measurement, renderer or framework was introduced.
+
 Cottage/camp inventory now matches decision e9bbf9ba and reproduces exactly.
 Six families have current-phase source-attribute assessments. Planning audit:
 401 registry candidates have literal required-field gaps (2,193 field values);
