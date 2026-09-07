@@ -10335,3 +10335,35 @@ specific mandatory claim the existing evidence cannot support first.
 Before the final PR, finish these attribute assessments and nonregistry
 integration, check machine/narrative agreement and run the final applicable gate.
 The already-passing family-decision tests do not replace that gate.
+
+### Witches treestump attribute increment
+
+Predeclared scope: one family and eleven fields, using existing retained evidence.
+Decision 5c5ee66a supplies ten attribute interpretations and retains the resolved
+biome constraints. Nominal template size is 29 by 20 by 25; visibility is a
+qualitative source-based description, not a measured discovery distance. Root
+spawn rules provide witch/cat candidates, while the template has two loot-table
+chests and no physical spawners. The frozen toggle is enabled. Of fifteen
+tag-matched registered biomes, thirteen occur in the captured Overworld and none
+overlap another captured dimension; Regions Unexplored deciduous_forest and
+pumpkin_fields occur in no captured dimension biome source.
+
+Focused IDAS checks pass (1 passed, 77 deselected), as do scoped Ruff/Basedpyright
+checks. Two fresh inventory builds agree exactly, SHA-256
+4df059e58a5074c892a167fd1f4a0afafaa037814837b687d2ccf33c8e64a2d4.
+Only this family and the decision input identity change. Registry membership,
+world observations, biome constraints and all other family rows remain unchanged.
+Source attribution is not a claim of observed placement, encounters or universal
+absence of external modifications. No new measurement or tooling was introduced.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -k idas -q
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witches-attributes-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-witches-attributes-r2.json
+cmp evidence/raw/item8/inventory-witches-attributes-r1.json evidence/raw/item8/inventory-witches-attributes-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-witches-attributes-r2.json
+```
+
+Use fresh output files. Item 8 and its final acceptance gate remain open.
