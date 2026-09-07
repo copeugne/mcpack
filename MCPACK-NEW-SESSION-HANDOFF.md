@@ -6,6 +6,20 @@
 
 ### Continuation update - 2026-09-07
 
+#### Heavenly fleet, Coliseum and Keep assessed after eceedf65
+
+Fifty attributes assess Heavenly Challenger, Conqueror, Rider, Coliseum and
+Keep Kayra: five roots/49 templates. Connected source envelopes distinguish
+fixed altitude from surface projection; Heavenly biome compatibility includes
+Overworld and End. Coliseum entity-drop table and Keep fixed potion contents
+are distinct from ordinary chest loot. No new capture/tool. Registry287/410,
+nonregistry40/40, total327/450 assessed,123 remaining. WDA15/40 assessed.
+Exact derivations and commands: sources/wda-provider-scope/README.md.
+Eight focused tests pass. Quantify the next batch before editing. Final canonical integration, acceptance, verified
+backup/history preparation and PR review/main delivery remain open.
+Inventory SHA-256:
+97446b913ab5d36ba54899805ffd963ee66b2e4a733f0462fb63a751f06ee73a.
+
 #### Five WDA landmarks assessed after 1bb2f0cf
 
 Fifty attributes assess Fishing Hut, Jungle Tree House, Lighthouse, Small Blimp
