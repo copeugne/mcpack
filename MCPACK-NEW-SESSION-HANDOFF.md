@@ -6,6 +6,15 @@
 
 ### Continuation update - 2026-09-07
 
+Cottage/camp inventory now matches decision e9bbf9ba and reproduces exactly.
+Six families have current-phase source-attribute assessments. Planning audit:
+401 registry candidates have literal required-field gaps (2,193 field values);
+40 nonregistry assignments need integration; nine registry candidates have filled
+fields that still require acceptance assessment. These are bounded record counts,
+not experiment counts. Detailed field and namespace counts are in provider-scope.md.
+No additional family batch has started. Quantify the next batch before edits and
+reuse the existing 39 partially or fully overridden candidate records.
+
 Cottage and pillager camp: predeclared two-family, eleven-field batch assessed
 from existing evidence. Ten interpretations per family preserve unchanged biome
 constraints. Camp processor spawner settings and its sole pillager mob entry are
