@@ -9778,3 +9778,33 @@ uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-ador
 cmp evidence/raw/item8/inventory-adora-overworld-houses-r1.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
 cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-adora-overworld-houses-r2.json
 ```
+# IDAS portal, camp and ship relationship closure (2026-09-07)
+
+Decision 6c8adbbc resolves ancient_portal, underground_camp, sunken_ship and
+sunken_ship/sunken_ship_ruins using 1506ccef comparisons and full source data.
+Portal halves are assembly components with corresponding dimension variants.
+Camps retain paired workstation/material alternatives. Long ship hull variants
+remain distinct from detached wreckage. Different processors, authored spawner
+data, optional entity references, loot and placement rules remain explicit.
+The ordinary ship's second alternative has an empty processor while the first
+uses the spawner randomizer, so raw spawner contents are not a uniform runtime claim.
+
+The focused IDAS source-binding case and scoped code checks pass. Definitions,
+root assignments and variants are unchanged. Two fresh inventory runs match
+exactly; only the four grouping decisions and input hash change. All 887 roots
+remain covered once in 423 working groups. Canonical-note backlog: 55, all IDAS.
+Required attributes, 33 nonregistry contributions and final validation/review/main
+delivery remain open.
+
+Inventory SHA-256:
+56f6f7f6eae61fd676bce27a576d6a7be2ba90f8317bc30bffda2bd22996d308.
+
+```sh
+uv run pytest tests/item8/test_family_decisions.py -q -k idas
+uv run ruff check tools/build_item8_inventory.py
+uv run basedpyright tools/build_item8_inventory.py
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-related-r1.json
+uv run -m tools.build_item8_inventory --output evidence/raw/item8/inventory-idas-related-r2.json
+cmp evidence/raw/item8/inventory-idas-related-r1.json evidence/raw/item8/inventory-idas-related-r2.json
+cmp evidence/item-8/inventory.json evidence/raw/item8/inventory-idas-related-r2.json
+```

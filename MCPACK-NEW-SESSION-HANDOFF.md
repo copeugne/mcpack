@@ -6,6 +6,11 @@
 
 ### Continuation update - 2026-09-07
 
+Inventory matches 6c8adbbc and reproduces exactly in two fresh runs. Changes are
+limited to the four IDAS grouping decisions and the input hash. All 887 roots
+remain covered once in 423 working groups. Backlog: 55, all IDAS. Next: remaining
+IDAS variant and assembly relationships. Attributes, nonregistry and delivery remain.
+
 Four IDAS records are reconciled against 1506ccef views and full source content:
 ancient_portal, underground_camp, sunken_ship and detached ship ruins. Existing
 groups/variants remain unchanged. Ship alternative processor differences are
