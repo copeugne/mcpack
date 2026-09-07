@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Four Voyager landmark families assessed after d3b54c73
+
+Forty attributes finish Log Pile, Lantern, Stall and End Scraps across 25 roots.
+Standalone variant dimensions, dimension eligibility and exact loot owners are
+integrated without new captures, measurements or tooling. End Scraps retains
+its omitted liquid flag and variant 2's extra loot source. Direct derivations
+are in moog-generator-code README. Ten affected tests and builder checks pass.
+Inventory SHA-256:
+3f14a5d39bc684048f19422e3345ac16bdedb5fe782e7dfadd561f6b7b784e90.
+
+Retire these assessments. Voyager 43/65; registry 150/410, nonregistry 40/40,
+total 190/450 assessed, 260 remaining. Continue remaining families in quantified
+batches. Final integration, acceptance, verified backup/history consolidation,
+PR review and main delivery remain open.
+
 #### Voyager wells assessed after c971b6c6
 
 Ten attributes finish Well across 17 roots and 20 selected templates. Direct

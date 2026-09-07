@@ -381,3 +381,49 @@ Only Well and the decisions input hash changed; biomes, observation links and
 nonregistry content are unchanged. Inventory matches
 `evidence/raw/item8/inventory-mvs-wells.json`, SHA-256
 c07384cf9665de83e8a0ae7a5a568e28f1cfe3ddc33badfaf1c2c50cd4b3f402.
+
+## Voyager log piles, lanterns, stalls and End scraps
+
+After d3b54c73, 40 attributes finish four families spanning 25 registry roots:
+six Log Piles, eleven Lanterns, four Stalls and four End Scraps. Existing family
+and variant decisions are retained. Direct inspection of hash-bound templates,
+pools, block entities and runtime biome intersections supplies the integrated
+answers. No capture, measurement or tooling is added.
+
+Every root selects one standalone ordinary rigid single template with empty
+processors and no attachments. Log Piles are each 7x4x5 XYZ. Nine small wood
+lanterns are 2x5x1; Medium Oak is 3x6x1 and Small Campfire 3x7x3. Stalls are
+Blue 11x10x8, Orange 9x9x10, Pink and Red 7x9x7. End Scraps 1..4 are respectively
+10x6x9, 10x7x10, 9x6x8 and 9x7x9. Inventory separates XZ and Y by template.
+These source envelopes include air/padding, with rotation potentially exchanging
+X/Z. They do not establish occupied-world bounds or exposed height.
+
+Log Pile, Lantern and Stall roots intersect only Overworld runtime biomes;
+End Scraps only End biomes. All use generic jigsaw with WORLD_SURFACE_WG,
+zero start height and beard_thin. Stall and End Scraps declare terrain range
+3/radius 1; the others omit both optional fields. End Scraps omits the liquid
+flag, selecting the captured false default. The other three families explicitly
+enable the center-column liquid check. Complete dry/exposed footprints and
+safety are not inferred from these candidate-placement inputs.
+
+All 25 entity lists are empty with no spawner or generation-marker records.
+Log Pile block entities are campfires. Lanterns have none except Medium Oak
+and Small Campfire's campfire payloads. Stalls contain containers and banners;
+End Scraps contain chests, plus variant 2's barrel. No contained mob source is
+identified. Empty root spawn_overrides leaves natural spawning conditional on
+dimension, biome and world state; no family is declared safe.
+
+Log Piles and Lanterns have no saved LootTable references. Every Stall variant
+references mvs:large_carts and mvs:large_carts_2. Each End Scraps variant uses
+minecraft:chests/end_city_treasure, with mvs:end_scraps additionally in variant
+2. These owners remain explicit per template, not equal reward values or
+observed loot rolls. Ordinary salvage is separate. Qualitative visibility uses
+low stacks, slender lanterns, colored stalls and compact scrap forms, without
+measuring light range, viewing distance or discovery rate.
+
+Ten affected provider/inventory tests and scoped builder Ruff/Basedpyright
+checks pass. Reproduce with build_item8_inventory and an absent output path.
+Only four family rows and the decisions input hash changed; biomes, observation
+links and nonregistry content are unchanged. Inventory matches
+`evidence/raw/item8/inventory-mvs-landmark-variants.json`, SHA-256
+3f14a5d39bc684048f19422e3345ac16bdedb5fe782e7dfadd561f6b7b784e90.
