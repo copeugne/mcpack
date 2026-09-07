@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Repurposed witch-hut assessment completed after 52e59e40
+
+Six remaining attributes integrated for the six-variant family. Existing templates
+provide authored witch/cat; root piece-bounded natural overrides remain separate.
+No template loot/spawners/markers; selected pillar and material processors add
+supports, not encounters. The giant-tree-taiga self-list reference is applied to
+replacement states without red-glass triggers. Template7x8x9 excludes pillar extent.
+All85 focused checks pass (59.01s); only witch-hut/input identity changed. No new
+capture/tool. Total394/448 assessed;54 families/474 entries remain: IDAS38/343,
+Repurposed16/131. Quantify next batch and reuse existing evidence. Details in
+repurposed-witch-hut-assessment README under evidence/item-8/sources. Final
+canonical integration,acceptance,backup/history and PR/review/main remain open.
+Inventory SHA-256: e0ad5a5d63539f9844b13dc27c159bd530e00b8dbc7659aa24d85eb09a3953fa.
+
+
 #### Remaining-provider dimensions integrated after 5ca62565
 
 54 existing dimension assessments integrated: Repurposed17, IDAS37. Exact builder
