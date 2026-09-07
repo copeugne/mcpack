@@ -326,10 +326,13 @@ def main() -> None:
             for index, name in enumerate(names):
                 raw = archive.read(f"data/{namespace}/structure/{name}.nbt")
                 title = name if compressed else name.rsplit("/", 1)[1]
-                pieces.append(diagram(raw, title, (20 + index % 2 * 300,
-                                      35 + index // 2 * 300), exposed=compressed,
+                pieces.append(diagram(raw, title, (
+                    (50 if cast("bool", args.idas_worksites) else 20) + index % 2 * 300,
+                    35 + index // 2 * (400 if cast("bool", args.idas_worksites) else 300)),
+                                      exposed=compressed,
                                       omit_water=cast("bool", args.adora_ocean)))
-            height = ((len(names) + 1) // 2) * 300
+            height = ((len(names) + 1) // 2) * (
+                400 if cast("bool", args.idas_worksites) else 300)
             svg = "".join((
                 f'<svg xmlns="http://www.w3.org/2000/svg" width="620" height="{height}">',
                    '<rect width="100%" height="100%" fill="white"/>',
