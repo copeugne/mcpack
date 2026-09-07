@@ -6,6 +6,14 @@
 
 ### Continuation update - 2026-09-07
 
+Six worksite/transport records are reconciled against corrected 0c67f005 views
+and complete contents. Desert dig site is a separate assembly from the roofed
+dig site/stables; pump camp, washing camp, furnished log, train wreck and winter
+wagon remain distinct. Full variants are preserved, with no operating machinery
+or vehicle claim. The focused IDAS case and scoped checks pass. Backlog: 44, all
+IDAS. Coverage groups: 426. Inventory refresh follows. Attributes, nonregistry
+and final delivery remain open.
+
 Worksite views at 4d60aff5 materially clip the larger templates. Fix this within
 the existing selection by increasing row spacing/height from 300 to 400 and
 shifting its origin right by 30. Keep source templates, projection scale and other
