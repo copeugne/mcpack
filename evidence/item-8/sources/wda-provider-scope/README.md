@@ -793,3 +793,56 @@ uv run -m tools.run_item7_gap_targets \
 ```
 
 This declaration does not claim a successful capture or resolved geometry.
+
+### Plague Asylum result and custody
+
+Source revision9a3221a528768f711ce50a8d4f824e2793ca4a67. The one requested
+seed42 target completed, ready, correlated flushed save, clean exit0,
+accepted frozen configuration. No runtime remains. The decoded stream has
+1,803 records including locate-created/partial chunks, not a sampling denominator.
+Line1729 is a full Overworld start in chunk305,-99, with171 piece boxes and
+inclusive envelope[4779,-37,-1652,4974,16,-1480], size196x54x173.
+These resolve the two geometry attributes as an illustrative whole-start
+example only. Baseline world_observations indexes remain unchanged; the
+supplemental observation is bound through the archive manifest in attributes.
+
+Archive257 files,3,002,188 bytes,20,820,169 uncompressed bytes. SHA-256:
+770e3993d9d9d7a9d3668102f4bf0fbcc9d9c5b4b5191ec468ef9b0385e89fe1.
+Decoded stream SHA-256:
+f31c4975b34477a761e33b4190b5b317010b18b8e0c2955acd0f5ea6a64e220c.
+Manifest SHA-256:
+32f56868b26ec38c2ea67b4e6fe3758541683c3037503e5869b19eee899d4b9d.
+The archive retains stopped world excluding session.lock, logs, decoded records,
+sanitized configuration and its sanitization receipt, and complete run receipt.
+Warnings, including overload and source probability warnings, remain in logs;
+this geometry observation does not disposition them as a gameplay pass.
+One offline inspection initially imported the nonexistent item7_decode module;
+it failed before reading records or changing evidence. The corrected existing
+model import below produced the result. No runtime attempt was rejected.
+
+Both local and published-download restores verified257 files. Local copies
+share one disk; independent storage is the
+[published archive](https://github.com/copeugne/mcpack/releases/tag/item-8-wda-asylum-geometry-2026-09-07-r1).
+Its remote tag was verified against the exact source revision.
+
+```sh
+uv run python -c 'from pathlib import Path; from tools.stage_item7_world import copy_world_boundary; copy_world_boundary(Path("instances/item8/wda-asylum-geometry-r1"), Path("evidence/raw/item8/wda-asylum-geometry-r1/world"))'
+uv run -m tools.decode_item7_world evidence/raw/item8/wda-asylum-geometry-r1/world --output evidence/raw/item8/wda-asylum-geometry-r1/chunks.jsonl
+uv run -m tools.archive_item7_evidence create --root evidence/raw/item8/wda-asylum-geometry-r1 --archive evidence/raw/item8/item8-wda-asylum-geometry-r1-9a3221a5.tar.gz --manifest evidence/item-8/raw-custody/wda-asylum-geometry-r1-manifest.json --revision 9a3221a528768f711ce50a8d4f824e2793ca4a67
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/item8-wda-asylum-geometry-r1-9a3221a5.tar.gz --manifest evidence/item-8/raw-custody/wda-asylum-geometry-r1-manifest.json --target evidence/raw/item8/wda-asylum-geometry-r1-restored --receipt evidence/item-8/raw-custody/wda-asylum-geometry-r1-local-restore.json
+ gh release download item-8-wda-asylum-geometry-2026-09-07-r1 --repo copeugne/mcpack --dir evidence/raw/item8/wda-asylum-geometry-download --pattern item8-wda-asylum-geometry-r1-9a3221a5.tar.gz
+uv run -m tools.archive_item7_evidence restore --archive evidence/raw/item8/wda-asylum-geometry-download/item8-wda-asylum-geometry-r1-9a3221a5.tar.gz --manifest evidence/item-8/raw-custody/wda-asylum-geometry-r1-manifest.json --target evidence/raw/item8/wda-asylum-geometry-downloaded-restore --receipt evidence/item-8/raw-custody/wda-asylum-geometry-r1-downloaded-restore.json
+uv run python - <<'PY'
+from pathlib import Path
+from mcpack_evidence.item7_nbt_models import ChunkRecord
+from mcpack_evidence.item8_world_bounds import observed_bounds
+source = Path('evidence/raw/item8/wda-asylum-geometry-downloaded-restore/chunks.jsonl')
+for line, raw in enumerate(source.open(), 1):
+    for observation in observed_bounds(ChunkRecord.model_validate_json(raw)):
+        if observation['structure_id'] == 'dungeons_arise:plague_asylum':
+            print(line, {key: value for key, value in observation.items() if key != 'piece_boxes'}, 'pieces', len(observation['piece_boxes']))
+PY
+```
+
+Rebuild and eight focused checks use the existing commands above. Semantic
+comparison changes only Asylum geometry and direct evidence/input identities.
