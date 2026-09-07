@@ -564,3 +564,92 @@ Eight focused tests pass. Semantic comparison changes only the two campsite
 geometry/dimension assessments, direct evidence identities and builder input.
 Inventory SHA-256:
 201360490224b28829da9a67a2de47898a0262ed44d10138e4ae046a813799d7.
+
+## Aviary, Fort, Infested Temple, Kisegi and Asylum content
+
+Forty attributes integrate five roots/133 templates: aviary, illager_fort,
+infested_temple, kisegi_sanctuary and plague_asylum. Their ten footprint/height
+attributes remain open. Do not count these families assessed yet. Same exact
+WDA archive/catalog paths as above. Template traces have no missing components.
+No retained starts exist and no new runtime/tool was added for this content.
+
+Aviary biome intersection is End only; others Overworld. All roots use
+minecraft:jigsaw,depth7,ignore_waterlogging,expansion false. Aviary starts at
+absolute Y50 with no heightmap; its piece-bounded monster list is phantom
+weight60/group2..3. Illager Fort projects WORLD_SURFACE_WG offset-7,beard_thin.
+Infested/Kisegi project that heightmap offset-32,step fluid_springs,max distance104;
+their full-bounds ambient,creature,monster lists are empty. Those normal spawn
+lists do not remove authored trial encounters. Asylum is absolute Y0, no
+heightmap,step strongholds,adaptation bury,max distance104. Aviary/Fort distance114
+and step surface_structures. Fort/Asylum root spawn_overrides are empty.
+
+Aviary ordinary spawner pieces each use block_entities0: charged_creeper_0
+powered1/Health30; guardian_3 skeleton Health120 with guardian passenger;
+phantom_0 Size40; skeleton_melee_1 Health120; skeleton_ranged_0 Health100.
+Direct end crystals occur in parts10/11/12/13 in counts5/2/4/4, all Invulnerable0.
+Part15 saves turtle Health30; other direct entities include paintings and armor
+stands. These are potential hazards/decorations, not a measured live encounter.
+Part5 block_entities20 and part7 block_entities17 droppers save lingering
+potions, separately from table rewards; source potion NBT remains preserved.
+
+Fort saved evoker/illusioner/pillager/vindicator pieces have Health24/32/60/60.
+Its four cave-spider ordinary spawners are part4 block_entities5/8,part5 index1,
+part6 index2. A spawners pool name does not make the direct saved entities into
+spawner blocks. No trial spawners occur in Aviary, Fort or Asylum.
+
+Infested has five trial-spawner pieces. Every piece block_entities0 contains
+normal_config and ominous_config, with separate potentials, rewards and counts.
+Spawner0 normal mode uses cave spider and guaranteed_omen reward; ominous uses
+cave spider and ominous reward. Other pieces use cave spider, spider with cave
+spider passenger, skeleton or wither skeleton, and normal/ominous reward tables.
+The per-player additions and mode totals remain source declarations, not live
+populations. Direct saved paintings are not enemies. Three vault alternatives
+have exact configs: normal trial_key model2341668, treasure trial_key2341669,
+ominous ominous_trial_key2341670, each count1 and its own vault table.
+
+Kisegi has twelve trial-spawner alternatives with separate normal/ominous
+configs and rewards. Types include cave spider; spider carrying skeleton;
+skeleton; wither skeleton; wither skeleton carrying potion. Every complete
+config and passenger chain is preserved in source spawner_blocks. Four vault
+configs use normal trial_key2341671, normal-treasure trial_key2341673,
+ominous key2341672, ominous-treasure key2341674. All config key counts are1;
+normal-treasure lore saying two keys does not prove a configured two-key cost.
+Direct main entities13/14 are chicken Health3 and an egg item, alongside
+paintings/armor stands. Other rooms include item frames and display equipment.
+
+Infested processor rules change calcite to smooth_quartz/diorite, spruce planks
+to stripped_spruce_wood, cherry leaves to cobweb, and append decorated-pot loot
+from pots/infested_temple/infested_temple_pots. Kisegi has analogous material
+rules, magenta_glazed_terracotta to TNT, and append_loot assignments for pots
+and suspicious sand/gravel using its pots and archeology tables. Source TNT
+is not proof of triggered explosions. Neither processor injects mob/spawner
+entities; all other selected processors in this batch are empty. Exact
+processor JSON paths are worldgen/processor_list/<family>_main.json.
+
+Asylum ordinary spawner pieces use block_entities0: evoker_fangs, skeleton
+Health50, skeleton Health40 with potion passenger, wither skeleton Health40,
+witch, husk Health4. An evoker_fangs entity is not an evoker mob. No direct
+saved entities occur in its selected templates. Room4_pit block_entities14
+contains one strong_slowness splash potion in dispenser slot4; it does not
+prove a working trap. Existing source spawner timing and gear remain linked.
+
+Loot attribution retains exact source pointers, including weighted
+loot_tables_to_eject arrays in both trial modes. These arrays must not be
+flattened into an invented common reward. Vault configs are recorded separately
+from spawners and ordinary container tables. Fixed payload locations identify
+template and block-entity index for Items/Book, including Infested bookshelves,
+firework dispensers and brewing stands; Kisegi books, shelves, potion/arrows
+and brewing stands. Inspect the exact preserved NBT for contents and component
+format. Decorative gear and fixed objects are distinct from randomized rewards.
+No conversion, reward realization, encounter balance or gameplay pass is claimed.
+
+Remaining work for these five families is ten geometry attributes: derive
+connected envelopes for Aviary/Fort and main/interior layouts for Infested/Kisegi;
+resolve a supported whole-layout approximation for Asylum's branching rooms.
+Rebuild and focused validation use the existing commands above.
+
+Eight focused tests pass. Repeated string-table pointers are kept in the
+existing catalog; the inventory lists distinct table IDs and preserves weighted
+trial reward lists and their exact pointers. Only these five content assessments
+and direct source identities change; geometry remains open. Inventory SHA-256:
+d38dcfb6cbbe7f4ba2eb8fe4ebced9630a4d83985b94c6a959a29d89c162831e.

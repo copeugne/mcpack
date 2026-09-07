@@ -6,6 +6,21 @@
 
 ### Continuation update - 2026-09-07
 
+#### Five large WDA families attributed after ac2361b6
+
+Forty attributes integrate Aviary, Illager Fort, Infested Temple, Kisegi Sanctuary
+and Plague Asylum: five roots/133 templates. Preserve trial normal/ominous modes,
+weighted reward lists, vault keys, processor pot/archaeology loot and TNT,
+ordinary spawners versus saved entities, and fixed payload pointers. No new
+capture/tool. Ten geometry attributes remain for these five; do not count them
+assessed yet. Next derive Aviary/Fort connected envelopes, Infested/Kisegi
+main/interior extents, then resolve Asylum branching geometry. Derivations:
+sources/wda-provider-scope/README.md. Eight focused tests pass.
+Total remains337/450 assessed,113 remaining; WDA25/40 assessed. Final canonical
+integration, acceptance, verified backup/history preparation and PR review/
+main delivery remain open. Inventory SHA-256:
+d38dcfb6cbbe7f4ba2eb8fe4ebced9630a4d83985b94c6a959a29d89c162831e.
+
 #### Two campsite geometries captured after f9e5fa8d
 
 Predeclared seed42 Merchant/Illager run completed both81-chunk targets with
